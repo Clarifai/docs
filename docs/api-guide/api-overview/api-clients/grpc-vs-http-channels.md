@@ -8,7 +8,7 @@ The Clarifai API offers you an encrypted gRPC channel, as well as an HTTPS+JSON 
 
 ## Why did we build our API on gRPC in the first place?
 
-![grpc vs http clarifai](https://www.clarifai.com/hs-fs/hubfs/Screen%20Shot%202021-02-09%20at%2011.04.10%20AM.png?width=1252&name=Screen%20Shot%202021-02-09%20at%2011.04.10%20AM.png)
+![grpc vs http clarifai](/img/grpc-vs-http.png)
 
 ### Cutting edge performance
 
@@ -48,6 +48,4 @@ It's impossible to directly call a gRPC service from a browser today. gRPC uses 
 
 ### Human readability
 
-HTTP API requests are sent as text and can be read and created by humans. gRPC messages are encoded with Protobuf by default. While serializing Protobuf is more efficient and the payloads are smaller, its binary format isn't human readable. Additional tooling is required to analyze Protobuf payloads and to compose requests by hand.[  
-](https://www.clarifai.com/cs/c/?cta_guid=d83de292-8100-4201-a297-439e9e7d8ce1&signature=AAH58kF3hgr_iPeCmLO-RAMhmALPTHzu-w&pageId=41346788799&placement_guid=555ef883-4a3e-4f83-a2d1-7deb924c8cbc&click=077a7099-8a84-4ad0-b75c-c00dfdb8e3d3&hsutk=b22d359e95a9f4a0d8b3edf2b4d25675&canon=https%3A%2F%2Fwww.clarifai.com%2Fblog%2Fhttp-vs-grpc-choose-your-favorite-interface&utm_referrer=https%3A%2F%2Fwww.clarifai.com%2Fblog&portal_id=4505120&redirect_url=APefjpEd5m2LKG3nqH2n0l-ZHpB0knyCNkx1463lPfb7D75sLZCE2ett0yPW7NybdmY758IiAqHqMfKE29sdu-1xrizWpo954sadX6m-uqqRn114AMxYNj0fznCcuYaph2k5WcnSVzHkFsjSxeRG-Tmpk03GD93vNC-njgs7g6wRDc3tSt0k4i2mnpZRq00YUwtSUBKjeFg5elosnz_83LRlA_WgUyU6_j3QFnqp2SNmz8jqrNi3TX05wynvK7hxd6mkD-0eJhJh5gmu6gZJv2wJk90cot5cO_V6L9z4I8TZZNlxhK3sckQ&__hstc=65403889.b22d359e95a9f4a0d8b3edf2b4d25675.1611605883164.1614285157634.1614312302697.99&__hssc=65403889.3.1614312302697&__hsfp=3570637114&contentType=blog-post)
-
+HTTP API requests are sent as text and can be read and created by humans. gRPC messages are encoded with Protobuf by default. While serializing Protobuf is more efficient and the payloads are smaller, its binary format isn't human readable. Additional tooling is required to analyze Protobuf payloads and to compose requests by hand.
