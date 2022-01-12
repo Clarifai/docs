@@ -1,3 +1,7 @@
+---
+sidebar_position: 3
+---
+
 # Personal Access Tokens
 
 Personal Access Tokens \(PAT here for short\) represent a specific user when accessing the Clarifai API.

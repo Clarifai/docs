@@ -1,3 +1,8 @@
+---
+description: How to change settings and delete and application
+sidebar_position: 2
+---
+
 # Application Settings
 
 ## Application Settings

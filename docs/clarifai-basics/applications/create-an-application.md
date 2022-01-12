@@ -1,3 +1,8 @@
+---
+description: How to create a Clarifai Application
+sidebar_position: 1
+---
+
 # Create an Application
 
 To create an application, head on over to the [applications page](https://portal.clarifai.com/apps) and press the 'Create a New Application' button. 

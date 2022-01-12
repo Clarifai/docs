@@ -1,3 +1,7 @@
+---
+sidebar_position: 5
+---
+
 # 2FA
 
 Two-factor authentication is an optional sign-in security feature that provides an additional layer of security for your account.

@@ -1,3 +1,8 @@
+---
+description: How to collaborate on the Clarifai Platform
+sidebar_position: 3
+---
+
 # Collaboration
 
 Collaborator functionality provides you the ability to share your apps so that you can work with your team members to label data, create models and more. This openness comes with full control of the permissions available in your apps, so that you can manage the capabilities and information available to each user. Give a trusted collaborator full access, or invite a worker with only permission to annotate your data but not delete it.

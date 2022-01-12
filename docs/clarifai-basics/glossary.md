@@ -1,5 +1,6 @@
 ---
 description: Glossary of key terminology to know when working with the Clarifai Platform
+sidebar_position: 2
 ---
 
 # Key Terminology to Know

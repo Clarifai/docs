@@ -2,6 +2,7 @@
 description: >-
   RBAC is a feature for administrators to define and assign different roles to
   the users in the system.
+sidebar_position: 6
 ---
 
 # Role-Based Access Control
