@@ -2,7 +2,7 @@
   "label": "Start Here (5 mins or less!)",
   "position": 1,
   "collapsible": true,
-  "collapsed": false,
+  "collapsed": true,
   "link": {
         "type": "generated-index",
         "title": "Start Here (5 mins or less!)",

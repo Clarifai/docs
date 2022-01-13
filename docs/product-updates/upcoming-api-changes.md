@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Upcoming API Changes
 
 Here is a list of changes to the API that we want you to be aware of well in advance as they may affect how you use Clarifai's platform. These changes include scheduled downtime and other improvements in stability, performance or functionality of the Clarifai platform in order to better serve you as a customer. Some of these changes may not be backward compatible and thus require you to update how you call our APIs. We created this page with the mindset of being as transparent as possible so you can plan any corresponding changes in advance and minimize any interruptions to your usage of Clarifai.

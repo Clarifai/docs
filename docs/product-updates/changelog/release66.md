@@ -1,5 +1,9 @@
 ---
 description: Changelog for Clarifai Release 6.6
+# For versioning, we use negative position so that the oldest versions are displayed at the bottom. Any time you add a new version, increase the position by -1.
+sidebar_position: -9
+pagination_next: product-updates/changelog/release67
+pagination_prev: product-updates/changelog/release65
 ---
 
 

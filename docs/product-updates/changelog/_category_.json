@@ -1,0 +1,12 @@
+{
+  "label": "Changelog",
+  "position": 2,
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+        "type": "generated-index",
+        "title": "Changelog",
+        "description": "Previous versions",
+        "slug": "/product-updates/changelog",
+      },
+}
