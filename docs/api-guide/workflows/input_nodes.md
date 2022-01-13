@@ -1,5 +1,6 @@
 ---
 description: Connect your models together.
+sidebar_position: 2
 ---
 
 import Tabs from '@theme/Tabs';

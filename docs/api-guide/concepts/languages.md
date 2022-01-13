@@ -1,5 +1,6 @@
 ---
 description: Multilingual support in Clarifai
+sidebar_position: 2
 ---
 
 import Tabs from '@theme/Tabs';

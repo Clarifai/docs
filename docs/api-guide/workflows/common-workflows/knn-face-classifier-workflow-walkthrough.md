@@ -1,5 +1,6 @@
 ---
 description: Use facial recognition to identify individual people.
+sidebar_position: 3
 ---
 
 import Tabs from '@theme/Tabs';

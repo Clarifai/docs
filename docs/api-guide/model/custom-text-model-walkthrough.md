@@ -1,5 +1,6 @@
 ---
 description: Develop your own custom text classifier.
+sidebar_position: 4
 ---
 
 import Tabs from '@theme/Tabs';

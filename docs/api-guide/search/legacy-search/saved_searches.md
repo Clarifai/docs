@@ -1,3 +1,8 @@
+---
+description: Save your searches
+sidebar_position: 4
+---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -73,4 +78,3 @@ curl --location --request POST 'https://api.clarifai.com/v2/searches/{{search_id
 </Tabs>
 
 Saved searches are extremely helpful when testing out multiple versions of a model, or collaborating with a team. Just save your search, and refer back to it any time.
-

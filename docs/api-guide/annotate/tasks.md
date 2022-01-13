@@ -1,5 +1,6 @@
 ---
 description: Group your labeling work into tasks that can be delegated.
+sidebar_position: 4
 ---
 
 import Tabs from '@theme/Tabs';

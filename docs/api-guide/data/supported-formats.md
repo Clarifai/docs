@@ -1,5 +1,6 @@
 ---
 description: 'Clarifai works with the most popular image, video and text formats.'
+sidebar_position: 2
 ---
 
 # Supported Formats

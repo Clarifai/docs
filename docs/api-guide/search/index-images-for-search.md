@@ -1,5 +1,6 @@
 ---
 description: Use AI to index your images based on semantic similarity.
+sidebar_position: 5
 ---
 
 import Tabs from '@theme/Tabs';

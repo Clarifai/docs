@@ -1,5 +1,6 @@
 ---
 description: Search your data based on concepts or visual similarity
+sidebar_position: 4
 ---
 
 import Tabs from '@theme/Tabs';

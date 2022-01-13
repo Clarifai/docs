@@ -1,5 +1,6 @@
 ---
 description: Iterate upon and improve your models.
+sidebar_position: 2
 ---
 
 # Improving Your Model

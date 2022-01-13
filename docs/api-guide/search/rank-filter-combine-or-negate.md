@@ -1,5 +1,6 @@
 ---
 description: 'Search helps you sort, save, organize and filter your datasets.'
+sidebar_position: 1
 ---
 
 # Search Overview

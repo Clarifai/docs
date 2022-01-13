@@ -1,5 +1,6 @@
 ---
 description: Learn about some of the most important model types on the Clarifai platform.
+sidebar_position: 2
 ---
 
 # Model Types

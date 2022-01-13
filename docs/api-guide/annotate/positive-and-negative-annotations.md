@@ -1,5 +1,6 @@
 ---
 description: Understanding positive and negative labels.
+sidebar_position: 3
 ---
 
 # Positive and Negative Annotations

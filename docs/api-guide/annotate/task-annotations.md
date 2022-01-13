@@ -1,5 +1,6 @@
 ---
 description: This is a page about performing task annotations with the Clarifai API.
+sidebar_position: 5
 ---
 
 import Tabs from '@theme/Tabs';

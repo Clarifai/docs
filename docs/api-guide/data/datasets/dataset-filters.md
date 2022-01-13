@@ -1,5 +1,6 @@
 ---
 description: Use filter and search functionality over your datasets
+sidebar_position: 2
 ---
 
 import Tabs from '@theme/Tabs';

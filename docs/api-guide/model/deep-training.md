@@ -1,5 +1,6 @@
 ---
 description: Train the complete graph for your model.
+sidebar_position: 6
 ---
 
 import Tabs from '@theme/Tabs';

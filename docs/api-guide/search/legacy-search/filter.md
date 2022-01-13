@@ -1,3 +1,8 @@
+---
+description: Select a subset of your data based on useful filters.
+sidebar_position: 2
+---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -327,7 +332,7 @@ ClarifaiSearchTerm *searchTerm2 = [ClarifaiSearchTerm searchInputsWithMetadata:@
 
 <TabItem value="curl" label="cURL">
 
-```text
+```bash
 curl -X POST \
   -H "Authorization: Key {api-key}" \
   -H "Content-Type: application/json" \
@@ -1213,4 +1218,3 @@ curl -X POST \
 ```
 </TabItem>
 </Tabs>
-

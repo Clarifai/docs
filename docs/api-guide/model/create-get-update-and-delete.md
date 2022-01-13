@@ -1,5 +1,6 @@
 ---
 description: Manage your model training jobs.
+sidebar_position: 5
 ---
 
 import Tabs from '@theme/Tabs';

@@ -1,5 +1,7 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+---
+description: Search your data based on concepts or visual similarity
+sidebar_position: 3
+---
 
 # Rank
 
@@ -15,7 +17,6 @@ When you add an input, it automatically gets predictions from the models in your
 
 <Tabs>
 <TabItem value="grpc_java" label="gRPC Java">
-
 ```java
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
@@ -53,7 +54,6 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 </TabItem>
 
 <TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -98,7 +98,6 @@ stub.PostSearches(
 </TabItem>
 
 <TabItem value="grpc_python" label="gRPC Python">
-
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -136,7 +135,6 @@ for hit in post_searches_response.hits:
 </TabItem>
 
 <TabItem value="javascript" label="Javascript">
-
 ```javascript
 app.inputs.search([
   {
@@ -161,7 +159,6 @@ app.inputs.search([
 </TabItem>
 
 <TabItem value="python" label="Python">
-
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_CLARIFAI_KEY')
@@ -184,7 +181,6 @@ app.inputs.search_by_predicted_concepts(concepts=['cat', 'dog'], values=[True, F
 </TabItem>
 
 <TabItem value="java" label="Java">
-
 ```java
 // Search concept by name
 client.searchInputs(SearchClause.matchConcept(Concept.forName("cat")))
@@ -210,7 +206,6 @@ client.searchInputs(SearchClause.matchConcept(Concept.forID("cat").withValue(fal
 </TabItem>
 
 <TabItem value="csharp" label="C#">
-
 ```csharp
 using System.Threading.Tasks;
 using Clarifai.API;
@@ -247,8 +242,7 @@ namespace YourNamespace
 </TabItem>
 
 <TabItem value="objective-c" label="Objective-C">
-
-```objectivec
+```text
 // First create a search term with a concept you want to search.
 ClarifaiConcept *conceptFromGeneralModel = [[ClarifaiConcept alloc] initWithConceptName:@"fast"];
 ClarifaiSearchTerm *searchTerm = [ClarifaiSearchTerm searchByPredictedConcept:conceptFromGeneralModel];
@@ -263,7 +257,6 @@ ClarifaiSearchTerm *searchTerm = [ClarifaiSearchTerm searchByPredictedConcept:co
 </TabItem>
 
 <TabItem value="php" label="PHP">
-
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Searches\SearchBy;
@@ -306,8 +299,7 @@ if ($response->isSuccessful()) {
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
+```text
 # Setting "output" indicates we search for images that have the concept(s) which were predicted by
 # the General model.
 #
@@ -348,7 +340,6 @@ After you have [added inputs with concepts](https://github.com/Clarifai/docs/tre
 
 <Tabs>
 <TabItem value="grpc_java" label="gRPC Java">
-
 ```java
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
@@ -386,7 +377,6 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 </TabItem>
 
 <TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -431,7 +421,6 @@ stub.PostSearches(
 </TabItem>
 
 <TabItem value="grpc_python" label="gRPC Python">
-
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -469,7 +458,6 @@ for hit in post_searches_response.hits:
 </TabItem>
 
 <TabItem value="javascript" label="Javascript">
-
 ```javascript
 app.inputs.search([
   {
@@ -496,7 +484,6 @@ app.inputs.search([
 </TabItem>
 
 <TabItem value="python" label="Python">
-
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_CLARIFAI_KEY')
@@ -519,7 +506,6 @@ app.inputs.search_by_annotated_concepts(concepts=['cat', 'dog'], values=[True, F
 </TabItem>
 
 <TabItem value="java" label="Java">
-
 ```java
 // Search concept by name
 client.searchInputs(SearchClause.matchUserTaggedConcept(Concept.forName("cat")))
@@ -545,7 +531,6 @@ client.searchInputs(SearchClause.matchUserTaggedConcept(Concept.forID("cat").wit
 </TabItem>
 
 <TabItem value="csharp" label="C#">
-
 ```csharp
 using System.Threading.Tasks;
 using Clarifai.API;
@@ -584,8 +569,7 @@ namespace YourNamespace
 </TabItem>
 
 <TabItem value="objective-c" label="Objective-C">
-
-```objectivec
+```text
 // If you have previously added inputs tagged with "dog", you can search for them by the same tag.
 ClarifaiConcept *concept = [[ClarifaiConcept alloc] initWithConceptName:@"dog"];
 ClarifaiSearchTerm *term = [ClarifaiSearchTerm searchInputsByConcept:concept];
@@ -600,7 +584,6 @@ ClarifaiSearchTerm *term = [ClarifaiSearchTerm searchInputsByConcept:concept];
 </TabItem>
 
 <TabItem value="php" label="PHP">
-
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Searches\SearchBy;
@@ -644,8 +627,7 @@ if ($response->isSuccessful()) {
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
+```text
 # Setting "input" indicates we search for images that have the concept(s) which we added to the
 # input manually.
 #
@@ -686,7 +668,6 @@ You can combine a search to find inputs that have concepts you have supplied as 
 
 <Tabs>
 <TabItem value="grpc_java" label="gRPC Java">
-
 ```java
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
@@ -739,7 +720,6 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 </TabItem>
 
 <TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -799,7 +779,6 @@ stub.PostSearches(
 </TabItem>
 
 <TabItem value="grpc_python" label="gRPC Python">
-
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -852,7 +831,6 @@ for hit in post_searches_response.hits:
 </TabItem>
 
 <TabItem value="javascript" label="Javascript">
-
 ```javascript
 app.inputs.search([
   // this is the public concept
@@ -880,7 +858,6 @@ app.inputs.search([
 </TabItem>
 
 <TabItem value="python" label="Python">
-
 ```python
 from clarifai.rest import ClarifaiApp, InputSearchTerm, OutputSearchTerm, SearchQueryBuilder
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -896,7 +873,6 @@ app.inputs.search(query)
 </TabItem>
 
 <TabItem value="java" label="Java">
-
 ```java
 client.searchInputs()
     // Matches images we tagged as "cat", and that the API tagged as not having "dog"
@@ -910,7 +886,6 @@ client.searchInputs()
 </TabItem>
 
 <TabItem value="csharp" label="C#">
-
 ```csharp
 using System.Threading.Tasks;
 using Clarifai.API;
@@ -936,8 +911,7 @@ namespace YourNamespace
 </TabItem>
 
 <TabItem value="objective-c" label="Objective-C">
-
-```objectivec
+```text
 ClarifaiConcept *conceptFromGeneralModel = [[ClarifaiConcept alloc] initWithConceptName:@"fast"];
 ClarifaiConcept *conceptFromTrainedCustomModel = [[ClarifaiConcept alloc] initWithConceptName:@"dog"];
 
@@ -954,7 +928,6 @@ ClarifaiSearchTerm *term2 = [ClarifaiSearchTerm searchByPredictedConcept:concept
 </TabItem>
 
 <TabItem value="php" label="PHP">
-
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Searches\SearchBy;
@@ -985,8 +958,7 @@ if ($response->isSuccessful()) {
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
+```text
 # Here we search for images which we labeled with "cat" and for which the General prediction model
 # does not find a "dog" concept.
 
@@ -1035,7 +1007,6 @@ Concepts that have a translation into another langauge can be searched for in th
 
 <Tabs>
 <TabItem value="grpc_java" label="gRPC Java">
-
 ```java
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
@@ -1074,7 +1045,6 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 </TabItem>
 
 <TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -1120,7 +1090,6 @@ stub.PostSearches(
 </TabItem>
 
 <TabItem value="grpc_python" label="gRPC Python">
-
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -1159,8 +1128,7 @@ for hit in post_searches_response.hits:
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
+```text
 curl -X POST \
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
@@ -1195,7 +1163,6 @@ You can use images to search through your collection. The API will return ranked
 
 <Tabs>
 <TabItem value="grpc_java" label="gRPC Java">
-
 ```java
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
@@ -1233,7 +1200,6 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 </TabItem>
 
 <TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -1276,7 +1242,6 @@ stub.PostSearches(
 </TabItem>
 
 <TabItem value="grpc_python" label="gRPC Python">
-
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -1312,7 +1277,6 @@ for hit in post_searches_response.hits:
 </TabItem>
 
 <TabItem value="javascript" label="Javascript">
-
 ```javascript
 app.inputs.search(
   {
@@ -1332,7 +1296,6 @@ app.inputs.search(
 </TabItem>
 
 <TabItem value="python" label="Python">
-
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_CLARIFAI_KEY')
@@ -1363,7 +1326,6 @@ app.inputs.search_by_image(fileobj=fio)
 </TabItem>
 
 <TabItem value="java" label="Java">
-
 ```java
 // Search by image URL (String or java.net.URL)
 client.searchInputs(SearchClause.matchImageVisually(ClarifaiImage.of("https://samples.clarifai.com/metro-north.jpg")))
@@ -1378,7 +1340,6 @@ client.searchInputs(SearchClause.matchImageVisually(ClarifaiImage.of(new File("i
 </TabItem>
 
 <TabItem value="csharp" label="C#">
-
 ```csharp
 using System.IO;
 using System.Threading.Tasks;
@@ -1411,8 +1372,7 @@ namespace YourNamespace
 </TabItem>
 
 <TabItem value="objective-c" label="Objective-C">
-
-```objectivec
+```text
 ClarifaiSearchTerm *searchTerm = [ClarifaiSearchTerm searchVisuallyWithImageURL:@"https://samples.clarifai.com/metro-north.jpg"];
 
 [app search:@[searchTerm] page:@1 perPage:@20 completion:^(NSArray<ClarifaiSearchResult *> *results, NSError *error) {
@@ -1425,7 +1385,6 @@ ClarifaiSearchTerm *searchTerm = [ClarifaiSearchTerm searchVisuallyWithImageURL:
 </TabItem>
 
 <TabItem value="php" label="PHP">
-
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Searches\SearchBy;
@@ -1456,8 +1415,7 @@ if ($response->isSuccessful()) {
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
+```text
 curl -X POST \
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
@@ -1490,7 +1448,6 @@ You can also search for an input by URL.
 
 <Tabs>
 <TabItem value="grpc_java" label="gRPC Java">
-
 ```java
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
@@ -1526,7 +1483,6 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 </TabItem>
 
 <TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
 ```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -1567,7 +1523,6 @@ stub.PostSearches(
 </TabItem>
 
 <TabItem value="grpc_python" label="gRPC Python">
-
 ```python
 # Insert here the initialization code as outlined on this page:
 # https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
@@ -1601,7 +1556,6 @@ for hit in post_searches_response.hits:
 </TabItem>
 
 <TabItem value="javascript" label="Javascript">
-
 ```javascript
 app.inputs.search(
   {
@@ -1622,7 +1576,6 @@ app.inputs.search(
 </TabItem>
 
 <TabItem value="python" label="Python">
-
 ```python
 from clarifai.rest import ClarifaiApp
 app = ClarifaiApp(api_key='YOUR_API_KEY')
@@ -1633,7 +1586,6 @@ app.inputs.search_by_metadata(meta)
 </TabItem>
 
 <TabItem value="java" label="Java">
-
 ```java
 // Lookup images with this URL
 client.searchInputs(SearchClause.matchImageURL(ClarifaiImage.of("https://samples.clarifai.com/puppy.jpeg")))
@@ -1643,7 +1595,6 @@ client.searchInputs(SearchClause.matchImageURL(ClarifaiImage.of("https://samples
 </TabItem>
 
 <TabItem value="csharp" label="C#">
-
 ```csharp
 using System.Threading.Tasks;
 using Clarifai.API;
@@ -1668,8 +1619,7 @@ namespace YourNamespace
 </TabItem>
 
 <TabItem value="objective-c" label="Objective-C">
-
-```objectivec
+```text
 // Lookup images with this URL
 ClarifaiSearchTerm *term = [ClarifaiSearchTerm searchInputsWithImageURL:@"https://samples.clarifai.com/metro-north.jpg"];
 
@@ -1683,7 +1633,6 @@ ClarifaiSearchTerm *term = [ClarifaiSearchTerm searchInputsWithImageURL:@"https:
 </TabItem>
 
 <TabItem value="php" label="PHP">
-
 ```php
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Searches\SearchBy;
@@ -1714,8 +1663,7 @@ if ($response->isSuccessful()) {
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
+```text
 curl -X POST \
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
@@ -1739,3 +1687,4 @@ curl -X POST \
 ```
 </TabItem>
 </Tabs>
+

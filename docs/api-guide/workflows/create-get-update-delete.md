@@ -1,5 +1,6 @@
 ---
 description: Manage your Mesh Workflows.
+sidebar_position: 3
 ---
 
 # Setting Up Mesh Workflows

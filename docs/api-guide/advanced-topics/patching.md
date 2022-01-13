@@ -1,5 +1,6 @@
 ---
 description: Patch data in your applications.
+sidebar_position: 2
 ---
 
 # Patching

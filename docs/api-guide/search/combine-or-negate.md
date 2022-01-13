@@ -1,5 +1,6 @@
 ---
 description: Group or separate items in your dataset.
+sidebar_position: 2
 ---
 
 import Tabs from '@theme/Tabs';

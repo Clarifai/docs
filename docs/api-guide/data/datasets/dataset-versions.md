@@ -1,5 +1,6 @@
 ---
 description: Manage dataset versions so you can track the performance of and iterate on your datasets
+sidebar_position: 4
 ---
 
 import Tabs from '@theme/Tabs';

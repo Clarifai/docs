@@ -1,5 +1,6 @@
 ---
 description: Manage the data in your app.
+sidebar_position: 3
 ---
 
 import Tabs from '@theme/Tabs';

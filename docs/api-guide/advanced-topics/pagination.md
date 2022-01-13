@@ -1,5 +1,6 @@
 ---
 description: Paginate your data batches.
+sidebar_position: 3
 ---
 
 import Tabs from '@theme/Tabs';

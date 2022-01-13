@@ -1,5 +1,6 @@
 ---
 description: Enjoy the convenience of working with CSV files and text.
+sidebar_position: 4
 ---
 
 import Tabs from '@theme/Tabs';

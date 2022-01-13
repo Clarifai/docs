@@ -1,5 +1,6 @@
 ---
 description: Make predictions on passages of text
+sidebar_position: 3
 ---
 
 import Tabs from '@theme/Tabs';

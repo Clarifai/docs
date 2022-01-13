@@ -1,5 +1,7 @@
-a---
+---
 description: Search based on specific words.
+sidebar_position: 3
+title: Search by Concept
 ---
 
 import Tabs from '@theme/Tabs';

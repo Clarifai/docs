@@ -1,5 +1,6 @@
 ---
 description: Select a subset of your data based on useful filters.
+sidebar_position: 3
 ---
 
 import Tabs from '@theme/Tabs';

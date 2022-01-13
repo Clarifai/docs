@@ -1,5 +1,6 @@
 ---
 description: Learn about model prediction parameters.
+sidebar_position: 4
 ---
 
 import Tabs from '@theme/Tabs';
@@ -27,6 +28,7 @@ If you submit a request with not an exact match of the concept id or name, you w
 
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         model_id="aaa03c23b3724a16a56b629203edc62c",  # This is model ID of the clarifai/main General model.
         inputs=[
             resources_pb2.Input(
@@ -52,6 +54,7 @@ post_model_outputs_response = stub.PostModelOutputs(
     metadata=metadata
 )
 if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
+    print(post_model_outputs_response.status)
     raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
 
 # Since we have one input, one output will exist here.
@@ -279,58 +282,8 @@ stub.PostModelOutputs(
     }
 );
 ```
+
 </TabItem>
-
-
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-post_model_outputs_response = stub.PostModelOutputs(
-    service_pb2.PostModelOutputsRequest(
-        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-        model_id="aaa03c23b3724a16a56b629203edc62c",  # This is model ID of the clarifai/main General model.
-        inputs=[
-            resources_pb2.Input(
-                data=resources_pb2.Data(
-                    image=resources_pb2.Image(
-                        url="https://samples.clarifai.com/metro-north.jpg"
-                    )
-                )
-            )
-        ],
-        model=resources_pb2.Model(
-            output_info=resources_pb2.OutputInfo(
-                output_config=resources_pb2.OutputConfig(
-                    select_concepts=[
-                        # When selecting concepts, value is ignored, so no need to specify it.
-                        resources_pb2.Concept(name="train"),
-                        resources_pb2.Concept(id="ai_6kTjGfF6")
-                    ]
-                )
-            )
-        )
-    ),
-    metadata=metadata
-)
-if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(post_model_outputs_response.outputs[0].status.code))
-    print("\tDescription: {}".format(post_model_outputs_response.outputs[0].status.description))
-    print("\tDetails: {}".format(respopost_model_outputs_responsense.outputs[0].status.details))
-    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
-
-# Since we have one input, one output will exist here.
-output = post_model_outputs_response.outputs[0]
-
-print("Predicted concepts:")
-for concept in output.data.concepts:
-    print("%s %.2f" % (concept.name, concept.value))
-```
-</TabItem>
-
 
 <TabItem value="curl" label="cURL">
 
@@ -363,6 +316,7 @@ https://api.clarifai.com/v2/models/aaa03c23b3724a16a56b629203edc62c/outputs
 
 # Above is model ID of the publicly available General model.
 ```
+
 </TabItem>
 
 <TabItem value="js_rest" label="Javascript (REST)">
@@ -493,6 +447,7 @@ Setting the max concepts parameter will customize how many concepts and their co
 
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         model_id="aaa03c23b3724a16a56b629203edc62c",  # This is model ID of the clarifai/main General model.
         inputs=[
             resources_pb2.Input(
@@ -514,6 +469,7 @@ post_model_outputs_response = stub.PostModelOutputs(
     metadata=metadata
 )
 if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
+    print(post_model_outputs_response.status)
     raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
 
 # Since we have one input, one output will exist here.
@@ -523,6 +479,7 @@ print("Predicted concepts:")
 for concept in output.data.concepts:
     print("%s %.2f" % (concept.name, concept.value))
 ```
+
 </TabItem>
 
 <TabItem value="php" label="PHP">
@@ -733,51 +690,6 @@ stub.PostModelOutputs(
 ```
 </TabItem>
 
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-post_model_outputs_response = stub.PostModelOutputs(
-    service_pb2.PostModelOutputsRequest(
-        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-        model_id="aaa03c23b3724a16a56b629203edc62c",  # This is model ID of the clarifai/main General model.
-        inputs=[
-            resources_pb2.Input(
-                data=resources_pb2.Data(
-                    image=resources_pb2.Image(
-                        url="https://samples.clarifai.com/metro-north.jpg"
-                    )
-                )
-            )
-        ],
-        model=resources_pb2.Model(
-            output_info=resources_pb2.OutputInfo(
-                output_config=resources_pb2.OutputConfig(
-                    max_concepts=3
-                )
-            )
-        )
-    ),
-    metadata=metadata
-)
-if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(post_model_outputs_response.outputs[0].status.code))
-    print("\tDescription: {}".format(post_model_outputs_response.outputs[0].status.description))
-    print("\tDetails: {}".format(respopost_model_outputs_responsense.outputs[0].status.details))
-    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
-
-# Since we have one input, one output will exist here.
-output = post_model_outputs_response.outputs[0]
-
-print("Predicted concepts:")
-for concept in output.data.concepts:
-    print("%s %.2f" % (concept.name, concept.value))
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -938,6 +850,7 @@ This parameter lets you set a minimum probability threshold for the outputs you 
 
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         model_id="aaa03c23b3724a16a56b629203edc62c",  # This is model ID of the clarifai/main General model.
         inputs=[
             resources_pb2.Input(
@@ -959,6 +872,7 @@ post_model_outputs_response = stub.PostModelOutputs(
     metadata=metadata
 )
 if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
+    print(post_model_outputs_response.status)
     raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
 
 # Since we have one input, one output will exist here.
@@ -968,6 +882,7 @@ print("Predicted concepts:")
 for concept in output.data.concepts:
     print("%s %.2f" % (concept.name, concept.value))
 ```
+
 </TabItem>
 
 <TabItem value="php" label="PHP">
@@ -1179,52 +1094,6 @@ stub.PostModelOutputs(
 ```
 </TabItem>
 
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-post_model_outputs_response = stub.PostModelOutputs(
-    service_pb2.PostModelOutputsRequest(
-        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-        model_id="aaa03c23b3724a16a56b629203edc62c",  # This is model ID of the clarifai/main General model.
-        inputs=[
-            resources_pb2.Input(
-                data=resources_pb2.Data(
-                    image=resources_pb2.Image(
-                        url="https://samples.clarifai.com/metro-north.jpg"
-                    )
-                )
-            )
-        ],
-        model=resources_pb2.Model(
-            output_info=resources_pb2.OutputInfo(
-                output_config=resources_pb2.OutputConfig(
-                    min_value=0.95
-                )
-            )
-        )
-    ),
-    metadata=metadata
-)
-if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(post_model_outputs_response.outputs[0].status.code))
-    print("\tDescription: {}".format(post_model_outputs_response.outputs[0].status.description))
-    print("\tDetails: {}".format(respopost_model_outputs_responsense.outputs[0].status.details))
-    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
-
-# Since we have one input, one output will exist here.
-output = post_model_outputs_response.outputs[0]
-
-print("Predicted concepts:")
-for concept in output.data.concepts:
-    print("%s %.2f" % (concept.name, concept.value))
-```
-</TabItem>
-
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -1408,6 +1277,44 @@ Every time you train a custom model, it creates a new model version. By specifyi
 If you are looking for consistent results from your predict calls, use `version id`. If the model `version id` is not specified, predict will default to the most current model.
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+
+```python
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+
+post_model_outputs_response = stub.PostModelOutputs(
+    service_pb2.PostModelOutputsRequest(
+        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
+        model_id="aaa03c23b3724a16a56b629203edc62c",  # This is model ID of the clarifai/main General model.
+        version_id="aa7f35c01e0642fda5cf400f543e7c40",  # This is optional. Defaults to the latest model version.
+        inputs=[
+            resources_pb2.Input(
+                data=resources_pb2.Data(
+                    image=resources_pb2.Image(
+                        url="https://samples.clarifai.com/metro-north.jpg"
+                    )
+                )
+            )
+        ]
+    ),
+    metadata=metadata
+)
+
+if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
+    print(post_model_outputs_response.status)
+    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
+
+# Since we have one input, one output will exist here.
+output = post_model_outputs_response.outputs[0]
+
+print("Predicted concepts:")
+for concept in output.data.concepts:
+    print("\t%s %.2f" % (concept.name, concept.value))
+```
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -1478,46 +1385,6 @@ stub.PostModelOutputs(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-post_model_outputs_response = stub.PostModelOutputs(
-    service_pb2.PostModelOutputsRequest(
-        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-        model_id="aaa03c23b3724a16a56b629203edc62c",  # This is model ID of the clarifai/main General model.
-        version_id="aa7f35c01e0642fda5cf400f543e7c40",  # This is optional. Defaults to the latest model version.
-        inputs=[
-            resources_pb2.Input(
-                data=resources_pb2.Data(
-                    image=resources_pb2.Image(
-                        url="https://samples.clarifai.com/metro-north.jpg"
-                    )
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(post_model_outputs_response.outputs[0].status.code))
-    print("\tDescription: {}".format(post_model_outputs_response.outputs[0].status.description))
-    print("\tDetails: {}".format(respopost_model_outputs_responsense.outputs[0].status.details))
-    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
-
-# Since we have one input, one output will exist here.
-output = post_model_outputs_response.outputs[0]
-
-print("Predicted concepts:")
-for concept in output.data.concepts:
-    print("\t%s %.2f" % (concept.name, concept.value))
 ```
 </TabItem>
 

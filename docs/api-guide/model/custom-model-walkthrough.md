@@ -1,5 +1,6 @@
 ---
 description: Clarifai makes it easy to customize and repurpose existing models.
+sidebar_position: 3
 ---
 
 import Tabs from '@theme/Tabs';
