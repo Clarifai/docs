@@ -1,5 +1,6 @@
 ---
 description: Learn the basics of setting up a new workflow.
+sidebar_position: 4
 ---
 
 # Setting Up a Workflow

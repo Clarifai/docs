@@ -1,5 +1,6 @@
 ---
 description: (Beta) Proposals enable you to build model and concept hierarchies
+sidebar_position: 4
 ---
 
 # Proposals

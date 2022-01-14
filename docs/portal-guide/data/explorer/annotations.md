@@ -1,5 +1,6 @@
 ---
 description: 'Add, edit and understand the annotations on your data.'
+sidebar_position: 2
 ---
 
 # Annotations

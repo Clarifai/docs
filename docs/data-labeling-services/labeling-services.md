@@ -37,7 +37,7 @@ By saving your searches, you can slice and dice your dataset, and configure dyna
 
 ## Applicable Concepts
 
-[Concepts](data-labeling-services.md) are the words that you are labeling your data with. Concepts can be anything you can think of, and can be written in the language of your choice. You can create concepts in Portal, or you can create them when assigning tasks. Check the "Select all concepts" box to automatically add all available concepts to your app.
+[Concepts](../portal-guide/concepts) are the words that you are labeling your data with. Concepts can be anything you can think of, and can be written in the language of your choice. You can create concepts in Portal, or you can create them when assigning tasks. Check the "Select all concepts" box to automatically add all available concepts to your app.
 
 ## Work Force
 

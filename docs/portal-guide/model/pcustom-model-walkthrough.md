@@ -1,5 +1,6 @@
 ---
 description: Use a "Context based classifier" to quickly customize an existing model.
+sidebar_position: 3
 ---
 
 # Custom Models

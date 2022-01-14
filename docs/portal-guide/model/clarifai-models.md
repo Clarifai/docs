@@ -1,5 +1,6 @@
 ---
 description: 'Pre-trained, pre-optimized and ready to use right out of the box.'
+sidebar_position: 2
 ---
 
 # Clarifai Models

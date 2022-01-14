@@ -1,5 +1,6 @@
 ---
 description: Search your text inputs based on similarity or concepts
+sidebar_position: 6
 ---
 
 # Text Search

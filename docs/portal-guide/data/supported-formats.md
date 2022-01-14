@@ -1,5 +1,6 @@
 ---
 description: 'The Clarifai platform supports the most common image, video and text formats.'
+sidebar_position: 1
 ---
 
 # Supported Formats

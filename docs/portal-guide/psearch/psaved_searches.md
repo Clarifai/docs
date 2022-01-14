@@ -1,5 +1,6 @@
 ---
 description: Slice and dice your datasets with saved searches.
+sidebar_position: 4
 ---
 
 # Saved Searches

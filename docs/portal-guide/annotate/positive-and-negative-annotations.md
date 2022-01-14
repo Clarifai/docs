@@ -1,5 +1,6 @@
 ---
 description: Learn about positive and negative annotations.
+sidebar_position: 8
 ---
 
 # Positive and Negative Annotations

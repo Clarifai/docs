@@ -1,5 +1,6 @@
 ---
 description: Build a powerful and flexible application for classifying text passages.
+sidebar_position: 3
 ---
 
 # Text Classification

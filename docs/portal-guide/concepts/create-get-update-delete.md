@@ -1,5 +1,6 @@
 ---
 description: Manage your concepts.
+sidebar_position: 1
 ---
 
 import Tabs from '@theme/Tabs';

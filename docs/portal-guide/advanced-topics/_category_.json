@@ -1,0 +1,12 @@
+{
+  "label": "Advanced Topics",
+  "position": 10,
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "title": "Advanced Topics",
+    "description": "Become a Clarifai Portal power user",
+    "slug": "/portal-guide/advanced-topics",
+  },
+}

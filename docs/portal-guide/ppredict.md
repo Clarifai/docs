@@ -1,5 +1,6 @@
 ---
 description: Dynamic AI model orchestration and inference scaling
+sidebar_position: 3
 ---
 
 # Making Predictions

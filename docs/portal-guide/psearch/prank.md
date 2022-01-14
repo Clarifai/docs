@@ -1,5 +1,6 @@
 ---
 description: Sort your search results from most similar to least similar.
+sidebar_position: 1
 ---
 
 # Rank

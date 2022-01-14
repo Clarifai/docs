@@ -1,5 +1,6 @@
 ---
 description: Learn about the different types of labels that are possible with Scribe.
+sidebar_position: 2
 ---
 
 # Label Types

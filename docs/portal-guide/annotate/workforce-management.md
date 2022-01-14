@@ -1,5 +1,6 @@
 ---
 description: Manage your labeling workforce.
+sidebar_position: 5
 ---
 
 # Workforce Management

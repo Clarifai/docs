@@ -1,5 +1,6 @@
 ---
 description: View annotations and predictions
+sidebar_position: 1
 ---
 
 # Predictions

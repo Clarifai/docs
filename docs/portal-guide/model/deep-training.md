@@ -1,5 +1,6 @@
 ---
 description: (Beta) Train the entire graph for your custom model.
+sidebar_position: 5
 ---
 
 # Deep Training

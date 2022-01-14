@@ -1,5 +1,6 @@
 ---
 description: Connect the knowledge of different models.
+sidebar_position: 2
 ---
 
 # Knowledge Graph

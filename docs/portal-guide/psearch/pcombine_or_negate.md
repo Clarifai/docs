@@ -1,5 +1,6 @@
 ---
 description: Add or subtract items from your search query.
+sidebar_position: 3
 ---
 
 # Combine or Negate

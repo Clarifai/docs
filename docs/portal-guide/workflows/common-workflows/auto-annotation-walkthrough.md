@@ -2,6 +2,7 @@
 description: >-
   Use AI to help you build AI. Auto annotation uses your model predictions to
   label your training data.
+sidebar_position: 1
 ---
 
 # Auto Annotation

@@ -1,5 +1,6 @@
 ---
 description: Search based on semantic similarity.
+sidebar_position: 5
 ---
 
 # Visual Search

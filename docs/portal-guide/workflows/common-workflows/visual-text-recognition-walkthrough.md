@@ -1,5 +1,6 @@
 ---
 description: 'Work with text in images, just like you work with encoded text.'
+sidebar_position: 2
 ---
 
 # Visual Text Recognition

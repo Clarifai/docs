@@ -1,5 +1,6 @@
 ---
 description: Label multiple inputs at once.
+sidebar_position: 3
 ---
 
 # Bulk Labeling

@@ -1,5 +1,6 @@
 ---
 description: Enjoy the convenience of working with spreadsheet data.
+sidebar_position: 1
 ---
 
 # Importing Data with CSV and TSV Files

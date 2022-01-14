@@ -1,5 +1,6 @@
 ---
 description: Manage and delegate your labeling work with tasks.
+sidebar_position: 1
 ---
 
 # Create a Task

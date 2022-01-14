@@ -2,6 +2,7 @@
 description: >-
   Use Clarifai Models or your own custom models to provide assistance in your
   labeling tasks.
+sidebar_position: 4
 ---
 
 # AI Assist

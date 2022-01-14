@@ -1,5 +1,6 @@
 ---
 description: Review the work performed by your labelers.
+sidebar_position: 6
 ---
 
 # Review

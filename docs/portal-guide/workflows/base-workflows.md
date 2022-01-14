@@ -2,6 +2,7 @@
 description: >-
   Base workflows index your data and provide your app with a default knowledge
   base.
+sidebar_position: 3
 ---
 
 # Base Workflows
