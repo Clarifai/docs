@@ -1,0 +1,30 @@
+---
+description: Paginate your data batches.
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import MyComponentJava from "!!raw-loader!../../code-snippets/pagination-code.java";
+import MyComponentJs from "!!raw-loader!../../code-snippets/pagination-code.js";
+import MyComponentPy from "!!raw-loader!../../code-snippets/pagination-code.py";
+import MyComponentCurl from "!!raw-loader!../../code-snippets/pagination-code.md";
+
+# Pagination
+
+Many API calls are paginated. You can provide `page` and `per_page` params to the API. In the example below we are getting all inputs and specifying to start at page 2 and get back 20 results per page.
+
+<Tabs>
+<TabItem value="java" label="Java" default>
+    <CodeBlock className="language-java">{MyComponentJava}</CodeBlock>
+</TabItem>
+<TabItem value="nodejs" label="NodeJS" default>
+    <CodeBlock className="language-javascript">{MyComponentJs}</CodeBlock>
+</TabItem>
+<TabItem value="python" label="Python" default>
+    <CodeBlock className="language-python">{MyComponentPy}</CodeBlock>
+</TabItem>
+<TabItem value="curl" label="cURL" default>
+    <CodeBlock className="language-bash">{MyComponentCurl}</CodeBlock>
+</TabItem>
+</Tabs>
