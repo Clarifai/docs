@@ -3,6 +3,9 @@ description: How to create a Clarifai Application
 sidebar_position: 1
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Create an Application
 
 To create an application, head on over to the [applications page](https://portal.clarifai.com/apps) and press the 'Create a New Application' button. 
@@ -23,8 +26,9 @@ You can also set the default language so that you can create, train and search o
 
 For enterprise customers, it is also possible to generate applications and keys programmatically. If you are managing the work of multiple users who's data, models, and concepts need to be segregated, we recommend you create apps and a keys this way. This ensures that each individual user only has access to their own private resources.
 
-{% tabs %}
-{% tab title="cURL" %}
+<Tabs>
+<TabItem value="curl" label="cURL">
+
 ```text
 curl --location --request POST 'https://api.clarifai.com/v2/users/{{user_id}}/apps/' \
 --header 'Content-Type: application/json' \
@@ -37,8 +41,9 @@ curl --location --request POST 'https://api.clarifai.com/v2/users/{{user_id}}/ap
     ]
 }'
 ```
-{% endtab %}
-{% endtabs %}
+
+</TabItem>
+</Tabs>
 
 ### Copy an application
 
