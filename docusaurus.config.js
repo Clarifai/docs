@@ -6,7 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
+  title: 'Clarifai Guide',
   tagline: 'Dinosaurs are cool',
   url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/',
@@ -39,9 +39,9 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'My Site',
+        title: 'Clarifai Guide',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'Clarifai',
           src: 'img/logo.svg',
         },
         items: [
@@ -49,7 +49,7 @@ const config = {
             type: 'doc',
             docId: 'introduction',
             position: 'left',
-            label: 'Welcome',
+            label: 'Clarifai Home',
           },
           {
             href: 'https://github.com/facebook/docusaurus',
