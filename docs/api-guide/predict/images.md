@@ -261,7 +261,7 @@ fetch("https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/versions/{MODEL_VERSIO
 </Tabs>
 
 <details>
-  <summary>Sample Code Output</summary>
+  <summary>Example Code Output</summary>
 
 ```text
 Predicted concepts:
@@ -792,7 +792,7 @@ fetch("https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/versions/{MODEL_VERSIO
 </Tabs>
 
 <details>
-  <summary>Sample Code Output</summary>
+  <summary>Example Code Output</summary>
 
 ```text
 Predicted concepts:
