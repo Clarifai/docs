@@ -15,6 +15,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 import CodePythonViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/images_via_url.py";
+import CodePythonViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/images_via_bytes.py";
 
 <Tabs>
 <TabItem value="python" label="Python">
@@ -259,226 +260,260 @@ fetch("https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/versions/{MODEL_VERSIO
 
 </Tabs>
 
+<details>
+  <summary>Sample Code Output</summary>
+
+```text
+Predicted concepts:
+train 1.00
+railway 1.00
+subway system 1.00
+station 1.00
+locomotive 1.00
+transportation system 1.00
+travel 0.99
+commuter 0.98
+platform 0.98
+light 0.97
+train station 0.97
+blur 0.97
+city 0.96
+road 0.96
+urban 0.96
+traffic 0.96
+street 0.95
+public 0.93
+tramway 0.93
+business 0.93
+```
+
+</details>
+
+<details>
+  <summary>Response JSON</summary>
 <Tabs>
 <TabItem value="response_json" label="Response JSON">
 
 ```javascript
-{
-  "status": {
-    "code": 10000,
-    "description": "Ok"
-  },
-  "outputs": [
-    {
-      "id": "ea68cac87c304b28a8046557062f34a0",
-      "status": {
-        "code": 10000,
-        "description": "Ok"
-      },
-      "created_at": "2016-11-22T16:50:25Z",
-      "model": {
-        "name": "general-v1.3",
-        "id": "aaa03c23b3724a16a56b629203edc62c",
-        "created_at": "2016-03-09T17:11:39Z",
-        "app_id": null,
-        "output_info": {
-          "message": "Show output_info with: GET /models/{model_id}/output_info",
-          "type": "concept"
-        },
-        "model_version": {
-          "id": "aa9ca48295b37401f8af92ad1af0d91d",
-          "created_at": "2016-07-13T01:19:12Z",
-          "status": {
-            "code": 21100,
-            "description": "Model trained successfully"
-          }
+id: "c1064364b2c64740874d714c70db6351"
+status {
+  code: SUCCESS
+  description: "Ok"
+}
+created_at {
+  seconds: 1643219050
+  nanos: 357487464
+}
+model {
+  id: "general-image-recognition"
+  name: "general"
+  created_at {
+    seconds: 1457543499
+    nanos: 608845000
+  }
+  app_id: "main"
+  output_info {
+    output_config {
+    }
+    message: "Show output_info with: GET /models/{model_id}/output_info"
+    fields_map {
+      fields {
+        key: "concepts"
+        value {
+          string_value: "softmax"
         }
-      },
-      "input": {
-        "id": "ea68cac87c304b28a8046557062f34a0",
-        "data": {
-          "image": {
-            "url": "https://samples.clarifai.com/metro-north.jpg"
-          }
-        }
-      },
-      "data": {
-        "concepts": [
-          {
-            "id": "ai_HLmqFqBf",
-            "name": "train",
-            "app_id": null,
-            "value": 0.9989112
-          },
-          {
-            "id": "ai_fvlBqXZR",
-            "name": "railway",
-            "app_id": null,
-            "value": 0.9975532
-          },
-          {
-            "id": "ai_Xxjc3MhT",
-            "name": "transportation system",
-            "app_id": null,
-            "value": 0.9959158
-          },
-          {
-            "id": "ai_6kTjGfF6",
-            "name": "station",
-            "app_id": null,
-            "value": 0.992573
-          },
-          {
-            "id": "ai_RRXLczch",
-            "name": "locomotive",
-            "app_id": null,
-            "value": 0.992556
-          },
-          {
-            "id": "ai_VRmbGVWh",
-            "name": "travel",
-            "app_id": null,
-            "value": 0.98789215
-          },
-          {
-            "id": "ai_SHNDcmJ3",
-            "name": "subway system",
-            "app_id": null,
-            "value": 0.9816359
-          },
-          {
-            "id": "ai_jlb9q33b",
-            "name": "commuter",
-            "app_id": null,
-            "value": 0.9712483
-          },
-          {
-            "id": "ai_46lGZ4Gm",
-            "name": "railroad track",
-            "app_id": null,
-            "value": 0.9690325
-          },
-          {
-            "id": "ai_tr0MBp64",
-            "name": "traffic",
-            "app_id": null,
-            "value": 0.9687052
-          },
-          {
-            "id": "ai_l4WckcJN",
-            "name": "blur",
-            "app_id": null,
-            "value": 0.9667078
-          },
-          {
-            "id": "ai_2gkfMDsM",
-            "name": "platform",
-            "app_id": null,
-            "value": 0.9624243
-          },
-          {
-            "id": "ai_CpFBRWzD",
-            "name": "urban",
-            "app_id": null,
-            "value": 0.960752
-          },
-          {
-            "id": "ai_786Zr311",
-            "name": "no person",
-            "app_id": null,
-            "value": 0.95864904
-          },
-          {
-            "id": "ai_6lhccv44",
-            "name": "business",
-            "app_id": null,
-            "value": 0.95720303
-          },
-          {
-            "id": "ai_971KsJkn",
-            "name": "track",
-            "app_id": null,
-            "value": 0.9494642
-          },
-          {
-            "id": "ai_WBQfVV0p",
-            "name": "city",
-            "app_id": null,
-            "value": 0.94089437
-          },
-          {
-            "id": "ai_dSCKh8xv",
-            "name": "fast",
-            "app_id": null,
-            "value": 0.9399334
-          },
-          {
-            "id": "ai_TZ3C79C6",
-            "name": "road",
-            "app_id": null,
-            "value": 0.93121606
-          },
-          {
-            "id": "ai_VSVscs9k",
-            "name": "terminal",
-            "app_id": null,
-            "value": 0.9230834
-          }
-        ]
       }
     }
-  ]
+  }
+  model_version {
+    id: "aa7f35c01e0642fda5cf400f543e7c40"
+    created_at {
+      seconds: 1520370624
+      nanos: 454834000
+    }
+    status {
+      code: MODEL_TRAINED
+      description: "Model is trained and ready"
+    }
+    visibility {
+      gettable: PUBLIC
+    }
+    app_id: "main"
+    user_id: "clarifai"
+    metadata {
+    }
+  }
+  display_name: "general-visual-classifier"
+  user_id: "clarifai"
+  input_info {
+    fields_map {
+      fields {
+        key: "image"
+        value {
+          string_value: "images"
+        }
+      }
+    }
+  }
+  train_info {
+  }
+  model_type_id: "visual-classifier"
+  visibility {
+    gettable: PUBLIC
+  }
+  description: "Image recognition model for identifying different concepts in images and video including objects, themes, moods, and more."
+  metadata {
+  }
+  notes: "**General Information**\n\n- Purpose: Classifier for a variety of concepts, common objects, etc. This model is a great all-purpose solution for most visual recognition needs with industry-leading performance.\n\n- Architecture: Customized InceptionV2\n\n- Intended Use: image indexing by tags, filtering, cascade routing\n\n- Limitations: works well when content is prevalent in the image\n\n\n\n **\nTraining/Test Data**\n\nThe model was trained and tested on an internal dataset with approximately 10,000 concepts and 20M images, with multiple concepts per image. The class distributions on train and validation sets are long-tailed. The validation set was annotated using a combination of originally curated labels with incomplete annotations, where were further completed by adding additional labels proposed a newer version of this model (aa7f35c01e0642fda5cf400f543e7c40) at a low threshold and verified by human annotators. "
+  modified_at {
+    seconds: 1634831222
+    nanos: 80260000
+  }
+  import_info {
+  }
+}
+input {
+  id: "03722c867ba74e25870d81d90975a490"
+  data {
+    image {
+      url: "https://samples.clarifai.com/metro-north.jpg"
+    }
+  }
+}
+data {
+  concepts {
+    id: "ai_HLmqFqBf"
+    name: "train"
+    value: 0.9996053576469421
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_fvlBqXZR"
+    name: "railway"
+    value: 0.9992986917495728
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_SHNDcmJ3"
+    name: "subway system"
+    value: 0.9982514977455139
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_6kTjGfF6"
+    name: "station"
+    value: 0.9980105757713318
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_RRXLczch"
+    name: "locomotive"
+    value: 0.9972571730613708
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_Xxjc3MhT"
+    name: "transportation system"
+    value: 0.9969801306724548
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_VRmbGVWh"
+    name: "travel"
+    value: 0.9889795780181885
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_jlb9q33b"
+    name: "commuter"
+    value: 0.9808752536773682
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_2gkfMDsM"
+    name: "platform"
+    value: 0.9806439876556396
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_n9vjC1jB"
+    name: "light"
+    value: 0.9742040634155273
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_sQQj52KZ"
+    name: "train station"
+    value: 0.9687404036521912
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_l4WckcJN"
+    name: "blur"
+    value: 0.9672204256057739
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_WBQfVV0p"
+    name: "city"
+    value: 0.9614798426628113
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_TZ3C79C6"
+    name: "road"
+    value: 0.9613829851150513
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_CpFBRWzD"
+    name: "urban"
+    value: 0.9603424668312073
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_tr0MBp64"
+    name: "traffic"
+    value: 0.959934651851654
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_GjVpxXrs"
+    name: "street"
+    value: 0.9474142789840698
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_mcSHVRfS"
+    name: "public"
+    value: 0.9343122839927673
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_J6d1kV8t"
+    name: "tramway"
+    value: 0.9318979382514954
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_6lhccv44"
+    name: "business"
+    value: 0.9294138550758362
+    app_id: "main"
+  }
 }
 ```
 </TabItem>
 </Tabs>
+</details>
 
-## Via bytes
+## Via Bytes
 
 Below is an example of how you would send the bytes of an image and receive back predictions from the `general` model.
 
 <Tabs>
 <TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-with open("{YOUR_IMAGE_FILE_LOCATION}", "rb") as f:
-    file_bytes = f.read()
-
-post_model_outputs_response = stub.PostModelOutputs(
-    service_pb2.PostModelOutputsRequest(
-        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-        model_id="{THE_MODEL_ID}",
-        version_id="{THE_MODEL_VERSION_ID}",  # This is optional. Defaults to the latest model version.
-        inputs=[
-            resources_pb2.Input(
-                data=resources_pb2.Data(
-                    image=resources_pb2.Image(
-                        base64=file_bytes
-                    )
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(post_model_outputs_response.outputs[0].status.code))
-    print("\tDescription: {}".format(post_model_outputs_response.outputs[0].status.description))
-    print("\tDetails: {}".format(post_model_outputs_response.outputs[0].status.details))
-    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
-
-# Since we have one input, one output will exist here.
-output = post_model_outputs_response.outputs[0]
-
-print("Predicted concepts:")
-for concept in output.data.concepts:
-    print("%s %.2f" % (concept.name, concept.value))
-```
+    <CodeBlock className="language-python">{CodePythonViaBytes}</CodeBlock>
 </TabItem>
 
 <TabItem value="php" label="PHP">
@@ -756,176 +791,251 @@ fetch("https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/versions/{MODEL_VERSIO
 
 </Tabs>
 
+<details>
+  <summary>Sample Code Output</summary>
+
+```text
+Predicted concepts:
+train 1.00
+railway 1.00
+subway system 1.00
+station 1.00
+locomotive 1.00
+transportation system 1.00
+travel 0.99
+commuter 0.98
+platform 0.98
+light 0.97
+train station 0.97
+blur 0.97
+city 0.96
+road 0.96
+urban 0.96
+traffic 0.96
+street 0.95
+public 0.93
+tramway 0.93
+business 0.93
+```
+
+</details>
+
+<details>
+  <summary>Response JSON</summary>
+
 <Tabs>
 <TabItem value="response_json" label="Response JSON">
 
 ```javascript
-{
-  "status": {
-    "code": 10000,
-    "description": "Ok"
-  },
-  "outputs": [
-    {
-      "id": "e1cf385843b94c6791bbd9f2654db5c0",
-      "status": {
-        "code": 10000,
-        "description": "Ok"
-      },
-      "created_at": "2016-11-22T16:59:23Z",
-      "model": {
-        "name": "general-v1.3",
-        "id": "aaa03c23b3724a16a56b629203edc62c",
-        "created_at": "2016-03-09T17:11:39Z",
-        "app_id": null,
-        "output_info": {
-          "message": "Show output_info with: GET /models/{model_id}/output_info",
-          "type": "concept"
-        },
-        "model_version": {
-          "id": "aa9ca48295b37401f8af92ad1af0d91d",
-          "created_at": "2016-07-13T01:19:12Z",
-          "status": {
-            "code": 21100,
-            "description": "Model trained successfully"
-          }
+id: "72d8af665de44822a5e26fe75ab7f84c"
+status {
+  code: SUCCESS
+  description: "Ok"
+}
+created_at {
+  seconds: 1643218577
+  nanos: 52063722
+}
+model {
+  id: "general-image-recognition"
+  name: "general"
+  created_at {
+    seconds: 1457543499
+    nanos: 608845000
+  }
+  app_id: "main"
+  output_info {
+    output_config {
+    }
+    message: "Show output_info with: GET /models/{model_id}/output_info"
+    fields_map {
+      fields {
+        key: "concepts"
+        value {
+          string_value: "softmax"
         }
-      },
-      "input": {
-        "id": "e1cf385843b94c6791bbd9f2654db5c0",
-        "data": {
-          "image": {
-            "url": "https://s3.amazonaws.com/clarifai-api/img/prod/b749af061d564b829fb816215f6dc832/e11c81745d6d42a78ef712236023df1c.jpeg"
-          }
-        }
-      },
-      "data": {
-        "concepts": [
-          {
-            "id": "ai_l4WckcJN",
-            "name": "blur",
-            "app_id": null,
-            "value": 0.9973569
-          },
-          {
-            "id": "ai_786Zr311",
-            "name": "no person",
-            "app_id": null,
-            "value": 0.98865616
-          },
-          {
-            "id": "ai_JBPqff8z",
-            "name": "art",
-            "app_id": null,
-            "value": 0.986006
-          },
-          {
-            "id": "ai_5rD7vW4j",
-            "name": "wallpaper",
-            "app_id": null,
-            "value": 0.9722556
-          },
-          {
-            "id": "ai_sTjX6dqC",
-            "name": "abstract",
-            "app_id": null,
-            "value": 0.96476805
-          },
-          {
-            "id": "ai_Dm5GLXnB",
-            "name": "illustration",
-            "app_id": null,
-            "value": 0.922542
-          },
-          {
-            "id": "ai_5xjvC0Tj",
-            "name": "background",
-            "app_id": null,
-            "value": 0.8775655
-          },
-          {
-            "id": "ai_tBcWlsCp",
-            "name": "nature",
-            "app_id": null,
-            "value": 0.87474406
-          },
-          {
-            "id": "ai_rJGvwlP0",
-            "name": "insubstantial",
-            "app_id": null,
-            "value": 0.8196385
-          },
-          {
-            "id": "ai_2Bh4VMrb",
-            "name": "artistic",
-            "app_id": null,
-            "value": 0.8142488
-          },
-          {
-            "id": "ai_mKzmkKDG",
-            "name": "Christmas",
-            "app_id": null,
-            "value": 0.7996079
-          },
-          {
-            "id": "ai_RQccV41p",
-            "name": "woman",
-            "app_id": null,
-            "value": 0.7955615
-          },
-          {
-            "id": "ai_20SCBBZ0",
-            "name": "vector",
-            "app_id": null,
-            "value": 0.7775099
-          },
-          {
-            "id": "ai_4sJLn6nX",
-            "name": "dark",
-            "app_id": null,
-            "value": 0.7715479
-          },
-          {
-            "id": "ai_5Kp5FMJw",
-            "name": "still life",
-            "app_id": null,
-            "value": 0.7657637
-          },
-          {
-            "id": "ai_LM64MDHs",
-            "name": "shining",
-            "app_id": null,
-            "value": 0.7542407
-          },
-          {
-            "id": "ai_swtdphX8",
-            "name": "love",
-            "app_id": null,
-            "value": 0.74926054
-          },
-          {
-            "id": "ai_h45ZTxZl",
-            "name": "square",
-            "app_id": null,
-            "value": 0.7449074
-          },
-          {
-            "id": "ai_cMfj16kJ",
-            "name": "design",
-            "app_id": null,
-            "value": 0.73926914
-          },
-          {
-            "id": "ai_LxrzLJmf",
-            "name": "bright",
-            "app_id": null,
-            "value": 0.73790145
-          }
-        ]
       }
     }
-  ]
+  }
+  model_version {
+    id: "aa7f35c01e0642fda5cf400f543e7c40"
+    created_at {
+      seconds: 1520370624
+      nanos: 454834000
+    }
+    status {
+      code: MODEL_TRAINED
+      description: "Model is trained and ready"
+    }
+    visibility {
+      gettable: PUBLIC
+    }
+    app_id: "main"
+    user_id: "clarifai"
+    metadata {
+    }
+  }
+  display_name: "general-visual-classifier"
+  user_id: "clarifai"
+  input_info {
+    fields_map {
+      fields {
+        key: "image"
+        value {
+          string_value: "images"
+        }
+      }
+    }
+  }
+  train_info {
+  }
+  model_type_id: "visual-classifier"
+  visibility {
+    gettable: PUBLIC
+  }
+  description: "Image recognition model for identifying different concepts in images and video including objects, themes, moods, and more."
+  metadata {
+  }
+  notes: "**General Information**\n\n- Purpose: Classifier for a variety of concepts, common objects, etc. This model is a great all-purpose solution for most visual recognition needs with industry-leading performance.\n\n- Architecture: Customized InceptionV2\n\n- Intended Use: image indexing by tags, filtering, cascade routing\n\n- Limitations: works well when content is prevalent in the image\n\n\n\n **\nTraining/Test Data**\n\nThe model was trained and tested on an internal dataset with approximately 10,000 concepts and 20M images, with multiple concepts per image. The class distributions on train and validation sets are long-tailed. The validation set was annotated using a combination of originally curated labels with incomplete annotations, where were further completed by adding additional labels proposed a newer version of this model (aa7f35c01e0642fda5cf400f543e7c40) at a low threshold and verified by human annotators. "
+  modified_at {
+    seconds: 1634831222
+    nanos: 80260000
+  }
+  import_info {
+  }
+}
+input {
+  id: "8b57a8364ed9494aa200af2d422b3fee"
+  data {
+    image {
+      url: "https://samples.clarifai.com/placeholder.gif"
+      base64: "true"
+    }
+  }
+}
+data {
+  concepts {
+    id: "ai_HLmqFqBf"
+    name: "train"
+    value: 0.9996053576469421
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_fvlBqXZR"
+    name: "railway"
+    value: 0.9992986917495728
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_SHNDcmJ3"
+    name: "subway system"
+    value: 0.9982514977455139
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_6kTjGfF6"
+    name: "station"
+    value: 0.9980105757713318
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_RRXLczch"
+    name: "locomotive"
+    value: 0.9972571730613708
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_Xxjc3MhT"
+    name: "transportation system"
+    value: 0.9969801306724548
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_VRmbGVWh"
+    name: "travel"
+    value: 0.9889795780181885
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_jlb9q33b"
+    name: "commuter"
+    value: 0.9808752536773682
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_2gkfMDsM"
+    name: "platform"
+    value: 0.9806439876556396
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_n9vjC1jB"
+    name: "light"
+    value: 0.9742040634155273
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_sQQj52KZ"
+    name: "train station"
+    value: 0.9687404036521912
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_l4WckcJN"
+    name: "blur"
+    value: 0.9672204256057739
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_WBQfVV0p"
+    name: "city"
+    value: 0.9614798426628113
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_TZ3C79C6"
+    name: "road"
+    value: 0.9613829851150513
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_CpFBRWzD"
+    name: "urban"
+    value: 0.9603424072265625
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_tr0MBp64"
+    name: "traffic"
+    value: 0.959934651851654
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_GjVpxXrs"
+    name: "street"
+    value: 0.9474143981933594
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_mcSHVRfS"
+    name: "public"
+    value: 0.9343124032020569
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_J6d1kV8t"
+    name: "tramway"
+    value: 0.9318978190422058
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_6lhccv44"
+    name: "business"
+    value: 0.9294139742851257
+    app_id: "main"
+  }
 }
 ```
 </TabItem>
 </Tabs>
+</details>

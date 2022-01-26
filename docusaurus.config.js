@@ -56,6 +56,15 @@ const config = {
         style: 'dark',
         links: [
           {
+            title: 'Company',
+            items: [
+              {
+                label: 'Clarifai Website',
+                href: 'https://clarifai.com',
+              },
+            ],
+          },
+          {
             title: 'Community',
             items: [
               {
