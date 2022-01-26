@@ -16,6 +16,10 @@
   --ifm-code-font-size: 90%;
   --ifm-font-size-base: 95%;
 }
+table {
+  width: 100%;
+  display: inline-table;
+}
 
 .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.1);
