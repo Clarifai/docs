@@ -1,7 +1,7 @@
-#############################################
-# Setting strings for user and model
-# Change these strings to try this example
-#############################################
+###################################################################################
+# In this section we set the user authentication, app and model IDs, and the URL
+# of the image we want as an input. Change these strings to run your own example.
+###################################################################################
 
 USER_ID = 'YOUR_USER_ID_HERE'
 # Your PAT (Personal Access Token) can be found in the portal under Authentification
@@ -10,12 +10,12 @@ APP_ID = 'YOUR_APP_ID_HERE'
 MODEL_ID = 'YOUR_MODEL_ID_HERE'
 # Change this to whatever image URL you want to process
 IMAGE_URL = 'https://samples.clarifai.com/metro-north.jpg'
-# The model ID is optional. Leave this as an empty string to use the default
+# This is optional. You can specify a model version or the empty string for the default.
 MODEL_VERSION_ID = ''
 
-################################################################
-# FOR THIS EXAMPLE, YOU DO NOT NEED TO EDIT BELOW THIS LINE
-################################################################
+############################################################################
+# YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
+############################################################################
 
 from clarifai_grpc.channel.clarifai_channel import ClarifaiChannel
 from clarifai_grpc.grpc.api import resources_pb2, service_pb2, service_pb2_grpc
