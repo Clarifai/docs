@@ -3,11 +3,6 @@ description: Make predictions on image inputs
 sidebar_position: 1
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import CodeBlock from "@theme/CodeBlock";
-import CodePythonViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/images_via_url.py";
-
 # Images
 
 ## Via URL
@@ -15,6 +10,11 @@ import CodePythonViaURL from "!!raw-loader!../../../code_snippets/api-guide/pred
 To get predictions for an input, you need to supply an image and the model you'd like to get predictions from. You can supply an image either with a publicly accessible URL or by directly sending bytes. You can send up to 128 images in one API call. You specify the model you'd like to use with the `{model-id}` parameter.
 
 Below is an example of how you would send image URLs and receive back predictions from the `general` model. Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+import CodePythonViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/images_via_url.py";
 
 <Tabs>
 <TabItem value="python" label="Python">
