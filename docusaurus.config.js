@@ -46,13 +46,7 @@ const config = {
         },
         items: [
           {
-            type: 'doc',
-            docId: 'introduction',
-            position: 'left',
-            label: 'Clarifai Home',
-          },
-          {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/Clarifai',
             label: 'GitHub',
             position: 'right',
           },
@@ -62,28 +56,19 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Introduction',
-                to: '/introduction',
-              },
-            ],
-          },
-          {
             title: 'Community',
             items: [
               {
                 label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                href: 'https://stackoverflow.com/questions/tagged/clarifai',
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                label: 'Slack',
+                href: 'https://communityinviter.com/apps/clarifaicommunity/clarifai-community',
               },
               {
                 label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
+                href: 'https://twitter.com/clarifai',
               },
             ],
           },
@@ -91,13 +76,21 @@ const config = {
             title: 'More',
             items: [
               {
+                label: 'LinkedIn',
+                href: 'https://www.linkedin.com/company/clarifai',
+              },
+              {
                 label: 'GitHub',
                 href: 'https://github.com/facebook/docusaurus',
+              },
+              {
+                label: 'Facebook',
+                href: 'https://www.facebook.com/Clarifai/',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Clarifai, Inc.`,
       },
       prism: {
         theme: lightCodeTheme,
