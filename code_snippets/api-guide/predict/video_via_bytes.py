@@ -1,7 +1,7 @@
-###################################################################################
-# In this initialization section, we set the user authentication, app and model IDs, and the location
-# of the video we want as an input. Access the portal to get these strings and run your own example.
-###################################################################################
+########################################################################################
+# In this section, we set the user authentication, app and model IDs, and the location
+# of the video we want as an input. Change these strings to run your own example.
+########################################################################################
 
 USER_ID = 'YOUR_USER_ID_HERE'
 # Your PAT (Personal Access Token) can be found in the portal under Authentification
@@ -35,7 +35,7 @@ post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
         user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
         model_id=MODEL_ID,
-        version_id=MODEL_VERSION_ID,  # This is optional. Defaults to the latest model version.
+        version_id=MODEL_VERSION_ID,  # This is optional. Defaults to the latest model version
         inputs=[
             resources_pb2.Input(
                 data=resources_pb2.Data(
@@ -52,14 +52,14 @@ if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
     print(post_model_outputs_response.status)
     raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
 
-# Since we have one input, one output will exist here.
+# Since we have one input, one output will exist here
 output = post_model_outputs_response.outputs[0]
 
-# A separate prediction is available for each "frame".
+# A separate prediction is available for each "frame"
 for frame in output.data.frames:
     print("Predicted concepts on frame " + str(frame.frame_info.time) + ":")
     for concept in frame.data.concepts:
         print("\t%s %.2f" % (concept.name, concept.value))
 
 # Uncomment this line to print the full Response JSON
-# print(output)
+#print(output)

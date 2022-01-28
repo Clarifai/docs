@@ -5,6 +5,9 @@ sidebar_position: 2
 
 # Video
 
+**Make predictions on video inputs**
+<hr />
+
 With a video input, the Predict API response will return a list of predicted concepts for every frame of a video. By default, video is processed at 1 frame per second \(but this is configurable in the predict request\). This means you will receive a list of concepts for every second of your video.
 
 You can run Predict on your video using a select number of [Clarifai Models](https://www.clarifai.com/models). The models that are currently supported are: 
@@ -25,7 +28,7 @@ If your video exceeds the limits, please follow our [tutorial](https://www.clari
 
 ## Via URL
 
-Below is an example of how you would send video URLs and receive back predictions from the `general` model.
+Below is an example of how you would send video URLs and receive predictions from the `general` model.
 
 Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
 
@@ -489,7 +492,7 @@ Predicted concepts on frame 8500:
 </details>
 
 <details>
-  <summary>Response JSON Example</summary>
+  <summary>JSON Output Example</summary>
 
 ```javascript
 id: "79ab98ef65534efa9d71c31428ec44b4"
@@ -1746,7 +1749,7 @@ data {
 
 ## Via Bytes
 
-Below is an example of how you would send the bytes of a video and receive back predictions from the `general` model.
+Below is an example of how you would send the bytes of a video and receive predictions from the `general` model.
 
 Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
 
@@ -2214,7 +2217,7 @@ Predicted concepts on frame 8500:
 </details>
 
 <details>
-    <summary>Response JSON Example</summary>
+    <summary>JSON Output Example</summary>
 
 ```javascript
 id: "498ebd8730c94fc3a04c086bef2c5941"
