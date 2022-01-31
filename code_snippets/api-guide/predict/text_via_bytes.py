@@ -1,16 +1,16 @@
-###################################################################################
-# In this section, we set the user authentication, app and model IDs, and the URL
-# of the image we want as an input. Change these strings to run your own example.
-###################################################################################
+#######################################################################################
+# In this section, we set the user authentication, app and model IDs, and the location
+# of the text we want as an input. Change these strings to run your own example.
+#######################################################################################
 
 USER_ID = 'YOUR_USER_ID_HERE'
 # Your PAT (Personal Access Token) can be found in the portal under Authentification
 PAT = 'YOUR_PAT_HERE'
 APP_ID = 'YOUR_APP_ID_HERE'
 MODEL_ID = 'YOUR_MODEL_ID_HERE'
-# Change this to whatever image URL you want to process
-IMAGE_URL = 'https://samples.clarifai.com/metro-north.jpg'
-# This is optional. You can specify a model version or the empty string for the default
+# Change this to whatever raw text you want to process
+TEXT_FILE_LOCATION = 'YOUR_TEXT_FILE_LOCATION'
+# This is optional. You can specify a model version or an empty string for the default
 MODEL_VERSION_ID = ''
 
 ############################################################################
@@ -28,6 +28,9 @@ metadata = (('authorization', 'Key ' + PAT),)
 
 userDataObject = resources_pb2.UserAppIDSet(user_id=USER_ID, app_id=APP_ID)
 
+with open(TEXT_FILE_LOCATION, "rb") as f:
+    file_bytes = f.read()
+
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
         user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
@@ -36,8 +39,8 @@ post_model_outputs_response = stub.PostModelOutputs(
         inputs=[
             resources_pb2.Input(
                 data=resources_pb2.Data(
-                    image=resources_pb2.Image(
-                        url=IMAGE_URL
+                    text=resources_pb2.Text(
+                        raw=file_bytes
                     )
                 )
             )
@@ -46,10 +49,13 @@ post_model_outputs_response = stub.PostModelOutputs(
     metadata=metadata
 )
 if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
-    print(post_model_outputs_response.status)
+    print("There was an error with your request!")
+    print("\tCode: {}".format(post_model_outputs_response.outputs[0].status.code))
+    print("\tDescription: {}".format(post_model_outputs_response.outputs[0].status.description))
+    print("\tDetails: {}".format(respopost_model_outputs_responsense.outputs[0].status.details))
     raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
 
-# Since we have one input, one output will exist here
+# Since we have one input, one output will exist here.
 output = post_model_outputs_response.outputs[0]
 
 print("Predicted concepts:")

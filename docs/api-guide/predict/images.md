@@ -5,17 +5,26 @@ sidebar_position: 1
 
 # Images
 
-## Via URL
+**Make predictions on image inputs**
+<hr />
 
-To get predictions for an input, you need to supply an image and the model you'd like to get predictions from. You can supply an image either with a publicly accessible URL or by directly sending bytes. You can send up to 128 images in one API call. You specify the model you'd like to use with the `{model-id}` parameter.
+To get predictions for an input, you need to supply an image and the model you'd like to get predictions from. You can supply an image either with a publicly accessible URL or by directly sending bytes. 
 
-Below is an example of how you would send image URLs and receive back predictions from the `general` model. Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+You can send up to 128 images in one API call. You specify the model you'd like to use with the `{model-id}` parameter.
+
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 import CodePythonViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/images_via_url.py";
 import CodePythonViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/images_via_bytes.py";
+
+## Via URL
+
+Below is an example of how you would send image URLs and receive predictions from the `general` model. 
+
+Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+
 
 <Tabs>
 <TabItem value="python" label="Python">
@@ -261,7 +270,7 @@ fetch("https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/versions/{MODEL_VERSIO
 </Tabs>
 
 <details>
-  <summary>Example Code Output</summary>
+  <summary>Code Output Example</summary>
 
 ```text
 Predicted concepts:
@@ -290,9 +299,7 @@ business 0.93
 </details>
 
 <details>
-  <summary>Response JSON</summary>
-<Tabs>
-<TabItem value="response_json" label="Response JSON">
+  <summary>JSON Output Example</summary>
 
 ```javascript
 id: "c1064364b2c64740874d714c70db6351"
@@ -503,13 +510,14 @@ data {
   }
 }
 ```
-</TabItem>
-</Tabs>
+
 </details>
 
 ## Via Bytes
 
-Below is an example of how you would send the bytes of an image and receive back predictions from the `general` model.
+Below is an example of how you would send the bytes of an image and receive predictions from the `general` model.
+
+Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
 
 <Tabs>
 <TabItem value="python" label="Python">
@@ -792,7 +800,7 @@ fetch("https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/versions/{MODEL_VERSIO
 </Tabs>
 
 <details>
-  <summary>Example Code Output</summary>
+  <summary>Code Output Example</summary>
 
 ```text
 Predicted concepts:
@@ -821,10 +829,7 @@ business 0.93
 </details>
 
 <details>
-  <summary>Response JSON</summary>
-
-<Tabs>
-<TabItem value="response_json" label="Response JSON">
+  <summary>JSON Output Example</summary>
 
 ```javascript
 id: "72d8af665de44822a5e26fe75ab7f84c"
@@ -1036,6 +1041,5 @@ data {
   }
 }
 ```
-</TabItem>
-</Tabs>
+
 </details>

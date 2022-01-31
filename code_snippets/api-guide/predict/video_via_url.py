@@ -1,6 +1,6 @@
 ###################################################################################
 # In this section, we set the user authentication, app and model IDs, and the URL
-# of the image we want as an input. Change these strings to run your own example.
+# of the video we want as an input. Change these strings to run your own example.
 ###################################################################################
 
 USER_ID = 'YOUR_USER_ID_HERE'
@@ -8,9 +8,9 @@ USER_ID = 'YOUR_USER_ID_HERE'
 PAT = 'YOUR_PAT_HERE'
 APP_ID = 'YOUR_APP_ID_HERE'
 MODEL_ID = 'YOUR_MODEL_ID_HERE'
-# Change this to whatever image URL you want to process
-IMAGE_URL = 'https://samples.clarifai.com/metro-north.jpg'
-# This is optional. You can specify a model version or the empty string for the default
+# Change this to whatever video URL you want to process
+VIDEO_URL = 'https://samples.clarifai.com/beer.mp4'
+# This is optional. You can specify a model version or an empty string for the default.
 MODEL_VERSION_ID = ''
 
 ############################################################################
@@ -36,8 +36,8 @@ post_model_outputs_response = stub.PostModelOutputs(
         inputs=[
             resources_pb2.Input(
                 data=resources_pb2.Data(
-                    image=resources_pb2.Image(
-                        url=IMAGE_URL
+                    video=resources_pb2.Video(
+                        url=VIDEO_URL
                     )
                 )
             )
@@ -52,9 +52,11 @@ if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
 # Since we have one input, one output will exist here
 output = post_model_outputs_response.outputs[0]
 
-print("Predicted concepts:")
-for concept in output.data.concepts:
-    print("%s %.2f" % (concept.name, concept.value))
+# A separate prediction is available for each "frame"
+for frame in output.data.frames:
+    print("Predicted concepts on frame " + str(frame.frame_info.time) + ":")
+    for concept in frame.data.concepts:
+        print("\t%s %.2f" % (concept.name, concept.value))
 
 # Uncomment this line to print the full Response JSON
 #print(output)
