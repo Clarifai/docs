@@ -66,6 +66,6 @@ Predictions are the basic "output" of machine learning models. Predictions are r
 
 Clarifai's patented technology automatically indexes your media for search. Concepts in your models can be used as search terms. You can also search with images to find similar images. We offer numerous search types that can be combined to filter and sort your data.
 
-[![](/img/api.jpg) Search API](../api-guide/predict) /
-[![](/img/icon_portal.jpg) Search with Portal](../portal-guide/psearch)
+[![](/img/api.jpg) Search API](/api-guide/predict) /
+[![](/img/icon_portal.jpg) Search with Portal](/portal-guide/psearch)
 ![](/img/api.jpg) [Spacetime Search API](api-guide/search/) / [![](/img/icon_portal.jpg) Spacetime Search in Portal](introduction.md)
