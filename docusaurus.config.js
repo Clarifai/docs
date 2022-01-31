@@ -107,6 +107,14 @@ const config = {
         additionalLanguages: ['php', 'java', 'csharp', 'objectivec', 'bash'],
       },
     }),
+    plugins: [
+    [
+      require.resolve('docusaurus-gtm-plugin'),
+      {
+        id: 'GTM-PLV65FL', // GTM Container ID
+      }
+    ]
+  ],
 };
 
 module.exports = config;
