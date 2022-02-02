@@ -3,60 +3,33 @@ description: Multilingual predictions.
 sidebar_position: 5
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 # Multilingual Classification
 
-The Clarifai API supports [many languages in addition to English](../concepts/languages.md). When making a [predict api request](./), you can pass in the language you would like the concepts returned in. When you create a new Application, you must specify a default language which will be the language of the returned concepts if not specified in the predict request.
+**Make multilingual predictions**
+<hr />
 
-## Example Predict API Request
+The Clarifai API supports [many languages in addition to English](../concepts/languages.md). When making a [predict api request](./), you can pass in the language you would like the concepts returned in. 
 
-You can predict concepts in a language other than the Application's default, by explicitly passing in the language. Here is how you predict concepts in Chinese:
+When you create a new Application, you must specify a default language which will be the language of the returned concepts if not specified in the predict request.
+
+## Predict By Specific Language
+
+You can predict concepts in a language other than the Application's default, by explicitly passing in the language. 
+
+Below is an example of how you would predict concepts in Chinese.
+
+Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+import PythonBySpecificLanguage from "!!raw-loader!../../../code_snippets/api-guide/predict/multilingual_classification_specific_language.py";
+import PythonSearchConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/multilingual_classification_search_concepts.py";
 
 <Tabs>
 
 <TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-post_model_outputs_response = stub.PostModelOutputs(
-    service_pb2.PostModelOutputsRequest(
-        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-        model_id="aaa03c23b3724a16a56b629203edc62c",  # This is model ID of the publicly available General model.
-        inputs=[
-            resources_pb2.Input(
-                data=resources_pb2.Data(
-                    image=resources_pb2.Image(
-                        url="https://samples.clarifai.com/metro-north.jpg"
-                    )
-                )
-            )
-        ],
-        model=resources_pb2.Model(
-            output_info=resources_pb2.OutputInfo(
-                output_config=resources_pb2.OutputConfig(
-                    language="zh"  # Chinese
-                )
-            )
-        )
-    ),
-    metadata=metadata
-)
-
-if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
-    print(post_model_outputs_response.status)
-    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
-
-# Since we have one input, one output will exist here.
-output = post_model_outputs_response.outputs[0]
-
-print("Predicted concepts:")
-for concept in output.data.concepts:
-    print("\t%s %.2f" % (concept.name, concept.value))
-```
+    <CodeBlock className="language-python">{PythonBySpecificLanguage}</CodeBlock>
 </TabItem>
 
 <TabItem value="php" label="PHP">
@@ -348,211 +321,261 @@ fetch("https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/versions/{MODEL_VERSIO
 
 </Tabs>
 
-<Tabs>
-<TabItem value="response_json" label="Response JSON">
+<details>
+  <summary>Code Output Example</summary>
+
+```text
+Predicted concepts:
+	铁路列车 1.00
+	铁路 1.00
+	地铁 1.00
+	站 1.00
+	火车 1.00
+	运输系统 1.00
+	旅游 0.99
+	通勤 0.98
+	平台 0.98
+	光 0.97
+	铁路车站 0.97
+	模煳 0.97
+	城市 0.96
+	马路 0.96
+	城市的 0.96
+	交通 0.96
+	街道 0.95
+	公共 0.93
+	有轨电车（工业） 0.93
+	商业 0.93
+```
+</details>
+
+<details>
+  <summary>JSON Output Example</summary>
 
 ```javascript
-{
-  "status": {
-    "code": 10000,
-    "description": "Ok"
-  },
-  "outputs": [
-    {
-      "id": "b9f3c12f1534440fa984dc463e491780",
-      "status": {
-        "code": 10000,
-        "description": "Ok"
-      },
-      "created_at": "2017-01-31T20:59:27Z",
-      "model": {
-        "name": "general-v1.3",
-        "id": "aaa03c23b3724a16a56b629203edc62c",
-        "created_at": "2016-03-09T17:11:39Z",
-        "app_id": null,
-        "output_info": {
-          "message": "Show output_info with: GET /models/{model_id}/output_info",
-          "type": "concept"
-        },
-        "model_version": {
-          "id": "aa9ca48295b37401f8af92ad1af0d91d",
-          "created_at": "2016-07-13T01:19:12Z",
-          "status": {
-            "code": 21100,
-            "description": "Model trained successfully"
-          }
+id: "778a108718564b3cb1b0afe01c538f39"
+status {
+  code: SUCCESS
+  description: "Ok"
+}
+created_at {
+  seconds: 1643812243
+  nanos: 518818153
+}
+model {
+  id: "general-image-recognition"
+  name: "general"
+  created_at {
+    seconds: 1457543499
+    nanos: 608845000
+  }
+  app_id: "main"
+  output_info {
+    output_config {
+    }
+    message: "Show output_info with: GET /models/{model_id}/output_info"
+    fields_map {
+      fields {
+        key: "concepts"
+        value {
+          string_value: "softmax"
         }
-      },
-      "input": {
-        "id": "b9f3c12f1534440fa984dc463e491780",
-        "data": {
-          "image": {
-            "url": "https://samples.clarifai.com/metro-north.jpg"
-          }
-        }
-      },
-      "data": {
-        "concepts": [
-          {
-            "id": "ai_HLmqFqBf",
-            "name": "铁路列车",
-            "app_id": null,
-            "value": 0.9989112
-          },
-          {
-            "id": "ai_fvlBqXZR",
-            "name": "铁路",
-            "app_id": null,
-            "value": 0.9975532
-          },
-          {
-            "id": "ai_Xxjc3MhT",
-            "name": "运输系统",
-            "app_id": null,
-            "value": 0.9959158
-          },
-          {
-            "id": "ai_6kTjGfF6",
-            "name": "站",
-            "app_id": null,
-            "value": 0.992573
-          },
-          {
-            "id": "ai_RRXLczch",
-            "name": "火车",
-            "app_id": null,
-            "value": 0.992556
-          },
-          {
-            "id": "ai_VRmbGVWh",
-            "name": "旅游",
-            "app_id": null,
-            "value": 0.98789215
-          },
-          {
-            "id": "ai_SHNDcmJ3",
-            "name": "地铁",
-            "app_id": null,
-            "value": 0.9816359
-          },
-          {
-            "id": "ai_jlb9q33b",
-            "name": "通勤",
-            "app_id": null,
-            "value": 0.9712483
-          },
-          {
-            "id": "ai_46lGZ4Gm",
-            "name": "铁路",
-            "app_id": null,
-            "value": 0.9690325
-          },
-          {
-            "id": "ai_tr0MBp64",
-            "name": "交通",
-            "app_id": null,
-            "value": 0.9687052
-          },
-          {
-            "id": "ai_l4WckcJN",
-            "name": "模煳",
-            "app_id": null,
-            "value": 0.9667078
-          },
-          {
-            "id": "ai_2gkfMDsM",
-            "name": "平台",
-            "app_id": null,
-            "value": 0.9624243
-          },
-          {
-            "id": "ai_CpFBRWzD",
-            "name": "城市的",
-            "app_id": null,
-            "value": 0.960752
-          },
-          {
-            "id": "ai_786Zr311",
-            "name": "沒有人",
-            "app_id": null,
-            "value": 0.95864904
-          },
-          {
-            "id": "ai_6lhccv44",
-            "name": "商业",
-            "app_id": null,
-            "value": 0.95720303
-          },
-          {
-            "id": "ai_971KsJkn",
-            "name": "跑道",
-            "app_id": null,
-            "value": 0.9494642
-          },
-          {
-            "id": "ai_WBQfVV0p",
-            "name": "城市",
-            "app_id": null,
-            "value": 0.94089437
-          },
-          {
-            "id": "ai_dSCKh8xv",
-            "name": "快速的",
-            "app_id": null,
-            "value": 0.9399334
-          },
-          {
-            "id": "ai_TZ3C79C6",
-            "name": "马路",
-            "app_id": null,
-            "value": 0.93121606
-          },
-          {
-            "id": "ai_VSVscs9k",
-            "name": "终点站",
-            "app_id": null,
-            "value": 0.9230834
-          }
-        ]
       }
     }
-  ]
+  }
+  model_version {
+    id: "aa7f35c01e0642fda5cf400f543e7c40"
+    created_at {
+      seconds: 1520370624
+      nanos: 454834000
+    }
+    status {
+      code: MODEL_TRAINED
+      description: "Model is trained and ready"
+    }
+    visibility {
+      gettable: PUBLIC
+    }
+    app_id: "main"
+    user_id: "clarifai"
+    metadata {
+    }
+  }
+  display_name: "general-visual-classifier"
+  user_id: "clarifai"
+  input_info {
+    fields_map {
+      fields {
+        key: "image"
+        value {
+          string_value: "images"
+        }
+      }
+    }
+  }
+  train_info {
+  }
+  model_type_id: "visual-classifier"
+  visibility {
+    gettable: PUBLIC
+  }
+  description: "Image recognition model for identifying different concepts in images and video including objects, themes, moods, and more."
+  metadata {
+  }
+  notes: "**General Information**\n\n- Purpose: Classifier for a variety of concepts, common objects, etc. This model is a great all-purpose solution for most visual recognition needs with industry-leading performance.\n\n- Architecture: Customized InceptionV2\n\n- Intended Use: image indexing by tags, filtering, cascade routing\n\n- Limitations: works well when content is prevalent in the image\n\n\n\n **\nTraining/Test Data**\n\nThe model was trained and tested on an internal dataset with approximately 10,000 concepts and 20M images, with multiple concepts per image. The class distributions on train and validation sets are long-tailed. The validation set was annotated using a combination of originally curated labels 
+with incomplete annotations, where were further completed by adding additional labels proposed a newer version of this model (aa7f35c01e0642fda5cf400f543e7c40) at a low threshold and verified by human annotators. "
+  modified_at {
+    seconds: 1634831222
+    nanos: 80260000
+  }
+  import_info {
+  }
+}
+input {
+  id: "9d3583dff67a41b9825edff444f93fcd"
+  data {
+    image {
+      url: "https://samples.clarifai.com/metro-north.jpg"
+    }
+  }
+}
+data {
+  concepts {
+    id: "ai_HLmqFqBf"
+    name: "\351\223\201\350\267\257\345\210\227\350\275\246"
+    value: 0.9996053576469421
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_fvlBqXZR"
+    name: "\351\223\201\350\267\257"
+    value: 0.9992986917495728
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_SHNDcmJ3"
+    name: "\345\234\260\351\223\201"
+    value: 0.9982514977455139
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_6kTjGfF6"
+    name: "\347\253\231"
+    value: 0.9980105757713318
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_RRXLczch"
+    name: "\347\201\253\350\275\246"
+    value: 0.9972571730613708
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_Xxjc3MhT"
+    name: "\350\277\220\350\276\223\347\263\273\347\273\237"
+    value: 0.9969801306724548
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_VRmbGVWh"
+    name: "\346\227\205\346\270\270"
+    value: 0.988979697227478
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_jlb9q33b"
+    name: "\351\200\232\345\213\244"
+    value: 0.9808752536773682
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_2gkfMDsM"
+    name: "\345\271\263\345\217\260"
+    value: 0.9806439876556396
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_n9vjC1jB"
+    name: "\345\205\211"
+    value: 0.9742040634155273
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_sQQj52KZ"
+    name: "\351\223\201\350\267\257\350\275\246\347\253\231"
+    value: 0.9687402844429016
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_l4WckcJN"
+    name: "\346\250\241\347\205\263"
+    value: 0.9672204256057739
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_WBQfVV0p"
+    name: "\345\237\216\345\270\202"
+    value: 0.9614799618721008
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_TZ3C79C6"
+    name: "\351\251\254\350\267\257"
+    value: 0.9613829851150513
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_CpFBRWzD"
+    name: "\345\237\216\345\270\202\347\232\204"
+    value: 0.9603424668312073
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_tr0MBp64"
+    name: "\344\272\244\351\200\232"
+    value: 0.9599347710609436
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_GjVpxXrs"
+    name: "\350\241\227\351\201\223"
+    value: 0.9474143981933594
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_mcSHVRfS"
+    name: "\345\205\254\345\205\261"
+    value: 0.9343124032020569
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_J6d1kV8t"
+    name: "\346\234\211\350\275\250\347\224\265\350\275\246\357\274\210\345\267\245\344\270\232\357\274\211"
+    value: 0.931897759437561
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_6lhccv44"
+    name: "\345\225\206\344\270\232"
+    value: 0.9294139742851257
+    app_id: "main"
+  }
 }
 ```
-</TabItem>
-</Tabs>
+</details>
 
-## Example Search By Tag API Request
+## Search Concepts in Languages 
 
-You can search for concepts in other languages even if the default language of your application is English. When you add inputs to your application, concepts are predicted for every language. Here is an example of searching for '人' which is simplified Chinese for 'people'.
+You can search for concepts in other languages even if the default language of your application is English. When you add inputs to your application, concepts are predicted for every language. 
+
+Below is an example of how your would search for '人', which is simplified Chinese for 'people'.
+
+Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
 
 <Tabs>
 
 <TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-post_concepts_searches_response = stub.PostConceptsSearches(
-    service_pb2.PostConceptsSearchesRequest(
-        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-        concept_query=resources_pb2.ConceptQuery(
-            name="人",
-            language="zh"
-        )
-    ),
-    metadata=metadata
-)
-
-if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
-    print(post_model_outputs_response.status)
-    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
-
-print("Found concepts:")
-for concept in post_concepts_searches_response.concepts:
-    print("\t%s %.2f" % (concept.name, concept.value))
-```
+    <CodeBlock className="language-python">{PythonSearchConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="php" label="PHP">
@@ -766,3 +789,229 @@ fetch("https://api.clarifai.com/v2/searches", requestOptions)
 </TabItem>
 
 </Tabs>
+
+<details>
+  <summary>Code Output Example</summary>
+
+```text
+Found concepts:
+	人 1.00
+	人 1.00
+```
+
+</details>
+
+<details>
+  <summary>Code Output Example</summary>
+
+```javascript
+id: "ca0c4b59c97840578fbe826664476fcb"
+status {
+  code: SUCCESS
+  description: "Ok"
+}
+created_at {
+  seconds: 1643811840
+  nanos: 183608592
+}
+model {
+  id: "general-image-recognition"
+  name: "general"
+  created_at {
+    seconds: 1457543499
+    nanos: 608845000
+  }
+  app_id: "main"
+  output_info {
+    output_config {
+    }
+    message: "Show output_info with: GET /models/{model_id}/output_info"
+    fields_map {
+      fields {
+        key: "concepts"
+        value {
+          string_value: "softmax"
+        }
+      }
+    }
+  }
+  model_version {
+    id: "aa7f35c01e0642fda5cf400f543e7c40"
+    created_at {
+      seconds: 1520370624
+      nanos: 454834000
+    }
+    status {
+      code: MODEL_TRAINED
+      description: "Model is trained and ready"
+    }
+    visibility {
+      gettable: PUBLIC
+    }
+    app_id: "main"
+    user_id: "clarifai"
+    metadata {
+    }
+  }
+  display_name: "general-visual-classifier"
+  user_id: "clarifai"
+  input_info {
+    fields_map {
+      fields {
+        key: "image"
+        value {
+          string_value: "images"
+        }
+      }
+    }
+  }
+  train_info {
+  }
+  model_type_id: "visual-classifier"
+  visibility {
+    gettable: PUBLIC
+  }
+  description: "Image recognition model for identifying different concepts in images and video including objects, themes, moods, and more."
+  metadata {
+  }
+  notes: "**General Information**\n\n- Purpose: Classifier for a variety of concepts, common objects, etc. This model is a great all-purpose solution for most visual recognition needs with industry-leading performance.\n\n- Architecture: Customized InceptionV2\n\n- Intended Use: image indexing by tags, filtering, cascade routing\n\n- Limitations: works well when content is prevalent in the image\n\n\n\n **\nTraining/Test Data**\n\nThe model was trained and tested on an internal dataset with approximately 10,000 concepts and 20M images, with multiple concepts per image. The class distributions on train and validation sets are long-tailed. The validation set was annotated using a combination of originally curated labels with incomplete annotations, where were further completed by adding additional labels proposed a newer version of this model (aa7f35c01e0642fda5cf400f543e7c40) at a low threshold and verified by human annotators. "
+  modified_at {
+    seconds: 1634831222
+    nanos: 80260000
+  }
+  import_info {
+  }
+}
+input {
+  id: "08f57897f43f4a32bf4665df16f96de7"
+  data {
+    image {
+      url: "https://samples.clarifai.com/metro-north.jpg"
+    }
+  }
+}
+data {
+  concepts {
+    id: "ai_HLmqFqBf"
+    name: "\351\223\201\350\267\257\345\210\227\350\275\246"
+    value: 0.9996053576469421
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_fvlBqXZR"
+    name: "\351\223\201\350\267\257"
+    value: 0.9992986917495728
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_SHNDcmJ3"
+    name: "\345\234\260\351\223\201"
+    value: 0.9982514977455139
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_6kTjGfF6"
+    name: "\347\253\231"
+    value: 0.9980105757713318
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_RRXLczch"
+    name: "\347\201\253\350\275\246"
+    value: 0.9972571730613708
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_Xxjc3MhT"
+    name: "\350\277\220\350\276\223\347\263\273\347\273\237"
+    value: 0.9969801306724548
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_VRmbGVWh"
+    name: "\346\227\205\346\270\270"
+    value: 0.988979697227478
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_jlb9q33b"
+    name: "\351\200\232\345\213\244"
+    value: 0.9808752536773682
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_2gkfMDsM"
+    name: "\345\271\263\345\217\260"
+    value: 0.9806439876556396
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_n9vjC1jB"
+    name: "\345\205\211"
+    value: 0.9742040634155273
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_sQQj52KZ"
+    name: "\351\223\201\350\267\257\350\275\246\347\253\231"
+    value: 0.9687402844429016
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_l4WckcJN"
+    name: "\346\250\241\347\205\263"
+    value: 0.9672204256057739
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_WBQfVV0p"
+    name: "\345\237\216\345\270\202"
+    value: 0.9614799618721008
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_TZ3C79C6"
+    name: "\351\251\254\350\267\257"
+    value: 0.9613829851150513
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_CpFBRWzD"
+    name: "\345\237\216\345\270\202\347\232\204"
+    value: 0.9603424668312073
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_tr0MBp64"
+    name: "\344\272\244\351\200\232"
+    value: 0.9599347710609436
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_GjVpxXrs"
+    name: "\350\241\227\351\201\223"
+    value: 0.9474143981933594
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_mcSHVRfS"
+    name: "\345\205\254\345\205\261"
+    value: 0.9343124032020569
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_J6d1kV8t"
+    name: "\346\234\211\350\275\250\347\224\265\350\275\246\357\274\210\345\267\245\344\270\232\357\274\211"
+    value: 0.931897759437561
+    app_id: "main"
+  }
+  concepts {
+    id: "ai_6lhccv44"
+    name: "\345\225\206\344\270\232"
+    value: 0.9294139742851257
+    app_id: "main"
+  }
+}
+```
+
+</details>
