@@ -4,14 +4,29 @@ sidebar_position: 3
 title: Search by Concept
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 # Search by Concept
 
-You can search for concepts by `name`, even in a different `language` using the concept searches endpoint:
+**Search based on specific words**
+<hr />
+
+You can search for concepts by `name`, even in a different `language` using the `ConceptSearches` endpoint.
+
+Below is an example of how to search for concepts.
+
+Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+import PythonSearchByConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/search_by_concept.py";
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonSearchByConcept}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -71,35 +86,6 @@ stub.PostConceptsSearches(
 ```
 </TabItem>
 
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-post_concepts_searches_response = stub.PostConceptsSearches(
-    service_pb2.PostConceptsSearchesRequest(
-        concept_query=resources_pb2.ConceptQuery(
-            name="人",
-            language="ja"
-        )
-    ),
-    metadata=metadata
-)
-
-if post_concepts_searches_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(post_concepts_searches_response.outputs[0].status.code))
-    print("\tDescription: {}".format(post_concepts_searches_response.outputs[0].status.description))
-    print("\tDetails: {}".format(post_concepts_searches_response.outputs[0].status.details))
-    raise Exception("Post concepts searches failed, status: " + post_concepts_searches_response.status.description)
-
-print("Found concepts:")
-for concept in post_concepts_searches_response.concepts:
-    print("\t%s %.2f" % (concept.name, concept.value))
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```text
@@ -149,179 +135,55 @@ fetch("https://api.clarifai.com/v2/concepts/searches", requestOptions)
 
 </Tabs>
 
-<Tabs>
-<TabItem value="response_json" label="Response JSON">
+<details>
+  <summary>Code Output Example</summary>
+
+```text
+Found concepts:
+	人 1.00
+	人 1.00
+```
+</details>
+
+<details>
+  <summary>JSON Output Example</summary>
 
 ```javascript
-{
-  "status": {
-    "code": 10000,
-    "description": "Ok"
-  },
-  "concepts": [
-    {
-      "id": "ai_l8TKp2h5",
-      "name": "人",
-      "created_at": "2016-03-17T11:43:01Z",
-      "updated_at": "2016-03-17T11:43:01Z",
-      "app_id": null,
-      "language": "zh"
-    },
-    {
-      "id": "ai_ZKJ48TFz",
-      "name": "人",
-      "created_at": "2016-03-17T11:43:01Z",
-      "updated_at": "2016-03-17T11:43:01Z",
-      "app_id": null,
-      "language": "zh"
-    },
-    {
-      "id": "ai_GlPlRlTZ",
-      "name": "人为破坏",
-      "created_at": "2016-03-17T11:43:01Z",
-      "updated_at": "2016-03-17T11:43:01Z",
-      "app_id": null,
-      "language": "zh"
-    },
-    {
-      "id": "ai_8ZsdCrVZ",
-      "name": "人体模型",
-      "created_at": "2016-03-17T11:43:01Z",
-      "updated_at": "2016-03-17T11:43:01Z",
-      "app_id": null,
-      "language": "zh"
-    },
-    {
-      "id": "ai_K1KL0zgk",
-      "name": "人力的",
-      "created_at": "2016-03-17T11:43:01Z",
-      "updated_at": "2016-03-17T11:43:01Z",
-      "app_id": null,
-      "language": "zh"
-    },
-    {
-      "id": "ai_Tm9d2BZ2",
-      "name": "人口",
-      "created_at": "2016-03-17T11:43:01Z",
-      "updated_at": "2016-03-17T11:43:01Z",
-      "app_id": null,
-      "language": "zh"
-    },
-    {
-      "id": "ai_NLF8h1fJ",
-      "name": "人口",
-      "created_at": "2016-03-17T11:43:01Z",
-      "updated_at": "2016-03-17T11:43:01Z",
-      "app_id": null,
-      "language": "zh"
-    },
-    {
-      "id": "ai_8bHdFtsg",
-      "name": "人口",
-      "created_at": "2016-03-17T11:43:01Z",
-      "updated_at": "2016-03-17T11:43:01Z",
-      "app_id": null,
-      "language": "zh"
-    },
-    {
-      "id": "ai_vLnr3Mcj",
-      "name": "人孔",
-      "created_at": "2016-03-17T11:43:01Z",
-      "updated_at": "2016-03-17T11:43:01Z",
-      "app_id": null,
-      "language": "zh"
-    },
-    {
-      "id": "ai_HRt4nfvL",
-      "name": "人工智能",
-      "created_at": "2016-03-17T11:43:01Z",
-      "updated_at": "2016-03-17T11:43:01Z",
-      "app_id": null,
-      "language": "zh"
-    },
-    {
-      "id": "ai_Qc3mqxTJ",
-      "name": "人才",
-      "created_at": "2016-03-17T11:43:01Z",
-      "updated_at": "2016-03-17T11:43:01Z",
-      "app_id": null,
-      "language": "zh"
-    },
-    {
-      "id": "ai_VFKQ0qD6",
-      "name": "人物",
-      "created_at": "2016-03-17T11:43:01Z",
-      "updated_at": "2016-03-17T11:43:01Z",
-      "app_id": null,
-      "language": "zh"
-    },
-    {
-      "id": "ai_Wz8JXXMB",
-      "name": "人类免疫缺陷病毒",
-      "created_at": "2016-03-17T11:43:01Z",
-      "updated_at": "2016-03-17T11:43:01Z",
-      "app_id": null,
-      "language": "zh"
-    },
-    {
-      "id": "ai_bzp3Lg81",
-      "name": "人类的",
-      "created_at": "2016-03-17T11:43:01Z",
-      "updated_at": "2016-03-17T11:43:01Z",
-      "app_id": null,
-      "language": "zh"
-    },
-    {
-      "id": "ai_dJ15S9s6",
-      "name": "人群",
-      "created_at": "2016-03-17T11:43:01Z",
-      "updated_at": "2016-03-17T11:43:01Z",
-      "app_id": null,
-      "language": "zh"
-    },
-    {
-      "id": "ai_MNCVrmml",
-      "name": "人行天桥",
-      "created_at": "2016-03-17T11:43:01Z",
-      "updated_at": "2016-03-17T11:43:01Z",
-      "app_id": null,
-      "language": "zh"
-    },
-    {
-      "id": "ai_CChWH41S",
-      "name": "人行横道",
-      "created_at": "2016-03-17T11:43:01Z",
-      "updated_at": "2016-03-17T11:43:01Z",
-      "app_id": null,
-      "language": "zh"
-    },
-    {
-      "id": "ai_4lbXrFgT",
-      "name": "人造",
-      "created_at": "2016-03-17T11:43:01Z",
-      "updated_at": "2016-03-17T11:43:01Z",
-      "app_id": null,
-      "language": "zh"
-    },
-    {
-      "id": "ai_277LRf4d",
-      "name": "人造卫星",
-      "created_at": "2016-03-17T11:43:01Z",
-      "updated_at": "2016-03-17T11:43:01Z",
-      "app_id": null,
-      "language": "zh"
-    },
-    {
-      "id": "ai_H3RDmvSn",
-      "name": "人造奶油",
-      "created_at": "2016-03-17T11:43:01Z",
-      "updated_at": "2016-03-17T11:43:01Z",
-      "app_id": null,
-      "language": "zh"
-    }
-  ]
+status {
+  code: SUCCESS
+  description: "Ok"
+  req_id: "6e24dbc1e4977bd6f4092d0c72169a68"
 }
-```
-</TabItem>
-</Tabs>
+concepts {
+  id: "ai_ZKJ48TFz"
+  name: "\344\272\272"
+  value: 1.0
+  created_at {
+    seconds: 1458214981
+    nanos: 223962000
+  }
+  language: "ja"
+  app_id: "main"
+  visibility {
+    gettable: PUBLIC
+  }
+  user_id: "clarifai"
+}
+concepts {
+  id: "ai_l8TKp2h5"
+  name: "\344\272\272"
+  value: 1.0
+  created_at {
+    seconds: 1458214981
+    nanos: 223962000
+  }
+  language: "ja"
+  app_id: "main"
+  visibility {
+    gettable: PUBLIC
+  }
+  user_id: "clarifai"
+}
 
+```
+</details>

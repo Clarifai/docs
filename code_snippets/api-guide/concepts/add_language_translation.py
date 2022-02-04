@@ -1,15 +1,16 @@
-################################################################################
-# In this section, we set the user authentication, app ID, concept ID and name.
+################################################################################################
+# In this section, we set the user authentication, app ID, concept ID, and language ID and name.
 # Change these strings to run your own example.
-################################################################################
+################################################################################################
 
 USER_ID = 'YOUR_USER_ID_HERE'
 # Your PAT (Personal Access Token) can be found in the portal under Authentification
 PAT = 'YOUR_PAT_HERE'
 APP_ID = 'YOUR_APP_ID_HERE'
-# Change these to whatever concept you want to update
-CONCEPT_ID = 'cat'
-CONCEPT_NAME = 'New Cat Name'
+# Change these to whatever concept you want to add its language translation
+CONCEPT_ID = 'charlie'
+LANGUAGE_ID = "ja"
+LANGUAGE_NAME = "ボスコ"
 
 ##########################################################################
 # YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -26,17 +27,20 @@ metadata = (('authorization', 'Key ' + PAT),)
 
 userDataObject = resources_pb2.UserAppIDSet(user_id=USER_ID, app_id=APP_ID)
 
-patch_concepts_response = stub.PatchConcepts(
-    service_pb2.PatchConceptsRequest(
+get_concept_language_response = stub.PostConceptLanguages(
+    service_pb2.PostConceptLanguagesRequest(
         user_app_id=userDataObject,
-        action="overwrite",  # The only supported action right now is overwrite
-        concepts=[resources_pb2.Concept(id=CONCEPT_ID, name=CONCEPT_NAME)]
+        concept_id=CONCEPT_ID,
+        concept_languages=[resources_pb2.ConceptLanguage(
+          id=LANGUAGE_ID,
+          name=LANGUAGE_NAME
+        )]
     ),
     metadata=metadata
 )
 
-if patch_concepts_response.status.code != status_code_pb2.SUCCESS:
-    print(patch_concepts_response.status)
-    raise Exception("Patch concept failed, status: " + patch_concepts_response.status.description)
+if get_concept_language_response.status.code != status_code_pb2.SUCCESS:
+    print(get_concept_language_response.status)
+    raise Exception("Get concept failed, status: " + get_concept_language_response.status.description)
     
-print(patch_concepts_response)
+print(get_concept_language_response)

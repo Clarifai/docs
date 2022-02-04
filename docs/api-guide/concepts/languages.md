@@ -169,7 +169,7 @@ concept_languages {
 
 ## Get Specific Language Translation for a Concept
 
-Below is an example of how to get a single language translation for a concept. You can get it by the language code and concept id.
+Below is an example of how to get a single language translation for a concept. You can get it by the language code and concept ID.
 
 Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
 
@@ -284,6 +284,11 @@ Below is an example of how to create a language translation for a concept by POS
 Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonAddLanguageTranslation}</CodeBlock>
+</TabItem>
+
 <TabItem value="grpc_java" label="gRPC Java">
 
 ```java
@@ -336,32 +341,6 @@ stub.PostConceptLanguage(
 ```
 </TabItem>
 
-<TabItem value="grpc_python" label="gRPC Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-get_concept_language_response = stub.PostConceptLanguage(
-    service_pb2.PostConceptLanguageRequest(
-        concept_id="charlie",
-        concept_languages=[resources_pb2.ConceptLanguages(
-          id="ja",
-          name="ボスコ"
-        )]
-    ),
-    metadata=metadata
-)
-
-if get_concept_langauge_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(get_concept_language_response.outputs[0].status.code))
-    print("\tDescription: {}".format(get_concept_language_response.outputs[0].status.description))
-    print("\tDetails: {}".format(get_concept_language_response.outputs[0].status.details))
-    raise Exception("Get concept failed, status: " + get_concept_language_response.status.description)
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```text
@@ -408,6 +387,22 @@ fetch(`https://api.clarifai.com/v2/concepts/${conceptId}/languages`, requestOpti
 
 </Tabs>
 
+<details>
+  <summary>JSON Output Example</summary>
+
+```javascript
+status {
+  code: SUCCESS
+  description: "Ok"
+  req_id: "c5054cc812539059340a2275c3cb7cd5"
+}
+concept_languages {
+  id: "ja"
+  name: "\343\203\234\343\202\271\343\202\263"
+}
+```
+</details>
+
 ## Update a Language Translation for a Concept
 
 Below is an example of how to update a language translation for a concept by PATCHing that language translation.
@@ -416,6 +411,11 @@ Note that the initialization code used here is outlined in detail on the [client
 
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonUpdateLanguageTranslation}</CodeBlock>
+</TabItem>
+
 <TabItem value="grpc_java" label="gRPC Java">
 
 ```java
@@ -470,33 +470,6 @@ stub.PatchConceptLanguage(
 ```
 </TabItem>
 
-<TabItem value="grpc_python" label="gRPC Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-get_concept_language_response = stub.PatchConceptLanguage(
-    service_pb2.PatchConceptLanguageRequest(
-        concept_id="charlie",
-        concept_languages=[resources_pb2.ConceptLanguages(
-          id="ja",
-          name="new name"
-        )],
-        action="overwrite"
-    ),
-    metadata=metadata
-)
-
-if get_concept_langauge_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(get_concept_language_response.outputs[0].status.code))
-    print("\tDescription: {}".format(get_concept_language_response.outputs[0].status.description))
-    print("\tDetails: {}".format(get_concept_language_response.outputs[0].status.details))
-    raise Exception("Get concept failed, status: " + get_concept_language_response.status.description)
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```text
@@ -544,3 +517,19 @@ fetch(`https://api.clarifai.com/v2/concepts/${conceptId}/languages`, requestOpti
 
 </Tabs>
 
+
+<details>
+  <summary>JSON Output Example</summary>
+
+```javascript
+status {
+  code: SUCCESS
+  description: "Ok"
+  req_id: "779d702cbb303bcce4e469eb1d3552c2"
+}
+concept_languages {
+  id: "ja"
+  name: "new name"
+}
+```
+</details>
