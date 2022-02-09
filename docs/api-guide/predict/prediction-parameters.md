@@ -20,8 +20,7 @@ You can set additional parameters to gain flexibility in the predict operation.
 
 By putting this additional parameter on your predict calls, you can receive predict value\(s\) for **only** the concepts that you want to. You can specify particular concepts by either their id and/or their name. The concept names and ids are case sensitive, and so, these must be exact matches.
 
-To retrieve an entire list of concepts from a given model use the `GET /v2/models/{model_id}/output_info` endpoint. Check out the [Advanced Models](https://github.com/Clarifai/docs/tree/5882f46bd17affcd85ed3e2ec98f4d6f355b58a9/models.md#get-model-output-info-by-id) section for how to use with any of the API clients.
-
+To retrieve an entire list of concepts from a given model use the `GET /v2/models/{model_id}/output_info` endpoint.
 
 :::info
 
