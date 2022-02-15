@@ -3,57 +3,44 @@ description: Connect the knowledge gained by different models.
 sidebar_position: 4
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 # Knowledge Graph
+
+**Connect the knowledge gained by different models**
+<hr />
 
 ![](/img/kg6.png)
 
-The Knowledge Graph uses Clarifai's concept mapping model to establish a hierarchical relationship between your concepts. and to uses three different _predicates_ to organize your concepts: hypernyms, hyponyms, and synonyms.
+The Knowledge Graph uses Clarifai's concept mapping model to establish a hierarchical relationship between your concepts.
 
-**Hyponym** represents an 'is a kind of' relation. The following relationship: 'honey' \(subject\), 'hyponym' \(predicate\), 'food' \(object\) is more easily be read as 'honey' 'is a kind of' 'food'.
+It uses three different _predicates_ to organize your concepts: hypernyms, hyponyms, and synonyms.
 
-**Hypernym** is the opposite of 'hyponym'. When you add one of the relationships the opposite will automatically appear for you in queries. The 'hypernym' can be read as 'is a parent of' so: 'food' \(subject\), 'hypernym' \(predicate\), 'honey' \(object\) can more easily be read as:'food' is a parent of 'honey'.
+**Hyponym** — represents an 'is a kind of' relation. For example, the relationship described as 'honey' \(subject\), 'hyponym' \(predicate\), 'food' \(object\) is more easily read as 'honey' 'is a kind of' 'food'.
 
-**Synonym** The 'synonym' relation defines two concepts that essential mean the same thing. This is more like a "is" relationship. So for example a 'synonym' relationship could be: "puppy" is "pup" The reverse is also true once the former is added so: "pup" is "puppy" will appear in queries as well.
+**Hypernym** — is the opposite of 'hyponym'. When you add the relationship, the opposite will automatically appear in your queries. An 'hypernym' can be read as 'is a parent of'. For example, 'food' \(subject\), 'hypernym' \(predicate\), 'honey' \(object\) is more easily read as 'food' is a parent of 'honey'.
 
-## Create
+**Synonym** — defines two concepts that essentially mean the same thing. This is more like an "is" relationship. For example, a 'synonym' relationship could be "puppy" is "pup". The reverse is also true if the former is added; so, "pup" is "puppy" will appear in queries as well.
 
-To create a relation between two concepts, you first have to create them in your custom model. See [the Concepts page](https://docs.clarifai.com/api-guide/concepts/concepts) on how to do that programatically.
+## Create Relations
 
-Each relation has to have specified a predicate, which can be _hyponym_, _hypernym_, or _synonym_.
+To create a relation between two concepts, you first have to create them in your custom model. See [the Concepts page](./api-guide/concepts/create-get-update.md) on how to do that programatically.
+
+Each relation should have a specified predicate, which can be _hyponym_, _hypernym_, or _synonym_.
+
+Below is an example of how to create a relation between two concepts. 
+
+Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+import PythonCreateRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/knowledge_graph_create.py";
+import PythonListRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/knowledge_graph_list.py";
+import PythonDeleteRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/knowledge_graph_delete.py";
 
 <Tabs>
+
 <TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-post_concept_relation_response = stub.PostConceptRelations(
-    service_pb2.PostConceptRelationsRequest(
-        user_app_id=resources_pb2.UserAppIDSet(
-            app_id="{YOUR_APP_ID}"
-        ),
-        concept_id="{YOUR_SUBJECT_CONCEPT_ID}",
-        concept_relations=[
-            resources_pb2.ConceptRelation(
-                object_concept=resources_pb2.Concept(id="{YOUR_OBJECT_CONCEPT_ID}"),
-                predicate="hypernym" # This can be hypernym, hyponym, or synonym.
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_concept_relation_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(post_concept_relation_response.outputs[0].status.code))
-    print("\tDescription: {}".format(post_concept_relation_response.outputs[0].status.description))
-    print("\tDetails: {}".format(post_concept_relation_response.outputs[0].status.details))
-    raise Exception("Post concept relation failed, status: " + post_concept_relation_response.status.description)
-```
+    <CodeBlock className="language-python">{PythonCreateRelations}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -179,36 +166,65 @@ fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/concepts/${subjectConc
 
 </Tabs>
 
-## List existing relations
+<details>
+  <summary>JSON Output Example</summary>
+
+```javascript
+status {
+  code: SUCCESS
+  description: "Ok"
+  req_id: "0d0a5ec5df14d62a7d660f392ce26727"
+}
+concept_relations {
+  id: "2d794e5ede534500b4ac7da44ef570ee"
+  subject_concept {
+    id: "honey"
+    name: "honey"
+    value: 1.0
+    created_at {
+      seconds: 1643976334
+      nanos: 237961000
+    }
+    language: "en"
+    app_id: "a39423543bb941bf9ba2ee95fad11f0a"
+    visibility {
+      gettable: PRIVATE
+    }
+    user_id: "e5y2lteoz3s3iy"
+  }
+  object_concept {
+    id: "food"
+    name: "food"
+    value: 1.0
+    created_at {
+      seconds: 1643976326
+      nanos: 123719000
+    }
+    language: "en"
+    app_id: "a39423543bb941bf9ba2ee95fad11f0a"
+    visibility {
+      gettable: PRIVATE
+    }
+    user_id: "ei2leoz3s3iy"
+  }
+  predicate: "hypernym"
+  visibility {
+    gettable: PRIVATE
+  }
+}
+```
+</details>
+
+## List Existing Relations
+
+Below is an example of how to list existing relations between concepts. 
+
+Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
 
 <Tabs>
+
 <TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-list_concept_relation_response = stub.ListConceptRelations(
-    service_pb2.ListConceptRelationsRequest(
-        user_app_id=resources_pb2.UserAppIDSet(
-            app_id="{YOUR_APP_ID}"
-        ),
-        concept_id="{YOUR_CONCEPT_ID}",
-        predicate="hypernym"  # This is optional. If skipped, all concept's relations will be returned.
-    ),
-    metadata=metadata
-)
-
-if list_concept_relation_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(list_concept_relation_response.outputs[0].status.code))
-    print("\tDescription: {}".format(list_concept_relation_response.outputs[0].status.description))
-    print("\tDetails: {}".format(list_concept_relation_response.outputs[0].status.details))
-    raise Exception("List concept relation failed, status: " + list_concept_relation_response.status.description)
-
-for relation in list_concept_relation_response.concept_relations:
-    print(relation)
-```
+    <CodeBlock className="language-python">{PythonListRelations}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -309,33 +325,58 @@ fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/concepts/${conceptId}/
 
 </Tabs>
 
-## Delete
+<details>
+  <summary>JSON Output Example</summary>
+
+```javascript
+id: "2d794e5ede534500b4ac7da44ef570ee"
+subject_concept {
+  id: "honey"
+  name: "honey"
+  value: 1.0
+  created_at {
+    seconds: 1643976334
+    nanos: 237961000
+  }
+  language: "en"
+  app_id: "a39423543bb941bf9ba2ee95fad11f0a"
+  visibility {
+    gettable: PRIVATE
+  }
+  user_id: "ei2leoz3s3iy"
+}
+object_concept {
+  id: "food"
+  name: "food"
+  value: 1.0
+  created_at {
+    seconds: 1643976326
+    nanos: 123719000
+  }
+  language: "en"
+  app_id: "a39423543bb941bf9ba2ee95fad11f0a"
+  visibility {
+    gettable: PRIVATE
+  }
+  user_id: "ei2leoz3s3iy"
+}
+predicate: "hypernym"
+visibility {
+  gettable: PRIVATE
+}
+```
+</details>
+
+## Delete Relations
+
+Below is an example of how to delete relations between concepts. 
+
+Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
 
 <Tabs>
+
 <TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-delete_concept_relation_response = stub.DeleteConceptRelations(
-    service_pb2.DeleteConceptRelationsRequest(
-        user_app_id=resources_pb2.UserAppIDSet(
-            app_id="{YOUR_APP_ID}"
-        ),
-        concept_id="{YOUR_OBJECT_CONCEPT_ID}",
-        ids=["{YOUR_CONCEPT_RELATION_ID}"]
-    ),
-    metadata=metadata
-)
-
-if delete_concept_relation_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(delete_concept_relation_response.outputs[0].status.code))
-    print("\tDescription: {}".format(delete_concept_relation_response.outputs[0].status.description))
-    print("\tDetails: {}".format(delete_concept_relation_response.outputs[0].status.details))
-    raise Exception("Delete concept relation failed, status: " + delete_concept_relation_response.status.description)
-```
+    <CodeBlock className="language-python">{PythonDeleteRelations}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
