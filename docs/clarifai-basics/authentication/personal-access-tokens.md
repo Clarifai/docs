@@ -4,6 +4,8 @@ sidebar_position: 3
 
 # Personal Access Tokens
 
+<hr />
+
 Personal Access Tokens \(PAT here for short\) represent a specific user when accessing the Clarifai API.
 
 PATs allow you to access multiple apps with a single API key. PATs allow a user to access their own apps and any apps where they have been added as collaborators.
@@ -18,7 +20,7 @@ Select authentication:
 
 ![authentication-screen](/img/authentication_screen.jpg)
 
-And click on "Create a Personal Access Token"
+And click on "Create a Personal Access Token":
 
 ![create-pat](/img/create_pat.jpg)
 

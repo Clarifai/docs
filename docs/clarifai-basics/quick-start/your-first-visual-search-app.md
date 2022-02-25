@@ -2,14 +2,19 @@
 description: >-
   Get up-and-running in less than 1 minute with the world's most powerful AI
   platform
+sidebar_position: 2
 ---
 
 # Your First Visual Search App (~1 min)
 
+**Get up and running in less than 1 minute with the world's most powerful AI
+  platform**
+<hr />
+
 Visual search is a versatile and useful tool when you are working with visual data. Visual search helps you compare images based on their visual similarity.
 
 ## Step 1: Set up your account or login
-Just click here if you need to set up your account for the first time. Or click here to login.‌
+Just [click here](https://portal.clarifai.com/signup) if you need to set up your account for the first time. Or [click here](https://portal.clarifai.com/login) to login.‌
 
 ![Create account login](/img/create_acct_login.png)
 
@@ -41,12 +46,13 @@ You will be prompted to Add or Assign Concepts. Let's skip this step for now.
 ![skip add labels](/img/skip_add_labels.png)
 
 ## Step 5: Search for similar faces
-Once images are uploaded, click the "Eye" icon on the lefthand side of the scree to return to Explorer. Now just click on the spyglass icon next to any image.
+Once images are uploaded, click the "Eye" icon on the lefthand side of the screen to return to Explorer. Now just click on the spyglass icon next to any image.
 
 ![search by face](/img/search-by-face.png)
 
-Clarifai will sort your images by visual similarity. In this example, we can see that they top ranking results are images of the same person.
+Clarifai will sort your images by visual similarity. In this example, we can see that the top ranking results are images of the same person.
 
 ![view search results](/img/view-search-results.png)
 
+That's it!
 ​

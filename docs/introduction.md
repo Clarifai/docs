@@ -6,9 +6,15 @@ slug: /
 ---
 
 # Welcome
+
+*Clarifai provides a complete platform to deploy, maintain, and manage your AI models. Whether you have one input or billions, you are only steps away from using AI to power your business applications.*
+<hr />
+
 Clarifai offers an end-to-end platform for the complete AI lifecycle. Whether you have one input or billions, you are only steps away from using artificial intelligence to power your business applications.
 
-## Get started with a few clicks, or a few lines of code.
+## Get Started 
+
+Get started quickly with a few clicks or a few lines of code.
 
 ![](/img/api_v_portal.jpg)
 
@@ -18,7 +24,7 @@ Clarifai offers you two powerful ways to integrate AI within your technology sta
 
 [![](/img/icon_portal.jpg) **Clarifai Portal**](portal-guide/portal-overview.md) - Our custom user interface \(UI\) designed specifically for your AI projects. Portal makes it fast and easy to label data, build and train models, and connect these models into workflows.
 
-## Create and organize your AI projects
+## Create and Organize Your AI Projects
 
 ### Applications
 

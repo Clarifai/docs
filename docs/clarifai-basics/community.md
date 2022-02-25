@@ -4,6 +4,9 @@ description: We make our platform open for community to discover, test, use and 
 
 # Clarifai Community Quick Start
 
+**We make our platform open for community to discover, test, use, and share models and workflows (apps and datasets are coming soon) with Clarifai community**
+<hr />
+
 Access to our “AI lake” of pre-trained models and workflows including high quality models built by Clarifai, Hugging Face, Google and other top contributors.
 Use community resources as building blocks as you develop amazing things with our no code/low code end-to-end AI platform
 

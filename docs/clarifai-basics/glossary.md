@@ -5,6 +5,9 @@ sidebar_position: 2
 
 # Key Terminology to Know
 
+**Glossary of key terminology to know when working with the Clarifai Platform**
+<hr />
+
 ## Application
 
 An application is a kind of self-contained project for managing data, annotating, modeling, predicting and searching. An operation performed in one application will return results from data within that application but will be blind to data in other applications. You can create as many applications as you like and can divide your use among them to segment data into collections and manage access accordingly.
