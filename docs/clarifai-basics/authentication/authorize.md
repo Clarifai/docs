@@ -2,16 +2,16 @@
 sidebar_position: 2
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 # Authorize
 
-After creating your `API Key`, you are ready to make API calls. Most
-clients set up authentication when initializing the client, it can be
-changed for particular requests if needed. If you are using the REST
-API, you will need to add the `Authorization` header as described in
-the cURL example.
+<hr />
+ 
+After creating your `API Key`, you are ready to make API calls. Most clients set up authentication when initializing the client; though, it can be changed for particular requests, if needed. 
+
+If you are using the REST API, you will need to add the `Authorization` header as described in the cURL example.
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 <Tabs>
 <TabItem value="js" label="Javascript" default>
@@ -85,9 +85,8 @@ curl -X POST \
 </TabItem>
 </Tabs>
 
-If the API Key does not have the required scope\(s\) to execute a
-given request, you will get an error message reporting the missing
-scopes and/or endpoints that your key needs to execute this
-request. An invalid key may be reported as 'API key not
-found'. Failure to include a required key may result simple in
-'Invalid request'.
+:::note
+- If the API Key does not have the required scope\(s\) to execute a given request, you will get an error message reporting the missing scopes and/or endpoints that your key needs in order to execute the request.
+- An invalid key may be reported as 'API key not found'. 
+- Failure to include a required key may result in 'Invalid request'.
+:::
