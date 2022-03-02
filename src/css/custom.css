@@ -39,3 +39,27 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   text-transform: uppercase;
   font-size: 90%;
 }
+header .join__slack {
+  color: rgba(0, 0, 0, .5);
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  position: absolute;
+  right: 0;
+  padding: 8px 10px;
+  display: flex;
+  text-decoration: none;
+  color: white;
+}
+header .join__slack img {
+  max-height: 16px;
+  margin-right: 6px;
+}
+header .join__slack:active {
+  background: white;
+}
+header .join__slack:hover {
+  border-color: #ddd;
+  color: #5c1751cc;
+  background: white;
+}
