@@ -4,6 +4,8 @@ sidebar_position: 5
 
 # 2FA
 
+<hr />
+
 Two-factor authentication is an optional sign-in security feature that provides an additional layer of security for your account.
 
 ## Why 2FA?
