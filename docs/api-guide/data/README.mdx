@@ -6,8 +6,7 @@ description: >-
 
 # Your Data
 
-**Clarifai supports the most popular image, video, and text formats for your
-  input data**
+**Clarifai supports the most popular image, video, and text formats for your input data**
 <hr />
 
 Upload your inputs into the Clarifai platform for data labeling, training new models, search, or predictions. You can upload images, video, and text from URLs or from a local directory.
@@ -64,5 +63,5 @@ The notation of `[...]` means that the variable is a list of things, so `frames[
 Data Type     | Meaning
 ------------- | -------------
 frames[...].data.regions[...].region\_info.bounding\_box | These are the four corners of a bounding box in a specific region of a specific frame of video.
-frames[...].data.regions[...].data.concepts | This is the matrix of frames and regions containing the  concepts used in a model. For the general model, these would be the top 20 concepts with classified with the highest confidence in a specific region of a specific frame of video.
-frames[...].data.regions[...].track_id |  This is the matrix of frames and regions containing a tracking ids used to track objects across frames of a video.
+frames[...].data.regions[...].data.concepts | This is the matrix of frames and regions containing the  concepts used in a model. For the general model, these would be the top 20 concepts classified with the highest confidence in a specific region of a specific frame of video.
+frames[...].data.regions[...].track_id |  This is the matrix of frames and regions containing the tracking ids used to track objects across frames of a video.

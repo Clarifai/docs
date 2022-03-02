@@ -3,12 +3,16 @@ description: Manage dataset versions so you can track the performance of and ite
 sidebar_position: 4
 ---
 
+# Dataset Versions
+
+**Manage dataset versions so you can track the performance of your datasets and iterate over them**
+<hr />
+
+## Add a dataset version
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Dataset Versions
-
-## Add a dataset version
 <Tabs>
 <TabItem value="curl" label="cURL">
 
