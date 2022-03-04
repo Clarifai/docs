@@ -3,20 +3,38 @@ description: Clarifai makes it easy to customize and repurpose existing models.
 sidebar_position: 3
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 # Custom Models
 
-You do not need many images to get started. We recommend starting with 10 and adding more as needed. Before you train your first model you will have needed to [create an application](../../clarifai-basics/applications/#create-an-application) and select a [base workflow](../../clarifai-basics/applications/#base-workflow).
+**Clarifai makes it easy to customize and repurpose existing models**
+<hr />
+
+You do not need many images to get started. We recommend starting with 10 and adding more as needed. Before you train your first model, you need to [create an application](../../clarifai-basics/applications/#create-an-application) and select a Base Workflow.
 
 ![](/img/illustration-training.png)
 
-## Add images with concepts
+:::info
+The initialization code used in the following examples is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+:::
+
+## Add Images With Concepts
 
 To get started training your own model, you must first add images that already contain the concepts you want your model to see.
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+import PythonAddImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide/model/add_images_with_concepts.py";
+import PythonCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_model.py";
+import PythonTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/train_model.py";
+import PythonPredictModel from "!!raw-loader!../../../code_snippets/api-guide/model/predict_with_model.py";
+
+
 <Tabs>
+
+<TabItem value="grpc_python" label="gRPC Python">
+    <CodeBlock className="language-python">{PythonAddImagesConcepts}</CodeBlock>
+</TabItem>
+
 <TabItem value="grpc_java" label="gRPC Java">
 
 ```java
@@ -108,58 +126,6 @@ stub.PostInputs(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="grpc_python" label="gRPC Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-post_inputs_response = stub.PostInputs(
-    service_pb2.PostInputsRequest(
-        inputs=[
-            resources_pb2.Input(
-                data=resources_pb2.Data(
-                    image=resources_pb2.Image(
-                        url="https://samples.clarifai.com/puppy.jpeg",
-                        allow_duplicate_url=True
-                    ),
-                    concepts=[
-                        resources_pb2.Concept(id="charlie", value=1),
-                        resources_pb2.Concept(id="our_wedding", value=0),
-                    ]
-                )
-            ),
-            resources_pb2.Input(
-                data=resources_pb2.Data(
-                    image=resources_pb2.Image(
-                        url="https://samples.clarifai.com/wedding.jpg",
-                        allow_duplicate_url=True
-                    ),
-                    concepts=[
-                        resources_pb2.Concept(id="our_wedding", value=1),
-                        resources_pb2.Concept(id="charlie", value=0),
-                        resources_pb2.Concept(id="cat", value=0),
-                    ]
-                )
-            ),
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_inputs_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    for input_object in post_inputs_response.inputs:
-        print("Input " + input_object.id + " status:")
-        print(input_object.status)
-
-    print("\tCode: {}".format(post_inputs_response.outputs[0].status.code))
-    print("\tDescription: {}".format(post_inputs_response.outputs[0].status.description))
-    print("\tDetails: {}".format(post_inputs_response.outputs[0].status.details))
-    raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
 ```
 </TabItem>
 
@@ -395,50 +361,106 @@ fetch("https://api.clarifai.com/v2/inputs", requestOptions)
 
 </Tabs>
 
-<Tabs>
-<TabItem value="response_json" label="Response JSON">
+<details>
+  <summary>JSON Output Example</summary>
 
 ```javascript
-{
-  "status": {
-    "code": 10000,
-    "description": "Ok"
-  },
-  "inputs": [
-    {
-      "id": "e82fd13b11354d808cc48dc8f94ec3a9",
-      "created_at": "2016-11-22T17:16:00Z",
-      "data": {
-        "image": {
-          "url": "https://samples.clarifai.com/puppy.jpeg"
-        },
-        "concepts": [
-          {
-            "id": "charlie",
-            "name": "charlie",
-            "app_id": "f09abb8a57c041cbb94759ebb0cf1b0d",
-            "value": 1
-          }
-        ]
-      },
-      "status": {
-        "code": 30000,
-        "description": "Download complete"
+status {
+  code: SUCCESS
+  description: "Ok"
+  req_id: "7ff42b88ef477bb9b9ecab0b61d051ca"
+}
+inputs {
+  id: "7b708ee204284ed0a914dc37a7def8be"
+  data {
+    image {
+      url: "https://samples.clarifai.com/puppy.jpeg"
+      image_info {
+        format: "UnknownImageFormat"
+        color_mode: "UnknownColorMode"
       }
     }
-  ]
+    concepts {
+      id: "charlie"
+      name: "charlie"
+      value: 1.0
+      app_id: "test-app"
+    }
+    concepts {
+      id: "our_wedding"
+      name: "our_wedding"
+      app_id: "test-app"
+    }
+  }
+  created_at {
+    seconds: 1646288847
+    nanos: 89138802
+  }
+  modified_at {
+    seconds: 1646288847
+    nanos: 89138802
+  }
+  status {
+    code: INPUT_DOWNLOAD_PENDING
+    description: "Download pending"
+  }
 }
-```
-</TabItem>
-</Tabs>
+inputs {
+  id: "5571376e9d42447dafb76711669f6731"
+  data {
+    image {
+      url: "https://samples.clarifai.com/wedding.jpg"
+      image_info {
+        format: "UnknownImageFormat"
+        color_mode: "UnknownColorMode"
+      }
+    }
+    concepts {
+      id: "our_wedding"
+      name: "our_wedding"
+      value: 1.0
+      app_id: "test-app"
+    }
+    concepts {
+      id: "charlie"
+      name: "charlie"
+      app_id: "test-app"
+    }
+    concepts {
+      id: "cat"
+      name: "cat"
+      app_id: "test-app"
+    }
+  }
+  created_at {
+    seconds: 1646288847
+    nanos: 89138802
+  }
+  modified_at {
+    seconds: 1646288847
+    nanos: 89138802
+  }
+  status {
+    code: INPUT_DOWNLOAD_PENDING
+    description: "Download pending"
+  }
+}
 
-## Create a model
+```
+</details>
+
+## Create a Model
 
 Once your images with concepts are added, you are now ready to create the model. You'll need a name for the model and you'll also need to provide it with the concepts you added above.
 
 Take note of the `model id` that is returned in the response. You'll need that for the next two steps.
 
 <Tabs>
+
+<TabItem value="grpc_python" label="gRPC Python">
+    <CodeBlock className="language-python">{PythonCreateModel}</CodeBlock>
+</TabItem>
+
 <TabItem value="grpc_java" label="gRPC Java">
 
 ```java
@@ -501,41 +523,6 @@ stub.PostModels(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="grpc_python" label="gRPC Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-post_models_response = stub.PostModels(
-    service_pb2.PostModelsRequest(
-        models=[
-            resources_pb2.Model(
-                id="pets",
-                output_info=resources_pb2.OutputInfo(
-                    data=resources_pb2.Data(
-                        concepts=[resources_pb2.Concept(id="charlie", value=1)]
-                    ),
-                    output_config=resources_pb2.OutputConfig(
-                        concepts_mutually_exclusive=False,
-                        closed_environment=False
-                    )
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_models_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(post_models_response.outputs[0].status.code))
-    print("\tDescription: {}".format(post_models_response.outputs[0].status.description))
-    print("\tDetails: {}".format(post_models_response.outputs[0].status.details))
-    raise Exception("Post models failed, status: " + post_models_response.status.description)
 ```
 </TabItem>
 
@@ -711,49 +698,106 @@ fetch("https://api.clarifai.com/v2/models", requestOptions)
 
 </Tabs>
 
-<Tabs>
-<TabItem value="response_json" label="Response JSON">
+<details>
+  <summary>JSON Output Example</summary>
 
 ```javascript
-{
-  "status": {
-    "code": 10000,
-    "description": "Ok"
-  },
-  "model": {
-    "name": "pets",
-    "id": "a10f0cf48cf3426cbb8c4805e246c214",
-    "created_at": "2016-11-22T17:17:36Z",
-    "app_id": "f09abb8a57c041cbb94759ebb0cf1b0d",
-    "output_info": {
-      "message": "Show output_info with: GET /models/{model_id}/output_info",
-      "type": "concept",
-      "output_config": {
-        "concepts_mutually_exclusive": false,
-        "closed_environment": false
+status {
+  code: SUCCESS
+  description: "Ok"
+  req_id: "5e0b4675ea65cc53735c9ffd6d9b8f64"
+}
+model {
+  id: "my-pets"
+  name: "my-pets"
+  created_at {
+    seconds: 1646291711
+    nanos: 640607856
+  }
+  app_id: "test-app"
+  output_info {
+    output_config {
+    }
+    message: "Show output_info with: GET /models/{model_id}/output_info"
+    params {
+      fields {
+        key: "max_concepts"
+        value {
+          number_value: 20.0
+        }
       }
-    },
-    "model_version": {
-      "id": "e7bcd534b61b4874a3ab69fba974c012",
-      "created_at": "2016-11-22T17:17:36Z",
-      "status": {
-        "code": 21102,
-        "description": "Model not yet trained"
+      fields {
+        key: "min_value"
+        value {
+          number_value: 0.0
+        }
+      }
+      fields {
+        key: "select_concepts"
+        value {
+          list_value {
+          }
+        }
       }
     }
   }
+  model_version {
+    id: "464bec38d2a2419c8a26e5b2660a0c0b"
+    created_at {
+      seconds: 1646291711
+      nanos: 667255260
+    }
+    status {
+      code: MODEL_UNTRAINED
+      description: "Model not yet trained"
+    }
+    active_concept_count: 1
+    visibility {
+      gettable: PRIVATE
+    }
+    app_id: "test-app"
+    user_id: "ei2leoz3s3iy"
+    metadata {
+    }
+  }
+  user_id: "ei2leoz3s3iy"
+  input_info {
+    params {
+    }
+  }
+  train_info {
+    params {
+    }
+  }
+  model_type_id: "embedding-classifier"
+  visibility {
+    gettable: PRIVATE
+  }
+  metadata {
+  }
+  modified_at {
+    seconds: 1646291711
+    nanos: 640607856
+  }
+  import_info {
+  }
 }
-```
-</TabItem>
-</Tabs>
 
-## Train the model
+```
+</details>
+
+## Train the Model
 
 Now that you've added images with concepts, then created a model with those concepts, the next step is to train the model. When you train a model, you are telling the system to look at all the images with concepts you've provided and learn from them. This train operation is asynchronous. It may take a few seconds for your model to be fully trained and ready.
 
 Keep note of the `model_version id` in the response. We'll need that for the next section when we predict with the model.
 
 <Tabs>
+
+<TabItem value="grpc_python" label="gRPC Python">
+    <CodeBlock className="language-python">{PythonTrainModel}</CodeBlock>
+</TabItem>
+
 <TabItem value="grpc_java" label="gRPC Java">
 
 ```java
@@ -797,28 +841,6 @@ stub.PostModelVersions(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="grpc_python" label="gRPC Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-post_model_versions = stub.PostModelVersions(
-    service_pb2.PostModelVersionsRequest(
-        model_id="pets"
-    ),
-    metadata=metadata
-)
-
-if post_model_versions.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(post_model_versions.outputs[0].status.code))
-    print("\tDescription: {}".format(post_model_versions.outputs[0].status.description))
-    print("\tDetails: {}".format(post_model_versions.outputs[0].status.details))
-    raise Exception("Post model versions failed, status: " + post_model_versions.status.description)
 ```
 </TabItem>
 
@@ -955,49 +977,104 @@ fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models/pets/versions`,
 
 </Tabs>
 
-<Tabs>
-<TabItem value="response_json" label="Response JSON">
+<details>
+  <summary>JSON Output Example</summary>
 
 ```javascript
-{
-  "status": {
-    "code": 10000,
-    "description": "Ok"
-  },
-  "model": {
-    "name": "pets",
-    "id": "a10f0cf48cf3426cbb8c4805e246c214",
-    "created_at": "2016-11-22T17:17:36Z",
-    "app_id": "f09abb8a57c041cbb94759ebb0cf1b0d",
-    "output_info": {
-      "message": "Show output_info with: GET /models/{model_id}/output_info",
-      "type": "concept",
-      "output_config": {
-        "concepts_mutually_exclusive": false,
-        "closed_environment": false
+status {
+  code: SUCCESS
+  description: "Ok"
+  req_id: "d707b6c108847ccd9891e7ad98f91f98"
+}
+model {
+  id: "my-pets"
+  name: "my-pets"
+  created_at {
+    seconds: 1646291711
+    nanos: 640607000
+  }
+  app_id: "test-app"
+  output_info {
+    output_config {
+    }
+    message: "Show output_info with: GET /models/{model_id}/output_info"
+    params {
+      fields {
+        key: "max_concepts"
+        value {
+          number_value: 20.0
+        }
       }
-    },
-    "model_version": {
-      "id": "d1b38fd2251148d08675c5542ef00c7b",
-      "created_at": "2016-11-22T17:21:13Z",
-      "status": {
-        "code": 21103,
-        "description": "Custom model is currently in queue for training, waiting on inputs to process."
+      fields {
+        key: "min_value"
+        value {
+          number_value: 0.0
+        }
+      }
+      fields {
+        key: "select_concepts"
+        value {
+          list_value {
+          }
+        }
       }
     }
   }
+  model_version {
+    id: "8eb21f63ba9d40c7b84ecfd664ac603d"
+    created_at {
+      seconds: 1646330065
+      nanos: 537080027
+    }
+    status {
+      code: MODEL_QUEUED_FOR_TRAINING
+      description: "Model is currently in queue for training."
+    }
+    active_concept_count: 1
+    visibility {
+      gettable: PRIVATE
+    }
+    app_id: "test-app"
+    user_id: "ei2leoz3s3iy"
+    metadata {
+    }
+  }
+  user_id: "ei2leoz3s3iy"
+  input_info {
+  }
+  train_info {
+  }
+  model_type_id: "embedding-classifier"
+  visibility {
+    gettable: PRIVATE
+  }
+  metadata {
+  }
+  modified_at {
+    seconds: 1646291711
+    nanos: 640607000
+  }
+  import_info {
+  }
 }
+
 ```
-</TabItem>
-</Tabs>
+</details>
 
-## Predict with the model
+## Predict With the Model
 
-Now that we have a trained model we can start making predictions with it. In our predict call we specify three items. The `model id`, `model version id` \(optional, defaults to the latest trained version\) and the `input` we want a prediction for.
+Now that we have trained the model, we can start making predictions with it. In our predict call, we specify three items: the `model id`, `model version id` \(optional, defaults to the latest trained version\), and the `input` we want a prediction for.
 
-_Note: you can repeat the above steps as often as you like. By adding more images with concepts and training, you can get the model to predict exactly how you want it to._
+:::note
+You can repeat the above steps as often as you like. By adding more images with concepts and training, you can get the model to predict exactly how you want it to.
+:::
 
 <Tabs>
+
+<TabItem value="grpc_python" label="gRPC Python">
+    <CodeBlock className="language-python">{PythonPredictModel}</CodeBlock>
+</TabItem>
+
 <TabItem value="grpc_java" label="gRPC Java">
 
 ```java
@@ -1068,44 +1145,6 @@ stub.PostModelOutputs(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="grpc_python" label="gRPC Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-post_model_outputs_response = stub.PostModelOutputs(
-    service_pb2.PostModelOutputsRequest(
-        model_id="pets",
-        version_id="{YOUR_MODEL_VERSION_ID}",  # This is optional. Defaults to the latest model version.
-        inputs=[
-            resources_pb2.Input(
-                data=resources_pb2.Data(
-                    image=resources_pb2.Image(
-                        url="https://samples.clarifai.com/metro-north.jpg"
-                    )
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(post_model_outputs_response.outputs[0].status.code))
-    print("\tDescription: {}".format(post_model_outputs_response.outputs[0].status.description))
-    print("\tDetails: {}".format(post_model_outputs_response.outputs[0].status.details))
-    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
-
-# Since we have one input, one output will exist here.
-output = post_model_outputs_response.outputs[0]
-
-print("Predicted concepts:")
-for concept in output.data.concepts:
-    print("%s %.2f" % (concept.name, concept.value))
 ```
 </TabItem>
 
@@ -1286,67 +1325,125 @@ fetch(`https://api.clarifai.com/v2/models/pets/versions/{YOUR_MODEL_VERSION_ID}/
 
 </Tabs>
 
-<Tabs>
-<TabItem value="response_json" label="Response JSON">
+<details>
+  <summary>Code Output Example</summary>
+
+```text
+Predicted concepts:
+charlie 1.00
+```
+</details>
+
+
+<details>
+  <summary>JSON Output Example</summary>
 
 ```javascript
-{
-  "status": {
-    "code": 10000,
-    "description": "Ok"
-  },
-  "outputs": [
-    {
-      "id": "e8b6eb27de764f3fa8d4f7752a3a2dfc",
-      "status": {
-        "code": 10000,
-        "description": "Ok"
-      },
-      "created_at": "2016-11-22T17:22:23Z",
-      "model": {
-        "name": "pets",
-        "id": "a10f0cf48cf3426cbb8c4805e246c214",
-        "created_at": "2016-11-22T17:17:36Z",
-        "app_id": "f09abb8a57c041cbb94759ebb0cf1b0d",
-        "output_info": {
-          "message": "Show output_info with: GET /models/{model_id}/output_info",
-          "type": "concept",
-          "output_config": {
-            "concepts_mutually_exclusive": false,
-            "closed_environment": false
-          }
-        },
-        "model_version": {
-          "id": "d1b38fd2251148d08675c5542ef00c7b",
-          "created_at": "2016-11-22T17:21:13Z",
-          "status": {
-            "code": 21100,
-            "description": "Model trained successfully"
-          }
-        }
-      },
-      "input": {
-        "id": "e8b6eb27de764f3fa8d4f7752a3a2dfc",
-        "data": {
-          "image": {
-            "url": "https://samples.clarifai.com/puppy.jpeg"
+status {
+  code: SUCCESS
+  description: "Ok"
+  req_id: "db4cf89c13303aa9889a89f2ae0a91f4"
+}
+outputs {
+  id: "20ed3f59dc5b4b1e9082a7e91ff29f48"
+  status {
+    code: SUCCESS
+    description: "Ok"
+  }
+  created_at {
+    seconds: 1646333543
+    nanos: 352417324
+  }
+  model {
+    id: "my-pets"
+    name: "my-pets"
+    created_at {
+      seconds: 1646291711
+      nanos: 640607000
+    }
+    app_id: "test-app"
+    output_info {
+      output_config {
+      }
+      message: "Show output_info with: GET /models/{model_id}/output_info"
+      params {
+        fields {
+          key: "max_concepts"
+          value {
+            number_value: 20.0
           }
         }
-      },
-      "data": {
-        "concepts": [
-          {
-            "id": "charlie",
-            "name": "charlie",
-            "app_id": "f09abb8a57c041cbb94759ebb0cf1b0d",
-            "value": 0.98308545
+        fields {
+          key: "min_value"
+          value {
+            number_value: 0.0
           }
-        ]
+        }
+        fields {
+          key: "select_concepts"
+          value {
+            list_value {
+            }
+          }
+        }
       }
     }
-  ]
+    model_version {
+      id: "8eb21f63ba9d40c7b84ecfd664ac603d"
+      created_at {
+        seconds: 1646330065
+        nanos: 537080000
+      }
+      status {
+        code: MODEL_TRAINED
+        description: "Model is trained and ready"
+      }
+      total_input_count: 14
+      completed_at {
+        seconds: 1646330068
+        nanos: 100250000
+      }
+      visibility {
+        gettable: PRIVATE
+      }
+      app_id: "test-app"
+      user_id: "ei2leoz3s3iy"
+      metadata {
+      }
+    }
+    user_id: "ei2leoz3s3iy"
+    input_info {
+    }
+    train_info {
+    }
+    model_type_id: "embedding-classifier"
+    visibility {
+      gettable: PRIVATE
+    }
+    modified_at {
+      seconds: 1646291711
+      nanos: 640607000
+    }
+    import_info {
+    }
+  }
+  input {
+    id: "f1ce5584c5e54653b722ac3ef163a077"
+    data {
+      image {
+        url: "https://samples.clarifai.com/puppy.jpeg"
+      }
+    }
+  }
+  data {
+    concepts {
+      id: "charlie"
+      name: "charlie"
+      value: 0.9998574256896973
+      app_id: "test-app"
+    }
+  }
 }
-```
-</TabItem>
-</Tabs>
 
+```
+</details>

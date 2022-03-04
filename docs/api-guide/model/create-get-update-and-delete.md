@@ -3,16 +3,21 @@ description: Manage your model training jobs.
 sidebar_position: 5
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 # Create, Get, Update, Delete
+
+**Manage your model training jobs**
+<hr />
 
 ### Create Model
 
 To create a model, you need to specify the model's name and other required fields \(which depend on the model\). Specifying the ID is optional.
 
 Below, we create a classifier model with one initial concept. You can always add and remove concepts later.
+
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 
 <Tabs>
 <TabItem value="java" label="Java">

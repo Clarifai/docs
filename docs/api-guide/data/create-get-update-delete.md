@@ -33,7 +33,7 @@ The API is built around a simple idea. You send inputs \(such as images\) to the
 
 When you add an input to your app, the base workflow of your app runs, computing the outputs from all the models in that workflow and indexing those outputs. Those indexed outputs are what incur the indexing fee monthly, and enable search and training on top of the outputs of the base workflow models.
 
-:::note
+:::info
 The initialization code used in the following examples is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
 :::
 
@@ -41,7 +41,7 @@ The initialization code used in the following examples is outlined in detail on 
 
 You can add inputs one by one or in bulk. If you send them in bulk, you are limited to sending 128 inputs at a time.
 
-:::info
+:::note
 **Adding inputs is an asynchronous operation.** That means it will process indexing of your inputs through your default workflow in the background, which can take some time. In order to check the status of each input you add, see the section on [Get Inputs](#get-inputs) and look for status 30000 \(INPUT\_IMAGE\_DOWNLOAD\_SUCCESS\) status code on each input to know when it has successfully been indexed.
 :::
 

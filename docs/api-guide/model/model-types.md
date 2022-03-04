@@ -5,6 +5,9 @@ sidebar_position: 2
 
 # Model Types
 
+**Learn about some of the most important model types on the Clarifai platform**
+<hr />
+
 Clarifai offers a wide variety of models that can be used as standalone solutions, or as the building blocks for your own custom business solution.
 
 This page describes some important model types that you should know when working with the Clarifai platform. Please keep in mind that this is an overview of the general categories of models available to you and that new models are created all the time. For a listing of the models available to you:

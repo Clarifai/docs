@@ -3,12 +3,14 @@ description: Capture data for your application.
 sidebar_position: 4
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 # Collectors
 
-Collectors capture input data for your app. They enable you to pipe in data from production models automatically, and are the key to unlocking many platform training capabilities like active learning. Collectors are available with Essential and Enterprise plans to help you manage data ingestion at scale.
+**Capture data for your application**
+<hr />
+
+Collectors capture input data for your app. They enable you to pipe in data from production models automatically, and are the key to unlocking many platform training capabilities like active learning. 
+
+Collectors are available with Essential and Enterprise plans to help you manage data ingestion at scale.
 
 You can create app-level collectors to monitor specific models and specify sampling rules for triggering data ingestion. Collectors can only collect data from apps where you are the app owner.
 
@@ -52,6 +54,10 @@ See also the [Auto Annotation walkthrough](https://docs.clarifai.com/api-guide/w
 ## Add Collector
 
 Add a new collector to your application.
+
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 <Tabs>
 <TabItem value="java" label="Java">
