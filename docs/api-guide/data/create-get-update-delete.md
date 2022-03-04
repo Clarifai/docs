@@ -3,26 +3,58 @@ description: Manage the data in your app.
 sidebar_position: 3
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 # Adding and Removing Data
 
-## Inputs
+**Manage the data in your app**
+<hr />
 
-The API is built around a simple idea. You send inputs \(images\) to the service and it returns predictions. In addition to receiving predictions on inputs, you can also index inputs and their predictions to later search against. You can also index inputs with concepts to later train your own model.
 
-When you add an input to your app, the base workflow of your app runs, computing the outputs from all the models in that workflow and indexes those outputs. Those indexed outputs are what incur the indexing fee monthly, and enable search and training on top of the outputs of the base workflow models.
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+import PythonAddInputsViaURL from "!!raw-loader!../../../code_snippets/api-guide/data/add_inputs_via_url.py";
+import PythonAddInputsViaBytes from "!!raw-loader!../../../code_snippets/api-guide/data/add_inputs_via_bytes.py";
+import PythonAddMultipleInputsIds from "!!raw-loader!../../../code_snippets/api-guide/data/add_multiple_inputs_with_ids.py";
+import PythonAddInputsConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/add_inputs_with_concepts.py";
+import PythonAddInputsCustomMetadata from "!!raw-loader!../../../code_snippets/api-guide/data/add_inputs_custom_metadata.py";
+import PythonListAllInputs from "!!raw-loader!../../../code_snippets/api-guide/data/list_all_inputs.py";
+import PythonListInputsStreaming from "!!raw-loader!../../../code_snippets/api-guide/data/list_inputs_streaming.py";
+import PythonGetInputId from "!!raw-loader!../../../code_snippets/api-guide/data/get_input_by_id.py";
+import PythonGetInputsStatus from "!!raw-loader!../../../code_snippets/api-guide/data/get_inputs_status.py";
+import PythonUpdateInputConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/update_input_concepts.py";
+import PythonBulkUpdateInputsConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/bulk_update_inputs_concepts.py";
+import PythonDeleteConceptsInput from "!!raw-loader!../../../code_snippets/api-guide/data/delete_concepts_input.py";
+import PythonBulkDeleteConceptsInputs from "!!raw-loader!../../../code_snippets/api-guide/data/bulk_delete_concepts_inputs.py";
+import PythonDeleteInputId from "!!raw-loader!../../../code_snippets/api-guide/data/delete_input_by_id.py";
+import PythonDeleteListInputs from "!!raw-loader!../../../code_snippets/api-guide/data/delete_list_inputs.py";
 
-### Add Inputs
 
-You can add inputs one by one or in bulk. If you do send bulk, you are limited to sending 128 inputs at a time.
+The API is built around a simple idea. You send inputs \(such as images\) to the service and it returns predictions. In addition to receiving predictions on inputs, you can also index inputs and their predictions to later search against. You can also index inputs with concepts to later train your own model.
 
-**Important: adding inputs is an asynchronous operation.** That means it will process indexing of your inputs through your default workflow in the background, which can take some time. In order to check the status of each input you add, see the section on [Get Input by ID](https://github.com/Clarifai/docs/tree/1c1d25cdd43190c38a2edb313297c0d566b3a0e3/api-guide/inputs/inputs.md#get-input-by-id) to look for status 30000 \(INPUT\_IMAGE\_DOWNLOAD\_SUCCESS\) status code on each input to know when it's successfully been indexed.
+When you add an input to your app, the base workflow of your app runs, computing the outputs from all the models in that workflow and indexing those outputs. Those indexed outputs are what incur the indexing fee monthly, and enable search and training on top of the outputs of the base workflow models.
 
-#### Add an input using a publicly accessible URL
+:::info
+The initialization code used in the following examples is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+:::
+
+## Add Inputs
+
+You can add inputs one by one or in bulk. If you send them in bulk, you are limited to sending 128 inputs at a time.
+
+:::note
+**Adding inputs is an asynchronous operation.** That means it will process indexing of your inputs through your default workflow in the background, which can take some time. In order to check the status of each input you add, see the section on [Get Inputs](#get-inputs) and look for status 30000 \(INPUT\_IMAGE\_DOWNLOAD\_SUCCESS\) status code on each input to know when it has successfully been indexed.
+:::
+
+### Add Inputs via URL
+
+Below is an example of how to add inputs via a publicly accessible URL. 
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonAddInputsViaURL}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -71,37 +103,6 @@ stub.PostInputs(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-post_inputs_response = stub.PostInputs(
-    service_pb2.PostInputsRequest(
-        inputs=[
-            resources_pb2.Input(
-                data=resources_pb2.Data(
-                    image=resources_pb2.Image(
-                        url="https://samples.clarifai.com/metro-north.jpg",
-                        allow_duplicate_url=True
-                    )
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_inputs_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(post_inputs_response.outputs[0].status.code))
-    print("\tDescription: {}".format(post_inputs_response.outputs[0].status.description))
-    print("\tDetails: {}".format(post_inputs_response.outputs[0].status.details))
-    raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
 ```
 </TabItem>
 
@@ -203,11 +204,20 @@ fetch("https://api.clarifai.com/v2/inputs", requestOptions)
 
 </Tabs>
 
-#### Add an input using bytes
+### Add Inputs via Bytes
 
-The data must be base64 encoded. When you add a base64 image to our servers, a copy will be stored and hosted on our servers. If you already have an image hosting service we recommend using it and adding images via the `url` parameter.
+Below is an example of how to add inputs via bytes.
+
+:::note
+The data must be base64 encoded. When you add a base64 image to our servers, a copy will be stored and hosted on our servers. If you already have an image hosting service, we recommend using it and adding images via the `url` parameter.
+:::
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonAddInputsViaBytes}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -263,39 +273,6 @@ stub.PostInputs(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-with open("{YOUR_IMAGE_LOCATION}", "rb") as f:
-    file_bytes = f.read()
-
-post_inputs_response = stub.PostInputs(
-    service_pb2.PostInputsRequest(
-        inputs=[
-            resources_pb2.Input(
-                data=resources_pb2.Data(
-                    image=resources_pb2.Image(
-                        base64=file_bytes
-                    )
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_inputs_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(post_inputs_response.outputs[0].status.code))
-    print("\tDescription: {}".format(post_inputs_response.outputs[0].status.description))
-    print("\tDetails: {}".format(post_inputs_response.outputs[0].status.details))
-    raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
 ```
 </TabItem>
 
@@ -395,13 +372,18 @@ fetch("https://api.clarifai.com/v2/inputs", requestOptions)
 
 </Tabs>
 
-#### Add multiple inputs with ids
+### Add Multiple Inputs With IDs
 
+In cases where you have your own `id` and you only have one item per image, you are encouraged to send inputs with your own `id`. This will help you later match the input to your own database. 
 
-In cases where you have your own `id` and you only have one item per image, you are encouraged to send inputs with your own `id`. This will help you later match the input to your own database. If you do not send an `id`, one will be created for you. If you have more than one item per image, it is recommended that you put the product id in metadata.
-
+If you do not send an `id`, one will be created for you. If you have more than one item per image, it is recommended that you put the product `id` in the metadata.
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonAddMultipleInputsIds}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -484,50 +466,6 @@ stub.PostInputs(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-post_inputs_response = stub.PostInputs(
-    service_pb2.PostInputsRequest(
-        inputs=[
-            resources_pb2.Input(
-                id="train1",
-                data=resources_pb2.Data(
-                    image=resources_pb2.Image(
-                        url="https://samples.clarifai.com/metro-north.jpg",
-                        allow_duplicate_url=True
-                    )
-                )
-            ),
-            resources_pb2.Input(
-                id="puppy1",
-                data=resources_pb2.Data(
-                    image=resources_pb2.Image(
-                        url="https://samples.clarifai.com/puppy.jpeg",
-                        allow_duplicate_url=True
-                    )
-                )
-            ),
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_inputs_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    for input_object in post_inputs_response.inputs:
-        print("Input " + input_object.id + " status:")
-        print(input_object.status)
-    print("\tCode: {}".format(post_inputs_response.outputs[0].status.code))
-    print("\tDescription: {}".format(post_inputs_response.outputs[0].status.description))
-    print("\tDetails: {}".format(post_inputs_response.outputs[0].status.details))
-    raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
 ```
 </TabItem>
 
@@ -664,15 +602,22 @@ fetch("https://api.clarifai.com/v2/inputs", requestOptions)
 
 </Tabs>
 
-### Add inputs with concepts
+### Add Inputs With Concepts
 
-If you would like to add an input with concepts, you can do so like this. Concepts play an important role in creating your own models using your own concepts. You can learn more about [creating your own models](https://github.com/Clarifai/docs/tree/5882f46bd17affcd85ed3e2ec98f4d6f355b58a9/train.md) above. Concepts also help you search for inputs. You can [learn more about search](../search/) here.
+If you would like to add an input with concepts, you can do so. Concepts play an important role in creating your own models. 
 
-When you add a concept to an input, you need to indicate whether the concept is present in the image or if it is not present.
+You can learn more about [creating your own models here](../model). Concepts also help you search for inputs. You can [learn more about search here](../search).
 
-You can add inputs with concepts as either a URL or bytes.
+When you add a concept to an input, you need to indicate whether the concept is present in the image or not. 
+
+You can add inputs with concepts via URLs or bytes.
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonAddInputsConcepts}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -730,38 +675,6 @@ stub.PostInputs(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-post_inputs_response = stub.PostInputs(
-    service_pb2.PostInputsRequest(
-        inputs=[
-            resources_pb2.Input(
-                data=resources_pb2.Data(
-                    image=resources_pb2.Image(
-                        url="https://samples.clarifai.com/puppy.jpeg",
-                        allow_duplicate_url=True
-                    ),
-                    concepts=[resources_pb2.Concept(id="charlie", value=1.)]
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_inputs_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(post_inputs_response.outputs[0].status.code))
-    print("\tDescription: {}".format(post_inputs_response.outputs[0].status.description))
-    print("\tDetails: {}".format(post_inputs_response.outputs[0].status.details))
-    raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
 ```
 </TabItem>
 
@@ -887,12 +800,12 @@ fetch("https://api.clarifai.com/v2/inputs", requestOptions)
 
 </Tabs>
 
-### Add inputs with custom metadata
+### Add Inputs With Custom Metadata
 
-In addition to adding an input with concepts, you can also add an input with custom metadata. This metadata will then be [searchable](https://github.com/Clarifai/docs/tree/5882f46bd17affcd85ed3e2ec98f4d6f355b58a9/advanced-searches.md#by-custom-metadata). Metadata can be any arbitrary JSON.
+In addition to adding an input with concepts, you can also add an input with custom metadata. This metadata will then be searchable. Metadata can be any arbitrary JSON.
 
 
-If you have more than one item per image it is recommended to put the id in metadata like:
+If you have more than one item per image, it is recommended to put the `id` in the metadata like:
 
 ```text
 {
@@ -900,8 +813,12 @@ If you have more than one item per image it is recommended to put the id in meta
 }
 ```
 
-
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonAddInputsCustomMetadata}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -962,43 +879,6 @@ stub.PostInputs(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="python" label="Python">
-
-```python
-from google.protobuf.struct_pb2 import Struct
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-input_metadata = Struct()
-input_metadata.update({"id": "id001", "type": "animal", "size": 100})
-
-post_inputs_response = stub.PostInputs(
-    service_pb2.PostInputsRequest(
-        inputs=[
-            resources_pb2.Input(
-                data=resources_pb2.Data(
-                    image=resources_pb2.Image(
-                        url="https://samples.clarifai.com/puppy.jpeg",
-                        allow_duplicate_url=True
-                    ),
-                    metadata=input_metadata
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_inputs_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(post_inputs_response.outputs[0].status.code))
-    print("\tDescription: {}".format(post_inputs_response.outputs[0].status.description))
-    print("\tDetails: {}".format(post_inputs_response.outputs[0].status.details))
-    raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
 ```
 </TabItem>
 
@@ -1065,15 +945,26 @@ fetch("https://api.clarifai.com/v2/inputs", requestOptions)
 
 </Tabs>
 
-### List inputs
+## List Inputs
 
+### List all Inputs
+
+<!--##LINKS NOT WORKING
 You can list all the inputs \(images\) you have previously added either for [search](https://github.com/Clarifai/docs/tree/5882f46bd17affcd85ed3e2ec98f4d6f355b58a9/advanced-searches.md) or [train](https://github.com/Clarifai/docs/tree/5882f46bd17affcd85ed3e2ec98f4d6f355b58a9/train.md).
+-->
+
+You can list all the inputs \(images\) you have previously added either for search or train.
 
 If you added inputs with concepts, they will be returned in the response as well.
 
 This request is paginated.
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonListAllInputs}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -1123,29 +1014,6 @@ stub.ListInputs(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-list_inputs_response = stub.ListInputs(
-    service_pb2.ListInputsRequest(page=1, per_page=10),
-    metadata=metadata
-)
-
-if list_inputs_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(list_inputs_response.outputs[0].status.code))
-    print("\tDescription: {}".format(list_inputs_response.outputs[0].status.description))
-    print("\tDetails: {}".format(list_inputs_response.outputs[0].status.details))
-    raise Exception("List inputs failed, status: " + list_inputs_response.status.description)
-
-for input_object in list_inputs_response.inputs:
-    print(input_object)
 ```
 </TabItem>
 
@@ -1202,13 +1070,18 @@ fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/inputs?page=1&per_page
 
 </Tabs>
 
-### List inputs \(streaming\)
+### List Inputs \(Streaming\)
 
-Another method for listing inputs which was built to scalably list app's inputs in an iterative / streaming fashion. `StreamInputs` will return `per_page` number of inputs from a certain input onward, controlled by the optional `last_id` parameter \(defaults to the first input\).
+This is another method for listing inputs which was built to scalably list an app's inputs in an iterative / streaming fashion. `StreamInputs` will return `per_page` number of inputs from a certain input onward, controlled by the optional `last_id` parameter \(defaults to the first input\).
 
 By default, the stream will return inputs from oldest to newest. Set the `descending` field to true to reverse that order.
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonListInputsStreaming}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -1315,43 +1188,6 @@ stub.StreamInputs(
 ```
 </TabItem>
 
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-# To start from beginning, do not provide the last_id parameter.
-stream_inputs_response = stub.StreamInputs(
-    service_pb2.StreamInputsRequest(per_page=10),
-    metadata=metadata
-)
-
-if stream_inputs_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(stream_inputs_response.outputs[0].status.code))
-    print("\tDescription: {}".format(stream_inputs_response.outputs[0].status.description))
-    print("\tDetails: {}".format(stream_inputs_response.outputs[0].status.details))
-    raise Exception("Stream inputs failed, status: " + stream_inputs_response.status.description)
-
-print("First response (starting from the first input):")
-for input_object in stream_inputs_response.inputs:
-    print("\t" + input_object.id)
-
-last_id = stream_inputs_response.inputs[-1].id
-
-# Set last_id to get the next set of inputs. The returned inputs will not include the last_id input.
-stream_inputs_response = stub.StreamInputs(
-    service_pb2.StreamInputsRequest(per_page=10, last_id=last_id),
-    metadata=metadata
-)
-
-print(f"Second response (first input is the one following input ID {last_id}):")
-for input_object in stream_inputs_response.inputs:
-    print("\t" + input_object.id)
-```
-</TabItem>
-
 <TabItem value="js_rest" label="Javascript (REST)">
 
 ```javascript
@@ -1402,11 +1238,18 @@ run()
 
 </Tabs>
 
-### Get input by id
+## Get Inputs
 
-If you'd like to get a specific input by id, you can do that as well.
+### Get Input by ID
+
+If you'd like to get the details of a specific input by its `id`, you can do that as well.
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonGetInputId}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -1453,29 +1296,6 @@ stub.GetInput(
         console.log(JSON.stringify(input, null, 2));
     }
 );
-```
-</TabItem>
-
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-get_input_response = stub.GetInput(
-    service_pb2.GetInputRequest(input_id="{YOUR_INPUT_ID}"),
-    metadata=metadata
-)
-
-if get_input_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(get_input_response.outputs[0].status.code))
-    print("\tDescription: {}".format(get_input_response.outputs[0].status.description))
-    print("\tDetails: {}".format(get_input_response.outputs[0].status.details))
-    raise Exception("Get input failed, status: " + get_input_response.status.description)
-
-input_object = get_input_response.input
-print(input_object)
 ```
 </TabItem>
 
@@ -1532,11 +1352,16 @@ fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/inputs/${inputId}`, re
 
 </Tabs>
 
-### Get inputs status
+### Get Inputs' Status
 
-If you add inputs in bulk, they will process in the background. You can get the status of all your inputs \(processed, to\_process and errors\) like this:
+If you add inputs in bulk, they will be procesed in the background. You can get the status of all your inputs \(processed, to\_process, and errors\) like this:
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonGetInputsStatus}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -1581,29 +1406,6 @@ stub.GetInputCount(
         console.log(JSON.stringify(counts, null, 2));
     }
 );
-```
-</TabItem>
-
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-get_input_count_response = stub.GetInputCount(
-    service_pb2.GetInputCountRequest(),
-    metadata=metadata
-)
-
-if get_input_count_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(get_input_count_response.outputs[0].status.code))
-    print("\tDescription: {}".format(get_input_count_response.outputs[0].status.description))
-    print("\tDetails: {}".format(get_input_count_response.outputs[0].status.details))
-    raise Exception("Get input count failed, status: " + get_input_count_response.status.description)
-
-counts = get_input_count_response.counts
-print(counts)
 ```
 </TabItem>
 
@@ -1660,13 +1462,18 @@ fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/inputs/status`, reques
 
 </Tabs>
 
-## Update inputs
+## Update Inputs
 
-### Update input with concepts
+### Update Input With Concepts
 
-To update an input with a new concept, or to change a concept value from true/false, you can do that:
+To update an input with a new concept, or to change a concept value from true/false, you can do the following:
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonUpdateInputConcepts}</CodeBlock>
+</TabItem>
+
 <TabItem value="grpc_java" label="gRPC Java">
 
 ```java
@@ -1735,39 +1542,6 @@ stub.PatchInputs(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="grpc_python" label="gRPC Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-patch_inputs_response = stub.PatchInputs(
-    service_pb2.PatchInputsRequest(
-        action="merge",  # Supported actions: overwrite, merge, remove.
-        inputs=[
-            resources_pb2.Input(
-                id="{YOUR_INPUT_ID}",
-                data=resources_pb2.Data(
-                    concepts=[
-                        resources_pb2.Concept(id="tree", value=1.),  # 1 means true, this concept is present.
-                        resources_pb2.Concept(id="water", value=0.)  # 0 means false, this concept is not present.
-                    ]
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if patch_inputs_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(patch_inputs_response.outputs[0].status.code))
-    print("\tDescription: {}".format(patch_inputs_response.outputs[0].status.description))
-    print("\tDetails: {}".format(patch_inputs_response.outputs[0].status.details))
-    raise Exception("Patch inputs failed, status: " + patch_inputs_response.status.description)
 ```
 </TabItem>
 
@@ -1901,11 +1675,18 @@ fetch("https://api.clarifai.com/v2/inputs", requestOptions)
 
 </Tabs>
 
-### Bulk update inputs with concepts
+### Bulk Update Inputs With Concepts
 
-You can update an existing input using its Id. This is useful if you'd like to add concepts to an input after its already been added.
+You can update existing inputs using their `ids`. This is useful if you'd like to add concepts to inputs after they have already been added.
+
+Below is an example of how to update multiple inputs with concepts at once. 
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonBulkUpdateInputsConcepts}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -1994,48 +1775,6 @@ stub.PatchInputs(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-patch_inputs_response = stub.PatchInputs(
-    service_pb2.PatchInputsRequest(
-        action="merge",  # Supported actions: overwrite, merge, remove.
-        inputs=[
-            resources_pb2.Input(
-                id="{YOUR_INPUT_ID_1}",
-                data=resources_pb2.Data(
-                    concepts=[
-                        resources_pb2.Concept(id="tree", value=1.),  # 1 means true, this concept is present.
-                        resources_pb2.Concept(id="water", value=0.)  # 0 means false, this concept is not present.
-                    ]
-                )
-            ),
-            resources_pb2.Input(
-                id="{YOUR_INPUT_ID_2}",
-                data=resources_pb2.Data(
-                    concepts=[
-                        resources_pb2.Concept(id="animal", value=1.),
-                        resources_pb2.Concept(id="fruit", value=0.)
-                    ]
-                )
-            ),
-        ]
-    ),
-    metadata=metadata
-)
-
-if patch_inputs_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(patch_inputs_response.outputs[0].status.code))
-    print("\tDescription: {}".format(patch_inputs_response.outputs[0].status.description))
-    print("\tDetails: {}".format(patch_inputs_response.outputs[0].status.details))
-    raise Exception("Patch inputs failed, status: " + patch_inputs_response.status.description)
 ```
 </TabItem>
 
@@ -2224,13 +1963,18 @@ fetch("https://api.clarifai.com/v2/inputs", requestOptions)
 
 </Tabs>
 
-## Delete inputs
+## Delete Inputs
 
-### Delete concepts from an input
+### Delete Concepts From an Input
 
 To remove concepts that were already added to an input, you can do this:
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonDeleteConceptsInput}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -2293,40 +2037,6 @@ MultiInputResponse patchInputsResponse = stub.patchInputs(
 if (patchInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
     throw new RuntimeException("Patch inputs failed, status: " + patchInputsResponse.getStatus());
 }
-```
-</TabItem>
-
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-patch_inputs_response = stub.PatchInputs(
-    service_pb2.PatchInputsRequest(
-        action="remove",  # Supported actions: overwrite, merge, remove.
-        inputs=[
-            resources_pb2.Input(
-                id="{YOUR_INPUT_ID}",
-                data=resources_pb2.Data(
-                    concepts=[
-                        # We're removing the concept, so there's no need to specify
-                        # the concept value.
-                        resources_pb2.Concept(id="water"),
-                    ]
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if patch_inputs_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(patch_inputs_response.outputs[0].status.code))
-    print("\tDescription: {}".format(patch_inputs_response.outputs[0].status.description))
-    print("\tDetails: {}".format(patch_inputs_response.outputs[0].status.details))
-    raise Exception("Patch inputs failed, status: " + patch_inputs_response.status.description)
 ```
 </TabItem>
 
@@ -2439,11 +2149,16 @@ fetch("https://api.clarifai.com/v2/inputs", requestOptions)
 
 </Tabs>
 
-### Bulk delete concepts from a list of inputs
+### Bulk Delete Concepts From a List of Inputs
 
-You can bulk delete multiple concepts from a list of inputs:
+Below is an example of how to bulk delete multiple concepts from a list of inputs. 
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonBulkDeleteConceptsInputs}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -2528,50 +2243,6 @@ stub.PatchInputs(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-patch_inputs_response = stub.PatchInputs(
-    service_pb2.PatchInputsRequest(
-        action="remove",  # Supported actions: overwrite, merge, remove.
-        inputs=[
-            resources_pb2.Input(
-                id="{YOUR_INPUT_ID_1}",
-                data=resources_pb2.Data(
-                    concepts=[
-                        # We're removing the concepts, so there's no need to specify
-                        # the concept value.
-                        resources_pb2.Concept(id="tree"),
-                        resources_pb2.Concept(id="water"),
-                    ]
-                )
-            ),
-            resources_pb2.Input(
-                id="{YOUR_INPUT_ID_2}",
-                data=resources_pb2.Data(
-                    concepts=[
-                        resources_pb2.Concept(id="animal"),
-                        resources_pb2.Concept(id="fruit"),
-                    ]
-                )
-            ),
-        ]
-    ),
-    metadata=metadata
-)
-
-if patch_inputs_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(patch_inputs_response.outputs[0].status.code))
-    print("\tDescription: {}".format(patch_inputs_response.outputs[0].status.description))
-    print("\tDetails: {}".format(patch_inputs_response.outputs[0].status.details))
-    raise Exception("Patch inputs failed, status: " + patch_inputs_response.status.description)
 ```
 </TabItem>
 
@@ -2751,11 +2422,16 @@ fetch("https://api.clarifai.com/v2/inputs", requestOptions)
 
 </Tabs>
 
-### Delete Input By Id
+### Delete Input by ID
 
-You can delete a single input by id:
+Below is an example of how to delete a single input by its `id`. 
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonDeleteInputId}</CodeBlock>
+</TabItem>
+
 <TabItem value="grpc_java" label="gRPC Java">
 
 ```java
@@ -2798,26 +2474,6 @@ stub.DeleteInput(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="grpc_python" label="gRPC Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-delete_input_response = stub.DeleteInput(
-    service_pb2.DeleteInputRequest(input_id="{YOUR_INPUT_ID}"),
-    metadata=metadata
-)
-
-if delete_input_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(delete_input_response.outputs[0].status.code))
-    print("\tDescription: {}".format(delete_input_response.outputs[0].status.description))
-    print("\tDetails: {}".format(delete_input_response.outputs[0].status.details))
-    raise Exception("Delete input failed, status: " + delete_input_response.status.description)
 ```
 </TabItem>
 
@@ -2874,11 +2530,16 @@ fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/inputs/${inputId}`, re
 
 </Tabs>
 
-### Delete a list of inputs
+### Delete a List of Inputs
 
 You can also delete multiple inputs in one API call. This will happen asynchronously.
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonDeleteListInputs}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -2922,28 +2583,6 @@ stub.DeleteInputs(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-delete_inputs_response = stub.DeleteInputs(
-    service_pb2.DeleteInputsRequest(
-        ids=["{YOUR_INPUT_ID_1}", "{YOUR_INPUT_ID_2}"]
-    ),
-    metadata=metadata
-)
-
-if delete_inputs_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(delete_inputs_response.outputs[0].status.code))
-    print("\tDescription: {}".format(delete_inputs_response.outputs[0].status.description))
-    print("\tDetails: {}".format(delete_inputs_response.outputs[0].status.details))
-    raise Exception("Delete inputs failed, status: " + delete_inputs_response.status.description)
 ```
 </TabItem>
 

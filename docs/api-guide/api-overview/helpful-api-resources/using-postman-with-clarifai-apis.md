@@ -4,6 +4,9 @@ description: Pre-configured API calls with Postman.
 
 # Using Postman with Clarifai APIs
 
+**Pre-configured API calls with Postman**
+<hr />
+
 ### **Overview**
 
 This page explains how to use [Postman](https://www.postman.com/) to perform API calls to Clarifai by showing the actions available within the Clarifai API. You can use Postman to make a wide variety of `GET`, `POST`, `PATCH`, and `DELETE` calls.

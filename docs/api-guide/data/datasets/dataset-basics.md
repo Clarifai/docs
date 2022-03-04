@@ -3,12 +3,15 @@ description: Create, explore and modify datasets
 sidebar_position: 1
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 # Dataset Basics
 
+**Create, explore, and modify datasets**
+<hr />
+
 ## Create a dataset
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 <Tabs>
 <TabItem value="curl" label="cURL">

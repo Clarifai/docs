@@ -3,12 +3,16 @@ description: Use filter and search functionality over your datasets
 sidebar_position: 2
 ---
 
+# Dataset Filters
+
+**Use filter and search functionality over your datasets**
+<hr />
+
+## Add dataset filters
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Dataset Filters
-
-## Add dataset filters
 <Tabs>
 <TabItem value="curl" label="cURL">
 

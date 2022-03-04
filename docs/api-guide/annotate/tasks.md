@@ -3,20 +3,23 @@ description: Group your labeling work into tasks that can be delegated.
 sidebar_position: 4
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 # Tasks
 
-The tasks are a powerful tool which can help your team to annotate inputs from your application.
+**Group your labeling work into tasks that can be delegated**
+<hr />
+
+Tasks are a powerful tool that can help your team to annotate inputs from your application.
 
 ## Create
 
-To create a new task in your app you `POST` the task information to `v2/task` endpoint.
+To create a new task in your app, you `POST` the task information to `v2/task` endpoint.
 
 ### Non-Assigned Task
 
 A task should be assigned to a list of users, but it's not required. The following code will create a non-assigned task.
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 <Tabs>
 <TabItem value="curl" label="cURL">

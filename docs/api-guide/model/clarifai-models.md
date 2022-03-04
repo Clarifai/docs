@@ -5,13 +5,16 @@ sidebar_position: 1
 
 # Clarifai Models
 
-Our model library is constantly growing and developing. To learn more about available models, you can browse our [Model Gallery](https://www.clarifai.com/models), view available models in Portal's Model Mode \(Just navigate to Model Mode in Portal, click "Create Workflow" and select "clarifai" under "USER". You will see a list of all available pre-built models for your app\), or use the "Get" commands outlined in the API Guide.
+**Pre-built, pre-trained, pre-optimized models that work right out of the box**
+<hr />
 
-## Clarifai Models
+Our model library is constantly growing and developing. To learn more about the available models, you can browse our [Model Gallery](https://www.clarifai.com/models), view available models in Portal's Model Mode \(Just navigate to Model Mode in Portal, click "Create Workflow" and select "clarifai" under "USER". You will see a list of all available pre-built models for your app\), or use the "Get" commands outlined in the API Guide.
+
+## Pre-Built Clarifai Models
 
 Clarifai Models are "Trainable" machine learning models that have been developed in-house and have been thoroughly tested.
 
-Clarifai Models are ready to make predictions right our of the box. For example, our "General" model recognizes recognizes over 11,000 different concepts including objects, themes, moods, and more, with outputs in 23 different languages. Our "Food" model recognizes more than 1,000 food items in images down to the ingredient level. Before you train your own model, we suggest trying these out to see if they fit your needs.
+Clarifai Models are ready to make predictions right our of the box. For example, our "General" model recognizes over 11,000 different concepts including objects, themes, moods, and more, with outputs in 23 different languages. Our "Food" model recognizes more than 1,000 food items in images down to the ingredient level. Before you train your own model, we suggest trying these out to see if they fit your needs.
 
 ## Operator Models
 

@@ -5,7 +5,12 @@ sidebar_position: 3
 
 # Positive and Negative Annotations
 
-When annotating your data, you have the option of providing both positive and negative labels for your concepts. Here is how your model interprets the labels that you add.
+**Understand positive and negative labels**
+<hr />
+
+When annotating your data, you have the option of providing both positive and negative labels for your concepts. 
+
+Here is how your model interprets the labels that you add.
 
 \(i\) If any concept is tagged with a positive annotation, that is treated as a positive label for that concept.
 

@@ -4,7 +4,12 @@ description: Choose the best channel for accessing Clarifai API endpoints
 
 # gRPC vs HTTP Channels
 
-The Clarifai API offers you an encrypted gRPC channel, as well as an HTTPS+JSON channel for making requests. Why the different options? Learn about the many convenient benefits of using the Clarifai API built on gRPC. 
+**Choose the best channel for accessing Clarifai API endpoints**
+<hr />
+
+The Clarifai API offers you an encrypted gRPC channel, as well as an HTTPS+JSON channel for making requests. Why the different options? 
+
+Learn about the many convenient benefits of using the Clarifai API built on gRPC. 
 
 ## Why did we build our API on gRPC in the first place?
 

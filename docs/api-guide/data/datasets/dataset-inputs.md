@@ -3,13 +3,16 @@ description: Create, explore and modify datasets
 sidebar_position: 3
 ---
 
+# Dataset Inputs
+
+**Create, explore, and modify datasets**
+<hr />
+
+## Add inputs to a dataset
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Dataset Inputs
-
-
-## Add inputs to a dataset
 <Tabs>
 <TabItem value="curl" label="cURL">
 

@@ -5,7 +5,12 @@ sidebar_position: 2
 
 # Training Data
 
-Your custom AI solution will require training data. Training data is used to "teach" AI models how to understand the world. A good set of training data will result in a model that will make accurate predictions on data in real-world scenarios. There are two basic considerations to keep in mind when building a training dataset: quantity and quality.
+**Teach AI with specially labeled data**
+<hr />
+
+Your custom AI solution will require training data. Training data is used to "teach" AI models how to understand the world. A good set of training data will result in a model that will make accurate predictions on data in real-world scenarios. 
+
+There are two basic considerations to keep in mind when building a training dataset: quantity and quality.
 
 ## Data Quantity
 
@@ -13,11 +18,15 @@ When it comes to training AI models, more training data is generally better. Mor
 
 ### How many inputs does my model need?
 
-This is one of the most common questions that comes up when building a new model. Unfortunately, there are no hard and fast rules about the number of inputs that will be required for your particular use case. But as a general rule, if you are training a custom model on top of a Clarifai Model, you will need much less training data \(typically tens to tens-of-thousands of inputs\), than if you are building a "deep trained model" \(typically thousands to millions of inputs\).
+This is one of the most common questions that comes up when building a new model. Unfortunately, there are no hard and fast rules about the number of inputs that will be required for your particular use case. 
+
+But as a general rule, if you are training a custom model on top of a Clarifai Model, you will need much less training data \(typically tens to tens-of-thousands of inputs\), than if you are building a "deep trained model" \(typically thousands to millions of inputs\).
 
 ### Bias
 
-Bias occurs when the scope of your training data is too narrow. If you only see green apples, you’ll assume that all apples are green and think red apples were another kind of fruit. If the training data contains only a small number of examples, it’ll react accordingly, taking it as truth. Small datasets make for a smaller worldview.
+Bias occurs when the scope of your training data is too narrow. If you only see green apples, you’ll assume that all apples are green and think red apples were another kind of fruit. 
+
+If the training data contains only a small number of examples, it’ll react accordingly, taking it as truth. Small datasets make for a smaller worldview.
 
 ## Data Quality
 
