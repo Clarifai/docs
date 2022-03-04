@@ -50,8 +50,13 @@ const config = {
         },
         items: [
           {
-            href: 'https://github.com/Clarifai',
-            label: 'GitHub',
+            href: 'https://github.com/Clarifai/docs',
+            label: 'GitHub of this documentation',
+            position: 'right',
+          },
+          {
+            href: 'https://communityinviter.com/apps/clarifaicommunity/clarifai-community',
+            label: 'Community Slack',
             position: 'right',
           },
         ],
