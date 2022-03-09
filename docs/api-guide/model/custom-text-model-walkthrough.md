@@ -5,7 +5,7 @@ sidebar_position: 4
 
 # Custom Text Model
 
-**Develop Your Own Custom Text Classifier**
+**Develop your own custom text classifier**
 <hr />
 
 The Clarifai API has the ability not only to learn concepts from images and videos, but from texts as well.
@@ -24,10 +24,13 @@ For debugging purposes, each response returned by a method call can be printed t
 
 ## Create a New Application
 
-The first step is manual. In the Clarifai Portal, [create an new application](https://docs.clarifai.com/getting-started/applications/create-an-application) with **Text** selected as the Base Workflow.
+The first step is manual. In the Clarifai Portal, [create a new application](https://docs.clarifai.com/getting-started/applications/create-an-application) with **Text** selected as the Base Workflow.
 
+![](https://s3.amazonaws.com/clarifai-api/img3/prod/large/e12ce254f2824b0ab2aef1b10784ff23/3e695b780f597cd263b06d0aeb30b3d1?v=001)
+
+<!--
 Afterward, copy the newly-created application's _API key_ and set it in the variable below. This variable is going to be used by all Clarifai API calls for authorization purposes.
-
+-->
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -41,7 +44,7 @@ import PythonPredictNewInputs from "!!raw-loader!../../../code_snippets/api-guid
 import PythonStartModelEvaluation from "!!raw-loader!../../../code_snippets/api-guide/model/start_model_evaluation.py";
 import PythonWaitModelEvaluationResults from "!!raw-loader!../../../code_snippets/api-guide/model/wait_model_evaluation_results.py";
 
-
+<!--
 <Tabs>
 <TabItem value="grpc_python" label="gRPC Python">
 
@@ -53,10 +56,11 @@ api_key_metadata = (('authorization', 'Key ' + post_keys_response.keys[0].id),)
 ```
 </TabItem>
 </Tabs>
+-->
 
 ## Add a Batch of Texts
 
-We'll now add several text inputs that we will later use as a training data in our custom model. The idea is that we'll create a model which can differentiate between positive and negative sentences \(in a grammatical sense\). 
+We'll now add several text inputs that we will later use as training data in our custom model. The idea is that we'll create a model which can differentiate between positive and negative sentences \(in a grammatical sense\). 
 
 We'll mark each input with one of the two concepts: `positive` or `negative`.
 
