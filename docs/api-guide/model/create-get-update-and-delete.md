@@ -3,7 +3,7 @@ description: Manage your model training jobs.
 sidebar_position: 5
 ---
 
-# Models: Create, Get, Update, Delete
+# Models: Create, Update, Get, Delete
 
 **Manage your model training jobs**
 <hr />
@@ -27,11 +27,14 @@ import PythonDeleteModel from "!!raw-loader!../../../code_snippets/api-guide/mod
 import PythonDeleteModelVersion from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/delete_model_version.py";
 import PythonDeleteAllModels from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/delete_all_models.py";
 import PythonTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/train_model.py";
+import PythonPredictModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/predict_model.py";
 import PythonSearchModelsName from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/search_models_name_type.py";
 
 :::info
 The initialization code used in the following examples is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
 :::
+
+## Create
 
 ### Create a Model
 
@@ -450,6 +453,8 @@ fetch("https://api.clarifai.com/v2/models", requestOptions)
 
 </Tabs>
 
+## Update
+
 ### Update Model Name and Configuration
 
 Let's change the model name to `newname` and set the model's configuration to have `concepts_mutually_exclusive=true` and `closed_environment=true`.
@@ -786,6 +791,11 @@ fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models`, requestOption
 All models have unique IDs. You can get a specific model by its ID.
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonGetModelID}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -835,29 +845,6 @@ stub.GetModel(
 ```
 </TabItem>
 
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-get_model_response = stub.GetModel(
-    service_pb2.GetModelRequest(model_id="petsID"),
-    metadata=metadata
-)
-
-if get_model_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(get_model_response.outputs[0].status.code))
-    print("\tDescription: {}".format(get_model_response.outputs[0].status.description))
-    print("\tDetails: {}".format(get_model_response.outputs[0].status.details))
-    raise Exception("Get model failed, status: " + get_model_response.status.description)
-
-model = get_model_response.model
-print(model)
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -890,11 +877,16 @@ fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models/${modelId}`, re
 
 </Tabs>
 
-### Get Model Output Info By Id
+### Get Model Output Info by ID
 
-The output info of a model lists what concepts it contains.
+The output info of a model lists the concepts it contains.
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonGetModelOutput}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -944,29 +936,6 @@ stub.GetModelOutputInfo(
 ```
 </TabItem>
 
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-get_model_response = stub.GetModelOutputInfo(
-    service_pb2.GetModelRequest(model_id="petsID"),
-    metadata=metadata
-)
-
-if get_model_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(get_model_response.outputs[0].status.code))
-    print("\tDescription: {}".format(get_model_response.outputs[0].status.description))
-    print("\tDetails: {}".format(get_model_response.outputs[0].status.details))
-    raise Exception("Get model failed, status: " + get_model_response.status.description)
-
-model = get_model_response.model
-print(model)
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -1004,6 +973,11 @@ fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models/${modelId}/outp
 Every time you train a model, it creates a new version. You can list all the versions created.
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonListModelVersions}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -1057,31 +1031,6 @@ stub.ListModelVersions(
 ```
 </TabItem>
 
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-list_model_versions_response = stub.ListModelVersions(
-    service_pb2.ListModelVersionsRequest(
-        model_id="petsID"
-    ),
-    metadata=metadata
-)
-
-if list_model_versions_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(list_model_versions_response.outputs[0].status.code))
-    print("\tDescription: {}".format(list_model_versions_response.outputs[0].status.description))
-    print("\tDetails: {}".format(list_model_versions_response.outputs[0].status.details))
-    raise Exception("List model versions failed, status: " + list_model_versions_response.status.description)
-
-for model_version in list_model_versions_response.model_versions:
-    print(model_version)
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -1114,11 +1063,16 @@ fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models/${modelId}/vers
 
 </Tabs>
 
-### Get Model Version By Id
+### Get Model Version by ID
 
-To get a specific model version, you must provide the model\_id as well as the version\_id. You can inspect the model version status to determine if your model is trained or still training.
+To get the details of a specific model version, you must provide the `model_id` as well as the `version_id`. You can inspect the model version status to determine if your model is trained or still training.
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonGetModelVersion}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -1170,32 +1124,6 @@ stub.GetModelVersion(
 ```
 </TabItem>
 
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-get_model_version_response = stub.GetModelVersion(
-    service_pb2.GetModelVersionRequest(
-        model_id="petsID",
-        version_id="{YOUR_MODEL_VERSION_ID}"
-    ),
-    metadata=metadata
-)
-
-if get_model_version_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(get_model_version_response.outputs[0].status.code))
-    print("\tDescription: {}".format(get_model_version_response.outputs[0].status.description))
-    print("\tDetails: {}".format(get_model_version_response.outputs[0].status.details))
-    raise Exception("Get model version failed, status: " + get_model_version_response.status.description)
-
-model_version = get_model_version_response.model_version
-print(model_version)
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -1234,6 +1162,11 @@ fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models/${modelId}/vers
 You can list all the inputs that were used to train the model.
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonGetModelTraining}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -1286,29 +1219,6 @@ stub.ListModelInputs(
 ```
 </TabItem>
 
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-list_model_inputs_response = stub.ListModelInputs(
-    service_pb2.ListModelInputsRequest(model_id="petsID"),
-    metadata=metadata
-)
-
-if list_model_inputs_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(list_model_inputs_response.outputs[0].status.code))
-    print("\tDescription: {}".format(list_model_inputs_response.outputs[0].status.description))
-    print("\tDetails: {}".format(list_model_inputs_response.outputs[0].status.details))
-    raise Exception("List model inputs failed, status: " + list_model_inputs_response.status.description)
-
-for input_object in list_model_inputs_response.inputs:
-    print(input_object)
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -1341,11 +1251,16 @@ fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models/${modelId}/inpu
 
 </Tabs>
 
-### Get Model Training Inputs By Version
+### Get Model Training Inputs by Version
 
 You can also list all the inputs that were used to train a specific model version.
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonGetModelTrainingVersion}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -1403,32 +1318,6 @@ stub.ListModelInputs(
 ```
 </TabItem>
 
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-list_model_inputs_response = stub.ListModelInputs(
-    service_pb2.ListModelInputsRequest(
-        model_id="petsID",
-        version_id="{YOUR_MODEL_VERSION_ID}"
-    ),
-    metadata=metadata
-)
-
-if list_model_inputs_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(list_model_inputs_response.outputs[0].status.code))
-    print("\tDescription: {}".format(list_model_inputs_response.outputs[0].status.description))
-    print("\tDetails: {}".format(list_model_inputs_response.outputs[0].status.details))
-    raise Exception("List model inputs failed, status: " + list_model_inputs_response.status.description)
-
-for input_object in list_model_inputs_response.inputs:
-    print(input_object)
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -1462,11 +1351,18 @@ fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models/${modelId}/vers
 
 </Tabs>
 
-### Delete A Model
+## Delete
 
-You can delete a model using the model\_id.
+### Delete a Model
+
+You can delete a model using the `model_id`.
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonDeleteModel}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -1510,26 +1406,6 @@ stub.DeleteModel(
 ```
 </TabItem>
 
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-delete_model_response = stub.DeleteModel(
-    service_pb2.DeleteModelRequest(model_id="petsID"),
-    metadata=metadata
-)
-
-if delete_model_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(delete_model_response.outputs[0].status.code))
-    print("\tDescription: {}".format(delete_model_response.outputs[0].status.description))
-    print("\tDetails: {}".format(delete_model_response.outputs[0].status.details))
-    raise Exception("Delete model failed, status: " + delete_model_response.status.description)
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -1562,11 +1438,16 @@ fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models/${modelId}`, re
 
 </Tabs>
 
-### Delete A Model Version
+### Delete a Model Version
 
-You can also delete a specific version of a model with the model\_id and version\_id.
+You can also delete a specific version of a model with the `model_id` and `version_id`.
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonDeleteModelVersion}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -1614,29 +1495,6 @@ stub.DeleteModelVersion(
 ```
 </TabItem>
 
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-delete_model_version_response = stub.DeleteModelVersion(
-    service_pb2.DeleteModelVersionRequest(
-        model_id="petsID",
-        version_id="{YOUR_MODEL_VERSION_ID}"
-    ),
-    metadata=metadata
-)
-
-if delete_model_version_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(delete_model_version_response.outputs[0].status.code))
-    print("\tDescription: {}".format(delete_model_version_response.outputs[0].status.description))
-    print("\tDetails: {}".format(delete_model_version_response.outputs[0].status.details))
-    raise Exception("Delete model version failed, status: " + delete_model_version_response.status.description)
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -1670,11 +1528,20 @@ fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models/${modelId}/vers
 
 </Tabs>
 
-### Delete All Models
+### Delete all Models
 
-If you would like to delete all models associated with an application, you can also do that. Please proceed with caution as these cannot be recovered.
+If you would like to delete all models associated with an application, you can also do that. 
+
+:::caution
+Please proceed with caution as deleted models cannot be recovered.
+:::
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonDeleteAllModels}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -1718,26 +1585,6 @@ stub.DeleteModels(
 ```
 </TabItem>
 
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-delete_models_response = stub.DeleteModels(
-    service_pb2.DeleteModelsRequest(delete_all=True),
-    metadata=metadata
-)
-
-if delete_models_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(delete_models_response.outputs[0].status.code))
-    print("\tDescription: {}".format(delete_models_response.outputs[0].status.description))
-    print("\tDetails: {}".format(delete_models_response.outputs[0].status.details))
-    raise Exception("Delete models failed, status: " + delete_models_response.status.description)
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -1769,13 +1616,22 @@ fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models`, requestOption
 
 </Tabs>
 
-### Train A Model
+## Train
+
+### Train a Model
 
 When you train a model, you are telling the system to look at successfully indexed images with concepts you've provided and learn from them. This train operation is asynchronous. It may take a few seconds for your model to be fully trained and ready.
 
-_Note: you can repeat this operation as often as you like. By adding more images with concepts and training, you can get the model to predict exactly how you want it to._
+:::note
+You can repeat this operation as often as you like. By adding more images with concepts and training, you can get the model to predict exactly how you want it to.
+:::
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonTrainModel}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -1822,28 +1678,6 @@ stub.PostModelVersions(
 ```
 </TabItem>
 
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-post_model_versions = stub.PostModelVersions(
-    service_pb2.PostModelVersionsRequest(
-        model_id="petsID"
-    ),
-    metadata=metadata
-)
-
-if post_model_versions.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(post_model_versions.outputs[0].status.code))
-    print("\tDescription: {}".format(post_model_versions.outputs[0].status.description))
-    print("\tDetails: {}".format(post_model_versions.outputs[0].status.details))
-    raise Exception("Post model versions failed, status: " + post_model_versions.status.description)
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -1877,11 +1711,18 @@ fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models/${modelId}/vers
 
 </Tabs>
 
-## Predict With A Model
+## Predict
 
-Once you have trained a model you are ready to use your new model to get predictions. The predictions returned will only contain the concepts that you told it to see.
+### Predict With a Model
+
+Once you have trained a model, you are ready to use the new model to make predictions. The predictions returned will only contain the concepts that you told it to see.
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonPredictModel}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -1955,44 +1796,6 @@ stub.PostModelOutputs(
 ```
 </TabItem>
 
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-post_model_outputs_response = stub.PostModelOutputs(
-    service_pb2.PostModelOutputsRequest(
-        model_id="petsID",
-        version_id="{YOUR_MODEL_VERSION_ID}",  # This is optional. Defaults to the latest model version.
-        inputs=[
-            resources_pb2.Input(
-                data=resources_pb2.Data(
-                    image=resources_pb2.Image(
-                        url="https://samples.clarifai.com/metro-north.jpg"
-                    )
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(post_model_outputs_response.outputs[0].status.code))
-    print("\tDescription: {}".format(post_model_outputs_response.outputs[0].status.description))
-    print("\tDetails: {}".format(post_model_outputs_response.outputs[0].status.details))
-    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
-
-# Since we have one input, one output will exist here.
-output = post_model_outputs_response.outputs[0]
-
-print("Predicted concepts:")
-for concept in output.data.concepts:
-    print("%s %.2f" % (concept.name, concept.value))
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -2059,11 +1862,18 @@ fetch("https://api.clarifai.com/v2/models/petsID/versions/{MODEL_VERSION_ID}/out
 
 </Tabs>
 
-### Search Models By Name And Type
+## Search
+
+### Search Models by Name and Type
 
 You can search all your models by name and type of model.
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonSearchModelsName}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -2124,34 +1934,6 @@ stub.PostModelsSearches(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-post_models_searches_response = stub.PostModelsSearches(
-    service_pb2.PostModelsSearchesRequest(
-        model_query=resources_pb2.ModelQuery(
-            name="gen*",
-            type="concept"
-        )
-    ),
-    metadata=metadata
-)
-
-if post_models_searches_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(post_models_searches_response.outputs[0].status.code))
-    print("\tDescription: {}".format(post_models_searches_response.outputs[0].status.description))
-    print("\tDetails: {}".format(post_models_searches_response.outputs[0].status.details))
-    raise Exception("Post models searches failed, status: " + post_models_searches_response.status.description)
-
-for model in post_models_searches_response.models:
-    print(model)
 ```
 </TabItem>
 
