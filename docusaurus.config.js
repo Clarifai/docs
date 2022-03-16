@@ -51,7 +51,7 @@ const config = {
         items: [
           {
             href: 'https://github.com/Clarifai/docs',
-            label: 'GitHub of this documentation',
+            label: 'GitHub',
             position: 'right',
           },
           {

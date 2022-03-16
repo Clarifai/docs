@@ -39,7 +39,7 @@ const sidebars = {
   {
       type: 'link',
       label: 'Clarifai Community',
-      href: 'https://www.clarifai.com/community',
+      href: 'https://www.clarifai.com/explore',
   },],},]
 
 
