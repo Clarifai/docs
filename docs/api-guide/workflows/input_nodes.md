@@ -3,18 +3,20 @@ description: Connect your models together.
 sidebar_position: 2
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 # Input Nodes
 
-The outputs from one model can be used as the inputs in another model. This allows you to link together the models in a graph. Linking models helps you build sophisticated AI solutions, that can zero-in on a specific use case.
+**Connect your models together**
+<hr />
 
-## Supported input and output types
+The outputs from one model can be used as inputs for another model. This allows you to link together the models in a graph. Linking models helps you build sophisticated AI solutions that can zero-in on a specific use case.
 
-To view your available models, just open your app and click Model Mode icon on the left hand side of the screen. From here just click the Create a Custom Model button in the top righthand corner of the screen.
+## Supported Input and Output Types
 
-Different models accept different types of inputs and return different types of outputs. They are named after the fields in the Data object of our API. This object is uses in inputs, annotations, models and workflows. Some examples include:
+To view your available models, just open your application and click the **Model Mode** icon on the left-hand side of the screen. From here, just click the **Create a Custom Model** button on the top right-hand corner of the screen.
+
+Different models accept different types of inputs and return different types of outputs. They are named after the fields in the Data object of our API. This object uses inputs, annotations, models, and workflows. 
+
+Some examples include:
 
 #### Inputs
 
@@ -30,104 +32,30 @@ Different models accept different types of inputs and return different types of 
 * Clusters
 * Regions
 
-## The building blocks
+## The Building Blocks
 
 You can create workflows out of any Clarifai Models or custom models that you have created for your app. The inputs and outputs supported by your custom models will depend on the inputs and outputs supported by the Clarifai Models, or model templates that you have used to build them.
 
-### Sample workflow with multiple connected nodes
+:::info
+The initialization code used in the following examples is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+:::
 
-The The following is an example of how to build a workflow with multiple connected nodes. Note that model IDs and model version IDs from the public `clarifai/main` application are fixed, so they are already hard-coded in the code examples below. It is possible to use other public model or model version IDs.
+
+### Sample Workflow With Multiple Connected Nodes
+
+The following is an example of how to build a workflow with multiple connected nodes. Note that model IDs and model version IDs from the public `clarifai/main` application are fixed, so they are already hard-coded in the code examples below. It is possible to use other public model or model version IDs.
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+import PythonSampleNodes from "!!raw-loader!../../../code_snippets/api-guide/workflows/sample_workflow_multiple_nodes.py";
+import PythonSuppressNodes from "!!raw-loader!../../../code_snippets/api-guide/workflows/suppress_output_from_nodes.py";
+
 
 <Tabs>
+
 <TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-post_workflows_response = stub.PostWorkflows(
-    service_pb2.PostWorkflowsRequest(
-        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-        workflows=[
-            resources_pb2.Workflow(
-                id="auto-annotation-workflow-id",
-                nodes=[
-                    resources_pb2.WorkflowNode(
-                        id="general-embed",
-                        model=resources_pb2.Model(
-                            id="bbb5f41425b8468d9b7a554ff10f8581",
-                            model_version=resources_pb2.ModelVersion(
-                                id="bb186755eda04f9cbb6fe32e816be104"
-                            )
-                        )
-                    ),
-                    resources_pb2.WorkflowNode(
-                        id="general-concept",
-                        model=resources_pb2.Model(
-                            id="aaa03c23b3724a16a56b629203edc62c",
-                            model_version=resources_pb2.ModelVersion(
-                                id="aa7f35c01e0642fda5cf400f543e7c40"
-                            )
-                        )
-                    ),
-                    resources_pb2.WorkflowNode(
-                        id="general-cluster",
-                        model=resources_pb2.Model(
-                            id="cccbe437d6e54e2bb911c6aa292fb072",
-                            model_version=resources_pb2.ModelVersion(
-                                id="cc2074cff6dc4c02b6f4e1b8606dcb54"
-                            )
-                        ),
-                        node_inputs=[
-                            resources_pb2.NodeInput(node_id="general-embed")
-                        ]
-                    ),
-                    resources_pb2.WorkflowNode(
-                        id="mapper",
-                        model=resources_pb2.Model(
-                            id="{YOUR_SYNONYM_MODEL_ID}",
-                            model_version=resources_pb2.ModelVersion(
-                                id="{YOUR_SYNONYM_MODEL_VERSION_ID}"
-                            )
-                        ),
-                        node_inputs=[
-                            resources_pb2.NodeInput(node_id="general-concept")
-                        ]
-                    ),
-                    resources_pb2.WorkflowNode(
-                        id="greater-than",
-                        model=resources_pb2.Model(
-                            id="{YOUR_GREATER_THAN_MODEL_ID}",
-                            model_version=resources_pb2.ModelVersion(
-                                id="{YOUR_GREATER_THAN_MODEL_VERSION_ID}"
-                            )
-                        ),
-                        node_inputs=[
-                            resources_pb2.NodeInput(node_id="mapper")
-                        ]
-                    ),
-                    resources_pb2.WorkflowNode(
-                        id="less-than",
-                        model=resources_pb2.Model(
-                            id="{YOUR_LESS_THAN_MODEL_ID}",
-                            model_version=resources_pb2.ModelVersion(
-                                id="{YOUR_LESS_THAN_MODEL_VERSION_ID}"
-                            )
-                        ),
-                        node_inputs=[
-                            resources_pb2.NodeInput(node_id="mapper")
-                        ]
-                    ),
-                ]
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_workflows_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Post workflows failed, status: " + post_workflows_response.status.description)
-```
+    <CodeBlock className="language-python">{PythonSampleNodes}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -518,56 +446,16 @@ fetch(`https://api.clarifai.com/v2/workflows`, requestOptions)
 
 </Tabs>
 
-### Suppressing the output from nodes
+### Suppressing the Output From Nodes
 
-It is possible to turn the outputs from given nodes in your workflow on and off with the `suppress_output` endpoint. This can be helpful when you want to hide outputs for expensive return values like image crops or embedding. By default, this endpoint will be set to false, meaning that we do not suppress any model's output.
+It is possible to turn the outputs from given nodes in your workflow on and off with the `suppress_output` endpoint. This can be helpful when you want to hide outputs for expensive return values like image crops or embedding.
+
+By default, this endpoint will be set to false, meaning that we do not suppress any model's output.
 
 <Tabs>
+
 <TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-post_workflows_response = stub.PostWorkflows(
-    service_pb2.PostWorkflowsRequest(
-        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-        workflows=[
-            resources_pb2.Workflow(
-                id="predict-cluster-only",
-                nodes=[
-                    resources_pb2.WorkflowNode(
-                        id="general-embed",
-                        model=resources_pb2.Model(
-                            id="bbb5f41425b8468d9b7a554ff10f8581",
-                            model_version=resources_pb2.ModelVersion(
-                                id="bb186755eda04f9cbb6fe32e816be104"
-                            )
-                        ),
-                        suppress_output = True                      
-                    ),
-                    resources_pb2.WorkflowNode(
-                        id="general-cluster",
-                        model=resources_pb2.Model(
-                            id="cccbe437d6e54e2bb911c6aa292fb072",
-                            model_version=resources_pb2.ModelVersion(
-                                id="cc2074cff6dc4c02b6f4e1b8606dcb54"
-                            )
-                        ),
-                        node_inputs=[
-                            resources_pb2.NodeInput(node_id="general-embed")
-                        ]
-                    ),
-                ]
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_workflows_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Post workflows failed, status: " + post_workflows_response.status.description)
-```
+    <CodeBlock className="language-python">{PythonSuppressNodes}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
