@@ -5,6 +5,9 @@ sidebar_position: 1
 
 # Interpreting Evaluations
 
+**Learn to interpret model evaluations**
+<hr />
+
 ![](/img/eval-results-new.png)
 
 Once the Model Evaluation is complete, you’ll be able to view the evaluation results in Portal.
