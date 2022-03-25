@@ -5,11 +5,36 @@ sidebar_position: 3
 
 # Setting Up Mesh Workflows
 
+**Manage your Mesh Workflows**
+<hr />
+
+
+:::info
+The initialization code used in the following examples is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+:::
+
 ## Create
 
-To create a new custom workflow, specify a list of model IDs that are to be included in the workflow. Each model ID also requires a specific model version ID, since a model can have several versions.
+To create a new custom workflow, specify a list of model IDs that are to be included in the workflow. Since a model can have several versions, each model ID also requires a specific model version ID.
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+import PythonCreate from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/create.py";
+import PythonWorkflowPredict from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/workflow_predict.py";
+import PythonGetWorkflowsApp from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/get_workflows_in_app.py";
+import PythonGetWorkflowID from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/get_workflow_specific_id.py";
+import PythonPatchWorkflow from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/patch_workflow.py";
+import PythonDeleteWorkflowID from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/delete_workflow_id.py";
+import PythonDeleteAllWorkflows from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/delete_all_workflows.py";
+
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonCreate}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -95,49 +120,6 @@ stub.PostWorkflows(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-post_workflows_response = stub.PostWorkflows(
-    service_pb2.PostWorkflowsRequest(
-      user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-      workflows=[
-        resources_pb2.Workflow(
-          id="my-custom-workflow",
-          nodes=[
-            resources_pb2.WorkflowNode(
-              id="food-concepts",
-              model=resources_pb2.Model(
-                id="bd367be194cf45149e75f01d59f77ba7",
-                model_version=resources_pb2.ModelVersion(
-                  id="dfebc169854e429086aceb8368662641"
-                )
-              )
-            ),
-            resources_pb2.WorkflowNode(
-              id="general-concepts",
-              model=resources_pb2.Model(
-                id="aaa03c23b3724a16a56b629203edc62c",
-                model_version=resources_pb2.ModelVersion(
-                  id="aa9ca48295b37401f8af92ad1af0d91d"
-                )
-              )
-            ),
-          ]
-        )
-      ]
-    ),
-    metadata=metadata
-)
-
-if post_workflows_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Post workflows failed, status: " + post_workflows_response.status.description)
 ```
 </TabItem>
 
@@ -232,9 +214,14 @@ fetch(`https://api.clarifai.com/v2/workflows`, requestOptions)
 
 ## Workflow Predict
 
-Predict using a workflow. The response will contain the predictions each model in the workflow returns for the input.
+You can predict using a workflow. The response will contain the predictions each model in the workflow returns for the input.
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonWorkflowPredict}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -317,45 +304,6 @@ stub.PostWorkflowResults(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-post_workflow_results_response = stub.PostWorkflowResults(
-    service_pb2.PostWorkflowResultsRequest(
-        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-        workflow_id="{YOUR_WORKFLOW_ID}",
-        inputs=[
-            resources_pb2.Input(
-                data=resources_pb2.Data(
-                    image=resources_pb2.Image(
-                        url="https://samples.clarifai.com/metro-north.jpg"
-                    )
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-if post_workflow_results_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Post workflow results failed, status: " + post_workflow_results_response.status.description)
-
-# We'll get one WorkflowResult for each input we used above. Because of one input, we have here
-# one WorkflowResult.
-results = post_workflow_results_response.results[0]
-
-# Each model we have in the workflow will produce one output.
-for output in results.outputs:
-    model = output.model
-
-    print("Predicted concepts for the model `%s`" % model.name)
-    for concept in output.data.concepts:
-        print("\t%s %.2f" % (concept.name, concept.value))
 ```
 </TabItem>
 
@@ -467,11 +415,16 @@ fetch(`https://api.clarifai.com/v2/workflows/${workflowID}/results`, requestOpti
 
 ## Get
 
-### Get all workflows in an app
+### Get all Workflows in an App
 
-Return all custom workflows in your app.
+You can return all custom workflows in your app.
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonGetWorkflowsApp}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -529,31 +482,6 @@ stub.ListWorkflows(
 ```
 </TabItem>
 
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-list_workflows_response = stub.ListWorkflows(
-    service_pb2.ListWorkflowsRequest(
-        user_app_id=userDataObject  # The userDataObject is created in the overview and is required when using a PAT
-    ),
-    metadata=metadata
-)
-
-if list_workflows_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("List workflows failed, status: " + list_workflows_response.status.description)
-
-for workflow in list_workflows_response.workflows:
-    print(f"The workflow {workflow.id} consists of these models:")
-    for workflow_node in workflow.nodes:
-        model = workflow_node.model
-        print(model.id)
-    print()
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -585,11 +513,16 @@ fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/workflows`, requestOpt
 
 </Tabs>
 
-### Get a workflow by a specific ID
+### Get a Workflow by a Specific ID
 
-Returns information about a specific workflow.
+You can return information about a specific workflow.
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonGetWorkflowID}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -651,31 +584,6 @@ stub.GetWorkflow(
 ```
 </TabItem>
 
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-get_workflow_response = stub.GetWorkflow(
-    service_pb2.GetWorkflowRequest(
-        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-        workflow_id="my-custom-workflow"
-    ),
-    metadata=metadata
-)
-
-if get_workflow_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Get workflow failed, status: " + get_workflow_response.status.description)
-
-workflow = get_workflow_response.workflow
-print(f"The workflow consists of these models:")
-for workflow_node in workflow.nodes:
-    model = workflow_node.model
-    print(model.id)
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -710,13 +618,18 @@ fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/workflows/${workflowId
 
 ## Update
 
-### Patch workflow
+### Patch Workflow
 
-Ability to change the workflow, that is to change the models of which the workflow consists.
+You can change a workflow; that is, change the models of which the workflow consists.
 
-Possible actions are "overwrite", "merge" and "remove".
+The possible actions are `overwrite`, `merge`, and `remove`.
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonPatchWorkflow}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -823,59 +736,6 @@ stub.PatchWorkflows(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-patch_workflows_response = stub.PatchWorkflows(
-    service_pb2.PatchWorkflowsRequest(
-      user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-      action="overwrite",
-      workflows=[
-        resources_pb2.Workflow(
-          id="my-custom-workflow",
-          nodes=[
-            resources_pb2.WorkflowNode(
-              id="travel-concepts",
-              model=resources_pb2.Model(
-                id="ccc28c313d69466f836ab83287a54ed9",
-                model_version=resources_pb2.ModelVersion(
-                  id="cce28c313d69466f836ab83287a54ed9"
-                )
-              )
-            ),
-            resources_pb2.WorkflowNode(
-              id="nsfw-concepts",
-              model=resources_pb2.Model(
-                id="ccc76d86d2004ed1a38ba0cf39ecb4b1",
-                model_version=resources_pb2.ModelVersion(
-                  id="cc76a92beaeb4d8495a58ba197998158"
-                )
-              )
-            ),
-            resources_pb2.WorkflowNode(
-              id="wedding-concepts",
-              model=resources_pb2.Model(
-                id="c386b7a870114f4a87477c0824499348",
-                model_version=resources_pb2.ModelVersion(
-                  id="787cc9a002164250800598d36b072384"
-                )
-              )
-            ),
-          ]
-        )
-      ]
-    ),
-    metadata=metadata
-)
-
-if patch_workflows_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Patch workflows failed, status: " + patch_workflows_response.status.description)
 ```
 </TabItem>
 
@@ -993,11 +853,16 @@ fetch(`https://api.clarifai.com/v2/workflows`, requestOptions)
 
 ## Delete
 
-### Delete workflow by ID
+### Delete Workflow by ID
 
-Delete a specific workflow.
+You can delete a specific workflow.
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonDeleteWorkflowID}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -1043,25 +908,6 @@ stub.DeleteWorkflow(
 ```
 </TabItem>
 
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-delete_workflow_response = stub.DeleteWorkflow(
-    service_pb2.DeleteWorkflowRequest(
-      user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-      workflow_id="my-custom-workflow"
-    ),
-    metadata=metadata
-)
-
-if delete_workflow_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Delete workflow failed, status: " + delete_workflow_response.status.description)
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -1094,13 +940,20 @@ fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/workflows/${workflowId
 
 </Tabs>
 
-### Delete all workflows
+### Delete all Workflows
 
-Deletes all custom workflows.
+You can delete all custom workflows.
 
-> Note: instead of "delete\_all" it's possible to specify a list of workflow IDs to be deleted, using the `ids` field.
+:::note
+Instead of `delete_all`, you can specify a list of workflow IDs to be deleted, using the `ids` field.
+::::
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonDeleteAllWorkflows}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -1143,25 +996,6 @@ stub.DeleteWorkflows(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-delete_workflows_response = stub.DeleteWorkflows(
-    service_pb2.DeleteWorkflowsRequest(
-      user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-      delete_all=True
-    ),
-    metadata=metadata
-)
-
-if delete_workflows_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Delete workflows failed, status: " + delete_workflows_response.status.description)
 ```
 </TabItem>
 
