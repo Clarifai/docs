@@ -5,41 +5,45 @@ description: >-
 sidebar_position: 2
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 # Auto Annotation
 
-This tutorial demonstrates how auto-annotation workflows can be configured in the Clarifai API. With auto-annotation, you can use model predictions to label your inputs. Auto-annotation can help you to prepare training data, or assign other useful labels and metadata to your inputs. Since models are doing most of the work of annotating your data, this enables you to speed-up and scale-up your annotation process while ensuring quality standards, typically reducing human effort of labelling data by orders of magnitude. And since this is built into our APIs it seamlessly integrates with all the search, training and prediction functionality of the Clarifai platform.
+**Use AI to help you build AI. Auto annotation uses your model predictions to label your training data**
+<hr />
 
-When a concept is predicted by a model, it is predicted with a confidence score between 0 and 1. In this walkthrough we will leverage that score in our workflow so that when your model predictions are confident \(close to 1\), you can have your data automatically labeled with that concept. When your predictions are less-than-confident, you can have your input sent to a human being for review.
+This tutorial demonstrates how auto-annotation workflows can be configured in the Clarifai API. With auto-annotation, you can use model predictions to label your inputs. Auto-annotation can help you prepare training data or assign other useful labels and metadata to your inputs. 
+
+Since models are doing most of the work of annotating your data, this enables you to speed-up and scale-up your annotation process while ensuring quality standards, typically reducing human effort of labelling data by orders of magnitude. And since this is built into our APIs, it seamlessly integrates with all the search, training, and prediction functionality of the Clarifai platform.
+
+When a concept is predicted by a model, it is predicted with a confidence score between 0 and 1. In this walkthrough, we will leverage that score in our workflow so that when your model predictions are confident \(close to 1\), you can have your data automatically labeled with that concept. When your predictions are less-than-confident, you can have your input sent to a human reviewer.
+
+:::info
+The initialization code used in the following examples is outlined in detail on the [client installation page.](../../api-overview/api-clients#client-installation-instructions)
+:::
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+import PythonCreateConcepts from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/create_concepts.py";
+import PythonLinkConcepts from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/link_concepts.py";
+import PythonCreateConceptMapperModel from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/create_concept_mapper_model.py";
+import PythonCreateGreaterThan from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/create_greater_than_concept_thresholder.py";
+import PythonCreateLessThan from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/create_less_than_concept-thresholder.py";
+import PythonCreateWriteSuccess from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/create_write_success_asme_annotation.py";
+import PythonCreateWritePending from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/create_write_pending_asme_annotation.py";
+import PythonCreateWorkflow from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/create_the_workflow.py";
+import PythonMakeWorkflowDefault from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/make_new_workflow_apps_default.py";
+import PythonAddImage from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/add_an_image.py";
+import PythonListAnnotations from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/list_annotations.py";
+
 
 ## Create Concepts
 
-Create the concepts that we'll be using in our model. In this tutorial we'll create the following concepts: `people`, `man` and `adult`.
+Let's start by creating the concepts we'll use in our model. In this tutorial, we'll create the following concepts: `people`, `man` and `adult`.
 
 <Tabs>
+
 <TabItem value="grpc_python" label="gRPC Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-post_concepts_response = stub.PostConcepts(
-    service_pb2.PostConceptsRequest(
-        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-        concepts=[
-            resources_pb2.Concept(id="peopleID", name="people"),
-            resources_pb2.Concept(id="manID", name="man"),
-            resources_pb2.Concept(id="adultID", name="adult"),
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_concepts_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Post concepts failed, status: " + post_concepts_response.status.description)
-```
+    <CodeBlock className="language-python">{PythonCreateConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
@@ -148,7 +152,7 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/concepts' \
 
 Link the newly created concepts with concepts in the Clarifai/Main General model.
 
-Run the code below three times, once for each concept created previously. The concept IDs of the clarifai/main General models are the following:
+Run the code below three times; once for each concept created previously. The concept IDs of the Clarifai/Main General models are the following:
 
 * `ai_l8TKp2h5` - the people concept,
 * `ai_dxSG2s86` - the man concept,
@@ -157,29 +161,9 @@ Run the code below three times, once for each concept created previously. The co
 Your model's concept IDs are the ones you created in the previous step: `peopleID`, `manID`, and `adultID`.
 
 <Tabs>
+
 <TabItem value="grpc_python" label="gRPC Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-post_concept_relations_response = stub.PostConceptRelations(
-    service_pb2.PostConceptRelationsRequest(
-        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-        concept_id="{YOUR_MODEL_CONCEPT_ID}",
-        concept_relations=[
-            resources_pb2.ConceptRelation(
-                object_concept=resources_pb2.Concept(id="{GENERAL_MODEL_CONCEPT_ID}", app_id="main"),
-                predicate="synonym"
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_concept_relations_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Post concept relations failed, status: " + post_concept_relations_response.status.description)
-```
+    <CodeBlock className="language-python">{PythonLinkConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
@@ -274,41 +258,12 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/concepts/{YOUR_M
 
 We're going to create a concept mapper model that translates the concepts from the General model to our new concepts. The model will map the concepts as synonyms. Hypernyms and hyponyms are supported as well.
 
-We'll be setting the `knowledge_graph_id` value to be empty. If you wanted to define a subset of relationships in your app to be related to each other you can provide the `knowledge_graph_id` to each concept relation and then provide that `knowledge_graph_id` as input to this model as well which will only follow relationships in that subset of your app's knowledge graph.
+We'll be setting the `knowledge_graph_id` value to be empty. If you want to define a subset of relationships in your app to be related to each other, you can provide the `knowledge_graph_id` to each concept relation and then provide that `knowledge_graph_id` as input to this model as well, which will only follow relationships in that subset of your app's knowledge graph.
 
 <Tabs>
+
 <TabItem value="grpc_python" label="gRPC Python">
-
-```python
-from google.protobuf.struct_pb2 import Struct
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-params = Struct()
-params.update({
-    "knowledge_graph_id": ""
-})
-
-post_models_response = stub.PostModels(
-    service_pb2.PostModelsRequest(
-        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-        models=[
-            resources_pb2.Model(
-                id="synonym-model-id",
-                model_type_id="concept-synonym-mapper",
-                output_info=resources_pb2.OutputInfo(
-                    params=params,
-                )
-            ),
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_models_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Post models failed, status: " + post_models_response.status.description)
-```
+    <CodeBlock className="language-python">{PythonCreateConceptMapperModel}</CodeBlock>
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
@@ -406,46 +361,12 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
 
 ## Create a "Greater Than" Concept Thresholder Model
 
-This model will allow any predictions &gt;= the concept values defined in the model to be output from this model.
+This model will allow any predictions &gt;= the concept values defined in the model to be outputted from the model.
 
 <Tabs>
+
 <TabItem value="grpc_python" label="gRPC Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-params = Struct()
-params.update({
-    "concept_threshold_type": resources_pb2.GREATER_THAN
-})
-
-post_models_response = stub.PostModels(
-    service_pb2.PostModelsRequest(
-        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-        models=[
-            resources_pb2.Model(
-                id="greater-than-model-id",
-                model_type_id="concept-threshold",
-                output_info=resources_pb2.OutputInfo(
-                    data=resources_pb2.Data(
-                        concepts=[
-                            resources_pb2.Concept(id="peopleID", value=0.5),
-                            resources_pb2.Concept(id="manID", value=0.5),
-                            resources_pb2.Concept(id="adultID", value=0.95),
-                        ]
-                    ),
-                    params=params
-                )
-            ),
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_models_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Post models failed, status: " + post_models_response.status.description)
-```
+    <CodeBlock className="language-python">{PythonCreateGreaterThan}</CodeBlock>
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
@@ -587,46 +508,12 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
 
 ## Create a "Less Than" Concept Thresholder Model
 
-This model will allow any predictions &lt; the concept values defined in the model to be output from this model.
+This model will allow any predictions &lt; the concept values defined in the model to be outputted from the model.
 
 <Tabs>
+
 <TabItem value="grpc_python" label="gRPC Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-params = Struct()
-params.update({
-    "concept_threshold_type": resources_pb2.LESS_THAN
-})
-
-post_models_response = stub.PostModels(
-    service_pb2.PostModelsRequest(
-        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-        models=[
-            resources_pb2.Model(
-                id="less-than-model-id",
-                model_type_id="concept-threshold",
-                output_info=resources_pb2.OutputInfo(
-                    data=resources_pb2.Data(
-                        concepts=[
-                            resources_pb2.Concept(id="peopleID", value=0.5),
-                            resources_pb2.Concept(id="manID", value=0.5),
-                            resources_pb2.Concept(id="adultID", value=0.95),
-                        ]
-                    ),
-                    params=params
-                )
-            ),
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_models_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Post models failed, status: " + post_models_response.status.description)
-```
+    <CodeBlock className="language-python">{PythonCreateLessThan}</CodeBlock>
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
@@ -768,40 +655,12 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
 
 ## Create a "Write Success as Me" Annotation Writer Model
 
-Any incoming Data object full of concepts, regions, etc. will be writtent by this model to the database as an annotation with ANNOTATION\_SUCCESS status as if the app owner did the work themself.
+Any incoming Data object full of concepts, regions, etc. will be written by this model to the database as an annotation with ANNOTATION\_SUCCESS status as if the app owner did the work themself.
 
 <Tabs>
+
 <TabItem value="grpc_python" label="gRPC Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-params = Struct()
-params.update({
-    "annotation_status": status_code_pb2.ANNOTATION_SUCCESS,
-    "annotation_user_id": "{YOUR_USER_ID}"
-})
-
-post_models_response = stub.PostModels(
-    service_pb2.PostModelsRequest(
-        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-        models=[
-            resources_pb2.Model(
-                id="write-success-model-id",
-                model_type_id="annotation-writer",
-                output_info=resources_pb2.OutputInfo(
-                    params=params
-                )
-            ),
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_models_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Post models failed, status: " + post_models_response.status.description)
-```
+    <CodeBlock className="language-python">{PythonCreateWriteSuccess}</CodeBlock>
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
@@ -907,40 +766,12 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
 
 ## Create a "Write Pending as Me" Annotation Writer Model
 
-Any incoming Data object full of concepts, regions, etc. will be written by this model to the database as an annotation with ANNOTATION\_PENDING status as if the app owner did the work themself but needs further review so is marked pending.
+Any incoming Data object full of concepts, regions, etc. will be written by this model to the database as an annotation with ANNOTATION\_PENDING status as if the app owner did the work themself, but needs further review. So, it is marked as pending.
 
 <Tabs>
+
 <TabItem value="grpc_python" label="gRPC Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-params = Struct()
-params.update({
-    "annotation_status": status_code_pb2.ANNOTATION_PENDING,
-    "annotation_user_id": "{YOUR_USER_ID}"
-})
-
-post_models_response = stub.PostModels(
-    service_pb2.PostModelsRequest(
-        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-        models=[
-            resources_pb2.Model(
-                id="write-pending-model-id",
-                model_type_id="annotation-writer",
-                output_info=resources_pb2.OutputInfo(
-                    params=params
-                )
-            ),
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_models_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Post models failed, status: " + post_models_response.status.description)
-```
+    <CodeBlock className="language-python">{PythonCreateWritePending}</CodeBlock>
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
@@ -1016,7 +847,11 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
 
 We will now connect all the models together into a single workflow.
 
-Every input will be predicted by General Embed model to generate embeddings. The output of the embed model \(embeddings\) will be sent to general concept to predict concept and cluster model. Then the concept model's output \(a list of concepts with prediction values\) will be sent to concept mapper model which maps Clarifai concepts to your concepts within your app, `people`, `man` and `adult` in this case. Then the mapped concepts will be sent to both concept thresholds models \(`GREATER THAN` and `LESS THAN`\). `GREATER THAN` model will filter out the concepts that are lower than corresponding value you defined in model and send the remaining concept list to `write success as me` model which labels the input with these concepts \(your app concepts only\) as you with `success` status. You can train or search on these concepts immediately. The `LESS THAN` model will filter out concepts that are higher than the corresponding value you defined in the model and send the remaining concept list to `write pending as me` model which labels the input with these concepts \(your app concepts only\) as you with `pending` status.
+Every input will be predicted by General Embed model to generate embeddings. The output of the embed model \(embeddings\) will be sent to general concept to predict concept and cluster model. Then the concept model's output \(a list of concepts with prediction values\) will be sent to concept mapper model, which maps Clarifai concepts to your concepts within your app, `people`, `man` and `adult` in this case.
+
+Then the mapped concepts will be sent to both concept thresholds models \(`GREATER THAN` and `LESS THAN`\). `GREATER THAN` model will filter out the concepts that are lower than corresponding value you defined in model and send the remaining concept list to `write success as me` model, which labels the input with these concepts \(your app concepts only\) as you with `success` status. You can train or search on these concepts immediately. 
+
+The `LESS THAN` model will filter out concepts that are higher than the corresponding value you defined in the model and send the remaining concept list to `write pending as me` model, which labels the input with these concepts \(your app concepts only\) as you with `pending` status.
 
 The model IDs and model version IDs from the public `clarifai/main` application are fixed to the latest version at the time of this writing \(check GET /models for an always up to date list of available models\), so they are already hard-coded in the code examples below. It's possible to use other public model or model version IDs.
 
