@@ -856,116 +856,9 @@ The `LESS THAN` model will filter out concepts that are higher than the correspo
 The model IDs and model version IDs from the public `clarifai/main` application are fixed to the latest version at the time of this writing \(check GET /models for an always up to date list of available models\), so they are already hard-coded in the code examples below. It's possible to use other public model or model version IDs.
 
 <Tabs>
+
 <TabItem value="grpc_python" label="gRPC Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-post_workflows_response = stub.PostWorkflows(
-    service_pb2.PostWorkflowsRequest(
-        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-        workflows=[
-            resources_pb2.Workflow(
-                id="auto-annotation-workflow-id",
-                nodes=[
-                    resources_pb2.WorkflowNode(
-                        id="general-embed",
-                        model=resources_pb2.Model(
-                            id="bbb5f41425b8468d9b7a554ff10f8581",
-                            model_version=resources_pb2.ModelVersion(
-                                id="bb186755eda04f9cbb6fe32e816be104"
-                            )
-                        )
-                    ),
-                    resources_pb2.WorkflowNode(
-                        id="general-concept",
-                        model=resources_pb2.Model(
-                            id="aaa03c23b3724a16a56b629203edc62c",
-                            model_version=resources_pb2.ModelVersion(
-                                id="aa7f35c01e0642fda5cf400f543e7c40"
-                            )
-                        )
-                    ),
-                    resources_pb2.WorkflowNode(
-                        id="general-cluster",
-                        model=resources_pb2.Model(
-                            id="cccbe437d6e54e2bb911c6aa292fb072",
-                            model_version=resources_pb2.ModelVersion(
-                                id="cc2074cff6dc4c02b6f4e1b8606dcb54"
-                            )
-                        ),
-                    ),
-                    resources_pb2.WorkflowNode(
-                        id="mapper",
-                        model=resources_pb2.Model(
-                            id="synonym-model-id",
-                            model_version=resources_pb2.ModelVersion(
-                                id="{YOUR_SYNONYM_MODEL_VERSION_ID}"
-                            )
-                        ),
-                        node_inputs=[
-                            resources_pb2.NodeInput(node_id="general-concept")
-                        ]
-                    ),
-                    resources_pb2.WorkflowNode(
-                        id="greater-than",
-                        model=resources_pb2.Model(
-                            id="greater-than-model-id",
-                            model_version=resources_pb2.ModelVersion(
-                                id="{YOUR_GREATER_THAN_MODEL_VERSION_ID}"
-                            )
-                        ),
-                        node_inputs=[
-                            resources_pb2.NodeInput(node_id="mapper")
-                        ]
-                    ),
-                    resources_pb2.WorkflowNode(
-                        id="write-success",
-                        model=resources_pb2.Model(
-                            id="write-success-model-id",
-                            model_version=resources_pb2.ModelVersion(
-                                id="{YOUR_WRITE_SUCCESS_MODEL_VERSION_ID}"
-                            )
-                        ),
-                        node_inputs=[
-                            resources_pb2.NodeInput(node_id="greater-than")
-                        ]
-                    ),
-                    resources_pb2.WorkflowNode(
-                        id="less-than",
-                        model=resources_pb2.Model(
-                            id="less-than-model-id",
-                            model_version=resources_pb2.ModelVersion(
-                                id="{YOUR_LESS_THAN_MODEL_VERSION_ID}"
-                            )
-                        ),
-                        node_inputs=[
-                            resources_pb2.NodeInput(node_id="mapper")
-                        ]
-                    ),
-                    resources_pb2.WorkflowNode(
-                        id="write-pending",
-                        model=resources_pb2.Model(
-                            id="write-pending-model-id",
-                            model_version=resources_pb2.ModelVersion(
-                                id="{YOUR_WRITE_PENDING_MODEL_VERSION_ID}"
-                            )
-                        ),
-                        node_inputs=[
-                            resources_pb2.NodeInput(node_id="less-than")
-                        ]
-                    ),
-                ]
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_workflows_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Post workflows failed, status: " + post_workflows_response.status.description)
-```
+    <CodeBlock className="language-python">{PythonCreateWorkflow}</CodeBlock>
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
@@ -1333,32 +1226,14 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/workflows' \
 
 ## Make the New Workflow your App's Default
 
-Make this the default workflow in the app, so it will run every time we add an input and execute the auto annotation process. If the workflow is not the default workflow of your app you can still use PostWorkflowResults on new inputs to check that you configured the workflow graph and your models properly but the data will not be written to the DB. This is recommended before making it your default workflow and adding inputs to you app.
+Make this the default workflow in the app. So, it will run every time we add an input and execute the auto annotation process. 
+
+If the workflow is not the default workflow of your app, you can still use `PostWorkflowResults` on new inputs to check that you configured the workflow graph and your models properly, but the data will not be written to the DB. This is recommended before making it your default workflow and adding inputs to your app.
 
 <Tabs>
+
 <TabItem value="grpc_python" label="gRPC Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-patch_apps_response = stub.PatchApps(
-    service_pb2.PatchAppsRequest(
-        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-        action="overwrite",
-        apps=[
-            resources_pb2.App(
-                id="{YOUR_APP_ID}",
-                default_workflow_id="auto-annotation-workflow-id"
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if patch_apps_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Patch apps failed, status: " + patch_apps_response.status.description)
-```
+    <CodeBlock className="language-python">{PythonMakeWorkflowDefault}</CodeBlock>
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
@@ -1441,31 +1316,9 @@ curl -X PATCH 'https://api.clarifai.com/v2/users/me/apps' \
 Adding the image will trigger the default workflow.
 
 <Tabs>
+
 <TabItem value="grpc_python" label="gRPC Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-post_inputs_response = stub.PostInputs(
-    service_pb2.PostInputsRequest(
-        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-        inputs=[
-            resources_pb2.Input(
-                data=resources_pb2.Data(
-                    image=resources_pb2.Image(
-                        url="{YOUR_IMAGE_URL}"
-                    )
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_inputs_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
-```
+    <CodeBlock className="language-python">{PythonAddImage}</CodeBlock>
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
@@ -1558,30 +1411,12 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/inputs' \
 
 ## List Annotations
 
-Now you can list annotations with your user id to see the annotations created by your workflow.
+You can now list annotations with your user ID and see the annotations created by your workflow.
 
 <Tabs>
+
 <TabItem value="grpc_python" label="gRPC Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-list_annotations_response = stub.ListAnnotations(
-    service_pb2.ListAnnotationsRequest(
-        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-        user_ids=["{YOUR_USER_ID}"],
-        list_all_annotations=True,
-    ),
-    metadata=metadata
-)
-
-if list_annotations_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("List annotations failed, status: " + list_annotations_response.status.description)
-
-for annotation in list_annotations_response.annotations:
-    print(annotation)
-```
+    <CodeBlock className="language-python">{PythonListAnnotations}</CodeBlock>
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
