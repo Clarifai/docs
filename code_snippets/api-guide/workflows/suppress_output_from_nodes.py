@@ -12,6 +12,7 @@ WORKFLOW_ID = 'predict-cluster-only'
 NODE_ID_1 = 'general-embed'
 MODEL_ID_1 = 'bbb5f41425b8468d9b7a554ff10f8581'
 MODEL_VERSION_ID_1 = 'bb186755eda04f9cbb6fe32e816be104'
+
 NODE_ID_2 = 'general-cluster'
 MODEL_ID_2 = 'cccbe437d6e54e2bb911c6aa292fb072'
 MODEL_VERSION_ID_2 = 'cc2074cff6dc4c02b6f4e1b8606dcb54'
@@ -33,7 +34,7 @@ userDataObject = resources_pb2.UserAppIDSet(user_id=USER_ID, app_id=APP_ID) # Th
 
 post_workflows_response = stub.PostWorkflows(
     service_pb2.PostWorkflowsRequest(
-        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
+        user_app_id=userDataObject,  
         workflows=[
             resources_pb2.Workflow(
                 id=WORKFLOW_ID,
