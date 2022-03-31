@@ -5,6 +5,9 @@ sidebar_position: 1
 
 # Search Overview
 
+**Search helps you sort, save, organize, and filter your datasets**
+<hr />
+
 You can send inputs \(as a url or bytes\) and once indexed, you can search for images by concept, image, or many advanced search parameters. When you `POST /inputs`, your base workflow is used to index your inputs, and this index enables search over the outputs of the models in your workflow.
 
 ## Rank
@@ -13,14 +16,15 @@ Your model can identify concepts in your data and rank your search results by ho
 
 ## Filter
 
-Trim down the amount of data returned in search. For example, you may only want to see inputs that one of your collaborators has labeled with the word “dog”. Or perhaps you want only those inputs that were captured in a certain geographical region.
+Trim down the amount of data returned in search. For example, you may only want to see inputs that one of your collaborators has labeled with the word “dog”. Or, perhaps you want only those inputs that were captured in a certain geographical region.
 
 ## 'AND'
 
 Combine multiple search parameters. For example, you can find all the inputs within a geographical region with a "weapon" in them, or all annotations assigned to user "Joe", or visually similar product images that are assigned the word "XL" in metadata.
 
-
-Search currently is only available for images.
+:::important note
+The search functionality is currently only available for images.
+:::
 
 
 ![Image illustrating how to search by images using Clarifai&apos;s concepts](/img/illustration-search.png)

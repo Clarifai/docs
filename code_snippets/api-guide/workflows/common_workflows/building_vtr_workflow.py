@@ -1,20 +1,26 @@
 ###################################################################################
 # In this section, we set the user authentication, app ID, and the details of the 
-# workflow we want to create. Change these strings to run your own example.
+# VTR Workflow we want to build. Change these strings to run your own example.
 ##################################################################################
 
 USER_ID = 'YOUR_USER_ID_HERE'
 # Your PAT (Personal Access Token) can be found in the portal under Authentification
 PAT = 'YOUR_PAT_HERE'
 APP_ID = 'YOUR_APP_ID_HERE'
-# Change these to create your own workflow
-WORKFLOW_ID = 'detect-knn-workflow'
-WORKFLOWNODE_ID_1 = 'face-v1.3-embed'
-EMBEDDING_MODEL_ID = 'd02b4508df58432fbb84e800597b8959'
-EMBEDDING_MODEL_VERSION_ID = '6ca3b762008e419583258aca49b88401'
-WORKFLOWNODE_ID_2 = 'knn-classifier'
-MODEL_ID = 'my-knn-face-classifier-model'
-MODEL_VERSION_ID = '66cddf2be70543fab654cbe91724495c'
+# Change these to build your own VTR Workflow
+WORKFLOW_ID = 'visual-text-recognition-id'
+
+WORKFLOWNODE_ID_1 = 'detect-concept'
+MODEL_ID_1 = '2419e2eae04d04f820e5cf3aba42d0c7'
+MODEL_VERSION_ID_1 = '75a5b92a0dec436a891b5ad224ac9170'
+
+WORKFLOWNODE_ID_2 = 'image-crop'
+MODEL_ID_2 = 'ce3f5832af7a4e56ae310d696cbbefd8'
+MODEL_VERSION_ID_2 = 'a78efb13f7774433aa2fd4864f41f0e6'
+
+WORKFLOWNODE_ID_3 = 'image-to-text'
+MODEL_ID_3 = '9fe78b4150a52794f86f237770141b33'
+MODEL_VERSION_ID_3 = 'd94413e582f341f68884cac72dbd2c7b'
 
 ##########################################################################
 # YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -41,21 +47,36 @@ post_workflows_response = stub.PostWorkflows(
                     resources_pb2.WorkflowNode(
                         id=WORKFLOWNODE_ID_1,
                         model=resources_pb2.Model(
-                            id=EMBEDDING_MODEL_ID,  # This is the base Face model ID
+                            id=MODEL_ID_1,
                             model_version=resources_pb2.ModelVersion(
-                                id=EMBEDDING_MODEL_VERSION_ID  # This is the base Face model version ID
+                                id=MODEL_VERSION_ID_1
                             )
                         )
                     ),
                     resources_pb2.WorkflowNode(
-                        id=WORKFLOWNODE_ID_2, 
+                        id=WORKFLOWNODE_ID_2,
                         model=resources_pb2.Model(
-                            id=MODEL_ID, 
+                            id=MODEL_ID_2,
                             model_version=resources_pb2.ModelVersion(
-                                id=MODEL_VERSION_ID
-                            )
-                        )
-                    ),
+                                id=MODEL_VERSION_ID_2
+                                )
+                            ),
+                            node_inputs=[
+                                resources_pb2.NodeInput(node_id=WORKFLOWNODE_ID_1)
+                            ]
+                        ),
+                    resources_pb2.WorkflowNode(
+                        id=WORKFLOWNODE_ID_3,
+                        model=resources_pb2.Model(
+                            id=MODEL_ID_3,
+                            model_version=resources_pb2.ModelVersion(
+                                id=MODEL_VERSION_ID_3
+                                )
+                            ),
+                            node_inputs=[
+                                resources_pb2.NodeInput(node_id=WORKFLOWNODE_ID_2)
+                            ]
+                        ),
                 ]
             )
         ]
@@ -64,4 +85,4 @@ post_workflows_response = stub.PostWorkflows(
 )
 
 if post_workflows_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Failed response, status: " + str(post_workflows_response.status))
+    raise Exception("Post workflows failed, status: " + post_workflows_response.status.description)

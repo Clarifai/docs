@@ -3,14 +3,30 @@ description: Group or separate items in your dataset.
 sidebar_position: 2
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 # Combine or Negate
 
-You can also combine searches. Unlike our legacy search, in annotation search, `Filter` and `Rank` is a list of `Annotation` objects. Filtered annotations will be ANDed. When you combine both `Filter` and `Rank`, filter will be applied before ranking annotations. This is important because limiting the result set on large applications can speedup the overall query drastically when doing a ranking.
+**Group or separate items in your dataset**
+<hr />
+
+You can also combine searches. Unlike our legacy search, in annotation search, `Filter` and `Rank` is a list of `Annotation` objects. Filtered annotations will be ANDed. 
+
+When you combine both `Filter` and `Rank`, filter will be applied before ranking annotations. This is important because limiting the result set on large applications can speedup the overall query drastically when doing a ranking.
+
+:::info
+The initialization code used in the following example is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+:::
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+import PythonCombineNegate from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate.py";
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonCombineNegate}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -125,70 +141,6 @@ stub.PostAnnotationsSearches(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="python" label="Python">
-
-```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-# Here we search for images which we labeled with "cat" and for which the General prediction model does not find
-# a "dog" concept.
-post_annotations_searches_response = stub.PostAnnotationsSearches(
-    service_pb2.PostAnnotationsSearchesRequest(
-        searches = [
-            resources_pb2.Search(
-                query=resources_pb2.Query(
-                    filters=[
-                        resources_pb2.Filter(
-                            annotation=resources_pb2.Annotation(
-                                data=resources_pb2.Data(
-                                    concepts=[  # You can search by multiple concepts.
-                                        resources_pb2.Concept(
-                                            id="cat",  # You could search by concept Name as well.
-                                            value=1  # Value of 0 will search for images that don't have the concept.
-                                        )
-                                    ]
-                                )
-                            )
-                        )
-                    ],
-                    ranks=[
-                        resources_pb2.Rank(
-                            annotation=resources_pb2.Annotation(
-                                data=resources_pb2.Data(
-                                    concepts=[  # You can search by multiple concepts.
-                                        resources_pb2.Concept(
-                                            id="dog",  # You could search by concept Name as well.
-                                            value=0  # Value of 0 will search for images that don't have the concept.
-                                        )
-                                    ]
-                                )
-                            )
-                        )
-                    ]
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_annotations_searches_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(post_annotations_searches_response.outputs[0].status.code))
-    print("\tDescription: {}".format(post_annotations_searches_response.outputs[0].status.description))
-    print("\tDetails: {}".format(post_annotations_searches_response.outputs[0].status.details))
-    raise Exception("Post searches failed, status: " + post_annotations_searches_response.status.description)
-
-print("Search result:")
-for hit in post_annotations_searches_response.hits:
-    print("\tScore %.2f for annotation: %s off input: %s" % (hit.score, hit.annotation.id, hit.input.id))
 ```
 </TabItem>
 
