@@ -3,22 +3,37 @@ description: Search your data based on concepts or visual similarity
 sidebar_position: 4
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 # Rank
 
-Rank Order your search results with the intuitive insights of AI. Your model can identify concepts in your data and rank your search results by how confident it is that a given concept is present. You can even rank search results by how similar one input is to another input or region of the input model detected. The search results will return the input but also the annotation which includes the region.
+**Search your data based on concepts or visual similarity**
+<hr />
 
-## Search By Concepts
+Rank Order your search results with the intuitive insights of AI. Your model can identify concepts in your data and rank your search results by how confident it is that a given concept is present. 
 
-Once your images are indexed, you can search for them by concept.
+You can even rank search results by how similar one input is to another input or region of the input model detected. The search results will return the input and also the annotation, which includes the region.
 
-### By clarifai/main App Concepts
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+import PythonAppConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/rank/by_clarifaimain_app_concepts.py";
+import PythonCustomConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/rank/by_custom_concepts.py";
+import PythonClarifaiCustomConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/rank/by_clarifaimain_custom_concepts.py";
 
-When you add an input, it automatically gets predictions from the models in your base workflow which are typically models from the clarifai/main app such as the general model. You can search by those predictions.
+
+## Search by Concepts
+
+Once your images are indexed, you can search for them by concepts.
+
+### By Clarifai/main App Concepts
+
+When you add an input, it automatically gets predictions from the models in your base workflow, which are typically models from the Clarifai/main app, such as the General model. You can search by those predictions.
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonAppConcepts}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -103,54 +118,6 @@ stub.PostAnnotationsSearches(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="python" label="Python">
-
-```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
-
-post_annotations_searches_response = stub.PostAnnotationsSearches(
-    service_pb2.PostAnnotationsSearchesRequest(
-        searches = [
-            resources_pb2.Search(
-                query=resources_pb2.Query(
-                    ranks=[
-                        resources_pb2.Rank(
-                            annotation=resources_pb2.Annotation(
-                                data=resources_pb2.Data(
-                                    concepts=[  # You can search by multiple concepts.
-                                        resources_pb2.Concept(
-                                            id="people",  # You could search by concept Name as well.
-                                            value=1  # Value of 0 will search for images that don't have the concept.
-                                        )
-                                    ]
-                                )
-                            )
-                        )
-                    ]
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_annotations_searches_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(post_annotations_searches_response.outputs[0].status.code))
-    print("\tDescription: {}".format(post_annotations_searches_response.outputs[0].status.description))
-    print("\tDetails: {}".format(post_annotations_searches_response.outputs[0].status.details))
-    raise Exception("Post searches failed, status: " + post_annotations_searches_response.status.description)
-
-print("Search result:")
-for hit in post_annotations_searches_response.hits:
-    print("\tScore %.2f for annotation: %s off input: %s" % (hit.score, hit.annotation.id, hit.input.id))
 ```
 </TabItem>
 
@@ -242,9 +209,14 @@ fetch(`https://api.clarifai.com/v2/annnotations/searches`, requestOptions)
 
 ### By Custom Concepts
 
-After you have [added inputs](https://github.com/Clarifai/docs/tree/1c1d25cdd43190c38a2edb313297c0d566b3a0e3/api-guide/search/data-management/inputs.md#add-inputs-with-concepts), [annotation the inputs](https://github.com/Clarifai/docs/tree/1c1d25cdd43190c38a2edb313297c0d566b3a0e3/api-guide/search/data-management/annotations.md#add-annotations), and try a custom model, you can search by those concepts.
+After you have added inputs, annotated the inputs, and tried a custom model, you can search by those concepts.
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonCustomConcepts}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -329,54 +301,6 @@ stub.PostAnnotationsSearches(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="python" label="Python">
-
-```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
-
-post_annotations_searches_response = stub.PostAnnotationsSearches(
-    service_pb2.PostAnnotationsSearchesRequest(
-        searches = [
-            resources_pb2.Search(
-                query=resources_pb2.Query(
-                    ranks=[
-                        resources_pb2.Rank(
-                            annotation=resources_pb2.Annotation(
-                                data=resources_pb2.Data(
-                                    concepts=[  # You can search by multiple concepts.
-                                        resources_pb2.Concept(
-                                            id="people",  # You could search by concept Name as well.
-                                            value=1  # Value of 0 will search for images that don't have the concept.
-                                        )
-                                    ]
-                                )
-                            )
-                        )
-                    ]
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_annotations_searches_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(post_annotations_searches_response.outputs[0].status.code))
-    print("\tDescription: {}".format(post_annotations_searches_response.outputs[0].status.description))
-    print("\tDetails: {}".format(post_annotations_searches_response.outputs[0].status.details))
-    raise Exception("Post searches failed, status: " + post_annotations_searches_response.status.description)
-
-print("Search result:")
-for hit in post_annotations_searches_response.hits:
-    print("\tScore %.2f for annotation: %s off input: %s" % (hit.score, hit.annotation.id, hit.input.id))
 ```
 </TabItem>
 
@@ -466,11 +390,16 @@ fetch(`https://api.clarifai.com/v2/annnotations/searches`, requestOptions)
 
 </Tabs>
 
-### By clarifai/main and custom concepts
+### By Clarifai/main and Custom Concepts
 
 You can combine a search to find inputs that have concepts you have supplied as well as predictions from your model.
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonClarifaiCustomConcepts}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -585,69 +514,6 @@ stub.PostAnnotationsSearches(
 ```
 </TabItem>
 
-<TabItem value="python" label="Python">
-
-```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
-
-# Here we search for images which we labeled with "cat" and for which the General prediction model does not find
-# a "dog" concept.
-
-post_annotations_searches_response = stub.PostAnnotationsSearches(
-    service_pb2.PostAnnotationsSearchesRequest(
-        searches = [
-            resources_pb2.Search(
-                query=resources_pb2.Query(
-                    ranks=[
-                        resources_pb2.Rank(
-                            annotation=resources_pb2.Annotation(
-                                data=resources_pb2.Data(
-                                    concepts=[  # You can search by multiple concepts.
-                                        resources_pb2.Concept(
-                                            id="cat",  # You could search by concept Name as well.
-                                            value=1  # Value of 0 will search for images that don't have the concept.
-                                        )
-                                    ]
-                                )
-                            )
-                        ),
-                        resources_pb2.Rank(
-                            annotation=resources_pb2.Annotation(
-                                data=resources_pb2.Data(
-                                    concepts=[  # You can search by multiple concepts.
-                                        resources_pb2.Concept(
-                                            id="dog",  # You could search by concept Name as well.
-                                            value=0  # Value of 0 will search for images that don't have the concept.
-                                        )
-                                    ]
-                                )
-                            )
-                        )
-                    ]
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_annotations_searches_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(post_annotations_searches_response.outputs[0].status.code))
-    print("\tDescription: {}".format(post_annotations_searches_response.outputs[0].status.description))
-    print("\tDetails: {}".format(post_annotations_searches_response.outputs[0].status.details))
-    raise Exception("Post searches failed, status: " + post_annotations_searches_response.status.description)
-
-print("Search result:")
-for hit in post_annotations_searches_response.hits:
-    print("\tScore %.2f for annotation: %s off input: %s" % (hit.score, hit.annotation.id, hit.input.id))
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -759,9 +625,11 @@ fetch(`https://api.clarifai.com/v2/annnotations/searches`, requestOptions)
 
 </Tabs>
 
-### By concept in another language
+### By Concept in Another Language
 
-Concepts that have a translation into another language can be searched for in that language, even without having the default language for your app being in that language. This uses Clarifai's knowledge graph to lookup the translation and then perform the search. For example, if you app is in english and you want to search for "dog" in Japanese, then you could search with `language="ja"` and `name="犬"`.
+Concepts that have a translation into another language can be searched for in that language, even without having the default language for your app being in that language. This uses Clarifai's knowledge graph to lookup the translation and then perform the search. 
+
+For example, if you app is in english and you want to search for "dog" in Japanese, then you could search with `language="ja"` and `name="犬"`.
 
 <Tabs>
 <TabItem value="java" label="Java">
@@ -990,11 +858,11 @@ fetch(`https://api.clarifai.com/v2/annnotations/searches`, requestOptions)
 
 </Tabs>
 
-## Search by visual similarity
+## Search by Visual Similarity
 
 You can use images to search through your collection. The API will return ranked results based on how similar the results are to the image you provided in your query.
 
-### Search by image URL
+### Search by Image URL
 
 <Tabs>
 <TabItem value="java" label="Java">
@@ -1200,7 +1068,7 @@ fetch(`https://api.clarifai.com/v2/annnotations/searches`, requestOptions)
 
 </Tabs>
 
-### Search by image Bytes
+### Search by Image Bytes
 
 You can also search for an input by URL.
 
