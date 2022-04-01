@@ -32,7 +32,7 @@ import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 import PythonAddImages from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/knn_add_images.py";
 import PythonWaitUploadMap from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/knn_wait_upload_map_ids_urls.py";
-import PythonListAnnotations from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/list_annotations.py";
+import PythonListAnnotations from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/knn_list_the_annotations.py";
 import PythonPostNewAnnotations from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/knn_post_new_annotations.py";
 import PythonCreateKnnModel from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/knn_create_knn_model.py";
 import PythonCreateWorkflow from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/knn_create_workflow.py";
@@ -70,42 +70,14 @@ Now we'll wait for all the images to finish uploading, and then create a diction
 
 Let's now print all the regions that the Face base model detected on our images.
 
-The code below prints the annotations together with the input ID and region ID. These two IDs will be needed in the next step to annotate using our custom concepts. We'll also need the base Face model ID which is the one where `model_version_id` equals to `embedding_model_version_id`.
+The code below prints the annotations together with the model version ID and region ID. These two IDs will be needed in the next step to annotate using our custom concepts. We'll also need the base Face model ID, which is the one where `model_version_id` equals to `embedding_model_version_id`.
 
 <Tabs>
+
 <TabItem value="grpc_python" label="gRPC Python">
-
-```python
-list_annotations_response = stub.ListAnnotations(
-    service_pb2.ListAnnotationsRequest(
-        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-        list_all_annotations=True, 
-        page=1, 
-        per_page=100
-    ),
-    metadata=metadata
-)
-
-if list_annotations_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Failed response, status: " + str(list_annotations_response.status))
-
-
-for annotation in list_annotations_response.annotations:
-    if not annotation.data or not annotation.data.regions:
-        continue
-    # Display results only for the base Face model.
-    if annotation.model_version_id != annotation.embed_model_version_id:
-        continue
-    for region in annotation.data.regions:
-        bbox = region.region_info.bounding_box
-        print(f"Face was detected on input ID {annotation.input_id} (URL: {input_id_to_url[annotation.input_id]})")
-        print(f"\tRegion ID: {region.id}")
-        print(f"\tRegion location: left={bbox.left_col:.4f}, top={bbox.top_row:.4f}, right={bbox.right_col:.4f}, bottom={bbox.bottom_row:.4f}")
-        print(f"\tConfidence: {region.value:.2f}")
-        print(f"\tBase Face model version ID: {annotation.embed_model_version_id}")
-        print()
-```
+    <CodeBlock className="language-python">{PythonListAnnotations}</CodeBlock>
 </TabItem>
+
 </Tabs>
 
 ## Post New Annotations
@@ -115,43 +87,11 @@ Let's use the above information to add annotations, in the form of a concept, to
 Input below the IDs from the previous call, and choose your concept ID and name that you want to annotate the region with \(you may want to use e.g. person's name\).
 
 <Tabs>
+
 <TabItem value="grpc_python" label="gRPC Python">
-
-```python
-post_annotations_response = stub.PostAnnotations(
-    service_pb2.PostAnnotationsRequest(
-        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-        annotations=[
-            resources_pb2.Annotation(
-                input_id="{MY_INPUT_ID}",
-                embed_model_version_id="{MY_EMBED_MODEL_VERSION_ID}",
-                data=resources_pb2.Data(
-                    regions=[
-                        resources_pb2.Region(
-                            id="{MY_REGION_ID}",
-                            data=resources_pb2.Data(
-                                concepts=[
-                                    resources_pb2.Concept(
-                                        id="{MY_CONCEPT_ID}",
-                                        name="{MY_CONCEPT_NAME}",
-                                        value=1
-                                    )
-                                ]
-                            )
-                        )
-                    ]
-                )
-
-            )
-        ],
-    ),
-    metadata=metadata
-)
-
-if post_annotations_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Failed response, status: " + str(post_annotations_response.status))
-```
+    <CodeBlock className="language-python">{PythonPostNewAnnotations}</CodeBlock>
 </TabItem>
+
 </Tabs>
 
 ## Create a KNN Model
@@ -159,80 +99,23 @@ if post_annotations_response.status.code != status_code_pb2.SUCCESS:
 Let's now create a KNN model using the concept IDs that were added above. The model type ID should be set to `knn-concept`.
 
 <Tabs>
+
 <TabItem value="grpc_python" label="gRPC Python">
-
-```python
-post_models_response = stub.PostModels(
-    service_pb2.PostModelsRequest(
-        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-        models=[
-            resources_pb2.Model(
-                id="my-knn-face-classifier-model",
-                model_type_id="knn-concept",
-                output_info=resources_pb2.OutputInfo(
-                    data=resources_pb2.Data(
-                        concepts=[
-                            resources_pb2.Concept(id="{MY_CONCEPT_ID_1}"),
-                            resources_pb2.Concept(id="{MY_CONCEPT_ID_2}"),
-                        ]
-                    )
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_models_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Failed response, status: " + str(post_models_response.status))
-```
+    <CodeBlock className="language-python">{PythonCreateKnnModel}</CodeBlock>
 </TabItem>
+
 </Tabs>
 
 ## Create a Workflow
 
-One last step before being able to do predictions: create a workflow that's going to map from the base Face model to our custom KNN model.
+One last step before making predictions: let's create a workflow that's going to map from the base Face model to our custom KNN model.
 
 <Tabs>
+
 <TabItem value="grpc_python" label="gRPC Python">
-
-```python
-post_workflows_response = stub.PostWorkflows(
-    service_pb2.PostWorkflowsRequest(
-        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-        workflows=[
-            resources_pb2.Workflow(
-                id="detect-knn-workflow",
-                nodes=[
-                    resources_pb2.WorkflowNode(
-                        id="face-v1.3-embed",
-                        model=resources_pb2.Model(
-                            id="d02b4508df58432fbb84e800597b8959",  # This is the base Face model ID.
-                            model_version=resources_pb2.ModelVersion(
-                                id="{EMBEDDING_MODEL_VERSION_ID}"  # This is the base Face model version ID.
-                            )
-                        )
-                    ),
-                    resources_pb2.WorkflowNode(
-                        id="knn-classifier",
-                        model=resources_pb2.Model(
-                            id="my-knn-face-classifier-model",
-                            model_version=resources_pb2.ModelVersion(
-                                id="{YOUR_MODEL_VERSION_ID}"
-                            )
-                        )
-                    ),
-                ]
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_workflows_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Failed response, status: " + str(post_workflows_response.status))
-```
+    <CodeBlock className="language-python">{PythonCreateWorkflow}</CodeBlock>
 </TabItem>
+
 </Tabs>
 
 ## Predict
@@ -240,39 +123,10 @@ if post_workflows_response.status.code != status_code_pb2.SUCCESS:
 We're going to run a prediction on the workflow created above.
 
 <Tabs>
+
 <TabItem value="grpc_python" label="gRPC Python">
-
-```python
-post_workflow_results_response = stub.PostWorkflowResults(
-    service_pb2.PostWorkflowResultsRequest(
-        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-        workflow_id="detect-knn-workflow",
-        inputs=[
-            resources_pb2.Input(
-                data=resources_pb2.Data(
-                    image=resources_pb2.Image(
-                        url="{MY_URL_TO_PREDICT_FACES_ON}"
-                    )
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-# We get back one result per input. Since there's one input above, one input was returned.
-result = post_workflow_results_response.results[0]
-
-for output in result.outputs:
-    # At this point, two outputs will be returned: one for the base Face model, and the other for our custom model.
-    # At this moment, we are only interested in the results of the latter model (if you want, you may also see the
-    # half-baked results of the base Face model, which is not a list of concepts, but an embedding vector).
-    if output.model.id != "my-knn-face-classifier-model":
-        continue
-    print(f"The prediction of the model ID `{output.model.id}` is:")
-    for concept in output.data.concepts:
-        print(f"\t{concept.name} (id: {concept.id}): {concept.value:.4f}")
-```
+    <CodeBlock className="language-python">{PythonPredict}</CodeBlock>
 </TabItem>
+
 </Tabs>
 

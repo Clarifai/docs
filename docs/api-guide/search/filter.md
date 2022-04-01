@@ -3,18 +3,39 @@ description: Select a subset of your data based on useful filters.
 sidebar_position: 3
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 # Filter
+
+**Select a subset of your data based on useful filters**
+<hr />
 
 You can filter and customize your search results to find exactly what you want. Filtering helps you reduce the amount of data returned in search results by removing irrelevant content, or by allowing you to select a specific subset of your data.
 
+:::info
+The initialization code used in the following examples is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+:::
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+import PythonCustomConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/filter/by_custom_concepts.py";
+import PythonUserID from "!!raw-loader!../../../code_snippets/api-guide/search/filter/by_user_id.py";
+import PythonAnnotationStatus from "!!raw-loader!../../../code_snippets/api-guide/search/filter/by_annotation_status.py";
+import PythonInputsLongitude from "!!raw-loader!../../../code_snippets/api-guide/search/filter/add_inputs_longitude_latitude.py";
+import PythonOneGeoPoint from "!!raw-loader!../../../code_snippets/api-guide/search/filter/perform_search_one_geo_point.py";
+import PythonTwoGeoPoints from "!!raw-loader!../../../code_snippets/api-guide/search/filter/perform_search_two_geo_point.py";
+import PythonCustomAnnotation from "!!raw-loader!../../../code_snippets/api-guide/search/filter/by_custom_annotation_info.py";
+import PythonAnnotationInfo from "!!raw-loader!../../../code_snippets/api-guide/search/filter/by_annotation_info.py";
+
 ## By Custom Concepts
 
-After you [annotate inputs with custom concepts](https://github.com/Clarifai/docs/tree/1c1d25cdd43190c38a2edb313297c0d566b3a0e3/api-guide/search/data-management/annotations.md#annotate-images-with-concepts), you can filter by concepts.
+After you annotate inputs with custom concepts, you can filter by concepts.
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonCustomConcepts}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -99,50 +120,6 @@ stub.PostAnnotationsSearches(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="python" label="Python">
-
-```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
-
-post_annotations_searches_response = stub.PostAnnotationsSearches(
-    service_pb2.PostAnnotationsSearchesRequest(
-        searches = [
-            resources_pb2.Search(
-                query=resources_pb2.Query(
-                    filters=[
-                        resources_pb2.Filter(
-                            annotation=resources_pb2.Annotation(
-                                data=resources_pb2.Data(
-                                    concepts=[  # You can search by multiple concepts.
-                                        resources_pb2.Concept(
-                                            id="people",  # You could search by concept Name as well.
-                                            value=1  # Value of 0 will search for images that don't have the concept.
-                                        )
-                                    ]
-                                )
-                            )
-                        )
-                    ]
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_annotations_searches_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Post searches failed, status: " + post_annotations_searches_response.status.description)
-
-print("Search result:")
-for hit in post_annotations_searches_response.hits:
-    print("\tScore %.2f for annotation: %s off input: %s" % (hit.score, hit.annotation.id, hit.input.id))
 ```
 </TabItem>
 
@@ -231,9 +208,14 @@ fetch(`https://api.clarifai.com/v2/annotations/searches`, requestOptions)
 
 ## By User ID
 
-If you have collaborators in your app and they helped you annotate your inputs, you can also filter annotations by user id.
+If you have collaborators in your app and they helped you annotate your inputs, you can also filter annotations by their user ID.
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonUserID}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -309,47 +291,6 @@ stub.PostAnnotationsSearches(
 ```
 </TabItem>
 
-<TabItem value="python" label="Python">
-
-```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
-
-post_annotations_searches_response = stub.PostAnnotationsSearches(
-    service_pb2.PostAnnotationsSearchesRequest(
-        searches = [
-            resources_pb2.Search(
-                query=resources_pb2.Query(
-                    filters=[
-                        resources_pb2.Filter(
-                            annotation=resources_pb2.Annotation(
-                                user_id="{user_id}"
-                            )
-                        )
-                    ]
-                )       
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_annotations_searches_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(post_annotations_searches_response.outputs[0].status.code))
-    print("\tDescription: {}".format(post_annotations_searches_response.outputs[0].status.description))
-    print("\tDetails: {}".format(post_annotations_searches_response.outputs[0].status.details))
-    raise Exception("Post searches failed, status: " + post_annotations_searches_response.status.description)
-
-print("Search result:")
-for hit in post_annotations_searches_response.hits:
-    print("\tScore %.2f for annotation: %s off input: %s" % (hit.score, hit.annotation.id, hit.input.id))
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -421,6 +362,11 @@ fetch(`https://api.clarifai.com/v2/annotations/searches`, requestOptions)
 ## By Annotation Status
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonAnnotationStatus}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -502,49 +448,6 @@ stub.PostAnnotationsSearches(
 ```
 </TabItem>
 
-<TabItem value="python" label="Python">
-
-```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
-
-post_annotations_searches_response = stub.PostAnnotationsSearches(
-    service_pb2.PostAnnotationsSearchesRequest(
-        searches = [
-            resources_pb2.Search(
-                query=resources_pb2.Query(
-                    filters=[
-                        resources_pb2.Filter(
-                            annotation=resources_pb2.Annotation(
-                                status=status_pb2.Status(
-                                    code=status_code_pb2.ANNOTATION_SUCCESS
-                                )
-                            )
-                        )
-                    ]
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_annotations_searches_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(post_annotations_searches_response.outputs[0].status.code))
-    print("\tDescription: {}".format(post_annotations_searches_response.outputs[0].status.description))
-    print("\tDetails: {}".format(post_annotations_searches_response.outputs[0].status.details))
-    raise Exception("Post searches failed, status: " + post_annotations_searches_response.status.description)
-
-print("Search result:")
-for hit in post_annotations_searches_response.hits:
-    print("\tScore %.2f for annotation: %s off input: %s" % (hit.score, hit.annotation.id, hit.input.id))
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -621,19 +524,24 @@ fetch(`https://api.clarifai.com/v2/annotations/searches`, requestOptions)
 
 Search by geo location allows you to restrict your search results to a bounding box based on longitude and latitude points. There are two ways you can provide longitude/latitude points. You can provide one point and a radius or you can provide two points.
 
-It is important to note that a search by geo location acts as a filter and returns results ranked by any other provided search criteria, whether that is a visual search, concept search or something else. If no other criteria is provided, results will return in the order the inputs were created, NOT by their distance to center of the search area.
+It is important to note that a search by geo location acts as a filter and returns results ranked by any other provided search criteria, whether that is a visual search, concept search, or something else. If no other criteria is provided, results will return in the order the inputs were created, NOT by their distance to the center of the search area.
 
-If you are providing one point and a radius, the radius can be in "mile", "kilometer", "degree", or "radian", marked by keywords `withinMiles`, `withinKilometers`, `withinDegrees`, `withinRadians`.
+If you are providing one point and a radius, the radius can be in "mile", "kilometer", "degree", or "radian", marked by keywords `withinMiles`, `withinKilometers`, `withinDegrees`, or `withinRadians`.
 
-If you are providing two points, a box will be drawn from the uppermost point to the lowermost point and the leftmost point to the rightmost point.
+If you are providing two points, a box will be drawn from the uppermost point to the lowermost point, and the leftmost point to the rightmost point.
 
 Before you perform a search by geo location, make sure you have added inputs with longitude and latitude points.
 
-### Add inputs with longitude and latitude points
+### Add Inputs With Longitude and Latitude Points
 
 Provide a geo point to an input. The geo point is a JSON object consisting of a longitude and a latitude in GPS coordinate system \(SRID 4326\). There can be at most one single geo point associated with each input.
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonInputsLongitude}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -702,46 +610,6 @@ stub.PostInputs(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="python" label="Python">
-
-```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
-
-post_inputs_response = stub.PostInputs(
-    service_pb2.PostInputsRequest(
-        inputs=[
-            resources_pb2.Input(
-                data=resources_pb2.Data(
-                    image=resources_pb2.Image(
-                        url="https://samples.clarifai.com/dog.tiff",
-                        allow_duplicate_url=True
-                    ),
-                    geo=resources_pb2.Geo(
-                        geo_point=resources_pb2.GeoPoint(
-                            longitude=-30.0,
-                            latitude=40.0,
-                        )
-                    )
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_inputs_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(post_inputs_response.outputs[0].status.code))
-    print("\tDescription: {}".format(post_inputs_response.outputs[0].status.description))
-    print("\tDetails: {}".format(post_inputs_response.outputs[0].status.details))
-    raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
 ```
 </TabItem>
 
@@ -818,9 +686,14 @@ fetch(`https://api.clarifai.com/v2/inputs`, requestOptions)
 
 </Tabs>
 
-### Perform a search with one geo point and radius in kilometers
+### Perform a Search With One Geo Point and Radius in Kilometers
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonOneGeoPoint}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -920,58 +793,6 @@ stub.PostAnnotationsSearches(
 ```
 </TabItem>
 
-<TabItem value="python" label="Python">
-
-```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
-
-post_annotations_searches_response = stub.PostAnnotationsSearches(
-    service_pb2.PostAnnotationsSearchesRequest(
-        searches = [
-            resources_pb2.Search(
-                query=resources_pb2.Query(
-                    filters=[
-                        resources_pb2.Filter(
-                            annotation=resources_pb2.Annotation(
-                                data=resources_pb2.Data(
-                                    geo=resources_pb2.Geo(
-                                        geo_point=resources_pb2.GeoPoint(
-                                            longitude=-29.0,
-                                            latitude=40.0,
-                                        ),
-                                        geo_limit=resources_pb2.GeoLimit(
-                                            type="withinKilometers",
-                                            value=150.0
-                                        )
-                                    )
-                                )
-                            )
-                        )
-                    ]
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_annotations_searches_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(post_annotations_searches_response.outputs[0].status.code))
-    print("\tDescription: {}".format(post_annotations_searches_response.outputs[0].status.description))
-    print("\tDetails: {}".format(post_annotations_searches_response.outputs[0].status.details))
-    raise Exception("Post searches failed, status: " + post_annotations_searches_response.status.description)
-
-print("Search result:")
-for hit in post_annotations_searches_response.hits:
-    print("\tScore %.2f for annotation: %s off input: %s" % (hit.score, hit.annotation.id, hit.input.id))
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -1066,9 +887,14 @@ fetch(`https://api.clarifai.com/v2/annnotations/searches`, requestOptions)
 
 </Tabs>
 
-### Perform a search with two geo points
+### Perform a Search With Two Geo Points
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonTwoGeoPoints}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -1175,64 +1001,6 @@ stub.PostAnnotationsSearches(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="python" label="Python">
-
-```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
-
-post_annotations_searches_response = stub.PostAnnotationsSearches(
-    service_pb2.PostAnnotationsSearchesRequest(
-        searches = [
-            resources_pb2.Search(
-                query=resources_pb2.Query(
-                    filters=[
-                        resources_pb2.Filter(
-                            annotation=resources_pb2.Annotation(
-                                data=resources_pb2.Data(
-                                    geo=resources_pb2.Geo(
-                                        geo_box=[
-                                            resources_pb2.GeoBoxedPoint(
-                                                geo_point=resources_pb2.GeoPoint(
-                                                    longitude=-31.0,
-                                                    latitude=42.0,
-                                                ),
-                                            ),
-                                            resources_pb2.GeoBoxedPoint(
-                                                geo_point=resources_pb2.GeoPoint(
-                                                    longitude=-29.0,
-                                                    latitude=39.0,
-                                                ),
-                                            ),
-                                        ]
-                                    )
-                                )
-                            )
-                        )
-                    ]
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_annotations_searches_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(post_annotations_searches_response.outputs[0].status.code))
-    print("\tDescription: {}".format(post_annotations_searches_response.outputs[0].status.description))
-    print("\tDetails: {}".format(post_annotations_searches_response.outputs[0].status.details))
-    raise Exception("Post searches failed, status: " + post_annotations_searches_response.status.description)
-
-print("Search result:")
-for hit in post_annotations_searches_response.hits:
-    print("\tScore %.2f for annotation: %s off input: %s" % (hit.score, hit.annotation.id, hit.input.id))
 ```
 </TabItem>
 
@@ -1344,7 +1112,7 @@ fetch(`https://api.clarifai.com/v2/annnotations/searches`, requestOptions)
 
 ## By Custom Annotation Info
 
-After you have [added inputs with custom metadata](https://github.com/Clarifai/docs/tree/1c1d25cdd43190c38a2edb313297c0d566b3a0e3/api-guide/search/data-management/inputs.md#add-inputs-with-custom-metadata), you can search by that metadata.
+After you have added inputs with custom metadata, you can search by that metadata.
 
 Below is an example of searching over custom metadata. You can exact match any `key`: `value` pair no matter how nested it is. For example, if the metadata on an input is:
 
@@ -1394,6 +1162,11 @@ Then the following searches will find this:
 How to perform searches:
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonCustomAnnotation}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -1474,53 +1247,6 @@ stub.PostAnnotationsSearches(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="python" label="Python">
-
-```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-from google.protobuf.struct_pb2 import Struct
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
-
-search_metadata = Struct()
-search_metadata.update({"type": "animal"})
-
-post_annotations_searches_response = stub.PostAnnotationsSearches(
-    service_pb2.PostAnnotationsSearchesRequest(
-        searches = [
-            resources_pb2.Search(
-                query=resources_pb2.Query(
-                    filters=[
-                        resources_pb2.Filter(
-                            annotation=resources_pb2.Annotation(
-                                data=resources_pb2.Data(
-                                    metadata=search_metadata
-                                )
-                            )
-                        )
-                    ]
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_annotations_searches_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(post_annotations_searches_response.outputs[0].status.code))
-    print("\tDescription: {}".format(post_annotations_searches_response.outputs[0].status.description))
-    print("\tDetails: {}".format(post_annotations_searches_response.outputs[0].status.details))
-    raise Exception("Post searches failed, status: " + post_annotations_searches_response.status.description)
-
-print("Search result:")
-for hit in post_annotations_searches_response.hits:
-    print("\tScore %.2f for annotation: %s off input: %s" % (hit.score, hit.annotation.id, hit.input.id))
 ```
 </TabItem>
 
@@ -1609,6 +1335,11 @@ fetch(`https://api.clarifai.com/v2/annnotations/searches`, requestOptions)
 Each annotation has annotation info. Similar to metadata, you have full control of this field and can be any arbitrary JSON.
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonAnnotationInfo}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -1685,51 +1416,6 @@ stub.PostAnnotationsSearches(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="python" label="Python">
-
-```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-from google.protobuf.struct_pb2 import Struct
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
-
-search_annotation_info = Struct()
-search_annotation_info.update({"type": "animal"})
-
-post_annotations_searches_response = stub.PostAnnotationsSearches(
-    service_pb2.PostAnnotationsSearchesRequest(
-        searches = [
-            resources_pb2.Search(
-                query=resources_pb2.Query(
-                    filters=[
-                        resources_pb2.Filter(
-                            annotation=resources_pb2.Annotation(
-                                annotation_info=search_annotation_info
-                            )
-                        )
-                    ]
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_annotations_searches_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(post_annotations_searches_response.outputs[0].status.code))
-    print("\tDescription: {}".format(post_annotations_searches_response.outputs[0].status.description))
-    print("\tDetails: {}".format(post_annotations_searches_response.outputs[0].status.details))
-    raise Exception("Post searches failed, status: " + post_annotations_searches_response.status.description)
-
-print("Search result:")
-for hit in post_annotations_searches_response.hits:
-    print("\tScore %.2f for annotation: %s off input: %s" % (hit.score, hit.annotation.id, hit.input.id))
 ```
 </TabItem>
 

@@ -3,86 +3,46 @@ description: 'Work with text in images, just like you work with encoded text.'
 sidebar_position: 4
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 # Visual Text Recognition
 
-Visual text recognition helps you convert printed text in images and videos into machine-encoded text. You can input a scanned document, a photo of a document, a scene-photo \(such as the text on signs and billboards\), or text superimposed on an image \(such as in a meme\) and output the words and individual characters present in the images. VTR lets you "digitize" text so that it can be edited, searched, stored, displayed and analyzed.
+**Work with text in images, just like you work with encoded text**
+<hr />
+
+Visual text recognition helps you convert printed text in images and videos into machine-encoded text. You can input a scanned document, a photo of a document, a scene-photo \(such as the text on signs and billboards\), or text superimposed on an image \(such as in a meme\), and output the words and individual characters present in the images.
+
+VTR lets you "digitize" text so that it can be edited, searched, stored, displayed and analyzed.
 
 ![](/img/vtr.jpg)
 
+:::note
+The current version of our VTR model is not designed for use with handwritten text or documents with tightly-packed text—like you might see on the page of a novel, for example.
+::::
 
-Please note: The current version of our VTR model is not designed for use with handwritten text, or documents with tightly-packed text \(like you might see on the page of a novel, for example\).
+## How VTR Works
 
+VTR works by first detecting the location of text in your photos or video frames, then cropping the region where the text is present, and then finally running a specialized classification model that will extract text from the cropped image. To accomplish these different tasks, you will need to configure a workflow. 
 
-## How VTR works
-
-VTR works by first detecting the location of text in your photos or video frames, then cropping the region where the text is present, and then finally running a specialized classification model that will extract text from the cropped image. To accomplish these different tasks, you will need to configure a workflow. You will then add these three models to your workflow:
+You will then add these three models to your workflow:
 
 * **Visual Text Detection**
 * **1.0 Cropper**
 * **Visual Text Recognition**
 
-## Building a VTR workflow
+:::info
+The initialization code used in the following example is outlined in detail on the [client installation page.](../../api-overview/api-clients#client-installation-instructions)
+:::
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+import PythonVTRWorkflow from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/building_vtr_workflow.py";
+
+## Building a VTR Workflow
 
 <Tabs>
+
 <TabItem value="grpc_python" label="gRPC Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-post_workflows_response = stub.PostWorkflows(
-    service_pb2.PostWorkflowsRequest(
-        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-        workflows=[
-            resources_pb2.Workflow(
-                id="visual-text-recognition-id",
-                nodes=[
-                    resources_pb2.WorkflowNode(
-                        id="detect-concept",
-                        model=resources_pb2.Model(
-                            id="2419e2eae04d04f820e5cf3aba42d0c7",
-                            model_version=resources_pb2.ModelVersion(
-                                id="75a5b92a0dec436a891b5ad224ac9170"
-                            )
-                        )
-                    ),
-                    resources_pb2.WorkflowNode(
-                        id="image-crop",
-                        model=resources_pb2.Model(
-                            id="ce3f5832af7a4e56ae310d696cbbefd8",
-                            model_version=resources_pb2.ModelVersion(
-                                id="a78efb13f7774433aa2fd4864f41f0e6"
-                                )
-                            ),
-                            node_inputs=[
-                                resources_pb2.NodeInput(node_id="detect-concept")
-                            ]
-                        ),
-                    resources_pb2.WorkflowNode(
-                        id="image-to-text",
-                        model=resources_pb2.Model(
-                            id="9fe78b4150a52794f86f237770141b33",
-                            model_version=resources_pb2.ModelVersion(
-                                id="d94413e582f341f68884cac72dbd2c7b"
-                                )
-                            ),
-                            node_inputs=[
-                                resources_pb2.NodeInput(node_id="image-crop")
-                            ]
-                        ),
-                ]
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_workflows_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Post workflows failed, status: " + post_workflows_response.status.description)
-```
+    <CodeBlock className="language-python">{PythonVTRWorkflow}</CodeBlock>
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
