@@ -15,10 +15,10 @@ pagination_prev: product-updates/changelog/release711
 ## Marketplace Model
 |Status     |Details                                            |
 |-----------|---------------------------------------------------|
-| ![new-feature](/img/new_feature.jpg)) |Publish Multilingual OCR "language-aware-multilingual-ocr-multiplex" Model |
-| ![new-feature](/img/new_feature.jpg)) |Publish Multilingual OCR "paddleocr-multilingual" Model      |
-| ![new-feature](/img/new_feature.jpg)) |Image-to-text "general-english-image-caption-clip" Model |
-| ![new-feature](/img/new_feature.jpg)) |"CLIP" text-embedder and visual-embedder Models |
-| ![new-feature](/img/new_feature.jpg)) |Handwritten OCR "TROCR-BASE-HANDWRITTEN" |
+| ![new-feature](/img/new_feature.jpg) |Publish Multilingual OCR "language-aware-multilingual-ocr-multiplex" Model |
+| ![new-feature](/img/new_feature.jpg) |Publish Multilingual OCR "paddleocr-multilingual" Model      |
+| ![new-feature](/img/new_feature.jpg) |Image-to-text "general-english-image-caption-clip" Model |
+| ![new-feature](/img/new_feature.jpg) |"CLIP" text-embedder and visual-embedder Models |
+| ![new-feature](/img/new_feature.jpg) |Handwritten OCR "TROCR-BASE-HANDWRITTEN" |
 
 
