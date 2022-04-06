@@ -7,9 +7,10 @@ USER_ID = 'YOUR_USER_ID_HERE'
 # Your PAT (Personal Access Token) can be found in the portal under Authentification
 PAT = 'YOUR_PAT_HERE'
 APP_ID = 'YOUR_APP_ID_HERE'
-# Change these to rank by your own concepts
-CONCEPT_ID_1 = 'cat'
-CONCEPT_ID_2 = 'dog'
+# Change this to a Clarifai/main concept
+CONCEPT_ID_1 = 'ai_fvlBqXZR'
+# Change this to your own custom concept
+CONCEPT_ID_2 = 'people'
 
 ##########################################################################
 # YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE

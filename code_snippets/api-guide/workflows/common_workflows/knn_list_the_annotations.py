@@ -45,7 +45,7 @@ for annotation in list_annotations_response.annotations:
         continue
     for region in annotation.data.regions:
         bbox = region.region_info.bounding_box
-       # print(f"Face was detected on input ID {annotation.input_id} (URL: {input_id_to_url[annotation.input_id]})")
+        print(f"Face was detected on input ID {annotation.input_id} (URL: {input_id_to_url[annotation.input_id]})") # input_id_to_url is from the previous Wait for Upload & Map IDs to URLs method
         print(f"\tRegion ID: {region.id}")
         print(f"\tRegion location: left={bbox.left_col:.4f}, top={bbox.top_row:.4f}, right={bbox.right_col:.4f}, bottom={bbox.bottom_row:.4f}")
         print(f"\tConfidence: {region.value:.2f}")

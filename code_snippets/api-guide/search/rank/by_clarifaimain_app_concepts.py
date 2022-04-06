@@ -1,14 +1,14 @@
-################################################################################
-# In this section, we set the user authentication, app ID, and the concept we  
+##################################################################################
+# In this section, we set the user authentication, app ID, and the concept ID we  
 # we want to rank by. Change these strings to run your own example.
-################################################################################
+##################################################################################
 
 USER_ID = 'YOUR_USER_ID_HERE'
 # Your PAT (Personal Access Token) can be found in the portal under Authentification
 PAT = 'YOUR_PAT_HERE'
 APP_ID = 'YOUR_APP_ID_HERE'
-# Change this to rank by your own concept
-CONCEPT_ID = 'people'
+# Change this to rank by a Clarifai/main concept
+CONCEPT_ID = 'ai_fvlBqXZR'
 
 ##########################################################################
 # YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE

@@ -60,6 +60,6 @@ while True:
     time.sleep(2)
 
 
-input_id_to_url = {inp.id: inp.data.image.url for inp in list_inputs_response.inputs}
+input_id_to_url = {inp.id: inp.data.image.url for inp in list_inputs_response.inputs} # Note that we'll use input_id_to_url in the next List the Annotations example
 
 print(list_inputs_response)

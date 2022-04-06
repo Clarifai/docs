@@ -829,35 +829,9 @@ Below is an example of how to annotate images with different `user_id` and `stat
 Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
 
 <Tabs>
-<TabItem value="python" label="Python" default>
 
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-post_annotations_response = stub.PostAnnotations(
-    service_pb2.PostAnnotationsRequest(
-        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-        annotations=[
-            resources_pb2.Annotation(
-                input_id="{YOUR_INPUT_ID}",
-                user_id="{USER_ID}",    # If empty, it is the user who posts this annotation
-                data=status_pb2.Status(
-                    code=status_code_pb2.ANNOTATION_PENDING  # annotation pending status. By default success.
-                ),
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_annotations_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(post_annotations_response.outputs[0].status.code))
-    print("\tDescription: {}".format(post_annotations_response.outputs[0].status.description))
-    print("\tDetails: {}".format(post_annotations_response.outputs[0].status.details))
-    raise Exception("Post annotations failed, status: " + post_annotations_response.status.description)
-```
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonAnnotateImagesUserIdStatus}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -2171,36 +2145,9 @@ Below is an example of how to update an annotation status.
 Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
 
 <Tabs>
-<TabItem value="python" label="Python" default>
 
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-patch_annotations_response = stub.PatchAnnotations(
-    service_pb2.PatchAnnotationsRequest(
-        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-        action="merge",  # Supported actions: overwrite, merge, remove.
-        annotations=[
-            resources_pb2.Annotation(
-                input_id="{YOUR_INPUT_ID}",
-                id="{YOUR_ANNOTATION_ID}",
-                status=status_pb2.Status(
-                    code=status_code_pb2.ANNOTATION_SUCCESS
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if patch_annotations_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(patch_annotations_response.outputs[0].status.code))
-    print("\tDescription: {}".format(patch_annotations_response.outputs[0].status.description))
-    print("\tDetails: {}".format(patch_annotations_response.outputs[0].status.details))
-    raise Exception("Patch annotations failed, status: " + patch_annotations_response.status.description)
-```
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonUpdateAnnotationStatus}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -2432,28 +2379,9 @@ Below is an example of how to do that.
 Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
 
 <Tabs>
-<TabItem value="python" label="Python" default>
 
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-delete_annotations_response = stub.DeleteAnnotations(
-    service_pb2.DeleteAnnotationsRequest(
-        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-        input_ids=["{YOUR_INPUT_ID_1}", "{YOUR_INPUT_ID_2}"],
-        annotation_id=["{YOUR_ANNOTATION_ID_1}", "{YOUR_ANNOTATION_ID_2}"]
-    ),
-    metadata=metadata
-)
-
-if delete_annotations_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(delete_annotation_response.outputs[0].status.code))
-    print("\tDescription: {}".format(delete_annotation_response.outputs[0].status.description))
-    print("\tDetails: {}".format(delete_annotation_response.outputs[0].status.details))
-    raise Exception("Delete annotations failed, status: " + delete_annotations_response.status.description)
-```
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonbulkDeleteAnnotationsInputAnnotationIds}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
