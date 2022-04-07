@@ -27,6 +27,8 @@ metadata = (('authorization', 'Key ' + PAT),)
 
 userDataObject = resources_pb2.UserAppIDSet(user_id=USER_ID, app_id=APP_ID) # The userDataObject is required when using a PAT
 
+# Here we search for images labeled with 'ai_fvlBqXZR' and for which the General prediction model does not find
+# a 'people' concept
 post_annotations_searches_response = stub.PostAnnotationsSearches(
     service_pb2.PostAnnotationsSearchesRequest(
         user_app_id=userDataObject,

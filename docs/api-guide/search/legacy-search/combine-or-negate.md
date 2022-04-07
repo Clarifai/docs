@@ -3,14 +3,28 @@ description: Group or separate items in your dataset.
 sidebar_position: 1
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 # Combine or Negate
+
+**Group or separate items in your dataset**
+<hr />
 
 You can also combine searches using AND.
 
+:::info
+The initialization code used in the following example is outlined in detail on the [client installation page.](../../api-overview/api-clients#client-installation-instructions)
+:::
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+import PythonCombineNegate from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/combine_or_negate.py";
+
 <Tabs>
+
+<TabItem value="grpc_python" label="gRPC Python">
+    <CodeBlock className="language-python">{PythonCombineNegate}</CodeBlock>
+</TabItem>
+
 <TabItem value="grpc_java" label="gRPC Java">
 
 ```java
@@ -121,59 +135,6 @@ stub.PostSearches(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="grpc_python" label="gRPC Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-# Here we search for images which we labeled with "cat" and for which the General prediction model does not find
-# a "dog" concept.
-post_searches_response = stub.PostSearches(
-    service_pb2.PostSearchesRequest(
-        query=resources_pb2.Query(
-            ands=[
-                resources_pb2.And(
-                    input=resources_pb2.Input(  # Setting Input indicates we search for images that have the concept(s)
-                                                # which we added to the input manually.
-                        data=resources_pb2.Data(
-                            concepts=[
-                                resources_pb2.Concept(
-                                    name="cat",
-                                    value=1
-                                )
-                            ]
-                        )
-                    )
-                ),
-                resources_pb2.And(
-                    output=resources_pb2.Output(  # Setting Output indicates we search for images that have the concept(s)
-                                                  # which were predicted by the General model.
-                        data=resources_pb2.Data(
-                            concepts=[
-                                resources_pb2.Concept(
-                                    name="dog",
-                                    value=0
-                                )
-                            ]
-                        )
-                    )
-                )
-            ]
-        )
-    ),
-    metadata=metadata
-)
-
-if post_searches_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Post searches failed, status: " + post_searches_response.status.description)
-
-print("Found inputs:")
-for hit in post_searches_response.hits:
-    print("\tScore %.2f for %s" % (hit.score, hit.input.id))
 ```
 </TabItem>
 

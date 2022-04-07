@@ -3,14 +3,26 @@ description: Select a subset of your data based on useful filters.
 sidebar_position: 2
 ---
 
+# Filter
+
+**Select a subset of your data based on useful filters**
+<hr />
+
+:::info
+The initialization code used in the following example is outlined in detail on the [client installation page.](../../api-overview/api-clients#client-installation-instructions)
+:::
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
-# Filter
+import CodeBlock from "@theme/CodeBlock";
+import PythonCustomMetadata from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/by_custom_metadata.py";
+import PythonInputsLongitude from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/add_inputs_longitude_latitude.py";
+import PythonOneGeoPoint from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/perform_search_one_geo_point.py";
+import PythonTwoGeoPoints from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/perform_search_two_geo_point.py";
 
 ## By Custom Metadata
 
-After you have [added inputs with custom metadata](https://github.com/Clarifai/docs/tree/1c1d25cdd43190c38a2edb313297c0d566b3a0e3/api-guide/search/data-management/inputs.md#add-inputs-with-custom-metadata), you can search by that metadata.
+After you have added inputs with custom metadata, you can search by that metadata.
 
 Below is an example of searching over custom metadata. You can exact match any `key`: `value` pair no matter how nested it is. For example, if the metadata on an input is:
 
@@ -60,6 +72,11 @@ Then the following searches will find this:
 How to perform searches:
 
 <Tabs>
+
+<TabItem value="grpc_python" label="gRPC Python">
+    <CodeBlock className="language-python">{PythonCustomMetadata}</CodeBlock>
+</TabItem>
+
 <TabItem value="grpc_java" label="gRPC Java">
 
 ```java
@@ -135,43 +152,6 @@ stub.PostSearches(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="grpc_python" label="gRPC Python">
-
-```python
-from google.protobuf.struct_pb2 import Struct
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-search_metadata = Struct()
-search_metadata.update({"type": "animal"})
-
-post_searches_response = stub.PostSearches(
-    service_pb2.PostSearchesRequest(
-        query=resources_pb2.Query(
-            ands=[
-                resources_pb2.And(
-                    input=resources_pb2.Input(
-                        data=resources_pb2.Data(
-                            metadata=search_metadata
-                        )
-                    )
-                )
-            ]
-        )
-    ),
-    metadata=metadata
-)
-
-if post_searches_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Post searches failed, status: " + post_searches_response.status.description)
-
-print("Found inputs:")
-for hit in post_searches_response.hits:
-    print("\tScore %.2f for %s" % (hit.score, hit.input.id))
 ```
 </TabItem>
 
@@ -361,19 +341,24 @@ curl -X POST \
 
 Search by geo location allows you to restrict your search results to a bounding box based on longitude and latitude points. There are two ways you can provide longitude/latitude points. You can provide one point and a radius or you can provide two points.
 
-It is important to note that a search by geo location acts as a filter and returns results ranked by any other provided search criteria, whether that is a visual search, concept search or something else. If no other criteria is provided, results will return in the order the inputs were created, NOT by their distance to center of the search area.
+It is important to note that a search by geo location acts as a filter and returns results ranked by any other provided search criteria, whether that is a visual search, concept search, or something else. If no other criteria is provided, results will return in the order the inputs were created, NOT by their distance to center of the search area.
 
 If you are providing one point and a radius, the radius can be in "mile", "kilometer", "degree", or "radian", marked by keywords `withinMiles`, `withinKilometers`, `withinDegrees`, `withinRadians`.
 
-If you are providing two points, a box will be drawn from the uppermost point to the lowermost point and the leftmost point to the rightmost point.
+If you are providing two points, a box will be drawn from the uppermost point to the lowermost point, and the leftmost point to the rightmost point.
 
 Before you perform a search by geo location, make sure you have added inputs with longitude and latitude points.
 
-### Add inputs with longitude and latitude points
+### Add Inputs With Longitude and Latitude Points
 
 Provide a geo point to an input. The geo point is a JSON object consisting of a longitude and a latitude in GPS coordinate system \(SRID 4326\). There can be at most one single geo point associated with each input.
 
 <Tabs>
+
+<TabItem value="grpc_python" label="gRPC Python">
+    <CodeBlock className="language-python">{PythonInputsLongitude}</CodeBlock>
+</TabItem>
+
 <TabItem value="grpc_java" label="gRPC Java">
 
 ```java
@@ -442,39 +427,6 @@ stub.PostInputs(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="grpc_python" label="gRPC Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-post_inputs_response = stub.PostInputs(
-    service_pb2.PostInputsRequest(
-        inputs=[
-            resources_pb2.Input(
-                data=resources_pb2.Data(
-                    image=resources_pb2.Image(
-                        url="https://samples.clarifai.com/dog.tiff",
-                        allow_duplicate_url=True
-                    ),
-                    geo=resources_pb2.Geo(
-                        geo_point=resources_pb2.GeoPoint(
-                            longitude=-30.0,
-                            latitude=40.0,
-                        )
-                    )
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_inputs_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
 ```
 </TabItem>
 
@@ -609,9 +561,14 @@ curl -X POST \
 </TabItem>
 </Tabs>
 
-### Perform a search with one geo point and radius in kilometers
+### Perform a Search With One Geo Point and Radius in Kilometers
 
 <Tabs>
+
+<TabItem value="grpc_python" label="gRPC Python">
+    <CodeBlock className="language-python">{PythonOneGeoPoint}</CodeBlock>
+</TabItem>
+
 <TabItem value="grpc_java" label="gRPC Java">
 
 ```java
@@ -702,47 +659,6 @@ stub.PostSearches(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="grpc_python" label="gRPC Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-post_searches_response = stub.PostSearches(
-    service_pb2.PostSearchesRequest(
-        query=resources_pb2.Query(
-            ands=[
-                resources_pb2.And(
-                    input=resources_pb2.Input(
-                        data=resources_pb2.Data(
-                            geo=resources_pb2.Geo(
-                                geo_point=resources_pb2.GeoPoint(
-                                    longitude=-29.0,
-                                    latitude=40.0,
-                                ),
-                                geo_limit=resources_pb2.GeoLimit(
-                                    type="withinKilometers",
-                                    value=150.0
-                                )
-                            )
-                        )
-                    )
-                )
-            ]
-        )
-    ),
-    metadata=metadata
-)
-
-if post_searches_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Post searches failed, status: " + post_searches_response.status.description)
-
-print("Found inputs:")
-for hit in post_searches_response.hits:
-    print("\tScore %.2f for %s" % (hit.score, hit.input.id))
 ```
 </TabItem>
 
@@ -904,9 +820,14 @@ curl -X POST \
 </TabItem>
 </Tabs>
 
-### Perform a search with two geo points
+### Perform a Search With Two Geo Points
 
 <Tabs>
+
+<TabItem value="grpc_python" label="gRPC Python">
+    <CodeBlock className="language-python">{PythonTwoGeoPoints}</CodeBlock>
+</TabItem>
+
 <TabItem value="grpc_java" label="gRPC Java">
 
 ```java
@@ -1007,53 +928,6 @@ stub.PostSearches(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="grpc_python" label="gRPC Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-post_searches_response = stub.PostSearches(
-    service_pb2.PostSearchesRequest(
-        query=resources_pb2.Query(
-            ands=[
-                resources_pb2.And(
-                    input=resources_pb2.Input(
-                        data=resources_pb2.Data(
-                            geo=resources_pb2.Geo(
-                                geo_box=[
-                                    resources_pb2.GeoBoxedPoint(
-                                        geo_point=resources_pb2.GeoPoint(
-                                            longitude=-31.0,
-                                            latitude=42.0,
-                                        ),
-                                    ),
-                                    resources_pb2.GeoBoxedPoint(
-                                        geo_point=resources_pb2.GeoPoint(
-                                            longitude=-29.0,
-                                            latitude=39.0,
-                                        ),
-                                    ),
-                                ]
-                            )
-                        )
-                    )
-                )
-            ]
-        )
-    ),
-    metadata=metadata
-)
-
-if post_searches_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Post searches failed, status: " + post_searches_response.status.description)
-
-print("Found inputs:")
-for hit in post_searches_response.hits:
-    print("\tScore %.2f for %s" % (hit.score, hit.input.id))
 ```
 </TabItem>
 
