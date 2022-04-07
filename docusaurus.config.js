@@ -9,7 +9,7 @@ const config = {
   title: 'Clarifai Guide',
   tagline: 'Clarifai Guide',
   url: 'https://docs.clarifai.com',
-  baseUrl: '/docs/',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
