@@ -50,7 +50,7 @@ The notation of `[...]` means that the variable is a list of things, so `regions
 Data Type     | Meaning
 ------------- | -------------
 regions[...].region_info.point  | This is a list of points which specify regions of an image.
-regions[...].region_info.bounding\_box  | This is a list of regions each containing the four corners of a bounding box in a specific region of an image.
+regions[...].region_info.bounding\_box  | This is a list of regions each containing the four corners of a bounding box in a specific region of an image. Each corner coordinate is normalized to [0,1].
 regions[...].region_info.mask |  The mask is an overlay of the entire image, with the specific concepts pixels set to a certain color.
 regions[...].data.text | This is a list of regions and their associated text. This could be OCR data for an image, or subtext within a larger text for NLP.
 regions[...].data.embeddings |  This is a list of regions and their associated vector representions.
@@ -62,6 +62,6 @@ The notation of `[...]` means that the variable is a list of things, so `frames[
 
 Data Type     | Meaning
 ------------- | -------------
-frames[...].data.regions[...].region\_info.bounding\_box | These are the four corners of a bounding box in a specific region of a specific frame of video.
+frames[...].data.regions[...].region\_info.bounding\_box | These are the four corners of a bounding box in a specific region of a specific frame of video. Each corner coordinate is normalized to [0,1].
 frames[...].data.regions[...].data.concepts | This is the matrix of frames and regions containing the  concepts used in a model. For the general model, these would be the top 20 concepts classified with the highest confidence in a specific region of a specific frame of video.
 frames[...].data.regions[...].track_id |  This is the matrix of frames and regions containing the tracking ids used to track objects across frames of a video.
