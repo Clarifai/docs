@@ -8,25 +8,26 @@ sidebar_position: 3
 **Manage the data in your app**
 <hr />
 
+code_snippets/api-guide/data/create_get_update_delete/test.py
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
-import PythonAddInputsViaURL from "!!raw-loader!../../../code_snippets/api-guide/data/add_inputs_via_url.py";
-import PythonAddInputsViaBytes from "!!raw-loader!../../../code_snippets/api-guide/data/add_inputs_via_bytes.py";
-import PythonAddMultipleInputsIds from "!!raw-loader!../../../code_snippets/api-guide/data/add_multiple_inputs_with_ids.py";
-import PythonAddInputsConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/add_inputs_with_concepts.py";
-import PythonAddInputsCustomMetadata from "!!raw-loader!../../../code_snippets/api-guide/data/add_inputs_custom_metadata.py";
-import PythonListAllInputs from "!!raw-loader!../../../code_snippets/api-guide/data/list_all_inputs.py";
-import PythonListInputsStreaming from "!!raw-loader!../../../code_snippets/api-guide/data/list_inputs_streaming.py";
-import PythonGetInputId from "!!raw-loader!../../../code_snippets/api-guide/data/get_input_by_id.py";
-import PythonGetInputsStatus from "!!raw-loader!../../../code_snippets/api-guide/data/get_inputs_status.py";
-import PythonUpdateInputConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/update_input_concepts.py";
-import PythonBulkUpdateInputsConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/bulk_update_inputs_concepts.py";
-import PythonDeleteConceptsInput from "!!raw-loader!../../../code_snippets/api-guide/data/delete_concepts_input.py";
-import PythonBulkDeleteConceptsInputs from "!!raw-loader!../../../code_snippets/api-guide/data/bulk_delete_concepts_inputs.py";
-import PythonDeleteInputId from "!!raw-loader!../../../code_snippets/api-guide/data/delete_input_by_id.py";
-import PythonDeleteListInputs from "!!raw-loader!../../../code_snippets/api-guide/data/delete_list_inputs.py";
+import PythonAddInputsViaURL from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/add_inputs_via_url.py";
+import PythonAddInputsViaBytes from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/add_inputs_via_bytes.py";
+import PythonAddMultipleInputsIds from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/add_multiple_inputs_with_ids.py";
+import PythonAddInputsConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/add_inputs_with_concepts.py";
+import PythonAddInputsCustomMetadata from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/add_inputs_custom_metadata.py";
+import PythonListAllInputs from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/list_all_inputs.py";
+import PythonListInputsStreaming from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/list_inputs_streaming.py";
+import PythonGetInputId from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/get_input_by_id.py";
+import PythonGetInputsStatus from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/get_inputs_status.py";
+import PythonUpdateInputConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/update_input_concepts.py";
+import PythonBulkUpdateInputsConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/bulk_update_inputs_concepts.py";
+import PythonDeleteConceptsInput from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/delete_concepts_input.py";
+import PythonBulkDeleteConceptsInputs from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/bulk_delete_concepts_inputs.py";
+import PythonDeleteInputId from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/delete_input_by_id.py";
+import PythonDeleteListInputs from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/delete_list_inputs.py";
 
 
 The API is built around a simple idea. You send inputs \(such as images\) to the service and it returns predictions. In addition to receiving predictions on inputs, you can also index inputs and their predictions to later search against. You can also index inputs with concepts to later train your own model.

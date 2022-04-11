@@ -8,7 +8,7 @@ sidebar_position: 4
 **Manage dataset versions so you can track the performance of your datasets and iterate over them**
 <hr />
 
-## Add a dataset version
+## Add a Dataset Version
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -35,7 +35,7 @@ curl --location -g --request POST 'api.clarifai.com/v2/datasets/{{dataset_id}}/v
 </TabItem>
 </Tabs>
 
-## List dataset versions
+## List Dataset Versions
 <Tabs>
 <TabItem value="curl" label="cURL">
 
@@ -47,7 +47,7 @@ curl --location -g --request GET 'api.clarifai.com/v2/datasets/{{dataset_id}}/ve
 </TabItem>
 </Tabs>
 
-## Get a dataset versions
+## Get a Dataset Versions
 <Tabs>
 <TabItem value="curl" label="cURL">
 
@@ -59,7 +59,7 @@ curl --location -g --request GET 'api.clarifai.com/v2/datasets/{{dataset_id}}/ve
 </TabItem>
 </Tabs>
 
-## Change a dataset version
+## Change a Dataset Version
 <Tabs>
 <TabItem value="curl" label="cURL">
 
@@ -80,7 +80,7 @@ curl --location -g --request PATCH 'api.clarifai.com/v2/datasets/{{dataset_id}}/
 </TabItem>
 </Tabs>
 
-## Delete a dataset version
+## Delete a Dataset Version
 <Tabs>
 <TabItem value="curl" label="cURL">
 

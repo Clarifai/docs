@@ -8,7 +8,7 @@ sidebar_position: 3
 **Create, explore, and modify datasets**
 <hr />
 
-## Add inputs to a dataset
+## Add Inputs to a Dataset
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -33,7 +33,7 @@ curl --location -g --request POST 'api.clarifai.com/v2/datasets/{{dataset_id}}/i
 </TabItem>
 </Tabs>
 
-## List inputs in a datasets
+## List Inputs in Datasets
 <Tabs>
 <TabItem value="curl" label="cURL">
 
@@ -45,7 +45,7 @@ curl --location -g --request GET 'api.clarifai.com/v2/datasets/{{dataset_id}}/in
 </TabItem>
 </Tabs>
 
-## Get a dataset inputs
+## Get a Dataset Inputs
 <Tabs>
 <TabItem value="curl" label="cURL">
 

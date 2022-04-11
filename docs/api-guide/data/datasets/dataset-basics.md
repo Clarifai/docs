@@ -8,7 +8,7 @@ sidebar_position: 1
 **Create, explore, and modify datasets**
 <hr />
 
-## Create a dataset
+## Create a Dataset
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -37,7 +37,7 @@ curl --location --request POST 'api.clarifai.com/v2/datasets' \
 </TabItem>
 </Tabs>
 
-## List datasets
+## List Datasets
 <Tabs>
 <TabItem value="curl" label="cURL">
 
@@ -50,7 +50,7 @@ curl --location --request GET 'api.clarifai.com/v2/datasets?page=1&per_page=100'
 </Tabs>
 
 
-## Get datasets
+## Get Datasets
 <Tabs>
 <TabItem value="curl" label="cURL">
 
@@ -63,7 +63,7 @@ curl --location -g --request GET 'api.clarifai.com/v2/datasets/{{dataset_id}}' \
 </Tabs>
 
 
-## Update datasets
+## Update Datasets
 <Tabs>
 <TabItem value="curl" label="cURL">
 
@@ -88,7 +88,7 @@ curl --location --request PATCH 'api.clarifai.com/v2/datasets' \
 </TabItem>
 </Tabs>
 
-## Update datasets with default filter
+## Update Datasets With Default Filter
 <Tabs>
 <TabItem value="curl" label="cURL">
 
@@ -114,7 +114,7 @@ curl --location --request PATCH 'api.clarifai.com/v2/datasets' \
 </TabItem>
 </Tabs>
 
-## Delete datasets
+## Delete Datasets
 <Tabs>
 <TabItem value="curl" label="cURL">
 
