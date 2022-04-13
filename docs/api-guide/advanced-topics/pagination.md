@@ -3,14 +3,29 @@ description: Paginate your data batches.
 sidebar_position: 3
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 # Pagination
 
-Many API calls are paginated. You can provide `page` and `per_page` params to the API. In the example below we are getting all inputs and specifying to start at page 2 and get back 20 results per page.
+**Paginate your data batches**
+<hr />
+
+Many API calls are paginated. You can provide `page` and `per_page` params to the API. In the example below, we are getting all inputs and specifying to start at page 2 and get back 20 results per page.
+
+:::info
+The initialization code used in the following example is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+:::
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+import PythonPagination from "!!raw-loader!../../../code_snippets/api-guide/advanced_topics/pagination.py";
+
 
 <Tabs>
+
+<TabItem value="python" label="Python" default>
+    <CodeBlock className="language-python">{PythonPagination}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java" default>
 
 ```java
@@ -60,25 +75,6 @@ stub.ListInputs(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="python" label="Python" default>
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-list_inputs_response = stub.ListInputs(
-    service_pb2.ListInputsRequest(page=2, per_page=20),
-    metadata=metadata
-)
-
-if list_inputs_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("List inputs failed, status: " + list_inputs_response.status.description)
-
-for input_object in list_inputs_response.inputs:
-    print(input_object)
 ```
 </TabItem>
 
