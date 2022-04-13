@@ -8,8 +8,6 @@ sidebar_position: 3
 **Manage the data in your app**
 <hr />
 
-code_snippets/api-guide/data/create_get_update_delete/test.py
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
