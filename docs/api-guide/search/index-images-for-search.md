@@ -3,14 +3,28 @@ description: Use AI to index your images based on semantic similarity.
 sidebar_position: 5
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 # Index Images for Search
+
+**Use AI to index your images based on semantic similarity**
+<hr />
 
 To get started with search, you must first add images to the search index. You can add one or more images to the index at a time. You can supply an image either with a publicly accessible URL or by directly sending image bytes. You can send up to 128 images in one API call.
 
+:::info
+The initialization code used in the following example is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+:::
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+import PythonIndexImages from "!!raw-loader!../../../code_snippets/api-guide/search/index_images_for_search.py";
+
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonIndexImages}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -109,59 +123,6 @@ stub.PostInputs(
 ```
 </TabItem>
 
-<TabItem value="python" label="Python">
-
-```python
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-with open("{YOUR_IMAGE_FILE_LOCATION}", "rb") as f:
-    file_bytes = f.read()
-
-post_inputs_response = stub.PostInputs(
-    service_pb2.PostInputsRequest(
-        inputs=[
-            resources_pb2.Input(
-                data=resources_pb2.Data(
-                    image=resources_pb2.Image(
-                        url="https://samples.clarifai.com/metro-north.jpg",
-                        allow_duplicate_url=True
-                    )
-                )
-            ),
-            resources_pb2.Input(
-                data=resources_pb2.Data(
-                    image=resources_pb2.Image(
-                        url="https://samples.clarifai.com/wedding.jpg",
-                        allow_duplicate_url=True
-                    )
-                )
-            ),
-            resources_pb2.Input(
-                data=resources_pb2.Data(
-                    image=resources_pb2.Image(
-                        base64=file_bytes
-                    )
-                )
-            ),
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_inputs_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    for input_response in post_inputs_response.inputs:
-        print("Input " + input_response.id + " status:")
-        print(input_response.status)
-    
-    print("\tCode: {}".format(post_inputs_response.outputs[0].status.code))
-    print("\tDescription: {}".format(post_inputs_response.outputs[0].status.description))
-    print("\tDetails: {}".format(post_inputs_response.outputs[0].status.details))
-    raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -243,44 +204,92 @@ fetch(`https://api.clarifai.com/v2/inputs`, requestOptions)
 
 </Tabs>
 
-<Tabs>
-<TabItem value="response_json" label="Response JSON">
+<details>
+  <summary>JSON Output Example</summary>
 
 ```javascript
-{
-  "status": {
-    "code": 10000,
-    "description": "Ok"
-  },
-  "inputs": [
-    {
-      "id": "edc70c917475499abdc7151f41d6cf3e",
-      "created_at": "2016-11-22T17:06:02Z",
-      "data": {
-        "image": {
-          "url": "https://samples.clarifai.com/metro-north.jpg"
-        }
-      },
-      "status": {
-        "code": 30001,
-        "description": "Download pending"
-      }
-    },
-    {
-      "id": "f96ca3bbf02041c59addcc13e3468b7d",
-      "created_at": "2016-11-22T17:06:02Z",
-      "data": {
-        "image": {
-          "url": "https://samples.clarifai.com/wedding.jpg"
-        }
-      },
-      "status": {
-        "code": 30001,
-        "description": "Download pending"
+status {
+  code: SUCCESS
+  description: "Ok"
+  req_id: "6d324034e6f6944f6b4f553c0173ba94"
+}
+inputs {
+  id: "b319f06f2b2749248504e1fa8593e84e"
+  data {
+    image {
+      url: "https://samples.clarifai.com/metro-north.jpg"
+      image_info {
+        format: "UnknownImageFormat"
+        color_mode: "UnknownColorMode"
       }
     }
-  ]
+  }
+  created_at {
+    seconds: 1649236360
+    nanos: 11398455
+  }
+  modified_at {
+    seconds: 1649236360
+    nanos: 11398455
+  }
+  status {
+    code: INPUT_DOWNLOAD_PENDING
+    description: "Download pending"
+  }
 }
+inputs {
+  id: "f787d1446583484dabb8d3173e63c057"
+  data {
+    image {
+      url: "https://samples.clarifai.com/wedding.jpg"
+      image_info {
+        format: "UnknownImageFormat"
+        color_mode: "UnknownColorMode"
+      }
+    }
+  }
+  created_at {
+    seconds: 1649236360
+    nanos: 11398455
+  }
+  modified_at {
+    seconds: 1649236360
+    nanos: 11398455
+  }
+  status {
+    code: INPUT_DOWNLOAD_PENDING
+    description: "Download pending"
+  }
+}
+inputs {
+  id: "6812891f981040bdb1de4a24c4f31c74"
+  data {
+    image {
+      url: "https://s3.amazonaws.com/clarifai-api/img3/prod/orig/e12ce254f2824b0ab2aef1b10784ff23/140c856dc82565d2c4d6ea720fceff78"
+      hosted {
+        prefix: "https://s3.amazonaws.com/clarifai-api/img3/prod"
+        suffix: "e12ce254f2824b0ab2aef1b10784ff23/140c856dc82565d2c4d6ea720fceff78"
+        sizes: "orig"
+      }
+      image_info {
+        format: "UnknownImageFormat"
+        color_mode: "UnknownColorMode"
+      }
+    }
+  }
+  created_at {
+    seconds: 1649236360
+    nanos: 11398455
+  }
+  modified_at {
+    seconds: 1649236360
+    nanos: 11398455
+  }
+  status {
+    code: INPUT_DOWNLOAD_PENDING
+    description: "Download pending"
+  }
+} 
 ```
-</TabItem>
-</Tabs>
+
+</details>

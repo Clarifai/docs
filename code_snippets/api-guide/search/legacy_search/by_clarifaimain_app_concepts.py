@@ -25,36 +25,34 @@ metadata = (('authorization', 'Key ' + PAT),)
 
 userDataObject = resources_pb2.UserAppIDSet(user_id=USER_ID, app_id=APP_ID) # The userDataObject is required when using a PAT
 
-post_annotations_searches_response = stub.PostAnnotationsSearches(
-    service_pb2.PostAnnotationsSearchesRequest(
+post_searches_response = stub.PostSearches(
+    service_pb2.PostSearchesRequest(
         user_app_id=userDataObject,
-        searches = [
-            resources_pb2.Search(
-                query=resources_pb2.Query(
-                    ranks=[
-                        resources_pb2.Rank(
-                            annotation=resources_pb2.Annotation(
-                                data=resources_pb2.Data(
-                                    concepts=[  # You can search by multiple concepts.
-                                        resources_pb2.Concept(
-                                            id=CONCEPT_ID,  # You could search by concept Name as well.
-                                            value=1  # Value of 0 will search for images that don't have the concept.
-                                        )
-                                    ]
+        query=resources_pb2.Query(
+            ands=[
+                resources_pb2.And(
+                    output=resources_pb2.Output( # Setting Output indicates we search for images that have the concept(s)
+                                                 # which were predicted by the General model
+                        data=resources_pb2.Data(
+                            concepts=[  # You can search by multiple concepts
+                                resources_pb2.Concept(
+                                    name=CONCEPT_ID,  # You could search by concept ID as well
+                                    value=1  # Value of 0 will search for images that don't have the concept
                                 )
-                            )
+                            ]
                         )
-                    ]
+                    )
                 )
-            )
-        ]
+            ]
+        )
     ),
     metadata=metadata
 )
 
-if post_annotations_searches_response.status.code != status_code_pb2.SUCCESS:
-    raise Exception("Post searches failed, status: " + post_annotations_searches_response.status.description)
+if post_searches_response.status.code != status_code_pb2.SUCCESS:
+    print(post_searches_response.status)
+    raise Exception("Post searches failed, status: " + post_searches_response.status.description)
 
-print("Search result:")
-for hit in post_annotations_searches_response.hits:
-    print("\tScore %.2f for annotation: %s off input: %s" % (hit.score, hit.annotation.id, hit.input.id))
+print("Found inputs:")
+for hit in post_searches_response.hits:
+    print("\tScore %.2f for %s" % (hit.score, hit.input.id))

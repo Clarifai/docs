@@ -3,19 +3,24 @@ description: Save your searches
 sidebar_position: 4
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 # Saved Searches
 
-With saved searches you can capture your search results at a given point in time, and record the inputs, annotations, search parameters and models that you are running through the platform. Saved searches help you to:
+**Save your searches**
+<hr />
+
+With saved searches, you can capture your search results at a given point in time, and record the inputs, annotations, search parameters, and models that you are running through the platform. 
+
+Saved searches help you to:
 
 * Save a search so that you can return to those same results later
 * Share a search with a collaborator in your app
 * Carve out data that you want to evaluate your models on as a "golden set"
 * Split your data into training sets and test tests
 
-## Create a saved search
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+## Create a Saved Search
 
 <Tabs>
 <TabItem value="curl" label="cURL">
@@ -45,7 +50,7 @@ curl --location --request POST 'https://api.clarifai.com/v2/searches/' \
 </TabItem>
 </Tabs>
 
-## List saved searches in an app
+## List Saved Searches in an App
 
 <Tabs>
 <TabItem value="curl" label="cURL">
@@ -58,7 +63,7 @@ curl --location --request GET 'https://api.clarifai.com/v2/searches/' \
 </TabItem>
 </Tabs>
 
-## Search by search ID
+## Search by Search ID
 
 <Tabs>
 <TabItem value="curl" label="cURL">

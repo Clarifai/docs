@@ -23,36 +23,35 @@ stub = service_pb2_grpc.V2Stub(channel)
 
 metadata = (('authorization', 'Key ' + PAT),)
 
-userDataObject = resources_pb2.UserAppIDSet(user_id=USER_ID, app_id=APP_ID)
+userDataObject = resources_pb2.UserAppIDSet(user_id=USER_ID, app_id=APP_ID) # The userDataObject is required when using a PAT
 
-post_annotations_searches_response = stub.PostAnnotationsSearches(
-    service_pb2.PostAnnotationsSearchesRequest(
+post_searches_response = stub.PostSearches(
+    service_pb2.PostSearchesRequest(
         user_app_id=userDataObject,
-        searches = [
-            resources_pb2.Search(
-                query=resources_pb2.Query(
-                    ranks=[
-                        resources_pb2.Rank(
-                            annotation=resources_pb2.Annotation(
-                                data=resources_pb2.Data(
-                                    image=resources_pb2.Image(
-                                        url=IMAGE_URL
-                                    )
+        query=resources_pb2.Query(
+            ands=[
+                resources_pb2.And(
+                    output=resources_pb2.Output(
+                        input=resources_pb2.Input(
+                            data=resources_pb2.Data(
+                                image=resources_pb2.Image(
+                                    url=IMAGE_URL
                                 )
                             )
                         )
-                    ]
+                    )
                 )
-            )
-        ]
+            ]
+        )
     ),
     metadata=metadata
 )
 
-if post_annotations_searches_response.status.code != status_code_pb2.SUCCESS:
-    print(post_annotations_searches_response.status)    
-    raise Exception("Post searches failed, status: " + post_annotations_searches_response.status.description)
+if post_searches_response.status.code != status_code_pb2.SUCCESS:
+    print(post_searches_response.status)
+    raise Exception("Post searches failed, status: " + post_searches_response.status.description)
 
-print("Search result:")
-for hit in post_annotations_searches_response.hits:
-    print("\tScore %.2f for annotation: %s off input: %s" % (hit.score, hit.annotation.id, hit.input.id))
+print("Found inputs:")
+for hit in post_searches_response.hits:
+    print("\tScore %.2f for %s" % (hit.score, hit.input.id))
+

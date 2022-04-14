@@ -5,13 +5,18 @@ sidebar_position: 2
 
 # Patching
 
-We designed PATCH to work over multiple resources at the same time \(bulk\) and be flexible enough for all your needs to minimize round trips to the server. Therefore it might seem a little different to any PATCH you've seen before, but it's not complicated. All three actions that are supported do overwrite by default, but have special behaviour for lists of objects \(for example lists of concepts\).
+**Patch data in your applications**
+<hr />
+
+We designed PATCH to work over multiple resources at the same time \(bulk\) and be flexible enough for all your needs to minimize round trips to the server. Therefore, it might seem a little different to any PATCH you've seen before, but it's not complicated. 
+
+All three actions that are supported do overwrite by default, but have special behaviour for lists of objects \(for example lists of concepts\).
 
 ## Merge
 
 `merge` action will overwrite a `key:value` with `key:new_value` or append to an existing list of values, merging dictionaries that match by a corresponding `id` field.
 
-In the following examples A is being patched into B to create the Result:
+In the following examples, A is being patched into B to create the Result:
 
 ```text
 *Merges different key:values*
@@ -104,7 +109,7 @@ Result = `{"key1":{"key2":{"key3":[{"key4":"value4"}]}}}`
 
 `remove` action will overwrite a `key:value` with `key:new_value` or delete anything in a list that matches the provided values' ids.
 
-In the following examples A is being patched into B to create the Result:
+In the following examples, A is being patched into B to create the Result:
 
 ```text
 *Remove from list*
@@ -167,7 +172,7 @@ Result = `{"key1":{"key2":"value2", "key3":"value3"}}`
 
 The `overwrite` action will overwrite the old object with the new object. If you want to change a field or sub-object with the `overwrite` action, it is suggested to first call `Get` to obtain the original object. Then you can change the field or sub-object you would like to overwrite, followed by assembling the `overwrite` request with the entire object.
 
-In the following examples A is being patched into B to create the Result:
+In the following examples, A is being patched into B to create the Result:
 
 ```text
 A = `{"a":[{"id": "1"}], "blah":1}`

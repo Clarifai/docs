@@ -32,7 +32,7 @@ userDataObject = resources_pb2.UserAppIDSet(user_id=USER_ID, app_id=APP_ID) # Th
 
 params = Struct()
 params.update({
-    "concept_threshold_type": resources_pb2.GREATER_THAN
+    "concept_threshold_type": "GREATER_THAN"
 })
 
 post_models_response = stub.PostModels(

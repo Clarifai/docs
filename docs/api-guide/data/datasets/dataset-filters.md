@@ -8,7 +8,7 @@ sidebar_position: 2
 **Use filter and search functionality over your datasets**
 <hr />
 
-## Add dataset filters
+## Add Dataset Filters
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -35,7 +35,7 @@ curl --location -g --request POST 'api.clarifai.com/v2/datasets/{{dataset_id}}/f
 </TabItem>
 </Tabs>
 
-## List dataset Filters
+## List Dataset Filters
 <Tabs>
 <TabItem value="curl" label="cURL">
 
@@ -47,7 +47,7 @@ curl --location -g --request GET 'api.clarifai.com/v2/datasets/{{dataset_id}}/fi
 </TabItem>
 </Tabs>
 
-## Get a dataset filter
+## Get a Dataset Filter
 <Tabs>
 <TabItem value="curl" label="cURL">
 
@@ -59,7 +59,7 @@ curl --location -g --request GET 'api.clarifai.com/v2/datasets/{{dataset_id}}/fi
 </TabItem>
 </Tabs>
 
-## Change a dataset filter
+## Change a Dataset Filter
 
 <Tabs>
 <TabItem value="curl" label="cURL">
@@ -82,7 +82,7 @@ curl --location -g --request PATCH 'api.clarifai.com/v2/datasets/{{dataset_id}}/
 </TabItem>
 </Tabs>
 
-## Delete a dataset filter
+## Delete a Dataset Filter
 <Tabs>
 <TabItem value="curl" label="cURL">
 

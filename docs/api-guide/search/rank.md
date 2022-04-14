@@ -12,13 +12,20 @@ Rank Order your search results with the intuitive insights of AI. Your model can
 
 You can even rank search results by how similar one input is to another input or region of the input model detected. The search results will return the input and also the annotation, which includes the region.
 
+:::info
+The initialization code used in the following examples is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+:::
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 import PythonAppConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/rank/by_clarifaimain_app_concepts.py";
 import PythonCustomConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/rank/by_custom_concepts.py";
 import PythonClarifaiCustomConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/rank/by_clarifaimain_custom_concepts.py";
-
+import PythonConceptLanguage from "!!raw-loader!../../../code_snippets/api-guide/search/rank/by_concept_another_language.py";
+import PythonSearchImage from "!!raw-loader!../../../code_snippets/api-guide/search/rank/search_by_image_url.py";
+import PythonImageBytes from "!!raw-loader!../../../code_snippets/api-guide/search/rank/search_by_image_bytes.py";
+import PythonInputID from "!!raw-loader!../../../code_snippets/api-guide/search/rank/by_input_id.py";
 
 ## Search by Concepts
 
@@ -629,9 +636,14 @@ fetch(`https://api.clarifai.com/v2/annnotations/searches`, requestOptions)
 
 Concepts that have a translation into another language can be searched for in that language, even without having the default language for your app being in that language. This uses Clarifai's knowledge graph to lookup the translation and then perform the search. 
 
-For example, if you app is in english and you want to search for "dog" in Japanese, then you could search with `language="ja"` and `name="犬"`.
+For example, if you app is in English and you want to search for "dog" in Japanese, then you could search with `language="ja"` and `name="犬"`.
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonConceptLanguage}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -718,55 +730,6 @@ stub.PostAnnotationsSearches(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="python" label="Python">
-
-```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
-
-post_annotations_searches_response = stub.PostAnnotationsSearches(
-    service_pb2.PostAnnotationsSearchesRequest(
-        searches = [
-            resources_pb2.Search(
-                query=resources_pb2.Query(
-                    ranks=[
-                        resources_pb2.Rank(
-                            annotation=resources_pb2.Annotation(
-                                data=resources_pb2.Data(
-                                    concepts=[  # You can search by multiple concepts.
-                                        resources_pb2.Concept(
-                                            name="犬",  # You could search by concept ID as well.
-                                            language="ja", # japanese
-                                            value=1  # Value of 0 will search for images that don't have the concept.
-                                        )
-                                    ]
-                                )
-                            )
-                        )
-                    ]
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_annotations_searches_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(post_annotations_searches_response.outputs[0].status.code))
-    print("\tDescription: {}".format(post_annotations_searches_response.outputs[0].status.description))
-    print("\tDetails: {}".format(post_annotations_searches_response.outputs[0].status.details))
-    raise Exception("Post searches failed, status: " + post_annotations_searches_response.status.description)
-
-print("Search result:")
-for hit in post_annotations_searches_response.hits:
-    print("\tScore %.2f for annotation: %s off input: %s" % (hit.score, hit.annotation.id, hit.input.id))
 ```
 </TabItem>
 
@@ -865,6 +828,11 @@ You can use images to search through your collection. The API will return ranked
 ### Search by Image URL
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonSearchImage}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -948,51 +916,6 @@ stub.PostAnnotationsSearches(
 ```
 </TabItem>
 
-<TabItem value="python" label="Python">
-
-```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
-
-post_annotations_searches_response = stub.PostAnnotationsSearches(
-    service_pb2.PostAnnotationsSearchesRequest(
-        searches = [
-            resources_pb2.Search(
-                query=resources_pb2.Query(
-                    ranks=[
-                        resources_pb2.Rank(
-                            annotation=resources_pb2.Annotation(
-                                data=resources_pb2.Data(
-                                    image=resources_pb2.Image(
-                                        url="{YOUR_IMAGE_URL}"
-                                    )
-                                )
-                            )
-                        )
-                    ]
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_annotations_searches_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(post_annotations_searches_response.outputs[0].status.code))
-    print("\tDescription: {}".format(post_annotations_searches_response.outputs[0].status.description))
-    print("\tDetails: {}".format(post_annotations_searches_response.outputs[0].status.details))
-    raise Exception("Post searches failed, status: " + post_annotations_searches_response.status.description)
-
-print("Search result:")
-for hit in post_annotations_searches_response.hits:
-    print("\tScore %.2f for annotation: %s off input: %s" % (hit.score, hit.annotation.id, hit.input.id))
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -1073,6 +996,11 @@ fetch(`https://api.clarifai.com/v2/annnotations/searches`, requestOptions)
 You can also search for an input by URL.
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonImageBytes}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -1165,54 +1093,6 @@ stub.PostAnnotationsSearches(
 ```
 </TabItem>
 
-<TabItem value="python" label="Python">
-
-```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
-
-with open("{YOUR_IMAGE_LOCATION}", "rb") as f:
-    file_bytes = f.read()
-
-post_annotations_searches_response = stub.PostAnnotationsSearches(
-    service_pb2.PostAnnotationsSearchesRequest(
-        searches = [
-            resources_pb2.Search(
-                query=resources_pb2.Query(
-                    ranks=[
-                        resources_pb2.Rank(
-                            annotation=resources_pb2.Annotation(
-                                data=resources_pb2.Data(
-                                    image=resources_pb2.Image(
-                                        base64=file_bytes
-                                    )
-                                )
-                            )
-                        )
-                    ]
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_annotations_searches_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(post_annotations_searches_response.outputs[0].status.code))
-    print("\tDescription: {}".format(post_annotations_searches_response.outputs[0].status.description))
-    print("\tDetails: {}".format(post_annotations_searches_response.outputs[0].status.details))
-    raise Exception("Post searches failed, status: " + post_annotations_searches_response.status.description)
-
-print("Search result:")
-for hit in post_annotations_searches_response.hits:
-    print("\tScore %.2f for annotation: %s off input: %s" % (hit.score, hit.annotation.id, hit.input.id))
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -1293,6 +1173,11 @@ fetch(`https://api.clarifai.com/v2/annnotations/searches`, requestOptions)
 If the input has been indexed, we can use the input ID. If there are multiple embeddings \(for example multiple regions\), we will average the embeddings.
 
 <Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonInputID}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -1364,51 +1249,6 @@ stub.PostAnnotationsSearches(
         }
     }
 );
-```
-</TabItem>
-
-<TabItem value="python" label="Python">
-
-```python
-from clarifai_grpc.grpc.api import service_pb2, resources_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2
-
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview
-
-post_annotations_searches_response = stub.PostAnnotationsSearches(
-    service_pb2.PostAnnotationsSearchesRequest(
-        searches = [
-            resources_pb2.Search(
-                query=resources_pb2.Query(
-                    ranks=[
-                        resources_pb2.Rank(
-                            annotation=resources_pb2.Annotation(
-                                data=resources_pb2.Data(
-                                    image=resources_pb2.Image(
-                                        input_id="{input_ids}"
-                                    )
-                                )
-                            )
-                        )
-                    ]
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_annotations_searches_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(post_annotations_searches_response.outputs[0].status.code))
-    print("\tDescription: {}".format(post_annotations_searches_response.outputs[0].status.description))
-    print("\tDetails: {}".format(post_annotations_searches_response.outputs[0].status.details))
-    raise Exception("Post searches failed, status: " + post_annotations_searches_response.status.description)
-
-print("Search result:")
-for hit in post_annotations_searches_response.hits:
-    print("\tScore %.2f for annotation: %s off input: %s" % (hit.score, hit.annotation.id, hit.input.id))
 ```
 </TabItem>
 
