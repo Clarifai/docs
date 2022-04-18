@@ -21,5 +21,5 @@ pagination_prev: product-updates/changelog/release82
 
 ## Portal-Screen
 |Status     |Details                                            |
-|-----------|---------------------------------------------------|         |
+|-----------|---------------------------------------------------|
 | ![bug](/img/bug.jpg) |"App Copy" does not duplicate already duplicated apps|
