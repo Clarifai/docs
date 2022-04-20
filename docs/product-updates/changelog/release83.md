@@ -16,4 +16,10 @@ pagination_prev: product-updates/changelog/release82
 |Status     |Details                                            |
 |-----------|---------------------------------------------------|
 | ![new-feature](/img/new_feature.jpg) |Publish "financial-news-sentiment-distilroberta" model |
+| ![new-feature](/img/new_feature.jpg) |Publish "financial-sentiment-finbert" model       |
 | ![new-feature](/img/new_feature.jpg) |Publish "financial-summarization-pegasus" model       |
+
+## Portal-Screen
+|Status     |Details                                            |
+|-----------|---------------------------------------------------|
+| ![bug](/img/bug.jpg) |"App Copy" does not duplicate already duplicated apps|
