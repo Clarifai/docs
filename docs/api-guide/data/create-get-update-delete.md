@@ -26,6 +26,10 @@ import PythonDeleteConceptsInput from "!!raw-loader!../../../code_snippets/api-g
 import PythonBulkDeleteConceptsInputs from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/bulk_delete_concepts_inputs.py";
 import PythonDeleteInputId from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/delete_input_by_id.py";
 import PythonDeleteListInputs from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/delete_list_inputs.py";
+import JSAddInputsViaURL from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/js/add_inputs_via_url.html";
+
+import NodeAddInputsViaURL from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/node/add_inputs_via_url.js";
+
 
 
 The API is built around a simple idea. You send inputs \(such as images\) to the service and it returns predictions. In addition to receiving predictions on inputs, you can also index inputs and their predictions to later search against. You can also index inputs with concepts to later train your own model.
@@ -54,6 +58,14 @@ Below is an example of how to add inputs via a publicly accessible URL.
     <CodeBlock className="language-python">{PythonAddInputsViaURL}</CodeBlock>
 </TabItem>
 
+<TabItem value="js_rest" label="Javascript (REST)">
+    <CodeBlock className="language-python">{JSAddInputsViaURL}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-python">{NodeAddInputsViaURL}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -78,30 +90,6 @@ MultiInputResponse postInputsResponse = stub.postInputs(
 if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
     throw new RuntimeException("Post inputs failed, status: " + postInputsResponse.getStatus());
 }
-```
-</TabItem>
-
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostInputs(
-    {
-        inputs: [{data: {image: {url: "https://samples.clarifai.com/metro-north.jpg", allow_duplicate_url: true}}}]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post inputs failed, status: " + response.status.description);
-        }
-    }
-);
 ```
 </TabItem>
 
@@ -162,42 +150,6 @@ curl -X POST \
     ]
   }'\
   https://api.clarifai.com/v2/inputs
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "inputs": [
-    {
-      "data": {
-        "image": {
-          "url": "https://samples.clarifai.com/metro-north.jpg",
-          "allow_duplicate_url": true
-        }
-      }
-    }
-  ]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/inputs", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
