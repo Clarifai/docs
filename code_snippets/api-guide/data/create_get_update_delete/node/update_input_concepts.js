@@ -32,12 +32,12 @@ stub.PatchInputs(
             "user_id": USER_ID,
             "app_id": APP_ID
         },
-        action: "merge",  // Supported actions: overwrite, merge, remove.
+        action: "merge",  // Supported actions: overwrite, merge, remove
         inputs: [
             {
                 id: INPUT_ID,
-                // 1 means true, this concept is present.
-                // 0 means false, this concept is not present.
+                // 1 means true, this concept is present
+                // 0 means false, this concept is not present
                 data: { concepts: [{ id: CONCEPT_ID_1, value: 1 }, { id: CONCEPT_ID_2, value: 0 }] }
             }
         ]
