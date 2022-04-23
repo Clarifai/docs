@@ -2,8 +2,8 @@
 
 <script>
     ////////////////////////////////////////////////////////////////////////////////////
-    // In this section, we set the user authentication, app ID, and input URL. 
-    // Change these strings to run your own example.
+    // In this section, we set the user authentication, app ID, and the image we want
+    // as an input. Change these strings to run your own example.
     ////////////////////////////////////////////////////////////////////////////////////
 
     USER_ID = 'YOUR_USER_ID_HERE';
@@ -11,7 +11,7 @@
     PAT = 'YOUR_PAT_HERE';
     APP_ID = 'YOUR_APP_ID_HERE';
     // Change this to whatever image input you want to add
-    IMAGE_URL = 'https://samples.clarifai.com/metro-north.jpg';
+    BYTES_STRING = 'YOUR_BYTES_STRING';
 
     ///////////////////////////////////////////////////////////////////////////////////
     // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -26,9 +26,8 @@
             {
                 "data": {
                     "image": {
-                        "url": IMAGE_URL,
-                        "allow_duplicate_url": true
-                    }
+                        "base64": BYTES_STRING
+                    },
                 }
             }
         ]

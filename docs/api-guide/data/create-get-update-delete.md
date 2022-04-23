@@ -11,25 +11,43 @@ sidebar_position: 3
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
-import PythonAddInputsViaURL from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/add_inputs_via_url.py";
-import PythonAddInputsViaBytes from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/add_inputs_via_bytes.py";
-import PythonAddMultipleInputsIds from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/add_multiple_inputs_with_ids.py";
-import PythonAddInputsConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/add_inputs_with_concepts.py";
-import PythonAddInputsCustomMetadata from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/add_inputs_custom_metadata.py";
-import PythonListAllInputs from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/list_all_inputs.py";
-import PythonListInputsStreaming from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/list_inputs_streaming.py";
-import PythonGetInputId from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/get_input_by_id.py";
-import PythonGetInputsStatus from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/get_inputs_status.py";
-import PythonUpdateInputConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/update_input_concepts.py";
-import PythonBulkUpdateInputsConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/bulk_update_inputs_concepts.py";
-import PythonDeleteConceptsInput from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/delete_concepts_input.py";
-import PythonBulkDeleteConceptsInputs from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/bulk_delete_concepts_inputs.py";
-import PythonDeleteInputId from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/delete_input_by_id.py";
-import PythonDeleteListInputs from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/delete_list_inputs.py";
+import PythonAddInputsViaURL from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/py/add_inputs_via_url.py";
+import PythonAddInputsViaBytes from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/py/add_inputs_via_bytes.py";
+import PythonAddMultipleInputsIds from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/py/add_multiple_inputs_with_ids.py";
+import PythonAddInputsConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/py/add_inputs_with_concepts.py";
+import PythonAddInputsCustomMetadata from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/py/add_inputs_custom_metadata.py";
+import PythonListAllInputs from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/py/list_all_inputs.py";
+import PythonListInputsStreaming from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/py/list_inputs_streaming.py";
+import PythonGetInputId from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/py/get_input_by_id.py";
+import PythonGetInputsStatus from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/py/get_inputs_status.py";
+import PythonUpdateInputConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/py/update_input_concepts.py";
+import PythonBulkUpdateInputsConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/py/bulk_update_inputs_concepts.py";
+import PythonDeleteConceptsInput from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/py/delete_concepts_input.py";
+import PythonBulkDeleteConceptsInputs from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/py/bulk_delete_concepts_inputs.py";
+import PythonDeleteInputId from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/py/delete_input_by_id.py";
+import PythonDeleteListInputs from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/py/delete_list_inputs.py";
+
 import JSAddInputsViaURL from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/js/add_inputs_via_url.html";
+import JSAddInputsViaBytes from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/js/add_inputs_via_bytes.html";
+import JSAddMultipleInputsIds from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/js/add_multiple_inputs_with_ids.html";
+import JSAddInputsConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/js/add_inputs_with_concepts.html";
+import JSAddInputsCustomMetadata from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/js/add_inputs_custom_metadata.html";
+import JSListAllInputs from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/js/list_all_inputs.html";
+import JSListInputsStreaming from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/js/list_inputs_streaming.html";
+import JSGetInputId from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/js/get_input_by_id.html";
+import JSGetInputsStatus from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/js/get_inputs_status.html";
+import JSUpdateInputConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/js/update_input_concepts.html"
 
 import NodeAddInputsViaURL from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/node/add_inputs_via_url.js";
-
+import NodeAddInputsViaBytes from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/node/add_inputs_via_bytes.js";
+import NodeAddMultipleInputsIds from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/node/add_multiple_inputs_with_ids.js";
+import NodeAddInputsConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/node/add_inputs_with_concepts.js";
+import NodeAddInputsCustomMetadata from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/node/add_inputs_custom_metadata.js";
+import NodeListAllInputs from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/node/list_all_inputs.js";
+import NodeListInputsStreaming from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/node/list_inputs_streaming.js";
+import NodeGetInputId from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/node/get_input_by_id.js";
+import NodeGetInputsStatus from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/node/get_inputs_status.js";
+import NodeUpdateInputConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/node/update_input_concepts.js"
 
 
 The API is built around a simple idea. You send inputs \(such as images\) to the service and it returns predictions. In addition to receiving predictions on inputs, you can also index inputs and their predictions to later search against. You can also index inputs with concepts to later train your own model.
@@ -58,12 +76,12 @@ Below is an example of how to add inputs via a publicly accessible URL.
     <CodeBlock className="language-python">{PythonAddInputsViaURL}</CodeBlock>
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-    <CodeBlock className="language-python">{JSAddInputsViaURL}</CodeBlock>
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSAddInputsViaURL}</CodeBlock>
 </TabItem>
 
 <TabItem value="nodejs" label="NodeJS">
-    <CodeBlock className="language-python">{NodeAddInputsViaURL}</CodeBlock>
+    <CodeBlock className="language-javascript">{NodeAddInputsViaURL}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -169,6 +187,14 @@ The data must be base64 encoded. When you add a base64 image to our servers, a c
     <CodeBlock className="language-python">{PythonAddInputsViaBytes}</CodeBlock>
 </TabItem>
 
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSAddInputsViaBytes}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeAddInputsViaBytes}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -197,33 +223,6 @@ MultiInputResponse postInputsResponse = stub.postInputs(
 if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
     throw new RuntimeException("Post inputs failed, status: " + postInputsResponse.getStatus());
 }
-```
-</TabItem>
-
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-const fs = require("fs");
-const imageBytes = fs.readFileSync("{YOUR_IMAGE_LOCATION}");
-
-stub.PostInputs(
-    {
-        inputs: [{data: {image: {base64: imageBytes}}}]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post inputs failed, status: " + response.status.description);
-        }
-    }
-);
 ```
 </TabItem>
 
@@ -286,41 +285,6 @@ curl -X POST \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "inputs": [
-    {
-      "data": {
-        "image": {
-          "base64": "{YOUR_BYTES_STRING}"
-        },
-      }
-    }
-  ]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/inputs", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
-</TabItem>
-
 </Tabs>
 
 ### Add Multiple Inputs With IDs
@@ -333,6 +297,14 @@ If you do not send an `id`, one will be created for you. If you have more than o
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonAddMultipleInputsIds}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSAddMultipleInputsIds}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeAddMultipleInputsIds}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -379,44 +351,6 @@ if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
     throw new RuntimeException("Post inputs failed, status: " + postInputsResponse.getStatus());
 }
-```
-</TabItem>
-
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostInputs(
-    {
-        inputs: [
-            {
-                id: "train1",
-                data: {image: {url: "https://samples.clarifai.com/metro-north.jpg", allow_duplicate_url: true}}
-            },
-            {
-                id: "puppy1",
-                data: {image: {url: "https://samples.clarifai.com/puppy.jpeg", allow_duplicate_url: true}}
-            },
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            for (const input of response.inputs) {
-                console.log("Input " + input.id + " status: ");
-                console.log(JSON.stringify(input.status, null, 2) + "\n");
-            }
-
-            throw new Error("Post inputs failed, status: " + response.status.description);
-        }
-    }
-);
 ```
 </TabItem>
 
@@ -505,52 +439,6 @@ curl -X POST \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-    "inputs": [
-        {
-        "data": {
-            "image": {
-            "url": "https://samples.clarifai.com/metro-north.jpg",
-            "allow_duplicate_url": true
-            }
-        },
-        "id": "input1"
-        },
-            {
-        "data": {
-            "image": {
-            "url": "https://samples.clarifai.com/puppy.jpeg",
-            "allow_duplicate_url": true
-            }
-        },
-        "id": "puppy1"
-        }
-    ]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/inputs", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
-</TabItem>
-
 </Tabs>
 
 ### Add Inputs With Concepts
@@ -567,6 +455,14 @@ You can add inputs with concepts via URLs or bytes.
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonAddInputsConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSAddInputsConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeAddInputsConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -599,33 +495,6 @@ MultiInputResponse postInputsResponse = stub.postInputs(
 if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
     throw new RuntimeException("Post inputs failed, status: " + postInputsResponse.getStatus());
 }
-```
-</TabItem>
-
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostInputs(
-    {
-        inputs: [{data: {
-            image: {url: "https://samples.clarifai.com/puppy.jpeg", allow_duplicate_url: true},
-            concepts: [{id: "charlie", value: 1.}]
-        }}]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post inputs failed, status: " + response.status.description);
-        }
-    }
-);
 ```
 </TabItem>
 
@@ -706,49 +575,6 @@ curl -X POST \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "inputs": [
-      {
-      "data": {
-          "image": {
-            "url": "https://samples.clarifai.com/puppy.jpeg",
-            "allow_duplicate_url": true
-          },
-          // Optionally add a concept with your input
-          "concepts": [
-          {
-            "id": "charlie",
-            "value": 1
-          }
-        ]
-      }
-    }
-  ]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/inputs", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
-</TabItem>
-
 </Tabs>
 
 ### Add Inputs With Custom Metadata
@@ -768,6 +594,14 @@ If you have more than one item per image, it is recommended to put the `id` in t
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonAddInputsCustomMetadata}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSAddInputsCustomMetadata}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeAddInputsCustomMetadata}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -806,33 +640,6 @@ if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostInputs(
-    {
-        inputs: [{data: {
-            image: {url: "https://samples.clarifai.com/puppy.jpeg", allow_duplicate_url: true},
-            metadata: {id: "id001", type: "animal", size: 100}
-        }}]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post inputs failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -854,43 +661,6 @@ curl -X POST \
     ]
   }'\
   https://api.clarifai.com/v2/inputs
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "inputs": [
-    {
-      "data": {
-        "image": {
-          "url": "https://samples.clarifai.com/puppy.jpeg",
-          "allow_duplicate_url": true
-        },
-        "metadata": {"id": "id001", "type": "animal", "size": 100}
-      }
-    }
-  ]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/inputs", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
@@ -916,6 +686,14 @@ This request is paginated.
     <CodeBlock className="language-python">{PythonListAllInputs}</CodeBlock>
 </TabItem>
 
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSListAllInputs}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeListAllInputs}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -939,32 +717,6 @@ if (listInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 for (Input input : listInputsResponse.getInputsList()) {
     System.out.println(input);
 }
-```
-</TabItem>
-
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.ListInputs(
-    {page: 1, per_page: 10},
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("List inputs failed, status: " + response.status.description);
-        }
-
-        for (const input of response.inputs) {
-            console.log(JSON.stringify(input, null, 2));
-        }
-    }
-);
 ```
 </TabItem>
 
@@ -999,26 +751,6 @@ curl -X GET \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const appId = '{YOUR_APP_ID}'
-
-const requestOptions = {
-  method: 'GET',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/inputs?page=1&per_page=10`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
-</TabItem>
-
 </Tabs>
 
 ### List Inputs \(Streaming\)
@@ -1031,6 +763,14 @@ By default, the stream will return inputs from oldest to newest. Set the `descen
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonListInputsStreaming}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSListInputsStreaming}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeListInputsStreaming}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -1081,112 +821,6 @@ for (Input input : secondStreamInputsResponse.getInputsList()) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.StreamInputs(
-    {
-        per_page: 10
-    },
-    metadata,
-    (err, firstResponse) => {
-        if (err) {
-            done(err);
-            return;
-        }
-
-        if (firstResponse.status.code !== 10000) {
-            done(new Error("Received status: " + firstResponse.status.description + "\n" + firstResponse.status.details));
-            return;
-        }
-
-        console.log("First response (starting from the first input):");
-        for (const input of firstResponse.inputs) {
-            console.log("\t" + input.id);
-        }
-
-        const lastId = firstResponse.inputs[firstResponse.inputs.length - 1].id;
-        stub.StreamInputs(
-            {
-                last_id: lastId,
-                per_page: 10
-            },
-            metadata,
-            (err, secondResponse) => {
-                if (err) {
-                    done(err);
-                    return;
-                }
-
-                if (secondResponse.status.code !== 10000) {
-                    done(new Error("Received status: " + secondResponse.status.description + "\n" + secondResponse.status.details));
-                    return;
-                }
-
-                console.log("Second response (first input is the one following input ID " + lastId + ")");
-                for (const input of secondResponse.inputs) {
-                    console.log("\t" + input.id);
-                }
-
-                done();
-            }
-        );
-    }
-);
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-// We can implement the API call with a Promise
-const streamInputs = (reqAddress) => {
-  return new Promise(async (resolve, reject) => {
-    fetch(reqAddress, requestOptions)
-    .then(data => {
-        return data.json()
-    }).then(data => {
-        resolve(data)
-    }).catch(e => {
-        console.error('REQUEST -> ', e)
-        reject(e)
-    })
-  })
-}
-
-// Async function that will allow us to wait for the first API call
-const run = async () => {
-
-	const appId = '{YOUR_APP_ID}'
-
-  const requestOptions = {
-    method: 'GET',
-    headers: {
-      'Accept': 'application/json',
-      'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-    }
-  };
-
-  const REQ_ADDRESS = `https://api.clarifai.com/v2/users/me/apps/${appId}/inputs/stream?per_page=5`
-
-  const req1 = await streamInputs(REQ_ADDRESS)
-
-	// Grab the last input_id from the first request to use it in the second request
-  const lastId = req1['inputs'][req1['inputs'].length - 1].id
-
-  const req2 = await streamInputs(REQ_ADDRESS + `&last_id=${lastId}`)
-
-	// You're only receiving the inputs from up to the last_id onward
-  console.log(req2)
-}
-
-run()
-```
-</TabItem>
-
 </Tabs>
 
 ## Get Inputs
@@ -1199,6 +833,14 @@ If you'd like to get the details of a specific input by its `id`, you can do tha
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonGetInputId}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSGetInputId}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeGetInputId}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -1222,31 +864,6 @@ if (getInputResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 Input input = getInputResponse.getInput();
 System.out.println(input);
-```
-</TabItem>
-
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.GetInput(
-    {input_id: "{YOUR_INPUT_ID}"},
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Get input failed, status: " + response.status.description);
-        }
-
-        const input = response.input;
-        console.log(JSON.stringify(input, null, 2));
-    }
-);
 ```
 </TabItem>
 
@@ -1280,27 +897,6 @@ curl -X GET \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const inputId = '{YOUR_INPUT_ID}'
-const appId = '{YOUR_APP_ID}'
-
-const requestOptions = {
-  method: 'GET',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/inputs/${inputId}`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
-</TabItem>
-
 </Tabs>
 
 ### Get Inputs' Status
@@ -1311,6 +907,14 @@ If you add inputs in bulk, they will be procesed in the background. You can get 
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonGetInputsStatus}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSGetInputsStatus}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeGetInputsStatus}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -1332,31 +936,6 @@ if (getInputCountResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 InputCount inputCount = getInputCountResponse.getCounts();
 System.out.println(inputCount);
-```
-</TabItem>
-
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.GetInputCount(
-    {},
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Get input count failed, status: " + response.status.description);
-        }
-
-        const counts = response.counts;
-        console.log(JSON.stringify(counts, null, 2));
-    }
-);
 ```
 </TabItem>
 
@@ -1391,26 +970,6 @@ curl -X GET \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const appId = '{YOUR_APP_ID}'
-
-const requestOptions = {
-  method: 'GET',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_ACCESS_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/inputs/status`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
-</TabItem>
-
 </Tabs>
 
 ## Update Inputs
@@ -1421,8 +980,16 @@ To update an input with a new concept, or to change a concept value from true/fa
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="gRPC Python">
     <CodeBlock className="language-python">{PythonUpdateInputConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSUpdateInputConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+    <CodeBlock className="language-javascript">{NodeUpdateInputConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
@@ -1461,38 +1028,6 @@ MultiInputResponse patchInputsResponse = stub.patchInputs(
 if (patchInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
     throw new RuntimeException("Patch inputs failed, status: " + patchInputsResponse.getStatus());
 }
-```
-</TabItem>
-
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PatchInputs(
-    {
-        action: "merge",  // Supported actions: overwrite, merge, remove.
-        inputs: [
-            {
-                id: "{YOUR_INPUT_ID}",
-                // 1 means true, this concept is present.
-                // 0 means false, this concept is not present.
-                data: {concepts: [{id: "tree", value: 1}, {id: "water", value: 0}]}
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Patch inputs failed, status: " + response.status.description);
-        }
-    }
-);
 ```
 </TabItem>
 
@@ -1577,50 +1112,6 @@ curl -X PATCH \
     "action":"merge"
 }'\
   https://api.clarifai.com/v2/inputs
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "inputs": [
-    {
-      "id": "{YOUR_INPUT_ID}",
-      "data": {
-        "concepts": [
-          {
-            "id": "tree",
-						"value": 1
-          },
-          {
-            "id": "water",
-						"value": 0
-          }
-        ]
-      }
-    }
-  ],
-  "action": "merge"
-});
-
-const requestOptions = {
-  method: 'PATCH',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/inputs", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
