@@ -29,11 +29,12 @@ You can go to the [Community's main page](https://clarifai.com/explore) and sear
 
 You can explore our huge collection of published AI models and workflows and discover the ones best suitable for your use case.
 
-![](https://i.imgur.com/dkYir9B.png)
+![Explore Clarifai community](/img/community/explore_community.png)
 
 For example, to search for models, click the [Models](https://clarifai.com/explore/models) tab on the top-left corner of the page. Next, use the search box to look for the model you require—by its ID or description. You can also use the various filter options on the right side of the page to search for the specific model you require. 
 
-![](https://i.imgur.com/TwnTtE8.png)
+![Search models](/img/community/search_models.png)
+
 
 ## How to Make Predictions
 
@@ -47,29 +48,29 @@ Let's start by using the filtering feature to select the model for making the pr
 
 Click the **Models** tab on the top-left corner of the page. Next, go to the **Filters** section on the right side of the page, and under **INPUT TYPE**, select the **image** checkbox. Under **Model Type**, select **Visual Detector**.  
 
-![](https://i.imgur.com/JlIWmPZ.png)
+![make predictions](/img/community/make_predictions.png)
 
 Type "face" in the search box to filter the models for face detection. Next, select the **Clarifai/main/Face** model.
 
-![](https://i.imgur.com/ooDxqHX.png)
+![filter models](/img/community/filter_models.png)
 
 After selecting the model, you'll be redirected to its main page. See that there are some default photos that show how the model works. Also, notice that there are bounding boxes around the detected faces. On the right side of the page, there are previews of the detected faces alongside the probability value of their correctness. 
 
-![](https://i.imgur.com/yMlcww7.png)
+![Faces bounding boxes](/img/community/faces_bounding_boxes.png)
 
 To make your own predictions, click the **Try Your Own Input** button at the bottom-right section of the page and add your own image. 
 
 Next, upload an image from your local storage or add it via a publicly accessible URL, and click the **Submit** button. In this example, we'll use [this image](https://samples.clarifai.com/demo-004.jpg) of a happy couple. 
 
-![](https://i.imgur.com/AQcZ61U.png)
+![Try your own input button](/img/community/try_your_own_input_button.png)
 
 You'll see the results of all the concepts identified in the photo. 
 
-![](https://i.imgur.com/irtw1t9.png)
+![Concepts in photo](/img/community/concepts_in_photo.png)
 
 You can also click the **View JSON** button underneath the **Try Your Own Input** button to view the JSON returned by the model for programmatic use.
 
-![](https://i.imgur.com/IhazqDL.png)
+![View JSON button](/img/community/view_json_button.png)
 
 ## How to Use a Model in API or Add it to Workflow
 
@@ -77,37 +78,37 @@ Let's see how you can use a model in an API or add it to a worklow. To do so, yo
 
 Then, on the model's main page, click the **Use Model** button at the top-right corner. 
 
-![](https://i.imgur.com/49vKhak.png)
+![Use model button](/img/community/use_model_button.png)
 
 A window will pop up having two tabs: **Call by API** and **Use in a Workflow**. 
 
-![](https://i.imgur.com/Nn067dj.png)
+![Window two tabs](/img/community/windows_two_tabs.png)
 
 If you want to use the model in an API, just copy the code inside the **Call by API** section. You can select the programming language you prefer. 
 
 To add the model to a workflow, select the **Use in a Workflow** tab. On the ensuing window, you can select an existing application and a workflow to use. If you're using a new account, you may only have **my-first-application** to select. In our case, as seen below, there are a number of apps already existing in our account.
 
-![](https://i.imgur.com/MMEXNGP.png)
+![Add model to workflow](/img/community/add_model_to_workflow.png)
 
 Let's select **my-first-application** from the app dropdown list. 
 
 In this example, instead of selecting an existing workflow, we'll create a new one. So, select the **Create new Workflow** checkbox and provide a **Workflow ID**. We've called it **general-test2**, but you can provide whatever name you like. Lastly, click the **Confirm** button. 
 
-![](https://i.imgur.com/WhsghgW.png)
+![Create new Workflow checkbox](/img/community/create_new_workflow_checkbox.png)
 
 Next, you'll be redirected to the created workflow's page. The page has a visual graph where you can drag and connect components of your workflow. 
 
-![](https://i.imgur.com/ZIt3Iox.png)
+![Created workflow visual graph](/img/community/created_workflow_visual_graph.png)
 
 You can access your workflows by clicking on the **Profile** link at the top-left corner of the page. You can also click on the profile icon at the top-right corner of the page. The icon is a small circle that contains either the initials of your name or a photo you've uploaded. 
 
 Once your profile page opens, select **Workflows** and click the workflow you want. 
 
-![](https://i.imgur.com/1ohA3R1.png)
+![Profile page workflows](/img/community/click_profile_page_workflows.png)
 
 You'll then be presented with a page where you can carry out various tasks with the workflow. 
 
-![](https://i.imgur.com/J2cWLlq.png)
+![Workflow tasks page](/img/community/workflow_tasks_page.png)
 
 ## Relationship Between Clarifai Portal and Clarifai Community
 
@@ -119,39 +120,39 @@ We'll use a custom model to show the relationship between the Clarifai Portal an
 
 Let's start by [logging in](https://portal.clarifai.com/login) to the Clarifai Portal. If we click the icon composed of small squares on the left sidebar, we can see a list of applications present in our instance of the Portal.
 
-![](https://i.imgur.com/gKDaDDz.png)
+![Clarifai portal log in](/img/community/clarifai_portal_log_in.png)
 
 You can see that there is an application called **text-moderation-test**.
 
 Let's switch to the [Community view](https://clarifai.com/explore) and click the **Profile** link at the top-left corner. Notice that the same  **text-moderation-test** application is listed under **Apps**.
 
-![](https://i.imgur.com/n7KL2ko.png)
+![Application apps](/img/community/application_apps.png)
 
 Let's go back to the Portal and select the **text-moderation-test** application. We'll then be redirected to its individual page.
 
-![](https://i.imgur.com/79m2Q2w.png)
+![Portal application page](/img/community/portal_application_individual_page.png)
 
 As you can see on the image above, the icon composed of four small squares on the left sidebar is the Model Mode. Let's click on it and see a list of models available in the application. 
 
-![](https://i.imgur.com/x8rE6sU.png)
+![Model mode](/img/community/model_mode.png)
 
 Under the **Models** tab, you can use the **User** dropdown to see all the Clarifai’s pre-trained models or those available under your username. In this example, select your username to see the models you've created.
 
-![](https://i.imgur.com/r7pF8AE.png)
+![User dropdown](/img/community/user_dropdown.png)
 
 As you can see on the image below, we have a model called **bert-base-uncased-hatexplain**, which is a BERT-based model for NLP classification. It is inside the **text-moderation-test** application.
 
-![](https://i.imgur.com/RW0FhV8.png)
+![NLP model](/img/community/NLP_model.png)
 
 Let's switch to the Community view and select the **text-moderation-test** application. We'll then be redirected to its individual page.
 
 Next, select the **Models** option on the left sidebar. Notice that the same **bert-base-uncased-hatexplain** model is listed under **Models**.
 
-![](https://i.imgur.com/l5q41Lj.png)
+![Portal models option](/img/community/models_option.png)
 
 Let's click on the **bert-base-uncased-hatexplain** model. We'll then be redirected to its individual page. That is where you can make predictions with the model as we explained earlier.
 
-![](https://i.imgur.com/JTv8sFx.png)
+![Portal model individual page](/img/community/model_individual_page.png)
 
 ## How to Publish a Model
 
@@ -163,7 +164,7 @@ A dialog box then appears that allows the model's visibility to be changed from 
 
 Then, click the **Confirm** button to publish the model. 
 
-![](https://i.imgur.com/PpmjZ1w.png)
+![Portal publish model](/img/community/confirm_button_publish.png)
 
 :::note
 Setting the model visibility to public exposes your user ID and app ID. It also allows anyone to see your app notes, tags, and descriptions.
@@ -171,10 +172,10 @@ Setting the model visibility to public exposes your user ID and app ID. It also 
 
 Additionally, if you scroll downwards on the model's page, you see several options on the right sidebar that let you fine-tune the features of the model according to your preferences. For example, you can edit its ID, add a description, choose a tag (or tags) that represents its use case, select a toolkit, and more.
 
-![](https://i.imgur.com/vuqpYoW.png)
+![Use case toolkit license](/img/community/use_case_toolkit_license.png)
 
 After publishing the model, you can see that it's listed publicly on the Community under the **Models** tab.
 
-![](https://i.imgur.com/Y50vDiS.png)
+![Community public models](/img/community/public_models.png)
 
 That's it!
