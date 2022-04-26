@@ -2,39 +2,32 @@
 
 <script>
     ////////////////////////////////////////////////////////////////////////////////////
-    // In this section, we set the user authentication, app ID, and the image we want
-    // as an input. Change these strings to run your own example.
+    // In this section, we set the user authentication, app ID, and the IDs of the 
+    // inputs we want to delete. Change these strings to run your own example.
     ////////////////////////////////////////////////////////////////////////////////////
 
     const USER_ID = 'YOUR_USER_ID_HERE';
     // Your PAT (Personal Access Token) can be found in the portal under Authentification
     const PAT = 'YOUR_PAT_HERE';
     const APP_ID = 'YOUR_APP_ID_HERE';
-    // Change this to whatever image input you want to add
-    const BYTES_STRING = 'YOUR_BYTES_STRING';
+    // Change these based on the inputs you want to delete
+    const INPUT_ID_1 = 'eefbb9fa8f2342d2b4f19b8083098c9e';
+    const INPUT_ID_2 = '148582f7916e4001b24579b89a6f6a82';
 
-    ///////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
     // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
-    ///////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
 
     const raw = JSON.stringify({
         "user_app_id": {
             "user_id": USER_ID,
             "app_id": APP_ID
         },
-        "inputs": [
-            {
-                "data": {
-                    "image": {
-                        "base64": BYTES_STRING
-                    },
-                }
-            }
-        ]
+        "ids": [INPUT_ID_1, INPUT_ID_2]
     });
 
     const requestOptions = {
-        method: 'POST',
+        method: 'DELETE',
         headers: {
             'Accept': 'application/json',
             'Authorization': 'Key ' + PAT

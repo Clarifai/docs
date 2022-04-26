@@ -5,12 +5,12 @@
 // Change these strings to run your own example.
 /////////////////////////////////////////////////////////////////////////////
 
-USER_ID = 'YOUR_USER_ID_HERE';
+const USER_ID = 'YOUR_USER_ID_HERE';
 // Your PAT (Personal Access Token) can be found in the portal under Authentification
-PAT = 'YOUR_PAT_HERE';
-APP_ID = 'YOUR_APP_ID_HERE';
+const PAT = 'YOUR_PAT_HERE';
+const APP_ID = 'YOUR_APP_ID_HERE';
 // Change this ID to whatever input you want its details
-INPUT_ID = 'ff79664eefe94db1878f51931f9d6fd9';
+const INPUT_ID = 'ff79664eefe94db1878f51931f9d6fd9';
 
 ////////////////////////////////////////////////////////////////////////////////
 // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE

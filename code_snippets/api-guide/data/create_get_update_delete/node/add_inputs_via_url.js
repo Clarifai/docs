@@ -5,12 +5,12 @@
 // Change these strings to run your own example.
 ////////////////////////////////////////////////////////////////////////////////////
 
-USER_ID = 'YOUR_USER_ID_HERE';
+const USER_ID = 'YOUR_USER_ID_HERE';
 // Your PAT (Personal Access Token) can be found in the portal under Authentification
-PAT = 'YOUR_PAT_HERE';
-APP_ID = 'YOUR_APP_ID_HERE';
+const PAT = 'YOUR_PAT_HERE';
+const APP_ID = 'YOUR_APP_ID_HERE';
 // Change this to whatever image input you want to add
-IMAGE_URL = 'https://samples.clarifai.com/metro-north.jpg';
+const IMAGE_URL = 'https://samples.clarifai.com/metro-north.jpg';
 
 ///////////////////////////////////////////////////////////////////////////////////
 // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE

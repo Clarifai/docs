@@ -5,13 +5,13 @@
 // with concept. Change these strings to run your own example.
 ////////////////////////////////////////////////////////////////////////////////////
 
-USER_ID = 'YOUR_USER_ID_HERE';
+const USER_ID = 'YOUR_USER_ID_HERE';
 // Your PAT (Personal Access Token) can be found in the portal under Authentification
-PAT = 'YOUR_PAT_HERE';
-APP_ID = 'YOUR_APP_ID_HERE';
+const PAT = 'YOUR_PAT_HERE';
+const APP_ID = 'YOUR_APP_ID_HERE';
 // Change these to whatever input and concept you want to add
-IMAGE_URL = 'https://samples.clarifai.com/puppy.jpeg';
-CONCEPT_ID = 'charlie';
+const IMAGE_URL = 'https://samples.clarifai.com/puppy.jpeg';
+const CONCEPT_ID = 'charlie';
 
 ///////////////////////////////////////////////////////////////////////////////////
 // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
