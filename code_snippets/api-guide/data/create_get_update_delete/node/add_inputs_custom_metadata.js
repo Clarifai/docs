@@ -5,13 +5,13 @@
 // metadata we want to add. Change these strings to run your own example.
 ///////////////////////////////////////////////////////////////////////////////////////
 
-USER_ID = 'YOUR_USER_ID_HERE';
+const USER_ID = 'YOUR_USER_ID_HERE';
 // Your PAT (Personal Access Token) can be found in the portal under Authentification
-PAT = 'YOUR_PAT_HERE';
-APP_ID = 'YOUR_APP_ID_HERE';
+const PAT = 'YOUR_PAT_HERE';
+const APP_ID = 'YOUR_APP_ID_HERE';
 // Change these to whatever input and custom metadata you want to add
-IMAGE_URL = 'https://samples.clarifai.com/puppy.jpeg';
-CUSTOM_METADATA = {id: "id001", type: "animal", size: 100};
+const IMAGE_URL = 'https://samples.clarifai.com/puppy.jpeg';
+const CUSTOM_METADATA = { id: "id001", type: "animal", size: 100 };
 
 ///////////////////////////////////////////////////////////////////////////////////
 // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -31,10 +31,12 @@ stub.PostInputs(
             "user_id": USER_ID,
             "app_id": APP_ID
         },
-        inputs: [{data: {
-            image: {url: IMAGE_URL, allow_duplicate_url: true},
-            metadata: CUSTOM_METADATA
-        }}]
+        inputs: [{
+            data: {
+                image: { url: IMAGE_URL, allow_duplicate_url: true },
+                metadata: CUSTOM_METADATA
+            }
+        }]
     },
     metadata,
     (err, response) => {

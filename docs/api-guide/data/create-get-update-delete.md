@@ -37,6 +37,11 @@ import JSListInputsStreaming from "!!raw-loader!../../../code_snippets/api-guide
 import JSGetInputId from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/js/get_input_by_id.html";
 import JSGetInputsStatus from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/js/get_inputs_status.html";
 import JSUpdateInputConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/js/update_input_concepts.html"
+import JSBulkUpdateInputsConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/js/bulk_update_inputs_concepts.html";
+import JSDeleteConceptsInput from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/js/delete_concepts_input.html";
+import JSBulkDeleteConceptsInputs from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/js/bulk_delete_concepts_inputs.html";
+import JSDeleteInputId from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/js/delete_input_by_id.html";
+import JSDeleteListInputs from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/js/delete_list_inputs.html"
 
 import NodeAddInputsViaURL from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/node/add_inputs_via_url.js";
 import NodeAddInputsViaBytes from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/node/add_inputs_via_bytes.js";
@@ -48,6 +53,11 @@ import NodeListInputsStreaming from "!!raw-loader!../../../code_snippets/api-gui
 import NodeGetInputId from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/node/get_input_by_id.js";
 import NodeGetInputsStatus from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/node/get_inputs_status.js";
 import NodeUpdateInputConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/node/update_input_concepts.js"
+import NodeBulkUpdateInputsConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/node/bulk_update_inputs_concepts.js";
+import NodeDeleteConceptsInput from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/node/delete_concepts_input.js";
+import NodeBulkDeleteConceptsInputs from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/node/bulk_delete_concepts_inputs.js";
+import NodeDeleteInputId from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/node/delete_input_by_id.js";
+import NodeDeleteListInputs from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/node/delete_list_inputs.js"
 
 
 The API is built around a simple idea. You send inputs \(such as images\) to the service and it returns predictions. In addition to receiving predictions on inputs, you can also index inputs and their predictions to later search against. You can also index inputs with concepts to later train your own model.
@@ -1129,6 +1139,14 @@ Below is an example of how to update multiple inputs with concepts at once.
     <CodeBlock className="language-python">{PythonBulkUpdateInputsConcepts}</CodeBlock>
 </TabItem>
 
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSBulkUpdateInputsConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeBulkUpdateInputsConcepts}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -1183,40 +1201,6 @@ MultiInputResponse patchInputsResponse = stub.patchInputs(
 if (patchInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
     throw new RuntimeException("Patch inputs failed, status: " + patchInputsResponse.getStatus());
 }
-```
-</TabItem>
-
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PatchInputs(
-    {
-        action: "merge",  // Supported actions: overwrite, merge, remove.
-        inputs: [
-            {
-                id: "{YOUR_INPUT_ID_1}",
-                data: {concepts: [{id: "tree", value: 1}, {id: "water", value: 0}]}
-            },
-            {
-                id: "{YOUR_INPUT_ID_2}",
-                data: {concepts: [{id: "animal", value: 1}, {id: "fruit", value: 0}]}
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Patch inputs failed, status: " + response.status.description);
-        }
-    }
-);
 ```
 </TabItem>
 
@@ -1344,65 +1328,6 @@ curl -X PATCH \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "inputs": [
-    {
-      "id": "{YOUR_INPUT_ID_1}",
-      "data": {
-        "concepts": [
-          {
-            "id": "tree",
-            "value": 1
-          },
-          {
-            "id": "water",
-            "value": 0
-          }
-        ]
-      }
-    },
-    {
-      "id": "{YOUR_INPUT_ID_2}",
-      "data": {
-        "concepts": [
-          {
-            "id": "animal",
-            "value": 1
-          },
-          {
-            "id": "fruit",
-            "value": 0
-          }
-        ]
-      }
-    }
-  ],
-  "action": "merge"
-});
-
-const requestOptions = {
-  method: 'PATCH',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/inputs", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
-</TabItem>
-
 </Tabs>
 
 ## Delete Inputs
@@ -1417,43 +1342,20 @@ To remove concepts that were already added to an input, you can do this:
     <CodeBlock className="language-python">{PythonDeleteConceptsInput}</CodeBlock>
 </TabItem>
 
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSDeleteConceptsInput}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeDeleteConceptsInput}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.*;
 
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiInputResponse patchInputsResponse = stub.patchInputs(
-    PatchInputsRequest.newBuilder()
-        .setAction("remove")  // Supported actions: overwrite, merge, remove.
-        .addInputs(
-            Input.newBuilder()
-                .setId("{YOUR_INPUT_ID}")
-                .setData(
-                    Data.newBuilder()
-                        .addConcepts(
-                            // We're removing the concept, so there's no need to specify
-                            // the concept value.
-                            Concept.newBuilder().setId("tree")
-                        )
-                )
-                .build()
-        )
-        .build()
-);
-
-if (patchInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Patch inputs failed, status: " + patchInputsResponse.getStatus());
-}
-```
-</TabItem>
-
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
 // Insert here the initialization code as outlined on this page:
 // https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 
@@ -1552,43 +1454,6 @@ curl -X PATCH \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "inputs": [
-    {
-      "id":"{YOUR_INPUT_ID}",
-      "data": {
-          "concepts":[
-              {"id":"water"}
-          ]
-      }
-    }
-  ],
-  "action":"remove"
-});
-
-const requestOptions = {
-  method: 'PATCH',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/inputs", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
-</TabItem>
-
 </Tabs>
 
 ### Bulk Delete Concepts From a List of Inputs
@@ -1599,6 +1464,14 @@ Below is an example of how to bulk delete multiple concepts from a list of input
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonBulkDeleteConceptsInputs}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSBulkDeleteConceptsInputs}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeBulkDeleteConceptsInputs}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -1649,42 +1522,6 @@ MultiInputResponse patchInputsResponse = stub.patchInputs(
 if (patchInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
     throw new RuntimeException("Patch inputs failed, status: " + patchInputsResponse.getStatus());
 }
-```
-</TabItem>
-
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PatchInputs(
-    {
-        action: "remove",  // Supported actions: overwrite, merge, remove.
-        inputs: [
-            {
-                id: "{YOUR_INPUT_ID_1}",
-                // We're removing the concepts, so there's no need to specify
-                // the concept value.
-                data: {concepts: [{id: "tree"}, {id: "water"}]}
-            },
-            {
-                id: "{YOUR_INPUT_ID_2}",
-                data: {concepts: [{id: "animal"}, {id: "fruit"}]}
-            },
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Patch inputs failed, status: " + response.status.description);
-        }
-    }
-);
 ```
 </TabItem>
 
@@ -1807,61 +1644,6 @@ curl -X PATCH \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "inputs": [
-    {
-      "id": "{YOUR_INPUT_ID_1}",
-      "data": {
-        "concepts":[
-          {
-            "id": "tree"
-          },
-          {
-            "id": "water"
-          }
-        ]
-      }
-    },
-    {
-      "id": "{YOUR_INPUT_ID_2}",
-      "data": {
-        "concepts":[
-          {
-            "id": "animal"
-          },
-          {
-            "id": "fruit"
-          }
-        ]
-      }
-    }
-  ],
-  "action":"remove"
-});
-
-const requestOptions = {
-  method: 'PATCH',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/inputs", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
-</TabItem>
-
 </Tabs>
 
 ### Delete Input by ID
@@ -1870,8 +1652,16 @@ Below is an example of how to delete a single input by its `id`.
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="gRPC Python">
     <CodeBlock className="language-python">{PythonDeleteInputId}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSDeleteInputId}</CodeBlock>
+</TabItem>
+
+<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+    <CodeBlock className="language-javascript">{NodeDeleteInputId}</CodeBlock>
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
@@ -1892,30 +1682,6 @@ BaseResponse deleteInputResponse = stub.deleteInput(
 if (deleteInputResponse.getStatus().getCode() != StatusCode.SUCCESS) {
     throw new RuntimeException("Delete input failed, status: " + deleteInputResponse.getStatus());
 }
-```
-</TabItem>
-
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.DeleteInput(
-    {
-        input_id: "{YOUR_INPUT_ID}"
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Delete input failed, status: " + response.status.description);
-        }
-    }
-);
 ```
 </TabItem>
 
@@ -1949,27 +1715,6 @@ curl -X DELETE \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const inputId = '{YOUR_INPUT_ID}'
-const appId = '{YOUR_APP_ID}'
-
-const requestOptions = {
-  method: 'DELETE',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/inputs/${inputId}`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
-</TabItem>
-
 </Tabs>
 
 ### Delete a List of Inputs
@@ -1980,6 +1725,14 @@ You can also delete multiple inputs in one API call. This will happen asynchrono
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonDeleteListInputs}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSDeleteListInputs}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeDeleteListInputs}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -2001,30 +1754,6 @@ BaseResponse listInputsResponse = stub.deleteInputs(
 if (listInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
     throw new RuntimeException("Delete inputs failed, status: " + listInputsResponse.getStatus());
 }
-```
-</TabItem>
-
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.DeleteInputs(
-    {
-        ids: ["{YOUR_INPUT_ID_1}", "{YOUR_INPUT_ID_2}"]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Delete inputs failed, status: " + response.status.description);
-        }
-    }
-);
 ```
 </TabItem>
 
@@ -2066,33 +1795,6 @@ curl -X DELETE \
     "ids":["{YOUR_INPUT_ID_1}","{YOUR_INPUT_ID_2}"]
   }'\
   https://api.clarifai.com/v2/inputs
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "ids":["{YOUR_INPUT_ID_1}","{YOUR_INPUT_ID_2}"]
-});
-
-const requestOptions = {
-  method: 'DELETE',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/inputs", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 

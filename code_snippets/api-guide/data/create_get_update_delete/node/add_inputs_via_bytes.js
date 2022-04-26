@@ -5,12 +5,12 @@
 // of the image we want as an input. Change these strings to run your own example.
 ////////////////////////////////////////////////////////////////////////////////////
 
-USER_ID = 'YOUR_USER_ID_HERE';
+const USER_ID = 'YOUR_USER_ID_HERE';
 // Your PAT (Personal Access Token) can be found in the portal under Authentification
-PAT = 'YOUR_PAT_HERE';
-APP_ID = 'YOUR_APP_ID_HERE';
+const PAT = 'YOUR_PAT_HERE';
+const APP_ID = 'YOUR_APP_ID_HERE';
 // Change this to whatever image input you want to add
-IMAGE_FILE_LOCATION = 'YOUR_IMAGE_FILE_LOCATION';
+const IMAGE_FILE_LOCATION = 'YOUR_IMAGE_FILE_LOCATION';
 
 ///////////////////////////////////////////////////////////////////////////////////
 // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
