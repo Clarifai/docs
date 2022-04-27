@@ -37,6 +37,9 @@ import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 import CodePythonViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/video_via_url.py";
 import CodePythonViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/video_via_bytes.py";
+import CodeJavaScriptViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/video_via_url.html";
+import CodeJavaScriptViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/video_via_bytes.html";
+
 
 <Tabs>
 <TabItem value="python" label="Python">
@@ -253,42 +256,7 @@ curl -X POST \
 </TabItem>
 
 <TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "inputs": [
-    {
-      "data": {
-        "video": {
-          "url": "https://samples.clarifai.com/beer.mp4"
-        }
-      }
-    }
-  ]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-// NOTE: MODEL_VERSION_ID is optional, you can also call prediction with the MODEL_ID only
-// https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/outputs
-// this will default to the latest version_id
-
-fetch("https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/versions/{MODEL_VERSION_ID}/outputs", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
+ <CodeBlock className="language-javascript">{CodeJavaScriptViaURL}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -1980,42 +1948,7 @@ curl -X POST \
 </TabItem>
 
 <TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "inputs": [
-    {
-      "data": {
-        "video": {
-          "base64": "{YOUR_BYTES_STRING}"
-        }
-      }
-    }
-  ]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-// NOTE: MODEL_VERSION_ID is optional, you can also call prediction with the MODEL_ID only
-// https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/outputs
-// this will default to the latest version_id
-
-fetch("https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/versions/{MODEL_VERSION_ID}/outputs", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
+  <CodeBlock className="language-javascript">{CodeJavaScriptViaBytes}</CodeBlock>
 </TabItem>
 
 </Tabs>

@@ -18,6 +18,9 @@ import CodeBlock from "@theme/CodeBlock";
 import CodePythonViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/text_via_url.py";
 import CodePythonViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/text_via_bytes.py";
 import CodePythonViaRaw from "!!raw-loader!../../../code_snippets/api-guide/predict/text_via_raw.py";
+import CodeJavaScriptViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/text_via_url.html";
+import CodeJavaScriptViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/text_via_bytes.html";
+import CodeJavaScriptViaRaw from "!!raw-loader!../../../code_snippets/api-guide/predict/text_via_raw.html";
 
 ## Via URL 
 
@@ -228,42 +231,7 @@ curl -X POST
 </TabItem>
 
 <TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "inputs": [
-    {
-      "data": {
-        "text": {
-          "url": "https://samples.clarifai.com/negative_sentence_12.txt"
-        }
-      }
-    }
-  ]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-// NOTE: MODEL_VERSION_ID is optional, you can also call prediction with the MODEL_ID only
-// https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/outputs
-// this will default to the latest version_id
-
-fetch("https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/versions/{MODEL_VERSION_ID}/outputs", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
+   <CodeBlock className="language-javascript">{CodeJavaScriptViaURL}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -524,42 +492,7 @@ curl -X POST \
 </TabItem>
 
 <TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "inputs": [
-    {
-      "data": {
-        "text": {
-          "raw": "{YOUR_RAW_TEXT}"
-        }
-      }
-    }
-  ]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-// NOTE: MODEL_VERSION_ID is optional, you can also call prediction with the MODEL_ID only
-// https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/outputs
-// this will default to the latest version_id
-
-fetch("https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/versions/{MODEL_VERSION_ID}/outputs", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
+   <CodeBlock className="language-javascript">{CodeJavaScriptViaBytes}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -729,6 +662,7 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="js_rest" label="Javascript (REST)">
+   <CodeBlock className="language-javascript">{CodeJavaScriptViaRaw}</CodeBlock>
 </TabItem>
 
 </Tabs>
