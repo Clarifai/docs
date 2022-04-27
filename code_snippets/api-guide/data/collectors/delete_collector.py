@@ -30,7 +30,7 @@ delete_collectors_response = stub.DeleteCollectors(
     service_pb2.DeleteCollectorsRequest(
         user_app_id=userDataObject,
         ids=[COLLECTOR_ID_1, COLLECTOR_ID_2],
-        delete_all=True
+        #delete_all=True #Uncomment to delete all your collectors
     ),
     metadata=metadata
 )
