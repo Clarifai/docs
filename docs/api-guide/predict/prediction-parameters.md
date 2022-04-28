@@ -37,20 +37,33 @@ Note that the initialization code used here is outlined in detail on the [client
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
-import PythonByModelVersion from "!!raw-loader!../../../code_snippets/api-guide/predict/prediction_parameters_by_model_version_id.py";
-import PythonMaxConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/prediction_parameters_max_concepts.py";
-import PythonMinPredictValue from "!!raw-loader!../../../code_snippets/api-guide/predict/prediction_parameters_min_predict_value.py";
-import PythonSelectConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/prediction_parameters_select_concepts.py";
+import PythonByModelVersion from "!!raw-loader!../../../code_snippets/api-guide/predict/python/prediction_parameters_by_model_version_id.py";
+import PythonMaxConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/python/prediction_parameters_max_concepts.py";
+import PythonMinPredictValue from "!!raw-loader!../../../code_snippets/api-guide/predict/python/prediction_parameters_min_predict_value.py";
+import PythonSelectConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/python/prediction_parameters_select_concepts.py";
 
-import JavaScriptByModelVersion from "!!raw-loader!../../../code_snippets/api-guide/predict/prediction_parameters_by_model_version_id.html";
-import JavaScriptMaxConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/prediction_parameters_max_concepts.html";
-import JavaScriptMinPerdictValue from "!!raw-loader!../../../code_snippets/api-guide/predict/prediction_parameters_min_predict_value.html";
-import JavaScriptSelectConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/prediction_parameters_select_concepts.html";
+import JavaScriptByModelVersion from "!!raw-loader!../../../code_snippets/api-guide/predict/js/prediction_parameters_by_model_version_id.html";
+import JavaScriptMaxConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/js/prediction_parameters_max_concepts.html";
+import JavaScriptMinPredictValue from "!!raw-loader!../../../code_snippets/api-guide/predict/js/prediction_parameters_min_predict_value.html";
+import JavaScriptSelectConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/js/prediction_parameters_select_concepts.html";
+
+import NodeJSByModelVersion from "!!raw-loader!../../../code_snippets/api-guide/predict/node/prediction_parameters_by_model_version_id.js";
+import NodeJSMaxConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/node/prediction_parameters_max_concepts.js";
+import NodeJSMinPredictValue from "!!raw-loader!../../../code_snippets/api-guide/predict/node/prediction_parameters_min_predict_value.js";
+import NodeJSSelectConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/node/prediction_parameters_select_concepts.js";
 
 <Tabs>
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonSelectConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JavaScriptSelectConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeJSSelectConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="php" label="PHP">
@@ -234,44 +247,6 @@ for (Concept concept : output.getData().getConceptsList()) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostModelOutputs(
-    {
-        model_id: "aaa03c23b3724a16a56b629203edc62c",  // This is model ID of the clarifai/main General model.
-        inputs: [
-            {data: {image: {url: "https://samples.clarifai.com/metro-north.jpg"}}}
-        ],
-        // When selecting concepts, value is ignored, so no need to specify it.
-        model: {output_info: {output_config: {select_concepts: [{name: "train"}, {id: "ai_6kTjGfF6"}]}}}
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post model outputs failed, status: " + response.status.description);
-        }
-
-        // Since we have one input, one output will exist here.
-        const output = response.outputs[0];
-
-        console.log("Predicted concepts:");
-        for (const concept of output.data.concepts) {
-            console.log(concept.name + " " + concept.value);
-        }
-    }
-);
-```
-
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -304,10 +279,6 @@ https://api.clarifai.com/v2/models/aaa03c23b3724a16a56b629203edc62c/outputs
 # Above is model ID of the publicly available General model.
 ```
 
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-   <CodeBlock className="language-javascript">{JavaScriptSelectConcepts}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -448,6 +419,14 @@ Note that the initialization code used here is outlined in detail on the [client
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonMaxConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JavaScriptMaxConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeJSMaxConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="php" label="PHP">
@@ -622,42 +601,6 @@ for (Concept concept : output.getData().getConceptsList()) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostModelOutputs(
-    {
-        model_id: "aaa03c23b3724a16a56b629203edc62c",  // This is model ID of the clarifai/main General model
-        inputs: [
-            {data: {image: {url: "https://samples.clarifai.com/metro-north.jpg"}}}
-        ],
-        model: {output_info: {output_config: {max_concepts: 3}}}
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post model outputs failed, status: " + response.status.description);
-        }
-
-        // Since we have one input, one output will exist here.
-        const output = response.outputs[0];
-
-        console.log("Predicted concepts:");
-        for (const concept of output.data.concepts) {
-            console.log(concept.name + " " + concept.value);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -685,10 +628,6 @@ curl -X POST \
   }'\
   https://api.clarifai.com/v2/models/aaa03c23b3724a16a56b629203edc62c/outputs
 ```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-   <CodeBlock className="language-javascript">{JavaScriptMaxConcepts}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -836,6 +775,14 @@ Note that the initialization code used here is outlined in detail on the [client
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonMinPredictValue}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JavaScriptMinPredictValue}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeJSMinPredictValue}</CodeBlock>
 </TabItem>
 
 <TabItem value="php" label="PHP">
@@ -1011,42 +958,6 @@ for (Concept concept : output.getData().getConceptsList()) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostModelOutputs(
-    {
-        model_id: "aaa03c23b3724a16a56b629203edc62c",  // This is model ID of the clarifai/main General model
-        inputs: [
-            {data: {image: {url: "https://samples.clarifai.com/metro-north.jpg"}}}
-        ],
-        model: {output_info: {output_config: {min_value: 0.95}}}
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post model outputs failed, status: " + response.status.description);
-        }
-
-        // Since we have one input, one output will exist here.
-        const output = response.outputs[0];
-
-        console.log("Predicted concepts:");
-        for (const concept of output.data.concepts) {
-            console.log(concept.name + " " + concept.value);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -1074,10 +985,6 @@ curl -X POST \
   }'\
   https://api.clarifai.com/v2/models/aaa03c23b3724a16a56b629203edc62c/outputs
 ```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-   <CodeBlock className="language-javascript">{JavaScriptMinPerdictValue}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -1314,6 +1221,14 @@ Note that the initialization code used here is outlined in detail on the [client
     <CodeBlock className="language-python">{PythonByModelVersion}</CodeBlock>
 </TabItem>
 
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JavaScriptByModelVersion}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeJSByModelVersion}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -1351,42 +1266,6 @@ for (Concept concept : output.getData().getConceptsList()) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostModelOutputs(
-    {
-        model_id: "aaa03c23b3724a16a56b629203edc62c",  // This is model ID of the clarifai/main General model
-        version_id: "aa7f35c01e0642fda5cf400f543e7c40",  // This is optional. Defaults to the latest model version.
-        inputs: [
-            {data: {image: {url: "https://samples.clarifai.com/metro-north.jpg"}}}
-        ],
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post model outputs failed, status: " + response.status.description);
-        }
-
-        // Since we have one input, one output will exist here.
-        const output = response.outputs[0];
-
-        console.log("Predicted concepts:");
-        for (const concept of output.data.concepts) {
-            console.log(concept.name + " " + concept.value);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -1410,10 +1289,6 @@ curl -X POST \
 # Above is model ID of the publicly available General model.
 # Version ID is optional. It defaults to the latest model version.
 ```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-   <CodeBlock className="language-javascript">{JavaScriptByModelVersion}</CodeBlock>
 </TabItem>
 
 </Tabs>

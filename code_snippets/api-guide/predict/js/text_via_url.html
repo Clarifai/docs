@@ -1,17 +1,18 @@
 <!--index.html file-->
 <script>
     ////////////////////////////////////////////////////////////////////////////////////
-    // In this section, we set the user authentication, app and model IDs, url of the image
-    // we want as an input, and prediction language. Change these strings to run your own example.
+    // In this section, we set the user authentication, app and model IDs, and the URL
+    // of the text we want as an input. Change these strings to run your own example.
     ////////////////////////////////////////////////////////////////////////////////////
 
-    USER_ID = 'YOUR_USER_ID_HERE';
+    const USER_ID = 'YOUR_USER_ID_HERE';
     // Your PAT (Personal Access Token) can be found in the portal under Authentification
-    PAT = 'YOUR_PAT_HERE';
-    APP_ID = 'YOUR_APP_ID_HERE';
-    // Change these to whatever you want to process
-    CONCEPT_NAME = '人'
-    CONCEPT_LANGUAGE = "zh"  // Chinese
+    const PAT = 'YOUR_PAT_HERE';
+    const APP_ID = 'YOUR_APP_ID_HERE';
+    const MODEL_ID = 'YOUR_MODEL_ID_HERE';
+    const MODEL_VERSION_ID = 'YOUR_MODEL_VERSION_ID';
+    // Change this to whatever text URL you want to process
+    const TEXT_FILE_URL = 'https://samples.clarifai.com/negative_sentence_12.txt';
 
     ///////////////////////////////////////////////////////////////////////////////////
     // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -22,22 +23,15 @@
             "user_id": USER_ID,
             "app_id": APP_ID
         },
-        "query": {
-            "ands": [
-                {
-                    "output": {
-                        "data": {
-                            "concepts": [
-                                {
-                                    "name": CONCEPT_NAME
-                                }
-                            ]
-                        }
+        "inputs": [
+            {
+                "data": {
+                    "text": {
+                        "url": TEXT_FILE_URL
                     }
                 }
-            ],
-            "language": CONCEPT_LANGUAGE
-        }
+            }
+        ]
     });
 
     const requestOptions = {
@@ -49,7 +43,11 @@
         body: raw
     };
 
-    fetch("https://api.clarifai.com/v2/searches", requestOptions)
+    // NOTE: MODEL_VERSION_ID is optional, you can also call prediction with the MODEL_ID only
+    // https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/outputs
+    // this will default to the latest version_id
+
+    fetch("https://api.clarifai.com/v2/models/" + MODEL_ID + "/versions/" + MODEL_VERSION_ID + "/outputs", requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));

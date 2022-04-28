@@ -35,15 +35,28 @@ Note that the initialization code used here is outlined in detail on the [client
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
-import CodePythonViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/video_via_url.py";
-import CodePythonViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/video_via_bytes.py";
-import CodeJavaScriptViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/video_via_url.html";
-import CodeJavaScriptViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/video_via_bytes.html";
+import CodePythonViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/python/video_via_url.py";
+import CodePythonViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/python/video_via_bytes.py";
+
+import CodeJavaScriptViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/js/video_via_url.html";
+import CodeJavaScriptViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/js/video_via_bytes.html";
+
+import CodeNodeJSViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/node/video_via_url.js";
+import CodeNodeJSViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/node/video_via_bytes.js";
+
 
 
 <Tabs>
 <TabItem value="python" label="Python">
      <CodeBlock className="language-python">{CodePythonViaURL}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="Javascript (REST)">
+     <CodeBlock className="language-javascript">{CodeJavaScriptViaURL}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+     <CodeBlock className="language-javascript">{CodeNodeJSViaURL}</CodeBlock>
 </TabItem>
 
 <TabItem value="php" label="PHP">
@@ -190,46 +203,6 @@ for (Frame frame : output.getData().getFramesList()) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostModelOutputs(
-    {
-        model_id: "{THE_MODEL_ID}",
-        version_id: "{THE_MODEL_VERSION_ID}",  // This is optional. Defaults to the latest model version.
-        inputs: [
-            {data: {video: {url: "https://samples.clarifai.com/beer.mp4"}}}
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post model outputs failed, status: " + response.status.description);
-        }
-
-        // Since we have one input, one output will exist here.
-        const output = response.outputs[0]
-
-        // A separate prediction is available for each "frame".
-        for (const frame of output.data.frames) {
-            console.log("Predicted concepts on frame " + frame.frame_info.time + ":");
-            for (const concept of frame.data.concepts) {
-                console.log("\t" + concept.name + " " + concept.value);
-            }
-        }
-    }
-);
-```
-
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -253,10 +226,6 @@ curl -X POST \
 # Model version ID is optional. It defaults to the latest model version.
 ```
 
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
- <CodeBlock className="language-javascript">{CodeJavaScriptViaURL}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -1727,6 +1696,16 @@ Note that the initialization code used here is outlined in detail on the [client
     <CodeBlock className="language-python">{CodePythonViaBytes}</CodeBlock>
 </TabItem>
 
+<TabItem value="js_rest" label="Javascript (REST)">
+  <CodeBlock className="language-javascript">{CodeJavaScriptViaBytes}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+  <CodeBlock className="language-javascript">{CodeNodeJSViaBytes}</CodeBlock>
+</TabItem>
+
+
+
 <TabItem value="php" label="PHP">
 
 ```php
@@ -1881,48 +1860,6 @@ for (Frame frame : output.getData().getFramesList()) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-const fs = require("fs");
-const videoBytes = fs.readFileSync("{YOUR_VIDEO_FILE_LOCATION}");
-
-stub.PostModelOutputs(
-    {
-        model_id: "{THE_MODEL_ID}",
-        version_id: "{YOUR_MODEL_VERSION_ID}",  // This is optional. Defaults to the latest model version.
-        inputs: [
-            {data: {video: {base64: videoBytes}}}
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post model outputs failed, status: " + response.status.description);
-        }
-
-        // Since we have one input, one output will exist here.
-        const output = response.outputs[0]
-
-        // A separate prediction is available for each "frame".
-        for (const frame of output.data.frames) {
-            console.log("Predicted concepts on frame " + frame.frame_info.time + ":");
-            for (const concept of frame.data.concepts) {
-                console.log("\t" + concept.name + " " + concept.value);
-            }
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -1945,10 +1882,6 @@ curl -X POST \
 
 # The model version ID is optional. It defaults to the latest model version.
 ```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-  <CodeBlock className="language-javascript">{CodeJavaScriptViaBytes}</CodeBlock>
 </TabItem>
 
 </Tabs>
