@@ -1,8 +1,8 @@
 <!--index.html file-->
 <script>
     ////////////////////////////////////////////////////////////////////////////////////
-    // In this section, we set the user authentication, app and model IDs, and the URL
-    // of the video we want as an input. Change these strings to run your own example.
+    // In this section, we set the user authentication, app ID, and the location
+    // of the image we want as an input. Change these strings to run your own example.
     ////////////////////////////////////////////////////////////////////////////////////
 
     const USER_ID = 'YOUR_USER_ID_HERE';
@@ -10,10 +10,10 @@
     const PAT = 'YOUR_PAT_HERE';
     const APP_ID = 'YOUR_APP_ID_HERE';
     const MODEL_ID = 'YOUR_MODEL_ID_HERE';
-    // Change this to whatever video input you want to process
-    const VIDEO_BYTES_STRING = 'YOUR_BYTES_STRING';
-    // This is optional.You can specify a model version or the empty string for the default
-    const MODEL_VERSION_ID = ''
+    const MODEL_VERSION_ID = 'YOUR_MODEL_VERSION_ID';
+    // Change this to whatever image input you want to process
+    const IMAGE_BYTES_STRING = 'YOUR_BYTES_STRING';
+
 
     ///////////////////////////////////////////////////////////////////////////////////
     // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -27,8 +27,8 @@
         "inputs": [
             {
                 "data": {
-                    "video": {
-                        "base64": BYTES_STRING
+                    "image": {
+                        "base64": IMAGE_BYTES_STRING
                     }
                 }
             }

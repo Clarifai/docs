@@ -1,19 +1,18 @@
 <!--index.html file-->
 <script>
     ////////////////////////////////////////////////////////////////////////////////////
-    // In this section, we set the user authentication, app and model IDs, and the URL
-    // of the text we want as an input. Change these strings to run your own example.
+    // In this section, we set the user authentication, app and model IDs, url of the image
+    // we want as an input, and prediction language. Change these strings to run your own example.
     ////////////////////////////////////////////////////////////////////////////////////
 
-    const USER_ID = 'YOUR_USER_ID_HERE'
+    const USER_ID = 'YOUR_USER_ID_HERE';
     // Your PAT (Personal Access Token) can be found in the portal under Authentification
-    const PAT = 'YOUR_PAT_HERE'
-    const APP_ID = 'YOUR_APP_ID_HERE'
-    const MODEL_ID = 'YOUR_MODEL_ID_HERE'
-    // Change this to whatever raw text you want to process
-    const YOUR_RAW_TEXT = 'YOUR_TEXT_FILE_LOCATION'
-    // This is optional.You can specify a model version or the empty string for the default
-    const MODEL_VERSION_ID = ''
+    const PAT = 'YOUR_PAT_HERE';
+    const APP_ID = 'YOUR_APP_ID_HERE';
+    // Change these to whatever you want to process
+    const MODEL_ID = 'YOUR_MODEL_ID_HERE';
+    const IMAGE_URL = 'https://samples.clarifai.com/metro-north.jpg';
+    const MODEL_VERSION_ID = 'aa7f35c01e0642fda5cf400f543e7c40';
 
     ///////////////////////////////////////////////////////////////////////////////////
     // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -27,8 +26,8 @@
         "inputs": [
             {
                 "data": {
-                    "text": {
-                        "raw": YOUR_RAW_TEXT
+                    "image": {
+                        "url": IMAGE_URL
                     }
                 }
             }

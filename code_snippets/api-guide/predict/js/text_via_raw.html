@@ -2,18 +2,18 @@
 <script>
     ////////////////////////////////////////////////////////////////////////////////////
     // In this section, we set the user authentication, app and model IDs, and the URL
-    // of the image we want as an input. Change these strings to run your own example.
+    // of the text we want as an input. Change these strings to run your own example.
     ////////////////////////////////////////////////////////////////////////////////////
 
-    const USER_ID = 'YOUR_USER_ID_HERE'
+    const USER_ID = 'YOUR_USER_ID_HERE';
     // Your PAT (Personal Access Token) can be found in the portal under Authentification
-    const PAT = 'YOUR_PAT_HERE'
-    const APP_ID = 'YOUR_APP_ID_HERE'
-    const MODEL_ID = 'YOUR_MODEL_ID_HERE'
-    // Change this to whatever image URL you want to process
-    const IMAGE_URL = 'https://samples.clarifai.com/metro-north.jpg'
-    // This is optional.You can specify a model version or the empty string for the default
-    const MODEL_VERSION_ID = ''
+    const PAT = 'YOUR_PAT_HERE';
+    const APP_ID = 'YOUR_APP_ID_HERE';
+    const MODEL_ID = 'YOUR_MODEL_ID_HERE';
+    const MODEL_VERSION_ID = 'YOUR_MODEL_VERSION_ID';
+    // Change this to whatever raw text you want to process
+    const RAW_TEXT = 'I love your product very much';
+
 
     ///////////////////////////////////////////////////////////////////////////////////
     // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -27,8 +27,8 @@
         "inputs": [
             {
                 "data": {
-                    "image": {
-                        "url": IMAGE_URL
+                    "text": {
+                        "raw": RAW_TEXT
                     }
                 }
             }

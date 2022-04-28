@@ -1,8 +1,8 @@
 <!--index.html file-->
 <script>
     ////////////////////////////////////////////////////////////////////////////////////
-    // In this section, we set the user authentication, app and model IDs, url of the image
-    // we want as an input, and prediction language. Change these strings to run your own example.
+    // In this section, we set the user authentication, app and model IDs, and the URL
+    // of the video we want as an input. Change these strings to run your own example.
     ////////////////////////////////////////////////////////////////////////////////////
 
     const USER_ID = 'YOUR_USER_ID_HERE';
@@ -10,10 +10,9 @@
     const PAT = 'YOUR_PAT_HERE';
     const APP_ID = 'YOUR_APP_ID_HERE';
     const MODEL_ID = 'YOUR_MODEL_ID_HERE';
-    // Change these to whatever you want to process
-    const YOUR_MODEL_ID = 'general-image-recognition';
-    const IMAGE_URL = 'https://samples.clarifai.com/metro-north.jpg';
-    const YOUR_MODEL_VERSION_ID = 'aa7f35c01e0642fda5cf400f543e7c40';
+    const MODEL_VERSION_ID = 'YOUR_MODEL_VERSION_ID';
+    // Change this to whatever video URL you want to process
+    const VIDEO_URL = 'https://samples.clarifai.com/beer.mp4';
 
     ///////////////////////////////////////////////////////////////////////////////////
     // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -27,8 +26,8 @@
         "inputs": [
             {
                 "data": {
-                    "image": {
-                        "url": IMAGE_URL
+                    "video": {
+                        "url": VIDEO_URL
                     }
                 }
             }
@@ -48,7 +47,7 @@
     // https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/outputs
     // this will default to the latest version_id
 
-    fetch("https://api.clarifai.com/v2/models/" + YOUR_MODEL_ID + "/versions/" + YOUR_MODEL_VERSION_ID + "/outputs", requestOptions)
+    fetch("https://api.clarifai.com/v2/models/" + MODEL_ID + "/versions/" + MODEL_VERSION_ID + "/outputs", requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
