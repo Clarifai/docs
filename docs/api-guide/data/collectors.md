@@ -66,6 +66,11 @@ import PythonListCollectors from "!!raw-loader!../../../code_snippets/api-guide/
 import PythonGetCollector from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/get_collector.py";
 import PythonDeleteCollector from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/delete_collector.py";
 
+import NodeAddCollector from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/add_collector.js";
+import NodeUpdateCollector from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/update_collector.js";
+import NodeListCollectors from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/list_collectors.js";
+import NodeGetCollector from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/get_collector.js";
+import NodeDeleteCollector from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/delete_collector.js";
 
 ## Add Collector
 
@@ -75,6 +80,10 @@ Add a new collector to your application.
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonAddCollector}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeAddCollector}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -112,47 +121,6 @@ MultiCollectorResponse postCollectorsResponse = stub.postCollectors(
 if (postCollectorsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
     throw new RuntimeException("Post collectors failed, status: " + postCollectorsResponse.getStatus());
 }
-```
-</TabItem>
-
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-stub.PostCollectors(
-    {
-        collectors: [
-            {
-                id: "{YOUR_COLLECTOR_ID}",
-                description: "{YOUR_COLLECTOR_DESCRIPTION}",
-                pre_queue_workflow_id: "{YOUR_PRE_QUEUE_WORKFLOW_ID}",
-                post_queue_workflow_id: "{YOUR_POST_QUEUE_WORKFLOW_ID}",
-                collector_source: {
-                    api_post_model_outputs_collector_source: {
-                        model_user_id: "{YOUR_MODEL_USER_ID}",
-                        model_app_id: "{YOUR_MODEL_APP_ID}",
-                        model_id: "{YOUR_MODEL_ID}",
-                        model_version_id: "{YOUR_MODEL_VERSION_ID}",
-                        post_inputs_key_id: "{YOUR_API_KEY}"
-                    }
-                }
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            console.log(response.status);
-            throw new Error("Post collectors failed, status: " + response.status.description);
-        }
-    }
-);
 ```
 </TabItem>
 
@@ -195,6 +163,10 @@ Update an existing collector.
     <CodeBlock className="language-python">{PythonUpdateCollector}</CodeBlock>
 </TabItem>
 
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeUpdateCollector}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -218,37 +190,6 @@ MultiCollectorResponse patchCollectorsResponse = stub.patchCollectors(
 if (patchCollectorsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
     throw new RuntimeException("Patch collectors failed, status: " + patchCollectorsResponse.getStatus());
 }
-```
-</TabItem>
-
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-stub.PatchCollectors(
-    {
-        collectors: [
-            {
-                id: "{YOUR_COLLECTOR_ID}",
-                description: "{A_NEW_DESCRIPTION}",
-                pre_queue_workflow_id: "{A_NEW_WORKFLOW_ID}",
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            console.log(response.status);
-            throw new Error("Patch collectors failed, status: " + response.status.description);
-        }
-    }
-);
 ```
 </TabItem>
 
@@ -282,6 +223,10 @@ List all the collectors. See [Pagination](../advanced-topics/pagination) on how 
     <CodeBlock className="language-python">{PythonListCollectors}</CodeBlock>
 </TabItem>
 
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeListCollectors}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -306,33 +251,6 @@ for (Collector collector : listCollectorsResponse.getCollectorsList()) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-stub.ListCollectors(
-    {},
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            console.log(response.status);
-            throw new Error("List collectors failed, status: " + response.status.description);
-        }
-
-        for (const collector of response.collectors) {
-            console.log(collector);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -351,6 +269,10 @@ Return details of a certain collector.
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonGetCollector}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeGetCollector}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -376,33 +298,6 @@ System.out.println(getCollectorResponse.getCollector());
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-stub.GetCollector(
-    {
-        collector_id: "{YOUR_COLLECTOR_ID}"
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            console.log(response.status);
-            throw new Error("Get collector failed, status: " + response.status.description);
-        }
-
-        console.log(response.collector);
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -421,6 +316,10 @@ Delete a collector.
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonDeleteCollector}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeDeleteCollector}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
