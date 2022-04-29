@@ -59,6 +59,11 @@ const config = {
             label: 'Community Slack',
             position: 'right',
           },
+          {
+            href: 'https://api.clarifai.com/api-doc/',
+            label: 'Swagger API Guide',
+            position: 'right',
+          },
         ],
       },
       footer: {
