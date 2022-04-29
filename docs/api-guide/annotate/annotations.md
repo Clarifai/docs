@@ -29,26 +29,62 @@ Each annotation should contain at most one region. If it is a video, each annota
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
-import PythonAnnotateExistingRegionsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/annotate_existing_regions_image.py";
-import PythonAnnotateImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/annotate_images_concepts.py";
-import PythonAnnotateImagesUserIdStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/annotate_images_user_id_status.py";
-import PythonAnnotateNewBoundingBoxesImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/annotate_new_bounding_boxes_image.py";
-import PythonbulkDeleteAnnotationsInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/bulk_delete_annotations_input_annotation_ids.py";
-import PythonBulkDeleteAnnotationsInputIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/bulk_delete_annotations_input_ids.py";
-import PythonDeleteAnnotationInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/delete_annotation_input_annotation_ids.py";
-import PythonListAllAnnotationsApp from "!!raw-loader!../../../code_snippets/api-guide/annotate/list_all_annotations_app.py";
-import PythonListAnnotationsInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/list_annotations_input_annotation_ids.py";
-import PythonListAnnotationsModelVersionIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/list_annotations_model_version_ids.py";
-import PythonListAnnotationsUserIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/list_annotations_user_ids.py";
-import PythonlistUserCreatedAnnotationsApp from "!!raw-loader!../../../code_snippets/api-guide/annotate/list_user_created_annotations_app.py";
-import PythonListUserCreatedAnnotationsInputIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/list_user_created_annotations_input_ids.py";
-import PythonUpdateAnnotationConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/update_annotation_concepts.py";
-import PythonUpdateAnnotationConceptsRegion from "!!raw-loader!../../../code_snippets/api-guide/annotate/update_annotation_concepts_region.py";
-import PythonUpdateAnnotationRegionCoordinates from "!!raw-loader!../../../code_snippets/api-guide/annotate/update_annotation_region_coordinates.py";
-import PythonUpdateAnnotationStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/update_annotation_status.py";
+import PythonAnnotateExistingRegionsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/annotate_existing_regions_image.py";
+import PythonAnnotateImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/annotate_images_concepts.py";
+import PythonAnnotateImagesUserIdStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/annotate_images_user_id_status.py";
+import PythonAnnotateNewBoundingBoxesImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/annotate_new_bounding_boxes_image.py";
+import PythonbulkDeleteAnnotationsInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/bulk_delete_annotations_input_annotation_ids.py";
+import PythonBulkDeleteAnnotationsInputIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/bulk_delete_annotations_input_ids.py";
+import PythonDeleteAnnotationInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/delete_annotation_input_annotation_ids.py";
+import PythonListAllAnnotationsApp from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/list_all_annotations_app.py";
+import PythonListAnnotationsInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/list_annotations_input_annotation_ids.py";
+import PythonListAnnotationsModelVersionIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/list_annotations_model_version_ids.py";
+import PythonListAnnotationsUserIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/list_annotations_user_ids.py";
+import PythonlistUserCreatedAnnotationsApp from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/list_user_created_annotations_app.py";
+import PythonListUserCreatedAnnotationsInputIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/list_user_created_annotations_input_ids.py";
+import PythonUpdateAnnotationConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/update_annotation_concepts.py";
+import PythonUpdateAnnotationConceptsRegion from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/update_annotation_concepts_region.py";
+import PythonUpdateAnnotationRegionCoordinates from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/update_annotation_region_coordinates.py";
+import PythonUpdateAnnotationStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/update_annotation_status.py";
+
+import JSAnnotateExistingRegionsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/annotate_existing_regions_image.html";
+import JSAnnotateImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/annotate_images_concepts.html";
+import JSAnnotateImagesUserIdStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/annotate_images_user_id_status.html";
+import JSAnnotateNewBoundingBoxesImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/annotate_new_bounding_boxes_image.html";
+import JSbulkDeleteAnnotationsInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/bulk_delete_annotations_input_annotation_ids.html";
+import JSBulkDeleteAnnotationsInputIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/bulk_delete_annotations_input_ids.html";
+import JSDeleteAnnotationInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/delete_annotation_input_annotation_ids.html";
+import JSListAllAnnotationsApp from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/list_all_annotations_app.html";
+import JSListAnnotationsInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/list_annotations_input_annotation_ids.html";
+import JSListAnnotationsModelVersionIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/list_annotations_model_version_ids.html";
+import JSListAnnotationsUserIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/list_annotations_user_ids.html";
+import JSlistUserCreatedAnnotationsApp from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/list_user_created_annotations_app.html";
+import JSListUserCreatedAnnotationsInputIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/list_user_created_annotations_input_ids.html";
+import JSUpdateAnnotationConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/update_annotation_concepts.html";
+import JSUpdateAnnotationConceptsRegion from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/update_annotation_concepts_region.html";
+import JSUpdateAnnotationRegionCoordinates from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/update_annotation_region_coordinates.html";
+import JSUpdateAnnotationStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/update_annotation_status.html";
+
+import NodeAnnotateExistingRegionsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/annotate_existing_regions_image.js";
+import NodeAnnotateImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/annotate_images_concepts.js";
+import NodeAnnotateImagesUserIdStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/annotate_images_user_id_status.js";
+import NodeAnnotateNewBoundingBoxesImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/annotate_new_bounding_boxes_image.js";
+import NodebulkDeleteAnnotationsInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/bulk_delete_annotations_input_annotation_ids.js";
+import NodeBulkDeleteAnnotationsInputIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/bulk_delete_annotations_input_ids.js";
+import NodeDeleteAnnotationInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/delete_annotation_input_annotation_ids.js";
+import NodeListAllAnnotationsApp from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/list_all_annotations_app.js";
+import NodeListAnnotationsInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/list_annotations_input_annotation_ids.js";
+import NodeListAnnotationsModelVersionIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/list_annotations_model_version_ids.js";
+import NodeListAnnotationsUserIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/list_annotations_user_ids.js";
+import NodelistUserCreatedAnnotationsApp from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/list_user_created_annotations_app.js";
+import NodeListUserCreatedAnnotationsInputIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/list_user_created_annotations_input_ids.js";
+import NodeUpdateAnnotationConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/update_annotation_concepts.js";
+import NodeUpdateAnnotationConceptsRegion from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/update_annotation_concepts_region.js";
+import NodeUpdateAnnotationRegionCoordinates from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/update_annotation_region_coordinates.js";
+import NodeUpdateAnnotationStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/update_annotation_status.js";
 
 
-### Annotate Images with Concepts
+### Annotate Images With Concepts
 
 Below is an example of how to annotate a concept present anywhere in an image.
 
@@ -59,6 +95,14 @@ Note that the initialization code used here is outlined in detail on the [client
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonAnnotateImagesConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSAnnotateImagesConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeAnnotateImagesConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -98,43 +142,6 @@ if (postAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostAnnotations(
-    {
-        annotations: [
-            {
-                input_id: "{YOUR_INPUT_ID}",
-                // 1 means true, this concept is present.
-                // 0 means false, this concept is not present.
-                data: {
-                    concepts: [
-                        {id: "tree", value: 1},
-                        {id: "water", value: 0}
-                    ]
-                },
-                embed_model_version_id: "{EMBED_MODEL_VERSION_ID}"
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post annotations failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -168,50 +175,6 @@ curl -X POST \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-	"annotations": [
-    {
-      "input_id": "{YOUR_INPUT_ID}",
-      "data": {
-        "concepts": [
-          {
-            "id": "tree",
-            "value": 1
-          },
-          {
-            "id": "water",
-            "value": 0
-          }
-        ]
-      },
-      "embed_model_version_id": "{EMBED_MODEL_VERSION_ID}"
-    }
-  ]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/annotations", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
-</TabItem>
-
 </Tabs>
 
 ### Annotate New Bounding Boxes in an Image
@@ -224,6 +187,14 @@ Note that the initialization code used here is outlined in detail on the [client
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonAnnotateNewBoundingBoxesImage}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSAnnotateNewBoundingBoxesImage}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeAnnotateNewBoundingBoxesImage}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -311,81 +282,6 @@ if (postAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostAnnotations(
-    {
-        annotations: [
-            {                     // label a region in this image
-                input_id: "{YOUR_INPUT_ID}",
-                data: {
-                    regions: [
-                        {
-                            region_info: {
-                                bounding_box: {        // draw a bounding box
-                                    top_row: 0,
-                                    left_col: 0,
-                                    bottom_row: 0.5,
-                                    right_col: 0.5
-                                }
-                            }
-                            // 1 means true, this concept is present.
-                            // 0 means false, this concept is not present.
-                            data: {
-                                concepts: [
-                                    {id: "tree", value: 1},
-                                    {id: "water", value: 0}
-                                ]
-                            },
-                        }
-                    ]
-                }
-                embed_model_version_id: "{EMBED_MODEL_VERSION_ID}"
-            }, {                     // label another region in this image
-                input_id: "{YOUR_INPUT_ID}",
-                data: {
-                    regions: [
-                        {
-                            region_info: {
-                                bounding_box: {        // draw another bounding box
-                                    top_row: 0.6,
-                                    left_col: 0.6,
-                                    bottom_row: 0.8,
-                                    right_col: 0.8
-                                }
-                            }
-                            // 1 means true, this concept is present.
-                            // 0 means false, this concept is not present.
-                            data: {
-                                concepts: [
-                                    {id: "bike", value: 1},
-                                ]
-                            },
-                        }
-                    ]
-                }
-                embed_model_version_id: "{EMBED_MODEL_VERSION_ID}"
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post annotations failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -459,89 +355,6 @@ curl -X POST \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-	"annotations": [
-    {
-      "input_id": "{YOUR_INPUT_ID}",
-      "data": {
-        "regions": [
-          {
-            "region_info": {
-                "bounding_box": {
-                    "top_row": 0,
-                    "left_col": 0,
-                    "bottom_row": 0.5,
-                    "right_col": 0.5
-                }
-            },
-            "data": {
-              "concepts": [
-                {
-                  "id": "tree",
-                  "value": 1
-                },
-                {
-                  "id": "water",
-                  "value": 0
-                }
-              ]
-            }
-          }
-        ]
-      },
-      "embed_model_version_id": "{EMBED_MODEL_VERSION_ID}"
-    }, {
-      "input_id": "{YOUR_INPUT_ID}",
-      "data": {
-        "regions": [
-          {
-            "region_info": {
-                "bounding_box": {
-                    "top_row": 0.6,
-                    "left_col": 0.6,
-                    "bottom_row": 0.8,
-                    "right_col": 0.8
-                }
-            },
-            "data": {
-              "concepts": [
-                {
-                  "id": "bike",
-                  "value": 1
-                }
-              ]
-            }
-          }
-        ]
-      },
-      "embed_model_version_id": "{EMBED_MODEL_VERSION_ID}"
-    }
-  ]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/annotations", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
-</TabItem>
-
 </Tabs>
 
 ### Annotate Existing Regions in an Image
@@ -558,6 +371,14 @@ Note that the initialization code used here is outlined in detail on the [client
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonAnnotateExistingRegionsImage}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSAnnotateExistingRegionsImage}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeAnnotateExistingRegionsImage}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -621,67 +442,6 @@ if (postAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostAnnotations(
-    {
-        annotations: [
-            {                // label a region in this image
-                input_id: "{YOUR_INPUT_ID}",
-                data: {
-                    regions: [
-                        {
-                            id: "{REGION_ID_1}" // this should be a region id  returned from list annotations call
-                            // 1 means true, this concept is present.
-                            // 0 means false, this concept is not present.
-                            data: {
-                                concepts: [
-                                    {id: "tree", value: 1},
-                                    {id: "water", value: 0}
-                                ]
-                            },
-                        }
-                    ]
-                }
-                embed_model_version_id: "{EMBED_MODEL_VERSION_ID}"
-            }, {                // label another region in this image
-                input_id: "{YOUR_INPUT_ID}",
-                data: {
-                    regions: [
-                        {
-                            id: "{REGION_ID_2}" // this should be a region id  returned from list annotations call
-                            // 1 means true, this concept is present.
-                            // 0 means false, this concept is not present.
-                            data: {
-                                concepts: [
-                                    {id: "bike", value: 1},
-                                ]
-                            },
-                        }
-                    ]
-                }
-                embed_model_version_id: "{EMBED_MODEL_VERSION_ID}"
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post annotations failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -741,78 +501,9 @@ curl -X POST \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-	"annotations": [
-    {
-      "input_id": "{YOUR_INPUT_ID}",
-      "data": {
-        "regions": [
-          {
-            "id": "{REGION_ID_1}",
-            "data": {
-              "concepts": [
-                {
-                  "id": "tree",
-                  "value": 1
-                },
-                {
-                  "id": "water",
-                  "value": 0
-                }
-              ]
-            }
-          }
-        ]
-      },
-      "embed_model_version_id": "{EMBED_MODEL_VERSION_ID}"
-    }, {
-      "input_id": "{YOUR_INPUT_ID}",
-      "data": {
-        "regions": [
-          {
-            "id": "{REGION_ID_2}",
-            "data": {
-              "concepts": [
-                {
-                  "id": "bike",
-                  "value": 1
-                }
-              ]
-            }
-          }
-        ]
-      },
-      "embed_model_version_id": "{EMBED_MODEL_VERSION_ID}"
-    }
-  ]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/annotations", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
-</TabItem>
-
 </Tabs>
 
-### Annotate Images with Different `user_id` and `status`
+### Annotate Images With Different `user_id` and `status`
 
 Each annotation is tied to a user or a model in your workflow. By default, when a user posts an annotation, this user is the owner of the annotation. 
 
@@ -832,6 +523,14 @@ Note that the initialization code used here is outlined in detail on the [client
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonAnnotateImagesUserIdStatus}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSAnnotateImagesUserIdStatus}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeAnnotateImagesUserIdStatus}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -864,38 +563,6 @@ if (postAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostAnnotations(
-    {
-        annotations: [
-            {
-                input_id: "{YOUR_INPUT_ID}",
-                user_id: "{USER_ID}",  // If empty, it is the user who posts this annotation
-                status: {
-                    code: 24151    // annotation pending status. By default success.
-                }
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post annotations failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -915,41 +582,6 @@ curl -X POST \
     ]
 }'\
   https://api.clarifai.com/v2/annotations
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-	"annotations": [
-    {
-      "input_id": "{YOUR_INPUT_ID}",
-      "user_id": "{USER_ID}",
-      "status": {
-          "code": "ANNOTATION_PENDING"
-      }
-    }
-  ]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/annotations", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
@@ -979,6 +611,14 @@ This will not show annotations by models in your workflow. To include model crea
     <CodeBlock className="language-python">{PythonlistUserCreatedAnnotationsApp}</CodeBlock>
 </TabItem>
 
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSlistUserCreatedAnnotationsApp}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodelistUserCreatedAnnotationsApp}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -1006,58 +646,12 @@ for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.ListAnnotations(
-    {page: 1, per_page: 10},
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("List annotations failed, status: " + response.status.description);
-        }
-
-        for (const annotation of response.annotations) {
-            console.log(JSON.stringify(annotation, null, 2));
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
 curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
   https://api.clarifai.com/v2/annotations?page=1&per_page=10
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const appId = '{YOUR_APP_ID}'
-
-const requestOptions = {
-  method: 'GET',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/annotations?page=1&per_page=10`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
@@ -1073,6 +667,14 @@ Note that the initialization code used here is outlined in detail on the [client
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonListAllAnnotationsApp}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSListAllAnnotationsApp}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeListAllAnnotationsApp}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -1103,58 +705,12 @@ for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.ListAnnotations(
-    {list_all_annotations: true, page: 1, per_page: 10},
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("List annotations failed, status: " + response.status.description);
-        }
-
-        for (const annotation of response.annotations) {
-            console.log(JSON.stringify(annotation, null, 2));
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
 curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
   https://api.clarifai.com/v2/annotations?page=1&per_page=10&list_all_annotations=true
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const appId = '{YOUR_APP_ID}'
-
-const requestOptions = {
-  method: 'GET',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/annotations?page=1&per_page=10&list_all_annotations=true`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
@@ -1174,8 +730,16 @@ This will not show annotations by models in your workflow. To include model crea
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="grpc_python" label="gRPC Python">
     <CodeBlock className="language-python">{PythonListUserCreatedAnnotationsInputIds}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSListUserCreatedAnnotationsInputIds}</CodeBlock>
+</TabItem>
+
+<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+    <CodeBlock className="language-javascript">{NodeListUserCreatedAnnotationsInputIds}</CodeBlock>
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
@@ -1207,59 +771,12 @@ for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
 ```
 </TabItem>
 
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.ListAnnotations(
-    {input_ids: ["{YOUR_INPUT_ID_2}", "{YOUR_INPUT_ID_2}"], page: 1, per_page: 10},
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("List annotations failed, status: " + response.status.description);
-        }
-
-        for (const annotation of response.annotations) {
-            console.log(JSON.stringify(annotation, null, 2));
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
 curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
   https://api.clarifai.com/v2/annotations?page=1&per_page=10&input_ids=your_input_Id
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const appId = '{YOUR_APP_ID}'
-const inputId = '{YOUR_INPUT_ID}'
-
-const requestOptions = {
-  method: 'GET',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/annotations?page=1&per_page=10&input_ids=${inputId}`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
@@ -1277,6 +794,14 @@ Note that the initialization code used here is outlined in detail on the [client
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonListAnnotationsInputAnnotationIds}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSListAnnotationsInputAnnotationIds}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeListAnnotationsInputAnnotationIds}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -1309,66 +834,12 @@ for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.ListAnnotations(
-    {
-        input_ids: ["{YOUR_INPUT_ID_2}", "{YOUR_INPUT_ID_2}"],
-        ids: ["{YOUR_ANNOTATION_ID_1}", "{YOUR_ANNOTATION_ID_2}"],
-        page: 1, per_page: 10
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("List annotations failed, status: " + response.status.description);
-        }
-
-        for (const annotation of response.annotations) {
-            console.log(JSON.stringify(annotation, null, 2));
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
 curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
   https://api.clarifai.com/v2/annotations?page=1&per_page=10&input_ids=YOUR_INPUT_ID_1&input_ids=YOUR_INPUT_ID_2&ids=YOUR_ANNOTATION_ID_1&ids=YOUR_ANNOTATION_ID_2
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const appId = '{YOUR_APP_ID}'
-const inputId1 = '{YOUR_INPUT_ID_1}'
-const inputId2 = '{YOUR_INPUT_ID_2}'
-const annotationId1 = '{YOUR_ANNOTATION_ID_1}'
-const annotationId2 = '{YOUR_ANNOTATION_ID_2}'
-
-const requestOptions = {
-  method: 'GET',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/annotations?page=1&per_page=10&input_ids=${inputId1}&input_ids=${inputId2}&ids=${annotationId1}&ids=${annotationId2}`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
@@ -1386,6 +857,14 @@ Note that the initialization code used here is outlined in detail on the [client
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonListAnnotationsUserIds}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSListAnnotationsUserIds}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeListAnnotationsUserIds}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -1416,60 +895,12 @@ for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.ListAnnotations(
-    {user_ids: ["{USER_ID_1}", "{USER_ID_2}"], page: 1, per_page: 10},
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("List annotations failed, status: " + response.status.description);
-        }
-
-        for (const annotation of response.annotations) {
-            console.log(JSON.stringify(annotation, null, 2));
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
 curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
   https://api.clarifai.com/v2/annotations?page=1&per_page=10&user_ids=USER_ID_1&user_ids=USER_ID_2
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const appId = '{YOUR_APP_ID}'
-const userId1 = '{USER_ID_1}'
-const userId2 = '{USER_ID_2}'
-
-const requestOptions = {
-  method: 'GET',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/annotations?page=1&per_page=10&user_ids=${userId1}&user_ids=${userId2}`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
@@ -1490,6 +921,14 @@ Note that the initialization code used here is outlined in detail on the [client
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonListAnnotationsModelVersionIds}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSListAnnotationsModelVersionIds}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeListAnnotationsModelVersionIds}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -1520,60 +959,12 @@ for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.ListAnnotations(
-    {model_version_ids: ["{MODEL_VERSION_ID_1}", "{MODEL_VERSION_ID_2}"], page: 1, per_page: 10},
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("List annotations failed, status: " + response.status.description);
-        }
-
-        for (const annotation of response.annotations) {
-            console.log(JSON.stringify(annotation, null, 2));
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
 curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
   https://api.clarifai.com/v2/annotations?page=1&per_page=10&model_version_ids=MODEL_VERSION_ID_1&model_version_ids=MODEL_VERSION_ID_2
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const appId = '{YOUR_APP_ID}'
-const modelVersionId1 = '{MODEL_VERSION_ID_1}'
-const modelVersionId2 = '{MODEL_VERSION_ID_2}'
-
-const requestOptions = {
-  method: 'GET',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/annotations?page=1&per_page=10&model_version_ids=${modelVersionId1}&model_version_ids=${modelVersionId1}`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
@@ -1589,7 +980,7 @@ If you want to add more tags, you can always POST new annotations. There is no l
 
 Update supports `overwrite`, `merge`, and `remove` actions. You can update from 1 up to 128 annotations in a single API call.
 
-### Update Annotation with Concepts
+### Update Annotation With Concepts
 
 Below is an example of how to update an annotation of an image with a new concept, or  change a concept value from true to false \(or vice versa\).
 
@@ -1599,6 +990,14 @@ Note that the initialization code used here is outlined in detail on the [client
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonUpdateAnnotationConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSUpdateAnnotationConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeUpdateAnnotationConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -1636,43 +1035,6 @@ if (patchAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PatchAnnotations(
-    {
-        action: "merge",  // Supported actions: overwrite, merge, remove.
-        annotations: [
-            {
-                input_id: "{YOUR_INPUT_ID}",
-                id: "{YOUR_ANNOTATION_ID}",
-                // 1 means true, this concept is present.
-                // 0 means false, this concept is not present.
-                data: {
-                    concepts: [
-                        {id: "apple", value: 1}
-                    ]
-                }
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Patch annotations failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -1703,50 +1065,9 @@ curl -X PATCH \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-	"annotations": [
-    {
-      "input_id": "{YOUR_INPUT_ID}",
-      "id": "{YOUR_ANNOTATION_ID}",
-      "data": {
-        "concepts": [
-          {
-            "id": "apple",
-            "value": 1
-          }
-        ]
-      }
-    }
-  ],
-  "action":"merge"
-});
-
-const requestOptions = {
-  method: 'PATCH',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/annotations", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
-</TabItem>
-
 </Tabs>
 
-### Update Annotation with Concepts in a Region
+### Update Annotation With Concepts in a Region
 
 When you update region data, you must nest this new data within `region.data`. Set the `region_id` to the current `region_id` if you do not want to change or remove this region.
 
@@ -1758,6 +1079,14 @@ Note that the initialization code used here is outlined in detail on the [client
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonUpdateAnnotationConceptsRegion}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSUpdateAnnotationConceptsRegion}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeUpdateAnnotationConceptsRegion}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -1801,49 +1130,6 @@ if (patchAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PatchAnnotations(
-    {
-        action: "merge",  // Supported actions: overwrite, merge, remove.
-        annotations: [
-            {
-                input_id: "{YOUR_INPUT_ID}",
-                id: "{YOUR_ANNOTATION_ID}",
-                data: {
-                    regions: [
-                        {
-                            id: "{REGION_ID}" // this should be the region id of this annotation before patch
-                            // 1 means true, this concept is present.
-                            data: {
-                                concepts: [
-                                    {id: "apple", value: 1},
-                                ]
-                            },
-                        }
-                    ]
-                }
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Patch annotations failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -1878,54 +1164,6 @@ curl -X PATCH \
     "action":"merge"
 }'\
   https://api.clarifai.com/v2/annotations
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-	"annotations": [
-    {
-      "input_id": "{YOUR_INPUT_ID}",
-      "id": "{YOUR_ANNOTATION_ID}",
-      "data": {
-        "regions": [
-          {
-            "id": "{REGION_ID}",
-            "data": {
-              "concepts": [
-                {
-                  "id": "apple",
-                  "value": 1
-                }
-              ]
-            }
-          }
-        ]
-      }
-    }
-  ],
-  "action":"merge"
-});
-
-const requestOptions = {
-  method: 'PATCH',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/annotations", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 

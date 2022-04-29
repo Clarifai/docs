@@ -1,6 +1,6 @@
 #########################################################################
 # In this section, we set the user authentication, app ID, input ID, 
-# and user ID. Change these strings to run your own example.
+# and another user ID. Change these strings to run your own example.
 #########################################################################
 
 USER_ID = 'YOUR_USER_ID_HERE'
@@ -9,7 +9,7 @@ PAT = 'YOUR_PAT_HERE'
 APP_ID = 'YOUR_APP_ID_HERE'
 # Change these to post your own annotations
 INPUT_ID = 'e838fac8da9d40c89f2291a6496593da'
-USER_ID = 'USER_ID'
+ANOTHER_USER_ID = 'ANOTHER_USER_ID_HERE'
 
 ##########################################################################
 # YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -32,7 +32,7 @@ post_annotations_response = stub.PostAnnotations(
         annotations=[
             resources_pb2.Annotation(
                 input_id=INPUT_ID,
-                user_id=USER_ID,    
+                user_id=ANOTHER_USER_ID,    # If empty, it is the user who posts this annotation
                 status=status_pb2.Status(
                     code=status_code_pb2.ANNOTATION_PENDING  # annotation pending status. By default success.
                 ),

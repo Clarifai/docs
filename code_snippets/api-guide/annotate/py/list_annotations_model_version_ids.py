@@ -9,7 +9,7 @@ PAT = 'YOUR_PAT_HERE'
 APP_ID = 'YOUR_APP_ID_HERE'
 # Insert the model version IDs 
 MODEL_VERSION_ID_1 = 'MODEL_VERSION_ID_1_HERE'
-MODEL_VERSION_ID_2 = 'MODEL_VERSION_ID_1_HERE'
+MODEL_VERSION_ID_2 = 'MODEL_VERSION_ID_2_HERE'
 
 ##########################################################################
 # YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
