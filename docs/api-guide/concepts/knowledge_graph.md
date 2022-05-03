@@ -33,14 +33,30 @@ Note that the initialization code used here is outlined in detail on the [client
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
-import PythonCreateRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/knowledge_graph_create.py";
-import PythonListRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/knowledge_graph_list.py";
-import PythonDeleteRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/knowledge_graph_delete.py";
+import PythonCreateRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/python/knowledge_graph_create.py";
+import PythonListRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/python/knowledge_graph_list.py";
+import PythonDeleteRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/python/knowledge_graph_delete.py";
+
+import JavaScriptCreateRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/js/knowledge_graph_create.html";
+import JavaScriptListRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/js/knowledge_graph_list.html";
+import JavaScriptDeleteRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/js/knowledge_graph_delete.html";
+
+import NodeJSCreateRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/node/knowledge_graph_create.js";
+import NodeJSListRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/node/knowledge_graph_list.js";
+import NodeJSDeleteRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/node/knowledge_graph_delete.js";
 
 <Tabs>
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonCreateRelations}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JavaScriptCreateRelations}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeJSCreateRelations}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -73,41 +89,6 @@ if (postConceptRelationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostConceptRelations(
-    {
-        user_app_id: {
-            app_id: "{YOUR_APP_ID}"
-        },
-        concept_id: "{YOUR_SUBJECT_CONCEPT_ID}",
-        concept_relations: [
-            {
-                object_concept: {
-                    id: "{YOUR_OBJECT_CONCEPT_ID}",
-                },
-                predicate: "hypernym" // This can be hypernym, hyponym, or synonym.
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Create concept relations failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -124,43 +105,6 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{YOUR_APP_ID}/concepts/{
             }
         ]
     }'
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const appId = '{YOUR_APP_ID}'
-const subjectConceptId = '{YOUR_SUBJECT_CONCEPT_ID}'
-
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "concept_relations": [
-      {
-          "object_concept": {
-              "id": "{YOUR_OBJECT_CONCEPT_ID}"
-          },
-          "predicate": "hypernym"
-      }
-  ]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/concepts/${subjectConceptId}/relations`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
@@ -227,6 +171,14 @@ Note that the initialization code used here is outlined in detail on the [client
     <CodeBlock className="language-python">{PythonListRelations}</CodeBlock>
 </TabItem>
 
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JavaScriptListRelations}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeJSListRelations}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -259,38 +211,6 @@ for (ConceptRelation relation : listConceptRelationsResponse.getConceptRelations
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.ListConceptRelations(
-    {
-        user_app_id: {
-            app_id: "{YOUR_APP_ID}"
-        },
-        concept_id: "{YOUR_CONCEPT_ID}",
-        predicate: "hypernym" // This is optional. If skipped, all concept's relations will be returned.
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("List concept relations failed, status: " + response.status.description);
-        }
-
-        for (const relation of response.concept_relations) {
-            console.log(relation);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -298,28 +218,6 @@ stub.ListConceptRelations(
 curl -X GET 'https://api.clarifai.com/v2/users/me/apps/{YOUR_APP_ID}/concepts/{YOUR_CONCEPT_ID}/relations?predicate=hypernym' \
     -H 'Authorization: Key {YOUR_PERSONAL_ACCESS_TOKEN}' \
     -H 'Content-Type: application/json'
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const appId = '{YOUR_APP_ID}'
-const conceptId = '{YOUR_CONCEPT_ID}'
-
-const requestOptions = {
-  method: 'GET',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-// Setting the predicate GET parameter is optional. If skipped, all concept's relations will be returned
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/concepts/${conceptId}/relations?predicate=hypernym`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
@@ -379,6 +277,14 @@ Note that the initialization code used here is outlined in detail on the [client
     <CodeBlock className="language-python">{PythonDeleteRelations}</CodeBlock>
 </TabItem>
 
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JavaScriptDeleteRelations}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeJSDeleteRelations}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -404,36 +310,6 @@ if (deleteConceptRelationsResponse.getStatus().getCode() != StatusCode.SUCCESS) 
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.DeleteConceptRelations(
-    {
-        user_app_id: {
-            app_id: "{YOUR_APP_ID}"
-        },
-        concept_id: "{YOUR_OBJECT_CONCEPT_ID}",
-        ids: [
-            "{YOUR_CONCEPT_RELATION_ID}"
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Delete concept relations failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -445,33 +321,6 @@ curl -X DELETE 'https://api.clarifai.com/v2/users/me/apps/{YOUR_APP_ID}/concepts
             "{YOUR_CONCEPT_RELATION_ID}"
         ]
     }'
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const appId = '{YOUR_APP_ID}'
-const conceptId = '{YOUR_CONCEPT_ID}'
-
-const raw = JSON.stringify({
-	"ids": [
-	  "{YOUR_CONCEPT_RELATION_ID}"
-  ]
-})
-
-const requestOptions = {
-  method: 'DELETE',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/concepts/${conceptId}/relations`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 

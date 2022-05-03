@@ -1,9 +1,9 @@
 //index.js file
 
-////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////
 // In this section, we set the user authentication, app and model IDs, url of the image
 // we want as an input, and prediction language. Change these strings to run your own example.
-////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const USER_ID = 'YOUR_USER_ID_HERE';
 // Your PAT (Personal Access Token) can be found in the portal under Authentification
@@ -27,7 +27,7 @@ const stub = ClarifaiStub.grpc();
 const metadata = new grpc.Metadata();
 metadata.set("authorization", "Key " + PAT);
 
-stub.PostInputs(
+stub.PostModelOutputs(
     {
         user_app_id: {
             "user_id": USER_ID,
@@ -46,7 +46,7 @@ stub.PostInputs(
         }
 
         if (response.status.code !== 10000) {
-            throw new Error("Post inputs failed, status: " + response.status.description);
+            throw new Error("Post model outputs failed, status: " + response.status.description);
         }
 
         // Since we have one input, one output will exist here.

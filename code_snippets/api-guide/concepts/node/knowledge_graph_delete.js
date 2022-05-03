@@ -1,20 +1,17 @@
 //index.js file
 
 ////////////////////////////////////////////////////////////////////////////////////
-// In this section, we set the user authentication, app and model IDs, and the URL
-// of the image we want as an input. Change these strings to run your own example.
+// In this section, we set the user authentication, app ID, subject concept ID,
+// object concept ID, and predicate. Change these strings to run your own example.
 ////////////////////////////////////////////////////////////////////////////////////
 
 const USER_ID = 'YOUR_USER_ID_HERE';
 // Your PAT (Personal Access Token) can be found in the portal under Authentification
 const PAT = 'YOUR_PAT_HERE';
 const APP_ID = 'YOUR_APP_ID_HERE';
-const MODEL_ID = 'YOUR_MODEL_ID_HERE';
-// Change this to whatever image URL you want to process
-const IMAGE_URL = 'https://samples.clarifai.com/metro-north.jpg';
-// This is optional.You can specify a model version or the empty string for the default
-const MODEL_VERSION_ID = '';
-
+// Change these to whatever concepts you want to process
+const OBJECT_CONCEPT_ID = 'YOUR_OBJECT_CONCEPT_ID_HERE';
+const CONCEPT_RELATION_IDs = ['YOUR_CONCEPT_RELATION_IDs_HERE'];
 
 ///////////////////////////////////////////////////////////////////////////////////
 // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -28,16 +25,15 @@ const stub = ClarifaiStub.grpc();
 const metadata = new grpc.Metadata();
 metadata.set("authorization", "Key " + PAT);
 
-stub.PostModelOutputs(
+stub.DeleteConceptRelations(
     {
         user_app_id: {
             "user_id": USER_ID,
             "app_id": APP_ID
         },
-        model_id: MODEL_ID,
-        version_id: MODEL_VERSION_ID, // This is optional. Defaults to the latest model version.
-        inputs: [
-            { data: { image: { url: IMAGE_URL, allow_duplicate_url: true } } }
+        concept_id: OBJECT_CONCEPT_ID,
+        ids: [
+            CONCEPT_RELATION_IDs
         ]
     },
     metadata,
@@ -47,16 +43,7 @@ stub.PostModelOutputs(
         }
 
         if (response.status.code !== 10000) {
-            throw new Error("Post model outputs failed, status: " + response.status.description);
-        }
-
-        // Since we have one input, one output will exist here.
-        const output = response.outputs[0];
-
-        console.log("Perdict concepts:");
-        for (const concept of output.data.concepts) {
-            console.log(concept.name + " " + concept.value);
+            throw new Error("Delete concept relations failed, status: " + response.status.description);
         }
     }
-
 );

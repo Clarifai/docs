@@ -30,7 +30,7 @@ metadata.set("authorization", "Key " + PAT);
 const fs = require("fs");
 const imageBytes = fs.readFileSync(IMAGE_FILE_LOCATION);
 
-stub.PostInputs(
+stub.PostModelOutputs(
     {
         user_app_id: {
             "user_id": USER_ID,
@@ -49,7 +49,7 @@ stub.PostInputs(
         }
 
         if (response.status.code !== 10000) {
-            throw new Error("Post inputs failed, status: " + response.status.description);
+            throw new Error("Post model outputs failed, status: " + response.status.description);
         }
 
         // Since we have one input, one output will exist here.
