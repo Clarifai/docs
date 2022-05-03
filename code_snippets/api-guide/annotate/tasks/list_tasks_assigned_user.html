@@ -1,32 +1,29 @@
 <!--index.html file-->
 
 <script>
-    ///////////////////////////////////////////////////////////////////////////
-    // In this section, we set the user authentication, app ID, input ID, 
-    // and annotation ID. Change these strings to run your own example.
-    ///////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////
+    // In this section, we set the user authentication, app ID, and
+    // worker user ID. Change these strings to run your own example.
+    ///////////////////////////////////////////////////////////////////
 
-    const USER_ID = 'YOUR_USER_ID_HERE';
     // Your PAT (Personal Access Token) can be found in the portal under Authentification
     const PAT = 'YOUR_PAT_HERE';
     const APP_ID = 'YOUR_APP_ID_HERE';
-    // Change these based on the annotation you want to delete 
-    const INPUT_ID = 'c99f1b557d1d43d1916b46f8ce4a0487';
-    const ANNOTATION_ID = '244b8a39e51944ffb43bde7f6d33f0a7';
+    const WORKER_USER_ID = 'WORKER_USER_ID_HERE';
 
     ///////////////////////////////////////////////////////////////////////////////////
     // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
     ///////////////////////////////////////////////////////////////////////////////////
 
     const requestOptions = {
-        method: 'DELETE',
+        method: 'GET',
         headers: {
             'Accept': 'application/json',
             'Authorization': 'Key ' + PAT
         }
     };
 
-    fetch(`https://api.clarifai.com/v2/users/me/apps/${APP_ID}/inputs/${INPUT_ID}/annotations/${ANNOTATION_ID}`, requestOptions)
+    fetch(`https://api.clarifai.com/v2/users/me/apps/${APP_ID}/tasks?worker_user_ids=${WORKER_USER_ID}`, requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
