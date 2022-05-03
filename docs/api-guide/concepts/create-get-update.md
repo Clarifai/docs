@@ -26,15 +26,34 @@ Note that the initialization code used here is outlined in detail on the [client
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
-import PythonAddConcepts from "!!raw-loader!../../../code_snippets/api-guide/concepts/add_concepts.py";
-import PythonGetConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/get_concept.py";
-import PythonListConcepts from "!!raw-loader!../../../code_snippets/api-guide/concepts/list_concepts.py";
-import PythonUpdateConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/update_concept.py";
+import PythonAddConcepts from "!!raw-loader!../../../code_snippets/api-guide/concepts/python/add_concepts.py";
+import PythonGetConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/python/get_concept.py";
+import PythonListConcepts from "!!raw-loader!../../../code_snippets/api-guide/concepts/python/list_concepts.py";
+import PythonUpdateConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/python/update_concept.py";
+
+import JavaScriptAddConcepts from "!!raw-loader!../../../code_snippets/api-guide/concepts/js/add_concepts.html";
+import JavaScriptGetConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/js/get_concept.html";
+import JavaScriptListConcepts from "!!raw-loader!../../../code_snippets/api-guide/concepts/js/list_concepts.html";
+import JavaScriptUpdateConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/js/update_concept.html";
+
+import NodeJSAddConcepts from "!!raw-loader!../../../code_snippets/api-guide/concepts/node/add_concepts.js";
+import NodeJSGetConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/node/get_concept.js";
+import NodeJSListConcepts from "!!raw-loader!../../../code_snippets/api-guide/concepts/node/list_concepts.js";
+import NodeJSUpdateConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/node/update_concept.js";
+
 
 <Tabs>
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonAddConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JavaScriptAddConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeJSAddConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -58,30 +77,6 @@ if (postConceptsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostConcepts(
-    {
-        concepts: [{id: "charlie", name: "Charlie Name"}]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post concepts failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -98,38 +93,6 @@ curl -X POST \
       ]
   }'\
   https://api.clarifai.com/v2/concepts
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "concepts": [
-    {
-      "id": "{CONCEPT_ID}",
-      "name": "{CONCEPT_NAME}"
-    }
-  ]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/concepts", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
@@ -176,6 +139,14 @@ Note that the initialization code used here is outlined in detail on the [client
     <CodeBlock className="language-python">{PythonGetConcept}</CodeBlock>
 </TabItem>
 
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JavaScriptGetConcept}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeJSGetConcept}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -197,31 +168,6 @@ if (getConceptsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.GetConcept(
-    {
-        concept_id: "bosco"
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Get concepts failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -229,27 +175,6 @@ curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   https://api.clarifai.com/v2/concepts/{concept_id}
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const conceptId = '{CONCEPT_ID}'
-const appId = '{YOUR_APP_ID}'
-
-const requestOptions = {
-  method: 'GET',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/concepts/${conceptId}`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
@@ -297,6 +222,14 @@ Note that the initialization code used here is outlined in detail on the [client
     <CodeBlock className="language-python">{PythonListConcepts}</CodeBlock>
 </TabItem>
 
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JavaScriptListConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeJSListConcepts}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -317,28 +250,6 @@ if (listConceptsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.ListConcepts(
-    {},
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("List concepts failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -346,26 +257,6 @@ curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   https://api.clarifai.com/v2/concepts
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const appId = '{YOUR_APP_ID}'
-
-const requestOptions = {
-  method: 'GET',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/concepts`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
@@ -427,6 +318,14 @@ Note that the initialization code used here is outlined in detail on the [client
     <CodeBlock className="language-python">{PythonUpdateConcept}</CodeBlock>
 </TabItem>
 
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JavaScriptUpdateConcept}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeJSUpdateConcept}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -449,31 +348,6 @@ if (patchConceptsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PatchConcepts(
-    {
-        action: "overwrite",  // The only supported action right now is overwrite
-        concepts: [{id: "charlie", name: "Charlie Name"}]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Patch concepts failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -491,39 +365,6 @@ curl -X PATCH \
     "action": "overwrite"
   }'\
   https://api.clarifai.com/v2/concepts
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "concepts": [
-    {
-      "id": "charlie",
-      "name": "Charlie Name"
-    }
-  ],
-  "action": "overwrite"
-});
-
-const requestOptions = {
-  method: 'PATCH',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/concepts", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 

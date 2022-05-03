@@ -1,0 +1,27 @@
+<!--index.html file-->
+<script>
+    ////////////////////////////////////////////////////////////////////////////////////
+    // In this section, we set the user authentication. 
+    // Change these strings to run your own example.
+    ////////////////////////////////////////////////////////////////////////////////////
+
+    const APP_ID = 'YOUR_APP_ID_HERE';
+    const PAT = 'YOUR_PAT_HERE';
+
+    ///////////////////////////////////////////////////////////////////////////////////
+    // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
+    ///////////////////////////////////////////////////////////////////////////////////
+
+    const requestOptions = {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Key ' + PAT
+        },
+    };
+
+    fetch("https://api.clarifai.com/v2/users/me/apps/" + APP_ID + "/concepts", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+</script>

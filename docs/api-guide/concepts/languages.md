@@ -61,15 +61,33 @@ Note that the initialization code used here is outlined in detail on the [client
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
-import PythonListLanguageTranslations from "!!raw-loader!../../../code_snippets/api-guide/concepts/list_language_translations.py";
-import PythonSpecificLanguageTranslation from "!!raw-loader!../../../code_snippets/api-guide/concepts/specific_language_translation.py";
-import PythonAddLanguageTranslation from "!!raw-loader!../../../code_snippets/api-guide/concepts/add_language_translation.py";
-import PythonUpdateLanguageTranslation from "!!raw-loader!../../../code_snippets/api-guide/concepts/update_language_translation.py";
+import PythonListLanguageTranslations from "!!raw-loader!../../../code_snippets/api-guide/concepts/python/list_language_translations.py";
+import PythonSpecificLanguageTranslation from "!!raw-loader!../../../code_snippets/api-guide/concepts/python/specific_language_translation.py";
+import PythonAddLanguageTranslation from "!!raw-loader!../../../code_snippets/api-guide/concepts/python/add_language_translation.py";
+import PythonUpdateLanguageTranslation from "!!raw-loader!../../../code_snippets/api-guide/concepts/python/update_language_translation.py";
+
+import JavaScriptListLanguageTranslations from "!!raw-loader!../../../code_snippets/api-guide/concepts/js/list_language_translations.html";
+import JavaScriptSpecificLanguageTranslation from "!!raw-loader!../../../code_snippets/api-guide/concepts/js/specific_language_translation.html";
+import JavaScriptAddLanguageTranslation from "!!raw-loader!../../../code_snippets/api-guide/concepts/js/add_language_translation.html";
+import JavaScriptUpdateLanguageTranslation from "!!raw-loader!../../../code_snippets/api-guide/concepts/js/update_language_translation.html";
+
+import NodeJSListLanguageTranslations from "!!raw-loader!../../../code_snippets/api-guide/concepts/node/list_language_translations.js";
+import NodeJSSpecificLanguageTranslation from "!!raw-loader!../../../code_snippets/api-guide/concepts/node/specific_language_translation.js";
+import NodeJSAddLanguageTranslation from "!!raw-loader!../../../code_snippets/api-guide/concepts/node/add_language_translation.js";
+import NodeJSUpdateLanguageTranslation from "!!raw-loader!../../../code_snippets/api-guide/concepts/node/update_language_translation.js";
 
 <Tabs>
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonListLanguageTranslations}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JavaScriptListLanguageTranslations}</CodeBlock>
+</TabItem>
+
+<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+    <CodeBlock className="language-javascript">{NodeJSListLanguageTranslations}</CodeBlock>
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
@@ -93,30 +111,6 @@ if (listConceptLanguagesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.ListConceptLanguages(
-    {
-      concept_id: "charlie"
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("List concepts failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```text
@@ -124,27 +118,6 @@ curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   https://api.clarifai.com/v2/concepts/{concept_id}/languages
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const conceptId = '{CONCEPT_ID}'
-const appId = '{YOUR_APP_ID}'
-
-const requestOptions = {
-  method: 'GET',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/concepts/${conceptId}/languages`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
@@ -179,6 +152,14 @@ Note that the initialization code used here is outlined in detail on the [client
     <CodeBlock className="language-python">{PythonSpecificLanguageTranslation}</CodeBlock>
 </TabItem>
 
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JavaScriptSpecificLanguageTranslation}</CodeBlock>
+</TabItem>
+
+<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+    <CodeBlock className="language-javascript">{NodeJSSpecificLanguageTranslation}</CodeBlock>
+</TabItem>
+
 <TabItem value="grpc_java" label="gRPC Java">
 
 ```java
@@ -201,31 +182,6 @@ if (getConceptLanguageResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.GetConceptLanguage(
-    {
-      concept_id: "charlie",
-      language: "ja"
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Get concepts failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```text
@@ -233,28 +189,6 @@ curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   https://api.clarifai.com/v2/concepts/{concept_id}/languages/{language}
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const conceptId = '{CONCEPT_ID}'
-const appId = '{YOUR_APP_ID}'
-const language = '{LANGUAGE}'
-
-const requestOptions = {
-  method: 'GET',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/concepts/${conceptId}/languages/${language}`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
@@ -289,6 +223,14 @@ Note that the initialization code used here is outlined in detail on the [client
     <CodeBlock className="language-python">{PythonAddLanguageTranslation}</CodeBlock>
 </TabItem>
 
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JavaScriptAddLanguageTranslation}</CodeBlock>
+</TabItem>
+
+<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+    <CodeBlock className="language-javascript">{NodeJSAddLanguageTranslation}</CodeBlock>
+</TabItem>
+
 <TabItem value="grpc_java" label="gRPC Java">
 
 ```java
@@ -311,36 +253,6 @@ if (postConceptLanguageResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostConceptLanguage(
-    {
-      concept_id: "charlie",
-      concept_languages: [
-        {
-          id: "ja",
-          name: "ボスコ"
-        }
-      ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Get concepts failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```text
@@ -348,40 +260,6 @@ curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   https://api.clarifai.com/v2/concepts/{concept_id}/languages/{language}
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const conceptId = '{YOUR_CONCEPT_ID}'
-
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "concept_languages": [
-    {
-      "id": "ko",
-      "name": "개"
-    }
-  ]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch(`https://api.clarifai.com/v2/concepts/${conceptId}/languages`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
@@ -416,6 +294,14 @@ Note that the initialization code used here is outlined in detail on the [client
     <CodeBlock className="language-python">{PythonUpdateLanguageTranslation}</CodeBlock>
 </TabItem>
 
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JavaScriptUpdateLanguageTranslation}</CodeBlock>
+</TabItem>
+
+<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+    <CodeBlock className="language-javascript">{NodeJSUpdateLanguageTranslation}</CodeBlock>
+</TabItem>
+
 <TabItem value="grpc_java" label="gRPC Java">
 
 ```java
@@ -439,37 +325,6 @@ if (patchConceptLanguageResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PatchConceptLanguage(
-    {
-      action: "overwrite",
-      concept_id: "charlie",
-      concept_languages: [
-        {
-          id: "ja",
-          name: "new name"
-        }
-      ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Get concepts failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```text
@@ -477,41 +332,6 @@ curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   https://api.clarifai.com/v2/concepts/{concept_id}/languages/{language}
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const conceptId = '{YOUR_CONCEPT_ID}'
-
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "concept_languages": [
-    {
-      "id": "ko",
-      "name": "개"
-    }
-  ],
-  "action": "overwrite"
-});
-
-var requestOptions = {
-  method: 'PATCH',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch(`https://api.clarifai.com/v2/concepts/${conceptId}/languages`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 

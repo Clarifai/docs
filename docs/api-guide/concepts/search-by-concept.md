@@ -19,12 +19,22 @@ Note that the initialization code used here is outlined in detail on the [client
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
-import PythonSearchByConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/search_by_concept.py";
+import PythonSearchByConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/python/search_by_concept.py";
+import JavaScriptSearchByConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/js/search_by_concept.html";
+import NodeJSSearchByConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/node/search_by_concept.js";
 
 <Tabs>
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonSearchByConcept}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JavaScriptSearchByConcept}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeJSSearchByConcept}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -57,35 +67,6 @@ for (Concept concept : postConceptsSearchesResponse.getConceptsList()) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostConceptsSearches(
-    {
-        concept_query: {name: "人", language: "ja"}
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post concepts searches failed, status: " + response.status.description);
-        }
-
-        console.log("Found concepts:");
-        for (const concept of response.concepts) {
-            console.log("\t" + concept.name + " " + concept.value);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```text
@@ -100,36 +81,6 @@ curl -X POST \
     }
   }'\
   https://api.clarifai.com/v2/concepts/searches
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "concept_query": {
-    "name":"人",
-    "language": "ja"
-  }
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/concepts/searches", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
