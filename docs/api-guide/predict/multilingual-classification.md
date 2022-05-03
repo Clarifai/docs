@@ -23,16 +23,27 @@ Note that the initialization code used here is outlined in detail on the [client
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
-import PythonBySpecificLanguage from "!!raw-loader!../../../code_snippets/api-guide/predict/multilingual_classification_specific_language.py";
-import PythonSearchConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/multilingual_classification_search_concepts.py";
+import PythonBySpecificLanguage from "!!raw-loader!../../../code_snippets/api-guide/predict/python/multilingual_classification_specific_language.py";
+import PythonSearchConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/python/multilingual_classification_search_concepts.py";
 
-import JavaScriptBySpecificLanguage from "!!raw-loader!../../../code_snippets/api-guide/predict/multilingual_classification_specific_language.html";
-import JavaScriptSearchConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/multilingual_classification_search_concepts.html";
+import JavaScriptBySpecificLanguage from "!!raw-loader!../../../code_snippets/api-guide/predict/js/multilingual_classification_specific_language.html";
+import JavaScriptSearchConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/js/multilingual_classification_search_concepts.html";
+
+import NodeJSBySpecificLanguage from "!!raw-loader!../../../code_snippets/api-guide/predict/node/multilingual_classification_specific_language.js";
+import NodeJSSearchConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/node/multilingual_classification_search_concepts.js";
 
 <Tabs>
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonBySpecificLanguage}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JavaScriptBySpecificLanguage}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeJSBySpecificLanguage}</CodeBlock>
 </TabItem>
 
 <TabItem value="php" label="PHP">
@@ -207,43 +218,6 @@ for (Concept concept : output.getData().getConceptsList()) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostModelOutputs(
-    {
-        model_id: "aaa03c23b3724a16a56b629203edc62c",
-        inputs: [
-            {data: {image: {url: "https://samples.clarifai.com/metro-north.jpg"}}}
-        ],
-        model: {output_info: {output_config: {language: "zh"}}}
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post model outputs failed, status: " + response.status.description);
-        }
-
-        // Since we have one input, one output will exist here.
-        const output = response.outputs[0];
-
-        console.log("Predicted concepts:");
-        for (const concept of output.data.concepts) {
-            console.log(concept.name + " " + concept.value);
-        }
-    }
-);
-```
-
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -274,10 +248,6 @@ curl -X POST \
 # Above is model ID of the publicly available General model.
 ```
 
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-   <CodeBlock className="language-javascript">{JavaScriptBySpecificLanguage}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -539,6 +509,14 @@ Note that the initialization code used here is outlined in detail on the [client
     <CodeBlock className="language-python">{PythonSearchConcepts}</CodeBlock>
 </TabItem>
 
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JavaScriptSearchConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeJSSearchConcepts}</CodeBlock>
+</TabItem>
+
 <TabItem value="php" label="PHP">
 
 ```php
@@ -649,35 +627,6 @@ for (Concept concept : postConceptsSearchesResponse.getConceptsList()) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostConceptsSearches(
-    {
-        concept_query: {name: "人", language: "zh"}
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post concepts searches failed, status: " + response.status.description);
-        }
-
-        console.log("Found concepts:");
-        for (const concept of response.concepts) {
-            console.log("\t" + concept.name + " " + concept.value);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -705,10 +654,6 @@ curl -X POST \
   }'\
   https://api.clarifai.com/v2/searches
 ```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
- <CodeBlock className="language-javascript">{JavaScriptSearchConcepts}</CodeBlock>
 </TabItem>
 
 </Tabs>
