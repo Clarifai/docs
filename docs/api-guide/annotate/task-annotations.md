@@ -8,12 +8,14 @@ sidebar_position: 5
 **Perform task annotations**
 <hr />
 
-In order to keep track of each user's work assigned to a task, all the annotations of this user related to this task should be linked to the task id.
+In order to keep track of each user's work assigned to a task, all the annotations of this user related to this task should be linked to the task ID.
 
-Therefore, when a user creates an annotation, the task id should be provided as below:
+Therefore, when a user creates an annotation, the task ID should be provided as below:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+import JSTaskAnnotations from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/task_annotations.html";
 
 <Tabs>
 <TabItem value="curl" label="cURL">
@@ -49,50 +51,8 @@ curl -X POST \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-	"annotations": [
-    {
-      "input_id": "{{asset_id}}",
-      "data": {
-        "concepts": [
-          {
-            "id": "tree",
-            "value": 1
-          },
-          {
-            "id": "water",
-            "value": 0
-          }
-        ]
-      },
-      "annotation_info": {
-        "task_id": "{{task_id}}"
-      }
-    }
-  ]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/annotations", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSTaskAnnotations}</CodeBlock>
 </TabItem>
 
 </Tabs>

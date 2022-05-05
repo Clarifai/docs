@@ -11,24 +11,62 @@ sidebar_position: 5
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
-import PythonCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/create_model.py";
-import PythonAddConceptsModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/add_concepts_model.py";
-import PythonRemoveConceptsModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/remove_concepts_from_model.py";
-import PythonUpdateConfiguration from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/update_model_name_configuration.py";
-import PythonListModelTypes from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/list_model_types.py";
-import PythonGetModels from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/get_models.py";
-import PythonGetModelID from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/get_model_by_id.py";
-import PythonGetModelOutput from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/get_model_output_info_by_id.py";
-import PythonListModelVersions from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/list_model_versions.py";
-import PythonGetModelVersion from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/get_model_version_by_id.py";
-import PythonGetModelTraining from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/get_model_training_inputs.py";
-import PythonGetModelTrainingVersion from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/get_model_training_inputs_by_version.py";
-import PythonDeleteModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/delete_model.py";
-import PythonDeleteModelVersion from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/delete_model_version.py";
-import PythonDeleteAllModels from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/delete_all_models.py";
-import PythonTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/train_model.py";
-import PythonPredictModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/predict_model.py";
-import PythonSearchModelsName from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/search_models_name_type.py";
+import PythonCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/create_model.py";
+import PythonAddConceptsModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/add_concepts_model.py";
+import PythonRemoveConceptsModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/remove_concepts_from_model.py";
+import PythonUpdateConfiguration from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/update_model_name_configuration.py";
+import PythonListModelTypes from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/list_model_types.py";
+import PythonGetModels from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/get_models.py";
+import PythonGetModelID from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/get_model_by_id.py";
+import PythonGetModelOutput from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/get_model_output_info_by_id.py";
+import PythonListModelVersions from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/list_model_versions.py";
+import PythonGetModelVersion from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/get_model_version_by_id.py";
+import PythonGetModelTraining from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/get_model_training_inputs.py";
+import PythonGetModelTrainingVersion from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/get_model_training_inputs_by_version.py";
+import PythonDeleteModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/delete_model.py";
+import PythonDeleteModelVersion from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/delete_model_version.py";
+import PythonDeleteAllModels from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/delete_all_models.py";
+import PythonTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/train_model.py";
+import PythonPredictModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/predict_model.py";
+import PythonSearchModelsName from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/search_models_name_type.py";
+
+import JSCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/create_model.html";
+import JSAddConceptsModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/add_concepts_model.html";
+import JSRemoveConceptsModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/remove_concepts_from_model.html";
+import JSUpdateConfiguration from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/update_model_name_configuration.html";
+import JSListModelTypes from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/list_model_types.html";
+import JSGetModels from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/get_models.html";
+import JSGetModelID from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/get_model_by_id.html";
+import JSGetModelOutput from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/get_model_output_info_by_id.html";
+import JSListModelVersions from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/list_model_versions.html";
+import JSGetModelVersion from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/get_model_version_by_id.html";
+import JSGetModelTraining from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/get_model_training_inputs.html";
+import JSGetModelTrainingVersion from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/get_model_training_inputs_by_version.html";
+import JSDeleteModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/delete_model.html";
+import JSDeleteModelVersion from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/delete_model_version.html";
+import JSDeleteAllModels from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/delete_all_models.html";
+import JSTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/train_model.html";
+import JSPredictModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/predict_model.html";
+import JSSearchModelsName from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/search_models_name_type.html";
+
+import NodeCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/create_model.js";
+import NodeAddConceptsModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/add_concepts_model.js";
+import NodeRemoveConceptsModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/remove_concepts_from_model.js";
+import NodeUpdateConfiguration from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/update_model_name_configuration.js";
+import NodeListModelTypes from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/list_model_types.js";
+import NodeGetModels from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/get_models.js";
+import NodeGetModelID from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/get_model_by_id.js";
+import NodeGetModelOutput from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/get_model_output_info_by_id.js";
+import NodeListModelVersions from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/list_model_versions.js";
+import NodeGetModelVersion from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/get_model_version_by_id.js";
+import NodeGetModelTraining from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/get_model_training_inputs.js";
+import NodeGetModelTrainingVersion from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/get_model_training_inputs_by_version.js";
+import NodeDeleteModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/delete_model.js";
+import NodeDeleteModelVersion from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/delete_model_version.js";
+import NodeDeleteAllModels from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/delete_all_models.js";
+import NodeTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/train_model.js";
+import NodePredictModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/predict_model.js";
+import NodeSearchModelsName from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/search_models_name_type.js";
 
 :::info
 The initialization code used in the following examples is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
@@ -46,6 +84,14 @@ Below is an example of how you would create a classifier model with one initial 
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonCreateModel}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSCreateModel}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeCreateModel}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -71,37 +117,6 @@ SingleModelResponse postModelsResponse = stub.postModels(
 
 if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
     throw new RuntimeException("Post models failed, status: " + postModelsResponse.getStatus());
-```
-</TabItem>
-
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostModels(
-    {
-        models: [
-            {
-                id: "petsID",
-                output_info: {
-                    data: {concepts: [{id: "boscoe"}]},
-                }
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post models failed, status: " + response.status.description);
-        }
-    }
-);
 ```
 </TabItem>
 
@@ -131,45 +146,6 @@ curl -X POST \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "model": {
-    "id": "petsID",
-    "output_info": {
-      "data": {
-        "concepts": [
-          {
-            "id": "boscoe",
-            "value": 1
-          }
-        ]
-      }
-    }
-  }
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/models", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
-</TabItem>
-
 </Tabs>
 
 ### Add Concepts to a Model
@@ -180,6 +156,14 @@ You can add concepts to a model at any point. Just as you add concepts to inputs
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonAddConceptsModel}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSAddConceptsModel}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeAddConceptsModel}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -211,36 +195,6 @@ if (patchModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PatchModels(
-    {
-        action: "merge",  // Supported actions: overwrite, merge, remove
-        models: [
-            {
-                id: "petsID",
-                output_info: {data: {concepts: [{id: "charlie"}]}}
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Patch models failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -269,47 +223,6 @@ curl -X PATCH \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "models": [
-    {
-      "id": "petsID",
-      "output_info": {
-        "data": {
-          "concepts": [
-            {
-              "id": "charlie"
-            }
-          ]
-        }
-      }
-    }
-  ],
-  "action": "merge"
-});
-
-const requestOptions = {
-  method: 'PATCH',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/models", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
-</TabItem>
-
 </Tabs>
 
 ### Remove Concepts From a Model
@@ -320,6 +233,14 @@ Conversely, if you'd like to remove concepts from a model, you can also do that.
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonRemoveConceptsModel}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSRemoveConceptsModel}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeRemoveConceptsModel}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -352,7 +273,7 @@ if (patchModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="" label="">
 
 ```javascript
 // Insert here the initialization code as outlined on this page:
@@ -410,47 +331,6 @@ curl -X PATCH \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "models": [
-    {
-      "id": "petsID",
-      "output_info": {
-        "data": {
-          "concepts": [
-            {
-              "id": "charlie"
-            }
-          ]
-        }
-      }
-    }
-  ],
-  "action": "remove"
-});
-
-const requestOptions = {
-  method: 'PATCH',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/models", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
-</TabItem>
-
 </Tabs>
 
 ## Update
@@ -463,6 +343,14 @@ Let's change the model name to `newname` and set the model's configuration to ha
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonUpdateConfiguration}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSUpdateConfiguration}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeUpdateConfiguration}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -503,40 +391,6 @@ if (patchModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PatchModels(
-    {
-        action: "overwrite",
-        models: [
-            {
-                id: "petsID",
-                name: "newname",
-                output_info: {
-                    data: {concepts: [{id: "birds"}, {id: "hurd"}]},
-                    output_config: {concepts_mutually_exclusive: true, closed_environment: true}
-                }
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Patch models failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -564,46 +418,6 @@ curl -X PATCH \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "models": [
-    {
-      "id": "petsID",
-      "name": "newname",
-      "output_info": {
-        "data": {"concepts": [{"id": "birds"}, {"id": "hurd"}]},
-        "output_config": {
-          "concepts_mutually_exclusive": true,
-          "closed_environment": true
-        }
-      }
-    }
-  ],
-  "action": "overwrite"
-});
-
-const requestOptions = {
-  method: 'PATCH',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/models", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
-</TabItem>
-
 </Tabs>
 
 ## Get
@@ -616,6 +430,14 @@ Learn about the available model types and their hyperparameters. This endpoint l
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonListModelTypes}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSListModelTypes}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeListModelTypes}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -635,60 +457,11 @@ for (ModelType modelType : listModelTypesResponse.getModelTypesList()) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.ListModelTypes(
-    {
-        page: 1,
-        per_page: 500
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Received status: " + response.status.description + "\n" + response.status.details);
-        }
-
-        for (const model_type of response.model_types) {
-            console.log(model_type)
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
 curl -X GET 'https://api.clarifai.com/v2/models/types?per_page=20&page=1' \
     -H 'Authorization: Key YOUR_API_KEY'
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const appId = '{YOUR_APP_ID}'
-
-const requestOptions = {
-  method: 'GET',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models/types?per_page=20&page=1`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
@@ -702,6 +475,14 @@ Below is an example of how to get a list of all the models, including models you
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonGetModels}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSGetModels}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeGetModels}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -729,58 +510,12 @@ for (Model model : models) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.ListModels(
-    {},
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("List models failed, status: " + response.status.description);
-        }
-
-        for (const model of response.models) {
-            console.log(JSON.stringify(model, null, 2));
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
 curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
   https://api.clarifai.com/v2/models
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const appId = '{YOUR_APP_ID}'
-
-const requestOptions = {
-  method: 'GET',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
@@ -794,6 +529,14 @@ All models have unique IDs. You can get a specific model by its ID.
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonGetModelID}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSGetModelID}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeGetModelID}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -820,58 +563,12 @@ System.out.println(model);
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.GetModel(
-    {model_id: "petsID"},
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("List models failed, status: " + response.status.description);
-        }
-
-        const model = response.model;
-        console.log(JSON.stringify(model, null, 2));
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
 curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
   https://api.clarifai.com/v2/models/petsID
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const appId = '{YOUR_APP_ID}'
-const modelId = '{MODEL_ID}'
-
-const requestOptions = {
-  method: 'GET',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models/${modelId}`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
@@ -885,6 +582,14 @@ The output info of a model lists the concepts it contains.
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonGetModelOutput}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSGetModelOutput}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeGetModelOutput}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -911,58 +616,12 @@ System.out.println(model);
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.GetModelOutputInfo(
-    {model_id: "petsID"},
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("List models failed, status: " + response.status.description);
-        }
-
-        const model = response.model;
-        console.log(JSON.stringify(model, null, 2));
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
 curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
   https://api.clarifai.com/v2/models/petsID/output_info
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const appId = '{YOUR_APP_ID}'
-const modelId = '{MODEL_ID}'
-
-const requestOptions = {
-  method: 'GET',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models/${modelId}/output_info`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
@@ -976,6 +635,14 @@ Every time you train a model, it creates a new version. You can list all the ver
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonListModelVersions}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSListModelVersions}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeListModelVersions}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -1005,59 +672,12 @@ for (ModelVersion modelVersion : modelVersions) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.ListModelVersions(
-    {model_id: "petsID"},
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("List model versions failed, status: " + response.status.description);
-        }
-
-        for (const model_version of response.model_versions) {
-            console.log(JSON.stringify(model_version, null, 2));
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
 curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
   https://api.clarifai.com/v2/models/petsID/versions
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const appId = '{YOUR_APP_ID}'
-const modelId = '{MODEL_ID}'
-
-const requestOptions = {
-  method: 'GET',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models/${modelId}/versions`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 

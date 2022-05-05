@@ -22,6 +22,7 @@ import JSListAllTasks from "!!raw-loader!../../../code_snippets/api-guide/annota
 import JSListTasksAssignedUser from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/list_tasks_assigned_user.html";
 import JSListTasksAssignedUserReview from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/list_tasks_assigned_user_review.html";
 import JSUpdateTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/update_task.html";
+import JSDeleteMultipleTasks from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/delete_multiple_tasks.html";
 
 ## Create
 
@@ -436,31 +437,8 @@ curl -X DELETE \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-	"ids":["{{task_id}}"]
-});
-
-const requestOptions = {
-  method: 'DELETE',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/tasks", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSDeleteMultipleTasks}</CodeBlock>
 </TabItem>
 
 </Tabs>

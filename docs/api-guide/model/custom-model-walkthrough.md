@@ -23,16 +23,34 @@ To get started training your own model, you must first add images that already c
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
-import PythonAddImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide/model/add_images_with_concepts.py";
-import PythonCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_model.py";
-import PythonTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/train_model.py";
-import PythonPredictModel from "!!raw-loader!../../../code_snippets/api-guide/model/predict_with_model.py";
+import PythonAddImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide/model/py/add_images_with_concepts.py";
+import PythonCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/py/create_model.py";
+import PythonTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/py/train_model.py";
+import PythonPredictModel from "!!raw-loader!../../../code_snippets/api-guide/model/py/predict_with_model.py";
+
+import JSAddImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide/model/js/add_images_with_concepts.html";
+import JSCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/js/create_model.html";
+import JSTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/js/train_model.html";
+import JSPredictModel from "!!raw-loader!../../../code_snippets/api-guide/model/js/predict_with_model.html";
+
+import NodeAddImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide/model/node/add_images_with_concepts.js";
+import NodeCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/node/create_model.js";
+import NodeTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/node/train_model.js";
+import NodePredictModel from "!!raw-loader!../../../code_snippets/api-guide/model/node/predict_with_model.js";
 
 
 <Tabs>
 
 <TabItem value="grpc_python" label="gRPC Python">
     <CodeBlock className="language-python">{PythonAddImagesConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSAddImagesConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+    <CodeBlock className="language-javascript">{NodeAddImagesConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
@@ -84,48 +102,6 @@ if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
     throw new RuntimeException("Post inputs failed, status: " + postInputsResponse.getStatus());
 }
-```
-</TabItem>
-
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostInputs(
-    {
-        inputs: [
-            {
-                data: {
-                    image: {url: "https://samples.clarifai.com/puppy.jpeg", allow_duplicate_url: true},
-                    concepts: [{id: "charlie", value: 1}, {id: "our_wedding", value: 0}]
-                }
-            },
-            {
-                data: {
-                    image: {url: "https://samples.clarifai.com/wedding.jpg", allow_duplicate_url: true},
-                    concepts: [{id: "our_wedding", value: 1}, {id: "charlie", value: 0}, {id: "cat", value: 0}]
-                }
-            },
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            for (const input of response.inputs) {
-                console.log("Input " + input.id + " status: ");
-                console.log(JSON.stringify(input.status, null, 2) + "\n");
-            }
-
-            throw new Error("Post inputs failed, status: " + response.status.description);
-        }
-    }
-);
 ```
 </TabItem>
 
@@ -291,74 +267,6 @@ curl -X POST \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "inputs": [
-    {
-      "data": {
-        "image": {
-          "url": "https://samples.clarifai.com/puppy.jpeg",
-          "allow_duplicate_url": true
-        },
-        "concepts":[
-          {
-            "id": "charlie",
-            "value": 1
-          },
-          {
-            "id": "our_wedding",
-            "value": 0
-          }
-        ]
-      }
-    },
-    {
-      "data": {
-        "image": {
-          "url": "https://samples.clarifai.com/wedding.jpg",
-          "allow_duplicate_url": true
-        },
-        "concepts":[
-          {
-            "id": "our_wedding",
-            "value": 1
-          },
-          {
-            "id": "charlie",
-            "value": 0
-          },
-          {
-            "id": "cat",
-            "value": 0
-          }
-        ]
-      }
-    }
-  ]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/inputs", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
-</TabItem>
-
 </Tabs>
 
 <details>
@@ -461,6 +369,14 @@ Take note of the `model id` that is returned in the response. You'll need that f
     <CodeBlock className="language-python">{PythonCreateModel}</CodeBlock>
 </TabItem>
 
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSCreateModel}</CodeBlock>
+</TabItem>
+
+<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+    <CodeBlock className="language-javascript">{NodeCreateModel}</CodeBlock>
+</TabItem>
+
 <TabItem value="grpc_java" label="gRPC Java">
 
 ```java
@@ -491,38 +407,6 @@ SingleModelResponse postModelsResponse = stub.postModels(
 if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
     throw new RuntimeException("Post models failed, status: " + postModelsResponse.getStatus());
 }
-```
-</TabItem>
-
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostModels(
-    {
-        models: [
-            {
-                id: "pets",
-                output_info: {
-                    data: {concepts: [{id: "charlie"}]},
-                    output_config: {concepts_mutually_exclusive: false, closed_environment: false}
-                }
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post models failed, status: " + response.status.description);
-        }
-    }
-);
 ```
 </TabItem>
 
@@ -654,48 +538,6 @@ curl -X POST \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "model": {
-    "id": "pets",
-    "output_info": {
-      "data": {
-        "concepts": [
-          {
-            "id": "charlie"
-          }
-        ]
-      },
-      "output_config": {
-        "concepts_mutually_exclusive": false,
-        "closed_environment": false
-      }
-    }
-  }
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/models", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
-</TabItem>
-
 </Tabs>
 
 <details>
@@ -798,6 +640,14 @@ Keep note of the `model_version id` in the response. We'll need that for the nex
     <CodeBlock className="language-python">{PythonTrainModel}</CodeBlock>
 </TabItem>
 
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSTrainModel}</CodeBlock>
+</TabItem>
+
+<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+    <CodeBlock className="language-javascript">{NodeTrainModel}</CodeBlock>
+</TabItem>
+
 <TabItem value="grpc_java" label="gRPC Java">
 
 ```java
@@ -819,28 +669,6 @@ if (postModelVersionsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 
 String modelVersionId = postModelVersionsResponse.getModel().getModelVersion().getId();
 System.out.println("New model version ID: " + modelVersionId);
-```
-</TabItem>
-
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostModelVersions(
-    {model_id: "pets"},
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post model versions failed, status: " + response.status.description);
-        }
-    }
-);
 ```
 </TabItem>
 
@@ -955,26 +783,6 @@ curl -X POST \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const appId = '{YOUR_APP_ID}'
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models/pets/versions`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
-</TabItem>
-
 </Tabs>
 
 <details>
@@ -1075,6 +883,14 @@ You can repeat the above steps as often as you like. By adding more images with 
     <CodeBlock className="language-python">{PythonPredictModel}</CodeBlock>
 </TabItem>
 
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSPredictModel}</CodeBlock>
+</TabItem>
+
+<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+    <CodeBlock className="language-javascript">{NodePredictModel}</CodeBlock>
+</TabItem>
+
 <TabItem value="grpc_java" label="gRPC Java">
 
 ```java
@@ -1109,42 +925,6 @@ System.out.println("Predicted concepts:");
 for (Concept concept : output.getData().getConceptsList()) {
     System.out.printf("%s %.2f%n", concept.getName(), concept.getValue());
 }
-```
-</TabItem>
-
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostModelOutputs(
-    {
-        model_id: "pets",
-        version_id: "{YOUR_MODEL_VERSION_ID}",  // This is optional. Defaults to the latest model version.
-        inputs: [
-            {data: {image: {url: "https://samples.clarifai.com/metro-north.jpg"}}}
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post model outputs failed, status: " + response.status.description);
-        }
-
-        // Since we have one input, one output will exist here.
-        const output = response.outputs[0];
-
-        console.log("Predicted concepts:");
-        for (const concept of output.data.concepts) {
-            console.log(concept.name + " " + concept.value);
-        }
-    }
-);
 ```
 </TabItem>
 
@@ -1283,43 +1063,6 @@ curl -X POST \
     ]
   }'\
   https://api.clarifai.com/v2/models/pets/versions/{YOUR_MODEL_VERSION_ID}/outputs
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const appId = '{YOUR_APP_ID}'
-
-const raw = JSON.stringify({
-  "user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "inputs": [
-    {
-      "data": {
-        "image": {
-          "url": "https://samples.clarifai.com/metro-north.jpg"
-        }
-      }
-    }
-  ]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch(`https://api.clarifai.com/v2/models/pets/versions/{YOUR_MODEL_VERSION_ID}/outputs`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(results))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 

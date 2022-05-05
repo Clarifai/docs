@@ -35,14 +35,14 @@ Afterward, copy the newly-created application's _API key_ and set it in the vari
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
-import PythonAddBatchTexts from "!!raw-loader!../../../code_snippets/api-guide/model/add_batch_texts.py";
-import PythonWaitInputsDownload from "!!raw-loader!../../../code_snippets/api-guide/model/wait_inputs_download.py";
-import PythonCreateCustomModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_custom_text_model.py";
-import PythonTrainTextModel from "!!raw-loader!../../../code_snippets/api-guide/model/train_text_model.py";
-import PythonWaitModelTraining from "!!raw-loader!../../../code_snippets/api-guide/model/wait_model_training_complete.py";
-import PythonPredictNewInputs from "!!raw-loader!../../../code_snippets/api-guide/model/predict_new_inputs.py";
-import PythonStartModelEvaluation from "!!raw-loader!../../../code_snippets/api-guide/model/start_model_evaluation.py";
-import PythonWaitModelEvaluationResults from "!!raw-loader!../../../code_snippets/api-guide/model/wait_model_evaluation_results.py";
+import PythonAddBatchTexts from "!!raw-loader!../../../code_snippets/api-guide/model/py/add_batch_texts.py";
+import PythonWaitInputsDownload from "!!raw-loader!../../../code_snippets/api-guide/model/py/wait_inputs_download.py";
+import PythonCreateCustomModel from "!!raw-loader!../../../code_snippets/api-guide/model/py/create_custom_text_model.py";
+import PythonTrainTextModel from "!!raw-loader!../../../code_snippets/api-guide/model/py/train_text_model.py";
+import PythonWaitModelTraining from "!!raw-loader!../../../code_snippets/api-guide/model/py/wait_model_training_complete.py";
+import PythonPredictNewInputs from "!!raw-loader!../../../code_snippets/api-guide/model/py/predict_new_inputs.py";
+import PythonStartModelEvaluation from "!!raw-loader!../../../code_snippets/api-guide/model/py/start_model_evaluation.py";
+import PythonWaitModelEvaluationResults from "!!raw-loader!../../../code_snippets/api-guide/model/py/wait_model_evaluation_results.py";
 
 <!--
 <Tabs>
