@@ -693,6 +693,14 @@ To get the details of a specific model version, you must provide the `model_id` 
     <CodeBlock className="language-python">{PythonGetModelVersion}</CodeBlock>
 </TabItem>
 
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSGetModelVersion}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeGetModelVersion}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -719,59 +727,12 @@ System.out.println(modelVersion);
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.GetModelVersion(
-    {model_id: "petsID", version_id: "{YOUR_MODEL_VERSION_ID}"},
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Get model version failed, status: " + response.status.description);
-        }
-
-        const model_version = response.model_version;
-        console.log(JSON.stringify(model_version, null, 2));
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
 curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
   https://api.clarifai.com/v2/models/petsID/versions/{YOUR_MODEL_VERSION_ID}
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const appId = '{YOUR_APP_ID}'
-const modelId = '{MODEL_ID}'
-const modelVersionId = '{MODEL_VERSION_ID}'
-
-const requestOptions = {
-  method: 'GET',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models/${modelId}/versions/${modelVersionId}`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
@@ -785,6 +746,14 @@ You can list all the inputs that were used to train the model.
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonGetModelTraining}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSGetModelTraining}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeGetModelTraining}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -813,59 +782,12 @@ for (Input input : inputs) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.ListModelInputs(
-    {model_id: "petsID"},
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("List model inputs failed, status: " + response.status.description);
-        }
-
-        for (const input of response.inputs) {
-            console.log(JSON.stringify(input, null, 2));
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
 curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
   https://api.clarifai.com/v2/models/petsID/inputs
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const appId = '{YOUR_APP_ID}'
-const modelId = '{MODEL_ID}'
-
-const requestOptions = {
-  method: 'GET',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models/${modelId}/inputs`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
@@ -879,6 +801,14 @@ You can also list all the inputs that were used to train a specific model versio
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonGetModelTrainingVersion}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSGetModelTrainingVersion}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeGetModelTrainingVersion}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -909,63 +839,12 @@ for (Input input : inputs) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.ListModelInputs(
-    {
-        model_id: "petsID",
-        version_id: "{YOUR_MODEL_VERSION_ID}"
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("List model inputs failed, status: " + response.status.description);
-        }
-
-        for (const input of response.inputs) {
-            console.log(JSON.stringify(input, null, 2));
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
 curl -X GET \
   -H "Authorization: Key YOUR_API_KEY" \
   https://api.clarifai.com/v2/models/petsID/versions/{YOUR_MODEL_VERSION_ID}/inputs
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const appId = '{YOUR_APP_ID}'
-const modelId = '{MODEL_ID}'
-const modelVersionId = '{MODEL_VERSION_ID}'
-
-const requestOptions = {
-  method: 'GET',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models/${modelId}/versions/${modelVersionId}/inputs`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
@@ -981,6 +860,14 @@ You can delete a model using the `model_id`.
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonDeleteModel}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSDeleteModel}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeDeleteModel}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -1004,55 +891,12 @@ if (deleteModelResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.DeleteModel(
-    {model_id: "petsID"},
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Delete model failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
 curl -X DELETE \
   -H "Authorization: Key YOUR_API_KEY" \
   https://api.clarifai.com/v2/models/petsID
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const appId = '{YOUR_APP_ID}'
-const modelId = '{MODEL_ID}'
-
-const requestOptions = {
-  method: 'DELETE',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models/${modelId}`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
@@ -1066,6 +910,14 @@ You can also delete a specific version of a model with the `model_id` and `versi
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonDeleteModelVersion}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSDeleteModelVersion}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeDeleteModelVersion}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -1090,59 +942,12 @@ if (deleteModelVersionResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.DeleteModelVersion(
-    {
-        model_id: "petsID",
-        version_id: "{YOUR_MODEL_VERSION_ID}"
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Delete model version failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
 curl -X DELETE \
   -H "Authorization: Key YOUR_API_KEY" \
   https://api.clarifai.com/v2/models/petsID/versions/{YOUR_MODEL_VERSION_ID}
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const appId = '{YOUR_APP_ID}'
-const modelId = '{MODEL_ID}'
-const modelVersionId = '{MODEL_VERSION_ID}'
-
-const requestOptions = {
-  method: 'DELETE',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models/${modelId}/versions/${modelVersionId}`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
@@ -1153,13 +958,21 @@ fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models/${modelId}/vers
 If you would like to delete all models associated with an application, you can also do that. 
 
 :::caution
-Please proceed with caution as deleted models cannot be recovered.
+Please proceed with extreme caution as deleted models cannot be recovered.
 :::
 
 <Tabs>
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonDeleteAllModels}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSDeleteAllModels}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeDeleteAllModels}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -1183,54 +996,12 @@ if (deleteModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.DeleteModels(
-    {delete_all: true},
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Delete models failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
 curl -X DELETE \
   -H "Authorization: Key YOUR_API_KEY" \
   https://api.clarifai.com/v2/models/
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const appId = '{YOUR_APP_ID}'
-
-const requestOptions = {
-  method: 'DELETE',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
@@ -1250,6 +1021,14 @@ You can repeat this operation as often as you like. By adding more images with c
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonTrainModel}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSTrainModel}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeTrainModel}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -1276,28 +1055,6 @@ System.out.println("New model version ID: " + modelVersionId);
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostModelVersions(
-    {model_id: "petsID"},
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post model versions failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -1305,27 +1062,6 @@ curl -X POST \
   -H "Authorization: Key YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   https://api.clarifai.com/v2/models/petsID/versions
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const appId = '{YOUR_APP_ID}'
-const modelId = '{MODEL_ID}'
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/models/${modelId}/versions`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
@@ -1341,6 +1077,14 @@ Once you have trained a model, you are ready to use the new model to make predic
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonPredictModel}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSPredictModel}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodePredictModel}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -1380,42 +1124,6 @@ for (Concept concept : output.getData().getConceptsList()) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostModelOutputs(
-    {
-        model_id: "petsID",
-        version_id: "{YOUR_MODEL_VERSION_ID}",  // This is optional. Defaults to the latest model version.
-        inputs: [
-            {data: {image: {url: "https://samples.clarifai.com/metro-north.jpg"}}}
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post model outputs failed, status: " + response.status.description);
-        }
-
-        // Since we have one input, one output will exist here.
-        const output = response.outputs[0];
-
-        console.log("Predicted concepts:");
-        for (const concept of output.data.concepts) {
-            console.log(concept.name + " " + concept.value);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -1438,45 +1146,6 @@ curl -X POST \
 
 # Model version defaults to latest. If you want to specify the model version, use this URL:
 # https://api.clarifai.com/v2/models/petsID/versions/{YOUR_MODEL_VERSION_ID}/outputs
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-  "user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "inputs": [
-    {
-      "data": {
-        "image": {
-          "url": "https://samples.clarifai.com/puppy.jpeg"
-        }
-      }
-    }
-  ]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-// NOTE: MODEL_VERSION_ID is optional, you can also call prediction with the MODEL_ID only
-// https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/outputs
-// this will default to the latest version_id
-
-fetch("https://api.clarifai.com/v2/models/petsID/versions/{MODEL_VERSION_ID}/outputs", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(JSON.parse(result, null, 2).outputs[0].data))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
