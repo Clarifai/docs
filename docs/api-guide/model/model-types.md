@@ -8,7 +8,7 @@ sidebar_position: 2
 **Learn about some of the most important model types on the Clarifai platform**
 <hr />
 
-Clarifai offers a wide variety of models that can be used as standalone solutions, or as the building blocks for your own custom business solution.
+Clarifai offers a wide variety of models that can be used as standalone solutions, or as the building blocks for your own custom business solutions.
 
 This page describes some important model types that you should know when working with the Clarifai platform. Please keep in mind that this is an overview of the general categories of models available to you and that new models are created all the time. For a listing of the models available to you:
 
@@ -49,7 +49,7 @@ _A security company wants to use face verification as part of their two-factor i
 
 ### Deep Trained Models \(Visual Classifier, Visual Detector, Visual Embedder\)
 
-Use deep trained models when you are working with highly specialized data, or you want to push the accuracy of your model to its limits for a specific use case. Deep training builds a custom neural network for your application from the ground-up. This means that your model can become an expert in recognizing the unique set of visual features that is important in your data set.
+Use deep trained models when you are working with highly specialized data, or you want to push the accuracy of your model to its limits for a specific use case. Deep training builds a custom neural network for your application from the ground-up. This means that your model can become an expert in recognizing the unique set of visual features that is important in your dataset.
 
 _Example use case:_
 
@@ -77,5 +77,5 @@ Fixed-Function Operators are "non-trainable models" that help you connect, direc
 
 _Example use case:_
 
-_A customer wants to automatically tag images based on AI predictions. They would might connect a classification model with a "Concept Thresholder" model to determine which images are labeled and which ones are not._
+_A customer wants to automatically tag images based on AI predictions. They might connect a classification model with a "Concept Thresholder" model to determine which images are labeled and which ones are not._
 

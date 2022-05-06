@@ -10,6 +10,20 @@ sidebar_position: 4
 
 Tasks are a powerful tool that can help your team to annotate inputs from your application.
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+import JSNonAssignedTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/non_assigned_task.html";
+import JSAssignedTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/assigned_task.html";
+import JSTaskPartitionedWorkerStrategy from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/task_partitioned_worker_strategy.html";
+import JSConsensusReview from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/task_consensus_review.html";
+import JSGetTaskByID from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/get_task_by_id.html";
+import JSListAllTasks from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/list_all_tasks.html";
+import JSListTasksAssignedUser from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/list_tasks_assigned_user.html";
+import JSListTasksAssignedUserReview from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/list_tasks_assigned_user_review.html";
+import JSUpdateTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/update_task.html";
+import JSDeleteMultipleTasks from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/delete_multiple_tasks.html";
+
 ## Create
 
 To create a new task in your app, you `POST` the task information to `v2/task` endpoint.
@@ -17,9 +31,6 @@ To create a new task in your app, you `POST` the task information to `v2/task` e
 ### Non-Assigned Task
 
 A task should be assigned to a list of users, but it's not required. The following code will create a non-assigned task.
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 <Tabs>
 <TabItem value="curl" label="cURL">
@@ -54,49 +65,8 @@ curl -X POST \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-	"tasks": [
-    {
-      "type": "CONCEPTS_CLASSIFICATION",
-      "name": "Annotate {{concept_id}}",
-      "worker": {
-          "strategy": "FULL"
-      },
-      "concept_ids": [
-          "{{concept_id}}"
-      ],
-      "input_source": {
-          "type": "ALL_INPUTS"
-      },
-      "sample_ms": 1000,
-      "review": {
-          "strategy": "NONE"
-      }
-    }
-  ]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/tasks", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSNonAssignedTask}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -147,63 +117,13 @@ curl -X POST \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-	"tasks": [
-    {
-      "type": "CONCEPTS_CLASSIFICATION",
-      "name": "Annotate {{concept_id}}",
-      "worker": {
-          "strategy": "FULL",
-          "user_ids": [
-              "{{worker_user_id}}"
-          ]
-      },
-      "concept_ids": [
-          "{{concept_id}}"
-      ],
-      "input_source": {
-          "type": "ALL_INPUTS"
-      },
-      "sample_ms": 1000,
-      "review": {
-          "strategy": "MANUAL",
-          "manual_strategy_info": {
-              "sample_percentage": 0.5
-          },
-          "user_ids": [
-              "{{reviewer_user_id}}"
-          ]
-      }
-    }
-  ]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/tasks", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSAssignedTask}</CodeBlock>
 </TabItem>
 
 </Tabs>
 
-## Task with Partitioned Worker Strategy
+## Task With Partitioned Worker Strategy
 
 The previous tasks were created with full worker strategy.
 
@@ -217,9 +137,8 @@ In case of `FULL` worker strategy, each worker will work on all inputs selected 
 
 If you wish the work to be distributed between workers, then you can select the `PARTITIONED` worker strategy.
 
-In the following example:
+In the following example, there are two workers:
 
-* there are two workers
 * `workers_per_input`: each input will be assigned to 1 worker
 * `weights.{{user_id1}}`: the first worker will get 90% of inputs
 * `weights.{{user_id2}}`: the second worker will get 10% of inputs
@@ -266,68 +185,18 @@ curl -X POST \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-	"tasks": [
-    {
-      "type": "CONCEPTS_CLASSIFICATION",
-      "name": "Annotate {{concept_id}}",
-      "worker": {
-          "strategy": "PARTITIONED",
-          "user_ids": ["{{user_id1}}", "{{user_id2}}"],
-          "partitioned_strategy_info": {
-              "type": "WEIGHTED",
-              "workers_per_input": 1,
-              "weights": {
-                  "{{user_id1}}": 90,
-                  "{{user_id2}}": 10
-              }
-          }
-      },
-      "concept_ids": [
-          "{{concept_id}}"
-      ],
-      "input_source": {
-          "type": "ALL_INPUTS"
-      },
-      "sample_ms": 1000,
-      "review": {
-          "strategy": "NONE"
-      }
-    }
-  ]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/tasks", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSTaskPartitionedWorkerStrategy}</CodeBlock>
 </TabItem>
 
 </Tabs>
 
-Notes:
-
+:::info
 * It is not required for the weights to add up to 100. For example, the weights \[9, 1\] are equivalent with weights \[90, 10\].
 * The partitioning is approximate. This means that the number of assigned inputs to each worker may have a small error margin, but it will be close to the assigned weight percentage.
+:::
 
-## Task with Consensus Review
+## Task With Consensus Review
 
 The previous tasks were created with no review or manual review strategy.
 
@@ -390,65 +259,8 @@ curl -X POST \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-	"tasks": [
-		{
-		  "type": "CONCEPTS_CLASSIFICATION",
-		  "name": "Annotate {{concept_id}}",
-		  "worker": {
-		      "strategy": "PARTITIONED",
-		      "user_ids": ["{{user_id1}}", "{{user_id2}}", "{{user_id3}}"],
-		      "partitioned_strategy_info": {
-		          "type": "WEIGHTED",
-		          "workers_per_input": 1,
-		          "weights": {
-		              "{{user_id1}}": 1,
-		              "{{user_id2}}": 1,
-		              "{{user_id3}}": 1
-		          }
-		      }
-		  },
-		  "concept_ids": [
-		      "{{concept_id}}"
-		  ],
-		  "input_source": {
-		      "type": "ALL_INPUTS"
-		  },
-		  "sample_ms": 1000,
-		  "review": {
-		      "strategy": "CONSENSUS",
-		      "consensus_strategy_info": {
-		          "approval_threshold": 2
-		      },
-		      "user_ids": [
-		          "{{user_id4}}"
-		      ]
-		  }
-		}
-	]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/tasks", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSConsensusReview}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -470,25 +282,8 @@ curl -X GET \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const appId = '{YOUR_APP_ID}'
-const taskId = '{TASK_ID}'
-
-const requestOptions = {
-  method: 'GET',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/tasks/${taskId}`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSGetTaskByID}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -508,22 +303,8 @@ curl -X GET \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const requestOptions = {
-  method: 'GET',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/tasks`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSListAllTasks}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -543,25 +324,8 @@ curl -X GET \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const appId = '{YOUR_APP_ID}'
-const workedUserId = '{WORKER_USER_ID}'
-
-const requestOptions = {
-  method: 'GET',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/tasks?worker_user_ids=${workerUserId}`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSListTasksAssignedUser}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -581,25 +345,8 @@ curl -X GET \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const appId = '{YOUR_APP_ID}'
-const userId = '{USER_ID}'
-
-const requestOptions = {
-  method: 'GET',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/tasks?review_user_ids=${userId}`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSListTasksAssignedUserReview}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -663,69 +410,8 @@ curl -X PATCH \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-	"action": "overwrite",
-	"tasks": [
-	    {
-	        "id": "{{task_id}}",
-	        "type": "CONCEPTS_CLASSIFICATION",
-	        "name": "Annotate {{concept_id}}",
-	        "worker": {
-	            "strategy": "PARTITIONED",
-	            "user_ids": ["{{user_id1}}", "{{user_id2}}"],
-	            "partitioned_strategy_info": {
-	                "type": "WEIGHTED",
-	                "workers_per_input": 1,
-	                "weights": {
-	                    "{{user_id1}}": 1,
-	                    "{{user_id2}}": 1
-	                }
-	            }
-	        },
-	        "concept_ids": [
-	            "{{concept_id}}"
-	        ],
-	        "input_source": {
-	            "type": "ALL_INPUTS"
-	        },
-	        "sample_ms": 1000,
-	        "review": {
-	            "strategy": "CONSENSUS",
-	            "consensus_strategy_info": {
-	                "approval_threshold": 2
-	            },
-	            "user_ids": [
-	                "{{user_id3}}"
-	            ]
-	        },
-	        "status": {
-	            "code": "TASK_DONE"
-	        }
-	    }
-	]
-});
-
-const requestOptions = {
-  method: 'PATCH',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/tasks", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSUpdateTask}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -751,31 +437,8 @@ curl -X DELETE \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-	"ids":["{{task_id}}"]
-});
-
-const requestOptions = {
-  method: 'DELETE',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/tasks", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSDeleteMultipleTasks}</CodeBlock>
 </TabItem>
 
 </Tabs>

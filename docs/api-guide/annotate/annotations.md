@@ -1183,6 +1183,14 @@ Note that the initialization code used here is outlined in detail on the [client
     <CodeBlock className="language-python">{PythonUpdateAnnotationRegionCoordinates}</CodeBlock>
 </TabItem>
 
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSUpdateAnnotationRegionCoordinates}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeUpdateAnnotationRegionCoordinates}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -1236,57 +1244,6 @@ if (patchAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PatchAnnotations(
-    {
-        action: "overwrite",
-        annotations: [
-            {
-                input_id: "{YOUR_INPUT_ID}",
-                id: "{YOUR_ANNOTATION_ID}",
-                data: {
-                    regions: [
-                        {
-                            region_info: {
-                                bounding_box: {        // move bounding box to a new coordiates
-                                    top_row: 0.5,
-                                    left_col: 0.5,
-                                    bottom_row: 0.8
-                                    right_col: 0.8
-                                }
-                            }
-                            // 1 means true, this concept is present.
-                            // 0 means false, this concept is not present.
-                            data: {
-                                concepts: [
-                                    {id: "bike", value: 1},
-                                ]
-                            },
-                        }
-                    ]
-                }
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Patch annotations failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -1324,56 +1281,6 @@ curl -X PATCH \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-	"annotations": [
-    {
-      "data": {
-			"regions": [{
-				"region_info": {
-					"bounding_box": {
-						"top_row": 0,
-						"left_col": 0,
-						"bottom_row": 1,
-						"right_col": 1
-					}
-				},
-				"data": {
-					"concepts": [{
-						"id": "{{concept_id}}",
-						"name": "{{concept_id}}",
-						"value": 1
-					}]
-				}
-			}]
-		},
-		"input_id": "{{asset_id}}"
-    }
-  ]
-});
-
-const requestOptions = {
-  method: 'PATCH',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/annotations", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
-</TabItem>
-
 </Tabs>
 
 ### Update Annotation Status
@@ -1386,6 +1293,14 @@ Note that the initialization code used here is outlined in detail on the [client
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonUpdateAnnotationStatus}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSUpdateAnnotationStatus}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeUpdateAnnotationStatus}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -1420,39 +1335,6 @@ if (patchAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PatchAnnotations(
-    {
-        action: "merge",  // Supported actions: overwrite, merge, remove.
-        annotations: [
-            {
-                input_id: "{YOUR_INPUT_ID}",
-                id: "{YOUR_ANNOTATION_ID}",
-                status: {
-                    code: 24150
-                }
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Patch annotations failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -1476,42 +1358,6 @@ curl -X PATCH \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-	"annotations": [
-    {
-      "input_id": "{YOUR_INPUT_ID}",
-      "id": "{YOUR_ANNOTATION_ID}",
-      "status": {
-        "code": "ANNOTATION_SUCCESS"
-      }
-    }
-  ],
-  "action":"merge"
-});
-
-const requestOptions = {
-  method: 'PATCH',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/annotations", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
-</TabItem>
-
 </Tabs>
 
 ## Delete Annotations
@@ -1526,6 +1372,14 @@ Note that the initialization code used here is outlined in detail on the [client
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonDeleteAnnotationInputAnnotationIds}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSDeleteAnnotationInputAnnotationIds}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeDeleteAnnotationInputAnnotationIds}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -1550,59 +1404,12 @@ if (deleteAnnotationResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.DeleteAnnotation(
-    {
-        input_id: "{YOUR_INPUT_ID}",
-        annotation_id: "{YOUR_ANNOTATION_ID}"
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Delete annotation failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
 curl -X DELETE \
   -H "Authorization: Key YOUR_API_KEY" \
   https://api.clarifai.com/v2/inputs/{YOUR_INPUT_ID}/annotations/{YOUR_ANNOTATION_ID}
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const appId = '{YOUR_APP_ID}'
-const inputId = '{YOUR_INPUT_ID}'
-const annotationId = '{YOUR_ANNOTATION_ID}'
-
-const requestOptions = {
-  method: 'DELETE',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/inputs/${inputId}/annotations/${annotationId}`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
@@ -1620,6 +1427,14 @@ Note that the initialization code used here is outlined in detail on the [client
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonbulkDeleteAnnotationsInputAnnotationIds}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSbulkDeleteAnnotationsInputAnnotationIds}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodebulkDeleteAnnotationsInputAnnotationIds}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -1646,31 +1461,6 @@ if (deleteAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.DeleteAnnotations(
-    {
-        input_ids: ["{YOUR_INPUT_ID_1}", "{YOUR_INPUT_ID_2}"],
-        annotation_ids: ["{YOUR_ANNOTATION_ID_1}", "{YOUR_ANNOTATION_ID_2}"]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Delete annotations failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -1682,34 +1472,6 @@ curl -X DELETE \
     "ids":["{YOUR_ANNOTATION_ID_1}", "{YOUR_ANNOTATION_ID_2}"]
   }'\
   https://api.clarifai.com/v2/annotations
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-	"input_ids":["{YOUR_INPUT_ID_1}","{YOUR_INPUT_ID_2}"],
-  "ids":["{YOUR_ANNOTATION_ID_1}", "{YOUR_ANNOTATION_ID_2}"]
-});
-
-const requestOptions = {
-  method: 'DELETE',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/annotations", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
@@ -1727,6 +1489,14 @@ Note that the initialization code used here is outlined in detail on the [client
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonBulkDeleteAnnotationsInputIds}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSBulkDeleteAnnotationsInputIds}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeBulkDeleteAnnotationsInputIds}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -1751,30 +1521,6 @@ if (deleteAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.DeleteAnnotations(
-    {
-        input_ids: ["{YOUR_INPUT_ID_1}", "{YOUR_INPUT_ID_2}"]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Delete annotations failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -1785,33 +1531,6 @@ curl -X DELETE \
     "input_ids":["{YOUR_INPUT_ID_1}","{YOUR_INPUT_ID_2}"]
   }'\
   https://api.clarifai.com/v2/annotations
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-	"user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-	"input_ids":["{YOUR_INPUT_ID_1}","{YOUR_INPUT_ID_2}"]
-});
-
-const requestOptions = {
-  method: 'DELETE',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-  body: raw
-};
-
-fetch("https://api.clarifai.com/v2/annotations", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
