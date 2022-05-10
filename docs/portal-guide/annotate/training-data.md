@@ -5,6 +5,9 @@ sidebar_position: 7
 
 # Training Data
 
+**Teach AI with specially labeled data**
+<hr />
+
 Your custom AI solution will require training data. Training data is used to "teach" AI models how to understand the world. A good set of training data will result in a model that will make accurate predictions on data in real-world scenarios. There are two basic considerations to keep in mind when building a training dataset: quantity and quality.
 
 ## Data Quantity

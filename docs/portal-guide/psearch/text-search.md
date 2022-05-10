@@ -5,11 +5,14 @@ sidebar_position: 6
 
 # Text Search
 
+**Search your text inputs based on similarity or concepts**
+<hr />
+
 ## Text similarity search
 
 ![Search for similar text inputs](/img/search-by-text-input.jpg)
 
-Much like an image-to-image search, Clarifai allows you to use text inputs as a parameters for search. Just hover over the text input that you would like to use, and click the magnifying glass icon. Searching by an input will display a search tag that will have a popup button to view a larger preview if the text length is above 15 characters. The popover preview within the search tag displays up to 100 characters.
+Much like an image-to-image search, Clarifai allows you to use text inputs as parameters for search. Just hover over the text input that you would like to use, and click the magnifying glass icon. Searching by an input will display a search tag that will have a popup button to view a larger preview if the text length is above 15 characters. The popover preview within the search tag displays up to 100 characters.
 
 ## Search text by concept
 

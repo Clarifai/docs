@@ -5,7 +5,12 @@ sidebar_position: 4
 
 # Saved Searches
 
-With saved searches you can capture your search results at a given point in time, and record the inputs, annotations, search parameters and models that you are running through the platform. Saved searches help you to:
+**Slice and dice your datasets with saved searches**
+<hr />
+
+With saved searches, you can capture your search results at a given point in time, and record the inputs, annotations, search parameters, and models that you are running through the platform. 
+
+Saved searches help you to:
 
 * Save a search so that you can return to those same results later
 * Share a search with a collaborator in your app

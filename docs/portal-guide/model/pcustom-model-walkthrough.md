@@ -5,7 +5,10 @@ sidebar_position: 3
 
 # Custom Models
 
-To set up a new model, you will need to head over to the [Applications page](https://portal.clarifai.com/apps) through your account. Start by creating your new application.
+**Use a "Context based classifier" to quickly customize an existing model**
+<hr />
+
+To set up a new model, you will need to head over to the [Applications page](https://portal.clarifai.com/) through your account. Start by creating your new application.
 
 ![](/img/create_an_application.jpg)
 

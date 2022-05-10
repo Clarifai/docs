@@ -5,9 +5,14 @@ sidebar_position: 1
 
 # Interpreting Evaluations
 
+**Learn to interpret model evaluations**
+<hr />
+
 ## Interpreting Results
 
-![](/img/eval-results-new.png) Once the Model Evaluation is complete, you’ll be able to view the evaluation results in the [Portal here](https://clarifai.com/apps)
+![](/img/eval-results-new.png) 
+
+Once the Model Evaluation is complete, you’ll be able to view the evaluation results in the Portal. 
 
 We suggest that you start by looking at the Concept by Concept Probabilities Results and the Summary Table to get a sense of the overall model prediction performance and identify the high-performing and low-performing concepts. Afterwards, hone in on the Selection Details of the False Positives and False Negatives to identify any biases, if any, in how the model is predicting, and to correct any inputs that are mislabeled
 
@@ -99,14 +104,9 @@ The evaluation metrics are meant to help you diagnose the quality of your model.
 
 1. Good model with all great concepts.
 2. OK model with a few bad concepts.
-3. Bad model: with all bad concepts.
-4. Biased model: the model is consistently picking up certain visual cues other than what you’d like to pick up. This is sometimes obvious to pick up in the
-
-   Portal here
-
-   &lt;/a&gt;.
-
-5. Model with Variance: there is no consistency in the way the model is predicting on inputs.
+3. Bad model with all bad concepts.
+4. Biased model—the model is consistently picking up certain visual cues other than what you’d like to pick up. This is sometimes obvious to pick up in the Portal.
+5. Model with Variance—there is no consistency in the way the model is predicting on inputs.
 
 ### Possible Areas of Improvement
 

@@ -5,6 +5,9 @@ sidebar_position: 2
 
 # Filter
 
+**Reduce noise by filtering out unwanted data**
+<hr />
+
 ## Filter by metadata
 
 Attach additional information to your inputs as you upload them to the Clarifai platform. Add product IDs, user IDs, or any other relevant information needed to drive specific business outcomes. Metadata can be used to quickly filter your data, and can be combined with ranking criteria.

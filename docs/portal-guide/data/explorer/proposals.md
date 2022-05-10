@@ -5,7 +5,13 @@ sidebar_position: 4
 
 # Proposals
 
-{% embed url="https://youtu.be/7r2sc3I6Tvo" caption="Learn how to interact with your data in Explorer" %}
+**(Beta) Proposals enable you to build model and concept hierarchies**
+<hr />
+
+<iframe width="900" height="500" src="https://www.youtube.com/embed/7r2sc3I6Tvo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
+
+<!--{% embed url="https://youtu.be/7r2sc3I6Tvo" caption="Learn how to interact with your data in Explorer" %}-->
+
 
 ## Build model and concept hierarchies
 
@@ -15,7 +21,7 @@ Organizing models and concepts hierarchically can be very useful when working wi
 
 ### Concept hierarchies
 
-By establishing concept hierarchies you can build applications that can account for the fact that child concepts \(like table\) are related to parent concepts \(like furniture\). Learn more about working with concept relationships with the [Clarifai Knowledge Graph. ](https://docs.clarifai.com/portal-guide/concept/knowledge_graph)
+By establishing concept hierarchies you can build applications that can account for the fact that child concepts \(like table\) are related to parent concepts \(like furniture\). Learn more about working with concept relationships with the [Clarifai Knowledge Graph. ](https://docs.clarifai.com/portal-guide/concepts/knowledge_graph)
 
 ![Choose your concept relationships](/img/concept-relations.jpg)
 

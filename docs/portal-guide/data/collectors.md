@@ -7,6 +7,9 @@ sidebar_position: 3
 
 # Collectors
 
+**Collectors are an excellent way to capture input data from a collaborator's model, and use it as training data in your own models**
+<hr />
+
 ## Collectors
 
 Collectors capture input data for your app. They enable you to pipe in data from production models automatically, and are the key to unlocking many platform training capabilities like active learning. Collectors are available with Essential and Enterprise plans to help you manage data ingestion at scale.
