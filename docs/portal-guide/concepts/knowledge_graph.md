@@ -5,6 +5,9 @@ sidebar_position: 2
 
 # Knowledge Graph
 
+**Connect the knowledge of different models**
+<hr />
+
 The Clarifai Knowledge Graph lets you map your custom concepts to a common set of concepts understood by all applications on the Clarifai platform. The knowledge graph makes it possible to link data across multiple custom and pre-built models in a meaningful way.
 
 The Knowledge Graph uses Clarifai's concept mapping model to establish a hierarchical relationship between your concepts. Concept relationships are organized by three different _predicates_: hypernyms, hyponyms, and synonyms.

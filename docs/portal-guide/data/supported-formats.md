@@ -5,6 +5,9 @@ sidebar_position: 1
 
 # Supported Formats
 
+**The Clarifai platform supports the most common image, video, and text formats**
+<hr />
+
 ## The API supports the following image formats:
 
 * JPEG

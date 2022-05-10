@@ -5,6 +5,9 @@ sidebar_position: 3
 
 # Combine or Negate
 
+**Add or subtract items from your search query**
+<hr />
+
 ## Negate search criteria
 
 Find all data that is NOT similar to a given criteria. For example, you can search for all the inputs NOT annotated “dog”.

@@ -5,6 +5,9 @@ sidebar_position: 2
 
 # Improving Your Model
 
+**Iterate upon and improve your models**
+<hr />
+
 The evaluation metrics are meant to help you diagnose the quality of your model. Your model may belong to one or more of many categories, including, but not limited to:
 
 1. Good model with all great concepts.

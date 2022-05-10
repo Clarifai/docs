@@ -7,6 +7,9 @@ sidebar_position: 4
 
 # AI Assist
 
+**Use Clarifai Models or your own custom models to provide assistance in your labeling tasks**
+<hr />
+
 ![AI Assist for efficient data labeling](/img/ai-assist.jpg)
 
 Speed up your labeling workflows with AI Assist. AI assist assigns concepts automatically for faster dataset annotation.

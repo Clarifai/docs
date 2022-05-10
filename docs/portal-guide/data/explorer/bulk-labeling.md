@@ -5,6 +5,9 @@ sidebar_position: 3
 
 # Bulk Labeling
 
+**Label multiple inputs at once**
+<hr />
+
 Clarifai provides a number of convenient ways to label multiple inputs at once in data mode.
 
 ## Bulk Labeling at Upload Time

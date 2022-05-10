@@ -5,7 +5,12 @@ sidebar_position: 3
 
 # Labeling Tools
 
-{% embed url="https://youtu.be/5bg51zyebC0" caption="Clarifai Scribe: Labeling for Bounding Box Detection" %}
+**Learn about the labeling tools that are available to you in Scribe**
+<hr />
+
+<!--{% embed url="https://youtu.be/5bg51zyebC0" caption="Clarifai Scribe: Labeling for Bounding Box Detection" %}-->
+
+<iframe width="900" height="500" src="https://www.youtube.com/embed/5bg51zyebC0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Scribe provides special tools for working with images and video.
 

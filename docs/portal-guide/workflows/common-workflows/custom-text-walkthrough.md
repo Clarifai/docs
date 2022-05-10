@@ -5,7 +5,12 @@ sidebar_position: 3
 
 # Text Classification
 
-{% embed url="https://youtu.be/-blQVbccAF0" caption="Natural Language Processing with Clarifai" %}
+**Build a powerful and flexible application for classifying text passages**
+<hr />
+
+<!--{% embed url="https://youtu.be/-blQVbccAF0" caption="Natural Language Processing with Clarifai" %}-->
+
+<iframe width="900" height="500" src="https://www.youtube.com/embed/-blQVbccAF0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Text models can be trained to understand the meaning of text passages. We offer a general text embedding model, as well as a specialized text moderation model. This walkthrough shows you how to create a custom text model from our text embedding model.
 

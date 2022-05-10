@@ -5,6 +5,9 @@ sidebar_position: 2
 
 # Annotations
 
+**Add, edit, and understand the annotations on your data**
+<hr />
+
 ## View all annotations on a given input
 
 ![View and edit your annotations](/img/3-different-scenarios.jpg)

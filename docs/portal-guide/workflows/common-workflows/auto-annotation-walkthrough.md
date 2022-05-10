@@ -7,6 +7,9 @@ sidebar_position: 1
 
 # Auto Annotation
 
+**Use AI to help you build AI. Auto annotation uses your model predictions to label your training data**
+<hr />
+
 This tutorial demonstrates how auto-annotation workflows can be configured within Clarifai Portal. With auto-annotation, you can use model predictions to label your inputs. Auto-annotation can help you to prepare training data, or assign other useful labels and metadata to your inputs.
 
 When a concept is predicted by a model, it is predicted with a confidence score between 0 and 1. When your model predictions are confident \(close to 1\), you can have your data automatically labeled with that concept. When your predictions are less-than-confident, you can have your input sent to a human being for review.

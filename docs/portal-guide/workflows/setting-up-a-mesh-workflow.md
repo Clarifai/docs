@@ -5,15 +5,18 @@ sidebar_position: 4
 
 # Setting Up a Workflow
 
+**Learn the basics of setting up a new workflow**
+<hr />
+
 Workflows are a graph of computation that encompass one or more Clarifai or Custom model\(s\). Every workflow is attached to one of your applications. Under each workflow, you will see a list of the Clarifai Models and all custom models in that application when selecting models to add to your workflow. With Workflow Predict, you will be able to run your business logic on one efficient tool.
 
 
-This won't have any impact on the price you are charged per call. You will still be charged for the same operation if it were separate calls to the API. When you do a predict with a workflow you're charged for the prediction of each model in the workflow as if they were separate calls.
+This won't have any impact on the price you are charged per call. You will still be charged for the same operation as if it were separate calls to the API. When you do a predict with a workflow, you're charged for the prediction of each model in the workflow as if they were separate calls.
 
 
 ## Workflow Setup
 
-To set up a workflow, you will need to head over to the [Applications page](https://portal.clarifai.com/apps) through your account. From there, you will need to select which application you want to create the workflow under.
+To set up a workflow, you will need to head over to the [Applications page](https://portal.clarifai.com/) through your account. From there, you will need to select which application you want to create the workflow under.
 
 ![AI Applications](/img/application-screen-new2.png)
 

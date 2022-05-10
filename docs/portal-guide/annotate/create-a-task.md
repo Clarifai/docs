@@ -5,9 +5,14 @@ sidebar_position: 1
 
 # Create a Task
 
-{% embed url="https://youtu.be/7AQLsVq5RLQ" caption="Clarifai Scribe: Creating Tasks" %}
+**Manage and delegate your labeling work with tasks**
+<hr />
 
-Tasks enable you delegate labeling jobs to your team.
+<!--{% embed url="https://youtu.be/7AQLsVq5RLQ" caption="Clarifai Scribe: Creating Tasks" %}-->
+
+<iframe width="900" height="500" src="https://www.youtube.com/embed/7AQLsVq5RLQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+Tasks enable you to delegate labeling jobs to your team.
 
 ![Create a task and start labeling](/img/task_overview.jpg)
 

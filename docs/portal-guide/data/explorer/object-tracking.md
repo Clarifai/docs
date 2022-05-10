@@ -5,6 +5,9 @@ sidebar_position: 5
 
 # Object Tracking
 
+**(Beta) Track people and objects in video**
+<hr />
+
 ## Track people and objects across multiple frames
 
 ![](/img/object-tracker.jpg)

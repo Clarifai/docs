@@ -5,11 +5,14 @@ sidebar_position: 2
 
 # Label Types
 
+**Learn about the different types of labels that are possible with Scribe**
+<hr />
+
 Scribe provides three basic label types for your images and videos. These label types provide increasing levels of granularity to support the needs of your specific use case.
 
 ## Classification
 
-Provide annotation for an entire image, or single frame of video. To classify an image just create your concepts, click on the concepts in the right-hand sidebar and click submit.
+Provide annotation for an entire image, or single frame of video. To classify an image, just create your concepts, click on the concepts in the right-hand sidebar and click submit.
 
 ![](/img/classification_label.jpg)
 

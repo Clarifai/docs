@@ -5,6 +5,9 @@ sidebar_position: 5
 
 # Workforce Management
 
+**Manage your labeling workforce**
+<hr />
+
 Labeler provides a variety of workforce management tools that help your company to distribute and manage labeling tasks. In labeling mode, you can view all related tasks, activities and statistics for your application.
 
 ![](/img/review.jpg)
@@ -19,7 +22,9 @@ A listing of all tasks assigned to the current user of the app.
 
 ## For Review
 
-{% embed url="https://youtu.be/Py2NuRNicTY" caption="Clarifai Labeler: Review Work" %}
+<iframe width="900" height="500" src="https://www.youtube.com/embed/Py2NuRNicTY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<!--{% embed url="https://youtu.be/Py2NuRNicTY" caption="Clarifai Labeler: Review Work" %}-->
 
 A listing of all tasks to be reviewed by the current user of the app.
 
