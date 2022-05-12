@@ -48,14 +48,28 @@ The following is an example of how to build a workflow with multiple connected n
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
-import PythonSampleNodes from "!!raw-loader!../../../code_snippets/api-guide/workflows/sample_workflow_multiple_nodes.py";
-import PythonSuppressNodes from "!!raw-loader!../../../code_snippets/api-guide/workflows/suppress_output_from_nodes.py";
+import PythonSampleNodes from "!!raw-loader!../../../code_snippets/api-guide/workflows/input_nodes/sample_workflow_multiple_nodes.py";
+import PythonSuppressNodes from "!!raw-loader!../../../code_snippets/api-guide/workflows/input_nodes/suppress_output_from_nodes.py";
+
+import JSSampleNodes from "!!raw-loader!../../../code_snippets/api-guide/workflows/input_nodes/sample_workflow_multiple_nodes.html";
+import JSSuppressNodes from "!!raw-loader!../../../code_snippets/api-guide/workflows/input_nodes/suppress_output_from_nodes.html";
+
+import NodeSampleNodes from "!!raw-loader!../../../code_snippets/api-guide/workflows/input_nodes/sample_workflow_multiple_nodes.js";
+import NodeSuppressNodes from "!!raw-loader!../../../code_snippets/api-guide/workflows/input_nodes/suppress_output_from_nodes.js";
 
 
 <Tabs>
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonSampleNodes}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSSampleNodes}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeSampleNodes}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -158,103 +172,6 @@ if (postWorkflowsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostWorkflows(
-    {
-        user_app_id: {
-            app_id: "e83440590d104cee97ef84af1856837d"
-        },
-        workflows: [
-            {
-                id: "auto-annotation-workflow-id",
-                nodes: [
-                    {
-                        id: "general-embed",
-                        model: {
-                            id: "bbb5f41425b8468d9b7a554ff10f8581",
-                            model_version: {
-                                id: "bb186755eda04f9cbb6fe32e816be104"
-                            }
-                        }
-                    },
-                    {
-                        id: "general-concept",
-                        model: {
-                            id: "aaa03c23b3724a16a56b629203edc62c",
-                            model_version: {
-                                id: "aa7f35c01e0642fda5cf400f543e7c40"
-                            }
-                        }
-                    },
-                    {
-                        id: "general-cluster",
-                        model: {
-                            id: "cccbe437d6e54e2bb911c6aa292fb072",
-                            model_version: {
-                                id: "cc2074cff6dc4c02b6f4e1b8606dcb54"
-                            }
-                        }
-                    },
-                    {
-                        id: "mapper",
-                        model: {
-                            id: "synonym-model-id",
-                            model_version: {
-                                id: "{YOUR_SYNONYM_MODEL_VERSION_ID}"
-                            }
-                        },
-                        node_inputs: [
-                            {node_id: "general-concept"}
-                        ]
-                    },
-                    {
-                        id: "greater-than",
-                        model: {
-                            id: "greater-than-model-id",
-                            model_version: {
-                                id: "{YOUR_GREATER_THAN_MODEL_VERSION_ID}"
-                            }
-                        },
-                        node_inputs: [
-                            {node_id: "mapper"}
-                        ]
-                    },
-                    {
-                        id: "less-than",
-                        model: {
-                            id: "less-than-model-id",
-                            model_version: {
-                                id: "{YOUR_LESS_THAN_MODEL_VERSION_ID}"
-                            }
-                        },
-                        node_inputs: [
-                            {node_id: "mapper"}
-                        ]
-                    },
-                ]
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            console.log(response.status);
-            throw new Error("Post workflows failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -342,108 +259,6 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/workflows' \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-  "user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "workflows": [
-      {
-          "id": "auto-annotation-workflow-id",
-          "nodes": [
-              {
-                  "id": "general-embed",
-                  "model": {
-                      "id": "{YOUR_GENERAL_EMBED_MODEL_ID}",
-                      "model_version": {
-                          "id": "{YOUR_GENERAL_EMBED_MODEL_VERSION_ID}"
-                      }
-                  }
-              },
-              {
-                  "id": "general-concept",
-                  "model": {
-                      "id": "{YOUR_GENERAL_CONCEPT_MODEL_ID}",
-                      "model_version": {
-                          "id": "{YOUR_GENERAL_CONCEPT_MODEL_VERSION_ID}"
-                      }
-                  }
-              },
-              {
-                  "id": "general-cluster",
-                  "model": {
-                      "id": "{YOUR_GENERAL_CLUSTER_MODEL_ID}",
-                      "model_version": {
-                          "id": "{YOUR_GENERAL_CLUSTER_MODEL_VERSION_ID}"
-                      }
-                  }
-              },
-              {
-                  "id": "mapper",
-                  "model": {
-                      "id": "synonym-model-id",
-                      "model_version": {
-                          "id": "{YOUR_MAPPER_MODEL_VERSION_ID}"
-                      }
-                  },
-                  "node_inputs": [
-                      {
-                          "node_id": "general-concept"
-                      }
-                  ]
-              },
-              {
-                  "id": "greater-than",
-                  "model": {
-                      "id": "greater-than-model-id",
-                      "model_version": {
-                          "id": "{YOUR_GREATER_THAN_MODEL_VERSION_ID}"
-                      }
-                  },
-                  "node_inputs": [
-                      {
-                          "node_id": "mapper"
-                      }
-                  ]
-              },
-              {
-                  "id": "less-than",
-                  "model": {
-                      "id": "less-than-model-id",
-                      "model_version": {
-                          "id": "{YOUR_LESS_THAN_MODEL_VERSION_ID}"
-                      }
-                  },
-                  "node_inputs": [
-                      {
-                          "node_id": "mapper"
-                      }
-                  ]
-              },
-          ]
-      }
-  ]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-	body: raw
-};
-
-fetch(`https://api.clarifai.com/v2/workflows`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
-</TabItem>
-
 </Tabs>
 
 ### Suppressing the Output From Nodes
@@ -456,6 +271,14 @@ By default, this endpoint will be set to false, meaning that we do not suppress 
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonSuppressNodes}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSSuppressNodes}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeSuppressNodes}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -508,62 +331,6 @@ if (postWorkflowsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostWorkflows(
-    {
-        user_app_id: {
-            app_id: "{YOUR_APP_ID}"
-        },
-        workflows: [
-            {
-                id: "predict-cluster-only",
-                nodes: [
-                    {
-                        id: "general-embed",
-                        model: {
-                            id: "bbb5f41425b8468d9b7a554ff10f8581",
-                            model_version: {
-                                id: "bb186755eda04f9cbb6fe32e816be104"
-                            }
-                        }
-                        suppress_output: true;
-                    },                  
-                    {
-                        id: "general-cluster",
-                        model: {
-                            id: "cccbe437d6e54e2bb911c6aa292fb072",
-                            model_version: {
-                                id: "cc2074cff6dc4c02b6f4e1b8606dcb54"
-                            }
-                        },
-                        node_inputs: [
-                            {node_id: "mapper"}
-                        ]
-                    },
-                ]
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            console.log(response.status);
-            throw new Error("Post workflows failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -605,63 +372,6 @@ Authorization: Key f897095e22b144f482b9a13a2151e5bd
     }
   ]
 }
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-  "user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "workflows": [
-    {
-      "id": "predict-cluster-only",
-      "nodes": [
-        {
-          "id": "general-embed",
-          "model": {
-            "id": "bbb5f41425b8468d9b7a554ff10f8581",
-            "model_version": {
-              "id": "bb186755eda04f9cbb6fe32e816be104"
-            }
-          },
-          "suppress_output": true
-        },
-        {
-          "id": "general-cluster",
-          "node_inputs": [
-            {
-              "node_id": "general-embed"
-            }
-          ],
-          "model": {
-            "id": "cccbe437d6e54e2bb911c6aa292fb072",
-            "model_version": {
-              "id": "cc2074cff6dc4c02b6f4e1b8606dcb54"
-            }
-          }
-        }
-      ]
-    }
-  ]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-	body: raw
-};
-
-fetch(`https://api.clarifai.com/v2/workflows`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
