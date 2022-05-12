@@ -16,53 +16,52 @@ Clarifai offers an end-to-end platform for the complete AI lifecycle. Whether yo
 <main class="margin-top--lg">
    <div class="row">
       <article class="col col--6" >
+         <a href="https://communityinviter.com/apps/clarifaicommunity/clarifai-community" target="_blank" style={{"display":"block","-webkit-text-decoration":"none","text-decoration":"none","color":"#000"}}>
          <div class="card margin-bottom--lg padding--lg cardContainer_w8bb cardContainerLink_AhGd" style={{height:"auto"}}>
-            <h3><img src="https://www.clarifai.com/hs-fs/hubfs/slack.png?width=28&name=slack.png" alt="slack" width="28px" he/></h3>
-            <h3>Join our Slack channel</h3>
-            <p>Interact personally with other people actively using and working with Clarifai products.</p>
-            <br/>
-            <a href="https://communityinviter.com/apps/clarifaicommunity/clarifai-community" target="_blank"><b>Join now &gt; &gt;</b></a>
+            <h3><img src="https://www.clarifai.com/hs-fs/hubfs/slack.png?width=28&name=slack.png" alt="slack" width="28px" />&nbsp; Join our Slack channel</h3>
+            <p>Interact actively with other users of Clarifai products</p>         
          </div>
+         </a>
       </article>
       <article class="col col--6">
+         <a href="https://stackoverflow.com/questions/tagged/clarifai" target="_blank" style={{"display":"block","-webkit-text-decoration":"none","text-decoration":"none","color":"#000"}}>
          <div class="card margin-bottom--lg padding--lg cardContainer_w8bb cardContainerLink_AhGd" style={{height:"auto"}}>
-            <h3><img src="https://www.clarifai.com/hs-fs/hubfs/stackoverflow.png?width=28&name=stackoverflow.png" alt="stackoverflow"  width="28px" /></h3>
-            <h3>Join our Stack Overflow community</h3>
-            <p>Engage with other Clarifai users on Stack Overflow to ask questions to other users and answer questions to enrich the overall knowledge of the community.</p>
-            <a href="https://stackoverflow.com/questions/tagged/clarifai" target="_blank"><b>Join now &gt; &gt;</b></a>
+            <h3><img src="https://www.clarifai.com/hs-fs/hubfs/stackoverflow.png?width=28&name=stackoverflow.png" alt="stackoverflow"  width="28px" />&nbsp; Join our Stack Overflow</h3>
+            <p>Engage with other Clarifai users and enrich the community</p>            
          </div>
+         </a>
       </article>
       <article class="col col--6">
+         <a href="https://twitter.com/clarifai" target="_blank" style={{"display":"block","-webkit-text-decoration":"none","text-decoration":"none","color":"#000"}}>
          <div class="card margin-bottom--lg padding--lg cardContainer_w8bb cardContainerLink_AhGd" style={{height:"auto"}}>
-            <h3><img src="https://www.clarifai.com/hs-fs/hubfs/twitter-logo.png?width=35&name=twitter-logo.png" alt="twitter-logo" width="35px" /></h3>
-            <h3>Follow us on Twitter</h3>
-            <p>You can always send us love letters. Or at least chat us up with links to your apps, favorite research, or shareable links.</p>
-            <a href="https://twitter.com/clarifai" target="_blank"><b>Follow us &gt; &gt;</b></a>
+            <h3><img src="https://www.clarifai.com/hs-fs/hubfs/twitter-logo.png?width=35&name=twitter-logo.png" alt="twitter-logo" width="35px" />&nbsp; Follow us on Twitter</h3>
+            <p>Send us links to your apps, research, or shareable stuff</p>            
          </div>
+         </a>
       </article>
       <article class="col col--6">
+         <a href="https://www.linkedin.com/company/clarifai/" target="_blank" style={{"display":"block","-webkit-text-decoration":"none","text-decoration":"none","color":"#000"}}>
          <div class="card margin-bottom--lg padding--lg cardContainer_w8bb cardContainerLink_AhGd" style={{height:"auto"}}>
-            <h3><img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="linkedIn-logo" width="35px" /></h3>
-            <h3>Follow us on LinkedIn</h3>
-            <p>Learn about the latest developments in the AI industry, interesting insights from our company, and more.</p>
-            <a href="https://www.linkedin.com/company/clarifai/" target="_blank"><b>Follow us &gt; &gt;</b></a>
+            <h3><img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="linkedIn-logo" width="35px" />&nbsp; Follow us on LinkedIn</h3>
+            <p>Learn about the latest developments in the AI industry</p>            
          </div>
+         </a>
       </article>
       <article class="col col--6">
+         <a href="https://github.com/clarifai/docs" target="_blank" style={{"display":"block","-webkit-text-decoration":"none","text-decoration":"none","color":"#000"}}>
          <div class="card margin-bottom--lg padding--lg cardContainer_w8bb cardContainerLink_AhGd" style={{height:"auto"}}>
-            <h3><img src="https://www.clarifai.com/hs-fs/hubfs/GitHub-Mark.png" alt="GitHub-Mark" width="35px" /></h3>
-            <h3>Subscribe to our GitHub doc repo</h3>
-            <p>We are always updating our docs, so a good way to stay up to date is to watch our documentation repo on GitHub.</p>
-            <a href="https://github.com/clarifai/docs" target="_blank"><b>Watch now &gt; &gt;</b></a>
+            <h3><img src="https://www.clarifai.com/hs-fs/hubfs/GitHub-Mark.png" alt="GitHub-Mark" width="35px" />&nbsp; Subscribe to our GitHub repo</h3>
+            <p>Stay up-to-date with changes to our documentation</p>            
          </div>
+         </a>
       </article>
       <article class="col col--6">
+         <a href="https://help.clarifai.com/" target="_blank" style={{"display":"block","-webkit-text-decoration":"none","text-decoration":"none","color":"#000"}}>
          <div class="card margin-bottom--lg padding--lg cardContainer_w8bb cardContainerLink_AhGd" style={{height:"auto"}}>
-            <h3><img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Wikibooks-help-icon.svg" alt="get-help" width="35px" /></h3>
-            <h3>Visit our Help Center</h3>
-            <p>Get instant answers to the most common questions and learn how to use Clarifai like a pro.</p>
-            <a href="https://help.clarifai.com/" target="_blank"><b>Get help &gt; &gt;</b></a>
+            <h3><img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Wikibooks-help-icon.svg" alt="get-help" width="35px" />&nbsp; Visit our Help Center</h3>
+            <p>Learn how to use Clarifai like a pro</p>            
          </div>
+         </a>
       </article>
    </div>
 </main>
