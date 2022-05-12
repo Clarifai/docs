@@ -28,11 +28,34 @@ import PythonPatchWorkflow from "!!raw-loader!../../../code_snippets/api-guide/w
 import PythonDeleteWorkflowID from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/delete_workflow_id.py";
 import PythonDeleteAllWorkflows from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/delete_all_workflows.py";
 
+import JSCreate from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/create.html";
+import JSWorkflowPredict from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/workflow_predict.html";
+import JSGetWorkflowsApp from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/get_workflows_in_app.html";
+import JSGetWorkflowID from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/get_workflow_specific_id.html";
+import JSPatchWorkflow from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/patch_workflow.html";
+import JSDeleteWorkflowID from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/delete_workflow_id.html";
+import JSDeleteAllWorkflows from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/delete_all_workflows.html";
+
+import NodeCreate from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/create.js";
+import NodeWorkflowPredict from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/workflow_predict.js";
+import NodeGetWorkflowsApp from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/get_workflows_in_app.js";
+import NodeGetWorkflowID from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/get_workflow_specific_id.js";
+import NodePatchWorkflow from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/patch_workflow.js";
+import NodeDeleteWorkflowID from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/delete_workflow_id.js";
+import NodeDeleteAllWorkflows from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/delete_all_workflows.js";
 
 <Tabs>
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonCreate}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSCreate}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeCreate}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -75,54 +98,6 @@ if (postWorkflowsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostWorkflows(
-    {
-        workflows: [
-            {
-                id: "my-custom-workflow",
-                nodes: [
-                    {
-                        id: "food-concepts",
-                        model: {
-                            id: "bd367be194cf45149e75f01d59f77ba7",
-                            model_version: {
-                                id: "dfebc169854e429086aceb8368662641"
-                            }
-                        }
-                    },
-                    {
-                        id: "general-concepts",
-                        model: {
-                            id: "aaa03c23b3724a16a56b629203edc62c",
-                            model_version: {
-                                id: "aa9ca48295b37401f8af92ad1af0d91d"
-                            }
-                        }
-                    },
-                ]
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post workflows failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -156,57 +131,6 @@ curl -X POST 'https://api.clarifai.com/v2/workflows' \
         ]
       }]
     }'
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-// The first model is the Clarifai's Food model, and the second the Clarifai's General model.
-
-const raw = JSON.stringify({
-  "user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "workflows": [{
-    "id": "my-custom-workflow",
-    "nodes": [
-      {
-        "id": "food-concepts",
-        "model": {
-          "id": "bd367be194cf45149e75f01d59f77ba7",
-          "model_version": {
-            "id": "dfebc169854e429086aceb8368662641"
-          }
-        }
-      },
-      {
-        "id": "general-concepts",
-        "model": {
-          "id": "aaa03c23b3724a16a56b629203edc62c",
-          "model_version": {
-            "id": "aa9ca48295b37401f8af92ad1af0d91d"
-          }
-        }
-      }
-    ]
-  }]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-	body: raw
-};
-
-fetch(`https://api.clarifai.com/v2/workflows`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 

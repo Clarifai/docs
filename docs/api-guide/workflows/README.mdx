@@ -18,3 +18,7 @@ Clarifai makes it easy to connect together models of different kinds so that you
 
 ![](/img/mesh.svg)
 
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>

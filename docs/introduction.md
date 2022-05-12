@@ -7,10 +7,65 @@ slug: /
 
 # Welcome
 
-*Clarifai provides a complete platform to deploy, maintain, and manage your AI models. Whether you have one input or billions, you are only steps away from using AI to power your business applications.*
+**Clarifai provides a complete platform to deploy, maintain, and manage your AI models**
 <hr />
 
 Clarifai offers an end-to-end platform for the complete AI lifecycle. Whether you have one input or billions, you are only steps away from using artificial intelligence to power your business applications.
+
+<!--This section mostly uses built-in Docusaurus styles inspired by https://docusaurus.io/docs/sidebar/items#generated-index-page -->
+<main class="margin-top--lg">
+   <div class="row">
+      <article class="col col--6" >
+         <div class="card margin-bottom--lg padding--lg cardContainer_w8bb cardContainerLink_AhGd">
+            <h3><img src="https://www.clarifai.com/hs-fs/hubfs/slack.png?width=28&name=slack.png" alt="slack" width={28} style={{"width":"28px"}} /></h3>
+            <h3>Join our Slack channel</h3>
+            <p>Interact personally with other people actively using and working with Clarifai products.</p>
+            <br/>
+            <a  target="_blank" href="https://communityinviter.com/apps/clarifaicommunity/clarifai-community"><b>Join now > ></b></a>
+         </div>
+      </article>
+      <article class="col col--6">
+         <div class="card margin-bottom--lg padding--lg cardContainer_w8bb cardContainerLink_AhGd">
+            <h3><img src="https://www.clarifai.com/hs-fs/hubfs/stackoverflow.png?width=28&name=stackoverflow.png" alt="stackoverflow" width={28} style={{"width":"28px"}} /></h3>
+            <h3>Join our Stack Overflow community</h3>
+            <p>Engage with other Clarifai users on Stack Overflow to ask questions to other users and answer questions to enrich the overall knowledge of the community.</p>
+            <a target="_blank" href="https://stackoverflow.com/questions/tagged/clarifai"><b>Join now > ></b></a>
+         </div>
+      </article>
+      <article class="col col--6">
+         <div class="card margin-bottom--lg padding--lg cardContainer_w8bb cardContainerLink_AhGd">
+            <h3><img src="https://www.clarifai.com/hs-fs/hubfs/twitter-logo.png?width=35&name=twitter-logo.png" alt="twitter-logo" width={35} style={{"width":"35px"}} /></h3>
+            <h3>Follow us on Twitter</h3>
+            <p>You can always send us love letters. Or at least chat us up with links to your apps, favorite research, or shareable links.</p>
+            <a target="_blank" href="https://twitter.com/clarifai"><b>Follow us > ></b></a>
+         </div>
+      </article>
+      <article class="col col--6">
+         <div class="card margin-bottom--lg padding--lg cardContainer_w8bb cardContainerLink_AhGd">
+            <h3><img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="linkedIn-logo" width={35} style={{"width":"35px"}} /></h3>
+            <h3>Follow us on LinkedIn</h3>
+            <p>Learn about the latest developments in the AI industry, interesting insights from our company, and more.</p>
+            <a target="_blank" href="https://www.linkedin.com/company/clarifai/"><b>Follow us > ></b></a>
+         </div>
+      </article>
+      <article class="col col--6">
+         <div class="card margin-bottom--lg padding--lg cardContainer_w8bb cardContainerLink_AhGd">
+            <h3><img src="https://www.clarifai.com/hs-fs/hubfs/GitHub-Mark.png" alt="GitHub-Mark" width={35} style={{"width":"35px"}} /></h3>
+            <h3>Subscribe to our GitHub doc repo</h3>
+            <p>We are always updating our docs, so a good way to stay up to date is to watch our documentation repo on GitHub.</p>
+            <a target="_blank" href="https://github.com/clarifai/docs"><b>Watch now > ></b></a>
+         </div>
+      </article>
+      <article class="col col--6">
+         <div class="card margin-bottom--lg padding--lg cardContainer_w8bb cardContainerLink_AhGd">
+            <h3><img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Wikibooks-help-icon.svg" alt="get-help" width={35} style={{"width":"35px"}} /></h3>
+            <h3>Visit our Help Center</h3>
+            <p>Get instant answers to the most common questions and learn how to use Clarifai like a pro.</p>
+            <a target="_blank" href="https://help.clarifai.com/"><b>Get help > ></b></a>
+         </div>
+      </article>
+   </div>
+</main>
 
 ## Get Started 
 

@@ -70,6 +70,9 @@ import PythonCreateEmbedder from "!!raw-loader!../../../code_snippets/api-guide/
 import PythonCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_workflow_deep_trained_model.py";
 import PythonUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.py";
 
+import NodeCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_workflow_deep_trained_model.js";
+import NodeUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.js";
+
 :::info
 The initialization code used in the following examples is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
 :::
@@ -499,6 +502,10 @@ Put your new deep-trained model to work by adding it to a workflow. Below is an 
     <CodeBlock className="language-python">{PythonCreateWorkflow}</CodeBlock>
 </TabItem>
 
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeCreateWorkflow}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -545,58 +552,6 @@ MultiWorkflowResponse postWorkflowsResponse = stub.postWorkflows(
 if (postWorkflowsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
     throw new RuntimeException("Post workflows failed, status: " + postWorkflowsResponse.getStatus());
 }
-```
-</TabItem>
-
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostWorkflows(
-    {
-        workflows: [
-            {
-                id: "my-new-workflow-id",
-                nodes: [
-                    {
-                        id: "embed",
-                        model: {
-                            id: "{YOUR_EMBED_MODEL_ID}",
-                            model_version: {
-                                id: "{YOUR_EMBED_MODEL_VERSION_ID}"
-                            }
-                        }
-                    },
-                    {
-                        id: "my-custom-model",
-                        model: {
-                            id: "{YOUR_CUSTOM_MODEL_ID}",
-                            model_version: {
-                                id: "{YOUR_CUSTOM_MODEL_VERSION_ID}"
-                            }
-                        },
-                        node_inputs: [
-                            {node_id: "embed"}
-                        ]
-                    }
-                ]
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            console.log(response.status);
-            throw new Error("Post workflows failed, status: " + response.status.description);
-        }
-    }
-);
 ```
 </TabItem>
 
@@ -656,6 +611,10 @@ Below is an example of how to update your default workflow with a deep trained m
     <CodeBlock className="language-python">{PythonUpdateWorkflow}</CodeBlock>
 </TabItem>
 
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeUpdateWorkflow}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -678,37 +637,6 @@ MultiAppResponse patchAppsResponse = stub.patchApps(
 if (patchAppsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
     throw new RuntimeException("Patch apps failed, status: " + patchAppsResponse.getStatus());
 }
-```
-</TabItem>
-
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PatchApps(
-    {
-        action: "overwrite",
-        apps: [
-            {
-                id: "{YOUR_APP_ID}",
-                default_workflow_id: "auto-annotation-workflow-id"
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            console.log(response.status);
-            throw new Error("Patch apps failed, status: " + response.status.description);
-        }
-    }
-);
 ```
 </TabItem>
 
