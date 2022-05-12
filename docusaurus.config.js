@@ -122,12 +122,12 @@ const config = {
       },
     }),
     plugins: [
-    [
-      require.resolve('docusaurus-gtm-plugin'),
-      {
-        id: 'GTM-PLV65FL', // GTM Container ID
-      }
-    ],
+    // [
+    //   require.resolve('docusaurus-gtm-plugin'),
+    //   {
+    //     id: 'GTM-PLV65FL', // GTM Container ID
+    //   }
+    // ],
     [
       require.resolve("@cmfcmf/docusaurus-search-local"),
       {
