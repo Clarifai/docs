@@ -27,7 +27,7 @@ Clarifai offers an end-to-end platform for the complete AI lifecycle. Whether yo
          <a href="https://stackoverflow.com/questions/tagged/clarifai" target="_blank" style={{"display":"block","-webkit-text-decoration":"none","text-decoration":"none","color":"#000"}}>
          <div class="card margin-bottom--lg padding--lg cardContainer_w8bb cardContainerLink_AhGd" style={{height:"auto"}}>
             <h3><img src="https://www.clarifai.com/hs-fs/hubfs/stackoverflow.png?width=28&name=stackoverflow.png" alt="stackoverflow"  width="28px" />&nbsp; Join our Stack Overflow</h3>
-            <p>Engage with other Clarifai users and enrich the community</p>            
+            <p>Engage with Clarifai users and enrich the community</p>            
          </div>
          </a>
       </article>
