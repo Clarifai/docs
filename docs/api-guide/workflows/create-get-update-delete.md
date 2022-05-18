@@ -146,6 +146,14 @@ You can predict using a workflow. The response will contain the predictions each
     <CodeBlock className="language-python">{PythonWorkflowPredict}</CodeBlock>
 </TabItem>
 
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSWorkflowPredict}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeWorkflowPredict}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -187,47 +195,6 @@ for (Output output : results.getOutputsList()) {
         System.out.printf("\t%s %.2f%n", concept.getName(), concept.getValue());
     }
 }
-```
-</TabItem>
-
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostWorkflowResults(
-    {
-        workflow_id: "{YOUR_WORKFLOW_ID}",
-        inputs: [
-            {data: {image: {url: "https://samples.clarifai.com/metro-north.jpg"}}}
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post workflow results failed, status: " + response.status.description);
-        }
-
-        // We'll get one WorkflowResult for each input we used above. Because of one input, we have here
-        // one WorkflowResult.
-        const results = response.results[0];
-
-        // Each model we have in the workflow will produce one output.
-        for (const output of results.outputs) {
-            const model = output.model;
-
-            console.log("Predicted concepts for the model `" + model.name + "`:");
-            for (const concept of output.data.concepts) {
-                console.log("\t" + concept.name + " " + concept.value);
-            }
-        }
-    }
-);
 ```
 </TabItem>
 
@@ -298,43 +265,6 @@ https://api.clarifai.com/v2/workflows/{YOUR_WORKFLOW_ID}/results
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const workflowID = '{YOUR_WORKFLOW_ID}'
-
-const raw = JSON.stringify({
-  "user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "inputs": [
-      {
-        "data": {
-          "image": {
-            "url": "https://samples.clarifai.com/metro-north.jpg"
-        }
-      }
-    }
-  ]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-	body: raw
-};
-
-fetch(`https://api.clarifai.com/v2/workflows/${workflowID}/results`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
-</TabItem>
-
 </Tabs>
 
 ## Get
@@ -347,6 +277,14 @@ You can return all custom workflows in your app.
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonGetWorkflowsApp}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSGetWorkflowsApp}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeGetWorkflowsApp}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -375,63 +313,12 @@ for (Workflow workflow : listWorkflowsResponse.getWorkflowsList()) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.ListWorkflows(
-    {},
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("List workflows failed, status: " + response.status.description);
-        }
-
-        for (const workflow of response.workflows) {
-            console.log("The workflow " + workflow.id + " consists of these models:");
-            for (const workflowNode of workflow.nodes) {
-                const model = workflowNode.model;
-                console.log(model.id);
-            }
-            console.log();
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
 curl -X GET 'https://api.clarifai.com/v2/workflows' \
     -H 'Content-Type: application/json' \
     -H 'Authorization: Key YOUR_API_KEY'
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const appId = '{YOUR_APP_ID}'
-
-const requestOptions = {
-  method: 'GET',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/workflows`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
@@ -445,6 +332,14 @@ You can return information about a specific workflow.
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonGetWorkflowID}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSGetWorkflowID}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeGetWorkflowID}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -476,65 +371,12 @@ for (WorkflowNode workflowNode : workflow.getNodesList()) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.GetWorkflow(
-    {
-        workflow_id: "my-custom-workflow"
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Get workflow failed, status: " + response.status.description);
-        }
-
-        const workflow = response.workflow;
-
-        console.log("The workflow consists of these models:");
-        for (const workflowNode of workflow.nodes) {
-            const model = workflowNode.model;
-            console.log(model.id);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
 curl -X GET 'https://api.clarifai.com/v2/workflows/my-custom-workflow' \
     -H 'Content-Type: application/json' \
     -H 'Authorization: Key YOUR_API_KEY'
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const appId = '{YOUR_APP_ID}'
-const workflowId = '{YOUR_WORKFLOW_ID}'
-
-const requestOptions = {
-  method: 'GET',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/workflows/${workflowId}`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
@@ -552,6 +394,14 @@ The possible actions are `overwrite`, `merge`, and `remove`.
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonPatchWorkflow}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSPatchWorkflow}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodePatchWorkflow}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -605,64 +455,6 @@ if (patchWorkflowsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PatchWorkflows(
-    {
-        action: "overwrite",
-        workflows: [
-            {
-                id: "my-custom-workflow",
-                nodes: [
-                    {
-                        id: "travel-concepts",
-                        model: {
-                            id: "ccc28c313d69466f836ab83287a54ed9",
-                            model_version: {
-                                id: "cce28c313d69466f836ab83287a54ed9"
-                            }
-                        }
-                    },
-                    {
-                        id: "nsfw-concepts",
-                        model: {
-                            id: "ccc76d86d2004ed1a38ba0cf39ecb4b1",
-                            model_version: {
-                                id: "cc76a92beaeb4d8495a58ba197998158"
-                            }
-                        }
-                    },
-                    {
-                        id: "wedding-concepts",
-                        model: {
-                            id: "c386b7a870114f4a87477c0824499348",
-                            model_version: {
-                                id: "787cc9a002164250800598d36b072384"
-                            }
-                        }
-                    },
-                ]
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Patch workflows failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -711,68 +503,6 @@ curl -X PATCH 'https://api.clarifai.com/v2/workflows' \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-
-const raw = JSON.stringify({
-  "user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "action": "overwrite",
-  "workflows": [
-      {
-          "id": "my-custom-workflow",
-          "nodes": [
-              {
-                  "id": "travel-concepts",
-                  "model": {
-                      "id": "ccc28c313d69466f836ab83287a54ed9",
-                      "model_version": {
-                          "id": "cce28c313d69466f836ab83287a54ed9"
-                      }
-                  }
-              },
-              {
-                  "id": "nsfw-concepts",
-                  "model": {
-                      "id": "ccc76d86d2004ed1a38ba0cf39ecb4b1",
-                      "model_version": {
-                          "id": "cc76a92beaeb4d8495a58ba197998158"
-                      }
-                  }
-              },
-              {
-                  "id": "wedding-concepts",
-                  "model": {
-                      "id": "c386b7a870114f4a87477c0824499348",
-                      "model_version": {
-                          "id": "787cc9a002164250800598d36b072384"
-                      }
-                  }
-              }
-          ]
-      }
-  ]
-});
-
-const requestOptions = {
-  method: 'PATCH',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-	body: raw
-};
-
-fetch(`https://api.clarifai.com/v2/workflows`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
-</TabItem>
-
 </Tabs>
 
 ## Delete
@@ -785,6 +515,14 @@ You can delete a specific workflow.
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonDeleteWorkflowID}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSDeleteWorkflowID}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeDeleteWorkflowID}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -808,57 +546,12 @@ if (deleteWorkflowResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.DeleteWorkflow(
-    {
-        workflow_id: "my-custom-workflow",
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Delete workflow failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
 curl -X DELETE 'https://api.clarifai.com/v2/workflows/my-custom-workflow \
     -H 'Content-Type: application/json' \
     -H 'Authorization: Key YOUR_API_KEY'
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const appId = '{YOUR_APP_ID}'
-const workflowId = '{YOUR_WORKFLOW_ID}'
-
-const requestOptions = {
-  method: 'DELETE',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  }
-};
-
-fetch(`https://api.clarifai.com/v2/users/me/apps/${appId}/workflows/${workflowId}`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
@@ -876,6 +569,14 @@ Instead of `delete_all`, you can specify a list of workflow IDs to be deleted, u
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonDeleteAllWorkflows}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSDeleteAllWorkflows}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeDeleteAllWorkflows}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -899,30 +600,6 @@ if (deleteWorkflowsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.DeleteWorkflows(
-    {
-        delete_all: true
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Delete workflows failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -932,33 +609,6 @@ curl -X DELETE 'https://api.clarifai.com/v2/workflows' \
     --data-raw '{
         "delete_all": true
     }'
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-  "user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "delete_all": true
-});
-
-const requestOptions = {
-  method: 'DELETE',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-	body: raw
-};
-
-fetch(`https://api.clarifai.com/v2/workflows`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 

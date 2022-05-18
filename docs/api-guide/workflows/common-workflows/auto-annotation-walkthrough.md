@@ -20,20 +20,33 @@ When a concept is predicted by a model, it is predicted with a confidence score 
 The initialization code used in the following examples is outlined in detail on the [client installation page.](../../api-overview/api-clients#client-installation-instructions)
 :::
 
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
-import PythonCreateConcepts from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/create_concepts.py";
-import PythonLinkConcepts from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/link_concepts.py";
-import PythonCreateConceptMapperModel from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/create_concept_mapper_model.py";
-import PythonCreateGreaterThan from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/create_greater_than_concept_thresholder.py";
-import PythonCreateLessThan from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/create_less_than_concept-thresholder.py";
-import PythonCreateWriteSuccess from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/create_write_success_asme_annotation.py";
-import PythonCreateWritePending from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/create_write_pending_asme_annotation.py";
-import PythonCreateWorkflow from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/create_the_workflow.py";
-import PythonMakeWorkflowDefault from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/make_new_workflow_apps_default.py";
-import PythonAddImage from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/add_an_image.py";
-import PythonListAnnotations from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/list_annotations.py";
+import PythonCreateConcepts from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/py/create_concepts.py";
+import PythonLinkConcepts from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/py/link_concepts.py";
+import PythonCreateConceptMapperModel from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/py/create_concept_mapper_model.py";
+import PythonCreateGreaterThan from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/py/create_greater_than_concept_thresholder.py";
+import PythonCreateLessThan from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/py/create_less_than_concept-thresholder.py";
+import PythonCreateWriteSuccess from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/py/create_write_success_asme_annotation.py";
+import PythonCreateWritePending from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/py/create_write_pending_asme_annotation.py";
+import PythonCreateWorkflow from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/py/create_the_workflow.py";
+import PythonMakeWorkflowDefault from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/py/make_new_workflow_apps_default.py";
+import PythonAddImage from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/py/add_an_image.py";
+import PythonListAnnotations from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/py/list_annotations.py";
+
+import NodeCreateConcepts from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/node/create_concepts.js";
+import NodeLinkConcepts from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/node/link_concepts.js";
+import NodeCreateConceptMapperModel from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/node/create_concept_mapper_model.js";
+import NodeCreateGreaterThan from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/node/create_greater_than_concept_thresholder.js";
+import NodeCreateLessThan from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/node/create_less_than_concept-thresholder.js";
+import NodeCreateWriteSuccess from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/node/create_write_success_asme_annotation.js";
+import NodeCreateWritePending from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/node/create_write_pending_asme_annotation.js";
+import NodeCreateWorkflow from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/node/create_the_workflow.js";
+import NodeMakeWorkflowDefault from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/node/make_new_workflow_apps_default.js";
+import NodeAddImage from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/node/add_an_image.js";
+import NodeListAnnotations from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/node/list_annotations.js";
 
 
 ## Create Concepts
@@ -44,6 +57,10 @@ Let's start by creating the concepts we'll use in our model. In this tutorial, w
 
 <TabItem value="grpc_python" label="gRPC Python">
     <CodeBlock className="language-python">{PythonCreateConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+    <CodeBlock className="language-javascript">{NodeCreateConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
@@ -79,46 +96,6 @@ MultiConceptResponse postConceptsResponse = stub.postConcepts(
 if (postConceptsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
     throw new RuntimeException("Post concepts failed, status: " + postConceptsResponse.getStatus());
 }
-```
-</TabItem>
-
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostConcepts(
-    {
-        user_app_id: {
-            app_id: "{YOUR_APP_ID}"
-        },
-        concepts: [
-            {
-                id: "peopleID",
-                name: "people"
-            },
-            {
-                id: "manID",
-                name: "man"
-            },
-            {
-                id: "adultID",
-                name: "adult"
-            },
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post concepts failed, status: " + response.status.description);
-        }
-    }
-);
 ```
 </TabItem>
 
@@ -166,6 +143,10 @@ Your model's concept IDs are the ones you created in the previous step: `peopleI
     <CodeBlock className="language-python">{PythonLinkConcepts}</CodeBlock>
 </TabItem>
 
+<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+    <CodeBlock className="language-javascript">{NodeLinkConcepts}</CodeBlock>
+</TabItem>
+
 <TabItem value="grpc_java" label="gRPC Java">
 
 ```java
@@ -193,42 +174,6 @@ MultiConceptRelationResponse postConceptRelationsResponse = stub.postConceptRela
 if (postConceptRelationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
     throw new RuntimeException("Post concept relations failed, status: " + postConceptRelationsResponse.getStatus());
 }
-```
-</TabItem>
-
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostConceptRelations(
-    {
-        user_app_id: {
-            app_id: "{YOUR_APP_ID}"
-        },
-        concept_id: "{YOUR_MODEL_CONCEPT_ID}",
-        concept_relations: [
-            {
-                object_concept: {
-                    id: "{GENERAL_MODEL_CONCEPT_ID}",
-                    app_id: "main"
-                },
-                predicate: "synonym"
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post concept relations failed, status: " + response.status.description);
-        }
-    }
-);
 ```
 </TabItem>
 
@@ -266,6 +211,10 @@ We'll be setting the `knowledge_graph_id` value to be empty. If you want to defi
     <CodeBlock className="language-python">{PythonCreateConceptMapperModel}</CodeBlock>
 </TabItem>
 
+<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+    <CodeBlock className="language-javascript">{NodeCreateConceptMapperModel}</CodeBlock>
+</TabItem>
+
 <TabItem value="grpc_java" label="gRPC Java">
 
 ```java
@@ -296,45 +245,6 @@ SingleModelResponse postModelsResponse = stub.postModels(
 if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
     throw new RuntimeException("Post models failed, status: " + postModelsResponse.getStatus());
 }
-```
-</TabItem>
-
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-const params = {
-    knowledge_graph_id: ""
-}
-
-stub.PostModels(
-    {
-        user_app_id: {
-            app_id: "{YOUR_APP_ID}"
-        },
-        models: [
-            {
-                id: "synonym-model-id",
-                model_type_id: "concept-synonym-mapper"
-                output_info: {
-                    params: params,
-                }
-            },
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post models failed, status: " + response.status.description);
-        }
-    }
-);
 ```
 </TabItem>
 
@@ -861,6 +771,10 @@ The model IDs and model version IDs from the public `clarifai/main` application 
     <CodeBlock className="language-python">{PythonCreateWorkflow}</CodeBlock>
 </TabItem>
 
+<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+    <CodeBlock className="language-javascript">{NodeCreateWorkflow}</CodeBlock>
+</TabItem>
+
 <TabItem value="grpc_java" label="gRPC Java">
 
 ```java
@@ -984,127 +898,6 @@ MultiWorkflowResponse postWorkflowsResponse = stub.postWorkflows(
 if (postWorkflowsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
     throw new RuntimeException("Post workflows failed, status: " + postWorkflowsResponse.getStatus());
 }
-```
-</TabItem>
-
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostWorkflows(
-    {
-        user_app_id: {
-            app_id: "e83440590d104cee97ef84af1856837d"
-        },
-        workflows: [
-            {
-                id: "auto-annotation-workflow-id",
-                nodes: [
-                    {
-                        id: "general-embed",
-                        model: {
-                            id: "bbb5f41425b8468d9b7a554ff10f8581",
-                            model_version: {
-                                id: "bb186755eda04f9cbb6fe32e816be104"
-                            }
-                        }
-                    },
-                    {
-                        id: "general-concept",
-                        model: {
-                            id: "aaa03c23b3724a16a56b629203edc62c",
-                            model_version: {
-                                id: "aa7f35c01e0642fda5cf400f543e7c40"
-                            }
-                        }
-                    },
-                    {
-                        id: "general-cluster",
-                        model: {
-                            id: "cccbe437d6e54e2bb911c6aa292fb072",
-                            model_version: {
-                                id: "cc2074cff6dc4c02b6f4e1b8606dcb54"
-                            }
-                        }
-                    },
-                    {
-                        id: "mapper",
-                        model: {
-                            id: "synonym-model-id",
-                            model_version: {
-                                id: "{YOUR_SYNONYM_MODEL_VERSION_ID}"
-                            }
-                        },
-                        node_inputs: [
-                            {node_id: "general-concept"}
-                        ]
-                    },
-                    {
-                        id: "greater-than",
-                        model: {
-                            id: "greater-than-model-id",
-                            model_version: {
-                                id: "{YOUR_GREATER_THAN_MODEL_VERSION_ID}"
-                            }
-                        },
-                        node_inputs: [
-                            {node_id: "mapper"}
-                        ]
-                    },
-                    {
-                        id: "write-success",
-                        model: {
-                            id: "write-success-model-id",
-                            model_version: {
-                                id: "{YOUR_WRITE_SUCCESS_MODEL_VERSION_ID}"
-                            }
-                        },
-                        node_inputs: [
-                            {node_id: "greater-than"}
-                        ]
-                    },
-                    {
-                        id: "less-than",
-                        model: {
-                            id: "less-than-model-id",
-                            model_version: {
-                                id: "{YOUR_LESS_THAN_MODEL_VERSION_ID}"
-                            }
-                        },
-                        node_inputs: [
-                            {node_id: "mapper"}
-                        ]
-                    },
-                    {
-                        id: "write-pending",
-                        model: {
-                            id: "write-pending-model-id",
-                            model_version: {
-                                id: "{YOUR_WRITE_PENDING_MODEL_VERSION_ID}"
-                            }
-                        },
-                        node_inputs: [
-                            {node_id: "less-than"}
-                        ]
-                    }
-                ]
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            console.log(response.status);
-            throw new Error("Post workflows failed, status: " + response.status.description);
-        }
-    }
-);
 ```
 </TabItem>
 
@@ -1236,6 +1029,10 @@ If the workflow is not the default workflow of your app, you can still use `Post
     <CodeBlock className="language-python">{PythonMakeWorkflowDefault}</CodeBlock>
 </TabItem>
 
+<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+    <CodeBlock className="language-javascript">{NodeMakeWorkflowDefault}</CodeBlock>
+</TabItem>
+
 <TabItem value="grpc_java" label="gRPC Java">
 
 ```java
@@ -1261,37 +1058,6 @@ if (patchAppsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PatchApps(
-    {
-        action: "overwrite",
-        apps: [
-            {
-                id: "{YOUR_APP_ID}",
-                default_workflow_id: "auto-annotation-workflow-id"
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            console.log(response.status);
-            throw new Error("Patch apps failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -1313,12 +1079,16 @@ curl -X PATCH 'https://api.clarifai.com/v2/users/me/apps' \
 
 ## Add an Image
 
-Adding the image will trigger the default workflow.
+Adding an image will trigger the default workflow.
 
 <Tabs>
 
 <TabItem value="grpc_python" label="gRPC Python">
     <CodeBlock className="language-python">{PythonAddImage}</CodeBlock>
+</TabItem>
+
+<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+    <CodeBlock className="language-javascript">{NodeAddImage}</CodeBlock>
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
@@ -1349,42 +1119,6 @@ MultiInputResponse postInputsResponse = stub.postInputs(
 if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
     throw new RuntimeException("Post inputs failed, status: " + postInputsResponse.getStatus());
 }
-```
-</TabItem>
-
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostInputs(
-    {
-        user_app_id: {
-            app_id: "{YOUR_APP_ID}"
-        },
-        inputs: [
-            {
-                data: {
-                    image: {
-                        url: "{YOUR_IMAGE_URL}"
-                    }
-                }
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            console.log(response.status);
-            throw new Error("Post inputs failed, status: " + response.status.description);
-        }
-    }
-);
 ```
 </TabItem>
 
@@ -1419,6 +1153,10 @@ You can now list annotations with your user ID and see the annotations created b
     <CodeBlock className="language-python">{PythonListAnnotations}</CodeBlock>
 </TabItem>
 
+<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+    <CodeBlock className="language-javascript">{NodeListAnnotations}</CodeBlock>
+</TabItem>
+
 <TabItem value="grpc_java" label="gRPC Java">
 
 ```java
@@ -1443,38 +1181,6 @@ if (listAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
     System.out.println(annotation);
 }
-```
-</TabItem>
-
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.ListAnnotations(
-    {
-        user_app_id: {
-            app_id: "{YOUR_APP_ID}"
-        },
-        user_ids: ["{YOUR_USER_ID}"],
-        list_all_annotations: true
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("List annotations failed, status: " + response.status.description);
-        }
-
-        for (const annotation of response.annotations) {
-            console.log(annotation);
-        }
-    }
-);
 ```
 </TabItem>
 

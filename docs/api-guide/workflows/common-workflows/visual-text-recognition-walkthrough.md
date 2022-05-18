@@ -36,6 +36,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 import PythonVTRWorkflow from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/building_vtr_workflow.py";
+import NodeVTRWorkflow from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/building_vtr_workflow.js";
 
 ## Building a VTR Workflow
 
@@ -43,6 +44,10 @@ import PythonVTRWorkflow from "!!raw-loader!../../../../code_snippets/api-guide/
 
 <TabItem value="grpc_python" label="gRPC Python">
     <CodeBlock className="language-python">{PythonVTRWorkflow}</CodeBlock>
+</TabItem>
+
+<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+    <CodeBlock className="language-javascript">{NodeVTRWorkflow}</CodeBlock>
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
@@ -105,73 +110,6 @@ MultiWorkflowResponse postWorkflowsResponse = stub.postWorkflows(
 if (postWorkflowsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
     throw new RuntimeException("Post workflows failed, status: " + postWorkflowsResponse.getStatus());
 }
-```
-</TabItem>
-
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostWorkflows(
-    {
-        user_app_id: {
-            app_id: "e83440590d104cee97ef84af1856837d"
-        },
-        workflows: [
-            {
-                id: "visual-text-recognition-id",
-                nodes: [
-                    {
-                        id: "detect-concept",
-                        model: {
-                            id: "2419e2eae04d04f820e5cf3aba42d0c7",
-                            model_version: {
-                                id: "75a5b92a0dec436a891b5ad224ac9170"
-                            }
-                        }
-                    },
-                    {
-                        id: "image-crop",
-                        model: {
-                            id: "ce3f5832af7a4e56ae310d696cbbefd8",
-                            model_version: {
-                                id: "a78efb13f7774433aa2fd4864f41f0e6"
-                            }
-                        },
-                        node_inputs: [
-                            {node_id: "detect-concept"}
-                        ]
-                    },
-                    {
-                        id: "image-to-text",
-                        model: {
-                            id: "9fe78b4150a52794f86f237770141b33",
-                            model_version: {
-                                id: "d94413e582f341f68884cac72dbd2c7b"
-                            }
-                        },
-                        node_inputs: [
-                            {node_id: "image-crop"}
-                        ]
-                    },
-                ]
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            console.log(response.status);
-            throw new Error("Post workflows failed, status: " + response.status.description);
-        }
-    }
-);
 ```
 </TabItem>
 

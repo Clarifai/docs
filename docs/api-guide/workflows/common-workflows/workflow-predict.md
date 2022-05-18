@@ -30,11 +30,16 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 import PythonWorkflowPredict from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/workflow_predict.py";
+import NodeWorkflowPredict from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/workflow_predict.js";
 
 <Tabs>
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonWorkflowPredict}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeWorkflowPredict}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -78,47 +83,6 @@ for (Output output : results.getOutputsList()) {
         System.out.printf("\t%s %.2f%n", concept.getName(), concept.getValue());
     }
 }
-```
-</TabItem>
-
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostWorkflowResults(
-    {
-        workflow_id: "{YOUR_WORKFLOW_ID}",
-        inputs: [
-            {data: {image: {url: "https://samples.clarifai.com/metro-north.jpg"}}}
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post workflow results failed, status: " + response.status.description);
-        }
-
-        // We'll get one WorkflowResult for each input we used above. Because of one input, we have here
-        // one WorkflowResult.
-        const results = response.results[0];
-
-        // Each model we have in the workflow will produce one output.
-        for (const output of results.outputs) {
-            const model = output.model;
-
-            console.log("Predicted concepts for the model `" + model.name + "`:");
-            for (const concept of output.data.concepts) {
-                console.log("\t" + concept.name + " " + concept.value);
-            }
-        }
-    }
-);
 ```
 </TabItem>
 
