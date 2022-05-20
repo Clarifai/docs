@@ -15,10 +15,15 @@ The initialization code used in the following example is outlined in detail on t
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
-import PythonCustomMetadata from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/by_custom_metadata.py";
-import PythonInputsLongitude from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/add_inputs_longitude_latitude.py";
-import PythonOneGeoPoint from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/perform_search_one_geo_point.py";
-import PythonTwoGeoPoints from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/perform_search_two_geo_point.py";
+import PythonCustomMetadata from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/py/by_custom_metadata.py";
+import PythonInputsLongitude from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/py/add_inputs_longitude_latitude.py";
+import PythonOneGeoPoint from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/py/perform_search_one_geo_point.py";
+import PythonTwoGeoPoints from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/py/perform_search_two_geo_point.py";
+
+import NodeCustomMetadata from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/node/by_custom_metadata.js";
+import NodeInputsLongitude from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/node/add_inputs_longitude_latitude.js";
+import NodeOneGeoPoint from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/node/perform_search_one_geo_point.js";
+import NodeTwoGeoPoints from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/node/perform_search_two_geo_point.js";
 
 ## By Custom Metadata
 
@@ -77,6 +82,10 @@ How to perform searches:
     <CodeBlock className="language-python">{PythonCustomMetadata}</CodeBlock>
 </TabItem>
 
+<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+    <CodeBlock className="language-javascript">{NodeCustomMetadata}</CodeBlock>
+</TabItem>
+
 <TabItem value="grpc_java" label="gRPC Java">
 
 ```java
@@ -111,47 +120,6 @@ System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
 for (Hit hit : postSearchesResponse.getHitsList()) {
     System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
 }
-```
-</TabItem>
-
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostSearches(
-    {
-        query: {
-            ands: [
-                {
-                    input: {
-                        data: {
-                            metadata: {
-                                "type": "animal"
-                            }
-                        }
-                    }
-                }
-            ]
-        }
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post searches failed, status: " + response.status.description);
-        }
-
-        console.log("Found inputs:");
-        for (const hit of response.hits) {
-            console.log("\tScore " + hit.score + " for " + hit.input.id);
-        }
-    }
-);
 ```
 </TabItem>
 
@@ -359,6 +327,10 @@ Provide a geo point to an input. The geo point is a JSON object consisting of a 
     <CodeBlock className="language-python">{PythonInputsLongitude}</CodeBlock>
 </TabItem>
 
+<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+    <CodeBlock className="language-javascript">{NodeInputsLongitude}</CodeBlock>
+</TabItem>
+
 <TabItem value="grpc_java" label="gRPC Java">
 
 ```java
@@ -391,42 +363,6 @@ MultiInputResponse postInputsResponse = stub.postInputs(
 if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
     throw new RuntimeException("Post inputs failed, status: " + postInputsResponse.getStatus());
 }
-```
-</TabItem>
-
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostInputs(
-    {
-        inputs: [
-            {
-                data: {
-                    image: {url: "https://samples.clarifai.com/dog.tiff", allow_duplicate_url: true},
-                    geo: {
-                        geo_point: {
-                            longitude: -30,
-                            latitude: 40
-                        }
-                    }
-                }
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post inputs failed, status: " + response.status.description);
-        }
-    }
-);
 ```
 </TabItem>
 
@@ -569,6 +505,10 @@ curl -X POST \
     <CodeBlock className="language-python">{PythonOneGeoPoint}</CodeBlock>
 </TabItem>
 
+<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+    <CodeBlock className="language-javascript">{NodeOneGeoPoint}</CodeBlock>
+</TabItem>
+
 <TabItem value="grpc_java" label="gRPC Java">
 
 ```java
@@ -611,54 +551,6 @@ System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
 for (Hit hit : postSearchesResponse.getHitsList()) {
     System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
 }
-```
-</TabItem>
-
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostSearches(
-    {
-        query: {
-            ands: [
-                {
-                    input: {
-                        data: {
-                            geo: {
-                                geo_point: {
-                                    longitude: -29,
-                                    latitude: 40
-                                },
-                                geo_limit: {
-                                    type: "withinKilometers",
-                                    value: 150.0
-                                }
-                            }
-                        }
-                    }
-                }
-            ]
-        }
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post searches failed, status: " + response.status.description);
-        }
-
-        console.log("Found inputs:");
-        for (const hit of response.hits) {
-            console.log("\tScore " + hit.score + " for " + hit.input.id);
-        }
-    }
-);
 ```
 </TabItem>
 
@@ -828,6 +720,10 @@ curl -X POST \
     <CodeBlock className="language-python">{PythonTwoGeoPoints}</CodeBlock>
 </TabItem>
 
+<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+    <CodeBlock className="language-javascript">{NodeTwoGeoPoints}</CodeBlock>
+</TabItem>
+
 <TabItem value="grpc_java" label="gRPC Java">
 
 ```java
@@ -874,60 +770,6 @@ System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
 for (Hit hit : postSearchesResponse.getHitsList()) {
     System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
 }
-```
-</TabItem>
-
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostSearches(
-    {
-        query: {
-            ands: [
-                {
-                    input: {
-                        data: {
-                            geo: {
-                                geo_box: [
-                                    {
-                                        geo_point: {
-                                            longitude: -31,
-                                            latitude: 42
-                                        }
-                                    },
-                                    {
-                                        geo_point: {
-                                            longitude: -29,
-                                            latitude: 39
-                                        }
-                                    }
-                                ]
-                            }
-                        }
-                    }
-                }
-            ]
-        }
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post searches failed, status: " + response.status.description);
-        }
-
-        console.log("Found inputs:");
-        for (const hit of response.hits) {
-            console.log("\tScore " + hit.score + " for " + hit.input.id);
-        }
-    }
-);
 ```
 </TabItem>
 

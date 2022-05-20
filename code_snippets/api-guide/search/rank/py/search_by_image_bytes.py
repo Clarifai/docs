@@ -1,13 +1,13 @@
-##################################################################
-# In this section, we set the user authentication, app ID, and 
-# image URL. Change these strings to run your own example.
-##################################################################
+#######################################################################
+# In this section, we set the user authentication, app ID, and image
+# file location. Change these strings to run your own example.
+#######################################################################
 
 USER_ID = 'YOUR_USER_ID_HERE'
 # Your PAT (Personal Access Token) can be found in the portal under Authentification
 PAT = 'YOUR_PAT_HERE'
 APP_ID = 'YOUR_APP_ID_HERE'
-# Change this to the image URL you want to search by
+# Change this to the image file location you want to search by
 IMAGE_FILE_LOCATION = 'YOUR_IMAGE_FILE_LOCATION'
 
 ##########################################################################

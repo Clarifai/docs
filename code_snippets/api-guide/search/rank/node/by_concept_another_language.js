@@ -1,18 +1,21 @@
 //index.js file
 
-//////////////////////////////////////////////////////////////////
-// In this section, we set the user authentication and app ID. 
-// Change these strings to run your own example.
-//////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+// In this section, we set the user authentication, app ID, concept name, and 
+// language ID. Change these strings to run your own example.
+///////////////////////////////////////////////////////////////////////////////////
 
 const USER_ID = 'YOUR_USER_ID_HERE';
 // Your PAT (Personal Access Token) can be found in the portal under Authentification
 const PAT = 'YOUR_PAT_HERE';
 const APP_ID = 'YOUR_APP_ID_HERE';
+// Change these to what you want to search by
+const CONCEPT_NAME = '犬';
+const LANGUAGE_ID = 'ja'; // Japanese
 
-/////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
 // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
-/////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
 
 const { ClarifaiStub, grpc } = require("clarifai-nodejs-grpc");
 
@@ -31,11 +34,17 @@ stub.PostAnnotationsSearches(
         searches: [
             {
                 query: {
-                    filters: [
+                    ranks: [
                         {
                             annotation: {
-                                annotation_info: {
-                                    "type": "animal"
+                                data: {
+                                    concepts: [  // You can search by multiple concepts.
+                                        {
+                                            name: CONCEPT_NAME,  // You could search by concept Id as well.
+                                            language: LANGUAGE_ID,
+                                            value: 1  // Value of 0 will search for images that don't have the concept
+                                        }
+                                    ]
                                 }
                             }
                         }

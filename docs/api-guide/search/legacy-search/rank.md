@@ -17,12 +17,19 @@ The initialization code used in the following example is outlined in detail on t
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
-import PythonAppConcepts from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/by_clarifaimain_app_concepts.py";
-import PythonCustomConcepts from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/by_custom_concepts.py";
-import PythonClarifaiCustomConcepts from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/by_clarifaimain_custom_concepts.py";
-import PythonConceptLanguage from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/by_concept_another_language.py";
-import PythonSearchImage from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/search_by_image.py";
-import PythonSearchURL from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/search_by_url.py";
+import PythonAppConcepts from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/py/by_clarifaimain_app_concepts.py";
+import PythonCustomConcepts from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/py/by_custom_concepts.py";
+import PythonClarifaiCustomConcepts from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/py/by_clarifaimain_custom_concepts.py";
+import PythonConceptLanguage from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/py/by_concept_another_language.py";
+import PythonSearchImage from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/py/search_by_image.py";
+import PythonSearchURL from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/py/search_by_url.py";
+
+import NodeAppConcepts from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/node/by_clarifaimain_app_concepts.js";
+import NodeCustomConcepts from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/node/by_custom_concepts.js";
+import NodeClarifaiCustomConcepts from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/node/by_clarifaimain_custom_concepts.js";
+import NodeConceptLanguage from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/node/by_concept_another_language.js";
+import NodeSearchImage from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/node/search_by_image.js";
+import NodeSearchURL from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/node/search_by_url.js";
 
 ## Search by Concepts
 

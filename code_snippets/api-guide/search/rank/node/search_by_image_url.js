@@ -1,18 +1,20 @@
 //index.js file
 
-//////////////////////////////////////////////////////////////////
-// In this section, we set the user authentication and app ID. 
-// Change these strings to run your own example.
-//////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+// In this section, we set the user authentication, app ID, and 
+// image URL. Change these strings to run your own example.
+////////////////////////////////////////////////////////////////////
 
 const USER_ID = 'YOUR_USER_ID_HERE';
 // Your PAT (Personal Access Token) can be found in the portal under Authentification
 const PAT = 'YOUR_PAT_HERE';
 const APP_ID = 'YOUR_APP_ID_HERE';
+// Change this to the image URL you want to search by
+const IMAGE_URL = 'https://samples.clarifai.com/metro-north.jpg';
 
-/////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
 // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
-/////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
 
 const { ClarifaiStub, grpc } = require("clarifai-nodejs-grpc");
 
@@ -31,11 +33,13 @@ stub.PostAnnotationsSearches(
         searches: [
             {
                 query: {
-                    filters: [
+                    ranks: [
                         {
                             annotation: {
-                                annotation_info: {
-                                    "type": "animal"
+                                data: {
+                                    image: {
+                                        url: IMAGE_URL
+                                    }
                                 }
                             }
                         }

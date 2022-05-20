@@ -1,0 +1,62 @@
+<!--index.html file-->
+
+<script>
+    /////////////////////////////////////////////////////////////////////////////
+    // In this section, we set the user authentication, app ID, and images to 
+    // add to the index. Change these strings to run your own example.
+    ////////////////////////////////////////////////////////////////////////////
+
+    const USER_ID = 'YOUR_USER_ID_HERE';
+    // Your PAT (Personal Access Token) can be found in the portal under Authentification
+    const PAT = 'YOUR_PAT_HERE';
+    const APP_ID = 'YOUR_APP_ID_HERE';
+    // Change these to add your own images to the search index  
+    const IMAGE_URL_1 = 'https://samples.clarifai.com/metro-north.jpg';
+    const IMAGE_URL_2 = 'https://samples.clarifai.com/wedding.jpg';
+
+    ///////////////////////////////////////////////////////////////////////////////////
+    // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
+    ///////////////////////////////////////////////////////////////////////////////////
+
+    const raw = JSON.stringify({
+        "user_app_id": {
+            "user_id": USER_ID,
+            "app_id": APP_ID
+        },
+        "inputs": [
+            {
+                "data": {
+                    "image": {
+                        "url": IMAGE_URL_1,
+                        "allow_duplicate_url": true
+                    }
+                }
+            },
+            {
+                "data": {
+                    "image": {
+                        "url": IMAGE_URL_2,
+                        "allow_duplicate_url": true
+                    }
+                }
+            }
+        ]
+    });
+
+    // # Use image's "base64" field to upload image from your local machine.
+
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Key ' + PAT
+        },
+        body: raw
+    };
+
+    fetch(`https://api.clarifai.com/v2/inputs`, requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+
+</script>
