@@ -30,13 +30,13 @@ The initialization code used in the following examples is outlined in detail on 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
-import PythonAddImages from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/knn_add_images.py";
-import PythonWaitUploadMap from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/knn_wait_upload_map_ids_urls.py";
-import PythonListAnnotations from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/knn_list_the_annotations.py";
-import PythonPostNewAnnotations from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/knn_post_new_annotations.py";
-import PythonCreateKnnModel from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/knn_create_knn_model.py";
-import PythonCreateWorkflow from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/knn_create_workflow.py";
-import PythonPredict from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/knn_predict.py";
+import PythonAddImages from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/py/knn_add_images.py";
+import PythonWaitUploadMap from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/py/knn_wait_upload_map_ids_urls.py";
+import PythonListAnnotations from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/py/knn_list_the_annotations.py";
+import PythonPostNewAnnotations from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/py/knn_post_new_annotations.py";
+import PythonCreateKnnModel from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/py/knn_create_knn_model.py";
+import PythonCreateWorkflow from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/py/knn_create_workflow.py";
+import PythonPredict from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/py/knn_predict.py";
 
 
 ## Add Images

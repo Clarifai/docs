@@ -17,14 +17,32 @@ The initialization code used in the following examples is outlined in detail on 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
-import PythonCustomConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/filter/by_custom_concepts.py";
-import PythonUserID from "!!raw-loader!../../../code_snippets/api-guide/search/filter/by_user_id.py";
-import PythonAnnotationStatus from "!!raw-loader!../../../code_snippets/api-guide/search/filter/by_annotation_status.py";
-import PythonInputsLongitude from "!!raw-loader!../../../code_snippets/api-guide/search/filter/add_inputs_longitude_latitude.py";
-import PythonOneGeoPoint from "!!raw-loader!../../../code_snippets/api-guide/search/filter/perform_search_one_geo_point.py";
-import PythonTwoGeoPoints from "!!raw-loader!../../../code_snippets/api-guide/search/filter/perform_search_two_geo_point.py";
-import PythonCustomAnnotation from "!!raw-loader!../../../code_snippets/api-guide/search/filter/by_custom_annotation_info.py";
-import PythonAnnotationInfo from "!!raw-loader!../../../code_snippets/api-guide/search/filter/by_annotation_info.py";
+import PythonCustomConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/filter/py/by_custom_concepts.py";
+import PythonUserID from "!!raw-loader!../../../code_snippets/api-guide/search/filter/py/by_user_id.py";
+import PythonAnnotationStatus from "!!raw-loader!../../../code_snippets/api-guide/search/filter/py/by_annotation_status.py";
+import PythonInputsLongitude from "!!raw-loader!../../../code_snippets/api-guide/search/filter/py/add_inputs_longitude_latitude.py";
+import PythonOneGeoPoint from "!!raw-loader!../../../code_snippets/api-guide/search/filter/py/perform_search_one_geo_point.py";
+import PythonTwoGeoPoints from "!!raw-loader!../../../code_snippets/api-guide/search/filter/py/perform_search_two_geo_point.py";
+import PythonCustomAnnotation from "!!raw-loader!../../../code_snippets/api-guide/search/filter/py/by_custom_annotation_info.py";
+import PythonAnnotationInfo from "!!raw-loader!../../../code_snippets/api-guide/search/filter/py/by_annotation_info.py";
+
+import JSCustomConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/filter/js/by_custom_concepts.html";
+import JSUserID from "!!raw-loader!../../../code_snippets/api-guide/search/filter/js/by_user_id.html";
+import JSAnnotationStatus from "!!raw-loader!../../../code_snippets/api-guide/search/filter/js/by_annotation_status.html";
+import JSInputsLongitude from "!!raw-loader!../../../code_snippets/api-guide/search/filter/js/add_inputs_longitude_latitude.html";
+import JSOneGeoPoint from "!!raw-loader!../../../code_snippets/api-guide/search/filter/js/perform_search_one_geo_point.html";
+import JSTwoGeoPoints from "!!raw-loader!../../../code_snippets/api-guide/search/filter/js/perform_search_two_geo_point.html";
+import JSCustomAnnotation from "!!raw-loader!../../../code_snippets/api-guide/search/filter/js/by_custom_annotation_info.html";
+import JSAnnotationInfo from "!!raw-loader!../../../code_snippets/api-guide/search/filter/js/by_annotation_info.html";
+
+import NodeCustomConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/filter/node/by_custom_concepts.js";
+import NodeUserID from "!!raw-loader!../../../code_snippets/api-guide/search/filter/node/by_user_id.js";
+import NodeAnnotationStatus from "!!raw-loader!../../../code_snippets/api-guide/search/filter/node/by_annotation_status.js";
+import NodeInputsLongitude from "!!raw-loader!../../../code_snippets/api-guide/search/filter/node/add_inputs_longitude_latitude.js";
+import NodeOneGeoPoint from "!!raw-loader!../../../code_snippets/api-guide/search/filter/node/perform_search_one_geo_point.js";
+import NodeTwoGeoPoints from "!!raw-loader!../../../code_snippets/api-guide/search/filter/node/perform_search_two_geo_point.js";
+import NodeCustomAnnotation from "!!raw-loader!../../../code_snippets/api-guide/search/filter/node/by_custom_annotation_info.js";
+import NodeAnnotationInfo from "!!raw-loader!../../../code_snippets/api-guide/search/filter/node/by_annotation_info.js";
 
 ## By Custom Concepts
 
@@ -34,6 +52,14 @@ After you annotate inputs with custom concepts, you can filter by concepts.
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonCustomConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSCustomConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeCustomConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -75,54 +101,6 @@ for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-stub.PostAnnotationsSearches(
-    {
-        searches: [
-            {
-                query: {
-                    filters: [
-                        {
-                            annotation: {
-                                data: {
-                                    concepts: [  // You can search by multiple concepts.
-                                        {
-                                            id: "people",  // You could search by concept Name as well.
-                                            value: 1  // Value of 0 will search for images that don't have the concept
-                                        }
-                                    ]
-                                }
-                            }
-                        }
-                    ]
-                }
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post annotations searches failed, status: " + response.status.description);
-        }
-
-        console.log("Search result:");
-        for (const hit of response.hits) {
-            console.log("\tScore " + hit.score + " for annotation: " + hit.annotation.id + " of input: ", hit.input.id);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -160,50 +138,6 @@ curl -X POST \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-  "user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "searches": [{
-    "query": {
-      "filters": [
-        {
-          "annotation": {
-            "data": {
-              "concepts": [
-                {
-                  "id":"people",
-                  "value": 1
-                }
-              ]
-            }
-          }
-        }
-      ]
-    }
-  }]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-	body: raw
-};
-
-fetch(`https://api.clarifai.com/v2/annotations/searches`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
-</TabItem>
-
 </Tabs>
 
 ## By User ID
@@ -214,6 +148,14 @@ If you have collaborators in your app and they helped you annotate your inputs, 
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonUserID}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSUserID}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeUserID}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -249,48 +191,6 @@ for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-stub.PostAnnotationsSearches(
-    {
-        searches: [
-            {
-                query: {
-                    filters: [
-                        {
-                            annotation: {
-                                user_id: "{user_id}"
-                            }
-                        }
-                    ]
-                }
-            }
-        ]
-
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post annotations searches failed, status: " + response.status.description);
-        }
-
-        console.log("Search result:");
-        for (const hit of response.hits) {
-            console.log("\tScore " + hit.score + " for annotation: " + hit.annotation.id + " of input: ", hit.input.id);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -320,43 +220,6 @@ curl -X POST \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-  "user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "searches": [{
-    "query": {
-      "filters": [
-        {
-          "annotation": {
-            "user_id": "{user_id}"
-          }
-        }
-      ]
-    }
-  }]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-	body: raw
-};
-
-fetch(`https://api.clarifai.com/v2/annotations/searches`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
-</TabItem>
-
 </Tabs>
 
 ## By Annotation Status
@@ -365,6 +228,14 @@ fetch(`https://api.clarifai.com/v2/annotations/searches`, requestOptions)
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonAnnotationStatus}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSAnnotationStatus}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeAnnotationStatus}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -405,49 +276,6 @@ for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-stub.PostAnnotationsSearches(
-    {
-        searches: [
-            {
-                query: {
-                    filters: [
-                        {
-                            annotation: {
-                                status: {
-                                    code: 24150
-                                }
-                            }
-                        }
-                    ]
-                }
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post annotations searches failed, status: " + response.status.description);
-        }
-
-        console.log("Search result:");
-        for (const hit of response.hits) {
-            console.log("\tScore " + hit.score + " for annotation: " + hit.annotation.id + " of input: ", hit.input.id);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -479,45 +307,6 @@ curl -X POST \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-  "user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "searches": [{
-    "query": {
-      "filters": [
-        {
-          "annotation": {
-            "status": {
-              "code": "ANNOTATION_SUCCESS"
-            }          
-          }
-        }
-      ]
-    }
-  }]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-	body: raw
-};
-
-fetch(`https://api.clarifai.com/v2/annotations/searches`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
-</TabItem>
-
 </Tabs>
 
 ## By Geo Location
@@ -540,6 +329,14 @@ Provide a geo point to an input. The geo point is a JSON object consisting of a 
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonInputsLongitude}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSInputsLongitude}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeInputsLongitude}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -577,42 +374,6 @@ if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-stub.PostInputs(
-    {
-        inputs: [
-            {
-                data: {
-                    image: {url: "https://samples.clarifai.com/dog.tiff", allow_duplicate_url: true},
-                    geo: {
-                        geo_point: {
-                            longitude: -30,
-                            latitude: 40
-                        }
-                    }
-                }
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post inputs failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -642,48 +403,6 @@ curl -X POST \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-  "user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "inputs": [
-    {
-      "data": {
-        "image": {
-          "url": "https://samples.clarifai.com/dog.tiff",
-          "allow_duplicate_url": true
-        },
-        "geo": {
-          "geo_point": {
-            "longitude": -30,
-            "latitude": 40
-          }
-        }
-      }
-    }
-  ]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-	body: raw
-};
-
-fetch(`https://api.clarifai.com/v2/inputs`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
-</TabItem>
-
 </Tabs>
 
 ### Perform a Search With One Geo Point and Radius in Kilometers
@@ -692,6 +411,14 @@ fetch(`https://api.clarifai.com/v2/inputs`, requestOptions)
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonOneGeoPoint}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSOneGeoPoint}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeOneGeoPoint}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -741,58 +468,6 @@ for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-stub.PostAnnotationsSearches(
-    {
-        searches: [
-            {
-                query: {
-                    filters: [
-                        {
-                            annotation: {
-                                data: {
-                                    geo: {
-                                        geo_point: {
-                                            longitude: -29,
-                                            latitude: 40
-                                        },
-                                        geo_limit: {
-                                            type: "withinKilometers",
-                                            value: 150.0
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    ]
-                }
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post annotations searches failed, status: " + response.status.description);
-        }
-
-        console.log("Search result:");
-        for (const hit of response.hits) {
-            console.log("\tScore " + hit.score + " for annotation: " + hit.annotation.id + " of input: ", hit.input.id);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -835,56 +510,6 @@ curl -X POST \
 ```
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-  "user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "searches": [
-    {
-      "query": {
-        "filters": [
-          {
-          "annotation": {
-              "data": {
-              "geo": {
-                  "geo_point": {
-                  "longitude": -29.0,
-                  "latitude": 40.0
-                  },
-                  "geo_limit": {
-                  "type": "withinKilometers",
-                  "value": 150
-	              }
-              }
-            }
-          }
-        }
-      ]
-      }
-    }
-  ]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-	body: raw
-};
-
-fetch(`https://api.clarifai.com/v2/annnotations/searches`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
-</TabItem>
-
 </Tabs>
 
 ### Perform a Search With Two Geo Points
@@ -893,6 +518,14 @@ fetch(`https://api.clarifai.com/v2/annnotations/searches`, requestOptions)
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonTwoGeoPoints}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSTwoGeoPoints}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeTwoGeoPoints}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -946,64 +579,6 @@ for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-stub.PostAnnotationsSearches(
-    {
-        searches: [
-            {
-                query: {
-                    filters: [
-                        {
-                            annotation: {
-                                data: {
-                                    geo: {
-                                        geo_box: [
-                                            {
-                                                geo_point: {
-                                                    longitude: -31,
-                                                    latitude: 42
-                                                }
-                                            },
-                                            {
-                                                geo_point: {
-                                                    longitude: -29,
-                                                    latitude: 39
-                                                }
-                                            }
-                                        ]
-                                    }
-                                }
-                            }
-                        }
-                    ]
-                }
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post annotations searches failed, status: " + response.status.description);
-        }
-
-        console.log("Search result:");
-        for (const hit of response.hits) {
-            console.log("\tScore " + hit.score + " for annotation: " + hit.annotation.id + " of input: ", hit.input.id);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -1049,62 +624,6 @@ curl -X POST \
     ]
   }'\
   https://api.clarifai.com/v2/annnotations/searches
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-  "user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "searches": [
-    {
-      "query": {
-      "filters": [
-          {
-          "annotation": {
-              "data": {
-              "geo": {
-                  "geo_box": [
-                  {
-                      "geo_point": {
-                      "latitude": 42,
-                      "longitude": -31
-                      }
-                  },
-                  {
-                      "geo_point": {
-                      "latitude": 39,
-                      "longitude": -29
-                      }
-                  }
-                  ]
-              }
-              }
-          }
-          }
-      ]
-      }       
-    }
-  ]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-	body: raw
-};
-
-fetch(`https://api.clarifai.com/v2/annnotations/searches`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 
@@ -1167,6 +686,14 @@ How to perform searches:
     <CodeBlock className="language-python">{PythonCustomAnnotation}</CodeBlock>
 </TabItem>
 
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSCustomAnnotation}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeCustomAnnotation}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -1205,51 +732,6 @@ for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-stub.PostAnnotationsSearches(
-    {
-        searches: [
-            {
-                query: {
-                    filters: [
-                        {
-                            annotation: {
-                                data: {
-                                    metadata: {
-                                        "type": "animal"
-                                    }
-                                }
-                            }
-                        }
-                    ]
-                }
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post annotations searches failed, status: " + response.status.description);
-        }
-
-        console.log("Search result:");
-        for (const hit of response.hits) {
-            console.log("\tScore " + hit.score + " for annotation: " + hit.annotation.id + " of input: ", hit.input.id);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -1282,49 +764,6 @@ curl -X POST \
     ]
   }'\
   https://api.clarifai.com/v2/annnotations/searches
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-  "user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "searches": [
-    {
-      "query": {
-      "filters": [
-          {
-          "annotation": {
-              "data": {
-              "metadata": {
-                  "type": "animal"
-              }
-              }
-          }
-          }
-      ]
-      }
-    }
-  ]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-	body: raw
-};
-
-fetch(`https://api.clarifai.com/v2/annnotations/searches`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 

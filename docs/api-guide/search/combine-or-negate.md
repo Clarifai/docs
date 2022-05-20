@@ -20,11 +20,17 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 import PythonCombineNegate from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate.py";
+import NodeCombineNegate from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate.js";
+
 
 <Tabs>
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonCombineNegate}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeCombineNegate}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -77,70 +83,6 @@ System.out.println("Found inputs " + postAnnotationsSearchesResponse.getHitsCoun
 for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
     System.out.printf("\tScore %.2f for annotation % of input %s\n", hit.getScore(), hit.getAnnotation().getId(), hit.getInput().getId())
 }
-```
-</TabItem>
-
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-// Here we search for images which we labeled with "cat" and for which the General prediction model does not find
-// a "dog" concept.
-stub.PostAnnotationsSearches(
-    {
-        searches: [
-            {
-                query: {
-                    filters: [
-                        {
-                            annotation: {
-                                data: {
-                                    concepts: [  // You can search by multiple concepts.
-                                        {
-                                            id: "cat",  // You could search by concept Name as well.
-                                            value: 1  // Value of 0 will search for images that don't have the concept
-                                        }
-                                    ]
-                                }
-                            }
-                        }
-                    ],
-                    ranks: [
-                        {
-                            annotation: {
-                                data: {
-                                    concepts: [  // You can search by multiple concepts.
-                                        {
-                                            id: "dog",  // You could search by concept Name as well.
-                                            value: 0  // Value of 0 will search for images that don't have the concept
-                                        }
-                                    ]
-                                }
-                            }
-                        }
-                    ]             
-                }
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post annotations searches failed, status: " + response.status.description);
-        }
-
-        console.log("Search result:");
-        for (const hit of response.hits) {
-            console.log("\tScore " + hit.score + " for annotation: " + hit.annotation.id + " of input: ", hit.input.id);
-        }
-    }
-);
 ```
 </TabItem>
 
