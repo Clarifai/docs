@@ -779,6 +779,14 @@ Each annotation has annotation info. Similar to metadata, you have full control 
     <CodeBlock className="language-python">{PythonAnnotationInfo}</CodeBlock>
 </TabItem>
 
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSAnnotationInfo}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeAnnotationInfo}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
 
 ```java
@@ -815,49 +823,6 @@ for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
 ```
 </TabItem>
 
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-stub.PostAnnotationsSearches(
-    {
-        searches: [
-            {
-                query: {
-                    filters: [
-                        {
-                            annotation: {
-                                annotation_info: {
-                                    "type": "animal"
-                                }
-                            }
-                        }
-                    ]
-                }
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post annotations searches failed, status: " + response.status.description);
-        }
-
-        console.log("Search result:");
-        for (const hit of response.hits) {
-            console.log("\tScore " + hit.score + " for annotation: " + hit.annotation.id + " of input: ", hit.input.id);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -888,47 +853,6 @@ curl -X POST \
     ]
   }'\
   https://api.clarifai.com/v2/annnotations/searches
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-  "user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "searches": [
-    {
-      "query": {
-      "filters": [
-          {
-          "annotation": {
-              "annotation_info": {
-              "type": "animal"
-              }
-          }
-          }
-      ]
-      }
-    }
-  ]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-	body: raw
-};
-
-fetch(`https://api.clarifai.com/v2/annnotations/searches`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 

@@ -17,12 +17,17 @@ The initialization code used in the following example is outlined in detail on t
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
-import PythonCombineNegate from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/combine_or_negate.py";
+import PythonCombineNegate from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/py/combine_or_negate.py";
+import NodeCombineNegate from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/node/combine_or_negate.js";
 
 <Tabs>
 
 <TabItem value="grpc_python" label="gRPC Python">
     <CodeBlock className="language-python">{PythonCombineNegate}</CodeBlock>
+</TabItem>
+
+<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+    <CodeBlock className="language-javascript">{NodeCombineNegate}</CodeBlock>
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
@@ -75,66 +80,6 @@ System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
 for (Hit hit : postSearchesResponse.getHitsList()) {
     System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
 }
-```
-</TabItem>
-
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-// Here we search for images which we labeled with "cat" and for which the General prediction model does not find
-// a "dog" concept.
-stub.PostSearches(
-    {
-        query: {
-            ands: [
-                {
-                    input: {  // Setting Input indicates we search for images that have the concept(s)
-                              // which we added to the input manually.
-                        data: {
-                            concepts: [
-                                {
-                                    name: "cat",
-                                    value: 1
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    output: {  // Setting Output indicates we search for images that have the concept(s)
-                               // which were predicted by the General model.
-                        data: {
-                            concepts: [
-                                {
-                                    name: "dog",
-                                    value: 0
-                                }
-                            ]
-                        }
-                    }
-                }
-            ]
-        }
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post searches failed, status: " + response.status.description);
-        }
-
-        console.log("Found inputs:");
-        for (const hit of response.hits) {
-            console.log("\tScore " + hit.score + " for " + hit.input.id);
-        }
-    }
-);
 ```
 </TabItem>
 

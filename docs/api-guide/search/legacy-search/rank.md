@@ -17,12 +17,19 @@ The initialization code used in the following example is outlined in detail on t
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
-import PythonAppConcepts from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/by_clarifaimain_app_concepts.py";
-import PythonCustomConcepts from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/by_custom_concepts.py";
-import PythonClarifaiCustomConcepts from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/by_clarifaimain_custom_concepts.py";
-import PythonConceptLanguage from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/by_concept_another_language.py";
-import PythonSearchImage from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/search_by_image.py";
-import PythonSearchURL from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/search_by_url.py";
+import PythonAppConcepts from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/py/by_clarifaimain_app_concepts.py";
+import PythonCustomConcepts from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/py/by_custom_concepts.py";
+import PythonClarifaiCustomConcepts from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/py/by_clarifaimain_custom_concepts.py";
+import PythonConceptLanguage from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/py/by_concept_another_language.py";
+import PythonSearchImage from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/py/search_by_image.py";
+import PythonSearchURL from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/py/search_by_url.py";
+
+import NodeAppConcepts from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/node/by_clarifaimain_app_concepts.js";
+import NodeCustomConcepts from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/node/by_custom_concepts.js";
+import NodeClarifaiCustomConcepts from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/node/by_clarifaimain_custom_concepts.js";
+import NodeConceptLanguage from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/node/by_concept_another_language.js";
+import NodeSearchImage from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/node/search_by_image.js";
+import NodeSearchURL from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/node/search_by_url.js";
 
 ## Search by Concepts
 
@@ -36,6 +43,10 @@ When you add an input, it automatically gets predictions from the models in your
 
 <TabItem value="grpc_python" label="gRPC Python">
     <CodeBlock className="language-python">{PythonAppConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+    <CodeBlock className="language-javascript">{NodeAppConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
@@ -73,51 +84,6 @@ System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
 for (Hit hit : postSearchesResponse.getHitsList()) {
     System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
 }
-```
-</TabItem>
-
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostSearches(
-    {
-        query: {
-            ands: [
-                {
-                    output: {  // Setting Output indicates we search for images that have the concept(s)
-                               // which were predicted by the General model.
-                        data: {
-                            concepts: [  // You can search by multiple concepts.
-                                {
-                                    name: "people",  // You could search by concept ID as well.
-                                    value: 1  // Value of 0 will search for images that don't have the concept
-                                }
-                            ]
-                        }
-                    }
-                }
-            ]
-        }
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post searches failed, status: " + response.status.description);
-        }
-
-        console.log("Found inputs:");
-        for (const hit of response.hits) {
-            console.log("\tScore " + hit.score + " for " + hit.input.id);
-        }
-    }
-);
 ```
 </TabItem>
 
@@ -338,6 +304,10 @@ After you have added inputs with concepts, you can search by those concepts.
     <CodeBlock className="language-python">{PythonCustomConcepts}</CodeBlock>
 </TabItem>
 
+<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+    <CodeBlock className="language-javascript">{NodeCustomConcepts}</CodeBlock>
+</TabItem>
+
 <TabItem value="grpc_java" label="gRPC Java">
 
 ```java
@@ -373,51 +343,6 @@ System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
 for (Hit hit : postSearchesResponse.getHitsList()) {
     System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
 }
-```
-</TabItem>
-
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostSearches(
-    {
-        query: {
-            ands: [
-                {
-                    input: {  // Setting Input indicates we search for images that have the concept(s)
-                              // which we added to the input manually.
-                        data: {
-                            concepts: [  // You can search by multiple concepts.
-                                {
-                                    name: "people",  // You could search by concept ID as well.
-                                    value: 1  // Value of 0 will search for images that we marked not to have the concept.
-                                }
-                            ]
-                        }
-                    }
-                }
-            ]
-        }
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post searches failed, status: " + response.status.description);
-        }
-
-        console.log("Found inputs:");
-        for (const hit of response.hits) {
-            console.log("\tScore " + hit.score + " for " + hit.input.id);
-        }
-    }
-);
 ```
 </TabItem>
 
@@ -643,6 +568,10 @@ You can combine a search to find inputs that have concepts you have supplied as 
     <CodeBlock className="language-python">{PythonClarifaiCustomConcepts}</CodeBlock>
 </TabItem>
 
+<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+    <CodeBlock className="language-javascript">{NodeClarifaiCustomConcepts}</CodeBlock>
+</TabItem>
+
 <TabItem value="grpc_java" label="gRPC Java">
 
 ```java
@@ -693,66 +622,6 @@ System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
 for (Hit hit : postSearchesResponse.getHitsList()) {
     System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
 }
-```
-</TabItem>
-
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-// Here we search for images which we labeled with "cat" and for which the General prediction model does not find
-// a "dog" concept.
-stub.PostSearches(
-    {
-        query: {
-            ands: [
-                {
-                    input: {  // Setting Input indicates we search for images that have the concept(s)
-                              // which we added to the input manually.
-                        data: {
-                            concepts: [
-                                {
-                                    name: "cat",
-                                    value: 1
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    output: {  // Setting Output indicates we search for images that have the concept(s)
-                               // which were predicted by the General model.
-                        data: {
-                            concepts: [
-                                {
-                                    name: "dog",
-                                    value: 0
-                                }
-                            ]
-                        }
-                    }
-                }
-            ]
-        }
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post searches failed, status: " + response.status.description);
-        }
-
-        console.log("Found inputs:");
-        for (const hit of response.hits) {
-            console.log("\tScore " + hit.score + " for " + hit.input.id);
-        }
-    }
-);
 ```
 </TabItem>
 
@@ -946,6 +815,10 @@ For example, if you app is in English and you want to search for "dog" in Japane
     <CodeBlock className="language-python">{PythonConceptLanguage}</CodeBlock>
 </TabItem>
 
+<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+    <CodeBlock className="language-javascript">{NodeConceptLanguage}</CodeBlock>
+</TabItem>
+
 <TabItem value="grpc_java" label="gRPC Java">
 
 ```java
@@ -982,52 +855,6 @@ System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
 for (Hit hit : postSearchesResponse.getHitsList()) {
     System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
 }
-```
-</TabItem>
-
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostSearches(
-    {
-        query: {
-            ands: [
-                {
-                    output: {  // Setting Output indicates we search for images that have the concept(s)
-                               // which were predicted by the General model.
-                        data: {
-                            concepts: [  // You can search by multiple concepts.
-                                {
-                                    name: "犬",  // You could search by concept ID as well.
-                                    language: "ja", // japanese
-                                    value: 1  // Value of 0 will search for images that don't have the concept
-                                }
-                            ]
-                        }
-                    }
-                }
-            ]
-        }
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post searches failed, status: " + response.status.description);
-        }
-
-        console.log("Found inputs:");
-        for (const hit of response.hits) {
-            console.log("\tScore " + hit.score + " for " + hit.input.id);
-        }
-    }
-);
 ```
 </TabItem>
 
@@ -1074,6 +901,10 @@ You can use images to search through your collection. The API will return ranked
     <CodeBlock className="language-python">{PythonSearchImage}</CodeBlock>
 </TabItem>
 
+<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+    <CodeBlock className="language-javascript">{NodeSearchImage}</CodeBlock>
+</TabItem>
+
 <TabItem value="grpc_java" label="gRPC Java">
 
 ```java
@@ -1109,49 +940,6 @@ System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
 for (Hit hit : postSearchesResponse.getHitsList()) {
     System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
 }
-```
-</TabItem>
-
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostSearches(
-    {
-        query: {
-            ands: [
-                {
-                    output: {
-                        input: {
-                            data: {
-                                image: {
-                                    url: "{YOUR_IMAGE_URL}"
-                                }
-                            }
-                        }
-                    }
-                }
-            ]
-        }
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post searches failed, status: " + response.status.description);
-        }
-
-        console.log("Found inputs:");
-        for (const hit of response.hits) {
-            console.log("\tScore " + hit.score + " for " + hit.input.id);
-        }
-    }
-);
 ```
 </TabItem>
 
@@ -1338,6 +1126,10 @@ You can also search for an input by URL.
     <CodeBlock className="language-python">{PythonSearchURL}</CodeBlock>
 </TabItem>
 
+<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+    <CodeBlock className="language-javascript">{NodeSearchURL}</CodeBlock>
+</TabItem>
+
 <TabItem value="grpc_java" label="gRPC Java">
 
 ```java
@@ -1371,47 +1163,6 @@ System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
 for (Hit hit : postSearchesResponse.getHitsList()) {
     System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
 }
-```
-</TabItem>
-
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostSearches(
-    {
-        query: {
-            ands: [
-                {
-                    input: {
-                        data: {
-                            image: {
-                                url: "{YOUR_IMAGE_URL}"
-                            }
-                        }
-                    }
-                }
-            ]
-        }
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post searches failed, status: " + response.status.description);
-        }
-
-        console.log("Found inputs:");
-        for (const hit of response.hits) {
-            console.log("\tScore " + hit.score + " for " + hit.input.id);
-        }
-    }
-);
 ```
 </TabItem>
 

@@ -18,11 +18,21 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 import PythonIndexImages from "!!raw-loader!../../../code_snippets/api-guide/search/index_images_for_search.py";
+import JSIndexImages from "!!raw-loader!../../../code_snippets/api-guide/search/index_images_for_search.html";
+import NodeIndexImages from "!!raw-loader!../../../code_snippets/api-guide/search/index_images_for_search.js";
 
 <Tabs>
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonIndexImages}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSIndexImages}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeIndexImages}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -81,48 +91,6 @@ if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-const fs = require("fs");
-const imageBytes = fs.readFileSync("{YOUR_IMAGE_FILE_LOCATION}");
-
-stub.PostInputs(
-    {
-        inputs: [
-            {
-                data: {image: {url: "https://samples.clarifai.com/metro-north.jpg", allow_duplicate_url: true}}
-            },
-            {
-                data: {image: {url: "https://samples.clarifai.com/puppy.jpeg", allow_duplicate_url: true}}
-            },
-            {
-                data: {image: {base64: imageBytes}}
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            for (const input of response.inputs) {
-                console.log("Input " + input.id + " status: ");
-                console.log(JSON.stringify(input.status, null, 2) + "\n");
-            }
-
-            throw new Error("Post inputs failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -153,52 +121,6 @@ curl -X POST \
   https://api.clarifai.com/v2/inputs
 
 # Use image's "base64" field to upload image from your local machine.
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-  "user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "inputs": [
-    {
-      "data": {
-        "image": {
-          "url": "https://samples.clarifai.com/metro-north.jpg",
-          "allow_duplicate_url": true
-        }
-      }
-    },
-    {
-      "data": {
-        "image": {
-          "url": "https://samples.clarifai.com/wedding.jpg",
-          "allow_duplicate_url": true
-        }
-      }
-    }
-  ]
-});
-
-// # Use image's "base64" field to upload image from your local machine.
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-	body: raw
-};
-
-fetch(`https://api.clarifai.com/v2/inputs`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 

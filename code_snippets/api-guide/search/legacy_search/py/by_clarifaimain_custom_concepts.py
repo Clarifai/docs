@@ -8,9 +8,9 @@ USER_ID = 'YOUR_USER_ID_HERE'
 PAT = 'YOUR_PAT_HERE'
 APP_ID = 'YOUR_APP_ID_HERE'
 # Change this to a Clarifai/main concept
-CONCEPT_ID_1 = 'ai_fvlBqXZR'
+CONCEPT_NAME_1 = 'ai_fvlBqXZR'
 # Change this to your own custom concept
-CONCEPT_ID_2 = 'people'
+CONCEPT_NAME_2 = 'people'
 
 ##########################################################################
 # YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -40,7 +40,7 @@ post_searches_response = stub.PostSearches(
                         data=resources_pb2.Data(
                             concepts=[
                                 resources_pb2.Concept(
-                                    name=CONCEPT_ID_1,
+                                    name=CONCEPT_NAME_1,
                                     value=1
                                 )
                             ]
@@ -53,7 +53,7 @@ post_searches_response = stub.PostSearches(
                         data=resources_pb2.Data(
                             concepts=[
                                 resources_pb2.Concept(
-                                    name=CONCEPT_ID_2,
+                                    name=CONCEPT_NAME_2,
                                     value=0
                                 )
                             ]

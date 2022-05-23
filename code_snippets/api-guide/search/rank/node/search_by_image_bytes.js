@@ -1,18 +1,20 @@
 //index.js file
 
-//////////////////////////////////////////////////////////////////
-// In this section, we set the user authentication and app ID. 
-// Change these strings to run your own example.
-//////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+// In this section, we set the user authentication, app ID, and image
+// file location. Change these strings to run your own example.
+////////////////////////////////////////////////////////////////////////
 
 const USER_ID = 'YOUR_USER_ID_HERE';
 // Your PAT (Personal Access Token) can be found in the portal under Authentification
 const PAT = 'YOUR_PAT_HERE';
 const APP_ID = 'YOUR_APP_ID_HERE';
+// Change this to the image file location you want to search by
+const IMAGE_FILE_LOCATION = 'YOUR_IMAGE_FILE_LOCATION';
 
-/////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
 // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
-/////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
 
 const { ClarifaiStub, grpc } = require("clarifai-nodejs-grpc");
 
@@ -21,6 +23,9 @@ const stub = ClarifaiStub.grpc();
 // This will be used by every Clarifai endpoint call
 const metadata = new grpc.Metadata();
 metadata.set("authorization", "Key " + PAT);
+
+const fs = require("fs");
+const imageBytes = fs.readFileSync(IMAGE_FILE_LOCATION);
 
 stub.PostAnnotationsSearches(
     {
@@ -31,11 +36,13 @@ stub.PostAnnotationsSearches(
         searches: [
             {
                 query: {
-                    filters: [
+                    ranks: [
                         {
                             annotation: {
-                                annotation_info: {
-                                    "type": "animal"
+                                data: {
+                                    image: {
+                                        base64: imageBytes
+                                    }
                                 }
                             }
                         }
