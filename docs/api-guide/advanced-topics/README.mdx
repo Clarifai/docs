@@ -9,3 +9,8 @@ description: Learn about advanced capabilities in our platform.
 
 Unlock the power of the Clarifai API.
 
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
+

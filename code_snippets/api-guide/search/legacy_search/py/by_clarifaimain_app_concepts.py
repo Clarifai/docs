@@ -1,14 +1,14 @@
-##################################################################################
-# In this section, we set the user authentication, app ID, and the concept ID we  
+#####################################################################################
+# In this section, we set the user authentication, app ID, and the concept name we  
 # we want to rank by. Change these strings to run your own example.
-##################################################################################
+#####################################################################################
 
 USER_ID = 'YOUR_USER_ID_HERE'
 # Your PAT (Personal Access Token) can be found in the portal under Authentification
 PAT = 'YOUR_PAT_HERE'
 APP_ID = 'YOUR_APP_ID_HERE'
 # Change this to rank by a Clarifai/main concept
-CONCEPT_ID = 'ai_fvlBqXZR'
+CONCEPT_NAME = 'ai_fvlBqXZR'
 
 ##########################################################################
 # YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -36,7 +36,8 @@ post_searches_response = stub.PostSearches(
                         data=resources_pb2.Data(
                             concepts=[  # You can search by multiple concepts
                                 resources_pb2.Concept(
-                                    name=CONCEPT_ID,  # You could search by concept ID as well
+                                    name=CONCEPT_NAME,  
+                                    #id=CONCEPT_ID, # You could search by concept ID as well
                                     value=1  # Value of 0 will search for images that don't have the concept
                                 )
                             ]

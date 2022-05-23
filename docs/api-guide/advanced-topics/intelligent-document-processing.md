@@ -10,7 +10,7 @@ sidebar_position: 5
 
 ## Introduction
 
-> In this series of posts, advanced users at Clarifai will present working solutions to help you kick-start your own AI solutions.
+In this series of posts, advanced users at Clarifai will present working solutions to help you kick-start your own AI solutions.
 
 ### The Use Case
 
@@ -98,7 +98,7 @@ import PythonFullImplementation from "!!raw-loader!../../../code_snippets/api-gu
 
 <Tabs>
 
-<TabItem value="python" label="Pythonz" default>
+<TabItem value="python" label="Python" default>
     <CodeBlock className="language-python">{PythonSetup}</CodeBlock>
 </TabItem>
 

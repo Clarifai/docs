@@ -18,12 +18,16 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 import PythonPagination from "!!raw-loader!../../../code_snippets/api-guide/advanced_topics/pagination.py";
-
+import NodePagination from "!!raw-loader!../../../code_snippets/api-guide/advanced_topics/pagination.js";
 
 <Tabs>
 
 <TabItem value="python" label="Python" default>
     <CodeBlock className="language-python">{PythonPagination}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS" default>
+    <CodeBlock className="language-javascript">{NodePagination}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java" default>
@@ -49,32 +53,6 @@ if (listInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 for (Input input : listInputsResponse.getInputsList()) {
     System.out.println(input);
 }
-```
-</TabItem>
-
-<TabItem value="nodejs" label="NodeJS" default>
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.ListInputs(
-    {page: 2, per_page: 20},
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("List inputs failed, status: " + response.status.description);
-        }
-
-        for (const input of response.inputs) {
-            console.log(JSON.stringify(input, null, 2));
-        }
-    }
-);
 ```
 </TabItem>
 
