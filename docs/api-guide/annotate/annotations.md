@@ -33,6 +33,7 @@ import PythonAnnotateExistingRegionsImage from "!!raw-loader!../../../code_snipp
 import PythonAnnotateImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/annotate_images_concepts.py";
 import PythonAnnotateImagesUserIdStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/annotate_images_user_id_status.py";
 import PythonAnnotateNewBoundingBoxesImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/annotate_new_bounding_boxes_image.py";
+import PythonAnnotatePolygonsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/annotate_polygons_image.py";
 import PythonbulkDeleteAnnotationsInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/bulk_delete_annotations_input_annotation_ids.py";
 import PythonBulkDeleteAnnotationsInputIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/bulk_delete_annotations_input_ids.py";
 import PythonDeleteAnnotationInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/delete_annotation_input_annotation_ids.py";
@@ -51,6 +52,7 @@ import JSAnnotateExistingRegionsImage from "!!raw-loader!../../../code_snippets/
 import JSAnnotateImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/annotate_images_concepts.html";
 import JSAnnotateImagesUserIdStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/annotate_images_user_id_status.html";
 import JSAnnotateNewBoundingBoxesImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/annotate_new_bounding_boxes_image.html";
+import JSAnnotatePolygonsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/annotate_polygons_image.html";
 import JSbulkDeleteAnnotationsInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/bulk_delete_annotations_input_annotation_ids.html";
 import JSBulkDeleteAnnotationsInputIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/bulk_delete_annotations_input_ids.html";
 import JSDeleteAnnotationInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/delete_annotation_input_annotation_ids.html";
@@ -69,6 +71,7 @@ import NodeAnnotateExistingRegionsImage from "!!raw-loader!../../../code_snippet
 import NodeAnnotateImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/annotate_images_concepts.js";
 import NodeAnnotateImagesUserIdStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/annotate_images_user_id_status.js";
 import NodeAnnotateNewBoundingBoxesImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/annotate_new_bounding_boxes_image.js";
+import NodeAnnotatePolygonsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/annotate_polygons_image.js";
 import NodebulkDeleteAnnotationsInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/bulk_delete_annotations_input_annotation_ids.js";
 import NodeBulkDeleteAnnotationsInputIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/bulk_delete_annotations_input_ids.js";
 import NodeDeleteAnnotationInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/delete_annotation_input_annotation_ids.js";
@@ -353,6 +356,28 @@ curl -X POST \
 }'\
   https://api.clarifai.com/v2/annotations
 ```
+</TabItem>
+
+</Tabs>
+
+### Annotate Polygons in an Image
+
+Below is an example of how to provide annotations within any polygon-shaped region of an image. 
+
+Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonAnnotatePolygonsImage}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSAnnotatePolygonsImage}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeAnnotatePolygonsImage}</CodeBlock>
 </TabItem>
 
 </Tabs>
