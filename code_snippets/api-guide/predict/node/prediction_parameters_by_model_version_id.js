@@ -36,7 +36,7 @@ stub.PostModelOutputs(
         model_id: MODEL_ID, // This is model ID of the clarifai/main General model.
         version_id: MODEL_VERSION_ID,
         inputs: [
-            { data: { img: { url: IMAGE_URL, allow_duplicate_url: true } } }
+            { data: { image: { url: IMAGE_URL, allow_duplicate_url: true } } }
         ]
     },
     metadata,

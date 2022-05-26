@@ -9,7 +9,7 @@ PAT = 'YOUR_PAT_HERE'
 APP_ID = 'YOUR_APP_ID_HERE'
 # Change these to whatever relations you want to delete
 OBJECT_CONCEPT_ID = 'YOUR_OBJECT_CONCEPT_ID_HERE'
-CONCEPT_RELATION_IDs = ['YOUR_CONCEPT_RELATION_IDs_HERE']
+CONCEPT_RELATION_IDS = ['0d9b0acb10fb4dac9a9d60a149d8fc5c','f5acf9c2a76143d78daf5f984693c52c']
 
 ##########################################################################
 # YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -31,7 +31,7 @@ delete_concept_relation_response = stub.DeleteConceptRelations(
             app_id=APP_ID
         ),
         concept_id=OBJECT_CONCEPT_ID,
-        ids=CONCEPT_RELATION_IDs
+        ids=CONCEPT_RELATION_IDS
     ),
     metadata=metadata
 )

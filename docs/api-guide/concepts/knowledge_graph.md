@@ -271,6 +271,12 @@ Below is an example of how to delete relations between concepts.
 
 Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
 
+:::tip
+
+To retrieve the `CONCEPT_RELATION_IDS`, log in to the Portal and access the relations details of your concept. Then, inspect the network activity under your browser's Network Tab. The IDs are under the `relations` category. 
+
+:::
+
 <Tabs>
 
 <TabItem value="python" label="Python">

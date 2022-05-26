@@ -29,7 +29,6 @@ stub.ListConcepts(
             "app_id": APP_ID
         },
     },
-    {},
     metadata,
     (err, response) => {
         if (err) {
@@ -38,6 +37,9 @@ stub.ListConcepts(
 
         if (response.status.code !== 10000) {
             throw new Error("List concepts failed, status: " + response.status.description);
+        }
+        for (const concepts of response.concepts) {
+            console.log(concepts)
         }
     }
 );

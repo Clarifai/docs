@@ -19,3 +19,8 @@ After training, the model can predict the concepts "dog" and "cat" and you can s
 
 * Avoid special characters and spaces
 * Avoid long concept names. Typically, 1-3 word concepts are best
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>

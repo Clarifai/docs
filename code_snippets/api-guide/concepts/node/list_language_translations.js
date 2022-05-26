@@ -41,5 +41,8 @@ stub.ListConceptLanguages(
         if (response.status.code !== 10000) {
             throw new Error("List concepts failed, status: " + response.status.description);
         }
+        for (const languages of response.concept_languages) {
+            console.log(languages)
+        }
     }
 );

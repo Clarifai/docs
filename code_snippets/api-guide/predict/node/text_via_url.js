@@ -37,7 +37,7 @@ stub.PostModelOutputs(
         model_id: MODEL_ID,
         version_id: MODEL_VERSION_ID, // This is optional. Defaults to the latest model version.
         inputs: [
-            { data: { image: { url: TEXT_URL, allow_duplicate_url: true } } }
+            { data: { text: { url: TEXT_URL, allow_duplicate_url: true } } }
         ]
     },
     metadata,
@@ -53,7 +53,7 @@ stub.PostModelOutputs(
         // Since we have one input, one output will exist here.
         const output = response.outputs[0];
 
-        console.log("Perdict concepts:");
+        console.log("Predicted concepts:");
         for (const concept of output.data.concepts) {
             console.log(concept.name + " " + concept.value);
         }

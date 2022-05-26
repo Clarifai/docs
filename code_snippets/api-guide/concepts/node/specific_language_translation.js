@@ -43,5 +43,6 @@ stub.GetConceptLanguage(
         if (response.status.code !== 10000) {
             throw new Error("Get concepts failed, status: " + response.status.description);
         }
+        console.log(response.concept_language);
     }
 );
