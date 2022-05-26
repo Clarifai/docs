@@ -11,18 +11,14 @@
     const APP_ID = 'YOUR_APP_ID_HERE';
     // Change these to whatever concepts you want to process
     const OBJECT_CONCEPT_ID = 'YOUR_OBJECT_CONCEPT_ID_HERE';
-    const CONCEPT_RELATION_IDS = ['0d9b0acb10fb4dac9a9d60a149d8fc5c','f5acf9c2a76143d78daf5f984693c52c'];
+    const CONCEPT_RELATION_IDS = ['0d9b0acb10fb4dac9a9d60a149d8fc5c', 'f5acf9c2a76143d78daf5f984693c52c'];
 
     ///////////////////////////////////////////////////////////////////////////////////
     // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
     ///////////////////////////////////////////////////////////////////////////////////
 
     const raw = JSON.stringify({
-        "user_app_id": {
-            "user_id": USER_ID,
-            "app_id": APP_ID
-        },
-        "ids": CONCEPT_RELATION_IDS        
+        "ids": CONCEPT_RELATION_IDS
     });
 
     const requestOptions = {
@@ -31,6 +27,7 @@
             'Accept': 'application/json',
             'Authorization': 'Key ' + PAT
         },
+        body: raw
     };
 
     fetch("https://api.clarifai.com/v2/users/me/apps/" + APP_ID + "/concepts/" + OBJECT_CONCEPT_ID + "/relations", requestOptions)
