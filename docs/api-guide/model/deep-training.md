@@ -70,6 +70,9 @@ import PythonCreateEmbedder from "!!raw-loader!../../../code_snippets/api-guide/
 import PythonCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_workflow_deep_trained_model.py";
 import PythonUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.py";
 
+import NodeCreateClassifier from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_visual_classifier.js";
+import NodeCreateDetector from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_visual_detector.js";
+import NodeCreateEmbedder from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_visual_embedder.js";
 import NodeCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_workflow_deep_trained_model.js";
 import NodeUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.js";
 
@@ -90,6 +93,9 @@ Use a visual classifier model if you would like to classify images and videos fr
     <CodeBlock className="language-python">{PythonCreateClassifier}</CodeBlock>
 </TabItem>
 
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeCreateClassifier}</CodeBlock>
+</TabItem>
 
 <TabItem value="java" label="Java">
 
@@ -138,55 +144,6 @@ if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostModels(
-    {
-        models: [
-            {
-                id: "lawrence-1591638385",
-                model_type_id: "visual-classifier",
-                train_info: {
-                    params: {
-                        num_epoch: 2,
-                        template: "classification_cifar10_v1"
-                    }
-                },
-                output_info: {
-                    data: {
-                        concepts: [
-                            {id: "ferrari23"},
-                            {id: "outdoors23"}
-                        ]
-                    },
-                    output_config: {
-                        closed_environment: true
-                    }
-                }
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            done(err);
-            return;
-        }
-
-        if (response.status.code !== 10000) {
-            done(new Error("Received status: " + response.status.description + "\n" + response.status.details));
-        }
-
-        done();
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -228,6 +185,10 @@ Create a visual detector to detect bounding box regions in images or video frame
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonCreateDetector}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeCreateDetector}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -277,52 +238,6 @@ if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostModels(
-    {
-        models: [
-            {
-                id: "detection-test-1591638385",
-                model_type_id: "visual-detector",
-                train_info: {
-                    params: {
-                        num_epoch: 2,
-                        template: "Clarifai-InceptionV2"
-                    }
-                },
-                output_info: {
-                    data: {
-                        concepts: [
-                            {id: "ferrari23"},
-                            {id: "outdoors23"}
-                        ]
-                    },
-                    output_config: {
-                        closed_environment: true
-                    }
-                }
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Received status: " + response.status.description + "\n" + response.status.details);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -364,6 +279,10 @@ Create a visual embedding model to transform images and videos frames into "high
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonCreateEmbedder}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeCreateEmbedder}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
@@ -410,52 +329,6 @@ SingleModelResponse postModelsResponse = stub.postModels(
 if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
     throw new RuntimeException("Post models failed, status: " + postModelsResponse.getStatus());
 }
-```
-</TabItem>
-
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PostModels(
-    {
-        models: [
-            {
-                id: "embed-test-1591638385",
-                model_type_id: "visual-embedder",
-                train_info: {
-                    params: {
-                        num_epoch: 2,
-                        template: "classification_basemodel_v1_embed"
-                    }
-                },
-                output_info: {
-                    data: {
-                        concepts: [
-                            {id: "ferrari23"},
-                            {id: "outdoors23"}
-                        ]
-                    },
-                    output_config: {
-                        closed_environment: true
-                    }
-                }
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Received status: " + response.status.description + "\n" + response.status.details);
-        }
-    }
-);
 ```
 </TabItem>
 
