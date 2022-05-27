@@ -26,7 +26,7 @@ const stub = ClarifaiStub.grpc();
 const metadata = new grpc.Metadata();
 metadata.set("authorization", "Key " + PAT);
 
-stub.PatchConceptLanguage(
+stub.PatchConceptLanguages(
     {
         user_app_id: {
             "user_id": USER_ID,

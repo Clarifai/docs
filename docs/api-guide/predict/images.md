@@ -464,7 +464,7 @@ Note that the initialization code used here is outlined in detail on the [client
     <CodeBlock className="language-python">{CodePythonViaBytes}</CodeBlock>
 </TabItem>
 
-<TabItem value="js_rest" label="Javascript (REST)">
+<TabItem value="js_rest" label="JavaScript (REST)">
    <CodeBlock className="language-javascript">{CodeJavaScriptViaBytes}</CodeBlock>
 </TabItem>
 

@@ -129,7 +129,7 @@ concepts {
 
 ### Get Concept by ID
 
-Below is an example of how to get a singular concept by it's ID.
+Below is an example of how to get a single concept by its ID.
 
 Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
 

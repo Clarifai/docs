@@ -41,5 +41,8 @@ stub.GetConcept(
         if (response.status.code !== 10000) {
             throw new Error("Get concepts failed, status: " + response.status.description);
         }
+
+        const concept = response.concept;
+        console.log(JSON.stringify(concept, null, 2));
     }
 );

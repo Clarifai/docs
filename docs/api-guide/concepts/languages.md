@@ -78,7 +78,7 @@ import NodeJSUpdateLanguageTranslation from "!!raw-loader!../../../code_snippets
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="grpc_python" label="gRPC Python">
     <CodeBlock className="language-python">{PythonListLanguageTranslations}</CodeBlock>
 </TabItem>
 
@@ -148,7 +148,7 @@ Note that the initialization code used here is outlined in detail on the [client
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="grpc_python" label="gRPC Python">
     <CodeBlock className="language-python">{PythonSpecificLanguageTranslation}</CodeBlock>
 </TabItem>
 
@@ -219,7 +219,7 @@ Note that the initialization code used here is outlined in detail on the [client
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="grpc_python" label="gRPC Python">
     <CodeBlock className="language-python">{PythonAddLanguageTranslation}</CodeBlock>
 </TabItem>
 
@@ -290,7 +290,7 @@ Note that the initialization code used here is outlined in detail on the [client
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="grpc_python" label="gRPC Python">
     <CodeBlock className="language-python">{PythonUpdateLanguageTranslation}</CodeBlock>
 </TabItem>
 

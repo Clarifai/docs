@@ -36,7 +36,7 @@ stub.PostModelOutputs(
         },
         model_id: MODEL_ID, // This is model ID of the clarifai/main General model.
         inputs: [
-            { data: { img: { url: IMAGE_URL, allow_duplicate_url: true } } }
+            { data: { image: { url: IMAGE_URL, allow_duplicate_url: true } } }
         ],
         // When selecting concepts, value is ignored, so no need to specify it.
         model: { output_info: { output_config: { select_concepts: [{ name: CONCEPT_NAME }, { id: CONCEPT_ID }] } } }
