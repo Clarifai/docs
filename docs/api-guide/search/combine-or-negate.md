@@ -21,12 +21,16 @@ import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 import PythonCombineNegate from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate.py";
 import NodeCombineNegate from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate.js";
-
+import JSCombineNegate from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate.html";
 
 <Tabs>
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonCombineNegate}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSCombineNegate}</CodeBlock>
 </TabItem>
 
 <TabItem value="nodejs" label="NodeJS">
@@ -133,66 +137,6 @@ curl -X POST \
     ]
 }'\
 https://api.clarifai.com/v2/searches
-```
-</TabItem>
-
-<TabItem value="js_rest" label="Javascript (REST)">
-
-```javascript
-const raw = JSON.stringify({
-  "user_app_id": {
-		"user_id": "{YOUR_USER_ID}",
-		"app_id": "{YOUR_APP_ID}"
-	},
-  "searches": [
-    {
-      "query": {
-        "filters": [
-          {
-            "annotation": {
-              "data": {
-                "concepts": [
-                  {
-                    "id":"people",
-                    "value": 1
-                  }
-                ]
-              }
-            }
-          }
-        ],
-        "ranks": [
-          {
-            "annotation": {
-              "data": {
-                "concepts": [
-                  {
-                    "id":"people",
-                    "value": 1
-                  }
-                ]
-              }
-            }
-          }
-        ]
-      }
-    }
-  ]
-});
-
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Key {YOUR_PERSONAL_TOKEN}'
-  },
-	body: raw
-};
-
-fetch(`https://api.clarifai.com/v2/searches`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 ```
 </TabItem>
 

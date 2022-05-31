@@ -279,6 +279,10 @@ This model will allow any predictions &gt;= the concept values defined in the mo
     <CodeBlock className="language-python">{PythonCreateGreaterThan}</CodeBlock>
 </TabItem>
 
+<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+    <CodeBlock className="language-javascript">{NodeCreateGreaterThan}</CodeBlock>
+</TabItem>
+
 <TabItem value="grpc_java" label="gRPC Java">
 
 ```java
@@ -333,52 +337,6 @@ if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-const params = {
-    concept_threshold_type: "GREATER_THAN"
-}
-
-stub.PostModels(
-    {
-        user_app_id: {
-            app_id: "{YOUR_APP_ID}"
-        },
-        models: [
-            {
-                id: "greater-than-model-id",
-                model_type_id: "concept-threshold",
-                output_info: {
-                    data: {
-                        concepts: [
-                            {id: "peopleID", value: 0.5},
-                            {id: "manID", value: 0.5},
-                            {id: "adultID", value: 0.95}
-                        ]
-                    },
-                },
-                params: params
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post models failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -425,6 +383,11 @@ This model will allow any predictions &lt; the concept values defined in the mod
 <TabItem value="grpc_python" label="gRPC Python">
     <CodeBlock className="language-python">{PythonCreateLessThan}</CodeBlock>
 </TabItem>
+
+<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+    <CodeBlock className="language-javascript">{NodeCreateLessThan}</CodeBlock>
+</TabItem>
+
 
 <TabItem value="grpc_java" label="gRPC Java">
 
@@ -480,52 +443,6 @@ if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-const params = {
-    concept_threshold_type: "LESS_THAN"
-}
-
-stub.PostModels(
-    {
-        user_app_id: {
-            app_id: "{YOUR_APP_ID}"
-        },
-        models: [
-            {
-                id: "less-than-model-id",
-                model_type_id: "concept-threshold",
-                output_info: {
-                    data: {
-                        concepts: [
-                            {id: "peopleID", value: 0.5},
-                            {id: "manID", value: 0.5},
-                            {id: "adultID", value: 0.95}
-                        ]
-                    },
-                    params: params
-                }
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post models failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -573,6 +490,10 @@ Any incoming Data object full of concepts, regions, etc. will be written by this
     <CodeBlock className="language-python">{PythonCreateWriteSuccess}</CodeBlock>
 </TabItem>
 
+<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+    <CodeBlock className="language-javascript">{NodeCreateWriteSuccess}</CodeBlock>
+</TabItem>
+
 <TabItem value="grpc_java" label="gRPC Java">
 
 ```java
@@ -612,46 +533,6 @@ if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
 ```
 </TabItem>
 
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-const params = {
-    annotation_status: "ANNOTATION_SUCCESS",
-    annotation_user_id: "{YOUR_USER_ID}"
-}
-
-stub.PostModels(
-    {
-        user_app_id: {
-            app_id: "{YOUR_APP_ID}"
-        },
-        models: [
-            {
-                id: "write-success-model-id",
-                model_type_id: "annotation-writer",
-                output_info: {
-                    params: params
-                }
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Post models failed, status: " + response.status.description);
-        }
-    }
-);
-```
-</TabItem>
-
 <TabItem value="curl" label="cURL">
 
 ```bash
@@ -682,6 +563,10 @@ Any incoming Data object full of concepts, regions, etc. will be written by this
 
 <TabItem value="grpc_python" label="gRPC Python">
     <CodeBlock className="language-python">{PythonCreateWritePending}</CodeBlock>
+</TabItem>
+
+<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+    <CodeBlock className="language-javascript">{NodeCreateWritePending}</CodeBlock>
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
@@ -720,14 +605,6 @@ SingleModelResponse postModelsResponse = stub.postModels(
 if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
     throw new RuntimeException("Post models failed, status: " + postModelsResponse.getStatus());
 }
-```
-</TabItem>
-
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
 ```
 </TabItem>
 
