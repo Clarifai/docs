@@ -1,20 +1,18 @@
 //index.js file
 
-///////////////////////////////////////////////////////////////////////////////////////////
-// In this section, we set the user authentication, app ID, and the details of the model
-// we want to create. Change these strings to run your own example.
-///////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+// In this section, we set the user authentication, app ID, model ID, and
+// concept IDs. Change these strings to run your own example.
+////////////////////////////////////////////////////////////////////////////
 
 const USER_ID = 'YOUR_USER_ID_HERE';
 // Your PAT (Personal Access Token) can be found in the portal under Authentification
 const PAT = 'YOUR_PAT_HERE';
 const APP_ID = 'YOUR_APP_ID_HERE';
-// Change these to create your own concept thresholder model
-const MODEL_ID = 'greater-than-model-id';
-const MODEL_TYPE_ID = 'concept-thresholder';
-const CONCEPT_ID_1 = 'peopleID';
-const CONCEPT_ID_2 = 'manID';
-const CONCEPT_ID_3 = 'adultID';
+// Change these to create your own visual embedder
+const MODEL_ID = 'embed-test-1591638385';
+const CONCEPT_ID_1 = 'ferrari23';
+const CONCEPT_ID_2 = 'outdoors23';
 
 /////////////////////////////////////////////////////////////////////////////
 // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -28,10 +26,6 @@ const stub = ClarifaiStub.grpc();
 const metadata = new grpc.Metadata();
 metadata.set("authorization", "Key " + PAT);
 
-const params = {
-    concept_threshold_type: "GREATER_THAN"
-}
-
 stub.PostModels(
     {
         user_app_id: {
@@ -41,17 +35,24 @@ stub.PostModels(
         models: [
             {
                 id: MODEL_ID,
-                model_type_id: MODEL_TYPE_ID,
+                model_type_id: "visual-embedder",
+                train_info: {
+                    params: {
+                        num_epoch: 2,
+                        template: "classification_basemodel_v1_embed"
+                    }
+                },
                 output_info: {
                     data: {
                         concepts: [
-                            { id: CONCEPT_ID_1, value: 0.5 },
-                            { id: CONCEPT_ID_2, value: 0.5 },
-                            { id: CONCEPT_ID_3, value: 0.95 }
+                            { id: CONCEPT_ID_1 },
+                            { id: CONCEPT_ID_2 }
                         ]
                     },
-                },
-                params: params
+                    output_config: {
+                        closed_environment: true
+                    }
+                }
             }
         ]
     },
@@ -62,7 +63,7 @@ stub.PostModels(
         }
 
         if (response.status.code !== 10000) {
-            throw new Error("Post models failed, status: " + response.status.description);
+            throw new Error("Received status: " + response.status.description + "\n" + response.status.details);
         }
     }
 );

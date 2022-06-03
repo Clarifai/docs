@@ -3,12 +3,16 @@ description: Manage your concepts.
 sidebar_position: 1
 ---
 
-# Create, Get, Update
+# Create, Get, Update, Delete
 
 **Manage your concepts**
 <hr />
 
-Within your app, you can create concepts, modify them after creation, and get them from your app. We currently do not support deleting concepts since they have such an integral tie across almost all other data structures in the platform like inputs, models, searches, etc.
+Within your app, you can create concepts, modify them after creation, and get them from your app. 
+
+:::important
+We currently do not support deleting concepts since they have such an integral tie across almost all other data structures in the platform, like inputs, models, searches, etc.
+:::
 
 You will find that some of our endpoints have additional information returned from the clarifai/main app, which contains our pre-trained models and a large knowledge graph we've assembled over the years.
 
