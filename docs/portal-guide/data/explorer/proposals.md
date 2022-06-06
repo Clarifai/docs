@@ -8,7 +8,9 @@ sidebar_position: 4
 **(Beta) Proposals enable you to build model and concept hierarchies**
 <hr />
 
-<iframe width="900" height="500" src="https://www.youtube.com/embed/7r2sc3I6Tvo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
+<div style={{ "position":"relative","width": "100%","overflow": "hidden","padding-top": "56.25%"}}>
+<iframe width="900" height="500" style={{"position": "absolute","top": "0","left": "0","bottom": "0","right": "0","width": "100%","height": "100%",}} src="https://www.youtube.com/embed/7r2sc3I6Tvo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
+</div>
 
 <!--{% embed url="https://youtu.be/7r2sc3I6Tvo" caption="Learn how to interact with your data in Explorer" %}-->
 
