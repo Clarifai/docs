@@ -1,11 +1,11 @@
-package clarifaiexample;
+package com.clarifai.example;
 
 import com.clarifai.grpc.api.*;
 import com.clarifai.channel.ClarifaiChannel;
 import com.clarifai.credentials.ClarifaiCallCredentials;
 import com.clarifai.grpc.api.status.StatusCode;
 
-public class ClarifaiSample {
+public class ClarifaiExample {
 	
 	//////////////////////////////////////////////////////////////////////////////////////
 	// In this section, we set the user authentication, app and model IDs, and the URL
