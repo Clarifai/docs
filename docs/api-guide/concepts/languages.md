@@ -50,12 +50,12 @@ You cannot change the default language. You can however change languages per req
 
 ## List Language Translations by Concept ID
 
-You can see all the language translations for a given concept ID with a GET call. This call supports [pagination](../advanced-topics/pagination.md).
+You can see all the language translations for a given concept ID with a GET call. This call supports [pagination](https://docs.clarifai.com/api-guide/advanced-topics/pagination/).
 
 
 Below is an example of how you would list language translations by concept ID. 
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
 
 import Tabs from '@theme/Tabs';
@@ -144,7 +144,7 @@ concept_languages {
 
 Below is an example of how to get a single language translation for a concept. You can get it by the language code and concept ID.
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
 <Tabs>
 
@@ -215,7 +215,7 @@ concept_language {
 
 Below is an example of how to create a language translation for a concept by POSTing that language translation.
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
 <Tabs>
 
@@ -285,7 +285,7 @@ concept_languages {
 
 Below is an example of how to update a language translation for a concept by PATCHing that language translation.
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
 
 <Tabs>

@@ -30,7 +30,7 @@ If your video exceeds the limits, please follow our [tutorial](https://www.clari
 
 Below is an example of how you would send video URLs and receive predictions from the `general` model.
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -1688,7 +1688,7 @@ data {
 
 Below is an example of how you would send the bytes of a video and receive predictions from the `general` model.
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
 <Tabs>
 

@@ -11,7 +11,7 @@ sidebar_position: 3
 Rank Order your search results with the intuitive insights of AI. Your model can identify concepts in your data and rank your search results by how confident it is that a given concept is present. You can even rank search results by how similar one input is to another input.
 
 :::info
-The initialization code used in the following example is outlined in detail on the [client installation page.](../../api-overview/api-clients#client-installation-instructions)
+The initialization code used in the following example is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 :::
 
 import Tabs from '@theme/Tabs';

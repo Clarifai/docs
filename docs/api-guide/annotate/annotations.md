@@ -91,7 +91,7 @@ import NodeUpdateAnnotationStatus from "!!raw-loader!../../../code_snippets/api-
 
 Below is an example of how to annotate a concept present anywhere in an image.
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 
 
 <Tabs>
@@ -184,7 +184,7 @@ curl -X POST \
 
 Below is an example of how to label a new bounding box by providing bounding box coordinates.
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 
 <Tabs>
 
@@ -364,7 +364,7 @@ curl -X POST \
 
 Below is an example of how to provide annotations within any polygon-shaped region of an image. 
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 
 <Tabs>
 
@@ -390,7 +390,7 @@ Your labels should be contained within `Region.data`. Each annotation can have o
 
 Below is an example of how to annotate existing regions in an image.
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 
 <Tabs>
 
@@ -542,7 +542,7 @@ Only the app owner can post an annotation with other user's `user_id`; collabora
 
 Below is an example of how to annotate images with different `user_id` and `status`.
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 
 <Tabs>
 
@@ -622,7 +622,7 @@ These requests are paginated. By default each page will return 20 annotations.
 
 Below is an example of how to list all your user labelled annotations.
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 
 :::note
 
@@ -686,7 +686,7 @@ curl -X GET \
 
 Below is an example of how to list all annotations, including those created by models.
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 
 <Tabs>
 
@@ -745,7 +745,7 @@ curl -X GET \
 
 Below is an example of how to list all user created annotations for certain input \(one or several\) by providing a list of input IDs.
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 
 :::note
 
@@ -813,7 +813,7 @@ You can list annotations by both input IDs and annotation IDs. Number of input I
 
 Below is an example of how to do that.
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 
 <Tabs>
 
@@ -876,7 +876,7 @@ An annotation is created by either a user or a model. You can list annotations c
 
 Below is an example of how to do that.
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 
 <Tabs>
 
@@ -939,7 +939,7 @@ You can also label these regions by using `Post annotation` with the region ID r
 
 Below is an example of how to list annotations by model version IDs.
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 
 
 <Tabs>
@@ -1009,7 +1009,7 @@ Update supports `overwrite`, `merge`, and `remove` actions. You can update from 
 
 Below is an example of how to update an annotation of an image with a new concept, or  change a concept value from true to false \(or vice versa\).
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 
 <Tabs>
 
@@ -1098,7 +1098,7 @@ When you update region data, you must nest this new data within `region.data`. S
 
 Below is an example of how to update annotation with concepts in a region.
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 
 <Tabs>
 
@@ -1200,7 +1200,7 @@ You can update region bounding boxes coordinates. When changing the region, you 
 
 Below is an example of how to do that.
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 
 <Tabs>
 
@@ -1312,7 +1312,7 @@ curl -X PATCH \
 
 Below is an example of how to update an annotation status.
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 
 <Tabs>
 
@@ -1391,7 +1391,7 @@ curl -X PATCH \
 
 Below is an example of how to delete a single annotation by input ID and annotation ID.
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 
 <Tabs>
 
@@ -1446,7 +1446,7 @@ You can delete multiple annotations in one API call. You need to provide a list 
 
 Below is an example of how to do that. 
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 
 <Tabs>
 
@@ -1508,7 +1508,7 @@ To delete all annotations of a given input, you just need to set their input ID\
 
 Below is an example of how to do that. 
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 
 <Tabs>
 

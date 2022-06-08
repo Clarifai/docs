@@ -17,7 +17,7 @@ The steps below can all be done via [the Clarifai's portal](https://portal.clari
 The examples below map directly to any of our other gRPC clients.
 
 :::info
-The walkthrough assumes you have already created your Clarifai's user account and the [Personal Access Token](https://portal.clarifai.com/settings/authentication). Also, first set up the gRPC Python client together with the initial code. See the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+The walkthrough assumes you have already created your Clarifai's user account and the [Personal Access Token](https://portal.clarifai.com/settings/authentication). Also, first set up the gRPC Python client together with the initial code. See the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 :::
 
 For debugging purposes, each response returned by a method call can be printed to the console, and its entire data and structure will be shown verbosely.
@@ -157,7 +157,7 @@ The following concepts were predicted for the input `https://samples.clarifai.co
 
 Let's now test the performance of the model by using model evaluation. 
 
-See the [the Model Evaluation page](../evaluate) to learn more.
+See the [the Model Evaluation page](https://docs.clarifai.com/api-guide/evaluate/) to learn more.
 
 <Tabs>
 

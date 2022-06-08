@@ -81,7 +81,7 @@ The API is built around a simple idea. You send inputs \(such as images\) to the
 When you add an input to your app, the base workflow of your app runs, computing the outputs from all the models in that workflow and indexing those outputs. Those indexed outputs are what incur the indexing fee monthly, and enable search and training on top of the outputs of the base workflow models.
 
 :::info
-The initialization code used in the following examples is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 :::
 
 ## Add Inputs
@@ -378,7 +378,7 @@ curl -X POST \
 
 If you would like to add an input with concepts, you can do so. Concepts play an important role in creating your own models. 
 
-You can learn more about [creating your own models here](../model). Concepts also help you search for inputs. You can [learn more about search here](../search).
+You can learn more about [creating your own models here](https://docs.clarifai.com/api-guide/model/). Concepts also help you search for inputs. You can [learn more about search here](https://docs.clarifai.com/api-guide/search/).
 
 When you add a concept to an input, you need to indicate whether the concept is present in the image or not. 
 

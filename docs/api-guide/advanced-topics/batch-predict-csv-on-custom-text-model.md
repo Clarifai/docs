@@ -10,7 +10,7 @@ sidebar_position: 4
 
 Below is a script that can be used to run predictions on a batch of text/sentences stored in a CSV file, using your custom text model.
 
-To start, you'll need to create your own Custom Text Model, either via [our Portal](../../portal-guide/model/pcustom-model-walkthrough) or [using the API](../model/custom-model-walkthrough).
+To start, you'll need to create your own Custom Text Model, either via [our Portal](https://docs.clarifai.com/portal-guide/model/pcustom-model-walkthrough/) or [using the API](https://docs.clarifai.com/api-guide/model/custom-model-walkthrough/).
 
 Make sure to record the model ID and version ID that you want to use \(each model gets a version ID after being successfully trained\), as well as the API key of the application in which the model exists.
 
@@ -32,7 +32,7 @@ import PythonBatchPredict from "!!raw-loader!../../../code_snippets/api-guide/ad
 
 Let's say you have the following CSV file, and you want to predict whether the sentence is grammatically positive or negative for each text in a row. You first build a custom text model that was created to map text into two concepts: "positive" and "negative. 
 
-See our [Custom Text Model walkthrough](../model/custom-text-model-walkthrough) on how to do that via our API.
+See our [Custom Text Model walkthrough](https://docs.clarifai.com/api-guide/model/custom-text-model-walkthrough/) on how to do that via our API.
 
 <Tabs>
 <TabItem value="my_data.csv" label="my_data.csv" default>

@@ -17,7 +17,7 @@ Since models are doing most of the work of annotating your data, this enables yo
 When a concept is predicted by a model, it is predicted with a confidence score between 0 and 1. In this walkthrough, we will leverage that score in our workflow so that when your model predictions are confident \(close to 1\), you can have your data automatically labeled with that concept. When your predictions are less-than-confident, you can have your input sent to a human reviewer.
 
 :::info
-The initialization code used in the following examples is outlined in detail on the [client installation page.](../../api-overview/api-clients#client-installation-instructions)
+The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 :::
 
 

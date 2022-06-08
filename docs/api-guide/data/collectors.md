@@ -51,10 +51,10 @@ Select the model that you would like to collect data from, and the collector wil
 
 You need to specify the app ID and user ID where the model is located. If using a publicly available model, the model's user and app ID should be `clarifai` and `main`, respectively. Otherwise, the IDs should belong to the user who created the model. You also need to specify an API key ID where the inputs are going to be added.
 
-See also [Auto Annotation walkthrough](../workflows/common-workflows/auto-annotation-walkthrough).
+See also [Auto Annotation walkthrough](https://docs.clarifai.com/api-guide/workflows/common-workflows/auto-annotation-walkthrough/).
 
 :::info
-The initialization code used in the following examples is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 :::
 
 import Tabs from '@theme/Tabs';
@@ -215,7 +215,7 @@ curl -X PATCH 'https://api-dev.clarifai.com/v2/collectors' \
 
 ## List Collectors
 
-List all the collectors. See [Pagination](../advanced-topics/pagination) on how to control which page gets displayed.
+List all the collectors. See [Pagination](https://docs.clarifai.com/api-guide/advanced-topics/pagination/) on how to control which page gets displayed.
 
 <Tabs>
 

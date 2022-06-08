@@ -290,7 +290,7 @@ curl -X GET \
 
 ### List All Tasks
 
-You can get a list of tasks within your app with a `GET` call. This call supports [pagination](../advanced-topics/pagination.md).
+You can get a list of tasks within your app with a `GET` call. This call supports [pagination](https://docs.clarifai.com/api-guide/advanced-topics/pagination/).
 
 <Tabs>
 <TabItem value="curl" label="cURL">

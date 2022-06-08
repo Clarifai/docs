@@ -24,7 +24,7 @@ To create a new concept in you app, you POST the concept with an id and name. Yo
 
 Below is an example of how to add concepts.  
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
 
 import Tabs from '@theme/Tabs';
@@ -135,7 +135,7 @@ concepts {
 
 Below is an example of how to get a single concept by its ID.
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
 <Tabs>
 
@@ -213,11 +213,11 @@ concept {
 
 ### List Concepts
 
-You can get a list of concepts within your app with a GET call. This call supports [pagination](../advanced-topics/pagination.md)
+You can get a list of concepts within your app with a GET call. This call supports [pagination](https://docs.clarifai.com/api-guide/advanced-topics/pagination/)
 
 Below is an example of how to list concepts. 
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
 
 <Tabs>
@@ -314,7 +314,7 @@ concepts {
 
 Below is an example of how to update a concept's name given its id by using the "overwrite" action. You can also patch multiple concepts by sending a list of concepts.
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
 <Tabs>
 
