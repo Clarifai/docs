@@ -35,7 +35,7 @@ public class ClarifaiExample {
 		    PostModelOutputsRequest.newBuilder()
 		    	.setUserAppId(UserAppIDSet.newBuilder().setUserId(USER_ID).setAppId(APP_ID))		 		     
 		        .setModelId(MODEL_ID)
-		        .setVersionId("")  // This is optional. Defaults to the latest model version.
+		        .setVersionId(MODEL_VERSION_ID)  // This is optional. Defaults to the latest model version.
 		        .addInputs(
 		            Input.newBuilder().setData(
 		                Data.newBuilder().setImage(

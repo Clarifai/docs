@@ -57,7 +57,23 @@ import NodeBulkUpdateInputsConcepts from "!!raw-loader!../../../code_snippets/ap
 import NodeDeleteConceptsInput from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/node/delete_concepts_input.js";
 import NodeBulkDeleteConceptsInputs from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/node/bulk_delete_concepts_inputs.js";
 import NodeDeleteInputId from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/node/delete_input_by_id.js";
-import NodeDeleteListInputs from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/node/delete_list_inputs.js"
+import NodeDeleteListInputs from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/node/delete_list_inputs.js";
+
+import JavaAddInputsViaURL from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/java/add_inputs_via_url.java";
+import JavaAddInputsViaBytes from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/java/add_inputs_via_bytes.java";
+import JavaAddMultipleInputsIds from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/java/add_multiple_inputs_with_ids.java";
+import JavaAddInputsConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/java/add_inputs_with_concepts.java";
+import JavaAddInputsCustomMetadata from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/java/add_inputs_custom_metadata.java";
+import JavaListAllInputs from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/java/list_all_inputs.java";
+import JavaListInputsStreaming from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/java/list_inputs_streaming.java";
+import JavaGetInputId from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/java/get_input_by_id.java";
+import JavaGetInputsStatus from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/java/get_inputs_status.java";
+import JavaUpdateInputConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/java/update_input_concepts.java"
+import JavaBulkUpdateInputsConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/java/bulk_update_inputs_concepts.java";
+import JavaDeleteConceptsInput from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/java/delete_concepts_input.java";
+import JavaBulkDeleteConceptsInputs from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/java/bulk_delete_concepts_inputs.java";
+import JavaDeleteInputId from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/java/delete_input_by_id.java";
+import JavaDeleteListInputs from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/java/delete_list_inputs.java";
 
 
 The API is built around a simple idea. You send inputs \(such as images\) to the service and it returns predictions. In addition to receiving predictions on inputs, you can also index inputs and their predictions to later search against. You can also index inputs with concepts to later train your own model.
@@ -95,30 +111,7 @@ Below is an example of how to add inputs via a publicly accessible URL.
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiInputResponse postInputsResponse = stub.postInputs(
-    PostInputsRequest.newBuilder().addInputs(
-        Input.newBuilder().setData(
-            Data.newBuilder().setImage(
-                Image.newBuilder()
-                    .setUrl("https://samples.clarifai.com/metro-north.jpg")
-                    .setAllowDuplicateUrl(true)
-            )
-        )
-    ).build()
-);
-
-if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post inputs failed, status: " + postInputsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaAddInputsViaURL}</CodeBlock>
 </TabItem>
 
 <TabItem value="csharp" label="C#">
@@ -206,34 +199,7 @@ The data must be base64 encoded. When you add a base64 image to our servers, a c
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-import com.google.protobuf.ByteString;
-import java.io.File;
-import java.nio.file.Files;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiInputResponse postInputsResponse = stub.postInputs(
-    PostInputsRequest.newBuilder().addInputs(
-        Input.newBuilder().setData(
-            Data.newBuilder().setImage(
-                Image.newBuilder()
-                    .setBase64(ByteString.copyFrom(Files.readAllBytes(
-                        new File("{YOUR_IMAGE_LOCATION}").toPath()
-                    )))
-            )
-        )
-    ).build()
-);
-
-if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post inputs failed, status: " + postInputsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaAddInputsViaBytes}</CodeBlock>
 </TabItem>
 
 <TabItem value="csharp" label="C#">
@@ -318,50 +284,7 @@ If you do not send an `id`, one will be created for you. If you have more than o
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiInputResponse postInputsResponse = stub.postInputs(
-    PostInputsRequest.newBuilder()
-        .addInputs(
-            Input.newBuilder()
-                .setId("train1")
-                .setData(
-                    Data.newBuilder().setImage(
-                        Image.newBuilder()
-                            .setUrl("https://samples.clarifai.com/metro-north.jpg")
-                            .setAllowDuplicateUrl(true)
-                    )
-                )
-        )
-        .addInputs(
-            Input.newBuilder()
-                .setId("puppy1")
-                .setData(
-                    Data.newBuilder().setImage(
-                        Image.newBuilder()
-                            .setUrl("https://samples.clarifai.com/puppy.jpeg")
-                            .setAllowDuplicateUrl(true)
-                    )
-                )
-        )
-        .build()
-);
-
-if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    for (Input input : postInputsResponse.getInputsList()) {
-        System.out.println("Input " + input.getId() + " status: ");
-        System.out.println(input.getStatus() + "\n");
-    }
-
-    throw new RuntimeException("Post inputs failed, status: " + postInputsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaAddMultipleInputsIds}</CodeBlock>
 </TabItem>
 
 <TabItem value="csharp" label="C#">
@@ -476,36 +399,7 @@ You can add inputs with concepts via URLs or bytes.
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiInputResponse postInputsResponse = stub.postInputs(
-    PostInputsRequest.newBuilder().addInputs(
-        Input.newBuilder().setData(
-            Data.newBuilder()
-                .setImage(
-                    Image.newBuilder()
-                        .setUrl("https://samples.clarifai.com/puppy.jpeg")
-                        .setAllowDuplicateUrl(true)
-                )
-                .addConcepts(
-                    Concept.newBuilder()
-                        .setId("charlie")
-                        .setValue(1f)
-                )
-        )
-    ).build()
-);
-
-if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post inputs failed, status: " + postInputsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaAddInputsConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="csharp" label="C#">
@@ -615,39 +509,7 @@ If you have more than one item per image, it is recommended to put the `id` in t
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-import com.google.protobuf.Struct;
-import com.google.protobuf.Value;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiInputResponse postInputsResponse = stub.postInputs(
-    PostInputsRequest.newBuilder().addInputs(
-        Input.newBuilder().setData(
-            Data.newBuilder()
-                .setImage(
-                    Image.newBuilder()
-                        .setUrl("https://samples.clarifai.com/puppy.jpeg")
-                        .setAllowDuplicateUrl(true)
-                )
-                .setMetadata(
-                    Struct.newBuilder()
-                        .putFields("id", Value.newBuilder().setStringValue("id001").build())
-                        .putFields("type", Value.newBuilder().setStringValue("animal").build())
-                        .putFields("size", Value.newBuilder().setNumberValue(100).build())
-                )
-        )
-    ).build()
-);
-
-if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post inputs failed, status: " + postInputsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaAddInputsCustomMetadata}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
