@@ -14,11 +14,11 @@ The `page` params indicates the page number⁠—defaults to 1. The `per_page` p
 
 In the example below, we are getting all inputs and specifying to start at page 2 and get 20 results per page.
 
-<!--
+
 :::info
-The initialization code used in the following example is outlined in detail on the [client installation page.](../../api-overview/api-clients#client-installation-instructions)
+The initialization code used in the following example is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 :::
--->
+
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
