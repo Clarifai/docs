@@ -22,13 +22,13 @@ It uses three different _predicates_ to organize your concepts: hypernyms, hypon
 
 ## Create Relations
 
-To create a relation between two concepts, you first have to create them in your custom model. See [the Concepts page](./api-guide/concepts/create-get-update.md) on how to do that programatically.
+To create a relation between two concepts, you first have to create them in your custom model. See the  [Concepts page](https://docs.clarifai.com/api-guide/concepts/create-get-update/) on how to do that programatically.
 
 Each relation should have a specified predicate, which can be _hyponym_, _hypernym_, or _synonym_.
 
 Below is an example of how to create a relation between two concepts. 
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -163,7 +163,7 @@ concept_relations {
 
 Below is an example of how to list existing relations between concepts. 
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
 <Tabs>
 
@@ -269,7 +269,7 @@ visibility {
 
 Below is an example of how to delete relations between concepts. 
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
 :::tip
 

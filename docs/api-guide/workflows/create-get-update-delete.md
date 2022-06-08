@@ -10,7 +10,7 @@ sidebar_position: 3
 
 
 :::info
-The initialization code used in the following examples is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 :::
 
 ## Create

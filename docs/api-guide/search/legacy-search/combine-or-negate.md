@@ -11,7 +11,7 @@ sidebar_position: 1
 You can also combine searches using AND.
 
 :::info
-The initialization code used in the following example is outlined in detail on the [client installation page.](../../api-overview/api-clients#client-installation-instructions)
+The initialization code used in the following example is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 :::
 
 import Tabs from '@theme/Tabs';

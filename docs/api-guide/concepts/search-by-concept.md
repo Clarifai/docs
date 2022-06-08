@@ -13,7 +13,7 @@ You can search for concepts by `name`, even in a different `language` using the 
 
 Below is an example of how to search for concepts.
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
 
 import Tabs from '@theme/Tabs';

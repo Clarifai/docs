@@ -13,7 +13,7 @@ You can also combine searches. Unlike our legacy search, in annotation search, `
 When you combine both `Filter` and `Rank`, filter will be applied before ranking annotations. This is important because limiting the result set on large applications can speedup the overall query drastically when doing a ranking.
 
 :::info
-The initialization code used in the following example is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+The initialization code used in the following example is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 :::
 
 import Tabs from '@theme/Tabs';

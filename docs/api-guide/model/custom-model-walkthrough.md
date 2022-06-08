@@ -8,12 +8,12 @@ sidebar_position: 3
 **Clarifai makes it easy to customize and repurpose existing models**
 <hr />
 
-You do not need many images to get started. We recommend starting with 10 and adding more as needed. Before you train your first model, you need to [create an application](../../clarifai-basics/applications/#create-an-application) and select a Base Workflow.
+You do not need many images to get started. We recommend starting with 10 and adding more as needed. Before you train your first model, you need to [create an application](https://docs.clarifai.com/clarifai-basics/applications/#create-an-application) and select a Base Workflow.
 
 ![](/img/illustration-training.png)
 
 :::info
-The initialization code used in the following examples is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 :::
 
 ## Add Images With Concepts

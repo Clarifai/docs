@@ -8,7 +8,7 @@ sidebar_position: 5
 **Make multilingual predictions**
 <hr />
 
-The Clarifai API supports [many languages in addition to English](../concepts/languages.md). When making a [predict api request](./), you can pass in the language you would like the concepts returned in. 
+The Clarifai API supports [many languages in addition to English](https://docs.clarifai.com/api-guide/concepts/languages/). When making a [predict api request](https://docs.clarifai.com/api-guide/predict/), you can pass in the language you would like the concepts returned in. 
 
 When you create a new Application, you must specify a default language which will be the language of the returned concepts if not specified in the predict request.
 
@@ -18,7 +18,7 @@ You can predict concepts in a language other than the Application's default, by 
 
 Below is an example of how you would predict concepts in Chinese.
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -501,7 +501,7 @@ You can search for concepts in other languages even if the default language of y
 
 Below is an example of how your would search for '人', which is simplified Chinese for 'people'.
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
 <Tabs>
 

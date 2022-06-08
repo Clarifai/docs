@@ -30,7 +30,7 @@ import CodeJavaViaURL from "!!raw-loader!../../../code_snippets/api-guide/predic
 
 Below is an example of how you would send image URLs and receive predictions from the `general` model. 
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
 
 <Tabs>
@@ -426,7 +426,7 @@ data {
 
 Below is an example of how you would send the bytes of an image and receive predictions from the `general` model.
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
 <Tabs>
 <TabItem value="python" label="Python">

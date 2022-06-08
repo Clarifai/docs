@@ -29,7 +29,7 @@ import CodeNodeJSViaRaw from "!!raw-loader!../../../code_snippets/api-guide/pred
 
 Below is an example of how you would make predictions on passages of text hosted on the web from the `product-review-sentiment-multi` model. 
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
 <Tabs>
 <TabItem value="python" label="Python">
@@ -350,7 +350,7 @@ data {
 
 Below is an example of how you would provide text inputs via local text files and receive predictions from the `product-review-sentiment-multi` model. 
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
 <Tabs>
 
@@ -579,7 +579,7 @@ data {
 
 Below is an example of how you would provide raw text inputs and receive predictions from the `product-review-sentiment-multi` model. 
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
 
 <Tabs>

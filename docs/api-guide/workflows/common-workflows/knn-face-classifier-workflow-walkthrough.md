@@ -20,10 +20,10 @@ Each of the steps below can also be done manually on [the Clarifai Portal](https
 
 ## Create a New Application
 
-The first step is manual: in the Clarifai Portal, [create a new application](../../../clarifai-basics/applications/create-an-application) with **Face** selected as the Base Workflow.
+The first step is manual: in the Clarifai Portal, [create a new application](https://docs.clarifai.com/clarifai-basics/applications/create-an-application/) with **Face** selected as the Base Workflow.
 
 :::info
-The initialization code used in the following examples is outlined in detail on the [client installation page.](../../api-overview/api-clients#client-installation-instructions)
+The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 :::
 
 

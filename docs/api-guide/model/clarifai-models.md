@@ -18,7 +18,7 @@ Clarifai Models are ready to make predictions right out of the box. For example,
 
 ## Operator Models
 
-Operator models are "Non-Trainable", or "fixed function" models that help you connect, route and control the inputs and outputs that you send through your [workflows](../workflows/). Operator models are critical building blocks for creating more advanced workflows.
+Operator models are "Non-Trainable", or "fixed function" models that help you connect, route and control the inputs and outputs that you send through your [workflows](https://docs.clarifai.com/api-guide/workflows/). Operator models are critical building blocks for creating more advanced workflows.
 
 Here are a selection of model types to give you an idea of what is possible. Visit Model Mode in Portal to see a complete list of the models available to you.
 

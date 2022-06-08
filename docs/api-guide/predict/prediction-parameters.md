@@ -31,7 +31,7 @@ If you submit a request with not an exact match of the concept id or name, you w
 
 Below is an example of how you would select concepts and receive predictions from the `general-image-recognition` model. 
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
 
 import Tabs from '@theme/Tabs';
@@ -413,7 +413,7 @@ If your use case requires more concepts, please contact [Support](mailto:support
 
 Below is an example of how you would set maximum concepts and receive predictions from the `general-image-recognition` model. 
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
 <Tabs>
 
@@ -768,7 +768,7 @@ Also note that if you don't specify the number of `max_concepts`, you will only 
 
 Below is an example of how you would set a minimum probability threshold and receive predictions from the `general-image-recognition` model. 
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
 
 <Tabs>
@@ -1213,7 +1213,7 @@ If you are looking for consistent results from your predict calls, use `version_
 
 Below is an example of how you would set a model version ID and receive predictions from the `general-image-recognition` model. 
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](../api-overview/api-clients#client-installation-instructions)
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
 <Tabs>
 
