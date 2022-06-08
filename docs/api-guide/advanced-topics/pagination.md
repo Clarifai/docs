@@ -8,7 +8,11 @@ sidebar_position: 3
 **Paginate your data batches**
 <hr />
 
-Many API calls are paginated. You can provide `page` and `per_page` params to the API. In the example below, we are getting all inputs and specifying to start at page 2 and get back 20 results per page.
+Many API calls are paginated. You can provide `page` and `per_page` params to the API request, and your results will be split into pages. 
+
+The `page` params indicates the page number⁠—defaults to 1. The `per_page` params indicates the number of results that will be contained in each page⁠—defaults to 128. You can get up to 1,000 results per page. 
+
+In the example below, we are getting all inputs and specifying to start at page 2 and get 20 results per page.
 
 :::info
 The initialization code used in the following example is outlined in detail on the [client installation page.](../../api-overview/api-clients#client-installation-instructions)
