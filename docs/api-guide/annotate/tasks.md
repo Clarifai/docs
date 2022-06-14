@@ -90,8 +90,8 @@ curl -X POST \
                 "name": "Annotate {{concept_id}}",
                 "worker": {
                     "strategy": "FULL",
-                    "user_ids": [
-                        "{{worker_user_id}}"
+                    "users": [
+                        {"id": "{{worker_user_id}}"}
                     ]
                 },
                 "concept_ids": [
@@ -106,8 +106,8 @@ curl -X POST \
                     "manual_strategy_info": {
                         "sample_percentage": 0.5
                     },
-                    "user_ids": [
-                        "{{reviewer_user_id}}"
+                    "users": [
+                        {"id": "{{reviewer_user_id}}"}
                     ]
                 }
             }
@@ -158,7 +158,10 @@ curl -X POST \
                 "name": "Annotate {{concept_id}}",
                 "worker": {
                     "strategy": "PARTITIONED",
-                    "user_ids": ["{{user_id1}}", "{{user_id2}}"],
+                    "users": [
+                        {"id": "{{user_id1}}"},
+                        {"id": "{{user_id2}}"}
+                    ],
                     "partitioned_strategy_info": {
                         "type": "WEIGHTED",
                         "workers_per_input": 1,
@@ -225,7 +228,11 @@ curl -X POST \
                 "name": "Annotate {{concept_id}}",
                 "worker": {
                     "strategy": "PARTITIONED",
-                    "user_ids": ["{{user_id1}}", "{{user_id2}}", "{{user_id3}}"],
+                    "users": [
+                        {"id": "{{user_id1}}"},
+                        {"id": "{{user_id2}}"},
+                        {"id": "{{user_id3}}"}
+                    ],
                     "partitioned_strategy_info": {
                         "type": "WEIGHTED",
                         "workers_per_input": 1,
@@ -248,8 +255,8 @@ curl -X POST \
                     "consensus_strategy_info": {
                         "approval_threshold": 2
                     },
-                    "user_ids": [
-                        "{{user_id4}}"
+                    "users": [
+                        {"id": "{{user_id4}}"}
                     ]
                 }
             }
@@ -374,7 +381,10 @@ curl -X PATCH \
                 "name": "Annotate {{concept_id}}",
                 "worker": {
                     "strategy": "PARTITIONED",
-                    "user_ids": ["{{user_id1}}", "{{user_id2}}"],
+                    "users": [
+                        {"id": "{{user_id1}}"},
+                        {"id": "{{user_id2}}"}
+                    ],
                     "partitioned_strategy_info": {
                         "type": "WEIGHTED",
                         "workers_per_input": 1,
@@ -396,8 +406,8 @@ curl -X PATCH \
                     "consensus_strategy_info": {
                         "approval_threshold": 2
                     },
-                    "user_ids": [
-                        "{{user_id3}}"
+                    "users": [
+                        {"id": "{{user_id3}}"}
                     ]
                 },
                 "status": {
