@@ -12,7 +12,7 @@ Many API calls are paginated. You can provide `page` and `per_page` params to th
 
 The `page` params indicates the page number⁠—defaults to 1. The `per_page` params indicates the number of results that will be contained in each page⁠—defaults to 128. You can get up to 1,000 results per page. 
 
-In the example below, we are getting all inputs and specifying to start at page 2 and get 20 results per page.
+In the example below, we are getting all inputs and specifying to start at page 2 and retrieve 20 results per page.
 
 
 :::info
