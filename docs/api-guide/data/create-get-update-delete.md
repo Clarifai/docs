@@ -546,9 +546,7 @@ curl -X POST \
 You can list all the inputs \(images\) you have previously added either for [search](https://github.com/Clarifai/docs/tree/5882f46bd17affcd85ed3e2ec98f4d6f355b58a9/advanced-searches.md) or [train](https://github.com/Clarifai/docs/tree/5882f46bd17affcd85ed3e2ec98f4d6f355b58a9/train.md).
 -->
 
-You can list all the inputs \(images\) you have previously added either for search or train.
-
-If you added inputs with concepts, they will be returned in the response as well.
+You can list all the inputs \(images\) you previously added either for search or train. If you added inputs with concepts, they will be returned in the response as well. 
 
 This request is paginated.
 
@@ -567,29 +565,7 @@ This request is paginated.
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiInputResponse listInputsResponse = stub.listInputs(
-    ListInputsRequest.newBuilder()
-        .setPage(1)
-        .setPerPage(10)
-        .build()
-);
-
-if (listInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("List inputs failed, status: " + listInputsResponse.getStatus());
-}
-
-for (Input input : listInputsResponse.getInputsList()) {
-    System.out.println(input);
-}
-```
+    <CodeBlock className="language-java">{JavaListAllInputs}</CodeBlock>
 </TabItem>
 
 <TabItem value="csharp" label="C#">
@@ -646,51 +622,7 @@ By default, the stream will return inputs from oldest to newest. Set the `descen
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import java.util.List;
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-// To start from beginning, do not provide the last ID parameter.
-MultiInputResponse firstStreamInputsResponse = stub.streamInputs(
-    StreamInputsRequest.newBuilder()
-        .setPerPage(10)
-        .build()
-);
-
-if (firstStreamInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Stream inputs failed, status: " + firstStreamInputsResponse.getStatus());
-}
-
-System.out.println("First response (starting from the first input):");
-List<Input> inputs = firstStreamInputsResponse.getInputsList();
-for (Input input : inputs) {
-    System.out.println("\t" + input.getId());
-}
-
-String lastId = inputs.get(inputs.size() - 1).getId();
-
-// Set last ID to get the next set of inputs. The returned inputs will not include the last ID input.
-MultiInputResponse secondStreamInputsResponse = stub.streamInputs(
-    StreamInputsRequest.newBuilder()
-        .setLastId(lastId)
-        .setPerPage(10)
-        .build()
-);
-
-if (secondStreamInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Stream inputs failed, status: " + secondStreamInputsResponse.getStatus());
-}
-
-System.out.println(String.format("Second response (first input is the one following input ID %s)", lastId));
-for (Input input : secondStreamInputsResponse.getInputsList()) {
-    System.out.println("\t" + input.getId());
-}
-```
+    <CodeBlock className="language-java">{JavaListInputsStreaming}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -716,27 +648,7 @@ If you'd like to get the details of a specific input by its `id`, you can do tha
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-SingleInputResponse getInputResponse = stub.getInput(
-    GetInputRequest.newBuilder()
-        .setInputId("{YOUR_INPUT_ID}")
-        .build()
-);
-
-if (getInputResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Get input failed, status: " + getInputResponse.getStatus());
-}
-
-Input input = getInputResponse.getInput();
-System.out.println(input);
-```
+    <CodeBlock className="language-java">{JavaGetInputId}</CodeBlock>
 </TabItem>
 
 <TabItem value="csharp" label="C#">
@@ -790,25 +702,7 @@ If you add inputs in bulk, they will be procesed in the background. You can get 
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-SingleInputCountResponse getInputCountResponse = stub.getInputCount(
-    GetInputCountRequest.newBuilder().build()
-);
-
-if (getInputCountResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Get input count failed, status: " + getInputCountResponse.getStatus());
-}
-
-InputCount inputCount = getInputCountResponse.getCounts();
-System.out.println(inputCount);
-```
+    <CodeBlock className="language-java">{JavaGetInputsStatus}</CodeBlock>
 </TabItem>
 
 <TabItem value="csharp" label="C#">
@@ -852,7 +746,7 @@ To update an input with a new concept, or to change a concept value from true/fa
 
 <Tabs>
 
-<TabItem value="python" label="gRPC Python">
+<TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonUpdateInputConcepts}</CodeBlock>
 </TabItem>
 
@@ -860,47 +754,12 @@ To update an input with a new concept, or to change a concept value from true/fa
     <CodeBlock className="language-javascript">{JSUpdateInputConcepts}</CodeBlock>
 </TabItem>
 
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+<TabItem value="nodejs" label="NodeJS">
     <CodeBlock className="language-javascript">{NodeUpdateInputConcepts}</CodeBlock>
 </TabItem>
 
-<TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiInputResponse patchInputsResponse = stub.patchInputs(
-    PatchInputsRequest.newBuilder()
-        .setAction("merge")  // Supported actions: overwrite, merge, remove.
-        .addInputs(
-            Input.newBuilder()
-                .setId("{YOUR_INPUT_ID}")
-                .setData(
-                    Data.newBuilder()
-                        .addConcepts(
-                            Concept.newBuilder()
-                                .setId("tree")
-                                .setValue(1f)  // 1 means true, this concept is present.
-                        )
-                        .addConcepts(
-                            Concept.newBuilder()
-                                .setId("water")
-                                .setValue(0f)  // 0 means false, this concept is not present.
-                        )
-                )
-                .build()
-        )
-        .build()
-);
-
-if (patchInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Patch inputs failed, status: " + patchInputsResponse.getStatus());
-}
-```
+<TabItem value="java" label="Java">
+    <CodeBlock className="language-java">{JavaUpdateInputConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="csharp" label="C#">
@@ -1010,60 +869,7 @@ Below is an example of how to update multiple inputs with concepts at once.
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiInputResponse patchInputsResponse = stub.patchInputs(
-    PatchInputsRequest.newBuilder()
-        .setAction("merge")  // Supported actions: overwrite, merge, remove.
-        .addInputs(
-            Input.newBuilder()
-                .setId("{YOUR_INPUT_ID_1}")
-                .setData(
-                    Data.newBuilder()
-                        .addConcepts(
-                            Concept.newBuilder()
-                                .setId("tree")
-                                .setValue(1f)  // 1 means true, this concept is present.
-                        )
-                        .addConcepts(
-                            Concept.newBuilder()
-                                .setId("water")
-                                .setValue(0f)  // 0 means false, this concept is not present.
-                        )
-                )
-                .build()
-        )
-        .addInputs(
-            Input.newBuilder()
-                .setId("{YOUR_INPUT_ID_2}")
-                .setData(
-                    Data.newBuilder()
-                        .addConcepts(
-                            Concept.newBuilder()
-                                .setId("animal")
-                                .setValue(1f)
-                        )
-                        .addConcepts(
-                            Concept.newBuilder()
-                                .setId("fruit")
-                                .setValue(0f)
-                        )
-                )
-                .build()
-        )
-        .build()
-);
-
-if (patchInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Patch inputs failed, status: " + patchInputsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaBulkUpdateInputsConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="csharp" label="C#">
@@ -1213,37 +1019,7 @@ To remove concepts that were already added to an input, you can do this:
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiInputResponse patchInputsResponse = stub.patchInputs(
-    PatchInputsRequest.newBuilder()
-        .setAction("remove")  // Supported actions: overwrite, merge, remove.
-        .addInputs(
-            Input.newBuilder()
-                .setId("{YOUR_INPUT_ID}")
-                .setData(
-                    Data.newBuilder()
-                        .addConcepts(
-                            // We're removing the concept, so there's no need to specify
-                            // the concept value.
-                            Concept.newBuilder().setId("tree")
-                        )
-                )
-                .build()
-        )
-        .build()
-);
-
-if (patchInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Patch inputs failed, status: " + patchInputsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaDeleteConceptsInput}</CodeBlock>
 </TabItem>
 
 <TabItem value="csharp" label="C#">
@@ -1337,54 +1113,7 @@ Below is an example of how to bulk delete multiple concepts from a list of input
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiInputResponse patchInputsResponse = stub.patchInputs(
-    PatchInputsRequest.newBuilder()
-        .setAction("remove")  // Supported actions: overwrite, merge, remove.
-        .addInputs(
-            Input.newBuilder()
-                .setId("{YOUR_INPUT_ID_1}")
-                .setData(
-                    Data.newBuilder()
-                        // We're removing the concepts, so there's no need to specify
-                        // the concept value.
-                        .addConcepts(
-                            Concept.newBuilder().setId("tree")
-                        )
-                        .addConcepts(
-                            Concept.newBuilder().setId("water")
-                        )
-                )
-                .build()
-        )
-        .addInputs(
-            Input.newBuilder()
-                .setId("{YOUR_INPUT_ID_2}")
-                .setData(
-                    Data.newBuilder()
-                        .addConcepts(
-                            Concept.newBuilder().setId("animal")
-                        )
-                        .addConcepts(
-                            Concept.newBuilder().setId("fruit")
-                        )
-                )
-                .build()
-        )
-        .build()
-);
-
-if (patchInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Patch inputs failed, status: " + patchInputsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaBulkDeleteConceptsInputs}</CodeBlock>
 </TabItem>
 
 <TabItem value="csharp" label="C#">
@@ -1514,7 +1243,7 @@ Below is an example of how to delete a single input by its `id`.
 
 <Tabs>
 
-<TabItem value="python" label="gRPC Python">
+<TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonDeleteInputId}</CodeBlock>
 </TabItem>
 
@@ -1522,29 +1251,12 @@ Below is an example of how to delete a single input by its `id`.
     <CodeBlock className="language-javascript">{JSDeleteInputId}</CodeBlock>
 </TabItem>
 
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+<TabItem value="nodejs" label="NodeJS">
     <CodeBlock className="language-javascript">{NodeDeleteInputId}</CodeBlock>
 </TabItem>
 
-<TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-BaseResponse deleteInputResponse = stub.deleteInput(
-    DeleteInputRequest.newBuilder()
-        .setInputId("{YOUR_INPUT_ID}")
-        .build()
-);
-
-if (deleteInputResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Delete input failed, status: " + deleteInputResponse.getStatus());
-}
-```
+<TabItem value="java" label="Java">
+    <CodeBlock className="language-java">{JavaDeleteInputId}</CodeBlock>
 </TabItem>
 
 <TabItem value="csharp" label="C#">
@@ -1598,25 +1310,7 @@ You can also delete multiple inputs in one API call. This will happen asynchrono
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-BaseResponse listInputsResponse = stub.deleteInputs(
-    DeleteInputsRequest.newBuilder()
-        .addIds("{YOUR_INPUT_ID_1}")
-        .addIds("{YOUR_INPUT_ID_2}")
-        .build()
-);
-
-if (listInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Delete inputs failed, status: " + listInputsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaDeleteListInputs}</CodeBlock>
 </TabItem>
 
 <TabItem value="csharp" label="C#">
