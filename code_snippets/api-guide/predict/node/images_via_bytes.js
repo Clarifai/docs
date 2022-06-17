@@ -10,7 +10,7 @@ const USER_ID = 'YOUR_USER_ID_HERE';
 const PAT = 'YOUR_PAT_HERE';
 const APP_ID = 'YOUR_APP_ID_HERE';
 const MODEL_ID = 'YOUR_MODEL_ID_HERE';
-// Change this to whatever image URL you want to process
+// Change this to whatever image location you want to process
 const IMAGE_FILE_LOCATION = 'YOUR_IMAGE_FILE_LOCATION';
 // This is optional.You can specify a model version or the empty string for the default
 const MODEL_VERSION_ID = '';

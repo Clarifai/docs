@@ -72,6 +72,12 @@ import NodeListCollectors from "!!raw-loader!../../../code_snippets/api-guide/da
 import NodeGetCollector from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/get_collector.js";
 import NodeDeleteCollector from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/delete_collector.js";
 
+import JavaAddCollector from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/add_collector.java";
+import JavaUpdateCollector from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/update_collector.java";
+import JavaListCollectors from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/list_collectors.java";
+import JavaGetCollector from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/get_collector.java";
+import JavaDeleteCollector from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/delete_collector.java";
+
 ## Add Collector
 
 Add a new collector to your application.
@@ -87,41 +93,7 @@ Add a new collector to your application.
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-MultiCollectorResponse postCollectorsResponse = stub.postCollectors(
-    PostCollectorsRequest.newBuilder()
-        .addCollectors(
-            Collector.newBuilder()
-                .setId("{YOUR_COLLECTOR_ID}")
-                .setDescription("{YOUR_COLLECTOR_DESCRIPTION}")
-                .setPreQueueWorkflowId("{YOUR_PRE_QUEUE_WORKFLOW_ID}")
-                .setPostQueueWorkflowId("{YOUR_POST_QUEUE_WORKFLOW_ID}")
-                .setCollectorSource(
-                    CollectorSource.newBuilder()
-                        .setApiPostModelOutputsCollectorSource(
-                            APIPostModelOutputsCollectorSource.newBuilder()
-                                .setModelUserId("{YOUR_MODEL_USER_ID}")
-                                .setModelAppId("{YOUR_MODEL_APP_ID}")
-                                .setModelId("{YOUR_MODEL_ID}")
-                                .setModelVersionId("{YOUR_MODEL_VERSION_ID}")
-                                .setPostInputsKeyId("{YOUR_API_KEY}")
-                        )
-                )
-        )
-        .build()
-);
-
-if (postCollectorsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post collectors failed, status: " + postCollectorsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaAddCollector}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -168,29 +140,7 @@ Update an existing collector.
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-MultiCollectorResponse patchCollectorsResponse = stub.patchCollectors(
-    PatchCollectorsRequest.newBuilder()
-        .addCollectors(
-            Collector.newBuilder()
-                .setId("{YOUR_COLLECTOR_ID}")
-                .setDescription("{A_NEW_DESCRIPTION}")
-                .setPreQueueWorkflowId("{A_NEW_WORKFLOW_ID}")
-        )
-        .build()
-);
-
-if (patchCollectorsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Patch collectors failed, status: " + patchCollectorsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-javascript">{JavaUpdateCollector}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -228,27 +178,7 @@ List all the collectors. See [Pagination](https://docs.clarifai.com/api-guide/ad
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-MultiCollectorResponse listCollectorsResponse = stub.listCollectors(
-    ListCollectorsRequest.newBuilder()
-        .build()
-);
-
-if (listCollectorsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("List collectors failed, status: " + listCollectorsResponse.getStatus());
-}
-
-for (Collector collector : listCollectorsResponse.getCollectorsList()) {
-    System.out.println(collector);
-}
-```
+    <CodeBlock className="language-java">{JavaListCollectors}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -276,26 +206,7 @@ Return details of a certain collector.
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-SingleCollectorResponse getCollectorResponse = stub.getCollector(
-    GetCollectorRequest.newBuilder()
-        .setCollectorId("{YOUR_COLLECTOR_ID}")
-        .build()
-);
-
-if (getCollectorResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Get collector failed, status: " + getCollectorResponse.getStatus());
-}
-
-System.out.println(getCollectorResponse.getCollector());
-```
+    <CodeBlock className="language-java">{JavaGetCollector}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -323,24 +234,8 @@ Delete a collector.
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```bash
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-BaseResponse deleteCollectorsResponse = stub.deleteCollectors(
-    DeleteCollectorsRequest.newBuilder()
-        .addIds("{YOUR_COLLECTOR_ID}")
-        .build()
-);
-
-if (deleteCollectorsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Delete collectors failed, status: " + deleteCollectorsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaDeleteCollector}</CodeBlock>
 </TabItem>
+
 </Tabs>
 
