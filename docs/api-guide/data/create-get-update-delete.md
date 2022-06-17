@@ -603,7 +603,7 @@ curl -X GET \
 
 ### List Inputs \(Streaming\)
 
-This is another method for listing inputs which was built to scalably list an app's inputs in an iterative / streaming fashion. `StreamInputs` will return `per_page` number of inputs from a certain input onward, controlled by the optional `last_id` parameter \(defaults to the first input\).
+This is another method for listing inputs, which was built to scalably list an app's inputs in an iterative / streaming fashion. `StreamInputs` will return `per_page` number of inputs from a certain input onward, controlled by the optional `last_id` parameter \(defaults to the first input\).
 
 By default, the stream will return inputs from oldest to newest. Set the `descending` field to true to reverse that order.
 

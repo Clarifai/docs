@@ -33,7 +33,11 @@
                 "name": "Annotate " + CONCEPT_ID,
                 "worker": {
                     "strategy": "PARTITIONED",
-                    "user_ids": [USER_ID_1, USER_ID_2, USER_ID_3],
+                    "users": [
+                        {"id": USER_ID_1},
+                        {"id": USER_ID_2},
+                        {"id": USER_ID_3}
+                    ],
                     "partitioned_strategy_info": {
                         "type": "WEIGHTED",
                         "workers_per_input": 1,
@@ -56,8 +60,8 @@
                     "consensus_strategy_info": {
                         "approval_threshold": 2
                     },
-                    "user_ids": [
-                        USER_ID_4
+                    "users": [
+                        {"id": USER_ID_4}
                     ]
                 }
             }

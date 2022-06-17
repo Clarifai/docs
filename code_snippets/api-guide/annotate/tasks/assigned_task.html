@@ -30,8 +30,8 @@
                 "name": "Annotate " + CONCEPT_ID,
                 "worker": {
                     "strategy": "FULL",
-                    "user_ids": [
-                        WORKER_USER_ID
+                    "users": [
+                        {"id": WORKER_USER_ID}
                     ]
                 },
                 "concept_ids": [
@@ -46,8 +46,8 @@
                     "manual_strategy_info": {
                         "sample_percentage": 0.5
                     },
-                    "user_ids": [
-                        REVIEWER_USER_ID
+                    "users": [
+                        {"id": REVIEWER_USER_ID}
                     ]
                 }
             }
