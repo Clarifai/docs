@@ -9,7 +9,7 @@ PAT = 'YOUR_PAT_HERE'
 APP_ID = 'YOUR_APP_ID_HERE'
 MODEL_ID = 'YOUR_MODEL_ID_HERE'
 # Change this to whatever raw text you want to process
-TEXT_FILE_URL = 'YOUR_TEXT_FILE_HERE'
+TEXT_FILE_URL = 'https://samples.clarifai.com/negative_sentence_12.txt'
 # This is optional. You can specify a model version or an empty string for the default
 MODEL_VERSION_ID = ''
 

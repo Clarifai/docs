@@ -48,16 +48,6 @@ You cannot change the default language. You can however change languages per req
 
 ![create new app](/img/create-new-app-new.png)
 
-## List Language Translations by Concept ID
-
-You can see all the language translations for a given concept ID with a GET call. This call supports [pagination](https://docs.clarifai.com/api-guide/advanced-topics/pagination/).
-
-
-Below is an example of how you would list language translations by concept ID. 
-
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
-
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
@@ -76,6 +66,21 @@ import NodeJSSpecificLanguageTranslation from "!!raw-loader!../../../code_snippe
 import NodeJSAddLanguageTranslation from "!!raw-loader!../../../code_snippets/api-guide/concepts/node/add_language_translation.js";
 import NodeJSUpdateLanguageTranslation from "!!raw-loader!../../../code_snippets/api-guide/concepts/node/update_language_translation.js";
 
+import JavaListLanguageTranslations from "!!raw-loader!../../../code_snippets/api-guide/concepts/java/list_language_translations.java";
+import JavaSpecificLanguageTranslation from "!!raw-loader!../../../code_snippets/api-guide/concepts/java/specific_language_translation.java";
+import JavaAddLanguageTranslation from "!!raw-loader!../../../code_snippets/api-guide/concepts/java/add_language_translation.java";
+import JavaUpdateLanguageTranslation from "!!raw-loader!../../../code_snippets/api-guide/concepts/java/update_language_translation.java";
+
+
+## List Language Translations by Concept ID
+
+You can see all the language translations for a given concept ID with a GET call. This call supports [pagination](https://docs.clarifai.com/api-guide/advanced-topics/pagination/).
+
+
+Below is an example of how you would list language translations by concept ID. 
+
+Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
+
 <Tabs>
 
 <TabItem value="grpc_python" label="gRPC Python">
@@ -91,24 +96,7 @@ import NodeJSUpdateLanguageTranslation from "!!raw-loader!../../../code_snippets
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiConceptResponse listConceptLanguagesResponse = stub.listConceptLanguages(
-    ListConceptLanguagesRequest.newBuilder()
-        .setConceptId("charlie")
-        .build()
-);
-
-if (listConceptLanguagesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("List concept languages failed, status: " + listConceptLanguagesResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaListLanguageTranslations}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -161,25 +149,7 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiConceptResponse getConceptLanguageResponse = stub.getConceptLanguage(
-    ListConceptLanguageRequest.newBuilder()
-        .setConceptId("charlie")
-        .setLanguage("ja")
-        .build()
-);
-
-if (getConceptLanguageResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("List concept languages failed, status: " + getConceptLanguageResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaSpecificLanguageTranslation}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -232,25 +202,7 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiConceptResponse postConceptLanguageResponse = stub.postConceptLanguage(
-    PostConceptLanguageRequest.newBuilder()
-        .setConceptId("charlie")
-        .addConceptLanguages(ConceptLanguage.newBuilder().setId("ja").setName("ボスコ"))
-        .build()
-);
-
-if (postConceptLanguageResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post concept languages failed, status: " + postConceptLanguageResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaAddLanguageTranslation}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -303,26 +255,7 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiConceptResponse patchConceptLanguageResponse = stub.patchConceptLanguage(
-    PatchConceptLanguageRequest.newBuilder()
-        .setAction("overwrite")
-        .setConceptId("charlie")
-        .addConceptLanguages(ConceptLanguage.newBuilder().setId("ja").setName("new name"))
-        .build()
-);
-
-if (patchConceptLanguageResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Patch concept languages failed, status: " + patchConceptLanguageResponse.getStatus());
-}
-```
+    <CodeBlock className="language-javascript">{JavaUpdateLanguageTranslation}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -336,7 +269,6 @@ curl -X GET \
 </TabItem>
 
 </Tabs>
-
 
 <details>
   <summary>JSON Output Example</summary>

@@ -9,7 +9,7 @@ const USER_ID = 'YOUR_USER_ID_HERE';
 // Your PAT (Personal Access Token) can be found in the portal under Authentification
 const PAT = 'YOUR_PAT_HERE';
 const APP_ID = 'YOUR_APP_ID_HERE';
-// Change these to whatever concepts you want to process
+// Change these to whatever concept you want to add its language translation
 const CONCEPT_ID = 'charlie';
 const LANGUAGE_ID = "ja";
 const LANGUAGE_NAME = "ボスコ";

@@ -12,7 +12,7 @@ const APP_ID = 'YOUR_APP_ID_HERE';
 // Change these to whatever you want to process
 const MODEL_ID = 'YOUR_MODEL_ID_HERE';
 const IMAGE_URL = 'https://samples.clarifai.com/metro-north.jpg';
-const PREDICT_LANGUAGE = "zh"  // Chinese
+const PREDICT_LANGUAGE = "zh";  // Chinese
 
 
 ///////////////////////////////////////////////////////////////////////////////////
