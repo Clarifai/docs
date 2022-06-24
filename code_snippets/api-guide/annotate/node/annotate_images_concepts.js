@@ -10,10 +10,10 @@ const USER_ID = 'YOUR_USER_ID_HERE';
 const PAT = 'YOUR_PAT_HERE';
 const APP_ID = 'YOUR_APP_ID_HERE';
 // Change these based on the image you want to annotate
-const INPUT_ID = "c99f1b557d1d43d1916b46f8ce4a0487"
-const CONCEPT_ID_1 = "tree"
-const CONCEPT_ID_2 = "water"
-const EMBED_MODEL_VERSION_ID = "b877241c54734374b0010a8e7ad8f0a3"
+const INPUT_ID = "c99f1b557d1d43d1916b46f8ce4a0487";
+const CONCEPT_ID_1 = "tree";
+const CONCEPT_ID_2 = "water";
+const EMBED_MODEL_VERSION_ID = "b877241c54734374b0010a8e7ad8f0a3";
 
 /////////////////////////////////////////////////////////////////////////////
 // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE

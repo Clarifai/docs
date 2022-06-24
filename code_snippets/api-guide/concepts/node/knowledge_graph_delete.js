@@ -1,15 +1,15 @@
 //index.js file
 
-////////////////////////////////////////////////////////////////////////////////////
-// In this section, we set the user authentication, app ID, subject concept ID,
-// object concept ID, and predicate. Change these strings to run your own example.
-////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
+// In this section, we set the user authentication, app ID, object concept ID, and
+// concept relation IDs. Change these strings to run your own example.
+//////////////////////////////////////////////////////////////////////////////////////
 
 const USER_ID = 'YOUR_USER_ID_HERE';
 // Your PAT (Personal Access Token) can be found in the portal under Authentification
 const PAT = 'YOUR_PAT_HERE';
 const APP_ID = 'YOUR_APP_ID_HERE';
-// Change these to whatever concepts you want to process
+// Change these to whatever relations you want to delete
 const OBJECT_CONCEPT_ID = 'YOUR_OBJECT_CONCEPT_ID_HERE';
 const CONCEPT_RELATION_IDS = ['0d9b0acb10fb4dac9a9d60a149d8fc5c','f5acf9c2a76143d78daf5f984693c52c'];
 

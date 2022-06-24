@@ -1,49 +1,52 @@
-###################################################################################
-# In this section, we set the user authentication, app ID, subject concept ID, 
-# object concept ID, and predicate. Change these strings to run your own example.
-###################################################################################
+package com.clarifai.example;
 
-USER_ID = 'YOUR_USER_ID_HERE'
-# Your PAT (Personal Access Token) can be found in the portal under Authentification
-PAT = 'YOUR_PAT_HERE'
-APP_ID = 'YOUR_APP_ID_HERE'
-# Change these to whatever relation you want to create
-SUBJECT_CONCEPT_ID = 'honey'
-OBJECT_CONCEPT_ID = 'food'
-PREDICATE = "hypernym" # This can be hypernym, hyponym, or synonym
+import com.clarifai.grpc.api.*;
+import com.clarifai.channel.ClarifaiChannel;
+import com.clarifai.credentials.ClarifaiCallCredentials;
+import com.clarifai.grpc.api.status.StatusCode;
 
-##########################################################################
-# YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
-##########################################################################
+public class ClarifaiExample {
 
-from clarifai_grpc.channel.clarifai_channel import ClarifaiChannel
-from clarifai_grpc.grpc.api import resources_pb2, service_pb2, service_pb2_grpc
-from clarifai_grpc.grpc.api.status import status_code_pb2
+	///////////////////////////////////////////////////////////////////////////////////////
+	// In this section, we set the user authentication, app ID, subject concept ID, 
+	// object concept ID, and predicate. Change these strings to run your own example.
+	///////////////////////////////////////////////////////////////////////////////////////
+	
+        static final String USER_ID = "YOUR_USER_ID_HERE";
+        //Your PAT (Personal Access Token) can be found in the portal under Authentication	
+        static final String PAT = "YOUR_PAT_HERE";
+        static final String APP_ID = "YOUR_APP_ID_HERE";	
+        // Change these to whatever relations you want to create
+        static final String SUBJECT_CONCEPT_ID = "honey";
+        static final String OBJECT_CONCEPT_ID = "food";
+        static final String PREDICATE = "hypernym"; // This can be hypernym, hyponym, or synonym
+        		
+	///////////////////////////////////////////////////////////////////////////////////
+	// YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
+	///////////////////////////////////////////////////////////////////////////////////	
 
-channel = ClarifaiChannel.get_grpc_channel()
-stub = service_pb2_grpc.V2Stub(channel)
+	public static void main(String[] args) {
+		
+		V2Grpc.V2BlockingStub stub = V2Grpc.newBlockingStub(ClarifaiChannel.INSTANCE.getGrpcChannel())
+			    .withCallCredentials(new ClarifaiCallCredentials(PAT));	
+		
+		MultiConceptRelationResponse postConceptRelationsResponse = stub.postConceptRelations(
+		    PostConceptRelationsRequest.newBuilder()
+		        .setUserAppId(UserAppIDSet.newBuilder().setUserId(USER_ID).setAppId(APP_ID).build())		       
+		        .setConceptId(SUBJECT_CONCEPT_ID)
+		        .addConceptRelations(
+		            ConceptRelation.newBuilder()
+		                .setObjectConcept(Concept.newBuilder().setId(OBJECT_CONCEPT_ID).build())
+		                .setPredicate(PREDICATE).build()) 
+		        .build()
+		);
 
-metadata = (('authorization', 'Key ' + PAT),)
-
-post_concept_relation_response = stub.PostConceptRelations(
-    service_pb2.PostConceptRelationsRequest(
-        user_app_id=resources_pb2.UserAppIDSet(
-            user_id=USER_ID,
-            app_id=APP_ID
-        ),
-        concept_id=SUBJECT_CONCEPT_ID,
-        concept_relations=[
-            resources_pb2.ConceptRelation(
-                object_concept=resources_pb2.Concept(id=OBJECT_CONCEPT_ID),
-                predicate=PREDICATE
-            )
-        ]
-    ),
-    metadata=metadata
-)
-
-if post_concept_relation_response.status.code != status_code_pb2.SUCCESS:
-    print(post_concept_relation_response.status)
-    raise Exception("Post concept relation failed, status: " + post_concept_relation_response.status.description)
-    
-print(post_concept_relation_response)
+		if (postConceptRelationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+		    throw new RuntimeException("Post concept relations failed, status: " + postConceptRelationsResponse.getStatus());
+		}
+		
+		System.out.println(postConceptRelationsResponse);
+	
+	}
+	
+}

@@ -7,7 +7,7 @@ USER_ID = 'YOUR_USER_ID_HERE'
 # Your PAT (Personal Access Token) can be found in the portal under Authentification
 PAT = 'YOUR_PAT_HERE'
 APP_ID = 'YOUR_APP_ID_HERE'
-# Change these to whatever relation you want to create
+# Change these to whatever relations you want to create
 SUBJECT_CONCEPT_ID = 'honey'
 OBJECT_CONCEPT_ID = 'food'
 PREDICATE = "hypernym" # This can be hypernym, hyponym, or synonym

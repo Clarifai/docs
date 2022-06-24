@@ -45,9 +45,9 @@ import NodeJSCreateRelations from "!!raw-loader!../../../code_snippets/api-guide
 import NodeJSListRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/node/knowledge_graph_list.js";
 import NodeJSDeleteRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/node/knowledge_graph_delete.js";
 
-import JavaJSCreateRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/java/knowledge_graph_create.java";
-import JavaJSListRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/java/knowledge_graph_list.java";
-import JavaJSDeleteRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/java/knowledge_graph_delete.java";
+import JavaCreateRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/java/knowledge_graph_create.java";
+import JavaListRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/java/knowledge_graph_list.java";
+import JavaDeleteRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/java/knowledge_graph_delete.java";
 
 
 <Tabs>
@@ -65,33 +65,7 @@ import JavaJSDeleteRelations from "!!raw-loader!../../../code_snippets/api-guide
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiConceptRelationResponse postConceptRelationsResponse = stub.postConceptRelations(
-    PostConceptRelationsRequest.newBuilder()
-        .setUserAppId(
-            UserAppIDSet.newBuilder()
-                .setAppId("{YOUR_APP_ID}")
-                .build()
-        )
-        .setConceptId("{YOUR_SUBJECT_CONCEPT_ID}")
-        .addConceptRelations(
-            ConceptRelation.newBuilder()
-                .setObjectConcept(Concept.newBuilder().setId("{YOUR_OBJECT_CONCEPT_ID}").build())
-                .setPredicate("hypernym").build()) // This can be hypernym, hypnonym, or synonym.
-        .build()
-);
-
-if (postConceptRelationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post concept relations failed, status: " + postConceptRelationsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-javascript">{JavaCreateRelations}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -185,35 +159,7 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiConceptRelationResponse listConceptRelationsResponse = stub.listConceptRelations(
-    ListConceptRelationsRequest.newBuilder()
-        .setUserAppId(
-            UserAppIDSet.newBuilder()
-                .setAppId("{YOUR_APP_ID}")
-                .build()
-        )
-        .setConceptId("{YOUR_CONCEPT_ID}")
-        .setPredicate("hypernym")  // This is optional. If skipped, all concept's relations will be returned.
-        .build()
-);
-
-
-if (listConceptRelationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("List concept relations failed, status: " + listConceptRelationsResponse.getStatus());
-}
-
-for (ConceptRelation relation : listConceptRelationsResponse.getConceptRelationsList()) {
-    System.out.println(relation);
-}
-```
+    <CodeBlock className="language-javascript">{JavaListRelations}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -297,28 +243,7 @@ To retrieve the `CONCEPT_RELATION_IDS`, log in to the Portal and access the rela
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-BaseResponse deleteConceptRelationsResponse = stub.deleteConceptRelations(
-    DeleteConceptRelationsRequest.newBuilder()
-        .setUserAppId(
-            UserAppIDSet.newBuilder().setAppId("{YOUR_APP_ID}").build()
-        )
-        .addIds("{YOUR_CONCEPT_RELATION_ID}")
-        .setConceptId("{YOUR_OBJECT_CONCEPT_ID}")
-        .build()
-);
-
-if (deleteConceptRelationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Delete concept relations failed, status: " + deleteConceptRelationsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaDeleteRelations}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">

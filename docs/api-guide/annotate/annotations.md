@@ -22,7 +22,9 @@ To make the annotation available for AI based search and training, you need to p
 
 When associated during patching, then we know how to index it for training and visual search. Therefore, if your use case includes those features, it is recommended to provide this field on each add annotation call.
 
+:::info
 You can add from 1 up to 128 annotations in a single API call.
+:::
 
 Each annotation should contain at most one region. If it is a video, each annotation should contain 1 frame. If there are multiple regions in a frame you want to label, you can add multiple annotations for each region and each annotation will be contained within the same frame but in a different region.
 
@@ -86,6 +88,25 @@ import NodeUpdateAnnotationConceptsRegion from "!!raw-loader!../../../code_snipp
 import NodeUpdateAnnotationRegionCoordinates from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/update_annotation_region_coordinates.js";
 import NodeUpdateAnnotationStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/update_annotation_status.js";
 
+import JavaAnnotateExistingRegionsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/annotate_existing_regions_image.java";
+import JavaAnnotateImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/annotate_images_concepts.java";
+import JavaAnnotateImagesUserIdStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/annotate_images_user_id_status.java";
+import JavaAnnotateNewBoundingBoxesImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/annotate_new_bounding_boxes_image.java";
+import JavaAnnotatePolygonsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/annotate_polygons_image.java";
+import JavabulkDeleteAnnotationsInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/bulk_delete_annotations_input_annotation_ids.java";
+import JavaBulkDeleteAnnotationsInputIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/bulk_delete_annotations_input_ids.java";
+import JavaDeleteAnnotationInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/delete_annotation_input_annotation_ids.java";
+import JavaListAllAnnotationsApp from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/list_all_annotations_app.java";
+import JavaListAnnotationsInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/list_annotations_input_annotation_ids.java";
+import JavaListAnnotationsModelVersionIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/list_annotations_model_version_ids.java";
+import JavaListAnnotationsUserIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/list_annotations_user_ids.java";
+import JavalistUserCreatedAnnotationsApp from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/list_user_created_annotations_app.java";
+import JavaListUserCreatedAnnotationsInputIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/list_user_created_annotations_input_ids.java";
+import JavaUpdateAnnotationConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/update_annotation_concepts.java";
+import JavaUpdateAnnotationConceptsRegion from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/update_annotation_concepts_region.java";
+import JavaUpdateAnnotationRegionCoordinates from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/update_annotation_region_coordinates.java";
+import JavaUpdateAnnotationStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/update_annotation_status.java";
+
 
 ### Annotate Images With Concepts
 
@@ -109,40 +130,7 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import java.util.List;
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiAnnotationResponse postAnnotationsResponse = stub.postAnnotations(
-    PostAnnotationsRequest.newBuilder().addAnnotations(
-        Annotation.newBuilder()
-            .setInputId("{YOUR_INPUT_ID}")
-            .setData(
-                Data.newBuilder().addConcepts(
-                    Concept.newBuilder()
-                        .setId("tree")
-                        .setValue(1f)  // 1 means true, this concept is present.
-                        .build()
-                    ).addConcepts(
-                        Concept.newBuilder()
-                            .setId("water")
-                            .setValue(0f)  // 0 means false, this concept is not present.
-                            .build()
-                    )
-            ).setEmbedModelVersionId("{EMBED_MODEL_VERSION_ID}") // so the concept can be used for custom model training
-            .build()
-    ).build()
-);
-
-if (postAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post annotations failed, status: " + postAnnotationsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaAnnotateImagesConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">

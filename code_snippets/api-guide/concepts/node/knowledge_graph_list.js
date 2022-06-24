@@ -9,7 +9,7 @@ const USER_ID = 'YOUR_USER_ID_HERE';
 // Your PAT (Personal Access Token) can be found in the portal under Authentification
 const PAT = 'YOUR_PAT_HERE';
 const APP_ID = 'YOUR_APP_ID_HERE';
-// Change these to whatever concepts you want to process
+// Change these to whatever concept you want to list its relations
 const CONCEPT_ID = 'honey';
 const PREDICATE = "hypernym";
 
