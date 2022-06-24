@@ -52,6 +52,11 @@ import NodeJSMaxConcepts from "!!raw-loader!../../../code_snippets/api-guide/pre
 import NodeJSMinPredictValue from "!!raw-loader!../../../code_snippets/api-guide/predict/node/prediction_parameters_min_predict_value.js";
 import NodeJSSelectConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/node/prediction_parameters_select_concepts.js";
 
+import JavaByModelVersion from "!!raw-loader!../../../code_snippets/api-guide/predict/java/prediction_parameters_by_model_version_id.java";
+import JavaMaxConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/java/prediction_parameters_max_concepts.java";
+import JavaMinPredictValue from "!!raw-loader!../../../code_snippets/api-guide/predict/java/prediction_parameters_min_predict_value.java";
+import JavaSelectConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/java/prediction_parameters_select_concepts.java";
+
 <Tabs>
 
 <TabItem value="python" label="Python">
@@ -64,6 +69,10 @@ import NodeJSSelectConcepts from "!!raw-loader!../../../code_snippets/api-guide/
 
 <TabItem value="nodejs" label="NodeJS">
     <CodeBlock className="language-javascript">{NodeJSSelectConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="java" label="Java">
+    <CodeBlock className="language-java">{JavaSelectConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="php" label="PHP">
@@ -197,53 +206,6 @@ foreach ($response->getOutputs()[0]->getData()->getConcepts() as $concept) {
     echo $concept->getName() . ": " . number_format($concept->getValue(), 2) . "\n";
 }
 ?>
-```
-</TabItem>
-
-<TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.StatusCode;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
-    PostModelOutputsRequest.newBuilder()
-        .setModelId("aaa03c23b3724a16a56b629203edc62c")  // This is model ID of the clarifai/main General model.
-        .addInputs(
-            Input.newBuilder().setData(
-                Data.newBuilder().setImage(
-                    Image.newBuilder().setUrl("https://samples.clarifai.com/metro-north.jpg")
-                )
-            )
-        )
-        .setModel(
-            Model.newBuilder().setOutputInfo(
-                OutputInfo.newBuilder().setOutputConfig(
-                    OutputConfig.newBuilder()
-                        // When selecting concepts, value is ignored, so no need to specify it.
-                        .addSelectConcepts(Concept.newBuilder().setName("train"))
-                        .addSelectConcepts(Concept.newBuilder().setId("ai_6kTjGfF6")
-                        )
-                )
-            )
-        )
-        .build()
-);
-
-if (postModelOutputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post model outputs failed, status: " + postModelOutputsResponse.getStatus());
-}
-
-// Since we have one input, one output will exist here.
-Output output = postModelOutputsResponse.getOutputs(0);
-
-System.out.println("Predicted concepts:");
-for (Concept concept : output.getData().getConceptsList()) {
-    System.out.printf("%s %.2f%n", concept.getName(), concept.getValue());
-}
 ```
 </TabItem>
 
@@ -429,6 +391,10 @@ Note that the initialization code used here is outlined in detail on the [client
     <CodeBlock className="language-javascript">{NodeJSMaxConcepts}</CodeBlock>
 </TabItem>
 
+<TabItem value="java" label="Java">
+    <CodeBlock className="language-java">{JavaMaxConcepts}</CodeBlock>
+</TabItem>
+
 <TabItem value="php" label="PHP">
 
 ```php
@@ -556,48 +522,6 @@ foreach ($response->getOutputs()[0]->getData()->getConcepts() as $concept) {
     echo $concept->getName() . ": " . number_format($concept->getValue(), 2) . "\n";
 }
 ?>
-```
-</TabItem>
-
-<TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
-    PostModelOutputsRequest.newBuilder()
-        .setModelId("aaa03c23b3724a16a56b629203edc62c")  // This is model ID of the clarifai/main General model.
-        .addInputs(
-            Input.newBuilder().setData(
-                Data.newBuilder().setImage(
-                    Image.newBuilder().setUrl("https://samples.clarifai.com/metro-north.jpg")
-                )
-            )
-        )
-        .setModel(
-            Model.newBuilder().setOutputInfo(
-                OutputInfo.newBuilder().setOutputConfig(
-                    OutputConfig.newBuilder().setMaxConcepts(3)
-                )
-            )
-        )
-        .build()
-);
-
-if (postModelOutputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post model outputs failed, status: " + postModelOutputsResponse.getStatus());
-}
-
-// Since we have one input, one output will exist here.
-Output output = postModelOutputsResponse.getOutputs(0);
-
-System.out.println("Predicted concepts:");
-for (Concept concept : output.getData().getConceptsList()) {
-    System.out.printf("%s %.2f%n", concept.getName(), concept.getValue());
 ```
 </TabItem>
 
@@ -785,6 +709,10 @@ Note that the initialization code used here is outlined in detail on the [client
     <CodeBlock className="language-javascript">{NodeJSMinPredictValue}</CodeBlock>
 </TabItem>
 
+<TabItem value="java" label="Java">
+    <CodeBlock className="language-java">{JavaMinPredictValue}</CodeBlock>
+</TabItem>
+
 <TabItem value="php" label="PHP">
 
 ```php
@@ -912,49 +840,6 @@ foreach ($response->getOutputs()[0]->getData()->getConcepts() as $concept) {
     echo $concept->getName() . ": " . number_format($concept->getValue(), 2) . "\n";
 }
 ?>
-```
-</TabItem>
-
-<TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
-    PostModelOutputsRequest.newBuilder()
-        .setModelId("aaa03c23b3724a16a56b629203edc62c")  // This is model ID of the clarifai/main General model.
-        .addInputs(
-            Input.newBuilder().setData(
-                Data.newBuilder().setImage(
-                    Image.newBuilder().setUrl("https://samples.clarifai.com/metro-north.jpg")
-                )
-            )
-        )
-        .setModel(
-            Model.newBuilder().setOutputInfo(
-                OutputInfo.newBuilder().setOutputConfig(
-                    OutputConfig.newBuilder().setMinValue(0.95f)
-                )
-            )
-        )
-        .build()
-);
-
-if (postModelOutputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post model outputs failed, status: " + postModelOutputsResponse.getStatus());
-}
-
-// Since we have one input, one output will exist here.
-Output output = postModelOutputsResponse.getOutputs(0);
-
-System.out.println("Predicted concepts:");
-for (Concept concept : output.getData().getConceptsList()) {
-    System.out.printf("%s %.2f%n", concept.getName(), concept.getValue());
-}
 ```
 </TabItem>
 
@@ -1230,40 +1115,7 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
-    PostModelOutputsRequest.newBuilder()
-        .setModelId("aaa03c23b3724a16a56b629203edc62c")  // This is model ID of the clarifai/main General model.
-        .setVersionId("aa7f35c01e0642fda5cf400f543e7c40")  // This is optional. Defaults to the latest model version.
-        .addInputs(
-            Input.newBuilder().setData(
-                Data.newBuilder().setImage(
-                    Image.newBuilder().setUrl("https://samples.clarifai.com/metro-north.jpg")
-                )
-            )
-        )
-        .build()
-);
-
-if (postModelOutputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post model outputs failed, status: " + postModelOutputsResponse.getStatus());
-}
-
-// Since we have one input, one output will exist here.
-Output output = postModelOutputsResponse.getOutputs(0);
-
-System.out.println("Predicted concepts:");
-for (Concept concept : output.getData().getConceptsList()) {
-    System.out.printf("%s %.2f%n", concept.getName(), concept.getValue());
-}
-```
+    <CodeBlock className="language-java">{JavaByModelVersion}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">

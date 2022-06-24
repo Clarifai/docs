@@ -22,6 +22,7 @@ import CodeBlock from "@theme/CodeBlock";
 import PythonSearchByConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/python/search_by_concept.py";
 import JavaScriptSearchByConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/js/search_by_concept.html";
 import NodeJSSearchByConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/node/search_by_concept.js";
+import JavaSearchByConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/java/search_by_concept.java";
 
 <Tabs>
 
@@ -38,33 +39,7 @@ import NodeJSSearchByConcept from "!!raw-loader!../../../code_snippets/api-guide
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiConceptResponse postConceptsSearchesResponse = stub.postConceptsSearches(
-    PostConceptsSearchesRequest.newBuilder()
-        .setConceptQuery(
-            ConceptQuery.newBuilder()
-                .setName("人")
-                .setLanguage("ja")
-        )
-        .build()
-);
-
-if (postConceptsSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post concepts searches failed, status: " + postConceptsSearchesResponse.getStatus());
-}
-
-System.out.println("Found concepts:");
-for (Concept concept : postConceptsSearchesResponse.getConceptsList()) {
-    System.out.printf("\t%s %.2f%n", concept.getName(), concept.getValue());
-}
-```
+    <CodeBlock className="language-java">{JavaSearchByConcept}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">

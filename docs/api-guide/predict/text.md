@@ -18,12 +18,18 @@ import CodeBlock from "@theme/CodeBlock";
 import CodePythonViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/python/text_via_url.py";
 import CodePythonViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/python/text_via_bytes.py";
 import CodePythonViaRaw from "!!raw-loader!../../../code_snippets/api-guide/predict/python/text_via_raw.py";
+
 import CodeJavaScriptViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/js/text_via_url.html";
 import CodeJavaScriptViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/js/text_via_bytes.html";
 import CodeJavaScriptViaRaw from "!!raw-loader!../../../code_snippets/api-guide/predict/js/text_via_raw.html";
+
 import CodeNodeJSViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/node/text_via_url.js";
 import CodeNodeJSViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/node/text_via_bytes.js";
 import CodeNodeJSViaRaw from "!!raw-loader!../../../code_snippets/api-guide/predict/node/text_via_raw.js";
+
+import CodeJavaViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/java/text_via_url.java";
+import CodeJavaViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/java/text_via_bytes.java";
+import CodeJavaViaRaw from "!!raw-loader!../../../code_snippets/api-guide/predict/java/text_via_raw.java";
 
 ## Via URL 
 
@@ -36,14 +42,16 @@ Note that the initialization code used here is outlined in detail on the [client
     <CodeBlock className="language-python">{CodePythonViaURL}</CodeBlock>
 </TabItem>
 
-
 <TabItem value="js_rest" label="JavaScript (REST)">
    <CodeBlock className="language-javascript">{CodeJavaScriptViaURL}</CodeBlock>
 </TabItem>
 
-
 <TabItem value="nodejs" label="NodeJS">
    <CodeBlock className="language-javascript">{CodeNodeJSViaURL}</CodeBlock>
+</TabItem>
+
+<TabItem value="java" label="Java">
+   <CodeBlock className="language-java">{CodeJavaViaURL}</CodeBlock>
 </TabItem>
 
 <TabItem value="php" label="PHP">
@@ -145,43 +153,6 @@ foreach ($response->getOutputs()[0]->getData()->getConcepts() as $concept) {
     echo $concept->getName() . ": " . number_format($concept->getValue(), 2) . "\n";
 }
 ?>
-```
-</TabItem>
-
-<TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
-    PostModelOutputsRequest.newBuilder()
-        .setModelId("{THE_MODEL_ID}")
-        .setVersionId("{THE_MODEL_VERSION_ID")  // This is optional. Defaults to the latest model version.
-        .addInputs(
-            Input.newBuilder().setData(
-                Data.newBuilder().setText(
-                    Text.newBuilder().setUrl("https://samples.clarifai.com/negative_sentence_12.txt")
-                )
-            )
-        )
-        .build()
-);
-
-if (postModelOutputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post model outputs failed, status: " + postModelOutputsResponse.getStatus());
-}
-
-// Since we have one input, one output will exist here.
-Output output = postModelOutputsResponse.getOutputs(0);
-
-System.out.println("Predicted concepts:");
-for (Concept concept : output.getData().getConceptsList()) {
-    System.out.printf("%s %.2f%n", concept.getName(), concept.getValue());
-}
 ```
 </TabItem>
 
@@ -367,46 +338,7 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-import com.google.protobuf.ByteString;
-import java.io.File;
-import java.nio.file.Files;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
-    PostModelOutputsRequest.newBuilder()
-        .setModelId("{THE_MODEL_ID}")
-        .setVersionId("{THE_MODEL_VERSION_ID")  // This is optional. Defaults to the latest model version.
-        .addInputs(
-            Input.newBuilder().setData(
-                Data.newBuilder().setText(
-                    Text.newBuilder()
-                        .setRaw(ByteString.copyFrom(Files.readAllBytes(
-                            new File("{YOUR_IMAGE_FILE_LOCATION}").toPath()
-                        )))
-                )
-            )
-        )
-        .build()
-);
-
-if (postModelOutputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post model outputs failed, status: " + postModelOutputsResponse.getStatus());
-}
-
-// Since we have one input, one output will exist here.
-Output output = postModelOutputsResponse.getOutputs(0);
-
-System.out.println("Predicted concepts:");
-for (Concept concept : output.getData().getConceptsList()) {
-    System.out.printf("%s %.2f%n", concept.getName(), concept.getValue());
-}
-```
+    <CodeBlock className="language-java">{CodeJavaViaBytes}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -595,12 +527,12 @@ Note that the initialization code used here is outlined in detail on the [client
    <CodeBlock className="language-javascript">{CodeNodeJSViaRaw}</CodeBlock>
 </TabItem>
 
+<TabItem value="java" label="Java">
+   <CodeBlock className="language-java">{CodeJavaViaRaw}</CodeBlock>
+</TabItem>
+
 <TabItem value="php" label="PHP">
 </TabItem>
-
-<TabItem value="java" label="Java">
-</TabItem>
-
 
 <TabItem value="curl" label="cURL">
 </TabItem>

@@ -10,8 +10,8 @@ const USER_ID = 'YOUR_USER_ID_HERE';
 const PAT = 'YOUR_PAT_HERE';
 const APP_ID = 'YOUR_APP_ID_HERE';
 // Change these to whatever concepts you want to process
-CONCEPT_ID = 'cat';
-CONCEPT_NAME = 'Cat Name';
+const CONCEPT_ID = 'cat';
+const CONCEPT_NAME = 'Cat Name';
 
 ///////////////////////////////////////////////////////////////////////////////////
 // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE

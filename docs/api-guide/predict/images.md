@@ -25,6 +25,7 @@ import CodeNodeJSViaURL from "!!raw-loader!../../../code_snippets/api-guide/pred
 import CodeNodeJSViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/node/images_via_bytes.js";
 
 import CodeJavaViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/java/images_via_url.java";
+import CodeJavaViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/java/images_via_bytes.java";
 
 ## Via URL
 
@@ -441,6 +442,10 @@ Note that the initialization code used here is outlined in detail on the [client
     <CodeBlock className="language-javascript">{CodeNodeJSViaBytes}</CodeBlock>
 </TabItem>
 
+<TabItem value="java" label="Java">
+    <CodeBlock className="language-java">{CodeJavaViaBytes}</CodeBlock>
+</TabItem>
+
 <TabItem value="php" label="PHP">
 
 ```php
@@ -547,49 +552,6 @@ foreach ($response->getOutputs()[0]->getData()->getConcepts() as $concept) {
     echo $concept->getName() . ": " . number_format($concept->getValue(), 2) . "\n";
 }
 ?>
-```
-</TabItem>
-
-<TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-import com.google.protobuf.ByteString;
-import java.io.File;
-import java.nio.file.Files;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
-    PostModelOutputsRequest.newBuilder()
-        .setModelId("{THE_MODEL_ID}")
-        .setVersionId("{THE_MODEL_VERSION_ID")  // This is optional. Defaults to the latest model version.
-        .addInputs(
-            Input.newBuilder().setData(
-                Data.newBuilder().setImage(
-                    Image.newBuilder()
-                        .setBase64(ByteString.copyFrom(Files.readAllBytes(
-                            new File("{YOUR_IMAGE_FILE_LOCATION}").toPath()
-                        )))
-                )
-            )
-        )
-        .build()
-);
-
-if (postModelOutputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post model outputs failed, status: " + postModelOutputsResponse.getStatus());
-}
-
-// Since we have one input, one output will exist here.
-Output output = postModelOutputsResponse.getOutputs(0);
-
-System.out.println("Predicted concepts:");
-for (Concept concept : output.getData().getConceptsList()) {
-    System.out.printf("%s %.2f%n", concept.getName(), concept.getValue());
-}
 ```
 </TabItem>
 

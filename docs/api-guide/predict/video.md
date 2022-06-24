@@ -44,6 +44,8 @@ import CodeJavaScriptViaBytes from "!!raw-loader!../../../code_snippets/api-guid
 import CodeNodeJSViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/node/video_via_url.js";
 import CodeNodeJSViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/node/video_via_bytes.js";
 
+import CodeJavaViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/java/video_via_url.java";
+import CodeJavaViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/java/video_via_bytes.java";
 
 
 <Tabs>
@@ -57,6 +59,10 @@ import CodeNodeJSViaBytes from "!!raw-loader!../../../code_snippets/api-guide/pr
 
 <TabItem value="nodejs" label="NodeJS">
      <CodeBlock className="language-javascript">{CodeNodeJSViaURL}</CodeBlock>
+</TabItem>
+
+<TabItem value="java" label="Java">
+     <CodeBlock className="language-java">{CodeJavaViaURL}</CodeBlock>
 </TabItem>
 
 <TabItem value="php" label="PHP">
@@ -160,46 +166,6 @@ foreach ($output->getData()->getFrames() as $frame) {
     }
 }
 ?>
-```
-</TabItem>
-
-<TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
-    PostModelOutputsRequest.newBuilder()
-        .setModelId("{THE_MODEL_ID}")
-        .setVersionId("{THE_MODEL_VERSION_ID")  // This is optional. Defaults to the latest model version.
-        .addInputs(
-            Input.newBuilder().setData(
-                Data.newBuilder().setVideo(
-                    Video.newBuilder().setUrl("https://samples.clarifai.com/beer.mp4")
-                )
-            )
-        )
-        .build()
-);
-
-if (postModelOutputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post model outputs failed, status: " + postModelOutputsResponse.getStatus());
-}
-
-// Since we have one input, one output will exist here.
-Output output = postModelOutputsResponse.getOutputs(0);
-
-// A separate prediction is available for each "frame".
-for (Frame frame : output.getData().getFramesList()) {
-    System.out.println("Predicted concepts on frame " + frame.getFrameInfo().getTime() + ":");
-    for (Concept concept : frame.getData().getConceptsList()) {
-        System.out.printf("\t%s %.2f%n", concept.getName(), concept.getValue());
-    }
-}
 ```
 </TabItem>
 
@@ -1704,7 +1670,9 @@ Note that the initialization code used here is outlined in detail on the [client
   <CodeBlock className="language-javascript">{CodeNodeJSViaBytes}</CodeBlock>
 </TabItem>
 
-
+<TabItem value="java" label="Java">
+  <CodeBlock className="language-java">{CodeJavaViaBytes}</CodeBlock>
+</TabItem>
 
 <TabItem value="php" label="PHP">
 
@@ -1814,49 +1782,6 @@ foreach ($output->getData()->getFrames() as $frame) {
     }
 }
 ?>
-```
-</TabItem>
-
-<TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
-    PostModelOutputsRequest.newBuilder()
-        .setModelId("{THE_MODEL_ID}")
-        .setVersionId("{THE_MODEL_VERSION_ID")  // This is optional. Defaults to the latest model version.
-        .addInputs(
-            Input.newBuilder().setData(
-                Data.newBuilder().setVideo(
-                    Video.newBuilder()
-                        .setBase64(ByteString.copyFrom(Files.readAllBytes(
-                            new File("{YOUR_VIDEO_FILE_LOCATION}").toPath()
-                        )))
-                )
-            )
-        )
-        .build()
-);
-
-if (postModelOutputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post model outputs failed, status: " + postModelOutputsResponse.getStatus());
-}
-
-// Since we have one input, one output will exist here.
-Output output = postModelOutputsResponse.getOutputs(0);
-
-// A separate prediction is available for each "frame".
-for (Frame frame : output.getData().getFramesList()) {
-    System.out.println("Predicted concepts on frame " + frame.getFrameInfo().getTime() + ":");
-    for (Concept concept : frame.getData().getConceptsList()) {
-        System.out.printf("\t%s %.2f%n", concept.getName(), concept.getValue());
-    }
-}
 ```
 </TabItem>
 

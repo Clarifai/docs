@@ -32,6 +32,9 @@ import JavaScriptSearchConcepts from "!!raw-loader!../../../code_snippets/api-gu
 import NodeJSBySpecificLanguage from "!!raw-loader!../../../code_snippets/api-guide/predict/node/multilingual_classification_specific_language.js";
 import NodeJSSearchConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/node/multilingual_classification_search_concepts.js";
 
+import JavaBySpecificLanguage from "!!raw-loader!../../../code_snippets/api-guide/predict/java/multilingual_classification_specific_language.java";
+import JavaSearchConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/java/multilingual_classification_search_concepts.java";
+
 <Tabs>
 
 <TabItem value="python" label="Python">
@@ -44,6 +47,10 @@ import NodeJSSearchConcepts from "!!raw-loader!../../../code_snippets/api-guide/
 
 <TabItem value="nodejs" label="NodeJS">
     <CodeBlock className="language-javascript">{NodeJSBySpecificLanguage}</CodeBlock>
+</TabItem>
+
+<TabItem value="java" label="Java">
+    <CodeBlock className="language-java">{JavaBySpecificLanguage}</CodeBlock>
 </TabItem>
 
 <TabItem value="php" label="PHP">
@@ -172,49 +179,6 @@ foreach ($response->getOutputs()[0]->getData()->getConcepts() as $concept) {
     echo $concept->getName() . ": " . number_format($concept->getValue(), 2) . "\n";
 }
 ?>
-```
-</TabItem>
-
-<TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
-    PostModelOutputsRequest.newBuilder()
-        .setModelId("aaa03c23b3724a16a56b629203edc62c")  // This is model ID of the publicly available General model.
-        .addInputs(
-            Input.newBuilder().setData(
-                Data.newBuilder().setImage(
-                    Image.newBuilder().setUrl("https://samples.clarifai.com/metro-north.jpg")
-                )
-            )
-        )
-        .setModel(
-            Model.newBuilder().setOutputInfo(
-                OutputInfo.newBuilder().setOutputConfig(
-                    OutputConfig.newBuilder().setLanguage("zh")  // Chinese
-                )
-            )
-        )
-        .build()
-);
-
-if (postModelOutputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post model outputs failed, status: " + postModelOutputsResponse.getStatus());
-}
-
-// Since we have one input, one output will exist here.
-Output output = postModelOutputsResponse.getOutputs(0);
-
-System.out.println("Predicted concepts:");
-for (Concept concept : output.getData().getConceptsList()) {
-    System.out.printf("%s %.2f%n", concept.getName(), concept.getValue());
-}
 ```
 </TabItem>
 
@@ -517,6 +481,10 @@ Note that the initialization code used here is outlined in detail on the [client
     <CodeBlock className="language-javascript">{NodeJSSearchConcepts}</CodeBlock>
 </TabItem>
 
+<TabItem value="java" label="Java">
+    <CodeBlock className="language-java">{JavaSearchConcepts}</CodeBlock>
+</TabItem>
+
 <TabItem value="php" label="PHP">
 
 ```php
@@ -594,36 +562,6 @@ foreach ($response->getConcepts() as $concept) {
     echo $concept->getName() . ": " . number_format($concept->getValue(), 2) . "\n";
 }
 ?>
-```
-</TabItem>
-
-<TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiConceptResponse postConceptsSearchesResponse = stub.postConceptsSearches(
-    PostConceptsSearchesRequest.newBuilder()
-        .setConceptQuery(
-            ConceptQuery.newBuilder()
-                .setName("人")
-                .setLanguage("zh")
-        )
-        .build()
-);
-
-if (postConceptsSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post concepts searches failed, status: " + postConceptsSearchesResponse.getStatus());
-}
-
-System.out.println("Found concepts:");
-for (Concept concept : postConceptsSearchesResponse.getConceptsList()) {
-    System.out.printf("\t%s %.2f%n", concept.getName(), concept.getValue());
-}
 ```
 </TabItem>
 

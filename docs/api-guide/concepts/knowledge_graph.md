@@ -45,6 +45,11 @@ import NodeJSCreateRelations from "!!raw-loader!../../../code_snippets/api-guide
 import NodeJSListRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/node/knowledge_graph_list.js";
 import NodeJSDeleteRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/node/knowledge_graph_delete.js";
 
+import JavaJSCreateRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/java/knowledge_graph_create.java";
+import JavaJSListRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/java/knowledge_graph_list.java";
+import JavaJSDeleteRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/java/knowledge_graph_delete.java";
+
+
 <Tabs>
 
 <TabItem value="python" label="Python">

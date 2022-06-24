@@ -1,9 +1,9 @@
 //index.js file
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////
 // In this section, we set the user authentication, app and model IDs, url of the image
-// we want as an input, and prediction language. Change these strings to run your own example.
-//////////////////////////////////////////////////////////////////////////////////////////////////////
+// we want as an input, and model version ID. Change these strings to run your own example.
+/////////////////////////////////////////////////////////////////////////////////////////////
 
 const USER_ID = 'YOUR_USER_ID_HERE';
 // Your PAT (Personal Access Token) can be found in the portal under Authentification
@@ -13,7 +13,6 @@ const APP_ID = 'YOUR_APP_ID_HERE';
 const MODEL_ID = 'YOUR_MODEL_ID_HERE';
 const IMAGE_URL = 'https://samples.clarifai.com/metro-north.jpg';
 const MODEL_VERSION_ID = 'aa7f35c01e0642fda5cf400f543e7c40';
-
 
 ///////////////////////////////////////////////////////////////////////////////////
 // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE

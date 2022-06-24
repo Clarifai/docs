@@ -45,6 +45,11 @@ import NodeJSGetConcept from "!!raw-loader!../../../code_snippets/api-guide/conc
 import NodeJSListConcepts from "!!raw-loader!../../../code_snippets/api-guide/concepts/node/list_concepts.js";
 import NodeJSUpdateConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/node/update_concept.js";
 
+import JavaAddConcepts from "!!raw-loader!../../../code_snippets/api-guide/concepts/java/add_concepts.java";
+import JavaGetConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/java/get_concept.java";
+import JavaListConcepts from "!!raw-loader!../../../code_snippets/api-guide/concepts/java/list_concepts.java";
+import JavaUpdateConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/java/update_concept.java";
+
 
 <Tabs>
 
@@ -61,24 +66,7 @@ import NodeJSUpdateConcept from "!!raw-loader!../../../code_snippets/api-guide/c
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiConceptResponse postConceptsResponse = stub.postConcepts(
-    PostConceptsRequest.newBuilder()
-        .addConcepts(Concept.newBuilder().setId("charlie").setName("Charlie Name"))
-        .build()
-);
-
-if (postConceptsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post concepts failed, status: " + postConceptsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaAddConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -152,24 +140,7 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-SingleConceptResponse getConceptResponse = stub.getConcept(
-    GetConceptRequest.newBuilder()
-        .setConceptId("charlie")
-        .build()
-);
-
-if (getConceptsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Get concepts failed, status: " + getConceptsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaGetConcept}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -235,23 +206,7 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiConceptResponse listConceptsResponse = stub.listConcepts(
-    ListConceptsRequest.newBuilder()
-        .build()
-);
-
-if (listConceptsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("List concepts failed, status: " + listConceptsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaListConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -331,25 +286,7 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiConceptResponse patchConceptsResponse = stub.patchConcepts(
-    PatchConceptsRequest.newBuilder()
-        .setAction("overwrite")  // The only supported action right now is overwrite.
-        .addConcepts(Concept.newBuilder().setId("charlie").setName("Charlie Name"))
-        .build()
-);
-
-if (patchConceptsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Patch concepts failed, status: " + patchConceptsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaUpdateConcept}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">

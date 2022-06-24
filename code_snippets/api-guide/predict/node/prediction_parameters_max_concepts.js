@@ -2,7 +2,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // In this section, we set the user authentication, app and model IDs, url of the image
-// we want as an input, and prediction language. Change these strings to run your own example.
+// we want as an input, and max concepts. Change these strings to run your own example.
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 const USER_ID = 'YOUR_USER_ID_HERE';
