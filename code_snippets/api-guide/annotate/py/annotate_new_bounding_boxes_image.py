@@ -12,7 +12,6 @@ INPUT_ID = "53d0362a9dfa4e03b2293375e2d0db73"
 CONCEPT_ID_1 = "tree"
 CONCEPT_ID_2 = "water"
 CONCEPT_ID_3 = "bike"
-MODEL_VERSION_ID = "aa7f35c01e0642fda5cf400f543e7c40"
 
 ##########################################################################
 # YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -54,8 +53,8 @@ post_annotations_response = stub.PostAnnotations(
                             )
                         )
                     ]
-                ),
-                embed_model_version_id=MODEL_VERSION_ID
+                )
+                
             ),
             resources_pb2.Annotation(
                 input_id=INPUT_ID,
@@ -77,8 +76,8 @@ post_annotations_response = stub.PostAnnotations(
                             )
                         )
                     ]
-                ),
-                embed_model_version_id=MODEL_VERSION_ID
+                )
+                
             )
         ]
     ),

@@ -14,7 +14,6 @@ CONCEPT_ID_2 = "water"
 CONCEPT_ID_3 = "bike"
 REGION_ID_1 = "361d6a9253be9152968012660258a4bf"
 REGION_ID_2 = "dcfa961b753f3b197d0bf7b242718ab1"
-MODEL_VERSION_ID = "aa7f35c01e0642fda5cf400f543e7c40"
 
 ##########################################################################
 # YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -49,8 +48,8 @@ post_annotations_response = stub.PostAnnotations(
                             )
                         )
                     ]
-                ),
-                embed_model_version_id=MODEL_VERSION_ID
+                )
+                
             ),
             resources_pb2.Annotation(                # label another region in this image
                 input_id=INPUT_ID,
@@ -65,8 +64,8 @@ post_annotations_response = stub.PostAnnotations(
                             )
                         )
                     ]
-                ),
-                embed_model_version_id=MODEL_VERSION_ID
+                )
+                
             ),
         ]
     ),

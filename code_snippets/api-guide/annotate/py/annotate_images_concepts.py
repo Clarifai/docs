@@ -11,7 +11,6 @@ APP_ID = 'YOUR_APP_ID_HERE'
 INPUT_ID = "53d0362a9dfa4e03b2293375e2d0db73"
 CONCEPT_ID_1 = "tree"
 CONCEPT_ID_2 = "water"
-MODEL_VERSION_ID = "aa7f35c01e0642fda5cf400f543e7c40"
 
 ##########################################################################
 # YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -36,11 +35,10 @@ post_annotations_response = stub.PostAnnotations(
                 input_id=INPUT_ID,
                 data=resources_pb2.Data(
                     concepts=[
-                        resources_pb2.Concept(id=CONCEPT_ID_1, value=1.),  # 1 means true, this concept is present.
-                        resources_pb2.Concept(id=CONCEPT_ID_2, value=0.)  # 0 means false, this concept is not present.
+                        resources_pb2.Concept(id=CONCEPT_ID_1, value=1.),  # 1 means true, this concept is present
+                        resources_pb2.Concept(id=CONCEPT_ID_2, value=0.)  # 0 means false, this concept is not present
                     ]
-                ),
-                embed_model_version_id= MODEL_VERSION_ID
+                )               
             )
         ]
     ),
@@ -49,4 +47,4 @@ post_annotations_response = stub.PostAnnotations(
 
 if post_annotations_response.status.code != status_code_pb2.SUCCESS:
     print(post_annotations_response.status)
-    raise Exception("Post annotations failed, status: " + post_annotations_response.status.description)
+    raise Exception("Post annotations failed, status: " + post_annotations_response.status.description) 

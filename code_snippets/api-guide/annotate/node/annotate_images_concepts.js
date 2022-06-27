@@ -13,7 +13,6 @@ const APP_ID = 'YOUR_APP_ID_HERE';
 const INPUT_ID = "c99f1b557d1d43d1916b46f8ce4a0487";
 const CONCEPT_ID_1 = "tree";
 const CONCEPT_ID_2 = "water";
-const EMBED_MODEL_VERSION_ID = "b877241c54734374b0010a8e7ad8f0a3";
 
 /////////////////////////////////////////////////////////////////////////////
 // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -43,8 +42,8 @@ stub.PostAnnotations(
                         { id: CONCEPT_ID_1, value: 1 },
                         { id: CONCEPT_ID_2, value: 0 }
                     ]
-                },
-                embed_model_version_id: EMBED_MODEL_VERSION_ID
+                }
+                
             }
         ]
     },
