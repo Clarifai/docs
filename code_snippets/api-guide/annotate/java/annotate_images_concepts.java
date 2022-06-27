@@ -19,8 +19,7 @@ public class ClarifaiExample {
         // Change these based on the image you want to annotate
         static final String INPUT_ID = "c99f1b557d1d43d1916b46f8ce4a0487";
         static final String CONCEPT_ID_1 = "tree";
-        static final String CONCEPT_ID_2 = "water";
-        static final String EMBED_MODEL_VERSION_ID = "b877241c54734374b0010a8e7ad8f0a3";
+        static final String CONCEPT_ID_2 = "water";        
         		
 	///////////////////////////////////////////////////////////////////////////////////
 	// YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -49,8 +48,7 @@ public class ClarifaiExample {
 		                            .setValue(0f)  // 0 means false, this concept is not present
 		                            .build()
 		                    )
-		            ).setEmbedModelVersionId(EMBED_MODEL_VERSION_ID) // so the concept can be used for custom model training
-		            .build()
+		            ).build()
 		    ).build()
 		);
 

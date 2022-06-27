@@ -16,11 +16,7 @@ Once your input is successfully indexed, you can add additional annotations, suc
 
 You can label your inputs by calling the `POST /annotations` endpoint. For example, you can add concept\(s\) to an image, draw a bounding box, or label concept\(s\) in a video frame.
 
-When you add an annotation, the app's default workflow will not run by default. This means that the annotation will not be immediately available for training of your custom model or for visual search. 
-
-To make the annotation available for AI based search and training, you need to provide `embed_model_version_id` field. This field specifies how to associate the annotation for your input to one of the embedding models in your default workflow.
-
-When associated during patching, then we know how to index it for training and visual search. Therefore, if your use case includes those features, it is recommended to provide this field on each add annotation call.
+When you add an annotation, the app's default workflow will be run by default. This means that any newly added annotations will be immediately available for AI based search and training.
 
 :::info
 You can add from 1 up to 128 annotations in a single API call.
@@ -189,88 +185,7 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import java.util.List;
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiAnnotationResponse postAnnotationsResponse = stub.postAnnotations(
-    PostAnnotationsRequest.newBuilder().addAnnotations(
-        Annotation.newBuilder()                     // label a region in this image
-            .setInputId("{YOUR_INPUT_ID}")
-            .setData(
-                Data.newBuilder().addRegions(
-                    Region.newBuilder()
-                        .setRegionInfo(
-                            RegionInfo.newBuilder()
-                                .setBoundingBox(        // draw a bounding box
-                                    BoundingBox.newBuilder()
-                                        .setTopRow(0f)
-                                        .setLeftCol(0f)
-                                        .setBottomRow(0.5f)
-                                        .setRightCol(0.5f)
-                                        .build()
-                                )
-                                .build()
-                        )
-                        .setData(
-                            Data.newBuilder()
-                                .addConcepts(
-                                    Concept.newBuilder()
-                                        .setId("tree")
-                                        .setValue(1f)  // 1 means true, this concept is present.
-                                        .build()
-                                )
-                                .addConcepts(
-                                    Concept.newBuilder()
-                                        .setId("water")
-                                        .setValue(0f)  // 0 means false, this concept is not present.
-                                        .build()
-                                )
-                        ).build()
-                ).build()
-            ).setEmbedModelVersionId("{EMBED_MODEL_VERSION_ID}") // so the concept can be used for custom model training
-            .build()
-    ).addAnnotations(                           // label another region in this image
-            .setInputId("{YOUR_INPUT_ID}")
-            .setData(
-                Data.newBuilder().addRegions(
-                    Region.newBuilder()
-                        .setRegionInfo(
-                            RegionInfo.newBuilder()
-                                .setBoundingBox(        // draw another bounding box
-                                    BoundingBox.newBuilder()
-                                        .setTopRow(0.6f)
-                                        .setLeftCol(0.6f)
-                                        .setBottomRow(0.8f)
-                                        .setRightCol(0.8f)
-                                        .build()
-                                )
-                                .build()
-                        )
-                        .setData(
-                            Data.newBuilder()
-                                .addConcepts(
-                                    Concept.newBuilder()
-                                        .setId("bike")
-                                        .setValue(1f)  // 1 means true, this concept is present.
-                                        .build()
-                                )
-                        ).build()
-                ).build()
-            ).setEmbedModelVersionId("{EMBED_MODEL_VERSION_ID}") // so the concept can be used for custom model training
-            .build()
-    ).build()
-);
-
-if (postAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post annotations failed, status: " + postAnnotationsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaAnnotateNewBoundingBoxesImage}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">

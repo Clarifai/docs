@@ -14,7 +14,6 @@ const INPUT_ID = "c9cbb1c90cf24bc98bfd2e529e744ca9";
 const CONCEPT_ID_1 = "tree";
 const CONCEPT_ID_2 = "water";
 const CONCEPT_ID_3 = "bike";
-const EMBED_MODEL_VERSION_ID = "aa7f35c01e0642fda5cf400f543e7c40";
 
 /////////////////////////////////////////////////////////////////////////////
 // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -65,8 +64,8 @@ stub.PostAnnotations(
                             },
                         }
                     ]
-                },
-                embed_model_version_id: EMBED_MODEL_VERSION_ID
+                }
+                
             }, {                     // label another region in this image
                 input_id: INPUT_ID,
                 data: {
@@ -97,8 +96,8 @@ stub.PostAnnotations(
                             },
                         }
                     ]
-                },
-                embed_model_version_id: EMBED_MODEL_VERSION_ID
+                }
+                
             }
         ]
     },
