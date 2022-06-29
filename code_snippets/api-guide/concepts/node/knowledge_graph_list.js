@@ -11,7 +11,7 @@ const PAT = 'YOUR_PAT_HERE';
 const APP_ID = 'YOUR_APP_ID_HERE';
 // Change these to whatever concept you want to list its relations
 const CONCEPT_ID = 'honey';
-const PREDICATE = "hypernym";
+const PREDICATE = "hypernym"; // This is optional. If skipped, all concept's relations will be returned
 
 ///////////////////////////////////////////////////////////////////////////////////
 // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
