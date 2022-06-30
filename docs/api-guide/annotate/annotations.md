@@ -283,13 +283,17 @@ Note that the initialization code used here is outlined in detail on the [client
     <CodeBlock className="language-javascript">{NodeAnnotatePolygonsImage}</CodeBlock>
 </TabItem>
 
+<TabItem value="java" label="Java">
+    <CodeBlock className="language-java">{JavaAnnotatePolygonsImage}</CodeBlock>
+</TabItem>
+
 </Tabs>
 
 ### Annotate Existing Regions in an Image
 
-When you add an input, detection models \(such as `Face Detection` or `General Detection`\) will detect regions in your image where there appear to be relevant objects. You can check these detected regions by listing model's annotations. 
+When you add an input, detection models \(such as `Face Detection` or `General Detection`\) will detect regions in your image where there appear to be relevant objects. You can get the IDs of these detected regions by [listing model's annotations](https://docs.clarifai.com/api-guide/annotate/annotations#list-annotations).
 
-Your labels should be contained within `Region.data`. Each annotation can have only 1 region. If you want to label multiple regions, it is possible to label multiple annotations in a single API call.
+Your labels should be contained within `Region.data`. Each annotation can only have 1 region. If you want to label multiple regions, it is possible to label multiple annotations in a single API call.
 
 Below is an example of how to annotate existing regions in an image.
 
@@ -310,64 +314,7 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import java.util.List;
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiAnnotationResponse postAnnotationsResponse = stub.postAnnotations(
-    PostAnnotationsRequest.newBuilder().addAnnotations(
-        Annotation.newBuilder()                // label a region in this image
-            .setInputId("{YOUR_INPUT_ID}")
-            .setData(
-                Data.newBuilder().addRegions(
-                    Region.newBuilder()
-                        .setId("{REGION_ID_1}") // this should be a region id returned from list annotations call
-                        .setData(
-                            Data.newBuilder().addConcepts(
-                                Concept.newBuilder()
-                                    .setId("tree")
-                                    .setValue(1f)  // 1 means true, this concept is present.
-                                    .build()
-                                ).addConcepts(
-                                    Concept.newBuilder()
-                                        .setId("water")
-                                        .setValue(0f)  // 0 means false, this concept is not present.
-                                        .build()
-                                )
-                        ).build()
-                ).build()
-            ).setEmbedModelVersionId("{EMBED_MODEL_VERSION_ID}") // so the concept can be used for custom model training
-            .build()
-    ).AddAnnotations(
-        Annotation.newBuilder()                // label another region in the same image
-            .setInputId("{YOUR_INPUT_ID}")
-            .setData(
-                Data.newBuilder().addRegions(
-                    Region.newBuilder()
-                        .setId("{REGION_ID_2}") // this should be a region id returned from list annotations call
-                        .setData(
-                            Data.newBuilder().addConcepts(
-                                Concept.newBuilder()
-                                    .setId("bike")
-                                    .setValue(1f)  // 1 means true, this concept is present.
-                                    .build()
-                                )
-                        ).build()
-                ).build()
-            ).setEmbedModelVersionId("{EMBED_MODEL_VERSION_ID}") // so the concept can be used for custom model training
-            .build()
-    ).build()
-);
-
-if (postAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post annotations failed, status: " + postAnnotationsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaAnnotateExistingRegionsImage}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -437,7 +384,7 @@ Each annotation is tied to a user or a model in your workflow. By default, when 
 
 Sometimes, however, you might want to post an annotation as another user; for example, when assigning an image to another user. In such a case, you can create an annotation with another `user_id` \(and status `PENDING`\).
 
-:::note
+:::important note
 
 Only the app owner can post an annotation with other user's `user_id`; collaborators cannot.
 
@@ -462,33 +409,7 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import java.util.List;
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiAnnotationResponse postAnnotationsResponse = stub.postAnnotations(
-    PostAnnotationsRequest.newBuilder().addAnnotations(
-        Annotation.newBuilder()
-            .setInputId("{YOUR_INPUT_ID}")
-            .setUserId("{USER_ID}")  // If empty, it is the user who posts this annotation
-            .setStatus(
-                Status.newBuilder()
-                    .setCodeValue(StatusCode.ANNOTATION_PENDING_VALUE) // annotation pending status. By default, it's ANNOTATION_SUCCESS_VALUE.
-                    .build()
-            )
-            .build()
-    ).build()
-);
-
-if (postAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post annotations failed, status: " + postAnnotationsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaAnnotateImagesUserIdStatus}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -519,7 +440,7 @@ curl -X POST \
 
 You can get a list of annotations within your app with a GET call. Annotations will be returned from oldest to newest.
 
-These requests are paginated. By default each page will return 20 annotations.
+These requests are [paginated](https://docs.clarifai.com/api-guide/advanced-topics/pagination). By default each page will return 20 annotations.
 
 ### List All User Created Annotations in Your App
 
@@ -527,7 +448,7 @@ Below is an example of how to list all your user labelled annotations.
 
 Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 
-:::note
+:::important note
 
 This will not show annotations by models in your workflow. To include model created annotations, you need to set `list_all_annotations` to `True`.
 
@@ -548,30 +469,7 @@ This will not show annotations by models in your workflow. To include model crea
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import java.util.List;
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiAnnotationResponse listAnnotationsResponse = stub.listAnnotations(
-    ListAnnotationsRequest.newBuilder()
-        .setPerPage(10)
-        .setPage(1)  // Pages start at 1.
-        .build()
-);
-
-if (listAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("List annotations failed, status: " + listAnnotationsResponse.getStatus());
-}
-
-for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
-    System.out.println(annotation);
-}
-```
+    <CodeBlock className="language-javascript">{JavalistUserCreatedAnnotationsApp}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -606,31 +504,7 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import java.util.List;
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiAnnotationResponse listAnnotationsResponse = stub.listAnnotations(
-    ListAnnotationsRequest.newBuilder()
-        .setPerPage(10)
-        .setListAllAnnotations(true)
-        .setPage(1)  // Pages start at 1.
-        .build()
-);
-
-if (listAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("List annotations failed, status: " + listAnnotationsResponse.getStatus());
-}
-
-for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
-    System.out.println(annotation);
-}
-```
+    <CodeBlock className="language-javascript">{JavaListAllAnnotationsApp}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -650,7 +524,7 @@ Below is an example of how to list all user created annotations for certain inpu
 
 Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 
-:::note
+:::important note
 
 This will not show annotations by models in your workflow. To include model created annotations, you need to set `list_all_annotations` to `True`.
 
@@ -658,7 +532,7 @@ This will not show annotations by models in your workflow. To include model crea
 
 <Tabs>
 
-<TabItem value="grpc_python" label="gRPC Python">
+<TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonListUserCreatedAnnotationsInputIds}</CodeBlock>
 </TabItem>
 
@@ -666,37 +540,12 @@ This will not show annotations by models in your workflow. To include model crea
     <CodeBlock className="language-javascript">{JSListUserCreatedAnnotationsInputIds}</CodeBlock>
 </TabItem>
 
-<TabItem value="grpc_nodejs" label="gRPC NodeJS">
+<TabItem value="nodejs" label="NodeJS">
     <CodeBlock className="language-javascript">{NodeListUserCreatedAnnotationsInputIds}</CodeBlock>
 </TabItem>
 
-<TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import java.util.List;
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiAnnotationResponse listAnnotationsResponse = stub.listAnnotations(
-    ListAnnotationsRequest.newBuilder()
-        .addInputIds("{YOUR_INPUT_ID_1}")
-        .addInputIds("{YOUR_INPUT_ID_2}")
-        .setPerPage(10)
-        .setPage(1)  // Pages start at 1.
-        .build()
-);
-
-if (listAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("List annotations failed, status: " + listAnnotationsResponse.getStatus());
-}
-
-for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
-    System.out.println(annotation);
-}
-```
+<TabItem value="java" label="Java">
+    <CodeBlock className="language-java">{JavaListUserCreatedAnnotationsInputIds}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -733,33 +582,7 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import java.util.List;
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiAnnotationResponse listAnnotationsResponse = stub.listAnnotations(
-    ListAnnotationsRequest.newBuilder()
-        .setPerPage(10)
-        .addInputIds("{YOUR_INPUT_ID_1}").
-        .addInputIds("{YOUR_INPUT_ID_2}").
-        .addIds("{YOUR_ANNOTATION_ID_1}")
-        .addIds("{YOUR_ANNOTATION_ID_2}")
-        .build()
-);
-
-if (listAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("List annotations failed, status: " + listAnnotationsResponse.getStatus());
-}
-
-for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
-    System.out.println(annotation);
-}
-```
+    <CodeBlock className="language-java">{JavaListAnnotationsInputAnnotationIds}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -796,31 +619,7 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import java.util.List;
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiAnnotationResponse listAnnotationsResponse = stub.listAnnotations(
-    ListAnnotationsRequest.newBuilder()
-        .addUserIds("{USER_ID_1}")
-        .addUserIds("{USER_ID_2}")
-        .setPerPage(10)
-        .build()
-);
-
-if (listAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("List annotations failed, status: " + listAnnotationsResponse.getStatus());
-}
-
-for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
-    System.out.println(annotation);
-}
-```
+    <CodeBlock className="language-java">{JavaListAnnotationsUserIds}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -860,31 +659,7 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import java.util.List;
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiAnnotationResponse listAnnotationsResponse = stub.listAnnotations(
-    ListAnnotationsRequest.newBuilder()
-        .addModelVersionIds("{MODEL_VERSION_ID_1}")
-        .addModelVersionIds("{MODEL_VERSION_ID_2}")
-        .setPerPage(10)
-        .build()
-);
-
-if (listAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("List annotations failed, status: " + listAnnotationsResponse.getStatus());
-}
-
-for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
-    System.out.println(annotation);
-}
-```
+    <CodeBlock className="language-java">{JavaListAnnotationsModelVersionIds}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
