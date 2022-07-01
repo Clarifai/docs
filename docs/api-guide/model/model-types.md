@@ -8,12 +8,14 @@ sidebar_position: 2
 **Learn about some of the most important model types on the Clarifai platform**
 <hr />
 
-Clarifai offers a wide variety of models that can be used as standalone solutions, or as the building blocks for your own custom business solutions.
+Clarifai offers a wide variety of [models](https://www.clarifai.com/developers/pre-trained-models) that can be used as standalone solutions, or as building blocks for your own custom business solutions.
 
-This page describes some important model types that you should know when working with the Clarifai platform. Please keep in mind that this is an overview of the general categories of models available to you and that new models are created all the time. For a listing of the models available to you:
+This page describes some important model types that you should know when working with the Clarifai platform. Please keep in mind that this is an overview of the general categories of models available to you and that new models are created frequently. 
 
-* Make a `GET` call to `/models/types` api. The api responds with all available model types.
-* You can then choose any one of the model types and make a `POST` request to the `/models` api with the payload specified in the response for the chosen model type.
+For a listing of the models available to you:
+
+* Make a `GET` call to the `/models/types` API method. The method responds with all the available model types.
+* You can then choose any one of the model types and make a `POST` request to the `/models` API method with the payload specified in the response of the chosen model type.
 
 ## Trainable Models
 
@@ -43,7 +45,7 @@ Embeddings also can be combined with cluster models to provide a fast and effici
 
 _Example use case:_
 
-_A security company wants to use face verification as part of their two-factor identification system. They would begin by using Clarifai's face embedding model, and then training this model to recognize the identities of permitted individuals. They would simply upload images of the people that want to identify, add individual names as concepts, and train the new model using a **Context-Based Classifier**._
+_A security company wants to use face verification as part of their two-factor identification system. They would begin by using Clarifai's face embedding model, and then training this model to recognize the identities of permitted individuals. They would simply upload images of the people they want to identify, add individual names as concepts, and train the new model using a **Context-Based Classifier**._
 
 ## Custom Models
 
@@ -53,11 +55,11 @@ Use deep trained models when you are working with highly specialized data, or yo
 
 _Example use case:_
 
-_A radiology laboratory is training a model to detect COVID-19 in patients based on their chest x-rays. They need to push model accuracy to its absolute limit to reduce false positives. Their dataset is also highly specialized and technical in nature. They would typically choose to a deep trained model to get the best results._
+_A radiology laboratory is training a model to detect COVID-19 in patients based on their chest x-rays. They need to push model accuracy to its absolute limit to reduce false positives. Their dataset is also highly specialized and technical in nature. They would typically choose a deep trained model to get the best results._
 
 ### Context-Based Classifier
 
-The Context-Based Classifier is the key to transfer learning and custom model building on the Clarifai platform. The context based classifier can learn new concepts and create new custom models out of existing models.
+The Context-Based Classifier is the key to transfer learning and custom model building on the Clarifai platform. The context-based classifier can learn new concepts and create new custom models out of existing models.
 
 _Example use case:_
 

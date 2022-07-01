@@ -17,10 +17,10 @@ public class ClarifaiExample {
     static final String PAT = "YOUR_PAT_HERE";
     static final String APP_ID = "YOUR_APP_ID_HERE";
     // Change these based on the new bounding boxes you want to annotate
-    static final String INPUT_ID = "c9cbb1c90cf24bc98bfd2e529e744ca9";
+    static final String INPUT_ID = "53d0362a9dfa4e03b2293375e2d0db73";
     static final String CONCEPT_ID_1 = "tree";
     static final String CONCEPT_ID_2 = "water";
-    static final String CONCEPT_ID_3 = "bike";    
+    static final String CONCEPT_ID_3 = "bike";
 
     ///////////////////////////////////////////////////////////////////////////////////
     // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -68,7 +68,7 @@ public class ClarifaiExample {
                             )
                         ).build()
                     ).build()
-                ).setEmbedModelVersionId(EMBED_MODEL_VERSION_ID) // so the concept can be used for custom model training
+                )
                 .build()
             ).addAnnotations( // label another region in this image
                 Annotation.newBuilder()

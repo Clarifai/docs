@@ -16,10 +16,6 @@ You do not need many images to get started. We recommend starting with 10 and ad
 The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 :::
 
-## Add Images With Concepts
-
-To get started training your own model, you must first add images that already contain the concepts you want your model to see.
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
@@ -38,6 +34,14 @@ import NodeCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model
 import NodeTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/node/train_model.js";
 import NodePredictModel from "!!raw-loader!../../../code_snippets/api-guide/model/node/predict_with_model.js";
 
+import JavaAddImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide/model/java/add_images_with_concepts.java";
+import JavaCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/java/create_model.java";
+import JavaTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/java/train_model.java";
+import JavaPredictModel from "!!raw-loader!../../../code_snippets/api-guide/model/java/predict_with_model.java";
+
+## Add Images With Concepts
+
+To get started training your own model, you must first add images that already contain the concepts you want your model to see.
 
 <Tabs>
 
@@ -54,60 +58,13 @@ import NodePredictModel from "!!raw-loader!../../../code_snippets/api-guide/mode
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiInputResponse postInputsResponse = stub.postInputs(
-    PostInputsRequest.newBuilder()
-        .addInputs(
-            Input.newBuilder()
-                .setData(
-                    Data.newBuilder()
-                        .setImage(
-                            Image.newBuilder()
-                                .setUrl("https://samples.clarifai.com/puppy.jpeg")
-                                .setAllowDuplicateUrl(true)
-                        )
-                        .addConcepts(Concept.newBuilder().setId("charlie").setValue(1))
-                        .addConcepts(Concept.newBuilder().setId("our_wedding").setValue(0))
-                )
-        )
-        .addInputs(
-            Input.newBuilder()
-                .setData(
-                    Data.newBuilder()
-                        .setImage(
-                            Image.newBuilder()
-                                .setUrl("https://samples.clarifai.com/wedding.jpg")
-                                .setAllowDuplicateUrl(true)
-                        )
-                        .addConcepts(Concept.newBuilder().setId("our_wedding").setValue(1))
-                        .addConcepts(Concept.newBuilder().setId("charlie").setValue(0))
-                        .addConcepts(Concept.newBuilder().setId("cat").setValue(0))
-                )
-        )
-        .build()
-);
-
-if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    for (Input input : postInputsResponse.getInputsList()) {
-        System.out.println("Input " + input.getId() + " status: ");
-        System.out.println(input.getStatus() + "\n");
-    }
-
-    throw new RuntimeException("Post inputs failed, status: " + postInputsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaAddImagesConcepts}</CodeBlock>
 </TabItem>
 
-<TabItem value="javascript" label="Javascript">
+<!--<TabItem value="javascript" label="Javascript">
 
 ```javascript
+
 app.inputs.create({
   url: "https://samples.clarifai.com/puppy.jpeg",
   concepts: [
@@ -118,9 +75,9 @@ app.inputs.create({
   ]
 });
 ```
-</TabItem>
+</TabItem>-->
 
-<TabItem value="python" label="Python">
+<!--<TabItem value="python" label="Python">
 
 ```python
 from clarifai.rest import ClarifaiApp
@@ -134,9 +91,9 @@ img2 = ClImage(url="https://samples.clarifai.com/wedding.jpg", concepts=['our_we
 
 app.inputs.bulk_create_images([img1, img2])
 ```
-</TabItem>
+</TabItem>-->
 
-<TabItem value="java" label="Java">
+<!--<TabItem value="java" label="Java">
 
 ```java
 client.addInputs()
@@ -146,7 +103,7 @@ client.addInputs()
     )
     .executeSync();
 ```
-</TabItem>
+</TabItem>-->
 
 <TabItem value="csharp" label="C#">
 
@@ -176,7 +133,7 @@ namespace YourNamespace
 ```
 </TabItem>
 
-<TabItem value="objective-c" label="Objective-C">
+<!--<TabItem value="objective-c" label="Objective-C">
 
 ```objectivec
 ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpeg" andConcepts:@"cute puppy"];
@@ -184,7 +141,7 @@ ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clar
     NSLog(@"inputs: %@", inputs);
 }];
 ```
-</TabItem>
+</TabItem>-->
 
 <TabItem value="php" label="PHP">
 
@@ -361,7 +318,7 @@ inputs {
 
 Once your images with concepts are added, you are now ready to create the model. You'll need a name for the model and you'll also need to provide it with the concepts you added above.
 
-Take note of the `model id` that is returned in the response. You'll need that for the next two steps.
+Take note of the `model id` that is returned in the response. We'll need that for the next two steps.
 
 <Tabs>
 
@@ -378,39 +335,10 @@ Take note of the `model id` that is returned in the response. You'll need that f
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-SingleModelResponse postModelsResponse = stub.postModels(
-    PostModelsRequest.newBuilder().addModels(
-        Model.newBuilder()
-            .setId("pets")
-            .setOutputInfo(
-                OutputInfo.newBuilder()
-                    .setData(
-                        Data.newBuilder().addConcepts(Concept.newBuilder().setId("charlie"))
-                    )
-                    .setOutputConfig(
-                        OutputConfig.newBuilder()
-                            .setConceptsMutuallyExclusive(false)
-                            .setClosedEnvironment(false)
-                    )
-            )
-    ).build()
-);
-
-if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post models failed, status: " + postModelsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaCreateModel}</CodeBlock>
 </TabItem>
 
-<TabItem value="javascript" label="Javascript">
+<!--<TabItem value="javascript" label="Javascript">
 
 ```javascript
 app.models.create(
@@ -427,9 +355,9 @@ app.models.create(
   }
 );
 ```
-</TabItem>
+</TabItem>-->
 
-<TabItem value="python" label="Python">
+<!--<TabItem value="python" label="Python">
 
 ```python
 from clarifai.rest import ClarifaiApp
@@ -437,9 +365,9 @@ app = ClarifaiApp(api_key='YOUR_API_KEY')
 
 model = app.models.create('pets', concepts=['charlie'])
 ```
-</TabItem>
+</TabItem>-->
 
-<TabItem value="java" label="Java">
+<!--<TabItem value="java" label="Java">
 
 ```java
 client.createModel("pets")
@@ -448,7 +376,7 @@ client.createModel("pets")
     ))
     .executeSync();
 ```
-</TabItem>
+</TabItem>-->
 
 <TabItem value="csharp" label="C#">
 
@@ -476,7 +404,7 @@ namespace YourNamespace
 ```
 </TabItem>
 
-<TabItem value="objective-c" label="Objective-C">
+<!--<TabItem value="objective-c" label="Objective-C">
 
 ```objectivec
 [app createModel:@[concept] name:modelName conceptsMutuallyExclusive:NO closedEnvironment:NO
@@ -484,7 +412,7 @@ namespace YourNamespace
         NSLog(@"model: %@", model);
 }];
 ```
-</TabItem>
+</TabItem>-->
 
 <TabItem value="php" label="PHP">
 
@@ -632,7 +560,7 @@ model {
 
 Now that you've added images with concepts, then created a model with those concepts, the next step is to train the model. When you train a model, you are telling the system to look at all the images with concepts you've provided and learn from them. This train operation is asynchronous. It may take a few seconds for your model to be fully trained and ready.
 
-Keep note of the `model_version id` in the response. We'll need that for the next section when we predict with the model.
+Take note of the `model_version id` in the response. We'll need that for the next section when we predict with the model.
 
 <Tabs>
 
@@ -649,30 +577,10 @@ Keep note of the `model_version id` in the response. We'll need that for the nex
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-SingleModelResponse postModelVersionsResponse = stub.postModelVersions(
-    PostModelVersionsRequest.newBuilder()
-        .setModelId("pets")
-        .build()
-);
-
-if (postModelVersionsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post model versions failed, status: " + postModelVersionsResponse.getStatus());
-}
-
-String modelVersionId = postModelVersionsResponse.getModel().getModelVersion().getId();
-System.out.println("New model version ID: " + modelVersionId);
-```
+    <CodeBlock className="language-java">{JavaTrainModel}</CodeBlock>
 </TabItem>
 
-<TabItem value="javascript" label="Javascript">
+<!--<TabItem value="javascript" label="Javascript">
 
 ```javascript
 app.models.train("{model_id}").then(
@@ -695,9 +603,9 @@ model.train().then(
   }
 );
 ```
-</TabItem>
+</TabItem>-->
 
-<TabItem value="python" label="Python">
+<!--<TabItem value="python" label="Python">
 
 ```python
 from clarifai.rest import ClarifaiApp
@@ -707,14 +615,14 @@ app = ClarifaiApp(api_key='YOUR_API_KEY')
 model = app.models.get('{model_id}')
 model.train()
 ```
-</TabItem>
+</TabItem>-->
 
-<TabItem value="java" label="Java">
+<!--<TabItem value="java" label="Java">
 
 ```java
 client.trainModel("{model_id}").executeSync();
 ```
-</TabItem>
+</TabItem>-->
 
 <TabItem value="csharp" label="C#">
 
@@ -739,7 +647,7 @@ namespace YourNamespace
 ```
 </TabItem>
 
-<TabItem value="objective-c" label="Objective-C">
+<!--<TabItem value="objective-c" label="Objective-C">
 
 ```objectivec
 ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpeg"]
@@ -749,7 +657,7 @@ ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clar
     }];
 }];
 ```
-</TabItem>
+</TabItem>-->
 
 <TabItem value="php" label="PHP">
 
@@ -873,7 +781,7 @@ model {
 
 Now that we have trained the model, we can start making predictions with it. In our predict call, we specify three items: the `model id`, `model version id` \(optional, defaults to the latest trained version\), and the `input` we want a prediction for.
 
-:::note
+:::important note
 You can repeat the above steps as often as you like. By adding more images with concepts and training, you can get the model to predict exactly how you want it to.
 :::
 
@@ -892,43 +800,10 @@ You can repeat the above steps as often as you like. By adding more images with 
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
-    PostModelOutputsRequest.newBuilder()
-        .setModelId("pets")
-        .setVersionId("{YOUR_MODEL_VERSION_ID}")  // This is optional. Defaults to the latest model version.
-        .addInputs(
-            Input.newBuilder().setData(
-                Data.newBuilder().setImage(
-                    Image.newBuilder().setUrl("https://samples.clarifai.com/metro-north.jpg")
-                )
-            )
-        )
-        .build()
-);
-
-if (postModelOutputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post model outputs failed, status: " + postModelOutputsResponse.getStatus());
-}
-
-// Since we have one input, one output will exist here.
-Output output = postModelOutputsResponse.getOutputs(0);
-
-System.out.println("Predicted concepts:");
-for (Concept concept : output.getData().getConceptsList()) {
-    System.out.printf("%s %.2f%n", concept.getName(), concept.getValue());
-}
-```
+    <CodeBlock className="language-java">{JavaPredictModel}</CodeBlock>
 </TabItem>
 
-<TabItem value="javascript" label="Javascript">
+<!--<TabItem value="javascript" label="Javascript">
 
 ```javascript
 let app = new Clarifai.App({apiKey: 'YOUR_API_KEY'});
@@ -942,9 +817,9 @@ app.models.predict({id:'MODEL_ID', version:'MODEL_VERSION_ID'}, "https://samples
   }
 );
 ```
-</TabItem>
+</TabItem>-->
 
-<TabItem value="python" label="Python">
+<!--<TabItem value="python" label="Python">
 
 ```python
 from clarifai.rest import ClarifaiApp
@@ -955,9 +830,9 @@ model.model_version = 'MODEL_VERSION_ID'  # This is optional. Defaults to the la
 
 response = model.predict_by_url('https://samples.clarifai.com/metro-north.jpg')
 ```
-</TabItem>
+</TabItem>-->
 
-<TabItem value="java" label="Java">
+<!--<TabItem value="java" label="Java">
 
 ```java
 ModelVersion modelVersion = client.getModelVersionByID("MODEL_ID", "MODEL_VERSION_ID")
@@ -969,7 +844,7 @@ ModelVersion modelVersion = client.getModelVersionByID("MODEL_ID", "MODEL_VERSIO
         .withInputs(ClarifaiInput.forImage("https://samples.clarifai.com/metro-north.jpg"))
         .executeSync();
 ```
-</TabItem>
+</TabItem>-->
 
 <TabItem value="csharp" label="C#">
 
@@ -998,7 +873,7 @@ namespace YourNamespace
 ```
 </TabItem>
 
-<TabItem value="objective-c" label="Objective-C">
+<!--<TabItem value="objective-c" label="Objective-C">
 
 ```objectivec
 ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpeg"]
@@ -1009,7 +884,7 @@ ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clar
                 }];
 }];
 ```
-</TabItem>
+</TabItem>-->
 
 <TabItem value="php" label="PHP">
 
