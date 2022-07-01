@@ -704,38 +704,7 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import java.util.List;
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiAnnotationResponse patchAnnotationsResponse = stub.patchAnnotations(
-    PatchAnnotationsRequest.newBuilder()
-        .setAction("merge")  // Supported actions: overwrite, merge, remove.
-        .addAnnotations(
-        Annotation.newBuilder()
-            .setInputId("{YOUR_INPUT_ID}")
-            .setId("{YOUR_ANNOTATION_ID}")
-            .setData(
-                Data.newBuilder().addConcepts(
-                    Concept.newBuilder()
-                        .setId("apple")
-                        .setValue(1f)  // 1 means true, this concept is present.
-                        .build()
-                    )
-            )
-            .build()
-    ).build()
-);
-
-if (patchAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Patch annotations failed, status: " + patchAnnotationsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaUpdateAnnotationConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -793,44 +762,7 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import java.util.List;
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiAnnotationResponse patchAnnotationsResponse = stub.patchAnnotations(
-    PatchAnnotationsRequest.newBuilder()
-        .setAction("merge")  // Supported actions: overwrite, merge, remove.
-        .addAnnotations(
-            Annotation.newBuilder()
-                .setInputId("{YOUR_INPUT_ID}")
-                .setId("{YOUR_ANNOTATION_ID}")
-                .setData(
-                    Data.newBuilder().addRegions(
-                        Region.newBuilder()
-                            .setId("{REGION_ID}") // this should be the region id of this annotation
-                            .setData(
-                                Data.newBuilder().addConcepts(
-                                    Concept.newBuilder()
-                                        .setId("apple")
-                                        .setValue(1f)  // 1 means true, this concept is present.
-                                        .build()
-                                    )
-                            ).build()
-                    ).build()
-                )
-                .build()
-    ).build()
-);
-
-if (patchAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Patch annotations failed, status: " + patchAnnotationsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaUpdateAnnotationConceptsRegion}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -895,56 +827,7 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import java.util.List;
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiAnnotationResponse patchAnnotationsResponse = stub.patchAnnotations(
-    PatchAnnotationsRequest.newBuilder()
-        .setAction("overwrite")
-        .addAnnotations(
-            Annotation.newBuilder()
-                .setInputId("{YOUR_INPUT_ID}")
-                .setId("{YOUR_ANNOTATION_ID}")
-                .setData(
-                    Data.newBuilder().addRegions(
-                        Region.newBuilder()
-                            .setRegionInfo(
-                                RegionInfo.newBuilder()
-                                    .setBoundingBox(        // move bounding box to a new cooridnates
-                                        BoundingBox.newBuilder()
-                                            .setTopRow(0.5f)
-                                            .setLeftCol(0.5f)
-                                            .setBottomRow(0.8f)
-                                            .setRightCol(0.8f)
-                                            .build()
-                                    )
-                                    .build()
-                            )
-                            .setData(
-                                Data.newBuilder()
-                                    .addConcepts(
-                                        Concept.newBuilder()
-                                            .setId("bike")
-                                            .setValue(1f)  // 1 means true, this concept is present.
-                                            .build()
-                                    )
-                            ).build()
-                    ).build()
-                )
-                .build()
-    ).build()
-);
-
-if (patchAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Patch annotations failed, status: " + patchAnnotationsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaUpdateAnnotationRegionCoordinates}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -1007,35 +890,7 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import java.util.List;
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiAnnotationResponse patchAnnotationsResponse = stub.patchAnnotations(
-    PatchAnnotationsRequest.newBuilder()
-        .setAction("merge")  // Supported actions: overwrite, merge, remove.
-        .addAnnotations(
-        Annotation.newBuilder()
-            .setInputId("{YOUR_INPUT_ID}")
-            .setId("{YOUR_ANNOTATION_ID}")
-            .setStatus(
-                Status.newBuilder()
-                    .setCodeValue(StatusCode.ANNOTATION_SUCCESS_VALUE)
-                    .build()
-            )
-            .build()
-    ).build()
-);
-
-if (patchAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("patch annotations failed, status: " + patchAnnotationsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaUpdateAnnotationStatus}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -1086,25 +941,7 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-BaseResponse deleteAnnotationResponse = stub.deleteAnnotation(
-    DeleteAnnotationRequest.newBuilder()
-        .setInputId("{YOUR_INPUT_ID}")
-        .setAnnotationId("{YOUR_ANNOTATION_ID}")
-        .build()
-);
-
-if (deleteAnnotationResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Delete annotation failed, status: " + deleteAnnotationResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaDeleteAnnotationInputAnnotationIds}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -1141,27 +978,7 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-BaseResponse deleteAnnotationsResponse = stub.deleteAnnotations(
-    DeleteAnnotationsRequest.newBuilder()
-        .addInputIds("{YOUR_INPUT_ID_1}")
-        .addInputIds("{YOUR_INPUT_ID_2}")
-        .addIds("{YOUR_ANNOTATION_ID_1}")
-        .addIds("{YOUR_ANNOTATION_ID_2}")
-        .build()
-);
-
-if (deleteAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Delete annotations failed, status: " + deleteAnnotationsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavabulkDeleteAnnotationsInputAnnotationIds}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -1203,25 +1020,7 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-BaseResponse deleteAnnotationsResponse = stub.deleteAnnotations(
-    DeleteAnnotationsRequest.newBuilder()
-        .addInputIds("{YOUR_INPUT_ID_1}")
-        .addInputIds("{YOUR_INPUT_ID_2}")
-        .build()
-);
-
-if (deleteAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Delete annotations failed, status: " + deleteAnnotationsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaBulkDeleteAnnotationsInputIds}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
