@@ -27,7 +27,7 @@ post_models_searches_response = stub.PostModelsSearches(
     service_pb2.PostModelsSearchesRequest(
         user_app_id=userDataObject,
         model_query=resources_pb2.ModelQuery(
-            name="gen*", # This supports wilcard queries like "gen*" to match "general" as an example
+            name="gen*", # This supports wild card queries like "gen*" to match "general" as an example
             model_type_id="concept"
         )
     ),

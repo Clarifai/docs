@@ -29,7 +29,7 @@ stub.PostModelsSearches(
             "app_id": APP_ID
         },
         model_query: {
-            name: "gen*", //This supports wilcard queries like "gen*" to match "general" as an example
+            name: "gen*", //This supports wild card queries like "gen*" to match "general" as an example
             type: "concept"
         }
     },
