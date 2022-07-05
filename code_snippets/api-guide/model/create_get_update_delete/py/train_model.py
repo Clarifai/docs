@@ -1,5 +1,5 @@
 ###############################################################################
-# In this section, we set the user authentication, app ID, and the model ID  
+# In this section, we set the user authentication, app ID, and the model ID.  
 # Change these strings to run your own example.
 ###############################################################################
 

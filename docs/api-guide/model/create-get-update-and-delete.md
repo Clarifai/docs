@@ -68,6 +68,25 @@ import NodeTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/
 import NodePredictModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/predict_model.js";
 import NodeSearchModelsName from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/search_models_name_type.js";
 
+import JavaCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/create_model.java";
+import JavaAddConceptsModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/add_concepts_model.java";
+import JavaRemoveConceptsModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/remove_concepts_from_model.java";
+import JavaUpdateConfiguration from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/update_model_name_configuration.java";
+import JavaListModelTypes from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/list_model_types.java";
+import JavaGetModels from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/get_models.java";
+import JavaGetModelID from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/get_model_by_id.java";
+import JavaGetModelOutput from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/get_model_output_info_by_id.java";
+import JavaListModelVersions from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/list_model_versions.java";
+import JavaGetModelVersion from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/get_model_version_by_id.java";
+import JavaGetModelTraining from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/get_model_training_inputs.java";
+import JavaGetModelTrainingVersion from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/get_model_training_inputs_by_version.java";
+import JavaDeleteModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/delete_model.java";
+import JavaDeleteModelVersion from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/delete_model_version.java";
+import JavaDeleteAllModels from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/delete_all_models.java";
+import JavaTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/train_model.java";
+import JavaPredictModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/predict_model.java";
+import JavaSearchModelsName from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/search_models_name_type.java";
+
 :::info
 The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 :::
@@ -95,29 +114,7 @@ Below is an example of how you would create a classifier model with one initial 
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-SingleModelResponse postModelsResponse = stub.postModels(
-    PostModelsRequest.newBuilder().addModels(
-        Model.newBuilder()
-            .setId("petsID")
-            .setOutputInfo(
-                OutputInfo.newBuilder().setData(
-                    Data.newBuilder().addConcepts(Concept.newBuilder().setId("boscoe"))
-                )
-            )
-    ).build()
-);
-
-if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post models failed, status: " + postModelsResponse.getStatus());
-```
+    <CodeBlock className="language-java">{JavaCreateModel}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -167,32 +164,7 @@ You can add concepts to a model at any point. Just as you add concepts to inputs
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-...
-
-MultiModelResponse patchModelsResponse = stub.patchModels(
-    PatchModelsRequest.newBuilder()
-        .setAction("merge")  // Supported actions: overwrite, merge, remove
-        .addModels(
-            Model.newBuilder()
-                .setId("petsID")
-                .setOutputInfo(
-                    OutputInfo.newBuilder().setData(
-                        Data.newBuilder().addConcepts(Concept.newBuilder().setId("charlie"))
-                    )
-                )
-        )
-        .build()
-);
-
-if (patchModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Patch models failed, status: " + patchModelsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaAddConceptsModel}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -244,63 +216,7 @@ Conversely, if you'd like to remove concepts from a model, you can also do that.
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiModelResponse patchModelsResponse = stub.patchModels(
-    PatchModelsRequest.newBuilder()
-        .setAction("remove")  // Supported actions: overwrite, merge, remove
-        .addModels(
-            Model.newBuilder()
-                .setId("petsID")
-                .setOutputInfo(
-                    OutputInfo.newBuilder().setData(
-                        Data.newBuilder().addConcepts(Concept.newBuilder().setId("charlie"))
-                    )
-                )
-        )
-        .build()
-);
-
-if (patchModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Patch models failed, status: " + patchModelsResponse.getStatus());
-}
-```
-</TabItem>
-
-<TabItem value="" label="">
-
-```javascript
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-stub.PatchModels(
-    {
-        action: "remove",  // Supported actions: overwrite, merge, remove
-        models: [
-            {
-                id: "petsID",
-                output_info: {data: {concepts: [{id: "charlie"}]}}
-            }
-        ]
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            throw new Error("Patch models failed, status: " + response.status.description);
-        }
-    }
-);
-```
+    <CodeBlock className="language-java">{JavaRemoveConceptsModel}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -354,41 +270,7 @@ Let's change the model name to `newname` and set the model's configuration to ha
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiModelResponse patchModelsResponse = stub.patchModels(
-    PatchModelsRequest.newBuilder()
-        .setAction("overwrite")
-        .addModels(
-            Model.newBuilder()
-                .setId("petsID")
-                .setName("newname")
-                .setOutputInfo(
-                    OutputInfo.newBuilder()
-                        .setData(
-                            Data.newBuilder()
-                                .addConcepts(Concept.newBuilder().setId("birds"))
-                                .addConcepts(Concept.newBuilder().setId("hurd"))
-                        )
-                        .setOutputConfig(
-                            OutputConfig.newBuilder()
-                                .setConceptsMutuallyExclusive(true)
-                                .setClosedEnvironment(true)
-                        )
-                )
-    ).build()
-);
-
-if (patchModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Patch models failed, status: " + patchModelsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaUpdateConfiguration}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -441,20 +323,7 @@ Learn about the available model types and their hyperparameters. This endpoint l
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiModelTypeResponse listModelTypesResponse = stub.listModelTypes(ListModelTypesRequest.newBuilder().build());
-
-for (ModelType modelType : listModelTypesResponse.getModelTypesList()) {
-    System.out.println(modelType);
-}
-```
+    <CodeBlock className="language-java">{JavaListModelTypes}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -486,28 +355,7 @@ Below is an example of how to get a list of all the models, including models you
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-import java.util.List;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiModelResponse listModelsResponse = stub.listModels(
-    ListModelsRequest.newBuilder().build()
-);
-
-if (listModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("List models failed, status: " + listModelsResponse.getStatus());
-}
-
-List<Model> models = listModelsResponse.getModelsList();
-for (Model model : models) {
-    System.out.println(model);
-}
-```
+    <CodeBlock className="language-java">{JavaGetModels}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -540,27 +388,7 @@ All models have unique IDs. You can get a specific model by its ID.
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-SingleModelResponse getModelResponse = stub.getModel(
-    GetModelRequest.newBuilder()
-        .setModelId("petsID")
-        .build()
-);
-
-if (getModelResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Get model failed, status: " + getModelResponse.getStatus());
-}
-
-Model model = getModelResponse.getModel();
-System.out.println(model);
-```
+    <CodeBlock className="language-java">{JavaGetModelID}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -593,27 +421,7 @@ The output info of a model lists the concepts it contains.
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-SingleModelResponse getModelOutputInfoResponse = stub.getModelOutputInfo(
-    GetModelRequest.newBuilder()
-        .setModelId("petsID")
-        .build()
-);
-
-if (getModelOutputInfoResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Get model output info failed, status: " + getModelOutputInfoResponse.getStatus());
-}
-
-Model model = getModelOutputInfoResponse.getModel();
-System.out.println(model);
-```
+    <CodeBlock className="language-java">{JavaGetModelOutput}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -646,30 +454,7 @@ Every time you train a model, it creates a new version. You can list all the ver
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-import java.util.List;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiModelVersionResponse listModelVersionsResponse = stub.listModelVersions(
-    ListModelVersionsRequest.newBuilder()
-        .setModelId("petsID")
-        .build()
-);
-
-if (listModelVersionsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("List model versions failed, status: " + listModelVersionsResponse.getStatus());
-}
-
-List<ModelVersion> modelVersions = listModelVersionsResponse.getModelVersionsList();
-for (ModelVersion modelVersion : modelVersions) {
-    System.out.println(modelVersion);
-}
-```
+    <CodeBlock className="language-java">{JavaListModelVersions}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -702,29 +487,7 @@ To get the details of a specific model version, you must provide the `model_id` 
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-
-SingleModelVersionResponse getModelVersionResponse = stub.getModelVersion(
-    GetModelVersionRequest.newBuilder()
-        .setModelId("petsID")
-        .setVersionId("{YOUR_MODEL_VERSION_ID}")
-        .build()
-);
-
-if (getModelVersionResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Get model version failed, status: " + getModelVersionResponse.getStatus());
-}
-
-ModelVersion modelVersion = getModelVersionResponse.getModelVersion();
-System.out.println(modelVersion);
-```
+    <CodeBlock className="language-java">{JavaGetModelVersion}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -757,29 +520,7 @@ You can list all the inputs that were used to train the model.
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiInputResponse listModelInputsResponse = stub.listModelInputs(
-    ListModelInputsRequest.newBuilder()
-        .setModelId("petsID")
-        .build()
-);
-
-if (listModelInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("List model inputs failed, status: " + listModelInputsResponse.getStatus());
-}
-
-List<Input> inputs = listModelInputsResponse.getInputsList();
-for (Input input : inputs) {
-    System.out.println(input);
-}
-```
+    <CodeBlock className="language-java">{JavaGetModelTraining}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -812,31 +553,7 @@ You can also list all the inputs that were used to train a specific model versio
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-import java.util.List;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiInputResponse listModelInputsResponse = stub.listModelInputs(
-    ListModelInputsRequest.newBuilder()
-        .setModelId("petsID")
-        .setVersionId("{YOUR_MODEL_VERSION_ID}")
-        .build()
-);
-
-if (listModelInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("List model inputs failed, status: " + listModelInputsResponse.getStatus());
-}
-
-List<Input> inputs = listModelInputsResponse.getInputsList();
-for (Input input : inputs) {
-    System.out.println(input);
-}
-```
+    <CodeBlock className="language-java">{JavaGetModelTrainingVersion}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -871,24 +588,7 @@ You can delete a model using the `model_id`.
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-BaseResponse deleteModelResponse = stub.deleteModel(
-    DeleteModelRequest.newBuilder()
-        .setModelId("petsID")
-        .build()
-);
-
-if (deleteModelResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Delete model failed, status: " + deleteModelResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaDeleteModel}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -921,25 +621,7 @@ You can also delete a specific version of a model with the `model_id` and `versi
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-BaseResponse deleteModelVersionResponse = stub.deleteModelVersion(
-    DeleteModelVersionRequest.newBuilder()
-        .setModelId("petsID")
-        .setVersionId("{YOUR_MODEL_VERSION_ID}")
-        .build()
-);
-
-if (deleteModelVersionResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Delete model version failed, status: " + deleteModelVersionResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaDeleteModelVersion}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -976,24 +658,7 @@ Please proceed with extreme caution as deleted models cannot be recovered.
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-BaseResponse deleteModelsResponse = stub.deleteModels(
-    DeleteModelsRequest.newBuilder()
-        .setDeleteAll(true)
-        .build()
-);
-
-if (deleteModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Delete models failed, status: " + deleteModelsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaDeleteAllModels}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -1013,7 +678,7 @@ curl -X DELETE \
 
 When you train a model, you are telling the system to look at successfully indexed images with concepts you've provided and learn from them. This train operation is asynchronous. It may take a few seconds for your model to be fully trained and ready.
 
-:::note
+:::important note
 You can repeat this operation as often as you like. By adding more images with concepts and training, you can get the model to predict exactly how you want it to.
 :::
 
@@ -1032,27 +697,7 @@ You can repeat this operation as often as you like. By adding more images with c
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-SingleModelResponse postModelVersionsResponse = stub.postModelVersions(
-    PostModelVersionsRequest.newBuilder()
-        .setModelId("petsID")
-        .build()
-);
-
-if (postModelVersionsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post model versions failed, status: " + postModelVersionsResponse.getStatus());
-}
-
-String modelVersionId = postModelVersionsResponse.getModel().getModelVersion().getId();
-System.out.println("New model version ID: " + modelVersionId);
-```
+    <CodeBlock className="language-java">{JavaTrainModel}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -1088,40 +733,7 @@ Once you have trained a model, you are ready to use the new model to make predic
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
-    PostModelOutputsRequest.newBuilder()
-        .setModelId("petsID")
-        .setVersionId("{YOUR_MODEL_VERSION_ID}")  // Optional. Defaults to the latest version.
-        .addInputs(
-            Input.newBuilder().setData(
-                Data.newBuilder().setImage(
-                    Image.newBuilder().setUrl("https://samples.clarifai.com/metro-north.jpg")
-                )
-            )
-        )
-        .build()
-);
-
-if (postModelOutputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post model outputs failed, status: " + postModelOutputsResponse.getStatus());
-}
-
-// Since we have one input, one output will exist here.
-Output output = postModelOutputsResponse.getOutputs(0);
-
-System.out.println("Predicted concepts:");
-for (Concept concept : output.getData().getConceptsList()) {
-    System.out.printf("%s %.2f%n", concept.getName(), concept.getValue());
-}
-```
+    <CodeBlock className="language-java">{JavaPredictModel}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -1172,34 +784,7 @@ You can search all your models by name and type of model.
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-import java.util.List;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiModelResponse postModelsSearchesResponse = stub.postModelsSearches(
-    PostModelsSearchesRequest.newBuilder()
-        .setModelQuery(
-            ModelQuery.newBuilder()
-                .setName("gen*")
-                .setType("concept")
-        )
-        .build()
-);
-
-if (postModelsSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post models searches failed, status: " + postModelsSearchesResponse.getStatus());
-}
-
-List<Model> models = postModelsSearchesResponse.getModelsList();
-for (Model model : models) {
-    System.out.println(model);
-}
-```
+    <CodeBlock className="language-java">{JavaSearchModelsName}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
