@@ -39,7 +39,7 @@ stub.PostModels(
                 train_info: {
                     params: {
                         num_epoch: 2,
-                        template: "Clarifai-InceptionV2"
+                        template: "Clarifai_InceptionV2"
                     }
                 },
                 output_info: {

@@ -24,7 +24,7 @@ The performance of your model depends on the performance of each concept, which 
 
 1. Diversity: try to include all perspectives of the concept, e.g. include all angles of a “dog”, if you’re building a “dog” concept.
 2. Strong positives: Images that are the true representation of your concept.
-3. Training data should be representative of the real world data -- avoid making models where the data is too ‘easy’, i.e. unrealistic set of data.
+3. Training data should be representative of the real world data—avoid making models where the data is too ‘easy’, i.e. unrealistic set of data.
 4. Number: minimum 50 inputs per concept; more inputs the better.
 5. File dimensions: minimum 512px x 512px.
 
