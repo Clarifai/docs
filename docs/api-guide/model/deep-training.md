@@ -8,11 +8,11 @@ sidebar_position: 6
 **Train the complete graph for your model**
 <hr />
 
-Clarifai offers a variety of prebuilt models that are designed to help you build AI solutions quickly and efficiently. Clarifai Models are the recommended starting points for many users because they offer incredibly fast training times when you customize them using the "Context-Based Classifier" type in Portal's Model Mode.
+Clarifai offers a variety of prebuilt models that are designed to help you create AI solutions quickly and efficiently. Clarifai Models are the recommended starting points for many users because they offer incredibly fast training times when you customize them using the "Context-Based Classifier" type found in the Portal's Model Mode.
 
-But there are many cases where accuracy and the ability to carefully target solutions takes priority over speed and ease of use. Additionally, you may need a model to learn new features, not recognized by existing Clarifai Models. For these cases, it is possible to "deep train" your custom models and integrate them directly within your workflows.
+But there are many cases where accuracy and the ability to carefully target solutions take priority over speed and ease of use. Additionally, you may need a model to learn new features, not recognized by existing Clarifai Models. For these cases, it is possible to "deep train" your custom models and integrate them directly within your workflows.
 
-In general, deep trained models need more data than ones trained on top of Clarifai Models. For most applications you’ll need at least 1000 training inputs, but it could be much more than this depending on your specific use case.
+In general, deep trained models need more data than those trained on top of Clarifai Models. For most applications, you’ll need at least 1000 training inputs, but it could be much more than this, depending on your specific use case.
 
 You might consider deep training if you have:
 
@@ -20,13 +20,15 @@ You might consider deep training if you have:
 * **Accurate labels**
 * **Expertise and time to fine tune models**
 
+:::tip note
 
 Deep training is in early access preview. To request access, [contact us](https://www.clarifai.com/contact).
 
+::: 
 
 ## Template Types
 
-You can take advantage of a variety of templates when building your deep trained models. Templates give you the control to choose the specific architecture used by your neural network, and also define a set of hyperparameters that you can use to fine-tune the way that your model learns.
+You can take advantage of a variety of templates when building your deep trained models. Templates give you the control to choose the specific architecture used by your neural network, and also define a set of hyperparameters that you can use to fine-tune the way your model learns.
 
 ### Visual Classifier
 
@@ -57,8 +59,8 @@ Deep training gives you the power to tune the hyperparameters that affect “how
 * **per\_128\_lrate**—Total change in **lrate** after 128 images processed. This is calculated as lrate = per\_128\_lrate \* \(batch\_size / 128\).
 * **per\_item\_lrate**—The rate that model weights are changed per item.
 * **step\_epochs**—The number of epochs between applications of the step/change in **lrate** scheduler.
-* **test\_freq**—The number of epochs should you run before evaluation of the test set. Increased frequency can allow for more granular testing but will extend processing time.
-* **use\_perclass\_regression**—Enables box coordinate local regression on a per-class basis. When set to True there will be `num_classes` sets of regressors for each anchor location. When set to False, there will be one coordinate regressor for each anchor location.
+* **test\_freq**—The number of epochs you should run before evaluation of the test set. Increased frequency can allow for more granular testing but will extend processing time.
+* **use\_perclass\_regression**—Enables box coordinate local regression on a per-class basis. When set to True, there will be `num_classes` sets of regressors for each anchor location. When set to False, there will be one coordinate regressor for each anchor location.
 
 
 import Tabs from '@theme/Tabs';
@@ -76,12 +78,18 @@ import NodeCreateEmbedder from "!!raw-loader!../../../code_snippets/api-guide/mo
 import NodeCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_workflow_deep_trained_model.js";
 import NodeUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.js";
 
+import JavaCreateClassifier from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_visual_classifier.java";
+import JavaCreateDetector from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_visual_detector.java";
+import JavaCreateEmbedder from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_visual_embedder.java";
+import JavaCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_workflow_deep_trained_model.java";
+import JavaUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.java";
+
 :::info
 The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 :::
 
 
-## Create
+## Create Models
 
 ### Create a Visual Classifier
 
@@ -98,50 +106,7 @@ Use a visual classifier model if you would like to classify images and videos fr
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-Struct.Builder trainInfoParams = Struct.newBuilder()
-    .putFields(
-        "num_epochs", Value.newBuilder().setNumberValue(2).build()
-
-    )
-    .putFields(
-        "template", Value.newBuilder().setStringValue("classification_cifar10_v1").build()
-    );
-
-SingleModelResponse postModelsResponse = stub.postModels(
-    PostModelsRequest.newBuilder()
-        .addModels(
-            Model.newBuilder()
-                .setId("lawrence-1591638385")
-                .setModelTypeId("visual-classifier")
-                .setTrainInfo(TrainInfo.newBuilder().setParams(trainInfoParams))
-                .setOutputInfo(
-                    OutputInfo.newBuilder()
-                        .setData(
-                            Data.newBuilder()
-                                .addConcepts(Concept.newBuilder().setId("ferrari23"))
-                                .addConcepts(Concept.newBuilder().setId("outdoors23"))
-                        )
-                        .setOutputConfig(
-                            OutputConfig.newBuilder()
-                                .setClosedEnvironment(true)
-                        )
-                )
-        )
-        .build()
-);
-
-if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post models failed, status: " + postModelsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaCreateClassifier}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -192,50 +157,7 @@ Create a visual detector to detect bounding box regions in images or video frame
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-Struct.Builder trainInfoParams = Struct.newBuilder()
-    .putFields(
-        "num_epochs", Value.newBuilder().setNumberValue(2).build()
-
-    )
-    .putFields(
-        "template", Value.newBuilder().setStringValue("Clarifai-InceptionV2").build()
-    );
-
-SingleModelResponse postModelsResponse = stub.postModels(
-    PostModelsRequest.newBuilder()
-        .addModels(
-            Model.newBuilder()
-                .setId("detection-test-1591638385")
-                .setModelTypeId("visual-detector")
-                .setTrainInfo(TrainInfo.newBuilder().setParams(trainInfoParams))
-                .setOutputInfo(
-                    OutputInfo.newBuilder()
-                        .setData(
-                            Data.newBuilder()
-                                .addConcepts(Concept.newBuilder().setId("ferrari23"))
-                                .addConcepts(Concept.newBuilder().setId("outdoors23"))
-                        )
-                        .setOutputConfig(
-                            OutputConfig.newBuilder()
-                                .setClosedEnvironment(true)
-                        )
-                )
-        )
-        .build()
-);
-
-if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post models failed, status: " + postModelsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaCreateDetector}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -286,50 +208,7 @@ Create a visual embedding model to transform images and videos frames into "high
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-Struct.Builder trainInfoParams = Struct.newBuilder()
-    .putFields(
-        "num_epochs", Value.newBuilder().setNumberValue(2).build()
-
-    )
-    .putFields(
-        "template", Value.newBuilder().setStringValue("classification_basemodel_v1_embed").build()
-    );
-
-SingleModelResponse postModelsResponse = stub.postModels(
-    PostModelsRequest.newBuilder()
-        .addModels(
-            Model.newBuilder()
-                .setId("embed-test-1591638385")
-                .setModelTypeId("visual-embedder")
-                .setTrainInfo(TrainInfo.newBuilder().setParams(trainInfoParams))
-                .setOutputInfo(
-                    OutputInfo.newBuilder()
-                        .setData(
-                            Data.newBuilder()
-                                .addConcepts(Concept.newBuilder().setId("ferrari23"))
-                                .addConcepts(Concept.newBuilder().setId("outdoors23"))
-                        )
-                        .setOutputConfig(
-                            OutputConfig.newBuilder()
-                                .setClosedEnvironment(true)
-                        )
-                )
-        )
-        .build()
-);
-
-if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post models failed, status: " + postModelsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaCreateEmbedder}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -380,52 +259,7 @@ Put your new deep-trained model to work by adding it to a workflow. Below is an 
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiWorkflowResponse postWorkflowsResponse = stub.postWorkflows(
-  PostWorkflowsRequest.newBuilder()
-      .addWorkflows(
-          Workflow.newBuilder()
-              .setId("my-new-workflow-id")
-              .addNodes(
-                  WorkflowNode.newBuilder()
-                      .setId("embed")
-                      .setModel(
-                          Model.newBuilder()
-                              .setId("{YOUR_EMBED_MODEL_ID}")
-                              .setModelVersion(
-                                  ModelVersion.newBuilder()
-                                      .setId("{YOUR_EMBED_MODEL_VERSION_ID}")
-                              )
-                      )
-              )
-              .addNodes(
-                  WorkflowNode.newBuilder()
-                      .setId("my-custom-model")
-                      .setModel(
-                          Model.newBuilder()
-                              .setId("{YOUR_CUSTOM_MODEL_ID}")
-                              .setModelVersion(
-                                  ModelVersion.newBuilder()
-                                      .setId("{YOUR_CUSTOM_MODEL_MODEL_VERSION_ID}")
-                              )
-                      )
-                      .addNodeInputs(NodeInput.newBuilder().setNodeId("embed"))
-              )
-      )
-      .build()
-);
-
-if (postWorkflowsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post workflows failed, status: " + postWorkflowsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaCreateWorkflow}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -489,28 +323,7 @@ Below is an example of how to update your default workflow with a deep trained m
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiAppResponse patchAppsResponse = stub.patchApps(
-    PatchAppsRequest.newBuilder()
-        .setAction("overwrite")
-        .addApps(
-            App.newBuilder()
-                .setId("{YOUR_APP_ID}")
-                .setDefaultWorkflowId("auto-annotation-workflow-id")
-        ).build()
-);
-
-if (patchAppsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Patch apps failed, status: " + patchAppsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaUpdateWorkflow}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">

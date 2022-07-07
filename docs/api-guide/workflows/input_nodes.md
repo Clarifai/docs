@@ -12,7 +12,7 @@ The outputs from one model can be used as inputs for another model. This allows 
 
 ## Supported Input and Output Types
 
-To view your available models, just open your application and click the **Model Mode** icon on the left-hand side of the screen. From here, just click the **Create a Custom Model** button on the top right-hand corner of the screen.
+To view your available models, just open your application and click the **Model Mode** icon on the left-hand side of the screen. From there, just click the **Create a Custom Model** button on the top right-hand corner of the screen.
 
 Different models accept different types of inputs and return different types of outputs. They are named after the fields in the Data object of our API. This object uses inputs, annotations, models, and workflows. 
 
