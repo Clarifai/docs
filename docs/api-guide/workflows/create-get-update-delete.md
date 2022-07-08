@@ -10,12 +10,10 @@ sidebar_position: 3
 
 
 :::info
+
 The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
+
 :::
-
-## Create
-
-To create a new custom workflow, specify a list of model IDs that are to be included in the workflow. Since a model can have several versions, each model ID also requires a specific model version ID.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -44,6 +42,18 @@ import NodePatchWorkflow from "!!raw-loader!../../../code_snippets/api-guide/wor
 import NodeDeleteWorkflowID from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/delete_workflow_id.js";
 import NodeDeleteAllWorkflows from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/delete_all_workflows.js";
 
+import JavaCreate from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/create.java";
+import JavaWorkflowPredict from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/workflow_predict.java";
+import JavaGetWorkflowsApp from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/get_workflows_in_app.java";
+import JavaGetWorkflowID from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/get_workflow_specific_id.java";
+import JavaPatchWorkflow from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/patch_workflow.java";
+import JavaDeleteWorkflowID from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/delete_workflow_id.java";
+import JavaDeleteAllWorkflows from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/delete_all_workflows.java";
+
+## Create
+
+To create a new custom workflow, specify a list of model IDs that are to be included in the workflow. Since a model can have several versions, each model ID also requires a specific model version ID.
+
 <Tabs>
 
 <TabItem value="python" label="Python">
@@ -59,43 +69,7 @@ import NodeDeleteAllWorkflows from "!!raw-loader!../../../code_snippets/api-guid
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiWorkflowResponse postWorkflowsResponse = stub.postWorkflows(
-    PostWorkflowsRequest.newBuilder().addWorkflows(
-        Workflow.newBuilder()
-            .setId("my-custom-workflow")
-            .addNodes(
-                WorkflowNode.newBuilder()
-                    .setId("food-concepts")
-                    .setModel(
-                        Model.newBuilder()
-                            .setId("bd367be194cf45149e75f01d59f77ba7")
-                            .setModelVersion(ModelVersion.newBuilder().setId("dfebc169854e429086aceb8368662641"))
-                    )
-            )
-            .addNodes(
-                WorkflowNode.newBuilder()
-                    .setId("general-concepts")
-                    .setModel(
-                        Model.newBuilder()
-                            .setId("aaa03c23b3724a16a56b629203edc62c")
-                            .setModelVersion(ModelVersion.newBuilder().setId("aa9ca48295b37401f8af92ad1af0d91d"))
-                    )
-            )
-    ).build()
-);
-
-if (postWorkflowsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post workflows failed, status: " + postWorkflowsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaCreate}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -155,47 +129,7 @@ You can predict using a workflow. The response will contain the predictions each
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-PostWorkflowResultsResponse postWorkflowResultsResponse = stub.postWorkflowResults(
-    PostWorkflowResultsRequest.newBuilder()
-        .setWorkflowId("{YOUR_WORKFLOW_ID}")
-        .addInputs(
-            Input.newBuilder().setData(
-                Data.newBuilder().setImage(
-                    Image.newBuilder().setUrl(
-                        "https://samples.clarifai.com/metro-north.jpg"
-                    )
-                )
-            )
-        )
-        .build()
-);
-
-if (postWorkflowResultsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post workflow results failed, status: " + postWorkflowResultsResponse.getStatus());
-}
-
-// We'll get one WorkflowResult for each input we used above. Because of one input, we have here
-// one WorkflowResult.
-WorkflowResult results = postWorkflowResultsResponse.getResults(0);
-
-// Each model we have in the workflow will produce one output.
-for (Output output : results.getOutputsList()) {
-    Model model = output.getModel();
-
-    System.out.println("Predicted concepts for the model `" + model.getName() + "`:");
-    for (Concept concept : output.getData().getConceptsList()) {
-        System.out.printf("\t%s %.2f%n", concept.getName(), concept.getValue());
-    }
-}
-```
+    <CodeBlock className="language-java">{JavaWorkflowPredict}</CodeBlock>
 </TabItem>
 
 <TabItem value="csharp" label="C#">
@@ -288,29 +222,7 @@ You can return all custom workflows in your app.
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiWorkflowResponse listWorkflowsResponse = stub.listWorkflows(ListWorkflowsRequest.newBuilder().build());
-
-if (listWorkflowsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("List workflows failed, status: " + listWorkflowsResponse.getStatus());
-}
-
-for (Workflow workflow : listWorkflowsResponse.getWorkflowsList()) {
-    System.out.println("The workflow " + workflow.getId() + " consists of these models:");
-    for (WorkflowNode workflowNode : workflow.getNodesList()) {
-        Model model = workflowNode.getModel();
-        System.out.println(model.getId());
-    }
-    System.out.println();
-}
-```
+    <CodeBlock className="language-java">{JavaGetWorkflowsApp}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
