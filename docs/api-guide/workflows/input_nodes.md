@@ -40,11 +40,6 @@ You can create workflows out of any Clarifai Models or custom models that you ha
 The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 :::
 
-
-### Sample Workflow With Multiple Connected Nodes
-
-The following is an example of how to build a workflow with multiple connected nodes. Note that model IDs and model version IDs from the public `clarifai/main` application are fixed, so they are already hard-coded in the code examples below. It is possible to use other public model or model version IDs.
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
@@ -57,6 +52,12 @@ import JSSuppressNodes from "!!raw-loader!../../../code_snippets/api-guide/workf
 import NodeSampleNodes from "!!raw-loader!../../../code_snippets/api-guide/workflows/input_nodes/sample_workflow_multiple_nodes.js";
 import NodeSuppressNodes from "!!raw-loader!../../../code_snippets/api-guide/workflows/input_nodes/suppress_output_from_nodes.js";
 
+import JavaSampleNodes from "!!raw-loader!../../../code_snippets/api-guide/workflows/input_nodes/sample_workflow_multiple_nodes.java";
+import JavaSuppressNodes from "!!raw-loader!../../../code_snippets/api-guide/workflows/input_nodes/suppress_output_from_nodes.java";
+
+### Sample Workflow With Multiple Connected Nodes
+
+The following is an example of how to build a workflow with multiple connected nodes. Note that model IDs and model version IDs from the public `clarifai/main` application are fixed, so they are already hard-coded in the code examples below. It is possible to use other public model or model version IDs.
 
 <Tabs>
 
@@ -73,103 +74,7 @@ import NodeSuppressNodes from "!!raw-loader!../../../code_snippets/api-guide/wor
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiWorkflowResponse postWorkflowsResponse = stub.postWorkflows(
-  PostWorkflowsRequest.newBuilder()
-      .setUserAppId(UserAppIDSet.newBuilder().setAppId("{YOUR_APP_ID}"))
-      .addWorkflows(
-          Workflow.newBuilder()
-              .setId("auto-annotation-workflow-id")
-              .addNodes(
-                  WorkflowNode.newBuilder()
-                      .setId("general-embed")
-                      .setModel(
-                          Model.newBuilder()
-                              .setId("bbb5f41425b8468d9b7a554ff10f8581")
-                              .setModelVersion(
-                                  ModelVersion.newBuilder()
-                                      .setId("bb186755eda04f9cbb6fe32e816be104")
-                              )
-                      )
-              )
-              .addNodes(
-                  WorkflowNode.newBuilder()
-                      .setId("general-concept")
-                      .setModel(
-                          Model.newBuilder()
-                              .setId("aaa03c23b3724a16a56b629203edc62c")
-                              .setModelVersion(
-                                  ModelVersion.newBuilder()
-                                      .setId("aa7f35c01e0642fda5cf400f543e7c40")
-                              )
-                      )
-              )
-              .addNodes(
-                  WorkflowNode.newBuilder()
-                      .setId("general-cluster")
-                      .setModel(
-                          Model.newBuilder()
-                              .setId("cccbe437d6e54e2bb911c6aa292fb072")
-                              .setModelVersion(
-                                  ModelVersion.newBuilder()
-                                      .setId("cc2074cff6dc4c02b6f4e1b8606dcb54")
-                              )
-                      )
-              )
-              .addNodes(
-                  WorkflowNode.newBuilder()
-                      .setId("mapper")
-                      .setModel(
-                          Model.newBuilder()
-                              .setId("synonym-model-id")
-                              .setModelVersion(
-                                  ModelVersion.newBuilder()
-                                      .setId("{YOUR_SYNONYM_MODEL_VERSION_ID}")
-                              )
-                      )
-                      .addNodeInputs(NodeInput.newBuilder().setNodeId("general-concept"))
-              )
-              .addNodes(
-                  WorkflowNode.newBuilder()
-                      .setId("greater-than")
-                      .setModel(
-                          Model.newBuilder()
-                              .setId("greater-than-model-id")
-                              .setModelVersion(
-                                  ModelVersion.newBuilder()
-                                      .setId("{YOUR_GREATER_THAN_MODEL_VERSION_ID}")
-                              )
-                      )
-                      .addNodeInputs(NodeInput.newBuilder().setNodeId("mapper"))
-              )
-              .addNodes(
-                  WorkflowNode.newBuilder()
-                      .setId("less-than")
-                      .setModel(
-                          Model.newBuilder()
-                              .setId("less-than-model-id")
-                              .setModelVersion(
-                                  ModelVersion.newBuilder()
-                                      .setId("{YOUR_LESS_THAN_MODEL_VERSION_ID}")
-                              )
-                      )
-                      .addNodeInputs(NodeInput.newBuilder().setNodeId("mapper"))
-              )
-      )
-      .build()
-);
-
-if (postWorkflowsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post workflows failed, status: " + postWorkflowsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaSampleNodes}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -282,53 +187,7 @@ By default, this endpoint will be set to false, meaning that we do not suppress 
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiWorkflowResponse postWorkflowsResponse = stub.postWorkflows(
-  PostWorkflowsRequest.newBuilder()
-      .setUserAppId(UserAppIDSet.newBuilder().setAppId("{YOUR_APP_ID}"))
-      .addWorkflows(
-          Workflow.newBuilder()
-              .setId("auto-annotation-workflow-id")
-              .addNodes(
-                  WorkflowNode.newBuilder()
-                      .setId("general-embed")
-                      .setModel(
-                          Model.newBuilder()
-                              .setId("bbb5f41425b8468d9b7a554ff10f8581")
-                              .setModelVersion(
-                                  ModelVersion.newBuilder()
-                                      .setId("bb186755eda04f9cbb6fe32e816be104")
-                              )
-                      )
-              )
-              .addNodes(
-                  WorkflowNode.newBuilder()
-                      .setId("general-cluster")
-                      .setModel(
-                          Model.newBuilder()
-                              .setId("cccbe437d6e54e2bb911c6aa292fb072")
-                              .setModelVersion(
-                                  ModelVersion.newBuilder()
-                                      .setId("cc2074cff6dc4c02b6f4e1b8606dcb54")
-                              )
-                      )
-                      .addNodeInputs(NodeInput.newBuilder().setNodeId("general-cluster"))
-              )
-      )
-      .build()
-);
-
-if (postWorkflowsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post workflows failed, status: " + postWorkflowsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaSuppressNodes}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">

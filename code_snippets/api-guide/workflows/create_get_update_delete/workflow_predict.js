@@ -54,7 +54,7 @@ stub.PostWorkflowResults(
     for (const output of results.outputs) {
       const model = output.model;
 
-      console.log("Predicted concepts for the model `" + model.name + "`:");
+      console.log("Predicted concepts for the model `" + model.id + "`:");
       for (const concept of output.data.concepts) {
         console.log("\t" + concept.name + " " + concept.value);
       }
