@@ -55,7 +55,7 @@ const config = {
             position: 'right',
           },
           {
-            href: 'https://clarifaicommunity.slack.com/',
+            href: 'https://communityinviter.com/apps/clarifaicommunity/clarifai-community',
             label: 'Community Slack',
             position: 'right',
           },
