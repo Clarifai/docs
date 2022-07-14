@@ -53,7 +53,7 @@ results = post_workflow_results_response.results[0]
 for output in results.outputs:
     model = output.model
 
-    print("Predicted concepts for the model `%s`" % model.name)
+    print("Predicted concepts for the model `%s`" % model.id)
     for concept in output.data.concepts:
         print("\t%s %.2f" % (concept.name, concept.value))
 
