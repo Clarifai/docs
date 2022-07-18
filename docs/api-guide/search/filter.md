@@ -44,6 +44,16 @@ import NodeTwoGeoPoints from "!!raw-loader!../../../code_snippets/api-guide/sear
 import NodeCustomAnnotation from "!!raw-loader!../../../code_snippets/api-guide/search/filter/node/by_custom_annotation_info.js";
 import NodeAnnotationInfo from "!!raw-loader!../../../code_snippets/api-guide/search/filter/node/by_annotation_info.js";
 
+import JavaCustomConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/filter/java/by_custom_concepts.java";
+import JavaUserID from "!!raw-loader!../../../code_snippets/api-guide/search/filter/java/by_user_id.java";
+import JavaAnnotationStatus from "!!raw-loader!../../../code_snippets/api-guide/search/filter/java/by_annotation_status.java";
+import JavaInputsLongitude from "!!raw-loader!../../../code_snippets/api-guide/search/filter/java/add_inputs_longitude_latitude.java";
+import JavaOneGeoPoint from "!!raw-loader!../../../code_snippets/api-guide/search/filter/java/perform_search_one_geo_point.java";
+import JavaTwoGeoPoints from "!!raw-loader!../../../code_snippets/api-guide/search/filter/java/perform_search_two_geo_point.java";
+import JavaCustomAnnotation from "!!raw-loader!../../../code_snippets/api-guide/search/filter/java/by_custom_annotation_info.java";
+import JavaAnnotationInfo from "!!raw-loader!../../../code_snippets/api-guide/search/filter/java/by_annotation_info.java";
+
+
 ## By Custom Concepts
 
 After you annotate inputs with custom concepts, you can filter by concepts.
@@ -63,42 +73,7 @@ After you annotate inputs with custom concepts, you can filter by concepts.
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
-    PostAnnotationsSearchesRequest.newBuilder().addSearches(
-        Search.newBuilder().setQuery(
-            Query.newBuilder().addFilters(
-                Filter.newBuilder().setAnnotation(
-                    Annotation.newBuilder().setData(
-                            Data.newBuilder().addConcepts(  // You can search by multiple concepts.
-                            Concept.newBuilder()
-                                .setId("people")  // You could search by concept Name as well.
-                                .setValue(1f)  // Value of 0 will search for images that don't have the concept.
-                        )
-                    )
-                )
-            )
-        )    
-    )
-    .build()
-);
-
-if (postAnnotationsSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post annotations searches failed, status: " + postAnnotationsSearchesResponse.getStatus());
-}
-
-System.out.println("Found inputs " + postAnnotationsSearchesResponse.getHitsCount() + ":");
-for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
-    System.out.printf("\tScore %.2f for annotation % of input %s\n", hit.getScore(), hit.getAnnotation().getId(), hit.getInput().getId())
-}
-```
+    <CodeBlock className="language-java">{JavaCustomConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -159,36 +134,7 @@ If you have collaborators in your app and they helped you annotate your inputs, 
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
-    PostAnnotationsSearchesRequest.newBuilder().addSearches(
-        Search.newBuilder().setQuery(
-            Query.newBuilder().addFilters(
-                Filter.newBuilder().setAnnotation(
-                    Annotation.newBuilder().setUserId("{user_id}")
-                )
-            )
-        )    
-    )
-    .build()
-);
-
-if (postAnnotationsSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post annotations searches failed, status: " + postAnnotationsSearchesResponse.getStatus());
-}
-
-System.out.println("Found inputs " + postAnnotationsSearchesResponse.getHitsCount() + ":");
-for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
-    System.out.printf("\tScore %.2f for annotation % of input %s\n", hit.getScore(), hit.getAnnotation().getId(), hit.getInput().getId())
-}
-```
+    <CodeBlock className="language-java">{JavaUserID}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -239,41 +185,7 @@ curl -X POST \
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
-    PostAnnotationsSearchesRequest.newBuilder().addSearches(
-        Search.newBuilder().setQuery(
-            Query.newBuilder().addFilters(
-                Filter.newBuilder().setAnnotation(
-                    Annotation.newBuilder()
-                    .setStatus(
-                        Status.newBuilder()
-                            .setCodeValue(StatusCode.ANNOTATION_SUCCESS_VALUE)
-                            .build()
-                    )
-                )
-            )
-        )    
-    )
-    .build()
-);
-
-if (postAnnotationsSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post annotations searches failed, status: " + postAnnotationsSearchesResponse.getStatus());
-}
-
-System.out.println("Found inputs " + postAnnotationsSearchesResponse.getHitsCount() + ":");
-for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
-    System.out.printf("\tScore %.2f for annotation % of input %s\n", hit.getScore(), hit.getAnnotation().getId(), hit.getInput().getId())
-}
-```
+    <CodeBlock className="language-java">{JavaAnnotationStatus}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -313,7 +225,7 @@ curl -X POST \
 
 Search by geo location allows you to restrict your search results to a bounding box based on longitude and latitude points. There are two ways you can provide longitude/latitude points. You can provide one point and a radius or you can provide two points.
 
-It is important to note that a search by geo location acts as a filter and returns results ranked by any other provided search criteria, whether that is a visual search, concept search, or something else. If no other criteria is provided, results will return in the order the inputs were created, NOT by their distance to the center of the search area.
+It is important to note that a search by geo location acts as a filter and returns results ranked by any other provided search criteria, whether that is a visual search, concept search, or something else. If no other criterion is provided, results will return in the order the inputs were created, NOT by their distance to the center of the search area.
 
 If you are providing one point and a radius, the radius can be in "mile", "kilometer", "degree", or "radian", marked by keywords `withinMiles`, `withinKilometers`, `withinDegrees`, or `withinRadians`.
 
@@ -340,38 +252,7 @@ Provide a geo point to an input. The geo point is a JSON object consisting of a 
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-MultiInputResponse postInputsResponse = stub.postInputs(
-    PostInputsRequest.newBuilder().addInputs(
-        Input.newBuilder().setData(
-            Data.newBuilder()
-                .setImage(
-                    Image.newBuilder()
-                        .setUrl("https://samples.clarifai.com/dog.tiff")
-                        .setAllowDuplicateUrl(true)
-                )
-                .setGeo(
-                    Geo.newBuilder().setGeoPoint(
-                        GeoPoint.newBuilder()
-                            .setLongitude(-30)
-                            .setLatitude(40)
-                    )
-                )
-        )
-    ).build()
-);
-
-if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post inputs failed, status: " + postInputsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaInputsLongitude}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -422,50 +303,7 @@ curl -X POST \
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
-    PostAnnotationsSearchesRequest.newBuilder().addSearches(
-        Search.newBuilder().setQuery(
-            Query.newBuilder().addFilters(
-                Filter.newBuilder().setAnnotation(
-                    Annotation.newBuilder().setData(
-                            Data.newBuilder().setGeo(
-                                Geo.newBuilder()
-                                    .setGeoPoint(
-                                        GeoPoint.newBuilder()
-                                            .setLongitude(-29)
-                                            .setLatitude(40)
-                                    )
-                                    .setGeoLimit(
-                                        GeoLimit.newBuilder()
-                                            .setType("withinKilometers")
-                                            .setValue(150.0f)
-                                    )
-                            )
-                    )
-                )
-            )
-        )    
-    )
-    .build()
-);
-
-if (postAnnotationsSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post annotations searches failed, status: " + postAnnotationsSearchesResponse.getStatus());
-}
-
-System.out.println("Found inputs " + postAnnotationsSearchesResponse.getHitsCount() + ":");
-for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
-    System.out.printf("\tScore %.2f for annotation % of input %s\n", hit.getScore(), hit.getAnnotation().getId(), hit.getInput().getId())
-}
-```
+    <CodeBlock className="language-javascript">{JavaOneGeoPoint}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -529,54 +367,7 @@ curl -X POST \
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
-    PostAnnotationsSearchesRequest.newBuilder().addSearches(
-        Search.newBuilder().setQuery(
-            Query.newBuilder().addFilters(
-                Filter.newBuilder().setAnnotation(
-                    Annotation.newBuilder().setData(
-                            Data.newBuilder().setGeo(
-                                Geo.newBuilder()
-                                    .addGeoBox(
-                                        GeoBoxedPoint.newBuilder().setGeoPoint(
-                                            GeoPoint.newBuilder()
-                                                .setLongitude(-31)
-                                                .setLatitude(42)
-                                        )
-                                    )
-                                    .addGeoBox(
-                                        GeoBoxedPoint.newBuilder().setGeoPoint(
-                                            GeoPoint.newBuilder()
-                                                .setLongitude(-29)
-                                                .setLatitude(39)
-                                        ).build()
-                                    )
-                            )
-                    )
-                )
-            )
-        )    
-    )
-    .build()
-);
-
-if (postAnnotationsSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post annotations searches failed, status: " + postAnnotationsSearchesResponse.getStatus());
-}
-
-System.out.println("Found inputs " + postAnnotationsSearchesResponse.getHitsCount() + ":");
-for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
-    System.out.printf("\tScore %.2f for annotation % of input %s\n", hit.getScore(), hit.getAnnotation().getId(), hit.getInput().getId())
-}
-```
+    <CodeBlock className="language-java">{JavaTwoGeoPoints}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -633,7 +424,9 @@ curl -X POST \
 
 After you have added inputs with custom metadata, you can search by that metadata.
 
-Below is an example of searching over custom metadata. You can exact match any `key`: `value` pair no matter how nested it is. For example, if the metadata on an input is:
+Below is an example of searching over custom metadata. You can exact match any `key`: `value` pair no matter how nested it is.
+
+For example, if the metadata on an input is:
 
 ```javascript
 {
@@ -695,41 +488,7 @@ How to perform searches:
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
-    PostAnnotationsSearchesRequest.newBuilder().addSearches(
-        Search.newBuilder().setQuery(
-            Query.newBuilder().addFilters(
-                Filter.newBuilder().setAnnotation(
-                    Annotation.newBuilder().setData(
-                        Data.newBuilder().setMetadata(
-                            Struct.newBuilder()
-                                .putFields("type", Value.newBuilder().setStringValue("animal").build())
-                        )
-                    )
-                )
-            )
-        )    
-    )
-    .build()
-);
-
-if (postAnnotationsSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post annotations searches failed, status: " + postAnnotationsSearchesResponse.getStatus());
-}
-
-System.out.println("Found inputs " + postAnnotationsSearchesResponse.getHitsCount() + ":");
-for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
-    System.out.printf("\tScore %.2f for annotation % of input %s\n", hit.getScore(), hit.getAnnotation().getId(), hit.getInput().getId())
-}
-```
+    <CodeBlock className="language-java">{JavaCustomAnnotation}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -788,39 +547,7 @@ Each annotation has annotation info. Similar to metadata, you have full control 
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
-    PostAnnotationsSearchesRequest.newBuilder().addSearches(
-        Search.newBuilder().setQuery(
-            Query.newBuilder().addFilters(
-                Filter.newBuilder().setAnnotation(
-                    Annotation.newBuilder().setAnnotationInfo(
-                        Struct.newBuilder()
-                            .putFields("type", Value.newBuilder().setStringValue("animal").build())
-                    )
-                )
-            )
-        )    
-    )
-    .build()
-);
-
-if (postAnnotationsSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post annotations searches failed, status: " + postAnnotationsSearchesResponse.getStatus());
-}
-
-System.out.println("Found inputs " + postAnnotationsSearchesResponse.getHitsCount() + ":");
-for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
-    System.out.printf("\tScore %.2f for annotation % of input %s\n", hit.getScore(), hit.getAnnotation().getId(), hit.getInput().getId())
-}
-```
+    <CodeBlock className="language-java">{JavaAnnotationInfo}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">

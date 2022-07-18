@@ -40,8 +40,8 @@ public class ClarifaiExample {
     static final String GREATER_THAN_MODEL_ID = "greater-than-model-id";
     static final String GREATER_THAN_MODEL_VERSION_ID = "YOUR_GREATER_THAN_MODEL_VERSION_ID";
 
-    static final String NODE_ID_6 = "write-success";
-    static final String WRITE_SUCCESS_MODEL_ID = "write-success-model-id";
+    static final String NODE_ID_6 = "write-as-success-as-me";
+    static final String WRITE_SUCCESS_MODEL_ID = "write-success-as-me-id";
     static final String WRITE_SUCCESS_MODEL_VERSION_ID = "YOUR_WRITE_SUCCESS_MODEL_VERSION_ID";
 
     static final String NODE_ID_7 = "less-than";
@@ -49,7 +49,7 @@ public class ClarifaiExample {
     static final String LESS_THAN_MODEL_VERSION_ID = "YOUR_LESS_THAN_MODEL_VERSION_ID";
 
     static final String NODE_ID_8 = "write-pending";
-    static final String WRITE_PENDING_MODEL_ID = "write-pending-model-id";
+    static final String WRITE_PENDING_MODEL_ID = "write-pending-as-me-id";
     static final String WRITE_PENDING_MODEL_VERSION_ID = "YOUR_WRITE_PENDING_MODEL_VERSION_ID";
 
     ///////////////////////////////////////////////////////////////////////////////////

@@ -14,7 +14,7 @@ When a large dataset is the luxury you do not have, we recommend using our **KNN
 
 In this walkthrough, you'll learn how to create a KNN classifier that's going to work based off the Clarifai's base Face model. The whole process below is going to be done programmatically, using the Clarifai's powerful API.
 
-:::note
+:::tip Tip
 Each of the steps below can also be done manually on [the Clarifai Portal](https://portal.clarifai.com/).
 :::
 

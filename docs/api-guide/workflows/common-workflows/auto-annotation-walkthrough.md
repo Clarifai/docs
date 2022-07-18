@@ -526,7 +526,7 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/workflows' \
 </TabItem>
 </Tabs>
 
-## Make the New Workflow your App's Default
+## Make the New Workflow Your App's Default
 
 Make this the default workflow in the app. So, it will run every time we add an input and execute the auto annotation process. 
 
@@ -543,28 +543,7 @@ If the workflow is not the default workflow of your app, you can still use `Post
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiAppResponse patchAppsResponse = stub.patchApps(
-    PatchAppsRequest.newBuilder()
-        .setAction("overwrite")
-        .addApps(
-            App.newBuilder()
-                .setId("{YOUR_APP_ID}")
-                .setDefaultWorkflowId("auto-annotation-workflow-id")
-        ).build()
-);
-
-if (patchAppsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Patch apps failed, status: " + patchAppsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaMakeWorkflowDefault}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -601,34 +580,7 @@ Adding an image will trigger the default workflow.
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiInputResponse postInputsResponse = stub.postInputs(
-    PostInputsRequest.newBuilder()
-        .setUserAppId(UserAppIDSet.newBuilder().setAppId("{YOUR_APP_ID}"))
-        .addInputs(
-            Input.newBuilder()
-                .setData(
-                    Data.newBuilder()
-                        .setImage(
-                            Image.newBuilder()
-                                .setUrl("{YOUR_IMAGE_URL}")
-                        )
-                )
-        )
-        .build()
-);
-
-if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post inputs failed, status: " + postInputsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaAddImage}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -667,30 +619,7 @@ You can now list annotations with your user ID and see the annotations created b
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiAnnotationResponse listAnnotationsResponse = stub.listAnnotations(
-  ListAnnotationsRequest.newBuilder()
-      .setUserAppId(UserAppIDSet.newBuilder().setAppId("{YOUR_APP_ID}"))
-      .addUserIds("{YOUR_USER_ID}")
-      .setListAllAnnotations(true)
-      .build()
-);
-
-if (listAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("List annotations failed, status: " + listAnnotationsResponse.getStatus());
-}
-
-for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
-    System.out.println(annotation);
-}
-```
+    <CodeBlock className="language-java">{JavaListAnnotations}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">

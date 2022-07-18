@@ -8,13 +8,13 @@ sidebar_position: 4
 **Work with text in images, just like you work with encoded text**
 <hr />
 
-Visual text recognition helps you convert printed text in images and videos into machine-encoded text. You can input a scanned document, a photo of a document, a scene-photo \(such as the text on signs and billboards\), or text superimposed on an image \(such as in a meme\), and output the words and individual characters present in the images.
+Visual text recognition (VTR) helps you convert printed text in images and videos into machine-encoded text. You can input a scanned document, a photo of a document, a scene-photo \(such as the text on signs and billboards\), or text superimposed on an image \(such as in a meme\), and output the words and individual characters present in the images.
 
-VTR lets you "digitize" text so that it can be edited, searched, stored, displayed and analyzed.
+VTR lets you "digitize" text so that it can be edited, searched, stored, displayed, and analyzed.
 
 ![](/img/vtr.jpg)
 
-:::note
+:::tip Note
 The current version of our VTR model is not designed for use with handwritten text or documents with tightly-packed text—like you might see on the page of a novel, for example.
 ::::
 
@@ -37,6 +37,7 @@ import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 import PythonVTRWorkflow from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/building_vtr_workflow.py";
 import NodeVTRWorkflow from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/building_vtr_workflow.js";
+import JavaVTRWorkflow from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/building_vtr_workflow.java";
 
 ## Building a VTR Workflow
 
@@ -51,66 +52,7 @@ import NodeVTRWorkflow from "!!raw-loader!../../../../code_snippets/api-guide/wo
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiWorkflowResponse postWorkflowsResponse = stub.postWorkflows(
-  PostWorkflowsRequest.newBuilder()
-      .setUserAppId(UserAppIDSet.newBuilder().setAppId("{YOUR_APP_ID}"))
-      .addWorkflows(
-          Workflow.newBuilder()
-              .setId("visual-text-recognition-id")
-              .addNodes(
-                  WorkflowNode.newBuilder()
-                      .setId("detect-concept")
-                      .setModel(
-                          Model.newBuilder()
-                              .setId("2419e2eae04d04f820e5cf3aba42d0c7")
-                              .setModelVersion(
-                                  ModelVersion.newBuilder()
-                                      .setId("75a5b92a0dec436a891b5ad224ac9170")
-                              )
-                      )
-              )
-              .addNodes(
-                  WorkflowNode.newBuilder()
-                      .setId("image-crop")
-                      .setModel(
-                          Model.newBuilder()
-                              .setId("ce3f5832af7a4e56ae310d696cbbefd8")
-                              .setModelVersion(
-                                  ModelVersion.newBuilder()
-                                      .setId("a78efb13f7774433aa2fd4864f41f0e6")
-                              )
-                      )
-                      .addNodeInputs(NodeInput.newBuilder().setNodeId("detect-concept"))
-              )
-              .addNodes(
-                  WorkflowNode.newBuilder()
-                      .setId("image-to-text")
-                      .setModel(
-                          Model.newBuilder()
-                              .setId("9fe78b4150a52794f86f237770141b33")
-                              .setModelVersion(
-                                  ModelVersion.newBuilder()
-                                      .setId("d94413e582f341f68884cac72dbd2c7b")
-                              )
-                      )
-                      .addNodeInputs(NodeInput.newBuilder().setNodeId("image-crop"))
-              )
-      )
-      .build()
-);
-
-if (postWorkflowsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post workflows failed, status: " + postWorkflowsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaVTRWorkflow}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
