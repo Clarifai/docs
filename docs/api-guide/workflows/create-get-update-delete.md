@@ -255,32 +255,7 @@ You can return information about a specific workflow.
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-SingleWorkflowResponse getWorkflowResponse = stub.getWorkflow(
-    GetWorkflowRequest.newBuilder()
-        .setWorkflowId("food-and-general")
-        .build()
-);
-
-if (getWorkflowResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Get workflow failed, status: " + getWorkflowResponse.getStatus());
-}
-
-Workflow workflow = getWorkflowResponse.getWorkflow();
-
-System.out.println("The workflow consists of these models:");
-for (WorkflowNode workflowNode : workflow.getNodesList()) {
-    Model model = workflowNode.getModel();
-    System.out.println(model.getId());
-}
-```
+    <CodeBlock className="language-javascript">{JavaGetWorkflowID}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -317,54 +292,7 @@ The possible actions are `overwrite`, `merge`, and `remove`.
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiWorkflowResponse patchWorkflowsResponse = stub.patchWorkflows(
-    PatchWorkflowsRequest.newBuilder()
-        .setAction("overwrite")
-        .addWorkflows(
-            Workflow.newBuilder()
-                .setId("my-custom-workflow")
-                .addNodes(
-                    WorkflowNode.newBuilder()
-                        .setId("travel-concepts")
-                        .setModel(
-                            Model.newBuilder()
-                                .setId("ccc28c313d69466f836ab83287a54ed9")
-                                .setModelVersion(ModelVersion.newBuilder().setId("cce28c313d69466f836ab83287a54ed9"))
-                        )
-                )
-                .addNodes(
-                    WorkflowNode.newBuilder()
-                        .setId("nsfw-concepts")
-                        .setModel(
-                            Model.newBuilder()
-                                .setId("ccc76d86d2004ed1a38ba0cf39ecb4b1")
-                                .setModelVersion(ModelVersion.newBuilder().setId("cc76a92beaeb4d8495a58ba197998158"))
-                        )
-                )
-                .addNodes(
-                    WorkflowNode.newBuilder()
-                        .setId("wedding-concepts")
-                        .setModel(
-                            Model.newBuilder()
-                                .setId("c386b7a870114f4a87477c0824499348")
-                                .setModelVersion(ModelVersion.newBuilder().setId("787cc9a002164250800598d36b072384"))
-                        )
-                )
-        ).build()
-);
-
-if (patchWorkflowsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Patch workflows failed, status: " + patchWorkflowsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaPatchWorkflow}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -438,24 +366,7 @@ You can delete a specific workflow.
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-BaseResponse deleteWorkflowResponse = stub.deleteWorkflow(
-    DeleteWorkflowRequest.newBuilder()
-        .setWorkflowId("my-custom-workflow")
-        .build()
-);
-
-if (deleteWorkflowResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Delete workflow failed, status: " + deleteWorkflowResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaDeleteWorkflowID}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -473,7 +384,7 @@ curl -X DELETE 'https://api.clarifai.com/v2/workflows/my-custom-workflow \
 
 You can delete all custom workflows.
 
-:::note
+:::important note
 Instead of `delete_all`, you can specify a list of workflow IDs to be deleted, using the `ids` field.
 ::::
 
@@ -492,24 +403,7 @@ Instead of `delete_all`, you can specify a list of workflow IDs to be deleted, u
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-BaseResponse deleteWorkflowsResponse = stub.deleteWorkflows(
-    DeleteWorkflowsRequest.newBuilder()
-        .setDeleteAll(true)
-        .build()
-);
-
-if (deleteWorkflowsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Delete workflows failed, status: " + deleteWorkflowsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaDeleteAllWorkflows}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">

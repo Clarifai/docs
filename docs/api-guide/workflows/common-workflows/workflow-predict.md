@@ -24,13 +24,14 @@ Image showing the Portal's workflow prediction results
 The initialization code used in the following example is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 :::
 
-## Predict
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 import PythonWorkflowPredict from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/workflow_predict.py";
 import NodeWorkflowPredict from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/workflow_predict.js";
+import JavaWorkflowPredict from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/workflow_predict.java";
+
+## Predict
 
 <Tabs>
 
@@ -43,47 +44,7 @@ import NodeWorkflowPredict from "!!raw-loader!../../../../code_snippets/api-guid
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-PostWorkflowResultsResponse postWorkflowResultsResponse = stub.postWorkflowResults(
-    PostWorkflowResultsRequest.newBuilder()
-        .setWorkflowId("{YOUR_WORKFLOW_ID}")
-        .addInputs(
-            Input.newBuilder().setData(
-                Data.newBuilder().setImage(
-                    Image.newBuilder().setUrl(
-                        "https://samples.clarifai.com/metro-north.jpg"
-                    )
-                )
-            )
-        )
-        .build()
-);
-
-if (postWorkflowResultsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post workflow results failed, status: " + postWorkflowResultsResponse.getStatus());
-}
-
-// We'll get one WorkflowResult for each input we used above. Because of one input, we have here
-// one WorkflowResult.
-WorkflowResult results = postWorkflowResultsResponse.getResults(0);
-
-// Each model we have in the workflow will produce one output.
-for (Output output : results.getOutputsList()) {
-    Model model = output.getModel();
-
-    System.out.println("Predicted concepts for the model `" + model.getName() + "`:");
-    for (Concept concept : output.getData().getConceptsList()) {
-        System.out.printf("\t%s %.2f%n", concept.getName(), concept.getValue());
-    }
-}
-```
+    <CodeBlock className="language-java">{JavaWorkflowPredict}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">

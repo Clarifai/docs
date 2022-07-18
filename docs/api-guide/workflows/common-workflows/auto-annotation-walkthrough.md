@@ -12,7 +12,7 @@ sidebar_position: 2
 
 This tutorial demonstrates how auto-annotation workflows can be configured in the Clarifai API. With auto-annotation, you can use model predictions to label your inputs. Auto-annotation can help you prepare training data or assign other useful labels and metadata to your inputs. 
 
-Since models are doing most of the work of annotating your data, this enables you to speed-up and scale-up your annotation process while ensuring quality standards, typically reducing human effort of labelling data by orders of magnitude. And since this is built into our APIs, it seamlessly integrates with all the search, training, and prediction functionality of the Clarifai platform.
+Since models are doing most of the work of annotating your data, this enables you to speed-up and scale-up your annotation process while ensuring quality standards, typically reducing human effort of labeling data by orders of magnitude. And since this is built into our APIs, it seamlessly integrates with all the search, training, and prediction functionality of the Clarifai platform.
 
 When a concept is predicted by a model, it is predicted with a confidence score between 0 and 1. In this walkthrough, we will leverage that score in our workflow so that when your model predictions are confident \(close to 1\), you can have your data automatically labeled with that concept. When your predictions are less-than-confident, you can have your input sent to a human reviewer.
 
@@ -48,10 +48,22 @@ import NodeMakeWorkflowDefault from "!!raw-loader!../../../../code_snippets/api-
 import NodeAddImage from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/node/add_an_image.js";
 import NodeListAnnotations from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/node/list_annotations.js";
 
+import JavaCreateConcepts from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/java/create_concepts.java";
+import JavaLinkConcepts from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/java/link_concepts.java";
+import JavaCreateConceptMapperModel from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/java/create_concept_mapper_model.java";
+import JavaCreateGreaterThan from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/java/create_greater_than_concept_thresholder.java";
+import JavaCreateLessThan from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/java/create_less_than_concept-thresholder.java";
+import JavaCreateWriteSuccess from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/java/create_write_success_asme_annotation.java";
+import JavaCreateWritePending from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/java/create_write_pending_asme_annotation.java";
+import JavaCreateWorkflow from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/java/create_the_workflow.java";
+import JavaMakeWorkflowDefault from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/java/make_new_workflow_apps_default.java";
+import JavaAddImage from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/java/add_an_image.java";
+import JavaListAnnotations from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/java/list_annotations.java";
+
 
 ## Create Concepts
 
-Let's start by creating the concepts we'll use in our model. In this tutorial, we'll create the following concepts: `people`, `man` and `adult`.
+Let's start by creating the concepts we'll use in our model. We'll create the following concepts: `people`, `man` and `adult`.
 
 <Tabs>
 
@@ -64,39 +76,7 @@ Let's start by creating the concepts we'll use in our model. In this tutorial, w
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiConceptResponse postConceptsResponse = stub.postConcepts(
-    PostConceptsRequest.newBuilder()
-        .setUserAppId(UserAppIDSet.newBuilder().setAppId("{YOUR_APP_ID}"))
-        .addConcepts(
-            Concept.newBuilder()
-                .setId("peopleID")
-                .setName("people")
-        )
-        .addConcepts(
-            Concept.newBuilder()
-                .setId("manID")
-                .setName("man")
-        )
-        .addConcepts(
-            Concept.newBuilder()
-                .setId("adultID")
-                .setName("adult")
-        )
-        .build()
-);
-
-if (postConceptsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post concepts failed, status: " + postConceptsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaCreateConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -129,7 +109,7 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/concepts' \
 
 Link the newly created concepts with concepts in the Clarifai/Main General model.
 
-Run the code below three times; once for each concept created previously. The concept IDs of the Clarifai/Main General models are the following:
+Run the code below three times; once for each concept created previously. The concept IDs of the Clarifai/Main General models are as follows:
 
 * `ai_l8TKp2h5` - the people concept,
 * `ai_dxSG2s86` - the man concept,
@@ -148,33 +128,7 @@ Your model's concept IDs are the ones you created in the previous step: `peopleI
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiConceptRelationResponse postConceptRelationsResponse = stub.postConceptRelations(
-    PostConceptRelationsRequest.newBuilder()
-        .setUserAppId(UserAppIDSet.newBuilder().setAppId("{YOUR_APP_ID}"))
-        .setConceptId("{YOUR_MODEL_CONCEPT_ID}")
-        .addConceptRelations(
-            ConceptRelation.newBuilder()
-                .setObjectConcept(
-                    Concept.newBuilder()
-                        .setId("{GENERAL_MODEL_CONCEPT_ID}")
-                        .setAppId("main")
-                )
-                .setPredicate("synonym").build())
-        .build()
-);
-
-if (postConceptRelationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post concept relations failed, status: " + postConceptRelationsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaLinkConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -216,36 +170,7 @@ We'll be setting the `knowledge_graph_id` value to be empty. If you want to defi
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-Struct.Builder params = Struct.newBuilder()
-    .putFields("knowledge_graph_id", Value.newBuilder().setStringValue("").build());
-
-SingleModelResponse postModelsResponse = stub.postModels(
-  PostModelsRequest.newBuilder()
-      .setUserAppId(UserAppIDSet.newBuilder().setAppId("{YOUR_APP_ID}"))
-      .addModels(
-          Model.newBuilder()
-              .setId("synonym-model-id")
-              .setModelTypeId("concept-synonym-mapper")
-              .setOutputInfo(
-                  OutputInfo.newBuilder()
-                      .setParams(params)
-              )
-      )
-      .build()
-);
-
-if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post models failed, status: " + postModelsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaCreateConceptMapperModel}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -284,57 +209,7 @@ This model will allow any predictions &gt;= the concept values defined in the mo
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-Struct.Builder params = Struct.newBuilder()
-  .putFields(
-      "concept_threshold_type",
-      Value.newBuilder().setNumberValue(ValueComparator.GREATER_THAN_VALUE).build()
-  );
-
-SingleModelResponse postModelsResponse = stub.postModels(
-  PostModelsRequest.newBuilder()
-      .setUserAppId(UserAppIDSet.newBuilder().setAppId("{YOUR_APP_ID}"))
-      .addModels(
-          Model.newBuilder()
-              .setId("greater-than-model-id")
-              .setModelTypeId("concept-threshold")
-              .setOutputInfo(
-                  OutputInfo.newBuilder()
-                      .setData(
-                          Data.newBuilder()
-                              .addConcepts(
-                                  Concept.newBuilder()
-                                      .setId("peopleID")
-                                      .setValue(0.5f)
-                              )
-                              .addConcepts(
-                                  Concept.newBuilder()
-                                      .setId("manID")
-                                      .setValue(0.5f)
-                              )
-                              .addConcepts(
-                                  Concept.newBuilder()
-                                      .setId("adultID")
-                                      .setValue(0.95f)
-                              )
-                      )
-                      .setParams(params)
-              )
-      )
-      .build()
-);
-
-if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post models failed, status: " + postModelsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaCreateGreaterThan}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -388,59 +263,8 @@ This model will allow any predictions &lt; the concept values defined in the mod
     <CodeBlock className="language-javascript">{NodeCreateLessThan}</CodeBlock>
 </TabItem>
 
-
 <TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-Struct.Builder params = Struct.newBuilder()
-    .putFields(
-        "concept_threshold_type",
-        Value.newBuilder().setNumberValue(ValueComparator.LESS_THAN_VALUE).build()
-    );
-
-SingleModelResponse postModelsResponse = stub.postModels(
-  PostModelsRequest.newBuilder()
-      .setUserAppId(UserAppIDSet.newBuilder().setAppId("{YOUR_APP_ID}"))
-      .addModels(
-          Model.newBuilder()
-              .setId("less-than-model-id")
-              .setModelTypeId("concept-threshold")
-              .setOutputInfo(
-                  OutputInfo.newBuilder()
-                      .setData(
-                          Data.newBuilder()
-                              .addConcepts(
-                                  Concept.newBuilder()
-                                      .setId("peopleID")
-                                      .setValue(0.5f)
-                              )
-                              .addConcepts(
-                                  Concept.newBuilder()
-                                      .setId("manID")
-                                      .setValue(0.5f)
-                              )
-                              .addConcepts(
-                                  Concept.newBuilder()
-                                      .setId("adultID")
-                                      .setValue(0.95f)
-                              )
-                      )
-                      .setParams(params)
-              )
-      )
-      .build()
-);
-
-if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post models failed, status: " + postModelsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaCreateLessThan}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -495,42 +319,7 @@ Any incoming Data object full of concepts, regions, etc. will be written by this
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-Struct.Builder params = Struct.newBuilder()
-    .putFields(
-        "annotation_status", Value.newBuilder().setNumberValue(StatusCode.ANNOTATION_SUCCESS_VALUE).build()
-    )
-    .putFields(
-        "annotation_user_id",
-        Value.newBuilder().setStringValue("{YOUR_USER_ID}").build()
-    );
-
-SingleModelResponse postModelsResponse = stub.postModels(
-  PostModelsRequest.newBuilder()
-      .setUserAppId(UserAppIDSet.newBuilder().setAppId("{YOUR_APP_ID}"))
-      .addModels(
-          Model.newBuilder()
-              .setId("write-success-as-me-id")
-              .setModelTypeId("annotation-writer")
-              .setOutputInfo(
-                  OutputInfo.newBuilder()
-                      .setParams(params)
-              )
-      )
-      .build()
-);
-
-if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post models failed, status: " + postModelsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaCreateWriteSuccess}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -570,42 +359,7 @@ Any incoming Data object full of concepts, regions, etc. will be written by this
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-Struct.Builder params = Struct.newBuilder()
-    .putFields(
-        "annotation_status", Value.newBuilder().setNumberValue(StatusCode.ANNOTATION_PENDING_VALUE).build()
-    )
-    .putFields(
-        "annotation_user_id",
-        Value.newBuilder().setStringValue("{YOUR_USER_ID}").build()
-    );
-
-SingleModelResponse postModelsResponse = stub.postModels(
-  PostModelsRequest.newBuilder()
-      .setUserAppId(UserAppIDSet.newBuilder().setAppId("{YOUR_APP_ID}"))
-      .addModels(
-          Model.newBuilder()
-              .setId("write-pending-as-me-id")
-              .setModelTypeId("annotation-writer")
-              .setOutputInfo(
-                  OutputInfo.newBuilder()
-                      .setParams(params)
-              )
-      )
-      .build()
-);
-
-if (postModelsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post models failed, status: " + postModelsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaCreateWritePending}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -653,129 +407,7 @@ The model IDs and model version IDs from the public `clarifai/main` application 
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiWorkflowResponse postWorkflowsResponse = stub.postWorkflows(
-  PostWorkflowsRequest.newBuilder()
-      .setUserAppId(UserAppIDSet.newBuilder().setAppId("{YOUR_APP_ID}"))
-      .addWorkflows(
-          Workflow.newBuilder()
-              .setId("auto-annotation-workflow-id")
-              .addNodes(
-                  WorkflowNode.newBuilder()
-                      .setId("general-embed")
-                      .setModel(
-                          Model.newBuilder()
-                              .setId("bbb5f41425b8468d9b7a554ff10f8581")
-                              .setModelVersion(
-                                  ModelVersion.newBuilder()
-                                      .setId("bb186755eda04f9cbb6fe32e816be104")
-                              )
-                      )
-              )
-              .addNodes(
-                  WorkflowNode.newBuilder()
-                      .setId("general-concept")
-                      .setModel(
-                          Model.newBuilder()
-                              .setId("aaa03c23b3724a16a56b629203edc62c")
-                              .setModelVersion(
-                                  ModelVersion.newBuilder()
-                                      .setId("aa7f35c01e0642fda5cf400f543e7c40")
-                              )
-                      )
-              )
-              .addNodes(
-                  WorkflowNode.newBuilder()
-                      .setId("general-cluster")
-                      .setModel(
-                          Model.newBuilder()
-                              .setId("cccbe437d6e54e2bb911c6aa292fb072")
-                              .setModelVersion(
-                                  ModelVersion.newBuilder()
-                                      .setId("cc2074cff6dc4c02b6f4e1b8606dcb54")
-                              )
-                      )
-              )
-              .addNodes(
-                  WorkflowNode.newBuilder()
-                      .setId("mapper")
-                      .setModel(
-                          Model.newBuilder()
-                              .setId("synonym-model-id")
-                              .setModelVersion(
-                                  ModelVersion.newBuilder()
-                                      .setId("{YOUR_SYNONYM_MODEL_VERSION_ID}")
-                              )
-                      )
-                      .addNodeInputs(NodeInput.newBuilder().setNodeId("general-concept"))
-              )
-              .addNodes(
-                  WorkflowNode.newBuilder()
-                      .setId("greater-than")
-                      .setModel(
-                          Model.newBuilder()
-                              .setId("greater-than-model-id")
-                              .setModelVersion(
-                                  ModelVersion.newBuilder()
-                                      .setId("{YOUR_GREATER_THAN_MODEL_VERSION_ID}")
-                              )
-                      )
-                      .addNodeInputs(NodeInput.newBuilder().setNodeId("mapper"))
-              )
-              .addNodes(
-                  WorkflowNode.newBuilder()
-                      .setId("write-as-success-as-me")
-                      .setModel(
-                          Model.newBuilder()
-                              .setId("write-success-as-me-id")
-                              .setModelVersion(
-                                  ModelVersion.newBuilder()
-                                      .setId("{YOUR_WRITE_SUCCESS_AS_ME_MODEL_VERSION_ID}")
-                              )
-                      )
-                      .addNodeInputs(NodeInput.newBuilder().setNodeId("greater-than"))
-              )
-              .addNodes(
-                  WorkflowNode.newBuilder()
-                      .setId("less-than")
-                      .setModel(
-                          Model.newBuilder()
-                              .setId("less-than-model-id")
-                              .setModelVersion(
-                                  ModelVersion.newBuilder()
-                                      .setId("{YOUR_LESS_THAN_MODEL_VERSION_ID}")
-                              )
-                      )
-                      .addNodeInputs(NodeInput.newBuilder().setNodeId("mapper"))
-              )
-              .addNodes(
-                  WorkflowNode.newBuilder()
-                      .setId("write-pending")
-                      .setModel(
-                          Model.newBuilder()
-                              .setId("write-pending-as-me-id")
-                              .setModelVersion(
-                                  ModelVersion.newBuilder()
-                                      .setId("{YOUR_WRITE_PENDING_AS_ME_MODEL_VERSION_ID}")
-                              )
-                      )
-                      .addNodeInputs(NodeInput.newBuilder().setNodeId("less-than"))
-              )
-      )
-      .build()
-);
-
-if (postWorkflowsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post workflows failed, status: " + postWorkflowsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaCreateWorkflow}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -894,7 +526,7 @@ curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/workflows' \
 </TabItem>
 </Tabs>
 
-## Make the New Workflow your App's Default
+## Make the New Workflow Your App's Default
 
 Make this the default workflow in the app. So, it will run every time we add an input and execute the auto annotation process. 
 
@@ -911,28 +543,7 @@ If the workflow is not the default workflow of your app, you can still use `Post
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiAppResponse patchAppsResponse = stub.patchApps(
-    PatchAppsRequest.newBuilder()
-        .setAction("overwrite")
-        .addApps(
-            App.newBuilder()
-                .setId("{YOUR_APP_ID}")
-                .setDefaultWorkflowId("auto-annotation-workflow-id")
-        ).build()
-);
-
-if (patchAppsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Patch apps failed, status: " + patchAppsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaMakeWorkflowDefault}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -969,34 +580,7 @@ Adding an image will trigger the default workflow.
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiInputResponse postInputsResponse = stub.postInputs(
-    PostInputsRequest.newBuilder()
-        .setUserAppId(UserAppIDSet.newBuilder().setAppId("{YOUR_APP_ID}"))
-        .addInputs(
-            Input.newBuilder()
-                .setData(
-                    Data.newBuilder()
-                        .setImage(
-                            Image.newBuilder()
-                                .setUrl("{YOUR_IMAGE_URL}")
-                        )
-                )
-        )
-        .build()
-);
-
-if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post inputs failed, status: " + postInputsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaAddImage}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -1035,30 +619,7 @@ You can now list annotations with your user ID and see the annotations created b
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiAnnotationResponse listAnnotationsResponse = stub.listAnnotations(
-  ListAnnotationsRequest.newBuilder()
-      .setUserAppId(UserAppIDSet.newBuilder().setAppId("{YOUR_APP_ID}"))
-      .addUserIds("{YOUR_USER_ID}")
-      .setListAllAnnotations(true)
-      .build()
-);
-
-if (listAnnotationsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("List annotations failed, status: " + listAnnotationsResponse.getStatus());
-}
-
-for (Annotation annotation : listAnnotationsResponse.getAnnotationsList()) {
-    System.out.println(annotation);
-}
-```
+    <CodeBlock className="language-java">{JavaListAnnotations}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">

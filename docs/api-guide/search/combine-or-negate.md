@@ -22,6 +22,7 @@ import CodeBlock from "@theme/CodeBlock";
 import PythonCombineNegate from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate.py";
 import NodeCombineNegate from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate.js";
 import JSCombineNegate from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate.html";
+import JavaCombineNegate from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate.java";
 
 <Tabs>
 
@@ -38,56 +39,7 @@ import JSCombineNegate from "!!raw-loader!../../../code_snippets/api-guide/searc
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-// Here we search for images which we labeled with "cat" and for which the General prediction model does not find
-// a "dog" concept.
-MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
-    PostAnnotationsSearchesRequest.newBuilder().addSearches(
-        Search.newBuilder().setQuery(
-            Query.newBuilder()
-                .addFilters(
-                    Filter.newBuilder().setAnnotation(
-                        Annotation.newBuilder().setData(
-                                Data.newBuilder().addConcepts(  // You can search by multiple concepts.
-                                Concept.newBuilder()
-                                    .setId("cat")  // You could search by concept Name as well.
-                                    .setValue(1f)  // Value of 0 will search for images that don't have the concept.
-                            )
-                        )
-                    )
-                )
-                .addRanks(
-                Rank.newBuilder().setAnnotation(
-                    Annotation.newBuilder().setData(
-                            Data.newBuilder().addConcepts(  // You can search by multiple concepts.
-                            Concept.newBuilder()
-                                .setId("dog")  // You could search by concept Name as well.
-                                .setValue(1f)  // Value of 0 will search for images that don't have the concept.
-                        )
-                    )
-                )
-            )
-        )    
-    )
-    .build()
-);
-
-if (postAnnotationsSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post annotations searches failed, status: " + postAnnotationsSearchesResponse.getStatus());
-}
-
-System.out.println("Found inputs " + postAnnotationsSearchesResponse.getHitsCount() + ":");
-for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
-    System.out.printf("\tScore %.2f for annotation % of input %s\n", hit.getScore(), hit.getAnnotation().getId(), hit.getInput().getId())
-}
-```
+    <CodeBlock className="language-java">{JavaCombineNegate}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">

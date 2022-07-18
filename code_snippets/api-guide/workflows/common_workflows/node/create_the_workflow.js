@@ -65,7 +65,7 @@ stub.PostWorkflows(
         },
         workflows: [
             {
-                id: WORKFLOW_ID, // auto-annotation-workflow-id,
+                id: WORKFLOW_ID, // auto-annotation-workflow-id
                 nodes: [
                     {
                         id: NODE_ID_1, // general-embed
