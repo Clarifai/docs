@@ -60,7 +60,7 @@ const config = {
             position: 'right',
           },
           {
-            href: 'https://api.clarifai.com/api-doc/',
+            href: 'https://api.clarifai.com/api-doc/?url=https://api.clarifai.com/v2/swagger.json',
             label: 'Swagger API Guide',
             position: 'right',
           },
