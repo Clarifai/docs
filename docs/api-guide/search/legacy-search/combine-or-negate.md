@@ -83,6 +83,7 @@ for (Hit hit : postSearchesResponse.getHitsList()) {
 ```
 </TabItem>
 
+<!--
 <TabItem value="javascript" label="Javascript">
 
 ```javascript
@@ -100,7 +101,9 @@ app.inputs.search([
 );
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="python" label="Python">
 
 ```python
@@ -119,7 +122,9 @@ query.add_term(term3)
 app.inputs.search(query)
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="java" label="Java">
 
 ```java
@@ -133,7 +138,9 @@ client.searchInputs()
     .executeSync();
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="csharp" label="C#">
 
 ```csharp
@@ -160,7 +167,9 @@ namespace YourNamespace
 }
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="objective-c" label="Objective-C">
 
 ```objectivec
@@ -178,10 +187,13 @@ ClarifaiSearchTerm *term2 = [ClarifaiSearchTerm searchVisuallyWithImageURL:@"htt
 }];
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="php" label="PHP">
 
 ```php
+
 use Clarifai\API\ClarifaiClient;
 use Clarifai\DTOs\Searches\SearchBy;
 use Clarifai\DTOs\Searches\SearchInputsResult;
@@ -198,7 +210,7 @@ $response = $client->searchInputs([
 if ($response->isSuccessful()) {
     echo "Response is successful.\n";
 
-    /** @var SearchInputsResult $result */
+    // @var SearchInputsResult $result 
     $result = $response->get();
 
     foreach ($result->searchHits() as $searchHit) {
@@ -210,8 +222,10 @@ if ($response->isSuccessful()) {
     echo $response->status()->errorDetails() . "\n";
     echo "Status code: " . $response->status()->statusCode();
 }
+
 ```
 </TabItem>
+-->
 
 <TabItem value="curl" label="cURL">
 

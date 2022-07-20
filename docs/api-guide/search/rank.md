@@ -8,7 +8,7 @@ sidebar_position: 4
 **Search your data based on concepts or visual similarity**
 <hr />
 
-Rank Order your search results with the intuitive insights of AI. Your model can identify concepts in your data and rank your search results by how confident it is that a given concept is present. 
+Rank order your search results with the intuitive insights of AI. Your model can identify concepts in your data and rank your search results by how confident it is that a given concept is present. 
 
 You can even rank search results by how similar one input is to another input or region of the input model detected. The search results will return the input and also the annotation, which includes the region.
 
@@ -43,6 +43,14 @@ import NodeSearchImage from "!!raw-loader!../../../code_snippets/api-guide/searc
 import NodeImageBytes from "!!raw-loader!../../../code_snippets/api-guide/search/rank/node/search_by_image_bytes.js";
 import NodeInputID from "!!raw-loader!../../../code_snippets/api-guide/search/rank/node/by_input_id.js";
 
+import JavaAppConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/rank/java/by_clarifaimain_app_concepts.java";
+import JavaCustomConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/rank/java/by_custom_concepts.java";
+import JavaClarifaiCustomConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/rank/java/by_clarifaimain_custom_concepts.java";
+import JavaConceptLanguage from "!!raw-loader!../../../code_snippets/api-guide/search/rank/java/by_concept_another_language.java";
+import JavaSearchImage from "!!raw-loader!../../../code_snippets/api-guide/search/rank/java/search_by_image_url.java";
+import JavaImageBytes from "!!raw-loader!../../../code_snippets/api-guide/search/rank/java/search_by_image_bytes.java";
+import JavaInputID from "!!raw-loader!../../../code_snippets/api-guide/search/rank/java/by_input_id.java";
+
 ## Search by Concepts
 
 Once your images are indexed, you can search for them by concepts.
@@ -65,44 +73,8 @@ When you add an input, it automatically gets predictions from the models in your
     <CodeBlock className="language-javascript">{NodeAppConcepts}</CodeBlock>
 </TabItem>
 
-
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
-    PostAnnotationsSearchesRequest.newBuilder().addSearches(
-        Search.newBuilder().setQuery(
-            Query.newBuilder().addRanks(
-                Rank.newBuilder().setAnnotation(
-                    Annotation.newBuilder().setData(
-                            Data.newBuilder().addConcepts(  // You can search by multiple concepts.
-                            Concept.newBuilder()
-                                .setId("people")  // You could search by concept Name as well.
-                                .setValue(1f)  // Value of 0 will search for images that don't have the concept.
-                        )
-                    )
-                )
-            )
-        )    
-    )
-    .build()
-);
-
-if (postAnnotationsSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post annotations searches failed, status: " + postAnnotationsSearchesResponse.getStatus());
-}
-
-System.out.println("Found inputs " + postAnnotationsSearchesResponse.getHitsCount() + ":");
-for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
-    System.out.printf("\tScore %.2f for annotation % of input %s\n", hit.getScore(), hit.getAnnotation().getId(), hit.getInput().getId())
-}
-```
+    <CodeBlock className="language-java">{JavaAppConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -164,42 +136,7 @@ After you have added inputs, annotated the inputs, and tried a custom model, you
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
-    PostAnnotationsSearchesRequest.newBuilder().addSearches(
-        Search.newBuilder().setQuery(
-            Query.newBuilder().addRanks(
-                Rank.newBuilder().setAnnotation(
-                    Annotation.newBuilder().setData(
-                            Data.newBuilder().addConcepts(  // You can search by multiple concepts.
-                            Concept.newBuilder()
-                                .setId("people")  // You could search by concept Name as well.
-                                .setValue(1f)  // Value of 0 will search for images that don't have the concept.
-                        )
-                    )
-                )
-            )
-        )    
-    )
-    .build()
-);
-
-if (postAnnotationsSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post annotations searches failed, status: " + postAnnotationsSearchesResponse.getStatus());
-}
-
-System.out.println("Found inputs " + postAnnotationsSearchesResponse.getHitsCount() + ":");
-for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
-    System.out.printf("\tScore %.2f for annotation % of input %s\n", hit.getScore(), hit.getAnnotation().getId(), hit.getInput().getId())
-}
-```
+    <CodeBlock className="language-java">{JavaCustomConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -261,55 +198,7 @@ You can combine a search to find inputs that have concepts you have supplied as 
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-// Here we search for images which we labeled with "cat" and for which the General prediction model does not find
-// a "dog" concept.
-MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
-    PostAnnotationsSearchesRequest.newBuilder().addSearches(
-        Search.newBuilder().setQuery(
-            Query.newBuilder().addRanks(
-                Rank.newBuilder().setAnnotation(
-                    Annotation.newBuilder().setData(
-                            Data.newBuilder().addConcepts(  // You can search by multiple concepts.
-                            Concept.newBuilder()
-                                .setId("cat")  // You could search by concept Name as well.
-                                .setValue(1f)  // Value of 0 will search for images that don't have the concept.
-                        )
-                    )
-                )
-            )
-            .addRanks(
-                Rank.newBuilder().setAnnotation(
-                    Annotation.newBuilder().setData(
-                            Data.newBuilder().addConcepts(  // You can search by multiple concepts.
-                            Concept.newBuilder()
-                                .setId("dog")  // You could search by concept Name as well.
-                                .setValue(0f)  // Value of 0 will search for images that don't have the concept.
-                        )
-                    )
-                )
-            )
-        )    
-    )
-    .build()
-);
-
-if (postAnnotationsSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post annotations searches failed, status: " + postAnnotationsSearchesResponse.getStatus());
-}
-
-System.out.println("Found inputs " + postAnnotationsSearchesResponse.getHitsCount() + ":");
-for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
-    System.out.printf("\tScore %.2f for annotation % of input %s\n", hit.getScore(), hit.getAnnotation().getId(), hit.getInput().getId())
-}
-```
+    <CodeBlock className="language-java">{JavaClarifaiCustomConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -387,43 +276,7 @@ For example, if you app is in English and you want to search for "dog" in Japane
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
-    PostAnnotationsSearchesRequest.newBuilder().addSearches(
-        Search.newBuilder().setQuery(
-            Query.newBuilder().addRanks(
-                Rank.newBuilder().setAnnotation(
-                    Annotation.newBuilder().setData(
-                            Data.newBuilder().addConcepts(  // You can search by multiple concepts.
-                            Concept.newBuilder()
-                                .setName("犬")  // You could search by concept ID as well.
-                                .setLanguage("ja") // japanese
-                                .setValue(1f)  // Value of 0 will search for images that don't have the concept.
-                        )
-                    )
-                )
-            )
-        )    
-    )
-    .build()
-);
-
-if (postAnnotationsSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post annotations searches failed, status: " + postAnnotationsSearchesResponse.getStatus());
-}
-
-System.out.println("Found inputs " + postAnnotationsSearchesResponse.getHitsCount() + ":");
-for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
-    System.out.printf("\tScore %.2f for annotation % of input %s\n", hit.getScore(), hit.getAnnotation().getId(), hit.getInput().getId())
-}
-```
+    <CodeBlock className="language-java">{JavaConceptLanguage}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -488,41 +341,7 @@ You can use images to search through your collection. The API will return ranked
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
-    PostAnnotationsSearchesRequest.newBuilder().addSearches(
-        Search.newBuilder().setQuery(
-            Query.newBuilder().addRanks(
-                Rank.newBuilder().setAnnotation(
-                    Annotation.newBuilder().setData(
-                        Data.newBuilder().setImage(
-                            Image.newBuilder()
-                                .setUrl("{YOUR_IMAGE_URL}")
-                        )
-                    )
-                )
-            )
-        )    
-    )
-    .build()
-);
-
-if (postAnnotationsSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post annotations searches failed, status: " + postAnnotationsSearchesResponse.getStatus());
-}
-
-System.out.println("Found inputs " + postAnnotationsSearchesResponse.getHitsCount() + ":");
-for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
-    System.out.printf("\tScore %.2f for annotation % of input %s\n", hit.getScore(), hit.getAnnotation().getId(), hit.getInput().getId())
-}
-```
+    <CodeBlock className="language-java">{JavaSearchImage}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -576,47 +395,7 @@ You can also search for an input by bytes.
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-import com.google.protobuf.ByteString;
-import java.io.File;
-import java.nio.file.Files;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
-    PostAnnotationsSearchesRequest.newBuilder().addSearches(
-        Search.newBuilder().setQuery(
-            Query.newBuilder().addRanks(
-                Rank.newBuilder().setAnnotation(
-                    Annotation.newBuilder().setData(
-                        Data.newBuilder().setImage(
-                            Image.newBuilder()
-                                .setBase64(ByteString.copyFrom(Files.readAllBytes(
-                                    new File("{YOUR_IMAGE_LOCATION}").toPath()
-                                ))
-                            )
-                        )
-                    )
-                )
-            )
-        )    
-    )
-    .build()
-);
-
-if (postAnnotationsSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post annotations searches failed, status: " + postAnnotationsSearchesResponse.getStatus());
-}
-
-System.out.println("Found inputs " + postAnnotationsSearchesResponse.getHitsCount() + ":");
-for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
-    System.out.printf("\tScore %.2f for annotation % of input %s\n", hit.getScore(), hit.getAnnotation().getId(), hit.getInput().getId())
-}
-```
+    <CodeBlock className="language-java">{JavaImageBytes}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -670,36 +449,7 @@ If the input has been indexed, we can use the input ID. If there are multiple em
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview
-
-MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
-    PostAnnotationsSearchesRequest.newBuilder().addSearches(
-        Search.newBuilder().setQuery(
-            Query.newBuilder().addRanks(
-                Rank.newBuilder().setAnnotation(
-                    Annotation.newBuilder().setInputId("{input_id}")    
-                )
-            )
-        )    
-    )
-    .build()
-);
-
-if (postAnnotationsSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post annotations searches failed, status: " + postAnnotationsSearchesResponse.getStatus());
-}
-
-System.out.println("Found inputs " + postAnnotationsSearchesResponse.getHitsCount() + ":");
-for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
-    System.out.printf("\tScore %.2f for annotation % of input %s\n", hit.getScore(), hit.getAnnotation().getId(), hit.getInput().getId())
-}
-```
+    <CodeBlock className="language-java">{JavaInputID}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">

@@ -69,5 +69,3 @@ if post_inputs_response.status.code != status_code_pb2.SUCCESS:
         print(input_response.status)
     
     raise Exception("Post inputs failed, status: " + post_inputs_response.status.description)
-
-print(post_inputs_response)
