@@ -16,7 +16,7 @@ This page explains how to use [Postman](https://www.postman.com/) to perform API
 You have:
 
 * An active Clarifai account.
-* Access to your [Clarifai API key](https://docs.clarifai.com/getting-started/authentication/app-specific-api-keys) and user login credentials.
+* Access to your [Clarifai API key](https://docs.clarifai.com/clarifai-basics/authentication/app-specific-api-keys) and user login credentials.
 * Basic knowledge of API structure and JSON formatting.
 
 ### Setup <a id="setup"></a>
@@ -33,7 +33,7 @@ After the Postman collection is imported, a full list of available Clarifai API 
 
 **AUTHENTICATION**
 
-The collection includes a [Postman environment](https://learning.postman.com/docs/postman/variables-and-environments/variables/#environments-in-postman) called `Clarifai Authentication`, where you can add your username, password and [Clarifai API key](https://docs.clarifai.com/getting-started/authentication/app-specific-api-keys) or [Personal Access Token](https://docs.clarifai.com/getting-started/authentication/personal-access-tokens) for authentication.
+The collection includes a [Postman environment](https://learning.postman.com/docs/postman/variables-and-environments/variables/#environments-in-postman) called `Clarifai Authentication`, where you can add your username, password and [Clarifai API key](https://docs.clarifai.com/clarifai-basics/authentication/app-specific-api-keys) or [Personal Access Token](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens) for authentication.
 
 Follow these steps to set up your environment:
 
