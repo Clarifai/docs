@@ -10,6 +10,8 @@ sidebar_position: 5
 
 To get started with search, you must first add images to the search index. You can add one or more images to the index at a time. You can supply an image either with a publicly accessible URL or by directly sending image bytes. You can send up to 128 images in one API call.
 
+Below is an example of how to add images to the search index.
+
 :::info
 The initialization code used in the following example is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 :::
@@ -20,6 +22,7 @@ import CodeBlock from "@theme/CodeBlock";
 import PythonIndexImages from "!!raw-loader!../../../code_snippets/api-guide/search/index_images_for_search.py";
 import JSIndexImages from "!!raw-loader!../../../code_snippets/api-guide/search/index_images_for_search.html";
 import NodeIndexImages from "!!raw-loader!../../../code_snippets/api-guide/search/index_images_for_search.js";
+import JavaIndexImages from "!!raw-loader!../../../code_snippets/api-guide/search/index_images_for_search.java";
 
 <Tabs>
 
@@ -36,59 +39,7 @@ import NodeIndexImages from "!!raw-loader!../../../code_snippets/api-guide/searc
 </TabItem>
 
 <TabItem value="java" label="Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiInputResponse postInputsResponse = stub.postInputs(
-    PostInputsRequest.newBuilder()
-        .addInputs(
-            Input.newBuilder()
-                .setData(
-                    Data.newBuilder().setImage(
-                        Image.newBuilder()
-                            .setUrl("https://samples.clarifai.com/metro-north.jpg")
-                            .setAllowDuplicateUrl(true)
-                    )
-                )
-        )
-        .addInputs(
-            Input.newBuilder()
-                .setData(
-                    Data.newBuilder().setImage(
-                        Image.newBuilder()
-                            .setUrl("https://samples.clarifai.com/wedding.jpg")
-                            .setAllowDuplicateUrl(true)
-                    )
-                )
-        )
-        .addInputs(
-            Input.newBuilder()
-                .setData(
-                    Data.newBuilder().setImage(
-                        Image.newBuilder()
-                            .setBase64(ByteString.copyFrom(Files.readAllBytes(
-                                new File("{YOUR_IMAGE_FILE_LOCATION}").toPath()
-                            )))
-                    )
-                )
-        )
-        .build()
-);
-
-if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    for (Input input : postInputsResponse.getInputsList()) {
-        System.out.println("Input " + input.getId() + " status: ");
-        System.out.println(input.getStatus() + "\n");
-    }
-
-    throw new RuntimeException("Post inputs failed, status: " + postInputsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaIndexImages}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -125,93 +76,3 @@ curl -X POST \
 </TabItem>
 
 </Tabs>
-
-<details>
-  <summary>JSON Output Example</summary>
-
-```javascript
-status {
-  code: SUCCESS
-  description: "Ok"
-  req_id: "6d324034e6f6944f6b4f553c0173ba94"
-}
-inputs {
-  id: "b319f06f2b2749248504e1fa8593e84e"
-  data {
-    image {
-      url: "https://samples.clarifai.com/metro-north.jpg"
-      image_info {
-        format: "UnknownImageFormat"
-        color_mode: "UnknownColorMode"
-      }
-    }
-  }
-  created_at {
-    seconds: 1649236360
-    nanos: 11398455
-  }
-  modified_at {
-    seconds: 1649236360
-    nanos: 11398455
-  }
-  status {
-    code: INPUT_DOWNLOAD_PENDING
-    description: "Download pending"
-  }
-}
-inputs {
-  id: "f787d1446583484dabb8d3173e63c057"
-  data {
-    image {
-      url: "https://samples.clarifai.com/wedding.jpg"
-      image_info {
-        format: "UnknownImageFormat"
-        color_mode: "UnknownColorMode"
-      }
-    }
-  }
-  created_at {
-    seconds: 1649236360
-    nanos: 11398455
-  }
-  modified_at {
-    seconds: 1649236360
-    nanos: 11398455
-  }
-  status {
-    code: INPUT_DOWNLOAD_PENDING
-    description: "Download pending"
-  }
-}
-inputs {
-  id: "6812891f981040bdb1de4a24c4f31c74"
-  data {
-    image {
-      url: "https://s3.amazonaws.com/clarifai-api/img3/prod/orig/e12ce254f2824b0ab2aef1b10784ff23/140c856dc82565d2c4d6ea720fceff78"
-      hosted {
-        prefix: "https://s3.amazonaws.com/clarifai-api/img3/prod"
-        suffix: "e12ce254f2824b0ab2aef1b10784ff23/140c856dc82565d2c4d6ea720fceff78"
-        sizes: "orig"
-      }
-      image_info {
-        format: "UnknownImageFormat"
-        color_mode: "UnknownColorMode"
-      }
-    }
-  }
-  created_at {
-    seconds: 1649236360
-    nanos: 11398455
-  }
-  modified_at {
-    seconds: 1649236360
-    nanos: 11398455
-  }
-  status {
-    code: INPUT_DOWNLOAD_PENDING
-    description: "Download pending"
-  }
-} 
-```
-
-</details>
