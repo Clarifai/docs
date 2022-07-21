@@ -8,8 +8,8 @@ USER_ID = 'YOUR_USER_ID_HERE'
 PAT = 'YOUR_PAT_HERE'
 APP_ID = 'YOUR_APP_ID_HERE'
 # Change these to search by your own concepts
-CONCEPT_ID_1 = 'cat'
-CONCEPT_ID_2 = 'dog'
+CONCEPT_NAME_1 = 'cat'
+CONCEPT_NAME_2 = 'dog'
 
 ##########################################################################
 # YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -39,7 +39,7 @@ post_searches_response = stub.PostSearches(
                         data=resources_pb2.Data(
                             concepts=[
                                 resources_pb2.Concept(
-                                    name=CONCEPT_ID_1,
+                                    name=CONCEPT_NAME_1,
                                     value=1
                                 )
                             ]
@@ -52,7 +52,7 @@ post_searches_response = stub.PostSearches(
                         data=resources_pb2.Data(
                             concepts=[
                                 resources_pb2.Concept(
-                                    name=CONCEPT_ID_2,
+                                    name=CONCEPT_NAME_2,
                                     value=0
                                 )
                             ]

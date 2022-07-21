@@ -25,11 +25,18 @@ import NodeInputsLongitude from "!!raw-loader!../../../../code_snippets/api-guid
 import NodeOneGeoPoint from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/node/perform_search_one_geo_point.js";
 import NodeTwoGeoPoints from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/node/perform_search_two_geo_point.js";
 
+import JavaCustomMetadata from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/java/by_custom_metadata.java";
+import JavaInputsLongitude from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/java/add_inputs_longitude_latitude.java";
+import JavaOneGeoPoint from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/java/perform_search_one_geo_point.java";
+import JavaTwoGeoPoints from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/java/perform_search_two_geo_point.java";
+
 ## By Custom Metadata
 
 After you have added inputs with custom metadata, you can search by that metadata.
 
-Below is an example of searching over custom metadata. You can exact match any `key`: `value` pair no matter how nested it is. For example, if the metadata on an input is:
+Below is an example of searching over custom metadata. You can exact match any `key`: `value` pair no matter how nested it is. 
+
+For example, if the metadata on an input is:
 
 ```javascript
 {
@@ -87,42 +94,10 @@ How to perform searches:
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-import com.google.protobuf.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiSearchResponse postSearchesResponse = stub.postSearches(
-    PostSearchesRequest.newBuilder().setQuery(
-        Query.newBuilder().addAnds(
-            And.newBuilder().setInput(
-                Input.newBuilder().setData(
-                    Data.newBuilder().setMetadata(
-                        Struct.newBuilder()
-                            .putFields("type", Value.newBuilder().setStringValue("animal").build())
-                    )
-                )
-            )
-        )
-    )
-    .build()
-);
-
-if (postSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post searches failed, status: " + postSearchesResponse.getStatus());
-}
-
-System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
-for (Hit hit : postSearchesResponse.getHitsList()) {
-    System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
-}
-```
+    <CodeBlock className="language-java">{JavaCustomMetadata}</CodeBlock>
 </TabItem>
 
+<!--
 <TabItem value="javascript" label="Javascript">
 
 ```javascript
@@ -181,7 +156,9 @@ app.inputs.search([
 );
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="python" label="Python">
 
 ```python
@@ -203,7 +180,9 @@ query.add_term(OutputSearchTerm(concept='group', value=False))
 app.inputs.search(query)
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="java" label="Java">
 
 ```java
@@ -215,7 +194,9 @@ List<SearchHit> hits = client
   .executeSync();
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="csharp" label="C#">
 
 ```csharp
@@ -243,7 +224,9 @@ namespace YourNamespace
 }
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="objective-c" label="Objective-C">
 
 ```objectivec
@@ -270,13 +253,16 @@ ClarifaiSearchTerm *searchTerm2 = [ClarifaiSearchTerm searchInputsWithMetadata:@
 }];
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="php" label="PHP">
 
 ```php
 // Coming soon
 ```
 </TabItem>
+-->
 
 <TabItem value="curl" label="cURL">
 
@@ -311,7 +297,7 @@ Search by geo location allows you to restrict your search results to a bounding 
 
 It is important to note that a search by geo location acts as a filter and returns results ranked by any other provided search criteria, whether that is a visual search, concept search, or something else. If no other criteria is provided, results will return in the order the inputs were created, NOT by their distance to center of the search area.
 
-If you are providing one point and a radius, the radius can be in "mile", "kilometer", "degree", or "radian", marked by keywords `withinMiles`, `withinKilometers`, `withinDegrees`, `withinRadians`.
+If you are providing one point and a radius, the radius can be in "mile", "kilometer", "degree", or "radian", marked by keywords `withinMiles`, `withinKilometers`, `withinDegrees`, or `withinRadians` respectively.
 
 If you are providing two points, a box will be drawn from the uppermost point to the lowermost point, and the leftmost point to the rightmost point.
 
@@ -332,40 +318,10 @@ Provide a geo point to an input. The geo point is a JSON object consisting of a 
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiInputResponse postInputsResponse = stub.postInputs(
-    PostInputsRequest.newBuilder().addInputs(
-        Input.newBuilder().setData(
-            Data.newBuilder()
-                .setImage(
-                    Image.newBuilder()
-                        .setUrl("https://samples.clarifai.com/dog.tiff")
-                        .setAllowDuplicateUrl(true)
-                )
-                .setGeo(
-                    Geo.newBuilder().setGeoPoint(
-                        GeoPoint.newBuilder()
-                            .setLongitude(-30)
-                            .setLatitude(40)
-                    )
-                )
-        )
-    ).build()
-);
-
-if (postInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("Post inputs failed, status: " + postInputsResponse.getStatus());
-}
-```
+    <CodeBlock className="language-java">{JavaInputsLongitude}</CodeBlock>
 </TabItem>
 
+<!--
 <TabItem value="javascript" label="Javascript">
 
 ```javascript
@@ -382,7 +338,9 @@ app.inputs.create({
 );
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="python" label="Python">
 
 ```python
@@ -394,7 +352,9 @@ geo_p1 = Geo(geo_point=GeoPoint(116.2317,39.5427))
 app.inputs.create_image_from_url(url="https://samples.clarifai.com/puppy.jpeg", geo=geo_p1)
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="java" label="Java">
 
 ```java
@@ -402,7 +362,9 @@ client.addInputs().plus(ClarifaiInput.forImage("https://samples.clarifai.com/pup
     .withGeo(PointF.at(116.2317F, 39.5427F))).executeSync();
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="csharp" label="C#">
 
 ```csharp
@@ -429,7 +391,9 @@ namespace YourNamespace
 }
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="objective-c" label="Objective-C">
 
 ```objectivec
@@ -441,7 +405,9 @@ image.location = [[ClarifaiLocation alloc] initWithLatitude:116.2317 longitude:3
 }];
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="php" label="PHP">
 
 ```php
@@ -466,6 +432,7 @@ if ($response->isSuccessful()) {
 }
 ```
 </TabItem>
+-->
 
 <TabItem value="curl" label="cURL">
 
@@ -510,50 +477,10 @@ curl -X POST \
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiSearchResponse postSearchesResponse = stub.postSearches(
-    PostSearchesRequest.newBuilder().setQuery(
-        Query.newBuilder().addAnds(
-            And.newBuilder().setInput(
-                Input.newBuilder().setData(
-                    Data.newBuilder().setGeo(
-                        Geo.newBuilder()
-                            .setGeoPoint(
-                                GeoPoint.newBuilder()
-                                    .setLongitude(-29)
-                                    .setLatitude(40)
-                            )
-                            .setGeoLimit(
-                                GeoLimit.newBuilder()
-                                    .setType("withinKilometers")
-                                    .setValue(150.0f)
-                            )
-                    )
-                )
-            )
-        )
-    )
-    .build()
-);
-
-if (postSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post searches failed, status: " + postSearchesResponse.getStatus());
-}
-
-System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
-for (Hit hit : postSearchesResponse.getHitsList()) {
-    System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
-}
-```
+    <CodeBlock className="language-java">{JavaOneGeoPoint}</CodeBlock>
 </TabItem>
 
+<!--
 <TabItem value="javascript" label="Javascript">
 
 ```javascript
@@ -576,7 +503,9 @@ app.inputs.search({
 );
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="python" label="Python">
 
 ```python
@@ -589,7 +518,9 @@ geo_l = GeoLimit(limit_type='kilometer', limit_range=1)
 imgs = app.inputs.search_by_geo(geo_point=geo_p, geo_limit=geo_l)
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="java" label="Java">
 
 ```java
@@ -598,7 +529,9 @@ client.searchInputs(SearchClause.matchGeo(PointF.at(59F, 29.75F), Radius.of(500,
             .executeSync();
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="csharp" label="C#">
 
 ```csharp
@@ -626,7 +559,9 @@ namespace YourNamespace
 }
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="objective-c" label="Objective-C">
 
 ```objectivec
@@ -641,7 +576,9 @@ ClarifaiSearchTerm *term = [ClarifaiSearchTerm searchInputsWithGeoFilter:geoFilt
 }];
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="php" label="PHP">
 
 ```php
@@ -663,7 +600,7 @@ $response = $client->searchInputs(
 if ($response->isSuccessful()) {
     echo "Response is successful.\n";
 
-    /** @var SearchInputsResult $result */
+    // @var SearchInputsResult $result 
     $result = $response->get();
 
     foreach ($result->searchHits() as $searchHit) {
@@ -677,6 +614,7 @@ if ($response->isSuccessful()) {
 }
 ```
 </TabItem>
+-->
 
 <TabItem value="curl" label="cURL">
 
@@ -725,54 +663,10 @@ curl -X POST \
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiSearchResponse postSearchesResponse = stub.postSearches(
-    PostSearchesRequest.newBuilder().setQuery(
-        Query.newBuilder().addAnds(
-            And.newBuilder().setInput(
-                Input.newBuilder().setData(
-                    Data.newBuilder().setGeo(
-                        Geo.newBuilder()
-                            .addGeoBox(
-                                GeoBoxedPoint.newBuilder().setGeoPoint(
-                                    GeoPoint.newBuilder()
-                                        .setLongitude(-31)
-                                        .setLatitude(42)
-                                )
-                            )
-                            .addGeoBox(
-                                GeoBoxedPoint.newBuilder().setGeoPoint(
-                                    GeoPoint.newBuilder()
-                                        .setLongitude(-29)
-                                        .setLatitude(39)
-                                ).build()
-                            )
-                    )
-                )
-            )
-        )
-    )
-    .build()
-);
-
-if (postSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post searches failed, status: " + postSearchesResponse.getStatus());
-}
-
-System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
-for (Hit hit : postSearchesResponse.getHitsList()) {
-    System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
-}
-```
+    <CodeBlock className="language-java">{JavaTwoGeoPoints}</CodeBlock>
 </TabItem>
 
+<!--
 <TabItem value="javascript" label="Javascript">
 
 ```javascript
@@ -796,7 +690,9 @@ app.inputs.search({
 );
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="python" label="Python">
 
 ```python
@@ -810,7 +706,9 @@ box1 = GeoBox(point1=p1, point2=p2)
 imgs = app.inputs.search_by_geo(geo_box=box1)
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="java" label="Java">
 
 ```java
@@ -847,7 +745,9 @@ namespace YourNamespace
 }
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="objective-c" label="Objective-C">
 
 ```objectivec
@@ -862,7 +762,9 @@ ClarifaiGeo *geoBox = [[ClarifaiGeo alloc] initWithGeoBoxFromStartLocation:start
 }];
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="php" label="PHP">
 
 ```php
@@ -880,7 +782,7 @@ $response = $client->searchInputs(
 if ($response->isSuccessful()) {
     echo "Response is successful.\n";
 
-    /** @var SearchInputsResult $result */
+    // @var SearchInputsResult $result 
     $result = $response->get();
 
     foreach ($result->searchHits() as $searchHit) {
@@ -894,6 +796,7 @@ if ($response->isSuccessful()) {
 }
 ```
 </TabItem>
+-->
 
 <TabItem value="curl" label="cURL">
 

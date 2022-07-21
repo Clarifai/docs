@@ -259,7 +259,7 @@ curl -X POST \
 
 Concepts that have a translation into another language can be searched for in that language, even without having the default language for your app being in that language. This uses Clarifai's knowledge graph to lookup the translation and then perform the search. 
 
-For example, if you app is in English and you want to search for "dog" in Japanese, then you could search with `language="ja"` and `name="犬"`.
+For example, if your app is in English and you want to search for "dog" in Japanese, then you could search with `language="ja"` and `name="犬"`.
 
 <Tabs>
 
