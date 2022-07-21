@@ -74,6 +74,12 @@ You can also click the **View JSON** button underneath the **Try Your Own Input*
 
 ## How to Use a Model in API or Add it to Workflow
 
+The below video showcases how to create 2 different multimodal workflows in Community.
+
+<iframe width="670" height="380" src="https://www.youtube.com/embed/Me_HmQ6WiJk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<br></br> 
+<br></br> 
+
 Let's see how you can use a model in an API or add it to a worklow. To do so, you can start by searching for the model you'd like to use. You can follow the steps described previously to select your preferred model.
 
 Then, on the model's main page, click the **Use Model** button at the top-right corner. 
