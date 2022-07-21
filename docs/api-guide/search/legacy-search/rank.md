@@ -8,7 +8,7 @@ sidebar_position: 3
 **Search your data based on concepts or visual similarity**
 <hr />
 
-Rank Order your search results with the intuitive insights of AI. Your model can identify concepts in your data and rank your search results by how confident it is that a given concept is present. You can even rank search results by how similar one input is to another input.
+Rank order your search results with the intuitive insights of AI. Your model can identify concepts in your data and rank your search results by how confident it is that a given concept is present. You can even rank search results by how similar one input is to another input.
 
 :::info
 The initialization code used in the following example is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
@@ -31,6 +31,13 @@ import NodeConceptLanguage from "!!raw-loader!../../../../code_snippets/api-guid
 import NodeSearchImage from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/node/search_by_image.js";
 import NodeSearchURL from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/node/search_by_url.js";
 
+import JavaAppConcepts from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/java/by_clarifaimain_app_concepts.java";
+import JavaCustomConcepts from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/java/by_custom_concepts.java";
+import JavaClarifaiCustomConcepts from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/java/by_clarifaimain_custom_concepts.java";
+import JavaConceptLanguage from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/java/by_concept_another_language.java";
+import JavaSearchImage from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/java/search_by_image.java";
+import JavaSearchURL from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/java/search_by_url.java";
+
 ## Search by Concepts
 
 Once your images are indexed, you can search for them by concepts.
@@ -50,43 +57,10 @@ When you add an input, it automatically gets predictions from the models in your
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiSearchResponse postSearchesResponse = stub.postSearches(
-    PostSearchesRequest.newBuilder().setQuery(
-        Query.newBuilder().addAnds(
-            And.newBuilder().setOutput( // Setting Output indicates we search for images that have the concept(s)
-                                        // which were predicted by the General model.
-                Output.newBuilder().setData(
-                    Data.newBuilder().addConcepts(  // You can search by multiple concepts.
-                        Concept.newBuilder()
-                            .setName("people")  // You could search by concept ID as well.
-                            .setValue(1f)  // Value of 0 will search for images that don't have the concept.
-                    )
-                )
-            )
-        )
-    )
-    .build()
-);
-
-if (postSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post searches failed, status: " + postSearchesResponse.getStatus());
-}
-
-System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
-for (Hit hit : postSearchesResponse.getHitsList()) {
-    System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
-}
-```
+    <CodeBlock className="language-java">{JavaAppConcepts}</CodeBlock>
 </TabItem>
 
+<!--
 <TabItem value="javascript" label="Javascript">
 
 ```javascript
@@ -111,7 +85,9 @@ app.inputs.search([
 );
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="python" label="Python">
 
 ```python
@@ -134,7 +110,9 @@ app.inputs.search_by_predicted_concepts(concept_ids=['ai_mFqxrph2', 'ai_4CRlSvbV
 app.inputs.search_by_predicted_concepts(concepts=['cat', 'dog'], values=[True, False])
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="java" label="Java">
 
 ```java
@@ -160,7 +138,9 @@ client.searchInputs(SearchClause.matchConcept(Concept.forID("cat").withValue(fal
     .executeSync();
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="csharp" label="C#">
 
 ```csharp
@@ -197,7 +177,9 @@ namespace YourNamespace
 }
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="objective-c" label="Objective-C">
 
 ```text
@@ -213,7 +195,9 @@ ClarifaiSearchTerm *searchTerm = [ClarifaiSearchTerm searchByPredictedConcept:co
 }];
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="php" label="PHP">
 
 ```php
@@ -227,22 +211,22 @@ $client = new ClarifaiClient('YOUR_API_KEY');
 $response = $client->searchInputs(SearchBy::conceptName('cat'))
     ->executeSync();
 
-/*
-// Search concept by ID
-$response = $client->searchInputs(SearchBy::conceptID('cat'))
-    ->executeSync();
-*/
 
-/*
+// Search concept by ID
+//$response = $client->searchInputs(SearchBy::conceptID('cat'))
+    //->executeSync();
+
+
+
 // Search multiple concepts
-$response = $client->searchInputs([SearchBy::conceptID('cat'), SearchBy::conceptID('cute')])
+//$response = $client->searchInputs([SearchBy::conceptID('cat'), SearchBy::conceptID('cute')])
     ->executeSync();
-*/
+
 
 if ($response->isSuccessful()) {
     echo "Response is successful.\n";
 
-    /** @var SearchInputsResult $result */
+    // @var SearchInputsResult $result 
     $result = $response->get();
 
     foreach ($result->searchHits() as $searchHit) {
@@ -256,6 +240,7 @@ if ($response->isSuccessful()) {
 }
 ```
 </TabItem>
+-->
 
 <TabItem value="curl" label="cURL">
 
@@ -309,43 +294,10 @@ After you have added inputs with concepts, you can search by those concepts.
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiSearchResponse postSearchesResponse = stub.postSearches(
-    PostSearchesRequest.newBuilder().setQuery(
-        Query.newBuilder().addAnds(
-            And.newBuilder().setInput( // Setting Input indicates we search for images that have the concept(s)
-                                       // which we added to the input manually.
-                Input.newBuilder().setData(
-                    Data.newBuilder().addConcepts(  // You can search by multiple concepts.
-                        Concept.newBuilder()
-                            .setName("people")  // You could search by concept ID as well.
-                            .setValue(1f)  // Value of 0 will search for images that we marked not to have the concept.
-                    )
-                )
-            )
-        )
-    )
-    .build()
-);
-
-if (postSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post searches failed, status: " + postSearchesResponse.getStatus());
-}
-
-System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
-for (Hit hit : postSearchesResponse.getHitsList()) {
-    System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
-}
-```
+    <CodeBlock className="language-java">{JavaCustomConcepts}</CodeBlock>
 </TabItem>
 
+<!--
 <TabItem value="javascript" label="Javascript">
 
 ```javascript
@@ -372,7 +324,9 @@ app.inputs.search([
 );
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="python" label="Python">
 
 ```python
@@ -395,7 +349,9 @@ app.inputs.search_by_annotated_concepts(concept_ids=['ai_mFqxrph2', 'ai_4CRlSvbV
 app.inputs.search_by_annotated_concepts(concepts=['cat', 'dog'], values=[True, False])
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="java" label="Java">
 
 ```java
@@ -421,7 +377,9 @@ client.searchInputs(SearchClause.matchUserTaggedConcept(Concept.forID("cat").wit
     .executeSync();
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="csharp" label="C#">
 
 ```csharp
@@ -460,7 +418,9 @@ namespace YourNamespace
 }
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="objective-c" label="Objective-C">
 
 ```text
@@ -476,7 +436,9 @@ ClarifaiSearchTerm *term = [ClarifaiSearchTerm searchInputsByConcept:concept];
 }];
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="php" label="PHP">
 
 ```php
@@ -490,23 +452,23 @@ $client = new ClarifaiClient('YOUR_API_KEY');
 $response = $client->searchInputs(SearchBy::userTaggedConceptName('cat'))
     ->executeSync();
 
-/*
-// Search concept by ID
-$response = $client->searchInputs(SearchBy::userTaggedConceptID('cat'))
-    ->executeSync();
-*/
 
-/*
+// Search concept by ID
+//$response = $client->searchInputs(SearchBy::userTaggedConceptID('cat'))
+    //->executeSync();
+
+
+
 // Search multiple concepts
-$response = $client->searchInputs([SearchBy::userTaggedConceptName('cat'),
-        SearchBy::userTaggedConceptID('dog')])
-    ->executeSync();
-*/
+//$response = $client->searchInputs([SearchBy::userTaggedConceptName('cat'),
+       // SearchBy::userTaggedConceptID('dog')])
+    //->executeSync();
+
 
 if ($response->isSuccessful()) {
     echo "Response is successful.\n";
 
-    /** @var SearchInputsResult $result */
+    // @var SearchInputsResult $result 
     $result = $response->get();
 
     foreach ($result->searchHits() as $searchHit) {
@@ -520,6 +482,7 @@ if ($response->isSuccessful()) {
 }
 ```
 </TabItem>
+-->
 
 <TabItem value="curl" label="cURL">
 
@@ -573,58 +536,10 @@ You can combine a search to find inputs that have concepts you have supplied as 
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-// Here we search for images which we labeled with "cat" and for which the General prediction model does not find
-// a "dog" concept.
-MultiSearchResponse postSearchesResponse = stub.postSearches(
-    PostSearchesRequest.newBuilder().setQuery(
-        Query.newBuilder()
-            .addAnds(
-                And.newBuilder().setInput( // Setting Input indicates we search for images that have the concept(s)
-                                           // which we added to the input manually.
-                    Input.newBuilder().setData(
-                        Data.newBuilder().addConcepts(
-                            Concept.newBuilder()
-                                .setName("cat")
-                                .setValue(1f)
-                        )
-                    )
-                )
-            )
-            .addAnds(
-                And.newBuilder().setOutput(  // Setting Output indicates we search for images that have the concept(s)
-                                             // which were predicted by the General model.
-                    Output.newBuilder().setData(
-                        Data.newBuilder().addConcepts(
-                            Concept.newBuilder()
-                                .setName("dog")
-                                .setValue(0f)  // Because of 0, the dog must not be present in the image.
-                        )
-                    )
-                )
-            )
-    )
-    .build()
-);
-
-if (postSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post searches failed, status: " + postSearchesResponse.getStatus());
-}
-
-System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
-for (Hit hit : postSearchesResponse.getHitsList()) {
-    System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
-}
-```
+    <CodeBlock className="language-java">{JavaClarifaiCustomConcepts}</CodeBlock>
 </TabItem>
 
+<!--
 <TabItem value="javascript" label="Javascript">
 
 ```javascript
@@ -652,7 +567,9 @@ app.inputs.search([
 );
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="python" label="Python">
 
 ```python
@@ -682,7 +599,9 @@ client.searchInputs()
     .executeSync();
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="csharp" label="C#">
 
 ```csharp
@@ -708,7 +627,9 @@ namespace YourNamespace
 }
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="objective-c" label="Objective-C">
 
 ```text
@@ -726,7 +647,9 @@ ClarifaiSearchTerm *term2 = [ClarifaiSearchTerm searchByPredictedConcept:concept
 }];
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="php" label="PHP">
 
 ```php
@@ -743,7 +666,7 @@ $response = $client->searchInputs([SearchBy::userTaggedConceptName('cat'),
 if ($response->isSuccessful()) {
     echo "Response is successful.\n";
 
-    /** @var SearchInputsResult $result */
+    // @var SearchInputsResult $result 
     $result = $response->get();
 
     foreach ($result->searchHits() as $searchHit) {
@@ -757,6 +680,7 @@ if ($response->isSuccessful()) {
 }
 ```
 </TabItem>
+-->
 
 <TabItem value="curl" label="cURL">
 
@@ -807,7 +731,7 @@ https://api.clarifai.com/v2/searches
 
 Concepts that have a translation into another language can be searched for in that language, even without having the default language for your app being in that language. This uses Clarifai's knowledge graph to lookup the translation and then perform the search. 
 
-For example, if you app is in English and you want to search for "dog" in Japanese, then you could search with `language="ja"` and `name="犬"`.
+For example, if your app is in English and you want to search for "dog" in Japanese, then you could search with `language="ja"` and `name="犬"`.
 
 <Tabs>
 
@@ -820,42 +744,7 @@ For example, if you app is in English and you want to search for "dog" in Japane
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiSearchResponse postSearchesResponse = stub.postSearches(
-    PostSearchesRequest.newBuilder().setQuery(
-        Query.newBuilder().addAnds(
-            And.newBuilder().setOutput( // Setting Output indicates we search for images that have the concept(s)
-                                        // which were predicted by the General model.
-                Output.newBuilder().setData(
-                    Data.newBuilder().addConcepts(  // You can search by multiple concepts.
-                        Concept.newBuilder()
-                            .setName("犬")  // You could search by concept ID as well.
-                            .setLanguage("ja") // japanese
-                            .setValue(1f)  // Value of 0 will search for images that don't have the concept.
-                    )
-                )
-            )
-        )
-    )
-    .build()
-);
-
-if (postSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post searches failed, status: " + postSearchesResponse.getStatus());
-}
-
-System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
-for (Hit hit : postSearchesResponse.getHitsList()) {
-    System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
-}
-```
+    <CodeBlock className="language-java">{JavaConceptLanguage}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -906,43 +795,10 @@ You can use images to search through your collection. The API will return ranked
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiSearchResponse postSearchesResponse = stub.postSearches(
-    PostSearchesRequest.newBuilder().setQuery(
-        Query.newBuilder().addAnds(
-            And.newBuilder().setOutput(
-                Output.newBuilder().setInput(
-                    Input.newBuilder().setData(
-                        Data.newBuilder().setImage(
-                            Image.newBuilder()
-                                .setUrl("{YOUR_IMAGE_URL}")
-                        )
-                    )
-                )
-            )
-        )
-    )
-    .build()
-);
-
-if (postSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post searches failed, status: " + postSearchesResponse.getStatus());
-}
-
-System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
-for (Hit hit : postSearchesResponse.getHitsList()) {
-    System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
-}
-```
+    <CodeBlock className="language-java">{JavaSearchImage}</CodeBlock>
 </TabItem>
 
+<!--
 <TabItem value="javascript" label="Javascript">
 
 ```javascript
@@ -962,7 +818,9 @@ app.inputs.search(
 );
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="python" label="Python">
 
 ```python
@@ -993,7 +851,9 @@ fio = open("filename_on_local_disk.jpg", 'rb')
 app.inputs.search_by_image(fileobj=fio)
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="java" label="Java">
 
 ```java
@@ -1008,7 +868,9 @@ client.searchInputs(SearchClause.matchImageVisually(ClarifaiImage.of(new File("i
     .executeSync();
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="csharp" label="C#">
 
 ```csharp
@@ -1041,7 +903,9 @@ namespace YourNamespace
 }
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="objective-c" label="Objective-C">
 
 ```text
@@ -1055,7 +919,9 @@ ClarifaiSearchTerm *searchTerm = [ClarifaiSearchTerm searchVisuallyWithImageURL:
 }];
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="php" label="PHP">
 
 ```php
@@ -1072,7 +938,7 @@ $response = $client->searchInputs(
 if ($response->isSuccessful()) {
     echo "Response is successful.\n";
 
-    /** @var SearchInputsResult $result */
+    // @var SearchInputsResult $result 
     $result = $response->get();
 
     foreach ($result->searchHits() as $searchHit) {
@@ -1086,6 +952,7 @@ if ($response->isSuccessful()) {
 }
 ```
 </TabItem>
+-->
 
 <TabItem value="curl" label="cURL">
 
@@ -1131,41 +998,10 @@ You can also search for an input by URL.
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiSearchResponse postSearchesResponse = stub.postSearches(
-    PostSearchesRequest.newBuilder().setQuery(
-        Query.newBuilder().addAnds(
-            And.newBuilder().setInput(
-                Input.newBuilder().setData(
-                    Data.newBuilder().setImage(
-                        Image.newBuilder()
-                            .setUrl("{YOUR_IMAGE_URL}")
-                    )
-                )
-            )
-        )
-    )
-    .build()
-);
-
-if (postSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post searches failed, status: " + postSearchesResponse.getStatus());
-}
-
-System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
-for (Hit hit : postSearchesResponse.getHitsList()) {
-    System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
-}
-```
+    <CodeBlock className="language-java">{JavaSearchURL}</CodeBlock>
 </TabItem>
 
+<!--
 <TabItem value="javascript" label="Javascript">
 
 ```javascript
@@ -1186,7 +1022,9 @@ app.inputs.search(
 );
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="python" label="Python">
 
 ```python
@@ -1197,7 +1035,9 @@ meta = {"url":"https://samples.clarifai.com/metro-north.jpg"}
 app.inputs.search_by_metadata(meta)
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="java" label="Java">
 
 ```java
@@ -1207,7 +1047,9 @@ client.searchInputs(SearchClause.matchImageURL(ClarifaiImage.of("https://samples
     .executeSync();
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="csharp" label="C#">
 
 ```csharp
@@ -1232,7 +1074,9 @@ namespace YourNamespace
 }
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="objective-c" label="Objective-C">
 
 ```text
@@ -1247,7 +1091,9 @@ ClarifaiSearchTerm *term = [ClarifaiSearchTerm searchInputsWithImageURL:@"https:
 }];
 ```
 </TabItem>
+-->
 
+<!--
 <TabItem value="php" label="PHP">
 
 ```php
@@ -1264,7 +1110,7 @@ $response = $client->searchInputs(
 if ($response->isSuccessful()) {
     echo "Response is successful.\n";
 
-    /** @var SearchInputsResult $result */
+    // @var SearchInputsResult $result 
     $result = $response->get();
 
     foreach ($result->searchHits() as $searchHit) {
@@ -1278,6 +1124,7 @@ if ($response->isSuccessful()) {
 }
 ```
 </TabItem>
+-->
 
 <TabItem value="curl" label="cURL">
 

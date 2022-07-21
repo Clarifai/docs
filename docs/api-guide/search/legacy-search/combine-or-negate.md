@@ -19,6 +19,7 @@ import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 import PythonCombineNegate from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/py/combine_or_negate.py";
 import NodeCombineNegate from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/node/combine_or_negate.js";
+import JavaCombineNegate from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/java/combine_or_negate.java";
 
 <Tabs>
 
@@ -31,56 +32,7 @@ import NodeCombineNegate from "!!raw-loader!../../../../code_snippets/api-guide/
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-// Here we search for images which we labeled with "cat" and for which the General prediction model does not find
-// a "dog" concept.
-MultiSearchResponse postSearchesResponse = stub.postSearches(
-    PostSearchesRequest.newBuilder().setQuery(
-        Query.newBuilder()
-            .addAnds(
-                And.newBuilder().setInput( // Setting Input indicates we search for images that have the concept(s)
-                                           // which we added to the input manually.
-                    Input.newBuilder().setData(
-                        Data.newBuilder().addConcepts(
-                            Concept.newBuilder()
-                                .setName("cat")
-                                .setValue(1f)
-                        )
-                    )
-                )
-            )
-            .addAnds(
-                And.newBuilder().setOutput(  // Setting Output indicates we search for images that have the concept(s)
-                                             // which were predicted by the General model.
-                    Output.newBuilder().setData(
-                        Data.newBuilder().addConcepts(
-                            Concept.newBuilder()
-                                .setName("dog")
-                                .setValue(0f)
-                        )
-                    )
-                )
-            )
-    )
-    .build()
-);
-
-if (postSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-  throw new RuntimeException("Post searches failed, status: " + postSearchesResponse.getStatus());
-}
-
-System.out.println("Found inputs " + postSearchesResponse.getHitsCount() + ":");
-for (Hit hit : postSearchesResponse.getHitsList()) {
-    System.out.printf("\tScore %.2f for %s\n", hit.getScore(), hit.getInput().getId());
-}
-```
+    <CodeBlock className="language-java">{JavaCombineNegate}</CodeBlock>
 </TabItem>
 
 <!--

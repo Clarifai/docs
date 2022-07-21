@@ -10,8 +10,8 @@ const USER_ID = 'YOUR_USER_ID_HERE';
 const PAT = 'YOUR_PAT_HERE';
 const APP_ID = 'YOUR_APP_ID_HERE';
 // Change these to search by your own concepts
-const CONCEPT_ID_1 = 'cat';
-const CONCEPT_ID_2 = 'dog';
+const CONCEPT_NAME_1 = 'cat';
+const CONCEPT_NAME_2 = 'dog';
 
 ///////////////////////////////////////////////////////////////////////////////////
 // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -42,7 +42,7 @@ stub.PostSearches(
                         data: {
                             concepts: [
                                 {
-                                    name: CONCEPT_ID_1,
+                                    name: CONCEPT_NAME_1,
                                     value: 1
                                 }
                             ]
@@ -55,7 +55,7 @@ stub.PostSearches(
                         data: {
                             concepts: [
                                 {
-                                    name: CONCEPT_ID_2,
+                                    name: CONCEPT_NAME_2,
                                     value: 0
                                 }
                             ]
