@@ -8,7 +8,7 @@ sidebar_position: 4
 **Save your searches**
 <hr />
 
-With saved searches, you can capture your search results at a given point in time, and record the inputs, annotations, search parameters, and models that you are running through the platform. 
+With saved searches, you can capture your search results at any given point in time, and record the inputs, annotations, search parameters, and models that you are running through the platform. 
 
 Saved searches help you to:
 
@@ -82,4 +82,4 @@ curl --location --request POST 'https://api.clarifai.com/v2/searches/{{search_id
 </TabItem>
 </Tabs>
 
-Saved searches are extremely helpful when testing out multiple versions of a model, or collaborating with a team. Just save your search, and refer back to it any time.
+Saved searches are extremely helpful when testing out multiple versions of a model, or collaborating with a team. Just save your search, and refer to it at any time.

@@ -63,7 +63,7 @@ This means we can define those ahead of time, and here we've chosen to do so usi
 
 Each key-value pair in the JSON file corresponds to the field name, the key (`"field_n"`), and the region coordinates in the form of $[x_0, y_0, x_1, y_1]$.
 
-:::note
+:::important note
 All the region coordinates on Clarifai are relative, not pixel values. This is important, as other image processing libraries might use the pixel values instead.
 We will address converting between these values below.
 :::

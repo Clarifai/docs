@@ -8,7 +8,7 @@ sidebar_position: 1
 **Understand Clarifai's error codes**
 <hr />
 
-All of our API endpoints return back a status code and description with details of the status. A full list of those status codes is shown below. If a status comes back that you do not see below, please reach out to support@clarifai.com
+All our API endpoints return a status code and a description that gives details of the status. A full list of those status codes is shown below. If a status comes back that you do not see below, please reach out to support@clarifai.com.
 
 | CODE | DESCRIPTION |
 | :--- | :--- |
