@@ -25,44 +25,23 @@ import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 import PythonPagination from "!!raw-loader!../../../code_snippets/api-guide/advanced_topics/pagination.py";
 import NodePagination from "!!raw-loader!../../../code_snippets/api-guide/advanced_topics/pagination.js";
+import JavaPagination from "!!raw-loader!../../../code_snippets/api-guide/advanced_topics/pagination.java";
 
 <Tabs>
 
-<TabItem value="python" label="Python" default>
+<TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonPagination}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS" default>
+<TabItem value="nodejs" label="NodeJS">
     <CodeBlock className="language-javascript">{NodePagination}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java" default>
-
-```java
-import com.clarifai.grpc.api.*;
-import com.clarifai.grpc.api.status.*;
-
-// Insert here the initialization code as outlined on this page:
-// https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-MultiInputResponse listInputsResponse = stub.listInputs(
-    ListInputsRequest.newBuilder()
-        .setPage(2)
-        .setPerPage(20)
-        .build()
-);
-
-if (listInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-    throw new RuntimeException("List inputs failed, status: " + listInputsResponse.getStatus());
-}
-
-for (Input input : listInputsResponse.getInputsList()) {
-    System.out.println(input);
-}
-```
+<TabItem value="java" label="Java">
+    <CodeBlock className="language-java">{JavaPagination}</CodeBlock>
 </TabItem>
 
-<TabItem value="curl" label="cURL" default>
+<TabItem value="curl" label="cURL">
 
 ```bash
 curl -X GET \

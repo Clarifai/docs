@@ -8,13 +8,13 @@ sidebar_position: 2
 **Patch data in your applications**
 <hr />
 
-We designed PATCH to work over multiple resources at the same time \(bulk\) and be flexible enough for all your needs to minimize round trips to the server. Therefore, it might seem a little different to any PATCH you've seen before, but it's not complicated. 
+We designed PATCH to work over multiple resources at the same time \(bulk\) and be flexible enough for all your needs in order to minimize round trips to the server. Therefore, it might seem a little different to any PATCH you've seen before, but it's not complicated. 
 
-All three actions that are supported do overwrite by default, but have special behaviour for lists of objects \(for example lists of concepts\).
+All three actions that are supported do overwrite by default, but have special behavior for lists of objects \(for example, lists of concepts\).
 
 ## Merge
 
-`merge` action will overwrite a `key:value` with `key:new_value` or append to an existing list of values, merging dictionaries that match by a corresponding `id` field.
+The `merge` action will overwrite a `key:value` with `key:new_value` or append to an existing list of values, merging dictionaries that match by a corresponding `id` field.
 
 In the following examples, A is being patched into B to create the Result:
 
@@ -107,7 +107,7 @@ Result = `{"key1":{"key2":{"key3":[{"key4":"value4"}]}}}`
 
 ## Remove
 
-`remove` action will overwrite a `key:value` with `key:new_value` or delete anything in a list that matches the provided values' ids.
+The `remove` action will overwrite a `key:value` with `key:new_value` or delete anything in a list that matches the provided values' ids.
 
 In the following examples, A is being patched into B to create the Result:
 
