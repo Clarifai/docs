@@ -8,9 +8,9 @@ sidebar_position: 5
 **Make multilingual predictions**
 <hr />
 
-The Clarifai API supports [many languages in addition to English](https://docs.clarifai.com/api-guide/concepts/languages/). When making a [predict api request](https://docs.clarifai.com/api-guide/predict/), you can pass in the language you would like the concepts returned in. 
+The Clarifai API supports [many languages in addition to English](https://docs.clarifai.com/api-guide/concepts/languages/). When making a [predict API request](https://docs.clarifai.com/api-guide/predict/), you can pass in the language you would like the concepts returned in. 
 
-When you create a new Application, you must specify a default language which will be the language of the returned concepts if not specified in the predict request.
+When you create a new Application, you must specify a default language, which will be the language of the returned concepts, if not specified in the predict request.
 
 ## Predict By Specific Language
 

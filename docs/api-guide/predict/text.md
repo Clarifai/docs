@@ -10,7 +10,7 @@ sidebar_position: 3
 
 To get predictions for an input, you need to supply the text and the model you'd like to get predictions from. You can supply the text via a publicly accessible URL, a local text file, or in the raw format. 
 
-You specify the model you'd like to use with the `{model-id}` parameter.
+You specify the model you'd like to use with the `{MODEL_ID}` parameter.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -33,7 +33,7 @@ import CodeJavaViaRaw from "!!raw-loader!../../../code_snippets/api-guide/predic
 
 ## Via URL 
 
-Below is an example of how you would make predictions on passages of text hosted on the web from the `product-review-sentiment-multi` model. 
+Below is an example of how you would make predictions on passages of text hosted on the web from the Clarifai's `product-review-sentiment-multi` model. 
 
 Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
@@ -319,7 +319,7 @@ data {
 
 ## Via Local Files
 
-Below is an example of how you would provide text inputs via local text files and receive predictions from the `product-review-sentiment-multi` model. 
+Below is an example of how you would provide text inputs via local text files and receive predictions from the Clarifai's `product-review-sentiment-multi` model. 
 
 Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
@@ -509,7 +509,7 @@ data {
 
 ## Via Raw Text
 
-Below is an example of how you would provide raw text inputs and receive predictions from the `product-review-sentiment-multi` model. 
+Below is an example of how you would provide raw text inputs and receive predictions from the Clarifai's `product-review-sentiment-multi` model. 
 
 Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
@@ -529,9 +529,6 @@ Note that the initialization code used here is outlined in detail on the [client
 
 <TabItem value="java" label="Java">
    <CodeBlock className="language-java">{CodeJavaViaRaw}</CodeBlock>
-</TabItem>
-
-<TabItem value="php" label="PHP">
 </TabItem>
 
 <TabItem value="curl" label="cURL">

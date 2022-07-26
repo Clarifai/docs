@@ -1,20 +1,19 @@
 //index.js file
 
-//////////////////////////////////////////////////////////////////////////////////////
-// In this section, we set the user authentication, app and model IDs, and the raw
+/////////////////////////////////////////////////////////////////////////////////////////
+// In this section, we set the user authentication, app ID, model details, and the raw
 // text we want as an input. Change these strings to run your own example.
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
 
 const USER_ID = 'YOUR_USER_ID_HERE';
 // Your PAT (Personal Access Token) can be found in the portal under Authentification
 const PAT = 'YOUR_PAT_HERE';
 const APP_ID = 'YOUR_APP_ID_HERE';
-const MODEL_ID = 'YOUR_MODEL_ID_HERE';
-// Change this to whatever text input you want to process
+// Change these to whatever model and raw text you want to use
+const MODEL_ID = '91ff804429654ce25e93e710beea82ea';
 const RAW_TEXT = 'I love your product very much';
-// This is optional.You can specify a model version or the empty string for the default
+// This is optional. You can specify a model version or the empty string for the default
 const MODEL_VERSION_ID = '';
-
 
 ///////////////////////////////////////////////////////////////////////////////////
 // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE

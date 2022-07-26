@@ -10,7 +10,7 @@ sidebar_position: 1
 
 To get predictions for an input, you need to supply an image and the model you'd like to get predictions from. You can supply an image either with a publicly accessible URL or by directly sending bytes. 
 
-You can send up to 128 images in one API call. You specify the model you'd like to use with the `{model-id}` parameter.
+You can send up to 128 images in one API call. You specify the model you'd like to use with the `{MODEL_ID}` parameter.
 
 
 import Tabs from '@theme/Tabs';
@@ -29,7 +29,7 @@ import CodeJavaViaBytes from "!!raw-loader!../../../code_snippets/api-guide/pred
 
 ## Via URL
 
-Below is an example of how you would send image URLs and receive predictions from the `general` model. 
+Below is an example of how you would send image URLs and receive predictions from the Clarifai's `general-image-recognition` model. 
 
 Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
@@ -425,7 +425,7 @@ data {
 
 ## Via Bytes
 
-Below is an example of how you would send the bytes of an image and receive predictions from the `general` model.
+Below is an example of how you would send the bytes of an image and receive predictions from the Clarifai's `general-image-recognition` model.
 
 Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 

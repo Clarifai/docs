@@ -11,19 +11,19 @@ import java.nio.file.Files;
 
 public class ClarifaiExample {
 
-    //////////////////////////////////////////////////////////////////////////////////////
-    // In this section, we set the user authentication, app ID, and the location
+    //////////////////////////////////////////////////////////////////////////////////////////////
+    // In this section, we set the user authentication, app ID, model details, and the location
     // of the text we want as an input. Change these strings to run your own example.
-    //////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////
 
     static final String USER_ID = "YOUR_USER_ID_HERE";
     //Your PAT (Personal Access Token) can be found in the portal under Authentication
     static final String PAT = "YOUR_PAT_HERE";
     static final String APP_ID = "YOUR_APP_ID_HERE";
-    static final String MODEL_ID = "YOUR_MODEL_ID_HERE";
-    // Change this to whatever text input you want to process
-    static final String TEXT_FILE_LOCATION = "YOUR_TEXT_FILE_LOCATION";
-    // This is optional.You can specify a model version or the empty string for the default
+    // Change these to whatever model and text input you want to use
+    static final String MODEL_ID = "91ff804429654ce25e93e710beea82ea";    
+    static final String TEXT_FILE_LOCATION = "YOUR_TEXT_FILE_LOCATION_HERE";
+    // This is optional. You can specify a model version or the empty string for the default
     static final String MODEL_VERSION_ID = "";
 
     ///////////////////////////////////////////////////////////////////////////////////

@@ -10,10 +10,9 @@ const USER_ID = 'YOUR_USER_ID_HERE';
 const PAT = 'YOUR_PAT_HERE';
 const APP_ID = 'YOUR_APP_ID_HERE';
 // Change these to whatever you want to process
-const MODEL_ID = 'YOUR_MODEL_ID_HERE';
+const MODEL_ID = 'general-image-recognition';
 const IMAGE_URL = 'https://samples.clarifai.com/metro-north.jpg';
 const MINIMUM_VALUE = 0.95;
-
 
 ///////////////////////////////////////////////////////////////////////////////////
 // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE

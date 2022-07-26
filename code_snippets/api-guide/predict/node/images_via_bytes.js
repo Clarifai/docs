@@ -1,17 +1,17 @@
 //index.js file
 
-////////////////////////////////////////////////////////////////////////////////////
-// In this section, we set the user authentication, app ID, and the location
+///////////////////////////////////////////////////////////////////////////////////////////////
+// In this section, we set the user authentication, app ID, model details, and the location
 // of the image we want as an input. Change these strings to run your own example.
-////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
 
 const USER_ID = 'YOUR_USER_ID_HERE';
 // Your PAT (Personal Access Token) can be found in the portal under Authentification
 const PAT = 'YOUR_PAT_HERE';
 const APP_ID = 'YOUR_APP_ID_HERE';
-const MODEL_ID = 'YOUR_MODEL_ID_HERE';
-// Change this to whatever image location you want to process
-const IMAGE_FILE_LOCATION = 'YOUR_IMAGE_FILE_LOCATION';
+// Change these to whatever model and image input you want to use
+const MODEL_ID = 'general-image-recognition';
+const IMAGE_FILE_LOCATION = 'YOUR_IMAGE_FILE_LOCATION_HERE';
 // This is optional.You can specify a model version or the empty string for the default
 const MODEL_VERSION_ID = '';
 
