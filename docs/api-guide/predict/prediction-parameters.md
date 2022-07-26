@@ -9,7 +9,7 @@ sidebar_position: 4
 <hr />
 
 
-:::note
+:::tip
 
 You can set additional parameters to gain flexibility in the predict operation.
 

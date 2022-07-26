@@ -18,7 +18,7 @@ You can run Predict on your video using a select number of [Clarifai Models](htt
 + Travel
 + Wedding
 
-You can make an API call by providing the `{model-id}` parameter and specifying your data parameter as `video` instead of `image`.
+You can make an API call by providing the `{MODEL_ID}` parameter and specifying your data parameter as `video` instead of `image`.
 
 **Video limits**
 
@@ -28,7 +28,7 @@ If your video exceeds the limits, please follow our [tutorial](https://www.clari
 
 ## Via URL
 
-Below is an example of how you would send video URLs and receive predictions from the `general` model.
+Below is an example of how you would send video URLs and receive predictions from the Clarifai's `general-image-recognition` model.
 
 Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
@@ -1652,7 +1652,7 @@ data {
 
 ## Via Bytes
 
-Below is an example of how you would send the bytes of a video and receive predictions from the `general` model.
+Below is an example of how you would send the bytes of a video and receive predictions from the Clarifai's `general-image-recognition` model.
 
 Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 

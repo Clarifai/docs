@@ -1,14 +1,14 @@
-########################################################################################
-# In this section, we set the user authentication, app and model IDs, and the location
+##############################################################################################
+# In this section, we set the user authentication, app ID, model details, and the location
 # of the video we want as an input. Change these strings to run your own example.
-########################################################################################
+##############################################################################################
 
 USER_ID = 'YOUR_USER_ID_HERE'
 # Your PAT (Personal Access Token) can be found in the portal under Authentification
 PAT = 'YOUR_PAT_HERE'
 APP_ID = 'YOUR_APP_ID_HERE'
-MODEL_ID = 'YOUR_MODEL_ID_HERE'
-# Change this to whatever video location you want to process
+# Change these to whatever model and video input you want to use
+MODEL_ID = 'general-image-recognition'
 VIDEO_FILE_LOCATION = 'YOUR_VIDEO_FILE_LOCATION'
 # This is optional. You can specify a model version or an empty string for the default.
 MODEL_VERSION_ID = ''

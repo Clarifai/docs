@@ -10,7 +10,7 @@ const USER_ID = 'YOUR_USER_ID_HERE';
 const PAT = 'YOUR_PAT_HERE';
 const APP_ID = 'YOUR_APP_ID_HERE';
 // Change these to whatever you want to process
-const MODEL_ID = 'YOUR_MODEL_ID_HERE';
+const MODEL_ID = 'general-image-recognition';
 const IMAGE_URL = 'https://samples.clarifai.com/metro-north.jpg';
 const MODEL_VERSION_ID = 'aa7f35c01e0642fda5cf400f543e7c40';
 
