@@ -67,7 +67,7 @@ _A retailer wants to train a model that can recognize their apparel in use on so
 
 ### Clusterer
 
-Cluster models work with Embedding models so that you can perform visual searches. Cluster models are able to use the mathematical structure of a model's embedding to determine which images are "clustered together" in the embedding space. This means that you can search for visually similar people or objects in your dataset quickly and easily, without the need for labeling and training custom concepts.
+Cluster models work with embedding models (e.g. Visual Embedder, Text Embedder) so that you can perform semantic searches. Cluster models are able to use the mathematical structure of a model's embedding to determine which images are "clustered together" in the embedding space. This means that you can search for visually similar people or objects in your dataset quickly and easily, without the need for labeling and training custom concepts.
 
 _Example use case:_
 
