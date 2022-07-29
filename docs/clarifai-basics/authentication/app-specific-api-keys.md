@@ -1,30 +1,36 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # App-Specific API Keys
 
+**Authenticate access to Clarifai apps**
 <hr />
 
-App-specific API Keys are used to authorize your Clarifai applications. A key is automatically generated when you create a new application.
+
+App-specific API Keys are used to authorize access to your Clarifai applications. A key is automatically generated when you create a new application.
 
 You can also go to the [Application's List](https://portal.clarifai.com/) on the Portal, select an app of your choice, and create a new key in the app details page. 
 
-:::note
+:::important note
+
 Each API Key is tied to a specific user and a specific app
+
 :::
 
-An API Key allows you to have fine-grained control over the data exposed through your app. You can control the scope of your API Key through a simple checkbox interface displayed when you first set up your app.
+An API Key allows you to have fine-grained control over the data exposed through your app. You can control the scope of your API Key through a simple checkbox interface displayed when you create a new key or edit a key. 
 
-## Create an API Key in Portal
+## Create API Keys in the Portal
 
-Just navigate to the app management page and click "Create an API Key".
+Just navigate to your app's management page and click the "Create new API key" button. Then, use the form that pops up to generate a new API Key for your application. 
 
 ![](/img/apikey-screen.png)
 
-## Create an API Key programmatically
+## Create API Keys Programmatically
 
-For enterprise customers, it is also possible to generate applications and keys programmatically. If you are managing the work of multiple users, who's data, models, and concepts need to be segregated, we recommend you create apps and keys this way. This ensures that each individual user only has access to their own private resources.
+For enterprise customers, it is also possible to generate applications and keys programmatically. 
+
+If you are managing the work of multiple users, who's data, models, and concepts that need to be segregated, we recommend you create apps and keys this way. This ensures that each individual user only has access to their own private resources.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -56,10 +62,12 @@ curl --location --request POST 'https://api.clarifai.com/v2/users/{{user_id}}/ke
 </TabItem>
 </Tabs>
 
-:::info
+:::caution
+
 - API Keys do not expire. In case your API Key gets compromised, you should delete that key, and create a new one with the same scopes.
 
 - We recommend that you do **not** share your API Key with other users.
+
 :::
 
 

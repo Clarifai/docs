@@ -33,18 +33,16 @@ You can access the Clarifai API through clients in many of the most popular prog
 
 ## Client Installation Instructions
 
-Here are installation instructions for three of our most commonly used clients. For information on installing our other clients, please follow the links above.
+Here are the installation instructions and the initialization code for some of our most commonly used clients. 
 
-### Authorization keys
+For information on installing our other clients, please follow the links above.
 
-The key to be used as authorization can be either:
+:::tip
 
-* An API key, which is tied to a certain application, or
-* A Personal Access Token \(PAT\), which is tied to a user.
+Learn how to set up authorization with the various API clients [here](https://docs.clarifai.com/clarifai-basics/authentication/authorize). 
 
-Since a user can own multiple applications, using a PAT is more powerful. However, using a PAT also means that you need to specify the application ID to which the request should be applied.
+:::
 
-With most endpoints, you can freely choose whether to use an API key or a PAT. In this documentation, some code examples use one and some the other. But certain endpoints support only PAT \(e.g. creating a new application or a new API key\).
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -53,45 +51,156 @@ import TabItem from '@theme/TabItem';
 <TabItem value="python" label="Python">
 
 ```python
-##############################################################################
+##############################################################################################
 # Installation
-##############################################################################
+##############################################################################################
 
-pip install clarifai-grpc
+python -m pip install clarifai-grpc
 
-##############################################################################
-## Initialize client
-##     - This initializes the gRPC based client to communicate with the 
-##       Clarifai platform. 
-##############################################################################
-## Import in the Clarifai gRPC based objects needed
+##############################################################################################
+# Initialize the gRPC-based client to communicate with the Clarifai platform.
+##############################################################################################
+
+# Import the Clarifai gRPC-based objects needed
 from clarifai_grpc.channel.clarifai_channel import ClarifaiChannel
 from clarifai_grpc.grpc.api import resources_pb2, service_pb2, service_pb2_grpc
 from clarifai_grpc.grpc.api.status import status_pb2, status_code_pb2
 
-## Construct the communications channel and the object stub to call requests on.
-# Note: You can also use a secure (encrypted) ClarifaiChannel.get_grpc_channel() however
-# it is currently not possible to use it with the latest gRPC version
+# Construct the communications channel 
 channel = ClarifaiChannel.get_grpc_channel()
+# Construct the V2Stub object for accessing all the Clarifai API functionality
 stub = service_pb2_grpc.V2Stub(channel)
 
+##############################################################################################
+# This is where you set up the metadata object that's used to authenticate. 
+# This authorization will be used by every Clarifai API call.
+# Change the following authorization key to your own credentials
+# Example: metadata = (('authorization', 'Key ' + 'a123457612345678'),)
+##############################################################################################
+ 
+metadata = (('authorization', 'Key ' + 'YOUR_CLARIFAI_PAT_HERE'),)
+# Or, if you were to use an API Key:
+# metadata = (('authorization', 'Key ' + 'YOUR_CLARIFAI_API_KEY_HERE'),)
+# Yes, the word 'Key' appears in addition to the alphanumeric PAT or API Key
 
-################################################################################
-## Set up Personal Access Token and Access information
-##     - This will be used by every Clarifai API call 
-################################################################################
-## Specify the Authorization key.  This should be changed to your Personal Access Token.
-## Example: metadata = (('authorization', 'Key 123457612345678'),) 
-metadata = (('authorization', 'Key {YOUR_CLARIFAI_API_KEY}'),)
+##############################################################################################
+# A UserAppIDSet object is needed when using a PAT. It contains two pieces of information: 
+# user_id (your user id) and app_id (app id that contains the model of interest). 
+# Both of them are specified as string values.
+##############################################################################################
 
-##
-## A UserAppIDSet object is needed for most rpc calls.  This object contains
-## two pieces of information: the user id and the app id.  Both of these are
-## specified as string values.
-##
-##     'user_id' : This is your user id
-##     'app_id'  : This is the app id which contains the model of interest
-userDataObject = resources_pb2.UserAppIDSet(user_id='{YOUR USER NAME HERE}', app_id='{YOUR APPLICATION ID HERE}')
+userDataObject = resources_pb2.UserAppIDSet(user_id='YOUR_USER_ID_HERE', app_id='YOUR_APPLICATION_ID_HERE')
+```
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+
+```javascript
+///////////////////////////////////////////////////////////////////////////////
+// Installation
+///////////////////////////////////////////////////////////////////////////////
+
+npm install clarifai-nodejs-grpc
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+// Initialize the gRPC-based client to communicate with the Clarifai platform.
+////////////////////////////////////////////////////////////////////////////////////////////
+
+// Import the Clarifai gRPC-based client
+const {ClarifaiStub, grpc} = require("clarifai-nodejs-grpc");
+
+// Construct the stub object for accessing all the Clarifai API functionality
+const stub = ClarifaiStub.grpc();
+
+////////////////////////////////////////////////////////////////////////////////////////////
+// This is where you set up the Metadata object that's used to authenticate. 
+// This authorization will be used by every Clarifai API call.
+// Change the following authorization key to your own credentials
+// Example: metadata.set("authorization", "Key " + "a123457612345678");
+////////////////////////////////////////////////////////////////////////////////////////////
+
+const metadata = new grpc.Metadata();
+metadata.set("authorization", "Key " + "YOUR_CLARIFAI_PAT_HERE");
+// Or, if you were to use an API Key:
+// metadata.set("authorization", "Key " + "YOUR_CLARIFAI_API_KEY_HERE");
+// Yes, the word 'Key' appears in addition to the alphanumeric PAT or API Key
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+// A UserAppIDSet object is needed when using a PAT. It contains two pieces of information: 
+// user_id (your user id) and app_id (app id that contains the model of interest). 
+// Both of them are specified as string values.
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+user_app_id: {
+    "user_id": "YOUR_USER_ID_HERE",
+    "app_id": "YOUR_APPLICATION_ID_HERE"
+}
+```
+</TabItem>
+
+<TabItem value="java" label="Java">
+
+```java
+//////////////////////////////////////////////////////////////////////////////////////////////
+// Installation
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+// Via Gradle:
+repositories {
+    jcenter()
+}
+
+dependencies {
+    implementation 'com.clarifai:clarifai-grpc:LATEST_VERSION_HERE'
+}
+
+// Via Maven:
+<repositories>
+<repository>
+    <id>jcenter</id>
+    <name>jcenter</name>
+    <url>https://jcenter.bintray.com</url>
+</repository>
+</repositories>
+
+<dependencies>
+<dependency>
+    <groupId>com.clarifai</groupId>
+    <artifactId>clarifai-grpc</artifactId>
+    <version>LATEST_VERSION_HERE</version>
+</dependency>
+</dependencies>
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+// Initialize the gRPC-based client to communicate with the Clarifai platform.
+////////////////////////////////////////////////////////////////////////////////////////////
+
+// Import the Clarifai gRPC-based objects needed
+import com.clarifai.grpc.api.*;
+import com.clarifai.channel.ClarifaiChannel;
+import com.clarifai.credentials.ClarifaiCallCredentials;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+// Construct the communications channel.
+// Construct the stub object for accessing all the Clarifai API functionality.
+// Set up the authorization that will be used by every Clarifai API call.
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+Channel channel = ClarifaiChannel.INSTANCE.getGrpcChannel();
+
+V2Grpc.V2BlockingStub stub = V2Grpc.newBlockingStub(channel)
+.withCallCredentials(new ClarifaiCallCredentials("YOUR_CLARIFAI_PAT_HERE"));
+
+// Or, if you were to use an API Key:
+//.withCallCredentials(new ClarifaiCallCredentials("YOUR_CLARIFAI_API_KEY_HERE"));
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+// A UserAppIDSet object is needed when using a PAT. It contains two pieces of information: 
+// user_id (your user id) and app_id (app id that contains the model of interest). 
+// Both of them are specified as string values.
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+.setUserAppId(UserAppIDSet.newBuilder().setUserId("YOUR_USER_ID_HERE").setAppId("YOUR_APPLICATION_ID_HERE"))
 ```
 </TabItem>
 
@@ -103,9 +212,6 @@ userDataObject = resources_pb2.UserAppIDSet(user_id='{YOUR USER NAME HERE}', app
 // Installation
 //     - gRPC for PHP is required to use the Clarifai API
 //////////////////////////////////////////////////////////////////////////////
-
-
-
 
 //////////////////////////////////////////////////////////////////////////////
 // Set Clarifai Namespace
@@ -189,64 +295,6 @@ $userDataObject = new UserAppIDSet([
     'app_id' => '{YOUR APPLICATION ID HERE}' // This is the app id which contains the model of interest
 ]);
 
-```
-</TabItem>
-
-<TabItem value="java" label="Java">
-
-```java
-///////////////////////////////////////////////////////////////////////////////
-// Installation (build.gradle)
-///////////////////////////////////////////////////////////////////////////////
-
-repositories {
-    jcenter()
-}
-
-dependencies {
-    implementation 'com.clarifai:clarifai-grpc:LATEST_VERSION'
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// Initialize client
-///////////////////////////////////////////////////////////////////////////////
-
-import com.clarifai.channel.ClarifaiChannel;
-import com.clarifai.credentials.ClarifaiCallCredentials;
-import com.clarifai.grpc.api.*;
-import io.grpc.Channel;
-
-
-Channel channel = ClarifaiChannel.INSTANCE.getGrpcChannel();
-
-// Note: You can also use a secure (encrypted) ClarifaiChannel.INSTANCE.getGrpcChannel() however
-// it is currently not supported in the latest gRPC version.
-
-V2Grpc.V2BlockingStub stub = V2Grpc.newBlockingStub(channel)
-    .withCallCredentials(new ClarifaiCallCredentials("{YOUR_CLARIFAI_API_KEY}"));
-```
-</TabItem>
-
-<TabItem value="nodejs" label="NodeJS">
-
-```javascript
-///////////////////////////////////////////////////////////////////////////////
-// Installation
-///////////////////////////////////////////////////////////////////////////////
-
-npm install clarifai-nodejs-grpc
-
-///////////////////////////////////////////////////////////////////////////////
-// Initialize client
-///////////////////////////////////////////////////////////////////////////////
-
-const {ClarifaiStub, grpc} = require("clarifai-nodejs-grpc");
-
-const stub = ClarifaiStub.grpc();
-
-// This will be used by every Clarifai endpoint call.
-const metadata = new grpc.Metadata();
-metadata.set("authorization", "Key {YOUR_CLARIFAI_API_KEY}");
 ```
 </TabItem>
 
