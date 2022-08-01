@@ -20,5 +20,10 @@ From here, enter the email addresses of the collaborators you would like to add.
 
 ![](/img/collaborator_scopes.jpg)
 
+:::important note
 
-Since API keys are tied to a specific user and a specific app, your collaborators cannot create their own API keys. Collaborators also cannot invite other collaborators.
+* Since API keys are tied to a specific user and a specific app, your collaborators cannot create their own API keys. 
+
+* Collaborators also cannot invite other collaborators.
+
+:::

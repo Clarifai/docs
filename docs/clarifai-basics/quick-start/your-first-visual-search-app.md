@@ -32,8 +32,8 @@ Name your application, and select "Face" as the base model.
 
 ![face base model](/img/face-base_model.png)
 
-## Step 4: Upload sample images image
-In Clarifai Portal, you can upload images, videos and text in "Data Mode". Click "Add Inputs", or visit Data Mode by clicking the icon on the lefthand side of the screen.‌
+## Step 4: Upload sample images
+In the Clarifai Portal, you can upload images, videos and text in "Data Mode". Click "Add Inputs", or visit Data Mode by clicking the icon on the lefthand side of the screen.‌
 
 ![data mode](/img/data_mode.png)
 
