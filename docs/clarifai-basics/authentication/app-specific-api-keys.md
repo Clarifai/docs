@@ -28,9 +28,15 @@ Just navigate to your app's management page and click the "Create new API key" b
 
 ## Create API Keys Programmatically
 
-For enterprise customers, it is also possible to generate applications and keys programmatically. 
+For enterprise customers, it is also possible to generate keys programmatically. 
 
-If you are managing the work of multiple users, who's data, models, and concepts that need to be segregated, we recommend you create apps and keys this way. This ensures that each individual user only has access to their own private resources.
+If you are managing the work of multiple users, who's data, models, and concepts that need to be segregated, we recommend you create keys this way. This ensures that each individual user only has access to their own private resources.
+
+:::tip
+
+You need to use a [Personal Access Token (PAT)](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens) to create an API Key. 
+
+:::
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -39,9 +45,9 @@ import TabItem from '@theme/TabItem';
 <TabItem value="cURL" label="cURL" default>
 
 ```bash
-curl --location --request POST 'https://api.clarifai.com/v2/users/{{user_id}}/keys' \
---header 'Content-Type: application/json' \
---header 'X-Clarifai-Session-Token: {{session_token}}' \
+curl --location --request POST "https://api.clarifai.com/v2/users/YOUR_USER_ID_HERE/keys" \
+--header "Content-Type: application/json" \
+--header "Authorization: Key YOUR_PAT_HERE" \
 --data-raw '{
     "keys": [
         {
@@ -51,8 +57,8 @@ curl --location --request POST 'https://api.clarifai.com/v2/users/{{user_id}}/ke
             ],
             "apps": [
                 {
-                    "id": "{{app_id}}",
-                    "user_id": "{{user_id}}"
+                    "id": "YOUR_APP_ID_HERE",
+                    "user_id": "YOUR_USER_ID_HERE"
                 }
             ]
         }

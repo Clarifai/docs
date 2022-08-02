@@ -24,7 +24,15 @@ You can also set the default language so that you can create, train and search c
 
 ## Create Applications Programmatically
 
-For enterprise customers, it is also possible to generate applications and keys programmatically. If you are managing the work of multiple users, who's data, models, and concepts need to be segregated, we recommend you create apps and keys this way. This ensures that each individual user only has access to their own private resources.
+For enterprise customers, it is also possible to generate applications programmatically. 
+
+If you are managing the work of multiple users, who's data, models, and concepts that need to be segregated, we recommend you create apps this way. This ensures that each individual user only has access to their own private resources.
+
+:::tip
+
+You need to use a [Personal Access Token (PAT)](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens) to create an application. 
+
+:::
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -33,9 +41,9 @@ import TabItem from '@theme/TabItem';
 <TabItem value="curl" label="cURL">
 
 ```text
-curl --location --request POST 'https://api.clarifai.com/v2/users/{{user_id}}/apps/' \
---header 'Content-Type: application/json' \
---header 'X-Clarifai-Session-Token: {{session_token}}' \
+curl --location --request POST "https://api.clarifai.com/v2/users/YOUR_USER_ID_HERE/apps/" \
+--header "Content-Type: application/json" \
+--header "Authorization: Key YOUR_PAT_HERE" \
 --data-raw '{
     "apps": [
         {
@@ -50,7 +58,9 @@ curl --location --request POST 'https://api.clarifai.com/v2/users/{{user_id}}/ap
 
 ### Copy Applications
 
-You can also create an application by cloning an existing application. Cloning an existing application can be a great way to start a new project, or branch and existing one. We’ve made cloning easy with a simple interface in the Portal. Just click “Create Copy” on the bottom-right corner of your app on the app management page.
+You can also create an application by cloning an existing application. Cloning an existing application can be a great way to start a new project, or branch an existing one. 
+
+We’ve made cloning easy with a simple interface in the Portal. Just click “Create Copy” on the bottom-right corner of your app on the app management page.
 
 ![](/img/app_duplication.jpg)
 

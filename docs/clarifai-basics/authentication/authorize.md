@@ -200,9 +200,8 @@ $client = new ClarifaiClient('YOUR_API_KEY');
 
 ```bash
 curl -X POST \
-  -H 'Authorization: Key YOUR_API_KEY' \
-  -H "Content-Type: application/json" \
-  -d '
+  -H "Authorization: Key YOUR_CLARIFAI_PAT_HERE" \
+  -H "Content-Type: application/json" \  
 ```
 </TabItem>
 </Tabs>
