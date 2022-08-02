@@ -43,6 +43,7 @@ import NodeConceptLanguage from "!!raw-loader!../../../code_snippets/api-guide/s
 import NodeSearchImage from "!!raw-loader!../../../code_snippets/api-guide/search/rank/node/search_by_image_url.js";
 import NodeImageBytes from "!!raw-loader!../../../code_snippets/api-guide/search/rank/node/search_by_image_bytes.js";
 import NodeInputID from "!!raw-loader!../../../code_snippets/api-guide/search/rank/node/by_input_id.js";
+import NodeSearchText from "!!raw-loader!../../../code_snippets/api-guide/search/rank/node/search_by_text.js";
 
 import JavaAppConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/rank/java/by_clarifaimain_app_concepts.java";
 import JavaCustomConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/rank/java/by_custom_concepts.java";
@@ -51,6 +52,7 @@ import JavaConceptLanguage from "!!raw-loader!../../../code_snippets/api-guide/s
 import JavaSearchImage from "!!raw-loader!../../../code_snippets/api-guide/search/rank/java/search_by_image_url.java";
 import JavaImageBytes from "!!raw-loader!../../../code_snippets/api-guide/search/rank/java/search_by_image_bytes.java";
 import JavaInputID from "!!raw-loader!../../../code_snippets/api-guide/search/rank/java/by_input_id.java";
+import JavaSearchText from "!!raw-loader!../../../code_snippets/api-guide/search/rank/java/search_by_text.java";
 
 ## Search by Concepts
 
@@ -500,6 +502,14 @@ You can use texts to search through your collection. The API will return ranked 
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonSearchText}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeSearchText}</CodeBlock>
+</TabItem>
+
+<TabItem value="java" label="Java">
+    <CodeBlock className="language-java">{JavaSearchText}</CodeBlock>
 </TabItem>
 
 </Tabs>
