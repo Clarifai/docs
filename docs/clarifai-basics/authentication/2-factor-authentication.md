@@ -4,9 +4,10 @@ sidebar_position: 5
 
 # 2FA
 
+**Add an extra layer of security to your account**
 <hr />
 
-Two-factor authentication is an optional sign-in security feature that provides an additional layer of security for your account.
+Two-factor authentication is an optional sign-in security feature that provides an additional layer of security to your account.
 
 ## Why 2FA?
 

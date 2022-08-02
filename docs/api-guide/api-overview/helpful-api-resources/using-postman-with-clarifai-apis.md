@@ -33,7 +33,7 @@ After the Postman collection is imported, a full list of available Clarifai API 
 
 **AUTHENTICATION**
 
-The collection includes a [Postman environment](https://learning.postman.com/docs/postman/variables-and-environments/variables/#environments-in-postman) called `Clarifai Authentication`, where you can add your username, password and [Clarifai API key](https://docs.clarifai.com/clarifai-basics/authentication/app-specific-api-keys) or [Personal Access Token](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens) for authentication.
+The collection includes a [Postman environment](https://learning.postman.com/docs/postman/variables-and-environments/variables/#environments-in-postman) called `Clarifai Authentication`, where you can add your username, password and [Clarifai API key](https://docs.clarifai.com/clarifai-basics/authentication/app-specific-api-keys) or [Personal Access Token](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens) for [authentication](https://docs.clarifai.com/clarifai-basics/authentication/authorize).
 
 Follow these steps to set up your environment:
 
@@ -60,8 +60,9 @@ The **Params** tab shows all parameters and values that are currently on the API
 
 This tab is an alternative to viewing the `param1:value1¶m2:value2` structure of the API call.
 
-**Notes**:
+:::important notes
 
 * The ampersand \(&\) and colon \(:\) are not needed in the params table. Postman inserts these for you.
 * All placeholders follow the format: `<PLACEHOLDER>` . They should be replaced before running a query.
 
+:::
