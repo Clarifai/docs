@@ -15,7 +15,13 @@ Model Evaluation performs a K-split cross validation on data you used to train y
 
 ![cross validation](/img/cross_validation.jpg)
 
-In the cross validation process, it will: 1. Set aside a random 1/K subset of the training data and designate as a test set, 2. Train a new model with the remaining training data, 3. Pass the test set data through this new model to make predictions, 4. Compare the predictions against the test set’s actual labels, and 5. Repeat steps 1\) through 4\) across K splits to average out the evaluation results.
+In the cross validation process, it will: 
+
+1. Set aside a random 1/K subset of the training data and designate as a test set;
+2. Train a new model with the remaining training data;
+3. Pass the test set data through this new model to make predictions;
+4. Compare the predictions against the test set’s actual labels;
+5. Repeat steps 1\) through 4\) across K splits to average out the evaluation results.
 
 ## Requirements
 
@@ -27,7 +33,9 @@ To run the evaluation on your custom model, it will need the meet the following 
 
 ## Running Evaluation
 
-You can run the evaluation on a specific model version of your custom model in the [Portal](https://clarifai.com/apps). Go to your Application, click on your model of interest, and select the Versions tab. Simply click on the Evaluate button for the specific model version.
+You can run the evaluation on a specific model version of your custom model in the [Portal](https://portal.clarifai.com/). 
+
+Go to your Application, click on your model of interest, and select the Versions tab. And simply click on the Evaluate button for the specific model version.
 
 ![](/img/previewui-versions-new.png)
 
@@ -37,8 +45,12 @@ The evaluation may take up to 30 minutes. Once it is complete, the Evaluate butt
 
 ![](/img/preview-view-new.png)
 
-Note that the evaluation may result in an error if the model version doesn’t satisfy the requirements above.
+:::important Note
 
-For more information on how to interpret the evaluation results and to improve your model, check out the [Interpreting Evaluations](../evaluate/interpreting-evaluations/) section below. 
+The evaluation may result in an error if the model version doesn’t satisfy the requirements above.
+
+:::
+
+For more information on how to interpret the evaluation results and to improve your model, check the [Interpreting Evaluations](../evaluate/interpreting-evaluations/) section. 
  
 
