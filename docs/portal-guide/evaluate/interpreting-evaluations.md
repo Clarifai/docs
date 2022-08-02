@@ -16,7 +16,13 @@ Once the Model Evaluation is complete, you’ll be able to view the evaluation r
 
 We suggest that you start by looking at the Concept by Concept Probabilities Results and the Summary Table to get a sense of the overall model prediction performance and identify the high-performing and low-performing concepts. Afterwards, hone in on the Selection Details of the False Positives and False Negatives to identify any biases, if any, in how the model is predicting, and to correct any inputs that are mislabeled
 
-Generally, you’ll be looking at results that represent either a\) the average across K splits, or b\) the test set of a single split, which is about 1/K of your original training set. Note that a single split will be capped at 1,000 inputs.
+Generally, you’ll be looking at results that represent either:
+
+a\) the average across K splits; or,
+
+b\) the test set of a single split, which is about 1/K of your original training set.
+
+Note that a single split will be capped at 1,000 inputs.
 
 ### Model Analysis
 

@@ -26,6 +26,7 @@ import PythonConceptLanguage from "!!raw-loader!../../../code_snippets/api-guide
 import PythonSearchImage from "!!raw-loader!../../../code_snippets/api-guide/search/rank/py/search_by_image_url.py";
 import PythonImageBytes from "!!raw-loader!../../../code_snippets/api-guide/search/rank/py/search_by_image_bytes.py";
 import PythonInputID from "!!raw-loader!../../../code_snippets/api-guide/search/rank/py/by_input_id.py";
+import PythonSearchText from "!!raw-loader!../../../code_snippets/api-guide/search/rank/py/search_by_text.py";
 
 import JSAppConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/rank/js/by_clarifaimain_app_concepts.html";
 import JSCustomConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/rank/js/by_custom_concepts.html";
@@ -484,3 +485,21 @@ curl -X POST \
 
 </Tabs>
 
+## Search by Text Similarity
+
+You can use texts to search through your collection. The API will return ranked results based on how similar the results are to the text you provided in your query.
+
+:::tip Note
+
+- Your inputs should be provided as texts. 
+- You should choose a workflow that includes a text embedder and a clusterer, such as the Language-Understanding workflow, as the Base Workflow for your application.  
+
+::::
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonSearchText}</CodeBlock>
+</TabItem>
+
+</Tabs>
