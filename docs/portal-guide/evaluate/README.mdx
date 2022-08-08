@@ -4,10 +4,12 @@ description: Evaluate model performance.
 
 # Evaluating Models
 
-**Evaluate model performance**
+**Learn about model evaluation tools**
 <hr />
 
-Now that you've successfully trained the model, you may want to test its performance before using it in the production environment. The Model Evaluation tool allows you to perform a cross validation on a specified model version. Once the evaluation is complete, you’ll be able to view various metrics that will inform the model’s performance.
+Now that you've successfully trained the model, you may want to test its performance before using it in a production environment. 
+The Model Evaluation tool allows you to perform a cross validation on a specified model version. 
+Once the evaluation is complete, you can view the various metrics that inform the model’s performance.
 
 ## How It Works
 
@@ -25,25 +27,11 @@ In the cross validation process, it will:
 
 ## Requirements
 
-To run the evaluation on your custom model, it will need the meet the following criteria:
+To run the evaluation on your custom model, it should meet the following criteria:
 
-* A custom trained model model version with:
-  1. At least 2 concepts
-  2. At least 10 training inputs per concept \(At least 50 inputs per concept is recommended\)
-
-## Running Evaluation
-
-You can run the evaluation on a specific model version of your custom model in the [Portal](https://portal.clarifai.com/). 
-
-Go to your Application, click on your model of interest, and select the Versions tab. And simply click on the Evaluate button for the specific model version.
-
-![](/img/previewui-versions-new.png)
-
-![](/img/preview-evaluate-new.png)
-
-The evaluation may take up to 30 minutes. Once it is complete, the Evaluate button will become View button. Click on the View button to see the evaluation results.
-
-![](/img/preview-view-new.png)
+* It should be a custom trained model version with:
+  1. At least 2 concepts.
+  2. At least 10 training inputs per concept \(at least 50 inputs per concept is recommended\).
 
 :::important Note
 
@@ -51,6 +39,23 @@ The evaluation may result in an error if the model version doesn’t satisfy the
 
 :::
 
-For more information on how to interpret the evaluation results and to improve your model, check the [Interpreting Evaluations](../evaluate/interpreting-evaluations/) section. 
+## Running Evaluation
+
+You can run the evaluation on a specific version of your custom model in the [Portal](https://portal.clarifai.com/). 
+
+Go to your Application, click on your model of interest, and select the Versions tab. 
+And to start the evaluation, simply click the Evaluate button for the specific model version
+
+![](/img/previewui-versions-new.png)
+
+![](/img/preview-evaluate-new.png)
+
+The evaluation may take up to 30 minutes. Once it is complete, the Evaluate button will become a View button. 
+
+Click the View button to see the evaluation results.
+
+![](/img/preview-view-new.png)
+
+For more information on how to interpret the evaluation results, check the next [Interpreting Evaluations](../evaluate/interpreting-evaluations/) section. 
  
 
