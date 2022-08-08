@@ -50,7 +50,9 @@ We discourage users from making a final assessment of the model accuracy based o
 
 ### Prediction Threshold
 
-![prediction threshold](/img/prediction-threshold-new.png) Probability threshold determines the model’s predictions. The default threshold is .5. The input is predicted as \(i.e. “counts” as\) as a concept, such as “dog”, only if the prediction probability for “dog” is higher than the set threshold, for example, 0.5. You can adjust the threshold depending on how ‘strict’ you want your classification to be.
+![prediction threshold](/img/prediction-threshold-new.png) 
+
+Probability threshold determines the model’s predictions. The default threshold is .5. The input is predicted as \(i.e. “counts” as\) as a concept, such as “dog”, only if the prediction probability for “dog” is higher than the set threshold, for example, 0.5. You can adjust the threshold depending on how ‘strict’ you want your classification to be.
 
 All prediction binary metrics—such as True Positives, False Negatives, False Positives, Total Predicted, Recall Rate, and Precision Rate—depend on this threshold.
 

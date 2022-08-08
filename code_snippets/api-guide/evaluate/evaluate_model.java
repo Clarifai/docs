@@ -38,7 +38,7 @@ public class ClarifaiExample {
         );
 
         if (postModelVersionMetricsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-            throw new RuntimeException("Post annotations searches failed, status: " + postModelVersionMetricsResponse.getStatus());
+            throw new RuntimeException("Evaluate model failed, status: " + postModelVersionMetricsResponse.getStatus());
         }
 
     }

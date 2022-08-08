@@ -561,11 +561,18 @@ curl -X GET \
 
 ### List Annotations by Input IDs and Annotation IDs
 
-You can list annotations by both input IDs and annotation IDs. Number of input IDs and annotation IDs should be the same. Since we are finding annotation by IDs, this will match any user or model created annotations.
+You can list annotations by input IDs and their corresponding annotation IDs. Number of input IDs and annotation IDs should be the same. Since we are finding annotation by IDs, this will match any user or model created annotations.
 
 Below is an example of how to do that.
 
 Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
+
+:::tip
+
+When listing annotations, both input IDs and annotation IDs are optional. If you do not provide any input ID or annotation ID, we will return all annotations order by input IDs. You can also list annotations by providing input IDs only. 
+However, if you want to list by annotation IDs, then input IDs are also required so that we know the inputs that correspond to the annotation IDs provided in the request. 
+
+:::
 
 <Tabs>
 
