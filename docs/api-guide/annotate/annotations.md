@@ -569,8 +569,11 @@ Note that the initialization code used here is outlined in detail on the [client
 
 :::tip
 
-When listing annotations, both input IDs and annotation IDs are optional. If you do not provide any input ID or annotation ID, we will return all annotations order by input IDs. You can also list annotations by providing input IDs only. 
-However, if you want to list by annotation IDs, then input IDs are also required so that we know the inputs that correspond to the annotation IDs provided in the request. 
+- When listing annotations, both input IDs and annotation IDs are optional. If you do not provide any input ID or annotation ID, we will return all annotations based on the creation time of each input. 
+
+- You can also list annotations by providing input IDs only. 
+
+- However, if you want to list annotations by providing annotation IDs, then input IDs are also required so that we know the inputs that correspond to the annotation IDs provided in the request. In this case, the number of input IDs should be equal to the number of annotation IDs. 
 
 :::
 

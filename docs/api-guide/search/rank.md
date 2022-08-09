@@ -35,6 +35,7 @@ import JSConceptLanguage from "!!raw-loader!../../../code_snippets/api-guide/sea
 import JSSearchImage from "!!raw-loader!../../../code_snippets/api-guide/search/rank/js/search_by_image_url.html";
 import JSImageBytes from "!!raw-loader!../../../code_snippets/api-guide/search/rank/js/search_by_image_bytes.html";
 import JSInputID from "!!raw-loader!../../../code_snippets/api-guide/search/rank/js/by_input_id.html";
+import JSSearchText from "!!raw-loader!../../../code_snippets/api-guide/search/rank/js/search_by_text.html";
 
 import NodeAppConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/rank/node/by_clarifaimain_app_concepts.js";
 import NodeCustomConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/rank/node/by_custom_concepts.js";
@@ -502,6 +503,10 @@ You can use texts to search through your collection. The API will return ranked 
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonSearchText}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSSearchText}</CodeBlock>
 </TabItem>
 
 <TabItem value="nodejs" label="NodeJS">
