@@ -11,20 +11,21 @@ import com.google.protobuf.ByteString;
 
 public class ClarifaiExample {
 
-    //////////////////////////////////////////////////////////////////////////////////////////////
-    // In this section, we set the user authentication, app ID, model details, and the location
-    // of the video we want as an input. Change these strings to run your own example.
-    /////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    // In this section, we set the user authentication, app ID, model details, location of the video
+    // we want as an input, and sample_ms. Change these strings to run your own example.
+    //////////////////////////////////////////////////////////////////////////////////////////////////
 
     static final String USER_ID = "YOUR_USER_ID_HERE";
     //Your PAT (Personal Access Token) can be found in the portal under Authentication
     static final String PAT = "YOUR_PAT_HERE";
     static final String APP_ID = "YOUR_APP_ID_HERE";
     // Change these to whatever model and video input you want to use
-    static final String MODEL_ID = "general-image-recognition";    
+    static final String MODEL_ID = "general-image-recognition";
+    static final String MODEL_VERSION_ID = "aa7f35c01e0642fda5cf400f543e7c40";
     static final String VIDEO_FILE_LOCATION = "YOUR_VIDEO_FILE_LOCATION_HERE";
-    // This is optional.You can specify a model version or the empty string for the default
-    static final String MODEL_VERSION_ID = "";
+    // Change this to configure the FPS rate (If it's not configured, it defaults to 1 FPS)
+    static final int SAMPLE_MS = 500;
 
     ///////////////////////////////////////////////////////////////////////////////////
     // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -47,6 +48,13 @@ public class ClarifaiExample {
                         .setBase64(ByteString.copyFrom(Files.readAllBytes(
                             new File(VIDEO_FILE_LOCATION).toPath()
                         )))
+                    )
+                )
+            )
+            .setModel(
+                Model.newBuilder().setOutputInfo(
+                    OutputInfo.newBuilder().setOutputConfig(
+                        OutputConfig.newBuilder().setSampleMs(SAMPLE_MS)
                     )
                 )
             )
