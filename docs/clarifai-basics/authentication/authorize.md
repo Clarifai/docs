@@ -163,6 +163,15 @@ V2Grpc.V2BlockingStub stub = V2Grpc.newBlockingStub(channel)
 ```
 </TabItem>
 
+<TabItem value="cURL" label="cURL">
+
+```bash
+curl -X POST \
+  -H "Authorization: Key YOUR_CLARIFAI_PAT_HERE" \
+  -H "Content-Type: application/json" \  
+```
+</TabItem>
+
 <TabItem value="csharp" label="C#">
 
 ```csharp
@@ -196,14 +205,6 @@ $client = new ClarifaiClient('YOUR_API_KEY');
 ```
 </TabItem>
 
-<TabItem value="cURL" label="cURL">
-
-```bash
-curl -X POST \
-  -H "Authorization: Key YOUR_CLARIFAI_PAT_HERE" \
-  -H "Content-Type: application/json" \  
-```
-</TabItem>
 </Tabs>
 
 :::caution
