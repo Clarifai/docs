@@ -5,11 +5,11 @@ sidebar_position: 1
 slug: /
 ---
 
+# Welcome
+
 <head>  
   <meta name="google-site-verification" content="KOB12UhhFU3dC5xrifk5b20EeiCVWjmElZfZynpITtg" />
 </head>
-
-# Welcome
 
 **Clarifai provides a complete platform to deploy, maintain, and manage your AI models**
 <hr />
