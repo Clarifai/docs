@@ -14,7 +14,7 @@ slug: /
 **Clarifai provides a complete platform to deploy, maintain, and manage your AI models**
 <hr />
 
-Clarifai POOOP offers an end-to-end platform for the complete AI lifecycle. Whether you have one input or billions, you are only steps away from using artificial intelligence to power your business applications.
+Clarifai offers an end-to-end platform for the complete AI lifecycle. Whether you have one input or billions, you are only steps away from using artificial intelligence to power your business applications.
 
 <!--This section mostly uses built-in Docusaurus styles inspired by https://docusaurus.io/docs/sidebar/items#generated-index-page -->
 <main class="margin-top--lg">
