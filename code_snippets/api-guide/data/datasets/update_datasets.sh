@@ -4,8 +4,7 @@ curl --location --request PATCH "https://api.clarifai.com/v2/users/YOUR_USER_ID_
 --data-raw '{
     "datasets": [
         {
-            "id": "YOUR_DATASET_ID_HERE",
-            "name": "foo",
+            "id": "YOUR_DATASET_ID_HERE",            
             "description": "This is the new foo dataset",
             "metadata": {
                 "foo": "bar"
