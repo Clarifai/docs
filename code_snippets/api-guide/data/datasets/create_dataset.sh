@@ -4,8 +4,7 @@ curl --location --request POST "https://api.clarifai.com/v2/users/YOUR_USER_ID_H
 --data-raw '{
     "datasets": [
         {
-            "id": "dataset-1633032323",
-            "name": "foo",
+            "id": "dataset-1633032323",            
             "description": "This is the foo dataset",
             "metadata": {
                 "lol": "hey"

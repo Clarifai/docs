@@ -13,6 +13,15 @@ To get predictions for an input, you need to supply an image and the model you'd
 You can send up to 128 images in one API call. You specify the model you'd like to use with the `{MODEL_ID}` parameter.
 
 
+:::tip
+
+When you take an image with a digital device (such as a smartphone camera) the image's meta-information (such as the orientation value for how the camera is held) is stored in the image's [Exif's data](https://en.wikipedia.org/wiki/Exif). And when you use a photo viewer to check the image on your computer, the photo viewer will respect that orientation value and automatically rotate the image to present it the way it was viewed. This allows you to see a correctly-oriented image no matter how the camera was held.
+
+So, when you want to make predictions from an image taken with a digital device, you need to strip the Exif data from the image. Since the Clarifai platform does not account for the Exif data, removing it allows you to make accurate predictions using images in their desired rotation.
+
+:::
+
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
