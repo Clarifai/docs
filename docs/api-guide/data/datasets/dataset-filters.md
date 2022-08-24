@@ -8,91 +8,61 @@ sidebar_position: 2
 **Use filter and search functionality over your datasets**
 <hr />
 
-## Add Dataset Filters
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+import curlAddDatasetFilters from "!!raw-loader!../../../../code_snippets/api-guide/data/datasets/add_dataset_filters.sh";
+import curlListDatasetFilters from "!!raw-loader!../../../../code_snippets/api-guide/data/datasets/list_dataset_filters.sh";
+import curlGetDatasetFilter from "!!raw-loader!../../../../code_snippets/api-guide/data/datasets/get_dataset_filter.sh";
+import curlChangeDatasetFilter from "!!raw-loader!../../../../code_snippets/api-guide/data/datasets/change_dataset_filter.sh";
+import curlDeleteDatasetFilter from "!!raw-loader!../../../../code_snippets/api-guide/data/datasets/delete_dataset_filter.sh";
+
+## Add Dataset Filters
 
 <Tabs>
-<TabItem value="curl" label="cURL">
 
-```bash
-curl --location -g --request POST 'api.clarifai.com/v2/datasets/{{dataset_id}}/filters' \
---header 'Authorization: Key {{YOUR API KEY}}' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "dataset_filters": [
-        {
-            "id": "dataset-filter-1633032596",
-            "name": "foo",
-            "saved_search": {
-                "id": "{{search_id}}"
-            }
-        }
-    ]
-}'
-```
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{curlAddDatasetFilters}</CodeBlock>
 </TabItem>
+
 </Tabs>
 
 ## List Dataset Filters
-<Tabs>
-<TabItem value="curl" label="cURL">
 
-```bash
-curl --location -g --request GET 'api.clarifai.com/v2/datasets/{{dataset_id}}/filters?page=1&per_page=100' \
---header 'Authorization: Key {{YOUR API KEY}}' \
---header 'Content-Type: application/json'
-```
+<Tabs>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{curlListDatasetFilters}</CodeBlock>
 </TabItem>
+
 </Tabs>
 
 ## Get a Dataset Filter
-<Tabs>
-<TabItem value="curl" label="cURL">
 
-```bash
-curl --location -g --request GET 'api.clarifai.com/v2/datasets/{{dataset_id}}/filters/{{dataset_filter_id}}' \
---header 'Authorization: Key {{YOUR API KEY}}' \
---header 'Content-Type: application/json'
-```
+<Tabs>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{curlGetDatasetFilter}</CodeBlock>
 </TabItem>
+
 </Tabs>
 
 ## Change a Dataset Filter
 
 <Tabs>
-<TabItem value="curl" label="cURL">
 
-```bash
-curl --location -g --request PATCH 'api.clarifai.com/v2/datasets/{{dataset_id}}/filters' \
---header 'Authorization: Key {{YOUR API KEY}}' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "dataset_filters": [
-        {
-            "id": "{{dataset_filter_id}}",
-            "name": "foo bar",
-            "saved_search_id": "{{search_id}}"
-        }
-    ],
-    "action": "overwrite"
-}'
-```
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{curlChangeDatasetFilter}</CodeBlock>
 </TabItem>
+
 </Tabs>
 
 ## Delete a Dataset Filter
-<Tabs>
-<TabItem value="curl" label="cURL">
 
-```bash
-curl --location -g --request DELETE 'api.clarifai.com/v2/datasets/{{dataset_id}}/filters' \
---header 'Authorization: Key {{YOUR API KEY}}' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "dataset_filter_ids": ["{{dataset_filter_id}}"]
-}'
-```
+<Tabs>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{curlDeleteDatasetFilter}</CodeBlock>
 </TabItem>
+
 </Tabs>
