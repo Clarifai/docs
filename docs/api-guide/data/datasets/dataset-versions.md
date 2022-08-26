@@ -12,85 +12,57 @@ sidebar_position: 4
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+import curlAddDatasetVersion from "!!raw-loader!../../../../code_snippets/api-guide/data/datasets/add_dataset_version.sh";
+import curlListDatasetVersions from "!!raw-loader!../../../../code_snippets/api-guide/data/datasets/list_dataset_versions.sh";
+import curlGetDatasetVersions from "!!raw-loader!../../../../code_snippets/api-guide/data/datasets/get_dataset_versions.sh";
+import curlChangeDatasetVersion from "!!raw-loader!../../../../code_snippets/api-guide/data/datasets/change_dataset_version.sh";
+import curlDeleteDatasetVersion from "!!raw-loader!../../../../code_snippets/api-guide/data/datasets/delete_dataset_version.sh";
 
 <Tabs>
-<TabItem value="curl" label="cURL">
 
-```bash
-curl --location -g --request POST 'api.clarifai.com/v2/datasets/{{dataset_id}}/versions' \
---header 'Authorization: Key {{YOUR API KEY}}' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "dataset_versions": [
-        {
-            "id": "dataset-version-1633032673",
-            "name": "foo",
-            "dataset_filter": {
-                "id": "{{dataset_filter_id}}"
-            }
-        }
-    ]
-}'
-```
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{curlAddDatasetVersion}</CodeBlock>
 </TabItem>
+
 </Tabs>
 
 ## List Dataset Versions
-<Tabs>
-<TabItem value="curl" label="cURL">
 
-```bash
-curl --location -g --request GET 'api.clarifai.com/v2/datasets/{{dataset_id}}/versions?page=1&per_page=100' \
---header 'Authorization: Key {{YOUR API KEY}}' \
---header 'Content-Type: application/json'
-```
+<Tabs>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{curlListDatasetVersions}</CodeBlock>
 </TabItem>
+
 </Tabs>
 
 ## Get a Dataset Versions
-<Tabs>
-<TabItem value="curl" label="cURL">
 
-```bash
-curl --location -g --request GET 'api.clarifai.com/v2/datasets/{{dataset_id}}/versions/{{dataset_version_id}}' \
---header 'Authorization: Key {{YOUR API KEY}}' \
---header 'Content-Type: application/json'
-```
+<Tabs>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{curlGetDatasetVersions}</CodeBlock>
 </TabItem>
+
 </Tabs>
 
 ## Change a Dataset Version
-<Tabs>
-<TabItem value="curl" label="cURL">
 
-```bash
-curl --location -g --request PATCH 'api.clarifai.com/v2/datasets/{{dataset_id}}/versions' \
---header 'Authorization: Key {{YOUR API KEY}}' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "dataset_versions": [
-        {
-            "id": "{{dataset_version_id}}",
-            "name": "dataset version updated name"
-        }
-    ],
-    "action": "overwrite"
-}'
-```
+<Tabs>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{curlChangeDatasetVersion}</CodeBlock>
 </TabItem>
+
 </Tabs>
 
 ## Delete a Dataset Version
-<Tabs>
-<TabItem value="curl" label="cURL">
 
-```bash
-curl --location -g --request DELETE 'api.clarifai.com/v2/datasets/{{dataset_id}}/versions' \
---header 'Authorization: Key {{YOUR API KEY}}' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "dataset_version_ids": ["{{dataset_version_id}}"]
-}'
-```
+<Tabs>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{curlDeleteDatasetVersion}</CodeBlock>
 </TabItem>
+
 </Tabs>
