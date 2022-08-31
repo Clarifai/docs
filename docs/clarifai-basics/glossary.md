@@ -10,7 +10,9 @@ sidebar_position: 2
 
 ## Application
 
-An application is a kind of self-contained project for managing data, annotating, modeling, predicting and searching. An operation performed in one application will return results from data within that application but will be blind to data in other applications. You can create as many applications as you like and can divide your use among them to segment data into collections and manage access accordingly.
+An application is literally what it sounds like: an application of AI to an existing challenge. It’s a self-contained project for storing and handling, data, annotations, models, concepts, datasets, workflows (chaining of models together), and searches.
+
+An operation performed in one application will return results from data within that application, but will be blind to data in other applications. You can create as many applications as you like and can divide your use among them to segment data into collections and manage access accordingly. Usually, you would create a new application for each new set of related tasks you want to accomplish.
 
 ## Base workflow
 
@@ -18,7 +20,7 @@ When you add an input to your app, the base workflow of your app computes the ou
 
 ## Concept
 
-A concept is something that describes an entity in the physical world, similar to a “tag” or “keyword”. You can use a concept to annotate an input if that input has that entity. You can also add it to a model if you want that model to be able to recognize that entity.
+A concept is something that describes an entity in the physical world, similar to a “tag” or “keyword”. You can use a concept to annotate an input if that input has that entity. You can also add it to a model if you want that model to be able to recognize that entity. Concepts are also known as "classes" in the field of machine learning.
 
 ## Embeddings
 
