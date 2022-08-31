@@ -75,6 +75,22 @@ import JavaBulkDeleteConceptsInputs from "!!raw-loader!../../../code_snippets/ap
 import JavaDeleteInputId from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/java/delete_input_by_id.java";
 import JavaDeleteListInputs from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/java/delete_list_inputs.java";
 
+import CurlAddInputsViaURL from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/curl/add_inputs_via_url.sh";
+import CurlAddInputsViaBytes from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/curl/add_inputs_via_bytes.sh";
+import CurlAddMultipleInputsIds from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/curl/add_multiple_inputs_with_ids.sh";
+import CurlAddInputsConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/curl/add_inputs_with_concepts.sh";
+import CurlAddInputsCustomMetadata from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/curl/add_inputs_custom_metadata.sh";
+import CurlListAllInputs from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/curl/list_all_inputs.sh";
+import CurlListInputsStreaming from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/curl/list_inputs_streaming.sh";
+import CurlGetInputId from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/curl/get_input_by_id.sh";
+import CurlGetInputsStatus from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/curl/get_inputs_status.sh";
+import CurlUpdateInputConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/curl/update_input_concepts.sh"
+import CurlBulkUpdateInputsConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/curl/bulk_update_inputs_concepts.sh";
+import CurlDeleteConceptsInput from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/curl/delete_concepts_input.sh";
+import CurlBulkDeleteConceptsInputs from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/curl/bulk_delete_concepts_inputs.sh";
+import CurlDeleteInputId from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/curl/delete_input_by_id.sh";
+import CurlDeleteListInputs from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/curl/delete_list_inputs.sh"
+
 
 The API is built around a simple idea. You send inputs \(such as images\) to the service and it returns predictions. In addition to receiving predictions on inputs, you can also index inputs and their predictions to later search against. You can also index inputs with concepts to later train your own model.
 
@@ -118,6 +134,10 @@ Below is an example of how to add inputs via a publicly accessible URL.
     <CodeBlock className="language-java">{JavaAddInputsViaURL}</CodeBlock>
 </TabItem>
 
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlAddInputsViaURL}</CodeBlock>
+</TabItem>
+
 <TabItem value="csharp" label="C#">
 
 ```csharp
@@ -155,29 +175,6 @@ if (response.Status.Code != StatusCode.Success)
 ```
 </TabItem>
 
-<TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "inputs": [
-      {
-        "data": {
-          "image": {
-            "url": "https://samples.clarifai.com/metro-north.jpg",
-            "allow_duplicate_url": true
-          }
-        }
-      }
-    ]
-  }'\
-  https://api.clarifai.com/v2/inputs
-```
-</TabItem>
-
 </Tabs>
 
 ### Add Inputs via Bytes
@@ -206,6 +203,10 @@ The data must be base64 encoded. When you add a base64 image to our servers, a c
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaAddInputsViaBytes}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlAddInputsViaBytes}</CodeBlock>
 </TabItem>
 
 <TabItem value="csharp" label="C#">
@@ -245,28 +246,6 @@ if (response.Status.Code != StatusCode.Success)
 ```
 </TabItem>
 
-<TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "inputs": [
-      {
-        "data": {
-          "image": {
-            "base64": '"`base64 /home/user/image.jpeg`"'"
-          }
-        }
-      }
-    ]
-  }'\
-  https://api.clarifai.com/v2/inputs
-```
-</TabItem>
-
 </Tabs>
 
 ### Add Multiple Inputs With IDs
@@ -291,6 +270,10 @@ If you do not send an `id`, one will be created for you. If you have more than o
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaAddMultipleInputsIds}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlAddMultipleInputsIds}</CodeBlock>
 </TabItem>
 
 <TabItem value="csharp" label="C#">
@@ -345,46 +328,15 @@ if (response.Status.Code != StatusCode.Success)
 ```
 </TabItem>
 
-<TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "inputs": [
-      {
-        "data": {
-          "image": {
-            "url": "https://samples.clarifai.com/metro-north.jpg",
-            "allow_duplicate_url": true
-          }
-        },
-        "id": "train1"
-      },
-      {
-        "data": {
-          "image": {
-            "url": "https://samples.clarifai.com/puppy.jpeg",
-            "allow_duplicate_url": true
-          }
-        },
-        "id": "puppy1"
-      }
-    ]
-  }'\
-  https://api.clarifai.com/v2/inputs
-```
-</TabItem>
-
 </Tabs>
 
 ### Add Inputs With Concepts
 
-If you would like to add an input with concepts, you can do so. Concepts play an important role in creating your own models. 
+If you would like to add an input with concepts, you can do so. [Concepts](https://docs.clarifai.com/api-guide/concepts/) play an important role in creating your own models. 
 
-You can learn more about [creating your own models here](https://docs.clarifai.com/api-guide/model/). Concepts also help you search for inputs. You can [learn more about search here](https://docs.clarifai.com/api-guide/search/).
+You can learn more about creating your own models [here](https://docs.clarifai.com/api-guide/model/). 
+
+Concepts also help you search for inputs. You can learn more about search [here](https://docs.clarifai.com/api-guide/search/).
 
 When you add a concept to an input, you need to indicate whether the concept is present in the image or not. 
 
@@ -406,6 +358,10 @@ You can add inputs with concepts via URLs or bytes.
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaAddInputsConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlAddInputsConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="csharp" label="C#">
@@ -456,35 +412,6 @@ if (response.Status.Code != StatusCode.Success)
 ```
 </TabItem>
 
-<TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "inputs": [
-      {
-        "data": {
-          "image": {
-            "url": "https://samples.clarifai.com/puppy.jpeg",
-            "allow_duplicate_url": true
-          },
-          "concepts":[
-            {
-              "id": "charlie",
-              "value": 1
-            }
-          ]
-        }
-      }
-    ]
-  }'\
-  https://api.clarifai.com/v2/inputs
-```
-</TabItem>
-
 </Tabs>
 
 ### Add Inputs With Custom Metadata
@@ -519,27 +446,7 @@ If you have more than one item per image, it is recommended to put the `id` in t
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "inputs": [
-      {
-        "data": {
-          "image": {
-            "url": "https://samples.clarifai.com/puppy.jpeg",
-            "allow_duplicate_url": true
-          },
-          "metadata": {"id": "id001", "type": "animal", "size": 100}
-        }
-      }
-    ]
-  }'\
-  https://api.clarifai.com/v2/inputs
-```
+    <CodeBlock className="language-bash">{CurlAddInputsCustomMetadata}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -554,7 +461,7 @@ You can list all the inputs \(images\) you have previously added either for [sea
 
 You can list all the inputs \(images\) you previously added either for search or train. If you added inputs with concepts, they will be returned in the response as well. 
 
-This request is paginated.
+This request is [paginated](https://docs.clarifai.com/api-guide/advanced-topics/pagination).
 
 <Tabs>
 
@@ -572,6 +479,10 @@ This request is paginated.
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaListAllInputs}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlListAllInputs}</CodeBlock>
 </TabItem>
 
 <TabItem value="csharp" label="C#">
@@ -593,15 +504,6 @@ var response = client.ListInputs(
 
 if (response.Status.Code != StatusCode.Success)
     throw new Exception("Request failed, response: " + response);
-```
-</TabItem>
-
-<TabItem value="curl" label="cURL">
-
-```bash
-curl -X GET \
-  -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/inputs?page=1&per_page=10
 ```
 </TabItem>
 
@@ -657,6 +559,10 @@ If you'd like to get the details of a specific input by its `id`, you can do tha
     <CodeBlock className="language-java">{JavaGetInputId}</CodeBlock>
 </TabItem>
 
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlGetInputId}</CodeBlock>
+</TabItem>
+
 <TabItem value="csharp" label="C#">
 
 ```csharp
@@ -675,15 +581,6 @@ var response = client.ListInputs(
 
 if (response.Status.Code != StatusCode.Success)
     throw new Exception("Request failed, response: " + response);
-```
-</TabItem>
-
-<TabItem value="curl" label="cURL">
-
-```bash
-curl -X GET \
-  -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/inputs/{YOUR_INPUT_ID}
 ```
 </TabItem>
 
@@ -711,6 +608,10 @@ If you add inputs in bulk, they will be procesed in the background. You can get 
     <CodeBlock className="language-java">{JavaGetInputsStatus}</CodeBlock>
 </TabItem>
 
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlGetInputsStatus}</CodeBlock>
+</TabItem>
+
 <TabItem value="csharp" label="C#">
 
 ```csharp
@@ -730,15 +631,6 @@ if (response.Status.Code != StatusCode.Success)
     throw new Exception("Request failed, response: " + response);
 
 Console.WriteLine(response.Counts);
-```
-</TabItem>
-
-<TabItem value="curl" label="cURL">
-
-```bash
-curl -X GET \
-  -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/inputs/status
 ```
 </TabItem>
 
@@ -766,6 +658,10 @@ To update an input with a new concept, or to change a concept value from true/fa
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaUpdateInputConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlUpdateInputConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="csharp" label="C#">
@@ -818,40 +714,6 @@ if (response.Status.Code != StatusCode.Success)
 ```
 </TabItem>
 
-<TabItem value="curl" label="cURL">
-
-```bash
-# Value of 1 means true, this concept is present.
-# Value of 0 means false, this concept is not present.
-# Supported actions: overwrite, merge, remove.
-curl -X PATCH \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "inputs": [
-      {
-        "id": "{YOUR_INPUT_ID}",
-        "data": {
-          "concepts": [
-            {
-              "id": "tree",
-              "value": 1
-            },
-            {
-              "id": "water",
-              "value": 0
-            }
-          ]
-        }
-      }
-    ],
-    "action":"merge"
-}'\
-  https://api.clarifai.com/v2/inputs
-```
-</TabItem>
-
 </Tabs>
 
 ### Bulk Update Inputs With Concepts
@@ -876,6 +738,10 @@ Below is an example of how to update multiple inputs with concepts at once.
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaBulkUpdateInputsConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlBulkUpdateInputsConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="csharp" label="C#">
@@ -950,55 +816,6 @@ var response = client.PatchInputs(
 
 if (response.Status.Code != StatusCode.Success)
     throw new Exception("Request failed, response: " + response);
-```
-</TabItem>
-
-<TabItem value="curl" label="cURL">
-
-```bash
-# Value of 1 means true, this concept is present.
-# Value of 0 means false, this concept is not present.
-# Supported actions: overwrite, merge, remove.
-curl -X PATCH \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "inputs": [
-      {
-        "id": "{YOUR_INPUT_ID_1}",
-        "data": {
-          "concepts": [
-            {
-              "id": "tree",
-              "value": 1
-            },
-            {
-              "id": "water",
-              "value": 0
-            }
-          ]
-        }
-      },
-      {
-        "id": "{YOUR_INPUT_ID_2}",
-        "data": {
-          "concepts": [
-            {
-              "id": "animal",
-              "value": 1
-            },
-            {
-              "id": "fruit",
-              "value": 0
-            }
-          ]
-        }
-      }
-    ],
-    "action":"merge"
-}'\
-  https://api.clarifai.com/v2/inputs
 ```
 </TabItem>
 
