@@ -6,6 +6,7 @@
     // Change these strings to run your own example.
     //////////////////////////////////////////////////////////////////////
 
+    const USER_ID = 'YOUR_USER_ID_HERE';
     // Your PAT (Personal Access Token) can be found in the portal under Authentification
     const PAT = 'YOUR_PAT_HERE';
     const APP_ID = 'YOUR_APP_ID_HERE';
@@ -40,7 +41,7 @@
     // Async function that will allow us to wait for the first API call
     const run = async () => {
 
-        const REQ_ADDRESS = `https://api.clarifai.com/v2/users/me/apps/${APP_ID}/inputs/stream?per_page=5`
+        const REQ_ADDRESS = `https://api.clarifai.com/v2/users/${USER_ID}/apps/${APP_ID}/inputs/stream?per_page=5`
 
         const req1 = await streamInputs(REQ_ADDRESS)
 
