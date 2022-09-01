@@ -845,6 +845,10 @@ To remove concepts that were already added to an input, you can do this:
     <CodeBlock className="language-java">{JavaDeleteConceptsInput}</CodeBlock>
 </TabItem>
 
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlDeleteConceptsInput}</CodeBlock>
+</TabItem>
+
 <TabItem value="csharp" label="C#">
 
 ```csharp
@@ -889,32 +893,6 @@ if (response.Status.Code != StatusCode.Success)
 ```
 </TabItem>
 
-<TabItem value="curl" label="cURL">
-
-```bash
-# We're removing the concept, so there's no need to specify
-# the concept value.
-curl -X PATCH \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "inputs": [
-      {
-        "id":"{YOUR_INPUT_ID}",
-        "data": {
-            "concepts":[
-                {"id":"water"}
-            ]
-        }
-      }
-    ],
-    "action":"remove"
-  }'\
-  https://api.clarifai.com/v2/inputs/
-```
-</TabItem>
-
 </Tabs>
 
 ### Bulk Delete Concepts From a List of Inputs
@@ -937,6 +915,10 @@ Below is an example of how to bulk delete multiple concepts from a list of input
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaBulkDeleteConceptsInputs}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlBulkDeleteConceptsInputs}</CodeBlock>
 </TabItem>
 
 <TabItem value="csharp" label="C#">
@@ -1014,50 +996,6 @@ if (response.Status.Code != StatusCode.Success)
 ```
 </TabItem>
 
-<TabItem value="curl" label="cURL">
-
-```bash
-# We're removing the concept, so there's no need to specify
-# the concept value.
-curl -X PATCH \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "inputs": [
-      {
-        "id": "{YOUR_INPUT_ID_1}",
-        "data": {
-          "concepts":[
-            {
-              "id": "tree"
-            },
-            {
-              "id": "water"
-            }
-          ]
-        }
-      },
-      {
-        "id": "{YOUR_INPUT_ID_2}",
-        "data": {
-          "concepts":[
-            {
-              "id": "animal"
-            },
-            {
-              "id": "fruit"
-            }
-          ]
-        }
-      }
-    ],
-    "action":"remove"
-  }'\
-  https://api.clarifai.com/v2/inputs
-```
-</TabItem>
-
 </Tabs>
 
 ### Delete Input by ID
@@ -1082,6 +1020,10 @@ Below is an example of how to delete a single input by its `id`.
     <CodeBlock className="language-java">{JavaDeleteInputId}</CodeBlock>
 </TabItem>
 
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlDeleteInputId}</CodeBlock>
+</TabItem>
+
 <TabItem value="csharp" label="C#">
 
 ```csharp
@@ -1100,15 +1042,6 @@ var response = client.DeleteInput(
 
 if (response.Status.Code != StatusCode.Success)
     throw new Exception("Request failed, response: " + response);
-```
-</TabItem>
-
-<TabItem value="curl" label="cURL">
-
-```bash
-curl -X DELETE \
-  -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/inputs/{YOUR_INPUT_ID}
 ```
 </TabItem>
 
@@ -1136,6 +1069,10 @@ You can also delete multiple inputs in one API call. This will happen asynchrono
     <CodeBlock className="language-java">{JavaDeleteListInputs}</CodeBlock>
 </TabItem>
 
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlDeleteListInputs}</CodeBlock>
+</TabItem>
+
 <TabItem value="csharp" label="C#">
 
 ```csharp
@@ -1160,20 +1097,6 @@ var response = client.DeleteInput(
 
 if (response.Status.Code != StatusCode.Success)
     throw new Exception("Request failed, response: " + response);
-```
-</TabItem>
-
-<TabItem value="curl" label="cURL">
-
-```bash
-curl -X DELETE \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "ids":["{YOUR_INPUT_ID_1}","{YOUR_INPUT_ID_2}"]
-  }'\
-  https://api.clarifai.com/v2/inputs
 ```
 </TabItem>
 

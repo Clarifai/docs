@@ -24,5 +24,5 @@ curl -X PATCH "https://api.clarifai.com/v2/users/YOUR_USER_ID_HERE/apps/YOUR_APP
       }
     ],
     "action":"merge"
-}'\
+}'
  

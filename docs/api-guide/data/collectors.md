@@ -24,7 +24,7 @@ Give your collector a useful and descriptive name.
 
 Provide additional details about your collector.
 
-### Pre-queue workflow
+### Pre-queue Workflow
 
 In many scenarios, you will only want to ingest a sample, or subset of a given data source into your app. Pre-queue workflows allow you to pre-process your inputs so that you can sample and filter your new data before it is ever added to your app. Pre-queue workflows allow you to specify sampling rules for triggering data ingestion. 
 
@@ -35,15 +35,17 @@ Common pre-queue workflows are designed to:
 * Filter inputs with a maximum probability below a given threshold
 * Filter inputs with a minimum probability above a given threshold
 * Filter specific concept probabilities above a given threshold
-* Knowledge graph mapping from public General model concepts to a custom model
+* Undertake knowledge graph mapping from public General model concepts to a custom model
 
-At least one \(pre-queue or post-queue\) workflow ID is required. The input to this workflow is going to be the OUTPUT of the model. We recommend that you use fast and light-weight models in it as it will effect the speed of the predictions being made.
+At least one \(pre-queue or post-queue\) workflow ID is required. The input to this workflow is going to be the OUTPUT of the model. We recommend that you use fast and light-weight models in it as it will affect the speed of the predictions being made.
 
-### Post Inputs key
+### Post Inputs Key
 
-Select the API key that you would like to use to allow new inputs to be posted to your app. This is the post-queue workflow ID of the workflow to run to after the collector is processing the queued input. This API key must have the PostInputs scope, since it grants the collector the authority to POST inputs to your app.
+Select the [API](https://docs.clarifai.com/clarifai-basics/authentication/app-specific-api-keys) key that you would like to use to allow new inputs to be posted to your app. This is the post-queue workflow ID of the workflow to run to after the collector has processed the queued input. This API key must have the PostInputs scope, since it grants the collector the authority to POST inputs to your app.
 
-This workflow uses the original input to the model as input to the workflow so that you can run additional models as well on that input to decide whether to queue the model or not. If the workflow output has any field that is non-empty, then it will be passed on to POST /inputs to the destination app. At least one \(pre-queue or post-queue\) workflow ID is required.
+This workflow uses the original input to the model as input to the workflow so that you can run additional models as well on that input to decide whether to queue the model or not. If the workflow output has any field that is non-empty, then it will be passed on to POST /inputs to the destination app. 
+
+At least one \(pre-queue or post-queue\) workflow ID is required.
 
 ### Source
 
@@ -78,6 +80,12 @@ import JavaListCollectors from "!!raw-loader!../../../code_snippets/api-guide/da
 import JavaGetCollector from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/get_collector.java";
 import JavaDeleteCollector from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/delete_collector.java";
 
+import CurlAddCollector from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/add_collector.sh";
+import CurlUpdateCollector from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/update_collector.sh";
+import CurlListCollectors from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/list_collectors.sh";
+import CurlGetCollector from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/get_collector.sh";
+import CurlDeleteCollector from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/delete_collector.sh";
+
 ## Add Collector
 
 Add a new collector to your application.
@@ -97,32 +105,9 @@ Add a new collector to your application.
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST 'https://api.clarifai.com/v2/collectors' \
-  -H 'Authorization: Key YOUR_API_KEY' \
-  -H 'Content-Type: application/json' \
-  --data-raw '{
-    "collectors": [
-        {
-            "id": "{YOUR_COLLECTOR_ID}",
-            "description": "{YOUR_COLLECTOR_DESCRIPTION}",
-            "pre_queue_workflow_id": "{YOUR_PRE_QUEUE_WORKFLOW_ID}",
-            "post_queue_workflow_id": "{YOUR_POST_QUEUE_WORKFLOW_ID}",
-            "collector_source": {
-                "api_post_model_outputs_collector_source": {
-                    "model_user_id": "{YOUR_MODEL_USER_ID]",
-                    "model_app_id": "{YOUR_MODEL_APP_ID}",
-                    "model_id": "{YOUR_MODEL_ID}",
-                    "model_version_id": "{YOUR_MODEL_VERSION_ID}",
-                    "post_inputs_key_id": "{YOUR_API_KEY}"
-                }
-            }
-       }
-    ]
-}'
-```
+    <CodeBlock className="language-bash">{CurlAddCollector}</CodeBlock>
 </TabItem>
+
 </Tabs>
 
 ## Update Collector
@@ -144,23 +129,9 @@ Update an existing collector.
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X PATCH 'https://api-dev.clarifai.com/v2/collectors' \
-  -H 'Authorization: Key YOUR_API_KEY' \
-  -H 'Content-Type: application/json' \
-  --data-raw '{
-    "action": "overwrite",
-    "collectors": [
-        {
-            "id": "{YOUR_COLLECTOR_ID}",
-            "description": "{A_NEW_DESCRIPTION}",
-            "pre_queue_workflow_id": "{A_NEW_WORKFLOW_ID}"
-       }
-    ]
-}'
-```
+    <CodeBlock className="language-bash">{CurlUpdateCollector}</CodeBlock>
 </TabItem>
+
 </Tabs>
 
 ## List Collectors
@@ -182,13 +153,9 @@ List all the collectors. See [Pagination](https://docs.clarifai.com/api-guide/ad
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X GET 'https://api.clarifai.com/v2/collectors' \
-  -H 'Authorization: Key YOUR_API_KEY' \
-  -H 'Content-Type: application/json'
-```
+    <CodeBlock className="language-bash">{CurlListCollectors}</CodeBlock>
 </TabItem>
+
 </Tabs>
 
 ## Get Collector
@@ -210,13 +177,9 @@ Return details of a certain collector.
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X GET 'https://api.clarifai.com/v2/collectors/{YOUR_COLLECTOR_ID}' \
-  -H 'Authorization: Key YOUR_API_KEY' \
-  -H 'Content-Type: application/json'
-```
+    <CodeBlock className="language-bash">{CurlGetCollector}</CodeBlock>
 </TabItem>
+
 </Tabs>
 
 ## Delete Collector
@@ -235,6 +198,10 @@ Delete a collector.
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaDeleteCollector}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlDeleteCollector}</CodeBlock>
 </TabItem>
 
 </Tabs>

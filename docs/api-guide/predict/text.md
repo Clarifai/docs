@@ -10,6 +10,8 @@ sidebar_position: 3
 
 To get predictions for an input, you need to supply the text and the model you'd like to get predictions from. You can supply the text via a publicly accessible URL, a local text file, or in the raw format. 
 
+The file size of each text input should be less than 20MB.
+
 You specify the model you'd like to use with the `{MODEL_ID}` parameter.
 
 import Tabs from '@theme/Tabs';
