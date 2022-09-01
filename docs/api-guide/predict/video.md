@@ -36,7 +36,7 @@ If `sample_ms` is 1000, then the FPS rate is 1, which is the default.
 
 #### Video limits
 
-The Predict API has limits to the length and size it can support. A video, uploaded through URL, can be anywhere up to 80MB in size or 10mins in length. When a video is sent through by bytes, the Predict API can support 10MB in size.
+The Predict API has limits to the length and size it can support. A video, uploaded through URL, can be anywhere up to 100MB in size or 10mins in length. When a video is sent through by bytes, the Predict API can support 10MB in size.
 
 If your video exceeds the limits, please follow our [tutorial](https://www.clarifai.com/blog/splitting-video-into-smaller-pieces) on how to break up a large video into smaller components, and send those into the Video API. Otherwise, the processing will time out and you will receive an error response.
 
