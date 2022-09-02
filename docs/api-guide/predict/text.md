@@ -12,7 +12,7 @@ To get predictions for an input, you need to supply the text and the model you'd
 
 The file size of each text input should be less than 20MB.
 
-You specify the model you'd like to use with the `{MODEL_ID}` parameter.
+You specify the model you'd like to use with the `MODEL_ID` parameter.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -32,6 +32,17 @@ import CodeNodeJSViaRaw from "!!raw-loader!../../../code_snippets/api-guide/pred
 import CodeJavaViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/java/text_via_url.java";
 import CodeJavaViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/java/text_via_bytes.java";
 import CodeJavaViaRaw from "!!raw-loader!../../../code_snippets/api-guide/predict/java/text_via_raw.java";
+
+import CurlViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/text_via_url.sh";
+import CurlViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/text_via_bytes.sh";
+import CurlViaRaw from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/text_via_raw.sh";
+
+import CodeOutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/text_via_url.txt";
+import JSONOutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/text_via_url.js";
+import CodeOutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/text_via_bytes.txt";
+import JSONOutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/text_via_bytes.js";
+import CodeOutputExample3 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/text_via_raw_text.txt";
+import JSONOutputExample3 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/text_via_raw_text.js";
 
 ## Via URL 
 
@@ -54,6 +65,10 @@ Note that the initialization code used here is outlined in detail on the [client
 
 <TabItem value="java" label="Java">
    <CodeBlock className="language-java">{CodeJavaViaURL}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlViaURL}</CodeBlock>
 </TabItem>
 
 <TabItem value="php" label="PHP">
@@ -158,165 +173,16 @@ foreach ($response->getOutputs()[0]->getData()->getConcepts() as $concept) {
 ```
 </TabItem>
 
-<TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST
-    -H 'Authorization: Key YOUR_API_KEY'
-    -H "Content-Type: application/json"
-    -d '
-    {
-      "inputs": [
-        {
-          "data": {
-            "text": {
-              "url": "https://samples.clarifai.com/negative_sentence_12.txt"
-            }
-          }
-        }
-      ]
-    }'
-    https://api.clarifai.com/v2/models/{THE_MODEL_ID}/versions/{THE_MODEL_VERSION_ID}/outputs
-```
-</TabItem>
-
 </Tabs>
 
 <details>
-    <summary>Code Output Example</summary>
-
-```text
-Predicted concepts:
-5 stars 0.87
-4 stars 0.12
-3 stars 0.01
-1 star 0.00
-2 stars 0.00
-```
+  <summary>Code Output Example</summary>
+    <CodeBlock className="language-text">{CodeOutputExample1}</CodeBlock>
 </details>
 
 <details>
-    <summary>JSON Output Example</summary>
-
-```javascript
-Predicted concepts:
-id: "6575509feeb34e7ab881918a5a8a6e72"
-status {
-  code: SUCCESS
-  description: "Ok"
-}
-created_at {
-  seconds: 1643377570
-  nanos: 986312649
-}
-model {
-  id: "91ff804429654ce25e93e710beea82ea"
-  name: "product-review-sentiment-multi"
-  created_at {
-    seconds: 1617956285
-    nanos: 315594000
-  }
-  app_id: "main"
-  output_info {
-    output_config {
-    }
-    message: "Show output_info with: GET /models/{model_id}/output_info"
-    fields_map {
-      fields {
-        key: "concepts"
-        value {
-          string_value: "softmax"
-        }
-      }
-    }
-  }
-  model_version {
-    id: "79fa197706da4212a6e74afcd919d5a5"
-    created_at {
-      seconds: 1617956285
-      nanos: 327678000
-    }
-    status {
-      code: MODEL_TRAINED
-      description: "Model is trained and ready"
-    }
-    visibility {
-      gettable: PRIVATE
-    }
-    app_id: "main"
-    user_id: "clarifai"
-    metadata {
-    }
-  }
-  user_id: "clarifai"
-  input_info {
-    fields_map {
-      fields {
-        key: "text"
-        value {
-          string_value: "text"
-        }
-      }
-    }
-  }
-  train_info {
-  }
-  model_type_id: "text-classifier"
-  visibility {
-    gettable: PRIVATE
-  }
-  metadata {
-  }
-  modified_at {
-    seconds: 1617956285
-    nanos: 315594000
-  }
-  import_info {
-  }
-}
-input {
-  id: "732dfaee2ed74b7aa8c596081ae29db3"
-  data {
-    text {
-      url: "https://alfrickopidi.com/test.txt"
-    }
-  }
-}
-data {
-  concepts {
-    id: "ai_372MvFLZ"
-    name: "5 stars"
-    value: 0.866517961025238
-    app_id: "main"
-  }
-  concepts {
-    id: "ai_qbKLQz68"
-    name: "4 stars"
-    value: 0.11985281109809875
-    app_id: "main"
-  }
-  concepts {
-    id: "ai_xhvBFMxc"
-    name: "3 stars"
-    value: 0.009703087620437145
-    app_id: "main"
-  }
-  concepts {
-    id: "ai_1l3VDCQM"
-    name: "1 star"
-    value: 0.002005926100537181
-    app_id: "main"
-  }
-  concepts {
-    id: "ai_dRpwfL86"
-    name: "2 stars"
-    value: 0.0019201975082978606
-    app_id: "main"
-  }
-}
-
-```
-
+  <summary>JSON Output Example</summary>
+    <CodeBlock className="language-javascript">{JSONOutputExample1}</CodeBlock>
 </details>
 
 ## Via Local Files
@@ -344,169 +210,19 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-// Smaller files (195 KB or less)
-
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "inputs": [
-      {
-        "data": {
-          "text": {
-            "raw": "'"$(raw /home/user/image.jpeg)"'"
-          }
-        }
-      }
-    ]
-  }'\
-  https://api.clarifai.com/v2/models/{THE_MODEL_ID}/outputs
-```
+    <CodeBlock className="language-bash">{CurlViaBytes}</CodeBlock>
 </TabItem>
 
 </Tabs>
 
 <details>
   <summary>Code Output Example</summary>
-
-```text
-Predicted concepts:
-5 stars 0.87
-4 stars 0.12
-3 stars 0.01
-1 star 0.00
-2 stars 0.00
-```
-
+    <CodeBlock className="language-text">{CodeOutputExample2}</CodeBlock>
 </details>
 
 <details>
   <summary>JSON Output Example</summary>
-
-```javascript
-Predicted concepts:
-id: "dde301bab8324380a8ee54beb29db326"
-status {
-  code: SUCCESS
-  description: "Ok"
-}
-created_at {
-  seconds: 1643372278
-  nanos: 17467714
-}
-model {
-  id: "91ff804429654ce25e93e710beea82ea"
-  name: "product-review-sentiment-multi"
-  created_at {
-    seconds: 1617956285
-    nanos: 315594000
-  }
-  app_id: "main"
-  output_info {
-    output_config {
-    }
-    message: "Show output_info with: GET /models/{model_id}/output_info"
-    fields_map {
-      fields {
-        key: "concepts"
-        value {
-          string_value: "softmax"
-        }
-      }
-    }
-  }
-  model_version {
-    id: "79fa197706da4212a6e74afcd919d5a5"
-    created_at {
-      seconds: 1617956285
-      nanos: 327678000
-    }
-    status {
-      code: MODEL_TRAINED
-      description: "Model is trained and ready"
-    }
-    visibility {
-      gettable: PRIVATE
-    }
-    app_id: "main"
-    user_id: "clarifai"
-    metadata {
-    }
-  }
-  user_id: "clarifai"
-  input_info {
-    fields_map {
-      fields {
-        key: "text"
-        value {
-          string_value: "text"
-        }
-      }
-    }
-  }
-  train_info {
-  }
-  model_type_id: "text-classifier"
-  visibility {
-    gettable: PRIVATE
-  }
-  metadata {
-  }
-  modified_at {
-    seconds: 1617956285
-    nanos: 315594000
-  }
-  import_info {
-  }
-}
-input {
-  id: "9530f43d439046e6876f0646760c7071"
-  data {
-    text {
-      raw: "I love your product very much"
-      url: "https://samples.clarifai.com/placeholder.gif"
-    }
-  }
-}
-data {
-  concepts {
-    id: "ai_372MvFLZ"
-    name: "5 stars"
-    value: 0.866517961025238
-    app_id: "main"
-  }
-  concepts {
-    id: "ai_qbKLQz68"
-    name: "4 stars"
-    value: 0.11985281109809875
-    app_id: "main"
-  }
-  concepts {
-    id: "ai_xhvBFMxc"
-    name: "3 stars"
-    value: 0.009703087620437145
-    app_id: "main"
-  }
-  concepts {
-    id: "ai_1l3VDCQM"
-    name: "1 star"
-    value: 0.002005926100537181
-    app_id: "main"
-  }
-  concepts {
-    id: "ai_dRpwfL86"
-    name: "2 stars"
-    value: 0.0019201975082978606
-    app_id: "main"
-  }
-}
-
-
-```
-
+    <CodeBlock className="language-javascript">{JSONOutputExample2}</CodeBlock>
 </details>
 
 ## Via Raw Text
@@ -534,146 +250,17 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlViaRaw}</CodeBlock>
 </TabItem>
 
 </Tabs>
 
 <details>
-    <summary>Code Output Example</summary>
-
-```text
-Predicted concepts:
-5 stars 0.87
-4 stars 0.12
-3 stars 0.01
-1 star 0.00
-2 stars 0.00
-
-```
-
+  <summary>Code Output Example</summary>
+    <CodeBlock className="language-text">{CodeOutputExample3}</CodeBlock>
 </details>
 
 <details>
-    <summary>JSON Output Example</summary>
-
-```javascript
-Predicted concepts:
-id: "5f4db88d798e442aa6f8a006efd27ef5"
-status {
-  code: SUCCESS
-  description: "Ok"
-}
-created_at {
-  seconds: 1643367419
-  nanos: 631443555
-}
-model {
-  id: "91ff804429654ce25e93e710beea82ea"
-  name: "product-review-sentiment-multi"
-  created_at {
-    seconds: 1617956285
-    nanos: 315594000
-  }
-  app_id: "main"
-  output_info {
-    output_config {
-    }
-    message: "Show output_info with: GET /models/{model_id}/output_info"
-    fields_map {
-      fields {
-        key: "concepts"
-        value {
-          string_value: "softmax"
-        }
-      }
-    }
-  }
-  model_version {
-    id: "79fa197706da4212a6e74afcd919d5a5"
-    created_at {
-      seconds: 1617956285
-      nanos: 327678000
-    }
-    status {
-      code: MODEL_TRAINED
-      description: "Model is trained and ready"
-    }
-    visibility {
-      gettable: PRIVATE
-    }
-    app_id: "main"
-    user_id: "clarifai"
-    metadata {
-    }
-  }
-  user_id: "clarifai"
-  input_info {
-    fields_map {
-      fields {
-        key: "text"
-        value {
-          string_value: "text"
-        }
-      }
-    }
-  }
-  train_info {
-  }
-  model_type_id: "text-classifier"
-  visibility {
-    gettable: PRIVATE
-  }
-  metadata {
-  }
-  modified_at {
-    seconds: 1617956285
-    nanos: 315594000
-  }
-  import_info {
-  }
-}
-input {
-  id: "ebd63f00c1a540df897427e16005631d"
-  data {
-    text {
-      raw: "I love your product very much"
-      url: "https://samples.clarifai.com/placeholder.gif"
-    }
-  }
-}
-data {
-  concepts {
-    id: "ai_372MvFLZ"
-    name: "5 stars"
-    value: 0.866517961025238
-    app_id: "main"
-  }
-  concepts {
-    id: "ai_qbKLQz68"
-    name: "4 stars"
-    value: 0.11985281109809875
-    app_id: "main"
-  }
-  concepts {
-    id: "ai_xhvBFMxc"
-    name: "3 stars"
-    value: 0.009703087620437145
-    app_id: "main"
-  }
-  concepts {
-    id: "ai_1l3VDCQM"
-    name: "1 star"
-    value: 0.002005926100537181
-    app_id: "main"
-  }
-  concepts {
-    id: "ai_dRpwfL86"
-    name: "2 stars"
-    value: 0.0019201975082978606
-    app_id: "main"
-  }
-}
-
-```
-
+  <summary>JSON Output Example</summary>
+    <CodeBlock className="language-javascript">{JSONOutputExample3}</CodeBlock>
 </details>

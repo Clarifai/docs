@@ -18,7 +18,7 @@ You can run Predict on your video using a select number of [Clarifai Models](htt
 + Travel
 + Wedding
 
-You can make an API call by providing the `{MODEL_ID}` parameter and specifying your data parameter as `video` instead of `image`.
+You can make an API call by providing the `MODEL_ID` parameter and specifying your data parameter as `video` instead of `image`.
 
 #### Configuring FPS
 
@@ -61,10 +61,14 @@ import CodeNodeJSViaBytes from "!!raw-loader!../../../code_snippets/api-guide/pr
 import CodeJavaViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/java/video_via_url.java";
 import CodeJavaViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/java/video_via_bytes.java";
 
+import CurlViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/video_via_url.sh";
+import CurlViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/video_via_bytes.sh";
+
 import CodeOutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/video_via_url.txt";
 import JSONOutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/video_via_url.js";
 import CodeOutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/video_via_bytes.txt";
 import JSONOutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/video_via_bytes.js";
+
 
 <Tabs>
 <TabItem value="python" label="Python">
@@ -81,6 +85,10 @@ import JSONOutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/pr
 
 <TabItem value="java" label="Java">
      <CodeBlock className="language-java">{CodeJavaViaURL}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlViaURL}</CodeBlock>
 </TabItem>
 
 <TabItem value="php" label="PHP">
@@ -187,31 +195,6 @@ foreach ($output->getData()->getFrames() as $frame) {
 ```
 </TabItem>
 
-<TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "inputs": [
-      {
-        "data": {
-          "video": {
-            "url": "https://samples.clarifai.com/beer.mp4"
-          }
-        }
-      }
-    ]
-  }'\
-  https://api.clarifai.com/v2/models/{THE_MODEL_ID}/versions/{THE_MODEL_VERSION_ID}/outputs
-
-# Model version ID is optional. It defaults to the latest model version.
-```
-
-</TabItem>
-
 </Tabs>
 
 <details>
@@ -246,6 +229,10 @@ Note that the initialization code used here is outlined in detail on the [client
 
 <TabItem value="java" label="Java">
   <CodeBlock className="language-java">{CodeJavaViaBytes}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlViaBytes}</CodeBlock>
 </TabItem>
 
 <TabItem value="php" label="PHP">
@@ -356,30 +343,6 @@ foreach ($output->getData()->getFrames() as $frame) {
     }
 }
 ?>
-```
-</TabItem>
-
-<TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "inputs": [
-      {
-        "data": {
-          "video": {
-            "base64": "'"$(base64 video_file_path.mp4)"'"
-          }
-        }
-      }
-    ]
-  }'\
-  https://api.clarifai.com/v2/models/{THE_MODEL_ID}/versions/{THE_MODEL_VERSION_ID}/outputs
-
-# The model version ID is optional. It defaults to the latest model version.
 ```
 </TabItem>
 

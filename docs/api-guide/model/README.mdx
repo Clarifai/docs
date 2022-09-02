@@ -20,3 +20,8 @@ When you are ready to train a model, just click the "Train" button in Explorer o
 
 ![](/img/enlight.svg)
 
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
+
