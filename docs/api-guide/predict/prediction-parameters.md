@@ -57,6 +57,11 @@ import JavaMaxConcepts from "!!raw-loader!../../../code_snippets/api-guide/predi
 import JavaMinPredictValue from "!!raw-loader!../../../code_snippets/api-guide/predict/java/prediction_parameters_min_predict_value.java";
 import JavaSelectConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/java/prediction_parameters_select_concepts.java";
 
+import CurlByModelVersion from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/prediction_parameters_by_model_version_id.sh";
+import CurlMaxConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/prediction_parameters_max_concepts.sh";
+import CurlMinPredictValue from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/prediction_parameters_min_predict_value.sh";
+import CurlSelectConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/prediction_parameters_select_concepts.sh";
+
 <Tabs>
 
 <TabItem value="python" label="Python">

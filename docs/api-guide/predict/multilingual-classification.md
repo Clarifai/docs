@@ -35,6 +35,9 @@ import NodeJSSearchConcepts from "!!raw-loader!../../../code_snippets/api-guide/
 import JavaBySpecificLanguage from "!!raw-loader!../../../code_snippets/api-guide/predict/java/multilingual_classification_specific_language.java";
 import JavaSearchConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/java/multilingual_classification_search_concepts.java";
 
+import CurlBySpecificLanguage from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/multilingual_classification_specific_language.sh";
+import CurlSearchConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/multilingual_classification_search_concepts.sh";
+
 <Tabs>
 
 <TabItem value="python" label="Python">
