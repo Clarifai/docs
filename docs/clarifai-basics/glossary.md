@@ -44,7 +44,7 @@ An Operation is an action that is performed via our API or User Interface. It ca
 
 ## Output
 
-On output, usually in the form of a prediction or predictions, is the data returned to you when you send an input into a model. Because of their close relationship, the terms "outputs" and "predictions" are sometimes used interchangeably.
+An output, usually in the form of a prediction or predictions, is the data returned to you when you send an input into a model. Because of their close relationship, the terms "outputs" and "predictions" are sometimes used interchangeably.
 
 ## Portal
 
