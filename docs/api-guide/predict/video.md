@@ -44,7 +44,11 @@ If your video exceeds the limits, please follow our [tutorial](https://www.clari
 
 Below is an example of how you would send video URLs and receive predictions from the Clarifai's `general-image-recognition` model.
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
+:::info
+
+The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
+
+:::
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -210,8 +214,6 @@ foreach ($output->getData()->getFrames() as $frame) {
 ## Via Bytes
 
 Below is an example of how you would send the bytes of a video and receive predictions from the Clarifai's `general-image-recognition` model.
-
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
 <Tabs>
 

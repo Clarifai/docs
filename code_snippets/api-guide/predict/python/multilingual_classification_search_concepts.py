@@ -37,13 +37,13 @@ post_concepts_searches_response = stub.PostConceptsSearches(
     metadata=metadata
 )
 
-if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
-    print(post_model_outputs_response.status)
-    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
+if post_concepts_searches_response.status.code != status_code_pb2.SUCCESS:
+    print(post_concepts_searches_response.status)
+    raise Exception("Post concepts searches failed, status: " + post_concepts_searches_response.status.description)
 
 print("Found concepts:")
 for concept in post_concepts_searches_response.concepts:
     print("\t%s %.2f" % (concept.name, concept.value))
 
 # Uncomment this line to print the full Response JSON
-#print(output)
+#print(post_concepts_searches_response)

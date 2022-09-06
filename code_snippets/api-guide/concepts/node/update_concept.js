@@ -10,8 +10,8 @@ const USER_ID = 'YOUR_USER_ID_HERE';
 const PAT = 'YOUR_PAT_HERE';
 const APP_ID = 'YOUR_APP_ID_HERE';
 // Change these to whatever concepts you want to update
-const CONCEPT_ID = 'charlie';
-const CONCEPT_NAME = 'Charlie Name';
+const CONCEPT_ID = 'cat';
+const CONCEPT_NAME = 'New Cat Name';
 
 ///////////////////////////////////////////////////////////////////////////////////
 // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE

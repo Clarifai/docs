@@ -48,7 +48,11 @@ import JSONOutputExample3 from "!!raw-loader!../../../code_snippets/api-guide/pr
 
 Below is an example of how you would make predictions on passages of text hosted on the web from the Clarifai's `product-review-sentiment-multi` model. 
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
+:::info
+
+The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
+
+:::
 
 <Tabs>
 <TabItem value="python" label="Python">
@@ -189,8 +193,6 @@ foreach ($response->getOutputs()[0]->getData()->getConcepts() as $concept) {
 
 Below is an example of how you would provide text inputs via local text files and receive predictions from the Clarifai's `product-review-sentiment-multi` model. 
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
-
 <Tabs>
 
 <TabItem value="python" label="Python">
@@ -228,9 +230,6 @@ Note that the initialization code used here is outlined in detail on the [client
 ## Via Raw Text
 
 Below is an example of how you would provide raw text inputs and receive predictions from the Clarifai's `product-review-sentiment-multi` model. 
-
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
-
 
 <Tabs>
 <TabItem value="python" label="Python">

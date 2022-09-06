@@ -48,6 +48,7 @@ You cannot change the default language. You can however change languages per req
 
 ![create new app](/img/create-new-app-new.png)
 
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
@@ -79,7 +80,11 @@ You can see all the language translations for a given concept ID with a GET call
 
 Below is an example of how you would list language translations by concept ID. 
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
+:::info
+
+The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
+
+:::
 
 <Tabs>
 
@@ -132,8 +137,6 @@ concept_languages {
 
 Below is an example of how to get a single language translation for a concept. You can get it by the language code and concept ID.
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
-
 <Tabs>
 
 <TabItem value="grpc_python" label="gRPC Python">
@@ -185,8 +188,6 @@ concept_language {
 
 Below is an example of how to create a language translation for a concept by POSTing that language translation.
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
-
 <Tabs>
 
 <TabItem value="grpc_python" label="gRPC Python">
@@ -236,9 +237,6 @@ concept_languages {
 ## Update a Language Translation for a Concept
 
 Below is an example of how to update a language translation for a concept by PATCHing that language translation.
-
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
-
 
 <Tabs>
 
