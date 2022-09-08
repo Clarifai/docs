@@ -48,6 +48,7 @@ You cannot change the default language. You can however change languages per req
 
 ![create new app](/img/create-new-app-new.png)
 
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
@@ -71,6 +72,15 @@ import JavaSpecificLanguageTranslation from "!!raw-loader!../../../code_snippets
 import JavaAddLanguageTranslation from "!!raw-loader!../../../code_snippets/api-guide/concepts/java/add_language_translation.java";
 import JavaUpdateLanguageTranslation from "!!raw-loader!../../../code_snippets/api-guide/concepts/java/update_language_translation.java";
 
+import CurlListLanguageTranslations from "!!raw-loader!../../../code_snippets/api-guide/concepts/curl/list_language_translations.sh";
+import CurlSpecificLanguageTranslation from "!!raw-loader!../../../code_snippets/api-guide/concepts/curl/specific_language_translation.sh";
+import CurlAddLanguageTranslation from "!!raw-loader!../../../code_snippets/api-guide/concepts/curl/add_language_translation.sh";
+import CurlUpdateLanguageTranslation from "!!raw-loader!../../../code_snippets/api-guide/concepts/curl/update_language_translation.sh";
+
+import JSONOutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/concepts/code_output_examples/list_language_translations.js";
+import JSONOutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/concepts/code_output_examples/specific_language_translation.js";
+import JSONOutputExample3 from "!!raw-loader!../../../code_snippets/api-guide/concepts/code_output_examples/add_language_translation.js";
+import JSONOutputExample4 from "!!raw-loader!../../../code_snippets/api-guide/concepts/code_output_examples/update_language_translation.js";
 
 ## List Language Translations by Concept ID
 
@@ -79,7 +89,11 @@ You can see all the language translations for a given concept ID with a GET call
 
 Below is an example of how you would list language translations by concept ID. 
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
+:::info
+
+The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
+
+:::
 
 <Tabs>
 
@@ -100,39 +114,19 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```text
-curl -X GET \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  https://api.clarifai.com/v2/concepts/{concept_id}/languages
-```
+    <CodeBlock className="language-bash">{CurlListLanguageTranslations}</CodeBlock>
 </TabItem>
 
 </Tabs>
 
 <details>
   <summary>JSON Output Example</summary>
-
-```javascript
-status {
-  code: SUCCESS
-  description: "Ok"
-  req_id: "e3d3b16eccf82d3b5563a0a01eebc579"
-}
-concept_languages {
-  id: "en"
-  name: "Cat Name"
-} 
-```
-
+    <CodeBlock className="language-js">{JSONOutputExample1}</CodeBlock>
 </details>
 
 ## Get Specific Language Translation for a Concept
 
 Below is an example of how to get a single language translation for a concept. You can get it by the language code and concept ID.
-
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
 <Tabs>
 
@@ -153,39 +147,19 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```text
-curl -X GET \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  https://api.clarifai.com/v2/concepts/{concept_id}/languages/{language}
-```
+    <CodeBlock className="language-bash">{CurlSpecificLanguageTranslation}</CodeBlock>
 </TabItem>
 
 </Tabs>
 
 <details>
   <summary>JSON Output Example</summary>
-
-```javascript
-status {
-  code: SUCCESS
-  description: "Ok"
-  req_id: "ef625131675ba87841983c6e7f654e39"
-}
-concept_language {
-  id: "en"
-  name: "Cat Name"
-} 
-```
-
+    <CodeBlock className="language-js">{JSONOutputExample2}</CodeBlock>
 </details>
 
 ## Add a Language Translation for a Concept
 
 Below is an example of how to create a language translation for a concept by POSTing that language translation.
-
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
 <Tabs>
 
@@ -206,39 +180,19 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```text
-curl -X GET \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  https://api.clarifai.com/v2/concepts/{concept_id}/languages/{language}
-```
+    <CodeBlock className="language-bash">{CurlAddLanguageTranslation}</CodeBlock>
 </TabItem>
 
 </Tabs>
 
 <details>
   <summary>JSON Output Example</summary>
-
-```javascript
-status {
-  code: SUCCESS
-  description: "Ok"
-  req_id: "c5054cc812539059340a2275c3cb7cd5"
-}
-concept_languages {
-  id: "ja"
-  name: "\343\203\234\343\202\271\343\202\263"
-}
-```
+    <CodeBlock className="language-js">{JSONOutputExample3}</CodeBlock>
 </details>
 
 ## Update a Language Translation for a Concept
 
 Below is an example of how to update a language translation for a concept by PATCHing that language translation.
-
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
-
 
 <Tabs>
 
@@ -259,29 +213,12 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```text
-curl -X GET \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  https://api.clarifai.com/v2/concepts/{concept_id}/languages/{language}
-```
+    <CodeBlock className="language-bash">{CurlUpdateLanguageTranslation}</CodeBlock>
 </TabItem>
 
 </Tabs>
 
 <details>
   <summary>JSON Output Example</summary>
-
-```javascript
-status {
-  code: SUCCESS
-  description: "Ok"
-  req_id: "779d702cbb303bcce4e469eb1d3552c2"
-}
-concept_languages {
-  id: "ja"
-  name: "new name"
-}
-```
+    <CodeBlock className="language-js">{JSONOutputExample4}</CodeBlock>
 </details>

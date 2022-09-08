@@ -17,8 +17,8 @@ public class ClarifaiExample {
     static final String PAT = "YOUR_PAT_HERE";
     static final String APP_ID = "YOUR_APP_ID_HERE";
     // Change these to whatever concept you want to update
-    static final String CONCEPT_ID = "charlie";
-    static final String CONCEPT_NAME = "Charlie Name";
+    static final String CONCEPT_ID = "cat";
+    static final String CONCEPT_NAME = "New Cat Name";
 
     ///////////////////////////////////////////////////////////////////////////////////
     // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE

@@ -8,24 +8,15 @@ sidebar_position: 1
 **Manage your concepts**
 <hr />
 
-Within your app, you can create concepts, modify them after creation, and get them from your app. 
+Within your app, you can create concepts, modify them after creation, or get them from your app. 
 
-:::important
+:::caution
+
 We currently do not support deleting concepts since they have such an integral tie across almost all other data structures in the platform, like inputs, models, searches, etc.
+
 :::
 
 You will find that some of our endpoints have additional information returned from the clarifai/main app, which contains our pre-trained models and a large knowledge graph we've assembled over the years.
-
-## Create
-
-### Add Concepts
-
-To create a new concept in you app, you POST the concept with an id and name. You can also post more than one concept in the same API by sending a list of concepts.
-
-Below is an example of how to add concepts.  
-
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
-
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -50,6 +41,30 @@ import JavaGetConcept from "!!raw-loader!../../../code_snippets/api-guide/concep
 import JavaListConcepts from "!!raw-loader!../../../code_snippets/api-guide/concepts/java/list_concepts.java";
 import JavaUpdateConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/java/update_concept.java";
 
+import CurlAddConcepts from "!!raw-loader!../../../code_snippets/api-guide/concepts/curl/add_concepts.sh";
+import CurlGetConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/curl/get_concept.sh";
+import CurlListConcepts from "!!raw-loader!../../../code_snippets/api-guide/concepts/curl/list_concepts.sh";
+import CurlUpdateConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/curl/update_concept.sh";
+
+import JSONOutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/concepts/code_output_examples/add_concepts.js";
+import JSONOutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/concepts/code_output_examples/get_concept.js";
+import JSONOutputExample3 from "!!raw-loader!../../../code_snippets/api-guide/concepts/code_output_examples/list_concepts.js";
+import JSONOutputExample4 from "!!raw-loader!../../../code_snippets/api-guide/concepts/code_output_examples/update_concept.js";
+
+
+## Create
+
+### Add Concepts
+
+To create a new concept in your app, you POST the concept with an id and name. You can also post more than one concept in the same request by sending a list of concepts.
+
+Below is an example of how to add concepts.  
+
+:::info
+
+The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
+
+:::
 
 <Tabs>
 
@@ -70,60 +85,22 @@ import JavaUpdateConcept from "!!raw-loader!../../../code_snippets/api-guide/con
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "concepts": [
-      {
-        "id": "{concept_id}",
-        "name": "{new_concept_name}"
-      }
-      ]
-  }'\
-  https://api.clarifai.com/v2/concepts
-```
+    <CodeBlock className="language-bash">{CurlAddConcepts}</CodeBlock>
 </TabItem>
 
 </Tabs>
 
 <details>
   <summary>JSON Output Example</summary>
-
-```javascript
-status {
-  code: SUCCESS
-  description: "Ok"
-  req_id: "9852fce206578f4bc5b6bed38f03eed8"
-}
-concepts {
-  id: "cat"
-  name: "Cat Name"
-  value: 1.0
-  created_at {
-    seconds: 1643890626
-    nanos: 775078265
-  }
-  language: "en"
-  app_id: "a39423543bb941bf9ba2ee95fad11f0a"
-  visibility {
-    gettable: PRIVATE
-  }
-  user_id: "ei2l2oz3s3iz"
-}
-```
+    <CodeBlock className="language-js">{JSONOutputExample1}</CodeBlock>
 </details>
+
 
 ## Get
 
 ### Get Concept by ID
 
 Below is an example of how to get a single concept by its ID.
-
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
 <Tabs>
 
@@ -144,52 +121,21 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X GET \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  https://api.clarifai.com/v2/concepts/{concept_id}
-```
+    <CodeBlock className="language-bash">{CurlGetConcept}</CodeBlock>
 </TabItem>
 
 </Tabs>
 
 <details>
   <summary>JSON Output Example</summary>
-
-```javascript
-status {
-  code: SUCCESS
-  description: "Ok"
-  req_id: "240b8fa082722b0f137c09ec5141cfa3"
-}
-concept {
-  id: "cat"
-  name: "Cat Name"
-  value: 1.0
-  created_at {
-    seconds: 1643890626
-    nanos: 775078000
-  }
-  language: "en"
-  app_id: "a39423543bb941bf9ba2ee95fad11f0a"
-  visibility {
-    gettable: PRIVATE
-  }
-  user_id: "ei2l2oz3s3iz"
-}
-```
+    <CodeBlock className="language-js">{JSONOutputExample2}</CodeBlock>
 </details>
 
 ### List Concepts
 
-You can get a list of concepts within your app with a GET call. This call supports [pagination](https://docs.clarifai.com/api-guide/advanced-topics/pagination/)
+You can get a list of concepts within your app with a GET call. This call supports [pagination](https://docs.clarifai.com/api-guide/advanced-topics/pagination/).
 
 Below is an example of how to list concepts. 
-
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
-
 
 <Tabs>
 
@@ -210,57 +156,14 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X GET \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  https://api.clarifai.com/v2/concepts
-```
+    <CodeBlock className="language-bash">{CurlListConcepts}</CodeBlock>
 </TabItem>
 
 </Tabs>
 
 <details>
   <summary>JSON Output Example</summary>
-
-```javascript
-status {
-  code: SUCCESS
-  description: "Ok"
-  req_id: "1155d18c386559cfdaa22274a0531d9f"
-}
-concepts {
-  id: "cat"
-  name: "Cat Name"
-  value: 1.0
-  created_at {
-    seconds: 1643890626
-    nanos: 775078000
-  }
-  language: "en"
-  app_id: "a39423543bb941bf9ba2ee95fad11f0a"
-  visibility {
-    gettable: PRIVATE
-  }
-  user_id: "ei2leoz3s3iy"
-}
-concepts {
-  id: "charlie"
-  name: "Charlie Name"
-  value: 1.0
-  created_at {
-    seconds: 1643865054
-    nanos: 92351000
-  }
-  language: "en"
-  app_id: "a39423543bb941bf9ba2ee95fad11f0a"
-  visibility {
-    gettable: PRIVATE
-  }
-  user_id: "ei2l2oz3s3iz"
-}
-```
+    <CodeBlock className="language-js">{JSONOutputExample3}</CodeBlock>
 </details>
 
 ## Update
@@ -268,8 +171,6 @@ concepts {
 ### Update Concept Name
 
 Below is an example of how to update a concept's name given its id by using the "overwrite" action. You can also patch multiple concepts by sending a list of concepts.
-
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
 <Tabs>
 
@@ -290,48 +191,13 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X PATCH \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "concepts": [
-      {
-        "id": "charlie",
-        "name": "Charlie Name"
-      }
-      ],
-    "action": "overwrite"
-  }'\
-  https://api.clarifai.com/v2/concepts
-```
+    <CodeBlock className="language-bash">{CurlUpdateConcept}</CodeBlock>
 </TabItem>
 
 </Tabs>
 
 <details>
   <summary>JSON Output Example</summary>
-
-```javascript
-status {
-  code: SUCCESS
-  description: "Ok"
-  req_id: "67ba891f905e081690e4e94522fc21c7"
-}
-concepts {
-  id: "cat"
-  name: "New Cat Name"
-  value: 1.0
-  created_at {
-    seconds: 1643897414
-    nanos: 497920914
-  }
-  language: "en"
-  app_id: "a39423543bb941bf9ba2ee95fad11f0a"
-  user_id: "ei2l2oz3s3iz"
-}
-```
+    <CodeBlock className="language-js">{JSONOutputExample4}</CodeBlock>
 </details>
 

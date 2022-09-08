@@ -9,11 +9,15 @@ title: Search by Concept
 **Search based on specific words**
 <hr />
 
-You can search for concepts by `name`, even in a different `language` using the `ConceptSearches` endpoint.
+You can search for concepts by `name`, even in a different `language`, using the `ConceptSearches` endpoint.
 
 Below is an example of how to search for concepts.
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
+:::info
+
+The initialization code used in the following example is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
+
+:::
 
 
 import Tabs from '@theme/Tabs';
@@ -23,6 +27,9 @@ import PythonSearchByConcept from "!!raw-loader!../../../code_snippets/api-guide
 import JavaScriptSearchByConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/js/search_by_concept.html";
 import NodeJSSearchByConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/node/search_by_concept.js";
 import JavaSearchByConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/java/search_by_concept.java";
+import CurlSearchByConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/curl/search_by_concept.sh";
+import CodeOutputExample from "!!raw-loader!../../../code_snippets/api-guide/concepts/code_output_examples/search_by_concept.txt";
+import JSONOutputExample from "!!raw-loader!../../../code_snippets/api-guide/concepts/code_output_examples/search_by_concept.js";
 
 <Tabs>
 
@@ -43,73 +50,17 @@ import JavaSearchByConcept from "!!raw-loader!../../../code_snippets/api-guide/c
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```text
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "concept_query": {
-      "name":"人",
-      "language": "ja"
-    }
-  }'\
-  https://api.clarifai.com/v2/concepts/searches
-```
+    <CodeBlock className="language-bash">{CurlSearchByConcept}</CodeBlock>
 </TabItem>
 
 </Tabs>
 
 <details>
   <summary>Code Output Example</summary>
-
-```text
-Found concepts:
-	人 1.00
-	人 1.00
-```
+    <CodeBlock className="language-js">{CodeOutputExample}</CodeBlock>
 </details>
 
 <details>
   <summary>JSON Output Example</summary>
-
-```javascript
-status {
-  code: SUCCESS
-  description: "Ok"
-  req_id: "6e24dbc1e4977bd6f4092d0c72169a68"
-}
-concepts {
-  id: "ai_ZKJ48TFz"
-  name: "\344\272\272"
-  value: 1.0
-  created_at {
-    seconds: 1458214981
-    nanos: 223962000
-  }
-  language: "ja"
-  app_id: "main"
-  visibility {
-    gettable: PUBLIC
-  }
-  user_id: "clarifai"
-}
-concepts {
-  id: "ai_l8TKp2h5"
-  name: "\344\272\272"
-  value: 1.0
-  created_at {
-    seconds: 1458214981
-    nanos: 223962000
-  }
-  language: "ja"
-  app_id: "main"
-  visibility {
-    gettable: PUBLIC
-  }
-  user_id: "clarifai"
-}
-
-```
+    <CodeBlock className="language-js">{JSONOutputExample}</CodeBlock>
 </details>
