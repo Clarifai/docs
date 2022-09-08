@@ -198,6 +198,6 @@ Below is an example of how to update a concept's name given its id by using the 
 
 <details>
   <summary>JSON Output Example</summary>
-    <CodeBlock className="language-text">{JSONOutputExample4}</CodeBlock>
+    <CodeBlock className="language-js">{JSONOutputExample4}</CodeBlock>
 </details>
 

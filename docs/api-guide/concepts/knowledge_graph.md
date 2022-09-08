@@ -22,13 +22,17 @@ It uses three different _predicates_ to organize your concepts: hypernyms, hypon
 
 ## Create Relations
 
-To create a relation between two concepts, you first have to create them in your custom model. See the  [Concepts page](https://docs.clarifai.com/api-guide/concepts/create-get-update/) on how to do that programatically.
+To create a relation between two concepts, you first have to create them in your custom model. See the  [Concepts section](https://docs.clarifai.com/api-guide/concepts/create-get-update/) on how to do that programatically.
 
 Each relation should have a specified predicate, which can be _hyponym_, _hypernym_, or _synonym_.
 
 Below is an example of how to create a relation between two concepts. 
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
+:::info
+
+The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
+
+:::
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -49,6 +53,13 @@ import JavaCreateRelations from "!!raw-loader!../../../code_snippets/api-guide/c
 import JavaListRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/java/knowledge_graph_list.java";
 import JavaDeleteRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/java/knowledge_graph_delete.java";
 
+import CurlCreateRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/curl/knowledge_graph_create.sh";
+import CurlListRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/curl/knowledge_graph_list.sh";
+import CurlDeleteRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/curl/knowledge_graph_delete.sh";
+
+import JSONOutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/concepts/code_output_examples/knowledge_graph_create.js";
+import JSONOutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/concepts/code_output_examples/knowledge_graph_list.js";
+import JSONOutputExample3 from "!!raw-loader!../../../code_snippets/api-guide/concepts/code_output_examples/knowledge_graph_delete.js";
 
 <Tabs>
 
@@ -69,80 +80,19 @@ import JavaDeleteRelations from "!!raw-loader!../../../code_snippets/api-guide/c
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{YOUR_APP_ID}/concepts/{YOUR_SUBJECT_CONCEPT_ID}/relations' \
-    -H 'Authorization: Key {YOUR_PERSONAL_ACCESS_TOKEN}' \
-    -H 'Content-Type: application/json' \
-    --data-raw '{
-        "concept_relations": [
-            {
-                "object_concept": {
-                    "id": "{YOUR_OBJECT_CONCEPT_ID}"
-                },
-                "predicate": "hypernym"
-            }
-        ]
-    }'
-```
+    <CodeBlock className="language-bash">{CurlCreateRelations}</CodeBlock>
 </TabItem>
 
 </Tabs>
 
 <details>
   <summary>JSON Output Example</summary>
-
-```javascript
-status {
-  code: SUCCESS
-  description: "Ok"
-  req_id: "0d0a5ec5df14d62a7d660f392ce26727"
-}
-concept_relations {
-  id: "2d794e5ede534500b4ac7da44ef570ee"
-  subject_concept {
-    id: "honey"
-    name: "honey"
-    value: 1.0
-    created_at {
-      seconds: 1643976334
-      nanos: 237961000
-    }
-    language: "en"
-    app_id: "a39423543bb941bf9ba2ee95fad11f0a"
-    visibility {
-      gettable: PRIVATE
-    }
-    user_id: "e5y2lteoz3s3iy"
-  }
-  object_concept {
-    id: "food"
-    name: "food"
-    value: 1.0
-    created_at {
-      seconds: 1643976326
-      nanos: 123719000
-    }
-    language: "en"
-    app_id: "a39423543bb941bf9ba2ee95fad11f0a"
-    visibility {
-      gettable: PRIVATE
-    }
-    user_id: "ei2leoz3s3iy"
-  }
-  predicate: "hypernym"
-  visibility {
-    gettable: PRIVATE
-  }
-}
-```
+    <CodeBlock className="language-js">{JSONOutputExample1}</CodeBlock>
 </details>
 
 ## List Existing Relations
 
 Below is an example of how to list existing relations between concepts. 
-
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
 <Tabs>
 
@@ -163,68 +113,26 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-# Setting the predicate GET parameter is optional. If skipped, all concept's relations will be returned.
-curl -X GET 'https://api.clarifai.com/v2/users/me/apps/{YOUR_APP_ID}/concepts/{YOUR_CONCEPT_ID}/relations?predicate=hypernym' \
-    -H 'Authorization: Key {YOUR_PERSONAL_ACCESS_TOKEN}' \
-    -H 'Content-Type: application/json'
-```
+    <CodeBlock className="language-bash">{CurlListRelations}</CodeBlock>
 </TabItem>
 
 </Tabs>
 
 <details>
   <summary>JSON Output Example</summary>
-
-```javascript
-id: "2d794e5ede534500b4ac7da44ef570ee"
-subject_concept {
-  id: "honey"
-  name: "honey"
-  value: 1.0
-  created_at {
-    seconds: 1643976334
-    nanos: 237961000
-  }
-  language: "en"
-  app_id: "a39423543bb941bf9ba2ee95fad11f0a"
-  visibility {
-    gettable: PRIVATE
-  }
-  user_id: "ei2leoz3s3iy"
-}
-object_concept {
-  id: "food"
-  name: "food"
-  value: 1.0
-  created_at {
-    seconds: 1643976326
-    nanos: 123719000
-  }
-  language: "en"
-  app_id: "a39423543bb941bf9ba2ee95fad11f0a"
-  visibility {
-    gettable: PRIVATE
-  }
-  user_id: "ei2leoz3s3iy"
-}
-predicate: "hypernym"
-visibility {
-  gettable: PRIVATE
-}
-```
+    <CodeBlock className="language-js">{JSONOutputExample2}</CodeBlock>
 </details>
 
 ## Delete Relations
 
 Below is an example of how to delete relations between concepts. 
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
-
 :::tip
 
-To retrieve the `CONCEPT_RELATION_IDS`, log in to the Portal and access the relations details of your concept. Then, inspect the network activity under your browser's Network Tab. The IDs are under the `relations` category. 
+You can use either of the following ways to retrieve the `CONCEPT_RELATION_IDS`:
+
+- Use the above [List Existing Relations](https://docs.clarifai.com/api-guide/concepts/knowledge_graph#list-existing-relations) method to list ALL existing relations between concepts. Remember to omit the `predicate` parameter. 
+- Log in to the Portal and access the relations details of your concept. Then, inspect the network activity under your browser's Network Tab. The IDs are under the `relations` category. 
 
 :::
 
@@ -247,17 +155,7 @@ To retrieve the `CONCEPT_RELATION_IDS`, log in to the Portal and access the rela
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X DELETE 'https://api.clarifai.com/v2/users/me/apps/{YOUR_APP_ID}/concepts/{YOUR_OBJECT_CONCEPT_ID}/relations' \
-    -H 'Authorization: Key {YOUR_PERSONAL_ACCESS_TOKEN}' \
-    -H 'Content-Type: application/json' \
-    --data-raw '{
-        "ids": [
-            "{YOUR_CONCEPT_RELATION_ID}"
-        ]
-    }'
-```
+    <CodeBlock className="language-bash">{CurlDeleteRelations}</CodeBlock>
 </TabItem>
 
 </Tabs>
