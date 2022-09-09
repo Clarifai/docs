@@ -12,21 +12,10 @@ Annotations \(also known as labels\) describe your inputs. When you add inputs t
 
 Once your input is successfully indexed, you can add additional annotations, such as concepts and bounding boxes.
 
-## Add Annotations
-
-You can label your inputs by calling the `POST /annotations` endpoint. For example, you can add concept\(s\) to an image, draw a bounding box, or label concept\(s\) in a video frame.
-
-When you add an annotation, the app's default workflow will be run by default. This means that any newly added annotations will be immediately available for AI based search and training.
-
-:::info
-You can add from 1 up to 128 annotations in a single API call.
-:::
-
-Each annotation should contain at most one region. If it is a video, each annotation should contain 1 frame. If there are multiple regions in a frame you want to label, you can add multiple annotations for each region and each annotation will be contained within the same frame but in a different region.
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
+
 import PythonAnnotateExistingRegionsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/annotate_existing_regions_image.py";
 import PythonAnnotateImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/annotate_images_concepts.py";
 import PythonAnnotateImagesUserIdStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/annotate_images_user_id_status.py";
@@ -103,13 +92,46 @@ import JavaUpdateAnnotationConceptsRegion from "!!raw-loader!../../../code_snipp
 import JavaUpdateAnnotationRegionCoordinates from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/update_annotation_region_coordinates.java";
 import JavaUpdateAnnotationStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/update_annotation_status.java";
 
+import CurlAnnotateExistingRegionsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/annotate_existing_regions_image.sh";
+import CurlAnnotateImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/annotate_images_concepts.sh";
+import CurlAnnotateImagesUserIdStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/annotate_images_user_id_status.sh";
+import CurlAnnotateNewBoundingBoxesImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/annotate_new_bounding_boxes_image.sh";
+import CurlAnnotatePolygonsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/annotate_polygons_image.sh";
+import CurlbulkDeleteAnnotationsInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/bulk_delete_annotations_input_annotation_ids.sh";
+import CurlBulkDeleteAnnotationsInputIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/bulk_delete_annotations_input_ids.sh";
+import CurlDeleteAnnotationInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/delete_annotation_input_annotation_ids.sh";
+import CurlListAllAnnotationsApp from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/list_all_annotations_app.sh";
+import CurlListAnnotationsInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/list_annotations_input_annotation_ids.sh";
+import CurlListAnnotationsModelVersionIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/list_annotations_model_version_ids.sh";
+import CurlListAnnotationsUserIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/list_annotations_user_ids.sh";
+import CurllistUserCreatedAnnotationsApp from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/list_user_created_annotations_app.sh";
+import CurlListUserCreatedAnnotationsInputIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/list_user_created_annotations_input_ids.sh";
+import CurlUpdateAnnotationConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/update_annotation_concepts.sh";
+import CurlUpdateAnnotationConceptsRegion from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/update_annotation_concepts_region.sh";
+import CurlUpdateAnnotationRegionCoordinates from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/update_annotation_region_coordinates.sh";
+import CurlUpdateAnnotationStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/update_annotation_status.sh";
+
+## Add Annotations
+
+You can label your inputs by calling the `POST /annotations` endpoint. For example, you can add concept\(s\) to an image, draw a bounding box, or label concept\(s\) in a video frame.
+
+When you add an annotation, the app's default workflow will be run by default. This means that any newly added annotations will be immediately available for AI based search and training.
+
+:::tip
+You can add from 1 up to 128 annotations in a single API call.
+:::
+
+Each annotation should contain at most one region. If it is a video, each annotation should contain 1 frame. If there are multiple regions in a frame you want to label, you can add multiple annotations for each region and each annotation will be contained within the same frame but in a different region.
+
+:::info
+
+The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
+
+:::
 
 ### Annotate Images With Concepts
 
 Below is an example of how to annotate a concept present anywhere in an image.
-
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
-
 
 <Tabs>
 
@@ -130,36 +152,7 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-# Value of 1 means true, this concept is present.
-# Value; of 0 means false, this concept is not present.
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "annotations": [
-      {
-        "input_id": "{YOUR_INPUT_ID}",
-        "data": {
-          "concepts": [
-            {
-              "id": "tree",
-              "value": 1
-            },
-            {
-              "id": "water",
-              "value": 0
-            }
-          ]
-        },
-        "embed_model_version_id": "{EMBED_MODEL_VERSION_ID}"
-      }
-    ]
-}'\
-  https://api.clarifai.com/v2/annotations
-```
+    <CodeBlock className="language-bash">{CurlAnnotateImagesConcepts}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -167,8 +160,6 @@ curl -X POST \
 ### Annotate New Bounding Boxes in an Image
 
 Below is an example of how to label a new bounding box by providing bounding box coordinates.
-
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 
 <Tabs>
 
@@ -189,76 +180,7 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-# draw 2 bouding boxes in the same region
-# Value of 1 means true, this concept is present.
-# Value of 0 means false, this concept is not present.
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "annotations": [
-      {
-        "input_id": "{YOUR_INPUT_ID}",
-        "data": {
-          "regions": [
-            {
-              "region_info": {
-                  "bounding_box": {
-                      "top_row": 0,
-                      "left_col": 0,
-                      "bottom_row": 0.5,
-                      "right_col": 0.5
-                  }
-              },
-              "data": {
-                "concepts": [
-                  {
-                    "id": "tree",
-                    "value": 1
-                  },
-                  {
-                    "id": "water",
-                    "value": 0
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        "embed_model_version_id": "{EMBED_MODEL_VERSION_ID}"
-      }, {
-        "input_id": "{YOUR_INPUT_ID}",
-        "data": {
-          "regions": [
-            {
-              "region_info": {
-                  "bounding_box": {
-                      "top_row": 0.6,
-                      "left_col": 0.6,
-                      "bottom_row": 0.8,
-                      "right_col": 0.8
-                  }
-              },
-              "data": {
-                "concepts": [
-                  {
-                    "id": "bike",
-                    "value": 1
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        "embed_model_version_id": "{EMBED_MODEL_VERSION_ID}"
-      }
-    ]
-}'\
-  https://api.clarifai.com/v2/annotations
-```
+    <CodeBlock className="language-bash">{CurlAnnotateNewBoundingBoxesImage}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -266,8 +188,6 @@ curl -X POST \
 ### Annotate Polygons in an Image
 
 Below is an example of how to provide annotations within any polygon-shaped region of an image. 
-
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 
 <Tabs>
 
@@ -287,6 +207,10 @@ Note that the initialization code used here is outlined in detail on the [client
     <CodeBlock className="language-java">{JavaAnnotatePolygonsImage}</CodeBlock>
 </TabItem>
 
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlAnnotatePolygonsImage}</CodeBlock>
+</TabItem>
+
 </Tabs>
 
 ### Annotate Existing Regions in an Image
@@ -296,8 +220,6 @@ When you add an input, detection models \(such as `Face Detection` or `General D
 Your labels should be contained within `Region.data`. Each annotation can only have 1 region. If you want to label multiple regions, it is possible to label multiple annotations in a single API call.
 
 Below is an example of how to annotate existing regions in an image.
-
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 
 <Tabs>
 
@@ -318,62 +240,7 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-# Value of 1 means true, this concept is present.
-# Value of 0 means false, this concept is not present.
-# region id should be a region id returned from list annotations call
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "annotations": [
-      {
-        "input_id": "{YOUR_INPUT_ID}",
-        "data": {
-          "regions": [
-            {
-              "id": "{REGION_ID_1}",
-              "data": {
-                "concepts": [
-                  {
-                    "id": "tree",
-                    "value": 1
-                  },
-                  {
-                    "id": "water",
-                    "value": 0
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        "embed_model_version_id": "{EMBED_MODEL_VERSION_ID}"
-      }, {
-        "input_id": "{YOUR_INPUT_ID}",
-        "data": {
-          "regions": [
-            {
-              "id": "{REGION_ID_2}",
-              "data": {
-                "concepts": [
-                  {
-                    "id": "bike",
-                    "value": 1
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        "embed_model_version_id": "{EMBED_MODEL_VERSION_ID}"
-      }
-    ]
-}'\
-  https://api.clarifai.com/v2/annotations
-```
+    <CodeBlock className="language-bash">{CurlAnnotateExistingRegionsImage}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -391,8 +258,6 @@ Only the app owner can post an annotation with other user's `user_id`; collabora
 :::
 
 Below is an example of how to annotate images with different `user_id` and `status`.
-
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 
 <Tabs>
 
@@ -413,25 +278,7 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "annotations": [
-      {
-        "input_id": "{YOUR_INPUT_ID}",
-        "user_id": "{USER_ID}",
-        "status": {
-            "code": "ANNOTATION_PENDING"
-        }
-      }
-    ]
-}'\
-  https://api.clarifai.com/v2/annotations
-```
+    <CodeBlock className="language-bash">{CurlAnnotateImagesUserIdStatus}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -445,8 +292,6 @@ These requests are [paginated](https://docs.clarifai.com/api-guide/advanced-topi
 ### List All User Created Annotations in Your App
 
 Below is an example of how to list all your user labelled annotations.
-
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 
 :::important note
 
@@ -473,12 +318,7 @@ This will not show annotations by models in your workflow. To include model crea
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X GET \
-  -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/annotations?page=1&per_page=10
-```
+    <CodeBlock className="language-bash">{CurllistUserCreatedAnnotationsApp}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -486,8 +326,6 @@ curl -X GET \
 ### List All Annotations in Your App
 
 Below is an example of how to list all annotations, including those created by models.
-
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 
 <Tabs>
 
@@ -508,12 +346,7 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X GET \
-  -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/annotations?page=1&per_page=10&list_all_annotations=true
-```
+    <CodeBlock className="language-bash">{CurlListAllAnnotationsApp}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -521,8 +354,6 @@ curl -X GET \
 ### List User Created Annotations by Input IDs
 
 Below is an example of how to list all user created annotations for certain input \(one or several\) by providing a list of input IDs.
-
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 
 :::important note
 
@@ -549,12 +380,7 @@ This will not show annotations by models in your workflow. To include model crea
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X GET \
-  -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/annotations?page=1&per_page=10&input_ids=your_input_Id
-```
+    <CodeBlock className="language-bash">{CurlListUserCreatedAnnotationsInputIds}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -564,8 +390,6 @@ curl -X GET \
 You can list annotations by input IDs and their corresponding annotation IDs. Number of input IDs and annotation IDs should be the same. Since we are finding annotation by IDs, this will match any user or model created annotations.
 
 Below is an example of how to do that.
-
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 
 :::tip
 
@@ -596,12 +420,7 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X GET \
-  -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/annotations?page=1&per_page=10&input_ids=YOUR_INPUT_ID_1&input_ids=YOUR_INPUT_ID_2&ids=YOUR_ANNOTATION_ID_1&ids=YOUR_ANNOTATION_ID_2
-```
+    <CodeBlock className="language-bash">{CurlListAnnotationsInputAnnotationIds}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -611,8 +430,6 @@ curl -X GET \
 An annotation is created by either a user or a model. You can list annotations created by specific user\(s\) by providing their user IDs.
 
 Below is an example of how to do that.
-
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 
 <Tabs>
 
@@ -633,12 +450,7 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X GET \
-  -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/annotations?page=1&per_page=10&user_ids=USER_ID_1&user_ids=USER_ID_2
-```
+    <CodeBlock className="language-bash">{CurlListAnnotationsUserIds}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -650,9 +462,6 @@ An annotation is created by either a user or a model. For example, if your workf
 You can also label these regions by using `Post annotation` with the region ID returned from this call.
 
 Below is an example of how to list annotations by model version IDs.
-
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
-
 
 <Tabs>
 
@@ -673,12 +482,7 @@ Note that the initialization code used here is outlined in detail on the [client
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X GET \
-  -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/annotations?page=1&per_page=10&model_version_ids=MODEL_VERSION_ID_1&model_version_ids=MODEL_VERSION_ID_2
-```
+    <CodeBlock className="language-bash">{CurlListAnnotationsModelVersionIds}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -696,8 +500,6 @@ Update supports `overwrite`, `merge`, and `remove` actions. You can update from 
 ### Update Annotation With Concepts
 
 Below is an example of how to update an annotation of an image with a new concept, or  change a concept value from true to false \(or vice versa\).
-
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 
 <Tabs>
 
@@ -754,8 +556,6 @@ curl -X PATCH \
 When you update region data, you must nest this new data within `region.data`. Set the `region_id` to the current `region_id` if you do not want to change or remove this region.
 
 Below is an example of how to update annotation with concepts in a region.
-
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 
 <Tabs>
 
@@ -820,8 +620,6 @@ You can update region bounding boxes coordinates. When changing the region, you 
 
 Below is an example of how to do that.
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
-
 <Tabs>
 
 <TabItem value="python" label="Python">
@@ -883,8 +681,6 @@ curl -X PATCH \
 
 Below is an example of how to update an annotation status.
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
-
 <Tabs>
 
 <TabItem value="python" label="Python">
@@ -934,7 +730,6 @@ curl -X PATCH \
 
 Below is an example of how to delete a single annotation by input ID and annotation ID.
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 
 <Tabs>
 
@@ -970,8 +765,6 @@ curl -X DELETE \
 You can delete multiple annotations in one API call. You need to provide a list of input IDs and a list of annotation IDs. The number of input IDs has to match the number of annotation IDs.
 
 Below is an example of how to do that. 
-
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 
 <Tabs>
 
@@ -1012,8 +805,6 @@ curl -X DELETE \
 To delete all annotations of a given input, you just need to set their input ID\(s\). This will delete all annotations for these input\(s\) EXCEPT input level annotations, which only get deleted if you delete the inputs themselves.
 
 Below is an example of how to do that. 
-
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 
 <Tabs>
 

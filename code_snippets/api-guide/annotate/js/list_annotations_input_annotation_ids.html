@@ -28,7 +28,7 @@
         }
     };
 
-    fetch(`https://api.clarifai.com/v2/users/me/apps/${APP_ID}/annotations?page=1&per_page=10&input_ids=${INPUT_ID_1}&input_ids=${INPUT_ID_2}&ids=${ANNOTATION_ID_1}&ids=${ANNOTATION_ID_2}`, requestOptions)
+    fetch(`https://api.clarifai.com/v2/users/${USER_ID}/apps/${APP_ID}/annotations?page=1&per_page=10&input_ids=${INPUT_ID_1}&input_ids=${INPUT_ID_2}&ids=${ANNOTATION_ID_1}&ids=${ANNOTATION_ID_2}`, requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
