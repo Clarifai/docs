@@ -145,30 +145,32 @@ user_app_id: {
 // Installation
 /////////////////////////////////////////////////////////////////////////////////////////////
 
-// Via Gradle:
+Via Gradle:
+
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
-    implementation 'com.clarifai:clarifai-grpc:LATEST_VERSION_HERE'
+    implementation 'com.clarifai:clarifai-grpc:LATEST_VERSION'
 }
 
-// Via Maven:
+Via Maven:
+
 <repositories>
-<repository>
-    <id>jcenter</id>
-    <name>jcenter</name>
-    <url>https://jcenter.bintray.com</url>
-</repository>
+    <repository>
+        <id>mavenCentral</id>
+        <name>mavenCentral</name>
+        <url>https://repo1.maven.org/maven2</url>
+    </repository>
 </repositories>
 
 <dependencies>
-<dependency>
-    <groupId>com.clarifai</groupId>
-    <artifactId>clarifai-grpc</artifactId>
-    <version>LATEST_VERSION_HERE</version>
-</dependency>
+    <dependency>
+        <groupId>com.clarifai</groupId>
+        <artifactId>clarifai-grpc</artifactId>
+        <version>LATEST_VERSION</version>
+    </dependency>
 </dependencies>
 
 /////////////////////////////////////////////////////////////////////////////////////////////

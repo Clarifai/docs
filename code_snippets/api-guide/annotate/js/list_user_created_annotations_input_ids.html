@@ -25,7 +25,7 @@
         }
     };
 
-    fetch(`https://api.clarifai.com/v2/users/me/apps/${APP_ID}/annotations?page=1&per_page=10&input_ids=${INPUT_ID}`, requestOptions)
+    fetch(`https://api.clarifai.com/v2/users/${USER_ID}/apps/${APP_ID}/annotations?page=1&per_page=10&input_ids=${INPUT_ID}`, requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));

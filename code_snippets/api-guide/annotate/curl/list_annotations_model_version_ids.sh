@@ -1,0 +1,2 @@
+curl -X GET "https://api.clarifai.com/v2/users/YOUR_USER_ID_HERE/apps/YOUR_APP_ID_HERE/annotations?page=1&per_page=10&model_version_ids=MODEL_VERSION_ID_1_HERE&model_version_ids=MODEL_VERSION_ID_2_HERE" \
+  -H "Authorization: Key YOUR_PAT_HERE" 
