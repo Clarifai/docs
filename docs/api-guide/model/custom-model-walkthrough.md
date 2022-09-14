@@ -19,6 +19,7 @@ The initialization code used in the following examples is outlined in detail on 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
+
 import PythonAddImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide/model/py/add_images_with_concepts.py";
 import PythonCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/py/create_model.py";
 import PythonTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/py/train_model.py";
@@ -38,6 +39,17 @@ import JavaAddImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide
 import JavaCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/java/create_model.java";
 import JavaTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/java/train_model.java";
 import JavaPredictModel from "!!raw-loader!../../../code_snippets/api-guide/model/java/predict_with_model.java";
+
+import CurlAddImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide/model/curl/add_images_with_concepts.sh";
+import CurlCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/curl/create_model.sh";
+import CurlTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/curl/train_model.sh";
+import CurlPredictModel from "!!raw-loader!../../../code_snippets/api-guide/model/curl/predict_with_model.sh";
+
+import ExampleAddImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide/model/code_output_examples/add_images_with_concepts.js";
+import ExampleCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/code_output_examples/create_model.js";
+import ExampleTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/code_output_examples/train_model.js";
+import ExamplePredictModel from "!!raw-loader!../../../code_snippets/api-guide/model/code_output_examples/predict_with_model.js";
+import ExampleTextPredictModel from "!!raw-loader!../../../code_snippets/api-guide/model/code_output_examples/predict_with_model.txt";
 
 ## Add Images With Concepts
 
@@ -59,6 +71,10 @@ To get started training your own model, you must first add images that already c
 
 <TabItem value="grpc_java" label="gRPC Java">
     <CodeBlock className="language-java">{JavaAddImagesConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlAddImagesConcepts}</CodeBlock>
 </TabItem>
 
 <!--<TabItem value="javascript" label="Javascript">
@@ -169,150 +185,13 @@ if ($response-> isSuccessful()) {
 ```
 </TabItem>
 
-<TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "inputs": [
-      {
-        "data": {
-          "image": {
-            "url": "https://samples.clarifai.com/puppy.jpeg",
-            "allow_duplicate_url": true
-          },
-          "concepts":[
-            {
-              "id": "charlie",
-              "value": 1
-            },
-            {
-              "id": "our_wedding",
-              "value": 0
-            }
-          ]
-        }
-      },
-      {
-        "data": {
-          "image": {
-            "url": "https://samples.clarifai.com/wedding.jpg",
-            "allow_duplicate_url": true
-          },
-          "concepts":[
-            {
-              "id": "our_wedding",
-              "value": 1
-            },
-            {
-              "id": "charlie",
-              "value": 0
-            },
-            {
-              "id": "cat",
-              "value": 0
-            }
-          ]
-        }
-      }
-    ]
-  }'\
-  https://api.clarifai.com/v2/inputs
-```
-</TabItem>
-
 </Tabs>
 
 <details>
   <summary>JSON Output Example</summary>
-
-```javascript
-status {
-  code: SUCCESS
-  description: "Ok"
-  req_id: "7ff42b88ef477bb9b9ecab0b61d051ca"
-}
-inputs {
-  id: "7b708ee204284ed0a914dc37a7def8be"
-  data {
-    image {
-      url: "https://samples.clarifai.com/puppy.jpeg"
-      image_info {
-        format: "UnknownImageFormat"
-        color_mode: "UnknownColorMode"
-      }
-    }
-    concepts {
-      id: "charlie"
-      name: "charlie"
-      value: 1.0
-      app_id: "test-app"
-    }
-    concepts {
-      id: "our_wedding"
-      name: "our_wedding"
-      app_id: "test-app"
-    }
-  }
-  created_at {
-    seconds: 1646288847
-    nanos: 89138802
-  }
-  modified_at {
-    seconds: 1646288847
-    nanos: 89138802
-  }
-  status {
-    code: INPUT_DOWNLOAD_PENDING
-    description: "Download pending"
-  }
-}
-inputs {
-  id: "5571376e9d42447dafb76711669f6731"
-  data {
-    image {
-      url: "https://samples.clarifai.com/wedding.jpg"
-      image_info {
-        format: "UnknownImageFormat"
-        color_mode: "UnknownColorMode"
-      }
-    }
-    concepts {
-      id: "our_wedding"
-      name: "our_wedding"
-      value: 1.0
-      app_id: "test-app"
-    }
-    concepts {
-      id: "charlie"
-      name: "charlie"
-      app_id: "test-app"
-    }
-    concepts {
-      id: "cat"
-      name: "cat"
-      app_id: "test-app"
-    }
-  }
-  created_at {
-    seconds: 1646288847
-    nanos: 89138802
-  }
-  modified_at {
-    seconds: 1646288847
-    nanos: 89138802
-  }
-  status {
-    code: INPUT_DOWNLOAD_PENDING
-    description: "Download pending"
-  }
-}
-
-```
+    <CodeBlock className="language-js">{ExampleAddImagesConcepts}</CodeBlock>
 </details>
+
 
 ## Create a Model
 
@@ -336,6 +215,10 @@ Take note of the `model id` that is returned in the response. We'll need that fo
 
 <TabItem value="grpc_java" label="gRPC Java">
     <CodeBlock className="language-java">{JavaCreateModel}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlCreateModel}</CodeBlock>
 </TabItem>
 
 <!--<TabItem value="javascript" label="Javascript">
@@ -437,128 +320,18 @@ if ($response-> isSuccessful()) {
 ```
 </TabItem>
 
-<TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "model": {
-      "id": "pets",
-      "output_info": {
-        "data": {
-          "concepts": [
-            {
-              "id": "charlie"
-            }
-          ]
-        },
-        "output_config": {
-          "concepts_mutually_exclusive": false,
-          "closed_environment":false
-        }
-      }
-    }
-  }'\
-  https://api.clarifai.com/v2/models
-```
-</TabItem>
-
 </Tabs>
 
 <details>
   <summary>JSON Output Example</summary>
-
-```javascript
-status {
-  code: SUCCESS
-  description: "Ok"
-  req_id: "5e0b4675ea65cc53735c9ffd6d9b8f64"
-}
-model {
-  id: "my-pets"
-  name: "my-pets"
-  created_at {
-    seconds: 1646291711
-    nanos: 640607856
-  }
-  app_id: "test-app"
-  output_info {
-    output_config {
-    }
-    message: "Show output_info with: GET /models/{model_id}/output_info"
-    params {
-      fields {
-        key: "max_concepts"
-        value {
-          number_value: 20.0
-        }
-      }
-      fields {
-        key: "min_value"
-        value {
-          number_value: 0.0
-        }
-      }
-      fields {
-        key: "select_concepts"
-        value {
-          list_value {
-          }
-        }
-      }
-    }
-  }
-  model_version {
-    id: "464bec38d2a2419c8a26e5b2660a0c0b"
-    created_at {
-      seconds: 1646291711
-      nanos: 667255260
-    }
-    status {
-      code: MODEL_UNTRAINED
-      description: "Model not yet trained"
-    }
-    active_concept_count: 1
-    visibility {
-      gettable: PRIVATE
-    }
-    app_id: "test-app"
-    user_id: "ei2leoz3s3iy"
-    metadata {
-    }
-  }
-  user_id: "ei2leoz3s3iy"
-  input_info {
-    params {
-    }
-  }
-  train_info {
-    params {
-    }
-  }
-  model_type_id: "embedding-classifier"
-  visibility {
-    gettable: PRIVATE
-  }
-  metadata {
-  }
-  modified_at {
-    seconds: 1646291711
-    nanos: 640607856
-  }
-  import_info {
-  }
-}
-
-```
+    <CodeBlock className="language-js">{ExampleCreateModel}</CodeBlock>
 </details>
 
 ## Train the Model
 
-Now that you've added images with concepts, then created a model with those concepts, the next step is to train the model. When you train a model, you are telling the system to look at all the images with concepts you've provided and learn from them. This train operation is asynchronous. It may take a few seconds for your model to be fully trained and ready.
+Now that you've added images with concepts, then created a model with those concepts, the next step is to train the model. When you train a model, you are telling the system to look at all the images with concepts you've provided and learn from them. 
+
+This train operation is asynchronous. It may take a few seconds for your model to be fully trained and ready.
 
 Take note of the `model_version id` in the response. We'll need that for the next section when we predict with the model.
 
@@ -578,6 +351,10 @@ Take note of the `model_version id` in the response. We'll need that for the nex
 
 <TabItem value="grpc_java" label="gRPC Java">
     <CodeBlock className="language-java">{JavaTrainModel}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlTrainModel}</CodeBlock>
 </TabItem>
 
 <!--<TabItem value="javascript" label="Javascript">
@@ -681,108 +458,21 @@ if ($response-> isSuccessful()) {
 ```
 </TabItem>
 
-<TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  https://api.clarifai.com/v2/models/pets/versions
-```
-</TabItem>
-
 </Tabs>
 
 <details>
   <summary>JSON Output Example</summary>
-
-```javascript
-status {
-  code: SUCCESS
-  description: "Ok"
-  req_id: "d707b6c108847ccd9891e7ad98f91f98"
-}
-model {
-  id: "my-pets"
-  name: "my-pets"
-  created_at {
-    seconds: 1646291711
-    nanos: 640607000
-  }
-  app_id: "test-app"
-  output_info {
-    output_config {
-    }
-    message: "Show output_info with: GET /models/{model_id}/output_info"
-    params {
-      fields {
-        key: "max_concepts"
-        value {
-          number_value: 20.0
-        }
-      }
-      fields {
-        key: "min_value"
-        value {
-          number_value: 0.0
-        }
-      }
-      fields {
-        key: "select_concepts"
-        value {
-          list_value {
-          }
-        }
-      }
-    }
-  }
-  model_version {
-    id: "8eb21f63ba9d40c7b84ecfd664ac603d"
-    created_at {
-      seconds: 1646330065
-      nanos: 537080027
-    }
-    status {
-      code: MODEL_QUEUED_FOR_TRAINING
-      description: "Model is currently in queue for training."
-    }
-    active_concept_count: 1
-    visibility {
-      gettable: PRIVATE
-    }
-    app_id: "test-app"
-    user_id: "ei2leoz3s3iy"
-    metadata {
-    }
-  }
-  user_id: "ei2leoz3s3iy"
-  input_info {
-  }
-  train_info {
-  }
-  model_type_id: "embedding-classifier"
-  visibility {
-    gettable: PRIVATE
-  }
-  metadata {
-  }
-  modified_at {
-    seconds: 1646291711
-    nanos: 640607000
-  }
-  import_info {
-  }
-}
-
-```
+    <CodeBlock className="language-js">{ExampleTrainModel}</CodeBlock>
 </details>
 
 ## Predict With the Model
 
-Now that we have trained the model, we can start making predictions with it. In our predict call, we specify three items: the `model id`, `model version id` \(optional, defaults to the latest trained version\), and the `input` we want a prediction for.
+Now that we have trained the model, we can start making predictions with it. In our predict call, we specify three items: the `model id`, `model version id` \(optional, defaults to the latest trained version if omitted\), and the `input` we want a prediction for.
 
-:::important note
+:::tip
+
 You can repeat the above steps as often as you like. By adding more images with concepts and training, you can get the model to predict exactly how you want it to.
+
 :::
 
 <Tabs>
@@ -801,6 +491,10 @@ You can repeat the above steps as often as you like. By adding more images with 
 
 <TabItem value="grpc_java" label="gRPC Java">
     <CodeBlock className="language-java">{JavaPredictModel}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlPredictModel}</CodeBlock>
 </TabItem>
 
 <!--<TabItem value="javascript" label="Javascript">
@@ -919,149 +613,14 @@ if ($response-> isSuccessful()) {
 ```
 </TabItem>
 
-<TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "inputs": [
-      {
-        "data": {
-          "image": {
-            "url": "https://samples.clarifai.com/metro-north.jpg"
-          }
-        }
-      }
-    ]
-  }'\
-  https://api.clarifai.com/v2/models/pets/versions/{YOUR_MODEL_VERSION_ID}/outputs
-```
-</TabItem>
-
 </Tabs>
 
 <details>
   <summary>Code Output Example</summary>
-
-```text
-Predicted concepts:
-charlie 1.00
-```
+    <CodeBlock className="language-js">{ExampleTextPredictModel}</CodeBlock>
 </details>
-
 
 <details>
   <summary>JSON Output Example</summary>
-
-```javascript
-status {
-  code: SUCCESS
-  description: "Ok"
-  req_id: "db4cf89c13303aa9889a89f2ae0a91f4"
-}
-outputs {
-  id: "20ed3f59dc5b4b1e9082a7e91ff29f48"
-  status {
-    code: SUCCESS
-    description: "Ok"
-  }
-  created_at {
-    seconds: 1646333543
-    nanos: 352417324
-  }
-  model {
-    id: "my-pets"
-    name: "my-pets"
-    created_at {
-      seconds: 1646291711
-      nanos: 640607000
-    }
-    app_id: "test-app"
-    output_info {
-      output_config {
-      }
-      message: "Show output_info with: GET /models/{model_id}/output_info"
-      params {
-        fields {
-          key: "max_concepts"
-          value {
-            number_value: 20.0
-          }
-        }
-        fields {
-          key: "min_value"
-          value {
-            number_value: 0.0
-          }
-        }
-        fields {
-          key: "select_concepts"
-          value {
-            list_value {
-            }
-          }
-        }
-      }
-    }
-    model_version {
-      id: "8eb21f63ba9d40c7b84ecfd664ac603d"
-      created_at {
-        seconds: 1646330065
-        nanos: 537080000
-      }
-      status {
-        code: MODEL_TRAINED
-        description: "Model is trained and ready"
-      }
-      total_input_count: 14
-      completed_at {
-        seconds: 1646330068
-        nanos: 100250000
-      }
-      visibility {
-        gettable: PRIVATE
-      }
-      app_id: "test-app"
-      user_id: "ei2leoz3s3iy"
-      metadata {
-      }
-    }
-    user_id: "ei2leoz3s3iy"
-    input_info {
-    }
-    train_info {
-    }
-    model_type_id: "embedding-classifier"
-    visibility {
-      gettable: PRIVATE
-    }
-    modified_at {
-      seconds: 1646291711
-      nanos: 640607000
-    }
-    import_info {
-    }
-  }
-  input {
-    id: "f1ce5584c5e54653b722ac3ef163a077"
-    data {
-      image {
-        url: "https://samples.clarifai.com/puppy.jpeg"
-      }
-    }
-  }
-  data {
-    concepts {
-      id: "charlie"
-      name: "charlie"
-      value: 0.9998574256896973
-      app_id: "test-app"
-    }
-  }
-}
-
-```
+    <CodeBlock className="language-js">{ExamplePredictModel}</CodeBlock>
 </details>

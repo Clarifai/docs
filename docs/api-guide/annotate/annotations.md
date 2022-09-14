@@ -520,33 +520,7 @@ Below is an example of how to update an annotation of an image with a new concep
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-# Value of 1 means true, this concept is present.
-# Value of 0 means false, this concept is not present.
-curl -X PATCH \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "annotations": [
-      {
-        "input_id": "{YOUR_INPUT_ID}",
-        "id": "{YOUR_ANNOTATION_ID}",
-        "data": {
-          "concepts": [
-            {
-              "id": "apple",
-              "value": 1
-            }
-          ]
-        }
-      }
-    ],
-    "action":"merge"
-}'\
-  https://api.clarifai.com/v2/annotations
-```
+    <CodeBlock className="language-bash">{CurlUpdateAnnotationConcepts}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -576,40 +550,7 @@ Below is an example of how to update annotation with concepts in a region.
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-# Value of 1 means true, this concept is present.
-# region id should be the region id of this annotation before patch
-curl -X PATCH \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "annotations": [
-      {
-        "input_id": "{YOUR_INPUT_ID}",
-        "id": "{YOUR_ANNOTATION_ID}",
-        "data": {
-          "regions": [
-            {
-              "id": "{REGION_ID}",
-              "data": {
-                "concepts": [
-                  {
-                    "id": "apple",
-                    "value": 1
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      }
-    ],
-    "action":"merge"
-}'\
-  https://api.clarifai.com/v2/annotations
-```
+    <CodeBlock className="language-bash">{CurlUpdateAnnotationConceptsRegion}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -639,40 +580,7 @@ Below is an example of how to do that.
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-# Value of 1 means true, this concept is present.
-# region id should be the region id of this annotation before patch
-curl -X PATCH \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "annotations": [
-      {
-        "input_id": "{YOUR_INPUT_ID}",
-        "id": "{YOUR_ANNOTATION_ID}",
-        "data": {
-          "regions": [
-            {
-              "id": "{REGION_ID}",
-              "data": {
-                "concepts": [
-                  {
-                    "id": "apple",
-                    "value": 1
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      }
-    ],
-    "action":"merge"
-}'\
-  https://api.clarifai.com/v2/annotations
-```
+    <CodeBlock className="language-bash">{CurlUpdateAnnotationRegionCoordinates}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -700,26 +608,7 @@ Below is an example of how to update an annotation status.
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X PATCH \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "annotations": [
-      {
-        "input_id": "{YOUR_INPUT_ID}",
-        "id": "{YOUR_ANNOTATION_ID}",
-        "status": {
-          "code": "ANNOTATION_SUCCESS"
-        }
-      }
-    ],
-    "action":"merge"
-}'\
-  https://api.clarifai.com/v2/annotations
-```
+    <CodeBlock className="language-bash">{CurlUpdateAnnotationStatus}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -750,12 +639,7 @@ Below is an example of how to delete a single annotation by input ID and annotat
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X DELETE \
-  -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/inputs/{YOUR_INPUT_ID}/annotations/{YOUR_ANNOTATION_ID}
-```
+    <CodeBlock className="language-bash">{CurlDeleteAnnotationInputAnnotationIds}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -785,24 +669,14 @@ Below is an example of how to do that.
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X DELETE \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -d '
-  {
-    "input_ids":["{YOUR_INPUT_ID_1}","{YOUR_INPUT_ID_2}"],
-    "ids":["{YOUR_ANNOTATION_ID_1}", "{YOUR_ANNOTATION_ID_2}"]
-  }'\
-  https://api.clarifai.com/v2/annotations
-```
+    <CodeBlock className="language-bash">{CurlbulkDeleteAnnotationsInputAnnotationIds}</CodeBlock>
 </TabItem>
 
 </Tabs>
 
 ### Bulk Delete All Annotations by Input IDs
 
-To delete all annotations of a given input, you just need to set their input ID\(s\). This will delete all annotations for these input\(s\) EXCEPT input level annotations, which only get deleted if you delete the inputs themselves.
+To delete all annotations of a given input, you just need to set their input ID\(s\). This will delete all annotations for these input\(s\), EXCEPT the input level annotations, which only get deleted if you delete the inputs themselves.
 
 Below is an example of how to do that. 
 
@@ -825,16 +699,7 @@ Below is an example of how to do that.
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X DELETE \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -d '
-  {
-    "input_ids":["{YOUR_INPUT_ID_1}","{YOUR_INPUT_ID_2}"]
-  }'\
-  https://api.clarifai.com/v2/annotations
-```
+    <CodeBlock className="language-bash">{CurlBulkDeleteAnnotationsInputIds}</CodeBlock>
 </TabItem>
 
 </Tabs>

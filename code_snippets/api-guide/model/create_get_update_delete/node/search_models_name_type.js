@@ -30,7 +30,7 @@ stub.PostModelsSearches(
         },
         model_query: {
             name: "gen*", //This supports wild card queries like "gen*" to match "general" as an example
-            type: "concept"
+            model_type_id: "concept"
         }
     },
     metadata,

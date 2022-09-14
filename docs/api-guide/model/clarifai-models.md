@@ -12,13 +12,15 @@ Our model library is constantly growing and developing. To learn more about the 
 
 - browse our [Model Gallery](https://www.clarifai.com/models); 
 - view available models in the Portal's Model Mode \(Just navigate to Model Mode in Portal, click "Models" and select "clarifai" under "User". You will see a list of all available pre-built models for your app\);
-- or use the "Get" commands outlined in the API Guide.
+- or use the ["Get"](https://docs.clarifai.com/api-guide/model/create-get-update-and-delete#get) commands outlined in the API Guide.
 
 ## Pre-Built Clarifai Models
 
 Clarifai Models are "Trainable" machine learning models that have been developed in-house and have been thoroughly tested.
 
-Clarifai Models are ready to make predictions right out of the box. For example, our "General" model recognizes over 11,000 different concepts including objects, themes, moods, and more, with outputs in 23 different languages. Our "Food" model recognizes more than 1,000 food items in images down to the ingredient level. Before you train your own model, we suggest trying these out to see if they fit your needs.
+Clarifai Models are ready to make predictions right out of the box. For example, our "General" model recognizes over 11,000 different concepts, including objects, themes, moods, and more, with outputs in 23 different languages. 
+
+Our "Food" model recognizes more than 1,000 food items in images, down to the ingredient level. Before you train your own model, we suggest trying these out to see if they fit your needs.
 
 ## Operator Models
 
