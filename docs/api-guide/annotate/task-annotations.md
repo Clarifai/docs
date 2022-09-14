@@ -16,39 +16,12 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 import JSTaskAnnotations from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/task_annotations.html";
+import CurlTaskAnnotations from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/task_annotations.sh";
 
 <Tabs>
-<TabItem value="curl" label="cURL">
 
-```bash
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-    {
-      "annotations": [
-        {
-          "input_id": "{{asset_id}}",
-          "data": {
-            "concepts": [
-              {
-                "id": "tree",
-                "value": 1
-              },
-              {
-                "id": "water",
-                "value": 0
-              }
-            ]
-          },
-          "annotation_info": {
-            "task_id": "{{task_id}}"
-          }
-        }
-      ]
-    }'\
-  https://api.clarifai.com/v2/annotations
-```
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlTaskAnnotations}</CodeBlock>
 </TabItem>
 
 <TabItem value="js_rest" label="JavaScript (REST)">

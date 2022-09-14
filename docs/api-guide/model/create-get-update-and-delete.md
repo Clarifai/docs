@@ -11,6 +11,7 @@ sidebar_position: 5
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
+
 import PythonCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/create_model.py";
 import PythonAddConceptsModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/add_concepts_model.py";
 import PythonRemoveConceptsModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/remove_concepts_from_model.py";
@@ -87,8 +88,29 @@ import JavaTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/
 import JavaPredictModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/predict_model.java";
 import JavaSearchModelsName from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/search_models_name_type.java";
 
+import CurlCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/create_model.sh";
+import CurlAddConceptsModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/add_concepts_model.sh";
+import CurlRemoveConceptsModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/remove_concepts_from_model.sh";
+import CurlUpdateConfiguration from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/update_model_name_configuration.sh";
+import CurlListModelTypes from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/list_model_types.sh";
+import CurlGetModels from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/get_models.sh";
+import CurlGetModelID from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/get_model_by_id.sh";
+import CurlGetModelOutput from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/get_model_output_info_by_id.sh";
+import CurlListModelVersions from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/list_model_versions.sh";
+import CurlGetModelVersion from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/get_model_version_by_id.sh";
+import CurlGetModelTraining from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/get_model_training_inputs.sh";
+import CurlGetModelTrainingVersion from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/get_model_training_inputs_by_version.sh";
+import CurlDeleteModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/delete_model.sh";
+import CurlDeleteModelVersion from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/delete_model_version.sh";
+import CurlDeleteAllModels from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/delete_all_models.sh";
+import CurlTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/train_model.sh";
+import CurlPredictModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/predict_model.sh";
+import CurlSearchModelsName from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/search_models_name_type.sh";
+
 :::info
+
 The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
+
 :::
 
 ## Create
@@ -118,29 +140,7 @@ Below is an example of how you would create a classifier model with one initial 
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "model": {
-      "id": "petsID",
-      "output_info": {
-        "data": {
-          "concepts": [
-            {
-              "id": "boscoe",
-              "value": 1
-            }
-          ]
-        }
-      }
-    }
-  }'\
-  https://api.clarifai.com/v2/models
-```
+    <CodeBlock className="language-bash">{CurlCreateModel}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -168,31 +168,7 @@ You can add concepts to a model at any point. Just as you add concepts to inputs
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X PATCH \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "models": [
-      {
-        "id": "petsID",
-        "output_info": {
-          "data": {
-            "concepts": [
-              {
-                "id": "charlie"
-              }
-            ]
-          }
-        }
-      }
-    ],
-    "action": "merge"
-  }'\
-  https://api.clarifai.com/v2/models/
-```
+    <CodeBlock className="language-bash">{CurlAddConceptsModel}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -220,31 +196,7 @@ Conversely, if you'd like to remove concepts from a model, you can also do that.
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X PATCH \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "models": [
-      {
-        "id": "petsID",
-        "output_info": {
-          "data": {
-            "concepts": [
-              {
-                "id": "charlie"
-              }
-            ]
-          }
-        }
-      }
-    ],
-    "action": "remove"
-  }'\
-  https://api.clarifai.com/v2/models/
-```
+    <CodeBlock className="language-bash">{CurlRemoveConceptsModel}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -274,30 +226,7 @@ Let's change the model name to `newname` and set the model's configuration to ha
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X PATCH \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "models": [
-      {
-        "id": "petsID",
-        "name": "newname",
-        "output_info": {
-          "data": {"concepts": [{"id": "birds"}, {"id": "hurd"}]},
-          "output_config": {
-            "concepts_mutually_exclusive": true,
-            "closed_environment": true
-          }
-        }
-      }
-    ],
-    "action": "overwrite"
-  }'\
-  https://api.clarifai.com/v2/models/
-```
+    <CodeBlock className="language-bash">{CurlUpdateConfiguration}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -327,18 +256,14 @@ Learn about the available model types and their hyperparameters. This endpoint l
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X GET 'https://api.clarifai.com/v2/models/types?per_page=20&page=1' \
-    -H 'Authorization: Key YOUR_API_KEY'
-```
+    <CodeBlock className="language-bash">{CurlListModelTypes}</CodeBlock>
 </TabItem>
 
 </Tabs>
 
 ### Get Models
 
-Below is an example of how to get a list of all the models, including models you've created as well as Clarifai's models.
+Below is an example of how to get a list of all the models, including the models you've created as well as Clarifai's models.
 
 <Tabs>
 
@@ -359,12 +284,7 @@ Below is an example of how to get a list of all the models, including models you
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X GET \
-  -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/models
-```
+    <CodeBlock className="language-bash">{CurlGetModels}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -392,12 +312,7 @@ All models have unique IDs. You can get a specific model by its ID.
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X GET \
-  -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/models/petsID
-```
+    <CodeBlock className="language-bash">{CurlGetModelID}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -425,12 +340,7 @@ The output info of a model lists the concepts it contains.
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X GET \
-  -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/models/petsID/output_info
-```
+    <CodeBlock className="language-bash">{CurlGetModelOutput}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -458,19 +368,14 @@ Every time you train a model, it creates a new version. You can list all the ver
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X GET \
-  -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/models/petsID/versions
-```
+    <CodeBlock className="language-bash">{CurlListModelVersions}</CodeBlock>
 </TabItem>
 
 </Tabs>
 
 ### Get Model Version by ID
 
-To get the details of a specific model version, you must provide the `model_id` as well as the `version_id`. You can inspect the model version status to determine if your model is trained or still training.
+To get the details of a specific model version, you must provide the `model_id` as well as the `version_id` parameters. You can inspect the model version status to determine if your model is trained or still training.
 
 <Tabs>
 
@@ -491,12 +396,7 @@ To get the details of a specific model version, you must provide the `model_id` 
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X GET \
-  -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/models/petsID/versions/{YOUR_MODEL_VERSION_ID}
-```
+    <CodeBlock className="language-bash">{CurlGetModelVersion}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -524,12 +424,7 @@ You can list all the inputs that were used to train the model.
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X GET \
-  -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/models/petsID/inputs
-```
+    <CodeBlock className="language-bash">{CurlGetModelTraining}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -557,12 +452,7 @@ You can also list all the inputs that were used to train a specific model versio
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X GET \
-  -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/models/petsID/versions/{YOUR_MODEL_VERSION_ID}/inputs
-```
+    <CodeBlock className="language-bash">{CurlGetModelTrainingVersion}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -571,7 +461,7 @@ curl -X GET \
 
 ### Delete a Model
 
-You can delete a model using the `model_id`.
+You can delete a model by using the `model_id` parameter.
 
 <Tabs>
 
@@ -592,19 +482,14 @@ You can delete a model using the `model_id`.
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X DELETE \
-  -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/models/petsID
-```
+    <CodeBlock className="language-bash">{CurlDeleteModel}</CodeBlock>
 </TabItem>
 
 </Tabs>
 
 ### Delete a Model Version
 
-You can also delete a specific version of a model with the `model_id` and `version_id`.
+You can also delete a specific version of a model with the `model_id` and `version_id` parameters.
 
 <Tabs>
 
@@ -625,12 +510,7 @@ You can also delete a specific version of a model with the `model_id` and `versi
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X DELETE \
-  -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/models/petsID/versions/{YOUR_MODEL_VERSION_ID}
-```
+    <CodeBlock className="language-bash">{CurlDeleteModelVersion}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -640,7 +520,9 @@ curl -X DELETE \
 If you would like to delete all models associated with an application, you can also do that. 
 
 :::caution
+
 Please proceed with extreme caution as deleted models cannot be recovered.
+
 :::
 
 <Tabs>
@@ -662,12 +544,7 @@ Please proceed with extreme caution as deleted models cannot be recovered.
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X DELETE \
-  -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/models/
-```
+    <CodeBlock className="language-bash">{CurlDeleteAllModels}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -678,8 +555,10 @@ curl -X DELETE \
 
 When you train a model, you are telling the system to look at successfully indexed images with concepts you've provided and learn from them. This train operation is asynchronous. It may take a few seconds for your model to be fully trained and ready.
 
-:::important note
+:::tip
+
 You can repeat this operation as often as you like. By adding more images with concepts and training, you can get the model to predict exactly how you want it to.
+
 :::
 
 <Tabs>
@@ -701,13 +580,7 @@ You can repeat this operation as often as you like. By adding more images with c
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  https://api.clarifai.com/v2/models/petsID/versions
-```
+    <CodeBlock className="language-bash">{CurlTrainModel}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -737,28 +610,7 @@ Once you have trained a model, you are ready to use the new model to make predic
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "inputs": [
-      {
-        "data": {
-          "image": {
-            "url": "https://samples.clarifai.com/puppy.jpeg"
-          }
-        }
-      }
-    ]
-  }'\
-  https://api.clarifai.com/v2/models/petsID/outputs
-
-# Model version defaults to latest. If you want to specify the model version, use this URL:
-# https://api.clarifai.com/v2/models/petsID/versions/{YOUR_MODEL_VERSION_ID}/outputs
-```
+    <CodeBlock className="language-bash">{CurlPredictModel}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -788,20 +640,7 @@ You can search all your models by name and type of model.
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "model_query": {
-      "name": "gen*",
-      "type": "concept"
-    }
-  }'\
-  https://api.clarifai.com/v2/models/searches
-```
+    <CodeBlock className="language-bash">{CurlSearchModelsName}</CodeBlock>
 </TabItem>
 
 </Tabs>

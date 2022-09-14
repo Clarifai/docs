@@ -13,6 +13,7 @@ Tasks are a powerful tool that can help your team to annotate inputs from your a
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
+
 import JSNonAssignedTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/non_assigned_task.html";
 import JSAssignedTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/assigned_task.html";
 import JSTaskPartitionedWorkerStrategy from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/task_partitioned_worker_strategy.html";
@@ -24,6 +25,17 @@ import JSListTasksAssignedUserReview from "!!raw-loader!../../../code_snippets/a
 import JSUpdateTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/update_task.html";
 import JSDeleteMultipleTasks from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/delete_multiple_tasks.html";
 
+import CurlNonAssignedTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/non_assigned_task.sh";
+import CurlAssignedTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/assigned_task.sh";
+import CurlTaskPartitionedWorkerStrategy from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/task_partitioned_worker_strategy.sh";
+import CurlConsensusReview from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/task_consensus_review.sh";
+import CurlGetTaskByID from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/get_task_by_id.sh";
+import CurlListAllTasks from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/list_all_tasks.sh";
+import CurlListTasksAssignedUser from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/list_tasks_assigned_user.sh";
+import CurlListTasksAssignedUserReview from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/list_tasks_assigned_user_review.sh";
+import CurlUpdateTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/update_task.sh";
+import CurlDeleteMultipleTasks from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/delete_multiple_tasks.sh";
+
 ## Create
 
 To create a new task in your app, you `POST` the task information to `v2/task` endpoint.
@@ -33,36 +45,9 @@ To create a new task in your app, you `POST` the task information to `v2/task` e
 A task should be assigned to a list of users, but it's not required. The following code will create a non-assigned task.
 
 <Tabs>
-<TabItem value="curl" label="cURL">
 
-```text
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-      "tasks": [
-          {
-              "type": "CONCEPTS_CLASSIFICATION",
-              "name": "Annotate {{concept_id}}",
-              "worker": {
-                  "strategy": "FULL"
-              },
-              "concept_ids": [
-                  "{{concept_id}}"
-              ],
-              "input_source": {
-                  "type": "ALL_INPUTS"
-              },
-              "sample_ms": 1000,
-              "review": {
-                  "strategy": "NONE"
-              }
-          }
-      ]
-  }'\
-  https://api.clarifai.com/v2/tasks
-```
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlNonAssignedTask}</CodeBlock>
 </TabItem>
 
 <TabItem value="js_rest" label="JavaScript (REST)">
@@ -76,45 +61,9 @@ curl -X POST \
 A task should be assigned to a list of users. These users will do the work, so they're also called workers. A task may also be assigned to a list of users for review.
 
 <Tabs>
-<TabItem value="curl" label="cURL">
 
-```text
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-    {
-        "tasks": [
-            {
-                "type": "CONCEPTS_CLASSIFICATION",
-                "name": "Annotate {{concept_id}}",
-                "worker": {
-                    "strategy": "FULL",
-                    "users": [
-                        {"id": "{{worker_user_id}}"}
-                    ]
-                },
-                "concept_ids": [
-                    "{{concept_id}}"
-                ],
-                "input_source": {
-                    "type": "ALL_INPUTS"
-                },
-                "sample_ms": 1000,
-                "review": {
-                    "strategy": "MANUAL",
-                    "manual_strategy_info": {
-                        "sample_percentage": 0.5
-                    },
-                    "users": [
-                        {"id": "{{reviewer_user_id}}"}
-                    ]
-                }
-            }
-        ]
-    }'\
-  https://api.clarifai.com/v2/tasks
-```
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlAssignedTask}</CodeBlock>
 </TabItem>
 
 <TabItem value="js_rest" label="JavaScript (REST)">
@@ -140,52 +89,13 @@ If you wish the work to be distributed between workers, then you can select the 
 In the following example, there are two workers:
 
 * `workers_per_input`: each input will be assigned to 1 worker
-* `weights.{{user_id1}}`: the first worker will get 90% of inputs
-* `weights.{{user_id2}}`: the second worker will get 10% of inputs
+* `weights.user_id_1`: the first worker will get 90% of inputs
+* `weights.user_id_2`: the second worker will get 10% of inputs
 
 <Tabs>
-<TabItem value="curl" label="cURL">
 
-```text
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-    {
-        "tasks": [
-            {
-                "type": "CONCEPTS_CLASSIFICATION",
-                "name": "Annotate {{concept_id}}",
-                "worker": {
-                    "strategy": "PARTITIONED",
-                    "users": [
-                        {"id": "{{user_id1}}"},
-                        {"id": "{{user_id2}}"}
-                    ],
-                    "partitioned_strategy_info": {
-                        "type": "WEIGHTED",
-                        "workers_per_input": 1,
-                        "weights": {
-                            "{{user_id1}}": 90,
-                            "{{user_id2}}": 10
-                        }
-                    }
-                },
-                "concept_ids": [
-                    "{{concept_id}}"
-                ],
-                "input_source": {
-                    "type": "ALL_INPUTS"
-                },
-                "sample_ms": 1000,
-                "review": {
-                    "strategy": "NONE"
-                }
-            }
-        ]
-    }'\
-  https://api.clarifai.com/v2/tasks
-```
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlTaskPartitionedWorkerStrategy}</CodeBlock>
 </TabItem>
 
 <TabItem value="js_rest" label="JavaScript (REST)">
@@ -195,8 +105,10 @@ curl -X POST \
 </Tabs>
 
 :::info
+
 * It is not required for the weights to add up to 100. For example, the weights \[9, 1\] are equivalent with weights \[90, 10\].
 * The partitioning is approximate. This means that the number of assigned inputs to each worker may have a small error margin, but it will be close to the assigned weight percentage.
+
 :::
 
 ## Task With Consensus Review
@@ -214,56 +126,9 @@ We recommend to create tasks with `CONSENSUS` review strategy. When enough worke
 Note that an approval threshold must be set. For example, in case of 3 workers and `approval_threshold` set to 2, if an input is labeled in the same way by 2 workers, they form a majority and the group reaches a consensus.
 
 <Tabs>
-<TabItem value="curl" label="cURL">
 
-```text
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-    {
-        "tasks": [
-            {
-                "type": "CONCEPTS_CLASSIFICATION",
-                "name": "Annotate {{concept_id}}",
-                "worker": {
-                    "strategy": "PARTITIONED",
-                    "users": [
-                        {"id": "{{user_id1}}"},
-                        {"id": "{{user_id2}}"},
-                        {"id": "{{user_id3}}"}
-                    ],
-                    "partitioned_strategy_info": {
-                        "type": "WEIGHTED",
-                        "workers_per_input": 1,
-                        "weights": {
-                            "{{user_id1}}": 1,
-                            "{{user_id2}}": 1,
-                            "{{user_id3}}": 1
-                        }
-                    }
-                },
-                "concept_ids": [
-                    "{{concept_id}}"
-                ],
-                "input_source": {
-                    "type": "ALL_INPUTS"
-                },
-                "sample_ms": 1000,
-                "review": {
-                    "strategy": "CONSENSUS",
-                    "consensus_strategy_info": {
-                        "approval_threshold": 2
-                    },
-                    "users": [
-                        {"id": "{{user_id4}}"}
-                    ]
-                }
-            }
-        ]
-    }'\
-  https://api.clarifai.com/v2/tasks
-```
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlConsensusReview}</CodeBlock>
 </TabItem>
 
 <TabItem value="js_rest" label="JavaScript (REST)">
@@ -279,14 +144,9 @@ curl -X POST \
 You can get a singular task by its ID. The ID was automatically generated when it was created.
 
 <Tabs>
-<TabItem value="curl" label="cURL">
 
-```text
-curl -X GET \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  https://api.clarifai.com/v2/tasks/{task_id}
-```
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlGetTaskByID}</CodeBlock>
 </TabItem>
 
 <TabItem value="js_rest" label="JavaScript (REST)">
@@ -300,14 +160,9 @@ curl -X GET \
 You can get a list of tasks within your app with a `GET` call. This call supports [pagination](https://docs.clarifai.com/api-guide/advanced-topics/pagination/).
 
 <Tabs>
-<TabItem value="curl" label="cURL">
 
-```text
-curl -X GET \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  https://api.clarifai.com/v2/tasks
-```
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlListAllTasks}</CodeBlock>
 </TabItem>
 
 <TabItem value="js_rest" label="JavaScript (REST)">
@@ -321,14 +176,9 @@ curl -X GET \
 Get only the tasks assigned to a specific user for work.
 
 <Tabs>
-<TabItem value="curl" label="cURL">
 
-```text
-curl -X GET \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  https://api.clarifai.com/v2/tasks?worker_user_ids={{user_id}}
-```
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlListTasksAssignedUser}</CodeBlock>
 </TabItem>
 
 <TabItem value="js_rest" label="JavaScript (REST)">
@@ -342,14 +192,9 @@ curl -X GET \
 Get only the tasks assigned to a specific user for review.
 
 <Tabs>
-<TabItem value="curl" label="cURL">
 
-```text
-curl -X GET \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  https://api.clarifai.com/v2/tasks?review_user_ids={{user_id}}
-```
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlListTasksAssignedUserReview}</CodeBlock>
 </TabItem>
 
 <TabItem value="js_rest" label="JavaScript (REST)">
@@ -365,59 +210,9 @@ Currently, we only support updating a task by providing all information at once.
 ### Update Task
 
 <Tabs>
-<TabItem value="curl" label="cURL">
 
-```text
-curl -X PATCH \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-    {
-        "action": "overwrite",
-        "tasks": [
-            {
-                "id": "{{task_id}}",
-                "type": "CONCEPTS_CLASSIFICATION",
-                "name": "Annotate {{concept_id}}",
-                "worker": {
-                    "strategy": "PARTITIONED",
-                    "users": [
-                        {"id": "{{user_id1}}"},
-                        {"id": "{{user_id2}}"}
-                    ],
-                    "partitioned_strategy_info": {
-                        "type": "WEIGHTED",
-                        "workers_per_input": 1,
-                        "weights": {
-                            "{{user_id1}}": 1,
-                            "{{user_id2}}": 1
-                        }
-                    }
-                },
-                "concept_ids": [
-                    "{{concept_id}}"
-                ],
-                "input_source": {
-                    "type": "ALL_INPUTS"
-                },
-                "sample_ms": 1000,
-                "review": {
-                    "strategy": "CONSENSUS",
-                    "consensus_strategy_info": {
-                        "approval_threshold": 2
-                    },
-                    "users": [
-                        {"id": "{{user_id3}}"}
-                    ]
-                },
-                "status": {
-                    "code": "TASK_DONE"
-                }
-            }
-        ]
-    }'\
-  https://api.clarifai.com/v2/tasks
-```
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlUpdateTask}</CodeBlock>
 </TabItem>
 
 <TabItem value="js_rest" label="JavaScript (REST)">
@@ -433,18 +228,9 @@ curl -X PATCH \
 You can delete tasks using their IDs.
 
 <Tabs>
-<TabItem value="curl" label="cURL">
 
-```text
-curl -X DELETE \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-    {
-        "ids":["{{task_id}}"]
-    }'\
-  https://api.clarifai.com/v2/tasks
-```
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlDeleteMultipleTasks}</CodeBlock>
 </TabItem>
 
 <TabItem value="js_rest" label="JavaScript (REST)">

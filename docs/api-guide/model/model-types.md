@@ -14,7 +14,7 @@ This page describes some important model types that you should know when working
 
 For a listing of the models available to you:
 
-* Make a `GET` call to the `/models/types` API method. The method responds with all the available model types.
+* Make a [`GET`](https://docs.clarifai.com/api-guide/model/create-get-update-and-delete/#list-model-types) call to the `/models/types` API method. The method responds with all the available model types.
 * You can then choose any one of the model types and make a `POST` request to the `/models` API method with the payload specified in the response of the chosen model type.
 
 ## Trainable Models
