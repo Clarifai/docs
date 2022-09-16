@@ -126,7 +126,7 @@ stub.PostWorkflows(
                                 node_id: NODE_ID_4 // mapper
                             }
                         ]
-                    },
+                    }
                 ]
             }
         ]

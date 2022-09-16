@@ -84,6 +84,12 @@ import JavaCreateEmbedder from "!!raw-loader!../../../code_snippets/api-guide/mo
 import JavaCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_workflow_deep_trained_model.java";
 import JavaUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.java";
 
+import CurlCreateClassifier from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_visual_classifier.sh";
+import CurlCreateDetector from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_visual_detector.sh";
+import CurlCreateEmbedder from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_visual_embedder.sh";
+import CurlCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_workflow_deep_trained_model.sh";
+import CurlUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.sh";
+
 :::info
 The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 :::
@@ -93,7 +99,7 @@ The initialization code used in the following examples is outlined in detail on 
 
 ### Create a Visual Classifier
 
-Use a visual classifier model if you would like to classify images and videos frames into set of concepts.
+Use a visual classifier model if you would like to classify images and video frames into set of concepts.
 
 <Tabs>
 
@@ -110,41 +116,14 @@ Use a visual classifier model if you would like to classify images and videos fr
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST 'https://api.clarifai.com/v2/models' \
-    -H 'Authorization: Key YOUR_API_KEY' \
-    -H 'Content-Type: application/json' \
-    --data-raw '{
-        "model": {
-            "id": "lawrence-1591638385",
-            "model_type_id": "visual-classifier",
-            "train_info": {
-                "params": {
-                    "template": "classification_cifar10_v1",
-                    "num_epochs": 2
-                }
-            },
-            "output_info": {
-                "data": {
-                    "concepts": [
-                        {"id":"ferrari23"},
-                        {"id":"outdoors23"}
-                    ]
-                },
-                "output_config": {
-                  "closed_environment" : true
-                }
-            }
-        }
-    }'
-```
+    <CodeBlock className="language-bash">{CurlCreateClassifier}</CodeBlock>
 </TabItem>
+
 </Tabs>
 
 ### Create a Visual Detector
 
-Create a visual detector to detect bounding box regions in images or video frames and then classify the detected images. You can also send the image regions to an image cropper model to create a new cropped image.
+Create a visual detector model to detect bounding box regions in images or video frames and then classify the detected images. You can also send the image regions to an image cropper model to create a new cropped image.
 
 <Tabs>
 
@@ -161,41 +140,14 @@ Create a visual detector to detect bounding box regions in images or video frame
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST 'https://api.clarifai.com/v2/models' \
-    -H 'Authorization: Key YOUR_API_KEY' \
-    -H 'Content-Type: application/json' \
-    --data-raw '{
-        "model": {
-            "id": "detection-test-1591638385",
-            "model_type_id": "visual-detector",
-            "train_info": {
-                "params": {
-                    "template": "Clarifai-InceptionV2",
-                    "num_epochs": 2
-                }
-            },
-            "output_info": {
-                "data": {
-                    "concepts": [
-                        {"id":"ferrari23"},
-                        {"id":"outdoors23"}
-                    ]
-                },
-                "output_config": {
-                  "closed_environment" : true
-                }
-            }
-        }
-    }'
-```
+    <CodeBlock className="language-bash">{CurlCreateDetector}</CodeBlock>
 </TabItem>
+
 </Tabs>
 
 ### Create a Visual Embedder
 
-Create a visual embedding model to transform images and videos frames into "high level" vector representation understood by our AI models. These embeddings enable visual search and can be used as base models to train other models.
+Create a visual embedding model to transform images and video frames into "high level" vector representation understood by our AI models. These embeddings enable visual search and can be used as base models to train other models.
 
 <Tabs>
 
@@ -212,36 +164,9 @@ Create a visual embedding model to transform images and videos frames into "high
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST 'https://api.clarifai.com/v2/models' \
-    -H 'Authorization: Key YOUR_API_KEY' \
-    -H 'Content-Type: application/json' \
-    --data-raw '{
-        "model": {
-            "id": "embed-test-1591638385",
-            "model_type_id": "visual-embedder",
-            "train_info": {
-                "params": {
-                    "template": "classification_basemodel_v1_embed",
-                    "num_epochs": 2
-                }
-            },
-            "output_info": {
-                "data": {
-                    "concepts": [
-                        {"id":"ferrari23"},
-                        {"id":"outdoors23"}
-                    ]
-                },
-                "output_config": {
-                  "closed_environment" : true
-                }
-            }
-        }
-    }'
-```
+    <CodeBlock className="language-bash">{CurlCreateEmbedder}</CodeBlock>
 </TabItem>
+
 </Tabs>
 
 ### Create a Workflow 
@@ -263,45 +188,9 @@ Put your new deep-trained model to work by adding it to a workflow. Below is an 
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST 'https://api.clarifai.com/v2/workflows' \
-    -H 'Authorization: Key YOUR_API_KEY' \
-    -H 'Content-Type: application/json' \
-    --data-raw '{
-        "workflows": [
-            {
-                "id": "my-new-workflow-id",
-                "nodes": [
-                    {
-                        "id": "embed",
-                        "model": {
-                            "id": "{YOUR_EMBED_MODEL_ID}",
-                            "model_version": {
-                                "id": "{YOUR_EMBED_MODEL_VERSION_ID}"
-                            }
-                        }
-                    },
-                    {
-                        "id": "my-custom-model",
-                        "model": {
-                            "id": "{YOUR_CUSTOM_MODEL_ID}",
-                            "model_version": {
-                                "id": "{YOUR_CUSTOM_MODEL_VERSION_ID}"
-                            }
-                        },
-                        "node_inputs": [
-                            {
-                                "node_id": "embed"
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    }'
-```
+    <CodeBlock className="language-bash">{CurlCreateWorkflow}</CodeBlock>
 </TabItem>
+
 </Tabs>
 
 ## Update
@@ -327,21 +216,8 @@ Below is an example of how to update your default workflow with a deep trained m
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X PATCH 'https://api.clarifai.com/v2/users/me/apps' \
-    -H 'Authorization: Key {{PAT}}' \
-    -H 'Content-Type: application/json' \
-    --data-raw '{
-        "action": "overwrite",
-        "apps": [
-            {
-                "id": "{{app}}",
-                "default_workflow_id": "auto-annotation-workflow-ID"
-            }
-        ]
-    }'
-```
+    <CodeBlock className="language-bash">{CurlUpdateWorkflow}</CodeBlock>
 </TabItem>
+
 </Tabs>
 
