@@ -12,7 +12,7 @@ The outputs from one model can be used as inputs for another model. This allows 
 
 ## Supported Input and Output Types
 
-To view your available models, just open your application and click the **Model Mode** icon on the left-hand side of the screen. From there, just click the **Create a Custom Model** button on the top right-hand corner of the screen.
+To view your available models, just open your application in the Portal and click the **Model Mode** icon on the left-hand side of the screen. From there, just click the **Create a Custom Model** button on the top right-hand corner of the screen.
 
 Different models accept different types of inputs and return different types of outputs. They are named after the fields in the Data object of our API. This object uses inputs, annotations, models, and workflows. 
 
@@ -55,6 +55,9 @@ import NodeSuppressNodes from "!!raw-loader!../../../code_snippets/api-guide/wor
 import JavaSampleNodes from "!!raw-loader!../../../code_snippets/api-guide/workflows/input_nodes/sample_workflow_multiple_nodes.java";
 import JavaSuppressNodes from "!!raw-loader!../../../code_snippets/api-guide/workflows/input_nodes/suppress_output_from_nodes.java";
 
+import CurlSampleNodes from "!!raw-loader!../../../code_snippets/api-guide/workflows/input_nodes/sample_workflow_multiple_nodes.sh";
+import CurlSuppressNodes from "!!raw-loader!../../../code_snippets/api-guide/workflows/input_nodes/suppress_output_from_nodes.sh";
+
 ### Sample Workflow With Multiple Connected Nodes
 
 The following is an example of how to build a workflow with multiple connected nodes. Note that model IDs and model version IDs from the public `clarifai/main` application are fixed, so they are already hard-coded in the code examples below. It is possible to use other public model or model version IDs.
@@ -78,90 +81,7 @@ The following is an example of how to build a workflow with multiple connected n
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/workflows' \
-    -H 'Authorization: Key {{PAT}}' \
-    -H 'Content-Type: application/json' \
-    --data-raw '{
-        "workflows": [
-            {
-                "id": "auto-annotation-workflow-id",
-                "nodes": [
-                    {
-                        "id": "general-embed",
-                        "model": {
-                            "id": "{YOUR_GENERAL_EMBED_MODEL_ID}",
-                            "model_version": {
-                                "id": "{YOUR_GENERAL_EMBED_MODEL_VERSION_ID}"
-                            }
-                        }
-                    },
-                    {
-                        "id": "general-concept",
-                        "model": {
-                            "id": "{YOUR_GENERAL_CONCEPT_MODEL_ID}",
-                            "model_version": {
-                                "id": "{YOUR_GENERAL_CONCEPT_MODEL_VERSION_ID}"
-                            }
-                        }
-                    },
-                    {
-                        "id": "general-cluster",
-                        "model": {
-                            "id": "{YOUR_GENERAL_CLUSTER_MODEL_ID}",
-                            "model_version": {
-                                "id": "{YOUR_GENERAL_CLUSTER_MODEL_VERSION_ID}"
-                            }
-                        }
-                    },
-                    {
-                        "id": "mapper",
-                        "model": {
-                            "id": "synonym-model-id",
-                            "model_version": {
-                                "id": "{YOUR_MAPPER_MODEL_VERSION_ID}"
-                            }
-                        },
-                        "node_inputs": [
-                            {
-                                "node_id": "general-concept"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "greater-than",
-                        "model": {
-                            "id": "greater-than-model-id",
-                            "model_version": {
-                                "id": "{YOUR_GREATER_THAN_MODEL_VERSION_ID}"
-                            }
-                        },
-                        "node_inputs": [
-                            {
-                                "node_id": "mapper"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "less-than",
-                        "model": {
-                            "id": "less-than-model-id",
-                            "model_version": {
-                                "id": "{YOUR_LESS_THAN_MODEL_VERSION_ID}"
-                            }
-                        },
-                        "node_inputs": [
-                            {
-                                "node_id": "mapper"
-                            }
-                        ]
-                    },
-                ]
-            }
-        ]
-    }'
-```
+    <CodeBlock className="language-bash">{CurlSampleNodes}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -191,47 +111,7 @@ By default, this endpoint will be set to false, meaning that we do not suppress 
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-POST /v2/workflows HTTP/1.1
-Host: https://api-dev.clarifai.com
-Content-Type: application/json
-Authorization: Key f897095e22b144f482b9a13a2151e5bd
-
-{
-  "workflows": [
-    {
-      "id": "predict-cluster-only",
-      "nodes": [
-        {
-          "id": "general-embed",
-          "model": {
-            "id": "bbb5f41425b8468d9b7a554ff10f8581",
-            "model_version": {
-              "id": "bb186755eda04f9cbb6fe32e816be104"
-            }
-          },
-          "suppress_output": true
-        },
-        {
-          "id": "general-cluster",
-          "node_inputs": [
-            {
-              "node_id": "general-embed"
-            }
-          ],
-          "model": {
-            "id": "cccbe437d6e54e2bb911c6aa292fb072",
-            "model_version": {
-              "id": "cc2074cff6dc4c02b6f4e1b8606dcb54"
-            }
-          }
-        }
-      ]
-    }
-  ]
-}
-```
+    <CodeBlock className="language-bash">{CurlSuppressNodes}</CodeBlock>
 </TabItem>
 
 </Tabs>
