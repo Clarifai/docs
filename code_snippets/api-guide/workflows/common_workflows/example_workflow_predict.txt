@@ -1,0 +1,42 @@
+Predicted concepts for the model `food-items-v1.0`
+    wine 0.95
+    beer 0.90
+    pizza 0.84
+    coffee 0.66
+    meat 0.63
+    barbecue 0.61
+    beef 0.56
+    fish 0.56
+    steak 0.55
+    gastronomy 0.53
+    chicken 0.49
+    water 0.46
+    lobster 0.45
+    oil 0.43
+    tea 0.43
+    pork 0.42
+    cheese 0.39
+    tuna 0.37
+    olive 0.37
+    turkey 0.35
+Predicted concepts for the model `general`
+    train 1.00
+    railway 1.00
+    transportation system 1.00
+    locomotive 0.99
+    station 0.99
+    travel 0.99
+    subway system 0.98
+    commuter 0.97
+    traffic 0.97
+    blur 0.96
+    urban 0.96
+    no person 0.96
+    platform 0.96
+    business 0.96
+    track 0.94
+    city 0.94
+    fast 0.94
+    road 0.93
+    terminal 0.92
+    public 0.92

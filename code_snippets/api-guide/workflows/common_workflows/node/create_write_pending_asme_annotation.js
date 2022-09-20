@@ -10,6 +10,7 @@ const USER_ID = 'YOUR_USER_ID_HERE';
 const PAT = 'YOUR_PAT_HERE';
 const APP_ID = 'YOUR_APP_ID_HERE';
 // Change these to create your own annotation writer model
+const ANNOTATION_USER_ID = 'ANNOTATION_USER_ID_HERE';
 const MODEL_ID = 'write-pending-model-id';
 const MODEL_TYPE_ID = 'annotation-writer';
 
@@ -27,7 +28,7 @@ metadata.set("authorization", "Key " + PAT);
 
 const params = {
     annotation_status: "ANNOTATION_SUCCESS",
-    annotation_user_id: USER_ID
+    annotation_user_id: ANNOTATION_USER_ID
 }
 
 stub.PostModels(

@@ -35,9 +35,11 @@ The initialization code used in the following example is outlined in detail on t
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
+
 import PythonVTRWorkflow from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/building_vtr_workflow.py";
 import NodeVTRWorkflow from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/building_vtr_workflow.js";
 import JavaVTRWorkflow from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/building_vtr_workflow.java";
+import CurlVTRWorkflow from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/building_vtr_workflow.sh";
 
 ## Building a VTR Workflow
 
@@ -56,58 +58,8 @@ import JavaVTRWorkflow from "!!raw-loader!../../../../code_snippets/api-guide/wo
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/workflows' \
-    -H 'Authorization: Key {{PAT}}' \
-    -H 'Content-Type: application/json' \
-    --data-raw '{
-        "workflows": [
-            {
-                "id": "visual-text-recognition-id",
-                "nodes": [
-                    {
-                        "id": "detect-concept",
-                        "model": {
-                            "id": "2419e2eae04d04f820e5cf3aba42d0c7",
-                            "model_version": {
-                                "id": "75a5b92a0dec436a891b5ad224ac9170"
-                            }
-                        }
-                    },
-                    {
-                        "id": "image-crop",
-                        "model": {
-                            "id": "ce3f5832af7a4e56ae310d696cbbefd8",
-                            "model_version": {
-                                "id": "a78efb13f7774433aa2fd4864f41f0e6"
-                            }
-                        },
-                        "node_inputs": [
-                            {
-                                "node_id": "general-concept"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "image-to-text",
-                        "model": {
-                            "id": "9fe78b4150a52794f86f237770141b33",
-                            "model_version": {
-                                "id": "d94413e582f341f68884cac72dbd2c7b"
-                            }
-                        },
-                        "node_inputs": [
-                            {
-                                "node_id": "image-crop"
-                            }
-                        ]
-                    },
-                ]
-            }
-        ]
-    }'
-```
+    <CodeBlock className="language-bash">{CurlVTRWorkflow}</CodeBlock>
 </TabItem>
+
 </Tabs>
 

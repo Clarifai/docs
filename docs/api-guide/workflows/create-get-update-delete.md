@@ -18,6 +18,7 @@ The initialization code used in the following examples is outlined in detail on 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
+
 import PythonCreate from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/create.py";
 import PythonWorkflowPredict from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/workflow_predict.py";
 import PythonGetWorkflowsApp from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/get_workflows_in_app.py";
@@ -50,6 +51,14 @@ import JavaPatchWorkflow from "!!raw-loader!../../../code_snippets/api-guide/wor
 import JavaDeleteWorkflowID from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/delete_workflow_id.java";
 import JavaDeleteAllWorkflows from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/delete_all_workflows.java";
 
+import CurlCreate from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/create.sh";
+import CurlWorkflowPredict from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/workflow_predict.sh";
+import CurlGetWorkflowsApp from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/get_workflows_in_app.sh";
+import CurlGetWorkflowID from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/get_workflow_specific_id.sh";
+import CurlPatchWorkflow from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/patch_workflow.sh";
+import CurlDeleteWorkflowID from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/delete_workflow_id.sh";
+import CurlDeleteAllWorkflows from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/delete_all_workflows.sh";
+
 ## Create
 
 To create a new custom workflow, specify a list of model IDs that are to be included in the workflow. Since a model can have several versions, each model ID also requires a specific model version ID.
@@ -73,39 +82,7 @@ To create a new custom workflow, specify a list of model IDs that are to be incl
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-# The first model is the Clarifai's Food model, and the second the Clarifai's General model.
-
-curl -X POST 'https://api.clarifai.com/v2/workflows' \
-    -H 'Content-Type: application/json' \
-    -H 'Authorization: Key YOUR_API_KEY' \
-    --data-raw '{
-      "workflows": [{
-        "id": "my-custom-workflow",
-        "nodes": [
-          {
-            "id": "food-concepts",
-            "model": {
-              "id": "bd367be194cf45149e75f01d59f77ba7",
-              "model_version": {
-                "id": "dfebc169854e429086aceb8368662641"
-              }
-            }
-          },
-          {
-            "id": "general-concepts",
-            "model": {
-              "id": "aaa03c23b3724a16a56b629203edc62c",
-              "model_version": {
-                "id": "aa9ca48295b37401f8af92ad1af0d91d"
-              }
-            }
-          }
-        ]
-      }]
-    }'
-```
+    <CodeBlock className="language-bash">{CurlCreate}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -132,6 +109,11 @@ You can predict using a workflow. The response will contain the predictions each
     <CodeBlock className="language-java">{JavaWorkflowPredict}</CodeBlock>
 </TabItem>
 
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlWorkflowPredict}</CodeBlock>
+</TabItem>
+
+<!--
 <TabItem value="csharp" label="C#">
 
 ```csharp
@@ -177,27 +159,7 @@ foreach (var concept in response.Outputs[0].Data.Concepts)
 }
 ```
 </TabItem>
-
-<TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST \
-  -H 'authorization: Key YOUR_API_KEY' \
-  -H 'content-type: application/json' \
-  -d '{
-    "inputs": [
-        {
-          "data": {
-            "image": {
-              "url": "https://samples.clarifai.com/metro-north.jpg"
-          }
-        }
-      }
-    ]
-}'\
-https://api.clarifai.com/v2/workflows/{YOUR_WORKFLOW_ID}/results
-```
-</TabItem>
+-->
 
 </Tabs>
 
@@ -226,12 +188,7 @@ You can return all custom workflows in your app.
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X GET 'https://api.clarifai.com/v2/workflows' \
-    -H 'Content-Type: application/json' \
-    -H 'Authorization: Key YOUR_API_KEY'
-```
+    <CodeBlock className="language-bash">{CurlGetWorkflowsApp}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -259,12 +216,7 @@ You can return information about a specific workflow.
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X GET 'https://api.clarifai.com/v2/workflows/my-custom-workflow' \
-    -H 'Content-Type: application/json' \
-    -H 'Authorization: Key YOUR_API_KEY'
-```
+    <CodeBlock className="language-bash">{CurlGetWorkflowID}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -296,51 +248,7 @@ The possible actions are `overwrite`, `merge`, and `remove`.
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-# Supported actions are: overwrite, merge, remove.
-
-curl -X PATCH 'https://api.clarifai.com/v2/workflows' \
-    -H 'Content-Type: application/json' \
-    -H 'Authorization: Key YOUR_API_KEY' \
-    --data-raw '{
-        "action": "overwrite",
-        "workflows": [
-            {
-                "id": "my-custom-workflow",
-                "nodes": [
-                    {
-                        "id": "travel-concepts",
-                        "model": {
-                            "id": "ccc28c313d69466f836ab83287a54ed9",
-                            "model_version": {
-                                "id": "cce28c313d69466f836ab83287a54ed9"
-                            }
-                        }
-                    },
-                    {
-                        "id": "nsfw-concepts",
-                        "model": {
-                            "id": "ccc76d86d2004ed1a38ba0cf39ecb4b1",
-                            "model_version": {
-                                "id": "cc76a92beaeb4d8495a58ba197998158"
-                            }
-                        }
-                    },
-                    {
-                        "id": "wedding-concepts",
-                        "model": {
-                            "id": "c386b7a870114f4a87477c0824499348",
-                            "model_version": {
-                                "id": "787cc9a002164250800598d36b072384"
-                            }
-                        }
-                    }
-                ]
-            }
-        ]
-    }'
-```
+    <CodeBlock className="language-bash">{CurlPatchWorkflow}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -370,12 +278,7 @@ You can delete a specific workflow.
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X DELETE 'https://api.clarifai.com/v2/workflows/my-custom-workflow \
-    -H 'Content-Type: application/json' \
-    -H 'Authorization: Key YOUR_API_KEY'
-```
+    <CodeBlock className="language-bash">{CurlDeleteWorkflowID}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -384,8 +287,10 @@ curl -X DELETE 'https://api.clarifai.com/v2/workflows/my-custom-workflow \
 
 You can delete all custom workflows.
 
-:::important note
+:::tip
+
 Instead of `delete_all`, you can specify a list of workflow IDs to be deleted, using the `ids` field.
+
 ::::
 
 <Tabs>
@@ -407,15 +312,7 @@ Instead of `delete_all`, you can specify a list of workflow IDs to be deleted, u
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X DELETE 'https://api.clarifai.com/v2/workflows' \
-    -H 'Content-Type: application/json' \
-    -H 'Authorization: Key YOUR_API_KEY' \
-    --data-raw '{
-        "delete_all": true
-    }'
-```
+    <CodeBlock className="language-bash">{CurlDeleteAllWorkflows}</CodeBlock>
 </TabItem>
 
 </Tabs>

@@ -14,16 +14,19 @@ This tutorial demonstrates how auto-annotation workflows can be configured in th
 
 Since models are doing most of the work of annotating your data, this enables you to speed-up and scale-up your annotation process while ensuring quality standards, typically reducing human effort of labeling data by orders of magnitude. And since this is built into our APIs, it seamlessly integrates with all the search, training, and prediction functionality of the Clarifai platform.
 
-When a concept is predicted by a model, it is predicted with a confidence score between 0 and 1. In this walkthrough, we will leverage that score in our workflow so that when your model predictions are confident \(close to 1\), you can have your data automatically labeled with that concept. When your predictions are less-than-confident, you can have your input sent to a human reviewer.
+When a concept is predicted by a model, it is predicted with a confidence score of between 0 and 1. In this walkthrough, we will leverage that score in our workflow so that when your model predictions are confident \(close to 1\), you can have your data automatically labeled with that concept. When your predictions are less-than-confident, you can have your input sent to a human reviewer.
 
 :::info
+
 The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
+
 :::
 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
+
 import PythonCreateConcepts from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/py/create_concepts.py";
 import PythonLinkConcepts from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/py/link_concepts.py";
 import PythonCreateConceptMapperModel from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/py/create_concept_mapper_model.py";
@@ -60,6 +63,18 @@ import JavaMakeWorkflowDefault from "!!raw-loader!../../../../code_snippets/api-
 import JavaAddImage from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/java/add_an_image.java";
 import JavaListAnnotations from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/java/list_annotations.java";
 
+import CurlCreateConcepts from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/curl/create_concepts.sh";
+import CurlLinkConcepts from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/curl/link_concepts.sh";
+import CurlCreateConceptMapperModel from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/curl/create_concept_mapper_model.sh";
+import CurlCreateGreaterThan from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/curl/create_greater_than_concept_thresholder.sh";
+import CurlCreateLessThan from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/curl/create_less_than_concept-thresholder.sh";
+import CurlCreateWriteSuccess from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/curl/create_write_success_asme_annotation.sh";
+import CurlCreateWritePending from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/curl/create_write_pending_asme_annotation.sh";
+import CurlCreateWorkflow from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/curl/create_the_workflow.sh";
+import CurlMakeWorkflowDefault from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/curl/make_new_workflow_apps_default.sh";
+import CurlAddImage from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/curl/add_an_image.sh";
+import CurlListAnnotations from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/curl/list_annotations.sh";
+
 
 ## Create Concepts
 
@@ -80,39 +95,19 @@ Let's start by creating the concepts we'll use in our model. We'll create the fo
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/concepts' \
-    -H 'Authorization: Key {{PAT}}' \
-    -H 'Content-Type: application/json' \
-    --data-raw '{
-        "concepts": [
-            {
-                "id": "peopleID",
-                "name": "people"
-            },
-            {
-                "id": "manID",
-                "name": "man"
-            },
-            {
-                "id": "adultID",
-                "name": "adult"
-            }
-        ]
-    }'
-```
+    <CodeBlock className="language-bash">{CurlCreateConcepts}</CodeBlock>
 </TabItem>
+
 </Tabs>
 
 ## Link Concepts
 
-Link the newly created concepts with concepts in the Clarifai/Main General model.
+Link the newly created concepts with concepts in the clarifai/main General model.
 
-Run the code below three times; once for each concept created previously. The concept IDs of the Clarifai/Main General models are as follows:
+Run the code below three times; once for each concept you created previously. The concept IDs of the clarifai/main General models are as follows:
 
-* `ai_l8TKp2h5` - the people concept,
-* `ai_dxSG2s86` - the man concept,
+* `ai_l8TKp2h5` - the people concept;
+* `ai_dxSG2s86` - the man concept;
 * `ai_VPmHr5bm` - the adult concept.
 
 Your model's concept IDs are the ones you created in the previous step: `peopleID`, `manID`, and `adultID`.
@@ -132,32 +127,18 @@ Your model's concept IDs are the ones you created in the previous step: `peopleI
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/concepts/{YOUR_MODEL_CONCEPT_ID}/relations' \
-    -H 'Authorization: Key {{PAT}}' \
-    -H 'Content-Type: application/javascript' \
-    --data-raw '{
-        "concept_relations": [
-            {
-
-                "object_concept": {
-                    "id": "{GENERAL_MODEL_CONCEPT_ID}",
-                    "app_id": "main"
-                },
-                "predicate": "synonym"
-            }
-        ]
-    }'
-```
+    <CodeBlock className="language-bash">{CurlLinkConcepts}</CodeBlock>
 </TabItem>
+
 </Tabs>
 
 ## Create a Concept Mapper Model
 
 We're going to create a concept mapper model that translates the concepts from the General model to our new concepts. The model will map the concepts as synonyms. Hypernyms and hyponyms are supported as well.
 
-We'll be setting the `knowledge_graph_id` value to be empty. If you want to define a subset of relationships in your app to be related to each other, you can provide the `knowledge_graph_id` to each concept relation and then provide that `knowledge_graph_id` as input to this model as well, which will only follow relationships in that subset of your app's knowledge graph.
+We'll be setting the `knowledge_graph_id` value to be empty. 
+
+If you want to define a subset of relationships in your app to be related to each other, you can provide the `knowledge_graph_id` to each concept relation and then provide that `knowledge_graph_id` as input to this model as well, which will only follow relationships in that subset of your app's knowledge graph.
 
 <Tabs>
 
@@ -174,24 +155,9 @@ We'll be setting the `knowledge_graph_id` value to be empty. If you want to defi
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
-    -H 'Authorization: Key {{PAT}}' \
-    -H 'Content-Type: application/javascript' \
-    --data-raw '{
-        "model": {
-            "id": "synonym-model-id",
-            "model_type_id": "concept-synonym-mapper",
-            "output_info": {
-                "params": {
-                    "knowledge_graph_id": ""
-                }
-            }
-        }
-    }'
-```
+    <CodeBlock className="language-bash">{CurlCreateConceptMapperModel}</CodeBlock>
 </TabItem>
+
 </Tabs>
 
 ## Create a "Greater Than" Concept Thresholder Model
@@ -213,40 +179,9 @@ This model will allow any predictions &gt;= the concept values defined in the mo
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
-    -H 'Authorization: Key {{PAT}}' \
-    -H 'Content-Type: application/javascript' \
-    --data-raw '{
-        "model": {
-            "id": "greater-than-model-id",
-            "model_type_id": "concept-threshold",
-            "output_info": {
-                "data": {
-                    "concepts": [
-                        {
-                            "id": "peopleID",
-                            "value": 0.5
-                        },
-                        {
-                            "id": "manID",
-                            "value": 0.5
-                        },
-                        {
-                            "id": "adultID",
-                            "value": 0.95
-                        }
-                    ]
-                },
-                "params": {
-                    "concept_threshold_type": 1
-                }
-            }
-        }
-    }'
-```
+    <CodeBlock className="language-bash">{CurlCreateGreaterThan}</CodeBlock>
 </TabItem>
+
 </Tabs>
 
 ## Create a "Less Than" Concept Thresholder Model
@@ -268,40 +203,9 @@ This model will allow any predictions &lt; the concept values defined in the mod
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
-    -H 'Authorization: Key {{PAT}}' \
-    -H 'Content-Type: application/javascript' \
-    --data-raw '{
-        "model": {
-            "id": "less-than-model-id",
-            "model_type_id": "concept-threshold",
-            "output_info": {
-                "data": {
-                    "concepts": [
-                        {
-                            "id": "peopleID",
-                            "value": 0.5
-                        },
-                        {
-                            "id": "manID",
-                            "value": 0.5
-                        },
-                        {
-                            "id": "adultID",
-                            "value": 0.95
-                        }
-                    ]
-                },
-                "params": {
-                    "concept_threshold_type": 3
-                }
-            }
-        }
-    }'
-```
+    <CodeBlock className="language-bash">{CurlCreateLessThan}</CodeBlock>
 </TabItem>
+
 </Tabs>
 
 ## Create a "Write Success as Me" Annotation Writer Model
@@ -323,25 +227,9 @@ Any incoming Data object full of concepts, regions, etc. will be written by this
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
-    -H 'Authorization: Key {{PAT}}' \
-    -H 'Content-Type: application/javascript' \
-    --data-raw '{
-        "model": {
-            "id": "write-success-as-me",
-            "model_type_id": "annotation-writer",
-            "output_info": {
-                "params": {
-                    "annotation_status": 24150,
-                    "annotation_user_id": "{YOUR_USER_ID}"
-                }
-            }
-        }
-    }'
-```
+    <CodeBlock className="language-bash">{CurlCreateWriteSuccess}</CodeBlock>
 </TabItem>
+
 </Tabs>
 
 ## Create a "Write Pending as Me" Annotation Writer Model
@@ -363,38 +251,24 @@ Any incoming Data object full of concepts, regions, etc. will be written by this
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/models' \
-    -H 'Authorization: Key {{PAT}}' \
-    -H 'Content-Type: application/javascript' \
-    --data-raw '{
-        "model": {
-            "id": "write-pending-as-me",
-            "model_type_id": "annotation-writer",
-            "output_info": {
-                "params": {
-                    "annotation_status": 24151,
-                    "annotation_user_id": "{YOUR_USER_ID}"
-                }
-            }
-        }
-    }'
-```
+    <CodeBlock className="language-bash">{CurlCreateWritePending}</CodeBlock>
 </TabItem>
+
 </Tabs>
 
 ## Create the Workflow
 
 We will now connect all the models together into a single workflow.
 
-Every input will be predicted by General Embed model to generate embeddings. The output of the embed model \(embeddings\) will be sent to general concept to predict concept and cluster model. Then the concept model's output \(a list of concepts with prediction values\) will be sent to concept mapper model, which maps Clarifai concepts to your concepts within your app, `people`, `man` and `adult` in this case.
+Every input will be predicted by the General Embed model to generate embeddings. The output of the embed model \(embeddings\) will be sent to the general concept to predict concept and cluster model. Then, the concept model's output \(a list of concepts with prediction values\) will be sent to the concept mapper model, which maps Clarifai's concepts to the concepts within your app—`people`, `man` and `adult` in this case.
 
-Then the mapped concepts will be sent to both concept thresholds models \(`GREATER THAN` and `LESS THAN`\). `GREATER THAN` model will filter out the concepts that are lower than corresponding value you defined in model and send the remaining concept list to `write success as me` model, which labels the input with these concepts \(your app concepts only\) as you with `success` status. You can train or search on these concepts immediately. 
+Then, the mapped concepts will be sent to both concept threshold models—\(`GREATER THAN` and `LESS THAN`\). The `GREATER THAN` model will filter out the concepts that are lower than the corresponding value you defined in the model and send the remaining concept list to `write success as me` model, which labels the input with these concepts \(your app concepts only\) as you with `success` status. You can train or search on these concepts immediately. 
 
 The `LESS THAN` model will filter out concepts that are higher than the corresponding value you defined in the model and send the remaining concept list to `write pending as me` model, which labels the input with these concepts \(your app concepts only\) as you with `pending` status.
 
-The model IDs and model version IDs from the public `clarifai/main` application are fixed to the latest version at the time of this writing \(check GET /models for an always up to date list of available models\), so they are already hard-coded in the code examples below. It's possible to use other public model or model version IDs.
+The model IDs and model version IDs from the public `clarifai/main` application are fixed to the latest version at the time of this writing \(use the `GET /models` endpoint to get an up to date list of the available models\), so they are already hard-coded in the code examples below. 
+
+It's possible to use other public models or model version IDs.
 
 <Tabs>
 
@@ -411,119 +285,9 @@ The model IDs and model version IDs from the public `clarifai/main` application 
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/workflows' \
-    -H 'Authorization: Key {{PAT}}' \
-    -H 'Content-Type: application/json' \
-    --data-raw '{
-        "workflows": [
-            {
-                "id": "auto-annotation-workflow-id",
-                "nodes": [
-                    {
-                        "id": "general-embed",
-                        "model": {
-                            "id": "{YOUR_GENERAL_EMBED_MODEL_ID}",
-                            "model_version": {
-                                "id": "{YOUR_GENERAL_EMBED_MODEL_VERSION_ID}"
-                            }
-                        }
-                    },
-                    {
-                        "id": "general-concept",
-                        "model": {
-                            "id": "{YOUR_GENERAL_CONCEPT_MODEL_ID}",
-                            "model_version": {
-                                "id": "{YOUR_GENERAL_CONCEPT_MODEL_VERSION_ID}"
-                            }
-                        }
-                    },
-                    {
-                        "id": "general-cluster",
-                        "model": {
-                            "id": "{YOUR_GENERAL_CLUSTER_MODEL_ID}",
-                            "model_version": {
-                                "id": "{YOUR_GENERAL_CLUSTER_MODEL_VERSION_ID}"
-                            }
-                        }
-                    },
-                    {
-                        "id": "mapper",
-                        "model": {
-                            "id": "synonym-model-id",
-                            "model_version": {
-                                "id": "{YOUR_MAPPER_MODEL_VERSION_ID}"
-                            }
-                        },
-                        "node_inputs": [
-                            {
-                                "node_id": "general-concept"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "greater-than",
-                        "model": {
-                            "id": "greater-than-model-id",
-                            "model_version": {
-                                "id": "{YOUR_GREATER_THAN_MODEL_VERSION_ID}"
-                            }
-                        },
-                        "node_inputs": [
-                            {
-                                "node_id": "mapper"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "write-success",
-                        "model": {
-                            "id": "write-success-as-me",
-                            "model_version": {
-                                "id": "{YOUR_WRITE_AS_ME_MODEL_VERSION_ID}"
-                            }
-                        },
-                        "node_inputs": [
-                            {
-                                "node_id": "greater-than"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "less-than",
-                        "model": {
-                            "id": "less-than-model-id",
-                            "model_version": {
-                                "id": "{YOUR_LESS_THAN_MODEL_VERSION_ID}"
-                            }
-                        },
-                        "node_inputs": [
-                            {
-                                "node_id": "mapper"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "write-pending",
-                        "model": {
-                            "id": "write-pending-as-me",
-                            "model_version": {
-                                "id": "{YOUR_WRITE_AS_COLLABORATOR_MODEL_VERSION_ID}"
-                            }
-                        },
-                        "node_inputs": [
-                            {
-                                "node_id": "less-than"
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    }'
-```
+    <CodeBlock className="language-bash">{CurlCreateWorkflow}</CodeBlock>
 </TabItem>
+
 </Tabs>
 
 ## Make the New Workflow Your App's Default
@@ -547,22 +311,9 @@ If the workflow is not the default workflow of your app, you can still use `Post
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X PATCH 'https://api.clarifai.com/v2/users/me/apps' \
-    -H 'Authorization: Key {{PAT}}' \
-    -H 'Content-Type: application/json' \
-    --data-raw '{
-        "action": "overwrite",
-        "apps": [
-            {
-                "id": "{{app}}",
-                "default_workflow_id": "auto-annotation-workflow-ID"
-            }
-        ]
-    }'
-```
+    <CodeBlock className="language-bash">{CurlMakeWorkflowDefault}</CodeBlock>
 </TabItem>
+
 </Tabs>
 
 ## Add an Image
@@ -584,24 +335,9 @@ Adding an image will trigger the default workflow.
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```text
-curl -X POST 'https://api.clarifai.com/v2/users/me/apps/{{app}}/inputs' \
-    -H 'Authorization: Key {{PAT}}' \
-    -H 'Content-Type: application/json' \
-    --data-raw '{
-        "inputs": [
-            {
-                "data": {
-                    "image": {
-                        "url": "{YOUR_IMAGE_URL}"
-                    }
-                }
-            }
-        ]
-    }'
-```
+    <CodeBlock className="language-bash">{CurlAddImage}</CodeBlock>
 </TabItem>
+
 </Tabs>
 
 ## List Annotations
@@ -623,12 +359,8 @@ You can now list annotations with your user ID and see the annotations created b
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X GET \
-  -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/annotations?user_ids={YOUR_USER_ID}
-```
+    <CodeBlock className="language-bash">{CurlListAnnotations}</CodeBlock>
 </TabItem>
+
 </Tabs>
 

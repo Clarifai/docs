@@ -5,6 +5,7 @@
 // VTR Workflow we want to build. Change these strings to run your own example.
 /////////////////////////////////////////////////////////////////////////////////////
 
+const USER_ID = 'YOUR_USER_ID_HERE';
 // Your PAT (Personal Access Token) can be found in the portal under Authentification
 const PAT = 'YOUR_PAT_HERE';
 const APP_ID = 'YOUR_APP_ID_HERE';
@@ -38,6 +39,7 @@ metadata.set("authorization", "Key " + PAT);
 stub.PostWorkflows(
     {
         user_app_id: {
+            user_id: USER_ID,
             app_id: APP_ID
         },
         workflows: [
@@ -80,7 +82,7 @@ stub.PostWorkflows(
                                 node_id: WORKFLOWNODE_ID_2
                             }
                         ]
-                    },
+                    }
                 ]
             }
         ]

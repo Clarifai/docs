@@ -8,6 +8,7 @@ USER_ID = 'YOUR_USER_ID_HERE'
 PAT = 'YOUR_PAT_HERE'
 APP_ID = 'YOUR_APP_ID_HERE'
 # Change these to create your own annotation writer model
+ANNOTATION_USER_ID = 'ANNOTATION_USER_ID_HERE'
 MODEL_ID = 'write-success-model-id'
 MODEL_TYPE_ID = 'annotation-writer'
 
@@ -30,7 +31,7 @@ userDataObject = resources_pb2.UserAppIDSet(user_id=USER_ID, app_id=APP_ID) # Th
 params = Struct()
 params.update({
     "annotation_status": status_code_pb2.ANNOTATION_SUCCESS,
-    "annotation_user_id": USER_ID
+    "annotation_user_id": ANNOTATION_USER_ID
 })
 
 post_models_response = stub.PostModels(
