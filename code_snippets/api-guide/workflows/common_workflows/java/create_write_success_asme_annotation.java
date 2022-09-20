@@ -19,6 +19,7 @@ public class ClarifaiExample {
     static final String PAT = "YOUR_PAT_HERE";
     static final String APP_ID = "YOUR_APP_ID_HERE";
     // Change these to create your own annotation writer model
+    static final String ANNOTATION_USER_ID = "ANNOTATION_USER_ID_HERE";
     static final String MODEL_ID = "write-success-as-me-id";
     static final String MODEL_TYPE_ID = "annotation-writer";
 
@@ -37,7 +38,7 @@ public class ClarifaiExample {
             )
             .putFields(
                 "annotation_user_id",
-                Value.newBuilder().setStringValue(USER_ID).build()
+                Value.newBuilder().setStringValue(ANNOTATION_USER_ID).build()
             );
 
         SingleModelResponse postModelsResponse = stub.postModels(
