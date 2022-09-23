@@ -8,7 +8,7 @@ sidebar_position: 4
 **Search your data based on concepts or visual similarity**
 <hr />
 
-Rank order your search results with the intuitive insights of AI. Your model can identify concepts in your data and rank your search results by how confident it is that a given concept is present. 
+Rank order your search results with the intuitive insights of an AI. Your model can identify concepts in your data and rank search results by how confident it is that a given concept is present. 
 
 You can even rank search results by how similar one input is to another input or region of the input model detected. The search results will return the input and also the annotation, which includes the region.
 
@@ -19,6 +19,7 @@ The initialization code used in the following examples is outlined in detail on 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
+
 import PythonAppConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/rank/py/by_clarifaimain_app_concepts.py";
 import PythonCustomConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/rank/py/by_custom_concepts.py";
 import PythonClarifaiCustomConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/rank/py/by_clarifaimain_custom_concepts.py";
@@ -55,13 +56,22 @@ import JavaImageBytes from "!!raw-loader!../../../code_snippets/api-guide/search
 import JavaInputID from "!!raw-loader!../../../code_snippets/api-guide/search/rank/java/by_input_id.java";
 import JavaSearchText from "!!raw-loader!../../../code_snippets/api-guide/search/rank/java/search_by_text.java";
 
+import CurlAppConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/rank/curl/by_clarifaimain_app_concepts.sh";
+import CurlCustomConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/rank/curl/by_custom_concepts.sh";
+import CurlClarifaiCustomConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/rank/curl/by_clarifaimain_custom_concepts.sh";
+import CurlConceptLanguage from "!!raw-loader!../../../code_snippets/api-guide/search/rank/curl/by_concept_another_language.sh";
+import CurlSearchImage from "!!raw-loader!../../../code_snippets/api-guide/search/rank/curl/search_by_image_url.sh";
+import CurlImageBytes from "!!raw-loader!../../../code_snippets/api-guide/search/rank/curl/search_by_image_bytes.sh";
+import CurlInputID from "!!raw-loader!../../../code_snippets/api-guide/search/rank/curl/by_input_id.sh";
+import CurlSearchText from "!!raw-loader!../../../code_snippets/api-guide/search/rank/curl/search_by_text.sh";
+
 ## Search by Concepts
 
 Once your images are indexed, you can search for them by concepts.
 
 ### By Clarifai/main App Concepts
 
-When you add an input, it automatically gets predictions from the models in your base workflow, which are typically models from the Clarifai/main app, such as the General model. You can search by those predictions.
+When you add an input, it automatically gets predictions from the models in your base workflow, which are typically models from the clarifai/main app, such as the General model. You can search by those predictions.
 
 <Tabs>
 
@@ -82,41 +92,7 @@ When you add an input, it automatically gets predictions from the models in your
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-#
-# Value of 0 will search for images that don't have the concept.
-#
-# Instead of "id" you can search by "name" as well.
-
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "searches": [
-      {
-        "query": {
-        "ranks": [
-            {
-            "annotation": {
-                "data": {
-                "concepts": [
-                    {
-                    "id":"people",
-                    "value": 1
-                    }
-                ]
-                }
-            }
-            }
-        ]
-        }
-      }
-    ]
-  }'\
-  https://api.clarifai.com/v2/annnotations/searches
-```
+    <CodeBlock className="language-bash">{CurlAppConcepts}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -144,41 +120,7 @@ After you have added inputs, annotated the inputs, and tried a custom model, you
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```text
-#
-# Value of 0 will search for images that don't have the concept.
-#
-# Instead of "id" you can search by "name" as well.
-
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "searches": [
-      {
-        "query": {
-        "ranks": [
-            {
-            "annotation": {
-                "data": {
-                "concepts": [
-                    {
-                    "id":"people",
-                    "value": 1
-                    }
-                ]
-                }
-            }
-            }
-        ]
-        }
-      }
-    ]
-  }'\
-  https://api.clarifai.com/v2/annnotations/searches
-```
+    <CodeBlock className="language-bash">{CurlCustomConcepts}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -206,62 +148,14 @@ You can combine a search to find inputs that have concepts you have supplied as 
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-#
-# Value of 0 will search for images that don't have the concept.
-#
-# Instead of "id" you can search by "name" as well.
-
-# Here we search for images which we labeled with "cat" and for which the General prediction model does not find
-# a "dog" concept.
-
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "searches": [
-      {
-        "query": {
-        "ranks": [
-            {
-            "annotation": {
-                "data": {
-                "concepts": [
-                    {
-                    "id":"cat",
-                    "value": 1
-                    }
-                ]
-                }
-            }
-            }, {   
-            "annotation": {
-                "data": {
-                "concepts": [
-                    {
-                    "id":"dog",
-                    "value": 0
-                    }
-                ]
-                }
-            }
-            }
-        ]
-        }
-      }
-    ]
-  }'\
-  https://api.clarifai.com/v2/annnotations/searches
-```
+    <CodeBlock className="language-bash">{CurlClarifaiCustomConcepts}</CodeBlock>
 </TabItem>
 
 </Tabs>
 
 ### By Concept in Another Language
 
-Concepts that have a translation into another language can be searched for in that language, even without having the default language for your app being in that language. This uses Clarifai's knowledge graph to lookup the translation and then perform the search. 
+Concepts that have a translation into another language can be searched for in that language, even without having the default language for your app being in that language. This uses the Clarifai's knowledge graph to lookup the translation and then perform the search. 
 
 For example, if your app is in English and you want to search for "dog" in Japanese, then you could search with `language="ja"` and `name="犬"`.
 
@@ -284,42 +178,7 @@ For example, if your app is in English and you want to search for "dog" in Japan
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-#
-# Value of 0 will search for images that don't have the concept.
-#
-# Instead of "name" you can search by "id" as well.
-
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "searches": [
-      {
-        "query": {
-        "ranks": [
-            {
-            "annotation": {
-                "data": {
-                "concepts": [
-                    {
-                    "name":"犬",
-                    "language": "ja",
-                    "value": 1
-                    }
-                ]
-                }
-            }
-            }
-        ]
-        }
-      }
-    ]
-  }'\
-  https://api.clarifai.com/v2/annnotations/searches
-```
+    <CodeBlock className="language-bash">{CurlConceptLanguage}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -349,33 +208,7 @@ You can use images to search through your collection. The API will return ranked
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "searches": [
-      {
-        "query": {
-        "ranks": [
-            {
-            "annotation": {
-                "data": {
-                "image": {
-                    "url": "{YOUR_IMAGE_URL}"
-                }
-                }
-            }
-            }
-        ]
-        }
-      }
-    ]
-  }'\
-  https://api.clarifai.com/v2/annnotations/searches
-```
+    <CodeBlock className="language-bash">{CurlSearchImage}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -403,33 +236,7 @@ You can also search for an input by bytes.
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "searches": [
-      {
-        "query": {
-        "ranks": [
-            {
-            "annotation": {
-                "data": {
-                "image": {
-                    "base64": '"`base64 /home/user/image.jpeg`"'"
-                }
-                }
-            }
-            }
-        ]
-        }
-      }
-    ]
-  }'\
-  https://api.clarifai.com/v2/annnotations/searches
-```
+    <CodeBlock className="language-bash">{CurlImageBytes}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -457,33 +264,7 @@ If the input has been indexed, we can use the input ID. If there are multiple em
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "searches": [
-      {
-        "query": {
-          "ranks": [
-            {
-              "annotation": {
-                "data": {
-                  "image": {
-                    "url": "{YOUR_IMAGE_URL}"
-                  }
-                }
-              }
-            }
-          ]
-        }
-      }
-    ]
-  }'\
-  https://api.clarifai.com/v2/annnotations/searches
-```
+    <CodeBlock className="language-bash">{CurlInputID}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -492,7 +273,7 @@ curl -X POST \
 
 You can use texts to search through your collection. The API will return ranked results based on how similar the results are to the text you provided in your query.
 
-:::tip Note
+:::tip 
 
 - Your inputs should be provided as texts. 
 - You should choose a workflow that includes a text embedder and a clusterer, such as the Language-Understanding workflow, as the Base Workflow for your application.  
@@ -515,6 +296,10 @@ You can use texts to search through your collection. The API will return ranked 
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaSearchText}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlSearchText}</CodeBlock>
 </TabItem>
 
 </Tabs>

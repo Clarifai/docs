@@ -8,7 +8,9 @@ sidebar_position: 3
 **Search your data based on concepts or visual similarity**
 <hr />
 
-Rank order your search results with the intuitive insights of AI. Your model can identify concepts in your data and rank your search results by how confident it is that a given concept is present. You can even rank search results by how similar one input is to another input.
+Rank order your search results with the intuitive insights of an AI. Your model can identify concepts in your data and rank  search results by how confident it is that a given concept is present. 
+
+You can even rank search results by how similar one input is to another input.
 
 :::info
 The initialization code used in the following example is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
@@ -38,13 +40,20 @@ import JavaConceptLanguage from "!!raw-loader!../../../../code_snippets/api-guid
 import JavaSearchImage from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/java/search_by_image.java";
 import JavaSearchURL from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/java/search_by_url.java";
 
+import CurlAppConcepts from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/curl/by_clarifaimain_app_concepts.sh";
+import CurlCustomConcepts from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/curl/by_custom_concepts.sh";
+import CurlClarifaiCustomConcepts from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/curl/by_clarifaimain_custom_concepts.sh";
+import CurlConceptLanguage from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/curl/by_concept_another_language.sh";
+import CurlSearchImage from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/curl/search_by_image.sh";
+import CurlSearchURL from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/curl/search_by_url.sh";
+
 ## Search by Concepts
 
 Once your images are indexed, you can search for them by concepts.
 
 ### By Clarifai/main App Concepts
 
-When you add an input, it automatically gets predictions from the models in your default, which are typically models from the Clarifai/main app, such as the General model. You can search by those predictions.
+When you add an input, it automatically gets predictions from the models in your default, which are typically models from the clarifai/main app, such as the General model. You can search by those predictions.
 
 <Tabs>
 
@@ -58,6 +67,10 @@ When you add an input, it automatically gets predictions from the models in your
 
 <TabItem value="grpc_java" label="gRPC Java">
     <CodeBlock className="language-java">{JavaAppConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlAppConcepts}</CodeBlock>
 </TabItem>
 
 <!--
@@ -242,41 +255,6 @@ if ($response->isSuccessful()) {
 </TabItem>
 -->
 
-<TabItem value="curl" label="cURL">
-
-```text
-# Setting "output" indicates we search for images that have the concept(s) which were predicted by
-# the General model.
-#
-# Value of 0 will search for images that don't have the concept.
-#
-# Instead of "name" you can search by "id" as well.
-
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "query": {
-      "ands": [
-        {
-          "output": {
-            "data": {
-              "concepts": [
-                {
-                  "name":"people",
-                  "value": 1
-                }
-              ]
-            }
-          }
-        }
-      ]
-    }
-  }'\
-  https://api.clarifai.com/v2/searches
-```
-</TabItem>
 </Tabs>
 
 ### By Custom Concepts
@@ -295,6 +273,10 @@ After you have added inputs with concepts, you can search by those concepts.
 
 <TabItem value="grpc_java" label="gRPC Java">
     <CodeBlock className="language-java">{JavaCustomConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlCustomConcepts}</CodeBlock>
 </TabItem>
 
 <!--
@@ -484,41 +466,6 @@ if ($response->isSuccessful()) {
 </TabItem>
 -->
 
-<TabItem value="curl" label="cURL">
-
-```text
-# Setting "input" indicates we search for images that have the concept(s) which we added to the
-# input manually.
-#
-# Value of 0 will search for images that don't have the concept.
-#
-# Instead of "name" you can search by "id" as well.
-
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "query": {
-      "ands": [
-        {
-          "input": {
-            "data": {
-              "concepts": [
-                {
-                  "name":"people",
-                  "value": 1
-                }
-              ]
-            }
-          }
-        }
-      ]
-    }
-  }'\
-  https://api.clarifai.com/v2/searches
-```
-</TabItem>
 </Tabs>
 
 ### By Clarifai/main and Custom Concepts
@@ -537,6 +484,10 @@ You can combine a search to find inputs that have concepts you have supplied as 
 
 <TabItem value="grpc_java" label="gRPC Java">
     <CodeBlock className="language-java">{JavaClarifaiCustomConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlClarifaiCustomConcepts}</CodeBlock>
 </TabItem>
 
 <!--
@@ -682,49 +633,6 @@ if ($response->isSuccessful()) {
 </TabItem>
 -->
 
-<TabItem value="curl" label="cURL">
-
-```text
-# Here we search for images which we labeled with "cat" and for which the General prediction model
-# does not find a "dog" concept.
-
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
--d '
-{
-  "query": {
-    "ands": [
-      {
-        "input": {
-          "data": {
-            "concepts": [
-              {
-                "name": "cat",
-                "value": 1
-              }
-            ]
-          }
-        }
-      },
-      {
-        "output": {
-          "data": {
-            "concepts": [
-              {
-                "name": "dog",
-                "value": 0
-              }
-            ]
-          }
-        }
-      }
-    ]
-  }
-}'\
-https://api.clarifai.com/v2/searches
-```
-</TabItem>
 </Tabs>
 
 ### By Concept in Another Language
@@ -748,34 +656,9 @@ For example, if your app is in English and you want to search for "dog" in Japan
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```text
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "query": {
-      "ands": [
-        {
-          "output": {
-            "data": {
-              "concepts": [
-                {
-                  "name":"犬",
-                  "language": "ja",
-                  "value": 1
-                }
-              ]
-            }
-          }
-        }
-      ]
-    }
-  }'\
-  https://api.clarifai.com/v2/searches
-```
+    <CodeBlock className="language-bash">{CurlConceptLanguage}</CodeBlock>
 </TabItem>
+
 </Tabs>
 
 ## Search by Visual Similarity
@@ -796,6 +679,10 @@ You can use images to search through your collection. The API will return ranked
 
 <TabItem value="grpc_java" label="gRPC Java">
     <CodeBlock className="language-java">{JavaSearchImage}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlSearchImage}</CodeBlock>
 </TabItem>
 
 <!--
@@ -954,33 +841,6 @@ if ($response->isSuccessful()) {
 </TabItem>
 -->
 
-<TabItem value="curl" label="cURL">
-
-```text
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "query": {
-      "ands": [
-        {
-          "output":{
-            "input":{
-              "data": {
-                "image": {
-                  "url": "{YOUR_IMAGE_URL}"
-                }
-              }
-            }
-          }
-        }
-      ]
-    }
-  }'\
-  https://api.clarifai.com/v2/searches
-```
-</TabItem>
 </Tabs>
 
 ### By URL
@@ -999,6 +859,10 @@ You can also search for an input by URL.
 
 <TabItem value="grpc_java" label="gRPC Java">
     <CodeBlock className="language-java">{JavaSearchURL}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlSearchURL}</CodeBlock>
 </TabItem>
 
 <!--
@@ -1126,30 +990,5 @@ if ($response->isSuccessful()) {
 </TabItem>
 -->
 
-<TabItem value="curl" label="cURL">
-
-```text
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "query": {
-      "ands": [
-        {
-          "input":{
-            "data": {
-              "image": {
-                "url": "{YOUR_IMAGE_URL}"
-              }
-            }
-          }
-        }
-      ]
-    }
-  }'\
-  https://api.clarifai.com/v2/searches
-```
-</TabItem>
 </Tabs>
 

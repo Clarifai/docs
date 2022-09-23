@@ -12,7 +12,7 @@ Collaboration is a functionality that provides you with the ability to share you
 
 You can give a trusted collaborator full access. You can also invite a worker and grant them the limited permissions to only annotate data but not to delete it.
 
-Just navigate to the app details page and click "Add Collaborators"
+Just navigate to the app details page and click "Add Collaborators."
 
 ![](/img/add_collaborators.jpg)
 
@@ -24,6 +24,6 @@ From here, enter the email addresses of the collaborators you would like to add.
 
 * Since API keys are tied to a specific user and a specific app, your collaborators cannot create their own API keys. 
 
-* Collaborators also cannot invite other collaborators.
+* Collaborators can also invite other collaborators.
 
 :::

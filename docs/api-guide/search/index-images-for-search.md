@@ -19,10 +19,12 @@ The initialization code used in the following example is outlined in detail on t
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
+
 import PythonIndexImages from "!!raw-loader!../../../code_snippets/api-guide/search/index_images_for_search.py";
 import JSIndexImages from "!!raw-loader!../../../code_snippets/api-guide/search/index_images_for_search.html";
 import NodeIndexImages from "!!raw-loader!../../../code_snippets/api-guide/search/index_images_for_search.js";
 import JavaIndexImages from "!!raw-loader!../../../code_snippets/api-guide/search/index_images_for_search.java";
+import CurlIndexImages from "!!raw-loader!../../../code_snippets/api-guide/search/index_images_for_search.sh";
 
 <Tabs>
 
@@ -43,36 +45,7 @@ import JavaIndexImages from "!!raw-loader!../../../code_snippets/api-guide/searc
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "inputs": [
-      {
-        "data": {
-          "image": {
-            "url": "https://samples.clarifai.com/metro-north.jpg",
-            "allow_duplicate_url": true
-          }
-        }
-      },
-      {
-        "data": {
-          "image": {
-            "url": "https://samples.clarifai.com/wedding.jpg",
-            "allow_duplicate_url": true
-          }
-        }
-      }
-    ]
-  }'\
-  https://api.clarifai.com/v2/inputs
-
-# Use image's "base64" field to upload image from your local machine.
-```
+    <CodeBlock className="language-bash">{CurlIndexImages}</CodeBlock>
 </TabItem>
 
 </Tabs>

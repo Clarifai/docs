@@ -23,9 +23,11 @@ The initialization code used in the following example is outlined in detail on t
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
+
 import PythonPagination from "!!raw-loader!../../../code_snippets/api-guide/advanced_topics/pagination.py";
 import NodePagination from "!!raw-loader!../../../code_snippets/api-guide/advanced_topics/pagination.js";
 import JavaPagination from "!!raw-loader!../../../code_snippets/api-guide/advanced_topics/pagination.java";
+import CurlPagination from "!!raw-loader!../../../code_snippets/api-guide/advanced_topics/pagination.sh";
 
 <Tabs>
 
@@ -42,12 +44,8 @@ import JavaPagination from "!!raw-loader!../../../code_snippets/api-guide/advanc
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X GET \
-  -H "Authorization: Key YOUR_API_KEY" \
-  https://api.clarifai.com/v2/inputs?page=2&per_page=20
-```
+    <CodeBlock className="language-bash">{CurlPagination}</CodeBlock>
 </TabItem>
+
 </Tabs>
 
