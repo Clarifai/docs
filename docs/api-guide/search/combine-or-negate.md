@@ -23,6 +23,7 @@ import PythonCombineNegate from "!!raw-loader!../../../code_snippets/api-guide/s
 import NodeCombineNegate from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate.js";
 import JSCombineNegate from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate.html";
 import JavaCombineNegate from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate.java";
+import CurlCombineNegate from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate.sh";
 
 <Tabs>
 
@@ -43,53 +44,7 @@ import JavaCombineNegate from "!!raw-loader!../../../code_snippets/api-guide/sea
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-# Here we search for images which we labeled with "cat" and for which the General prediction model does not find
-# a "dog" concept.
-
-curl -X POST \
-  -H "Authorization: Key {api-key}" \
-  -H "Content-Type: application/json" \
--d '
-{
-    "searches": [
-      {
-        "query": {
-          "filters": [
-            {
-              "annotation": {
-                "data": {
-                  "concepts": [
-                    {
-                      "id":"people",
-                      "value": 1
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "ranks": [
-            {
-              "annotation": {
-                "data": {
-                  "concepts": [
-                    {
-                      "id":"people",
-                      "value": 1
-                    }
-                  ]
-                }
-              }
-            }
-          ]
-        }
-      }
-    ]
-}'\
-https://api.clarifai.com/v2/searches
-```
+    <CodeBlock className="language-bash">{CurlCombineNegate}</CodeBlock>
 </TabItem>
 
 </Tabs>

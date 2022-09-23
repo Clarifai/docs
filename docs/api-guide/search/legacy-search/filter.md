@@ -30,6 +30,11 @@ import JavaInputsLongitude from "!!raw-loader!../../../../code_snippets/api-guid
 import JavaOneGeoPoint from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/java/perform_search_one_geo_point.java";
 import JavaTwoGeoPoints from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/java/perform_search_two_geo_point.java";
 
+import CurlCustomMetadata from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/curl/by_custom_metadata.sh";
+import CurlInputsLongitude from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/curl/add_inputs_longitude_latitude.sh";
+import CurlOneGeoPoint from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/curl/perform_search_one_geo_point.sh";
+import CurlTwoGeoPoints from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/curl/perform_search_two_geo_point.sh";
+
 ## By Custom Metadata
 
 After you have added inputs with custom metadata, you can search by that metadata.
@@ -95,6 +100,10 @@ How to perform searches:
 
 <TabItem value="grpc_java" label="gRPC Java">
     <CodeBlock className="language-java">{JavaCustomMetadata}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlCustomMetadata}</CodeBlock>
 </TabItem>
 
 <!--
@@ -264,38 +273,13 @@ ClarifaiSearchTerm *searchTerm2 = [ClarifaiSearchTerm searchInputsWithMetadata:@
 </TabItem>
 -->
 
-<TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST \
-  -H "Authorization: Key {api-key}" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "query": {
-      "ands": [
-        {
-          "input":{
-            "data": {
-              "metadata": {
-                "type": "animal"
-              }
-            }
-          }
-        }
-      ]
-    }
-  }'\
-  https://api.clarifai.com/v2/searches
-```
-</TabItem>
 </Tabs>
 
 ## By Geo Location
 
 Search by geo location allows you to restrict your search results to a bounding box based on longitude and latitude points. There are two ways you can provide longitude/latitude points. You can provide one point and a radius or you can provide two points.
 
-It is important to note that a search by geo location acts as a filter and returns results ranked by any other provided search criteria, whether that is a visual search, concept search, or something else. If no other criteria is provided, results will return in the order the inputs were created, NOT by their distance to center of the search area.
+It is important to note that a search by geo location acts as a filter and returns results ranked by any other provided search criteria, whether that is a visual search, concept search, or something else. If no other criteria is provided, results will return in the order the inputs were created, NOT by their distance to the center of the search area.
 
 If you are providing one point and a radius, the radius can be in "mile", "kilometer", "degree", or "radian", marked by keywords `withinMiles`, `withinKilometers`, `withinDegrees`, or `withinRadians` respectively.
 
@@ -319,6 +303,10 @@ Provide a geo point to an input. The geo point is a JSON object consisting of a 
 
 <TabItem value="grpc_java" label="gRPC Java">
     <CodeBlock className="language-java">{JavaInputsLongitude}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlInputsLongitude}</CodeBlock>
 </TabItem>
 
 <!--
@@ -434,34 +422,6 @@ if ($response->isSuccessful()) {
 </TabItem>
 -->
 
-<TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "inputs": [
-      {
-        "data": {
-          "image": {
-            "url": "https://samples.clarifai.com/dog.tiff",
-            "allow_duplicate_url": true
-          },
-          "geo": {
-            "geo_point": {
-              "longitude": -30,
-              "latitude": 40
-            }
-          }
-        }
-      }
-    ]
-  }'\
-  https://api.clarifai.com/v2/inputs
-```
-</TabItem>
 </Tabs>
 
 ### Perform a Search With One Geo Point and Radius in Kilometers
@@ -478,6 +438,10 @@ curl -X POST \
 
 <TabItem value="grpc_java" label="gRPC Java">
     <CodeBlock className="language-java">{JavaOneGeoPoint}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlOneGeoPoint}</CodeBlock>
 </TabItem>
 
 <!--
@@ -616,38 +580,6 @@ if ($response->isSuccessful()) {
 </TabItem>
 -->
 
-<TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "query": {
-      "ands": [
-        {
-          "input": {
-            "data": {
-              "geo": {
-                "geo_point": {
-                  "longitude": -29.0,
-                  "latitude": 40.0
-                },
-                "geo_limit": {
-                  "type": "withinKilometers",
-                  "value": 150
-                }
-              }
-            }
-          }
-        }
-      ]
-    }
-  }'\
-  https://api.clarifai.com/v2/searches
-```
-</TabItem>
 </Tabs>
 
 ### Perform a Search With Two Geo Points
@@ -664,6 +596,10 @@ curl -X POST \
 
 <TabItem value="grpc_java" label="gRPC Java">
     <CodeBlock className="language-java">{JavaTwoGeoPoints}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlTwoGeoPoints}</CodeBlock>
 </TabItem>
 
 <!--
@@ -798,42 +734,4 @@ if ($response->isSuccessful()) {
 </TabItem>
 -->
 
-<TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "query": {
-      "ands": [
-        {
-          "input": {
-            "data": {
-              "geo": {
-                "geo_box": [
-                  {
-                    "geo_point": {
-                      "latitude": 42,
-                      "longitude": -31
-                    }
-                  },
-                  {
-                    "geo_point": {
-                      "latitude": 39,
-                      "longitude": -29
-                    }
-                  }
-                ]
-              }
-            }
-          }
-        }
-      ]
-    }
-  }'\
-  https://api.clarifai.com/v2/searches
-```
-</TabItem>
 </Tabs>

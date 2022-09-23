@@ -20,6 +20,7 @@ import CodeBlock from "@theme/CodeBlock";
 import PythonCombineNegate from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/py/combine_or_negate.py";
 import NodeCombineNegate from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/node/combine_or_negate.js";
 import JavaCombineNegate from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/java/combine_or_negate.java";
+import CurlCombineNegate from "!!raw-loader!../../../../code_snippets/api-guide/search/legacy_search/curl/combine_or_negate.sh";
 
 <Tabs>
 
@@ -33,6 +34,10 @@ import JavaCombineNegate from "!!raw-loader!../../../../code_snippets/api-guide/
 
 <TabItem value="grpc_java" label="gRPC Java">
     <CodeBlock className="language-java">{JavaCombineNegate}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlCombineNegate}</CodeBlock>
 </TabItem>
 
 <!--
@@ -179,47 +184,4 @@ if ($response->isSuccessful()) {
 </TabItem>
 -->
 
-<TabItem value="curl" label="cURL">
-
-```bash
-# Here we search for images which we labeled with "cat" and for which the General prediction model does not find
-# a "dog" concept.
-
-curl -X POST \
-  -H "Authorization: Key {api-key}" \
-  -H "Content-Type: application/json" \
--d '
-{
-    "query": {
-        "ands": [
-            {
-                "input":{
-                    "data": {
-                        "concepts": [
-                            {
-                                "name": "cat",
-                                "value": 1
-                            }
-                        ]
-                    }
-                }
-            },
-            {
-                "output": {
-                    "data": {
-                        "concepts": [
-                            {
-                                "name": "dog",
-                                "value": 0
-                            }
-                        ]
-                    }
-                }
-            }
-        ]
-    }
-}'\
-https://api.clarifai.com/v2/searches
-```
-</TabItem>
 </Tabs>

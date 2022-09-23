@@ -17,6 +17,7 @@ The initialization code used in the following examples is outlined in detail on 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
+
 import PythonCustomConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/filter/py/by_custom_concepts.py";
 import PythonUserID from "!!raw-loader!../../../code_snippets/api-guide/search/filter/py/by_user_id.py";
 import PythonAnnotationStatus from "!!raw-loader!../../../code_snippets/api-guide/search/filter/py/by_annotation_status.py";
@@ -53,6 +54,15 @@ import JavaTwoGeoPoints from "!!raw-loader!../../../code_snippets/api-guide/sear
 import JavaCustomAnnotation from "!!raw-loader!../../../code_snippets/api-guide/search/filter/java/by_custom_annotation_info.java";
 import JavaAnnotationInfo from "!!raw-loader!../../../code_snippets/api-guide/search/filter/java/by_annotation_info.java";
 
+import CurlCustomConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/filter/curl/by_custom_concepts.sh";
+import CurlUserID from "!!raw-loader!../../../code_snippets/api-guide/search/filter/curl/by_user_id.sh";
+import CurlAnnotationStatus from "!!raw-loader!../../../code_snippets/api-guide/search/filter/curl/by_annotation_status.sh";
+import CurlInputsLongitude from "!!raw-loader!../../../code_snippets/api-guide/search/filter/curl/add_inputs_longitude_latitude.sh";
+import CurlOneGeoPoint from "!!raw-loader!../../../code_snippets/api-guide/search/filter/curl/perform_search_one_geo_point.sh";
+import CurlTwoGeoPoints from "!!raw-loader!../../../code_snippets/api-guide/search/filter/curl/perform_search_two_geo_point.sh";
+import CurlCustomAnnotation from "!!raw-loader!../../../code_snippets/api-guide/search/filter/curl/by_custom_annotation_info.sh";
+import CurlAnnotationInfo from "!!raw-loader!../../../code_snippets/api-guide/search/filter/curl/by_annotation_info.sh";
+
 
 ## By Custom Concepts
 
@@ -77,40 +87,7 @@ After you annotate inputs with custom concepts, you can filter by concepts.
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-#
-# Value of 0 will search for images that don't have the concept.
-#
-# Instead of "id" you can search by "name" as well.
-
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "searches": [{
-      "query": {
-        "filters": [
-          {
-            "annotation": {
-              "data": {
-                "concepts": [
-                  {
-                    "id":"people",
-                    "value": 1
-                  }
-                ]
-              }
-            }
-          }
-        ]
-      }
-    }]
-
-  }'\
-  https://api.clarifai.com/v2/annnotations/searches
-```
+    <CodeBlock className="language-bash">{CurlCustomConcepts}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -138,32 +115,7 @@ If you have collaborators in your app and they helped you annotate your inputs, 
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-#
-# Value of 0 will search for images that don't have the concept.
-#
-# Instead of "id" you can search by "name" as well.
-
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "searches": [{
-      "query": {
-        "filters": [
-          {
-            "annotation": {
-              "user_id": "{user_id}"
-            }
-          }
-        ]
-      }
-    }]
-  }'\
-  https://api.clarifai.com/v2/annnotations/searches
-```
+    <CodeBlock className="language-bash">{CurlUserID}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -189,34 +141,7 @@ curl -X POST \
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-#
-# Value of 0 will search for images that don't have the concept.
-#
-# Instead of "id" you can search by "name" as well.
-
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "searches": [{
-      "query": {
-        "filters": [
-          {
-            "annotation": {
-              "status": {
-                "code": "ANNOTATION_SUCCESS"
-              }          
-            }
-          }
-        ]
-      }
-    }]
-  }'\
-  https://api.clarifai.com/v2/annnotations/searches
-```
+    <CodeBlock className="language-bash">{CurlAnnotationStatus}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -256,32 +181,7 @@ Provide a geo point to an input. The geo point is a JSON object consisting of a 
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "inputs": [
-      {
-        "data": {
-          "image": {
-            "url": "https://samples.clarifai.com/dog.tiff",
-            "allow_duplicate_url": true
-          },
-          "geo": {
-            "geo_point": {
-              "longitude": -30,
-              "latitude": 40
-            }
-          }
-        }
-      }
-    ]
-  }'\
-  https://api.clarifai.com/v2/inputs
-```
+    <CodeBlock className="language-bash">{CurlInputsLongitude}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -307,45 +207,7 @@ curl -X POST \
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-#
-# Value of 0 will search for images that don't have the concept.
-#
-# Instead of "id" you can search by "name" as well.
-
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "searches": [
-      {
-        "query": {
-          "filters": [
-            {
-            "annotation": {
-                "data": {
-                "geo": {
-                    "geo_point": {
-                    "longitude": -29.0,
-                    "latitude": 40.0
-                    },
-                    "geo_limit": {
-                    "type": "withinKilometers",
-                    "value": 150
-                    }
-                }
-              }
-            }
-          }
-        ]
-        }
-      }
-    ]
-  }'\
-  https://api.clarifai.com/v2/annnotations/searches
-```
+    <CodeBlock className="language-bash">{CurlOneGeoPoint}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -371,51 +233,7 @@ curl -X POST \
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-#
-# Value of 0 will search for images that don't have the concept.
-#
-# Instead of "id" you can search by "name" as well.
-
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "searches": [
-      {
-        "query": {
-        "filters": [
-            {
-            "annotation": {
-                "data": {
-                "geo": {
-                    "geo_box": [
-                    {
-                        "geo_point": {
-                        "latitude": 42,
-                        "longitude": -31
-                        }
-                    },
-                    {
-                        "geo_point": {
-                        "latitude": 39,
-                        "longitude": -29
-                        }
-                    }
-                    ]
-                }
-                }
-            }
-            }
-        ]
-        }       
-      }
-    ]
-  }'\
-  https://api.clarifai.com/v2/annnotations/searches
-```
+    <CodeBlock className="language-bash">{CurlTwoGeoPoints}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -492,38 +310,7 @@ How to perform searches:
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-#
-# Value of 0 will search for images that don't have the concept.
-#
-# Instead of "id" you can search by "name" as well.
-
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "searches": [
-      {
-        "query": {
-        "filters": [
-            {
-            "annotation": {
-                "data": {
-                "metadata": {
-                    "type": "animal"
-                }
-                }
-            }
-            }
-        ]
-        }
-      }
-    ]
-  }'\
-  https://api.clarifai.com/v2/annnotations/searches
-```
+    <CodeBlock className="language-bash">{CurlCustomAnnotation}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -551,36 +338,7 @@ Each annotation has annotation info. Similar to metadata, you have full control 
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-
-```bash
-#
-# Value of 0 will search for images that don't have the concept.
-#
-# Instead of "id" you can search by "name" as well.
-
-curl -X POST \
-  -H "Authorization: Key YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '
-  {
-    "searches": [
-      {
-        "query": {
-        "filters": [
-            {
-            "annotation": {
-                "annotation_info": {
-                "type": "animal"
-                }
-            }
-            }
-        ]
-        }
-      }
-    ]
-  }'\
-  https://api.clarifai.com/v2/annnotations/searches
-```
+    <CodeBlock className="language-bash">{CurlAnnotationInfo}</CodeBlock>
 </TabItem>
 
 </Tabs>
