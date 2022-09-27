@@ -10,7 +10,7 @@ sidebar_position: 1
 
 ## Interpreting Results
 
-As illustrated in the previous [Evaluating Models](../evaluate/) section, once the evaluation is complete, the Evaluate button will become a View button.
+As illustrated in the previous [Evaluating Models](https://docs.clarifai.com/portal-guide/evaluate/) section, once the evaluation is complete, the Evaluate button will become a View button.
 
 You can click the View button to see the evaluation results.
 
