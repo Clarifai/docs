@@ -9,13 +9,13 @@ PAT = 'YOUR_PAT_HERE'
 APP_ID = 'YOUR_APP_ID_HERE'
 # Change these to create your own custom workflow
 WORKFLOW_ID = 'my-custom-workflow'
-NODE_ID_1 = 'food-concepts'
-MODEL_ID_1 = 'bd367be194cf45149e75f01d59f77ba7'
-MODEL_VERSION_ID_1 = 'dfebc169854e429086aceb8368662641'
+NODE_ID_1 = 'optical-character-recognizer'
+MODEL_ID_1 = 'ocr-scene-english-paddleocr'
+MODEL_VERSION_ID_1 = '40dbb2c9cde44a27af226782e7157006'
 
-NODE_ID_2 = 'general-concepts'
-MODEL_ID_2 = 'aaa03c23b3724a16a56b629203edc62c'
-MODEL_VERSION_ID_2 = 'aa9ca48295b37401f8af92ad1af0d91d'
+NODE_ID_2 = 'text-to-text'
+MODEL_ID_2 = 'text-translation-english-spanish'
+MODEL_VERSION_ID_2 = '643f30558de34013aff72b0e21f244f5'
 
 ##########################################################################
 # YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -55,7 +55,10 @@ post_workflows_response = stub.PostWorkflows(
                 model_version=resources_pb2.ModelVersion(
                   id=MODEL_VERSION_ID_2
                 )
-              )
+              ),
+              node_inputs=[
+                resources_pb2.NodeInput(node_id=NODE_ID_1)
+                ]
             ),
           ]
         )

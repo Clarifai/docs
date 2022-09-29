@@ -9,7 +9,7 @@ PAT = 'YOUR_PAT_HERE'
 APP_ID = 'YOUR_APP_ID_HERE'
 # Change these to make your own predictions
 WORKFLOW_ID = 'my-custom-workflow'
-IMAGE_URL = 'https://samples.clarifai.com/metro-north.jpg'
+IMAGE_URL = 'https://samples.clarifai.com/featured-models/ocr-woman-holding-sold-sign.jpg'
 
 ##########################################################################
 # YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -49,10 +49,11 @@ if post_workflow_results_response.status.code != status_code_pb2.SUCCESS:
 # We'll get one WorkflowResult for each input we used above. Because of one input, we have here one WorkflowResult
 results = post_workflow_results_response.results[0]
 
-# Each model we have in the workflow will produce one output
+# Each model we have in the workflow will produce its output
 for output in results.outputs:
-    model = output.model
-
-    print("Predicted concepts for the model `%s`" % model.id)
-    for concept in output.data.concepts:
-        print("\t%s %.2f" % (concept.name, concept.value))       
+    model = output.model    
+    print("Output for the model: `%s`" % model.id)
+    i = 0
+    while(i < len(output.data.regions)):
+        print(output.data.regions[i].data.text.raw)
+        i += 1        

@@ -11,13 +11,13 @@ const PAT = 'YOUR_PAT_HERE';
 const APP_ID = 'YOUR_APP_ID_HERE';
 // Change these to create your own custom workflow
 const WORKFLOW_ID = 'my-custom-workflow';
-const NODE_ID_1 = 'food-concepts';
-const MODEL_ID_1 = 'bd367be194cf45149e75f01d59f77ba7';
-const MODEL_VERSION_ID_1 = 'dfebc169854e429086aceb8368662641';
+const NODE_ID_1 = 'optical-character-recognizer';
+const MODEL_ID_1 = 'ocr-scene-english-paddleocr';
+const MODEL_VERSION_ID_1 = '40dbb2c9cde44a27af226782e7157006';
 
-const NODE_ID_2 = 'general-concepts';
-const MODEL_ID_2 = 'aaa03c23b3724a16a56b629203edc62c';
-const MODEL_VERSION_ID_2 = 'aa9ca48295b37401f8af92ad1af0d91d';
+const NODE_ID_2 = 'text-to-text';
+const MODEL_ID_2 = 'text-translation-english-spanish';
+const MODEL_VERSION_ID_2 = '643f30558de34013aff72b0e21f244f5';
 
 /////////////////////////////////////////////////////////////////////////////
 // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -57,8 +57,13 @@ stub.PostWorkflows(
                             model_version: {
                                 id: MODEL_VERSION_ID_2
                             }
-                        }
-                    },
+                        },
+                        node_inputs: [
+                            {
+                                node_id: NODE_ID_1 
+                            }
+                        ]
+                    }
                 ]
             }
         ]

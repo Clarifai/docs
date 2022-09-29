@@ -8,6 +8,9 @@ sidebar_position: 3
 **Manage your Mesh Workflows**
 <hr />
 
+Workflows is a useful Clarifai's feature that allows you to combine multiple models and carry out different operations. With workflows, you can create a powerful multi-model system that meets various use cases in a single API call—instead of relying only on one model. 
+
+You can use Clarifai's built-in models or your own custom models. 
 
 :::info
 
@@ -59,9 +62,17 @@ import CurlPatchWorkflow from "!!raw-loader!../../../code_snippets/api-guide/wor
 import CurlDeleteWorkflowID from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/delete_workflow_id.sh";
 import CurlDeleteAllWorkflows from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/delete_all_workflows.sh";
 
+import CodeOutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/sample_workflow_predict.txt";
+
 ## Create
 
-To create a new custom workflow, specify a list of model IDs that are to be included in the workflow. Since a model can have several versions, each model ID also requires a specific model version ID.
+In this example, we'll create a simple custom workflow that first extracts text from an image and then translates the extracted text to Spanish.
+
+We'll connect the following two models to achieve our objective:
+- The [ocr-scene-english-paddleocr](https://clarifai.com/clarifai/main/models/ocr-scene-english-paddleocr) model, which detects and recognizes English texts in images;
+- The [text-translation-english-spanish](https://clarifai.com/helsinkinlp/translation/models/text-translation-english-spanish) model, which translates texts from English to Spanish. 
+
+We'll specify the IDs of the models and their versions—since a model can have several versions. 
 
 <Tabs>
 
@@ -89,7 +100,9 @@ To create a new custom workflow, specify a list of model IDs that are to be incl
 
 ## Workflow Predict
 
-You can predict using a workflow. The response will contain the predictions each model in the workflow returns for the input.
+After creating the workflow, let's now use it to extract texts from [this image](https://samples.clarifai.com/featured-models/ocr-woman-holding-sold-sign.jpg) and translate them into Spanish. 
+
+The response will contain the predictions each model in the workflow returns for the input.
 
 <Tabs>
 
@@ -162,6 +175,11 @@ foreach (var concept in response.Outputs[0].Data.Concepts)
 -->
 
 </Tabs>
+
+<details>
+  <summary>Code Output Example</summary>
+    <CodeBlock className="language-text">{CodeOutputExample1}</CodeBlock>
+</details>
 
 ## Get
 

@@ -1,5 +1,3 @@
-# The first model is the Clarifai's Food model and the second is the Clarifai's General model
-
 curl -X POST "https://api.clarifai.com/v2/users/YOUR_USER_ID_HERE/apps/YOUR_APP_ID_HERE/workflows" \
     -H "Content-Type: application/json" \
     -H "Authorization: Key YOUR_PAT_HERE" \
@@ -8,22 +6,27 @@ curl -X POST "https://api.clarifai.com/v2/users/YOUR_USER_ID_HERE/apps/YOUR_APP_
         "id": "my-custom-workflow",
         "nodes": [
           {
-            "id": "food-concepts",
+            "id": "optical-character-recognizer",
             "model": {
-              "id": "bd367be194cf45149e75f01d59f77ba7",
+              "id": "ocr-scene-english-paddleocr",
               "model_version": {
-                "id": "dfebc169854e429086aceb8368662641"
+                "id": "40dbb2c9cde44a27af226782e7157006"
               }
             }
           },
           {
-            "id": "general-concepts",
+            "id": "text-to-text",
             "model": {
-              "id": "aaa03c23b3724a16a56b629203edc62c",
+              "id": "text-translation-english-spanish",
               "model_version": {
-                "id": "aa9ca48295b37401f8af92ad1af0d91d"
+                "id": "643f30558de34013aff72b0e21f244f5"
               }
-            }
+            },
+              "node_inputs": [
+                {
+                  "node_id": "optical-character-recognizer"
+                }
+              ]
           }
         ]
       }]

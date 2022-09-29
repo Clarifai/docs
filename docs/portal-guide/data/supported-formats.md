@@ -1,33 +1,39 @@
 ---
-description: 'The Clarifai platform supports the most common image, video and text formats.'
+description: 'The Clarifai platform supports the most common image, video, audio, and text formats.'
 sidebar_position: 1
 ---
 
 # Supported Formats
 
-**The Clarifai platform supports the most common image, video, and text formats**
+**The Clarifai platform supports the most common image, video, audio, and text formats**
 <hr />
 
-## The API supports the following image formats:
+The API supports a wide range of the following data formats:
+
+## Image formats
 
 * JPEG
 * PNG
 * TIFF
 * BMP
 * WEBP
+* GIF
 
-## The API supports the following video formats:
+## Video formats
 
 * AVI
 * MP4
 * WMV
 * MOV
-* GIF
 * 3GPP
 
-## The API supports the following text formats:
+## Audio formats
+
+* WAV
+
+## Text formats
 
 * Plain text
-
-## The API supports CSV and TSV files
+* CSV files
+* TSV files
 
