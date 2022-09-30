@@ -6,7 +6,7 @@ curl -X POST "https://api.clarifai.com/v2/users/YOUR_USER_ID_HERE/apps/YOUR_APP_
         {
           "data": {
             "image": {
-              "url": "https://samples.clarifai.com/metro-north.jpg"
+              "url": "https://samples.clarifai.com/featured-models/ocr-woman-holding-sold-sign.jpg"
           }
         }
       }

@@ -18,7 +18,7 @@ public class ClarifaiExample {
     static final String APP_ID = "YOUR_APP_ID_HERE";
     // Change these to make your own predictions
     static final String WORKFLOW_ID = "my-custom-workflow";
-    static final String IMAGE_URL = "https://samples.clarifai.com/metro-north.jpg";
+    static final String IMAGE_URL = "https://samples.clarifai.com/featured-models/ocr-woman-holding-sold-sign.jpg";
 
     ///////////////////////////////////////////////////////////////////////////////////
     // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -48,16 +48,18 @@ public class ClarifaiExample {
         }
 
         // We'll get one WorkflowResult for each input we used above. Because of one input, we have here
-        // one WorkflowResult.
+        // one WorkflowResult
         WorkflowResult results = postWorkflowResultsResponse.getResults(0);
 
-        // Each model we have in the workflow will produce one output.
+        // Each model we have in the workflow will produce its output
         for (Output output: results.getOutputsList()) {
             Model model = output.getModel();
-
-            System.out.println("Predicted concepts for the model `" + model.getId() + "`:");
-            for (Concept concept: output.getData().getConceptsList()) {
-                System.out.printf("\t%s %.2f%n", concept.getName(), concept.getValue());
+            System.out.println("Output for the model: `" + model.getId() + "`");            
+            int i = 0;
+            while(i < output.getData().getRegionsCount()) {
+            	String modelOutput = output.getData().getRegionsList().get(i).getData().getText().getRaw();
+            	System.out.println(modelOutput);            
+                i += 1;            	
             }
         }
 
