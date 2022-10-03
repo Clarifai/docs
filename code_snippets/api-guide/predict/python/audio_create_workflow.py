@@ -9,13 +9,13 @@ PAT = 'YOUR_PAT_HERE'
 APP_ID = 'YOUR_APP_ID_HERE'
 # Change these to create your own custom workflow
 WORKFLOW_ID = 'my-custom-workflow'
-NODE_ID_1 = 'optical-character-recognizer'
-MODEL_ID_1 = 'ocr-scene-english-paddleocr'
-MODEL_VERSION_ID_1 = '40dbb2c9cde44a27af226782e7157006'
+NODE_ID_1 = 'audio-to-text'
+MODEL_ID_1 = 'asr-wav2vec2-base-960h-english'
+MODEL_VERSION_ID_1 = 'f4deae70a473492a8e2f9b7bb1dbee85'
 
-NODE_ID_2 = 'text-to-text'
-MODEL_ID_2 = 'text-translation-english-spanish'
-MODEL_VERSION_ID_2 = '643f30558de34013aff72b0e21f244f5'
+NODE_ID_2 = 'sentiment-analysis'
+MODEL_ID_2 = 'sentiment-analysis-distilbert-english'
+MODEL_VERSION_ID_2 = 'c0b09e606db94d9bae7eb40c626192fc'
 
 ##########################################################################
 # YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE

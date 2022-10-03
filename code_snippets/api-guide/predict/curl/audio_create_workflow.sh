@@ -6,25 +6,25 @@ curl -X POST "https://api.clarifai.com/v2/users/YOUR_USER_ID_HERE/apps/YOUR_APP_
         "id": "my-custom-workflow",
         "nodes": [
           {
-            "id": "optical-character-recognizer",
+            "id": "audio-to-text",
             "model": {
-              "id": "ocr-scene-english-paddleocr",
+              "id": "asr-wav2vec2-base-960h-english",
               "model_version": {
-                "id": "40dbb2c9cde44a27af226782e7157006"
+                "id": "f4deae70a473492a8e2f9b7bb1dbee85"
               }
             }
           },
           {
-            "id": "text-to-text",
+            "id": "sentiment-analysis",
             "model": {
-              "id": "text-translation-english-spanish",
+              "id": "sentiment-analysis-distilbert-english",
               "model_version": {
-                "id": "643f30558de34013aff72b0e21f244f5"
+                "id": "c0b09e606db94d9bae7eb40c626192fc"
               }
             },
               "node_inputs": [
                 {
-                  "node_id": "optical-character-recognizer"
+                  "node_id": "audio-to-text"
                 }
               ]
           }

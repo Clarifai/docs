@@ -18,13 +18,13 @@ public class ClarifaiExample {
     static final String APP_ID = "YOUR_APP_ID_HERE";
     // Change these to create your own custom workflow
     static final String WORKFLOW_ID = "my-custom-workflow";
-    static final String NODE_ID_1 = "food-concepts";
-    static final String MODEL_ID_1 = "bd367be194cf45149e75f01d59f77ba7";
-    static final String MODEL_VERSION_ID_1 = "dfebc169854e429086aceb8368662641";
+    static final String NODE_ID_1 = "optical-character-recognizer";
+    static final String MODEL_ID_1 = "ocr-scene-english-paddleocr";
+    static final String MODEL_VERSION_ID_1 = "40dbb2c9cde44a27af226782e7157006";
 
-    static final String NODE_ID_2 = "general-concepts";
-    static final String MODEL_ID_2 = "aaa03c23b3724a16a56b629203edc62c";
-    static final String MODEL_VERSION_ID_2 = "aa9ca48295b37401f8af92ad1af0d91d";
+    static final String NODE_ID_2 = "text-to-text";
+    static final String MODEL_ID_2 = "text-translation-english-spanish";
+    static final String MODEL_VERSION_ID_2 = "643f30558de34013aff72b0e21f244f5";
 
     ///////////////////////////////////////////////////////////////////////////////////
     // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -58,6 +58,7 @@ public class ClarifaiExample {
                         .setId(MODEL_ID_2)
                         .setModelVersion(ModelVersion.newBuilder().setId(MODEL_VERSION_ID_2))
                     )
+                    .addNodeInputs(NodeInput.newBuilder().setNodeId(NODE_ID_1))
                 )
             ).build()
         );

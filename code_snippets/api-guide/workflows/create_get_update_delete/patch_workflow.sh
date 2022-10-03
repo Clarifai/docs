@@ -8,31 +8,41 @@ curl -X PATCH "https://api.clarifai.com/v2/users/YOUR_USER_ID_HERE/apps/YOUR_APP
                 "id": "my-custom-workflow",
                 "nodes": [
                     {
-                        "id": "travel-concepts",
+                        "id": "audio-to-text",
                         "model": {
-                            "id": "ccc28c313d69466f836ab83287a54ed9",
+                            "id": "asr-wav2vec2-base-960h-english",
                             "model_version": {
-                                "id": "cce28c313d69466f836ab83287a54ed9"
+                                "id": "f4deae70a473492a8e2f9b7bb1dbee85"
                             }
                         }
                     },
                     {
-                        "id": "nsfw-concepts",
+                        "id": "text-summarization",
                         "model": {
-                            "id": "ccc76d86d2004ed1a38ba0cf39ecb4b1",
+                            "id": "text-summarization-english-distilbart-cnn-12-6",
                             "model_version": {
-                                "id": "cc76a92beaeb4d8495a58ba197998158"
+                                "id": "8279cec2221a4b1d9db774470940aebd"
                             }
-                        }
+                        },
+                        "node_inputs": [
+                            {
+                                "node_id": "audio-to-text"
+                            }
+                        ]                        
                     },
                     {
-                        "id": "wedding-concepts",
+                        "id": "english-to-french",
                         "model": {
-                            "id": "c386b7a870114f4a87477c0824499348",
+                            "id": "translation-english-to-french-text",
                             "model_version": {
-                                "id": "787cc9a002164250800598d36b072384"
+                                "id": "c65a4a51c2b646fca5f0e4bf1ff200d7"
                             }
-                        }
+                        },
+                        "node_inputs": [
+                            {
+                                "node_id": "text-summarization"
+                            }
+                        ] 
                     }
                 ]
             }

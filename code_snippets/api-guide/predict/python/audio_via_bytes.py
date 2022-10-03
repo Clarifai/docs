@@ -1,6 +1,6 @@
-#############################################################################
+##############################################################################
 # In this section, we set the user authentication, app ID, workflow ID, and  
-# image URL. Change these strings to run your own example.
+# audio file location. Change these strings to run your own example.
 ##############################################################################
 
 USER_ID = 'YOUR_USER_ID_HERE'
@@ -9,7 +9,7 @@ PAT = 'YOUR_PAT_HERE'
 APP_ID = 'YOUR_APP_ID_HERE'
 # Change these to make your own predictions
 WORKFLOW_ID = 'my-custom-workflow'
-IMAGE_URL = 'https://samples.clarifai.com/featured-models/ocr-woman-holding-sold-sign.jpg'
+AUDIO_FILE_LOCATION = 'YOUR_AUDIO_FILE_LOCATION_HERE' 
 
 ##########################################################################
 # YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -26,6 +26,9 @@ metadata = (('authorization', 'Key ' + PAT),)
 
 userDataObject = resources_pb2.UserAppIDSet(user_id=USER_ID, app_id=APP_ID) # The userDataObject is required when using a PAT
 
+with open(AUDIO_FILE_LOCATION, "rb") as f:
+    file_bytes = f.read()
+
 post_workflow_results_response = stub.PostWorkflowResults(
     service_pb2.PostWorkflowResultsRequest(
         user_app_id=userDataObject,  
@@ -33,8 +36,8 @@ post_workflow_results_response = stub.PostWorkflowResults(
         inputs=[
             resources_pb2.Input(
                 data=resources_pb2.Data(
-                    image=resources_pb2.Image(
-                        url=IMAGE_URL
+                    audio=resources_pb2.Audio(
+                        base64=file_bytes
                     )
                 )
             )
@@ -50,10 +53,12 @@ if post_workflow_results_response.status.code != status_code_pb2.SUCCESS:
 results = post_workflow_results_response.results[0]
 
 # Each model we have in the workflow will produce its output
-for output in results.outputs:
+for output in results.outputs:    
     model = output.model    
-    print("Output for the model: `%s`" % model.id)
-    i = 0
-    while(i < len(output.data.regions)):
-        print(output.data.regions[i].data.text.raw)
-        i += 1        
+    print("Output for the model: `%s`" % model.id)   
+    for concept in output.data.concepts:        
+        print("\t%s %.2f" % (concept.name, concept.value)) 
+    print(output.data.text.raw)     
+
+# Uncomment this line to print the full Response JSON
+#print(results) 

@@ -17,6 +17,7 @@ You specify the model you'd like to use with the `MODEL_ID` parameter.
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
+
 import CodePythonViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/python/text_via_url.py";
 import CodePythonViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/python/text_via_bytes.py";
 import CodePythonViaRaw from "!!raw-loader!../../../code_snippets/api-guide/predict/python/text_via_raw.py";
@@ -44,7 +45,7 @@ import JSONOutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/pr
 import CodeOutputExample3 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/text_via_raw_text.txt";
 import JSONOutputExample3 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/text_via_raw_text.js";
 
-## Via URL 
+## Predict via URL 
 
 Below is an example of how you would make predictions on passages of text hosted on the web from the Clarifai's `product-review-sentiment-multi` model. 
 
@@ -189,7 +190,7 @@ foreach ($response->getOutputs()[0]->getData()->getConcepts() as $concept) {
     <CodeBlock className="language-javascript">{JSONOutputExample1}</CodeBlock>
 </details>
 
-## Via Local Files
+## Predict via Local Files
 
 Below is an example of how you would provide text inputs via local text files and receive predictions from the Clarifai's `product-review-sentiment-multi` model. 
 
@@ -227,7 +228,7 @@ Below is an example of how you would provide text inputs via local text files an
     <CodeBlock className="language-javascript">{JSONOutputExample2}</CodeBlock>
 </details>
 
-## Via Raw Text
+## Predict via Raw Text
 
 Below is an example of how you would provide raw text inputs and receive predictions from the Clarifai's `product-review-sentiment-multi` model. 
 

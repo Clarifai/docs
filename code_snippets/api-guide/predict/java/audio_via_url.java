@@ -9,7 +9,7 @@ public class ClarifaiExample {
 
     ///////////////////////////////////////////////////////////////////////////////////
     // In this section, we set the user authentication, app ID, workflow ID, and
-    // image URL. Change these strings to run your own example.
+    // audio URL. Change these strings to run your own example.
     ///////////////////////////////////////////////////////////////////////////////////
 
     static final String USER_ID = "YOUR_USER_ID_HERE";
@@ -18,7 +18,7 @@ public class ClarifaiExample {
     static final String APP_ID = "YOUR_APP_ID_HERE";
     // Change these to make your own predictions
     static final String WORKFLOW_ID = "my-custom-workflow";
-    static final String IMAGE_URL = "https://samples.clarifai.com/featured-models/ocr-woman-holding-sold-sign.jpg";
+    static final String AUDIO_URL = "https://samples.clarifai.com/negative_sentence_1.wav";
 
     ///////////////////////////////////////////////////////////////////////////////////
     // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -35,8 +35,8 @@ public class ClarifaiExample {
             .setWorkflowId(WORKFLOW_ID)
             .addInputs(
                 Input.newBuilder().setData(
-                    Data.newBuilder().setImage(
-                        Image.newBuilder().setUrl(IMAGE_URL)
+                    Data.newBuilder().setAudio(
+                        Audio.newBuilder().setUrl(AUDIO_URL)
                     )
                 )
             )
@@ -54,13 +54,11 @@ public class ClarifaiExample {
         // Each model we have in the workflow will produce its output
         for (Output output: results.getOutputsList()) {
             Model model = output.getModel();
-            System.out.println("Output for the model: `" + model.getId() + "`");            
-            int i = 0;
-            while(i < output.getData().getRegionsCount()) {
-            	String modelOutput = output.getData().getRegionsList().get(i).getData().getText().getRaw();
-            	System.out.println(modelOutput);            
-                i += 1;            	
+            System.out.println("Output for the model: `" + model.getId() + "`");   
+            for (Concept concept: output.getData().getConceptsList()) {       
+            	System.out.printf("\t%s %.2f%n",concept.getName(), concept.getValue());                 
             }
+            System.out.println(output.getData().getText().getRaw());
         }
 
     }

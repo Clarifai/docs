@@ -2,16 +2,16 @@
 
 ///////////////////////////////////////////////////////////////////////////////////
 // In this section, we set the user authentication, app ID, workflow ID, and
-// image URL. Change these strings to run your own example.
+// audio file location. Change these strings to run your own example.
 ///////////////////////////////////////////////////////////////////////////////////
 
-const USER_ID = "YOUR_USER_ID_HERE";
+const USER_ID = 'YOUR_USER_ID_HERE';
 // Your PAT (Personal Access Token) can be found in the portal under Authentification
-const PAT = "YOUR_PAT_HERE";
-const APP_ID = "YOUR_APP_ID_HERE";
+const PAT = 'YOUR_PAT_HERE';
+const APP_ID = 'YOUR_APP_ID_HERE';
 // Change these to make your own predictions
 const WORKFLOW_ID = "my-custom-workflow";
-const IMAGE_URL = "https://samples.clarifai.com/featured-models/ocr-woman-holding-sold-sign.jpg";
+const AUDIO_FILE_LOCATION = "YOUR_AUDIO_FILE_LOCATION_HERE";
 
 /////////////////////////////////////////////////////////////////////////////
 // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -25,6 +25,9 @@ const stub = ClarifaiStub.grpc();
 const metadata = new grpc.Metadata();
 metadata.set("authorization", "Key " + PAT);
 
+const fs = require("fs");
+const audioBytes = fs.readFileSync(AUDIO_FILE_LOCATION);
+
 stub.PostWorkflowResults(
   {
     user_app_id: {
@@ -32,7 +35,7 @@ stub.PostWorkflowResults(
       "app_id": APP_ID,
     },
     workflow_id: WORKFLOW_ID,
-    inputs: [{ data: { image: { url: IMAGE_URL } } }],
+    inputs: [{ data: { audio: { base64: audioBytes } } }],
   },
   metadata,
   (err, response) => {
@@ -50,15 +53,16 @@ stub.PostWorkflowResults(
     // one WorkflowResult
     const results = response.results[0];
 
-    // Each model we have in the workflow will produce its output.
+    // Each model we have in the workflow will produce its output   
     for (const output of results.outputs) {
       const model = output.model;
-      console.log("Output for the model: `" + model.id + "`");
-      let i = 0;
-      while(i < output.data.regions.length){
-        console.log(output.data.regions[i].data.text.raw);
-        i += 1; 
-      }    
+      console.log("Output for the model: `" + model.id + "`");        
+      for (const concept of output.data.concepts){    
+        console.log("\t" + concept.name + " " + concept.value);        
+      } 
+      if(output.data.text){
+      console.log(output.data.text.raw);        
+      }               
     }
   }
 );

@@ -40,7 +40,7 @@ The Predict API has limits to the length and size it can support. A video, uploa
 
 If your video exceeds the limits, please follow our [tutorial](https://www.clarifai.com/blog/splitting-video-into-smaller-pieces) on how to break up a large video into smaller components, and send those into the Video API. Otherwise, the processing will time out and you will receive an error response.
 
-## Via URL
+## Predict via URL
 
 Below is an example of how you would send video URLs and receive predictions from the Clarifai's `general-image-recognition` model.
 
@@ -53,6 +53,7 @@ The initialization code used in the following examples is outlined in detail on 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
+
 import CodePythonViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/python/video_via_url.py";
 import CodePythonViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/python/video_via_bytes.py";
 
@@ -211,7 +212,7 @@ foreach ($output->getData()->getFrames() as $frame) {
     <CodeBlock className="language-javascript">{JSONOutputExample1}</CodeBlock>
 </details>
 
-## Via Bytes
+## Predict via Bytes
 
 Below is an example of how you would send the bytes of a video and receive predictions from the Clarifai's `general-image-recognition` model.
 

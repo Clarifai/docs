@@ -9,17 +9,17 @@ PAT = 'YOUR_PAT_HERE'
 APP_ID = 'YOUR_APP_ID_HERE'
 # Change these to update your own workflow 
 WORKFLOW_ID = 'my-custom-workflow'
-NODE_ID_1 = 'travel-concepts'
-MODEL_ID_1 = 'ccc28c313d69466f836ab83287a54ed9'
-MODEL_VERSION_ID_1 = 'cce28c313d69466f836ab83287a54ed9'
+NODE_ID_1 = 'audio-to-text'
+MODEL_ID_1 = 'asr-wav2vec2-base-960h-english'
+MODEL_VERSION_ID_1 = 'f4deae70a473492a8e2f9b7bb1dbee85'
 
-NODE_ID_2 = 'nsfw-concepts'
-MODEL_ID_2 = 'ccc76d86d2004ed1a38ba0cf39ecb4b1'
-MODEL_VERSION_ID_2 = 'cc76a92beaeb4d8495a58ba197998158'
+NODE_ID_2 = 'text-summarization'
+MODEL_ID_2 = 'text-summarization-english-distilbart-cnn-12-6'
+MODEL_VERSION_ID_2 = '8279cec2221a4b1d9db774470940aebd'
 
-NODE_ID_3 = 'wedding-concepts'
-MODEL_ID_3 = 'c386b7a870114f4a87477c0824499348'
-MODEL_VERSION_ID_3 = '787cc9a002164250800598d36b072384'
+NODE_ID_3 = 'english-to-french'
+MODEL_ID_3 = 'translation-english-to-french-text'
+MODEL_VERSION_ID_3 = 'c65a4a51c2b646fca5f0e4bf1ff200d7'
 
 ##########################################################################
 # YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -55,12 +55,15 @@ patch_workflows_response = stub.PatchWorkflows(
             ),
             resources_pb2.WorkflowNode(
               id=NODE_ID_2,
-              model=resources_pb2.Model(
+              model=resources_pb2.Model(              
                 id=MODEL_ID_2,
                 model_version=resources_pb2.ModelVersion(
                   id=MODEL_VERSION_ID_2
                 )
-              )
+              ),
+              node_inputs=[
+                  resources_pb2.NodeInput(node_id=NODE_ID_1) 
+                  ]
             ),
             resources_pb2.WorkflowNode(
               id=NODE_ID_3,
@@ -69,7 +72,10 @@ patch_workflows_response = stub.PatchWorkflows(
                 model_version=resources_pb2.ModelVersion(
                   id=MODEL_VERSION_ID_3
                 )
-              )
+              ),
+              node_inputs=[
+                  resources_pb2.NodeInput(node_id=NODE_ID_2) 
+                  ]
             ),
           ]
         )

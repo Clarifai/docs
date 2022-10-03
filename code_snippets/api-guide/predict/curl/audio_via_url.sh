@@ -5,8 +5,8 @@ curl -X POST "https://api.clarifai.com/v2/users/YOUR_USER_ID_HERE/apps/YOUR_APP_
     "inputs": [
         {
           "data": {
-            "image": {
-              "url": "https://samples.clarifai.com/featured-models/ocr-woman-holding-sold-sign.jpg"
+            "audio": {
+              "url": "https://samples.clarifai.com/negative_sentence_1.wav"
           }
         }
       }

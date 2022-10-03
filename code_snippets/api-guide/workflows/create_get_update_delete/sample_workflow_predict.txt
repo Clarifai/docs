@@ -1,0 +1,6 @@
+Output for the model: `ocr-scene-english-paddleocr`
+SOLD
+We can SELL YOURS too!
+Output for the model: `text-translation-english-spanish`
+VENDIDO
+¡Nosotros también podemos venderla!
