@@ -47,7 +47,7 @@ import JSONOutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/pr
 import CodeOutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/image_via_bytes.txt";
 import JSONOutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/image_via_bytes.js";
 
-## Via URL
+## Predict via URL
 
 Below is an example of how you would send image URLs and receive predictions from the Clarifai's `general-image-recognition` model. 
 
@@ -193,7 +193,7 @@ foreach ($response->getOutputs()[0]->getData()->getConcepts() as $concept) {
     <CodeBlock className="language-javascript">{JSONOutputExample1}</CodeBlock>
 </details>
 
-## Via Bytes
+## Predict via Bytes
 
 Below is an example of how you would send the bytes of an image and receive predictions from the Clarifai's `general-image-recognition` model.
 

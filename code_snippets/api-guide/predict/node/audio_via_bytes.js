@@ -2,7 +2,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////
 // In this section, we set the user authentication, app ID, workflow ID, and
-// audio URL. Change these strings to run your own example.
+// audio file location. Change these strings to run your own example.
 ///////////////////////////////////////////////////////////////////////////////////
 
 const USER_ID = 'YOUR_USER_ID_HERE';
@@ -11,7 +11,7 @@ const PAT = 'YOUR_PAT_HERE';
 const APP_ID = 'YOUR_APP_ID_HERE';
 // Change these to make your own predictions
 const WORKFLOW_ID = "my-custom-workflow";
-const AUDIO_URL = "https://samples.clarifai.com/negative_sentence_1.wav";
+const AUDIO_FILE_LOCATION = "YOUR_AUDIO_FILE_LOCATION_HERE";
 
 /////////////////////////////////////////////////////////////////////////////
 // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -25,6 +25,9 @@ const stub = ClarifaiStub.grpc();
 const metadata = new grpc.Metadata();
 metadata.set("authorization", "Key " + PAT);
 
+const fs = require("fs");
+const audioBytes = fs.readFileSync(AUDIO_FILE_LOCATION);
+
 stub.PostWorkflowResults(
   {
     user_app_id: {
@@ -32,7 +35,7 @@ stub.PostWorkflowResults(
       "app_id": APP_ID,
     },
     workflow_id: WORKFLOW_ID,
-    inputs: [{ data: { audio: { url: AUDIO_URL } } }],
+    inputs: [{ data: { audio: { base64: audioBytes } } }],
   },
   metadata,
   (err, response) => {

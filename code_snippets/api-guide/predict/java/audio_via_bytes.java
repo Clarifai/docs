@@ -1,15 +1,20 @@
 package com.clarifai.example;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+
 import com.clarifai.channel.ClarifaiChannel;
 import com.clarifai.credentials.ClarifaiCallCredentials;
 import com.clarifai.grpc.api.*;
 import com.clarifai.grpc.api.status.StatusCode;
+import com.google.protobuf.ByteString;
 
 public class ClarifaiExample {
 
     ///////////////////////////////////////////////////////////////////////////////////
     // In this section, we set the user authentication, app ID, workflow ID, and
-    // audio URL. Change these strings to run your own example.
+    // audio file location. Change these strings to run your own example.
     ///////////////////////////////////////////////////////////////////////////////////
 
     static final String USER_ID = "YOUR_USER_ID_HERE";
@@ -18,13 +23,13 @@ public class ClarifaiExample {
     static final String APP_ID = "YOUR_APP_ID_HERE";
     // Change these to make your own predictions
     static final String WORKFLOW_ID = "my-custom-workflow";
-    static final String AUDIO_URL = "https://samples.clarifai.com/negative_sentence_1.wav";
+    static final String AUDIO_FILE_LOCATION = "YOUR_AUDIO_FILE_LOCATION_HERE";
 
     ///////////////////////////////////////////////////////////////////////////////////
     // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
     ///////////////////////////////////////////////////////////////////////////////////
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         V2Grpc.V2BlockingStub stub = V2Grpc.newBlockingStub(ClarifaiChannel.INSTANCE.getGrpcChannel())
             .withCallCredentials(new ClarifaiCallCredentials(PAT));
@@ -36,7 +41,9 @@ public class ClarifaiExample {
             .addInputs(
                 Input.newBuilder().setData(
                     Data.newBuilder().setAudio(
-                        Audio.newBuilder().setUrl(AUDIO_URL)
+                        Audio.newBuilder().setBase64(ByteString.copyFrom(Files.readAllBytes(
+                                new File(AUDIO_FILE_LOCATION).toPath()
+                                )))
                     )
                 )
             )

@@ -6,7 +6,7 @@ curl -X POST "https://api.clarifai.com/v2/users/YOUR_USER_ID_HERE/apps/YOUR_APP_
         {
           "data": {
             "audio": {
-              "url": "https://samples.clarifai.com/negative_sentence_1.wav"
+              "base64": "YOUR_BYTES_STRING_HERE"
           }
         }
       }
