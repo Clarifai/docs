@@ -46,10 +46,12 @@ Note that the initialization code used here is outlined in detail on the [client
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
+
 import PythonEvaluateModel from "!!raw-loader!../../../code_snippets/api-guide/evaluate/evaluate_model.py";
 import JSEvaluateModel from "!!raw-loader!../../../code_snippets/api-guide/evaluate/evaluate_model.html";
 import NodeEvaluateModel from "!!raw-loader!../../../code_snippets/api-guide/evaluate/evaluate_model.js";
 import JavaEvaluateModel from "!!raw-loader!../../../code_snippets/api-guide/evaluate/evaluate_model.java";
+import CurlEvaluateModel from "!!raw-loader!../../../code_snippets/api-guide/evaluate/evaluate_model.sh";
 
 <Tabs>
 
@@ -67,6 +69,10 @@ import JavaEvaluateModel from "!!raw-loader!../../../code_snippets/api-guide/eva
 
 <TabItem value="java" label="Java">
  <CodeBlock className="language-java">{JavaEvaluateModel}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlEvaluateModel}</CodeBlock>
 </TabItem>
 
 </Tabs>
