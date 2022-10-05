@@ -10,8 +10,10 @@ sidebar_position: 1
 
 Within your app, you can create concepts, modify them after creation, and get them from your app.
 
-:::important
+:::caution
+
 We currently do not support deleting concepts since they have such an integral tie across almost all other data structures in the platform, like inputs, models, searches, etc.
+
 :::
 
 You will find that some of our endpoints have additional information returned from the Clarifai/main app, which contains our pre-trained models and a large knowledge graph we've assembled over the years.

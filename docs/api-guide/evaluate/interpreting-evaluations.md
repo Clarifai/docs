@@ -24,6 +24,7 @@ import PythonInterpretEvaluations from "!!raw-loader!../../../code_snippets/api-
 import JSthonInterpretEvaluations from "!!raw-loader!../../../code_snippets/api-guide/evaluate/interpret_evaluations.html";
 import NodeInterpretEvaluations from "!!raw-loader!../../../code_snippets/api-guide/evaluate/interpret_evaluations.js";
 import JavaInterpretEvaluations from "!!raw-loader!../../../code_snippets/api-guide/evaluate/interpret_evaluations.java";
+import CurlInterpretEvaluations from "!!raw-loader!../../../code_snippets/api-guide/evaluate/interpret_evaluations.sh";
 
 <Tabs>
 
@@ -41,6 +42,10 @@ import JavaInterpretEvaluations from "!!raw-loader!../../../code_snippets/api-gu
 
 <TabItem value="java" label="Java">
  <CodeBlock className="language-java">{JavaInterpretEvaluations}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlInterpretEvaluations}</CodeBlock>
 </TabItem>
 
 </Tabs>
