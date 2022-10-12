@@ -20,7 +20,7 @@ Clarifai offers an end-to-end platform for the complete AI lifecycle. Whether yo
 <main class="margin-top--lg">
    <div class="row">
       <article class="col col--6" >
-         <a href="https://communityinviter.com/apps/clarifaicommunity/clarifai-community/" target="_blank" style={{"display":"block","-webkit-text-decoration":"none","text-decoration":"none","color":"var(--ifm-heading-color)"}}>
+         <a href="https://clarifaicommunity.slack.com/" target="_blank" style={{"display":"block","-webkit-text-decoration":"none","text-decoration":"none","color":"var(--ifm-heading-color)"}}>
          <div class="card margin-bottom--lg padding--lg cardContainer_w8bb cardContainerLink_AhGd" style={{height:"auto", "color":"var(--ifm-heading-color)"}}>
             <h3><img src="https://www.clarifai.com/hs-fs/hubfs/slack.png?width=28&name=slack.png" alt="slack" width="28px" />&nbsp; Join our Slack channel</h3>
             <p>Interact actively with other users of Clarifai products</p>         
