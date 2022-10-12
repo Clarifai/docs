@@ -16,8 +16,10 @@ If you have not imported the Clarifai collection into Postman yet, use the follo
 
 ## Applications
 
-After importing the Clarifai collection into Postman, inside the **Applications** folder in the sidebar, you should generally see four types of items/actions.
+After importing the Clarifai collection into Postman, inside the **Applications** folder in the sidebar, you should generally see four types of items/actions:
 
+
+![Clarifai applications](/img/postman/clarifai_applications.png)
 
 
 - **Create Application** (with numerous variants)—As one could guess, any of these creates a new application within your current account (signified by your `session_token`).
@@ -32,7 +34,7 @@ After importing the Clarifai collection into Postman, inside the **Applications*
 
 To create an application, select any of the **Create Application** actions. The respective tab will then open in the main window. 
 
-Within **Create Application**, select the **Headers** tab. You can now see all the environment variables required for this action—`{{base_url}}`, `{{user_id}}`, and `{{session_token}}`. 
+Within **Create Application**, select the **Headers** tab. You can now see all the environment variables required for this action—`{{base_url}}`, `{{user_id}}`, and `{{session_token}}`.
 
 ![Create app variables](/img/postman/create_app_variables.png)
 
