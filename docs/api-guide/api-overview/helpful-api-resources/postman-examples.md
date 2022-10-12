@@ -10,7 +10,7 @@ sidebar_position: 2
 
 After learning [how to use Postman with Clarifai APIs](https://docs.clarifai.com/api-guide/api-overview/helpful-api-resources/using-postman-with-clarifai-apis), let's now delve into more examples that will help you to confidently use Postman to call our API. 
 
-If you've not imported the Clarifai collection into Postman yet, use the following Run in Postman button to import it: 
+If you have not imported the Clarifai collection into Postman yet, use the following Run in Postman button to import it: 
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/8c7850b96f74d0fc03c0)
 
