@@ -16,9 +16,9 @@ If you have not imported the Clarifai collection into Postman yet, use the follo
 
 ## Applications
 
-After importing the Clarifai collection into Postman, inside the **Applications** folder in the sidebar, you should generally see four types of items/actions:
+After importing the Clarifai collection into Postman, inside the **Applications** folder in the sidebar, you should generally see four types of items/actions.
 
-![Clarifai applications](/img/postman/clarifai_applications.png)
+
 
 - **Create Application** (with numerous variants)—As one could guess, any of these creates a new application within your current account (signified by your `session_token`).
 
