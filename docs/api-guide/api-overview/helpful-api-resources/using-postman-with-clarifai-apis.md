@@ -36,6 +36,8 @@ This collection works in Postman for Web or in your local Postman application. I
 After importing the Clarifai Postman collection, a full list of the available Clarifai API endpoints will be structured by folder in the left pane of Postman.
 
 
+![Clarifai Postman API collection](/img/postman/clarifai_postman_api_collection.png)
+
 
 ### Setting Up Postman Environment 
 
