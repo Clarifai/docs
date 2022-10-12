@@ -1,5 +1,6 @@
 ---
 description: Pre-configured API calls with Postman.
+sidebar_position: 1
 ---
 
 # Using Postman with Clarifai APIs
@@ -9,60 +10,111 @@ description: Pre-configured API calls with Postman.
 
 ### **Overview**
 
-This page explains how to use [Postman](https://www.postman.com/) to perform API calls to Clarifai by showing the actions available within the Clarifai API. You can use Postman to make a wide variety of `GET`, `POST`, `PATCH`, and `DELETE` calls.
+This page explains how to use [Postman](https://www.postman.com/) to perform API calls to Clarifai by showing the actions available within the Clarifai platform. You can use Postman to make wide variety of `GET`, `POST`, `PATCH`, and `DELETE` calls.
 
-### Prerequisites <a id="prerequisites"></a>
+With Postman, you can use, hit, or test the Clarifai API without the need to use the Portal or call the endpoints programmatically. 
 
-You have:
+Postman also allows you to make API calls and get code snippets in your favourite programming language. You can use the snippets to make REST requests to the Clarifai API. 
 
-* An active Clarifai account.
-* Access to your [Clarifai API key](https://docs.clarifai.com/clarifai-basics/authentication/app-specific-api-keys) and user login credentials.
-* Basic knowledge of API structure and JSON formatting.
+### Prerequisites
 
-### Setup <a id="setup"></a>
+You need to have:
 
-#### Import the Clarifai collection into Postman <a id="import-the-datadog-collection-into-postman"></a>
+* Postman
+* An active Clarifai account
+* Access to your [Clarifai API key](https://docs.clarifai.com/clarifai-basics/authentication/app-specific-api-keys) (or [Personal Access Token](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens)) and user login credentials
+* Basic knowledge of an API structure and JSON formatting
+
+### Get Started 
+
+#### Use the following Run in Postman button to import the Clarifai collection into Postman: 
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/8c7850b96f74d0fc03c0)
 
-This collection works in Postman for Web or in your Postman application. It may take several seconds to load.
+This collection works in Postman for Web or in your local Postman application. It may take several seconds to load.
 
-#### Postman environment setup <a id="postman-environment-setup"></a>
+After importing the Clarifai Postman collection, a full list of the available Clarifai API endpoints will be structured by folder in the left pane of Postman.
 
-After the Postman collection is imported, a full list of available Clarifai API calls is structured by folder in the left pane of Postman.
+![Clarifai Postman API collection](/img/postman/clarifai_postman_api_collection.png)
 
-**AUTHENTICATION**
+### Setting Up Postman Environment 
 
-The collection includes a [Postman environment](https://learning.postman.com/docs/postman/variables-and-environments/variables/#environments-in-postman) called `Clarifai Authentication`, where you can add your username, password and [Clarifai API key](https://docs.clarifai.com/clarifai-basics/authentication/app-specific-api-keys) or [Personal Access Token](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens) for [authentication](https://docs.clarifai.com/clarifai-basics/authentication/authorize).
+Setting up a Postman environment allows you to define the variables you can use in your Postman requests. After defining an [environment variable](https://learning.postman.com/docs/sending-requests/managing-environments/), you can use it throughout your Clarifai collection—instead of having to provide it each time you make a call. 
 
-Follow these steps to set up your environment:
+To set any environment variable, select the **Environments** option on the left sidebar. Then, click **Create Environment**. 
 
-1. Click the **Manage Environments** gear icon in the upper right corner of Postman.
-2. Select **Clarifai Authentication**
-3. Click **Edit**.
-4. Add in your Clarifai API key as the initial value and current value for the `api_key` variable, and add your Clarifai Application key as the initial value and current value for the `application_key` variable.
+![Create environment variable](/img/postman/create_environment_variable.png)
 
-### Working with the Collection <a id="working-with-the-collection"></a>
+On the ensuing page, enter a name for your environment, add `base_url` as a new variable and `https://api.clarifai.com` as its value. 
 
-After setup is complete, you are ready to begin making API calls. In the Postman -&gt; Clarifai folder, there are subfolders for each type of API category listed in the Clarifai API Reference. Expand the subfolders to see the HTTP methods and API call names.
+Click **Save**. 
 
-#### Builder <a id="builder"></a>
+![Set up Clarifai environment](/img/postman/clarifai_environment_base_url.png)
 
-When you click on an API call in the collection, it loads in the `Builder` pane on the right. On this pane you can send the API call and see the returned status, response time, and API response code.
+Set the environment as active.
 
-#### Description <a id="description"></a>
+![Set as active environment](/img/postman/set_as_active_environment.png)
 
-When you click on the Endpoint name a description of the endpoint and all required/optional parameters is displayed to help you build your requests:
+You are now ready to start making calls to the Clarifai API!
 
-#### Params <a id="params"></a>
+:::tip
 
-The **Params** tab shows all parameters and values that are currently on the API call. Here, you are able to add parameters and values. View the available arguments in the corresponding section of the [Clarifai API documentation](https://docs.clarifai.com/api-guide/api-overview).
-
-This tab is an alternative to viewing the `param1:value1¶m2:value2` structure of the API call.
-
-:::important notes
-
-* The ampersand \(&\) and colon \(:\) are not needed in the params table. Postman inserts these for you.
-* All placeholders follow the format: `<PLACEHOLDER>` . They should be replaced before running a query.
+Setting the initial environment should be a one-time exercise. After that, you can add new variables (such as user ids, API keys, app ids, etc) to the environment by opening it from the sidebar and editing it in the tab that opens. Also, as you run some endpoints, the variables generated will be automatically saved to the environment and overwritten as your new variables. 
 
 :::
+
+### Authentication
+
+While logging in and accessing an app through the UI seems like a seamless process, under the hood, it's actually going through a variety of steps. Unfortunately with Postman, you'll need to manually make those calls.
+
+#### Logging In
+
+To log in, use the **Login V2** endpoint. In the **Body** section, provide the email and password you use to access the Clarifai platform. 
+
+Press **Send** to get a response.
+
+![Postman Log in](/img/postman/postman_login.png)
+
+If successful, the bottom half of the **Login V2** window shows a response with an **OK** status.
+
+![Session key](/img/postman/postman_session_key.png)
+
+Notice that the response includes a `session_token`, which will be automatically assigned to the environment to allow you to make subsequent calls to the Clarifai platform. 
+
+The response also includes your `user_id`, which will also be automatically assigned to the Postman environment.
+
+You are now logged in! 
+
+After that, you can make various calls to the Clarifai platform. 
+
+#### Make a test call
+
+You should be ready now to make a test call. An easy first call is to get your user details using the **Get User** endpoint. Ideally, you can just click **Send** and get a response without making any adjustments in the request. 
+
+![Get user](/img/postman/get_user.png)
+
+Notice that if you hover your mouse over `{{base_url}}` or `{{session_token}}`, their already set environment variable values will pop up. 
+
+Also, notice that the variables are displayed in orange—implying that their values have already been provided. Otherwise, if a variable is displayed in red, it means that its value has not been set yet. 
+
+If everything is set up properly, you'll get a user object as the response to the call. 
+
+### Working with the Collection 
+
+After setup is complete, you are ready to begin making API calls. In the Postman -&gt; Clarifai folder, there are subfolders for each type of API category listed in the Clarifai API Reference. You can expand the subfolders to see the HTTP methods and API call names.
+
+#### Builder 
+
+When you click any API endpoint in the collection, it loads in the Builder pane on the right. On this pane, you can send an API request and see the returned status, response time, and API response code.
+
+#### Description 
+
+When you click an endpoint name, a description of the endpoint and all required/optional parameters is displayed to help you build your requests.
+
+#### Params 
+
+The **Params** tab shows all parameters and values that are currently on the selected API endpoint. Here, you are able to add parameters and values.
+
+This tab is an alternative to viewing the `param1:value1¶m2:value2` structure of the API call. The ampersand \(&\) and colon \(:\) are not needed in the params table. Postman inserts these for you.
+
+You can view all the available arguments in the corresponding section of the [Clarifai API documentation](https://docs.clarifai.com/api-guide/api-overview).
