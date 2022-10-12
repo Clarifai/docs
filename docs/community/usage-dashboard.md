@@ -24,11 +24,7 @@ You can view graphical representations of the following items:
 1. Sign in to the [Clarifai Community Portal](https://clarifai.com/explore).
 2. Click your profile icon at the top-left corner of the page and select the **Account** option on the drop-down list.
 
-
-
 ![Access the usage dashboard](/img/community/usage_dashboard/access_usage_dashboard.png)
-
-
 
 3. In the left menu, select **Usage**. You’ll then be redirected to the Usage dashboard page. 
 
