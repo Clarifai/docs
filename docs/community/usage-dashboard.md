@@ -71,6 +71,8 @@ It displays the number of operations for:
 
 The Training Hours section showcases the number of hours you trained your models during the selected period.
 
+![Training hours](/img/community/usage_dashboard/training_hours.png)
+
 ### Stored Inputs
 
 The Stored Inputs section has a chart that illustrates the number of inputs you added to the Clarifai platform during the selected period.
