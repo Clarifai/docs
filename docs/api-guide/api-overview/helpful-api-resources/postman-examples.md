@@ -16,6 +16,8 @@ If you have not imported the Clarifai collection into Postman yet, use the follo
 
 ## Applications
 
+Applications are the basic building blocks for creating projects on the Clarifai platform. Your data, annotations, models, predictions, and searches are contained within applications.
+
 After importing the Clarifai collection into Postman, inside the **Applications** folder in the sidebar, you should generally see four types of items/actions:
 
 ![Clarifai applications](/img/postman/clarifai_applications.png)
@@ -102,9 +104,167 @@ The **Delete Application** endpoint allows you to delete an existing application
 
 If you run the endpoint as-is, it will delete the app with the `app_id` already set in the environment. 
 
-If you want to delete another app, you can set its `app_id` in the Postman environment. 
+If you want to delete another app, you can set its value in the Postman environment or directly in the URL field. 
 
+## API Keys
 
+API keys are used to authorize access to your Clarifai applications. 
 
+API keys go hand-in-hand with application ids, except whereas app ids allow you to create/edit/delete application level details, API keys are required to create/edit/delete the things within the application itself, such as models, concepts, and inputs.
 
+Inside the **Keys** folder in the sidebar, you should generally see the following items/actions:
 
+![Postman keys](/img/postman/postman_keys.png)
+
+You can experiment with any of the actions within the  **Keys** folder. 
+
+Let's illustrate how to use some of them. 
+
+### a) Create Keys
+
+#### Create Key (All Permissions)
+
+The **Create Key (All Permissions)** endpoint allows you to create a new app-specific API key for your current model. Running this request will create a key with all permissions and automatically store the newly created key into the Postman environment.
+
+![Create key](/img/postman/create_key.png)
+
+#### Create PAT
+
+The **Create PAT** endpoint allows you to create a PAT (Personal Access Token). 
+
+![Create PAT](/img/postman/create_pat.png)
+
+:::info
+
+Unlike API keys, PATs are not linked to any specific application. With a [PAT](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens), you can access multiple apps with a single key. 
+It's a powerful way of accessing your resources within the Clarifai platform.
+
+:::
+
+### b) Get Keys
+
+#### Get Keys by Application ID
+
+If you don't know the API key for an application, running the **Get Keys by Application ID** endpoint allows you to list all the API keys for your stipulated application. This request also automatically assigns the topmost key in the response to the Postman environment.
+
+![Get keys](/img/postman/get_keys.png)
+
+#### Get Key by Value
+
+If you already know the API key and just want to load that key into the Postman environment, or get its details, you can run the **Get Key by Value** endpoint. You need to replace the `{{key}}` variable in the URL with the relevant API key for the application you want to manipulate.
+
+![Get key by value](/img/postman/get_key_by_value.png)
+
+### c) Delete Key
+
+The **Delete Key by Value** endpoint allows you to delete an API key.
+
+![Delete key](/img/postman/delete_key.png)
+
+If you run the endpoint as-is, it will delete the key with the `key` already set in the environment. 
+
+If you want to delete another key, you can set its value in the Postman environment or directly in the URL field. 
+
+## Inputs
+
+An input is any data you provide into the Clafai platform. It could be in the form of an image, video, text, or audio.
+
+Inside the **Inputs** folder in the sidebar, you should generally see the following items/actions:
+
+![Inputs](/img/postman/inputs_sidebar.png)
+
+You can experiment with any of the actions within the  **Inputs** folder. 
+
+Let's illustrate how to use some of them. 
+
+### a) Add Inputs
+
+#### Add Image
+
+The **Add Image** endpoint allows you to add an image input to the Clarifai Platform.
+
+![Add image](/img/postman/add_image.png)
+
+In the body of the request, you need to use the `url` parameter to provide a publicly accessible URL of the image you want to add. 
+
+After running the request, you'll get a response that contains the id of the image you added:
+
+![Add image response](/img/postman/add_image_response.png)
+
+Each input has a unique id associated with only itself. Even if you upload the same image multiple times to an application, each one will be assigned its own unique id. This is the `asset_id`, which will be automatically stored in the Postman environment after adding the image. 
+
+#### Add Input with Metadata
+
+The **Add Input with Metadata** endpoint allows you to add an input alongside other metadata, including concepts.
+
+![Add input with metadata](/img/postman/add_input_with_metadata.png)
+
+### b) Get Inputs
+
+#### List All Inputs
+
+The **List All Inputs** endpoint allows you to list all the inputs associated with your application. 
+
+![List all inputs](/img/postman/list_all_inputs.png)
+
+Notice the `page` and `per_page` query string parameters added to the request. These parameters allow you to split your results into pages. 
+
+The `page` params indicates the page number⁠—defaults to 1. The `per_page` params indicates the number of results that will be contained in each page⁠—defaults to 128. You can get up to 1,000 results per page.
+
+In the above example, we are getting all inputs and specifying to start at page 1 and retrieve 1,000 results per page.
+
+Here is how the results of running the request looks like:
+
+![List all inputs results](/img/postman/list_all_inputs_results.png)
+
+#### Get Input by Id
+
+You can get the details of an input by its id. 
+
+![Get input by id](/img/postman/get_input_by_id.png)
+
+If you run the endpoint as-is, it will get the details of the input with its `asset_id` already set in the environment.
+
+If you want to get the details of another input, you can set its value in the Postman environment or directly in the URL field.
+
+### c) Search Inputs
+
+Our API automatically indexes your inputs so that they are ready for search from the moment they are uploaded. Once indexed, you can search for inputs by concept, visual similarity, or other search parameter.
+
+#### Search by tag
+
+The **Search by tag** endpoint, which is found inside the **Search** folder in the Postman sidebar, allows you to search your inputs for the presence of the defined search term. 
+
+![Search by tag](/img/postman/search_by_tag.png)
+
+As you can see on the screenshot above, we've added an extra segment into the top line of the JSON content in the body tab: `"pagination":{"page":1, "per_page":1000}`.
+
+As explained previously, this extra code allows the API to return up to 1,000 results per page.
+
+Here is how the results of running the request looks like:
+
+![Search by tag results](/img/postman/search_by_tag_results.png)
+
+As you can see on the screenshot above, the results show the first (of several) input, along with a "score", which is the percentage that the model believes this image contains our search term "charlie". 
+
+### d) Delete Inputs
+
+#### Delete by ID
+
+The **Delete by ID** endpoint allows you to delete an input by its id.
+
+![Delete input by id](/img/postman/delete_input_by_id.png)
+
+If you run the endpoint as-is, it will delete the input with its `asset_id` already set in the environment.
+
+If you want to delete another input, you can set its value in the Postman environment or directly in the URL field.
+
+#### Delete Batch by IDs
+
+The **Delete Batch by IDs (async)** endpoint allows you to delete multiple inputs associated with your application in one API call. It will happen asynchronously.
+
+You need to add a list of your input ids using the `ids` parameter in the body of the request. You can run the [List All Inputs](#list-all-inputs) endpoint to get your input ids. 
+
+![Delete batch by ids](/img/postman/delete_batch_by_ids.png)
+
+ 
