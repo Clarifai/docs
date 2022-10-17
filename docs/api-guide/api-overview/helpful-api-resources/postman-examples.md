@@ -8,7 +8,7 @@ sidebar_position: 2
 **Learn how to make API calls with Postman**
 <hr />
 
-After learning [how to use Postman with Clarifai APIs](https://docs.clarifai.com/api-guide/api-overview/helpful-api-resources/using-postman-with-clarifai-apis), let's now delve into more examples that will help you to confidently use Postman to call our API. 
+After learning [how to use Postman with Clarifai APIs](https://docs.clarifai.com/api-guide/api-overview/helpful-api-resources/using-postman-with-clarifai-apis), let's now delve into more examples that will help you to confidently use Postman to call our services. 
 
 If you have not imported the Clarifai collection into Postman yet, use the following Run in Postman button to import it: 
 
@@ -80,7 +80,7 @@ The **Get Application** endpoint allows you to get the details of a specific app
 
 If you run the **Get Application** endpoint as-is, you'll get the details of the `app_id` already set in the environment. 
 
-If you want to get the details of another app, you can set its `app_id` in the Postman environment. 
+If you want to get the details of another app, you can set its value in the Postman environment or directly in the URL field.
 
 ### c) Patch Application
 
@@ -110,7 +110,7 @@ If you want to delete another app, you can set its value in the Postman environm
 
 API keys are used to authorize access to your Clarifai applications. 
 
-API keys go hand-in-hand with application ids, except whereas app ids allow you to create/edit/delete application level details, API keys are required to create/edit/delete the things within the application itself, such as models, concepts, and inputs.
+API keys go hand-in-hand with application ids, except whereas app ids allow you to create/edit/delete application-level details, API keys are required to create/edit/delete the things within the application itself, such as models, concepts, and inputs.
 
 Inside the **Keys** folder in the sidebar, you should generally see the following items/actions:
 
@@ -124,19 +124,19 @@ Let's illustrate how to use some of them.
 
 #### Create Key (All Permissions)
 
-The **Create Key (All Permissions)** endpoint allows you to create a new app-specific API key for your current model. Running this request will create a key with all permissions and automatically store the newly created key into the Postman environment.
+The **Create Key (All Permissions)** endpoint allows you to create a new [app-specific API key](https://docs.clarifai.com/clarifai-basics/authentication/app-specific-api-keys) for your current model. Running this request will create a key with all permissions and automatically store the newly created key in the Postman environment.
 
 ![Create key](/img/postman/create_key.png)
 
 #### Create PAT
 
-The **Create PAT** endpoint allows you to create a PAT (Personal Access Token). 
+The **Create PAT** endpoint allows you to create a [PAT](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens) (Personal Access Token). 
 
 ![Create PAT](/img/postman/create_pat.png)
 
 :::info
 
-Unlike API keys, PATs are not linked to any specific application. With a [PAT](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens), you can access multiple apps with a single key. 
+Unlike API keys, PATs are not linked to any specific application. With a PAT, you can access multiple apps with a single key. 
 It's a powerful way of accessing your resources within the Clarifai platform.
 
 :::
@@ -145,7 +145,7 @@ It's a powerful way of accessing your resources within the Clarifai platform.
 
 #### Get Keys by Application ID
 
-If you don't know the API key for an application, running the **Get Keys by Application ID** endpoint allows you to list all the API keys for your stipulated application. This request also automatically assigns the topmost key in the response to the Postman environment.
+If you don't know the keys for an application, running the **Get Keys by Application ID** endpoint allows you to list all the API keys for your stipulated application. This request also automatically assigns the topmost key in the response to the Postman environment.
 
 ![Get keys](/img/postman/get_keys.png)
 
@@ -167,7 +167,7 @@ If you want to delete another key, you can set its value in the Postman environm
 
 ## Inputs
 
-An input is any data you provide into the Clafai platform. It could be in the form of an image, video, text, or audio.
+An input is any data you provide into the Clarifai platform. It could be in the form of an image, video, text, or audio.
 
 Inside the **Inputs** folder in the sidebar, you should generally see the following items/actions:
 
@@ -213,7 +213,7 @@ The `page` params indicates the page number⁠—defaults to 1. The `per_page` p
 
 In the above example, we are getting all inputs and specifying to start at page 1 and retrieve 1,000 results per page.
 
-Here is how the results of running the request looks like:
+Here is how the results of running the request look like:
 
 ![List all inputs results](/img/postman/list_all_inputs_results.png)
 
@@ -229,7 +229,7 @@ If you want to get the details of another input, you can set its value in the Po
 
 ### c) Search Inputs
 
-Our API automatically indexes your inputs so that they are ready for search from the moment they are uploaded. Once indexed, you can search for inputs by concept, visual similarity, or other search parameter.
+Our API automatically indexes your inputs so that they are ready for search from the moment they are uploaded. Once indexed, you can search for inputs by concept, visual similarity, or other search parameters.
 
 #### Search by tag
 
@@ -241,11 +241,11 @@ As you can see on the screenshot above, we've added an extra segment into the to
 
 As explained previously, this extra code allows the API to return up to 1,000 results per page.
 
-Here is how the results of running the request looks like:
+Here is how the results of running the request look like:
 
 ![Search by tag results](/img/postman/search_by_tag_results.png)
 
-As you can see on the screenshot above, the results show the first (of several) input, along with a "score", which is the percentage that the model believes this image contains our search term "charlie". 
+As you can see on the screenshot above, the results show the first input (of several inputs), along with a "score", which is the percentage that the model believes this image contains our search term "charlie". 
 
 ### d) Delete Inputs
 
