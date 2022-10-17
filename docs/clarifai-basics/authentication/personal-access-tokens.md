@@ -23,7 +23,9 @@ You can use PATs to accomplish the following:
 
 :::
 
-## How to Create a New PAT
+When using a PAT, you need to specify your user ID alongside the application ID to which the request should be applied.
+
+## Create a New PAT in the Portal
 
 To create a new PAT, log in to the Portal and navigate to the bottom left-hand corner of the application overview page. Then, click  the initials of your name:
 

@@ -18,6 +18,8 @@ Each API Key is tied to a specific user and a specific app
 
 :::
 
+When using an app-specific API Key, you do not need to specify either the user ID or the application ID as they are already part of the API Key.
+
 An API Key allows you to have fine-grained control over the data exposed through your app. You can control the scope of your API Key through a simple checkbox interface displayed when you create a new key or edit a key. 
 
 ## Create API Keys in the Portal
