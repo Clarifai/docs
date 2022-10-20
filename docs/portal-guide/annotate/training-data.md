@@ -8,7 +8,13 @@ sidebar_position: 7
 **Teach AI with specially labeled data**
 <hr />
 
-Your custom AI solution will require training data. Training data is used to "teach" AI models how to understand the world. A good set of training data will result in a model that will make accurate predictions on data in real-world scenarios. There are two basic considerations to keep in mind when building a training dataset: quantity and quality.
+Your custom AI solution will require training data. Training data is used to "teach" AI models how to understand the world. A good set of training data will result in a model that will make accurate predictions on data in real-world scenarios.
+
+There are two basic considerations to keep in mind when building a training dataset: 
+
+- **Quantity**—Data quantity casts a wider net for model understanding. With more data, we can get more specific and more granular with our concepts.
+
+- **Quality**—Data quality, in the context of machine learning, is data that 1) Visually adheres to concept descriptions laid out in a taxonomy and 2) Reflects the expected user’s data for the model's intended use case.
 
 ## Data Quantity
 
@@ -20,7 +26,7 @@ This is one of the most common questions that comes up when building a new model
 
 ### Bias
 
-Bias occurs when the scope of your training data is too narrow. If you only see green apples, you’ll assume that all apples are green and think red apples were another kind of fruit. If the training data contains only a small number of examples, it’ll react accordingly, taking it as truth. Small datasets make for a smaller worldview.
+Bias occurs when the scope of your training data is *too narrow*. If you only see green apples, you’ll assume that all apples are green and think red apples were another kind of fruit. If the training data contains only a small number of examples, it’ll react accordingly, taking it as truth. Small datasets make for a smaller worldview.
 
 ## Data Quality
 
@@ -37,7 +43,7 @@ Models that tend to perform poorly:
 * Trained on data with inconsistent compositions
 * Photos require outside context \(relationships to people in portraits, etc\)
 * Subject matter is subtle. Keep in mind, the model has no concept of language, so in essence, “what you see is what you get”.
-* Training set is cast too wide. If you train a concept of too many different kinds of images, and they are all visually different, the training set will become noisy. This will make it difficult for the model to find the visually distinct qualities to learn from, resulting in high levels of "variance".
+* Training set is *cast too wide*. If you train a concept of too many different kinds of images, and they are all visually different, the training set will become noisy. This will make it difficult for the model to find the visually distinct qualities to learn from, resulting in high levels of "variance".
 
 
 ### Cautionary Tale: The importance of representative data when working with User-Generated Content\(USG\)
@@ -48,7 +54,11 @@ The client had a few thousand images of professionally photographed pints of bee
 
 The initial version of their model struggled to perform effectively in production. Even though their training data provided many examples of the object that they wanted to analyze, the qualitative appearance of their training data did not capture the appearance of their beer in diverse real-world environments.
 
-They needed to provide training data that captured: 1\) The breadth of real world scenarios 2\) The quality of user generated images
+They needed to provide training data that captured: 
+
+1\) The breadth of real world scenarios; 
+
+2\) The quality of user generated images.
 
 After applying these changes, the model performance improved.
 
@@ -71,7 +81,7 @@ All of these images were labeled with ‘Bouquet-floral\_Holding’:
 In this instance, the image in question has:
 
 * A veiled bride
-* The Bride & Groom kissing/their heads close together
+* The Bride & groom kissing/their heads close together
 * Greenery over their heads
 * Large, recognizable flowers
 

@@ -1,5 +1,5 @@
 ---
-description: clarifai Postman examples.
+description: Clarifai Postman examples.
 sidebar_position: 2
 ---
 
