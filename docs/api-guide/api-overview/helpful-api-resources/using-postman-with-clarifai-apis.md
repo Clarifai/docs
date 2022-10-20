@@ -79,7 +79,7 @@ If successful, the bottom half of the **Login V2** window shows a response with 
 
 ![Session key](/img/postman/postman_session_key.png)
 
-Notice that the response includes a `session_token`, which will be automatically assigned to the environment to allow you to make subsequent calls to the Clarifai platform. 
+Notice that the response includes an expiring `session_token`, which will be automatically assigned to the environment to allow you to make subsequent calls to the Clarifai platform. 
 
 The response also includes your `user_id`, which will also be automatically assigned to the Postman environment.
 
