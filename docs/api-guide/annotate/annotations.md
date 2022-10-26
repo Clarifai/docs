@@ -159,7 +159,14 @@ Below is an example of how to annotate a concept present anywhere in an image.
 
 ### Annotate New Bounding Boxes in an Image
 
-Below is an example of how to label a new bounding box by providing bounding box coordinates.
+Below is an example of how to label a new rectangular bounding box for a region.
+
+These are the bounding box coordinates you need to provide:
+
+- **top_row**—The top left of the bounding box normalized to the data dimension to be within [0-1.0];
+- **left_col**—The left column of the bounding box normalized to the data dimension to be within [0-1.0];
+- **bottom_row**—The bottom row of the bounding box normalized to the data dimension to be within [0-1.0];
+- **right_col**—The right col of the bounding box normalized to the data dimension to be within [0-1.0].
 
 <Tabs>
 
@@ -188,6 +195,14 @@ Below is an example of how to label a new bounding box by providing bounding box
 ### Annotate Polygons in an Image
 
 Below is an example of how to provide annotations within any polygon-shaped region of an image. 
+
+These are the list of points that connect together to form a polygon:
+
+- **row**—The row location of the point. This has a [0.0-1.0] range with 0.0 being top row and 1.0
+being the bottom row;
+- **col**—The column location of the point. This has a [0.0-1.0] range with 0.0 being left col and 1.0
+being the right col;
+- **z**—Depth, if applicable, of the point.
 
 <Tabs>
 
