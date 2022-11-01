@@ -38,6 +38,8 @@ Let’s describe how to use the Usage dashboard and make the most of its data.
 
 You can find the date range selection at the top-right corner of the page. By default, the Usage dashboard is filtered based on your current month-to-month billing cycle. 
 
+Not that if you are a free user, you can still use this dashboard to track your metrics for a given billing cycle, and have the option of upgrading to a paid plan if you need more.
+
 You can choose any of your two previous billing cycles as a criterion to view the output of the Usage dashboard. 
 
 You can also customize the output by selecting your preferred date range—last 7 days, 30 days, 90 days, or 6 months. 
