@@ -27,15 +27,9 @@ You need to have:
 
 ### Get Started 
 
-#### Use the following Run in Postman button to import the Clarifai collection into Postman: 
-
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/8c7850b96f74d0fc03c0)
-
 This collection works in Postman for Web or in your local Postman application. It may take several seconds to load.
 
 After importing the Clarifai Postman collection, a full list of the available Clarifai API endpoints will be structured by folder in the left pane of Postman.
-
-![Clarifai Postman API collection](/img/postman/clarifai_postman_api_collection.png)
 
 ### Setting Up Postman Environment 
 
@@ -43,17 +37,17 @@ Setting up a Postman environment allows you to define the variables you can use 
 
 To set any environment variable, select the **Environments** option on the left sidebar. Then, click **Create Environment**. 
 
-![Create environment variable](/img/postman/create_environment_variable.png)
+
 
 On the ensuing page, enter a name for your environment, add `base_url` as a new variable and `https://api.clarifai.com` as its value. 
 
 Click **Save**. 
 
-![Set up Clarifai environment](/img/postman/clarifai_environment_base_url.png)
+
 
 Set the environment as active.
 
-![Set as active environment](/img/postman/set_as_active_environment.png)
+
 
 You are now ready to start making calls to the Clarifai API!
 
@@ -73,11 +67,11 @@ To log in, use the **Login V2** endpoint. In the **Body** section, provide the e
 
 Press **Send** to get a response.
 
-![Postman Log in](/img/postman/postman_login.png)
+
 
 If successful, the bottom half of the **Login V2** window shows a response with an **OK** status.
 
-![Session key](/img/postman/postman_session_key.png)
+
 
 Notice that the response includes an expiring `session_token`, which will be automatically assigned to the environment to allow you to make subsequent calls to the Clarifai platform. 
 
@@ -91,7 +85,7 @@ After that, you can make various calls to the Clarifai platform.
 
 You should be ready now to make a test call. An easy first call is to get your user details using the **Get User** endpoint. Ideally, you can just click **Send** and get a response without making any adjustments in the request. 
 
-![Get user](/img/postman/get_user.png)
+
 
 Notice that if you hover your mouse over `{{base_url}}` or `{{session_token}}`, their already set environment variable values will pop up. 
 

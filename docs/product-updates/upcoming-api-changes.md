@@ -18,12 +18,13 @@ We will continue to update this page regularly, so a good way to always stay up 
 ## Upcoming Changes
 | Date | Change |
 | :--- | :--- |
-| January 20, 2022 | **Deprecation of `name` and `display_name`**  To make Clarifai Model IDs more readable and user friendly, we plan to make the following API/UI changes during the week of Jan 17th. Please see user impact and suggestions below and contact [support@clarifai.com](mailto:support@clarifai.com) if you have any questions. <br></br><br></br> The old `user_unique_id` will still be usable in all queries, but the responses will be filled with the new `v2_user_unique_id`. `name` and `display_name` are deprecated in the API and UI, and `user_unique_id` will soon be deprecated as well so users are suggested to use new model id field `v2_user_unique_id`.|
+|  | |
 
 ## Completed Changes
 
 | Date | Change |
 | :--- | :--- |
+| January 20, 2022 |**Deprecation of `name` and `display_name`**  To make Clarifai Model IDs more readable and user friendly, we plan to make the following API/UI changes during the week of Jan 17th. Please see user impact and suggestions below and contact [support@clarifai.com](mailto:support@clarifai.com) if you have any questions. <br></br><br></br> The old `user_unique_id` will still be usable in all queries, but the responses will be filled with the new `v2_user_unique_id`. `name` and `display_name` are deprecated in the API and UI, and `user_unique_id` will soon be deprecated as well so users are suggested to use new model id field `v2_user_unique_id`. |
 | November 24, 2021. 9:00am ET | **Deprecation of type option** The `type` option in POST /models and /models/searches reuest will no longer be supported and will be removed from our API after this point in time. `model_type_id` is in use for model type references. |
 | February 12, 2021. 9:00am ET | **Deprecation of delete\_all option**  The `delete_all` option in DELETE /inputs request will no longer be supported and will be removed from our API after this point in time. You can delete inputs by id. Each request can have at most 128 ids. |
 | October 16, 2020. 9:00am ET | **Deprecation of Demographics Model**  To reduce the risk of race bias in our own models, we have constructed a new approach to visual recognition of race. We've also divided age, race and gender recognition into separate models, and then packaged the models into a new public Demographics Workflow. This new approach provides much more flexibility, and makes outputs easier to parse. We will be retiring the current demographics model on October 16th, 2020. Please reference this [blog post](https://www.clarifai.com/blog/new-demographics-workflow), and our [API documentation](https://docs.clarifai.com/api-guide/api-overview) for more information about how you can update your code to take advantage of the new workflow. |
