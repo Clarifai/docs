@@ -20,6 +20,7 @@ import PythonListModelTypes from "!!raw-loader!../../../code_snippets/api-guide/
 import PythonGetModels from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/get_models.py";
 import PythonGetModelID from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/get_model_by_id.py";
 import PythonGetModelOutput from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/get_model_output_info_by_id.py";
+import PythonListModelConcepts from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/list_model_concepts.py";
 import PythonListModelVersions from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/list_model_versions.py";
 import PythonGetModelVersion from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/get_model_version_by_id.py";
 import PythonGetModelTraining from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/get_model_training_inputs.py";
@@ -39,6 +40,7 @@ import JSListModelTypes from "!!raw-loader!../../../code_snippets/api-guide/mode
 import JSGetModels from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/get_models.html";
 import JSGetModelID from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/get_model_by_id.html";
 import JSGetModelOutput from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/get_model_output_info_by_id.html";
+import JSListModelConcepts from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/list_model_concepts.html";
 import JSListModelVersions from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/list_model_versions.html";
 import JSGetModelVersion from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/get_model_version_by_id.html";
 import JSGetModelTraining from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/get_model_training_inputs.html";
@@ -97,6 +99,7 @@ import CurlGetModels from "!!raw-loader!../../../code_snippets/api-guide/model/c
 import CurlGetModelID from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/get_model_by_id.sh";
 import CurlGetModelOutput from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/get_model_output_info_by_id.sh";
 import CurlListModelVersions from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/list_model_versions.sh";
+import CurlListModelConcepts from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/list_model_concepts.sh";
 import CurlGetModelVersion from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/get_model_version_by_id.sh";
 import CurlGetModelTraining from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/get_model_training_inputs.sh";
 import CurlGetModelTrainingVersion from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/get_model_training_inputs_by_version.sh";
@@ -321,6 +324,12 @@ All models have unique IDs. You can get a specific model by its ID.
 
 The output info of a model lists the concepts it contains.
 
+:::note
+
+The `GetModelOutputInfo` endpoint does not support pagination. If you want to split your results into pages, use the below-described `ListModelConcepts` endpoint.
+
+:::
+
 <Tabs>
 
 <TabItem value="python" label="Python">
@@ -341,6 +350,35 @@ The output info of a model lists the concepts it contains.
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlGetModelOutput}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+### List Model Concepts
+
+Apart from the `GetModelOutputInfo` endpoint, you can also use the `ListModelConcepts` endpoint to list the concepts in your model. 
+
+A major difference between the two is that the `ListModelConcepts` endpoint supports [pagination](https://docs.clarifai.com/api-guide/advanced-topics/pagination/), which lets you easily list concepts instead of displaying all of them at once.
+
+
+:::note
+
+If you are using any of the Clarifai gRPC clients, the `ListModelConcepts` endpoint is only available from release 8.10.0. 
+
+:::
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonListModelConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSListModelConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlListModelConcepts}</CodeBlock>
 </TabItem>
 
 </Tabs>

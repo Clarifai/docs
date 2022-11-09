@@ -24,11 +24,13 @@ import CodeBlock from "@theme/CodeBlock";
 import PythonAddConcepts from "!!raw-loader!../../../code_snippets/api-guide/concepts/python/add_concepts.py";
 import PythonGetConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/python/get_concept.py";
 import PythonListConcepts from "!!raw-loader!../../../code_snippets/api-guide/concepts/python/list_concepts.py";
+import PythonListModelConcepts from "!!raw-loader!../../../code_snippets/api-guide/concepts/python/list_model_concepts.py";
 import PythonUpdateConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/python/update_concept.py";
 
 import JavaScriptAddConcepts from "!!raw-loader!../../../code_snippets/api-guide/concepts/js/add_concepts.html";
 import JavaScriptGetConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/js/get_concept.html";
 import JavaScriptListConcepts from "!!raw-loader!../../../code_snippets/api-guide/concepts/js/list_concepts.html";
+import JavaScriptListModelConcepts from "!!raw-loader!../../../code_snippets/api-guide/concepts/js/list_model_concepts.html";
 import JavaScriptUpdateConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/js/update_concept.html";
 
 import NodeJSAddConcepts from "!!raw-loader!../../../code_snippets/api-guide/concepts/node/add_concepts.js";
@@ -44,6 +46,7 @@ import JavaUpdateConcept from "!!raw-loader!../../../code_snippets/api-guide/con
 import CurlAddConcepts from "!!raw-loader!../../../code_snippets/api-guide/concepts/curl/add_concepts.sh";
 import CurlGetConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/curl/get_concept.sh";
 import CurlListConcepts from "!!raw-loader!../../../code_snippets/api-guide/concepts/curl/list_concepts.sh";
+import CurlListModelConcepts from "!!raw-loader!../../../code_snippets/api-guide/concepts/curl/list_model_concepts.sh";
 import CurlUpdateConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/curl/update_concept.sh";
 
 import JSONOutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/concepts/code_output_examples/add_concepts.js";
@@ -165,6 +168,34 @@ Below is an example of how to list concepts.
   <summary>JSON Output Example</summary>
     <CodeBlock className="language-js">{JSONOutputExample3}</CodeBlock>
 </details>
+
+### List Model Concepts
+
+You can get a list of concepts within your model with a GET call. This call supports [pagination](https://docs.clarifai.com/api-guide/advanced-topics/pagination/).
+
+Below is an example of how to list the concepts in your model. 
+
+:::note
+
+If you are using any of the Clarifai gRPC clients, the `ListModelConcepts` endpoint, which lists concepts in a model, is only available from release 8.10.0. 
+
+:::
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonListModelConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JavaScriptListModelConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlListModelConcepts}</CodeBlock>
+</TabItem>
+
+</Tabs>
 
 ## Update
 
