@@ -9,7 +9,9 @@ description: Clarifai API provides clients in the most popular languages.
 
 You can access the Clarifai API through clients in many of the most popular programming languages. Our clients are built on [gRPC](https://grpc.io/) and are accessible through HTTP+JSON channels as well as gRPC channels. 
 
-| Official Clients |
+## Official Clients
+
+| Available Clients |
 | :--- |
 | [Clarifai Python](https://github.com/Clarifai/clarifai-python-grpc/) |
 | [Clarifai Java](https://github.com/Clarifai/clarifai-java-grpc/) |
@@ -23,7 +25,7 @@ You can access the Clarifai API through clients in many of the most popular prog
 
 ## Manually-built Clients \(deprecated\)
 
-| Available Clients |
+| Deprecated Clients |
 | :--- |
 | [C\#](https://github.com/Clarifai/clarifai-csharp) |
 | [Java](https://github.com/Clarifai/clarifai-java) |
@@ -209,20 +211,23 @@ V2Grpc.V2BlockingStub stub = V2Grpc.newBlockingStub(channel)
 <TabItem value="php" label="PHP">
 
 ```php
-<?php
 //////////////////////////////////////////////////////////////////////////////
-// Installation
-//     - gRPC for PHP is required to use the Clarifai API
+// Installation     
 //////////////////////////////////////////////////////////////////////////////
 
-//////////////////////////////////////////////////////////////////////////////
+composer require clarifai/clarifai-php-grpc
+
+// gRPC for PHP extension is required to use the Clarifai gRPC PHP client
+// Check how to add gRPC to your PHP installation here: https://github.com/grpc/grpc/tree/master/src/php
+
+////////////////////////////////////////////////////////////////////////////////
 // Set Clarifai Namespace
 //     - A variety of standard objects are provided in the Clarifai namespace
-//       from the client library.  Which ones that are necessary depend on the
-//       specific RPC call being made.  All namespaces used in the example
-//       code are included below for reference, although you likely won't need
-//       all of these in your application. 
-//////////////////////////////////////////////////////////////////////////////
+//       from the client library. The ones that are necessary depend on the
+//       specific RPC call being made. The namespaces used in the example
+//       code throughout this documentation are included below for reference, 
+ //      although you likely won't need all of them in your application. 
+////////////////////////////////////////////////////////////////////////////////
 
 // Various data structures that are used in the RPC calls to the Clarifai Platform
 // These operate as standardization wrappers for various types of data.
@@ -240,7 +245,7 @@ use Clarifai\Api\Model;
 use Clarifai\Api\Data;
 use Clarifai\Api\Input;
 
-// Various Request objects.  These specify the structure of the actual RPC request between
+// Various Request objects. These specify the structure of the actual RPC request between
 // the client and the platform.
 use Clarifai\Api\PostModelOutputsRequest;
 use Clarifai\Api\PostConceptsSearchesRequest;
@@ -256,45 +261,43 @@ use Clarifai\Api\OutputConfig;
 // the API operation.
 use Clarifai\Api\Status\StatusCode;
 
-
-
-//////////////////////////////////////////////////////////////////////////////
-// Initialize client
-//     - This initializes the gRPC based client to communicate with the 
-//       Clarifai platform. 
-//////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////
+// Initialize the gRPC-based client to communicate with the Clarifai platform.
+////////////////////////////////////////////////////////////////////////////////////////////
 
 // The Clarifai PHP Client repository includes an autoload.php helper file that needs to be included
-require 'vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 
 // Enable use of the ClarifaiClient object from the Clarifai namespace
 use Clarifai\ClarifaiClient;  
 
-// Construct the actual gRPC client object
+// Construct the initialization object for accessing all the Clarifai API functionality
 $client = ClarifaiClient::grpc();
 
+////////////////////////////////////////////////////////////////////////////////////////////
+// This is where you set up the Metadata object that's used to authenticate. 
+// This authorization will be used by every Clarifai API call.
+// Change the following authorization key to your own credentials
+// Example: $metadata = ['Authorization' => ['Key a123457612345678']];
+////////////////////////////////////////////////////////////////////////////////////////////
 
+$metadata = ['Authorization' => ['Key YOUR_CLARIFAI_PAT_HERE']];
 
-//////////////////////////////////////////////////////////////////////////////
-// Set up Personal Access Token and Access information
-//     - This will be used by every Clarifai API call 
-//////////////////////////////////////////////////////////////////////////////
+// Or, if you were to use an API Key:
+// $metadata = ['Authorization' => ['Key YOUR_CLARIFAI_API_KEY_HERE']];
+// Yes, the word 'Key' appears in addition to the alphanumeric PAT or API Key
 
-// Specify the Authorization key.  This should be changed to your Personal Access Token.
-// Example: $metadata = ['Authorization' => ['Key 123456789123456789']]; 
-$metadata = ['Authorization' => ['Key {YOUR PERSONAL ACCESS TOKEN HERE}']]; // Using the PAT in these examples
+/////////////////////////////////////////////////////////////////////////////////////////////
+// A UserAppIDSet object is needed when using a PAT. It contains two pieces of information: 
+// user_id (your user id) and app_id (app id that contains the model of interest). 
+// Both of them are specified as string values.
+/////////////////////////////////////////////////////////////////////////////////////////////
 
-//
-// A UserAppIDSet object is needed for most rpc calls.  This object cotnains
-// two pieces of information: the user id and the app id.  Both of these are
-// specified as string values.
-//
-
-use Clarifai\Api\UserAppIDSet;  // Specify the namespace for the UserAppIDSet object
+use Clarifai\Api\UserAppIDSet;
 
 $userDataObject = new UserAppIDSet([
-    'user_id' => '{YOUR USER NAME HERE}', // This is your user id
-    'app_id' => '{YOUR APPLICATION ID HERE}' // This is the app id which contains the model of interest
+    'user_id' => 'YOUR_USER_ID_HERE', 
+    'app_id' => 'YOUR_APPLICATION_ID_HERE' 
 ]);
 
 ```
