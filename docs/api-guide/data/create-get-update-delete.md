@@ -15,6 +15,7 @@ import PythonAddInputsViaURL from "!!raw-loader!../../../code_snippets/api-guide
 import PythonAddInputsViaBytes from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/py/add_inputs_via_bytes.py";
 import PythonAddMultipleInputsIds from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/py/add_multiple_inputs_with_ids.py";
 import PythonAddInputsConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/py/add_inputs_with_concepts.py";
+import PythonAddInputsMultipleConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/py/add_inputs_with_multiple_concepts.py";
 import PythonAddInputsCustomMetadata from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/py/add_inputs_custom_metadata.py";
 import PythonListAllInputs from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/py/list_all_inputs.py";
 import PythonListInputsStreaming from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/py/list_inputs_streaming.py";
@@ -410,6 +411,20 @@ var response = client.PostInputs(
 if (response.Status.Code != StatusCode.Success)
     throw new Exception("Request failed, response: " + response);
 ```
+</TabItem>
+
+</Tabs>
+
+### Add Inputs With Multiple Concepts
+
+You can also add an input with multiple concepts in a single API call. You can provide the concepts in a list and iterate through it. 
+
+You can add the inputs via URLs or bytes.
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonAddInputsMultipleConcepts}</CodeBlock>
 </TabItem>
 
 </Tabs>

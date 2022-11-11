@@ -18,6 +18,7 @@ import CodeBlock from "@theme/CodeBlock";
 
 import PythonAnnotateExistingRegionsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/annotate_existing_regions_image.py";
 import PythonAnnotateImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/annotate_images_concepts.py";
+import PythonAnnotateImagesMultipleConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/annotate_images_multiple_concepts.py";
 import PythonAnnotateImagesUserIdStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/annotate_images_user_id_status.py";
 import PythonAnnotateNewBoundingBoxesImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/annotate_new_bounding_boxes_image.py";
 import PythonAnnotatePolygonsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/annotate_polygons_image.py";
@@ -153,6 +154,18 @@ Below is an example of how to annotate a concept present anywhere in an image.
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlAnnotateImagesConcepts}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+### Annotate Images With Multiple Concepts
+
+Below is an example of how to annotate an image with multiple concepts in a single API call. You can provide the concepts in a list and iterate through it.
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonAnnotateImagesMultipleConcepts}</CodeBlock>
 </TabItem>
 
 </Tabs>
