@@ -120,7 +120,7 @@ Below is an example of how you would send the bytes of an image and receive pred
 </TabItem>
 
 <TabItem value="php" label="PHP">
-    <CodeBlock className="language-java">{CodePHPViaBytes}</CodeBlock>
+    <CodeBlock className="language-php">{CodePHPViaBytes}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">

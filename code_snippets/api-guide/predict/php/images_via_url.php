@@ -65,7 +65,7 @@ $userDataObject = new UserAppIDSet([
 if ($status->code !== 0) throw new Exception("Error: {$status->details}");
 
 // In addition to the RPC response status, there is a Clarifai API status that reports if the operation was a success or failure 
-// (not just that the commuunication was successful)
+// (not just that the communication was successful)
 if ($response->getStatus()->getCode() != StatusCode::SUCCESS) {
     throw new Exception("Failure response: " . $response->getStatus()->getDescription() . " " .
         $response->getStatus()->getDetails());
