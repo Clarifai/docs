@@ -66,6 +66,9 @@ import CodeNodeJSViaBytes from "!!raw-loader!../../../code_snippets/api-guide/pr
 import CodeJavaViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/java/video_via_url.java";
 import CodeJavaViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/java/video_via_bytes.java";
 
+import CodePHPViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/php/video_via_url.php";
+import CodePHPViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/php/video_via_bytes.php";
+
 import CurlViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/video_via_url.sh";
 import CurlViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/video_via_bytes.sh";
 
@@ -92,112 +95,12 @@ import JSONOutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/pr
      <CodeBlock className="language-java">{CodeJavaViaURL}</CodeBlock>
 </TabItem>
 
-<TabItem value="curl" label="cURL">
-    <CodeBlock className="language-bash">{CurlViaURL}</CodeBlock>
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{CodePHPViaURL}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
-
-```php
-<?php
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-///////////////////////////////////////////////////////////////////////////////
-// Specifying the Request Data
-///////////////////////////////////////////////////////////////////////////////
-//
-// In the Clarifai platform a video is defined by a special Video object.
-// There are several ways in which an Video object can be populated including
-// by url and video bytes (base64).
-//
-$video = new Video([
-    'url' => 'https://samples.clarifai.com/beer.mp4'
-]);
-
-//
-// After a Video object is created, a Data object is constructed around it.
-// The Data object offers a container that contains additional video independent
-// metadata.  In this particular use case, no other metadata is needed to be
-// specified.
-//
-$data = new Data([
-    'video' => $video
-]);
-
-//
-// The Data object is then wrapped in an Input object in order to meet the
-// API specification.  Additional fields are available to populate in the Input
-// object, but for the purposes of this example we can send in just the
-// Data object.
-//
-$input = new Input([
-    'data' => $data
-]);
-
-///////////////////////////////////////////////////////////////////////////////
-// Creating the request object 
-///////////////////////////////////////////////////////////////////////////////
-//
-// Finally, the request object itself is created.  This object carries the request
-// along with the request status and other metadata related to the request itself.
-// In this example we populate:
-//    - the `user_app_id` field with the UserAppIDSet constructed above
-//    - the `model_id` field with the ID of the model we are referencing
-//    - the `inputs` field with an array of input objects constructed above 
-//
-$request = new PostModelOutputsRequest([
-    'user_app_id' => $userDataObject, // This is defined above
-    'model_id' => 'aaa03c23b3724a16a56b629203edc62c',  // This is the ID of the publicly available General model.
-    'inputs' => [$input]
-]);
-
-///////////////////////////////////////////////////////////////////////////////
-// Making the RPC call
-///////////////////////////////////////////////////////////////////////////////
-//
-// Once the request object is constructed, we can call the actual request to the
-// Clarifai platform.  This uses the opened gRPC client channel to communicate the
-// request and then wait for the response.
-//
-[$response, $status] = $client->PostModelOutputs(
-    $request,
-    $metadata
-)->wait();
-
-///////////////////////////////////////////////////////////////////////////////
-// Handling the Response
-///////////////////////////////////////////////////////////////////////////////
-//
-// The response is returned and the first thing we do is check the status of it.
-// A successful response will have a status code of 0, otherwise there is some 
-// reported error.
-//
-if ($status->code !== 0) throw new Exception("Error: {$status->details}");
-
-//
-// In addition to the RPC response status, there is a Clarifai API status that
-// reports if the operationo was a success or failure (not just that the commuunication)
-// was successful.
-//
-if ($response->getStatus()->getCode() != StatusCode::SUCCESS) {
-    throw new Exception("Failure response: " . $response->getStatus()->getDescription() . " " .
-        $response->getStatus()->getDetails());
-}
-
-//
-// The output of a successful call can be used in many ways.  In this example,
-// we loop through all of the frames of the video and print out the predicted 
-// concepts for each along with their numerical prediction value (confidence).
-//
-foreach ($output->getData()->getFrames() as $frame) {
-    echo "Predicted concepts on frame " . $frame->getFrameInfo()->getTime() . ":";
-    foreach ($frame->getData()->getConcepts() as $concept) {
-        echo "   " . $concept->getName() . ": " . number_format($concept->getValue(), 2) . "\n";
-    }
-}
-?>
-```
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlViaURL}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -234,119 +137,12 @@ Below is an example of how you would send the bytes of a video and receive predi
   <CodeBlock className="language-java">{CodeJavaViaBytes}</CodeBlock>
 </TabItem>
 
-<TabItem value="curl" label="cURL">
-    <CodeBlock className="language-bash">{CurlViaBytes}</CodeBlock>
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{CodePHPViaBytes}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
-
-```php
-<?php
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-//
-// For this example, the bytes of a video are needed and can be read in
-// using PHP provided functions.
-//
-video = "https://samples.clarifai.com/beer.mp4";
-$videoData = file_get_contents($image); // Get the video data from the URL
-
-///////////////////////////////////////////////////////////////////////////////
-// Specifying the Request Data
-///////////////////////////////////////////////////////////////////////////////
-//
-// In the Clarifai platform a video is defined by a special Video object.
-// There are several ways in which an Video object can be populated including
-// by url and video bytes (base64).
-//
-$video = new Video([
-    'base64' => $videoData
-]);
-
-//
-// After a Video object is created, a Data object is constructed around it.
-// The Data object offers a container that contains additional image independent
-// metadata.  In this particular use case, no other metadata is needed to be
-// specified.
-//
-$data = new Data([
-    'video' => $video
-]);
-
-//
-// The Data object is then wrapped in a Video object in order to meet the
-// API specification.  Additional fields are available to populate in the Input
-// object, but for the purposes of this example we can send in just the
-// Data object.
-//
-$input = new Input([
-    'data' => $data
-]);
-
-///////////////////////////////////////////////////////////////////////////////
-// Creating the request object 
-///////////////////////////////////////////////////////////////////////////////
-//
-// Finally, the request object itself is created.  This object carries the request
-// along with the request status and other metadata related to the request itself.
-// In this example we populate:
-//    - the `user_app_id` field with the UserAppIDSet constructed above
-//    - the `model_id` field with the ID of the model we are referencing
-//    - the `inputs` field with an array of input objects constructed above 
-//
-$request = new PostModelOutputsRequest([
-    'user_app_id' => $userDataObject, // This is defined above
-    'model_id' => 'aaa03c23b3724a16a56b629203edc62c',  // This is the ID of the publicly available General model.
-    'inputs' => [$input]
-]);
-
-///////////////////////////////////////////////////////////////////////////////
-// Making the RPC call
-///////////////////////////////////////////////////////////////////////////////
-//
-// Once the request object is constructed, we can call the actual request to the
-// Clarifai platform.  This uses the opened gRPC client channel to communicate the
-// request and then wait for the response.
-//
-[$response, $status] = $client->PostModelOutputs(
-    $request,
-    $metadata
-)->wait();
-
-///////////////////////////////////////////////////////////////////////////////
-// Handling the Response
-///////////////////////////////////////////////////////////////////////////////
-//
-// The response is returned and the first thing we do is check the status of it.
-// A successful response will have a status code of 0, otherwise there is some 
-// reported error.
-//
-if ($status->code !== 0) throw new Exception("Error: {$status->details}");
-
-//
-// In addition to the RPC response status, there is a Clarifai API status that
-// reports if the operationo was a success or failure (not just that the commuunication)
-// was successful.
-//
-if ($response->getStatus()->getCode() != StatusCode::SUCCESS) {
-    throw new Exception("Failure response: " . $response->getStatus()->getDescription() . " " .
-        $response->getStatus()->getDetails());
-}
-
-//
-// The output of a successful call can be used in many ways.  In this example,
-// we loop through all of the frames of the video and print out the predicted 
-// concepts for each along with their numerical prediction value (confidence).
-//
-foreach ($output->getData()->getFrames() as $frame) {
-    echo "Predicted concepts on frame " . $frame->getFrameInfo()->getTime() . ":";
-    foreach ($frame->getData()->getConcepts() as $concept) {
-        echo "   " . $concept->getName() . ": " . number_format($concept->getValue(), 2) . "\n";
-    }
-}
-?>
-```
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlViaBytes}</CodeBlock>
 </TabItem>
 
 </Tabs>
