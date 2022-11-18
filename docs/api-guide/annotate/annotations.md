@@ -38,6 +38,7 @@ import PythonUpdateAnnotationStatus from "!!raw-loader!../../../code_snippets/ap
 
 import JSAnnotateExistingRegionsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/annotate_existing_regions_image.html";
 import JSAnnotateImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/annotate_images_concepts.html";
+import JSAnnotateImagesMultipleConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/annotate_images_multiple_concepts.html";
 import JSAnnotateImagesUserIdStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/annotate_images_user_id_status.html";
 import JSAnnotateNewBoundingBoxesImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/annotate_new_bounding_boxes_image.html";
 import JSAnnotatePolygonsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/annotate_polygons_image.html";
@@ -57,6 +58,7 @@ import JSUpdateAnnotationStatus from "!!raw-loader!../../../code_snippets/api-gu
 
 import NodeAnnotateExistingRegionsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/annotate_existing_regions_image.js";
 import NodeAnnotateImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/annotate_images_concepts.js";
+import NodeAnnotateImagesMultipleConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/annotate_images_multiple_concepts.js";
 import NodeAnnotateImagesUserIdStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/annotate_images_user_id_status.js";
 import NodeAnnotateNewBoundingBoxesImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/annotate_new_bounding_boxes_image.js";
 import NodeAnnotatePolygonsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/annotate_polygons_image.js";
@@ -166,6 +168,14 @@ Below is an example of how to annotate an image with multiple concepts in a sing
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonAnnotateImagesMultipleConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSAnnotateImagesMultipleConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeAnnotateImagesMultipleConcepts}</CodeBlock>
 </TabItem>
 
 </Tabs>
