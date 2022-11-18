@@ -32,6 +32,7 @@ import JSAddInputsViaURL from "!!raw-loader!../../../code_snippets/api-guide/dat
 import JSAddInputsViaBytes from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/js/add_inputs_via_bytes.html";
 import JSAddMultipleInputsIds from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/js/add_multiple_inputs_with_ids.html";
 import JSAddInputsConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/js/add_inputs_with_concepts.html";
+import JSAddInputsMultipleConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/js/add_inputs_with_multiple_concepts.html";
 import JSAddInputsCustomMetadata from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/js/add_inputs_custom_metadata.html";
 import JSListAllInputs from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/js/list_all_inputs.html";
 import JSListInputsStreaming from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/js/list_inputs_streaming.html";
@@ -48,6 +49,7 @@ import NodeAddInputsViaURL from "!!raw-loader!../../../code_snippets/api-guide/d
 import NodeAddInputsViaBytes from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/node/add_inputs_via_bytes.js";
 import NodeAddMultipleInputsIds from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/node/add_multiple_inputs_with_ids.js";
 import NodeAddInputsConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/node/add_inputs_with_concepts.js";
+import NodeAddInputsMultipleConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/node/add_inputs_with_multiple_concepts.js";
 import NodeAddInputsCustomMetadata from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/node/add_inputs_custom_metadata.js";
 import NodeListAllInputs from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/node/list_all_inputs.js";
 import NodeListInputsStreaming from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/node/list_inputs_streaming.js";
@@ -139,6 +141,7 @@ Below is an example of how to add inputs via a publicly accessible URL.
     <CodeBlock className="language-bash">{CurlAddInputsViaURL}</CodeBlock>
 </TabItem>
 
+<!--
 <TabItem value="csharp" label="C#">
 
 ```csharp
@@ -175,6 +178,7 @@ if (response.Status.Code != StatusCode.Success)
     throw new Exception("Request failed, response: " + response);
 ```
 </TabItem>
+-->
 
 </Tabs>
 
@@ -210,6 +214,7 @@ The data must be base64 encoded. When you add a base64 image to our servers, a c
     <CodeBlock className="language-bash">{CurlAddInputsViaBytes}</CodeBlock>
 </TabItem>
 
+<!--
 <TabItem value="csharp" label="C#">
 
 ```csharp
@@ -246,6 +251,7 @@ if (response.Status.Code != StatusCode.Success)
     throw new Exception("Request failed, response: " + response);
 ```
 </TabItem>
+-->
 
 </Tabs>
 
@@ -277,6 +283,7 @@ If you do not send an `id`, one will be created for you. If you have more than o
     <CodeBlock className="language-bash">{CurlAddMultipleInputsIds}</CodeBlock>
 </TabItem>
 
+<!--
 <TabItem value="csharp" label="C#">
 
 ```csharp
@@ -328,6 +335,7 @@ if (response.Status.Code != StatusCode.Success)
     throw new Exception("Request failed, response: " + response);
 ```
 </TabItem>
+-->
 
 </Tabs>
 
@@ -365,6 +373,7 @@ You can add inputs with concepts via URLs or bytes.
     <CodeBlock className="language-bash">{CurlAddInputsConcepts}</CodeBlock>
 </TabItem>
 
+<!--
 <TabItem value="csharp" label="C#">
 
 ```csharp
@@ -412,6 +421,7 @@ if (response.Status.Code != StatusCode.Success)
     throw new Exception("Request failed, response: " + response);
 ```
 </TabItem>
+-->
 
 </Tabs>
 
@@ -425,6 +435,14 @@ You can add the inputs via URLs or bytes.
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonAddInputsMultipleConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSAddInputsMultipleConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeAddInputsMultipleConcepts}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -500,6 +518,7 @@ This request is [paginated](https://docs.clarifai.com/api-guide/advanced-topics/
     <CodeBlock className="language-bash">{CurlListAllInputs}</CodeBlock>
 </TabItem>
 
+<!--
 <TabItem value="csharp" label="C#">
 
 ```csharp
@@ -521,6 +540,7 @@ if (response.Status.Code != StatusCode.Success)
     throw new Exception("Request failed, response: " + response);
 ```
 </TabItem>
+-->
 
 </Tabs>
 
@@ -578,6 +598,7 @@ If you'd like to get the details of a specific input by its `id`, you can do tha
     <CodeBlock className="language-bash">{CurlGetInputId}</CodeBlock>
 </TabItem>
 
+<!--
 <TabItem value="csharp" label="C#">
 
 ```csharp
@@ -598,6 +619,7 @@ if (response.Status.Code != StatusCode.Success)
     throw new Exception("Request failed, response: " + response);
 ```
 </TabItem>
+-->
 
 </Tabs>
 
@@ -627,6 +649,7 @@ If you add inputs in bulk, they will be procesed in the background. You can get 
     <CodeBlock className="language-bash">{CurlGetInputsStatus}</CodeBlock>
 </TabItem>
 
+<!--
 <TabItem value="csharp" label="C#">
 
 ```csharp
@@ -648,6 +671,7 @@ if (response.Status.Code != StatusCode.Success)
 Console.WriteLine(response.Counts);
 ```
 </TabItem>
+-->
 
 </Tabs>
 
@@ -679,6 +703,7 @@ To update an input with a new concept, or to change a concept value from true/fa
     <CodeBlock className="language-bash">{CurlUpdateInputConcepts}</CodeBlock>
 </TabItem>
 
+<!--
 <TabItem value="csharp" label="C#">
 
 ```csharp
@@ -728,6 +753,7 @@ if (response.Status.Code != StatusCode.Success)
     throw new Exception("Request failed, response: " + response);
 ```
 </TabItem>
+-->
 
 </Tabs>
 
@@ -759,6 +785,7 @@ Below is an example of how to update multiple inputs with concepts at once.
     <CodeBlock className="language-bash">{CurlBulkUpdateInputsConcepts}</CodeBlock>
 </TabItem>
 
+<!--
 <TabItem value="csharp" label="C#">
 
 ```csharp
@@ -833,6 +860,7 @@ if (response.Status.Code != StatusCode.Success)
     throw new Exception("Request failed, response: " + response);
 ```
 </TabItem>
+-->
 
 </Tabs>
 
@@ -864,6 +892,7 @@ To remove concepts that were already added to an input, you can do this:
     <CodeBlock className="language-bash">{CurlDeleteConceptsInput}</CodeBlock>
 </TabItem>
 
+<!--
 <TabItem value="csharp" label="C#">
 
 ```csharp
@@ -907,6 +936,7 @@ if (response.Status.Code != StatusCode.Success)
     throw new Exception("Request failed, response: " + response);
 ```
 </TabItem>
+-->
 
 </Tabs>
 
@@ -936,6 +966,7 @@ Below is an example of how to bulk delete multiple concepts from a list of input
     <CodeBlock className="language-bash">{CurlBulkDeleteConceptsInputs}</CodeBlock>
 </TabItem>
 
+<!--
 <TabItem value="csharp" label="C#">
 
 ```csharp
@@ -1010,6 +1041,7 @@ if (response.Status.Code != StatusCode.Success)
     throw new Exception("Request failed, response: " + response);
 ```
 </TabItem>
+-->
 
 </Tabs>
 
@@ -1039,6 +1071,7 @@ Below is an example of how to delete a single input by its `id`.
     <CodeBlock className="language-bash">{CurlDeleteInputId}</CodeBlock>
 </TabItem>
 
+<!--
 <TabItem value="csharp" label="C#">
 
 ```csharp
@@ -1059,6 +1092,7 @@ if (response.Status.Code != StatusCode.Success)
     throw new Exception("Request failed, response: " + response);
 ```
 </TabItem>
+-->
 
 </Tabs>
 
@@ -1088,6 +1122,7 @@ You can also delete multiple inputs in one API call. This will happen asynchrono
     <CodeBlock className="language-bash">{CurlDeleteListInputs}</CodeBlock>
 </TabItem>
 
+<!--
 <TabItem value="csharp" label="C#">
 
 ```csharp
@@ -1114,5 +1149,6 @@ if (response.Status.Code != StatusCode.Success)
     throw new Exception("Request failed, response: " + response);
 ```
 </TabItem>
+-->
 
 </Tabs>
