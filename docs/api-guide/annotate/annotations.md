@@ -18,6 +18,7 @@ import CodeBlock from "@theme/CodeBlock";
 
 import PythonAnnotateExistingRegionsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/annotate_existing_regions_image.py";
 import PythonAnnotateImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/annotate_images_concepts.py";
+import PythonAnnotateImagesMultipleConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/annotate_images_multiple_concepts.py";
 import PythonAnnotateImagesUserIdStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/annotate_images_user_id_status.py";
 import PythonAnnotateNewBoundingBoxesImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/annotate_new_bounding_boxes_image.py";
 import PythonAnnotatePolygonsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/annotate_polygons_image.py";
@@ -37,6 +38,7 @@ import PythonUpdateAnnotationStatus from "!!raw-loader!../../../code_snippets/ap
 
 import JSAnnotateExistingRegionsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/annotate_existing_regions_image.html";
 import JSAnnotateImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/annotate_images_concepts.html";
+import JSAnnotateImagesMultipleConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/annotate_images_multiple_concepts.html";
 import JSAnnotateImagesUserIdStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/annotate_images_user_id_status.html";
 import JSAnnotateNewBoundingBoxesImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/annotate_new_bounding_boxes_image.html";
 import JSAnnotatePolygonsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/annotate_polygons_image.html";
@@ -56,6 +58,7 @@ import JSUpdateAnnotationStatus from "!!raw-loader!../../../code_snippets/api-gu
 
 import NodeAnnotateExistingRegionsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/annotate_existing_regions_image.js";
 import NodeAnnotateImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/annotate_images_concepts.js";
+import NodeAnnotateImagesMultipleConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/annotate_images_multiple_concepts.js";
 import NodeAnnotateImagesUserIdStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/annotate_images_user_id_status.js";
 import NodeAnnotateNewBoundingBoxesImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/annotate_new_bounding_boxes_image.js";
 import NodeAnnotatePolygonsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/annotate_polygons_image.js";
@@ -153,6 +156,26 @@ Below is an example of how to annotate a concept present anywhere in an image.
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlAnnotateImagesConcepts}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+### Annotate Images With Multiple Concepts
+
+Below is an example of how to annotate an image with multiple concepts in a single API call. You can provide the concepts in a list and iterate through it.
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonAnnotateImagesMultipleConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSAnnotateImagesMultipleConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeAnnotateImagesMultipleConcepts}</CodeBlock>
 </TabItem>
 
 </Tabs>

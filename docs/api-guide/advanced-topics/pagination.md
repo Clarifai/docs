@@ -8,7 +8,9 @@ sidebar_position: 3
 **Paginate your data batches**
 <hr />
 
-Many API calls are paginated. You can provide `page` and `per_page` params to the API request, and your results will be split into pages. 
+Many API calls are paginated. It is an helpful feature when working with our API, especially if you have a huge number of results to display.
+
+You can provide `page` and `per_page` params to the API request, and your results will be split into pages. 
 
 The `page` params indicates the page number⁠—defaults to 1. The `per_page` params indicates the number of results that will be contained in each page⁠—defaults to 128. You can get up to 1,000 results per page. 
 

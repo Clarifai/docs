@@ -34,6 +34,10 @@ import CodeJavaViaURL from "!!raw-loader!../../../code_snippets/api-guide/predic
 import CodeJavaViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/java/text_via_bytes.java";
 import CodeJavaViaRaw from "!!raw-loader!../../../code_snippets/api-guide/predict/java/text_via_raw.java";
 
+import CodePHPViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/php/text_via_url.php";
+import CodePHPViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/php/text_via_bytes.php";
+import CodePHPViaRaw from "!!raw-loader!../../../code_snippets/api-guide/predict/php/text_via_raw.php";
+
 import CurlViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/text_via_url.sh";
 import CurlViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/text_via_bytes.sh";
 import CurlViaRaw from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/text_via_raw.sh";
@@ -72,110 +76,12 @@ The initialization code used in the following examples is outlined in detail on 
    <CodeBlock className="language-java">{CodeJavaViaURL}</CodeBlock>
 </TabItem>
 
-<TabItem value="curl" label="cURL">
-    <CodeBlock className="language-bash">{CurlViaURL}</CodeBlock>
+<TabItem value="php" label="PHP">
+   <CodeBlock className="language-php">{CodePHPViaURL}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
-
-```php
-<?php
-# Insert here the initialization code as outlined on this page:
-# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
-
-///////////////////////////////////////////////////////////////////////////////
-// Specifying the Request Data
-///////////////////////////////////////////////////////////////////////////////
-//
-// In the Clarifai platform a text is defined by a special Text object.
-// There are several ways in which a Text object can be populated including
-// by url and raw string.
-//
-$text = new Text([
-    'url' => 'https://samples.clarifai.com/negative_sentence_12.txt'
-]);
-
-//
-// After an Text object is created, a Data object is constructed around it.
-// The Data object offers a container that contains additional text independent
-// metadata.  In this particular use case, no other metadata is needed to be
-// specified.
-//
-$data = new Data([
-    'text' => $text
-]);
-
-//
-// The Data object is then wrapped in an Input object in order to meet the
-// API specification.  Additional fields are available to populate in the Input
-// object, but for the purposes of this example we can send in just the
-// Data object.
-//
-$input = new Input([
-    'data' => $data
-]);
-
-///////////////////////////////////////////////////////////////////////////////
-// Creating the request object 
-///////////////////////////////////////////////////////////////////////////////
-//
-// Finally, the request object itself is created.  This object carries the request
-// along with the request status and other metadata related to the request itself.
-// In this example we populate:
-//    - the `user_app_id` field with the UserAppIDSet constructed above
-//    - the `model_id` field with the ID of the model we are referencing
-//    - the `inputs` field with an array of input objects constructed above 
-//
-$request = new PostModelOutputsRequest([
-    'user_app_id' => $userDataObject, // This is defined above
-    'model_id' => 'aaa03c23b3724a16a56b629203edc62c',  // This is the ID of the publicly available General model.
-    'inputs' => [$input]
-]);
-
-///////////////////////////////////////////////////////////////////////////////
-// Making the RPC call
-///////////////////////////////////////////////////////////////////////////////
-//
-// Once the request object is constructed, we can call the actual request to the
-// Clarifai platform.  This uses the opened gRPC client channel to communicate the
-// request and then wait for the response.
-//
-[$response, $status] = $client->PostModelOutputs(
-    $request,
-    $metadata
-)->wait();
-
-///////////////////////////////////////////////////////////////////////////////
-// Handling the Response
-///////////////////////////////////////////////////////////////////////////////
-//
-// The response is returned and the first thing we do is check the status of it.
-// A successful response will have a status code of 0, otherwise there is some 
-// reported error.
-//
-if ($status->code !== 0) throw new Exception("Error: {$status->details}");
-
-//
-// In addition to the RPC response status, there is a Clarifai API status that
-// reports if the operationo was a success or failure (not just that the commuunication)
-// was successful.
-//
-if ($response->getStatus()->getCode() != StatusCode::SUCCESS) {
-    throw new Exception("Failure response: " . $response->getStatus()->getDescription() . " " .
-        $response->getStatus()->getDetails());
-}
-
-//
-// The output of a successful call can be used in many ways.  In this example,
-// we loop through all of the predicted concepts and print them out along with
-// their numerical prediction value (confidence).
-//
-echo "Predicted concepts:\n";
-foreach ($response->getOutputs()[0]->getData()->getConcepts() as $concept) {
-    echo $concept->getName() . ": " . number_format($concept->getValue(), 2) . "\n";
-}
-?>
-```
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlViaURL}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -210,6 +116,10 @@ Below is an example of how you would provide text inputs via local text files an
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{CodeJavaViaBytes}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{CodePHPViaBytes}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -247,6 +157,10 @@ Below is an example of how you would provide raw text inputs and receive predict
 
 <TabItem value="java" label="Java">
    <CodeBlock className="language-java">{CodeJavaViaRaw}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+   <CodeBlock className="language-php">{CodePHPViaRaw}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">

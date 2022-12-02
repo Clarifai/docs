@@ -163,6 +163,48 @@ V2Grpc.V2BlockingStub stub = V2Grpc.newBlockingStub(channel)
 ```
 </TabItem>
 
+<TabItem value="php" label="PHP">
+
+```php
+/////////////////////////////////////////////////////////////////////////////////////////////
+// Initialize the gRPC-based client to communicate with the Clarifai platform.
+////////////////////////////////////////////////////////////////////////////////////////////
+
+// Enable use of the ClarifaiClient object from the Clarifai namespace
+use Clarifai\ClarifaiClient;
+
+// Construct the initialization object for accessing all the Clarifai API functionality
+$client = ClarifaiClient::grpc();
+
+////////////////////////////////////////////////////////////////////////////////////////////
+// This is where you set up the Metadata object that's used to authenticate. 
+// This authorization will be used by every Clarifai API call.
+// Change the following authorization key to your own credentials
+// Example: $metadata = ['Authorization' => ['Key a123457612345678']];
+////////////////////////////////////////////////////////////////////////////////////////////
+
+$metadata = ['Authorization' => ['Key YOUR_CLARIFAI_PAT_HERE']];
+
+// Or, if you were to use an API Key:
+// $metadata = ['Authorization' => ['Key YOUR_CLARIFAI_API_KEY_HERE']];
+// Yes, the word 'Key' appears in addition to the alphanumeric PAT or API Key
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+// A UserAppIDSet object is needed when using a PAT. It contains two pieces of information: 
+// user_id (your user id) and app_id (app id that contains the model of interest). 
+// Both of them are specified as string values.
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+use Clarifai\Api\UserAppIDSet;
+
+$userDataObject = new UserAppIDSet([
+    'user_id' => 'YOUR_USER_ID_HERE', 
+    'app_id' => 'YOUR_APPLICATION_ID_HERE' 
+]);
+
+```
+</TabItem>
+
 <TabItem value="cURL" label="cURL">
 
 ```bash
@@ -194,14 +236,6 @@ namespace YourNamespace
 
 ```objectivec
 ClarifaiApp *app = [[ClarifaiApp alloc] initWithApiKey:@"YOUR_API_KEY"];
-```
-</TabItem>
-
-<TabItem value="php" label="PHP">
-
-```php
-use Clarifai\API\ClarifaiClient;
-$client = new ClarifaiClient('YOUR_API_KEY');
 ```
 </TabItem>
 
