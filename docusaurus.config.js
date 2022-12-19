@@ -128,12 +128,12 @@ const config = {
       },
     }),
     plugins: [
-    // [
-    //   require.resolve('docusaurus-gtm-plugin'),
-    //   {
-    //     id: 'GTM-PLV65FL', // GTM Container ID
-    //   }
-    // ],
+    [
+      require.resolve('docusaurus-gtm-plugin'),
+      {
+        id: 'GTM-5W9P7GR', // GTM Container ID
+      }
+    ],
     [
       require.resolve("@cmfcmf/docusaurus-search-local"),
       {
