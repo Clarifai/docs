@@ -35,4 +35,4 @@ if list_collectors_response.status.code != status_code_pb2.SUCCESS:
 for collector in list_collectors_response.collectors:
     print(collector)
     
-print(list_collectors_response.collectors)
+#print(list_collectors_response.collectors)

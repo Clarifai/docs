@@ -75,7 +75,9 @@ $videoData = file_get_contents($VIDEO_FILE_LOCATION); // Get the video bytes dat
 
 // A response is returned and the first thing we do is check the status of it
 // A successful response will have a status code of 0; otherwise, there is some error
-if ($status->code !== 0) throw new Exception("Error: {$status->details}");
+if ($status->code !== 0) {
+    throw new Exception("Error: {$status->details}");
+}
 
 // In addition to the RPC response status, there is a Clarifai API status that reports if the operation was a success or failure 
 // (not just that the communication was successful)

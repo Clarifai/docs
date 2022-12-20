@@ -94,6 +94,22 @@ import CurlBulkDeleteConceptsInputs from "!!raw-loader!../../../code_snippets/ap
 import CurlDeleteInputId from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/curl/delete_input_by_id.sh";
 import CurlDeleteListInputs from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/curl/delete_list_inputs.sh"
 
+import PHPAddInputsViaURL from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/php/add_inputs_via_url.php";
+import PHPAddInputsViaBytes from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/php/add_inputs_via_bytes.php";
+import PHPAddMultipleInputsIds from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/php/add_multiple_inputs_with_ids.php";
+import PHPAddInputsConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/php/add_inputs_with_concepts.php";
+import PHPAddInputsCustomMetadata from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/php/add_inputs_custom_metadata.php";
+import PHPListAllInputs from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/php/list_all_inputs.php";
+import PHPListInputsStreaming from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/php/list_inputs_streaming.php";
+import PHPGetInputId from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/php/get_input_by_id.php";
+import PHPGetInputsStatus from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/php/get_inputs_status.php";
+import PHPUpdateInputConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/php/update_input_concepts.php"
+import PHPBulkUpdateInputsConcepts from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/php/bulk_update_inputs_concepts.php";
+import PHPDeleteConceptsInput from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/php/delete_concepts_input.php";
+import PHPBulkDeleteConceptsInputs from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/php/bulk_delete_concepts_inputs.php";
+import PHPDeleteInputId from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/php/delete_input_by_id.php";
+import PHPDeleteListInputs from "!!raw-loader!../../../code_snippets/api-guide/data/create_get_update_delete/php/delete_list_inputs.php";
+
 
 The API is built around a simple idea. You send inputs \(such as images\) to the service and it returns predictions. In addition to receiving predictions on inputs, you can also index inputs and their predictions to later search against. You can also index inputs with concepts to later train your own model.
 
@@ -135,6 +151,10 @@ Below is an example of how to add inputs via a publicly accessible URL.
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaAddInputsViaURL}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPAddInputsViaURL}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -210,6 +230,10 @@ The data must be base64 encoded. When you add a base64 image to our servers, a c
     <CodeBlock className="language-java">{JavaAddInputsViaBytes}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPAddInputsViaBytes}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlAddInputsViaBytes}</CodeBlock>
 </TabItem>
@@ -277,6 +301,10 @@ If you do not send an `id`, one will be created for you. If you have more than o
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaAddMultipleInputsIds}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPAddMultipleInputsIds}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -367,6 +395,10 @@ You can add inputs with concepts via URLs or bytes.
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaAddInputsConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPAddInputsConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -478,6 +510,10 @@ If you have more than one item per image, it is recommended to put the `id` in t
     <CodeBlock className="language-java">{JavaAddInputsCustomMetadata}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPAddInputsCustomMetadata}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlAddInputsCustomMetadata}</CodeBlock>
 </TabItem>
@@ -512,6 +548,10 @@ This request is [paginated](https://docs.clarifai.com/api-guide/advanced-topics/
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaListAllInputs}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPListAllInputs}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -568,6 +608,10 @@ By default, the stream will return inputs from oldest to newest. Set the `descen
     <CodeBlock className="language-java">{JavaListInputsStreaming}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPListInputsStreaming}</CodeBlock>
+</TabItem>
+
 </Tabs>
 
 ## Get Inputs
@@ -593,6 +637,12 @@ If you'd like to get the details of a specific input by its `id`, you can do tha
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaGetInputId}</CodeBlock>
 </TabItem>
+
+<!--
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPGetInputId}</CodeBlock>
+</TabItem>
+-->
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlGetInputId}</CodeBlock>
@@ -644,6 +694,12 @@ If you add inputs in bulk, they will be procesed in the background. You can get 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaGetInputsStatus}</CodeBlock>
 </TabItem>
+
+<!--
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPGetInputsStatus}</CodeBlock>
+</TabItem>
+-->
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlGetInputsStatus}</CodeBlock>
@@ -697,6 +753,10 @@ To update an input with a new concept, or to change a concept value from true/fa
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaUpdateInputConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPUpdateInputConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -779,6 +839,10 @@ Below is an example of how to update multiple inputs with concepts at once.
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaBulkUpdateInputsConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPBulkUpdateInputsConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -888,6 +952,10 @@ To remove concepts that were already added to an input, you can do this:
     <CodeBlock className="language-java">{JavaDeleteConceptsInput}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPDeleteConceptsInput}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlDeleteConceptsInput}</CodeBlock>
 </TabItem>
@@ -960,6 +1028,10 @@ Below is an example of how to bulk delete multiple concepts from a list of input
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaBulkDeleteConceptsInputs}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPBulkDeleteConceptsInputs}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -1067,6 +1139,10 @@ Below is an example of how to delete a single input by its `id`.
     <CodeBlock className="language-java">{JavaDeleteInputId}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPDeleteInputId}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlDeleteInputId}</CodeBlock>
 </TabItem>
@@ -1116,6 +1192,10 @@ You can also delete multiple inputs in one API call. This will happen asynchrono
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaDeleteListInputs}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPDeleteListInputs}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">

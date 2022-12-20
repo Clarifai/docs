@@ -80,6 +80,12 @@ import JavaListCollectors from "!!raw-loader!../../../code_snippets/api-guide/da
 import JavaGetCollector from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/get_collector.java";
 import JavaDeleteCollector from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/delete_collector.java";
 
+import PHPAddCollector from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/add_collector.php";
+import PHPUpdateCollector from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/update_collector.php";
+import PHPListCollectors from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/list_collectors.php";
+import PHPGetCollector from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/get_collector.php";
+import PHPDeleteCollector from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/delete_collector.php";
+
 import CurlAddCollector from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/add_collector.sh";
 import CurlUpdateCollector from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/update_collector.sh";
 import CurlListCollectors from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/list_collectors.sh";
@@ -102,6 +108,10 @@ Add a new collector to your application.
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaAddCollector}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPAddCollector}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -128,6 +138,10 @@ Update an existing collector.
     <CodeBlock className="language-javascript">{JavaUpdateCollector}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPUpdateCollector}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlUpdateCollector}</CodeBlock>
 </TabItem>
@@ -151,6 +165,12 @@ List all the collectors. See [Pagination](https://docs.clarifai.com/api-guide/ad
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaListCollectors}</CodeBlock>
 </TabItem>
+
+<!--
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPListCollectors}</CodeBlock>
+</TabItem>
+-->
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlListCollectors}</CodeBlock>
@@ -176,6 +196,12 @@ Return details of a certain collector.
     <CodeBlock className="language-java">{JavaGetCollector}</CodeBlock>
 </TabItem>
 
+<!--
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPGetCollector}</CodeBlock>
+</TabItem>
+-->
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlGetCollector}</CodeBlock>
 </TabItem>
@@ -199,6 +225,12 @@ Delete a collector.
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaDeleteCollector}</CodeBlock>
 </TabItem>
+
+<!--
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPDeleteCollector}</CodeBlock>
+</TabItem>
+-->
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlDeleteCollector}</CodeBlock>
