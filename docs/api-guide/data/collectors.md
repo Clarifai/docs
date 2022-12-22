@@ -226,11 +226,9 @@ Delete a collector.
     <CodeBlock className="language-java">{JavaDeleteCollector}</CodeBlock>
 </TabItem>
 
-<!--
 <TabItem value="php" label="PHP">
     <CodeBlock className="language-php">{PHPDeleteCollector}</CodeBlock>
 </TabItem>
--->
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlDeleteCollector}</CodeBlock>
