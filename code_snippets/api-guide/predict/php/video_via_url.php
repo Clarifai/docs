@@ -86,11 +86,11 @@ if ($response->getStatus()->getCode() != StatusCode::SUCCESS) {
 
 // The output of a successful call can be used in many ways. In this example, we loop through all of the frames of the video and print out the predicted 
 // concepts for each along with their numerical prediction value (confidence). 
-echo "Predicted concepts:\n";
+echo "Predicted concepts: </br>";
 foreach ($response->getOutputs()[0]->getData()->getFrames() as $frame) {
     echo "Predicted concepts on frame " . $frame->getFrameInfo()->getTime() . ":";
     foreach ($frame->getData()->getConcepts() as $concept) {
-        echo "   " . $concept->getName() . ": " . number_format($concept->getValue(), 2) . "\n";
+        echo "   " . $concept->getName() . ": " . number_format($concept->getValue(), 2) . "</br>";
     }
 }
 
