@@ -638,11 +638,9 @@ If you'd like to get the details of a specific input by its `id`, you can do tha
     <CodeBlock className="language-java">{JavaGetInputId}</CodeBlock>
 </TabItem>
 
-<!--
 <TabItem value="php" label="PHP">
     <CodeBlock className="language-php">{PHPGetInputId}</CodeBlock>
 </TabItem>
--->
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlGetInputId}</CodeBlock>
@@ -695,11 +693,9 @@ If you add inputs in bulk, they will be procesed in the background. You can get 
     <CodeBlock className="language-java">{JavaGetInputsStatus}</CodeBlock>
 </TabItem>
 
-<!--
 <TabItem value="php" label="PHP">
     <CodeBlock className="language-php">{PHPGetInputsStatus}</CodeBlock>
 </TabItem>
--->
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlGetInputsStatus}</CodeBlock>

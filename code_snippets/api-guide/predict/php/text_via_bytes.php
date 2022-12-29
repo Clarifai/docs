@@ -77,9 +77,9 @@ if ($response->getStatus()->getCode() != StatusCode::SUCCESS) {
 
 // The output of a successful call can be used in many ways. In this example, we loop through all of the predicted concepts and print them out along with
 // their numerical prediction value (confidence)
-echo "Predicted concepts:\n";
+echo "Predicted concepts: </br>";
 foreach ($response->getOutputs()[0]->getData()->getConcepts() as $concept) {
-    echo $concept->getName() . ": " . number_format($concept->getValue(), 2) . "\n";
+    echo $concept->getName() . ": " . number_format($concept->getValue(), 2) . "</br>";
 }
 
 ?>
