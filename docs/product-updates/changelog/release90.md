@@ -35,7 +35,7 @@ pagination_prev: product-updates/changelog/release811
 ## API
 |Status     |Change                                             |Details                                            |
 |-----------|---------------------------------------------------|----------------------------------------------------|
-|![new-feature](/img/new_feature.jpg)|Introduced the Python Utils package|<ul><li>You can now use the collection small Python functions and classes to make common patterns shorter and easier when interacting with our API.</li></ul>|
+|![new-feature](/img/new_feature.jpg)|Introduced the Python Utils package|<ul><li>You can now use the collection of small Python functions and classes to make common patterns shorter and easier when interacting with our API.</li></ul>|
 |![bug](/img/bug.jpg)|Fixed an issue when the API received Base64 decoded masks|<ul><li>Previously, if you provided a Base64 mask via an HTTP request, it failed to be created. It now works as expected.</li></ul>|
 
 
