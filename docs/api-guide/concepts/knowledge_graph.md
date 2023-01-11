@@ -53,6 +53,10 @@ import JavaCreateRelations from "!!raw-loader!../../../code_snippets/api-guide/c
 import JavaListRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/java/knowledge_graph_list.java";
 import JavaDeleteRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/java/knowledge_graph_delete.java";
 
+import PHPCreateRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/php/knowledge_graph_create.php";
+import PHPListRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/php/knowledge_graph_list.php";
+import PHPDeleteRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/php/knowledge_graph_delete.php";
+
 import CurlCreateRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/curl/knowledge_graph_create.sh";
 import CurlListRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/curl/knowledge_graph_list.sh";
 import CurlDeleteRelations from "!!raw-loader!../../../code_snippets/api-guide/concepts/curl/knowledge_graph_delete.sh";
@@ -76,7 +80,11 @@ import JSONOutputExample3 from "!!raw-loader!../../../code_snippets/api-guide/co
 </TabItem>
 
 <TabItem value="java" label="Java">
-    <CodeBlock className="language-javascript">{JavaCreateRelations}</CodeBlock>
+    <CodeBlock className="language-java">{JavaCreateRelations}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPCreateRelations}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -109,7 +117,11 @@ Below is an example of how to list existing relations between concepts.
 </TabItem>
 
 <TabItem value="java" label="Java">
-    <CodeBlock className="language-javascript">{JavaListRelations}</CodeBlock>
+    <CodeBlock className="language-java">{JavaListRelations}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPListRelations}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -152,6 +164,10 @@ You can use either of the following ways to retrieve the `CONCEPT_RELATION_IDS`:
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaDeleteRelations}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPDeleteRelations}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">

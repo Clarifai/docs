@@ -27,6 +27,7 @@ import PythonSearchByConcept from "!!raw-loader!../../../code_snippets/api-guide
 import JavaScriptSearchByConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/js/search_by_concept.html";
 import NodeJSSearchByConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/node/search_by_concept.js";
 import JavaSearchByConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/java/search_by_concept.java";
+import PHPSearchByConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/php/search_by_concept.php";
 import CurlSearchByConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/curl/search_by_concept.sh";
 import CodeOutputExample from "!!raw-loader!../../../code_snippets/api-guide/concepts/code_output_examples/search_by_concept.txt";
 import JSONOutputExample from "!!raw-loader!../../../code_snippets/api-guide/concepts/code_output_examples/search_by_concept.js";
@@ -47,6 +48,10 @@ import JSONOutputExample from "!!raw-loader!../../../code_snippets/api-guide/con
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaSearchByConcept}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPSearchByConcept}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
