@@ -8,7 +8,7 @@ sidebar_position: 3
 **Clarifai makes it easy to customize and repurpose existing models**
 <hr />
 
-You do not need many images to get started. We recommend starting with 10 and adding more as needed. Before you train your first model, you need to [create an application](https://docs.clarifai.com/clarifai-basics/applications/#create-an-application) and select a Base Workflow.
+You do not need many images to get started. We recommend starting with 10 and adding more as needed. Before you train your first model, you need to [create an application](https://docs.clarifai.com/clarifai-basics/applications/#create-an-application) and select a Classification Base Workflow.
 
 ![](/img/illustration-training.png)
 
@@ -52,6 +52,12 @@ import ExamplePredictModel from "!!raw-loader!../../../code_snippets/api-guide/m
 import ExampleTextPredictModel from "!!raw-loader!../../../code_snippets/api-guide/model/code_output_examples/predict_with_model.txt";
 
 ## Add Images With Concepts
+
+:::tip
+
+This walkthrough example assumes that you've selected a Classification Base Workflow. If you choose a Detection Base Workflow, then this **Add Images With Concepts** example could throw an error message such as `Adding/patching inputs with pre-tagged concepts is not allowed for apps with a detection model in their base workflow. Please use Post or Patch Annotations instead.` If you get such an error, you should first upload the inputs without any concepts attached and then use the [Annotations endpoint](https://docs.clarifai.com/api-guide/annotate/annotations/#add-annotations) to label the inputs.
+
+:::
 
 To get started training your own model, you must first add images that already contain the concepts you want your model to see.
 
