@@ -95,6 +95,25 @@ import JavaUpdateAnnotationConceptsRegion from "!!raw-loader!../../../code_snipp
 import JavaUpdateAnnotationRegionCoordinates from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/update_annotation_region_coordinates.java";
 import JavaUpdateAnnotationStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/update_annotation_status.java";
 
+import PHPAnnotateExistingRegionsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/annotate_existing_regions_image.php";
+import PHPAnnotateImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/annotate_images_concepts.php";
+import PHPAnnotateImagesUserIdStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/annotate_images_user_id_status.php";
+import PHPAnnotateNewBoundingBoxesImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/annotate_new_bounding_boxes_image.php";
+import PHPAnnotatePolygonsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/annotate_polygons_image.php";
+import PHPbulkDeleteAnnotationsInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/bulk_delete_annotations_input_annotation_ids.php";
+import PHPBulkDeleteAnnotationsInputIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/bulk_delete_annotations_input_ids.php";
+import PHPDeleteAnnotationInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/delete_annotation_input_annotation_ids.php";
+import PHPListAllAnnotationsApp from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/list_all_annotations_app.php";
+import PHPListAnnotationsInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/list_annotations_input_annotation_ids.php";
+import PHPListAnnotationsModelVersionIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/list_annotations_model_version_ids.php";
+import PHPListAnnotationsUserIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/list_annotations_user_ids.php";
+import PHPlistUserCreatedAnnotationsApp from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/list_user_created_annotations_app.php";
+import PHPListUserCreatedAnnotationsInputIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/list_user_created_annotations_input_ids.php";
+import PHPUpdateAnnotationConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/update_annotation_concepts.php";
+import PHPUpdateAnnotationConceptsRegion from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/update_annotation_concepts_region.php";
+import PHPUpdateAnnotationRegionCoordinates from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/update_annotation_region_coordinates.php";
+import PHPUpdateAnnotationStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/update_annotation_status.php";
+
 import CurlAnnotateExistingRegionsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/annotate_existing_regions_image.sh";
 import CurlAnnotateImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/annotate_images_concepts.sh";
 import CurlAnnotateImagesUserIdStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/annotate_images_user_id_status.sh";
@@ -154,6 +173,10 @@ Below is an example of how to annotate a concept present anywhere in an image.
     <CodeBlock className="language-java">{JavaAnnotateImagesConcepts}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPAnnotateImagesConcepts}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlAnnotateImagesConcepts}</CodeBlock>
 </TabItem>
@@ -209,6 +232,10 @@ These are the bounding box coordinates you need to provide:
     <CodeBlock className="language-java">{JavaAnnotateNewBoundingBoxesImage}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPAnnotateNewBoundingBoxesImage}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlAnnotateNewBoundingBoxesImage}</CodeBlock>
 </TabItem>
@@ -245,6 +272,10 @@ being the right col;
     <CodeBlock className="language-java">{JavaAnnotatePolygonsImage}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPAnnotatePolygonsImage}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlAnnotatePolygonsImage}</CodeBlock>
 </TabItem>
@@ -275,6 +306,10 @@ Below is an example of how to annotate existing regions in an image.
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaAnnotateExistingRegionsImage}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPAnnotateExistingRegionsImage}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -315,6 +350,10 @@ Below is an example of how to annotate images with different `user_id` and `stat
     <CodeBlock className="language-java">{JavaAnnotateImagesUserIdStatus}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPAnnotateImagesUserIdStatus}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlAnnotateImagesUserIdStatus}</CodeBlock>
 </TabItem>
@@ -352,7 +391,11 @@ This will not show annotations by models in your workflow. To include model crea
 </TabItem>
 
 <TabItem value="java" label="Java">
-    <CodeBlock className="language-javascript">{JavalistUserCreatedAnnotationsApp}</CodeBlock>
+    <CodeBlock className="language-java">{JavalistUserCreatedAnnotationsApp}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPlistUserCreatedAnnotationsApp}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -380,7 +423,11 @@ Below is an example of how to list all annotations, including those created by m
 </TabItem>
 
 <TabItem value="java" label="Java">
-    <CodeBlock className="language-javascript">{JavaListAllAnnotationsApp}</CodeBlock>
+    <CodeBlock className="language-java">{JavaListAllAnnotationsApp}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPListAllAnnotationsApp}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -415,6 +462,10 @@ This will not show annotations by models in your workflow. To include model crea
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaListUserCreatedAnnotationsInputIds}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPListUserCreatedAnnotationsInputIds}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -457,6 +508,10 @@ Below is an example of how to do that.
     <CodeBlock className="language-java">{JavaListAnnotationsInputAnnotationIds}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPListAnnotationsInputAnnotationIds}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlListAnnotationsInputAnnotationIds}</CodeBlock>
 </TabItem>
@@ -485,6 +540,10 @@ Below is an example of how to do that.
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaListAnnotationsUserIds}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPListAnnotationsUserIds}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -517,6 +576,10 @@ Below is an example of how to list annotations by model version IDs.
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaListAnnotationsModelVersionIds}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPListAnnotationsModelVersionIds}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -557,6 +620,10 @@ Below is an example of how to update an annotation of an image with a new concep
     <CodeBlock className="language-java">{JavaUpdateAnnotationConcepts}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPUpdateAnnotationConcepts}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlUpdateAnnotationConcepts}</CodeBlock>
 </TabItem>
@@ -585,6 +652,10 @@ Below is an example of how to update annotation with concepts in a region.
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaUpdateAnnotationConceptsRegion}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPUpdateAnnotationConceptsRegion}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -617,6 +688,10 @@ Below is an example of how to do that.
     <CodeBlock className="language-java">{JavaUpdateAnnotationRegionCoordinates}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPUpdateAnnotationRegionCoordinates}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlUpdateAnnotationRegionCoordinates}</CodeBlock>
 </TabItem>
@@ -643,6 +718,10 @@ Below is an example of how to update an annotation status.
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaUpdateAnnotationStatus}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPUpdateAnnotationStatus}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -676,6 +755,10 @@ Below is an example of how to delete a single annotation by input ID and annotat
     <CodeBlock className="language-java">{JavaDeleteAnnotationInputAnnotationIds}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPDeleteAnnotationInputAnnotationIds}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlDeleteAnnotationInputAnnotationIds}</CodeBlock>
 </TabItem>
@@ -706,6 +789,10 @@ Below is an example of how to do that.
     <CodeBlock className="language-java">{JavabulkDeleteAnnotationsInputAnnotationIds}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPbulkDeleteAnnotationsInputAnnotationIds}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlbulkDeleteAnnotationsInputAnnotationIds}</CodeBlock>
 </TabItem>
@@ -734,6 +821,10 @@ Below is an example of how to do that.
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaBulkDeleteAnnotationsInputIds}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPBulkDeleteAnnotationsInputIds}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
