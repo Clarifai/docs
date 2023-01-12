@@ -166,11 +166,10 @@ List all the collectors. See [Pagination](https://docs.clarifai.com/api-guide/ad
     <CodeBlock className="language-java">{JavaListCollectors}</CodeBlock>
 </TabItem>
 
-<!--
 <TabItem value="php" label="PHP">
     <CodeBlock className="language-php">{PHPListCollectors}</CodeBlock>
 </TabItem>
--->
+
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlListCollectors}</CodeBlock>
@@ -196,11 +195,9 @@ Return details of a certain collector.
     <CodeBlock className="language-java">{JavaGetCollector}</CodeBlock>
 </TabItem>
 
-<!--
 <TabItem value="php" label="PHP">
     <CodeBlock className="language-php">{PHPGetCollector}</CodeBlock>
 </TabItem>
--->
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlGetCollector}</CodeBlock>

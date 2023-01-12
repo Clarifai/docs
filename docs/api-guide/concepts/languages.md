@@ -72,6 +72,11 @@ import JavaSpecificLanguageTranslation from "!!raw-loader!../../../code_snippets
 import JavaAddLanguageTranslation from "!!raw-loader!../../../code_snippets/api-guide/concepts/java/add_language_translation.java";
 import JavaUpdateLanguageTranslation from "!!raw-loader!../../../code_snippets/api-guide/concepts/java/update_language_translation.java";
 
+import PHPListLanguageTranslations from "!!raw-loader!../../../code_snippets/api-guide/concepts/php/list_language_translations.php";
+import PHPSpecificLanguageTranslation from "!!raw-loader!../../../code_snippets/api-guide/concepts/php/specific_language_translation.php";
+import PHPAddLanguageTranslation from "!!raw-loader!../../../code_snippets/api-guide/concepts/php/add_language_translation.php";
+import PHPUpdateLanguageTranslation from "!!raw-loader!../../../code_snippets/api-guide/concepts/php/update_language_translation.php";
+
 import CurlListLanguageTranslations from "!!raw-loader!../../../code_snippets/api-guide/concepts/curl/list_language_translations.sh";
 import CurlSpecificLanguageTranslation from "!!raw-loader!../../../code_snippets/api-guide/concepts/curl/specific_language_translation.sh";
 import CurlAddLanguageTranslation from "!!raw-loader!../../../code_snippets/api-guide/concepts/curl/add_language_translation.sh";
@@ -113,6 +118,10 @@ The initialization code used in the following examples is outlined in detail on 
     <CodeBlock className="language-java">{JavaListLanguageTranslations}</CodeBlock>
 </TabItem>
 
+<TabItem value="grpc_php" label="gRPC PHP">
+    <CodeBlock className="language-php">{PHPListLanguageTranslations}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlListLanguageTranslations}</CodeBlock>
 </TabItem>
@@ -144,6 +153,10 @@ Below is an example of how to get a single language translation for a concept. Y
 
 <TabItem value="grpc_java" label="gRPC Java">
     <CodeBlock className="language-java">{JavaSpecificLanguageTranslation}</CodeBlock>
+</TabItem>
+
+<TabItem value="grpc_php" label="gRPC PHP">
+    <CodeBlock className="language-php">{PHPSpecificLanguageTranslation}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -179,6 +192,10 @@ Below is an example of how to create a language translation for a concept by POS
     <CodeBlock className="language-java">{JavaAddLanguageTranslation}</CodeBlock>
 </TabItem>
 
+<TabItem value="grpc_php" label="gRPC PHP">
+    <CodeBlock className="language-php">{PHPAddLanguageTranslation}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlAddLanguageTranslation}</CodeBlock>
 </TabItem>
@@ -209,7 +226,11 @@ Below is an example of how to update a language translation for a concept by PAT
 </TabItem>
 
 <TabItem value="grpc_java" label="gRPC Java">
-    <CodeBlock className="language-javascript">{JavaUpdateLanguageTranslation}</CodeBlock>
+    <CodeBlock className="language-java">{JavaUpdateLanguageTranslation}</CodeBlock>
+</TabItem>
+
+<TabItem value="grpc_php" label="gRPC PHP">
+    <CodeBlock className="language-php">{PHPUpdateLanguageTranslation}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">

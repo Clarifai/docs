@@ -11,8 +11,8 @@ $USER_ID = 'YOUR_USER_ID_HERE';
 // Your PAT (Personal Access Token) can be found in the portal under Authentification
 $PAT = 'YOUR_PAT_HERE';
 $APP_ID = 'YOUR_APP_ID_HERE';
-$MODEL_ID = 'general-image-recognition';
 // Change these to whatever model and image URL you want to use
+$MODEL_ID = 'general-image-recognition';
 $IMAGE_URL = 'https://samples.clarifai.com/metro-north.jpg';
 // This is optional. You can specify a model version or the empty string for the default
 $MODEL_VERSION_ID = '';
@@ -74,9 +74,9 @@ if ($response->getStatus()->getCode() != StatusCode::SUCCESS) {
 
 // The output of a successful call can be used in many ways. In this example, we loop through all of the predicted concepts 
 // and print them out along with their numerical prediction value (confidence)
-echo "Predicted concepts:\n";
+echo "Predicted concepts: </br>";
 foreach ($response->getOutputs()[0]->getData()->getConcepts() as $concept) {
-    echo $concept->getName() . ": " . number_format($concept->getValue(), 2) . "\n";
+    echo $concept->getName() . ": " . number_format($concept->getValue(), 2) . "</br>";
 }
 
 ?>

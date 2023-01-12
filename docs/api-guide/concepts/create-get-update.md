@@ -43,6 +43,12 @@ import JavaGetConcept from "!!raw-loader!../../../code_snippets/api-guide/concep
 import JavaListConcepts from "!!raw-loader!../../../code_snippets/api-guide/concepts/java/list_concepts.java";
 import JavaUpdateConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/java/update_concept.java";
 
+import PHPAddConcepts from "!!raw-loader!../../../code_snippets/api-guide/concepts/php/add_concepts.php";
+import PHPGetConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/php/get_concept.php";
+import PHPListConcepts from "!!raw-loader!../../../code_snippets/api-guide/concepts/php/list_concepts.php";
+import PHPListModelConcepts from "!!raw-loader!../../../code_snippets/api-guide/concepts/php/list_model_concepts.php";
+import PHPUpdateConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/php/update_concept.php";
+
 import CurlAddConcepts from "!!raw-loader!../../../code_snippets/api-guide/concepts/curl/add_concepts.sh";
 import CurlGetConcept from "!!raw-loader!../../../code_snippets/api-guide/concepts/curl/get_concept.sh";
 import CurlListConcepts from "!!raw-loader!../../../code_snippets/api-guide/concepts/curl/list_concepts.sh";
@@ -87,6 +93,10 @@ The initialization code used in the following examples is outlined in detail on 
     <CodeBlock className="language-java">{JavaAddConcepts}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPAddConcepts}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlAddConcepts}</CodeBlock>
 </TabItem>
@@ -121,6 +131,10 @@ Below is an example of how to get a single concept by its ID.
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaGetConcept}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPGetConcept}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -158,6 +172,10 @@ Below is an example of how to list concepts.
     <CodeBlock className="language-java">{JavaListConcepts}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPListConcepts}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlListConcepts}</CodeBlock>
 </TabItem>
@@ -191,6 +209,10 @@ If you are using any of the Clarifai gRPC clients, the `ListModelConcepts` endpo
     <CodeBlock className="language-javascript">{JavaScriptListModelConcepts}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPListModelConcepts}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlListModelConcepts}</CodeBlock>
 </TabItem>
@@ -219,6 +241,10 @@ Below is an example of how to update a concept's name given its id by using the 
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaUpdateConcept}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPUpdateConcept}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">

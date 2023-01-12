@@ -35,6 +35,10 @@ import JavaCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/pr
 import JavaPredictURL from "!!raw-loader!../../../code_snippets/api-guide/predict/java/audio_via_url.java";
 import JavaViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/java/audio_via_bytes.java";
 
+import PHPCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/predict/php/audio_create_workflow.php";
+import PHPPredictURL from "!!raw-loader!../../../code_snippets/api-guide/predict/php/audio_via_url.php";
+import PHPViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/php/audio_via_bytes.php";
+
 import CurlCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/audio_create_workflow.sh";
 import CurlPredictURL from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/audio_via_url.sh";
 import CurlViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/audio_via_bytes.sh";
@@ -79,6 +83,10 @@ We'll specify the IDs of the models and their versions—since a model can have 
    <CodeBlock className="language-java">{JavaCreateWorkflow}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+   <CodeBlock className="language-php">{PHPCreateWorkflow}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlCreateWorkflow}</CodeBlock>
 </TabItem>
@@ -109,6 +117,10 @@ The response will contain the predictions each model in the workflow returns for
 
 <TabItem value="java" label="Java">
    <CodeBlock className="language-java">{JavaPredictURL}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+   <CodeBlock className="language-php">{PHPPredictURL}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -147,6 +159,10 @@ Below is an example of how you would send the bytes of an audio and receive pred
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaViaBytes}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPViaBytes}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
