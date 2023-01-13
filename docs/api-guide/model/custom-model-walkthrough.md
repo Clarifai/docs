@@ -55,7 +55,7 @@ import ExampleTextPredictModel from "!!raw-loader!../../../code_snippets/api-gui
 
 :::tip
 
-This walkthrough example assumes that you've selected a Classification Base Workflow. If you choose a Detection Base Workflow, then this **Add Images With Concepts** example could throw an error message such as `Adding/patching inputs with pre-tagged concepts is not allowed for apps with a detection model in their base workflow. Please use Post or Patch Annotations instead.` If you get such an error, you should first upload the inputs without any concepts attached and then use the [Annotations endpoint](https://docs.clarifai.com/api-guide/annotate/annotations/#add-annotations) to label the inputs.
+This walkthrough example assumes that you've selected a Classification Base Workflow. If you choose a Detection Base Workflow, then this **Add Images With Concepts** example could throw an error message, such as `Adding/patching inputs with pre-tagged concepts is not allowed for apps with a detection model in their base workflow. Please use Post or Patch Annotations instead.` If you get such an error, you should first upload the inputs without any concepts attached and then use the [Annotations endpoint](https://docs.clarifai.com/api-guide/annotate/annotations/#add-annotations) to label the inputs.
 
 :::
 
