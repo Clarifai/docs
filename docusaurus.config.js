@@ -61,7 +61,7 @@ const config = {
             position: 'right',
           },
           {
-            href: 'https://clarifaicommunity.slack.com',
+            href: 'https://join.slack.com/t/clarifaicommunity/shared_invite/zt-1jehqesme-l60djcd3c_4a1eCV~uPUjQ',
             label: 'Community Slack',
             position: 'right',
           },
@@ -93,7 +93,7 @@ const config = {
               },
               {
                 label: 'Slack',
-                href: 'https://clarifaicommunity.slack.com/',
+                href: 'https://join.slack.com/t/clarifaicommunity/shared_invite/zt-1jehqesme-l60djcd3c_4a1eCV~uPUjQ',
               },
               {
                 label: 'Twitter',
