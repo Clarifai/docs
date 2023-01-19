@@ -1,7 +1,7 @@
-###########################################################################
-# In this section, we set the user authentication, app ID, model ID, 
+#######################################################################################
+# In this section, we set the user authentication, app ID, model ID, model type ID,
 # and concept ID. Change these strings to run your own example.
-###########################################################################
+#######################################################################################
 
 USER_ID = 'YOUR_USER_ID_HERE'
 # Your PAT (Personal Access Token) can be found in the portal under Authentification
@@ -9,6 +9,7 @@ PAT = 'YOUR_PAT_HERE'
 APP_ID = 'YOUR_APP_ID_HERE'
 # Change these to create your own model
 MODEL_ID = 'petsID'
+MODEL_TYPE_ID = 'embedding-classifier'
 CONCEPT_ID = 'boscoe'
 
 ##########################################################################
@@ -32,6 +33,7 @@ post_models_response = stub.PostModels(
         models=[
             resources_pb2.Model(
                 id=MODEL_ID,
+                model_type_id=MODEL_TYPE_ID,
                 output_info=resources_pb2.OutputInfo(
                     data=resources_pb2.Data(
                         concepts=[resources_pb2.Concept(id=CONCEPT_ID, value=1)] # 1 means true, this concept is present
