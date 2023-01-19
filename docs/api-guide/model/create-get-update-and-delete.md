@@ -120,9 +120,11 @@ The initialization code used in the following examples is outlined in detail on 
 
 ### Create a Model
 
-To create a model, you need to specify the model's name and other required fields⁠—depending on the type of model you want to create. Specifying the ID is optional.
+To create a model, you need to specify the model's name and other required fields⁠—depending on the type of model you want to create. 
 
-Below is an example of how you would create a classifier model with one initial concept. You can always add and remove concepts later.
+If you want to specify [the type of model](https://docs.clarifai.com/api-guide/model/model-types) you want to create, you need to provide its ID using the `model_type_id` parameter⁠—though specifying the ID is optional.
+
+Below is an example of how you would create an `embedding-classifier` model with one initial concept. You can always add and remove concepts later.
 
 <Tabs>
 
