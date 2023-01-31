@@ -4,6 +4,7 @@ curl -X POST "https://api.clarifai.com/v2/users/YOUR_USER_ID_HERE/apps/YOUR_APP_
   -d '{
     "model": {
       "id": "petsID",
+      "model_type_id": "embedding-classifier",
       "output_info": {
         "data": {
           "concepts": [

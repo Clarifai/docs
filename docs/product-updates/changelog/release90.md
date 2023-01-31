@@ -2,7 +2,7 @@
 description: Changelog for Clarifai Release 9.0
 # For versioning, we use negative position so that the oldest versions are displayed at the bottom. Any time you add a new version, increase the position by -1.
 sidebar_position: -39
-pagination_next: product-updates/upcoming-api-changes
+pagination_next: product-updates/changelog/release91
 pagination_prev: product-updates/changelog/release811
 ---
 
@@ -16,6 +16,7 @@ pagination_prev: product-updates/changelog/release811
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
 |![new-feature](/img/new_feature.jpg)|Published the HuggingFace text classification template|<ul><li>The HuggingFace text classification template is now available to users. You can use the pre-configured text classifier model template to train with your data and improve the accuracy of your results.</li></ul>|
+|![new-feature](/img/new_feature.jpg)|Published the silent-face-anti-spoofing model.|<ul><li>You can now use the silent face anti-spoofing detection model to determine if a face in an image is a spoofing attempt or not. It is designed to prevent people from tricking facial identification systems, such as those used for unlocking phones or accessing secure locations.</li></ul>|
 |![improvement](/img/improvement.jpg)|Made major redesign changes on listing pages|<ul><li>Improved the user experience when navigating the listing pages for models and workflows.</li><li>Added a new design and colors for models and workflows icons.</li><li>Added ability to list models and workflows by either grid view or list view.</li><li>Added mobile-responsive support.</li></ul>|
 | ![improvement](/img/improvement.jpg)|Made improvements to the Usage Dashboard|<ul><li>Replaced “Stored Inputs” with “Average Stored Inputs.” We now compute it as an average, not as the total.</li><li>Added the word “Total” to “Training Hours” and “Ops Count.” They are now referred to as “Total Training Hours” and “Total Ops Count” respectively.</li></ul>|
 |![improvement](/img/improvement.jpg)|Added ability to hover over collapsible sidebar icons|<ul><li>In the collapsed view on the left sidebar, the menu items are hidden and only the icons are left. We have now added a hover pop-up of the same text we hide to help users understand what each menu item is about.</li></ul>|

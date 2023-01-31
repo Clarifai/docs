@@ -14,8 +14,8 @@ This page describes some important model types that you should know when working
 
 For a listing of the models available to you:
 
-* Make a [`GET`](https://docs.clarifai.com/api-guide/model/create-get-update-and-delete/#list-model-types) call to the `/models/types` API method. The method responds with all the available model types.
-* You can then choose any one of the model types and make a `POST` request to the `/models` API method with the payload specified in the response of the chosen model type.
+* Make a `GET` call to the [`/models/types`](https://docs.clarifai.com/api-guide/model/create-get-update-and-delete/#list-model-types) API method or the `ListModelTypes` gRPC API method. The method responds with all the available model types.
+* If you want to create a model with your preferred model type, you can make a `POST` request to the [`/models`](https://docs.clarifai.com/api-guide/model/create-get-update-and-delete/#create-a-model) API method or the `PostModels` gRPC API method with the `model_type_id` parameter specified in the request. 
 
 ## Trainable Models
 
@@ -46,6 +46,22 @@ Embeddings also can be combined with cluster models to provide a fast and effici
 _Example use case:_
 
 _A security company wants to use face verification as part of their two-factor identification system. They would begin by using Clarifai's face embedding model, and then training this model to recognize the identities of permitted individuals. They would simply upload images of the people they want to identify, add individual names as concepts, and train the new model using a **Context-Based Classifier**._
+
+### Text-Classifier
+
+Text classification models help you classify text into a set of concepts.
+
+### Visual-Segmenter
+
+Visual segmenter models help you segment a per-pixel mask in images where things are and then classify objects, descriptive words, or topics within the masks.
+
+### Visual-Embedder
+
+Visual embedder models help you embed images and videos frames into a vector representing a high level understanding from our AI models. These embeddings enable visual search and training on top of them.
+
+### Visual-Anomaly-Heatmap
+
+These models allow you to perform visual anomaly detection with image-level score and anomaly heatmap. 
 
 ## Custom Models
 

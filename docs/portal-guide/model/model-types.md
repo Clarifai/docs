@@ -10,7 +10,9 @@ sidebar_position: 4
 
 Clarifai offers a wide variety of models that can be used as standalone solutions, or as the building blocks for your own custom business solution.
 
-This page describes some important model types that you should know when working with the Clarifai platform. Please keep in mind that this is an overview of the general categories of models available to you and that new models are created all the time. For the most up-to-date list of available models, visit Model Mode in Portal. A listing of available models will be dynamically generated for you based on the selected user profile and filters that allow you to sort models by model type, inputs, and outputs.
+This page describes some important model types that you should know when working with the Clarifai platform. Please keep in mind that this is an overview of the general categories of models available to you and that new models are created all the time. For the most up-to-date list of available models, visit Model Mode in Portal.
+
+A listing of available models will be dynamically generated for you based on the selected user profile and filters that allow you to sort models by model type, inputs, and outputs.
 
 ## Trainable Models
 
@@ -20,7 +22,7 @@ Classification models help you answer the question "What" or "Who" is in your da
 
 Example use case:
 
-A large retailer looking to find and remove listings for illegal objects and substances across thousands of listings that include user-generated data. A classification model allows the retailer to quickly find listings that are in violation of their community rules, and remove them from the site.
+_A large retailer looking to find and remove listings for illegal objects and substances across thousands of listings that include user-generated data. A classification model allows the retailer to quickly find listings that are in violation of their community rules, and remove them from the site._
 
 ### Visual-Detector
 
@@ -28,7 +30,7 @@ Detection models answer the question "Where" are objects in your data. Detectors
 
 Example use case:
 
-A roofing company wants to provide insurance companies and customers with a consistent way of evaluating roof damage. This company captures images of roofs with a drone, and then feeds the images into a detection model. The detection model can then locate and classify specific areas of damage on the roofs.
+_A roofing company wants to provide insurance companies and customers with a consistent way of evaluating roof damage. This company captures images of roofs with a drone, and then feeds the images into a detection model. The detection model can then locate and classify specific areas of damage on the roofs._
 
 ### Embedding-Classifier
 
@@ -40,7 +42,23 @@ Embeddings also can be combined with cluster models to provide a fast and effici
 
 Example use case:
 
-A security company wants to use face verification as part of their two-factor identification system. They would begin by using Clarifai's face embedding model, and then training this model to recognize the identities of permitted individuals. They would simply upload images of the people that want to identify, add individual names as concepts, and train the new model using a **Context-Based Classifier**.
+_A security company wants to use face verification as part of their two-factor identification system. They would begin by using Clarifai's face embedding model, and then training this model to recognize the identities of permitted individuals. They would simply upload images of the people that want to identify, add individual names as concepts, and train the new model using a **Context-Based Classifier**._
+
+### Text-Classifier
+
+Text classification models help you classify text into a set of concepts.
+
+### Visual-Segmenter
+
+Visual segmenter models help you segment a per-pixel mask in images where things are and then classify objects, descriptive words, or topics within the masks.
+
+### Visual-Embedder
+
+Visual embedder models help you embed images and videos frames into a vector representing a high level understanding from our AI models. These embeddings enable visual search and training on top of them.
+
+### Visual-Anomaly-Heatmap
+
+These models allow you to perform visual anomaly detection with image-level score and anomaly heatmap. 
 
 ## Custom Models
 
@@ -50,7 +68,7 @@ Use deep trained models when you are working with highly specialized data, or yo
 
 Example use case:
 
-A radiology laboratory is training a model to detect COVID-19 in patients based on their chest x-rays. They need to push model accuracy to its absolute limit to reduce false positives. Their dataset is also highly specialized and technical in nature. They would typically choose to a deep trained model to get the best results.
+_A radiology laboratory is training a model to detect COVID-19 in patients based on their chest x-rays. They need to push model accuracy to its absolute limit to reduce false positives. Their dataset is also highly specialized and technical in nature. They would typically choose to a deep trained model to get the best results._
 
 ### Context-Based Classifier
 
@@ -66,7 +84,7 @@ Cluster models work with Embedding models so that you can perform visual searche
 
 Example use case:
 
-An online retailer wants to suggest relevant products based on visual similarity to products that customers have previously purchased. They would use a cluster model together with an embedding model, and perform a "visual search" on their catalog to identify similar items.
+_An online retailer wants to suggest relevant products based on visual similarity to products that customers have previously purchased. They would use a cluster model together with an embedding model, and perform a "visual search" on their catalog to identify similar items._
 
 ## Non-Trainable Models \(Fixed-Function Operators\)
 
@@ -74,5 +92,5 @@ Fixed-Function Operators are "non-trainable models" that help you connect, direc
 
 Example use case:
 
-A customer wants to automatically tag images based on AI predictions. They would might connect a classification model with a "Concept Thresholder" model to determine which images are labeled and which ones are not.
+_A customer wants to automatically tag images based on AI predictions. They would might connect a classification model with a "Concept Thresholder" model to determine which images are labeled and which ones are not._
 

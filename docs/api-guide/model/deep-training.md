@@ -71,6 +71,9 @@ import PythonCreateDetector from "!!raw-loader!../../../code_snippets/api-guide/
 import PythonCreateEmbedder from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_visual_embedder.py";
 import PythonCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_workflow_deep_trained_model.py";
 import PythonUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.py";
+import PythonCreateTextClassifier from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_text_classifier.py";
+import PythonCreateVisualSegmenter from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_visual_segmenter.py";
+import PythonCreateVisualAnomaly from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_visual_anomaly.py";
 
 import NodeCreateClassifier from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_visual_classifier.js";
 import NodeCreateDetector from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_visual_detector.js";
@@ -99,7 +102,7 @@ The initialization code used in the following examples is outlined in detail on 
 
 ### Create a Visual Classifier
 
-Use a visual classifier model if you would like to classify images and video frames into set of concepts.
+Use a visual classifier model if you would like to classify images and video frames into a set of concepts.
 
 <Tabs>
 
@@ -165,6 +168,42 @@ Create a visual embedding model to transform images and video frames into "high 
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlCreateEmbedder}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+### Create a Text Classifier
+
+Create a text classifier model to classify text into a set of concepts.
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonCreateTextClassifier}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+### Create a Visual Segmenter
+
+Create a visual segmenter model to segment a per-pixel mask in images where things are and then classify objects, descriptive words, or topics within the masks.
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonCreateVisualSegmenter}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+### Create a Visual Anomaly Heatmap
+
+Create a visual anomaly model to perform visual anomaly detection with image-level score and anomaly heatmap.
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonCreateVisualAnomaly}</CodeBlock>
 </TabItem>
 
 </Tabs>

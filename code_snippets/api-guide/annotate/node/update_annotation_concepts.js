@@ -10,9 +10,9 @@ const USER_ID = 'YOUR_USER_ID_HERE';
 const PAT = 'YOUR_PAT_HERE';
 const APP_ID = 'YOUR_APP_ID_HERE';
 // Change these based on the annotation you want to update
-INPUT_ID = 'c9cbb1c90cf24bc98bfd2e529e744ca9';
-ANNOTATION_ID = '08d3b9b81432477fb5522d3fb1d1a6f4';
-CONCEPT_ID = 'apple';
+const INPUT_ID = 'c9cbb1c90cf24bc98bfd2e529e744ca9';
+const ANNOTATION_ID = '08d3b9b81432477fb5522d3fb1d1a6f4';
+const CONCEPT_ID = 'apple';
 
 /////////////////////////////////////////////////////////////////////////////
 // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
