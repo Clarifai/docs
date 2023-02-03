@@ -13,21 +13,26 @@ A PAT represents you when accessing the Clarifai API. It's a powerful way of acc
 
 You can use PATs to accomplish the following:
 
-- Access multiple apps with a single key. This lets you access your own apps as well as any other apps you have permissions to use, such as public apps, apps you're added as a collaborator, or apps belonging to your organization's team.
-- Create apps and app-specific keys programmatically through the API. This is crucial for programs that segregate data of each of their end-users into different apps.
+- Access multiple apps with a single key. This lets you access your own apps as well as any other apps you have permissions to use, such as public apps, apps where you're added as a collaborator, or apps belonging to your organization's team.
+- Create apps and app-specific keys programmatically through the API. This is crucial for programs that segregate the data of each of their end-users into different apps.
 
 
-:::important IMPORTANT NOTE
+:::info
 
-- PAT is the primary authentication mechanism we use. 
+- PAT is the primary authentication mechanism we use.  
+- When using a PAT, you need to specify the **user ID** alongside the **application ID** of the owner of the resource you want to access—be it your own or for another user. If accessing your own resources, you specify your own `user_id` and `app_id`; if you don't own them, specify the owner's `user_id` and `app_id`. 
 
 :::
 
-When using a PAT, you need to specify your user ID alongside the application ID to which the request should be applied.
+:::tip
 
-## Create a New PAT in the Portal
+A PAT allows you to make inferences on resources that are outside the scope of your apps. [An API Key](https://docs.clarifai.com/clarifai-basics/authentication/app-specific-api-keys) only allows you to access resources scoped to the app defined by that key. So, you can use an API Key to access your own resources, but not Clarifai's resources. 
 
-To create a new PAT, log in to the Portal and navigate to the bottom left-hand corner of the application overview page. Then, click  the initials of your name:
+:::
+
+## How to Create a PAT in the Portal
+
+To create a new PAT on the legacy Portal, log in and navigate to the bottom left-hand corner of the application overview page. Then, click  the initials of your name:
 
 ![navigate-authentication](/img/navigate_authentication.jpg)
 
@@ -46,3 +51,24 @@ Provide a short token description, set the scopes you want to apply, and click t
 - We recommend that you do **not** share your PAT with other users.
 
 :::
+
+## Example
+
+Here is an example of how to use a PAT to make a prediction request from Clarifai's [`general-image-recognition`](https://clarifai.com/clarifai/main/models/general-image-recognition) model. Note that you need to specify the resource owner's `user_id` and `app_id` in the `UserAppIDSet`, if making a gRPC call, or in the URL, if making a REST call. 
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+
+import PythonPat from "!!raw-loader!../../../code_snippets/api-guide/authentication/pat.py";
+import CurlPat from "!!raw-loader!../../../code_snippets/api-guide/authentication/pat.sh";
+
+<Tabs>
+<TabItem value="python" label="Python">
+     <CodeBlock className="language-python">{PythonPat}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlPat}</CodeBlock>
+</TabItem>
+</Tabs>

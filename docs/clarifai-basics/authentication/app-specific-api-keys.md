@@ -8,19 +8,25 @@ sidebar_position: 2
 <hr />
 
 
-App-specific API Keys are used to authorize access to your Clarifai applications. A key is automatically generated when you create a new application.
+App-specific API Keys are used to authorize access to your Clarifai applications. You can use an API Key to access the resources within the scope of the app defined by that key.
 
-You can also go to the [Application's List](https://portal.clarifai.com/) on the Portal, select an app of your choice, and create a new key in the app details page. 
+A key is automatically generated when you create a new application. You can also go to the [Application's List](https://portal.clarifai.com/) on the Portal, select an app of your choice, and create a new key on the app details page. 
 
-:::important note
+:::info
 
-Each API Key is tied to a specific user and a specific app
+Each API Key is associated with a specific user and a specific app. It ties in `user_id` and `app_id`, causing only resources in that app to be usable.
 
 :::
 
-When using an app-specific API Key, you do not need to specify either the user ID or the application ID as they are already part of the API Key.
+When using an app-specific API Key to make a request, you do not need to specify either the user ID or the application ID as they are already part of the API Key.
 
 An API Key allows you to have fine-grained control over the data exposed through your app. You can control the scope of your API Key through a simple checkbox interface displayed when you create a new key or edit a key. 
+
+:::tip
+
+You cannot use an API key to access models, model versions, workflows, and other resources that are not part of the app that the API key is associated with. You need a [PAT](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens) to do so. For example, to access any of Clarifai's resources, you need to use a PAT while specifying Clarifai's `user_id` and the `app_id` to which the resource belongs. 
+
+:::
 
 ## Create API Keys in the Portal
 
@@ -42,6 +48,10 @@ You need to use a [Personal Access Token (PAT)](https://docs.clarifai.com/clarif
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+
+import PythonKey from "!!raw-loader!../../../code_snippets/api-guide/authentication/key.py";
+import CurlKey from "!!raw-loader!../../../code_snippets/api-guide/authentication/key.sh";
 
 <Tabs>
 <TabItem value="cURL" label="cURL" default>
@@ -78,4 +88,16 @@ curl --location --request POST "https://api.clarifai.com/v2/users/YOUR_USER_ID_H
 
 :::
 
+## Example
 
+Here is an example of how to use an API Key to make a prediction request from your own model. Note that your `user_id` and `app_id` are already tied to the key, so no need to specify them.
+
+<Tabs>
+<TabItem value="python" label="Python">
+     <CodeBlock className="language-python">{PythonKey}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlKey}</CodeBlock>
+</TabItem>
+</Tabs>
