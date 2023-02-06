@@ -2,20 +2,21 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-///////////////////////////////////////////////////////////////////////////////////////////////
-// In this section, we set the user authentication, app ID, model details, and the location
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+// In this section, we set the user authentication, user and app ID, model details, and the location
 // of the image we want as an input. Change these strings to run your own example.
-//////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-$USER_ID = 'YOUR_USER_ID_HERE';
 // Your PAT (Personal Access Token) can be found in the portal under Authentification
 $PAT = 'YOUR_PAT_HERE';
-$APP_ID = 'YOUR_APP_ID_HERE';
+// Specify the correct user_id/app_id pairings
+// Since you're making inferences outside your app's scope
+$USER_ID = 'clarifai';
+$APP_ID = 'main';
 // Change these to whatever model and image input you want to use
 $MODEL_ID = 'general-image-recognition';
+$MODEL_VERSION_ID = 'aa7f35c01e0642fda5cf400f543e7c40';
 $IMAGE_FILE_LOCATION = 'YOUR_IMAGE_FILE_LOCATION_HERE';
-// This is optional. You can specify a model version or the empty string for the default
-$MODEL_VERSION_ID = '';
 
 ///////////////////////////////////////////////////////////////////////////////////
 // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -47,7 +48,7 @@ $imageData = file_get_contents($IMAGE_FILE_LOCATION); // Get the image bytes dat
     new PostModelOutputsRequest([
         'user_app_id' => $userDataObject,
         'model_id' => $MODEL_ID,  
-        'version_id' => $MODEL_VERSION_ID,
+        'version_id' => $MODEL_VERSION_ID, // This is optional. Defaults to the latest model version
         'inputs' => [
             new Input([ // The Input object wraps the Data object in order to meet the API specification                
                 'data' => new Data([ // The Data object is constructed around the Image object. It offers a container that has additional image independent

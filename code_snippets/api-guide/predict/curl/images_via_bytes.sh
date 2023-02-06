@@ -1,6 +1,6 @@
 # Smaller files (195 KB or less)
 
-curl -X POST "https://api.clarifai.com/v2/users/YOUR_USER_ID_HERE/apps/YOUR_APP_ID_HERE/models/general-image-recognition/versions/aa7f35c01e0642fda5cf400f543e7c40/outputs" \
+curl -X POST "https://api.clarifai.com/v2/users/clarifai/apps/main/models/general-image-recognition/versions/aa7f35c01e0642fda5cf400f543e7c40/outputs" \
   -H "Authorization: Key YOUR_PAT_HERE" \
   -H "Content-Type: application/json" \
   -d '{
@@ -17,7 +17,7 @@ curl -X POST "https://api.clarifai.com/v2/users/YOUR_USER_ID_HERE/apps/YOUR_APP_
 
 # Larger Files (Greater than 195 KB)
 
-curl -X POST "https://api.clarifai.com/v2/users/YOUR_USER_ID_HERE/apps/YOUR_APP_ID_HERE/models/general-image-recognition/versions/aa7f35c01e0642fda5cf400f543e7c40/outputs" \
+curl -X POST "https://api.clarifai.com/v2/users/clarifai/apps/main/models/general-image-recognition/versions/aa7f35c01e0642fda5cf400f543e7c40/outputs" \
   -H "Authorization: Key YOUR_PAT_HERE" \
   -H "Content-Type: application/json" \
   -d @-  << FILEIN

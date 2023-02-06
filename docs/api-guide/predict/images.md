@@ -52,7 +52,7 @@ import JSONOutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/pr
 
 ## Predict via URL
 
-Below is an example of how you would send image URLs and receive predictions from the Clarifai's `general-image-recognition` model. 
+Below is an example of how you would send image URLs and receive predictions from Clarifai's [`general-image-recognition`](https://clarifai.com/clarifai/main/models/general-image-recognition) model. 
 
 :::info
 
@@ -100,7 +100,7 @@ The initialization code used in the following examples is outlined in detail on 
 
 ## Predict via Bytes
 
-Below is an example of how you would send the bytes of an image and receive predictions from the Clarifai's `general-image-recognition` model.
+Below is an example of how you would send the bytes of an image and receive predictions from Clarifai's [`general-image-recognition`](https://clarifai.com/clarifai/main/models/general-image-recognition) model.
 
 <Tabs>
 <TabItem value="python" label="Python">
