@@ -1,17 +1,18 @@
-########################################################################################
-# In this section, we set the user authentication, app ID, model details, and the URL
+##################################################################################################
+# In this section, we set the user authentication, user and app ID, model details, and the URL
 # of the image we want as an input. Change these strings to run your own example.
-#######################################################################################
+#################################################################################################
 
-USER_ID = 'YOUR_USER_ID_HERE'
 # Your PAT (Personal Access Token) can be found in the portal under Authentification
 PAT = 'YOUR_PAT_HERE'
-APP_ID = 'YOUR_APP_ID_HERE'
+# Specify the correct user_id/app_id pairings
+# Since you're making inferences outside your app's scope
+USER_ID = 'clarifai'
+APP_ID = 'main'
 # Change these to whatever model and image URL you want to use
 MODEL_ID = 'general-image-recognition'
+MODEL_VERSION_ID = 'aa7f35c01e0642fda5cf400f543e7c40'
 IMAGE_URL = 'https://samples.clarifai.com/metro-north.jpg'
-# This is optional. You can specify a model version or the empty string for the default
-MODEL_VERSION_ID = ''
 
 ############################################################################
 # YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
