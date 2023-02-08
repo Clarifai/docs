@@ -42,7 +42,7 @@ If your video exceeds the limits, please follow our [tutorial](https://www.clari
 
 ## Predict via URL
 
-Below is an example of how you would send video URLs and receive predictions from the Clarifai's `general-image-recognition` model.
+Below is an example of how you would send video URLs and receive predictions from Clarifai's [`general-image-recognition`](https://clarifai.com/clarifai/main/models/general-image-recognition) model.
 
 :::info
 
@@ -117,7 +117,7 @@ import JSONOutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/pr
 
 ## Predict via Bytes
 
-Below is an example of how you would send the bytes of a video and receive predictions from the Clarifai's `general-image-recognition` model.
+Below is an example of how you would send the bytes of a video and receive predictions from Clarifai's [`general-image-recognition`](https://clarifai.com/clarifai/main/models/general-image-recognition) model.
 
 <Tabs>
 

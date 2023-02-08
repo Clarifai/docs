@@ -18,7 +18,7 @@ The concept names and ids are case sensitive; and so, these must be exact matche
 
 :::tip
 
-To retrieve an entire list of concepts from a given model, and get their ids and names, use the [`GET /v2/models/YOUR_MODEL_ID_HERE/output_info`](https://docs.clarifai.com/api-guide/model/create-get-update-and-delete#get-model-output-info-by-id) endpoint.
+To retrieve an entire list of concepts from a given model, and get their ids and names, use the [`GetModelOutputInfo`](https://docs.clarifai.com/api-guide/model/create-get-update-and-delete#get-model-output-info-by-id) endpoint.
 
 :::
 
@@ -29,7 +29,7 @@ If you submit a request with not an exact match of the concept id or name, you w
 :::
 
 
-Below is an example of how you would select concepts and receive predictions from the Clarifai's `general-image-recognition` model. 
+Below is an example of how you would select concepts and receive predictions from Clarifai's [`general-image-recognition`](https://clarifai.com/clarifai/main/models/general-image-recognition) model. 
 
 :::info
 
@@ -128,7 +128,7 @@ You can currently set the max concepts parameter to any number in the range of \
 
 If your use case requires more concepts, please contact [Support](mailto:support@clarifai.com).
 
-Below is an example of how you would set maximum concepts and receive predictions from the `general-image-recognition` model. 
+Below is an example of how you would set maximum concepts and receive predictions from Clarifai's [`general-image-recognition`](https://clarifai.com/clarifai/main/models/general-image-recognition) model. 
 
 <Tabs>
 
@@ -176,7 +176,7 @@ For example if you want to see all concepts with a probability score of .95 or h
 
 Also note that if you don't specify the number of `max_concepts`, you will only see the top 20. If your result can contain more values you will have to increase the number of maximum concepts as well.
 
-Below is an example of how you would set a minimum probability threshold and receive predictions from the `general-image-recognition` model. 
+Below is an example of how you would set a minimum probability threshold and receive predictions from Clarifai's [`general-image-recognition`](https://clarifai.com/clarifai/main/models/general-image-recognition) model. 
 
 
 <Tabs>
@@ -223,7 +223,7 @@ Every time you train a custom model, it creates a new model version. By specifyi
 
 If you are looking for consistent results from your predict calls, use `version_id`. If the model `version_id` is not specified, predict will default to the most current model.
 
-Below is an example of how you would set a model version ID and receive predictions from the `general-image-recognition` model. 
+Below is an example of how you would set a model version ID and receive predictions from Clarifai's [`general-image-recognition`](https://clarifai.com/clarifai/main/models/general-image-recognition) model. 
 
 
 <Tabs>

@@ -1,5 +1,5 @@
 ---
-description: Make predictions on passages of text
+description: Make predictions on passages of texts
 sidebar_position: 3
 ---
 
