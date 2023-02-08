@@ -2,15 +2,17 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-//////////////////////////////////////////////////////////////////////////////////////////////
-// In this section, we set the user authentication, app ID, model details, URL of the video
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+// In this section, we set the user authentication, user and app ID, model details, URL of the video
 // we want as an input, and sample_ms. Change these strings to run your own example.
-/////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-$USER_ID = 'YOUR_USER_ID_HERE';
 // Your PAT (Personal Access Token) can be found in the portal under Authentification
 $PAT = 'YOUR_PAT_HERE';
-$APP_ID = 'YOUR_APP_ID_HERE';
+// Specify the correct user_id/app_id pairings
+// Since you're making inferences outside your app's scope
+$USER_ID = 'clarifai';
+$APP_ID = 'main';
 // Change these to whatever model and video URL you want to use
 $MODEL_ID = 'general-image-recognition';
 $MODEL_VERSION_ID = 'aa7f35c01e0642fda5cf400f543e7c40';

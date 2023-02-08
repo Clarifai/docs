@@ -1,5 +1,5 @@
 ---
-description: Learn about Clarifai Organizations.
+description: Learn about Clarifai Organizations
 sidebar_position: 2
 ---
 
