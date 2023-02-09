@@ -1,9 +1,11 @@
 ---
+description: Implement fine-grained control over the data that users have access to
 sidebar_position: 4
 ---
 
 # Scopes
 
+**Improve your apps' security**
 <hr />
 
 Scopes provide control over the set of functionality and features available when using our API. Modifying scopes allows for fine-grained control over the data that users have access to, and can help keep your app secure from malicious attacks.

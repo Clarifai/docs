@@ -316,7 +316,7 @@ On the next page, provide its details and click the **Create** button to finaliz
 
 SAML is a reliable mechanism that can add to the security of your organization’s account by ensuring authentication and authorization data are securely transferred between parties. 
 
-## How to Transfer an App to a Clarifai Organization
+## How to Transfer Your App to an Organization
 
 You can transfer an app you own to an organization you belong to and have the permission to create apps. This would greatly enhance collaboration and boost your productivity.
 

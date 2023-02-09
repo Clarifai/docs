@@ -1,10 +1,11 @@
 ---
+description: Authenticate your access across all apps within the Clarifai platform. 
 sidebar_position: 1
 ---
 
 # Personal Access Tokens
 
-**Represent a specific user when accessing the Clarifai API**
+**Make inferences on resources outside the scope of your apps**
 <hr />
 
 A Personal Access Token \(usually shortened as PAT\) is a kind of key that authenticates a user across all applications they have access to. It's not linked to a specific application.
@@ -30,19 +31,33 @@ A PAT allows you to make inferences on resources that are outside the scope of y
 
 :::
 
-## How to Create a PAT in the Portal
+## How to Create a PAT in the Legacy Portal
 
-To create a new PAT on the legacy Portal, log in and navigate to the bottom left-hand corner of the application overview page. Then, click  the initials of your name:
+To create a new PAT on the Legacy Portal, [log in](https://portal.clarifai.com/login) and navigate to the bottom left-hand corner of the application overview page. Then, click  the initials of your name.
 
 ![navigate-authentication](/img/navigate_authentication.jpg)
 
-Select the "Authentication" option and click the "Create Personal Access Token" button:
+Select the **Authentication** option. On the ensuing page, click the **Create Personal Access Token** button.
 
 ![authentication-screen](/img/authentication_screen.jpg)
 
-Provide a short token description, set the scopes you want to apply, and click the "Create" button:
+Provide a short token description, set the scopes you want to apply, and click the **Create** button.
 
 ![create-pat](/img/create_pat.jpg)
+
+## How to Create a PAT in the Community Platform
+
+To create a new PAT on the Community platform, [log in](https://clarifai.com/login) and navigate to the top right-hand section of the navigation bar. Then, click your user’s profile icon.
+
+![Create new PAT on Community](/img/others/create_pat_community.png)
+
+Select the **Security** settings option on the drop-down list. On the ensuing page, click the **Create Personal Access Token** button.  
+
+![Account security settings](/img/others/account_security_settings.png)
+
+Provide a short token description, set the scopes you want to apply, and click the **Confirm** button.
+
+![create pat](/img/others/pat_dialog_box.png)
 
 :::caution
 
@@ -52,7 +67,7 @@ Provide a short token description, set the scopes you want to apply, and click t
 
 :::
 
-## Example
+## How to Use a PAT Example
 
 Here is an example of how to use a PAT to make a prediction request from Clarifai's [`general-image-recognition`](https://clarifai.com/clarifai/main/models/general-image-recognition) model. Note that you need to specify the resource owner's `user_id` and `app_id` in the `UserAppIDSet`, if making a gRPC call, or in the URL, if making a REST call. 
 
