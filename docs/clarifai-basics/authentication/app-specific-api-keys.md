@@ -1,10 +1,11 @@
 ---
+description: Authenticate access to your own Clarifai apps
 sidebar_position: 2
 ---
 
 # App-Specific API Keys
 
-**Authenticate access to Clarifai apps**
+**Authenticate access to resources within the scope defined by the key**
 <hr />
 
 
@@ -28,15 +29,30 @@ You cannot use an API key to access models, model versions, workflows, and other
 
 :::
 
-## Create API Keys in the Portal
+## How to Create API Keys in the Legacy Portal
 
-Just navigate to your app's management page and click the "Create new API key" button. Then, use the form that pops up to generate a new API Key for your application. 
+Navigate to your individual app's management page and click the **Create new API key** button. 
 
-![](/img/apikey-screen.png)
+![Create new API Key](/img/others/create_new_api_key.png)
 
-## Create API Keys Programmatically
+Then, use the form that pops up to generate a new API Key for your application. 
 
-For enterprise customers, it is also possible to generate keys programmatically. 
+![Generate API Key form](/img/apikey-screen.png)
+
+## How to Create API Keys in the Community Platform
+
+Navigate to your individual app's management page and, on the **App Settings** page, click the **Create API key** button. 
+
+![App settings create key](/img/others/create_api_key_community.png)
+
+Then, use the form that pops up to generate a new API Key for your application. 
+
+![App key create form](/img/others/create_api_key_community_form.png)
+
+
+## How to Create API Keys Programmatically
+
+For enterprise users, it is also possible to generate keys programmatically. 
 
 If you are managing the work of multiple users, who's data, models, and concepts that need to be segregated, we recommend you create keys this way. This ensures that each individual user only has access to their own private resources.
 
@@ -88,7 +104,7 @@ curl --location --request POST "https://api.clarifai.com/v2/users/YOUR_USER_ID_H
 
 :::
 
-## Example
+## How to Use an API Key Example
 
 Here is an example of how to use an API Key to make a prediction request from your own model. Note that your `user_id` and `app_id` are already tied to the key, so no need to specify them.
 

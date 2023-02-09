@@ -1,4 +1,5 @@
 ---
+description: Set up authentication to make API calls
 sidebar_position: 3
 ---
 
