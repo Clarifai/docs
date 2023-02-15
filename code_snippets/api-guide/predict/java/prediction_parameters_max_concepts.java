@@ -7,17 +7,20 @@ import com.clarifai.grpc.api.status.StatusCode;
 
 public class ClarifaiExample {
 
-    ///////////////////////////////////////////////////////////////////////////////////////////
-    // In this section, we set the user authentication, app and model IDs, url of the image
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // In this section, we set the user authentication, user and app ID, model details, URL of the image
     // we want as an input, and max concepts. Change these strings to run your own example.
-    ///////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    static final String USER_ID = "YOUR_USER_ID_HERE";
     // Your PAT (Personal Access Token) can be found in the portal under Authentication
     static final String PAT = "YOUR_PAT_HERE";
-    static final String APP_ID = "YOUR_APP_ID_HERE";
+    // Specify the correct user_id/app_id pairings
+    // Since you're making inferences outside your app's scope
+    static final String USER_ID = "clarifai";    
+    static final String APP_ID = "main";
     // Change these to whatever you want to process
     static final String MODEL_ID = "general-image-recognition";
+    static final String MODEL_VERSION_ID = "aa7f35c01e0642fda5cf400f543e7c40";
     static final String IMAGE_URL = "https://samples.clarifai.com/metro-north.jpg";
     static final int MAX_CONCEPTS = 3;
 
@@ -33,7 +36,8 @@ public class ClarifaiExample {
         MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
             PostModelOutputsRequest.newBuilder()
             .setUserAppId(UserAppIDSet.newBuilder().setUserId(USER_ID).setAppId(APP_ID))
-            .setModelId(MODEL_ID) // This is model ID of the clarifai/main General model
+            .setModelId(MODEL_ID)
+            .setVersionId(MODEL_VERSION_ID)  // This is optional. Defaults to the latest model version
             .addInputs(
                 Input.newBuilder().setData(
                     Data.newBuilder().setImage(

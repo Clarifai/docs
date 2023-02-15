@@ -1,116 +1,97 @@
 Predicted concepts:
-id: "6575509feeb34e7ab881918a5a8a6e72"
+id: "f021a57a5dd24038ae3453ad1a5baa67"
 status {
   code: SUCCESS
   description: "Ok"
 }
 created_at {
-  seconds: 1643377570
-  nanos: 986312649
+  seconds: 1676381113
+  nanos: 815547169
 }
 model {
-  id: "91ff804429654ce25e93e710beea82ea"
-  name: "product-review-sentiment-multi"
+  id: "multilingual-uncased-sentiment"
+  name: "multilingual-uncased-sentiment"
   created_at {
-    seconds: 1617956285
-    nanos: 315594000
+    seconds: 1656469244
+    nanos: 44961000
   }
-  app_id: "main"
-  output_info {
-    output_config {
-    }
-    message: "Show output_info with: GET /models/{model_id}/output_info"
-    fields_map {
-      fields {
-        key: "concepts"
-        value {
-          string_value: "softmax"
-        }
-      }
-    }
-  }
+  app_id: "text-classification"
   model_version {
-    id: "79fa197706da4212a6e74afcd919d5a5"
+    id: "29d5fef0229a4936a607380d7ef775dd"
     created_at {
-      seconds: 1617956285
-      nanos: 327678000
+      seconds: 1656469244
+      nanos: 60443000
     }
     status {
       code: MODEL_TRAINED
       description: "Model is trained and ready"
     }
     visibility {
-      gettable: PRIVATE
+      gettable: PUBLIC
     }
-    app_id: "main"
-    user_id: "clarifai"
+    app_id: "text-classification"
+    user_id: "nlptownres"
     metadata {
-    }
-  }
-  user_id: "clarifai"
-  input_info {
-    fields_map {
       fields {
-        key: "text"
+        key: "Model version logs zipped"
         value {
-          string_value: "text"
+          string_value: "https://s3.amazonaws.com/clarifai-temp/prod/29d5fef0229a4936a607380d7ef775dd.zip"
         }
       }
     }
   }
-  train_info {
-  }
+  user_id: "nlptownres"
   model_type_id: "text-classifier"
   visibility {
-    gettable: PRIVATE
-  }
-  metadata {
+    gettable: PUBLIC
   }
   modified_at {
-    seconds: 1617956285
-    nanos: 315594000
+    seconds: 1661364520
+    nanos: 417454000
   }
-  import_info {
+  task: "text-classification"
+  presets {
+  }
+  workflow_recommended {
   }
 }
 input {
-  id: "732dfaee2ed74b7aa8c596081ae29db3"
+  id: "709cca36ea0b4545b8d1dd53a2e97e5f"
   data {
     text {
-      url: "https://alfrickopidi.com/test.txt"
+      url: "https://samples.clarifai.com/negative_sentence_12.txt"
     }
   }
 }
 data {
   concepts {
-    id: "ai_372MvFLZ"
-    name: "5 stars"
-    value: 0.866517961025238
-    app_id: "main"
+    id: "3-stars"
+    name: "3-stars"
+    value: 0.25399050116539
+    app_id: "text-classification"
   }
   concepts {
-    id: "ai_qbKLQz68"
-    name: "4 stars"
-    value: 0.11985281109809875
-    app_id: "main"
+    id: "2-stars"
+    name: "2-stars"
+    value: 0.23382413387298584
+    app_id: "text-classification"
   }
   concepts {
-    id: "ai_xhvBFMxc"
-    name: "3 stars"
-    value: 0.009703087620437145
-    app_id: "main"
+    id: "1-star"
+    name: "1-star"
+    value: 0.20093096792697906
+    app_id: "text-classification"
   }
   concepts {
-    id: "ai_1l3VDCQM"
-    name: "1 star"
-    value: 0.002005926100537181
-    app_id: "main"
+    id: "4-stars"
+    name: "4-stars"
+    value: 0.17351143062114716
+    app_id: "text-classification"
   }
   concepts {
-    id: "ai_dRpwfL86"
-    name: "2 stars"
-    value: 0.0019201975082978606
-    app_id: "main"
+    id: "5-stars"
+    name: "5-stars"
+    value: 0.1377429962158203
+    app_id: "text-classification"
   }
 }
-

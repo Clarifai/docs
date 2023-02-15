@@ -1,6 +1,6 @@
 # Smaller files (195 KB or less)
 
-curl -X POST "https://api.clarifai.com/v2/users/YOUR_USER_ID_HERE/apps/YOUR_APP_ID_HERE/models/91ff804429654ce25e93e710beea82ea/versions/79fa197706da4212a6e74afcd919d5a5/outputs" \
+curl -X POST "https://api.clarifai.com/v2/users/nlptownres/apps/text-classification/models/multilingual-uncased-sentiment/versions/29d5fef0229a4936a607380d7ef775dd/outputs" \
     -H "Authorization: Key YOUR_PAT_HERE" \
     -H "Content-Type: application/json" \
     -d '{
@@ -8,7 +8,7 @@ curl -X POST "https://api.clarifai.com/v2/users/YOUR_USER_ID_HERE/apps/YOUR_APP_
         {
           "data": {
             "text": {
-              "raw": "YOUR_TEXT_FILE_LOCATION_HERE"
+              "raw": "YOUR_TEXT_FILE_BYTES_HERE"
             }
           }
         }

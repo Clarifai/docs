@@ -43,6 +43,12 @@ As an administrator, you can set up various teams and attach different access pe
 
 For example, if you have members within your organization who must access only the resources that meet certain data regulatory requirements, you can aggregate those accounts in their own team. You then define a policy that prevents members of that team from accessing resources that do not comply with those regulatory standards.
 
+:::tip
+
+If you want to access any feature of Clarifai Organizations via the API, you must use a [PAT](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens). 
+
+:::
+
 ## Getting Started With Clarifai Organizations
 
 To get started with Clarifai Organizations, follow these steps:

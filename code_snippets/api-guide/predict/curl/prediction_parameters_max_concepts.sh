@@ -1,4 +1,4 @@
-curl -X POST "https://api.clarifai.com/v2/users/YOUR_USER_ID_HERE/apps/YOUR_APP_ID_HERE/models/general-image-recognition/outputs" \
+curl -X POST "https://api.clarifai.com/v2/users/clarifai/apps/main/models/general-image-recognition/outputs" \
   -H "Authorization: Key YOUR_PAT_HERE" \
   -H "Content-Type: application/json" \
   -d '{

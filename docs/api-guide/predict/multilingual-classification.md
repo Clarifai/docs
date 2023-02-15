@@ -42,7 +42,7 @@ import JSONOutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/pr
 
 You can predict concepts in a language other than the Application's default, by explicitly passing in the language. 
 
-Below is an example of how you would predict concepts in Chinese using the Clarifai's `general-image-recognition` model.
+Below is an example of how you would predict concepts in Chinese using Clarifai's [`general-image-recognition`](https://clarifai.com/clarifai/main/models/general-image-recognition) model.
 
 :::info
 
