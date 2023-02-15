@@ -1,17 +1,18 @@
-#############################################################################################
-# In this section, we set the user authentication, app ID, model details, and the raw text
+#########################################################################################################
+# In this section, we set the user authentication, user and app ID, model details, and the raw text
 # we want as an input. Change these strings to run your own example.
-#############################################################################################
+########################################################################################################
 
-USER_ID = 'YOUR_USER_ID_HERE'
 # Your PAT (Personal Access Token) can be found in the portal under Authentification
 PAT = 'YOUR_PAT_HERE'
-APP_ID = 'YOUR_APP_ID_HERE'
+# Specify the correct user_id/app_id pairings
+# Since you're making inferences outside your app's scope
+USER_ID = 'nlptownres'
+APP_ID = 'text-classification'
 # Change these to whatever model and raw text you want to use
-MODEL_ID = '91ff804429654ce25e93e710beea82ea'
+MODEL_ID = 'multilingual-uncased-sentiment'
+MODEL_VERSION_ID = '29d5fef0229a4936a607380d7ef775dd'
 RAW_TEXT = 'I love your product very much'
-# This is optional. You can specify a model version or an empty string for the default
-MODEL_VERSION_ID = ''
 
 ############################################################################
 # YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -46,10 +47,7 @@ post_model_outputs_response = stub.PostModelOutputs(
     metadata=metadata
 )
 if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
-    print("There was an error with your request!")
-    print("\tCode: {}".format(post_model_outputs_response.outputs[0].status.code))
-    print("\tDescription: {}".format(post_model_outputs_response.outputs[0].status.description))
-    print("\tDetails: {}".format(respopost_model_outputs_responsense.outputs[0].status.details))
+    print(post_model_outputs_response.status)
     raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
 
 # Since we have one input, one output will exist here

@@ -51,7 +51,7 @@ import JSONOutputExample3 from "!!raw-loader!../../../code_snippets/api-guide/pr
 
 ## Predict via URL 
 
-Below is an example of how you would make predictions on passages of text hosted on the web from the Clarifai's `product-review-sentiment-multi` model. 
+Below is an example of how you would make predictions on passages of text hosted on the web from the [`multilingual-uncased-sentiment`](https://clarifai.com/nlptownres/text-classification/models/multilingual-uncased-sentiment) model. 
 
 :::info
 
@@ -98,7 +98,7 @@ The initialization code used in the following examples is outlined in detail on 
 
 ## Predict via Local Files
 
-Below is an example of how you would provide text inputs via local text files and receive predictions from the Clarifai's `product-review-sentiment-multi` model. 
+Below is an example of how you would provide text inputs via local text files and receive predictions from the [`multilingual-uncased-sentiment`](https://clarifai.com/nlptownres/text-classification/models/multilingual-uncased-sentiment) model. 
 
 <Tabs>
 
@@ -128,6 +128,7 @@ Below is an example of how you would provide text inputs via local text files an
 
 </Tabs>
 
+<!--
 <details>
   <summary>Code Output Example</summary>
     <CodeBlock className="language-text">{CodeOutputExample2}</CodeBlock>
@@ -137,10 +138,11 @@ Below is an example of how you would provide text inputs via local text files an
   <summary>JSON Output Example</summary>
     <CodeBlock className="language-javascript">{JSONOutputExample2}</CodeBlock>
 </details>
+-->
 
 ## Predict via Raw Text
 
-Below is an example of how you would provide raw text inputs and receive predictions from the Clarifai's `product-review-sentiment-multi` model. 
+Below is an example of how you would provide raw text inputs and receive predictions from the [`multilingual-uncased-sentiment`](https://clarifai.com/nlptownres/text-classification/models/multilingual-uncased-sentiment) model. 
 
 <Tabs>
 <TabItem value="python" label="Python">

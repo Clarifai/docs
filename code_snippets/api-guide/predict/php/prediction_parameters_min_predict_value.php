@@ -2,17 +2,20 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-///////////////////////////////////////////////////////////////////////////////////////////
-// In this section, we set the user authentication, app and model IDs, url of the image
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+// In this section, we set the user authentication, user and app ID, model details, URL of the image
 // we want as an input, and minimum value. Change these strings to run your own example.
-///////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-$USER_ID = "YOUR_USER_ID_HERE";
 // Your PAT (Personal Access Token) can be found in the portal under Authentification
 $PAT = "YOUR_PAT_HERE";
-$APP_ID = "YOUR_APP_ID_HERE";
+// Specify the correct user_id/app_id pairings
+// Since you're making inferences outside your app's scope
+$USER_ID = "clarifai";
+$APP_ID = "main";
 // Change these to whatever you want to process
 $MODEL_ID = 'general-image-recognition';
+$MODEL_VERSION_ID = 'aa7f35c01e0642fda5cf400f543e7c40';
 $IMAGE_URL = 'https://samples.clarifai.com/metro-north.jpg';
 $MINIMUM_VALUE = 0.95;
 
@@ -47,6 +50,7 @@ $userDataObject = new UserAppIDSet([
     new PostModelOutputsRequest([
         'user_app_id' => $userDataObject,
         'model_id' => $MODEL_ID, 
+        'version_id' => $MODEL_VERSION_ID, // This is optional. Defaults to the latest model version
         'inputs' => [
             new Input([ // The Input object wraps the Data object in order to meet the API specification                
                 'data' => new Data([ // The Data object is constructed around the Image object. It offers a container that has additional image independent

@@ -1,19 +1,21 @@
 <!--index.html file-->
 
 <script>
-    //////////////////////////////////////////////////////////////////////////////////////////////
-    // In this section, we set the user authentication, app ID, model details, and the location
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // In this section, we set the user authentication, user and app ID, model details, and the location
     // of the text we want as an input. Change these strings to run your own example.
-    //////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    const USER_ID = 'YOUR_USER_ID_HERE';
     // Your PAT (Personal Access Token) can be found in the portal under Authentification
     const PAT = 'YOUR_PAT_HERE';
-    const APP_ID = 'YOUR_APP_ID_HERE';
+    // Specify the correct user_id/app_id pairings
+    // Since you're making inferences outside your app's scope
+    const USER_ID = 'nlptownres';    
+    const APP_ID = 'text-classification';
     // Change these to whatever model and text input you want to use
-    const MODEL_ID = '91ff804429654ce25e93e710beea82ea';
-    const MODEL_VERSION_ID = '79fa197706da4212a6e74afcd919d5a5';    
-    const TEXT_FILE_LOCATION = 'YOUR_TEXT_FILE_LOCATION_HERE';
+    const MODEL_ID = 'multilingual-uncased-sentiment';
+    const MODEL_VERSION_ID = '29d5fef0229a4936a607380d7ef775dd';    
+    const TEXT_FILE_BYTES = 'YOUR_TEXT_FILE_BYTES_HERE';
 
     ///////////////////////////////////////////////////////////////////////////////////
     // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -28,7 +30,7 @@
             {
                 "data": {
                     "text": {
-                        "raw": TEXT_FILE_LOCATION
+                        "raw": TEXT_FILE_BYTES
                     }
                 }
             }
