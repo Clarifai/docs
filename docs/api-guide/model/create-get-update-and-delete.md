@@ -268,7 +268,13 @@ Learn about the available model types and their hyperparameters. This endpoint l
 
 ### Get Models
 
-Below is an example of how to get a list of all the models, including the models you've created as well as Clarifai's models.
+Below is an example of how to get a list of all the models you've created in your app.
+
+:::tip
+
+If you want to get a list of the models not within the scope of your app, you need to use your PAT while specifying the `user_id` of their owner and the `app_id` of the application that you’re accessing. For example, to get Clarifai's models in the `main` app, you need to use your PAT while specifying Clarifai's `user_id` as "clarifai" and `app_id` as "main" in the request.
+
+:::
 
 <Tabs>
 

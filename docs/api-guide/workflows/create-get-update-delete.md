@@ -187,6 +187,12 @@ foreach (var concept in response.Outputs[0].Data.Concepts)
 
 You can return all custom workflows in your app.
 
+:::tip
+
+If you want to get a list of the workflows not within the scope of your app, you need to use your PAT while specifying the `user_id` of their owner and the `app_id` of the application that you’re accessing. For example, to get Clarifai's workflows in the `main` app, you need to use your PAT while specifying Clarifai's `user_id` as "clarifai" and `app_id` as "main" in the request.
+
+:::
+
 <Tabs>
 
 <TabItem value="python" label="Python">
