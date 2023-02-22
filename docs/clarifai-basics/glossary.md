@@ -67,9 +67,17 @@ A type of machine learning model for distinguishing among two or more discrete c
 
 A value used to separate the positive class from the negative class of predictions.
 
+## Collaboration
+
+Collaboration is a functionality that provides you with the ability to share your apps so that you can work with your team members to label data, create models, and more. This feature comes with full control of the permissions available in your apps, which allows you to manage the capabilities and information available to each user.
+
 ## Commands 
 
 The actions that enable a user to execute a task.
+
+## Community
+
+The Clarifai Community is a low-code, no-code platform that allows you to discover, build, and share AI models, workflows, and app components with confidence. It’s a modern portal that is built for the needs, challenges, and opportunities of today’s AI industry.
 
 ## Concept
 
@@ -163,6 +171,10 @@ In machine learning, the “neurons” are instead mathematical models that simu
 
 An operation is an action that is performed via our API or User Interface. It can include actions such as predictions, searches, input uploads, training custom models, model evaluations and more.
 
+## Organization
+
+Clarifai Organizations is a feature within the Community platform that lets you consolidate multiple Clarifai accounts into an organization. It allows you to manage your company’s projects centrally, enhance collaboration within your team, and drive better results with your AI-powered software solutions.
+
 ## Output
 
 An output, usually in the form of a prediction or predictions, is the data returned to you when you send an input into a model. Because of their close relationship, the terms "outputs" and "predictions" are sometimes used interchangeably.
@@ -188,6 +200,14 @@ Portal is a web application that allows you to preview your Clarifai apps. You c
 ## Prediction
 
 A prediction is an answer to the question “What can you tell me about this input?”. When you call predict on an input, you will receive one or more predictions of different concepts that apply to that image. Predictions vary based on the concepts included in a given model.
+
+## Private
+
+The term “private” refers to resources within the Clarifai platform that you own and are not available for everyone to access. They can be apps, models, workflows, or other resources that are only accessible to you or anyone within your team.
+
+## Public
+
+The term “public” refers to resources within the Clarifai platform that are generally accessible to all users. They can be apps, models, workflows, or other resources that any user can interact with and integrate into their own use case.
 
 ## Scripts 
 
