@@ -40,6 +40,12 @@ import ExampleJSONWorkflowPredict from "!!raw-loader!../../../../code_snippets/a
 
 ## Predict
 
+:::tip
+
+If you want to make a predict call with an external workflow that is outside the scope of your app, you need to use a PAT while specifying the `app_id` and the `user_id` associated with the workflow you want to use. 
+
+:::
+
 <Tabs>
 
 <TabItem value="python" label="Python">
