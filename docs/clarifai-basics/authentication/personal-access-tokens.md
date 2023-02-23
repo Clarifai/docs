@@ -1,5 +1,5 @@
 ---
-description: Authenticate your access across all apps within the Clarifai platform. 
+description: Authenticate your access across all apps within the Clarifai platform
 sidebar_position: 1
 ---
 

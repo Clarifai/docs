@@ -104,6 +104,12 @@ After creating the workflow, let's now use it to extract texts from [this image]
 
 The response will contain the predictions each model in the workflow returns for the input.
 
+:::tip
+
+If you want to make a predict call with an external workflow that is outside the scope of your app, you need to use a PAT while specifying the `app_id` and the `user_id` associated with the workflow you want to use. 
+
+:::
+
 <Tabs>
 
 <TabItem value="python" label="Python">
