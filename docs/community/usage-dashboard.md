@@ -1,6 +1,6 @@
 ---
 description: Get measurable insights into your utilization of the Clarifai Community platform
-sidebar_position: 1
+sidebar_position: 5
 ---
 
 # Community Usage Dashboard
