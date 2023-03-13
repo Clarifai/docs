@@ -16,7 +16,7 @@ pagination_prev: product-updates/changelog/release91
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
-|![new-feature](/img/new_feature.jpg)|Added single sign-on (SSO) registration option|<ul><li>You can now use the SSO feature to sign up on the Clarifai platform using your Google account.</li></ul>|
+|![new-feature](/img/new_feature.jpg)|Added the single sign-on (SSO) registration option|<ul><li>You can now use the SSO feature to sign up on the Clarifai platform using your Google account.</li></ul>|
 |![new-feature](/img/new_feature.jpg)|Published v2 form for creating deep-trained models|<ul><li>You can now use the new form to create your deep-trained models.</li></ul>|
 |![improvement](/img/improvement.jpg)|Adjusted the titles for resources to enhance user-friendliness and consistency in structure.|<ul><li>Titles for various resources, such as pages for models, workflows, apps, and datasets, are now generated properly and consistently.</li></ul>|
 |![improvement](/img/improvement.jpg)|Improved the design of the pending verification page|<ul><li>Once a new user signs up for an account, they're redirected to a pending verification page that informs them to verify their email address before they can access our platform.</li><li>We've improved the design of the page. </li></ul>|
