@@ -68,7 +68,7 @@ To create a new workflow, select the **App Workflows** option on the collapsible
 
 ### Connect Your Nodes
 
-You'll be redirected to a simple no-code, drag-and-drop interface that allows you to connect your models together. You'll need to connect the `Input Nodes` in your workflow. You can link your models to any models that precede them in the graph.
+You'll be redirected to a simple no-code, drag-and-drop interface that allows you to connect your models together. You'll need to connect the `Input Nodes` in your workflow. You can link your models to any models that precede them in the visual graph.
 
 Let's start by clicking the input box on the top section of the page and providing a name for the custom workflow. 
 
