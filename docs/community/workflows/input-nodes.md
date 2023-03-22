@@ -72,19 +72,22 @@ You'll be redirected to a simple no-code, drag-and-drop interface that allows yo
 
 Let's start by clicking the input box on the top section of the page and providing a name for the custom workflow. 
 
-Next, let's search for an optical-character-recognizer model, which is how computers extract texts from images, such as scans of printed pages or photos of street signs.
+Next, on the left-hand sidebar, let's search for an optical-character-recognizer model, which is how computers extract texts from images, such as scans of printed pages or photos of street signs.
 
 ![search model for workflow](/img/community_2/input_nodes_search_model.png)
 
-After finding the model, let's drag and drop it on the empty workspace pane. 
+After finding the model type, let's drag and drop it on the empty workspace pane. This model will be configured automatically as a node in the workflow.
 
 ![empty workflow pane](/img/community_2/input_nodes_empty_pane.png)
 
-Let's also search for another model, a text-to-text model, which transforms one kind of text into another. After finding the second model, let's also drag and drop it on the workspace.
+Let's also search for another model, a text-to-text model, which transforms one kind of text into another. After finding the second model, let's also drag and drop it on the workspace. It will also be configured automatically as a node in the workflow.
 
 ![add another model](/img/community_2/input_nodes_add_another_model.png)
 
-Let's draw a line that connects the two models. This shows the flow of information from one model to another.
+The models in the workflow will automatically connect when they are placed near each other. This shows the flow of information from one model to another.
+You can also grab the node connectors on each model and configure your workflow nodes manually.
+
+For this example, let's use the node connectors to draw a line that connects the two models. 
 
 ![connect models](/img/community_2/input_nodes_connect_models.png)
 

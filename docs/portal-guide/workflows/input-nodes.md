@@ -12,9 +12,9 @@ The outputs from one model can be used as the inputs in another model. This allo
 
 ## Supported input and output types
 
-To view your available models, just open your app and click Model Mode icon on the left hand side of the screen. From here just click the Create a Custom Model button in the top righthand corner of the screen.
+Different models accept different types of inputs and return different types of outputs. They are named after the fields in the Data object of our API. This object is used in inputs, annotations, models, and workflows. 
 
-Different models accept different types of inputs and return different types of outputs. They are named after the fields in the Data object of our API. This object is uses in inputs, annotations, models and workflows. Some examples include:
+Some examples include:
 
 #### Inputs
 
@@ -30,39 +30,40 @@ Different models accept different types of inputs and return different types of 
 * Clusters
 * Regions
 
-## The building blocks
+## Create Your Workflow
 
-You can create workflows out of any Clarifai Models or custom models that you have created for your app. The inputs and outputs supported by your custom models will depend on the inputs and outputs supported by the Clarifai Models, or model templates that you have used to build them.
+You can create workflows out of any Clarifai models or custom models that you have created for your app. The inputs and outputs supported by your custom models will depend on the inputs and outputs supported by the Clarifai models, or the model templates that you have used to build them.
 
-### Model Mode
+To create a workflow, start by navigating to your individual app's page on the legacy portal. Then, click the "four small squares" icon on the left-hand sidebar, and enter the **Model Mode**.
 
-Click the "four squares" icon on the lefthand sidebar to enter Model Mode.
+![](/img/old_portal/model_mode.png)
 
-![](/img/model_mode.jpg)
+Next, click the blue **Create Workflow** button at the top right-hand corner of the page to begin building your new workflow. 
 
-### Create the custom models that you need
+![](/img/old_portal/create_workflow_button.png)
 
-Click the blue `Create Custom Model` button at the top righthand corner of the screen to create any custom models that you might need for your app.
+The ensuing page lets you use a linear view to create a new workflow. 
 
-![](/img/create_custom_model.jpg)
+![](/img/old_portal/create_new_workflow.png)
 
-### Create your workflow
+Just add the models that you would like to use in the sequence that you would like to have them in your workflow. Click the **Add Model** button to do so. 
 
-Click the blue `Create Custom Workflow` button at the top righthand corner of the screen build your new workflow. Just add the models that you would like to use in the sequence that you would like to have them in your workflow.
+You can change the user drop-down menu to "clarifai" to view Clarifai models. You can also filter them by using the drop-down menus provided on the page. 
 
-You can filter the available models by using the dropdown menus on the lefthand side of the screen. Change the user dropdown menu to "Clarifai" to view Clarifai Models.
-
-![](/img/create_workflow.jpg)
+If you'd like to use the visual graph option to create a workflow, just click the **Use Visual Graph Mode** button. You can [click here](https://docs.clarifai.com/portal-guide/workflows/setting-up-a-mesh-workflow) to learn how to use it to create workflows. 
 
 ### Connect your nodes
 
-Finally you will need to connect the `Input Nodes` in your workflow. You can link your models to any models that precede them in the graph. Click "Create Workflow" and then you are ready to get started!
+You need to connect the `Input Nodes` in your workflow. You can link your models to any models that precede them in the graph. 
 
-![](/img/connect_nodes.jpg)
+![](/img/old_portal/connect_nodes.png)
+
+Finally, click the **Create Workflow** button at the top right-hand corner of the page, and then you are ready to get started!
 
 ### Update your base workflow
 
-To activate your new workflow in your app, head back to the "App Overview" page, and change your `Base Workflow` to the new workflow that you have just created and click the checkbox.
+To activate the new workflow in your app, head back to the "App Overview" page, and change your `Base Workflow` to the new workflow that you have just created.
 
-![](/img/change_base_workflow.jpg)
+![](/img/old_portal/change_base_workflow.png)
+
 
