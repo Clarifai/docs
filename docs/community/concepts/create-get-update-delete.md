@@ -28,7 +28,7 @@ You'll be redirected to the inputs' viewer page, where you can create new concep
 
 ![](/img/community_2/inputs_viewer_page.png)
 
-There several ways you can use to create concepts on the platform. Let's illustrate two of them:
+There are several ways to create concepts on the platform. Let's illustrate two of them:
 
 - Via the **Labels** section
 - Via the inputs uploader
@@ -63,7 +63,7 @@ The new name you've typed will appear underneath the search box. Click the **Add
 
 The new concept will be successfully added to your app.
 
-You can also click the **Upload inputs** button at the button of the pop-up window to finalize uploading your input.
+You can also click the **Upload inputs** button at the bottom of the pop-up window to finalize uploading your input.
 
 ![](/img/community_2/concepts_newly_added_concept.png)
 

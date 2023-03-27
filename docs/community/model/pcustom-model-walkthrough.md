@@ -36,7 +36,7 @@ If you click the **Show Upload Settings** button, you'll expose a section that a
 - **Concepts**—Adding concepts help in training your model. You can select a previously created concept or create a new one. For this example, create new concepts and label your image inputs with them.
 - **Metadata**—You can also add inputs with custom metadata, which can be searched or filtered. Metadata can be any arbitrary JSON. For this example, you may not provide it. 
 
-Click the **Upload inputs** button at the button of the pop-up window to finalize uploading your inputs. 
+Click the **Upload inputs** button at the bottom of the pop-up window to finalize uploading your inputs. 
 
 Next, after adding images that already contain the concepts you want your model to see, you can now proceed to create your own custom model.
 

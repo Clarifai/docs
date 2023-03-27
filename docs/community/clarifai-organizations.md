@@ -92,6 +92,10 @@ If you click your organization’s profile icon at the top-right section of the 
 - **Security**—Allows you to enforce the security of your Clarifai organization. 
 - **Sign Out**—Allows you to sign out of the Community platform, which includes your user and organization accounts.
 
+<details>
+
+<summary>How to Create and Manage Apps</summary>
+
 ## How to Create and Manage Apps
 
 To create an app, click your organization’s profile at the top-right section of the navigation bar and select the **My Apps** option on the drop-down list. 
@@ -128,6 +132,12 @@ If you click on any listed app, you’ll be redirected to its individual page, w
 For example, click the **Inputs** button on the collapsible left sidebar to upload inputs to the app. Next, click the **Upload Inputs** button and upload the inputs you want to add to the app. 
 
 ![App upload inputs](/img/clarifai_orgs/upload_inputs.png)
+
+</details>
+
+<details>
+
+<summary>How to Create and Manage Models</summary>
 
 ## How to Create and Manage Models
 
@@ -172,6 +182,12 @@ You’ll then be redirected to the newly created model’s page. As you can see 
 - Under the **Versions** tab, you can copy the model’s version ID, delete the model version, and more. 
 - Under the **Concepts** tab, you can view the concepts available in your model, search for concepts, and more. 
 
+</details>
+
+<details>
+
+<summary>How to Create and Manage Workflows</summary>
+
 ## How to Create and Manage Workflows
 
 To create a workflow, start by navigating to the individual page of your app, as illustrated earlier. Then, select the **App Workflows** option on the collapsible left sidebar. 
@@ -212,6 +228,8 @@ You’ll then be redirected to the newly created workflow’s page. As you can s
 - Click the **Use Workflow** button to use the workflow in an app or in an API request.  
 - Click the series of vertical dots at the top-right, endmost section of the page to delete the workflow. 
 - On the same page, you can also complete several other tasks, such as editing the workflow’s details, such as its description, and making predictions with the workflow.
+
+</details>
 
 ## How to Add and Manage Members 
 
@@ -286,21 +304,49 @@ Enter the team’s ID and name on the dialog box that appears.
 
 Click the **Confirm** button.
 
-Your newly created team will appear on the **Teams** listing page. You can also search for teams and delete them on that page.
+Your newly created team will appear on the **Teams** listing page. You can also search for other teams you've added and delete them on that page.
 
 ![Teams listing page](/img/clarifai_orgs/teams_listing_page.png)
 
-If you click on any listed team’s name, you’ll be redirected to its individual page, where you can accomplish several tasks, including editing its name, adding members to it, deleting members from it, deleting the team itself, and more. 
+If you click on any listed team’s name, you’ll be redirected to its individual page, where you can accomplish several management tasks, including adding and managing team members and apps. 
 
-To delete a team, click the **Delete Team** button.
+Let's demonstrate how you can achieve some of the tasks. 
 
-To add members to your team, click the **Add Members** button. 
+### How to Manage a Team
+
+To edit a team's name, click the **Edit Team Name** button and provide your new team's name. To delete a team, click the **Delete Team** button.
+
+![manage a team](/img/clarifai_orgs/how_to_manage_team.png)
+
+### How to Add and Manage Team Members
+
+To add members to a team, first select the **Members** tab. Then, click the **Add Members** button. 
 
 ![Individual team page](/img/clarifai_orgs/individual_team_page.png)
 
 On the dialog box that appears, search for a member(s) of your organization and click the **Confirm** button to add them to the team. Note that you can only add existing members of your organization to a team. 
 
-![Add members to your team](/img/clarifai_orgs/add_team_members_dialog_boix.png)
+![Add members to your team](/img/clarifai_orgs/add_team_members_dialog_box.png)
+
+The newly added member will appear on the **Members** listing page. You can also search for other members you've added and delete them on that page.
+
+![newly added member](/img/clarifai_orgs/newly_added_member.png)
+
+### How to Add and Manage Team Apps
+
+To assign an app to a team, first select the **Apps** tab. Then, click the **Add App** button. 
+
+![add app  to team](/img/clarifai_orgs/add_app_to_team.png)
+
+On the dialog box that appears, search for the app(s) you want to add to your team. Note that you can only add the existing apps that belong to your organization to a team. You can also define a role the app should have. 
+
+Click the **Confirm** button to add the app(s) you've selected to the team. 
+
+![Add apps to your team](/img/clarifai_orgs/apps_dialog_box.png)
+
+The newly added app will appear on the **Apps** listing page. You can also search for other apps you've added and delete them on that page.
+
+![newly added app](/img/clarifai_orgs/newly_added_app.png)
 
 ## How to Enforce the Security of Your Clarifai Organization
 
