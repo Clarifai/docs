@@ -7,10 +7,10 @@ You can find the script in our GitHub [clarifai-python-utils repository](https:/
 ## Installation
 Before running this script, make sure you have the following dependencies installed:
 
-`Pillow`
-`protobuf`
-`requests`
-`tqdm`
+* `Pillow`
+* `protobuf`
+* `requests`
+* `tqdm`
 
 You can install the dependencies using pip:
 
