@@ -24,7 +24,7 @@ We currently do not support deleting concepts unilaterally since they have such 
 
 To create a new concept on the Community platform, head to your application's individual page. Then, select the **Inputs** option on the collapsible left sidebar.
 
-You'll be redirected to the inputs' viewer page, where you can create new concepts and use them to complete various operations. 
+You'll be redirected to the inputs' manager page, where you can create new concepts and use them to complete various operations. 
 
 ![](/img/community_2/inputs_viewer_page.png)
 
@@ -35,7 +35,7 @@ There are several ways to create concepts on the platform. Let's illustrate two 
 
 ### Via the **Labels** section
 
-To create a new concept, go to the **Labels** section on the inputs' viewer page and click the plus sign (**+**) next to the **Search Labels...** search box. Then, type the new concept name in the search box.
+To create a new concept, go to the **Labels** section on the inputs' manager page and click the plus sign (**+**) next to the **Search Labels...** search box. Then, type the new concept name in the search box.
 
 The new name you've typed will appear underneath the search box. Click the **Add new label** button to create the concept. 
 
