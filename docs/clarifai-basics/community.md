@@ -149,7 +149,7 @@ Successfully labeling data is a key ingredient to any custom AI solution. You ca
 
 After training your model using the annotated concepts, the model can learn to recognize them when it encounters data without those tags.
 
-To label your inputs on the Clarifai platform, navigate to your app’s individual page and select the **Inputs** option on the collapsible left sidebar. On the inputs’ viewer page, select the input(s) you like to label and click the **Label as …** button that appears on the bottom section of the page. 
+To label your inputs on the Clarifai platform, navigate to your app’s individual page and select the **Inputs** option on the collapsible left sidebar. On the inputs’ manager page, select the input(s) you like to label and click the **Label as …** button that appears on the bottom section of the page. 
 
 ![label inputs](/img/community/community_intro_pics/label_your_inputs.png)
 
