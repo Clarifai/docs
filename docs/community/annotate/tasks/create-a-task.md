@@ -45,7 +45,9 @@ Please note that if you want to create a detection labeling task, you will need 
 
 ### Input Source
 
-You can select a dataset that you like your worker to use for the labeling job. To do so, click the **Select Dataset** search box and select the dataset you want to be used. If you do not have a matching dataset, click the **Create new Dataset** button to create a new one. 
+You can select a dataset that you like your worker to use for the labeling job. To do so, click the **Select Dataset** search box and select the dataset you want to be used. 
+
+If you do not have a matching dataset, click the **Create new Dataset** button to create a new one. 
 
 ![](/img/community/tasks/task_4.png)
 
@@ -78,7 +80,7 @@ Manually assign work to a specific person or have work randomly assigned to work
 
 ### Review Strategy
 
-You can select either of the following:
+You can select any of the following:
 
 - **None**—All labels will be automatically marked with a "Success" status and can be immediately used to train your new model;
 
