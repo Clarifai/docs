@@ -78,9 +78,9 @@ Get started quickly with a few clicks or a few lines of code.
 
 Clarifai offers you two powerful ways to integrate AI within your technology stack.
 
-[![](/img/api.jpg) **Clarifai API**](api-guide/api-overview/) - Our code-based interface designed for integration within your software applications. Our API offers clients in many popular programming languages.
+[![](/img/api.jpg) **Clarifai API**](https://docs.clarifai.com/api-guide/api-overview/) - Our code-based interface designed for integration within your software applications. Our API offers clients in many popular programming languages.
 
-[![](/img/icon_portal.jpg) **Clarifai Portal**](portal-guide/portal-overview.md) - Our custom user interface \(UI\) designed specifically for your AI projects. Portal makes it fast and easy to label data, build and train models, and connect these models into workflows.
+[![](/img/icon_portal.jpg) **Clarifai Portal**](https://docs.clarifai.com/portal-guide/portal-overview) - Our custom user interface \(UI\) designed specifically for your AI projects. Portal makes it fast and easy to label data, build and train models, and connect these models into workflows.
 
 ## Create and Organize Your AI Projects
 
