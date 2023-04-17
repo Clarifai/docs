@@ -34,13 +34,13 @@ Please note that if you want to create a detection labeling task, you will need 
 
 ## Input Source
 
-You can choose "All inputs", which will include all inputs from your dataset, or you can choose any one of your [Saved Searches](../portal-guide/psearch/psaved_searches.md).
+You can choose "All inputs", which will include all inputs from your dataset, or you can choose any one of your [Saved Searches](https://docs.clarifai.com/portal-guide/psearch/psaved_searches).
 
 By saving your searches, you can slice and dice your dataset, and configure dynamic and static types of datasets. You can also create highly customized filters to your data, by adding metadata and searching by metadata filtering.
 
 ## Applicable Concepts
 
-[Concepts](../portal-guide/concepts) are the words that you are labeling your data with. Concepts can be anything you can think of, and can be written in the language of your choice. You can create concepts in Portal, or you can create them when assigning tasks. Check the "Select all concepts" box to automatically add all available concepts to your app.
+[Concepts](https://docs.clarifai.com/portal-guide/concepts) are the words that you are labeling your data with. Concepts can be anything you can think of, and can be written in the language of your choice. You can create concepts in Portal, or you can create them when assigning tasks. Check the "Select all concepts" box to automatically add all available concepts to your app.
 
 ## Work Force
 
