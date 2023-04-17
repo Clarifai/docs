@@ -31,13 +31,9 @@ Next, click the **Label as…** button that appears at the bottom section of the
 
 ![](/img/community/annotate/create_annotations_2.png)
 
-The small window that pops up allows you to annotate the selected input(s) with concepts. Select the **Add** option, which lets you add annotations to your inputs (the option is selected by default).
+The small window that pops up allows you to annotate the selected input(s) with concepts. 
 
-If there are concepts you've already created and you want to use them to annotate your input(s), select them under the **Concepts** field. 
-
-![](/img/community/annotate/create_annotations_3.png)
-
-After selecting the already existing concepts, click the **Add to inputs** button at the bottom of the pop-up window to complete labeling your inputs with them.
+Select the **Add** option, which lets you add annotations to your inputs (the option is selected by default). 
 
 If you want to create a new concept and use it for labeling your inputs:
 
@@ -47,6 +43,18 @@ If you want to create a new concept and use it for labeling your inputs:
 - Type the new concept name in the search field. The new name you've typed will appear underneath the search field;
 - Click the **Add new concept** button to create the concept. The new concept will be successfully added to your app;
 - Finally, click the **Add to inputs** button at the bottom of the pop-up window to complete labeling your inputs with the newly created concept.
+
+:::tip
+
+If you select the **Apply to all search results** button, all the inputs that are visually similar to the one(s) you've initially selected will also be annotated. This allows you to label your inputs easily and fast. 
+
+:::
+
+If there are concepts you've already created and you want to use them to annotate your input(s), select them under the **Concepts** field. 
+
+![](/img/community/annotate/create_annotations_3.png)
+
+After selecting the already existing concepts, click the **Add to inputs** button at the bottom of the pop-up window to complete labeling your inputs with them.
 
 ### Via the input viewer page
 
