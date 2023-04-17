@@ -1,5 +1,5 @@
 ---
-description: Learn about the most important model types on the Clarifai platform
+description: Learn about the most important model types on the Clarifai platform.
 sidebar_position: 4
 ---
 
@@ -8,21 +8,17 @@ sidebar_position: 4
 **Learn about the most important model types on the Clarifai platform**
 <hr />
 
-Clarifai offers a wide variety of models that can be used as standalone solutions or as the building blocks for your own custom business solutions.
+Clarifai offers a wide variety of models that can be used as standalone solutions, or as the building blocks for your own custom business solution.
 
-This page describes some important model types that you should know when working with the Clarifai platform. Please keep in mind that this is an overview of the general categories of models available to you and that new models are created regularly. 
+This page describes some important model types that you should know when working with the Clarifai platform. Please keep in mind that this is an overview of the general categories of models available to you and that new models are created all the time. For the most up-to-date list of available models, visit Model Mode in Portal.
 
-You can browse the [Community](https://clarifai.com/explore) platform to get the most up-to-date list of all the available models. 
-
-When creating a model, a listing of the available model types will be dynamically generated for you based on the selected user profile and filters that allow you to sort models by model type, inputs, and outputs.
+A listing of available models will be dynamically generated for you based on the selected user profile and filters that allow you to sort models by model type, inputs, and outputs.
 
 ## Trainable Models
 
 ### Visual-Classifier
 
-Classification models help you answer the question "What" or "Who" is in your data. Classification models understand the world in terms of [concepts](https://docs.clarifai.com/api-guide/concepts). 
-
-Models can come pre-trained to recognize concepts, or you can create your own custom models to recognize custom concepts.
+Classification models help you answer the question "What" or "Who" is in your data. Classification models understand the world in terms of [concepts](https://docs.clarifai.com/api-guide/concepts). Models can come pre-trained to recognize concepts, or you can create your own custom models to recognize custom concepts.
 
 Example use case:
 
@@ -38,11 +34,8 @@ _A roofing company wants to provide insurance companies and customers with a con
 
 ### Embedding-Classifier
 
-Embedding models don't answer a specific question. Instead, they help you work with something that is a little more abstract: the underlying _structure_ of a classification or detection model. 
+Embedding models don't answer a specific question. Instead, they help you work with something that is a little more abstract: the underlying _structure_ of a classification or detection model. In fact, you can think of an embedding model as a classification or detection model with the concepts removed, because in many cases this is exactly what an embedding model is. Embedding models are important because they help you transfer the learnings from existing models to your own custom models. This means that you can come up with your own set of custom concepts and quickly train a new model with relatively few training samples.
 
-In fact, you can think of an embedding model as a classification or detection model with the concepts removed, because in many cases this is exactly what an embedding model is. 
-
-Embedding models are important because they help you transfer the learnings from existing models to your own custom models. This means that you can come up with your own set of custom concepts and quickly train a new model with relatively few training samples.
 
 Embeddings also can be combined with cluster models to provide a fast and efficient way to search your data based on _visual similarity_.
 
@@ -71,9 +64,7 @@ These models allow you to perform visual anomaly detection with image-level scor
 
 ### Deep Trained Models \(Visual Classifier, Visual Detector, Visual Embedder\)
 
-Use deep trained models when you are working with highly specialized data, or you want to push the accuracy of your model to its limits for a specific use case. 
-
-Deep training builds a custom neural network for your application from the ground-up. This means that your model can become an expert in recognizing the unique set of visual features that is important in your data set.
+Use deep trained models when you are working with highly specialized data, or you want to push the accuracy of your model to its limits for a specific use case. Deep training builds a custom neural network for your application from the ground-up. This means that your model can become an expert in recognizing the unique set of visual features that is important in your data set.
 
 Example use case:
 
@@ -85,13 +76,11 @@ The Context-Based Classifier is the key to transfer learning and custom model bu
 
 Example use case:
 
-_A retailer wants to train a model that can recognize their apparel in use on social media. They would use a context-based classifier in conjunction with Clarifai's apparel model to train a new custom model that will recognize clothing items produced by their brand._
+A retailer wants to train a model that can recognize their apparel in use on social media. They would use a context-based classifier in conjunction with Clarifai's apparel model to train a new custom model that will recognize clothing items produced by their brand.
 
 ### Clusterer
 
-Cluster models work with Embedding models so that you can perform visual searches. Cluster models are able to use the mathematical structure of a model's embedding to determine which images are "clustered together" in the embedding space. 
-
-This means that you can search for visually similar people or objects in your dataset quickly and easily, without the need for labeling and training custom concepts.
+Cluster models work with Embedding models so that you can perform visual searches. Cluster models are able to use the mathematical structure of a model's embedding to determine which images are "clustered together" in the embedding space. This means that you can search for visually similar people or objects in your dataset quickly and easily, without the need for labeling and training custom concepts.
 
 Example use case:
 
@@ -99,9 +88,9 @@ _An online retailer wants to suggest relevant products based on visual similarit
 
 ## Non-Trainable Models \(Fixed-Function Operators\)
 
-Fixed-Function Operators are "non-trainable models" that help you connect, direct, and network your models in a workflow. Some of our most popular operators are used for random sampling, routing based on predictions, and image cropping.
+Fixed-Function Operators are "non-trainable models" that help you connect, direct, and network your models in a workflow. Some of our most popular operators are used for random sampling, routing based on predictions and image cropping.
 
 Example use case:
 
-_A customer wants to automatically tag images based on AI predictions. They would connect a classification model with a "Concept Thresholder" model to determine which images are labeled and which ones are not._
+_A customer wants to automatically tag images based on AI predictions. They would might connect a classification model with a "Concept Thresholder" model to determine which images are labeled and which ones are not._
 
