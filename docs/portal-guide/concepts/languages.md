@@ -42,7 +42,7 @@ The currently supported languages are listed below.
 
 ## Default Language
 
-When you create a new Application, you must specify a default language. This will be the default language concepts are returned in when you do not explicitly set a language in an API request. You cannot change the default language. You can however change languages per request.
+When you create a new application, you must specify its default language. This will be the default language concepts are returned in when you do not explicitly set a language in an API request. You cannot change the default language. You can, however, change languages per request.
 
-![create new app](/img/create-new-app-new.png)
+![](/img/community_2/concepts_choose_default_language.png)
 

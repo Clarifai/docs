@@ -1,5 +1,5 @@
 ---
-description: Manage your concepts.
+description: Manage your concepts
 sidebar_position: 1
 ---
 
@@ -8,59 +8,64 @@ sidebar_position: 1
 **Manage your concepts**
 <hr />
 
-Within your app, you can create concepts, modify them after creation, and get them from your app.
+A concept is something that describes an entity in the physical world, similar to a “tag” or “keyword.” Concepts are also known as "classes" in the field of machine learning.
+
+You can use a concept to annotate an input if that input has that entity. You can also add it to a model if you want that model to be able to recognize that entity. The data in these concepts give the model something to “observe” about the keyword, and learn from.
+
+Within your app on the Community platform, you can create concepts and carry out various management tasks on them. 
 
 :::caution
 
-We currently do not support deleting concepts since they have such an integral tie across almost all other data structures in the platform, like inputs, models, searches, etc.
+We currently do not support deleting concepts unilaterally since they have such an integral tie across almost all other data structures in the platform, like inputs, models, searches, etc.
 
 :::
 
-You will find that some of our endpoints have additional information returned from the Clarifai/main app, which contains our pre-trained models and a large knowledge graph we've assembled over the years.
+## Create Concepts
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+To create a new concept on the Community platform, head to your application's individual page. Then, select the **Inputs** option on the collapsible left sidebar.
 
-## Create
+You'll be redirected to the inputs' manager page, where you can create new concepts and use them to complete various operations. 
 
-### Add Concepts
+![](/img/community_2/inputs_viewer_page.png)
 
-To create a new concept in the legacy Portal, start by heading to your application's page. Then, either click the "View In Explorer" button or the "eye" icon in the lefthand sidebar.
+There are several ways to create concepts on the platform. Let's illustrate two of them:
 
-![](/img/concept-view-in-explorer.png)
+- Via the **Labels** section
+- Via the inputs uploader
 
-On the ensuing page, click the plus (+) sign next to "Concepts" to add a new concept. 
+### Via the **Labels** section
 
-![](/img/concept-plus-sign.png)
+To create a new concept, go to the **Labels** section on the inputs' manager page and click the plus sign (**+**) next to the **Search Labels...** search box. Then, type the new concept name in the search box.
 
-A "Create new concept" window will then pop up where you can provide a concept name and click the "add" button. You can provide as many concept names as you want. After finishing adding the concept names, click the "done" button. 
+The new name you've typed will appear underneath the search box. Click the **Add new label** button to create the concept. 
 
-![](/img/concept-create-new-concept.png)
+![](/img/community_2/add_concept.png)
 
-You can view the concepts you've created under the "Concepts" category. 
+The new concept will be successfully added to your app. You can follow the same process to create other concepts for your app.
 
-![](/img/concept-view-created.png)
+![](/img/community_2/new_concept_added.png)
+
+### Via the inputs uploader
+
+You can also create new concepts when uploading inputs to your app. To do so, click the **Upload inputs** button. 
+
+![](/img/community_2/concepts_upload_inputs.png)
+
+The small window that pops up allows you to upload your inputs—either by uploading them directly from your local device or by providing a publicly accessible URL.
+
+![](/img/community_2/concepts_show_upload_settings.png)
+
+If you click the **Show Upload Settings** button, you'll expose a section that allows you to add concepts with your inputs. Under the **Concepts** section, click the plus sign (**+**) next to the **Select concepts** search box. Then, type the new concept name in the search box.
+
+The new name you've typed will appear underneath the search box. Click the **Add new concept** button to create the concept. 
+
+![](/img/community_2/concepts_upload_inputs_new_concepts.png)
+
+The new concept will be successfully added to your app.
+
+You can also click the **Upload inputs** button at the bottom of the pop-up window to finalize uploading your input.
+
+![](/img/community_2/concepts_newly_added_concept.png)
 
 
-## Get
 
-### Get Concept ID
-
-To get a concept's ID, click the little 3-dot menu next to the concept's name. On the window that pops up, select "View Details."
-
-![](/img/concept-get-id.png)
-
-You'll be redirected to the concept's page, where you can view its details, including its ID. 
-
-![](/img/concept-view-id.png)
-
-
-## Update
-
-### Update Concept Name
-
-To update a concept's name, navigate to its page as illustrated previously. 
-
-Then, click the edit button next to the concept's name to make the update.
-
-![](/img/concept-edit-name.png)

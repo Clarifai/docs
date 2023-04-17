@@ -1,6 +1,6 @@
 ---
 description: Train new models with the click of a button.
-sidebar_position: 1
+sidebar_position: 3
 ---
 
 # Training Basics
@@ -8,9 +8,23 @@ sidebar_position: 1
 **Train new models with the click of a button**
 <hr />
 
-When you are ready to train a model, just click the "Train" button in Explorer, or the "Versions" tab. Your model will be trained on all inputs that have been processed. You can also choose to train your model based on the results of a specific search query. 
+After adding images with concepts, then created a model with those concepts, the next step is to train the model.
 
-![Train your models directly in Explorer. Just click the three dots next to your model name and click &quot;train&quot;.](/img/trainexplorer.jpg)
+When you train a model, you are telling the system to look at all the images with concepts you've provided and learn from them. The train operation is asynchronous. It may take a few seconds for your model to be fully trained and ready.
 
-![Train your model from the Model Versions view. ](/img/trainmodelmode.jpg)
+To train a model, start by navigating to the individual page of your app. Then, select the **App Models** option on the collapsible left sidebar.
+
+You’ll be redirected to the models’ listing page, where you can see a list of models available in your app. 
+
+![models listing page](/img/community_2/training_basics_models_page.png)
+
+Select the model you like to train. 
+
+On the individual model's page, click the **Train Model** button on the page's upper right-hand corner.  
+
+![train model](/img/community_2/custom_model_created_model_page.png)
+
+Your model will be trained on all inputs that have been processed. If you're training the model again, a new version of the model will be created. 
+
+
 

@@ -1,14 +1,14 @@
 ---
-description: 'The Clarifai platform supports the most common image, video, audio, and text formats.'
+description: The Community platform supports the most common image, video, audio, and text formats
 sidebar_position: 1
 ---
 
 # Supported Formats
 
-**The Clarifai platform supports the most common image, video, audio, and text formats**
+**The Community platform supports the most common image, video, audio, and text formats**
 <hr />
 
-The API supports a wide range of the following data formats:
+The platform supports a wide range of the following data formats:
 
 ## Image formats
 

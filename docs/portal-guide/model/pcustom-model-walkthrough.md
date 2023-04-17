@@ -1,46 +1,76 @@
 ---
-description: Use a "Context based classifier" to quickly customize an existing model.
-sidebar_position: 3
+description: Learn how to create your own custom model
+sidebar_position: 2
 ---
 
 # Custom Models
 
-**Use a "Context based classifier" to quickly customize an existing model**
+**Create your own custom model**
 <hr />
 
-To set up a new model, you will need to head over to the [Applications page](https://portal.clarifai.com/) through your account. Start by creating your new application.
+You can create your own custom model on the Community platform and make predictions with it. 
 
-![](/img/create_an_application.jpg)
+To start with, log in to your account and click the **Create an App** button at the top-right section of the navigation bar. And on the small window that pops up, provide the information required to create a new application. 
 
-Click "View in Explorer", or click the "eye" icon in the lefthand sidebar.
+![create an app](/img/community_2/custom_model_create_new_app.png)
 
-![](/img/view_in_explorer.jpg)
+Next, you need to upload data, such as images, to the app you've created. The input data, labeled with concepts, is what will be used for training your model. Training helps your model to “learn” from the annotated concepts on your inputs so that it can be able to recognize them. 
 
-Add your inputs. Just click "browse your files" or paste image URLs in the space provided.
+You do not need many images to get started. We recommend starting with 10 and adding more as needed.
 
-![](/img/Add_inputs2.jpg)
+![](/img/illustration-training.png)
 
-Click on an image. You can create new concepts and label your images in the right hand sidebar.
+To upload inputs, select the **Inputs** option on the collapsible left sidebar. Next, click the **Upload Inputs** button and upload the inputs you want to add to the app.
 
-![](/img/create_concepts_and_label.jpg)
+![upload inputs](/img/community_2/custom_model_upload_inputs.png)
 
-Navigate to Model Mode and select your model. Click on the "four squares" icon on the lefthand sidebar.
+The small window that pops up allows you to upload inputs. 
 
-![](/img/model_gallery.jpg)
+![upload inputs window](/img/community_2/custom_models_upload_inputs_window.png)
 
-Click "Create Custom Model" to choose a model template. You can filter your results by:
+If you click the **Show Upload Settings** button, you'll expose a section that allows you to add the following items to your inputs:
 
-* **Model Type** You can choose "Trainable" \(machine learning\), or "Non-Trainable" \(fixed-function\) models.
-* **Input** Inputs currently accept Embeddings, Concepts, Image, Image or Video, Region Images, or Region Concepts.
-* **Output** Outputs currently return Clusters, Color, Concepts, Embeddings, Region Embeddings, Region Concepts, Region Images, or Region Text.
+![Show Upload Settings](/img/community_2/custom_model_show_upload_settings.png)
 
-![](/img/create_custom_model.jpg)
+- **Datasets**—A dataset is a set of data input examples for actions like training and evaluation. You can select a previously created dataset or create a new one. For this example, you may not provide it. 
+- **Concepts**—Adding concepts help in training your model. You can select a previously created concept or create a new one. For this example, create new concepts and label your image inputs with them.
+- **Metadata**—You can also add inputs with custom metadata, which can be searched or filtered. Metadata can be any arbitrary JSON. For this example, you may not provide it. 
 
-For this example we choose a context-based classifier that can use a pre-trained Clarifai Model. From here we name the model, and add concepts that we have created. The available parameters vary based on the type of model that you choose. When you have configured the model the way you like it, click the "Create Model" button at the bottom of the page.
+Click the **Upload inputs** button at the bottom of the pop-up window to finalize uploading your inputs. 
 
-![](/img/create_context_based_classifier.jpg)
+Next, after adding images that already contain the concepts you want your model to see, you can now proceed to create your own custom model.
 
-Finally, click the blue "Train Model" button in the upper righthand corner of the screen. Once it is trained you can put it to work by [adding it to your workflows](https://docs.clarifai.com/portal-guide/workflows).
+Select the **App Models** option on the collapsible left sidebar. And on the ensuing page, click the **Create Model** button on the top-right corner of the page.
 
-![](/img/train_model.jpg)
+![Create app models](/img/community_2/custom_model_create_model.png)
+
+Next, choose the type of model you want to create. 
+
+![Create app models](/img/community_2/custom_model_create_new_model.png)
+
+You can filter results by:
+
+- **Input Type**—Several options are available, including embeddings, audio, image, text, concepts, regions, and frames. 
+- **Output Type**—Several options are available, including concepts, embeddings, regions, image, text, clusters, colors, and audio.
+- **Trainable**—You can choose "Trainable" \(machine learning\) or "Not-Trainable" \(fixed-function\) models.
+
+For this example, let’s choose a **Transfer Learning Classifier**. 
+
+On the ensuing page, provide the details required to create the custom model. For this example, let's provide the model id, select the concepts we created previously, and set the **Concepts mutually_exclusive** button to true. 
+
+You can also fill the other fields if you want to. 
+
+![Create model page](/img/community_2/custom_model_create_model_page.png)
+
+After configuring the model, click the **Create Model** button at the bottom of the page.
+
+You'll be redirected to the created model's page.
+
+Finally, click the **Train Model** button on the upper right-hand corner of the page. 
+
+![Create model page](/img/community_2/custom_model_created_model_page.png)
+
+Once the model is trained, you can put it to work, such as by adding it to a workflow. 
+
+That's it!
 
