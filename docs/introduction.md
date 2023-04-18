@@ -90,7 +90,7 @@ Clarifai offers you two powerful ways to integrate AI within your technology sta
 
 Applications are the basic containers for your AI projects. You can create as many applications as you want, and applications can be duplicated or shared with collaborators.
 
-[![](/img/api.jpg) Applications API](clarifai-basics/applications/) / [![](/img/icon_portal.jpg) Applications in Portal](clarifai-basics/applications/)
+[![](/img/api.jpg) Applications API](https://docs.clarifai.com/clarifai-basics/applications/create-an-application#create-applications-programmatically) / [![](/img/icon_portal.jpg) Applications in Portal](https://docs.clarifai.com/clarifai-basics/applications/create-an-application#create-application-in-portal)
 
 ### Scribe Label
 
@@ -98,7 +98,7 @@ Applications are the basic containers for your AI projects. You can create as ma
 
 Annotations \(sometimes called "labels"\) are how we "teach" machines to learn new ideas. When you want to create a custom model for your business, you do this by training this model to recognize the concepts that you have annotated on your training data.
 
-[![](/img/api.jpg) Scribe Label API](api-guide/annotate/) / [![](/img/icon_portal.jpg) Scribe Label in Portal](portal-guide/annotate/)
+[![](/img/api.jpg) Scribe Label API](https://docs.clarifai.com/api-guide/annotate/) / [![](/img/icon_portal.jpg) Scribe Label in Portal](https://docs.clarifai.com/portal-guide/annotate/)
 
 ### Enlight Train
 
@@ -106,7 +106,7 @@ Annotations \(sometimes called "labels"\) are how we "teach" machines to learn n
 
 Models are where the "thinking" happens in your AI application. Clarifai supports a variety of different [types of models,](https://docs.clarifai.com/portal-guide/model/model-types) including "machine learning" models that can learn new things from your training data and fixed-function model operators that help you control the way that your models interact.
 
-[![](/img/api.jpg) Enlight Train API](api-guide/model/) / [![](/img/icon_portal.jpg) Enlight Train in Portal](portal-guide/model/)
+[![](/img/api.jpg) Enlight Train API](https://docs.clarifai.com/api-guide/model/) / [![](/img/icon_portal.jpg) Enlight Train in Portal](https://docs.clarifai.com/portal-guide/model/)
 
 ### Mesh Workflows
 
@@ -114,7 +114,7 @@ Models are where the "thinking" happens in your AI application. Clarifai support
 
 Workflows allow you to link multiple models together so that you can build complex and creative solutions. Clarifai models are designed so that the outputs from one model can be used as the inputs in another model.
 
-[![](/img/api.jpg) Mesh Workflows API](api-guide/workflows/) / [![](/img/icon_portal.jpg) Mesh Workflows in Portal](portal-guide/workflows/)
+[![](/img/api.jpg) Mesh Workflows API](https://docs.clarifai.com/api-guide/workflows/) / [![](/img/icon_portal.jpg) Mesh Workflows in Portal](https://docs.clarifai.com/portal-guide/workflows/)
 
 ### Armada Predict
 
@@ -122,7 +122,7 @@ Workflows allow you to link multiple models together so that you can build compl
 
 Predictions are the basic "output" of machine learning models. Predictions are returned as a list of concepts with corresponding probabilities that tell you how confident your model is with a given prediction.
 
-[![](/img/api.jpg) Armada Predict API](api-guide/predict/) / [![](/img/icon_portal.jpg) Armada Predict in Portal](api-guide/predict/)
+[![](/img/api.jpg) Armada Predict API](https://docs.clarifai.com/api-guide/predict/) / [![](/img/icon_portal.jpg) Armada Predict in Portal](https://docs.clarifai.com/portal-guide/ppredict)
 
 ### Spacetime Search
 
@@ -130,6 +130,6 @@ Predictions are the basic "output" of machine learning models. Predictions are r
 
 Clarifai's patented technology automatically indexes your media for search. Concepts in your models can be used as search terms. You can also search with images to find similar images. We offer numerous search types that can be combined to filter and sort your data.
 
-[![](/img/api.jpg) Search API](/api-guide/predict) /
-[![](/img/icon_portal.jpg) Search with Portal](/portal-guide/psearch)
-![](/img/api.jpg) [Spacetime Search API](api-guide/search/) / [![](/img/icon_portal.jpg) Spacetime Search in Portal](introduction.md)
+[![](/img/api.jpg) Search API](https://docs.clarifai.com/api-guide/predict/) /
+[![](/img/icon_portal.jpg) Search with Portal](https://docs.clarifai.com/portal-guide/psearch)
+![](/img/api.jpg) [Spacetime Search API](https://docs.clarifai.com/api-guide/search/) / [![](/img/icon_portal.jpg) Spacetime Search in Portal](https://docs.clarifai.com/portal-guide/psearch/)
