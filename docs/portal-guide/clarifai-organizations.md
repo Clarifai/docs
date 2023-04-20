@@ -1,6 +1,6 @@
 ---
 description: Learn about Clarifai Organizations
-sidebar_position: 10
+sidebar_position: 11
 ---
 
 # Clarifai Organizations
