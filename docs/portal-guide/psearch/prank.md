@@ -8,15 +8,20 @@ sidebar_position: 1
 **Sort your search results from most similar to least similar**
 <hr />
 
-## Search by predictions
+## Search by Predictions
 
-Discover and retrieve the most relevant images from your dataset by searching for the concepts identified by your AI models. Patented technology developed by Clarifai gives you the ability to search for predictions immediately after training—no waiting on re-indexing. Build recommendation systems with rapid retraining cycles for active learning on the fly.
+We enable you to discover and retrieve the most relevant images from your dataset by searching for the concepts identified by your AI models. 
 
-![](/img/rank_by_predictions.jpg)
+Our world-class patented technology gives you the ability to search for predictions immediately after training—you do not need to wait for re-indexing. 
 
-## Search by similarity
+You can build recommendation systems with rapid retraining cycles for active learning on the fly.
 
-Go beyond simple keyword searches. Draw a direct line from the source of an idea \(an image\), to the information you need. No guessing keywords required. Similarly, Search can be combined with detection models so that you can search for a specific thing a region of an image.
+![](/img/community/search/Rank_Predictions_Search.png)
 
-![](/img/Rank_Similarity_Search.jpg)
+## Search by Visual Similarity
 
+We enable you to go beyond simple keyword searches. You can quickly draw a direct line from the source of an idea \(an image\), to the information you need. You do not need to guess keywords. 
+
+Similarly, you can combine our Search feature with detection models so that you can search for a specific thing or a region of an image.
+
+![](/img/community/search/Rank_Similarity_Search.png)
