@@ -278,7 +278,7 @@ You can use texts to search through your collection. The API will return ranked 
 - Your inputs should be provided as texts. 
 - You should choose a workflow that includes a text embedder and a clusterer, such as the Language-Understanding workflow, as the Base Workflow for your application.  
 
-::::
+:::
 
 <Tabs>
 
