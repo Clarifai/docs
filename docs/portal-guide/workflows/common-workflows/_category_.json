@@ -1,0 +1,12 @@
+{
+  "label": "Common Workflows",
+  "position": 5,
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+      "type": "generated-index",
+      "title": "Common Workflows",
+      "description": "Learn how to set up common workflows in the Clarifai Portal.",
+      "slug": "/portal-guide/workflows/common-workflows"
+    }
+}

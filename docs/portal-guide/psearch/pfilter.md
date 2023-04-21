@@ -1,5 +1,5 @@
 ---
-description: Reduce noise by filtering out unwanted data.
+description: Reduce noise by filtering out unwanted data
 sidebar_position: 2
 ---
 
