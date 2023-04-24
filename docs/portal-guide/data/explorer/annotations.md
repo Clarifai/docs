@@ -10,19 +10,23 @@ sidebar_position: 2
 
 ## View all annotations on a given input
 
-![View and edit your annotations](/img/3-different-scenarios.jpg)
+The input viewer page is the main page that showcases the details of a single input available in your app. If you click an image listed on the inputs manager page, you'll be redirected to the viewer page for that image, where you can see its annotations. 
 
-Annotations can be easily reviewed in the annotations tab in the righthand sidebar of Explorer. Any time an annotation has been added by you, the logged-in user, you will see a solid green checkmark, or a solid red "x".
+Once you're on the input viewer page, ensure the page's mode is set to **Annotate**, which is the default. You can find the mode settings at the top-right corner of the page.
+
+You can view all the annotations on your selected input on that page. 
+
+![](/img/others/explorer_annotations_1.png)
 
 ## View the work of individual annotators
 
-![Annotations aggregate view](/img/annotations-aggregate-view.jpg)
+You can view an annotation and the annotator who added it by clicking the person icon on a listed annotation field on the right sidebar. An aggregate view window will pop up, and you can review the work of your annotator from here, and resolve any potential conflicts between annotations.
 
-You can view all annotations and the annotators who added them by clicking the "x-annos" link in the rightmost column of the annotation tab. An aggregate view window will pop up and you can review the work of your annotators here, and resolve any potential conflicts between annotations.
+![](/img/others/explorer_annotations_2.png)
 
 ## Work with both classification and detection apps
 
-![Annotation view for detection apps](/img/detection-view.jpg)
-
 The annotation tab also supports both classification and detection apps.
+
+![](/img/others/explorer_annotations_3.png)
 
