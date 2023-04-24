@@ -3,12 +3,12 @@ description: Your platform for the entire AI-lifecycle
 sidebar_position: 1
 ---
 
-# Community Platform Basics
+# Clarifai Portal Basics
 
-**Your platform for the entire AI-lifecycle**
+**Your portal for the entire AI-lifecycle**
 <hr />
 
-The Clarifai Community platform is the fastest and easiest AI workspace for any skill level. It has everything you need to build reliable AI-powered apps. With the low-code, no-code solution, you can discover, build, and share futuristic AI models, workflows, and app components.
+The Clarifai Community portal is the fastest and easiest AI workspace for any skill level. It has everything you need to build reliable AI-powered apps. With the low-code, no-code solution, you can discover, build, and share futuristic AI models, workflows, and app components.
 
 ![](/img/community_2/homepage.png)
 

@@ -11,6 +11,8 @@ sidebar_position: 2
 
 Tasks enable you to delegate labeling jobs of any size to your team. You can create new labeling tasks, delegate these tasks to your workforce, and review their work in one convenient tool.  
 
+## Importance of Tasks
+
 Delegating labeling tasks to a team can provide several benefits, including:
 
 **1. Quality control**
@@ -31,6 +33,7 @@ Distributing the work among team members can assist in speeding up the process a
 
 A team may comprise members with different backgrounds and skills, which can lead to a more comprehensive and accurate labeling process. For example, one team member may have expertise in [visual similarity search](https://www.clarifai.com/use-cases/visual-search), while another may have experience with [content moderation](https://www.clarifai.com/solutions/content-moderation).
  
+## How to Create a Task
 
 Tasks enable you to delegate labeling jobs to your team. To create a task, go to your individual app page and select the **Labeler Tasks** option on the collapsible left sidebar. 
 
