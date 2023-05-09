@@ -66,7 +66,7 @@ pagination_prev: product-updates/changelog/release93
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
-| ![improvement](/img/improvement.jpg) | Added the possibility of a collaborator to update or upload an app image   | <ul><li>Previously, only the owner could upload or update an app image. Instead of limiting the privilege to the owner only, we've made it possible for collaborators to make the change. It now depends on the user’s scope. </li></ul> |
+| ![improvement](/img/improvement.jpg) | Added the possibility of a collaborator to update or upload an app image   | <ul><li>Previously, only the owner could upload or update an app image. Instead of limiting the privilege to the app owner only, we've made it possible for collaborators to make the change. It now depends on the user’s scope. </li></ul> |
 | ![bug](/img/bug.jpg)  | Fixed an issue where a black background persisted when adding an app's notes | <ul><li>Previously, if you enabled the dark theme on some systems, such as on macOS, the form on the app overview page persistently had a black background—both when editing notes and after publishing notes. </li></ul> |
 
 ### Sidebar Revamp
