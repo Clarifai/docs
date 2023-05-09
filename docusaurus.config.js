@@ -141,6 +141,18 @@ const config = {
         indexBlog: false,
       },
     ],
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        createRedirects(existingPath) {
+          if (existingPath.includes('/community')) {
+            // Redirect from /community/X to /portal-guide/X
+            return existingPath.replace('/community', '/portal-guide');
+          }
+          return undefined; // Return a falsy value: no redirect created
+        },
+      },
+    ],
   ],
 };
 
