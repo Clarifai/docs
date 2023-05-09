@@ -1,5 +1,5 @@
 ---
-description: Label multiple inputs at once.
+description: Label multiple inputs at once
 sidebar_position: 3
 ---
 
