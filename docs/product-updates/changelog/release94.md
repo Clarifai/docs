@@ -20,6 +20,7 @@ pagination_prev: product-updates/changelog/release93
 |--------------------------------------|------------------------|---------------------------|
 | ![new-feature](/img/new_feature.jpg) | Added the **Use Workflow** feature in an app pop-up modal | <ul><li>You can now navigate to a workflow viewer page and click the **Use Workflow** button at the upper-right corner of the page. A small window will pop up that lets you use the workflow either in an app or use it programmatically via an API. It works just like the **Use Model** feature for models. </li></ul> |
 | ![new-feature](/img/new_feature.jpg)| Added a model versions drop-down and **See versions table** button | <ul><li>Model version selection is now more prominent than the previous semi-hidden view in the predict pane.</li><li>If you now select a model version, and make predictions with it, the predict pane will render the predictions for the specific version.</li><li>If you click the **See versions table** button, a table that lists the different versions of your model will appear.</li></ul> |
+| ![improvement](/img/improvement.jpg) | Added the possibility to view the concepts of public models without having to log in | <ul><li>You can now view a public model’s concepts without logging in.</li></ul> |
 | ![improvement](/img/improvement.jpg) | Improved the **Call by API** feature in an app pop-up modal | When you want to get the code snippets for using a model programmatically, you click the **Use Model** button, and on the small window that pops up, select the **Call by API** option.<br /><br /><ul><li>Previously, if you used the **Create a new token** button to create a new PAT token with partial scopes, it could not show up. Creating a new PAT under the **Call by API** tab now works as expected.</li><li>We've also improved the styling for the placeholders in the code snippets.</li></ul> |
 | ![bug](/img/bug.jpg) | Fixed an issue that made it impossible to edit a model's visibility| <ul><li>You can now edit a model's visibility from private to public.</li></ul>|
 
@@ -65,6 +66,7 @@ pagination_prev: product-updates/changelog/release93
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
+| ![improvement](/img/improvement.jpg) | Added the possibility of a collaborator to update or upload an app image   | <ul><li>Previously, only the owner could upload or update an app image. Instead of limiting the privilege to the app owner only, we've made it possible for collaborators to make the change. It now depends on the user’s scope. </li></ul> |
 | ![bug](/img/bug.jpg)  | Fixed an issue where a black background persisted when adding an app's notes | <ul><li>Previously, if you enabled the dark theme on some systems, such as on macOS, the form on the app overview page persistently had a black background—both when editing notes and after publishing notes. </li></ul> |
 
 ### Sidebar Revamp
@@ -83,7 +85,6 @@ pagination_prev: product-updates/changelog/release93
 | ![bug](/img/bug.jpg) | Fixed an issue that prevented searching by clicking a concept in the auto-complete list | Previously, if you used the Smart Search bar, clicking a concept in the auto-complete list could not trigger an automatic search. <br /><br /><ul><li>You can now click a suggestion from the list of the auto-completed concepts, and it will fill in the concept name and trigger a search automatically. </li></ul> |
 | ![bug](/img/bug.jpg) | Fixed an issue that caused confusing auto-complete concept suggestions | <ul><li>The Smart Search functionality now works correctly when special characters are used in the search query.</li><li>The Smart Search functionality now works correctly when searching for a term with uppercase or lowercase letters.</li></ul> |
 | ![bug](/img/bug.jpg) | Fixed an issue that prevented scrolling through the auto-completed list of concepts | <ul><li>When performing a Smart Search, only five results now show in the suggestion list, while the other suggestions are scrollable.</li></ul> |
-
 
 ### Task-Labeler
 
@@ -117,5 +118,9 @@ pagination_prev: product-updates/changelog/release93
 | ![bug](/img/bug.jpg) | Fixed an issue that caused video inputs to appear as images on the Input-Viewer | <ul><li>Video inputs are now processed and handled as expected.</li></ul> |
 | ![bug](/img/bug.jpg) | Fixed an issue that prevented viewing inputs when secure data hosting was enabled | <ul><li>Images are now loading properly on the Input-Viewer when secure data hosting is enabled in an account.</li></ul> |
 
+### Usage Dashboard
 
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+|![improvement](/img/improvement.jpg) | Updated the start date for the 6-month billing cycle | You can find the date range selection at the top-right corner of the Usage Dashboard page. You can define the output of the billing cycle by selecting your preferred date range.<br /> <br /> <ul><li>We've updated the start date for the **Last 6 months** selection for better accuracy.</li></ul> |
 
