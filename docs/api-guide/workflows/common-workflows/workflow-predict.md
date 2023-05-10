@@ -34,6 +34,7 @@ import PythonWorkflowPredict from "!!raw-loader!../../../../code_snippets/api-gu
 import NodeWorkflowPredict from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/workflow_predict.js";
 import JavaWorkflowPredict from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/workflow_predict.java";
 import CurlWorkflowPredict from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/workflow_predict.sh";
+import PHPWorkflowPredict from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/workflow_predict.php";
 
 import ExampleCodeWorkflowPredict from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/example_workflow_predict.txt";
 import ExampleJSONWorkflowPredict from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/example_workflow_predict.js";
@@ -58,6 +59,10 @@ If you want to make a predict call with an external workflow that is outside the
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaWorkflowPredict}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPWorkflowPredict}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
