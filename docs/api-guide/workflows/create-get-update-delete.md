@@ -54,6 +54,8 @@ import JavaPatchWorkflow from "!!raw-loader!../../../code_snippets/api-guide/wor
 import JavaDeleteWorkflowID from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/delete_workflow_id.java";
 import JavaDeleteAllWorkflows from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/delete_all_workflows.java";
 
+import PHPWorkflowPredict from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/workflow_predict.php";
+
 import CurlCreate from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/create.sh";
 import CurlWorkflowPredict from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/workflow_predict.sh";
 import CurlGetWorkflowsApp from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/get_workflows_in_app.sh";
@@ -126,6 +128,10 @@ If you want to make a predict call with an external workflow that is outside the
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaWorkflowPredict}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPWorkflowPredict}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
