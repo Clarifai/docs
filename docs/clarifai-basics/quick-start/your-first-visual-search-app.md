@@ -1,56 +1,71 @@
 ---
 description: >-
-  Get up-and-running in less than 1 minute with the world's most powerful AI
-  platform
+  Perform your first visual search in approximately 1 minute
 sidebar_position: 2
 ---
 
 # Your First Visual Search App (~1 min)
 
-**Get up and running in less than 1 minute with the world's most powerful AI
-  platform**
+**Perform your first visual search in approximately 1 minute**
 <hr />
 
 Visual search is a versatile and useful tool when you are working with visual data. Visual search helps you compare images based on their visual similarity.
 
-## Step 1: Set up your account or login
-Just [click here](https://portal.clarifai.com/signup) if you need to set up your account for the first time. Or [click here](https://portal.clarifai.com/login) to login.‌
+In this example, we want to perform a visual similarity search on people's faces. 
+
+## Step 1: Set up your account or log in
+
+Just [click here](https://clarifai.com/signup) if you need to set up your account for the first time. 
+
+Or [click here](https://clarifai.com/login) to log in.‌
 
 ![Create account login](/img/create_acct_login.png)
 
 ## Step 2: Verify your email address
-Check your email. We will send you a link that enables you to automatically verify your email.‌
+
+If you created a new account, check your email. We will send you a link that enables you to automatically verify your address.‌
 
 ![verify email](/img/verify_email.png)
 
 ## Step 3: Create an application
-Click "Create Application" in the upper righthand corner of the screen.
+
+Log in to your account and click the **Create an App** button at the upper-right section of the navigation bar.
+
+And on the small window that pops up, provide the information required to create a new application. Also, select "Face" as the base model.
 
 ![create application](/img/create-application.png)
 
-Name your application, and select "Face" as the base model.
+Your newly created application will appear on the apps listing page.
 
-![face base model](/img/face-base_model.png)
+![create application](/img/face_search_app.png)
+
+If you click on the application, you'll be redirected to its individual page, where you can upload inputs to it. 
 
 ## Step 4: Upload sample images
-In the Clarifai Portal, you can upload images, videos and text in "Data Mode". Click "Add Inputs", or visit Data Mode by clicking the icon on the lefthand side of the screen.‌
 
-![data mode](/img/data_mode.png)
+On the application's individual page, select the **Inputs** option on the collapsible left sidebar.
 
-Browse your files and select several images of people's faces.
+Next, click the **Upload inputs** button.
 
-![browse files](/img/browse_files.png)
+![data mode](/img/data_mode_search_app.png)
 
-You will be prompted to Add or Assign Concepts. Let's skip this step for now.
+The small window that pops up allows you to upload inputs—either by uploading them directly from your local device or by providing a publicly accessible URL. 
 
-![skip add labels](/img/skip_add_labels.png)
+Add several images of people's faces. 
+
+![browse files](/img/browse_files_search_app.png)
+
+Finally, click the **Upload inputs** button at the bottom of the pop-up window to complete uploading your images.
 
 ## Step 5: Search for similar faces
-Once images are uploaded, click the "Eye" icon on the lefthand side of the screen to return to Explorer. Now just click on the spyglass icon next to any image.
+
+Your uploaded images will appear on the inputs manager page. 
+
+You can begin the search by clicking the spyglass icon next to the image you want to see its similar faces. 
 
 ![search by face](/img/search-by-face.png)
 
-Clarifai will sort your images by visual similarity. In this example, we can see that the top ranking results are images of the same person.
+Clarifai will sort your images by visual similarity. In this example, we can see that the top-ranking results are images of older people.
 
 ![view search results](/img/view-search-results.png)
 

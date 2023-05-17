@@ -12,22 +12,47 @@ sidebar_position: 3
 
 Let's see how you can create your own custom models and make predictions easily. 
 
-## Step 1: Set up your account or login
-Just [click here](https://portal.clarifai.com/signup) if you need to set up your account for the first time. Or [click here](https://portal.clarifai.com/login) to login.‌
+In this example, we'll create a simple model that differentiates between a dog and a cat. 
+
+## Step 1: Set up your account or log in
+
+Just [click here](https://clarifai.com/signup) if you need to set up your account for the first time. 
+
+Or [click here](https://clarifai.com/login) to log in.‌
 
 ![Create account login](/img/create_acct_login.png)
 
 ## Step 2: Verify your email address
-Check your email. We will send you a link that enables you to automatically verify your email.‌
+
+If you created a new account, check your email. We will send you a link that enables you to automatically verify your address.‌
 
 ![verify email](/img/verify_email.png)
 
 ## Step 3: Click "my-first-application"
 
+Go to your apps listing page, where you'll find a default "my-first-application" already created.
+
+If you click on the application, you'll be redirected to its individual page, where you can upload inputs to it.
+
 ![my first app](/img/click_my_first_app.png)
 
-## Step 4: Upload an image
-In the Clarifai Portal, you can upload images, videos, and text in "Data Mode". Click "Add Inputs", or visit Data Mode by clicking the icon on the lefthand side of the screen.‌
+:::tip
+
+You can also click the **Create an App** button at the upper-right section of the navigation bar to create another application.
+
+:::
+
+## Step 4: Upload training data
+
+In machine learning, training refers to the process of teaching a model to “learn” from the annotated concepts on the provided inputs. Concepts—also known as "classes"—are the tags or keywords that are used to label an input to indicate that the input has that entity.
+
+By exposing the model to a diverse range of training examples, it can learn to make predictions or decisions on new, unseen data.
+
+
+
+You'll be redirected to the application's individual page. Select the **Inputs** option on the collapsible left sidebar.
+
+Next, click the **Upload inputs** button.
 
 ![data mode](/img/data_mode.png)
 
@@ -37,11 +62,8 @@ Click "Browse Files" and upload one or more of your own images.‌
 
 ![browse files](/img/browse_files.png)
 
-You will be prompted to Add or Assign Concepts. Let's skip this step for now.
-
-![skip add labels](/img/skip_add_labels.png)
-
 ## Step 5: Create custom concepts
+
 Click the "Create a Concept" button on the lefthand side of the screen.
 
 ![create-a-concept](/img/create-a-concept.png)
