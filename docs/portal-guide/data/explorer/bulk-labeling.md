@@ -32,7 +32,7 @@ The new name you've typed will appear underneath the search field. Click the **A
 
 Finally, click the **Upload inputs** button at the bottom of the pop-up window to bulk upload your multiple inputs while attaching label(s) to them. 
 
-## Bulk Labeling in Explorer
+## Bulk Labeling
 
 After uploading inputs, you can easily add labels to them within the inputs manager page.
 
