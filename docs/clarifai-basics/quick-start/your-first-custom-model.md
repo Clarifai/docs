@@ -10,83 +10,139 @@ sidebar_position: 3
 **Get up and running in less than 5 minutes with your first custom model**
 <hr />
 
-Let's see how you can create your own custom models and make predictions easily. 
+Let's see how you can easily create custom models on the Clarifai portal. 
 
-## Step 1: Set up your account or login
-Just [click here](https://portal.clarifai.com/signup) if you need to set up your account for the first time. Or [click here](https://portal.clarifai.com/login) to login.‌
+In this example, we'll create a simple classification model that differentiates between dogs and cats. 
+
+## Step 1: Set up your account or log in
+
+Just [click here](https://clarifai.com/signup) if you need to set up your account for the first time. 
+
+Or [click here](https://clarifai.com/login) to log in.‌
 
 ![Create account login](/img/create_acct_login.png)
 
 ## Step 2: Verify your email address
-Check your email. We will send you a link that enables you to automatically verify your email.‌
+
+If you created a new account, check your email. We will send you a link that enables you to automatically verify your address.‌
 
 ![verify email](/img/verify_email.png)
 
 ## Step 3: Click "my-first-application"
 
+Go to your apps listing page, where you'll find a default "my-first-application" already created.
+
+If you click on the application, you'll be redirected to its individual page, where you can upload inputs.
+
 ![my first app](/img/click_my_first_app.png)
 
-## Step 4: Upload an image
-In the Clarifai Portal, you can upload images, videos, and text in "Data Mode". Click "Add Inputs", or visit Data Mode by clicking the icon on the lefthand side of the screen.‌
+:::tip
+
+You can also click the **Create an App** button at the upper-right section of the navigation bar to create another application.
+
+:::
+
+## Step 4: Upload training data
+
+:::note
+
+In machine learning, training refers to teaching a model to “learn” from the annotated concepts on the provided inputs. [Concepts](https://docs.clarifai.com/portal-guide/concepts/)—also known as "classes"—are the tags or keywords that are used to annotate (or label) an input to indicate that the input has that entity.
+
+Training data consists of input samples and their corresponding output labels or target values. By exposing the model to a diverse range of training examples, it can learn to make predictions or decisions on new, unseen data.
+
+:::
+
+Select the **Inputs** option on the collapsible left sidebar to upload training data on your app.
+
+Next, click the **Upload inputs** button.
 
 ![data mode](/img/data_mode.png)
 
-In this example, we are using the "General" model which comes pre-loaded in "my-first-application". The General model is designed to work with images and videos. 
+The small window that pops up allows you to upload your inputs—either by uploading them directly from your local device or by providing a publicly accessible URL. 
 
-Click "Browse Files" and upload one or more of your own images.‌
+Let's start by uploading images of dogs and annotating them with the "dog" concept. 
 
-![browse files](/img/browse_files.png)
+To label your inputs, click the plus (**+**) sign  next to the **Select concepts** search box. Then, type the new concept name in the search box.
 
-You will be prompted to Add or Assign Concepts. Let's skip this step for now.
+The new name you've typed will appear underneath the search box. Click the **Add new concept** button to create the concept.
 
-![skip add labels](/img/skip_add_labels.png)
+![browse files](/img/browse_files_custom_model.png)
 
-## Step 5: Create custom concepts
-Click the "Create a Concept" button on the lefthand side of the screen.
+Click the **Upload inputs** button at the bottom of the pop-up window to complete uploading the images you've annotated with the "dog" concept.
 
-![create-a-concept](/img/create-a-concept.png)
+Similarly, upload images of cats and annotate them with the "cat" concept.
 
-Enter the name of a person in your images. You  can repeat this part of the process multiple times to add multiple names.
+![browse files](/img/browse_files_custom_model_1.png) 
 
-![create-name](/img/create-name.png)
+Lastly, click the **Upload inputs** button at the bottom of the pop-up window to complete uploading the images you've annotated with the "cat" concept.
 
-Use visual search to sort your images based on the person that you would like to recognize.
+You can find the uploaded images on the inputs manager page. 
 
-![search-by-face](/img/search-by-face.png)
+![uploaded images](/img/uploaded_images_1.png) 
 
-Select images of the person that you would like your app to recognize.
+## Step 5: Create and train your custom model
 
-![bsearch-and-select](/img/search-and-select.png)
+After uploading images that already contain the concepts you want your model to see, you can now proceed to create your own custom model.
 
-## Step 6: Create and train your custom model
-Click on the model mode icon on the lefthand sidebar.
+Select the **Models** option on the collapsible left sidebar. And on the ensuing models manager page, click the **Create Model** button at the upper-right corner of the page.
 
-![enter-model-mode](/img/enter-model-mode.png)
+![models manager page](/img/create_custom_model_1.png)
 
-Click the "Create Custom Model" button on the upper righthand part of the screen.
+Next, choose the [type of model](https://docs.clarifai.com/portal-guide/model/model-types) you want to create. For this example, let’s choose a **Transfer Learning Classifier**.
 
-![click-create-custom-model](/img/click-create-custom-model.png)
+![create new model](/img/create_custom_model_2.png)
 
-Select "Context-Based Classifier"
+On the ensuing page, provide the details required to create the custom model. 
 
-![select-context-classifier](/img/select-context-classifier.png)
+Let's talk about the fields to fill in the form.
 
-Give your model a display name. Click "Select all concepts" and then click "Create Model". You can leave the default settings for this example.
+#### Model ID
 
-![name-and-concepts](/img/name-and-concepts.png)
+Provide a unique, memorable ID for your model.
 
-Click "Train Model" on the upper righthand corner of the screen. A popup will notify you when your model has successfully been trained.
+![create model id](/img/create_custom_model_3.png)
 
-![train-model](/img/train-model.png)
+#### Dataset ID
 
-Click "Evaluate" and then "View".
+You can select a dataset to use for training the model. Since we don't have a dataset for this example, a new dataset will be automatically generated with all the inputs in the app. 
 
-![evaluate-and-view](/img/evaluate-and-view.png)
+You can read more about datasets [here](https://docs.clarifai.com/portal-guide/datasets/create-get-update-delete). 
 
-Take a look at the evaluation metrics of your new model! 
+![dataset id](/img/create_custom_model_4.png)
 
-You can now use the model to predict all of the concepts in your application (in this case, the concepts are people's names). 
+#### Concepts
 
-![eval-summary](/img/eval-summary.png)
+Select the concepts that you want the model to predict. Remember that we'd already labeled the inputs with "dog" and "cat" concepts when we uploaded the training data.
 
-That's it!
+![select concepts](/img/create_custom_model_5.png)
+
+#### Concepts mutually_exclusive
+
+Let's turn the button on to indicate that there is no overlap between any of the model concepts.
+
+![concepts mutually_exclusive ](/img/create_custom_model_6.png)
+
+#### Enrich dataset
+
+Setting this to **Automatic** enriches the training data with supplemental data from a pre-built dataset of negative embeddings, which improves the predictions' accuracy.
+
+![Enrich dataset](/img/create_custom_model_7.png)
+
+#### Inference settings (optional)
+
+Optionally, you can configure the inference settings for your model. For this example, we'll go with the default inference settings. 
+
+![inference settings](/img/create_custom_model_8.png)
+
+#### Train model
+
+Finally, click the **Train Model** button to create and train your model.
+
+![train model](/img/create_custom_model_9.png)
+
+You'll be redirected to the created model's page.
+
+![created model page](/img/create_custom_model_10.png)
+
+Once the model is trained and ready, you can put it to work, such as by making [predictions](https://docs.clarifai.com/portal-guide/ppredict) with it. 
+

@@ -19,6 +19,14 @@ For a listing of the models available to you:
 
 ## Trainable Models
 
+### Transfer Learning Classifier
+
+The Transfer Learning Classifier model provides a strong foundation for transferring the knowledge of recognizing common objects and various concepts in images to a classification problem. 
+
+Transfer learning is a technique that leverages the knowledge gained from a pre-trained model to facilitate the learning process of a new model for a related problem. This approach speeds up the training process and often improves performance because the pre-trained model has already learned valuable features and patterns from large datasets, enabling the new model to start with a strong feature set.
+
+When using transfer learning, you take a model that was trained on a similar task (e.g., object recognition in images) and fine-tune it to recognize the specific classes you want. The best part of transfer learning is that it happens in seconds, not minutes or hours.
+
 ### Visual-Classifier
 
 Classification models help you answer the question "What" or "Who" is in your data. Classification models understand the world in terms of [concepts](https://docs.clarifai.com/api-guide/concepts). Models can come pre-trained to recognize concepts, or you can create your own custom models to recognize custom concepts.
