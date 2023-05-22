@@ -8,18 +8,32 @@ sidebar_position: 1
 **How to create a Clarifai application**
 <hr />
 
-## Create Application in Portal
+## Create an Application on the Portal
 
-To create an application, head to the [Portal](https://portal.clarifai.com/) and press the 'Create Application' button. 
+To create an application, [log in](https://clarifai.com/login) to your account and click the **Create an App** button at the upper-right section of the navigation bar.
 
-![Application creation window](/img/create-new-app-new.png)
+And on the small window that pops up, provide the information required to create a new application.
+
+![application creation window](/img/create-new-app-new.png)
 
 ### ID Validation
 
-Application names and other names in the Portal must follow a few rules. Names must be 1 to 32 letters or numbers in length, with hyphens or underscores as separators. Note that spaces, periods, etc are not allowed as separators. 
+Application names and other names in the Portal must follow a few rules. 
 
+- Names must be 1 to 32 letters or numbers in length, with hyphens or underscores as separators
+- Spaces, periods, etc., are not allowed as separators
 
-You can also set the default language so that you can create, train and search concepts in your own language. Please keep in mind that pre-trained model concepts currently only work in English.
+### Default Language
+
+You can also set the default language so that you can create, train, and search concepts in your own language. Please keep in mind that pre-trained model concepts currently only work in English.
+
+## Copy Applications
+
+You can also create an application by cloning an existing application. Cloning an existing application can be a great way to start a new project, or branch an existing one. We’ve made cloning easy with a simple interface in the Portal. 
+
+Go to the apps listing page and click the series of dots at the bottom-right corner of the app you want to copy its contents. Then, select the "Duplicate" option on the list that drops down. 
+
+![](/img/app_duplication.png)
 
 
 ## Create Applications Programmatically
@@ -47,7 +61,7 @@ curl --location --request POST "https://api.clarifai.com/v2/users/YOUR_USER_ID_H
 --data-raw '{
     "apps": [
         {
-            "id": "test-application-1589318146"
+            "id": "test-application"
         }
     ]
 }'
@@ -56,11 +70,4 @@ curl --location --request POST "https://api.clarifai.com/v2/users/YOUR_USER_ID_H
 </TabItem>
 </Tabs>
 
-### Copy Applications
-
-You can also create an application by cloning an existing application. Cloning an existing application can be a great way to start a new project, or branch an existing one. 
-
-We’ve made cloning easy with a simple interface in the Portal. Just click “Create Copy” on the bottom-right corner of your app on the app management page.
-
-![](/img/app_duplication.jpg)
 
