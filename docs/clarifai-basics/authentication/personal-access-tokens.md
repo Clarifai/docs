@@ -27,37 +27,29 @@ You can use PATs to accomplish the following:
 
 :::tip
 
-A PAT allows you to make inferences on resources that are outside the scope of your apps. [An API Key](https://docs.clarifai.com/clarifai-basics/authentication/app-specific-api-keys) only allows you to access resources scoped to the app defined by that key. So, you can use an API Key to access your own resources, but not Clarifai's resources. 
+A PAT allows you to make inferences on resources that are outside the scope of your apps. [An API Key](https://docs.clarifai.com/clarifai-basics/authentication/app-specific-api-keys) only allows you to access resources scoped to the app defined by that key. So, you can use an API Key to access your own resources, but not Clarifai's or other public resources. 
 
 :::
 
-## How to Create a PAT in the Legacy Portal
+## How to Create a PAT on the Portal
 
-To create a new PAT on the Legacy Portal, [log in](https://portal.clarifai.com/login) and navigate to the bottom left-hand corner of the application overview page. Then, click  the initials of your name.
+To create a new PAT, [log in](https://clarifai.com/login) to the portal, navigate to the upper right-hand section of the navigation bar, and click your user’s profile icon.
 
-![navigate-authentication](/img/navigate_authentication.jpg)
-
-Select the **Authentication** option. On the ensuing page, click the **Create Personal Access Token** button.
-
-![authentication-screen](/img/authentication_screen.jpg)
-
-Provide a short token description, set the scopes you want to apply, and click the **Create** button.
-
-![create-pat](/img/create_pat.jpg)
-
-## How to Create a PAT in the Community Platform
-
-To create a new PAT on the Community platform, [log in](https://clarifai.com/login) and navigate to the top right-hand section of the navigation bar. Then, click your user’s profile icon.
+Select the **Security** settings option on the drop-down list.
 
 ![Create new PAT on Community](/img/others/create_pat_community.png)
 
-Select the **Security** settings option on the drop-down list. On the ensuing page, click the **Create Personal Access Token** button.  
+On the ensuing **Security** page, click the **Create Personal Access Token** button.  
 
 ![Account security settings](/img/others/account_security_settings.png)
 
-Provide a short token description, set the scopes you want to apply, and click the **Confirm** button.
+On the form that pops up, provide a short token description, set the scopes you want to apply, and click the **Confirm** button.
 
 ![create pat](/img/others/pat_dialog_box.png)
+
+You can find the new PAT listed on the **Personal Access Token** section, where you can copy it to the clipboard, edit it, or delete it. 
+
+![listed pat](/img/others/pat_section_1.png)
 
 :::caution
 

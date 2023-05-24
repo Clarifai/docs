@@ -2,9 +2,9 @@
 description: We make our platform open for community to discover, test, use and share models and workflow (apps and datasets are coming soon) with Clarifai community.
 ---
 
-# Get Started With Clarifai Community
+# Get Started With Community Portal
 
-**A quick-start guide on the Clarifai Community**
+**A quick-start guide on the Clarifai Community Portal**
 <hr />
 
 Clarifai Community is a low-code, no-code platform that provides everything you need to build AI-powered apps. You can use it to discover, test, create, and share  state-of-the-art AI models, workflows, and app components.
@@ -262,4 +262,10 @@ For example, you can use [this image]( https://samples.clarifai.com/featured-mod
 
 After uploading the image, the model will analyze it and return a list of faces identified on the right-hand side of the page.
 
+
+:::info
+
+[Click here](https://docs.clarifai.com/portal-guide/ppredict) to learn more on how to make predictions on the Clarifai Community platform.
+
+:::
 

@@ -19,7 +19,7 @@ Each API Key is associated with a specific user and a specific app. It ties in `
 
 :::
 
-When using an app-specific API Key to make a request, you do not need to specify either the user ID or the application ID as they are already part of the API Key.
+When using an app-specific API Key to make a request, you do not need to specify either the user ID or the application ID, as they are already part of the API Key.
 
 An API Key allows you to have fine-grained control over the data exposed through your app. You can control the scope of your API Key through a simple checkbox interface displayed when you create a new key or edit a key. 
 
@@ -29,26 +29,23 @@ You cannot use an API key to access models, model versions, workflows, and other
 
 :::
 
-## How to Create API Keys in the Legacy Portal
+## How to Create API Keys on the Portal
 
-Navigate to your individual app's management page and click the **Create new API key** button. 
+Navigate to your application's individual page and select the **Settings** option on the collapsible left sidebar.
 
-![Create new API Key](/img/others/create_new_api_key.png)
+You'll be redirected to the **App Settings** page.
 
-Then, use the form that pops up to generate a new API Key for your application. 
-
-![Generate API Key form](/img/apikey-screen.png)
-
-## How to Create API Keys in the Community Platform
-
-Navigate to your individual app's management page and, on the **App Settings** page, click the **Create API key** button. 
+Within the **API Keys** section, click the **Create API Key** button. 
 
 ![App settings create key](/img/others/create_api_key_community.png)
 
-Then, use the form that pops up to generate a new API Key for your application. 
+Then, use the form that pops up to generate a new API key for your application—provide a short description, select the scopes, and click the **Confirm** button. 
 
 ![App key create form](/img/others/create_api_key_community_form.png)
 
+The new key will be listed in the **API Keys** section, where you can copy it to the clipboard, edit it, or delete it.
+
+![copy, edit, delete api key](/img/others/create_api_key_community_2.png)
 
 ## How to Create API Keys Programmatically
 
