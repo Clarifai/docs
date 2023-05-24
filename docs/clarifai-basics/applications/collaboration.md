@@ -1,5 +1,5 @@
 ---
-description: How to collaborate on the Clarifai Platform
+description: How to collaborate on the Clarifai platform
 sidebar_position: 3
 ---
 
@@ -8,15 +8,27 @@ sidebar_position: 3
 **How to collaborate on the Clarifai platform**
 <hr />
 
-Collaboration is a functionality that provides you with the ability to share your apps so that you can work with your team members to label data, create models, and more. This feature comes with the full control of the permissions available in your apps, which allows you to manage the capabilities and information available to each user. 
+Collaboration is a functionality that allows you to share your apps so that you can work with your team members to label data, create models, and more. This feature comes with complete control of the permissions available in your apps, which allows you to manage the capabilities and information available to each user. 
 
-You can give a trusted collaborator full access. You can also invite a worker and grant them the limited permissions to only annotate data but not to delete it.
+You can give a trusted collaborator full access privileges. You can also invite a worker and grant them limited permissions only to annotate data but not to delete them.
 
-Just navigate to the app details page and click "Add Collaborators."
+## How to add a collaborator
+
+Go to the application's individual page and select the **Settings** option on the collapsible left sidebar.
+
+When redirected to the **App Settings** page, scroll down to the **Collaborators** section. 
+
+Click the **Add Collaborators** button to add a collaborator to your app. 
 
 ![](/img/add_collaborators.jpg)
 
-From here, enter the email addresses of the collaborators you would like to add. You can also choose the scope of the resources that you would like the collaborators to have access to.
+Then, use the form that pops up to invite a collaborator—provide an email address associated with their Clarifai account, choose the scope of the resources that you would like the collaborator to access, and click the **Confirm** button. 
+
+:::note
+
+The collaborator you want to invite must have a registered account on the Clarifai portal.
+
+:::
 
 ![](/img/collaborator_scopes.jpg)
 

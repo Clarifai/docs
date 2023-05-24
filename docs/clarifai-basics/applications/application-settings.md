@@ -24,6 +24,8 @@ Click the **Create API Key** button to add a new API key to your app. Then, use 
 
 ![api keys](/img/application_settings_1.png)
 
+The new key will be listed in the **API Keys** section, where you can carry out various management tasks on it. 
+
 ### Copy an API Key
 
 You can copy an API key to the clipboard by clicking the copy button.
