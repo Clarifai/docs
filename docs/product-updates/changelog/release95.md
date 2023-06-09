@@ -8,11 +8,26 @@ pagination_prev: product-updates/changelog/release94
 
 # Release 9.5
 
+<h2>Date: June 5th, 2023 </h2>
+
 | New Feature | Improvement | Bug Fix | Enterprise Only |
 | :---: | :---: | :---: | :---: |
 | ![new-feature](/img/new_feature.jpg) | ![improvement](/img/improvement.jpg) | ![bug](/img/bug.jpg) | ![enterprise](/img/enterprise.jpg) |
 
+## Old Portal
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| **Deprecation** |  Our old portal is officially entering early deprecation and will no longer be actively maintained | <ul><li> The legacy portal will be decommissioned and it will no longer be accessible after July 3rd, 2023.</li><li>We encourage our users to switch to the new portal for a better experience.</li></ul> |
+
 ## Community  
+
+### Large Language Models (LLMs)
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![new-feature](/img/new_feature.jpg) | Added more LLM model options to allow our users to unleash the power of the latest developments in Generative AI | We've wrapped several LLM models from various vendors into our platform. You can use them to perform a wide range of tasks, including text summarization, text generation, text embedding, text language detection, text-to-image conversion, text-to-audio conversion, transcription, translation, and image upscaling. <br /><br /><ul><li> We've wrapped the following models from Cohere: `cohere-summarize`, `cohere-generate`, `cohere-embed`, `cohere-multilingual-embed`, `cohere-detect-language` (text-to-text, text-to-embeddings).</li><li>We've wrapped the following models from AI21 Labs: `Jurassic2-Large`, `Jurassic2-Grande`, `Jurassic2-Grande-Instruct`,`Jurassic2-Jumbo-Instruct`, `Summarize-API` (text-to-text).</li><li>We've wrapped the following models from OpenAI: `GPT-3.5`, `GPT-4` (text-to-text), `DALL-E` (text -to-image), `openai-embed` (text- to-embed).</li></ul> |
+| ![new-feature](/img/new_feature.jpg) | Unleashed increased capabilities with LLMs | <ul><li> Added ability to perform transfer learning on top of LLMs.</li><li>Added ability to perform auto-labeling with GPT3.5/4 and large LLM wrappers.</li></ul>  |
 
 ### Models
 
@@ -32,10 +47,11 @@ pagination_prev: product-updates/changelog/release94
 |![bug](/img/bug.jpg)| Fixed an issue where the segmentation output mask size did not match the input image | <ul><li>If you open a visual segmentation model, the segmentation output mask size now matches the input image. </li></ul> |
 |![bug](/img/bug.jpg)| Fixed an issue where the "Try your own Input" pop-up modal disappeared immediately | If you navigate to any visual-classifier or visual-detector model, either in your own app or Community, click the blue "+" icon on the left-hand side of the screen, a modal will appear asking you to upload an image to try the model. <br /><br /><ul><li> Previously, the modal could disappear immediately. After fixing the issue, the modal now stays open and waits for the user to choose an image.</li></ul> |
 
-### Workflow-Editor
+### Workflows
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
+| ![new-feature](/img/new_feature.jpg) | Added ability to customize non-user owned model output config in workflows   | <ul><li> You can now customize the output config settings of a model belonging to another user, and use that model in a workflow, such as in auto-annotation tasks. </li></ul> |
 |![bug](/img/bug.jpg)| Fixed an issue where the workflow editor gave an "Invalid Version” error when a community model was selected | <ul><li>Previously, if you selected the "Visual Classifier" model type when editing a workflow, and then chose any image classification model from the Community, an "Invalid Version" error could be displayed. We've fixed the issue.</li></ul> |
 |![bug](/img/bug.jpg)| Fixed an issue where the workflow editor failed to respect the range definition of an operator argument | <ul><li>The range definition of an operator argument now works well when editing a workflow.</li></ul> |
 |![bug](/img/bug.jpg)| Fixed an issue where the select concepts pop-up modal on the workflow editor failed to disappear | <ul><li>Previously, if you wanted to edit a concept-thresholder model type and clicked the "SELECT CONCEPTS" button, the ensuing pop-up modal could not disappear from the workflow editor screen.</li><li>The select concepts modal now gets closed if you navigate to a previous page.</li></ul> |
@@ -52,6 +68,7 @@ pagination_prev: product-updates/changelog/release94
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
+| ![improvement](/img/improvement.jpg) |  Published a new type of Base Workflow for apps called "Roberta-embedder"  | <ul> <li>When creating a new application, you can now choose the new type of Base Workflow for your app. The workflow lets you perform transfer learning on text inputs. </li></ul> |
 |![improvement](/img/improvement.jpg)| Restricted the visibility of the settings page of public apps| <ul><li>Modified the visibility of the app settings page for non-logged-in users, regular logged-in users, app collaborators, app owners, organization admins, organization members, and team members. </li><li>The app settings page is now not visible to users without the necessary permissions. </li></ul> |
 |![improvement](/img/improvement.jpg)| Removed a duplicate language understanding workflow that appeared when a user created a new app | <ul><li>When a user created a new application, a duplicate language understanding workflow appeared in the dropdown list for selecting the app's Base Workflow. It has now been removed.</li></ul> |
 |![bug](/img/bug.jpg) |Fixed an issue where making a model public caused the app associated with it to crash | <ul><li> Publicizing a model now works as expected. </li></ul> |
@@ -120,9 +137,10 @@ pagination_prev: product-updates/changelog/release94
 |--------------------------------------|------------------------|---------------------------|
 | ![bug](/img/bug.jpg) | Fixed an error shown in the verification link of a secondary email | <ul><li>Previously, when a user added a secondary email to their account, and clicked the verification and login link sent to their inbox, they could get an error. We've fixed the issue. </li></ul> |
 
-## API 
+## Clarifai-Python-Utils
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
-|![new-feature](/img/new_feature.jpg)|Created a Python script that generates an images archive from an export archive, and added it to the [Clarifai-Python-Utils](https://github.com/Clarifai/clarifai-python-utils) repository | <ul><li> Created a Python class that delivers various functionalities via an SDK to a user, including downloading URLs, unarchiving ZIP files, and iterating over all the inputs in an export archive.</li><li>The script is useful for users who export dataset versions and want to process them further.</li></ul> |
+| ![new-feature](/img/new_feature.jpg) | Added more utilities and examples to the [Clarifai-Python-Utils](https://github.com/Clarifai/clarifai-python-utils) SDK  | Clarifai-Python-Utils offers a comprehensive set of utilities and tools that simplifies and enhances the integration of Clarifai's powerful AI capabilities into your Python projects. <br /><br /><ul><li>We've added more utilities and examples for building common tasks so that you can leverage the full potential of Clarifai's AI technology.</li><li>For example, you can now use the SDK to perform data uploads in xView and ImageNet dataset formats while displaying the updated progress of the upload process.</li></ul> |
+|![new-feature](/img/new_feature.jpg)|Created a Python script that generates an images archive from an export archive, and added it to the Clarifai-Python-Utils repository | <ul><li> Created a Python class that delivers various functionalities via an SDK to a user, including downloading URLs, unarchiving ZIP files, and iterating over all the inputs in an export archive.</li><li>The script is useful for users who export dataset versions and want to process them further.</li></ul> |
 
