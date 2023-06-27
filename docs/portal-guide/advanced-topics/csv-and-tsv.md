@@ -29,7 +29,7 @@ You can add columns for as many concepts as you like, and you can add new column
 | input.data.text.raw | The "text" for your input |
 | input.data.concepts\[i\].id | Your custom concept |
 | input.data.concepts\[i\].value | The value for your custom concept \(`1` for true, `0` for false\) |
-| input.metadata | Any additional metadata in valid [JSON](https://www.json.org/json-en.html) format |
+| input.data.metadata | Any additional metadata in valid [JSON](https://www.json.org/json-en.html) format |
 | input.data.geo.geo\_point.latitude | Latitude for geodata |
 | input.data.geo.geo\_point.longitude | Longitude for geodata |
 
