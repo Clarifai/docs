@@ -8,15 +8,18 @@ sidebar_position: 6
 **Search your text inputs based on similarity or concepts**
 <hr />
 
-## Text similarity search
+## Text Similarity Search
 
-![Search for similar text inputs](/img/search-by-text-input.jpg)
+![Search for similar text inputs](/img/search-by-text-input_1.png) 
 
-Much like an image-to-image search, Clarifai allows you to use text inputs as parameters for search. Just hover over the text input that you would like to use, and click the magnifying glass icon. Searching by an input will display a search tag that will have a popup button to view a larger preview if the text length is above 15 characters. The popover preview within the search tag displays up to 100 characters.
+Just like an image-to-image search, Clarifai allows you to use text inputs as parameters for search. Just hover over the text input that you would like to use, and click the magnifying glass icon. 
 
-## Search text by concept
+After performing the search, the results of similar texts will be populated on the page, displaying a list of texts that closely match the input text or query.
 
-![Search text inputs by concepts](/img/search-text-by-concept.jpg)
+## Search Text by Concept
 
-You can search based on concepts by simply clicking on the name of the concept in the lefthand sidebar. You will see the concept added to the search bar and search results will be ranked based on inputs with the highest predicted values for a given concept.
+![Search text inputs by concepts](/img/search-text-by-concept_1.png)
+
+You can search based on concepts by simply typing the name of the concept in the "Smart Search" search bar. The search results will be ranked based on the inputs with the highest predicted values for the given concept.
+
 
