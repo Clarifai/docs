@@ -14,10 +14,11 @@ VTR lets you "digitize" text so that it can be edited, searched, stored, display
 
 ![](/img/vtr.jpg)
 
-:::important note
-The current version of our VTR model is not designed for use with handwritten text, or documents with tightly-packed text \(like you might see on the page of a novel, for example\).
-:::
+:::info
 
+The current version of our VTR model is not designed for use with handwritten text, or documents with tightly-packed text \(like you might see on the page of a novel, for example\).
+
+:::
 
 ## How VTR works
 

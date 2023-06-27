@@ -8,84 +8,136 @@ sidebar_position: 3
 **Build a powerful and flexible application for classifying text passages**
 <hr />
 
-<!--{% embed url="https://youtu.be/-blQVbccAF0" caption="Natural Language Processing with Clarifai" %}-->
+Text classification is a natural language processing (NLP) task that involves categorizing or assigning predefined labels or categories to a given text document. It is a fundamental problem in machine learning and NLP, where the goal is to automatically analyze and classify textual data based on its content.
 
-<iframe width="900" height="500" src="https://www.youtube.com/embed/-blQVbccAF0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+Text models can be trained to understand the meaning of text passages. 
 
-Text models can be trained to understand the meaning of text passages. We offer a general text embedding model, as well as a specialized text moderation model. This walkthrough shows you how to create a custom text model from our text embedding model.
+This walkthrough shows you how to create a custom text classification model that can help you understand the sentiment of customer reviews on a product—whether positive or negative. 
 
-## Create an app
+## Create an App
 
-Create a new application and select “Text” as your default workflow.
+Let's start by creating a new application and selecting **Text-Moderation** as the default workflow.
 
-![](/img/create_text.jpg)
+![](/img/others/create_text_1.png)
 
-## Navigate to Explorer Mode
+## Navigate to the Inputs Manager Page
 
-![](/img/nav-to-explorer.jpg)
+Head to your application's individual page. Then, select the **Inputs** option on the collapsible left sidebar.
 
-## Add your inputs
+You'll be redirected to the inputs manager page, where you can add inputs to your app. 
 
-### Option 1: Browse your files
+![](/img/others/nav-to-explorer_1.png)
 
-You can upload your text directly from a `.csv` file. This means you can work with your favorite spreadsheet software or text editor when preparing your data for upload. Just use the provided "CSV template" to get started.
+## Add Your Inputs
 
-![](/img/csv_template.jpg)
+To add inputs to your app, click the **Upload Inputs** button. The small window that pops up allows you to upload your inputs.
 
-Next, add your text data. At a minimum, you should add text to the `input.data.text.raw` field. You can add one concept per column to the `input.data.concepts[*].id` fields. For the `input.data.concepts[*].value` column, there are two options: enter the number `1` if the concept _is_ present in the input, enter the value `0` if the concept is _not_ present in the input \(a negative example\). If no value is entered, a default value of `1` will be assigned to your input.
+![](/img/others/text-upload-inputs.png)
 
-You can add columns for as many concepts as you like, and you can add new columns to add values for any other values supported by the API:
+You can use either of the following options to add text inputs to your app:
 
-| Field | Description |
-| :--- | :--- |
-| input.id | A unique identifier for your input |
-| input.data.text.raw | The "text" for your input |
-| input.data.concepts\[i\].id | Your custom concept |
-| input.data.concepts\[i\].value | The value for your custom concept \(`1` for true, `0` for false\) |
-| input.metadata | Any additional metadata in valid [JSON](https://www.json.org/json-en.html) format |
-| input.data.geo.geo\_point.latitude | Latitude for geodata |
-| input.data.geo.geo\_point.longitude | Longitude for geodata |
+ - Upload from a `.csv` file
+ - Add texts directly
 
-Finally, you will need to save your work as a `.csv` file. If you are editing in Google Sheets, go to File &gt;&gt;&gt; Download &gt;&gt;&gt; Comma-separated values \(.csv, current sheet\). If you are using Excel, go to File &gt;&gt;&gt; Save As &gt;&gt;&gt; Browse &gt;&gt;&gt; Save as Type &gt;&gt;&gt; CSV.
+### Option 1: Upload From a `.csv` File
 
-Once you have downloaded the `.csv` file, you can then upload it by clicking on “Browse your files”
+You can upload your text directly from a `.csv` file. This means you can work with your favorite spreadsheet software or text editor when preparing your data for upload. 
 
-### Option 2: Add text
+[Click here](https://docs.clarifai.com/portal-guide/advanced-topics/csv-and-tsv/) to learn how to upload your text data from a `.csv` file. 
 
-Just click “add text” and directly enter your text in the text field.
+### Option 2: Add Texts Directly
 
-Label your inputs If you “add text” you will need to then label your inputs in Portal.
+Select the **Text** option on the input uploader window. Then, use the input field to add texts directly to your app. 
 
-![](/img/browse_explorer.jpg)
+![](/img/others/text-upload-inputs-1.png)
 
-#### Add custom concepts
+### Add a Dataset
 
-Click on an input and add new concepts in the right hand sidebar. Just click in the empty form field under “Custom Model Predictions”, enter your concept, and hit “return”.
+A [dataset](https://docs.clarifai.com/portal-guide/datasets/) acts like a container that holds your text inputs. It plays a crucial role in creating and training your model.
 
-![](/img/label_concept.jpg)
+To create a new dataset on the input uploader window, click the plus sign (**+**) next to the **Select or add datasets** search box. Then, type the new dataset name in the search box.
+
+The new name you've typed will appear underneath the search box. Click the **Add new dataset** button to create the dataset.
+
+![](/img/others/text-add-dataset.png)
+
+Select the dataset you've just created, if you've not done that. 
+
+### Add Custom Concepts
+
+A concept is something that describes the content of your text input, similar to a "tag" or "keyword." The data in these concepts give the model something to "observe" about the keyword, and learn from.
+
+To create a new custom concept on the input uploader window, click the plus sign (**+**) next to the **Select or add concepts** search box. Then, type the new concept name in the search box. For this example, let's create two concepts: "positive" and "negative."
+
+The new name you've typed will appear underneath the search box. Click the **Add new concept** button to create the concept.
+
+![](/img/others/text-add-concept.png)
+
+Select the concept you've just created, if you've not done that. You can follow the same process to create other concepts.
+
+### Click Upload Inputs Button
+
+After adding text inputs, adding a dataset to contain the text inputs, and adding concepts that annotate the text inputs, click the **Upload inputs** button at the bottom of the input uploader window. 
+
+Your inputs and their annotations will be added to your app. 
+
+![](/img/others/text-upload-inputs-2.png)
 
 ## Navigate to Model Mode
 
-![](/img/model_mode.jpg)
+Next, select the **Models** option on the collapsible left sidebar. You'll be redirected to the models listing page, where you can create a new model.
 
-## Select Context-based Classifier
+Click the **Create Model** button at the upper right section of the page. 
 
-![](/img/sci_phil_context.jpg)
+![](/img/others/text-model-mode.png)
 
-* **MODEL ID \(OPTIONAL\)** - Optional custom model ID of your choosing.
-* **DISPLAY NAME** - This is the name of your new custom model. Enter a descriptive name.
-* **OUTPUT\_INFO.DATA.CONCEPTS** - Click in the empty form field and select all of the custom concepts that you have added one-by-one.
-* **OUTPUT\_INFO.OUTPUT\_CONFIG.CONCEPTS\_MUTUALLY\_EXCLUSIVE** - Use the default setting.
-* **OUTPUT\_INFO.OUTPUT\_CONFIG.CLOSED\_ENVIRONMENT** - Set CLOSED\_ENVIRONMENT to “Yes”.
-* **OUTPUT\_INFO.OUTPUT\_CONFIG.EMBED\_MODEL\_VERSION\_ID** - Use the default setting.
+## Select Model Type
 
-Once you click “Create Model”, a new screen will appear.
+Select the **Transfer Learning Classifier** model type. This model leverages the knowledge captured by a pre-trained model so that you can get started very quickly with minimal training data. It allows you to transfer the knowledge gained from solving one problem to help solve a different but related problem.
 
-Click “Train Model” in the upper right hand corner of the screen.
+![](/img/others/select-model-type.png)
 
-## Try out your new model
+## Create a Model
 
-Navigate to “Explorer Mode” and “Add Inputs”. Add some new text inputs, and then navigate back to “Explorer Mode”
+On the ensuing page, provide the details for creating a new text classification model.
 
-You will see custom concept predictions in the right hand sidebar when you click on an individual input.
+![](/img/others/text-create-model-2.png) 
 
+- **Model Id**—Provide a unique ID for your model.
+- **Dataset Id**—Select the dataset you'd created previously. 
+- **Dataset version_id**—You may select a version for your dataset. You can [create a new dataset version](https://docs.clarifai.com/portal-guide/datasets/create-get-update-delete#create-a-dataset-version) by selecting the **Datasets** option on the collapsible left sidebar and following the prompts.
+- **Concepts**—Select the concepts you'd created previously.
+- **Concepts mutually_exclusive**—Turn this on if there is no overlap between any of your concepts. For this example, we'll not turn it on. 
+- **Enrich dataset**——If it's enabled (set to **Automatic**), it lets you use Clarifai's rich dataset of negative embeddings to improve your model's accuracy. For this example, we'll enable it. 
+- **Inference settings**—Optionally, you may configure the inference settings to enhance the performance of your model. 
+- **Train Model**—Click the button to create and train the model.
+
+After creating the model, you'll be redirected to its overview page.
+
+![](/img/others/text-model-overview.png) 
+
+## Try Out Your New model
+
+To try out your new model, select the **Inputs** option on the collapsible left sidebar. Then, click the **Upload Inputs** button and use the small input uploader window that pops up to add some new text inputs, just as we previously illustrated.
+
+Next, on the inputs manager page, click the specific text input you want to get its predictions. 
+
+![](/img/others/text-click-text-input.png) 
+
+You'll be redirected to the viewer page for that text input.
+
+Once you're on the input viewer page, set the page's mode to **Predict**. You can find the mode settings at the upper right corner of the page.
+
+On the right sidebar, click the **Select a Model or Workflow** link.
+
+![](/img/others/text-try-own-model-1.png) 
+
+On the right sidebar that appears, click the **Select Model or Workflow** search box, and select the model you created from the drop-down list.
+
+![](/img/others/text-try-own-model-2.png) 
+
+After selecting the model, the custom concept predictions will be processed and populated on the right sidebar.
+
+![](/img/others/text-try-own-model-3.png) 
+
+That's it!
