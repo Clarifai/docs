@@ -1,11 +1,11 @@
 ---
-description: (Beta) Train the entire graph for your custom model
+description: Train the entire graph for your custom model
 sidebar_position: 5
 ---
 
 # Deep Training
 
-**(Beta) Train the entire graph for your custom model**
+**Train the entire graph for your custom model**
 <hr />
 
 Clarifai offers a variety of pre-built models that are designed to help you create AI solutions quickly and efficiently.
