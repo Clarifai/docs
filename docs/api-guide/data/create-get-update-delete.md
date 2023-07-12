@@ -1172,6 +1172,12 @@ if (response.Status.Code != StatusCode.Success)
 
 You can also delete multiple inputs in one API call. This will happen asynchronously.
 
+:::info
+
+We currently support a batch size of 128 inputs per request. So, you can provide a list of 128 input IDs and delete them in one API call. 
+
+:::
+
 <Tabs>
 
 <TabItem value="python" label="Python">

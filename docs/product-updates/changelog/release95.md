@@ -2,7 +2,7 @@
 description: Changelog for Clarifai Release 9.5
 # For versioning, we use negative position so that the oldest versions are displayed at the bottom. Any time you add a new version, increase the position by -1.
 sidebar_position: -44
-pagination_next: product-updates/upcoming-api-changes
+pagination_next: product-updates/changelog/release96
 pagination_prev: product-updates/changelog/release94
 ---
 
@@ -26,7 +26,7 @@ pagination_prev: product-updates/changelog/release94
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
-| ![new-feature](/img/new_feature.jpg) | Added more LLM model options to allow our users to unleash the power of the latest developments in Generative AI | We've wrapped several LLM models from various vendors into our platform. You can use them to perform a wide range of tasks, including text summarization, text generation, text embedding, text language detection, text-to-image conversion, text-to-audio conversion, transcription, translation, and image upscaling. <br /><br /><ul><li> We've wrapped the following models from Cohere: `cohere-summarize`, `cohere-generate`, `cohere-embed`, `cohere-multilingual-embed`, `cohere-detect-language` (text-to-text, text-to-embeddings).</li><li>We've wrapped the following models from AI21 Labs: `Jurassic2-Large`, `Jurassic2-Grande`, `Jurassic2-Grande-Instruct`,`Jurassic2-Jumbo-Instruct`, `Summarize-API` (text-to-text).</li><li>We've wrapped the following models from OpenAI: `GPT-3.5`, `GPT-4` (text-to-text), `DALL-E` (text -to-image), `openai-embed` (text- to-embed).</li></ul> |
+| ![new-feature](/img/new_feature.jpg) | Added more LLM model options to allow our users to unleash the power of the latest developments in Generative AI | We've wrapped several LLM models from various vendors into our platform. You can use them to perform a wide range of tasks, including text summarization, text generation, text embedding, text language detection, text-to-image conversion, text-to-audio conversion, transcription, translation, and image upscaling. <br /><br /><ul><li> We've wrapped the following models from Cohere: `cohere-summarize`, `cohere-generate`, `cohere-embed`, `cohere-multilingual-embed`, `cohere-detect-language` (text-to-text, text-to-embeddings).</li><li>We've wrapped the following models from AI21 Labs: `Jurassic2-Large`, `Jurassic2-Grande`, `Jurassic2-Grande-Instruct`,`Jurassic2-Jumbo-Instruct`, `Summarize-API` (text-to-text).</li><li>We've wrapped the following models from OpenAI: `GPT-3.5`, `GPT-4` (text-to-text), `openai-embed` (text- to-embed).</li></ul> |
 | ![new-feature](/img/new_feature.jpg) | Unleashed increased capabilities with LLMs | <ul><li> Added ability to perform transfer learning on top of LLMs.</li><li>Added ability to perform auto-labeling with GPT3.5/4 and large LLM wrappers.</li></ul>  |
 
 ### Models
