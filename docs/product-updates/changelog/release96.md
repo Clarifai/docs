@@ -2,7 +2,7 @@
 description: Changelog for Clarifai Release 9.6
 # For versioning, we use negative position so that the oldest versions are displayed at the bottom. Any time you add a new version, increase the position by -1.
 sidebar_position: -45
-pagination_next: product-updates/upcoming-api-changes
+pagination_next: null
 pagination_prev: product-updates/changelog/release95
 ---
 
@@ -38,7 +38,7 @@ pagination_prev: product-updates/changelog/release95
 |--------------------------------------|------------------------|---------------------------|
 | ![new-feature](/img/new_feature.jpg) | Added more LLM model options to allow our users to unleash the power of the latest developments in Generative AI | We are continuing to wrap more LLM models from various vendors into our platform. We intend to provide you with more LLM options so that you can choose the best Generative AI model based on the task you want to achieve.<br /><br /><ul><li>We've wrapped the following model from Stability AI: `Stable-Diffusion-XL-beta-v2-2-2` for text-to-image tasks.</li><li>We've wrapped the following model from Anthropic: `claude-v1` for text-to-text tasks.</li></ul> |
 |![improvement](/img/improvement.jpg)|Performed LLM fine-tuning on mid-large size models | <ul><li> We performed LLM fine-tuning with various base models from `gpt-neo` to `roberta-xlm-lage` using Parameter-Efficient Fine-Tuning (PEFT). We used the LoRA (low-rank adaptation) technique to freeze the weights of the pre-trained models and fine-tune them with a small model, achieving excellent fine-tuning results. The supported "fine-tunable" tasks include text classification (9.6 released) and text generation, such as content creation (coming soon in 9.7 release).</li><li> You can now perform text classification with two new templates: `gpt-neo-125m-lora` and     `gpt-neo-2.7b-lora`.</li><li> We also added the ability for users to perform advanced custom model configurations. For example, you can set up PEFT, which allows you to get performance comparable to full fine-tuning while only having a small number of trainable parameters.</li></ul> |
-|![improvement](/img/improvement.jpg) | Performed LLM inferencing of mid-large size models | <ul><li>We performed inferencing on the following open source LLMs: `hkunlp_instructor-xl` and `tiiuae-falcon-7b-instruct`. We exposed the trained models to novel data and got predictions (inferences), which allowed us to optimize their performance. </li></ul>|
+|![enterprise](/img/enterprise.jpg) / Developer-Preview | Performed LLM inferencing of mid-large size models | <ul><li>We performed inferencing on the following open source LLMs: `hkunlp_instructor-xl` and `tiiuae-falcon-7b-instruct`. We exposed the trained models to novel data and got predictions (inferences), which allowed us to optimize their performance. </li></ul>|
 
 ### Input-Manager
 
