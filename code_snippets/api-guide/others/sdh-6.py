@@ -1,6 +1,6 @@
 import requests
 
-url = "https://data.clarifai.com/orig/users/alfrick/apps/deep-learning/inputs/image/140c856dc82565d2c4d6ea720fceff78"
+url = "https://data.clarifai.com/orig/users/YOUR_USER_ID_HERE/apps/YOUR_APP_ID_HERE/inputs/image/140c856dc82565d2c4d6ea720fceff78"
 authorization_key = "YOUR_AUTHORIZATION_KEY"
 
 if url.startswith("https://data.clarifai.com"):
