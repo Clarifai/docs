@@ -3,7 +3,7 @@ description: Get measurable insights into your utilization of the Clarifai Commu
 sidebar_position: 14
 ---
 
-# Community Usage Dashboard
+# Usage Dashboard
 
 **Get insights into your utilization of the Clarifai Community platform**
 
