@@ -18,13 +18,7 @@ You might consider deep training if you have:
 
 * **A custom tailored dataset**
 * **Accurate labels**
-* **Expertise and time to fine tune models**
-
-:::tip note
-
-Deep training is in early access preview. To request access, [contact us](https://www.clarifai.com/contact).
-
-::: 
+* **Expertise and time to fine-tune models**
 
 ## Template Types
 
