@@ -1,11 +1,11 @@
 ---
-description: Train the complete graph for your model.
+description: Train the complete graph of your model.
 sidebar_position: 6
 ---
 
 # Deep Training
 
-**Train the complete graph for your model**
+**Train the complete graph of your model**
 <hr />
 
 Clarifai offers a variety of prebuilt models that are designed to help you create AI solutions quickly and efficiently. Clarifai Models are the recommended starting points for many users because they offer incredibly fast training times when you customize them using the "Context-Based Classifier" type found in the Portal's Model Mode.
@@ -24,17 +24,7 @@ You might consider deep training if you have:
 
 You can take advantage of a variety of templates when building your deep trained models. Templates give you the control to choose the specific architecture used by your neural network, and also define a set of hyperparameters that you can use to fine-tune the way your model learns.
 
-### Visual Classifier
-
-Classification templates let you classify what is in your images or videos.
-
-### Visual Detector
-
-Detection templates make it easy to build models that can identify objects within a region of your images or videos. Detection models return concepts and bounding boxes.
-
-### Visual Embedder
-
-Embedding models can be useful in their own right \(for applications like clustering and visual search\), or as an input to a machine learning model for a supervised task. In effect, embedding templates enable you to create your own "base models" that you can then use in your workflows.
+[Click here](https://docs.clarifai.com/portal-guide/model/deep-training/#template-types) to learn more about the template types we offer. 
 
 ## Hyperparameters
 

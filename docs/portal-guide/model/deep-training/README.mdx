@@ -1,10 +1,10 @@
 ---
-description: Train the entire graph for your custom model
+description: Train the entire graph of your custom model
 ---
 
 # Deep Training
 
-**Train the entire graph for your custom model**
+**Train the entire graph of your custom model**
 <hr />
 
 Clarifai offers a variety of pre-built models that are designed to help you create AI solutions quickly and efficiently.
@@ -25,22 +25,12 @@ You might consider deep training if you have:
 
 You can take advantage of a variety of templates when building your deep trained models. Templates give you the control to choose the specific architecture used by your neural network, and also define a set of hyperparameters that you can use to fine-tune the way that your model learns.
 
+Here are the template types we offer:
+
 import DocCardList from '@theme/DocCardList';
 import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 
 <DocCardList items={useCurrentSidebarCategory().items}/>
-
-### Visual Classifier
-
-Classification templates let you classify what is in your images or videos.
-
-### Visual Detector
-
-Detection templates make it easy to build models that can identify objects within a region of your images or videos. Detection models return concepts and bounding boxes.
-
-### Visual Embedder
-
-Embedding models can be useful in their own right \(for applications like clustering and visual search\), or as an input to a machine learning model for a supervised task. In effect, embedding templates enable you to create your own "base models" that you can then use in your workflows.
 
 ## Hyperparameters
 
@@ -62,7 +52,7 @@ Deep training gives you the power to tune the hyperparameters that affect “how
 * **test\_freq**—The number of epochs should you run before evaluation of the test set. Increased frequency can allow for more granular testing but will extend processing time.
 * **use\_perclass\_regression**—Enables box coordinate local regression on a per-class basis. When set to True there will be `num_classes` sets of regressors for each anchor location, when set to False, there will be one coordinate regressor for each anchor location.
 
-## Create your Deep Trained Model
+## Create Your Deep Trained Model
 
 Creating and working with deep trained models is very similar to working with Clarifai models.
 
