@@ -79,7 +79,7 @@ These models allow you to perform visual anomaly detection with image-level scor
 
 ### Deep Trained Models \(Visual Classifier, Visual Detector, Visual Embedder\)
 
-Use deep trained models when you are working with highly specialized data, or you want to push the accuracy of your model to its limits for a specific use case. 
+Use [deep trained](https://docs.clarifai.com/portal-guide/model/deep-training/) models when you are working with highly specialized data, or you want to push the accuracy of your model to its limits for a specific use case. 
 
 Deep training builds a custom neural network for your application from the ground-up. This means that your model can become an expert in recognizing the unique set of visual features that is important in your data set.
 

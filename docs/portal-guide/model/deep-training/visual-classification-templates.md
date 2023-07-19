@@ -5,8 +5,10 @@ sidebar_position: 1
 
 # Visual Classification Templates
 
-**Classification templates let you classify what is in your inputs**
+**Learn about our visual classification templates**
 <hr />
+
+Classification templates let you classify what is in your inputs.
 
 ## MMClassification_ResNet_50_RSB_A1
 
@@ -34,7 +36,7 @@ Additionally, the model has been further trained or fine-tuned on additional ima
 
 The template is implemented using the Batch Normalization technique. The Batch Normalization method is a normalization technique that helps accelerate training and improve model performance by reducing internal covariate shift.
 
-By incorporating Batch Normalization into the Inception architecture, the **Clarifai_InceptionBatchNorm** classifier achieves better generalization and stability during training. It allows for efficient and accurate classification of images, leveraging the rich pretraining on the ImageNet-21K dataset and the additional image classification data.
+By incorporating Batch Normalization into the Inception architecture, the Clarifai_InceptionBatchNorm classifier achieves better generalization and stability during training. It allows for efficient and accurate classification of images, leveraging the rich pretraining on the ImageNet-21K dataset and the additional image classification data.
 
 ## Clarifai_InceptionV2
 
