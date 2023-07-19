@@ -1,6 +1,5 @@
 ---
 description: Train the entire graph for your custom model
-sidebar_position: 5
 ---
 
 # Deep Training
@@ -22,15 +21,14 @@ You might consider deep training if you have:
 * **Accurate labels**
 * **Expertise and time to fine tune models**
 
-:::info
-
-Deep training is in early access preview. To request access, [contact us](https://www.clarifai.com/contact).
-
-:::
-
 ## Template Types
 
 You can take advantage of a variety of templates when building your deep trained models. Templates give you the control to choose the specific architecture used by your neural network, and also define a set of hyperparameters that you can use to fine-tune the way that your model learns.
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
 
 ### Visual Classifier
 
@@ -156,5 +154,7 @@ You can cancel a deep training job at any time by deleting the model version tha
 
 ![delete model version](/img/community_2/delete_model_version.png)
 
-Deep training is billed at an hourly rate and for cancelled jobs, you will be charged for the time that you've used to train your model. You can learn more about deep training pricing [here](https://www.clarifai.com/pricing).
+Deep training is billed at an hourly rate and for cancelled jobs, you will be charged for the time that you've used to train your model. 
+
+You can learn more about deep training pricing [here](https://www.clarifai.com/pricing).
 
