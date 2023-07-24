@@ -8,13 +8,13 @@ sidebar_position: 1
 **Learn about our visual classification templates**
 <hr />
 
-Clarifai classification templates let you classify what is in your inputs. Each template comes with its own hyperparameters, which you can tune to influence “how” your model learns. With hyperparameters, you can customize and fine-tune a template to suit your specific tasks and achieve better performance.
+Clarifai visual classification templates let you train a model to classify objects in your image inputs. Each template comes with its own hyperparameters, which you can tune to influence “how” your model learns. With hyperparameters, you can customize and fine-tune a template to suit your specific tasks and achieve better performance.
 
 ## MMClassification_ResNet_50_RSB_A1
 
 This template is a customized variant of the ResNet-50 architecture for multimodal classification tasks. Let’s break down the components in the naming of the deep learning model architecture:
 
-- **MMClassification:** This refers to an abbreviation for "Multimodal Classification." It suggests that the model is designed for the task of classifying or categorizing inputs that contain multiple modalities of data, such as images, text, and audio.
+- **MMClassification:** This refers to the [MMClassification toolkit](https://github.com/open-mmlab/mmpretrain/tree/main) that is designed for image classification tasks. 
 
 - **ResNet_50:** This refers to a specific variant of the Residual Network (ResNet) architecture. ResNet is a popular deep neural network architecture known for its skip connections that help alleviate the vanishing gradient problem. The number "50" typically denotes the depth or number of layers in the ResNet model.
 
@@ -86,7 +86,7 @@ The **Clarifai_InceptionV2** template supports the following hyperparameters:
 
 This template combines the power of the ResNeXt architecture, pre-trained on ImageNet-21K, with fine-tuning on domain-specific image classification data, and tailored modifications to meet Clarifai's unique requirements.
 
-ResNeXt, short for "Residual Next," is a deep convolutional neural network (CNN) architecture that extends the ResNet (Residual Network) architecture. It was introduced by researchers at Facebook AI Research (FAIR) as an advancement in the field of computer vision.
+[ResNeXt](https://github.com/open-mmlab/mmpretrain/tree/main/configs/resnext), short for "Residual Next," is a deep convolutional neural network (CNN) architecture that extends the ResNet (Residual Network) architecture. It was introduced by researchers at Facebook AI Research (FAIR) as an advancement in the field of computer vision.
 
 ResNeXt introduces the concept of "cardinality" to enhance the representational power of the network. The cardinality represents the number of parallel paths within each network block, and it captures different types of feature interactions. Unlike the original ResNet architecture, which focuses on increasing depth or width, 
 ResNeXt achieves higher model capacity by increasing the number of parallel branches, thus allowing for richer and more diverse feature representations.
