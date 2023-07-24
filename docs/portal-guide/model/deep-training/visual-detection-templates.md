@@ -78,7 +78,7 @@ The **MMDetection_FasterRCNN** template supports the following hyperparameters:
 
 This is a visual detector template based on RetinaNet, a popular object detection framework, that utilizes the InceptionV4 architecture as its backbone.
 
-InceptionV4 is a variant of the Inception architecture, which was originally introduced by Google for image classification tasks. The InceptionV4 model is a convolutional neural network (CNN) that is designed to extract high-level features from images for tasks such as object recognition, classification, and detection. It incorporates various innovative techniques, including inception modules with multiple parallel branches, factorized convolutions, and residual connections, to enhance its performance and efficiency.
+[InceptionV4](https://arxiv.org/abs/1602.07261) is a variant of the Inception architecture, which was originally introduced by Google for image classification tasks. The InceptionV4 model is a convolutional neural network (CNN) that is designed to extract high-level features from images for tasks such as object recognition, classification, and detection. It incorporates various innovative techniques, including inception modules with multiple parallel branches, factorized convolutions, and residual connections, to enhance its performance and efficiency.
 
 **Clarifai_InceptionV4** template leverages the strengths of InceptionV4 by applying it at multiple image scales, allowing for robust detection across a range of object sizes.
 
