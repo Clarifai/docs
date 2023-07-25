@@ -10,6 +10,16 @@ sidebar_position: 3
 
 Embedding models can be useful in their own right (for applications like clustering and visual search), or as an input to a machine learning model for a supervised task. In effect, embedding templates enable you to create your own "base models" that you can then use in your workflows.
 
+:::tip
+
+You can customize most hyperparameters by specifying the following values:
+
+- `minimum`—the minimum value a given parameter can take.
+- `maximum`—the maximum value a given parameter can take.
+- `step`—determines how much you can increment or decrement the minimum or maximum value in a single click/change.
+
+:::
+
 ## Clarifai_ResNet_AngularMargin
 
 This is a powerful deep learning visual embedding template derived from the ResNet101 architecture. It incorporates the angular margin loss function, which is inspired by ArcFace, to enhance the discriminative power of the learned embeddings.
