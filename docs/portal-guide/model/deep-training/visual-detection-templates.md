@@ -12,6 +12,16 @@ Detection templates make it easy to build models that can identify objects withi
 
 Each template comes with its own hyperparameters, which you can tune to influence “how” your model learns. With hyperparameters, you can customize and fine-tune a template to suit your specific tasks and achieve better performance.
 
+:::tip
+
+You can customize most hyperparameters by specifying the following values:
+
+- `minimum`—the minimum value a given parameter can take.
+- `maximum`—the maximum value a given parameter can take.
+- `step`—determines how much you can increment or decrement the minimum or maximum value in a single click/change.
+
+:::
+
 ## MMDetection_YoloF
 
 This is a deep learning template model from MMDetection that focuses on object detection using the YOLO (You Only Look Once) framework.

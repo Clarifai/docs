@@ -15,9 +15,9 @@ Clarifai visual classification templates let you train a model to classify objec
 
 You can customize most hyperparameters by specifying the following values:
 
-- `min`—the minimum value a given parameter can take.
-- `max`—the maximum value a given parameter can take.
-- `step`—Is how much you can increment or decrement the minimum or maximum value in a single click/change.
+- `minimum`—the minimum value a given parameter can take.
+- `maximum`—the maximum value a given parameter can take.
+- `step`—determines how much you can increment or decrement the minimum or maximum value in a single click/change.
 
 :::
 

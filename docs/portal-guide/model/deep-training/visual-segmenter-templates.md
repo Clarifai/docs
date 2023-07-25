@@ -10,6 +10,16 @@ sidebar_position: 4
 
 Visual segmenter templates are predefined models or patterns used in computer vision tasks to perform image segmentation. Image segmentation involves dividing an image into different regions or segments based on their visual characteristics, such as color, texture, or object boundaries.
 
+:::tip
+
+You can customize most hyperparameters by specifying the following values:
+
+- `minimum`—the minimum value a given parameter can take.
+- `maximum`—the maximum value a given parameter can take.
+- `step`—determines how much you can increment or decrement the minimum or maximum value in a single click/change.
+
+:::
+
 ## MMSegmentation_SegFormer
 
 This is a deep learning visual segmenter template that has configurations, datasets, and training and evaluation pipelines for various visual segmentation tasks, including semantic segmentation, instance segmentation, panoptic segmentation, and more. It is designed to be highly modular and flexible, allowing researchers and practitioners to easily experiment with different models and datasets.
