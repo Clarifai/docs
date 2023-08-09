@@ -24,7 +24,7 @@ Let’s go through the step-by-step instructions for importing a model from Hugg
 
 :::info
 
-The imported model will be automatically deployed and ready to be evaluated, combined with other models and agent operators in a workflow, or used to serve inference requests as it is. 
+The imported model will be automatically deployed and ready to be evaluated, fine-tuned and customized, combined with other models and agent operators in a workflow, or used to serve inference requests as it is. 
 
 :::
 
@@ -42,58 +42,67 @@ After selecting a model, you’ll be redirected to its individual page, where yo
 
 - Click the **Edit model card** button and ensure that the model’s card doesn't mention `trust_remote_code=True` condition. This condition is necessary for certain model architectures that are not yet included in the Hugging Face Transformers library. Unfortunately, we can't import such models at the moment. 
 
-- Click the **Files and versions** tab and check the size of the model. We only allow importing models that are less than 5GB. 
+- Click the **Files and versions** tab and check the size of the model. We only allow importing models that are **less than 5GB**. 
 
-- Check the license of the model to ensure you can comfortably use the model. If the license type is not listed, you can check it on the model’s GitHub page. 
+- Check the license of the model to ensure you can comfortably use the model.  
 
 ### Step 2: Import the model
 
-After identifying a Hugging Face model, you can now import it to the Clarifai platform. To do so, go to the individual page of an application you own. 
+After identifying a Hugging Face model, you can now import it to the Clarifai platform.
 
-The **Model Importer** form that appears allows you to import the model. 
+Go to the individual page of an application you own, and select the **Models** option on the collapsible left sidebar. 
 
-Let’s talk about the fields to fill in the form. 
+On the models listing page, click the **Add Model** button at the upper-right corner of the page.
 
- ![](/img/model-importer/model_importer-3.png)
+![](/img/model-importer/model_importer-3.png)
 
-#### Clarifai-model-id
-
-You can carefully pick a readable model ID. You can be faithful to the original model ID, while trying to follow Clarifai’s model ID convention: `[use case]-[language (for text or audio) ]-[input type)] -[architecture (optional)]-[public dataset(optional)]`.
-
-##### Clarifai-model-notes
-
-You can provide a short description of what the model is about. 
-
-#### Toolkit
-
-Choose the model’s toolkit from the drop-down list. 
-
-#### Huggingface-pipeline-name
-
-Pick the model type from the drop-down list. We support most of the Hugging Face model types. 
-Click the **Next** button. 
-
-#### Huggingface-model-name
-
-Provide the name of the model as it appears on the Hugging Face platform. You can use the Hugging Face’s copy button to copy the model name, such as `cardiffnlp/twitter-roberta-base-sentiment`.
+On the **Add a model** window that pops up, select the **Import model from Hugging Face** option and click the **Continue** button. 
 
  ![](/img/model-importer/model_importer-5.png)
 
-#### Submit
-
-Finally, click the **Submit** button and enjoy the balloons celebrating your first imported Hugging Face model!
+You'll be redirected to the **Model Importer** page where you can import the Hugging Face model. 
 
  ![](/img/model-importer/model_importer-4.png)
 
+Let’s talk about the fields to fill in the form. 
+
+#### Clarifai Model ID
+
+Carefully pick a memorable, human-readable model ID. You can be faithful to the original model ID, while trying to follow Clarifai’s model ID convention: `[use case]-[language (for text or audio) ]-[input type)] -[architecture (optional)]-[public dataset(optional)]`.
+
+#### Clarifai Model Notes
+
+Provide a short description of what the model is about. Later, you can go to the model's individual page, under the **Notes** section, and edit its description using Markdown.
+
+#### HuggingFace Pipeline Name
+
+Pick the model type from the drop-down list. We support most of the Hugging Face model types. 
+
+#### HuggingFace Model Name
+
+Provide the name of the model as it appears on the Hugging Face platform. You can use the Hugging Face’s copy button to copy the model name, such as `cardiffnlp/twitter-roberta-base-sentiment`.
+
+ ![](/img/model-importer/model_importer-10.png)
+
+#### HuggingFace Tokenizer
+
+Optionally, you can provide the name of the tokenizer you want to import. Only provide it if it is supported by the specified pipeline. 
+
+#### Select the Checkbox
+
+Select the checkbox to acknowledge importing the Hugging Face model. 
+
+#### Import Model
+
+Finally, click the **Import Model** button to complete importing your first Hugging Face model!
+
 ### Step 3: Use the model
 
-Go to the **Models** category on the collapsible left sidebar and select the model you just imported.
+You’ll be redirected to the individual page of the model. 
 
- ![](/img/model-importer/model_importer-7.png)
-
-You’ll be redirected to the individual page of the model. Click the **See versions table** button. You’ll notice that the model is still being uploaded. It takes a few minutes for the model to be uploaded—large models can take longer. 
+If you check the model's versions table, you’ll notice that the model is still being uploaded. It takes a few minutes for the model to be uploaded—large models can take longer. 
  
- ![](/img/model-importer/model_importer-6.png)
+![](/img/model-importer/model_importer-6.png)
 
 After the model has been uploaded, the status will change to “Model is trained and ready.”
 

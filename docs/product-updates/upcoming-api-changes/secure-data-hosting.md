@@ -11,7 +11,7 @@ sidebar_position: -7
 
 **Change**: Enabling Secure Data Hosting (SDH) feature for all users
 
-**Date**:  August 05, 2023 (we’ll enable it in the upcoming  9.7 release)
+**Date**:  August 15, 2023 (we’ll enable it in the 9.7 release)
 
 **Who is affected**: API users who want to download inputs securely
 
