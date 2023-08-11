@@ -1,27 +1,23 @@
 ---
-description: Sort your search results from most similar to least similar.
-sidebar_position: 1
+description: Use vector search to sort, rank, and retrieve annotated objects within images
+sidebar_position: 2
 ---
 
-# Rank
+# Smart Object Search
 
-**Sort your search results from most similar to least similar**
+**Use vector search to sort, rank, and retrieve annotated objects within imagesr**
 <hr />
 
-## Search by Predictions
+Smart Object Search, also called localized search, is our proprietary feature that uses deep learning techniques to sort, rank, and retrieve annotated objects (bounding boxes) within images based on their content and similarity. 
 
-We enable you to discover and retrieve the most relevant images from your dataset by searching for the concepts identified by your AI models. 
+It extends the capabilities of traditional object search, which typically relies on object labels or metadata, by leveraging advanced techniques such as object embeddings and vector search.
 
-Our world-class patented technology gives you the ability to search for predictions immediately after training—you do not need to wait for re-indexing. 
+Here's how our Smart Object Search feature works:
 
-You can build recommendation systems with rapid retraining cycles for active learning on the fly.
+- **Vector generation**: We transform each annotated object (bounding box) within an image into a high-dimensional vector representation known as an object embedding, and store it in our vector database. Object embeddings are learned using deep learning techniques that capture the visual features and characteristics of the objects.
 
-![](/img/community/search/Rank_Predictions_Search.png)
+- **Vector search**: When a user performs an object search or provides an example object (bounding box), we convert that object into an object embedding vector. Then, we perform a similarity search in the object vector store using the query object's embedding vector.
 
-## Search by Visual Similarity
+- **Similarity ranking**: We retrieve the annotated objects that are most visually similar to the query object based on their object embeddings. The ranking of the retrieved objects is determined by the similarity scores between the query object and each of the retrieved objects. Our vector search engine ranks objects with higher similarity scores higher and considers them more visually similar to the query.
 
-We enable you to go beyond simple keyword searches. You can quickly draw a direct line from the source of an idea \(an image\), to the information you need. You do not need to guess keywords. 
 
-Similarly, you can combine our Search feature with detection models so that you can search for a specific thing or a region of an image.
-
-![](/img/community/search/Rank_Similarity_Search.png)

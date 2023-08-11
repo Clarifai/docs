@@ -22,10 +22,5 @@ Trim down the amount of data returned in search. For example, you may only want 
 
 Combine multiple search parameters. For example, you can find all the inputs within a geographical region with a "weapon" in them, or all annotations assigned to user "Joe", or visually similar product images that are assigned the word "XL" in metadata.
 
-:::important note
-The search functionality is currently only available for images.
-:::
-
-
 ![Image illustrating how to search by images using Clarifai&apos;s concepts](/img/illustration-search.png)
 

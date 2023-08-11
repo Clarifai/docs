@@ -1,6 +1,6 @@
 ---
 description: Step-by-step instructions for importing models into the Clarifai platform
-sidebar_position: 7
+sidebar_position: 8
 ---
 
 # Import Models from Hugging Face
