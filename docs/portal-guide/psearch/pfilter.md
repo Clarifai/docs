@@ -1,6 +1,6 @@
 ---
 description: Reduce noise by filtering out unwanted data
-sidebar_position: 2
+sidebar_position: 5
 ---
 
 # Filter

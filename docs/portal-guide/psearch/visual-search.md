@@ -1,64 +1,76 @@
 ---
-description: Search based on semantic similarity.
-sidebar_position: 5
+description: Use vector search to sort, rank, and retrieve images
+sidebar_position: 1
 ---
 
-# Visual Search
+# Smart Image Search
 
-**Search based on semantic similarity**
+**Use vector search to sort, rank, and retrieve images**
 <hr />
 
-With visual search, you can search for images in your application based on their "visual similarity" to other images. Visual search uses the same underlying technology that powers classification and detection, but does not require concepts. This means that you do not need to label or train your model with custom concepts, and you do not need to use any existing concepts in our pre-built models. Visual search ranks your data based on the similarity of visual characteristics alone.
+Smart Image Search is our proprietary feature that uses deep learning techniques to sort, rank, and retrieve images based on their content and visual similarity. It goes beyond traditional image search methods that rely solely on image metadata or textual annotations.
 
-Just keep in mind that visual search is not an "objective" measure of visual similarity. Visual search uses a model _embedding_ to measure visual similarity. The embedding can be thought of as your model's "feature identifier". If you train your model on images of human faces, it will understand features like eyes, ears, noses and mouths; if you train your model on images of houses, it will understand features like windows, roofs and doors.
+Here's how our Smart Image Search feature works:
 
-## Full Scene Visual Search
+- **Vector generation**: We transform each image in your app into a high-dimensional vector representation known as an image embedding, and store it in our vector database. Image embeddings are learned using deep learning techniques that capture the visual features and patterns present in the images.
 
-To perform a visual search that uses an entire image as an input \(the "full scene"\), just navigate to Explorer and click the magnifying glass icon in the bottom righthand corner of an image.
+- **Vector search**: When a user performs an image search or provides an example image, we convert that image into an image embedding vector. Then, we perform a similarity search against the image vector store using the query image's embedding vector.
 
-![](/img/magnify_glass.jpg)
+- **Similarity ranking**: We retrieve the images that are most similar to the query image based on their image embeddings. The ranking of the retrieved images is typically determined by the similarity scores between the query image and each of the retrieved images. Our vector search engine ranks images with higher similarity scores higher and considers them more visually similar to the query. 
 
-A thumbnail of your image will be added to the search bar and Explorer will display your inputs in a ranking from most visually similar to least visually similar.
+Let’s demonstrate how you can carry out different types of Smart Image Search on our Portal. 
 
-![](/img/visual_search_results.jpg)
+Start by going to your app and selecting the **Inputs** option on the collapsible left sidebar. You’ll be redirected to the Inputs Manager page where you can see the inputs available on your app. 
 
-## Localized Search
+You can then perform various image search actions on them. 
 
-Localized search lets you perform visual searches by using the detected regions of an image. To perform a localized search, you will need to use a "Detection" model in your base workflow.
+## Smart Image Search by Visual Similarity
 
-![](/img/detection_model.jpg)
+This feature is also called Image Similarity Search or Reverse Image Search. It allows you to rank, sort, and retrieve images based on their visual similarity to a provided query image. 
 
-Navigate to the "Detection" window on the righthand side of the screen in Explorer. Here you will see the individual objects detected by your model. Just click the "magnifying glass over bounding box" icon next to the object that you would like to search with.
+If you hover over the image you want to use to perform the visual similarity search, some icons will appear on the left side of the image. Click the magnifying glass icon. 
 
-![](/img/local_magnify.jpg)
+![smart image search by visual similarity](/img/smart-search/search_1.png)
 
-A thumbnail of your image will be added to the search bar, and Explorer will rank your inputs based on visual similarity to the region of the image that you searched with.
+A thumbnail of the image will be added to the inputs search bar and your search results will be displayed in a ranking fashion—from the most visually similar to the least visually similar.
 
-![](/img/visual_searh_local.jpg)
+![smart image search results](/img/smart-search/search_2.png)
 
-### Face Detection and Search
+## Smart Image Search by Predicted Concept
 
-One common use for localized search is searching for images of specific people. Face detection behaves just like other detection models. Begin by creating an app that uses "Face" as the base workflow, and then click the "magnifying glass" icon next to the image of the person that you would like to search for.
+You can rank, sort, and retrieve images based on the [concepts](https://docs.clarifai.com/portal-guide/concepts/create-get-update-delete) predicted by AI models. Just provide a query concept and the most relevant matches associated with that concept will be displayed. 
 
-![](/img/face_search.jpg)
+Go to the inputs search bar, add an hashtag (#), and start typing the concept you want to search for. 
 
-## Visual Search in Video
+![smart image search results](/img/smart-search/search_3.png)
 
-**Now available for early access preview. Contact customer support for additional information**
+You’ll notice that a small drop-down list will appear having the concepts you’ve trained with your model as well as the concepts present in the [base workflow](https://docs.clarifai.com/clarifai-basics/applications/application-settings#base-workflow) of your app. Your model’s concepts will appear first in the list. 
 
-You can also use full scene and localized search with video. Each frame of video is treated like an individual image. You can view detections and search with detected regions just like with still photos.
+Choose the concept you want to search for, and your results will be displayed on the page. The search results will be ranked based on the inputs with the highest predicted values for the given concept.
 
-![](/img/local_magnify_video.jpg)
+![smart image search results](/img/smart-search/search_4.png)
 
-### The Timeline
+## Smart Image Search by Image Caption
 
-When you search a region of a video, Explorer will display all still images and video frames that contain visually similar images to the region that you searched with. When you click on a frame of a video, the whole video will open in a timeline view. From here, and sections of video that contain visually similar images will be highlighted in green.
+You can rank, sort, and retrieve images based on a predicted match to a query caption text. You just need to provide a caption text that best describes the images you want to search for, and the most relevant matches associated with that query will be displayed.
 
-![](/img/search_timeline.jpg)
+Performing searches using full texts allow you to provide a much more in-depth context and retrieve more relevant results—as compared to other types of searches. 
 
-### Refine search
+:::info
 
-When working with a mix of video and still images in an application, you have the ability to refine your search results. You can choose to only view still images or only view videos in your search results. You can also choose detection thresholds, so that you can control how visually similar images will have to be to be returned in your search results.
+You need to choose the **Universal** [base workflow](https://docs.clarifai.com/clarifai-basics/applications/application-settings#base-workflow) for the Smart Image Search by Caption feature to work on your app.  
 
-![](/img/refine_search.jpg)
+:::
+
+Here is an example of how you can use this feature.
+
+![smart image search results](/img/smart-search/search_10.png)
+ 
+You can also get more specific and mention numbers in your query caption text.
+
+![smart image search results](/img/smart-search/search_12.png)
+
+You can even get search results with OCR-like (optical character recognition) capabilities.
+
+![smart image search results](/img/smart-search/search_11.png)
 
