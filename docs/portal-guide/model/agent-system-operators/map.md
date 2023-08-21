@@ -8,6 +8,9 @@ sidebar_position: 9
 **Learn about our map operators**
 <hr />
 
-The map operators include:
+## Concept Synonym Mapper 
 
-- Concept synonym mapper
+**Output**: Concepts
+
+Allows you to map the input concepts to output concepts by following synonym concept relations in the knowledge graph of your app. 
+
