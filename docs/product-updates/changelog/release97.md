@@ -8,7 +8,7 @@ pagination_prev: product-updates/changelog/release96
 
 # Release 9.7
 
-**Release Date:** August 14th, 2023
+**Release Date:** August 15th, 2023
 
 <hr/>
 
