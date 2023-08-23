@@ -327,7 +327,7 @@ You can delete all custom workflows.
 
 Instead of `delete_all`, you can specify a list of workflow IDs to be deleted, using the `ids` field.
 
-::::
+:::
 
 <Tabs>
 

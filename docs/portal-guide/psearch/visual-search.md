@@ -50,7 +50,7 @@ Choose the concept you want to search for, and your results will be displayed on
 
 ![smart image search results](/img/smart-search/search_4.png)
 
-## Smart Image Search by Image Caption
+## Smart Image Search by Caption
 
 You can rank, sort, and retrieve images based on a predicted match to a query caption text. You just need to provide a caption text that best describes the images you want to search for, and the most relevant matches associated with that query will be displayed.
 
