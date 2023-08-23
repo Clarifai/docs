@@ -19,6 +19,6 @@ For a listing of the models available to you:
 
 :::tip
 
-[Click here](../../portal-guide/model/model-types/) to learn more about the model types we offer.
+[Click here](https://docs.clarifai.com/portal-guide/model/model-types/) to learn more about the model types we offer.
 
 :::
