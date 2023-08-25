@@ -70,6 +70,11 @@ const config = {
             label: 'Swagger API Guide',
             position: 'right',
           },
+           {
+            href: 'https://clarifai-python.readthedocs.io/en/latest/install.html',
+            label: 'Python SDK Guide (new)',
+            position: 'right',
+          },
         ],
       },
       footer: {

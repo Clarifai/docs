@@ -43,6 +43,8 @@ import CodeJava3 from "!!raw-loader!../../../code_snippets/api-guide/predict/jav
 import CodePHP3 from "!!raw-loader!../../../code_snippets/api-guide/predict/php/llms_3.php";
 import CodeCurl3 from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/llms_3.sh";
 
+import CodePython4 from "!!raw-loader!../../../code_snippets/api-guide/predict/python/llms_4.py";
+
 import CodeOutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/llms_1.txt";
 
 ## Text Completion
@@ -54,6 +56,10 @@ Below is an example of how you would provide a prompt text via a URL and autocom
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodePython1}</CodeBlock>
+</TabItem>
+
+<TabItem value="python2" label="Python (new)">
+    <CodeBlock className="language-python">{CodePython4}</CodeBlock>
 </TabItem>
 
 <TabItem value="js_rest" label="JavaScript (REST)">

@@ -8,6 +8,66 @@ sidebar_position: 6
 **Learn about our algorithmic predict operators**
 <hr />
 
+Prediction models are the "intelligent" part of your AI workflows. Predictions help you to understand, classify, and organize your data. Predictions can be used to drive behaviors in other nodes in your workflow.
+
+Predictions take specific input types and then return predictions about things like the concepts, regions, poses, characters, words, and the abstract visual characteristics of your inputs.
+
+:::tip
+
+Since the algorithmic predict operators can be "chained" together with models to automate tasks in a workflow, you can learn how to create workflows [here](https://docs.clarifai.com/portal-guide/workflows/input-nodes#create-your-workflow). 
+
+:::
+
+## Regex-Based Classifier 
+
+This operator allows you to classify text using regular expressions. When the specified regex pattern matches the text, the text is assigned to one of the predefined concepts. 
+
+Let's demonstrate how you can use the Regex-Based Classifier, alongside [a Prompter template](https://docs.clarifai.com/portal-guide/model/agent-system-operators/transform#prompter), to efficiently classify text. 
+
+**1**. Go to the workflow builder. Then, search for the **prompter** template option in the left-hand sidebar and drag it onto the empty workspace.
+
+ Use the pop-up that appears on the right-hand sidebar to set up the template text. For this example, let's use this template text: 
+
+    ```text
+    <s>[INST]<<SYS>>Classify the following description into one of the following classes: ['cat', 'dog', 'lamp', 'car']. Respond only with one of the provided classes.<</SYS>>[/INST]\n{data.text.raw} 
+    ```
+     
+:::note
+
+Since we'll use the [Llama2-7b-chat](https://clarifai.com/meta/Llama-2/models/llama2-7b-chat) model to help with the classification, we format the prompt text using the special tokens it requires for the specific structure of its prompts. We also include the `{data.text.raw}` placeholder to meet the requirements of the **Prompter** template.
+
+:::
+
+**2**. Search for the **text-to-text** option in the left-hand sidebar and drag it onto the workspace. Then, search for the **Llama2-7b-chat** model on the right-hand sidebar and connect it to the prompter model. 
+
+**3**. Search for the **regex-based classifier** option in the left-hand sidebar and drag it onto the workspace. On the right-hand sidebar, click the **SELECT CONCEPTS** button and use the pop-up that appears to select the relevant concepts already existing in your application. For this example, we select the following concepts: `cat, dog, lamp, car`.
+
+In the **regex** field, provide the regex pattern that will be used to classify the text. If the pattern matches, the text will be classified as the selected concept. For this example, we provide `\bcat\b`, which would match the word "cat" in instances where it appears as a whole word, surrounded by word boundaries.
+
+**4**. Connect the **text-to-text** model with the **regex-based classifier** and save your workflow. 
+
+![](/img/others/regex_1.png)
+
+To observe it in action, navigate to the workflow's individual page and click the **+** button to input your text. 
+
+For this example, let's provide the following input: 
+
+```text
+A small, four-legged mammal with soft fur, typically characterized by its whiskers, sharp retractable claws, and acute senses. Known for its independent and curious nature, it often displays a variety of behaviors such as grooming itself, purring, and occasionally hunting.
+```
+
+This is the prompt text we get for the model:
+
+```text
+<s>[INST]<<SYS>>Classify the following description into one of the following classes: [''''cat'''', ''''dog'''', ‘lamp’, ‘car’]. Respond only with one of the provided classes.<</SYS>>[/INST]\nA small, four-legged mammal with soft fur, typically characterized by its whiskers, sharp retractable claws, and acute senses. Known for its independent and curious nature, it often displays a variety of behaviors such as grooming itself, purring, and occasionally hunting.
+```
+
+The model will process the input and classify the description into one of the provided classes. 
+
+![](/img/others/regex_2.png)
+
+Then, the Regex-Based Classifier will categorize the response into one of the provided concepts, which you can feed into other downstream tasks, such as [an annotation writer](http://localhost:3000/portal-guide/model/agent-system-operators/push#annotation-writer) to create annotations for inputs.
+
 ## KNN Classifier
 
 **Output**: Concepts
@@ -26,9 +86,7 @@ Operator for language identification using the langdetect library.
 
 Triggers a visual search in another app based on the model config, if concept(s) are found in images and returns the matched search hits as regions.
 
-## Regex-Based Classifier 
 
-Classifies text using regex. If the regex matches, the text is classified as the provided concepts.
 
 ## Isolation Operator
 
