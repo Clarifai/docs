@@ -3,4 +3,4 @@
 
 from clarifai.client.model import Model
 text_url = "https://samples.clarifai.com/negative_sentence_12.txt"
-model_prediction = Model("https://clarifai.com/openai/chat-completion/models/GPT-4").predict_from_url(text_url, "text")
+model_prediction = Model("https://clarifai.com/meta/Llama-2/models/llama2-7b-chat").predict_from_url(text_url, "text")

@@ -51,14 +51,14 @@ import CodeOutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/pr
 
 ### Via URL
 
-Below is an example of how you would provide a prompt text via a URL and autocomplete sentences or phrases using the [Llama2-7b-chat](https://clarifai.com/meta/Llama-2/models/Llama2-7b-chat) large language model. 
+Below is an example of how you would provide a prompt text via a URL and autocomplete sentences or phrases using the [Llama2-7b-chat](https://clarifai.com/meta/Llama-2/models/llama2-7b-chat) large language model. 
 
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodePython1}</CodeBlock>
 </TabItem>
 
-<TabItem value="python2" label="Python (new)">
+<TabItem value="python2" label="Python SDK (new)">
     <CodeBlock className="language-python">{CodePython4}</CodeBlock>
 </TabItem>
 
