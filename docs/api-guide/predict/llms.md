@@ -51,7 +51,7 @@ import CodeOutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/pr
 
 ### Via URL
 
-Below is an example of how you would provide a prompt text via a URL and autocomplete sentences or phrases using the [llama2-7b-chat](https://clarifai.com/meta/llama-2/models/llama2-7b-chat) large language model. 
+Below is an example of how you would provide a prompt text via a URL and autocomplete sentences or phrases using the [llama2-7b-chat](https://clarifai.com/meta/Llama-2/models/llama2-7b-chat) large language model. 
 
 <Tabs>
 <TabItem value="python" label="Python">
@@ -91,7 +91,7 @@ Below is an example of how you would provide a prompt text via a URL and autocom
 
 ### Via Local Files
 
-Below is an example of how you would provide a prompt text via a local text file and autocomplete sentences or phrases using the [llama2-7b-chat](https://clarifai.com/meta/llama-2/models/llama2-7b-chat) large language model. 
+Below is an example of how you would provide a prompt text via a local text file and autocomplete sentences or phrases using the [llama2-7b-chat](https://clarifai.com/meta/Llama-2/models/llama2-7b-chat) large language model. 
 
 <Tabs>
 <TabItem value="python" label="Python">
@@ -123,7 +123,7 @@ Below is an example of how you would provide a prompt text via a local text file
 
 ### Via Raw Text
 
-Below is an example of how you would provide a raw text prompt and autocomplete sentences or phrases using the [llama2-7b-chat](https://clarifai.com/meta/llama-2/models/llama2-7b-chat) large language model. 
+Below is an example of how you would provide a raw text prompt and autocomplete sentences or phrases using the [llama2-7b-chat](https://clarifai.com/meta/Llama-2/models/llama2-7b-chat) large language model. 
 
 <Tabs>
 <TabItem value="python" label="Python">
