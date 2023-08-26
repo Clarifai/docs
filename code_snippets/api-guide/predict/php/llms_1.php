@@ -14,7 +14,7 @@ $PAT = 'YOUR_PAT_HERE';
 $USER_ID = 'meta';
 $APP_ID = 'Llama-2';
 // Change these to whatever model and text URL you want to use
-$MODEL_ID = 'Llama2-7b-chat';
+$MODEL_ID = 'llama2-7b-chat';
 $MODEL_VERSION_ID = 'e52af5d6bc22445aa7a6761f327f7129';
 $TEXT_URL = 'https://samples.clarifai.com/negative_sentence_12.txt';
 
