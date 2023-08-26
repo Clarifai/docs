@@ -1,6 +1,6 @@
 ---
 description: Manage the data in your app.
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # Adding and Removing Data
