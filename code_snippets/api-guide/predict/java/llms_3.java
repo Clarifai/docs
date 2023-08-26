@@ -19,7 +19,7 @@ public class ClarifaiExample {
     static final String USER_ID = "meta";    
     static final String APP_ID = "Llama-2";
     // Change these to whatever model and text URL you want to use
-    static final String MODEL_ID = "Llama2-7b-chat"; 
+    static final String MODEL_ID = "llama2-7b-chat"; 
     static final String MODEL_VERSION_ID = "e52af5d6bc22445aa7a6761f327f7129";   
     static final String RAW_TEXT = "I love your product very much";
 
