@@ -8,6 +8,8 @@ sidebar_position: 4
 **Learn about our aggregate operators**
 <hr />
 
+Aggregation operators consolidate multiple model outputs into a single output. Aggregation is important for a wide variety of image, video, and text use cases, and can help you count objects, connect individually detected words into sentences, or connect objects across multiple frames of video.
+
 ## Text Aggregation Operator 
 
 **Output**: Text
