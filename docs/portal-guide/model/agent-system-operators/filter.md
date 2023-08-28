@@ -8,6 +8,8 @@ sidebar_position: 1
 **Learn about our filter operators**
 <hr />
 
+Filtering helps you to remove unwanted data from your workflow. This data might take the form of inputs (like images, video, and text), or it might be an output from another model, like a predicted concept. One very common use of filters in workflows is to eliminate predictions that fall below a certain confidence threshold.
+
 ## Concept Thresholder 
 
 **Output**: Concepts

@@ -28,19 +28,19 @@ Let's demonstrate how you can use the Regex-Based Classifier, alongside [a Promp
 
  Use the pop-up that appears on the right-hand sidebar to set up the template text. For this example, let's use this template text: 
 
-    ```text
-    <s>[INST]<<SYS>>Classify the following description into one of the following classes: ['cat', 'dog', 'lamp', 'car']. Respond only with one of the provided classes.<</SYS>>[/INST]\n{data.text.raw} 
-    ```
+```text
+<s>[INST]<<SYS>>Classify the following description into one of the following classes: ["cat", "dog", "cheetah", "lion"]. Respond only with one of the provided classes.<</SYS>>[/INST]\n{data.text.raw} 
+```
      
 :::note
 
-Since we'll use the [Llama2-7b-chat](https://clarifai.com/meta/Llama-2/models/llama2-7b-chat) model to help with the classification, we format the prompt text using the special tokens it requires for the specific structure of its prompts. We also include the `{data.text.raw}` placeholder to meet the requirements of the **Prompter** template.
+Since we'll use the [llama2-13b-chat](https://clarifai.com/meta/Llama-2/models/llama2-13b-chat) model to help with the classification, we format the prompt text using the special tokens it requires for the specific structure of its prompts. We also include the `{data.text.raw}` placeholder to meet the requirements of the **Prompter** template.
 
 :::
 
-**2**. Search for the **text-to-text** option in the left-hand sidebar and drag it onto the workspace. Then, search for the **Llama2-7b-chat** model on the right-hand sidebar and connect it to the prompter model. 
+**2**. Search for the **text-to-text** option in the left-hand sidebar and drag it onto the workspace. Then, search for the **llama2-13b-chat** model on the right-hand sidebar and connect it to the prompter model. 
 
-**3**. Search for the **regex-based classifier** option in the left-hand sidebar and drag it onto the workspace. On the right-hand sidebar, click the **SELECT CONCEPTS** button and use the pop-up that appears to select the relevant concepts already existing in your application. For this example, we select the following concepts: `cat, dog, lamp, car`.
+**3**. Search for the **regex-based classifier** option in the left-hand sidebar and drag it onto the workspace. On the right-hand sidebar, click the **SELECT CONCEPTS** button and use the pop-up that appears to select the relevant concepts already existing in your application. For this example, we select the following concepts: `cat, dog, cheetah, lion`.
 
 In the **regex** field, provide the regex pattern that will be used to classify the text. If the pattern matches, the text will be classified as the selected concept. For this example, we provide `\bcat\b`, which would match the word "cat" in instances where it appears as a whole word, surrounded by word boundaries.
 
@@ -53,20 +53,20 @@ To observe it in action, navigate to the workflow's individual page and click th
 For this example, let's provide the following input: 
 
 ```text
-A small, four-legged mammal with soft fur, typically characterized by its whiskers, sharp retractable claws, and acute senses. Known for its independent and curious nature, it often displays a variety of behaviors such as grooming itself, purring, and occasionally hunting.
+A small, four-legged mammal with soft fur, typically characterized by its whiskers, sharp retractable claws, and acute senses. Known for its independent and curious nature, it often displays a variety of behaviors such as grooming itself, purring, and occasionally hunting. What is this animal?
 ```
 
 This is the prompt text we get for the model:
 
 ```text
-<s>[INST]<<SYS>>Classify the following description into one of the following classes: [''''cat'''', ''''dog'''', ‘lamp’, ‘car’]. Respond only with one of the provided classes.<</SYS>>[/INST]\nA small, four-legged mammal with soft fur, typically characterized by its whiskers, sharp retractable claws, and acute senses. Known for its independent and curious nature, it often displays a variety of behaviors such as grooming itself, purring, and occasionally hunting.
+<s>[INST]<<SYS>>Classify the following description into one of the following classes: [''cat'', ''dog'', ''cheetah'', ''lion'']. Respond only with one of the provided classes.<</SYS>>[/INST]\nA small, four-legged mammal with soft fur, typically characterized by its whiskers, sharp retractable claws, and acute senses. Known for its independent and curious nature, it often displays a variety of behaviors such as grooming itself, purring, and occasionally hunting. What is this animal?[/INST]
 ```
 
 The model will process the input and classify the description into one of the provided classes. 
 
 ![](/img/others/regex_2.png)
 
-Then, the Regex-Based Classifier will categorize the response into one of the provided concepts, which you can feed into other downstream tasks, such as [an annotation writer](http://localhost:3000/portal-guide/model/agent-system-operators/push#annotation-writer) to create annotations for inputs.
+Then, the Regex-Based Classifier will categorize the response into one of the provided concepts, which you can feed into other downstream tasks, such as [an Annotation Writer](http://localhost:3000/portal-guide/model/agent-system-operators/push#annotation-writer) to create annotations for inputs.
 
 ## KNN Classifier
 

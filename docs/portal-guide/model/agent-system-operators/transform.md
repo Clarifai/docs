@@ -8,7 +8,9 @@ sidebar_position: 2
 **Learn about our transform operators**
 <hr />
 
-Transform operators are a specific type of agent system operators that are specialized for data transformation tasks. These operators are responsible for modifying or transforming data as it passes through the workflow.
+Transform operators are a specific type of agent system operators that are specialized for data transformation tasks. These operators are responsible for modifying and/or augmenting your data as it passes through the workflow.
+
+They can be used to crop out regions of an image, align an image based on the pose of a face, or even map predictions from one model to another.
 
 :::tip
 
