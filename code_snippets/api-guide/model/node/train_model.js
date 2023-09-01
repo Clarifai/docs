@@ -1,16 +1,18 @@
 //index.js file
 
-//////////////////////////////////////////////////////////////////////////////////
-// In this section, we set the user authentication, app ID, and the model ID.  
+////////////////////////////////////////////////////////////////////////////////////////
+// In this section, we set the user authentication, app ID, model ID, and concept IDs.
 // Change these strings to run your own example.
-/////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
 
 const USER_ID = 'YOUR_USER_ID_HERE';
 // Your PAT (Personal Access Token) can be found in the portal under Authentification
 const PAT = 'YOUR_PAT_HERE';
 const APP_ID = 'YOUR_APP_ID_HERE';
-// Change this to train your own model
+// Change these to train your own model
 const MODEL_ID = 'my-pets';
+const CONCEPT_ID_1 = 'charlie';
+const CONCEPT_ID_2 = 'our_wedding';
 
 /////////////////////////////////////////////////////////////////////////////
 // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -30,7 +32,13 @@ stub.PostModelVersions(
             "user_id": USER_ID,
             "app_id": APP_ID
         },
-        model_id: MODEL_ID
+        model_id: MODEL_ID,
+        model_versions: [{
+            output_info: {
+                data: { concepts: [{ id: CONCEPT_ID_1, value: 1 }, { id: CONCEPT_ID_2, value: 1 }] },
+            }
+        }
+        ]
     },
     metadata,
     (err, response) => {
@@ -39,7 +47,7 @@ stub.PostModelVersions(
         }
 
         if (response.status.code !== 10000) {
-            throw new Error("Post model versions failed, status: " + response.status.description);
+            throw new Error("Post models failed, status: " + response.status.description);
         }
     }
 );

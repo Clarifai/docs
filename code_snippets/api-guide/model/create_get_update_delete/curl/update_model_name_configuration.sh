@@ -9,8 +9,7 @@ curl -X PATCH "https://api.clarifai.com/v2/users/YOUR_USER_ID_HERE/apps/YOUR_APP
         "output_info": {
           "data": {"concepts": [{"id": "birds"}, {"id": "hurd"}]},
           "output_config": {
-            "concepts_mutually_exclusive": true,
-            "closed_environment": true
+            "concepts_mutually_exclusive": true            
           }
         }
       }

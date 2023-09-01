@@ -1,11 +1,11 @@
 ---
-description: Manage your model training jobs.
+description: Learn how to create, train, get, update, delete, predict, and search your models
 sidebar_position: 5
 ---
 
-# Models: Create, Update, Get, Delete
+# Create, Train, Get, Update, Delete
 
-**Manage your model training jobs**
+**Learn how to create, train, get, update, delete, predict, and search your models**
 <hr />
 
 import Tabs from '@theme/Tabs';
@@ -122,9 +122,15 @@ The initialization code used in the following examples is outlined in detail on 
 
 To create a model, you need to specify the model's name and other required fields⁠—depending on the type of model you want to create. 
 
-If you want to specify [the type of model](https://docs.clarifai.com/api-guide/model/model-types) you want to create, you need to provide its ID using the `model_type_id` parameter⁠—though specifying the ID is optional.
+If you want to specify [the type of model](https://docs.clarifai.com/portal-guide/model/model-types/) you want to create, you need to provide its ID using the `model_type_id` parameter⁠—though specifying the ID is optional.
 
-Below is an example of how you would create an `embedding-classifier` model with one initial concept. You can always add and remove concepts later.
+Below is an example of how you would create an `embedding-classifier` (Transfer Learning Classifier) model. You can call the [**ListModelTypes**](#list-model-types) endpoint to learn more about the model types we offer.  
+
+:::tip
+
+**PostModels** will create new models but not create new model versions. This means trainable models that have not yet been trained will require the additional step of calling [**PostModelVersions**](#train-a-model)—while providing the `*_info` fields in the model version—to effect training.
+
+:::
 
 <Tabs>
 
@@ -206,32 +212,42 @@ Conversely, if you'd like to remove concepts from a model, you can also do that.
 
 </Tabs>
 
-## Update
+## Train
 
-### Update Model Name and Configuration
+### Train a Model
 
-Let's change the model name to `newname` and set the model's configuration to have `concepts_mutually_exclusive=true` and `closed_environment=true`.
+When you train a model, you are telling the system to look at successfully indexed images with concepts you've provided and learn from them. This train operation is asynchronous. It may take a few seconds for your model to be fully trained and ready.
+
+You can repeat this operation as often as you like. By adding more images with concepts and training, you can get the model to predict exactly how you want it to.
+
+:::tip
+
+The **PostModelVersions** endpoint kicks off training and creates a new model version. You can use it to give information specific to a model version. All the `*_info` fields—such as `output_info`, `input_info`, `train_info`, and `import_info`—are available on this endpoint. This minimizes the confusion and difficulty of maintaining these fields. You can patch model specific fields without worrying about other model version fields being affected.
+
+:::
 
 <Tabs>
 
 <TabItem value="python" label="Python">
-    <CodeBlock className="language-python">{PythonUpdateConfiguration}</CodeBlock>
+    <CodeBlock className="language-python">{PythonTrainModel}</CodeBlock>
 </TabItem>
 
 <TabItem value="js_rest" label="JavaScript (REST)">
-    <CodeBlock className="language-javascript">{JSUpdateConfiguration}</CodeBlock>
+    <CodeBlock className="language-javascript">{JSTrainModel}</CodeBlock>
 </TabItem>
 
 <TabItem value="nodejs" label="NodeJS">
-    <CodeBlock className="language-javascript">{NodeUpdateConfiguration}</CodeBlock>
+    <CodeBlock className="language-javascript">{NodeTrainModel}</CodeBlock>
 </TabItem>
 
+<!--
 <TabItem value="java" label="Java">
-    <CodeBlock className="language-java">{JavaUpdateConfiguration}</CodeBlock>
+    <CodeBlock className="language-java">{JavaTrainModel}</CodeBlock>
 </TabItem>
+-->
 
 <TabItem value="curl" label="cURL">
-    <CodeBlock className="language-bash">{CurlUpdateConfiguration}</CodeBlock>
+    <CodeBlock className="language-bash">{CurlTrainModel}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -503,6 +519,43 @@ You can also list all the inputs that were used to train a specific model versio
 
 </Tabs>
 
+## Update
+
+### Update Model Name and Configuration
+
+Let's change the model name to `newname` and set the model's configuration to have `concepts_mutually_exclusive=true`.
+
+:::info
+
+- The **PatchModels** endpoint allows you to patch only the model level fields, nothing in the model version. 
+- The **PatchModelVersions** endpoint allows you to change most of the model version fields like gettable, metadata, license, description, notes, and `output_info` (not including concepts).
+
+:::
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonUpdateConfiguration}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSUpdateConfiguration}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeUpdateConfiguration}</CodeBlock>
+</TabItem>
+
+<TabItem value="java" label="Java">
+    <CodeBlock className="language-java">{JavaUpdateConfiguration}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlUpdateConfiguration}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
 ## Delete
 
 ### Delete a Model
@@ -591,42 +644,6 @@ Please proceed with extreme caution as deleted models cannot be recovered.
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlDeleteAllModels}</CodeBlock>
-</TabItem>
-
-</Tabs>
-
-## Train
-
-### Train a Model
-
-When you train a model, you are telling the system to look at successfully indexed images with concepts you've provided and learn from them. This train operation is asynchronous. It may take a few seconds for your model to be fully trained and ready.
-
-:::tip
-
-You can repeat this operation as often as you like. By adding more images with concepts and training, you can get the model to predict exactly how you want it to.
-
-:::
-
-<Tabs>
-
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python">{PythonTrainModel}</CodeBlock>
-</TabItem>
-
-<TabItem value="js_rest" label="JavaScript (REST)">
-    <CodeBlock className="language-javascript">{JSTrainModel}</CodeBlock>
-</TabItem>
-
-<TabItem value="nodejs" label="NodeJS">
-    <CodeBlock className="language-javascript">{NodeTrainModel}</CodeBlock>
-</TabItem>
-
-<TabItem value="java" label="Java">
-    <CodeBlock className="language-java">{JavaTrainModel}</CodeBlock>
-</TabItem>
-
-<TabItem value="curl" label="cURL">
-    <CodeBlock className="language-bash">{CurlTrainModel}</CodeBlock>
 </TabItem>
 
 </Tabs>

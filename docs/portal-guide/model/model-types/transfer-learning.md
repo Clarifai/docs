@@ -12,7 +12,7 @@ sidebar_position: 1
 
 **Output**: [Concepts]( https://docs.clarifai.com/portal-guide/concepts)
 
-A transfer-learning model, which we previously called an "embed-classifier", is a type of machine learning model that uses an embedding layer to represent images, videos, or texts as low-dimensional vectors, and then uses a classifier layer to predict the class of the input.
+A transfer-learning model, which we previously called an "embedding-classifier", is a type of machine learning model that uses an embedding layer to represent images, videos, or texts as low-dimensional vectors, and then uses a classifier layer to predict the class of the input.
 
 The embedding layer takes the input image, video, or text, and converts it into a vector of numbers, where each number represents the similarity of the input to a particular word or concept. The classifier layer then takes the embedding vector as input and predicts the class of the input.
 

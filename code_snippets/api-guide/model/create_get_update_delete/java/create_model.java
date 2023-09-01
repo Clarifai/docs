@@ -7,10 +7,10 @@ import com.clarifai.grpc.api.status.StatusCode;
 
 public class ClarifaiExample {
 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    // In this section, we set the user authentication, app ID, model ID, model type ID,
-    // and concept ID. Change these strings to run your own example.
-    //////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////
+    // In this section, we set the user authentication, app ID, model ID, and model type ID.
+    // Change these strings to run your own example.
+    ///////////////////////////////////////////////////////////////////////////////////////////
 
     static final String USER_ID = "YOUR_USER_ID_HERE";
     //Your PAT (Personal Access Token) can be found in the portal under Authentication
@@ -19,8 +19,7 @@ public class ClarifaiExample {
     // Change these to create your own model    
     static final String MODEL_ID = "petsID";
     static final String MODEL_TYPE_ID = "embedding-classifier";
-    static final String CONCEPT_ID = "boscoe";
-
+    
     ///////////////////////////////////////////////////////////////////////////////////
     // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
     ///////////////////////////////////////////////////////////////////////////////////	
@@ -36,12 +35,7 @@ public class ClarifaiExample {
             .addModels(
                 Model.newBuilder()
                 .setId(MODEL_ID)
-                .setModelTypeId(MODEL_TYPE_ID)
-                .setOutputInfo(
-                    OutputInfo.newBuilder().setData(
-                        Data.newBuilder().addConcepts(Concept.newBuilder().setId(CONCEPT_ID))
-                    )
-                )
+                .setModelTypeId(MODEL_TYPE_ID)              
             ).build()
         );
 

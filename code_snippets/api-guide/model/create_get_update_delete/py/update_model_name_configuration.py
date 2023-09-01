@@ -44,8 +44,7 @@ patch_models_response = stub.PatchModels(
                         ]
                     ),
                     output_config=resources_pb2.OutputConfig(
-                        concepts_mutually_exclusive=True,
-                        closed_environment=True,
+                        concepts_mutually_exclusive=True                        
                     )
                 )
             )

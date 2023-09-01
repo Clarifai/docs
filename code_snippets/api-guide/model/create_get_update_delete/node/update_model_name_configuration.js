@@ -40,7 +40,7 @@ stub.PatchModels(
                 name: MODEL_NAME,
                 output_info: {
                     data: { concepts: [{ id: CONCEPT_ID_1 }, { id: CONCEPT_ID_2 }] },
-                    output_config: { concepts_mutually_exclusive: true, closed_environment: true }
+                    output_config: { concepts_mutually_exclusive: true }
                 }
             }
         ]

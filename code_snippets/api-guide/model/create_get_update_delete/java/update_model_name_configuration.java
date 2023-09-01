@@ -48,8 +48,7 @@ public class ClarifaiExample {
                     )
                     .setOutputConfig(
                         OutputConfig.newBuilder()
-                        .setConceptsMutuallyExclusive(true)
-                        .setClosedEnvironment(true)
+                        .setConceptsMutuallyExclusive(true)                        
                     )
                 )
             ).build()
