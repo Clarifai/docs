@@ -120,11 +120,13 @@ The initialization code used in the following examples is outlined in detail on 
 
 ### Create a Model
 
-To create a model, you need to specify the model's name and other required fields⁠—depending on the type of model you want to create. 
+To create a model, you need to specify the model's name. 
 
-If you want to specify [the type of model](https://docs.clarifai.com/portal-guide/model/model-types/) you want to create, you need to provide its ID using the `model_type_id` parameter⁠—though specifying the ID is optional.
+If you want to specify [the type of model](https://docs.clarifai.com/portal-guide/model/model-types/) you want to create, you need to provide its ID using the `model_type_id` parameter⁠—though specifying the ID is optional. 
 
-Below is an example of how you would create an `embedding-classifier` (Transfer Learning Classifier) model. You can call the [**ListModelTypes**](#list-model-types) endpoint to learn more about the model types we offer.  
+You can call the [**ListModelTypes**](#list-model-types) endpoint to learn more about the model types we offer.  
+
+Below is an example of how you would create an `embedding-classifier` (Transfer Learning Classifier) model. It's also the default model type created if you do not specify the `model_type_id`. 
 
 :::tip
 
