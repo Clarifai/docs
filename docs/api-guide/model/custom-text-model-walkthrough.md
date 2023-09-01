@@ -10,9 +10,9 @@ sidebar_position: 4
 
 The Clarifai API has the ability not only to learn concepts from images and videos, but from texts as well.
 
-In this walkthrough, you'll learn how to create and use a custom text model, learn from your own text data using the power of the Clarifai's base Text model, and predict on new text examples.
+In this walkthrough, you'll learn how to create and use a custom text model, learn from your own text data using the power of the Clarifai's base text model, and predict on new text examples.
 
-The steps below can all be done via [the Clarifai's portal](https://portal.clarifai.com). But here you'll learn how to do them programmatically via an API, using our [gRPC Python client](https://github.com/Clarifai/clarifai-python-grpc).
+The steps below can all be done via [the Clarifai's portal](https://clarifai.com/explore). But here you'll learn how to do them programmatically via an API, using our [gRPC Python client](https://github.com/Clarifai/clarifai-python-grpc).
 
 The examples below map directly to any of our other gRPC clients.
 
@@ -26,7 +26,9 @@ For debugging purposes, each response returned by a method call can be printed t
 
 The first step is manual. In the Clarifai Portal, [create a new application](https://docs.clarifai.com/clarifai-basics/applications/create-an-application) with **Text** selected as the Base Workflow.
 
+<!--
 ![](https://s3.amazonaws.com/clarifai-api/img3/prod/large/e12ce254f2824b0ab2aef1b10784ff23/3e695b780f597cd263b06d0aeb30b3d1?v=001)
+-->
 
 <!--
 Afterward, copy the newly-created application's _API key_ and set it in the variable below. This variable is going to be used by all Clarifai API calls for authorization purposes.
@@ -88,9 +90,7 @@ Let's now wait for all the inputs to download.
 
 ## Create a Custom Model
 
-Now we can create a custom model that's going to be using the `positive` and `negative` concepts. 
-
-All inputs \(in our application\) associated with these two concepts will be used as training data, once we actually train the model.
+Let's create a custom model. 
 
 <Tabs>
 
@@ -102,7 +102,9 @@ All inputs \(in our application\) associated with these two concepts will be use
 
 ## Train the Model
 
-Let's train the model. This will make it learn from the inputs so that we can later use it to predict new text examples. 
+Let's train the model using the `positive` and `negative` concepts. 
+
+All inputs \(in our application\) associated with these two concepts will be used as training data. This will make the model to learn from these inputs so that we can later predict new text examples. 
 
 <Tabs>
 

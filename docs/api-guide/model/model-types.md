@@ -10,7 +10,7 @@ sidebar_position: 2
 
 Clarifai offers a wide variety of [models](https://clarifai.com/explore) that can be used as standalone solutions, or as building blocks for your own custom business solutions.
 
-This page describes some important model types that you should know when working with the Clarifai platform. Please keep in mind that this is an overview of the general categories of models available to you and that new models are created frequently. 
+It's important to note that Clarifai continually introduces new models to augment your options. So, you need to check the platform frequently for an up-to-date list of the models we provide.
 
 For a listing of the models available to you:
 

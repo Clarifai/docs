@@ -14,7 +14,7 @@ Filtering helps you to remove unwanted data from your workflow. This data might 
 
 **Output**: Concepts
 
-It allows you to threshold input concepts according to both a threshold and an operator (>, >=, =, <=, or <). For example, assume the " > " threshold type is set for a model, then if the input `concept.value` is greater than the threshold for that concept, the input concept will be the output from this model; otherwise, it will not be outputted by the model. 
+It allows you to threshold input concepts according to both a threshold and an operator (>, >=, =, <=, or <). For example, if you use the " > " threshold type and set the threshold value to 0.9, only concepts that have been predicted with a confidence score greater than 0.9 will be sent as outputs from the concept thresholder, and other concepts will be ignored. Concept Thresholders can be networked and combined to enable complex routing behaviors.
 
 #### Example use case
 

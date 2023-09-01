@@ -61,6 +61,11 @@ const config = {
             position: 'right',
           },
           {
+            href: 'https://discord.gg/WgUvPK4pVD',
+            label: 'Discord',
+            position: 'right',
+          },
+          {
             href: 'https://join.slack.com/t/clarifaicommunity/shared_invite/zt-1jehqesme-l60djcd3c_4a1eCV~uPUjQ',
             label: 'Community Slack',
             position: 'right',

@@ -4,7 +4,7 @@ description: Learn about deprecation of `closed_environment`
 sidebar_position: -4
 ---
 
-# Deprecation of `closed_environment`
+# Deprecation of `closed_environment` in favor of `enrich_dataset`
 
 **Learn about deprecation of `closed_environment`**
 <hr />

@@ -59,7 +59,7 @@ This walkthrough example assumes that you've selected a Classification Base Work
 
 :::
 
-To get started training your own model, you must first add images that already contain the concepts you want your model to see.
+To get started training your own model, you need to first add images that already contain the concepts you want your model to see.
 
 <Tabs>
 
@@ -127,6 +127,7 @@ client.addInputs()
 ```
 </TabItem>-->
 
+<!--
 <TabItem value="csharp" label="C#">
 
 ```csharp
@@ -154,6 +155,7 @@ namespace YourNamespace
 }
 ```
 </TabItem>
+-->
 
 <!--<TabItem value="objective-c" label="Objective-C">
 
@@ -165,6 +167,7 @@ ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clar
 ```
 </TabItem>-->
 
+<!--
 <TabItem value="php" label="PHP">
 
 ```php
@@ -190,6 +193,7 @@ if ($response-> isSuccessful()) {
 }
 ```
 </TabItem>
+-->
 
 </Tabs>
 
@@ -201,7 +205,7 @@ if ($response-> isSuccessful()) {
 
 ## Create a Model
 
-Once your images with concepts are added, you are now ready to create the model. You'll need a name for the model and you'll also need to provide it with the concepts you added above.
+After adding images with concepts, you are now ready to create a model. You need to provide a name for the model. 
 
 Take note of the `model id` that is returned in the response. We'll need that for the next two steps.
 
@@ -219,9 +223,11 @@ Take note of the `model id` that is returned in the response. We'll need that fo
     <CodeBlock className="language-javascript">{NodeCreateModel}</CodeBlock>
 </TabItem>
 
+<!--
 <TabItem value="grpc_java" label="gRPC Java">
     <CodeBlock className="language-java">{JavaCreateModel}</CodeBlock>
 </TabItem>
+-->
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlCreateModel}</CodeBlock>
@@ -267,6 +273,7 @@ client.createModel("pets")
 ```
 </TabItem>-->
 
+<!--
 <TabItem value="csharp" label="C#">
 
 ```csharp
@@ -292,6 +299,7 @@ namespace YourNamespace
 }
 ```
 </TabItem>
+-->
 
 <!--<TabItem value="objective-c" label="Objective-C">
 
@@ -303,6 +311,7 @@ namespace YourNamespace
 ```
 </TabItem>-->
 
+<!--
 <TabItem value="php" label="PHP">
 
 ```php
@@ -325,6 +334,7 @@ if ($response-> isSuccessful()) {
 }
 ```
 </TabItem>
+-->
 
 </Tabs>
 
@@ -335,7 +345,7 @@ if ($response-> isSuccessful()) {
 
 ## Train the Model
 
-Now that you've added images with concepts, then created a model with those concepts, the next step is to train the model. When you train a model, you are telling the system to look at all the images with concepts you've provided and learn from them. 
+Now that you've added images with concepts, then created a model, the next step is to train the model. When you train a model, you are telling the system to look at all the images with concepts you've provided and learn from them. 
 
 This train operation is asynchronous. It may take a few seconds for your model to be fully trained and ready.
 
@@ -355,9 +365,11 @@ Take note of the `model_version id` in the response. We'll need that for the nex
     <CodeBlock className="language-javascript">{NodeTrainModel}</CodeBlock>
 </TabItem>
 
+<!--
 <TabItem value="grpc_java" label="gRPC Java">
     <CodeBlock className="language-java">{JavaTrainModel}</CodeBlock>
 </TabItem>
+-->
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlTrainModel}</CodeBlock>
@@ -407,6 +419,7 @@ client.trainModel("{model_id}").executeSync();
 ```
 </TabItem>-->
 
+<!--
 <TabItem value="csharp" label="C#">
 
 ```csharp
@@ -429,6 +442,7 @@ namespace YourNamespace
 }
 ```
 </TabItem>
+-->
 
 <!--<TabItem value="objective-c" label="Objective-C">
 
@@ -442,6 +456,7 @@ ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clar
 ```
 </TabItem>-->
 
+<!--
 <TabItem value="php" label="PHP">
 
 ```php
@@ -463,6 +478,7 @@ if ($response-> isSuccessful()) {
 }
 ```
 </TabItem>
+-->
 
 </Tabs>
 
@@ -546,6 +562,7 @@ ModelVersion modelVersion = client.getModelVersionByID("MODEL_ID", "MODEL_VERSIO
 ```
 </TabItem>-->
 
+<!--
 <TabItem value="csharp" label="C#">
 
 ```csharp
@@ -572,6 +589,7 @@ namespace YourNamespace
 }
 ```
 </TabItem>
+-->
 
 <!--<TabItem value="objective-c" label="Objective-C">
 
@@ -585,39 +603,6 @@ ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clar
 }];
 ```
 </TabItem>-->
-
-<TabItem value="php" label="PHP">
-
-```php
-use Clarifai\API\ClarifaiClient;
-use Clarifai\DTOs\Inputs\ClarifaiURLImage;
-use Clarifai\DTOs\Models\ModelType;
-use Clarifai\DTOs\Outputs\ClarifaiOutput;
-use Clarifai\DTOs\Predictions\Concept;
-
-$client = new ClarifaiClient('YOUR_API_KEY');
-
-$response = $client->predict(ModelType::concept(), 'MODEL_ID,
-        new ClarifaiURLImage('https://samples.clarifai.com/puppy.jpeg'))
-    ->executeSync();
-
-if ($response-> isSuccessful()) {
-    /** @var ClarifaiOutput $output */
-    $output = $response->get();
-
-    echo "Predicted concepts:\n";
-    /** @var Concept $concept */
-    foreach ($output->data() as $concept) {
-        echo $concept->name() . ': ' . $concept->value() . "\n";
-    }
-} else {
-    echo "Response is not successful. Reason: \n";
-    echo $response->status()->description() . "\n";
-    echo $response->status()->errorDetails() . "\n";
-    echo "Status code: " . $response->status()->statusCode();
-}
-```
-</TabItem>
 
 </Tabs>
 

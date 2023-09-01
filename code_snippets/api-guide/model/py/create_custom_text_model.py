@@ -1,7 +1,7 @@
-#############################################################################
+################################################################################
 # In this section, we set the user authentication, app ID, and the ID of the 
 # model we want to create. Change these strings to run your own example.
-#############################################################################
+################################################################################
 
 USER_ID = 'YOUR_USER_ID_HERE'
 # Your PAT (Personal Access Token) can be found in the portal under Authentification
@@ -30,16 +30,7 @@ post_models_response = stub.PostModels(
         user_app_id=userDataObject,
         models=[
             resources_pb2.Model(
-                id=MODEL_ID,
-                output_info=resources_pb2.OutputInfo(
-                    data=resources_pb2.Data(
-                        concepts=[
-                            resources_pb2.Concept(id="positive"),
-                            resources_pb2.Concept(id="negative"),
-                        ]
-                    ),
-                    output_config=resources_pb2.OutputConfig(closed_environment=True)
-                )
+                id=MODEL_ID
             )
         ]
     ),
