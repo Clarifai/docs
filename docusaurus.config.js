@@ -47,7 +47,16 @@ const config = {
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({
+    ({      
+      algolia:{
+        appId: 'E9LMD97ZH2',
+        apiKey: 'bb83e0130652ea667b2a9fd12ddb974b',   
+        indexName: 'clarifai',    
+        insights: true, // Optional, automatically send insights when user interacts with search results    
+        container: 'div',    
+        debug: false // Set debug to true if you want to inspect the modal
+
+      },
       navbar: {
         title: 'Clarifai Guide',
         logo: {
@@ -74,12 +83,7 @@ const config = {
             href: 'https://api.clarifai.com/api-doc/?url=https://api.clarifai.com/v2/swagger.json',
             label: 'Swagger API Guide',
             position: 'right',
-          },
-           {
-            href: 'https://clarifai-python.readthedocs.io/en/latest/install.html',
-            label: 'Python SDK Guide (new)',
-            position: 'right',
-          },
+          }
         ],
       },
       footer: {
@@ -144,13 +148,13 @@ const config = {
         id: 'GTM-5W9P7GR', // GTM Container ID
       }
     ],
-    [
-      require.resolve("@cmfcmf/docusaurus-search-local"),
-      {
+    //[
+      //require.resolve("@cmfcmf/docusaurus-search-local"),
+      //{
         // Options here
-        indexBlog: false,
-      },
-    ],
+        //indexBlog: false,
+     // },
+   // ],
     [
       '@docusaurus/plugin-client-redirects',
       {
