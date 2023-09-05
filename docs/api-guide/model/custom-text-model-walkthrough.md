@@ -3,18 +3,18 @@ description: Develop your own custom text classifier.
 sidebar_position: 4
 ---
 
-# Custom Text Model
+# Custom Transfer Learning Text Model
 
-**Develop your own custom text classifier**
+**Develop your own custom text classifier using transfer learning**
 <hr />
 
 The Clarifai API has the ability not only to learn concepts from images and videos, but from texts as well.
 
-In this walkthrough, you'll learn how to create and use a custom text model, learn from your own text data using the power of the Clarifai's base text model, and predict on new text examples.
+In this walkthrough, you'll learn how to create and use a custom text model, learn from your own text data using the power of the Clarifai's base text model, and predict on new text examples. 
 
-The steps below can all be done via [the Clarifai's portal](https://clarifai.com/explore). But here you'll learn how to do them programmatically via an API, using our [gRPC Python client](https://github.com/Clarifai/clarifai-python-grpc).
+You'll also learn how to use our world-class [transfer learning](https://docs.clarifai.com/portal-guide/model/model-types/transfer-learning) technology to create and train text models accurately and fast. 
 
-The examples below map directly to any of our other gRPC clients.
+The steps below can all be done via [the Clarifai's portal](https://clarifai.com/explore). But here you'll learn how to do them programmatically via an API, using our [gRPC Python client](https://github.com/Clarifai/clarifai-python-grpc). The examples map directly to any of our other gRPC clients.
 
 :::info
 The walkthrough assumes you have already created your Clarifai's user account and the [Personal Access Token](https://portal.clarifai.com/settings/authentication). Also, first set up the gRPC Python client together with the initial code. See the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
@@ -24,7 +24,7 @@ For debugging purposes, each response returned by a method call can be printed t
 
 ## Create a New Application
 
-The first step is manual. In the Clarifai Portal, [create a new application](https://docs.clarifai.com/clarifai-basics/applications/create-an-application) with **Text** selected as the Base Workflow.
+The first step is manual. In the Clarifai Portal, [create a new application](https://docs.clarifai.com/clarifai-basics/applications/create-an-application) with **Text/Document** selected as the primary input type. The Base Workflow will be automatically selected for you. 
 
 <!--
 ![](https://s3.amazonaws.com/clarifai-api/img3/prod/large/e12ce254f2824b0ab2aef1b10784ff23/3e695b780f597cd263b06d0aeb30b3d1?v=001)
@@ -90,7 +90,7 @@ Let's now wait for all the inputs to download.
 
 ## Create a Custom Model
 
-Let's create a custom model. 
+Let's create a custom transfer learning model (also called an "embedding-classifier"). 
 
 <Tabs>
 

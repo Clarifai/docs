@@ -32,7 +32,7 @@ response = stub.ListModelTypes(
 
 if response.status.code != status_code_pb2.SUCCESS:
     print(response.status)
-    raise Exception("Patch models failed, status: " + response.status.description)
+    raise Exception("List models failed, status: " + response.status.description)
 
 for model_type in response.model_types:
   print(model_type)

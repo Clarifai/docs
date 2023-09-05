@@ -8,7 +8,7 @@ sidebar_position: 6
 **Train the complete graph of your model**
 <hr />
 
-Clarifai offers a variety of prebuilt models that are designed to help you create AI solutions quickly and efficiently. Clarifai Models are the recommended starting points for many users because they offer incredibly fast training times when you customize them using the "Context-Based Classifier" type found in the Portal's Model Mode.
+Clarifai offers a variety of prebuilt models that are designed to help you create AI solutions quickly and efficiently. Clarifai Models are the recommended starting points for many users because they offer incredibly fast training times when you customize them using the "embedding-classifier" (Transfer Learning Classifier) model type.
 
 But there are many cases where accuracy and the ability to carefully target solutions take priority over speed and ease of use. Additionally, you may need a model to learn new features, not recognized by existing Clarifai Models. For these cases, it is possible to "deep fine-tune" your custom models and integrate them directly within your workflows.
 

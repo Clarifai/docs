@@ -9,7 +9,7 @@ PAT = 'YOUR_PAT_HERE'
 APP_ID = 'YOUR_APP_ID_HERE'
 # Change these to update your own model 
 MODEL_ID = 'petsID'
-MODEL_NAME = 'newname'
+MODEL_VERSION_ID = 'b0b89c973e5d4b6d9599ce13da04b894'
 
 ##########################################################################
 # YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -26,16 +26,22 @@ metadata = (('authorization', 'Key ' + PAT),)
 
 userDataObject = resources_pb2.UserAppIDSet(user_id=USER_ID, app_id=APP_ID)
 
-patch_models_response = stub.PatchModels(
-    service_pb2.PatchModelsRequest(
+patch_models_response = stub.PatchModelVersions(
+    service_pb2.PatchModelVersionsRequest(
         user_app_id=userDataObject,
         action="overwrite",
-        models=[
-            resources_pb2.Model(
-                id=MODEL_ID,
-                name=MODEL_NAME
+        model_id=MODEL_ID,
+        model_versions=[
+            resources_pb2.ModelVersion(  
+                id=MODEL_VERSION_ID,       
+                output_info=resources_pb2.OutputInfo(
+                    output_config=resources_pb2.OutputConfig(
+                        concepts_mutually_exclusive=True                        
+                    )
+                )
             )
         ]
+
     ),
     metadata=metadata
 )

@@ -1,14 +1,16 @@
 ---
-description: Clarifai makes it easy to customize and repurpose existing models.
+description: Develop your own custom models using transfer learning
 sidebar_position: 3
 ---
 
-# Custom Models
+# Custom Transfer Learning Models
 
-**Clarifai makes it easy to customize and repurpose existing models**
+**Develop your own custom models using transfer learning**
 <hr />
 
-You do not need many images to get started. We recommend starting with 10 and adding more as needed. Before you train your first model, you need to [create an application](https://docs.clarifai.com/clarifai-basics/applications/#create-an-application) and select a Classification Base Workflow.
+You do not need many images to get started creating a custom model using our world-class [transfer learning](https://docs.clarifai.com/portal-guide/model/model-types/transfer-learning/) technology. We recommend starting with 10 and adding more as needed. 
+
+Before you create and train your first model, you need to [create an application](https://docs.clarifai.com/clarifai-basics/applications/#create-an-application) and select **Image/Video** as the primary input type. The Base Workflow will be automatically selected for you. 
 
 ![](/img/illustration-training.png)
 
@@ -205,7 +207,7 @@ if ($response-> isSuccessful()) {
 
 ## Create a Model
 
-After adding images with concepts, you are now ready to create a model. You need to provide a name for the model. 
+After adding images with concepts, you are now ready to create a custom transfer learning model (also called an "embedding-classifier"). You need to provide a name for the model. 
 
 Take note of the `model id` that is returned in the response. We'll need that for the next two steps.
 
