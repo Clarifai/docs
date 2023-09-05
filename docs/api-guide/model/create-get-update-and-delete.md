@@ -479,7 +479,7 @@ To get the details of a specific model version, you must provide the `model_id` 
 
 :::info
 
-- The **PatchModels** endpoint allows you to patch only the model level fields, nothing in the model version. It only updates things like name, description, notes, and other metadata type information field you may have.
+- The **PatchModels** endpoint allows you to patch only the model level fields, and nothing in the model version. It only updates things like name, description, notes, and other metadata type information field you may have.
 - The **PatchModelVersions** endpoint allows you to change most of the model version fields like gettable, metadata, license, description, notes, and `output_info` (not including concepts).
 
 :::
