@@ -11,7 +11,8 @@ const PAT = 'YOUR_PAT_HERE';
 const APP_ID = 'YOUR_APP_ID_HERE';
 // Change these to update your own model 
 const MODEL_ID = 'petsID';
-const MODEL_VERSION_ID = 'b0b89c973e5d4b6d9599ce13da04b894'
+const MODEL_VERSION_ID = 'b0b89c973e5d4b6d9599ce13da04b894';
+const MINIMUM_VALUE = 0.95;
 
 /////////////////////////////////////////////////////////////////////////////
 // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -36,10 +37,10 @@ stub.PatchModelVersions(
         model_versions:[{
             "id": MODEL_VERSION_ID, 
             "output_info": {
-                "output_config": {
-                    "concepts_mutually_exclusive": true
-                }
-              }
+                "params": {
+                    "min_value": MINIMUM_VALUE
+                } 
+            }
         }],
     },
     metadata,

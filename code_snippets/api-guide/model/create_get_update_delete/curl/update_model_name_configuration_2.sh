@@ -6,9 +6,9 @@ curl -X PATCH "https://api.clarifai.com/v2/users/YOUR_USER_ID_HERE/apps/YOUR_APP
     {
       "id": "YOUR_MODEL_VERSION_ID_HERE",
       "output_info": {
-        "output_config": {
-          "concepts_mutually_exclusive": true
-        }
+          "params": {
+            "min_value": 0.95
+          }
       }
     }
   ],

@@ -226,7 +226,7 @@ You can repeat this operation as often as you like. By adding more images with c
 
 - The **PostModelVersions** endpoint kicks off training and creates a new model version. You can also add concepts to a model when creating the model version—and only if the model type supports it as defined in the model type parameters.
 
-- You can use the **PostModelVersions** endpoint to give information specific to a model version. All the `*_info` fields—such as `output_info`, `input_info`, `train_info`, and `import_info`—are available on this endpoint. This minimizes the confusion and difficulty of maintaining these fields. You can patch model specific fields without worrying about other model version fields being affected.
+- You can use the **PostModelVersions** endpoint to give information specific to a model version. All the `*_info` fields—such as `output_info`, `input_info`, `train_info`, and `import_info`—are available on this endpoint. 
 
 - You cannot remove the training concepts from a model version. However, you can edit the additional `output_info.param` concept options if they are defined in the model type.
 
@@ -514,7 +514,7 @@ Let's use the **PatchModels** endpoint to change the model name to `newname`.
 
 ### Update Model Configuration
 
-Let's use the **PatchModelVersions** endpoint to set the model's configuration to have `concepts_mutually_exclusive=true`.
+Let's use the **PatchModelVersions** endpoint to configure the minimum probability threshold for the outputs we want to view from the model. We can modify the `min_value` parameter available for this model type to filter the outputs to see only the concepts with a probability score of 0.95 or higher.
 
 <Tabs>
 

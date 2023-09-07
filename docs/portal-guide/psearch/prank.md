@@ -5,7 +5,7 @@ sidebar_position: 2
 
 # Smart Object Search
 
-**Use vector search to sort, rank, and retrieve annotated objects within imagesr**
+**Use vector search to sort, rank, and retrieve annotated objects within images**
 <hr />
 
 Smart Object Search, also called localized search, is our proprietary feature that uses deep learning techniques to sort, rank, and retrieve annotated objects (bounding boxes) within images based on their content and similarity. 

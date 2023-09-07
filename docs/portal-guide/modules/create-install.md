@@ -28,7 +28,7 @@ For this example, we'll use [this Clarifai app module template](https://github.c
 
 - Your Streamlit app should have a file named `app.py` because we support integrating with Streamlit apps only from the `app.py` entry point. It also serves as a central configuration file for your application. The file plays a crucial role in defining the behavior and structure of your Streamlit app integrated into the Clarifai platform. 
 
-- After installing a module, the markdown notes for the module overview page will be created from the README.md file. Also, the left sidebar child items that appear under the **Installed Modules** category will be constructed from your Streamlit’s app pages or folder. If your Streamlit app does not have them, it will be constructed as a single-page app with no sidebar subpages.
+- After installing a module, the markdown notes for the module overview page on the Clarifai portal will be created from the README.md file. Also, the left sidebar child items that appear under the **Installed Modules** category will be constructed from your Streamlit’s app pages or folder. If your Streamlit app does not have them, it will be constructed as a single-page app with no sidebar subpages.
 
 :::
 
@@ -154,6 +154,11 @@ Optionally, you can provide a JSON blob of metadata to attach to the module vers
 #### Module Version Visibility
 
 You can choose to make the module version public or private. Public module versions are visible to everyone in the Community. Private module versions are only visible to you and your collaborators.
+
+#### Environment Variables and Secrets
+
+Optionally, you can set environment variables and secrets for your module version. 
+
 
 #### Sidebar Page Title
 
