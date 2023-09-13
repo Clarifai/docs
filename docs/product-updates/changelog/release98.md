@@ -103,12 +103,6 @@ pagination_prev: product-updates/changelog/release97
 |![bug](/img/bug.jpg)| Fixed an issue where it was not possible to view the evaluation metrics of old transfer learned models| <ul><li>Previously, you could not access the evaluation metrics for older transfer learning models, as the drop-down menu lacked the option to select a dataset. That limitation applied to all transfer learning models that were trained and evaluated prior to the implementation of the changes on how the evaluation metrics work.</li></ul> |
 |![bug](/img/bug.jpg)| Fixed an issue where the `base_model` for transfer learning models did not display a list of the available base models | <ul><li>All the models from the base workflow that produce embeddings are currently listed. </li></ul> |
 
-## Workflows Improvements
-
-|Status                                |Change                  |Details                    |
-|--------------------------------------|------------------------|---------------------------|
-| ![bug](/img/bug.jpg)| Fixed an issue where the [Custom Code Operator](https://docs.clarifai.com/portal-guide/model/agent-system-operators/algorithmic-predict/#custom-code-operator) could not be added to a workflow | <ul><li>You can now successfully add the Custom Code Operator to a workflow. Or, an error will be thrown if anything prevents the operator from being saved.</li></ul>  |
-
 ## Sorting
 
 |Status                                |Change                  |Details                    |
