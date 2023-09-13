@@ -67,17 +67,6 @@ If you click the element, you’ll be redirected to a page that lets you explore
 
 On the same Community explore page, you can click the **Models** tab or the **Workflows** tab to search and access the models and workflows available for everyone to use. The **Featured** tab lets you explore the models that stand out on the platform. 
 
-### Switch to Legacy Portal
-
-The **Switch to Legacy Portal** navigation element lets you easily switch from the Community platform to the [old portal](https://portal.clarifai.com/). 
-If you click the element, you’ll be redirected to the old Clarifai portal and explore its features. 
-
-:::info
-
-We're in a period of transitioning our features to a new and improved user experience. If there is a feature or capability you've used previously and you don't now see it on the Community platform, you may need to switch to our legacy portal temporarily to find it. New features are pushed out regularly, so you may need to check back often.
-
-:::
-
 ### Create an App
 
 The **Create an App** navigation element lets you easily create an application on the Community platform. 
