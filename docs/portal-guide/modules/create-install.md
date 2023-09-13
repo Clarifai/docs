@@ -160,6 +160,7 @@ You can choose to make the module version public or private. Public module versi
 Optionally, you can set environment variables and secrets for your module version. 
 
 
+
 #### Sidebar Page Title
 
 The page titles you provide will appear as the left sidebar child items under the **Installed Modules** category. The titles will link to the single page `app.py` file of your module.

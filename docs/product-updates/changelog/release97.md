@@ -2,7 +2,7 @@
 description: Changelog for Clarifai Release 9.7
 # For versioning, we use negative position so that the oldest versions are displayed at the bottom. Any time you add a new version, increase the position by -1.
 sidebar_position: -46
-pagination_next: null
+pagination_next: product-updates/changelog/release98
 pagination_prev: product-updates/changelog/release96
 ---
 
@@ -76,14 +76,6 @@ pagination_prev: product-updates/changelog/release96
 |![new-feature](/img/new_feature.jpg)| Added ability to view estimated search result counts on the Input-Manager | <ul><li> You can now view an estimated number of inputs associated with your search results.</li></ul>  |
 |![bug](/img/bug.jpg) | Fixed an issue where uploading a CSV file of text data into a newly created dataset did not work | <ul><li> You can now create a new dataset and upload CSV files with text data without encountering any issues.</li></ul> |
 |![bug](/img/bug.jpg)| Fixed an issue that prevented the unification of Input-Manager and Input-Viewer stores  | <ul><li> The Input-Manager and the Input-Viewer now have the same unified stores. They now display the same search results, and the list of inputs used in the inputs manager grid is the same as those used in the inputs gallery on the Input-Viewer page. </li></ul>  |
-
-### Input-Viewer
-
-|Status                                |Change                  |Details                    |
-|--------------------------------------|------------------------|---------------------------|
-|![new-feature](/img/new_feature.jpg) | Added ability to create annotations with AI assistance on the Input-Viewer | <ul><li>You can now request annotation suggestions from any model or workflow available to you on a particular input. You can then convert the suggestion into an annotation.</li></ul>  |
-|![improvement](/img/improvement.jpg)| Added ability to use hotkeys to switch between annotation tools on the Input-Viewer |<ul><li>We significantly improved the accessibility and usability of the Input-Viewer by adding a new feature that enables the use of hotkeys on the annotation tools.</li></ul> |
-
 
 ### User Onboarding
 

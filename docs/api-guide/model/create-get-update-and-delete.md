@@ -125,7 +125,7 @@ Below is an example of how you would create an `embedding-classifier` (Transfer 
 
 :::tip
 
-**PostModels** will create new models but not create new model versions. This means trainable models that have not yet been trained will require the additional step of calling the [**PostModelVersions**](#train-a-model) endpoint, while providing the `*_info` fields in the model version—to effect training.
+**PostModels** will create new models but not create new model versions. This means trainable models that have not yet been trained will require the additional step of calling the [**PostModelVersions**](#train-a-model) endpoint, while providing the `*_info` fields in the model version—to affect training.
 
 :::
 
