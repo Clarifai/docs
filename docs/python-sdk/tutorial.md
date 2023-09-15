@@ -1,5 +1,5 @@
 ---
-description: Learn how to use the Clarifai Python SDK
+description: Learn how to use our Clarifai Python SDK
 sidebar_position: 2
 ---
 
