@@ -10,7 +10,9 @@ sidebar_position: 1
 
 ## Install the Package
 
-You can install the latest stable Clarifai using pip (which is the canonical way to install Python packages). To install using `pip`, run:
+You can install the latest stable Clarifai using pip (which is the canonical way to install Python packages).
+
+To install using `pip`, run:
 
 ```default
 pip install -U clarifai

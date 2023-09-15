@@ -8,9 +8,9 @@ sidebar_position: 2
 **Learn how to use the Clarifai Python SDK**
 <hr />
 
-Each of the examples below is a small independent code snippet within 10 lines that could work by copy and paste to a python source code file. 
+Each of the following code snippets is a self-contained example of around 10 lines of Python code that can be easily copied and pasted into a Python source code file. By experimenting with these snippets, you'll quickly get started with the Clarifai API.
 
-By playing with them, you should be getting started with Clarifai API. For more information about the API, check the API Reference.
+For detailed information about the API, please refer to the [API Reference](https://docs.clarifai.com/python-sdk/api-reference).
 
 ## Predict with Models
 
@@ -38,7 +38,7 @@ model_prediction = model.predict_by_url(url="VIDEO_URL", input_type="video")
 
 ## Predict with Workflow
 
-For more information on any of the public workflows, visit [https://clarifai.com/workflows](https://clarifai.com/workflows)
+For more information on any of the public workflows, visit [here](https://clarifai.com/explore/workflows).
 
 ```python
 # Note: CLARIFAI_PAT must be set as env variable.

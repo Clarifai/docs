@@ -17,7 +17,7 @@ This won't have any impact on the price you are charged per call. You will still
 
 ## Workflow Setup
 
-You can [click here](./input-nodes#create-your-workflow) to read a step-by-step walkthrough about how to create a workflow. 
+You can [click here](https://docs.clarifai.com/portal-guide/workflows/input-nodes/#create-your-workflow) to read a step-by-step walkthrough about how to create a workflow. 
 
 ## Workflow Predict
 
