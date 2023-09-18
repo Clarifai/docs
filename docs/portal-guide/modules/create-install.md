@@ -159,6 +159,7 @@ You can choose to make the module version public or private. Public module versi
 
 Optionally, you can set environment variables and secrets for your module version. 
 
+[Click here](https://docs.clarifai.com/portal-guide/modules/secrets-management) to learn how to set them. 
 
 
 #### Sidebar Page Title
