@@ -14,7 +14,9 @@ You can upload your text directly from a `.csv` \([comma separated values](https
 
 To help you get started, you can download `.csv` templates for images and text uploads here:
 
-[Image Upload Template](/templates/ClarifaiImageUploadTemplate.csv) [Text Upload Template](/templates/ClarifaiTextUploadTemplate.csv)
+- [Image Upload Template](/templates/ClarifaiImageUploadTemplate.csv)
+
+- [Text Upload Template](/templates/ClarifaiTextUploadTemplate.csv)
 
 ### Working with your CSV file
 
