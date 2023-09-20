@@ -19,19 +19,27 @@ Clarifai offers an end-to-end platform for the complete AI lifecycle. Whether yo
 <!--This section mostly uses built-in Docusaurus styles inspired by https://docusaurus.io/docs/sidebar/items#generated-index-page -->
 <main class="margin-top--lg">
    <div class="row">
+      <article class="col col--6">
+         <a href="https://github.com/clarifai/docs" target="_blank" style={{"display":"block","-webkit-text-decoration":"none","text-decoration":"none","color":"var(--ifm-heading-color)"}}>
+         <div class="card margin-bottom--lg padding--lg cardContainer_w8bb cardContainerLink_AhGd" style={{height:"auto", "color":"var(--ifm-heading-color)"}}>
+            <h3><img src="https://www.clarifai.com/hs-fs/hubfs/GitHub-Mark.png" alt="GitHub-Mark" width="35px" />&nbsp; Subscribe to our GitHub repo</h3>
+            <p>Stay up-to-date with changes to our documentation</p>            
+         </div>
+         </a>
+      </article>
+      <article class="col col--6">
+         <a href="https://discord.gg/WgUvPK4pVD" target="_blank" style={{"display":"block","-webkit-text-decoration":"none","text-decoration":"none","color":"var(--ifm-heading-color)"}}>
+         <div class="card margin-bottom--lg padding--lg cardContainer_w8bb cardContainerLink_AhGd" style={{height:"auto", "color":"var(--ifm-heading-color)"}}>
+            <h3><img src="/img/discord.png" alt="discord"  width="28px" />&nbsp; Join our Discord channel</h3>
+            <p>Engage with Clarifai users and enrich the community</p>            
+         </div>
+         </a>
+      </article>
       <article class="col col--6" >
          <a href="https://join.slack.com/t/clarifaicommunity/shared_invite/zt-1jehqesme-l60djcd3c_4a1eCV~uPUjQ" target="_blank" style={{"display":"block","-webkit-text-decoration":"none","text-decoration":"none","color":"var(--ifm-heading-color)"}}>
          <div class="card margin-bottom--lg padding--lg cardContainer_w8bb cardContainerLink_AhGd" style={{height:"auto", "color":"var(--ifm-heading-color)"}}>
             <h3><img src="https://www.clarifai.com/hs-fs/hubfs/slack.png?width=28&name=slack.png" alt="slack" width="28px" />&nbsp; Join our Slack channel</h3>
             <p>Interact actively with other users of Clarifai products</p>         
-         </div>
-         </a>
-      </article>
-      <article class="col col--6">
-         <a href="https://stackoverflow.com/questions/tagged/clarifai" target="_blank" style={{"display":"block","-webkit-text-decoration":"none","text-decoration":"none","color":"var(--ifm-heading-color)"}}>
-         <div class="card margin-bottom--lg padding--lg cardContainer_w8bb cardContainerLink_AhGd" style={{height:"auto", "color":"var(--ifm-heading-color)"}}>
-            <h3><img src="https://www.clarifai.com/hs-fs/hubfs/stackoverflow.png?width=28&name=stackoverflow.png" alt="stackoverflow"  width="28px" />&nbsp; Join our Stack Overflow</h3>
-            <p>Engage with Clarifai users and enrich the community</p>            
          </div>
          </a>
       </article>
@@ -48,14 +56,6 @@ Clarifai offers an end-to-end platform for the complete AI lifecycle. Whether yo
          <div class="card margin-bottom--lg padding--lg cardContainer_w8bb cardContainerLink_AhGd" style={{height:"auto", "color":"var(--ifm-heading-color)"}}>
             <h3><img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="linkedIn-logo" width="35px" />&nbsp; Follow us on LinkedIn</h3>
             <p>Learn about the latest developments in the AI industry</p>            
-         </div>
-         </a>
-      </article>
-      <article class="col col--6">
-         <a href="https://github.com/clarifai/docs" target="_blank" style={{"display":"block","-webkit-text-decoration":"none","text-decoration":"none","color":"var(--ifm-heading-color)"}}>
-         <div class="card margin-bottom--lg padding--lg cardContainer_w8bb cardContainerLink_AhGd" style={{height:"auto", "color":"var(--ifm-heading-color)"}}>
-            <h3><img src="https://www.clarifai.com/hs-fs/hubfs/GitHub-Mark.png" alt="GitHub-Mark" width="35px" />&nbsp; Subscribe to our GitHub repo</h3>
-            <p>Stay up-to-date with changes to our documentation</p>            
          </div>
          </a>
       </article>
