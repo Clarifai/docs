@@ -84,3 +84,27 @@ header .join__slack:hover {
   padding-left: var(--ifm-pre-padding);
   margin-left: var(--ifm-global-spacing);
 }
+
+
+/* ---- LEFT NAVIGATION SIDEBAR ---- */
+.menu__link:not([href]) {
+  color: var(--ifm-heading-color);
+  font-size: 1.2em; /* Adjust font size as needed */
+  font-weight: bold;
+  color: var(--ifm-heading-color);
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border: 1px solid var(--ifm-heading-color);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1); /* A subtle shadow */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s ease; 
+}
+
+.menu__list-item-collapsible:hover {
+  transition: background-color 0.3s ease; 
+}
+
+/* Initial state */
+.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2.menu__list-item:not(.menu__list-item--collapsed) {
+  border-left: 2px solid var(--ifm-menu-color-active);
+}
