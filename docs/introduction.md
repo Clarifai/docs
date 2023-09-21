@@ -22,7 +22,7 @@ Clarifai offers an end-to-end platform for the complete AI lifecycle. Whether yo
       <article class="col col--6">
          <a href="https://github.com/clarifai/docs" target="_blank" style={{"display":"block","-webkit-text-decoration":"none","text-decoration":"none","color":"var(--ifm-heading-color)"}}>
          <div class="card margin-bottom--lg padding--lg cardContainer_w8bb cardContainerLink_AhGd" style={{height:"auto", "color":"var(--ifm-heading-color)"}}>
-            <h3><img src="https://www.clarifai.com/hs-fs/hubfs/GitHub-Mark.png" alt="GitHub-Mark" width="35px" />&nbsp; Subscribe to our GitHub repo</h3>
+            <h3><img src="/img/github1.png" alt="GitHub-Mark" width="35px" />&nbsp; Subscribe to our GitHub repo</h3>
             <p>Stay up-to-date with changes to our documentation</p>            
          </div>
          </a>
