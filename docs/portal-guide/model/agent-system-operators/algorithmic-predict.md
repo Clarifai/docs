@@ -66,7 +66,7 @@ The model will process the input and classify the description into one of the pr
 
 ![](/img/others/regex_2.png)
 
-Then, the Regex-Based Classifier will categorize the response into one of the provided concepts, which you can feed into other downstream tasks, such as [an Annotation Writer](http://localhost:3000/portal-guide/model/agent-system-operators/push#annotation-writer) to create annotations for inputs.
+Then, the Regex-Based Classifier will categorize the response into one of the provided concepts, which you can feed into other downstream tasks, such as [an Annotation Writer](https://docs.clarifai.com/portal-guide/model/agent-system-operators/push#annotation-writer) to create annotations for inputs.
 
 ## KNN Classifier
 
