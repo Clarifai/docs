@@ -1,52 +1,104 @@
 ---
 description: >-
-  Use Clarifai Models or your own custom models to provide assistance in your
-  labeling tasks.
+  Generate annotations for your inputs automatically
 sidebar_position: 5
 ---
 
-# AI Assist
+# AI-Assisted Labeling
 
-**Use Clarifai Models or your own custom models to provide assistance in your labeling tasks**
+**Generate annotations for your inputs automatically**
 <hr />
 
-![AI Assist for efficient data labeling](/img/ai-assist.jpg)
+AI-assisted labeling is an innovative Clarifai feature that leverages artificial intelligence technology to assist and optimize the process of annotating data. 
 
-Speed up your labeling workflows with AI Assist. AI assist assigns concepts automatically for faster dataset annotation.
+You can request predictions from any model or workflow available to you on a particular input, and then review, correct, or validate them before converting them into annotations.
 
-To activate AI Assist, just create a new labeling task and toggle the "Enable AI Assist" switch at the bottom of the task creation screen. Now you will need to choose a workflow to power your AI predictions. AI Assist supports custom models as well as Clarifai models.
+AI-Assist provides you with several benefits, including:
 
-## Custom Workflow
+- Significantly accelerate the labeling process, reducing the time required to create labeled datasets.
+- Automation can reduce the labor costs associated with manual labeling.
+- AI models can provide consistent labeling, minimizing human errors.
+- It allows for the efficient and scalable handling of large datasets or rapidly changing data.
 
-By selecting a custom workflow AI Assist will offer predictions made by your custom model. In order to take advantage of a custom workflow you will already need to have labeled some data and trained a custom model. If you are starting a labeling project from scratch you will need to start with a Clarifai Workflow. 
+Let’s demonstrate how you can do it on the Clarifai portal. 
 
-## Clarifai Workflow
+## 1. Navigate to Input-Viewer
 
-By choosing a Clarifai workflow, AI Assist will make predictions based on one of Clarifai's Public Models. AI Assist will automatically recognize concepts in your application that map to existing Clarifai concepts. You will see these concepts outlined in green in the "Mapped concepts" section.
+Navigate to the Input-Viewer screen and confirm that you're in the **Annotate** mode, which is the default status.
 
-![label text](/img/aiAssistClarifai.jpg)
+To add an AI-assisted labeling model, you can either click the "add a model for ai assisted labeling" link, or, alternatively, click the gear icon in the upper-right corner of the page.
 
-Custom concepts that are not recognized by Clarifai models will be outlined in red under the "Unmapped concepts" section.
+![navigate to input-viewer screen](/img/annotate/ai_assist_1.png)
 
-You can map one of your custom concepts to a concept recognized by a Clarifai model in the "Set knowledge graph concept relations" section.
+The AI Assist sidebar that appears enables you to choose a model or workflow for assisting in labeling your inputs.
 
-### Hypernym
+## 2. Choose a Model or Workflow
 
-If you want to map a "general" concept recognized by a Clarifai model to a more specific concept in your application, choose the hypernym option.
+Use the **Select Model or Workflow** search box to choose a model or workflow you want to get its predictions. 
 
-### Synonym
+You can choose your own customized model or workflow, or look for a public one from the Community. 
 
-If you want to map a custom concept to a similar Clarifai concept, choose the synonym tab.
+![choose a model or workflow](/img/annotate/ai_assist_2.png)
 
-![label text](/img/aiAssistHyper.jpg)
+:::tip
+When working with image inputs, you need to choose a model or workflow that outputs concepts or objects (bounding box regions). This ensures the generation and display of annotation suggestions.
+:::
 
-Scribe will automatically recommend possible matching Clarifai concepts.
+In this example, we will illustrate how to generate annotations using a [classification]( https://docs.clarifai.com/portal-guide/model/model-types/visual-classifier) model and a [detection]( https://docs.clarifai.com/portal-guide/model/model-types/visual-detector) workflow. 
 
-## Review
+First, let’s choose the Community’s [general-image-recognition]( https://clarifai.com/clarifai/main/models/general-image-recognition) model, which is a visual classification model that identifies a variety of concepts in images.
 
-Once a task is created your labelers can review and label your inputs. Labels will automatically be added to your inputs based on the "AI Assist Prediction Threshold". If the probability score is highlighted in green the label will be added to the input when you click "Submit input for review".
+![ general-image-recognition model](/img/annotate/ai_assist_3.png)
 
-![label text](/img/aiAssistConceptThreshold.jpg)
+Second, let’s select another input on the Input-Viewer screen. And on the AI Assist sidebar, let’s choose the [General-Detection](https://clarifai.com/clarifai/main/workflows/General-Detection) workflow, which identifies a variety of common objects in images.
 
-Labelers can also add, remove, or change their own labels.
+![General-Detection workflow](/img/annotate/ai_assist_4.png)
+
+## 3. Generate Annotations
+
+After choosing a model or workflow, it could take a few moments to automatically generate the annotations. The generated labels are sorted in descending order based on their concept probability values.
+
+The **Classifications** section lists the concepts generated by the classification model, alongside their probability values. 
+
+![generate classification annotations](/img/annotate/ai_assist_5.png)
+
+The **Objects / Regions** section displays the bounding boxes identified by the detection workflow, alongside their probability values. 
+
+![generate bounding box annotations](/img/annotate/ai_assist_6.png)
+
+## 4. Review and Accept Predictions
+
+Finally, you can review and accept the outputted model or workflow prediction suggestions.
+
+Here is how you can review and accept classification predictions:
+
+![review and accept classification predictions](/img/annotate/ai_assist_7.png)
+
+Here is how you can review and accept objects or regions predictions:
+
+![review and accept objects predictions](/img/annotate/ai_assist_8.png)
+
+You can use the slider control to display prediction results with probability values falling within your selected range. 
+
+If you want to accept all the AI-assisted suggestions, just click the “Accept all AI assist predictions” button. 
+
+:::info
+
+When you accept an AI-assisted prediction suggestion, it will be applied automatically as a label to your input and seamlessly integrated into your application.
+
+:::
+
+To manually accept a prediction, simply click on the checkbox next to it. You will notice a color change, and a confirmation message will indicate that the annotation has been successfully added. 
+
+If you want to remove the annotation from the input, simply uncheck the same checkbox whose color has changed. The removed annotation will revert to being a suggestion rather than being entirely removed from the list. 
+
+If you want to delete an annotation from the list of suggestions, click on the three vertical dots located next to it. A small pop-up will appear, prompting you to confirm the deletion.
+
+## 5. Edit Suggestions
+
+You can also edit the concept list suggestions. 
+
+To edit a classification prediction, hover your mouse cursor next to the suggestion, and a pen icon will appear. Click the icon to reveal an input box that enables you to update the annotation according to your preferences.
+
+To edit a region prediction, simply click on the labeled bounding box and drag it to cover the specific areas you want it to encompass. 
 
