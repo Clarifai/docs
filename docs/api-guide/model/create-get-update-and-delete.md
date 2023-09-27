@@ -288,7 +288,7 @@ Learn about the available model types and their hyperparameters. This endpoint l
 
 </Tabs>
 
-### Get Models
+### List Models
 
 Below is an example of how to get a list of all the models you've created in your app. 
 

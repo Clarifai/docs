@@ -9,21 +9,22 @@ description: Train the entire graph of your custom model
 
 Clarifai offers a variety of pre-built models that are designed to help you create AI solutions quickly and efficiently.
 
-Clarifai models are the recommended starting point for many users because they offer incredibly fast training times, especially when you customize them using the Context-Based Classifier model type for transfer learning.
+Clarifai models are the recommended starting point for many users because they offer incredibly fast training times, especially when you customize them using the [transfer learning](https://docs.clarifai.com/portal-guide/model/model-types/transfer-learning) model type.
 
-But there are many cases where accuracy and the ability to carefully target solutions takes priority over speed and ease of use. Additionally, you may need a model to learn new features not recognized by existing Clarifai Models. 
+But there are many cases where accuracy and the ability to carefully target solutions takes priority over speed and ease of use. Additionally, you may need a model to learn new features not recognized by existing [Clarifai models](https://docs.clarifai.com/portal-guide/model/clarifai-models#clarifai-models-1). 
 
 For such cases, it is possible to "deep fine-tune" your custom models and integrate them directly within your workflows.
 
-You might consider deep training if you have:
+You might consider deep fine-tuning if:
 
-* **A custom tailored dataset**
-* **Accurate labels**
-* **Expertise and time to fine tune models**
+* You have a custom tailored dataset. This will help you to tailor the model to a specific application or domain, such as customizing it with proprietary data from a private company.
+* You have accurate labels. This provides a strong foundation for training your models, resulting in improved performance, reduced errors, and better alignment with the desired task or domain.
+* You have the expertise and time to fine-tune models. So, you can modify the model's behavior to eliminate unwanted traits and instill desired ones.
+* You want to reduce hallucinations, especially when presenting the model with questions or prompts it hasn't encountered during its initial training.
 
 ## Template Types
 
-You can take advantage of a variety of templates when building your deep trained models. Templates give you the control to choose the specific architecture used by your neural network, and also define a set of hyperparameters that you can use to fine-tune the way that your model learns.
+You can take advantage of a variety of templates when building your deep fine-tuned models. Templates give you the control to choose the specific architecture used by your neural network, and also define a set of hyperparameters that you can use to fine-tune the way that your model learns.
 
 Here are the template types we offer:
 
@@ -32,11 +33,11 @@ import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 
 <DocCardList items={useCurrentSidebarCategory().items}/>
 
-## Create Your Deep Trained Model
+## Create Your Deep Fine-Tuned Model
 
-Creating and working with deep trained models is very similar to working with Clarifai models.
+Creating and working with deep fine-tuned models is very similar to working with Clarifai models.
 
-Let's demonstrate how you can create a deep trained model. 
+Let's demonstrate how you can create a deep fine-tuned model. 
 
 #### Create App and Upload Inputs
 
