@@ -2,10 +2,10 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-// In this section, we set the user authentication, user and app ID, model details, and the location
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// In this section, we set the user authentication, user and app ID, model details, and the URL
 // of the text we want as a prompt. Change these strings to run your own example.
-///////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Your PAT (Personal Access Token) can be found in the portal under Authentification
 $PAT = 'YOUR_PAT_HERE';
@@ -13,10 +13,10 @@ $PAT = 'YOUR_PAT_HERE';
 // Since you're making inferences outside your app's scope
 $USER_ID = 'meta';
 $APP_ID = 'Llama-2';
-// Change these to whatever model and text you want to use
+// Change these to whatever model and text URL you want to use
 $MODEL_ID = 'llama2-7b-chat';
 $MODEL_VERSION_ID = 'e52af5d6bc22445aa7a6761f327f7129';
-$TEXT_FILE_LOCATION = 'YOUR_TEXT_FILE_LOCATION_HERE';
+$TEXT_URL = 'https://samples.clarifai.com/negative_sentence_12.txt';
 
 ///////////////////////////////////////////////////////////////////////////////////
 // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -39,8 +39,6 @@ $userDataObject = new UserAppIDSet([
     'app_id' => $APP_ID 
 ]);
 
-$textData = file_get_contents($TEXT_FILE_LOCATION); // Get the text bytes data from the location
-
 // Let's make a RPC call to the Clarifai platform. It uses the opened gRPC client channel to communicate a
 // request and then wait for the response
 [$response, $status] = $client->PostModelOutputs(
@@ -54,7 +52,7 @@ $textData = file_get_contents($TEXT_FILE_LOCATION); // Get the text bytes data f
                 'data' => new Data([ // The Data object is constructed around the Text object. It offers a container that has additional text independent
                                     // metadata. In this particular use case, no other metadata is needed to be specified
                     'text' => new Text([ // In the Clarifai platform, a text is defined by a special Text object
-                        'raw' => $textData 
+                        'url' => $TEXT_URL 
                     ])
                 ])
             ])

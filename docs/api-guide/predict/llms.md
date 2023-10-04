@@ -43,6 +43,13 @@ import CodeJava3 from "!!raw-loader!../../../code_snippets/api-guide/predict/jav
 import CodePHP3 from "!!raw-loader!../../../code_snippets/api-guide/predict/php/llms_3.php";
 import CodeCurl3 from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/llms_3.sh";
 
+import CodePythonParam from "!!raw-loader!../../../code_snippets/api-guide/predict/python/llms_param.py";
+import CodeJavaScriptParam from "!!raw-loader!../../../code_snippets/api-guide/predict/js/llms_param.html"
+import CodeNodeJSParam from "!!raw-loader!../../../code_snippets/api-guide/predict/node/llms_param.js";
+import CodeJavaParam from "!!raw-loader!../../../code_snippets/api-guide/predict/java/llms_param.java";
+import CodePHPParam from "!!raw-loader!../../../code_snippets/api-guide/predict/php/llms_param.php";
+import CodeCurlParam from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/llms_param.sh";
+
 import CodePython4 from "!!raw-loader!../../../code_snippets/api-guide/predict/python/llms_4.py";
 
 import CodeOutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/llms_1.txt";
@@ -153,4 +160,44 @@ Below is an example of how you would provide a raw text prompt and autocomplete 
 </Tabs>
 
 
+## Use Hyperparameters to Customize LLMs
 
+You can use hyperparameters to fine-tune and customize the behavior of LLMs. This allows you to gain precise control over the prediction output of LLMs, shaping their responses to suit your unique needs.
+
+Here are some parameters we support:
+
+- **Temperature**—It affects the randomness of the model's output. A higher temperature (e.g., 0.8) will make the output more random and creative, while a lower temperature (e.g., 0.2) will make it more deterministic and focused.
+
+- **Max Tokens**—It allow you to limit the length of the generated text. You can set a maximum number of tokens to prevent the output from becoming too long or to fit within specific constraints.
+
+- **Top K**—It controls the diversity of the output. It limits the vocabulary to the `top_k` most likely tokens at each step. A lower value of K (e.g., 10) will make the output more focused, while a higher value (e.g., 50) will make it more diverse.
+
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CodePythonParam}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+ <CodeBlock className="language-javascript">{CodeJavaScriptParam}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+ <CodeBlock className="language-javascript">{CodeNodeJSParam}</CodeBlock>
+</TabItem>
+
+<!--
+<TabItem value="java" label="Java">
+ <CodeBlock className="language-java">{CodeJavaParam}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{CodePHPParam}</CodeBlock>
+</TabItem>
+-->
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CodeCurlParam}</CodeBlock>
+</TabItem>
+
+</Tabs>
