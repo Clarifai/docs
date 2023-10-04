@@ -8,8 +8,8 @@ import com.clarifai.grpc.api.status.StatusCode;
 public class ClarifaiExample {
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
-    // In this section, we set the user authentication, user and app ID, model details, and the raw
-    // text we want as a prompt. Change these strings to run your own example.
+    // In this section, we set the user authentication, user and app ID, model details, and the URL
+    // of the text we want as a prompt. Change these strings to run your own example.
     //////////////////////////////////////////////////////////////////////////////////////////////////
 
     //Your PAT (Personal Access Token) can be found in the portal under Authentication
@@ -18,10 +18,10 @@ public class ClarifaiExample {
     // Since you're making inferences outside your app's scope
     static final String USER_ID = "meta";    
     static final String APP_ID = "Llama-2";
-    // Change these to whatever model and text you want to use
+    // Change these to whatever model and text URL you want to use
     static final String MODEL_ID = "llama2-7b-chat"; 
     static final String MODEL_VERSION_ID = "e52af5d6bc22445aa7a6761f327f7129";   
-    static final String RAW_TEXT = "I love your product very much";
+    static final String TEXT_URL = "https://samples.clarifai.com/negative_sentence_12.txt";
 
     ///////////////////////////////////////////////////////////////////////////////////
     // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -31,7 +31,7 @@ public class ClarifaiExample {
 
         V2Grpc.V2BlockingStub stub = V2Grpc.newBlockingStub(ClarifaiChannel.INSTANCE.getGrpcChannel())
             .withCallCredentials(new ClarifaiCallCredentials(PAT));
-        
+
         MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
             PostModelOutputsRequest.newBuilder()
             .setUserAppId(UserAppIDSet.newBuilder().setUserId(USER_ID).setAppId(APP_ID))
@@ -40,7 +40,7 @@ public class ClarifaiExample {
             .addInputs(
                 Input.newBuilder().setData(
                     Data.newBuilder().setText(
-                        Text.newBuilder().setRaw(RAW_TEXT)
+                        Text.newBuilder().setUrl(TEXT_URL)
                     )
                 )
             )

@@ -1,7 +1,7 @@
-######################################################################################################
-# In this section, we set the user authentication, user and app ID, model details, and the raw
-# text we want as a prompt. Change these strings to run your own example.
-######################################################################################################
+#####################################################################################################################
+# In this section, we set the user authentication, user and app ID, model details, raw text we want as a prompt,
+# and the parameters. Change these values to run your own example.
+#####################################################################################################################
 
 # Your PAT (Personal Access Token) can be found in the portal under Authentification
 PAT = 'YOUR_PAT_HERE'
@@ -21,6 +21,7 @@ RAW_TEXT = 'I love your product very much'
 from clarifai_grpc.channel.clarifai_channel import ClarifaiChannel
 from clarifai_grpc.grpc.api import resources_pb2, service_pb2, service_pb2_grpc
 from clarifai_grpc.grpc.api.status import status_code_pb2
+from google.protobuf.struct_pb2 import Struct
 
 channel = ClarifaiChannel.get_grpc_channel()
 stub = service_pb2_grpc.V2Stub(channel)
@@ -28,6 +29,13 @@ stub = service_pb2_grpc.V2Stub(channel)
 metadata = (('authorization', 'Key ' + PAT),)
 
 userDataObject = resources_pb2.UserAppIDSet(user_id=USER_ID, app_id=APP_ID)
+
+params = Struct()
+params.update({
+    "temperature": "0.5",
+    "max_tokens": 2048,
+    "top_k": "0.95"
+})
 
 post_model_outputs_response = stub.PostModelOutputs(
     service_pb2.PostModelOutputsRequest(
@@ -42,7 +50,15 @@ post_model_outputs_response = stub.PostModelOutputs(
                     )
                 )
             )
-        ]
+        ],
+        model=resources_pb2.Model(
+            model_version=resources_pb2.ModelVersion(
+                output_info=resources_pb2.OutputInfo(
+                    params=params
+                )
+            )
+        )
+
     ),
     metadata=metadata
 )

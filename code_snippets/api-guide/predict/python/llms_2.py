@@ -9,7 +9,7 @@ PAT = 'YOUR_PAT_HERE'
 # Since you're making inferences outside your app's scope
 USER_ID = 'meta'
 APP_ID = 'Llama-2'
-# Change these to whatever model and text URL you want to use
+# Change these to whatever model and text you want to use
 MODEL_ID = 'llama2-7b-chat'
 MODEL_VERSION_ID = 'e52af5d6bc22445aa7a6761f327f7129'
 TEXT_FILE_LOCATION = 'YOUR_TEXT_FILE_LOCATION_HERE'
