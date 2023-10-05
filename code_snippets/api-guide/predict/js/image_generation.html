@@ -1,0 +1,62 @@
+<!--index.html file-->
+
+<script>
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // In this section, we set the user authentication, user and app ID, model details, and the prompt text we want
+    // to provide as an input. Change these strings to run your own example.
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // Your PAT (Personal Access Token) can be found in the portal under Authentification
+    const PAT = 'YOUR_PAT_HERE';    
+    // Specify the correct user_id/app_id pairings
+    // Since you're making inferences outside your app's scope
+    const USER_ID = 'stability-ai';
+    const APP_ID = 'stable-diffusion-2';
+    // Change these to whatever model and text you want to use
+    const MODEL_ID = 'stable-diffusion-xl';
+    const MODEL_VERSION_ID = '0c919cc1edfc455dbc96207753f178d7';
+    const RAW_TEXT = 'A penguin watching the sunset.';
+    // To use a hosted text file, assign the URL variable
+    // const TEXT_FILE_URL = 'https://samples.clarifai.com/negative_sentence_12.txt'
+    
+    ///////////////////////////////////////////////////////////////////////////////////
+    // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
+    ///////////////////////////////////////////////////////////////////////////////////
+
+    const raw = JSON.stringify({  
+        "inputs": [
+        {
+            "data": {
+              "text": {
+                   "raw": RAW_TEXT
+                  // "url": TEXT_FILE_URL
+               }
+            }
+        }
+    ],
+         
+    });
+
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Key ' + PAT
+        },
+        body: raw
+    };
+
+    fetch(`https://api.clarifai.com/v2/users/${USER_ID}/apps/${APP_ID}/models/${MODEL_ID}/versions/${MODEL_VERSION_ID}/outputs`, requestOptions)
+        .then(response => response.json())
+        .then(result => {
+                const imageBase64 = result.outputs[0].data.image.base64;
+                // Create an anchor element for downloading the image
+                const downloadLink = document.createElement('a');
+                downloadLink.href = `data:image/jpeg;base64,${imageBase64}`;
+                downloadLink.download = 'gen-image.jpg';
+                // Trigger a click event on the link to prompt the download
+                downloadLink.click();
+        })      
+        .catch(error => console.log('error', error));
+
+</script>
