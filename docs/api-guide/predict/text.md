@@ -8,11 +8,11 @@ sidebar_position: 3
 **Make predictions on text inputs**
 <hr />
 
-To get predictions for an input, you need to supply the text and the model you'd like to get predictions from. You can supply the text via a publicly accessible URL, a local text file, or in the raw format. 
+To get predictions for a given text input, you need to supply the text along with the specific model from which you wish to receive predictions. You can supply the text via a publicly accessible URL, a local text file, or in its raw format. 
 
 The file size of each text input should be less than 20MB.
 
-You specify the model you'd like to use with the `MODEL_ID` parameter.
+You need to specify your choice of model for prediction by utilizing the `MODEL_ID` parameter.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -21,14 +21,17 @@ import CodeBlock from "@theme/CodeBlock";
 import CodePythonViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/python/text_via_url.py";
 import CodePythonViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/python/text_via_bytes.py";
 import CodePythonViaRaw from "!!raw-loader!../../../code_snippets/api-guide/predict/python/text_via_raw.py";
+import CodePythonImageGeneration from "!!raw-loader!../../../code_snippets/api-guide/predict/python/image_generation.py";
 
 import CodeJavaScriptViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/js/text_via_url.html";
 import CodeJavaScriptViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/js/text_via_bytes.html";
 import CodeJavaScriptViaRaw from "!!raw-loader!../../../code_snippets/api-guide/predict/js/text_via_raw.html";
+import CodeJavaScriptImageGeneration from "!!raw-loader!../../../code_snippets/api-guide/predict/js/image_generation.html";
 
 import CodeNodeJSViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/node/text_via_url.js";
 import CodeNodeJSViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/node/text_via_bytes.js";
 import CodeNodeJSViaRaw from "!!raw-loader!../../../code_snippets/api-guide/predict/node/text_via_raw.js";
+import CodeNodeJSImageGeneration from "!!raw-loader!../../../code_snippets/api-guide/predict/node/image_generation.js";
 
 import CodeJavaViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/java/text_via_url.java";
 import CodeJavaViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/java/text_via_bytes.java";
@@ -49,7 +52,17 @@ import JSONOutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/pr
 import CodeOutputExample3 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/text_via_raw_text.txt";
 import JSONOutputExample3 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/text_via_raw_text.js";
 
-## Predict via URL 
+## Text Classification
+
+**Input**: Text
+
+**Output**: [Concepts](https://docs.clarifai.com/portal-guide/concepts/create-get-update-delete)
+
+Text classification is the process of categorizing text documents into predefined categories based on their content. This task is typically accomplished using machine learning models trained on labeled datasets, where each document is associated with a specific category. 
+
+These models learn patterns and features in the text data during training, enabling them to classify new, unseen documents into the relevant categories effectively.
+
+### Predict via URL 
 
 Below is an example of how you would make predictions on passages of text hosted on the web from the [`multilingual-uncased-sentiment`](https://clarifai.com/nlptownres/text-classification/models/multilingual-uncased-sentiment) model. 
 
@@ -96,7 +109,7 @@ The initialization code used in the following examples is outlined in detail on 
     <CodeBlock className="language-javascript">{JSONOutputExample1}</CodeBlock>
 </details>
 
-## Predict via Local Files
+### Predict via Local Files
 
 Below is an example of how you would provide text inputs via local text files and receive predictions from the [`multilingual-uncased-sentiment`](https://clarifai.com/nlptownres/text-classification/models/multilingual-uncased-sentiment) model. 
 
@@ -140,7 +153,7 @@ Below is an example of how you would provide text inputs via local text files an
 </details>
 -->
 
-## Predict via Raw Text
+### Predict via Raw Text
 
 Below is an example of how you would provide raw text inputs and receive predictions from the [`multilingual-uncased-sentiment`](https://clarifai.com/nlptownres/text-classification/models/multilingual-uncased-sentiment) model. 
 
@@ -180,3 +193,31 @@ Below is an example of how you would provide raw text inputs and receive predict
   <summary>JSON Output Example</summary>
     <CodeBlock className="language-javascript">{JSONOutputExample3}</CodeBlock>
 </details>
+
+## Text-to-Image Generation
+
+**Input**: Text
+
+**Output**: Images
+
+Text-to-image generation involves creating visual images based on textual descriptions. In this field, machine learning models are trained to establish a meaningful connection between textual descriptions and their corresponding visual representations. 
+
+Then, when given a textual input, these models can generate images that accurately reflect the content described in the text.
+
+Below is an example of how you would perform text-to-image generation using the [Stable Diffusion XL](https://clarifai.com/stability-ai/stable-diffusion-2/models/stable-diffusion-xl) model.
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CodePythonImageGeneration}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+   <CodeBlock className="language-javascript">{CodeJavaScriptImageGeneration}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+   <CodeBlock className="language-javascript">{CodeNodeJSImageGeneration}</CodeBlock>
+</TabItem>
+
+</Tabs>
