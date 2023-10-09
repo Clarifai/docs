@@ -44,6 +44,8 @@ In the **regex** field, provide the regex pattern that will be used to classify 
 
 **6.** [Upload a text input](https://docs.clarifai.com/portal-guide/data/#upload-inputs) into your app, such as `I'm looking for a bucket list`. If you go to the Input-Viewer page, you'll notice that the text input has been automatically labeled with the `bucket` concept. 
 
+The Regex-Based Classifier successfully classified the input and forwarded it to the Annotation Writer to annotate it. 
+
 ![](/img/others/annotation_writer_3.png)
 
 ## Status Push 
