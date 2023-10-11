@@ -206,6 +206,12 @@ Then, when given a textual input, these models can generate images that accurate
 
 Below is an example of how you would perform text-to-image generation using the [Stable Diffusion XL](https://clarifai.com/stability-ai/stable-diffusion-2/models/stable-diffusion-xl) model.
 
+:::tip
+
+[Click here](https://docs.clarifai.com/api-guide/predict/llms/#use-hyperparameters-to-customize-llms) to learn how to configure the inference parameters such as temperature, max tokens, and more, for text-to-image generative tasks. 
+
+:::
+
 <Tabs>
 
 <TabItem value="python" label="Python">

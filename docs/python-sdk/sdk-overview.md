@@ -8,13 +8,17 @@ sidebar_position: 1
 **Learn how to install the Clarifai Python SDK**
 <hr />
 
+Our new Python SDK empowers you to simplify data import, interact with our API in an object-oriented manner, quickly create apps, inputs, and datasets, easily consume models and workflows from the Clarifai community, and more. 
+
+To consume the Clarifai API effortlessly and with just a few lines of code, the new Python SDK is all you need.
+
 ## Install the Package
 
-You can install the latest stable Clarifai using pip (which is the canonical way to install Python packages).
+You can install the latest stable version of the Python SDK package using `pip`.
 
-To install using `pip`, run:
+To install, run:
 
-```default
+```python
 pip install -U clarifai
 ```
 
@@ -22,7 +26,7 @@ pip install -U clarifai
 
 If you want to install from source for development purposes, follow these steps:
 
-```default
+```python
 python -m venv ~/virtualenv/clarifai-python-utils
 source ~/virtualenv/clarifai-python-utils/bin/activate
 cd clarifai-python-utils
@@ -33,6 +37,6 @@ python setup.py develop
 
 Clarifai uses Personal Access Tokens (PATs) to validate requests. You can create and manage PATs under your Clarifai account security settings. To set your PAT as an environment variable, run:
 
-```default
+```python
 export CLARIFAI_PAT={your personal access token}
 ```

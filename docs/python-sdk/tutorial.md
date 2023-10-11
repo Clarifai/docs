@@ -8,11 +8,15 @@ sidebar_position: 2
 **Learn how to use the Clarifai Python SDK**
 <hr />
 
-Each of the following code snippets is a self-contained example of around 10 lines of Python code that can be easily copied and pasted into a Python source code file. By experimenting with these snippets, you'll quickly get started with the Clarifai API.
+The Python SDK is designed to offer you a simple, fast, and efficient way to experience the power of Clarifai’s AI platform—all with just a few lines of code.
 
-For detailed information about the API, please refer to the [API Reference](https://docs.clarifai.com/python-sdk/api-reference).
+Here are some self-contained code snippets that you can easily copy and get started consuming the Clarifai API easily and quickly. 
 
-## Predict with Models
+For detailed information about the Python SDK, please refer to its [API Reference](https://docs.clarifai.com/python-sdk/api-reference).
+
+## Examples
+
+### Predict with Models
 
 For more information on any of the public models, visit [here](https://clarifai.com/explore/models)
 
@@ -36,7 +40,7 @@ model = Model(user_id="user_id", app_id="app_id", model_id="model_id",
 model_prediction = model.predict_by_url(url="VIDEO_URL", input_type="video")
 ```
 
-## Predict with Workflow
+### Predict with Workflow
 
 For more information on any of the public workflows, visit [here](https://clarifai.com/explore/workflows).
 
@@ -54,7 +58,7 @@ workflow = Workflow(user_id="user_id", app_id="app_id", workflow_id="workflow_id
 workflow_prediction = workflow.predict_by_filepath(filepath="local_filepath", input_type="text") # Supports image, text, audio, video
 ```
 
-## Create App
+### Create App
 
 ```python
 # Note: CLARIFAI_PAT must be set as env variable.
@@ -68,7 +72,7 @@ apps = client.list_apps()
 app = client.create_app(app_id="demo_app", base_workflow="Universal")
 ```
 
-## Create Dataset
+### Create Dataset
 
 ```python
 # Note: CLARIFAI_PAT must be set as env variable.
@@ -81,7 +85,29 @@ app = App(user_id="user_id", app_id="app_id")
 dataset = app.create_dataset(dataset_id="demo_dataset")
 ```
 
-## Upload Dataset
+### Create Workflow
+
+Create a new workflow specified by a [yaml config file](https://github.com/Clarifai/examples/tree/main/workflows/configs).
+
+```python
+# Note: CLARIFAI_PAT must be set as env variable.
+from clarifai.client.app import App
+app = App(user_id="user_id", app_id="app_id")
+workflow = app.create_workflow(config_filepath="config.yml")
+```
+
+### Export Workflow
+
+Export an existing workflow from Clarifai as a local yaml file.
+
+```python
+# Note: CLARIFAI_PAT must be set as env variable.
+from clarifai.client.workflow import Workflow
+workflow = Workflow("https://clarifai.com/clarifai/main/workflows/Demographics")
+workflow.export('demographics_workflow.yml')
+```
+
+### Upload Dataset
 
 ```python
 # Note: CLARIFAI_PAT must be set as env variable.
@@ -100,7 +126,7 @@ dataset.upload_from_folder(folder_path='folder_path', input_type='text', labels=
 dataset.upload_from_csv(csv_path='csv_path', labels=True)
 ```
 
-## Upload Inputs
+### Upload Inputs
 
 ```python
 from clarifai.client.user import User
@@ -117,7 +143,7 @@ input_obj.upload_from_file(input_id = 'demo', video_file='demo.mp4')
 input_obj.upload_text(input_id = 'demo', raw_text = 'This is a test')
 ```
 
-## List Apps
+### List Apps
 
 ```python
 # Note: CLARIFAI_PAT must be set as env variable.
@@ -128,7 +154,7 @@ client = User(user_id="user_id")
 apps = client.list_apps()
 ```
 
-## List Datasets
+### List Datasets
 
 ```python
 # Note: CLARIFAI_PAT must be set as env variable.
@@ -141,7 +167,7 @@ app = App(user_id="user_id", app_id="app_id")
 datasets = app.list_datasets()
 ```
 
-## List Models
+### List Models
 
 ```python
 # Note: CLARIFAI_PAT must be set as env variable.
@@ -158,7 +184,7 @@ all_llm_community_models = App().list_models(filter_by={"query": "LLM",
                                                      "model_type_id": "text-to-text"}, only_in_app=False)
 ```
 
-## List Workflows
+### List Workflows
 
 ```python
 # Note: CLARIFAI_PAT must be set as env variable.
@@ -174,7 +200,7 @@ workflows = app.list_workflows()
 all_face_community_workflows = App().list_workflows(filter_by={"query": "face"}, only_in_app=False) # Get all face related workflows
 ```
 
-## Delete App
+### Delete App
 
 ```python
 # Note: CLARIFAI_PAT must be set as env variable.
@@ -184,3 +210,14 @@ client = User(user_id="user_id")
 # Delete an app
 client.delete_app(app_id="app_id")
 ```
+
+## Notebook Examples
+
+Here are comprehensive step-by-step walkthroughs within Jupyter or Colab notebooks that showcase how to harness the power of the Clarifai Python SDK.
+
+|Notebook URL           |Description                |
+|------------------------|---------------------------|
+| [Basics](https://github.com/Clarifai/examples/blob/main/basics/basics.ipynb) | App and dataset lifecycle: creation, interaction, and deletion    |
+| [Datasets](https://github.com/Clarifai/examples/blob/main/datasets/upload/dataset_upload.ipynb) | Illustrates how to upload datasets into a Clarifai app using features from `Dataset`   |
+| [Models](https://github.com/Clarifai/examples/blob/main/models/model_predict.ipynb) |  Learn how to get predictions from text, image, video, and audio inputs  |
+| <ul><li>[Create Workflows](https://github.com/Clarifai/examples/blob/main/workflows/create_workflow.ipynb) </li> <li> [Export workflows](https://github.com/Clarifai/examples/blob/main/workflows/export_workflow.ipynb)</li></ul>     | <ul><li>Learn how to create workflows</li><li>Learn how to export workflows</li></ul>    |

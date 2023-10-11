@@ -172,6 +172,12 @@ Here are some parameters we support:
 
 - **Top K**—It controls the diversity of the output. It limits the vocabulary to the `top_k` most likely tokens at each step. A lower value of K (e.g., 10) will make the output more focused, while a higher value (e.g., 50) will make it more diverse.
 
+:::tip
+
+You can configure the inference parameters for both text-to-text and [text-to-image](https://docs.clarifai.com/api-guide/predict/text#text-to-image-generation) generative tasks. 
+
+:::
+
 
 <Tabs>
 <TabItem value="python" label="Python">
