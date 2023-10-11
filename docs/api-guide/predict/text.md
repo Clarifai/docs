@@ -100,7 +100,7 @@ The initialization code used in the following examples is outlined in detail on 
 </Tabs>
 
 <details>
-  <summary>Code Output Example</summary>
+  <summary>Text Output Example</summary>
     <CodeBlock className="language-text">{CodeOutputExample1}</CodeBlock>
 </details>
 
@@ -185,7 +185,7 @@ Below is an example of how you would provide raw text inputs and receive predict
 </Tabs>
 
 <details>
-  <summary>Code Output Example</summary>
+  <summary>Text Output Example</summary>
     <CodeBlock className="language-text">{CodeOutputExample3}</CodeBlock>
 </details>
 
@@ -227,3 +227,9 @@ Below is an example of how you would perform text-to-image generation using the 
 </TabItem>
 
 </Tabs>
+
+Here is a generated output example:
+
+![generated image output example](/img/others/gen-image_200.jpg)
+
+

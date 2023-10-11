@@ -56,6 +56,9 @@ import JSONOutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/pr
 import CodeOutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/image_via_bytes.txt";
 import JSONOutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/image_via_bytes.js";
 
+import CodeOutputVisualDetection from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/visual_detection.txt";
+import CodeOutputVisualSegmentation from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/visual_segmentation.txt";
+
 ## Visual Classification
 
 **Input**: Image
@@ -105,7 +108,7 @@ The initialization code used in the following examples is outlined in detail on 
 </Tabs>
 
 <details>
-  <summary>Code Output Example</summary>
+  <summary>Text Output Example</summary>
     <CodeBlock className="language-text">{CodeOutputExample1}</CodeBlock>
 </details>
 
@@ -146,7 +149,7 @@ Below is an example of how you would send the bytes of an image and receive pred
 </Tabs>
 
 <details>
-  <summary>Code Output Example</summary>
+  <summary>Text Output Example</summary>
     <CodeBlock className="language-text">{CodeOutputExample2}</CodeBlock>
 </details>
 
@@ -184,6 +187,11 @@ Below is an example of how you would perform visual detection using the Clarifai
 
 </Tabs>
 
+<details>
+  <summary>Text Output Example</summary>
+    <CodeBlock className="language-text">{CodeOutputVisualDetection}</CodeBlock>
+</details>
+
 ## Visual Segmentation
 
 **Input**: Image
@@ -210,3 +218,8 @@ Below is an example of how you would perform visual segmentation using the Clari
 </TabItem>
 
 </Tabs>
+
+<details>
+  <summary>Text Output Example</summary>
+    <CodeBlock className="language-text">{CodeOutputVisualSegmentation}</CodeBlock>
+</details>
