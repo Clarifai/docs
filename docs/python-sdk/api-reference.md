@@ -342,18 +342,19 @@ module = app.create_module(module_id="module_id")
 ### App.create_workflow()
 
 ```python
-create_workflow(workflow_id, **kwargs)
+create_workflow(config_filepath, generate_new_id, display)
 ```
 
 Creates a workflow for the app.
 
 #### Parameters
 
-  * **workflow_id** (*str*) – The workflow ID for the workflow to create.
-  * **\*\*kwargs** – Additional keyword arguments to be passed to the workflow.
+  * **config_filepath** (*str*) – The path to the yaml workflow config file.
+  * **generate_new_id** (*bool*) – If True, generate a new workflow ID.
+  * **display** (*bool*) – If True, display the workflow nodes tree.
 
 #### Returns
-  A Workflow object for the specified workflow ID.
+  A Workflow object for the specified workflow config.
 
 #### Return type
   Workflow
@@ -362,8 +363,8 @@ Creates a workflow for the app.
 
 ```python
 from clarifai.client.app import App
-app = App(app_id="app_id", user_id="user_id")
-workflow = app.create_workflow(workflow_id="workflow_id")
+app = App(user_id="user_id", app_id="app_id")
+workflow = app.create_workflow(config_filepath="config.yml")
 ```
 
 ### App.dataset()
@@ -607,7 +608,7 @@ A list of Workflow objects for the workflows in the app.
 
 #### Return type
 
-List Workflow 
+List Workflow
 
 #### Example
 
@@ -662,7 +663,7 @@ Returns a Module object for the existing module ID.
 A Module object for the existing module ID.
 
 #### Return type
-  
+
 Module
 
 #### Example
@@ -760,7 +761,7 @@ Uploads a dataset to the app.
 ### Dataset.upload_from_csv()
 
 ```python
-upload_from_csv(csv_path, input_type='text', labels=True, chunk_size=128)
+upload_from_csv(csv_path, input_type='text', csv_type='raw', labels=True, chunk_size=128)
 ```
 Uploads dataset from a CSV file.
 
@@ -768,6 +769,7 @@ Uploads dataset from a CSV file.
 
   * **csv_path** (*str*) – path to the csv file
   * **input_type** (*str*) – type of the dataset(text, image)
+  * **csv_type** (*str*) – type of the csv file(raw, url, file_path)
   * **labels** (*bool*) – True if csv file has labels column
   * **chunk_size** (*int*) – chunk size for concurrent upload of inputs and annotations
 
@@ -776,7 +778,7 @@ Uploads dataset from a CSV file.
 ```python
 from clarifai.client.dataset import Dataset
 dataset = Dataset(user_id = 'user_id', app_id = 'demo_app', dataset_id = 'demo_dataset')
-dataset.upload_from_csv(csv_path='csv_path', labels=True)
+dataset.upload_from_csv(csv_path='csv_path', input_type='text', csv_type='raw, labels=True)
 ```
 **Note**: csv file should have either one(input) or two columns(input, labels).
 
@@ -1311,6 +1313,33 @@ Initializes a Model object.
     * sample_ms (int): The number of milliseconds to sample.
   * **\*\*kwargs** – Additional keyword arguments to be passed to the ClarifaiAuthHelper.
 
+### Model.create_model_version()
+
+```python
+create_model_version(**kwargs)
+```
+
+Creates a model version for the Model.
+
+#### Returns
+  A Model object for the specified model ID.
+
+#### Return type
+  Model
+
+#### Parameters
+  * **\*\*kwargs** – Additional keyword arguments to be passed to the Model Version.
+
+#### Example
+
+```python
+from clarifai.client.model import Model
+model = Model("model_url")
+            # or
+model = Model(model_id='model_id', user_id='user_id', app_id='app_id')
+model_version = model.create_model_version(description='model_version_description')
+```
+
 ### Model.list_versions()
 
 ```python
@@ -1529,6 +1558,25 @@ workflow = Workflow(user_id='user_id', app_id='app_id', workflow_id='workflow_id
 workflow_prediction = workflow.predict_by_url('url', 'image')
 ```
 
+### Workflow.export()
+
+```python
+export(out_path)
+```
+
+Exports the workflow to a yaml file.
+
+#### Parameters
+  * **out_path** (*str*) – The path to save the yaml file to.
+
+#### Example
+
+```python
+from clarifai.client.workflow import Workflow
+workflow = Workflow("https://clarifai.com/clarifai/main/workflows/Demographics")
+workflow.export('out_path.yml')
+```
+
 ## Module
 
 ```python
@@ -1595,7 +1643,7 @@ Chunk input sequence.
 
 ## Exceptions
 
-### ApiError 
+### ApiError
 
 ```python
 class ApiError(resource, params, method, response=None)
