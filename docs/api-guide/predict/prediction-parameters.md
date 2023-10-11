@@ -110,7 +110,7 @@ import JSONOutputExample4 from "!!raw-loader!../../../code_snippets/api-guide/pr
 </Tabs>
 
 <details>
-  <summary>Code Output Example</summary>
+  <summary>Text Output Example</summary>
     <CodeBlock className="language-text">{CodeOutputExample1}</CodeBlock>
 </details>
 
@@ -159,7 +159,7 @@ Below is an example of how you would set maximum concepts and receive prediction
 </Tabs>
 
 <details>
-  <summary>Code Output Example</summary>
+  <summary>Text Output Example</summary>
     <CodeBlock className="language-text">{CodeOutputExample2}</CodeBlock>
 </details>
 
@@ -208,7 +208,7 @@ Below is an example of how you would set a minimum probability threshold and rec
 </Tabs>
 
 <details>
-  <summary>Code Output Example</summary>
+  <summary>Text Output Example</summary>
     <CodeBlock className="language-text">{CodeOutputExample3}</CodeBlock>
 </details>
 
@@ -255,7 +255,7 @@ Below is an example of how you would set a model version ID and receive predicti
 </Tabs>
 
 <details>
-  <summary>Code Output Example</summary>
+  <summary>Text Output Example</summary>
     <CodeBlock className="language-text">{CodeOutputExample4}</CodeBlock>
 </details>
 

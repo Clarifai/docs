@@ -106,7 +106,7 @@ import JSONOutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/pr
 </Tabs>
 
 <details>
-  <summary>Code Output Example</summary>
+  <summary>Text Output Example</summary>
     <CodeBlock className="language-text">{CodeOutputExample1}</CodeBlock>
 </details>
 
@@ -148,7 +148,7 @@ Below is an example of how you would send the bytes of a video and receive predi
 </Tabs>
 
 <details>
-  <summary>Code Output Example</summary>
+  <summary>Text Output Example</summary>
     <CodeBlock className="language-text">{CodeOutputExample2}</CodeBlock>
 </details>
 

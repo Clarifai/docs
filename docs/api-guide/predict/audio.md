@@ -130,7 +130,7 @@ The response will contain the predictions each model in the workflow returns for
 </Tabs>
 
 <details>
-  <summary>Code Output Example</summary>
+  <summary>Text Output Example</summary>
     <CodeBlock className="language-text">{CodeOutputExample1}</CodeBlock>
 </details>
 
@@ -172,7 +172,7 @@ Below is an example of how you would send the bytes of an audio and receive pred
 </Tabs>
 
 <details>
-  <summary>Code Output Example</summary>
+  <summary>Text Output Example</summary>
     <CodeBlock className="language-text">{CodeOutputExample2}</CodeBlock>
 </details>
 

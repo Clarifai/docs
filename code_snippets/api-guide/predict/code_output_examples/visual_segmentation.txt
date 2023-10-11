@@ -1,0 +1,11 @@
+sky-other: 0.2198
+railroad: 0.1943
+platform: 0.1773
+ceiling-other: 0.1658
+building-other: 0.1185
+train: 0.0939
+tree: 0.0098
+person: 0.008
+unlabeled: 0.0077
+wall-concrete: 0.0047
+fence: 0.0001
