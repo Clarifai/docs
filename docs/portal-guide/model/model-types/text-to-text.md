@@ -27,7 +27,7 @@ The text-to-text model type also comes with various [templates](https://docs.cla
 
 The text-to-text model type can be used in a wide range of applications, including:
 
-- **Text completion**: The model is given a prompt, such as a sentence or a paragraph, and it generates the next sentence. This can be used to create creative text formats, such as poems, code, scripts, musical pieces, emails, letters, etc.
+- **Text completion**: The model is given a prompt, such as a sentence or a paragraph, and it generates the next sentence. This generative action can be used to create creative text formats, such as poems, code, scripts, musical pieces, emails, letters, etc.
 - **Text classification**: The model can assign a label or category to a given piece of text. This can be used to organize, structure, and categorize text data. For example, it can categorize customer reviews, identify spam emails, or detect hate speech.
 - **Translation**: The model can convert text from one language to another. 
 - **Pre-encoded knowledge QA**: The model can be used as a question-answering system where it answers questions from a knowledge base that has been pre-encoded with information. 
@@ -36,7 +36,7 @@ The text-to-text model type can be used in a wide range of applications, includi
 
 You may choose a text-to-text model type in cases where:
 
-- You need a model that can effectively learn patterns and structures from training data, and use this learned knowledge to generate text that is coherent and contextually relevant based on the input it receives. 
+- You need a generative model that can effectively learn patterns and structures from training data, and use this learned knowledge to generate text that is coherent and contextually relevant based on the input it receives. 
 - You need a text-to-text model to learn new features not recognized by the existing Clarifai models. In that case, you may need to "deep fine-tune" your custom model and integrate it directly within your [workflows](https://docs.clarifai.com/portal-guide/workflows/).
 - You have a custom-tailored dataset, accurate labels, and the expertise and time to fine-tune models.
 
@@ -46,7 +46,7 @@ Fine-tuning allows you to adapt text-to-text models to specific tasks or domains
 
 With fine-tuning, you can take advantage of [transfer learning](https://docs.clarifai.com/portal-guide/model/model-types/transfer-learning/) and utilize the knowledge gained from a pre-trained text model to facilitate the learning process of a new model for a related problem. 
 
-You can follow the following steps to fine-tune a text-to-text model. 
+You can follow the following steps to fine-tune a text-to-text model for generative or conversion tasks. 
 
 :::info
 
@@ -90,7 +90,7 @@ Select the **Text to Text** option.
 
 ### 4. Create the model
 
-The ensuing page allows you to create a text-to-text model. 
+The ensuing page allows you to create a text-to-text model for generation or conversion purposes. 
 
 ![model types](/img/others/fine-tune-4.png)
 
@@ -102,7 +102,7 @@ The ensuing page allows you to create a text-to-text model.
 
 Finally, click the **Train** button. 
 
-After the model has been trained, you can start using it to make text-to-text [predictions](https://docs.clarifai.com/portal-guide/ppredict). 
+After the model has been trained, you can start using it to make generative text-to-text [predictions](https://docs.clarifai.com/portal-guide/ppredict). 
 
 ![model types](/img/others/fine-tune-5.png)
 
