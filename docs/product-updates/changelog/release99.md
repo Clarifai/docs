@@ -93,7 +93,7 @@ pagination_prev: product-updates/changelog/release98
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
-|![new-feature](/img/new_feature.jpg)| You can now seamlessly review and accept pending invitations directly within the Portal, eliminating the need to rely solely on email for this purpose| <ul><li> These invitations could be for various actions, such as app collaboration, organization enrolment, or task participation. This is valuable for both our SaaS offering and our on-premise deployments, as it caters to scenarios where email support may be limited or unavailable. </li></ul> |
+|![new-feature](/img/new_feature.jpg)| You can now seamlessly review and accept pending organization invitations directly within the Portal, eliminating the need to rely solely on email for this purpose| <ul><li> These invitations could be for various actions, such as app collaboration, organization enrolment, or task participation. This is valuable for both our SaaS offering and our on-premise deployments, as it caters to scenarios where email support may be limited or unavailable. </li></ul> |
 
 
 ## Organization Settings and Management
