@@ -1,5 +1,5 @@
 ---
-description: Learn about the labeling tools that are available to you in Scribe.
+description: Learn about the labeling tools that are available to you in Scribe
 sidebar_position: 4
 ---
 
