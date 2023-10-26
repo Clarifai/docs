@@ -16,13 +16,19 @@ Whether it's a custom model created by a data scientist, a state-of-the-art mode
 
 This feature offers a user-friendly interface that streamlines the importing process, ensuring smooth integration with the Clarifai platform. Once imported, the models become seamlessly accessible, empowering you to tap into advanced AI capabilities without the need to build models from scratch.
 
+:::info
+
+The model import functionality is exclusively available to Enterprise users. 
+
+:::
+
 ## How to Import a Model 
 
 In this example, we’ll demonstrate how to import a model from Hugging Face, which is a popular hub for a wide range of open source models.
 
 Let’s go through the step-by-step instructions for importing a model from Hugging Face and deploying it on your own Clarifai app. 
 
-:::info
+:::note
 
 The imported model will be automatically deployed and ready to be evaluated, fine-tuned and customized, combined with other models and agent operators in a workflow, or used to serve inference requests as it is. 
 

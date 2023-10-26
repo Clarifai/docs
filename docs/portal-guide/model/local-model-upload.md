@@ -12,13 +12,19 @@ You can upload custom-built machine learning models from your local development 
 
 We've designed our platform to provide robust support for widely used tools, such as TensorFlow, PyTorch, and ONNX. This ensures that your preferred development environments and frameworks remain fully compatible with our platform, giving you flexibility and convenience in deploying your models.
 
+:::info
+
+The local model upload functionality is exclusively available to Enterprise users. 
+
+:::
+
 The local model upload feature provides several benefits, including:
 
 - Create highly specialized and tailored AI solutions that cater to your unique business needs. 
 - Leverage Clarifai’s robust infrastructure to expand the capabilities of your locally built models. For example, you can link an uploaded model with other models in a [workflow](https://docs.clarifai.com/portal-guide/workflows/) and unlock new possibilities. 
 - Share locally built models, enabling you to showcase your innovations and collaborate with others in the AI community. 
 
-:::info
+:::note
 
 The uploaded model will be automatically deployed and ready to be evaluated, fine-tuned and customized, combined with other models and agent operators in a workflow, or used to serve inference requests as it is.
 
