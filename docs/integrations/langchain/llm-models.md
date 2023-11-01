@@ -1,11 +1,11 @@
 ---
-description: Use LangChain to interact with Clarifai LLM models
+description: Use LangChain to interact with Clarifai LLMs
 sidebar_position: 1
 ---
 
 # LLM Models
 
-**Use LangChain to interact with Clarifai LLM models**
+**Use LangChain to interact with Clarifai LLMs**
 <hr />
 
 Let’s illustrate how you can use LangChain to interact with Clarifai LLMs (large language models) and complete various tasks, such as text classification, sentiment analysis, text generation, text summarisation, question answering, and many more.  
