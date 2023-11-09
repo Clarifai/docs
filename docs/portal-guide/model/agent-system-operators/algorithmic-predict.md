@@ -1,6 +1,6 @@
 ---
 description: Learn about our algorithmic predict operators
-sidebar_position: 6
+sidebar_position: 7
 ---
 
 # Algorithmic Predict

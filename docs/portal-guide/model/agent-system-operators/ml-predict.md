@@ -1,6 +1,6 @@
 ---
 description: Learn about our ML predict operators
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 # ML Predict
