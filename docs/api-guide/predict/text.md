@@ -36,10 +36,12 @@ import CodeNodeJSImageGeneration from "!!raw-loader!../../../code_snippets/api-g
 import CodeJavaViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/java/text_via_url.java";
 import CodeJavaViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/java/text_via_bytes.java";
 import CodeJavaViaRaw from "!!raw-loader!../../../code_snippets/api-guide/predict/java/text_via_raw.java";
+import CodeJavaImageGeneration from "!!raw-loader!../../../code_snippets/api-guide/predict/java/image_generation.java";
 
 import CodePHPViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/php/text_via_url.php";
 import CodePHPViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/php/text_via_bytes.php";
 import CodePHPViaRaw from "!!raw-loader!../../../code_snippets/api-guide/predict/php/text_via_raw.php";
+import CodePHPImageGeneration from "!!raw-loader!../../../code_snippets/api-guide/predict/php/image_generation.php";
 
 import CurlViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/text_via_url.sh";
 import CurlViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/text_via_bytes.sh";
@@ -225,6 +227,15 @@ Below is an example of how you would perform text-to-image generation using the 
 <TabItem value="nodejs" label="NodeJS">
    <CodeBlock className="language-javascript">{CodeNodeJSImageGeneration}</CodeBlock>
 </TabItem>
+
+<TabItem value="java" label="Java">
+   <CodeBlock className="language-java">{CodeJavaImageGeneration}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+   <CodeBlock className="language-php">{CodePHPImageGeneration}</CodeBlock>
+</TabItem>
+
 
 </Tabs>
 
