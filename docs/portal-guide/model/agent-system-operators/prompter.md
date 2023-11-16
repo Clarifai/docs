@@ -1,5 +1,5 @@
 ---
-description: Learn about our prompt operators
+description: Learn about our prompt operator
 sidebar_position: 1
 ---
 
@@ -243,19 +243,3 @@ Input:
 Response:
 ```
 
-## PII removal
-
-Here is an example of a prompt for removal of Personal Identifiable Information (PII). 
-
-```
-Here is some text. We want to remove all personally identifying information 
-from this text and replace it with XXX. It's very important that names, phone numbers, and email addresses, gets replaced with XXX.
-Here is the text, inside <text></text> XML tags
-
-<text>
-{{TEXT}}
-</text>
-
-Please put your sanitized version of the text with PII removed 
-in <response></response> XML tags.
-```
