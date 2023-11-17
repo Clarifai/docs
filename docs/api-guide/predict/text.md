@@ -12,7 +12,7 @@ To get predictions for a given text input, you need to supply the text along wit
 
 The file size of each text input should be less than 20MB.
 
-You need to specify your choice of model for prediction by utilizing the `MODEL_ID` parameter.
+You need to specify your choice of [model](https://clarifai.com/explore/models?filterData=%5B%7B%22field%22%3A%22input_fields%22%2C%22value%22%3A%5B%22text%22%5D%7D%5D&page=1&perPage=24) for prediction by utilizing the `MODEL_ID` parameter.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

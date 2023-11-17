@@ -10,7 +10,7 @@ sidebar_position: 2
 
 With a video input, the Predict API response will return a list of predicted concepts for every frame of a video. By default, video is processed at 1 frame per second \(FPS\), which is configurable in the predict request. This means you will receive a list of concepts for every second (1000 milliseconds) of your video.
 
-You can run Predict on your video using a select number of [Clarifai Models](https://www.clarifai.com/models). The models that are currently supported are: 
+You can run Predict on your video using a select number of [Clarifai models](https://www.clarifai.com/models). The models that are currently supported are: 
 + Apparel
 + Food
 + General

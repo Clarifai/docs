@@ -1,4 +1,4 @@
-curl -X POST "https://api.clarifai.com/v2/users/YOUR_USER_ID_HERE/apps/YOUR_APP_ID_HERE/workflows/YOUR_WORKFLOW_ID_HERE/results" \
+curl -X POST "https://api.clarifai.com/v2/users/facebook/apps/asr/models/asr-wav2vec2-base-960h-english/outputs" \
   -H "authorization: Key YOUR_PAT_HERE" \
   -H "content-type: application/json" \
   -d '{

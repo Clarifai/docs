@@ -86,3 +86,5 @@ $output = $response->getOutputs()[0]->getData()->getImage()->getBase64();
 
 $imageFilename = "gen-image.jpg";
 file_put_contents($imageFilename, base64_decode($output));
+
+?>

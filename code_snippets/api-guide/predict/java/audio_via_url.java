@@ -7,59 +7,52 @@ import com.clarifai.grpc.api.status.StatusCode;
 
 public class ClarifaiExample {
 
-    ///////////////////////////////////////////////////////////////////////////////////
-    // In this section, we set the user authentication, app ID, workflow ID, and
+    //////////////////////////////////////////////////////////////////////////////////////
+    // In this section, we set the user authentication, user and app ID, model ID, and
     // audio URL. Change these strings to run your own example.
-    ///////////////////////////////////////////////////////////////////////////////////
-
-    static final String USER_ID = "YOUR_USER_ID_HERE";
+    //////////////////////////////////////////////////////////////////////////////////////
+    
     //Your PAT (Personal Access Token) can be found in the portal under Authentication
     static final String PAT = "YOUR_PAT_HERE";
-    static final String APP_ID = "YOUR_APP_ID_HERE";
+    // Specify the correct user_id/app_id pairings
+    // Since you're making inferences outside your app's scope
+    static final String USER_ID = "facebook";
+    static final String APP_ID = "asr";
     // Change these to make your own predictions
-    static final String WORKFLOW_ID = "my-custom-workflow";
+    static final String MODEL_ID = "asr-wav2vec2-base-960h-english";
     static final String AUDIO_URL = "https://samples.clarifai.com/negative_sentence_1.wav";
 
     ///////////////////////////////////////////////////////////////////////////////////
     // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
     ///////////////////////////////////////////////////////////////////////////////////
-
     public static void main(String[] args) {
 
         V2Grpc.V2BlockingStub stub = V2Grpc.newBlockingStub(ClarifaiChannel.INSTANCE.getGrpcChannel())
-            .withCallCredentials(new ClarifaiCallCredentials(PAT));
+                .withCallCredentials(new ClarifaiCallCredentials(PAT));
 
-        PostWorkflowResultsResponse postWorkflowResultsResponse = stub.postWorkflowResults(
-            PostWorkflowResultsRequest.newBuilder()
-            .setUserAppId(UserAppIDSet.newBuilder().setUserId(USER_ID).setAppId(APP_ID))
-            .setWorkflowId(WORKFLOW_ID)
-            .addInputs(
-                Input.newBuilder().setData(
-                    Data.newBuilder().setAudio(
-                        Audio.newBuilder().setUrl(AUDIO_URL)
-                    )
-                )
-            )
-            .build()
+        MultiOutputResponse postModelOutputsResponse = stub.postModelOutputs(
+                PostModelOutputsRequest.newBuilder()
+                        .setUserAppId(UserAppIDSet.newBuilder().setUserId(USER_ID).setAppId(APP_ID))
+                        .setModelId(MODEL_ID)
+                        .addInputs(
+                                Input.newBuilder().setData(
+                                        Data.newBuilder().setAudio(
+                                                Audio.newBuilder().setUrl(AUDIO_URL)
+                                        )
+                                )
+                        )
+                        .build()
         );
 
-        if (postWorkflowResultsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-            throw new RuntimeException("Post workflow results failed, status: " + postWorkflowResultsResponse.getStatus());
+        if (postModelOutputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+            System.out.println(postModelOutputsResponse.getStatus());
+            throw new RuntimeException("Post workflow results failed, status: " + postModelOutputsResponse.getStatus().getDescription());
         }
 
-        // We'll get one WorkflowResult for each input we used above. Because of one input, we have here
-        // one WorkflowResult
-        WorkflowResult results = postWorkflowResultsResponse.getResults(0);
+        Output output = postModelOutputsResponse.getOutputs(0);
 
-        // Each model we have in the workflow will produce its output
-        for (Output output: results.getOutputsList()) {
-            Model model = output.getModel();
-            System.out.println("Output for the model: `" + model.getId() + "`");   
-            for (Concept concept: output.getData().getConceptsList()) {       
-            	System.out.printf("\t%s %.2f%n",concept.getName(), concept.getValue());                 
-            }
-            System.out.println(output.getData().getText().getRaw());
-        }
+        // Print the output
+        System.out.println(output.getData().getText().getRaw());
 
     }
 
