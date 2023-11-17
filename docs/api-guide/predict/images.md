@@ -12,7 +12,7 @@ To get predictions for a given image input, you need to supply the image along w
 
 You can send up to 128 images in one API call. The file size of each image input should be less than 20MB.
 
-You need to specify your choice of [model](https://docs.clarifai.com/api-guide/model/) for prediction by utilizing the `MODEL_ID` parameter.
+You need to specify your choice of [model](https://clarifai.com/explore/models?page=1&perPage=24&filterData=%5B%7B%22field%22%3A%22input_fields%22%2C%22value%22%3A%5B%22image%22%5D%7D%5D) for prediction by utilizing the `MODEL_ID` parameter.
 
 :::tip
 

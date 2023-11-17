@@ -8,7 +8,7 @@ sidebar_position: 4
 **Make predictions using LLMs**
 <hr />
 
-Large Language Models (LLMs) are a subset of foundation models that have revolutionized natural language understanding and generation tasks. These models are characterized by their vast size, typically containing hundreds of millions to billions of parameters.
+[Large Language Models (LLMs)](https://clarifai.com/explore/models?page=1&perPage=24&filterData=%5B%7B%22field%22%3A%22use_cases%22%2C%22value%22%3A%5B%22llm%22%5D%7D%5D) are a subset of foundation models that have revolutionized natural language understanding and generation tasks. These models are characterized by their vast size, typically containing hundreds of millions to billions of parameters.
 
 LLMs have learned to perform many kinds of prediction tasks. One of the most notable capabilities of LLMs is text generation. Given a prompt or seed text, they can generate coherent and contextually relevant text that appears as if it were written by a human.  
 
