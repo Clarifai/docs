@@ -55,6 +55,9 @@ import NodeSuppressNodes from "!!raw-loader!../../../code_snippets/api-guide/wor
 import JavaSampleNodes from "!!raw-loader!../../../code_snippets/api-guide/workflows/input_nodes/sample_workflow_multiple_nodes.java";
 import JavaSuppressNodes from "!!raw-loader!../../../code_snippets/api-guide/workflows/input_nodes/suppress_output_from_nodes.java";
 
+import PHPSampleNodes from "!!raw-loader!../../../code_snippets/api-guide/workflows/input_nodes/sample_workflow_multiple_nodes.php";
+import PHPSuppressNodes from "!!raw-loader!../../../code_snippets/api-guide/workflows/input_nodes/suppress_output_from_nodes.php";
+
 import CurlSampleNodes from "!!raw-loader!../../../code_snippets/api-guide/workflows/input_nodes/sample_workflow_multiple_nodes.sh";
 import CurlSuppressNodes from "!!raw-loader!../../../code_snippets/api-guide/workflows/input_nodes/suppress_output_from_nodes.sh";
 
@@ -78,6 +81,10 @@ The following is an example of how to build a workflow with multiple connected n
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaSampleNodes}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+   <CodeBlock className="language-php">{PHPSampleNodes}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -108,6 +115,10 @@ By default, this endpoint will be set to false, meaning that we do not suppress 
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaSuppressNodes}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+   <CodeBlock className="language-php">{PHPSuppressNodes}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">

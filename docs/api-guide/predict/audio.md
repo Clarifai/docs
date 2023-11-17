@@ -1,5 +1,5 @@
 ---
-description: Make predictions on passages of text
+description: Make predictions on audio inputs
 sidebar_position: 5
 ---
 
