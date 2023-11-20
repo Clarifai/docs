@@ -8,7 +8,7 @@ sidebar_position: 3
 **Manage your Mesh Workflows**
 <hr />
 
-Workflows is a useful Clarifai's feature that allows you to combine multiple models and carry out different operations. With workflows, you can create a powerful multi-model system that meets various use cases in a single API call—instead of relying only on one model. 
+Workflows is a useful Clarifai's feature that allows you to combine multiple models and carry out different operations. With workflows, you can create a powerful multimodal system that meets various use cases in a single API call—instead of relying only on one model. 
 
 You can use Clarifai's built-in models or your own custom models. 
 
@@ -54,7 +54,13 @@ import JavaPatchWorkflow from "!!raw-loader!../../../code_snippets/api-guide/wor
 import JavaDeleteWorkflowID from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/delete_workflow_id.java";
 import JavaDeleteAllWorkflows from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/delete_all_workflows.java";
 
+import PHPCreate from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/create.php";
 import PHPWorkflowPredict from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/workflow_predict.php";
+import PHPGetWorkflowsApp from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/get_workflows_in_app.php";
+import PHPGetWorkflowID from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/get_workflow_specific_id.php";
+import PHPPatchWorkflow from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/patch_workflow.php";
+import PHPDeleteWorkflowID from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/delete_workflow_id.php";
+import PHPDeleteAllWorkflows from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/delete_all_workflows.php";
 
 import CurlCreate from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/create.sh";
 import CurlWorkflowPredict from "!!raw-loader!../../../code_snippets/api-guide/workflows/create_get_update_delete/workflow_predict.sh";
@@ -92,6 +98,10 @@ We'll specify the IDs of the models and their versions—since a model can have 
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaCreate}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+   <CodeBlock className="language-php">{PHPCreate}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -223,6 +233,10 @@ If you want to get a list of the workflows not within the scope of your app, you
     <CodeBlock className="language-java">{JavaGetWorkflowsApp}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPGetWorkflowsApp}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlGetWorkflowsApp}</CodeBlock>
 </TabItem>
@@ -249,6 +263,10 @@ You can return information about a specific workflow.
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-javascript">{JavaGetWorkflowID}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPGetWorkflowID}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -283,6 +301,10 @@ The possible actions are `overwrite`, `merge`, and `remove`.
     <CodeBlock className="language-java">{JavaPatchWorkflow}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPPatchWorkflow}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlPatchWorkflow}</CodeBlock>
 </TabItem>
@@ -311,6 +333,10 @@ You can delete a specific workflow.
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaDeleteWorkflowID}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPDeleteWorkflowID}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -345,6 +371,10 @@ Instead of `delete_all`, you can specify a list of workflow IDs to be deleted, u
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaDeleteAllWorkflows}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPDeleteAllWorkflows}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
