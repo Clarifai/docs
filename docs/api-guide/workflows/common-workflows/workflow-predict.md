@@ -1,26 +1,22 @@
 ---
-description: Make model predictions in your workflows.
+description: Make predictions with your workflows.
 sidebar_position: 1
 ---
 
 # Workflow Predict
 
-**Make model predictions in your workflows**
+**Make predictions with your workflows**
 <hr />
 
-The Workflow Predict API allows you to predict using one or more model\(s\), regardless of them being Clarifai's or custom-built models, within a single API call. The max number of inputs processed at once with any given workflow is 32.
+The Workflow Predict API allows you make predictions using one or more models, whether they are Clarifai's pre-built models or custom creations, all in a single API call.
 
-After you're set up, you can predict under a workflow using the `POST /v2/workflows/WORKFLOW_ID_HERE/results` endpoint. Your `WORKFLOW_ID_HERE` is whatever you set as your workflow ID. 
+The maximum number of inputs that can be processed at once with any given workflow is 32.
 
-For the request body, nothing changes with how you would normally do a predict call. In the response body, you will see a `results` object and each object will be the response from the models in the same ordering from the workflow you set up.
+After you're set up, you can initiate predictions under a specific workflow by utilizing the `POST /v2/workflows/WORKFLOW_ID_HERE/results` endpoint, where `WORKFLOW_ID_HERE` corresponds to the unique ID you assigned to your workflow.
 
-You can also use the Explorer feature in the Clarifai Portal to see the results of your workflow's predictions on a given input.
+When crafting the request body, its layout remains consistent with the usual approach for making a prediction call. The response body will include a `results` object, with each sub-object representing a response from the models, maintaining the same order as specified in the workflow you configured.
 
-![Image showing the Portal&apos;s workflow prediction results](/img/preview-workflows-new.png)
-
-<p align="center">
-Image showing the Portal's workflow prediction results
-</p>
+You can also use the [Workflow Builder](https://docs.clarifai.com/portal-guide/workflows/workflow-builder) in the Clarifai Portal to build your workflows and see the results of their predictions on a given input.
 
 :::info
 The initialization code used in the following example is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
