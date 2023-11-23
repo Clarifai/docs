@@ -1,0 +1,11 @@
+Predicted concepts for the model `face-detection`
+        BINARY_POSITIVE 1.00
+Predicted concepts for the model `margin-110-image-crop`
+Predicted concepts for the model `face-sentiment-recognition`
+        happiness 1.00
+        disgust 0.00
+        fear 0.00
+        sadness-contempt 0.00
+        surprise 0.00
+        anger 0.00
+        neutral 0.00

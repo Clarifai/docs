@@ -5,8 +5,8 @@ curl -X POST "https://api.clarifai.com/v2/users/YOUR_USER_ID_HERE/apps/YOUR_APP_
     "inputs": [
         {
           "data": {
-            "image": {
-              "url": "https://samples.clarifai.com/metro-north.jpg"
+            "video": {
+              "url": "https://samples.clarifai.com/beer.mp4"
           }
         }
       }

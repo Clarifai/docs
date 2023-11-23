@@ -13,7 +13,7 @@ Let’s illustrate how you can effortlessly transfer data from Clarifai into the
 
 ## Prerequisites
 
-- Databricks notebook development environment. Also, ensure your Databricks workspace is enabled to work with [Unity Catalog](https://docs.databricks.com/en/data-governance/unity-catalog/get-started.html)
+- Databricks notebook development environment
 - Get your PAT (Personal Access Token) from the Clarifai’s portal under the [Settings/Security](https://clarifai.com/settings/security) section
 - Get your Clarifai user ID 
 - Get the ID of the Clarifai app where you want to fetch the data from

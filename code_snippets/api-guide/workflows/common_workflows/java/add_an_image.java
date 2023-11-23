@@ -12,7 +12,7 @@ public class ClarifaiExample {
     // we want to add. Change these strings to run your own example.
     /////////////////////////////////////////////////////////////////////////////////////////
 
-    static final String USER_ID = "YOUR_USER_ID_HERE";
+    static final String USER_ID = "YOUR_PAT_ID_HERE";
     //Your PAT (Personal Access Token) can be found in the portal under Authentication
     static final String PAT = "YOUR_PAT_HERE";
     static final String APP_ID = "YOUR_APP_ID_HERE";
