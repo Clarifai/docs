@@ -8,7 +8,7 @@ sidebar_position: 1
 **Make predictions with your workflows**
 <hr />
 
-The Workflow Predict API allows you make predictions using one or more models, whether they are Clarifai's pre-built models or custom creations, all in a single API call.
+The Workflow Predict API allows you make predictions using one or more models, whether they are Clarifai's pre-built models or custom creations—all in a single API call.
 
 The maximum number of inputs that can be processed at once with any given workflow is 32.
 
@@ -26,16 +26,42 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
-import PythonWorkflowPredict from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/workflow_predict.py";
-import NodeWorkflowPredict from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/workflow_predict.js";
-import JavaWorkflowPredict from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/workflow_predict.java";
-import CurlWorkflowPredict from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/workflow_predict.sh";
-import PHPWorkflowPredict from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/workflow_predict.php";
+import PythonWorkflowPredictImage from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/py/workflow_predict_images.py";
+import JSWorkflowPredictImage from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/js/workflow_predict_images.html";
+import NodeWorkflowPredictImage from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/node/workflow_predict_images.js";
+import JavaWorkflowPredictImage from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/java/workflow_predict_images.java";
+import CurlWorkflowPredictImage from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/curl/workflow_predict_images.sh";
+import PHPWorkflowPredictImage from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/php/workflow_predict_images.php";
 
-import ExampleCodeWorkflowPredict from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/example_workflow_predict.txt";
-import ExampleJSONWorkflowPredict from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/example_workflow_predict.js";
+import ExampleCodeWorkflowPredictImage from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/output_examples/example_workflow_predict_images.txt";
+import ExampleJSONWorkflowPredictImage from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/output_examples/example_workflow_predict_images.js";
 
-## Predict
+import PythonWorkflowPredictText from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/py/workflow_predict_text.py";
+import JSWorkflowPredictText from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/js/workflow_predict_text.html";
+import NodeWorkflowPredictText from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/node/workflow_predict_text.js";
+import JavaWorkflowPredictText from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/java/workflow_predict_text.java";
+import CurlWorkflowPredictText from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/curl/workflow_predict_text.sh";
+import PHPWorkflowPredictText from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/php/workflow_predict_text.php";
+
+import ExampleCodeWorkflowPredictText from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/output_examples/example_workflow_predict_text.txt";
+import ExampleJSONWorkflowPredictText from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/output_examples/example_workflow_predict_text.js";
+
+import PythonWorkflowPredictVideo from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/py/workflow_predict_video.py";
+import JSWorkflowPredictVideo from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/js/workflow_predict_video.html";
+import NodeWorkflowPredictVideo from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/node/workflow_predict_video.js";
+import JavaWorkflowPredictVideo from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/java/workflow_predict_video.java";
+import CurlWorkflowPredictVideo from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/curl/workflow_predict_video.sh";
+import PHPWorkflowPredictVideo from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/php/workflow_predict_video.php";
+
+import PythonWorkflowPredictAudio from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/py/workflow_predict_audio.py";
+import JSWorkflowPredictAudio from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/js/workflow_predict_audio.html";
+import NodeWorkflowPredictAudio from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/node/workflow_predict_audio.js";
+import JavaWorkflowPredictAudio from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/java/workflow_predict_audio.java";
+import CurlWorkflowPredictAudio from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/curl/workflow_predict_audio.sh";
+import PHPWorkflowPredictAudio from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/php/workflow_predict_audio.php";
+
+import ExampleCodeWorkflowPredictAudio from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/output_examples/example_workflow_predict_audio.txt";
+import ExampleJSONWorkflowPredictAudio from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/output_examples/example_workflow_predict_audio.js";
 
 :::tip
 
@@ -43,36 +69,160 @@ If you want to make a predict call with an external workflow that is outside the
 
 :::
 
+## Images
+
+Let's illustrate how you would get predictions from image inputs using Clarifai's [Face-Sentiment](https://clarifai.com/clarifai/main/workflows/Face-Sentiment) workflow.
+
 <Tabs>
 
 <TabItem value="python" label="Python">
-    <CodeBlock className="language-python">{PythonWorkflowPredict}</CodeBlock>
+    <CodeBlock className="language-python">{PythonWorkflowPredictImage}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSWorkflowPredictImage}</CodeBlock>
 </TabItem>
 
 <TabItem value="nodejs" label="NodeJS">
-    <CodeBlock className="language-javascript">{NodeWorkflowPredict}</CodeBlock>
+    <CodeBlock className="language-javascript">{NodeWorkflowPredictImage}</CodeBlock>
 </TabItem>
 
 <TabItem value="java" label="Java">
-    <CodeBlock className="language-java">{JavaWorkflowPredict}</CodeBlock>
+    <CodeBlock className="language-java">{JavaWorkflowPredictImage}</CodeBlock>
 </TabItem>
 
 <TabItem value="php" label="PHP">
-    <CodeBlock className="language-php">{PHPWorkflowPredict}</CodeBlock>
+    <CodeBlock className="language-php">{PHPWorkflowPredictImage}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
-    <CodeBlock className="language-bash">{CurlWorkflowPredict}</CodeBlock>
+    <CodeBlock className="language-bash">{CurlWorkflowPredictImage}</CodeBlock>
 </TabItem>
 
 </Tabs>
 
 <details>
   <summary>Code Output Example</summary>
-    <CodeBlock className="language-text">{ExampleCodeWorkflowPredict}</CodeBlock>
+    <CodeBlock className="language-text">{ExampleCodeWorkflowPredictImage}</CodeBlock>
 </details>
 
 <details>
   <summary>JSON Output Example</summary>
-    <CodeBlock className="language-javascript">{ExampleJSONWorkflowPredict}</CodeBlock>
+    <CodeBlock className="language-javascript">{ExampleJSONWorkflowPredictImage}</CodeBlock>
+</details>
+
+## Videos
+
+Let's illustrate how you would get predictions from video inputs using a workflow.
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonWorkflowPredictVideo}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSWorkflowPredictVideo}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeWorkflowPredictVideo}</CodeBlock>
+</TabItem>
+
+<TabItem value="java" label="Java">
+    <CodeBlock className="language-java">{JavaWorkflowPredictVideo}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPWorkflowPredictVideo}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlWorkflowPredictVideo}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+## Text
+
+Let's illustrate how you would produce embeddings and clusters from text inputs using Clarifai's [Language-Understanding](https://clarifai.com/clarifai/main/workflows/Language-Understanding) text workflow.
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonWorkflowPredictText}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSWorkflowPredictText}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeWorkflowPredictText}</CodeBlock>
+</TabItem>
+
+<TabItem value="java" label="Java">
+    <CodeBlock className="language-java">{JavaWorkflowPredictText}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPWorkflowPredictText}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlWorkflowPredictText}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+<details>
+  <summary>Code Output Example</summary>
+    <CodeBlock className="language-text">{ExampleCodeWorkflowPredictText}</CodeBlock>
+</details>
+
+<details>
+  <summary>JSON Output Example</summary>
+    <CodeBlock className="language-javascript">{ExampleJSONWorkflowPredictText}</CodeBlock>
+</details>
+
+## Audio
+
+Let's illustrate how you would get the sentiment of an audio input using Clarifai's [asr-sentiment](https://clarifai.com/clarifai/main/workflows/asr-sentiment) workflow.
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonWorkflowPredictAudio}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSWorkflowPredictAudio}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeWorkflowPredictAudio}</CodeBlock>
+</TabItem>
+
+<TabItem value="java" label="Java">
+    <CodeBlock className="language-java">{JavaWorkflowPredictAudio}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPWorkflowPredictAudio}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlWorkflowPredictAudio}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+<details>
+  <summary>Code Output Example</summary>
+    <CodeBlock className="language-text">{ExampleCodeWorkflowPredictAudio}</CodeBlock>
+</details>
+
+<details>
+  <summary>JSON Output Example</summary>
+    <CodeBlock className="language-javascript">{ExampleJSONWorkflowPredictAudio}</CodeBlock>
 </details>
