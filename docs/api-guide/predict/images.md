@@ -31,25 +31,37 @@ import CodePythonViaURL from "!!raw-loader!../../../code_snippets/api-guide/pred
 import CodePythonViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/python/images_via_bytes.py";
 import CodePythonImageDetection from "!!raw-loader!../../../code_snippets/api-guide/predict/python/image_detection.py";
 import CodePythonImageSegmentation from "!!raw-loader!../../../code_snippets/api-guide/predict/python/image_segmentation.py";
+import PythonImageToText from "!!raw-loader!../../../code_snippets/api-guide/predict/python/image_to_text.py";
 
 import CodeJavaScriptViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/js/images_via_url.html"
 import CodeJavaScriptViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/js/images_via_bytes.html"
 import CodeJavaScriptImageDetection from "!!raw-loader!../../../code_snippets/api-guide/predict/js/image_detection.html"
 import CodeJavaScriptImageSegmentation from "!!raw-loader!../../../code_snippets/api-guide/predict/js/image_segmentation.html"
+import JavaScriptImageToText from "!!raw-loader!../../../code_snippets/api-guide/predict/js/image_to_text.html"
 
 import CodeNodeJSViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/node/images_via_url.js";
 import CodeNodeJSViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/node/images_via_bytes.js";
 import CodeNodeJSImageDetection from "!!raw-loader!../../../code_snippets/api-guide/predict/node/image_detection.js";
 import CodeNodeJSImageSegmentation from "!!raw-loader!../../../code_snippets/api-guide/predict/node/image_segmentation.js";
+import NodeJSImageToText from "!!raw-loader!../../../code_snippets/api-guide/predict/node/image_to_text.js";
 
 import CodeJavaViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/java/images_via_url.java";
 import CodeJavaViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/java/images_via_bytes.java";
+import JavaImageDetection from "!!raw-loader!../../../code_snippets/api-guide/predict/java/image_detection.java";
+import JavaImageSegmentation from "!!raw-loader!../../../code_snippets/api-guide/predict/java/image_segmentation.java";
+import JavaImageToText from "!!raw-loader!../../../code_snippets/api-guide/predict/java/image_to_text.java";
 
 import CodePHPViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/php/images_via_url.php";
 import CodePHPViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/php/images_via_bytes.php";
+import PHPImageDetection from "!!raw-loader!../../../code_snippets/api-guide/predict/php/image_detection.php";
+import PHPImageSegmentation from "!!raw-loader!../../../code_snippets/api-guide/predict/php/image_segmentation.php";
+import PHPImageToText from "!!raw-loader!../../../code_snippets/api-guide/predict/php/image_to_text.php";
 
 import CurlViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/images_via_url.sh";
 import CurlViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/images_via_bytes.sh";
+import CurlImageDetection from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/image_detection.sh";
+import CurlImageSegmentation from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/image_segmentation.sh";
+import CurlImageToText from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/image_to_text.sh";
 
 import CodeOutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/image_via_url.txt";
 import JSONOutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/image_via_url.js";
@@ -58,6 +70,9 @@ import JSONOutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/pr
 
 import CodeOutputVisualDetection from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/visual_detection.txt";
 import CodeOutputVisualSegmentation from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/visual_segmentation.txt";
+
+import ExampleImageToText1 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/image_to_text.txt";
+import ExampleImageToText2 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/image_to_text.js";
 
 ## Visual Classification
 
@@ -185,6 +200,18 @@ Below is an example of how you would perform visual detection using the Clarifai
     <CodeBlock className="language-javascript">{CodeNodeJSImageDetection}</CodeBlock>
 </TabItem>
 
+<TabItem value="java" label="Java">
+    <CodeBlock className="language-java">{JavaImageDetection}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPImageDetection}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlImageDetection}</CodeBlock>
+</TabItem>
+
 </Tabs>
 
 <details>
@@ -217,9 +244,70 @@ Below is an example of how you would perform visual segmentation using the Clari
     <CodeBlock className="language-javascript">{CodeNodeJSImageSegmentation}</CodeBlock>
 </TabItem>
 
+<TabItem value="java" label="Java">
+    <CodeBlock className="language-java">{JavaImageSegmentation}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPImageSegmentation}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlImageSegmentation}</CodeBlock>
+</TabItem>
+
 </Tabs>
 
 <details>
   <summary>Text Output Example</summary>
     <CodeBlock className="language-text">{CodeOutputVisualSegmentation}</CodeBlock>
+</details>
+
+## Image-to-Text
+
+**Input**: Image
+
+**Output**: Text
+
+Image-to-text generation, also known as image captioning, refers to the process of generating textual descriptions or captions for images. 
+
+It involves using a model to analyze the content of an image and then generate a coherent and relevant textual description that describes what is happening in the image—similar to how humans would describe it.
+
+Below is an example of how you would perform image-to-text generation using the [general-english-image-caption-blip](https://clarifai.com/salesforce/blip/models/general-english-image-caption-blip) model.
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonImageToText}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+ <CodeBlock className="language-javascript">{JavaScriptImageToText}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+ <CodeBlock className="language-javascript">{NodeJSImageToText}</CodeBlock>
+</TabItem>
+
+<TabItem value="java" label="Java">
+ <CodeBlock className="language-java">{JavaImageToText}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPImageToText}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlImageToText}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+<details>
+  <summary>Text Output Example</summary>
+    <CodeBlock className="language-text">{ExampleImageToText1}</CodeBlock>
+</details>
+
+<details>
+  <summary>JSON Output Example</summary>
+    <CodeBlock className="language-javascript">{ExampleImageToText2}</CodeBlock>
 </details>

@@ -45,6 +45,7 @@ import CodePHPImageGeneration from "!!raw-loader!../../../code_snippets/api-guid
 
 import CurlViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/text_via_url.sh";
 import CurlViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/text_via_bytes.sh";
+import CurlImageGeneration from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/image_generation.sh";
 import CurlViaRaw from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/text_via_raw.sh";
 
 import CodeOutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/text_via_url.txt";
@@ -236,6 +237,9 @@ Below is an example of how you would perform text-to-image generation using the 
    <CodeBlock className="language-php">{CodePHPImageGeneration}</CodeBlock>
 </TabItem>
 
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlImageGeneration}</CodeBlock>
+</TabItem>
 
 </Tabs>
 
@@ -243,4 +247,18 @@ Here is a generated output example:
 
 ![generated image output example](/img/others/gen-image_200.jpg)
 
+## Text-to-Speech Generation
 
+**Input**: Text
+
+**Output**: Audio
+
+Text-to-speech generation involves converting written text into spoken words. A machine learning model is used to synthesize human-like speech from input text, allowing a computer or device to "speak" the provided content.
+
+Below is an example of how you would perform text-to-speech generation using the [Speech-synthesis](https://clarifai.com/eleven-labs/audio-generation/models/speech-synthesis) model.
+
+:::note
+
+In this example, we've used the `params.update()` method to fine-tune various inference parameters that allow us to customize the behavior of the speech synthesis model. You can check the various inference parameters you can configure on the model's description page on the Clarifai portal.
+
+:::
