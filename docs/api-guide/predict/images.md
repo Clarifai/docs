@@ -28,6 +28,7 @@ import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
 import CodePythonViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/python/images_via_url.py";
+import CodePythonViaURLMultiple from "!!raw-loader!../../../code_snippets/api-guide/predict/python/images_via_url_multiple.py";
 import CodePythonViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/python/images_via_bytes.py";
 import CodePythonImageDetection from "!!raw-loader!../../../code_snippets/api-guide/predict/python/image_detection.py";
 import CodePythonImageSegmentation from "!!raw-loader!../../../code_snippets/api-guide/predict/python/image_segmentation.py";
@@ -61,6 +62,7 @@ import CurlViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/cu
 import CurlViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/images_via_bytes.sh";
 import CurlImageDetection from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/image_detection.sh";
 import CurlImageSegmentation from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/image_segmentation.sh";
+import CurlViaURLMultiple from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/images_via_url_multiple.sh";
 import CurlImageToText from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/image_to_text.sh";
 
 import CodeOutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/image_via_url.txt";
@@ -132,6 +134,24 @@ The initialization code used in the following examples is outlined in detail on 
     <CodeBlock className="language-javascript">{JSONOutputExample1}</CodeBlock>
 </details>
 
+:::info
+
+To predict multiple inputs at once and avoid making multiple API calls, you can use the following approach...
+<Tabs>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlViaURLMultiple}</CodeBlock>
+</TabItem>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CodePythonViaURLMultiple}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+These are examples for *cURL* and *Python*, but the same concept can be applied to any of the supported client/method.
+:::
+
 ### Predict via Bytes
 
 Below is an example of how you would send the bytes of an image and receive predictions from Clarifai's [`general-image-recognition`](https://clarifai.com/clarifai/main/models/general-image-recognition) model.
@@ -172,6 +192,7 @@ Below is an example of how you would send the bytes of an image and receive pred
   <summary>JSON Output Example</summary>
     <CodeBlock className="language-javascript">{JSONOutputExample2}</CodeBlock>
 </details>
+
 
 ## Visual Detection
 
