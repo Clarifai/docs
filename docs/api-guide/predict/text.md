@@ -253,7 +253,7 @@ Here is a generated output example:
 
 **Output**: Audio
 
-Text-to-speech generation involves converting written text into spoken words. A machine learning model is used to synthesize human-like speech from input text, allowing a computer or device to "speak" the provided content.
+Text-to-speech (TTS) generation involves converting written text into spoken words. A machine learning model is used to synthesize human-like speech from input text, allowing a computer or device to "speak" the provided content.
 
 Below is an example of how you would perform text-to-speech generation using the [Speech-synthesis](https://clarifai.com/eleven-labs/audio-generation/models/speech-synthesis) model.
 
