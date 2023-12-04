@@ -22,30 +22,37 @@ import CodePythonViaURL from "!!raw-loader!../../../code_snippets/api-guide/pred
 import CodePythonViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/python/text_via_bytes.py";
 import CodePythonViaRaw from "!!raw-loader!../../../code_snippets/api-guide/predict/python/text_via_raw.py";
 import CodePythonImageGeneration from "!!raw-loader!../../../code_snippets/api-guide/predict/python/image_generation.py";
+import CodePythonTextToSpeech from "!!raw-loader!../../../code_snippets/api-guide/predict/python/text_to_speech.py";
 
 import CodeJavaScriptViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/js/text_via_url.html";
 import CodeJavaScriptViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/js/text_via_bytes.html";
 import CodeJavaScriptViaRaw from "!!raw-loader!../../../code_snippets/api-guide/predict/js/text_via_raw.html";
 import CodeJavaScriptImageGeneration from "!!raw-loader!../../../code_snippets/api-guide/predict/js/image_generation.html";
+import CodeJavaScriptTextToSpeech from "!!raw-loader!../../../code_snippets/api-guide/predict/js/text_to_speech.html";
 
 import CodeNodeJSViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/node/text_via_url.js";
 import CodeNodeJSViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/node/text_via_bytes.js";
 import CodeNodeJSViaRaw from "!!raw-loader!../../../code_snippets/api-guide/predict/node/text_via_raw.js";
 import CodeNodeJSImageGeneration from "!!raw-loader!../../../code_snippets/api-guide/predict/node/image_generation.js";
+import CodeNodeJSTextToSpeech from "!!raw-loader!../../../code_snippets/api-guide/predict/node/text_to_speech.js";
 
 import CodeJavaViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/java/text_via_url.java";
 import CodeJavaViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/java/text_via_bytes.java";
 import CodeJavaViaRaw from "!!raw-loader!../../../code_snippets/api-guide/predict/java/text_via_raw.java";
 import CodeJavaImageGeneration from "!!raw-loader!../../../code_snippets/api-guide/predict/java/image_generation.java";
+import CodeJavaTextToSpeech from "!!raw-loader!../../../code_snippets/api-guide/predict/java/text_to_speech.java";
 
 import CodePHPViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/php/text_via_url.php";
 import CodePHPViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/php/text_via_bytes.php";
 import CodePHPViaRaw from "!!raw-loader!../../../code_snippets/api-guide/predict/php/text_via_raw.php";
 import CodePHPImageGeneration from "!!raw-loader!../../../code_snippets/api-guide/predict/php/image_generation.php";
+import CodePHPTextToSpeech from "!!raw-loader!../../../code_snippets/api-guide/predict/php/text_to_speech.php";
 
 import CurlViaURL from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/text_via_url.sh";
 import CurlViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/text_via_bytes.sh";
+import CurlImageGeneration from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/image_generation.sh";
 import CurlViaRaw from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/text_via_raw.sh";
+import CurlTextToSpeech from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/text_to_speech.sh";
 
 import CodeOutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/text_via_url.txt";
 import JSONOutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/text_via_url.js";
@@ -236,6 +243,9 @@ Below is an example of how you would perform text-to-image generation using the 
    <CodeBlock className="language-php">{CodePHPImageGeneration}</CodeBlock>
 </TabItem>
 
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlImageGeneration}</CodeBlock>
+</TabItem>
 
 </Tabs>
 
@@ -243,4 +253,46 @@ Here is a generated output example:
 
 ![generated image output example](/img/others/gen-image_200.jpg)
 
+## Text-to-Speech Generation
 
+**Input**: Text
+
+**Output**: Audio
+
+Text-to-speech (TTS) generation involves converting written text into spoken words. A machine learning model is used to synthesize human-like speech from input text, allowing a computer or device to "speak" the provided content.
+
+Below is an example of how you would perform text-to-speech generation using the [Speech-synthesis](https://clarifai.com/eleven-labs/audio-generation/models/speech-synthesis) model.
+
+:::note
+
+In this example, we've used the `params.update()` method to fine-tune various inference parameters that allow us to customize the behavior of the Speech-synthesis model. You can check the various inference parameters you can configure on the model's description page on the Clarifai portal.
+
+:::
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CodePythonTextToSpeech}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+   <CodeBlock className="language-javascript">{CodeJavaScriptTextToSpeech}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+   <CodeBlock className="language-javascript">{CodeNodeJSTextToSpeech}</CodeBlock>
+</TabItem>
+
+<TabItem value="java" label="Java">
+   <CodeBlock className="language-java">{CodeJavaTextToSpeech}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+   <CodeBlock className="language-php">{CodePHPTextToSpeech}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlTextToSpeech}</CodeBlock>
+</TabItem>
+
+</Tabs>
