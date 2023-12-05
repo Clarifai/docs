@@ -108,3 +108,5 @@ $output = $response->getOutputs()[0]->getData()->getAudio()->getBase64();
 
 $audioFilename = "audio_file.wav";
 file_put_contents($audioFilename, base64_decode($output));
+
+?>
