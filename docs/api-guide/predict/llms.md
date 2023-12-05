@@ -192,7 +192,6 @@ You can configure the inference parameters for both text-to-text and [text-to-im
  <CodeBlock className="language-javascript">{CodeNodeJSParam}</CodeBlock>
 </TabItem>
 
-<!--
 <TabItem value="java" label="Java">
  <CodeBlock className="language-java">{CodeJavaParam}</CodeBlock>
 </TabItem>
@@ -200,7 +199,6 @@ You can configure the inference parameters for both text-to-text and [text-to-im
 <TabItem value="php" label="PHP">
     <CodeBlock className="language-php">{CodePHPParam}</CodeBlock>
 </TabItem>
--->
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CodeCurlParam}</CodeBlock>

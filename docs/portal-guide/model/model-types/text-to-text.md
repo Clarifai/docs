@@ -106,10 +106,6 @@ After the model has been trained, you can start using it to make generative text
 
 ![model types](/img/others/fine-tune-5.png)
 
-You can also evaluate the performance of the model. To do so, under the **ROC** column, click the **Calculate** button, which will initiate the evaluation process. 
-
-[Click here](https://docs.clarifai.com/portal-guide/evaluate/) to learn more on how to evaluate a model’s performance. 
-
 :::tip
 
 You can further explore the step-by-step tutorial on fine-tuning the GPT-Neo LoRA template for text classification tasks [here](https://www.clarifai.com/blog/fine-tuning-gpt-neo-for-text-classification).
