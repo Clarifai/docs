@@ -74,8 +74,6 @@ import CurlViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/
 
 import CodeOutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/video_via_url.txt";
 import JSONOutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/video_via_url.js";
-import CodeOutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/video_via_bytes.txt";
-import JSONOutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/video_via_bytes.js";
 
 
 <Tabs>
@@ -146,14 +144,4 @@ Below is an example of how you would send the bytes of a video and receive predi
 </TabItem>
 
 </Tabs>
-
-<details>
-  <summary>Text Output Example</summary>
-    <CodeBlock className="language-text">{CodeOutputExample2}</CodeBlock>
-</details>
-
-<details>
-  <summary>JSON Output Example</summary>
-    <CodeBlock className="language-javascript">{JSONOutputExample2}</CodeBlock>
-</details>
 

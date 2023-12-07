@@ -1,33 +1,20 @@
-id: "f2885a9eda0e42c5b264ee344cf80152"
+id: "7601649459f6458e80eb6e44f6d3dfe0" 
 status {
   code: SUCCESS
   description: "Ok"
 }
 created_at {
-  seconds: 1643803135
-  nanos: 222744005
+  seconds: 1701799352
+  nanos: 145163726
 }
 model {
   id: "general-image-recognition"
-  name: "general"
+  name: "Image Recognition"
   created_at {
     seconds: 1457543499
     nanos: 608845000
   }
   app_id: "main"
-  output_info {
-    output_config {
-    }
-    message: "Show output_info with: GET /models/{model_id}/output_info"
-    fields_map {
-      fields {
-        key: "concepts"
-        value {
-          string_value: "softmax"
-        }
-      }
-    }
-  }
   model_version {
     id: "aa7f35c01e0642fda5cf400f543e7c40"
     created_at {
@@ -46,37 +33,20 @@ model {
     metadata {
     }
   }
-  display_name: "general-visual-classifier"
   user_id: "clarifai"
-  input_info {
-    fields_map {
-      fields {
-        key: "image"
-        value {
-          string_value: "images"
-        }
-      }
-    }
-  }
-  train_info {
-  }
   model_type_id: "visual-classifier"
   visibility {
     gettable: PUBLIC
   }
-  description: "Image recognition model for identifying different concepts in images and video including objects, themes, moods, and more."
-  metadata {
-  }
-  notes: "**General Information**\n\n- Purpose: Classifier for a variety of concepts, common objects, etc. This model is a great all-purpose solution for most visual recognition needs with industry-leading performance.\n\n- Architecture: Customized InceptionV2\n\n- Intended Use: image indexing by tags, filtering, cascade routing\n\n- Limitations: works well when content is prevalent in the image\n\n\n\n **\nTraining/Test Data**\n\nThe model was trained and tested on an internal dataset with approximately 10,000 concepts and 20M images, with multiple concepts per image. The class distributions on train and validation sets are long-tailed. The validation set was annotated using a combination of originally curated labels with incomplete annotations, where were further completed by adding additional labels proposed a newer version of this model (aa7f35c01e0642fda5cf400f543e7c40) at a low threshold and verified by human annotators. "
   modified_at {
-    seconds: 1634831222
-    nanos: 80260000
+    seconds: 1694180313
+    nanos: 148401000
   }
-  import_info {
+  workflow_recommended {
   }
 }
 input {
-  id: "be28eb8cdfd34d199e2f69981cc827aa"
+  id: "256fa5839e9d425db43553ce9ff38d03"
   data {
     image {
       url: "https://samples.clarifai.com/metro-north.jpg"
@@ -99,109 +69,110 @@ data {
   concepts {
     id: "ai_SHNDcmJ3"
     name: "subway system"
-    value: 0.9982514977455139
+    value: 0.9982585310935974
     app_id: "main"
   }
   concepts {
     id: "ai_6kTjGfF6"
     name: "station"
-    value: 0.9980105757713318
+    value: 0.9980133771896362
     app_id: "main"
   }
   concepts {
     id: "ai_RRXLczch"
     name: "locomotive"
-    value: 0.9972571730613708
+    value: 0.9972604513168335
     app_id: "main"
   }
   concepts {
     id: "ai_Xxjc3MhT"
     name: "transportation system"
-    value: 0.9969801306724548
+    value: 0.9969792366027832
     app_id: "main"
   }
   concepts {
     id: "ai_VRmbGVWh"
     name: "travel"
-    value: 0.988979697227478
+    value: 0.9889689683914185
     app_id: "main"
   }
   concepts {
     id: "ai_jlb9q33b"
     name: "commuter"
-    value: 0.9808752536773682
+    value: 0.9809139370918274
     app_id: "main"
   }
   concepts {
     id: "ai_2gkfMDsM"
     name: "platform"
-    value: 0.9806439876556396
+    value: 0.9806650876998901
     app_id: "main"
   }
   concepts {
     id: "ai_n9vjC1jB"
     name: "light"
-    value: 0.9742040634155273
+    value: 0.9741945266723633
     app_id: "main"
   }
   concepts {
     id: "ai_sQQj52KZ"
     name: "train station"
-    value: 0.9687404036521912
+    value: 0.9688410758972168
     app_id: "main"
   }
   concepts {
     id: "ai_l4WckcJN"
     name: "blur"
-    value: 0.9672204256057739
+    value: 0.9673133492469788
     app_id: "main"
   }
   concepts {
     id: "ai_WBQfVV0p"
     name: "city"
-    value: 0.9614798426628113
+    value: 0.9615091681480408
     app_id: "main"
   }
   concepts {
     id: "ai_TZ3C79C6"
     name: "road"
-    value: 0.9613829255104065
+    value: 0.9613693356513977
     app_id: "main"
   }
   concepts {
     id: "ai_CpFBRWzD"
     name: "urban"
-    value: 0.9603424072265625
+    value: 0.960391640663147
     app_id: "main"
   }
   concepts {
     id: "ai_tr0MBp64"
     name: "traffic"
-    value: 0.959934651851654
+    value: 0.9599775075912476
     app_id: "main"
   }
   concepts {
     id: "ai_GjVpxXrs"
     name: "street"
-    value: 0.9474142789840698
+    value: 0.9475197196006775
     app_id: "main"
   }
   concepts {
     id: "ai_mcSHVRfS"
     name: "public"
-    value: 0.9343124032020569
+    value: 0.934360921382904
     app_id: "main"
   }
   concepts {
     id: "ai_J6d1kV8t"
     name: "tramway"
-    value: 0.9318979382514954
+    value: 0.9320586323738098
     app_id: "main"
   }
   concepts {
     id: "ai_6lhccv44"
     name: "business"
-    value: 0.9294139742851257
+    value: 0.9294787645339966
     app_id: "main"
   }
 }
+

@@ -1,11 +1,11 @@
-id: "519a178f143d44d4a9eb34783f185a01"
+id: "e79ecf27e849441fa65f4aae88d4b6d7"
 status {
   code: SUCCESS
   description: "Ok"
 }
 created_at {
-  seconds: 1660203562
-  nanos: 551812802
+  seconds: 1701797920
+  nanos: 263533709
 }
 model {
   id: "general-image-recognition"
@@ -15,19 +15,6 @@ model {
     nanos: 608845000
   }
   app_id: "main"
-  output_info {
-    output_config {
-    }
-    message: "Show output_info with: GET /models/{model_id}/output_info"
-    fields_map {
-      fields {
-        key: "concepts"
-        value {
-          string_value: "softmax"
-        }
-      }
-    }
-  }
   model_version {
     id: "aa7f35c01e0642fda5cf400f543e7c40"
     created_at {
@@ -47,31 +34,19 @@ model {
     }
   }
   user_id: "clarifai"
-  input_info {
-    fields_map {
-      fields {
-        key: "image"
-        value {
-          string_value: "images"
-        }
-      }
-    }
-  }
-  train_info {
-  }
   model_type_id: "visual-classifier"
   visibility {
     gettable: PUBLIC
   }
   modified_at {
-    seconds: 1658798085
-    nanos: 654361000
+    seconds: 1694180313
+    nanos: 148401000
   }
-  import_info {
+  workflow_recommended {
   }
 }
 input {
-  id: "3fc8b48172684bfe9e695d247a6009f2"
+  id: "dbce4ca63ce04cd69e320756bb788e47"
   data {
     video {
       url: "https://samples.clarifai.com/beer.mp4"
@@ -87,121 +62,121 @@ data {
       concepts {
         id: "ai_mCpQg89c"
         name: "glass"
-        value: 0.997753918170929
+        value: 0.997752845287323
         app_id: "main"
       }
       concepts {
         id: "ai_zJx6RbxW"
         name: "drink"
-        value: 0.997462272644043
+        value: 0.9974687099456787
         app_id: "main"
       }
       concepts {
         id: "ai_8XGJjH7R"
         name: "foam"
-        value: 0.9957707524299622
+        value: 0.9957486987113953
         app_id: "main"
       }
       concepts {
         id: "ai_TBlp0Pt3"
         name: "beer"
-        value: 0.9946278929710388
+        value: 0.9945681095123291
         app_id: "main"
       }
       concepts {
         id: "ai_drK6ClJR"
         name: "alcohol"
-        value: 0.9880280494689941
+        value: 0.9880152344703674
         app_id: "main"
       }
       concepts {
         id: "ai_3R5pJ6hB"
         name: "lager"
-        value: 0.9861199855804443
+        value: 0.9860077500343323
         app_id: "main"
       }
       concepts {
         id: "ai_2gmKZLxp"
         name: "cold"
-        value: 0.9854915738105774
+        value: 0.9854641556739807
         app_id: "main"
       }
       concepts {
         id: "ai_7vR9zv7l"
         name: "bubble"
-        value: 0.9843154549598694
+        value: 0.9843018054962158
         app_id: "main"
       }
       concepts {
         id: "ai_5VHsZr8N"
         name: "liquid"
-        value: 0.9839422106742859
+        value: 0.9839773774147034
         app_id: "main"
       }
       concepts {
         id: "ai_54zxXFGL"
         name: "full"
-        value: 0.9785923361778259
+        value: 0.9785130023956299
         app_id: "main"
       }
       concepts {
         id: "ai_786Zr311"
         name: "no person"
-        value: 0.9709053039550781
+        value: 0.9709655046463013
         app_id: "main"
       }
       concepts {
         id: "ai_2LWXN7Bn"
         name: "brewery"
-        value: 0.9638245105743408
+        value: 0.9635231494903564
         app_id: "main"
       }
       concepts {
         id: "ai_8zbKXvD7"
         name: "sparkling"
-        value: 0.9530097246170044
+        value: 0.9529380798339844
         app_id: "main"
       }
       concepts {
         id: "ai_VXtfX6F5"
         name: "cool"
-        value: 0.9528887271881104
+        value: 0.9526541829109192
         app_id: "main"
       }
       concepts {
         id: "ai_B3MXt5Ng"
         name: "refreshment"
-        value: 0.9464144706726074
+        value: 0.9462572932243347
         app_id: "main"
       }
       concepts {
         id: "ai_SsmKLB4z"
         name: "bar"
-        value: 0.9452511668205261
+        value: 0.9450616240501404
         app_id: "main"
       }
       concepts {
         id: "ai_NTTFwSHB"
         name: "wet"
-        value: 0.9401746988296509
+        value: 0.9400553107261658
         app_id: "main"
       }
       concepts {
         id: "ai_X7ZHcRJc"
         name: "drop"
-        value: 0.9362671375274658
+        value: 0.9364319443702698
         app_id: "main"
       }
       concepts {
         id: "ai_bNlklStp"
         name: "thirst"
-        value: 0.9271894097328186
+        value: 0.9268391728401184
         app_id: "main"
       }
       concepts {
         id: "ai_F547sXrF"
         name: "foamy"
-        value: 0.9260683655738831
+        value: 0.9255530834197998
         app_id: "main"
       }
     }
@@ -216,121 +191,121 @@ data {
       concepts {
         id: "ai_TBlp0Pt3"
         name: "beer"
-        value: 0.9992852807044983
+        value: 0.9992836117744446
         app_id: "main"
       }
       concepts {
         id: "ai_mCpQg89c"
         name: "glass"
-        value: 0.9983568787574768
+        value: 0.9983626008033752
         app_id: "main"
       }
       concepts {
         id: "ai_zJx6RbxW"
         name: "drink"
-        value: 0.997733473777771
+        value: 0.9977523684501648
         app_id: "main"
       }
       concepts {
         id: "ai_8XGJjH7R"
         name: "foam"
-        value: 0.9975631237030029
+        value: 0.9975612163543701
         app_id: "main"
       }
       concepts {
         id: "ai_3R5pJ6hB"
         name: "lager"
-        value: 0.9974479675292969
+        value: 0.9974485039710999
         app_id: "main"
       }
       concepts {
         id: "ai_drK6ClJR"
         name: "alcohol"
-        value: 0.9943854808807373
+        value: 0.9943865537643433
         app_id: "main"
       }
       concepts {
         id: "ai_2LWXN7Bn"
         name: "brewery"
-        value: 0.9906821250915527
+        value: 0.9906740784645081
         app_id: "main"
       }
       concepts {
         id: "ai_2gmKZLxp"
         name: "cold"
-        value: 0.9859077334403992
+        value: 0.9859762191772461
         app_id: "main"
       }
       concepts {
         id: "ai_qCKzbr0g"
         name: "ale"
-        value: 0.9823503494262695
+        value: 0.9823463559150696
         app_id: "main"
       }
       concepts {
         id: "ai_QnpbpDLK"
         name: "pint"
-        value: 0.9820547699928284
+        value: 0.982078492641449
         app_id: "main"
       }
       concepts {
         id: "ai_5VHsZr8N"
         name: "liquid"
-        value: 0.9812148809432983
+        value: 0.9813329577445984
         app_id: "main"
       }
       concepts {
         id: "ai_SsmKLB4z"
         name: "bar"
-        value: 0.9799168705940247
+        value: 0.9799479246139526
         app_id: "main"
       }
       concepts {
         id: "ai_54zxXFGL"
         name: "full"
-        value: 0.9784411191940308
+        value: 0.9784696102142334
         app_id: "main"
       }
       concepts {
         id: "ai_XNmzgDnF"
         name: "pub"
-        value: 0.9745087027549744
+        value: 0.9744656682014465
         app_id: "main"
       }
       concepts {
         id: "ai_7vR9zv7l"
         name: "bubble"
-        value: 0.9708448052406311
+        value: 0.9708114266395569
         app_id: "main"
       }
       concepts {
         id: "ai_pkvDRSJ1"
         name: "mug"
-        value: 0.9691837430000305
+        value: 0.9692652821540833
         app_id: "main"
       }
       concepts {
         id: "ai_F547sXrF"
         name: "foamy"
-        value: 0.9684087038040161
+        value: 0.9684587717056274
         app_id: "main"
       }
       concepts {
         id: "ai_786Zr311"
         name: "no person"
-        value: 0.9548789858818054
+        value: 0.9549676775932312
         app_id: "main"
       }
       concepts {
         id: "ai_4Dlsldjg"
         name: "brew"
-        value: 0.9489448666572571
+        value: 0.9492547512054443
         app_id: "main"
       }
       concepts {
         id: "ai_LMNcLLVR"
         name: "frosty"
-        value: 0.9455925822257996
+        value: 0.9456380009651184
         app_id: "main"
       }
     }
@@ -345,121 +320,121 @@ data {
       concepts {
         id: "ai_TBlp0Pt3"
         name: "beer"
-        value: 0.9993226528167725
+        value: 0.9993199110031128
         app_id: "main"
       }
       concepts {
         id: "ai_8XGJjH7R"
         name: "foam"
-        value: 0.9975113868713379
+        value: 0.9975032210350037
         app_id: "main"
       }
       concepts {
         id: "ai_mCpQg89c"
         name: "glass"
-        value: 0.9974460601806641
+        value: 0.9974441528320312
         app_id: "main"
       }
       concepts {
         id: "ai_3R5pJ6hB"
         name: "lager"
-        value: 0.9966624975204468
+        value: 0.9966486096382141
         app_id: "main"
       }
       concepts {
         id: "ai_zJx6RbxW"
         name: "drink"
-        value: 0.9954904913902283
+        value: 0.9955034852027893
         app_id: "main"
       }
       concepts {
         id: "ai_drK6ClJR"
         name: "alcohol"
-        value: 0.9942731261253357
+        value: 0.9942675232887268
         app_id: "main"
       }
       concepts {
         id: "ai_2LWXN7Bn"
         name: "brewery"
-        value: 0.9873706102371216
+        value: 0.9873117208480835
         app_id: "main"
       }
       concepts {
         id: "ai_2gmKZLxp"
         name: "cold"
-        value: 0.986297607421875
+        value: 0.9862891435623169
         app_id: "main"
       }
       concepts {
         id: "ai_SsmKLB4z"
         name: "bar"
-        value: 0.9813623428344727
+        value: 0.9813107252120972
         app_id: "main"
       }
       concepts {
         id: "ai_qCKzbr0g"
         name: "ale"
-        value: 0.9774436354637146
+        value: 0.9773374795913696
         app_id: "main"
       }
       concepts {
         id: "ai_XNmzgDnF"
         name: "pub"
-        value: 0.9760125279426575
+        value: 0.9758992195129395
         app_id: "main"
       }
       concepts {
         id: "ai_5VHsZr8N"
         name: "liquid"
-        value: 0.9741607308387756
+        value: 0.9741887450218201
         app_id: "main"
       }
       concepts {
         id: "ai_QnpbpDLK"
         name: "pint"
-        value: 0.9730094075202942
+        value: 0.9729149341583252
         app_id: "main"
       }
       concepts {
         id: "ai_54zxXFGL"
         name: "full"
-        value: 0.9695686101913452
+        value: 0.9695841073989868
         app_id: "main"
       }
       concepts {
         id: "ai_F547sXrF"
         name: "foamy"
-        value: 0.9682390093803406
+        value: 0.9682382345199585
         app_id: "main"
       }
       concepts {
         id: "ai_7vR9zv7l"
         name: "bubble"
-        value: 0.9641352295875549
+        value: 0.9640994668006897
         app_id: "main"
       }
       concepts {
         id: "ai_786Zr311"
         name: "no person"
-        value: 0.9638278484344482
+        value: 0.9638546109199524
         app_id: "main"
       }
       concepts {
         id: "ai_n1b6R1vv"
         name: "amber"
-        value: 0.9572075605392456
+        value: 0.9570770263671875
         app_id: "main"
       }
       concepts {
         id: "ai_nMNvWpn8"
         name: "intoxicated"
-        value: 0.956136167049408
+        value: 0.9560476541519165
         app_id: "main"
       }
       concepts {
         id: "ai_pkvDRSJ1"
         name: "mug"
-        value: 0.9538235068321228
+        value: 0.9537928104400635
         app_id: "main"
       }
     }
@@ -474,121 +449,121 @@ data {
       concepts {
         id: "ai_TBlp0Pt3"
         name: "beer"
-        value: 0.9997699856758118
+        value: 0.9997701048851013
         app_id: "main"
       }
       concepts {
         id: "ai_mCpQg89c"
         name: "glass"
-        value: 0.9992303848266602
+        value: 0.9992296695709229
         app_id: "main"
       }
       concepts {
         id: "ai_8XGJjH7R"
         name: "foam"
-        value: 0.9992130994796753
+        value: 0.9992121458053589
         app_id: "main"
       }
       concepts {
         id: "ai_3R5pJ6hB"
         name: "lager"
-        value: 0.9985170960426331
+        value: 0.9985218644142151
         app_id: "main"
       }
       concepts {
         id: "ai_zJx6RbxW"
         name: "drink"
-        value: 0.9972791075706482
+        value: 0.9972805976867676
         app_id: "main"
       }
       concepts {
         id: "ai_drK6ClJR"
         name: "alcohol"
-        value: 0.996057391166687
+        value: 0.9960547685623169
         app_id: "main"
       }
       concepts {
         id: "ai_2LWXN7Bn"
         name: "brewery"
-        value: 0.9958221912384033
+        value: 0.9958301186561584
         app_id: "main"
       }
       concepts {
         id: "ai_QnpbpDLK"
         name: "pint"
-        value: 0.9914268255233765
+        value: 0.9914194345474243
         app_id: "main"
       }
       concepts {
         id: "ai_2gmKZLxp"
         name: "cold"
-        value: 0.9910215735435486
+        value: 0.9910222291946411
         app_id: "main"
       }
       concepts {
         id: "ai_qCKzbr0g"
         name: "ale"
-        value: 0.9901620149612427
+        value: 0.9901933073997498
         app_id: "main"
       }
       concepts {
         id: "ai_XNmzgDnF"
         name: "pub"
-        value: 0.989056408405304
+        value: 0.9890332221984863
         app_id: "main"
       }
       concepts {
         id: "ai_54zxXFGL"
         name: "full"
-        value: 0.9886349439620972
+        value: 0.9886132478713989
         app_id: "main"
       }
       concepts {
         id: "ai_5VHsZr8N"
         name: "liquid"
-        value: 0.9845825433731079
+        value: 0.9845917820930481
         app_id: "main"
       }
       concepts {
         id: "ai_SsmKLB4z"
         name: "bar"
-        value: 0.983745813369751
+        value: 0.9837354421615601
         app_id: "main"
       }
       concepts {
         id: "ai_F547sXrF"
         name: "foamy"
-        value: 0.9825948476791382
+        value: 0.9826065301895142
         app_id: "main"
       }
       concepts {
         id: "ai_nMNvWpn8"
         name: "intoxicated"
-        value: 0.9744146466255188
+        value: 0.9744114875793457
         app_id: "main"
       }
       concepts {
         id: "ai_3l2jRv5s"
         name: "liquor"
-        value: 0.9737566709518433
+        value: 0.9737584590911865
         app_id: "main"
       }
       concepts {
         id: "ai_n1b6R1vv"
         name: "amber"
-        value: 0.9714393615722656
+        value: 0.9714255928993225
         app_id: "main"
       }
       concepts {
         id: "ai_4Dlsldjg"
         name: "brew"
-        value: 0.9691905975341797
+        value: 0.9692292213439941
         app_id: "main"
       }
       concepts {
         id: "ai_74H0z2d2"
         name: "sketch out"
-        value: 0.9686384201049805
+        value: 0.9686199426651001
         app_id: "main"
       }
     }
@@ -603,121 +578,121 @@ data {
       concepts {
         id: "ai_mCpQg89c"
         name: "glass"
-        value: 0.9978876709938049
+        value: 0.9978996515274048
         app_id: "main"
       }
       concepts {
         id: "ai_zJx6RbxW"
         name: "drink"
-        value: 0.996326744556427
+        value: 0.9963474869728088
         app_id: "main"
       }
       concepts {
         id: "ai_2gmKZLxp"
         name: "cold"
-        value: 0.984455943107605
+        value: 0.9844813346862793
         app_id: "main"
       }
       concepts {
         id: "ai_TBlp0Pt3"
         name: "beer"
-        value: 0.9828509092330933
+        value: 0.9828689098358154
         app_id: "main"
       }
       concepts {
         id: "ai_8XGJjH7R"
         name: "foam"
-        value: 0.9818499684333801
+        value: 0.9818728566169739
         app_id: "main"
       }
       concepts {
         id: "ai_5VHsZr8N"
         name: "liquid"
-        value: 0.9799937009811401
+        value: 0.980105459690094
         app_id: "main"
       }
       concepts {
         id: "ai_drK6ClJR"
         name: "alcohol"
-        value: 0.9768438935279846
+        value: 0.9770163893699646
         app_id: "main"
       }
       concepts {
         id: "ai_54zxXFGL"
         name: "full"
-        value: 0.9610036015510559
+        value: 0.9610904455184937
         app_id: "main"
       }
       concepts {
         id: "ai_786Zr311"
         name: "no person"
-        value: 0.9601321220397949
+        value: 0.9601907134056091
         app_id: "main"
       }
       concepts {
         id: "ai_B3MXt5Ng"
         name: "refreshment"
-        value: 0.9438531398773193
+        value: 0.9437422752380371
         app_id: "main"
       }
       concepts {
         id: "ai_3R5pJ6hB"
         name: "lager"
-        value: 0.9384875297546387
+        value: 0.938518226146698
         app_id: "main"
       }
       concepts {
         id: "ai_bNlklStp"
         name: "thirst"
-        value: 0.9253551363945007
+        value: 0.9255437850952148
         app_id: "main"
       }
       concepts {
         id: "ai_SsmKLB4z"
         name: "bar"
-        value: 0.9186211824417114
+        value: 0.9187645316123962
         app_id: "main"
       }
       concepts {
         id: "ai_3l2jRv5s"
         name: "liquor"
-        value: 0.9022694230079651
+        value: 0.9028059840202332
         app_id: "main"
       }
       concepts {
         id: "ai_VXtfX6F5"
         name: "cool"
-        value: 0.9019186496734619
+        value: 0.9019685387611389
         app_id: "main"
       }
       concepts {
         id: "ai_7vR9zv7l"
         name: "bubble"
-        value: 0.884354829788208
+        value: 0.88445645570755
         app_id: "main"
       }
       concepts {
         id: "ai_nMNvWpn8"
         name: "intoxicated"
-        value: 0.882815957069397
+        value: 0.8831674456596375
         app_id: "main"
       }
       concepts {
         id: "ai_NTTFwSHB"
         name: "wet"
-        value: 0.874964714050293
+        value: 0.8748971223831177
         app_id: "main"
       }
       concepts {
         id: "ai_XNmzgDnF"
         name: "pub"
-        value: 0.8742404580116272
+        value: 0.8741576075553894
         app_id: "main"
       }
       concepts {
         id: "ai_12dz73B9"
         name: "bottle"
-        value: 0.8664778470993042
+        value: 0.8668125867843628
         app_id: "main"
       }
     }
@@ -732,121 +707,121 @@ data {
       concepts {
         id: "ai_mCpQg89c"
         name: "glass"
-        value: 0.9951942563056946
+        value: 0.9951979517936707
         app_id: "main"
       }
       concepts {
         id: "ai_8XGJjH7R"
         name: "foam"
-        value: 0.9943759441375732
+        value: 0.9943813681602478
         app_id: "main"
       }
       concepts {
         id: "ai_TBlp0Pt3"
         name: "beer"
-        value: 0.9925910234451294
+        value: 0.9926243424415588
         app_id: "main"
       }
       concepts {
         id: "ai_zJx6RbxW"
         name: "drink"
-        value: 0.9915691018104553
+        value: 0.9915958046913147
         app_id: "main"
       }
       concepts {
         id: "ai_786Zr311"
         name: "no person"
-        value: 0.9893943667411804
+        value: 0.989373505115509
         app_id: "main"
       }
       concepts {
         id: "ai_2gmKZLxp"
         name: "cold"
-        value: 0.9805277585983276
+        value: 0.9805072546005249
         app_id: "main"
       }
       concepts {
         id: "ai_drK6ClJR"
         name: "alcohol"
-        value: 0.9529010653495789
+        value: 0.9529444575309753
         app_id: "main"
       }
       concepts {
         id: "ai_5VHsZr8N"
         name: "liquid"
-        value: 0.9493312239646912
+        value: 0.9495193958282471
         app_id: "main"
       }
       concepts {
         id: "ai_54zxXFGL"
         name: "full"
-        value: 0.9443060755729675
+        value: 0.9444553256034851
         app_id: "main"
       }
       concepts {
         id: "ai_3R5pJ6hB"
         name: "lager"
-        value: 0.9336271286010742
+        value: 0.9341009855270386
         app_id: "main"
       }
       concepts {
         id: "ai_bNlklStp"
         name: "thirst"
-        value: 0.9140426516532898
+        value: 0.9140894412994385
         app_id: "main"
       }
       concepts {
         id: "ai_3l2jRv5s"
         name: "liquor"
-        value: 0.9111030697822571
+        value: 0.9109359383583069
         app_id: "main"
       }
       concepts {
         id: "ai_SsmKLB4z"
         name: "bar"
-        value: 0.9057613015174866
+        value: 0.9057071208953857
         app_id: "main"
       }
       concepts {
         id: "ai_mZ2tl6cW"
         name: "health"
-        value: 0.8999575972557068
+        value: 0.8998499512672424
         app_id: "main"
       }
       concepts {
         id: "ai_nMNvWpn8"
         name: "intoxicated"
-        value: 0.8991795778274536
+        value: 0.899374783039093
         app_id: "main"
       }
       concepts {
         id: "ai_NTTFwSHB"
         name: "wet"
-        value: 0.8813260793685913
+        value: 0.8809621334075928
         app_id: "main"
       }
       concepts {
         id: "ai_B3MXt5Ng"
         name: "refreshment"
-        value: 0.8803942799568176
+        value: 0.8807708621025085
         app_id: "main"
       }
       concepts {
         id: "ai_2LWXN7Bn"
         name: "brewery"
-        value: 0.8753432631492615
+        value: 0.8758730888366699
         app_id: "main"
       }
       concepts {
         id: "ai_XNmzgDnF"
         name: "pub"
-        value: 0.8563250303268433
+        value: 0.8561508655548096
         app_id: "main"
       }
       concepts {
         id: "ai_7vR9zv7l"
         name: "bubble"
-        value: 0.8491774797439575
+        value: 0.8491345643997192
         app_id: "main"
       }
     }
@@ -861,121 +836,121 @@ data {
       concepts {
         id: "ai_mCpQg89c"
         name: "glass"
-        value: 0.996720016002655
+        value: 0.9967485666275024
         app_id: "main"
       }
       concepts {
         id: "ai_zJx6RbxW"
         name: "drink"
-        value: 0.9964469075202942
+        value: 0.9964845180511475
         app_id: "main"
       }
       concepts {
         id: "ai_8XGJjH7R"
         name: "foam"
-        value: 0.982464611530304
+        value: 0.9826822280883789
         app_id: "main"
       }
       concepts {
         id: "ai_TBlp0Pt3"
         name: "beer"
-        value: 0.9764775633811951
+        value: 0.97678542137146
         app_id: "main"
       }
       concepts {
         id: "ai_786Zr311"
         name: "no person"
-        value: 0.974078357219696
+        value: 0.9737922549247742
         app_id: "main"
       }
       concepts {
         id: "ai_5VHsZr8N"
         name: "liquid"
-        value: 0.9723861217498779
+        value: 0.9726471304893494
         app_id: "main"
       }
       concepts {
         id: "ai_2gmKZLxp"
         name: "cold"
-        value: 0.970259428024292
+        value: 0.9703800082206726
         app_id: "main"
       }
       concepts {
         id: "ai_drK6ClJR"
         name: "alcohol"
-        value: 0.9654913544654846
+        value: 0.9660417437553406
         app_id: "main"
       }
       concepts {
         id: "ai_54zxXFGL"
         name: "full"
-        value: 0.9504287838935852
+        value: 0.9504242539405823
         app_id: "main"
       }
       concepts {
         id: "ai_B3MXt5Ng"
         name: "refreshment"
-        value: 0.9249047636985779
+        value: 0.9254412651062012
         app_id: "main"
       }
       concepts {
         id: "ai_3R5pJ6hB"
         name: "lager"
-        value: 0.9079272747039795
+        value: 0.9096206426620483
         app_id: "main"
       }
       concepts {
         id: "ai_7qwGxLch"
         name: "gold"
-        value: 0.9033960700035095
+        value: 0.9041298627853394
         app_id: "main"
       }
       concepts {
         id: "ai_12dz73B9"
         name: "bottle"
-        value: 0.902218759059906
+        value: 0.9024790525436401
         app_id: "main"
       }
       concepts {
         id: "ai_3PlgVmlN"
         name: "food"
-        value: 0.9007232785224915
+        value: 0.9007976651191711
         app_id: "main"
       }
       concepts {
         id: "ai_X7ZHcRJc"
         name: "drop"
-        value: 0.8846867680549622
+        value: 0.885306715965271
         app_id: "main"
       }
       concepts {
         id: "ai_7vR9zv7l"
         name: "bubble"
-        value: 0.8829047679901123
+        value: 0.8843998908996582
         app_id: "main"
       }
       concepts {
         id: "ai_mZ2tl6cW"
         name: "health"
-        value: 0.875813901424408
-        app_id: "main"
-      }
-      concepts {
-        id: "ai_ZSKpCCHD"
-        name: "vertical"
-        value: 0.8671783208847046
+        value: 0.8743909001350403
         app_id: "main"
       }
       concepts {
         id: "ai_b01mhdxB"
         name: "party"
-        value: 0.8658689856529236
+        value: 0.8670044541358948
         app_id: "main"
       }
       concepts {
-        id: "ai_PBPBk7nW"
-        name: "champagne"
-        value: 0.8577202558517456
+        id: "ai_ZSKpCCHD"
+        name: "vertical"
+        value: 0.8667541742324829
+        app_id: "main"
+      }
+      concepts {
+        id: "ai_SsmKLB4z"
+        name: "bar"
+        value: 0.8590472340583801
         app_id: "main"
       }
     }
@@ -990,121 +965,121 @@ data {
       concepts {
         id: "ai_zJx6RbxW"
         name: "drink"
-        value: 0.9836540818214417
+        value: 0.9836993217468262
         app_id: "main"
       }
       concepts {
         id: "ai_786Zr311"
         name: "no person"
-        value: 0.9833090901374817
+        value: 0.9833121299743652
         app_id: "main"
       }
       concepts {
         id: "ai_mCpQg89c"
         name: "glass"
-        value: 0.9761819839477539
+        value: 0.9763009548187256
         app_id: "main"
       }
       concepts {
         id: "ai_TBlp0Pt3"
         name: "beer"
-        value: 0.9755870699882507
+        value: 0.9756914973258972
         app_id: "main"
       }
       concepts {
         id: "ai_8XGJjH7R"
         name: "foam"
-        value: 0.9633444547653198
+        value: 0.9632844924926758
         app_id: "main"
       }
       concepts {
         id: "ai_drK6ClJR"
         name: "alcohol"
-        value: 0.9479299187660217
+        value: 0.9484147429466248
         app_id: "main"
       }
       concepts {
         id: "ai_5VHsZr8N"
         name: "liquid"
-        value: 0.941258430480957
+        value: 0.9415270686149597
         app_id: "main"
       }
       concepts {
         id: "ai_2gmKZLxp"
         name: "cold"
-        value: 0.9155797958374023
+        value: 0.9156915545463562
         app_id: "main"
       }
       concepts {
         id: "ai_7qwGxLch"
         name: "gold"
-        value: 0.9142221212387085
+        value: 0.9146540760993958
         app_id: "main"
       }
       concepts {
         id: "ai_3PlgVmlN"
         name: "food"
-        value: 0.907996654510498
+        value: 0.907713770866394
         app_id: "main"
       }
       concepts {
         id: "ai_SsmKLB4z"
         name: "bar"
-        value: 0.9045435786247253
+        value: 0.9049137830734253
         app_id: "main"
       }
       concepts {
         id: "ai_B3MXt5Ng"
         name: "refreshment"
-        value: 0.8932251334190369
+        value: 0.893317699432373
         app_id: "main"
       }
       concepts {
         id: "ai_7Xg5SQRW"
         name: "luxury"
-        value: 0.8723647594451904
+        value: 0.8726363778114319
         app_id: "main"
       }
       concepts {
         id: "ai_54zxXFGL"
         name: "full"
-        value: 0.8703675866127014
+        value: 0.8704315423965454
         app_id: "main"
       }
       concepts {
         id: "ai_mZ2tl6cW"
         name: "health"
-        value: 0.8629929423332214
+        value: 0.8628416061401367
         app_id: "main"
       }
       concepts {
         id: "ai_ZSKpCCHD"
         name: "vertical"
-        value: 0.8388506770133972
+        value: 0.8384964466094971
         app_id: "main"
       }
       concepts {
         id: "ai_Lq00FggW"
         name: "desktop"
-        value: 0.8250543475151062
+        value: 0.8253465890884399
         app_id: "main"
       }
       concepts {
         id: "ai_8zbKXvD7"
         name: "sparkling"
-        value: 0.8216716051101685
+        value: 0.8222783803939819
         app_id: "main"
       }
       concepts {
         id: "ai_LM64MDHs"
         name: "shining"
-        value: 0.8177599906921387
+        value: 0.8182401061058044
         app_id: "main"
       }
       concepts {
         id: "ai_NTTFwSHB"
         name: "wet"
-        value: 0.8106683492660522
+        value: 0.8113693594932556
         app_id: "main"
       }
     }
@@ -1119,121 +1094,121 @@ data {
       concepts {
         id: "ai_TBlp0Pt3"
         name: "beer"
-        value: 0.998095691204071
+        value: 0.9981098175048828
         app_id: "main"
       }
       concepts {
         id: "ai_8XGJjH7R"
         name: "foam"
-        value: 0.9943065047264099
+        value: 0.9943045973777771
         app_id: "main"
       }
       concepts {
         id: "ai_786Zr311"
         name: "no person"
-        value: 0.9866586327552795
+        value: 0.986625075340271
         app_id: "main"
       }
       concepts {
         id: "ai_3R5pJ6hB"
         name: "lager"
-        value: 0.9840677976608276
+        value: 0.9841647744178772
         app_id: "main"
       }
       concepts {
         id: "ai_mCpQg89c"
         name: "glass"
-        value: 0.9835688471794128
+        value: 0.9836443066596985
         app_id: "main"
       }
       concepts {
         id: "ai_zJx6RbxW"
         name: "drink"
-        value: 0.9805488586425781
+        value: 0.9806402921676636
         app_id: "main"
       }
       concepts {
         id: "ai_2LWXN7Bn"
         name: "brewery"
-        value: 0.9772351384162903
+        value: 0.9774118661880493
         app_id: "main"
       }
       concepts {
         id: "ai_QnpbpDLK"
         name: "pint"
-        value: 0.9583105444908142
+        value: 0.9584411978721619
         app_id: "main"
       }
       concepts {
         id: "ai_SsmKLB4z"
         name: "bar"
-        value: 0.9570294618606567
+        value: 0.9572823643684387
         app_id: "main"
       }
       concepts {
         id: "ai_F547sXrF"
         name: "foamy"
-        value: 0.9569440484046936
+        value: 0.9571645259857178
         app_id: "main"
       }
       concepts {
         id: "ai_drK6ClJR"
         name: "alcohol"
-        value: 0.947785496711731
+        value: 0.948240339756012
         app_id: "main"
       }
       concepts {
         id: "ai_2gmKZLxp"
         name: "cold"
-        value: 0.9425638318061829
+        value: 0.9426732659339905
         app_id: "main"
       }
       concepts {
         id: "ai_pkvDRSJ1"
         name: "mug"
-        value: 0.9203127026557922
+        value: 0.9204767346382141
         app_id: "main"
       }
       concepts {
         id: "ai_54zxXFGL"
         name: "full"
-        value: 0.9149718284606934
+        value: 0.9151816368103027
         app_id: "main"
       }
       concepts {
         id: "ai_qCKzbr0g"
         name: "ale"
-        value: 0.912051796913147
+        value: 0.9126847386360168
         app_id: "main"
       }
       concepts {
         id: "ai_B3MXt5Ng"
         name: "refreshment"
-        value: 0.9069801568984985
+        value: 0.9070448279380798
         app_id: "main"
       }
       concepts {
         id: "ai_XNmzgDnF"
         name: "pub"
-        value: 0.8931369185447693
+        value: 0.8936917185783386
         app_id: "main"
       }
       concepts {
         id: "ai_3PlgVmlN"
         name: "food"
-        value: 0.8870121836662292
+        value: 0.8870030045509338
         app_id: "main"
       }
       concepts {
         id: "ai_3l2jRv5s"
         name: "liquor"
-        value: 0.8857131004333496
+        value: 0.8859925270080566
         app_id: "main"
       }
       concepts {
         id: "ai_74H0z2d2"
         name: "sketch out"
-        value: 0.8823739886283875
+        value: 0.8832399845123291
         app_id: "main"
       }
     }
@@ -1248,121 +1223,121 @@ data {
       concepts {
         id: "ai_TBlp0Pt3"
         name: "beer"
-        value: 0.9971466660499573
+        value: 0.9971795082092285
         app_id: "main"
       }
       concepts {
         id: "ai_8XGJjH7R"
         name: "foam"
-        value: 0.9911620616912842
+        value: 0.9912267327308655
         app_id: "main"
       }
       concepts {
         id: "ai_786Zr311"
         name: "no person"
-        value: 0.9869552254676819
+        value: 0.9869438409805298
         app_id: "main"
       }
       concepts {
         id: "ai_mCpQg89c"
         name: "glass"
-        value: 0.9821943044662476
+        value: 0.9823363423347473
         app_id: "main"
       }
       concepts {
         id: "ai_zJx6RbxW"
         name: "drink"
-        value: 0.9767174124717712
+        value: 0.9769037365913391
         app_id: "main"
       }
       concepts {
         id: "ai_3R5pJ6hB"
         name: "lager"
-        value: 0.9732503294944763
+        value: 0.9734747409820557
         app_id: "main"
       }
       concepts {
         id: "ai_2LWXN7Bn"
         name: "brewery"
-        value: 0.9611469507217407
+        value: 0.9614617824554443
         app_id: "main"
       }
       concepts {
         id: "ai_SsmKLB4z"
         name: "bar"
-        value: 0.9469265937805176
+        value: 0.9470586776733398
         app_id: "main"
       }
       concepts {
         id: "ai_2gmKZLxp"
         name: "cold"
-        value: 0.941417932510376
+        value: 0.9416798949241638
         app_id: "main"
       }
       concepts {
         id: "ai_drK6ClJR"
         name: "alcohol"
-        value: 0.940022885799408
+        value: 0.9404584169387817
         app_id: "main"
       }
       concepts {
         id: "ai_QnpbpDLK"
         name: "pint"
-        value: 0.937943160533905
+        value: 0.9382282495498657
         app_id: "main"
       }
       concepts {
         id: "ai_F547sXrF"
         name: "foamy"
-        value: 0.9196685552597046
+        value: 0.9202271699905396
         app_id: "main"
       }
       concepts {
         id: "ai_54zxXFGL"
         name: "full"
-        value: 0.9179996252059937
+        value: 0.9182870984077454
         app_id: "main"
       }
       concepts {
         id: "ai_B3MXt5Ng"
         name: "refreshment"
-        value: 0.8989689350128174
+        value: 0.8989039063453674
         app_id: "main"
       }
       concepts {
         id: "ai_pkvDRSJ1"
         name: "mug"
-        value: 0.8941972255706787
+        value: 0.8948805928230286
         app_id: "main"
       }
       concepts {
         id: "ai_3PlgVmlN"
         name: "food"
-        value: 0.8905569911003113
+        value: 0.89061439037323
         app_id: "main"
       }
       concepts {
         id: "ai_XNmzgDnF"
         name: "pub"
-        value: 0.88238525390625
+        value: 0.8829759359359741
         app_id: "main"
       }
       concepts {
         id: "ai_qCKzbr0g"
         name: "ale"
-        value: 0.8785569667816162
+        value: 0.8793352842330933
         app_id: "main"
       }
       concepts {
         id: "ai_3l2jRv5s"
         name: "liquor"
-        value: 0.8634583950042725
+        value: 0.8641029000282288
         app_id: "main"
       }
       concepts {
         id: "ai_5VHsZr8N"
         name: "liquid"
-        value: 0.8504428267478943
+        value: 0.8511436581611633
         app_id: "main"
       }
     }
@@ -1377,121 +1352,121 @@ data {
       concepts {
         id: "ai_TBlp0Pt3"
         name: "beer"
-        value: 0.9986340403556824
+        value: 0.9986419081687927
         app_id: "main"
       }
       concepts {
         id: "ai_8XGJjH7R"
         name: "foam"
-        value: 0.9924977421760559
+        value: 0.9925092458724976
         app_id: "main"
       }
       concepts {
         id: "ai_786Zr311"
         name: "no person"
-        value: 0.9886854887008667
+        value: 0.9887336492538452
         app_id: "main"
       }
       concepts {
         id: "ai_mCpQg89c"
         name: "glass"
-        value: 0.986160397529602
+        value: 0.9862042665481567
         app_id: "main"
       }
       concepts {
         id: "ai_3R5pJ6hB"
         name: "lager"
-        value: 0.9820623993873596
+        value: 0.9821165204048157
         app_id: "main"
       }
       concepts {
         id: "ai_zJx6RbxW"
         name: "drink"
-        value: 0.9777780175209045
+        value: 0.9777782559394836
         app_id: "main"
       }
       concepts {
         id: "ai_2LWXN7Bn"
         name: "brewery"
-        value: 0.9733004570007324
+        value: 0.9734096527099609
         app_id: "main"
       }
       concepts {
         id: "ai_QnpbpDLK"
         name: "pint"
-        value: 0.9529153108596802
+        value: 0.9529599547386169
         app_id: "main"
       }
       concepts {
         id: "ai_2gmKZLxp"
         name: "cold"
-        value: 0.9495422840118408
+        value: 0.9496700167655945
         app_id: "main"
       }
       concepts {
         id: "ai_drK6ClJR"
         name: "alcohol"
-        value: 0.9494291543960571
+        value: 0.9495285153388977
         app_id: "main"
       }
       concepts {
         id: "ai_SsmKLB4z"
         name: "bar"
-        value: 0.9486342072486877
+        value: 0.9483970403671265
         app_id: "main"
       }
       concepts {
         id: "ai_54zxXFGL"
         name: "full"
-        value: 0.9413025975227356
+        value: 0.9416258931159973
         app_id: "main"
       }
       concepts {
         id: "ai_F547sXrF"
         name: "foamy"
-        value: 0.9297009706497192
+        value: 0.9300329685211182
         app_id: "main"
       }
       concepts {
         id: "ai_qCKzbr0g"
         name: "ale"
-        value: 0.918346643447876
+        value: 0.9184643030166626
         app_id: "main"
       }
       concepts {
         id: "ai_pkvDRSJ1"
         name: "mug"
-        value: 0.9079149961471558
+        value: 0.9080654978752136
         app_id: "main"
       }
       concepts {
         id: "ai_XNmzgDnF"
         name: "pub"
-        value: 0.906195878982544
+        value: 0.9059904217720032
         app_id: "main"
       }
       concepts {
         id: "ai_B3MXt5Ng"
         name: "refreshment"
-        value: 0.8804572224617004
+        value: 0.880144476890564
         app_id: "main"
       }
       concepts {
         id: "ai_3l2jRv5s"
         name: "liquor"
-        value: 0.8798848986625671
+        value: 0.8800289034843445
         app_id: "main"
       }
       concepts {
         id: "ai_5VHsZr8N"
         name: "liquid"
-        value: 0.8680368065834045
+        value: 0.8680859804153442
         app_id: "main"
       }
       concepts {
         id: "ai_3PlgVmlN"
         name: "food"
-        value: 0.8535978198051453
+        value: 0.8533608317375183
         app_id: "main"
       }
     }
@@ -1506,121 +1481,121 @@ data {
       concepts {
         id: "ai_TBlp0Pt3"
         name: "beer"
-        value: 0.998038113117218
+        value: 0.9980437755584717
         app_id: "main"
       }
       concepts {
         id: "ai_786Zr311"
         name: "no person"
-        value: 0.9920376539230347
+        value: 0.9920185208320618
         app_id: "main"
       }
       concepts {
         id: "ai_8XGJjH7R"
         name: "foam"
-        value: 0.9916306138038635
+        value: 0.9916218519210815
         app_id: "main"
       }
       concepts {
         id: "ai_mCpQg89c"
         name: "glass"
-        value: 0.9827123880386353
+        value: 0.9827982783317566
         app_id: "main"
       }
       concepts {
         id: "ai_3R5pJ6hB"
         name: "lager"
-        value: 0.9750614762306213
+        value: 0.9750837087631226
         app_id: "main"
       }
       concepts {
         id: "ai_zJx6RbxW"
         name: "drink"
-        value: 0.9725252389907837
+        value: 0.9725251197814941
         app_id: "main"
       }
       concepts {
         id: "ai_2LWXN7Bn"
         name: "brewery"
-        value: 0.9663617014884949
+        value: 0.9665043354034424
         app_id: "main"
       }
       concepts {
         id: "ai_SsmKLB4z"
         name: "bar"
-        value: 0.942520022392273
+        value: 0.9424052238464355
         app_id: "main"
       }
       concepts {
         id: "ai_QnpbpDLK"
         name: "pint"
-        value: 0.9390248656272888
+        value: 0.938936173915863
         app_id: "main"
       }
       concepts {
         id: "ai_2gmKZLxp"
         name: "cold"
-        value: 0.9341832995414734
+        value: 0.9341326951980591
         app_id: "main"
       }
       concepts {
         id: "ai_drK6ClJR"
         name: "alcohol"
-        value: 0.9330732226371765
+        value: 0.9333233833312988
         app_id: "main"
       }
       concepts {
         id: "ai_54zxXFGL"
         name: "full"
-        value: 0.9265549778938293
+        value: 0.9265391826629639
         app_id: "main"
       }
       concepts {
         id: "ai_F547sXrF"
         name: "foamy"
-        value: 0.9185084104537964
+        value: 0.9188488125801086
         app_id: "main"
       }
       concepts {
         id: "ai_pkvDRSJ1"
         name: "mug"
-        value: 0.8948495984077454
+        value: 0.8950655460357666
         app_id: "main"
       }
       concepts {
         id: "ai_qCKzbr0g"
         name: "ale"
-        value: 0.8862652778625488
+        value: 0.8863833546638489
         app_id: "main"
       }
       concepts {
         id: "ai_XNmzgDnF"
         name: "pub"
-        value: 0.8822135925292969
+        value: 0.8820033669471741
         app_id: "main"
       }
       concepts {
         id: "ai_B3MXt5Ng"
         name: "refreshment"
-        value: 0.8681472539901733
+        value: 0.8681637644767761
         app_id: "main"
       }
       concepts {
         id: "ai_3l2jRv5s"
         name: "liquor"
-        value: 0.8647196292877197
+        value: 0.864867091178894
         app_id: "main"
       }
       concepts {
         id: "ai_ZSKpCCHD"
         name: "vertical"
-        value: 0.8547422289848328
+        value: 0.8552114367485046
         app_id: "main"
       }
       concepts {
         id: "ai_3PlgVmlN"
         name: "food"
-        value: 0.8477557897567749
+        value: 0.8477041125297546
         app_id: "main"
       }
     }
@@ -1635,121 +1610,121 @@ data {
       concepts {
         id: "ai_TBlp0Pt3"
         name: "beer"
-        value: 0.9978912472724915
+        value: 0.9979068040847778
         app_id: "main"
       }
       concepts {
         id: "ai_8XGJjH7R"
         name: "foam"
-        value: 0.9922767281532288
+        value: 0.9922707080841064
         app_id: "main"
       }
       concepts {
         id: "ai_786Zr311"
         name: "no person"
-        value: 0.9886456727981567
+        value: 0.9887047410011292
         app_id: "main"
       }
       concepts {
         id: "ai_mCpQg89c"
         name: "glass"
-        value: 0.9865738749504089
+        value: 0.9865961670875549
         app_id: "main"
       }
       concepts {
         id: "ai_3R5pJ6hB"
         name: "lager"
-        value: 0.9798799157142639
+        value: 0.9800080060958862
         app_id: "main"
       }
       concepts {
         id: "ai_zJx6RbxW"
         name: "drink"
-        value: 0.9784476161003113
+        value: 0.978450357913971
         app_id: "main"
       }
       concepts {
         id: "ai_2LWXN7Bn"
         name: "brewery"
-        value: 0.9674688577651978
+        value: 0.9677263498306274
         app_id: "main"
       }
       concepts {
         id: "ai_QnpbpDLK"
         name: "pint"
-        value: 0.953066885471344
+        value: 0.9533515572547913
         app_id: "main"
       }
       concepts {
         id: "ai_2gmKZLxp"
         name: "cold"
-        value: 0.9486628174781799
+        value: 0.9488505125045776
         app_id: "main"
       }
       concepts {
         id: "ai_SsmKLB4z"
         name: "bar"
-        value: 0.946937620639801
+        value: 0.9467635154724121
         app_id: "main"
       }
       concepts {
         id: "ai_drK6ClJR"
         name: "alcohol"
-        value: 0.9452530741691589
+        value: 0.9454187750816345
         app_id: "main"
       }
       concepts {
         id: "ai_54zxXFGL"
         name: "full"
-        value: 0.9348174929618835
+        value: 0.9349735379219055
         app_id: "main"
       }
       concepts {
         id: "ai_F547sXrF"
         name: "foamy"
-        value: 0.9339045286178589
+        value: 0.9340612292289734
         app_id: "main"
       }
       concepts {
         id: "ai_qCKzbr0g"
         name: "ale"
-        value: 0.9132968783378601
-        app_id: "main"
-      }
-      concepts {
-        id: "ai_XNmzgDnF"
-        name: "pub"
-        value: 0.899000346660614
+        value: 0.9136492013931274
         app_id: "main"
       }
       concepts {
         id: "ai_pkvDRSJ1"
         name: "mug"
-        value: 0.898864209651947
+        value: 0.8990769386291504
+        app_id: "main"
+      }
+      concepts {
+        id: "ai_XNmzgDnF"
+        name: "pub"
+        value: 0.8988648653030396
         app_id: "main"
       }
       concepts {
         id: "ai_B3MXt5Ng"
         name: "refreshment"
-        value: 0.8955707550048828
+        value: 0.8952221274375916
         app_id: "main"
       }
       concepts {
         id: "ai_3l2jRv5s"
         name: "liquor"
-        value: 0.866500973701477
+        value: 0.8666876554489136
         app_id: "main"
       }
       concepts {
         id: "ai_5VHsZr8N"
         name: "liquid"
-        value: 0.8616964221000671
+        value: 0.8616843819618225
         app_id: "main"
       }
       concepts {
         id: "ai_74H0z2d2"
         name: "sketch out"
-        value: 0.8595026135444641
+        value: 0.8601076006889343
         app_id: "main"
       }
     }
@@ -1764,121 +1739,121 @@ data {
       concepts {
         id: "ai_TBlp0Pt3"
         name: "beer"
-        value: 0.9979944229125977
+        value: 0.9980113506317139
         app_id: "main"
       }
       concepts {
         id: "ai_786Zr311"
         name: "no person"
-        value: 0.9903469681739807
+        value: 0.9903795719146729
         app_id: "main"
       }
       concepts {
         id: "ai_8XGJjH7R"
         name: "foam"
-        value: 0.9898814558982849
+        value: 0.9898717999458313
         app_id: "main"
       }
       concepts {
         id: "ai_mCpQg89c"
         name: "glass"
-        value: 0.9838077425956726
+        value: 0.983867883682251
         app_id: "main"
       }
       concepts {
         id: "ai_3R5pJ6hB"
         name: "lager"
-        value: 0.9786876440048218
+        value: 0.9787655472755432
         app_id: "main"
       }
       concepts {
         id: "ai_zJx6RbxW"
         name: "drink"
-        value: 0.9770419001579285
+        value: 0.9771478176116943
         app_id: "main"
       }
       concepts {
         id: "ai_2LWXN7Bn"
         name: "brewery"
-        value: 0.9652636051177979
+        value: 0.9654712677001953
         app_id: "main"
       }
       concepts {
         id: "ai_2gmKZLxp"
         name: "cold"
-        value: 0.9490075707435608
+        value: 0.9490832686424255
         app_id: "main"
       }
       concepts {
         id: "ai_SsmKLB4z"
         name: "bar"
-        value: 0.9474231600761414
+        value: 0.947539210319519
         app_id: "main"
       }
       concepts {
         id: "ai_QnpbpDLK"
         name: "pint"
-        value: 0.9447771310806274
+        value: 0.9449847340583801
         app_id: "main"
       }
       concepts {
         id: "ai_drK6ClJR"
         name: "alcohol"
-        value: 0.9390490651130676
+        value: 0.9394712448120117
         app_id: "main"
       }
       concepts {
         id: "ai_54zxXFGL"
         name: "full"
-        value: 0.931921124458313
+        value: 0.9320743680000305
         app_id: "main"
       }
       concepts {
         id: "ai_F547sXrF"
         name: "foamy"
-        value: 0.90717613697052
+        value: 0.9074251055717468
         app_id: "main"
       }
       concepts {
         id: "ai_qCKzbr0g"
         name: "ale"
-        value: 0.9046061038970947
+        value: 0.9049415588378906
         app_id: "main"
       }
       concepts {
         id: "ai_XNmzgDnF"
         name: "pub"
-        value: 0.8927520513534546
+        value: 0.8930882215499878
         app_id: "main"
       }
       concepts {
         id: "ai_pkvDRSJ1"
         name: "mug"
-        value: 0.8854517936706543
+        value: 0.8860717415809631
         app_id: "main"
       }
       concepts {
         id: "ai_B3MXt5Ng"
         name: "refreshment"
-        value: 0.8830398321151733
+        value: 0.8830485343933105
         app_id: "main"
       }
       concepts {
         id: "ai_3l2jRv5s"
         name: "liquor"
-        value: 0.8566024899482727
+        value: 0.8568456768989563
         app_id: "main"
       }
       concepts {
         id: "ai_3PlgVmlN"
         name: "food"
-        value: 0.8550928831100464
+        value: 0.8551452159881592
         app_id: "main"
       }
       concepts {
         id: "ai_5VHsZr8N"
         name: "liquid"
-        value: 0.8503050804138184
+        value: 0.8507459759712219
         app_id: "main"
       }
     }
@@ -1893,121 +1868,121 @@ data {
       concepts {
         id: "ai_TBlp0Pt3"
         name: "beer"
-        value: 0.9980589747428894
+        value: 0.9980582594871521
         app_id: "main"
       }
       concepts {
         id: "ai_8XGJjH7R"
         name: "foam"
-        value: 0.9907171130180359
+        value: 0.9907283782958984
         app_id: "main"
       }
       concepts {
         id: "ai_786Zr311"
         name: "no person"
-        value: 0.9865360856056213
+        value: 0.9865866899490356
         app_id: "main"
       }
       concepts {
         id: "ai_mCpQg89c"
         name: "glass"
-        value: 0.9850829839706421
+        value: 0.9851380586624146
         app_id: "main"
       }
       concepts {
         id: "ai_3R5pJ6hB"
         name: "lager"
-        value: 0.9799899458885193
+        value: 0.9799703359603882
         app_id: "main"
       }
       concepts {
         id: "ai_zJx6RbxW"
         name: "drink"
-        value: 0.9790197014808655
+        value: 0.9790413975715637
         app_id: "main"
       }
       concepts {
         id: "ai_2LWXN7Bn"
         name: "brewery"
-        value: 0.9685344696044922
+        value: 0.9685026407241821
         app_id: "main"
       }
       concepts {
         id: "ai_SsmKLB4z"
         name: "bar"
-        value: 0.9534428119659424
+        value: 0.9532870054244995
         app_id: "main"
       }
       concepts {
         id: "ai_2gmKZLxp"
         name: "cold"
-        value: 0.9531964063644409
+        value: 0.9532597064971924
         app_id: "main"
       }
       concepts {
         id: "ai_drK6ClJR"
         name: "alcohol"
-        value: 0.9492233991622925
+        value: 0.9493443369865417
         app_id: "main"
       }
       concepts {
         id: "ai_QnpbpDLK"
         name: "pint"
-        value: 0.9473913908004761
+        value: 0.9472265243530273
         app_id: "main"
       }
       concepts {
         id: "ai_54zxXFGL"
         name: "full"
-        value: 0.9311952590942383
+        value: 0.9311469793319702
         app_id: "main"
       }
       concepts {
         id: "ai_F547sXrF"
         name: "foamy"
-        value: 0.9234644770622253
+        value: 0.9236065745353699
         app_id: "main"
       }
       concepts {
         id: "ai_qCKzbr0g"
         name: "ale"
-        value: 0.9111457467079163
+        value: 0.9110153913497925
         app_id: "main"
       }
       concepts {
         id: "ai_XNmzgDnF"
         name: "pub"
-        value: 0.9006906747817993
+        value: 0.9004049301147461
         app_id: "main"
       }
       concepts {
         id: "ai_pkvDRSJ1"
         name: "mug"
-        value: 0.895000159740448
+        value: 0.8953641057014465
         app_id: "main"
       }
       concepts {
         id: "ai_B3MXt5Ng"
         name: "refreshment"
-        value: 0.8880323767662048
+        value: 0.8878188729286194
         app_id: "main"
       }
       concepts {
         id: "ai_5VHsZr8N"
         name: "liquid"
-        value: 0.8782278895378113
+        value: 0.8782486915588379
         app_id: "main"
       }
       concepts {
         id: "ai_3l2jRv5s"
         name: "liquor"
-        value: 0.8648902177810669
+        value: 0.8650981187820435
         app_id: "main"
       }
       concepts {
         id: "ai_3PlgVmlN"
         name: "food"
-        value: 0.8568897843360901
+        value: 0.857020378112793
         app_id: "main"
       }
     }
@@ -2022,121 +1997,121 @@ data {
       concepts {
         id: "ai_TBlp0Pt3"
         name: "beer"
-        value: 0.998155415058136
+        value: 0.9981558918952942
         app_id: "main"
       }
       concepts {
         id: "ai_8XGJjH7R"
         name: "foam"
-        value: 0.9922153353691101
+        value: 0.992191731929779
         app_id: "main"
       }
       concepts {
         id: "ai_786Zr311"
         name: "no person"
-        value: 0.9919559955596924
+        value: 0.9919082522392273
         app_id: "main"
       }
       concepts {
         id: "ai_mCpQg89c"
         name: "glass"
-        value: 0.9824689626693726
+        value: 0.9825376868247986
         app_id: "main"
       }
       concepts {
         id: "ai_3R5pJ6hB"
         name: "lager"
-        value: 0.978298008441925
+        value: 0.978348433971405
         app_id: "main"
       }
       concepts {
         id: "ai_zJx6RbxW"
         name: "drink"
-        value: 0.975547730922699
+        value: 0.9756084084510803
         app_id: "main"
       }
       concepts {
         id: "ai_2LWXN7Bn"
         name: "brewery"
-        value: 0.9647846817970276
+        value: 0.9648955464363098
         app_id: "main"
       }
       concepts {
         id: "ai_2gmKZLxp"
         name: "cold"
-        value: 0.9579878449440002
+        value: 0.9580070972442627
         app_id: "main"
       }
       concepts {
         id: "ai_SsmKLB4z"
         name: "bar"
-        value: 0.946682333946228
+        value: 0.9467634558677673
         app_id: "main"
       }
       concepts {
         id: "ai_54zxXFGL"
         name: "full"
-        value: 0.9426839351654053
+        value: 0.9425504803657532
         app_id: "main"
       }
       concepts {
         id: "ai_QnpbpDLK"
         name: "pint"
-        value: 0.9415327906608582
+        value: 0.9415781497955322
         app_id: "main"
       }
       concepts {
         id: "ai_drK6ClJR"
         name: "alcohol"
-        value: 0.9382109642028809
+        value: 0.9384997487068176
         app_id: "main"
       }
       concepts {
         id: "ai_F547sXrF"
         name: "foamy"
-        value: 0.9239164590835571
+        value: 0.9242134690284729
         app_id: "main"
       }
       concepts {
         id: "ai_qCKzbr0g"
         name: "ale"
-        value: 0.892767071723938
+        value: 0.8930195569992065
         app_id: "main"
       }
       concepts {
         id: "ai_XNmzgDnF"
         name: "pub"
-        value: 0.8825502395629883
+        value: 0.8825927376747131
         app_id: "main"
       }
       concepts {
         id: "ai_pkvDRSJ1"
         name: "mug"
-        value: 0.8742321729660034
+        value: 0.8744949698448181
         app_id: "main"
       }
       concepts {
         id: "ai_3l2jRv5s"
         name: "liquor"
-        value: 0.8739243149757385
+        value: 0.8740363121032715
         app_id: "main"
       }
       concepts {
         id: "ai_B3MXt5Ng"
         name: "refreshment"
-        value: 0.8685475587844849
+        value: 0.8686992526054382
         app_id: "main"
       }
       concepts {
         id: "ai_3PlgVmlN"
         name: "food"
-        value: 0.8646178245544434
+        value: 0.864471435546875
         app_id: "main"
       }
       concepts {
         id: "ai_5VHsZr8N"
         name: "liquid"
-        value: 0.8519124388694763
+        value: 0.8527519702911377
         app_id: "main"
       }
     }
@@ -2151,121 +2126,121 @@ data {
       concepts {
         id: "ai_TBlp0Pt3"
         name: "beer"
-        value: 0.998155415058136
+        value: 0.9981369972229004
         app_id: "main"
       }
       concepts {
         id: "ai_8XGJjH7R"
         name: "foam"
-        value: 0.9922154545783997
+        value: 0.9921506643295288
         app_id: "main"
       }
       concepts {
         id: "ai_786Zr311"
         name: "no person"
-        value: 0.9919559955596924
+        value: 0.9919553399085999
         app_id: "main"
       }
       concepts {
         id: "ai_mCpQg89c"
         name: "glass"
-        value: 0.9824690818786621
+        value: 0.9824104309082031
         app_id: "main"
       }
       concepts {
         id: "ai_3R5pJ6hB"
         name: "lager"
-        value: 0.978298008441925
+        value: 0.978097140789032
         app_id: "main"
       }
       concepts {
         id: "ai_zJx6RbxW"
         name: "drink"
-        value: 0.9755478501319885
+        value: 0.9754322171211243
         app_id: "main"
       }
       concepts {
         id: "ai_2LWXN7Bn"
         name: "brewery"
-        value: 0.9647848010063171
+        value: 0.964467465877533
         app_id: "main"
       }
       concepts {
         id: "ai_2gmKZLxp"
         name: "cold"
-        value: 0.9579879641532898
+        value: 0.9578704833984375
         app_id: "main"
       }
       concepts {
         id: "ai_SsmKLB4z"
         name: "bar"
-        value: 0.9466824531555176
+        value: 0.9463430643081665
         app_id: "main"
       }
       concepts {
         id: "ai_54zxXFGL"
         name: "full"
-        value: 0.9426839351654053
+        value: 0.9427977204322815
         app_id: "main"
       }
       concepts {
         id: "ai_QnpbpDLK"
         name: "pint"
-        value: 0.9415329694747925
+        value: 0.9410056471824646
         app_id: "main"
       }
       concepts {
         id: "ai_drK6ClJR"
         name: "alcohol"
-        value: 0.9382111430168152
+        value: 0.9379966259002686
         app_id: "main"
       }
       concepts {
         id: "ai_F547sXrF"
         name: "foamy"
-        value: 0.9239164590835571
+        value: 0.9235425591468811
         app_id: "main"
       }
       concepts {
         id: "ai_qCKzbr0g"
         name: "ale"
-        value: 0.8927672505378723
+        value: 0.8916416168212891
         app_id: "main"
       }
       concepts {
         id: "ai_XNmzgDnF"
         name: "pub"
-        value: 0.8825505971908569
-        app_id: "main"
-      }
-      concepts {
-        id: "ai_pkvDRSJ1"
-        name: "mug"
-        value: 0.8742324113845825
+        value: 0.8816885352134705
         app_id: "main"
       }
       concepts {
         id: "ai_3l2jRv5s"
         name: "liquor"
-        value: 0.8739248514175415
+        value: 0.8735255002975464
+        app_id: "main"
+      }
+      concepts {
+        id: "ai_pkvDRSJ1"
+        name: "mug"
+        value: 0.8731899261474609
         app_id: "main"
       }
       concepts {
         id: "ai_B3MXt5Ng"
         name: "refreshment"
-        value: 0.8685473799705505
+        value: 0.8683214783668518
         app_id: "main"
       }
       concepts {
         id: "ai_3PlgVmlN"
         name: "food"
-        value: 0.8646178245544434
+        value: 0.864808976650238
         app_id: "main"
       }
       concepts {
         id: "ai_5VHsZr8N"
         name: "liquid"
-        value: 0.851912260055542
+        value: 0.8516526818275452
         app_id: "main"
       }
     }

@@ -56,10 +56,6 @@ import CurlTextToSpeech from "!!raw-loader!../../../code_snippets/api-guide/pred
 
 import CodeOutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/text_via_url.txt";
 import JSONOutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/text_via_url.js";
-import CodeOutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/text_via_bytes.txt";
-import JSONOutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/text_via_bytes.js";
-import CodeOutputExample3 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/text_via_raw_text.txt";
-import JSONOutputExample3 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/text_via_raw_text.js";
 
 ## Text Classification
 
@@ -150,17 +146,6 @@ Below is an example of how you would provide text inputs via local text files an
 
 </Tabs>
 
-<!--
-<details>
-  <summary>Code Output Example</summary>
-    <CodeBlock className="language-text">{CodeOutputExample2}</CodeBlock>
-</details>
-
-<details>
-  <summary>JSON Output Example</summary>
-    <CodeBlock className="language-javascript">{JSONOutputExample2}</CodeBlock>
-</details>
--->
 
 ### Predict via Raw Text
 
@@ -192,16 +177,6 @@ Below is an example of how you would provide raw text inputs and receive predict
 </TabItem>
 
 </Tabs>
-
-<details>
-  <summary>Text Output Example</summary>
-    <CodeBlock className="language-text">{CodeOutputExample3}</CodeBlock>
-</details>
-
-<details>
-  <summary>JSON Output Example</summary>
-    <CodeBlock className="language-javascript">{JSONOutputExample3}</CodeBlock>
-</details>
 
 ## Text-to-Image Generation
 
