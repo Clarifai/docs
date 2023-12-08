@@ -55,7 +55,7 @@ pagination_prev: product-updates/changelog/release910
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
-|![new-feature](/img/new_feature.jpg)|Added Llama2 and Mistral base models for text generation fine-tuning |<ul><li>We've renamed the text-to-text model type to "Text Generator" and added Llama2 7/13B and Mistral models with GPTQ-Lora, featuring enhanced support for quantized/mixed-precision training techniques.</li></ul>| 
+|![new-feature](/img/new_feature.jpg) <br />**[Developer Preview]** |Added Llama2 and Mistral base models for text generation fine-tuning |<ul><li>We've renamed the text-to-text model type to "Text Generator" and added Llama2 7/13B and Mistral models with GPTQ-Lora, featuring enhanced support for quantized/mixed-precision training techniques.</li></ul>| 
 
 ## Python SDK
 

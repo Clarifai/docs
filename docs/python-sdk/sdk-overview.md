@@ -14,7 +14,7 @@ To consume the Clarifai API effortlessly and with just a few lines of code, the 
 
 ## Install the Package
 
-You can install the latest stable version of the Python SDK package using `pip`.
+You can install the latest stable version of the Python SDK package by using `pip`.
 
 To install, run:
 
