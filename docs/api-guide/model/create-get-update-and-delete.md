@@ -13,8 +13,6 @@ import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
 import PythonCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/create_model.py";
-import PythonAddConceptsModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/add_concepts_model.py";
-import PythonRemoveConceptsModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/remove_concepts_from_model.py";
 import PythonUpdateConfiguration from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/update_model_name_configuration.py";
 import PythonUpdateConfiguration2 from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/update_model_name_configuration_2.py";
 import PythonListModelTypes from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/list_model_types.py";
@@ -32,8 +30,6 @@ import PythonPredictModel from "!!raw-loader!../../../code_snippets/api-guide/mo
 import PythonSearchModelsName from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/search_models_name_type.py";
 
 import JSCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/create_model.html";
-import JSAddConceptsModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/add_concepts_model.html";
-import JSRemoveConceptsModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/remove_concepts_from_model.html";
 import JSUpdateConfiguration from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/update_model_name_configuration.html";
 import JSUpdateConfiguration2 from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/update_model_name_configuration_2.html";
 import JSListModelTypes from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/list_model_types.html";
@@ -51,8 +47,6 @@ import JSPredictModel from "!!raw-loader!../../../code_snippets/api-guide/model/
 import JSSearchModelsName from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/search_models_name_type.html";
 
 import NodeCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/create_model.js";
-import NodeAddConceptsModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/add_concepts_model.js";
-import NodeRemoveConceptsModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/remove_concepts_from_model.js";
 import NodeUpdateConfiguration from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/update_model_name_configuration.js";
 import NodeUpdateConfiguration2 from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/update_model_name_configuration_2.js";
 import NodeListModelTypes from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/list_model_types.js";
@@ -60,6 +54,7 @@ import NodeGetModels from "!!raw-loader!../../../code_snippets/api-guide/model/c
 import NodeGetModelID from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/get_model_by_id.js";
 import NodeGetModelOutput from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/get_model_output_info_by_id.js";
 import NodeListModelVersions from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/list_model_versions.js";
+import NodeListModelConcepts from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/list_model_concepts.js"
 import NodeGetModelVersion from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/get_model_version_by_id.js";
 import NodeDeleteModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/delete_model.js";
 import NodeDeleteModelVersion from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/delete_model_version.js";
@@ -69,11 +64,10 @@ import NodePredictModel from "!!raw-loader!../../../code_snippets/api-guide/mode
 import NodeSearchModelsName from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/search_models_name_type.js";
 
 import JavaCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/create_model.java";
-import JavaAddConceptsModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/add_concepts_model.java";
-import JavaRemoveConceptsModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/remove_concepts_from_model.java";
 import JavaUpdateConfiguration from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/update_model_name_configuration.java";
 import JavaUpdateConfiguration2 from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/update_model_name_configuration_2.java";
 import JavaListModelTypes from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/list_model_types.java";
+import JavaListModelConcepts from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/list_model_concepts.java";
 import JavaGetModels from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/get_models.java";
 import JavaGetModelID from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/get_model_by_id.java";
 import JavaGetModelOutput from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/get_model_output_info_by_id.java";
@@ -86,9 +80,24 @@ import JavaTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/
 import JavaPredictModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/predict_model.java";
 import JavaSearchModelsName from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/search_models_name_type.java";
 
+import PHPCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/php/create_model.php";
+import PHPUpdateConfiguration from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/php/update_model_name_configuration.php";
+import PHPUpdateConfiguration2 from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/php/update_model_name_configuration_2.php";
+import PHPListModelTypes from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/php/list_model_types.php";
+import PHPGetModels from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/php/get_models.php";
+import PHPGetModelID from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/php/get_model_by_id.php";
+import PHPGetModelOutput from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/php/get_model_output_info_by_id.php";
+import PHPListModelConcepts from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/php/list_model_concepts.php";
+import PHPListModelVersions from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/php/list_model_versions.php";
+import PHPGetModelVersion from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/php/get_model_version_by_id.php";
+import PHPDeleteModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/php/delete_model.php";
+import PHPDeleteModelVersion from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/php/delete_model_version.php";
+import PHPDeleteAllModels from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/php/delete_all_models.php";
+import PHPTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/php/train_model.php";
+import PHPPredictModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/php/predict_model.php";
+import PHPSearchModelsName from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/php/search_models_name_type.php";
+
 import CurlCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/create_model.sh";
-import CurlAddConceptsModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/add_concepts_model.sh";
-import CurlRemoveConceptsModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/remove_concepts_from_model.sh";
 import CurlUpdateConfiguration from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/update_model_name_configuration.sh";
 import CurlUpdateConfiguration2 from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/update_model_name_configuration_2.sh";
 import CurlListModelTypes from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/list_model_types.sh";
@@ -117,9 +126,7 @@ The initialization code used in the following examples is outlined in detail on 
 
 To create a model, you need to specify the model's ID. 
 
-If you want to specify [the type of model](https://docs.clarifai.com/portal-guide/model/model-types/) you want to create, you need to provide its ID using the `model_type_id` parameter⁠—though specifying the model type ID is optional. 
-
-You can call the [**ListModelTypes**](#list-model-types) endpoint to learn more about the model types we offer.  
+If you want to specify [the type of model](https://docs.clarifai.com/portal-guide/model/model-types/) you want to create, you need to provide its ID using the `model_type_id` parameter⁠—though specifying the model type ID is optional. You can call the [**ListModelTypes**](#list-model-types) endpoint to learn more about the model types we offer.  
 
 Below is an example of how you would create an `embedding-classifier` (Transfer Learning Classifier) model. It's also the default model type created if you do not specify the `model_type_id`. 
 
@@ -147,69 +154,16 @@ Below is an example of how you would create an `embedding-classifier` (Transfer 
     <CodeBlock className="language-java">{JavaCreateModel}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPCreateModel}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlCreateModel}</CodeBlock>
 </TabItem>
 
 </Tabs>
 
-<!--not supported
-### Add Concepts to a Model
-
-You can add concepts to a model at any point. Just as you add concepts to inputs, you may add them to your model as well. 
-
-<Tabs>
-
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python">{PythonAddConceptsModel}</CodeBlock>
-</TabItem>
-
-<TabItem value="js_rest" label="JavaScript (REST)">
-    <CodeBlock className="language-javascript">{JSAddConceptsModel}</CodeBlock>
-</TabItem>
-
-<TabItem value="nodejs" label="NodeJS">
-    <CodeBlock className="language-javascript">{NodeAddConceptsModel}</CodeBlock>
-</TabItem>
-
-<TabItem value="java" label="Java">
-    <CodeBlock className="language-java">{JavaAddConceptsModel}</CodeBlock>
-</TabItem>
-
-<TabItem value="curl" label="cURL">
-    <CodeBlock className="language-bash">{CurlAddConceptsModel}</CodeBlock>
-</TabItem>
-
-</Tabs>
-
-### Remove Concepts From a Model
-
-Conversely, if you'd like to remove concepts from a model, you can also do that.
-
-<Tabs>
-
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python">{PythonRemoveConceptsModel}</CodeBlock>
-</TabItem>
-
-<TabItem value="js_rest" label="JavaScript (REST)">
-    <CodeBlock className="language-javascript">{JSRemoveConceptsModel}</CodeBlock>
-</TabItem>
-
-<TabItem value="nodejs" label="NodeJS">
-    <CodeBlock className="language-javascript">{NodeRemoveConceptsModel}</CodeBlock>
-</TabItem>
-
-<TabItem value="java" label="Java">
-    <CodeBlock className="language-java">{JavaRemoveConceptsModel}</CodeBlock>
-</TabItem>
-
-<TabItem value="curl" label="cURL">
-    <CodeBlock className="language-bash">{CurlRemoveConceptsModel}</CodeBlock>
-</TabItem>
-
-</Tabs>
--->
 
 ## Train
 
@@ -246,11 +200,13 @@ You can repeat this operation as often as you like. By adding more images with c
     <CodeBlock className="language-javascript">{NodeTrainModel}</CodeBlock>
 </TabItem>
 
-<!--
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaTrainModel}</CodeBlock>
 </TabItem>
--->
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPTrainModel}</CodeBlock>
+</TabItem>
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlTrainModel}</CodeBlock>
@@ -280,6 +236,10 @@ Learn about the available model types and their hyperparameters. This endpoint l
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaListModelTypes}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPListModelTypes}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -322,6 +282,10 @@ If you want to get a list of the models not within the scope of your app, you ne
     <CodeBlock className="language-java">{JavaGetModels}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPGetModels}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlGetModels}</CodeBlock>
 </TabItem>
@@ -348,6 +312,10 @@ All models have unique IDs. You can get a specific model by its ID.
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaGetModelID}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPGetModelID}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -384,6 +352,10 @@ The `GetModelOutputInfo` endpoint does not support pagination. If you want to sp
     <CodeBlock className="language-java">{JavaGetModelOutput}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPGetModelOutput}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlGetModelOutput}</CodeBlock>
 </TabItem>
@@ -397,7 +369,7 @@ Apart from the `GetModelOutputInfo` endpoint, you can also use the `ListModelCon
 A major difference between the two is that the `ListModelConcepts` endpoint supports [pagination](https://docs.clarifai.com/api-guide/advanced-topics/pagination/), which lets you easily list concepts instead of displaying all of them at once.
 
 
-:::note
+:::info
 
 If you are using any of the Clarifai gRPC clients, the `ListModelConcepts` endpoint is only available from release 8.10.0. 
 
@@ -411,6 +383,18 @@ If you are using any of the Clarifai gRPC clients, the `ListModelConcepts` endpo
 
 <TabItem value="js_rest" label="JavaScript (REST)">
     <CodeBlock className="language-javascript">{JSListModelConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeListModelConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="java" label="Java">
+    <CodeBlock className="language-java">{JavaListModelConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPListModelConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -441,6 +425,10 @@ Every time you train a model, it creates a new version. You can list all the ver
     <CodeBlock className="language-java">{JavaListModelVersions}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPListModelVersions}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlListModelVersions}</CodeBlock>
 </TabItem>
@@ -467,6 +455,10 @@ To get the details of a specific model version, you must provide the `model_id` 
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaGetModelVersion}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPGetModelVersion}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -506,6 +498,10 @@ Let's use the **PatchModels** endpoint to change the model name to `newname`.
     <CodeBlock className="language-java">{JavaUpdateConfiguration}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPUpdateConfiguration}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlUpdateConfiguration}</CodeBlock>
 </TabItem>
@@ -530,11 +526,13 @@ Let's use the **PatchModelVersions** endpoint to configure the minimum probabili
     <CodeBlock className="language-javascript">{NodeUpdateConfiguration2}</CodeBlock>
 </TabItem>
 
-<!--
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaUpdateConfiguration2}</CodeBlock>
 </TabItem>
--->
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPUpdateConfiguration2}</CodeBlock>
+</TabItem>
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlUpdateConfiguration2}</CodeBlock>
@@ -567,6 +565,10 @@ You can delete a model by using the `model_id` parameter.
     <CodeBlock className="language-java">{JavaDeleteModel}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPDeleteModel}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlDeleteModel}</CodeBlock>
 </TabItem>
@@ -593,6 +595,10 @@ You can also delete a specific version of a model with the `model_id` and `versi
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaDeleteModelVersion}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPDeleteModelVersion}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -629,6 +635,10 @@ Please proceed with extreme caution as deleted models cannot be recovered.
     <CodeBlock className="language-java">{JavaDeleteAllModels}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPDeleteAllModels}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlDeleteAllModels}</CodeBlock>
 </TabItem>
@@ -659,6 +669,10 @@ Once you have trained a model, you are ready to use the new model to make predic
     <CodeBlock className="language-java">{JavaPredictModel}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPPredictModel}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlPredictModel}</CodeBlock>
 </TabItem>
@@ -687,6 +701,10 @@ You can search all your models by name and type of model.
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaSearchModelsName}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPSearchModelsName}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">

@@ -18,6 +18,12 @@ The initialization code used in the following examples is outlined in detail on 
 
 :::
 
+:::tip
+
+For the third-party models we've wrapped into our platform, like those provided by OpenAI, Anthropic, Cohere, and others, you can also choose to utilize their API keys as an option—in addition to using the default Clarifai keys. You can learn how to add them [here](https://docs.clarifai.com/api-guide/predict/text#use-third-party-api-keys). 
+
+:::
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
@@ -205,3 +211,4 @@ You can configure the inference parameters for both text-to-text and [text-to-im
 </TabItem>
 
 </Tabs>
+

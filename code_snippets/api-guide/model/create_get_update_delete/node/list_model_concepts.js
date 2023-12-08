@@ -1,17 +1,16 @@
 //index.js file
 
-////////////////////////////////////////////////////////////////////////////
-// In this section, we set the user authentication, app ID, model ID, 
-// and concept ID. Change these strings to run your own example.
-/////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
+// In this section, we set the user authentication and model ID.
+// Change these strings to run your own example. 
+//////////////////////////////////////////////////////////////////////////////////
 
-const USER_ID = 'YOUR_USER_ID_HERE';
+const USER_ID = "YOUR_USER_ID_HERE";
 // Your PAT (Personal Access Token) can be found in the portal under Authentification
-const PAT = 'YOUR_PAT_HERE';
-const APP_ID = 'YOUR_APP_ID_HERE';
-// Change these to add your own concept to a model
-const MODEL_ID = 'petsID';
-const CONCEPT_ID = 'charlie';
+const PAT = "YOUR_PAT_HERE";
+const APP_ID = "YOUR_APP_ID_HERE";
+// Change this to whatever model you want to retrieve its concepts
+const MODEL_ID = "YOUR_MODEL_ID_HERE"
 
 /////////////////////////////////////////////////////////////////////////////
 // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -25,19 +24,13 @@ const stub = ClarifaiStub.grpc();
 const metadata = new grpc.Metadata();
 metadata.set("authorization", "Key " + PAT);
 
-stub.PatchModels(
+stub.ListModelConcepts(
     {
         user_app_id: {
             "user_id": USER_ID,
             "app_id": APP_ID
         },
-        action: "merge",  // Supported actions: overwrite, merge, remove
-        models: [
-            {
-                id: MODEL_ID,
-                output_info: { data: { concepts: [{ id: CONCEPT_ID }] } }
-            }
-        ]
+        model_id: MODEL_ID
     },
     metadata,
     (err, response) => {
@@ -46,7 +39,11 @@ stub.PatchModels(
         }
 
         if (response.status.code !== 10000) {
-            throw new Error("Patch models failed, status: " + response.status.description);
+            throw new Error("List model versions failed, status: " + response.status.description);
         }
+
+        console.log(response);
+
     }
+
 );

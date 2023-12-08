@@ -53,13 +53,10 @@ import CurlViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/
 import CurlImageGeneration from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/image_generation.sh";
 import CurlViaRaw from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/text_via_raw.sh";
 import CurlTextToSpeech from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/text_to_speech.sh";
+import ThirdPartyKey from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/third_party_api_key.sh";
 
 import CodeOutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/text_via_url.txt";
 import JSONOutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/text_via_url.js";
-import CodeOutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/text_via_bytes.txt";
-import JSONOutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/text_via_bytes.js";
-import CodeOutputExample3 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/text_via_raw_text.txt";
-import JSONOutputExample3 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/text_via_raw_text.js";
 
 ## Text Classification
 
@@ -150,17 +147,6 @@ Below is an example of how you would provide text inputs via local text files an
 
 </Tabs>
 
-<!--
-<details>
-  <summary>Code Output Example</summary>
-    <CodeBlock className="language-text">{CodeOutputExample2}</CodeBlock>
-</details>
-
-<details>
-  <summary>JSON Output Example</summary>
-    <CodeBlock className="language-javascript">{JSONOutputExample2}</CodeBlock>
-</details>
--->
 
 ### Predict via Raw Text
 
@@ -192,16 +178,6 @@ Below is an example of how you would provide raw text inputs and receive predict
 </TabItem>
 
 </Tabs>
-
-<details>
-  <summary>Text Output Example</summary>
-    <CodeBlock className="language-text">{CodeOutputExample3}</CodeBlock>
-</details>
-
-<details>
-  <summary>JSON Output Example</summary>
-    <CodeBlock className="language-javascript">{JSONOutputExample3}</CodeBlock>
-</details>
 
 ## Text-to-Image Generation
 
@@ -293,6 +269,22 @@ In this example, we've used the `params.update()` method to fine-tune various in
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlTextToSpeech}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+## Use Third-Party API Keys
+
+For the third-party models we've wrapped into our platform, like those provided by OpenAI, Anthropic, Cohere, and others, you can also choose to utilize their API keys as an option—in addition to using the default Clarifai keys. 
+
+This flexibility allows you to integrate your preferred services and APIs into your workflow, enhancing the versatility of our platform.
+
+Here is an example of how to add an OpenAI API key for [Dalle-3](https://clarifai.com/openai/dall-e/models/dall-e-3) for text-to-image tasks. 
+
+<Tabs>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{ThirdPartyKey}</CodeBlock>
 </TabItem>
 
 </Tabs>
