@@ -22,7 +22,7 @@ pagination_prev: product-updates/changelog/release910
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
-|![new-feature](/img/new_feature.jpg)| Added flexible API key selection | <ul><li>For third-party wrapped models, like those provided by OpenAI, Anthropic, Cohere, and others, you can now choose to utilize their API keys as an option, in addition to using the default Clarifai keys. This flexibility allows you to integrate your preferred services and APIs into your workflow, enhancing the versatility of our platform.</li></ul> |
+|![new-feature](/img/new_feature.jpg)| Added flexible API key selection | <ul><li>For third-party wrapped models, like those provided by OpenAI, Anthropic, Cohere, and others, you can now choose to utilize their API keys as an option, in addition to using the default Clarifai keys. This flexibility allows you to integrate your preferred services and APIs into your workflow, enhancing the versatility of our platform. You can learn how to add them [here](https://docs.clarifai.com/api-guide/predict/text#use-third-party-api-keys). </li></ul> |
 
 ## Training Time Estimator
 
