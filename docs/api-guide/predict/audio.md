@@ -8,6 +8,10 @@ sidebar_position: 5
 **Make predictions on audio inputs**
 <hr />
 
+**Input**: Audio
+
+**Output**: Text
+
 To get predictions for a given audio input, you need to supply the audio along with the specific model from which you wish to receive predictions. You can supply the input via a publicly accessible URL or by directly sending bytes.
 
 You need to specify your choice of [model](https://clarifai.com/explore/models?filterData=%5B%7B%22field%22%3A%22input_fields%22%2C%22value%22%3A%5B%22audio%22%5D%7D%5D&page=1&perPage=24) for prediction by utilizing the `MODEL_ID` parameter.

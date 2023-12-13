@@ -8,6 +8,10 @@ sidebar_position: 6
 **Make multimodal-to-text predictions**
 <hr />
 
+**Input**: Text and images, etc
+
+**Output**: Text
+
 Multimodal-to-text models allow you to generate textual descriptions or responses from multimodal inputs. "Multimodal" refers to the integration of information from multiple modalities, such as text, images, and/or other types of data.
 
 A multimodal-to-text model might take as input a combination of textual data and images and generate a descriptive text that captures the content of both modalities. It can comprehend and generate a human-like response that encompasses multiple types of information. 
