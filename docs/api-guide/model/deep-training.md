@@ -34,6 +34,7 @@ import JSCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/d
 import JSTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/train_model.html";
 import JSTemplateTypes from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/template_types.html";
 import JSCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_workflow_deep_trained_model.html";
+import JSUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.html";
 
 import NodeCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_model.js";
 import NodeTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/train_model.js";
@@ -51,6 +52,7 @@ import PHPCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/
 import PHPTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/train_model.php";
 import PHPTemplateTypes from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/template_types.php";
 import PHPCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_workflow_deep_trained_model.php";
+import PHPUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.php";
 
 import CurlCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_model.sh";
 import CurlTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/train_model.sh";
@@ -242,15 +244,21 @@ Put your new deep-trained model to work by adding it to a workflow. Below is an 
 
 ### Update Your Default Workflow
 
-Index your inputs with a deep trained model by updating your default workflow. You can also use your deep trained embeddings as the basis for clustering and search.
+You can index your inputs with a deep fine-tuned model by updating your default workflow. You can also use your deep fine-tuned embeddings as the basis for clustering and search.
 
-Below is an example of how to update your default workflow with a deep trained model.
+Below is an example of how to update your default workflow with a deep fine-tuned model.
 
 <Tabs>
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonUpdateWorkflow}</CodeBlock>
 </TabItem>
+
+<!--
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSUpdateWorkflow}</CodeBlock>
+</TabItem>
+-->
 
 <TabItem value="nodejs" label="NodeJS">
     <CodeBlock className="language-javascript">{NodeUpdateWorkflow}</CodeBlock>
@@ -259,6 +267,12 @@ Below is an example of how to update your default workflow with a deep trained m
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaUpdateWorkflow}</CodeBlock>
 </TabItem>
+
+<!--
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPUpdateWorkflow}</CodeBlock>
+</TabItem>
+-->
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlUpdateWorkflow}</CodeBlock>
