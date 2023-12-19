@@ -176,13 +176,17 @@ However, if training other types of models, such as the [deep fine-tuned](https:
 
 You can repeat this operation as often as you like. By adding more images with concepts and training, you can get the model to predict exactly how you want it to.
 
-:::info
+:::tip
 
 - The **PostModelVersions** endpoint kicks off training and creates a new model version. You can also add concepts to a model when creating the model version—and only if the model type supports it as defined in the model type parameters.
 
 - You can use the **PostModelVersions** endpoint to give information specific to a model version. All the `*_info` fields—such as `output_info`, `input_info`, `train_info`, and `import_info`—are available on this endpoint. 
 
-- You cannot remove the training concepts from a model version. However, you can edit the additional `output_info.param` concept options if they are defined in the model type.
+- You cannot remove the training concepts from a model version. However, you can edit the additional `OutputInfo.Params` concept options if they are defined in the model type.
+
+- When training an embedding-classifier, you could specify the [`enrich_dataset`](https://docs.clarifai.com/product-updates/upcoming-api-changes/closed-environment) variable inside `modelVersion.TrainInfo.Params` of the **PostModelVersions** endpoint. It lets you enrich the model with supplemental data from pre-built datasets of negative embeddings, which improves the model's accuracy. It has two options: 
+    - `Automatic` (default) means that if there are negative embeddings for a base model, we will use them—and we won’t use them if they’re not available. 
+    - `Disabled` means that we should not use the negative embeddings whether they are available or not. 
 
 :::
 

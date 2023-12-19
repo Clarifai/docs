@@ -29,6 +29,8 @@ import PythonTrainModel from "!!raw-loader!../../../code_snippets/api-guide/mode
 import PythonTemplateTypes from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/template_types.py";
 import PythonCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_workflow_deep_trained_model.py";
 import PythonUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.py";
+import PythonCreateOwnTemplate1 from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_own_template_1.py";
+import PythonCreateOwnTemplate2 from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_own_template_2.py";
 
 import JSCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_model.html";
 import JSTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/train_model.html";
@@ -209,6 +211,31 @@ We use the `params.update()` method to set the template and hyperparameters for 
 </TabItem>
 
 </Tabs>
+
+### Use Your Own Template
+
+You can [create your own deep fine-tuned template](https://docs.clarifai.com/portal-guide/model/deep-training/custom-templates/) and use it to train a model. 
+
+You need to create a Python configuration file and pass it as a training parameter to the `PostModelVersions` endpoint. Here is an example of a `training_config.py` file for creating a custom deep fine-tuned template using the MMDetection open source toolbox for visual detection tasks.
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonCreateOwnTemplate1}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+Here is how you could use the custom template to train a deep fine-tuned model.
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonCreateOwnTemplate2}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
 
 ## Create a Workflow 
 
