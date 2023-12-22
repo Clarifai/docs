@@ -1,13 +1,15 @@
-#############################################################################################
-# In this section, we set the user authentication, app ID, and the model evaluation ID.
+###################################################################################################
+# In this section, we set the user authentication, app ID, and the model evaluation details.
 # Change these strings to run your own example.
-############################################################################################
+##################################################################################################
 
 USER_ID = "YOUR_USER_ID_HERE"
 # Your PAT (Personal Access Token) can be found in the portal under Authentification
 PAT = "YOUR_PAT_HERE"
 APP_ID = "YOUR_APP_ID_HERE"
-# Change this to get your model evaluation results
+# Change these to get your model evaluation results
+MODEL_ID = "YOUR_MODEL_ID_HERE"
+MODEL_VERSION_ID = "YOUR_MODEL_VERSION_ID_HERE"
 EVALUATION_ID = "YOUR_EVALUATION_ID_HERE"
 
 ##########################################################################
@@ -25,28 +27,18 @@ metadata = (("authorization", "Key " + PAT),)
 
 userDataObject = resources_pb2.UserAppIDSet(user_id=USER_ID, app_id=APP_ID)
 
-get_evaluation_response = stub.GetEvaluation(
-    service_pb2.GetEvaluationRequest(
+get_evaluation_response = stub.GetModelVersionEvaluation(
+    service_pb2.GetModelVersionEvaluationRequest(
         user_app_id=userDataObject,
-        evaluation_id=EVALUATION_ID, # returned after starting an evaluation
-        fields=resources_pb2.FieldsValue(
-            confusion_matrix=True,
-            cooccurrence_matrix=True,
-            label_counts=True,
-            binary_metrics=True,
-            test_set=True,
-            metrics_by_area=True,
-            metrics_by_class=True,
-        ),
+        model_id=MODEL_ID,
+        model_version_id=MODEL_VERSION_ID,
+        evaluation_id=EVALUATION_ID,
     ),
     metadata=metadata,
 )
 
 if get_evaluation_response.status.code != status_code_pb2.SUCCESS:
     print(get_evaluation_response.status)
-    raise Exception(
-        "Get model metrics failed, status: "
-        + get_evaluation_response.status.description
-    )
+    raise Exception("Get model metrics failed, status: " + get_evaluation_response.status.description)
 
 print(get_evaluation_response)

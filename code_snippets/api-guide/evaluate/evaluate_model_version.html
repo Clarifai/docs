@@ -10,15 +10,10 @@
     // Your PAT (Personal Access Token) can be found in the portal under Authentification
     const PAT = "YOUR_PAT_HERE";
     const APP_ID = "YOUR_APP_ID_HERE";
-    // Change these to evaluate your own model
-    const MODEL_APP_ID = "YOUR_MODEL_APP_ID_HERE";
-    const MODEL_USER_ID = "YOUR_MODEL_USER_ID_HERE";
+    // Change these to make your own evaluations 
     const MODEL_ID = "YOUR_MODEL_ID_HERE";
-    const MODEL_VERSION_ID = "YOUR_MODEL_VERSION_HERE";
-    const DATASET_USER_ID = "YOUR_DATASET_USER_ID_HERE";
-    const DATASET_APP_ID = "YOUR_DATASET_APP_ID_HERE";
-    const DATASET_ID = "YOUR_DATASET_ID_HERE";
-    const DATASET_VERSION_ID = "YOUR_DATASET_VERSION_ID_HERE";
+    const MODEL_VERSION_ID = "YOUR_MODEL_VERSION_HERE";    
+    const DATASET_ID = "YOUR_DATASET_ID_HERE";   
 
     ///////////////////////////////////////////////////////////////////////////////////
     // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -31,22 +26,12 @@
         },
         "eval_metrics": [
             {
-                "model": {
-                    "app_id": MODEL_APP_ID,
-                    "user_id": MODEL_USER_ID,
-                    "id": MODEL_ID,
-                    "model_version": {
-                        "id": MODEL_VERSION_ID
-                    }
-                },
-                "ground_truth_dataset": {
-                    "user_id": DATASET_USER_ID,
-                    "app_id": DATASET_APP_ID,
-                    "id": DATASET_ID,
-                    "version": {
-                        "id": DATASET_VERSION_ID
+                "eval_info": {       
+                    "params": {
+                        "dataset_id": DATASET_ID
                     }
                 }
+
             }
         ]
 
@@ -61,7 +46,7 @@
         body: raw
     };
 
-    fetch(`https://api.clarifai.com/v2/evaluations`, requestOptions)
+    fetch(`https://api.clarifai.com/v2/users/${USER_ID}/apps/${APP_ID}/models/${MODEL_ID}/versions/${MODEL_VERSION_ID}/evaluations`, requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
