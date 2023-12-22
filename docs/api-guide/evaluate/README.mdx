@@ -37,11 +37,11 @@ The evaluation may result in an error if the model version doesn’t satisfy the
 
 :::
 
-## Running Evaluation
+:::info
 
-Below is an example of how you would run an evaluation on a specific version of a custom model. 
+The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
+:::
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -51,7 +51,60 @@ import PythonEvaluateModel from "!!raw-loader!../../../code_snippets/api-guide/e
 import JSEvaluateModel from "!!raw-loader!../../../code_snippets/api-guide/evaluate/evaluate_model.html";
 import NodeEvaluateModel from "!!raw-loader!../../../code_snippets/api-guide/evaluate/evaluate_model.js";
 import JavaEvaluateModel from "!!raw-loader!../../../code_snippets/api-guide/evaluate/evaluate_model.java";
+import PHPEvaluateModel from "!!raw-loader!../../../code_snippets/api-guide/evaluate/evaluate_model.php";
 import CurlEvaluateModel from "!!raw-loader!../../../code_snippets/api-guide/evaluate/evaluate_model.sh";
+
+import PythonEvaluateModelVersion from "!!raw-loader!../../../code_snippets/api-guide/evaluate/evaluate_model_version.py";
+import JSEvaluateModelVersion from "!!raw-loader!../../../code_snippets/api-guide/evaluate/evaluate_model_version.html";
+import NodeEvaluateModelVersion from "!!raw-loader!../../../code_snippets/api-guide/evaluate/evaluate_model_version.js";
+import JavaEvaluateModelVersion from "!!raw-loader!../../../code_snippets/api-guide/evaluate/evaluate_model_version.java";
+import PHPEvaluateModelVersion from "!!raw-loader!../../../code_snippets/api-guide/evaluate/evaluate_model_version.php";
+import CurlEvaluateModelVersion from "!!raw-loader!../../../code_snippets/api-guide/evaluate/evaluate_model_version.sh";
+
+## Running Evaluation
+
+:::tip
+
+If evaluating an `embedding-classifier` model type, you need to set `use_kfold` to `false` in the `eval_info.params` of the evaluation request. Here is an example:
+`params.update({"dataset_id": DATASET_ID, "use_kfold": False})`
+
+:::
+
+### PostModelVersionEvaluations
+
+Below is an example of how you would use the `PostModelVersionEvaluations` method to run an evaluation on a specific version of a custom model.
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonEvaluateModelVersion}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+ <CodeBlock className="language-javascript">{JSEvaluateModelVersion}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+ <CodeBlock className="language-javascript">{NodeEvaluateModelVersion}</CodeBlock>
+</TabItem>
+
+<TabItem value="java" label="Java">
+ <CodeBlock className="language-java">{JavaEvaluateModelVersion}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPEvaluateModelVersion}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlEvaluateModelVersion}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+### PostEvaluations
+
+Below is an example of how you would use the `PostEvaluations` method to run an evaluation on a specific version of a custom model. The method allows you to choose models and datasets from different apps that you have access to.
 
 <Tabs>
 
@@ -69,6 +122,10 @@ import CurlEvaluateModel from "!!raw-loader!../../../code_snippets/api-guide/eva
 
 <TabItem value="java" label="Java">
  <CodeBlock className="language-java">{JavaEvaluateModel}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPEvaluateModel}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">

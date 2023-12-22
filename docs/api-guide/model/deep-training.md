@@ -239,7 +239,7 @@ Here is how you could use the custom template to train a deep fine-tuned model.
 
 ## Create a Workflow 
 
-Put your new deep-trained model to work by adding it to a workflow. Below is an example of how to create a workflow with a deep trained model.
+Put your new deep trained model to work by adding it to a workflow. Below is an example of how to create a workflow with a deep trained model.
 
 <Tabs>
 
