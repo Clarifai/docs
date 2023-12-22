@@ -10,7 +10,7 @@ sidebar_position: 4
 
 Here are comprehensive step-by-step walkthroughs within Jupyter or Colab notebooks that showcase how to harness the power of the Clarifai Python SDK.
 
-|Notebook              |  |Description                |
+|Notebook              | Colab  |Description                |
 |----------------------|--|---------------------------|
 | [Basics](https://github.com/Clarifai/examples/blob/main/basics/basics.ipynb) | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Clarifai/examples/blob/main/basics/basics.ipynb) | App and dataset lifecycle: creation, interaction, and deletion    |
 | [Input Upload](https://github.com/Clarifai/examples/blob/main/datasets/upload/input_upload.ipynb)<br />[Dataset Upload](https://github.com/Clarifai/examples/blob/main/datasets/upload/dataset_upload.ipynb) | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Clarifai/examples/blob/main/datasets/upload/input_upload.ipynb)<br />[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Clarifai/examples/blob/main/datasets/upload/dataset_upload.ipynb) | Illustrates how to upload datasets into a Clarifai app using features from `Dataset`   |
