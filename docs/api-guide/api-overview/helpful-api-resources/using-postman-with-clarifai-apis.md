@@ -27,10 +27,6 @@ Follow the steps below to start using postman with Clarifai API's.
 <br>
 <br>
 
-<!--
-[<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://god.gw.postman.com/run-collection/30622694-ddd58eb6-5c51-42a3-aa0d-97cc0efd546d?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D30622694-ddd58eb6-5c51-42a3-aa0d-97cc0efd546d%26entityType%3Dcollection%26workspaceId%3D00399af6-b92f-47d8-938f-0cacf755c972)
--->
-
 - **Step 2**: Obtain your **PAT** by *Logging into Portal → Profile Icon → Security Settings → Create Personal Access Token → Set the scopes → Confirm.*
 <br> 
 > Visit the following link to create Clarifai account [🔗](https://clarifai.com/signup)
