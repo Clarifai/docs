@@ -14,8 +14,6 @@ This page will hopefully get you set up and somewhat familiar with using Postman
 
 ## Postman Basics
 By clicking the **Send** button , you can receive the response for a particular request you created or selected from the collection. 
-<br/>
-<br/>
 
 ![Alt text](/img/postman/image-2.png)
 
@@ -23,55 +21,49 @@ By clicking the **Send** button , you can receive the response for a particular 
 
 Follow the steps below to start using Postman with Clarifai APIs.
 
-### Step 1
+### Step 1: Fork Your Postman Collection
 
 Click the button below to fork the Clarifai Postman collection to your workspace.
 <br/>
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://god.gw.postman.com/run-collection/30622694-ddd58eb6-5c51-42a3-aa0d-97cc0efd546d?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D30622694-ddd58eb6-5c51-42a3-aa0d-97cc0efd546d%26entityType%3Dcollection%26workspaceId%3D00399af6-b92f-47d8-938f-0cacf755c972)
 
-<br/>
-
-### Step 2 
+### Step 2: Get Your PAT Token
 
 Obtain your **PAT** by *Logging into Portal → Profile Icon → Security Settings → Create Personal Access Token → Set the scopes → Confirm.*
-<br/>
 
 - Visit [this link](https://clarifai.com/signup) to create Clarifai account.
 
 - Learn how to get your PAT [here](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens).
-<br/>
 
-### Step 3 
+### Step 3: Set up Authorization
 
 Postman allows users to setup authorization in a parental level for each collection so that you dont have to add it to the headers of each request individually. To set this feature go to  **Authorization** tab of the collection and set the values as shown below.
 
 ![Alt text](/img/postman/image-1.png)
 
-### Step 4
+### Step 4: Create Your Postman Environment
 
-Setup environment in your personel workspace.
+Set up environment in your personal workspace.
 
-Click on the eye icon placed on the right panel to view the environment. Click **Add** buttonn to create a new environment.
+Click on the eye icon placed on the right panel to view the environment. Click the **Add** button to create a new environment.
 
 ![Alt text](/img/postman/image-3.png)
 
-### Step 5
+### Step 5: Add Variables to Postman Environment
 
-Add the following variables to the new environment to start maing API calls.
+Add the following variables to the new environment to start making API calls.
 
 ![Alt text](/img/postman/image-5.png)
 
 The values for variable can be set as following:
-    - ```base_url``` — https://api.clarifai.com
-    - ```key``` — Add the PAT (this is what is used for authorization)
-    - ```user_id``` — Add the User ID 
+- `base_url`—https://api.clarifai.com
+- `key`—Add the PAT (this is what is used for authorization)
+- `user_id`—Add the User ID 
 
-### Step 6
+### Step 6: Test Clarifai API for SUCCESS!
 
 To test if its working , select **Applications** collection. From that select **Create Application (Universal)** request and hit **Send**. You will get the following response body if all the steps have been done correctly.
 
 ![Alt text](/img/postman/image-2.png)
-
-
 
