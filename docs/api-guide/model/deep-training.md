@@ -31,38 +31,45 @@ import PythonCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/
 import PythonUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.py";
 import PythonCreateOwnTemplate1 from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_own_template_1.py";
 import PythonCreateOwnTemplate2 from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_own_template_2.py";
+import PythonTrainingTimeEstimator from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/training_time_estimator.py";
 
 import JSCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_model.html";
 import JSTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/train_model.html";
 import JSTemplateTypes from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/template_types.html";
 import JSCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_workflow_deep_trained_model.html";
 import JSUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.html";
+import JSTrainingTimeEstimator from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/training_time_estimator.html";
 
 import NodeCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_model.js";
 import NodeTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/train_model.js";
 import NodeTemplateTypes from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/template_types.js";
 import NodeCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_workflow_deep_trained_model.js";
 import NodeUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.js";
+import NodeTrainingTimeEstimator from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/training_time_estimator.js";
 
 import JavaCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_model.java";
 import JavaTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/train_model.java";
 import JavaTemplateTypes from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/template_types.java";
 import JavaCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_workflow_deep_trained_model.java";
 import JavaUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.java";
+import JavaTrainingTimeEstimator from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/training_time_estimator.java";
 
 import PHPCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_model.php";
 import PHPTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/train_model.php";
 import PHPTemplateTypes from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/template_types.php";
 import PHPCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_workflow_deep_trained_model.php";
 import PHPUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.php";
+import PHPTrainingTimeEstimator from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/training_time_estimator.php";
 
 import CurlCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_model.sh";
 import CurlTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/train_model.sh";
 import CurlTemplateTypes from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/template_types.sh";
 import CurlCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_workflow_deep_trained_model.sh";
 import CurlUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.sh";
+import CurlTrainingTimeEstimator from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/training_time_estimator.sh";
 
 import CodeOutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/output_example_1.js";
+import CodeOutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/output_example_2.js";
 
 :::info
 The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
@@ -159,6 +166,53 @@ Below is an example of how you would use the `ListModelTypes` endpoint to list t
 <details>
   <summary>Output Example</summary>
     <CodeBlock className="language-text">{CodeOutputExample1}</CodeBlock>
+</details>
+
+## Training Time Estimator
+
+Before you train a deep fine-tuned model, you can use the [Training Time Estimator](https://docs.clarifai.com/portal-guide/model/training-basics#training-time-estimator) feature to approximate the amount of time the training process could take. This offers transparency in expected training costs.
+
+:::tip
+
+Instead of providing an estimated input count, an alternative approach is to specify a dataset version ID in the `train_info.params` of the request. Here is an example: `params.update({"template":"MMDetection_FasterRCNN", "dataset_version_id":"dataset-version-1681974758238s"})`.
+
+:::
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonTrainingTimeEstimator}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSTrainingTimeEstimator}</CodeBlock>
+</TabItem>
+
+<!--
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeTrainingTimeEstimator}</CodeBlock>
+</TabItem>
+-->
+
+<TabItem value="java" label="Java">
+    <CodeBlock className="language-java">{JavaTrainingTimeEstimator}</CodeBlock>
+</TabItem>
+
+<!--
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPTrainingTimeEstimator}</CodeBlock>
+</TabItem>
+-->
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlTrainingTimeEstimator}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+<details>
+  <summary>Output Example</summary>
+    <CodeBlock className="language-text">{CodeOutputExample2}</CodeBlock>
 </details>
 
 ## Train a Model
