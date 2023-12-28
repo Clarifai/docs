@@ -12,53 +12,66 @@ This page will hopefully get you set up and somewhat familiar with using Postman
 -  An active Clarifai account
 -  Basic knowledge of an API structure and JSON formatting
 
-
 ## Postman Basics
-By clicking the **Send** button , you can recieve the response for a particular request you created or selected from the collection. 
+By clicking the **Send** button , you can receive the response for a particular request you created or selected from the collection. 
 <br/>
 <br/>
-![Alt text](img/postman/image-2.png)
 
+![Alt text](/img/postman/image-2.png)
 
 ## Getting Started
-Follow the steps below to start using postman with Clarifai API's.
 
-- **Step 1** :  Click the below button to fork the Clarifai postman collection to your workspace.
-<br/>
-<br/>
+Follow the steps below to start using Postman with Clarifai APIs.
 
-- **Step 2**: Obtain your **PAT** by *Logging into Portal → Profile Icon → Security Settings → Create Personal Access Token → Set the scopes → Confirm.*
-<br/> 
-> Visit the following link to create Clarifai account [🔗](https://clarifai.com/signup)
->
-> This link gives you a detailed explanation on obtaining **PAT**  [🔗](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens)
+### Step 1
+
+Click the button below to fork the Clarifai Postman collection to your workspace.
 <br/>
 
-- **Step 3**: Postman allows users to setup authorization in a parental level for each collection so that you dont have to add it to the headers of each request individually. To set this feature go to  **Authorization** tab of the collection and set the values as shown below.
-<br/>
-<br/>
-![Alt text](img/postman/image-1.png)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://god.gw.postman.com/run-collection/30622694-ddd58eb6-5c51-42a3-aa0d-97cc0efd546d?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D30622694-ddd58eb6-5c51-42a3-aa0d-97cc0efd546d%26entityType%3Dcollection%26workspaceId%3D00399af6-b92f-47d8-938f-0cacf755c972)
 
-- **Step 4**: Setup environment in your personel workspace.
+<br/>
+
+### Step 2 
+
+Obtain your **PAT** by *Logging into Portal → Profile Icon → Security Settings → Create Personal Access Token → Set the scopes → Confirm.*
+<br/>
+
+- Visit [this link](https://clarifai.com/signup) to create Clarifai account.
+
+- Learn how to get your PAT [here](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens).
+<br/>
+
+### Step 3 
+
+Postman allows users to setup authorization in a parental level for each collection so that you dont have to add it to the headers of each request individually. To set this feature go to  **Authorization** tab of the collection and set the values as shown below.
+
+![Alt text](/img/postman/image-1.png)
+
+### Step 4
+
+Setup environment in your personel workspace.
+
 Click on the eye icon placed on the right panel to view the environment. Click **Add** buttonn to create a new environment.
-<br/>
-<br/>
-![Alt text](img/postman/image-3.png)
 
-- **Step 5**: Add the following variables to the new environment to start maing API calls.
-<br/>
-<br/>
-![Alt text](img/postman/image-5.png)
+![Alt text](/img/postman/image-3.png)
+
+### Step 5
+
+Add the following variables to the new environment to start maing API calls.
+
+![Alt text](/img/postman/image-5.png)
+
 The values for variable can be set as following:
     - ```base_url``` — https://api.clarifai.com
     - ```key``` — Add the PAT (this is what is used for authorization)
     - ```user_id``` — Add the User ID 
 
+### Step 6
 
-- **Step 6**: To test if its working , select **Applications** collection. From that select **Create Application (Universal)** request and hit **Send**. You will get the following response body if all the steps have been done correctly.
-<br/>
-<br/>
-![Alt text](img/postman/image-2.png)
+To test if its working , select **Applications** collection. From that select **Create Application (Universal)** request and hit **Send**. You will get the following response body if all the steps have been done correctly.
+
+![Alt text](/img/postman/image-2.png)
 
 
 
