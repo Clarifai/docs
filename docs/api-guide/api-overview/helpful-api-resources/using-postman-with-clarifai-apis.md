@@ -15,8 +15,8 @@ This page will hopefully get you set up and somewhat familiar with using Postman
 
 ## Postman Basics
 By clicking the **Send** button , you can recieve the response for a particular request you created or selected from the collection. 
-<br>
-<br>
+<br/>
+<br/>
 ![Alt text](img/postman/image-2.png)
 
 
@@ -24,30 +24,30 @@ By clicking the **Send** button , you can recieve the response for a particular 
 Follow the steps below to start using postman with Clarifai API's.
 
 - **Step 1** :  Click the below button to fork the Clarifai postman collection to your workspace.
-<br>
-<br>
+<br/>
+<br/>
 
 - **Step 2**: Obtain your **PAT** by *Logging into Portal → Profile Icon → Security Settings → Create Personal Access Token → Set the scopes → Confirm.*
-<br> 
+<br/> 
 > Visit the following link to create Clarifai account [🔗](https://clarifai.com/signup)
 >
 > This link gives you a detailed explanation on obtaining **PAT**  [🔗](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens)
-<br>
+<br/>
 
 - **Step 3**: Postman allows users to setup authorization in a parental level for each collection so that you dont have to add it to the headers of each request individually. To set this feature go to  **Authorization** tab of the collection and set the values as shown below.
-<br>
-<br>
+<br/>
+<br/>
 ![Alt text](img/postman/image-1.png)
 
 - **Step 4**: Setup environment in your personel workspace.
 Click on the eye icon placed on the right panel to view the environment. Click **Add** buttonn to create a new environment.
-<br>
-<br>
+<br/>
+<br/>
 ![Alt text](img/postman/image-3.png)
 
 - **Step 5**: Add the following variables to the new environment to start maing API calls.
-<br>
-<br>
+<br/>
+<br/>
 ![Alt text](img/postman/image-5.png)
 The values for variable can be set as following:
     - ```base_url``` — https://api.clarifai.com
@@ -56,8 +56,8 @@ The values for variable can be set as following:
 
 
 - **Step 6**: To test if its working , select **Applications** collection. From that select **Create Application (Universal)** request and hit **Send**. You will get the following response body if all the steps have been done correctly.
-<br>
-<br>
+<br/>
+<br/>
 ![Alt text](img/postman/image-2.png)
 
 
