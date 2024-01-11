@@ -12,11 +12,25 @@ The Clarifai platform empowers advanced users to create their deep trained templ
 
 This flexibility allows you to leverage Clarifai's advanced machine learning capabilities and customize various template hyperparameters—such as head, neck, backbone, and loss functions—to influence “how” your model learns. 
 
-When you select an **MMDetection**, **MMClassification**, or a **MMSegmentation** template, a **Custom config** field will appear that allows you to provide a Python file that details the configurations of your template. 
+If you select any of the following barebone templates:
+
+- **MMDetection**;
+- **MMClassification**; or,
+- **MMSegmentation**.
+
+Then, clicked the **Show Training Settings (optional)** button, a **Custom config** field will appear that allows you to provide a Python file that details the configurations of your template. 
 
 ![](/img/others/create_custom_template_1.png)
 
 <br />
+
+If you click the pencil icon within the **Custom Config** field, a development environment will appear, enabling you to configure your template seamlessly without navigating away from the current screen. Additionally, you have the option to utilize the upload button, which allows you to upload a pre-configured Python file.
+
+:::info
+
+Choosing non-barebone templates like **MMDetection_YoloF**, **MMClassification_ResNet_50_RSB_A1**, and **MMSegmentation_SegFormer** grants you access to pre-configured templates. These templates come with default settings, allowing you to use them as is or conveniently customize their settings on the UI to align with your specific use case.
+
+:::
 
 For this example, we’ll demonstrate how you can create your own template using the MMDetection open source toolbox for [visual detection](https://docs.clarifai.com/portal-guide/model/deep-training/visual-detection-templates/) tasks. 
 

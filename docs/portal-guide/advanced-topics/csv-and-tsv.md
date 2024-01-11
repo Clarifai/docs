@@ -18,6 +18,8 @@ To help you get started, you can download `.csv` templates for images and text u
 
 - [Text Upload Template](/templates/ClarifaiTextUploadTemplate.csv)
 
+- [Text Generation (Text Classification) Upload Template](/templates/ClarifaiTextClassificationGeneratorUploadTemplate.csv)
+
 ### Working with your CSV file
 
 At a minimum, you should add and image URL or text to the `input.data.image.url` or `input.data.text.raw` field respectively. You can add one concept per column to the `input.data.concepts[*].id` fields. For the `input.data.concepts[*].value` column, there are two options: enter the number `1` if the concept _is_ present in the input, enter the value `0` if the concept is _not_ present in the input \(a negative example\). If no value is entered, a default value of `1` will be assigned to your input.

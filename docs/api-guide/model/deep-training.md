@@ -91,9 +91,10 @@ Here some types of deep fine-tuned models you can create:
 - **Visual classifier** (`visual-classifier`)—Create this model to classify images and video frames into a set of concepts. 
 - **Visual detector** (`visual-detector`)—Create this model to detect bounding box regions in images or video frames and then classify the detected images. You can also send the image regions to an image cropper model to create a new cropped image.
 - **Visual embedder** (`visual-embedder`)—Create this model to transform images and video frames into "high level" vector representation understood by our AI models. These embeddings enable visual search and can be used as base models to train other models.
-- **Text classifier** (`text-classifier`)—Create this model to classify text into a set of concepts.
 - **Visual segmenter** (`visual-segmenter`)—Create this model to segment a per-pixel mask in images where things are and then classify objects, descriptive words, or topics within the masks.
 -  **Visual anomaly heatmap** (`visual-anomaly-heatmap`)—Create this model to perform visual anomaly detection with image-level score and anomaly heatmap.
+- **Text classifier** (`text-classifier`)—Create this model to classify text into a set of concepts.
+- **Text generator** (`text-to-text`)—Create this model to generate or convert text based on the provided text input. For example, you can create it for prompt completion, translation, or summarization tasks.
 
 Below is an example of how you would create a visual classifier model.
 
