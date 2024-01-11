@@ -1,7 +1,5 @@
 # Using Postman with Clarifai APIs
 
-## **Introduction**
-
 This page explains how to use [Postman](https://www.postman.com/) to perform some API calls to Clarifai by showing the actions available within the Clarifai platform. You can use Postman to make a wide variety of `GET`, `POST`, `PATCH`, and `DELETE` calls.
 
 With Postman, you can use, hit, or test the Clarifai API without the need to use the Portal or call the endpoints programmatically. Postman also allows you to make API calls and generate code snippets in your favorite programming language. You can use the snippets to make REST requests to the Clarifai API.

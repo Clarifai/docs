@@ -2,7 +2,7 @@
 description: Changelog for Clarifai Release 9.11
 # For versioning, we use negative position so that the oldest versions are displayed at the bottom. Any time you add a new version, increase the position by -1.
 sidebar_position: -50
-pagination_next: null
+pagination_next: product-updates/changelog/release100
 pagination_prev: product-updates/changelog/release910
 ---
 
@@ -113,7 +113,6 @@ pagination_prev: product-updates/changelog/release910
 |![improvement](/img/improvement.jpg)|Added a pop-up toast for successful label addition or removal| <ul><li>Implemented a pop-up toast message to confirm the successful addition or removal of labels when labeling inputs via grid view. The duration of the message has been adjusted for optimal visibility, enhancing user feedback and streamlining the labeling experience.</li></ul> |  
 |![improvement](/img/improvement.jpg)|Allowed users to edit or remove objects directly from smart search results in the user interface (UI)| <ul><li>Previously, users were limited to only viewing annotations from a smart object search, with the ability to edit or remove annotations disabled. Now, users have the capability to both edit and remove annotations directly from smart object search results. </li><li>Users can now have a consistent and informative editing experience, even when ranking is applied during annotation searches.</li></ul> |  
 |![improvement](/img/improvement.jpg)|Improved the stability of search results in the Input-Manager| <ul><li>Previously, users encountered flaky search results in the Input-Manager, specifically when performing multiple searches and removing search queries. For example, if they searched for terms like #apple and #apple-tree, removed all queries, and then attempted to search for #apple again, it would be missing from the search results. </li><li>Users can now expect stable and accurate search results even after removing search queries. </li></ul> | 
-|![bug](/img/bug.jpg)|Improved pagination handling during multiple input deletion in the Input-Manager| <ul><li>Previously, there was an issue of pagination fetch inconsistencies after deleting multiple inputs or annotations. Now, when you delete a selection of inputs or annotations, the pagination mechanism resets to ensure a more accurate and streamlined retrieval of pages.</li></ul> |  
 |![bug](/img/bug.jpg)|Fixed an issue with missing annotation tags in Object Mode | <ul><li>Previously, after performing an image search in Input Mode and switching to Object Mode, annotation tags were occasionally not displayed. The fix ensures consistent visibility of annotation tags in Object Mode following an image search in Input Mode.</li></ul> | 
 |![bug](/img/bug.jpg)|Fixed an issue with duplicate search results in concept select dropdown after page refresh| <ul><li>Previously, there was an issue where refreshing the page in the Input-Manager led to duplicate search results for the concept select dropdown. For example, users would search for "#apple," refresh the page, and then attempt to search for "#apple" again, but it could result in duplicate select entries. After refreshing the page, users no longer encounter duplicate search results for the concept select dropdown. </li></ul> |
 
