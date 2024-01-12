@@ -275,6 +275,12 @@ In this example, we've used the `params.update()` method to fine-tune various in
 
 ## Use Third-Party API Keys 
 
+:::info
+
+The ability to use third-party API keys is currently exclusively available to Enterprise users. Learn more [here](https://www.clarifai.com/pricing). 
+
+:::
+
 For the third-party models we've wrapped into our platform, like those provided by OpenAI, Anthropic, Cohere, and others, you can also choose to utilize their API keys as an option—in addition to using the default Clarifai keys. 
 
 This Bring Your Own Key (BYOK) flexibility allows you to integrate your preferred services and APIs into your workflow, enhancing the versatility of our platform.
