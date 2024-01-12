@@ -9,6 +9,13 @@ sidebar_position: 5
 **Generate annotations for your inputs automatically**
 <hr />
 
+
+<div style={{ "position":"relative","width": "100%","overflow": "hidden","padding-top": "56.25%"}}>
+<iframe width="900" height="500" style={{"position": "absolute","top": "0","left": "0","bottom": "0","right": "0","width": "100%","height": "100%",}} src="https://www.youtube.com/embed/x4lC5sz-Oqs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
+</div>
+
+<br /><br />
+
 AI-assisted labeling is an innovative Clarifai feature that leverages artificial intelligence technology to assist and optimize the process of annotating data. 
 
 You can request predictions from any model or workflow available to you on a particular input, and then review, correct, or validate them before converting them into annotations.
