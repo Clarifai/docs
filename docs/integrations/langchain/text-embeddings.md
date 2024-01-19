@@ -52,6 +52,6 @@ Here is how you can create text embeddings.
 
 :::info
 
-You can explore the [LangChain documentation](https://api.python.langchain.com/en/latest/embeddings/langchain.embeddings.clarifai.ClarifaiEmbeddings.html#langchain.embeddings.clarifai.ClarifaiEmbeddings) to learn more on how to use the framework with Clarifai for text embedding tasks.
+You can explore the [LangChain documentation](https://python.langchain.com/docs/integrations/text_embedding/clarifai) to learn more on how to use the framework with Clarifai for text embedding tasks.
 
 :::
