@@ -36,7 +36,7 @@ The Clarifai Community platform provides the following:
 
 <br />
 
-You can effortlessly find what you need by searching through your own and Community resources—apps, models, workflows, and modules. This is how we treat searches:
+You can effortlessly find what you need by searching through your own and Community resources — apps, models, workflows, and modules. This is how we treat searches:
 
 - Multiple-word queries function as an "OR" (e.g., "face detection" yields results with both "face" and "detection"). 
 - Dashes (-) are treated as spaces since spaces aren't allowed in resource IDs. 
@@ -51,7 +51,7 @@ All resources are searchable by:
 
 ## Starring
 
-You can mark any resource—be it your own or publicly accessible in the Community—as a favorite. Simply click the star icon to designate any resource, including apps, models, datasets, workflows, and modules, as your favorite.
+You can mark any resource — be it your own or publicly accessible in the Community — as a favorite. Simply click the star icon to designate any resource, including apps, models, datasets, workflows, and modules, as your favorite.
 
 You can access your favorite resources by navigating to the top-right menu bar and selecting the "Starred" option. If you choose the "All" option, you'll get a list encompassing both starred and unstarred resources. 
 
