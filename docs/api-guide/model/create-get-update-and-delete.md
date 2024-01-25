@@ -516,6 +516,13 @@ Let's use the **PatchModels** endpoint to change the model name to `newname`.
 
 Let's use the **PatchModelVersions** endpoint to configure the minimum probability threshold for the outputs we want to view from the model. We can modify the `min_value` parameter available for this model type to filter the outputs to see only the concepts with a probability score of 0.95 or higher.
 
+:::tip
+
+For embedding-classifiers, the `min_value` parameter falls within the range of 0 to 1, with a step size of 0.01. For most of the other model types, it falls within the range of 0 to 100, with a step size of 0.1.
+
+:::
+
+
 <Tabs>
 
 <TabItem value="python" label="Python">
