@@ -265,17 +265,21 @@ Next, import the model by creating a new version for it.
     <CodeBlock className="language-javascript">{JSImport6}</CodeBlock>
 </TabItem>
 
+<!--Uploaded model gives KeyError: 'text'
 <TabItem value="nodejs" label="NodeJS">
     <CodeBlock className="language-javascript">{NodeImport6}</CodeBlock>
 </TabItem>
+-->
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaImport6}</CodeBlock>
 </TabItem>
 
+<!--Uploaded model gives KeyError: 'text'
 <TabItem value="php" label="PHP">
     <CodeBlock className="language-php">{PHPImport6}</CodeBlock>
 </TabItem>
+-->
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlImport6}</CodeBlock>
