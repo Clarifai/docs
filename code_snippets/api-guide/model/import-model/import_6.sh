@@ -7,11 +7,10 @@ curl -X POST "https://api.clarifai.com/v2/users/YOUR_USER_ID_HERE/apps/YOUR_APP_
                 "model_zip_url": "s3://clarifai-testing-persistent-data/test_triton_upload/jina-embeddings-v2-base-en.zip",
                 "input_fields_map": {
                     "text": "text"
-            },
-            "output_fields_map": {
-                "embeddings": "embeddings"
+                },
+                "output_fields_map": {
+                    "embeddings": "embeddings"
                 }
-            }
-            
+            }            
         }]
      }'

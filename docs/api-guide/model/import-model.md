@@ -257,7 +257,6 @@ Next, import the model by creating a new version for it.
 
 <Tabs>
 
-<!--
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonImport6}</CodeBlock>
 </TabItem>
@@ -265,22 +264,18 @@ Next, import the model by creating a new version for it.
 <TabItem value="js_rest" label="JavaScript (REST)">
     <CodeBlock className="language-javascript">{JSImport6}</CodeBlock>
 </TabItem>
--->
-<!--
+
 <TabItem value="nodejs" label="NodeJS">
     <CodeBlock className="language-javascript">{NodeImport6}</CodeBlock>
 </TabItem>
--->
-<!--
+
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaImport6}</CodeBlock>
 </TabItem>
--->
-<!--
+
 <TabItem value="php" label="PHP">
     <CodeBlock className="language-php">{PHPImport6}</CodeBlock>
 </TabItem>
--->
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlImport6}</CodeBlock>
