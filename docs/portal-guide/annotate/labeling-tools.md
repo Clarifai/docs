@@ -32,7 +32,7 @@ Let's talk about each of the tools.
 
 :::tip
 
-- After selecting a labeling tool and using the slider that pops up to adjust your input, you can simply click the **Reset** button to revert to its initial version.
+- After selecting a labeling tool and using the slider that pops up to adjust your input, you can simply click the **Reset** button next to the slider to revert to its initial version.
 - You can combine multiple tools as appropriate to make adjustments to your input.
 - Clicking a button for the second time will deactivate or remove the highlight effect associated with that button. 
 
@@ -77,10 +77,13 @@ These are the hotkeys you can use:
 - **/**—filter concepts
 - **Enter**—submit a label
 
-These are other general keyboard shortcuts:
+### View and edit labels
 
-* Left arrow—previous input
-* Right arrow—next input
+You can view and edit previously submitted labels while working on a task. There is an input carousel tool at the bottom of the labeler screen that allows you to go back and review inputs after you have submitted them.
+
+This functionality provides a convenient mechanism to revisit and edit previously submitted labeled inputs. If you realize you made a mistake while labeling, you can easily go back and review your own work. 
+
+![View and Edit Labels](/img/annotate/labeling_tools_5.png)
 
 ## Labeling Image Inputs
 
