@@ -180,10 +180,9 @@ Here are some parameters we support:
 
 :::tip
 
-You can configure the inference parameters for both text-to-text and [text-to-image](https://docs.clarifai.com/api-guide/predict/text#text-to-image-generation) generative tasks. 
+Most of our models now have new versions that support inference hyperparameters like temperature, top_k, etc. This example illustrates how you can configure them. 
 
 :::
-
 
 <Tabs>
 <TabItem value="python" label="Python">
