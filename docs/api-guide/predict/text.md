@@ -14,6 +14,18 @@ The file size of each text input should be less than 20MB.
 
 You need to specify your choice of [model](https://clarifai.com/explore/models?filterData=%5B%7B%22field%22%3A%22input_fields%22%2C%22value%22%3A%5B%22text%22%5D%7D%5D&page=1&perPage=24) for prediction by utilizing the `MODEL_ID` parameter.
 
+:::tip
+
+Most of our models now have new versions that support inference hyperparameters like temperature, top_k, etc. You can learn how to configure them [here](https://docs.clarifai.com/api-guide/predict/llms/#use-hyperparameters-to-customize-llms). 
+
+:::
+
+:::info
+
+The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
+
+:::
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
@@ -71,12 +83,6 @@ These models learn patterns and features in the text data during training, enabl
 ### Predict via URL 
 
 Below is an example of how you would make predictions on passages of text hosted on the web from the [`multilingual-uncased-sentiment`](https://clarifai.com/nlptownres/text-classification/models/multilingual-uncased-sentiment) model. 
-
-:::info
-
-The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
-
-:::
 
 <Tabs>
 <TabItem value="python" label="Python">
@@ -190,12 +196,6 @@ Text-to-image generation involves creating visual images based on textual descri
 Then, when given a textual input, these models can generate images that accurately reflect the content described in the text.
 
 Below is an example of how you would perform text-to-image generation using the [Stable Diffusion XL](https://clarifai.com/stability-ai/stable-diffusion-2/models/stable-diffusion-xl) model.
-
-:::tip
-
-[Click here](https://docs.clarifai.com/api-guide/predict/llms/#use-hyperparameters-to-customize-llms) to learn how to configure the inference parameters such as temperature, max tokens, and more, for text-to-image generative tasks. 
-
-:::
 
 <Tabs>
 

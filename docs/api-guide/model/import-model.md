@@ -12,16 +12,16 @@ The Clarifai platform allows you to import and integrate externally developed, p
 
 Once imported, the model will be deployed and ready to be evaluated, fine-tuned and customized, combined with other models and agent operators in a workflow, or used to serve inference requests as it is.
 
-Two main ways are:
-
-- **[Hugging Face Importation](https://docs.clarifai.com/portal-guide/model/hf-model-importer):** Find and import pre-trained models from the Hugging Face platform.
-- **[Local Model Upload](https://docs.clarifai.com/portal-guide/model/local-model-upload):** Upload your own trained models if they meet Clarifai's format requirements.
-
 :::info
 
 The import model functionality is exclusively available to Enterprise users.
 
 :::
+
+Two main ways are:
+
+- **[Hugging Face Importation](https://docs.clarifai.com/portal-guide/model/hf-model-importer):** Find and import pre-trained models from the Hugging Face platform.
+- **[Local Model Upload](https://docs.clarifai.com/portal-guide/model/local-model-upload):** Upload your own trained models if they meet Clarifai's format requirements.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -68,6 +68,12 @@ import NodeImport6 from "!!raw-loader!../../../code_snippets/api-guide/model/imp
 import JavaImport6 from "!!raw-loader!../../../code_snippets/api-guide/model/import-model/import_6.java";
 import PHPImport6 from "!!raw-loader!../../../code_snippets/api-guide/model/import-model/import_6.php";
 import CurlImport6 from "!!raw-loader!../../../code_snippets/api-guide/model/import-model/import_6.sh";
+
+:::info
+
+The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
+
+:::
 
 ## Hugging Face Importation
 
