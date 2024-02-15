@@ -59,14 +59,6 @@ Clarifai offers an end-to-end platform for the complete AI lifecycle. Whether yo
          </div>
          </a>
       </article>
-      <article class="col col--6">
-         <a href="https://help.clarifai.com/" target="_blank" style={{"display":"block","-webkit-text-decoration":"none","text-decoration":"none","color":"var(--ifm-heading-color)"}}>
-         <div class="card margin-bottom--lg padding--lg cardContainer_w8bb cardContainerLink_AhGd" style={{height:"auto", "color":"var(--ifm-heading-color)"}}>
-            <h3><img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Wikibooks-help-icon.svg" alt="get-help" width="35px" />&nbsp; Visit our Help Center</h3>
-            <p>Learn how to use Clarifai like a pro</p>            
-         </div>
-         </a>
-      </article>
    </div>
 </main>
 
