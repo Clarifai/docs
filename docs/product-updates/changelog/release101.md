@@ -36,7 +36,7 @@ pagination_prev: product-updates/changelog/release100
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
-|![new-feature](/img/new_feature.jpg)| Integrated Clarifai into DSPy|<ul><li>This integration, now part of the recently released DSPy version 2.1.7, empowers DSPy users to consume Clarifai's LLM models and utilize its apps to retrieve its vector search engine. Notably, Clarifai is the only provider enabling users to harness multiple LLM models. You can get started on how to use DSPy with Clarifai [here](https://github.com/stanfordnlp/dspy/tree/main/examples/integrations). </li></ul>|
+|![new-feature](/img/new_feature.jpg)| Integrated Clarifai into DSPy|<ul><li>This integration, now part of the recently released DSPy version 2.1.7, empowers DSPy users to consume Clarifai's LLM models and utilize Clarifai's apps to retrieve Clarifai's vector search engine. Notably, Clarifai is the only provider enabling users to harness multiple LLM models. You can get started on how to use DSPy with Clarifai [here](https://github.com/stanfordnlp/dspy/tree/main/examples/integrations). </li></ul>|
 
 
 ## Models 
