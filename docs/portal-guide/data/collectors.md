@@ -22,6 +22,13 @@ Modules are custom plugins with UI elements that let you extend the capabilities
 
 :::
 
+:::info
+
+The Collector feature is currently exclusively available to our Professional and Enterprise users. Learn more [here](https://www.clarifai.com/pricing).
+
+:::
+
+
 Let’s demonstrate how you can use the module to create a collector. 
 
 ## Install the Module
@@ -106,6 +113,8 @@ This is the workflow to run after the collector has processed the queued input. 
 > ![](/img/modules/collector-11.png)
 
 > _After creating the workflow in the Workflow Builder, let’s select it in the **Post-Queue Workflow** field._
+
+If the workflow output has any field that is non-empty, then it will be passed on to POST /inputs to the destination app.
 
 ### Post Inputs Key
 
