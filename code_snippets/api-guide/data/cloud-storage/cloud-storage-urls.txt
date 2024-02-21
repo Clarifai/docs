@@ -1,0 +1,40 @@
+status {
+  code: SUCCESS
+  description: "Ok"
+  req_id: "8759d87e31403bbd838794fe6016f36d"
+}
+inputs_add_jobs {
+  id: "2581ebd8d7cd42e7ac0da2bec14d5426"
+  progress {
+  }
+  created_at {
+    seconds: 1708361354
+    nanos: 820114719
+  }
+  modified_at {
+    seconds: 1708361354
+    nanos: 847655746
+  }
+  extraction_jobs {
+    status {
+      code: JOB_QUEUED
+      description: "Job is queued to be ran."
+    }
+    id: "2a6f1f69cced42029986a72009e7d4da"
+    url: "s3://samples.clarifai.com/storage/"
+    progress {
+    }
+    created_at {
+      seconds: 1708361354
+      nanos: 835105396
+    }
+    modified_at {
+      seconds: 1708361354
+      nanos: 835105396
+    }
+  }
+  status {
+    code: JOB_COMPLETED
+    description: "Job successfully ran."
+  }
+}
