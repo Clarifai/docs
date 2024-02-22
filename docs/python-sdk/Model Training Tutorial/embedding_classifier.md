@@ -15,7 +15,7 @@ import CodeMP from "!!raw-loader!../../../code_snippets/python-sdk/model_trainin
 
 import CodeOutputMT from "!!raw-loader!../../../code_snippets/python-sdk/model_training/outputs/embedding_classifier/mt.txt";
 import CodeOutputS from "!!raw-loader!../../../code_snippets/python-sdk/model_training/outputs/embedding_classifier/s.txt";
-import CodeOutputMP from "!!raw-loader!../../../code_snippets/python-sdk/model_training/outputs/embedding_classifier/MP.txt";
+import CodeOutputMP from "!!raw-loader!../../../code_snippets/python-sdk/model_training/outputs/embedding_classifier/mp.txt";
 
 
 
