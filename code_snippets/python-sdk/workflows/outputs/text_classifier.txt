@@ -1,0 +1,57 @@
+concepts {
+
+  id: "ai_pkltpBZ7"
+
+  name: "toxic"
+
+  value: 0.996599138
+
+  app_id: "main"
+
+}
+
+concepts {
+
+  id: "ai_PlX1h51x"
+
+  name: "insult"
+
+  value: 0.515220046
+
+  app_id: "main"
+
+}
+
+concepts {
+
+  id: "ai_jf9vs404"
+
+  name: "obscene"
+
+  value: 0.0849464387
+
+  app_id: "main"
+
+}
+
+concepts {
+
+  id: "ai_2Dv0D4Nm"
+
+  name: "identity_hate"
+
+  value: 0.0308352802
+
+  app_id: "main"
+
+}
+
+concepts {
+
+...
+
+  value: 0.00677669281
+
+  app_id: "main"
+
+}

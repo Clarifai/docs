@@ -1,0 +1,42 @@
+workflow:
+  id: Face-Search
+  nodes:
+    - id: face-detect
+      model:
+        model_id: face-detection
+        model_version_id: fe995da8cb73490f8556416ecf25cea3
+
+    - id: crop
+      model:
+        model_id: margin-100-image-crop
+        model_version_id: 0af5cd8ad40e43ef92154e4f4bc76bef
+      node_inputs:
+        - node_id: face-detect
+
+    - id: face-landmarks
+      model:
+        model_id: face-landmarks
+        model_version_id: 98ace9ca45e64339be94b06011557e2a
+      node_inputs:
+        - node_id: crop
+
+    - id: face-alignment
+      model:
+        model_id: landmarks-align
+        model_version_id: 4bc8b83a327247829ec638c78cde5f8b
+      node_inputs:
+        - node_id: face-landmarks
+
+    - id: face-embed
+      model:
+        model_id: face-identification-transfer-learn
+        model_version_id: fc3b8814fbe54533a3d80a1896dc9884
+      node_inputs:
+        - node_id: face-alignment
+
+    - id: face-cluster
+      model:
+        model_id: face-clustering
+        model_version_id: 621d74074a5443d7ad9dc1503fba9ff0
+      node_inputs:
+        - node_id: face-embed

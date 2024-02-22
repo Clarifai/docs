@@ -1,0 +1,5 @@
+Input:  b'This is a great place to work'
+
+id-neg : 0.72
+
+id-pos : 0.28
