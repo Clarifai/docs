@@ -1,6 +1,6 @@
 ---
 description: Learn how to use the Clarifai Python SDK
-sidebar_position: 4
+sidebar_position: 9
 ---
 
 #  SDK Notebook Examples

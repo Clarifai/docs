@@ -27,10 +27,12 @@ pip install -U clarifai
 If you want to install from source for development purposes, follow these steps:
 
 ```python
-python -m venv ~/virtualenv/clarifai-python-utils
-source ~/virtualenv/clarifai-python-utils/bin/activate
-cd clarifai-python-utils
-python setup.py develop
+git clone https://github.com/Clarifai/clarifai-python.git
+cd clarifai-python
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python setup.py install
 ```
 
 ## Configuration
