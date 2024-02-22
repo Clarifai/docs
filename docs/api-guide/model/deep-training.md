@@ -32,6 +32,7 @@ import PythonUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/
 import PythonCreateOwnTemplate1 from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_own_template_1.py";
 import PythonCreateOwnTemplate2 from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_own_template_2.py";
 import PythonTrainingTimeEstimator from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/training_time_estimator.py";
+import PythonIncrementalTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/incremental_train_model.py";
 
 import JSCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_model.html";
 import JSTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/train_model.html";
@@ -39,6 +40,7 @@ import JSTemplateTypes from "!!raw-loader!../../../code_snippets/api-guide/model
 import JSCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_workflow_deep_trained_model.html";
 import JSUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.html";
 import JSTrainingTimeEstimator from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/training_time_estimator.html";
+import JSIncrementalTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/incremental_train_model.html";
 
 import NodeCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_model.js";
 import NodeTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/train_model.js";
@@ -53,6 +55,7 @@ import JavaTemplateTypes from "!!raw-loader!../../../code_snippets/api-guide/mod
 import JavaCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_workflow_deep_trained_model.java";
 import JavaUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.java";
 import JavaTrainingTimeEstimator from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/training_time_estimator.java";
+import JavaIncrementalTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/incremental_train_model.java";
 
 import PHPCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_model.php";
 import PHPTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/train_model.php";
@@ -67,6 +70,7 @@ import CurlTemplateTypes from "!!raw-loader!../../../code_snippets/api-guide/mod
 import CurlCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_workflow_deep_trained_model.sh";
 import CurlUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.sh";
 import CurlTrainingTimeEstimator from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/training_time_estimator.sh";
+import CurlIncrementalTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/incremental_train_model.sh";
 
 import CodeOutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/output_example_1.js";
 import CodeOutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/output_example_2.js";
@@ -227,6 +231,8 @@ You can repeat the training operation as often as you like. By adding more input
 
 The `PostModelVersions` endpoint kicks off training and creates a new model version. You can also add concepts to a model when creating the model version—and only if the model type supports it as defined in the model type parameters.
 
+### Example
+
 Below is an example of how you would train a visual classifier model. 
 
 :::note
@@ -267,7 +273,39 @@ We use the `params.update()` method to set the template and hyperparameters for 
 
 </Tabs>
 
-### Use Your Own Template
+### Incrementally Train a Model
+
+You can update existing deep fine-tuned models with new data without retraining from scratch. After training a model version, a checkpoint file is automatically saved. And you can initiate incremental training from that previously trained version checkpoint. 
+
+Below is an example of how you would perform incremental training from a specific version of a visual detector model. 
+
+:::note
+
+Incremental model training functionality has been introduced starting from the [10.1 release](https://docs.clarifai.com/product-updates/changelog/release101#api).
+
+:::
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonIncrementalTrainModel}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSIncrementalTrainModel}</CodeBlock>
+</TabItem>
+
+<TabItem value="java" label="Java">
+    <CodeBlock className="language-java">{JavaIncrementalTrainModel}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlIncrementalTrainModel}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+### Train Using Your Own Template
 
 You can [create your own deep fine-tuned template](https://docs.clarifai.com/portal-guide/model/deep-training/custom-templates/) and use it to train a model. 
 
