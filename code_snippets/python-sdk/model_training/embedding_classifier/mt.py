@@ -1,0 +1,1 @@
+print(app.list_trainable_model_types())

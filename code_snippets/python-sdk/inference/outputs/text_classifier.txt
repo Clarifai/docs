@@ -1,0 +1,25 @@
+[id: "LABEL_0"
+
+name: "LABEL_0"
+
+value: 0.6046636700630188
+
+app_id: "text-classification"
+
+, id: "LABEL_1"
+
+name: "LABEL_1"
+
+value: 0.3062974512577057
+
+app_id: "text-classification"
+
+, id: "LABEL_2"
+
+name: "LABEL_2"
+
+value: 0.08903887867927551
+
+app_id: "text-classification"
+
+]

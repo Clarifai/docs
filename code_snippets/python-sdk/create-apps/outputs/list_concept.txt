@@ -1,0 +1,24 @@
+[id: "id-train"
+
+ name: "train"
+
+ value: 1
+
+ created_at {
+
+   seconds: 1705317780
+
+   nanos: 434442000
+
+ }
+
+ language: "en"
+
+ app_id: "test_app"
+
+ visibility {
+
+   gettable: PRIVATE
+
+ }
+]

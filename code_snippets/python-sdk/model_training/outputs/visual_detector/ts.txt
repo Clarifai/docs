@@ -1,0 +1,7 @@
+['MMDetection_AdvancedConfig',
+ 'MMDetection_FasterRCNN',
+ 'MMDetection_SSD',
+ 'MMDetection_YoloF',
+ 'Clarifai_InceptionV2',
+ 'Clarifai_InceptionV4',
+ 'detection_msc10']

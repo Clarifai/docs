@@ -1,0 +1,9 @@
+id: "multimodal_data"
+data {
+  image {
+    url: "https://samples.clarifai.com/metro-north.jpg"
+  }
+  text {
+    raw: "What time of day is it?"
+  }
+}

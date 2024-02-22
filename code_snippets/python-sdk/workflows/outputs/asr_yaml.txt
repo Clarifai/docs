@@ -1,0 +1,17 @@
+workflow:
+  id: asr-sentiment
+  nodes:
+    - id: audio-speech-recognition
+      model:
+          model_id: asr-wav2vec2-large-robust-ft-swbd-300h-english
+          user_id: facebook
+          app_id: asr
+
+    - id: text-sentiment-classification
+      model:
+          model_id: sentiment-analysis-twitter-roberta-base
+          user_id: erfan
+          app_id: text-classification
+
+      node_inputs:
+        - node_id: audio-speech-recognition

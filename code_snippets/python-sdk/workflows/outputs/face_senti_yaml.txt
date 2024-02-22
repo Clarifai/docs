@@ -1,0 +1,21 @@
+workflow:
+  id: Face-Sentiment
+  nodes:
+    - id: face-det
+      model:
+        model_id: face-detection
+        model_version_id: 6dc7e46bc9124c5c8824be4822abe105
+
+    - id: margin-110
+      model:
+        model_id: margin-110-image-crop
+        model_version_id: b9987421b40a46649566826ef9325303
+      node_inputs:
+        - node_id: face-det
+
+    - id: face-sentiment
+      model:
+        model_id: face-sentiment-recognition
+        model_version_id: a5d7776f0c064a41b48c3ce039049f65
+      node_inputs:
+        - node_id: margin-110

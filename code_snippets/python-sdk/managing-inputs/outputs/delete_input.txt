@@ -1,0 +1,9 @@
+2024-01-16 14:44:28 INFO     clarifai.client.input:                                                    input.py:732
+
+                             Inputs Deleted                                                                        
+
+                             code: SUCCESS                                                                         
+
+                             description: "Ok"                                                                     
+
+                             req_id: "4ae26cd15c7da98a1c2d3647b03d2768"  

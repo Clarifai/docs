@@ -1,0 +1,27 @@
+Frame Info: time: 1000
+
+ Concept: beer
+
+Frame Info: index: 1
+
+time: 3000
+
+ Concept: beer
+
+Frame Info: index: 2
+
+time: 5000
+
+ Concept: beer
+
+Frame Info: index: 3
+
+time: 7000
+
+ Concept: beer
+
+Frame Info: index: 4
+
+time: 9000
+
+ Concept: beer

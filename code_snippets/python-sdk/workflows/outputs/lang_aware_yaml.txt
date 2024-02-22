@@ -1,0 +1,32 @@
+workflow:
+  id: wf-ocr
+  nodes:
+    - id: ocr-workflow
+      model:
+          model_id: language-aware-multilingual-ocr-multiplex
+
+    - id: text-aggregator
+      model:
+          model_id: text-aggregation
+          model_type_id: text-aggregation-operator
+          output_info:
+            params:
+              avg_word_width_window_factor: 2.0
+              avg_word_height_window_factor: 1.0
+
+      node_inputs:
+        - node_id: ocr-workflow
+
+    - id: language-id-operator
+      model:
+          model_id: language-id
+          model_type_id: language-id-operator
+          output_info:
+            params:
+              library: "fasttext"
+              topk: 1
+              threshold:  0.1
+              lowercase: true
+
+      node_inputs:
+        - node_id: text-aggregator
