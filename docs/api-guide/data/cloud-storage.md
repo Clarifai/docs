@@ -12,6 +12,13 @@ You can add inputs from various cloud storage platforms, such as S3 (Amazon Simp
 
 This simplifies the process of adding inputs to our platform, offering a more efficient alternative to the conventional method of using the **PostInputs** endpoint for users who already have data stored in the cloud platforms.
 
+:::note
+
+This functionality has been introduced starting from the [10.1 release](https://docs.clarifai.com/product-updates/changelog/release101#api).
+
+:::
+
+
 :::info
 
 - Image files stored in the cloud platforms will be treated as image inputs, video files as video inputs, etc. Archives will be extracted, and their contents will also be processed like this. 
@@ -21,6 +28,7 @@ This simplifies the process of adding inputs to our platform, offering a more ef
 - The cloud URL will serve as a filter prefix. For instance, in the case of an S3 URL like `s3:/bucket/images_folder/abc`, files within the `images_folder` will be processed starting with `abc`, or within a subfolder beginning with `abc`. For example, files such as `bucket/images_folder/abcImage.png` or `bucket/images_folder/abc-1/Data.zip` will be processed accordingly.
 
 :::
+
 
 ## Add Inputs via Cloud Storage URLs
 
