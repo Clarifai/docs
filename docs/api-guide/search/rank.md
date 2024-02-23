@@ -271,7 +271,7 @@ If the input has been indexed, we can use the input ID. If there are multiple em
 
 ## Search by Text Similarity
 
-You can use texts to search through your collection. The API will return ranked results based on how similar the results are to the text you provided in your query.
+You can use texts to search through your collection of text. The text-to-text search will return ranked results based on how similar the results are to the text you provided in your query.
 
 :::tip 
 

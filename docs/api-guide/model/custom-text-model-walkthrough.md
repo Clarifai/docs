@@ -24,7 +24,7 @@ For debugging purposes, each response returned by a method call can be printed t
 
 ## Create a New Application
 
-The first step is manual. In the Clarifai Portal, [create a new application](https://docs.clarifai.com/clarifai-basics/applications/create-an-application) with **Text/Document** selected as the primary input type. The Base Workflow will be automatically selected for you. 
+The first step is manual. In the Clarifai Portal, [create a new application](https://docs.clarifai.com/clarifai-basics/applications/create-an-application) with **Text/Document** selected as the primary input type. The [Base Workflow](https://docs.clarifai.com/portal-guide/workflows/base-workflows/) will be automatically selected for you. 
 
 <!--
 ![](https://s3.amazonaws.com/clarifai-api/img3/prod/large/e12ce254f2824b0ab2aef1b10784ff23/3e695b780f597cd263b06d0aeb30b3d1?v=001)
