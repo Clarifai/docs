@@ -40,6 +40,7 @@ You can effortlessly find what you need by searching through your own and Commun
 
 - Multiple-word queries function as an "OR" (e.g., "face detection" yields results with both "face" and "detection"). 
 - Dashes (-) are treated as spaces since spaces aren't allowed in resource IDs. 
+- Dashes are added to search queries between texts and numbers. For instance, if the search query is "llama70b" or "gpt4," we also consider "llama-70-b" or "gpt-4" in the search results.
 - Partial-word searches, such as "fac," return results containing relevant terms like "face-detection."
 
 All resources are searchable by:

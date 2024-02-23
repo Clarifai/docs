@@ -20,6 +20,9 @@ The initialization code used in the following examples is outlined in detail on 
 
 :::tip
 
+<!--- [Click here]( https://docs.google.com/document/d/1JnZqqSeXpKFH4zh-go0udtUslXTqpPg0y-uUZExGa-E/edit#heading=h.msg9apiqll5r) to explore a list of LLM models available on the Clarifai Community platform. It's important to distinguish between Clarifai-hosted models, which we host within our Clarifai Cloud, and wrapped models, which are hosted externally but we deploy them on our platform using third-party API keys. When utilizing a wrapped model, your user data is transmitted to the third-party provider in addition to our own data. There are also differentiating pricing structures we employ for these two types of models. 
+-->
+
 For the third-party models we've wrapped into our platform, like those provided by OpenAI, Anthropic, Cohere, and others, you can also choose to utilize their API keys as an option—in addition to using the default Clarifai keys. You can learn how to add them [here](https://docs.clarifai.com/api-guide/predict/text#use-third-party-api-keys). 
 
 :::
