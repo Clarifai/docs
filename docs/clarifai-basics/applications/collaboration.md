@@ -26,13 +26,14 @@ Then, use the form that pops up to invite a collaborator—provide an email addr
 
 :::note
 
-The collaborator you want to invite must have a registered account on the Clarifai portal.
+- The collaborator you want to invite must have a registered account on the Clarifai portal.
+- You can edit a collaborator's scopes at a later time.
 
 :::
 
 ![](/img/collaborator_scopes.jpg)
 
-:::important note
+:::info
 
 * Since API keys are tied to a specific user and a specific app, your collaborators cannot create their own API keys. 
 
