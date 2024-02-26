@@ -1,0 +1,57 @@
+concepts {
+
+  id: "ai_8QQwMjQR"
+
+  name: "drug"
+
+  value: 0.99999994
+
+  app_id: "main"
+
+}
+
+concepts {
+
+  id: "ai_QD1zClSd"
+
+  name: "safe"
+
+  value: 4.93858607e-08
+
+  app_id: "main"
+
+}
+
+concepts {
+
+  id: "ai_V76bvrtj"
+
+  name: "explicit"
+
+  value: 3.21394289e-09
+
+  app_id: "main"
+
+}
+
+concepts {
+
+  id: "ai_kBBGf7r8"
+
+  name: "gore"
+
+  value: 1.82284843e-09
+
+  app_id: "main"
+
+}
+
+concepts {
+
+...
+
+  value: 8.18517032e-10
+
+  app_id: "main"
+
+}

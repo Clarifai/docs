@@ -1,0 +1,20 @@
+workflow:
+  id: wf-prompter-llm
+  nodes:
+    - id: prompter
+      model:
+          model_id: prompter
+          model_type_id: prompter
+          description: 'Prompter Model'
+          output_info:
+            params:
+              prompt_template: 'Classify sentiment between postive and negative for the text {data.text.raw}'
+
+    - id: llm
+      model:
+          user_id: mistralai
+          model_id: mistral-7B-Instruct
+          app_id: completion
+
+      node_inputs:
+        - node_id: prompter

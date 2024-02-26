@@ -1,0 +1,39 @@
+[input_id: "video_bbox"
+
+ data {
+
+   regions {
+
+     region_info {
+
+       bounding_box {
+
+         top_row: 0.1
+
+         left_col: 0.1
+
+         bottom_row: 0.9
+
+         right_col: 0.8
+
+       }
+
+     }
+
+     data {
+
+       concepts {
+
+         id: "id-glass"
+
+         name: "glass"
+
+         value: 1
+
+       }
+
+     }
+
+   }
+
+ }]

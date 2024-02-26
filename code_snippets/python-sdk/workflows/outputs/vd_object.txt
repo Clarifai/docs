@@ -1,0 +1,50 @@
+frames {
+
+  frame_info {
+
+    time: 500
+
+  }
+
+  data {
+
+  }
+
+  id: "faa9f3d5c8569123d8bea365ea478031"
+
+}
+
+frames {
+
+  frame_info {
+
+    index: 1
+
+    time: 1500
+
+  }
+
+  data {
+
+    regions {
+
+      id: "c58812cf4c3066e55fb16532dfde6986"
+
+      region_info {
+
+        bounding_box {
+
+          top_row: 0.0844013914
+
+          bottom_row: 1
+
+          right_col: 0.858514369
+
+        }
+
+      }
+    }
+    
+    
+    }
+}

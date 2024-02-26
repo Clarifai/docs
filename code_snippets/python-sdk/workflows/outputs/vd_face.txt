@@ -1,0 +1,61 @@
+regions {
+
+  id: "e2cb37cbc6a0e59f7afc4d74b55ecb91"
+
+  region_info {
+
+    bounding_box {
+
+      top_row: 0.265738964
+
+      left_col: 0.189666823
+
+      bottom_row: 0.519693851
+
+      right_col: 0.326894283
+
+    }
+
+  }
+
+  data {
+
+    clusters {
+
+      id: "428_280"
+
+      projection: -0.032409668
+
+      projection: 0.20954895
+
+    }
+
+  }
+
+}
+
+regions {
+
+  id: "abf63d045dae71ef5c6532e8edfda65f"
+
+  region_info {
+
+    bounding_box {
+
+      top_row: 0.174794614
+
+      left_col: 0.665749371
+
+      bottom_row: 0.395655245
+
+...
+
+      projection: -0.0704193115
+
+      projection: -0.0369262695
+
+    }
+
+  }
+
+}

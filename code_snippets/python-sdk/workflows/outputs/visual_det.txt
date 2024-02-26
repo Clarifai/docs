@@ -1,0 +1,209 @@
+frames {
+
+  frame_info {
+
+    time: 500
+
+  }
+
+  data {
+
+    regions {
+
+      id: "172c80386cbad83149135e715200f5a8"
+
+      region_info {
+
+        bounding_box {
+
+          top_row: 0.6157978773117065
+
+          left_col: 0.45200759172439575
+
+          bottom_row: 0.6784101724624634
+
+          right_col: 0.49515417218208313
+
+        }
+
+      }
+
+      data {
+
+        concepts {
+
+          id: "ai_BPXQSP1m"
+
+          name: "vehicle"
+
+          value: 0.2520264685153961
+
+          app_id: "main"
+
+        }
+
+      }
+
+      value: 0.2520264685153961
+
+    }
+
+  }
+
+  id: "faa9f3d5c8569123d8bea365ea478031"
+
+}
+
+frames {
+
+  frame_info {
+
+    index: 1
+
+    time: 1500
+
+  }
+
+  data {
+
+  }
+
+  id: "8e5f8672bdda2f2682d59ccc019d48c0"
+
+}
+
+frames {
+
+  frame_info {
+
+    index: 2
+
+    time: 2500
+
+  }
+
+  data {
+
+  }
+
+  id: "3f4cd8b6cbe2361de2d3a3f84906723c"
+
+}
+
+frames {
+
+  frame_info {
+
+    index: 3
+
+    time: 3500
+
+  }
+
+  data {
+
+  }
+
+  id: "049f7331f17764126fa433ccc7eb27a6"
+
+}
+
+frames {
+
+  frame_info {
+
+    index: 4
+
+    time: 4500
+
+  }
+
+  data {
+
+  }
+
+  id: "a815862119825cfb037834ec5dc24619"
+
+}
+
+frames {
+
+  frame_info {
+
+    index: 5
+
+    time: 5500
+
+  }
+
+  data {
+
+  }
+
+  id: "14572f138018d23fcd39a87f0c51880e"
+
+}
+
+frames {
+
+  frame_info {
+
+    index: 6
+
+    time: 6500
+
+  }
+
+  data {
+
+  }
+
+  id: "7790d9923639183be7213e8330736ea5"
+
+}
+
+frames {
+
+  frame_info {
+
+    index: 7
+
+    time: 7500
+
+  }
+
+  data {
+
+  }
+
+  id: "32224efe9c43139c9f3070930bae4e6c"
+
+}
+
+frames {
+
+  frame_info {
+
+    index: 8
+
+    time: 8500
+
+  }
+
+  data {
+
+  }
+
+  id: "0c4dd5d602afa6754bcfd441998412af"
+
+}
+
+tracks {
+
+  id: "1"
+
+  time_info {
+
+  }
+
+}

@@ -1,0 +1,7 @@
+Output
+2024-01-22 15:22:25 INFO     clarifai:                                                               dataset.py:124
+                             Dataset Version Deleted                                                               
+                             code: SUCCESS                                                                         
+                             description: "Ok"                                                                     
+                             details: "Dataset version \'a4b032e9083f4cbfbdfe5617b1a4d5e7\' deleted"               
+                             req_id: "1fac439af87c37dae27684fcbe49b80b"  

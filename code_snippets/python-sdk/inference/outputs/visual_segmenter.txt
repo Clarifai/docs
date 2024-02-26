@@ -1,0 +1,23 @@
+tree: 0.4965
+
+person: 0.151
+
+house: 0.0872
+
+pavement: 0.0694
+
+bush: 0.0588
+
+road: 0.0519
+
+sky-other: 0.0401
+
+grass: 0.0296
+
+building-other: 0.0096
+
+unlabeled: 0.0035
+
+roof: 0.0017
+
+teddy bear: 0.0006

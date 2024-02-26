@@ -1,0 +1,35 @@
+workflow:
+  id: Demographics
+  nodes:
+    - id: detect-concept
+      model:
+        model_id: face-detection
+        model_version_id: 45fb9a671625463fa646c3523a3087d5
+
+    - id: image-crop
+      model:
+        model_id: margin-110-image-crop
+        model_version_id: b9987421b40a46649566826ef9325303
+      node_inputs:
+        - node_id: detect-concept
+
+    - id: demographics-race
+      model:
+        model_id: ethnicity-demographics-recognition
+        model_version_id: b2897edbda314615856039fb0c489796
+      node_inputs:
+        - node_id: image-crop
+
+    - id: demographics-gender
+      model:
+        model_id: gender-demographics-recognition
+        model_version_id: ff83d5baac004aafbe6b372ffa6f8227
+      node_inputs:
+        - node_id: image-crop
+
+    - id: demographics-age
+      model:
+        model_id: age-demographics-recognition
+        model_version_id: fb9f10339ac14e23b8e960e74984401b
+      node_inputs:
+        - node_id: image-crop

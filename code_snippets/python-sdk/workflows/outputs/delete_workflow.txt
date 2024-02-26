@@ -1,0 +1,9 @@
+2024-01-18 16:34:46 INFO     clarifai.client.app:                                                        app.py:653
+
+                             Workflow Deleted                                                                      
+
+                             code: SUCCESS                                                                         
+
+                             description: "Ok"                                                                     
+
+                             req_id: "a979f35e9c826bb9046f4d92879c6b7c" 
