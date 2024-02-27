@@ -81,7 +81,7 @@ The **Question Mark** navigation element lets you easily access other resources 
 
 If you click the element, a drop-down list will appear with items that point to various external resources you can access, such as **Contact Us**, **Documentation**, **API Status**, **Send Feedback**, and **Report a Bug**.
 
-![question mark navigation element](/img/community/community_intro_pics/question_mark_up.png)
+
 
 ### Profile Icon
 
