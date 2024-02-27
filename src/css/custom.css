@@ -108,3 +108,8 @@ header .join__slack:hover {
 .theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2.menu__list-item:not(.menu__list-item--collapsed) {
   border-left: 2px solid var(--ifm-menu-color-active);
 }
+
+.inline-flex {
+  display: flex;
+  align-items: center;
+}
