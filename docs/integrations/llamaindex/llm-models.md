@@ -15,8 +15,7 @@ Let’s illustrate how you can use LlamaIndex to interact with Clarifai LLMs (la
 - Get a PAT (Personal Access Token) from the Clarifai’s portal under the [Settings/Security](https://clarifai.com/settings/security) section
 - Get the URL of the model you want to use. Large language models can be found [here](https://clarifai.com/explore/models?filterData=%5B%7B%22field%22%3A%22use_cases%22%2C%22value%22%3A%5B%22llm%22%5D%7D%5D&page=1&perPage=24)
 - Alternatively, get the ID of the user owning the model you want to use, the ID of the app where the model is found, and the name of the model
-- Install the [Clarifai Python SDK](https://docs.clarifai.com/python-sdk/sdk-overview) by running `pip install clarifai`
-- Install LlamaIndex by running `pip install llama-index`
+- Install LlamaIndex and [Clarifai Python SDK](https://docs.clarifai.com/python-sdk/sdk-overview) by running `pip install llama-index-llms-clarifai`
 
 :::info
 
