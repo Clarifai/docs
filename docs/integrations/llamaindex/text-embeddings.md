@@ -18,8 +18,7 @@ Let’s illustrate how you can use LlamaIndex to interact with Clarifai models a
 - Get a PAT (Personal Access Token) from the Clarifai’s portal under the [Settings/Security](https://clarifai.com/settings/security) section
 - Get the URL of the model you want to use. Text embedding models can be found [here](https://clarifai.com/explore/models?page=1&perPage=24&filterData=%5B%7B%22field%22%3A%22model_type_id%22%2C%22value%22%3A%5B%22text-embedder%22%5D%7D%5D)
 - Alternatively, get the ID of the user owning the model you want to use, the ID of the app where the model is found, and the name of the model
-- Install the [Clarifai Python SDK](https://docs.clarifai.com/python-sdk/sdk-overview) by running `pip install clarifai`
-- Install LlamaIndex by running `pip install llama-index`
+- Install LlamaIndex and [Clarifai Python SDK](https://docs.clarifai.com/python-sdk/sdk-overview) by running `pip install llama-index-embeddings-clarifai`
 
 :::info
 

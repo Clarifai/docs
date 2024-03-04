@@ -19,7 +19,7 @@ PROMPT = "Hello World!"
 
 # Import the required packages
 import os
-from llama_index.embeddings import ClarifaiEmbedding
+from llama_index.embeddings.clarifai import ClarifaiEmbedding
 
 # Set Clarifai PAT as environment variable
 os.environ["CLARIFAI_PAT"] = PAT
