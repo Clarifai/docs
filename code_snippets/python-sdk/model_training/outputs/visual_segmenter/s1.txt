@@ -1,0 +1,10 @@
+{'dataset_id': '',
+ 'dataset_version_id': '',
+ 'concepts': [],
+ 'train_params': {'invalid_data_tolerance_percent': 5.0,
+  'template': 'MMSegmentation_SegFormer',
+  'image_size': [520.0],
+  'batch_size': 2.0,
+  'num_epochs': 1.0,
+  'per_item_lrate': 7.5e-06,
+  'pretrained_weights': 'ade20k'}}

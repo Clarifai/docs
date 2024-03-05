@@ -8,13 +8,22 @@ sidebar_position: 4
 **Make predictions using LLMs**
 <hr />
 
-Large Language Models (LLMs) are a subset of foundation models that have revolutionized natural language understanding and generation tasks. These models are characterized by their vast size, typically containing hundreds of millions to billions of parameters.
+[Large Language Models (LLMs)](https://clarifai.com/explore/models?page=1&perPage=24&filterData=%5B%7B%22field%22%3A%22use_cases%22%2C%22value%22%3A%5B%22llm%22%5D%7D%5D) are a subset of foundation models that have revolutionized natural language understanding and generation tasks. These models are characterized by their vast size, typically containing hundreds of millions to billions of parameters.
 
 LLMs have learned to perform many kinds of prediction tasks. One of the most notable capabilities of LLMs is text generation. Given a prompt or seed text, they can generate coherent and contextually relevant text that appears as if it were written by a human.  
 
 :::info
 
 The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
+
+:::
+
+:::tip
+
+<!--- [Click here]( https://docs.google.com/document/d/1JnZqqSeXpKFH4zh-go0udtUslXTqpPg0y-uUZExGa-E/edit#heading=h.msg9apiqll5r) to explore a list of LLM models available on the Clarifai Community platform. It's important to distinguish between Clarifai-hosted models, which we host within our Clarifai Cloud, and wrapped models, which are hosted externally but we deploy them on our platform using third-party API keys. When utilizing a wrapped model, your user data is transmitted to the third-party provider in addition to our own data. There are also differentiating pricing structures we employ for these two types of models. 
+-->
+
+For the third-party models we've wrapped into our platform, like those provided by OpenAI, Anthropic, Cohere, and others, you can also choose to utilize their API keys as an option—in addition to using the default Clarifai keys. You can learn how to add them [here](https://docs.clarifai.com/api-guide/predict/text#use-third-party-api-keys). 
 
 :::
 
@@ -172,6 +181,11 @@ Here are some parameters we support:
 
 - **Top K**—It controls the diversity of the output. It limits the vocabulary to the `top_k` most likely tokens at each step. A lower value of K (e.g., 10) will make the output more focused, while a higher value (e.g., 50) will make it more diverse.
 
+:::tip
+
+Most of our models now have new versions that support inference hyperparameters like temperature, top_k, etc. This example illustrates how you can configure them. 
+
+:::
 
 <Tabs>
 <TabItem value="python" label="Python">
@@ -186,7 +200,6 @@ Here are some parameters we support:
  <CodeBlock className="language-javascript">{CodeNodeJSParam}</CodeBlock>
 </TabItem>
 
-<!--
 <TabItem value="java" label="Java">
  <CodeBlock className="language-java">{CodeJavaParam}</CodeBlock>
 </TabItem>
@@ -194,10 +207,10 @@ Here are some parameters we support:
 <TabItem value="php" label="PHP">
     <CodeBlock className="language-php">{CodePHPParam}</CodeBlock>
 </TabItem>
--->
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CodeCurlParam}</CodeBlock>
 </TabItem>
 
 </Tabs>
+

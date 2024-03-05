@@ -1,0 +1,168 @@
+---
+sidebar_position: 7
+---
+
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+
+
+import CodeCW from "!!raw-loader!../../../code_snippets/python-sdk/workflows/create_workflow.py";
+import CodeLW from "!!raw-loader!../../../code_snippets/python-sdk/workflows/list_workflows.py";
+import CodeDW from "!!raw-loader!../../../code_snippets/python-sdk/workflows/delete_workflow.py";
+import CodeExport from "!!raw-loader!../../../code_snippets/python-sdk/workflows/export.py";
+
+
+
+import CodeOutputASRYaml from "!!raw-loader!../../../code_snippets/python-sdk/workflows/outputs/asr_yaml.txt";
+import CodeOutputDemoYaml from "!!raw-loader!../../../code_snippets/python-sdk/workflows/outputs/demo_yaml.txt";
+import CodeOutputFaceSYaml from "!!raw-loader!../../../code_snippets/python-sdk/workflows/outputs/face_search_yaml.txt";
+import CodeOutputFaceSentiYaml from "!!raw-loader!../../../code_snippets/python-sdk/workflows/outputs/face_senti_yaml.txt";
+import CodeOutputGenYaml from "!!raw-loader!../../../code_snippets/python-sdk/workflows/outputs/general_yaml.txt";
+import CodeOutputLangAYaml from "!!raw-loader!../../../code_snippets/python-sdk/workflows/outputs/lang_aware_yaml.txt";
+import CodeOutputPrompterYaml from "!!raw-loader!../../../code_snippets/python-sdk/workflows/outputs/prompter_llm_yaml.txt";
+import CodeOutputRAGYaml from "!!raw-loader!../../../code_snippets/python-sdk/workflows/outputs/rag_yaml.txt";
+import CodeOutputLW from "!!raw-loader!../../../code_snippets/python-sdk/workflows/outputs/list_workflows.txt";
+import CodeOutputDW from "!!raw-loader!../../../code_snippets/python-sdk/workflows/outputs/delete_workflow.txt";
+
+
+
+
+
+
+# Building Workflow Graphs
+
+Unlock the potential of efficient data processing pipelines tailored precisely to your unique requirements with this empowering feature. As you embark on the journey of constructing workflow graphs, you gain unprecedented flexibility to seamlessly connect and orchestrate a diverse array of models, operators, and processing steps. Whether your focus is on integrating sophisticated image classification, precise object detection, or custom operators, our SDK offers an intuitive and user-friendly interface. Experience the freedom to effortlessly create, modify, and optimize workflow graphs, empowering you to design and implement highly specialized data processing pipelines that align seamlessly with your specific needs.
+
+
+## Create workflow
+
+Designing and implementing workflows is a crucial aspect of building a robust and flexible inference pipeline. Workflows  offer a modular architecture that serves as the foundation for both sophisticated machine learning ensemble modeling and seamless integration of business logic. These workflows empower you to streamline your processes, enhance model performance, and effectively handle diverse tasks in your machine learning endeavors. Workflow can be created with the SDK using a YAML specification.
+
+To know more about workflows visit this [link](https://docs.clarifai.com/portal-guide/workflows/).
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CodeCW}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
+<details>
+  <summary>Output</summary>
+    <img src="/img/python-sdk/create_workflow.png" width="500" height="500" />
+</details>
+
+
+
+
+## Examples for YAML based Workflows :
+
+### ASR Sentiment
+
+Automatic Speech Recognition (ASR) sentiment analysis refers to the process of analyzing the emotional tone or sentiment expressed in spoken language using ASR model.
+
+<CodeBlock className="language-text">{CodeOutputASRYaml}</CodeBlock>
+
+
+
+### Demographics
+
+This is a Multi-model workflow that detects, crops, and recognizes demographic characteristics of faces. Visually classifies age, gender, and multi-culture.
+
+<CodeBlock className="language-text">{CodeOutputDemoYaml}</CodeBlock>
+
+
+
+### Face Search
+
+A workflow that combines detection, recognition, and embedding to generate face landmarks and enable visual search using detected faces's embeddings.
+
+<CodeBlock className="language-text">{CodeOutputFaceSYaml}</CodeBlock>
+
+
+
+### Face Sentiment
+
+Multi-model workflow that combines face detection and sentiment classification of 7 concepts: anger, disgust, fear, neutral, happiness, sadness, contempt.
+<CodeBlock className="language-text">{CodeOutputFaceSentiYaml}</CodeBlock>
+
+
+### General
+
+A general image detection workflow that detects a variety of common objects, and enable visual search using general embeddings on detected regions.
+<CodeBlock className="language-text">{CodeOutputGenYaml}</CodeBlock>
+
+
+### Language Aware OCR
+
+A workflows that performs OCR in different languages.
+
+<CodeBlock className="language-text">{CodeOutputLangAYaml}</CodeBlock>
+
+### Prompter LLM
+
+A workflow that uses a prompt template with LLM.
+<CodeBlock className="language-text">{CodeOutputPrompterYaml}</CodeBlock>
+
+
+### RAG Prompter LLM
+
+This workflow uses LLM with a RAG prompter template.
+<CodeBlock className="language-text">{CodeOutputRAGYaml}</CodeBlock>
+
+Visit this [link](https://github.com/Clarifai/examples/tree/main/workflows/configs) to view some YAML examples.
+
+## List workflows
+
+The Clarifai Python SDK provides an API that empowers users to effortlessly retrieve a comprehensive list of all workflows accessible within an app. This functionality enables seamless exploration and management of workflows, facilitating a streamlined experience for developers to interact with and leverage the power of Clarifai's workflow capabilities.
+
+To know more about workflows visit this [link](https://docs.clarifai.com/portal-guide/workflows/).
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CodeLW}</CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+  <summary>Output</summary>
+    <CodeBlock className="language-text">{CodeOutputLW}</CodeBlock>
+</details>
+
+
+## Delete workflows
+
+The Clarifai Python SDK empowers users to seamlessly delete workflows through the API by specifying the unique identifier of the workflow. This functionality provides a straightforward method for users to manage and remove workflows as needed within their applications or projects. By utilizing the provided workflow id parameter, developers can efficiently interact with the Clarifai platform to streamline workflow management processes.
+
+To know more about workflows visit this [link](https://docs.clarifai.com/portal-guide/workflows/).
+
+:::caution
+Be certain that you want to delete a particular workflow as the operation cannot be undone.
+:::
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CodeDW}</CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+  <summary>Output</summary>
+    <CodeBlock className="language-text">{CodeOutputDW}</CodeBlock>
+</details>
+                                          
+
+
+## Export workflow
+
+The Clarifai Python SDK provides a powerful feature for initiating or swiftly modifying existing Clarifai community workflows through an intuitive YAML configuration. With the export functionality, users can effortlessly download a YAML file representing the entire workflow. This file serves as a local copy, allowing seamless edits and providing the flexibility to create and manage new workflows with ease.
+
+To know more about workflows visit this [link](https://docs.clarifai.com/portal-guide/workflows/).
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CodeExport}</CodeBlock>
+</TabItem>
+</Tabs>

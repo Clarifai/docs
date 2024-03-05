@@ -1,0 +1,5 @@
+{'dataset_id': 'text_dataset',
+ 'dataset_version_id': '',
+ 'concepts': ['id-pos', 'id-neg'],
+ 'train_params': {'base_embed_model': None, 'enrich_dataset': 'Automatic'},
+ 'inference_params': {'min_value': 0.0}}

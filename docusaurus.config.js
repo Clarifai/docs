@@ -25,8 +25,10 @@ const config = {
           routeBasePath: '/', // Serve the docs at the site's root
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          //editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          //editUrl: 'https://github.com/Clarifai/docs/edit/main/docs',
+          //editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',         
+          //this one also works--editUrl: 'https://github.com/Clarifai/docs/blob/main/',
+          editUrl: ({versionDocsDirPath, docPath}) =>
+            `https://github.com/Clarifai/docs/blob/main/${versionDocsDirPath}/${docPath}`,          
         },
         blog: false,
         theme: {
@@ -73,11 +75,6 @@ const config = {
           {
             href: 'https://discord.gg/WgUvPK4pVD',
             label: 'Discord',
-            position: 'right',
-          },
-          {
-            href: 'https://join.slack.com/t/clarifaicommunity/shared_invite/zt-1jehqesme-l60djcd3c_4a1eCV~uPUjQ',
-            label: 'Community Slack',
             position: 'right',
           },
           {

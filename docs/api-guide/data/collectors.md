@@ -1,6 +1,6 @@
 ---
 description: Capture data for your application.
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 # Collectors
@@ -13,6 +13,12 @@ Collectors capture input data for your app. They enable you to pipe in data from
 Collectors are available with Essential and Enterprise plans to help you manage data ingestion at scale.
 
 You can create app-level collectors to monitor specific models and specify sampling rules for triggering data ingestion. Collectors can only collect data from apps where you are the app owner.
+
+:::info
+
+The Collector feature is currently exclusively available to our Professional and Enterprise users. Learn more [here](https://www.clarifai.com/pricing).
+
+:::
 
 ## Collector Parameters
 

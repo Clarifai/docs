@@ -1,0 +1,13 @@
+{'dataset_id': 'text_dataset',
+ 'dataset_version_id': '',
+ 'concepts': ['id-pos', 'id-neg'],
+ 'train_params': {'invalid_data_tolerance_percent': 5.0,
+  'template': 'HuggingFace_AdvancedConfig',
+  'model_config': {'problem_type': 'multi_label_classification',
+   'pretrained_model_name_or_path': 'bert-base-cased',
+   'torch_dtype': 'torch.float32'},
+  'tokenizer_config': {},
+  'trainer_config': {'num_train_epochs': 1.0,
+   'auto_find_batch_size': True,
+   'output_dir': 'checkpoint'}},
+ 'inference_params': {'select_concepts': []}}

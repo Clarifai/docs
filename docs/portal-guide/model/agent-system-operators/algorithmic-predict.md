@@ -1,6 +1,6 @@
 ---
 description: Learn about our algorithmic predict operators
-sidebar_position: 6
+sidebar_position: 7
 ---
 
 # Algorithmic Predict
@@ -40,7 +40,7 @@ Since we'll use the [llama2-13b-chat](https://clarifai.com/meta/Llama-2/models/l
 
 **2**. Search for the **text-to-text** option in the left-hand sidebar and drag it onto the workspace. Then, search for the **llama2-13b-chat** model on the right-hand sidebar and connect it to the prompter model. 
 
-**3**. Search for the **regex-based classifier** option in the left-hand sidebar and drag it onto the workspace. On the right-hand sidebar, click the **SELECT CONCEPTS** button and use the pop-up that appears to select the relevant concepts already existing in your application. For this example, we select the following concepts: `cat, dog, cheetah, lion`.
+**3**. Search for the **regex-based classifier** option in the left-hand sidebar and drag it onto the workspace. On the right-hand sidebar, click the **SELECT CONCEPTS** button and use the pop-up that appears to select the relevant [concepts](https://docs.clarifai.com/portal-guide/concepts/create-get-update-delete) already existing in your application. For this example, we select the following concepts: `cat, dog, cheetah, lion`.
 
 In the **regex** field, provide the regex pattern that will be used to classify the text. If the pattern matches, the text will be classified as the selected concept. For this example, we provide `\bcat\b`, which would match the word "cat" in instances where it appears as a whole word, surrounded by word boundaries.
 
@@ -66,7 +66,7 @@ The model will process the input and classify the description into one of the pr
 
 ![](/img/others/regex_2.png)
 
-Then, the Regex-Based Classifier will categorize the response into one of the provided concepts, which you can feed into other downstream tasks, such as [an Annotation Writer](https://docs.clarifai.com/portal-guide/model/agent-system-operators/push#annotation-writer) to create annotations for inputs.
+Then, the Regex-Based Classifier will categorize the response into one of the provided concepts, which you can feed into other downstream tasks, such as an [Annotation Writer](https://docs.clarifai.com/portal-guide/model/agent-system-operators/push#annotation-writer) to create annotations for inputs.
 
 ## KNN Classifier
 

@@ -1,6 +1,6 @@
 ---
 description: Learn about our aggregate operators
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 # Aggregate

@@ -1,0 +1,11 @@
+['classification_inception_general_v1_3_transfer_embednorm',
+ 'classification_basemodel_v1',
+ 'classification_cifar10_v1',
+ 'Clarifai_InceptionTransferEmbedNorm',
+ 'Clarifai_ResNext',
+ 'Clarifai_InceptionV2',
+ 'Clarifai_InceptionBatchNorm',
+ 'MMClassification',
+ 'MMClassification_EfficientNet',
+ 'MMClassification_ResNet_50_RSB_A1',
+ 'MMClassification_ResNet_50']

@@ -1,0 +1,11 @@
+2024-01-16 14:25:26 INFO     clarifai.client.input:                                                    input.py:669
+
+                             Inputs Uploaded                                                                       
+
+                             code: SUCCESS                                                                         
+
+                             description: "Ok"                                                                     
+
+                             details: "All inputs successfully added"                                              
+
+                             req_id: "00576d040a6254019942ab4eceb306ad" 

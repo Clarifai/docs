@@ -1,0 +1,7 @@
+id-hamburger : 0.64
+
+id-ramen : 0.45
+
+id-prime_rib : 0.44
+
+id-beignets : 0.42

@@ -1,0 +1,6 @@
+['HF_GPTNeo_125m_lora',
+ 'HF_GPTNeo_2p7b_lora',
+ 'HF_Llama_2_13b_chat_GPTQ_lora',
+ 'HF_Llama_2_7b_chat_GPTQ_lora',
+ 'HF_Mistral_7b_instruct_GPTQ_lora',
+ 'HuggingFace_AdvancedConfig']

@@ -1,0 +1,9 @@
+2024-01-15 16:11:26 INFO     clarifai.client.user:                                                      user.py:122
+
+                             App created                                                                           
+
+                             code: SUCCESS                                                                         
+
+                             description: "Ok"                                                                     
+
+                             req_id: "1728082daee63fa593411dcb573e7e33"                                            

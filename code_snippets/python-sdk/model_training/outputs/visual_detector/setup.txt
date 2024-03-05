@@ -1,0 +1,13 @@
+{'dataset_id': 'train_dataset',
+ 'dataset_version_id': '',
+ 'concepts': ['id-hamburger', 'id-ramen', 'id-prime_rib', 'id-beignets'],
+ 'train_params': {'invalid_data_tolerance_percent': 5.0,
+  'template': 'Clarifai_ResNext',
+  'logreg': 1.0,
+  'image_size': 256.0,
+  'batch_size': 64.0,
+  'init_epochs': 25.0,
+  'step_epochs': 7.0,
+  'num_epochs': 65.0,
+  'per_item_lrate': 7.8125e-05,
+  'num_items_per_epoch': 0.0}}

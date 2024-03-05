@@ -1,0 +1,9 @@
+2024-01-19 16:16:28 INFO     clarifai.client.input:                                                    input.py:696
+
+                             Annotations Uploaded                                                                  
+
+                             code: SUCCESS                                                                         
+
+                             description: "Ok"                                                                     
+
+                             req_id: "b5ca21ebc19cbbfe0c21706b4c1cd909" 

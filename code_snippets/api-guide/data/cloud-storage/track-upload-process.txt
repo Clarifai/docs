@@ -1,0 +1,25 @@
+status {
+  code: SUCCESS
+  description: "Ok"
+  req_id: "bae1f832c8931d47388f875653e7035d"
+}
+inputs_extraction_job {
+  status {
+    code: JOB_COMPLETED
+    description: "Job successfully ran."
+  }
+  id: "2a6f1f69cced42029986a72009e7d4da"
+  url: "s3://samples.clarifai.com/storage/"
+  progress {
+    image_inputs_count: 3
+    video_inputs_count: 1
+  }
+  created_at {
+    seconds: 1708361354
+    nanos: 835105000
+  }
+  modified_at {
+    seconds: 1708361355
+    nanos: 386004000
+  }
+}

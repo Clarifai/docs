@@ -1,0 +1,5 @@
+['classification_angular_margin_embed',
+ 'classification_basemodel_v1_embed',
+ 'Clarifai_ResNet_AngularMargin',
+ 'Clarifai_InceptionBatchNorm',
+ 'Clarifai_ResNext']

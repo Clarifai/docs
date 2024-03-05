@@ -8,9 +8,13 @@ sidebar_position: 2
 **Make predictions on video inputs**
 <hr />
 
+**Input**: Video
+
+**Output**: [Concepts](https://docs.clarifai.com/portal-guide/concepts/create-get-update-delete)
+
 With a video input, the Predict API response will return a list of predicted concepts for every frame of a video. By default, video is processed at 1 frame per second \(FPS\), which is configurable in the predict request. This means you will receive a list of concepts for every second (1000 milliseconds) of your video.
 
-You can run Predict on your video using a select number of [Clarifai Models](https://www.clarifai.com/models). The models that are currently supported are: 
+You can run Predict on your video using a select number of [Clarifai models](https://www.clarifai.com/models). The models that are currently supported are: 
 + Apparel
 + Food
 + General
@@ -74,8 +78,6 @@ import CurlViaBytes from "!!raw-loader!../../../code_snippets/api-guide/predict/
 
 import CodeOutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/video_via_url.txt";
 import JSONOutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/video_via_url.js";
-import CodeOutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/video_via_bytes.txt";
-import JSONOutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/video_via_bytes.js";
 
 
 <Tabs>
@@ -106,7 +108,7 @@ import JSONOutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/pr
 </Tabs>
 
 <details>
-  <summary>Code Output Example</summary>
+  <summary>Text Output Example</summary>
     <CodeBlock className="language-text">{CodeOutputExample1}</CodeBlock>
 </details>
 
@@ -146,14 +148,4 @@ Below is an example of how you would send the bytes of a video and receive predi
 </TabItem>
 
 </Tabs>
-
-<details>
-  <summary>Code Output Example</summary>
-    <CodeBlock className="language-text">{CodeOutputExample2}</CodeBlock>
-</details>
-
-<details>
-  <summary>JSON Output Example</summary>
-    <CodeBlock className="language-javascript">{JSONOutputExample2}</CodeBlock>
-</details>
 

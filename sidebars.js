@@ -31,11 +31,13 @@ const sidebars = {
       label: 'Clarifai Blog',
       href: 'https://www.clarifai.com/blog/',
   },
+  /*
   {
       type: 'link',
       label: 'Clarifai Help',
       href: 'https://help.clarifai.com/',
   },
+  */
   {
       type: 'link',
       label: 'Clarifai Community',

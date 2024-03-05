@@ -45,7 +45,7 @@ To be specific:
 
 We hope and expect that this will not be a significant change for you. In order to implement it, you will need to ensure that you set the `PAT`, `USER_ID`, and `APP_ID` variables appropriately. There are examples using all of our supported languages on [this page](https://docs.clarifai.com/api-guide/predict/images), and we are available at any time if you need assistance or have any questions.
 
-The best place to contact us for support questions is our [Community Slack](https://join.slack.com/t/clarifaicommunity/shared_invite/zt-1jehqesme-l60djcd3c_4a1eCV~uPUjQ), which is monitored by many of our support teams and is the fastest way to get help.
+The best place to contact us for support questions is our [Discord Server](https://discord.gg/WgUvPK4pVD), which is monitored by many of our support teams and is the fastest way to get help.
 
 We do apologize for any inconvenience this causes, however, we are confident that this is a positive change that will simplify the usage of the platform going forward and make it easier to leverage AI created by other people on our platform!
 

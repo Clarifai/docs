@@ -1,17 +1,19 @@
 //index.js file
 
-///////////////////////////////////////////////////////////////////////////////////
-// In this section, we set the user authentication, app ID, workflow ID, and
+////////////////////////////////////////////////////////////////////////////////////////
+// In this section, we set the user authentication, user and app ID, model ID, and
 // audio file location. Change these strings to run your own example.
-///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////
 
-const USER_ID = 'YOUR_USER_ID_HERE';
 // Your PAT (Personal Access Token) can be found in the portal under Authentification
-const PAT = 'YOUR_PAT_HERE';
-const APP_ID = 'YOUR_APP_ID_HERE';
+const PAT = "YOUR_PAT_HERE"
+// Specify the correct user_id/app_id pairings
+// Since you're making inferences outside your app's scope
+const USER_ID = "facebook"
+const APP_ID = "asr"
 // Change these to make your own predictions
-const WORKFLOW_ID = "my-custom-workflow";
-const AUDIO_FILE_LOCATION = "YOUR_AUDIO_FILE_LOCATION_HERE";
+const MODEL_ID = "asr-wav2vec2-base-960h-english"
+const AUDIO_FILE_LOCATION = "YOUR_AUDIO_FILE_LOCATION_HERE"
 
 /////////////////////////////////////////////////////////////////////////////
 // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -28,13 +30,13 @@ metadata.set("authorization", "Key " + PAT);
 const fs = require("fs");
 const audioBytes = fs.readFileSync(AUDIO_FILE_LOCATION);
 
-stub.PostWorkflowResults(
+stub.PostModelOutputs(
   {
     user_app_id: {
       "user_id": USER_ID,
       "app_id": APP_ID,
     },
-    workflow_id: WORKFLOW_ID,
+    model_id: MODEL_ID,
     inputs: [{ data: { audio: { base64: audioBytes } } }],
   },
   metadata,
@@ -49,20 +51,11 @@ stub.PostWorkflowResults(
       );
     }
 
-    // We'll get one WorkflowResult for each input we used above. Because of one input, we have here 
-    // one WorkflowResult
-    const results = response.results[0];
+    // Since we have one input, one output will exist here
+    const output = response.outputs[0];
 
-    // Each model we have in the workflow will produce its output   
-    for (const output of results.outputs) {
-      const model = output.model;
-      console.log("Output for the model: `" + model.id + "`");        
-      for (const concept of output.data.concepts){    
-        console.log("\t" + concept.name + " " + concept.value);        
-      } 
-      if(output.data.text){
-      console.log(output.data.text.raw);        
-      }               
-    }
+    // Print the output
+    console.log(output.data.text.raw)
+
   }
 );

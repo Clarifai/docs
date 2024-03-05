@@ -1,15 +1,14 @@
-####################################################################################
-# In this section, we set the user authentication, app ID, and the model's  
-# details. Change these strings to run your own example.
-###################################################################################
+#############################################################################################
+# In this section, we set the user authentication, app ID, and the model evaluation ID.
+# Change these strings to run your own example.
+############################################################################################
 
-USER_ID = 'YOUR_USER_ID_HERE'
+USER_ID = "YOUR_USER_ID_HERE"
 # Your PAT (Personal Access Token) can be found in the portal under Authentification
-PAT = 'YOUR_PAT_HERE'
-APP_ID = 'YOUR_APP_ID_HERE'
-# Change these to get your own model evaluation results
-MODEL_ID = 'YOUR_MODEL_ID_HERE'
-MODEL_VERSION_ID = 'YOUR_MODEL_VERSION_HERE'
+PAT = "YOUR_PAT_HERE"
+APP_ID = "YOUR_APP_ID_HERE"
+# Change this to get your model evaluation results
+EVALUATION_ID = "YOUR_EVALUATION_ID_HERE"
 
 ##########################################################################
 # YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -22,21 +21,32 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 channel = ClarifaiChannel.get_grpc_channel()
 stub = service_pb2_grpc.V2Stub(channel)
 
-metadata = (('authorization', 'Key ' + PAT),)
+metadata = (("authorization", "Key " + PAT),)
 
 userDataObject = resources_pb2.UserAppIDSet(user_id=USER_ID, app_id=APP_ID)
 
-get_model_version_metrics = stub.GetModelVersionMetrics(
-    service_pb2.GetModelVersionMetricsRequest(
+get_evaluation_response = stub.GetEvaluation(
+    service_pb2.GetEvaluationRequest(
         user_app_id=userDataObject,
-        model_id=MODEL_ID,
-        version_id=MODEL_VERSION_ID      
+        evaluation_id=EVALUATION_ID, # returned after starting an evaluation
+        fields=resources_pb2.FieldsValue(
+            confusion_matrix=True,
+            cooccurrence_matrix=True,
+            label_counts=True,
+            binary_metrics=True,
+            test_set=True,
+            metrics_by_area=True,
+            metrics_by_class=True,
+        ),
     ),
-    metadata=metadata
+    metadata=metadata,
 )
 
-if get_model_version_metrics.status.code != status_code_pb2.SUCCESS:
-    print(get_model_version_metrics.status)
-    raise Exception("Get model metrics failed, status: " + get_model_version_metrics.status.description)
+if get_evaluation_response.status.code != status_code_pb2.SUCCESS:
+    print(get_evaluation_response.status)
+    raise Exception(
+        "Get model metrics failed, status: "
+        + get_evaluation_response.status.description
+    )
 
-print(get_model_version_metrics)
+print(get_evaluation_response)

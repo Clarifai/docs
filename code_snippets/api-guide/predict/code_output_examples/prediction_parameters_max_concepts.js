@@ -1,33 +1,20 @@
-id: "0248198a8fd44077afcd2bc56be413ba"
+id: "51ba22c23b0e4724bfbe7600370e4072"
 status {
   code: SUCCESS
   description: "Ok"
 }
 created_at {
-  seconds: 1643794231
-  nanos: 147923521
+  seconds: 1701799066
+  nanos: 783913374
 }
 model {
   id: "general-image-recognition"
-  name: "general"
+  name: "Image Recognition"
   created_at {
     seconds: 1457543499
     nanos: 608845000
   }
   app_id: "main"
-  output_info {
-    output_config {
-    }
-    message: "Show output_info with: GET /models/{model_id}/output_info"
-    fields_map {
-      fields {
-        key: "concepts"
-        value {
-          string_value: "softmax"
-        }
-      }
-    }
-  }
   model_version {
     id: "aa7f35c01e0642fda5cf400f543e7c40"
     created_at {
@@ -46,37 +33,20 @@ model {
     metadata {
     }
   }
-  display_name: "general-visual-classifier"
   user_id: "clarifai"
-  input_info {
-    fields_map {
-      fields {
-        key: "image"
-        value {
-          string_value: "images"
-        }
-      }
-    }
-  }
-  train_info {
-  }
   model_type_id: "visual-classifier"
   visibility {
     gettable: PUBLIC
   }
-  description: "Image recognition model for identifying different concepts in images and video including objects, themes, moods, and more."
-  metadata {
-  }
-  notes: "**General Information**\n\n- Purpose: Classifier for a variety of concepts, common objects, etc. This model is a great all-purpose solution for most visual recognition needs with industry-leading performance.\n\n- Architecture: Customized InceptionV2\n\n- Intended Use: image indexing by tags, filtering, cascade routing\n\n- Limitations: works well when content is prevalent in the image\n\n\n\n **\nTraining/Test Data**\n\nThe model was trained and tested on an internal dataset with approximately 10,000 concepts and 20M images, with multiple concepts per image. The class distributions on train and validation sets are long-tailed. The validation set was annotated using a combination of originally curated labels with incomplete annotations, where were further completed by adding additional labels proposed a newer version of this model (aa7f35c01e0642fda5cf400f543e7c40) at a low threshold and verified by human annotators. "
   modified_at {
-    seconds: 1634831222
-    nanos: 80260000
+    seconds: 1694180313
+    nanos: 148401000
   }
-  import_info {
+  workflow_recommended {
   }
 }
 input {
-  id: "98eed12013334f3a80bad386d6fa391b"
+  id: "7fd5d408a38a4a15964d9ff7b191ea0a"
   data {
     image {
       url: "https://samples.clarifai.com/metro-north.jpg"
@@ -99,7 +69,8 @@ data {
   concepts {
     id: "ai_SHNDcmJ3"
     name: "subway system"
-    value: 0.9982514977455139
+    value: 0.9982585310935974
     app_id: "main"
   }
 }
+

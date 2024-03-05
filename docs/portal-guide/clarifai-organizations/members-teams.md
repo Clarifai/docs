@@ -52,7 +52,7 @@ You can track the invitations on the **Pending Invitations** section of the page
 
 :::info
 
-Every user is currently limited to one organization only. So, a user can only belong to one organization at a time. If you’ve invited an existing Clarifai user who already belongs to another organization, they will need to exit their current one before joining yours. 
+We offer a multi-org membership functionality. Users can create, join, and engage with multiple organizations. A user’s membership is not limited to only one organization at any given time.
 
 :::
 
