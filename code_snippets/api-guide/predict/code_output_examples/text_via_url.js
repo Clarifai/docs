@@ -1,12 +1,11 @@
-Predicted concepts:
-id: "f021a57a5dd24038ae3453ad1a5baa67"
+id: "479d7bb7e0e4415da8a265ceb10d4c7c"
 status {
   code: SUCCESS
   description: "Ok"
 }
 created_at {
-  seconds: 1676381113
-  nanos: 815547169
+  seconds: 1701798270
+  nanos: 281180166
 }
 model {
   id: "multilingual-uncased-sentiment"
@@ -50,13 +49,11 @@ model {
     nanos: 417454000
   }
   task: "text-classification"
-  presets {
-  }
   workflow_recommended {
   }
 }
 input {
-  id: "709cca36ea0b4545b8d1dd53a2e97e5f"
+  id: "b188010be5b84bafa330092327f4f4c0"
   data {
     text {
       url: "https://samples.clarifai.com/negative_sentence_12.txt"
@@ -67,31 +64,31 @@ data {
   concepts {
     id: "3-stars"
     name: "3-stars"
-    value: 0.25399050116539
+    value: 0.2539905309677124
     app_id: "text-classification"
   }
   concepts {
     id: "2-stars"
     name: "2-stars"
-    value: 0.23382413387298584
+    value: 0.23382391035556793
     app_id: "text-classification"
   }
   concepts {
     id: "1-star"
     name: "1-star"
-    value: 0.20093096792697906
+    value: 0.20093071460723877
     app_id: "text-classification"
   }
   concepts {
     id: "4-stars"
     name: "4-stars"
-    value: 0.17351143062114716
+    value: 0.17351166903972626
     app_id: "text-classification"
   }
   concepts {
     id: "5-stars"
     name: "5-stars"
-    value: 0.1377429962158203
+    value: 0.13774323463439941
     app_id: "text-classification"
   }
 }

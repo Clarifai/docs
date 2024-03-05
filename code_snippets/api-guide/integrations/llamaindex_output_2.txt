@@ -1,0 +1,7 @@
+user: 
+
+model: Climate change is a pressing global issue
+It's caused by human activities like burning fossil fuels
+This releases greenhouse gases into the atmosphere
+Which trap heat and lead to rising temperatures
+With devastating consequences for our planet and its inhabitants

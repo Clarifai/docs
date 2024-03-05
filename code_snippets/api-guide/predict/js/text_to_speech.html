@@ -1,0 +1,73 @@
+<!--index.html file-->
+
+<script>
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // In this section, we set the user authentication, user and app ID, model details, and the text we want
+    // to provide as an input. Change these strings to run your own example.
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  
+    // Your PAT (Personal Access Token) can be found in the portal under Authentification
+    const PAT = 'YOUR_PAT_HERE';    
+    // Specify the correct user_id/app_id pairings
+    // Since you're making inferences outside your app's scope
+    const USER_ID = 'eleven-labs';
+    const APP_ID = 'audio-generation';
+    // Change these to whatever model and text you want to use
+    const MODEL_ID = 'speech-synthesis';
+    const MODEL_VERSION_ID = 'f588d92c044d4487a38c8f3d7a3b0eb2';
+    const RAW_TEXT = 'I love your product very much!';
+    // To use a hosted text file, assign the URL variable
+    // const TEXT_FILE_URL = 'https://samples.clarifai.com/negative_sentence_12.txt'
+    
+    ///////////////////////////////////////////////////////////////////////////////////
+    // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
+    ///////////////////////////////////////////////////////////////////////////////////
+  
+    const raw = JSON.stringify({  
+        "inputs": [
+        {
+            "data": {
+              "text": {
+                   "raw": RAW_TEXT
+                  // "url": TEXT_FILE_URL
+               }
+            }
+        }
+    ],  
+      "model": {
+          "model_version": {
+              "output_info": {
+                  "params": {
+                      "model_id": "eleven_multilingual_v1",
+                      "voice_id": "EXAVITQu4vr4xnSDxMaL",
+                      "similarity_boost": 0,
+                      "stability": 0.5,
+                  }
+              }
+          }
+      }
+    });
+  
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Key ' + PAT
+        },
+        body: raw
+    };
+  
+    fetch(`https://api.clarifai.com/v2/users/${USER_ID}/apps/${APP_ID}/models/${MODEL_ID}/versions/${MODEL_VERSION_ID}/outputs`, requestOptions)
+        .then(response => response.json())
+        .then(result => {
+                const audioBase64 = result.outputs[0].data.audio.base64;
+                // Create an anchor element for downloading the audio
+                const downloadLink = document.createElement('a');
+                downloadLink.href = `data:audio/wav;base64,${audioBase64}`;
+                downloadLink.download = 'audio_file.wav';
+                // Trigger a click event on the link to prompt the download
+                downloadLink.click();
+        })      
+        .catch(error => console.log('error', error));
+  
+  </script>

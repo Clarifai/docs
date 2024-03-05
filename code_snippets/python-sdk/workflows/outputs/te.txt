@@ -1,0 +1,9 @@
+clusters {
+
+  id: "24_21"
+
+  projection: 0.203612357
+
+  projection: -0.0755017698
+
+}

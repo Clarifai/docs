@@ -16,7 +16,7 @@ Text classifier is a type of deep fine-tuned model designed to automatically cat
 
 :::info
 
-The text classifier model type also comes with various templates that give you the control to choose the specific architecture used by your neural network, as well as define a set of hyperparameters you can use to fine-tune the way your model learns.
+The text classifier model type also comes with various [templates](https://docs.clarifai.com/portal-guide/model/deep-training/text-templates) that give you the control to choose the specific architecture used by your neural network, as well as define a set of hyperparameters you can use to fine-tune the way your model learns.
 
 ::: 
 
@@ -29,3 +29,9 @@ You may choose a text classifier model type in cases where:
 ## Example use case
 
 A company wants to monitor customer sentiment towards its products by analyzing online reviews. They receive a large number of product reviews on their website and social media platforms. To efficiently understand customer opinions, they can employ a text classifier model to automatically classify these reviews as positive, negative, or neutral. 
+
+:::tip
+
+You can explore the step-by-step tutorial on fine-tuning the GPT-Neo LoRA template for text classification tasks [here](https://www.clarifai.com/blog/fine-tuning-gpt-neo-for-text-classification).
+
+:::

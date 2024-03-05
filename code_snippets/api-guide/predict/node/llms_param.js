@@ -49,9 +49,9 @@ stub.PostModelOutputs(
             "model_version": {
                 "output_info": {
                     "params": {
-                        "temperature": "0.5",
+                        "temperature": 0.5,
                         "max_tokens": 2048,
-                        "top_k": "0.95"
+                        "top_k": 0.95
                     }
                 }
             }

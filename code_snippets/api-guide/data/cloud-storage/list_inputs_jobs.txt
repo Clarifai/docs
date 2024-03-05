@@ -1,0 +1,223 @@
+----
+inputs_extraction_jobs {
+  status {
+    code: JOB_COMPLETED
+    description: "Job successfully ran."
+  }
+  id: "487d863784804390a92e1108ee1ae1fb"
+  url: "s3://samples.clarifai.com/storage/"
+  progress {
+    image_inputs_count: 3
+    video_inputs_count: 1
+  }
+  created_at {
+    seconds: 1708406450
+    nanos: 685101000
+  }
+  modified_at {
+    seconds: 1708406451
+    nanos: 191007000
+  }
+}
+inputs_extraction_jobs {
+  status {
+    code: JOB_COMPLETED
+    description: "Job successfully ran."
+  }
+  id: "16d65cdff5d64ae8ba94ae59f5d7f43c"
+  url: "s3://samples.clarifai.com/storage/"
+  progress {
+    image_inputs_count: 3
+    video_inputs_count: 1
+  }
+  created_at {
+    seconds: 1708406156
+    nanos: 2926000
+  }
+  modified_at {
+    seconds: 1708406156
+    nanos: 560108000
+  }
+}
+inputs_extraction_jobs {
+  status {
+    code: JOB_COMPLETED
+    description: "Job successfully ran."
+  }
+  id: "423b4dfa36f64fffbe79cf845918d4c0"
+  url: "s3://samples.clarifai.com/storage/"
+  progress {
+    image_inputs_count: 3
+    video_inputs_count: 1
+  }
+  created_at {
+    seconds: 1708405684
+    nanos: 297689000
+  }
+  modified_at {
+    seconds: 1708405684
+    nanos: 778885000
+  }
+}
+inputs_extraction_jobs {
+  status {
+    code: JOB_COMPLETED
+    description: "Job successfully ran."
+  }
+  id: "a5af6a185ab148d4b7eb02e713d3340d"
+  url: "s3://samples.clarifai.com/storage/"
+  progress {
+    image_inputs_count: 3
+    video_inputs_count: 1
+  }
+  created_at {
+    seconds: 1708405639
+    nanos: 186106000
+  }
+  modified_at {
+    seconds: 1708405639
+    nanos: 696943000
+  }
+}
+inputs_extraction_jobs {
+  status {
+    code: JOB_COMPLETED
+    description: "Job successfully ran."
+  }
+  id: "1c10da09706d40448bf11fc5aaa8664b"
+  url: "s3://samples.clarifai.com/storage/"
+  progress {
+    image_inputs_count: 3
+    video_inputs_count: 1
+  }
+  created_at {
+    seconds: 1708405297
+    nanos: 953730000
+  }
+  modified_at {
+    seconds: 1708405298
+    nanos: 506209000
+  }
+}
+inputs_extraction_jobs {
+  status {
+    code: JOB_COMPLETED
+    description: "Job successfully ran."
+  }
+  id: "10ad7ba72e5e49899a042637178c9452"
+  url: "s3://samples.clarifai.com/storage/"
+  progress {
+    image_inputs_count: 3
+    video_inputs_count: 1
+  }
+  created_at {
+    seconds: 1708404787
+    nanos: 575667000
+  }
+  modified_at {
+    seconds: 1708404788
+    nanos: 141744000
+  }
+}
+inputs_extraction_jobs {
+  status {
+    code: JOB_COMPLETED
+    description: "Job successfully ran."
+  }
+  id: "8d7a240f39494ce18c3a5f4aeea687c1"
+  url: "s3://samples.clarifai.com/storage/"
+  progress {
+    image_inputs_count: 3
+    video_inputs_count: 1
+  }
+  created_at {
+    seconds: 1708403207
+    nanos: 89134000
+  }
+  modified_at {
+    seconds: 1708403207
+    nanos: 729276000
+  }
+}
+inputs_extraction_jobs {
+  status {
+    code: JOB_COMPLETED
+    description: "Job successfully ran."
+  }
+  id: "2a6f1f69cced42029986a72009e7d4da"
+  url: "s3://samples.clarifai.com/storage/"
+  progress {
+    image_inputs_count: 3
+    video_inputs_count: 1
+  }
+  created_at {
+    seconds: 1708361354
+    nanos: 835105000
+  }
+  modified_at {
+    seconds: 1708361355
+    nanos: 386004000
+  }
+}
+inputs_extraction_jobs {
+  status {
+    code: JOB_COMPLETED
+    description: "Job successfully ran."
+  }
+  id: "6db64516daf04abd97852407f9076e42"
+  url: "s3://samples.clarifai.com/storage/"
+  progress {
+    image_inputs_count: 3
+    video_inputs_count: 1
+  }
+  created_at {
+    seconds: 1708361312
+    nanos: 309789000
+  }
+  modified_at {
+    seconds: 1708361313
+    nanos: 435552000
+  }
+}
+inputs_extraction_jobs {
+  status {
+    code: JOB_COMPLETED
+    description: "Job successfully ran."
+  }
+  id: "7e4bd42e84294e8f9423e0a01783e3b1"
+  url: "s3://samples.clarifai.com/storage/"
+  progress {
+    image_inputs_count: 3
+    video_inputs_count: 1
+  }
+  created_at {
+    seconds: 1708354769
+    nanos: 17131000
+  }
+  modified_at {
+    seconds: 1708354769
+    nanos: 473323000
+  }
+  input_template {
+    data {
+      concepts {
+        id: "lamborghini23_A"
+        value: 1
+      }
+      concepts {
+        id: "spiderman_a"
+        value: 1
+      }
+      metadata {
+        fields {
+          key: "id"
+          value {
+            string_value: "id001"
+          }
+        }
+      }
+    }
+    dataset_ids: "dataset-1"
+  }
+}
+-----

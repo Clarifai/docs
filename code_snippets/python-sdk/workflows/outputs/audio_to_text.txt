@@ -1,0 +1,35 @@
+concepts {
+
+  id: "LABEL_2"
+
+  name: "LABEL_2"
+
+  value: 0.9802844524383545
+
+  app_id: "text-classification"
+
+}
+
+concepts {
+
+  id: "LABEL_1"
+
+  name: "LABEL_1"
+
+  value: 0.017947228625416756
+
+  app_id: "text-classification"
+
+}
+
+concepts {
+
+  id: "LABEL_0"
+
+  name: "LABEL_0"
+
+  value: 0.0017683181213214993
+
+  app_id: "text-classification"
+
+}

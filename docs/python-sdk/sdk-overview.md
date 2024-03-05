@@ -12,9 +12,14 @@ Our new Python SDK empowers you to simplify data import, interact with our API i
 
 To consume the Clarifai API effortlessly and with just a few lines of code, the new Python SDK is all you need.
 
+:::info
+The current Python SDK version is `v10.1.1`
+:::
+<a href="https://pypi.org/project/clarifai" target="_blank"> <img src="https://img.shields.io/pypi/dm/clarifai" alt="PyPI - Downloads" /> </a> 
+
 ## Install the Package
 
-You can install the latest stable version of the Python SDK package using `pip`.
+You can install the latest stable version of the Python SDK package by using `pip`.
 
 To install, run:
 
@@ -27,10 +32,12 @@ pip install -U clarifai
 If you want to install from source for development purposes, follow these steps:
 
 ```python
-python -m venv ~/virtualenv/clarifai-python-utils
-source ~/virtualenv/clarifai-python-utils/bin/activate
-cd clarifai-python-utils
-python setup.py develop
+git clone https://github.com/Clarifai/clarifai-python.git
+cd clarifai-python
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python setup.py install
 ```
 
 ## Configuration

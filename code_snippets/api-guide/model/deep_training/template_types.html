@@ -1,0 +1,48 @@
+<!--index.html file-->
+
+<script>
+    ////////////////////////////////////////////////////////////////////////////////////////
+    // In this section, we set the user authentication, app ID, and model type ID. 
+    // Change these strings to run your own example.
+    ////////////////////////////////////////////////////////////////////////////////////////  
+
+    const USER_ID = 'YOUR_USER_ID_HERE';
+    // Your PAT (Personal Access Token) can be found in the portal under Authentification
+    const PAT = 'YOUR_PAT_HERE';
+    const APP_ID = 'YOUR_APP_ID_HERE';
+    // Change this to list the template types of your preferred model 
+    const MODEL_TYPE = 'visual-classifier';
+
+    ///////////////////////////////////////////////////////////////////////////////////
+    // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
+    ///////////////////////////////////////////////////////////////////////////////////
+
+    const requestOptions = {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Key ' + PAT
+        }
+    };
+
+    fetch(`https://api.clarifai.com/v2/users/${USER_ID}/apps/${APP_ID}/models/types?per_page=20&page=1`, requestOptions)
+        .then(response => response.json())
+        .then(result => {
+            console.log('Clarifai API Response:', result);
+
+            result.model_types.forEach(modelType => {
+                if (modelType.id === MODEL_TYPE) {
+                    modelType.model_type_fields.forEach(modelTypeField => {
+                        if (modelTypeField.path.split('.').slice(-1)[0] === 'template') {
+                            modelTypeField.model_type_enum_options.forEach(template => {
+                                console.log('Template:', template);
+                            });
+                        }
+                    });
+                }
+            });
+        })
+        .catch(error => console.error('Clarifai API Error:', error));
+
+
+</script>

@@ -1,0 +1,61 @@
+status {
+  code: SUCCESS
+  description: "Ok"
+  req_id: "32694c6a3ef8fe3f6704502c0b053734"
+}
+inputs_add_jobs {
+  id: "66b5ca001e754111a81c4839cdabed10"
+  progress {
+  }
+  created_at {
+    seconds: 1708500170
+    nanos: 508992497
+  }
+  modified_at {
+    seconds: 1708500170
+    nanos: 582792601
+  }
+  extraction_jobs {
+    status {
+      code: JOB_QUEUED
+      description: "Job is queued to be ran."
+    }
+    id: "7e9b139f65fb4426a3d273d609758d34"
+    url: "s3://samples.clarifai.com/storage/"
+    progress {
+    }
+    created_at {
+      seconds: 1708500170
+      nanos: 550291872
+    }
+    modified_at {
+      seconds: 1708500170
+      nanos: 550291872
+    }
+    input_template {
+      data {
+        concepts {
+          id: "lamborghini23_A"
+          value: 1
+        }
+        concepts {
+          id: "spiderman_a"
+          value: 1
+        }
+        metadata {
+          fields {
+            key: "id"
+            value {
+              string_value: "id001"
+            }
+          }
+        }
+      }
+      dataset_ids: "dataset-1"
+    }
+  }
+  status {
+    code: JOB_COMPLETED
+    description: "Job successfully ran."
+  }
+}

@@ -15,9 +15,9 @@ curl -X POST "https://api.clarifai.com/v2/users/meta/apps/Llama-2/models/llama2-
         "model_version": {
             "output_info": {
                 "params": {
-                    "temperature":"0.5",
-                    "max_tokens":2048,
-                    "top_k":"0.95"
+                    "temperature": 0.5,
+                    "max_tokens": 2048,
+                    "top_k": 0.95
                 }
             }
         }

@@ -1,6 +1,6 @@
 ---
 description: Learn about our filter operators
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # Filter

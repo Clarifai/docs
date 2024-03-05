@@ -1,26 +1,24 @@
 ---
-description: Your platform for the entire AI-lifecycle
+description: Your platform for the entire AI lifecycle
 sidebar_position: 1
 ---
 
 # Clarifai Portal Basics
 
-**Your portal for the entire AI-lifecycle**
+**Your full-stack platform for the entire AI lifecycle**
 <hr />
 
-The Clarifai Community portal is the fastest and easiest AI workspace for any skill level. It has everything you need to build reliable AI-powered apps. With the low-code, no-code solution, you can discover, build, and share futuristic AI models, workflows, and app components.
-
-![](/img/community_2/homepage.png)
+The Clarifai's full-stack portal is the fastest and easiest AI workspace for any skill level. It has everything you need to build reliable AI-powered apps. With the low-code, no-code solution, you can discover, build, and share futuristic AI models, workflows, and app components.
 
 It gives you the power to search, sort, and organize your AI projects right out of the box. Its intuitive, feature-rich, drag-and-drop user interface makes the world’s most advanced computer vision AI technology accessible to anyone.
 
-:::note
+:::info
 
-Note that anything that you can do on the platform, you can also do directly with our API. If you want to build powerful UIs, you can do so with our [API](https://docs.clarifai.com/api-guide/api-overview/).
+Anything that you can do on the platform, you can also do directly with our API. If you want to build powerful UIs, you can do so with our [API](https://docs.clarifai.com/api-guide/api-overview/).
 
 :::
 
-Community offers powerful tools for the full AI lifecycle. It provides a seamless, end-to-end AI workspace that you can use to manage your data, annotate your inputs, and build custom AI models.
+Our platform offers powerful tools for the full AI lifecycle. It provides a seamless, end-to-end AI workspace that you can use to manage your data, annotate your inputs, and build custom AI models.
 
 ![](/img/community_2/general_image_recognition_model.png)
 
@@ -32,3 +30,32 @@ The Clarifai Community platform provides the following:
 - Ability to easily filter and sort resources by name, type, license, data, and more as an extensible model, data, workflow, and UI catalog. 
 - Ability to collaborate with AI experts from all over the world. You'll get the right tools to collaborate in the public community and within your organization. This lets you accelerate your AI adoption efforts. 
 
+## Search
+
+![](/img/community_2/search_community_resources.png)
+
+<br />
+
+You can effortlessly find what you need by searching through your own and Community resources — apps, models, workflows, and modules. This is how we treat searches:
+
+- Multiple-word queries function as an "OR" (e.g., "face detection" yields results with both "face" and "detection"). 
+- Dashes (-) are treated as spaces since spaces aren't allowed in resource IDs. 
+- Dashes are added to search queries between texts and numbers. For instance, if the search query is "llama70b" or "gpt4," we also consider "llama-70-b" or "gpt-4" in the search results.
+- Partial-word searches, such as "fac," return results containing relevant terms like "face-detection."
+
+All resources are searchable by:
+
+- **Resource ID**—you can provide a unique identifier of a particular resource. 
+- **User ID**—you can provide a unique identifier assigned to an individual user. 
+- **Short description**—you can provide a brief summary that provides key information about what you're looking for. 
+- **Markdown notes**—you can perform text-based searches within the markdown notes of any resource. If you input any text in the search field, the results will include any relevant information where the search phrase is found within the markdown notes. This feature enhances search functionality and allows for more precise and context-aware discovery of resources based on the content within their markdown notes.
+
+## Starring
+
+You can mark any resource — be it your own or publicly accessible in the Community — as a favorite. Simply click the star icon to designate any resource, including apps, models, datasets, workflows, and modules, as your favorite.
+
+You can access your favorite resources by navigating to the top-right menu bar and selecting the "Starred" option. If you choose the "All" option, you'll get a list encompassing both starred and unstarred resources. 
+
+You can also organize your starred resources by sorting them in either descending order (highest number of stars first) or ascending order (lowest number of stars first) according to your preference.
+
+![](/img/community_2/starring_resources.png)

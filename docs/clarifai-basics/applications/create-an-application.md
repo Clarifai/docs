@@ -8,6 +8,8 @@ sidebar_position: 1
 **How to create a Clarifai application**
 <hr />
 
+On Clarifai, [apps](https://docs.clarifai.com/clarifai-basics/applications/) act as a central repository for models, datasets, inputs and other resources and information. 
+
 ## Create an Application on the Portal
 
 To create an application, [log in](https://clarifai.com/login) to your account and click the **Create an App** button at the upper-right section of the navigation bar.

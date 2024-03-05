@@ -26,15 +26,16 @@ Then, use the form that pops up to invite a collaborator—provide an email addr
 
 :::note
 
-The collaborator you want to invite must have a registered account on the Clarifai portal.
+- The collaborator you want to invite must have a registered account on the Clarifai portal.
+- You can edit a collaborator's scopes at a later time.
 
 :::
 
 ![](/img/collaborator_scopes.jpg)
 
-:::important note
+:::info
 
-* Since API keys are tied to a specific user and a specific app, your collaborators cannot create their own API keys. 
+* [Personal Access Tokens (PATs)](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens) are automatically generated for collaborators, providing them access to the Clarifai API.
 
 * Collaborators can also invite other collaborators.
 

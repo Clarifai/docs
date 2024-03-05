@@ -8,23 +8,55 @@ sidebar_position: 1
 **Learn to interpret model evaluations**
 <hr />
 
+Model evaluation takes some time—depending on the amount of data the model has. After the process is complete, you could get the results and use them to assess the performance of your model. 
 
 ## Get Evaluation Results
 
-Below is an example of how you would get the evaluation results of a specific version of a custom model. 
+Below are examples of how you would use different methods to get the evaluation results. 
 
-You can use the results to assess the performance of your model. 
+:::info
 
-Note that the initialization code used here is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
+The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
+
+:::
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
+
 import PythonInterpretEvaluations from "!!raw-loader!../../../code_snippets/api-guide/evaluate/interpret_evaluations.py";
-import JSthonInterpretEvaluations from "!!raw-loader!../../../code_snippets/api-guide/evaluate/interpret_evaluations.html";
+import JSInterpretEvaluations from "!!raw-loader!../../../code_snippets/api-guide/evaluate/interpret_evaluations.html";
 import NodeInterpretEvaluations from "!!raw-loader!../../../code_snippets/api-guide/evaluate/interpret_evaluations.js";
 import JavaInterpretEvaluations from "!!raw-loader!../../../code_snippets/api-guide/evaluate/interpret_evaluations.java";
+import PHPInterpretEvaluations from "!!raw-loader!../../../code_snippets/api-guide/evaluate/interpret_evaluations.php";
 import CurlInterpretEvaluations from "!!raw-loader!../../../code_snippets/api-guide/evaluate/interpret_evaluations.sh";
+
+import PythonListEvaluations from "!!raw-loader!../../../code_snippets/api-guide/evaluate/list_evaluations.py";
+import JSListEvaluations from "!!raw-loader!../../../code_snippets/api-guide/evaluate/list_evaluations.html";
+import NodeListEvaluations from "!!raw-loader!../../../code_snippets/api-guide/evaluate/list_evaluations.js";
+import JavaListEvaluations from "!!raw-loader!../../../code_snippets/api-guide/evaluate/list_evaluations.java";
+import PHPListEvaluations from "!!raw-loader!../../../code_snippets/api-guide/evaluate/list_evaluations.php";
+import CurlListEvaluations from "!!raw-loader!../../../code_snippets/api-guide/evaluate/list_evaluations.sh";
+
+import PythonGetModelVersionEvaluation from "!!raw-loader!../../../code_snippets/api-guide/evaluate/get_model_version_evaluation.py";
+import JSGetModelVersionEvaluation from "!!raw-loader!../../../code_snippets/api-guide/evaluate/get_model_version_evaluation.html";
+import NodeGetModelVersionEvaluation from "!!raw-loader!../../../code_snippets/api-guide/evaluate/get_model_version_evaluation.js";
+import JavaGetModelVersionEvaluation from "!!raw-loader!../../../code_snippets/api-guide/evaluate/get_model_version_evaluation.java";
+import PHPGetModelVersionEvaluation from "!!raw-loader!../../../code_snippets/api-guide/evaluate/get_model_version_evaluation.php";
+import CurlGetModelVersionEvaluation from "!!raw-loader!../../../code_snippets/api-guide/evaluate/get_model_version_evaluation.sh";
+
+import PythonListModelVersionEvaluations from "!!raw-loader!../../../code_snippets/api-guide/evaluate/list_model_version_evaluations.py";
+import JSListModelVersionEvaluations from "!!raw-loader!../../../code_snippets/api-guide/evaluate/list_model_version_evaluations.html";
+import NodeListModelVersionEvaluations from "!!raw-loader!../../../code_snippets/api-guide/evaluate/list_model_version_evaluations.js";
+import JavaListModelVersionEvaluations from "!!raw-loader!../../../code_snippets/api-guide/evaluate/list_model_version_evaluations.java";
+import PHPListModelVersionEvaluations from "!!raw-loader!../../../code_snippets/api-guide/evaluate/list_model_version_evaluations.php";
+import CurlListModelVersionEvaluations from "!!raw-loader!../../../code_snippets/api-guide/evaluate/list_model_version_evaluations.sh";
+
+import OutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/model/code_output_examples/interpret_evaluations_1.js";
+
+### GetEvaluation
+
+Get the evaluation results by using the `evaluation_id` returned after starting an evaluation.
 
 <Tabs>
 
@@ -33,7 +65,7 @@ import CurlInterpretEvaluations from "!!raw-loader!../../../code_snippets/api-gu
 </TabItem>
 
 <TabItem value="js_rest" label="JavaScript (REST)">
- <CodeBlock className="language-javascript">{JSthonInterpretEvaluations}</CodeBlock>
+ <CodeBlock className="language-javascript">{JSInterpretEvaluations}</CodeBlock>
 </TabItem>
 
 <TabItem value="nodejs" label="NodeJS">
@@ -44,6 +76,10 @@ import CurlInterpretEvaluations from "!!raw-loader!../../../code_snippets/api-gu
  <CodeBlock className="language-java">{JavaInterpretEvaluations}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPInterpretEvaluations}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlInterpretEvaluations}</CodeBlock>
 </TabItem>
@@ -51,57 +87,109 @@ import CurlInterpretEvaluations from "!!raw-loader!../../../code_snippets/api-gu
 </Tabs>
 
 <details>
-  <summary>Code Output Example</summary>
-
-```text
-status {
-  code: SUCCESS
-  description: "Ok"
-  req_id: "c0168837e14b654f4487ab1846660ad9"
-}
-model_version {
-  id: "4fa241e368534224a07be38955a16a98"
-  created_at {
-    seconds: 1659633219
-    nanos: 356537000
-  }
-  status {
-    code: MODEL_TRAINED
-    description: "Model is trained and ready"
-  }
-  active_concept_count: 1
-  metrics {
-    status {
-      code: MODEL_EVALUATED
-      description: "Model was successfully evaluated."
-    }
-    summary {
-      macro_avg_roc_auc: 0.75
-      macro_std_roc_auc: 0.25
-      macro_avg_f1_score: 1.0
-      macro_avg_precision: 1.0
-      macro_avg_recall: 0.5
-    }
-  }
-  total_input_count: 24
-  completed_at {
-    seconds: 1659633222
-    nanos: 16763000
-  }
-  visibility {
-    gettable: PRIVATE
-  }
-  app_id: "deep-learning"
-  user_id: "ei2leoz3s3iy"
-  metadata {
-  }
-}
-```
-
+  <summary>Output Example</summary>
+    <CodeBlock className="language-javascript">{OutputExample1}</CodeBlock>
 </details>
+
+
+### ListEvaluations
+
+List the evaluation results of all models in your app. 
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonListEvaluations}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+ <CodeBlock className="language-javascript">{JSListEvaluations}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+ <CodeBlock className="language-javascript">{NodeListEvaluations}</CodeBlock>
+</TabItem>
+
+<TabItem value="java" label="Java">
+ <CodeBlock className="language-java">{JavaListEvaluations}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPListEvaluations}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlListEvaluations}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+### GetModelVersionEvaluation
+
+Get the evaluation results of a specific version of a custom model by using the `evaluation_id` returned after starting an evaluation.
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonGetModelVersionEvaluation}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+ <CodeBlock className="language-javascript">{JSGetModelVersionEvaluation}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+ <CodeBlock className="language-javascript">{NodeGetModelVersionEvaluation}</CodeBlock>
+</TabItem>
+
+<TabItem value="java" label="Java">
+ <CodeBlock className="language-java">{JavaGetModelVersionEvaluation}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPGetModelVersionEvaluation}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlGetModelVersionEvaluation}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+### ListModelVersionEvaluations
+
+List the evaluation results of a model version in your app.
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonListModelVersionEvaluations}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+ <CodeBlock className="language-javascript">{JSListModelVersionEvaluations}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+ <CodeBlock className="language-javascript">{NodeListModelVersionEvaluations}</CodeBlock>
+</TabItem>
+
+<TabItem value="java" label="Java">
+ <CodeBlock className="language-java">{JavaListModelVersionEvaluations}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPListModelVersionEvaluations}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlListModelVersionEvaluations}</CodeBlock>
+</TabItem>
+
+</Tabs>
 
 :::tip
 
-You can also learn how to interpret a model's evaluation results on the Portal [here](https://docs.clarifai.com/portal-guide/evaluate/interpreting-evaluations). 
+You can also learn how to interpret a model's evaluation results via the Portal [here](https://docs.clarifai.com/portal-guide/evaluate/interpreting-evaluations). 
 
 :::

@@ -1,0 +1,11 @@
+2024-01-15 16:28:09 INFO     clarifai.client.user:                                                      user.py:230
+
+                             App Deleted                                                                           
+
+                             code: SUCCESS                                                                         
+
+                             description: "Ok"                                                                     
+
+                             details: "application \'test_app_2\' deleted"                                         
+
+                             req_id: "35bec06c2b871f335064ec2f197344b1"  

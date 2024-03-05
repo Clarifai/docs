@@ -47,6 +47,11 @@ import CurlCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model
 import CurlTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/curl/train_model.sh";
 import CurlPredictModel from "!!raw-loader!../../../code_snippets/api-guide/model/curl/predict_with_model.sh";
 
+import PHPAddImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide/model/php/add_images_with_concepts.php";
+import PHPCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/php/create_model.php";
+import PHPTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/php/train_model.php";
+import PHPPredictModel from "!!raw-loader!../../../code_snippets/api-guide/model/php/predict_with_model.php";
+
 import ExampleAddImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide/model/code_output_examples/add_images_with_concepts.js";
 import ExampleCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/code_output_examples/create_model.js";
 import ExampleTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/code_output_examples/train_model.js";
@@ -81,121 +86,13 @@ To get started training your own model, you need to first add images that alread
     <CodeBlock className="language-java">{JavaAddImagesConcepts}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPAddImagesConcepts}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlAddImagesConcepts}</CodeBlock>
 </TabItem>
-
-<!--<TabItem value="javascript" label="Javascript">
-
-```javascript
-
-app.inputs.create({
-  url: "https://samples.clarifai.com/puppy.jpeg",
-  concepts: [
-    {
-      id: "charlie",
-      value: true
-    }
-  ]
-});
-```
-</TabItem>-->
-
-<!--<TabItem value="python" label="Python">
-
-```python
-from clarifai.rest import ClarifaiApp
-from clarifai.rest import Image as ClImage
-
-app = ClarifaiApp(api_key='YOUR_API_KEY')
-
-# add multiple images with concepts
-img1 = ClImage(url="https://samples.clarifai.com/puppy.jpeg", concepts=['charlie'], not_concepts=['our_wedding'])
-img2 = ClImage(url="https://samples.clarifai.com/wedding.jpg", concepts=['our_wedding'], not_concepts=['cat','charlie'])
-
-app.inputs.bulk_create_images([img1, img2])
-```
-</TabItem>-->
-
-<!--<TabItem value="java" label="Java">
-
-```java
-client.addInputs()
-    .plus(
-        ClarifaiInput.forImage("https://samples.clarifai.com/puppy.jpeg")
-            .withConcepts(Concept.forID("charlie"))
-    )
-    .executeSync();
-```
-</TabItem>-->
-
-<!--
-<TabItem value="csharp" label="C#">
-
-```csharp
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Clarifai.API;
-using Clarifai.DTOs.Inputs;
-using Clarifai.DTOs.Predictions;
-
-namespace YourNamespace
-{
-    public class YourClassName
-    {
-        public static async Task Main()
-        {
-            var client = new ClarifaiClient("YOUR_API_KEY");
-
-            await client.AddInputs(
-                    new ClarifaiURLImage(
-                        "https://samples.clarifai.com/puppy.jpeg",
-                        positiveConcepts: new List<Concept> {new Concept(id: "charlie")}))
-                .ExecuteAsync();
-        }
-    }
-}
-```
-</TabItem>
--->
-
-<!--<TabItem value="objective-c" label="Objective-C">
-
-```objectivec
-ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpeg" andConcepts:@"cute puppy"];
-[_app addInputs:@[image] completion:^(NSArray<ClarifaiInput *> *inputs, NSError *error) {
-    NSLog(@"inputs: %@", inputs);
-}];
-```
-</TabItem>-->
-
-<!--
-<TabItem value="php" label="PHP">
-
-```php
-use Clarifai\API\ClarifaiClient;
-use Clarifai\DTOs\Inputs\ClarifaiURLImage;
-use Clarifai\DTOs\Predictions\Concept;
-
-$client = new ClarifaiClient('YOUR_API_KEY');
-
-$response = $client->addInputs(
-        (new ClarifaiURLImage('https://samples.clarifai.com/puppy.jpeg'))
-        ->withAllowDuplicateUrl(true)
-        ->withPositiveConcepts([new Concept('charlie')]))
-    ->executeSync();
-
-if ($response-> isSuccessful()) {
-    echo "Response is successful.\n";
-} else {
-    echo "Response is not successful. Reason: \n";
-    echo $response->status()->description() . "\n";
-    echo $response->status()->errorDetails() . "\n";
-    echo "Status code: " . $response->status()->statusCode();
-}
-```
-</TabItem>
--->
 
 </Tabs>
 
@@ -207,9 +104,15 @@ if ($response-> isSuccessful()) {
 
 ## Create a Model
 
-After adding images with concepts, you are now ready to create a custom transfer learning model (also called an "embedding-classifier"). You need to provide a name for the model. 
+After adding images with concepts, you are now ready to create a custom transfer learning model (also called an "embedding-classifier"). You need to provide an ID for the model. 
 
-Take note of the `model id` that is returned in the response. We'll need that for the next two steps.
+:::tip
+
+If you want to [create another type of model](https://docs.clarifai.com/api-guide/model/create-get-update-and-delete#create-a-model) you could use the `model_type_id` parameter to specify it. Otherwise, the "embedding-classifier" model type will be created by default. 
+
+:::
+
+Take note of the `model id`, as we'll need that for the next steps.
 
 <Tabs>
 
@@ -225,118 +128,17 @@ Take note of the `model id` that is returned in the response. We'll need that fo
     <CodeBlock className="language-javascript">{NodeCreateModel}</CodeBlock>
 </TabItem>
 
-<!--
 <TabItem value="grpc_java" label="gRPC Java">
     <CodeBlock className="language-java">{JavaCreateModel}</CodeBlock>
 </TabItem>
--->
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPCreateModel}</CodeBlock>
+</TabItem>
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlCreateModel}</CodeBlock>
 </TabItem>
-
-<!--<TabItem value="javascript" label="Javascript">
-
-```javascript
-app.models.create(
-  "pets",
-  [
-    { "id": "charlie" }
-  ]
-).then(
-  function(response) {
-    // do something with response
-  },
-  function(err) {
-    // there was an error
-  }
-);
-```
-</TabItem>-->
-
-<!--<TabItem value="python" label="Python">
-
-```python
-from clarifai.rest import ClarifaiApp
-app = ClarifaiApp(api_key='YOUR_API_KEY')
-
-model = app.models.create('pets', concepts=['charlie'])
-```
-</TabItem>-->
-
-<!--<TabItem value="java" label="Java">
-
-```java
-client.createModel("pets")
-    .withOutputInfo(ConceptOutputInfo.forConcepts(
-        Concept.forID("charlie")
-    ))
-    .executeSync();
-```
-</TabItem>-->
-
-<!--
-<TabItem value="csharp" label="C#">
-
-```csharp
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Clarifai.API;
-using Clarifai.DTOs.Predictions;
-
-namespace YourNamespace
-{
-    public class YourClassName
-    {
-        public static async Task Main()
-        {
-            var client = new ClarifaiClient("YOUR_API_KEY");
-
-            await client.CreateModel(
-                    "pets",
-                    concepts: new List<Concept> {new Concept("charlie")})
-                .ExecuteAsync();
-        }
-    }
-}
-```
-</TabItem>
--->
-
-<!--<TabItem value="objective-c" label="Objective-C">
-
-```objectivec
-[app createModel:@[concept] name:modelName conceptsMutuallyExclusive:NO closedEnvironment:NO
-      completion:^(ClarifaiModel *model, NSError *error) {
-        NSLog(@"model: %@", model);
-}];
-```
-</TabItem>-->
-
-<!--
-<TabItem value="php" label="PHP">
-
-```php
-use Clarifai\API\ClarifaiClient;
-use Clarifai\DTOs\Predictions\Concept;
-
-$client = new ClarifaiClient('YOUR_API_KEY');
-
-$response = $client->createModel('pets')
-    ->withConcepts([new Concept('charlie')])
-    ->executeSync();
-
-if ($response-> isSuccessful()) {
-    echo "Response is successful.\n";
-} else {
-    echo "Response is not successful. Reason: \n";
-    echo $response->status()->description() . "\n";
-    echo $response->status()->errorDetails() . "\n";
-    echo "Status code: " . $response->status()->statusCode();
-}
-```
-</TabItem>
--->
 
 </Tabs>
 
@@ -367,120 +169,17 @@ Take note of the `model_version id` in the response. We'll need that for the nex
     <CodeBlock className="language-javascript">{NodeTrainModel}</CodeBlock>
 </TabItem>
 
-<!--
 <TabItem value="grpc_java" label="gRPC Java">
     <CodeBlock className="language-java">{JavaTrainModel}</CodeBlock>
 </TabItem>
--->
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPTrainModel}</CodeBlock>
+</TabItem>
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlTrainModel}</CodeBlock>
 </TabItem>
-
-<!--<TabItem value="javascript" label="Javascript">
-
-```javascript
-app.models.train("{model_id}").then(
-  function(response) {
-    // do something with response
-  },
-  function(err) {
-    // there was an error
-  }
-);
-
-// or if you have an instance of a model
-
-model.train().then(
-  function(response) {
-    // do something with response
-  },
-  function(err) {
-    // there was an error
-  }
-);
-```
-</TabItem>-->
-
-<!--<TabItem value="python" label="Python">
-
-```python
-from clarifai.rest import ClarifaiApp
-
-app = ClarifaiApp(api_key='YOUR_API_KEY')
-
-model = app.models.get('{model_id}')
-model.train()
-```
-</TabItem>-->
-
-<!--<TabItem value="java" label="Java">
-
-```java
-client.trainModel("{model_id}").executeSync();
-```
-</TabItem>-->
-
-<!--
-<TabItem value="csharp" label="C#">
-
-```csharp
-using System.Threading.Tasks;
-using Clarifai.API;
-using Clarifai.DTOs.Predictions;
-
-namespace YourNamespace
-{
-    public class YourClassName
-    {
-        public static async Task Main()
-        {
-            var client = new ClarifaiClient("YOUR_API_KEY");
-
-            await client.TrainModel<Concept>("{model_id}")
-                .ExecuteAsync();
-        }
-    }
-}
-```
-</TabItem>
--->
-
-<!--<TabItem value="objective-c" label="Objective-C">
-
-```objectivec
-ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpeg"]
-[app getModel:@"{id}" completion:^(ClarifaiModel *model, NSError *error) {
-    [model train:^(ClarifaiModel *model, NSError *error) {
-        NSLog(@"model: %@", model);
-    }];
-}];
-```
-</TabItem>-->
-
-<!--
-<TabItem value="php" label="PHP">
-
-```php
-use Clarifai\API\ClarifaiClient;
-use Clarifai\DTOs\Models\ModelType;
-
-$client = new ClarifaiClient('YOUR_API_KEY');
-
-$response = $client->trainModel(ModelType::concept(), 'MODEL_ID')
-    ->executeSync();
-
-if ($response-> isSuccessful()) {
-    echo "Response is successful.\n";
-} else {
-    echo "Response is not successful. Reason: \n";
-    echo $response->status()->description() . "\n";
-    echo $response->status()->errorDetails() . "\n";
-    echo "Status code: " . $response->status()->statusCode();
-}
-```
-</TabItem>
--->
 
 </Tabs>
 
@@ -517,94 +216,13 @@ You can repeat the above steps as often as you like. By adding more images with 
     <CodeBlock className="language-java">{JavaPredictModel}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPPredictModel}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlPredictModel}</CodeBlock>
 </TabItem>
-
-<!--<TabItem value="javascript" label="Javascript">
-
-```javascript
-let app = new Clarifai.App({apiKey: 'YOUR_API_KEY'});
-
-app.models.predict({id:'MODEL_ID', version:'MODEL_VERSION_ID'}, "https://samples.clarifai.com/metro-north.jpg").then(
-  function(response) {
-    // do something with response
-  },
-  function(err) {
-    // there was an error
-  }
-);
-```
-</TabItem>-->
-
-<!--<TabItem value="python" label="Python">
-
-```python
-from clarifai.rest import ClarifaiApp
-app = ClarifaiApp(api_key='YOUR_API_KEY')
-
-model = app.models.get('MODEL_ID')
-model.model_version = 'MODEL_VERSION_ID'  # This is optional. Defaults to the latest model version.
-
-response = model.predict_by_url('https://samples.clarifai.com/metro-north.jpg')
-```
-</TabItem>-->
-
-<!--<TabItem value="java" label="Java">
-
-```java
-ModelVersion modelVersion = client.getModelVersionByID("MODEL_ID", "MODEL_VERSION_ID")
-        .executeSync()
-        .get();
-
-    client.predict("MODEL_ID")
-        .withVersion(modelVersion)
-        .withInputs(ClarifaiInput.forImage("https://samples.clarifai.com/metro-north.jpg"))
-        .executeSync();
-```
-</TabItem>-->
-
-<!--
-<TabItem value="csharp" label="C#">
-
-```csharp
-using System.Threading.Tasks;
-using Clarifai.API;
-using Clarifai.DTOs.Inputs;
-using Clarifai.DTOs.Predictions;
-
-namespace YourNamespace
-{
-    public class YourClassName
-    {
-        public static async Task Main()
-        {
-            var client = new ClarifaiClient("YOUR_API_KEY");
-
-                 var response = await Client.Predict<Concept>(
-                    "YOUR_MODEL_ID",
-                    new ClarifaiURLImage("https://samples.clarifai.com/metro-north.jpg"),
-                    modelVersionID: "MODEL_VERSION_ID")
-                  .ExecuteAsync();
-        }
-    }
-}
-```
-</TabItem>
--->
-
-<!--<TabItem value="objective-c" label="Objective-C">
-
-```objectivec
-ClarifaiImage *image = [[ClarifaiImage alloc] initWithURL:@"https://samples.clarifai.com/puppy.jpeg"]
-[app getModel:@"{id}" completion:^(ClarifaiModel *model, NSError *error) {
-    [model predictOnImages:@[image]
-                completion:^(NSArray<ClarifaiSearchResult *> *outputs, NSError *error) {
-                    NSLog(@"outputs: %@", outputs);
-                }];
-}];
-```
-</TabItem>-->
 
 </Tabs>
 

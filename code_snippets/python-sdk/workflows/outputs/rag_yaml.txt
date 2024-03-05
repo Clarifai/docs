@@ -1,0 +1,17 @@
+workflow:
+  id: wf-prompter-llm
+  nodes:
+    - id: rag-prompter
+      model:
+          model_id: rag-prompter
+          model_type_id: rag-prompter
+          description: 'RAG Prompter Model'
+
+    - id: llm
+      model:
+          user_id: mistralai
+          model_id: mistral-7B-Instruct
+          app_id: completion
+
+      node_inputs:
+        - node_id: rag-prompter

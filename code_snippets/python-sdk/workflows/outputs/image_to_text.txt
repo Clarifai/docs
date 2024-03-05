@@ -1,0 +1,19 @@
+2024-01-11 09:09:54 INFO     clarifai:  wf-ocr Workflow is still deploying, please wait...           workflow.py:89
+
+INFO:clarifai:wf-ocr Workflow is still deploying, please wait...
+
+2024-01-11 09:10:57 INFO     clarifai:  wf-ocr Workflow is still deploying, please wait...           workflow.py:89
+
+INFO:clarifai:wf-ocr Workflow is still deploying, please wait...
+
+text {
+
+  raw: "H WerP\nRADOAS TESTXIT\nTRRTESTINCEERINCMODEB\nEPAGSTED\nONETIMEIISE\nDITED1YEARWPRRNTY"
+
+  text_info {
+
+    encoding: "UnknownTextEnc"
+
+  }
+
+}

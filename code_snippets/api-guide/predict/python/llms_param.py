@@ -32,9 +32,9 @@ userDataObject = resources_pb2.UserAppIDSet(user_id=USER_ID, app_id=APP_ID)
 
 params = Struct()
 params.update({
-    "temperature": "0.5",
+    "temperature": 0.5,
     "max_tokens": 2048,
-    "top_k": "0.95"
+    "top_k": 0.95
 })
 
 post_model_outputs_response = stub.PostModelOutputs(

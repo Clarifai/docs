@@ -24,7 +24,7 @@ For debugging purposes, each response returned by a method call can be printed t
 
 ## Create a New Application
 
-The first step is manual. In the Clarifai Portal, [create a new application](https://docs.clarifai.com/clarifai-basics/applications/create-an-application) with **Text/Document** selected as the primary input type. The Base Workflow will be automatically selected for you. 
+The first step is manual. In the Clarifai Portal, [create a new application](https://docs.clarifai.com/clarifai-basics/applications/create-an-application) with **Text/Document** selected as the primary input type. The [Base Workflow](https://docs.clarifai.com/portal-guide/workflows/base-workflows/) will be automatically selected for you. 
 
 <!--
 ![](https://s3.amazonaws.com/clarifai-api/img3/prod/large/e12ce254f2824b0ab2aef1b10784ff23/3e695b780f597cd263b06d0aeb30b3d1?v=001)
@@ -45,6 +45,9 @@ import PythonWaitModelTraining from "!!raw-loader!../../../code_snippets/api-gui
 import PythonPredictNewInputs from "!!raw-loader!../../../code_snippets/api-guide/model/py/predict_new_inputs.py";
 import PythonStartModelEvaluation from "!!raw-loader!../../../code_snippets/api-guide/model/py/start_model_evaluation.py";
 import PythonWaitModelEvaluationResults from "!!raw-loader!../../../code_snippets/api-guide/model/py/wait_model_evaluation_results.py";
+
+import OutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/model/code_output_examples/custom-text-model-walkthrough_1.js";
+import OutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/model/code_output_examples/custom-text-model-walkthrough_2.js";
 
 <!--
 <Tabs>
@@ -157,9 +160,13 @@ The following concepts were predicted for the input `https://samples.clarifai.co
 
 ## Start Model Evaluation
 
-Let's now test the performance of the model by using model evaluation. 
+Let's now test the performance of the model by using model evaluation. Take note of the `evaluation_id` returned in the response, as you will need it for the next step. 
 
-See the [the Model Evaluation page](https://docs.clarifai.com/api-guide/evaluate/) to learn more.
+:::tip
+
+See the [Evaluating Models](https://docs.clarifai.com/api-guide/evaluate/) section to learn more.
+
+:::
 
 <Tabs>
 
@@ -170,56 +177,13 @@ See the [the Model Evaluation page](https://docs.clarifai.com/api-guide/evaluate
 </Tabs>
 
 <details>
-  <summary>JSON Output Example</summary>
-
-```javascript
-status {
-  code: SUCCESS
-  description: "Ok"
-  req_id: "967dfe6d8d59d4eaa3b7c7b71bfb190b"
-}
-model_version {
-  id: "49219b5968624221ac488303dde55327"
-  created_at {
-    seconds: 1646391865
-    nanos: 51793000
-  }
-  status {
-    code: MODEL_TRAINED
-    description: "Model is trained and ready"
-  }
-  active_concept_count: 2
-  metrics {
-    status {
-      code: MODEL_EVALUATED
-      description: "Model was successfully evaluated."
-    }
-    summary {
-      macro_avg_roc_auc: 1.0
-      macro_avg_f1_score: 1.0
-      macro_avg_precision: 1.0
-      macro_avg_recall: 1.0
-    }
-  }
-  total_input_count: 158
-  completed_at {
-    seconds: 1646391870
-    nanos: 501850000
-  }
-  visibility {
-    gettable: PRIVATE
-  }
-  app_id: "my-text-model"
-  user_id: "ei2leoz3s3iy"
-  metadata {
-  }
-}
-```
+  <summary>Output Example</summary>
+    <CodeBlock className="language-javascript">{OutputExample1}</CodeBlock>
 </details>
 
 ## Wait for Model Evaluation Results
 
-Model evaluation takes some time; depending on the amount of data the model has. 
+Model evaluation takes some time—depending on the amount of data the model has. 
 
 Let's wait for it to complete, and print all the results that it gives us.
 
@@ -230,3 +194,8 @@ Let's wait for it to complete, and print all the results that it gives us.
 </TabItem>
 
 </Tabs>
+
+<details>
+  <summary>Output Example</summary>
+    <CodeBlock className="language-javascript">{OutputExample2}</CodeBlock>
+</details>

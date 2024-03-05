@@ -6,7 +6,7 @@ sidebar_position: 6
 # Dataset Export
 This Python script allows you to export labeled data from Clarifai's Scribe labeler. The exported data can be saved as a ZIP archive or in a filesystem directory. The script provides two main classes, `DatasetExportReader` and `InputDownloader`, that handle the data export and download processes, respectively.
 
-You can find the script in our GitHub [clarifai-python-utils repository](https://github.com/Clarifai/clarifai-python-utils) under `clarifai/dataset_export`
+You can find the script in our GitHub [clarifai-python-utils repository](https://github.com/Clarifai/clarifai-python/tree/master/clarifai/datasets/export) under `clarifai/dataset_export`
 
 ## Installation
 Before running this script, make sure you have the following dependencies installed:

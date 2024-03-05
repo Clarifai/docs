@@ -2,7 +2,7 @@
 description: Changelog for Clarifai Release 9.9
 # For versioning, we use negative position so that the oldest versions are displayed at the bottom. Any time you add a new version, increase the position by -1.
 sidebar_position: -48
-pagination_next: null
+pagination_next: product-updates/changelog/release910
 pagination_prev: product-updates/changelog/release98
 ---
 
@@ -76,7 +76,6 @@ pagination_prev: product-updates/changelog/release98
 |![bug](/img/bug.jpg)| Enabled rank search to be compatible with other filters | <ul><li> Previously, there was an issue that prevented other filters from being applied when conducting a rank search. You can now apply rank search in conjunction with other filters, enhancing the effectiveness of your search experience. </li></ul> |
 |![bug](/img/bug.jpg)|Fixed query timeout issue with metadata searches| <ul><li> Previously, including the "country_code":"US" metadata in your search query led to timeouts. However, when executing the same query without the "country_code":"US" metadata, it completed successfully in approximately 4 seconds. You can now perform your query, even with the "country_code":"US" metadata included, and achieve successful results without experiencing timeouts.</li></ul> |
 |![bug](/img/bug.jpg)| Eliminated duplicate requests in the Input-Manager's screen  | <ul><li>Previously, an issue caused duplicate or even triple requests. It occurred when loading the page with or without a `searchId` in the URL, which resulted in unnecessary and excessive requests. Extra requests are no longer generated.</li></ul> |
-|![bug](/img/bug.jpg)| Improved the behavior of the input upload job monitor in the Input-Manager | If you upload inputs on the Input-Manager, a small sidebar window appears at the bottom-right corner of the screen, providing you with real-time status updates on the upload process. There is also a checkbox in the pop-up window, allowing you to tailor your monitoring preferences to better suit your needs. <br /><br /><ul><li>If the checkbox is checked, the upload monitor will initiate polling. It will also immediately update the input list as new inputs become available.</li><li>If the checkbox is unchecked, polling will continue. However, the input list will only be updated once ALL jobs have been completed. Previously, there was an issue where unchecking the checkbox would halt polling, preventing updates.</li></ul> |
 |![bug](/img/bug.jpg)| Fixed an issue with automatic refresh of the input gallery in Input-Manager after performing bulk edit actions  | Previously, there was an issue that hindered the automatic refresh of the input gallery after performing bulk deleting or labeling actions. These improvements ensure that filters accurately reflect the changes made. <br /><br /><ul><li>Previously, bulk deleting of inputs didn't show live updates in the input gallery. We fixed this issue.</li><li>Previously, bulk labeling of the last remaining unlabeled inputs didn't yield the expected results. We fixed this issue, ensuring that these inputs are correctly labeled after your bulk labeling action.</li></ul> |
 
 ## Input-Viewer
@@ -93,7 +92,7 @@ pagination_prev: product-updates/changelog/release98
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
-|![new-feature](/img/new_feature.jpg)| You can now seamlessly review and accept pending invitations directly within the Portal, eliminating the need to rely solely on email for this purpose| <ul><li> These invitations could be for various actions, such as app collaboration, organization enrolment, or task participation. This is valuable for both our SaaS offering and our on-premise deployments, as it caters to scenarios where email support may be limited or unavailable. </li></ul> |
+|![new-feature](/img/new_feature.jpg)| You can now seamlessly review and accept pending organization invitations directly within the Portal, eliminating the need to rely solely on email for this purpose| <ul><li> These invitations could be for various actions, such as app collaboration, organization enrolment, or task participation. This is valuable for both our SaaS offering and our on-premise deployments, as it caters to scenarios where email support may be limited or unavailable. </li></ul> |
 
 
 ## Organization Settings and Management
@@ -120,19 +119,12 @@ pagination_prev: product-updates/changelog/release98
 |![improvement](/img/improvement.jpg)| Introduced modal pop-ups for login and signup, and for various scenarios where redirects were previously employed  | <ul><li>We have retained dedicated login and signup pages while introducing modal windows for these actions. You can now access login and signup functions directly from your active page, providing quick and easy access to these essential features.</li><li>For operations like "Use Model," "Use Workflow," "Install Modules," and more, we have replaced the redirection process with modal pop-ups. This eliminates the extra step and ensures a smoother user journey.</li></ul> |
 | ![bug](/img/bug.jpg)| Fixed an issue with the reCAPTCHA system  | <ul><li> We improved the reCAPTCHA system to offer users a notably smoother and more user-friendly experience.</li></ul> |
 
-## Labeling Tasks
-
-|Status                                |Change                  |Details                    |
-|--------------------------------------|------------------------|---------------------------|
-|![bug](/img/bug.jpg)|Fixed an issue where it was not possible to submit labeled inputs for some labeling tasks | <ul><li> Previously, you could not submit labeled inputs for certain labeled tasks. When working on some labeling tasks, if you loaded the input, selected the relevant concepts, and attempted to submit your labeled input, you could encounter an error. We fixed the issue. </li></ul> |
-
 ## Workflows
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
 |![bug](/img/bug.jpg)| Fixed an issue with processing videos using the Universal workflow | <ul><li>You can now confidently process videos with the Universal workflow without encountering any hindrances or issues.  </li></ul> |
 |![bug](/img/bug.jpg)| Fixed an issue with editing a workflow | <ul><li>Previously, while editing any workflow, the model version displayed "No results found," which was inconsistent with the initial workflow creation experience. The model version behavior now matches what is displayed when initially creating a workflow. </li></ul> |
-|![bug](/img/bug.jpg)| Fixed an issue where it was not possible to copy a workflow without first changing its ID | <ul><li>Previously, you could successfully copy a workflow only after changing the copied workflow ID. You can now copy an existing workflow, even if you keep the same workflow name during the copying process, such as from "(workflow name)-copy" to "(workflow name)-copy." </li></ul> |
 |![bug](/img/bug.jpg)| Removed the default/base workflow from "Use Model" modal  | To use a model in a workflow, go to the model’s viewer page, click the “Use Model” button at the upper-right corner of the page, select the “Use in a Workflow” tab, and select a destination app and its base workflow. You’ll be redirected to the workflow editor page. <br /><br /><ul><li>Previously, if you tried to update the workflow in the editor page, you could encounter an error. The issue arises because the app's default/base workflow cannot be edited, but this limitation is communicated to the user late only after they've made changes to the workflow.  We fixed the issue by graying out or excluding the base workflow option when users attempt to use a model in an existing base workflow.</li></ul> |
 
 
