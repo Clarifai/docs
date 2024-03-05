@@ -40,5 +40,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "resolutions": {
+    "@docusaurus/**/got": "11.8.5",
+    "@docusaurus/**/trim": "0.0.3",
+    "@docusaurus/**/wait-on": "7.2.0"
   }
 }
