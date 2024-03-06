@@ -1,0 +1,23 @@
+url: "https://data.clarifai.com/orig/users/8tzpjy1a841y/apps/multimodal/inputs/text/bed3a836aea9e11c141fdc45ab741778"
+
+hosted {
+
+  prefix: "https://data.clarifai.com"
+
+  suffix: "users/8tzpjy1a841y/apps/multimodal/inputs/text/bed3a836aea9e11c141fdc45ab741778"
+
+  sizes: "orig"
+
+  crossorigin: "use-credentials"
+
+}
+
+text_info {
+
+  char_count: 14
+
+  encoding: "UTF8"
+
+}
+
+https://images.pexels.com/photos/139257/pexels-photo-139257.jpeg
