@@ -12,9 +12,10 @@ All our API endpoints return a status code and a description that gives details 
 
 If a status comes back that you do not see below, please reach out to support@clarifai.com.
 
+## Generic
+
 | CODE | ERROR | DESCRIPTION |
 | :--- | :--- |:---  |
-| | **Generic** | |
 | 10000 | SUCCESS | Ok |
 | 10001 | SUCCESS_WARNING_API_DEPRECATED |  |
 | 10002 | SUCCESS_WARNING_CLIENT_DEPRECATED |  |
@@ -23,7 +24,11 @@ If a status comes back that you do not see below, please reach out to support@cl
 | 10030 | TRY_AGAIN | Try the request again |
 | 10040 | NOT_IMPLEMENTED | |
 | 10050 | MOVED | Resource moved |
-|  | **Clarifai Connection Codes: 11xxx** |   |
+
+## Clarifai Connection Codes: 11xxx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 11000 | CONN_ACCOUNT_ISSUES | Account or plan issue, such as expired credentials, account still in trial, or feature not supported in your tier |
 | 11001 | CONN_TOKEN_INVALID | Invalid authentication token used |
 | 11002 | CONN_CREDENTIALS_INVALID | Invalid authentication credentials |
@@ -40,7 +45,11 @@ If a status comes back that you do not see below, please reach out to support@cl
 | 11103 | CONN_METHOD_NOT_ALLOWED | Request method not allowed | 
 | 11104 | CONN_NO_GDPR_CONSENT | No GDPR consent | 
 | 11200 | CONN_AUTH_METHOD_DISABLED | Authentication method is disabled | 
-|  | **Model/Custom Training Related Codes: 21xxx** |  | 
+
+## Model/Custom Training Related Codes: 21xxx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 21100 | MODEL_TRAINED | Custom model has been already trained | 
 | 21101 | MODEL_TRAINING | Custom model is currently training | 
 | 21102 | MODEL_UNTRAINED | Custom model has not yet been trained | 
@@ -65,7 +74,11 @@ If a status comes back that you do not see below, please reach out to support@cl
 | 21201 | MODEL_PERMISSION_DENIED | Model permission denied | 
 | 21202 | MODEL_INVALID_ARGUMENT | Invalid model argument | 
 | 21203 | MODEL_INVALID_REQUEST | Invalid model request | 
-|  |  **Model Evaluation Codes: 213xx**  |      |
+
+## Model Evaluation Codes: 213xx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 21300 | MODEL_EVALUATED | Model was successfully evaluated | 
 | 21301 |MODEL_EVALUATING | Model is evaluating | 
 | 21302 |MODEL_NOT_EVALUATED | Model is not yet evaluated | 
@@ -79,15 +92,27 @@ If a status comes back that you do not see below, please reach out to support@cl
 | 21316 | MODEL_EVALUATION_NEED_INPUTS | Model evaluation failed because there are not enough labeled inputs. Please ensure there are at least 5 labeled inputs per concept before evaluating | 
 | 21317 | MODEL_EVALUATION_FAILED | Generic error code for evaluation failure |
 | - | -| Status codes through 21319 (inclusive) reserved for model evaluation *errors* (per logic in clients)|
-|  | **Model Deployment Codes: 2135x**  | |
+
+## Model Deployment Codes: 2135x
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 21350 | MODEL_DEPLOYMENT_FAILED | Used when inference coordinator failed to deploy spire and throws an error |
 | 21351 | MODEL_DEPLOYING | Used when calling the inference coordinator to deploy a spire |
 | 21352 | MODEL_QUEUED_FOR_DEPLOYMENT | Used when training is completed |
 | 21353 | MODEL_NOT_DEPLOYED | Used when model spire deployment is manually taken down or due to inactivity |
-|  | **Model Reference Codes: 214xx**  | |
+
+## Model Reference Codes: 214xx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 21400 | MODEL_REFERENCE_INVALID_ARGUMENT | Used when a model reference field is not set properly |
 | 21420 | MODEL_EXAMPLE_INPUT_INVALID_ARGUMENT | Used when a model example input field is not set properly |
-|  | **Workflow Related Codes: 22xxx** | |
+
+## Workflow Related Codes: 22xxx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 22001 | WORKFLOW_NO_MATCHING_INPUT | Workflow does not have specified input model | 
 | 22002 | WORKFLOW_REQUIRE_TRAINED_MODEL | New model in workflow needs to be trained | 
 | 22100 | WORKFLOW_DUPLICATE | Duplicate URL in your application. Check the documentation to allow duplications | 
@@ -104,11 +129,19 @@ If a status comes back that you do not see below, please reach out to support@cl
 | 22152 | WORKFLOW_MODIFY_FAILED | Workflow modification failed | 
 | 22153 | WORKFLOW_REINDEX_FAILED  | Workflow reindexing failed |
 | 22999 | WORKFLOW_INVALID_REQUEST | Invalid request; error in the request somewhere | 
-| | **Concept Related Codes: 23xxx** | |
+
+## Concept Related Codes: 23xxx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 23150 | CONCEPT_MODIFY_SUCCESS | Concept modification success |
 | 23151 | CONCEPT_MODIFY_PENDING | Concept modification pending |
 | 23152 | CONCEPT_MODIFY_FAILED | Concept modification failed |
-| | **Annotation Related Codes: 24xxx** | |
+
+## Annotation Related Codes: 24xxx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 24150 | ANNOTATION_SUCCESS | Annotation success | 
 | 24151 | ANNOTATION_PENDING | Annotation pending | 
 | 24152 | ANNOTATION_FAILED | Annotation failed; check URL | 
@@ -122,17 +155,29 @@ If a status comes back that you do not see below, please reach out to support@cl
 | 24250 | ANNOTATION_MODIFY_SUCCESS | Annotation modification success | 
 | 24251 | ANNOTATION_MODIFY_PENDING | Annotation modification pending | 
 | 24252 | ANNOTATION_MODIFY_FAILED | Annotation modification failed | 
-| | **Metadata Related Codes: 249xx** | |
+
+## Metadata Related Codes: 249xx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 24900 | METADATA_INVALID_PATCH_ARGUMENTS | |
 | 24901 | METADATA_PARSING_ISSUE | |
 | 24902 | METADATA_MANIPULATION_ISSUE | |
-| | **Training Service Related Codes: 25xxx** | |
+
+## Training Service Related Codes: 25xxx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 25000 | TRAINER_JOB_STATE_NONE | Custom Trainer unknown internal error | 
 | 25001 | TRAINER_JOB_STATE_QUEUED |  |
 | 25002 | TRAINER_JOB_STATE_RUNNING  |  |
 | 25003 | TRAINER_JOB_STATE_COMPLETE  |  |
 | 25004 | TRAINER_JOB_STATE_ERROR | Custom Trainer failed to retrieve data or train | 
-|  | **Data Dump Related Codes: 251xx** |  |
+
+## Data Dump Related Codes: 251xx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 25150 | DATA_DUMP_SUCCESS |  |
 | 25151 | DATA_DUMP_PENDING |  |
 | 25152 | DATA_DUMP_FAILED  |  |
@@ -144,18 +189,30 @@ If a status comes back that you do not see below, please reach out to support@cl
 | 25172 | DATA_DUMP_EXPORT_FAILED |  |
 | 25173 | DATA_DUMP_EXPORT_IN_PROGRESS |  |
 | 25174 | DATA_DUMP_EXPORT_UNEXPECTED_ERROR |  |
-|  | **Duplicate Related Codes: 252xx**  |  |
+
+## Duplicate Related Codes: 252xx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 25200 | APP_DUPLICATION_SUCCESS |  |
 | 25201 | APP_DUPLICATION_FAILED |  |
 | 25202 | APP_DUPLICATION_PENDING |  |
 | 25203 | APP_DUPLICATION_IN_PROGRESS |  |
 | 25204 | APP_DUPLICATION_INVALID_REQUEST  |  |
-|  | **Module Related Codes: 253xx**  |  |
+
+## Module Related Codes: 253xx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 25300 | MODULE_DOES_NOT_EXIST |  |
 | 25301 | MODULE_PERMISSION_DENIED |  |
 | 25302 | MODULE_INVALID_ARGUMENT  |  |
 | 25303 | MODULE_INVALID_REQUEST  |  |
-| | **Bulk Operation Related Codes: 254xx** | |
+
+## Bulk Operation Related Codes: 254xx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 25400 | BULK_OPERATION_SUCCESS | |
 | 25401 | BULK_OPERATION_FAILED | |
 | 25402 | BULK_OPERATION_PENDING | |
@@ -164,7 +221,11 @@ If a status comes back that you do not see below, please reach out to support@cl
 | 25405 | BULK_OPERATION_CANCELLED | |
 | 25406 | BULK_OPERATION_UNEXPECTED_ERROR | |
 | 25407 | BULK_OPERATION_DELETED | |
-| | **Input: Image Related Codes: 30xxx** | |
+
+## Input: Image Related Codes: 30xxx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 30000 | INPUT_DOWNLOAD_SUCCESS | Download complete | 
 | 30001 | INPUT_DOWNLOAD_PENDING | Download pending; when things are async, this is the default status | 
 | 30002 | INPUT_DOWNLOAD_FAILED | Any type of error downloading and processing; download failed or we could not process it. Check URL or bytes you send in the request | 
@@ -191,7 +252,11 @@ If a status comes back that you do not see below, please reach out to support@cl
 | 30501 | INPUT_REINDEX_PENDING | |
 | 30502 | INPUT_REINDEX_FAILED | |
 | 30503 | INPUT_REINDEX_IN_PROGRESS | |
-| | **Input: Video Related Codes: 31xxx** | |
+
+## Input: Video Related Codes: 31xxx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 31000 | INPUT_VIDEO_DOWNLOAD_SUCCESS | Download complete | 
 | 31001 | INPUT_VIDEO_DOWNLOAD_PENDING | Download pending | 
 | 31002 | INPUT_VIDEO_DOWNLOAD_FAILED | Download failed or we could not process it. Check URL or bytes you sent in the request. | 
@@ -207,17 +272,29 @@ If a status comes back that you do not see below, please reach out to support@cl
 | 31203 | INPUT_VIDEO_MODIFY_FAILED | Input video modification failed |
 | 31210 | INPUT_VIDEO_STORAGE_HOST_FAILED | | 
 | 31300 | ALL_INPUT_VIDEOS_INVALID_BYTES | Input video decoding failed. Check URLs and bytes sent | 
-| | **Input Request Codes: 39xxx** | |
+
+## Input Request Codes: 39xxx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 39996 | INPUT_CONNECTION_FAILED | Connection attempts to the input URL failed | 
 | 39997 | REQUEST_DISABLED_FOR_MAINTENANCE | Sorry, this type of request has been disabled for maintenance. Please try again in a few hours. | 
 | 39998 | INPUT_WRITES_DISABLED_FOR_MAINTENANCE | Input writes are disabled for maintenance. Please try again in a few hours. | 
 | 39999 | INPUT_INVALID_REQUEST | Invalid input request | 
-| | **API Formatting Codes: 4000x** | |
+
+## API Formatting Codes: 4000x
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 40001 | PREDICT_INVALID_REQUEST | Invalid request | 
 | 40002 | SEARCH_INVALID_REQUEST | Invalid search request | 
 | 40003 | CONCEPTS_INVALID_REQUEST | Invalid request | 
 | 40004 | STATS_INVALID_REQUEST | |
-| | **Other Related: 400xx** | |
+
+## Other Related: 400xx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 40010 | DATABASE_DUPLICATE_KEY | Object has a duplicate ID; another object with same ID already exist | 
 | 40011 | DATABASE_STATEMENT_TIMEOUT | |
 | 40012 | DATABASE_INVALID_ROWS_AFFECTED | |
@@ -236,7 +313,11 @@ If a status comes back that you do not see below, please reach out to support@cl
 | 40035 | RPC_CANCELED | |
 | 40036 | RPC_UNKNOWN_METHOD | |
 | 40037 | REQUEST_CANCELED_BY_USER | |
-| | **Queue Related Error Codes: 41xxx** | |
+
+## Queue Related Error Codes: 41xxx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 41000 | QUEUE_CONN_ERROR | Servers are busy. Please try again later | 
 | 41002 | QUEUE_CLOSE_REQUEST_TIMEOUT | |
 | 41003 | QUEUE_CONN_CLOSED | |
@@ -248,11 +329,19 @@ If a status comes back that you do not see below, please reach out to support@cl
 | 41009 | QUEUE_UNMARSHALLING_FAILED | |
 | 41010 | QUEUE_MAX_MSG_REDELIVERY_EXCEEDED | |
 | 41011 | QUEUE_ACK_FAILURE | |
-| | **SQS Related Error Codes: 411xx** | |
+
+## SQS Related Error Codes: 411xx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 41100 | SQS_OVERLIMIT | |
 | 41101 | SQS_INVALID_RECEIPT_HANDLE | |
 | 41102 | SQS_UNKNOWN | |
-| | **Visualization Error Codes: 42xxx** | |
+
+## Visualization Error Codes: 42xxx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 42000 | | Visualization succeeded | 
 | 42001 | | Visualization is pending | 
 | 42002 | | Visualization failed | 
@@ -260,16 +349,22 @@ If a status comes back that you do not see below, please reach out to support@cl
 | 42004 | | Missing application visualization | 
 | 42005 | | Too many URLs to visualize | 
 | 42006 | | There is not inputs in app | 
-| | **Search Related Error Codes: 430xx** | |
+
+## Search Related Error Codes: 430xx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 43001 | SEARCH_INTERNAL_FAILURE | Search internal issue | 
 | 43002 | SEARCH_PROJECTION_FAILURE | Search projection failure | 
 | 43003 | SEARCH_PREDICTION_FAILURE | Search prediction failure | 
 | 43004 | SEARCH_BY_NOT_FULLY_INDEXED_INPUT | Can only search by a fully indexed input | 
 | 43005 | SAVED_SEARCH_MODIFY_FAILED | |
-| | | |
 | 43040 | CLUSTER_INTERNAL_FAILURE | |
-| | | |
-| | **Workflow Evaluation Error Codes: 431xx** | |
+
+## Workflow Evaluation Error Codes: 431xx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 43100 | EVALUATION_QUEUED | |
 | 43101 | EVALUATION_IN_PROGRESS | |
 | 43102 | EVALUATION_SUCCESS | |
@@ -280,59 +375,112 @@ If a status comes back that you do not see below, please reach out to support@cl
 | 43107 | EVALUATION_TIMED_OUT | |
 | 43108 | EVALUATION_UNEXPECTED_ERROR | |
 | 43109 | EVALUATION_MIXED | |
-| | **Stripe Error Code: 44xxx** | |
+
+## Stripe Error Code: 44xxx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 44001 | STRIPE_EVENT_ERROR | |
-| | **Redis/Cache Error Codes: 45xxx** | |
+
+## Redis/Cache Error Codes: 45xxx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 45001 | CACHE_MISS | |
 | 45002 | REDIS_SCRIPT_EXITED_WITH_FAILURE | |
 | 45003 | REDIS_STREAM_ERR | |
 | 45004 | REDIS_NO_CONSUMERS | |
 | 45005 | REDIS_STREAM_BACKOFF | |
-| | **Sift Science Error Codes: 46xxx** | |
+
+## Sift Science Error Codes: 46xxx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 46001 | SIGNUP_EVENT_ERROR | |
 | 46002 | SIGNUP_FLAGGED | Signup not permitted |
 | 46003 | FILETYPE_UNSUPPORTED | Filetype not supported |
-| | **Application Counts Related Error Codes: 470xx** | |
+
+## Application Counts Related Error Codes: 470xx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 47001 | APP_COUNT_INVALID_MESSAGE | |
 | 47002 | APP_COUNT_UPDATE_INCREMENT_FAILED | |
 | 47003 | APP_COUNT_REBUILD_FAILED | |
 | 47004 | APP_COUNT_INTERNAL_FAILURE | |
-| | **Media Processor Related Error Codes: 471xx** | |
+
+## Media Processor Related Error Codes: 471xx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 47101 | MP_DOWNLOAD_ERROR | |
 | 47102 | MP_RESOLVE_DNS_ERROR | |
 | 47103 | MP_DOWNLOAD_MAX_SIZE_EXCEEDED_ERROR | |
 | 47104 | MP_IMAGE_DECODE_ERROR | |
 | 47105 | MP_INVALID_ARGUMENT | | 
 | 47106 | MP_IMAGE_PROCESSING_ERROR | | 
-| | **DataTier Related Error Code: 472xx** | |
+
+## DataTier Related Error Code: 472xx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 47201 | DATATIER_CONN_ERROR | |
-| | **User Legal Consent Status Related Code: 50xxx** | |
+
+## User Legal Consent Status Related Code: 50xxx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 50001 | USER_CONSENT_FACE | |
-| | **Workers Codes: 51xxx** | |
+
+## Workers Codes: 51xxx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 51000 | WORKER_MISSING | |
 | 51001 | WORKER_ACTIVE | |
 | 51002 | WORKER_INACTIVE | |
-| | **Collectors Codes: 52xxx** | |
+
+## Collectors Codes: 52xxx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 52000 | COLLECTOR_MISSING | |
 | 52001 | COLLECTOR_ACTIVE | |
 | 52002 | COLLECTOR_INACTIVE | |
 | 52003 | COLLECTOR_POST_INPUT_FAILED | |
-| | **SSO Code: 53xxx** | |
+
+## SSO Code: 53xxx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 53001 | SSO_IDENTITY_PROVIDER_DOES_NOT_EXIST | |
-| | **Tasks Codes: 54xxx** | |
-| 54001 | TASK_IN_PROGRESS | The task was created |
-| 54002 | TASK_DONE | The task is completed |
-| 54003 | TASK_WONT_DO | The task is marked as abandoned |
-| 54005 | TASK_ADD_ANNOTATIONS_FAILURE | An error occurred during add-task-annotations pipeline |
+
+## Tasks Codes: 54xxx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
+| 54001 | TASK_IN_PROGRESS | Auto-annotation or manual annotation task was created and is in progress |
+| 54002 | TASK_DONE | Manual annotation task is completed (note that auto-annotation tasks are never completed) |
+| 54003 | TASK_WONT_DO | Manual annotation task is marked as abandoned |
+| 54005 | TASK_FAILED | Auto-annotation or manual annotation has failed to run |
+|54006 | TASK_IDLE | Auto-annotation task job has finished processing its last batch and is waiting for more dataset assets |
 | 54100 | TASK_CONFLICT | The task operation is in conflict with the current state of the server |
 | 54101 | TASK_NOT_IMPLEMENTED | Certain task-related scenarios are not implemented |
 | 54102 | TASK_MISSING | Task was not found |
-| | **Label Order Related Status Code: 55xxx** | |
+
+## Label Order Related Status Code: 55xxx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 55001 | LABEL_ORDER_PENDING | |
 | 55002 | LABEL_ORDER_IN_PROGRESS | |
 | 55003 | LABEL_ORDER_SUCCESS | |
 | 55004 | LABEL_ORDER_CANCELED | |
-| | **License Related Status Codes: 600xx** | |
+
+## License Related Status Codes: 600xx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 60000 | LICENSE_ACTIVE | License is active | 
 | 60001 | LICENSE_DOES_NOT_EXIST | License does not exist | 
 | 60002 | LICENSE_NEED_UPDATE | License needs update | 
@@ -340,18 +488,35 @@ If a status comes back that you do not see below, please reach out to support@cl
 | 60004 | LICENSE_REVOKED | License has been revoked | 
 | 60005 | LICENSE_DELETED | Hidden state not reflected to users |
 | 60006 | LICENSE_VOLUME_EXCEEDED | Exceeded volume limit on license | 
-| | **Password Related Status Codes: 610xx** | |
+
+## Password Related Status Codes: 610xx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 61000 | PASSWORD_VALIDATION_SUCCESS | |
 | 61001 | PASSWORD_VALIDATION_FAILED | |
 | 61002 | PASSWORDPOLICY_INVALID_ARGUMENT | |
-| | **Feature Flags Status Codes: 620xx** | |
+
+
+## Feature Flags Status Codes: 620xx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 62000 | FEATUREFLAG_CONFIG_NOT_FOUND | |
 | 62001 | FEATUREFLAG_INVALID_ARGUMENT | |
 | 62002 | FEATUREFLAG_BLOCKED | |
-| | **Maintenance Status Codes: 630xx** | |
+
+## Maintenance Status Codes: 630xx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 63000 | MAINTENANCE_SUCCESS | |
 | 63001 | MAINTENANCE_FAILED | |
-| | **Datasets Status Codes: 64xxx** | |
+
+## Datasets Status Codes: 64xxx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 64005 | DATASET_VERSION_PENDING | The dataset version is pending to be processed |
 | 64010 | DATASET_VERSION_IN_PROGRESS | The dataset version is currently being processed |
 | 64015 | DATASET_VERSION_READY | The dataset version is ready to be used |
@@ -360,33 +525,50 @@ If a status comes back that you do not see below, please reach out to support@cl
 | 64030 | DATASET_VERSION_CONFLICT | An alteration to dataset version would create a conflict |
 | 64100 | DATASET_INPUT_SUCCESS | The dataset input was successfully added |
 | 64101 | DATASET_INPUT_DUPLICATE | The dataset input is a duplicate |
-| | **Generic Job Status Codes: 640xx** | |
+
+## Generic Job Status Codes: 640xx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 64000 | JOB_QUEUED | |
 | 64001 | JOB_RUNNING | |
 | 64002 | JOB_COMPLETED | |
 | 64003 | JOB_FAILED | |
 | 64004 | JOB_CANCELLED | |
 | 64006 | JOB_UNEXPECTED_ERROR | |
-| | **Auth Issues Codes** | |
+
+## Auth Issues Codes
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 65000 | AUTH_MISSING_IDP_ASSOC | |
-| | | |
 | 66000 | LIST_OBJECTS_FAILED | |
-| | | |
 | 67000 | ARCHIVE_EXTRACT_FAILED | |
-| | | |
-| | **Multipart Uploading Status Codes: 680xx** | |
+
+## Multipart Uploading Status Codes: 680xx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 68000 | UPLOAD_IN_PROGRESS | |
 | 68001 | UPLOAD_DONE | |
 | 68002 | UPLOAD_FAILED  | |
 | 68003 | UPLOAD_UNEXPECTED_ERROR | |
 | 68004 | UPLOAD_EXPIRED | |
-| | **Billing Related Issues: 69xxx** | |
+
+## Billing Related Issues: 69xxx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 69000 | BILLING_INVALID_INFO | |
 | | | |
 | 90400 | BAD_REQUEST | |
 | 90500 | SERVER_ERROR | |
 | | | |
-| | **Internal Issues Codes: 98xxx** | |
+
+## Internal Issues Codes: 98xxx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 98004 | INTERNAL_SERVER_ISSUE | |
 | 98005 | INTERNAL_FETCHING_ISSUE | |
 | 98006 | INTERNAL_DATABASE_ISSUE | |
@@ -399,7 +581,11 @@ If a status comes back that you do not see below, please reach out to support@cl
 | 98015 | INTERNAL_REDIS_UNCATEGORIZED | |
 | 98016 | INTERNAL_AWS_UNCATEGORIZED | |
 | 98017 | INTERNAL_AZURE_UNCATEGORIZED | |
-| | **Uncategorized Codes: 99xxx** | |
+
+## Uncategorized Codes: 99xxx
+
+| CODE | ERROR | DESCRIPTION |
+| :--- | :--- |:---  |
 | 99001 | CONN_UNCATEGORIZED | |
 | 99002 | MODEL_UNCATEGORIZED | |
 | 99003 | INPUT_UNCATEGORIZED | |

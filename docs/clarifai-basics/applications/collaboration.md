@@ -22,7 +22,29 @@ Click the **Add Collaborators** button to add a collaborator to your app.
 
 ![](/img/add_collaborators.jpg)
 
-Then, use the form that pops up to invite a collaborator—provide an email address associated with their Clarifai account, choose the scope of the resources that you would like the collaborator to access, and click the **Confirm** button. 
+Then, use the form that pops up to invite a collaborator — provide an email address associated with their Clarifai account and choose the scope of the resources that you would like the collaborator to access.
+
+### Choose scopes
+
+![](/img/collaborator_scopes.jpg)
+
+You have the option to use the **Select All Scopes** button to choose all scopes at once. Alternatively, you can select individual scopes from the listed **BASIC SCOPES**, or click on the **ADVANCED SCOPES** option to access more advanced choices.
+
+Here are the basic scopes you can choose. 
+
+```text
+Annotation: Add and Remove Annotations on Inputs
+Collaborator: Add, Remove and Patch Collaborators
+Collector: Add, Remove and Patch Input Collectors
+Concept: Add, Remove and Patch Concept
+Input: Add and Remove Inputs to an App
+Model: Add, Remove and Train Custom Models
+Predict: Predict on Public and Custom Models
+Search: Search over Inputs an App
+Task: Add, Remove and Patch Scribe labeling Tasks
+Vocab: Add, Remove and Delete lists of Concepts
+Workflow: Add, Remove and Delete Workflows of Models
+```
 
 :::note
 
@@ -31,7 +53,7 @@ Then, use the form that pops up to invite a collaborator—provide an email addr
 
 :::
 
-![](/img/collaborator_scopes.jpg)
+Lastly, click the **Confirm** button. 
 
 :::info
 
