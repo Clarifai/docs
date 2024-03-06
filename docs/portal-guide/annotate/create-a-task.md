@@ -128,3 +128,10 @@ If you click on the ellipsis icon positioned at the end of the row associated wi
 - The **Edit** button lets you edit the labeling task. 
 - The **Delete** button lets you delete the labeling task. 
 
+
+:::info
+
+-	[Members of an organization](https://docs.clarifai.com/portal-guide/clarifai-organizations/members-teams) can create new labeling tasks and utilize the Labeling Tasks tool. They can add collaborators who already exist within the app as well as other organization members. These can be assigned roles as either task workers or task reviewers. Furthermore, there are convenient options available for quickly adding all collaborators or all organization members.
+-	Similarly, [app collaborators](https://docs.clarifai.com/clarifai-basics/applications/collaboration) can also create labeling tasks and assign them to other collaborators who already exist within the app.
+
+:::
