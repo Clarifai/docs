@@ -23,6 +23,9 @@ import CodeOutputAND from "!!raw-loader!../../../code_snippets/python-sdk/Search
 
 # Advance Search Operations
 
+**Learn how to perform advance search operations using Clarifai Python SDK**
+<hr />
+
 In this section we are showcasing Clarifai’s  powerful capabilities for refining search results based on complex criteria. The use of AND and OR operations allows users to perform more nuanced searches, combining multiple conditions to precisely filter content. With AND, users can narrow down results to items that meet all specified criteria simultaneously, while OR expands the search scope to include items that meet any of the provided conditions. Additionally, leveraging custom concepts enables users to define their own labels or categories, further enhancing search flexibility.
 
 

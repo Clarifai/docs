@@ -29,6 +29,9 @@ import CodeOutputListConcept from "!!raw-loader!../../code_snippets/python-sdk/c
 
 # Creating your AI Apps
 
+**Learn how to interact with apps using Clarifai Python SDK**
+<hr />
+
 Unlock the power of artificial intelligence by seamlessly integrating Clarifai's Python SDK into your application development process. With the Clarifai Python SDK, creating intelligent and visually aware applications has never been more accessible. Empower your apps with cutting-edge AI capabilities, from image and video recognition to natural language processing. Our Python SDK provides a user-friendly interface, allowing developers to harness the full potential of Clarifai's state-of-the-art models effortlessly.
 
 

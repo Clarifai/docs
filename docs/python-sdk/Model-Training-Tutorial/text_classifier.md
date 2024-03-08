@@ -23,6 +23,9 @@ import CodeOutputMP from "!!raw-loader!../../../code_snippets/python-sdk/model_t
 
 # Text Classifier
 
+**Learn how to train a text classification model using Clarifai Python SDK**
+<hr />
+
 A text classifier is a machine learning model designed to automatically categorize or classify text documents into predefined categories or labels. These categories could be anything from sentiment analysis (positive, negative, neutral) to topic classification (sports, politics, technology). You can learn more about Text Classifier [here](https://docs.clarifai.com/portal-guide/model/model-types/text-classifier).
 
 

@@ -26,6 +26,9 @@ import CodeOutputMP from "!!raw-loader!../../../code_snippets/python-sdk/model_t
 
 # Visual Classifier
 
+**Learn how to train a visual classifier using Clarifai Python SDK**
+<hr />
+
 The Visual Classifier is a powerful component of the Clarifai platform designed for efficient and accurate image recognition. Leveraging advanced machine learning algorithms, the Visual Classifier allows users to train custom models tailored to specific visual recognition tasks. You can learn more about Visual Classifier [here](https://docs.clarifai.com/portal-guide/model/model-types/visual-classifier).
 
 

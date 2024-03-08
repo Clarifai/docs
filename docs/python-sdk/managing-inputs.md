@@ -32,6 +32,9 @@ import CodeOutputDeleteInput from "!!raw-loader!../../code_snippets/python-sdk/m
 
 # Managing Inputs
 
+**Learn how to interact with inputs using Clarifai Python SDK**
+<hr />
+
 Effortlessly handle and organize your input data with Clarifai's Python SDK. The Input Management feature empowers you to efficiently manage various types of data, including images, videos, and text, facilitating seamless integration into your machine learning workflows. Take control of your inputs, whether sourced from URLs, file paths, or raw bytes, and streamline the preparation process for predictive model inferences. Clarifai's Input Management simplifies the task of organizing and preparing data for an enhanced and streamlined machine learning experience.
 
 

@@ -30,6 +30,8 @@ import CodeOutputVisualEmbed from "!!raw-loader!../../../code_snippets/python-sd
 
 # Image as Input
 
+**Learn how to perform inference with image as input using Clarifai Python SDK**
+<hr />
 
 Clarifai's Python SDK empowers you to seamlessly integrate advanced image recognition functionalities into your applications, using the potential of artificial intelligence. The Clarifai Python SDK utilises different model types that takes the image as inputs for various tasks.. Whether you're building applications for content moderation, object detection, or image classification, our SDK offers a robust foundation to turn images into actionable information. 
 
