@@ -21,6 +21,9 @@ import CodeOutputMP from "!!raw-loader!../../../code_snippets/python-sdk/model_t
 
 # Clusterer
 
+**Learn how to train a clustering model using Clarifai Python SDK**
+<hr />
+
 Clusterer models are algorithms used in machine learning and data analysis to group similar data points together into clusters or clusters. These models aim to find patterns and structures within datasets by organizing the data into groups based on similarities in their features. You can learn more about Clusterer  [here](https://docs.clarifai.com/portal-guide/model/model-types/clusterer).
 
 

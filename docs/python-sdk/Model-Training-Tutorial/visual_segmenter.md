@@ -29,6 +29,9 @@ import CodeOutputS3 from "!!raw-loader!../../../code_snippets/python-sdk/model_t
 
 # Visual Segmenter
 
+**Learn how to train a visual segmenter model using Clarifai Python SDK**
+<hr />
+
 A visual segmenter model is used in computer vision to partition images or videos into distinct regions or objects. Through sophisticated techniques like pixel-based analysis, region grouping, edge detection, or deep learning, a visual segmenter can identify boundaries and patterns within visual data, effectively dividing the image into meaningful segments. You can learn more about Visual Segmenter [here](https://docs.clarifai.com/portal-guide/model/model-types/visual-segmenter).
 
 
