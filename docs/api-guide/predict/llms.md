@@ -74,9 +74,11 @@ Below is an example of how you would provide a prompt text via a URL and autocom
     <CodeBlock className="language-python">{CodePython1}</CodeBlock>
 </TabItem>
 
+<!--
 <TabItem value="python2" label="Python SDK (new)">
     <CodeBlock className="language-python">{CodePython4}</CodeBlock>
 </TabItem>
+-->
 
 <TabItem value="js_rest" label="JavaScript (REST)">
  <CodeBlock className="language-javascript">{CodeJavaScript1}</CodeBlock>
