@@ -23,6 +23,9 @@ import CodeOutputMP from "!!raw-loader!../../../code_snippets/python-sdk/model_t
 
 # Visual Embedder
 
+**Learn how to train a visual embedding model using Clarifai Python SDK**
+<hr />
+
 Visual embedder models are neural network architectures specifically designed to transform high-dimensional visual data, such as images or videos, into low-dimensional representations, called embeddings. You can learn more about Visual Embedder [here](https://docs.clarifai.com/portal-guide/model/model-types/visual-embedder).
 
 

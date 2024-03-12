@@ -18,6 +18,9 @@ import CodeOutputBP from "!!raw-loader!../../../code_snippets/python-sdk/inferen
 
 # Advanced Inference Options
 
+**Learn how to perform advance inference operations using  Clarifai Python SDK**
+<hr />
+
 The inference API contains certain features that provides more flexibility while running predictions on inputs. This can help the end users to manipulate the outputs required for their tasks.
 
 

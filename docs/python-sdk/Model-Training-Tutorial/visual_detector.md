@@ -24,6 +24,9 @@ import CodeOutputS from "!!raw-loader!../../../code_snippets/python-sdk/model_tr
 
 # Visual Detector
 
+**Learn how to train a visual detector model using Clarifai Python SDK**
+<hr />
+
 A Visual Detector is a computer vision component designed to identify and locate specific objects or patterns within images or video streams. You can learn more about Visual Detector  [here](https://docs.clarifai.com/portal-guide/model/model-types/visual-detector).
 
 

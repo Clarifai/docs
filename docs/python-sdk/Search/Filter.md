@@ -29,6 +29,9 @@ import CodeOutputMM from "!!raw-loader!../../../code_snippets/python-sdk/Search/
 
 # Filter
 
+**Learn how to perform search with filters using Clarifai Python SDK**
+<hr />
+
 The filter feature in Clarifai's search functionality allows users to narrow down search results based on specific criteria or conditions. Filters act as constraints that refine the set of results returned by a search query. Users can specify various filter parameters to tailor the search results to their needs. These parameters might include attributes such as input type, status code, metadata, or other properties associated with the data being searched.
 
 Click [here](https://docs.clarifai.com/api-guide/search/filter) to know more about Filter.

@@ -46,6 +46,9 @@ import CodeOutputDelete from "!!raw-loader!../../code_snippets/python-sdk/managi
 
 # Managing Datasets
 
+**Learn how to interact with datasets using Clarifai Python SDK**
+<hr />
+
 Effectively navigate the complexities of dataset management using the Clarifai Python SDK, where a suite of robust tools empowers you to handle datasets with unparalleled efficiency. This comprehensive set of functionalities enables you to seamlessly organize, modify, and analyze your image data. Whether you are creating new datasets from scratch, updating existing ones with fresh information, or fine-tuning your data for optimal model performance, the SDK delivers a seamless and intuitive interface.
 
 Our SDK goes beyond mere dataset manipulation; it offers a complete solution for every step of your data journey. With the ability to effortlessly upload new datasets, swiftly delete redundant ones, and manipulate existing datasets according to your specific needs, you gain full control over your data pipeline. This ensures a fluid and adaptable workflow, allowing you to focus on deriving meaningful insights and maximizing the potential of your image data.

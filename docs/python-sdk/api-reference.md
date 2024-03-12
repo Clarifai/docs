@@ -1,6 +1,6 @@
 ---
 description: Clarifai Python SDK API Reference
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 # API Reference
@@ -13,7 +13,7 @@ This is the API Reference documentation extracted from the source code.
 ## User
 
 ```python
- class User(user_id= '',base_url= "https://api.clarifai.com",pat= '',**kwargs)
+ class User(user_id= '',base_url= "https://api.clarifai.com",pat= '',token= '',**kwargs)
 ```
 
 User is a class that provides access to Clarifai API endpoints related to user information.
@@ -21,7 +21,7 @@ User is a class that provides access to Clarifai API endpoints related to user i
 ### User.\__init\__()
 
 ```python
-__init__(user_id='',base_url: str = "https://api.clarifai.com",pat='',**kwargs)
+__init__(user_id='',base_url: str = "https://api.clarifai.com",pat='',token= '',**kwargs)
 ```
 
 Initializes a **User** object.
@@ -31,6 +31,7 @@ Initializes a **User** object.
   * **user_id** (*str*) – The user ID for the user to interact with.
   * **base_url** (*str*) - Base API url. Default "https://api.clarifai.com"
   * **pat** (*str*) - A personal access token for authentication.
+  * **token** (*str*) - A session token for authentication. Accepts either a session token or a pat. Can be set as env var CLARIFAI_SESSION_TOKEN
   * **\*\*kwargs** – Additional keyword arguments to be passed to the ClarifaiAuthHelper.
 
 ### User.app()
@@ -160,8 +161,7 @@ client.delete_runner(runner_id="runner_id")
 ### User.list_apps()
 
 ```python
-list_apps(filter_by= {}, page_no,
-                per_page)
+list_apps(filter_by= {}, page_no, per_page)
 ```
 Lists all the apps for the user.
 
@@ -246,7 +246,7 @@ runner = client.runner(runner_id="runner_id")
 ## App
 
 ```python
-class App(url='', app_id='',base_url= "https://api.clarifai.com",pat='',**kwargs)
+class App(url='', app_id='',base_url= "https://api.clarifai.com",pat='',token='',**kwargs)
 ```
 
 App is a class that provides access to Clarifai API endpoints related to App information.
@@ -254,16 +254,17 @@ App is a class that provides access to Clarifai API endpoints related to App inf
 ### App.\__init\__()
 
 ```python
-__init__(url='', app_id='',base_url= "https://api.clarifai.com",pat='',**kwargs)
+__init__(url='', app_id='',base_url= "https://api.clarifai.com",pat='',token='',**kwargs)
 ```
 Initializes an App object.
 
 #### Parameters
 
-* **url** (*str*): The URL to initialize the app object.
-* **app_id** (*str*): The App ID for the App to interact with.
-* **base_url** (*str*): Base API url. Default "https://api.clarifai.com"
-* **pat** (*str*): A personal access token for authentication.
+* **url** (*str*) -  The URL to initialize the app object.
+* **app_id** (*str*) -  The App ID for the App to interact with.
+* **base_url** (*str*) -  Base API url. Default "https://api.clarifai.com"
+* **pat** (*str*) -  A personal access token for authentication.
+* **token** (*str*) - A session token for authentication. Accepts either a session token or a pat. Can be set as env var CLARIFAI_SESSION_TOKEN
   * **\*\*kwargs** – Additional keyword arguments to be passed to the ClarifaiAuthHelper:
     - name (str): The name of the app.
     - description (str): The description of the app.
@@ -499,8 +500,8 @@ list_concepts(page_no,per_page)
 Lists all the concepts for the app.
 
 #### Parameters
-* **page_no** (*int*): The page number to list.
-* **per_page** (*int*): The number of items per page.
+* **page_no** (*int*) -  The page number to list.
+* **per_page** (*int*) -  The number of items per page.
 
 ### App.list_datasets()
 
@@ -510,8 +511,8 @@ list_datasets(page_no,per_page)
 Lists all the datasets for the app.
 
 #### Parameters
-* **page_no** (*int*): The page number to list.
-* **per_page** (*int*): The number of items per page.
+* **page_no** (*int*) - The page number to list.
+* **per_page** (*int*) - The number of items per page.
 
 #### Returns
   A list of Dataset objects for the datasets in the app.
@@ -537,8 +538,8 @@ Lists all installed module versions in the app.
 #### Parameters
 
 * **filter_by** (*dict*) – A dictionary of filters to apply to the list of installed module versions.
-* **page_no** (*int*): The page number to list.
-* **per_page** (*int*): The number of items per page.
+* **page_no** (*int*) - The page number to list.
+* **per_page** (*int*) - The number of items per page.
 
 #### Returns
 
@@ -565,8 +566,8 @@ Lists all the available models for the user.
 #### Parameters
   * **filter_by** (*dict*) – A dictionary of filters to apply to the list of models.
   * **only_in_app** (*bool*) – If True, only return models that are in the app.
-  * **page_no** (*int*): The page number to list.
-  * **per_page** (*int*): The number of items per page.
+  * **page_no** (*int*) -  The page number to list.
+  * **per_page** (*int*) - The number of items per page.
 
 #### Returns
 
@@ -594,8 +595,8 @@ Lists all the available modules for the user.
 
   * **filter_by** (*dict*) – A dictionary of filters to apply to the list of modules.
   * **only_in_app** (*bool*) – If True, only return modules that are in the app.
-  * **page_no** (*int*): The page number to list.
-  * **per_page** (*int*): The number of items per page.
+  * **page_no** (*int*) - The page number to list.
+  * **per_page** (*int*) - The number of items per page.
 
 ##### Returns
 
@@ -624,8 +625,8 @@ Lists all the available workflows for the user.
 
   * **filter_by** (*dict*) – A dictionary of filters to apply to the list of workflows.
   * **only_in_app** (*bool*) – If True, only return workflows that are in the app.
-  * **page_no** (*int*): The page number to list.
-  * **per_page** (*int*): The number of items per page.
+  * **page_no** (*int*) - The page number to list.
+  * **per_page** (*int*) - The number of items per page.
 #### Returns
 
 A list of Workflow objects for the workflows in the app.
@@ -760,22 +761,23 @@ workflow = app.workflow(workflow_id="workflow_id")
 ## Dataset
 
 ```python
-class Dataset(url='',dataset_id='',base_url= "https://api.clarifai.com",pat= '',**kwargs)
+class Dataset(url='',dataset_id='',base_url= "https://api.clarifai.com",pat= '',token='',**kwargs)
 ```
 ### Dataset.\__init\__()
 
 Dataset is a class that provides access to Clarifai API endpoints related to Dataset information.
 
 ```python
-__init__(url='',dataset_id='',base_url= "https://api.clarifai.com",pat= '',**kwargs)
+__init__(url='',dataset_id='',base_url= "https://api.clarifai.com",pat= '',token='',**kwargs)
 ```
 Initializes a Dataset object.
 
 #### Parameters
-* **url** (*str*): The URL to initialize the dataset object.
-* **dataset_id** (*str*): The Dataset ID within the App to interact with.
-* **base_url** (*str*): Base API url. Default "https://api.clarifai.com"
-* **pat** (*str*): A personal access token for authentication. Can be set as env var CLARIFAI_PAT
+* **url** (*str*) - The URL to initialize the dataset object.
+* **dataset_id** (*str*) - The Dataset ID within the App to interact with.
+* **base_url** (*str*) - Base API url. Default "https://api.clarifai.com"
+* **pat** (*str*) - A personal access token for authentication. Can be set as env var CLARIFAI_PAT
+* **token** (*str*) - A session token for authentication. Accepts either a session token or a pat. Can be set as env var CLARIFAI_SESSION_TOKEN
 * **\*\*kwargs** –  Additional keyword arguments to be passed to the Dataset
 
 ### Dataset.export()
@@ -792,7 +794,7 @@ Exports the Clarifai protobuf dataset to a local archive.
 * **archive_url** (*str*) – The URL to the Clarifai protobuf archive.
 * **local_archive_path** (*str*) – The path to the local Clarifai protobuf archive.
 * **split** (*str*) – Export dataset inputs in the directory format {split}/{input_type}. Default is all.
-* **num_workers** (*int*): Number of workers to use for downloading the archive. Default is 4.
+* **num_workers** (*int*) - Number of workers to use for downloading the archive. Default is 4.
 
 #### Example
 
@@ -806,15 +808,15 @@ Dataset().export(save_path='output.zip', local_archive_path='clarifai-data-proto
 ### Dataset.upload_dataset()
 
 ```python
-upload_dataset(dataloader,batch_size,get_upload_status)
+upload_dataset(dataloader,batch_size,get_upload_status,log_warnings)
 ```
 Uploads a dataset to the app.
 
 #### Parameters
-  * **dataloader** (*Type[ClarifaiDataLoader]*): ClarifaiDataLoader object
-  * **batch_size** (*int*): batch size for concurrent upload of inputs and annotations (max: 128)
-  * **get_upload_status** (*bool*): True if you want to get the upload status of the dataset
-
+  * **dataloader** (*Type[ClarifaiDataLoader]*) - ClarifaiDataLoader object
+  * **batch_size** (*int*) - batch size for concurrent upload of inputs and annotations (max: 128)
+  * **get_upload_status** (*bool*) - True if you want to get the upload status of the dataset
+  * **log_warnings** (*bool*) - True if you want to save log warnings in a file
 ### Dataset.upload_from_csv()
 
 ```python
@@ -828,7 +830,7 @@ Uploads dataset from a CSV file.
   * **input_type** (*str*) – type of the dataset(text, image)
   * **csv_type** (*str*) – type of the csv file(raw, url, file_path)
   * **labels** (*bool*) – True if csv file has labels column
-  * **batch_size** (*int*): batch size for concurrent upload of inputs and annotations
+  * **batch_size** (*int*) - batch size for concurrent upload of inputs and annotations
 
 
 #### Example
@@ -836,7 +838,7 @@ Uploads dataset from a CSV file.
 ```python
 from clarifai.client.dataset import Dataset
 dataset = Dataset(user_id = 'user_id', app_id = 'demo_app', dataset_id = 'demo_dataset')
-dataset.upload_from_csv(csv_path='csv_path', input_type='text', csv_type='raw, labels=True)
+dataset.upload_from_csv(csv_path='csv_path', input_type='text', csv_type='raw', labels=True)
 ```
 **Note**: csv file should have either one(input) or two columns(input, labels).
 
@@ -853,7 +855,7 @@ Upload dataset from folder.
   * **folder_path** (*str*) – Path to the folder containing images.
   * **input_type** (*str*) – type of the dataset(text, image)
   * **labels** (*bool*) – True if folder name is the label for the inputs
-  * **batch_size** (*int*): batch size for concurrent upload of inputs and annotations
+  * **batch_size** (*int*) - batch size for concurrent upload of inputs and annotations
 
 
 #### Example
@@ -870,14 +872,16 @@ dataset.upload_from_folder(folder_path='folder_path', input_type='text', labels=
 
 ### Dataset.get_upload_status()
 ```python
-get_upload_status(dataloader,delete_version,timeout)
+get_upload_status(dataloader,delete_version,timeout,pre_upload_stats,pre_upload)
 ```
 Creates a new dataset version and displays the upload status of the dataset.
 
 #### Parameters
-  * **dataloader** (**Type[ClarifaiDataLoader]**): ClarifaiDataLoader object
-  * **delete_version** (**bool**): True if you want to delete the version after getting the upload status
-  * **timeout** (*int*): Timeout in seconds for getting the upload status. Default is 600 seconds.
+  * **dataloader** (*Type[ClarifaiDataLoader]*) - ClarifaiDataLoader object
+  * **delete_version** (*bool*) - True if you want to delete the version after getting the upload status
+  * **timeout** (*int*) - Timeout in seconds for getting the upload status. Default is 600 seconds.
+  * **pre_upload_stats** (*Tuple[Dict[str, int], Dict[str, int]]*) - The pre upload stats for the dataset.
+  * **pre_upload** (*bool*) - True if you want to get the pre upload stats for the dataset.
 
 #### Example
 
@@ -896,8 +900,8 @@ list_versions(page_no,per_page)
 Lists all the versions for the dataset.
 
 #### Parameters
-* **page_no** (*int*): The page number to list.
-* **per_page** (*int*): The number of items per page.
+* **page_no** (*int*) - The page number to list.
+* **per_page** (*int*) - The number of items per page.
 
 #### Example
 ```python
@@ -914,9 +918,9 @@ create_version(**kwargs)
 Creates a dataset version for the Dataset.
 
 #### Parameters
-* **\*\*kwargs**: Additional keyword arguments to be passed to Dataset Version.
-  - **description** (*str*): The description of the dataset version.
-  - **metadata** (*dict*): The metadata of the dataset version.*
+* **\*\*kwargs** - Additional keyword arguments to be passed to Dataset Version.
+  - **description** (*str*) - The description of the dataset version.
+  - **metadata** (*dict*) - The metadata of the dataset version.*
 
 #### Example
 ```python
@@ -932,7 +936,7 @@ delete_version(version_id='')
 Deletes a dataset version for the Dataset.
 
 #### Parameters
-* **version_id** (*str*): The version ID to delete.
+* **version_id** (*str*) - The version ID to delete.
 
 #### Example
 ```python
@@ -940,18 +944,17 @@ from clarifai.client.dataset import Dataset
 dataset = Dataset(dataset_id='dataset_id', user_id='user_id', dataset.delete_version(version_id='version_id')
 ```
 
-
 ## Input
 
 ```python
-class Inputs(user_id='',app_id='',logger_level="INFO",base_url="https://api.clarifai.com",pat='',**kwargs)
+class Inputs(user_id='',app_id='',logger_level="INFO",base_url="https://api.clarifai.com",pat='',token='',**kwargs)
 ```
 Inputs is a class that provides access to Clarifai API endpoints related to Input information.
 
 ### Inputs.\__init\__()
 
 ```python
-__init__(user_id='',app_id='',logger_level="INFO",base_url="https://api.clarifai.com",pat='',**kwargs)
+__init__(user_id='',app_id='',logger_level="INFO",base_url="https://api.clarifai.com",pat='',token='',**kwargs)
 ```
 
 Initializes an Input object.
@@ -959,7 +962,8 @@ Initializes an Input object.
 #### Parameters
   * **user_id** (*str*) – A user ID for authentication.
   * **app_id** (*str*) – An app ID for the application to interact with.
-  * **base_url** (*str*): Base API url. Default "https://api.clarifai.com"
+  * **base_url** (*str*) - Base API url. Default "https://api.clarifai.com"
+  * **token** (*str*) - A session token for authentication. Accepts either a session token or a pat. Can be set as env var CLARIFAI_SESSION_TOKEN
   * **\*\*kwargs** – Additional keyword arguments to be passed to the Input
 
 ### Inputs.delete_inputs()
@@ -1020,7 +1024,7 @@ Create input proto from bytes.
   * **image_bytes** (*str*) – The bytes for the image.
   * **video_bytes** (*str*) – The bytes for the video.
   * **audio_bytes** (*str*) – The bytes for the audio.
-  * **text_bytes** (*str*): The bytes for the text.
+  * **text_bytes** (*str*) - The bytes for the text.
   * **dataset_id** (*str*) – The dataset ID for the dataset to add the input to.
 
 #### Returns
@@ -1047,10 +1051,10 @@ Create input proto from files.
 
 #### Parameters
   * **input_id** (*str*) – The input ID for the input to create.
-  * **image_file** (*str*) – The url for the image.
-  * **video_file** (*str*) – The url for the video.
-  * **audio_file** (*str*) – The url for the audio.
-  * **text_bytes** (*str*): The bytes for the text.
+  * **image_file** (*str*) – The file for the image.
+  * **video_file** (*str*) – The file for the video.
+  * **audio_file** (*str*) – The file for the audio.
+  * **text_file** (*str*) - The file for the text.
   * **dataset_id** (*str*) – The dataset ID for the dataset to add the input to.
 
 #### Returns
@@ -1080,7 +1084,7 @@ Create input proto from URL.
   * **video_url** (*str*) – The url for the video.
   * **audio_url** (*str*) – The url for the audio.
   * **text_url** (*str*) – The url for the text.
-  *  **dataset_id** (*str*): The dataset ID for the dataset to add the input to.
+  *  **dataset_id** (*str*) - The dataset ID for the dataset to add the input to.
 
 #### Returns
   An Input object for the specified input ID.
@@ -1208,10 +1212,10 @@ list_inputs(dataset_id='',page_no,per_page,input_type)
 Lists all the inputs for the app.
 
 #### Parameters
-  * **dataset_id** (*str*): The dataset ID for the dataset to list inputs from.
-  * **page_no** (*int*): The page number to list.
-  * **per_page** (*int*): The number of items per page.
-  * **input_type** (*str*): The type of input to list. Options: 'image', 'video', 'audio', 'text'.
+  * **dataset_id** (*str*) - The dataset ID for the dataset to list inputs from.
+  * **page_no** (*int*) - The page number to list.
+  * **per_page** (*int*) - The number of items per page.
+  * **input_type** (*str*) - The type of input to list. Options: 'image', 'video', 'audio', 'text'.
 
 #### Returns
   A list of Input objects for the app.
@@ -1398,7 +1402,6 @@ An Input object for the specified input ID.
 ```python
 from clarifai.client.input import Inputs
 input_protos = Inputs.get_multimodal_input(input_id = 'demo', raw_text = 'What time of day is it?', image_url='https://samples.clarifai.com/metro-north.jpg')
-
 ```
 
 ### Input.get_bbox_proto()
@@ -1409,9 +1412,9 @@ Create an annotation proto for each bounding box, label input pair.
 
 
 #### Parameters
-* **input_id** (*str*): The input ID for the annotation to create.
-* **label** (*str*): annotation label
-* **bbox** (*List*): a list of a single bbox's coordinates.Bbox ordering: [xmin, ymin, xmax, ymax]
+* **input_id** (*str*) - The input ID for the annotation to create.
+* **label** (*str*) - annotation label
+* **bbox** (*List*) - a list of a single bbox's coordinates.Bbox ordering: [xmin, ymin, xmax, ymax]
 
 #### Returns
 An annotation object for the specified input ID.
@@ -1419,7 +1422,6 @@ An annotation object for the specified input ID.
 ```python
 from clarifai.client.input import Inputs
 Inputs.get_bbox_proto(input_id='demo', label='demo', bbox=[x_min, y_min, x_max, y_max])
-
 ```
 
 
@@ -1430,9 +1432,9 @@ list_annotations(batch_input, page_no,per_page)
 Lists all the annotations for the app.
 
 #### Parameters
-* **batch_input** (*List[Input]*): The input objects to list annotations from.
-* **page_no** (*int*): The page number to list.
-* **per_page** (*int*): The number of items per page.
+* **batch_input** (*List[Input]*) - The input objects to list annotations from.
+* **page_no** (*int*) - The page number to list.
+* **per_page** (*int*) - The number of items per page.
 
 #### Yields
 Annotation objects for the app.
@@ -1445,6 +1447,20 @@ all_annotations = list(input_obj.list_annotations(batch_input=all_inputs))
 
 ```
 
+### Input.download_inputs()
+```python
+download_inputs(inputs)
+```
+Download list of input objects from the app.
+
+#### Parameters
+* **input_ids** (*Input*) - List of input objects to download.
+
+```python
+from clarifai.client.user import User
+input_obj = User(user_id="user_id").app(app_id="app_id").inputs()
+input_obj.download_inputs(list(input_obj.list_inputs()))
+```
 
 ## Lister
 
@@ -1476,22 +1492,22 @@ Lists all pages of a resource.
   * **endpoint** (*Callable*) – The endpoint to call.
   * **proto_message** (*Any*) – The proto message to use.
   * **request_data** (*dict*) – The request data to use.
-  * **page_no** (*int*): The page number to list.
-  * **per_page** (*int*): The number of items per page.
+  * **page_no** (*int*) - The page number to list.
+  * **per_page** (*int*) - The number of items per page.
 #### Yields
   *response_dict* – The next item in the listing.
 
 ## Model
 
 ```python
-class Model(url='', model_id='',model_version={'id': ""},base_url = "https://api.clarifai.com",pat='',**kwargs)
+class Model(url='', model_id='',model_version={'id': ""},base_url = "https://api.clarifai.com",pat='',token='',**kwargs)
 ```
 Model is a class that provides access to Clarifai API endpoints related to Model information.
 
 ### Model.\__init\__()
 
 ```python
-__init__(url='', model_id='',model_version={'id': ""},base_url = "https://api.clarifai.com",pat='',**kwargs)
+__init__(url='', model_id='',model_version={'id': ""},base_url = "https://api.clarifai.com",pat='',token='',**kwargs)
 ```
 Initializes a Model object.
 
@@ -1500,13 +1516,14 @@ Initializes a Model object.
   * **model_id** (*str*) – The Model ID to interact with.
   * **model_version** (*dict*) – The Model Version to interact with.
   * **base_url** (*str*) - Base API url. Default "https://api.clarifai.com"
-  * **pat** (*str*): A personal access token for authentication. Can be set as env var CLARIFAI_PAT
+  * **pat** (*str*) - A personal access token for authentication. Can be set as env var CLARIFAI_PAT
+  * **token** (*str*) - A session token for authentication. Accepts either a session token or a pat. Can be set as env var CLARIFAI_SESSION_TOKEN
   * **\*\*kwargs** – Additional keyword arguments to be passed to the ClarifaiAuthHelper.
 
 ### Model.create_version()
 
 ```python
-create_model_version(**kwargs)
+create_version(**kwargs)
 ```
 
 Creates a model version for the Model.
@@ -1527,7 +1544,7 @@ from clarifai.client.model import Model
 model = Model("model_url")
             # or
 model = Model(model_id='model_id', user_id='user_id', app_id='app_id')
-model_version = model.create_model_version(description='model_version_description')
+model_version = model.create_version(description='model_version_description')
 ```
 
 ### Model.list_versions()
@@ -1565,11 +1582,11 @@ Predicts the model based on the given inputs.
 #### Parameters
 
 * **inputs** (list[Input]) – The inputs to predict, must be less than 128.
-* **inference_params** (*dict*): The inference params to override.
-* **output_config** (*dict*): The output config to override.
-  * **min_value** (*float*): The minimum value of the prediction confidence to filter.
-  * **max_concepts** (*int*): The maximum number of concepts to return.
-  * **select_concepts** (*list[Concept]*): The concepts to select.
+* **inference_params** (*dict*) - The inference params to override.
+* **output_config** (*dict*) - The output config to override.
+  * **min_value** (*float*) - The minimum value of the prediction confidence to filter.
+  * **max_concepts** (*int*) - The maximum number of concepts to return.
+  * **select_concepts** (*list[Concept]*) - The concepts to select.
 
 ### Model.predict_by_bytes()
 
@@ -1582,11 +1599,11 @@ Predicts the model based on the given bytes.
 #### Parameters
   * **input_bytes** (*bytes*) – File Bytes to predict on.
   * **input_type** (*str*) – The type of input. Can be ‘image’, ‘text’, ‘video’ or ‘audio’.
-  * **inference_params** (*dict*): The inference params to override.
-  * **output_config** (*dict*): The output config to override.
-    * **min_value** (*float*): The minimum value of the prediction confidence to filter.
-    * **max_concepts** (*int*): The maximum number of concepts to return.
-    * **select_concepts** (*list[Concept]*): The concepts to select.
+  * **inference_params** (*dict*) - The inference params to override.
+  * **output_config** (*dict*) - The output config to override.
+    * **min_value** (*float*) - The minimum value of the prediction confidence to filter.
+    * **max_concepts** (*int*) - The maximum number of concepts to return.
+    * **select_concepts** (*list[Concept]*) - The concepts to select.
 
 #### Example
 
@@ -1606,11 +1623,11 @@ Predicts the model based on the given file path.
 #### Parameters
   * **filepath** (*str*) – The file path to predict.
   * **input_type** (*str*) – The type of input. Can be ‘image’, ‘text’, ‘video’ or ‘audio.
-  * **inference_params** (*dict*): The inference params to override.
-  * **output_config** (*dict*): The output config to override.
-    * **min_value** (*float*): The minimum value of the prediction confidence to filter.
-    * **max_concepts** (*int*): The maximum number of concepts to return.
-    * **select_concepts** (*list[Concept]*): The concepts to select.
+  * **inference_params** (*dict*) - The inference params to override.
+  * **output_config** (*dict*) - The output config to override.
+    * **min_value** (*float*) - The minimum value of the prediction confidence to filter.
+    * **max_concepts** (*int*) - The maximum number of concepts to return.
+    * **select_concepts** (*list[Concept]*) - The concepts to select.
 
 #### Example
 
@@ -1634,11 +1651,11 @@ Predicts the model based on the given URL.
 #### Parameters
   * **url** (*str*) – The URL to predict.
   * **input_type** (*str*) – The type of input. Can be ‘image’, ‘text’, ‘video’ or ‘audio.
-  * **inference_params** (*dict*): The inference params to override.
-  * **output_config** (*dict*): The output config to override.
-    * **min_value** (*float*): The minimum value of the prediction confidence to filter.
-    * **max_concepts** (*int*): The maximum number of concepts to return.
-    * **select_concepts** (*list[Concept]*): The concepts to select.
+  * **inference_params** (*dict*) - The inference params to override.
+  * **output_config** (*dict*) - The output config to override.
+    * **min_value** (*float*) - The minimum value of the prediction confidence to filter.
+    * **max_concepts** (*int*) - The maximum number of concepts to return.
+    * **select_concepts** (*list[Concept]*) - The concepts to select.
 
 #### Example
 
@@ -1654,7 +1671,6 @@ model_prediction = model.predict_by_url('url', 'image')
 ### Model.list_training_templates()
 ```python
 list_training_templates()
-
 ```
 Lists all the training templates for the model type.
 #### Returns
@@ -1673,8 +1689,8 @@ get_params(template='', save_to='params.yaml')
 Returns the model params for the model type and yaml file.
 
 #### Parameters
-  * **template** (*str*): The template to use for the model type.
-  * **yaml_file** (*str*): The yaml file to save the model params.
+  * **template** (*str*) - The template to use for the model type.
+  * **yaml_file** (*str*) - The yaml file to save the model params.
 
 #### Returns
 Dictionary of model params for the model type.
@@ -1711,7 +1727,7 @@ get_param_info(param)
 Returns the param info for the param.
 
 #### Parameters
-  * **param** (*str*): The param to get the info for.
+  * **param** (*str*) - The param to get the info for.
 
 #### Example
 ```python
@@ -1728,7 +1744,7 @@ train(yaml_file='')
 Trains the model based on the given yaml file or model params.
 
 #### Parameters
-  * **yaml_file** (*str*): The yaml file for the model params.
+  * **yaml_file** (*str*) - The yaml file for the model params.
 
 
 #### Example
@@ -1747,8 +1763,8 @@ Get the training status for the model version. Also stores training logs
 
 
 #### Parameters
-  * **version_id** (*str*): The version ID to get the training status for.
-  * **training_logs** (*bool*): Whether to save the training logs in a file.
+  * **version_id** (*str*) - The version ID to get the training status for.
+  * **training_logs** (*bool*) - Whether to save the training logs in a file.
 
 #### Returns
 Dictionary of training status for the model version.
@@ -1767,7 +1783,7 @@ delete_version(version_id)
 Deletes a model version for the Model.
 
 #### Parameters
-  * **version_id** (*str*): The version ID to delete.
+  * **version_id** (*str*) - The version ID to delete.
 
 
 
@@ -1778,13 +1794,64 @@ model = Model(model_id='model_id', user_id='user_id', app_id='app_id')
 model.delete_version(version_id='version_id')
 ```
 
+### Model.evaluate()
+```python
+evaluate(dataset_id,dataset_app_id,dataset_user_id,eval_id,extended_metrics,eval_info)
+```
+Run evaluation
 
+#### Parameters
+  * **dataset_id** (*str*) - Dataset Id.
+  * **dataset_app_id** (*str*) - App ID for cross app evaluation, leave it as None to use Model App ID. Default is None.
+  * **dataset_user_id** (*str*) - User ID for cross app evaluation, leave it as None to use Model User ID. Default is None.
+  * **eval_id** (*str*) - Specific ID for the evaluation. You must specify this parameter to either overwrite the result with the dataset ID or format your evaluation in an informative manner. If you don't, it will use random ID from system. Default is None.
+  * **extended_metrics** (*dict*) - user custom metrics result. Default is None.
+  * **eval_info** (*dict*) - custom eval info. Default is empty dict.
+
+#### Returns
+eval_metrics
+
+
+### Model.get_eval_by_id()
+```python
+get_eval_by_id(eval_id,label_counts,test_set,binary_metrics,confusion_matrix,metrics_by_class,metrics_by_area) 
+```
+Get detail eval_metrics by eval_id with extra metric fields
+
+#### Parameters
+  * **eval_id** (*str*) - eval id
+  * **label_counts** (*bool*, optional) - Set True to get label counts. Defaults to False.
+  * **test_set** (*bool*, optional) - Set True to get test set. Defaults to False.
+  * **binary_metrics** (*bool*, optional) - Set True to get binary metric. Defaults to False.
+  * **confusion_matrix** (*bool*, optional) - Set True to get confusion matrix. Defaults to False.
+  * **metrics_by_class** (*bool*, optional) - Set True to get metrics by class. Defaults to False.
+  * **metrics_by_area** (*bool*, optional) - Set True to get metrics by area. Defaults to False.
+
+#### Returns
+resources_pb2.EvalMetrics: eval_metrics
+
+### Model.get_latest_eval()
+```python
+get_latest_eval(label_counts,test_set,binary_metrics,confusion_matrix,metrics_by_class,metrics_by_area)
+```
+Run `get_eval_by_id` method with latest `eval_id`
+
+#### Parameters
+  * **label_counts** (*bool*, optional) - Set True to get label counts. Defaults to False.
+  * **test_set** (*bool*, optional) - Set True to get test set. Defaults to False.
+  * **binary_metrics** (*bool*, optional) - Set True to get binary metric. Defaults to False.
+  * **confusion_matrix** (*bool*, optional) - Set True to get confusion matrix. Defaults to False.
+  * **metrics_by_class** (*bool*, optional) - Set True to get metrics by class. Defaults to False.
+  * **metrics_by_area** (*bool*, optional) - Set True to get metrics by area. Defaults to False.
+
+#### Returns
+eval_metric if model is evaluated otherwise None.
 
 
 ## Workflow
 
 ```python
-class Workflow(url='',workflow_id='',workflow_version = {'id': ""},output_config = {'min_value': 0},base_url = "https://api.clarifai.com",pat = None,**kwargs)
+class Workflow(url='',workflow_id='',workflow_version = {'id': ""},output_config = {'min_value': 0},base_url = "https://api.clarifai.com",pat = None,token='',**kwargs)
 ```
 
 Workflow is a class that provides access to Clarifai API endpoints related to Workflow information.
@@ -1792,7 +1859,7 @@ Workflow is a class that provides access to Clarifai API endpoints related to Wo
 ### Workflow.\__init\__()
 
 ```python
-__init__(url='',workflow_id='',workflow_version = {'id': ""},output_config = {'min_value': 0},base_url = "https://api.clarifai.com",pat = None,**kwargs)
+__init__(url='',workflow_id='',workflow_version = {'id': ""},output_config = {'min_value': 0},base_url = "https://api.clarifai.com",pat = None,token='',**kwargs)
 ```
 Initializes a Workflow object.
 
@@ -1802,11 +1869,12 @@ Initializes a Workflow object.
   * **workflow_id** (*str*) – The Workflow ID to interact with.
   * **workflow_version** (*dict*) – The Workflow Version to interact with.
   * **output_config** (*dict*) – The output config to interact with.
-    * min_value (float): The minimum value of the prediction confidence to filter.
-    * max_concepts (int): The maximum number of concepts to return.
-    * select_concepts (list[Concept]): The concepts to select.
-    * sample_ms (int): The number of milliseconds to sample.
-  * **base_url** (*str*): Base API url. Default "https://api.clarifai.com"
+    * min_value (float) - The minimum value of the prediction confidence to filter.
+    * max_concepts (int) - The maximum number of concepts to return.
+    * select_concepts (list[Concept]) - The concepts to select.
+    * sample_ms (int) - The number of milliseconds to sample.
+  * **base_url** (*str*) - Base API url. Default "https://api.clarifai.com"
+  * **token** (*str*) - A session token for authentication. Accepts either a session token or a pat. Can be set as env var CLARIFAI_SESSION_TOKEN
   * **\*\*kwargs** – Additional keyword arguments to be passed to the ClarifaiAuthHelper.
 
 ### Workflow.list_versions()
@@ -1836,12 +1904,13 @@ workflow_versions = workflow.list_versions()
 ### Workflow.predict()
 
 ```python
-predict(inputs)
+predict(inputs,workflow_state_id)
 ```
 Predicts the workflow based on the given inputs.
 
 #### Parameters
 * **inputs** (list[Input]) – The inputs to predict.
+* **workflow_state_id** (*str*) - key for the workflow state cache that stores the workflow node predictions.
 
 ### Workflow.predict_by_bytes()
 
@@ -1922,7 +1991,7 @@ workflow.export('out_path.yml')
 ## Module
 
 ```python
-class Module(url='',module_id='', module_version = {'id': ""},base_url = "https://api.clarifai.com",pat = '',**kwargs)
+class Module(url='',module_id='', module_version = {'id': ""},base_url = "https://api.clarifai.com",pat = '',token='',**kwargs)
 ```
 
 Module is a class that provides access to Clarifai API endpoints related to Module information.
@@ -1930,7 +1999,7 @@ Module is a class that provides access to Clarifai API endpoints related to Modu
 ### Module.\__init\__()
 
 ```python
-__init__(url='',module_id='', module_version = {'id': ""},base_url = "https://api.clarifai.com",pat = '',**kwargs)
+__init__(url='',module_id='', module_version = {'id': ""},base_url = "https://api.clarifai.com",pat = '',token='',**kwargs)
 ```
 Initializes a Module object.
 
@@ -1938,8 +2007,9 @@ Initializes a Module object.
   * **url_init** (*str*) – The URL to initialize the module object.
   * **module_id** (*str*) – The Module ID to interact with.
   * **module_version** (*dict*) – The Module Version to interact with.
-  * **base_url** (*str*): Base API url. Default "https://api.clarifai.com"
-  * **pat** (*str*): A personal access token for authentication. Can be set as env var CLARIFAI_PAT
+  * **base_url** (*str*) - Base API url. Default "https://api.clarifai.com"
+  * **pat** (*str*) - A personal access token for authentication. Can be set as env var CLARIFAI_PAT
+  * **token** (*str*) - A session token for authentication. Accepts either a session token or a pat. Can be set as env var CLARIFAI_SESSION_TOKEN.
   * **\*\*kwargs** – Additional keyword arguments to be passed to the ClarifaiAuthHelper.
 
 ### Module.list_versions()
@@ -2016,7 +2086,7 @@ User Error
 
 ## Runners
 ```python
-class Runner(runner_id,user_id='',check_runner_exists,base_url = "https://api.clarifai.com",pat='',num_parallel_polls,**kwargs)
+class Runner(runner_id,user_id='',check_runner_exists,base_url = "https://api.clarifai.com",pat='',token='',num_parallel_polls,**kwargs)
 ```
 Base class for remote inference runners. This should be subclassed with the run_input method
   implemented to process each input in the request
@@ -2024,7 +2094,7 @@ Base class for remote inference runners. This should be subclassed with the run_
 ### Runner.\__init\__()
 
 ```python
-__init__(runner_id,user_id='',check_runner_exists,base_url = "https://api.clarifai.com",pat='',num_parallel_polls,**kwargs)
+__init__(runner_id,user_id='',check_runner_exists,base_url = "https://api.clarifai.com",pat='',token='',num_parallel_polls,**kwargs)
 
 ```
 Initializes a Runner object
@@ -2035,7 +2105,7 @@ Initializes a Runner object
   * **base_url** (*dict*) – Base API url. Default "https://api.clarifai.com"
   * **pat** (*str*) - A personal access token for authentication.
   * **num_parallel_polls** (*int*) - The max number of threads for parallel run loops to be fetching work from.
-
+  * **token** (*str*) - A session token for authentication. Accepts either a session token or a pat. Can be set as env var CLARIFAI_SESSION_TOKEN.
   * **\*\*kwargs** – Additional keyword arguments to be passed to the ClarifaiAuthHelper.
 
 ### Runner.start()
@@ -2075,14 +2145,14 @@ resources_pb2.Output
 
 ## Search
 ```python 
-class Search(user_id,app_id,top_k,metric,base_url = "https://api.clarifai.com",pat='')
+class Search(user_id,app_id,top_k,metric,base_url = "https://api.clarifai.com",pat='',token='')
 ```
 Base class for Search.
 
 ### Search.\__init\__()
 
 ```python
-__init__(user_id,app_id,top_k,metric,base_url = "https://api.clarifai.com",pat='')
+__init__(user_id,app_id,top_k,metric,base_url = "https://api.clarifai.com",pat='',token='')
 
 ```
 Initialize the Search object.
@@ -2094,6 +2164,7 @@ Initialize the Search object.
   * **metric** (*str*) - Similarity metric (either 'cosine' or 'euclidean'). Defaults to 'cosine'.
   * **base_url** (*str*) - Base API url. Defaults to "https://api.clarifai.com".
   * **pat** (*str*) - A personal access token for authentication.
+  * **token** (*str*) - A session token for authentication. Accepts either a session token or a pat. Can be set as env var CLARIFAI_SESSION_TOKEN
 
 
 ### Search.query()
@@ -2145,5 +2216,4 @@ res = search.query(filters=[{'input_types': ['image', 'text']}, {'input_status_c
 from clarifai.client.search import Search
 search = Search(user_id='user_id', app_id='app_id', top_k=1, metric='cosine')
 res = search.query(ranks=[{'image_url': 'https://samples.clarifai.com/dog.tiff'}])
-
 ```
