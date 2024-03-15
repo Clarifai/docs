@@ -41,6 +41,12 @@ You can assign any of the following roles:
 - **Organization Contributor (all apps)**—the invitee will be able to contribute to all the apps within the organization. 
 - **Admin**—the invitee will have administrative privileges in the organization. 
 
+:::tip
+
+[Click here](https://docs.clarifai.com/portal-guide/clarifai-organizations/security#scopes-and-access-levels-of-organization-members) to learn more about the scopes and access levels allowed for each user type within a Clarifai organization. 
+
+:::
+
 After providing the details, click the **Confirm** button. 
 
 When you send an invitation, the invitee will receive the invitation in their email address for them to decide whether to accept or decline the request. 
