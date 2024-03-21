@@ -7,7 +7,7 @@ require __DIR__ . "/vendor/autoload.php";
 // audio URL. Change these strings to run your own example.
 ////////////////////////////////////////////////////////////////////////////////////////////
 
-// Your PAT (Personal Access Token) can be found in the portal under Authentification
+// Your PAT (Personal Access Token) can be found in the Account's Security section
 $PAT = "YOUR_PAT_HERE";
 $USER_ID = "clarifai";
 $APP_ID = "main";

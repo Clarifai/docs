@@ -6,7 +6,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 const USER_ID = 'YOUR_USER_ID_HERE';
-// Your PAT (Personal Access Token) can be found in the portal under Authentification
+// Your PAT (Personal Access Token) can be found in the Account's Security section
 const PAT = 'YOUR_PAT_HERE';
 const APP_ID = 'YOUR_APP_ID_HERE';
 // Change these to whatever concept you want to add its language translation

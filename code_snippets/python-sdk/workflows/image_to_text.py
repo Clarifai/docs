@@ -1,7 +1,7 @@
 from clarifai.client.workflow import Workflow
 from clarifai.client.user import User
 
-# Your PAT (Personal Access Token) can be found in the portal under Authentification
+# Your PAT (Personal Access Token) can be found in the Account's Security section
 # Specify the correct user_id/app_id pairings
 # Since you're making inferences outside your app's scope
 USER_ID = "user_id"
