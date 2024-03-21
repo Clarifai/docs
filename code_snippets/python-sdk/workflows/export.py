@@ -1,6 +1,6 @@
 from clarifai.client.workflow import Workflow
 
-# Your PAT (Personal Access Token) can be found in the portal under Authentification
+# Your PAT (Personal Access Token) can be found in the Account's Security section
 
 workflow_url = "https://clarifai.com/clarifai/main/workflows/Demographics"
 demographics_workflow = Workflow(

@@ -8,7 +8,7 @@ require __DIR__ . "/vendor/autoload.php";
 //////////////////////////////////////////////////////////////////////////////
 
 $USER_ID = "YOUR_USER_ID_HERE";
-// Your PAT (Personal Access Token) can be found in the portal under Authentification
+// Your PAT (Personal Access Token) can be found in the Account's Security section
 $PAT = "YOUR_PAT_HERE";
 $APP_ID = "YOUR_APP_ID_HERE";
 // Insert the user IDs 

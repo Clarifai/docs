@@ -5,7 +5,7 @@
 // we want to filter by. Change these strings to run your own example.
 //////////////////////////////////////////////////////////////////////////////////
 
-// Your PAT (Personal Access Token) can be found in the portal under Authentification
+// Your PAT (Personal Access Token) can be found in the Account's Security section
 const PAT = 'YOUR_PAT_HERE';
 const APP_ID = 'YOUR_APP_ID_HERE';
 // Change this to filter by your own concept

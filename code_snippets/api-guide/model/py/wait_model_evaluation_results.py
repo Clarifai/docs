@@ -4,7 +4,7 @@
 ##########################################################################################
 
 USER_ID = "YOUR_USER_ID_HERE"
-# Your PAT (Personal Access Token) can be found in the portal under Authentification
+# Your PAT (Personal Access Token) can be found in the Account's Security section
 PAT = "YOUR_PAT_HERE"
 APP_ID = "text-search-app"
 # Change these to wait for your own model's evaluation results
