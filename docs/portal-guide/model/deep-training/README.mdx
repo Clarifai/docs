@@ -4,16 +4,21 @@ description: Train the entire graph of your custom model
 
 # Deep Fine-Tuning 
 
-**Train the entire graph of your custom model**
+**Learn how to fine-tune pre-trained models**
 <hr />
 
-Clarifai offers a variety of pre-built models that are designed to help you create AI solutions quickly and efficiently.
+Fine-tuning is a deep learning technique that refers to taking a pre-trained model and further training it on a new dataset or task. The term "fine-tuning" implies making small adjustments or refinements to the already learned representations in the pre-trained model rather than training from scratch. 
 
-Clarifai models are the recommended starting point for many users because they offer incredibly fast training times, especially when you customize them using the [transfer learning](https://docs.clarifai.com/portal-guide/model/model-types/transfer-learning) model type.
+Fine-tuning leverages the power of pre-trained models to improve their performance on a new, related task. It involves taking a pre-trained model, which was previously trained on a vast dataset for a general-purpose task, and tailoring it to a more specific task. 
 
-But there are many cases where accuracy and the ability to carefully target solutions takes priority over speed and ease of use. Additionally, you may need a model to learn new features not recognized by existing [Clarifai models](https://docs.clarifai.com/portal-guide/model/clarifai-models#clarifai-models-1). 
+## Why Choose Deep Fine-Tuning?
 
-For such cases, it is possible to "deep fine-tune" your custom models and integrate them directly within your workflows.
+
+Clarifai offers a variety of pre-built models that are designed to help you create AI solutions quickly and efficiently. Clarifai models are the recommended starting point for many users because they offer incredibly fast training times, especially when you customize them using the [transfer learning](https://docs.clarifai.com/portal-guide/model/model-types/transfer-learning) model type.
+
+But there are some cases where accuracy and the ability to carefully target solutions takes priority over speed and ease of use. Additionally, you may need a model to learn new features not recognized by existing [Clarifai models](https://docs.clarifai.com/portal-guide/model/clarifai-models#clarifai-models-1). 
+
+For such cases, it is possible to "deep fine-tune" your custom models and integrate them directly within your [workflows](https://docs.clarifai.com/portal-guide/workflows/workflow-builder).
 
 You might consider deep fine-tuning if:
 
@@ -24,7 +29,7 @@ You might consider deep fine-tuning if:
 
 ## Template Types
 
-You can take advantage of a variety of templates when building your deep fine-tuned models. Templates give you the control to choose the specific architecture used by your neural network, and also define a set of hyperparameters that you can use to fine-tune the way that your model learns.
+You can take advantage of a variety of pre-configured templates when building your deep fine-tuned models. Templates give you the control to choose the specific architecture used by your neural network, and also define a set of hyperparameters that you can use to fine-tune the way that your model learns.
 
 Here are the template types we offer:
 
@@ -33,99 +38,145 @@ import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 
 <DocCardList items={useCurrentSidebarCategory().items}/>
 
-## Create Your Deep Fine-Tuned Model
+## How to Fine-Tune a Model
 
-Creating and working with deep fine-tuned models is very similar to working with Clarifai models.
+Let's demonstrate how you can create and fine-tune a deep learning model. 
 
-Let's demonstrate how you can create a deep fine-tuned model. 
+### Step 1: Choose a Model Type
 
-#### Create App and Upload Inputs
+Before diving into fine-tuning, it's crucial to decide on the appropriate deep learning model architecture. Different model types excel at various tasks and generate distinct outputs based on your inputs and desired AI functionality.
 
-Get started by creating your app and uploading inputs.
+[Click here](https://docs.clarifai.com/portal-guide/model/model-types/) to learn more about the model types available on the Clarifai platform. 
 
-:::info
+:::note
 
-In general, deep trained models need more data than the ones trained on top of Clarifai models. For most applications, you’ll need at least 1000 training inputs, but it could be much more than this depending on your specific use case.
+To illustrate how fine-tuning works, let's opt for a visual classifier model. This type of model excels at categorizing images into predefined classes or concepts. 
+Our goal here is to create a fine-tuned visual classifier that can distinguish between images of cats and dogs.
 
 :::
 
-Click the **Create an App** button and provide the information required to create a new application.
+### Step 2: Prepare Training Data
 
-![create an app](/img/community_2/custom_model_create_new_app.png)
+Preparing data for fine-tuning ensures that the custom model learns effectively from the new task or domain, generalizes well to unseen data, and produces reliable predictions.
 
-To upload inputs into your app, select the **Inputs** option on the collapsible left sidebar. Next, click the **Upload Inputs** button and upload the inputs you want to add to the app.
+Ensure that you collect high-quality, well-prepared data that will help achieve optimized performance in your model. 
 
-![upload inputs](/img/community_2/custom_model_upload_inputs.png)
+You can prepare your data using your preferred spreadsheet software. 
+[Click here](https://docs.clarifai.com/portal-guide/advanced-topics/csv-and-tsv) to download a CSV template you can use to prepare your data.
 
-The small window that pops up allows you to upload inputs.
+To illustrate how fine-tuning works, we'll prepare the following simple dataset consisting of images of dogs and cats. Note that for your model to perform well, you need to provide it with enough diverse data to learn meaningful patterns. [Click here](https://www.clarifai.com/blog/using-ai-to-create-applications-downloading-images-easily) to learn how you can get images to enrich your dataset. 
 
-![upload inputs window](/img/community_2/custom_models_upload_inputs_window.png)
+<details>
+  <summary>Sample Dataset</summary>
 
-#### Create Concepts and Label Inputs
+```
+https://samples.clarifai.com/dog1.jpeg
+https://samples.clarifai.com/dog2.jpeg
+https://samples.clarifai.com/dog3.jpeg
+https://samples.clarifai.com/dog2_tiny.jpeg
+https://samples.clarifai.com/dog.tiff
+https://samples.clarifai.com/cat1.jpeg
+https://samples.clarifai.com/cat2.jpeg
+https://samples.clarifai.com/cat3.jpeg
+https://samples.clarifai.com/featured-models/blip-flying-cat.jpg
+https://samples.clarifai.com/featured-models/social-media-cat-laying-down.jpg
+```
+</details>
 
-The process of creating concepts and labeling inputs is the same for deep trained models as for other Clarifai models.
+:::warning Number of Inputs
 
-Clicking the **Show Upload Settings** button on the small window that pops up when uploading inputs exposes a section that lets you create concepts and label inputs.
+In general, deep fine-tuned models need more data than those trained using the [transfer learning technique](https://docs.clarifai.com/portal-guide/model/model-types/transfer-learning/). For most use cases, you’ll need at least 1000 training inputs, but it could be much more than this depending on your specific scenario.
 
-![Show Upload Settings](/img/community_2/custom_model_show_upload_settings.png)
+:::
 
-The section allows you to add the following to your inputs:
+### Step 3: Create an App
 
-- **Datasets**—A dataset is a set of data input examples for actions like training and evaluation. You can select a previously created dataset or create a new one. For this example, you may not provide it.
-- **Concepts**—Adding concepts help in training your model. You can select a previously created concept or create a new one. For this example, create new concepts and label your image inputs with them.
-- **Metadata**—You can also add inputs with custom metadata, which can be searched or filtered. Metadata can be any arbitrary JSON. For this example, you may not provide it.
+[Click here](https://docs.clarifai.com/clarifai-basics/applications/create-an-application/#create-an-application-on-the-portal) to learn how to create an application on the Clarifai portal. 
 
-Click the **Upload inputs** button at the button of the pop-up window to finalize uploading your inputs.
+:::note
 
-#### Model Mode
+When creating the application, go with the default Image/Video option as the primary input type. And in the collapsible **Advanced Settings** field, also go with the default **Universal** as the [base workflow](https://docs.clarifai.com/portal-guide/workflows/base-workflows/). 
 
-Next, select the **App Models** option on the collapsible left sidebar to enter the model mode.
+:::
 
-#### Create the Custom Model you Need
+### Step 4: Add and Annotate Inputs
 
-On the ensuing page, click the **Create Model** button on the top-right corner of the page.
+Select the **Inputs** option on your app’s collapsible left sidebar. Next, use the inputs uploader pop-up window to [upload](https://docs.clarifai.com/portal-guide/datasets/create-get-update-delete#add-inputs) the images of dogs you prepared to a [dataset](https://docs.clarifai.com/portal-guide/datasets/create-get-update-delete) within your application.  
 
-![create app models](/img/community_2/custom_model_create_model.png)
+Also, [label](https://docs.clarifai.com/portal-guide/annotate/create-get-update-delete) the images with the "dog" concept. 
 
-Next, on the page for choosing the type of model you want to create, select a `Visual Classifier`, `Visual Embedder`, or `Visual Detector`.
+![](/img/community_2/my-deep-training-1.png)
 
-For this example, let’s choose a `Visual Classifier`, which would classify images into set of concepts.
+Click the **Upload inputs** button to add the annotated images of dogs to your app. 
 
-![choose visual classifier](/img/community_2/choose_visual_classifier.png)
+Similarly, use the inputs uploader pop-up window to upload the images of cats you prepared to the same dataset.
 
-#### Configure Your Model
+Also, label the images with the "cat" concept.
 
-On the ensuing page, provide the details required to create the deep trained model.
+![](/img/community_2/my-deep-training-2.png)
 
-For this example, let's provide the model id, select the concepts we created previously, and select a template name. You can also fill the other fields if you want to.
+Click the **Upload inputs** button to add the annotated images of cats to your app.
 
-![configure model](/img/community_2/deep_training_create_model.png)
+### Step 5: Choose a Model Type
 
-The pre-configured model template is essential for training with on your data. When you choose your deep training template, you will see the hyperparameters that are available within that template populated with default values. You can adjust these values as desired.
+Select the **Models** option on your app’s collapsible left sidebar. 
 
-![template configuration](/img/community_2/template_configuration.png)
+Click the **Add Model** button on the upper-right corner of the page. On the window that pops up, select the **Build a Custom Model** option and click the **Continue** button.
 
-After configuring the model, click the **Create Model** button at the bottom of the page.
+![](/img/community_2/my-deep-training-3.png)
 
-#### Train Your Model
+You’ll be redirected to a page where you can choose the type of model you want to create and fine-tune.
 
-Next, train your model by clicking the **Train Model** button on the upper right-hand corner of the created model's page.
+Select the **Visual Classifier** option.
 
-![train model](/img/community_2/deep_training_train_model.png)
+![](/img/community_2/my-deep-training-4.png)
 
-Deep training can take much longer time than custom training a model. Many hours are required to deep train models with large numbers of inputs and complex taxonomies. You can check the progress in the model details view and monitor the training as it continues.
+### Step 6: Create the Model
 
-![model training progress](/img/community_2/model_training_progress.png)
+The ensuing page allows you to create and fine-tune a visual classifier model that categorizes images into a set of predefined concepts.
 
-Once you've created and trained your new model, you can put it to work, such as by adding it to a workflow and using it in your app.
+Provide a unique ID and click the **Continue to Configure model** button to create your model. 
 
-#### Job Cancellation
+![](/img/community_2/my-deep-training-5.png)
 
-You can cancel a deep training job at any time by deleting the model version that you are training. 
+After creating the model, set it up for training. 
 
-![delete model version](/img/community_2/delete_model_version.png)
+![](/img/community_2/my-deep-training-6.png)
 
-Deep training is billed at an hourly rate and for cancelled jobs, you will be charged for the time that you've used to train your model. 
+- **Dataset** — Select the dataset you previously created that has the images of the dogs and cats. You can also select [a specific version](https://docs.clarifai.com/portal-guide/datasets/create-get-update-delete#update-a-dataset-version) for it. 
+- **Concepts** — Select the list of concepts you want the model to predict from the existing concepts in your app. For this example, let's select "cat" and "dog."
+- **Invalid Data Tolerance Percent** — Optionally, you can set a tolerance threshold (0 to 100) for the percentage of invalid inputs during training, and if this threshold is exceeded, training is stopped with an error.
+- **Template** — Select a pre-configured model template you want to use to fine-tune your model. When you choose a deep training template, you will see the hyperparameters that are available within that template populated with default values. You can adjust these values as desired. For this example, we’ll go with the recommended template: `MMClassification_ResNet_50_RSB_A1`. [Click here](https://docs.clarifai.com/portal-guide/model/deep-training/visual-classification-templates) to learn more about the visual classification templates. 
 
-You can learn more about deep training pricing [here](https://www.clarifai.com/pricing).
+:::note
+
+Notice that the estimated duration for the training process is displayed for you. This [Training Time Estimator](https://docs.clarifai.com/portal-guide/model/training-basics#training-time-estimator) feature offers transparency in expected training costs.
+
+:::
+
+### Step 7: Train the Model​
+
+After configuring the training settings, click the **Train Model** button to initiate training your model. 
+
+You'll be redirected to the individual page of your model. 
+
+![](/img/community_2/my-deep-training-7.png)
+
+If you check the [model's versions table](https://docs.clarifai.com/portal-guide/model-versions/#model-versions-table), you’ll notice that the model is still being trained. Many hours may be required to deep train models with large numbers of inputs and complex taxonomies. 
+
+You can check the training progress by clicking the **View Training Log** button. You can also cancel a deep fine-tuning job at any time by clicking the **Cancel training** button. 
+
+After the model has been trained, the status will change to **Model Trained**.
+
+![](/img/community_2/my-deep-training-8.png)
+
+Once you've created and trained your new model, you can put it to work. It will be ready to be [evaluated](https://docs.clarifai.com/portal-guide/evaluate/), combined with other models and [agent operators](https://docs.clarifai.com/portal-guide/model/agent-system-operators/) in a workflow, or used to serve [inference](https://docs.clarifai.com/portal-guide/ppredict) requests as it is.
+
+:::info
+
+Deep fine-tuning is billed at an hourly rate, and for canceled jobs, you will be charged for the time you've used to train your model. You can learn more about deep fine-tuning pricing [here](https://www.clarifai.com/pricing).
+
+:::
+
+That's it!
 
