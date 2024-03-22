@@ -1,24 +1,19 @@
 ---
-description: Train the complete graph of your model.
+description: Learn how deep fine-tuning works
 sidebar_position: 6
 ---
 
 # Deep Fine-Tuning
 
-**Train the complete graph of your model**
+**Learn how deep fine-tuning works**
 <hr />
 
-Clarifai offers a variety of pre-built models that are designed to help you create AI solutions quickly and efficiently. Clarifai models are the recommended starting points for many users because they offer incredibly fast training times when you customize them using the "embedding-classifier" ([transfer learning classifier](https://docs.clarifai.com/portal-guide/model/model-types/transfer-learning)) model type.
+Fine-tuning is a deep learning technique that refers to taking a pre-trained model and further training it on a new dataset or task. The term "fine-tuning" implies making small adjustments or refinements to the already learned representations in the pre-trained model rather than training from scratch.
 
-But there are many cases where accuracy and the ability to carefully target solutions take priority over speed and ease of use. Additionally, you may need a model to learn new features, not recognized by existing Clarifai models. For these cases, it is possible to "deep fine-tune" your custom models and integrate them directly within your workflows.
+Fine-tuning leverages the power of pre-trained models to improve their performance on a new, related task. It involves taking a pre-trained model, which was previously trained on a vast dataset for a general-purpose task, and tailoring it to a more specific task.
 
-In general, deep trained models need more data than those trained on top of Clarifai models. For most applications, you’ll need at least 1000 training inputs, but it could be much more than this, depending on your specific use case.
+[Click here](https://docs.clarifai.com/portal-guide/model/deep-training/#why-choose-deep-fine-tuning) to learn why you might consider deep fine-tuning. 
 
-You might consider deep training if you have:
-
-* A custom tailored dataset
-* Accurate labels
-* Expertise and time to fine-tune models
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -27,8 +22,6 @@ import CodeBlock from "@theme/CodeBlock";
 import PythonCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_model.py";
 import PythonTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/train_model.py";
 import PythonTemplateTypes from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/template_types.py";
-import PythonCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_workflow_deep_trained_model.py";
-import PythonUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.py";
 import PythonCreateOwnTemplate1 from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_own_template_1.py";
 import PythonCreateOwnTemplate2 from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_own_template_2.py";
 import PythonTrainingTimeEstimator from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/training_time_estimator.py";
@@ -37,38 +30,28 @@ import PythonIncrementalTrainModel from "!!raw-loader!../../../code_snippets/api
 import JSCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_model.html";
 import JSTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/train_model.html";
 import JSTemplateTypes from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/template_types.html";
-import JSCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_workflow_deep_trained_model.html";
-import JSUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.html";
 import JSTrainingTimeEstimator from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/training_time_estimator.html";
 import JSIncrementalTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/incremental_train_model.html";
 
 import NodeCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_model.js";
 import NodeTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/train_model.js";
 import NodeTemplateTypes from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/template_types.js";
-import NodeCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_workflow_deep_trained_model.js";
-import NodeUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.js";
 import NodeTrainingTimeEstimator from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/training_time_estimator.js";
 
 import JavaCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_model.java";
 import JavaTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/train_model.java";
 import JavaTemplateTypes from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/template_types.java";
-import JavaCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_workflow_deep_trained_model.java";
-import JavaUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.java";
 import JavaTrainingTimeEstimator from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/training_time_estimator.java";
 import JavaIncrementalTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/incremental_train_model.java";
 
 import PHPCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_model.php";
 import PHPTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/train_model.php";
 import PHPTemplateTypes from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/template_types.php";
-import PHPCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_workflow_deep_trained_model.php";
-import PHPUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.php";
 import PHPTrainingTimeEstimator from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/training_time_estimator.php";
 
 import CurlCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_model.sh";
 import CurlTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/train_model.sh";
 import CurlTemplateTypes from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/template_types.sh";
-import CurlCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_workflow_deep_trained_model.sh";
-import CurlUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.sh";
 import CurlTrainingTimeEstimator from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/training_time_estimator.sh";
 import CurlIncrementalTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/incremental_train_model.sh";
 
@@ -329,74 +312,4 @@ Here is how you could use the custom template to train a deep fine-tuned model.
 
 </Tabs>
 
-
-## Create a Workflow 
-
-Put your new deep trained model to work by adding it to a workflow. Below is an example of how to create a workflow with a deep trained model.
-
-<Tabs>
-
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python">{PythonCreateWorkflow}</CodeBlock>
-</TabItem>
-
-<TabItem value="js_rest" label="JavaScript (REST)">
-    <CodeBlock className="language-javascript">{JSCreateWorkflow}</CodeBlock>
-</TabItem>
-
-<TabItem value="nodejs" label="NodeJS">
-    <CodeBlock className="language-javascript">{NodeCreateWorkflow}</CodeBlock>
-</TabItem>
-
-<TabItem value="java" label="Java">
-    <CodeBlock className="language-java">{JavaCreateWorkflow}</CodeBlock>
-</TabItem>
-
-<TabItem value="php" label="PHP">
-    <CodeBlock className="language-php">{PHPCreateWorkflow}</CodeBlock>
-</TabItem>
-
-<TabItem value="curl" label="cURL">
-    <CodeBlock className="language-bash">{CurlCreateWorkflow}</CodeBlock>
-</TabItem>
-
-</Tabs>
-
-### Update Your Default Workflow
-
-You can index your inputs with a deep fine-tuned model by updating your default workflow. You can also use your deep fine-tuned embeddings as the basis for clustering and search.
-
-Below is an example of how to update your default workflow with a deep fine-tuned model.
-
-<Tabs>
-
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python">{PythonUpdateWorkflow}</CodeBlock>
-</TabItem>
-
-<!--
-<TabItem value="js_rest" label="JavaScript (REST)">
-    <CodeBlock className="language-javascript">{JSUpdateWorkflow}</CodeBlock>
-</TabItem>
--->
-
-<TabItem value="nodejs" label="NodeJS">
-    <CodeBlock className="language-javascript">{NodeUpdateWorkflow}</CodeBlock>
-</TabItem>
-
-<TabItem value="java" label="Java">
-    <CodeBlock className="language-java">{JavaUpdateWorkflow}</CodeBlock>
-</TabItem>
-
-<!--
-<TabItem value="php" label="PHP">
-    <CodeBlock className="language-php">{PHPUpdateWorkflow}</CodeBlock>
-</TabItem>
--->
-
-<TabItem value="curl" label="cURL">
-    <CodeBlock className="language-bash">{CurlUpdateWorkflow}</CodeBlock>
-</TabItem>
-
-</Tabs>
 

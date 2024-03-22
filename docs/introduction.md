@@ -16,7 +16,17 @@ slug: /
 
 Clarifai offers an end-to-end platform for the complete AI lifecycle. Whether you have one input or billions, you are only steps away from using artificial intelligence to power your business applications.
 
-<!--This section mostly uses built-in Docusaurus styles inspired by https://docusaurus.io/docs/sidebar/items#generated-index-page -->
+<!--This section mostly uses built-in Docusaurus styles inspired by https://docusaurus.io/docs/sidebar/items#generated-index-page  
+      // Add in the right place below for Postman
+      <article class="col col--6">
+         <a href="https://god.gw.postman.com/run-collection/30622694-ddd58eb6-5c51-42a3-aa0d-97cc0efd546d?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D30622694-ddd58eb6-5c51-42a3-aa0d-97cc0efd546d%26entityType%3Dcollection%26workspaceId%3D00399af6-b92f-47d8-938f-0cacf755c972" target="_blank" style={{"display":"block","-webkit-text-decoration":"none","text-decoration":"none","color":"var(--ifm-heading-color)"}}>
+         <div class="card margin-bottom--lg padding--lg cardContainer_w8bb cardContainerLink_AhGd" style={{height:"auto", "color":"var(--ifm-heading-color)"}}>
+            <h3 class="inline-flex"><img src="/img/postman.png" alt="GitHub-Mark" width="42px" />&nbsp; Run in Postman</h3>
+            <p>Effortlessly consume Clarifai APIs using Postman</p>            
+         </div>
+         </a>
+      </article>  
+-->
 <main class="margin-top--lg">
    <div class="row">
       <article class="col col--6">

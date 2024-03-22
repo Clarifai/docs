@@ -1,6 +1,6 @@
 ---
 description: Connect your models together.
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 # Input Nodes
