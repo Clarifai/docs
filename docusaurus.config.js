@@ -67,6 +67,11 @@ const config = {
           src: 'img/logo.svg',
         },
         items: [
+         // {
+           // href: 'https://god.gw.postman.com/run-collection/30622694-ddd58eb6-5c51-42a3-aa0d-97cc0efd546d?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D30622694-ddd58eb6-5c51-42a3-aa0d-97cc0efd546d%26entityType%3Dcollection%26workspaceId%3D00399af6-b92f-47d8-938f-0cacf755c972',
+           // label: 'Postman',
+           // position: 'right',
+         // },
           {
             href: 'https://github.com/Clarifai/docs',
             label: 'GitHub',

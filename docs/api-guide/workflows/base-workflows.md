@@ -1,24 +1,115 @@
 ---
-description: Get a head start with your data.
-sidebar_position: 1
+description: Index your data and provide your app with a default knowledge base
+sidebar_position: 4
 ---
 
-# Base Workflows
+# Base Workflow
 
-**Get a head start with your data**
+**Index your data and provide your app with a default knowledge base**
 <hr />
 
-The Base Workflow includes one prebuilt Clarifai Model that provides the basic structure for indexing your data. The Base Workflow gives you a "head start" when working with your data—by pre-indexing your inputs for search and by providing a default embedding for your custom models. 
+The base workflow acts as the default knowledge base for your app and provides the basic structure for indexing your data. It gives you a "head start" when working with your data — by pre-indexing your inputs for search and by providing a default embedding for your custom models.
 
-Your base workflow is what makes your data sortable and searchable as soon as it is uploaded. 
+[Click here](https://docs.clarifai.com/portal-guide/workflows/base-workflows) to learn more about the base workflow functionality. 
 
-Choose a base workflow that you can build upon to create a custom solution. For example, if you're training a custom model around food, you could choose the Food model as your Base Workflow to optimize your custom model performance.
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
 
-You can choose one Base Workflow per app, and you can change your base workflow once your app is created. 
+import PythonCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_workflow_deep_trained_model.py";
+import PythonUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.py";
 
-![Choose your base workflow when you set up your app.](/img/baseworkflowsetup.jpg)
+import JSCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_workflow_deep_trained_model.html";
+import JSUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.html";
 
-![Change your base workflow once an app is created.](/img/changebasewkflw.jpg)
+import NodeCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_workflow_deep_trained_model.js";
+import NodeUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.js";
 
+import JavaCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_workflow_deep_trained_model.java";
+import JavaUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.java";
 
+import PHPCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_workflow_deep_trained_model.php";
+import PHPUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.php";
 
+import CurlCreateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_workflow_deep_trained_model.sh";
+import CurlUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.sh";
+
+Let's demonstrate how you can update the default workflow for your app. 
+
+## Create a Workflow 
+
+You may need to start by creating a workflow for your app. 
+
+Below is an example of how to create a workflow with a custom model. Note that you can also create a workflow using the models available publicly on the Clarifai Community platform. 
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonCreateWorkflow}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSCreateWorkflow}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeCreateWorkflow}</CodeBlock>
+</TabItem>
+
+<TabItem value="java" label="Java">
+    <CodeBlock className="language-java">{JavaCreateWorkflow}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPCreateWorkflow}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlCreateWorkflow}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+## Update Your Base Workflow
+
+After creating a workflow, you can then use it to update the default workflow for your app. You can also use a publicly available workflow to update your default workflow. 
+
+Below is an example of how to update your base workflow.
+
+:::note
+
+Updating the base workflow will re-index your app, processing all inputs through the new base workflow. This may take some time, and could incur costs. You could avoid the costs by deleting all your inputs before updating the base workflow.
+
+:::
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonUpdateWorkflow}</CodeBlock>
+</TabItem>
+
+<!--
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSUpdateWorkflow}</CodeBlock>
+</TabItem>
+-->
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeUpdateWorkflow}</CodeBlock>
+</TabItem>
+
+<TabItem value="java" label="Java">
+    <CodeBlock className="language-java">{JavaUpdateWorkflow}</CodeBlock>
+</TabItem>
+
+<!--
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPUpdateWorkflow}</CodeBlock>
+</TabItem>
+-->
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlUpdateWorkflow}</CodeBlock>
+</TabItem>
+
+</Tabs>
