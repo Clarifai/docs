@@ -35,7 +35,7 @@ stub.PostInputsSearches(
                 query: {
                     ranks: [
                         {
-                            input: {
+                            annotation: {
                                 data: {
                                     image: {
                                         url: IMAGE_URL

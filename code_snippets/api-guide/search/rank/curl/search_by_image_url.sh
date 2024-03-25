@@ -7,7 +7,7 @@ curl -X POST "https://api.clarifai.com/v2/users/YOUR_USER_ID_HERE/apps/YOUR_APP_
         "query": {
         "ranks": [
             {
-            "input": {
+            "annotation": {
                 "data": {
                 "image": {
                     "url": "https://samples.clarifai.com/metro-north.jpg"

@@ -31,7 +31,7 @@ post_searches_response = stub.PostSearches(
         query=resources_pb2.Query(
             ands=[
                 resources_pb2.And(
-                    input=resources_pb2.Input(
+                    input=resources_pb2.Annotation(
                         data=resources_pb2.Data(
                             image=resources_pb2.Image(
                                 url=IMAGE_URL
