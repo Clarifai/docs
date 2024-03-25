@@ -33,14 +33,14 @@ public class ClarifaiExample {
             .withCallCredentials(new ClarifaiCallCredentials(PAT));
 
 
-        MultiSearchResponse postAnnotationsSearchesResponse = stub.postAnnotationsSearches(
-            PostAnnotationsSearchesRequest.newBuilder()
+        MultiSearchResponse postInputsSearchesResponse = stub.postInputsSearches(
+            PostInputsSearchesRequest.newBuilder()
             .setUserAppId(UserAppIDSet.newBuilder().setUserId(USER_ID).setAppId(APP_ID))
             .addSearches(
                 Search.newBuilder().setQuery(
                     Query.newBuilder().addRanks(
-                        Rank.newBuilder().setAnnotation(
-                            Annotation.newBuilder().setData(
+                        Rank.newBuilder().setInput(
+                            Input.newBuilder().setData(
                                 Data.newBuilder().setImage(
                                     Image.newBuilder()
                                     .setBase64(ByteString.copyFrom(Files.readAllBytes(
@@ -55,13 +55,13 @@ public class ClarifaiExample {
             .build()
         );
 
-        if (postAnnotationsSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
-            throw new RuntimeException("Post annotations searches failed, status: " + postAnnotationsSearchesResponse.getStatus());
+        if (postInputsSearchesResponse.getStatus().getCode() != StatusCode.SUCCESS) {
+            throw new RuntimeException("Post inputs searches failed, status: " + postInputsSearchesResponse.getStatus());
         }
 
-        System.out.println("Found inputs " + postAnnotationsSearchesResponse.getHitsCount() + ":");
-        for (Hit hit : postAnnotationsSearchesResponse.getHitsList()) {
-            System.out.printf("\tScore %.2f for annotation %s of input %s\n", hit.getScore(), hit.getAnnotation().getId(), hit.getInput().getId());
+        System.out.println("Found inputs " + postInputsSearchesResponse.getHitsCount() + ":");
+        for (Hit hit : postInputsSearchesResponse.getHitsList()) {
+            System.out.printf("\tScore %.2f for input %s", hit.getScore(), hit.getInput().getId());
         }
 
     }

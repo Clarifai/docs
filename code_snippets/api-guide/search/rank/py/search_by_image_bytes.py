@@ -28,15 +28,15 @@ userDataObject = resources_pb2.UserAppIDSet(user_id=USER_ID, app_id=APP_ID)
 with open(IMAGE_FILE_LOCATION, "rb") as f:
     file_bytes = f.read()
 
-post_annotations_searches_response = stub.PostAnnotationsSearches(
-    service_pb2.PostAnnotationsSearchesRequest(
+post_inputs_searches_response = stub.PostInputsSearches(
+    service_pb2.PostInputsSearchesRequest(
         user_app_id=userDataObject,
         searches = [
             resources_pb2.Search(
                 query=resources_pb2.Query(
                     ranks=[
                         resources_pb2.Rank(
-                            annotation=resources_pb2.Annotation(
+                            input=resources_pb2.Input(
                                 data=resources_pb2.Data(
                                     image=resources_pb2.Image(
                                         base64=file_bytes
@@ -52,10 +52,10 @@ post_annotations_searches_response = stub.PostAnnotationsSearches(
     metadata=metadata
 )
 
-if post_annotations_searches_response.status.code != status_code_pb2.SUCCESS:
-    print(post_annotations_searches_response.status)  
-    raise Exception("Post searches failed, status: " + post_annotations_searches_response.status.description)
+if post_inputs_searches_response.status.code != status_code_pb2.SUCCESS:
+    print(post_inputs_searches_response.status)  
+    raise Exception("Post searches failed, status: " + post_inputs_searches_response.status.description)
 
 print("Search result:")
-for hit in post_annotations_searches_response.hits:
-    print("\tScore %.2f for annotation: %s off input: %s" % (hit.score, hit.annotation.id, hit.input.id))
+for hit in post_inputs_searches_response.hits:
+    print("\tScore %.2f for input: %s" % (hit.score, hit.input.id))
