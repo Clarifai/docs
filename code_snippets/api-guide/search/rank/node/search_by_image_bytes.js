@@ -38,7 +38,7 @@ stub.PostInputsSearches(
                 query: {
                     ranks: [
                         {
-                            input: {
+                            annotation: {
                                 data: {
                                     image: {
                                         base64: imageBytes

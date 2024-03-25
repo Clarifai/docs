@@ -39,7 +39,7 @@ public class ClarifaiExample {
             .addSearches(
                 Search.newBuilder().setQuery(
                     Query.newBuilder().addRanks(
-                        Rank.newBuilder().setInput(
+                        Rank.newBuilder().setAnnotation(
                             Input.newBuilder().setData(
                                 Data.newBuilder().setImage(
                                     Image.newBuilder()

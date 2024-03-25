@@ -36,7 +36,7 @@ post_inputs_searches_response = stub.PostInputsSearches(
                 query=resources_pb2.Query(
                     ranks=[
                         resources_pb2.Rank(
-                            input=resources_pb2.Input(
+                            input=resources_pb2.Annotation(
                                 data=resources_pb2.Data(
                                     image=resources_pb2.Image(
                                         base64=file_bytes
