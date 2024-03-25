@@ -27,7 +27,7 @@ metadata.set("authorization", "Key " + PAT);
 const fs = require("fs");
 const imageBytes = fs.readFileSync(IMAGE_FILE_LOCATION);
 
-stub.PostAnnotationsSearches(
+stub.PostInputsSearches(
     {
         user_app_id: {
             user_id: USER_ID,
@@ -38,7 +38,7 @@ stub.PostAnnotationsSearches(
                 query: {
                     ranks: [
                         {
-                            annotation: {
+                            input: {
                                 data: {
                                     image: {
                                         base64: imageBytes
@@ -58,12 +58,12 @@ stub.PostAnnotationsSearches(
         }
 
         if (response.status.code !== 10000) {
-            throw new Error("Post annotations searches failed, status: " + response.status.description);
+            throw new Error("Post inputs searches failed, status: " + response.status.description);
         }
 
         console.log("Search result:");
         for (const hit of response.hits) {
-            console.log("\tScore " + hit.score + " for annotation: " + hit.annotation.id + " of input: ", hit.input.id);
+            console.log("\tScore " + hit.score + " for input: " + hit.input.id);
         }
     }
 );
