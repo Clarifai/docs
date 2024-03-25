@@ -55,4 +55,4 @@ if post_inputs_searches_response.status.code != status_code_pb2.SUCCESS:
 
 print("Search result:")
 for hit in post_inputs_searches_response.hits:
-    print("\tScore %.2f for input: %s off input: %s" % (hit.score, hit.input.id, hit.input.id))
+    print("\tScore %.2f for input: %s" % (hit.score, hit.input.id))
