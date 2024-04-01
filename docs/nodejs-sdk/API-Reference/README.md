@@ -4,8 +4,6 @@ sidebar_label: 'API Reference'
 ---
 clarifai-nodejs / [Exports](modules.md)
 
-![Clarifai logo](https://www.clarifai.com/hubfs/Clarifai-logo-dark.svg)
-
 [![npm](https://img.shields.io/npm/v/clarifai-nodejs)](https://www.npmjs.com/package/clarifai-nodejs)
 [![Build](https://github.com/Clarifai/clarifai-nodejs/workflows/Run%20tests/badge.svg)](https://github.com/Clarifai/clarifai-nodejs/actions)
 
@@ -18,7 +16,7 @@ Clarifai provides a platform for data scientists, developers, researchers and en
 
 - Try the Clarifai demo at: https://clarifai.com/demo
 - Sign up for a free account at: https://portal.clarifai.com/signup
-- Read the documentation at: https://docs.clarifai.com/
+- Read the full implementation reference at the [modules reference page](modules.md)
 
 ## Installation
 
