@@ -1,3 +1,8 @@
+---
+title: 'API Reference'
+sidebar_label: 'API Reference'
+position: 1
+---
 [clarifai-nodejs](README.md) / Exports
 
 # clarifai-nodejs
@@ -35,7 +40,7 @@
 
 #### Defined in
 
-[client/app.ts:52](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/app.ts#L52)
+[client/app.ts:52](https://github.com/Clarifai/clarifai-nodejs/blob/4511094/src/client/app.ts#L52)
 
 ___
 
@@ -65,7 +70,7 @@ ___
 
 #### Defined in
 
-[client/app.ts:75](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/app.ts#L75)
+[client/app.ts:75](https://github.com/Clarifai/clarifai-nodejs/blob/4511094/src/client/app.ts#L75)
 
 ___
 
@@ -106,7 +111,7 @@ ___
 
 #### Defined in
 
-[client/app.ts:76](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/app.ts#L76)
+[client/app.ts:76](https://github.com/Clarifai/clarifai-nodejs/blob/4511094/src/client/app.ts#L76)
 
 ___
 
@@ -135,7 +140,7 @@ ___
 
 #### Defined in
 
-[client/user.ts:28](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/user.ts#L28)
+[client/user.ts:28](https://github.com/Clarifai/clarifai-nodejs/blob/4511094/src/client/user.ts#L28)
 
 ___
 
@@ -161,7 +166,7 @@ ___
 
 #### Defined in
 
-[client/app.ts:65](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/app.ts#L65)
+[client/app.ts:65](https://github.com/Clarifai/clarifai-nodejs/blob/4511094/src/client/app.ts#L65)
 
 ___
 
@@ -177,7 +182,7 @@ ___
 
 #### Defined in
 
-[client/app.ts:73](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/app.ts#L73)
+[client/app.ts:73](https://github.com/Clarifai/clarifai-nodejs/blob/4511094/src/client/app.ts#L73)
 
 ___
 
@@ -216,7 +221,7 @@ ___
 
 #### Defined in
 
-[client/app.ts:67](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/app.ts#L67)
+[client/app.ts:67](https://github.com/Clarifai/clarifai-nodejs/blob/4511094/src/client/app.ts#L67)
 
 ___
 
@@ -243,7 +248,7 @@ ___
 
 #### Defined in
 
-[client/app.ts:71](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/app.ts#L71)
+[client/app.ts:71](https://github.com/Clarifai/clarifai-nodejs/blob/4511094/src/client/app.ts#L71)
 
 ___
 
@@ -259,7 +264,7 @@ ___
 
 #### Defined in
 
-[client/user.ts:30](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/user.ts#L30)
+[client/user.ts:30](https://github.com/Clarifai/clarifai-nodejs/blob/4511094/src/client/user.ts#L30)
 
 ___
 
@@ -288,7 +293,7 @@ ___
 
 #### Defined in
 
-[client/app.ts:69](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/app.ts#L69)
+[client/app.ts:69](https://github.com/Clarifai/clarifai-nodejs/blob/4511094/src/client/app.ts#L69)
 
 ___
 
@@ -309,4 +314,4 @@ ___
 
 #### Defined in
 
-[client/user.ts:27](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/user.ts#L27)
+[client/user.ts:27](https://github.com/Clarifai/clarifai-nodejs/blob/4511094/src/client/user.ts#L27)
