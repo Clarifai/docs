@@ -1,3 +1,7 @@
+---
+title: 'Node.js SDK API Reference'
+sidebar_label: 'API Reference'
+---
 clarifai-nodejs / [Exports](modules.md)
 
 ![Clarifai logo](https://www.clarifai.com/hubfs/Clarifai-logo-dark.svg)
