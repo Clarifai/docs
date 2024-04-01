@@ -18,11 +18,14 @@
 - [AppConfig](modules.md#appconfig)
 - [CreateDatasetParam](modules.md#createdatasetparam)
 - [CreateModelParam](modules.md#createmodelparam)
+- [ListAppsRequestParams](modules.md#listappsrequestparams)
 - [ListDatasetsParam](modules.md#listdatasetsparam)
 - [ListInstalledModuleVersionsParam](modules.md#listinstalledmoduleversionsparam)
 - [ListModelsParam](modules.md#listmodelsparam)
 - [ListModulesParam](modules.md#listmodulesparam)
+- [ListRunnersRequestParams](modules.md#listrunnersrequestparams)
 - [ListWorkflowsParam](modules.md#listworkflowsparam)
+- [UserConfig](modules.md#userconfig)
 
 ## Type Aliases
 
@@ -32,7 +35,7 @@
 
 #### Defined in
 
-[client/app.ts:50](https://github.com/Clarifai/clarifai-nodejs/blob/8f77f08/src/client/app.ts#L50)
+[client/app.ts:52](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/app.ts#L52)
 
 ___
 
@@ -62,7 +65,7 @@ ___
 
 #### Defined in
 
-[client/app.ts:73](https://github.com/Clarifai/clarifai-nodejs/blob/8f77f08/src/client/app.ts#L73)
+[client/app.ts:75](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/app.ts#L75)
 
 ___
 
@@ -103,7 +106,36 @@ ___
 
 #### Defined in
 
-[client/app.ts:74](https://github.com/Clarifai/clarifai-nodejs/blob/8f77f08/src/client/app.ts#L74)
+[client/app.ts:76](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/app.ts#L76)
+
+___
+
+### ListAppsRequestParams
+
+Ƭ **ListAppsRequestParams**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `additionalFieldsList` | `undefined` \| `string`[] |
+| `featuredOnly` | `undefined` \| `boolean` |
+| `id` | `undefined` \| `string` |
+| `name` | `undefined` \| `string` |
+| `page` | `undefined` \| `number` |
+| `query` | `undefined` \| `string` |
+| `search` | `undefined` \| `string` |
+| `sortAscending` | `undefined` \| `boolean` |
+| `sortByCreatedAt` | `undefined` \| `boolean` |
+| `sortByModifiedAt` | `undefined` \| `boolean` |
+| `sortByName` | `undefined` \| `boolean` |
+| `sortByStarCount` | `undefined` \| `boolean` |
+| `starredOnly` | `undefined` \| `boolean` |
+| `templateOnly` | `undefined` \| `boolean` |
+
+#### Defined in
+
+[client/user.ts:28](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/user.ts#L28)
 
 ___
 
@@ -129,7 +161,7 @@ ___
 
 #### Defined in
 
-[client/app.ts:63](https://github.com/Clarifai/clarifai-nodejs/blob/8f77f08/src/client/app.ts#L63)
+[client/app.ts:65](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/app.ts#L65)
 
 ___
 
@@ -145,7 +177,7 @@ ___
 
 #### Defined in
 
-[client/app.ts:71](https://github.com/Clarifai/clarifai-nodejs/blob/8f77f08/src/client/app.ts#L71)
+[client/app.ts:73](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/app.ts#L73)
 
 ___
 
@@ -184,7 +216,7 @@ ___
 
 #### Defined in
 
-[client/app.ts:65](https://github.com/Clarifai/clarifai-nodejs/blob/8f77f08/src/client/app.ts#L65)
+[client/app.ts:67](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/app.ts#L67)
 
 ___
 
@@ -211,7 +243,23 @@ ___
 
 #### Defined in
 
-[client/app.ts:69](https://github.com/Clarifai/clarifai-nodejs/blob/8f77f08/src/client/app.ts#L69)
+[client/app.ts:71](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/app.ts#L71)
+
+___
+
+### ListRunnersRequestParams
+
+Ƭ **ListRunnersRequestParams**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `page` | `undefined` \| `number` |
+
+#### Defined in
+
+[client/user.ts:30](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/user.ts#L30)
 
 ___
 
@@ -240,4 +288,25 @@ ___
 
 #### Defined in
 
-[client/app.ts:67](https://github.com/Clarifai/clarifai-nodejs/blob/8f77f08/src/client/app.ts#L67)
+[client/app.ts:69](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/app.ts#L69)
+
+___
+
+### UserConfig
+
+Ƭ **UserConfig**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `appId` | `string` |
+| `base` | `undefined` \| `string` |
+| `pat` | `string` |
+| `token` | `undefined` \| `string` |
+| `ui` | `undefined` \| `string` |
+| `userId` | `string` |
+
+#### Defined in
+
+[client/user.ts:27](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/user.ts#L27)

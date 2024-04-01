@@ -45,6 +45,19 @@ Inputs is a class that provides access to Clarifai API endpoints related to Inpu
 
 Initializes an input object.
 
+### Example
+```ts
+import { Input } from "clarifai-nodejs";
+
+export const input = new Input({
+  authConfig: {
+    pat: process.env.CLARIFAI_PAT!,
+    userId: process.env.CLARIFAI_USER_ID!,
+    appId: process.env.CLARIFAI_APP_ID!,
+  },
+});
+```
+
 #### Parameters
 
 | Name | Type | Description |
@@ -62,7 +75,7 @@ Lister.constructor
 
 #### Defined in
 
-[client/input.ts:62](https://github.com/Clarifai/clarifai-nodejs/blob/8f77f08/src/client/input.ts#L62)
+[client/input.ts:64](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/input.ts#L64)
 
 ## Methods
 
@@ -84,7 +97,7 @@ Lister.constructor
 
 #### Defined in
 
-[client/input.ts:924](https://github.com/Clarifai/clarifai-nodejs/blob/8f77f08/src/client/input.ts#L924)
+[client/input.ts:923](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/input.ts#L923)
 
 ___
 
@@ -106,7 +119,7 @@ ___
 
 #### Defined in
 
-[client/input.ts:960](https://github.com/Clarifai/clarifai-nodejs/blob/8f77f08/src/client/input.ts#L960)
+[client/input.ts:959](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/input.ts#L959)
 
 ___
 
@@ -135,7 +148,7 @@ ___
 
 #### Defined in
 
-[client/input.ts:872](https://github.com/Clarifai/clarifai-nodejs/blob/8f77f08/src/client/input.ts#L872)
+[client/input.ts:871](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/input.ts#L871)
 
 ___
 
@@ -164,7 +177,7 @@ ___
 
 #### Defined in
 
-[client/input.ts:837](https://github.com/Clarifai/clarifai-nodejs/blob/8f77f08/src/client/input.ts#L837)
+[client/input.ts:836](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/input.ts#L836)
 
 ___
 
@@ -193,7 +206,7 @@ ___
 
 #### Defined in
 
-[client/input.ts:802](https://github.com/Clarifai/clarifai-nodejs/blob/8f77f08/src/client/input.ts#L802)
+[client/input.ts:801](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/input.ts#L801)
 
 ___
 
@@ -215,7 +228,7 @@ ___
 
 #### Defined in
 
-[client/input.ts:761](https://github.com/Clarifai/clarifai-nodejs/blob/8f77f08/src/client/input.ts#L761)
+[client/input.ts:760](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/input.ts#L760)
 
 ___
 
@@ -238,7 +251,7 @@ ___
 
 #### Defined in
 
-[client/input.ts:907](https://github.com/Clarifai/clarifai-nodejs/blob/8f77f08/src/client/input.ts#L907)
+[client/input.ts:906](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/input.ts#L906)
 
 ___
 
@@ -261,13 +274,41 @@ ___
 
 #### Defined in
 
-[client/input.ts:680](https://github.com/Clarifai/clarifai-nodejs/blob/8f77f08/src/client/input.ts#L680)
+[client/input.ts:679](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/input.ts#L679)
 
 ___
 
 ### getImageInputsFromFolder
 
 ▸ **getImageInputsFromFolder**(`«destructured»`): `Input`[]
+
+Upload image inputs from folder.
+
+### Example
+```ts
+import { Input, Model } from "clarifai-nodejs";
+import path from "path";
+
+// Generate a new GRPC compatible Input object from buffer
+const imageInputs = Input.getImageInputsFromFolder({
+  // Ensure the directory contains a list of images
+  folderPath: path.resolve(__dirname, "path/to/imageFolder"),
+});
+
+// The input can now be used as an input for a model prediction methods
+const model = new Model({
+  authConfig: {
+    pat: process.env.CLARIFAI_PAT!,
+    userId: process.env.CLARIFAI_USER_ID!,
+    appId: process.env.CLARIFAI_APP_ID!,
+  },
+  modelId: "multimodal-clip-embed",
+});
+const prediction = await model.predict({
+  inputs: imageInputs,
+});
+console.log(prediction);
+```
 
 #### Parameters
 
@@ -284,7 +325,7 @@ ___
 
 #### Defined in
 
-[client/input.ts:412](https://github.com/Clarifai/clarifai-nodejs/blob/8f77f08/src/client/input.ts#L412)
+[client/input.ts:396](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/input.ts#L396)
 
 ___
 
@@ -293,6 +334,34 @@ ___
 ▸ **getInputFromBytes**(`«destructured»`): `Input`
 
 Creates an input proto from bytes.
+
+### Example
+```ts
+import { Input, Model } from "clarifai-nodejs";
+import * as fs from "fs";
+
+const imageBuffer = fs.readFileSync("path/to/image.jpg");
+
+// Generate a new GRPC compatible Input object from buffer
+const imageInput = Input.getInputFromBytes({
+  inputId: "demo",
+  imageBytes: imageBuffer,
+});
+
+// The input can now be used as an input for a model prediction methods
+const model = new Model({
+  authConfig: {
+    pat: process.env.CLARIFAI_PAT!,
+    userId: process.env.CLARIFAI_USER_ID!,
+    appId: process.env.CLARIFAI_APP_ID!,
+  },
+  modelId: "multimodal-clip-embed",
+});
+const prediction = await model.predict({
+  inputs: [imageInput],
+});
+console.log(prediction);
+```
 
 #### Parameters
 
@@ -315,23 +384,9 @@ Creates an input proto from bytes.
 
 An `Input` object for the specified input ID.
 
-**`Example`**
-
-```typescript
-import { Input } from 'clarifai-nodejs';
-
-const image = new Uint8Array(fs.readFileSync('demo.jpg'));
-const video = new Uint8Array(fs.readFileSync('demo.mp4'));
-const inputProto = Inputs.getInputFromBytes({
-  inputId: 'demo',
-  imageBytes: image,
-  videoBytes: video,
-});
-```
-
 #### Defined in
 
-[client/input.ts:203](https://github.com/Clarifai/clarifai-nodejs/blob/8f77f08/src/client/input.ts#L203)
+[client/input.ts:194](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/input.ts#L194)
 
 ___
 
@@ -340,6 +395,32 @@ ___
 ▸ **getInputFromFile**(`«destructured»`): `Input`
 
 Create input proto from files.
+
+### Example
+```ts
+import { Input, Model } from "clarifai-nodejs";
+import path from "path";
+
+// Generate a new GRPC compatible Input object from buffer
+const imageInput = Input.getInputFromFile({
+  inputId: "demo",
+  imageFile: path.resolve(__dirname, "path/to/image.jpg"),
+});
+
+// The input can now be used as an input for a model prediction methods
+const model = new Model({
+  authConfig: {
+    pat: process.env.CLARIFAI_PAT!,
+    userId: process.env.CLARIFAI_USER_ID!,
+    appId: process.env.CLARIFAI_APP_ID!,
+  },
+  modelId: "multimodal-clip-embed",
+});
+const prediction = await model.predict({
+  inputs: [imageInput],
+});
+console.log(prediction);
+```
 
 #### Parameters
 
@@ -362,20 +443,9 @@ Create input proto from files.
 
 - An Input object for the specified input ID.
 
-**`Example`**
-
-```typescript
-import { Input } from 'clarifai-nodejs';
-
-const inputProto = Input.getInputFromFile({
-  inputId: 'demo',
-  imageFile: 'file_path',
-});
-```
-
 #### Defined in
 
-[client/input.ts:275](https://github.com/Clarifai/clarifai-nodejs/blob/8f77f08/src/client/input.ts#L275)
+[client/input.ts:258](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/input.ts#L258)
 
 ___
 
@@ -384,6 +454,31 @@ ___
 ▸ **getInputFromUrl**(`«destructured»`): `Input`
 
 Upload input from URL.
+
+### Example
+```ts
+import { Input, Model } from "clarifai-nodejs";
+
+// Generate a new GRPC compatible Input object from buffer
+const imageInput = Input.getInputFromUrl({
+  inputId: "demo",
+  imageUrl: "https://samples.clarifai.com/dog2.jpeg",
+});
+
+// The input can now be used as an input for a model prediction methods
+const model = new Model({
+  authConfig: {
+    pat: process.env.CLARIFAI_PAT!,
+    userId: process.env.CLARIFAI_USER_ID!,
+    appId: process.env.CLARIFAI_APP_ID!,
+  },
+  modelId: "multimodal-clip-embed",
+});
+const prediction = await model.predict({
+  inputs: [imageInput],
+});
+console.log(prediction);
+```
 
 #### Parameters
 
@@ -406,20 +501,9 @@ Upload input from URL.
 
 - Job ID for the upload request.
 
-**`Example`**
-
-```typescript
-import { Input } from 'clarifai-nodejs';
-
-const inputJobId = Input.uploadFromUrl({
-  inputId: 'demo',
-  imageUrl: 'https://samples.clarifai.com/metro-north.jpg',
-});
-```
-
 #### Defined in
 
-[client/input.ts:347](https://github.com/Clarifai/clarifai-nodejs/blob/8f77f08/src/client/input.ts#L347)
+[client/input.ts:322](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/input.ts#L322)
 
 ___
 
@@ -427,24 +511,29 @@ ___
 
 ▸ **getInputsFromCsv**(`«destructured»`): `Promise`\<`Input`[]\>
 
+Create Input proto from CSV File. Supported columns are:
+'inputid', 'input', 'concepts', 'metadata', 'geopoints'
+
 #### Parameters
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
 | `«destructured»` | `Object` | `undefined` |
 | › `csvPath` | `string` | `undefined` |
-| › `csvType` | `string` | `"raw"` |
+| › `csvType` | ``"url"`` \| ``"raw"`` \| ``"file"`` | `"raw"` |
 | › `datasetId?` | ``null`` \| `string` | `null` |
-| › `inputType` | `string` | `"text"` |
+| › `inputType` | ``"image"`` \| ``"text"`` \| ``"video"`` \| ``"audio"`` | `"text"` |
 | › `labels` | `boolean` | `true` |
 
 #### Returns
 
 `Promise`\<`Input`[]\>
 
+- An array of Input objects for the specified input ID.
+
 #### Defined in
 
-[client/input.ts:534](https://github.com/Clarifai/clarifai-nodejs/blob/8f77f08/src/client/input.ts#L534)
+[client/input.ts:533](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/input.ts#L533)
 
 ___
 
@@ -466,13 +555,15 @@ ___
 
 #### Defined in
 
-[client/input.ts:721](https://github.com/Clarifai/clarifai-nodejs/blob/8f77f08/src/client/input.ts#L721)
+[client/input.ts:720](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/input.ts#L720)
 
 ___
 
 ### getMultimodalInput
 
 ▸ **getMultimodalInput**(`«destructured»`): `Input`
+
+Create input proto for text and image from bytes or url
 
 #### Parameters
 
@@ -490,9 +581,11 @@ ___
 
 `Input`
 
+- An Input object for the specified input ID.
+
 #### Defined in
 
-[client/input.ts:489](https://github.com/Clarifai/clarifai-nodejs/blob/8f77f08/src/client/input.ts#L489)
+[client/input.ts:476](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/input.ts#L476)
 
 ___
 
@@ -525,7 +618,7 @@ Create input proto for image data type.
 
 #### Defined in
 
-[client/input.ts:80](https://github.com/Clarifai/clarifai-nodejs/blob/8f77f08/src/client/input.ts#L80)
+[client/input.ts:82](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/input.ts#L82)
 
 ___
 
@@ -534,6 +627,31 @@ ___
 ▸ **getTextInput**(`«destructured»`): `Input`
 
 Create input proto for text data type from raw text.
+
+### Example
+```ts
+import { Input, Model } from "clarifai-nodejs";
+
+// Generate a new GRPC compatible Input object from buffer
+const textInput = Input.getTextInput({
+  inputId: "demo",
+  rawText: "Sample text for input generation",
+});
+
+// The input can now be used as an input for a model prediction methods
+const model = new Model({
+  authConfig: {
+    pat: process.env.CLARIFAI_PAT!,
+    userId: process.env.CLARIFAI_USER_ID!,
+    appId: process.env.CLARIFAI_APP_ID!,
+  },
+  modelId: "multimodal-clip-embed",
+});
+const prediction = await model.predict({
+  inputs: [textInput],
+});
+console.log(prediction);
+```
 
 #### Parameters
 
@@ -553,20 +671,9 @@ Create input proto for text data type from raw text.
 
 - An Input object for the specified input ID.
 
-**`Example`**
-
-```typescript
-import { Input } from 'clarifai-nodejs';
-
-const inputProto = Input.getTextInput({
-  inputId: 'demo',
-  rawText: 'This is a test',
-});
-```
-
 #### Defined in
 
-[client/input.ts:463](https://github.com/Clarifai/clarifai-nodejs/blob/8f77f08/src/client/input.ts#L463)
+[client/input.ts:439](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/input.ts#L439)
 
 ___
 
@@ -589,4 +696,4 @@ ___
 
 #### Defined in
 
-[client/input.ts:649](https://github.com/Clarifai/clarifai-nodejs/blob/8f77f08/src/client/input.ts#L649)
+[client/input.ts:648](https://github.com/Clarifai/clarifai-nodejs/blob/a140e93/src/client/input.ts#L648)
