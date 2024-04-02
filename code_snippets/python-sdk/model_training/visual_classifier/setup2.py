@@ -1,3 +1,3 @@
-file = open('saved_mmclassification_efficientNet.yaml')
+file = open('models/model_train/saved_mmclassification_efficientnet.yaml')
 data = yaml.safe_load(file)
 print(data)
