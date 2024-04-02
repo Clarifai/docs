@@ -156,6 +156,12 @@ const config = {
     [
       '@docusaurus/plugin-client-redirects',
       {
+        redirects: [
+          {
+            to: '/nodejs-sdk/installation-guide/modules',
+            from: ['/nodejs-sdk/api-reference'],
+          },
+        ],
         createRedirects(existingPath) {
           if (existingPath.includes('/community')) {
             // Redirect from /community/X to /portal-guide/X
