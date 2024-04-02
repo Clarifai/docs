@@ -49,6 +49,10 @@ Guide to get your [PAT](https://docs.clarifai.com/clarifai-basics/authentication
 To run on a local system use: cd examples/ 
 :::
 
+:::note
+Before you proceed install ```llama_index``` using ```pip install llama-index-core==0.10.1```
+:::
+
 ## Initialising RAG
 
 The first part of creating a RAG-based application includes setting up the RAG object. Just by setting up the RAG object, Clarifai Python SDK will automatically create the app along with a prompter model and workflow containing the RAG prompter and the LLM Model.
