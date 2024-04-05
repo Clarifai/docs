@@ -1,0 +1,6 @@
+macro_avg_roc_auc: 0.9200000166893005
+macro_std_roc_auc: 0.03399345278739929
+macro_avg_f1_score: 0.6682435274124146
+macro_std_f1_score: 0.08137183636426926
+macro_avg_precision: 0.53125
+macro_avg_recall: 0.949999988079071

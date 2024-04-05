@@ -1,0 +1,42 @@
+(     Concept  Average Precision  Total Labeled  True Positives  \
+ 0     id-cow                1.0              2               2   
+ 0   id-horse                1.0              1               1   
+ 0  id-bottle                1.0              2               2   
+ 0    id-sofa                1.0              1               1   
+ 0    id-bird                1.0              1               1   
+ 0     id-cat                1.0              2               2   
+ 0     id-dog                1.0              1               1   
+ 0  id-person                1.0              8               8   
+ 0     id-dog                1.0              1               1   
+ 0  id-person                1.0              3               3   
+ 
+    False Positives  False Negatives  Recall  Precision        F1  \
+ 0                0                0     1.0      0.841  0.913634   
+ 0                0                0     1.0      0.783  0.878295   
+ 0                0                0     1.0      0.819  0.900495   
+ 0                0                0     1.0      0.769  0.869418   
+ 0                0                0     1.0      0.790  0.882682   
+ 0                0                0     1.0      0.836  0.910675   
+ 0                0                0     1.0      0.763  0.865570   
+ 0                0                0     1.0      0.940  0.969072   
+ 0                0                0     1.0      0.763  0.865570   
+ 0                0                0     1.0      0.884  0.938429   
+ 
+           Dataset  
+ 0  train_dataset2  
+ 0  train_dataset2  
+ 0  train_dataset2  
+ 0  train_dataset2  
+ 0  train_dataset2  
+ 0  train_dataset2  
+ 0  train_dataset2  
+ 0  train_dataset2  
+ 0  test_dataset_1  
+ 0  test_dataset_1  ,
+             Total Concept  Average Precision  Total Labeled  True Positives  \
+ 0  Dataset:train_dataset2                1.0             18              18   
+ 0  Dataset:test_dataset_1                1.0              4               4   
+ 
+    False Positives  False Negatives  Recall  Precision   F1  
+ 0                0                0     1.0        1.0  1.0  
+ 0                0                0     1.0        1.0  1.0  )
