@@ -43,15 +43,15 @@ The [LLM-as-a-Judge](https://arxiv.org/abs/2306.05685) template uses a strong LL
 This template employs a selected LLM to perform string evaluation on a model’s predicted response based on an input question and a ground truth — as explained earlier. 
 Typically, the LLM works as a judge and determines the quality of the model’s predicted output against the ideal or expected output. 
 
-After the judgment process, the evaluation results would then be categorized into different classes and given a score. The LangChain’s [`CriteriaEvalChain`](https://python.langchain.com/docs/guides/evaluation/string/criteria_eval_chain) method is used to compute the classes. 
+After the judgment process, the evaluation results would then be categorized into different classes and given a score. The LangChain’s [`CriteriaEvalChain`](https://api.python.langchain.com/en/latest/evaluation/langchain.evaluation.criteria.eval_chain.CriteriaEvalChain.html) method is used to compute the classes. 
 
 These classes include:
 
-- Relevance
-- Depth
-- Creativity
-- Correctness
-- Helpfulness
+- **Relevance** – Is the submission referring to a real quote from the text?
+- **Depth** – Does the submission illustrate depth of thought?
+- **Creativity** – Does the submission illustrate novelty or unique ideas?
+- **Correctness** – Is the submission correct, accurate, and factual?
+- **Helpfulness** – Is the submission helpful, insightful, and appropriate?
 
 Each of the specified classes will be given a binary score between 0 and 1, where 1 represents the highest level of confidence or agreement with the judgment provided by the LLM-as-a-judge. For example, if **Relevance** is scored at 0.80, it implies that the LLM-as-a-judge is 80% confident that the predicted response is relevant to the specified scenario. 
 
@@ -71,7 +71,7 @@ Specifically, this template employs the zero-shot generative task methodology wi
 
 :::note
 
-In the zero-shot approach, the model is not provided with specific training examples or labeled data for the task at hand. Instead, it is expected to generate responses based on its understanding of the prompt or question without any prior training on similar examples.
+In the [zero-shot approach](https://docs.clarifai.com/portal-guide/model/agent-system-operators/prompter#zero-shot-prompting), the model is not provided with specific training examples or labeled data for the task at hand. Instead, it is expected to generate responses based on its understanding of the prompt or question without any prior training on similar examples.
 
 :::
 
