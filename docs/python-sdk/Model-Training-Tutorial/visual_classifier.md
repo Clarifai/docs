@@ -12,6 +12,9 @@ import CodeS from "!!raw-loader!../../../code_snippets/python-sdk/model_training
 import CodeS2 from "!!raw-loader!../../../code_snippets/python-sdk/model_training/visual_classifier/setup2.py";
 import CodeIMT from "!!raw-loader!../../../code_snippets/python-sdk/model_training/visual_classifier/imt.py";
 import CodeMP from "!!raw-loader!../../../code_snippets/python-sdk/model_training/visual_classifier/mp.py";
+import CodeTrEv from "!!raw-loader!../../../code_snippets/python-sdk/model_eval/visual_classifier/train_eval.py";
+import CodeTeEv from "!!raw-loader!../../../code_snippets/python-sdk/model_eval/visual_classifier/test_eval.py";
+import CodeCMP from "!!raw-loader!../../../code_snippets/python-sdk/model_eval/visual_classifier/cmp.py";
 
 
 
@@ -22,6 +25,9 @@ import CodeOutputS from "!!raw-loader!../../../code_snippets/python-sdk/model_tr
 import CodeOutputS2 from "!!raw-loader!../../../code_snippets/python-sdk/model_training/outputs/visual_classifier/setup2.txt";
 import CodeOutputIMT from "!!raw-loader!../../../code_snippets/python-sdk/model_training/outputs/visual_classifier/imt.txt";
 import CodeOutputMP from "!!raw-loader!../../../code_snippets/python-sdk/model_training/outputs/visual_classifier/mp.txt";
+import CodeOutputTrEv from "!!raw-loader!../../../code_snippets/python-sdk/model_eval/visual_classifier/outputs/train_eval.txt";
+import CodeOutputTeEv from "!!raw-loader!../../../code_snippets/python-sdk/model_eval/visual_classifier/outputs/test_eval.txt";
+import CodeOutputCMP from "!!raw-loader!../../../code_snippets/python-sdk/model_eval/visual_classifier/outputs/cmp.txt";
 
 
 # Visual Classifier
@@ -166,3 +172,40 @@ Since the model is trained and ready let’s run some predictions to view the mo
 </details>
 
 
+## Model Evaluation
+
+Now let's evaluate the model using train and test datasets. First let's see the evaluation metrics for the training dataset,
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CodeTrEv}</CodeBlock>
+</TabItem>
+</Tabs>
+<details>
+  <summary>Output</summary>
+    <CodeBlock className="language-text">{CodeOutputTrEv}</CodeBlock>
+</details>
+
+Before evaluating with a test dataset, we have to first upload the dataset using the data loader and then perform model evaluation,
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CodeTeEv}</CodeBlock>
+</TabItem>
+</Tabs>
+<details>
+  <summary>Output</summary>
+    <CodeBlock className="language-text">{CodeOutputTeEv}</CodeBlock>
+</details>
+
+Finally let's compare the results from  multiple datasets using ```EvalResultCompare``` feature from Clarifai Python SDK to get a better understanding of the model's performance.
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CodeCMP}</CodeBlock>
+</TabItem>
+</Tabs>
+<details>
+  <summary>Output</summary>
+    <CodeBlock className="language-text">{CodeOutputCMP}</CodeBlock>
+</details>

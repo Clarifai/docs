@@ -1,0 +1,21 @@
+(  Concept  Accuracy (ROC AUC)  Total Labeled  Total Predicted  True Positives  \
+0  id-pos                 1.0             80               80              80   
+0  id-neg                 1.0            120              120             120   
+0  id-pos                 1.0             31               31              31   
+0  id-neg                 1.0             40               40              40   
+
+   False Negatives  False Positives  Recall  Precision   F1            Dataset  
+0                0                0     1.0        1.0  1.0      text_dataset2  
+0                0                0     1.0        1.0  1.0      text_dataset2  
+0                0                0     1.0        1.0  1.0  test_text_dataset  
+0                0                0     1.0        1.0  1.0  test_text_dataset  ,                Total Concept  Accuracy (ROC AUC)  Total Labeled  \
+0      Dataset:text_dataset2                 1.0            200   
+0  Dataset:test_text_dataset                 1.0             71   
+
+   Total Predicted  True Positives  False Negatives  False Positives  Recall  \
+0              200             200                0                0     1.0   
+0               71              71                0                0     1.0   
+
+   Precision   F1  
+0        1.0  1.0  
+0        1.0  1.0  )

@@ -1,0 +1,4 @@
+macro_avg_roc_auc: 1.0
+macro_avg_f1_score: 1.0
+macro_avg_precision: 1.0
+macro_avg_recall: 1.0

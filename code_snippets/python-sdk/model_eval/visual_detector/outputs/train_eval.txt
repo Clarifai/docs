@@ -1,0 +1,2 @@
+mean_avg_precision_iou_50: 1.0
+mean_avg_precision_iou_range: 0.9453125
