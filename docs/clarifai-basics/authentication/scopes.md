@@ -32,7 +32,7 @@ Therefore, the permissions allowed when making requests will be the minimum set 
 
 ## Operations and Endpoints Scopes
 
-You have control over both operation and endpoint level scopes.
+You have control over both the operation and endpoint level scopes.
 
 :::tip
 
