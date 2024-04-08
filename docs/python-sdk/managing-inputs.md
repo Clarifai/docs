@@ -15,6 +15,10 @@ import CodeVideoData from "!!raw-loader!../../code_snippets/python-sdk/managing-
 import CodeMMData from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/multimodal_data.py";
 import CodeListInput from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/list_input.py";
 import CodeDeleteInput from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/delete_input.py";
+import CodeImageM from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/image_metadata.py";
+import CodeVideoM from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/video_metadata.py";
+import CodeTextM from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/text_metadata.py";
+import CodeAudioM from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/audio_data_metadata.py";
 
 
 import CodeOutputImageData from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/outputs/image_data.txt";
@@ -24,6 +28,10 @@ import CodeOutputVideoData from "!!raw-loader!../../code_snippets/python-sdk/man
 import CodeOutputMMData from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/outputs/multimodal_data.txt";
 import CodeOutputListInput from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/outputs/list_input.txt";
 import CodeOutputDeleteInput from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/outputs/delete_input.txt";
+import CodeOutputImageM from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/outputs/image_metadata.txt";
+import CodeOutputVideoM from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/outputs/video_metadata.txt";
+import CodeOutputTextM from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/outputs/text_metadata.txt";
+import CodeOutputAudioM from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/outputs/audio_data_metadata.txt";
 
 
 
@@ -111,9 +119,7 @@ Visit this [page](https://docs.clarifai.com/api-guide/data/create-get-update-del
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputVideoData}</CodeBlock>
 </details>                                        
-
-                                                                                                                  
-
+                                                                                                                 
 
 ## Multimodal Data as Inputs
 
@@ -132,6 +138,75 @@ Visit this [page](https://docs.clarifai.com/api-guide/data/create-get-update-del
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputMMData}</CodeBlock>
 </details>   
+
+
+## Custom Metadata
+
+When working with the Clarifai Python SDK, you can add inputs with custom metadata in addition to concepts. This allows you to attach additional information  to your inputs, which can be useful for various purposes such as categorization, filtering, or later reference.
+
+Visit this [page](https://docs.clarifai.com/api-guide/data/create-get-update-delete#add-inputs-with-custom-metadata) for more information.
+### Image With Metadata
+
+In the below example we are uploading an image with metadata that includes details about the filename and to which split it belongs to.
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CodeImageM}</CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+  <summary>Output</summary>
+    <CodeBlock className="language-text">{CodeOutputImageM}</CodeBlock>
+</details>
+
+
+### Video With Metadata
+
+In the below example we are uploading a video file  with metadata that includes details about the filename and to which split it belongs to.
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CodeVideoM}</CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+  <summary>Output</summary>
+    <CodeBlock className="language-text">{CodeOutputVideoM}</CodeBlock>
+</details>                                        
+
+### Text With Metadata
+
+In the below example we are uploading a text file with metadata that includes details about the filename and to which split it belongs to.
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CodeTextM}</CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+  <summary>Output</summary>
+    <CodeBlock className="language-text">{CodeOutputTextM}</CodeBlock>
+</details>
+
+
+
+### Audio With Metadata
+
+In the below example we are uploading an audio file with metadata that includes details about the filename and to which split it belongs to.
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CodeAudioM}</CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+  <summary>Output</summary>
+    <CodeBlock className="language-text">{CodeOutputAudioM}</CodeBlock>
+</details>
 
 ## List inputs
 
