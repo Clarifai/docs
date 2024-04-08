@@ -12,11 +12,15 @@ sidebar_position: 3
 
 Let's see how you can easily create custom models on the Clarifai portal. 
 
-In this example, we'll create a simple classification model that differentiates between dogs and cats. 
+:::caution objective
 
-## Step 1: Set up your account or log in
+For this example, we'll create a simple classification model that differentiates between dogs and cats. 
 
-Just [click here](https://clarifai.com/signup) if you need to set up your account for the first time. 
+:::
+
+## Step 1: Set up your account or login
+
+[Click here](https://clarifai.com/signup) if you need to set up your account for the first time. 
 
 Or [click here](https://clarifai.com/login) to log in.‌
 
@@ -30,7 +34,7 @@ If you created a new account, check your email. We will send you a link that ena
 
 ## Step 3: Click "my-first-application"
 
-Go to your apps listing page, where you'll find a default "my-first-application" already created.
+Go to your apps' listing page, where you'll find a default "my-first-application" already created.
 
 If you click on the application, you'll be redirected to its individual page, where you can upload inputs.
 
@@ -38,13 +42,13 @@ If you click on the application, you'll be redirected to its individual page, wh
 
 :::tip
 
-You can also click the **Create an App** button at the upper-right section of the navigation bar to create another application.
+You can also click the **Create** button at the upper-right section of the navigation bar to easily create a new application.
 
 :::
 
 ## Step 4: Upload training data
 
-:::note
+:::warning training
 
 In machine learning, training refers to teaching a model to “learn” from the annotated concepts on the provided inputs. [Concepts](https://docs.clarifai.com/portal-guide/concepts/)—also known as "classes"—are the tags or keywords that are used to annotate (or label) an input to indicate that the input has that entity.
 
@@ -58,25 +62,39 @@ Next, click the **Upload inputs** button.
 
 ![data mode](/img/data_mode.png)
 
-The small window that pops up allows you to upload your inputs—either by uploading them directly from your local device or by providing a publicly accessible URL. 
+The small window that pops up allows you to upload your inputs — either by uploading them directly from your local device or by providing a publicly accessible URL. 
 
 Let's start by uploading images of dogs and annotating them with the "dog" concept. 
 
-To label your inputs, click the plus (**+**) sign  next to the **Select concepts** search box. Then, type the new concept name in the search box.
+For this illustration, let's provide the following images of dogs as URLs:
 
-The new name you've typed will appear underneath the search box. Click the **Add new concept** button to create the concept.
+```text
+https://samples.clarifai.com/dog1.jpeg
+https://samples.clarifai.com/dog2.jpeg
+https://samples.clarifai.com/dog3.jpeg
+```
+
+To label the inputs, click the plus (**+**) sign  next to the **Select concepts** search box. Then, type the new concept name in the search box.
+
+The new name you've typed will appear underneath the search box. Click the **Add new concept** button to create the concept. Once created, the concept will be listed underneath the search box.
 
 ![browse files](/img/browse_files_custom_model.png)
 
-Click the **Upload inputs** button at the bottom of the pop-up window to complete uploading the images you've annotated with the "dog" concept.
+To upload the the images you've annotated with the "dog" concept, click the **Upload inputs** button at the bottom of the pop-up window
 
-Similarly, upload images of cats and annotate them with the "cat" concept.
+Similarly, let's upload the following images of cats and annotate them with the "cat" concept.
+
+```text
+https://samples.clarifai.com/cat1.jpeg
+https://samples.clarifai.com/cat2.jpeg
+https://samples.clarifai.com/cat3.jpeg
+```
 
 ![browse files](/img/browse_files_custom_model_1.png) 
 
-Lastly, click the **Upload inputs** button at the bottom of the pop-up window to complete uploading the images you've annotated with the "cat" concept.
+Lastly, click the **Upload inputs** button at the bottom of the pop-up window to upload the images you've annotated with the "cat" concept.
 
-You can find the uploaded images on the inputs manager page. 
+You can find the uploaded images on the Inputs-Manager page. 
 
 ![uploaded images](/img/uploaded_images_1.png) 
 

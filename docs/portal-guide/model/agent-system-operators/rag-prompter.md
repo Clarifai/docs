@@ -50,7 +50,7 @@ Next, in the generative phase, the LLM leverages the *augmented* prompt along wi
 
 ![](https://www.clarifai.com/hs-fs/hubfs/rag-query-drawio%20(1)-png-2.png?width=2056&height=1334&name=rag-query-drawio%20(1)-png-2.png)
 
-Image Source: [Clarifai portal](https://www.clarifai.com/hs-fs/hubfs/rag-query-drawio%20(1)-png-2.png?width=2056&height=1334&name=rag-query-drawio%20(1)-png-2.png)
+Image source: [Clarifai portal](https://www.clarifai.com/hs-fs/hubfs/rag-query-drawio%20(1)-png-2.png?width=2056&height=1334&name=rag-query-drawio%20(1)-png-2.png)
 
 ## How to Create a RAG Prompter
 
