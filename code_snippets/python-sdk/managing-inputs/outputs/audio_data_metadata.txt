@@ -1,0 +1,76 @@
+2024-04-08 06:39:32 INFO     clarifai.client.input:                                                    input.py:674
+                             Inputs Uploaded                                                                       
+                             code: SUCCESS                                                                         
+                             description: "Ok"                                                                     
+                             details: "All inputs successfully added"                                              
+                             req_id: "4c96e4167170c174838c7987101f3478"                                            
+                                                                                                                   
+INFO:clarifai.client.input:
+Inputs Uploaded
+code: SUCCESS
+description: "Ok"
+details: "All inputs successfully added"
+req_id: "4c96e4167170c174838c7987101f3478"
+
+('109349aa790a404db39f6324415a47a5',
+ status {
+   code: SUCCESS
+   description: "Ok"
+   details: "All inputs successfully added"
+   req_id: "4c96e4167170c174838c7987101f3478"
+ }
+ inputs {
+   id: "audio_data_metadata"
+   data {
+     metadata {
+       fields {
+         key: "filename"
+         value {
+           string_value: "goodmorning.wav"
+         }
+       }
+       fields {
+         key: "split"
+         value {
+           string_value: "test"
+         }
+       }
+     }
+     audio {
+       url: "https://s3.amazonaws.com/samples.clarifai.com/GoodMorning.wav"
+       audio_info {
+         audio_format: "UnknownAudioFormat"
+       }
+     }
+   }
+   created_at {
+     seconds: 1712558372
+     nanos: 764691920
+   }
+   modified_at {
+     seconds: 1712558372
+     nanos: 764691920
+   }
+   status {
+     code: INPUT_DOWNLOAD_PENDING
+     description: "Download pending"
+   }
+ }
+ inputs_add_job {
+   id: "109349aa790a404db39f6324415a47a5"
+   progress {
+     pending_count: 1
+   }
+   created_at {
+     seconds: 1712558372
+     nanos: 751997000
+   }
+   modified_at {
+     seconds: 1712558372
+     nanos: 751997000
+   }
+   status {
+     code: JOB_QUEUED
+     description: "Job is queued to be ran."
+   }
+ })

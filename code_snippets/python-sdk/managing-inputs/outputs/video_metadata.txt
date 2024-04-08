@@ -1,0 +1,76 @@
+2024-04-05 13:05:49 INFO     clarifai.client.input:                                                    input.py:674
+                             Inputs Uploaded                                                                       
+                             code: SUCCESS                                                                         
+                             description: "Ok"                                                                     
+                             details: "All inputs successfully added"                                              
+                             req_id: "72c9820d805efb9f3ee7f0508778c1f3"                                            
+                                                                                                                   
+INFO:clarifai.client.input:
+Inputs Uploaded
+code: SUCCESS
+description: "Ok"
+details: "All inputs successfully added"
+req_id: "72c9820d805efb9f3ee7f0508778c1f3"
+
+('7fdc30b9c2a24f31b6a41b32bd9fea02',
+ status {
+   code: SUCCESS
+   description: "Ok"
+   details: "All inputs successfully added"
+   req_id: "72c9820d805efb9f3ee7f0508778c1f3"
+ }
+ inputs {
+   id: "video_data_metadata"
+   data {
+     video {
+       url: "https://samples.clarifai.com/beer.mp4"
+       video_info {
+         video_format: "UnknownVideoFormat"
+       }
+     }
+     metadata {
+       fields {
+         key: "filename"
+         value {
+           string_value: "drinks.jpg"
+         }
+       }
+       fields {
+         key: "split"
+         value {
+           string_value: "train"
+         }
+       }
+     }
+   }
+   created_at {
+     seconds: 1712322349
+     nanos: 628288634
+   }
+   modified_at {
+     seconds: 1712322349
+     nanos: 628288634
+   }
+   status {
+     code: INPUT_DOWNLOAD_PENDING
+     description: "Download pending"
+   }
+ }
+ inputs_add_job {
+   id: "7fdc30b9c2a24f31b6a41b32bd9fea02"
+   progress {
+     pending_count: 1
+   }
+   created_at {
+     seconds: 1712322349
+     nanos: 602487000
+   }
+   modified_at {
+     seconds: 1712322349
+     nanos: 602487000
+   }
+   status {
+     code: JOB_QUEUED
+     description: "Job is queued to be ran."
+   }
+ })

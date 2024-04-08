@@ -1,0 +1,77 @@
+2024-04-05 13:03:24 INFO     clarifai.client.input:                                                    input.py:674
+                             Inputs Uploaded                                                                       
+                             code: SUCCESS                                                                         
+                             description: "Ok"                                                                     
+                             details: "All inputs successfully added"                                              
+                             req_id: "951a64b950cccf05c8d274c8acc1f0f6"                                            
+                                                                                                                   
+INFO:clarifai.client.input:
+Inputs Uploaded
+code: SUCCESS
+description: "Ok"
+details: "All inputs successfully added"
+req_id: "951a64b950cccf05c8d274c8acc1f0f6"
+
+('8557e0f57f464c22b3483de76757fb4f',
+ status {
+   code: SUCCESS
+   description: "Ok"
+   details: "All inputs successfully added"
+   req_id: "951a64b950cccf05c8d274c8acc1f0f6"
+ }
+ inputs {
+   id: "metadata"
+   data {
+     image {
+       url: "https://samples.clarifai.com/XiJinping.jpg"
+       image_info {
+         format: "UnknownImageFormat"
+         color_mode: "UnknownColorMode"
+       }
+     }
+     metadata {
+       fields {
+         key: "filename"
+         value {
+           string_value: "XiJinping.jpg"
+         }
+       }
+       fields {
+         key: "split"
+         value {
+           string_value: "train"
+         }
+       }
+     }
+   }
+   created_at {
+     seconds: 1712322204
+     nanos: 737881425
+   }
+   modified_at {
+     seconds: 1712322204
+     nanos: 737881425
+   }
+   status {
+     code: INPUT_DOWNLOAD_PENDING
+     description: "Download pending"
+   }
+ }
+ inputs_add_job {
+   id: "8557e0f57f464c22b3483de76757fb4f"
+   progress {
+     pending_count: 1
+   }
+   created_at {
+     seconds: 1712322204
+     nanos: 714751000
+   }
+   modified_at {
+     seconds: 1712322204
+     nanos: 714751000
+   }
+   status {
+     code: JOB_QUEUED
+     description: "Job is queued to be ran."
+   }
+ })

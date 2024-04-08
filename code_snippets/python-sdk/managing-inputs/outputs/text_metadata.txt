@@ -1,0 +1,76 @@
+2024-04-05 13:07:04 INFO     clarifai.client.input:                                                    input.py:674
+                             Inputs Uploaded                                                                       
+                             code: SUCCESS                                                                         
+                             description: "Ok"                                                                     
+                             details: "All inputs successfully added"                                              
+                             req_id: "835f6c736f032947d1f4067e39c10b72"                                            
+                                                                                                                   
+INFO:clarifai.client.input:
+Inputs Uploaded
+code: SUCCESS
+description: "Ok"
+details: "All inputs successfully added"
+req_id: "835f6c736f032947d1f4067e39c10b72"
+
+('e3de274f644a4e98a488e7c85f94c0d1',
+ status {
+   code: SUCCESS
+   description: "Ok"
+   details: "All inputs successfully added"
+   req_id: "835f6c736f032947d1f4067e39c10b72"
+ }
+ inputs {
+   id: "text_data_metadata"
+   data {
+     metadata {
+       fields {
+         key: "filename"
+         value {
+           string_value: "tweet.txt"
+         }
+       }
+       fields {
+         key: "split"
+         value {
+           string_value: "train"
+         }
+       }
+     }
+     text {
+       url: "https://data.clarifai.com/orig/users/8tzpjy1a841y/apps/visual_classifier_eval/inputs/text/c439598b04d8112867eec70097aa00c2"
+       text_info {
+         encoding: "UnknownTextEnc"
+       }
+     }
+   }
+   created_at {
+     seconds: 1712322424
+     nanos: 56818659
+   }
+   modified_at {
+     seconds: 1712322424
+     nanos: 56818659
+   }
+   status {
+     code: INPUT_DOWNLOAD_PENDING
+     description: "Download pending"
+   }
+ }
+ inputs_add_job {
+   id: "e3de274f644a4e98a488e7c85f94c0d1"
+   progress {
+     pending_count: 1
+   }
+   created_at {
+     seconds: 1712322423
+     nanos: 941401000
+   }
+   modified_at {
+     seconds: 1712322423
+     nanos: 941401000
+   }
+   status {
+     code: JOB_QUEUED
+     description: "Job is queued to be ran."
+   }
+ })
