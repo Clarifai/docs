@@ -2,7 +2,7 @@ from google.protobuf.struct_pb2 import Struct
 from clarifai.client.input import Inputs
 
 # Initialize an Inputs object with specified user_id and app_id
-input_object = Inputs(user_id="user_id", app_id="app_id")
+input_object = Inputs(user_id="user_id", app_id="app_id", pat="YOUR_PAT")
 
 # Define the URL of the video to upload
 video_url = "https://samples.clarifai.com/beer.mp4"

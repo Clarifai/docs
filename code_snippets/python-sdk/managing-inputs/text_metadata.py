@@ -3,7 +3,7 @@ from google.protobuf.struct_pb2 import Struct
 from clarifai.client.input import Inputs
 
 # Define the input object with user_id and app_id
-input_object = Inputs(user_id="user_id", app_id="app_id")
+input_object = Inputs(user_id="user_id", app_id="app_id", pat="YOUR_PAT")
 
 # Define the input text
 input_text = b"Write a tweet on future of AI"

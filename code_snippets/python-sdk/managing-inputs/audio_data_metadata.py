@@ -4,7 +4,7 @@ from google.protobuf.struct_pb2 import Struct
 
 
 # Define the input object with user_id and app_id
-input_object = Inputs(user_id="user_id", app_id="app_id")
+input_object = Inputs(user_id="user_id", app_id="app_id", pat="YOUR_PAT")
 
 # Define the URL of the audio file
 audio_url = "https://s3.amazonaws.com/samples.clarifai.com/GoodMorning.wav"
