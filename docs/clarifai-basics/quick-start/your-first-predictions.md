@@ -30,7 +30,7 @@ A [concept](https://docs.clarifai.com/clarifai-basics/glossary#concept) is somet
 
 :::
 
-## Step 1: Set up your account or login
+## Step 1: Set up Your Account or Login
 
 [Click here](https://clarifai.com/signup) if you need to set up your account for the first time. 
 
@@ -38,7 +38,7 @@ Or [click here](https://clarifai.com/login) to log in.‌
 
 ![Create account login](/img/create_acct_login.png)
 
-## Step 2: Verify your email address
+## Step 2: Verify Your Email Address
 
 If you created a new account, check your email. We will send you a link that enables you to automatically verify your address.‌
 
@@ -62,7 +62,7 @@ You can also click the **Create** button at the upper-right section of the navig
 
 :::
 
-## Step 4: Upload an image
+## Step 4: Upload an Image
 
 You'll be redirected to the application's individual page. Select the **Inputs** option on the collapsible left sidebar. 
 
@@ -84,7 +84,7 @@ To upload the image, click the **Upload inputs** button at the bottom of the pop
 
 ![browse files](/img/browse_files.png)
 
-## Step 5: Take a look at your first prediction
+## Step 5: Take a Look at Your First Prediction
 
 :::warning general-image-recognition model
 

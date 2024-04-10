@@ -1,5 +1,6 @@
 ---
 description: We make our platform open for community to discover, test, use and share models and workflow (apps and datasets are coming soon) with Clarifai community.
+sidebar_position: 7
 ---
 
 # Get Started With Community Portal

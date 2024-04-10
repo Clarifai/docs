@@ -3,7 +3,7 @@ description: How to collaborate on the Clarifai platform
 sidebar_position: 3
 ---
 
-# Collaboration
+# App Collaboration
 
 **How to collaborate on the Clarifai platform**
 <hr />

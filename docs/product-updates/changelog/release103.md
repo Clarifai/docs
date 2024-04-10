@@ -23,7 +23,7 @@ pagination_prev: product-updates/changelog/release102
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
-|![new-feature](/img/new_feature.jpg) | Introduced app templates for streamlined app creation | <ul><li>We now provide pre-built, ready-to-use templates that expedite the app creation process. Each template comes with a range of resources, such as datasets, models, workflows, and modules, allowing you to quickly hit the ground running with your app creation process.</li></ul> |
+|![new-feature](/img/new_feature.jpg) | Introduced [app templates](https://docs.clarifai.com/clarifai-basics/app-templates) for streamlined app creation | <ul><li>We now provide pre-built, ready-to-use templates that expedite the app creation process. Each template comes with a range of resources, such as datasets, models, workflows, and modules, allowing you to quickly hit the ground running with your app creation process.</li></ul> |
 
 ## Node SDK
 
