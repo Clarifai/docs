@@ -13,7 +13,7 @@ Visual search is a versatile and useful capability when working with visual data
 
 In this example, we want to perform a visual similarity search on people's faces. 
 
-## Step 1: Set up your account or login
+## Step 1: Set up Your Account or Login
 
 Just [click here](https://clarifai.com/signup) if you need to set up your account for the first time. 
 
@@ -21,13 +21,13 @@ Or, [click here](https://clarifai.com/login) to log in.‌
 
 ![Create account login](/img/create_acct_login.png)
 
-## Step 2: Verify your email address
+## Step 2: Verify Your Email Address
 
 If you created a new account, check your email. We will send you a link that enables you to automatically verify your address.‌
 
 ![verify email](/img/verify_email.png)
 
-## Step 3: Create an application
+## Step 3: Create an Application
 
 Log in to your account and click the **Create** button at the upper-right section of the navigation bar.
 
@@ -43,7 +43,7 @@ On the ensuing page, click the **Cancel** button within the **Add a model** wind
 
 ![Add a model window](/img/face_search_app.png)
 
-## Step 4: Upload sample images
+## Step 4: Upload Sample Images
 
 On the application's individual page, select the **Inputs** option on the collapsible left sidebar.
 
@@ -67,7 +67,7 @@ import CodeBlock from "@theme/CodeBlock";
 
 Finally, click the **Upload inputs** button at the bottom of the pop-up window to complete uploading your images.
 
-## Step 5: Search for similar faces
+## Step 5: Search for Similar Faces
 
 Your uploaded images will appear on the Inputs-Manager page. 
 
