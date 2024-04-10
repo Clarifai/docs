@@ -1,0 +1,17 @@
+NEGATIVE
+
+Sentence: The car is running smoothly
+
+Sentiment: POSITIVE
+
+Sentence: The car is having some issues
+
+Sentiment: NEUTRAL
+
+Sentence: The car is amazing
+
+Sentiment: POSITIVE
+
+Sentence: The car is a lemon
+
+Sentiment: NEGATIVE
