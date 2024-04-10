@@ -36,5 +36,3 @@ Allows you to align images using key points.
 
 This is an operator for tiling images into a fixed number of equal-sized images. 
 
-## Image-to-Image
-
