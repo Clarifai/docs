@@ -36,7 +36,7 @@ We provide a variety of application templates in various categories to help you 
 
 - We're constantly expanding our library of templates, with new additions released on a regular basis. You can check [here](https://clarifai.com/explore/apps?activeToggle=Templates&page=1&perPage=24) for them. 
 
-- We’ll also introduce the ability to build your own app templates soon. 
+- We'll also introduce the ability to build your own app templates soon. 
 
 :::
 
