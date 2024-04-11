@@ -42,7 +42,13 @@ const sidebars = {
       type: 'link',
       label: 'Clarifai Community',
       href: 'https://clarifai.com/explore',
-  },],},]
+  },
+  {
+    type: 'link',
+    label: 'Security Trust Center',
+    href: 'https://app.drata.com/trust/9cc5870a-0c38-11ee-865f-029d78a187d9',
+  },    
+  ],},]
 
 
   // But you can create a sidebar manually
