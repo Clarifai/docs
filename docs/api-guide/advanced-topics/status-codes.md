@@ -561,9 +561,6 @@ If a status comes back that you do not see below, please reach out to support@cl
 | :--- | :--- |:---  |
 | 69000 | BILLING_INVALID_INFO | |
 | | | |
-| 90400 | BAD_REQUEST | |
-| 90500 | SERVER_ERROR | |
-| | | |
 
 ## Internal Issues Codes: 98xxx
 

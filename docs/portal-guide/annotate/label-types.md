@@ -1,100 +1,151 @@
 ---
-description: Learn about the different types of labels that are possible with Scribe
+description: Learn about the labeling methods on the Input-Viewer
 sidebar_position: 3
 ---
 
 # Label Types
 
-**Learn about the different types of labels that are possible with Scribe**
+**Learn about the labeling methods on the Input-Viewer**
 <hr />
 
-The Scribe Label lets you create high-quality training data for building powerful machine learning models. You can use the automated data labeling tool to annotate unstructured image, video, and text data faster and more accurately—something which could be laborious and time-consuming if done manually. 
+We support different types of labeling methods, each suited for different tasks and data characteristics. This lets you create high-quality training data depending on the objective you want your machine learning model to achieve. 
 
-It's a unique automated label prefilling technique that allows you to assign concepts for faster dataset annotation and speed labeling projects 100x. 
+We provide the following label types for your images, videos, and texts:
 
-Scribe provides the following three basic label types for your images, videos, and texts:
+- **Classification** — categorizes images, videos, and texts into categories;
+- **Detection** — detects where an object of interest is and draws a bounding box around it;
+- **Segmentation** (polygons for segmentation) — outlines the exact shape or contour of the object;
+- **Masks** —  a type of image segmentation that defines the exact boundaries of an object at a pixel level. 
 
-- Classification—categorizes images, videos, and texts into categories;
-- Detection—detects where an object of interest is and draws a bounding box around it;
-- Segmentation (polygons for segmentation)—outlines the exact shape or contour of an object. 
+You can use any of the labeling types to complete your tasks easily and quickly. These label types provide increasing levels of granularity to support the needs of your specific use case.
 
-You can use any of the label types to complete your labeling tasks easily and quickly. These label types provide increasing levels of granularity to support the needs of your specific use case.
+Let's illustrate how you can carry out each label type on the Input-Viewer page. 
 
-## How to Choose a Label Type
+:::warning Scribe Labeler
 
-You can choose the label type you want to use when creating a new labeling task. To create a new task, go to the individual page for your app, and select the **Labeling** option on the collapsible left sidebar. You'll be redirected to the **Tasks** manager page. 
-
-![task manager page](/img/others/label_types_1.png)
-
-Next, click the **Create New Task** button at the upper-right corner of the page, and you'll be redirected to the **New Labeling Task** page, where you can provide the details for creating a new task. 
-
-![new labeling task page](/img/others/label_types_2.png)
-
-Under the **Task Type** option, you can select your desired type of label. 
-
-:::note
-
-You can read [here](https://docs.clarifai.com/portal-guide/annotate/create-a-task) to learn more about how to create a new labeling task. 
+[Click here](https://docs.clarifai.com/portal-guide/annotate/labeling-tools) to learn how to use the Scribe Labeling Tasks tool to carry out each of the different label types. 
 
 :::
 
-After creating a new task, it will be listed on the **Tasks** manager page. To access your assigned tasks and start labeling using Scribe, click the **LABEL** button. 
+## Manual Labeling on Input-Viewer Page 
 
-![new labeling task page](/img/others/label_types_3.png)
+The Input-Viewer page is the main page that showcases the details of a single input available in your app. If you click an input listed on the Input-Manager page, you'll be redirected to the viewer page for that input, where you can see its details.
 
-Next, you'll be redirected to the Scribe tasks labeler page, where you can use any of the label types you selected when creating a task to complete your assigned labeling work. 
+After navigating to the Input-Viewer, ensure the page's mode is set to **Annotate**, which is the default status. You can find the mode settings at the upper-right corner of the page.
 
+Here is an example:
 
-## Classification Label Type
+![](/img/others-2/label-types-1.png)
 
-With the classification label type, you can provide annotations for an entire image or a single frame of video. On the right sidebar, you can find a list of the [concepts](https://docs.clarifai.com/portal-guide/annotate/create-a-task#concepts) you created when you assigned a new labeling task. 
+The page has several assistive tools to help you make the most of the labeling exercise. For example, on the top section, you can select an icon to label an input with bounding boxes, move an image around the workspace, or zoom an image in or out.
 
-To classify an image, just click the tick button next to the concept you want to label the image with. 
+The left sidebar shows a film strip of images you can scroll through to get the specific image you want to annotate. If you click any image on the sidebar, it'll appear on the main workspace.
 
-![classify an image](/img/others/label_types_5.png)
+:::warning AI-assisted labeling
 
-You can also click the cross button to explicitly label the image as not having the concept. 
-
-![label with cross button](/img/others/label_types_6.png)
-
-:::note
-
-Clicking an already clicked tick or cross button removes the label.
+[Click here](https://docs.clarifai.com/portal-guide/annotate/ai-assist) to learn how to carry out AI-assisted labeling on the Input-Viewer. 
 
 :::
 
-You can also apply multiple labels to the same image. Let's say you have two classes that might be easily confused by your model, such as cats and dogs, you can specifically indicate that a cat is present and a dog is not present. This can improve the performance of your model, but also result in longer labeling times.
+## Classification
 
-In the following screenshot, the tick button has been clicked, indicating that the image has been labeled with the "cat" concept. Also, the cross button has been clicked, indicating that the image has been expressly labeled as not having the "dog" concept.
+The classification label type lets you assign annotations to an entire image, a single frame of video, or a piece of text.
 
-![cat and dog label](/img/others/label_types_4.png)
+### Image Classification
 
-If you enabled AI Assist when you created a new labeling task, you'll notice the concepts that the Clarifai AI has suggested, which could be present in the image you want to label—alongside their probabilities. You can accept the highlighted suggestions to help you label your images quickly and fast. You can also adjust the slider to a prediction probability threshold you desire. 
+To manually classify an image on the Input-Viewer page, first click the **Select / Edit** tool (it's selected by default) on the navigation bar.
 
-![label with AI assist](/img/others/label_types_7.png)
+:::tip
 
-Finally, click the **Submit** button on the lower-right corner of the page to complete the labeling exercise. 
+The keyboard shortcut for the **Select / Edit** tool is **V**. 
 
-## Detection Label Type (Bounding Box Detection)
+:::
 
-With the detection label type, you can provide annotation within a single box-shaped region of an image or a video. To use bounding box detection, you need to select a workflow that offers detection capabilities when creating a new labeling task. 
+Next, click the **Add annotation tags...** field and select the concept you want to use to annotate the image from the drop-down list — that is, if the concept already exists in your app.
 
-On the Scribe tasks labeler page, you can accept or modify the detected regions that the Clarifai's AI Assist technology has suggested for labeling—that is, if you enabled AI Assist when you created a new labeling task. 
+![](/img/others-2/label-types-2.png)
 
-You can also click the plus (**+**) button next to the concept you want to use for labeling to start drawing your own bounding boxes. 
+If you want to annotate an input with a new concept that does not already exist in your app, click the **Add annotation tags...** field and type the concept's name. Then, click the drop-down box that appears with the concept name beneath that field.
+
+![](/img/others-2/label-types-3.png)
+
+The new annotation will be added to your app and labeled with your input. 
+
+You can add as many annotations as you want. The added annotations will appear in the **Add annotation tags...** field as well as on the right sidebar of the page. 
+
+![](/img/others-2/label-types-4.png)
+
+### Text Classification
+
+You can classify your text inputs into pre-defined categories — just as with image classification described above. 
+
+:::tip
+
+Ensure you select the appropriate [base workflow](https://docs.clarifai.com/portal-guide/workflows/base-workflows) when creating an app for text inputs.
+
+:::
+
+![](/img/others-2/label-types-5.png)
+
+### Video Classification
+
+Support for video labeling is coming soon. 
+
+## Detection
+
+The detection label type lets you identify the objects in your inputs and also draw bounding boxes around them. 
 
 ### Detection for Still Images
 
-![detection for still images](/img/others/label_types_8.png)
+To manually add detection labels on the Input-Viewer page, first click the **Bounding box** tool on the navigation bar.
+
+:::tip
+
+The keyboard shortcut for the **Bounding box** tool is **B**. 
+
+:::
+
+Next, click the **Add annotation tags...** field and select the concept you want to use from the drop-down list — that is, if the concept is already existing in your app. If it's not already existing, you'll need to add it as described earlier. 
+
+Next, draw a rectangle as closely as possible around the image's region of interest. 
+
+![](/img/others-2/label-types-6.png)
+
+You can add as many detection annotations as you want. The added annotations will appear in the **Add annotation tags...** field as well as on the right sidebar of the page. 
 
 ### Detection for Video
 
-![Bounding box detection for video](/img/video_detector.jpg)
+Support for video labeling is coming soon. 
 
-## Polygon Detection 
+## Segmentation
 
-Provide annotation within any polygon-shaped region of an image or video.
+The segmentation label type lets you outline a boundary of an object using a series of vertices that define a closed polygonal shape. It's ideal for annotating irregularly shaped areas or objects. 
 
+To manually add segmentation labels on an image on the Input-Viewer page, first click the **Polygon** tool on the navigation bar.
 
-![](/img/polygon.jpg)
+:::tip
+
+The keyboard shortcut for the **Polygon** tool is **P**. 
+
+:::
+
+Next, click the **Add annotation tags...** field and select the concept you want to use from the drop-down list — that is, if the concept is already existing in your app. If it's not already existing, you'll need to add it as described earlier. 
+
+Next, draw a contour as closely as possible around the image's region of interest. 
+
+You can add as many detection annotations as you want. The added annotations will appear in the **Add annotation tags...** field as well as on the right sidebar of the page. 
+
+## Masks
+
+The masks label type lets you label each pixel within the region of interest. It provides pixel-level labeling that allows you to precisely identify and delineate objects within an image. 
+
+Currently, you can only minimally review existing image mask annotations on the Input-Viewer page. After creating mask images via the API and uploading them on the platform, you can view them on the page. 
+
+:::note
+
+You can delete an entire image mask annotation on an input on the Input-Viewer page. However, we currently do not support creating and editing mask annotations on the page. 
+
+:::
+
+![](/img/others-2/label-types-7.png)
 

@@ -22,6 +22,11 @@ const sidebars = {
     collapsed: false,
     items: [
   {
+    type: 'link',
+    label: 'Swagger API Guide',
+    href: 'https://api.clarifai.com/api-doc/?url=https://api.clarifai.com/v2/swagger.json',
+  },
+  {
       type: 'link',
       label: 'API Status',
       href: 'https://status.clarifai.com/',
