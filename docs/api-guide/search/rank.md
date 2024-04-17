@@ -16,6 +16,13 @@ You can even rank search results by how similar one input is to another input or
 The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 :::
 
+:::tip
+
+You can learn how to paginate your API requests results [here](https://docs.clarifai.com/api-guide/advanced-topics/pagination/). 
+
+:::
+
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";

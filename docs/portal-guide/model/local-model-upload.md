@@ -104,6 +104,14 @@ Choose a [model type](https://docs.clarifai.com/portal-guide/model/model-types/)
 
 Provide a short description of what the model is about. Later, you can go to the model's individual page, under the **Notes** section, and edit its description using Markdown.
 
+:::tip Markdown template functionality
+
+- You can insert custom variables such as `{{user_id}}` and `{{app_id}}` into markdown templates, particularly in sections like the Notes section of a model. These variables are dynamically replaced with the corresponding `user_id` and `app_id` extracted from the URL, allowing you to personalize content within your templates.
+
+- For example, within the Notes section of a model, you can now add `{{user_id}}` to dynamically display the user who created the model.
+
+:::
+
 #### Model Version Description
 
 Optionally, you can provide a brief description of the model version, summarizing its characteristics or updates.
