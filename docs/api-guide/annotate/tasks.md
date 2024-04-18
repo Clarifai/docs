@@ -8,7 +8,13 @@ sidebar_position: 4
 **Group your labeling work into tasks that can be delegated**
 <hr />
 
-Tasks are a powerful tool that can help your team to annotate inputs from your application.
+Task is the work that needs to be done for labeling the inputs in an app. It's a powerful way to help your team annotate inputs fast and efficiently.
+
+:::info
+
+The initialization code used in the following example is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
+
+:::
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -38,7 +44,27 @@ import CurlDeleteMultipleTasks from "!!raw-loader!../../../code_snippets/api-gui
 
 ## Create
 
-To create a new task in your app, you `POST` the task information to `v2/task` endpoint.
+To create a new task in your app, you `POST` the task information to the `v2/task` endpoint.
+
+These are some parameters you can specify:
+
+- Task type — It can be:
+    - **CONCEPTS_CLASSIFICATION** — Concepts classification tasks annotate concepts for the overall image, frame of video, or section of text.
+    - **BOUNDING_BOX_DETECTION** — Bounding box detection tasks annotate rectangular bounding box regions around each concept in an image, frame of video, or section of text.
+    - **POLYGON_DETECTION** — Polygon detection tasks annotate free-form regions around concepts in an image, frame of video, or section of text.
+- Worker — Task worker includes information about the workers that will work on the task. 
+- Task worker strategy — It can be:
+    - **PARTITIONED** — The inputs will be partitioned in several partitions. Each worker will label one or more input partitions.
+    - **FULL** — Each worker will label all inputs from the input source.
+- Input source — It can be: 
+    - **ALL_INPUTS** — Use all inputs in the app.
+    - **SAVED_SEARCH** — Use the inputs from a saved search. You also need to specify the **id** of the saved search.
+    - **DATASET** — Inputs from a dataset.
+- **[sample_ms](https://docs.clarifai.com/api-guide/predict/video#configuring-fps)** — Used in video model predictions. It specifies the sample delay for video predictions (1 frame per N milliseconds). 
+- Review strategy — It can be: 
+    - **NONE** — No review is needed.
+    - **MANUAL** — Manual review strategy.
+    - **CONSENSUS** — Consensus review strategy.
 
 ### Non-Assigned Task
 
