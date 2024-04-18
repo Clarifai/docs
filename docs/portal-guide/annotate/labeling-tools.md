@@ -1,11 +1,11 @@
 ---
-description: Learn about the labeling tools that are available in Scribe
+description: Learn about the labeling tools available in Scribe
 sidebar_position: 4
 ---
 
 # Labeling Tasks Tools
 
-**Learn about the labeling tools that are available in Scribe**
+**Learn about the labeling tools available in Scribe**
 <hr />
 
 <div style={{ "position":"relative","width": "100%","overflow": "hidden","padding-top": "56.25%"}}>

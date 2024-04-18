@@ -162,21 +162,36 @@ You'll be redirected to the individual page of your model.
 
 ![](/img/community_2/my-deep-training-7.png)
 
-If you check the [model's versions table](https://docs.clarifai.com/portal-guide/model-versions/#model-versions-table), you’ll notice that the model is still being trained. Many hours may be required to deep train models with large numbers of inputs and complex taxonomies. 
+If you check the [model's versions table](https://docs.clarifai.com/portal-guide/model-versions/#model-versions-table), you’ll notice that the model is still being trained. 
 
-You can check the training progress by clicking the **View Training Log** button. You can also cancel a deep fine-tuning job at any time by clicking the **Cancel training** button. 
+Many hours may be required to deep train models with large numbers of inputs and complex taxonomies. You can cancel a deep fine-tuning job at any time by clicking the **Cancel training** button. 
 
-After the model has been trained, the status will change to **Model Trained**.
-
-![](/img/community_2/my-deep-training-8.png)
-
-Once you've created and trained your new model, you can put it to work. It will be ready to be [evaluated](https://docs.clarifai.com/portal-guide/evaluate/), combined with other models and [agent operators](https://docs.clarifai.com/portal-guide/model/agent-system-operators/) in a workflow, or used to serve [inference](https://docs.clarifai.com/portal-guide/ppredict) requests as it is.
-
-:::info
+:::caution
 
 Deep fine-tuning is billed at an hourly rate, and for canceled jobs, you will be charged for the time you've used to train your model. You can learn more about deep fine-tuning pricing [here](https://www.clarifai.com/pricing).
 
 :::
+
+You can check the training progress by clicking the **View Training Log** button. If you click the button, a small sidebar will appear with details of the training exercise. 
+You can also download the training log data by clicking the **download** button. 
+
+![](/img/community_2/my-deep-training-7-1.png)
+
+### Step 8: Use the Model​
+
+After the model has been trained, the status will change to **Model Trained**.
+
+In the **Actions** column, you can carry out the following:
+
+- Copy the model version ID
+- View the model in the [leaderboard](https://docs.clarifai.com/portal-guide/evaluate/leaderboard/)
+- View the [model version details](https://docs.clarifai.com/portal-guide/model-versions/)
+- Download the training log data
+- Delete the model version
+
+![](/img/community_2/my-deep-training-8.png)
+
+Once you've created and trained your new model, you can put it to work. It will be ready to be [evaluated](https://docs.clarifai.com/portal-guide/evaluate/), combined with other models and [agent operators](https://docs.clarifai.com/portal-guide/model/agent-system-operators/) in a workflow, or used to serve [inference](https://docs.clarifai.com/portal-guide/ppredict) requests as it is.
 
 That's it!
 

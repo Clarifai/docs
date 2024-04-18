@@ -59,3 +59,24 @@ You can access your favorite resources by navigating to the top-right menu bar a
 You can also organize your starred resources by sorting them in either descending order (highest number of stars first) or ascending order (lowest number of stars first) according to your preference.
 
 ![](/img/community_2/starring_resources.png)
+
+## Markdown Notes
+
+You can add notes in Markdown format that explain what a resource is about, such as its purpose, usage instructions, required configurations, or any other relevant details to provide clarity and guidance for users interacting with it. 
+
+For example, to add descriptive notes for an app, navigate to the app's **Overview** page. From there, click the pencil icon that appears within the **Notes** section to begin adding your notes.
+
+![](/img/community_2/markdown_notes.png)
+
+You can then add your notes in Markdown format.
+
+Note that you can insert custom variables such as `{{user_id}}` and `{{app_id}}` into the Markdown template. These variables are dynamically replaced with the corresponding `user_id` and `app_id` extracted from the URL, allowing you to personalize content within your templates.
+
+Here is an example:
+
+![](/img/community_2/markdown_notes_1.png)
+
+If you click the **Save** button, the corresponding `user_id` and `app_id` will be dynamically displayed. 
+
+![](/img/community_2/markdown_notes_3.png)
+
