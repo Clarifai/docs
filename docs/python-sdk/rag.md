@@ -50,7 +50,7 @@ To run on a local system use: cd examples/
 :::
 
 :::note
-Before you proceed install ```llama_index``` using ```pip install llama-index-core==0.10.1```
+Before you proceed install ```llama_index``` using ```pip install llama-index-core==0.10.24```
 :::
 
 ## Initialising RAG
