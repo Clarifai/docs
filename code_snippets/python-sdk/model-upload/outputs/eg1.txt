@@ -1,0 +1,80 @@
+Consider using `hf_transfer` for faster downloads. This solution comes with some limitations. See https://huggingface.co/docs/huggingface_hub/hf_transfer for more details.
+Fetching 14 files:   0% 0/14 [00:00<?, ?it/s]downloading https://huggingface.co/mattmdjaga/segformer_b2_clothes/resolve/f6ac72992f938a1d0073fb5e5a06fd781f19f9a2/README.md to /root/.cache/huggingface/hub/tmpks451wck
+downloading https://huggingface.co/mattmdjaga/segformer_b2_clothes/resolve/f6ac72992f938a1d0073fb5e5a06fd781f19f9a2/onnx/model.onnx to /root/.cache/huggingface/hub/tmp5jpha5yd
+downloading https://huggingface.co/mattmdjaga/segformer_b2_clothes/resolve/f6ac72992f938a1d0073fb5e5a06fd781f19f9a2/.gitignore to /root/.cache/huggingface/hub/tmp2hpe7iu0
+downloading https://huggingface.co/mattmdjaga/segformer_b2_clothes/resolve/f6ac72992f938a1d0073fb5e5a06fd781f19f9a2/onnx/config.json to /root/.cache/huggingface/hub/tmpufkrlq2_
+downloading https://huggingface.co/mattmdjaga/segformer_b2_clothes/resolve/f6ac72992f938a1d0073fb5e5a06fd781f19f9a2/onnx/preprocessor_config.json to /root/.cache/huggingface/hub/tmp8ts928m7
+downloading https://huggingface.co/mattmdjaga/segformer_b2_clothes/resolve/f6ac72992f938a1d0073fb5e5a06fd781f19f9a2/handler.py to /root/.cache/huggingface/hub/tmpu8jtbelz
+downloading https://huggingface.co/mattmdjaga/segformer_b2_clothes/resolve/f6ac72992f938a1d0073fb5e5a06fd781f19f9a2/config.json to /root/.cache/huggingface/hub/tmpzkygsvw4
+
+README.md: 100% 4.54k/4.54k [00:00<00:00, 13.5MB/s]
+downloading https://huggingface.co/mattmdjaga/segformer_b2_clothes/resolve/f6ac72992f938a1d0073fb5e5a06fd781f19f9a2/.gitattributes to /root/.cache/huggingface/hub/tmp6fd8ko4x
+
+.gitignore: 100% 29.0/29.0 [00:00<00:00, 94.1kB/s]
+
+onnx/config.json: 100% 1.72k/1.72k [00:00<00:00, 8.88MB/s]
+
+onnx/preprocessor_config.json: 100% 431/431 [00:00<00:00, 2.32MB/s]
+
+model.onnx:   0% 0.00/110M [00:00<?, ?B/s]
+
+config.json: 100% 1.73k/1.73k [00:00<00:00, 7.93MB/s]
+
+
+handler.py: 100% 1.54k/1.54k [00:00<00:00, 8.31MB/s]
+
+
+.gitattributes: 100% 1.48k/1.48k [00:00<00:00, 6.78MB/s]
+downloading https://huggingface.co/mattmdjaga/segformer_b2_clothes/resolve/f6ac72992f938a1d0073fb5e5a06fd781f19f9a2/pytorch_model.bin to /root/.cache/huggingface/hub/tmpx_viyrvb
+Fetching 14 files:   7% 1/14 [00:00<00:08,  1.55it/s]downloading https://huggingface.co/mattmdjaga/segformer_b2_clothes/resolve/f6ac72992f938a1d0073fb5e5a06fd781f19f9a2/preprocessor_config.json to /root/.cache/huggingface/hub/tmpiltxv0t_
+downloading https://huggingface.co/mattmdjaga/segformer_b2_clothes/resolve/f6ac72992f938a1d0073fb5e5a06fd781f19f9a2/scheduler.pt to /root/.cache/huggingface/hub/tmppjzdy4m0
+downloading https://huggingface.co/mattmdjaga/segformer_b2_clothes/resolve/f6ac72992f938a1d0073fb5e5a06fd781f19f9a2/training_args.bin to /root/.cache/huggingface/hub/tmph_tb7wt3
+downloading https://huggingface.co/mattmdjaga/segformer_b2_clothes/resolve/f6ac72992f938a1d0073fb5e5a06fd781f19f9a2/trainer_state.json to /root/.cache/huggingface/hub/tmpl41baift
+downloading https://huggingface.co/mattmdjaga/segformer_b2_clothes/resolve/f6ac72992f938a1d0073fb5e5a06fd781f19f9a2/rng_state.pth to /root/.cache/huggingface/hub/tmp8w6kv5ay
+
+
+preprocessor_config.json: 100% 271/271 [00:00<00:00, 864kB/s]
+
+
+trainer_state.json:   0% 0.00/291k [00:00<?, ?B/s]
+
+
+pytorch_model.bin:   0% 0.00/110M [00:00<?, ?B/s]
+
+trainer_state.json: 100% 291k/291k [00:00<00:00, 1.99MB/s]
+
+
+
+pytorch_model.bin:  10% 10.5M/110M [00:00<00:01, 70.5MB/s]
+
+training_args.bin: 100% 3.32k/3.32k [00:00<00:00, 9.70MB/s]
+
+model.onnx:  10% 10.5M/110M [00:00<00:04, 24.4MB/s]
+
+rng_state.pth: 100% 14.6k/14.6k [00:00<00:00, 32.1MB/s]
+
+
+scheduler.pt: 100% 627/627 [00:00<00:00, 2.31MB/s]
+
+
+
+pytorch_model.bin:  29% 31.5M/110M [00:00<00:00, 111MB/s] 
+
+
+pytorch_model.bin:  48% 52.4M/110M [00:00<00:00, 146MB/s]
+model.onnx:  19% 21.0M/110M [00:00<00:02, 34.0MB/s]
+
+
+pytorch_model.bin:  67% 73.4M/110M [00:00<00:00, 156MB/s]
+model.onnx:  29% 31.5M/110M [00:00<00:01, 43.8MB/s]
+
+
+pytorch_model.bin:  86% 94.4M/110M [00:00<00:00, 172MB/s]
+pytorch_model.bin: 100% 110M/110M [00:00<00:00, 139MB/s] 
+
+model.onnx:  48% 52.4M/110M [00:01<00:00, 65.3MB/s]
+model.onnx:  67% 73.4M/110M [00:01<00:00, 86.4MB/s]
+model.onnx:  86% 94.4M/110M [00:01<00:00, 107MB/s] 
+model.onnx: 100% 110M/110M [00:01<00:00, 75.2MB/s]
+Fetching 14 files: 100% 14/14 [00:02<00:00,  6.75it/s]
+/content/examples/model_upload/visual_segmenter/segformer-b2/checkpoint

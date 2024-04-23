@@ -1,0 +1,5 @@
+Exporting model: 100%|██████████████████████████████████| 912M/912M [00:22<00:00, 39.8MB/s]
+2024-04-18 11:44:30 INFO     clarifai.client.model:  Model ID model_classifier model.py:991
+                             with version 78a14f11871a4d5fa9dfa462fc81c1aa                 
+                             exported successfully to                                      
+                             /home/adithyansukumar/work/output/model.tar    
