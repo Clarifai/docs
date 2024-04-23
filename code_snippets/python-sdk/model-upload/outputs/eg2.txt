@@ -1,0 +1,47 @@
+======================================= test session starts ========================================
+
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.4.0
+
+rootdir: /content/examples/model_upload/visual_segmenter
+
+plugins: anyio-3.7.1
+
+collected 2 items                                                                                  
+
+segformer-b2/test.py The cache for model files in Transformers v4.22.0 has been updated. Migrating your old cache. This is a one-time only operation. You can interrupt this and resume the migration later on by calling `transformers.utils.move_cache()`.
+
+0it [00:00, ?it/s]
+
+2024-04-09 09:57:46.703098: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+
+2024-04-09 09:57:46.703174: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+
+2024-04-09 09:57:46.805602: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+
+2024-04-09 09:57:49.466995: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+
+..
+
+========================================= warnings summary =========================================
+
+segformer-b2/test.py::CustomTest::test_default_cases
+
+segformer-b2/test.py::CustomTest::test_specific_case1
+
+  /usr/local/lib/python3.10/dist-packages/transformers/models/segformer/image_processing_segformer.py:99: FutureWarning: The `reduce_labels` parameter is deprecated and will be removed in a future version. Please use `do_reduce_labels` instead.
+
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+
+================================== 2 passed, 2 warnings in 20.81s ==================================
+
+Start building...
+
+  0% 0/7 [00:00&lt;?, ?it/s]NOTE: skipping ['requirements.txt', '.cache', '__pycache__']
+
+copying inference.py...: 100% 7/7 [00:00&lt;00:00,  8.16it/s]
+
+Model building in progress; the duration may vary depending on the size of checkpoints/assets...
+
+Finished. Your model is located at ./segformer-b2/model.clarifai

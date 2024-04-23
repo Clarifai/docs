@@ -1,0 +1,1 @@
+Get your PAT from https://clarifai.com/settings/security and pass it here: <insert your pat here>
