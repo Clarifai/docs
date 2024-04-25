@@ -12,14 +12,16 @@ curl -X PATCH "https://api.clarifai.com/v2/users/YOUR_USER_ID_HERE/apps/YOUR_APP
                     "strategy": "PARTITIONED",
                     "users": [
                         {"id": "USER_ID_1_HERE"},
-                        {"id": "USER_ID_2_HERE"}
+                        {"id": "USER_ID_2_HERE"},
+                        {"id": "USER_ID_3_HERE"}
                     ],
                     "partitioned_strategy_info": {
                         "type": "WEIGHTED",
-                        "workers_per_input": 1,
+                        "workers_per_input": 3,
                         "weights": {
                             "USER_ID_1_HERE": 1,
-                            "USER_ID_2_HERE": 1
+                            "USER_ID_2_HERE": 1,
+                            "USER_ID_3_HERE": 1
                         }
                     }
                 },
@@ -36,7 +38,7 @@ curl -X PATCH "https://api.clarifai.com/v2/users/YOUR_USER_ID_HERE/apps/YOUR_APP
                         "approval_threshold": 2
                     },
                     "users": [
-                        {"id": "USER_ID_3_HERE"}
+                        {"id": "USER_ID_4_HERE"}
                     ]
                 },
                 "status": {

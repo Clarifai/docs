@@ -1,0 +1,3 @@
+Question: How to change the brake fluid
+Predicted Answer: Check the level of the brake fluid by looking at the markings on the reservoir. If the level is low, bring it to a mechanic.
+Retrieved Contexts (truncated): ['If you don t have the owner s manual for your car then you may be able to find one\nonline by using Google or another search engine. Search the website for the make of\nthe vehicle. You could also try y...', 'If you don t have the owner s manual for your car then you may be able to find one\nonline by using Google or another search engine. Search the website for the make of\nthe vehicle. You could also try y...']

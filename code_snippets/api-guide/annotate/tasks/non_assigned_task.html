@@ -1,15 +1,13 @@
-<!-- index.html file -->
-
 <script>
     /////////////////////////////////////////////////////////////////////////////
     // In this section, we set the user authentication, app ID, and concept ID.
     // Change these strings to run your own example.
     /////////////////////////////////////////////////////////////////////////////
 
-    const USER_ID = 'YOUR_USER_ID_HERE';
+    const USER_ID = "YOUR_USER_ID_HERE";
     // Your PAT (Personal Access Token) can be found in the Account's Security section
-    const PAT = 'YOUR_PAT_HERE';
-    const APP_ID = 'YOUR_APP_ID_HERE';
+    const PAT = "YOUR_PAT_HERE";
+    const APP_ID = "YOUR_APP_ID_HERE";
     // Change this to create your own non-assigned task 
     const CONCEPT_ID = "water";
 
@@ -48,10 +46,10 @@
     });
 
     const requestOptions = {
-        method: 'POST',
+        method: "POST",
         headers: {
-            'Accept': 'application/json',
-            'Authorization': 'Key ' + PAT
+            "Accept": "application/json",
+            "Authorization": "Key " + PAT
         },
         body: raw
     };
@@ -59,5 +57,5 @@
     fetch("https://api.clarifai.com/v2/tasks", requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+        .catch(error => console.log("error", error));
 </script>

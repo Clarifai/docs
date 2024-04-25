@@ -1,0 +1,103 @@
+2024-04-09 13:14:16 INFO     clarifai.client.input:                                                    input.py:687
+
+                             Inputs Uploaded                                                                       
+
+                             code: SUCCESS                                                                         
+
+                             description: "Ok"                                                                     
+
+                             details: "All inputs successfully added"                                              
+
+                             req_id: "b5030582b50f20e6e78c52513cfa11dc"                                            
+
+                                                                                                                   
+
+INFO:clarifai.client.input:
+
+Inputs Uploaded
+
+code: SUCCESS
+
+description: "Ok"
+
+details: "All inputs successfully added"
+
+req_id: "b5030582b50f20e6e78c52513cfa11dc"
+
+2024-04-09 13:14:18 INFO     clarifai.client.input:                                                    input.py:687
+
+                             Inputs Uploaded                                                                       
+
+                             code: SUCCESS                                                                         
+
+                             description: "Ok"                                                                     
+
+                             details: "All inputs successfully added"                                              
+
+                             req_id: "44ccf3fbb5b8932868a107658b5ce18e"                                            
+
+                                                                                                                   
+
+INFO:clarifai.client.input:
+
+Inputs Uploaded
+
+code: SUCCESS
+
+description: "Ok"
+
+details: "All inputs successfully added"
+
+req_id: "44ccf3fbb5b8932868a107658b5ce18e"
+
+2024-04-09 13:14:20 INFO     clarifai.client.input:                                                    input.py:687
+
+                             Inputs Uploaded                                                                       
+
+                             code: SUCCESS                                                                         
+
+                             description: "Ok"                                                                     
+
+                             details: "All inputs successfully added"                                              
+
+                             req_id: "b8364c5c2a3a4b8d477f99b1028b6fec"                                            
+
+                                                                                                                   
+
+INFO:clarifai.client.input:
+
+Inputs Uploaded
+
+code: SUCCESS
+
+description: "Ok"
+
+details: "All inputs successfully added"
+
+req_id: "b8364c5c2a3a4b8d477f99b1028b6fec"
+
+2024-04-09 13:14:21 INFO     clarifai.client.input:                                                    input.py:687
+
+                             Inputs Uploaded                                                                       
+
+                             code: SUCCESS                                                                         
+
+                             description: "Ok"                                                                     
+
+                             details: "All inputs successfully added"                                              
+
+                             req_id: "7c5d3751e0a79deae8012de213768932"                                            
+
+                                                                                                                   
+
+INFO:clarifai.client.input:
+
+Inputs Uploaded
+
+code: SUCCESS
+
+description: "Ok"
+
+details: "All inputs successfully added"
+
+req_id: "7c5d3751e0a79deae8012de213768932"
