@@ -43,9 +43,9 @@ post_tasks_response = stub.PostTasks(
                 name='Annotate ' + CONCEPT_ID,
                 worker=resources_pb2.TaskWorker(
                     strategy='PARTITIONED',
-                    workers=[
-                        resources_pb2.Worker(user=resources_pb2.User(id=USER_ID_1)),
-                        resources_pb2.Worker(user=resources_pb2.User(id=USER_ID_2))
+                    users=[
+                        resources_pb2.User(id=USER_ID_1),
+                        resources_pb2.User(id=USER_ID_2)
                     ],
                     partitioned_strategy_info=resources_pb2.TaskWorkerPartitionedStrategyInfo(
                         type='WEIGHTED',

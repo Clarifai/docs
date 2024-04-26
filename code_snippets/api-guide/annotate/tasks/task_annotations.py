@@ -3,15 +3,15 @@
 # performing task annotations. Change these strings to run your own example.
 ###################################################################################
 
-USER_ID = 'alfrick'
+USER_ID = 'YOUR_USER_ID_HERE'
 # Your PAT (Personal Access Token) can be found in the Account's Security section
-PAT = '31779bdf361444edbbcbffb5aaba9d64'
-APP_ID = 'deep-learning'
-# Change these to perform your own task annotations  
+PAT = 'YOUR_PAT_HERE'
+APP_ID = 'YOUR_APP_ID_HERE'
+# Change these to perform your own task annotations
 INPUT_ID = 'c99f1b557d1d43d1916b46f8ce4a0487'
 CONCEPT_ID_1 = 'tree'
 CONCEPT_ID_2 = 'water'
-TASK_ID = 'c37aed156e474e03bb5246576d9f48fd'  
+TASK_ID = 'c37aed156e474e03bb5246576d9f48fd'
 
 ##########################################################################
 # YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -44,9 +44,7 @@ post_task_annotations_response = stub.PostAnnotations(
                         resources_pb2.Concept(id=CONCEPT_ID_2, value=0.)  # 0 means false, this concept is not present
                     ]
                 ),
-                annotation_info=resources_pb2.AnnotationInfo(
-                     task_id=TASK_ID
-                )            
+                annotation_info=params
             )
         ]
     ),
@@ -55,4 +53,4 @@ post_task_annotations_response = stub.PostAnnotations(
 
 if post_task_annotations_response.status.code != status_code_pb2.SUCCESS:
     print(post_task_annotations_response.status)
-    raise Exception("Post task annotations failed, status: " + post_task_annotations_response.status.description) 
+    raise Exception('Post task annotations failed, status: ' + post_task_annotations_response.status.description)

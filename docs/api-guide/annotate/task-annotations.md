@@ -19,6 +19,8 @@ import JSTaskAnnotations from "!!raw-loader!../../../code_snippets/api-guide/ann
 import CurlTaskAnnotations from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/task_annotations.sh";
 import PyTaskAnnotations from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/task_annotations.py";
 import JavaTaskAnnotations from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/task_annotations.java";
+import PHPTaskAnnotations from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/task_annotations.php";
+import NodeTaskAnnotations from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/task_annotations.js";
 
 <Tabs>
 
@@ -30,8 +32,16 @@ import JavaTaskAnnotations from "!!raw-loader!../../../code_snippets/api-guide/a
     <CodeBlock className="language-javascript">{JSTaskAnnotations}</CodeBlock>
 </TabItem>
 
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeTaskAnnotations}</CodeBlock>
+</TabItem>
+
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaTaskAnnotations}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPTaskAnnotations}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">

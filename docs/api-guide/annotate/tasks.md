@@ -13,18 +13,18 @@ Task is the work that needs to be done for labeling the inputs in an app. It's a
 These are some parameters you can specify when working with tasks:
 
 - Task type — It can be:
-    - `CONCEPTS_CLASSIFICATION` — Concepts classification tasks annotate concepts for the overall image, frame of video, or section of text.
+    - `CONCEPTS_CLASSIFICATION` — Concepts classification tasks annotate [concepts](https://docs.clarifai.com/api-guide/concepts/) for the overall image, frame of video, or section of text.
     - `BOUNDING_BOX_DETECTION` — Bounding box detection tasks annotate rectangular bounding box regions around each concept in an image, frame of video, or section of text.
     - `POLYGON_DETECTION` — Polygon detection tasks annotate free-form regions around concepts in an image, frame of video, or section of text.
-- Worker — Task worker includes information about the workers that will work on the task. 
+- Worker — Task worker includes information about the workers who will work on the task. 
 - Concept IDs — List of concept IDs used in the work on the task. The concepts should already be existing in your app. 
 - Task worker strategy — It can be:
     - `PARTITIONED` — The inputs will be partitioned in several partitions. Each worker will label one or more input partitions.
     - `FULL` — Each worker will label all inputs from the input source.
 - Input source — It can be: 
     - `ALL_INPUTS` — Use all inputs in the app.
-    - `SAVED_SEARCH` — Use the inputs from a saved search. You also need to specify the `id` of the saved search.
-    - `DATASET` — Inputs from a dataset.
+    - `SAVED_SEARCH` — Use the inputs from a [saved search](https://docs.clarifai.com/api-guide/search/legacy-search/saved_searches). You also need to specify the `id` of the saved search.
+    - `DATASET` — Use inputs from a [dataset](https://docs.clarifai.com/api-guide/data/datasets/).
 - [`sample_ms`](https://docs.clarifai.com/api-guide/predict/video#configuring-fps) — Used in video model predictions. It specifies the sample delay for video predictions (1 frame per N milliseconds). 
 - Review strategy — It can be: 
     - `NONE` — No review is needed.
@@ -33,11 +33,11 @@ These are some parameters you can specify when working with tasks:
 - Partitioned strategy info — It can be:    
     - `EVENLY` — Each worker will label (approximately) the same number of inputs.
     - `WEIGHTED` — Each worker will have an assigned weight.
-- Workers per input — How many workers will label each input. 
+- Workers per input — The number of workers who will label each input. 
 
 :::info
 
-The initialization code used in the following example is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
+The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
 
 :::
 
@@ -69,6 +69,8 @@ import JSDeleteMultipleTasks from "!!raw-loader!../../../code_snippets/api-guide
 
 import NodeNonAssignedTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/non_assigned_task.js";
 import NodeAssignedTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/assigned_task.js";
+import NodeTaskPartitionedWorkerStrategy from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/task_partitioned_worker_strategy.js";
+import NodeConsensusReview from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/task_consensus_review.js";
 import NodeDeleteMultipleTasks from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/delete_multiple_tasks.js";
 import NodeGetTaskByID from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/get_task_by_id.js";
 import NodeListAllTasks from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/list_all_tasks.js";
@@ -76,6 +78,9 @@ import NodeListTasksAssignedUser from "!!raw-loader!../../../code_snippets/api-g
 import NodeListTasksAssignedUserReview from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/list_tasks_assigned_user_review.js";
 
 import JavaNonAssignedTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/non-assigned_task.java";
+import JavaAssignedTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/assigned_task.java";
+import JavaTaskPartitionedWorkerStrategy from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/task_partitioned_worker_strategy.java";
+import JavaConsensusReview from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/task_consensus_review.java";
 import JavaUpdateTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/update_task.java";
 import JavaDeleteMultipleTasks from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/delete_multiple_tasks.java";
 import JavaGetTaskByID from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/get_task_by_id.java";
@@ -84,11 +89,14 @@ import JavaListTasksAssignedUser from "!!raw-loader!../../../code_snippets/api-g
 import JavaListTasksAssignedUserReview from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/list_tasks_assigned_user_review.java";
 
 import PHPNonAssignedTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/non_assigned_task.php";
+import PHPTaskPartitionedWorkerStrategy from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/task_partitioned_worker_strategy.php";
+import PHPConsensusReview from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/task_consensus_review.php";
 import PHPGetTaskByID from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/get_task_by_id.php";
 import PHPListAllTasks from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/list_all_tasks.php";
 import PHPListTasksAssignedUser from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/list_tasks_assigned_user.php";
 import PHPListTasksAssignedUserReview from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/list_tasks_assigned_user_review.php";
 import PHPAssignedTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/assigned_task.php";
+import PHPUpdateTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/update_task.php";
 import PHPDeleteMultipleTasks from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/delete_multiple_tasks.php";
 
 import CurlNonAssignedTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/non_assigned_task.sh";
@@ -157,6 +165,10 @@ A task should be assigned to a list of users. These users will do the work, so t
     <CodeBlock className="language-javascript">{NodeAssignedTask}</CodeBlock>
 </TabItem>
 
+<TabItem value="java" label="Java">
+    <CodeBlock className="language-java">{JavaAssignedTask}</CodeBlock>
+</TabItem>
+
 <TabItem value="php" label="PHP">
     <CodeBlock className="language-php">{PHPAssignedTask}</CodeBlock>
 </TabItem>
@@ -197,6 +209,20 @@ In the following example, there are two workers:
     <CodeBlock className="language-javascript">{JSTaskPartitionedWorkerStrategy}</CodeBlock>
 </TabItem>
 
+<!--
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeTaskPartitionedWorkerStrategy}</CodeBlock>
+</TabItem>
+-->
+
+<TabItem value="java" label="Java">
+    <CodeBlock className="language-java">{JavaTaskPartitionedWorkerStrategy}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPTaskPartitionedWorkerStrategy}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlTaskPartitionedWorkerStrategy}</CodeBlock>
 </TabItem>
@@ -234,6 +260,20 @@ For example, in case of 3 workers and `approval_threshold` set to 2, if an input
 
 <TabItem value="js_rest" label="JavaScript (REST)">
     <CodeBlock className="language-javascript">{JSConsensusReview}</CodeBlock>
+</TabItem>
+
+<!--
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeConsensusReview}</CodeBlock>
+</TabItem>
+-->
+
+<TabItem value="java" label="Java">
+    <CodeBlock className="language-java">{JavaConsensusReview}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPConsensusReview}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -394,6 +434,10 @@ Currently, we only support updating a task by providing all information at once.
     <CodeBlock className="language-java">{JavaUpdateTask}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPUpdateTask}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlUpdateTask}</CodeBlock>
 </TabItem>
@@ -426,11 +470,9 @@ You can delete a task by specifying its ID. You can also delete multiple tasks b
     <CodeBlock className="language-php">{PHPDeleteMultipleTasks}</CodeBlock>
 </TabItem>
 
-<!--
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlDeleteMultipleTasks}</CodeBlock>
 </TabItem>
--->
 
 </Tabs>
 

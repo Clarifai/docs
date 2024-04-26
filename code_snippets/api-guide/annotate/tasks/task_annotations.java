@@ -4,18 +4,20 @@ import com.clarifai.grpc.api.*;
 import com.clarifai.channel.ClarifaiChannel;
 import com.clarifai.credentials.ClarifaiCallCredentials;
 import com.clarifai.grpc.api.status.StatusCode;
+import com.google.protobuf.Struct;
+import com.google.protobuf.Value;
 
 public class ClarifaiExample {
 
     //////////////////////////////////////////////////////////////////////////////////
-    // In this section, we set the user authentication, app ID, and how we want to 
-    // annotate the image. Change these strings to run your own example.
+    // In this section, we set the user authentication, app ID, and the details for
+    // performing task annotations. Change these strings to run your own example.
     //////////////////////////////////////////////////////////////////////////////////
 
-    static final String USER_ID = "alfrick";
+    static final String USER_ID = "YOUR_USER_ID_HERE";
     //Your PAT (Personal Access Token) can be found in the portal under Authentication	
-    static final String PAT = "31779bdf361444edbbcbffb5aaba9d64";
-    static final String APP_ID = "deep-learning";
+    static final String PAT = "YOUR_PAT_HERE";
+    static final String APP_ID = "YOUR_APP_ID_HERE";
     // Change these to perform your own task annotations  
     static final String INPUT_ID = "c99f1b557d1d43d1916b46f8ce4a0487";
     static final String CONCEPT_ID_1 = "tree";
@@ -30,6 +32,9 @@ public class ClarifaiExample {
 
         V2Grpc.V2BlockingStub stub = V2Grpc.newBlockingStub(ClarifaiChannel.INSTANCE.getGrpcChannel())
             .withCallCredentials(new ClarifaiCallCredentials(PAT));
+        
+        Struct.Builder params = Struct.newBuilder()
+                .putFields("task_id", Value.newBuilder().setStringValue(TASK_ID).build());
 
         MultiAnnotationResponse postAnnotationsResponse = stub.postAnnotations(
             PostAnnotationsRequest.newBuilder()
@@ -50,8 +55,7 @@ public class ClarifaiExample {
                         .build()
                     )
                 )
-                .setAnnotationInfo(Annotation.newBuilder().setTaskId(TASK_ID).build())
-               // .setAnnotationInfo(Annotation.TASK_ID_FIELD_NUMBER)
+                .setAnnotationInfo(params)               
                 .build()
             ).build()
         );

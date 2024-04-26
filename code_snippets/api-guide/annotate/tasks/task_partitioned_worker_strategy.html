@@ -30,7 +30,7 @@
         name: "Annotate " + CONCEPT_ID,
         worker: {
           strategy: "PARTITIONED",
-          workers: [{ id: USER_ID_1 }, { id: USER_ID_2 }],
+          users: [{ id: USER_ID_1 }, { id: USER_ID_2 }],
           partitioned_strategy_info: {
             type: "WEIGHTED",
             workers_per_input: 1,
