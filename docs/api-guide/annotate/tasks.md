@@ -149,7 +149,7 @@ A task should be assigned to a list of users, but it's not required. The followi
 
 ### Assigned Task
 
-A task should be assigned to a list of users. These users will do the work, so they're also called workers. A task may also be assigned to a list of users for review.
+A task should be assigned to a list of users. These users will do the labeling work, so they're also called workers. A task may also be assigned to a list of users for review.
 
 <Tabs>
 

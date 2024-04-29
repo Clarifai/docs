@@ -27,6 +27,10 @@ To install, run:
 pip install -U clarifai
 ```
 
+:::note
+Install Clarifai Python SDK through  ```pip install "clarifai[all]"``` to use more optional libraries mentioned [here](https://github.com/Clarifai/clarifai-python/blob/491d5444f5ae5da234012022e1ba4e83739242a4/setup.py).
+:::
+
 ## Installation from Source (for Development)
 
 If you want to install from source for development purposes, follow these steps:
