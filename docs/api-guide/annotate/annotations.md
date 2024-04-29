@@ -3,7 +3,7 @@ description: Label your data.
 sidebar_position: 1
 ---
 
-# Annotations
+# Annotations : Create, Get, Update, Delete
 
 **Label your data**
 <hr />

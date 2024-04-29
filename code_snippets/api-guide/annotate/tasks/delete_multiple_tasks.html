@@ -2,7 +2,7 @@
 
 <script>
     ///////////////////////////////////////////////////////////////////////////
-    // In this section, we set the user authentication, app ID, and task ID. 
+    // In this section, we set the user authentication, app ID, and task IDs. 
     // Change these strings to run your own example.
     ///////////////////////////////////////////////////////////////////////////
 
@@ -10,8 +10,9 @@
     // Your PAT (Personal Access Token) can be found in the Account's Security section
     const PAT = 'YOUR_PAT_HERE';
     const APP_ID = 'YOUR_APP_ID_HERE';
-    // Change this to delete your own task 
-    const TASK_ID = '66262884195c427595d4bca033b2114e';
+    // Change these to delete your own tasks
+    const TASK_ID_1 = '66262884195c427595d4bca033b2114e';
+    const TASK_ID_2 = '1106ba0327ed44c2b556659a58e77a48';
 
     ///////////////////////////////////////////////////////////////////////////////////
     // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -22,7 +23,7 @@
             "user_id": USER_ID,
             "app_id": APP_ID
         },
-        "ids": [TASK_ID]
+        "ids": [TASK_ID_1, TASK_ID_2]
     });
 
     const requestOptions = {

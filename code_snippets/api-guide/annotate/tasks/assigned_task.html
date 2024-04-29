@@ -1,71 +1,76 @@
-<!--index.html file-->
+<!-- index.html file -->
 
 <script>
-    ///////////////////////////////////////////////////////////////////////////////
-    // In this section, we set the user authentication, app ID, and details for
-    // assigning a task. Change these strings to run your own example.
-    //////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////
+  // In this section, we set the user authentication, app ID, and details for
+  // assigning a task. Change these strings to run your own example.
+  //////////////////////////////////////////////////////////////////////////////
 
-    const USER_ID = 'YOUR_USER_ID_HERE';
-    // Your PAT (Personal Access Token) can be found in the Account's Security section
-    const PAT = 'YOUR_PAT_HERE';
-    const APP_ID = 'YOUR_APP_ID_HERE';
-    // Change these to assign your own task 
-    const CONCEPT_ID = "water";
-    const WORKER_USER_ID = "WORKER_USER_ID_HERE";
-    const REVIEWER_USER_ID = "REVIEWER_USER_ID_HERE";
+  const USER_ID = "YOUR_USER_ID_HERE";
+  // Your PAT (Personal Access Token) can be found in the Account's Security section
+  const PAT = "YOUR_PAT_HERE";
+  const APP_ID = "YOUR_APP_ID_HERE";
+  // Change these to assign your own task
+  const CONCEPT_ID = "water";
+  const WORKER_USER_ID = "WORKER_USER_ID_HERE";
+  const REVIEWER_USER_ID = "REVIEWER_USER_ID_HERE";
 
-    ///////////////////////////////////////////////////////////////////////////////////
-    // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
-    ///////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////
+  // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
+  ///////////////////////////////////////////////////////////////////////////////////
 
-    const raw = JSON.stringify({
-        "user_app_id": {
-            "user_id": USER_ID,
-            "app_id": APP_ID
-        },
-        "tasks": [
+  const raw = JSON.stringify({
+    user_app_id: {
+      user_id: USER_ID,
+      app_id: APP_ID,
+    },
+    tasks: [
+      {
+        type: "CONCEPTS_CLASSIFICATION",
+        name: "Annotate " + CONCEPT_ID,
+        worker: {
+          strategy: "FULL",
+          workers: [
             {
-                "type": "CONCEPTS_CLASSIFICATION",
-                "name": "Annotate " + CONCEPT_ID,
-                "worker": {
-                    "strategy": "FULL",
-                    "users": [
-                        {"id": WORKER_USER_ID}
-                    ]
-                },
-                "concept_ids": [
-                    CONCEPT_ID
-                ],
-                "input_source": {
-                    "type": "ALL_INPUTS"
-                },
-                "sample_ms": 1000,
-                "review": {
-                    "strategy": "MANUAL",
-                    "manual_strategy_info": {
-                        "sample_percentage": 0.5
-                    },
-                    "users": [
-                        {"id": REVIEWER_USER_ID}
-                    ]
-                }
-            }
-        ]
-    });
-
-    const requestOptions = {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Authorization': 'Key ' + PAT
+              user: {
+                id: WORKER_USER_ID,
+              },
+            },
+          ],
         },
-        body: raw
-    };
+        concepts: [
+          {
+            concept: {
+              id: CONCEPT_ID,
+            },
+          },
+        ],
+        input_source: {
+          type: "ALL_INPUTS",
+        },
+        sample_ms: 1000,
+        review: {
+          strategy: "MANUAL",
+          manual_strategy_info: {
+            sample_percentage: 0.5,
+          },
+          users: [{ id: REVIEWER_USER_ID }],
+        },
+      },
+    ],
+  });
 
-    fetch("https://api.clarifai.com/v2/tasks", requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      Authorization: "Key " + PAT,
+    },
+    body: raw,
+  };
 
+  fetch("https://api.clarifai.com/v2/tasks", requestOptions)
+    .then((response) => response.text())
+    .then((result) => console.log(result))
+    .catch((error) => console.log("error", error));
 </script>
