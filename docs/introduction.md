@@ -39,7 +39,7 @@ Clarifai offers an end-to-end platform for the complete AI lifecycle. Whether yo
       <article class="col col--6">
          <a href="https://twitter.com/clarifai" target="_blank" style={{"display":"block","-webkit-text-decoration":"none","text-decoration":"none","color":"var(--ifm-heading-color)"}}>
          <div class="card margin-bottom--lg padding--lg cardContainer_w8bb cardContainerLink_AhGd" style={{height:"auto", "color":"var(--ifm-heading-color)"}}>
-            <h3 class="inline-flex"><img src="https://www.clarifai.com/hs-fs/hubfs/twitter-logo.png?width=35&name=twitter-logo.png" alt="twitter-logo" width="35px" />&nbsp; Follow us on Twitter</h3>
+            <h3 class="inline-flex"><img src="/img/twitter-x-icon-png.png" alt="twitter-logo" width="35px" />&nbsp; Follow us on X</h3>
             <p>Send us links to your apps, research, or shareable stuff</p>            
          </div>
          </a>
