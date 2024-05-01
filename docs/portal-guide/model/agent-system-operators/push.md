@@ -18,6 +18,8 @@ Since the push operators can be "chained" together with models to automate tasks
 
 ## Annotation Writer 
 
+**Input**: Any
+
 **Output**: Any
 
 Annotation Writer allows you to write the input data to the database in the form of an annotation with a specified status as if a specific user created the annotation. 
