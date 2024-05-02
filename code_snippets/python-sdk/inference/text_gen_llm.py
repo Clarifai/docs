@@ -1,7 +1,7 @@
 from clarifai.client.model import Model
 
 # Your PAT (Personal Access Token) can be found in the Account's Security section
-prompt = "What’s the futuree of AI?"
+prompt = "What’s the future of AI?"
 # You can set the model using model URL or model ID.
 model_url="https://clarifai.com/openai/chat-completion/models/GPT-4"
 
