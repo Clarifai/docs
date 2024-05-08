@@ -28,6 +28,12 @@ Visual segmentation, also known as semantic segmentation, is a computer vision t
 
 MMSegmentation is a visual segmentation toolbox based on the OpenMMLab ecosystem. OpenMMLab is an open-source project that aims to provide a comprehensive set of modularized and state-of-the-art computer vision algorithms and tools. MMSegmentation is one of the sub-projects within OpenMMLab, specifically focused on visual segmentation tasks.
 
+:::info
+
+We currently support MMSegmentation v1.5.0. 
+
+:::
+
 SegFormer is a deep learning model that has been proposed for visual segmentation. It is based on the Transformer architecture, which is originally designed for natural language processing tasks but has been successfully adapted to computer vision tasks as well. SegFormer utilizes the Transformer encoder-decoder architecture to perform pixel-wise segmentation on images. By leveraging self-attention mechanisms, the model can capture global contextual information while maintaining fine-grained spatial details.
 
 With the **MMSegmentation_SegFormer** template, you can carry out a wide range of visual segmentation tasks. It provides you with a rich set of resources, tools, and workflows to facilitate research and development in the field of computer vision.
