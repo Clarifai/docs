@@ -210,7 +210,7 @@ In the below example we are uploading an audio file with metadata that includes 
 
 ## List inputs
 
-Effortlessly explore and manage your inputs with the Clarifai Python SDK. By utilizing the list_inputs() method, you gain the ability to seamlessly view all inputs within your app. This powerful function supports features like pagination, enabling a well-organized display of information. Tailor your queries by setting parameters such as page_no and per_page to align with your specific requirements.
+Effortlessly explore and manage your inputs with the Clarifai Python SDK. By utilizing the list_inputs() method, you gain the ability to seamlessly view all inputs within your app. This powerful function supports features like pagination, enabling a well-organized display of information. Tailor your queries by setting parameters such as `page_no` and `per_page` to align with your specific requirements.
 
 Visit this [page](https://docs.clarifai.com/api-guide/data/create-get-update-delete) for more information.
 
