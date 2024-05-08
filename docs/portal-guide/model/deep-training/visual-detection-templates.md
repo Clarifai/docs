@@ -26,7 +26,15 @@ You can customize most hyperparameters by specifying the following values:
 
 This is a deep learning template model from MMDetection that focuses on object detection using the YOLO (You Only Look Once) framework.
 
-MMDetection, short for "OpenMMLab Detection Toolbox and Benchmark," is an open-source software framework developed by OpenMMLab. It is designed to facilitate research and development in the field of object detection and instance segmentation. MMDetection provides a comprehensive collection of state-of-the-art models, datasets, and evaluation metrics, making it a valuable resource for both academic and industrial applications.
+[MMDetection](https://mmdetection.readthedocs.io/en/latest/overview.html), short for "OpenMMLab Detection Toolbox and Benchmark," is an open-source software framework developed by OpenMMLab. It is designed to facilitate research and development in the field of object detection and instance segmentation.
+
+MMDetection provides a comprehensive collection of state-of-the-art models, datasets, and evaluation metrics, making it a valuable resource for both academic and industrial applications.
+
+:::info
+
+We currently support MMDetection v3.3.0. 
+
+:::
 
 The **MMDetection_YoloF** template leverages the power of convolutional neural networks (CNNs) and advanced techniques like anchor-based prediction and feature pyramid networks to accurately detect and localize objects in images or videos.
 

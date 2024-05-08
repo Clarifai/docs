@@ -31,6 +31,12 @@ This template is a customized variant of the ResNet-50 architecture for multimod
 
 - **RSB_A1:** This refers to a particular modification, adaptation, or variant of the ResNet architecture.
 
+:::info
+
+We currently support MMClassification v1.4.4. 
+
+:::
+
 The **MMClassification_ResNet_50_RSB_A1** template supports the following hyperparameters:
 
 - **Image size**—This is the image size for training and inference. ResNet uses square images. Images are scaled for efficient processing, and a lower number will take up less memory and run faster. A higher number will have more pixel information to train on and will increase accuracy.
