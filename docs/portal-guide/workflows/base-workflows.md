@@ -3,7 +3,6 @@ description: >-
   Base workflows index your data and provide your app with a default knowledge
   base.
 sidebar_position: 3
-draft: true
 ---
 
 # Base Workflows
@@ -63,7 +62,7 @@ Below is a table outlining the potential use cases for various base workflows. Y
 | [Text](https://clarifai.com/clarifai/main/workflows/Text) | A single-model workflow of text embedding model for general English text |
 | [BAAI-General-Embedding-Base-en](https://clarifai.com/clarifai/main/workflows/baai-general-embedding-base-en)  | A workflow for text search  |  
 | [Universal](https://clarifai.com/clarifai/main/workflows/Universal) | A universal workflow for text and image search |  
-| [Roberta-embedder](https://clarifai.com/clarifai/main/workflows/Roberta-embedder) | **No description provided**  |
+| [Roberta-embedder](https://clarifai.com/clarifai/main/workflows/Roberta-embedder) |   |
 | [MSMARCO-Distilbert-Text-Search](https://clarifai.com/clarifai/main/workflows/msmarco-distilbert-text-search)  | Text search workflow for TREC (Text REtrieval Conference) 2022 |
 | [Text-Moderation](https://clarifai.com/clarifai/main/workflows/Text-Moderation)| A single-model text moderation workflow that combines classification and embedding functions to classify harmful text content |
 
@@ -73,10 +72,10 @@ Below is a table outlining the potential use cases for various base workflows. Y
 |--------------------------------------|------------------------|
 |[Demographics](https://clarifai.com/clarifai/main/workflows/Demographics)  | Multi-model workflow that detects, crops, and recognizes demographic characteristics of faces. Visually classifies age, gender, and multi-culture  |  
 | [Universal](https://clarifai.com/clarifai/main/workflows/Universal) | A universal workflow for text and image search  |  
-| [Apparel](https://clarifai.com/clarifai/main/workflows/Apparel)  | **No description provided**   |  
-|[Face-V4](https://clarifai.com/clarifai/main/workflows/Face-V4) | **No description provided**  |  
+| [Apparel](https://clarifai.com/clarifai/main/workflows/Apparel)  |   |  
+|[Face-V4](https://clarifai.com/clarifai/main/workflows/Face-V4) |   |  
 | [General-Detection](https://clarifai.com/clarifai/main/workflows/General-Detection) | A general image detection workflow that detects a variety of common objects, and enables visual search using general embeddings on detected regions  |
-| [OCR-Translation-English-Spanish](https://clarifai.com/clarifai/main/workflows/ocr-translation-english-spanish)| **No description provided**  |
+| [OCR-Translation-English-Spanish](https://clarifai.com/clarifai/main/workflows/ocr-translation-english-spanish)|   |
 | [Face-Sentiment](https://clarifai.com/clarifai/main/workflows/Face-Sentiment)| Multi-model workflow that combines face detection and sentiment classification of 7 concepts: anger, disgust, fear, neutral, happiness, sadness, contempt, and surprise |
 | [Wedding](https://clarifai.com/clarifai/main/workflows/Wedding) | Visually classify wedding-related content and enable visual search using specific embeddings  |
 | [Food](https://clarifai.com/clarifai/main/workflows/Food)| A workflow that combines detection, classification, and embedding functions to visually classify food items and enable visual search using embeddings  |
@@ -85,10 +84,10 @@ Below is a table outlining the potential use cases for various base workflows. Y
 | [Face](https://clarifai.com/clarifai/main/workflows/Face) | A workflow that combines detection, recognition, and embedding to generate face landmarks and enable visual search using detected faces' embeddings |
 | [General](https://clarifai.com/clarifai/main/workflows/General) | A general image workflow that combines detection, classification, and embedding to identify general concepts, including objects, themes, moods, etc. |
 | [Visual-Segmenter](https://clarifai.com/clarifai/main/workflows/Visual-Segmenter) | Generates image segmentation masks for concepts in an image  |
-| [Segmentation](https://clarifai.com/clarifai/main/workflows/segmentation)  | **No description provided**   |
-| [Person-Tracking](https://clarifai.com/clarifai/main/workflows/person-tracking)  | **No description provided** |
-| [Person-Tracking-Lite](https://clarifai.com/clarifai/main/workflows/person-tracking-lite)  | **No description provided** |
-| [Vehicle-Detection0](https://clarifai.com/clarifai/main/workflows/Vehicle-Detection0) | **No description provided**  |
+| [Segmentation](https://clarifai.com/clarifai/main/workflows/segmentation)  |   |
+| [Person-Tracking](https://clarifai.com/clarifai/main/workflows/person-tracking)  |  |
+| [Person-Tracking-Lite](https://clarifai.com/clarifai/main/workflows/person-tracking-lite)  |  |
+| [Vehicle-Detection0](https://clarifai.com/clarifai/main/workflows/Vehicle-Detection0) |  |
 
 ### Audio Workflows
 
