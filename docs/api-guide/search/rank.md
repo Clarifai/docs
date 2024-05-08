@@ -278,12 +278,12 @@ If the input has been indexed, we can use the input ID. If there are multiple em
 
 ## Search by Text Similarity
 
-You can use texts to search through your collection of text. The text-to-text search will return ranked results based on how similar the results are to the text you provided in your query.
+You can use texts to search through your collection of texts. The text-to-text search will return ranked results based on how similar the results are to the text you provided in your query.
 
 :::tip 
 
-- Your inputs should be provided as texts. 
-- You should choose a workflow that includes a text embedder and a clusterer, such as the Language-Understanding workflow, as the Base Workflow for your application.  
+- To perform text-to-text searches, you could choose a workflow that includes a text embedder and a clusterer, such as the **Language-Understanding** workflow, as the [Base Workflow](https://docs.clarifai.com/portal-guide/workflows/base-workflows/) for your application.  
+- To perform text-to-image searches, you could choose the **Universal** base workflow, which allows you to use texts to search through your collection of images.
 
 :::
 

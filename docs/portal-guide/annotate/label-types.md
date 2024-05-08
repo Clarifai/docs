@@ -12,10 +12,10 @@ We support different types of labeling methods, each suited for different tasks 
 
 We provide the following label types for your images, videos, and texts:
 
-- **Classification** — categorizes images, videos, and texts into categories;
-- **Detection** — detects where an object of interest is and draws a bounding box around it;
-- **Segmentation** (polygons for segmentation) — outlines the exact shape or contour of the object;
-- **Masks** —  a type of image segmentation that defines the exact boundaries of an object at a pixel level. 
+- **Classification** — Categorizes images, videos, and texts into categories;
+- **Detection** — Detects where an object of interest is and draws a bounding box around it;
+- **Segmentation** (polygons for segmentation) — Outlines the exact shape or contour of the object;
+- **Masks** —  A type of image segmentation that defines the exact boundaries of an object at a pixel level. 
 
 You can use any of the labeling types to complete your tasks easily and quickly. These label types provide increasing levels of granularity to support the needs of your specific use case.
 
@@ -37,7 +37,13 @@ Here is an example:
 
 ![](/img/others-2/label-types-1.png)
 
-The page has several assistive tools to help you make the most of the labeling exercise. For example, on the top section, you can select an icon to label an input with bounding boxes, move an image around the workspace, or zoom an image in or out.
+The page has the following assistive tools to help you make the most of the labeling exercise:
+
+- **Select / Edit** — Use this tool to navigate and interact with the interface. You can use it to select already defined bounding boxes or polygons;
+- **Bounding Box** — Use this tool to draw a rectangle on an image to define a region of interest. It's useful for identifying objects in images;
+- **Polygon** — Use this tool to draw custom, multi-sided shapes on an image. It's ideal for annotating irregularly shaped areas or objects;
+- **Hand** — Use this tool to click and drag an image in order to pan or move it around the workspace. It's useful for examining different areas of a large or zoomed-in image without changing the zoom level; 
+- **Zoom** — Use this tool to zoom an image in or out. 
 
 The left sidebar shows a film strip of images you can scroll through to get the specific image you want to annotate. If you click any image on the sidebar, it'll appear on the main workspace.
 
@@ -97,7 +103,7 @@ The detection label type lets you identify the objects in your inputs and also d
 
 ### Detection for Still Images
 
-To manually add detection labels on the Input-Viewer page, first click the **Bounding box** tool on the navigation bar.
+To manually add detection labels on the Input-Viewer page, first click the **Bounding Box** tool on the navigation bar.
 
 :::tip
 
@@ -131,7 +137,16 @@ The keyboard shortcut for the **Polygon** tool is **P**.
 
 Next, click the **Add annotation tags...** field and select the concept you want to use from the drop-down list — that is, if the concept is already existing in your app. If it's not already existing, you'll need to add it as described earlier. 
 
-Next, draw a contour as closely as possible around the image's region of interest. 
+Next, use the dots to draw a contour as closely as possible around the image's region of interest. 
+
+![](/img/others-2/label-types-8.png)
+
+
+:::tip
+
+After creating the initial shape by placing your dots, you'll need to close the loop. Simply click on the first dot you made again, and this action will close the loop, completing the polygon.
+
+:::
 
 You can add as many detection annotations as you want. The added annotations will appear in the **Add annotation tags...** field as well as on the right sidebar of the page. 
 
