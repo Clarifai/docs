@@ -1,0 +1,3 @@
+2024-05-08 12:21:25 INFO     clarifai.rag.rag:                                                            rag.py:43
+                             workflow_url:https://clarifai.com/8tzpjy1a841y/unst-clf/workflows/rag                 
+INFO:clarifai.rag.rag:workflow_url:https://clarifai.com/8tzpjy1a841y/unst-clf/workflows/rag
