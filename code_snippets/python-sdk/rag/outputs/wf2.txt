@@ -1,0 +1,25 @@
+2024-05-08 12:28:09 INFO     clarifai.client.app:                                                        app.py:431
+                             Workflow created                                                                      
+                             code: SUCCESS                                                                         
+                             description: "Ok"                                                                     
+                             req_id: "73cd1b5a80ba9e7280542b6b176213fe"                                            
+                                                                                                                   
+INFO:clarifai.client.app:
+Workflow created
+code: SUCCESS
+description: "Ok"
+req_id: "73cd1b5a80ba9e7280542b6b176213fe"
+
+ Input
+╚══                                Node: rag-prompter                               
+    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┓
+    ┃ id                       ┃ model_type_id ┃ app_id             ┃ user_id      ┃
+    ┡━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━┩
+    │ prompter-rag3-def6cc6378 │ rag-prompter  │ rag_app_def6cc6378 │ 8tzpjy1a841y │
+    └──────────────────────────┴───────────────┴────────────────────┴──────────────┘
+    ╚══                       Node: llm                      
+        ┏━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━┓
+        ┃ id    ┃ model_type_id ┃ app_id          ┃ user_id ┃
+        ┡━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━┩
+        │ GPT-4 │ text-to-text  │ chat-completion │ openai  │
+        └───────┴───────────────┴─────────────────┴─────────┘
