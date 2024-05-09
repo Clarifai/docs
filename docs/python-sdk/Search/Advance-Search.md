@@ -12,13 +12,14 @@ import CodeBlock from "@theme/CodeBlock";
 import CodeCC from "!!raw-loader!../../../code_snippets/python-sdk/Search/as/cc.py";
 import CodeOR from "!!raw-loader!../../../code_snippets/python-sdk/Search/as/or.py";
 import CodeAND from "!!raw-loader!../../../code_snippets/python-sdk/Search/as/and.py";
+import CodePG from "!!raw-loader!../../../code_snippets/python-sdk/Search/as/pagination.py";
 
 
 
 import CodeOutputCC from "!!raw-loader!../../../code_snippets/python-sdk/Search/outputs/as/cc.txt";
 import CodeOutputOR from "!!raw-loader!../../../code_snippets/python-sdk/Search/outputs/as/or.txt";
 import CodeOutputAND from "!!raw-loader!../../../code_snippets/python-sdk/Search/outputs/as/and.txt";
-
+import CodeOutputPG from "!!raw-loader!../../../code_snippets/python-sdk/Search/outputs/as/pagination.txt";
 
 
 # Advance Search Operations
@@ -73,7 +74,7 @@ Click [here](https://docs.clarifai.com/api-guide/search/legacy-search/) to know 
 
 ## AND
 
-In Clarifai, the AND operation allows users to refine search results by specifying multiple criteria that must all be met simultaneously. When conducting an AND search, the system retrieves items that fulfill all specified conditions, resulting in a subset of results that satisfy the intersection of the provided criteria. For example, if a user searches for images containing both "dog" and "deer" concepts, only images that are labeled as both dogs and deers will be returned.
+In Clarifai, the AND operation allows users to refine search results by specifying multiple criteria that must all be met simultaneously. For example, if a user searches for images containing both "dog" and "deer" concepts, only images that are labeled as both dogs and deers will be returned.
 
 Click [here](https://docs.clarifai.com/api-guide/search/legacy-search/) to know more about AND search.
 
@@ -90,3 +91,18 @@ Click [here](https://docs.clarifai.com/api-guide/search/legacy-search/) to know 
     <CodeBlock className="language-text">{CodeOutputAND}</CodeBlock>
 </details>
 
+## Pagination
+
+In Clarifai Python SDk, users can set the pagination parameters like `per_page` and `page_no` for displaying the search results.
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CodePG}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
+<details>
+  <summary>Output</summary>
+    <CodeBlock className="language-text">{CodeOutputPG}</CodeBlock>
+</details>
