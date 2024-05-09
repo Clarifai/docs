@@ -62,7 +62,7 @@ Before you proceed install ```llama_index``` using ```pip install llama-index-co
 The first part of creating a RAG-based application includes setting up the RAG object. Just by setting up the RAG object, Clarifai Python SDK will automatically create the app along with a prompter model and workflow containing the RAG prompter and the LLM Model.
 
 :::tip
-You can set a specific version of LLM by using `https://clarifai.com/mistralai/completion/models/mistral-7B-Instruct/model_version/version_id` in the URL
+You can set a specific version of LLM by using `https://clarifai.com/mistralai/completion/models/mistral-7B-Instruct/model_version/version_id`.
 :::
 <Tabs>
 <TabItem value="python" label="Python">
