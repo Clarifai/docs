@@ -1,11 +1,11 @@
 ---
-description: Provide an additional layer of security to your account
+description: Use 2FA to add an extra layer of security to your account
 sidebar_position: 5
 ---
 
-# 2FA
+# Two-Factor Authentication
 
-**Add an extra layer of security to your account**
+**Use 2FA to add an extra layer of security to your account**
 <hr />
 
 Two-factor authentication (2FA) is an optional sign-in security feature that provides an additional layer of security to your account.
@@ -14,7 +14,7 @@ Two-factor authentication (2FA) is an optional sign-in security feature that pro
 
 Passwords have been the main form of authentication since the start of the digital revolution. However, this security measure is far from infallible. 
 
-Here are some concerns about the password-based authentication:
+Here are some concerns about the traditional password-based authentication:
 
 * 90% of passwords can be cracked in less than six hours;
 * 2/3 of people use the same password everywhere;
@@ -24,9 +24,9 @@ The vulnerability of passwords is the main reason for requiring and using 2FA.
 
 ### Who Needs 2FA?
 
-As a security best-practice, you should enable 2FA to minimize the risk of cybersecurity attacks on your account. Despite the interruption at the sign-in process, the additional security benefit is significant.
+As a security best practice, you should enable 2FA to minimize the risk of cybersecurity attacks on your account. Despite the interruption in the sign-in process, the additional security benefit is significant.
 
-For enterprise users, 2FA might fall under the security-related controls for compliance reasons. Organizations might want to enforce 2FA for their users to ensure account and data safety.
+For enterprise users, 2FA might fall under security-related controls for compliance reasons. Organizations might want to enforce 2FA for their users to ensure account and data safety.
 
 ### How 2FA Works on the Clarifai Platform
 
@@ -34,23 +34,23 @@ Clarifai offers two-factor authentication to add an extra layer of security to y
 
 Here's what to expect:
 
-- **Simple Activation**: You can enable or disable 2FA directly from your user security settings.
-- **Recovery Option**: A 2FA recovery method is available in case you lose your authentication device.
-- **Seamless Workflow**: Enabling 2FA only adds a single step to the standard sign-in process, ensuring a smooth user experience.
+- **Simple activation**: You can enable or disable 2FA directly from your user security settings;
+- **Recovery option**: A 2FA recovery method is available in case you lose your authentication device;
+- **Seamless workflow**: Enabling 2FA only adds a single step to the standard sign-in process, ensuring a smooth user experience.
 
-## 2FA Setup
+## 2FA Set Up
 
-To enable 2FA, sign-in to the platform first. Then, click your profile icon element. A drop-down list will appear with items that point to various pages within the Community platform. 
+To enable 2FA, sign in to the platform first. Then, click your profile icon element. A drop-down list will appear with items that point to various pages within the platform. 
 
 Select the **Security** option. You'll be directed to the **Security** settings page.
 
 ![](/img/others-2/2fa-1.png)
 
-To set up 2FA, scroll down on that **Security** page and toggle the "Enable" button.
+To set up 2FA, scroll down on that **Security** page and toggle the **Two Factor Authentication** "Enable" button.
 
 ![](/img/others-2/2fa-2.png)
 
-Once the enable is toggled:
+Once the button is enabled:
 
 **1.** Scan the given image with a two-factor authentication app, such as Duo, Google Authenticator, or Authy.
 
@@ -68,7 +68,7 @@ Lastly, click the **Close** button to finish the two-factor authentication setup
 
 When signing in to the Clarifai platform with the correct username and password, 2FA is activated. A pop-up prompt will appear on the screen requesting the authentication code. 
 
-Enter the six-digit code from the authenticator app and click the **Verify** button. You will be successfully signed into to the Community Portal.
+Enter the six-digit code from the authenticator app and click the **Verify** button. You will be successfully signed in to the platform.
 
 ![](/img/others-2/2fa-4.png)
 
@@ -78,13 +78,13 @@ To disable 2FA, follow these steps:
 
 **1.** Go to the **Security** settings page, as earlier described;
 
-**2.** Toggle the "Disable" Two Factor Authentication button;
+**2.** Toggle the **Two Factor Authentication** "Disable" button;
 
 **3.** You will be prompted to enter a six-digit code from your authenticator application;
 
 ![](/img/others-2/2fa-8.png)
 
-**4.** Once you've entered the correct code and clicked the **Disable** button, 2FA will be successfully removed from your account.
+**4.** Once you enter the correct code and click the **Disable** button, 2FA will be successfully removed from your account.
 
 ## 2FA Recovery
 
@@ -94,21 +94,21 @@ If you lose access to your authentication app, you won't be able to sign in with
 
 To regain access to the Clarifai platform, follow these steps:
 
-**1.** Go to the sign-in page: https://portal.clarifai.com/login;
+**1.** Go to the sign-in page;
 
 **2.** Enter your correct username and password;
 
-**3.** When prompted for the 2FA code, click on the **Enter a recovery code** link;
+**3.** When prompted for the 2FA code, click on the **Enter recovery code** link;
 
 ![](/img/others-2/2fa-5.png)
 
-**4.** A window will appear below, asking for the recovery code that was created during the initial set-up process;
+**4.** A window will appear, asking for the recovery code that was created during the initial setup process;
 
 ![](/img/others-2/2fa-6.png)
 
 **5.** Enter the recovery code and click the **Recover** button;
 
-**6.** A message will be sent to your account's email address to confirm the TOTP reset. Click the link provided in the email. 
+**6.** A message will be sent to your account's email address to confirm the TOTP reset. Click the link provided in the email;
 
 ![](/img/others-2/2fa-7.png)
 
@@ -116,5 +116,5 @@ To regain access to the Clarifai platform, follow these steps:
 
 ### Last-Resort
 
-If you lose your recovery code, there's no self-serve method to regain access to the Clarifai platform. In this case, you'll need to contact support@clarifai.com for assistance in recovering access.
+If you lose your recovery code, no self-serve method exists for regaining access to the Clarifai platform. In this case, you'll need to contact support@clarifai.com for assistance in recovering access.
 
