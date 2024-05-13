@@ -22,7 +22,7 @@ Since the algorithmic predict operators can be "chained" together with models to
 
 This operator allows you to classify text using regular expressions. When the specified regex pattern matches the text, the text is assigned to one of the predefined concepts. 
 
-Let's demonstrate how you can use the Regex-Based Classifier, alongside [a Prompter template](https://docs.clarifai.com/portal-guide/model/agent-system-operators/prompter), to efficiently classify text. 
+Let's demonstrate how you can use the Regex-Based Classifier, alongside [a Prompter template](https://docs.clarifai.com/portal-guide/agent-system-operators/prompter), to efficiently classify text. 
 
 **1**. Go to the workflow builder. Then, search for the **prompter** template option in the left-hand sidebar and drag it onto the empty workspace.
 
@@ -66,7 +66,7 @@ The model will process the input and classify the description into one of the pr
 
 ![](/img/others/regex_2.png)
 
-Then, the Regex-Based Classifier will categorize the response into one of the provided concepts, which you can feed into other downstream tasks, such as an [Annotation Writer](https://docs.clarifai.com/portal-guide/model/agent-system-operators/push#annotation-writer) to create annotations for inputs.
+Then, the Regex-Based Classifier will categorize the response into one of the provided concepts, which you can feed into other downstream tasks, such as an [Annotation Writer](https://docs.clarifai.com/portal-guide/agent-system-operators/push#annotation-writer) to create annotations for inputs.
 
 ## KNN Classifier
 
