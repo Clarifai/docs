@@ -21,7 +21,7 @@ import CodeExport from "!!raw-loader!../../code_snippets/python-sdk/managing-dat
 import CodeSDH from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/sdh.py";
 import CodeDV from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/delete_version.py";
 import CodeDelete from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/delete.py";
-
+import CodeRetry from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/retry_log.py";
 
 
 
@@ -39,7 +39,7 @@ import CodeOutputBatch from "!!raw-loader!../../code_snippets/python-sdk/managin
 import CodeOutputExport from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/outputs/export.txt";
 import CodeOutputDV from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/outputs/delete_version.txt";
 import CodeOutputDelete from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/outputs/delete.txt";
-
+import CodeOutputRetry from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/outputs/retry_log.txt";
 
 
 
@@ -256,6 +256,24 @@ Visit this [page](https://docs.clarifai.com/portal-guide/datasets/create-get-upd
 </details>
 
 
+## Retry Upload From Log File
+
+This feature is used to retry upload from logs for failed inputs. When using `upload_dataset` function the failed inputs can be logged into file and later can be used to resume the upload process. 
+
+:::info
+Set `retry_duplicates` to `True` if you want to retry duplicate with new Input_id in current dataset.
+:::
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CodeRetry}</CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+  <summary>Output</summary>
+    <CodeBlock className="language-text">{CodeOutputRetry}</CodeBlock>
+</details>
 
 
 ## Export Dataset

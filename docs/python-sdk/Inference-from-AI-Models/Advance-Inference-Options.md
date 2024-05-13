@@ -9,11 +9,11 @@ import CodeBlock from "@theme/CodeBlock";
 
 import CodeBP from "!!raw-loader!../../../code_snippets/python-sdk/inference/batch_predict.py";
 import CodeDiffBase from "!!raw-loader!../../../code_snippets/python-sdk/inference/diff_baseurl.py";
+import CodeRoot from "!!raw-loader!../../../code_snippets/python-sdk/inference/root_ca.py";
+
 import CodeOutputTextEmbedder from "!!raw-loader!../../../code_snippets/python-sdk/inference/outputs/text_embedder.txt";
-
-
-
 import CodeOutputBP from "!!raw-loader!../../../code_snippets/python-sdk/inference/outputs/batch_predict.txt";
+import CodeOutputRoot from "!!raw-loader!../../../code_snippets/python-sdk/inference/outputs/root_ca.txt";
 
 
 # Advanced Inference Options
@@ -60,6 +60,21 @@ This feature is for Enteprise that use on-prem deployments. So the base_url can 
 <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputTextEmbedder}</CodeBlock>
+</details>
+
+## Adding Root Certificate
+A root certificate is considered as an extra level of security when communicating through API's. It's a self-signed certificate that verifies the legitimacy of other certificates. This establishes a chain of trust, ensuring you connect to real API's and your data is encrypted. The Clarifai Python SDK allows users to add their own root certificates to enhance data security and privacy.
+
+Visit [this](https://www.pandasecurity.com/en/mediacenter/what-is-a-root-certificate/) page to learn more about root certificates.
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CodeRoot}</CodeBlock>
+</TabItem>
+</Tabs>
+<details>
+  <summary>Output</summary>
+    <CodeBlock className="language-text">{CodeOutputRoot}</CodeBlock>
 </details>
 
 ## Prediction Paramaters

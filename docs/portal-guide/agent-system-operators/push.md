@@ -24,7 +24,7 @@ Since the push operators can be "chained" together with models to automate tasks
 
 Annotation Writer allows you to write the input data to the database in the form of an annotation with a specified status as if a specific user created the annotation. 
 
-Let's demonstrate how you can use an Annotation Writer, alongside a [Regex-Based Classifier](https://docs.clarifai.com/portal-guide/model/agent-system-operators/algorithmic-predict/#regex-based-classifier), to automatically label inputs.
+Let's demonstrate how you can use an Annotation Writer, alongside a [Regex-Based Classifier](https://docs.clarifai.com/portal-guide/agent-system-operators/algorithmic-predict#regex-based-classifier), to automatically label inputs.
 
 **1.** Create a labeling [task](https://docs.clarifai.com/portal-guide/annotate/create-a-task). Then, go to the **Tasks** listing page and copy the ID of the task. 
 
