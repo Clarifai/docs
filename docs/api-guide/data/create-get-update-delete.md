@@ -3,7 +3,7 @@ description: Manage the data in your app
 sidebar_position: 2
 ---
 
-# Create, Get, Update, Delete 
+# Add, Get, Update, Delete 
 
 **Manage the data in your app**
 <hr />
