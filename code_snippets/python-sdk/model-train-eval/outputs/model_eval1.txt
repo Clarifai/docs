@@ -1,0 +1,12 @@
+train result:
+macro_avg_roc_auc: 0.6499999761581421
+macro_std_roc_auc: 0.07468751072883606
+macro_avg_f1_score: 0.75
+macro_avg_precision: 0.6000000238418579
+macro_avg_recall: 0.5
+test result:
+macro_avg_roc_auc: 0.6161290407180786
+macro_std_roc_auc: 0.1225806474685669
+macro_avg_f1_score: 0.7207207679748535
+macro_avg_precision: 0.5633803009986877
+macro_avg_recall: 0.5
