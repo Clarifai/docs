@@ -288,7 +288,7 @@ Lastly, click the **Save Workflow** button to save the workflow. That will save 
 
 ![save workflow](/img/community/community_intro_pics/save_workflow.png)
 
-Here is a video tutorial that showcases how to create two different multi-model workflows in the Community.
+Here is a video tutorial that showcases how to create two different multi-model workflows in the Community platform.
 
 <div style={{ "position":"relative","width": "100%","overflow": "hidden","padding-top": "56.25%"}}>
 <iframe width="900" height="500" style={{"position": "absolute","top": "0","left": "0","bottom": "0","right": "0","width": "100%","height": "100%",}} src="https://www.youtube.com/embed/Me_HmQ6WiJk" title="Creating workflows in Clarifai Community" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -320,7 +320,7 @@ Select the **Try your own image or video** option. A small window will appear, a
 
 ![](/img/community/community_intro_pics/face_detection_model_2.png)
 
-For this example, let's use [this image]( https://samples.clarifai.com/featured-models/face-crowd-of-monks-orange-robe.jpg) of a crowd of seated monks. After uploading the image, the model will analyze it and return a list of faces identified on the right-hand side of the page.
+For this example, let's use [this image]( https://samples.clarifai.com/featured-models/face-crowd-of-monks-orange-robe.jpg) of a crowd of seated monks. After uploading the image, the model will analyze it and return a list of faces identified on the right side of the page.
 
 ![](/img/community/community_intro_pics/face_detection_model_3.png)
 
