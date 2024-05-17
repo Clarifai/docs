@@ -71,9 +71,17 @@ For this illustration, let’s select the **text-moderation** template, which is
 
 ![](/img/others/app-template-3.png)
 
-On the template’s individual page, you'll find an overview of its available resources as well as a description of its functionality.
+On the template’s individual page, you'll find an overview of its available resources as well as a description of its functionality. 
 
-Click the **Select Template** button at the upper-right corner of the page. 
+When you click the view link of a resource, a modal will pop up, allowing you to easily view the available resources in the template, including inputs, datasets, models, workflows, and modules.
+
+For example, if you click the **View models** link, a modal will appear displaying the models included in the template. You can also browse through the other tabs to explore additional resources present in the template.
+
+ 
+
+
+
+Next, click the **Select Template** button at the upper-right corner of the page. 
 
 ![](/img/others/app-template-4.png)
 
