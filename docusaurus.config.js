@@ -167,8 +167,8 @@ const config = {
             from: ['/nodejs-sdk/api-reference'],
           },
           {
-            to: '/portal-guide/model/training-basics',
-            from: '/portal-guide/model-versions/'
+            to: '/portal-guide/model-versions/',
+            from: '/test/portal-guide/model-versions/'
           }
         ],
         createRedirects(existingPath) {
