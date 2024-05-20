@@ -1,6 +1,7 @@
 ---
 description: Learn about our visual classifier model type
 sidebar_position: 2
+keywords: [AI visual classifier, image classification, visual classification models, machine learning image classifier, computer vision image classification, visual classification AI]
 ---
 
 # Visual Classifier 

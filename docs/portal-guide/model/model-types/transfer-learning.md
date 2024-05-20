@@ -1,6 +1,7 @@
 ---
 description: Learn about our transfer learning model type
 sidebar_position: 1
+keywords: [transfer learning models, AI transfer learning, machine learning transfer learning, transfer learning in AI, transfer learning techniques, deep learning transfer learning, transfer learning examples, pre-trained models transfer learning, benefits of transfer learning, transfer learning for image recognition, transfer learning for NLP]
 ---
 
 # Transfer Learning 

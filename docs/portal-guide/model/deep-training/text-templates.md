@@ -1,6 +1,7 @@
 ---
 description: Learn about our text fine-tuning templates
 sidebar_position: 5
+keywords: [text templates, deep learning text templates, AI text processing, text classification templates, deep training text models, machine learning text processing, custom text models, pre-trained text templates, natural language processing templates, NLP model templates ]
 ---
 
 # Text Fine-Tuning Templates

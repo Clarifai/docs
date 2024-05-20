@@ -1,6 +1,7 @@
 ---
 description: Learn about our visual segmenter templates
 sidebar_position: 4
+keywords: [visual segmenter templates, deep learning visual segmentation, AI visual segmentation, image segmentation templates, deep training visual segmentation, machine learning visual segmenter, custom visual segmentation models, pre-trained visual segmenter templates ]
 ---
 
 # Visual Segmenter Templates
