@@ -11,7 +11,7 @@ const config = {
   url: 'https://docs.clarifai.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenMarkdownLinks: 'warn',  
   favicon: 'img/favicon.ico',
   organizationName: 'clarifai',
   projectName: 'docs',
