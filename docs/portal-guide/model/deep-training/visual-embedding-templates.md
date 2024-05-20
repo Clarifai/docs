@@ -1,6 +1,8 @@
 ---
 description: Learn about our visual embedding templates
 sidebar_position: 3
+keywords: [visual embedding templates, deep learning visual embedding, AI visual embedding, image embedding templates, deep training visual embedding, machine learning visual embedding, custom visual embedding models]
+
 ---
 
 # Visual Embedding Templates

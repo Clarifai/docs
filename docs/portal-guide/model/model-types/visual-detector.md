@@ -1,6 +1,7 @@
 ---
 description: Learn about our visual detector model type
 sidebar_position: 3
+keywords: [visual detector, AI object detection, visual detection models, image detection AI, deep learning object detection, AI object detection, object recognition models]
 ---
 
 # Visual Detector

@@ -1,6 +1,7 @@
 ---
 description: Learn about our visual classification templates
 sidebar_position: 1
+keywords: [visual classification templates, deep learning visual classification, AI visual classification, image classification templates, deep training visual classification, machine learning visual classification, custom visual classification models, pre-trained visual classification templates]
 ---
 
 # Visual Classification Templates

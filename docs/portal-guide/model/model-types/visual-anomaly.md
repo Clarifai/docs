@@ -1,6 +1,7 @@
 ---
 description: Learn about our visual anomaly  model type
 sidebar_position: 5
+keywords: [visual anomaly detection, anomaly detection models, Clarifai visual anomaly, AI anomaly detection, machine learning anomaly detection, computer vision anomaly detection, visual anomaly detector, image anomaly detection, AI visual anomaly]
 ---
 
 # Visual Anomaly 

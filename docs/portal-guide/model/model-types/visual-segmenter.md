@@ -1,6 +1,7 @@
 ---
 description: Learn about our visual segmenter model type
 sidebar_position: 4
+keywords: [visual segmenter, image segmentation, visual segmentation models, AI image segmentation, machine learning image segmenter, computer vision image segmentation, visual segmentation AI, AI model for image segmentation, deep learning image segmentation ]
 ---
 
 # Visual Segmenter

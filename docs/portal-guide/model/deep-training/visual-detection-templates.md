@@ -1,6 +1,7 @@
 ---
 description: Learn about our visual detection templates
 sidebar_position: 2
+keywords: [visual detection templates, deep learning visual detection, AI visual detection, object detection templates, deep training visual detection, machine learning visual detection, custom visual detection models, pre-trained visual detection templates, image detection AI, deep learning object detection ]
 ---
 
 # Visual Detection Templates
