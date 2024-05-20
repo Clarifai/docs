@@ -73,13 +73,13 @@ For this illustration, let’s select the **text-moderation** template, which is
 
 On the template’s individual page, you'll find an overview of its available resources as well as a description of its functionality. 
 
+![](/img/others/app-template-3-1.png)
+
 When you click the view link of a resource, a modal will pop up, allowing you to easily view the available resources in the template, including inputs, datasets, models, workflows, and modules.
 
 For example, if you click the **View models** link, a modal will appear displaying the models included in the template. You can also browse through the other tabs to explore additional resources present in the template.
 
- 
-
-
+![](/img/others/app-template-3-2.png)
 
 Next, click the **Select Template** button at the upper-right corner of the page. 
 
@@ -87,9 +87,9 @@ Next, click the **Select Template** button at the upper-right corner of the page
 
 Next, specify the setup of your new application. 
 
-Provide an app ID, which serves as a unique identifier for your application. It’s important to choose a unique and memorable ID as it will be used for URLs and redirections. 
+- Provide an app ID, which serves as a unique identifier for your application. It’s important to choose a unique and memorable ID as it will be used for URLs and redirections. 
 
-Optionally, provide a brief description that outlines the purpose or features of your app. 
+- Optionally, provide a brief description that outlines the purpose or features of your app. 
 
 Lastly, click the **Create App** button at the upper-right corner of the page. 
 
