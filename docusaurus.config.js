@@ -166,6 +166,10 @@ const config = {
             to: '/nodejs-sdk/installation-guide/modules',
             from: ['/nodejs-sdk/api-reference'],
           },
+          {
+            to: '/portal-guide/model/training-basics',
+            from: '/portal-guide/model-versions/'
+          }
         ],
         createRedirects(existingPath) {
           if (existingPath.includes('/community')) {
