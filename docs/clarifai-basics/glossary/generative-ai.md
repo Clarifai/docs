@@ -50,6 +50,16 @@ Developed by OpenAI, ChatGPT is a specialized large scale language model that ge
 
 This involves using AI to create new, artificial sounds or voice outputs. Such sounds can be as simple as a specific tone or as complex as a mimicked form of speech.
 
+### Close-Book QA
+
+Close-book QA, also known as zero-shot QA, refers to the ability of an LLM to answer questions without access to any additional information or context beyond its internal knowledge base.
+
+:::tip open-book QA
+
+Close-Book QA stands in contrast to open-book QA, where the LLM can access and process external sources of information, such as documents, web pages, or knowledge bases.
+
+:::
+
 ### Conditional GANs (cGANs)
 
 These are a type of GAN where a conditional variable is introduced to the input layer, allowing the model to generate data conditioned on certain factors. This augmentation provides the model the capability to generate data with desired characteristics.
@@ -132,7 +142,7 @@ GPT-J is an open-source large language model developed by EleutherAI in 2021. It
 
 ### GPT-Neo
 
-GPT-Neo is a family of transformer-based language models from EleutherAI based on the GPT architecture. It is an open-source alternative to GPT-3 that can generate natural language texts using deep learning. GPT-Neo has two pre-trained models with 1.3 billion and 2.7 billion parameters and was also trained using The Pile dataset.
+GPT-Neo is a family of transformer-based language models from EleutherAI based on the GPT architecture. It is an open-source alternative to GPT-3 that can generate natural language texts using deep learning. The GPT-Neo model comes in 125M, 1.3B, and 2.7B parameter variants. This allows users to choose the model size that best fits their specific use case and computational constraints.
 
 ### Grounding
 
@@ -168,6 +178,10 @@ Large-scale AI models trained on extensive text data, such as GPT 3 and BERT. Th
 
 In generative models, latent space refers to a compressed input data representation. It is the transition medium between the noise injected into the GAN’s generator and its output.
 
+### Llama 2
+
+Llama 2 is a collection of pre-trained and fine-tuned large language models (LLMs) created and publicly released by Meta AI. It is available in three model sizes: 7, 13, and 70 billion parameters. Llama 2-Chat is a fine-tuned version of Llama 2, specifically optimized for dialogue-based scenarios.
+
 ## M
 
 ### Machine Learning Bias 
@@ -177,6 +191,10 @@ Bias in machine learning can occur from intentional or unintentional biased data
 ### Midjourney
 
 Midjourney is a text-to-image AI service developed by an independent research lab. It allows users to generate images based on textual descriptions, creating a wide range of art forms, from realistic to abstract styles and is especially known for its high-quality, well-structured, and detailed images.
+
+### Mistral 7B
+
+Mistral 7B, introduced by Mistral AI, is an LLM that has gathered attention due to its efficiency and strong performance. It is a 7.3 billion-parameter model, making it smaller than other models like GPT-3 (175 billion) but still powerful for various tasks. Despite its size, Mistral 7B has shown impressive performance on various benchmarks, even surpassing some larger models in specific areas.
 
 ### Mixture of Experts
 
@@ -212,6 +230,16 @@ A generative task where the AI is asked to extend the existing content of an ima
 
 ## P
 
+### Parameter Efficient Fine-Tuning (PEFT) 
+
+Full parameter fine-tuning traditionally involves adjusting all parameters across all layers of a pre-trained model. While it typically yields optimal performance, it is resource-intensive and time-consuming, demanding significant GPU resources and time. On the other hand, PEFT offers a way to fine-tune models with minimal resources and costs. One notable PEFT method is Low-Rank Adaptation (LoRA).
+
+:::warning Lora
+
+LoRA is a game-changer for fine-tuning LLMs on resource-constrained devices or environments. It achieves this by exploiting inherent low-rank structures within the model's parameters. These structures capture essential patterns and relationships in the data, allowing LoRA to focus on these during fine-tuning, rather than modifying the entire parameter space.
+
+:::
+
 ### Parameters
 
 Parameters are the fundamental elements that define the behavior and output of a model. They are akin to settings or dials that can be adjusted to control various aspects of the model's performance, such as its responsiveness, creativity, and accuracy. Parameters play a crucial role in fine-tuning the model to achieve desired results, whether it's generating text, images, or other forms of content. They are essential for optimizing the model to suit specific tasks or applications.
@@ -220,6 +248,10 @@ Parameters are the fundamental elements that define the behavior and output of a
 
 AI agents such as LLMs may have the ability to use 'tools' via APIs that give them new capabilities. For example, LLMs equipped with web search capabilities can access data not present in their training dataset, which can significantly reduce the risk of hallucinations.
 
+### Pre-Encoded Knowledge QA
+
+This involves utilizing the model's built-in pre-encoded knowledge base to respond to questions. The model is provided with a large collection of facts and relationships, which it uses to generate answers when given prompts or questions. The pre-existing knowledge base equips the model with the ability to answer questions that demand a good understanding of the world.
+
 ### Prompt
 
 A prompt is the initial input or direction given to an AI model to execute a task or answer a query. It sets the starting context for the model's generation process.
@@ -227,6 +259,12 @@ A prompt is the initial input or direction given to an AI model to execute a tas
 ### Prompt Tokens / Sampled Tokens / Completion
 
 These terms relate to how the AI uses tokens or units of data as input or output. A prompt token starts the model's data generation process, the model chooses sampled tokens during this process, and completion signifies the model's output following the prompt.
+
+## Q
+
+### Quantization
+
+Quantization is a model compression method that involves converting the weights and activations within an LLM from a high-precision data representation to a lower-precision one – without sacrificing significant accuracy. This means transitioning from a data type capable of holding more information, such as a 32-bit floating-point number (FP32), to one with less capacity, such as an 8-bit or 4-bit integer (INT8 or INT4).
 
 ## R
 
@@ -272,6 +310,10 @@ Is a parameter that controls the randomness and creativity of a model's output. 
 ### Token
 
 In the context of neural networks, tokenization is the process of encoding text into numerical values. Tokens may represent letters, groups of letters, or whole words.
+
+### Translation
+
+Translation refers to the process of automatically converting text or speech from one language (source language) to another language (target language), preserving the original meaning as closely as possible.
 
 ## V
 

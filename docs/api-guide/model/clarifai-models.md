@@ -30,7 +30,7 @@ Agent system operator models are "non-trainable", or "fixed function" models tha
 
 :::tip
 
-[Click here](https://docs.clarifai.com/portal-guide/model/agent-system-operators/) to learn more about the different types of agent system operators we offer.
+[Click here](https://docs.clarifai.com/portal-guide/agent-system-operators/) to learn more about the different types of agent system operators we offer.
 
 :::
 
