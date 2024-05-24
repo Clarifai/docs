@@ -1,6 +1,7 @@
 ---
 description: Learn how to create your own custom deep trained template
 sidebar_position: 6
+keywords: [custom training templates, deep learning custom templates, AI custom training, custom model training, deep training custom models machine learning custom templates, custom AI models, pre-trained custom templates, custom model development, custom deep learning templates, training custom AI models]
 ---
 
 # Create Your Own Template

@@ -1,6 +1,7 @@
 ---
 description: Step-by-step instructions for importing models into the Clarifai platform
 sidebar_position: 8
+keywords: [Hugging Face model importer, import Hugging Face models, Hugging Face to Clarifai, HF model importer, integrate Hugging Face models, Hugging Face model, import guide, Clarifai HF model importer, AI model import, machine learning model import, Hugging Face model integration, Clarifai model integration, importing AI models Hugging Face model deployment, Clarifai import tool, deep learning model import]
 ---
 
 # Import Models from Hugging Face

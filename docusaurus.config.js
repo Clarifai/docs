@@ -11,7 +11,7 @@ const config = {
   url: 'https://docs.clarifai.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenMarkdownLinks: 'warn',  
   favicon: 'img/favicon.ico',
   organizationName: 'clarifai',
   projectName: 'docs',
@@ -294,6 +294,11 @@ const config = {
             to: '/sdk/notebook-examples',
             from: ['/python-sdk/notebook-examples'],
           },
+          {
+            to: '/portal-guide/model-versions/',
+            from: '/test/portal-guide/model-versions/'
+          }
+
         ],
         createRedirects(existingPath) {
           if (existingPath.includes('/community')) {

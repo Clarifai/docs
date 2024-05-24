@@ -17,7 +17,7 @@
     "@babel/helper-get-function-arity": "^7.16.7",
     "@cmfcmf/docusaurus-search-local": "^0.10.0",
     "@docusaurus/core": "^2.4.0",
-    "@docusaurus/plugin-client-redirects": "^2.4.0",
+    "@docusaurus/plugin-client-redirects": "2.4.0",
     "@docusaurus/plugin-google-gtag": "^2.4.0",
     "@docusaurus/plugin-sitemap": "^2.4.0",
     "@docusaurus/preset-classic": "^2.4.0",
@@ -44,6 +44,7 @@
   "resolutions": {
     "@docusaurus/**/got": "11.8.5",
     "@docusaurus/**/trim": "0.0.3",
-    "@docusaurus/**/wait-on": "7.2.0"
+    "@docusaurus/**/wait-on": "7.2.0",
+    "@docusaurus/plugin-client-redirects": "2.4.0"
   }
 }

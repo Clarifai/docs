@@ -1,6 +1,7 @@
 ---
 description: Seamlessly upload locally built models into our platform
 sidebar_position: 9
+keywords: [local model upload, upload local models, Clarifai local model upload, AI model upload, machine learning model upload, integrate local models, local model integration, Clarifai model upload guide, custom model upload, pre-trained model upload, AI model integration, upload AI models, local model deployment, Clarifai model integration, deep learning model upload, local model importer, Clarifai model deployment]
 ---
 
 # Local Model Upload

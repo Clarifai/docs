@@ -1,6 +1,7 @@
 ---
 description: Learn about our text classifier model type
 sidebar_position: 8
+keywords: [text classifier, text classification models, natural language processing, NLP text classification, machine learning text classification, AI text classification, text analysis models, text categorization, deep learning text classification, custom text classifier, pre-trained text classifier, text recognition AI ]
 ---
 
 # Text Classifier 

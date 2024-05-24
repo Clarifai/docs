@@ -1,6 +1,8 @@
 ---
 description: Learn about our clusterer model type
 sidebar_position: 7
+keywords: [clustering models, AI clustering, machine learning clustering, data clustering, image clustering, visual data clustering, 
+clustering algorithms, AI clusterer, deep learning clustering]
 ---
 
 # Clusterer 

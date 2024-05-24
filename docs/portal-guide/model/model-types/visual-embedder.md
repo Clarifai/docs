@@ -1,6 +1,7 @@
 ---
 description: Learn about our visual embedder model type
 sidebar_position: 6
+keywords: [visual embedder, image embedding, visual embedding models, AI image embedding, image feature extraction, machine learning image embedder, computer vision embedding, visual embedding AI, deep learning embedding models ]
 ---
 
 # Visual Embedder 
