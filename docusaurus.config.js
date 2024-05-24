@@ -163,7 +163,7 @@ const config = {
       {
         redirects: [
           {
-            to: '/nodejs-sdk/installation-guide/modules',
+            to: '/python-sdk/node-api-reference',
             from: ['/nodejs-sdk/api-reference'],
           },
           {

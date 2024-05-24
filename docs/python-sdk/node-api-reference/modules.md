@@ -1,8 +1,3 @@
----
-title: 'API Reference'
-sidebar_label: 'API Reference'
-position: 1
----
 [clarifai-nodejs](README.md) / Exports
 
 # clarifai-nodejs
