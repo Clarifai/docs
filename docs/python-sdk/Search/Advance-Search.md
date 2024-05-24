@@ -10,9 +10,16 @@ import CodeBlock from "@theme/CodeBlock";
 
 
 import CodeCC from "!!raw-loader!../../../code_snippets/python-sdk/Search/as/cc.py";
+import CodeCCTS from "!!raw-loader!../../../code_snippets/python-sdk/Search/as/customConcepts.ts";
+
 import CodeOR from "!!raw-loader!../../../code_snippets/python-sdk/Search/as/or.py";
+import CodeORTS from "!!raw-loader!../../../code_snippets/python-sdk/Search/as/or.ts";
+
 import CodeAND from "!!raw-loader!../../../code_snippets/python-sdk/Search/as/and.py";
+import CodeANDTS from "!!raw-loader!../../../code_snippets/python-sdk/Search/as/and.ts";
+
 import CodePG from "!!raw-loader!../../../code_snippets/python-sdk/Search/as/pagination.py";
+import CodePGTS from "!!raw-loader!../../../code_snippets/python-sdk/Search/as/pagination.ts";
 
 
 
@@ -39,15 +46,19 @@ Click [here](https://docs.clarifai.com/api-guide/search/rank) to know more about
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeCC}</CodeBlock>
-</TabItem>
-</Tabs>
-
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputCC}</CodeBlock>
     <img src="/img/python-sdk/as_cc.png" width="700" height="700" />
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeCCTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
+
 
 
 
@@ -60,15 +71,19 @@ Click [here](https://docs.clarifai.com/api-guide/search/legacy-search/) to know 
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeOR}</CodeBlock>
-</TabItem>
-</Tabs>
-
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputOR}</CodeBlock>
     <img src="/img/python-sdk/as_or.png" width="700" height="700" />
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeORTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
+
 
 
 
@@ -82,14 +97,18 @@ Click [here](https://docs.clarifai.com/api-guide/search/legacy-search/) to know 
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeAND}</CodeBlock>
+    <details>
+  <summary>Output</summary>
+    <CodeBlock className="language-text">{CodeOutputAND}</CodeBlock>
+</details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeANDTS}</CodeBlock>
 </TabItem>
 </Tabs>
 
 
-<details>
-  <summary>Output</summary>
-    <CodeBlock className="language-text">{CodeOutputAND}</CodeBlock>
-</details>
+
 
 ## Pagination
 
@@ -98,11 +117,12 @@ In Clarifai Python SDk, users can set the pagination parameters like `per_page` 
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodePG}</CodeBlock>
-</TabItem>
-</Tabs>
-
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputPG}</CodeBlock>
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodePGTS}</CodeBlock>
+</TabItem>
+</Tabs>

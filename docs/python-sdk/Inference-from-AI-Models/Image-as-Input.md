@@ -9,12 +9,28 @@ import CodeBlock from "@theme/CodeBlock";
 
 
 import CodeVisualClassifier from "!!raw-loader!../../../code_snippets/python-sdk/inference/visual_classifier.py";
+import CodeVisualClassifierTS from "!!raw-loader!../../../code_snippets/python-sdk/inference/visualClassifier.ts";
+
 import CodeVisualDImage from "!!raw-loader!../../../code_snippets/python-sdk/inference/visual_d_image.py";
+import CodeVisualDImageTS from "!!raw-loader!../../../code_snippets/python-sdk/inference/visualDetectorImage.ts";
+
 import CodeVisualDVideo from "!!raw-loader!../../../code_snippets/python-sdk/inference/visual_d_video.py";
+import CodeVisualDVideoTS from "!!raw-loader!../../../code_snippets/python-sdk/inference/visualDetectorVideo.ts";
+
+
+
 import CodeVisualSegmenter from "!!raw-loader!../../../code_snippets/python-sdk/inference/visual_segmenter.py";
+import CodeVisualSegmenterTS from "!!raw-loader!../../../code_snippets/python-sdk/inference/visualSegmenter.ts";
+
 import CodeImageToText from "!!raw-loader!../../../code_snippets/python-sdk/inference/image_to_text.py";
+import CodeImageToTextTS from "!!raw-loader!../../../code_snippets/python-sdk/inference/imageToText.ts";
+
 import CodeImageToImage from "!!raw-loader!../../../code_snippets/python-sdk/inference/image_to_image.py";
+import CodeImageToImageTS from "!!raw-loader!../../../code_snippets/python-sdk/inference/imageToImage.ts";
+
 import CodeVisualEmbed from "!!raw-loader!../../../code_snippets/python-sdk/inference/visual_embedder.py";
+import CodeVisualEmbedTS from "!!raw-loader!../../../code_snippets/python-sdk/inference/visualEmbedder.ts";
+
 
 
 
@@ -50,13 +66,17 @@ You can send up to 128 images in one API call. The file size of each image input
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeVisualClassifier}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputVisualClassifier}</CodeBlock>
 </details> 
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeVisualClassifierTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 
 
 
@@ -68,13 +88,17 @@ Dive into a richer understanding of image content with Clarifai's Predict API fo
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeVisualDImage}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputVisualDImage}</CodeBlock>
 </details> 
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeVisualDImageTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 
 
 
@@ -90,13 +114,17 @@ Video length should be at most 10mins in length or 100 MB in size when uploaded 
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeVisualDVideo}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputVisualDVideo}</CodeBlock>
 </details> 
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeVisualDVideoTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 
 
 
@@ -108,13 +136,17 @@ The Clarifai Predict API offers a powerful capability to generate segmentation m
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeVisualSegmenter}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputVisualSegmenter}</CodeBlock>
 </details> 
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeVisualSegmenterTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 
 ## Image To Text
 
@@ -124,13 +156,17 @@ Enhance your application by producing descriptive captions for images using the 
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeImageToText}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputImageToText}</CodeBlock>
 </details> 
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeImageToTextTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 
 
 
@@ -142,6 +178,9 @@ Elevate the resolution of your images using the Clarifai Predict API, specifical
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeImageToImage}</CodeBlock>
 </TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeImageToImageTS}</CodeBlock>
+</TabItem>
 </Tabs>
 
 ## Visual Embedder
@@ -151,12 +190,16 @@ The Predict API empowers you to leverage image embeddings through an embedding [
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeVisualEmbed}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputVisualEmbed}</CodeBlock>
 </details> 
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeVisualEmbedTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 
 

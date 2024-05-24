@@ -166,6 +166,10 @@ const config = {
             to: '/nodejs-sdk/installation-guide/modules',
             from: ['/nodejs-sdk/api-reference'],
           },
+          {
+            to: '/python-sdk/python-installation',
+            from: ['/python-sdk/sdk-overview'],
+          },
         ],
         createRedirects(existingPath) {
           if (existingPath.includes('/community')) {

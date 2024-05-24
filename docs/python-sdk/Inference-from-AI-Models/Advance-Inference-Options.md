@@ -8,6 +8,8 @@ import CodeBlock from "@theme/CodeBlock";
 
 
 import CodeBP from "!!raw-loader!../../../code_snippets/python-sdk/inference/batch_predict.py";
+import CodeBPTS from "!!raw-loader!../../../code_snippets/python-sdk/inference/batchPredict.ts";
+
 import CodeDiffBase from "!!raw-loader!../../../code_snippets/python-sdk/inference/diff_baseurl.py";
 import CodeRoot from "!!raw-loader!../../../code_snippets/python-sdk/inference/root_ca.py";
 
@@ -35,13 +37,17 @@ The batch size should not exceed 128.
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeBP}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputBP}</CodeBlock>
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeBPTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 
 
 ## Different Base_URL

@@ -9,16 +9,41 @@ import CodeBlock from "@theme/CodeBlock";
 
 
 import CodeImageData from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/image_data.py";
+import CodeImageDataTS from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/imageDataInputs.ts";
+
+
 import CodeTextData from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/text_data.py";
+import CodeTextDataTS from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/textDataInputs.ts";
+
+
 import CodeAudioData from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/audio_data.py";
+import CodeAudioDataTS from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/audioDataInputs.ts";
+
 import CodeVideoData from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/video_data.py";
+import CodeVideoDataTS from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/videoDataInputs.ts";
+
+
 import CodeMMData from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/multimodal_data.py";
+import CodeMMDataTS from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/multimodalDataInputs.ts";
+
+
 import CodeListInput from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/list_input.py";
 import CodeDeleteInput from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/delete_input.py";
+
 import CodeImageM from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/image_metadata.py";
+import CodeImageMTS from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/imageWithMetadata.ts";
+
+
 import CodeVideoM from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/video_metadata.py";
+import CodeVideoMTS from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/videoWithMetadata.ts";
+
 import CodeTextM from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/text_metadata.py";
+import CodeTextMTS from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/textWithMetadata.ts";
+
+
 import CodeAudioM from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/audio_data_metadata.py";
+import CodeAudioMTS from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/audioWithMetadata.ts";
+
 
 
 import CodeOutputImageData from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/outputs/image_data.txt";
@@ -56,13 +81,17 @@ Visit this [page](https://docs.clarifai.com/api-guide/data/create-get-update-del
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeImageData}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputImageData}</CodeBlock>
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeImageDataTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 
 
 
@@ -75,13 +104,17 @@ Visit this [page](https://docs.clarifai.com/api-guide/data/create-get-update-del
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeTextData}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputTextData}</CodeBlock>
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeTextDataTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 
                                           
 
@@ -94,13 +127,17 @@ Visit this [page](https://docs.clarifai.com/api-guide/data/create-get-update-del
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeAudioData}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputAudioData}</CodeBlock>
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeAudioDataTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 
 
 ## Video Data as Inputs      
@@ -112,13 +149,17 @@ Visit this [page](https://docs.clarifai.com/api-guide/data/create-get-update-del
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeVideoData}</CodeBlock>
+    <details>
+  <summary>Output</summary>
+    <CodeBlock className="language-text">{CodeOutputVideoData}</CodeBlock>
+</details>     
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeVideoDataTS}</CodeBlock>
 </TabItem>
 </Tabs>
 
-<details>
-  <summary>Output</summary>
-    <CodeBlock className="language-text">{CodeOutputVideoData}</CodeBlock>
-</details>                                        
+                                   
                                                                                                                  
 
 ## Multimodal Data as Inputs
@@ -131,13 +172,17 @@ Visit this [page](https://docs.clarifai.com/api-guide/data/create-get-update-del
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeMMData}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputMMData}</CodeBlock>
 </details>   
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeMMDataTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 
 
 ## Custom Metadata
@@ -152,13 +197,17 @@ In the below example we are uploading an image with metadata that includes detai
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeImageM}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputImageM}</CodeBlock>
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeImageMTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 
 
 ### Video With Metadata
@@ -168,13 +217,17 @@ In the below example we are uploading a video file  with metadata that includes 
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeVideoM}</CodeBlock>
+    <details>
+  <summary>Output</summary>
+    <CodeBlock className="language-text">{CodeOutputVideoM}</CodeBlock>
+</details>    
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeVideoMTS}</CodeBlock>
 </TabItem>
 </Tabs>
 
-<details>
-  <summary>Output</summary>
-    <CodeBlock className="language-text">{CodeOutputVideoM}</CodeBlock>
-</details>                                        
+                                    
 
 ### Text With Metadata
 
@@ -183,13 +236,17 @@ In the below example we are uploading a text file with metadata that includes de
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeTextM}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputTextM}</CodeBlock>
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeTextMTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 
 
 
@@ -200,13 +257,17 @@ In the below example we are uploading an audio file with metadata that includes 
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeAudioM}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputAudioM}</CodeBlock>
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeAudioMTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 
 ## List inputs
 

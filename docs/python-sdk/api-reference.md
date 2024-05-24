@@ -3,7 +3,7 @@ description: Clarifai Python SDK API Reference
 sidebar_position: 2
 ---
 
-# API Reference
+# Python API Reference
 
 **Clarifai Python SDK API Reference**
 <hr />

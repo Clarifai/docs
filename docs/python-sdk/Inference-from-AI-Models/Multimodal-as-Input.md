@@ -10,6 +10,7 @@ import CodeBlock from "@theme/CodeBlock";
 
 
 import CodeImageText from "!!raw-loader!../../../code_snippets/python-sdk/inference/imagetext_text.py";
+import CodeImageTextTS from "!!raw-loader!../../../code_snippets/python-sdk/inference/imageTextToText.ts";
 
 
 
@@ -33,11 +34,15 @@ Leverage the power of the Predict API to seamlessly process multimodal inputs an
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeImageText}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputImageText}</CodeBlock>
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeImageTextTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 

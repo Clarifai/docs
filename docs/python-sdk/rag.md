@@ -9,8 +9,15 @@ import CodeBlock from "@theme/CodeBlock";
 
 
 import CodeInit from "!!raw-loader!../../code_snippets/python-sdk/rag/ini.py";
+import CodeInitTS from "!!raw-loader!../../code_snippets/python-sdk/rag/initialization.ts";
+
 import CodeDU from "!!raw-loader!../../code_snippets/python-sdk/rag/du.py";
+import CodeDUTS from "!!raw-loader!../../code_snippets/python-sdk/rag/datasetUpload.ts";
+
+
 import CodeChat from "!!raw-loader!../../code_snippets/python-sdk/rag/chat.py";
+import CodeChatTS from "!!raw-loader!../../code_snippets/python-sdk/rag/chat.ts";
+
 import CodeChat2 from "!!raw-loader!../../code_snippets/python-sdk/rag/chat2.py";
 import CodeWF1 from "!!raw-loader!../../code_snippets/python-sdk/rag/workflow1.py";
 import CodeWF2 from "!!raw-loader!../../code_snippets/python-sdk/rag/workflow2.py";
@@ -24,7 +31,7 @@ import CodeOutputWF2 from "!!raw-loader!../../code_snippets/python-sdk/rag/outpu
 
 # Building RAG Applications
 
-**Learn how to build a RAG application using  Clarifai Python SDK**
+**Learn how to build a RAG application using Clarifai Python SDK**
 <hr />
 
 In the realm of text generation, Retrieval Augmented Generation (RAG) steps up the game for Large Language Models (LLMs) by fusing information retrieval capabilities with text generation skills, tackling key drawbacks of LLMs. When presented with a query, RAG fetches relevant information from an external knowledge base, which increases precision and contextual appropriateness through the integration of this retrieved data into the input. The Clarifai Python SDK allows you to create RAG-based applications with ease by reducing the number of steps in the process.
@@ -67,13 +74,17 @@ You can set a specific version of LLM by using `https://clarifai.com/mistralai/c
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeInit}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Image Output</summary>
    <img src="/img/python-sdk/rag_init.png" width="700" height="700" />
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeInitTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 
 
 Here we are opting for Mistral-7B-Instruct as the LLM Model. You can choose different LLM Models for the RAG agent from Clarifai Community [Models](https://clarifai.com/explore/models?filterData=%5B%7B%22field%22%3A%22use_cases%22%2C%22value%22%3A%5B%22llm%22%5D%7D%5D&page=1&perPage=24). The Clarifai Python SDK also allows you to set parameters like min_score,max_results and prompt_template  for retrieving relevant data.
@@ -118,13 +129,15 @@ Supported formats for upload are Doc, PDF, Text, Folder Containing PDF, Doc and 
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeDU}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
    <CodeBlock className="language-python">{CodeOutputDU}</CodeBlock>
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeDUTS}</CodeBlock>
+</TabItem>
+</Tabs>
 
 
 ## Chat
@@ -134,13 +147,17 @@ In the final step, we are going to perform information retrieval using RAG based
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeChat}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
    <CodeBlock className="language-python">{CodeOutputChat}</CodeBlock>
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeChatTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 
 Now let's ask questions that are related to the answer we received before so that we can be sure the RAG has understood the context properly.
 

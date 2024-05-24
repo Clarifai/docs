@@ -8,11 +8,23 @@ import CodeBlock from "@theme/CodeBlock";
 
 
 import CodeTextClassifier from "!!raw-loader!../../../code_snippets/python-sdk/inference/text_classifier.py";
+import CodeTextClassifierTS from "!!raw-loader!../../../code_snippets/python-sdk/inference/textClassifier.ts";
+
 import CodeTextGenLLM from "!!raw-loader!../../../code_snippets/python-sdk/inference/text_gen_llm.py";
+import CodeTextGenLLMTS from "!!raw-loader!../../../code_snippets/python-sdk/inference/textGenerationUsingLLM.ts";
+
 import CodeTextClassLLM from "!!raw-loader!../../../code_snippets/python-sdk/inference/text_class_llm.py";
+import CodeTextClassLLMTS from "!!raw-loader!../../../code_snippets/python-sdk/inference/textClassifierUsingLLM.ts";
+
+
 import CodeTextImage from "!!raw-loader!../../../code_snippets/python-sdk/inference/text_to_image.py";
+import CodeTextImageTS from "!!raw-loader!../../../code_snippets/python-sdk/inference/textToImage.ts";
+
 import CodeTextAudio from "!!raw-loader!../../../code_snippets/python-sdk/inference/text_to_audio.py";
+import CodeTextAudioTS from "!!raw-loader!../../../code_snippets/python-sdk/inference/textToAudio.ts";
+
 import CodeTextEmbedder from "!!raw-loader!../../../code_snippets/python-sdk/inference/text_embedder.py";
+import CodeTextEmbedderTS from "!!raw-loader!../../../code_snippets/python-sdk/inference/textEmbedder.ts";
 
 
 
@@ -43,13 +55,17 @@ The file size of each text input should be less than 20MB.
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeTextClassifier}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputTextClassifier}</CodeBlock>
 </details> 
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeTextClassifierTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 
 
 
@@ -61,13 +77,17 @@ Empower your applications with dynamic text creation using the robust capabiliti
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeTextGenLLM}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputTextGenLLM}</CodeBlock>
 </details> 
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeTextGenLLMTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 
 ## Text Classifier Using LLM
 
@@ -76,13 +96,17 @@ Dive into the realm of text classification with Clarifai's Predict API, where yo
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeTextClassLLM}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputTextClassLLM}</CodeBlock>
 </details> 
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeTextClassLLMTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 
 ## Text  to image
 
@@ -94,13 +118,17 @@ Leverage the power of the Predict API to seamlessly transform textual input into
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeTextImage}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <img src="/img/python-sdk/text_to_image.png" />
 </details> 
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeTextImageTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 
 ## Text to Audio
 
@@ -109,6 +137,9 @@ The Text to Audio [models](https://clarifai.com/explore/models?page=1&perPage=24
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeTextAudio}</CodeBlock>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeTextAudioTS}</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -122,12 +153,16 @@ The Predict API offers a versatile set of capabilities, including the conversion
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeTextEmbedder}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputTextEmbedder}</CodeBlock>
 </details> 
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeTextEmbedderTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 
 

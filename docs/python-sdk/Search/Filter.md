@@ -9,11 +9,24 @@ import CodeBlock from "@theme/CodeBlock";
 
 
 import CodeIT from "!!raw-loader!../../../code_snippets/python-sdk/Search/filters/fl_it.py";
+import CodeITTS from "!!raw-loader!../../../code_snippets/python-sdk/Search/filters/filterWithInputType.ts";
+
 import CodeMD from "!!raw-loader!../../../code_snippets/python-sdk/Search/filters/fl_md.py";
+import CodeMDTS from "!!raw-loader!../../../code_snippets/python-sdk/Search/filters/filterWithMetadata.ts";
+
+
 import CodeGP from "!!raw-loader!../../../code_snippets/python-sdk/Search/filters/fl_gp.py";
+import CodeGPTS from "!!raw-loader!../../../code_snippets/python-sdk/Search/filters/filterWithGeoPoint.ts";
+
+
 import CodeIS from "!!raw-loader!../../../code_snippets/python-sdk/Search/filters/fl_is.py";
+import CodeISTS from "!!raw-loader!../../../code_snippets/python-sdk/Search/filters/filterWithInputStatusCode.ts";
+
 import CodeData from "!!raw-loader!../../../code_snippets/python-sdk/Search/filters/fl_data.py";
+import CodeDataTS from "!!raw-loader!../../../code_snippets/python-sdk/Search/filters/filterWithDatasetID.ts";
+
 import CodeMM from "!!raw-loader!../../../code_snippets/python-sdk/Search/filters/fl_mm.py";
+import CodeMMTS from "!!raw-loader!../../../code_snippets/python-sdk/Search/filters/multiModalFiltering.ts";
 
 
 import CodeOutputIT from "!!raw-loader!../../../code_snippets/python-sdk/Search/outputs/filters/fl_it.txt";
@@ -45,15 +58,19 @@ Filtering with input type in Clarifai enables users to narrow down search result
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeIT}</CodeBlock>
-</TabItem>
-</Tabs>
-
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputIT}</CodeBlock>
     <img src="/img/python-sdk/fl_it.png" width="700" height="700" />
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeITTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
+
 
 
 ## Filter with Metadata 
@@ -62,15 +79,19 @@ The filter feature in Clarifai's search functionality allows users to narrow dow
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeMD}</CodeBlock>
-</TabItem>
-</Tabs>
-
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputMD}</CodeBlock>
     <img src="/img/python-sdk/fl_md.png" width="700" height="700" />
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeMMTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
+
 
 
 
@@ -83,15 +104,19 @@ Filtering with geopoint in Clarifai allows users to refine search results based 
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeGP}</CodeBlock>
-</TabItem>
-</Tabs>
-
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputGP}</CodeBlock>
     <img src="/img/python-sdk/fl_gp.png" width="700" height="700" />
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeGPTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
+
 
 
 ## Filter with Input Status Code
@@ -102,15 +127,19 @@ Filtering with input status code in Clarifai allows users to refine search resul
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeIS}</CodeBlock>
-</TabItem>
-</Tabs>
-
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputIS}</CodeBlock>
     <img src="/img/python-sdk/fl_is.png" width="700" height="700" />
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeISTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
+
 
 ## Filter with Dataset-ID
 
@@ -119,15 +148,16 @@ Filtering with dataset ID in Clarifai allows users to narrow down search results
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeData}</CodeBlock>
-</TabItem>
-</Tabs>
-
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputData}</CodeBlock>
     <img src="/img/python-sdk/fl_data.png" width="700" height="700" />
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeDataTS}</CodeBlock>
+</TabItem>
+</Tabs>
 
 
 
@@ -138,12 +168,15 @@ Multimodal filtering in Clarifai refers to the ability to refine search results 
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeMM}</CodeBlock>
-</TabItem>
-</Tabs>
-
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputMM}</CodeBlock>
     <img src="/img/python-sdk/fl_mm.png" width="700" height="700" />
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeMMTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+

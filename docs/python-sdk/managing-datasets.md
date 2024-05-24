@@ -8,19 +8,51 @@ import CodeBlock from "@theme/CodeBlock";
 
 
 import CodeCreateDataset from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/create_dataset.py";
+import CodeCreateDatasetTS from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/creatingDatasets.ts";
+
 import CodeCreateDatasetV from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/create_data_version.py";
+import CodeCreateDatasetVTS from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/createDatasetVersion.ts";
+
 import CodeUpImage from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/up_image.py";
+import CodeUpImageTS from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/uploadImage.ts";
+
+
 import CodeUpText from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/up_text.py";
+import CodeUpTextTS from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/uploadText.ts";
+
 import CodeUpAudio from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/up_audio.py";
+import CodeUpAudioTS from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/uploadAudio.ts";
+
+
+
 import CodeUpVideo from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/up_video.py";
+import CodeUpVideoTS from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/uploadVideo.ts";
+
+
 import CodeUpImageAN from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/up_image_an.py";
+import CodeUpImageANTS from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/uploadImageWithAnnotation.ts";
+
+
 import CodeUpVideoAN from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/up_video_an.py";
+import CodeUpVideoANTS from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/uploadVideoWithAnnotation.ts";
+
+
 import CodeUpTextAN from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/up_text_an.py";
+import CodeUpTextANTS from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/uploadTextWithAnnotation.ts";
+
+
 import CodeUpBatch from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/batch.py";
 import CodeExport from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/export.py";
 import CodeSDH from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/sdh.py";
+
+
 import CodeDV from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/delete_version.py";
+import CodeDVTS from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/deleteDatasetVersion.ts";
+
+
 import CodeDelete from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/delete.py";
+import CodeDeleteTS from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/deleteDataset.ts";
+
 import CodeRetry from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/retry_log.py";
 
 
@@ -63,13 +95,17 @@ Visit  this [link](https://docs.clarifai.com/portal-guide/datasets/create-get-up
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeCreateDataset}</CodeBlock>
+    <details>
+  <summary>Output</summary>
+    <CodeBlock className="language-text">{CodeOutputCreateDataset}</CodeBlock>
+</details>  
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeCreateDatasetTS}</CodeBlock>
 </TabItem>
 </Tabs>
 
-<details>
-  <summary>Output</summary>
-    <CodeBlock className="language-text">{CodeOutputCreateDataset}</CodeBlock>
-</details>                                        
+                                      
 
                                                                                                                   
 
@@ -83,15 +119,16 @@ Visit this [page](https://docs.clarifai.com/portal-guide/datasets/create-get-upd
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeCreateDatasetV}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputCreateDatasetV}</CodeBlock>
 </details>  
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeCreateDatasetVTS}</CodeBlock>
+</TabItem>
+</Tabs>
 
-                                         
 
 
 ## Upload Image
@@ -103,14 +140,15 @@ Visit this [page](https://docs.clarifai.com/portal-guide/datasets/create-get-upd
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeUpImage}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputUpImage}</CodeBlock>
 </details>  
-
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeUpImageTS}</CodeBlock>
+</TabItem>
+</Tabs>
 
 
 
@@ -124,13 +162,17 @@ Visit this [page](https://docs.clarifai.com/portal-guide/datasets/create-get-upd
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeUpText}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputUpText}</CodeBlock>
 </details> 
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeUpTextTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 
 
 
@@ -143,13 +185,17 @@ Visit this [page](https://docs.clarifai.com/portal-guide/datasets/create-get-upd
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeUpAudio}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputUpAudio}</CodeBlock>
 </details> 
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeUpAudioTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 
 
 
@@ -163,13 +209,17 @@ Visit this [page](https://docs.clarifai.com/portal-guide/datasets/create-get-upd
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeUpAudio}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputUpAudio}</CodeBlock>
 </details> 
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeUpVideoTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 
 
 
@@ -183,13 +233,17 @@ Visit this [page](https://docs.clarifai.com/portal-guide/datasets/create-get-upd
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeUpImageAN}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputUpImageAN}</CodeBlock>
 </details> 
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeUpImageANTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 
                                            
 
@@ -205,13 +259,17 @@ Visit this [page](https://docs.clarifai.com/portal-guide/datasets/create-get-upd
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeUpVideoAN}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputUpVideoAN}</CodeBlock>
 </details> 
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeUpVideoANTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 
 
 
@@ -225,13 +283,17 @@ Visit this [page](https://docs.clarifai.com/portal-guide/datasets/create-get-upd
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeUpTextAN}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputUpTextAN}</CodeBlock>
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeUpTextANTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 
                                           
 
@@ -323,13 +385,17 @@ Be certain that you want to delete a particular dataset version as the operation
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeDV}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputDV}</CodeBlock>
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeDVTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
                                                                                                                   
 
 
@@ -348,12 +414,16 @@ Visit this [page](https://docs.clarifai.com/portal-guide/datasets/create-get-upd
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeDelete}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputDelete}</CodeBlock>
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeDeleteTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 
                                            

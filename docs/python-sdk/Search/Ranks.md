@@ -9,7 +9,10 @@ import CodeBlock from "@theme/CodeBlock";
 
 
 import CodeRKTXT from "!!raw-loader!../../../code_snippets/python-sdk/Search/ranks/rk_text.py";
+import CodeRKTXTTS from "!!raw-loader!../../../code_snippets/python-sdk/Search/ranks/rankWithText.ts";
+
 import CodeIMURL from "!!raw-loader!../../../code_snippets/python-sdk/Search/ranks/rk_imurl.py";
+import CodeIMURLTS from "!!raw-loader!../../../code_snippets/python-sdk/Search/ranks/rankWithImageUrl.ts";
 
 
 import CodeOutputRKTXT from "!!raw-loader!../../../code_snippets/python-sdk/Search/outputs/ranks/rk_text.txt";
@@ -35,17 +38,16 @@ By incorporating text-based ranking, users can enhance the relevance and specifi
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeRKTXT}</CodeBlock>
-</TabItem>
-</Tabs>
-
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputRKTXT}</CodeBlock>
     <img src="/img/python-sdk/rk_text.png" width="700" height="700" />
 </details>
-
-
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeRKTXTTS}</CodeBlock>
+</TabItem>
+</Tabs>
 
 
 ## Rank with Image URL
@@ -56,12 +58,15 @@ Ranking with image URL in Clarifai allows users to prioritize search results bas
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeIMURL}</CodeBlock>
-</TabItem>
-</Tabs>
-
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputIMURL}</CodeBlock>
     <img src="/img/python-sdk/rk_imurl.png" width="700" height="700" />
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeIMURLTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+

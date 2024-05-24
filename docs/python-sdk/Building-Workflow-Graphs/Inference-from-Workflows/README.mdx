@@ -4,21 +4,58 @@ import CodeBlock from "@theme/CodeBlock";
 
 
 import CodeTC from "!!raw-loader!../../../../code_snippets/python-sdk/workflows/text_classifier.py";
+import CodeTCTS from "!!raw-loader!../../../../code_snippets/python-sdk/workflows/textClassifier.ts";
+
 import CodeSumm from "!!raw-loader!../../../../code_snippets/python-sdk/workflows/summary.py";
+import CodeSummTS from "!!raw-loader!../../../../code_snippets/python-sdk/workflows/textToTextSummarization.ts";
+
+
 import CodeTGen from "!!raw-loader!../../../../code_snippets/python-sdk/workflows/text_generation.py";
+import CodeTGenTS from "!!raw-loader!../../../../code_snippets/python-sdk/workflows/textToTextGeneration.ts";
+
 import CodeVC from "!!raw-loader!../../../../code_snippets/python-sdk/workflows/visual_class.py";
+import CodeVCTS from "!!raw-loader!../../../../code_snippets/python-sdk/workflows/visualClassifier.ts";
+
 import CodeVS from "!!raw-loader!../../../../code_snippets/python-sdk/workflows/visual_seg.py";
+import CodeVSTS from "!!raw-loader!../../../../code_snippets/python-sdk/workflows/visualSegmenter.ts";
+
 import CodeIT from "!!raw-loader!../../../../code_snippets/python-sdk/workflows/image_to_text.py";
+import CodeITTS from "!!raw-loader!../../../../code_snippets/python-sdk/workflows/imageToText.ts";
+
 import CodeTI from "!!raw-loader!../../../../code_snippets/python-sdk/workflows/text_to_image.py";
+import CodeTITS from "!!raw-loader!../../../../code_snippets/python-sdk/workflows/textToImage.ts";
+
+
 import CodeII from "!!raw-loader!../../../../code_snippets/python-sdk/workflows/image_to_image.py";
+import CodeIITS from "!!raw-loader!../../../../code_snippets/python-sdk/workflows/imageToImage.ts";
+
 import CodeTA from "!!raw-loader!../../../../code_snippets/python-sdk/workflows/text_to_audio.py";
+import CodeTATS from "!!raw-loader!../../../../code_snippets/python-sdk/workflows/textToAudio.ts";
+
+
 import CodeAT from "!!raw-loader!../../../../code_snippets/python-sdk/workflows/audio_to_text.py";
+import CodeATTS from "!!raw-loader!../../../../code_snippets/python-sdk/workflows/audioToText.ts";
+
+
 import CodeVDF from "!!raw-loader!../../../../code_snippets/python-sdk/workflows/vd_face.py";
+import CodeVDFTS from "!!raw-loader!../../../../code_snippets/python-sdk/workflows/visualDetectorFace.ts";
+
 import CodeVDO from "!!raw-loader!../../../../code_snippets/python-sdk/workflows/vd_object.py";
+import CodeVDOTS from "!!raw-loader!../../../../code_snippets/python-sdk/workflows/visualDetectorObject.ts";
+
 import CodeTE from "!!raw-loader!../../../../code_snippets/python-sdk/workflows/te.py";
+import CodeTETS from "!!raw-loader!../../../../code_snippets/python-sdk/workflows/textToEmbedding.ts";
+
+
 import CodeMM from "!!raw-loader!../../../../code_snippets/python-sdk/workflows/multimodal.py";
+import CodeMMTS from "!!raw-loader!../../../../code_snippets/python-sdk/workflows/multiModal.ts";
+
 import CodeVD from "!!raw-loader!../../../../code_snippets/python-sdk/workflows/visual_det.py";
+import CodeVDTS from "!!raw-loader!../../../../code_snippets/python-sdk/workflows/visualDetector.ts";
+
+
 import CodeBP from "!!raw-loader!../../../../code_snippets/python-sdk/workflows/batch_predict.py";
+import CodeBPTS from "!!raw-loader!../../../../code_snippets/python-sdk/workflows/batchPredict.ts";
 
 
 
@@ -60,12 +97,16 @@ The Predict API in the Clarifai Python SDK empowers users to seamlessly perform 
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeTC}</CodeBlock>
-</TabItem>
-</Tabs>
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputTC}</CodeBlock>
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeTCTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
 
 
 ## Text to Text - Summarization
@@ -75,12 +116,16 @@ Through the Predict API, you can seamlessly integrate a text summarization model
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeSumm}</CodeBlock>
-</TabItem>
-</Tabs>
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputSumm}</CodeBlock>
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeSummTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
 
 
 ## Text to Text - Generation
@@ -90,12 +135,16 @@ With our Predict API, you can seamlessly generate textual content by providing a
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeTGen}</CodeBlock>
-</TabItem>
-</Tabs>
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputTGen}</CodeBlock>
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeTGenTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
 
 
 ## Visual Classifier
@@ -107,12 +156,16 @@ Visit this [link](https://clarifai.com/explore/models?page=1&perPage=24&filterDa
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeVC}</CodeBlock>
-</TabItem>
-</Tabs>
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputVC}</CodeBlock>
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeVCTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
 
 
 ## Visual Segmenter
@@ -123,14 +176,18 @@ By leveraging the Predict API, you can seamlessly integrate image segmentation m
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeVS}</CodeBlock>
+    <details>
+  <summary>Image Output</summary>
+    <img src="/img/python-sdk/visual_seg.png" width="500" height="500" />
+</details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeVSTS}</CodeBlock>
 </TabItem>
 </Tabs>
 
 
-<details>
-  <summary>Image Output</summary>
-    <img src="/img/python-sdk/visual_seg.png" width="500" height="500" />
-</details>
+
 
 ## Image to Text
 
@@ -139,12 +196,16 @@ By leveraging the Predict  API, you can effortlessly integrate OCR capabilities 
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeIT}</CodeBlock>
-</TabItem>
-</Tabs>
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputIT}</CodeBlock>
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeITTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
 
 
 
@@ -156,14 +217,18 @@ Create captivating visuals effortlessly with the help of Predict API. The Image 
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeTI}</CodeBlock>
+    <details>
+  <summary>Image Output</summary>
+    <img src="/img/python-sdk/TI.png" width="500" height="500" />
+</details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeTITS}</CodeBlock>
 </TabItem>
 </Tabs>
 
 
-<details>
-  <summary>Image Output</summary>
-    <img src="/img/python-sdk/TI.png" width="500" height="500" />
-</details>
+
 
 ## Image to Image
 
@@ -172,15 +237,19 @@ By leveraging our Predict  API, you can seamlessly enhance the quality of any im
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeII}</CodeBlock>
+    <details>
+  <summary>Image Output</summary>
+    <img src="/img/python-sdk/II.png" width="500" height="500" />
+</details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeIITS}</CodeBlock>
 </TabItem>
 </Tabs>
 
 
 
-<details>
-  <summary>Image Output</summary>
-    <img src="/img/python-sdk/II.png" width="500" height="500" />
-</details>
+
 
 
 ## Text to Audio
@@ -190,6 +259,9 @@ Leverage the power of the Predict API to seamlessly transform text into audio. T
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeTA}</CodeBlock>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeTATS}</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -201,12 +273,16 @@ With the Clarifai Predict API, seamlessly convert audio to text by incorporating
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeAT}</CodeBlock>
-</TabItem>
-</Tabs>
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputAT}</CodeBlock>
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeATTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
 
 
 
@@ -217,14 +293,15 @@ This workflow seamlessly integrates detection, recognition, and embedding proces
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeVDF}</CodeBlock>
-</TabItem>
-</Tabs>
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputVDF}</CodeBlock>
 </details>
-
-
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeVDFTS}</CodeBlock>
+</TabItem>
+</Tabs>
 
 
 ## Visual Detector - Object Search
@@ -234,12 +311,16 @@ Leverage the Predict API to detect a wide array of common objects within images,
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeVDO}</CodeBlock>
-</TabItem>
-</Tabs>
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputVDO}</CodeBlock>
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeVDOTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
 
 
 
@@ -250,12 +331,16 @@ Incorporate the power of embeddings and clustering for comprehensive text proces
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeTE}</CodeBlock>
-</TabItem>
-</Tabs>
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputTE}</CodeBlock>
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeTETS}</CodeBlock>
+</TabItem>
+</Tabs>
+
 
 
 
@@ -267,12 +352,16 @@ Seamlessly leverage the power of multimodal inputs within your workflows using t
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeMM}</CodeBlock>
-</TabItem>
-</Tabs>
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputMM}</CodeBlock>
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeMMTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
 
 
 
@@ -283,12 +372,16 @@ This workflow enables you to seamlessly detect a diverse range of common objects
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeVD}</CodeBlock>
-</TabItem>
-</Tabs>
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputVD}</CodeBlock>
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeVDTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
 
 
 
@@ -305,10 +398,14 @@ The batch size should not exceed 32.
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeBP}</CodeBlock>
-</TabItem>
-</Tabs>
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputBP}</CodeBlock>
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeBPTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
 

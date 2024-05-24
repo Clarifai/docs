@@ -3,7 +3,7 @@ description: Learn how to install the Clarifai Python SDK
 sidebar_position: 1
 ---
 
-# Installation Guide
+# Python SDK Installation Guide
 
 **Learn how to install the Clarifai Python SDK**
 <hr />

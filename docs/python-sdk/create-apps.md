@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 
@@ -10,11 +10,20 @@ import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
 import CodeCreateApp from "!!raw-loader!../../code_snippets/python-sdk/create-apps/create_app.py";
+import CodeCreateAppTS from "!!raw-loader!../../code_snippets/python-sdk/create-apps/createApp.ts";
+
 import CodeCreateAppBase from "!!raw-loader!../../code_snippets/python-sdk/create-apps/create_app_base_workflow.py";
 import CodeListApp from "!!raw-loader!../../code_snippets/python-sdk/create-apps/list_apps.py";
+import CodeListAppTS from "!!raw-loader!../../code_snippets/python-sdk/create-apps/listingApps.ts";
+
 import CodeDeleteApp from "!!raw-loader!../../code_snippets/python-sdk/create-apps/delete_app.py";
+import CodeDeleteAppTS from "!!raw-loader!../../code_snippets/python-sdk/create-apps/deleteApp.ts";
+
 import CodeCreateConcept from "!!raw-loader!../../code_snippets/python-sdk/create-apps/create_concept.py";
+import CodeCreateConceptTS from "!!raw-loader!../../code_snippets/python-sdk/create-apps/createConcept.ts";
+
 import CodeListConcept from "!!raw-loader!../../code_snippets/python-sdk/create-apps/list_concept.py";
+import CodeListConceptTS from "!!raw-loader!../../code_snippets/python-sdk/create-apps/listConcept.ts";
 
 
 
@@ -44,13 +53,17 @@ Visit this [page](https://docs.clarifai.com/clarifai-basics/applications/) for m
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeCreateApp}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputCreateApp}</CodeBlock>
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeCreateAppTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 
 
 ## Create an app with different base workflow
@@ -80,13 +93,17 @@ Visit this [page](https://docs.clarifai.com/api-guide/advanced-topics/pagination
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeListApp}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputListApp}</CodeBlock>
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-python">{CodeListAppTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 
 
 ## Delete App
@@ -104,13 +121,17 @@ Be certain that you want to delete a particular app as the operation cannot be u
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeDeleteApp}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputDeleteApp}</CodeBlock>
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-python">{CodeDeleteAppTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 
                                                                                                         
 ## Create Concept
@@ -122,13 +143,17 @@ Visit this [page](https://docs.clarifai.com/portal-guide/concepts/create-get-upd
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeCreateConcept}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputCreateConcept}</CodeBlock>
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-python">{CodeCreateConceptTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 
                                       
 
@@ -144,11 +169,15 @@ Visit this [page](https://docs.clarifai.com/api-guide/advanced-topics/pagination
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeListConcept}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputListConcept}</CodeBlock>
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-python">{CodeListConceptTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 

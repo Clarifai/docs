@@ -8,6 +8,7 @@ import CodeBlock from "@theme/CodeBlock";
 
 
 import CodeAudioText from "!!raw-loader!../../../code_snippets/python-sdk/inference/audio_to_text.py";
+import CodeAudioTextTS from "!!raw-loader!../../../code_snippets/python-sdk/inference/audioToText.ts";
 
 
 
@@ -28,10 +29,14 @@ Harness the power of the Predict API to seamlessly transform audio files into te
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeAudioText}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
+    <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputAudioText}</CodeBlock>
 </details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeAudioTextTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
