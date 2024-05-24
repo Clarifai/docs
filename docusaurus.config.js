@@ -187,8 +187,8 @@ const config = {
             from: ['/python-sdk/managing-inputs'],
           },
           {
-            to: '/sdk/Inference-from-AI-Models',
-            from: ['/python-sdk/Inference-from-AI-Models'],
+            to: '/sdk/Inference-from-AI-Models/',
+            from: ['/python-sdk/Inference-from-AI-Models/'],
           },
           {
             to: '/sdk/Inference-from-AI-Models/Image-as-Input',
@@ -211,8 +211,8 @@ const config = {
             from: ['/python-sdk/Inference-from-AI-Models/Advance-Inference-Options'],
           },
           {
-            to: '/sdk/Building-Workflow-Graphs',
-            from: ['/python-sdk/Building-Workflow-Graphs'],
+            to: '/sdk/Building-Workflow-Graphs/',
+            from: ['/python-sdk/Building-Workflow-Graphs/'],
           },
           {
             to: '/sdk/Building-Workflow-Graphs/Inference-from-Workflows',
@@ -223,8 +223,8 @@ const config = {
             from: ['/python-sdk/model-train-and-eval'],
           },
           {
-            to: '/sdk/Model-Training-Tutorial',
-            from: ['/python-sdk/Model-Training-Tutorial'],
+            to: '/sdk/Model-Training-Tutorial/',
+            from: ['/python-sdk/Model-Training-Tutorial/'],
           },
           {
             to: '/sdk/Model-Training-Tutorial/clusterer',
@@ -259,8 +259,8 @@ const config = {
             from: ['/python-sdk/Model-Training-Tutorial/visual_segmenter'],
           },
           {
-            to: '/sdk/Search',
-            from: ['/python-sdk/Search'],
+            to: '/sdk/Search/',
+            from: ['/python-sdk/Search/'],
           },
           {
             to: '/sdk/Search/Ranks',
@@ -275,8 +275,8 @@ const config = {
             from: ['/python-sdk/Search/Advance-Search'],
           },
           {
-            to: '/sdk/advance-model-operations',
-            from: ['/python-sdk/advance-model-operations'],
+            to: '/sdk/advance-model-operations/',
+            from: ['/python-sdk/advance-model-operations/'],
           },
           {
             to: '/sdk/advance-model-operations/model-upload',
