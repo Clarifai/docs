@@ -16,6 +16,15 @@
   --ifm-code-font-size: 90%;
   --ifm-font-size-base: 95%;
 }
+:root[data-theme="dark"] {
+  --ifm-color-primary: #a5b4fc;
+  --ifm-color-primary-dark: #7d92fb;
+  --ifm-color-primary-darker: #6882fa;
+  --ifm-color-primary-darkest: #2c4ff8;
+  --ifm-color-primary-light: #cdd6fd;
+  --ifm-color-primary-lighter: #e2e6fe;
+  --ifm-color-primary-lightest: #ffffff;
+}
 table {
   width: 100%;
   display: inline-table;
@@ -89,15 +98,18 @@ header .join__slack:hover {
 /* ---- LEFT NAVIGATION SIDEBAR ---- */
 .menu__link:not([href]) {
   color: var(--ifm-heading-color);
-  font-size: 1.2em; /* Adjust font size as needed */
+  font-size: 0.9em; /* Adjust font size as needed */
   font-weight: bold;
   color: var(--ifm-heading-color);
-  padding: 10px 15px;
   margin-bottom: 10px;
   border: 1px solid var(--ifm-heading-color);
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1); /* A subtle shadow */
   border-radius: 5px; /* Rounded corners */
   transition: background-color 0.3s ease; 
+}
+
+.menu__link {
+  font-size: 0.9em; /* Adjust font size as needed */
 }
 
 .menu__list-item-collapsible:hover {
