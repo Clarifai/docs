@@ -8,7 +8,9 @@ sidebar_position: 4
 **Learn about our push operators**
 <hr />
 
-Push operators help you to automate processes. You can trigger a wide variety of actions based on predictions made by models in your workflow. You can automatically add a label to an image based on predicted concepts, send an SMS message when a certain object is detected, and more.
+Push operators help you to automate processes. You can trigger a wide variety of actions based on predictions made by models in your workflow. 
+
+For example, you can automatically add a label to an image based on predicted concepts, send an SMS message when a certain object is detected, and more.
 
 :::tip
 

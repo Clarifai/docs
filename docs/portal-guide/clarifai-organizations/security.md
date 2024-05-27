@@ -17,7 +17,7 @@ Our robust security measures ensure the protection and confidentiality of your v
 
 Scopes and access levels play a crucial role in defining the boundaries of the components, resources, or data that members of an organization can access or manipulate. 
 
-Every member of a Clarifai organization—administrator, organization contributor, or team contributor—has their own pre-set scopes that determine what actions they can perform and what resources they can access. 
+Every member of a Clarifai organization — administrator, organization contributor, or team contributor — has their own pre-set scopes that determine what actions they can perform and what resources they can access. 
 
 The permissions allowed for each user type help to protect your organization’s resources from unauthorized infiltration, maintain the privacy of your assets, and ensure trackability of resources by knowing who has access to what. 
 
@@ -35,7 +35,7 @@ Here is a table detailing the scopes and access levels allowed for each user typ
    </td>
   </tr>
   <tr>
-   <td>View sidebar items
+   <td>View Sidebar Items
    </td>
    <td>Yes
    </td>
@@ -205,6 +205,26 @@ Here is a table detailing the scopes and access levels allowed for each user typ
    </td>
   </tr>
   <tr>
+  <td>Change Visibility of Apps
+   </td>
+   <td>Yes
+   </td>
+   <td>Yes
+   </td>
+   <td>No
+   </td>
+  </tr>
+  <tr>
+  <td>Change Visibility of Apps Resources
+   </td>
+   <td>Yes
+   </td>
+   <td>Yes
+   </td>
+   <td>Yes
+   </td>
+  </tr>
+  <tr>
    <td>Use Modules
    </td>
    <td>Yes
@@ -221,7 +241,7 @@ Here is a table detailing the scopes and access levels allowed for each user typ
    </td>
    <td>Yes
    </td>
-   <td>No
+   <td>Yes
    </td>
   </tr>
   <tr>
@@ -231,7 +251,7 @@ Here is a table detailing the scopes and access levels allowed for each user typ
    </td>
    <td>Yes
    </td>
-   <td>No
+   <td>Yes
    </td>
   </tr>
 </table>
