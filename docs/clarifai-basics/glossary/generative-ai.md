@@ -34,17 +34,17 @@ These models predict the distribution of subsequent sequence elements using prio
 
 ### BERT (Bidirectional Encoder Representations from Transformers) 
 
-BERT, developed by Google, is a pre trained transformer based language model. It stands out for its bidirectional training approach, which allows it to understand the context of a word based on all of its surroundings (left and right of the word). 
+BERT, developed by Google, is a pre-trained transformer-based language model. It stands out for its bidirectional training approach, which allows it to understand the context of a word based on all of its surroundings (left and right of the word). 
 
 ### BLOOM
 
-Developed by The BLOOM project, Bloom is a large scale language model that can execute a vast array of natural language understanding and generation tasks accurately.
+Developed by The BLOOM project, Bloom is a large-scale language model that can execute a vast array of natural language understanding and generation tasks accurately.
 
 ## C
 
 ### ChatGPT
 
-Developed by OpenAI, ChatGPT is a specialized large scale language model that generates human like text. It's a popular choice for developing AI powered chatbots due to its convincing conversation-generation capabilities.
+Developed by OpenAI, ChatGPT is a specialized large-scale language model that generates human-like text. It's a popular choice for developing AI powered chatbots due to its convincing conversation-generation capabilities.
 
 ### CLIP (Contrastive Language—Imagen Pretraining)
 
@@ -56,13 +56,13 @@ Close-book QA, also known as zero-shot QA, refers to the ability of an LLM to an
 
 :::tip open-book QA
 
-Close-Book QA stands in contrast to open-book QA, where the LLM can access and process external sources of information, such as documents, web pages, or knowledge bases.
+Close-book QA stands in contrast to open-book QA, where the LLM can access and process external sources of information, such as documents, web pages, or knowledge bases.
 
 :::
 
 ### Conditional GANs (cGANs)
 
-These are a type of GAN where a conditional variable is introduced to the input layer, allowing the model to generate data conditioned on certain factors. This augmentation provides the model the capability to generate data with desired characteristics.
+These are a type of GAN where a conditional variable is introduced to the input layer, allowing the model to generate data conditioned on certain factors. This augmentation provides the model with the capability to generate data with desired characteristics.
 
 ### Cross-modal
 
@@ -112,7 +112,7 @@ A machine learning method where the model learns to perform a task from a few ex
 
 ### Fine-Tuning
 
-A form of transfer learning wherein a pre-trained model is slightly modified or adjusted to perform a new task. This process allows for more efficient use of the pre-trained models by adjusting them to solve tasks similar to ones they were originally trained on.
+A form of transfer learning wherein a pre-trained model is slightly modified or adjusted to perform a new task. This process allows for more efficient use of the pre-trained models by adjusting them to solve tasks similar to the ones they were originally trained on.
 
 ### Foundation Model
 
@@ -146,7 +146,7 @@ GPT-Neo is a family of transformer-based language models from EleutherAI based o
 
 ### Grounding
 
-Is the process of linking a model's output to factual and verifiable information sources. This technique enhances the accuracy and reliability of the model, especially in applications where factual correctness is critical. Grounding reduces the risk of the model generating unfounded or incorrect content.
+It is the process of linking a model's output to factual and verifiable information sources. This technique enhances the accuracy and reliability of the model, especially in applications where factual correctness is critical. Grounding reduces the risk of the model generating unfounded or incorrect content.
 
 ## H
 
@@ -186,7 +186,7 @@ Llama 2 is a collection of pre-trained and fine-tuned large language models (LLM
 
 ### Machine Learning Bias 
 
-Bias in machine learning can occur from intentional or unintentional biased data or algorithms making incorrect assumptions, leading to skewed decisions. Understanding and addressing this bias ensures fair and accurate treatment for all customers.
+Bias in machine learning can occur from intentionally or unintentionally biased data or algorithms making incorrect assumptions, leading to skewed decisions. Understanding and addressing this bias ensures fair and accurate treatment for all customers.
 
 ### Midjourney
 
@@ -198,7 +198,7 @@ Mistral 7B, introduced by Mistral AI, is an LLM that has gathered attention due 
 
 ### Mixture of Experts
 
-Is a machine learning method where specialized models, or “experts”, handle different parts of data distribution. The final prediction is a blend of these expert outputs, adjusted by a “gating” system that determines each expert’s relevance. This leverages individual strengths to form a more robust model.
+It is a machine learning method where specialized models, or “experts”, handle different parts of data distribution. The final prediction is a blend of these expert outputs, adjusted by a “gating” system that determines each expert’s relevance. This leverages individual strengths to form a more robust model.
 
 ### Modalities 
 
@@ -305,7 +305,7 @@ This refers to the predefined instructions that set the general behavior of an A
 
 ### Temperature
 
-Is a parameter that controls the randomness and creativity of a model's output. A higher temperature setting results in more varied and unpredictable responses, fostering creativity. Conversely, a lower temperature yields more deterministic and predictable outputs, enhancing coherence and reliability. This parameter is essential for fine-tuning the balance between novelty and accuracy in generated content. 
+It is a parameter that controls the randomness and creativity of a model's output. A higher temperature setting results in more varied and unpredictable responses, fostering creativity. Conversely, a lower temperature yields more deterministic and predictable outputs, enhancing coherence and reliability. This parameter is essential for fine-tuning the balance between novelty and accuracy in generated content. 
 
 ### Token
 
