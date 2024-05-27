@@ -215,8 +215,8 @@ const config = {
             from: ['/python-sdk/Building-Workflow-Graphs/'],
           },
           {
-            to: '/sdk/Building-Workflow-Graphs/Inference-from-Workflows',
-            from: ['/python-sdk/Building-Workflow-Graphs/Inference-from-Workflows'],
+            to: '/sdk/Building-Workflow-Graphs/Inference-from-Workflows/',
+            from: ['/python-sdk/Building-Workflow-Graphs/Inference-from-Workflows/'],
           },
           {
             to: '/sdk/model-train-and-eval',
