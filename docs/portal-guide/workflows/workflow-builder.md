@@ -16,7 +16,7 @@ Agent system operators are non-trainable models that can be added to workflows o
 :::tip
 
 - [Click here](https://docs.clarifai.com/portal-guide/model/model-types/) to learn more about the types of models we offer. 
-- [Click here](https://docs.clarifai.com/portal-guide/model/agent-system-operators/) to learn more about the types of agent system operators we offer. 
+- [Click here](https://docs.clarifai.com/portal-guide/agent-system-operators/) to learn more about the types of agent system operators we offer. 
 
 :::
 
@@ -25,3 +25,5 @@ Agent system operators are non-trainable models that can be added to workflows o
 To build a workflow, just grab a model from the left-hand sidebar and drag it onto your workspace. This model will automatically be configured as a node in your workflow. Once a node is added to your workflow, you can configure the model parameters in the right-hand sidebar.
 
 The models in your workflow will automatically connect when they are placed near each other. You can also grab the node connectors on each model and configure your workflow nodes manually.
+
+You can use the tools on the left side of the workspace pane to manage the workflow creation process. These tools allow you to zoom in and out, fit the view, arrange the workflow, reset the workspace, and more.
