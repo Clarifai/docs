@@ -23,7 +23,7 @@ import CodeOutputIMURL from "!!raw-loader!../../../code_snippets/python-sdk/Sear
 
 # Ranks
 
-**Learn how to perform search with ranks using Clarifai Python SDK**
+**Learn how to perform search with ranks using Clarifai SDKs**
 <hr />
 
 The rank feature in Clarifai allows users to specify criteria for prioritizing search results based on relevance or similarity to a reference. In the provided example, it conducts a vector search over inputs, comparing their features to those of a reference image specified by its URL. The search results are then ranked based on their similarity to the reference using the cosine metric.

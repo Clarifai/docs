@@ -31,10 +31,10 @@ import CodeOutputWF2 from "!!raw-loader!../../code_snippets/python-sdk/rag/outpu
 
 # Building RAG Applications
 
-**Learn how to build a RAG application using Clarifai Python SDK**
+**Learn how to build a RAG application using Clarifai SDKs**
 <hr />
 
-In the realm of text generation, Retrieval Augmented Generation (RAG) steps up the game for Large Language Models (LLMs) by fusing information retrieval capabilities with text generation skills, tackling key drawbacks of LLMs. When presented with a query, RAG fetches relevant information from an external knowledge base, which increases precision and contextual appropriateness through the integration of this retrieved data into the input. The Clarifai Python SDK allows you to create RAG-based applications with ease by reducing the number of steps in the process.
+In the realm of text generation, Retrieval Augmented Generation (RAG) steps up the game for Large Language Models (LLMs) by fusing information retrieval capabilities with text generation skills, tackling key drawbacks of LLMs. When presented with a query, RAG fetches relevant information from an external knowledge base, which increases precision and contextual appropriateness through the integration of this retrieved data into the input. The Clarifai SDKs allows you to create RAG-based applications with ease by reducing the number of steps in the process.
 
 Click [here](https://www.clarifai.com/blog/what-is-rag-retrieval-augmented-generation) to learn more about RAG.
 
@@ -43,7 +43,7 @@ Click [here](https://www.clarifai.com/blog/what-is-rag-retrieval-augmented-gener
 
 
 
-* Setting up the Clarifai Python SDK along with PAT. Refer to the installation and configuration with the PAT token [here](https://docs.clarifai.com/python-sdk/sdk-overview/).
+* Setting up the Clarifai SDKs along with PAT. Refer to the installation and configuration with the PAT token [here](https://docs.clarifai.com/python-sdk/sdk-overview/).
 
 :::note
 Guide to get your [PAT](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens)
@@ -66,7 +66,7 @@ Before you proceed install ```llama_index``` using ```pip install llama-index-co
 
 ## Initialising RAG
 
-The first part of creating a RAG-based application includes setting up the RAG object. Just by setting up the RAG object, Clarifai Python SDK will automatically create the app along with a prompter model and workflow containing the RAG prompter and the LLM Model.
+The first part of creating a RAG-based application includes setting up the RAG object. Just by setting up the RAG object, Clarifai SDKs will automatically create the app along with a prompter model and workflow containing the RAG prompter and the LLM Model.
 
 :::tip
 You can set a specific version of LLM by using `https://clarifai.com/mistralai/completion/models/mistral-7B-Instruct/model_version/version_id`.
@@ -87,9 +87,9 @@ You can set a specific version of LLM by using `https://clarifai.com/mistralai/c
 
 
 
-Here we are opting for Mistral-7B-Instruct as the LLM Model. You can choose different LLM Models for the RAG agent from Clarifai Community [Models](https://clarifai.com/explore/models?filterData=%5B%7B%22field%22%3A%22use_cases%22%2C%22value%22%3A%5B%22llm%22%5D%7D%5D&page=1&perPage=24). The Clarifai Python SDK also allows you to set parameters like min_score,max_results and prompt_template  for retrieving relevant data.
+Here we are opting for Mistral-7B-Instruct as the LLM Model. You can choose different LLM Models for the RAG agent from Clarifai Community [Models](https://clarifai.com/explore/models?filterData=%5B%7B%22field%22%3A%22use_cases%22%2C%22value%22%3A%5B%22llm%22%5D%7D%5D&page=1&perPage=24). The Clarifai SDKs also allows you to set parameters like min_score,max_results and prompt_template  for retrieving relevant data.
 
-The Clarifai Python SDK also enables users to initialize RAG using a workflow you have created in the portal which should contain a RAG prompter.
+The Clarifai SDKs also enables users to initialize RAG using a workflow you have created in the portal which should contain a RAG prompter.
 There are two ways you can set up RAG using workflows.
 In the first method, you can provide the workflow URL as a parameter,
 
@@ -120,7 +120,7 @@ The next option is to pass `workflow_id` parameter in `RAG.setup()`, this will c
 
 ## Dataset Upload
 
-The next step involves uploading the dataset. In this example, we are using a Vehicle Repair Manual as data for the RAG. You can use the RAG object we created earlier for the data upload process. Now comes the perks of using Clarifai Python SDK. When you upload the data the Clarifai platform will automatically generate embeddings for the inputs and store them in the vector database which makes it ready for retrieval seconds after uploading data.
+The next step involves uploading the dataset. In this example, we are using a Vehicle Repair Manual as data for the RAG. You can use the RAG object we created earlier for the data upload process. Now comes the perks of using Clarifai SDKs. When you upload the data the Clarifai platform will automatically generate embeddings for the inputs and store them in the vector database which makes it ready for retrieval seconds after uploading data.
 
 :::info
 Supported formats for upload are Doc, PDF, Text, Folder Containing PDF, Doc and URL of PDF,Doc, Text files.

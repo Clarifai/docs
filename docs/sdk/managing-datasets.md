@@ -78,17 +78,17 @@ import CodeOutputRetry from "!!raw-loader!../../code_snippets/python-sdk/managin
 
 # Managing Datasets
 
-**Learn how to interact with datasets using Clarifai Python SDK**
+**Learn how to interact with datasets using Clarifai SDKs**
 <hr />
 
-Effectively navigate the complexities of dataset management using the Clarifai Python SDK, where a suite of robust tools empowers you to handle datasets with unparalleled efficiency. This comprehensive set of functionalities enables you to seamlessly organize, modify, and analyze your image data. Whether you are creating new datasets from scratch, updating existing ones with fresh information, or fine-tuning your data for optimal model performance, the SDK delivers a seamless and intuitive interface.
+Effectively navigate the complexities of dataset management using the Clarifai SDKs, where a suite of robust tools empowers you to handle datasets with unparalleled efficiency. This comprehensive set of functionalities enables you to seamlessly organize, modify, and analyze your image data. Whether you are creating new datasets from scratch, updating existing ones with fresh information, or fine-tuning your data for optimal model performance, the SDK delivers a seamless and intuitive interface.
 
 Our SDK goes beyond mere dataset manipulation; it offers a complete solution for every step of your data journey. With the ability to effortlessly upload new datasets, swiftly delete redundant ones, and manipulate existing datasets according to your specific needs, you gain full control over your data pipeline. This ensures a fluid and adaptable workflow, allowing you to focus on deriving meaningful insights and maximizing the potential of your image data.
 
 
 ## Creating Datasets
 
-Leverage the robust capabilities of the Clarifai Python SDK to seamlessly generate datasets within your application. Through the API, you can initiate the creation of a dataset by specifying a unique dataset ID. This process empowers you to tailor your datasets to the specific needs of your application, ensuring a customized and efficient data.
+Leverage the robust capabilities of the Clarifai SDKs to seamlessly generate datasets within your application. Through the API, you can initiate the creation of a dataset by specifying a unique dataset ID. This process empowers you to tailor your datasets to the specific needs of your application, ensuring a customized and efficient data.
 
 Visit  this [link](https://docs.clarifai.com/portal-guide/datasets/create-get-update-delete) for more information.
 
@@ -112,7 +112,7 @@ Visit  this [link](https://docs.clarifai.com/portal-guide/datasets/create-get-up
 
 ## Create a Dataset version
 
-Leveraging the power of the Clarifai Python SDK, you can effortlessly generate a new dataset version tailored to your specific needs. This process involves utilizing the API to initiate the creation of a version for a designated dataset, identified by its unique dataset ID. By seamlessly integrating this functionality into your workflow, you gain the ability to manage and track different iterations of your datasets effectively.
+Leveraging the power of the Clarifai SDKs, you can effortlessly generate a new dataset version tailored to your specific needs. This process involves utilizing the API to initiate the creation of a version for a designated dataset, identified by its unique dataset ID. By seamlessly integrating this functionality into your workflow, you gain the ability to manage and track different iterations of your datasets effectively.
 
 Visit this [page](https://docs.clarifai.com/portal-guide/datasets/create-get-update-delete) for more information.
 
@@ -202,7 +202,7 @@ Visit this [page](https://docs.clarifai.com/portal-guide/datasets/create-get-upd
 
 ## Upload Video
 
-Elevate your multimedia analysis capabilities with the Clarifai Python SDK, enabling you to effortlessly upload video data using the versatile dataloader. Seamlessly integrate video data into your projects by leveraging the dataloader, which supports uploading videos either directly from a folder or in the convenient CSV format.
+Elevate your multimedia analysis capabilities with the Clarifai SDKs, enabling you to effortlessly upload video data using the versatile dataloader. Seamlessly integrate video data into your projects by leveraging the dataloader, which supports uploading videos either directly from a folder or in the convenient CSV format.
 
 Visit this [page](https://docs.clarifai.com/portal-guide/datasets/create-get-update-delete) for more information.
 
@@ -372,7 +372,7 @@ Visit this [page](https://docs.clarifai.com/portal-guide/datasets/create-get-upd
 
 ## Delete Dataset Version
 
-Within the Clarifai Python SDK, you have the capability to precisely manage your datasets by removing specific versions with ease. This feature empowers you to selectively delete a particular version of your dataset through the API. Whether you are refining your dataset collection, optimizing storage resources, or ensuring data accuracy, this functionality provides a targeted and efficient solution.
+Within the Clarifai SDKs, you have the capability to precisely manage your datasets by removing specific versions with ease. This feature empowers you to selectively delete a particular version of your dataset through the API. Whether you are refining your dataset collection, optimizing storage resources, or ensuring data accuracy, this functionality provides a targeted and efficient solution.
 
 Visit this [page](https://docs.clarifai.com/portal-guide/datasets/create-get-update-delete) for more information.
 
@@ -401,7 +401,7 @@ Be certain that you want to delete a particular dataset version as the operation
 
 ## Delete Dataset
 
-Within the Clarifai Python SDK, removing a dataset is a straightforward process enabled by the API. By supplying the unique identifier, known as the dataset ID, you gain the capability to seamlessly eliminate a dataset from your Clarifai account. It's essential to note that this functionality extends beyond a singular dataset removal; it also initiates the deletion of all associated dataset versions.
+Within the Clarifai SDKs, removing a dataset is a straightforward process enabled by the API. By supplying the unique identifier, known as the dataset ID, you gain the capability to seamlessly eliminate a dataset from your Clarifai account. It's essential to note that this functionality extends beyond a singular dataset removal; it also initiates the deletion of all associated dataset versions.
 
 Visit this [page](https://docs.clarifai.com/portal-guide/datasets/create-get-update-delete) for more information.
 

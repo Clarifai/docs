@@ -15,9 +15,9 @@ import CodeOutputST from "!!raw-loader!../../../code_snippets/python-sdk/model-e
 
 
 # Model Export
-**Learn how to perform model export using Clarifai Python SDK**
+**Learn how to perform model export using Clarifai SDKs**
 <hr />
-Using the Clarifai Python SDK, you can export the model you have trained on the Clarifai portal into a .tar file by specifying the model URL. This feature allows users to version control their trained models and seamlessly integrate them into different environments. The exported .tar file encapsulates the model architecture, weights, and any additional training artifacts, making it a portable archive for deployment. Overall, the ability to export models via the Clarifai Python SDK empowers users with greater flexibility and control over their machine-learning workflows.
+Using the Clarifai SDKs, you can export the model you have trained on the Clarifai portal into a .tar file by specifying the model URL. This feature allows users to version control their trained models and seamlessly integrate them into different environments. The exported .tar file encapsulates the model architecture, weights, and any additional training artifacts, making it a portable archive for deployment. Overall, the ability to export models via the Clarifai SDKs empowers users with greater flexibility and control over their machine-learning workflows.
 
 <Tabs>
 <TabItem value="python" label="Python">

@@ -21,7 +21,7 @@ import CodeOutputMP from "!!raw-loader!../../../code_snippets/python-sdk/model_t
 
 # Clusterer
 
-**Learn how to train a clustering model using Clarifai Python SDK**
+**Learn how to train a clustering model using Clarifai SDKs**
 <hr />
 
 Clusterer models are algorithms used in machine learning and data analysis to group similar data points together into clusters or clusters. These models aim to find patterns and structures within datasets by organizing the data into groups based on similarities in their features. You can learn more about Clusterer  [here](https://docs.clarifai.com/portal-guide/model/model-types/clusterer).
@@ -107,7 +107,7 @@ You can update the model params to your need before initiating training.
 
 ## Initiate Model Training
 
-We can initiate the model training by calling the model.train() method. The Clarifai Python SDK also offers features like showing training status and saving training logs in a local file.
+We can initiate the model training by calling the model.train() method. The Clarifai SDKs also offers features like showing training status and saving training logs in a local file.
 
 :::note
 If the status code is 'MODEL-TRAINED', then the user can know the Model is Trained and ready to use._

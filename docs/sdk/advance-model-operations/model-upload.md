@@ -19,17 +19,17 @@ import CodeOutputEg3 from "!!raw-loader!../../../code_snippets/python-sdk/model-
 
 
 # Model Upload
-**Learn how to perform model upload using Clarifai Python SDK**
+**Learn how to perform model upload using Clarifai SDKs**
 <hr />
 
-Users can now upload their custom-built models into production using Clarifai Python SDK. The Clarifai Python SDK offers features like a command-line interface, easy implementation, and testing in Python to make the process of deploying the model easier.
+Users can now upload their custom-built models into production using Clarifai SDKs. The Clarifai SDKs offers features like a command-line interface, easy implementation, and testing in Python to make the process of deploying the model easier.
 
 Additionally, for serving configurations, the ```serving_backend``` section contains custom settings, including options for NVIDIA Triton. With Triton, users can leverage high-performance GPU computation for inference tasks. NVIDIA Triton Inference Server stands out as a powerful and versatile platform. It streamlines the deployment and execution of machine learning models for inference tasks, offering a professional solution for developers and data scientists seeking to bridge the gap between model development and real-world applications.  Its emphasis on framework flexibility, performance optimization, scalability, and ease of integration makes it a compelling choice for maximizing the impact of machine learning models across various industries.
 
 
 ## Prerequisites
 
-* Setting up the Clarifai Python SDK along with PAT. Refer to the installation and configuration with the PAT token [here](https://docs.clarifai.com/python-sdk/sdk-overview/).
+* Setting up the Clarifai SDKs along with PAT. Refer to the installation and configuration with the PAT token [here](https://docs.clarifai.com/python-sdk/sdk-overview/).
 
 :::note
 Guide to get your [PAT](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens)
@@ -40,7 +40,7 @@ Guide to get your [PAT](https://docs.clarifai.com/clarifai-basics/authentication
 clarifai create model --type text-to-text --working-dir your_model_dir
 cd your_model_dir
 ```
-The Clarifai Python SDK  will then create all the necessary files required for the deployment process inside  ```your_model_dir``` . 
+The Clarifai SDKs  will then create all the necessary files required for the deployment process inside  ```your_model_dir``` . 
 ```
 your_model_dir
 ├── clarifai_config.yaml

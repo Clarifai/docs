@@ -20,7 +20,7 @@ import CodeOutputRoot from "!!raw-loader!../../../code_snippets/python-sdk/infer
 
 # Advanced Inference Options
 
-**Learn how to perform advance inference operations using  Clarifai Python SDK**
+**Learn how to perform advance inference operations using  Clarifai SDKs**
 <hr />
 
 The inference API contains certain features that provides more flexibility while running predictions on inputs. This can help the end users to manipulate the outputs required for their tasks.
@@ -69,7 +69,7 @@ This feature is for Enteprise that use on-prem deployments. So the base_url can 
 </details>
 
 ## Adding Root Certificate
-A root certificate is considered as an extra level of security when communicating through API's. It's a self-signed certificate that verifies the legitimacy of other certificates. This establishes a chain of trust, ensuring you connect to real API's and your data is encrypted. The Clarifai Python SDK allows users to add their own root certificates to enhance data security and privacy.
+A root certificate is considered as an extra level of security when communicating through API's. It's a self-signed certificate that verifies the legitimacy of other certificates. This establishes a chain of trust, ensuring you connect to real API's and your data is encrypted. The Clarifai SDKs allows users to add their own root certificates to enhance data security and privacy.
 
 Visit [this](https://www.pandasecurity.com/en/mediacenter/what-is-a-root-certificate/) page to learn more about root certificates.
 

@@ -20,7 +20,7 @@ import CodeOutputImageText from "!!raw-loader!../../../code_snippets/python-sdk/
 
 # MultiModal as Input
 
-**Learn how to perform inference with multimodal inputs using Clarifai Python SDK**
+**Learn how to perform inference with multimodal inputs using Clarifai SDKs**
 <hr/>
 
 Multi-modal inputs refer to feeding multiple types of data into a single model for processing and analysis. These data types, or modalities, can be diverse, such as text, images, audio, video, sensor data, or any other form of structured or unstructured data.
