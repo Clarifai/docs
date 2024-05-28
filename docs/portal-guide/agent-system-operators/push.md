@@ -109,7 +109,7 @@ It allows you to classify images into a set of concepts.
  
 ![](/img/others/annotation_writer_4.png)
 
-Use the pop-up that appears in the right sidebar to search for the classification model you created and add it to the node. After selecting the model, we'll use the default settings for the other output configuration options for the purpose of this illustration.
+Use the pop-up that appears in the right sidebar to search for the classification model you created and add it to the node. After selecting the model, we'll use the default settings of the other output configuration options for the purpose of this illustration.
 
 **5.** Search for the `concept-thresholder` node in the left sidebar and drag it onto the workspace. Connect it to the `visual-classifier` node.
 
