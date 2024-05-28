@@ -37,7 +37,7 @@ import CodeOutputTextEmbedder from "!!raw-loader!../../../code_snippets/python-s
 
 # Text as Input
 
-**Learn how to perform inference with text as input using Clarifai Python SDK**
+**Learn how to perform inference with text as input using Clarifai SDKs**
 <hr />
 
 Unlock the potential of Clarifai's state-of-the-art text-based AI features, allowing you to elevate your applications with unparalleled accuracy and efficiency. Dive into a comprehensive suite of tools designed to simplify the integration of Clarifai's AI capabilities, empowering developers to unleash the potential of text-driven applications across various domains. Discover a robust and developer-friendly Python SDK that streamlines the incorporation of advanced text-based AI models, making it easier than ever to implement powerful natural language processing solutions.

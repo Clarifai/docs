@@ -21,7 +21,7 @@ import CodeOutputMP from "!!raw-loader!../../../code_snippets/python-sdk/model_t
 
 # Text To Text
 
-**Learn how to train a text-to-text model using Clarifai Python SDK**
+**Learn how to train a text-to-text model using Clarifai SDKs**
 <hr />
 
 Text-to-text models are a class of natural language processing (NLP) models designed to handle a wide range of text-based tasks using a unified architecture. Unlike traditional NLP models that are task-specific, text-to-text models are trained to map input text to output text, making them highly versatile and capable of performing various tasks such as translation, summarization, question answering, and text generation. You can learn more about Text-To-Text [here](https://docs.clarifai.com/portal-guide/model/model-types/text-to-text).
@@ -118,7 +118,7 @@ You can update the model params to your need before initiating training.
 
 ## Initiate Model Training
 
-We can initiate the model training by calling the model.train() method. The Clarifai Python SDK also offers features like showing training status and saving training logs in a local file.
+We can initiate the model training by calling the model.train() method. The Clarifai SDKs also offers features like showing training status and saving training logs in a local file.
 
 :::note
 If the status code is 'MODEL-TRAINED', then the user can know the Model is Trained and ready to use.

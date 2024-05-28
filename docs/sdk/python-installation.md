@@ -1,5 +1,5 @@
 ---
-description: Learn how to install the Clarifai Python SDK
+description: Learn how to install the Clarifai SDKs
 sidebar_position: 1
 ---
 
@@ -28,7 +28,7 @@ pip install -U clarifai
 ```
 
 :::note
-Install Clarifai Python SDK through  ```pip install "clarifai[all]"``` to use more optional libraries mentioned [here](https://github.com/Clarifai/clarifai-python/blob/491d5444f5ae5da234012022e1ba4e83739242a4/setup.py).
+Install Clarifai SDKs through  ```pip install "clarifai[all]"``` to use more optional libraries mentioned [here](https://github.com/Clarifai/clarifai-python/blob/491d5444f5ae5da234012022e1ba4e83739242a4/setup.py).
 :::
 
 ## Installation from Source (for Development)

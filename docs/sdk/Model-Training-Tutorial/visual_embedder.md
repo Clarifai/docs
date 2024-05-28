@@ -23,7 +23,7 @@ import CodeOutputMP from "!!raw-loader!../../../code_snippets/python-sdk/model_t
 
 # Visual Embedder
 
-**Learn how to train a visual embedding model using Clarifai Python SDK**
+**Learn how to train a visual embedding model using Clarifai SDKs**
 <hr />
 
 Visual embedder models are neural network architectures specifically designed to transform high-dimensional visual data, such as images or videos, into low-dimensional representations, called embeddings. You can learn more about Visual Embedder [here](https://docs.clarifai.com/portal-guide/model/model-types/visual-embedder).
@@ -124,7 +124,7 @@ You can update the model params to your need before initiating training.
 
 ## Initiate Model Training
 
-We can initiate the model training by calling the model.train() method. The Clarifai Python SDK also offers features like showing training status and saving training logs in a local file.
+We can initiate the model training by calling the model.train() method. The Clarifai SDKs also offers features like showing training status and saving training logs in a local file.
 
 
 :::note

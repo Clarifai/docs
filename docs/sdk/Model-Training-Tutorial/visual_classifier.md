@@ -32,7 +32,7 @@ import CodeOutputCMP from "!!raw-loader!../../../code_snippets/python-sdk/model_
 
 # Visual Classifier
 
-**Learn how to train a visual classifier using Clarifai Python SDK**
+**Learn how to train a visual classifier using Clarifai SDKs**
 <hr />
 
 The Visual Classifier is a powerful component of the Clarifai platform designed for efficient and accurate image recognition. Leveraging advanced machine learning algorithms, the Visual Classifier allows users to train custom models tailored to specific visual recognition tasks. You can learn more about Visual Classifier [here](https://docs.clarifai.com/portal-guide/model/model-types/visual-classifier).
@@ -139,7 +139,7 @@ You can edit the YAML file according to our needs and then load the files again 
 
 ## Initiate Model Training
 
-We can initiate the model training by passing the YAML configuration file as parameter to the model.train(). The Clarifai Python SDK also offers features like showing training status and saving training logs in a local file.
+We can initiate the model training by passing the YAML configuration file as parameter to the model.train(). The Clarifai SDKs also offers features like showing training status and saving training logs in a local file.
 
 :::note
 If the status code is "MODEL-TRAINED", then the user can know the model is Trained and ready to use.
@@ -198,7 +198,7 @@ Before evaluating with a test dataset, we have to first upload the dataset using
     <CodeBlock className="language-text">{CodeOutputTeEv}</CodeBlock>
 </details>
 
-Finally let's compare the results from  multiple datasets using ```EvalResultCompare``` feature from Clarifai Python SDK to get a better understanding of the model's performance.
+Finally let's compare the results from  multiple datasets using ```EvalResultCompare``` feature from Clarifai SDKs to get a better understanding of the model's performance.
 
 <Tabs>
 <TabItem value="python" label="Python">

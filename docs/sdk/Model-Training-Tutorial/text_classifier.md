@@ -28,7 +28,7 @@ import CodeOutputCMP from "!!raw-loader!../../../code_snippets/python-sdk/model_
 
 # Text Classifier
 
-**Learn how to train a text classification model using Clarifai Python SDK**
+**Learn how to train a text classification model using Clarifai SDKs**
 <hr />
 
 A text classifier is a machine learning model designed to automatically categorize or classify text documents into predefined categories or labels. These categories could be anything from sentiment analysis (positive, negative, neutral) to topic classification (sports, politics, technology). You can learn more about Text Classifier [here](https://docs.clarifai.com/portal-guide/model/model-types/text-classifier).
@@ -128,7 +128,7 @@ You can update the model params to your need before initiating training.
 
 ## Initiate Model Training 
 
-We can initiate the model training by calling the model.train() method. The Clarifai Python SDK also offers features like showing training status and saving training logs in a local file.
+We can initiate the model training by calling the model.train() method. The Clarifai SDKs also offers features like showing training status and saving training logs in a local file.
 
 
 :::note
@@ -187,7 +187,7 @@ Before evaluating with a test dataset, we have to first upload the dataset using
     <CodeBlock className="language-text">{CodeOutputTeEv}</CodeBlock>
 </details>
 
-Finally let's compare the results from  multiple datasets using ```EvalResultCompare``` feature from Clarifai Python SDK to get a better understanding of the model's performance.
+Finally let's compare the results from  multiple datasets using ```EvalResultCompare``` feature from Clarifai SDKs to get a better understanding of the model's performance.
 
 <Tabs>
 <TabItem value="python" label="Python">

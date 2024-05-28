@@ -38,15 +38,15 @@ import CodeOutputListConcept from "!!raw-loader!../../code_snippets/python-sdk/c
 
 # Creating your AI Apps
 
-**Learn how to interact with apps using Clarifai Python SDK**
+**Learn how to interact with apps using Clarifai SDKs**
 <hr />
 
-Unlock the power of artificial intelligence by seamlessly integrating Clarifai's Python SDK into your application development process. With the Clarifai Python SDK, creating intelligent and visually aware applications has never been more accessible. Empower your apps with cutting-edge AI capabilities, from image and video recognition to natural language processing. Our Python SDK provides a user-friendly interface, allowing developers to harness the full potential of Clarifai's state-of-the-art models effortlessly.
+Unlock the power of artificial intelligence by seamlessly integrating Clarifai SDKs into your application development process. With the Clarifai SDKs, creating intelligent and visually aware applications has never been more accessible. Empower your apps with cutting-edge AI capabilities, from image and video recognition to natural language processing. Our Python SDK provides a user-friendly interface, allowing developers to harness the full potential of Clarifai's state-of-the-art models effortlessly.
 
 
 ## Create App
 
-Leverage the Clarifai Python SDK to seamlessly generate a new application, complete with a distinct and unique app ID. The API empowers you to effortlessly create apps tailored to your specific requirements, unlocking the potential for innovative and personalized experiences. Dive into the simplicity of app creation with the Clarifai Python SDK
+Leverage the Clarifai SDKs to seamlessly generate a new application, complete with a distinct and unique app ID. The API empowers you to effortlessly create apps tailored to your specific requirements, unlocking the potential for innovative and personalized experiences.
 
 Visit this [page](https://docs.clarifai.com/clarifai-basics/applications/) for more information.
 
@@ -86,7 +86,7 @@ Visit this [page](https://docs.clarifai.com/clarifai-basics/applications/applica
 
 ## Listing Apps
 
-The Clarifai Python SDK provides a convenient API to retrieve a list of all the apps available in your account. The list_apps function is a powerful tool that not only fetches the information but also supports essential features such as pagination for optimal data display.The use of parameters like `page_no` and `per_page` empowers you to customize the retrieval process based on your specific requirements.
+The Clarifai SDKs provides a convenient API to retrieve a list of all the apps available in your account. The list_apps function is a powerful tool that not only fetches the information but also supports essential features such as pagination for optimal data display.The use of parameters like `page_no` and `per_page` empowers you to customize the retrieval process based on your specific requirements.
 
 Visit this [page](https://docs.clarifai.com/api-guide/advanced-topics/pagination) for more information.
 
@@ -108,7 +108,7 @@ Visit this [page](https://docs.clarifai.com/api-guide/advanced-topics/pagination
 
 ## Delete App
 
-In the Clarifai Python SDK, the "Delete App" functionality empowers users to seamlessly remove an app from their account by specifying the unique App ID. This API-driven approach simplifies the app management process, allowing for efficient deletion of redundant or unused applications.
+In the Clarifai SDKs, the "Delete App" functionality empowers users to seamlessly remove an app from their account by specifying the unique App ID. This API-driven approach simplifies the app management process, allowing for efficient deletion of redundant or unused applications.
 
 :::caution
 
@@ -136,7 +136,7 @@ Be certain that you want to delete a particular app as the operation cannot be u
                                                                                                         
 ## Create Concept
 
-With the Clarifai Python SDK, you have the capability to effortlessly create concepts by uploading input data to your app, accompanied by a specified label. This process automates the creation of concepts, streamlining the integration of new ideas or entities into your application.
+With the Clarifai SDKs, you have the capability to effortlessly create concepts by uploading input data to your app, accompanied by a specified label. This process automates the creation of concepts, streamlining the integration of new ideas or entities into your application.
 
 Visit this [page](https://docs.clarifai.com/portal-guide/concepts/create-get-update-delete) for more information.
 
@@ -160,7 +160,7 @@ Visit this [page](https://docs.clarifai.com/portal-guide/concepts/create-get-upd
 
 ## List concept 
 
-The List Concepts feature in the Clarifai Python SDK empowers users to retrieve a comprehensive list of all available concepts within their application. With the list_concepts function, users can seamlessly navigate through large sets of concepts by leveraging built-in pagination functionalities. This enables efficient information display while providing flexibility through parameters such as `page_no` and items `per_page`.
+The List Concepts feature in the Clarifai SDKs  empowers users to retrieve a comprehensive list of all available concepts within their application. With the list_concepts function, users can seamlessly navigate through large sets of concepts by leveraging built-in pagination functionalities. This enables efficient information display while providing flexibility through parameters such as `page_no` and items `per_page`.
 
 Visit this [page](https://docs.clarifai.com/api-guide/advanced-topics/pagination) for more information.
 

@@ -29,7 +29,7 @@ import CodeOutputS3 from "!!raw-loader!../../../code_snippets/python-sdk/model_t
 
 # Visual Segmenter
 
-**Learn how to train a visual segmenter model using Clarifai Python SDK**
+**Learn how to train a visual segmenter model using Clarifai SDKs**
 <hr />
 
 A visual segmenter model is used in computer vision to partition images or videos into distinct regions or objects. Through sophisticated techniques like pixel-based analysis, region grouping, edge detection, or deep learning, a visual segmenter can identify boundaries and patterns within visual data, effectively dividing the image into meaningful segments. You can learn more about Visual Segmenter [here](https://docs.clarifai.com/portal-guide/model/model-types/visual-segmenter).
@@ -144,7 +144,7 @@ Now we will create a dataset version and then invoke the model.update_params() m
 
 ## Initiate Model Training
 
-We can initiate the model training by calling the model.train() method. The Clarifai Python SDK also offers features like showing training status and saving training logs in a local file.
+We can initiate the model training by calling the model.train() method. The Clarifai SDKs also offers features like showing training status and saving training logs in a local file.
 
 
 
