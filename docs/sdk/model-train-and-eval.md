@@ -15,12 +15,12 @@ import CodeOutputEval2 from "!!raw-loader!../../code_snippets/python-sdk/model-t
 
 
 # Model Training And Evaluation Overview
-**Get a brief overview about model training and evaluation using Clarifai SDKs**
+**Get a brief overview about model training and evaluation using Clarifai Python SDK**
 <hr />
 
 ## Model Training 
 
-Model training is the process of feeding data to an algorithm and iteratively adjusting its internal parameters to enable it to make accurate predictions on unseen data. After defining the model architecture, you can initiate the training process using the Clarifai SDKs. During training, the SDK provides valuable feedback on the model's progress, allowing you to monitor metrics such as accuracy and loss. The structure followed during model training is app creation -> data upload -> model creation -> setting training configuration -> model training.
+Model training is the process of feeding data to an algorithm and iteratively adjusting its internal parameters to enable it to make accurate predictions on unseen data. After defining the model architecture, you can initiate the training process using the Clarifai Python SDK. During training, the SDK provides valuable feedback on the model's progress, allowing you to monitor metrics such as accuracy and loss. The structure followed during model training is app creation -> data upload -> model creation -> setting training configuration -> model training.
 
 Click [here](https://docs.clarifai.com/python-sdk/Model-Training-Tutorial/) to learn more about model training.
 
@@ -39,7 +39,7 @@ Clone [this](https://github.com/Clarifai/examples.git ) repository to get the da
 
 ## Model Evaluation
 
-Model evaluation is the process by which we monitor the model's performance on the dataset. The Clarifai SDKs allows you to evaluate the model in two ways. Firstly, you can receive evaluation metrics for each dataset split separately.  The `Mode.evaluate()` method will run the evaluation on the model by using the dataset passed as a parameter. Each evaluation is marked by `eval_id`. This allows users to run multiple evaluations using different datasets.
+Model evaluation is the process by which we monitor the model's performance on the dataset. The Clarifai Python SDK allows you to evaluate the model in two ways. Firstly, you can receive evaluation metrics for each dataset split separately.  The `Mode.evaluate()` method will run the evaluation on the model by using the dataset passed as a parameter. Each evaluation is marked by `eval_id`. This allows users to run multiple evaluations using different datasets.
 
 :::info
 Evaluation is currently supported for the following model types: Embedding Classifier, Text Classifier, Visual Classifier, and Visual Detector.
