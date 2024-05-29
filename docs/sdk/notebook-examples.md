@@ -5,7 +5,7 @@ sidebar_position: 10
 
 # Python SDK Notebook Examples
 
-**Learn how to use the Clarifai SDKs**
+**Learn how to use the Clarifai Python SDK**
 <hr />
 
 Here are comprehensive step-by-step walkthroughs within Jupyter or Colab notebooks that showcase how to harness the power of the Clarifai SDKs.
