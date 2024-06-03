@@ -28,7 +28,8 @@ const config = {
           //editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',         
           //this one also works--editUrl: 'https://github.com/Clarifai/docs/blob/main/',
           editUrl: ({versionDocsDirPath, docPath}) =>
-            `https://github.com/Clarifai/docs/blob/main/${versionDocsDirPath}/${docPath}`,          
+            `https://github.com/Clarifai/docs/blob/main/${versionDocsDirPath}/${docPath}`,
+          docItemComponent: "@theme/ApiItem" // add @theme/ApiItem here
         },
         blog: false,
         theme: {
@@ -309,7 +310,24 @@ const config = {
         },
       },
     ],
+    [
+      "docusaurus-plugin-openapi-docs",
+      {
+        id: "openapi",
+        docsPluginId: "classic", // e.g. "classic" or the plugin-content-docs id
+        config: {
+          clarifai: { // "petstore" is considered the <id> that you will reference in the CLI
+            specPath: "clarifai-openapi.yml", // path or URL to the OpenAPI spec
+            outputDir: "docs/api-reference", // output directory for generated *.mdx and sidebar.js files
+            sidebarOptions: {
+              groupPathsBy: "tag", // generate a sidebar.js slice that groups operations by tag
+            },
+          }
+        }
+      },
+    ]
   ],
+  themes: ["docusaurus-theme-openapi-docs"] // exports ApiItem and ApiDemoPanel
 };
 
 module.exports = config;
