@@ -34,7 +34,7 @@ This template is a customized variant of the ResNet-50 architecture for multimod
 
 :::info
 
-We currently support MMClassification v1.4.4. 
+We currently support MMClassification v2.1.0. 
 
 :::
 

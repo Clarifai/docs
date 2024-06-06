@@ -11,17 +11,6 @@ keywords: [visual detection templates, deep learning visual detection, AI visual
 
 Detection templates make it easy to build models that can identify objects within a region of your images or videos. Detection models return concepts and bounding boxes.
 
-Each template comes with its own hyperparameters, which you can tune to influence “how” your model learns. With hyperparameters, you can customize and fine-tune a template to suit your specific tasks and achieve better performance.
-
-:::tip
-
-You can customize most hyperparameters by specifying the following values:
-
-- `minimum`—the minimum value a given parameter can take.
-- `maximum`—the maximum value a given parameter can take.
-- `step`—determines how much you can increment or decrement the minimum or maximum value in a single click/change.
-
-:::
 
 ## MMDetection_YoloF
 
@@ -43,7 +32,7 @@ With its robust architecture and pretrained weights, **MMDetection_YoloF** provi
 
 The **MMDetection_YoloF** template supports the following hyperparameters:
 
-- **Image size**—This is the image size for training and inference. When a single value is specified, it typically means that the images will be resized so that the minimum side (either width or height) of each image matches that value. On the other hand, when more than one value is provided, and it is combined with "keep_aspect_ratio=False", it means that the images will be resized to the exact width and height specified.
+
 - **Max aspect_ratio**—When "keep_aspect_ratio" is set to True, it is used to control the maximum length of the longer side of an image relative to the shorter side during image resizing. The minimum value it supports for customization is `1.0`, while the maximum is `5.0`.
 - **Keep aspect_ratio**—This is a boolean that determines whether to keep the original aspect ratio of the image during resizing. If set to True (default, recommended), the aspect ratio of the image will be preserved when resizing. The image will be resized, maintaining the same aspect ratio, to fit within the desired dimensions. If set to False, non-aspect-preserving resizes will be used. In this case, the image may be distorted as it is resized to exactly match the specified dimensions, ignoring the original aspect ratio.
 - **Batch size**—The number of images used during training. Increased batch size allows for a better approximation of gradient over those samples. Batches allow for stochastic gradient descent, by choosing a random set of X images for each training update. You may want to increase the batch size if the model is large and takes a long time to train. You may also want to increase the batch size if your total number of model concepts is larger than the batch size (you may want to increase it to around 2x the category count). The minimum value it supports for customization is `1`, while the maximum is `32`—with an incremental or decremental step of `1`. 
@@ -65,7 +54,6 @@ By leveraging the MMDetection framework, users can take advantage of its data pr
 
 The **MMDetection_SSD** template supports the following hyperparameters:
 
-- **Image size**—This is the image size for training and inference. Images are scaled for efficient processing, and a lower number will take up less memory and run faster. A higher number will have more pixel information to train on and will increase accuracy. 
 - **Batch size**—The number of images used during training. Increased batch size allows for a better approximation of gradient over those samples. Batches allow for stochastic gradient descent, by choosing a random set of X images for each training update. You may want to increase the batch size if the model is large and takes a long time to train. You may also want to increase the batch size if your total number of model concepts is larger than the batch size (you may want to increase it to around 2x the category count). The minimum value it supports for customization is `1`, while the maximum is `32`—with an incremental or decremental step of `1`. 
 - **Num epochs**—This is the total number of epochs to train for. An epoch is defined as one-pass over the entire dataset. If you increase it, the model will take longer to train, but it could make the model more robust. The minimum value it supports for customization is `1`, while the maximum is `200`—with an incremental or decremental step of `1`.  
 - **Per item_lrate**—This is the initial learning rate per item; it's the rate that the model weights are changed per item. The **lrate** (learning rate) is a tuning parameter in an optimization algorithm that determines the step size at each iteration while moving toward a minimum of a loss function. The overall learning rate (per step) is calculated by `lrate = batch_size * per_item_lrate`. The minimum value it supports for customization is `0.0`.
@@ -85,7 +73,6 @@ The Faster R-CNN algorithm has been proven to achieve excellent performance in t
 
 The **MMDetection_FasterRCNN** template supports the following hyperparameters:
 
-- **Image size**—This is the image size for training and inference. When a single value is specified, it typically means that the images will be resized so that the minimum side (either width or height) of each image matches that value. On the other hand, when more than one value is provided, it means that the images will be resized to the exact width and height specified.
 - **Random resize_lower**—This is the lower limit for the random resizing. It means that during training, the input images will be randomly resized to a size equal to or larger than this lower limit. It uses the same one or two element format as `image_size`. And if it's empty, it uses `image_size`.  If the original image size is smaller than the lower limit, it will not be resized, and the original size will be used.
 - **Random resize_upper**—This is the upper limit for the random resizing. It means that during training, the input images will be randomly resized to a size equal to or smaller than this upper limit. It uses the same one or two element format as `image_size`. And if it's empty, it uses `image_size`. If the original image size is already smaller than the upper limit, it will not be resized, and the original size will be used.
 - **Batch size**—The number of images used during training. Increased batch size allows for a better approximation of gradient over those samples. Batches allow for stochastic gradient descent, by choosing a random set of X images for each training update. You may want to increase the batch size if the model is large and takes a long time to train. You may also want to increase the batch size if your total number of model concepts is larger than the batch size (you may want to increase it to around 2x the category count). The minimum value it supports for customization is `1`, while the maximum is `32`—with an incremental or decremental step of `1`.  
@@ -109,7 +96,6 @@ By combining the strengths of the RetinaNet framework, the powerful InceptionV4 
 
 The **Clarifai_InceptionV4** template supports the following hyperparameters:
 
-- **Image size**—This is the input image size, specifically the minimum side dimension. Images are scaled for efficient processing, and a lower number will take up less memory and run faster. A higher number will have more pixel information to train on and will increase accuracy. The valid choices you can provide are: `320, 512, or 800`.
 - **Batch size**—The number of images used during training. Increased batch size allows for a better approximation of gradient over those samples. Batches allow for stochastic gradient descent, by choosing a random set of X images for each training update. You may want to increase the batch size if the model is large and takes a long time to train. You may also want to increase the batch size if your total number of model concepts is larger than the batch size (you may want to increase it to around 2x the category count). The minimum value it supports for customization is `1`, while the maximum is `16`—with an incremental or decremental step of `1`. 
 - **Num epochs**—This is the total number of epochs to train for. An epoch is defined as one-pass over the entire dataset. If you increase it, the model will take longer to train, but it could make the model more robust. The minimum value it supports for customization is `1`, while the maximum is `200`—with an incremental or decremental step of `1`.  
 - **Use perclass_regression**—This is a boolean that specifies whether to use separate coordinate regressors for each class, or one set for all classes. Per-class regression refers to the process of using separate box coordinate regressors for each class in the dataset. This means that for each object class, there is a dedicated set of regression parameters that are learned during the training process to predict the bounding box coordinates (e.g., x, y, width, and height) specific to that class.
@@ -127,10 +113,47 @@ The model can be pre-trained on either the COCO (Common Objects in Context) data
 
 The **Clarifai_InceptionV2** template supports the following hyperparameters:
 
-- **Image size**—This is the input image size, specifically the minimum side dimension. Images are scaled for efficient processing, and a lower number will take up less memory and run faster. A higher number will have more pixel information to train on and will increase accuracy. The valid choices you can provide are: `320, 512, or 800`.
 - **Batch size**—The number of images used during training. Increased batch size allows for a better approximation of gradient over those samples. Batches allow for stochastic gradient descent, by choosing a random set of X images for each training update. You may want to increase the batch size if the model is large and takes a long time to train. You may also want to increase the batch size if your total number of model concepts is larger than the batch size (you may want to increase it to around 2x the category count). The minimum value it supports for customization is `1`, while the maximum is `16`—with an incremental or decremental step of `1`. 
 - **Num epochs**—This is the total number of epochs to train for. An epoch is defined as one-pass over the entire dataset. If you increase it, the model will take longer to train, but it could make the model more robust. The minimum value it supports for customization is `1`, while the maximum is `200`—with an incremental or decremental step of `1`. 
 - **Use perclass_regression**—This is a boolean that specifies whether to use separate coordinate regressors for each class, or one set for all classes. Per-class regression refers to the process of using separate box coordinate regressors for each class in the dataset. This means that for each object class, there is a dedicated set of regression parameters that are learned during the training process to predict the bounding box coordinates (e.g., x, y, width, and height) specific to that class.
 - **Anchor ratios**—Anchor boxes are predefined bounding boxes of different shapes and sizes that act as reference templates for detecting objects of various scales and aspect ratios in an image. The anchor ratios refer to the width (w) to height (h) ratios of these anchor boxes. They determine the shape of the anchor boxes, allowing the object detector to handle objects with different aspect ratios effectively.
 - **Use focal_loss**—This is a boolean that specifies whether to use focal loss during training or Online Hard Example Mining (OHEM). Focal loss is a modification of the standard cross-entropy loss that addresses the issue of class imbalance during training. It introduces a modulating factor to downweight the contribution of easy examples while focusing more on hard examples. OHEM is a technique used to alleviate the problem of class imbalance by focusing on challenging samples during training. Instead of using all samples in a batch, OHEM selects the hardest examples (e.g., the ones with the highest loss) and only uses those for backpropagation. By doing so, it gives more importance to the difficult examples, which can lead to more effective learning, especially when dealing with a large number of easy background samples.
 - **Per item_lrate**—This is the initial learning rate per item; it's the rate that the model weights are changed per item. The **lrate** (learning rate) is a tuning parameter in an optimization algorithm that determines the step size at each iteration while moving toward a minimum of a loss function. The overall learning rate (per step) is calculated by `lrate = batch_size * per_item_lrate`. The minimum value it supports for customization is `0.0`.
+
+<!--
+## Hyperparameters
+
+Each template comes with its own hyperparameters, which you can tune to influence “how” your model learns. With hyperparameters, you can customize and fine-tune a template to suit your specific tasks and achieve better performance.
+
+:::warning Customize values
+
+You can customize most hyperparameters by specifying the following values:
+
+- `minimum` — The minimum value a given parameter can take;
+- `maximum` — The maximum value a given parameter can take;
+- `step` — Determines how much you can increment or decrement the minimum or maximum value in a single click/change.
+
+:::
+
+
+### Image Size
+
+The image size hyperparameter defines the dimensions of the input images used for training and inference. It is crucial because it affects the model's performance, memory consumption, and computational requirements.
+
+- **Lower values:** Use less memory and enable faster processing but might reduce detection accuracy due to fewer pixels.
+- **Higher values:** Provide more pixel information, potentially increasing detection accuracy but require more memory and computational power.
+
+:::tip
+
+Choosing the appropriate image size involves balancing the need for detailed image information with the constraints of memory and computational resources. Selecting the right size can enhance model performance and detection accuracy.
+
+:::
+
+You can specify either a single value or multiple values:
+
+- **Single value:** When a single value is specified, images are resized so that the minimum side (either width or height) matches that value. The aspect ratio is maintained by adjusting the other dimension proportionally.
+- **Multiple values:** When more than one value is specified, and combined with the "keep_aspect_ratio=False" hyperparameter (if supported by the template), images are resized to the exact width and height specified, regardless of the original aspect ratio.
+
+For example, the valid choices for the image size hyperparameter you can specify for the Clarifai_InceptionV4 template are 320, 512, or 800.
+
+-->
