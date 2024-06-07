@@ -1,0 +1,13 @@
+apis:
+  filter:
+    root: https://api.clarifai.com/api-doc/openapi.json
+    decorators:
+      remove-unused-components: on
+      filter-in:
+        property: operationId
+        value:
+          [
+            V2_ListAnnotationFilters2,
+            V2_GetAnnotationFilter2,
+            V2_ListAnnotations2,
+          ]

@@ -46,6 +46,26 @@ const config = {
         },
       }),
     ],
+    // Redocusaurus config
+    [
+      'redocusaurus',
+      {
+        // Plugin Options for loading OpenAPI files
+        specs: [
+          // // Pass it a path to a local OpenAPI YAML file
+          // {
+          //   // Redocusaurus will automatically bundle your spec into a single file during the build
+          //   spec: 'openapi/index.yaml',
+          //   route: '/api/',
+          // },
+          // You can also pass it a OpenAPI spec URL
+          {
+            spec: 'clarifai.yml',
+            route: '/api-reference/',
+          },
+        ],
+      },
+    ],
   ],
 
   themeConfig:
@@ -141,7 +161,7 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-        additionalLanguages: ['php', 'java', 'csharp', 'objectivec', 'bash'],
+        additionalLanguages: ['php', 'java', 'csharp', 'objectivec', 'bash', 'scala'],
       },
     }),
     plugins: [
