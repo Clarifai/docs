@@ -68,6 +68,11 @@ const config = {
         },
         items: [
           {
+            href: '/api-reference',
+            label: 'API Reference',
+            position: 'left',
+          },
+          {
             href: 'https://documenter.getpostman.com/view/30622694/2s9YkuZdro',
             label: 'Postman',
             position: 'right',

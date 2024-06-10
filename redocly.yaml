@@ -1,0 +1,3 @@
+apis:
+  filter:
+    root: https://api.clarifai.com/api-doc/openapi.json

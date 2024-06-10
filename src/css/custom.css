@@ -125,3 +125,13 @@ header .join__slack:hover {
   display: flex;
   align-items: center;
 }
+
+#swagger-ui {
+  background-color: white;
+  position: fixed;
+  top: 57px;
+  left: 0;
+  height: calc(100vh - 57px);
+  width: 100vw;
+  overflow: scroll;
+}
