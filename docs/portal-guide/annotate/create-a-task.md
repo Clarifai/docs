@@ -3,7 +3,7 @@ description: Manage and delegate your labeling work with tasks
 sidebar_position: 2
 ---
 
-# Create a Task
+# Create a Labeling Task
 
 **Manage and delegate your labeling work with tasks**
 
