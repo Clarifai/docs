@@ -4,7 +4,7 @@ description: >-
 sidebar_position: 5
 ---
 
-# AI-Assisted Labeling
+# AI-Assisted Labeling — Input-Viewer
 
 **Generate annotations for your inputs automatically**
 <hr />
