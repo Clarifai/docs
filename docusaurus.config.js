@@ -64,6 +64,7 @@ const config = {
             route: '/api-reference/',
           },
         ],
+        config: "redoc-config.yml"
       },
     ],
   ],

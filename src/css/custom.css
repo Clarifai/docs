@@ -125,3 +125,16 @@ header .join__slack:hover {
   display: flex;
   align-items: center;
 }
+
+/* .redocusaurus {
+  position: fixed;
+  top: 57px;
+  left: 0;
+  height: calc(100vh - 57px);
+  width: 100vw;
+  background-color: var(--ifm-background-color);
+}
+
+.api-content {
+  overflow: scroll;
+} */
