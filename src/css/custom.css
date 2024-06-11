@@ -126,7 +126,7 @@ header .join__slack:hover {
   align-items: center;
 }
 
-#swagger-ui {
+#redocly-ui {
   background-color: white;
   position: fixed;
   top: 57px;
@@ -134,4 +134,9 @@ header .join__slack:hover {
   height: calc(100vh - 57px);
   width: 100vw;
   overflow: scroll;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+#redocly-ui::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
 }

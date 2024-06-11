@@ -1504,39 +1504,6 @@
         ]
       }
     },
-    "/v2/concepts/mappings/jobs": {
-      "post": {
-        "summary": "Start concept mapping jobs.",
-        "operationId": "V2_PostConceptMappingJobs2",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/apiMultiConceptMappingJobResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/googlerpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/apiPostConceptMappingJobsRequest"
-            }
-          }
-        ],
-        "tags": [
-          "V2"
-        ]
-      }
-    },
     "/v2/concepts/searches": {
       "post": {
         "summary": "Search over the concepts to find one or more you're looking for.\nThis leverage the \"body\" parameter because we also have page and\nper_page as url query param variables in this request.",
@@ -5668,14 +5635,7 @@
                   "type": "string"
                 },
                 "inputs": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/apiInput"
-                  }
-                },
-                "model": {
-                  "$ref": "#/definitions/apiModel",
-                  "description": "This allows you to specify config options for the model such as\nthe language which appear's in the model's output_info."
+                  "type": "array"
                 },
                 "runnerSelector": {
                   "$ref": "#/definitions/apiRunnerSelector",
@@ -7060,14 +7020,7 @@
                   "$ref": "#/definitions/apiUserAppIDSet"
                 },
                 "inputs": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/apiInput"
-                  }
-                },
-                "model": {
-                  "$ref": "#/definitions/apiModel",
-                  "description": "This allows you to specify config options for the model such as\nthe language which appear's in the model's output_info."
+                  "type": "array"
                 },
                 "runnerSelector": {
                   "$ref": "#/definitions/apiRunnerSelector",
@@ -7406,7 +7359,7 @@
         "parameters": [
           {
             "name": "body",
-            "description": " (streaming inputs)",
+            "description": "PostRunnerItemOutputsRequest\nThis is the message that runners send to the API to communicate.\nAt the end of the request it will have the RunnerItemOutput filled in\nwith results of the workload the runner is processing. Other messages\nfrom the runner use this same proto to communicate over to the API\nand do handshakes. (streaming inputs)",
             "in": "body",
             "required": true,
             "schema": {
@@ -7880,7 +7833,7 @@
           },
           {
             "name": "additionalFields",
-            "description": "(optional URL parameter) List of additional fields to be included in the response.\nCurrently supported additional fields:\n- all\n- worker.users\n- review.users\n- metrics.work.inputs_count_estimated\n- metrics.work.inputs_percent_estimated\n- metrics.review.inputs_count_estimated\n- metrics.review.inputs_percent_estimated",
+            "description": "(optional URL parameter) List of additional fields to be included in the response.\nCurrently supported additional fields:\n- all\n- worker.users\n- review.users\n- metrics.input_source.inputs_count_estimated\n- metrics.work.inputs_count_estimated\n- metrics.work.inputs_percent_estimated\n- metrics.review.inputs_count_estimated\n- metrics.review.inputs_percent_estimated",
             "in": "query",
             "required": false,
             "type": "array",
@@ -8042,7 +7995,7 @@
           },
           {
             "name": "additionalFields",
-            "description": "(optional URL parameter) List of additional fields to be included in the response.\nCurrently supported additional fields:\n- all\n- worker.users\n- review.users\n- metrics.work.inputs_count_estimated\n- metrics.work.inputs_percent_estimated\n- metrics.review.inputs_count_estimated\n- metrics.review.inputs_percent_estimated",
+            "description": "(optional URL parameter) List of additional fields to be included in the response.\nCurrently supported additional fields:\n- all\n- worker.users\n- review.users\n- metrics.input_source.inputs_count_estimated\n- metrics.work.inputs_count_estimated\n- metrics.work.inputs_percent_estimated\n- metrics.review.inputs_count_estimated\n- metrics.review.inputs_percent_estimated",
             "in": "query",
             "required": false,
             "type": "array",
@@ -8624,14 +8577,7 @@
                   "type": "string"
                 },
                 "inputs": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/apiInput"
-                  }
-                },
-                "model": {
-                  "$ref": "#/definitions/apiModel",
-                  "description": "This allows you to specify config options for the model such as\nthe language which appear's in the model's output_info."
+                  "type": "array"
                 },
                 "runnerSelector": {
                   "type": "object",
@@ -8657,10 +8603,6 @@
                             "$ref": "#/definitions/apiNodepool"
                           },
                           "title": "You can configure different autoscaling per nodepool(s).\nThese nodepools have to be also owned by the same user_id/org as this deployment.\nIf there is more than one nodepool we use the model's ComputeInfo to match\nwith what the nodepool provides to decide which one can handle it combined with the\nNodepoolRank below. Note: even within a single nodepool if it is heterogeneous then\nwe need a way to rank scheduling choices when we don't know how to decide (like a model\nsupports"
-                        },
-                        "model": {
-                          "$ref": "#/definitions/apiModel",
-                          "title": "Model"
                         },
                         "workflow": {
                           "$ref": "#/definitions/apiWorkflow",
@@ -9446,9 +9388,6 @@
                 },
                 "annotationFilters": {
                   "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/apiAnnotationFilter"
-                  },
                   "description": "List of annotation filters that are requested to be added."
                 }
               },
@@ -9504,9 +9443,6 @@
                 },
                 "annotationFilters": {
                   "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/apiAnnotationFilter"
-                  },
                   "description": "List of annotation filters that are requested to be updated."
                 },
                 "action": {
@@ -9805,10 +9741,7 @@
                   "description": "Common message to identify the app in a url endpoint."
                 },
                 "annotations": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/clarifaiapiAnnotation"
-                  }
+                  "type": "array"
                 }
               },
               "title": "PostAnnotationsRequest"
@@ -9862,10 +9795,7 @@
                   "description": "Common message to identify the app in a url endpoint."
                 },
                 "annotations": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/clarifaiapiAnnotation"
-                  }
+                  "type": "array"
                 },
                 "action": {
                   "type": "string",
@@ -10102,10 +10032,6 @@
                 "searchToEval": {
                   "$ref": "#/definitions/apiSearch",
                   "title": "The set we are evaluating"
-                },
-                "data": {
-                  "$ref": "#/definitions/apiData",
-                  "title": "List of concepts to evaluate are expected to be in data.concepts\nIf nil, then all app concepts are used"
                 },
                 "evaluationType": {
                   "$ref": "#/definitions/apiEvaluationType",
@@ -11340,67 +11266,6 @@
                 }
               },
               "title": "POST new knowledge graphs"
-            }
-          }
-        ],
-        "tags": [
-          "V2"
-        ]
-      }
-    },
-    "/v2/users/{userAppId.userId}/apps/{userAppId.appId}/concepts/mappings/jobs": {
-      "post": {
-        "summary": "Start concept mapping jobs.",
-        "operationId": "V2_PostConceptMappingJobs",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/apiMultiConceptMappingJobResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/googlerpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "userAppId.userId",
-            "description": "Note user_id 'me' is reserved - it is the alias for the id of authorized user",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "userAppId.appId",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "userAppId": {
-                  "type": "object",
-                  "description": "The user_id and app_id information.",
-                  "title": "The user_id and app_id information."
-                },
-                "conceptMappingJobs": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/apiConceptMappingJob"
-                  },
-                  "title": "The concept mapping jobs that are being started"
-                }
-              },
-              "title": "Start concept mapping jobs"
             }
           }
         ],
@@ -14221,9 +14086,6 @@
                 },
                 "inputs": {
                   "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/apiInput"
-                  },
                   "title": "List of inputs to post.\nFor each input, the following fields are used:\n* id\n* data\n* dataset_ids"
                 },
                 "inputsAddJobId": {
@@ -14287,9 +14149,6 @@
                 },
                 "inputs": {
                   "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/apiInput"
-                  },
                   "title": "List of inputs to patch.\nInputs are identified by id field.\nFor each input, the following fields are patchable:\n* data"
                 },
                 "action": {
@@ -16215,15 +16074,8 @@
                   "type": "object",
                   "description": "Common message to identify the app in a url endpoint."
                 },
-                "model": {
-                  "$ref": "#/definitions/apiModel",
-                  "description": "NOTE: inconsistent since \"model\" is not plural, please use \"models\" below.\nPreviously you could only create one model at a time.\nWe still support this but you should pass it as models=[model] so\nthat this endpoint is consistent with the rest of our API."
-                },
                 "models": {
                   "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/apiModel"
-                  },
                   "description": "This allows you to create one or more model by posting it to the API."
                 }
               },
@@ -16278,10 +16130,7 @@
                   "description": "Common message to identify the app in a url endpoint."
                 },
                 "models": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/apiModel"
-                  }
+                  "type": "array"
                 },
                 "action": {
                   "type": "string",
@@ -17046,14 +16895,7 @@
                   "type": "string"
                 },
                 "inputs": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/apiInput"
-                  }
-                },
-                "model": {
-                  "$ref": "#/definitions/apiModel",
-                  "description": "This allows you to specify config options for the model such as\nthe language which appear's in the model's output_info."
+                  "type": "array"
                 },
                 "runnerSelector": {
                   "$ref": "#/definitions/apiRunnerSelector",
@@ -17131,14 +16973,7 @@
                   "type": "string"
                 },
                 "inputs": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/apiInput"
-                  }
-                },
-                "model": {
-                  "$ref": "#/definitions/apiModel",
-                  "description": "This allows you to specify config options for the model such as\nthe language which appear's in the model's output_info."
+                  "type": "array"
                 },
                 "runnerSelector": {
                   "$ref": "#/definitions/apiRunnerSelector",
@@ -18791,14 +18626,7 @@
                   "description": "Common message to identify the app in a url endpoint."
                 },
                 "inputs": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/apiInput"
-                  }
-                },
-                "model": {
-                  "$ref": "#/definitions/apiModel",
-                  "description": "This allows you to specify config options for the model such as\nthe language which appear's in the model's output_info."
+                  "type": "array"
                 },
                 "runnerSelector": {
                   "$ref": "#/definitions/apiRunnerSelector",
@@ -18879,14 +18707,7 @@
                   "description": "Common message to identify the app in a url endpoint."
                 },
                 "inputs": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/apiInput"
-                  }
-                },
-                "model": {
-                  "$ref": "#/definitions/apiModel",
-                  "description": "This allows you to specify config options for the model such as\nthe language which appear's in the model's output_info."
+                  "type": "array"
                 },
                 "runnerSelector": {
                   "$ref": "#/definitions/apiRunnerSelector",
@@ -20324,7 +20145,7 @@
           },
           {
             "name": "additionalFields",
-            "description": "(optional URL parameter) List of additional fields to be included in the response.\nCurrently supported additional fields:\n- all\n- worker.users\n- review.users\n- metrics.work.inputs_count_estimated\n- metrics.work.inputs_percent_estimated\n- metrics.review.inputs_count_estimated\n- metrics.review.inputs_percent_estimated",
+            "description": "(optional URL parameter) List of additional fields to be included in the response.\nCurrently supported additional fields:\n- all\n- worker.users\n- review.users\n- metrics.input_source.inputs_count_estimated\n- metrics.work.inputs_count_estimated\n- metrics.work.inputs_percent_estimated\n- metrics.review.inputs_count_estimated\n- metrics.review.inputs_percent_estimated",
             "in": "query",
             "required": false,
             "type": "array",
@@ -20565,7 +20386,7 @@
           },
           {
             "name": "additionalFields",
-            "description": "(optional URL parameter) List of additional fields to be included in the response.\nCurrently supported additional fields:\n- all\n- worker.users\n- review.users\n- metrics.work.inputs_count_estimated\n- metrics.work.inputs_percent_estimated\n- metrics.review.inputs_count_estimated\n- metrics.review.inputs_percent_estimated",
+            "description": "(optional URL parameter) List of additional fields to be included in the response.\nCurrently supported additional fields:\n- all\n- worker.users\n- review.users\n- metrics.input_source.inputs_count_estimated\n- metrics.work.inputs_count_estimated\n- metrics.work.inputs_percent_estimated\n- metrics.review.inputs_count_estimated\n- metrics.review.inputs_percent_estimated",
             "in": "query",
             "required": false,
             "type": "array",
@@ -21937,10 +21758,7 @@
                   "title": "Workflow version ID to retrieve\nIf no ID is specified, latest workflow version is used"
                 },
                 "inputs": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/apiInput"
-                  }
+                  "type": "array"
                 },
                 "outputConfig": {
                   "$ref": "#/definitions/apiOutputConfig",
@@ -22023,16 +21841,10 @@
                 },
                 "probeInputs": {
                   "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/apiInput"
-                  },
                   "title": "Each probe is compared against every pool input"
                 },
                 "poolInputs": {
                   "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/apiInput"
-                  },
                   "title": "Each pool input is compared against ever probe input"
                 },
                 "favorClarifaiWorkflows": {
@@ -22365,10 +22177,7 @@
                   "description": "Common message to identify the app in a url endpoint."
                 },
                 "inputs": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/apiInput"
-                  }
+                  "type": "array"
                 },
                 "outputConfig": {
                   "$ref": "#/definitions/apiOutputConfig",
@@ -22454,16 +22263,10 @@
                 },
                 "probeInputs": {
                   "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/apiInput"
-                  },
                   "title": "Each probe is compared against every pool input"
                 },
                 "poolInputs": {
                   "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/apiInput"
-                  },
                   "title": "Each pool input is compared against ever probe input"
                 },
                 "favorClarifaiWorkflows": {
@@ -24550,10 +24353,14 @@
                 },
                 "status": {
                   "$ref": "#/definitions/apistatusStatus",
-                  "description": "This request has a status so that it can communicate to the API from runners and\ncommunicate status, errors, etc. This is on the request since runners operate\nin a reverse protocol."
+                  "description": "This request has a status so that it can communicate to the API from runners and\ncommunicate status, errors, etc. This is on the request since runners operate\nin a reverse protocol. This status is also used to initiate the\nProcessRunnerItems request with RUNNER_STREAM_START code."
+                },
+                "runnerReplicaId": {
+                  "type": "string",
+                  "description": "A unique ID to represent the runner. This may be tied to an underlying compute instance\ninformation or just an UUID."
                 }
               },
-              "title": "PostRunnerItemOutputsRequest"
+              "description": "PostRunnerItemOutputsRequest\nThis is the message that runners send to the API to communicate.\nAt the end of the request it will have the RunnerItemOutput filled in\nwith results of the workload the runner is processing. Other messages\nfrom the runner use this same proto to communicate over to the API\nand do handshakes."
             }
           }
         ],
@@ -25290,10 +25097,7 @@
                   "title": "Workflow version ID to retrieve\nIf no ID is specified, latest workflow version is used"
                 },
                 "inputs": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/apiInput"
-                  }
+                  "type": "array"
                 },
                 "outputConfig": {
                   "$ref": "#/definitions/apiOutputConfig",
@@ -25362,16 +25166,10 @@
                 },
                 "probeInputs": {
                   "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/apiInput"
-                  },
                   "title": "Each probe is compared against every pool input"
                 },
                 "poolInputs": {
                   "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/apiInput"
-                  },
                   "title": "Each pool input is compared against ever probe input"
                 },
                 "favorClarifaiWorkflows": {
@@ -25959,10 +25757,6 @@
     "apiAnd": {
       "type": "object",
       "properties": {
-        "input": {
-          "$ref": "#/definitions/apiInput",
-          "title": "FILTER by input.data... information.\nThis can include human provided concepts, geo location info, metadata, etc.\nThis is effectively searching over only the trusted annotation attached to an input in your\napp. To search by more specific annotation fields use the Annotation object here.\n########## Supported fields ##########\n - data.concepts[].id\n - data.concepts[].name\n - data.concepts[].value\n - data.geo.geo_box[].geo_point.latitude\n - data.geo.geo_box[].geo_point.longitude\n - data.geo.geo_limit.type\n - data.geo.geo_limit.value\n - data.geo.geo_point.latitude\n - data.geo.geo_point.longitude\n - data.image.url\n - data.metadata.fields - filter by metadata. metadata key&value fields are OR-ed.\n - dataset_ids[] - filter by dataset IDs\n - id - filter by input ID\n - status.code - filter by input status"
-        },
         "output": {
           "$ref": "#/definitions/apiOutput",
           "description": "RANK based predicted outputs from models such as custom trained models, pre-trained models,\netc. This is also where you enter the image url for a visual search because what we're asking\nthe system to do is find output embedding most visually similar to the provided input (that\ninput being in And.output.input.data.image.url for example). This will return the Hits\nsorted by visual similarity (1.0 being very similar or exact match and 0.0 being very\ndissimlar). For a search by Output concept, this means we're asking the system to rank\nthe Hits by confidence of our model's predicted Outputs. So for example if the model\npredicts an image is 0.95 likely there is a \"dog\" present, that should related directly\nto the score returned if you search for Output concept \"dog\" in your query. This provides\na natural ranking to search results based on confidence of predictions from the models and\nis used when ANDing multiple of these types of RANK by Output queries together as well.\n\n########## Supported fields ##########\n - data.clusters[].id\n - data.concepts[].id\n - data.concepts[].name\n - data.concepts[].value\n - input.data.image.base64[]\n - input.data.image.url\n - input.id"
@@ -25970,10 +25764,6 @@
         "negate": {
           "type": "boolean",
           "title": "If True then this will flip the meaning of this part of the\nquery. This allow for queries such as dog AND ! metadata=={\"blah\":\"value\"}"
-        },
-        "annotation": {
-          "$ref": "#/definitions/clarifaiapiAnnotation",
-          "description": "FILTER by annotation information. This is more flexible than just filtering by\nInput information because in the general case each input can have several annotations.\nSome example use cases for filtering by annotations:\n1) find all the inputs annotated \"dog\" by worker_id = \"XYZ\"\n2) find all the annotations associated with embed_model_version_id = \"123\"\n3) find all the annotations that are trusted, etc.\n\nSince all the annotations under the hood are joined to the embedding model's annotation\nusing worker_id's of other models like cluster models or concept models should be\ncombinable with queries like visual search (a query with Output filled in).\n\n########## Supported fields ##########\n - annotation_info.fields - filter by annotation info\n - data.concepts[].id\n - data.concepts[].name\n - data.concepts[].value\n - data.geo.geo_box[].geo_point.latitude\n - data.geo.geo_box[].geo_point.longitude\n - data.geo.geo_limit.type\n - data.geo.geo_limit.value\n - data.geo.geo_point.latitude\n - data.geo.geo_point.longitude\n - data.image.url\n - data.metadata.fields - filter by metadata. metadata key&value fields are OR-ed.\n - input_id\n - input_level\n - model_version_id\n - status.code\n - task_id\n - trusted\n - user_id"
         }
       },
       "description": "This is the common building block of a query which is a sequence of And messages ANDed together.\nNote that some fields are used too RANK results (affect the scores) and some are used to FILTER\nresults (unordered subset of your app's contents). In general, FILTER operations are more\nefficient queries at scale and when combined with RANK operations can speed up search performance\nas you effectively operate on a smaller sub-set of your entire app."
@@ -26013,10 +25803,6 @@
     "apiAnnotationFilterConfig": {
       "type": "object",
       "properties": {
-        "annotationFilter": {
-          "$ref": "#/definitions/apiAnnotationFilter",
-          "description": "The annotation filter that is used."
-        },
         "ignoreEmptyInputs": {
           "type": "boolean",
           "description": "If true, empty inputs are not included in the dataset version.\nIf false, empty inputs are included in the dataset version.\nWe define an empty input as an input without any annotations after annotation filter is applied."
@@ -26037,10 +25823,6 @@
         "metrics": {
           "$ref": "#/definitions/apiEvalMetrics",
           "title": "The metric result"
-        },
-        "data": {
-          "$ref": "#/definitions/apiData",
-          "title": "data is filled out with the concepts used for this evaluation"
         },
         "activeConceptCount": {
           "type": "integer",
@@ -26926,13 +26708,7 @@
       "description": "ConceptExtraInfo represents extra information related to a concept that is context-dependent.\nIt is only set when requested in ConceptExtraInfoRequest."
     },
     "apiConceptExtraInfoRequest": {
-      "type": "object",
-      "properties": {
-        "rankableModel": {
-          "$ref": "#/definitions/apiModel",
-          "title": "Determine if the concept is searchable by rank using this model.\nCurrently, only embedder models are supported.\n########## Supported fields ##########\n- app_id\n- id\n- model_version.id\n- user_id"
-        }
-      }
+      "type": "object"
     },
     "apiConceptLanguage": {
       "type": "object",
@@ -26951,23 +26727,6 @@
         }
       },
       "description": "This represents a link to an outside source for the given concept.\nThe values from here are sticked into Concept message into the name and definition fields when\nreturning from the API in your default language. The \"id\" field here becomes the \"language\"\nfield of the Concept message which is a little weird."
-    },
-    "apiConceptMappingJob": {
-      "type": "object",
-      "properties": {
-        "knowledgeGraphId": {
-          "type": "string",
-          "title": "The id of the knowledge graph being used for this concept mapping job"
-        },
-        "conceptIds": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "title": "The ids of the concepts being mapped"
-        }
-      },
-      "title": "ConceptMappingJob"
     },
     "apiConceptQuery": {
       "type": "object",
@@ -26990,9 +26749,6 @@
             "$ref": "#/definitions/apiWorkflowModelUseCase"
           },
           "description": "The concepts must belong to models with specified use cases.\nMultiple values are joined using an OR condition."
-        },
-        "model": {
-          "$ref": "#/definitions/apiModel"
         },
         "workflow": {
           "$ref": "#/definitions/apiWorkflow"
@@ -27305,10 +27061,6 @@
           "$ref": "#/definitions/clarifaiapiVisibility",
           "description": "The visibility field represents whether this message is privately/publicly visible.\nTo be visible to the public the App that contains it AND the User that contains the App must\nalso be publicly visible."
         },
-        "defaultAnnotationFilter": {
-          "$ref": "#/definitions/apiAnnotationFilter",
-          "description": "Default annotation filter used for this dataset."
-        },
         "defaultProcessingInfo": {
           "$ref": "#/definitions/apiDatasetVersionProcessingInfo",
           "description": "Default processing info used for this dataset."
@@ -27348,10 +27100,6 @@
           "type": "string",
           "format": "date-time",
           "description": "When the input was added to the dataset.\nThe format is https://www.ietf.org/rfc/rfc3339.txt.\nExample: \"2006-01-02T15:04:05.999999Z\"."
-        },
-        "input": {
-          "$ref": "#/definitions/apiInput",
-          "description": "The input data."
         }
       },
       "title": "DatasetInput"
@@ -27898,10 +27646,6 @@
           },
           "title": "You can configure different autoscaling per nodepool(s).\nThese nodepools have to be also owned by the same user_id/org as this deployment.\nIf there is more than one nodepool we use the model's ComputeInfo to match\nwith what the nodepool provides to decide which one can handle it combined with the\nNodepoolRank below. Note: even within a single nodepool if it is heterogeneous then\nwe need a way to rank scheduling choices when we don't know how to decide (like a model\nsupports"
         },
-        "model": {
-          "$ref": "#/definitions/apiModel",
-          "title": "Model"
-        },
         "workflow": {
           "$ref": "#/definitions/apiWorkflow",
           "description": "We could also support matching by labels here for future \"job\" like functionality where\n the item itself fully defines the work that needs to be done.\n This would match any resources that have these runner labels defined on them.\n RunnerLabels runner_labels = 11; // FUTURE",
@@ -28019,10 +27763,6 @@
           "type": "string",
           "title": "Id of this evaluation"
         },
-        "model": {
-          "$ref": "#/definitions/apiModel",
-          "title": "Model to evaluate"
-        },
         "groundTruthDataset": {
           "$ref": "#/definitions/apiDataset",
           "title": "The ground truth dataset"
@@ -28086,10 +27826,6 @@
     "apiEvalTestSetEntry": {
       "type": "object",
       "properties": {
-        "input": {
-          "$ref": "#/definitions/apiInput",
-          "title": "the input information"
-        },
         "predictedConcepts": {
           "type": "array",
           "items": {
@@ -28102,17 +27838,6 @@
             "$ref": "#/definitions/apiConcept"
           },
           "title": "All the ground truth concepts will be show on the top level"
-        },
-        "annotation": {
-          "$ref": "#/definitions/clarifaiapiAnnotation",
-          "title": "Only region-based/frame-based app contains this annotation\nEach annotation only contains one region\nAnd the concepts is in ground_truth_concepts instead of this annotation"
-        },
-        "predictedAnnotation": {
-          "$ref": "#/definitions/clarifaiapiAnnotation",
-          "description": "For region based models, region and associated concepts are stored together."
-        },
-        "groundTruthAnnotation": {
-          "$ref": "#/definitions/clarifaiapiAnnotation"
         }
       },
       "title": "EvalTestSetEntry"
@@ -28173,15 +27898,6 @@
           "type": "boolean",
           "title": "If True then this will flip the meaning of this part of the\nquery. This allow for queries such as dog AND ! metadata=={\"blah\":\"value\"}"
         },
-        "annotation": {
-          "$ref": "#/definitions/clarifaiapiAnnotation",
-          "description": "# Filter by worker fields such as model, workflow and user IDs\n - worker.model.model_version.id\n - worker.user.id\n - worker.workflow.version.id\n\n # Filter by other top-level fields\n - annotation_info.fields                  - filter by annotation info\n - input_level                             - filter only input-level annotations\n - status.code                             - filter by annotation status code\n - trusted                                 - filter only trusted annotations\n\n # Filter by space-time info fields, i.e. region, frames and time-segments\n - data                                    - filter only annotations without space-time info, e.g. classifications\n                                           - in order to enable this, you need to set the field to an empty object, i.e. `{\"data\": {}}`\n - data.frames[].frame_info                - filter only frame annotations\n                                           - in order to enable this, you need to set the field to an empty object, i.e. `{\"data\": {\"frames\": [{\"frame_info\": {}}]}}`\n - data.regions[].region_info.bounding_box - filter only bounding box annotations\n                                           - in order to enable this, you need to set the field to an empty object, i.e. `{\"data\": {\"regions\": [{\"region_info\": {\"bounding_box\":{}}}]}}`\n - data.regions[].region_info.mask         - filter only mask annotations\n                                           - in order to enable this, you need to set the field to an empty object, i.e. `{\"data\": {\"regions\": [{\"region_info\": {\"mask\":{}}}]}}`\n - data.regions[].region_info.point        - filter only point annotations\n                                           - in order to enable this, you need to set the field to an empty object, i.e. `{\"data\": {\"regions\": [{\"region_info\": {\"point\":{}}}]}}`\n - data.regions[].region_info.polygon      - filter only polygon annotations\n                                           - in order to enable this, you need to set the field to an empty object, i.e. `{\"data\": {\"regions\": [{\"region_info\": {\"polygon\":{}}}]}}`\n - data.regions[].region_info.span         - filter only span annotations\n                                           - in order to enable this, you need to set the field to an empty object, i.e. `{\"data\": {\"regions\": [{\"region_info\": {\"span\":{}}}]}}`\n - data.time_segments[].time_info          - filter only time-segment annotations\n                                           - in order to enable this, you need to set the field to an empty object, i.e. `{\"data\": {\"time_segments\": [{\"time_info\": {}}]}}`\n\n # Filter by other data fields\n - data.clusters[].id\n - data.concepts[].id\n - data.concepts[].name\n - data.concepts[].value\n - data.geo.geo_box[].geo_point.latitude\n - data.geo.geo_box[].geo_point.longitude\n - data.geo.geo_limit.type\n - data.geo.geo_limit.value\n - data.geo.geo_point.latitude\n - data.geo.geo_point.longitude\n - data.metadata.fields                    - filter by metadata\n                                           - Important to note: metadata key&value fields are OR-ed.\n                                           - example with 1 metadata key: searching by\n                                                     `{\n                                                     `  \"data\": {\n                                                     `    \"metadata\": {\n                                                     `      \"fields\": {\n                                                     `        \"foo\": {\n                                                     `          \"string_value\": \"bar\"\n                                                     `        },\n                                                     `      }\n                                                     `    }\n                                                     `  }\n                                                     `}\n                                                     will result in a search condition like `metadata includes {\"foo\": \"bar}`;\n                                           - example with 2 metadata keys: searching by\n                                                     `{\n                                                     `  \"data\": {\n                                                     `    \"metadata\": {\n                                                     `      \"fields\": {\n                                                     `        \"foo1\": {\n                                                     `          \"string_value\": \"bar2\"\n                                                     `        },\n                                                     `        \"foo2\": {\n                                                     `          \"string_value\": \"bar2\"\n                                                     `        }\n                                                     `      }\n                                                     `    }\n                                                     `  }\n                                                     `}\n                                                     will result in a search condition like `(metadata includes {\"foo1\": \"bar1\"}) OR (metadata includes {\"foo2\": \"bar2\"})`.\n - data.text                               - filter only text annotations\n                                           - in order to enable this, you need to set the field to an empty object, i.e. `{\"data\": {\"text\": {}}}`",
-          "title": "FILTER by annotation information.\n########## Supported fields ##########\n # Filter by ID fields\n - id                                      - example: `{\"id\": \"xyz\"}`\n - input_id\n - model_version_id\n - task_id\n - user_id"
-        },
-        "input": {
-          "$ref": "#/definitions/apiInput",
-          "title": "FILTER by input information.\n########## Supported fields ##########\n - data.audio                              - filter only audio inputs\n                                           - in order to enable this, you need to set the field to an empty object, i.e. `{\"audio\": {}}`\n - data.image                              - filter only image inputs\n                                           - enable using `{\"image\": {}}`\n - data.text                               - filter only text inputs\n                                           - enable using `{\"text\": {}}`\n - data.video                              - filter only video inputs\n                                           - enable using `{\"video\": {}}`\n - dataset_ids[]                           - filter by dataset IDs\n                                           - example: `{\"dataset_ids\": [\"d1\", \"d2\"]}` will filter for inputs in d1 OR d2\n - status.code                             - filter by input status\n                                           - example: `{\"status\": {\"code\": 30000}}` to filter only for SUCCESS inputs"
-        },
         "lastUpdatedTimeRange": {
           "$ref": "#/definitions/apiTimeRange",
           "description": "Filter by annotation last updated time range."
@@ -28195,10 +27911,6 @@
         "frameInfo": {
           "$ref": "#/definitions/apiFrameInfo",
           "description": "Information aboue frame such as number and time."
-        },
-        "data": {
-          "$ref": "#/definitions/apiData",
-          "description": "A recursive definition of the data within the Frame. For example, this will contain\ndata.concepts if the Frame also has annotations or predictions of concepts within it.\nThis can also have data.regions for annotation or predictions of detection regions, which can\nthen recursively have their data field filled in as well."
         },
         "id": {
           "type": "string",
@@ -28351,14 +28063,6 @@
           "format": "float",
           "description": "This is the score for the ranked Hit results of the search query. This score is a number\nbetween 0.0 and 1.0 as it represents a confidence in the search Hit. For example, if you search\nfor \"car\" and get a close matching Hit, the score should be close to 1.0. If you get a score\nof close to 0.0 that means it's very disimilar to your query, in this case NOT a \"car\". There\nis a special intermediate score of 0.5 that means that the Hit is not really correlated with\nyour search query (ie. not similar or dissimlar to the query) which is a common occurrence\nwhen using negate queries.\nNote: some queries that are just filtering down your app of inputs may just return a score of\n1.0 for all Hits."
         },
-        "input": {
-          "$ref": "#/definitions/apiInput",
-          "description": "This is the matched input returned from the search query. This will contain information about\nthe Input such as the url, created_at time and trusted annotation information (for backwards\ncompatibility with apps that existed before Annotations were introduced."
-        },
-        "annotation": {
-          "$ref": "#/definitions/clarifaiapiAnnotation",
-          "description": "We also provide back the specific matched annotation for the above input. We do this in order\nto support more complex Annotation queries in the And message below. For example if we match\nthe search results to a region in your input, or a frame in a video input, this annotation\nfield will be that matched annotation info and the input will be the image/video that the user\noriginally added which contains those regions / frames."
-        },
         "userId": {
           "type": "string",
           "description": "The customer-facing id of the user who owns the app the asset came from."
@@ -28483,10 +28187,6 @@
           "type": "string",
           "title": "The ID for the input"
         },
-        "data": {
-          "$ref": "#/definitions/apiData",
-          "description": "The data passed along in this input."
-        },
         "createdAt": {
           "type": "string",
           "format": "date-time",
@@ -28580,10 +28280,6 @@
         "params": {
           "type": "object",
           "description": "To control the inputs to the given model we allow a list of parameters\ndefined for each ModelType as a Struct (JSON object) here. During training or inference, the\nsettings contained within are sent to the training processor to alter the training process."
-        },
-        "baseEmbedModel": {
-          "$ref": "#/definitions/apiModel",
-          "description": "For base model to get embeddings from for transfer learned models."
         }
       },
       "title": "InputInfo"
@@ -28671,10 +28367,6 @@
         "inputIdConflictResolution": {
           "$ref": "#/definitions/apiInputIDConflictResolution",
           "description": "How to handle input ID conflicts."
-        },
-        "inputTemplate": {
-          "$ref": "#/definitions/apiInput",
-          "title": "Fields set in the template will also be added to all generated inputs"
         }
       }
     },
@@ -28709,10 +28401,6 @@
         "inputIdConflictResolution": {
           "$ref": "#/definitions/apiInputIDConflictResolution",
           "description": "How to handle input ID conflicts."
-        },
-        "inputTemplate": {
-          "$ref": "#/definitions/apiInput",
-          "title": "Fields set in the template are added to all generated inputs"
         }
       }
     },
@@ -28770,10 +28458,6 @@
         "inputIdConflictResolution": {
           "$ref": "#/definitions/apiInputIDConflictResolution",
           "description": "How to handle input ID conflicts."
-        },
-        "inputTemplate": {
-          "$ref": "#/definitions/apiInput",
-          "title": "Fields set in the template will also be added to all generated inputs"
         }
       }
     },
@@ -29337,13 +29021,7 @@
       }
     },
     "apiModelPredictConfig": {
-      "type": "object",
-      "properties": {
-        "model": {
-          "$ref": "#/definitions/apiModel",
-          "description": "Assumed to be owned by the calling users app unless user_id and app_id are filled out."
-        }
-      }
+      "type": "object"
     },
     "apiModelQuery": {
       "type": "object",
@@ -29428,9 +29106,6 @@
         },
         "modelTypeFields": {
           "type": "array",
-          "items": {
-            "$ref": "#/definitions/apiModelTypeField"
-          },
           "description": "The remaining fields are definitions of the configurable fields that exist."
         },
         "requiresSequentialFrames": {
@@ -29478,9 +29153,6 @@
         },
         "modelTypeFields": {
           "type": "array",
-          "items": {
-            "$ref": "#/definitions/apiModelTypeField"
-          },
           "description": "These are additional fields that are specific to this enum choice. This allows\nus to use enums to control configuration settings as well."
         },
         "internalOnly": {
@@ -29701,10 +29373,6 @@
           "type": "string",
           "title": "external id of model version"
         },
-        "data": {
-          "$ref": "#/definitions/apiData",
-          "title": "data to store as example input for model"
-        },
         "name": {
           "type": "string",
           "title": "name of link for display"
@@ -29861,10 +29529,7 @@
           "$ref": "#/definitions/apistatusStatus"
         },
         "annotationFilters": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/apiAnnotationFilter"
-          }
+          "type": "array"
         }
       },
       "title": "MultiAnnotationFilterResponse"
@@ -29876,10 +29541,7 @@
           "$ref": "#/definitions/apistatusStatus"
         },
         "annotations": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/clarifaiapiAnnotation"
-          }
+          "type": "array"
         }
       },
       "title": "MultiAnnotationResponse"
@@ -30040,23 +29702,6 @@
       },
       "title": "MultiConceptLanguageResponse"
     },
-    "apiMultiConceptMappingJobResponse": {
-      "type": "object",
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/apistatusStatus",
-          "description": "The response status."
-        },
-        "ids": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "The ids of the concept mapping jobs underway."
-        }
-      },
-      "title": "MultiConceptMappingJobResponse"
-    },
     "apiMultiConceptRelationResponse": {
       "type": "object",
       "properties": {
@@ -30202,10 +29847,7 @@
           "$ref": "#/definitions/apistatusStatus"
         },
         "inputs": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/apiInput"
-          }
+          "type": "array"
         },
         "inputsAddJob": {
           "$ref": "#/definitions/apiInputsAddJob"
@@ -30354,10 +29996,7 @@
           "$ref": "#/definitions/apistatusStatus"
         },
         "models": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/apiModel"
-          }
+          "type": "array"
         }
       },
       "title": "MultiModelResponse"
@@ -30389,10 +30028,6 @@
             "$ref": "#/definitions/apiModelType"
           },
           "description": "List of ModelType objects."
-        },
-        "modelImporters": {
-          "$ref": "#/definitions/apiModelTypeField",
-          "title": "List of model importers"
         },
         "tritonCondaEnvsInfo": {
           "type": "array",
@@ -30996,18 +30631,6 @@
           "type": "string",
           "format": "date-time",
           "title": "When the object was created. We follow the XXXX timestamp\nformat. We use https://www.ietf.org/rfc/rfc3339.txt format:\n\"2006-01-02T15:04:05.999999Z\" so you can expect results like\nthe following from the API:\n\"2017-04-11T21:50:50.223962Z\""
-        },
-        "model": {
-          "$ref": "#/definitions/apiModel",
-          "description": "The model that created this Output."
-        },
-        "input": {
-          "$ref": "#/definitions/apiInput",
-          "description": "The input that was passed to the model to create this Output. For example if we have an image\nmodel then it will take as input here an Input object with Image filled in."
-        },
-        "data": {
-          "$ref": "#/definitions/apiData",
-          "description": "The output data for this Output. For example if we have a concept model then the predicted\nconcepts will appear here."
         }
       },
       "title": "Output"
@@ -31080,10 +30703,6 @@
     "apiOutputInfo": {
       "type": "object",
       "properties": {
-        "data": {
-          "$ref": "#/definitions/apiData",
-          "description": "List of concepts or other output related data for the model."
-        },
         "outputConfig": {
           "$ref": "#/definitions/apiOutputConfig",
           "title": "Model configuration...going away in favor of infer_params and train_params over time.\nTO BE DEPRECATED"
@@ -31101,10 +30720,7 @@
           "description": "For predicting with the various ModelType's we accept a Struct (JSON object) worth of args\nthat the ModelTypeField defines. During inference, the settings contained within are sent\nto the model predictor to alter predictions from this Model."
         },
         "paramsSpecs": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/apiModelTypeField"
-          }
+          "type": "array"
         }
       },
       "description": "OutputInfo defines some of the settings for each model version that PatchModels can effect. These\nparameters control some of the training or inference operations that this model can do.\nAs the number of parameters continued to grow when we launched more ModelTypes we decided to move\nto using the OutputInfo.params field which is a Struct (or JSON object if you're using\nour JSON REST APIs). This allows each ModelType to define the set of fields, their default values\nand description of each field so that we can display those in Portal and make the creation of\nModel's very extensible. The OutputConfig object will eventually go away in favor of\ninfer_params struct."
@@ -31233,9 +30849,6 @@
         },
         "annotationFilters": {
           "type": "array",
-          "items": {
-            "$ref": "#/definitions/apiAnnotationFilter"
-          },
           "description": "List of annotation filters that are requested to be updated."
         },
         "action": {
@@ -31252,10 +30865,7 @@
           "$ref": "#/definitions/apiUserAppIDSet"
         },
         "annotations": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/clarifaiapiAnnotation"
-          }
+          "type": "array"
         },
         "action": {
           "type": "string",
@@ -31374,9 +30984,6 @@
         },
         "inputs": {
           "type": "array",
-          "items": {
-            "$ref": "#/definitions/apiInput"
-          },
           "title": "List of inputs to patch.\nInputs are identified by id field.\nFor each input, the following fields are patchable:\n* data"
         },
         "action": {
@@ -31432,10 +31039,7 @@
           "$ref": "#/definitions/apiUserAppIDSet"
         },
         "models": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/apiModel"
-          }
+          "type": "array"
         },
         "action": {
           "type": "string",
@@ -31562,9 +31166,6 @@
         },
         "annotationFilters": {
           "type": "array",
-          "items": {
-            "$ref": "#/definitions/apiAnnotationFilter"
-          },
           "description": "List of annotation filters that are requested to be added."
         }
       },
@@ -31588,10 +31189,6 @@
           "$ref": "#/definitions/apiSearch",
           "title": "The set we are evaluating"
         },
-        "data": {
-          "$ref": "#/definitions/apiData",
-          "title": "List of concepts to evaluate are expected to be in data.concepts\nIf nil, then all app concepts are used"
-        },
         "evaluationType": {
           "$ref": "#/definitions/apiEvaluationType",
           "title": "The type of evaluation to use"
@@ -31606,10 +31203,7 @@
           "$ref": "#/definitions/apiUserAppIDSet"
         },
         "annotations": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/clarifaiapiAnnotation"
-          }
+          "type": "array"
         }
       },
       "title": "PostAnnotationsRequest"
@@ -31665,23 +31259,6 @@
         }
       },
       "description": "Request to create Collectors."
-    },
-    "apiPostConceptMappingJobsRequest": {
-      "type": "object",
-      "properties": {
-        "userAppId": {
-          "$ref": "#/definitions/apiUserAppIDSet",
-          "description": "The user_id and app_id information."
-        },
-        "conceptMappingJobs": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/apiConceptMappingJob"
-          },
-          "title": "The concept mapping jobs that are being started"
-        }
-      },
-      "title": "Start concept mapping jobs"
     },
     "apiPostConceptsRequest": {
       "type": "object",
@@ -31784,9 +31361,6 @@
         },
         "inputs": {
           "type": "array",
-          "items": {
-            "$ref": "#/definitions/apiInput"
-          },
           "title": "List of inputs to post.\nFor each input, the following fields are used:\n* id\n* data\n* dataset_ids"
         },
         "inputsAddJobId": {
@@ -31884,14 +31458,7 @@
           "type": "string"
         },
         "inputs": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/apiInput"
-          }
-        },
-        "model": {
-          "$ref": "#/definitions/apiModel",
-          "description": "This allows you to specify config options for the model such as\nthe language which appear's in the model's output_info."
+          "type": "array"
         },
         "runnerSelector": {
           "$ref": "#/definitions/apiRunnerSelector",
@@ -31958,15 +31525,8 @@
         "userAppId": {
           "$ref": "#/definitions/apiUserAppIDSet"
         },
-        "model": {
-          "$ref": "#/definitions/apiModel",
-          "description": "NOTE: inconsistent since \"model\" is not plural, please use \"models\" below.\nPreviously you could only create one model at a time.\nWe still support this but you should pass it as models=[model] so\nthat this endpoint is consistent with the rest of our API."
-        },
         "models": {
           "type": "array",
-          "items": {
-            "$ref": "#/definitions/apiModel"
-          },
           "description": "This allows you to create one or more model by posting it to the API."
         }
       },
@@ -32017,10 +31577,14 @@
         },
         "status": {
           "$ref": "#/definitions/apistatusStatus",
-          "description": "This request has a status so that it can communicate to the API from runners and\ncommunicate status, errors, etc. This is on the request since runners operate\nin a reverse protocol."
+          "description": "This request has a status so that it can communicate to the API from runners and\ncommunicate status, errors, etc. This is on the request since runners operate\nin a reverse protocol. This status is also used to initiate the\nProcessRunnerItems request with RUNNER_STREAM_START code."
+        },
+        "runnerReplicaId": {
+          "type": "string",
+          "description": "A unique ID to represent the runner. This may be tied to an underlying compute instance\ninformation or just an UUID."
         }
       },
-      "title": "PostRunnerItemOutputsRequest"
+      "description": "PostRunnerItemOutputsRequest\nThis is the message that runners send to the API to communicate.\nAt the end of the request it will have the RunnerItemOutput filled in\nwith results of the workload the runner is processing. Other messages\nfrom the runner use this same proto to communicate over to the API\nand do handshakes."
     },
     "apiPostSearchesRequest": {
       "type": "object",
@@ -32343,10 +31907,6 @@
         "negate": {
           "type": "boolean",
           "title": "If True then this will flip the meaning of this part of the\nquery. This allow for queries such as !dog"
-        },
-        "annotation": {
-          "$ref": "#/definitions/clarifaiapiAnnotation",
-          "title": "RANK by annotation information.\n########## Supported fields ##########\n - data.concepts[].id\n - data.concepts[].name\n - data.concepts[].value\n - data.embeddings[].num_dimensions\n - data.embeddings[].vector[]\n - data.image.base64[]\n - data.image.url\n - data.text.raw\n - input_id\n - model_version_id"
         }
       },
       "title": "Rank"
@@ -32361,10 +31921,6 @@
         "regionInfo": {
           "$ref": "#/definitions/apiRegionInfo",
           "description": "The details about the location of the region."
-        },
-        "data": {
-          "$ref": "#/definitions/apiData",
-          "description": "A recursive definition of the data within the Region. For example, this will contain\ndata.concepts if the region also has annotations or predictions of concepts within it."
         },
         "value": {
           "type": "number",
@@ -32513,6 +32069,11 @@
         "computeInfo": {
           "$ref": "#/definitions/apiComputeInfo",
           "description": "//////////////////////////\nNeed resources on the runner so we can schedule this Runner into the Nodepool.\nIf this runner is being orchestrated for a model then the orchestrator will set this to the\nmodel resource requirements. If a workflow then it'll compute those requirements and set\npopulate this resource field.\nHaving this on the underlying object like Model and Workflow allows us to represent the minimum\nrequirements on those object, which may be less than what the Runner allocates (as a safety\nmargin for the runner to for sure run the resource)."
+        },
+        "numReplicas": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Number of replicas that this runner should have up.\nWe keep it separate from ComputeInfo which defines how many resources each replica needs."
         }
       },
       "title": "A worker for compute within a nodepool of instances.\nThis asks the API for work"
@@ -32537,7 +32098,7 @@
           "description": "Model prediction request from a user.\n\nWorkflow request from a user.  // FUTURE\n training request next, etc."
         }
       },
-      "description": "This is a piece of work for a runner to process."
+      "description": "This is a unit of work for a runner to process. This comes from the API\nin the MultiRunnerItemResponse and contains the user's requests\nto process."
     },
     "apiRunnerItemOutput": {
       "type": "object",
@@ -32546,7 +32107,8 @@
           "$ref": "#/definitions/apiMultiOutputResponse",
           "description": "The output of a model prediction request.\n\nWorkflow response. // FUTURE\n training response ???"
         }
-      }
+      },
+      "title": "This contains the response of the user's request once processing is done.\nThe runner should fill in the matching output to the RunnerItem.request\noneof field. This is sent to the API within PostRunnerItemOutputsRequest"
     },
     "apiRunnerMethodType": {
       "type": "string",
@@ -32661,9 +32223,6 @@
       "properties": {
         "status": {
           "$ref": "#/definitions/apistatusStatus"
-        },
-        "annotationFilter": {
-          "$ref": "#/definitions/apiAnnotationFilter"
         }
       },
       "title": "SingleAnnotationFilterResponse"
@@ -32673,9 +32232,6 @@
       "properties": {
         "status": {
           "$ref": "#/definitions/apistatusStatus"
-        },
-        "annotation": {
-          "$ref": "#/definitions/clarifaiapiAnnotation"
         }
       },
       "title": "SingleAnnotationResponse"
@@ -32828,9 +32384,6 @@
       "properties": {
         "status": {
           "$ref": "#/definitions/apistatusStatus"
-        },
-        "input": {
-          "$ref": "#/definitions/apiInput"
         }
       },
       "title": "SingleInputResponse"
@@ -32899,9 +32452,6 @@
       "properties": {
         "status": {
           "$ref": "#/definitions/apistatusStatus"
-        },
-        "model": {
-          "$ref": "#/definitions/apiModel"
         }
       },
       "title": "SingleModelResponse"
@@ -33419,10 +32969,6 @@
           "$ref": "#/definitions/apiWorker",
           "description": "Assigned worker."
         },
-        "input": {
-          "$ref": "#/definitions/apiInput",
-          "description": "Assigned input."
-        },
         "status": {
           "$ref": "#/definitions/apistatusStatus",
           "description": "Assignment status.\nRead as: This is the status of the work assigned to worker W, on input I in task T."
@@ -33473,6 +33019,16 @@
       },
       "title": "TaskInputSource"
     },
+    "apiTaskInputSourceMetrics": {
+      "type": "object",
+      "properties": {
+        "inputsCountEstimated": {
+          "type": "string",
+          "format": "uint64",
+          "title": "Estimated number of inputs that are in the source of data"
+        }
+      }
+    },
     "apiTaskMetrics": {
       "type": "object",
       "properties": {
@@ -33481,6 +33037,9 @@
         },
         "review": {
           "$ref": "#/definitions/apiTaskReviewMetrics"
+        },
+        "inputSource": {
+          "$ref": "#/definitions/apiTaskInputSourceMetrics"
         }
       }
     },
@@ -33755,9 +33314,6 @@
           "type": "string",
           "description": "A unique id for the time segment."
         },
-        "data": {
-          "$ref": "#/definitions/apiData"
-        },
         "timeInfo": {
           "$ref": "#/definitions/apiTimeInfo"
         }
@@ -33786,10 +33342,6 @@
         "id": {
           "type": "string",
           "title": "track id"
-        },
-        "data": {
-          "$ref": "#/definitions/apiData",
-          "description": "This is a recursive definition which can contain all the concepts,\nembeddings, etc. that are computed within this track."
         },
         "timeInfo": {
           "$ref": "#/definitions/apiTimeInfo"
@@ -33846,10 +33398,6 @@
         "dataset": {
           "$ref": "#/definitions/apiDataset",
           "title": "The dataset and dataset version this model version was or will be trained on"
-        },
-        "resumeFromModel": {
-          "$ref": "#/definitions/apiModel",
-          "description": "The model to resume training from."
         }
       }
     },
@@ -34189,10 +33737,6 @@
           "$ref": "#/definitions/apiUser",
           "description": "User is the human that created the annotation.\n\nBy default no real names of users are returned in responses. These can\nbe requested with the 'names' additional field."
         },
-        "model": {
-          "$ref": "#/definitions/apiModel",
-          "description": "Model is the model that created the annotation."
-        },
         "workflow": {
           "$ref": "#/definitions/apiWorkflow",
           "description": "Workflow is the workflow that created the annotation."
@@ -34303,10 +33847,6 @@
           "type": "string",
           "description": "An identifier for this node in the graph. This is used when connecting NodeInputs\ntogether."
         },
-        "model": {
-          "$ref": "#/definitions/apiModel",
-          "description": "The model that will do the processing at this node. We only vlidate the model.id and\nmodel.model_version.id fields."
-        },
         "nodeInputs": {
           "type": "array",
           "items": {
@@ -34339,14 +33879,6 @@
           "format": "date-time",
           "title": "When the object was created. We follow the XXXX timestamp\nformat. We use https://www.ietf.org/rfc/rfc3339.txt format:\n\"2006-01-02T15:04:05.999999Z\" so you can expect results like\nthe following from the API:\n\"2017-04-11T21:50:50.223962Z\""
         },
-        "model": {
-          "$ref": "#/definitions/apiModel",
-          "description": "The model that this WorkflowResult is for.\nDEPRECATED: not sure why there ever was a model here because each output shows the model\nthat process this given input."
-        },
-        "input": {
-          "$ref": "#/definitions/apiInput",
-          "description": "The input that ran through the workflow to generate the outputs in this WorkflowResult."
-        },
         "outputs": {
           "type": "array",
           "items": {
@@ -34364,10 +33896,6 @@
     "apiWorkflowResultsSimilarity": {
       "type": "object",
       "properties": {
-        "probeInput": {
-          "$ref": "#/definitions/apiInput",
-          "title": "The input with the specific data compare against all pool results"
-        },
         "poolResults": {
           "type": "array",
           "items": {
@@ -34518,10 +34046,6 @@
         "inputId": {
           "type": "string",
           "title": "ID of the input this annotation is tied to"
-        },
-        "data": {
-          "$ref": "#/definitions/apiData",
-          "description": "The data passed along in this annotation."
         },
         "annotationInfo": {
           "type": "object",
