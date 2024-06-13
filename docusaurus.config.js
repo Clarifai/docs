@@ -115,6 +115,21 @@ const config = {
           },
           {
             type: "dropdown",
+            label: "API Guide",
+            position: "left",
+            items: [
+              {
+                label: 'Basics',
+                to: '/api-guide/api-overview',
+              },
+              {
+                label: 'API Reference',
+                to: "/api-reference",
+              }
+            ]
+          },
+          {
+            type: "dropdown",
             label: "Releases",
             position: "left",
             items: [
