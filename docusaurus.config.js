@@ -390,6 +390,10 @@ const config = {
     {
       src: "/scripts/sidebar.js",
       async: true,
+    },
+    {
+      src: "https://cdn.redoc.ly/redoc/latest/bundles/redoc.standalone.js",
+      async: true,
     }
   ]
 };
