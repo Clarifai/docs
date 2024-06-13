@@ -1561,7 +1561,7 @@
     "@docusaurus/theme-search-algolia" "2.4.0"
     "@docusaurus/types" "2.4.0"
 
-"@docusaurus/react-loadable@5.5.2":
+"@docusaurus/react-loadable@5.5.2", "react-loadable@npm:@docusaurus/react-loadable@5.5.2":
   version "5.5.2"
   resolved "https://registry.npmjs.org/@docusaurus/react-loadable/-/react-loadable-5.5.2.tgz"
   integrity sha512-A3dYjdBGuy0IGT+wyLIGIKLRE+sAk1iNk0f1HjNDysO7u8lhL4N3VEm+FAubmJbAztn94F7MxBTPmnixbiyFdQ==
@@ -1717,6 +1717,18 @@
   integrity sha512-foQZKJig7Ob0BMAYBfcJk8d77QtOe7Wo4ox7ff1lQYoNNAb6jwcY1ncdoy2e9wQZzvNy7ODZCYJkK8kzmcAnAg==
   dependencies:
     "@hapi/hoek" "^9.0.0"
+
+"@ibm/plex@^6.4.1":
+  version "6.4.1"
+  resolved "https://registry.yarnpkg.com/@ibm/plex/-/plex-6.4.1.tgz#22b9ff26074b816ad01d3a242dbe33be106b0889"
+  integrity sha512-fnsipQywHt3zWvsnlyYKMikcVI7E2fEwpiPnIHFqlbByXVfQfANAAeJk1IV4mNnxhppUIDlhU0TzwYwL++Rn2g==
+  dependencies:
+    "@ibm/telemetry-js" "^1.5.1"
+
+"@ibm/telemetry-js@^1.5.1":
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/@ibm/telemetry-js/-/telemetry-js-1.5.2.tgz#a0ccab518bad34a6e61faad64011b7a533f2b9c0"
+  integrity sha512-KyvaHbiNMDtz2k/9DltkK3YkWTyvz8y7Pq1sQ4cnXDMzHiEatOyxw3zZgK9li80tgUOYMQLck9DLewEuhvtg7w==
 
 "@jest/schemas@^29.4.3":
   version "29.4.3"
@@ -6286,14 +6298,6 @@ react-loadable-ssr-addon-v5-slorber@^1.0.1:
   integrity sha512-lq3Lyw1lGku8zUEJPDxsNm1AfYHBrO9Y1+olAYwpUJ2IGFBskM0DMKok97A6LWUpHm+o7IvQBOWu9MLenp9Z+A==
   dependencies:
     "@babel/runtime" "^7.10.3"
-
-"react-loadable@npm:@docusaurus/react-loadable@5.5.2":
-  version "5.5.2"
-  resolved "https://registry.npmjs.org/@docusaurus/react-loadable/-/react-loadable-5.5.2.tgz"
-  integrity sha512-A3dYjdBGuy0IGT+wyLIGIKLRE+sAk1iNk0f1HjNDysO7u8lhL4N3VEm+FAubmJbAztn94F7MxBTPmnixbiyFdQ==
-  dependencies:
-    "@types/react" "*"
-    prop-types "^15.6.2"
 
 react-router-config@^5.1.1:
   version "5.1.1"
