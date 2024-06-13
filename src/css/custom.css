@@ -271,3 +271,13 @@ header .join__slack:hover {
 #redocly-ui::-webkit-scrollbar { 
     display: none;  /* Safari and Chrome */
 }
+
+.dropdown__menu {
+  padding: 15px;
+  background-color: rgba(19, 24, 39, 0.85);
+  backdrop-filter: blur(7.5px);
+}
+
+.dropdown__menu>li {
+  padding-top: 5px;
+}
