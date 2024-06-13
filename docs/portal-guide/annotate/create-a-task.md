@@ -1,81 +1,111 @@
 ---
-description: Manage and delegate your labeling work with tasks
+description: Learn how to label a batch of data manually or with AI assistance
 sidebar_position: 2
 ---
 
 # Create a Labeling Task
 
-**Manage and delegate your labeling work with tasks**
+**Label a batch of data manually or with AI assistance**
 
 <hr />
 
-Tasks enable you to delegate labeling jobs of any size to your team. You can create new labeling tasks, distribute these tasks to your workforce, and review their work in one convenient tool.  
+Tasks enable you to label the inputs in your dataset easily, fast, and conveniently. You can create new labeling tasks, distribute these tasks to your workforce, and review their work in one convenient tool.  
 
-Delegating labeling tasks to a team provides several benefits, such as enhancing the overall quality of the exercise, expediting the process, and leveraging a diverse range of skills from various backgrounds.
+Let's demonstrate how you can label a batch of data manually or with AI assistance. 
 
-## How to Create a Task
+:::tip auto-annotation
 
-To create a task, go to your individual app page and select the **Labeling Tasks** option on the collapsible left sidebar. 
+[Click here](https://docs.clarifai.com/portal-guide/annotate/auto-annotation) to learn how to label inputs automatically using the auto-annotation technique.
 
-Next, on the **Tasks** management page, click the **Create New Task** button at the top-right corner of the page. 
+:::
+
+## Prerequisites
+
+- [An application](https://docs.clarifai.com/clarifai-basics/applications/create-an-application/)
+- [A dataset](https://docs.clarifai.com/portal-guide/datasets/create-get-update-delete/) containing the inputs you want to label. For this example, we’ll create a dataset containing a few images of pants, shirts, shoes, shorts, and skirts sourced from this [clothing dataset](https://www.kaggle.com/datasets/agrigorev/clothing-dataset-full/data). 
+- [Concepts](https://docs.clarifai.com/portal-guide/concepts/create-get-update-delete#create-concepts) that you want to use for the labeling task. For this example, we'll add the following concepts to our app:  `pants`, `shirt`, `shoe`, `short`, and `skirt`. 
+
+## Step 1: Start the Labeling Task
+
+To create a task, select **Labeling Tasks** from the collapsible left sidebar, then click the **New Labeling Task** button located in the upper-right corner of the **Labeling Tasks** page.
 
 ![](/img/community/tasks/task_1.png)
 
-You'll be redirected to the **New Labeling Task** page, where you can provide the details for creating a new task. 
+## Step 2: Select Dataset
 
-Let's talk about the fields to fill in the form.
+You'll be redirected to the **New Labeling Task** page, where you can provide the details for creating a new task.
 
-### Input Source
-
-Start by selecting a dataset from which inputs will be assigned for the labeling task. To do so, click the **Select Dataset** search box and choose the dataset you want to use. 
+Start by selecting a dataset from which inputs will be assigned for the labeling task. To do so, click the **Select a dataset** search box and choose the dataset you want to use from the list that drops down. 
 
 ![](/img/community/tasks/task_4.png)
 
-If you do not have an already created dataset, click the **Create new Dataset** option to create a new one. Then, provide the new dataset name on the drop-down that appears. You can also select the checkbox to add all the inputs in your app to the new dataset. 
+If you don't already have a dataset, click the **Create new Dataset with all inputs** button. Then, provide the name for the new dataset in the drop-down that appears. All the inputs in your app will be added to this new dataset.
 
 ![](/img/community/tasks/task_21.png)
 
-### Modeling Objective
+## Step 3: Turn Off Auto-Annotation
 
-Next, choose the objective you want to achieve with your model. You can choose among the following label types:
+To label the inputs manually or with AI assistance, select the **No** button. This will turn off the [auto-annotation](https://docs.clarifai.com/portal-guide/annotate/auto-annotation) process. 
 
-- Classification—categorizes images, videos, and texts into categories;
-- Detection—detects where an object of interest is and draws a bounding box around it;
-- Segmentation (polygons for segmentation)—outlines the exact shape or contour of an object.
+![](/img/community/tasks/task_4-1.png)
+
+## Step 4: Select Task Type
+
+Choose the objective you want to achieve with your labeling task. You can choose among the following label types:
+
+- Classification — categorizes images, videos, and texts into categories;
+- Detection — detects where an object of interest is and draws a bounding box around it;
+- Segmentation (polygons for segmentation) — outlines the exact shape or contour of an object.
 
 ![](/img/community/tasks/task_11.png)
 
-### Enable AI Assist
+For this example, let's select the detection label type. 
 
-Concepts are the words that you are labeling your data with. Concepts can be anything you can think of, and can be written in the language of your choice. You can [create concepts](https://docs.clarifai.com/portal-guide/concepts/create-get-update-delete#create-concepts) in your app, or even when assigning tasks.
+## Step 5: Turn Off or Enable AI-Assist
 
-Enabling [AI Assist](https://docs.clarifai.com/portal-guide/annotate/ai-assist) will allow Clarifai's AI to suggest concepts as you label your data. With AI Assist, you can speed up the labeling process and realize your goals faster. 
+:::warning manual labeling
 
-If you want to use the AI Assist tool, select the **Yes** option. Then, select a workflow you want to use—either from your own app or an external app in the Community. You can even click the **Create Workflow** button at the bottom of the drop-down list to create a new workflow. 
+Manual labeling of data is crucial for ensuring high-quality training data, handling complex and ambiguous cases, and providing accurate validation benchmarks. It also ensures data diversity and reduces bias, especially in sensitive applications. It's best for new domains with scarce pre-labeled data and niche datasets where the team is building collective concept definitions and libraries.
 
-![](/img/community/tasks/task_13.png)
+:::
 
-After choosing a workflow, use the **Select or add concepts** search box to select or add the concepts you want to use. 
+To label a batch of data manually, select the **No** option when asked if you want to enable AI-assist. This will turn off AI-assist and enable you to label your inputs manually.
 
-![](/img/community/tasks/task_16.png)
+Next, use the **Search concepts** field to find and add existing concepts from your app that you want to use for the labeling exercise. The concepts you've selected will appear underneath the search box. For this example, we'll add these concepts: `pants`, `shirt`, `shoe`, `short`, and `skirt`. 
 
-You can also create new concepts, and select them. Click the plus (**+**) sign next to the **Select or add concepts** search box and type the concept name in the empty field. Then, click the **Add new concept** button that appears underneath the search box to create the new concept. 
+![](/img/community/tasks/task_11-2.png)
+
+You can also create new concepts, and select them. Type the concept name in the **Search concepts** field. Then, click the **Add new concept** button that appears underneath the search box to create the new concept and also add it to your app.  
 
 ![](/img/community/tasks/task_5.png)
 
-The concepts you've selected will appear underneath the search box. Notice that there is a small AI Assist robot icon on the left side of each concept you've selected. The presence of the robot implies that the labeling task is going to be AI-assisted. Otherwise, the icon does not appear. 
+:::warning AI-Assisted labeling
 
-![](/img/community/tasks/task_14.png)
+AI-assisted labeling is a semi-automated approach with human-in-the-loop that combines the power of existing models and workflows with the flexibility and accuracy of manual labeling. This method speeds up the labeling process by automating straightforward tasks while allowing human labelers to focus on complex or ambiguous cases. The AI model provides initial labels that humans can review and refine, ensuring high-quality and consistent annotations. This combines the strengths of both automated systems and human oversight.
 
-If you do not want to use the AI Assist tool, select the **No** option. Then, select the concepts already present in your app or add new ones. 
+:::
 
-![](/img/community/tasks/task_12.png)
+To label using AI-assist, select the **Yes** option.
 
-### Add Collaborators
+![](/img/community/tasks/task_13.png)
 
-You can invite collaborators to help you with the task. Having collaborators can enhance the overall quality and efficiency of the labeling work. 
+Then, choose a model or workflow from the available options — either one you own or one publicly available in the Community. For this example, let’s select the [General-Detection](https://clarifai.com/clarifai/main/workflows/General-Detection) workflow that detects a variety of common objects in images by drawing bounding boxes around them. 
 
-If you do not want to add any collaborator, select the **No** option. 
+Next, use the **Search Concepts** field to select the concepts you want to use. Note that you can choose concepts already included in the workflow or model, or create new ones, as illustrated earlier. For this example, let’s select these concepts already existing in the workflow: `pants`, `shirt`, `shoe`, `short`, and `skirt`.
+
+The concepts you've selected will appear underneath the search box. Notice that there is a small AI-assist robot icon on the left side of each concept you've selected. The presence of the robot implies that the labeling task is going to be AI-assisted. Otherwise, the icon does not appear. 
+
+:::caution segmentation
+
+AI-assist is not available for segmentation labeling tasks. 
+
+:::
+
+## Step 6: Add Collaborators
+
+Delegating labeling tasks to a team provides several benefits, such as enhancing the overall quality of the exercise, expediting the process, and leveraging a diverse range of skills from various backgrounds.
+
+If you do not want to add any collaborator to help you with the task, select the **No** option. 
 
 ![](/img/community/tasks/task_17.png)
 
@@ -83,53 +113,87 @@ If you want to add a collaborator(s), select the **Yes** option.
 
 ![](/img/community/tasks/task_18.png)
 
-To assign the labeling work to a worker or a group of workers, click the **Select Labelers** search box and select a worker you've already added as a collaborator within your app. You can also assign the task to yourself. 
+To assign the labeling work to a worker or a group of workers, click the **Select Labelers** search box and select a worker(s) you've already added as a collaborator(s) within your app. You can also assign the task to yourself. The inputs to be labeled will be evenly distributed among all the workers, ensuring that each input is assigned to only one worker and there is no duplication of work.
 
-You can also click the **Add all collaborators** button to assign the task to all the collaborators in your app.  
+To assign the reviewing work to a worker or a group of workers, click the **Select Reviewers** search box and select a reviewer(s) for the task. Adding human review adds a critical layer of verification and validation, ensuring that the annotations are both accurate and reliable. 
 
-If you want to assign the task to another worker who already has an account on the Clarifai platform, click the **New Collaborator** button and provide their email address in the small window that pops up. 
+- Clicking the **New collaborator** button will open a pop-up, enabling you to add new collaborators to the app and assign them to the labeling or reviewing task. You can learn how to add a collaborator [here](https://docs.clarifai.com/clarifai-basics/applications/collaboration/). 
+- Clicking the **Add all collaborators** button will assign the task to all collaborators in your app. On the other hand, clicking the **Remove all collaborators** button will unassign the task from all collaborators in your app.
 
-You also need to select the scopes you want the worker to have in the application. The collaborator will receive an email notification that they've been added to the application. 
+:::warning Review Partitioning
 
-![](/img/community/tasks/task_20.png)
+Distributing inputs across multiple reviewers allows you to automatically assign labeled assets to multiple reviewers. This approach improves the speed of the review process and reduces the risk of a single point of dependence. The labeled inputs will be evenly partitioned among all reviewers without duplication of the reviewing work.
 
-You can also click the **Select Reviewers** search box to select a reviewer for the task. 
+:::
 
-### Task Name 
 
-Provide a descriptive name for your task.
+## Step 7: Set Task Name
+
+Specify the name of the task to facilitate easy identification.
 
 ![](/img/community/tasks/task_1_1.png)
 
-### Instructions
+## Step 8: Add Instructions
 
-You can also provide instructions for your labelers. You can even provide them with a "visual dictionary" by including sample image URLs they can refer to. 
+Optionally, you can provide instructions for your labelers to help them with the labeling task. 
 
 Click the **Add** button to add the instructions. 
 
 ![](/img/community/tasks/task_1_2.png)
 
-### Submit
+## Step 9: Create Labeling Task
 
-After filling out the form for creating a new task, click the **Create Task** button to complete the process. 
+Click the **Create Labeling Task** button to create the labeling task. Or, click the **Cancel** button to cancel the process. 
 
-## Tasks Listing
+You’ll be redirected to the **Labeling Tasks** page, where you can see the newly created task listed in the table.
 
-The newly created task will be listed on the **Tasks** management page.
+For this example, you can see the two tasks we created: one for manual labeling and another for AI-assisted labeling.
 
 ![](/img/community/tasks/task_10.png)
 
-If you click on the ellipsis icon positioned at the end of the row associated with your selected task, a small drop-down window will emerge, allowing you to carry out various  management activities.
+You can monitor the progress of the annotation exercise in the "Labeling Status" column, where the status will be displayed. Once the process is complete, the status will change to "Complete." 
 
-![](/img/community/tasks/task_10_1.png)
+You can also view other details of the annotation exercise, including the dataset used, the type of annotation, the concepts applied, the labelers involved, and the number of inputs.
 
-- The **ID** button lets you copy the ID of the selected task. 
-- The **View annotation metrics** button lets you generate the labeling metrics specifically tied to the selected task on a given dataset. This functionality empowers you with a convenient method to gauge task progress and evaluate outcomes. It enables efficient monitoring of label view counts, providing valuable insights into the effectiveness and status of labeling tasks within the broader dataset context.
-- The **Edit** button lets you edit the labeling task. 
-- The **Delete** button lets you delete the labeling task. 
+If you click the ellipsis icon at the end of the row for your selected task, a drop-down menu will appear. This menu allows you to perform various task management activities, such as copying the task ID, creating a new dataset version, editing the task, or deleting the task.
 
+## Step 10: Start Labeling 
 
-:::info
+To start labeling your inputs, click the **Label** button on the **Labeling Tasks** page. 
+
+:::note
+
+- After completing the labeling process, the **Label** button will become inactive, preventing further clicks.
+
+- After labeling the inputs, the **Review** button will become active, allowing you to click it to proceed with reviewing.
+
+:::
+
+You'll be redirected to the **Labeling Tasks** tool, where you can begin annotating your inputs.
+
+If you enabled AI-assist when you created a new labeling task, you'll notice that capability enabled in the tool. 
+
+![](/img/community/tasks/task_14.png)
+
+If you did not enable AI-assist, you'll be able to label the inputs manually. 
+
+![](/img/community/tasks/task_15.png)
+
+[Click here](https://docs.clarifai.com/portal-guide/annotate/labeling-tools/#detection-labeling) to learn how to use the **Labeling Tasks** tool to add bounding box annotations to your batch of inputs. 
+
+## Step 11: Start Reviewing 
+
+To start reviewing your inputs, click the **Review** button on the **Labeling Tasks** page. 
+
+![](/img/community/tasks/task_16.png)
+
+You’ll be redirected to the tasks reviewing page, where you can start reviewing the annotations for quality control purposes.
+
+![](/img/community/tasks/task_19.png)
+
+[Click here](https://docs.clarifai.com/portal-guide/annotate/review) to learn how to review the annotations created manually or with AI assistance. 
+
+:::tip info
 
 -	[Members of an organization](https://docs.clarifai.com/portal-guide/clarifai-organizations/members-teams) can create new labeling tasks and utilize the Labeling Tasks tool. They can add collaborators who already exist within the app as well as other organization members. These can be assigned roles as either task workers or task reviewers. Furthermore, there are convenient options available for quickly adding all collaborators or all organization members.
 -	Similarly, [app collaborators](https://docs.clarifai.com/clarifai-basics/applications/collaboration) can also create labeling tasks and assign them to other collaborators who already exist within the app.
