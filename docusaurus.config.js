@@ -69,7 +69,7 @@ const config = {
         items: [
           {
             type: "dropdown",
-            label: "Portal Guide",
+            label: "Portal",
             position: "left",
             items: [
               {
@@ -84,7 +84,7 @@ const config = {
           },
           {
             type: "dropdown",
-            label: "SDK Guide",
+            label: "SDK",
             position: "left",
             items: [
               {
@@ -115,7 +115,7 @@ const config = {
           },
           {
             type: "dropdown",
-            label: "API Guide",
+            label: "API",
             position: "left",
             items: [
               {

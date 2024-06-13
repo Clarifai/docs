@@ -260,7 +260,7 @@ header .join__slack:hover {
 #redocly-ui {
   background-color: white;
   position: fixed;
-  top: 57px;
+  top: 72px;
   left: 0;
   height: calc(100vh - 57px);
   width: 100vw;
@@ -274,10 +274,13 @@ header .join__slack:hover {
 
 .dropdown__menu {
   padding: 15px;
-  background-color: rgba(19, 24, 39, 0.85);
-  backdrop-filter: blur(7.5px);
 }
 
 .dropdown__menu>li {
   padding-top: 5px;
+}
+
+html[data-theme='dark'] .dropdown__menu {
+  background-color: rgba(19, 24, 39, 0.85);
+  backdrop-filter: blur(7.5px);
 }
