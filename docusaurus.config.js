@@ -219,6 +219,11 @@ const config = {
         darkTheme: darkCodeTheme,
         additionalLanguages: ['php', 'java', 'csharp', 'objectivec', 'bash'],
       },
+      colorMode: {
+        defaultMode: 'dark',
+        disableSwitch: false,
+        respectPrefersColorScheme: false,
+      }
     }),
     plugins: [
       [
