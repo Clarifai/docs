@@ -1,0 +1,22 @@
+2024-06-11 10:03:55,063 MainProcess DEBUG    updating download directory to: /root/.cache/unstructured/ingest/dropbox/a5d8d1c6ed
+2024-06-11 10:03:55,068 MainProcess INFO     running pipeline: DocFactory -> Reader -> Partitioner -> Writer -> Copier with config: {"reprocess": false, "verbose": true, "work_dir": "/root/.cache/unstructured/ingest/pipeline", "output_dir": "dropbox-output", "num_processes": 2, "raise_on_error": false}
+2024-06-11 10:03:55,152 MainProcess INFO     Running doc factory to generate ingest docs. Source connector: {"processor_config": {"reprocess": false, "verbose": true, "work_dir": "/root/.cache/unstructured/ingest/pipeline", "output_dir": "dropbox-output", "num_processes": 2, "raise_on_error": false}, "read_config": {"download_dir": "/root/.cache/unstructured/ingest/dropbox/a5d8d1c6ed", "re_download": false, "preserve_downloads": false, "download_only": false, "max_docs": null}, "connector_config": {"remote_url": "dropbox://test", "uncompress": false, "recursive": true, "file_glob": null, "access_config": {"token": "*******"}, "protocol": "dropbox", "path_without_protocol": "test", "dir_path": "test", "file_path": ""}}
+2024-06-11 10:03:55,568 MainProcess INFO     processing 2 docs via 2 processes
+2024-06-11 10:03:55,571 MainProcess INFO     Calling Reader with 2 docs
+2024-06-11 10:03:55,573 MainProcess INFO     Running source node to download data associated with ingest docs
+2024-06-11 10:04:03,339 MainProcess INFO     Calling Partitioner with 2 docs
+2024-06-11 10:04:03,341 MainProcess INFO     Running partition node to extract content from json files. Config: {"pdf_infer_table_structure": false, "strategy": "auto", "ocr_languages": null, "encoding": null, "additional_partition_args": {}, "skip_infer_table_types": null, "fields_include": ["element_id", "text", "type", "metadata", "embeddings"], "flatten_metadata": false, "metadata_exclude": [], "metadata_include": [], "partition_endpoint": "https://api.unstructured.io/general/v0/general", "partition_by_api": false, "api_key": "*******", "hi_res_model_name": null}, partition kwargs: {}]
+2024-06-11 10:04:03,346 MainProcess INFO     Creating /root/.cache/unstructured/ingest/pipeline/partitioned
+2024-06-11 10:04:14,063 MainProcess INFO     Calling Copier with 1 docs
+2024-06-11 10:04:14,067 MainProcess INFO     Running copy node to move content to desired output location
+2024-06-11 10:04:15,970 MainProcess INFO     uploading elements from 1 document(s) to the destination
+2024-06-11 10:04:15,972 MainProcess INFO     Calling Writer with 1 docs
+2024-06-11 10:04:15,975 MainProcess INFO     Running write node to upload content. Destination connector: {"write_config": {"batch_size": 50}, "connector_config": {"access_config": {"api_key": "*******"}, "app_id": "unst-clf", "user_id": "8tzpjy1a841y", "dataset_id": null}, "_client": null}]
+2024-06-11 10:04:16,425 MainProcess INFO     Extending 506 json elements from content in dropbox-output/Crawfords_Auto_Repair_Guide.txt.json
+2024-06-11 10:04:16,445 MainProcess INFO     writing 506 objects to destination app unst-clf 
+2024-06-11 10:04:19 INFO     clarifai.client.input:                                                    input.py:706
+                             Inputs Uploaded                                                                       
+                             code: SUCCESS                                                                         
+                             description: "Ok"                                                                     
+                             details: "All inputs successfully added"                                              
+                             req_id: "2216655c3ae641f1b3789c45f367fdd0" 
