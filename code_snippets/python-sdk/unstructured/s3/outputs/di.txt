@@ -1,0 +1,37 @@
+2024-04-15 13:21:07,085 MainProcess DEBUG    updating download directory to: /root/.cache/unstructured/ingest/s3/5b2778ce2a
+DEBUG:unstructured.ingest:updating download directory to: /root/.cache/unstructured/ingest/s3/5b2778ce2a
+2024-04-15 13:21:07,091 MainProcess INFO     running pipeline: DocFactory -> Reader -> Partitioner -> Writer -> Copier with config: {"reprocess": false, "verbose": true, "work_dir": "/root/.cache/unstructured/ingest/pipeline", "output_dir": "s3-output-local", "num_processes": 2, "raise_on_error": false}
+INFO:unstructured.ingest:running pipeline: DocFactory -> Reader -> Partitioner -> Writer -> Copier with config: {"reprocess": false, "verbose": true, "work_dir": "/root/.cache/unstructured/ingest/pipeline", "output_dir": "s3-output-local", "num_processes": 2, "raise_on_error": false}
+2024-04-15 13:21:07,210 MainProcess INFO     Running doc factory to generate ingest docs. Source connector: {"processor_config": {"reprocess": false, "verbose": true, "work_dir": "/root/.cache/unstructured/ingest/pipeline", "output_dir": "s3-output-local", "num_processes": 2, "raise_on_error": false}, "read_config": {"download_dir": "/root/.cache/unstructured/ingest/s3/5b2778ce2a", "re_download": false, "preserve_downloads": false, "download_only": false, "max_docs": null}, "connector_config": {"remote_url": "s3://new-bucket-for-databricks-integration-23102023/procurement.txt", "uncompress": false, "recursive": false, "file_glob": null, "access_config": {"anonymous": false, "endpoint_url": null, "token": null}, "protocol": "s3", "path_without_protocol": "new-bucket-for-databricks-integration-23102023/procurement.txt", "dir_path": "new-bucket-for-databricks-integration-23102023", "file_path": "procurement.txt"}}
+2024-04-15 13:21:08,156 MainProcess INFO     processing 1 docs via 2 processes
+INFO:unstructured.ingest:processing 1 docs via 2 processes
+2024-04-15 13:21:08,161 MainProcess INFO     Calling Reader with 1 docs
+INFO:unstructured.ingest:Calling Reader with 1 docs
+2024-04-15 13:21:08,164 MainProcess INFO     Running source node to download data associated with ingest docs
+INFO:unstructured.ingest:Running source node to download data associated with ingest docs
+2024-04-15 13:21:11,016 MainProcess INFO     Calling Partitioner with 1 docs
+INFO:unstructured.ingest:Calling Partitioner with 1 docs
+2024-04-15 13:21:11,026 MainProcess INFO     Running partition node to extract content from json files. Config: {"pdf_infer_table_structure": true, "strategy": "auto", "ocr_languages": null, "encoding": null, "additional_partition_args": {}, "skip_infer_table_types": null, "fields_include": ["element_id", "text", "type", "metadata", "embeddings"], "flatten_metadata": false, "metadata_exclude": [], "metadata_include": [], "partition_endpoint": "https://api.unstructured.io/general/v0/general", "partition_by_api": false, "api_key": null, "hi_res_model_name": null}, partition kwargs: {}]
+INFO:unstructured.ingest:Running partition node to extract content from json files. Config: {"pdf_infer_table_structure": true, "strategy": "auto", "ocr_languages": null, "encoding": null, "additional_partition_args": {}, "skip_infer_table_types": null, "fields_include": ["element_id", "text", "type", "metadata", "embeddings"], "flatten_metadata": false, "metadata_exclude": [], "metadata_include": [], "partition_endpoint": "https://api.unstructured.io/general/v0/general", "partition_by_api": false, "api_key": null, "hi_res_model_name": null}, partition kwargs: {}]
+2024-04-15 13:21:11,033 MainProcess INFO     Creating /root/.cache/unstructured/ingest/pipeline/partitioned
+INFO:unstructured.ingest:Creating /root/.cache/unstructured/ingest/pipeline/partitioned
+2024-04-15 13:21:18,576 MainProcess INFO     Calling Copier with 1 docs
+INFO:unstructured.ingest:Calling Copier with 1 docs
+2024-04-15 13:21:18,581 MainProcess INFO     Running copy node to move content to desired output location
+INFO:unstructured.ingest:Running copy node to move content to desired output location
+2024-04-15 13:21:20,011 MainProcess INFO     uploading elements from 1 document(s) to the destination
+INFO:unstructured.ingest:uploading elements from 1 document(s) to the destination
+2024-04-15 13:21:20,015 MainProcess INFO     Calling Writer with 1 docs
+INFO:unstructured.ingest:Calling Writer with 1 docs
+2024-04-15 13:21:20,018 MainProcess INFO     Running write node to upload content. Destination connector: {"write_config": {"batch_size": 50}, "connector_config": {"access_config": {"api_key": "*******"}, "app_id": "unst-clf", "user_id": "8tzpjy1a841y", "dataset_id": null}, "_client": null}]
+INFO:unstructured.ingest:Running write node to upload content. Destination connector: {"write_config": {"batch_size": 50}, "connector_config": {"access_config": {"api_key": "***REDACTED***"}, "app_id": "unst-clf", "user_id": "8tzpjy1a841y", "dataset_id": null}, "_client": null}]
+2024-04-15 13:21:20,517 MainProcess INFO     Extending 204 json elements from content in s3-output-local/procurement.txt.json
+INFO:unstructured.ingest:Extending 204 json elements from content in s3-output-local/procurement.txt.json
+2024-04-15 13:21:20,532 MainProcess INFO     writing 204 objects to destination app unst-clf 
+INFO:unstructured.ingest:writing 204 objects to destination app unst-clf 
+2024-04-15 13:21:23 INFO     clarifai.client.input:                                                    input.py:687
+                             Inputs Uploaded                                                                       
+                             code: SUCCESS                                                                         
+                             description: "Ok"                                                                     
+                             details: "All inputs successfully added"                                              
+                             req_id: "5c9d83ec06888714335749a3aa572c0b" 

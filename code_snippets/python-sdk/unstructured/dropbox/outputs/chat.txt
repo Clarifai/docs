@@ -1,0 +1,3 @@
+'Brake fluid is a type of hydraulic fluid used in hydraulic brake and hydraulic clutch applications in vehicles. 
+It is responsible for transferring force into pressure, and to amplify braking force. 
+The level of brake fluid in a vehicle can be checked via a clear reservoir, and it should ideally be between the minimum and maximum level marks. If the fluid is low, it could indicate a potential issue and might require a visit to a mechanic. Most vehicles also have a dashboard light that illuminates when the brake fluid is low.'
