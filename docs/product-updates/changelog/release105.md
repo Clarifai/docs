@@ -19,12 +19,6 @@ draft: false
 | :---: | :---: | :---: | :---: |
 | ![new-feature](/img/new_feature.jpg) |![improvement](/img/improvement.jpg) | ![bug](/img/bug.jpg) | ![enterprise](/img/enterprise.jpg) |
 
-## Changes to Use of PATs and API Keys
-
-|Status                                |Change                  |Details                    |
-|--------------------------------------|------------------------|---------------------------|
-|![new-feature](/img/new_feature.jpg) <br/> <br/> **(Breaking change)** | Critical changes to the use of PATs and API keys |<ul><li>An upcoming release of Clarifai’s API, 10.7, will significantly change how Personal Access Tokens (PATs) and API keys work. We plan to implement this change on August 6th, 2024. Learn more [here](https://docs.clarifai.com/product-updates/upcoming-api-changes/pat-api-keys). </li> </ul>|
-
 ## Data Labeling​
 
 :::warning Private Preview
@@ -119,3 +113,10 @@ These data labeling features have been released as [**Private Preview**](https:/
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
 |  ![bug](/img/bug.jpg)    |  Fixed an issue where `get_upload_status` would override `log_warnings` in the `dataset.upload_dataset` function | <ul><li>The issue occurred because `self.logger` was shared between both loggers, causing the upload status table to overwrite the log file when both `get_upload_status` and `log_warnings` arguments were used simultaneously. We fixed the issue.</li></ul>  |    
+
+
+## Planning for Future Releases
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+|![new-feature](/img/new_feature.jpg) <br/> <br/> | Planned future breaking changes |<ul><li>An upcoming release of Clarifai’s API, 10.7, will significantly change how Personal Access Tokens (PATs) and API keys work. We plan to implement this change on August 6th, 2024. Learn more [here](https://docs.clarifai.com/product-updates/upcoming-api-changes/pat-api-keys). </li> </ul>|

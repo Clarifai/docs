@@ -70,15 +70,14 @@ Here are the key features of the template:
 
 ### MMDetection_FasterRCNN
 
-**MMDetection_FasterRCNN** refers to a specific model implemented in the MMDetection framework that is based on the Faster R-CNN (Region-based Convolutional Neural Networks) architecture. Faster R-CNN is a widely used and highly effective object detection algorithm.
+The **MMDetection_FasterRCNN** template is a configuration provided by the MMDetection framework for utilizing the [Faster R-CNN](https://arxiv.org/abs/1506.01497) model, which is a popular and highly effective object detection model. Faster R-CNN stands for Faster Region-based Convolutional Neural Network and is known for its high accuracy in detecting objects within images.
 
-The Faster R-CNN algorithm consists of two main components: a region proposal network (RPN) and a region-based CNN for detection. The RPN generates potential object bounding box proposals, and the region-based CNN classifies and refines these proposals to produce the final detection results.
+Here are the key features of the template:
 
-In MMDetection, the **MMDetection_FasterRCNN** model provides a pre-configured implementation of the Faster R-CNN architecture along with pre-trained weights on standard benchmark datasets like COCO and VOC. It allows users to utilize the model out of the box for object detection tasks or as a starting point for further customization and fine-tuning.
-
-**MMDetection_FasterRCNN** leverages the MMDetection framework's capabilities for data preprocessing, model training, and evaluation. Users can train the model on their own datasets, adjust hyperparameters, and analyze the detection results using the provided tools.
-
-The Faster R-CNN algorithm has been proven to achieve excellent performance in terms of accuracy, making **MMDetection_FasterRCNN** a valuable tool for a wide range of object detection applications.
+- **Two-stage detection** — Uses an RPN (Region Proposal Network) for generating region proposals (potential object bounding boxes) and a Fast R-CNN detector for performing object classification and bounding box regression on the proposed regions.
+- **Shared convolutional layers** — The RPN and the Fast R-CNN detection network share convolutional features, improving efficiency.
+- **Anchor boxes** — Uses predefined anchor boxes of different scales and aspect ratios at each sliding window location to handle objects of various shapes and sizes. Predicts offsets to these anchors to refine the bounding box locations. 
+- **End-to-end training** — The entire Faster R-CNN model, including the RPN and the detection network, is trained end-to-end, enhancing performance.
 
 ## Clarifai Templates
 
@@ -88,17 +87,15 @@ We offer the following visual detection templates.
 
 ### Clarifai_InceptionV4
 
-This is a visual detector template based on RetinaNet, a popular object detection framework, that utilizes the InceptionV4 architecture as its backbone.
+The **Clarifai_InceptionV4** template is a pre-configured setup provided by Clarifai, leveraging the [InceptionV4](https://arxiv.org/abs/1602.07261) model for visual recognition tasks such as object detection and instance segmentation.
 
-[InceptionV4](https://arxiv.org/abs/1602.07261) is a variant of the Inception architecture, which was originally introduced by Google for image classification tasks. The InceptionV4 model is a convolutional neural network (CNN) that is designed to extract high-level features from images for tasks such as object recognition, classification, and detection. It incorporates various innovative techniques, including inception modules with multiple parallel branches, factorized convolutions, and residual connections, to enhance its performance and efficiency.
+InceptionV4 is a convolutional neural network architecture that builds on the success of the earlier Inception models (also known as GoogLeNet), designed by researchers at Google. InceptionV4 combines the strengths of InceptionV3 and Residual Networks (ResNet) to achieve high accuracy and efficiency in visual recognition tasks.
 
-**Clarifai_InceptionV4** template leverages the strengths of InceptionV4 by applying it at multiple image scales, allowing for robust detection across a range of object sizes.
+Here are the key features of the template:
 
-Compared to InceptionV2, **Clarifai_InceptionV4** sacrifices speed for increased accuracy. While InceptionV2 is faster, **Clarifai_InceptionV4** is slower but offers improved precision in object detection tasks. This makes it well-suited for applications that prioritize accuracy over real-time inference.
-
-**Clarifai_InceptionV4** is pretrained on either the COCO (Common Objects in Context) dataset or the OpenImages dataset. COCO is a widely used benchmark dataset for object detection, while OpenImages is a large-scale dataset with a diverse range of object categories. Pretraining on these datasets enables the model to learn general representations of objects, improving its ability to detect and classify objects accurately.
-
-By combining the strengths of the RetinaNet framework, the powerful InceptionV4 backbone, and pretrained weights on COCO or OpenImages, **Clarifai_InceptionV4** provides a robust and accurate solution for object detection tasks, making it a valuable tool for various computer vision applications.
+-  **Hybrid architecture** — Combines inception modules and residual connections for comprehensive feature extraction and efficient training.
+-  **High accuracy** — Achieves high precision in visual recognition tasks due to its deep and complex architecture.
+-  **Efficient training** — Designed to be trained efficiently on large datasets, making it suitable for tasks requiring detailed feature extraction and high precision.
 
 ### Clarifai_InceptionV2
 
