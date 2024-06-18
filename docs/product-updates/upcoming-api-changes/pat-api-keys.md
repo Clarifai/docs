@@ -1,7 +1,7 @@
 ---
 description: Learn about breaking changes to the use of PATs and API keys
 # For positioning, we use negative position so that the oldest announcements are displayed at the bottom. Any time you add a new announcement, increase the position by -1.
-sidebar_position: -5
+sidebar_position: -8
 ---
 
 # Changes to Use of PATs and API Keys
@@ -11,19 +11,19 @@ sidebar_position: -5
 
 ## Date
 
-March 30th, 2023
+August 6th, 2024
 
 ## Change
 
-**Breaking change**—Critical changes to the use of PATs and API keys
+**Breaking change** — Critical changes to the use of PATs and API keys
 
 ## Details
 
-An upcoming version of Clarifai’s API, 9.3, will significantly change how personal access tokens (PATs) and API keys work. We plan to implement this change on March 30, 2023, providing 45 days to change the way your applications authenticate on our platform.  
+An upcoming release of Clarifai’s API, 10.7, will significantly change how Personal Access Tokens (PATs) and API keys work. We plan to implement this change on August 6th, 2024, providing 45 days to change the way your applications authenticate on our platform.  
 
 #### Terminology
 
-If any of the terms used here are unfamiliar, you can check them in our [glossary](https://docs.clarifai.com/clarifai-basics/glossary). Specifically, we mention [models](https://docs.clarifai.com/clarifai-basics/glossary#model), [workflows](https://docs.clarifai.com/clarifai-basics/glossary#workflow), [public](https://docs.clarifai.com/clarifai-basics/glossary/#public), [private](https://docs.clarifai.com/clarifai-basics/glossary/#private), [collaboration](https://docs.clarifai.com/clarifai-basics/glossary/#collaboration), [organization](https://docs.clarifai.com/clarifai-basics/glossary/#organization), and [community](https://docs.clarifai.com/clarifai-basics/glossary/#community).
+If any of the terms used here are unfamiliar, you can check them in our [glossary](https://docs.clarifai.com/clarifai-basics/glossary). Specifically, we mention [models](https://docs.clarifai.com/clarifai-basics/glossary/#model), [workflows](https://docs.clarifai.com/clarifai-basics/glossary/#workflows), [public](https://docs.clarifai.com/clarifai-basics/glossary/#public), [private](https://docs.clarifai.com/clarifai-basics/glossary/#private), [collaboration](https://docs.clarifai.com/clarifai-basics/glossary/#collaboration), [organization](https://docs.clarifai.com/clarifai-basics/glossary/#organization), and [community](https://docs.clarifai.com/clarifai-basics/glossary/#community).
 
 #### Why we are making this change
 

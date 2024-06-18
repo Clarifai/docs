@@ -19,6 +19,12 @@ draft: false
 | :---: | :---: | :---: | :---: |
 | ![new-feature](/img/new_feature.jpg) |![improvement](/img/improvement.jpg) | ![bug](/img/bug.jpg) | ![enterprise](/img/enterprise.jpg) |
 
+## Changes to Use of PATs and API Keys
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+|![new-feature](/img/new_feature.jpg) <br/> <br/> **(Breaking change)** | Critical changes to the use of PATs and API keys |<ul><li>An upcoming release of Clarifai’s API, 10.7, will significantly change how Personal Access Tokens (PATs) and API keys work. We plan to implement this change on August 6th, 2024. Learn more [here](https://docs.clarifai.com/product-updates/upcoming-api-changes/pat-api-keys). </li> </ul>|
+
 ## Data Labeling​
 
 :::warning Private Preview
@@ -29,8 +35,8 @@ These data labeling features have been released as [**Private Preview**](https:/
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
-| ![new-feature](/img/new_feature.jpg) |Introduced a new auto-annotation experience for labeling already existing inputs in datasets| <ul><li>You can now set up a labeling task and enable automatic annotation, streamlining the process of annotating your text and image inputs quickly and efficiently. </li><li>You can select a model or workflow you own or choose one published in the Community for the auto-annotation task.</li><li>You can also review and edit the annotations from auto-annotation tasks. </li></ul> |
-| ![new-feature](/img/new_feature.jpg) |Introduced the ability to manually review labeled inputs by partitioning them | <ul><li>You can now distribute inputs to be reviewed across multiple reviewers in the Labeling Tasks tool. This lets you automatically distribute labeled assets across multiple reviewers to improve the speed of review mode and reduce chances for a single point of dependence. </li></ul>   |
+| ![new-feature](/img/new_feature.jpg) |Introduced a new [auto-annotation](https://docs.clarifai.com/portal-guide/annotate/auto-annotation) experience for labeling already existing inputs in datasets| <ul><li>You can now set up a labeling task and enable automatic annotation, streamlining the process of annotating your text and image inputs quickly and efficiently. </li><li>You can select a model or workflow you own or choose one published in the Community for the auto-annotation task.</li><li>You can also review and edit the annotations from auto-annotation tasks. </li></ul> |
+| ![new-feature](/img/new_feature.jpg) |Introduced the ability to manually [review](https://docs.clarifai.com/portal-guide/annotate/review) labeled inputs by partitioning them | <ul><li>You can now distribute inputs to be reviewed across multiple reviewers in the Labeling Tasks tool. This lets you automatically distribute labeled assets across multiple reviewers to improve the speed of review mode and reduce chances for a single point of dependence. </li></ul>   |
 
 
 ## Devtools Integrations
