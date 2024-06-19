@@ -18,11 +18,11 @@ With these training templates, you can quickly and efficiently create detection 
 
 ## MMDetection Templates
 
-[MMDetection](https://mmdetection.readthedocs.io/en/latest/overview.html), is a powerful open-source toolbox developed as part of the OpenMMLab project. It is based on PyTorch and provides a flexible and extensible framework for object detection and instance segmentation tasks. 
+[MMDetection](https://mmdetection.readthedocs.io/en/latest/overview.html) is a powerful open-source toolbox developed as part of the OpenMMLab project. It is based on PyTorch and provides a flexible and extensible framework for object detection and instance segmentation tasks. 
 
-MMDetection offers a rich set of templates and resources that simplifies the process of developing and deploying advanced object detection and instance segmentation models. 
+MMDetection offers a rich set of templates and resources that simplify the process of developing and deploying advanced object detection and instance segmentation models. 
 
-We provide support for the following MMDetection templates to accelerate your development efforts and ensure you achieve state-of-the-art results. 
+We support a wide range of MMDetection templates to accelerate your development efforts and ensure you achieve state-of-the-art results. 
 
 :::warning info
 
@@ -36,7 +36,7 @@ The **MMDetection_YOLOX** template is a configuration in the MMDetection framewo
 
 YOLOX introduces several improvements over previous YOLO versions, including:
 
-- **Anchor-free design** — Eliminates the need for predefined anchors (reference boxes for bounding box prediction). Absence of hand-crafted anchors allows the model to predict bounding boxes directly. This makes the model more flexible and efficient in handling objects of various shapes and sizes.
+- **Anchor-free design** — Eliminates the need for predefined anchors (reference boxes for bounding box prediction). The absence of hand-crafted anchors allows the model to predict bounding boxes directly. This makes the model more flexible and efficient in handling objects of various shapes and sizes.
 - **Multi positives with center sampling** — Enhances positive sample selection by focusing on bounding box centers, improving feature learning and detection accuracy.
 - **Decoupled head**: Separates the tasks of object classification and bounding box regression into two branches, which is a significant departure from the single-head design in the previous YOLO models. Decoupled head leads to more accurate predictions and faster model convergence.
 - **SimOTA label assignment** — Assigns positive or negative labels to objects based on their Intersection over Union (IoU) with ground truth boxes, ensuring more accurate and context-aware label assignments.
@@ -79,6 +79,10 @@ Here are the key features of the template:
 - **Anchor boxes** — Uses predefined anchor boxes of different scales and aspect ratios at each sliding window location to handle objects of various shapes and sizes. Predicts offsets to these anchors to refine the bounding box locations. 
 - **End-to-end training** — The entire Faster R-CNN model, including the RPN and the detection network, is trained end-to-end, enhancing performance.
 
+### MMDetection_AdvancedConfig
+
+[Click here](https://docs.clarifai.com/portal-guide/model/deep-training/custom-templates) to learn how to use the **MMDetection_AdvancedConfig** template to create your own customized template for deep fine-tuning tasks. 
+
 ## Clarifai Templates
 
 Clarifai’s templates are our own configurations designed to streamline common object detection and instance segmentation tasks. These templates provide essential settings and structures, offering a solid foundation for building custom detection and segmentation pipelines. 
@@ -99,12 +103,16 @@ Here are the key features of the template:
 
 ### Clarifai_InceptionV2
 
-This is a visual detector template based on RetinaNet using the Inception V2 backbone architecture, which is applied at multiple image scales. It offers a balance between speed and accuracy. Compared to InceptionV4, InceptionV2 is faster but provides slightly lower accuracy.
+The **Clarifai_InceptionV2** template is a pre-configured setup provided by Clarifai, leveraging the [InceptionV2](https://arxiv.org/pdf/1512.00567v3) model, a convolutional neural network designed for efficient and accurate visual recognition tasks such as object detection and instance segmentation. 
 
-The model can be pre-trained on either the COCO (Common Objects in Context) dataset or the OpenImages dataset. These datasets contain a wide range of labeled images, enabling the model to learn to detect various objects and entities in images. The choice of dataset for pretraining depends on the specific application and the types of objects or entities you want the model to detect.
+InceptionV2 is an improvement over the original Inception (GoogLeNet) model, enhancing both performance and efficiency. It includes several architectural updates to optimize computational resources while maintaining high accuracy.
 
-**Clarifai_InceptionV2** serves as an efficient deep learning template that leverages the Inception V2 backbone architecture, providing a good trade-off between speed and accuracy for object detection tasks.
+Here are the key features of the template:
 
+-	**Inception modules** — Uses inception modules to perform convolutions at multiple scales for comprehensive feature extraction.
+-	**Efficiency improvements** — Utilizes factorized convolutions and reduction modules to reduce computational complexity.
+-	**Improved training** — Incorporates batch normalization to stabilize and accelerate training.
+ 
 ## Other Templates
 
 We also support the following additional templates. 
@@ -125,7 +133,7 @@ You can customize most hyperparameters by specifying the following values:
 
 - `minimum` — The minimum value a given parameter can take;
 - `maximum` — The maximum value a given parameter can take;
-- `step` — Determines how much you can increment or decrement the minimum or maximum value in a single click/change.
+- `step` — Determines how much you can increase or decrease the minimum or maximum value in a single click/change.
 
 :::
 
@@ -134,7 +142,7 @@ You can customize most hyperparameters by specifying the following values:
 The image size hyperparameter defines the dimensions of the input images used for training and inference. It is crucial because it affects the model's performance, memory consumption, and computational requirements.
 
 - **Lower values:** Use less memory and enable faster processing but might reduce detection accuracy due to fewer pixels.
-- **Higher values:** Provide more pixel information, potentially increasing detection accuracy but require more memory and computational power.
+- **Higher values:** Provide more pixel information, potentially increasing detection accuracy, but require more memory and computational power.
 
 :::tip
 
@@ -147,7 +155,7 @@ You can specify either a single value or multiple values:
 - **Single value:** When a single value is specified, images are resized so that the minimum side (either width or height) matches that value. The aspect ratio is maintained by adjusting the other dimension proportionally.
 - **Multiple values:** When more than one value is specified, and combined with the "keep_aspect_ratio=False" hyperparameter (if supported by the template), images are resized to the exact width and height specified, regardless of the original aspect ratio.
 
-For example, the valid choices for the image size hyperparameter you can specify for the Clarifai_InceptionV4 template are 320, 512, or 800.
+For example, the valid choices for the image size hyperparameter you can specify for the **Clarifai_InceptionV4** template are 320, 512, or 800.
 
 ### Max Aspect Ratio
 
@@ -188,7 +196,7 @@ By setting an appropriate value for this hyperparameter, you can ensure effectiv
 
 ### Per Item Lrate
 
-This is the initial learning rate per item; it's the rate that the model weights are changed per item. The lrate (learning rate) is a tuning parameter in an optimization algorithm that determines the step size at each iteration while moving toward a minimum of a loss function.
+This is the initial learning rate per item; it's the rate at which the model weights are changed per item. The lrate (learning rate) is a tuning parameter in an optimization algorithm that determines the step size at each iteration while moving toward a minimum of a loss function.
 
 The overall learning rate (per step) is calculated by `lrate = batch_size * per_item_lrate`. The minimum value it supports for customization is 0.0.
 
@@ -212,7 +220,7 @@ You can choose to freeze between 1 and 4 stages, adjustable in increments of 1. 
 
 This is the lower limit for the random resizing. It means that during training, the input images will be randomly resized to a size equal to or larger than this lower limit. 
 
-It uses the same one or two element format as `image_size`. And if it's empty, it uses `image_size`. If the original image size is smaller than the lower limit, it will not be resized, and the original size will be used.
+It uses the same one or two-element format as `image_size`. And if it's empty, it uses `image_size`. If the original image size is smaller than the lower limit, it will not be resized, and the original size will be used.
 
 By setting an appropriate lower limit, you can ensure that input images are resized within a desirable range, which helps in augmenting the training data and improving model robustness.
 
@@ -220,7 +228,7 @@ By setting an appropriate lower limit, you can ensure that input images are resi
 
 This is the upper limit for the random resizing. It means that during training, the input images will be randomly resized to a size equal to or smaller than this upper limit. 
 
-It uses the same one or two element format as `image_size`. And if it's empty, it uses `image_size`. If the original image size is already smaller than the upper limit, it will not be resized, and the original size will be used.
+It uses the same one or two-element format as `image_size`. And if it's empty, it uses `image_size`. If the original image size is already smaller than the upper limit, it will not be resized, and the original size will be used.
 
 Setting an appropriate upper limit helps ensure that input images are resized within a desired range, enhancing data augmentation and contributing to more effective model training.
 
@@ -257,7 +265,7 @@ This boolean parameter specifies whether to use focal loss or Online Hard Exampl
 
 - **Focal Loss (True):** Focal loss is a modification of the standard cross-entropy loss that addresses class imbalance by introducing a modulating factor. This factor downweights the contribution of easy examples and focuses more on hard examples, improving the training of imbalanced datasets by giving more importance to challenging samples.
 
-- **OHEM (False):** Online Hard Example Mining (OHEM) is a technique that also addresses class imbalance. Instead of using all samples in a batch, OHEM selects the hardest examples (those with the highest loss) for backpropagation. This focuses training on difficult samples, enhancing learning efficiency and effectiveness, especially when dealing with many easy background samples.
+- **OHEM (False):** Online Hard Example Mining (OHEM) is a technique that also addresses class imbalance. Instead of using all samples in a batch, OHEM selects the hardest examples (those with the highest loss) for backpropagation. This focuses the training on difficult samples, enhancing learning efficiency and effectiveness, especially when dealing with many easy background samples.
 
 By setting this hyperparameter, you can choose between focal loss and OHEM to handle class imbalance, focusing training efforts on more challenging and informative examples.
 
@@ -265,7 +273,7 @@ By setting this hyperparameter, you can choose between focal loss and OHEM to ha
 
 This hyperparameter specifies the pre-initialization weights for the base model. For instance, "mscoco" refers to using weights pre-trained on the Microsoft COCO dataset.
 
-This setting allows you to initialize your model with weights trained on a large and diverse dataset like COCO, leveraging learned features and accelerating training on your specific task or dataset.
+This setting allows you to initialize your model with weights trained on a large and diverse dataset, leveraging learned features and accelerating training on your specific task or dataset.
 
 ### Base Model
 
