@@ -1,5 +1,6 @@
 const OASNormalize = require("oas-normalize");
-const path = require("path")
+const fs = require("fs");
+const path = require("path");
 const sdk = require('postman-collection');
 const postman = require('postman-code-generators');
 
@@ -131,16 +132,28 @@ oas.validate({
     definition.servers = servers;
     const collection = convertToPostmanCollection(definition);
     collection.items.each((item) => {
-        const language = 'nodejs'; // Change this to the desired language
-        const variant = 'request'; // Request variant for nodejs
+        const language = 'javascript'; // Change this to the desired language
+        const variant = 'fetch'; // Request variant for nodejs
 
         postman.convert(language, variant, item.request, {}, (error, snippet) => {
             if (error) {
-            console.error('Error generating code snippet:', error);
+                console.error('Error generating code snippet:', error);
             } else {
-            console.log(`\n${item.name}:\n${snippet}`);
+                const [method, pathKey] = item.name.split(' ', 2);
+                const endpoint = definition.paths?.[pathKey.toLowerCase()]?.[method.toLowerCase()];
+                if(endpoint) {
+                    if (!endpoint['x-codeSamples']) {
+                        endpoint['x-codeSamples'] = [];
+                    }
+                    endpoint['x-codeSamples'].push({
+                        lang: language,
+                        label: language.toUpperCase(),
+                        source: snippet
+                    });
+                }
             }
         });
     });
-    // console.log(JSON.stringify(collection.toJSON(), null, 2));
+
+    fs.writeFileSync(path.resolve(__dirname, "static/api-spec/clarifai-v3.json"), JSON.stringify(definition, null, 2));
 });

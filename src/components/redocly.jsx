@@ -13,7 +13,7 @@ export default function Redocly() {
         };
 
         const initRedoc = () => {
-            Redoc.init(window.location.origin + '/api-spec/clarifai.json', {
+            Redoc.init(window.location.origin + '/api-spec/clarifai-v3.json', {
                 theme: { colors: { primary: { main: '#0c38f6' } } },
             }, document.querySelector('#redocly-ui'));
         };
