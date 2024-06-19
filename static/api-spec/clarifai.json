@@ -3133,7 +3133,7 @@
           },
           {
             "name": "status.code",
-            "description": "Status code from internal codes.\n\n - ZERO: to be revised and greatly expanded\n - SUCCESS: Generic\n - MOVED: Resource moved. Respond with Http status 307 and add new Location header to response\n - TEAPOT: SUCCESS_WARNING_API_DEPRECATED = 10001;\nSUCCESS_WARNING_CLIENT_DEPRECATED = 10002;\n - CONN_ACCOUNT_ISSUES: Clarifai Connection Codes: 11xxx\n\nexpired cc, still in trial, feature not supported in your tier\n - CONN_TOKEN_INVALID: invalid auth token used. Deprecated: we should return CONN_KEY_INVALID instead now in all cases.\n - CONN_CREDENTIALS_INVALID: invalid auth credentials\n - CONN_EXCEED_HOURLY_LIMIT: throttle hourly limit exceeded\n - CONN_EXCEED_MONTHLY_LIMIT: throttle monthly limit exceeded\n - CONN_THROTTLED: throttler and billing stuff\n - CONN_EXCEEDS_LIMITS: throttler and billing stuff\n - CONN_INSUFFICIENT_SCOPES: api key has insufficient permissions\n - CONN_KEY_INVALID: api key is invalid\n - CONN_KEY_NOT_FOUND: api key not found\n - CONN_BAD_REQUEST_FORMAT: multipart form parsing, broken json, etc\n - CONN_DOES_NOT_EXIST: when path is bad\n - CONN_INVALID_REQUEST: something wrong with a header\n - CONN_METHOD_NOT_ALLOWED: when a request method is not allowed\n - CONN_NO_GDPR_CONSENT: lack GDPR consent\n - CONN_AUTH_METHOD_DISABLED: authentication method is disabled\n - MODEL_TRAINED: Model/Custom Training related 20xxx\n\nCustom model has been already trained.\n - MODEL_TRAINING: Custom model is currently training.\n - MODEL_UNTRAINED: Custom model has not yet been trained.\n - MODEL_QUEUED_FOR_TRAINING: Custom model is currently in queue for training, waiting on assets to process first.\n - MODEL_TRAINING_FAILED: generic err msg for any type of model training err.\n - MODEL_BUILDING: For new V3 DockerInternalType models which are built images\n - MODEL_BUILDING_FAILED: Failed to build image for model.\n - MODEL_BUILD_UNEXPECTED_ERROR: Failed to build image for model.\n - MODEL_TRAINING_NO_DATA: Custom model training had no data.  FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_NO_POSITIVES: Custom model training had no positive examples. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_ONE_VS_N_SINGLE_CLASS: Custom model training was ONE_VS_N but with a single class. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_TIMED_OUT: Training took longer than hard coded timeouts. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_WAITING_ERROR: Training got error waiting on asset pipeline to finish. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_UNKNOWN_ERROR: Training threw an unknown exception.\n - MODEL_TRAINING_MSG_REDELIVER: Training message was redelivered. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_INSUFFICIENT_DATA: Training got error due to insufficient labelled data. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_INVALID_PARAMS: FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_INVALID_DATA_TOLERANCE_EXCEEDED: Training is stopped because too much data was dropped. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_EVALUATION_TIMED_OUT: Evaluation took longer than hard coded timeouts. FIXME(yang): deprecate this. Use the 21317 + errStatusMsg\n - MODEL_EVALUATION_WAITING_ERROR: Evaluation got error waiting on asset pipeline to finish.FIXME(yang): deprecate this. Use the 21317 + errStatusMsg\n - MODEL_EVALUATION_UNKNOWN_ERROR: EVALUATION THREW AN UNKNOWN EXCEPTION.\n - MODEL_EVALUATION_MSG_REDELIVER: Eval message was redelivered. FIXME(yang): deprecate this. Use the 21317 + errStatusMsg\n - MODEL_EVALUATION_NEED_LABELS: Don't have enough concepts labelled to perform evaluation. FIXME(yang): deprecate this. Use the 21317 + errStatusMsg\n - MODEL_EVALUATION_NEED_INPUTS: Don't have enough inputs per concept to perform evaluation. FIXME(yang): deprecate this. Use the 21317 + errStatusMsg\n - MODEL_EVALUATION_FAILED: Generic err code for eval failure.\n - MODEL_DEPLOYMENT_FAILED: Used when inference coordinator failed to deploy spire and throws an error\n - MODEL_DEPLOYING: Used when calling the inference coordinator to deploy a spire\n - MODEL_QUEUED_FOR_DEPLOYMENT: Used when training is completed\n - MODEL_NOT_DEPLOYED: Used when model spire deployment is manually taken down or due to inactivity\n - MODEL_REFERENCE_INVALID_ARGUMENT: Used when a model reference field is not set properly\n - MODEL_EXAMPLE_INPUT_INVALID_ARGUMENT: Used when a model example input field is not set properly\n - MODEL_EXPORTED: Model Export status codes\n - WORKFLOW_NO_MATCHING_INPUT: specified model input not in workflow\n - WORKFLOW_REQUIRE_TRAINED_MODEL: specified model must be trained\n - WORKFLOW_INVALID_ARGUMENT: error in the request somewhere\n - WORKFLOW_INVALID_REQUEST: error in the request somewhere\n - CONCEPT_MODIFY_SUCCESS: Concept related 23xxx\n - ANNOTATION_SUCCESS: Annotation related 24xxx\n - METADATA_INVALID_PATCH_ARGUMENTS: Metadata related 249xx\n - TRAINER_JOB_STATE_NONE: Training service related 25xxx\n - DATA_DUMP_SUCCESS: Data Dump related 251xx\n - DATA_DUMP_NO_DATA: DEPRECATED: Not used anymore. Now for an empty data dump, DATA_DUMP_SUCCESS is returned. To detect an empty data dump, check if the inptus count is 0.\n - APP_DUPLICATION_SUCCESS: Duplicate related 252xx\n - MODULE_DOES_NOT_EXIST: Module related codes 253xx\n - BULK_OPERATION_SUCCESS: Bulk Operation related codes 254xx\n - RUNNER_DOES_NOT_EXIST: Runner related codes 256xx\n - NODEPOOL_DOES_NOT_EXIST: Nodepool related codes 257xx\n - COMPUTE_CLUSTER_DOES_NOT_EXIST: ComputeCluster related codes 258xx\n - DEPLOYMENT_DOES_NOT_EXIST: Deployment related codes 259xx\n - INPUT_DOWNLOAD_SUCCESS: Input:Image related 30xxx\n - INPUT_DOWNLOAD_PENDING: when things are async, this is the default status.\n - INPUT_DOWNLOAD_FAILED: any type of error downloading and processing\n - INPUT_VIDEO_DOWNLOAD_SUCCESS: Input:Video related 31xxx -- Deprecated\n - INPUT_WRITES_DISABLED_FOR_MAINTENANCE: deprecate this one. Use REQUEST_DISABLED_FOR_MAINTENANCE\n - PREDICT_INVALID_REQUEST: API formatting issues 4000x\n - DATABASE_DUPLICATE_KEY: Other related 400xx\n - EXTERNAL_CONNECTION_ERROR: could not connect to external services\n - QUEUE_CONN_ERROR: Queue related errors 41xxx\n - SQS_OVERLIMIT: SQS related errors 411xx\n - SEARCH_INTERNAL_FAILURE: Search related errors 43xxxx\n - EVALUATION_QUEUED: Workflow evaluation err code\n - STRIPE_EVENT_ERROR: Stripe 44xxx\n - CACHE_MISS: Redis/Cache 45xxx\n - SIGNUP_EVENT_ERROR: Sift Science 46xxx\n - APP_COUNT_INVALID_MESSAGE: Application counts related errors 470xx\n - MP_DOWNLOAD_ERROR: Media processor related errors 471xx -- DEPRECATED\n - DATATIER_CONN_ERROR: DataTier related error 472xx\n - USER_CONSENT_FACE: User legal consent stauts related 50xxx\n - WORKER_MISSING: Workers 51xxx\n - COLLECTOR_MISSING: Collectors 52xxx\n - SSO_IDENTITY_PROVIDER_DOES_NOT_EXIST: SSO 53xxx\n - TASK_IN_PROGRESS: Tasks 54xxx\nThe task was created.\n - TASK_DONE: The task is completed.\n - TASK_WONT_DO: The task is marked as abandoned.\n - TASK_FAILED: An error occurred during add-task-annotations or add-auto-annotations pipeline.\n - TASK_IDLE: When an Auto Annotation task job has finished processing its last batch and is waiting for more dataset assets.\n - TASK_CONFLICT: The task operation is in conflict with the current state of the server.\n - TASK_NOT_IMPLEMENTED: Certain task-related scenarios are not implemented.\n - TASK_MISSING: Task was not found.\n - TASK_PERMISSION_DENIED: Not allowed to perform a task-related action.\n - LABEL_ORDER_PENDING: Label Order Related Status Code 55xxx\n - LICENSE_ACTIVE: License Related Status Code 600xx\n - LICENSE_DELETED: hidden state not reflected to users\n - PASSWORD_VALIDATION_SUCCESS: Password Related Status Code\n - FEATUREFLAG_CONFIG_NOT_FOUND: Feature flags status code\n - MAINTENANCE_SUCCESS: Maintenance status code\n - DATASET_VERSION_PENDING: Datasets 64xxx\nThe dataset version is pending to be processed.\n - DATASET_VERSION_IN_PROGRESS: The dataset version is currently being processed.\n - DATASET_VERSION_READY: The dataset version is ready to be used.\n - DATASET_VERSION_FAILURE: An error occurred during the dataset version processing.\n - DATASET_VERSION_UNEXPECTED_ERROR: An unexpected error occurred during the dataset version processing.\n - DATASET_VERSION_CONFLICT: An alteration to dataset version would create a conflict\n - DATASET_INPUT_SUCCESS: The dataset input was successfully added.\n - DATASET_INPUT_DUPLICATE: The dataset input is a duplicate.\nDeprecated: Unused.\n - DATASET_VERSION_EXPORT_SUCCESS: The dataset version export is completed.\n - DATASET_VERSION_EXPORT_PENDING: The dataset version is pending to be exported.\n - DATASET_VERSION_EXPORT_FAILED: An error occurred during the dataset version export.\n - DATASET_VERSION_EXPORT_IN_PROGRESS: The dataset version is currently being exported.\n - DATASET_VERSION_EXPORT_UNEXPECTED_ERROR: An unexpected error occurred during the dataset version export.\n - JOB_QUEUED: Generic Job status codes\n - AUTH_MISSING_IDP_ASSOC: auth issues\n\nTODO: Knowledge graph related 80xxx\n - UPLOAD_IN_PROGRESS: Multipart uploading status codes\n - BILLING_INVALID_INFO: Billing related issues: 69xxx\n - INTERNAL_SERVER_ISSUE: Internal issues: 98xxx\n - CONN_UNCATEGORIZED: Uncategorized: 99xxx: move off as soon as known\n - BAD_REQUEST: Deprecated: migrate off to one of the internal issues\n - SERVER_ERROR: Deprecated: migrate off to one of the internal issues",
+            "description": "Status code from internal codes.\n\n - ZERO: to be revised and greatly expanded\n - SUCCESS: Generic\n - MOVED: Resource moved. Respond with Http status 307 and add new Location header to response\n - TEAPOT: SUCCESS_WARNING_API_DEPRECATED = 10001;\nSUCCESS_WARNING_CLIENT_DEPRECATED = 10002;\n - CONN_ACCOUNT_ISSUES: Clarifai Connection Codes: 11xxx\n\nexpired cc, still in trial, feature not supported in your tier\n - CONN_TOKEN_INVALID: invalid auth token used. Deprecated: we should return CONN_KEY_INVALID instead now in all cases.\n - CONN_CREDENTIALS_INVALID: invalid auth credentials\n - CONN_EXCEED_HOURLY_LIMIT: throttle hourly limit exceeded\n - CONN_EXCEED_MONTHLY_LIMIT: throttle monthly limit exceeded\n - CONN_THROTTLED: throttler and billing stuff\n - CONN_EXCEEDS_LIMITS: throttler and billing stuff\n - CONN_INSUFFICIENT_SCOPES: api key has insufficient permissions\n - CONN_KEY_INVALID: api key is invalid\n - CONN_KEY_NOT_FOUND: api key not found\n - CONN_BAD_REQUEST_FORMAT: multipart form parsing, broken json, etc\n - CONN_DOES_NOT_EXIST: when path is bad\n - CONN_INVALID_REQUEST: something wrong with a header\n - CONN_METHOD_NOT_ALLOWED: when a request method is not allowed\n - CONN_NO_GDPR_CONSENT: lack GDPR consent\n - CONN_AUTH_METHOD_DISABLED: authentication method is disabled\n - MODEL_TRAINED: Model/Custom Training related 20xxx\n\nCustom model has been already trained.\n - MODEL_TRAINING: Custom model is currently training.\n - MODEL_UNTRAINED: Custom model has not yet been trained.\n - MODEL_QUEUED_FOR_TRAINING: Custom model is currently in queue for training, waiting on assets to process first.\n - MODEL_TRAINING_FAILED: generic err msg for any type of model training err.\n - MODEL_BUILDING: For new V3 DockerInternalType models which are built images\n - MODEL_BUILDING_FAILED: Failed to build image for model.\n - MODEL_BUILD_UNEXPECTED_ERROR: Failed to build image for model.\n - MODEL_TRAINING_NO_DATA: Custom model training had no data.  FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_NO_POSITIVES: Custom model training had no positive examples. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_ONE_VS_N_SINGLE_CLASS: Custom model training was ONE_VS_N but with a single class. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_TIMED_OUT: Training took longer than hard coded timeouts. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_WAITING_ERROR: Training got error waiting on asset pipeline to finish. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_UNKNOWN_ERROR: Training threw an unknown exception.\n - MODEL_TRAINING_MSG_REDELIVER: Training message was redelivered. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_INSUFFICIENT_DATA: Training got error due to insufficient labelled data. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_INVALID_PARAMS: FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_INVALID_DATA_TOLERANCE_EXCEEDED: Training is stopped because too much data was dropped. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_EVALUATION_TIMED_OUT: Evaluation took longer than hard coded timeouts. FIXME(yang): deprecate this. Use the 21317 + errStatusMsg\n - MODEL_EVALUATION_WAITING_ERROR: Evaluation got error waiting on asset pipeline to finish.FIXME(yang): deprecate this. Use the 21317 + errStatusMsg\n - MODEL_EVALUATION_UNKNOWN_ERROR: EVALUATION THREW AN UNKNOWN EXCEPTION.\n - MODEL_EVALUATION_MSG_REDELIVER: Eval message was redelivered. FIXME(yang): deprecate this. Use the 21317 + errStatusMsg\n - MODEL_EVALUATION_NEED_LABELS: Don't have enough concepts labelled to perform evaluation. FIXME(yang): deprecate this. Use the 21317 + errStatusMsg\n - MODEL_EVALUATION_NEED_INPUTS: Don't have enough inputs per concept to perform evaluation. FIXME(yang): deprecate this. Use the 21317 + errStatusMsg\n - MODEL_EVALUATION_FAILED: Generic err code for eval failure.\n - MODEL_DEPLOYMENT_FAILED: Used when inference coordinator failed to deploy spire and throws an error\n - MODEL_DEPLOYING: Used when calling the inference coordinator to deploy a spire\n - MODEL_QUEUED_FOR_DEPLOYMENT: Used when training is completed\n - MODEL_NOT_DEPLOYED: Used when model spire deployment is manually taken down or due to inactivity\n - MODEL_REFERENCE_INVALID_ARGUMENT: Used when a model reference field is not set properly\n - MODEL_EXAMPLE_INPUT_INVALID_ARGUMENT: Used when a model example input field is not set properly\n - MODEL_EXPORTED: Model Export status codes\n - WORKFLOW_NO_MATCHING_INPUT: specified model input not in workflow\n - WORKFLOW_REQUIRE_TRAINED_MODEL: specified model must be trained\n - WORKFLOW_INVALID_ARGUMENT: error in the request somewhere\n - WORKFLOW_INVALID_REQUEST: error in the request somewhere\n - CONCEPT_MODIFY_SUCCESS: Concept related 23xxx\n - ANNOTATION_SUCCESS: Annotation related 24xxx\n - METADATA_INVALID_PATCH_ARGUMENTS: Metadata related 249xx\n - TRAINER_JOB_STATE_NONE: Training service related 25xxx\n - DATA_DUMP_SUCCESS: Data Dump related 251xx\n - DATA_DUMP_NO_DATA: DEPRECATED: Not used anymore. Now for an empty data dump, DATA_DUMP_SUCCESS is returned. To detect an empty data dump, check if the inptus count is 0.\n - APP_DUPLICATION_SUCCESS: Duplicate related 252xx\n - MODULE_DOES_NOT_EXIST: Module related codes 253xx\n - BULK_OPERATION_SUCCESS: Bulk Operation related codes 254xx\n - RUNNER_DOES_NOT_EXIST: Runner related codes 256xx\n - NODEPOOL_DOES_NOT_EXIST: Nodepool related codes 257xx\n - COMPUTE_CLUSTER_DOES_NOT_EXIST: ComputeCluster related codes 258xx\n - INPUT_DOWNLOAD_SUCCESS: Input:Image related 30xxx\n - INPUT_DOWNLOAD_PENDING: when things are async, this is the default status.\n - INPUT_DOWNLOAD_FAILED: any type of error downloading and processing\n - INPUT_VIDEO_DOWNLOAD_SUCCESS: Input:Video related 31xxx -- Deprecated\n - INPUT_WRITES_DISABLED_FOR_MAINTENANCE: deprecate this one. Use REQUEST_DISABLED_FOR_MAINTENANCE\n - PREDICT_INVALID_REQUEST: API formatting issues 4000x\n - DATABASE_DUPLICATE_KEY: Other related 400xx\n - EXTERNAL_CONNECTION_ERROR: could not connect to external services\n - QUEUE_CONN_ERROR: Queue related errors 41xxx\n - SQS_OVERLIMIT: SQS related errors 411xx\n - SEARCH_INTERNAL_FAILURE: Search related errors 43xxxx\n - EVALUATION_QUEUED: Workflow evaluation err code\n - STRIPE_EVENT_ERROR: Stripe 44xxx\n - CACHE_MISS: Redis/Cache 45xxx\n - SIGNUP_EVENT_ERROR: Sift Science 46xxx\n - APP_COUNT_INVALID_MESSAGE: Application counts related errors 470xx\n - MP_DOWNLOAD_ERROR: Media processor related errors 471xx -- DEPRECATED\n - DATATIER_CONN_ERROR: DataTier related error 472xx\n - USER_CONSENT_FACE: User legal consent stauts related 50xxx\n - WORKER_MISSING: Workers 51xxx\n - COLLECTOR_MISSING: Collectors 52xxx\n - SSO_IDENTITY_PROVIDER_DOES_NOT_EXIST: SSO 53xxx\n - TASK_IN_PROGRESS: Tasks 54xxx\nThe task was created.\n - TASK_DONE: The task is completed.\n - TASK_WONT_DO: The task is marked as abandoned.\n - TASK_FAILED: An error occurred during add-task-annotations or add-auto-annotations pipeline.\n - TASK_IDLE: When an Auto Annotation task job has finished processing its last batch and is waiting for more dataset assets.\n - TASK_CONFLICT: The task operation is in conflict with the current state of the server.\n - TASK_NOT_IMPLEMENTED: Certain task-related scenarios are not implemented.\n - TASK_MISSING: Task was not found.\n - TASK_PERMISSION_DENIED: Not allowed to perform a task-related action.\n - LABEL_ORDER_PENDING: Label Order Related Status Code 55xxx\n - LICENSE_ACTIVE: License Related Status Code 600xx\n - LICENSE_DELETED: hidden state not reflected to users\n - PASSWORD_VALIDATION_SUCCESS: Password Related Status Code\n - FEATUREFLAG_CONFIG_NOT_FOUND: Feature flags status code\n - MAINTENANCE_SUCCESS: Maintenance status code\n - DATASET_VERSION_PENDING: Datasets 64xxx\nThe dataset version is pending to be processed.\n - DATASET_VERSION_IN_PROGRESS: The dataset version is currently being processed.\n - DATASET_VERSION_READY: The dataset version is ready to be used.\n - DATASET_VERSION_FAILURE: An error occurred during the dataset version processing.\n - DATASET_VERSION_UNEXPECTED_ERROR: An unexpected error occurred during the dataset version processing.\n - DATASET_VERSION_CONFLICT: An alteration to dataset version would create a conflict\n - DATASET_INPUT_SUCCESS: The dataset input was successfully added.\n - DATASET_INPUT_DUPLICATE: The dataset input is a duplicate.\nDeprecated: Unused.\n - DATASET_VERSION_EXPORT_SUCCESS: The dataset version export is completed.\n - DATASET_VERSION_EXPORT_PENDING: The dataset version is pending to be exported.\n - DATASET_VERSION_EXPORT_FAILED: An error occurred during the dataset version export.\n - DATASET_VERSION_EXPORT_IN_PROGRESS: The dataset version is currently being exported.\n - DATASET_VERSION_EXPORT_UNEXPECTED_ERROR: An unexpected error occurred during the dataset version export.\n - JOB_QUEUED: Generic Job status codes\n - AUTH_MISSING_IDP_ASSOC: auth issues\n\nTODO: Knowledge graph related 80xxx\n - UPLOAD_IN_PROGRESS: Multipart uploading status codes\n - BILLING_INVALID_INFO: Billing related issues: 69xxx\n - INTERNAL_SERVER_ISSUE: Internal issues: 98xxx\n - CONN_UNCATEGORIZED: Uncategorized: 99xxx: move off as soon as known\n - BAD_REQUEST: Deprecated: migrate off to one of the internal issues\n - SERVER_ERROR: Deprecated: migrate off to one of the internal issues",
             "in": "query",
             "required": false,
             "type": "string",
@@ -3292,9 +3292,6 @@
               "COMPUTE_CLUSTER_DOES_NOT_EXIST",
               "COMPUTE_CLUSTER_INVALID_ARGUMENT",
               "COMPUTE_CLUSTER_INVALID_REQUEST",
-              "DEPLOYMENT_DOES_NOT_EXIST",
-              "DEPLOYMENT_INVALID_ARGUMENT",
-              "DEPLOYMENT_INVALID_REQUEST",
               "INPUT_DOWNLOAD_SUCCESS",
               "INPUT_DOWNLOAD_PENDING",
               "INPUT_DOWNLOAD_FAILED",
@@ -8607,6 +8604,11 @@
                           },
                           "title": "You can configure different autoscaling per nodepool(s).\nThese nodepools have to be also owned by the same user_id/org as this deployment.\nIf there is more than one nodepool we use the model's ComputeInfo to match\nwith what the nodepool provides to decide which one can handle it combined with the\nNodepoolRank below. Note: even within a single nodepool if it is heterogeneous then\nwe need a way to rank scheduling choices when we don't know how to decide (like a model\nsupports"
                         },
+                        "workflow": {
+                          "$ref": "#/definitions/apiWorkflow",
+                          "description": "We could also support matching by labels here for future \"job\" like functionality where\n the item itself fully defines the work that needs to be done.\n This would match any resources that have these runner labels defined on them.\n RunnerLabels runner_labels = 11; // FUTURE",
+                          "title": "Workflow"
+                        },
                         "schedulingChoice": {
                           "$ref": "#/definitions/DeploymentSchedulingChoice"
                         },
@@ -8617,24 +8619,6 @@
                         "metadata": {
                           "type": "object",
                           "title": "To handle arbitrary json metadata:\nhttps://github.com/google/protobuf/blob/master/src/google/protobuf/struct.proto"
-                        },
-                        "description": {
-                          "type": "string",
-                          "description": "Short description of deployment."
-                        },
-                        "worker": {
-                          "$ref": "#/definitions/apiWorker",
-                          "title": "The thing that the autoscaling config applies to for this nodepool.\nFor a given user_id, nodepool_id, and object ID we can only have one deployment as it defines"
-                        },
-                        "createdAt": {
-                          "type": "string",
-                          "format": "date-time",
-                          "description": "When the deployment was created."
-                        },
-                        "modifiedAt": {
-                          "type": "string",
-                          "format": "date-time",
-                          "description": "When the deployment was last modified."
                         }
                       },
                       "description": "In future as we support matching runners based on just labels:\n RunnerLabels runner_labels = 3; // FUTURE",
@@ -13515,7 +13499,7 @@
           },
           {
             "name": "status.code",
-            "description": "Status code from internal codes.\n\n - ZERO: to be revised and greatly expanded\n - SUCCESS: Generic\n - MOVED: Resource moved. Respond with Http status 307 and add new Location header to response\n - TEAPOT: SUCCESS_WARNING_API_DEPRECATED = 10001;\nSUCCESS_WARNING_CLIENT_DEPRECATED = 10002;\n - CONN_ACCOUNT_ISSUES: Clarifai Connection Codes: 11xxx\n\nexpired cc, still in trial, feature not supported in your tier\n - CONN_TOKEN_INVALID: invalid auth token used. Deprecated: we should return CONN_KEY_INVALID instead now in all cases.\n - CONN_CREDENTIALS_INVALID: invalid auth credentials\n - CONN_EXCEED_HOURLY_LIMIT: throttle hourly limit exceeded\n - CONN_EXCEED_MONTHLY_LIMIT: throttle monthly limit exceeded\n - CONN_THROTTLED: throttler and billing stuff\n - CONN_EXCEEDS_LIMITS: throttler and billing stuff\n - CONN_INSUFFICIENT_SCOPES: api key has insufficient permissions\n - CONN_KEY_INVALID: api key is invalid\n - CONN_KEY_NOT_FOUND: api key not found\n - CONN_BAD_REQUEST_FORMAT: multipart form parsing, broken json, etc\n - CONN_DOES_NOT_EXIST: when path is bad\n - CONN_INVALID_REQUEST: something wrong with a header\n - CONN_METHOD_NOT_ALLOWED: when a request method is not allowed\n - CONN_NO_GDPR_CONSENT: lack GDPR consent\n - CONN_AUTH_METHOD_DISABLED: authentication method is disabled\n - MODEL_TRAINED: Model/Custom Training related 20xxx\n\nCustom model has been already trained.\n - MODEL_TRAINING: Custom model is currently training.\n - MODEL_UNTRAINED: Custom model has not yet been trained.\n - MODEL_QUEUED_FOR_TRAINING: Custom model is currently in queue for training, waiting on assets to process first.\n - MODEL_TRAINING_FAILED: generic err msg for any type of model training err.\n - MODEL_BUILDING: For new V3 DockerInternalType models which are built images\n - MODEL_BUILDING_FAILED: Failed to build image for model.\n - MODEL_BUILD_UNEXPECTED_ERROR: Failed to build image for model.\n - MODEL_TRAINING_NO_DATA: Custom model training had no data.  FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_NO_POSITIVES: Custom model training had no positive examples. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_ONE_VS_N_SINGLE_CLASS: Custom model training was ONE_VS_N but with a single class. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_TIMED_OUT: Training took longer than hard coded timeouts. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_WAITING_ERROR: Training got error waiting on asset pipeline to finish. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_UNKNOWN_ERROR: Training threw an unknown exception.\n - MODEL_TRAINING_MSG_REDELIVER: Training message was redelivered. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_INSUFFICIENT_DATA: Training got error due to insufficient labelled data. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_INVALID_PARAMS: FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_INVALID_DATA_TOLERANCE_EXCEEDED: Training is stopped because too much data was dropped. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_EVALUATION_TIMED_OUT: Evaluation took longer than hard coded timeouts. FIXME(yang): deprecate this. Use the 21317 + errStatusMsg\n - MODEL_EVALUATION_WAITING_ERROR: Evaluation got error waiting on asset pipeline to finish.FIXME(yang): deprecate this. Use the 21317 + errStatusMsg\n - MODEL_EVALUATION_UNKNOWN_ERROR: EVALUATION THREW AN UNKNOWN EXCEPTION.\n - MODEL_EVALUATION_MSG_REDELIVER: Eval message was redelivered. FIXME(yang): deprecate this. Use the 21317 + errStatusMsg\n - MODEL_EVALUATION_NEED_LABELS: Don't have enough concepts labelled to perform evaluation. FIXME(yang): deprecate this. Use the 21317 + errStatusMsg\n - MODEL_EVALUATION_NEED_INPUTS: Don't have enough inputs per concept to perform evaluation. FIXME(yang): deprecate this. Use the 21317 + errStatusMsg\n - MODEL_EVALUATION_FAILED: Generic err code for eval failure.\n - MODEL_DEPLOYMENT_FAILED: Used when inference coordinator failed to deploy spire and throws an error\n - MODEL_DEPLOYING: Used when calling the inference coordinator to deploy a spire\n - MODEL_QUEUED_FOR_DEPLOYMENT: Used when training is completed\n - MODEL_NOT_DEPLOYED: Used when model spire deployment is manually taken down or due to inactivity\n - MODEL_REFERENCE_INVALID_ARGUMENT: Used when a model reference field is not set properly\n - MODEL_EXAMPLE_INPUT_INVALID_ARGUMENT: Used when a model example input field is not set properly\n - MODEL_EXPORTED: Model Export status codes\n - WORKFLOW_NO_MATCHING_INPUT: specified model input not in workflow\n - WORKFLOW_REQUIRE_TRAINED_MODEL: specified model must be trained\n - WORKFLOW_INVALID_ARGUMENT: error in the request somewhere\n - WORKFLOW_INVALID_REQUEST: error in the request somewhere\n - CONCEPT_MODIFY_SUCCESS: Concept related 23xxx\n - ANNOTATION_SUCCESS: Annotation related 24xxx\n - METADATA_INVALID_PATCH_ARGUMENTS: Metadata related 249xx\n - TRAINER_JOB_STATE_NONE: Training service related 25xxx\n - DATA_DUMP_SUCCESS: Data Dump related 251xx\n - DATA_DUMP_NO_DATA: DEPRECATED: Not used anymore. Now for an empty data dump, DATA_DUMP_SUCCESS is returned. To detect an empty data dump, check if the inptus count is 0.\n - APP_DUPLICATION_SUCCESS: Duplicate related 252xx\n - MODULE_DOES_NOT_EXIST: Module related codes 253xx\n - BULK_OPERATION_SUCCESS: Bulk Operation related codes 254xx\n - RUNNER_DOES_NOT_EXIST: Runner related codes 256xx\n - NODEPOOL_DOES_NOT_EXIST: Nodepool related codes 257xx\n - COMPUTE_CLUSTER_DOES_NOT_EXIST: ComputeCluster related codes 258xx\n - DEPLOYMENT_DOES_NOT_EXIST: Deployment related codes 259xx\n - INPUT_DOWNLOAD_SUCCESS: Input:Image related 30xxx\n - INPUT_DOWNLOAD_PENDING: when things are async, this is the default status.\n - INPUT_DOWNLOAD_FAILED: any type of error downloading and processing\n - INPUT_VIDEO_DOWNLOAD_SUCCESS: Input:Video related 31xxx -- Deprecated\n - INPUT_WRITES_DISABLED_FOR_MAINTENANCE: deprecate this one. Use REQUEST_DISABLED_FOR_MAINTENANCE\n - PREDICT_INVALID_REQUEST: API formatting issues 4000x\n - DATABASE_DUPLICATE_KEY: Other related 400xx\n - EXTERNAL_CONNECTION_ERROR: could not connect to external services\n - QUEUE_CONN_ERROR: Queue related errors 41xxx\n - SQS_OVERLIMIT: SQS related errors 411xx\n - SEARCH_INTERNAL_FAILURE: Search related errors 43xxxx\n - EVALUATION_QUEUED: Workflow evaluation err code\n - STRIPE_EVENT_ERROR: Stripe 44xxx\n - CACHE_MISS: Redis/Cache 45xxx\n - SIGNUP_EVENT_ERROR: Sift Science 46xxx\n - APP_COUNT_INVALID_MESSAGE: Application counts related errors 470xx\n - MP_DOWNLOAD_ERROR: Media processor related errors 471xx -- DEPRECATED\n - DATATIER_CONN_ERROR: DataTier related error 472xx\n - USER_CONSENT_FACE: User legal consent stauts related 50xxx\n - WORKER_MISSING: Workers 51xxx\n - COLLECTOR_MISSING: Collectors 52xxx\n - SSO_IDENTITY_PROVIDER_DOES_NOT_EXIST: SSO 53xxx\n - TASK_IN_PROGRESS: Tasks 54xxx\nThe task was created.\n - TASK_DONE: The task is completed.\n - TASK_WONT_DO: The task is marked as abandoned.\n - TASK_FAILED: An error occurred during add-task-annotations or add-auto-annotations pipeline.\n - TASK_IDLE: When an Auto Annotation task job has finished processing its last batch and is waiting for more dataset assets.\n - TASK_CONFLICT: The task operation is in conflict with the current state of the server.\n - TASK_NOT_IMPLEMENTED: Certain task-related scenarios are not implemented.\n - TASK_MISSING: Task was not found.\n - TASK_PERMISSION_DENIED: Not allowed to perform a task-related action.\n - LABEL_ORDER_PENDING: Label Order Related Status Code 55xxx\n - LICENSE_ACTIVE: License Related Status Code 600xx\n - LICENSE_DELETED: hidden state not reflected to users\n - PASSWORD_VALIDATION_SUCCESS: Password Related Status Code\n - FEATUREFLAG_CONFIG_NOT_FOUND: Feature flags status code\n - MAINTENANCE_SUCCESS: Maintenance status code\n - DATASET_VERSION_PENDING: Datasets 64xxx\nThe dataset version is pending to be processed.\n - DATASET_VERSION_IN_PROGRESS: The dataset version is currently being processed.\n - DATASET_VERSION_READY: The dataset version is ready to be used.\n - DATASET_VERSION_FAILURE: An error occurred during the dataset version processing.\n - DATASET_VERSION_UNEXPECTED_ERROR: An unexpected error occurred during the dataset version processing.\n - DATASET_VERSION_CONFLICT: An alteration to dataset version would create a conflict\n - DATASET_INPUT_SUCCESS: The dataset input was successfully added.\n - DATASET_INPUT_DUPLICATE: The dataset input is a duplicate.\nDeprecated: Unused.\n - DATASET_VERSION_EXPORT_SUCCESS: The dataset version export is completed.\n - DATASET_VERSION_EXPORT_PENDING: The dataset version is pending to be exported.\n - DATASET_VERSION_EXPORT_FAILED: An error occurred during the dataset version export.\n - DATASET_VERSION_EXPORT_IN_PROGRESS: The dataset version is currently being exported.\n - DATASET_VERSION_EXPORT_UNEXPECTED_ERROR: An unexpected error occurred during the dataset version export.\n - JOB_QUEUED: Generic Job status codes\n - AUTH_MISSING_IDP_ASSOC: auth issues\n\nTODO: Knowledge graph related 80xxx\n - UPLOAD_IN_PROGRESS: Multipart uploading status codes\n - BILLING_INVALID_INFO: Billing related issues: 69xxx\n - INTERNAL_SERVER_ISSUE: Internal issues: 98xxx\n - CONN_UNCATEGORIZED: Uncategorized: 99xxx: move off as soon as known\n - BAD_REQUEST: Deprecated: migrate off to one of the internal issues\n - SERVER_ERROR: Deprecated: migrate off to one of the internal issues",
+            "description": "Status code from internal codes.\n\n - ZERO: to be revised and greatly expanded\n - SUCCESS: Generic\n - MOVED: Resource moved. Respond with Http status 307 and add new Location header to response\n - TEAPOT: SUCCESS_WARNING_API_DEPRECATED = 10001;\nSUCCESS_WARNING_CLIENT_DEPRECATED = 10002;\n - CONN_ACCOUNT_ISSUES: Clarifai Connection Codes: 11xxx\n\nexpired cc, still in trial, feature not supported in your tier\n - CONN_TOKEN_INVALID: invalid auth token used. Deprecated: we should return CONN_KEY_INVALID instead now in all cases.\n - CONN_CREDENTIALS_INVALID: invalid auth credentials\n - CONN_EXCEED_HOURLY_LIMIT: throttle hourly limit exceeded\n - CONN_EXCEED_MONTHLY_LIMIT: throttle monthly limit exceeded\n - CONN_THROTTLED: throttler and billing stuff\n - CONN_EXCEEDS_LIMITS: throttler and billing stuff\n - CONN_INSUFFICIENT_SCOPES: api key has insufficient permissions\n - CONN_KEY_INVALID: api key is invalid\n - CONN_KEY_NOT_FOUND: api key not found\n - CONN_BAD_REQUEST_FORMAT: multipart form parsing, broken json, etc\n - CONN_DOES_NOT_EXIST: when path is bad\n - CONN_INVALID_REQUEST: something wrong with a header\n - CONN_METHOD_NOT_ALLOWED: when a request method is not allowed\n - CONN_NO_GDPR_CONSENT: lack GDPR consent\n - CONN_AUTH_METHOD_DISABLED: authentication method is disabled\n - MODEL_TRAINED: Model/Custom Training related 20xxx\n\nCustom model has been already trained.\n - MODEL_TRAINING: Custom model is currently training.\n - MODEL_UNTRAINED: Custom model has not yet been trained.\n - MODEL_QUEUED_FOR_TRAINING: Custom model is currently in queue for training, waiting on assets to process first.\n - MODEL_TRAINING_FAILED: generic err msg for any type of model training err.\n - MODEL_BUILDING: For new V3 DockerInternalType models which are built images\n - MODEL_BUILDING_FAILED: Failed to build image for model.\n - MODEL_BUILD_UNEXPECTED_ERROR: Failed to build image for model.\n - MODEL_TRAINING_NO_DATA: Custom model training had no data.  FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_NO_POSITIVES: Custom model training had no positive examples. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_ONE_VS_N_SINGLE_CLASS: Custom model training was ONE_VS_N but with a single class. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_TIMED_OUT: Training took longer than hard coded timeouts. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_WAITING_ERROR: Training got error waiting on asset pipeline to finish. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_UNKNOWN_ERROR: Training threw an unknown exception.\n - MODEL_TRAINING_MSG_REDELIVER: Training message was redelivered. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_INSUFFICIENT_DATA: Training got error due to insufficient labelled data. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_INVALID_PARAMS: FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_INVALID_DATA_TOLERANCE_EXCEEDED: Training is stopped because too much data was dropped. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_EVALUATION_TIMED_OUT: Evaluation took longer than hard coded timeouts. FIXME(yang): deprecate this. Use the 21317 + errStatusMsg\n - MODEL_EVALUATION_WAITING_ERROR: Evaluation got error waiting on asset pipeline to finish.FIXME(yang): deprecate this. Use the 21317 + errStatusMsg\n - MODEL_EVALUATION_UNKNOWN_ERROR: EVALUATION THREW AN UNKNOWN EXCEPTION.\n - MODEL_EVALUATION_MSG_REDELIVER: Eval message was redelivered. FIXME(yang): deprecate this. Use the 21317 + errStatusMsg\n - MODEL_EVALUATION_NEED_LABELS: Don't have enough concepts labelled to perform evaluation. FIXME(yang): deprecate this. Use the 21317 + errStatusMsg\n - MODEL_EVALUATION_NEED_INPUTS: Don't have enough inputs per concept to perform evaluation. FIXME(yang): deprecate this. Use the 21317 + errStatusMsg\n - MODEL_EVALUATION_FAILED: Generic err code for eval failure.\n - MODEL_DEPLOYMENT_FAILED: Used when inference coordinator failed to deploy spire and throws an error\n - MODEL_DEPLOYING: Used when calling the inference coordinator to deploy a spire\n - MODEL_QUEUED_FOR_DEPLOYMENT: Used when training is completed\n - MODEL_NOT_DEPLOYED: Used when model spire deployment is manually taken down or due to inactivity\n - MODEL_REFERENCE_INVALID_ARGUMENT: Used when a model reference field is not set properly\n - MODEL_EXAMPLE_INPUT_INVALID_ARGUMENT: Used when a model example input field is not set properly\n - MODEL_EXPORTED: Model Export status codes\n - WORKFLOW_NO_MATCHING_INPUT: specified model input not in workflow\n - WORKFLOW_REQUIRE_TRAINED_MODEL: specified model must be trained\n - WORKFLOW_INVALID_ARGUMENT: error in the request somewhere\n - WORKFLOW_INVALID_REQUEST: error in the request somewhere\n - CONCEPT_MODIFY_SUCCESS: Concept related 23xxx\n - ANNOTATION_SUCCESS: Annotation related 24xxx\n - METADATA_INVALID_PATCH_ARGUMENTS: Metadata related 249xx\n - TRAINER_JOB_STATE_NONE: Training service related 25xxx\n - DATA_DUMP_SUCCESS: Data Dump related 251xx\n - DATA_DUMP_NO_DATA: DEPRECATED: Not used anymore. Now for an empty data dump, DATA_DUMP_SUCCESS is returned. To detect an empty data dump, check if the inptus count is 0.\n - APP_DUPLICATION_SUCCESS: Duplicate related 252xx\n - MODULE_DOES_NOT_EXIST: Module related codes 253xx\n - BULK_OPERATION_SUCCESS: Bulk Operation related codes 254xx\n - RUNNER_DOES_NOT_EXIST: Runner related codes 256xx\n - NODEPOOL_DOES_NOT_EXIST: Nodepool related codes 257xx\n - COMPUTE_CLUSTER_DOES_NOT_EXIST: ComputeCluster related codes 258xx\n - INPUT_DOWNLOAD_SUCCESS: Input:Image related 30xxx\n - INPUT_DOWNLOAD_PENDING: when things are async, this is the default status.\n - INPUT_DOWNLOAD_FAILED: any type of error downloading and processing\n - INPUT_VIDEO_DOWNLOAD_SUCCESS: Input:Video related 31xxx -- Deprecated\n - INPUT_WRITES_DISABLED_FOR_MAINTENANCE: deprecate this one. Use REQUEST_DISABLED_FOR_MAINTENANCE\n - PREDICT_INVALID_REQUEST: API formatting issues 4000x\n - DATABASE_DUPLICATE_KEY: Other related 400xx\n - EXTERNAL_CONNECTION_ERROR: could not connect to external services\n - QUEUE_CONN_ERROR: Queue related errors 41xxx\n - SQS_OVERLIMIT: SQS related errors 411xx\n - SEARCH_INTERNAL_FAILURE: Search related errors 43xxxx\n - EVALUATION_QUEUED: Workflow evaluation err code\n - STRIPE_EVENT_ERROR: Stripe 44xxx\n - CACHE_MISS: Redis/Cache 45xxx\n - SIGNUP_EVENT_ERROR: Sift Science 46xxx\n - APP_COUNT_INVALID_MESSAGE: Application counts related errors 470xx\n - MP_DOWNLOAD_ERROR: Media processor related errors 471xx -- DEPRECATED\n - DATATIER_CONN_ERROR: DataTier related error 472xx\n - USER_CONSENT_FACE: User legal consent stauts related 50xxx\n - WORKER_MISSING: Workers 51xxx\n - COLLECTOR_MISSING: Collectors 52xxx\n - SSO_IDENTITY_PROVIDER_DOES_NOT_EXIST: SSO 53xxx\n - TASK_IN_PROGRESS: Tasks 54xxx\nThe task was created.\n - TASK_DONE: The task is completed.\n - TASK_WONT_DO: The task is marked as abandoned.\n - TASK_FAILED: An error occurred during add-task-annotations or add-auto-annotations pipeline.\n - TASK_IDLE: When an Auto Annotation task job has finished processing its last batch and is waiting for more dataset assets.\n - TASK_CONFLICT: The task operation is in conflict with the current state of the server.\n - TASK_NOT_IMPLEMENTED: Certain task-related scenarios are not implemented.\n - TASK_MISSING: Task was not found.\n - TASK_PERMISSION_DENIED: Not allowed to perform a task-related action.\n - LABEL_ORDER_PENDING: Label Order Related Status Code 55xxx\n - LICENSE_ACTIVE: License Related Status Code 600xx\n - LICENSE_DELETED: hidden state not reflected to users\n - PASSWORD_VALIDATION_SUCCESS: Password Related Status Code\n - FEATUREFLAG_CONFIG_NOT_FOUND: Feature flags status code\n - MAINTENANCE_SUCCESS: Maintenance status code\n - DATASET_VERSION_PENDING: Datasets 64xxx\nThe dataset version is pending to be processed.\n - DATASET_VERSION_IN_PROGRESS: The dataset version is currently being processed.\n - DATASET_VERSION_READY: The dataset version is ready to be used.\n - DATASET_VERSION_FAILURE: An error occurred during the dataset version processing.\n - DATASET_VERSION_UNEXPECTED_ERROR: An unexpected error occurred during the dataset version processing.\n - DATASET_VERSION_CONFLICT: An alteration to dataset version would create a conflict\n - DATASET_INPUT_SUCCESS: The dataset input was successfully added.\n - DATASET_INPUT_DUPLICATE: The dataset input is a duplicate.\nDeprecated: Unused.\n - DATASET_VERSION_EXPORT_SUCCESS: The dataset version export is completed.\n - DATASET_VERSION_EXPORT_PENDING: The dataset version is pending to be exported.\n - DATASET_VERSION_EXPORT_FAILED: An error occurred during the dataset version export.\n - DATASET_VERSION_EXPORT_IN_PROGRESS: The dataset version is currently being exported.\n - DATASET_VERSION_EXPORT_UNEXPECTED_ERROR: An unexpected error occurred during the dataset version export.\n - JOB_QUEUED: Generic Job status codes\n - AUTH_MISSING_IDP_ASSOC: auth issues\n\nTODO: Knowledge graph related 80xxx\n - UPLOAD_IN_PROGRESS: Multipart uploading status codes\n - BILLING_INVALID_INFO: Billing related issues: 69xxx\n - INTERNAL_SERVER_ISSUE: Internal issues: 98xxx\n - CONN_UNCATEGORIZED: Uncategorized: 99xxx: move off as soon as known\n - BAD_REQUEST: Deprecated: migrate off to one of the internal issues\n - SERVER_ERROR: Deprecated: migrate off to one of the internal issues",
             "in": "query",
             "required": false,
             "type": "string",
@@ -13674,9 +13658,6 @@
               "COMPUTE_CLUSTER_DOES_NOT_EXIST",
               "COMPUTE_CLUSTER_INVALID_ARGUMENT",
               "COMPUTE_CLUSTER_INVALID_REQUEST",
-              "DEPLOYMENT_DOES_NOT_EXIST",
-              "DEPLOYMENT_INVALID_ARGUMENT",
-              "DEPLOYMENT_INVALID_REQUEST",
               "INPUT_DOWNLOAD_SUCCESS",
               "INPUT_DOWNLOAD_PENDING",
               "INPUT_DOWNLOAD_FAILED",
@@ -23051,282 +23032,6 @@
         ]
       }
     },
-    "/v2/users/{userAppId.userId}/deployments": {
-      "get": {
-        "operationId": "V2_ListDeployments",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/apiMultiDeploymentResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/googlerpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "userAppId.userId",
-            "description": "Note user_id 'me' is reserved - it is the alias for the id of authorized user",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "userAppId.appId",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "nodepoolId",
-            "description": "(optional URL parameter) Nodepool ID. To list all deployed workers in a Nodepool",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "page",
-            "description": "(optional URL parameter) The page number. Pagination is used to split the results into chunks.\nDefaults to 1.",
-            "in": "query",
-            "required": false,
-            "type": "integer",
-            "format": "int64"
-          },
-          {
-            "name": "perPage",
-            "description": "(optional URL parameter) The number of results that will be contained in each page. Defaults\nto 128.",
-            "in": "query",
-            "required": false,
-            "type": "integer",
-            "format": "int64"
-          }
-        ],
-        "tags": [
-          "V2"
-        ]
-      },
-      "delete": {
-        "summary": "Delete multiple deployments in one request.",
-        "operationId": "V2_DeleteDeployments",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/statusBaseResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/googlerpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "userAppId.userId",
-            "description": "Note user_id 'me' is reserved - it is the alias for the id of authorized user",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "userAppId": {
-                  "type": "object",
-                  "properties": {
-                    "appId": {
-                      "type": "string"
-                    }
-                  },
-                  "description": "Only the user_id is used from this.",
-                  "title": "Only the user_id is used from this."
-                },
-                "ids": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  },
-                  "title": "List of deployment ids to be deleted"
-                }
-              }
-            }
-          }
-        ],
-        "tags": [
-          "V2"
-        ]
-      },
-      "post": {
-        "operationId": "V2_PostDeployments",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/apiMultiDeploymentResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/googlerpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "userAppId.userId",
-            "description": "Note user_id 'me' is reserved - it is the alias for the id of authorized user",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "userAppId": {
-                  "type": "object",
-                  "properties": {
-                    "appId": {
-                      "type": "string"
-                    }
-                  },
-                  "description": "Only the user_id is used from this.",
-                  "title": "Only the user_id is used from this."
-                },
-                "deployments": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/apiDeployment"
-                  },
-                  "description": "This allows you to create one or more deployments by posting it to the API."
-                }
-              }
-            }
-          }
-        ],
-        "tags": [
-          "V2"
-        ]
-      },
-      "patch": {
-        "operationId": "V2_PatchDeployments",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/apiMultiDeploymentResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/googlerpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "userAppId.userId",
-            "description": "Note user_id 'me' is reserved - it is the alias for the id of authorized user",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "userAppId": {
-                  "type": "object",
-                  "properties": {
-                    "appId": {
-                      "type": "string"
-                    }
-                  },
-                  "description": "Only the user_id is used from this.",
-                  "title": "Only the user_id is used from this."
-                },
-                "deployments": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/apiDeployment"
-                  }
-                },
-                "action": {
-                  "type": "string",
-                  "title": "The action to perform on the patched objects\nFor now actions 'merge', 'overwrite', and 'remove' are supported"
-                }
-              }
-            }
-          }
-        ],
-        "tags": [
-          "V2"
-        ]
-      }
-    },
-    "/v2/users/{userAppId.userId}/deployments/{deploymentId}": {
-      "get": {
-        "summary": "Deployments CRUD",
-        "operationId": "V2_GetDeployment",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/apiSingleDeploymentResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/googlerpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "userAppId.userId",
-            "description": "Note user_id 'me' is reserved - it is the alias for the id of authorized user",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "deploymentId",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "userAppId.appId",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          }
-        ],
-        "tags": [
-          "V2"
-        ]
-      }
-    },
     "/v2/users/{userAppId.userId}/duplications": {
       "get": {
         "summary": "ListAppDuplications lists all app duplication jobs created by the user.",
@@ -27941,6 +27646,11 @@
           },
           "title": "You can configure different autoscaling per nodepool(s).\nThese nodepools have to be also owned by the same user_id/org as this deployment.\nIf there is more than one nodepool we use the model's ComputeInfo to match\nwith what the nodepool provides to decide which one can handle it combined with the\nNodepoolRank below. Note: even within a single nodepool if it is heterogeneous then\nwe need a way to rank scheduling choices when we don't know how to decide (like a model\nsupports"
         },
+        "workflow": {
+          "$ref": "#/definitions/apiWorkflow",
+          "description": "We could also support matching by labels here for future \"job\" like functionality where\n the item itself fully defines the work that needs to be done.\n This would match any resources that have these runner labels defined on them.\n RunnerLabels runner_labels = 11; // FUTURE",
+          "title": "Workflow"
+        },
         "schedulingChoice": {
           "$ref": "#/definitions/DeploymentSchedulingChoice"
         },
@@ -27951,24 +27661,6 @@
         "metadata": {
           "type": "object",
           "title": "To handle arbitrary json metadata:\nhttps://github.com/google/protobuf/blob/master/src/google/protobuf/struct.proto"
-        },
-        "description": {
-          "type": "string",
-          "description": "Short description of deployment."
-        },
-        "worker": {
-          "$ref": "#/definitions/apiWorker",
-          "title": "The thing that the autoscaling config applies to for this nodepool.\nFor a given user_id, nodepool_id, and object ID we can only have one deployment as it defines"
-        },
-        "createdAt": {
-          "type": "string",
-          "format": "date-time",
-          "description": "When the deployment was created."
-        },
-        "modifiedAt": {
-          "type": "string",
-          "format": "date-time",
-          "description": "When the deployment was last modified."
         }
       },
       "description": "A deployment allows you to configure how runners for a particular type of resource will\nscale up and down. These are unique per user_id, nodepool and model so for differnet nodepools\nyou can scale differently."
@@ -30119,20 +29811,6 @@
         }
       }
     },
-    "apiMultiDeploymentResponse": {
-      "type": "object",
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/apistatusStatus"
-        },
-        "deployments": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/apiDeployment"
-          }
-        }
-      }
-    },
     "apiMultiEvalMetricsResponse": {
       "type": "object",
       "properties": {
@@ -30889,7 +30567,7 @@
         "minInstances": {
           "type": "integer",
           "format": "int64",
-          "description": "Minimum number of instances in this nodepool. This allows the nodepool to scale down to this\namount."
+          "description": "Minimum number of instances in this nodepool. This allows the nodepool to scale down to this\namount. A nodepool needs a minimum of 1 instance."
         },
         "maxInstances": {
           "type": "integer",
@@ -31020,14 +30698,14 @@
           "description": "For custom model training: This is any additional metadata as a JSON object that we want\nwant to persist in the model's output config. This is a useful quick way to set fields for\nintroducing fields for new model types so we don't have to add a new proto field and DB field\neach time. Please refer to the documentation or model implementation internally for more\ndetails on what fields are supported for which models.\nTODO(zeiler): remove this field after Portal is updated."
         }
       },
-      "description": "OutputConfig is a collection of parameters controlling either inference or training settings for\nthe given Model. This message will be deprecated over time in favor or output_info.params and\ntrain_params in OutputInfo which are cleaner and more extensible for many ModelTypes."
+      "description": "OutputConfig is a collection of parameters controlling either inference or training settings for\nthe given Model. This message will be deprecated over time in favor or infer_params and\ntrain_params in OutputInfo which are cleaner and more extensible for many ModelTypes."
     },
     "apiOutputInfo": {
       "type": "object",
       "properties": {
         "outputConfig": {
           "$ref": "#/definitions/apiOutputConfig",
-          "title": "Model configuration...going away in favor of output_info.params and train_params over time.\nTO BE DEPRECATED"
+          "title": "Model configuration...going away in favor of infer_params and train_params over time.\nTO BE DEPRECATED"
         },
         "message": {
           "type": "string",
@@ -31045,7 +30723,7 @@
           "type": "array"
         }
       },
-      "description": "OutputInfo defines some of the settings for each model version that PatchModels can effect. These\nparameters control some of the training or inference operations that this model can do.\nAs the number of parameters continued to grow when we launched more ModelTypes we decided to move\nto using the OutputInfo.params field which is a Struct (or JSON object if you're using\nour JSON REST APIs). This allows each ModelType to define the set of fields, their default values\nand description of each field so that we can display those in Portal and make the creation of\nModel's very extensible. The OutputConfig object will eventually go away in favor of\noutput_info.params struct."
+      "description": "OutputInfo defines some of the settings for each model version that PatchModels can effect. These\nparameters control some of the training or inference operations that this model can do.\nAs the number of parameters continued to grow when we launched more ModelTypes we decided to move\nto using the OutputInfo.params field which is a Struct (or JSON object if you're using\nour JSON REST APIs). This allows each ModelType to define the set of fields, their default values\nand description of each field so that we can display those in Portal and make the creation of\nModel's very extensible. The OutputConfig object will eventually go away in favor of\ninfer_params struct."
     },
     "apiOverwriteGeo": {
       "type": "object",
@@ -32675,17 +32353,6 @@
         },
         "datasetVersion": {
           "$ref": "#/definitions/apiDatasetVersion"
-        }
-      }
-    },
-    "apiSingleDeploymentResponse": {
-      "type": "object",
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/apistatusStatus"
-        },
-        "deployment": {
-          "$ref": "#/definitions/apiDeployment"
         }
       }
     },
@@ -34664,9 +34331,6 @@
         "COMPUTE_CLUSTER_DOES_NOT_EXIST",
         "COMPUTE_CLUSTER_INVALID_ARGUMENT",
         "COMPUTE_CLUSTER_INVALID_REQUEST",
-        "DEPLOYMENT_DOES_NOT_EXIST",
-        "DEPLOYMENT_INVALID_ARGUMENT",
-        "DEPLOYMENT_INVALID_REQUEST",
         "INPUT_DOWNLOAD_SUCCESS",
         "INPUT_DOWNLOAD_PENDING",
         "INPUT_DOWNLOAD_FAILED",
@@ -34888,7 +34552,7 @@
         "SERVER_ERROR"
       ],
       "default": "ZERO",
-      "description": "expired cc, still in trial, feature not supported in your tier\n - CONN_TOKEN_INVALID: invalid auth token used. Deprecated: we should return CONN_KEY_INVALID instead now in all cases.\n - CONN_CREDENTIALS_INVALID: invalid auth credentials\n - CONN_EXCEED_HOURLY_LIMIT: throttle hourly limit exceeded\n - CONN_EXCEED_MONTHLY_LIMIT: throttle monthly limit exceeded\n - CONN_THROTTLED: throttler and billing stuff\n - CONN_EXCEEDS_LIMITS: throttler and billing stuff\n - CONN_INSUFFICIENT_SCOPES: api key has insufficient permissions\n - CONN_KEY_INVALID: api key is invalid\n - CONN_KEY_NOT_FOUND: api key not found\n - CONN_BAD_REQUEST_FORMAT: multipart form parsing, broken json, etc\n - CONN_DOES_NOT_EXIST: when path is bad\n - CONN_INVALID_REQUEST: something wrong with a header\n - CONN_METHOD_NOT_ALLOWED: when a request method is not allowed\n - CONN_NO_GDPR_CONSENT: lack GDPR consent\n - CONN_AUTH_METHOD_DISABLED: authentication method is disabled\n - MODEL_TRAINED: Model/Custom Training related 20xxx\n\nCustom model has been already trained.\n - MODEL_TRAINING: Custom model is currently training.\n - MODEL_UNTRAINED: Custom model has not yet been trained.\n - MODEL_QUEUED_FOR_TRAINING: Custom model is currently in queue for training, waiting on assets to process first.\n - MODEL_TRAINING_FAILED: generic err msg for any type of model training err.\n - MODEL_BUILDING: For new V3 DockerInternalType models which are built images\n - MODEL_BUILDING_FAILED: Failed to build image for model.\n - MODEL_BUILD_UNEXPECTED_ERROR: Failed to build image for model.\n - MODEL_TRAINING_NO_DATA: Custom model training had no data.  FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_NO_POSITIVES: Custom model training had no positive examples. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_ONE_VS_N_SINGLE_CLASS: Custom model training was ONE_VS_N but with a single class. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_TIMED_OUT: Training took longer than hard coded timeouts. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_WAITING_ERROR: Training got error waiting on asset pipeline to finish. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_UNKNOWN_ERROR: Training threw an unknown exception.\n - MODEL_TRAINING_MSG_REDELIVER: Training message was redelivered. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_INSUFFICIENT_DATA: Training got error due to insufficient labelled data. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_INVALID_PARAMS: FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_INVALID_DATA_TOLERANCE_EXCEEDED: Training is stopped because too much data was dropped. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_EVALUATION_TIMED_OUT: Evaluation took longer than hard coded timeouts. FIXME(yang): deprecate this. Use the 21317 + errStatusMsg\n - MODEL_EVALUATION_WAITING_ERROR: Evaluation got error waiting on asset pipeline to finish.FIXME(yang): deprecate this. Use the 21317 + errStatusMsg\n - MODEL_EVALUATION_UNKNOWN_ERROR: EVALUATION THREW AN UNKNOWN EXCEPTION.\n - MODEL_EVALUATION_MSG_REDELIVER: Eval message was redelivered. FIXME(yang): deprecate this. Use the 21317 + errStatusMsg\n - MODEL_EVALUATION_NEED_LABELS: Don't have enough concepts labelled to perform evaluation. FIXME(yang): deprecate this. Use the 21317 + errStatusMsg\n - MODEL_EVALUATION_NEED_INPUTS: Don't have enough inputs per concept to perform evaluation. FIXME(yang): deprecate this. Use the 21317 + errStatusMsg\n - MODEL_EVALUATION_FAILED: Generic err code for eval failure.\n - MODEL_DEPLOYMENT_FAILED: Used when inference coordinator failed to deploy spire and throws an error\n - MODEL_DEPLOYING: Used when calling the inference coordinator to deploy a spire\n - MODEL_QUEUED_FOR_DEPLOYMENT: Used when training is completed\n - MODEL_NOT_DEPLOYED: Used when model spire deployment is manually taken down or due to inactivity\n - MODEL_REFERENCE_INVALID_ARGUMENT: Used when a model reference field is not set properly\n - MODEL_EXAMPLE_INPUT_INVALID_ARGUMENT: Used when a model example input field is not set properly\n - MODEL_EXPORTED: Model Export status codes\n - WORKFLOW_NO_MATCHING_INPUT: specified model input not in workflow\n - WORKFLOW_REQUIRE_TRAINED_MODEL: specified model must be trained\n - WORKFLOW_INVALID_ARGUMENT: error in the request somewhere\n - WORKFLOW_INVALID_REQUEST: error in the request somewhere\n - CONCEPT_MODIFY_SUCCESS: Concept related 23xxx\n - ANNOTATION_SUCCESS: Annotation related 24xxx\n - METADATA_INVALID_PATCH_ARGUMENTS: Metadata related 249xx\n - TRAINER_JOB_STATE_NONE: Training service related 25xxx\n - DATA_DUMP_SUCCESS: Data Dump related 251xx\n - DATA_DUMP_NO_DATA: DEPRECATED: Not used anymore. Now for an empty data dump, DATA_DUMP_SUCCESS is returned. To detect an empty data dump, check if the inptus count is 0.\n - APP_DUPLICATION_SUCCESS: Duplicate related 252xx\n - MODULE_DOES_NOT_EXIST: Module related codes 253xx\n - BULK_OPERATION_SUCCESS: Bulk Operation related codes 254xx\n - RUNNER_DOES_NOT_EXIST: Runner related codes 256xx\n - NODEPOOL_DOES_NOT_EXIST: Nodepool related codes 257xx\n - COMPUTE_CLUSTER_DOES_NOT_EXIST: ComputeCluster related codes 258xx\n - DEPLOYMENT_DOES_NOT_EXIST: Deployment related codes 259xx\n - INPUT_DOWNLOAD_SUCCESS: Input:Image related 30xxx\n - INPUT_DOWNLOAD_PENDING: when things are async, this is the default status.\n - INPUT_DOWNLOAD_FAILED: any type of error downloading and processing\n - INPUT_VIDEO_DOWNLOAD_SUCCESS: Input:Video related 31xxx -- Deprecated\n - INPUT_WRITES_DISABLED_FOR_MAINTENANCE: deprecate this one. Use REQUEST_DISABLED_FOR_MAINTENANCE\n - PREDICT_INVALID_REQUEST: API formatting issues 4000x\n - DATABASE_DUPLICATE_KEY: Other related 400xx\n - EXTERNAL_CONNECTION_ERROR: could not connect to external services\n - QUEUE_CONN_ERROR: Queue related errors 41xxx\n - SQS_OVERLIMIT: SQS related errors 411xx\n - SEARCH_INTERNAL_FAILURE: Search related errors 43xxxx\n - EVALUATION_QUEUED: Workflow evaluation err code\n - STRIPE_EVENT_ERROR: Stripe 44xxx\n - CACHE_MISS: Redis/Cache 45xxx\n - SIGNUP_EVENT_ERROR: Sift Science 46xxx\n - APP_COUNT_INVALID_MESSAGE: Application counts related errors 470xx\n - MP_DOWNLOAD_ERROR: Media processor related errors 471xx -- DEPRECATED\n - DATATIER_CONN_ERROR: DataTier related error 472xx\n - USER_CONSENT_FACE: User legal consent stauts related 50xxx\n - WORKER_MISSING: Workers 51xxx\n - COLLECTOR_MISSING: Collectors 52xxx\n - SSO_IDENTITY_PROVIDER_DOES_NOT_EXIST: SSO 53xxx\n - TASK_IN_PROGRESS: Tasks 54xxx\nThe task was created.\n - TASK_DONE: The task is completed.\n - TASK_WONT_DO: The task is marked as abandoned.\n - TASK_FAILED: An error occurred during add-task-annotations or add-auto-annotations pipeline.\n - TASK_IDLE: When an Auto Annotation task job has finished processing its last batch and is waiting for more dataset assets.\n - TASK_CONFLICT: The task operation is in conflict with the current state of the server.\n - TASK_NOT_IMPLEMENTED: Certain task-related scenarios are not implemented.\n - TASK_MISSING: Task was not found.\n - TASK_PERMISSION_DENIED: Not allowed to perform a task-related action.\n - LABEL_ORDER_PENDING: Label Order Related Status Code 55xxx\n - LICENSE_ACTIVE: License Related Status Code 600xx\n - LICENSE_DELETED: hidden state not reflected to users\n - PASSWORD_VALIDATION_SUCCESS: Password Related Status Code\n - FEATUREFLAG_CONFIG_NOT_FOUND: Feature flags status code\n - MAINTENANCE_SUCCESS: Maintenance status code\n - DATASET_VERSION_PENDING: Datasets 64xxx\nThe dataset version is pending to be processed.\n - DATASET_VERSION_IN_PROGRESS: The dataset version is currently being processed.\n - DATASET_VERSION_READY: The dataset version is ready to be used.\n - DATASET_VERSION_FAILURE: An error occurred during the dataset version processing.\n - DATASET_VERSION_UNEXPECTED_ERROR: An unexpected error occurred during the dataset version processing.\n - DATASET_VERSION_CONFLICT: An alteration to dataset version would create a conflict\n - DATASET_INPUT_SUCCESS: The dataset input was successfully added.\n - DATASET_INPUT_DUPLICATE: The dataset input is a duplicate.\nDeprecated: Unused.\n - DATASET_VERSION_EXPORT_SUCCESS: The dataset version export is completed.\n - DATASET_VERSION_EXPORT_PENDING: The dataset version is pending to be exported.\n - DATASET_VERSION_EXPORT_FAILED: An error occurred during the dataset version export.\n - DATASET_VERSION_EXPORT_IN_PROGRESS: The dataset version is currently being exported.\n - DATASET_VERSION_EXPORT_UNEXPECTED_ERROR: An unexpected error occurred during the dataset version export.\n - JOB_QUEUED: Generic Job status codes\n - AUTH_MISSING_IDP_ASSOC: auth issues\n\nTODO: Knowledge graph related 80xxx\n - UPLOAD_IN_PROGRESS: Multipart uploading status codes\n - BILLING_INVALID_INFO: Billing related issues: 69xxx\n - INTERNAL_SERVER_ISSUE: Internal issues: 98xxx\n - CONN_UNCATEGORIZED: Uncategorized: 99xxx: move off as soon as known\n - BAD_REQUEST: Deprecated: migrate off to one of the internal issues\n - SERVER_ERROR: Deprecated: migrate off to one of the internal issues",
+      "description": "expired cc, still in trial, feature not supported in your tier\n - CONN_TOKEN_INVALID: invalid auth token used. Deprecated: we should return CONN_KEY_INVALID instead now in all cases.\n - CONN_CREDENTIALS_INVALID: invalid auth credentials\n - CONN_EXCEED_HOURLY_LIMIT: throttle hourly limit exceeded\n - CONN_EXCEED_MONTHLY_LIMIT: throttle monthly limit exceeded\n - CONN_THROTTLED: throttler and billing stuff\n - CONN_EXCEEDS_LIMITS: throttler and billing stuff\n - CONN_INSUFFICIENT_SCOPES: api key has insufficient permissions\n - CONN_KEY_INVALID: api key is invalid\n - CONN_KEY_NOT_FOUND: api key not found\n - CONN_BAD_REQUEST_FORMAT: multipart form parsing, broken json, etc\n - CONN_DOES_NOT_EXIST: when path is bad\n - CONN_INVALID_REQUEST: something wrong with a header\n - CONN_METHOD_NOT_ALLOWED: when a request method is not allowed\n - CONN_NO_GDPR_CONSENT: lack GDPR consent\n - CONN_AUTH_METHOD_DISABLED: authentication method is disabled\n - MODEL_TRAINED: Model/Custom Training related 20xxx\n\nCustom model has been already trained.\n - MODEL_TRAINING: Custom model is currently training.\n - MODEL_UNTRAINED: Custom model has not yet been trained.\n - MODEL_QUEUED_FOR_TRAINING: Custom model is currently in queue for training, waiting on assets to process first.\n - MODEL_TRAINING_FAILED: generic err msg for any type of model training err.\n - MODEL_BUILDING: For new V3 DockerInternalType models which are built images\n - MODEL_BUILDING_FAILED: Failed to build image for model.\n - MODEL_BUILD_UNEXPECTED_ERROR: Failed to build image for model.\n - MODEL_TRAINING_NO_DATA: Custom model training had no data.  FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_NO_POSITIVES: Custom model training had no positive examples. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_ONE_VS_N_SINGLE_CLASS: Custom model training was ONE_VS_N but with a single class. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_TIMED_OUT: Training took longer than hard coded timeouts. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_WAITING_ERROR: Training got error waiting on asset pipeline to finish. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_UNKNOWN_ERROR: Training threw an unknown exception.\n - MODEL_TRAINING_MSG_REDELIVER: Training message was redelivered. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_INSUFFICIENT_DATA: Training got error due to insufficient labelled data. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_INVALID_PARAMS: FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_TRAINING_INVALID_DATA_TOLERANCE_EXCEEDED: Training is stopped because too much data was dropped. FIXME(yang): deprecate this. Use the 21106 + errStatusMsg\n - MODEL_EVALUATION_TIMED_OUT: Evaluation took longer than hard coded timeouts. FIXME(yang): deprecate this. Use the 21317 + errStatusMsg\n - MODEL_EVALUATION_WAITING_ERROR: Evaluation got error waiting on asset pipeline to finish.FIXME(yang): deprecate this. Use the 21317 + errStatusMsg\n - MODEL_EVALUATION_UNKNOWN_ERROR: EVALUATION THREW AN UNKNOWN EXCEPTION.\n - MODEL_EVALUATION_MSG_REDELIVER: Eval message was redelivered. FIXME(yang): deprecate this. Use the 21317 + errStatusMsg\n - MODEL_EVALUATION_NEED_LABELS: Don't have enough concepts labelled to perform evaluation. FIXME(yang): deprecate this. Use the 21317 + errStatusMsg\n - MODEL_EVALUATION_NEED_INPUTS: Don't have enough inputs per concept to perform evaluation. FIXME(yang): deprecate this. Use the 21317 + errStatusMsg\n - MODEL_EVALUATION_FAILED: Generic err code for eval failure.\n - MODEL_DEPLOYMENT_FAILED: Used when inference coordinator failed to deploy spire and throws an error\n - MODEL_DEPLOYING: Used when calling the inference coordinator to deploy a spire\n - MODEL_QUEUED_FOR_DEPLOYMENT: Used when training is completed\n - MODEL_NOT_DEPLOYED: Used when model spire deployment is manually taken down or due to inactivity\n - MODEL_REFERENCE_INVALID_ARGUMENT: Used when a model reference field is not set properly\n - MODEL_EXAMPLE_INPUT_INVALID_ARGUMENT: Used when a model example input field is not set properly\n - MODEL_EXPORTED: Model Export status codes\n - WORKFLOW_NO_MATCHING_INPUT: specified model input not in workflow\n - WORKFLOW_REQUIRE_TRAINED_MODEL: specified model must be trained\n - WORKFLOW_INVALID_ARGUMENT: error in the request somewhere\n - WORKFLOW_INVALID_REQUEST: error in the request somewhere\n - CONCEPT_MODIFY_SUCCESS: Concept related 23xxx\n - ANNOTATION_SUCCESS: Annotation related 24xxx\n - METADATA_INVALID_PATCH_ARGUMENTS: Metadata related 249xx\n - TRAINER_JOB_STATE_NONE: Training service related 25xxx\n - DATA_DUMP_SUCCESS: Data Dump related 251xx\n - DATA_DUMP_NO_DATA: DEPRECATED: Not used anymore. Now for an empty data dump, DATA_DUMP_SUCCESS is returned. To detect an empty data dump, check if the inptus count is 0.\n - APP_DUPLICATION_SUCCESS: Duplicate related 252xx\n - MODULE_DOES_NOT_EXIST: Module related codes 253xx\n - BULK_OPERATION_SUCCESS: Bulk Operation related codes 254xx\n - RUNNER_DOES_NOT_EXIST: Runner related codes 256xx\n - NODEPOOL_DOES_NOT_EXIST: Nodepool related codes 257xx\n - COMPUTE_CLUSTER_DOES_NOT_EXIST: ComputeCluster related codes 258xx\n - INPUT_DOWNLOAD_SUCCESS: Input:Image related 30xxx\n - INPUT_DOWNLOAD_PENDING: when things are async, this is the default status.\n - INPUT_DOWNLOAD_FAILED: any type of error downloading and processing\n - INPUT_VIDEO_DOWNLOAD_SUCCESS: Input:Video related 31xxx -- Deprecated\n - INPUT_WRITES_DISABLED_FOR_MAINTENANCE: deprecate this one. Use REQUEST_DISABLED_FOR_MAINTENANCE\n - PREDICT_INVALID_REQUEST: API formatting issues 4000x\n - DATABASE_DUPLICATE_KEY: Other related 400xx\n - EXTERNAL_CONNECTION_ERROR: could not connect to external services\n - QUEUE_CONN_ERROR: Queue related errors 41xxx\n - SQS_OVERLIMIT: SQS related errors 411xx\n - SEARCH_INTERNAL_FAILURE: Search related errors 43xxxx\n - EVALUATION_QUEUED: Workflow evaluation err code\n - STRIPE_EVENT_ERROR: Stripe 44xxx\n - CACHE_MISS: Redis/Cache 45xxx\n - SIGNUP_EVENT_ERROR: Sift Science 46xxx\n - APP_COUNT_INVALID_MESSAGE: Application counts related errors 470xx\n - MP_DOWNLOAD_ERROR: Media processor related errors 471xx -- DEPRECATED\n - DATATIER_CONN_ERROR: DataTier related error 472xx\n - USER_CONSENT_FACE: User legal consent stauts related 50xxx\n - WORKER_MISSING: Workers 51xxx\n - COLLECTOR_MISSING: Collectors 52xxx\n - SSO_IDENTITY_PROVIDER_DOES_NOT_EXIST: SSO 53xxx\n - TASK_IN_PROGRESS: Tasks 54xxx\nThe task was created.\n - TASK_DONE: The task is completed.\n - TASK_WONT_DO: The task is marked as abandoned.\n - TASK_FAILED: An error occurred during add-task-annotations or add-auto-annotations pipeline.\n - TASK_IDLE: When an Auto Annotation task job has finished processing its last batch and is waiting for more dataset assets.\n - TASK_CONFLICT: The task operation is in conflict with the current state of the server.\n - TASK_NOT_IMPLEMENTED: Certain task-related scenarios are not implemented.\n - TASK_MISSING: Task was not found.\n - TASK_PERMISSION_DENIED: Not allowed to perform a task-related action.\n - LABEL_ORDER_PENDING: Label Order Related Status Code 55xxx\n - LICENSE_ACTIVE: License Related Status Code 600xx\n - LICENSE_DELETED: hidden state not reflected to users\n - PASSWORD_VALIDATION_SUCCESS: Password Related Status Code\n - FEATUREFLAG_CONFIG_NOT_FOUND: Feature flags status code\n - MAINTENANCE_SUCCESS: Maintenance status code\n - DATASET_VERSION_PENDING: Datasets 64xxx\nThe dataset version is pending to be processed.\n - DATASET_VERSION_IN_PROGRESS: The dataset version is currently being processed.\n - DATASET_VERSION_READY: The dataset version is ready to be used.\n - DATASET_VERSION_FAILURE: An error occurred during the dataset version processing.\n - DATASET_VERSION_UNEXPECTED_ERROR: An unexpected error occurred during the dataset version processing.\n - DATASET_VERSION_CONFLICT: An alteration to dataset version would create a conflict\n - DATASET_INPUT_SUCCESS: The dataset input was successfully added.\n - DATASET_INPUT_DUPLICATE: The dataset input is a duplicate.\nDeprecated: Unused.\n - DATASET_VERSION_EXPORT_SUCCESS: The dataset version export is completed.\n - DATASET_VERSION_EXPORT_PENDING: The dataset version is pending to be exported.\n - DATASET_VERSION_EXPORT_FAILED: An error occurred during the dataset version export.\n - DATASET_VERSION_EXPORT_IN_PROGRESS: The dataset version is currently being exported.\n - DATASET_VERSION_EXPORT_UNEXPECTED_ERROR: An unexpected error occurred during the dataset version export.\n - JOB_QUEUED: Generic Job status codes\n - AUTH_MISSING_IDP_ASSOC: auth issues\n\nTODO: Knowledge graph related 80xxx\n - UPLOAD_IN_PROGRESS: Multipart uploading status codes\n - BILLING_INVALID_INFO: Billing related issues: 69xxx\n - INTERNAL_SERVER_ISSUE: Internal issues: 98xxx\n - CONN_UNCATEGORIZED: Uncategorized: 99xxx: move off as soon as known\n - BAD_REQUEST: Deprecated: migrate off to one of the internal issues\n - SERVER_ERROR: Deprecated: migrate off to one of the internal issues",
       "title": "- ZERO: to be revised and greatly expanded\n - SUCCESS: Generic\n - MOVED: Resource moved. Respond with Http status 307 and add new Location header to response\n - TEAPOT: SUCCESS_WARNING_API_DEPRECATED = 10001;\nSUCCESS_WARNING_CLIENT_DEPRECATED = 10002;\n - CONN_ACCOUNT_ISSUES: Clarifai Connection Codes: 11xxx"
     }
   }

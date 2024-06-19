@@ -59,7 +59,10 @@ function convertToPostmanCollection(openApiSpec) {
       
       const request = {
         method: method.toUpperCase(),
-        header: [],
+        header: [{
+          key: "Authorization",
+          value: "Bearer YOUR_PERSONAL_ACCESS_TOKEN",
+        }],
         url: {
           raw: `${openApiSpec.servers[0].url}${pathKey}`,
           host: [openApiSpec.servers[0].url],
@@ -99,6 +102,14 @@ function convertToPostmanCollection(openApiSpec) {
             mode: 'raw',
             raw: JSON.stringify(example, null, 2)
           };
+          request.header.push({
+            key: 'Content-Type',
+            value: 'application/json'
+          });
+          request.header.push({
+            key: 'Accept',
+            value: 'application/json'
+          });
         } else if (content?.['application/x-www-form-urlencoded']) {
           const schema = content['application/x-www-form-urlencoded'].schema;
           const example = generateExample(schema, openApiSpec);
@@ -109,6 +120,14 @@ function convertToPostmanCollection(openApiSpec) {
               value: example[key]
             }))
           };
+          request.header.push({
+            key: 'Content-Type',
+            value: 'application/x-www-form-urlencoded'
+          });
+          request.header.push({
+            key: 'Accept',
+            value: 'application/json'
+          });
         }
       }
 
