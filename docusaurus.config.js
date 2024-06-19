@@ -315,6 +315,12 @@ const config = {
       },
     ],
   ],
+  scripts: [
+    {
+      src: "https://cdn.redoc.ly/redoc/latest/bundles/redoc.standalone.js",
+      async: true,
+    }
+  ]
 };
 
 module.exports = config;

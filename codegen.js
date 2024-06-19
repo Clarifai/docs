@@ -126,9 +126,34 @@ const servers = [{
     url: "https://api.clarifai.com"
 }]
 
+const title = "Clarifai Public API";
+
+const description = `Welcome to the Clarifai API documentation. Clarifai is a leading provider of
+artificial intelligence and machine learning solutions, specialising in
+advanced computer vision, natural language, and generative AI technologies.<br/><br/>
+Our powerful API allows developers to integrate cutting-edge image, video
+recognition, and text-based analytics capabilities into their applications,
+unlocking a world of visual and sequence understanding possibilities.<br/><br/>
+The Clarifai API is a connection point enabling communication between
+clients and servers. It facilitates interaction between software, making it
+valuable for integrating Clarifai's AI technology into your products and
+tools through code. Clarifai API is avaiable in Python,Node.js,PHP and Java.<br/><br/>
+You can access Clarifai's API over HTTPS via \`https://api.clarifai.com\`.<br/><br/>
+[API Documentation](https://docs.clarifai.com/api-guide/api-overview)<br/><br/>
+[Clarifai Community](https://clarifai.com/explore)<br/><br/>
+[API Status](https://status.clarifai.com/)<br/><br/>
+[Discord](https://discord.gg/XAPE3Vtg)<br/><br/>
+`
+const version = "2.0.0";
+
 oas.validate({
     convertToLatest: true,
 }).then(definition => {
+    definition.info = {
+        title,
+        description,
+        version
+    }
     definition.servers = servers;
     const collection = convertToPostmanCollection(definition);
     collection.items.each((item) => {

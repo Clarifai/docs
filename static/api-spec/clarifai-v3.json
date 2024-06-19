@@ -1,8 +1,9 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "proto/clarifai/api/service.proto",
-    "version": "version not set"
+    "title": "Clarifai Public API",
+    "description": "Welcome to the Clarifai API documentation. Clarifai is a leading provider of\nartificial intelligence and machine learning solutions, specialising in\nadvanced computer vision, natural language, and generative AI technologies.<br/><br/>\nOur powerful API allows developers to integrate cutting-edge image, video\nrecognition, and text-based analytics capabilities into their applications,\nunlocking a world of visual and sequence understanding possibilities.<br/><br/>\nThe Clarifai API is a connection point enabling communication between\nclients and servers. It facilitates interaction between software, making it\nvaluable for integrating Clarifai's AI technology into your products and\ntools through code. Clarifai API is avaiable in Python,Node.js,PHP and Java.<br/><br/>\nYou can access Clarifai's API over HTTPS via `https://api.clarifai.com`.<br/><br/>\n[API Documentation](https://docs.clarifai.com/api-guide/api-overview)<br/><br/>\n[Clarifai Community](https://clarifai.com/explore)<br/><br/>\n[API Status](https://status.clarifai.com/)<br/><br/>\n[Discord](https://discord.gg/XAPE3Vtg)<br/><br/>\n",
+    "version": "2.0.0"
   },
   "tags": [
     {
