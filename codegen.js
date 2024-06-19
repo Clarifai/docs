@@ -132,26 +132,26 @@ oas.validate({
     definition.servers = servers;
     const collection = convertToPostmanCollection(definition);
     collection.items.each((item) => {
-        const language = 'javascript'; // Change this to the desired language
-        const variant = 'fetch'; // Request variant for nodejs
-
-        postman.convert(language, variant, item.request, {}, (error, snippet) => {
-            if (error) {
-                console.error('Error generating code snippet:', error);
-            } else {
-                const [method, pathKey] = item.name.split(' ', 2);
-                const endpoint = definition.paths?.[pathKey.toLowerCase()]?.[method.toLowerCase()];
-                if(endpoint) {
-                    if (!endpoint['x-codeSamples']) {
-                        endpoint['x-codeSamples'] = [];
+        const languages = [['cURL', 'cURL'], ['JavaScript', 'Fetch'], ['NodeJs', 'Axios']];
+        languages.forEach(([language, variant]) => {
+            postman.convert(language, variant, item.request, {}, (error, snippet) => {
+                if (error) {
+                    console.error('Error generating code snippet:', error);
+                } else {
+                    const [method, pathKey] = item.name.split(' ', 2);
+                    const endpoint = definition.paths?.[pathKey.toLowerCase()]?.[method.toLowerCase()];
+                    if(endpoint) {
+                        if (!endpoint['x-codeSamples']) {
+                            endpoint['x-codeSamples'] = [];
+                        }
+                        endpoint['x-codeSamples'].push({
+                            lang: language,
+                            label: language.toUpperCase(),
+                            source: snippet
+                        });
                     }
-                    endpoint['x-codeSamples'].push({
-                        lang: language,
-                        label: language.toUpperCase(),
-                        source: snippet
-                    });
                 }
-            }
+            });
         });
     });
 
