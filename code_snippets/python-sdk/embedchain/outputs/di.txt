@@ -1,0 +1,1 @@
+Inserting batches in chromadb: 100%|██████████| 1/1 [00:06<00:00,  6.86s/it]
