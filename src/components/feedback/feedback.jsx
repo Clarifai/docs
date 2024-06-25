@@ -98,7 +98,7 @@ export const Feedback = ({ metadata }) => {
               )}
             </div>
           ) : (
-            <div className={styles.numberRow}>
+            <div className={styles.numberRow} style={{display: "flex", flexDirection: "row", marginTop: "15px", height: "45px", justifyContent: "center"}}>
               {scores.map((star, index) => (
                 <div
                   className={styles.star}
