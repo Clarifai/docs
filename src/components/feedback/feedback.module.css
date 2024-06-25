@@ -79,6 +79,7 @@ html[data-theme='dark'] {
 
 .numberRow {
   display: flex;
+  flex-direction: row;
   margin-top: 15px;
   height: 45px;
   justify-content: center;
