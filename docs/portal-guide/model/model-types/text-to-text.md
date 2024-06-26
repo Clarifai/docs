@@ -183,6 +183,12 @@ The ensuing page allows you to create and train a text-to-text model for generat
      - Llama2 7/13B or Mistral models with GPTQ-Lora, featuring enhanced support for quantized/mixed-precision training techniques.
      - GPT-Neo model, either the 125 million parameters version or the 2.7 billion parameters version.
 
+:::warning text Fine-Tuning Templates
+
+[Click here](https://docs.clarifai.com/portal-guide/model/deep-training/text-templates/) to learn more about the text fine-tuning templates and their associated hyperparameters.
+
+:::
+
 - **Training settings**—Optionally, you may configure the training and inference settings to enhance the performance of your model. Otherwise, you may use the provided default settings. These are some of the settings you may customize: 
    - **Model config**—provide a dictionary of key-value pairs that define the pre-trained model to be used as a base. 
    - **Quantization config**—provide a dictionary of key-value pairs that define how to fine-tune or adjust the behavior of quantization during the training or inference process. 
@@ -190,7 +196,7 @@ The ensuing page allows you to create and train a text-to-text model for generat
    - **Tokenizer config**—provide a dictionary of key-value pairs that define the configuration of a pre-trained tokenizer. 
    - **Trainer config**—provide a dictionary of key-value pairs that define the configuration of the Transformers `Trainer` class.
 
-[Click here](https://docs.clarifai.com/portal-guide/model/deep-training/text-templates/) to learn more about the hyperparameters that each template supports.
+[Click here](https://docs.clarifai.com/portal-guide/model/deep-training/text-templates/) to learn more about the  that each template supports.
 
 Finally, click the **Train** button. 
 

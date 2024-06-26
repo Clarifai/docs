@@ -188,7 +188,7 @@ The number of epochs can be customized with values ranging from 1 to 200, adjust
 
 ### Min Samples Per Epoch
 
-This hyperparameter specifies the minimum number of samples processed in one epoch during training, particularly useful for very small datasets. It ensures that a sufficient number of samples are processed in each epoch to provide meaningful training updates.
+This hyperparameter specifies the minimum number of samples processed in one epoch during training, which is particularly useful for very small datasets. It ensures that a sufficient number of samples are processed in each epoch to provide meaningful training updates.
 
 It's essential to manage this hyperparameter carefully to prevent overfitting and maintain stable training. For very small datasets, a common approach is to repeat the dataset multiple times within an epoch, effectively increasing the number of training iterations and improving model learning without overfitting.
   
@@ -200,7 +200,7 @@ This is the initial learning rate per item; it's the rate at which the model wei
 
 The overall learning rate (per step) is calculated by `lrate = batch_size * per_item_lrate`. The minimum value it supports for customization is 0.0.
 
-Properly adjusting the per item learning rate allows fine-tuning of the model’s convergence speed and stability, essential for effective training.
+Properly adjusting the per item learning rate allows fine-tuning of the model’s convergence speed and stability, which is essential for effective training.
 
 ### Pretrained Weights
 

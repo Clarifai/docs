@@ -13,6 +13,12 @@ Clarifai's text fine-tuning templates empower you to leverage pre-trained langua
 
 Each template comes with its own hyperparameters, which you can tune to influence “how” your model learns. With hyperparameters, you can customize and adapt a template to suit your specific tasks and achieve better performance.
 
+:::tip train text-to-text models
+
+[Click here](https://docs.clarifai.com/portal-guide/model/model-types/text-to-text#how-to-fine-tune-text-generation-models) to learn how to use the text templates to train fine-tuned text-to-text models.
+
+:::
+
 ## Llama 2
 
 [Llama 2](https://arxiv.org/abs/2307.09288) is a collection of pre-trained and fine-tuned large language models (LLMs) created and publicly released by Meta AI. It is available in three model sizes: 7, 13, and 70 billion parameters. Llama 2-Chat is a fine-tuned version of Llama 2, specifically optimized for dialogue-based scenarios. 
