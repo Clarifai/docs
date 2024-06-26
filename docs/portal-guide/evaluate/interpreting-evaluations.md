@@ -1,22 +1,22 @@
 ---
-description: Learn to interpret model evaluations.
+description: Learn how to interpret model evaluation results
 sidebar_position: 1
 ---
 
 # Interpreting Evaluations
 
-**Learn to interpret model evaluations**
+**Learn how to interpret model evaluation results**
 <hr />
-
-## Interpreting Results
 
 As mentioned in the previous [Evaluating Models](./) section, once the evaluation process is complete, the **Calculate** button will become a **View Results** button. 
 
-You can click the **View Results** button to see the evaluation results.
+You can click the **View Results** button to see and interpret the evaluation results.
 
 ![](/img/community/evaluate/evaluate_3.png)
 
-You'll then be redirected to the following page:
+You will then be redirected to the **Evaluation results** page, where you can analyze the outcomes of the evaluation process. The metrics displayed will vary based on the type of model being evaluated.
+
+Let's talk about each of the metrics. 
 
 ![](/img/community/evaluate/evaluate_4.png) 
 

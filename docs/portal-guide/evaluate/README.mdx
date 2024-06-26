@@ -4,58 +4,71 @@ description: Evaluate model performance
 
 # Evaluating Models
 
-**Learn about model evaluation tools**
+**Learn about our model evaluation tools**
 <hr />
 
-Now that you've successfully trained the model, you may want to test its performance before using it in a production environment. 
-The model evaluation tool allows you to perform cross-validation on a specified model version. 
+After successfully training your model, it’s crucial to test its performance before deploying it in a production environment. Our model evaluation tool allows you to perform cross-validation on a specified model version, which provides insights into its performance metrics.
 
-Once the evaluation is complete, you can view the various metrics that inform the model’s performance.
+Once the evaluation is complete, you can view various metrics that provide insights into your model’s performance. This helps in understanding the strengths and weaknesses of the model before it is deployed in a real-world scenario.
+
+:::warning model types supported
+
+We currently support evaluating the following [model types](https://docs.clarifai.com/portal-guide/model/model-types/):  visual classifiers, visual detectors, text classifiers, transfer learning models, and [fine-tuned LLMs](https://docs.clarifai.com/portal-guide/evaluate/llms).
+
+:::
 
 ## How It Works
 
-Model evaluation performs a K-split cross-validation on data you used to train your custom model.
+Model evaluation is performed using K-split cross-validation on the provided test data.
 
 ![cross validation](/img/cross_validation.jpg)
 
-In the cross-validation process, it will: 
+This is how the cross-validation process works:
 
-1. Set aside a random 1/K subset of the training data and designate it as a test set;
-2. Train a new model with the remaining training data;
-3. Pass the test set data through this new model to make predictions;
-4. Compare the predictions against the test set’s actual labels;
-5. Repeat steps 1\) through 4\) across K splits to average out the evaluation results.
+1. **Data splitting:** Randomly set aside a 1/K subset of the evaluation data as a test set.
+2. **Model training:** Train a new model on the remaining data.
+3. **Prediction:** Use the newly trained model to make predictions on the test set.
+4. **Comparison:** Compare the predictions with the actual labels of the test set.
+5. **Repetition:** Repeat steps 1 to 4 across K-splits to average out the evaluation results.
 
 ## Requirements
 
-To run the evaluation on your custom model, it should meet the following criteria:
+To successfully run the evaluation on a model, it must meet the following criteria:
 
-* It should be a custom-trained model version with the following:
-  1. At least two concepts;
-  2. At least ten training inputs per concept \(at least 50 inputs per concept is recommended\).
+- It should be a custom-trained model with a version you've created. 
+- It should have at least two concepts.
+- There should be at least ten training inputs per concept (although at least 50 inputs per concept is recommended for more reliable results).
 
-:::important Note
+:::caution
 
 The evaluation may result in an error if the model version doesn’t satisfy the requirements above.
 
 :::
 
-## Running Evaluation
+## Cross-App Evaluation
 
-You can run the evaluation on a specific version of your custom model on the Community platform. 
+Cross-app evaluation refers to evaluating the performance of a model version using datasets within your current application or those from another application under your ownership. This means that you can assess how well your model performs across various contexts or use cases by leveraging datasets from separate applications within your ownership.
 
-To do so, on your application's page, select the **App Models** option on the collapsible left sidebar. On your **Models** listing page, select the model you'd like to evaluate its performance. 
+You can run the evaluation on a specific version of your custom model on the Community platform. To do so, navigate to the version table of your model and locate the version of the model you want to evaluate.
+
+The **Evaluation Dataset** column in the table allows you to select a dataset to use to assess the performance of your model version. If you click the field, a drop-down list emerges, enabling you to select a dataset version previously used for evaluation.
+
+This selection can include datasets within your current application or those from another application under your ownership, which facilitates cross-app evaluation.
 
 ![](/img/community/evaluate/evaluate_1.png)
 
-You'll be redirected to the individual model's page. Under the **Versions** tab, go to the version of the model you want to evaluate its performance. And under the **ROC** column, click the **Calculate** button, which will start the evaluation process. 
+Also, if you click the **Evaluate with a new Dataset** button, a small window will pop up. Within this window, you can choose a new dataset that hasn't been evaluated before, along with its version, for conducting the evaluation. If no dataset version is selected, the latest version will be automatically used.
 
-![](/img/community/evaluate/evaluate_2.png)
+The pop-up also allows you to create a new dataset for the evaluation.
 
-The evaluation may take up to 30 minutes. Once it is complete, the **Calculate** button will become a **View Results** button. 
+![](/img/community/evaluate/evaluate_1_1.png)
 
-Click the **View Results** button to see the evaluation results.
+After selecting the dataset you want to use for the evaluation, click the **Calculate** button in the **ROC** column. This will start the evaluation process. 
 
-For more information on how to interpret the evaluation results, check the next [Interpreting Evaluations](../evaluate/interpreting-evaluations/) section. 
+The evaluation may take some time. Once complete, the **Calculate** button will become a **View Results** button, which you can click to see the evaluation results.
+
+:::tip Interpreting Evaluations
+
+To learn how to interpret the evaluation results, check the next [Interpreting Evaluations](../evaluate/interpreting-evaluations/) section. 
  
-
+:::
