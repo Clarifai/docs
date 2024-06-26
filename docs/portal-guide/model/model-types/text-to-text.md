@@ -196,8 +196,6 @@ The ensuing page allows you to create and train a text-to-text model for generat
    - **Tokenizer config**—provide a dictionary of key-value pairs that define the configuration of a pre-trained tokenizer. 
    - **Trainer config**—provide a dictionary of key-value pairs that define the configuration of the Transformers `Trainer` class.
 
-[Click here](https://docs.clarifai.com/portal-guide/model/deep-training/text-templates/) to learn more about the  that each template supports.
-
 Finally, click the **Train** button. 
 
 ### 5. Generate texts
