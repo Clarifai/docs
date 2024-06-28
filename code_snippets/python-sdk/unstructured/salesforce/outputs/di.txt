@@ -1,0 +1,35 @@
+2024-06-12 09:15:19,685 MainProcess DEBUG    updating download directory to: /root/.cache/unstructured/ingest/salesforce/54298b8afd
+2024-06-12 09:15:19,690 MainProcess INFO     running pipeline: DocFactory -> Reader -> Partitioner -> Writer -> Copier with config: {"reprocess": false, "verbose": true, "work_dir": "/root/.cache/unstructured/ingest/pipeline", "output_dir": "salesforce-output", "num_processes": 2, "raise_on_error": false}
+2024-06-12 09:15:19,785 MainProcess INFO     Running doc factory to generate ingest docs. Source connector: {"processor_config": {"reprocess": false, "verbose": true, "work_dir": "/root/.cache/unstructured/ingest/pipeline", "output_dir": "salesforce-output", "num_processes": 2, "raise_on_error": false}, "read_config": {"download_dir": "/root/.cache/unstructured/ingest/salesforce/54298b8afd", "re_download": false, "preserve_downloads": false, "download_only": false, "max_docs": null}, "connector_config": {"access_config": {"consumer_key": "*******", "private_key": "*******"}, "categories": ["EmailMessage"], "username": "adithyansukumar@testing.com", "recursive": true}}
+2024-06-12 09:15:21,944 MainProcess INFO     processing 14 docs via 2 processes
+2024-06-12 09:15:21,951 MainProcess INFO     Calling Reader with 14 docs
+2024-06-12 09:15:21,953 MainProcess INFO     Running source node to download data associated with ingest docs
+2024-06-12 09:15:40,018 MainProcess INFO     Calling Partitioner with 14 docs
+2024-06-12 09:15:40,021 MainProcess INFO     Running partition node to extract content from json files. Config: {"pdf_infer_table_structure": false, "strategy": "auto", "ocr_languages": null, "encoding": null, "additional_partition_args": {}, "skip_infer_table_types": null, "fields_include": ["element_id", "text", "type", "metadata", "embeddings"], "flatten_metadata": false, "metadata_exclude": [], "metadata_include": [], "partition_endpoint": "https://api.unstructured.io/general/v0/general", "partition_by_api": false, "api_key": "*******", "hi_res_model_name": null}, partition kwargs: {}]
+2024-06-12 09:15:40,024 MainProcess INFO     Creating /root/.cache/unstructured/ingest/pipeline/partitioned
+2024-06-12 09:15:48,787 MainProcess INFO     Calling Copier with 14 docs
+2024-06-12 09:15:48,790 MainProcess INFO     Running copy node to move content to desired output location
+2024-06-12 09:15:52,096 MainProcess INFO     uploading elements from 14 document(s) to the destination
+2024-06-12 09:15:52,098 MainProcess INFO     Calling Writer with 14 docs
+2024-06-12 09:15:52,102 MainProcess INFO     Running write node to upload content. Destination connector: {"write_config": {"batch_size": 50}, "connector_config": {"access_config": {"api_key": "*******"}, "app_id": "salesforce_app_3", "user_id": "8tzpjy1a841y", "dataset_id": null}, "_client": null}]
+2024-06-12 09:15:52,442 MainProcess INFO     Extending 3 json elements from content in salesforce-output/EmailMessage/02sdL000000BwlRQAS.eml.json
+2024-06-12 09:15:52,443 MainProcess INFO     Extending 2 json elements from content in salesforce-output/EmailMessage/02sdL000000By7JQAS.eml.json
+2024-06-12 09:15:52,447 MainProcess INFO     Extending 22 json elements from content in salesforce-output/EmailMessage/02sdL000000ByYjQAK.eml.json
+2024-06-12 09:15:52,450 MainProcess INFO     Extending 1 json elements from content in salesforce-output/EmailMessage/02sdL000000CJIDQA4.eml.json
+2024-06-12 09:15:52,453 MainProcess INFO     Extending 10 json elements from content in salesforce-output/EmailMessage/02sdL000000DGQMQA4.eml.json
+2024-06-12 09:15:52,455 MainProcess INFO     Extending 10 json elements from content in salesforce-output/EmailMessage/02sdL000000DGetQAG.eml.json
+2024-06-12 09:15:52,456 MainProcess INFO     Extending 10 json elements from content in salesforce-output/EmailMessage/02sdL000000DGwbQAG.eml.json
+2024-06-12 09:15:52,458 MainProcess INFO     Extending 9 json elements from content in salesforce-output/EmailMessage/02sdL000000DGyDQAW.eml.json
+2024-06-12 09:15:52,460 MainProcess INFO     Extending 11 json elements from content in salesforce-output/EmailMessage/02sdL000000DGzpQAG.eml.json
+2024-06-12 09:15:52,462 MainProcess INFO     Extending 11 json elements from content in salesforce-output/EmailMessage/02sdL000000DH1RQAW.eml.json
+2024-06-12 09:15:52,463 MainProcess INFO     Extending 12 json elements from content in salesforce-output/EmailMessage/02sdL000000DH33QAG.eml.json
+2024-06-12 09:15:52,465 MainProcess INFO     Extending 9 json elements from content in salesforce-output/EmailMessage/02sdL000000DH9VQAW.eml.json
+2024-06-12 09:15:52,466 MainProcess INFO     Extending 11 json elements from content in salesforce-output/EmailMessage/02sdL000000DHB7QAO.eml.json
+2024-06-12 09:15:52,468 MainProcess INFO     Extending 11 json elements from content in salesforce-output/EmailMessage/02sdL000000DHHZQA4.eml.json
+2024-06-12 09:15:52,475 MainProcess INFO     writing 132 objects to destination app salesforce_app_3 
+2024-06-12 09:15:55 INFO     clarifai.client.input:                                                    input.py:706
+                             Inputs Uploaded                                                                       
+                             code: SUCCESS                                                                         
+                             description: "Ok"                                                                     
+                             details: "All inputs successfully added"                                              
+                             req_id: "af1aca7b33bf498e898c859c47259ef4"

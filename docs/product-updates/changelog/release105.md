@@ -29,8 +29,8 @@ These data labeling features have been released as [**Private Preview**](https:/
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
-| ![new-feature](/img/new_feature.jpg) |Introduced a new auto-annotation experience for labeling already existing inputs in datasets| <ul><li>You can now set up a labeling task and enable automatic annotation, streamlining the process of annotating your text and image inputs quickly and efficiently. </li><li>You can select a model or workflow you own or choose one published in the Community for the auto-annotation task.</li><li>You can also review and edit the annotations from auto-annotation tasks. </li></ul> |
-| ![new-feature](/img/new_feature.jpg) |Introduced the ability to manually review labeled inputs by partitioning them | <ul><li>You can now distribute inputs to be reviewed across multiple reviewers in the Labeling Tasks tool. This lets you automatically distribute labeled assets across multiple reviewers to improve the speed of review mode and reduce chances for a single point of dependence. </li></ul>   |
+| ![new-feature](/img/new_feature.jpg) |Introduced a new [auto-annotation](https://docs.clarifai.com/portal-guide/annotate/auto-annotation) experience for labeling already existing inputs in datasets| <ul><li>You can now set up a labeling task and enable automatic annotation, streamlining the process of annotating your text and image inputs quickly and efficiently. </li><li>You can select a model or workflow you own or choose one published in the Community for the auto-annotation task.</li><li>You can also review and edit the annotations from auto-annotation tasks. </li></ul> |
+| ![new-feature](/img/new_feature.jpg) |Introduced the ability to manually [review](https://docs.clarifai.com/portal-guide/annotate/review) labeled inputs by partitioning them | <ul><li>You can now distribute inputs to be reviewed across multiple reviewers in the Labeling Tasks tool. This lets you automatically distribute labeled assets across multiple reviewers to improve the speed of review mode and reduce chances for a single point of dependence. </li></ul>   |
 
 
 ## Devtools Integrations
@@ -113,3 +113,10 @@ These data labeling features have been released as [**Private Preview**](https:/
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
 |  ![bug](/img/bug.jpg)    |  Fixed an issue where `get_upload_status` would override `log_warnings` in the `dataset.upload_dataset` function | <ul><li>The issue occurred because `self.logger` was shared between both loggers, causing the upload status table to overwrite the log file when both `get_upload_status` and `log_warnings` arguments were used simultaneously. We fixed the issue.</li></ul>  |    
+
+
+## Planning for Future Releases
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+|![new-feature](/img/new_feature.jpg) <br/> <br/> | Planned future breaking changes |<ul><li>An upcoming release of Clarifai’s API, 10.7, will significantly change how Personal Access Tokens (PATs) and API keys work. We plan to implement this change on August 6th, 2024. Learn more [here](https://docs.clarifai.com/product-updates/upcoming-api-changes/pat-api-keys). </li> </ul>|

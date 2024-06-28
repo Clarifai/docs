@@ -5,7 +5,8 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
-    "build": "docusaurus build",
+    "codegen": "redocly bundle filter -o static/api-spec/clarifai.json && node codegen.js",
+    "build": "yarn codegen && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
@@ -47,5 +48,11 @@
     "@docusaurus/**/trim": "0.0.3",
     "@docusaurus/**/wait-on": "7.2.0",
     "@docusaurus/plugin-client-redirects": "2.4.0"
+  },
+  "devDependencies": {
+    "@redocly/cli": "^1.16.0",
+    "oas-normalize": "^11.1.1",
+    "postman-code-generators": "^1.10.1",
+    "postman-collection": "^4.4.0"
   }
 }
