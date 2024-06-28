@@ -324,3 +324,45 @@ html[data-theme='dark'] .dropdown__menu {
   background-color: rgba(19, 24, 39, 0.85);
   backdrop-filter: blur(7.5px);
 }
+
+.gallery {
+	 display: grid;
+	 grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	 grid-gap: 20px;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  padding: 20px;
+}
+.card h4 {
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  margin: 0;
+}
+.card a {
+  margin-left: auto;
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+}
+.card .arrow {
+  transition: transform 0.3s ease;
+  margin-top: 2px;
+  margin-left: 4px;
+}
+.card:hover .arrow {
+  transform: translateX(5px);
+}
+.card-header {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+/* Dark Mode Styles */
+html[data-theme='dark'] .card:hover {
+  --ifm-card-background-color: var(--color-gray-78) !important;
+}
+ 
