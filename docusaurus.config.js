@@ -125,6 +125,7 @@ const config = {
               {
                 label: 'API Reference',
                 to: "/api-reference",
+                target: "_blank"
               }
             ]
           },

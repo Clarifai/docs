@@ -272,13 +272,14 @@ header .join__slack:hover {
 #redocly-ui {
   background-color: white;
   position: fixed;
-  top: 72px;
+  top: 0;
   left: 0;
-  height: calc(100vh - 57px);
+  height: 100vh;
   width: 100vw;
   overflow: scroll;
   -ms-overflow-style: none;  /* Internet Explorer 10+ */
   scrollbar-width: none;  /* Firefox */
+  z-index: 9999999999;
 }
 #redocly-ui::-webkit-scrollbar { 
     display: none;  /* Safari and Chrome */
