@@ -13,7 +13,7 @@ export default function Redocly() {
         };
 
         const initRedoc = () => {
-            Redoc.init(window.location.origin + '/api-spec/clarifai.yml', {
+            Redoc.init(window.location.origin + '/api-spec/clarifai-v3.json', {
                 theme: {
                     typography: {
                         fontSize: getComputedStyle(document.documentElement).getPropertyValue('--ifm-font-size-base').trim(),

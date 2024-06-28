@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "docusaurus start",
+    "start": "yarn codegen && docusaurus start",
     "codegen": "redocly bundle filter -o static/api-spec/clarifai.json && node codegen.js",
     "build": "yarn codegen && docusaurus build",
     "swizzle": "docusaurus swizzle",
