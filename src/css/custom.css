@@ -6,6 +6,15 @@
 
 /* You can override the default Infima variables here. */
 @import '~@ibm/plex/css/ibm-plex.css';
+@import '~@fontsource/poppins/100.css';
+@import '~@fontsource/poppins/200.css';
+@import '~@fontsource/poppins/300.css';
+@import '~@fontsource/poppins/400.css';
+@import '~@fontsource/poppins/500.css';
+@import '~@fontsource/poppins/600.css';
+@import '~@fontsource/poppins/700.css';
+@import '~@fontsource/poppins/800.css';
+@import '~@fontsource/poppins/900.css';
 :root {
   /* Custom Variables */
   --color-gray-0: #ffffff;
@@ -126,6 +135,9 @@
   'Segoe UI Symbol';
   --ifm-font-family-monospace: 'IBM Plex Mono Regular', 'IBM Plex Mono', SFMono-Regular, Menlo, Monaco, Consolas,
   'Liberation Mono', 'Courier New', monospace;
+  --ifm-heading-font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans,
+  sans-serif, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+  'Segoe UI Symbol';
   
   --ifm-font-size-base: 15px;
   --ifm-line-height-base: 1.5; /* 150% */
