@@ -1,7 +1,3 @@
----
-sidebar_position: 2
----
-
 # DSPy Modules & Signatures
 **Learn about Modules & Signatures in DSPy**
 <hr />
