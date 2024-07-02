@@ -12,7 +12,7 @@ import CodeOutputRC from "!!raw-loader!../../../code_snippets/python-sdk/dspy/ou
 
 # Multistage RAG Pipeline With DSPy
 
-**A blog by Mogith PN**
+**A tutorial by Mogith PN**
 <hr />
 
 Information retrieval techniques are growing at such a high pace that the quest for ever-more efficient and accurate systems continues. One such advanced methodology is called RAG. But what if we could push the boundaries of RAG even further? Today, we'll explore the exciting potential of multi-stage, multi-model RAG systems built with DSPy.
