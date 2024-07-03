@@ -8,8 +8,6 @@ sidebar_position: 4
 **Connect the knowledge gained by different models**
 <hr />
 
-![](/img/kg6.png)
-
 The Knowledge Graph uses Clarifai's concept mapping model to establish a hierarchical relationship between your concepts.
 
 It uses three different _predicates_ to organize your concepts: hypernyms, hyponyms, and synonyms.

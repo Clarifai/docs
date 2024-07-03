@@ -71,7 +71,7 @@ We discourage users from making a final assessment of a classification model's a
 
 ## Total Labeled
 
-The total number of inputs that were originally labeled as the concept in the test set. Note that the Total Labeled is not dependent on the [prediction threshold](#prediction-threshold).
+The total number of inputs that were originally labeled as the concept in the test set. Note that the Total Labeled value is not dependent on the [prediction threshold](#prediction-threshold).
 
 It is calculated as: `True Positives (correct predictions) + False Negatives (incorrect predictions)`. 
 
