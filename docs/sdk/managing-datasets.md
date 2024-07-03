@@ -344,7 +344,9 @@ With our API, you can efficiently retrieve your datasets in a compressed zip fil
 
 Visit this [page](https://docs.clarifai.com/portal-guide/datasets/create-get-update-delete) for more information.
 
-
+:::info
+The `clarifai-data-protobuf.zip` file can be downloaded from the dataset section in the portal.
+:::
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeExport}</CodeBlock>

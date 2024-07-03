@@ -33,4 +33,5 @@ model_prediction = Model(url=model_url, pat="YOUR_PAT").predict_by_url(
 )
 
 # Get the output
-print(model_prediction.outputs[0].data)
+for concept in model_prediction.outputs[0].data.concepts:
+    print(f"concept: {concept.name:<20} confidence: {round(concept.value, 3)}")
