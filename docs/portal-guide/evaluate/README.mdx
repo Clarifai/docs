@@ -9,7 +9,11 @@ description: Evaluate model performance
 
 After successfully training your model, it’s crucial to test its performance before deploying it in a production environment. Our model evaluation tool allows you to perform cross-validation on a specified model version, which provides insights into its performance metrics.
 
-Once the evaluation is complete, you can view various metrics that provide insights into your model’s performance. This helps in understanding the strengths and weaknesses of the model before it is deployed in a real-world scenario.
+Once the evaluation is complete, you can view various metrics about the model’s behavior. This helps you to:
+
+- Refine the model further and enhance its performance.
+- Understand the model's strengths and weaknesses before deploying it in a real-world scenario.
+- Perform comparison between different versions to select the best performing one.
 
 :::warning model types supported
 
@@ -37,7 +41,7 @@ To successfully run the evaluation on a model, it must meet the following criter
 
 - It should be a custom-trained model with a version you've created. 
 - It should have at least two concepts.
-- There should be at least ten training inputs per concept (although at least 50 inputs per concept is recommended for more reliable results).
+- There should be at least ten evaluation training inputs per concept (although at least 50 inputs per concept is recommended for more reliable results).
 
 :::caution
 
@@ -51,17 +55,15 @@ Cross-app evaluation refers to evaluating the performance of a model version usi
 
 You can run the evaluation on a specific version of your custom model on the Community platform. To do so, navigate to the version table of your model and locate the version of the model you want to evaluate.
 
-The **Evaluation Dataset** column in the table allows you to select a dataset to use to assess the performance of your model version. If you click the field, a drop-down list emerges, enabling you to select a dataset version previously used for evaluation.
+The **Evaluation Dataset** column in the table allows you to select a dataset to use to assess the performance of your model version. If you click the field, a drop-down list emerges, enabling you to select a dataset version to perform the evaluation.
 
 This selection can include datasets within your current application or those from another application under your ownership, which facilitates cross-app evaluation.
 
 ![](/img/community/evaluate/evaluate_1.png)
 
-Also, if you click the **Evaluate with a new Dataset** button, a small window will pop up. Within this window, you can choose a new dataset that hasn't been evaluated before, along with its version, for conducting the evaluation. If no dataset version is selected, the latest version will be automatically used.
+Also, if you click the **Evaluate with a new Dataset** button, a small window will pop up. Within this window, you can choose a new dataset not included in the drop-down list, along with its version, for conducting the evaluation. If you do not select a dataset version, the latest one will be automatically used.
 
-The pop-up also allows you to create a new dataset for the evaluation.
-
-![](/img/community/evaluate/evaluate_1_1.png)
+![](/img/community/evaluate/evaluate_2.png)
 
 After selecting the dataset you want to use for the evaluation, click the **Calculate** button in the **ROC** column. This will start the evaluation process. 
 
