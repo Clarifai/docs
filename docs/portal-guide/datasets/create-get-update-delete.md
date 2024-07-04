@@ -116,6 +116,29 @@ To copy a dataset ID to the clipboard, go to its individual page and click the c
 
 ![](/img/community/datasets/dataset_9.png)
 
+## Merge Datasets
+The Clarifai Platform also allows users to merge datasets together for specific purposes. The easiest way to merge datasets via the UI is to leverage Input Filters and the two bulk selection checkboxes. From the Inputs page, first select the dataset that you will be adding inputs from, using the datasets filter. Below  I've selected my **tolabel-1** dataset.
+
+![](/img/community/datasets/merge_dataset_1.png)
+
+Next, click the checkbox above the image thumbnails. As you continue scrolling and loading more images, this number should update to include the newly loaded inputs as well.
+
+![](/img/community/datasets/merge_dataset_2.png)
+
+For now, click on **Dataset…** in the bottom toolbar, which should have appeared after you had selected some inputs.
+
+![](/img/community/datasets/merge_dataset_3.png)
+
+Doing so will open an **Edit Datasets of n inputs** tab on the screen. From here, you'll want to select the dataset that you want to add the selected inputs into (ie. your **training** dataset) as well as check the **Apply to all search results** checkbox. 
+
+:::info
+There are two checkboxes: the **"25 selected"** checkbox selects only the inputs currently loaded on the screen, while the **"Apply to all search results"** checkbox, found in the bottom toolbar options, applies your selection to all inputs matching the current searches/filters in the UI.
+:::
+
+![](/img/community/datasets/merge_dataset_4.png)
+
+From there, click the **Add n+ inputs** button to add the inputs from the **tolabel-1** dataset into the selected **training** dataset. Afterwards, make sure to update the dataset version of your training dataset so that the latest one reflects the newly added inputs and annotations.
+
 ## Update Datasets
 
 ### Update a Dataset Version
@@ -134,7 +157,15 @@ The updated inputs and annotations in your dataset will be displayed under the *
 
 ![](/img/community/datasets/dataset_16.png)
 
-You can also choose the dataset version you'd like to use from the **Selected Version** drop-down list. 
+You can also choose the dataset version you'd like to use from the **Selected Version** drop-down list.
+
+### Auto-Generated Versions
+As you navigate through the versions tab in **Dataset** section, you might come across **auto-generated** dataset versions.
+There are two different cases where the platform will create **"auto-generated-*"** dataset versions:
+1. If you train a model and only select a dataset, but not a corresponding dataset version.
+2. During the model evaluation process, **auto-generated** dataset versions are used to store the different ground truths and predictions during the model evaluation process, which are then used to further calculate the actual evaluation metrics.
+
+![](/img/community/datasets/autogen_version.png)
 
 ## Delete Datasets
 
