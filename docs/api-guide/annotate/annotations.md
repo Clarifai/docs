@@ -133,6 +133,14 @@ import CurlUpdateAnnotationConceptsRegion from "!!raw-loader!../../../code_snipp
 import CurlUpdateAnnotationRegionCoordinates from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/update_annotation_region_coordinates.sh";
 import CurlUpdateAnnotationStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/update_annotation_status.sh";
 
+import PythonAnnotateMask from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/annotate_mask.py";
+import JavascriptAnnotateMask from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/annotate_mask.html";
+import NodeAnnotateMask from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/annotate_mask.js";
+import JavaAnnotateMask from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/annotate_mask.java";
+import PHPAnnotateMask from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/annotate_mask.php";
+import CURLAnnotateMask from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/annotate_mask.sh";
+
+
 ## Add Annotations
 
 You can label your inputs by calling the `POST /annotations` endpoint. For example, you can add concept\(s\) to an image, draw a bounding box, or label concept\(s\) in a video frame.
@@ -314,6 +322,39 @@ Below is an example of how to annotate existing regions in an image.
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlAnnotateExistingRegionsImage}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+### Annotate Images With Mask
+
+Below is an example of how to add a mask to an Image using a single API call. In this example, we provide an image mask as a `base64` string. 
+
+Click [here](https://docs.clarifai.com/portal-guide/annotate/label-types/#how-to-choose-a-label-type) to learn more about image mask annotations.
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonAnnotateMask}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JavascriptAnnotateMask}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeAnnotateMask}</CodeBlock>
+</TabItem>
+
+<TabItem value="java" label="Java">
+    <CodeBlock className="language-java">{JavaAnnotateMask}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPAnnotateMask}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CURLAnnotateMask}</CodeBlock>
 </TabItem>
 
 </Tabs>
