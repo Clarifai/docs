@@ -4,8 +4,6 @@
 #########################################################################################
 
 # Your user and app ID
-
-
 USER_ID = 'YOUR_USER_ID_HERE'
 # Your PAT (Personal Access Token) can be found in the Account's Security section
 PAT = 'YOUR_PAT_HERE'
