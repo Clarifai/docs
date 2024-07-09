@@ -1,15 +1,69 @@
 ---
-description: >-
-  Community explorer helps you interact with and learn about your data. You can
-  view, sort, filter and label your images, video, or text all in one place.
+description: Explore your data using the Input-Manager and the Input-Viewer pages
 ---
 
 # Exploring Your Data
 
-**Start working with your data in Explorer**
+**Explore your data using the Input-Manager and the Input-Viewer**
 <hr />
 
-The Clarifai Explorer helps you interact with and learn about your data. You can view, sort, filter, and label your images, video, or text all in one place.
+Clarifai provides an easy-to-use UI that lets you explore your data and maximize the performance of your models. The platform offers several features to help you effectively manage and optimize your machine learning projects, including:
+
+- **Data exploration:** You can upload, visualize, and organize your datasets, including images, videos, and text. The UI provides tools for searching and filtering data to better understand and manage the information.
+
+- **Annotation and labeling:** The interface includes robust annotation and labeling tools, enabling you to prepare your data for training. This includes adding labels, drawing bounding boxes, and applying other relevant annotations.
+
+## Input-Manager
+
+If you click the **Inputs** option in your app's collapsible left sidebar, you'll be redirected to the Input-Manager screen, which is the main page showcasing all the inputs in your app.
+
+On this screen, you can:
+
+![](/img/community_2/data_explorer_1.png)
+
+- **Perform a smart search**: Use the search field to rank, sort, and retrieve inputs based on a predicted match to your query caption text. Learn more about it [here](https://docs.clarifai.com/portal-guide/psearch/visual-search/#smart-image-search-by-caption). 
+- **Upload inputs**: Add new inputs to your app by clicking the **Upload Inputs** button. Lean more about it [here](https://docs.clarifai.com/portal-guide/data/#upload-inputs). 
+- **Filter inputs**: Use the **Input Filters** section to customize how inputs are displayed. By default, inputs are sorted by creation date, with the newest at the top. You can filter inputs by dataset, labels, input type (audio, image, text, or video), or metadata. The number of inputs matching your criteria will be displayed at the top.
+- **Zoom in/out**: Adjust the zoom level of the displayed inputs to suit your preference.
+- **Toggle layout**: Toggle the layout of the displayed items. 
+
+### Input Mode
+
+The **Input Mode** is the default mode of the Input-Manager screen. It displays a gallery showcasing all inputs in your app. Image inputs are shown as thumbnails, while text inputs are truncated.
+
+![](/img/community_2/data_explorer_2.png)
+
+When you hover over an input, icons will appear in the top-left corner of the highlighted input, allowing you to:
+
+- Click the small empty box to select the input. 
+- Click the magnifying glass to perform a smart search by similarity. This lets you rank, sort, and retrieve inputs based on their similarity to a provided query input. Learn more about it [here](https://docs.clarifai.com/portal-guide/psearch/visual-search#smart-image-search-by-visual-similarity).
+- Click the info button to see details of the input, such as input ID, creation date, and resolution.
+- Click the delete button to remove the input from your app.
+
+When you select an input by clicking the small empty box in its top-left corner, a section will appear at the bottom of the page, allowing you to:
+
+- Click the **Label as…** button to add or remove annotations from the selected input. Learn more about it [here](https://docs.clarifai.com/portal-guide/annotate/create-get-update-delete#via-the-inputs-manager-page).
+- Click the **Edit Metadata** button to add or remove metadata information associated with the selected input.
+- Click the **Dataset…** button to add or remove the selected input from a dataset.
+- Click the **Delete** button to remove the selected input from your app.
+
+### Object Mode
+
+The **Object Mode** is a gallery that shows the objects that have been labeled on your inputs. You can select it by clicking the **Object Mode** button in the upper-right section of the page. 
+
+![](/img/community_2/data_explorer_3.png)
+
+If you hover over an input and select it by clicking the small empty box in its upper-left corner, several options will appear, allowing you to perform various management tasks.
+
+- The magnifying glass icon appearing on the left side of the input allows you to use it to perform [Smart Object Search](https://docs.clarifai.com/portal-guide/psearch/prank) and retrieve annotated objects within other inputs based on their content and similarity.
+- The delete icon allows you to delete the input from your app.
+- The **Add Concepts** button that appears at the bottom of the page allows you to create new object annotations with the selected concepts.
+- The **Remove Annotations** button that appears at the bottom of the page allows you to remove the annotation from the input.
+
+## Input-Viewer
+
+The Input-Viewer helps you interact with and learn about your data. You can view, sort, filter, and label your images, video, or text all in one place.
+
 
 ![](/img/community_2/explorer_1.png)
 

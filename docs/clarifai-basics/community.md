@@ -36,7 +36,7 @@ We have everything you need to unleash your full AI potential!
 
 :::info
 
-No login is required to explore our Clarifai Community platform.
+No login is required to explore our Clarifai platform.
 
 :::
 
@@ -163,7 +163,7 @@ Finally, click the **Upload inputs** button at the bottom of the pop-up window t
 
 :::info
 
-[Click here](https://docs.clarifai.com/portal-guide/data/) to learn more about how to add and make use of your inputs on the Clarifai Community platform.
+[Click here](https://docs.clarifai.com/portal-guide/data/) to learn more about how to add and make use of your inputs on the Clarifai platform.
 
 :::
 
@@ -251,7 +251,7 @@ As mentioned earlier, training helps your model learn from the annotated concept
 
 :::info
 
-[Click here](https://docs.clarifai.com/portal-guide/model/) to learn more about how to create and train models on the Clarifai Community platform.
+[Click here](https://docs.clarifai.com/portal-guide/model/) to learn more about how to create and train models on the Clarifai platform.
 
 :::
 
@@ -298,7 +298,7 @@ Here is a video tutorial that showcases how to create two different multi-model 
 
 :::info
 
-[Click here](https://docs.clarifai.com/portal-guide/workflows/) to learn more about how to create and use workflows on the Clarifai Community platform.
+[Click here](https://docs.clarifai.com/portal-guide/workflows/) to learn more about how to create and use workflows on the Clarifai platform.
 
 :::
 
@@ -326,7 +326,46 @@ For this example, let's use [this image]( https://samples.clarifai.com/featured-
 
 :::info
 
-[Click here](https://docs.clarifai.com/portal-guide/ppredict) to learn more about how to make predictions on the Clarifai Community platform.
+[Click here](https://docs.clarifai.com/portal-guide/ppredict) to learn more about how to make predictions on the Clarifai platform.
 
 :::
 
+## How to Use Modules
+
+Modules are custom plugins that provide UI elements as well as the ability to perform some computation around our API. Modules enable you to extend the Clarifai UIs, augment backend processing capabilities, and build customized solutions quickly and easily.
+
+You can [create your own modules](https://docs.clarifai.com/portal-guide/modules/create-install) or use the ones already available in the [Community platform](https://clarifai.com/explore/modules). 
+
+In this example, we'll demonstrate how to install and use the LLM Battleground module, which allows you to evaluate and compare the performance of multiple Large Language Models (LLMs) simultaneously. 
+
+To install the LLM Battleground module, go to its individual [page](https://clarifai.com/clarifai/generative-ai/modules/llm-battleground) and click the **Install Module** button in the upper-right corner.
+
+![](/img/community/community_intro_pics/module_1.png)
+
+Next, on the small window that pops up, select a desired user and destination app for installing the module.
+
+Click the **Confirm** button.
+
+On the ensuing page, choose a destination URL for installing the module, select the module visibility, and click the **Install to this App!** button.
+
+![](/img/community/community_intro_pics/module_2.png)
+
+After the module has been successfully installed, click the **Click to use installed module version** button to start using it. 
+
+> You can also refresh the page so that your installed module appears in the left sidebar under the **Installed Modules** category.
+
+If you click the button, you’ll be redirected to a page that requires you to authorize the module to access data on your behalf. You will see the permissions the module requires.
+
+![](/img/community/community_intro_pics/module_3.png)
+
+Click the **Authorize** button.
+
+You’ll be redirected to the installed module page, where you can start using it for comparing the performance of LLMs. 
+
+![](/img/community/community_intro_pics/module_4.png)
+
+:::info
+
+[Click here](https://docs.clarifai.com/portal-guide/modules/) to learn more about how to create and use modules on the Clarifai platform.
+
+:::

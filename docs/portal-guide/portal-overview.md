@@ -80,3 +80,10 @@ If you click the **Save** button, the corresponding `user_id` and `app_id` will 
 
 ![](/img/community_2/markdown_notes_3.png)
 
+## Use Model / Workflow
+
+If you want to use a model or a workflow for making API calls, you need to click the **Use Model / Workflow** button at the upper right corner of the individual page of a model or workflow.
+
+The modal that pops up has snippets in various programming languages, which you can copy and use in your development environment.
+
+![](/img/community_2/use_model_workflow.png)
