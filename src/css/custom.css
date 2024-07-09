@@ -366,14 +366,14 @@ html[data-theme='dark'] .card:hover {
   --ifm-card-background-color: var(--color-gray-78) !important;
 }
 
-.banner-getstarted {
+.banner-primary {
   height: 400px;
   background-image: url('/img/banner/getstarted-bg.png');
   background-size: cover;
   background-position: center;
   position: relative;
 }
-.banner-getstarted::after {
+.banner-primary::after {
   content: "";
   position: absolute;
   top: 32px;
@@ -383,7 +383,7 @@ html[data-theme='dark'] .card:hover {
   height: 336px;
   width: 336px;
 }
-.banner-getstarted p {
+.banner-primary p {
   font-weight: 500;
   font-size: 26px;
   line-height: 34px;
@@ -392,7 +392,7 @@ html[data-theme='dark'] .card:hover {
   margin-left: 32px;
   padding-top: 200px;
 }
-.banner-getstarted a {
+.banner-primary a {
   background-color: #0A0D15;
   padding: 10px 14px 10px 14px;
   border-radius: 4px;
@@ -400,11 +400,11 @@ html[data-theme='dark'] .card:hover {
   margin-left: 32px;
   color: #F9FBFF;
 }
-.banner-getstarted a:hover {
+.banner-primary a:hover {
   text-decoration: none;
 }
 @media (max-width: 480px) {
-    .banner-getstarted::after {
+    .banner-primary::after {
       top: 0;
       right: 0;
       height: 164px;
@@ -413,12 +413,58 @@ html[data-theme='dark'] .card:hover {
     }
 }
 @media (max-width: 320px) {
-  .banner-getstarted p {
+  .banner-primary p {
     padding-top: 165px;
   }
 }
 @media (min-width: 1024px) and (max-width: 1339px) {
-    .banner-getstarted::after {
+    .banner-primary::after {
       display: none;
     }
+}
+
+.banner-secondary {
+  height: 318px;
+  background-color: #121725;
+  border-radius: 8px;
+  border: 1px;
+  position: relative;
+}
+.banner-secondary::after {
+  content: "";
+  position: absolute;
+  top: 46px;
+  right: 0;
+  background-image: url('/img/banner/info-text-pattern.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 240px;
+  width: 300px;
+}
+.banner-secondary .banner-header {
+  padding-top: 56px;
+  margin-left: 40px;
+  font-weight: 500px;
+  font-size: 19px;
+  line-height: 27px;
+  color: white;
+}
+.banner-secondary .banner-content {
+  margin-left: 40px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  width: 480px;
+  color: #7C86A1;
+  margin-bottom: 64px;
+}
+.banner-secondary .banner-cta {
+  margin-left: 40px;
+  background-color: white;
+  padding: 10px 14px 10px 14px;
+  border-radius: 4px;
+  color: #0A0D15;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 500;
 }
