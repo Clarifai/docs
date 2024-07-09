@@ -372,6 +372,7 @@ html[data-theme='dark'] .card:hover {
   background-size: cover;
   background-position: center;
   position: relative;
+  overflow: hidden;
 }
 .banner-primary::after {
   content: "";
@@ -429,6 +430,7 @@ html[data-theme='dark'] .card:hover {
   border-radius: 8px;
   border: 1px;
   position: relative;
+  overflow: hidden;
 }
 .banner-secondary::after {
   content: "";
@@ -493,6 +495,7 @@ html[data-theme='dark'] .card:hover {
   border-radius: 8px;
   border: 1px;
   position: relative;
+  overflow: hidden;
 }
 .banner-tertiary::after {
   content: "";
