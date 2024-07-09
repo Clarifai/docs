@@ -365,4 +365,60 @@ html[data-theme='dark'] .dropdown__menu {
 html[data-theme='dark'] .card:hover {
   --ifm-card-background-color: var(--color-gray-78) !important;
 }
- 
+
+.banner-getstarted {
+  height: 400px;
+  background-image: url('/img/banner/getstarted-bg.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.banner-getstarted::after {
+  content: "";
+  position: absolute;
+  top: 32px;
+  right: 0;
+  background-image: url('/img/banner/pattern-black.svg');
+  background-repeat: no-repeat;
+  height: 336px;
+  width: 336px;
+}
+.banner-getstarted p {
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 34px;
+  color: #0A0D15;
+  max-width: 336px;
+  margin-left: 32px;
+  padding-top: 200px;
+}
+.banner-getstarted a {
+  background-color: #0A0D15;
+  padding: 10px 14px 10px 14px;
+  border-radius: 4px;
+  padding-top: 10px;
+  margin-left: 32px;
+  color: #F9FBFF;
+}
+.banner-getstarted a:hover {
+  text-decoration: none;
+}
+@media (max-width: 480px) {
+    .banner-getstarted::after {
+      top: 0;
+      right: 0;
+      height: 164px;
+      width: 160px;
+      background-size: contain;
+    }
+}
+@media (max-width: 320px) {
+  .banner-getstarted p {
+    padding-top: 165px;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1339px) {
+    .banner-getstarted::after {
+      display: none;
+    }
+}

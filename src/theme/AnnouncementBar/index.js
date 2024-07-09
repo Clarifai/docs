@@ -8,7 +8,7 @@ import AnnouncementBarCloseBtnDark from '../../icons/x-close.svg'
 import styles from './styles.module.css';
 
 export default function AnnouncementBar() {
-  const {colorMode, setColorMode} = useColorMode();
+  const { colorMode } = useColorMode();
   const {announcementBar} = useThemeConfig();
   const {isActive, close} = useAnnouncementBar();
   if (!isActive) {

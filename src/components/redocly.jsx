@@ -13,8 +13,9 @@ export default function Redocly() {
         };
 
         const initRedoc = () => {
+            const isLightTheme = !!document.querySelector('html[data-theme="light"]');
             Redoc.init(window.location.origin + '/api-spec/clarifai-v3.json', {
-                theme: {
+                theme: isLightTheme ? {}: {
                     typography: {
                         fontSize: getComputedStyle(document.documentElement).getPropertyValue('--ifm-font-size-base').trim(),
                         fontFamily: getComputedStyle(document.documentElement).getPropertyValue('--ifm-font-family-base').trim(),
@@ -50,6 +51,9 @@ export default function Redocly() {
             <div id="redocly-ui"/>
             <style>{`table td:nth-child(2) {
                     padding-left: 14px !important;
+                } 
+                pre {
+                    background-color: inherit;
                 }`}
             </style>
         </>
