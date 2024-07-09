@@ -4,7 +4,7 @@
 _base_ = '/mmdetection/configs/yolof/yolof_r50-c5_8xb8-1x_coco.py'
 
 # Load from a checkpoint
-load_from = 's3://clarifai-data/training/checkpoint/mmdetection/yolof_r50_c5_8x8_1x_coco_20210425_024427-8e864411.pth'
+# load_from = '<add_url_with_checkpoint_file>'
 
 # Minimum number of samples per epoch
 min_samples_per_epoch = 30
