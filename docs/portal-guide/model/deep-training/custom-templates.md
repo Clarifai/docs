@@ -67,7 +67,7 @@ You can base your custom configurations on existing ones by using the ` _base_` 
 
 Here is an example:
 
-```
+```python
 _base_ = '/mmdetection/configs/yolof/yolof_r50-c5_8xb8-1x_coco.py'
 ```
 
@@ -84,7 +84,7 @@ You can specify a source URL to load a model checkpoint as a pre-trained model. 
 You can upload your own pre-trained checkpoint to a URL and load it as follows:
 
 ```python
-load_from='s3://clarifai-data/training/checkpoint/mmdetection/yolof_r50_c5_8x8_1x_coco_20210425_024427-8e864411.pth'
+load_from='<url_with_checkpoint_file>'
 ```
 
 ### Minimum Samples Per Epoch
@@ -121,32 +121,56 @@ Here is an example:
 
 ```python
 model = dict(
-    type="YOLOF", # Specifies that the model type is YOLOF
+    type='YOLOF',  # Specifies that the model type is YOLOF
     data_preprocessor=dict(
-        type="DetDataPreprocessor", # Specifies the type of data preprocessor
-        mean=[123.675, 116.28, 103.53], # Mean values used to pre-training the pre-trained backbone models, ordered in R, G, B
-        std=[1.0, 1.0, 1.0], # Standard variance used for pre-training the pre-trained backbone models, ordered in R, G, B
-        bgr_to_rgb=True, # Whether to convert image from BGR to RGB
-        pad_mask=True, # Whether to pad instance masks
-        pad_size_divisor=32, # The size of padded image should be divisible by pad_size_divisor, ensuring compatibility with the network's downsampling operations
+        type='DetDataPreprocessor',  # Specifies the type of data preprocessor
+        mean=[123.675, 116.28, 103.53],  # Mean values used to pre-train the backbone models, ordered in R, G, B
+        std=[1.0, 1.0, 1.0],  # Standard variance used to pre-train the backbone models, ordered in R, G, B
+        bgr_to_rgb=True,  # Whether to convert image from BGR to RGB
+        pad_mask=True,  # Whether to pad instance masks
+        pad_size_divisor=32,  # The size of the padded image should be divisible by pad_size_divisor, ensuring compatibility with the network's downsampling operations
     ),
     backbone=dict(
-        type="ResNet", # Specifies the backbone network (e.g., 'ResNet')
-        depth=50, # Specify the depth of the backbone (e.g., ResNet-50)
-        frozen_stages=1, # The first stage of the backbone will not be updated during training, helping to preserve low-level features
-        init_cfg=dict()  # Indicates how the weights of the backbone network are initialized
+        type='ResNet',  # Specifies the backbone network (e.g., 'ResNet')
+        depth=50,  # Specify the depth of the backbone (e.g., ResNet-50)
+        frozen_stages=1,  # The first stage of the backbone will not be updated during training, helping to preserve low-level features
+        init_cfg=dict(),  # Indicates how the weights of the backbone network are initialized
     ),
     neck=dict(
-        type="YOLOFNeck", # Specifies the neck type, which is part of the YOLOF architecture
-        in_channels=[256, 512, 1024, 2048], # Input channels from different stages of the backbone
-        out_channels=256  # Number of output channels after processing through the neck       
+        block_dilations=[2, 4, 6, 8],
+        block_mid_channels=128,
+        in_channels=2048,
+        num_residual_blocks=4,
+        out_channels=512,
+        type='DilatedEncoder'
     ),
     bbox_head=dict(
-        type="YOLOFHead", # Specifies the head type for YOLOF, responsible for generating bounding boxes and class predictions
-        num_classes=80, # Number of object classes for classification
-        in_channels=256,  # Number of input channels for bbox head     
-        out_channels=256,  # Number of output channels of the extracted feature         
-    )
+        anchor_generator=dict(
+            ratios=[1.0],
+            scales=[1, 2, 4, 8, 16],
+            strides=[32],
+            type='AnchorGenerator'
+        ),
+        bbox_coder=dict(
+            add_ctr_clamp=True,
+            ctr_clamp=32,
+            target_means=[0.0, 0.0, 0.0, 0.0],
+            target_stds=[1.0, 1.0, 1.0, 1.0],
+            type='DeltaXYWHBBoxCoder'
+        ),
+        in_channels=512,
+        loss_bbox=dict(loss_weight=1.0, type='GIoULoss'),
+        loss_cls=dict(
+            alpha=0.25,
+            gamma=2.0,
+            loss_weight=1.0,
+            type='FocalLoss',
+            use_sigmoid=True
+        ),
+        num_classes=80,
+        reg_decoded_bbox=True,
+        type='YOLOFHead'
+    ),
 )
 ```
 ### Optimizer Configuration

@@ -301,6 +301,10 @@ const config = {
           {
             to: '/portal-guide/model-versions/',
             from: '/test/portal-guide/model-versions/'
+          },
+          {
+            to: '/api-guide/data/create-get-update-delete',
+            from: '/api-guide/data/cloud-storage'
           }
 
         ],

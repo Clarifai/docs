@@ -30,15 +30,39 @@ model = dict(
         init_cfg=dict(),  # Indicates how the weights of the backbone network are initialized
     ),
     neck=dict(
-        type='DilatedEncoder',  # Specifies the neck type, which is part of the YOLOF architecture
-        in_channels=[256, 512, 1024, 2048],  # Input channels from different stages of the backbone
-        out_channels=256,  # Number of output channels after processing through the neck
+        block_dilations=[2, 4, 6, 8],
+        block_mid_channels=128,
+        in_channels=2048,
+        num_residual_blocks=4,
+        out_channels=512,
+        type='DilatedEncoder'
     ),
     bbox_head=dict(
-        type='YOLOFHead',  # Specifies the head type for YOLOF, responsible for generating bounding boxes and class predictions
-        num_classes=80,  # Number of object classes for classification
-        in_channels=256,  # Number of input channels for bbox head
-        out_channels=256,  # Number of output channels of the extracted feature
+        anchor_generator=dict(
+            ratios=[1.0],
+            scales=[1, 2, 4, 8, 16],
+            strides=[32],
+            type='AnchorGenerator'
+        ),
+        bbox_coder=dict(
+            add_ctr_clamp=True,
+            ctr_clamp=32,
+            target_means=[0.0, 0.0, 0.0, 0.0],
+            target_stds=[1.0, 1.0, 1.0, 1.0],
+            type='DeltaXYWHBBoxCoder'
+        ),
+        in_channels=512,
+        loss_bbox=dict(loss_weight=1.0, type='GIoULoss'),
+        loss_cls=dict(
+            alpha=0.25,
+            gamma=2.0,
+            loss_weight=1.0,
+            type='FocalLoss',
+            use_sigmoid=True
+        ),
+        num_classes=80,
+        reg_decoded_bbox=True,
+        type='YOLOFHead'
     ),
 )
 
@@ -49,8 +73,8 @@ optim_wrapper = dict(
         type='SGD',  # SGD
         lr=0.001875,  # Base learning rate
         momentum=0.9,  # SGD with momentum
-        weight_decay=0.0001,
-    ),  # Weight decay
+        weight_decay=0.0001,  # Weight decay
+    ),
     paramwise_cfg=dict(
         norm_decay_mult=0.0, custom_keys=dict(backbone=dict(lr_mult=0.3333))
     ),
@@ -66,8 +90,8 @@ param_scheduler = [
         start_factor=0.00066667,  # Coefficient for learning rate warmup
         by_epoch=False,  # Update the learning rate during warmup at each iteration
         begin=0,  # Start updating the parameters from the first iteration
-        end=500,
-    ),  # End the warmup at the 500th iteration
+        end=500,  # End the warmup at the 500th iteration
+    ),
     dict(
         type='MultiStepLR',  # Use multi-step learning rate strategy during training
         by_epoch=True,
@@ -86,19 +110,11 @@ custom_hooks = [
 # Dataset and evaluator configuration
 train_pipeline = [  # Training data processing pipeline
     dict(type='LoadImageFromFile'),  # First pipeline to load images from file path
-    dict(
-        type='LoadAnnotations', with_bbox=True
-    ),  # Second pipeline to load annotations for current image
-    dict(
-        type='Resize', scale=(768, 512), keep_ratio=1.5
-    ),  # Pipeline that resizes the images and their annotations
-    dict(
-        type='RandomFlip', prob=0.5
-    ),  # Augmentation pipeline that flips the images and their annotations
+    dict(type='LoadAnnotations', with_bbox=True),  # Second pipeline to load annotations for current image
+    dict(type='Resize', scale=(768, 512), keep_ratio=1.5),  # Pipeline that resizes the images and their annotations
+    dict(type='RandomFlip', prob=0.5),  # Augmentation pipeline that flips the images and their annotations
     dict(type='RandomShift', prob=0.5, max_shift_px=32),
-    dict(
-        type='PackDetInputs'
-    ),  # Pipeline that formats the annotation data and decides which keys in the data should be packed into data_samples
+    dict(type='PackDetInputs'),  # Pipeline that formats the annotation data and decides which keys in the data should be packed into data_samples
 ]
 
 test_pipeline = None  # Testing data processing pipeline
