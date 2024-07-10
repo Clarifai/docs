@@ -89,6 +89,12 @@ The number of inputs that were not predicted as the concept they were actually l
 
 The number of inputs that were predicted as the concept but were not labeled as the concept. Also known as “false alarms.” For example, these are the images that were predicted as “dog” but were not labeled as “dog.”
 
+Here is a table that summarizes the above concepts:
+
+![](/img/community/evaluate/evaluate_15) 
+
+_Image source: [ResearchGate](https://www.researchgate.net/profile/Nittaya-Kerdprasop/publication/329526806/figure/fig1/AS:745215891623936@1554684722023/Example-of-confusion-matrix-True-Positive-TP-The-number-of-instances-that-a-model.ppm)_
+
 ## Recall
 
 Recall rate, also known as sensitivity or true positive rate, measures a model's ability to correctly identify all actual positive cases. It is the proportion of actual positive cases that were correctly predicted.
