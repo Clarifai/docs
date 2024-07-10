@@ -60,6 +60,12 @@ const config = {
         debug: false // Set debug to true if you want to inspect the modal
 
       },
+      announcementBar: {
+        id: 'support_us_' + Date.now(),
+        content:
+          '<span>Webinar</span> We are looking to revamp our docs, please fill <a target="_blank" rel="noopener noreferrer" href="#">this survey</a>',
+        isCloseable: true,
+      },
       navbar: {
         title: 'Clarifai Guide',
         logo: {
@@ -145,19 +151,26 @@ const config = {
             ]
           },
           {
-            href: 'https://documenter.getpostman.com/view/30622694/2s9YkuZdro',
-            label: 'Postman',
+            type: 'search',
             position: 'right',
+          },
+          {
+            href: 'https://documenter.getpostman.com/view/30622694/2s9YkuZdro',
+            className: "header-postman-link",
+            position: 'right',
+            'aria-label': 'Postman Docs',
           },
           {
             href: 'https://github.com/Clarifai/docs',
-            label: 'GitHub',
+            className: "header-github-link",
             position: 'right',
+            'aria-label': 'Github repository'
           },
           {
             href: 'https://discord.gg/WgUvPK4pVD',
-            label: 'Discord',
+            className: 'header-discord-link',
             position: 'right',
+            'aria-label': 'Discord'
           },
          // {
          //   href: 'https://api.clarifai.com/api-doc/?url=https://api.clarifai.com/v2/swagger.json',
