@@ -75,61 +75,77 @@ const config = {
         items: [
           {
             type: "dropdown",
-            label: "Portal",
+            label: "Basics",
             position: "left",
             items: [
               {
-                label: "Basics",
-                to: "/portal-guide/portal-overview",
+                label: "Exploring your Data",
+                to: "/portal-guide/data/explorer",
               },
               {
-                label: "Tutorials",
-                to: "/portal-guide/ppredict"
-              }
+                label: "Creating Concepts",
+                to: "/portal-guide/concepts"
+              },
+              {
+                label: "Search your Data",
+                to: "/portal-guide/psearch"
+              },
+              {
+                label: "Label your Data",
+                to: "/portal-guide/annotate"
+              },
+              {
+                label: "Handling Datasets",
+                to: "/portal-guide/datasets",
+              },
+              {
+                label: "Try an AI Model",
+                to: "/portal-guide/ppredict",
+              },
+              {
+                label: "Train your own Model",
+                to: "/portal-guide/model",
+              },
+              {
+                label: "Create Workflows",
+                to: "/portal-guide/workflows",
+              },
+              {
+                label: "Develop UI Modules",
+                to: "/portal-guide/modules",
+              },
             ]
           },
           {
             type: "dropdown",
-            label: "SDK",
+            label: "SDK Guide",
             position: "left",
             items: [
               {
-                label: "Python",
+                label: "Python SDK",
                 to: "/sdk/python-installation",
               },
               {
-                label: "Node.js",
+                label: "Node.js SDK",
                 to: "/sdk/node-js-installation"
               },
               {
-                label: "LangChain",
+                label: "Integrations",
                 to: "/integrations/langchain",
               },
-              {
-                label: "LlamaIndex",
-                to: "/integrations/llamaindex",
-              },
-              {
-                label: "Databricks",
-                to: "/integrations/databricks",
-              },
-              {
-                label: "DSPy",
-                to: "/integrations/DSPy/"
-              }
             ]
           },
           {
             type: "dropdown",
-            label: "API",
+            label: "API Reference Guide",
             position: "left",
             items: [
               {
-                label: 'Basics',
-                to: '/api-guide/api-overview',
+                label: 'API Client guide',
+                to: '/api-guide/api-overview/api-clients',
               },
               {
-                label: 'API Reference',
+                label: 'API Reference guide',
                 to: "/api-reference",
                 target: "_blank"
               }
@@ -141,7 +157,7 @@ const config = {
             position: "left",
             items: [
               {
-                label: "Product",
+                label: "Upcoming platform changes",
                 to: "/product-updates/upcoming-api-changes",
               },
               {
