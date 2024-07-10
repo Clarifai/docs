@@ -47,7 +47,8 @@ post_inputs_searches_response = stub.PostInputsSearches(
                     ]
                 )
             )
-        ]
+        ],
+        pagination=service_pb2.Pagination(per_page=2, page=1)
     ),
     metadata=metadata
 )
