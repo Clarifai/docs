@@ -637,3 +637,9 @@ html[data-theme='dark'] .header-discord-link:hover {
       display: none;
     }
 }
+
+@media (min-width: 769px) {
+  .DocSearch-Button {
+    width: 240px;
+  }
+}
