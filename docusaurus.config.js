@@ -29,7 +29,8 @@ const config = {
           //this one also works--editUrl: 'https://github.com/Clarifai/docs/blob/main/',
           editUrl: ({versionDocsDirPath, docPath}) =>
             `https://github.com/Clarifai/docs/blob/main/${versionDocsDirPath}/${docPath}`,
-          docItemComponent: require.resolve('./src/components/CustomDocItem/index.js')
+          docItemComponent: require.resolve('./src/components/CustomDocItem/index.js'),
+          docCategoryGeneratedIndexComponent: require.resolve('./src/components/CustomDocCategory/index.js'),
         },
         blog: false,
         theme: {
