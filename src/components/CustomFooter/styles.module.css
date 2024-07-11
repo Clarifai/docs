@@ -4,6 +4,7 @@
 	 flex-wrap: wrap;
 	 justify-content: space-between;
 	 padding: 1rem 0;
+     margin-top: 48px;
 }
  @media (min-width: 997px) and (max-width: 1298px) {
 	 .custom-footer-wrapper {
