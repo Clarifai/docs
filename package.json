@@ -5,7 +5,7 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "yarn codegen && docusaurus start",
-    "codegen": "redocly bundle filter -o static/api-spec/clarifai.json && node codegen.js",
+    "codegen": "node codegen-postman.js",
     "build": "yarn codegen && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
