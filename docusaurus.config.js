@@ -28,7 +28,8 @@ const config = {
           //editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',         
           //this one also works--editUrl: 'https://github.com/Clarifai/docs/blob/main/',
           editUrl: ({versionDocsDirPath, docPath}) =>
-            `https://github.com/Clarifai/docs/blob/main/${versionDocsDirPath}/${docPath}`,          
+            `https://github.com/Clarifai/docs/blob/main/${versionDocsDirPath}/${docPath}`,
+          docItemComponent: require.resolve('./src/components/CustomDocItem/index.js')
         },
         blog: false,
         theme: {

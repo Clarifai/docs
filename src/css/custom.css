@@ -373,6 +373,8 @@ html[data-theme='dark'] .card:hover {
   background-position: center;
   position: relative;
   overflow: hidden;
+  margin-top: 24px;
+  margin-bottom: 24px;
 }
 .banner-primary::after {
   content: "";
@@ -431,6 +433,8 @@ html[data-theme='dark'] .card:hover {
   border: 1px;
   position: relative;
   overflow: hidden;
+  margin-top: 24px;
+  margin-bottom: 24px;
 }
 .banner-secondary::after {
   content: "";
@@ -496,6 +500,8 @@ html[data-theme='dark'] .card:hover {
   border: 1px;
   position: relative;
   overflow: hidden;
+  margin-top: 24px;
+  margin-bottom: 24px;
 }
 .banner-tertiary::after {
   content: "";
