@@ -649,3 +649,8 @@ html[data-theme='dark'] .header-discord-link:hover {
     width: 240px;
   }
 }
+
+/* Remove in-built footer */
+footer.footer {
+  display: none !important;
+}

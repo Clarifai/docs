@@ -2,6 +2,7 @@ import React from 'react';
 import ActualDocItem from '@theme/DocItem';
 import styles from './styles.module.css';
 import { bannerConfig } from '../../../banners.config';
+import CustomFooter from '../CustomFooter';
 
 const CustomDocItem = (props) => {
     const currentPath = props.location.pathname
@@ -49,6 +50,8 @@ const CustomDocItem = (props) => {
                         </div>
                     )
                 }
+
+                <CustomFooter />
             </div>
         </>
     )
