@@ -76,9 +76,13 @@ const config = {
         items: [
           {
             type: "dropdown",
-            label: "Basics",
+            label: "Portal Guide",
             position: "left",
             items: [
+              {
+                label: "Basics",
+                to: "/clarifai-basics/start-here-5-mins-or-less"
+              },
               {
                 label: "Exploring your Data",
                 to: "/portal-guide/data/explorer",
@@ -149,6 +153,11 @@ const config = {
                 label: 'API Reference guide',
                 to: "/api-reference",
                 target: "_blank"
+              }, 
+              {
+                label: 'API Guide in Postman',
+                to: 'https://documenter.getpostman.com/view/30622694/2s9YkuZdro',
+                target: "_blank"
               }
             ]
           },
@@ -171,12 +180,12 @@ const config = {
             type: 'search',
             position: 'right',
           },
-          {
-            href: 'https://documenter.getpostman.com/view/30622694/2s9YkuZdro',
-            className: "header-postman-link",
-            position: 'right',
-            'aria-label': 'Postman Docs',
-          },
+          // {
+          //   href: 'https://documenter.getpostman.com/view/30622694/2s9YkuZdro',
+          //   className: "header-postman-link",
+          //   position: 'right',
+          //   'aria-label': 'Postman Docs',
+          // },
           {
             href: 'https://github.com/Clarifai/docs',
             className: "header-github-link",
