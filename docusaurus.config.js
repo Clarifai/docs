@@ -163,6 +163,10 @@ const config = {
       {
         redirects: [
           {
+            to: '/clarifai-basics/start-here-5-mins-or-less',
+            from: ['/data-labeling-services/labeling-services']
+          },
+          {
             to: '/sdk/node-api-reference',
             from: ['/nodejs-sdk/api-reference'],
           },
@@ -301,6 +305,10 @@ const config = {
           {
             to: '/api-guide/data/create-get-update-delete',
             from: '/api-guide/data/cloud-storage'
+          },
+          {
+            to: '/portal-guide/psearch/',
+            from: '/portal-guide/psearch/psaved_searches'
           }
 
         ],
