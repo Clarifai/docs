@@ -530,6 +530,7 @@ html[data-theme='dark'] .card:hover {
   max-width: 360px;
   color: #7C86A1;
   margin-bottom: 24px;
+  min-height: 120px;
 }
 .banner-tertiary .banner-content li {
   color: #7C86A1 !important;
