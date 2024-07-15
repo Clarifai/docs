@@ -14,7 +14,7 @@ const CustomDocItem = (props) => {
                     bannerConfig.primary.path.includes(currentPath) && (
                         <div className="banner-primary">
                             <p>{bannerConfig.primary.text}</p>
-                            <a href={bannerConfig.primary.ctaLink} target="_blank">{bannerConfig.primary.ctaText}</a>
+                            <a href={bannerConfig.primary.ctaLink} target="_blank" rel="noopener">{bannerConfig.primary.ctaText}</a>
                         </div>
                     )
                 }
@@ -28,7 +28,7 @@ const CustomDocItem = (props) => {
                             <p className="banner-content">
                                 {bannerConfig.secondary.text}
                             </p>
-                            <a href={bannerConfig.secondary.ctaLink} target="_blank" class="banner-cta">{bannerConfig.secondary.ctaText}</a>
+                            <a href={bannerConfig.secondary.ctaLink} target="_blank" rel="noopener" class="banner-cta">{bannerConfig.secondary.ctaText}</a>
                         </div>
                     )
                 }
@@ -46,7 +46,7 @@ const CustomDocItem = (props) => {
                                     ))
                                 }
                             </ol>
-                            <a href={bannerConfig.tertiary.ctaLink} target="_blank" class="banner-cta">{bannerConfig.tertiary.ctaText}</a>
+                            <a href={bannerConfig.tertiary.ctaLink} target="_blank" rel="noopener" class="banner-cta">{bannerConfig.tertiary.ctaText}</a>
                         </div>
                     )
                 }

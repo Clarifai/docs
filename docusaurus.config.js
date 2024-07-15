@@ -161,12 +161,14 @@ const config = {
               {
                 label: 'API Reference guide',
                 to: "/api-reference",
-                target: "_blank"
+                target: "_blank",
+                rel: "noopener"
               }, 
               {
                 label: 'API Guide in Postman',
                 to: 'https://documenter.getpostman.com/view/30622694/2s9YkuZdro',
-                target: "_blank"
+                target: "_blank",
+                rel: "noopener"
               }
             ]
           },
