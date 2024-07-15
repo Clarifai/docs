@@ -309,6 +309,22 @@ const config = {
           {
             to: '/api-guide/data/create-get-update-delete',
             from: '/api-guide/data/cloud-storage'
+          },
+          {
+            to: '/portal-guide/psearch/',
+            from: '/portal-guide/psearch/psaved_searches'
+          },
+          {
+            to: '/glossary/general-ai',
+            from: '/clarifai-basics/glossary/'
+          },
+          {
+            to: '/glossary/generative-ai',
+            from: '/clarifai-basics/glossary/generative-ai'
+          },
+          {
+            to: '/portal-guide/annotate/review',
+            from: '/portal-guide/annotate/workforce-management'
           }
 
         ],

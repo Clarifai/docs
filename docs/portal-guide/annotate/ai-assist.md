@@ -27,6 +27,12 @@ AI-Assist provides you with several benefits, including:
 - AI models can provide consistent labeling, minimizing human errors.
 - It allows for the efficient and scalable handling of large datasets or rapidly changing data.
 
+:::caution feature availability
+
+This AI-assist feature is only available to users on our [paid plans](https://www.clarifai.com/pricing).
+
+:::
+
 Let’s demonstrate how you can do it on the Clarifai portal. 
 
 ## 1. Navigate to Input-Viewer
