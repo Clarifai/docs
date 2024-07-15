@@ -8,6 +8,8 @@ import {
 import {isSamePath, useLocalPathname} from '@docusaurus/theme-common/internal';
 import NavbarNavLink from '@theme/NavbarItem/NavbarNavLink';
 import NavbarItem from '@theme/NavbarItem';
+import { navbarBannerConfig } from '../../../banners.config';
+
 function isItemActive(item, localPathname) {
   if (isSamePath(item.to, localPathname)) {
     return true;
@@ -49,9 +51,9 @@ function DropdownNavbarItemDesktop({
     };
   }, [dropdownRef]);
 
-  const hasBanner = true;
+  const banner = navbarBannerConfig?.[props?.label] ?? undefined;
   
-  const columnCount = Math.ceil(items.length / 6) + (hasBanner ? 1 : 0);
+  const columnCount = Math.ceil(items.length / 6) + (!!banner ? 1 : 0);
 
   return (
     <div
@@ -97,11 +99,17 @@ function DropdownNavbarItemDesktop({
             key={i}
           />
         ))}
-        <a href='https://clarifai.com' target='_blank' rel="noopener" className='header-navbar-banner'>
-          <img alt='clarifai-banner' src='https://www.clarifai.com/hubfs/Frame%20633240.png' />
-          <h6>WEBINAR</h6>
-          <span>AI Prototype to Production: Operationalizing and Orchestrating AI</span>
-        </a>
+        {
+          !!banner 
+          ? (
+            <a href={banner.ctaLink} target='_blank' rel="noopener" className='header-navbar-banner'>
+              <img alt='clarifai-banner' src={banner.cover} />
+              <h6>{banner.type}</h6>
+              <span>{banner.text}</span>
+            </a>
+          )
+          : null
+        }
       </ul>
     </div>
   );

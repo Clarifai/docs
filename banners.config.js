@@ -30,3 +30,18 @@ export const bannerConfig = {
         ]
     }
 }
+
+export const navbarBannerConfig = {
+    "Portal Guide": {
+        type: 'WEBINAR',
+        text: 'AI Prototype to Production: Operationalizing and Orchestrating AI',
+        cover: 'https://www.clarifai.com/hubfs/Frame%20633240.png',
+        ctaLink: 'https://clarifai.com'
+    },
+    "SDK Guide": {
+        type: 'WEBINAR',
+        text: 'AI Prototype to Production: Operationalizing and Orchestrating AI',
+        cover: 'https://www.clarifai.com/hubfs/Frame%20633240.png',
+        ctaLink: 'https://clarifai.com'
+    },
+}
