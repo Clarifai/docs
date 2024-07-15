@@ -309,6 +309,14 @@ const config = {
           {
             to: '/portal-guide/psearch/',
             from: '/portal-guide/psearch/psaved_searches'
+          },
+          {
+            to: '/glossary/general-ai',
+            from: '/clarifai-basics/glossary/'
+          },
+          {
+            to: '/glossary/generative-ai',
+            from: '/clarifai-basics/glossary/generative-ai'
           }
 
         ],

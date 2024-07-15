@@ -1,9 +1,9 @@
 ---
 description: A Glossary of General AI Terms for Using the Clarifai Platform Effectively 
-sidebar_position: 3
+sidebar_position: 1
 ---
 
-# Key Terminology to Know
+# General AI Glossary
 
 **A Glossary of General AI Terms for Using the Clarifai Platform Effectively**
 <hr />

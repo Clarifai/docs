@@ -100,6 +100,12 @@ pagination_prev: product-updates/changelog/release101
 |--------------------------------------|------------------------|---------------------------|
 |![bug](/img/bug.jpg)|Fixed an issue with the cancel button functionality when deleting an organization| <ul> <li>Previously, the cancel button on the dialog for deleting an organization did not function as expected. We fixed the issue. Additionally, we have added the organization name to the dialog, ensuring users know precisely what they are deleting.</li></ul>   |
 
+## Models 
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+|![improvement](/img/improvement.jpg)|Enabled deletion of associated model assets when removing a model annotation|<ul><li>Now, when deleting a model annotation, the associated model assets are also marked as deleted.</li></ul>|
+
 ## Workflows
 
 |Status                                |Change                  |Details                    |
