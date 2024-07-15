@@ -655,3 +655,21 @@ html[data-theme='dark'] .header-discord-link:hover {
 footer.footer {
   display: none !important;
 }
+
+/* Primary HEADER CTA style */
+.header-primary-cta-link {
+  background-color: var(--ifm-color-primary-darkest);
+  border-radius: 4px;
+  margin-right: 8px;
+  margin-left: 4px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: white;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+.header-primary-cta-link svg {
+  display: none;
+}
+html[data-theme='light'] .header-primary-cta-link {
+  background-color: var(--ifm-color-primary);
+}

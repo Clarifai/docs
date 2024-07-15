@@ -120,6 +120,10 @@ const config = {
                 label: "Develop UI Modules",
                 to: "/portal-guide/modules",
               },
+              {
+                label: "Tutorials",
+                to: "/tutorials/node-js-tutorial"
+              }
             ]
           },
           {
@@ -139,6 +143,10 @@ const config = {
                 label: "Integrations",
                 to: "/integrations/langchain",
               },
+              {
+                label: "Python SDK Notebooks",
+                to: '/sdk/notebook-examples'
+              }
             ]
           },
           {
@@ -198,6 +206,13 @@ const config = {
             className: 'header-discord-link',
             position: 'right',
             'aria-label': 'Discord'
+          },
+          {
+            label: 'Get Started',
+            href: "https://clarifai.com/explore",
+            className: 'header-primary-cta-link',
+            position: 'right',
+            'aria-label': 'Get started'
           },
          // {
          //   href: 'https://api.clarifai.com/api-doc/?url=https://api.clarifai.com/v2/swagger.json',
