@@ -317,6 +317,10 @@ const config = {
           {
             to: '/glossary/generative-ai',
             from: '/clarifai-basics/glossary/generative-ai'
+          },
+          {
+            to: '/portal-guide/annotate/review',
+            from: '/portal-guide/annotate/workforce-management'
           }
 
         ],
