@@ -673,3 +673,12 @@ footer.footer {
 html[data-theme='light'] .header-primary-cta-link {
   background-color: var(--ifm-color-primary);
 }
+
+/* Docs Search input fix */
+.DocSearch-Input {
+  margin-top: 0px;
+}
+/* Navbar fix */
+.navbar__toggle.clean-btn {
+  margin-left: 0px;
+}
