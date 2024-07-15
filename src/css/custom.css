@@ -682,3 +682,42 @@ html[data-theme='light'] .header-primary-cta-link {
 .navbar__toggle.clean-btn {
   margin-left: 0px;
 }
+/* Navbar Banner  */
+.header-navbar-banner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration-line: none;
+  gap: 4px;
+}
+.header-navbar-banner:hover {
+  text-decoration-line: none;
+}
+.header-navbar-banner img {
+  height: 160px;
+  width: 312px;
+  border-radius: 8px;
+  overflow: hidden,
+}
+.header-navbar-banner h6 {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 24px;
+  color: #04AFFF;
+  letter-spacing: 0.1em;
+  margin-bottom: 0px;
+}
+html[data-theme='light'] .header-navbar-banner h6 {
+  color: var(--ifm-color-primary);
+}
+.header-navbar-banner span {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  width: 312px;
+  color: white;
+}
+html[data-theme='light'] .header-navbar-banner span {
+  font-weight: 500;
+  color: var(--ifm-dropdown-link-color);
+}

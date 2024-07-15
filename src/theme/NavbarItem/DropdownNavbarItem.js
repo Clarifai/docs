@@ -97,34 +97,10 @@ function DropdownNavbarItemDesktop({
             key={i}
           />
         ))}
-        <a href='https://clarifai.com' target='_blank' rel="noopener" style={{
-          display: 'flex', 
-          flexDirection: "column", 
-          height: '100%',
-          textDecorationLine: 'none',
-          gap: '4px'
-        }}>
-          <img alt='clarifai-banner' src='https://www.clarifai.com/hubfs/Frame%20633240.png' style={{
-            height: '160px', 
-            width: '312px',
-            radius: '8px', 
-            overflow: 'hidden',
-          }} />
-          <h6 style={{
-            fontSize: "13px",
-            fontWeight: 600,
-            lineHeight: "24px",
-            color: "#04AFFF",
-            letterSpacing: "0.1em",
-            marginBottom: '0px',
-          }}>WEBINAR</h6>
-          <span style={{
-            fontSize: '16px',
-            fontWeight: 600,
-            lineHeight: '22px',
-            width: '312px',
-            color: 'white',
-          }}>AI Prototype to Production: Operationalizing and Orchestrating AI</span>
+        <a href='https://clarifai.com' target='_blank' rel="noopener" className='header-navbar-banner'>
+          <img alt='clarifai-banner' src='https://www.clarifai.com/hubfs/Frame%20633240.png' />
+          <h6>WEBINAR</h6>
+          <span>AI Prototype to Production: Operationalizing and Orchestrating AI</span>
         </a>
       </ul>
     </div>
