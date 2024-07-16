@@ -4034,6 +4034,26 @@ docusaurus-gtm-plugin@^0.0.2:
   resolved "https://registry.npmjs.org/docusaurus-gtm-plugin/-/docusaurus-gtm-plugin-0.0.2.tgz"
   integrity sha512-Xx/df0Ppd5SultlzUj9qlQk2lX9mNVfTb41juyBUPZ1Nc/5dNx+uN0VuLyF4JEObkDRrUY1EFo9fEUDo8I6QOQ==
 
+docusaurus-plugin-redoc@2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/docusaurus-plugin-redoc/-/docusaurus-plugin-redoc-2.1.1.tgz#b930b007844d918f186631cb8bd42da7e6314f79"
+  integrity sha512-gf9HbFAKPZu17rbx+3C6vIpfMMTuvUFG8rRKeuHro1B5wUutBSjE5/VjB1owVGjIJQ74OgVKJvgczqUjhcQcjQ==
+  dependencies:
+    "@redocly/openapi-core" "1.16.0"
+    redoc "2.1.5"
+
+docusaurus-theme-redoc@2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/docusaurus-theme-redoc/-/docusaurus-theme-redoc-2.1.1.tgz#2e6ba70aac88e053cc7f527970a7b22a66424012"
+  integrity sha512-a9yuYyGVhj7NgBYiqJyjLEkJg/yTdsqg9Rn/cG8YXMIFwxIpn4tanIplUqwisK2PS81ZxOv7SfSgvGm/FSi/wA==
+  dependencies:
+    "@redocly/openapi-core" "1.16.0"
+    clsx "^1.2.1"
+    lodash "^4.17.21"
+    mobx "^6.12.4"
+    redoc "2.1.5"
+    styled-components "^6.1.11"
+
 dom-converter@^0.2.0:
   version "0.2.0"
   resolved "https://registry.npmjs.org/dom-converter/-/dom-converter-0.2.0.tgz"
@@ -6274,6 +6294,11 @@ mobx@^6.0.4:
   resolved "https://registry.yarnpkg.com/mobx/-/mobx-6.12.3.tgz#b6a0fde4268116be602d50bffb32f1b90a8fb077"
   integrity sha512-c8NKkO4R2lShkSXZ2Ongj1ycjugjzFFo/UswHBnS62y07DMcTc9Rvo03/3nRyszIvwPNljlkd4S828zIBv/piw==
 
+mobx@^6.12.4:
+  version "6.13.0"
+  resolved "https://registry.yarnpkg.com/mobx/-/mobx-6.13.0.tgz#791446e1a75f643aa2e7b96163e3d0bb237e91c1"
+  integrity sha512-1laWODrBWmB7mDJ8EClCjUQTyLwJ0ydJgE4FtK7t9r3JnjXgc9OhmYs2P4RtHrY1co5+4T6cKP2UswX2SU29mA==
+
 mrmime@^1.0.0:
   version "1.0.1"
   resolved "https://registry.npmjs.org/mrmime/-/mrmime-1.0.1.tgz"
@@ -7611,7 +7636,7 @@ recursive-readdir@^2.2.2:
   dependencies:
     minimatch "^3.0.5"
 
-redoc@~2.1.5:
+redoc@2.1.5, redoc@~2.1.5:
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/redoc/-/redoc-2.1.5.tgz#421307b22036b244171095bfc7ea3cfd419563c8"
   integrity sha512-POSbVg+7WLf+/5/c6GWLxL7+9t2D+1WlZdLN0a6qaCQc+ih3XYzteRBkXEN5kjrYrRNjdspfxTZkDLN5WV3Tzg==
@@ -7638,6 +7663,14 @@ redoc@~2.1.5:
     stickyfill "^1.1.1"
     swagger2openapi "^7.0.8"
     url-template "^2.0.8"
+
+redocusaurus@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/redocusaurus/-/redocusaurus-2.1.1.tgz#f2caca4c876dd76b7da9f060e290ee1db848d309"
+  integrity sha512-uaiuSsty0TcYuibabEw72DzN5JL6eF9KTIR5dL61qP7smFwIY8THEsNogzKTfcKCb6MJ8ug4vohrnrANn3K3cg==
+  dependencies:
+    docusaurus-plugin-redoc "2.1.1"
+    docusaurus-theme-redoc "2.1.1"
 
 reftools@^1.1.9:
   version "1.1.9"
@@ -8508,7 +8541,7 @@ style-to-object@0.3.0, style-to-object@^0.3.0:
   dependencies:
     inline-style-parser "0.1.1"
 
-styled-components@^6.0.7:
+styled-components@^6.0.7, styled-components@^6.1.11:
   version "6.1.11"
   resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-6.1.11.tgz#01948e5195bf1d39e57e0a85b41958c80e40cfb8"
   integrity sha512-Ui0jXPzbp1phYij90h12ksljKGqF8ncGx+pjrNPsSPhbUUjWT2tD1FwGo2LF6USCnbrsIhNngDfodhxbegfEOA==

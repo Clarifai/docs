@@ -48,6 +48,26 @@ const config = {
         },
       }),
     ],
+    // Redocusaurus config
+    [
+      'redocusaurus',
+      {
+          // Plugin Options for loading OpenAPI files
+          specs: [
+            // Pass it a path to a local OpenAPI YAML file
+            {
+              // Redocusaurus will automatically bundle your spec into a single file during the build
+              spec: 'static/api-spec/clarifai-v3.json',
+              route: '/api-reference-2',
+            },
+          ],
+          // Theme Options for modifying how redoc renders them
+          theme: {
+            // Change with your site colors
+            primaryColor: '#1890ff',
+          },
+        },
+      ],
   ],
 
   themeConfig:
