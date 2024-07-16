@@ -167,6 +167,10 @@ const config = {
             from: ['/data-labeling-services/labeling-services']
           },
           {
+            to: '/api-guide/search/',
+            from: ['/api-guide/search/legacy-search/']
+          },
+          {
             to: '/sdk/node-api-reference',
             from: ['/nodejs-sdk/api-reference'],
           },

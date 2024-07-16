@@ -40,7 +40,8 @@ post_annotations_searches_response = stub.PostAnnotationsSearches(
                     ]
                 )
             )
-        ]
+        ],
+        pagination=service_pb2.Pagination(per_page=2, page=1)
     ),
     metadata=metadata
 )
