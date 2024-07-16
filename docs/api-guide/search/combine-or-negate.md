@@ -8,12 +8,18 @@ sidebar_position: 2
 **Group or separate items in your dataset**
 <hr />
 
-You can also combine searches. Unlike our legacy search, in annotation search, `Filter` and `Rank` is a list of `Annotation` objects. Filtered annotations will be ANDed. 
+## Combine Search Criteria
+
+You can add together multiple search parameters to expand your search. You can even combine negated search terms for more advanced tasks.
+
+In annotation search, `Filter` and `Rank` is a list of `Annotation` objects. Filtered annotations will be ANDed. 
 
 When you combine both `Filter` and `Rank`, filter will be applied before ranking annotations. This is important because limiting the result set on large applications can speedup the overall query drastically when doing a ranking.
 
 :::info
+
 The initialization code used in the following example is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
+
 :::
 
 import Tabs from '@theme/Tabs';
@@ -23,7 +29,15 @@ import PythonCombineNegate from "!!raw-loader!../../../code_snippets/api-guide/s
 import NodeCombineNegate from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate.js";
 import JSCombineNegate from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate.html";
 import JavaCombineNegate from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate.java";
+import PHPCombineNegate from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate.php";
 import CurlCombineNegate from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate.sh";
+
+import PythonCombineNegate_2 from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate_2.py";
+import NodeCombineNegate_2 from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate_2.js";
+import JSCombineNegate_2 from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate_2.html";
+import JavaCombineNegate_2 from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate_2.java";
+import PHPCombineNegate_2 from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate_2.php";
+import CurlCombineNegate_2 from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate_2.sh";
 
 <Tabs>
 
@@ -43,8 +57,45 @@ import CurlCombineNegate from "!!raw-loader!../../../code_snippets/api-guide/sea
     <CodeBlock className="language-java">{JavaCombineNegate}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPCombineNegate}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlCombineNegate}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+
+## Negate Search Criteria
+
+You can find all the data that is NOT similar to a given criteria. 
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonCombineNegate_2}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSCombineNegate_2}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeCombineNegate_2}</CodeBlock>
+</TabItem>
+
+<TabItem value="java" label="Java">
+    <CodeBlock className="language-java">{JavaCombineNegate_2}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPCombineNegate_2}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlCombineNegate_2}</CodeBlock>
 </TabItem>
 
 </Tabs>
