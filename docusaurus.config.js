@@ -3,6 +3,7 @@
 
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const webpack = require('webpack');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -66,8 +67,8 @@ const config = {
             // Change with your site colors
             primaryColor: '#1890ff',
           },
-        },
-      ],
+      },
+    ],
   ],
 
   themeConfig:
@@ -295,7 +296,9 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-        additionalLanguages: ['php', 'java', 'csharp', 'objectivec', 'bash'],
+        // Redocusaurus has issue with additional languages - added scala to support it
+        // Reference: https://github.com/rohit-gohri/redocusaurus/issues/183#issuecomment-2124227745
+        additionalLanguages: ['php', 'java', 'csharp', 'objectivec', 'bash', 'scala'],
       },
       colorMode: {
         defaultMode: 'dark',
@@ -473,6 +476,26 @@ const config = {
           },
         },
       ],
+      // Workaround to fix issue with Redocusaurus, Reference: https://github.com/rohit-gohri/redocusaurus/issues/236#issuecomment-1449548972
+      function customPlugin(context, opts) {
+          return {
+            name: 'custom-plugin',
+            configureWebpack(config, isServer, utils, content) {
+              // Modify internal webpack config. If returned value is an Object, it
+              // will be merged into the final config using webpack-merge;
+              // If the returned value is a function, it will receive the config as the 1st argument and an isServer flag as the 2nd argument.
+              return {
+                plugins: [
+                  new webpack.DefinePlugin({
+                    // IMPORTANT: To fix debug library‘s bug
+                    // {}.DEBUG = namespaces; // SyntaxError: Unexpected token '.'
+                    'process.env.DEBUG': 'process.env.DEBUG',
+                  })
+                ]
+              }
+            },
+          }
+        }
     ],
   scripts: [
     {
