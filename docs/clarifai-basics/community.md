@@ -1,6 +1,6 @@
 ---
 description: A quick-start guide on the Clarifai Community Platform
-sidebar_position: 7
+sidebar_position: 1
 ---
 
 # Get Started With Our Platform
