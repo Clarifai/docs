@@ -12,11 +12,23 @@ sidebar_position: 1
 
 A prompt template serves as a pre-configured piece of text used to instruct a large language model (LLM). It acts as a structured query or input that guides the model in generating the desired response.
 
+:::warning prompt templates
+
+Many tasks you’ll need LLMs for are repeatable. With prompt templates, you can simplify repeat LLMs use cases. By making these part of your Clarifai application, you won’t need to re-enter prompts the same way every time
+
+:::
+
 LLMs are trained on massive datasets of text and code, and they can be used to perform a variety of tasks, including text generation, question answering, translation, summarization, text completion, and more.
 
 LLMs are designed to understand and generate text based on the instructions or prompts they receive. Prompting an LLM allows you to leverage the model’s pre-trained language capabilities and control its outputs so that it can deliver what is relevant to your needs.  
 
 The quality and relevance of the generated texts depend on the specific wording and context of the prompt. Prompts can be structured in various ways, and their effectiveness often depends on how well they convey the desired task or instruction to the model. 
+
+:::warning prompt engineering
+
+The process of designing and refining prompts to effectively interact with and elicit desired responses is called prompt engineering. It involves crafting specific questions, statements, or input formats that guide the model to generate useful, relevant, and accurate outputs. 
+
+:::
 
 There are several prompting techniques you can use. 
 
@@ -48,7 +60,7 @@ Note that:
 
 - The template text is a single-line statement.
 - We included the `{data.text.raw}` placeholder to meet the requirements of the **Prompter** template.
-- We placed the instructions at the beginning of the template text and used the ["###" delimiter](https://docs.clarifai.com/portal-guide/model/model-types/text-to-text/#training-data) to separate the instruction and context. The delimiter is important when giving instructions to llms because it signifies the beginning and end of different sections within the text. This ensures clarity and facilitates easy parsing and processing during the prediction phase.
+- We placed the instructions at the beginning of the template text and used the ["###" delimiter](https://docs.clarifai.com/portal-guide/model/model-types/text-to-text/#training-data) to separate the instruction and context. The delimiter is important when giving instructions to LLMs because it signifies the beginning and end of different sections within the text. This ensures clarity and facilitates easy parsing and processing during the prediction phase.
 
 **3.** You can then connect the prompter model to a text-to-text model like [GPT-4](https://clarifai.com/openai/chat-completion/models/GPT-4).
 
@@ -81,7 +93,7 @@ Negative
 ![zero-shot prompting output](/img/agent-system-operators/prompter_2.png)
 
 
-Note that in the above zero-shot prompt, we did not give the model any examples of text alongside their classifications. The model already knows what "sentiment" means without needing any extra information—that's how its zero-shot abilities work. 
+Note that in the above zero-shot prompt, we did not give the model any examples of text alongside their classifications. The model already knows what "sentiment" means without needing any extra information — that's how its zero-shot abilities work. 
 
 ## Few-Shot Prompting
 
