@@ -171,7 +171,7 @@ Here are more details of the annotation structures Clarifai support:
 
 | Annotation Type | Structure |
 |------------- | ------------- |
-| Bounding box annotation |    Regions[...].region_info.bounding_box{top_row,left_col,bottom_row,right_col}, Regions[...].data.concepts | 
+| Bounding box annotation |    Regions[...].region_info.bounding_box`{top_row,left_col,bottom_row,right_col}`, Regions[...].data.concepts | 
 | Polygon annotation | `Regions[...].region_info.polygon.points{row[…],col[…]}, Regions[...].data.concepts` |
 | Image segmentation |Regions[...].region_info.mask, Regions[...].data.concepts   |
 | Video prediction   | Frame.frame_info.time[…], Frame.frame_info.data.concepts |

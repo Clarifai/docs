@@ -91,7 +91,7 @@ pagination_prev: product-updates/changelog/release67
 | ![](/img/bug.jpg) | Video not loading. Fixed |
 | ![](/img/bug.jpg) | Multiple boxes appearing. Fixed |
 | ![](/img/bug.jpg) | Misaligned Boxes. Fixed |
-| ![](/img/bug.jpg) | Bounding Boxes and Concepts inconsistent during video playback {Usability}. Fixed |
+| ![](/img/bug.jpg) | Bounding Boxes and Concepts inconsistent during video playback `{Usability}`. Fixed |
 | ![](/img/bug.jpg) | Change Labeler to use getHostedAssetUrl. Fixed |
 | ![](/img/bug.jpg) | Enable drawing even if annotations haven't loaded. Fixed |
 | ![](/img/improvement.jpg) | Use new feature flags at frontend & Labeler for all |
