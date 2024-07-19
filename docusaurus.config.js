@@ -1,8 +1,11 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const { themes } = require('prism-react-renderer')
+const path = require('path');
+
+const lightCodeTheme = themes.github;
+const darkCodeTheme = themes.dracula;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -48,6 +51,21 @@ const config = {
         },
       }),
     ],
+    [
+      'redocusaurus',
+      {
+        // Plugin Options for loading OpenAPI files
+        specs: [
+          // Pass it a path to a local OpenAPI YAML file
+          {
+            // Redocusaurus will automatically bundle your spec into a single file during the build
+            spec: 'static/api-spec/clarifai-v3.json',
+            route: '/api-reference',
+          },
+        ],
+        config: path.join(__dirname, 'redocly.yaml'),
+      },
+    ]
   ],
 
   themeConfig:
@@ -161,7 +179,6 @@ const config = {
               {
                 label: 'API Reference guide',
                 to: "/api-reference",
-                target: "_blank",
                 rel: "noopener"
               }, 
               {
@@ -275,7 +292,9 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-        additionalLanguages: ['php', 'java', 'csharp', 'objectivec', 'bash'],
+        // Issue with docusaurus & Redocusaurus on loading the code theme
+        // Reference: https://github.com/PrismJS/prism/issues/3458#issuecomment-1134426181
+        additionalLanguages: ['php', 'java', 'csharp', 'objectivec', 'bash', 'scala'],
       },
       colorMode: {
         defaultMode: 'dark',

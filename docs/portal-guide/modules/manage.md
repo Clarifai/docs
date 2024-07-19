@@ -34,7 +34,7 @@ To install a module, click the **Install Module** button. A small window will po
 
 You’ll then be redirected to a page that allows you to install the module on your selected app.
 
-You may refer to [the previous page](./create-install.md/#install-the-module-into-destination-app) on how to install a module to a destination app. 
+You may refer to the previous page on how to install a module to a destination app. 
 
 ### b) Create a module version
 

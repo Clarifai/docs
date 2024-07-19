@@ -32,7 +32,6 @@ Efficiently process multiple inputs in a single request by leveraging the Predic
 
 :::info
 The batch size should not exceed 128.
-:::imp
 
 <Tabs>
 <TabItem value="python" label="Python">
