@@ -27,7 +27,7 @@ pagination_prev: product-updates/changelog/release66
 | ![](/img/improvement.jpg) | Don't show model types for backends that aren't responding. |
 | ![](/img/improvement.jpg) | Clean up output\_info.data path |
 | ![](/img/improvement.jpg) | Add model\_type\_id to Model protos. |
-| ![](/img/improvement.jpg) | Add /models/types/{model\_type\_id} endpoint |
+| ![](/img/improvement.jpg) | Add `/models/types/{model\_type\_id}` endpoint |
 | ![](/img/improvement.jpg) | Prevent models\_versions.is\_public from every being null. |
 | ![](/img/bug.jpg) | model mode types that are internal only are being returned. |
 | ![](/img/improvement.jpg) | Create Labeling Order Object and send email to datalabeling@clarifai.com each time backend receives an Labeling Order Object & makes datalabeling a super user |

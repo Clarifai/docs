@@ -86,7 +86,7 @@ You can use the tools on the left side of the workspace pane to manage the workf
 
 **Output**:  `regions[…].data.concepts`
 
-This operator allows you to filter regions based on the concepts they contain using specific thresholds for each concept and an overall operator (>, >=, =, <=, or <). In this example, we use the " > " (`GREATER_THAN`) threshold type. Thus, only the `cat` and `dog` concepts outputted by the visual detector model above a certain threshold will be processed further downstream.
+This operator allows you to filter regions based on the concepts they contain using specific thresholds for each concept and an overall operator (>, >=, =, \<=, or \<). In this example, we use the " > " (`GREATER_THAN`) threshold type. Thus, only the `cat` and `dog` concepts outputted by the visual detector model above a certain threshold will be processed further downstream.
 
 :::
 
@@ -141,7 +141,7 @@ To capture predictions with low prediction scores, we'll set up a separate regio
 
 :::caution LESS_THAN_OR_EQUAL
 
-The `LESS_THAN_OR_EQUAL` (<=) operator ensures that all values that are either less than or exactly equal to the specified threshold are included in the result. In this case, if we set a threshold of 0.95 using the operator, any value that is 0.95 or lower will meet the condition.
+The `LESS_THAN_OR_EQUAL` (\<=) operator ensures that all values that are either less than or exactly equal to the specified threshold are included in the result. In this case, if we set a threshold of 0.95 using the operator, any value that is 0.95 or lower will meet the condition.
 
 :::
 

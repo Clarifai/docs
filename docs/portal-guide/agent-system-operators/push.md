@@ -119,7 +119,7 @@ Use the pop-up that appears in the right sidebar to search for the classificatio
 
 **Output**: Concepts
 
-This operator allows you to threshold input concepts according to both a threshold and an overall operator (>, >=, =, <=, or <). For this example, we use the " > " (GREATER_THAN) threshold type. Thus, only the `cat` and `dog` concepts outputted by the visual classifier model above a certain threshold will be processed further downstream. 
+This operator allows you to threshold input concepts according to both a threshold and an overall operator (>, >=, =, \<=, or \<). For this example, we use the " > " (GREATER_THAN) threshold type. Thus, only the `cat` and `dog` concepts outputted by the visual classifier model above a certain threshold will be processed further downstream. 
 
 :::
 

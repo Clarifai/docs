@@ -123,7 +123,7 @@ Here is a table outlining the various output configuration parameters you can co
 | `confidence_thresh`    | This is used to categorize high score detections for the first association if their scores are greater, and the second association if not |&#10003;       |          |             |             |         |       |   
 |  `high_confidence_match_thresh`  | The distance threshold for high-score detection |&#10003;       |          |             |             |         |       |  
 |  `low_confidence_match_thresh`  | The distance threshold for low-score detection |&#10003;       |          |             |             |         |       |   
-| `unconfirmed_match_thresh` | The distance threshold for unconfirmed tracks, usually tracks with only one beginning frame. {“min”: 0, “max”: 1} |&#10003;       |          |             |             |         |       |   
+| `unconfirmed_match_thresh` | The distance threshold for unconfirmed tracks, usually tracks with only one beginning frame. `{“min”: 0, “max”: 1}` |&#10003;       |          |             |             |         |       |   
 | `max_distance`| Associate tracks with detections only when their distance is below max_distance|&#10003;|&#10003;| |&#10003; |  &#10003; |  &#10003;     |  
 | `filtered_probability` | If false, return original detection probability; if true, return processed probability from the tracker | | | &#10003; |             |         |       |  
 |`max_detection` |Maximum detection per frame | | |&#10003;|             |         |       |  
