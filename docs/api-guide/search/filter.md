@@ -10,6 +10,8 @@ sidebar_position: 3
 
 You can filter and customize your search results to find exactly what you want. Filtering helps you reduce the amount of data returned in search results by removing irrelevant content, or by allowing you to select a specific subset of your data.
 
+In annotation search, `Filter` is a list of `Annotation` objects.
+
 :::info
 The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
 :::
@@ -61,6 +63,15 @@ import JavaTwoGeoPoints from "!!raw-loader!../../../code_snippets/api-guide/sear
 import JavaCustomAnnotation from "!!raw-loader!../../../code_snippets/api-guide/search/filter/java/by_custom_annotation_info.java";
 import JavaAnnotationInfo from "!!raw-loader!../../../code_snippets/api-guide/search/filter/java/by_annotation_info.java";
 
+import PHPCustomConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/filter/php/by_custom_concepts.php";
+import PHPUserID from "!!raw-loader!../../../code_snippets/api-guide/search/filter/php/by_user_id.php";
+import PHPAnnotationStatus from "!!raw-loader!../../../code_snippets/api-guide/search/filter/php/by_annotation_status.php";
+import PHPInputsLongitude from "!!raw-loader!../../../code_snippets/api-guide/search/filter/php/add_inputs_longitude_latitude.php";
+import PHPOneGeoPoint from "!!raw-loader!../../../code_snippets/api-guide/search/filter/php/perform_search_one_geo_point.php";
+import PHPTwoGeoPoints from "!!raw-loader!../../../code_snippets/api-guide/search/filter/php/perform_search_two_geo_point.php";
+import PHPCustomAnnotation from "!!raw-loader!../../../code_snippets/api-guide/search/filter/php/by_custom_annotation_info.php";
+import PHPAnnotationInfo from "!!raw-loader!../../../code_snippets/api-guide/search/filter/php/by_annotation_info.php";
+
 import CurlCustomConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/filter/curl/by_custom_concepts.sh";
 import CurlUserID from "!!raw-loader!../../../code_snippets/api-guide/search/filter/curl/by_user_id.sh";
 import CurlAnnotationStatus from "!!raw-loader!../../../code_snippets/api-guide/search/filter/curl/by_annotation_status.sh";
@@ -93,6 +104,10 @@ After you annotate inputs with custom concepts, you can filter by concepts.
     <CodeBlock className="language-java">{JavaCustomConcepts}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPCustomConcepts}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlCustomConcepts}</CodeBlock>
 </TabItem>
@@ -121,6 +136,10 @@ If you have collaborators in your app and they helped you annotate your inputs, 
     <CodeBlock className="language-java">{JavaUserID}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPUserID}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlUserID}</CodeBlock>
 </TabItem>
@@ -128,6 +147,8 @@ If you have collaborators in your app and they helped you annotate your inputs, 
 </Tabs>
 
 ## By Annotation Status
+
+You can also filter the annotations by their [status](https://docs.clarifai.com/api-guide/advanced-topics/status-codes/#annotation-related-codes-24xxx). 
 
 <Tabs>
 
@@ -145,6 +166,10 @@ If you have collaborators in your app and they helped you annotate your inputs, 
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaAnnotationStatus}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPAnnotationStatus}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -187,6 +212,10 @@ Provide a geo point to an input. The geo point is a JSON object consisting of a 
     <CodeBlock className="language-java">{JavaInputsLongitude}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPInputsLongitude}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlInputsLongitude}</CodeBlock>
 </TabItem>
@@ -211,6 +240,10 @@ Provide a geo point to an input. The geo point is a JSON object consisting of a 
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-javascript">{JavaOneGeoPoint}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPOneGeoPoint}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -239,13 +272,17 @@ Provide a geo point to an input. The geo point is a JSON object consisting of a 
     <CodeBlock className="language-java">{JavaTwoGeoPoints}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPTwoGeoPoints}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlTwoGeoPoints}</CodeBlock>
 </TabItem>
 
 </Tabs>
 
-## By Custom Annotation Info
+## By Custom Metadata
 
 After you have added inputs with custom metadata, you can search by that metadata.
 
@@ -316,6 +353,10 @@ How to perform searches:
     <CodeBlock className="language-java">{JavaCustomAnnotation}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPCustomAnnotation}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlCustomAnnotation}</CodeBlock>
 </TabItem>
@@ -342,6 +383,10 @@ Each annotation has annotation info. Similar to metadata, you have full control 
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaAnnotationInfo}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPAnnotationInfo}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">

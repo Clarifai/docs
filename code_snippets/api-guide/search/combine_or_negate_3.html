@@ -1,15 +1,17 @@
 <!--index.html file-->
 
 <script>
-    //////////////////////////////////////////////////////////////////
-    // In this section, we set the user authentication and app ID. 
+    ///////////////////////////////////////////////////////////////////////////////////
+    // In this section, we set the user authentication, app ID, and concept ID.
     // Change these strings to run your own example.
-    //////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////
 
-    const USER_ID = 'YOUR_USER_ID_HERE';
+    const USER_ID = "YOUR_USER_ID_HERE";
     // Your PAT (Personal Access Token) can be found in the Account's Security section
-    const PAT = 'YOUR_PAT_HERE';
-    const APP_ID = 'YOUR_APP_ID_HERE';
+    const PAT = "YOUR_PAT_HERE";
+    const APP_ID = "YOUR_APP_ID_HERE";
+    // Change this to rank the filtered results by your own concept
+    const CONCEPT_ID = "cat";
 
     ///////////////////////////////////////////////////////////////////////////////////
     // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -26,8 +28,24 @@
                     "filters": [
                         {
                             "annotation": {
-                                "annotation_info": {
-                                    "type": "animal"
+                                "data": {
+                                    "metadata": {
+                                        "type": "animal"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "ranks": [
+                        {
+                            "annotation": {
+                                "data": {
+                                    "concepts": [
+                                        {
+                                            "id": CONCEPT_ID,
+                                            "value": 1
+                                        }
+                                    ]
                                 }
                             }
                         }
@@ -50,5 +68,4 @@
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
-
 </script>

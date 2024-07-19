@@ -5,13 +5,13 @@
 // language ID. Change these strings to run your own example.
 ///////////////////////////////////////////////////////////////////////////////////
 
-const USER_ID = 'YOUR_USER_ID_HERE';
+const USER_ID = "YOUR_USER_ID_HERE";
 // Your PAT (Personal Access Token) can be found in the Account's Security section
-const PAT = 'YOUR_PAT_HERE';
-const APP_ID = 'YOUR_APP_ID_HERE';
+const PAT = "YOUR_PAT_HERE";
+const APP_ID = "YOUR_APP_ID_HERE";
 // Change these to what you want to search by
-const CONCEPT_NAME = '犬';
-const LANGUAGE_ID = 'ja'; // Japanese
+const CONCEPT_NAME = "犬";
+const LANGUAGE_ID = "ja"; // Japanese
 
 ///////////////////////////////////////////////////////////////////////////////////
 // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -38,17 +38,17 @@ stub.PostAnnotationsSearches(
                         {
                             annotation: {
                                 data: {
-                                    concepts: [  // You can search by multiple concepts.
+                                    concepts: [  // You can search by multiple concepts
                                         {
-                                            name: CONCEPT_NAME,  // You could search by concept Id as well.
-                                            language: LANGUAGE_ID,
+                                            name: CONCEPT_NAME,  // You could search by concept Id as well                                           
                                             value: 1  // Value of 0 will search for images that don't have the concept
                                         }
                                     ]
                                 }
                             }
                         }
-                    ]
+                    ],
+                    language: LANGUAGE_ID
                 }
             }
         ]
