@@ -2,7 +2,7 @@
 description: Capture information from an organization's form that are stored as PDF documents.
 sidebar_position: 5
 ---
-<!-- test code -->
+
 # Intelligent Document Processing
 
 **Capture information from an organization's form that are stored as PDF documents**
