@@ -367,7 +367,7 @@ html[data-theme='dark'] .card:hover {
 }
 
 .banner-primary {
-  height: 400px;
+  height: 390px;
   background-image: url('/img/banner/getstarted-bg.png');
   background-size: cover;
   background-position: center;
@@ -375,6 +375,7 @@ html[data-theme='dark'] .card:hover {
   overflow: hidden;
   margin-top: 24px;
   margin-bottom: 24px;
+  border-radius: 8px;
 }
 .banner-primary::after {
   content: "";
@@ -684,6 +685,27 @@ html[data-theme='light'] .header-primary-cta-link:hover {
 /* Navbar fix */
 .navbar__toggle.clean-btn {
   margin-left: 0px;
+}
+/* Match Navbar dropdown to clarifai website */
+a.navbar__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+a.navbar__link::after {
+  border-color: unset !important;
+  border-style: unset !important;
+  border-width: unset !important;
+  position: unset !important;
+  display: unset !important;
+  background-image: url('/img/menu-dropdown-white.svg');
+  background-repeat: no-repeat;
+  height: 15px;
+  width: 15px;
+  margin-top: 16px;
+}
+html[data-theme='light'] a.navbar__link::after {
+  background-image: url('/img/menu-dropdown-black.svg');
 }
 /* Navbar Banner  */
 .header-navbar-banner {
