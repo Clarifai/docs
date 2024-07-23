@@ -117,7 +117,8 @@ To copy a dataset ID to the clipboard, go to its individual page and click the c
 ![](/img/community/datasets/dataset_9.png)
 
 ## Merge Datasets
-The Clarifai Platform also allows users to merge datasets together for specific purposes. The easiest way to merge datasets via the UI is to leverage Input Filters and the two bulk selection checkboxes. From the Inputs page, first select the dataset that you will be adding inputs from, using the datasets filter. Below  I've selected my **tolabel-1** dataset.
+
+The Clarifai Platform also allows users to merge datasets together for specific purposes. The easiest way to merge datasets via the UI is to leverage Input Filters and the two bulk selection checkboxes. From the Inputs page, first select the dataset that you will be adding inputs from, using the datasets filter. Below  we've selected the **tolabel-1** dataset.
 
 ![](/img/community/datasets/merge_dataset_1.png)
 
@@ -160,8 +161,11 @@ The updated inputs and annotations in your dataset will be displayed under the *
 You can also choose the dataset version you'd like to use from the **Selected Version** drop-down list.
 
 ### Auto-Generated Versions
+
 As you navigate through the versions tab in **Dataset** section, you might come across **auto-generated** dataset versions.
+
 There are two different cases where the platform will create **"auto-generated-*"** dataset versions:
+
 1. If you train a model and only select a dataset, but not a corresponding dataset version.
 2. During the model evaluation process, **auto-generated** dataset versions are used to store the different ground truths and predictions during the model evaluation process, which are then used to further calculate the actual evaluation metrics.
 

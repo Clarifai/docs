@@ -86,6 +86,14 @@ import CurlAnnotationInfo from "!!raw-loader!../../../code_snippets/api-guide/se
 
 After you annotate inputs with custom concepts, you can filter by concepts.
 
+:::caution train a model
+
+When performing a search with custom concepts, ensure that these concepts are first trained using a classification or detection model. Without this training, the search query will result in an error.
+
+Training a model generates embeddings for each custom concept. These concept embeddings are then utilized in the search process.
+
+:::
+
 <Tabs>
 
 <TabItem value="python" label="Python">

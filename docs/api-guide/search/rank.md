@@ -123,7 +123,7 @@ When you add an input, it automatically gets predictions from the workflow in yo
 
 ### By Custom Concepts
 
-After you have added inputs, annotated the inputs, and tried a custom model, you can search by those concepts.
+After you have added inputs, annotated the inputs, and trained a custom model, you can search by those concepts.
 
 <Tabs>
 
@@ -323,7 +323,7 @@ You can use texts to search through your collection of texts. The text-to-text s
 
 :::tip 
 
-- To perform text-to-text searches, you could choose a workflow that includes a text embedder and a clusterer, such as the **Language-Understanding** workflow, as the [base workflow](https://docs.clarifai.com/portal-guide/workflows/base-workflows/) for your application.  
+- To perform text-to-text searches, you could choose a workflow that includes a text embedder and a clusterer, such as the [**Text**](https://clarifai.com/clarifai/main/workflows/Text) workflow, as the [base workflow](https://docs.clarifai.com/portal-guide/workflows/base-workflows/) for your application.  
 - To perform text-to-image searches, you could choose [**Universal**](https://clarifai.com/clarifai/main/workflows/Universal) as the base workflow, which allows you to use texts to search through your collection of images.
 
 :::
