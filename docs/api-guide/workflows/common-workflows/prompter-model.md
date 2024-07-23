@@ -1,5 +1,5 @@
 ---
-description: Integrate a prompter model into an LLM workflow 
+description: Learn how to integrate a prompter model into an LLM workflow 
 sidebar_position: 5
 ---
 
