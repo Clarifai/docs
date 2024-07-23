@@ -686,6 +686,15 @@ html[data-theme='light'] .header-primary-cta-link:hover {
 .navbar__toggle.clean-btn {
   margin-left: 0px;
 }
+/* Logo style */
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navbar__logo img {
+  height: 70%;
+}
 /* Match Navbar dropdown to clarifai website */
 a.navbar__link {
   display: flex;

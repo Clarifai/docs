@@ -87,10 +87,12 @@ const config = {
         isCloseable: false,
       },
       navbar: {
-        title: 'Clarifai Guide',
+        title: '',
         logo: {
-          alt: 'Clarifai',
-          src: 'img/logo.svg',
+          alt: 'Clarifai Guide',
+          src: 'img/logo-dark.svg',
+          srcDark: 'img/logo-light.svg',
+          href: '/',
         },
         items: [
           {
