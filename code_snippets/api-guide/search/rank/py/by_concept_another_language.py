@@ -36,20 +36,21 @@ post_annotations_searches_response = stub.PostAnnotationsSearches(
                         resources_pb2.Rank(
                             annotation=resources_pb2.Annotation(
                                 data=resources_pb2.Data(
-                                    concepts=[  # You can search by multiple concepts.
+                                    concepts=[  # You can search by multiple concepts
                                         resources_pb2.Concept(
-                                            name=CONCEPT_NAME,  # You could search by concept ID as well.
-                                            language=LANGUAGE_ID, 
-                                            value=1  # Value of 0 will search for images that don't have the concept.
+                                            name=CONCEPT_NAME,  # You could search by concept ID as well                                            
+                                            value=1  # Value of 0 will search for images that don't have the concept
                                         )
                                     ]
                                 )
                             )
                         )
-                    ]
+                    ],
+                    language=LANGUAGE_ID
                 )
             )
-        ]
+        ],
+        pagination=service_pb2.Pagination(per_page=2, page=1)
     ),
     metadata=metadata
 )

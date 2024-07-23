@@ -22,7 +22,16 @@ A base workflow usually contains [an embedding model](https://docs.clarifai.com/
 
 You can choose a base workflow when [creating a new application](https://docs.clarifai.com/clarifai-basics/applications/create-an-application/). After selecting the primary input type for your app, the base workflow will be automatically selected for you — within the collapsible **Advanced Settings** field. 
 
-Alternatively, you can select the one that aligns most with your specific use case from the dropdown list accessible when you click the workflows search box.
+Alternatively, you can select the one that aligns most with your specific use case from the drop-down list accessible when you click the workflows search box.
+
+:::tip default base workflow
+
+- If you select **Image/Video** as the primary input type when creating an application, [Universal](https://clarifai.com/clarifai/main/workflows/Universal) will automatically be set as the default base workflow. If you select **Text/Document** as the input type, [Text](https://clarifai.com/clarifai/main/workflows/Text) will be set as the default base workflow.
+
+- If you create an application via the API, Universal will be set as the default base workflow unless you [specify a different one](https://docs.clarifai.com/api-guide/workflows/base-workflows/#update-your-base-workflow).
+
+:::
+
 
 ![choose base workflow](/img/community_2/base_workflow_choose.png)
 
@@ -36,7 +45,7 @@ After selecting your preferred base workflow, click the **Change Base Workflow**
 
 :::caution reindexing
 
-- Updating the base workflow will reindex your app, processing all inputs through the new base workflow. This may take some time, and could incur costs. You could avoid the costs by deleting all your inputs before updating the base workflow.
+- You can update the base workflow and choose to reindex existing inputs in your app. Reindexing will process all inputs through the new base workflow. This may take some time, and could incur costs. To avoid reindexing, do not click the **Reindex existing inputs** checkbox.
 - During reindexing, existing data from the old base workflow isn't deleted. This means you can easily revert back to the old base workflow if needed.
 
 :::

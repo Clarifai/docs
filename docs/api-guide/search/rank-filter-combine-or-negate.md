@@ -8,7 +8,7 @@ sidebar_position: 1
 **Search helps you sort, save, organize, and filter your datasets**
 <hr />
 
-You can send inputs \(as a url or bytes\) and once indexed, you can search for images by concept, image, or many advanced search parameters. When you `POST /inputs`, your base workflow is used to index your inputs, and this index enables search over the outputs of the models in your workflow.
+You can upload inputs to our platform as URLs or bytes. When you `POST /inputs`, your [base workflow](https://docs.clarifai.com/portal-guide/workflows/base-workflows/) is used to index the inputs, and this index enables search over the outputs of the models in your workflow. Once indexed, you can search for the inputs by concept, annotation, or any other advanced search parameters. 
 
 ## Rank
 

@@ -8,13 +8,21 @@ sidebar_position: 6
 **Make multimodal-to-text predictions**
 <hr />
 
-**Input**: Text and images, etc
+**Input**: Text, images, etc
 
 **Output**: Text
 
 Multimodal-to-text models allow you to generate textual descriptions or responses from multimodal inputs. "Multimodal" refers to the integration of information from multiple modalities, such as text, images, and/or other types of data.
 
 A multimodal-to-text model might take as input a combination of textual data and images and generate a descriptive text that captures the content of both modalities. It can comprehend and generate a human-like response that encompasses multiple types of information. 
+
+:::warning Vision Language Models (VLMs)
+
+Vision Language Models (VLMs), also called Large Vision Language Models (LVLMs), integrate capabilities from both Large Language Models (LLMs) and vision models. These models, such as [Qwen-VL-Chat](https://clarifai.com/qwen/qwen-VL/models/qwen-VL-Chat), are designed to understand both text and visual content, enabling you to perform tasks that require interpreting multimodal information. 
+
+You can use LVLMs to process and understand data from different modalities, such as text and images. They can generate coherent textual outputs for your natural language processing needs. 
+
+:::
 
 :::info
 

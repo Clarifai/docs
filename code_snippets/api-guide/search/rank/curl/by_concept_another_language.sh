@@ -8,21 +8,21 @@ curl -X POST "https://api.clarifai.com/v2/users/YOUR_USER_ID_HERE/apps/YOUR_APP_
     "searches": [
       {
         "query": {
-        "ranks": [
+          "ranks": [
             {
-            "annotation": {
+              "annotation": {
                 "data": {
-                "concepts": [
+                  "concepts": [
                     {
-                    "name":"犬",
-                    "language": "ja",
-                    "value": 1
+                      "name": "犬",
+                      "value": 1
                     }
-                ]
-               }
+                  ]
+                }
+              }
             }
-           }
-        ]
+          ],
+          "language": "ja"
         }
       }
     ]

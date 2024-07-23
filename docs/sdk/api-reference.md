@@ -31,7 +31,8 @@ Initializes a **User** object.
   * **user_id** (*str*) – The user ID for the user to interact with.
   * **base_url** (*str*) - Base API url. Default "https://api.clarifai.com"
   * **pat** (*str*) - A personal access token for authentication.
-  * **token** (*str*) - A session token for authentication. Accepts either a session token or a pat. Can be set as env var CLARIFAI_SESSION_TOKEN
+  * **token** (*str*) - A session token for authentication. Accepts either a session token or a pat. Can be set as env var CLARIFAI_SESSION_TOKEN.
+  * **root_certificates_path** (*str*) - Path to the SSL root certificates file, used to establish secure gRPC connections.
   * **\*\*kwargs** – Additional keyword arguments to be passed to the ClarifaiAuthHelper.
 
 ### User.app()
@@ -265,7 +266,8 @@ Initializes an App object.
 * **base_url** (*str*) -  Base API url. Default "https://api.clarifai.com"
 * **pat** (*str*) -  A personal access token for authentication.
 * **token** (*str*) - A session token for authentication. Accepts either a session token or a pat. Can be set as env var CLARIFAI_SESSION_TOKEN
-  * **\*\*kwargs** – Additional keyword arguments to be passed to the ClarifaiAuthHelper:
+* **root_certificates_path** (*str*) - Path to the SSL root certificates file, used to establish secure gRPC connections.
+* **\*\*kwargs** – Additional keyword arguments to be passed to the ClarifaiAuthHelper:
     - name (str): The name of the app.
     - description (str): The description of the app.
 
@@ -678,7 +680,7 @@ search_client = app.search(top_k=12, metric="euclidean")
 ### App.model()
 
 ```python
-model(model_id, model_version_id='', **kwargs)
+model(model_id, model_version={'id': ""}, **kwargs)
 ```
 
 Returns a Model object for the existing model ID.
@@ -686,7 +688,7 @@ Returns a Model object for the existing model ID.
 #### Parameters
 
   * **model_id** (*str*) – The model ID for the model to interact with.
-  * **model_version_id** (*str*) – The model version ID for the model version to interact with.
+  * **model_version** (*dict*) – The Model Version to interact with.
 
 ##### Returns
 
@@ -701,7 +703,7 @@ Model
 ```python
 from clarifai.client.app import App
 app = App(app_id="app_id", user_id="user_id")
-model_v1 = app.model(model_id="model_id", model_version_id="model_version_id")
+model_v1 = app.model(model_id="model_id", model_version={'id': ""})
 ```
 
 ### App.module()
@@ -777,7 +779,8 @@ Initializes a Dataset object.
 * **dataset_id** (*str*) - The Dataset ID within the App to interact with.
 * **base_url** (*str*) - Base API url. Default "https://api.clarifai.com"
 * **pat** (*str*) - A personal access token for authentication. Can be set as env var CLARIFAI_PAT
-* **token** (*str*) - A session token for authentication. Accepts either a session token or a pat. Can be set as env var CLARIFAI_SESSION_TOKEN
+* **token** (*str*) - A session token for authentication. Accepts either a session token or a pat. Can be set as env var CLARIFAI_SESSION_TOKEN.
+* **root_certificates_path** (*str*) - Path to the SSL root certificates file, used to establish secure gRPC connections.
 * **\*\*kwargs** –  Additional keyword arguments to be passed to the Dataset
 
 ### Dataset.export()
@@ -963,7 +966,8 @@ Initializes an Input object.
   * **user_id** (*str*) – A user ID for authentication.
   * **app_id** (*str*) – An app ID for the application to interact with.
   * **base_url** (*str*) - Base API url. Default "https://api.clarifai.com"
-  * **token** (*str*) - A session token for authentication. Accepts either a session token or a pat. Can be set as env var CLARIFAI_SESSION_TOKEN
+  * **token** (*str*) - A session token for authentication. Accepts either a session token or a pat. Can be set as env var CLARIFAI_SESSION_TOKEN.
+  * **root_certificates_path** (*str*) - Path to the SSL root certificates file, used to establish secure gRPC connections.
   * **\*\*kwargs** – Additional keyword arguments to be passed to the Input
 
 ### Inputs.delete_inputs()
@@ -1381,7 +1385,7 @@ input_obj = Input(user_id = 'user_id', app_id = 'demo_app')
 input_obj.upload_text(input_id = 'demo', raw_text = 'This is a test')
 ```
 
-### Input.get_multimodal_input()
+### Inputs.get_multimodal_input()
 ```python
 get_multimodal_input(input_id,raw_text,text_bytes,image_url,image_bytes,dataset_id,**kwargs)
 ```
@@ -1404,7 +1408,7 @@ from clarifai.client.input import Inputs
 input_protos = Inputs.get_multimodal_input(input_id = 'demo', raw_text = 'What time of day is it?', image_url='https://samples.clarifai.com/metro-north.jpg')
 ```
 
-### Input.get_bbox_proto()
+### Inputs.get_bbox_proto()
 ```python
 get_bbox_proto(input_id, label, bbox)
 ```
@@ -1424,8 +1428,27 @@ from clarifai.client.input import Inputs
 Inputs.get_bbox_proto(input_id='demo', label='demo', bbox=[x_min, y_min, x_max, y_max])
 ```
 
+### Inputs.patch_annotation()
+```python
+patch_annotations(batch_annot, action: str = 'merge')
+```
+Patch image annotations to app.
+#### Parameters
+* **batch_annot** - annot batch protos
+* **action** (*str*) - Action to perform on the input. Options: 'merge', 'overwrite', 'remove'.
 
-### Input.list_annotations()
+### Inputs.patch_concepts()
+```python
+patch_concepts(concept_ids, labels, values , action: str = 'overwrite'))
+```
+Patch concepts to app.
+#### Parameters
+* **concept_ids** (*List*) -  A list of concept.
+* **labels** (*List*) - A list of label names.
+* **values** (*List*) - concept value
+* **action** (*str*) - Action to perform on the input. Options: 'overwrite'.
+
+### Inputs.list_annotations()
 ```python
 list_annotations(batch_input, page_no,per_page)
 ```
@@ -1447,7 +1470,7 @@ all_annotations = list(input_obj.list_annotations(batch_input=all_inputs))
 
 ```
 
-### Input.download_inputs()
+### Inputs.download_inputs()
 ```python
 download_inputs(inputs)
 ```
@@ -1517,7 +1540,8 @@ Initializes a Model object.
   * **model_version** (*dict*) – The Model Version to interact with.
   * **base_url** (*str*) - Base API url. Default "https://api.clarifai.com"
   * **pat** (*str*) - A personal access token for authentication. Can be set as env var CLARIFAI_PAT
-  * **token** (*str*) - A session token for authentication. Accepts either a session token or a pat. Can be set as env var CLARIFAI_SESSION_TOKEN
+  * **token** (*str*) - A session token for authentication. Accepts either a session token or a pat. Can be set as env var CLARIFAI_SESSION_TOKEN.
+  * **root_certificates_path** (*str*) - Path to the SSL root certificates file, used to establish secure gRPC connections.
   * **\*\*kwargs** – Additional keyword arguments to be passed to the ClarifaiAuthHelper.
 
 ### Model.create_version()
@@ -1785,8 +1809,6 @@ Deletes a model version for the Model.
 #### Parameters
   * **version_id** (*str*) - The version ID to delete.
 
-
-
 #### Example
 ```python
 from clarifai.client.model import Model
@@ -1794,6 +1816,15 @@ model = Model(model_id='model_id', user_id='user_id', app_id='app_id')
 model.delete_version(version_id='version_id')
 ```
 
+### Model.export()
+```python
+from clarifai.client.model import Model
+model = Model("url")
+model.export('/path/to/export_model_dir')
+```
+Export the model, stores the exported model as model.tar file.
+#### Parameters
+* **export_dir** (*str, optional*) - If provided, the exported model will be saved in the specified directory else export status will be shown. Defaults to None.
 ### Model.evaluate()
 ```python
 evaluate(dataset_id,dataset_app_id,dataset_user_id,eval_id,extended_metrics,eval_info)
@@ -1874,7 +1905,8 @@ Initializes a Workflow object.
     * select_concepts (list[Concept]) - The concepts to select.
     * sample_ms (int) - The number of milliseconds to sample.
   * **base_url** (*str*) - Base API url. Default "https://api.clarifai.com"
-  * **token** (*str*) - A session token for authentication. Accepts either a session token or a pat. Can be set as env var CLARIFAI_SESSION_TOKEN
+  * **token** (*str*) - A session token for authentication. Accepts either a session token or a pat. Can be set as env var CLARIFAI_SESSION_TOKEN.
+  * **root_certificates_path** (*str*) - Path to the SSL root certificates file, used to establish secure gRPC connections.
   * **\*\*kwargs** – Additional keyword arguments to be passed to the ClarifaiAuthHelper.
 
 ### Workflow.list_versions()
@@ -2010,6 +2042,7 @@ Initializes a Module object.
   * **base_url** (*str*) - Base API url. Default "https://api.clarifai.com"
   * **pat** (*str*) - A personal access token for authentication. Can be set as env var CLARIFAI_PAT
   * **token** (*str*) - A session token for authentication. Accepts either a session token or a pat. Can be set as env var CLARIFAI_SESSION_TOKEN.
+  * **root_certificates_path** (*str*) - Path to the SSL root certificates file, used to establish secure gRPC connections.
   * **\*\*kwargs** – Additional keyword arguments to be passed to the ClarifaiAuthHelper.
 
 ### Module.list_versions()
@@ -2164,19 +2197,22 @@ Initialize the Search object.
   * **metric** (*str*) - Similarity metric (either 'cosine' or 'euclidean'). Defaults to 'cosine'.
   * **base_url** (*str*) - Base API url. Defaults to "https://api.clarifai.com".
   * **pat** (*str*) - A personal access token for authentication.
-  * **token** (*str*) - A session token for authentication. Accepts either a session token or a pat. Can be set as env var CLARIFAI_SESSION_TOKEN
+  * **alogrithm** (*str, optional*) - Search algorithm (either 'nearest_neighbor' or 'brute_force'). Defaults to 'nearest_neighbor'.
+  * **token** (*str*) - A session token for authentication. Accepts either a session token or a pat. Can be set as env var CLARIFAI_SESSION_TOKEN.
+  * **root_certificates_path** (*str*) - Path to the SSL root certificates file, used to establish secure gRPC connections.
 
 
 ### Search.query()
 ```python
-query(ranks=[{}], filters=[{}])
-
+query(ranks=[{}], filters=[{}], page_no: int = None, per_page: int = None)
 ```
 Perform a query with rank and filters.
 
 #### Parameters
 * **ranks** (*List[Dict]*) - List of rank parameters. Defaults to [{}].
 * **filters** (*List[Dict]*) - List of filter parameters. Defaults to [{}].
+* **page_no** (*int*) - The page number to list.
+* **per_page** (*int*) - The number of items per page.
 
 *The schema for rank and filters are given below*:
 

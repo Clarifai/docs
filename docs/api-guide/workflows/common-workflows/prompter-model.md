@@ -1,5 +1,5 @@
 ---
-description: Integrate a prompter model into an LLM workflow 
+description: Learn how to integrate a prompter model into an LLM workflow 
 sidebar_position: 5
 ---
 
@@ -8,7 +8,7 @@ sidebar_position: 5
 **Integrate a prompter model into an LLM workflow**
 <hr />
 
-A [prompter model]( https://docs.clarifai.com/portal-guide/model/agent-system-operators/prompter/) is a type of language model specifically designed to craft instructions that guide the output of large language models (LLMs). It helps in prompt engineering, focusing on optimizing the responses of LLMs to prompts. 
+A [prompter model](https://docs.clarifai.com/portal-guide/agent-system-operators/prompter) is a type of language model specifically designed to craft instructions that guide the output of large language models (LLMs). It helps in prompt engineering, focusing on optimizing the responses of LLMs to prompts. 
 
 Let's demonstrate how you can create your own prompter model and connect it to an LLM in a [workflow](https://docs.clarifai.com/api-guide/workflows/). 
 

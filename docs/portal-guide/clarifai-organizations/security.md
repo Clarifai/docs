@@ -53,7 +53,7 @@ Here is a table detailing the scopes and access levels allowed for each user typ
 
 You can take some additional actions to augment the security of your organization at Clarifai.
 
-To access the security settings of your organization, start by clicking your organization’s profile icon at the top-right section of the navigation bar. On the drop-down list that follows, select the **Security** option. 
+To access the security settings of your organization, start by clicking your organization’s profile icon at the upper-right section of the navigation bar. In the drop-down list that follows, select the **Security** option. 
 
 ![Security organization settings](/img/clarifai_orgs/security_option.png)
 

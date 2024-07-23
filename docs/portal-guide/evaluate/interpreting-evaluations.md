@@ -1,188 +1,210 @@
 ---
-description: Learn to interpret model evaluations.
+description: Learn how to interpret the evaluation results of classification models
 sidebar_position: 1
 ---
 
-# Interpreting Evaluations
+# Evaluating Classification Models
 
-**Learn to interpret model evaluations**
+**Learn how to interpret the evaluation results of classification models**
 <hr />
-
-## Interpreting Results
 
 As mentioned in the previous [Evaluating Models](./) section, once the evaluation process is complete, the **Calculate** button will become a **View Results** button. 
 
-You can click the **View Results** button to see the evaluation results.
+You can click the **View Results** button to see and interpret the evaluation results of your classification models. 
 
 ![](/img/community/evaluate/evaluate_3.png)
 
-You'll then be redirected to the following page:
+You will then be redirected to the **Evaluation results** page, where you can analyze the outcomes of the evaluation process.
 
-![](/img/community/evaluate/evaluate_4.png) 
+![](/img/community/evaluate/evaluate_4.png)
 
-We suggest that you start by looking at the **Evaluation highlights** section, especially the **Evaluation Summary** table, to get a sense of the overall model prediction performance and identify the high-performing and low-performing concepts. 
+On the page, you will generally see results that represent either:
 
-![](/img/community/evaluate/evaluate_5.png) 
+- The average across K-splits; or
 
-Afterward, hone in on the Selection Details of the False Positives and False Negatives to identify any biases, if any, in how the model is predicting, and to correct any inputs that are mislabeled
-
-Generally, you’ll be looking at results that represent either:
-
-a\) the average across K-splits; or,
-
-b\) the test set of a single split, which is about 1/K of your original training set.
+- The test set of a single split, which is approximately 1/K of your original training set.
 
 Note that a single split will be capped at 1,000 inputs.
 
-If you want to evaluate how a model performs against a test dataset, select it under the **Holdout Dataset** section and click the **Evaluate?** button. Once the evaluation process is complete, the results will be populated on the page. 
+Let's talk about how to interpret the evaluation results. 
 
-![](/img/community/evaluate/evaluate_6.png) 
+## Evaluation Highlights
 
-:::tip
+At the top of the page, you will find details about the evaluated model, including:
 
-You can click [here](https://docs.clarifai.com/tutorials/how-to-evaluate-an-image-classification-model) to learn more about how to evaluate a model. 
+- Version of the model evaluated
+- Evaluation date
+- Number of concepts used for evaluation
+- App name
+- Dataset name
+- Dataset version ID
 
-:::
+The **Evaluation highlights** section provides key numerical metrics that offer an overview of the model's prediction performance, allowing you to assess the model's effectiveness at a glance.
 
-## Model Analysis
+## ROC/AUC (Accuracy Score)
 
-### Model Accuracy Score
+The ROC/AUC is a key metric for assessing the prediction performance of a classification model. ROC stands for Receiver Operating Characteristic, and AUC stands for Area Under the Curve. The AUC is defined as the macro average of the areas under the ROC curve for every concept, averaged across K-splits.
 
-![](/img/community/evaluate/evaluate_7.png) 
+This metric provides a concise summary of how well each model discriminates between classes or concepts, making it easier to compare models based on their ROC characteristics. It allows you to quickly identify models that excel in distinguishing between concepts, aiding in the selection of those with superior discrimination capabilities and better performance.
 
-Model Accuracy Score is the highest level metric for your model’s prediction performance. It is defined as the macro average of the areas under the receiver operating characteristic curve for every concept. This metric does not depend on the Prediction Threshold. This metric is an average across K-splits.
+A higher ROC/AUC score generally indicates better discrimination between classes or concepts. A score of 1 represents a perfect model, while a score of 0.5 represents a model with no discrimination ability, essentially performing no better than random chance. Generally, a score above 0.9 is considered excellent.
 
-A score of 1 represents a perfect model; a score of .5 represents a worthless model. As a general rule of thumb, a score above .9 is considered good.
+:::note
 
-:::important Note
-
-We discourage users from making a final assessment of the model accuracy based on the Model Accuracy Score only.
-
-:::
-
-## Concept Analysis
-
-### Prediction Threshold
-
-![](/img/community/evaluate/evaluate_8.png) 
-
-The probability threshold determines the model’s predictions. The default threshold is .5. The input is predicted \(i.e. “counts” \) as a concept, such as “dog”, only if the prediction probability for “dog” is higher than the set threshold; for example, 0.5. You can adjust the threshold slider depending on how ‘strict’ you want your classification to be.
-
-All binary prediction metrics—such as True Positives, False Negatives, False Positives, Total Predicted, Recall Rate, and Precision Rate—depend on this threshold. If the threshold is adjusted, the values of those metrics also change. 
-
-#### Choosing a Prediction Threshold
-
-A threshold is the “sweet spot” numerical score that is dependent on the objective of your prediction for _recall_ and/or _precision_. In practice, there are multiple ways to define “accuracy” when it comes to machine learning, and the threshold is the number we use to gauge our preferences.
-
-You might be wondering how you should set your classification threshold once you are ready to use it to predict out-of-sample data. This is more of a business decision; in that, you have to decide whether you would rather minimize the False Positive Rate or maximize the True Positive Rate.
-
-If our model is used to predict concepts that lead to a high-stakes decision, like a diagnosis of a disease or moderation for safety, we might consider a few false positives as forgivable \(better to be safe than sorry!\). In this case, we might want high precision.
-
-If our model is used to predict concepts that lead to a suggestion or flexible outcome, we might want a high recall rate so that the model can allow for exploration.
-
-In either scenario, we will want to make sure our model is trained and tested with data that best reflects its use case.
-
-Once we have determined the goal of our model \(high precision or high recall\), we can use test data that our model has never seen before to evaluate how well our model predicts according to the standards we have set.
-
-### Evaluation Summary
-
-![](/img/community/evaluate/evaluate_9.png) 
-
-The table above summarizes the numerical evaluation results for every concept. 
-
-For every concept, it calculates:
-
-#### ROC AUC \(Concept Accuracy Score\)
-
-The concept’s prediction performance score is defined by the area under the Receiver Operating Characteristic curve. This score gives us an idea of how well we have separated our different classes or concepts.
-
-A score of 1 represents a perfect model; a score of .5 represents a poor model. As a general rule of thumb, a score above .9 is considered good. 
-
-![](/img/community/evaluate/evaluate_10.png) 
-
-:::important note
-
-ROC AUC is not dependent on the prediction threshold.
+It's important to note that the ROC/AUC is not dependent on the specified [prediction threshold](#prediction-threshold). 
 
 :::
 
-ROC AUC is generated by plotting the True Positive Rate \(y-axis\) against the False Positive Rate \(x-axis\) as you vary the threshold for assigning observations to a given class. The AUC, or Area Under the Curve, of these points is \(arguably\) the best way to summarize a model’s performance in a single number.
+The ROC curve is generated by plotting the True Positive Rate (y-axis) against the False Positive Rate (x-axis) as you vary the threshold for assigning observations to a given class. The AUC is the area under this curve and is arguably the best way to summarize a model’s performance in a single number.
 
-You can think of AUC as representing the probability that a classifier will rank a randomly chosen positive observation higher than a randomly chosen negative observation, and thus it is a useful metric even for datasets with highly unbalanced classes. 
+The AUC can be thought of as representing the probability that a classifier will rank a randomly chosen positive observation higher than a randomly chosen negative observation. This makes it a useful metric even for datasets with highly unbalanced classes.
 
-A score of 1 represents a perfect model; a score of .5 represents a model that would be no better than random guessing, and this wouldn’t be suitable for predictions, and should be re-trained. 
+:::caution
 
-#### Total Labeled
+We discourage users from making a final assessment of a classification model's accuracy based solely on the ROC/AUC score.
 
-The total number of inputs that were originally labeled as the concept in the test set. Total Labeled is the sum of True Positives \(correct\) and False Negatives \(incorrect\). Note that the Total Labeled is not dependent on the prediction threshold.
+:::
 
-#### Total Predicted
+## Total Labeled
 
-The total number of inputs that were predicted as the concept in the test set. This means these inputs were predicted as a concept with a probability greater than the prediction threshold value. Total Predicted is the sum of True Positives \(correct\) and False Positives \(incorrect\).
+The total number of inputs that were originally labeled as the concept in the test set. Note that the Total Labeled value is not dependent on the [prediction threshold](#prediction-threshold).
 
-#### True Positives \(TP\)
+It is calculated as: `True Positives (correct predictions) + False Negatives (incorrect predictions)`. 
+
+## Total Predicted
+
+The total number of inputs that were predicted as the concept in the test set. This means these inputs were predicted as a concept with a probability greater than the prediction threshold value.
+
+It is calculated as: `True Positives (correct predictions) + False Positives (incorrect predictions)`.
+
+## True Positives
 
 The number of inputs that were correctly predicted as the concept they were actually labeled. Also known as “hits.” For example, these are the images that were labeled as “dog” and were predicted as “dog.”
 
-#### False Negatives \(FN\)
+## False Negatives 
 
 The number of inputs that were not predicted as the concept they were actually labeled. Also known as “misses”. For example, these are the images that were labeled as “dog” but were not predicted as “dog.” 
 
-#### False Positives \(FP\)
+## False Positives
 
-The number of inputs that were predicted as the concept but they were not labeled as the concept. Also known as “false alarms.” For example, these are the images that were predicted as “dog” but were not labeled as “dog.”
+The number of inputs that were predicted as the concept but were not labeled as the concept. Also known as “false alarms.” For example, these are the images that were predicted as “dog” but were not labeled as “dog.”
 
-#### Recall Rate
+Here is a table that summarizes the above concepts:
 
-The proportion of the images labeled as the concept that was predicted as the concept. It is calculated as True Positives divided by Total Labeled. Also known as “sensitivity” or “true positive rate.”
+![](/img/community/evaluate/evaluate_15) 
 
-#### Precision Rate
+_Image source: [ResearchGate](https://www.researchgate.net/profile/Nittaya-Kerdprasop/publication/329526806/figure/fig1/AS:745215891623936@1554684722023/Example-of-confusion-matrix-True-Positive-TP-The-number-of-instances-that-a-model.ppm)_
 
-The proportion of the images predicted as a concept that had been actually labeled as the concept. It is calculated as True Positives divided by Total Predicted. Also known as “positive predictive value.”
+## Recall
 
-#### F1 Score
+Recall rate, also known as sensitivity or true positive rate, measures a model's ability to correctly identify all actual positive cases. It is the proportion of actual positive cases that were correctly predicted.
 
-The F1 score is another metric for assessing the performance of models. It represents the harmonic mean of the precision and recall rates. 
+It is calculated as: `True Positives / (True Positives + False Negatives)`. 
 
-The F1 score is defined as 2 \* (precision \* recall) / (precision + recall). It combines both precision and recall rates into a single metric that balances their importance.
+## Precision
 
-The score ranges from 0 to 1, with 1 being the best possible score. A high F1 score implies that the model has both high precision and high recall, and is able to correctly identify most of the positive instances in the dataset while avoiding false positives.
+Precision rate, also known as positive predictive value, measures the accuracy of the positive predictions of a model. It is the proportion of the predicted positive cases that are actually positive.
 
-### Confusion Matrix
+It is calculated as: `True Positives / (True Positives + False Positives)`. 
 
-A confusion matrix is a table that is used to visualize the performance of a model. It summarizes the predictions made by a model on a set of data, by comparing the actual labels of the data with the predicted labels.
+## F1
 
-It allows you to review where you see true positives, or correctly predicted inputs \(the diagonal row\). Simply put, this is an excellent feature for telling you where your model gets things right or wrong.
+The F1 score provides an overall assessment of a model's ability to balance precision and recall. It is the harmonic mean of precision and recall, offering a balanced measure of a model's performance concerning both false positives and false negatives.
+
+It is calculated as: `2 * (Precision * Recall) / (Precision + Recall)`. 
+
+The F1 score ranges from 0 to 1, with 1 being the best possible score. A high F1 score implies that the model has both high precision and high recall, meaning it correctly identifies most positive instances in the dataset while minimizing false positives.
+
+You can use the F1 score to determine how well your model aligns with the desired trade-off between false positives and false negatives, depending on the specific application context.
+
+## Prediction Threshold
+
+![](/img/community/evaluate/evaluate_8.png) 
+
+The probability threshold determines the model's predictions. The default threshold is 0.5. An input is classified as a concept (e.g., "dog") only if its prediction probability exceeds the threshold. You can adjust the threshold slider based on how strict you want the classification to be.
+
+For example, if the threshold is set to 0.5 and the model predicts that the probability of an image being a "dog" is 0.7, the image will be classified as a "dog." However, if you increase the threshold to 0.8, the same image will not be classified as a "dog" since 0.7 is below the new threshold. This adjustment can help reduce False Positives but might increase False Negatives.
+
+:::warning important
+
+All binary prediction metrics — such as True Positives, False Negatives, False Positives, Total Predicted, Recall Rate, and Precision Rate — depend on this threshold. Adjusting the threshold slider will change the values of these metrics.
+
+:::
+
+### Choosing a Prediction Threshold
+
+A threshold is the "sweet spot" numerical score that aligns with your prediction objective for recall and/or precision. In practice, there are multiple ways to define "accuracy" in machine learning, and the threshold is the value used to gauge our preferences.
+
+When setting your classification threshold for predicting out-of-sample data, it becomes a business decision. You must decide whether to minimize the False Positive Rate or maximize the True Positive Rate.
+
+- If your model predicts concepts that lead to high-stakes decisions, such as diagnosing a disease or ensuring safety through moderation, you might consider a few false positives as acceptable (better safe than sorry). In this case, you would prioritize high precision.
+  
+- If your model predicts concepts that lead to suggestions or flexible outcomes, you might prioritize a high recall rate to allow for exploration and coverage.
+
+In both scenarios, it is crucial to train and test your model with data that accurately reflects its intended use case.
+
+After determining the goal of your model (high precision or high recall), you can use unseen test data to evaluate how well your model meets the established standards.
+
+## Evaluation Summary
+
+The **Evaluation Summary** table provides a comprehensive overview of the numerical evaluation results for each concept. For every concept, you can review the metrics that indicate its performance.
+
+This table enables you to gauge the overall prediction performance of your model and identify the high-performing and low-performing concepts.
+
+## Confusion Matrix
 
 ![](/img/community/evaluate/evaluate_11.png) 
 
-It is usually presented in a tabular format with the Y-axis representing the `Actual Concepts` while the X-axis representing the `Predicted Concepts`. The cells display the average prediction probabilities for a certain concept, and for a group of images that were labeled as a certain concept.
+A confusion matrix is a table used to visualize the performance of a model. It summarizes the model's predictions on a set of data by comparing the actual labels with the predicted labels, helping to identify where the model gets things right or wrong.
 
-The diagonal cells are the average probability for true positives, and any cells off the horizontal cells contain the average probability for non-true positives.
+The confusion matrix is typically presented in a tabular format with the Y-axis representing the Actual Concepts and the X-axis representing the Predicted Concepts. The cells display the average prediction probabilities for each concept and for groups of images labeled as a certain concept.
 
-Each row represents a subset of the test set that was actually labeled as a concept, e.g. “dog.” As you go across the row, each cell represents the average prediction probability for each concept, noted by the column name, for all inputs in that subset, across all K-splits (i.e. “probabilities”).
+- **Diagonal cells:** Show the average probability for true positives (correctly predicted inputs).
+- **Off-diagonal cells:** Show the average probability for false positives, false negatives, and other misclassifications.
 
-The confusion matrix can help you to assess the effectiveness of a model for a particular task. It helps you to understand:
+Each row represents a subset of the test set labeled as a specific concept (e.g., "dog"). As you move across a row, each cell represents the average prediction probability for each concept (indicated by the column name) for all inputs in that subset across all K-splits.
 
-* **Accuracy**: Overall, how often is the model correct?
-* **Misclassification Rate**: Overall, how often is it wrong?
-* **True Positive Rate**: When it's actually yes, how often does it predict yes?
-* **False Positive Rate**: When it's actually no, how often does it predict yes?
-* **Specificity**: When it's actually no, how often does it predict no?
-* **Precision**: When it predicts yes, how often is it correct?
-* **Prevalence**: How often does the yes condition actually occur in our sample?
+The confusion matrix helps you assess the effectiveness of a model for a particular task. It provides insights into:
 
-## Input Analysis
+- **Accuracy:** Overall, how often is the model correct?
+- **Misclassification Rate:** Overall, how often is the model incorrect?
+- **True Positive Rate (Recall):** When the actual label is positive, how often does the model predict positive?
+- **False Positive Rate:** When the actual label is negative, how often does the model predict positive?
+- **Specificity:** When the actual label is negative, how often does the model predict negative?
+- **Precision:** When the model predicts positive, how often is it correct?
+- **Prevalence:** How often does the positive condition actually occur in the sample?
 
-### Selection Details
+## Selection Details
 
 ![](/img/community/evaluate/evaluate_12.png) 
 
-The **Selection Details** table shows the input-level details of the selection you made on the **Evaluation Summary** table. It shows the image input and prediction probabilities for each specific concept.
+The **Selection Details** table allows you to analyze your inputs by showing an image of the input alongside the prediction probabilities for each specific concept. After selecting an actual concept used for labeling your input and a concept predicted during the evaluation process, the table displays relevant information to facilitate analysis.
 
-:::important Note
+To identify and correct biases in your model's predictions, you can hone in on the False Positives and False Negatives. This can help you detect any biases in how the model is predicting and correct any inputs that are mislabeled.
 
-The prediction probabilities in this table may seem different from your actual model’s probabilities. The reason is that all the evaluation results are based on the new model that was built for evaluation purposes during the cross-validation process.
+Note that the prediction probabilities in this table may differ from your actual model's probabilities. This is because all evaluation results are based on the new model built for evaluation purposes during the cross-validation process.
+
+## Precision-Recall Curve
+
+A Precision-Recall Curve (PR curve) is a graphical representation that assesses the performance of a binary classification model across various thresholds. It plots the trade-off between precision (positive predictive value) and recall (sensitivity) of each concept used to train your model. 
+
+Typically, it provides insights into how well a model balances precision and recall across different decision thresholds, offering a nuanced view of its performance beyond traditional metrics like accuracy.
+
+![](/img/community/evaluate/evaluate_5.png) 
+
+The PR curve is created by plotting precision on the y-axis and recall on the x-axis for different thresholds used by the model. A higher area under the PR curve (AUC-PR) indicates better performance of the model, especially when dealing with imbalanced datasets where one class (typically the negative class) is much more frequent than the other.
+
+:::warning PR Curve
+
+When a model has high recall but low precision, it correctly identifies most of the positive samples but also generates many false positives (i.e., it incorrectly classifies many negative samples as positive). On the other hand, when a model has high precision but low recall, it accurately classifies samples as positive but may miss many actual positive samples, resulting in fewer positive detections overall.
+
+Because both precision and recall are important, the precision-recall curve is used to illustrate the trade-off between these metrics at different threshold levels. This curve helps in selecting the optimal threshold to balance and maximize both precision and recall, thereby improving the overall performance of the model.
+
+:::
+
+:::tip Learn More
+
+Click [here](https://docs.clarifai.com/tutorials/how-to-evaluate-an-image-classification-model) to learn more about how to evaluate an image classification model. 
 
 :::
 

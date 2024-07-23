@@ -39,13 +39,13 @@ public class ClarifaiExample {
                             Annotation.newBuilder().setData(
                                 Data.newBuilder().addConcepts( // You can search by multiple concepts
                                     Concept.newBuilder()
-                                    .setName(CONCEPT_NAME) // You could search by concept ID as well
-                                    .setLanguage(LANGUAGE_ID)
+                                    .setName(CONCEPT_NAME) // You could search by concept ID as well                                    
                                     .setValue(1f) // Value of 0 will search for images that don't have the concept
                                 )
                             )
                         )
                     )
+                    .setLanguage(LANGUAGE_ID)
                 )
             )
             .build()

@@ -22,7 +22,7 @@ Modules are custom plugins with UI elements that let you extend the capabilities
 
 :::
 
-:::info
+:::caution feature availability
 
 The Collector feature is currently exclusively available to our Professional and Enterprise users. Learn more [here](https://www.clarifai.com/pricing).
 

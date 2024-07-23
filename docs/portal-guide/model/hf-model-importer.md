@@ -17,9 +17,9 @@ Whether it's a custom model created by a data scientist, a state-of-the-art mode
 
 This feature offers a user-friendly interface that streamlines the importing process, ensuring smooth integration with the Clarifai platform. Once imported, the models become seamlessly accessible, empowering you to tap into advanced AI capabilities without the need to build models from scratch.
 
-:::info
+:::caution feature availability
 
-The model import functionality is exclusively available to Enterprise users. 
+This model import functionality is exclusively available to our [Enterprise](https://www.clarifai.com/pricing) users.
 
 :::
 

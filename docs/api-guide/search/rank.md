@@ -8,9 +8,11 @@ sidebar_position: 4
 **Search your data based on concepts or visual similarity**
 <hr />
 
-Rank order your search results with the intuitive insights of an AI. Your model can identify concepts in your data and rank search results by how confident it is that a given concept is present. 
+You can rank order your search results with the intuitive insights of an AI. Your model can identify concepts in your data and rank search results by how confident it is that a given concept is present. 
 
 You can even rank search results by how similar one input is to another input or region of the input model detected. The search results will return the input and also the annotation, which includes the region.
+
+In annotation search, `Rank` is a list of `Annotation` objects.
 
 :::info
 The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
@@ -63,6 +65,15 @@ import JavaImageBytes from "!!raw-loader!../../../code_snippets/api-guide/search
 import JavaInputID from "!!raw-loader!../../../code_snippets/api-guide/search/rank/java/by_input_id.java";
 import JavaSearchText from "!!raw-loader!../../../code_snippets/api-guide/search/rank/java/search_by_text.java";
 
+import PHPAppConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/rank/php/by_clarifaimain_app_concepts.php";
+import PHPCustomConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/rank/php/by_custom_concepts.php";
+import PHPClarifaiCustomConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/rank/php/by_clarifaimain_custom_concepts.php";
+import PHPConceptLanguage from "!!raw-loader!../../../code_snippets/api-guide/search/rank/php/by_concept_another_language.php";
+import PHPSearchImage from "!!raw-loader!../../../code_snippets/api-guide/search/rank/php/search_by_image_url.php";
+import PHPImageBytes from "!!raw-loader!../../../code_snippets/api-guide/search/rank/php/search_by_image_bytes.php";
+import PHPInputID from "!!raw-loader!../../../code_snippets/api-guide/search/rank/php/by_input_id.php";
+import PHPSearchText from "!!raw-loader!../../../code_snippets/api-guide/search/rank/php/search_by_text.php";
+
 import CurlAppConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/rank/curl/by_clarifaimain_app_concepts.sh";
 import CurlCustomConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/rank/curl/by_custom_concepts.sh";
 import CurlClarifaiCustomConcepts from "!!raw-loader!../../../code_snippets/api-guide/search/rank/curl/by_clarifaimain_custom_concepts.sh";
@@ -74,11 +85,13 @@ import CurlSearchText from "!!raw-loader!../../../code_snippets/api-guide/search
 
 ## Search by Concepts
 
-Once your images are indexed, you can search for them by concepts.
+Once your inputs are indexed, you can search for them by concepts.
 
 ### By Clarifai/main App Concepts
 
-When you add an input, it automatically gets predictions from the models in your base workflow, which are typically models from the clarifai/main app, such as the General model. You can search by those predictions.
+When you add an input, it automatically gets predictions from the workflow in your [base workflow](https://docs.clarifai.com/portal-guide/workflows/base-workflows), which is typically from the [`clarifai/main`](https://clarifai.com/clarifai/main) app, such as the [Universal](https://clarifai.com/clarifai/main/workflows/Universal) workflow. You can search by those predictions.
+
+[Click here](https://docs.clarifai.com/api-guide/concepts/create-get-update#list-concepts) to learn how to get a list of concepts available in the app.
 
 <Tabs>
 
@@ -98,6 +111,10 @@ When you add an input, it automatically gets predictions from the models in your
     <CodeBlock className="language-java">{JavaAppConcepts}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPAppConcepts}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlAppConcepts}</CodeBlock>
 </TabItem>
@@ -106,7 +123,7 @@ When you add an input, it automatically gets predictions from the models in your
 
 ### By Custom Concepts
 
-After you have added inputs, annotated the inputs, and tried a custom model, you can search by those concepts.
+After you have added inputs, annotated the inputs, and trained a custom model, you can search by those concepts.
 
 <Tabs>
 
@@ -124,6 +141,10 @@ After you have added inputs, annotated the inputs, and tried a custom model, you
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaCustomConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPCustomConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -152,6 +173,10 @@ You can combine a search to find inputs that have concepts you have supplied as 
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaClarifaiCustomConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPClarifaiCustomConcepts}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -184,6 +209,10 @@ For example, if your app is in English and you want to search for "dog" in Japan
     <CodeBlock className="language-java">{JavaConceptLanguage}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPConceptLanguage}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlConceptLanguage}</CodeBlock>
 </TabItem>
@@ -214,6 +243,10 @@ You can use images to search through your collection. The API will return ranked
     <CodeBlock className="language-java">{JavaSearchImage}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPSearchImage}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlSearchImage}</CodeBlock>
 </TabItem>
@@ -222,7 +255,7 @@ You can use images to search through your collection. The API will return ranked
 
 ### Search by Image Bytes
 
-You can also search for an input by bytes.
+You can also search for an input by bytes, with the bytes being from local storage.
 
 <Tabs>
 
@@ -240,6 +273,10 @@ You can also search for an input by bytes.
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaImageBytes}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPImageBytes}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -270,6 +307,10 @@ If the input has been indexed, we can use the input ID. If there are multiple em
     <CodeBlock className="language-java">{JavaInputID}</CodeBlock>
 </TabItem>
 
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPInputID}</CodeBlock>
+</TabItem>
+
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlInputID}</CodeBlock>
 </TabItem>
@@ -282,8 +323,8 @@ You can use texts to search through your collection of texts. The text-to-text s
 
 :::tip 
 
-- To perform text-to-text searches, you could choose a workflow that includes a text embedder and a clusterer, such as the **Language-Understanding** workflow, as the [Base Workflow](https://docs.clarifai.com/portal-guide/workflows/base-workflows/) for your application.  
-- To perform text-to-image searches, you could choose the **Universal** base workflow, which allows you to use texts to search through your collection of images.
+- To perform text-to-text searches, you could choose a workflow that includes a text embedder and a clusterer, such as the [**Text**](https://clarifai.com/clarifai/main/workflows/Text) workflow, as the [base workflow](https://docs.clarifai.com/portal-guide/workflows/base-workflows/) for your application.  
+- To perform text-to-image searches, you could choose [**Universal**](https://clarifai.com/clarifai/main/workflows/Universal) as the base workflow, which allows you to use texts to search through your collection of images.
 
 :::
 
@@ -303,6 +344,10 @@ You can use texts to search through your collection of texts. The text-to-text s
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaSearchText}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPSearchText}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">

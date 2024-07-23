@@ -74,7 +74,10 @@ import CodeOutputDelete from "!!raw-loader!../../code_snippets/python-sdk/managi
 import CodeOutputRetry from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/outputs/retry_log.txt";
 
 
+import CodeUpImageMask from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/up_image_annot_mask.py";
+import CodeUpImageMaskTS from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/up_image_annot_mask.ts";
 
+import CodeOutputImageMask from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/outputs/up_image_annot_mask.txt";
 
 # Managing Datasets
 
@@ -243,6 +246,23 @@ Visit this [page](https://docs.clarifai.com/portal-guide/datasets/create-get-upd
 </TabItem>
 </Tabs>
 
+## Upload Image with Mask Annotation
+
+This advanced functionality allows you to add mask to image data by providing polygon points as coordinates along with the image itself.
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CodeUpImageMask}</CodeBlock>
+    <details>
+  <summary>Output</summary>
+    <CodeBlock className="language-text">{CodeOutputImageMask}</CodeBlock>
+</details> 
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeUpImageMaskTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 
 
                                            
@@ -344,7 +364,9 @@ With our API, you can efficiently retrieve your datasets in a compressed zip fil
 
 Visit this [page](https://docs.clarifai.com/portal-guide/datasets/create-get-update-delete) for more information.
 
-
+:::info
+The `clarifai-data-protobuf.zip` file can be downloaded from the dataset section in the portal.
+:::
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeExport}</CodeBlock>

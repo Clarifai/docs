@@ -47,6 +47,8 @@ Here are some examples:
 - **[Document Summarization](https://clarifai.com/clarifai/document-summarization)** — It lets you condense a longer text document into a shorter version that captures the most important points or information. This template provides different methods for summarization that cater to different lengths and complexities of text. 
 - **[Image Moderation](https://clarifai.com/clarifai/image-moderation)** — It provides diverse AI-powered workflows for automatically filtering and categorizing inappropriate or harmful images based on various criteria.
 - **[RAG Template](https://clarifai.com/clarifai/rag-template)** — It streamlines the creation of Retrieval-Augmented Generation (RAG) applications with Clarifai. This lets you enhance LLMs with external knowledge for accurate, up-to-date information generation. 
+- **[Text Moderation](https://clarifai.com/clarifai/text-moderation)** — It explores various text moderation use cases and provides several ready-to-use workflows and models. It leverages different NLP models and LLMs to address diverse scenarios.
+- **[Coding Template](https://clarifai.com/clarifai/coding-template)** — It explores a variety of coding scenarios and includes pre-built workflows tailored to address specific use cases, utilizing specialized models for each unique situation.
 
 ## How to Create an App Using a Template
 

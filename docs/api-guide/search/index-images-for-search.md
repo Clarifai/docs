@@ -1,6 +1,6 @@
 ---
 description: Use AI to index your images based on semantic similarity.
-sidebar_position: 5
+sidebar_position: 2
 ---
 
 # Index Images for Search
@@ -10,7 +10,7 @@ sidebar_position: 5
 
 To get started with search, you must first add images to the search index. You can add one or more images to the index at a time. You can supply an image either with a publicly accessible URL or by directly sending image bytes. You can send up to 128 images in one API call.
 
-Below is an example of how to add images to the search index.
+Below is an example of how to add images to the search index. You can find more examples [here](https://docs.clarifai.com/api-guide/data/create-get-update-delete#add-inputs). 
 
 :::info
 The initialization code used in the following example is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
@@ -25,6 +25,7 @@ import JSIndexImages from "!!raw-loader!../../../code_snippets/api-guide/search/
 import NodeIndexImages from "!!raw-loader!../../../code_snippets/api-guide/search/index_images_for_search.js";
 import JavaIndexImages from "!!raw-loader!../../../code_snippets/api-guide/search/index_images_for_search.java";
 import CurlIndexImages from "!!raw-loader!../../../code_snippets/api-guide/search/index_images_for_search.sh";
+import PHPIndexImages from "!!raw-loader!../../../code_snippets/api-guide/search/index_images_for_search.php";
 
 <Tabs>
 
@@ -42,6 +43,10 @@ import CurlIndexImages from "!!raw-loader!../../../code_snippets/api-guide/searc
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaIndexImages}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPIndexImages}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">

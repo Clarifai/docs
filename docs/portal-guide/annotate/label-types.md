@@ -161,6 +161,8 @@ Currently, you can only minimally review existing image mask annotations on the 
 You can delete an entire image mask annotation on an input on the Input-Viewer page. However, we currently do not support creating and editing mask annotations on the page. 
 
 :::
-
+:::info
+Click [here](https://docs.clarifai.com/api-guide/annotate/annotations#annotate-images-with-mask) to learn how to add mask annotation in images using API.
+:::
 ![](/img/others-2/label-types-7.png)
 
