@@ -37,7 +37,7 @@ Follow this [guide](https://docs.clarifai.com/clarifai-basics/applications/creat
 
 Now, follow this [guide](https://docs.clarifai.com/portal-guide/workflows/setting-up-a-mesh-workflow/#workflow-setup) and create a workflow. Once it is created and user can start editing it as per the requirements using the plethora of Clarifai models available to use visible in the left menu by dragging them into the workspace and connecting & configuring them as per need to create the workflow.
 
- \
+ 
 To understand how Region thresholder works we have set up a flow that uses a visual detector model as well. The reason behind this is that the Visual Detector identifies regions and provides the confidence scores that the Thresholder uses to filter those regions effectively. Without the Visual Detector, the Region Thresholder would lack the necessary data to perform its filtering function.
 
 
