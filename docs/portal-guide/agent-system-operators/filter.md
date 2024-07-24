@@ -14,7 +14,7 @@ Filter operators process and analyze data by selectively passing information bas
 
 This guide covers three primary filter operators used in various data processing workflows: Region Thresholder, Concept Thresholder, and Random Sample. Each operator is designed to enhance the efficiency and accuracy of data handling, ensuring that only relevant data is analyzed in subsequent stages.
 
-#### ​​**Common Features of Filter Operators**
+### ​​**Common Features of Filter Operators**
 
 All three operators share several key features and functionalities:
 
@@ -57,7 +57,7 @@ Let's demonstrate how you can use the Region Thresholder, alongside a [detection
 
 ![Region Thresholder Setup](<../../../static/img/agent-system-operators/Region Thresholder Setup.png>)
 
-To see it in action upload the inputs from your local device or use the inputs in the app.  As soon as you upload inputs, the workflow will give the output based on the configurations done.
+To see it in action, upload the inputs from your local device or use the inputs in the app.  As soon as you upload inputs, the workflow will give the output based on the configurations done.
 
 ![Region Thresholder Output](<../../../static/img/agent-system-operators/Region Thresholder Output.png>)
 
@@ -97,11 +97,11 @@ Let's demonstrate how you can use the Concept Thresholder to efficiently manage 
 
 3. Connect the visual-detector model with the Concept Thresholder operator and save your workflow.
 
-![alt text](<../../../static/img/agent-system-operators/Random Sampler Setup.png>)
+![Concept Thresholder Setup](<../../../static/img/agent-system-operators/Concept Thresholder Setup.png>)
 
-To see it in action upload the inputs from your local device or use the inputs in the app.  As soon as you upload inputs, the workflow will give the output based on the configurations done.
+To see it in action, upload the inputs from your local device or use the inputs in the app.  As soon as you upload inputs, the workflow will give the output based on the configurations done.
 
-![alt text](<../../../static/img/agent-system-operators/Random Sampler Output.png>)
+![Concept Thresholder Output](<../../../static/img/agent-system-operators/Concept Thresholder Output.png>)
 
 ## Random Sampler
 
@@ -132,9 +132,8 @@ Let's demonstrate how you can use the Random Sample operator to handle large dat
 
 3. Save your workflow without the need to connect it directly to a data processing model, as it functions independently to reduce the dataset size.
 
-![alt text](<../../../static/img/agent-system-operators/Concept Thresholder Setup.png>)
+![Random Sampler Setup](<../../../static/img/agent-system-operators/Random Sampler Setup.png>)
 
 To see it in action, upload the inputs from your local device or use the inputs in the app. As soon as you upload inputs, the workflow will give the output based on the configurations done, displaying a randomly selected subset of the data.
 
-![alt text](<../../../static/img/agent-system-operators/Random Sampler Output.png>)
-
+![Random Sampler Output](<../../../static/img/agent-system-operators/Random Sampler Output.png>)
