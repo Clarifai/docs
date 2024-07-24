@@ -14,20 +14,17 @@ Filter operators process and analyze data by selectively passing information bas
 
 This guide covers three primary filter operators used in various data processing workflows: Region Thresholder, Concept Thresholder, and Random Sample. Each operator is designed to enhance the efficiency and accuracy of data handling, ensuring that only relevant data is analyzed in subsequent stages.
 
-### ​​**Common Features of Filter Operators**
+#### ​​**Common Features of Filter Operators**
 
 All three operators share several key features and functionalities:
 
 - **Input Filtering**: Each operator takes input data and applies a set of predefined rules or conditions to filter the data, ensuring that only relevant data points proceed to the next stage of processing.
-
 - **Enhanced Workflow Efficiency**: By eliminating irrelevant or less significant data early in the process, these operators reduce the workload and computational requirements of downstream processes.
-
 - **Configurability**: Users can configure each operator with specific parameters and thresholds to meet the unique needs of their application, making these tools versatile across different scenarios and datasets.
 
-# Region Thresholder
+## Region Thresholder
 
 **Input: **`regions[…].data.concepts`
-
 **Output: **`regions[…].data.concepts`
 
 The Region Thresholder model filters image regions based on the confidence scores assigned to detected concepts and works with the visual detection node.
@@ -37,12 +34,10 @@ It ensures that only regions meeting specific confidence criteria are passed on 
 It’s threshold mechanism is discussed below:
 
 - **Threshold Type:** The threshold can be set using various operators such as >, >=, =, <=, or <.
-
 - **Per Concept Thresholding:** For each concept detected in a region, the confidence score is compared to the specified threshold or threshold criteria set by the user. For example, if the threshold type is >, then only regions with a concept's confidence score greater than the threshold will be passed on.
-
 - **Overall Region Filtering:** If all concepts within a region are filtered out (i.e., none meet the threshold criteria), the entire region is removed from the output.
 
-### Example Scenario
+#### Example Scenario
 
 - **Concept:** "Laptop"
 - **Threshold Type:** >
@@ -67,10 +62,9 @@ To see it in action upload the inputs from your local device or use the inputs i
 ![Region Thresholder Output](<../../../static/img/agent-system-operators/Region Thresholder Output.png>)
 
 
-# Concept Thresholder
+## Concept Thresholder
 
 **Input: **`concepts`
-
 **Output: **`concepts`
 
 The Concept Thresholder model filters entire datasets based on the confidence scores assigned to specific concepts. This model works effectively across different types of data inputs, not limited to visual data.
@@ -80,12 +74,10 @@ It ensures that only data points meeting specific confidence criteria are passed
 Its threshold mechanism is discussed below:
 
 - **Threshold Type:** The threshold can be set using various operators such as >, >=, =, <=, or <.
-
 - **Per Concept Thresholding:** For each concept detected in the dataset, the confidence score is compared to the specified threshold or threshold criteria set by the user. For example, if the threshold type is >, then only data points with a concept's confidence score greater than the threshold will be passed on.
-
 - **Overall Data Filtering:** If all concepts within a data point are filtered out (i.e., none meet the threshold criteria), the entire data point is removed from the output.
 
-### Example Scenario
+#### Example Scenario
 
 - **Concept:** "Bridge"
 - **Threshold Type:** >
@@ -111,10 +103,9 @@ To see it in action upload the inputs from your local device or use the inputs i
 
 ![alt text](<../../../static/img/agent-system-operators/Random Sampler Output.png>)
 
-# Random Sampler
+## Random Sampler
 
 **Input: **`any`
-
 **Output: **`any`
 
 The Random Sample model randomly selects a subset of data from the input based on a specified sample size or percentage, making it an essential tool for statistical analysis and model training. This operator ensures that the sample is representative of the whole dataset, thus maintaining the integrity and variability of the data.
@@ -124,10 +115,9 @@ It employs a sampling mechanism to randomly pick data points, ensuring that ever
 Its sampling mechanism is discussed below:
 
 - **Sampling Type:** The sampling can be configured to select either a fixed number of items or a percentage of the total dataset.
-
 - **Random Selection:** Each item in the dataset is given an equal probability of being selected, ensuring a fair and unbiased sample.
 
-### Example Scenario
+#### Example Scenario
 - **Sampling Type:** Percentage
 - **Sampling Value:** 10%
 - **Operation:** If the dataset consists of 1,000 items, the Random Sample operator will randomly select 100 items to be passed on for further processing.
@@ -148,15 +138,3 @@ To see it in action, upload the inputs from your local device or use the inputs 
 
 ![alt text](<../../../static/img/agent-system-operators/Random Sampler Output.png>)
 
-
-## Input Filter 
-
-**Output**: Any
-
-If the input going through this model does not match those we are filtering for, it will not be passed on to the workflow branch.
-
-## Keyword Filter Operator 
-
-**Output**: Concepts
-
-This operator is initialized with a set of words, and then determines which are found in the input text. 
