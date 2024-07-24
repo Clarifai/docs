@@ -8,36 +8,133 @@ sidebar_position: 2
 **Learn about our filter operators**
 <hr />
 
-Filtering helps you to remove unwanted data from your workflow. This data might take the form of inputs (like images, video, and text), or it might be an output from another model, like a predicted concept. One very common use of filters in workflows is to eliminate predictions that fall below a certain confidence threshold.
+Filtering helps you to remove unwanted data from your workflow. This data might take the form of inputs (like images, video, and text) or it might be an output from another model, like a predicted concept. One very common use of filters in workflows is to eliminate predictions that fall below a certain confidence threshold. That's exactly what filter operators do.
 
-## Concept Thresholder 
+Filter operators process and analyze data by selectively passing information based on defined criteria.
 
-**Output**: Concepts
+This guide covers three primary filter operators used in various data processing workflows: Region Thresholder, Concept Thresholder, and Random Sample. Each operator is designed to enhance the efficiency and accuracy of data handling, ensuring that only relevant data is analyzed in subsequent stages.
 
-It allows you to threshold input concepts according to both a threshold and an operator (>, >=, =, <=, or <). For example, if you use the " > " threshold type and set the threshold value to 0.9, only concepts that have been predicted with a confidence score greater than 0.9 will be sent as outputs from the concept thresholder, and other concepts will be ignored. Concept Thresholders can be networked and combined to enable complex routing behaviors.
+#### ​​**Common Features of Filter Operators**
 
-#### Example use case
+All three operators share several key features and functionalities:
 
-A customer wants to automatically tag images based on AI predictions. They would connect a classification model with a "Concept Thresholder" model to determine which images are labeled and which ones are not.
+- **Input Filtering**: Each operator takes input data and applies a set of predefined rules or conditions to filter the data, ensuring that only relevant data points proceed to the next stage of processing.
+- **Enhanced Workflow Efficiency**: By eliminating irrelevant or less significant data early in the process, these operators reduce the workload and computational requirements of downstream processes.
+- **Configurability**: Users can configure each operator with specific parameters and thresholds to meet the unique needs of their application, making these tools versatile across different scenarios and datasets.
 
-## Region Thresholder 
+## Region Thresholder
 
-**Output**: Regions
+**Input: **`regions[…].data.concepts`
+**Output: **`regions[…].data.concepts`
 
-It allows you to threshold regions based on the concepts that they contain using a threshold per concept and an overall operator (>, >=, =, <=, or <). For example, assume the " > " threshold type is set for a model, then if the input `regions[...].data.concepts.value` is greater than the threshold for that concept, the input concept will be the output from this model; otherwise, it will not be outputted by the model. If the entire list of concepts at `regions[...].data.concepts` is filtered out, then the overall region will also be removed.
+The Region Thresholder model filters image regions based on the confidence scores assigned to detected concepts and works with the visual detection node.
 
-## Random Sample
+It ensures that only regions meeting specific confidence criteria are passed on for further processing, enhancing the workflow results' accuracy and relevance. It uses a thresholding mechanism to filter out regions according to threshold criteria set by the user, ensuring that only regions with required scores are considered for further analysis. 
 
-It allows you to randomly allow an input to pass to the output. This is done with the conditional `keep_fraction > rand()` statement, where `keep_fraction` is the fraction to allow through on average.
+It’s threshold mechanism is discussed below:
 
-## Input Filter 
+- **Threshold Type:** The threshold can be set using various operators such as >, >=, =, <=, or <.
+- **Per Concept Thresholding:** For each concept detected in a region, the confidence score is compared to the specified threshold or threshold criteria set by the user. For example, if the threshold type is >, then only regions with a concept's confidence score greater than the threshold will be passed on.
+- **Overall Region Filtering:** If all concepts within a region are filtered out (i.e., none meet the threshold criteria), the entire region is removed from the output.
 
-**Output**: Any
+#### Example Scenario
 
-If the input going through this model does not match those we are filtering for, it will not be passed on to the workflow branch.
+- **Concept:** "Laptop"
+- **Threshold Type:** >
+- **Threshold Value:** 0.8
+- **Operation:** If the confidence score of "Laptop" in a detected region is greater than 0.8, that region is passed through. Otherwise, it is filtered out.
 
-## Keyword Filter Operator 
+Let's demonstrate how you can use the Region Thresholder, alongside a [detection model](https://docs.clarifai.com/portal-guide/model/model-types/visual-detector). The reason behind this is that the Visual Detector identifies regions and provides the confidence scores that the Thresholder uses to filter those regions effectively. Without the Visual Detector, the Region Thresholder would lack the necessary data to perform its filtering function.
 
-**Output**: Concepts
+1. Go to the workflow builder page. Search for the visual-detector option in the left-hand sidebar and drag it onto the empty workspace. Then, use the pop-up that appears on the right-hand sidebar to search for a detection model, such as [general-image-detection](https://clarifai.com/clarifai/main/models/general-image-detection), and select its version. You can also set the other configuration options — including selecting the concepts you want to filter.
 
-This operator is initialized with a set of words, and then determines which are found in the input text. 
+2. Search for the Region-Thresholder option in the left-hand sidebar and drag it onto the workspace. Now set up its output configuration on below given parameters:
+
+- **concepts -** Select the concepts and their confidence threshold value.
+- **concept_threshold_type -** Select the concept threshold type from the dropdown. 
+
+3. Connect the visual-detector model with the Region Thresholder operator and save your workflow.
+
+![Region Thresholder Setup](<../../../static/img/agent-system-operators/Region Thresholder Setup.png>)
+
+To see it in action upload the inputs from your local device or use the inputs in the app.  As soon as you upload inputs, the workflow will give the output based on the configurations done.
+
+![Region Thresholder Output](<../../../static/img/agent-system-operators/Region Thresholder Output.png>)
+
+
+## Concept Thresholder
+
+**Input: **`concepts`
+**Output: **`concepts`
+
+The Concept Thresholder model filters entire datasets based on the confidence scores assigned to specific concepts. This model works effectively across different types of data inputs, not limited to visual data.
+
+It ensures that only data points meeting specific confidence criteria are passed on for further processing, enhancing the accuracy and relevance of the workflow results. It uses a thresholding mechanism to filter out data according to criteria set by the user, ensuring that only data with required scores are considered for further analysis.
+
+Its threshold mechanism is discussed below:
+
+- **Threshold Type:** The threshold can be set using various operators such as >, >=, =, <=, or <.
+- **Per Concept Thresholding:** For each concept detected in the dataset, the confidence score is compared to the specified threshold or threshold criteria set by the user. For example, if the threshold type is >, then only data points with a concept's confidence score greater than the threshold will be passed on.
+- **Overall Data Filtering:** If all concepts within a data point are filtered out (i.e., none meet the threshold criteria), the entire data point is removed from the output.
+
+#### Example Scenario
+
+- **Concept:** "Bridge"
+- **Threshold Type:** >
+- **Threshold Value:** 0.75
+- **Operation:** If the confidence score of "Bridge" in a data point is greater than 0.75, that data point is passed through. Otherwise, it is filtered out.
+
+Let's demonstrate how you can use the Concept Thresholder to efficiently manage large datasets. This model is pivotal for tasks where specific concept relevancy is critical, such as filtering customer feedback or social media posts.
+
+1. Go to the workflow builder page. Search for the visual-detector option in the left-hand sidebar and drag it onto the empty workspace. Then, use the pop-up that appears on the right-hand sidebar to search for a detection model, such as [general-image-detection](https://clarifai.com/clarifai/main/models/general-image-detection), and select its version. You can also set the other configuration options — including selecting the concepts you want to filter.
+
+
+2. Search for the concept-thresholder option in the left-hand sidebar and drag it onto the empty workspace. Now set up its output configuration on the below-given parameters:
+
+- **concepts** - Select the concepts and their confidence threshold value.
+- **concept_threshold_type** - Select the concept threshold type from the dropdown.
+
+
+3. Connect the visual-detector model with the Concept Thresholder operator and save your workflow.
+
+![alt text](<../../../static/img/agent-system-operators/Random Sampler Setup.png>)
+
+To see it in action upload the inputs from your local device or use the inputs in the app.  As soon as you upload inputs, the workflow will give the output based on the configurations done.
+
+![alt text](<../../../static/img/agent-system-operators/Random Sampler Output.png>)
+
+## Random Sampler
+
+**Input: **`any`
+**Output: **`any`
+
+The Random Sample model randomly selects a subset of data from the input based on a specified sample size or percentage, making it an essential tool for statistical analysis and model training. This operator ensures that the sample is representative of the whole dataset, thus maintaining the integrity and variability of the data.
+
+It employs a sampling mechanism to randomly pick data points, ensuring that every item in the dataset has an equal chance of being included in the sample. This approach is crucial for reducing bias in the analysis results.
+
+Its sampling mechanism is discussed below:
+
+- **Sampling Type:** The sampling can be configured to select either a fixed number of items or a percentage of the total dataset.
+- **Random Selection:** Each item in the dataset is given an equal probability of being selected, ensuring a fair and unbiased sample.
+
+#### Example Scenario
+- **Sampling Type:** Percentage
+- **Sampling Value:** 10%
+- **Operation:** If the dataset consists of 1,000 items, the Random Sample operator will randomly select 100 items to be passed on for further processing.
+
+Let's demonstrate how you can use the Random Sample operator to handle large datasets efficiently or prepare data for machine learning model training.
+
+1. Go to the workflow builder page. Search for the visual-detector option in the left-hand sidebar and drag it onto the empty workspace. Then, use the pop-up that appears on the right-hand sidebar to search for a detection model, such as [general-image-detection](https://clarifai.com/clarifai/main/models/general-image-detection), and select its version. You can also set the other configuration options — including selecting the concepts you want to filter.
+
+
+2. Search for the random-sample option in the left-hand sidebar and drag it onto the empty workspace. Then, use the pop-up that appears on the right-hand sidebar to specify the sampling criteria ie; **keep fraction**. This is the fraction of input to randomly keep. This is implemented as simply if keep_fraction > rand() then output this input from the model . This is applied independently for each input sent in a batch to the model.
+
+
+3. Save your workflow without the need to connect it directly to a data processing model, as it functions independently to reduce the dataset size.
+
+![alt text](<../../../static/img/agent-system-operators/Concept Thresholder Setup.png>)
+
+To see it in action, upload the inputs from your local device or use the inputs in the app. As soon as you upload inputs, the workflow will give the output based on the configurations done, displaying a randomly selected subset of the data.
+
+![alt text](<../../../static/img/agent-system-operators/Random Sampler Output.png>)
+
