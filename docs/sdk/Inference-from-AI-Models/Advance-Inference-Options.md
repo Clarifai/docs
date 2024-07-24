@@ -56,7 +56,7 @@ Use the flexibility of the Predict API to obtain model predictions by tailoring 
 
 :::info
 This feature is for Enteprise that use on-prem deployments. So the base_url can be used to point to the respective servers.
-:::info
+:::
 
 <Tabs>
 <TabItem value="python" label="Python">
