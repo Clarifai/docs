@@ -63,6 +63,10 @@ const config = {
             route: '/api-reference',
           },
         ],
+        theme: {
+          // Change with your site colors
+          primaryColor: '#a5b4fc',
+        },
         config: path.join(__dirname, 'redocly.yaml'),
       },
     ]
@@ -83,7 +87,7 @@ const config = {
       announcementBar: {
         id: 'support_us_' + Date.now(),
         content:
-          '<span>Webinar</span> We are looking to revamp our docs, please fill <a target="_blank" rel="noopener noreferrer" href="#">this survey</a>',
+          '<span>New!</span> Click, Annotate, Dominate with Auto-annotation <a target="_blank" rel="noopener noreferrer" href="https://www.clarifai.com/blog/clarifai-10.6-click-annotate-dominate-with-auto-annotation">read now</a>',
         isCloseable: false,
       },
       navbar: {
@@ -480,10 +484,6 @@ const config = {
       src: "/scripts/sidebar.js",
       async: true,
     },
-    {
-      src: "https://cdn.redoc.ly/redoc/latest/bundles/redoc.standalone.js",
-      async: true,
-    }
   ],
 };
 

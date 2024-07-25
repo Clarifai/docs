@@ -10,6 +10,7 @@ function ApiDoc({ layoutProps, specProps }) {
           () => {
             const Layout = require('@theme/Layout').default;
             const Redoc = require('@theme/Redoc').default;
+            console.log(specProps);
             return (
               <Layout title={defaultTitle} description={defaultDescription} {...layoutProps}>
                 <Redoc {...specProps} />
@@ -23,6 +24,9 @@ function ApiDoc({ layoutProps, specProps }) {
                     }
                     html[data-theme='dark'] table tr {
                       background-color: unset !important;
+                    }
+                    td code {
+                      color: var(--ifm-color-primary) !important;
                     }
                   `}
                 </style>
