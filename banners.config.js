@@ -4,7 +4,7 @@ export const bannerConfig = {
         ctaLink: 'https://clarifai.com/explore',
         ctaText: 'Get started for free',
         path: [
-            '/'
+            '/**'
         ]
     },
     secondary: {
@@ -13,7 +13,6 @@ export const bannerConfig = {
         ctaLink: 'https://clarifai.com/explore',
         ctaText: 'Start for free',
         path: [
-            '/clarifai-basics/app-templates'
         ]
     },
     tertiary: {
@@ -26,22 +25,21 @@ export const bannerConfig = {
         ctaLink: 'https://clarifai.com/explore',
         ctaText: 'Start for free',
         path: [
-            '/product-updates/upcoming-api-changes'
         ]
     }
 }
 
 export const navbarBannerConfig = {
     "Portal Guide": {
-        type: 'WEBINAR',
-        text: 'AI Prototype to Production: Operationalizing and Orchestrating AI',
-        cover: 'https://www.clarifai.com/hubfs/Frame%20633240.png',
-        ctaLink: 'https://clarifai.com'
+        type: 'FORRESTER',
+        text: 'The Forrester Wave™: Computer Vision Tools, Q1 2024',
+        cover: 'https://www.clarifai.com/hubfs/The%20Forrester%20WaveTM%20Computer%20Vision%20Tools%2c%20Q1%202024.svg',
+        ctaLink: 'https://www.clarifai.com/report/the-forrester-wave-computer-vision-tools-q1-2024'
     },
     "SDK Guide": {
-        type: 'WEBINAR',
-        text: 'AI Prototype to Production: Operationalizing and Orchestrating AI',
-        cover: 'https://www.clarifai.com/hubfs/Frame%20633240.png',
-        ctaLink: 'https://clarifai.com'
+        type: 'FORRESTER',
+        text: 'The Forrester Wave™: Computer Vision Tools, Q1 2024',
+        cover: 'https://www.clarifai.com/hubfs/The%20Forrester%20WaveTM%20Computer%20Vision%20Tools%2c%20Q1%202024.svg',
+        ctaLink: 'https://www.clarifai.com/report/the-forrester-wave-computer-vision-tools-q1-2024'
     },
 }
