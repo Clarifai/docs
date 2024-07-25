@@ -5,7 +5,7 @@ import { useDoc } from '@docusaurus/theme-common/internal';
 import LastUpdated from '@theme/LastUpdated';
 import EditThisPage from '@theme/EditThisPage';
 import TagsListInline from '@theme/TagsListInline';
-import { Feedback } from '../../../components/feedback/feedback';
+// import { Feedback } from '../../../components/feedback/feedback';
 import styles from './styles.module.css';
 
 function TagsRow(props) {
@@ -61,7 +61,7 @@ export default function DocItemFooter() {
   }
   return (
     <>
-      <Feedback metadata={metadata} />
+      {/* <Feedback metadata={metadata} /> */}
       <footer
         className={clsx(ThemeClassNames.docs.docFooter, 'docusaurus-mt-lg')}
       >
