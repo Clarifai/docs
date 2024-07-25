@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",(()=>{document.addEventListener("click",(t=>{if(t.target.classList.contains("dropdown__link")){const e=t.target.getAttribute("href"),n=document.querySelectorAll(".menu__link--active"),r=Array.from(n).find((t=>t.getAttribute("href")===e||t.getAttribute("href")===e+"/"));r&&r.scrollIntoView({behavior:"instant",block:"start"})}}))}));
