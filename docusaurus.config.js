@@ -1,8 +1,11 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const { themes } = require('prism-react-renderer')
+const path = require('path');
+
+const lightCodeTheme = themes.github;
+const darkCodeTheme = themes.dracula;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -12,7 +15,7 @@ const config = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',  
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.svg',
   organizationName: 'clarifai',
   projectName: 'docs',
 
@@ -28,7 +31,9 @@ const config = {
           //editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',         
           //this one also works--editUrl: 'https://github.com/Clarifai/docs/blob/main/',
           editUrl: ({versionDocsDirPath, docPath}) =>
-            `https://github.com/Clarifai/docs/blob/main/${versionDocsDirPath}/${docPath}`,          
+            `https://github.com/Clarifai/docs/blob/main/${versionDocsDirPath}/${docPath}`,
+          docItemComponent: require.resolve('./src/components/CustomDocItem/index.js'),
+          docCategoryGeneratedIndexComponent: require.resolve('./src/components/CustomDocCategory/index.js'),
         },
         blog: false,
         theme: {
@@ -46,6 +51,25 @@ const config = {
         },
       }),
     ],
+    [
+      'redocusaurus',
+      {
+        // Plugin Options for loading OpenAPI files
+        specs: [
+          // Pass it a path to a local OpenAPI YAML file
+          {
+            // Redocusaurus will automatically bundle your spec into a single file during the build
+            spec: 'static/api-spec/clarifai-v3.json',
+            route: '/api-reference',
+          },
+        ],
+        theme: {
+          // Change with your site colors
+          primaryColor: '#a5b4fc',
+        },
+        config: path.join(__dirname, 'redocly.yaml'),
+      },
+    ]
   ],
 
   themeConfig:
@@ -60,27 +84,160 @@ const config = {
         debug: false // Set debug to true if you want to inspect the modal
 
       },
+      announcementBar: {
+        id: 'support_us_' + Date.now(),
+        content:
+          '<span>New!</span> Click, Annotate, Dominate with Auto-annotation <a target="_blank" rel="noopener noreferrer" href="https://www.clarifai.com/blog/clarifai-10.6-click-annotate-dominate-with-auto-annotation">read now</a>',
+        isCloseable: false,
+      },
       navbar: {
-        title: 'Clarifai Guide',
+        title: '',
         logo: {
-          alt: 'Clarifai',
-          src: 'img/logo.svg',
+          alt: 'Clarifai Guide',
+          src: 'img/logo-dark.svg',
+          srcDark: 'img/logo-light.svg',
+          href: '/',
         },
         items: [
           {
-            href: 'https://documenter.getpostman.com/view/30622694/2s9YkuZdro',
-            label: 'Postman',
-            position: 'right',
+            type: "dropdown",
+            label: "Portal Guide",
+            position: "left",
+            items: [
+              {
+                label: "Basics",
+                to: "/clarifai-basics/start-here-5-mins-or-less"
+              },
+              {
+                label: "Exploring your Data",
+                to: "/portal-guide/data/explorer",
+              },
+              {
+                label: "Creating Concepts",
+                to: "/portal-guide/concepts"
+              },
+              {
+                label: "Search your Data",
+                to: "/portal-guide/psearch"
+              },
+              {
+                label: "Label your Data",
+                to: "/portal-guide/annotate"
+              },
+              {
+                label: "Handling Datasets",
+                to: "/portal-guide/datasets",
+              },
+              {
+                label: "Try an AI Model",
+                to: "/portal-guide/ppredict",
+              },
+              {
+                label: "Train your own Model",
+                to: "/portal-guide/model",
+              },
+              {
+                label: "Create Workflows",
+                to: "/portal-guide/workflows",
+              },
+              {
+                label: "Develop UI Modules",
+                to: "/portal-guide/modules",
+              },
+              {
+                label: "Tutorials",
+                to: "/tutorials/node-js-tutorial"
+              }
+            ]
           },
           {
-            href: 'https://github.com/Clarifai/docs',
-            label: 'GitHub',
+            type: "dropdown",
+            label: "SDK Guide",
+            position: "left",
+            items: [
+              {
+                label: "Python SDK",
+                to: "/sdk/python-installation",
+              },
+              {
+                label: "Node.js SDK",
+                to: "/sdk/node-js-installation"
+              },
+              {
+                label: "Integrations",
+                to: "/integrations/langchain",
+              },
+              {
+                label: "Python SDK Notebooks",
+                to: '/sdk/notebook-examples'
+              }
+            ]
+          },
+          {
+            type: "dropdown",
+            label: "API Reference Guide",
+            position: "left",
+            items: [
+              {
+                label: 'API Client guide',
+                to: '/api-guide/api-overview/api-clients',
+              },
+              {
+                label: 'API Reference guide',
+                to: "/api-reference",
+                rel: "noopener"
+              }, 
+              {
+                label: 'API Guide in Postman',
+                to: 'https://documenter.getpostman.com/view/30622694/2s9YkuZdro',
+                target: "_blank",
+                rel: "noopener"
+              }
+            ]
+          },
+          {
+            type: "dropdown",
+            label: "Releases",
+            position: "left",
+            items: [
+              {
+                label: "Upcoming platform changes",
+                to: "/product-updates/upcoming-api-changes",
+              },
+              {
+                label: "Changelog",
+                to: "/product-updates/changelog"
+              }
+            ]
+          },
+          {
+            type: 'search',
             position: 'right',
+          },
+          // {
+          //   href: 'https://documenter.getpostman.com/view/30622694/2s9YkuZdro',
+          //   className: "header-postman-link",
+          //   position: 'right',
+          //   'aria-label': 'Postman Docs',
+          // },
+          {
+            href: 'https://github.com/Clarifai/docs',
+            className: "header-github-link",
+            position: 'right',
+            'aria-label': 'Github repository'
           },
           {
             href: 'https://discord.gg/WgUvPK4pVD',
-            label: 'Discord',
+            className: 'header-discord-link',
             position: 'right',
+            'aria-label': 'Discord'
+          },
+          {
+            label: 'Get Started',
+            href: "https://clarifai.com/explore",
+            className: 'header-primary-cta-link',
+            position: 'right',
+            'aria-label': 'Get started'
           },
          // {
          //   href: 'https://api.clarifai.com/api-doc/?url=https://api.clarifai.com/v2/swagger.json',
@@ -141,8 +298,20 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-        additionalLanguages: ['php', 'java', 'csharp', 'objectivec', 'bash'],
+        // Issue with docusaurus & Redocusaurus on loading the code theme
+        // Reference: https://github.com/PrismJS/prism/issues/3458#issuecomment-1134426181
+        additionalLanguages: ['php', 'java', 'csharp', 'objectivec', 'bash', 'scala'],
       },
+      colorMode: {
+        defaultMode: 'dark',
+        disableSwitch: false,
+        respectPrefersColorScheme: false,
+      },
+      docs: {
+        sidebar: {
+          hideable: true
+        }
+      }
     }),
     plugins: [
     [
@@ -162,14 +331,6 @@ const config = {
       '@docusaurus/plugin-client-redirects',
       {
         redirects: [
-          {
-            to: '/clarifai-basics/start-here-5-mins-or-less',
-            from: ['/data-labeling-services/labeling-services']
-          },
-          {
-            to: '/api-guide/search/',
-            from: ['/api-guide/search/legacy-search/']
-          },
           {
             to: '/sdk/node-api-reference',
             from: ['/nodejs-sdk/api-reference'],
@@ -305,38 +466,28 @@ const config = {
           {
             to: '/portal-guide/model-versions/',
             from: '/test/portal-guide/model-versions/'
-          },
-          {
-            to: '/api-guide/data/create-get-update-delete',
-            from: '/api-guide/data/cloud-storage'
-          },
-          {
-            to: '/portal-guide/psearch/',
-            from: '/portal-guide/psearch/psaved_searches'
-          },
-          {
-            to: '/glossary/general-ai',
-            from: '/clarifai-basics/glossary/'
-          },
-          {
-            to: '/glossary/generative-ai',
-            from: '/clarifai-basics/glossary/generative-ai'
-          },
-          {
-            to: '/portal-guide/annotate/review',
-            from: '/portal-guide/annotate/workforce-management'
           }
 
-        ],
-        createRedirects(existingPath) {
-          if (existingPath.includes('/community')) {
-            // Redirect from /community/X to /portal-guide/X
-            return existingPath.replace('/community', '/portal-guide');
-          }
-          return undefined; // Return a falsy value: no redirect created
+          ],
+          createRedirects(existingPath) {
+            if (existingPath.includes('/community')) {
+              // Redirect from /community/X to /portal-guide/X
+              return existingPath.replace('/community', '/portal-guide');
+            }
+            return undefined; // Return a falsy value: no redirect created
+          },
         },
-      },
+      ],
     ],
+  scripts: [
+    {
+      src: "/scripts/sidebar.js",
+      async: true,
+    },
+    {
+      src: "/scripts/intercomConfig.js",
+      async: true,
+    }
   ],
 };
 

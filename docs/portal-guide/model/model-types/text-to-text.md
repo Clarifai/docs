@@ -43,19 +43,19 @@ These sections typically include the instructions, human-provided input, and the
 Here are some examples of training data for a text classification task:
 
 ```text
-### Instruction: What is the sentiment of this tweet? Please choose an answer from {negative/neutral/positive} ### Human: Net sales of the Paper segment decreased to EUR 221.6 mn in the second quarter of 2009 from EUR 241.1 mn in the second quarter of 2008, while operating profit excluding non-recurring items rose to EUR 8.0 mn from EUR 7.6 mn . ### Assistant: negative.
+### Instruction: What is the sentiment of this tweet? Please choose an answer from `{negative/neutral/positive}` ### Human: Net sales of the Paper segment decreased to EUR 221.6 mn in the second quarter of 2009 from EUR 241.1 mn in the second quarter of 2008, while operating profit excluding non-recurring items rose to EUR 8.0 mn from EUR 7.6 mn . ### Assistant: negative.
 ```
 
 ```text
-### Instruction: What is the sentiment of this tweet? Please choose an answer from {negative/neutral/positive} ### Human: Stora Enso said DeLight was suitable for a wide range of applications including food , cosmetics , home decoration and leisure products . ### Assistant: neutral.
+### Instruction: What is the sentiment of this tweet? Please choose an answer from `{negative/neutral/positive}` ### Human: Stora Enso said DeLight was suitable for a wide range of applications including food , cosmetics , home decoration and leisure products . ### Assistant: neutral.
 ```
 
 ```text
-### Instruction: What is the sentiment of this tweet? Please choose an answer from {negative/neutral/positive} ### Human: Earnings per share were higher at 0.48 against 0.37 a year before and ahead of market consensus of 0.40 eur . ### Assistant: positive.
+### Instruction: What is the sentiment of this tweet? Please choose an answer from `{negative/neutral/positive}` ### Human: Earnings per share were higher at 0.48 against 0.37 a year before and ahead of market consensus of 0.40 eur . ### Assistant: positive.
 ```
 As you can see above, each example data is presented on an individual line. Also, the "###" separator is employed as a consistent marker to signify the beginning and end of different sections within each training example. The sections typically include:
 
-1. **Instruction**: This part serves as a prompt or guidance for the model. It instructs the model on the specific task it should perform. In this case, the instruction is to determine the sentiment of a given tweet, and the model is expected to choose an answer from a predefined set of sentiments: {negative/neutral/positive}.
+1. **Instruction**: This part serves as a prompt or guidance for the model. It instructs the model on the specific task it should perform. In this case, the instruction is to determine the sentiment of a given tweet, and the model is expected to choose an answer from a predefined set of sentiments: `{negative/neutral/positive}`.
 
 2. **Human**: This section contains the input query or context that the model should analyze. 
 

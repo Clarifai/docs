@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "docusaurus start",
-    "build": "docusaurus build",
+    "start": "yarn codegen && docusaurus start",
+    "codegen": "node codegen-postman.js",
+    "build": "yarn codegen && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
@@ -16,19 +17,22 @@
   "dependencies": {
     "@babel/helper-get-function-arity": "^7.16.7",
     "@cmfcmf/docusaurus-search-local": "^0.10.0",
-    "@docusaurus/core": "^2.4.0",
-    "@docusaurus/plugin-client-redirects": "2.4.0",
-    "@docusaurus/plugin-google-gtag": "^2.4.0",
-    "@docusaurus/plugin-sitemap": "^2.4.0",
-    "@docusaurus/preset-classic": "^2.4.0",
-    "@mdx-js/react": "^1.6.21",
+    "@docusaurus/core": "^3.4.0",
+    "@docusaurus/plugin-client-redirects": "^3.4.0",
+    "@docusaurus/plugin-google-gtag": "^3.4.0",
+    "@docusaurus/plugin-sitemap": "^3.4.0",
+    "@docusaurus/preset-classic": "^3.4.0",
+    "@fontsource/poppins": "^5.0.14",
+    "@ibm/plex": "^6.4.1",
+    "@mdx-js/react": "^3.0.1",
     "clsx": "^1.1.1",
     "docusaurus-gtm-plugin": "^0.0.2",
-    "prism-react-renderer": "^1.2.1",
+    "minimatch": "^10.0.1",
+    "prism-react-renderer": "^2.3.1",
     "raw-loader": "^4.0.2",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "yarn": "^1.22.22"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "redocusaurus": "^2.1.1"
   },
   "browserslist": {
     "production": [
@@ -42,10 +46,10 @@
       "last 1 safari version"
     ]
   },
-  "resolutions": {
-    "@docusaurus/**/got": "11.8.5",
-    "@docusaurus/**/trim": "0.0.3",
-    "@docusaurus/**/wait-on": "7.2.0",
-    "@docusaurus/plugin-client-redirects": "2.4.0"
+  "devDependencies": {
+    "@redocly/cli": "^1.16.0",
+    "oas-normalize": "^11.1.1",
+    "postman-code-generators": "^1.10.1",
+    "postman-collection": "^4.4.0"
   }
 }

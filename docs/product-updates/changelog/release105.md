@@ -13,6 +13,17 @@ draft: false
 
 <hr/>
 
+<div class="banner-tertiary">
+   <h3 class="banner-header">
+      Release 10.5
+   </h3>
+   <ol class="banner-content">
+      <li>Introduced a new <a href="https://docs.clarifai.com/portal-guide/annotate/auto-annotation">auto-annotation</a> experience for labeling already existing inputs in datasets</li>
+      <li>Introduced the ability to manually <a href="https://docs.clarifai.com/portal-guide/annotate/review">review</a> labeled inputs by partitioning them</li>
+   </ol>
+   <a href="https://clarifai.com/signup" target="_blank" class="banner-cta">Start for free</a>
+</div>
+
 <br />
 
 | New Feature | Improvement | Bug Fix | Enterprise Only |

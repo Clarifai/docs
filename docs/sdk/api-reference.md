@@ -796,7 +796,7 @@ Exports the Clarifai protobuf dataset to a local archive.
 * **save_path** (*str*) – The path to save the archive to.
 * **archive_url** (*str*) – The URL to the Clarifai protobuf archive.
 * **local_archive_path** (*str*) – The path to the local Clarifai protobuf archive.
-* **split** (*str*) – Export dataset inputs in the directory format {split}/{input_type}. Default is all.
+* **split** (*str*) – Export dataset inputs in the directory format `{split}/{input_type}`. Default is all.
 * **num_workers** (*int*) - Number of workers to use for downloading the archive. Default is 4.
 
 #### Example

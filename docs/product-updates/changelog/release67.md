@@ -27,7 +27,7 @@ pagination_prev: product-updates/changelog/release66
 | ![](/img/improvement.jpg) | Don't show model types for backends that aren't responding. |
 | ![](/img/improvement.jpg) | Clean up output\_info.data path |
 | ![](/img/improvement.jpg) | Add model\_type\_id to Model protos. |
-| ![](/img/improvement.jpg) | Add /models/types/{model\_type\_id} endpoint |
+| ![](/img/improvement.jpg) | Add `/models/types/{model\_type\_id}` endpoint |
 | ![](/img/improvement.jpg) | Prevent models\_versions.is\_public from every being null. |
 | ![](/img/bug.jpg) | model mode types that are internal only are being returned. |
 | ![](/img/improvement.jpg) | Create Labeling Order Object and send email to datalabeling@clarifai.com each time backend receives an Labeling Order Object & makes datalabeling a super user |
@@ -70,7 +70,7 @@ pagination_prev: product-updates/changelog/release66
 | ![](/img/improvement.jpg) | Remove all props unnecessarily passed from LabelerPage to deep children and make components get props from Redux only |
 | ![](/img/improvement.jpg) | Remove all logic from components to sagas for higher level orchestration of features |
 | ![](/img/bug.jpg) | Video selector improvements & test updation |
-| ![](/img/bug.jpg) | Can only save 50 annotations on an image {Usability} |
+| ![](/img/bug.jpg) | Can only save 50 annotations on an image `{Usability}` |
 | ![](/img/bug.jpg) | Konva: resizing BBox below minimum size and "crossing over" makes things awry |
 | ![](/img/bug.jpg) | LabelerPage complete re-render of all components on mouseHover, mousMove \(img attached\) |
 | ![](/img/bug.jpg) | Cypress script doesn't terminate webpack-dev-server child process |
@@ -82,7 +82,7 @@ pagination_prev: product-updates/changelog/release66
 | ![](/img/improvement.jpg) | Panning functionality improvements |
 | ![](/img/bug.jpg) | Lock video playback and interpolation to fps |
 | ![](/img/bug.jpg) | Annotations created with interpolation seem to have incorrect frame indices |
-| ![](/img/bug.jpg) | Bounding Boxes and Concepts inconsistent during video playback {Usability} |
+| ![](/img/bug.jpg) | Bounding Boxes and Concepts inconsistent during video playback `{Usability}` |
 | ![](/img/bug.jpg) | While annotating video, interpolation freezes and all annotations disappear |
 | ![](/img/bug.jpg) | Boxes/Interpolation objects are not saving after task submission |
 | ![](/img/improvement.jpg) | Display task instructions to workers in labeler mode |

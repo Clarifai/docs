@@ -1,0 +1,124 @@
+.feedback {
+  height: 100%;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  background-color: var(--ifm-card-background-color);
+  margin-top: 2rem;
+  border-radius: 8px;
+}
+
+.form {
+  display: grid;
+  text-align: center;
+
+  h3 {
+    font-size: 1.25rem;
+    color: var(--ifm-heading-color);
+    margin-bottom: 0.5rem;
+  }
+
+  input,
+  textarea {
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    padding: 0.75rem;
+    font-family: var(--ifm-font-family-base);
+    color: var(--color-gray-74);
+    margin-top: 1rem;
+    box-shadow: var(--ifm-global-shadow-lw);
+    width: 100%;
+
+    &::placeholder {
+      color: var(--color-gray-36);
+    }
+  }
+
+  button {
+    margin-left: auto;
+    background: var(--ifm-color-primary);
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    font-family: var(--ifm-font-family-base);
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+}
+
+html[data-theme='dark'] {
+  .feedback {
+    input,
+    textarea {
+      background-color: var(--color-gray-74);
+      color: white;
+    }
+  }
+}
+
+.topSection {
+}
+
+.bottomSection {
+}
+
+.successMessage {
+  display: grid;
+  place-items: center center;
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+  font-family: var(--ifm-font-family-base);
+  p {
+    margin-bottom: 0 !important;
+  }
+}
+
+.numberRow {
+  display: flex;
+  flex-direction: row;
+  margin-top: 15px;
+  height: 45px;
+  justify-content: center;
+}
+
+.star {
+  transition: 0.1s ease-out;
+  cursor: pointer;
+  &:hover {
+    transform: translateY(-3px) scale(1.1);
+    transform-origin: center center;
+  }
+}
+
+.textAreaLabel {
+  margin-top: 1rem;
+  p {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.errorAndButton {
+}
+
+.errorText {
+  color: var(--ifm-color-primary);
+  margin-top: 0.8rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  font-size: 1.1rem;
+  font-family: var(--ifm-font-family-base);
+}
+html[data-theme='dark'] {
+  .errorText {
+    color: var(--ifm-color-primary-lighter);
+  }
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+}

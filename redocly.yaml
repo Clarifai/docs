@@ -1,0 +1,5 @@
+theme:
+  openapi:
+    requiredPropsFirst: true
+    nativeScrollbars: true
+    scrollYOffset: 72

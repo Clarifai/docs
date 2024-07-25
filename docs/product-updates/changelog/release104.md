@@ -13,6 +13,16 @@ draft: false
 
 <hr/>
 
+<div class="banner-tertiary">
+   <h3 class="banner-header">
+      Release 10.4
+   </h3>
+   <ol class="banner-content">
+      <li>Added symmetric and asymmetric text search capabilities within the Input-Manager</li>
+   </ol>
+   <a href="https://clarifai.com/signup" target="_blank" class="banner-cta">Start for free</a>
+</div>
+
 <br />
 
 | New Feature | Improvement | Bug Fix | Enterprise Only |

@@ -48,8 +48,8 @@ In the context of AI, agents are software that can independently perform specifi
 
 :::note Operators Examples
 
--	**Concept Thresholder** allows you to threshold input concepts according to both a threshold and an operator (>, >=, =, <=, or <). For example, if you use the " > " threshold type and set the threshold value to 0.9, only concepts that have been predicted with a confidence score greater than 0.9 will be sent as outputs from the concept thresholder, and other concepts will be ignored. 
--	**Region Thresholder** allows you to threshold regions based on the concepts that they contain using a threshold per concept and an overall operator (>, >=, =, <=, or <). 
+-	**Concept Thresholder** allows you to threshold input concepts according to both a threshold and an operator (>, >=, =, \<=, or \<). For example, if you use the " > " threshold type and set the threshold value to 0.9, only concepts that have been predicted with a confidence score greater than 0.9 will be sent as outputs from the concept thresholder, and other concepts will be ignored. 
+-	**Region Thresholder** allows you to threshold regions based on the concepts that they contain using a threshold per concept and an overall operator (>, >=, =, \<=, or \<). 
 -	**Random Sampler** allows you to randomly allow an input to pass to the output.
 -	**Image Cropper** allows you to crop the input image according to each input region that is present in the input.
 -	**Image Align** allows you to align images using key points.

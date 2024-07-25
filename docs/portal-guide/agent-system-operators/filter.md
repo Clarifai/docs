@@ -33,7 +33,7 @@ It ensures that only regions meeting specific confidence criteria are passed on 
 
 It’s threshold mechanism is discussed below:
 
-- **Threshold Type:** The threshold can be set using various operators such as >, >=, =, <=, or <.
+- **Threshold Type:** The threshold can be set using various operators such as >, >=, =, \<=, or \<.
 - **Per Concept Thresholding:** For each concept detected in a region, the confidence score is compared to the specified threshold or threshold criteria set by the user. For example, if the threshold type is >, then only regions with a concept's confidence score greater than the threshold will be passed on.
 - **Overall Region Filtering:** If all concepts within a region are filtered out (i.e., none meet the threshold criteria), the entire region is removed from the output.
 
@@ -73,7 +73,7 @@ It ensures that only data points meeting specific confidence criteria are passed
 
 Its threshold mechanism is discussed below:
 
-- **Threshold Type:** The threshold can be set using various operators such as >, >=, =, <=, or <.
+- **Threshold Type:** The threshold can be set using various operators such as >, >=, =, \<=, or \<.
 - **Per Concept Thresholding:** For each concept detected in the dataset, the confidence score is compared to the specified threshold or threshold criteria set by the user. For example, if the threshold type is >, then only data points with a concept's confidence score greater than the threshold will be passed on.
 - **Overall Data Filtering:** If all concepts within a data point are filtered out (i.e., none meet the threshold criteria), the entire data point is removed from the output.
 
