@@ -41,7 +41,7 @@ import os
 os.environ['CLARIFAI_PAT'] ="YOUR_PAT"
 ```
 <center>
-<img src="/img/python-sdk/multistage-rag.png" width="700" height="700" />
+<img src="/img/python-sdk/multistage-rag.png" />
 </center>
 
 Now let's explore a possible implementation of a multi-stage, multi-model RAG system using DSPy.  The motive of this experiment is to test the functionality of DSPy in building multi-stage systems in our RAG pipelines. Also, the compatibility to call and use multi models at different stages of the pipeline.
