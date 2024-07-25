@@ -484,6 +484,10 @@ const config = {
       src: "/scripts/sidebar.js",
       async: true,
     },
+    {
+      src: "/scripts/intercomConfig.js",
+      async: true,
+    }
   ],
 };
 
