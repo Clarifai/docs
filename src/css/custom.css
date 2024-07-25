@@ -695,6 +695,12 @@ html[data-theme='light'] .header-primary-cta-link:hover {
 .navbar__logo img {
   height: 70%;
 }
+/* Hide navbar items in mobile */
+@media (max-width: 1024px) {
+  .navbar__items--right a {
+    display: none !important;
+  }
+}
 /* Match Navbar dropdown to clarifai website */
 a.navbar__link {
   display: flex;
