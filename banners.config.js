@@ -5,6 +5,9 @@ export const bannerConfig = {
         ctaText: 'Get started for free',
         path: [
             '/**'
+        ],
+        exclude: [
+            '/product-updates/**'
         ]
     },
     secondary: {
@@ -12,8 +15,8 @@ export const bannerConfig = {
         text: 'Analyze, model, interpret, and synthesize complex data, like full-motion video, geospatial, and intelligence, at the speed required for operational and decision-making scenarios',
         ctaLink: 'https://clarifai.com/explore',
         ctaText: 'Start for free',
-        path: [
-        ]
+        path: [],
+        exclude: []
     },
     tertiary: {
         title: 'Intelligence & Surveillance',
@@ -24,8 +27,8 @@ export const bannerConfig = {
         ],
         ctaLink: 'https://clarifai.com/explore',
         ctaText: 'Start for free',
-        path: [
-        ]
+        path: [],
+        exclude: []
     }
 }
 

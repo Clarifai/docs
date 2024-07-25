@@ -3,7 +3,10 @@ import { bannerConfig } from '../../banners.config';
 
 const matchBanner = (path) => {
     for (let bannerType of Object.keys(bannerConfig).reverse()) {
-        if (bannerConfig[bannerType].path.some(pattern => minimatch(path, pattern))) {
+        const banner = bannerConfig[bannerType];
+        const isIncluded = banner.path.some(pattern => minimatch(path, pattern));
+        const isExcluded = banner.exclude?.length ? banner.exclude.some(pattern => minimatch(path, pattern)) : false;
+        if (isIncluded && !isExcluded) {
             return bannerType;
         }
     }
