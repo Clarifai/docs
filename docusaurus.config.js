@@ -93,7 +93,7 @@ const config = {
       navbar: {
         title: '',
         logo: {
-          alt: 'Clarifai Guide',
+          alt: 'Clarifai Docs',
           src: 'img/logo-dark.svg',
           srcDark: 'img/logo-light.svg',
           href: '/',
@@ -109,7 +109,7 @@ const config = {
                 to: "/clarifai-basics/start-here-5-mins-or-less"
               },
               {
-                label: "Exploring your Data",
+                label: "Exploring Your Data",
                 to: "/portal-guide/data/explorer",
               },
               {
@@ -117,11 +117,11 @@ const config = {
                 to: "/portal-guide/concepts"
               },
               {
-                label: "Search your Data",
+                label: "Search Your Data",
                 to: "/portal-guide/psearch"
               },
               {
-                label: "Label your Data",
+                label: "Label Your Data",
                 to: "/portal-guide/annotate"
               },
               {
@@ -133,7 +133,7 @@ const config = {
                 to: "/portal-guide/ppredict",
               },
               {
-                label: "Train your own Model",
+                label: "Train Your Own Model",
                 to: "/portal-guide/model",
               },
               {
@@ -143,6 +143,10 @@ const config = {
               {
                 label: "Develop UI Modules",
                 to: "/portal-guide/modules",
+              },
+              {
+                label: "Manage Your Orgs and Teams",
+                to: "/portal-guide/clarifai-organizations/",
               },
               {
                 label: "Tutorials",
@@ -179,11 +183,11 @@ const config = {
             position: "left",
             items: [
               {
-                label: 'API Client guide',
+                label: 'API Client Guide',
                 to: '/api-guide/api-overview/api-clients',
               },
               {
-                label: 'API Reference guide',
+                label: 'API Reference Guide',
                 to: "/api-reference",
                 rel: "noopener"
               }, 
@@ -201,7 +205,7 @@ const config = {
             position: "left",
             items: [
               {
-                label: "Upcoming platform changes",
+                label: "Upcoming Platform Changes",
                 to: "/product-updates/upcoming-api-changes",
               },
               {
