@@ -205,7 +205,7 @@ score.to_pandas()
 ```
 <details>
   <summary>Output</summary>
-<img src="/img/python-sdk/multistage-eval.png" width="700" height="700" />
+<img src="/img/python-sdk/multistage-eval.png" />
 </details>
 
 ```python
@@ -224,7 +224,7 @@ score.to_pandas()
 ```
 <details>
   <summary>Output</summary>
-<img src="/img/python-sdk/vanilla_rag_eval.png" width="700" height="700" />
+<img src="/img/python-sdk/vanilla_rag_eval.png" />
 </details>
 
 If you observe the values of `answer_correctness` for both RAGs, it can be seen that Multistage DSPy RAG outperforms Naive RAG. This Multi-Stage Multi-model RAG is a testament to the ability of DSPy framework and its modular nature of building different sets of stages within our LLM application.
