@@ -58,7 +58,7 @@ If you have followed the steps correctly you should receive an output that looks
 
 <details>
   <summary>Output</summary>
-    <img src="/img/python-sdk/tc_du.png" width="700" height="700" />
+    <img src="/img/python-sdk/tc_du.png" />
 </details>
 
 
@@ -92,7 +92,7 @@ From the above list of model types we are going to choose text-classifier as it 
 
 <details>
   <summary>Output</summary>
-    <img src="/img/python-sdk/vs_mc.png" width="700" height="700" />
+    <img src="/img/python-sdk/vs_mc.png" />
 </details>
 
 
@@ -143,7 +143,7 @@ If the status code is 'MODEL-TRAINED', then the user can know the Model is Train
 
 <details>
   <summary>Output</summary>
-    <img src="/img/python-sdk/tc_imt.png" width="700" height="700" />
+    <img src="/img/python-sdk/tc_imt.png" />
 </details>
 
 

@@ -49,7 +49,7 @@ Click [here](https://docs.clarifai.com/api-guide/search/rank) to know more about
     <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputCC}</CodeBlock>
-    <img src="/img/python-sdk/as_cc.png" width="700" height="700" />
+    <img src="/img/python-sdk/as_cc.png" />
 </details>
 </TabItem>
 <TabItem value="typescript" label="Typescript">
@@ -74,7 +74,7 @@ Click [here](https://docs.clarifai.com/api-guide/search/legacy-search/) to know 
     <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputOR}</CodeBlock>
-    <img src="/img/python-sdk/as_or.png" width="700" height="700" />
+    <img src="/img/python-sdk/as_or.png" />
 </details>
 </TabItem>
 <TabItem value="typescript" label="Typescript">

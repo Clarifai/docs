@@ -76,7 +76,7 @@ You can set a specific version of LLM by using `https://clarifai.com/mistralai/c
     <CodeBlock className="language-python">{CodeInit}</CodeBlock>
     <details>
   <summary>Image Output</summary>
-   <img src="/img/python-sdk/rag_init.png" width="700" height="700" />
+   <img src="/img/python-sdk/rag_init.png" />
 </details>
 </TabItem>
 <TabItem value="typescript" label="Typescript">

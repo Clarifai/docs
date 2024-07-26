@@ -68,7 +68,7 @@ If you have followed the steps correctly you should receive an output that looks
 
 <details>
   <summary>Output</summary>
-    <img src="/img/python-sdk/vd_du.png" width="700" height="700" />
+    <img src="/img/python-sdk/vd_du.png" />
 </details>
 
 ## Choose The Model Type
@@ -144,7 +144,7 @@ If the status code is 'MODEL-TRAINED', then the user can know the Model is Train
 
 <details>
   <summary>Output</summary>
-    <img src="/img/python-sdk/vd_imt.png" width="700" height="700" />
+    <img src="/img/python-sdk/vd_imt.png" />
 </details>
 
 
@@ -161,7 +161,7 @@ Since the model is trained and ready let’s run some predictions to view the mo
 
 <details>
   <summary>Image Output</summary>
-    <img src="/img/python-sdk/vd_mp.png" width="700" height="700" />
+    <img src="/img/python-sdk/vd_mp.png" />
 </details>
 
 

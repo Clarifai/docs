@@ -61,7 +61,7 @@ Filtering with input type in Clarifai enables users to narrow down search result
     <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputIT}</CodeBlock>
-    <img src="/img/python-sdk/fl_it.png" width="700" height="700" />
+    <img src="/img/python-sdk/fl_it.png" />
 </details>
 </TabItem>
 <TabItem value="typescript" label="Typescript">
@@ -82,7 +82,7 @@ The filter feature in Clarifai's search functionality allows users to narrow dow
     <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputMD}</CodeBlock>
-    <img src="/img/python-sdk/fl_md.png" width="700" height="700" />
+    <img src="/img/python-sdk/fl_md.png" />
 </details>
 </TabItem>
 <TabItem value="typescript" label="Typescript">
@@ -107,7 +107,7 @@ Filtering with geopoint in Clarifai allows users to refine search results based 
     <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputGP}</CodeBlock>
-    <img src="/img/python-sdk/fl_gp.png" width="700" height="700" />
+    <img src="/img/python-sdk/fl_gp.png" />
 </details>
 </TabItem>
 <TabItem value="typescript" label="Typescript">
@@ -130,7 +130,7 @@ Filtering with input status code in Clarifai allows users to refine search resul
     <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputIS}</CodeBlock>
-    <img src="/img/python-sdk/fl_is.png" width="700" height="700" />
+    <img src="/img/python-sdk/fl_is.png" />
 </details>
 </TabItem>
 <TabItem value="typescript" label="Typescript">
@@ -151,7 +151,7 @@ Filtering with dataset ID in Clarifai allows users to narrow down search results
     <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputData}</CodeBlock>
-    <img src="/img/python-sdk/fl_data.png" width="700" height="700" />
+    <img src="/img/python-sdk/fl_data.png" />
 </details>
 </TabItem>
 <TabItem value="typescript" label="Typescript">
@@ -171,7 +171,7 @@ Multimodal filtering in Clarifai refers to the ability to refine search results 
     <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputMM}</CodeBlock>
-    <img src="/img/python-sdk/fl_mm.png" width="700" height="700" />
+    <img src="/img/python-sdk/fl_mm.png" />
 </details>
 </TabItem>
 <TabItem value="typescript" label="Typescript">

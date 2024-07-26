@@ -48,7 +48,7 @@ The next step involves dataset upload. You can upload the dataset to your app so
 If you have followed the steps correctly you should receive an output that looks like this,
 <details>
   <summary>Output</summary>
-    <img src="/img/python-sdk/tt_du.png" width="700" height="700" />
+    <img src="/img/python-sdk/tt_du.png" />
 </details>
 
 
@@ -82,7 +82,7 @@ From the above list of model types we are going to choose text-to-text as it is 
 
 <details>
   <summary>Output</summary>
-    <img src="/img/python-sdk/tt_mc.png" width="700" height="700" />
+    <img src="/img/python-sdk/tt_mc.png"  />
 </details>
 
 ## Template Selection
@@ -132,7 +132,7 @@ If the status code is 'MODEL-TRAINED', then the user can know the Model is Train
 
 <details>
   <summary>Output</summary>
-    <img src="/img/python-sdk/tc_imt.png" width="700" height="700" />
+    <img src="/img/python-sdk/tc_imt.png" />
 </details>
 
 
