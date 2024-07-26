@@ -119,7 +119,7 @@ Its sampling mechanism is discussed below:
 
 #### Example Scenario
 - **Sampling Type:** Percentage
-- **Sampling Value:** 10%
+- **Sampling Value:** 0.1
 - **Operation:** If the dataset consists of 1,000 items, the Random Sample operator will randomly select 100 items to be passed on for further processing.
 
 Let's demonstrate how you can use the Random Sample operator to handle large datasets efficiently or prepare data for machine learning model training.
