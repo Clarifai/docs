@@ -60,7 +60,7 @@ If you have followed the steps correctly you should receive an output that looks
 
 <details>
   <summary>Output</summary>
-    <img src="/img/python-sdk/vs_du.png" width="700" height="700" />
+    <img src="/img/python-sdk/vs_du.png" />
 </details>
 
 
@@ -92,7 +92,7 @@ From the above list of model types we are going to choose visual-segmenter as it
 
 <details>
   <summary>Output</summary>
-    <img src="/img/python-sdk/vs_mc.png" width="700" height="700" />
+    <img src="/img/python-sdk/vs_mc.png" />
 </details>
 
 ## Template Selection
@@ -161,7 +161,7 @@ If the status code is 'MODEL-TRAINED', then the user can know the Model is Train
 
 <details>
   <summary>Output</summary>
-   <img src="/img/python-sdk/vs_imt.png" width="700" height="700" />
+   <img src="/img/python-sdk/vs_imt.png" />
 </details>
 
 
@@ -181,7 +181,7 @@ The performance of the model can be further improved by training it for more num
 :::
 <details>
   <summary>Image Output</summary>
-   <img src="/img/python-sdk/vs_mp.png" width="700" height="700" />
+   <img src="/img/python-sdk/vs_mp.png" />
 </details>
 
 

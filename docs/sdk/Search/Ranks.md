@@ -41,7 +41,7 @@ By incorporating text-based ranking, users can enhance the relevance and specifi
     <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputRKTXT}</CodeBlock>
-    <img src="/img/python-sdk/rk_text.png" width="700" height="700" />
+    <img src="/img/python-sdk/rk_text.png" />
 </details>
 </TabItem>
 <TabItem value="typescript" label="Typescript">
@@ -61,7 +61,7 @@ Ranking with image URL in Clarifai allows users to prioritize search results bas
     <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputIMURL}</CodeBlock>
-    <img src="/img/python-sdk/rk_imurl.png" width="700" height="700" />
+    <img src="/img/python-sdk/rk_imurl.png" />
 </details>
 </TabItem>
 <TabItem value="typescript" label="Typescript">
