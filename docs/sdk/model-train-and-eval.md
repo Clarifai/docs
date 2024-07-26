@@ -34,7 +34,7 @@ Clone [this](https://github.com/Clarifai/examples.git ) repository to get the da
 </Tabs>
 <details>
   <summary>Output</summary>
-    <img src="/img/python-sdk/tc_imt.png" width="700" height="700" />
+    <img src="/img/python-sdk/tc_imt.png" />
 </details>
 
 ## Model Evaluation

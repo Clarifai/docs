@@ -67,7 +67,7 @@ If you have followed the steps correctly you should receive an output that looks
 
 <details>
   <summary>Output</summary>
-<img src="/img/python-sdk/vc_du.png" width="700" height="700" />
+<img src="/img/python-sdk/vc_du.png"/>
 </details>
 
 
@@ -168,7 +168,7 @@ Since the model is trained and ready let’s run some predictions to view the mo
 <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputMP}</CodeBlock>
-    <img src="/img/python-sdk/vc_mp.png" width="500" height="500" />
+    <img src="/img/python-sdk/vc_mp.png" />
 </details>
 
 

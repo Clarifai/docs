@@ -175,14 +175,14 @@ The ```--working-dir``` parameter will create a directory.
 From the list of available models let’s choose a visual segmenter as an  example, 
 <details>
   <summary>Image Output</summary>
-   <img src="/img/python-sdk/model_upload1.png" width="700" height="700" />
+   <img src="/img/python-sdk/model_upload1.png" />
 </details>
 
 The CLI will then clone all the required files for ```visual_segmenter```  directly onto the working directory.
 
 <details>
   <summary>Image Output</summary>
-   <img src="/img/python-sdk/model_upload2.png" width="700" height="700" />
+   <img src="/img/python-sdk/model_upload2.png" />
 </details>
 
 Once we are inside the `my_dir` directory, we can download the model checkpoint from HuggingFace into a `checkpoint` directory.
