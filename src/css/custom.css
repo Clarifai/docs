@@ -382,7 +382,7 @@ html[data-theme='dark'] .card:hover {
   position: absolute;
   top: 32px;
   right: 0;
-  background-image: url('/img/banner/pattern-black.svg');
+  background-image: url('/img/banner/pattern-black.png');
   background-repeat: no-repeat;
   height: 336px;
   width: 336px;
