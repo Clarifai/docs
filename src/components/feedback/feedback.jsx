@@ -26,11 +26,19 @@ export const Feedback = ({ metadata }) => {
       return;
     }
 
-    console.log('Responded to Did You Find This Page Helpful', {
-      label: 'Responded to Did You Find This Page Helpful',
-      response: rating >= 4 ? 'YES' : 'NO',
-      pageUrl: window.location.href,
-    });
+    try {
+      window.gtag('event', 'submit_feedback', {
+        label: 'Responded to Did You Find This Page Helpful',
+        response: rating >= 4 ? 'YES' : 'NO',
+        pageUrl: window.location.href,
+        notes,
+        rating,
+      })
+    } catch (e) {
+      console.error('Failed to send feedback event to Google Analytics');
+      console.error(e);
+    }
+
     setRating(null);
     setNotes(null);
     setIsSubmitSuccess(true);
