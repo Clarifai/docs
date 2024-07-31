@@ -42,6 +42,10 @@ const config = {
         googleTagManager: {
           containerId: "GTM-5W9P7GR"
         },
+        gtag: {
+          trackingID: 'G-3R20NHSS5H',
+          anonymizeIP: true,
+        },
         sitemap: {
           changefreq: 'weekly',
           priority: 0.5,
