@@ -208,6 +208,13 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   text-transform: uppercase;
   font-size: 90%;
 }
+.menu__link.menu__link--sublist.menu__link--active {
+    background-color: var(--ifm-menu-color-background-active) !important;
+    font-weight: var(--ifm-font-weight-bold) !important;
+}
+.menu__link.menu__link--active {
+    font-weight: var(--ifm-font-weight-bold) !important;
+}
 header .join__slack {
   color: rgba(0, 0, 0, .5);
   border: 1px solid #ccc;
