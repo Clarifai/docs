@@ -210,10 +210,9 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 }
 .menu__link.menu__link--sublist.menu__link--active {
     background-color: var(--ifm-menu-color-background-active) !important;
-    font-weight: var(--ifm-font-weight-bold) !important;
 }
 .menu__link.menu__link--active {
-    font-weight: var(--ifm-font-weight-bold) !important;
+    color: var(--ifm-color-primary) !important;
 }
 header .join__slack {
   color: rgba(0, 0, 0, .5);
