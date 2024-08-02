@@ -26,12 +26,19 @@ export const Feedback = ({ metadata }) => {
       return;
     }
 
-    console.log('Responded to Did You Find This Page Helpful', {
-      label: 'Responded to Did You Find This Page Helpful',
-      response: rating >= 4 ? 'YES' : 'NO',
-      pageUrl: window.location.href,
-    });
-    setRating(null);
+    try {
+      window.gtag('event', 'submit_feedback', {
+        label: 'Responded to Did You Find This Page Helpful',
+        response: rating >= 4 ? 'YES' : 'NO',
+        pageUrl: window.location.href,
+        notes,
+        rating,
+      })
+    } catch (e) {
+      console.error('Failed to send feedback event to Google Analytics');
+      console.error(e);
+    }
+
     setNotes(null);
     setIsSubmitSuccess(true);
 
@@ -90,7 +97,7 @@ export const Feedback = ({ metadata }) => {
                     GitHub issue
                   </a>{' '}
                   if you think this is a bug, or check out our{' '}
-                  <a href="https://discord.gg/XAPE3Vtg" target="_blank" rel="noopener noreferrer">
+                  <a href="https://discord.gg/WgUvPK4pVD" target="_blank" rel="noopener noreferrer">
                     Discord server
                   </a>
                   , where our team and community users are ready to engage.
@@ -127,7 +134,7 @@ export const Feedback = ({ metadata }) => {
             </div>
           )}
         </div>
-        <div style={rating ? { display: 'block' } : { display: 'none' }}>
+        <div style={!isSubmitSuccess ? { display: 'block' } : { display: 'none' }}>
           <div className={styles.textAreaLabel}>{textAreaLabel}</div>
           <textarea
             className={styles.textarea}

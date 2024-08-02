@@ -24,8 +24,8 @@ All three operators share several key features and functionalities:
 
 ## Region Thresholder
 
-**Input: **`regions[…].data.concepts`
-**Output: **`regions[…].data.concepts`
+**Input:** `regions[…].data.concepts`
+**Output:** `regions[…].data.concepts`
 
 The Region Thresholder model filters image regions based on the confidence scores assigned to detected concepts and works with the visual detection node.
 
@@ -64,8 +64,8 @@ To see it in action, upload the inputs from your local device or use the inputs 
 
 ## Concept Thresholder
 
-**Input: **`concepts`
-**Output: **`concepts`
+**Input:** `concepts`
+**Output:** `concepts`
 
 The Concept Thresholder model filters entire datasets based on the confidence scores assigned to specific concepts. This model works effectively across different types of data inputs, not limited to visual data.
 
@@ -105,8 +105,8 @@ To see it in action, upload the inputs from your local device or use the inputs 
 
 ## Random Sampler
 
-**Input: **`any`
-**Output: **`any`
+**Input:** `any`
+**Output:** `any`
 
 The Random Sample model randomly selects a subset of data from the input based on a specified sample size or percentage, making it an essential tool for statistical analysis and model training. This operator ensures that the sample is representative of the whole dataset, thus maintaining the integrity and variability of the data.
 

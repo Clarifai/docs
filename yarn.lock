@@ -4411,11 +4411,6 @@ dns-packet@^5.2.2:
   dependencies:
     "@leichtgewicht/ip-codec" "^2.0.1"
 
-docusaurus-gtm-plugin@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.npmjs.org/docusaurus-gtm-plugin/-/docusaurus-gtm-plugin-0.0.2.tgz"
-  integrity sha512-Xx/df0Ppd5SultlzUj9qlQk2lX9mNVfTb41juyBUPZ1Nc/5dNx+uN0VuLyF4JEObkDRrUY1EFo9fEUDo8I6QOQ==
-
 docusaurus-plugin-redoc@2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/docusaurus-plugin-redoc/-/docusaurus-plugin-redoc-2.1.1.tgz#b930b007844d918f186631cb8bd42da7e6314f79"

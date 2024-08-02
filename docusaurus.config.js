@@ -39,8 +39,11 @@ const config = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
+        googleTagManager: {
+          containerId: "GTM-5W9P7GR"
+        },
         gtag: {
-          trackingID: 'G-EN8LWMPFVR',
+          trackingID: 'G-3R20NHSS5H',
           anonymizeIP: true,
         },
         sitemap: {
@@ -309,7 +312,7 @@ const config = {
       colorMode: {
         defaultMode: 'dark',
         disableSwitch: false,
-        respectPrefersColorScheme: false,
+        respectPrefersColorScheme: true,
       },
       docs: {
         sidebar: {
@@ -318,12 +321,6 @@ const config = {
       }
     }),
     plugins: [
-    [
-      require.resolve('docusaurus-gtm-plugin'),
-      {
-        id: 'GTM-5W9P7GR', // GTM Container ID
-      }
-    ],
     //[
       //require.resolve("@cmfcmf/docusaurus-search-local"),
       //{
@@ -335,6 +332,14 @@ const config = {
       '@docusaurus/plugin-client-redirects',
       {
         redirects: [
+          {
+            to: '/clarifai-basics/start-here-5-mins-or-less',
+            from: ['/data-labeling-services/labeling-services']
+          },
+          {
+            to: '/api-guide/search/',
+            from: ['/api-guide/search/legacy-search/']
+          },
           {
             to: '/sdk/node-api-reference',
             from: ['/nodejs-sdk/api-reference'],
@@ -470,8 +475,27 @@ const config = {
           {
             to: '/portal-guide/model-versions/',
             from: '/test/portal-guide/model-versions/'
+          },
+          {
+            to: '/api-guide/data/create-get-update-delete',
+            from: '/api-guide/data/cloud-storage'
+          },
+          {
+            to: '/portal-guide/psearch/',
+            from: '/portal-guide/psearch/psaved_searches'
+          },
+          {
+            to: '/glossary/general-ai',
+            from: '/clarifai-basics/glossary/'
+          },
+          {
+            to: '/glossary/generative-ai',
+            from: '/clarifai-basics/glossary/generative-ai'
+          },
+          {
+            to: '/portal-guide/annotate/review',
+            from: '/portal-guide/annotate/workforce-management'
           }
-
           ],
           createRedirects(existingPath) {
             if (existingPath.includes('/community')) {
