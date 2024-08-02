@@ -333,6 +333,14 @@ const config = {
       {
         redirects: [
           {
+            to: '/clarifai-basics/start-here-5-mins-or-less',
+            from: ['/data-labeling-services/labeling-services']
+          },
+          {
+            to: '/api-guide/search/',
+            from: ['/api-guide/search/legacy-search/']
+          },
+          {
             to: '/sdk/node-api-reference',
             from: ['/nodejs-sdk/api-reference'],
           },
@@ -467,8 +475,27 @@ const config = {
           {
             to: '/portal-guide/model-versions/',
             from: '/test/portal-guide/model-versions/'
+          },
+          {
+            to: '/api-guide/data/create-get-update-delete',
+            from: '/api-guide/data/cloud-storage'
+          },
+          {
+            to: '/portal-guide/psearch/',
+            from: '/portal-guide/psearch/psaved_searches'
+          },
+          {
+            to: '/glossary/general-ai',
+            from: '/clarifai-basics/glossary/'
+          },
+          {
+            to: '/glossary/generative-ai',
+            from: '/clarifai-basics/glossary/generative-ai'
+          },
+          {
+            to: '/portal-guide/annotate/review',
+            from: '/portal-guide/annotate/workforce-management'
           }
-
           ],
           createRedirects(existingPath) {
             if (existingPath.includes('/community')) {
