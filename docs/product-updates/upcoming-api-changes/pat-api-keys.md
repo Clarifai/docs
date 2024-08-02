@@ -9,9 +9,9 @@ sidebar_position: -8
 **Learn about breaking changes to the use of PATs and API keys**
 <hr />
 
-## Date
+## Implementation Date
 
-August 6th, 2024
+October 1st, 2024
 
 ## Change
 
@@ -19,7 +19,7 @@ August 6th, 2024
 
 ## Details
 
-An upcoming release of Clarifai’s API, 10.7, will significantly change how Personal Access Tokens (PATs) and API keys work. We plan to implement this change on August 6th, 2024, providing 45 days to change the way your applications authenticate on our platform.  
+An upcoming release of Clarifai’s API, **10.9**, will significantly change how [Personal Access Tokens (PATs)](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens/) and [API keys](https://docs.clarifai.com/clarifai-basics/authentication/app-specific-api-keys/) work. We plan to implement this change on October 1st, 2024, providing more than 45 days to change the way your applications authenticate on our platform.  
 
 #### Terminology
 
@@ -35,9 +35,9 @@ Previously, you could use API keys to access any model, concept, or workflow own
 
 To be specific:
 
-- You must now use [PATs](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens) to make API calls for resources that are outside the scope of your apps, such as Clarifai’s models and workflows. While using a PAT, you must also specify the `USER_ID` of the application owner, and the `APP_ID` of the application that you’re accessing. The legacy behavior allowed you to use the `USER_ID` and `APP_ID` of any application on the platform to access Clarifai models and workflows in the app "main". This change requires you to specify the `USER_ID` (clarifai) and `APP_ID` (main) associated with the application containing the resource (model, concept, workflow, etc).
+- You must now use PATs to make API calls for resources that are outside the scope of your apps, such as Clarifai’s models and workflows. While using a PAT, you must also specify the `USER_ID` of the application owner, and the `APP_ID` of the application that you’re accessing. The legacy behavior allowed you to use the `USER_ID` and `APP_ID` of any application on the platform to access Clarifai models and workflows in the app "main". This change requires you to specify the `USER_ID` (clarifai) and `APP_ID` (main) associated with the application containing the resource (model, concept, workflow, etc).
 
-- You will no longer be able to use [API keys](https://docs.clarifai.com/clarifai-basics/authentication/app-specific-api-keys) to access resources outside the application the API key is created in. With a key, there is no need to specify the user_id or the app_id as they are already part of the key. API keys will function as normal when accessing resources within the application the key is created in, but will no longer allow access to resources owned by the user `clarifai` in the application `main`.
+- You will no longer be able to use API keys to access resources outside the application the API key is created in. With a key, there is no need to specify the user_id or the app_id as they are already part of the key. API keys will function as normal when accessing resources within the application the key is created in, but will no longer allow access to resources owned by the user `clarifai` in the application `main`.
 
 - Since workflows are a collection of models, some of which may be references to models that are not in the same application as the workflow itself, you should also use PATs to interact with workflows. While API keys will still work for the time being for workflows in the same app as the API key that contains only models from that same app, this will be a very narrow use of workflows. Therefore, we recommend updating your code to use PATs when using workflows too.
 
@@ -47,6 +47,6 @@ We hope and expect that this will not be a significant change for you. In order 
 
 The best place to contact us for support questions is our [Discord Server](https://discord.gg/WgUvPK4pVD), which is monitored by many of our support teams and is the fastest way to get help.
 
-We do apologize for any inconvenience this causes, however, we are confident that this is a positive change that will simplify the usage of the platform going forward and make it easier to leverage AI created by other people on our platform!
+We do apologize for any inconvenience this causes; however, we are confident that this is a positive change that will simplify the usage of the platform going forward and make it easier to leverage AI created by other people on our platform!
 
 Thank you for your understanding and please feel free to reach out for any help.

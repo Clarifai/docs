@@ -225,12 +225,9 @@ Below is an example of how you would perform text-to-image generation using the 
 
 </Tabs>
 
-<details>
-  <summary>Image Output Example</summary>
+Here is a generated output example:
 
-   ![generated image output](/img/others/gen-image_200.jpg)
-
-</details>
+![generated image output example](/img/others/gen-image_200.jpg)
 
 ## Text-to-Speech Generation
 

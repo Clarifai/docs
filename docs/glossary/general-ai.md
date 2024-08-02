@@ -856,7 +856,9 @@ Language models that predict the probability of which words make the most sense 
 
 ### Metadata
 
-Information about an analog or digital object, a component of an object, or a coherent collection of objects. Metadata describing digital content is often structured (e.g., with tagging or markup). 
+Metadata are additional pieces of information you attach to your inputs when uploading them to the Clarifai platform. This can include product IDs, user IDs, or any other relevant details necessary for achieving specific business outcomes. Note that the metadata should be a valid JSON object.
+
+For example, you can use metadata to quickly filter your data and combine it with other ranking criteria.
 
 ### Misclassification Rate 
 

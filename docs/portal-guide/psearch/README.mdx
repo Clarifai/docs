@@ -1,22 +1,32 @@
 ---
-description: 'Use vector search to find what you need in your unstructured data'
+description: Use vector search to find, sort, and filter what you need in your unstructured data
 ---
 
-# Smart Search: Search, Sort, Filter & Save
+# Smart Search on Input-Manager 
 
-**Use vector search to find what you need in your unstructured data**
+**Use vector search to find, sort, and filter what you need in your data**
 <hr />
 
-Clarifai’s Smart Search features allow you to harness the power of AI to search through unlabeled data with ease. Whether you're searching for images, videos, or text data, Smart Search empowers you to quickly find the content you need based on visual, semantic and/or conceptual understanding. 
+The Clarifai’s Smart Search feature on the Input-Manager screen allows you to harness the power of AI to search through unstructured or structured data with ease. 
 
-With Smart Search, you can unlock the full potential of your unstructured data assets, making it easier than ever to locate and retrieve the data of interest. 
+Whether you're searching for images, videos, or text data, Smart Search empowers you to quickly find the content you need based on visual, semantic and/or conceptual understanding. 
 
-Smart Search allows you to to accomplish various tasks, including:
+With Smart Search, you can unlock the full potential of your data assets, making it easier than ever to locate and retrieve the data of interest. For example, you can use the search results within your app to accelerate [data labeling](https://docs.clarifai.com/portal-guide/annotate/create-get-update-delete) for custom model training tasks.
 
-- You can use the search results within the Clarifai’s web-app to accelerate data labeling for custom model training tasks;
-- You can return the search results via API to integrate AI-powered search features into your own end-solutions.
+<figure style={{ display: 'flex', justifyContent: 'center' }}>
+  ![](/img/spacetime.svg)
+</figure>
 
-![](/img/spacetime.svg)
+> The Input-Manager screen is the main page showcasing all the inputs in your app. You can access it by clicking the **Inputs** option in your app's collapsible left sidebar. The screen has [two modes](https://docs.clarifai.com/portal-guide/data/explorer/#input-manager): Input Mode (default) and Object Mode. 
+
+> ![](/img/community/search/input-manager.png)
+
+:::info
+
+- When performing a Smart Search with custom concepts, ensure that these concepts are first trained using an embedding-classifier model ([transfer-learning](https://docs.clarifai.com/portal-guide/model/model-types/transfer-learning/) model). Without this training, the search query may not work. In the Input-Manager screen, concepts that have already been trained with a model are marked with a blue circle, while untrained concepts are marked with a grey circle. 
+- When you upload inputs to our platform, we use your app’s [base workflow](https://docs.clarifai.com/portal-guide/workflows/base-workflows/) to index them. This immediately makes them searchable by concept, annotation, or other advanced parameters. You can update the search index by clicking the **Update** button in the search bar, then clicking the reindex button in menu that drops down. 
+
+:::
 
 ## Fully-Managed Vector Search Engine 
 
@@ -30,7 +40,9 @@ Instead of traditional keyword-based search, where exact matches are sought, vec
 
 Our vector search engine uses deep learning embedding models to first analyze the visual features of each input, such as color, shape, and texture. This process, known as feature extraction, generates a corresponding vector representation for each piece of unstructured data.
 
-These vector representations are then indexed and stored in our [vector database](https://www.clarifai.com/blog/using-clarifais-native-vector-database) (also called a vector store or a semantic search engine). When a user performs a search, their query is also converted into a vector representation. The vector DB then searches for the vector representations that are most similar to the query vector representation. The results are then displayed to the user. 
+The embedding models then index these vector representations and store them in our [vector database](https://www.clarifai.com/blog/using-clarifais-native-vector-database) (also called a vector store or a semantic search engine). 
+
+When a user performs a search, their query is also converted into a vector representation. The vector DB then searches for the vector representations that are most similar to the query vector representation. The results are then displayed to the user. 
 
 By using our vector search as a service, you can get more relevant search results, faster search times, and scalable performance. 
 
@@ -50,21 +62,21 @@ Clarifai eliminates the need for developers to do all of this work by providing 
 
 ## Types of Smart Search
 
-We offer the following types of Smart Search options on our platform:
+We offer the following types of Smart Search options in our platform.
 
-- **Smart Image Search**—Allows you to retrieve images sorted by their visual relevance to a query in the form of: 
-   - **Image**—Provide a reference image of interest to compare inputs against.
-   - **Concept**—Provide a trained concept to compare input predictions against.
-   - **Caption**—Provide a full-text description to compare inputs against.
+- [**Smart Image Search**](https://docs.clarifai.com/portal-guide/psearch/visual-search) — Allows you to retrieve images sorted by their visual relevance to a query in the form of: 
+   - **Image** — Provide a reference image of interest to compare inputs against.
+   - **Concept** — Provide a trained concept to compare input predictions against.
+   - **Caption** — Provide a full-text description to compare inputs against.
 
-- **Smart Object Search**—Allows you to retrieve annotated objects (bounding boxes within images) sorted by their visual relevance to a query in the form of:
-  - **Image**—Provide a reference image of interest to compare inputs against.
-  - **Concept**—Provide a trained concept to compare input predictions against.
-  - **Caption**—Provide a full-text description to compare inputs against.
+- [**Smart Object Search**](https://docs.clarifai.com/portal-guide/psearch/prank) — Allows you to retrieve annotated objects (bounding boxes within images) sorted by their visual relevance to a query in the form of:
+  - **Image** — Provide a reference image of interest to compare inputs against.
+  - **Concept** — Provide a trained concept to compare input predictions against.
+  - **Caption** — Provide a full-text description to compare inputs against.
 
-- **Smart Text Search**—Allows you to retrieve text data sorted by their content and semantic similarity to a query in the form of:
-  - **Text**—Provide a text description to compare input predictions against. 
-  - **Concept**—Provide a trained concept to compare input predictions against.
+- [**Smart Text Search**](https://docs.clarifai.com/portal-guide/psearch/text-search) — Allows you to retrieve text data sorted by their content and semantic similarity to a query in the form of:
+  - **Text** — Provide a text description to compare input predictions against. 
+  - **Concept** — Provide a trained concept to compare input predictions against.
 
 
 
