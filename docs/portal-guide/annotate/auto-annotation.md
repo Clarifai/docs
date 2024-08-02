@@ -28,6 +28,14 @@ Auto-annotation is a versatile feature designed to streamline data labeling proc
 
 :::
 
+Here is a video that showcases how to perform auto-annotation:
+
+<div style={{ "position":"relative","width": "100%","overflow": "hidden","padding-top": "56.25%"}}>
+<iframe width="900" height="500" style={{"position": "absolute","top": "0","left": "0","bottom": "0","right": "0","width": "100%","height": "100%",}} src="https://www.youtube.com/embed/CD25FaeqVRc" title="Auto Annotate Your Entire Data with a Single Click: Auto Annotation Explained!" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+<br/><br/>
+
 Let’s demonstrate how you can set up auto-annotation when creating labeling tasks. 
 
 ## Prerequisites

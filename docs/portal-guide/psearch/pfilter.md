@@ -8,25 +8,63 @@ sidebar_position: 5
 **Reduce noise by filtering out unwanted data**
 <hr />
 
-## Filter by metadata
+You can use the **Input Filters** section on the Input-Manager screen to customize how inputs are displayed. By default, inputs are sorted by creation date, with the newest at the top. 
 
-Attach additional information to your inputs as you upload them to the Clarifai platform. Add product IDs, user IDs, or any other relevant information needed to drive specific business outcomes. Metadata can be used to quickly filter your data, and can be combined with ranking criteria.
+You can filter inputs by dataset, labels, type, or metadata. You can also combine multiple filter parameters to expand your search criteria and get more refined results. 
 
-![](/img/filter_by_metadata.jpg)
+## Filter by Datasets
 
-You can even search by metadata in the single image view in Portal. Just expand the metadata window, click table, and then click the line that has the metadata you would like to use for search. The line is automatically added to the search bar and will filter your search results.
+You can filter the display of inputs based on their datasets. To do so, identify the dataset you want to display inputs for and click the checkbox next to it.
 
-![](/img/metadata_search_image_view.jpg)
+Note that the number of inputs matching your criteria will be displayed at the top of the display area.
 
-## Filter by geo-location
+![](/img/smart-search/search_24.png)
 
-Combine visual search with location-awareness to organize your data by place. Include latitude and longitude information when you upload your data, and then filter to find all inputs within a given radius. Or even define a region on the map and limit your results to the inputs within that region.
+If you want to filter out inputs that do not belong to a specific dataset, select the dataset and hover over it. Double arrows will appear with a tooltip: `Filter for inputs that do NOT match this value.` Click the double arrows to apply the negative filter. You’ll notice that the word **NOT** will be added next to the dataset's name, and the filter results will be populated on the page.
 
-![](/img/filter_by_geolocation.jpg)
+Additionally, you can use the "Unassigned" parameter to filter all inputs that have not been assigned to any dataset.
 
-## Filter by annotations
+:::tip
 
-Annotations are the human-labeled concepts on your inputs. Typically part of your "training" dataset, these inputs are indexed alongside model predictions and similarity search information. Collaboration tools make it easy to track annotations done by different team members.
+To reset any applied filters, click the **Clear** button that appears after applying the filters.
 
-![](/img/filter_by_annotations.jpg)
+:::
 
+## Filter by Labels
+
+You can filter the display of inputs based on their labeled concepts. To do so, identify the concept you want to display inputs for and click the checkbox next to it.
+
+You can also filter out inputs that do not belong to a specific concept, as illustrated earlier. 
+
+Additionally, you can use the "Unlabeled" parameter to filter all inputs that have not been annotated with any concept.
+
+![](/img/smart-search/search_25.png)
+
+You can also click the ellipsis next to the **Labels** section to reveal additional options for filtering the display of your inputs. 
+
+You can filter the display by these parameters:
+
+- **Operator** — You can specify either the `or` (default) or `and` operator to determine how this filter should be applied when multiple values are selected. 
+
+    - Choosing `or` will filter for inputs that match _any_ of the selected values.
+    - Choosing `and` will return only the inputs that match _all_ the selected values.
+
+    Note that this setting does not affect how negated values are interpreted. Inputs matching any negated selections are always removed after those matching the positively selected values have been identified.
+
+-	**[Labeler](https://docs.clarifai.com/portal-guide/annotate/create-a-task/#step-6-add-collaborators)** —  You can filter the display by the labeler who annotated the inputs. By default, inputs from all labelers are shown. 
+
+-	**[Status](https://docs.clarifai.com/api-guide/advanced-topics/status-codes/#annotation-related-codes-24xxx)** — You can filter the display based on the status of the annotation exercise. The available options are `Success` (default), `Awaiting Review`, `Awaiting Consensus Review`, or `Pending`. 
+
+## Filter by Input Type
+
+You can filter the display of inputs based on their types — audio, image, text, and video. 
+
+![](/img/smart-search/search_26.png)
+
+## Filter by Metadata
+
+You can filter the display of inputs based on their custom metadata. Note that the metadata should be a valid JSON object. 
+
+Metadata are additional pieces of information you attach to your inputs when uploading them to the Clarifai platform. This can include product IDs, user IDs, or any other relevant details necessary for achieving specific business outcomes. You can use metadata to quickly filter your data and combine it with other ranking criteria.
+
+![](/img/smart-search/search_27.png)

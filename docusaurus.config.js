@@ -9,8 +9,8 @@ const darkCodeTheme = themes.dracula;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Clarifai Guide',
-  tagline: 'Clarifai Guide',
+  title: 'Clarifai Docs',
+  tagline: 'Clarifai Docs',
   url: 'https://docs.clarifai.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',

@@ -20,15 +20,15 @@ Here's how our Smart Text Search feature works:
 
 - **Similarity ranking**: We retrieve text data that is most similar to the query text based on their text embeddings. The ranking of the retrieved text documents is typically determined by the similarity scores between the query text and each of the retrieved texts. Our vector search engine ranks texts with higher similarity scores higher and considers them more semantically similar to the query.
 
-Let’s demonstrate how you can carry out different types of Smart Text Search on our Portal. 
+Let’s demonstrate how you can carry out different types of Smart Text Searches.  
 
-Start by going to your app and selecting the **Inputs** option on the collapsible left sidebar. You’ll be redirected to the Inputs Manager page where you can see the text inputs available on your app. 
+Start by going to your app and selecting the **Inputs** option in the collapsible left sidebar. You’ll be redirected to the Input-Manager page, where you can see the text inputs available on your app. 
 
 You can then perform various text search actions on them. 
 
 :::tip
 
-To perform text searches successfully, you should choose a workflow that includes a text embedder and a clusterer, such as the Language-Understanding workflow, as the [base workflow](https://docs.clarifai.com/clarifai-basics/applications/application-settings#base-workflow) for your application.
+To perform text searches successfully, you should choose a workflow that includes a text embedder and a clusterer, such as the [Text](https://clarifai.com/clarifai/main/workflows/Text) workflow, as the [base workflow](https://docs.clarifai.com/portal-guide/workflows/base-workflows/) for your application.
 
 :::
 
