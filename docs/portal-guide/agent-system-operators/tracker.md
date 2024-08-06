@@ -271,14 +271,4 @@ Here is a table outlining the various output configuration parameters you can co
 | `match_limit_ratio` | Multiplier to constrain association (< 1 is ignored) based on other associations  | |  |   | &#10003; |&#10003; |       | 
 | `match_limit_min_matches` | Minimum number of matched tracks needed to invoke match limit | |  |   | &#10003; |&#10003; |       | 
 | `optimal_assignment` | If True, rule out pairs with distance > max_distance before assignment | |  |   | &#10003; |&#10003;  |       | 
-| `max_emb_distance` |Maximum embedding distance to be considered a re-identification| |  |   |  | &#10003; |       | 
-| `max_dead` | Maximum number of frames for track to be dead before we re-assign the ID| |  |   |  | &#10003; |       | 
-| `var_tracker` | String that determines how embeddings from multiple timestamps are aggregated, defaults to “na” (most recent embedding overwrites past embeddings) | |  |   |  | &#10003; |       | 
-| `reid_model_path` | The path to the linker| |  |   |  | &#10003; |       | 
-| `iou_dist_ratio` | If 1.0 purely IoU similarity, if 0.0 purely centroid distance similarity | |  |   |  | |   &#10003; | 
-| `mortal_th` | Mortality threshold | |  |   |  | |   &#10003; | 
-| `min_box_area` | Minimum area of a valid box | |  |   |  | |   &#10003; | 
-| `min_activity` | Returns only tracks with activities  above min_activity  | |  |   |  | |   &#10003; | 
-| `nms_iou_th` | NMS IoU threshold | |  |   |  | |   &#10003; |
-| `shrink_factor` | Change box size by `shrink_factor` | |  |   |  | |   &#10003; |
 
