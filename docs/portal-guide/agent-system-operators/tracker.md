@@ -271,4 +271,7 @@ Here is a table outlining the various output configuration parameters you can co
 | `match_limit_ratio` | Multiplier to constrain association (< 1 is ignored) based on other associations  | |  |   | &#10003; |&#10003; |       | 
 | `match_limit_min_matches` | Minimum number of matched tracks needed to invoke match limit | |  |   | &#10003; |&#10003; |       | 
 | `optimal_assignment` | If True, rule out pairs with distance > max_distance before assignment | |  |   | &#10003; |&#10003;  |       | 
-
+| `max_emb_distance` |Maximum embedding distance to be considered a re-identification| |  |   | &#10003;  | &#10003; |       | 
+| `max_dead` | Maximum number of frames for track to be dead before we re-assign the ID| |  |   | &#10003;  | &#10003; |       | 
+| `var_tracker` | String that determines how embeddings from multiple timestamps are aggregated, defaults to “na” (most recent embedding overwrites past embeddings) | |  |   | &#10003;  | &#10003; |       | 
+| `reid_model_path` | The path to the linker| |  |   | &#10003; | &#10003; |       | 
