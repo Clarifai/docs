@@ -15,28 +15,28 @@ Each template comes with its own hyperparameters, which you can tune to influenc
 
 :::tip train text-to-text models
 
-[Click here](https://docs.clarifai.com/portal-guide/model/model-types/text-to-text#how-to-fine-tune-text-generation-models) to learn how to use the text templates to train fine-tuned text-to-text models.
+[Click here](https://docs.clarifai.com/portal-guide/model/model-types/text-to-text#how-to-fine-tune-text-generation-models) to learn how to use these text templates to  fine-tune text-to-text models.
 
 :::
 
-## Llama 2
+## Llama 3.1       	
+  	
+[Llama 3.1](https://ai.meta.com/blog/meta-llama-3-1/) is a collection of pre-trained and instruction-tuned large language models (LLMs) developed by Meta AI. It’s known for its open-source nature and impressive capabilities, such as being optimized for multilingual dialogue use cases, extended                                                                                                                                                           context length of 128K, advanced tool usage, and improved reasoning capabilities.
 
-[Llama 2](https://arxiv.org/abs/2307.09288) is a collection of pre-trained and fine-tuned large language models (LLMs) created and publicly released by Meta AI. It is available in three model sizes: 7, 13, and 70 billion parameters. Llama 2-Chat is a fine-tuned version of Llama 2, specifically optimized for dialogue-based scenarios. 
+It is available in three model sizes:  
 
-[Llama 2-Chat](https://clarifai.com/meta/Llama-2/models/llama2-70b-chat) is designed to produce human-like responses to user inputs, which makes it appropriate for powering conversational and chatbot-like AI applications. The model can learn the structures and intricate patterns of natural language conversations and produce coherent and contextually relevant outputs. 
+-        **405 billion parameters:** The flagship foundation model designed to push the boundaries of AI capabilities.
+-        **70 billion parameters:** A highly performant model that supports a wide range of use cases.
+-        **8 billion parameters:** A lightweight, ultra-fast model that retains many of the advanced features of its larger counterpart, which makes it highly capable.
 
-Llama 2-Chat is an efficient, versatile AI assistant that can tackle complicated reasoning tasks across diverse domains. You can use it for a wide range of use cases, such as: 
+At Clarifai, we offer the [8 billion parameter version](https://clarifai.com/meta/Llama-3/models/llama-3_1-8b-instruct), which you can fine-tune for text generation and text classification tasks. We converted it into the Hugging Face Transformers format to enhance its compatibility with our platform and pipelines, ease its consumption, and optimize its deployment in various environments.
 
-- Text generation 
-- Text classification
+Further, to get the best of what’s possible with the Llama 3.1 8B model, we quantized it using the [GPTQ](https://arxiv.org/pdf/2210.17323.pdf) quantization method. 
+In addition, we employed the LoRA (Low-Rank Adaptation) method to achieve efficient and fast fine-tuning of the pre-trained Llama 3.1 8B model.
 
-At Clarifai, we converted Llama 2-Chat into the Hugging Face Transformers format to enhance its compatibility with our platform and pipelines, ease its consumption, and optimize its deployment in various environments. 
-
-Further, to get the best of what’s possible with the Llama 2-Chat model, we quantized it using the [GPTQ](https://arxiv.org/pdf/2210.17323.pdf) quantization method. 
-
-In addition, we employed the LoRA (Low-Rank Adaptation) method to achieve efficient and fast fine-tuning of the pre-trained Llama 2-Chat model.
-
-:::warning Quantization
+These enhancements ensure that users get the best performance and adaptability from the LlaMA 3.1 8B model on the Clarifai platform.
+                                                                                                                                       
+                                                                                                                                                                         :::warning Quantization
 
 Quantization is a model compression method that involves converting the weights and activations within an LLM from a high-precision data representation to a lower-precision one – without sacrificing significant accuracy. 
 
@@ -56,7 +56,23 @@ LoRA is a game-changer for fine-tuning LLMs on resource-constrained devices or e
 
 This leads to efficient fine-tuning for text-to-text tasks, like text classification. LoRA significantly reduces the number of trainable parameters in models, enabling faster and more resource-friendly adaptation to specific downstream tasks.
 
-:::
+:::                                                                                                                                                                                                                                                           	                                                   
+## Llama 2
+
+[Llama 2](https://arxiv.org/abs/2307.09288) is a collection of pre-trained and fine-tuned large language models (LLMs) created and publicly released by Meta AI. It is available in three model sizes: 7, 13, and 70 billion parameters. Llama 2-Chat is a fine-tuned version of Llama 2, specifically optimized for dialogue-based scenarios. 
+
+[Llama 2-Chat](https://clarifai.com/meta/Llama-2/models/llama2-70b-chat) is designed to produce human-like responses to user inputs, which makes it appropriate for powering conversational and chatbot-like AI applications. The model can learn the structures and intricate patterns of natural language conversations and produce coherent and contextually relevant outputs. 
+
+Llama 2-Chat is an efficient, versatile AI assistant that can tackle complicated reasoning tasks across diverse domains. You can use it for a wide range of use cases, such as: 
+
+- Text generation 
+- Text classification
+
+At Clarifai, we converted Llama 2-Chat into the Hugging Face Transformers format to enhance its compatibility with our platform and pipelines, ease its consumption, and optimize its deployment in various environments. 
+
+Further, to get the best of what’s possible with the Llama 2-Chat model, we quantized it using the GPTQ quantization method. 
+
+In addition, we employed the LoRA (Low-Rank Adaptation) method to achieve efficient and fast fine-tuning of the pre-trained Llama 2-Chat model.
 
 ## GPT-Neo
 

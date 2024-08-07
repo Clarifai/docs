@@ -65,12 +65,6 @@ draft: false
 | ![new-feature](/img/new_feature.jpg) | Added some features | <ul><li> Added a new `Dataset` class with several methods for handling datasets, including creating and deleting versions, listing versions, and uploading data from a folder or a CSV file.</li><li> Added several new methods to the `Input` class for handling inputs, including methods for bulk uploading, waiting for inputs, deleting failed inputs, and retrying uploads.</li><li>Added several new methods and properties to the `Search` class, including support for different search algorithms and metrics, and improved handling of queries and pagination.</li></ul> |
 | ![improvement](/img/improvement.jpg) | Made an improvement| <ul><li> Since the `uuidv4` package has been deprecated in npm, we replaced it with the recommended `uuid` package.</li></ul> |
 
-## Models
-
-|Status                                |Change                  |Details                    |
-|--------------------------------------|------------------------|---------------------------|
-|![improvement](/img/improvement.jpg)| Enabled deletion of associated model assets when removing a model annotation| <ul><li>Now, when deleting a model annotation, the associated model assets are also marked as deleted.</li></ul> |
-
 ## Community
 
 |Status                                |Change                  |Details                    |
