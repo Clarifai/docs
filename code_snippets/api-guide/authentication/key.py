@@ -1,10 +1,28 @@
-###################################################################################
-# In this section, we set the user authentication, model details, and the URL
-# of the image we want as an input. Change these strings to run your own example.
-###################################################################################
+##################################################################################################
+# FOR SECURE AUTHENTICATION, SET API KEY AS AN ENVIRONMENT VARIABLE
+#################################################################################################
 
-# Your API Key can be found in the portal under your App's settings
-KEY = 'YOUR_APP_KEY_HERE'
+# The built-in Python os library provides functions to access and manipulate environment variables
+import os
+
+# Python-dotenv reads key-value pairs from a .env file and can set them as environment variables
+# Install the library by running `pip install python-dotenv`
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# Set the `CLARIFAI_API_KEY` environment variable before running the code. For example, you can set it in an .env file as `export CLARIFAI_API_KEY=YOUR_API_KEY_HERE`
+# Your API Key can be found in the platform in your app's settings page
+
+KEY = os.getenv('CLARIFAI_API_KEY')
+if KEY is None:
+    raise ValueError("API Key is not set. Please set the CLARIFAI_API_KEY environment variable.")
+
+################################################################################################
+# In this section, we set the  model details and the URL of the image we want as an input. 
+# Change these strings to run your own example.
+################################################################################################
+
 MODEL_ID = 'YOUR_MODEL_ID_HERE'
 # This is optional. You can specify a model version or the empty string for the default
 MODEL_VERSION_ID = ''

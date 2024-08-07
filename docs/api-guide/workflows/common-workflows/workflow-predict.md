@@ -71,7 +71,13 @@ If you want to make a predict call with an external workflow that is outside the
 
 ## Images
 
-Let's illustrate how you would get predictions from image inputs using Clarifai's [Face-Sentiment](https://clarifai.com/clarifai/main/workflows/Face-Sentiment) workflow.
+Let's illustrate how you would get predictions from image inputs using Clarifai's [Face-Sentiment](https://clarifai.com/clarifai/main/workflows/Face-Sentiment) workflow. The workflow combines these three models: 
+
+- A visual detector model that detects bounding box regions in an image;
+- An image cropper model that extracts the specific region of interest from an image;
+- A visual classifier model that classifies an image into a set of concepts.
+
+Note that the `base64` output representation of the image in bytes is already in binary format. It is not encoded, so you do not need to decode it for further downstream tasks.
 
 <Tabs>
 
