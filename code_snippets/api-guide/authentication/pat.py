@@ -1,10 +1,28 @@
 ##################################################################################################
-# In this section, we set the user authentication, user and app ID, model details, and the URL
+# FOR SECURE AUTHENTICATION, SET PAT AS AN ENVIRONMENT VARIABLE
+#################################################################################################
+
+# The built-in Python os library provides functions to access and manipulate environment variables
+import os
+
+# Python-dotenv reads key-value pairs from a .env file and can set them as environment variables
+# Install the library by running `pip install python-dotenv`
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# Set the `CLARIFAI_PAT` environment variable before running the code. For example, you can set it in an .env file as `export CLARIFAI_PAT=YOUR_PAT_HERE`
+# Your PAT can be found in your Clarifai's account Security section
+
+PAT = os.getenv('CLARIFAI_PAT')
+if PAT is None:
+    raise ValueError("PAT is not set. Please set the CLARIFAI_PAT environment variable.")
+
+##################################################################################################
+# In this section, we set the user ID, app ID, model details, and the URL
 # of the image we want as an input. Change these strings to run your own example.
 #################################################################################################
 
-# Your PAT (Personal Access Token) can be found in the Account's Security section
-PAT = 'YOUR_PAT_HERE'
 # Specify the correct user_id/app_id pairings
 # Since you're making inferences outside your app's scope
 USER_ID = 'clarifai'
