@@ -22,18 +22,17 @@ Choosing optimal hyperparameters is crucial for training machine learning models
 1. To use the hyperparameter sweeps module in your application, navigate to the **Manage Installed Modules** section within your Clarifai app. This option can be found in the left sidebar under the **Modules** tab. In the **Install a Module by URL** section, provide the URL `https://clarifai.com/clarifai/ml/modules/module-hyperparameter_sweeps` of the Hyperparameter Sweeps module to add it to your app and press enter.
 
 
-![alt text](</static/img/agent-system-operators/HS 1.png>)
+![alt text](<../../../static/img/agent-system-operators/HS 1.png>)
 
 
 
+1. Select the visibility and click **Install to this App.**
 
-2. Select the visibility and click **Install to this App.**
-
-
-![alt text](</static/img/agent-system-operators/HS 2.png>)
+![alt text](<../../../static/img/agent-system-operators/HS 2.png>)
 
 
-::info
+
+:::info
 
 App has to be made public to make the module public.
 
@@ -51,18 +50,16 @@ Once the module is installed you can input the details of the model you intend t
 1. **Model Details**: In the first section of the module, input the details of the model you intend to train. This includes selecting the base model and specifying any initial configurations.
 
 
-![alt text](</static/img/agent-system-operators/HS 3.png>)
+![alt text](<../../../static/img/agent-system-operators/HS 3.png>)
 
 
 2. **Checkpoint Model Details** (Optional): If you want to use a checkpoint model as a starting point for training, specify this in the second section. This step is optional and depends on whether you wish to continue training from a previously saved state.
 
-
-![alt text](</static/img/agent-system-operators/HS 4.png>)
-
+![alt text](<../../../static/img/agent-system-operators/HS 4.png>)
 
 
 
-3. **Training Parameters**: In the third section, enter training-related parameters. These parameters are designed to provide granular control over the data quality and selection process in the Hyperparameter Sweeps module, enhancing the user's ability to fine-tune model training according to specific requirements and constraints.
+1. **Training Parameters**: In the third section, enter training-related parameters. These parameters are designed to provide granular control over the data quality and selection process in the Hyperparameter Sweeps module, enhancing the user's ability to fine-tune model training according to specific requirements and constraints.
    * **Invalid Data Tolerance Percentage**: Defines the maximum percentage of invalid data allowed in the training set without being considered for training, allowing for flexibility in data cleanliness standards.
    * **Training Dataset**: Allows selection of the dataset to be used for training, enabling the model to learn from the most relevant and updated data available.
    * **Training Dataset Version**: Specifies the version of the training dataset to be used, ensuring consistency and control over the data used in different training runs.
@@ -70,12 +67,12 @@ Once the module is installed you can input the details of the model you intend t
 
 
 
-![alt text](</static/img/agent-system-operators/HS 5.png>)
+
+![alt text](<../../../static/img/agent-system-operators/HS 5.png>)
 
 
 
-
-4. **Output Parameters**: In the fourth section, define what output you expect from the training. These parameters are designed to provide granular control over the data quality and selection process in the Hyperparameter Sweeps module, enhancing the user's ability to fine-tune model training according to specific requirements and constraints.
+1. **Output Parameters**: In the fourth section, define what output you expect from the training. These parameters are designed to provide granular control over the data quality and selection process in the Hyperparameter Sweeps module, enhancing the user's ability to fine-tune model training according to specific requirements and constraints.
    * **List of concepts**:Allows users to select specific concepts that the model should focus on during the training process.
    * **Maximum Concepts**: Sets a limit on the number of concepts the model will consider during each training iteration.
    * **Min Value**: Establishes a minimum threshold value for the prediction confidence of concepts during training.
@@ -83,20 +80,20 @@ Once the module is installed you can input the details of the model you intend t
 
 
 
-![alt text](</static/img/agent-system-operators/HS 6.png>)
+![alt text](<../../../static/img/agent-system-operators/HS 6.png>)
 
 
-5. **[Model Template](https://docs.clarifai.com/portal-guide/model/deep-training/#template-types)**: Select a model template that suits your training needs. This template will decide the architectural foundation of your model.
-
-
-
-
-![alt text](</static/img/agent-system-operators/HS 7.png>)
+2. **[Model Template](https://docs.clarifai.com/portal-guide/model/deep-training/#template-types)**: Select a model template that suits your training needs. This template will decide the architectural foundation of your model.
 
 
 
 
-6. **Sweepable Parameters**: Sweepable parameters are adjustable during model training to optimize performance, like learning rate and batch size. They're varied in systematic sweeps to determine the most effective settings that enhance the model's accuracy and efficiency. Based on the template selected, this section will list sweepable parameters for that template.
+![alt text](<../../../static/img/agent-system-operators/HS 7.png>)
+
+
+
+
+3. **Sweepable Parameters**: Sweepable parameters are adjustable during model training to optimize performance, like learning rate and batch size. They're varied in systematic sweeps to determine the most effective settings that enhance the model's accuracy and efficiency. Based on the template selected, this section will list sweepable parameters for that template.
 
 
    For any parameter you wish to experiment with; check the **Try a range of values** checkbox, define the minimum and maximum values for the range, and set the step size to determine how incrementally the module will test between the min and max values.
@@ -122,12 +119,12 @@ Once the module is installed you can input the details of the model you intend t
 
 
 
-![alt text](</static/img/agent-system-operators/HS 8.png>)
+![alt text](<../../../static/img/agent-system-operators/HS 8.png>)
 
 
 
 
-7. **Non-Sweepable Parameters**: Non-sweepable parameters remain fixed throughout the training process and are not typically included in optimization sweeps, such as model architecture or data preprocessing methods. Their constancy supports stability and consistency in model training conditions.
+4. **Non-Sweepable Parameters**: Non-sweepable parameters remain fixed throughout the training process and are not typically included in optimization sweeps, such as model architecture or data preprocessing methods. Their constancy supports stability and consistency in model training conditions.
 
 
    Below list describes all the non - sweepable parameters associated with all the templates.
@@ -156,7 +153,7 @@ Once the module is installed you can input the details of the model you intend t
 
 
 
-![alt text](</static/img/agent-system-operators/HS 9.png>)
+![alt text](<../../../static/img/agent-system-operators/HS 9.png>)
 
 
 
@@ -169,10 +166,10 @@ Once the module is installed you can input the details of the model you intend t
 1. **Generating Combinations**: Based on the input from previous sections, the module generates all possible combinations of hyperparameter values. These are displayed in the eighth section of the module interface.
 
 
-![alt text](</static/img/agent-system-operators/HS 10.png>)
+![alt text](<../../../static/img/agent-system-operators/HS 10.png>)
 
 
-2. **Selection and Cost Estimation**: Review the generated combinations and select which ones you want to proceed with. The module will display the estimated cost for training each combination per hour.
+1. **Selection and Cost Estimation**: Review the generated combinations and select which ones you want to proceed with. The module will display the estimated cost for training each combination per hour.
 
 
 3. **Submission**: After selecting the desired combinations and reviewing the associated costs, click on **Submit** to initiate the training process. The module will create model versions for each combination in the "Models" section of your app.
@@ -188,7 +185,7 @@ Once the module is installed you can input the details of the model you intend t
 1. **Training and Testing Details**: You can monitor the progress of model training and testing from the "Models" page in your app.
 
 
-![alt text](</static/img/agent-system-operators/HS last.png>)
+![alt text](<../../../static/img/agent-system-operators/HS last.png>)
 
 
 2. **Performance Review**: To evaluate the performance of each model version, visit the Model Training Page. This interface allows you to compare results across different hyperparameter settings to determine which configuration yields the best results.
