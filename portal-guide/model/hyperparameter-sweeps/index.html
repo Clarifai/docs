@@ -18,8 +18,8 @@
 
 <script src="/scripts/sidebar.js" async></script>
 <script src="/scripts/intercomConfig.js" async></script><link rel="stylesheet" href="/assets/css/styles.9421978a.css">
-<script src="/assets/js/runtime~main.cdeb6913.js" defer="defer"></script>
-<script src="/assets/js/main.b0e0c083.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.0937af69.js" defer="defer"></script>
+<script src="/assets/js/main.c3338497.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5W9P7GR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -34,7 +34,7 @@
 <li>To use the hyperparameter sweeps module in your application, navigate to the <strong>Manage Installed Modules</strong> section within your Clarifai app. This option can be found in the left sidebar under the <strong>Modules</strong> tab. In the <strong>Install a Module by URL</strong> section, provide the URL <code>https://clarifai.com/clarifai/ml/modules/module-hyperparameter_sweeps</code> of the Hyperparameter Sweeps module to add it to your app and press enter.</li>
 </ol>
 <p><img decoding="async" loading="lazy" alt="alt text" src="/assets/images/HS 1-88e15a6c443e3cf7dafbcfcca8ee9b5d.png" width="3024" height="1550" class="img_ev3q"></p>
-<ol>
+<ol start="2">
 <li>Select the visibility and click <strong>Install to this App.</strong></li>
 </ol>
 <p><img decoding="async" loading="lazy" alt="alt text" src="/assets/images/HS 2-b03ea7a5a3b021ebe00623ed3f59fc20.png" width="3024" height="1550" class="img_ev3q"></p>
@@ -49,7 +49,7 @@
 <li><strong>Checkpoint Model Details</strong> (Optional): If you want to use a checkpoint model as a starting point for training, specify this in the second section. This step is optional and depends on whether you wish to continue training from a previously saved state.</li>
 </ol>
 <p><img decoding="async" loading="lazy" alt="alt text" src="/assets/images/HS 4-8142cf23e7b407113a8fc3202b43b094.png" width="3024" height="1550" class="img_ev3q"></p>
-<ol>
+<ol start="3">
 <li><strong>Training Parameters</strong>: In the third section, enter training-related parameters. These parameters are designed to provide granular control over the data quality and selection process in the Hyperparameter Sweeps module, enhancing the user&#x27;s ability to fine-tune model training according to specific requirements and constraints.<!-- -->
 <ul>
 <li><strong>Invalid Data Tolerance Percentage</strong>: Defines the maximum percentage of invalid data allowed in the training set without being considered for training, allowing for flexibility in data cleanliness standards.</li>
@@ -59,7 +59,7 @@
 </li>
 </ol>
 <p><img decoding="async" loading="lazy" alt="alt text" src="/assets/images/HS 5-ab1e2dab445d0dc577b787b6c484e2bb.png" width="3024" height="1550" class="img_ev3q"></p>
-<ol>
+<ol start="4">
 <li><strong>Output Parameters</strong>: In the fourth section, define what output you expect from the training. These parameters are designed to provide granular control over the data quality and selection process in the Hyperparameter Sweeps module, enhancing the user&#x27;s ability to fine-tune model training according to specific requirements and constraints.<!-- -->
 <ul>
 <li><strong>List of concepts</strong>:Allows<!-- --> users to select specific concepts that the model should focus on during the training process.</li>
@@ -69,13 +69,13 @@
 </li>
 </ol>
 <p><img decoding="async" loading="lazy" alt="alt text" src="/assets/images/HS 6-d800a673828ee28f3106b411298fc183.png" width="3024" height="1550" class="img_ev3q"></p>
-<ol start="2">
+<ol start="5">
 <li><strong><a href="https://docs.clarifai.com/portal-guide/model/deep-training/#template-types" target="_blank" rel="noopener noreferrer">Model Template</a></strong>: Select a model template that suits your training needs. This template will decide the architectural foundation of your model.</li>
 </ol>
 <p><img decoding="async" loading="lazy" alt="alt text" src="/assets/images/HS 7-d9f3a46ddc09788780ea674568d232bc.png" width="3024" height="1550" class="img_ev3q"></p>
-<ol start="3">
-<li>
-<p><strong>Sweepable Parameters</strong>: Sweepable parameters are adjustable during model training to optimize performance, like learning rate and batch size. They&#x27;re varied in systematic sweeps to determine the most effective settings that enhance the model&#x27;s accuracy and efficiency. Based on the template selected, this section will list sweepable parameters for that template.</p>
+<ol start="6">
+<li><strong>Sweepable Parameters</strong>: Sweepable parameters are adjustable during model training to optimize performance, like learning rate and batch size. They&#x27;re varied in systematic sweeps to determine the most effective settings that enhance the model&#x27;s accuracy and efficiency. Based on the template selected, this section will list sweepable parameters for that template.</li>
+</ol>
 <p>For any parameter you wish to experiment with; check the <strong>Try a range of values</strong> checkbox, define the minimum and maximum values for the range, and set the step size to determine how incrementally the module will test between the min and max values.</p>
 <p>The below list describes all the sweepable parameters associated with all the templates.</p>
 <ul>
@@ -91,10 +91,8 @@
 <li><strong>flip_probability</strong>: Determines the likelihood of the image being flipped horizontally or vertically during data augmentation.</li>
 <li><strong>flip_direction</strong>: Specifies the axis on which the image flips are performed during preprocessing, enhancing model generalization.</li>
 </ul>
-</li>
-</ol>
 <p><img decoding="async" loading="lazy" alt="alt text" src="/assets/images/HS 8-f4665ff065065feb396089c92638ac36.png" width="3024" height="1550" class="img_ev3q"></p>
-<ol start="4">
+<ol start="7">
 <li>
 <p><strong>Non-Sweepable Parameters</strong>: Non-sweepable parameters remain fixed throughout the training process and are not typically included in optimization sweeps, such as model architecture or data preprocessing methods. Their constancy supports stability and consistency in model training conditions.</p>
 <p>Below list describes all the non - sweepable parameters associated with all the templates.</p>
@@ -125,7 +123,7 @@
 <li><strong>Generating Combinations</strong>: Based on the input from previous sections, the module generates all possible combinations of hyperparameter values. These are displayed in the eighth section of the module interface.</li>
 </ol>
 <p><img decoding="async" loading="lazy" alt="alt text" src="/assets/images/HS 10-576cf7faf3610c64c76195900c1c9c27.png" width="3024" height="1456" class="img_ev3q"></p>
-<ol>
+<ol start="2">
 <li>
 <p><strong>Selection and Cost Estimation</strong>: Review the generated combinations and select which ones you want to proceed with. The module will display the estimated cost for training each combination per hour.</p>
 </li>
