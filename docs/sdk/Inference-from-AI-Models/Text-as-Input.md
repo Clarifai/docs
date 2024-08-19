@@ -11,6 +11,7 @@ import CodeTextClassifier from "!!raw-loader!../../../code_snippets/python-sdk/i
 import CodeTextClassifierTS from "!!raw-loader!../../../code_snippets/python-sdk/inference/textClassifier.ts";
 
 import CodeTextGenLLM from "!!raw-loader!../../../code_snippets/python-sdk/inference/text_gen_llm.py";
+import CodeTextGenLLMInference from "!!raw-loader!../../../code_snippets/python-sdk/inference/text_gen_llm_inference.py";
 import CodeTextGenLLMTS from "!!raw-loader!../../../code_snippets/python-sdk/inference/textGenerationUsingLLM.ts";
 
 import CodeTextClassLLM from "!!raw-loader!../../../code_snippets/python-sdk/inference/text_class_llm.py";
@@ -87,7 +88,17 @@ Empower your applications with dynamic text creation using the robust capabiliti
 </TabItem>
 </Tabs>
 
+### Set Inference Parameters 
 
+When making predictions using LLMs on our platform, some models offer the ability to specify various inference parameters to influence their output. These parameters control the behavior of the model during the generation process, affecting aspects like creativity, coherence, and the diversity of the generated text.
+
+You can learn more about them [here](https://docs.clarifai.com/portal-guide/ppredict/generative-ai). 
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CodeTextGenLLMInference}</CodeBlock>
+</TabItem>
+</Tabs>
 
 ## Text Classifier Using LLM
 

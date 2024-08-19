@@ -28,11 +28,12 @@ We can issue a release at any of the following phases, based on the degree of ma
 :::
 
 
-| Release Type | Who can use?   | For production? |  Description             | Purpose                   |  Interface Stability      |   Support                |
+| Release Type | Description     | Purpose      |  Who can use?   |  For Production/SLA?      |  Interface Stability      |   Support                |
 |--------------|----------------|-----------------|--------------------------|---------------------------|---------------------------|---------------------------|
-|<b>Private Preview</b>| Invitees | No   | Alpha quality available only to a select group of users, often by invitation| Gather feedback and identify issues from a controlled, smaller user base before wider release| No| Engineering team|
-|<b>Developer Preview</b>| Engineers  | No    | A beta version of the release that is still considered a pre-release. It’s available to all users, particularly engineers, providing an opportunity to test new features. This type of release is typically reserved for Streamlit UI modules or new features released with programmatic support, such as via the Clarifai API and SDKs.| Gather feedback from engineers, ensure compatibility, and identify any issues related to the development environment or integration with other systems| No _(It may be feature-complete but still unstable)_ |Engineering team|
-|<b>General Availability (GA)</b>| Everyone | Yes   | The official release of the product to everyone. It is considered stable, feature-complete, and ready for production use| The final product is available for use by any user based on their [pricing plan](https://www.clarifai.com/pricing) | Yes | Support team|
+| <b> Private Preview </b> | Available to a select group of design partners, often by invitation. It's of Alpha quality. | Gather feedback from a controlled user base before a wider release. Public documentation may not be available. | Invite only | No |  No | Engineering team | 
+| <b> Public Preview </b> | Available to all users, but still considered pre-release. The goal of public preview releases is to provide users with an opportunity to test new features. Public releases may be feature-complete but still have areas of instability. | Gather feedback from a broader user base, ensure compatibility, and identify any integration issues prior to general availability. Documentation is usually available. | Everyone | No | Yes | Support team | 
+| <b> General Availability (GA) </b> | The official release of the product to everyone. It is considered stable, feature-complete, and ready for production use. | The final product is available for use by any user based on their pricing plan. | Everyone | Yes | Yes | Support team | 
+
 
 ## Monthly Update Types
 
@@ -42,7 +43,7 @@ Clarifai releases major platform updates monthly on the first Tuesday. The updat
 - **Y**: Represents the month of the major release.
 - **Z**: Denotes the minor release within that month's major release.
 
-Note:
+**Note**:
 
 - Clarifai supports Generally Available (GA) releases of active products for up to two years. 
 - Eligible code-fixes and hot-fixes are provided via new minor releases (Z) on top of the latest major release branch, for up to two releases from the most current major release. 
