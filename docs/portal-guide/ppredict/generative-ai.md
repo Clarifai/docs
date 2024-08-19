@@ -182,7 +182,7 @@ Let’s break down the meaning of the template:
 -        `end_of_turn`:— This delimiter indicates the end of a user's input.
 -        `GPT4 Correct Assistant:` — This indicates the start of the assistant's (or the language model's) response, which should be a corrected or refined version of the user's input or an appropriate answer to the user's question.
 
-You can also add the `<|start_of_turn|>` delimiter, which specifically indicates the start of a turn; in this case, a user’s input.
+You can also add the `start_of_turn` delimiter, which specifically indicates the start of a turn; in this case, a user’s input.
 
 Here is an example:
 
