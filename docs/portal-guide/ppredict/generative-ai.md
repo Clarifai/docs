@@ -168,7 +168,7 @@ Many LLMs require prompts to follow a specific template format. To streamline th
 
 By default, the `prompt_template` is set to the LLM's standard template, allowing you to simply enter your prompts without worrying about formatting. The prompts will be automatically adjusted to fit the required template.
 
-If you need more flexibility, you can customize the `prompt_template` parameter. When modifying this variable, make sure it includes the placeholder `prompt`, which will be replaced with the user's prompt input.
+If you need more flexibility, you can customize the `prompt_template` parameter. When modifying this variable, make sure it includes the placeholder `{prompt}`, which will be replaced with the user's prompt input.
 
 For example, the [Openchat-3.6-8b](https://clarifai.com/openchat/openchat/models/openchat-3_6-8b-20240522) model supports the following chat template format:
 
@@ -178,7 +178,7 @@ GPT4 Correct User: prompt | end_of_turn | GPT4 Correct Assistant:
 
 Let’s break down the meaning of the template:
 -      `GPT4 Correct User`:  — This delimiter indicates the start of a user's input.
--       `prompt`: — This substring will be replaced by the actual input or question from the user. It must be included in the prompt template. It works just like the [prompter node](https://docs.clarifai.com/portal-guide/agent-system-operators/prompter#zero-shot-prompting) in a workflow builder, which must contain the `data.raw.text` substring. When your text data is inputted at inference time, all occurrences of the prompt variable within the template will be replaced with the prompt text.
+-       `prompt`: — This substring will be replaced by the actual input or question from the user. It must be included in the prompt template. It works just like the [prompter node](https://docs.clarifai.com/portal-guide/agent-system-operators/prompter#zero-shot-prompting) in a workflow builder, which must contain the `{data.raw.text}` substring. When your text data is inputted at inference time, all occurrences of the {prompt} variable within the template will be replaced with the prompt text.
 -        `end_of_turn`:— This delimiter indicates the end of a user's input.
 -        `GPT4 Correct Assistant:` — This indicates the start of the assistant's (or the language model's) response, which should be a corrected or refined version of the user's input or an appropriate answer to the user's question.
 
