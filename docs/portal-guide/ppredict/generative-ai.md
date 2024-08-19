@@ -1,7 +1,7 @@
 ---
 description: Learn how to make predictions using our generative AI models, including LLMs
 sidebar_position: 2
-draft: true
+draft: false
 ---
 
 # Generative AI
