@@ -206,6 +206,6 @@ After the model has been trained, you can start using it to make generative text
 
 :::info
 
-[Click here](https://docs.clarifai.com/portal-guide/model/agent-system-operators/prompter) to learn more about the different prompt techniques you can use to instruct your text-to-text model. 
+[Click here](https://docs.clarifai.com/portal-guide/agent-system-operators/prompter/) to learn more about the different prompt techniques you can use to instruct your text-to-text model. 
 
 :::

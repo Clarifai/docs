@@ -12,9 +12,9 @@ sidebar_position: 1
 
 A prompt template serves as a pre-configured piece of text used to instruct a large language model (LLM). It acts as a structured query or input that guides the model in generating the desired response.
 
-:::warning Prompt Templates
+:::note Prompt Templates
 
-Many tasks you’ll need LLMs for are repeatable. With prompt templates, you can simplify repeat LLMs use cases. By making these part of your Clarifai application, you won’t need to re-enter prompts the same way every time
+Many tasks you’ll need LLMs for are repeatable. With [prompt templates](https://docs.clarifai.com/portal-guide/ppredict/generative-ai#prompt-template), you can simplify repeat LLMs use cases. By making these part of your Clarifai application, you won’t need to re-enter prompts the same way every time.
 
 :::
 
@@ -24,7 +24,7 @@ LLMs are designed to understand and generate text based on the instructions or p
 
 The quality and relevance of the generated texts depend on the specific wording and context of the prompt. Prompts can be structured in various ways, and their effectiveness often depends on how well they convey the desired task or instruction to the model. 
 
-:::warning Prompt Engineering
+:::note Prompt Engineering
 
 The process of designing and refining prompts to effectively interact with and elicit desired responses is called prompt engineering. It involves crafting specific questions, statements, or input formats that guide the model to generate useful, relevant, and accurate outputs. 
 
