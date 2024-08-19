@@ -50,6 +50,12 @@ Leverage the Clarifai SDKs to seamlessly generate a new application, complete wi
 
 Visit this [page](https://docs.clarifai.com/clarifai-basics/applications/) for more information.
 
+:::note
+
+If you create an application via the API, Universal will be set as default base workflow unless you [specify a different one](https://docs.clarifai.com/api-guide/workflows/base-workflows/#update-your-base-workflow).
+
+:::
+
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeCreateApp}</CodeBlock>

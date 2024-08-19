@@ -173,15 +173,22 @@ Select the **Text Generator** option.
 
 The ensuing page allows you to create and train a text-to-text model for generation or conversion purposes. 
 
-![model types](/img/others/fine-tune-4.png)
+![alt text](../../../../static/img/others/fine-tune-4.png)
 
-- **Model Id**—Provide an ID for your model.
+- **Model ID**—Provide an ID for your model.
 - **Dataset**—Select the dataset you want to use for fine-tuning the model. Also, select the version of your dataset.
 - **Invalid data_tolerance_percent**—Optionally, you can set a tolerance threshold (0 to 100) for the percentage of invalid inputs during training, and if this threshold is exceeded, training is stopped with an error.
-- **Template**—Select a pre-configured model template you want to use to train on your data. You can select any of the following templates:
+- **Template**—Select a pre-configured model template you want to use to train on your data. **HF_Llama_3_1_8b_instruct_GPTQ_lora** is the recommended template as shown in the figure above. However, you can select any of the following templates:
 
-     - Llama2 7/13B or Mistral models with GPTQ-Lora, featuring enhanced support for quantized/mixed-precision training techniques.
-     - GPT-Neo model, either the 125 million parameters version or the 2.7 billion parameters version.
+     - **HF_Llama_3_1_8b_instruct_GPTQ_lora**: Template for fine-tuning a 3.1 version Llama model with 8 billion parameters optimized for instruction-based tasks. This version uses quantization (GPTQ) and Low-Rank Adaptation (LoRA) for efficient training.
+     - **HF_GPTNeo_125m_lora**: Template for the GPT-Neo model with 125 million parameters, using the LoRA method for efficient parameter adaptation, suitable for smaller scale projects or less resource-intensive applications.
+     - **HF_GPTNeo_2p7b_lora**: Utilizes the 2.7 billion parameter GPT-Neo model, incorporating LoRA for effective fine-tuning, ideal for medium to large scale natural language processing tasks.
+     - **HF_Llama_2_13b_chat_GPTQ_lora**: A fine-tuned 13 billion parameter Llama model for chat applications, using both quantization and LoRA for optimization, designed to handle complex dialog systems.
+     - **HF_Llama_2_7b_chat_GPTQ_lora**: Similar to the 13b version but with 7 billion parameters, this template is also geared towards chat applications, providing a balance between performance and computational efficiency.
+     - **HF_Mistral_7b_instruct_GPTQ_lora**: Template for the 7 billion parameter Mistral model, fine-tuned for instructional tasks with both GPTQ and LoRA, aimed at delivering high performance with efficient training.
+     - **HF_Mistral_7b_lora**: This template uses the Mistral model with 7 billion parameters optimized with LoRA only, suitable for diverse applications requiring fast model adaptation.
+     - **HuggingFace_AdvancedConfig**: Offers advanced configuration options for fine-tuning Hugging Face models, allowing for detailed customization to meet specific performance or application requirements.
+
 
 :::warning text Fine-Tuning Templates
 
@@ -202,7 +209,8 @@ Finally, click the **Train** button.
 
 After the model has been trained, you can start using it to make generative text-to-text predictions. 
 
-![model types](/img/others/fine-tune-5.png)
+![alt text](../../../../static/img/others/fine-tune-5.png)
+
 
 :::info
 

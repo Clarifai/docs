@@ -90,7 +90,7 @@ const config = {
       announcementBar: {
         id: 'support_us_' + Date.now(),
         content:
-          '<span>New!</span> Click, Annotate, Dominate with Auto-annotation <a target="_blank" rel="noopener noreferrer" href="https://www.clarifai.com/blog/clarifai-10.6-click-annotate-dominate-with-auto-annotation">read now</a>',
+          '<span>New!</span> Your Data, Your AI: Fine-Tune Llama 3.1 <a target="_blank" rel="noopener noreferrer" href="https://www.clarifai.com/blog/clarifai-10.7-finetune-llama-3.1">read now</a>',
         isCloseable: false,
       },
       navbar: {
