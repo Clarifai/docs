@@ -8,7 +8,7 @@ sidebar_position: 2
 **Make predictions using our generative AI models, including LLMs**
 <hr />
 
-Generative AI models are a type of artificial intelligence system designed to create new content, such as text, images, audio, or even videos, based on patterns learned from existing data.
+Generative AI models are a type of artificial intelligence system that are designed to create new content, such as text, images, audio, or even videos, based on patterns learned from existing data.
 
 Unlike traditional AI models, which typically classify or predict data, generative models can produce novel and creative outputs that are similar to, but not exactly the same as, the data they were trained on.
 
