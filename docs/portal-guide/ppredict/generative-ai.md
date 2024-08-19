@@ -179,10 +179,10 @@ GPT4 Correct User: {prompt}<|end_of_turn|>GPT4 Correct Assistant:
 Let’s break down the meaning of the template:
 -      `GPT4 Correct User`:  — This delimiter indicates the start of a user's input.
 -       `{prompt}`: — This substring will be replaced by the actual input or question from the user. It must be included in the prompt template. It works just like the [prompter node](https://docs.clarifai.com/portal-guide/agent-system-operators/prompter#zero-shot-prompting) in a workflow builder, which must contain the `{data.raw.text}` substring. When your text data is inputted at inference time, all occurrences of the {prompt} variable within the template will be replaced with the prompt text.
--        `<|end_of_turn|>`:— This delimiter indicates the end of a user's input.
+-        `|end_of_turn|`:— This delimiter indicates the end of a user's input.
 -        `GPT4 Correct Assistant:` — This indicates the start of the assistant's (or the language model's) response, which should be a corrected or refined version of the user's input or an appropriate answer to the user's question.
 
-You can also add the `<|start_of_turn|>` delimiter, which specifically indicates the start of a turn; in this case, a user’s input.
+You can also add the `|start_of_turn|` delimiter, which specifically indicates the start of a turn; in this case, a user’s input.
 
 Here is an example:
 
@@ -204,12 +204,12 @@ The main purpose of this format is to clearly delineate the roles and contributi
 
 Let’s break down its meaning:
 
-- `<|begin_of_text|>` — This delimiter marks the beginning of the text content.
-- `<|start_header_id|>system<|end_header_id|>` — This indicates the beginning of a system-level instruction or context.
+- `|begin_of_text|` — This delimiter marks the beginning of the text content.
+- `|start_header_id|system|end_header_id|` — This indicates the beginning of a system-level instruction or context.
 - `{system_prompt}` — This placeholder is for the actual system-level instruction or context.
-- `<|eot_id|>` — This indicates the end of a text unit; in this case, the system prompt.
-- `<|start_header_id|>user<|end_header_id|>` — This marks the beginning of a user's input.
+- `|eot_id|` — This indicates the end of a text unit; in this case, the system prompt.
+- `|start_header_id|user|end_header_id|` — This marks the beginning of a user's input.
 -  `{prompt}` — As earlier described, this placeholder represents the actual prompt or query from the user.
-- `<|eot_id|>` — This marks the end of a text unit; in this case, the user's input.
--  `<|start_header_id|>assistant<|end_header_id|>` —  This indicates the beginning of the assistant's response.
+- `|eot_id|` — This marks the end of a text unit; in this case, the user's input.
+-  `|start_header_id|assistant|end_header_id|` —  This indicates the beginning of the assistant's response.
 
