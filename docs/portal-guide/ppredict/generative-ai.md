@@ -178,7 +178,7 @@ GPT4 Correct User: {prompt}<|end_of_turn|>GPT4 Correct Assistant:
 
 Let’s break down the meaning of the template:
 -      `GPT4 Correct User`:  — This delimiter indicates the start of a user's input.
--       `{prompt}`: — This substring will be replaced by the actual input or question from the user. It must be included in the prompt template. It works just like the [prompter node](https://docs.clarifai.com/portal-guide/agent-system-operators/prompter#zero-shot-prompting) in a workflow builder, which must contain the `{data.raw.text}` substring. When your text data is inputted at inference time, all occurrences of the `{prompt}` variable within the template will be replaced with the provided prompt text.
+-       `{prompt}`: — This substring will be replaced by the actual input or question from the user. It must be included in the prompt template. It works just like the [prompter node](https://docs.clarifai.com/portal-guide/agent-system-operators/prompter#zero-shot-prompting) used in a workflow builder, which must contain the `{data.raw.text}` substring. When your text data is inputted at inference time, all occurrences of the `{prompt}` variable within the template will be replaced with the provided prompt text.
 -        `<|end_of_turn|>`:— This delimiter indicates the end of a user's input.
 -        `GPT4 Correct Assistant:` — This indicates the start of the assistant's (or the language model's) response, which should be a corrected or refined version of the user's input or an appropriate answer to the user's question.
 
