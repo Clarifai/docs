@@ -18,8 +18,8 @@
 
 <script src="/scripts/sidebar.js" async></script>
 <script src="/scripts/intercomConfig.js" async></script><link rel="stylesheet" href="/assets/css/styles.9421978a.css">
-<script src="/assets/js/runtime~main.d4aabc6f.js" defer="defer"></script>
-<script src="/assets/js/main.7406a73c.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.81235e85.js" defer="defer"></script>
+<script src="/assets/js/main.8277d751.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5W9P7GR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -90,13 +90,13 @@
 <p>A prompt template serves as a pre-configured piece of text used to instruct an LLM. It acts as a structured query or input that guides the model in generating the desired response. You can use a template to tailor your prompts for different use cases.</p>
 <p>Many LLMs require prompts to follow a specific template format. To streamline this process, we provide the <code>prompt_template</code> inference parameter, which automatically applies the correct template format for the LLM. This means that you do not need to manually format your prompts when using an LLM through our UI or <a href="https://docs.clarifai.com/sdk/Inference-from-AI-Models/Text-as-Input#text-generation-using-llm#set-inference-parameters" target="_blank" rel="noopener noreferrer">SDK</a>.</p>
 <p>By default, the <code>prompt_template</code> is set to the LLM&#x27;s standard template, allowing you to simply enter your prompts without worrying about formatting. The prompts will be automatically adjusted to fit the required template.</p>
-<p>If you need more flexibility, you can customize the <code>prompt_template</code> parameter. When modifying this variable, make sure it includes the placeholder <code>prompt</code>, which will be replaced with the user&#x27;s prompt input.</p>
+<p>If you need more flexibility, you can customize the <code>prompt_template</code> parameter. When modifying this variable, make sure it includes the placeholder <code>{prompt}</code>, which will be replaced with the user&#x27;s prompt input.</p>
 <p>For example, the <a href="https://clarifai.com/openchat/openchat/models/openchat-3_6-8b-20240522" target="_blank" rel="noopener noreferrer">Openchat-3.6-8b</a> model supports the following chat template format:</p>
 <div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">GPT4 Correct User: prompt | end_of_turn | GPT4 Correct Assistant:</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <p>Let’s break down the meaning of the template:</p>
 <ul>
 <li><code>GPT4 Correct User</code>:  — This delimiter indicates the start of a user&#x27;s input.</li>
-<li><code>prompt</code>: — This substring will be replaced by the actual input or question from the user. It must be included in the prompt template. It works just like the <a href="https://docs.clarifai.com/portal-guide/agent-system-operators/prompter#zero-shot-prompting" target="_blank" rel="noopener noreferrer">prompter node</a> in a workflow builder, which must contain the <code>data.raw.text</code> substring. When your text data is inputted at inference time, all occurrences of the prompt variable within the template will be replaced with the prompt text.</li>
+<li><code>prompt</code>: — This substring will be replaced by the actual input or question from the user. It must be included in the prompt template. It works just like the <a href="https://docs.clarifai.com/portal-guide/agent-system-operators/prompter#zero-shot-prompting" target="_blank" rel="noopener noreferrer">prompter node</a> in a workflow builder, which must contain the <code>{data.raw.text}</code> substring. When your text data is inputted at inference time, all occurrences of the <code>{prompt}</code> variable within the template will be replaced with the prompt text.</li>
 <li><code>end_of_turn</code>:— This delimiter indicates the end of a user&#x27;s input.</li>
 <li><code>GPT4 Correct Assistant:</code> — This indicates the start of the assistant&#x27;s (or the language model&#x27;s) response, which should be a corrected or refined version of the user&#x27;s input or an appropriate answer to the user&#x27;s question.</li>
 </ul>
