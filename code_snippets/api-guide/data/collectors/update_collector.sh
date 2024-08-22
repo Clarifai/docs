@@ -15,7 +15,8 @@ curl -X PATCH "https://api.clarifai.com/v2/users/YOUR_USER_ID_HERE/apps/YOUR_APP
                     "model_app_id": "YOUR_APP_ID_HERE",
                     "model_id": "YOUR_NEW_MODEL_ID_HERE",
                     "model_version_id": "YOUR_NEW_MODEL_VERSION_ID_HERE",
-                    "post_inputs_key_id": "YOUR_API_KEY_HERE"
+                    "post_inputs_key_id": "YOUR_API_KEY_HERE",
+                    "caller_user_id": "CALLER_USER_ID_HERE"
                 }
             }			
        }

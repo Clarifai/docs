@@ -17,6 +17,7 @@ const POST_QUEUE_WORKFLOW_ID = 'YOUR_POST_WORKFLOW_ID_HERE';
 const MODEL_ID = 'YOUR_MODEL_ID_HERE';
 const MODEL_VERSION_ID = 'YOUR_MODEL_VERSION_ID_HERE';
 const POST_INPUTS_KEY_ID = 'YOUR_API_KEY_HERE';
+const CALLER_USER_ID = 'YOUR_CALLER_USER_ID_HERE';
 
 /////////////////////////////////////////////////////////////////////////////
 // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -48,7 +49,8 @@ stub.PostCollectors(
                         model_app_id: APP_ID,
                         model_id: MODEL_ID,
                         model_version_id: MODEL_VERSION_ID,
-                        post_inputs_key_id: POST_INPUTS_KEY_ID
+                        post_inputs_key_id: POST_INPUTS_KEY_ID,
+                        caller_user_id: CALLER_USER_ID
                     }
                 }
             }

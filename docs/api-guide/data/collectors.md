@@ -5,22 +5,31 @@ sidebar_position: 5
 
 # Collectors
 
-**Capture data for your application**
+**Capture inputs used for making predictions in your app**
 <hr />
 
-Collectors capture input data for your app. They enable you to pipe in data from production models automatically, and are the key to unlocking many platform training capabilities like active learning. 
+Collector is an ingenious feature that allows you to capture the inputs used for making predictions. After creating a collector, which includes specifying the caller user ID and the source model, a triggering process is established. 
 
-Collectors are available with Essential and Enterprise plans to help you manage data ingestion at scale.
+This process ensures that whenever the stated user makes a prediction using the specified model, the inputs used in generating the predictions are automatically ingested and stored in your app.
 
-You can create app-level collectors to monitor specific models and specify sampling rules for triggering data ingestion. Collectors can only collect data from apps where you are the app owner.
+With collectors, you can automatically pipe in data from production models, gather inputs to feed your models with real-world training data, and unlock many platform training capabilities.
 
-:::info
+:::tip
+
+You can learn how to create collectors via the UI [here](https://docs.clarifai.com/portal-guide/data/collectors/). 
+
+:::
+
+:::caution feature availability
 
 The Collector feature is currently exclusively available to our Professional and Enterprise users. Learn more [here](https://www.clarifai.com/pricing).
 
 :::
 
+
 ## Collector Parameters
+
+Let's talk about the parameters required to create a collector via the API. 
 
 ### Collector ID
 
@@ -32,37 +41,45 @@ Provide additional details about your collector.
 
 ### Pre-queue Workflow
 
-In many scenarios, you will only want to ingest a sample, or subset of a given data source into your app. Pre-queue workflows allow you to pre-process your inputs so that you can sample and filter your new data before it is ever added to your app. Pre-queue workflows allow you to specify sampling rules for triggering data ingestion. 
+In many scenarios, you will only want to ingest a sample, or subset of a given data source into your app. Pre-queue workflows allow you to pre-process your inputs so that you can sample and filter your new data before it is ever added to your app. Pre-queue workflows allow you to specify sampling rules for triggering data ingestion.
 
 Common pre-queue workflows are designed to:
 
-* Randomly sample inputs
-* Filter inputs by metadata
-* Filter inputs with a maximum probability below a given threshold
-* Filter inputs with a minimum probability above a given threshold
-* Filter specific concept probabilities above a given threshold
-* Undertake knowledge graph mapping from public General model concepts to a custom model
+- Randomly sample inputs
+- Filter inputs by metadata
+- Filter inputs with a maximum probability below a given threshold
+- Filter inputs with a minimum probability above a given threshold
+- Filter specific concept probabilities above a given threshold
+- Undertake knowledge graph mapping from public General model concepts to a custom model
 
-At least one \(pre-queue or post-queue\) workflow ID is required. The input to this workflow is going to be the OUTPUT of the model. We recommend that you use fast and light-weight models in it as it will affect the speed of the predictions being made.
+:::note
 
-### Post Inputs Key
+At least one (pre-queue or post-queue) workflow ID is required. 
 
-Select the [API](https://docs.clarifai.com/clarifai-basics/authentication/app-specific-api-keys) key that you would like to use to allow new inputs to be posted to your app. This is the post-queue workflow ID of the workflow to run to after the collector has processed the queued input. This API key must have the PostInputs scope, since it grants the collector the authority to POST inputs to your app.
+:::
 
-This workflow uses the original input to the model as input to the workflow so that you can run additional models as well on that input to decide whether to queue the model or not. If the workflow output has any field that is non-empty, then it will be passed on to POST /inputs to the destination app. 
+### Post-queue Workflow​
 
-At least one \(pre-queue or post-queue\) workflow ID is required.
+This is the workflow to run after the collector has processed the queued input. This workflow uses the original input to the model as input to the workflow so that you can run additional models as well on that input to decide whether to queue the model or not. 
 
 ### Source
 
-Select the model that you would like to collect data from, and the collector will automatically post the new inputs to your app. Simply enter your model name, or model ID number. When the user predicts an input against this model, the input is going to be collected.
+These are the details of the source model from which you want to collect data. The collector will automatically post the inputs utilized by the caller for making predictions using the specified model into your app. 
 
-You need to specify the app ID and user ID where the model is located. If using a publicly available model, the model's user and app ID should be `clarifai` and `main`, respectively. Otherwise, the IDs should belong to the user who created the model. You also need to specify an API key ID where the inputs are going to be added.
+### Post Inputs Key
 
-See also [Auto Annotation walkthrough](https://docs.clarifai.com/api-guide/workflows/common-workflows/auto-annotation-walkthrough/).
+This is the PAT or the API key to use to enable inputs to be posted to your app. This key must have the PostInputs scope, since it grants the collector the authority to POST inputs to your app. 
+
+It should also have the permissions to access the source model used for making the predictions. 
+
+### Caller User ID
+
+This is the ID of the caller who will be making the prediction requests. You can even provide your own user ID. 
 
 :::info
+
 The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
+
 :::
 
 import Tabs from '@theme/Tabs';
@@ -73,6 +90,12 @@ import PythonUpdateCollector from "!!raw-loader!../../../code_snippets/api-guide
 import PythonListCollectors from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/list_collectors.py";
 import PythonGetCollector from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/get_collector.py";
 import PythonDeleteCollector from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/delete_collector.py";
+
+import JSAddCollector from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/add_collector.html";
+import JSUpdateCollector from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/update_collector.html";
+import JSListCollectors from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/list_collectors.html";
+import JSGetCollector from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/get_collector.html";
+import JSDeleteCollector from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/delete_collector.html";
 
 import NodeAddCollector from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/add_collector.js";
 import NodeUpdateCollector from "!!raw-loader!../../../code_snippets/api-guide/data/collectors/update_collector.js";
@@ -100,12 +123,16 @@ import CurlDeleteCollector from "!!raw-loader!../../../code_snippets/api-guide/d
 
 ## Add Collector
 
-Add a new collector to your application.
+Here is how to add a new collector to your application.
 
 <Tabs>
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonAddCollector}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+   <CodeBlock className="language-javascript">{JSAddCollector}</CodeBlock>
 </TabItem>
 
 <TabItem value="nodejs" label="NodeJS">
@@ -128,12 +155,16 @@ Add a new collector to your application.
 
 ## Update Collector
 
-Update an existing collector.
+You can update an existing collector.
 
 <Tabs>
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonUpdateCollector}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+   <CodeBlock className="language-javascript">{JSUpdateCollector}</CodeBlock>
 </TabItem>
 
 <TabItem value="nodejs" label="NodeJS">
@@ -156,12 +187,16 @@ Update an existing collector.
 
 ## List Collectors
 
-List all the collectors. See [Pagination](https://docs.clarifai.com/api-guide/advanced-topics/pagination/) on how to control which page gets displayed.
+You can list all the collectors in your app. Click [here](https://docs.clarifai.com/api-guide/advanced-topics/pagination/) to learn how to control the page that gets displayed.
 
 <Tabs>
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonListCollectors}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+   <CodeBlock className="language-javascript">{JSListCollectors}</CodeBlock>
 </TabItem>
 
 <TabItem value="nodejs" label="NodeJS">
@@ -185,12 +220,16 @@ List all the collectors. See [Pagination](https://docs.clarifai.com/api-guide/ad
 
 ## Get Collector
 
-Return details of a certain collector.
+You can return the details of a certain collector.
 
 <Tabs>
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonGetCollector}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+   <CodeBlock className="language-javascript">{JSGetCollector}</CodeBlock>
 </TabItem>
 
 <TabItem value="nodejs" label="NodeJS">
@@ -213,12 +252,16 @@ Return details of a certain collector.
 
 ## Delete Collector
 
-Delete a collector.
+You can delete a collector.
 
 <Tabs>
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonDeleteCollector}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+   <CodeBlock className="language-javascript">{JSDeleteCollector}</CodeBlock>
 </TabItem>
 
 <TabItem value="nodejs" label="NodeJS">
