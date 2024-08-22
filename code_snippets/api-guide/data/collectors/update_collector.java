@@ -24,6 +24,7 @@ public class ClarifaiExample {
     static final String MODEL_ID = "YOUR_NEW_MODEL_ID_HERE";
     static final String MODEL_VERSION_ID = "YOUR_NEW_MODEL_VERSION_ID_HERE";
     static final String POST_INPUTS_KEY_ID = "YOUR_API_KEY_HERE";
+    static final String CALLER_USER_ID = "YOUR_CALLER_USER_ID_HERE";
 
     ///////////////////////////////////////////////////////////////////////////////////
     // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -53,6 +54,7 @@ public class ClarifaiExample {
                         .setModelId(MODEL_ID)
                         .setModelVersionId(MODEL_VERSION_ID)
                         .setPostInputsKeyId(POST_INPUTS_KEY_ID)
+                        .setCallerUserId(CALLER_USER_ID)
                     )
                 )
             )

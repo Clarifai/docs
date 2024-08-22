@@ -1,32 +1,62 @@
 ---
-description: Learn about positive and negative annotations.
+description: Learn how to make positive and negative annotations
 sidebar_position: 9
 ---
 
 # Positive and Negative Annotations
 
-**Learn about positive and negative annotations**
+**Learn how to make positive and negative annotations**
 <hr />
 
-When annotating your data, you have the option of providing both positive and negative labels for your concepts. Here is how your model interprets the labels that you add.
+Positive and negative annotations play a critical role in training machine learning models. 
 
-\(i\) If any concept is tagged with a positive annotation, that is treated as a positive label for that concept.
+Positive annotations help the model identify and learn the features associated with a particular input. Negative annotations, on the other hand, help the model distinguish between similar inputs by highlighting what the input is not. 
+
+Some inputs may also have overlapping features, especially in complex datasets. Providing both positive and negative annotations reduces the risk of the model misclassifying similar but distinct inputs, leading to more precise predictions.
+
+By annotating your data with both positive and negative labels, you provide your model with the comprehensive information it needs to learn effectively, which results in better performance and more reliable outcomes.
+
+Let's talk about how a model could interpret these annotations for a classification labeling task. 
+
+:::tip 
+
+You can use the [Labeling Tasks](https://docs.clarifai.com/portal-guide/annotate/labeling-tools) tool to assign both positive and negative labels.
+
+:::
+
+## Positive Annotation
+
+If an input is tagged with a positive annotation, it is considered a positive label for it.
+
+For example, if you positively annotate your input with the `burger` concept, your custom model will see it as having that label. 
 
 ![](/img/annotation_i.jpg)
 
-\(ii\) When a concept is tagged with a positive annotation, this also implies a negative label on all other concepts not also tagged as positive.
+If an input is tagged with a positive annotation, a negative label is implicitly assigned to all the other concepts that are not tagged as positive. 
+
+For example, if an input is positively annotated with the `burger` concept, the model will implicitly treat `pizza` and `taco` as negative labels for that input.
+
+In that case, here's how the model could see the labels:
 
 ![](/img/annotation_ii.jpg)
 
-\(iii\) When input image 2 is tagged with a negative annotation, and input image 1 is tagged positive, then both of these actions have the same effect on input image 2: all classes not tagged positive are implicitly negative already from \(ii\).
+## Negative Annotation
+
+If an input is tagged with a negative annotation, it is treated as a negative label for that concept. It emphasizes that the input does not belong to that concept.
+
+For example, if you negatively annotate your input with the `pizza` concept, your model will recognize that the input does not represent `pizza`.
 
 ![](/img/annotation_iii.jpg)
 
-\(iv\) If there are no positive annotations for any concept, then if any concept is tagged with a negative annotation, this is treated as a negative example for all concepts related to that image.
+If there is no positive annotation for an input, then if any concept is tagged with a negative annotation, it is treated as a negative example for all concepts related to that input.
+
+In that case, here's how the model could see the labels:
 
 ![](/img/annotation_iv.jpg)
 
-\(v\) If there are no positive or negative annotations, the example is ignored.
+## No Annotations
+
+If an input lacks either positive or negative annotations, the model ignores the example.
 
 ![](/img/annotation_v.jpg)
 
