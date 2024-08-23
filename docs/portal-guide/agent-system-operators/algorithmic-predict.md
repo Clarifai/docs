@@ -8,9 +8,11 @@ sidebar_position: 7
 **Learn about our algorithmic predict operators**
 <hr />
 
-Prediction models are the "intelligent" part of your AI workflows. Predictions help you to understand, classify, and organize your data. Predictions can be used to drive behaviors in other nodes in your workflow.
+Algorithmic Predict refers to a category of operators that leverage predefined algorithms to make predictions or generate outputs based on input data.
 
-Predictions take specific input types and then return predictions about things like the concepts, regions, poses, characters, words, and the abstract visual characteristics of your inputs.
+You can use the prediction results to understand, classify, or organize your data. You can also use them to drive behaviors in other nodes in your workflow.
+
+These operators take specific input types and then return predictions about things like concepts, regions, characters, words, or the abstract visual characteristics of your inputs.
 
 :::tip
 
@@ -20,31 +22,43 @@ Since the algorithmic predict operators can be "chained" together with models to
 
 ## Regex-Based Classifier 
 
+**Input**: Text
+
+**Output**: Concepts
+
 This operator allows you to classify text using regular expressions. When the specified regex pattern matches the text, the text is assigned to one of the predefined concepts. 
 
 Let's demonstrate how you can use the Regex-Based Classifier, alongside [a Prompter template](https://docs.clarifai.com/portal-guide/agent-system-operators/prompter), to efficiently classify text. 
 
-**1**. Go to the workflow builder. Then, search for the **prompter** template option in the left-hand sidebar and drag it onto the empty workspace.
+**1**. Go to the workflow builder. Then, search for the **prompter** template node in the left sidebar and drag and drop it onto the empty workspace.
 
- Use the pop-up that appears on the right-hand sidebar to set up the template text. For this example, let's use this template text: 
+ Use the pop-up that appears on the right sidebar to set up the template text. For this example, let's use this template text: 
 
 ```text
-<s>[INST]<<SYS>>Classify the following description into one of the following classes: ["cat", "dog", "cheetah", "lion"]. Respond only with one of the provided classes.<</SYS>>[/INST]\n{data.text.raw} 
+<s>[INST]<<SYS>>Classify the following description into one of the following classes: ["cat," "dog," "cheetah," "lion"]. Respond only with one of the provided classes.<</SYS>>[/INST]\n{data.text.raw} 
 ```
      
 :::note
 
-Since we'll use the [llama2-13b-chat](https://clarifai.com/meta/Llama-2/models/llama2-13b-chat) model to help with the classification, we format the prompt text using the special tokens it requires for the specific structure of its prompts. We also include the `{data.text.raw}` placeholder to meet the requirements of the **Prompter** template.
+Since we'll use the [llama2-13b-chat](https://clarifai.com/meta/Llama-2/models/llama2-13b-chat) model to help with the classification, we format the prompt text using the special tokens it requires for the specific structure of its prompts. We also include the `{data.text.raw}` placeholder to meet the requirements of the **Prompter** template format.
 
 :::
 
-**2**. Search for the **text-to-text** option in the left-hand sidebar and drag it onto the workspace. Then, search for the **llama2-13b-chat** model on the right-hand sidebar and connect it to the prompter model. 
+**2**. Search for the **text-to-text** node in the left sidebar and drag and drop it onto the workspace. Then, search for the **llama2-13b-chat** model on the right sidebar and connect it to the prompter model. 
 
-**3**. Search for the **regex-based classifier** option in the left-hand sidebar and drag it onto the workspace. On the right-hand sidebar, click the **SELECT CONCEPTS** button and use the pop-up that appears to select the relevant [concepts](https://docs.clarifai.com/portal-guide/concepts/create-get-update-delete) already existing in your application. For this example, we select the following concepts: `cat, dog, cheetah, lion`.
+**3**. Search for the **regex-based classifier** node in the left sidebar and drag and drop it onto the workspace. On the right sidebar, click the **SELECT CONCEPTS** button and use the pop-up that appears to select the relevant [concepts](https://docs.clarifai.com/portal-guide/concepts/create-get-update-delete) already existing in your application. 
 
-In the **regex** field, provide the regex pattern that will be used to classify the text. If the pattern matches, the text will be classified as the selected concept. For this example, we provide `\bcat\b`, which would match the word "cat" in instances where it appears as a whole word, surrounded by word boundaries.
+For this example, we select the following concepts: `cat, dog, cheetah, lion`. After selecting the concepts, click the **OK** button. 
 
-**4**. Connect the **text-to-text** model with the **regex-based classifier** and save your workflow. 
+![](/img/others/regex_1_1.png)
+
+In the **regex** field, provide the regex pattern that will be used to classify the text. If the pattern matches, the text will be classified as the selected concept. 
+
+For this example, we provide `\bcat\b`, which would match the word "cat" in instances where it appears as a whole word, surrounded by word boundaries.
+
+**4**. Connect the **text-to-text** model with the **regex-based classifier**. 
+
+Lastly, click the **Save Workflow** button to save your workflow.
 
 ![](/img/others/regex_1.png)
 
@@ -68,57 +82,75 @@ The model will process the input and classify the description into one of the pr
 
 Then, the Regex-Based Classifier will categorize the response into one of the provided concepts, which you can feed into other downstream tasks, such as an [Annotation Writer](https://docs.clarifai.com/portal-guide/agent-system-operators/push#annotation-writer) to create annotations for inputs.
 
-## KNN Classifier
+## Language Identification Operator 
+
+**Input**: Text
 
 **Output**: Concepts
 
-Use k-nearest neighbors (KNN) search and plurality voting amongst the nearest neighbors to classify new instances. Recommended when you only have a small dataset, like one image per concept. 
+The Language Identification Operator is designed to automatically detect the language of a given text. It takes in text input, which can be in any form — paragraphs, sentences, or even shorter phrases. It then analyzes the text to automatically determine which language it is written in. 
 
-## Language Identification Operator
+The output of the operator is typically a language code (e.g., `en` for English, `fr` for French, `es` for Spanish) that corresponds to the detected language.
 
-**Output**: Concepts
+The operator leverages either of the following libraries:
 
-Operator for language identification using the langdetect library.
+- `langdetect` — It's an open-source tool for language detection. This library is known for its ability to recognize a broad range of languages based on text samples. It uses algorithms that compare the text against language profiles created from a large corpus of multilingual data. It assigns a probability score to each language, which helps to identify the most likely language for the given text.
 
-## Cross-App Input Searcher
+- `fastText` — Developed by Facebook's AI Research (FAIR) lab, this open-source library provides efficient language identification. It can recognize a large number of languages and is particularly fast, making it suitable for processing large volumes of text. It is based on word embeddings and character-level n-grams, which allows it to handle short or informal texts well.
 
-**Output**: Hits
+To use the operator, go to the workflow builder page and search for the `language-id-operator` node in the left sidebar. Drag and drop it onto the empty workspace and connect it to the `IN` element.
 
-Triggers a visual search in another app based on the model config, if concept(s) are found in images and returns the matched search hits as regions.
+You can use the right sidebar to set up the following output configurations:
 
+- **library** — Select the library you want to use for the language identification — either `langdetect` or `fastText`. 
+- **topk** — Set the maximum number of predicted languages. 
+- **threshold** — Set a confidence score that determines the likelihood that the detected language is correct. Languages with a confidence level above the set threshold will be returned. 
+- **lowercase** — If set to true, the provided text will be converted to lowercase letters. 
 
+Lastly, click the **Save Workflow** button to save your workflow.
 
-## Isolation Operator
+![](/img/agent-system-operators/language-identification-operator.png)
 
-**Output**: Regions
+To observe it in action, navigate to the operator's individual page and click the **+** button to input your text.
 
-This is an operator that computes the distance between detections and assigns an isolation label.
+For this example, let's provide [this text](https://samples.clarifai.com/model-gallery/Text/text-romance-french.txt).
+
+The operator will process the text and identify its language. 
+
+![](/img/agent-system-operators/language-identification-operator-1.png)
 
 ## Barcode Operator
 
-**Output**: Regions
+**Input**: Image
 
-This is an operator that detects and recognizes barcodes from an image. It assigns regions with barcode text for each detected barcode. Supports EAN/UPC, Code 128, Code 39, Interleaved 2 of 5, and QR Code.
+**Output**: regions[…].data.text
 
-## Custom Code Operator 
+The Barcode Operator is used to detect and recognize a wide range of barcode types within images. It processes image inputs and detects barcodes contained in them. 
 
-**Output**: Any
+It works by recognizing and decoding the information encoded within each barcode. This includes reading the patterns of bars and spaces or, in the case of QR codes, interpreting the matrix of squares.
 
-This model expects a Python 3.9 driver function with the following signature: `def main(req):`. Here, "req" is a dictionary with a single key "inputs" that holds a list of "Input" objects from `clarifai_grpc.grpc.api.service_pb2` —these inputs are normally sent in API prediction requests. 
+For each detected barcode, the operator assigns a specific region within the image that contains the barcode text. This helps in isolating and extracting the exact area of the image where the barcode is located. 
 
-The available libraries for importing are: NumPy, SciPy, PIL, and Clarifai gRPC. The response should be a Python dictionary whose nested structure mirrors that of `MultiOutputResponse` in `clarifai_grpc.grpc.api.service_pb2`. 
+It then outputs the recognized text or data from the barcode alongside the region information, which allows for easy extraction and use of the barcode data.
 
-IDs in inputs should be forwarded to outputs 1-to-1. You can also provide helpers to reference in your main implementation. All the code must be passed in via `output_info.params.operator_code`. 
+It supports the following types of barcodes:
 
-Each execution can last up to 50 seconds and consume 256 MBs of memory.
+- **EAN/UPC** — Commonly used in retail for product identification.
+- **Code 128** — A versatile barcode often used in logistics and packaging.
+- **Code 39** — Frequently used in inventory management and non-retail settings.
+- **Interleaved 2 of 5** — Typically used for encoding numeric information in industries like warehousing.
+- **QR Code** — A matrix barcode that can encode a variety of data types, including URLs, text, and more.
 
-## AWS Lambda
+To use the operator, go to the workflow builder page and search for the `barcode-operator` node in the left sidebar. Drag and drop it onto the empty workspace and connect it to the `IN` element.
 
-**Output**: Any
+Lastly, click the **Save Workflow** button to save your workflow.
 
-This model sends data to an AWS lambda function so you can implement any arbitrary logic to be handled within a model prediction or workflow. 
-The request our API sends is a `PostModelOutputsRequest` in the 'request' field, and the response we expect is a `MultiOutputResponse` response in the `response` field. 
+![](/img/agent-system-operators/barcode-operator.png)
 
-## Input Searcher
+To observe it in action, navigate to the operator's individual page and click the **+** button to input your image.
 
-## Image Color Recognizer
+For this example, let's provide [this image](https://samples.clarifai.com/model-gallery/images/QRcode-001.jpeg).
+
+The operator will process the image and detect the QR code. 
+
+![](/img/agent-system-operators/barcode-operator-1.png)
