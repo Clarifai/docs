@@ -61,7 +61,7 @@ $params->getFields()[$USER_ID_3] = (new Value())->setNumberValue(1);
             "user_app_id" => $userDataObject,
             "tasks" => [
                 new Task([
-                    "type" => 1, // integer value 1 for "CONCEPTS_CLASSIFICATION" type
+                    "type" => 1, // integer value 1 for "CONCEPTS_CLASSIFICATION" type. Refer here https://github.com/Clarifai/clarifai-go-grpc/blob/master/proto/clarifai/api/resources.pb.go
                     "name" => "Annotate " . $CONCEPT_ID,
                     "worker" => new TaskWorker([
                         "strategy" => 2, // integer value 2 for "PARTITIONED" strategy

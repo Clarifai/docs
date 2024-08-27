@@ -12,28 +12,32 @@ Task is the work that needs to be done for labeling the inputs in an app. It's a
 
 These are some parameters you can specify when working with tasks:
 
-- Task type — It can be:
+- **Task type** — It can be:   
     - `CONCEPTS_CLASSIFICATION` — Concepts classification tasks annotate [concepts](https://docs.clarifai.com/api-guide/concepts/) for the overall image, frame of video, or section of text.
     - `BOUNDING_BOX_DETECTION` — Bounding box detection tasks annotate rectangular bounding box regions around each concept in an image, frame of video, or section of text.
     - `POLYGON_DETECTION` — Polygon detection tasks annotate free-form regions around concepts in an image, frame of video, or section of text.
-- Worker — Task worker includes information about the workers who will work on the task. 
-- Concept IDs — List of concept IDs used in the work on the task. The concepts should already be existing in your app. 
-- Task worker strategy — It can be:
+    - `TYPE_NOT_SET` — This is the default task type. It should be used when creating an auto-annotation task. 
+- **Worker** — Task worker includes information about the workers who will work on the task. For manual labeling tasks, the workers can only be users; no limitation on number of workers. For auto-annotation tasks, the worker can be either a model or a workflow; currently only supports 1 worker.
+- **Concepts** — List of concept IDs used in the work on the task. The concepts should already be existing in your app. 
+- **Task worker strategy** — It can be:
     - `PARTITIONED` — The inputs will be partitioned in several partitions. Each worker will label one or more input partitions.
     - `FULL` — Each worker will label all inputs from the input source.
-- Input source — It can be: 
-    - `ALL_INPUTS` — Use all inputs in the app.
-    - `SAVED_SEARCH` — Use the inputs from a [saved search](https://docs.clarifai.com/api-guide/search/legacy-search/saved_searches). You also need to specify the `id` of the saved search.
+- **Input source** — It can be: 
+    - `ALL_INPUTS` — Use all inputs in the app.  
     - `DATASET` — Use inputs from a [dataset](https://docs.clarifai.com/api-guide/data/datasets/).
-- [`sample_ms`](https://docs.clarifai.com/api-guide/predict/video#configuring-fps) — Used in video model predictions. It specifies the sample delay for video predictions (1 frame per N milliseconds). 
-- Review strategy — It can be: 
+- **[`sample_ms`](https://docs.clarifai.com/api-guide/predict/video#configuring-fps)** — Used in video model predictions. It specifies the sample delay for video predictions (1 frame per N milliseconds). 
+- **Review strategy** — It can be: 
     - `NONE` — No review is needed.
     - `MANUAL` — Manual review strategy.
     - `CONSENSUS` — Consensus review strategy.
-- Partitioned strategy info — It can be:    
+- **Partitioned strategy info** — It can be:    
     - `EVENLY` — Each worker will label (approximately) the same number of inputs.
     - `WEIGHTED` — Each worker will have an assigned weight.
-- Workers per input — The number of workers who will label each input. 
+- **Workers per input** — The number of workers who will label each input. 
+- **Auto-annotation config** - The concepts configurations for setting up an auto-annotation labeling task using a model or a workflow. You can set:    
+    - `annotation_data_types` — An integer for filtering annotations by their annotation data type. It's a bit-mask field that holds multiple annotation data type values that are combined in an OR fashion. For example, if `annotation_data_types = 34`, then we filter annotations that appear as a mask or a bounding box, because `MASK = 32` and `BOUNDING_BOX = 2`. You can look for the various annotation data types values [here](https://github.com/Clarifai/clarifai-go-grpc/blob/master/proto/clarifai/api/resources.pb.go). For example, `annotation_data_types=1` corresponds to `AnnotationDataType_TAG`. 
+    - `threshold_range` — It specifies a range of predictions values based on the lower and upper bounds, and it defines whether these bounds are inclusive or exclusive. For example, if you set `is_lower_inclusive = true`, `is_upper_inclusive = true`, `lower = 0.7` and `upper = 1.0`, it is interpreted as the prediction range includes all values from 0.7 to 1.0, including both 0.7 and 1.0.
+    - `status_code` — It specifies the [code](https://docs.clarifai.com/api-guide/advanced-topics/status-codes#annotation-related-codes-24xxx) related to the status of the annotation. 
 
 :::info
 
@@ -55,6 +59,7 @@ import PyListTasksAssignedUser from "!!raw-loader!../../../code_snippets/api-gui
 import PyListTasksAssignedUserReview from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/list_tasks_assigned_user_review.py";
 import PyUpdateTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/update_task.py";
 import PyDeleteMultipleTasks from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/delete_multiple_tasks.py";
+import PyAutoAnnotation from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/auto_annotation.py";
 
 import JSNonAssignedTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/non_assigned_task.html";
 import JSAssignedTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/assigned_task.html";
@@ -66,6 +71,7 @@ import JSListTasksAssignedUser from "!!raw-loader!../../../code_snippets/api-gui
 import JSListTasksAssignedUserReview from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/list_tasks_assigned_user_review.html";
 import JSUpdateTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/update_task.html";
 import JSDeleteMultipleTasks from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/delete_multiple_tasks.html";
+import JSAutoAnnotation from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/auto_annotation.html";
 
 import NodeNonAssignedTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/non_assigned_task.js";
 import NodeAssignedTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/assigned_task.js";
@@ -76,6 +82,7 @@ import NodeGetTaskByID from "!!raw-loader!../../../code_snippets/api-guide/annot
 import NodeListAllTasks from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/list_all_tasks.js";
 import NodeListTasksAssignedUser from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/list_tasks_assigned_user.js";
 import NodeListTasksAssignedUserReview from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/list_tasks_assigned_user_review.js";
+import NodeAutoAnnotation from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/auto_annotation.js";
 
 import JavaNonAssignedTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/non-assigned_task.java";
 import JavaAssignedTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/assigned_task.java";
@@ -87,6 +94,7 @@ import JavaGetTaskByID from "!!raw-loader!../../../code_snippets/api-guide/annot
 import JavaListAllTasks from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/list_all_tasks.java";
 import JavaListTasksAssignedUser from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/list_tasks_assigned_user.java";
 import JavaListTasksAssignedUserReview from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/list_tasks_assigned_user_review.java";
+import JavaAutoAnnotation from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/auto_annotation.java";
 
 import PHPNonAssignedTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/non_assigned_task.php";
 import PHPTaskPartitionedWorkerStrategy from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/task_partitioned_worker_strategy.php";
@@ -98,6 +106,7 @@ import PHPListTasksAssignedUserReview from "!!raw-loader!../../../code_snippets/
 import PHPAssignedTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/assigned_task.php";
 import PHPUpdateTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/update_task.php";
 import PHPDeleteMultipleTasks from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/delete_multiple_tasks.php";
+import PHPAutoAnnotation from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/auto_annotation.php";
 
 import CurlNonAssignedTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/non_assigned_task.sh";
 import CurlAssignedTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/assigned_task.sh";
@@ -109,6 +118,7 @@ import CurlListTasksAssignedUser from "!!raw-loader!../../../code_snippets/api-g
 import CurlListTasksAssignedUserReview from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/list_tasks_assigned_user_review.sh";
 import CurlUpdateTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/update_task.sh";
 import CurlDeleteMultipleTasks from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/delete_multiple_tasks.sh";
+import CurlAutoAnnotation from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/auto_annotation.sh";
 
 ## Create
 
@@ -143,7 +153,6 @@ A task should be assigned to a list of users, but it's not required. The followi
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlNonAssignedTask}</CodeBlock>
 </TabItem>
-
 
 </Tabs>
 
@@ -278,6 +287,44 @@ For example, in case of 3 workers and `approval_threshold` set to 2, if an input
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlConsensusReview}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+### Auto-Annotation Task
+
+You can create an auto-annotation task and automatically label the inputs in your dataset. You need to specify a model or a workflow you want to use its predictions to automatically generate annotations or labels for your data.
+
+:::tip
+
+You can learn how to perform auto-annotation via the UI [here](https://docs.clarifai.com/portal-guide/annotate/auto-annotation). 
+
+:::
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PyAutoAnnotation}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSAutoAnnotation}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeAutoAnnotation}</CodeBlock>
+</TabItem>
+
+<TabItem value="java" label="Java">
+    <CodeBlock className="language-java">{JavaAutoAnnotation}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPAutoAnnotation}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlAutoAnnotation}</CodeBlock>
 </TabItem>
 
 </Tabs>
