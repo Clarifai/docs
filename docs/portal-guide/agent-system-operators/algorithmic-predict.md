@@ -30,7 +30,7 @@ This operator allows you to classify text using regular expressions. When the sp
 
 Let's demonstrate how you can use the Regex-Based Classifier, alongside [a Prompter template](https://docs.clarifai.com/portal-guide/agent-system-operators/prompter), to efficiently classify text. 
 
-**1**. Go to the workflow builder. Then, search for the **prompter** template node in the left sidebar and drag and drop it onto the empty workspace.
+**1**. Go to the workflow builder page. Then, search for the **prompter** template node in the left sidebar and drag and drop it onto the empty workspace.
 
  Use the pop-up that appears on the right sidebar to set up the template text. For this example, let's use this template text: 
 
@@ -96,7 +96,7 @@ The operator leverages either of the following libraries:
 
 - `langdetect` — It's an open-source tool for language detection. This library is known for its ability to recognize a broad range of languages based on text samples. It uses algorithms that compare the text against language profiles created from a large corpus of multilingual data. It assigns a probability score to each language, which helps to identify the most likely language for the given text.
 
-- `fastText` — Developed by Facebook's AI Research (FAIR) lab, this open-source library provides efficient language identification. It can recognize a large number of languages and is particularly fast, making it suitable for processing large volumes of text. It is based on word embeddings and character-level n-grams, which allows it to handle short or informal texts well.
+- `fastText` — Developed by Facebook's AI Research (FAIR) lab, this open-source library provides efficient language identification capabilities. It can recognize a large number of languages and is particularly fast, making it suitable for processing large volumes of text. It is based on word embeddings and character-level n-grams, which allows it to handle short or informal texts well.
 
 To use the operator, go to the workflow builder page and search for the `language-id-operator` node in the left sidebar. Drag and drop it onto the empty workspace and connect it to the `IN` element.
 
