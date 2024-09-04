@@ -34,7 +34,7 @@ To reset any applied filters, click the **Clear** button that appears after appl
 
 You can filter the display of inputs based on their labeled concepts. To do so, identify the concept you want to display inputs for and click the checkbox next to it.
 
-You can also filter out inputs that do not belong to a specific concept, as illustrated earlier. 
+You can also filter out inputs that do not belong to a specific concept. Start by selecting the label and hovering over it. Double arrows will appear with a tooltip: `Filter for inputs that do NOT match this value.` Click the double arrows to apply the negative filter. You’ll notice that the word **NOT** will be added next to the concept’s name, and the filter results will be populated on the page.
 
 Additionally, you can use the "Unlabeled" parameter to filter all inputs that have not been annotated with any concept.
 

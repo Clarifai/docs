@@ -1,11 +1,12 @@
 ---
-description: Understanding positive and negative labels.
+description: Learn how to make positive and negative annotations
 sidebar_position: 3
 ---
 
 # Positive and Negative Annotations
 
-**Understand positive and negative labels**
+**Learn how to make positive and negative annotations**
+
 <hr />
 
 When annotating your data, you have the option of providing both positive and negative labels for your concepts. 
