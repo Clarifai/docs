@@ -44,11 +44,12 @@ draft: false
 |--------------------------------------|------------------------|---------------------------|
 | ![improvement](/img/improvement.jpg) | Enabled [SDH](https://docs.clarifai.com/product-updates/upcoming-api-changes/secure-data-hosting/) for some model features | <ul><li> We now serve the `model version train logs` and `model version export` capabilities via `secure-data-hosting` instead of `pre-signed urls`. </li></ul>   |   
 
-## Workflows
+## Python SDK
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
-| ![improvement](/img/improvement.jpg) | Improved the [RAG Prompter](https://docs.clarifai.com/portal-guide/agent-system-operators/rag-prompter/) operator | <ul><li> Previously, the RAG Prompter searched for queries across all inputs from the app, spanning across multiple datasets. This occasionally caused context searches to become mixed between different datasets, resulting in jumbled or inaccurate context hits. To resolve this, we now offer enhanced filtering options that allow context searches to be narrowed down based on specific datasets and metadata. These options include metadata filtering, dataset filtering, and dynamic dataset filtering. </li></ul>   |   
+|  ![bug](/img/bug.jpg) | Fixed an issue with dataset export    | <ul> <li> We fixed an issue where exporting a dataset through the Python SDK completed successfully, but the exported file lacked annotations.</li> </ul>  |
+|  ![bug](/img/bug.jpg)  | Fixed an issue with model export  | <ul> <li> We fixed an issue where exporting a model via the Python SDK would result in failures.</li> </ul>  |
 
 ## Platform
 
@@ -62,6 +63,12 @@ draft: false
 |![bug](/img/bug.jpg)  | Fixed an issue where some operations were still allowed for an Organization User  | <ul><li> Previously, Organization Users were mistakenly allowed to perform certain CRUD operations, such as uploading and deleting inputs. We fixed the issue to enable Organization Users to only have view-only permissions, without the ability to create, update, or delete resources. </li></ul>   |   
 |![bug](/img/bug.jpg) | Corrected alignment of the "Add Email" field   | <ul><li> Previously, the "Add Email" field on the "Account Settings" page was misaligned and did not display correctly. We fixed the issue, ensuring the field now appears as intended.  </li></ul>   |  
 | ![bug](/img/bug.jpg) | Fixed an issue with disabled "Create Org" button   | <ul><li> Previously, the "Create Org" button was incorrectly disabled for certain users who hadn't joined or created an organization, preventing them from creating one. This issue has now been fixed, allowing users to create an organization even if they haven't been part of one before.   </li></ul>   | 
+
+## RAG Prompter
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![improvement](/img/improvement.jpg) | Improved the [RAG Prompter](https://docs.clarifai.com/portal-guide/agent-system-operators/rag-prompter/) operator | <ul><li> Previously, the RAG Prompter searched for queries across all inputs from the app, spanning across multiple datasets. This occasionally caused context searches to become mixed between different datasets, resulting in jumbled or inaccurate context hits. To resolve this, we now offer enhanced filtering options that allow context searches to be narrowed down based on specific datasets and metadata. These options include metadata filtering, dataset filtering, and dynamic dataset filtering. </li></ul>   |  
 
 ## Labeling Tasks
 
@@ -85,9 +92,8 @@ draft: false
 |![bug](/img/bug.jpg) | Fixed resizing issue for close-proximity bounding boxes    | <ul> <li> Previously, when two bounding boxes were positioned close to each other, it could sometimes be impossible to resize one of them. We fixed the issue, allowing for accurate resizing even when bounding boxes are in close proximity. </li> </ul>  |
 |  ![bug](/img/bug.jpg)      |  Fixed incorrect starting position for bounding box annotations   | <ul> <li> Previously, when creating a bounding box annotation, it could start at the wrong position, which required a user to constantly adjust the box. We’ve fixed the issue, ensuring that bounding boxes start exactly where intended.</li> </ul>  |
 
-## Python SDK
+## Workflows
 
 |Status                                |Change                  |Details                    |
-|--------------------------------------|------------------------|---------------------------|
-|  ![bug](/img/bug.jpg) | Fixed an issue with dataset export    | <ul> <li> We fixed an issue where exporting a dataset through the Python SDK completed successfully, but the exported file lacked annotations.</li> </ul>  |
-|  ![bug](/img/bug.jpg)  | Fixed an issue with model export  | <ul> <li> We fixed an issue where exporting a model via the Python SDK would result in failures.</li> </ul>  |
+|--------------------------------------|------------------------|---------------------------| 
+|![bug](/img/bug.jpg) |  Fixed an issue with filtering concepts in the workflow editor   | <ul><li> Previously, if you added a new model to a workflow, and tried filtering the concepts in the model using the “SELECT CONCEPTS” modal, nothing was filtering. We fixed the issue, and the filtering now works as intended.  </li></ul>  |
