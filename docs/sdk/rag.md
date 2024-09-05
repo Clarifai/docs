@@ -66,7 +66,11 @@ Before you proceed install ```llama_index``` using ```pip install llama-index-co
 
 ## Initialising RAG
 
-The first part of creating a RAG-based application includes setting up the RAG object. Just by setting up the RAG object, Clarifai SDKs will automatically create the app along with a prompter model and workflow containing the RAG prompter and the LLM Model.
+The first part of creating a RAG-based application includes setting up the RAG object. There are three options for initialization:
+
+1. Using User ID: This option will automatically create a new app.
+2. Using App URL: This allows you to initialize RAG using an existing app, utilizing its existing data.
+3. Using Workflow URL or ID: This enables you to initialize RAG based on a specific workflow, integrating the RAG prompter and LLM Model into the workflow.
 
 :::tip
 You can set a specific version of LLM by using `https://clarifai.com/mistralai/completion/models/mistral-7B-Instruct/model_version/version_id`.

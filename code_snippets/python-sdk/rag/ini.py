@@ -5,7 +5,7 @@ from clarifai.rag import RAG
 USER_ID = 'USER_ID'
 
 # Alternatively, initialize RAG system using an existing app's URL
-rag_agent = RAG.setup (app_url="APP_URL")
+APP_URL = 'APP_URL'
 
 # Define the URL of the Mistral-7B language model
 LLM_URL = 'https://clarifai.com/mistralai/completion/models/mistral-7B-Instruct'
