@@ -18,7 +18,7 @@ This is an operator that combines text detections into a text body for the whole
 
 ## Object Counter 
 
-**Output**: Metadata
+**Output**: Int
 
 It allows you to count the number of regions that match this model's active concepts frame by frame.
 
