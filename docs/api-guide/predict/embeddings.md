@@ -87,6 +87,6 @@ The Cohere Embed-v3 model requires an `input_type` parameter to be specified, wh
 </details>
 
 <details>
-  <summary>JSON Output Example</summary>
+  <summary>Raw Output Example</summary>
     <CodeBlock className="language-text">{CodeOutputExample2}</CodeBlock>
 </details>

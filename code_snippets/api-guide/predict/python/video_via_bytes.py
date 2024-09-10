@@ -69,5 +69,5 @@ for frame in output.data.frames:
     for concept in frame.data.concepts:
         print("\t%s %.2f" % (concept.name, concept.value))
 
-# Uncomment this line to print the full Response JSON
+# Uncomment this line to print the raw output
 #print(output)

@@ -84,7 +84,7 @@ The initialization code used in the following examples is outlined in detail on 
 </details>
 
 <details>
-  <summary>JSON Output Example</summary>
+  <summary>Raw Output Example</summary>
     <CodeBlock className="language-javascript">{JSONOutputExample1}</CodeBlock>
 </details>
 
@@ -128,6 +128,6 @@ Below is an example of how your would search for '人', which is simplified Chin
 </details>
 
 <details>
-  <summary>JSON Output Example</summary>
+  <summary>Raw Output Example</summary>
     <CodeBlock className="language-javascript">{JSONOutputExample2}</CodeBlock>
 </details>

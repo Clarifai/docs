@@ -94,7 +94,7 @@ $output = $response->getOutputs()[0];
 echo "Image caption:" . "\n";
 echo $output->getData()->getText()->getRaw() . "\n";
 
-// Uncomment this line to print the full Response JSON
+// Uncomment this line to print the raw output 
 // echo json_encode($output->serializeToJsonString()) . "\n";
 
 ?>

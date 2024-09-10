@@ -14,6 +14,7 @@
   const CONCEPT_ID = "water";
   const WORKER_USER_ID = "WORKER_USER_ID_HERE";
   const REVIEWER_USER_ID = "REVIEWER_USER_ID_HERE";
+  const DATASET_ID = "DATASET_ID_HERE";
 
   ///////////////////////////////////////////////////////////////////////////////////
   // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -29,7 +30,7 @@
         type: "CONCEPTS_CLASSIFICATION",
         name: "Annotate " + CONCEPT_ID,
         worker: {
-          strategy: "FULL",
+          strategy: "DYNAMIC",
           workers: [
             {
               user: {
@@ -46,7 +47,8 @@
           },
         ],
         input_source: {
-          type: "ALL_INPUTS",
+          type: "DATASET",
+          id: DATASET_ID
         },
         sample_ms: 1000,
         review: {

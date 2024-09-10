@@ -152,7 +152,7 @@ Below is an example of how you would use the `ListModelTypes` endpoint to list t
 </Tabs>
 
 <details>
-  <summary>Output Example</summary>
+  <summary>Raw Output Example</summary>
     <CodeBlock className="language-text">{CodeOutputExample1}</CodeBlock>
 </details>
 
@@ -199,7 +199,7 @@ Instead of providing an estimated input count, an alternative approach is to spe
 </Tabs>
 
 <details>
-  <summary>Output Example</summary>
+  <summary>Raw Output Example</summary>
     <CodeBlock className="language-text">{CodeOutputExample2}</CodeBlock>
 </details>
 

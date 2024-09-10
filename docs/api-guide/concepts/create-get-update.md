@@ -104,7 +104,7 @@ The initialization code used in the following examples is outlined in detail on 
 </Tabs>
 
 <details>
-  <summary>JSON Output Example</summary>
+  <summary>Raw Output Example</summary>
     <CodeBlock className="language-js">{JSONOutputExample1}</CodeBlock>
 </details>
 
@@ -144,7 +144,7 @@ Below is an example of how to get a single concept by its ID.
 </Tabs>
 
 <details>
-  <summary>JSON Output Example</summary>
+  <summary>Raw Output Example</summary>
     <CodeBlock className="language-js">{JSONOutputExample2}</CodeBlock>
 </details>
 
@@ -183,7 +183,7 @@ Below is an example of how to list concepts.
 </Tabs>
 
 <details>
-  <summary>JSON Output Example</summary>
+  <summary>Raw Output Example</summary>
     <CodeBlock className="language-js">{JSONOutputExample3}</CodeBlock>
 </details>
 
@@ -254,7 +254,7 @@ Below is an example of how to update a concept's name given its id by using the 
 </Tabs>
 
 <details>
-  <summary>JSON Output Example</summary>
+  <summary>Raw Output Example</summary>
     <CodeBlock className="language-js">{JSONOutputExample4}</CodeBlock>
 </details>
 

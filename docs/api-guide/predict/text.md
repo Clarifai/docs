@@ -117,7 +117,7 @@ Below is an example of how you would make predictions on passages of text hosted
 </details>
 
 <details>
-  <summary>JSON Output Example</summary>
+  <summary>Raw Output Example</summary>
     <CodeBlock className="language-javascript">{JSONOutputExample1}</CodeBlock>
 </details>
 

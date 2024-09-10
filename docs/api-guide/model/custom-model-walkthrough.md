@@ -97,7 +97,7 @@ To get started training your own model, you need to first add images that alread
 </Tabs>
 
 <details>
-  <summary>JSON Output Example</summary>
+  <summary>Raw Output Example</summary>
     <CodeBlock className="language-js">{ExampleAddImagesConcepts}</CodeBlock>
 </details>
 
@@ -143,7 +143,7 @@ Take note of the `model id`, as we'll need that for the next steps.
 </Tabs>
 
 <details>
-  <summary>JSON Output Example</summary>
+  <summary>Raw Output Example</summary>
     <CodeBlock className="language-js">{ExampleCreateModel}</CodeBlock>
 </details>
 
@@ -184,7 +184,7 @@ Take note of the `model_version id` in the response. We'll need that for the nex
 </Tabs>
 
 <details>
-  <summary>JSON Output Example</summary>
+  <summary>Raw Output Example</summary>
     <CodeBlock className="language-js">{ExampleTrainModel}</CodeBlock>
 </details>
 
@@ -227,11 +227,11 @@ You can repeat the above steps as often as you like. By adding more images with 
 </Tabs>
 
 <details>
-  <summary>Code Output Example</summary>
+  <summary>Text Output Example</summary>
     <CodeBlock className="language-js">{ExampleTextPredictModel}</CodeBlock>
 </details>
 
 <details>
-  <summary>JSON Output Example</summary>
+  <summary>Raw Output Example</summary>
     <CodeBlock className="language-js">{ExamplePredictModel}</CodeBlock>
 </details>

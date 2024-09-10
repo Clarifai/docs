@@ -146,7 +146,7 @@ Let's now use the trained custom model to predict new text examples.
 </Tabs>
 
 <details>
-  <summary>Code Output Example</summary>
+  <summary>Text Output Example</summary>
 
 ```text
 The following concepts were predicted for the input `Butchart Gardens contains over 900 varieties of plants.`:
@@ -177,7 +177,7 @@ See the [Evaluating Models](https://docs.clarifai.com/api-guide/evaluate/) secti
 </Tabs>
 
 <details>
-  <summary>Output Example</summary>
+  <summary>Raw Output Example</summary>
     <CodeBlock className="language-javascript">{OutputExample1}</CodeBlock>
 </details>
 
@@ -196,6 +196,6 @@ Let's wait for it to complete, and print all the results that it gives us.
 </Tabs>
 
 <details>
-  <summary>Output Example</summary>
+  <summary>Raw Output Example</summary>
     <CodeBlock className="language-javascript">{OutputExample2}</CodeBlock>
 </details>

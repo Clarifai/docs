@@ -15,6 +15,7 @@ $APP_ID = "YOUR_APP_ID_HERE";
 $CONCEPT_ID = "water";
 $WORKER_USER_ID = "WORKER_USER_ID_HERE";
 $REVIEWER_USER_ID = "REVIEWER_USER_ID_HERE"; // User who will review this task
+$DATASET_ID = "DATASET_ID_HERE";
 
 ///////////////////////////////////////////////////////////////////////////////////
 // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -53,7 +54,7 @@ $userDataObject = new UserAppIDSet([
                     "type" => 1, // integer value 1 for "CONCEPTS_CLASSIFICATION" type. Refer here https://github.com/Clarifai/clarifai-go-grpc/blob/master/proto/clarifai/api/resources.pb.go
                     "name" => "Annotate " . $CONCEPT_ID,
                     "worker" => new TaskWorker([
-                        "strategy" => 3, // integer value 3 for "FULL" strategy
+                        "strategy" => 4, // integer value 4 for "DYNAMIC" strategy
                         "users" => [
                             new User([
                                 "id" => $WORKER_USER_ID,
@@ -68,7 +69,8 @@ $userDataObject = new UserAppIDSet([
                         ]),
                     ],
                     "input_source" => new TaskInputSource([
-                        "type" => 1, // integer value 1 for "ALL_INPUTS" strategy
+                        "type" => 3, // integer value 1 for "DATASET" strategy
+                        "id" => $DATASET_ID
                     ]),
                     "sample_ms" => 1000,
                     "review" => new TaskReview([

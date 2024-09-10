@@ -29,7 +29,7 @@ To add a new team member to your organization, you need to send them an invitati
 
 ![Organization settings page](/img/clarifai_orgs/organization_settings_page.png)
 
-On the dialog box that appears, enter the invitee’s email address and select a role you wish to assign to them.
+In the dialog box that appears, enter the invitee’s email address and select a role you wish to assign to them.
 
 ![Invite member dialog box](/img/clarifai_orgs/invite_member_dialog_box.png)
 
@@ -38,6 +38,7 @@ You can assign any of the following roles:
 - **Team Contributor (select apps)** — the invitee will be available to contribute only to some selected applications.
 - **Organization Contributor (all apps)** — the invitee will be able to contribute to all the apps within the organization. 
 - **Admin** — the invitee will have administrative privileges in the organization. 
+- **Organization User (all apps)** — the invitee will have access privileges similar to those of an Organization Contributor for all apps and scopes. However, the role comes with view-only permissions without create, update, or delete privileges.
 
 :::tip
 

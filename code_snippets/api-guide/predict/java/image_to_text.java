@@ -67,7 +67,7 @@ public class ClarifaiExample {
         System.out.println("Image caption:");
         System.out.println(output.getData().getText().getRaw());
 
-        // Uncomment this line to print the full Response JSON
+        // Uncomment this line to print the raw output
         // System.out.println(output);
     }
 

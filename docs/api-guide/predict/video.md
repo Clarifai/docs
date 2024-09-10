@@ -113,7 +113,7 @@ import JSONOutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/pr
 </details>
 
 <details>
-  <summary>JSON Output Example</summary>
+  <summary>Raw Output Example</summary>
     <CodeBlock className="language-javascript">{JSONOutputExample1}</CodeBlock>
 </details>
 

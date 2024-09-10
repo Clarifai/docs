@@ -134,7 +134,15 @@ Fine-tuning allows you to adapt foundational text-to-text models to specific tas
 
 By training on task-specific data, you can improve model performance on those tasks. Fine-tuning lets you take advantage of [transfer learning](https://docs.clarifai.com/portal-guide/model/model-types/transfer-learning/) and utilize the knowledge gained from a pre-trained text model to facilitate the learning process of a new model for a related problem. 
 
-You can follow these steps to fine-tune a text-to-text model for generative or conversion tasks. 
+Here is a video that describes how to fine-tune the LlaMA 3.1 8B model for your own use case using the Clarifai platform. 
+
+<div style={{ "position":"relative","width": "100%","overflow": "hidden","padding-top": "56.25%"}}>
+<iframe width="900" height="500" style={{"position": "absolute","top": "0","left": "0","bottom": "0","right": "0","width": "100%","height": "100%",}} src="https://www.youtube.com/embed/J2N4AbXlWZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
+</div>
+
+<br /><br />
+
+You can also follow these steps to learn how to fine-tune a text-to-text model for generative or conversion tasks. 
 
 ### 1. Prepare your training data
 
@@ -178,9 +186,9 @@ The ensuing page allows you to create and train a text-to-text model for generat
 - **Model ID**—Provide an ID for your model.
 - **Dataset**—Select the dataset you want to use for fine-tuning the model. Also, select the version of your dataset.
 - **Invalid data_tolerance_percent**—Optionally, you can set a tolerance threshold (0 to 100) for the percentage of invalid inputs during training, and if this threshold is exceeded, training is stopped with an error.
-- **Template**—Select a pre-configured model template you want to use to train on your data. **HF_Llama_3_1_8b_instruct_GPTQ_lora** is the recommended template as shown in the figure above. However, you can select any of the following templates:
+- **Template**—Select a pre-configured model template you want to use to train on your data. You can select any of the following templates:
 
-     - **HF_Llama_3_1_8b_instruct_GPTQ_lora**: Template for fine-tuning a 3.1 version Llama model with 8 billion parameters optimized for instruction-based tasks. This version uses quantization (GPTQ) and Low-Rank Adaptation (LoRA) for efficient training.
+     - **HF_Llama_3_1_8b_instruct_GPTQ_lora**: This is the recommended template as shown in the screenshot above. It's the template for fine-tuning a 3.1 version Llama model with 8 billion parameters optimized for instruction-based tasks. This version uses quantization (GPTQ) and Low-Rank Adaptation (LoRA) for efficient training.
      - **HF_GPTNeo_125m_lora**: Template for the GPT-Neo model with 125 million parameters, using the LoRA method for efficient parameter adaptation, suitable for smaller scale projects or less resource-intensive applications.
      - **HF_GPTNeo_2p7b_lora**: Utilizes the 2.7 billion parameter GPT-Neo model, incorporating LoRA for effective fine-tuning, ideal for medium to large scale natural language processing tasks.
      - **HF_Llama_2_13b_chat_GPTQ_lora**: A fine-tuned 13 billion parameter Llama model for chat applications, using both quantization and LoRA for optimization, designed to handle complex dialog systems.

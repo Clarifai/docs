@@ -20,6 +20,7 @@ public class ClarifaiExample {
     static final String CONCEPT_ID = "water";
     static final String WORKER_USER_ID = "WORKER_USER_ID_HERE";
     static final String REVIEWER_USER_ID = "REVIEWER_USER_ID_HERE"; // User who will review this task
+    static final String DATASET_ID = "DATASET_ID_HERE"; 
 
     //////////////////////////////////////////////////////////////////////////////////
     // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -37,7 +38,7 @@ public class ClarifaiExample {
                     .setType(Task.TaskType.CONCEPTS_CLASSIFICATION)
                     .setName("Annotate " + CONCEPT_ID)
                     .setWorker(TaskWorker.newBuilder()
-                        .setStrategy(TaskWorker.TaskWorkerStrategy.FULL)
+                        .setStrategy(TaskWorker.TaskWorkerStrategy.DYNAMIC)
                         .addWorkers(Worker.newBuilder()
                             .setUser(User.newBuilder()
                                 .setId(WORKER_USER_ID)
@@ -54,7 +55,8 @@ public class ClarifaiExample {
                         .build()
                     )
                     .setInputSource(TaskInputSource.newBuilder()
-                        .setType(TaskInputSource.TaskInputSourceType.ALL_INPUTS)
+                        .setType(TaskInputSource.TaskInputSourceType.DATASET)
+                        .setId(DATASET_ID)
                         .build()
                     )
                     .setSampleMs(1000)
