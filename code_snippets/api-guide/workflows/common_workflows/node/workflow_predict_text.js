@@ -73,7 +73,7 @@ stub.PostWorkflowResults({
             console.log(output.data);
 
         }
-        // Uncomment this line to print the full Response JSON
+        // Uncomment this line to print the raw output
         // console.log(results);
     }
 );

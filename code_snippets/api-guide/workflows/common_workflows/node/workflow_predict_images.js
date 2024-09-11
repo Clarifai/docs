@@ -76,7 +76,7 @@ stub.PostWorkflowResults({
                 }
             }
         }
-        // Uncomment this line to print the full Response JSON
+        // Uncomment this line to print the raw output
         // console.log(results);
     }
 );

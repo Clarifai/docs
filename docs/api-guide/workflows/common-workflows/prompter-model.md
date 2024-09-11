@@ -81,7 +81,7 @@ import ExampleOutput1 from "!!raw-loader!../../../../code_snippets/api-guide/mod
 </Tabs>
 
 <details>
-  <summary>Output Example</summary>
+  <summary>Text Output Example</summary>
     <CodeBlock className="language-js">{ExampleOutput1}</CodeBlock>
 </details>
 
@@ -190,7 +190,7 @@ After creating the workflow, let's now use it to perform a text sentiment predic
 </Tabs>
 
 <details>
-  <summary>Output Example</summary>
+  <summary>Text Output Example</summary>
     <CodeBlock className="language-js">{ExampleOutput1}</CodeBlock>
 </details>
 

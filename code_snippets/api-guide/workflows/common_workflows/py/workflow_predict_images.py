@@ -71,5 +71,5 @@ for output in results.outputs:
         for item in concept.data.concepts:
             print("\t%s %.2f" % (item.name, item.value))
 
-# Uncomment this line to print the full Response JSON
+# Uncomment this line to print the raw output
 # print(results)

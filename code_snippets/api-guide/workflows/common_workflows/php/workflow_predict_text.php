@@ -101,7 +101,7 @@ foreach ($results->getOutputs() as $output) {
     echo  $convertDataToJSONString . "\n";
 }
 
-// Uncomment this line to print the full Response JSON
+// Uncomment this line to print the raw output
 // print_r($results);
 
 ?>

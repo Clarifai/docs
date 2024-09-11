@@ -87,7 +87,7 @@ if ($response->getStatus()->getCode() != StatusCode::SUCCESS) {
 // We'll get one WorkflowResult for each input we used above. Because of one input, we have here one WorkflowResult
 $results = $response->getResults()[0];
 
-// Print the full Response JSON
+// Uncomment this line to print the raw output
 print_r($results);
 
 ?>
