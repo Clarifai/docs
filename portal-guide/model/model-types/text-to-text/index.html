@@ -18,8 +18,8 @@
 
 <script src="/scripts/sidebar.js" async></script>
 <script src="/scripts/intercomConfig.js" async></script><link rel="stylesheet" href="/assets/css/styles.9421978a.css">
-<script src="/assets/js/runtime~main.d65962ce.js" defer="defer"></script>
-<script src="/assets/js/main.c234276b.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.f2d0140e.js" defer="defer"></script>
+<script src="/assets/js/main.39e43228.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5W9P7GR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -93,7 +93,11 @@
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="how-to-fine-tune-text-generation-models">How to Fine-Tune Text Generation Models<a class="hash-link" aria-label="Direct link to How to Fine-Tune Text Generation Models" title="Direct link to How to Fine-Tune Text Generation Models" href="/portal-guide/model/model-types/text-to-text#how-to-fine-tune-text-generation-models">​</a></h2>
 <p>Fine-tuning allows you to adapt foundational text-to-text models to specific tasks or domains, making them more suitable for particular applications. Foundation models, also referred to as pre-trained or base models, are massive models that have been trained on extensive amounts of data. You can use them as a starting point for text generation tasks.</p>
 <p>By training on task-specific data, you can improve model performance on those tasks. Fine-tuning lets you take advantage of <a href="https://docs.clarifai.com/portal-guide/model/model-types/transfer-learning/" target="_blank" rel="noopener noreferrer">transfer learning</a> and utilize the knowledge gained from a pre-trained text model to facilitate the learning process of a new model for a related problem.</p>
-<p>You can follow these steps to fine-tune a text-to-text model for generative or conversion tasks.</p>
+<p>Here is a video that describes how to fine-tune the LlaMA 3.1 8B model for your own use case using the Clarifai platform.</p>
+<div style="position:relative;width:100%;overflow:hidden;padding-top:56.25%"><iframe width="900" height="500" style="position:absolute;top:0;left:0;bottom:0;right:0;width:100%;height:100%" src="https://www.youtube.com/embed/J2N4AbXlWZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe></div>
+<br>
+<br>
+<p>You can also follow these steps to learn how to fine-tune a text-to-text model for generative or conversion tasks.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="1-prepare-your-training-data">1. Prepare your training data<a class="hash-link" aria-label="Direct link to 1. Prepare your training data" title="Direct link to 1. Prepare your training data" href="/portal-guide/model/model-types/text-to-text#1-prepare-your-training-data">​</a></h3>
 <p>You can go through the previous <a href="/portal-guide/model/model-types/text-to-text#training-data">Training Data</a> section to learn how to prepare your data for fine-tuning a foundational generative model.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="2-create-an-app">2. Create an app<a class="hash-link" aria-label="Direct link to 2. Create an app" title="Direct link to 2. Create an app" href="/portal-guide/model/model-types/text-to-text#2-create-an-app">​</a></h3>
@@ -122,9 +126,9 @@
 <p><strong>Invalid data_tolerance_percent</strong>—Optionally, you can set a tolerance threshold (0 to 100) for the percentage of invalid inputs during training, and if this threshold is exceeded, training is stopped with an error.</p>
 </li>
 <li>
-<p><strong>Template</strong>—Select a pre-configured model template you want to use to train on your data. <strong>HF_Llama_3_1_8b_instruct_GPTQ_lora</strong> is the recommended template as shown in the figure above. However, you can select any of the following templates:</p>
+<p><strong>Template</strong>—Select a pre-configured model template you want to use to train on your data. You can select any of the following templates:</p>
 <ul>
-<li><strong>HF_Llama_3_1_8b_instruct_GPTQ_lora</strong>: Template for fine-tuning a 3.1 version Llama model with 8 billion parameters optimized for instruction-based tasks. This version uses quantization (GPTQ) and Low-Rank Adaptation (LoRA) for efficient training.</li>
+<li><strong>HF_Llama_3_1_8b_instruct_GPTQ_lora</strong>: This is the recommended template as shown in the screenshot above. It&#x27;s the template for fine-tuning a 3.1 version Llama model with 8 billion parameters optimized for instruction-based tasks. This version uses quantization (GPTQ) and Low-Rank Adaptation (LoRA) for efficient training.</li>
 <li><strong>HF_GPTNeo_125m_lora</strong>: Template for the GPT-Neo model with 125 million parameters, using the LoRA method for efficient parameter adaptation, suitable for smaller scale projects or less resource-intensive applications.</li>
 <li><strong>HF_GPTNeo_2p7b_lora</strong>: Utilizes the 2.7 billion parameter GPT-Neo model, incorporating LoRA for effective fine-tuning, ideal for medium to large scale natural language processing tasks.</li>
 <li><strong>HF_Llama_2_13b_chat_GPTQ_lora</strong>: A fine-tuned 13 billion parameter Llama model for chat applications, using both quantization and LoRA for optimization, designed to handle complex dialog systems.</li>
