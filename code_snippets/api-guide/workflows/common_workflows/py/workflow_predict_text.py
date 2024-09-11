@@ -69,5 +69,5 @@ for output in results.outputs:
     print("Predicted concepts for the model `%s`" % model.id)
     print(output.data)
 
-# Uncomment this line to print the full Response JSON
+# Uncomment this line to print the raw output
 # print(results)

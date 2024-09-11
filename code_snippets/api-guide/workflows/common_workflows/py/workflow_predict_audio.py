@@ -69,5 +69,5 @@ for output in results.outputs:
         print("\t%s %.2f" % (concept.name, concept.value))
     print(output.data.text.raw)
 
-# Uncomment this line to print the full Response JSON
+# Uncomment this line to print the raw output
 # print(results)

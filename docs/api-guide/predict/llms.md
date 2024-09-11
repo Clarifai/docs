@@ -173,7 +173,7 @@ Below is an example of how you would provide a raw text prompt and autocomplete 
 
 ## Use Hyperparameters to Customize LLMs
 
-You can use hyperparameters to fine-tune and customize the behavior of LLMs. This allows you to gain precise control over the prediction output of LLMs, shaping their responses to suit your unique needs.
+You can use [hyperparameters](https://docs.clarifai.com/portal-guide/ppredict/generative-ai#inference-parameters) to fine-tune and customize the behavior of LLMs. This allows you to gain precise control over the prediction output of LLMs, shaping their responses to suit your unique needs.
 
 Here are some parameters we support:
 

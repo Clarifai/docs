@@ -8,7 +8,7 @@ sidebar_position: 1
 **Learn to interpret model evaluations**
 <hr />
 
-Model evaluation takes some time—depending on the amount of data the model has. After the process is complete, you could get the results and use them to assess the performance of your model. 
+Model evaluation takes some time — depending on the amount of data the model has. After the process is complete, you could get the results and use them to assess the performance of your model. 
 
 ## Get Evaluation Results
 
@@ -54,7 +54,7 @@ import CurlListModelVersionEvaluations from "!!raw-loader!../../../code_snippets
 
 import OutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/model/code_output_examples/interpret_evaluations_1.js";
 
-### GetEvaluation
+### Get Evaluation
 
 Get the evaluation results by using the `evaluation_id` returned after starting an evaluation.
 
@@ -87,12 +87,12 @@ Get the evaluation results by using the `evaluation_id` returned after starting 
 </Tabs>
 
 <details>
-  <summary>Output Example</summary>
+  <summary>Raw Output Example</summary>
     <CodeBlock className="language-javascript">{OutputExample1}</CodeBlock>
 </details>
 
 
-### ListEvaluations
+### List Evaluations
 
 List the evaluation results of all models in your app. 
 
@@ -124,7 +124,7 @@ List the evaluation results of all models in your app.
 
 </Tabs>
 
-### GetModelVersionEvaluation
+### Get Model Version Evaluation
 
 Get the evaluation results of a specific version of a custom model by using the `evaluation_id` returned after starting an evaluation.
 
@@ -156,7 +156,7 @@ Get the evaluation results of a specific version of a custom model by using the 
 
 </Tabs>
 
-### ListModelVersionEvaluations
+### List Model Version Evaluations
 
 List the evaluation results of a model version in your app.
 

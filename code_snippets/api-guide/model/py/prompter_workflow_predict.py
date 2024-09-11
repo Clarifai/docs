@@ -66,5 +66,5 @@ for output in results.outputs:
     print("Predicted output for the model: `%s`" % model.id)       
     print(output.data.text.raw)
 
-# Uncomment this line to print the full Response JSON
+# Uncomment this line to print the raw output
 # print(results)

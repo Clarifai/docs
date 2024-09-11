@@ -92,7 +92,7 @@ import JSONOutputExample3 from "!!raw-loader!../../../code_snippets/api-guide/co
 </Tabs>
 
 <details>
-  <summary>JSON Output Example</summary>
+  <summary>Raw Output Example</summary>
     <CodeBlock className="language-js">{JSONOutputExample1}</CodeBlock>
 </details>
 
@@ -129,7 +129,7 @@ Below is an example of how to list existing relations between concepts.
 </Tabs>
 
 <details>
-  <summary>JSON Output Example</summary>
+  <summary>Raw Output Example</summary>
     <CodeBlock className="language-js">{JSONOutputExample2}</CodeBlock>
 </details>
 

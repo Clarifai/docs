@@ -11,6 +11,7 @@ APP_ID = 'YOUR_APP_ID_HERE'
 CONCEPT_ID = 'water'
 WORKER_USER_ID = 'WORKER_USER_ID_HERE'
 REVIEWER_USER_ID = 'REVIEWER_USER_ID_HERE' # User who will review this task
+DATASET_ID = 'DATASET_ID_HERE'
 
 ##########################################################################
 # YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -35,7 +36,7 @@ post_tasks_response = stub.PostTasks(
                 type='CONCEPTS_CLASSIFICATION',
                 name='Annotate ' + CONCEPT_ID,
                 worker=resources_pb2.TaskWorker(
-                    strategy='FULL',
+                    strategy='DYNAMIC',
                     workers=[
                         resources_pb2.Worker(
                             user=resources_pb2.User(
@@ -52,7 +53,8 @@ post_tasks_response = stub.PostTasks(
                     )
                 ],
                 input_source=resources_pb2.TaskInputSource(
-                    type='ALL_INPUTS'
+                    type='DATASET',
+                    id=DATASET_ID
                 ),
                 sample_ms=1000,
                 review=resources_pb2.TaskReview(

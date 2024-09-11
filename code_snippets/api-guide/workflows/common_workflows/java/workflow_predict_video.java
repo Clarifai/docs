@@ -61,7 +61,7 @@ public class ClarifaiExample {
         // one WorkflowResult
         WorkflowResult results = postWorkflowResultsResponse.getResults(0);
 
-        // Print the full Response JSON
+        // Uncomment this line to print the raw output
         System.out.println(results);
     }
 

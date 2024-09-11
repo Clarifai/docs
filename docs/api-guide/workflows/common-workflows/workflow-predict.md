@@ -108,12 +108,12 @@ Note that the `base64` output representation of the image in bytes is already in
 </Tabs>
 
 <details>
-  <summary>Code Output Example</summary>
+  <summary>Text Output Example</summary>
     <CodeBlock className="language-text">{ExampleCodeWorkflowPredictImage}</CodeBlock>
 </details>
 
 <details>
-  <summary>JSON Output Example</summary>
+  <summary>Raw Output Example</summary>
     <CodeBlock className="language-javascript">{ExampleJSONWorkflowPredictImage}</CodeBlock>
 </details>
 
@@ -182,12 +182,12 @@ Let's illustrate how you would produce embeddings and clusters from text inputs 
 </Tabs>
 
 <details>
-  <summary>Code Output Example</summary>
+  <summary>Text Output Example</summary>
     <CodeBlock className="language-text">{ExampleCodeWorkflowPredictText}</CodeBlock>
 </details>
 
 <details>
-  <summary>JSON Output Example</summary>
+  <summary>Raw Output Example</summary>
     <CodeBlock className="language-javascript">{ExampleJSONWorkflowPredictText}</CodeBlock>
 </details>
 
@@ -224,11 +224,11 @@ Let's illustrate how you would get the sentiment of an audio input using Clarifa
 </Tabs>
 
 <details>
-  <summary>Code Output Example</summary>
+  <summary>Text Output Example</summary>
     <CodeBlock className="language-text">{ExampleCodeWorkflowPredictAudio}</CodeBlock>
 </details>
 
 <details>
-  <summary>JSON Output Example</summary>
+  <summary>Raw Output Example</summary>
     <CodeBlock className="language-javascript">{ExampleJSONWorkflowPredictAudio}</CodeBlock>
 </details>

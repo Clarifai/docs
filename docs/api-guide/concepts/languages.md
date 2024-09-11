@@ -42,12 +42,9 @@ The currently supported languages are listed below.
 
 ## Default Language
 
-When you create a new Application, you must specify a default language. This will be the default language concepts are returned in when you do not explicitly set a language in an API request. 
+When you [create a new application](https://docs.clarifai.com/clarifai-basics/applications/create-an-application), you can specify a default language. This will be the default language concepts are returned in when you do not explicitly set a language in an API request.  
 
-You cannot change the default language. You can however change languages per request.
-
-![create new app](/img/create-new-app-new.png)
-
+You cannot change the default language. You can, however, contact us to change the language.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -129,7 +126,7 @@ The initialization code used in the following examples is outlined in detail on 
 </Tabs>
 
 <details>
-  <summary>JSON Output Example</summary>
+  <summary>Raw Output Example</summary>
     <CodeBlock className="language-js">{JSONOutputExample1}</CodeBlock>
 </details>
 
@@ -166,7 +163,7 @@ Below is an example of how to get a single language translation for a concept. Y
 </Tabs>
 
 <details>
-  <summary>JSON Output Example</summary>
+  <summary>Raw Output Example</summary>
     <CodeBlock className="language-js">{JSONOutputExample2}</CodeBlock>
 </details>
 
@@ -203,7 +200,7 @@ Below is an example of how to create a language translation for a concept by POS
 </Tabs>
 
 <details>
-  <summary>JSON Output Example</summary>
+  <summary>Raw Output Example</summary>
     <CodeBlock className="language-js">{JSONOutputExample3}</CodeBlock>
 </details>
 
@@ -240,6 +237,6 @@ Below is an example of how to update a language translation for a concept by PAT
 </Tabs>
 
 <details>
-  <summary>JSON Output Example</summary>
+  <summary>Raw Output Example</summary>
     <CodeBlock className="language-js">{JSONOutputExample4}</CodeBlock>
 </details>

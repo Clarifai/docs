@@ -45,5 +45,5 @@ print("Found concepts:")
 for concept in post_concepts_searches_response.concepts:
     print("\t%s %.2f" % (concept.name, concept.value))
 
-# Uncomment this line to print the full Response JSON
+# Uncomment this line to print the raw output
 #print(post_concepts_searches_response)

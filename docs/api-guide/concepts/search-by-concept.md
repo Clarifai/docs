@@ -61,7 +61,7 @@ import JSONOutputExample from "!!raw-loader!../../../code_snippets/api-guide/con
 </Tabs>
 
 <details>
-  <summary>Code Output Example</summary>
+  <summary>Raw Output Example</summary>
     <CodeBlock className="language-js">{CodeOutputExample}</CodeBlock>
 </details>
 

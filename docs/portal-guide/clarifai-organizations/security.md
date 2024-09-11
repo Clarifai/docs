@@ -17,37 +17,43 @@ Our robust security measures ensure the protection and confidentiality of your v
 
 Scopes and access levels play a crucial role in defining the boundaries of the components, resources, or data that members of an organization can access or manipulate. 
 
-Every member of a Clarifai organization — administrator, organization contributor, or team contributor — has their own pre-set scopes that determine what actions they can perform and what resources they can access. 
+Every member of a Clarifai organization — Administrator, Organization Contributor, Team Contributor, or Organization User — has their own pre-set scopes that determine what actions they can perform and what resources they can access. 
 
 The permissions allowed for each user type help to protect your organization’s resources from unauthorized infiltration, maintain the privacy of your assets, and ensure trackability of resources by knowing who has access to what. 
 
+Here is a summary of the permissions:
+
+- **Administrator** — the user has administrative privileges in the organization. 
+- **Organization Contributor** — the user can contribute to all the apps within the organization, but without some admin privileges.
+- **Team Contributor** — the user can perform only some selected actions.
+- **Organization User** — the user has access privileges similar to those of an Organization Contributor for all apps and scopes. However, the role comes with view-only permissions without ability to perform certain CRUD operations — create, update, or delete resources.
+
 Here is a table detailing the scopes and access levels allowed for each user type within a Clarifai organization:
 
-| <br/>                                       | Administrator<br/>    | Organization Contributor<br/>    | Team Contributor<br/>    |
-|--------------------------------------------|----------------------|---------------------------------|-------------------------|
-| View Sidebar Items<br/>                     | Yes<br/>              | Yes<br/>                         | Yes<br/>                 |
-| Create Models<br/>                          | Yes<br/>              | Yes<br/>                         | Yes<br/>                 |
-| Create Workflows<br/>                       | Yes<br/>              | Yes<br/>                         | Yes<br/>                 |
-| Edit App ID<br/>                            | Yes<br/>              | Yes<br/>                         | No<br/>                  |
-| Edit App Description<br/>                   | Yes<br/>              | Yes<br/>                         | Yes<br/>                 |
-| Edit App Notes<br/>                         | Yes<br/>              | Yes<br/>                         | Yes<br/>                 |
-| View Collaborators<br/>                     | Yes<br/>              | Yes<br/>                         | Yes<br/>                 |
-| Edit Collaborators<br/>                     | Yes<br/>              | Yes<br/>                         | No<br/>                  |
-| Base Workflow View<br/>                     | Yes<br/>              | Yes<br/>                         | Yes<br/>                 |
-| Base Workflow Edit<br/>                     | Yes<br/>              | Yes<br/>                         | No<br/>                  |
-| Delete All Models<br/>                      | Yes<br/>              | Yes<br/>                         | Yes<br/>                 |
-| Delete App<br/>                             | Yes<br/>              | Yes<br/>                         | No<br/>                  |
-| Invite / Modify / Delete Members<br/>       | Yes<br/>              | No<br/>                          | No<br/>                  |
-| Create / Edit / Delete Teams<br/>           | Yes<br/>              | Yes<br/>                         | No<br/>                  |
-| Add Members to Teams<br/>                   | Yes<br/>              | Yes<br/>                         | No<br/>                  |
-| Add Apps to Teams<br/>                      | Yes<br/>              | Yes<br/>                         | No<br/>                  |
-| Create Apps<br/>                            | Yes<br/>              | Yes<br/>                         | No<br/>                  |
-| Change Visibility of Apps<br/>              | Yes<br/>              | Yes<br/>                         | No<br/>                  |
-| Change Visibility of Apps Resources<br/>    | Yes<br/>              | Yes<br/>                         | Yes<br/>                 |
-| Use Modules<br/>                            | Yes<br/>              | Yes<br/>                         | Yes<br/>                 |
-| Create / Delete Modules<br/>                | Yes<br/>              | Yes<br/>                         | Yes<br/>                 |
-| Install / Uninstall Modules<br/>            | Yes<br/>              | Yes<br/>                         | Yes<br/>                 |
-
+| <br/>                                       | Administrator<br/>    | Organization Contributor<br/>    | Team Contributor<br/>    | Organization User<br/>  |
+|--------------------------------------------|----------------------|---------------------------------|-------------------------|-----------------------------|
+| View Sidebar Items<br/>                     | Yes<br/>              | Yes<br/>                         | Yes<br/>                 | Yes<br/> |
+| Create Models<br/>                          | Yes<br/>              | Yes<br/>                         | Yes<br/>                 | No<br/> |
+| Create Workflows<br/>                       | Yes<br/>              | Yes<br/>                         | Yes<br/>                 | No<br/> |
+| Edit App ID<br/>                            | Yes<br/>              | Yes<br/>                         | No<br/>                  | No<br/> |
+| Edit App Description<br/>                   | Yes<br/>              | Yes<br/>                         | Yes<br/>                 | No<br/> |
+| Edit App Notes<br/>                         | Yes<br/>              | Yes<br/>                         | Yes<br/>                 | No<br/> |
+| View Collaborators<br/>                     | Yes<br/>              | Yes<br/>                         | Yes<br/>                 | Yes<br/> |
+| Edit Collaborators<br/>                     | Yes<br/>              | Yes<br/>                         | No<br/>                  | No<br/> |
+| Base Workflow View<br/>                     | Yes<br/>              | Yes<br/>                         | Yes<br/>                 | Yes<br/> |
+| Base Workflow Edit<br/>                     | Yes<br/>              | Yes<br/>                         | No<br/>                  | No<br/> |
+| Delete All Models<br/>                      | Yes<br/>              | Yes<br/>                         | Yes<br/>                 | No<br/> |
+| Delete App<br/>                             | Yes<br/>              | Yes<br/>                         | No<br/>                  | No<br/> |
+| Invite / Modify / Delete Members<br/>       | Yes<br/>              | No<br/>                          | No<br/>                  | No<br/> |
+| Create / Edit / Delete Teams<br/>           | Yes<br/>              | Yes<br/>                         | No<br/>                  | No<br/> |
+| Add Members to Teams<br/>                   | Yes<br/>              | Yes<br/>                         | No<br/>                  | No<br/> |
+| Add Apps to Teams<br/>                      | Yes<br/>              | Yes<br/>                         | No<br/>                  | No<br/> |
+| Create Apps<br/>                            | Yes<br/>              | Yes<br/>                         | No<br/>                  | No<br/> |
+| Change Visibility of Apps<br/>              | Yes<br/>              | Yes<br/>                         | No<br/>                  | No<br/> |
+| Change Visibility of Apps Resources<br/>    | Yes<br/>              | Yes<br/>                         | Yes<br/>                 | No<br/> |
+| Use Modules<br/>                            | Yes<br/>              | Yes<br/>                         | Yes<br/>                 | Yes<br/> |
+| Create / Delete Modules<br/>                | Yes<br/>              | Yes<br/>                         | Yes<br/>                 | No<br/> |
+| Install / Uninstall Modules<br/>            | Yes<br/>              | Yes<br/>                         | Yes<br/>                 | No<br/> |
 
 ## How to Enforce the Security of Your Clarifai Organization
 

@@ -66,5 +66,5 @@ output = post_model_outputs_response.outputs[0]
 print("Image caption:")
 print(output.data.text.raw)
 
-# Uncomment this line to print the full Response JSON
+# Uncomment this line to print the raw output
 # print(output)

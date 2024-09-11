@@ -59,5 +59,5 @@ if post_workflow_results_response.status.code != status_code_pb2.SUCCESS:
 # We'll get one WorkflowResult for each input we used above. Because of one input, we have here one WorkflowResult
 results = post_workflow_results_response.results[0]
 
-# Print the full Response JSON
+# Uncomment this line to print the raw output
 print(results)

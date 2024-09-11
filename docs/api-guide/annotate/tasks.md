@@ -20,8 +20,9 @@ These are some parameters you can specify when working with tasks:
 - **Worker** — Task worker includes information about the workers who will work on the task. For manual labeling tasks, the workers can only be users; no limitation on number of workers. For auto-annotation tasks, the worker can be either a model or a workflow; currently only supports 1 worker.
 - **Concepts** — List of concept IDs used in the work on the task. The concepts should already be existing in your app. 
 - **Task worker strategy** — It can be:
-    - `PARTITIONED` — The inputs will be partitioned in several partitions. Each worker will label one or more input partitions.
-    - `FULL` — Each worker will label all inputs from the input source.
+    - `DYNAMIC` —  Each worker will dynamically get 10 inputs assigned at a time. No inputs are assigned at task creation. It's the recommended way to set a task worker strategy. 
+    - `PARTITIONED` — The inputs will be partitioned in several partitions. Each worker will label one or more input partitions.  All inputs are assigned at task creation.
+    - `FULL` — Each worker will label all inputs from the input source. All inputs are assigned at task creation.
 - **Input source** — It can be: 
     - `ALL_INPUTS` — Use all inputs in the app.  
     - `DATASET` — Use inputs from a [dataset](https://docs.clarifai.com/api-guide/data/datasets/).
@@ -49,7 +50,6 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
-import PyNonAssignedTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/non-assigned_task.py";
 import PyAssignedTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/assigned_task.py";
 import PyTaskPartitionedWorkerStrategy from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/task_partitioned_worker_strategy.py";
 import PyConsensusReview from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/task_consensus_review.py";
@@ -61,7 +61,6 @@ import PyUpdateTask from "!!raw-loader!../../../code_snippets/api-guide/annotate
 import PyDeleteMultipleTasks from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/delete_multiple_tasks.py";
 import PyAutoAnnotation from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/auto_annotation.py";
 
-import JSNonAssignedTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/non_assigned_task.html";
 import JSAssignedTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/assigned_task.html";
 import JSTaskPartitionedWorkerStrategy from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/task_partitioned_worker_strategy.html";
 import JSConsensusReview from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/task_consensus_review.html";
@@ -73,7 +72,6 @@ import JSUpdateTask from "!!raw-loader!../../../code_snippets/api-guide/annotate
 import JSDeleteMultipleTasks from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/delete_multiple_tasks.html";
 import JSAutoAnnotation from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/auto_annotation.html";
 
-import NodeNonAssignedTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/non_assigned_task.js";
 import NodeAssignedTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/assigned_task.js";
 import NodeTaskPartitionedWorkerStrategy from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/task_partitioned_worker_strategy.js";
 import NodeConsensusReview from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/task_consensus_review.js";
@@ -84,7 +82,6 @@ import NodeListTasksAssignedUser from "!!raw-loader!../../../code_snippets/api-g
 import NodeListTasksAssignedUserReview from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/list_tasks_assigned_user_review.js";
 import NodeAutoAnnotation from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/auto_annotation.js";
 
-import JavaNonAssignedTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/non-assigned_task.java";
 import JavaAssignedTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/assigned_task.java";
 import JavaTaskPartitionedWorkerStrategy from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/task_partitioned_worker_strategy.java";
 import JavaConsensusReview from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/task_consensus_review.java";
@@ -96,7 +93,6 @@ import JavaListTasksAssignedUser from "!!raw-loader!../../../code_snippets/api-g
 import JavaListTasksAssignedUserReview from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/list_tasks_assigned_user_review.java";
 import JavaAutoAnnotation from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/auto_annotation.java";
 
-import PHPNonAssignedTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/non_assigned_task.php";
 import PHPTaskPartitionedWorkerStrategy from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/task_partitioned_worker_strategy.php";
 import PHPConsensusReview from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/task_consensus_review.php";
 import PHPGetTaskByID from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/get_task_by_id.php";
@@ -108,7 +104,6 @@ import PHPUpdateTask from "!!raw-loader!../../../code_snippets/api-guide/annotat
 import PHPDeleteMultipleTasks from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/delete_multiple_tasks.php";
 import PHPAutoAnnotation from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/auto_annotation.php";
 
-import CurlNonAssignedTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/non_assigned_task.sh";
 import CurlAssignedTask from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/assigned_task.sh";
 import CurlTaskPartitionedWorkerStrategy from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/task_partitioned_worker_strategy.sh";
 import CurlConsensusReview from "!!raw-loader!../../../code_snippets/api-guide/annotate/tasks/task_consensus_review.sh";
@@ -123,38 +118,6 @@ import CurlAutoAnnotation from "!!raw-loader!../../../code_snippets/api-guide/an
 ## Create
 
 To create a new task in your app, you `POST` the task information to the `v2/task` endpoint.
-
-### Non-Assigned Task
-
-A task should be assigned to a list of users, but it's not required. The following code will create a non-assigned task.
-
-<Tabs>
-
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python">{PyNonAssignedTask}</CodeBlock>
-</TabItem>
-
-<TabItem value="js_rest" label="JavaScript (REST)">
-    <CodeBlock className="language-javascript">{JSNonAssignedTask}</CodeBlock>
-</TabItem>
-
-<TabItem value="nodejs" label="NodeJS">
-    <CodeBlock className="language-javascript">{NodeNonAssignedTask}</CodeBlock>
-</TabItem>
-
-<TabItem value="java" label="Java">
-    <CodeBlock className="language-java">{JavaNonAssignedTask}</CodeBlock>
-</TabItem>
-
-<TabItem value="php" label="PHP">
-    <CodeBlock className="language-php">{PHPNonAssignedTask}</CodeBlock>
-</TabItem>
-
-<TabItem value="curl" label="cURL">
-    <CodeBlock className="language-bash">{CurlNonAssignedTask}</CodeBlock>
-</TabItem>
-
-</Tabs>
 
 ### Assigned Task
 
@@ -188,6 +151,7 @@ A task should be assigned to a list of users. These users will do the labeling w
 
 </Tabs>
 
+<!--
 ### Task With Partitioned Worker Strategy
 
 The previous tasks were created with full worker strategy.
@@ -217,13 +181,14 @@ In the following example, there are two workers:
 <TabItem value="js_rest" label="JavaScript (REST)">
     <CodeBlock className="language-javascript">{JSTaskPartitionedWorkerStrategy}</CodeBlock>
 </TabItem>
-
+-->
 <!--
 <TabItem value="nodejs" label="NodeJS">
     <CodeBlock className="language-javascript">{NodeTaskPartitionedWorkerStrategy}</CodeBlock>
 </TabItem>
 -->
 
+<!--
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaTaskPartitionedWorkerStrategy}</CodeBlock>
 </TabItem>
@@ -244,18 +209,11 @@ In the following example, there are two workers:
 * The partitioning is approximate. This means that the number of assigned inputs to each worker may have a small error margin, but it will be close to the assigned weight percentage.
 
 :::
+-->
 
 ### Task With Consensus Review
 
-The previous tasks were created with no review or manual review strategy.
-
-```javascript
-{
-  "strategy": "MANUAL"
-}
-```
-
-We recommend to create tasks with `CONSENSUS` review strategy. When enough workers label an input in the same way, it will automatically be approved, with no need for the reviewer to spend time to check. In this way, the reviewer will be able to focus on the inputs where the workers don't agree.
+You can also create tasks with `CONSENSUS` review strategy. When enough workers label an input in the same way, it will automatically be approved, with no need for the reviewer to spend time to check. In this way, the reviewer will be able to focus on the inputs where the workers don't agree.
 
 Note that an approval threshold must be set. It is the number of labelers that need to agree in order to automatically approve an annotation. 
 

@@ -62,7 +62,7 @@ stub.PostWorkflowResults({
         // one WorkflowResult
         const results = response.results[0];
 
-        // Print the full Response JSON
+        // Uncomment this line to print the raw output
         console.log(results);
     }
 );

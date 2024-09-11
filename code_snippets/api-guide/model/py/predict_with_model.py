@@ -56,5 +56,5 @@ print("Predicted concepts:")
 for concept in output.data.concepts:
     print("%s %.2f" % (concept.name, concept.value))
 
-# Uncomment this line to print the full Response JSON
+# Uncomment this line to print the raw output
 #print(post_model_outputs_response)

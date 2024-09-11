@@ -73,7 +73,7 @@ if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
     print(post_model_outputs_response.status)
     raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description )
 
-# Uncomment this line to print the full Response JSON
+# Uncomment this line to print the raw output
 # print(post_model_outputs_response)
 
 # Since we have one input, one output will exist here

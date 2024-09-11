@@ -115,7 +115,7 @@ import JSONOutputExample4 from "!!raw-loader!../../../code_snippets/api-guide/pr
 </details>
 
 <details>
-  <summary>JSON Output Example</summary>
+  <summary>Raw Output Example</summary>
     <CodeBlock className="language-javascript">{JSONOutputExample1}</CodeBlock>
 </details>
 
@@ -126,7 +126,7 @@ Setting the `max_concepts` parameter will customize how many concepts and their 
 
 You can currently set the max concepts parameter to any number in the range of \[1-200\]. 
 
-If your use case requires more concepts, please contact [Support](mailto:support@clarifai.com).
+If your use case requires more concepts, please contact our [support team](mailto:support@clarifai.com).
 
 Below is an example of how you would set maximum concepts and receive predictions from Clarifai's [`general-image-recognition`](https://clarifai.com/clarifai/main/models/general-image-recognition) model. 
 
@@ -164,7 +164,7 @@ Below is an example of how you would set maximum concepts and receive prediction
 </details>
 
 <details>
-  <summary>JSON Output Example</summary>
+  <summary>Raw Output Example</summary>
     <CodeBlock className="language-javascript">{JSONOutputExample2}</CodeBlock>
 </details>
 
@@ -213,7 +213,7 @@ Below is an example of how you would set a minimum probability threshold and rec
 </details>
 
 <details>
-  <summary>JSON Output Example</summary>
+  <summary>Raw Output Example</summary>
     <CodeBlock className="language-javascript">{JSONOutputExample3}</CodeBlock>
 </details>
 
@@ -260,6 +260,6 @@ Below is an example of how you would set a model version ID and receive predicti
 </details>
 
 <details>
-  <summary>JSON Output Example</summary>
+  <summary>Raw Output Example</summary>
     <CodeBlock className="language-javascript">{JSONOutputExample4}</CodeBlock>
 </details>

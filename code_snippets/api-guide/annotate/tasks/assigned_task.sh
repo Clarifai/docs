@@ -7,7 +7,7 @@ curl -X POST "https://api.clarifai.com/v2/users/YOUR_USER_ID_HERE/apps/YOUR_APP_
               "type": "CONCEPTS_CLASSIFICATION",
               "name": "Annotate CONCEPT_ID_HERE",
               "worker": {
-                  "strategy": "FULL",
+                  "strategy": "DYNAMIC",
                   "workers": [
                       {
                           "user": {
@@ -24,7 +24,8 @@ curl -X POST "https://api.clarifai.com/v2/users/YOUR_USER_ID_HERE/apps/YOUR_APP_
                   }
               ],
               "input_source": {
-                  "type": "ALL_INPUTS"
+                  "type": "DATASET",
+                  "id": "DATASET_ID_HERE"
               },
               "sample_ms": 1000,
               "review": {

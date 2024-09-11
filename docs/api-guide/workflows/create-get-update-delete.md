@@ -8,7 +8,7 @@ sidebar_position: 2
 **Manage your Mesh Workflows**
 <hr />
 
-Workflows is a useful Clarifai's feature that allows you to combine multiple models and carry out different operations. With workflows, you can create a powerful multimodal system that meets various use cases in a single API call—instead of relying only on one model. 
+Workflows is a useful Clarifai's feature that allows you to combine multiple models and carry out different operations. With workflows, you can create a powerful multimodal system that meets various use cases in a single API call — instead of relying only on one model. 
 
 You can use Clarifai's built-in models or your own custom models. 
 
@@ -80,7 +80,7 @@ We'll connect the following two models to achieve our objective:
 - The [ocr-scene-english-paddleocr](https://clarifai.com/clarifai/main/models/ocr-scene-english-paddleocr) model, which detects and recognizes English texts in images;
 - The [text-translation-english-spanish](https://clarifai.com/helsinkinlp/translation/models/text-translation-english-spanish) model, which translates texts from English to Spanish. 
 
-We'll specify the IDs of the models and their versions—since a model can have several versions. 
+We'll specify the IDs of the models and their versions — since a model can have several versions. 
 
 <Tabs>
 
@@ -199,7 +199,7 @@ foreach (var concept in response.Outputs[0].Data.Concepts)
 </Tabs>
 
 <details>
-  <summary>Code Output Example</summary>
+  <summary>Text Output Example</summary>
     <CodeBlock className="language-text">{CodeOutputExample1}</CodeBlock>
 </details>
 

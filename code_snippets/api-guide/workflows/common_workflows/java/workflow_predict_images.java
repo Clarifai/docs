@@ -75,7 +75,7 @@ public class ClarifaiExample {
             }
         }
 
-        // Uncomment this line to print the full Response JSON
+        // Uncomment this line to print the raw output
         // System.out.println(results);
     }
 
