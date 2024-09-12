@@ -18,7 +18,7 @@ To help you get started, you can download `.csv` templates for images and text u
 
 - [Text Upload Template](/templates/ClarifaiTextUploadTemplate.csv)
 
-- [Text Generation (Text Classification) Upload Template](/templates/ClarifaiTextClassificationGeneratorUploadTemplate.csv)
+- [Text Generation Upload Template (for LLaMA 3.1 8B Instruct model)](/templates/finetuning_dataset.csv)
 
 ### Working with your CSV file
 
