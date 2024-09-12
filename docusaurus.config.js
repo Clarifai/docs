@@ -493,6 +493,10 @@ const config = {
             from: '/clarifai-basics/glossary/generative-ai'
           },
           {
+            to:  '/sdk/advanced-concept-management',
+            from: '/sdk/advanced-concept%20management'
+          },
+          {
             to: '/portal-guide/annotate/review',
             from: '/portal-guide/annotate/workforce-management'
           }
