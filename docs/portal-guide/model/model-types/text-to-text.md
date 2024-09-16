@@ -23,7 +23,7 @@ For example, it could be used for:
 -	Text classification — Recasting classification tasks like sentiment analysis as a text generation problem.
 -	Question answering — Given a question, the model generates an appropriate text answer.
 
-Large language models (LLMs) are usually used to generate coherent and contextually appropriate text based on the instructions of the user. These foundation models, also referred to as pre-trained or base models, are massive models that have been trained on extensive amounts of data. You can use them as a starting point for text generation tasks.
+Large language models (LLMs) are usually used to generate coherent and contextually appropriate text based on the instructions of the user. These foundation models, also referred to as pre-trained or base models, are massive models that have been trained on extensive amounts of data. You can use them as a starting point for text-generation tasks.
 
 Fine-tuning allows you to adapt the foundational text-to-text models to specific tasks or domains, making them more suitable for particular applications. By training on task-specific data, you can improve model performance on those tasks.
 
@@ -43,7 +43,7 @@ You may choose a text-to-text model type in cases where:
 
 ## How to Fine-Tune Text Generation Models
 
-You can fine-tune a large language model for text generation tasks. In this example, we’ll demonstrate how to fine-tune the [LLaMA 3.1 8B Instruct](https://clarifai.com/meta/Llama-3/models/Llama-3-8B-Instruct) model for a specific use case using the Clarifai's no-code platform.
+You can fine-tune a large language model for text generation tasks. In this example, we’ll demonstrate how to fine-tune the [LLaMA 3.1 8B Instruct](https://clarifai.com/meta/Llama-3/models/Llama-3-8B-Instruct) model for a specific use case using Clarifai's no-code platform.
 
 You can watch the video below for a step-by-step guide.
 
@@ -65,7 +65,7 @@ For example, when preparing data for training the LLaMA 3.1 8B Instruct model, y
 <|begin_of_text|><|start_header_id|>system<|end_header_id|> {system_prompt}<|eot_id|><|start_header_id|>user<|end_header_id|> {prompt}<|eot_id|><|start_header_id|>assistant<|end_header_id|>
 ```
 
-The main purpose of this format is to clearly delineate the roles and contributions of different participants in the conversation: system instructions, user-provided input, and the model-generated output (assistant's response).. 
+The main purpose of this format is to clearly delineate the roles and contributions of different participants in the conversation: system instructions, user-provided input, and the model-generated output (assistant's response).
 
 This type of standardized approach ensures clarity and facilitates easy parsing and processing during the training phase.
 
@@ -88,7 +88,7 @@ Here is an example of training data you can use:
 
 To help you get started, you can download a `.csv` file with a simple dataset for fine-tuning the LLaMA 3.1 8B Instruct model [here](https://docs.google.com/spreadsheets/d/1CE529pa0hhWSdP0TbnsHDIS2FqarOhLsRzLdvsQkcF4/edit?gid=0#gid=0). 
 
-As you can see on the file, each example data is presented on an individual row. Also, note that the training data comprises two columns: 
+As you can see in the file, each example data is presented in an individual row. Also, note that the training data comprises two columns: 
 
 - `input.data.text.raw` — This column houses the example data, with each row having its own instance.
 - `input.data.concepts[*].id` — This empty column is included to fulfill the prerequisites for [uploading a CSV file](https://docs.clarifai.com/portal-guide/advanced-topics/csv-and-tsv/#csv-templates) to the Clarifai platform.
@@ -110,7 +110,7 @@ After preparing your dataset, the next step is to [create an application]( https
 
 :::tip
 
-When creating an application, choose the **Text/Document** option as the primary input type. The base workflow will be automatically selected for you.
+When creating an application, choose the **Text/Document** option as the primary input type. The [base workflow](https://docs.clarifai.com/portal-guide/workflows/base-workflows/) will be automatically selected for you.
 
 :::
 
@@ -126,7 +126,7 @@ In the collapsible left sidebar, select the **Inputs** option, then use the inpu
 
 ![upload text data](/img/others/fine-tune-1.png)
 
-The data will be uploaded in your application. 
+The data will be uploaded to your application. 
 
 ![](/img/others/fine-tune-1-1.png)
 
@@ -134,7 +134,7 @@ After successfully uploading the data to a dataset, remember to update the datas
 
 ### 3. Choose a Model 
 
-Next, choose the **Models** option on the collapsible left sidebar. Click the **Add Model** button on the upper-right corner of the page. 
+Next, choose the **Models** option on the collapsible left sidebar. Click the **Add Model** button in the upper-right corner of the page. 
 
 On the window that pops up, select the **Build a Custom Model** option and click the **Continue** button. 
 
@@ -153,25 +153,18 @@ The ensuing page allows you to create and train a text-to-text model for generat
 ![alt text](../../../../static/img/others/fine-tune-4.png)
 
 - **Model ID** — Provide an ID for your model.
-- **Dataset** — Select the dataset you want to use for fine-tuning the model. Also, select the version of your dataset.
-- **Invalid Data Tolerance Percent** — Optionally, you can set a tolerance threshold (0 to 100) for the percentage of invalid inputs during training, and if this threshold is exceeded, training is stopped with an error. It's recommended to keep this value low to minimize the invalid inputs. 
+- **Dataset** — Select the dataset you want to use to fine-tune the model. Also, select the version of your dataset.
+- **Invalid Data Tolerance Percent** — Optionally, you can set a tolerance threshold (0 to 100) for the percentage of invalid inputs during training, and if this threshold is exceeded, training is stopped with an error. It's recommended to keep this value low to minimize invalid inputs. 
 - **Template** — Select a pre-configured model template you want to use to train on your data. You can select any of the following templates:
 
-     - **HF_Llama_3_1_8b_instruct_GPTQ_lora** — This is the recommended template as shown in the screenshot above. It's the template we'll choose for fine-tuning the 3.1 version of the Llama model with 8 billion parameters optimized for instruction-based tasks. This version uses quantization (GPTQ) and Low-Rank Adaptation (LoRA) for efficient training.
-     - **HF_GPTNeo_125m_lora** — Template for the GPT-Neo model with 125 million parameters, using the LoRA method for efficient parameter adaptation, suitable for smaller scale projects or less resource-intensive applications.
-     - **HF_GPTNeo_2p7b_lora** — Utilizes the 2.7 billion parameter GPT-Neo model, incorporating LoRA for effective fine-tuning, ideal for medium to large scale natural language processing tasks.
+     - **HF_Llama_3_1_8b_instruct_GPTQ_lora** — This is the recommended template, as shown in the screenshot above. It's the template we'll choose for fine-tuning the 3.1 version of the Llama model with 8 billion parameters optimized for instruction-based tasks. This version uses quantization (GPTQ) and Low-Rank Adaptation (LoRA) for efficient training.
+     - **HF_GPTNeo_125m_lora** — Template for the GPT-Neo model with 125 million parameters, using the LoRA method for efficient parameter adaptation, suitable for smaller-scale projects or less resource-intensive applications.
+     - **HF_GPTNeo_2p7b_lora** — Utilizes the 2.7 billion parameter GPT-Neo model, incorporating LoRA for effective fine-tuning, ideal for medium to large-scale natural language processing tasks.
      - **HF_Llama_2_13b_chat_GPTQ_lora** — A fine-tuned 13 billion parameter Llama model for chat applications, using both quantization and LoRA for optimization, designed to handle complex dialog systems.
      - **HF_Llama_2_7b_chat_GPTQ_lora** — Similar to the 13b version but with 7 billion parameters, this template is also geared towards chat applications, providing a balance between performance and computational efficiency.
      - **HF_Mistral_7b_instruct_GPTQ_lora** — Template for the 7 billion parameter Mistral model, fine-tuned for instructional tasks with both GPTQ and LoRA, aimed at delivering high performance with efficient training.
      - **HF_Mistral_7b_lora** — This template uses the Mistral model with 7 billion parameters optimized with LoRA only, suitable for diverse applications requiring fast model adaptation.
      - **HuggingFace_AdvancedConfig** — Offers advanced configuration options for fine-tuning Hugging Face models, allowing for detailed customization to meet specific performance or application requirements.
-
-
-:::warning text Fine-Tuning Templates
-
-[Click here](https://docs.clarifai.com/portal-guide/model/deep-training/text-templates/) to learn more about the text fine-tuning templates and their associated hyperparameters.
-
-:::
 
 - **Training Settings** — Optionally, you may configure the training and inference settings to enhance the performance of your model. Otherwise, you may use the provided default settings. These are some of the settings you may customize: 
    - **Model config** — Provide a dictionary of key-value pairs that define the pre-trained model to be used as a base. 
@@ -188,7 +181,7 @@ After the model has been trained, you can start using it to make generative text
 
 ![alt text](../../../../static/img/others/fine-tune-5.png)
 
-To run an inference with the fine-tuned model, click the **Overview** tab and send a request to the model. You can provide the following input:
+To run an inference with the fine-tuned model, click the **Overview** tab and send a request to the model. For example, you can provide the following input:
 
 ```text
 <|begin_of_text|><|start_header_id|>system<|end_header_id|> You are a helpful AI assistant<|eot_id|><|start_header_id|>user<|end_header_id|> Translate the following English sentence to Spanish: AI is a revolutionary industry in this age.<|eot_id|><|start_header_id|>assistant<|end_header_id|> 
@@ -196,7 +189,7 @@ To run an inference with the fine-tuned model, click the **Overview** tab and se
 
 Click the **Generate** button. It will generate the output in JSON format, providing the response as a key-value pair. 
 
-
+![model types](/img/others/fine-tune-6.png)
 
 :::tip
 
