@@ -90,7 +90,7 @@ const config = {
       announcementBar: {
         id: 'support_us_' + Date.now(),
         content:
-          '<span>New!</span> Your Data, Your AI: Fine-Tune Llama 3.1 <a target="_blank" rel="noopener noreferrer" href="https://www.clarifai.com/blog/clarifai-10.7-finetune-llama-3.1">read now</a>',
+          '<span>New!</span> Supercharge AI Models with Advanced Concept Mapping <a target="_blank" rel="noopener noreferrer" href="https://www.clarifai.com/blog/clarifai-10.8-supercharge-ai-models-with-clarifais-advanced-concept-mapping">read now</a>',
         isCloseable: false,
       },
       navbar: {
@@ -491,6 +491,10 @@ const config = {
           {
             to: '/glossary/generative-ai',
             from: '/clarifai-basics/glossary/generative-ai'
+          },
+          {
+            to: '/sdk/advanced-concept-management',
+            from: '/sdk/advanced-concept management'
           },
           {
             to: '/portal-guide/annotate/review',

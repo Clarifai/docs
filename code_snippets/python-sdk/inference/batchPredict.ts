@@ -1,28 +1,17 @@
-import { Input, Model } from "clarifai-nodejs";
-import { Input as GrpcInput } from "clarifai-nodejs-grpc/proto/clarifai/api/resources_pb";
+import { Inputs } from 'clarifai-client';
+import { Model } from 'clarifai-client';
 
-const modelUrl =
-  "https://clarifai.com/clarifai/main/models/general-image-recognition";
-const imageUrl = "https://samples.clarifai.com/metro-north.jpg";
+const modelUrl: string = "https://clarifai.com/openai/chat-completion/models/gpt-4o-mini";
+const prompt: string = "What's the future of AI?";
 
-// Here is an example of creating an input proto list of size 128
-const protoList: GrpcInput[] = [];
-for (let i = 0; i < 128; i++) {
-  protoList.push(Input.getInputFromUrl({ inputId: `demo_${i}`, imageUrl }));
+// here is an example of creating an input proto list of size 16
+const protoList: any[] = [];
+for (let i = 0; i < 16; i++) {
+    protoList.push(Inputs.getInputFromBytes({ inputId: `demo_${i}`, textBytes: Buffer.from(prompt) }));
 }
 
-
-// Pass the input proto as a parameter to the predict function
-const model = new Model({
-  url: modelUrl,
-  authConfig: {
-    pat: process.env.CLARIFAI_PAT,
-  },
-});
-
-const modelPrediction = await model.predict({
-  inputs: protoList,
-});
+// passthe input proto as parameter to the predict function
+const modelPrediction = new Model({ url: modelUrl }).predict(protoList);
 
 // Check the length of predictions to see if all inputs were passed successfully
-console.log(modelPrediction.length);
+console.log(modelPrediction.outputs.length);

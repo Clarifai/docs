@@ -12,7 +12,8 @@ import CodeBlock from "@theme/CodeBlock";
 import CodeImageText from "!!raw-loader!../../../code_snippets/python-sdk/inference/imagetext_text.py";
 import CodeImageTextTS from "!!raw-loader!../../../code_snippets/python-sdk/inference/imageTextToText.ts";
 
-
+import CodeImageText01 from "!!raw-loader!../../../code_snippets/python-sdk/inference/imagetexttotext_localimage.py";
+import CodeImageTextTS01 from "!!raw-loader!../../../code_snippets/python-sdk/inference/imagetexttotext_localimage.ts";
 
 import CodeOutputImageText from "!!raw-loader!../../../code_snippets/python-sdk/inference/outputs/imagetext_text.txt";
 
@@ -30,6 +31,7 @@ Multi-modal inputs refer to feeding multiple types of data into a single model f
 
 Leverage the power of the Predict API to seamlessly process multimodal inputs and obtain accurate predictions. In this example, we demonstrate the capability to send both image and text inputs to a [model](https://clarifai.com/openai/chat-completion/models/openai-gpt-4-vision), showcasing the versatility of the Predict API in handling diverse data types.
 
+### Predict Via Image URL
 
 <Tabs>
 <TabItem value="python" label="Python">
@@ -41,6 +43,21 @@ Leverage the power of the Predict API to seamlessly process multimodal inputs an
 </TabItem>
 <TabItem value="typescript" label="Typescript">
     <CodeBlock className="language-typescript">{CodeImageTextTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+### Predict Via Local Image
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CodeImageText01}</CodeBlock>
+    <details>
+  <summary>Output</summary>
+    <CodeBlock className="language-text">{CodeOutputImageText}</CodeBlock>
+</details>
+</TabItem>
+<TabItem value="typescript" label="Typescript">
+    <CodeBlock className="language-typescript">{CodeImageTextTS01}</CodeBlock>
 </TabItem>
 </Tabs>
 
