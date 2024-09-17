@@ -1,19 +1,19 @@
 ---
 description: Manage your concepts
-sidebar_position: 1
+sidebar_position: 4.1
 ---
 
 # Advanced Concept Management
 <hr />
 
-Concept relations in Clarifai platform allow you to establish hierarchical and semantic relationships between your concepts. These relationships are essential for building robust knowledge graphs and enabling more advanced computer vision and natural language processing capabilities.
+Concept relations in the Clarifai platform allow you to establish hierarchical and semantic relationships between your concepts. These relationships are essential for building robust knowledge graphs and enabling more advanced computer vision and natural language processing capabilities.
 
 By defining how concepts interact—whether as synonyms, hyponyms, or hypernyms—you can build a more intelligent, context-aware system that delivers accurate, relevant results.
 
 Whether you are managing a product database, building a search engine, or organizing large datasets, leveraging concept relations will significantly enhance your ability to structure, search, and retrieve data, making your AI-driven applications smarter and more effective.
 
 
-## Applications:
+## Applications
 
 * **Enhanced Search and Retrieval**: Concept relations allow for more refined searches. For example, when searching for “Animal”, the system can automatically include results for all hyponyms like “Dog” or “Cat”, providing a broader and more relevant result set.
 * **Improved Data Organization**: Establishing hierarchical relationships can organize data more effectively. This is especially useful in complex datasets, where understanding the structure and relationships between concepts is crucial for accurate data retrieval.
@@ -49,7 +49,7 @@ Whether you are managing a product database, building a search engine, or organi
 `app.create_concept_relations("puppy", ["pup"], predicates=["synonym"]`
 
 
-## Adding and Managing Concepts Relations in the Clarifai App
+## Managing Concepts Relations in the Clarifai App
 
 Let's dive into some code examples to see how you can create and manage concept relations in the Clarifai platform.
 
