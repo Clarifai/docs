@@ -7,7 +7,7 @@ sidebar_position: 3
 **Learn about our edit operators**
 <hr />
 
-Edit operators are a specific type of agent system operators that are specialized for data transformation tasks. These operators are responsible for modifying and/or augmenting your data as it passes through the workflow.
+Edit operators are specific type of agent system operators that are specialized for data transformation tasks. These operators are responsible for modifying and/or augmenting your data as it passes through the workflow.
 
 They can be used to crop out regions of an image, align an image based on the pose of a face, or even map predictions from one model to another.
 
