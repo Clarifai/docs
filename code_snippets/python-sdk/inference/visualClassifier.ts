@@ -37,23 +37,21 @@ const model = new Model({
     pat: process.env.CLARIFAI_PAT,
   },
 });
-/**
-      The predict API gives flexibility to generate predictions for data provided through URL, Filepath and bytes format.
+/*
+        The predict API gives flexibility to generate predictions for data provided through URL, Filepath and bytes format.
 
+        Example for prediction through Bytes:
+        const modelPrediction = await model.predictByBytes({
+                                    inputBytes: Bytes,
+                                    inputType: "Text"
+                                });
 
-      Example for prediction through Bytes:
-      const modelPrediction = await model.predictByBytes({
-                                  inputBytes,
-                                  inputType
-                              });
-
-
-      Example for prediction through Filepath:
-      const modelPrediction = await model.predictByFilepath({
-                                  filepath, 
-                                  inputType
-                              });
-  */
+        Example for prediction through Filepath:
+        const modelPrediction = await model.predictByFilepath({
+                                    filepath,
+                                    inputType: "Text",
+                                });
+*/
 
 const modelPrediction = await model.predictByUrl({
   url: imageUrl,

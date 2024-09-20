@@ -23,7 +23,6 @@ image_url = "https://s3.amazonaws.com/samples.clarifai.com/featured-models/gener
 # Example for prediction through Bytes:
 # model_prediction = model.predict_by_url(input_bytes ,input_type="image")
 
-
 # Example for prediction through Filepath:
 # model_prediction = Model(model_url).predict_by_filepath(image_filepath, input_type="image")
 

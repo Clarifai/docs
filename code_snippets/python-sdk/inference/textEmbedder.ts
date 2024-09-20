@@ -30,23 +30,22 @@ const inputText = Buffer.from(
   `In India Green Revolution commenced in the early 1960s that led to an increase in food grain production, especially in Punjab, Haryana, and Uttar Pradesh. Major milestones in this undertaking were the development of high-yielding varieties of wheat. The Green revolution is revolutionary in character due to the introduction of new technology, new ideas, the new application of inputs like HYV seeds, fertilizers, irrigation water, pesticides, etc. As all these were brought suddenly and spread quickly to attain dramatic results thus it is termed as a revolution in green agriculture.`,
 );
 
-/**
+/*
         The predict API gives flexibility to generate predictions for data provided through URL, Filepath and bytes format.
-
-
-        Example for prediction through Bytes:
-        const modelPrediction = await model.predictByBytes({
-                                    inputBytes,
-                                    inputType
-                                });
-
 
         Example for prediction through Filepath:
         const modelPrediction = await model.predictByFilepath({
-                                    filepath, 
-                                    inputType
+                                    filepath,
+                                    inputType: "Text",
                                 });
-    */
+
+        Example for prediction through URL:
+        const modelPrediction = await model.predictByURL({
+                                    url: URL,
+                                    inputType: "Text",
+                                });
+*/
+
 const modelUrl =
   "https://clarifai.com/cohere/embed/models/cohere-embed-english-v3_0";
 

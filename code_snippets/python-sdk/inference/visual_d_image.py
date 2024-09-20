@@ -24,13 +24,10 @@ detector_model = Model(
 )
 
 
-
 # The predict API gives flexibility to generate predictions for data provided through URL,Filepath and bytes format.
-
 
 # Example for prediction through Bytes:
 # model_prediction = model.predict_by_bytes(input_bytes, input_type="image")
-
 
 # Example for prediction through Filepath:
 # model_prediction = Model(model_url).predict_by_filepath(filepath, input_type="image")
