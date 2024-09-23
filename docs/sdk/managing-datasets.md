@@ -10,6 +10,8 @@ import CodeBlock from "@theme/CodeBlock";
 import CodeCreateDataset from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/create_dataset.py";
 import CodeCreateDatasetTS from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/creatingDatasets.ts";
 
+import CodePatchDataset from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/patch_dataset.py";
+
 import CodeCreateDatasetV from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/create_data_version.py";
 import CodeCreateDatasetVTS from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/createDatasetVersion.ts";
 
@@ -113,7 +115,7 @@ Visit  this [link](https://docs.clarifai.com/portal-guide/datasets/create-get-up
                                                                                                                   
 
 
-## Create a Dataset version
+## Create a Dataset Version
 
 Leveraging the power of the Clarifai SDKs, you can effortlessly generate a new dataset version tailored to your specific needs. This process involves utilizing the API to initiate the creation of a version for a designated dataset, identified by its unique dataset ID. By seamlessly integrating this functionality into your workflow, you gain the ability to manage and track different iterations of your datasets effectively.
 
@@ -132,6 +134,21 @@ Visit this [page](https://docs.clarifai.com/portal-guide/datasets/create-get-upd
 </TabItem>
 </Tabs>
 
+## Patch a Dataset 
+
+You can apply patch operations to a dataset — merging, removing, or overwriting data. While all these actions support overwriting by default, they have specific behaviors when handling lists of objects. 
+
+- The `merge` action replaces a `key:value`pair with `key:new_value`, or appends to an existing list. For dictionaries, it merges entries that share the same `id` field.
+- The `remove` action replaces a `key:value` pair with `key:new_value` or removes items from a list that match the IDs of the provided values.
+- The `overwrite` action completely replaces an existing object with a new one.
+
+Below is an example of patching a dataset to update its description, notes, and image URL. Note that the `remove` action is only used to delete the dataset's cover image on the platform UI.
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CodePatchDataset}</CodeBlock>
+</TabItem>
+</Tabs>
 
 
 ## Upload Image

@@ -13,7 +13,7 @@ import CodeLW from "!!raw-loader!../../../code_snippets/python-sdk/workflows/lis
 import CodeDW from "!!raw-loader!../../../code_snippets/python-sdk/workflows/delete_workflow.py";
 import CodeExport from "!!raw-loader!../../../code_snippets/python-sdk/workflows/export.py";
 
-
+import PatchWorkflow from "!!raw-loader!../../../code_snippets/python-sdk/workflows/patch_workflow.py";
 
 import CodeOutputASRYaml from "!!raw-loader!../../../code_snippets/python-sdk/workflows/outputs/asr_yaml.txt";
 import CodeOutputDemoYaml from "!!raw-loader!../../../code_snippets/python-sdk/workflows/outputs/demo_yaml.txt";
@@ -38,7 +38,7 @@ import CodeOutputDW from "!!raw-loader!../../../code_snippets/python-sdk/workflo
 
 Unlock the potential of efficient data processing pipelines tailored precisely to your unique requirements with this empowering feature. As you embark on the journey of constructing workflow graphs, you gain unprecedented flexibility to seamlessly connect and orchestrate a diverse array of models, operators, and processing steps. Whether your focus is on integrating sophisticated image classification, precise object detection, or custom operators, our SDK offers an intuitive and user-friendly interface. Experience the freedom to effortlessly create, modify, and optimize workflow graphs, empowering you to design and implement highly specialized data processing pipelines that align seamlessly with your specific needs.
 
-## Create workflow
+## Create Workflow
 
 Designing and implementing workflows is a crucial aspect of building a robust and flexible inference pipeline. Workflows  offer a modular architecture that serves as the foundation for both sophisticated machine learning ensemble modeling and seamless integration of business logic. These workflows empower you to streamline your processes, enhance model performance, and effectively handle diverse tasks in your machine learning endeavors. Workflow can be created with the SDK using a YAML specification.
 
@@ -57,9 +57,24 @@ To know more about workflows visit this [link](https://docs.clarifai.com/portal-
 </details>
 
 
+## Patch Workflow
+
+After creating a workflow, you can perform patch operations on it by merging, removing, or overwriting data. By default, all actions support overwriting, with specific behaviors for lists of objects.
+
+- The **merge** action updates an existing `key:value` pair with `key:new_value` or appends to an existing list. For dictionaries, it merges objects that share a matching `id` field.
+- The **remove** action deletes entries from lists based on matching `id` values or updates `key:value` pairs by replacing them with `key:new_value`.
+- The **overwrite** action fully replaces an existing object with a new one.
+
+Below is an example of performing patch operations on a workflow, where the YAML configuration is updated, and changes are made to its description, notes, and image URL. Note that the `remove` action is only used to delete the workflow's cover image on the platform UI.
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PatchWorkflow}</CodeBlock>
+</TabItem>
+</Tabs>
 
 
-## Examples for YAML based Workflows 
+## Examples for YAML-based Workflows 
 
 | Node Name  | Input & Output  | Description  | Example Usage  |
 | --- | --- | --- | :----:  |

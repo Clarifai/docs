@@ -95,6 +95,11 @@ From the above list of model types we are going to choose text-classifier as it 
     <img src="/img/python-sdk/vs_mc.png" />
 </details>
 
+:::tip
+
+[Click here](https://docs.clarifai.com/sdk/Model-Training-Tutorial/clusterer#patch-model) to learn how to patch your model. 
+
+:::
 
 
 ## Template Selection

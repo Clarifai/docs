@@ -44,7 +44,10 @@ import CodeTextMTS from "!!raw-loader!../../code_snippets/python-sdk/managing-in
 import CodeAudioM from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/audio_data_metadata.py";
 import CodeAudioMTS from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/audioWithMetadata.ts";
 
-
+import CodePatchInputs1 from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/patch_inputs_1.py";
+import CodePatchInputs2 from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/patch_inputs_2.py";
+import CodePatchInputs3 from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/patch_inputs_3.py";
+import CodePatchInputs4 from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/patch_inputs_4.py";
 
 import CodeOutputImageData from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/outputs/image_data.txt";
 import CodeOutputTextData from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/outputs/text_data.txt";
@@ -307,9 +310,53 @@ Be certain that you want to delete a particular input as the operation cannot be
     <CodeBlock className="language-text">{CodeOutputDeleteInput}</CodeBlock>
 </details> 
 
-                                          
+## Patch Inputs
 
-                                                                                                                  
+You can apply patch operations to an input, allowing for the merging or removal of items. By default, these actions overwrite existing data, but they behave differently when handling lists of objects.
 
+- The `merge` action replaces a `key:value` pair with a `key:new_value`, or appends new values to an existing list. When dealing with dictionaries, it merges entries that share the same `id` field.
 
+- The `remove` action replaces a `key:value` pair with a `key:new_value`, or removes any items from a list that match the IDs of the provided values.
+
+- The `overwrite` action fully replaces an existing object with a new one.
+
+### Metadata 
+
+Here is an example of how to patch the metadata of an input.
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CodePatchInputs3}</CodeBlock>
+</TabItem>
+</Tabs>
+
+### Bounding Box Annotation
+
+Here is an example of how to patch a bounding box annotation on an input.
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CodePatchInputs1}</CodeBlock>
+</TabItem>
+</Tabs>
+                                       
+### Polygon Annotation
+
+Here is an example of how to patch a polygon annotation on an input.
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CodePatchInputs2}</CodeBlock>
+</TabItem>
+</Tabs>
+  
+### Concepts
+
+Below is an example of performing a patch operation on concepts. Currently, only the `overwrite` action is supported, allowing you to update the label names associated with an input. 
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CodePatchInputs4}</CodeBlock>
+</TabItem>
+</Tabs> 
 

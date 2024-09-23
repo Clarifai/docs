@@ -12,6 +12,8 @@ import CodeBlock from "@theme/CodeBlock";
 import CodeCreateApp from "!!raw-loader!../../code_snippets/python-sdk/create-apps/create_app.py";
 import CodeCreateAppTS from "!!raw-loader!../../code_snippets/python-sdk/create-apps/createApp.ts";
 
+import CodePatchApp from "!!raw-loader!../../code_snippets/python-sdk/create-apps/patch_app.py";
+
 import CodeCreateAppBase from "!!raw-loader!../../code_snippets/python-sdk/create-apps/create_app_base_workflow.py";
 import CodeListApp from "!!raw-loader!../../code_snippets/python-sdk/create-apps/list_apps.py";
 import CodeListAppTS from "!!raw-loader!../../code_snippets/python-sdk/create-apps/listingApps.ts";
@@ -36,12 +38,14 @@ import CodeOutputListConcept from "!!raw-loader!../../code_snippets/python-sdk/c
 
 
 
-# Creating your AI Apps
+# Creating Your AI Apps
 
 **Learn how to interact with apps using Clarifai SDKs**
 <hr />
 
-Unlock the power of artificial intelligence by seamlessly integrating Clarifai SDKs into your application development process. With the Clarifai SDKs, creating intelligent and visually aware applications has never been more accessible. Empower your apps with cutting-edge AI capabilities, from image and video recognition to natural language processing. Our SDKs provides a user-friendly interface, allowing developers to harness the full potential of Clarifai's state-of-the-art models effortlessly.
+Unlock the power of artificial intelligence by seamlessly integrating Clarifai SDKs into your application development process. With the Clarifai SDKs, creating intelligent and visually aware applications has never been more accessible. 
+
+Empower your apps with cutting-edge AI capabilities, from image and video recognition to natural language processing. Our SDKs provides a user-friendly interface, allowing developers to harness the full potential of Clarifai's state-of-the-art models effortlessly.
 
 
 ## Create App
@@ -69,12 +73,11 @@ If you create an application via the API, Universal will be set as default base 
 </TabItem>
 </Tabs>
 
+## Create App With Different Base Workflow
 
+The API empowers you to establish an app with distinct base workflows, offering flexibility and adaptability.
 
-
-## Create an app with different base workflow
-
-The API empowers you to establish an app with distinct base workflows, offering flexibility and adaptability. Choose from a range of available base workflows including Empty, Universal, Language Understanding, and General. This enables you to seamlessly integrate and customize the fundamental structure of your app, ensuring it aligns perfectly with your project requirements.
+Choose from a range of available [base workflows](https://docs.clarifai.com/portal-guide/workflows/base-workflows), including Empty, Universal, Language Understanding, and General. This enables you to seamlessly integrate and customize the fundamental structure of your app, ensuring it aligns perfectly with your project requirements.
 
 Visit this [page](https://docs.clarifai.com/clarifai-basics/applications/application-settings) for more information.
 
@@ -89,6 +92,21 @@ Visit this [page](https://docs.clarifai.com/clarifai-basics/applications/applica
     <CodeBlock className="language-text">{CodeOutputCreateAppBase}</CodeBlock>
 </details>
 
+## Patch App
+
+You can perform patch operations on an app by merging, removing, or overwriting data. By default, all actions support overwriting, with specific behaviors for lists of objects.
+
+- The **merge** action updates an existing `key:value` pair with `key:new_value` or appends to an existing list. For dictionaries, it merges objects that share a matching `id` field.
+- The **remove** action deletes entries from lists based on matching `id` values or updates `key:value` pairs by replacing them with `key:new_value`.
+- The **overwrite** action fully replaces an existing object with a new one.
+
+Below is an example of performing patch operations on an app, where the base workflow is updated, the app is switched to an [app template](https://docs.clarifai.com/clarifai-basics/app-templates), and changes are made to the app's description, notes, default language, and image URL. Note that the `remove` action is only used to delete the app's cover image on the platform UI.
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CodePatchApp}</CodeBlock>
+</TabItem>
+</Tabs>
 
 ## Listing Apps
 
@@ -164,7 +182,7 @@ Visit this [page](https://docs.clarifai.com/portal-guide/concepts/create-get-upd
                                       
 
 
-## List concept 
+## List Concept 
 
 The List Concepts feature in the Clarifai SDKs  empowers users to retrieve a comprehensive list of all available concepts within their application. With the list_concepts function, users can seamlessly navigate through large sets of concepts by leveraging built-in pagination functionalities. This enables efficient information display while providing flexibility through parameters such as `page_no` and items `per_page`.
 
