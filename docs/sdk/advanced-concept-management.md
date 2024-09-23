@@ -28,7 +28,7 @@ Whether you are managing a product database, building a search engine, or organi
     * **Usage**: Hyponyms help refine search results, where a search for "Animal" may include results for "Dog", "Cat", and other animals.
 
 **Code Example**:
-`app.create_concept_relations("dog", ["animal"], predicates=["hyponym"]`
+`app.create_concept_relations("dog", ["animal"], predicates=["hyponym"])`
 
 
 
@@ -37,7 +37,7 @@ Whether you are managing a product database, building a search engine, or organi
     * **Usage**: Hypernyms allow models to group specific entities under broader categories, improving organizational structures.
 
 **Code Example**:
-`app.create_concept_relations("animal", ["dog"], predicates=["hypernym"]`
+`app.create_concept_relations("animal", ["dog"], predicates=["hypernym"])`
 
 
 
@@ -46,7 +46,7 @@ Whether you are managing a product database, building a search engine, or organi
     * **Usage**: Synonyms ensure that different terms referring to the same concept are recognized as equivalent, enhancing search and retrieval accuracy.
 
 **Code Example**:
-`app.create_concept_relations("puppy", ["pup"], predicates=["synonym"]`
+`app.create_concept_relations("puppy", ["pup"], predicates=["synonym"])`
 
 
 ## Managing Concepts Relations in the Clarifai App
@@ -73,6 +73,8 @@ You can get help from here to get your [PAT](https://docs.clarifai.com/clarifai-
 
 ```python
 # Initialize the Clarifai App
+from clarifai.client.app import App
+
 app = App(user_id="user_id", app_id="app_id")
 ```
 
