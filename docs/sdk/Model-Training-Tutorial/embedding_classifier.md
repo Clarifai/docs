@@ -94,6 +94,12 @@ From the above list of model types we are going to choose embedding-classifier a
 </details>
 
 
+:::tip
+
+[Click here](https://docs.clarifai.com/sdk/Model-Training-Tutorial/clusterer#patch-model) to learn how to patch your model. 
+
+:::
+
 ## Template Selection
 
 Inside the Clarifai platform there is a template feature. Templates give you the control to choose the specific architecture used by your neural network, as well as define a set of hyperparameters you can use to fine-tune the way your model learns. But when it comes to Embedding Classifier there is only one default template available.

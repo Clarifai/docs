@@ -11,6 +11,7 @@ import CodeS from "!!raw-loader!../../../code_snippets/python-sdk/model_training
 import CodeIMT from "!!raw-loader!../../../code_snippets/python-sdk/model_training/clusterer/imt.py";
 import CodeMP from "!!raw-loader!../../../code_snippets/python-sdk/model_training/clusterer/mp.py";
 
+import PatchModel from "!!raw-loader!../../../code_snippets/python-sdk/model_training/clusterer/patch_model.py";
 
 import CodeOutputMT from "!!raw-loader!../../../code_snippets/python-sdk/model_training/outputs/clusterer/mt.txt";
 import CodeOutputS from "!!raw-loader!../../../code_snippets/python-sdk/model_training/outputs/clusterer/s.txt";
@@ -86,6 +87,22 @@ From the above list of model types we are going to choose clusterer as it is sim
   <summary>Output</summary>
   <img src="/img/python-sdk/cl_mc.png" />
   </details>
+
+## Patch Model
+
+After creating a model, you can perform patch operations on it by merging, removing, or overwriting data. By default, all actions support overwriting, but they handle lists of objects in specific ways. 
+
+- The **merge** action updates a `key:value` pair with `key:new_value` or appends to an existing list. For dictionaries, it merges entries that share the same `id` field.
+- The **remove** action replaces a `key:value` pair with `key:new_value` or removes list entries that match the provided IDs.
+- The **overwrite** action completely replaces an existing object with a new one.
+
+Below is an example of performing patch operations on a model, such as updating its description and notes. Note that the `remove` action is only used to delete the model's cover image on the platform UI.
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PatchModel}</CodeBlock>
+</TabItem>
+</Tabs>
 
 ## Template Selection
 

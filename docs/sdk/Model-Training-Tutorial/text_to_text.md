@@ -85,6 +85,13 @@ From the above list of model types we are going to choose text-to-text as it is 
     <img src="/img/python-sdk/tt_mc.png"  />
 </details>
 
+:::tip
+
+[Click here](https://docs.clarifai.com/sdk/Model-Training-Tutorial/clusterer#patch-model) to learn how to patch your model. 
+
+:::
+
+
 ## Template Selection
 
 Inside the Clarifiai platform there is a template feature. Templates give you the control to choose the specific architecture used by your neural network, as well as define a set of hyperparameters you can use to fine-tune the way your model learns. We are going to choose the `'HuggingFace_AdvancedConfig' `template for training our model.
