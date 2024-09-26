@@ -8,7 +8,7 @@ sidebar_position: 3
 **Multilingual support in Clarifai**
 <hr />
 
-The Clarifai API supports many languages in addition to English. These are represented as translations of the names of concepts so that when you search by concept name or get predictions from a model's concepts you can utilize the language of your choice.
+The Clarifai platform supports many languages in addition to English. These are represented as translations of the names of concepts so that when you search by concept name or get predictions from a model's concepts you can utilize the language of your choice.
 
 ## Supported Languages
 
@@ -42,7 +42,8 @@ The currently supported languages are listed below.
 
 ## Default Language
 
-When you create a new application, you must specify its default language. This will be the default language concepts are returned in when you do not explicitly set a language in an API request. You cannot change the default language. You can, however, change languages per request.
+When you create [a new application](https://docs.clarifai.com/clarifai-basics/applications/create-an-application) via the UI, the default language is automatically specified for you. 
 
-![](/img/community_2/concepts_choose_default_language.png)
+This will be the default language concepts are returned in, particularly when you do not explicitly set a language in [an API request](https://docs.clarifai.com/api-guide/concepts/languages). You cannot change the default language. You can, however, contact us to change the language.
+
 
