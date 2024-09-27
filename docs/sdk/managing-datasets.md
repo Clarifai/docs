@@ -139,10 +139,10 @@ Visit this [page](https://docs.clarifai.com/portal-guide/datasets/create-get-upd
 You can apply patch operations to a dataset — merging, removing, or overwriting data. While all these actions support overwriting by default, they have specific behaviors when handling lists of objects. 
 
 - The `merge` action replaces a `key:value`pair with `key:new_value`, or appends to an existing list. For dictionaries, it merges entries that share the same `id` field.
-- The `remove` action replaces a `key:value` pair with `key:new_value` or removes items from a list that match the IDs of the provided values.
+- The `remove` action is only used to delete the dataset's cover image on the platform UI.
 - The `overwrite` action completely replaces an existing object with a new one.
 
-Below is an example of patching a dataset to update its description, notes, and image URL. Note that the `remove` action is only used to delete the dataset's cover image on the platform UI.
+Below is an example of patching a dataset to update its description, notes, and image URL. 
 
 <Tabs>
 <TabItem value="python" label="Python">
