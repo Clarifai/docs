@@ -92,11 +92,11 @@ From the above list of model types we are going to choose clusterer as it is sim
 
 After creating a model, you can perform patch operations on it by merging, removing, or overwriting data. By default, all actions support overwriting, but they handle lists of objects in specific ways. 
 
-- The **merge** action updates a `key:value` pair with `key:new_value` or appends to an existing list. For dictionaries, it merges entries that share the same `id` field.
-- The **remove** action replaces a `key:value` pair with `key:new_value` or removes list entries that match the provided IDs.
-- The **overwrite** action completely replaces an existing object with a new one.
+- The `merge` action updates a `key:value` pair with `key:new_value` or appends to an existing list. For dictionaries, it merges entries that share the same `id` field.
+- The `remove` action is only used to delete the model's cover image on the platform UI.
+- The `overwrite` action completely replaces an existing object with a new one.
 
-Below is an example of performing patch operations on a model, such as updating its description and notes. Note that the `remove` action is only used to delete the model's cover image on the platform UI.
+Below is an example of performing patch operations on a model, such as updating its description and notes. 
 
 <Tabs>
 <TabItem value="python" label="Python">

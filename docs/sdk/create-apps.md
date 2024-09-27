@@ -96,11 +96,11 @@ Visit this [page](https://docs.clarifai.com/clarifai-basics/applications/applica
 
 You can perform patch operations on an app by merging, removing, or overwriting data. By default, all actions support overwriting, with specific behaviors for lists of objects.
 
-- The **merge** action updates an existing `key:value` pair with `key:new_value` or appends to an existing list. For dictionaries, it merges objects that share a matching `id` field.
-- The **remove** action deletes entries from lists based on matching `id` values or updates `key:value` pairs by replacing them with `key:new_value`.
-- The **overwrite** action fully replaces an existing object with a new one.
+- The `merge` action updates an existing `key:value` pair with `key:new_value` or appends to an existing list. For dictionaries, it merges objects that share a matching `id` field.
+- The `remove` action is only used to delete the app's cover image on the platform UI.
+- The `overwrite` action fully replaces an existing object with a new one.
 
-Below is an example of performing patch operations on an app, where the base workflow is updated, the app is switched to an [app template](https://docs.clarifai.com/clarifai-basics/app-templates), and changes are made to the app's description, notes, default language, and image URL. Note that the `remove` action is only used to delete the app's cover image on the platform UI.
+Below is an example of performing patch operations on an app, where the base workflow is updated, the app is switched to an [app template](https://docs.clarifai.com/clarifai-basics/app-templates), and changes are made to the app's description, notes, default language, and image URL. 
 
 <Tabs>
 <TabItem value="python" label="Python">
