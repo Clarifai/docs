@@ -1,0 +1,108 @@
+---
+description: A unified interface for centralized visibility into your platform usage
+unlisted: true
+---
+
+# Control Center
+
+**A unified interface for centralized visibility into your platform usage**
+<hr />
+
+Clarifai Control Center is a unified dashboard, a single pane of glass to monitor everything happening within your account in our platform. It serves as the sole source of truth for various information dimensions, enabling you to make informed decisions based on data from different sources. 
+
+The Control Center is organized into multiple tabs and offers a versatile way to explore specific details. 
+
+The key functionalities include charts of different types, tables, date ranges, as well as filtering and sorting options. In the future, we plan to expand it to include smart widgets, alerts, comparison modules, raw data export, and more.
+
+:::info
+
+We will progressively plug in more data sources and introduce new tabs with corresponding functionalities in the coming months, such as spend overview, security audit logging, model metrics, and more. The ultimate objective is to encompass all services provided by Clarifai in a single, comprehensive, and intuitive platform section.
+
+:::
+
+After reaching the maturity stage, the Control Center becomes your daily companion and assists you in numerous scenarios. 
+
+Here are some of them:
+
+- Streamline the management of your Clarifai operations by consolidating all relevant information into a single screen, minimizing the need to switch between different tools or windows.
+- Track your utilization of Clarifai's resources using charts, graphs, tables, and other tools, ensuring you make more informed decisions to unlock AI across your organization.
+- Centralize financial data and resource usage into one interface, enabling real-time monitoring, providing detailed cost breakdowns, and identifying areas for optimization.
+- Offer the ability to transform raw data — such as model predictions, search operations, stored inputs, and model training hours — into actionable insights.
+- Verify the technical "health" of your models and deployments – such as latencies, error rates, and utilization.
+- Observe how your teams function and how it impacts your operations and spend.
+- Audit any user-initiated event and trace its origin.
+
+## Accessing the Control Center
+
+To access the Control Center, log in to Clarifai’s [platform](https://clarifai.com/explore). 
+Then, click on the **Control Center** option in the top menu. 
+
+You’ll be redirected to the Control Center screen. 
+
+![](/img/community/control-center/control_center_1.png)
+
+## Overview
+
+The Overview section allows you to quickly access the charts and data you choose from other function-specific tabs within the Control Center. 
+
+It is selected by default when you access the Control Center. If needed, you can also manually access it by selecting the Overview tab in the collapsible left sidebar.
+
+You can look at it to get a quick summary of the activities you undertook. 
+
+### Date Ranges
+
+You can use the date range control to filter and view data for specific time periods. The feature allows you to select a range as a criterion to view the output of the Overview section.
+
+:::caution upgrade your plan
+
+If you are a free user, you can still use the Control Center to track your metrics for a specified date range, and have the option of upgrading to a higher pricing plan. 
+
+:::
+
+To select a date range, click the button in the upper-right corner of the page. A small window will drop down, which allows you to select your preferred date range.
+
+By default, the display of data is filtered based on your current month-to-month billing cycle. You can customize the output by selecting a predefined date range — from today to the last 6 months.
+
+You can also use the date picker button at the bottom of the drop-down window to select a custom date range. 
+
+![](/img/community/control-center/control_center_3.png)
+
+After choosing your preferred date range, click the **Apply** button. 
+
+### Overview Highlights
+
+The Overview highlights section gives a quick analysis of how you used the platform during the selected period.
+
+![](/img/community/control-center/control_center_4.png)
+
+It tells you:
+
+- The total number of operations you’ve performed; that is, model predictions and search operations
+- The total training hours of your models
+- The average number of inputs you’ve added and stored in the platform
+- The total number of model predictions you’ve made
+- The total number of models you’ve used
+- The total number of model types you’ve used
+
+### Charts
+
+The Overview section includes charts that visually represent data for easy analysis. Once you pin a chart from other tabs within the Control Center, it will automatically appear in the Overview. 
+
+In the [next section](https://docs.clarifai.com/portal-guide/control-center/usage-dashboard), we’ll explore charts in more detail and walk you through how to add them from the Usage & Operations tab to the Overview.
+
+You can drag and remove charts in the Overview section. This allows you to customize the layout and manage how they appear. 
+
+:::tip drag and remove charts
+
+- You can easily drag charts up and down within the Overview section by clicking and holding the dots in the upper-left corner.
+
+- You can also remove a chart from the section by simply clicking the delete button (X) in the upper-right corner. This action will only remove the chart from the section, without deleting it from the Control Center. 
+
+:::
+
+![](/img/community/control-center/control_center_5.png)
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>

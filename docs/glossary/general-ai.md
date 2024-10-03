@@ -736,9 +736,9 @@ An input is the data you're providing into the Clarifai platform. Inputs and the
 
 The first layer (the one that receives the input data) in a neural network.
 
-### Input-Manager
+### Inputs-Manager
 
-The Input-Manager page is the main page showcasing all the inputs in your app.
+The Inputs-Manager page is the main page showcasing all the inputs in your app.
 
 ### Input-Viewer
 
