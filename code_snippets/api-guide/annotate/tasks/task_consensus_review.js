@@ -28,24 +28,36 @@ const stub = ClarifaiStub.grpc();
 const metadata = new grpc.Metadata();
 metadata.set("authorization", "Key " + PAT);
 
-const weights = {
-    [USER_ID_1]: 0.9,
-    [USER_ID_2]: 0.1
-};
+stub.PostTasks(
+  {
+    user_app_id: {
+      user_id: USER_ID,
+      app_id: APP_ID,
+    },
 
-stub.PostTasks({
-        user_app_id: {
-            "user_id": USER_ID,
-            "app_id": APP_ID
-        },
-    
     tasks: [
       {
         type: "CONCEPTS_CLASSIFICATION",
         name: "Annotate " + CONCEPT_ID,
         worker: {
           strategy: "PARTITIONED",
-          users: [{ id: USER_ID_1 }, { id: USER_ID_2 }, { id: USER_ID_3 }],
+          workers: [
+            {
+              user: {
+                id: USER_ID_1
+              },
+            },
+            {
+              user: {
+                id: USER_ID_2
+              },
+            },
+            {
+              user: {
+                id: USER_ID_3
+              },
+            },
+          ],
           partitioned_strategy_info: {
             type: "WEIGHTED",
             workers_per_input: 3,
@@ -76,17 +88,18 @@ stub.PostTasks({
         },
       },
     ],
-  
-    },
-    metadata,
-    (err, response) => {
-        if (err) {
-            throw new Error(err);
-        }
-
-        if (response.status.code !== 10000) {
-            console.error('Post tasks failed, status:', response.status);
-            throw new Error("Post tasks failed, status: " + response.status.description);
-        }
+  },
+  metadata,
+  (err, response) => {
+    if (err) {
+      throw new Error(err);
     }
+
+    if (response.status.code !== 10000) {
+      console.error("Post tasks failed, status:", response.status);
+      throw new Error(
+        "Post tasks failed, status: " + response.status.description
+      );
+    }
+  }
 );

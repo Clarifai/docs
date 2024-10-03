@@ -27,6 +27,7 @@ use Clarifai\Api\PostTasksRequest;
 use Clarifai\Api\TASK;
 use Clarifai\Api\User;
 use Clarifai\Api\TaskWorker;
+use Clarifai\Api\Worker;
 use Clarifai\Api\TaskConcept;
 use Clarifai\Api\Concept;
 use Clarifai\Api\TaskInputSource;
@@ -65,15 +66,21 @@ $params->getFields()[$USER_ID_3] = (new Value())->setNumberValue(1);
                     "name" => "Annotate " . $CONCEPT_ID,
                     "worker" => new TaskWorker([
                         "strategy" => 2, // integer value 2 for "PARTITIONED" strategy
-                        "users" => [
-                            new User([
-                                "id" => $USER_ID_1
+                        "workers" => [
+                            new Worker([
+                                "user" => new User([
+                                    "id" => $USER_ID_1
+                                ])
                             ]),
-                            new User([
-                                "id" => $USER_ID_2
+                            new Worker([
+                                "user" => new User([
+                                    "id" => $USER_ID_2
+                                ])
                             ]),
-                            new User([
-                                "id" => $USER_ID_3
+                            new Worker([
+                                "user" => new User([
+                                    "id" => $USER_ID_3
+                                ])
                             ]),
                         ],
                         "partitioned_strategy_info" => new TaskWorkerPartitionedStrategyInfo(
