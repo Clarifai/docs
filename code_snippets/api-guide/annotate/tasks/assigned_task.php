@@ -28,6 +28,7 @@ use Clarifai\Api\User;
 use Clarifai\Api\TaskWorker;
 use Clarifai\Api\TaskConcept;
 use Clarifai\Api\Concept;
+use Clarifai\Api\Worker;
 use Clarifai\Api\TaskInputSource;
 use Clarifai\Api\TaskReviewManualStrategyInfo;
 use Clarifai\Api\TaskReview;
@@ -55,9 +56,11 @@ $userDataObject = new UserAppIDSet([
                     "name" => "Annotate " . $CONCEPT_ID,
                     "worker" => new TaskWorker([
                         "strategy" => 4, // integer value 4 for "DYNAMIC" strategy
-                        "users" => [
-                            new User([
-                                "id" => $WORKER_USER_ID,
+                        "workers" => [
+                            new Worker([
+                                "user" => new User([
+                                    "id" => $WORKER_USER_ID                                    
+                                ])                                
                             ]),
                         ],
                     ]),

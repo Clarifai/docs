@@ -229,11 +229,9 @@ For example, in case of 3 workers and `approval_threshold` set to 2, if an input
     <CodeBlock className="language-javascript">{JSConsensusReview}</CodeBlock>
 </TabItem>
 
-<!--
 <TabItem value="nodejs" label="NodeJS">
     <CodeBlock className="language-javascript">{NodeConsensusReview}</CodeBlock>
 </TabItem>
--->
 
 <TabItem value="java" label="Java">
     <CodeBlock className="language-java">{JavaConsensusReview}</CodeBlock>
