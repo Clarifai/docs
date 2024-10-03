@@ -499,6 +499,10 @@ const config = {
           {
             to: '/portal-guide/annotate/review',
             from: '/portal-guide/annotate/workforce-management'
+          },
+          {
+            to: '/portal-guide/control-center',
+            from: '/portal-guide/usage-dashboard'
           }
           ],
           createRedirects(existingPath) {
