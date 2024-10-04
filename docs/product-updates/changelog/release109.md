@@ -4,7 +4,7 @@ description: Changelog for Clarifai Release 10.9
 sidebar_position: -60
 pagination_next: null
 pagination_prev: product-updates/changelog/release108
-draft: true
+draft: false
 ---
 
 # Release 10.9
@@ -31,6 +31,13 @@ draft: true
 |--------------------------------------|------------------------|---------------------------|
 | ![new-feature](/img/new_feature.jpg)  | Published new models  | <ul><li>Published [OpenAI o1-preview](https://clarifai.com/openai/chat-completion/models/o1-preview), a reasoning-focused AI model designed for complex problem-solving in math, coding, and science. </li><li> Published [OpenAI o1-mini](https://clarifai.com/openai/chat-completion/models/o1-mini), a reasoning-focused LLM designed for complex problem-solving in math, coding, and science.</li> <li>Published [Llama-3.2-11B-Vision-Instruct]( https://clarifai.com/meta/Llama-3/models/llama-3_2-11b-vision-instruct), a multimodal LLM by Meta designed for visual reasoning, image captioning, and VQA tasks, supporting text and image inputs with 11B parameters. </li> <li>Published [Llama-3.2-3B-Instruct](https://clarifai.com/meta/Llama-3/models/llama-3_2-3b-instruct), a multilingual, instruction-tuned LLM optimized for dialogue and text generation tasks. </li></ul> |   
 
+## Python SDK​
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![new-feature](/img/new_feature.jpg)  | Integrated Runners SDK into Clarifai-Python for enhanced model upload capabilities | Introduced a new method for model uploads to the platform. This integration includes: <br/><br/><ul><li>A new, more efficient model upload process is utilizing Clarifai's runners.</li> <li> Migration of relevant files from runners-python to appropriate locations within the clarifai-python repository. </li></ul>  |   
+| ![improvement](/img/improvement.jpg) | Enhanced model upload capabilities with HuggingFace integration and concept handling | We've expanded our model upload functionality to improve integration with HuggingFace and enhance concept handling: <br/><br/> <ul> <li> Introduced a HuggingFaceLoader utility for seamless checkpoint downloads and concept fetching from HuggingFace for classification and detection models. </li> <li> Implemented new methods in model_upload for efficient checkpoint downloads and concept handling. </li> <li> Updated the model upload process to use the new HuggingFaceLoader for HuggingFace-related models. </li> <li> Changed the command-line interface to use `--model_path` instead of `-folder` for improved clarity. </li> </ul>|
+
 ## Platform
 
 |Status                                |Change                  |Details                    |
@@ -44,3 +51,18 @@ draft: true
 | ![bug](/img/bug.jpg) | Fixed an issue with pricing display  | <ul><li> We fixed an issue where the pricing information for base workflows was missing. The pricing information is now displayed in the upper-right section of a workflow page. </li></ul> | 
 |![bug](/img/bug.jpg)  | Fixed an issue with user registration  | <ul><li> Previously, some users were able to create an account without consenting to the terms of service. Now, the "Create account" button remains disabled until the user consents by checking the terms of the service box. </li></ul> |  
 
+## Workflows
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![bug](/img/bug.jpg)  | Fixed RAG Prompter modification issues in public workflows  | <ul> <li> Previously, modifying a RAG Prompter model in a public workflow would unexpectedly create a new private model and version, causing save failures due to the incompatibility of private models in public workflows. This also led to workflow execution errors. We've resolved this by ensuring that modifications to existing nodes reuse the original model, either creating a new version or updating the existing one as appropriate. This fix maintains workflow integrity, prevents unintended privatization, and eliminates related execution errors.</li></ul>  |   
+| ![bug](/img/bug.jpg)  | Fixed compatibility issue between Image Cropper and Multimodal-to-Text models in Workflows  | <ul> <li> Previously, when using an Image Cropper with a Multimodal-to-Text model in a workflow, the cropped image regions were not being properly processed. This was due to the Multimodal-to-Text model being incorrectly configured with a single 'Any' input type, causing the workflow runner to skip the cropped regions. We've addressed this by updating the model's input configuration to correctly specify [image, text] input fields. This fix ensures that all cropped image regions are now properly processed by the Multimodal-to-Text model, improving the accuracy and functionality of workflows using these components. </li></ul>  |  
+| ![bug](/img/bug.jpg)  | Fixed an issue with the Concept thresholder  | <ul> <li> We fixed an issue where the concept thresholder was displaying concept ID while selecting concepts instead of concept names. Now, this issue is fixed, and it shows concept names correctly. </li></ul>  |  
+| ![bug](/img/bug.jpg)  |  Fixed an issue with the RAG-prompter metadata field update  | <ul> <li> Previously, when updating metadata, the old metadata was merged with the new metadata instead of being overwritten. We fixed the issue, now metadata gets correctly overwritten instead of being merged. </li></ul>  |  
+| ![bug](/img/bug.jpg)  | Fixed issues with _max_results_ and _min_score_ sliders and metadata input in the workflow builder page  | Previously, the _max_results_ slider allowed decimal inputs and had an inconsistent maximum value, while the _min_score_ slider's range was incorrect. Additionally, the metadata field was rejecting valid JSON input. We fixed these issues as follows: <br/> <br /> <ul> <li> **Max Results:** The slider now only accepts whole numbers and correctly allows values up to 128, instead of being limited to 100. </li> <li> **Min Score:** We've adjusted the range to be between 0 and 1, with a step size of 0.01, ensuring more precise and appropriate score selection. </li> <li> **Metadata:** The system now properly accepts and processes valid JSON input in the metadata field, allowing users to input structured data as intended. </li></ul>  |  
+
+## Models
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![bug](/img/bug.jpg)  | Fixed an issue with the model builder page  | <ul> <li> Previously, when users attempted to expand the Output Settings section while viewing model version details, a client-side exception would occur, showing the error: _"Application error: a client-side exception has occurred (see the browser console for more information)."_ This would crash the page. Now, the issue has been resolved, and users can seamlessly expand the _Output Settings_ section. </li></ul>  |  
