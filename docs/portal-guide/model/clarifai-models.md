@@ -8,15 +8,13 @@ sidebar_position: 1
 **Pre-trained, pre-optimized, and ready to use right out of the box**
 <hr />
 
-Our model library is constantly growing and developing. You can browse the [Community](https://clarifai.com/explore) platform to learn more about the available models.
+Our model library is constantly growing and developing. You can browse the [Community](https://clarifai.com/explore) platform find a model that best suits your needs.  
 
 You can also use the [`Get`](https://docs.clarifai.com/api-guide/model/create-get-update-and-delete#get) commands outlined in the API guide to see a list of all the available pre-built models you can use in your app.  
 
-## Clarifai Models
+Our models are "trainable" machine learning models that have been developed in-house and have been thoroughly tested.
 
-Clarifai Models are "Trainable" machine learning models that have been developed in-house and have been thoroughly tested.
-
-Clarifai Models are ready to make predictions right out of the box. 
+They are ready to make predictions right out of the box. 
 
 For example: 
 
