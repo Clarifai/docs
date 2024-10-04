@@ -9,7 +9,7 @@ draft: false
 
 # Release 10.9
 
-**Release Date:** October 1st, 2024
+**Release Date:** October 4th, 2024
 
 <hr/>
 
