@@ -1,7 +1,6 @@
 ---
 description: Get detailed insights into your consumption of the Clarifai platform
 sidebar_position: 1
-unlisted: true
 ---
 
 # Usage & Operations Tab
