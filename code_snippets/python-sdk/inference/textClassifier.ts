@@ -30,23 +30,21 @@ import path from "path";
 const modelUrl =
   "https://clarifai.com/erfan/text-classification/models/sentiment-analysis-twitter-roberta-base";
 
-/**
+/*
         The predict API gives flexibility to generate predictions for data provided through URL, Filepath and bytes format.
-
 
         Example for prediction through Bytes:
         const modelPrediction = await model.predictByBytes({
-                                    inputBytes,
-                                    inputType
+                                    inputBytes: Bytes,
+                                    inputType: "Text"
                                 });
 
-
-        Example for prediction through Filepath:
-        const modelPrediction = await model.predictByFilepath({
-                                    filepath, 
-                                    inputType
+        Example for prediction through URL:
+        const modelPrediction = await model.predictByURL({
+                                    url: URL,
+                                    inputType: "Text",
                                 });
-    */
+*/
 
 const filepath = path.resolve(__dirname, "../../../assets/sample.txt");
 

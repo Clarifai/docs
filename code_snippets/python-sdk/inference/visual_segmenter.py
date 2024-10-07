@@ -22,7 +22,6 @@ SEGMENT_IMAGE_URL = "https://s3.amazonaws.com/samples.clarifai.com/people_walkin
 # Example for prediction through Bytes:
 # model_prediction = model.predict_by_bytes(input_bytes, input_type="image")
 
-
 # Example for prediction through Filepath:
 # model_prediction = Model(model_url).predict_by_filepath(filepath, input_type="image")
 

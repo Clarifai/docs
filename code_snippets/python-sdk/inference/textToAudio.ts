@@ -29,23 +29,21 @@ import fs from "fs";
 
 const inputText = Buffer.from("Hello, How are you doing today!");
 
-/**
+/*
         The predict API gives flexibility to generate predictions for data provided through URL, Filepath and bytes format.
-
-
-        Example for prediction through Bytes:
-        const modelPrediction = await model.predictByBytes({
-                                    inputBytes,
-                                    inputType
-                                });
-
 
         Example for prediction through Filepath:
         const modelPrediction = await model.predictByFilepath({
-                                    filepath, 
-                                    inputType
+                                    filepath,
+                                    inputType: "Text",
                                 });
-    */
+
+        Example for prediction through URL:
+        const modelPrediction = await model.predictByURL({
+                                    url: URL,
+                                    inputType: "Text",
+                                });
+*/
 
 const modelUrl =
   "https://clarifai.com/eleven-labs/audio-generation/models/speech-synthesis";

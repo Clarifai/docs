@@ -29,23 +29,21 @@ import fs from "fs";
 
 const inputText: Buffer = Buffer.from("floor plan for 2 bedroom kitchen house");
 
-/**
+/*
         The predict API gives flexibility to generate predictions for data provided through URL, Filepath and bytes format.
-
-
-        Example for prediction through Bytes:
-        const modelPrediction = await model.predictByBytes({
-                                    inputBytes,
-                                    inputType
-                                });
-
 
         Example for prediction through Filepath:
         const modelPrediction = await model.predictByFilepath({
-                                    filepath, 
-                                    inputType
+                                    filepath,
+                                    inputType: "Text",
                                 });
-    */
+
+        Example for prediction through URL:
+        const modelPrediction = await model.predictByURL({
+                                    url: URL,
+                                    inputType: "Text",
+                                });
+*/
 
 // Image Generation using Stable Diffusion XL
 const modelUrl =

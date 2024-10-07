@@ -11,7 +11,7 @@ from clarifai.client.model import Model
 # eg : MODEL_ID = 'asr-wav2vec2-base-960h-english'
 # You can also set a particular model version by specifying the  version ID
 # eg: MODEL_VERSION_ID = 'model_version'
-#  Model class objects can be inititalised by providing its URL or also by defining respective user_id, app_id and model_id
+# Model class objects can be inititalised by providing its URL or also by defining respective user_id, app_id and model_id
 
 # eg : model = Model(user_id="clarifai", app_id="main", model_id=MODEL_ID)
 
@@ -21,7 +21,6 @@ audio_url = "https://s3.amazonaws.com/samples.clarifai.com/GoodMorning.wav"
 
 # Example for prediction through Bytes:
 # model_prediction = model.predict_by_bytes(audio_bytes, input_type="audio")
-
 
 # Example for prediction through Filepath:
 # model_prediction = Model(model_url).predict_by_filepath(audio_filepath, input_type="audio")
