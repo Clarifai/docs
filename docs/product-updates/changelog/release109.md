@@ -19,6 +19,12 @@ draft: false
 | :---: | :---: | :---: | :---: |
 | ![new-feature](/img/new_feature.jpg) |![improvement](/img/improvement.jpg) | ![bug](/img/bug.jpg) | ![enterprise](/img/enterprise.jpg) |
 
+## Clarifai Product Roadmap
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![new-feature](/img/new_feature.jpg)  | Introduced new public roadmap  | <ul> <li> We've published a public roadmap to give you a view of our upcoming plans and to gather your valuable feedback. You can explore the features we're considering, vote for the ones you want most, or submit new ideas </li> <li> Check out the public roadmap [here](https://portal.productboard.com/bd1rxfuyfbu6vqnmkva3mprx/tabs/1-under-consideration). </li></ul>  |  
+
 ## Control Center
 
 |Status                                |Change                  |Details                    |
@@ -35,8 +41,8 @@ draft: false
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
-| ![new-feature](/img/new_feature.jpg)  | Integrated Runners SDK into Clarifai-Python for enhanced model upload capabilities | Introduced a new method for model uploads to the platform. This integration includes: <br/><br/><ul><li>A new, more efficient model upload process is utilizing Clarifai's runners.</li> <li> Migration of relevant files from runners-python to appropriate locations within the clarifai-python repository. </li></ul>  |   
-| ![improvement](/img/improvement.jpg) | Enhanced model upload capabilities with HuggingFace integration and concept handling | We've expanded our model upload functionality to improve integration with HuggingFace and enhance concept handling: <br/><br/> <ul> <li> Introduced a HuggingFaceLoader utility for seamless checkpoint downloads and concept fetching from HuggingFace for classification and detection models. </li> <li> Implemented new methods in model_upload for efficient checkpoint downloads and concept handling. </li> <li> Updated the model upload process to use the new HuggingFaceLoader for HuggingFace-related models. </li> <li> Changed the command-line interface to use `--model_path` instead of `-folder` for improved clarity. </li> </ul>|
+| [**Private Preview**](https://docs.clarifai.com/product-updates/changelog/release-types)  | Introduced enhanced model upload capabilities | Introduced a new method for model uploads to our platform. This integration includes: <br/><br/><ul><li>A new, more efficient model upload process utilizing Clarifai's runners.</li> <li> Migration of relevant files from runners-python to appropriate locations within the clarifai-python repository. </li><li> Learn more about it [here](https://github.com/Clarifai/examples/tree/main/models/model_upload).</li></ul>  |   
+| ![improvement](/img/improvement.jpg) | Enhanced model upload capabilities with HuggingFace integration and concept handling | We've expanded our model upload functionality to improve integration with HuggingFace and enhance concept handling: <br/><br/> <ul> <li> Introduced a HuggingFaceLoader utility for seamless checkpoint downloads and concept fetching from HuggingFace for classification and detection models. </li> <li> Implemented new methods in `model_upload` for efficient checkpoint downloads and concept handling. </li> <li> Updated the model upload process to use the new HuggingFaceLoader for HuggingFace-related models. </li> <li> Changed the command-line interface to use `--model_path` instead of `-folder` for improved clarity. </li> </ul>|
 
 ## Platform
 
