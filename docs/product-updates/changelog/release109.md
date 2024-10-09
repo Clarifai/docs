@@ -23,7 +23,7 @@ draft: false
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
-| ![new-feature](/img/new_feature.jpg)  | Introduced new public roadmap  | <ul> <li> We've published a public roadmap to give you a view of our upcoming plans and to gather your valuable feedback. You can explore the features we're considering, vote for the ones you want most, or submit new ideas </li> <li> Check out the public roadmap [here](https://portal.productboard.com/bd1rxfuyfbu6vqnmkva3mprx/tabs/1-under-consideration). </li></ul>  |  
+| ![new-feature](/img/new_feature.jpg)  | Introduced new public roadmap  | <ul> <li> We've published a public roadmap to give you a view of our upcoming plans and to gather your valuable feedback. You can explore the features we're considering, vote for the ones you want most, or submit new ideas </li> <li>  For a sneak peek at what's coming, such as Compute Orchestration, check out our public roadmap [here](https://portal.productboard.com/bd1rxfuyfbu6vqnmkva3mprx/tabs/1-under-consideration). </li></ul>  |  
 
 ## Control Center
 
@@ -61,6 +61,7 @@ draft: false
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
+| ![new-feature](/img/new_feature.jpg) | Introduced workflow versioning   | <ul> <li> You can now create workflow versions that track the changes of models, operators, agents, prompts, and their configurations within the pipeline nodes.  </li> </ul> |
 | ![bug](/img/bug.jpg)  | Fixed RAG Prompter modification issues in public workflows  | <ul> <li> Previously, modifying a RAG Prompter model in a public workflow would unexpectedly create a new private model and version, causing save failures due to the incompatibility of private models in public workflows. This also led to workflow execution errors. We've resolved this by ensuring that modifications to existing nodes reuse the original model, either creating a new version or updating the existing one as appropriate. This fix maintains workflow integrity, prevents unintended privatization, and eliminates related execution errors.</li></ul>  |   
 | ![bug](/img/bug.jpg)  | Fixed compatibility issue between Image Cropper and Multimodal-to-Text models in Workflows  | <ul> <li> Previously, when using an Image Cropper with a Multimodal-to-Text model in a workflow, the cropped image regions were not being properly processed. This was due to the Multimodal-to-Text model being incorrectly configured with a single 'Any' input type, causing the workflow runner to skip the cropped regions. We've addressed this by updating the model's input configuration to correctly specify [image, text] input fields. This fix ensures that all cropped image regions are now properly processed by the Multimodal-to-Text model, improving the accuracy and functionality of workflows using these components. </li></ul>  |  
 | ![bug](/img/bug.jpg)  | Fixed an issue with the Concept thresholder  | <ul> <li> We fixed an issue where the concept thresholder was displaying concept ID while selecting concepts instead of concept names. Now, this issue is fixed, and it shows concept names correctly. </li></ul>  |  
