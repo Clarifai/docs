@@ -14,6 +14,12 @@ You can learn more about transfer learning [here](https://docs.clarifai.com/port
 
 Let's demonstrate how you can create a custom visual classifier model using the transfer learning technique. 
 
+:::info Objective
+
+We intend to create a model that differentiates between pants and shorts. 
+
+:::
+
 ### Step 1: Create an App
 
 [Click here](https://docs.clarifai.com/clarifai-basics/applications/create-an-application/#create-an-application-on-the-portal) to learn how to create an application on the Clarifai platform.
@@ -28,7 +34,9 @@ When creating the application, go with the default Image/Video option as the pri
 
 Next, you need to upload data, such as images, to the app you've created. The input data, labeled with concepts, is what will be used for training your model. Training helps your model to “learn” from the annotated concepts on your inputs so that it can be able to recognize them. 
 
-You do not need many images to get started. We recommend starting with 10 and adding more as needed.
+To get started with transfer learning, you don't need a large number of images. We recommend beginning with just 10 and adding more as needed. 
+
+In this example, we'll use 5 images of pants and 5 images of shorts sourced from [this clothing dataset](https://github.com/alexeygrigorev/clothing-dataset-small). You can clone the repository and follow along with this documentation.
 
 ![](/img/illustration-training.png)
 

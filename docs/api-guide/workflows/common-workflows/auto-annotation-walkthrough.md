@@ -5,7 +5,7 @@ description: >-
 sidebar_position: 2
 ---
 
-# Auto Annotation
+# Programmatic Auto-Annotation Walkthrough
 
 **Use AI to help you build AI. Auto annotation uses your model predictions to label your training data**
 <hr />
@@ -22,6 +22,14 @@ The initialization code used in the following examples is outlined in detail on 
 
 :::
 
+
+:::tip
+
+- [Click here](https://docs.clarifai.com/api-guide/annotate/tasks#auto-annotation-task) to learn how to create an auto-annotation task via the API and automatically label the inputs in your dataset.  
+
+- [Click here](https://docs.clarifai.com/portal-guide/annotate/auto-annotation/) to learn how to carry out auto-annotation via the UI. 
+
+:::
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
