@@ -18,7 +18,7 @@ Let’s demonstrate how you can successfully upload different types of models to
 
 - This new feature is still in [private preview](https://docs.clarifai.com/product-updates/changelog/release-types). If you'd like to test it out and provide feedback, please request access [here](https://forms.gle/MSx7QNxmug2oFZYD6).
 
-- This new upload experience is compatible with the latest [`clarifai`](https://github.com/Clarifai/clarifai-python) Python package, starting from version 10.9.1.
+- This new upload experience is compatible with the latest [`clarifai`](https://github.com/Clarifai/clarifai-python) Python package, starting from version 10.9.2.
 
 - If you prefer the previous upload method, which is supported up to version 10.8.4, you can refer to the documentation [here](/others/old_model_upload_method.pdf).
 
@@ -42,7 +42,9 @@ pip install --upgrade clarifai
 ```
 ### Environment Set Up
 
-Authenticate your connection to the Clarifai platform by setting your `CLARIFAI_PAT `(Personal Access Token) as an environment variable. 
+Before proceeding, ensure that the `CLARIFAI_PAT` (Personal Access Token) environment variable is set. You can generate the PAT key in your Personal Settings page by navigating to the [Security section](https://clarifai.com/settings/security).
+
+This token is essential for authenticating your connection to the Clarifai platform.
 
 ```text
 export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE
@@ -191,11 +193,6 @@ To run your model locally, use the following command:
 python -m clarifai.runners.models.model_run_locally --model_path <model_directory_path>
 ```
 
-:::tip
-
-You can add a dot (`.`) to the model path like this: `python -m clarifai.runners.models.model_run_locally --model_path .` This means you're specifying the current directory as the model path – the command will look for the model files (such as `model.py`, `requirements.txt`, and `config.yaml`) within the directory where you're executing the command. 
-:::
-
 :::warning
 
 Ensure your local environment has sufficient memory and compute resources to load and run the model for testing.
@@ -234,6 +231,12 @@ import SpeechRecognitionRequirements from "!!raw-loader!../../../code_snippets/p
 import SpeechRecognitionConfig from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/speech_recognition_config.yaml";
 
 ## Examples
+
+:::info
+
+You can find various model upload examples [here](https://github.com/Clarifai/examples/tree/main/models/model_upload), which demonstrate different use cases and optimizations. 
+
+:::
 
 ### Image Classifier
 
