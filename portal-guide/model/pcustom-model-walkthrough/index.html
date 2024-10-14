@@ -18,8 +18,8 @@
 
 <script src="/scripts/sidebar.js" async></script>
 <script src="/scripts/intercomConfig.js" async></script><link rel="stylesheet" href="/assets/css/styles.9421978a.css">
-<script src="/assets/js/runtime~main.60f9dbc8.js" defer="defer"></script>
-<script src="/assets/js/main.9e93d223.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.fdae013b.js" defer="defer"></script>
+<script src="/assets/js/main.8e34d15c.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5W9P7GR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -31,12 +31,14 @@
 <p>Transfer learning is a model training technique that utilizes the feature representations of a pre-trained model, which has been trained on vast amounts of data. This allows you to build new models more efficiently by reducing the need for extensive training from scratch and enabling faster learning with minimal data.</p>
 <p>You can learn more about transfer learning <a href="https://docs.clarifai.com/portal-guide/model/model-types/transfer-learning" target="_blank" rel="noopener noreferrer">here</a>.</p>
 <p>Let&#x27;s demonstrate how you can create a custom visual classifier model using the transfer learning technique.</p>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>Objective</div><div class="admonitionContent_BuS1"><p>We intend to create a model that differentiates between pants and shorts.</p></div></div>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="step-1-create-an-app">Step 1: Create an App<a class="hash-link" aria-label="Direct link to Step 1: Create an App" title="Direct link to Step 1: Create an App" href="/portal-guide/model/pcustom-model-walkthrough#step-1-create-an-app">​</a></h3>
 <p><a href="https://docs.clarifai.com/clarifai-basics/applications/create-an-application/#create-an-application-on-the-portal" target="_blank" rel="noopener noreferrer">Click here</a> to learn how to create an application on the Clarifai platform.</p>
 <div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>note</div><div class="admonitionContent_BuS1"><p>When creating the application, go with the default Image/Video option as the primary input type.</p></div></div>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="step-2-add-and-annotate-inputs">Step 2: Add and Annotate Inputs<a class="hash-link" aria-label="Direct link to Step 2: Add and Annotate Inputs" title="Direct link to Step 2: Add and Annotate Inputs" href="/portal-guide/model/pcustom-model-walkthrough#step-2-add-and-annotate-inputs">​</a></h3>
 <p>Next, you need to upload data, such as images, to the app you&#x27;ve created. The input data, labeled with concepts, is what will be used for training your model. Training helps your model to “learn” from the annotated concepts on your inputs so that it can be able to recognize them.</p>
-<p>You do not need many images to get started. We recommend starting with 10 and adding more as needed.</p>
+<p>To get started with transfer learning, you don&#x27;t need a large number of images. We recommend beginning with just 10 and adding more as needed.</p>
+<p>In this example, we&#x27;ll use 5 images of pants and 5 images of shorts sourced from <a href="https://github.com/alexeygrigorev/clothing-dataset-small" target="_blank" rel="noopener noreferrer">this clothing dataset</a>. You can clone the repository and follow along with this documentation.</p>
 <p><img decoding="async" loading="lazy" src="/assets/images/illustration-training-22112a4ec017ebaf5f8c40832742148d.png" width="700" height="440" class="img_ev3q"></p>
 <p>To upload inputs, select the <strong>Inputs</strong> option in the collapsible left sidebar. Next, click the <strong>Upload inputs</strong> button.</p>
 <p><img decoding="async" loading="lazy" alt="upload inputs" src="/assets/images/custom_model_upload_inputs-6a57515612d503ecd87f98770cab6c24.png" width="1888" height="830" class="img_ev3q"></p>
