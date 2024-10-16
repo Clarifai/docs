@@ -1,14 +1,16 @@
 ---
-description: Connect your models together in a workflow
+description: Learn how to connect your models together in a workflow
 sidebar_position: 1
 ---
 
 # Input Nodes
 
-**Connect your models together in a workflow**
+**Learn how to connect your models together in a workflow**
 <hr />
 
-The outputs from one model can be used as the inputs in another model. This allows you to link together the models in a workflow graph. Linking models help you build sophisticated AI solutions that can zero-in on specific use cases.
+The outputs from one model can be used as the inputs in another model. This allows you to create nodes that link together the models in a workflow graph. 
+
+Linking models help build sophisticated AI solutions that can zero in on specific use cases.
 
 ## Supported Input and Output Types
 
@@ -32,81 +34,93 @@ Some examples include:
 
 ## Create Your Workflow
 
-You can create workflows out of any Clarifai models or custom models that you have created for your app. The inputs and outputs supported by your custom models will depend on the inputs and outputs supported by the Clarifai models, or model templates that you have used to build them.
+You can create workflows out of any Clarifai models or custom models that you have created for your app. The inputs and outputs supported by your custom workflows will depend on the inputs and outputs supported by the models that you have used to build them.
 
 In this example, we'll create a simple custom workflow that first extracts text from an image and then translates the extracted text to Spanish.
 
-We'll connect the following two models to achieve our objective:
+We'll connect the following two Clarifai models to achieve our objective:
 
 - The [ocr-scene-english-paddleocr](https://clarifai.com/clarifai/main/models/ocr-scene-english-paddleocr) model, which detects and recognizes English texts in images;
 - The [text-translation-english-spanish](https://clarifai.com/helsinkinlp/translation/models/text-translation-english-spanish) model, which translates texts from English to Spanish.
 
-We'll specify the IDs of the models and their versions—since a model can have several versions.
+We'll specify the IDs of the models and their versions — since a model can have several versions.
 
 :::info
 
 You can add up to 20 models to a single workflow.
 
 :::
-### Create Application
+
+## Step 1: Create Application
 
 Let's begin by creating an application, which will act as the container for all the related models and workflows for this particular project.
 
-Log in to your account and click the **Create an App** button at the top-right section of the navigation bar. And on the small window that pops up, provide the information required to create a new application—a unique name, a short description, a language, and a default base workflow.
+[Click here](https://docs.clarifai.com/clarifai-basics/applications/create-an-application/#create-an-application-on-the-portal) to learn how to create an application on the Clarifai platform.
 
-![create app](/img/community_2/input_nodes_create_app.png)
+:::note
 
-This is how the newly created app looks like.
+When creating the application, select the Text/Document option as the primary input type.
 
-![new app](/img/community_2/input_nodes_new_app.png)
+:::
 
-### Create a New Workflow
+## Step 2: Create a New Workflow
 
-To create a new workflow, select the **App Workflows** option on the collapsible left sidebar. Next, click the **Create Workflow** button on the top-right corner of the page.
+To create a new workflow, select the **Workflows** option in the collapsible left sidebar. Next, click the **Create Workflow** button in the upper-right corner of the page.
 
 ![create new workflow](/img/community_2/input_nodes_create_new_workflow.png)
 
-### Connect Your Nodes
+## Step 3: Create Your Nodes
 
-You'll be redirected to a simple no-code, drag-and-drop interface that allows you to connect your models together. You'll need to connect the `Input Nodes` in your workflow. You can link your models to any models that precede them in the visual graph.
+You'll be redirected to a simple, no-code, drag-and-drop interface that allows you to connect your models together. You'll need to connect the input nodes in your workflow. You can link your nodes to any nodes that precede them in the visual graph.
 
-Let's start by clicking the input box on the top section of the page and providing a name for the custom workflow. 
+### Name Your Workflow
 
-Next, on the left-hand sidebar, let's search for an optical-character-recognizer model, which is how computers extract texts from images, such as scans of printed pages or photos of street signs.
+Let's start by clicking the input field in the upper section of the page and providing a name for the custom workflow. 
 
-![search model for workflow](/img/community_2/input_nodes_search_model.png)
+### Search for First Node
 
-After finding the model type, let's drag and drop it on the empty workspace pane. This model will be configured automatically as a node in the workflow.
+Next, in the left sidebar, search for the `optical-character-recognizer` node. This allows you to configure a model that enables the extraction of texts from images, such as scans of printed pages or photos of street signs.
+
+After finding the node, drag and drop it on the empty workspace pane and connect it to the `IN` element.
 
 ![empty workflow pane](/img/community_2/input_nodes_empty_pane.png)
 
-Let's also search for another model, a text-to-text model, which transforms one kind of text into another. After finding the second model, let's also drag and drop it on the workspace. It will also be configured automatically as a node in the workflow.
+:::tip
+
+You can use the tools on the left side of the workspace pane to manage the workflow creation process. These tools enable you to zoom in and out, fit the view, arrange the workflow, reset the workspace, and perform other actions to help you efficiently design and organize your workflow.
+
+:::
+
+### Search for Second Node
+
+Next, search for the `text-to-text` node. This allows you to configure a model that enables the transformation of one kind of text into another.  
+
+After finding the second node, drag and drop it on the workspace and draw a line that connects it to the first node. This shows the flow of information from one node to another.
 
 ![add another model](/img/community_2/input_nodes_add_another_model.png)
 
-The models in the workflow will automatically connect when they are placed near each other. This shows the flow of information from one model to another.
-You can also grab the node connectors on each model and configure your workflow nodes manually.
 
-For this example, let's use the node connectors to draw a line that connects the two models. 
+## Step 4: Search for Models
 
-![connect models](/img/community_2/input_nodes_connect_models.png)
-
-Let's click the **optical-character-recognizer** button. And on the search box that appears on the right side of the page, specify the **ocr-scene-english-paddleocr** model as the one we'll use for optical character recognition. We'll also select the version of the model we want to use. 
+Click the `optical-character-recognizer` node. And on the search box that appears on the right side of the page, specify the **ocr-scene-english-paddleocr** model as the one to use for optical character recognition. Also, select the version of the model you want to use. 
 
 ![ocr model](/img/community_2/input_nodes_ocr_model.png)
 
-Similarly, let's click the **text-to-text** button and specify the **text-translation-english-spanish** model as the one we'll use for translating the extracted text from English to Spanish. We'll also select its version.
+Similarly, click the `text-to-text` node and specify the **text-translation-english-spanish** model as the one to use for translating the extracted text from English to Spanish. Also, select its version.
 
 ![text to text model](/img/community_2/input_nodes_text_to_text.png)
 
-Finally, let's click the **Save Workflow** button to save this workflow. That will save the state of your workflow. Now you are ready to predict using your brand new workflow. You can also edit your workflow at any time.
+## Step 5: Save Workflow
+
+Finally, click the **Save Workflow** button to save the workflow. This will save the state of your workflow. Now, you are ready to [predict](https://docs.clarifai.com/portal-guide/workflows/setting-up-a-mesh-workflow/#workflow-predict) using your brand-new workflow. 
 
 ![save workflow](/img/community_2/input_nodes_save_workflow.png)
 
-### Update Your Base Workflow
+:::tip
 
-To activate your new workflow in your app, go to the **App Settings** page, and change the `Base Workflow` to the new workflow that you have just created.
+You can edit your workflow at any time by navigating to the **Workflows** listing page and clicking the edit button next to the workflow you wish to modify. This allows you to make changes easily whenever needed.
 
-![change base workflow](/img/community_2/input_nodes_change_base_workflow.png)
+:::
+
 
 

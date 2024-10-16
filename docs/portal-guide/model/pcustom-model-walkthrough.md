@@ -1,11 +1,11 @@
 ---
-description: Learn how to use transfer learning to create your own custom model
+description: Learn how to use transfer learning to create custom visual classifier model
 sidebar_position: 2
 ---
 
-# Create Models Using Transfer Learning
+# Visual Classifiers By Transfer Learning
 
-**Learn how to use transfer learning to create your own custom models**
+**Learn how to use transfer learning to create custom visual classifier models**
 <hr />
 
 Transfer learning is a model training technique that utilizes the feature representations of a pre-trained model, which has been trained on vast amounts of data. This allows you to build new models more efficiently by reducing the need for extensive training from scratch and enabling faster learning with minimal data.
@@ -20,7 +20,7 @@ We intend to create a model that differentiates between pants and shorts.
 
 :::
 
-### Step 1: Create an App
+## Step 1: Create an App
 
 [Click here](https://docs.clarifai.com/clarifai-basics/applications/create-an-application/#create-an-application-on-the-portal) to learn how to create an application on the Clarifai platform.
 
@@ -30,12 +30,12 @@ When creating the application, go with the default Image/Video option as the pri
 
 :::
 
-### Step 2: Create a Dataset
+## Step 2: Create a Dataset
 
 [Click here](https://docs.clarifai.com/portal-guide/datasets/create-get-update-delete/#create-a-new-dataset) to learn how to create a dataset that will store the inputs. 
 
 
-### Step 3: Add and Annotate Inputs
+## Step 3: Add and Annotate Inputs
 
 Next, you need to upload data to the app you've created. The input data, labeled with concepts, is what will be used for training your model. Training helps your model to “learn” from the annotated concepts on your inputs so that it can be able to recognize them. 
 
@@ -55,7 +55,7 @@ The small window that pops up allows you to upload your inputs — either by pro
 
 - Use the **Select or add datasets** search box to select the dataset you previously created for storing the uploaded inputs. 
 
-- To label the inputs with the `pants` concept, click the plus (**+**) sign next to the **Select or add concepts** search box. Then, type the new concept name in the search box. The new name you've typed will appear underneath the search box. Click the **Add new concept** button to create the concept. Once created, the concept will be listed underneath the search box. 
+- To label the inputs with the `pants` concept, click the plus (**+**) icon next to the **Select or add concepts** search box. Then, type the new concept name in the search box. The new name you've typed will appear underneath the search box. Click the **Add new concept** button to create the concept. Once created, the concept will be listed underneath the search box. 
 
 - Click the **Upload inputs** button at the bottom of the pop-up window to finalize uploading your annotated inputs to the dataset. 
 
@@ -69,15 +69,15 @@ The small window that pops up allows you to upload your inputs — either by pro
 
 :::
 
-### Step 4: Update Dataset
+## Step 4: Update Dataset
 
 Next, go to the individual page of your dataset and create a version for it by clicking the **New version** button. This bookmarks the state of your data so that you can apply a specific version for training your custom model. 
 
 ![](/img/community_2/custom_model_dataset_version.png)
 
-### Step 5: Choose a Model Type
+## Step 5: Choose a Model Type
 
-Once you've added images that contain the concept you want to train for, you can now proceed to create your custom model.
+Once you've added images that contain the concepts you want to train for, you can now proceed to create your custom model.
 
 To begin, select the **Models** option in the collapsible left sidebar. On the ensuing page, click the **Add Model** button in the upper-right corner.
 
@@ -91,13 +91,13 @@ Let’s choose the **Transfer Learn** model type.
 
 ![](/img/community_2/custom_model_create_new_model.png)
 
-### Step 6: Create a Model 
+## Step 6: Create a Model 
 
 On the ensuing page, provide a unique ID and click the **Continue to Configure Model** button to create your model.
 
 ![](/img/community_2/custom_model_create_new_model-2.png)
 
-### Step 7: Set Up the Model
+## Step 7: Set Up the Model
 
 Next, you need to set up the model for training by providing the required details. 
 
@@ -113,11 +113,11 @@ For this example, we'll proceed with the default `Automatic` option.
 
 After configuring the settings, click the **Train Model** button to begin training your custom model.
 
-### Step 8: Use Your Custom Model
+## Step 8: Use Your Custom Model
 
 You'll be redirected to the created model's page. Once the visual classifier model is trained, which normally takes a few seconds, you can put it to work. 
 
-For example, to use it for making a [prediction](https://docs.clarifai.com/portal-guide/ppredict/), click the blue **Try your own images or videos** button. A small window will pop up that allows you to upload an input and see its prediction probabilities on the right side of the page. 
+For example, to use it for making a [prediction](https://docs.clarifai.com/portal-guide/ppredict/), click the blue (**+**) **Try your own images or videos** button. A small window will pop up that allows you to upload an input and see its prediction probabilities on the right side of the page. 
 
 ![Predict with custom model](/img/community_2/custom_model_create_model_page-2.png)
 

@@ -503,6 +503,10 @@ const config = {
           {
             to: '/portal-guide/control-center',
             from: '/portal-guide/usage-dashboard'
+          },
+          {
+            to: '/portal-guide/model/text-classifiers-transfer-learn',
+            from: '/portal-guide/workflows/common-workflows/custom-text-walkthrough'
           }
           ],
           createRedirects(existingPath) {
