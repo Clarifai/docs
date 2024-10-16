@@ -6,7 +6,7 @@
   "link": {
       "type": "generated-index",
       "title": "Common Workflows Examples",
-      "description": "Learn how to set up common workflows in the Clarifai Portal.",
+      "description": "Learn how to set up some common types of workflows in the Clarifai platform.",
       "slug": "/portal-guide/workflows/common-workflows"
     }
 }
