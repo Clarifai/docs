@@ -1,3 +1,5 @@
+![image](https://github.com/user-attachments/assets/3c6a3f36-652d-4d7c-8866-3f9bf7ff1fab)
+
 # Website
 
 This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
