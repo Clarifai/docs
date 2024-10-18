@@ -1,5 +1,6 @@
 ---
 description: Get detailed insights into your consumption of the Clarifai platform
+pagination_next: null
 sidebar_position: 1
 ---
 

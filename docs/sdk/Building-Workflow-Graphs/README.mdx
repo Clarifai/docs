@@ -239,3 +239,8 @@ To know more about workflows visit this [link](https://docs.clarifai.com/portal-
     <CodeBlock className="language-python">{CodeExport}</CodeBlock>
 </TabItem>
 </Tabs>
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>

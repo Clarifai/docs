@@ -1,3 +1,8 @@
+---
+description: Learn how to ingest email messages from Salesforce
+pagination_next: null
+---
+
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -16,10 +21,8 @@ import CodeOutputChat1 from "!!raw-loader!../../../code_snippets/python-sdk/unst
 import CodeOutputChat2 from "!!raw-loader!../../../code_snippets/python-sdk/unstructured/salesforce/outputs/chat2.txt";
 
 
-
-
-
 # Ingest Email Messages From Salesforce Using Unstructured.io
+
 **Learn how to ingest email messages from Salesforce**
 <hr />
 

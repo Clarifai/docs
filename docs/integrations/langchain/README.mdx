@@ -26,3 +26,7 @@ You can learn more about integrating Clarifai with LangChain [here](https://pyth
 :::
 
 
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>

@@ -1,5 +1,6 @@
 ---
-description: Multilingual support in Clarifai.
+description: Multilingual support in Clarifai
+pagination_next: null
 sidebar_position: 3
 ---
 

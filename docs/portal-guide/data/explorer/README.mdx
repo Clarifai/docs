@@ -77,3 +77,7 @@ You can complete several tasks on the Input-Viewer screen, including:
 - Use the carousel to swiftly move from one input to another. 
 - Click the info button in the lower-left section to see details of the input, such as input ID, creation date, and resolution.
 
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>

@@ -1,5 +1,6 @@
 ---
-description: Multilingual predictions.
+description: Multilingual predictions
+pagination_next: null
 sidebar_position: 9
 ---
 

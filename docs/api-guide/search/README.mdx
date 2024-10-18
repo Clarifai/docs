@@ -1,5 +1,6 @@
 ---
 description: 'Search for people, places, objects, and topics in your unstructured data.'
+pagination_prev: null
 ---
 
 # Search, Sort, Filter, and Save
@@ -14,3 +15,7 @@ With our advanced transfer learning technology, your model can learn new concept
 
 ![](/img/spacetime.svg)
 
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>

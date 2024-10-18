@@ -4,3 +4,8 @@
 <hr />
 
 [Unstructured.io](https://unstructured.io) tackles a common challenge in large language models (LLMs):  transforming raw data into a format LLMs can understand and process effectively. It is a data ETL (Extract, Transform, Load) platform designed for LLMs. Unstructured.io is a data ingestion powerhouse as it can ingest various data formats. It acts as a central hub, regardless of where your data resides ie.  local machines, cloud storage, or databases. It also provides connectors and libraries to simplify data access from various sources. You can configure it to retrieve the data your LLMs need seamlessly.  Unstructured.io goes beyond simply moving data. It offers tools and libraries to transform raw data into a structured format suitable for LLM consumption. By integrating Clarifai into Unstructred.io, users gain access to Clarifai's capabilities ie.  it can ingest and store unstructured data into Clarifai vectorDB and call LLMs from the Clarifai platform. 
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>

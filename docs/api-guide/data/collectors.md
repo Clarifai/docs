@@ -1,5 +1,6 @@
 ---
-description: Capture data for your application.
+description: Capture data for your application
+pagination_next: null
 sidebar_position: 5
 ---
 

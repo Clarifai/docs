@@ -1,6 +1,7 @@
 ---
 description: How to collaborate on the Clarifai platform
 sidebar_position: 3
+pagination_next: null
 ---
 
 # App Collaboration

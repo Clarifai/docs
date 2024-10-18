@@ -1,5 +1,6 @@
 ---
 description: Learn how to make predictions using our generative AI models, including LLMs
+pagination_next: null
 sidebar_position: 2
 ---
 

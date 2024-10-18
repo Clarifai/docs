@@ -1,5 +1,6 @@
 ---
 description: (Beta) Track people and objects in video
+pagination_next: null
 sidebar_position: 5
 ---
 
