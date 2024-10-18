@@ -1,5 +1,6 @@
 ---
 description: Dynamic AI model orchestration and inference scaling
+pagination_prev: null
 ---
 
 # Making Predictions
@@ -19,3 +20,7 @@ This is also true with Clarifai's pre-trained models, as we will update them to 
 
 ![](/img/predict.jpg)
 
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>

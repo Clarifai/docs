@@ -1,5 +1,6 @@
 ---
-description: 'Work with text in images, just like you work with encoded text.'
+description: 'Work with text in images, just like you work with encoded text'
+pagination_next: null
 sidebar_position: 2
 ---
 

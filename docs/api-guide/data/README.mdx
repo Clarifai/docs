@@ -1,7 +1,6 @@
 ---
-description: >-
-  Clarifai supports the most popular image, video and text formats for your
-  input data.
+description: Clarifai supports the most popular image, video and text formats for your input data
+pagination_prev: null
 ---
 
 # Your Data
@@ -65,3 +64,8 @@ Data Type     | Meaning
 frames[...].data.regions[...].region\_info.bounding\_box | These are the four corners of a bounding box in a specific region of a specific frame of video. Each corner coordinate is normalized to [0,1].
 frames[...].data.regions[...].data.concepts | This is the matrix of frames and regions containing the  concepts used in a model. For the general model, these would be the top 20 concepts classified with the highest confidence in a specific region of a specific frame of video.
 frames[...].data.regions[...].track_id |  This is the matrix of frames and regions containing the tracking ids used to track objects across frames of a video.
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>

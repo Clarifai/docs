@@ -1,5 +1,6 @@
 ---
 description: Extend Clarifai’s UIs and perform customized backend processing 
+pagination_prev: null
 ---
 
 # Modules
@@ -62,3 +63,8 @@ With modules, you can design your solutions with scalability and future-proofing
 - [LLM Battleground](https://clarifai.com/meta/Llama-2/installed_module_versions/LLM_Battleground/compare)—Evaluate and compare multiple Large Language Models (LLMs) simultaneously. You do not need to log in to start using it. Learn how to use it [here](https://www.clarifai.com/blog/compare-top-llms-with-llm-battleground). 
 - [Chatbot](https://clarifai.com/clarifai/generative-ai/installed_module_versions/module-chatbot)—A conversational chatbot that remembers the conversation as you go.
 - [DocQA](https://clarifai.com/clarifai/geoint-demo-3/installed_module_versions/docQA)—Upload documents such as PDFs and chat with your data. Watch this [video](https://www.youtube.com/watch?v=HbuOu9zq2UE) to see it in action. You can also learn how to use it [here](https://www.clarifai.com/blog/doc-qa-revolutionizing-document-analysis).
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>

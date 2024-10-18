@@ -1,3 +1,8 @@
+---
+description: The Clarifai API helps you incorporate powerful AI technology in your application
+pagination_next: null
+---
+
 # Using Postman with Clarifai APIs
 
 This page explains how to use [Postman](https://www.postman.com/) to perform some API calls to Clarifai by showing the actions available within the Clarifai platform. You can use Postman to make a wide variety of `GET`, `POST`, `PATCH`, and `DELETE` calls.

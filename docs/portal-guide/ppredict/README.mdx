@@ -1,5 +1,6 @@
 ---
 description: Dynamic AI model orchestration and inference scaling
+pagination_prev: null
 ---
 
 # Making Predictions
@@ -48,3 +49,8 @@ This option lets model owners add public preview examples. It's only visible on 
 If you click the button, a small window will pop up, allowing you to add public prediction examples for anyone who wants to see how your model works. 
 
 ![](/img/community_2/model_predictions-5.png)
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>

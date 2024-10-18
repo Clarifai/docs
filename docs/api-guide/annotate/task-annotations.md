@@ -1,5 +1,6 @@
 ---
-description: This is a page about performing task annotations with the Clarifai API.
+description: This is a page about performing task annotations with the Clarifai API
+pagination_next: null
 sidebar_position: 5
 ---
 

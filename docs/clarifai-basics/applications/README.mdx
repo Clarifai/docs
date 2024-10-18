@@ -1,5 +1,6 @@
 ---
-description: Create applications to work with AI models on Clarifai.
+description: Create applications to work with AI models on Clarifai
+pagination_prev: null
 ---
 
 # Applications
@@ -26,3 +27,7 @@ You can learn more about [authentication](../authentication/) in the next sectio
 
 ![](/img/applications.jpg)
 
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>

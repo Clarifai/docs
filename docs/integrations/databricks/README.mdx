@@ -24,3 +24,8 @@ Integrating Clarifai into the Databricks environment allows you to:
 - Upload your datasets into a Clarifai application. This simplifies transferring data from Databricks into Clarifai. 
 - Fetch datasets from a Clarifai application to Databricks. This facilitates further data exploration and analysis within Databricks. 
 - Fetch annotations from a Clarifai application to Databricks. This enriches your training data, improving the accuracy and performance of your machine learning models. 
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>

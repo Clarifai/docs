@@ -1,5 +1,6 @@
 ---
 description: A Glossary of General AI Terms for Using the Clarifai Platform Effectively 
+pagination_prev: null
 sidebar_position: 1
 ---
 

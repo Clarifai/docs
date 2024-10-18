@@ -1,5 +1,6 @@
 ---
 description: Learn about our map operators
+pagination_next: null
 sidebar_position: 10
 ---
 

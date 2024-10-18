@@ -1,5 +1,6 @@
 ---
 description: Learn how to install the Clarifai SDKs
+pagination_prev: null
 sidebar_position: 1
 ---
 

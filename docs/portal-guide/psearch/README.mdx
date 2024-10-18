@@ -1,5 +1,6 @@
 ---
 description: Use vector search to find, sort, and filter what you need in your unstructured data
+pagination_prev: null
 ---
 
 # Smart Search on Input-Manager 
@@ -78,6 +79,9 @@ We offer the following types of Smart Search options in our platform.
   - **Text** — Provide a text description to compare input predictions against. 
   - **Concept** — Provide a trained concept to compare input predictions against.
 
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 
+<DocCardList items={useCurrentSidebarCategory().items}/>
 
 

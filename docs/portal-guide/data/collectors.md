@@ -1,5 +1,7 @@
 ---
 description: Capture inputs used for making predictions in your app
+pagination_next: null
+pagination_prev: null
 sidebar_position: 3
 ---
 

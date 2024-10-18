@@ -1,5 +1,6 @@
 ---
 description: Manage your inputs and training data on the Community Platform
+pagination_prev: null
 ---
 
 # Your Data
@@ -24,4 +25,10 @@ Your inputs should fulfill the following conditions:
 The small window that pops up allows you to upload any type of input data—files from your local directory, text, or publicly accessible URL. 
 
 ![](/img/community_2/data_upload_inputs.png)
+
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
 
