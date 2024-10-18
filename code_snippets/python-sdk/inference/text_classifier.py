@@ -21,10 +21,8 @@ model_url = "https://clarifai.com/erfan/text-classification/models/sentiment-ana
 
 # The predict API gives flexibility to generate predictions for data provided through URL,Filepath and bytes format.
 
-
 # Example for prediction through Bytes:
 # model_prediction = model.predict_by_bytes(input_bytes, input_type="text")
-
 
 # Example for prediction through URL:
 # model_prediction = Model(model_url).predict_by_url(URL, input_type="text")

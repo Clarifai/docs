@@ -29,22 +29,21 @@ import fs from "fs";
 
 const inferenceParams = { width: 1024 };
 
-/**
+/*
         The predict API gives flexibility to generate predictions for data provided through URL, Filepath and bytes format.
-
 
         Example for prediction through Bytes:
         const modelPrediction = await model.predictByBytes({
-                                    inputBytes,
-                                    inputType
+                                    inputBytes: Bytes,
+                                    inputType: "Text"
                                 });
-
 
         Example for prediction through Filepath:
         const modelPrediction = await model.predictByFilepath({
-                                    filepath, 
-                                    inputType
+                                    filepath,
+                                    inputType: "Text",
                                 });
+
     */
 
 const modelUrl =

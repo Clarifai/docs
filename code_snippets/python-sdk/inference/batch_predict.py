@@ -9,8 +9,8 @@ proto_list=[]
 for i in range(16):
     proto_list.append(Inputs.get_input_from_bytes(input_id = f'demo_{i}', text_bytes=prompt.encode()))
 
-# passthe input proto as paramater to the predict function
-model_prediction = Model(url=model_url).predict(
+# pass the input proto as paramater to the predict function
+model_prediction = Model(url=model_url, pat="YOUR_PAT").predict(
     proto_list
 )
 
