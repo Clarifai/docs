@@ -1,3 +1,9 @@
+---
+description: Using Clarifai models in Embedchain
+pagination_next: null
+---
+
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
