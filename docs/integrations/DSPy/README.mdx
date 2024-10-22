@@ -58,3 +58,8 @@ Why integrating with Clarifai is beneficial?
 11:09 - Creating Custom Signature Class
 
 12:11 - Final Output
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>

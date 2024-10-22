@@ -1,4 +1,4 @@
-[clarifai-nodejs](README.md) / Exports
+<!--[clarifai-nodejs](README.md) / Exports-->
 
 # clarifai-nodejs
 

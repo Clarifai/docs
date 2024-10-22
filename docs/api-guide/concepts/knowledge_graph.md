@@ -1,5 +1,6 @@
 ---
-description: Connect the knowledge gained by different models.
+description: Connect the knowledge gained by different models
+pagination_next: null
 sidebar_position: 4
 ---
 

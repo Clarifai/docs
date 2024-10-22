@@ -1,5 +1,7 @@
 ---
 description: Create applications faster with pre-built blueprints
+pagination_next: null
+pagination_prev: null
 sidebar_position: 5
 ---
 

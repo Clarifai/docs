@@ -116,11 +116,27 @@ Finally, click the **Save Workflow** button to save the workflow. This will save
 
 ![save workflow](/img/community_2/input_nodes_save_workflow.png)
 
-:::tip
+## Edit Workflow
 
-You can edit your workflow at any time by navigating to the **Workflows** listing page and clicking the edit button next to the workflow you wish to modify. This allows you to make changes easily whenever needed.
+After creating your workflow, you can edit it at any time by navigating to its individual page and clicking the **Edit workflow** button in the upper-right section. 
+
+This allows you to make changes easily whenever needed.
+
+![](/img/community_2/input_nodes_edit_workflow_2.png)
+
+For example, to add a `text-to-audio` node to your workflow, first locate it in the left sidebar. Drag the node and connect it to the preceding `text-to-text` node. Next, use the search box on the right side of the page to select the specific model you want for the text-to-audio conversion.
+
+![](/img/community_2/input_nodes_edit_workflow_1.png)
+
+Once you've made your changes, click the **Save as new version** button to save the updated workflow under a new version — without exiting the workflow editor. 
+
+:::note
+
+You can easily switch between different versions by selecting the respective version ID from the left sidebar in the workflow editor.
 
 :::
 
+Note that clicking the **Update Workflow** button creates a new version of your workflow and exits the workflow editor, redirecting you to the workflow's main page.
 
+![](/img/community_2/input_nodes_edit_workflow_3.png)
 

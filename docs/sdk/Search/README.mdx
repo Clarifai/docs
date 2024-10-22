@@ -13,3 +13,8 @@ The search feature in Clarifai empowers users to query their dataset with precis
 :::info
 Apps with “Empty” base  workflow does not support search.
 :::
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>

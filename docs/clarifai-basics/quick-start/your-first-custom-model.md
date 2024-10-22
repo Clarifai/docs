@@ -3,6 +3,7 @@ description: >-
   Get up-and-running in less than 5 minutes with the world's most powerful AI
   platform
 sidebar_position: 3
+pagination_next: null
 ---
 
 # Your First Custom Model (~5 min)

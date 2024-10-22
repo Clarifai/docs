@@ -1,5 +1,6 @@
 ---
-description: Label your data.
+description: Label your data
+pagination_prev: null
 ---
 
 # Labeling Your Data
@@ -23,4 +24,8 @@ Clarifai offers custom tools for labeling image, text, video, and audio inputs, 
 
 Clarifai offers fully managed data annotation services for creating high-quality training datasets. Scale your AI initiatives quickly with high-quality, human-annotated data. You can find out more [here](https://www.clarifai.com/data-annotation-services).
 
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
 

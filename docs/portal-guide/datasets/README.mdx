@@ -1,5 +1,6 @@
 ---
 description: Manage the datasets for training, testing, and evaluating your models
+pagination_prev: null
 ---
 
 # Datasets
@@ -18,3 +19,8 @@ You can add different types of datasets on the Clarifai platform, including:
 - **Training dataset** — This is the data you can use to initially train a model. It comprises a set of annotated examples, where the annotations are the output values the model is expected to predict.
 - **Validation dataset** — This is the data you can use to fine-tune your model's hyperparameters and assess its performance during training. It comprises a set of annotated examples that are not used for training, but are used to gauge the model's performance.
 - **Testing dataset** — This is the data you can use to assess the final performance of your trained model. It comprises a set of annotated examples that are not used for training or validation.
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>

@@ -1,5 +1,6 @@
 ---
 description: Consolidate multiple accounts and enhance collaboration
+pagination_prev: null
 ---
 
 # Clarifai Organizations
@@ -96,3 +97,9 @@ Learn more about the scopes and access levels of organization members [here](htt
 | Essential             | <ul><li> Admin, Org Contributor, and Org User roles allowed</li><li>Only one Org can be created</li><li>No teams allowed</li></ul>  |
 | Professional          | <ul><li> Admin, Org Contributor, and Org User roles allowed</li><li>Only one Org can be created</li><li>No teams allowed</li></ul>  | |
 | Enterprise            |<ul><li> Admin, Org Contributor, Org User, and Team Contributor roles allowed</li><li>Up to twenty Orgs can be created</li><li>Teams allowed</li></ul>  |                        |
+
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>

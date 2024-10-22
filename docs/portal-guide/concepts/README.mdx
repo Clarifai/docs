@@ -1,5 +1,6 @@
 ---
-description: Connect words to the subjects in your data.
+description: Connect words to the subjects in your data
+pagination_prev: null
 ---
 
 # Creating and Managing Concepts
@@ -12,3 +13,8 @@ A concept in machine learning is a label or tag used to describe an entity, simi
 Over time, through training on annotated data, models can recognize or classify new data based on the concepts they've learned. Concepts are often called "classes" in classification tasks.
 
 For further details, see our concepts API docs [here](https://docs.clarifai.com/api-guide/concepts/).
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
