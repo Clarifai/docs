@@ -1,6 +1,7 @@
 ---
 description: Use Clarifai and LangChain to create a vector store and perform searches
 sidebar_position: 3
+pagination_next: null
 ---
 
 # Vector Store

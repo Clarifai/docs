@@ -1,5 +1,6 @@
 ---
 sidebar_position: 3.1
+pagination_next: null
 ---
 
 import Tabs from '@theme/Tabs';

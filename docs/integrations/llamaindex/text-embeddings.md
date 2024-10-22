@@ -1,6 +1,7 @@
 ---
 description: Use Clarifai and LlamaIndex to create text embeddings
 sidebar_position: 2
+pagination_next: null
 ---
 
 # Text Embeddings
