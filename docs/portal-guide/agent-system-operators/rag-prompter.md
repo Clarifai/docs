@@ -66,7 +66,7 @@ Our intention is to search an app containing textual data for relevant informati
 
 [Click here](https://docs.clarifai.com/clarifai-basics/applications/create-an-application/#create-an-application-on-the-portal) to learn how to create an application on the Clarifai portal.
 
-:::caution Base Workflow
+:::info Base Workflow
 
 When creating the application, select the **Text/Document** option as the primary input type. And in the collapsible **Advanced Settings** field, select an embeddings workflow, such as the [baai-general-embedding-base-en](https://clarifai.com/clarifai/main/workflows/baai-general-embedding-base-en) as the [base workflow](https://docs.clarifai.com/portal-guide/workflows/base-workflows/). The base workflow will convert the uploaded data into indexed vectors, which makes them searchable – as explained earlier. 
 
@@ -128,7 +128,7 @@ To customize your search experience, you can:
 
 - Modify `max_results` to specify the maximum number of relevant search results included in the prompt.
 
-To finalize creating your workflow, connect the **rag-prompter** to a text-to-text node, and choose a text-to-text LLM from the Clarifai Community, such as the [Mistral-7B-instruct](https://clarifai.com/mistralai/completion/models/mistral-7B-Instruct).
+To finalize creating your workflow, connect the **rag-prompter** to a text-to-text node, and choose a text-to-text LLM from the Clarifai Community, such as [GPT-4 Turbo](https://clarifai.com/openai/chat-completion/models/gpt-4-turbo).
 
 Then, save your workflow.
 
@@ -155,5 +155,29 @@ Once the workflow has completed processing your input, you'll see the results, s
 As you can see below, the LLM model leveraged the additional context to generate an accurate response to the question. 
 
 ![](/img/others/rag-prompter-2.png)
+
+## How to Edit a RAG Prompter
+
+After creating your RAG Prompter, you can edit it by navigating to its individual page and clicking the **Edit workflow** button in the upper-right section.
+
+![](/img/others/rag-prompter-3.png)
+
+You'll be redirected to the workflow editor page, where you can make any changes needed, such as updating the prompt template text or the `min_score` and `max_results` parameters. 
+
+![](/img/others/rag-prompter-4.png)
+
+Once you've made your changes, click the **Save as new version** button to save the updated RAG Prompter under a new version — without exiting the workflow editor. 
+
+:::note
+
+You can easily switch between different versions of the RAG Prompter by selecting the respective version ID from the left sidebar in the workflow editor.
+
+:::
+
+Note that clicking the **Update Workflow** button creates a new version of your RAG Prompter and exits the workflow editor, redirecting you to its main page.
+
+You can then select the version to use for inferencing. 
+
+![](/img/others/rag-prompter-5.png)
 
 That’s it!

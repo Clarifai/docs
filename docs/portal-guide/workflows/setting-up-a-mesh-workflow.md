@@ -18,9 +18,11 @@ You can [click here](https://docs.clarifai.com/portal-guide/workflows/input-node
 
 ## Workflow Predict
 
-After creating your workflow, you can start using it to make predictions. For example, the custom workflow we created previously combined two models together. We can use it to extract text from [this image](https://samples.clarifai.com/featured-models/ocr-woman-holding-sold-sign.jpg), and then translate the extracted text into Spanish.
+After creating your workflow, you can start using it to make predictions. 
 
-To do so, go to the workflow's overview page and click the blue "**+**" button. Next, select the **Try your own image or video** option on the modal that appears. The small window that pops up allows you to upload the image.
+For example, let's use the custom workflow we created previously to extract text from [this image](https://samples.clarifai.com/featured-models/ocr-woman-holding-sold-sign.jpg), and then translate the extracted text into Spanish.
+
+To do so, go to the workflow's overview page, select the version you want to use, and click the blue "**+**" button. Next, select the **Try your own image or video** option on the modal that appears. The small window that pops up allows you to upload the image.
 
 ![try your own image or video](/img/community_2/workflow_predict_try_your_own_image.png)
 
