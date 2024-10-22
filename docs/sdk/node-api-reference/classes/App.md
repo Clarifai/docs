@@ -1,4 +1,4 @@
-[clarifai-nodejs](../README.md) / [Exports](../modules.md) / App
+[clarifai-nodejs](../README.mdx) / [Exports](../modules.md) / App
 
 # Class: App
 
