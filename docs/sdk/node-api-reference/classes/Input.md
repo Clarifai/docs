@@ -1,4 +1,4 @@
-[clarifai-nodejs](../README.md) / [Exports](../modules.md) / Input
+[clarifai-nodejs](../README.mdx) / [Exports](../modules.md) / Input
 
 # Class: Input
 

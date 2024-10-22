@@ -1,4 +1,4 @@
-[clarifai-nodejs](../README.md) / [Exports](../modules.md) / Workflow
+[clarifai-nodejs](../README.mdx) / [Exports](../modules.md) / Workflow 
 
 # Class: Workflow
 

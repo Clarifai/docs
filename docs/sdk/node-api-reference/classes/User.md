@@ -1,4 +1,4 @@
-[clarifai-nodejs](../README.md) / [Exports](../modules.md) / User
+[clarifai-nodejs](../README.mdx) / [Exports](../modules.md) / User 
 
 # Class: User
 

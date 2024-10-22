@@ -1,4 +1,4 @@
-[clarifai-nodejs](../README.md) / [Exports](../modules.md) / Search
+[clarifai-nodejs](../README.mdx) / [Exports](../modules.md) / Search
 
 # Class: Search
 
