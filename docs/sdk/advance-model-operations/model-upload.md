@@ -190,7 +190,7 @@ It also ensures the model runs smoothly and that all dependencies are correctly 
 To run your model locally, use the following command:
 
 ```bash
-python -m clarifai.runners.models.model_run_locally --model_path <model_directory_path>
+clarifai model test-locally --model_path <model_directory_path>
 ```
 
 :::warning
@@ -204,7 +204,7 @@ Ensure your local environment has sufficient memory and compute resources to loa
 Once your model is ready, upload it to the Clarifai platform by running the following command:
 
 ```bash
-python -m clarifai.runners.models.model_upload --model_path <model_directory_path>
+clarifai model upload --model_path <model_directory_path>
 ```
 
 This command builds the model’s Docker image using the defined compute resources and uploads it to Clarifai, where it can be served in production.
