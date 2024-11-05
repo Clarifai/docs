@@ -28,7 +28,7 @@ input_text = """In India Green Revolution commenced in the early 1960s that led 
 model_url = "https://clarifai.com/cohere/embed/models/cohere-embed-english-v3_0"
 
 # You can pass the new base url as paramater while initializing the Model object
-model_prediction = Model(url=model_url, pat="your_pat",base_url="New Base URL").predict_by_bytes(
+model_prediction = Model(url=model_url, pat="YOUR_PAT",base_url="New Base URL").predict_by_bytes(
     input_text, "text"
 )
 
