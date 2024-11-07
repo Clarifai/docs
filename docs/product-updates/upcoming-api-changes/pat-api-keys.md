@@ -19,7 +19,7 @@ November 5th, 2024
 
 ## Details
 
-An upcoming release of Clarifai’s API, **10.9**, will significantly change how [Personal Access Tokens (PATs)](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens/) and [API keys](https://docs.clarifai.com/clarifai-basics/authentication/app-specific-api-keys/) work. We plan to implement this change on October 1st, 2024, providing more than 45 days to change the way your applications authenticate on our platform.  
+An upcoming release of Clarifai’s API, **10.10**, will significantly change how [Personal Access Tokens (PATs)](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens/) and [API keys](https://docs.clarifai.com/clarifai-basics/authentication/app-specific-api-keys/) work. We plan to implement this change on November 5th, 2024, providing more than 45 days to change the way your applications authenticate on our platform.  
 
 #### Terminology
 
