@@ -11,11 +11,11 @@ sidebar_position: -8
 
 ## Implementation Date
 
-November 5th, 2024
+November, 2024
 
 ## Change
 
-**Breaking change** — Critical changes to the use of PATs and API keys
+**Breaking change** — Important changes to the use of PATs and API keys
 
 ## Details
 

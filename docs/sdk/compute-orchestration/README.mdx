@@ -21,9 +21,17 @@ This flexible system supports any compute instance — across various hardware p
 
 [Click here](https://docs.clarifai.com/portal-guide/compute-orchestration) to learn more about our Compute Orchestration system. 
 
+:::tip
+
+- You can run the following command to clone the repository containing YAML configuration files examples and follow along with this tutorial: `git clone https://github.com/Clarifai/examples.git`. After cloning it, go to the `ComputeOrchestration` folder.
+
+- You can also follow the step-by-step tutorial provided [here](https://github.com/Clarifai/examples/blob/main/ComputeOrchestration/crud_operations.ipynb). 
+
+:::
+
 ## Prerequisites
 
-### Installation
+#### Installation
 
 To begin, install the latest version of the clarifai Python package.
 
@@ -31,7 +39,7 @@ To begin, install the latest version of the clarifai Python package.
 pip install --upgrade clarifai
 ```
 
-### Get a PAT
+#### Get a PAT
 
 You need a PAT (Personal Access Token) key to authenticate your connection to the Clarifai platform. You can generate it in your Personal Settings page by navigating to the [Security section](https://clarifai.com/settings/security).
 
@@ -42,17 +50,11 @@ import os
 os.environ["CLARIFAI_PAT"] = "YOUR_PAT_HERE" # replace with your own PAT key 
 ```
 
-### Create Project Directory
+#### Create Project Directory
 
 Create a directory to store your project files. Inside this directory, create a Python file to implement your Compute Orchestration code.
 
-Also, set up a sub-folder named `configs` to store the YAML configuration files needed for Compute Orchestration.
-
-:::tip
-
-You can run the following command to clone the repository containing YAML configuration files examples and follow along with this tutorial: `git clone https://github.com/Clarifai/examples.git`. After cloning it, go to the `ComputeOrchestration` folder.
-
-:::
+Also, set up a sub-folder named `configs` to store your YAML configuration files. This will help keep your project organized and make it easier to manage different configuration settings for your clusters, nodepools, and deployments.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -77,10 +79,12 @@ import CO15 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchest
 import CO16 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/delete_deployments.py";
 import CO17 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/delete_nodepools.py";
 import CO18 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/delete_clusters.py";
+import CO19 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/predict_with_model.py";
+import CO20 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/output_example_predict.txt";
 
 ## Cluster
 
-### Create
+#### Create
 
 Go to your `configs` sub-folder, create a file named `compute_cluster_config.yaml`, and add the following code:
 
@@ -98,7 +102,7 @@ Then, to create a new compute cluster, pass the `compute_cluster_id` and `config
 </TabItem>
 </Tabs>
 
-### Get
+#### Get
 
 To get a specific compute cluster, pass the `compute_cluster_id` to the `compute_cluster` method of the `User` class.
 
@@ -108,7 +112,7 @@ To get a specific compute cluster, pass the `compute_cluster_id` to the `compute
 </TabItem>
 </Tabs>
 
-### List
+#### List
 
 To list your existing compute clusters, call the `list_compute_clusters` method of the `User` class.
 
@@ -118,7 +122,7 @@ To list your existing compute clusters, call the `list_compute_clusters` method 
 </TabItem>
 </Tabs>
 
-### Init
+#### Init
 
 To initialize the `ComputeCluster` class, provide the `user_id` and `compute_cluster_id` as parameters. 
 
@@ -132,7 +136,7 @@ Initialization is essential because it establishes the specific user and compute
 
 ## Nodepool
 
-### Create
+#### Create
 
 Go to your `configs` sub-folder, create a file named `nodepool_config.yaml`, and add the following code:
 
@@ -150,7 +154,7 @@ Then, to create a new nodepool, provide the `nodepool_id` and `config_filepath` 
 </TabItem>
 </Tabs>
 
-### Get
+#### Get
 
 To get a specific nodepool, provide the `nodepool_id` to the `nodepool` method of the `ComputeCluster` class.
 
@@ -160,7 +164,7 @@ To get a specific nodepool, provide the `nodepool_id` to the `nodepool` method o
 </TabItem>
 </Tabs>
 
-### List
+#### List
 
 To list the existing nodepools, call the `list_nodepools` method of the `ComputeCluster` class.
 
@@ -170,7 +174,7 @@ To list the existing nodepools, call the `list_nodepools` method of the `Compute
 </TabItem>
 </Tabs>
 
-### Init
+#### Init
 
 To initialize the `Nodepool` class, provide the `user_id` and `nodepool_id` parameters. 
 
@@ -182,7 +186,7 @@ To initialize the `Nodepool` class, provide the `user_id` and `nodepool_id` para
 
 ## Deployment
 
-### Create
+#### Create
 
 Go to your `configs` sub-folder, create a file named `deployment_config.yaml`, and add the following code:
 
@@ -192,7 +196,13 @@ Go to your `configs` sub-folder, create a file named `deployment_config.yaml`, a
 </TabItem>
 </Tabs>
 
-Then, to create a new deployment, provide the `deployment_id` and `config_filepath` parameters to the `create_deployment` method of the `Nodepool` class.
+Then, to create a new deployment for your model, provide the `deployment_id` and `config_filepath` parameters to the `create_deployment` method of the `Nodepool` class.
+
+:::note
+
+Only one deployment can be specified for a given model or workflow within the same nodepool.
+
+:::
 
 <Tabs>
 <TabItem value="python" label="Python">
@@ -200,7 +210,7 @@ Then, to create a new deployment, provide the `deployment_id` and `config_filepa
 </TabItem>
 </Tabs>
 
-### Get
+#### Get
 
 To get a specific deployment, provide the `deployment_id` to the `deployment` method of the `Nodepool` class.
 
@@ -210,7 +220,7 @@ To get a specific deployment, provide the `deployment_id` to the `deployment` me
 </TabItem>
 </Tabs>
 
-### List
+#### List
 
 To list existing deployments, call the `list_deployments` method of the `Nodepool` class.
 
@@ -220,7 +230,7 @@ To list existing deployments, call the `list_deployments` method of the `Nodepoo
 </TabItem>
 </Tabs>
 
-### Init
+#### Init
 
 To initialize the `Deployment` class, provide the `user_id` and `deployment_id` parameters. 
 
@@ -230,9 +240,32 @@ To initialize the `Deployment` class, provide the `user_id` and `deployment_id` 
 </TabItem>
 </Tabs>
 
+## Predict With Deployed Model
+
+Once your model is deployed, you can use it to make predictions. To do this, pass the `compute_cluster_id` and `nodepool_id` to the `predict` method.
+
+For example, here is how you can make a prediction using the deployed model.  
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CO19}</CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+  <summary>Output Example</summary>
+    <CodeBlock className="language-text">{CO20}</CodeBlock>
+</details>
+
+:::tip
+
+[Click here](https://docs.clarifai.com/sdk/Inference-from-AI-Models/) to learn more about how to make predictions using different types of models. 
+
+:::
+
 ## Delete Resources
 
-### Delete Deployments
+#### Delete Deployments
 
 To delete deployments, pass a list of deployment IDs to the `delete_deployments` method of the `Nodepool` class. 
 
@@ -242,7 +275,7 @@ To delete deployments, pass a list of deployment IDs to the `delete_deployments`
 </TabItem>
 </Tabs>
 
-### Delete Nodepools
+#### Delete Nodepools
 
 To delete nodepools, provide a list of nodepool IDs to the `delete_nodepools` method of the `ComputeCluster` class. 
 
@@ -252,12 +285,13 @@ To delete nodepools, provide a list of nodepool IDs to the `delete_nodepools` me
 </TabItem>
 </Tabs>
 
-### Delete Compute Clusters
+#### Delete Compute Clusters
 
-To delete compute clusters, supply a list of compute cluster IDs to the `delete_compute_clusters` method of the `User` class.
+To delete compute clusters, provide a list of compute cluster IDs to the `delete_compute_clusters` method of the `User` class.
 
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CO18}</CodeBlock>
 </TabItem>
 </Tabs>
+

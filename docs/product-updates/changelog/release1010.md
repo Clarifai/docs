@@ -36,7 +36,7 @@ We have a public roadmap that gives you a view of our upcoming plans and helps u
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
-| **Breaking Change** | Critical changes to the use of PATs and API keys  | <ul> <li> This change will be rolled out this month in November. Learn more about it [here](https://docs.clarifai.com/product-updates/upcoming-api-changes/pat-api-keys/). </li> <li> Previously, you could use API keys to access any model, concept, or workflow owned by the app scoped to the API key, as well as those owned by the user `clarifai` in the application `main`. Now, accessing models or workflows owned by `clarifai` in the application `main` can only be done with a PAT tied to your account.  </li> </ul>  |  
+| **Breaking Change** | Important changes to the use of PATs and API keys  | <ul> <li> This change will be rolled out this month in November. Learn more about it [here](https://docs.clarifai.com/product-updates/upcoming-api-changes/pat-api-keys/). </li> <li> Previously, you could use API keys to access any model, concept, or workflow owned by the app scoped to the API key, as well as those owned by the user `clarifai` in the application `main`. Now, accessing models or workflows owned by `clarifai` in the application `main` can only be done with a PAT tied to your account.  </li> </ul>  |  
 
 ## New Released Models​
 
