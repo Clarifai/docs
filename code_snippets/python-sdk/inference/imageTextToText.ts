@@ -42,14 +42,15 @@ const multiInputs = Input.getMultimodalInput({
 
         Example for prediction through Bytes:
         const modelPrediction = await model.predictByBytes({
-                                    inputBytes: Bytes,
-                                    inputType: "Text"
+                                    inputBytes,
+                                    inputType
                                 });
+
 
         Example for prediction through Filepath:
         const modelPrediction = await model.predictByFilepath({
-                                    filepath,
-                                    inputType: "Text",
+                                    filepath, 
+                                    inputType
                                 });
 
     */

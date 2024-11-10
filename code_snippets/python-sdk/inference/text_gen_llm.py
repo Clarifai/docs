@@ -8,10 +8,10 @@ model_url="https://clarifai.com/openai/chat-completion/models/GPT-4"
 # The predict API gives the flexibility to generate predictions for data provided through URL, Filepath and Bytes format. 
 
 # Example for prediction through URL:
-# model_prediction = model.predict_by_url(url, input_type="text")
+# model_prediction = Model(model_url).predict_by_url(url, input_type="text")
 
 # Example for prediction through Filepath
-# model_prediction = Model(model_url).predict_by_filepath(filepath, input_type="image")
+# model_prediction = Model(model_url).predict_by_filepath(filepath, input_type="text")
 
 
 # Model Predict

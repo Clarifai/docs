@@ -20,7 +20,7 @@ input_text = """In India Green Revolution commenced in the early 1960s that led 
 # The predict API gives the flexibility to generate predictions for data provided through URL, Filepath and bytes format.
 
 # Example for prediction through URL:
-# model_prediction = model.predict_by_url(URL ,input_type="text")
+# model_prediction = Model(model_url).predict_by_url(URL ,input_type="text")
 
 # Example for prediction through Filepath:
 # model_prediction = Model(model_url).predict_by_filepath(image_filepath, input_type="text")
@@ -28,7 +28,7 @@ input_text = """In India Green Revolution commenced in the early 1960s that led 
 model_url = "https://clarifai.com/cohere/embed/models/cohere-embed-english-v3_0"
 
 # You can pass the new base url as paramater while initializing the Model object
-model_prediction = Model(url=model_url, pat="your_pat",base_url="New Base URL").predict_by_bytes(
+model_prediction = Model(url=model_url, pat="YOUR_PAT",base_url="New Base URL").predict_by_bytes(
     input_text, "text"
 )
 

@@ -21,10 +21,10 @@ model_url="https://clarifai.com/meta/Llama-3/models/llama-3_1-8b-instruct"
 # The predict API gives the flexibility to generate predictions for data provided through URL, Filepath and Bytes format.
 
 # Example for prediction through URL:
-# model_prediction = model.predict_by_url(url, input_type="text", inference_params=inference_params)
+# model_prediction = Model(model_url).predict_by_url(url, input_type="text", inference_params=inference_params)
 
 # Example for prediction through Filepath
-# model_prediction = Model(model_url).predict_by_filepath(filepath, input_type="image", inference_params=inference_params)
+# model_prediction = Model(model_url).predict_by_filepath(filepath, input_type="text", inference_params=inference_params)
 
 # Model Predict
 model_prediction = Model(url=model_url,pat="YOUR_PAT").predict_by_bytes(prompt.encode(), input_type="text", inference_params=inference_params)

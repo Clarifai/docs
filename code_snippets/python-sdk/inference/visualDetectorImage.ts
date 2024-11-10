@@ -43,13 +43,13 @@ const detectorModel = new Model({
         Example for prediction through Bytes:
         const modelPrediction = await model.predictByBytes({
                                     inputBytes: Bytes,
-                                    inputType: "Text"
+                                    inputType: "image"
                                 });
 
         Example for prediction through Filepath:
         const modelPrediction = await model.predictByFilepath({
                                     filepath,
-                                    inputType: "Text",
+                                    inputType: "image",
                                 });
 */
 

@@ -35,13 +35,13 @@ const audioUrl =
         Example for prediction through Bytes:
         const modelPrediction = await model.predictByBytes({
                                     inputBytes: Bytes,
-                                    inputType: "Text"
+                                    inputType: "audio"
                                 });
 
         Example for prediction through Filepath:
         const modelPrediction = await model.predictByFilepath({
                                     filepath,
-                                    inputType: "Text",
+                                    inputType: "audio",
                                 });
 
     */
