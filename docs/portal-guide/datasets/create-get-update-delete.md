@@ -136,7 +136,8 @@ You'll be redirected to the **Datasets** manager page, where you can get the alr
 
 ### Export a Dataset
 
-You can export the inputs in your dataset, alongside their annotations, to an external storage system. 
+You can export the inputs in your dataset, alongside their annotations, to an external storage system.
+
 
 To do so, start by clicking the icon at the extreme end of a dataset field to select the format you want to use for exporting your dataset. From the list that drops down, you can select any of the following data formats:
 
@@ -152,9 +153,10 @@ After selecting your preferred export format, click the **Generate** button. Onc
 
 :::note
 
-The export feature only works after adding inputs to a dataset and creating and selecting a dataset version. 
+The export feature only works after adding inputs to a dataset and creating and selecting a dataset version. Learn how to create dataset version [here](https://docs.clarifai.com/portal-guide/datasets/create-get-update-delete#create-dataset-version/). 
 
 :::
+
 
 ### Dataset ID or Version ID
 
