@@ -153,7 +153,7 @@ After selecting your preferred export format, click the **Generate** button. Onc
 
 :::note
 
-The export feature only works after adding inputs to a dataset and creating and selecting a dataset version. Learn how to create dataset version [here](https://docs.clarifai.com/portal-guide/datasets/create-get-update-delete#create-dataset-version/). 
+The export feature only works after adding inputs to a dataset and creating and selecting a dataset version. Learn how to create dataset version [here](https://docs.clarifai.com/portal-guide/datasets/create-get-update-delete#create-dataset-version). 
 
 :::
 
