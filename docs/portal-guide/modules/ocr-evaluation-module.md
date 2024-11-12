@@ -1,5 +1,9 @@
 # OCR Evaluation Module
 
+
+**Learn how to evaluate OCR model performance effectively.**
+<hr />
+
 The OCR (Optical Character Recognition) Evaluation Module is a powerful tool designed to assess the performance of OCR workflows in Clarifai. It enables users to measure the accuracy and effectiveness of their OCR workflows by comparing model outputs against known ground truth data. 
 
 Key features of the evaluation module include:
