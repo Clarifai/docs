@@ -115,7 +115,6 @@ The highest level of access that provides complete control over all aspects of t
 
 
 
-* 
 * Access to App’s features and functionalities
 * Full access to features and CRUD operations on all resources
 
