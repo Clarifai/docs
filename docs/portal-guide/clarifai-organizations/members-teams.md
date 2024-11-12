@@ -113,8 +113,6 @@ Each of them is discussed below:
 
 The highest level of access that provides complete control over all aspects of the application. It has following capabilities:
 
-
-
 * Access to App’s features and functionalities
 * Full access to features and CRUD operations on all resources
 
