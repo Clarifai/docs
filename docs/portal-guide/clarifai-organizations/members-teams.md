@@ -29,7 +29,7 @@ To add a new team member to your organization, you need to send them an invitati
 
 ![Organization settings page](/img/clarifai_orgs/organization_settings_page.png)
 
-In the dialog box that appears, enter the invitee’s email address and select a role you wish to assign to them.
+On the dialog box that appears, enter the invitee’s email address and select a role you wish to assign to them.
 
 ![Invite member dialog box](/img/clarifai_orgs/invite_member_dialog_box.png)
 
@@ -38,7 +38,6 @@ You can assign any of the following roles:
 - **Team Contributor (select apps)** — the invitee will be available to contribute only to some selected applications.
 - **Organization Contributor (all apps)** — the invitee will be able to contribute to all the apps within the organization. 
 - **Admin** — the invitee will have administrative privileges in the organization. 
-- **Organization User (all apps)** — the invitee will have access privileges similar to those of an Organization Contributor for all apps and scopes. However, the role comes with view-only permissions without create, update, or delete privileges.
 
 :::tip
 
@@ -84,6 +83,99 @@ In the dialog box that appears, enter the team ID, team name, and set default pe
 
 Click the **Confirm** button.
 
+
+### Permission Types
+
+The "Team Permissions" dropdown currently offers four distinct permission levels, each tailored to different roles and responsibilities within Apps assigned. These levels ensure proper access control and security while enabling team members to perform their tasks effectively. As our needs evolve, we may introduce additional roles in the future to provide even more flexibility.
+
+These permissions follow the below hierarchy: 
+
+
+   <pre>   
+   **Full Access**
+      
+         &nbsp; &nbsp;&nbsp; &nbsp;├──Model Trainer
+
+          &nbsp; &nbsp;&nbsp; &nbsp;├── Labeler Lead
+
+          &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; └── Labeler Worker
+            </pre>
+
+
+
+![Teams listing page](/img/clarifai_orgs/gs_1.png)
+
+
+Each of them is discussed below:
+
+
+#### 1. Full Access
+
+The highest level of access that provides complete control over all aspects of the application. It has following capabilities:
+
+
+
+* 
+* Access to App’s features and functionalities
+* Full access to features and CRUD operations on all resources
+
+**Note**: Full Access should be granted only to team members who require complete administrative control.
+
+
+#### 2. Model Trainer
+
+Designed for team members focused on model development and training operations. It has following capabilities:
+
+
+
+* View all models
+* Create new models
+* Update existing models
+* Delete models
+* Train models
+* Access model metrics and performance data
+* View inputs and concepts
+* Access datasets
+
+**Best Practice**: Grant Model Trainer access to team members responsible for developing and maintaining AI models.
+
+
+#### 3. Labeler Lead
+
+Enhanced labeling permissions with additional task management capabilities.It has following capabilities:
+
+
+
+* All Labeler Worker permissions, plus:
+* Create new labeling tasks
+* Assign tasks to team members
+* Monitor task progress
+* View team member details (First/Last names)
+* Access task analytics
+* Review annotations
+* Provide feedback on labeling quality
+
+**Important**: Labeler Leads serve as supervisors for labeling operations and quality control.
+
+
+#### 4. Labeler Worker
+
+Basic access level focused on performing labeling tasks. It has the following capabilities:
+
+
+
+* Access assigned labeling tasks
+* Read access to:
+    * Concepts within tasks
+    * Input data for assigned tasks
+    * Task instructions and guidelines
+* Write access to:
+    * Annotations
+    * Task status updates
+    * Progress reports
+* Evaluate and assess workers’ completed work to ensure quality and consistency.
+
+
 Your newly created team will appear on the **Teams** listing page. You can search for other teams you've added and delete them on that table.
 
 ![Teams listing page](/img/clarifai_orgs/teams_listing_page.png)
@@ -124,6 +216,15 @@ Click the **Confirm** button to add the app(s) you've selected to the team.
 
 ![Add apps to your team](/img/clarifai_orgs/apps_dialog_box.png)
 
+While selecting the apps, access can be modified. Read about different access types [here](https://docs.clarifai.com/portal-guide/clarifai-organizations/members-teams#permission-types).
+
+![newly added app](/img/clarifai_orgs/gs_2.png)
+
 The newly added app will appear on the **Apps** listing page. You can also search for other apps you've added and delete them on that page.
 
-![newly added app](/img/clarifai_orgs/newly_added_app.png)
+![newly added app](/img/clarifai_orgs/gs_3.png)
+
+You can also browse Team access and configuration from individual App’s Settings page.
+
+![newly added app](/img/clarifai_orgs/gs_4.png)
+
