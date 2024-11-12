@@ -1,0 +1,1 @@
+$ clarifai deployment list --nodepool_id <nodepool-id>

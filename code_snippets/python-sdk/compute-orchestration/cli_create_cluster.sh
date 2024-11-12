@@ -1,0 +1,1 @@
+$ clarifai computecluster create --config <compute-cluster-config-filepath>

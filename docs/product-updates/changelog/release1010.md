@@ -62,7 +62,7 @@ We have a public roadmap that gives you a view of our upcoming plans and helps u
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
-|**Public Preview** | Released a UI module for evaluating OCR (Optical Character Recognition) workflows | <ul> <li> You can use the module to evaluate the performance of workflows for OCR tasks directly within our platform.  </li></ul>  |  
+|**Public Preview** | Released a UI module for evaluating OCR (Optical Character Recognition) workflows | <ul> <li> You can use the module to evaluate the performance of workflows for OCR tasks directly within our platform. </li><li> Learn more about it [here](https://docs.clarifai.com/portal-guide/modules/ocr-evaluation-module). </li> </ul>  |  
 
 ## Organization Settings and Management
 

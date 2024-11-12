@@ -1,0 +1,1 @@
+$ clarifai computecluster list

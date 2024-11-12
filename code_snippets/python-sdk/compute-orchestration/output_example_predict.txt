@@ -1,8 +1,0 @@
-Prediction Results:
-Concept: Black                | Confidence: 0.944
-Concept: Indian               | Confidence: 0.024
-Concept: Southeast Asian      | Confidence: 0.022
-Concept: Latino_Hispanic      | Confidence: 0.007
-Concept: East Asian           | Confidence: 0.002
-Concept: Middle Eastern       | Confidence: 0.001
-Concept: White                | Confidence: 0.0
