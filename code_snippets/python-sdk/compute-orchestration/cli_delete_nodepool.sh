@@ -1,0 +1,1 @@
+$ clarifai nodepool delete --compute_cluster_id <compute-cluster-id> --nodepool_id <nodepool-id>

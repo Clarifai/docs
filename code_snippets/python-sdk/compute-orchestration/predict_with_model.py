@@ -1,9 +1,9 @@
 from clarifai.client.model import Model
 
-model_url = "https://clarifai.com/clarifai/main/models/ethnicity-demographics-recognition"
+model_url = "https://clarifai.com/stepfun-ai/ocr/models/got-ocr-2_0"
 
 # URL of the image to analyze
-image_url = "https://samples.clarifai.com/age-gender-ethnicity.jpeg"
+image_url = "https://samples.clarifai.com/featured-models/model-ocr-scene-text-las-vegas-sign.png"
 
 # Initialize the model 
 model = Model(
@@ -19,7 +19,5 @@ model_prediction = model.predict_by_url(
     nodepool_id="test-nodepool"
 )
 
-# Extract and print the concepts with their confidence scores
-print("Prediction Results:")
-for concept in model_prediction.outputs[0].data.concepts:
-    print(f"Concept: {concept.name:<20} | Confidence: {round(concept.value, 3)}")
+# Print the output
+print(model_prediction.outputs[0].data.text.raw)

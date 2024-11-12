@@ -1,0 +1,1 @@
+$ clarifai deployment delete --nodepool_id <nodepool-id> --deployment_id <deployment-id>
