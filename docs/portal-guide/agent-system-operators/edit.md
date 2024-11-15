@@ -21,7 +21,7 @@ They can be used to crop out regions of an image, align an image based on the po
 
 :::tip
 
-Since the transform operators can be "chained" together with models to automate tasks in a workflow, you can learn how to create workflows [here](https://docs.clarifai.com/portal-guide/workflows/input-nodes#create-your-workflow). 
+Since the transform operators can be "chained" together with models to automate tasks in a workflow, you can learn how to create workflows [here](https://docs.clarifai.com/portal-guide/workflows/working_with_workflows##step-2-create-a-new-workflow). 
 
 :::
 
