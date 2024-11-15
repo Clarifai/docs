@@ -218,6 +218,12 @@ const config = {
             ]
           },
           {
+           // type: "",
+            label: "Product Roadmap",
+            position: "left",
+            href: "https://portal.productboard.com/bd1rxfuyfbu6vqnmkva3mprx/tabs/1-under-consideration"
+          },
+          {
             type: 'search',
             position: 'right',
           },

@@ -31,6 +31,12 @@ Let's illustrate how you can carry out each label type on the Input-Viewer page.
 
 The Input-Viewer page is the main page that showcases the details of a single input available in your app. If you click an input listed on the Input-Manager page, you'll be redirected to the viewer page for that input, where you can see its details.
 
+:::info
+
+You can download the original asset directly from the Input-Viewer page. If you right-click on the canvas area, a button will appear, which allows you to download the original input. 
+
+:::
+
 After navigating to the Input-Viewer, ensure the page's mode is set to **Annotate**, which is the default status. You can find the mode settings at the upper-right corner of the page.
 
 Here is an example:

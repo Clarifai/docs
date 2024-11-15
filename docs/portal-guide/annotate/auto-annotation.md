@@ -133,23 +133,46 @@ Specify the name of the task to facilitate easy identification.
 
 ![](/img/images1/auto-annotation-9.png)
 
-## Step 8: Create Labeling Task
+## Step 8: Configure Advanced Settings
+
+You can optionally expand the **Advanced Settings** section to configure additional options for the auto-annotation task.
+
+Within the settings, you can assign one of the following priority levels:
+
+- **Low** — The task is of low priority.
+- **Medium (default)** — The task is of medium priority.
+- **High** — The task is of high priority.
+
+![](/img/images1/auto-annotation-9-1.png)
+
+## Step 9: Create Labeling Task
 
 Click the **Create Labeling Task** button to create the auto-annotation task. Or, click the **Cancel** button to cancel the process. Once the task is created, the dataset will be processed through the workflow, and annotations will be generated automatically.
 
-You’ll be redirected to the **Labeling Tasks** page, where you can see the newly created task listed in the table. You can monitor the progress of the auto-annotation in the “Labeling Status” column, where the status will be displayed. Once the process is complete, the status will change to "Complete." 
+You’ll be redirected to the **Labeling Tasks** page, where you can see the newly created task listed in a table. You can monitor the progress of the auto-annotation in the “Labeling Status” column, where the status percentage will be displayed. Once the process is complete, the status will change to "Complete." 
 
 ![](/img/images1/auto-annotation-10.png)
 
-You can also view other details of the auto-annotation exercise, including the dataset used, the type of annotation, the concepts applied, the labelers involved, and the number of inputs.
+You can also view other details of the auto-annotation exercise, including:
 
-If you click the ellipsis icon at the end of the row for your selected task, a drop-down menu will appear. This menu allows you to perform various task management activities, such as copying the task ID, creating a new dataset version, editing the task, or deleting the task.
+- The reviewing status;
+- The dataset used;
+- Priority level for the task;
+- The concepts applied; 
+- The labelers involved.
+
+If you click the ellipsis icon at the end of the row for your selected task, a drop-down menu will appear. This menu allows you to perform various task management activities, such as:
+
+- Copying the task ID;
+- Creating a new dataset version;
+- Editing the task;
+- Deleting the task.
 
 If you check the Input-Viewer page, you’ll notice that the bounding box annotations that met the set threshold were automatically created, without any manual intervention. 
 
 ![](/img/images1/auto-annotation-11.png)
 
-## Step 9: Review the Annotations
+## Step 10: Review the Annotations
 
 As mentioned earlier, manual review ensures that the annotations created automatically meet the required quality standards and are accurate. 
 
@@ -162,15 +185,13 @@ To review and edit the annotations that did not meet the set decision threshold,
 
 :::
 
-![](/img/images1/auto-annotation-12.png)
-
 You’ll be redirected to the tasks reviewing page, where you can start reviewing the annotations.
 
 ![](/img/images1/auto-annotation-15-1.png)
 
 [Click here](https://docs.clarifai.com/portal-guide/annotate/review) to learn how to review the annotations created automatically.
 
-## Step 10: Manage the Annotations
+## Step 11: Manage the Annotations
 
 You can carry out various management actions on the created annotations on the Input-Manager page. 
 
