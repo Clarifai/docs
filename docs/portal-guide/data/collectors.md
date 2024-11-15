@@ -102,7 +102,7 @@ At least one (pre-queue or post-queue) workflow ID is required.
 
 > ![](/img/modules/collector-6.png)
 
-> _After creating the workflow in the [Workflow Builder](https://docs.clarifai.com/portal-guide/workflows/workflow-builder/), let’s select it in the **Pre-Queue Workflow** field._
+> _After creating the workflow in the [Workflow Builder](https://docs.clarifai.com/portal-guide/workflows/working_with_workflows/), let’s select it in the **Pre-Queue Workflow** field._
 
 ### Post-queue Workflow​
 
