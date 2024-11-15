@@ -70,9 +70,11 @@ Once you're on the page, ensure its mode is set to **Annotate**, which is the de
 
 The page has several assistive tools to help you make the most of the labeling exercise. For example, on the top section, you can select an icon to label an input with bounding boxes, move an image around the workspace, or zoom an image in or out.
 
-:::tip
+:::info
 
-Learn more about the types of labeling methods available in the Input-Viewer [here](https://docs.clarifai.com/portal-guide/annotate/label-types). 
+- Learn more about the types of labeling methods available in the Input-Viewer [here](https://docs.clarifai.com/portal-guide/annotate/label-types).
+
+- You can download the original asset directly from the Input-Viewer page. If you right-click on the canvas area, a button will appear, which allows you to download the original input. 
 
 :::
 

@@ -137,27 +137,48 @@ Specify the name of the task to facilitate easy identification.
 
 Optionally, you can provide instructions for your labelers to help them with the labeling task. 
 
-Click the **Add** button to add the instructions. 
-
 ![](/img/community/tasks/task_1_2.png)
 
-## Step 9: Create Labeling Task
+## Step 9: Configure Advanced Settings
+
+You can optionally expand the **Advanced Settings** section to configure additional options for the labeling task.
+
+Within the settings, you can assign one of the following priority levels:
+
+- **Low** — The task is of low priority.
+- **Medium (default)** — The task is of medium priority.
+- **High** — The task is of high priority.
+
+![](/img/community/tasks/task_22.png)
+
+## Step 10: Create Labeling Task
 
 Click the **Create Labeling Task** button to create the labeling task. Or, click the **Cancel** button to cancel the process. 
 
-You’ll be redirected to the **Labeling Tasks** page, where you can see the newly created task listed in the table.
+You’ll be redirected to the **Labeling Tasks** page, where you can see the newly created task listed in a table.
 
-For this example, you can see the two tasks we created: one for manual labeling and another for AI-assisted labeling.
+For this example, you can see the two tasks we created listed in the table: one for manual labeling and another for AI-assisted labeling.
 
 ![](/img/community/tasks/task_10.png)
 
-You can monitor the progress of the annotation exercise in the "Labeling Status" column, where the status will be displayed. Once the process is complete, the status will change to "Complete." 
+You can monitor the progress of the annotation in the "Labeling Status" column,  where the current status percentage will be displayed. Once the process is finished, the status will update to "Complete." 
 
-You can also view other details of the annotation exercise, including the dataset used, the type of annotation, the concepts applied, the labelers involved, and the number of inputs.
+You can also view other details of the annotation exercise, including:
 
-If you click the ellipsis icon at the end of the row for your selected task, a drop-down menu will appear. This menu allows you to perform various task management activities, such as copying the task ID, creating a new dataset version, editing the task, or deleting the task.
+- The reviewing status;
+- The dataset used;
+- Priority level for the task;
+- The concepts applied; 
+- The labelers involved.
 
-## Step 10: Start Labeling 
+If you click the ellipsis icon at the end of the row for your selected task, a drop-down menu will appear. This menu allows you to perform various task management activities, such as:
+
+- Copying the task ID;
+- Creating a new dataset version;
+- Editing the task;
+- Deleting the task.
+
+## Step 11: Start Labeling 
 
 To start labeling your inputs, click the **Label** button on the **Labeling Tasks** page. 
 
@@ -181,11 +202,9 @@ If you did not enable AI-assist, you'll be able to label the inputs manually.
 
 [Click here](https://docs.clarifai.com/portal-guide/annotate/labeling-tools/#detection-labeling) to learn how to use the **Labeling Tasks** tool to add bounding box annotations to your batch of inputs. 
 
-## Step 11: Start Reviewing 
+## Step 12: Start Reviewing 
 
 To start reviewing your inputs, click the **Review** button on the **Labeling Tasks** page. 
-
-![](/img/community/tasks/task_16.png)
 
 You’ll be redirected to the tasks reviewing page, where you can start reviewing the annotations for quality control purposes.
 
