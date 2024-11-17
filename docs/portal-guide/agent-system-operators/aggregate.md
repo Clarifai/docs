@@ -56,6 +56,7 @@ To see it in action, upload the inputs from your local device or use the inputs 
 
 ![alt text](<../../../static/img/agent-system-operators/TA 2.png>)
 
+You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Text-Aggregation?version=d5a9822e504e4bd68c57c51177d031f1)
 
 ## Object Counter
 
@@ -148,3 +149,4 @@ JSON for the above output is given below, and at the end, the "**object_count": 
   }
 }
 ```
+You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Object-Counter?version=97dbdbae2b78452cafbefc6ddc63d69b)

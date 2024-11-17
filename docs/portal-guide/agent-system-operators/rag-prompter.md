@@ -180,4 +180,4 @@ You can then select the version to use for inferencing.
 
 ![](/img/others/rag-prompter-5.png)
 
-That’s it!
+You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/RAG-Prompter?version=0d6fdf0f67df4dbfa386ff8c76a3cb77)

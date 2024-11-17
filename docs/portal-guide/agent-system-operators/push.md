@@ -85,6 +85,8 @@ The **annotation_status** field lets you specify the [status of the annotation](
 
 The Regex-Based Classifier successfully classified the input and forwarded it to the Annotation Writer for labeling. 
 
+You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Annotation-Writer?version=2c31251b6b524a308d723310137a9670)
+
 ### How to Annotate Image Inputs
 
 Next, let's demonstrate how you can use an Annotation Writer to automatically label image inputs. For this demonstration, we'll create a workflow that automatically classifies images of dogs and cats, assigning them the appropriate labels.
@@ -152,3 +154,5 @@ Lastly, select the `concept_threshold_type` as `GREATER_THAN`. Keep the other co
 ![](/img/others/annotation_writer_7.png)
 
 The model successfully classified the input, the thresholder filtered the concepts, and the filtered concept was forwarded to the Annotation Writer for automatic labeling. 
+
+You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Annotate-Image?version=4f09fa9f9b084b86909665b10d161736)
