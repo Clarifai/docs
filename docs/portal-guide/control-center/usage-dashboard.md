@@ -1,6 +1,5 @@
 ---
 description: Get detailed insights into your consumption of the Clarifai platform
-pagination_next: null
 sidebar_position: 1
 ---
 
@@ -9,7 +8,7 @@ sidebar_position: 1
 **Get detailed insights into your consumption of the Clarifai platform**
 <hr />
 
-The Usage Dashboard is the main page that provides detailed insights into your consumption of the Clarifai platform. It offers metrics, charts, and reports that allow you to monitor usage patterns, track performance, and optimize resource allocation. 
+The Usage & Operations is the main page that provides detailed insights into your consumption of the Clarifai platform. It offers metrics, charts, and reports that allow you to monitor usage patterns, track performance, and optimize resource allocation. 
 
 To access it, go to the Control Center and select the **Usage & Operations** tab in the collapsible left sidebar. 
 
@@ -17,13 +16,13 @@ To access it, go to the Control Center and select the **Usage & Operations** tab
 
 :::tip date range
 
-You can use the date range control in the upper-right corner of the page to filter and view data for specific time periods. After selecting a date range, the output of the Usage Dashboard will be based on the selected period. You can learn more about the feature [here](https://docs.clarifai.com/portal-guide/control-center/#date-ranges).
+You can use the date range control in the upper-right corner of the page to filter and view data for specific time periods. After selecting a date range, the output of the page will be based on the selected period. You can learn more about the feature [here](https://docs.clarifai.com/portal-guide/control-center/#date-ranges).
 
 :::
 
 ## Overview
 
-The overview section of the Usage Dashboard gives you a quick analysis of how you used the Clarifai platform during the selected period. 
+The overview section of the Usage & Operations page gives you a quick analysis of how you used the Clarifai platform during the selected period. 
 
 It tells you:
 
@@ -33,25 +32,25 @@ It tells you:
 - The total training hours of your [transfer learning](https://docs.clarifai.com/portal-guide/model/model-types/transfer-learning) models
 - The total training hours of your [deep train](https://docs.clarifai.com/portal-guide/model/deep-training/) models
 
-Let’s talk about the different elements of the Usage Dashboard.
+Let’s talk about the different elements of the page.
 
 ## Charts
 
-The Usage Dashboard has several charts that help you visualize your utilization of our platform during a selected period. 
+The Usage & Operations page has several charts that help you visualize your utilization of our platform during a selected period. 
 
 Let’s talk about some functionalities that are common across the charts.
 
 ![](/img/community/control-center/control_center_7_1.png)
 
-- **Drag charts** — You can easily drag a chart up and down within the page by clicking and holding the dots in its upper-left corner. This allows you to customize the layout and manage the charts that appear in the Usage Dashboard. 
+- **Drag charts** — You can easily drag a chart up and down within the page by clicking and holding the dots in its upper-left corner. This allows you to customize the layout and manage the charts that appear in the page. 
 
-- **Pin icon** — The pin icon allows you to "pin" or "save" charts for quick access. If you click it, the chart will be displayed in the Overview section within the Control Center. This ensures that it remains easily accessible in the Control Center. If the pin icon is highlighted in the Usage Dashboard, it indicates that the respective chart has already been saved to the Overview section.
+- **Pin icon** — The pin icon allows you to "pin" or "save" charts for quick access. If you click it, the chart will be displayed in the Overview section within the Control Center. This ensures that it remains easily accessible in the Control Center. If the pin icon is highlighted in the Usage & Operations page, it indicates that the respective chart has already been saved to the Overview section.
 
 - **Change chart display** — You can choose to display the type of chart you want by clicking its icon in the upper-right corner —  a bar chart, a line graph, a donut chart, or any other chart available.
 
 - **Tooltip** — If you hover over a chart, a tooltip is displayed, which shows the exact number of different actions performed for that particular date. In the tooltip, the type of action that is currently hovered over is highlighted, allowing you to easily identify which item is in focus. 
 
-- **Color-coding** — Each type of task in the charts within the Usage Dashboard is represented by its own distinct color. This color-coding provides a clear visual distinction between the types of activities, making it easier for users to track and compare their trends across the displayed dates.
+- **Color-coding** — Each type of task in the charts within the page is represented by its own distinct color. This color-coding provides a clear visual distinction between the types of activities, making it easier for users to track and compare their trends across the displayed dates.
 
 ### View Report Details
 
@@ -63,7 +62,7 @@ The table in the page includes the date each activity was performed and features
 
 ![](/img/community/control-center/control_center_9.png)
 
-After viewing the detailed report, you can go back to the Usage Dashboard page by clicking the **Back** button in the upper-left corner. 
+After viewing the detailed report, you can go back to the Usage & Operations page by clicking the **Back** button in the upper-left corner. 
 
 ## Total Number of Operations
 
