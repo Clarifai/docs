@@ -18,8 +18,8 @@
 
 <script src="/scripts/sidebar.js" async></script>
 <script src="/scripts/intercomConfig.js" async></script><link rel="stylesheet" href="/assets/css/styles.9421978a.css">
-<script src="/assets/js/runtime~main.134acdc5.js" defer="defer"></script>
-<script src="/assets/js/main.21aa9dac.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.10224f80.js" defer="defer"></script>
+<script src="/assets/js/main.500e8381.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5W9P7GR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -84,7 +84,7 @@
 <p><strong>Nodepool Description</strong> — Optionally, provide a short description that summarizes the details related to the nodepool.</p>
 </li>
 <li>
-<p><strong>Node autoscaling range</strong> — Specify the minimum and maximum number of nodes that the system can automatically scale within a nodepool, based on the workload demand. This means that the system will spin up more nodes to handle increased traffic or scale down when demand decreases to optimize costs. For instance, you can set your nodepool to scale between 1 and 5 nodes, depending on how many requests your model is processing. A minimum value of 1 (rather than 0) prevents cold start delays after inactivity, which is essential for meeting latency requirements, though it ensures that at least one node will always be running, which incurs compute costs.</p>
+<p><strong>Node autoscaling range</strong> — Specify the minimum and maximum number of nodes that the system can automatically scale within a nodepool, based on the workload demand. This means that the system will spin up more nodes to handle increased traffic or scale down when demand decreases to optimize costs. For instance, you can set your nodepool to scale between 1 and 5 nodes, depending on how many requests your model is processing. A minimum value of 1 (rather than 0) prevents cold start delays after inactivity, which is essential for meeting latency requirements, though it ensures that at least one node will always be running, which incurs compute costs. Alternatively, setting the minimum to 0 eliminates costs during idle periods but may introduce cold start delays when traffic resumes.</p>
 </li>
 <li>
 <p><strong>Instance Type</strong> — Select the instance type you would like the deployment to run on.  You can find an explanation of the available instance types <a href="/portal-guide/compute-orchestration/set-up-compute#instance-types">below</a>.</p>
