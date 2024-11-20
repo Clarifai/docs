@@ -1,11 +1,11 @@
 ---
-description: Learn how to evaluate your fine-tuned LLMs
-sidebar_position: 2
+description: Evaluate your fine-tuned LLMs for text generation tasks
+sidebar_position: 6
 ---
 
 # LLM Evaluation
 
-**Learn how to evaluate your fine-tuned LLMs**
+**Evaluate your fine-tuned LLMs for text generation tasks**
 <hr />
 
 Fine-tuning large language models (LLMs) is a powerful strategy that lets you take a pre-trained language model and further train it on a specific dataset or task to adapt it to that particular domain or application. 

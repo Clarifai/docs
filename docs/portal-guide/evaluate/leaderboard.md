@@ -1,6 +1,6 @@
 ---
 description: Compare models' performance based on their evaluation results
-sidebar_position: 3
+sidebar_position: 7
 ---
 
 # Evaluation Leaderboard

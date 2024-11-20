@@ -1,16 +1,14 @@
 ---
-description: Learn how to interpret the evaluation results of classification models
-sidebar_position: 1
+description: Learn how to evaluate visual classification models
+sidebar_position: 2
 ---
 
-# Evaluating Classification Models
+# Visual Classification Models
 
-**Learn how to interpret the evaluation results of classification models**
+**Learn how to evaluate visual classification models**
 <hr />
 
-As mentioned in the previous [Evaluating Models](./) section, once the evaluation process is complete, the **Calculate** button will become a **View Results** button. 
-
-You can click the **View Results** button to see and interpret the evaluation results of your classification models. 
+Once the evaluation process is complete, the **Calculate** button will become a **View Results** button. You can click the **View Results** button to see and interpret the evaluation results of your classification models. 
 
 ![](/img/community/evaluate/evaluate_3.png)
 

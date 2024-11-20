@@ -1,16 +1,14 @@
 ---
-description: Learn how to interpret the evaluation results of detection models
-sidebar_position: 1.1
+description: Learn how to evaluate detection models
+sidebar_position: 3
 ---
 
-# Evaluating Detection Models
+# Visual Detection Models
 
-**Learn how to interpret the evaluation results of detection models**
+**Learn how to evaluate detection models**
 <hr />
 
-As mentioned in the previous [Evaluating Models](./) section, once the evaluation process is complete, the **Calculate** button will become a **View Results** button. 
-
-You can click the **View Results** button to see and interpret the evaluation results of your detection model. 
+Once the evaluation process is complete, the **Calculate** button will become a **View Results** button. You can click the **View Results** button to see and interpret the evaluation results of your detection model. 
 
 ![](/img/community/evaluate/evaluate_6.png)
 
