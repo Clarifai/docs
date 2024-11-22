@@ -252,6 +252,12 @@ ClarifaiApp *app = [[ClarifaiApp alloc] initWithApiKey:@"YOUR_API_KEY"];
 
 ## CORS Policy
 
-Our APIs adhere to industry standards for Cross-Origin Resource Sharing (CORS) to ensure security and proper access control. The Access-Control-Allow-Origin header is limited to a predefined list of allowed origins. This means that only requests originating from allowed origins will receive a successful CORS response.
-If your Javascript application(s) encounter a CORS error while calling our APIs, it is likely that the origin is not on the allowed list. To avoid such issues, we recommend following established patterns such as using a backend server to proxy API requests or ensuring your application is hosted on an approved origin.
-For more information about CORS and best practices you can refer to [this resource](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS). If you need additional support or would like to request for your custom domain, please reach out to support@clarifai.com for assistance.
+Our APIs adhere to industry standards for Cross-Origin Resource Sharing (CORS) to ensure security and proper access control. The Access-Control-Allow-Origin header is limited to a predefined list of allowed origins. 
+
+This means that only requests originating from allowed origins will receive a successful CORS response. If your Javascript application(s) encounter a CORS error while calling our APIs, it is likely that the origin is not on the allowed list. 
+
+To avoid such issues, we recommend following established patterns such as using a backend server to proxy API requests or ensuring your application is hosted on an approved origin.
+
+For more information about CORS and best practices, you can refer to [this resource](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS). 
+
+If you need additional support or would like to request for your custom domain, please reach out to support@clarifai.com for assistance.
