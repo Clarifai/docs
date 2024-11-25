@@ -5,6 +5,22 @@ const prompt = "What’s the future of AI?";
 // You can set the model using model URL or model ID.
 const modelUrl = "https://clarifai.com/openai/chat-completion/models/GPT-4";
 
+/*
+        The predict API gives flexibility to generate predictions for data provided through URL, Filepath and bytes format.
+
+        Example for prediction through Filepath:
+        const modelPrediction = await model.predictByFilepath({
+                                    filepath,
+                                    inputType: "Text",
+                                });
+
+        Example for prediction through URL:
+        const modelPrediction = await model.predictByURL({
+                                    url: URL,
+                                    inputType: "Text",
+                                });
+*/
+
 // Model Predict
 const model = new Model({
   url: modelUrl,

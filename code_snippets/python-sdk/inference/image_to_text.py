@@ -21,11 +21,12 @@ model_url = (
 image_url = "https://s3.amazonaws.com/samples.clarifai.com/featured-models/image-captioning-statue-of-liberty.jpeg"
 
 # The Predict API also accepts data through URL, Filepath & Bytes.
+
 # Example for predict by filepath:
-# model_prediction = Model(model_url).predict_by_filepath(filepath, input_type="text")
+# model_prediction = Model(model_url).predict_by_filepath(filepath, input_type="image")
 
 # Example for predict by bytes:
-# model_prediction = Model(model_url).predict_by_bytes(image_bytes, input_type="text")
+# model_prediction = Model(model_url).predict_by_bytes(image_bytes, input_type="image")
 
 model_prediction = Model(url=model_url, pat="YOUR_PAT").predict_by_url(
     image_url, input_type="image"

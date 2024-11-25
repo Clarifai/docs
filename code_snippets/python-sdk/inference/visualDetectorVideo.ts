@@ -22,6 +22,22 @@ const SAMPLE_MS = 2000;
 // Model class objects can be initialized by providing its URL or also by defining respective user_id, app_id, and model_id
 // eg: const model = new Model("https://clarifai.com/clarifai/main/models/general-image-recognition");
 
+/*
+        The predict API gives flexibility to generate predictions for data provided through URL, Filepath and bytes format.
+
+        Example for prediction through Bytes:
+        const modelPrediction = await model.predictByBytes({
+                                    inputBytes: Bytes,
+                                    inputType: "video"
+                                });
+
+        Example for prediction through Filepath:
+        const modelPrediction = await model.predictByFilepath({
+                                    filepath,
+                                    inputType: "video",
+                                });
+*/
+
 const model = new Model({
   authConfig: {
     userId: USER_ID,
@@ -39,24 +55,6 @@ const modelPrediction = await model.predictByUrl({
   inputType: "video",
   outputConfig,
 });
-
-/**
-      The predict API gives flexibility to generate predictions for data provided through URL, Filepath and bytes format.
-
-
-      Example for prediction through Bytes:
-      const modelPrediction = await model.predictByBytes({
-                                  inputBytes,
-                                  inputType
-                              });
-
-
-      Example for prediction through Filepath:
-      const modelPrediction = await model.predictByFilepath({
-                                  filepath, 
-                                  inputType
-                              });
-  */
 
 // Print the frame info and the first concept name in each frame
 for (const frame of modelPrediction?.[0].data?.framesList ?? []) {

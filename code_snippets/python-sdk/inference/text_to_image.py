@@ -22,10 +22,8 @@ input_text = b"floor plan for 2 bedroom kitchen house"
 
 # The predict API gives flexibility to generate predictions for data provided through URL,Filepath and Bytes format.
 
-
 # Example for prediction through URL:
-# model_prediction = model.predict_by_url(url, input_type="text")
-
+# model_prediction = Model(model_url).predict_by_url(url, input_type="text")
 
 # Example for prediction through Filepath:
 # model_prediction = Model(model_url).predict_by_filepath(filepath, input_type="text")

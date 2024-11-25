@@ -20,19 +20,15 @@ input_text = "Hello, How are you doing today!"
 
 # The predict API gives flexibility to generate predictions for data provided through URL,Filepath and bytes format.
 
-
 # Example for prediction through URL:
-# model_prediction = model.predict_by_url(url, input_type="text")
-
+# model_prediction = Model(model_url).predict_by_url(url, input_type="text")
 
 # Example for prediction through Filepath:
 # model_prediction = Model(model_url).predict_by_filepath(filepath, input_type="text")
 
 model_url = "https://clarifai.com/eleven-labs/audio-generation/models/speech-synthesis"
 
-model_prediction = Model(url=model_url, pat="YOUR_PAT").predict_by_bytes(
-    input_text, "text"
-)
+model_prediction = Model(url=model_url, pat="YOUR_PAT").predict_by_bytes(input_text, "text")
 
 # Save the audio file
 with open("output_audio.wav", mode="bx") as f:

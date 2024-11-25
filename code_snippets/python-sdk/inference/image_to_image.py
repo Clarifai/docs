@@ -23,14 +23,14 @@ inference_params = dict(width=1024)
 # Example for prediction through Bytes:
 # model_prediction = model.predict_by_bytes(image_bytes, input_type="image")
 
-
 # Example for prediction through Filepath:
 # model_prediction = Model(model_url).predict_by_filepath(image_filepath, input_type="image")
 
 model_url = "https://clarifai.com/stability-ai/Upscale/models/stabilityai-upscale"
 
-
 image_url = "https://s3.amazonaws.com/samples.clarifai.com/featured-models/image-captioning-statue-of-liberty.jpeg"
+
+
 model_prediction = Model(url=model_url, pat="YOUR_PAT").predict_by_url(
     image_url, input_type="image", inference_params=inference_params
 )
