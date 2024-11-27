@@ -145,15 +145,17 @@ For example, to add a text-to-audio node to your workflow, first locate it in th
 
 Once you've made your changes, click the Save as new version button to save the updated workflow under a new version — without exiting the workflow editor.
 
+
 :::note
 
-*You can easily switch between different versions by selecting the respective version ID from the left sidebar in the workflow editor.
-
-*Clicking the Update Workflow button creates a new version of your workflow and exits the workflow editor, redirecting you to the workflow's main page.
+* **You can easily switch between different versions by selecting the respective version ID from the left sidebar in the workflow editor.**
+* **Clicking the Update Workflow button creates a new version of your workflow and exits the workflow editor, redirecting you to the workflow's main page.**
 :::
 
 
+
 ![alt_text](/img/working_workflows_9.png)
+
 
 
 :::tip
