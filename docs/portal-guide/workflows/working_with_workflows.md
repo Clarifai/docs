@@ -159,7 +159,6 @@ Note that clicking the Update Workflow button creates a new version of your work
 
 
 
-### **Notes and Tips:**
 
 :::tip
 
