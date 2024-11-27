@@ -38,7 +38,7 @@ Zero-shot prompting leverages the model's inherent language understanding to per
 
 It simply requires providing a clear prompt for the LLM to generate relevant responses. The LLM is then able to use its pre-trained knowledge to complete the task. 
 
-Let’s demonstrate how you can create a zero-shot prompter on the [workflow builder](https://docs.clarifai.com/portal-guide/workflows/working_with_workflows/) for a text classification task. 
+Let’s demonstrate how you can create a zero-shot prompter on the [workflow builder](https://docs.clarifai.com/portal-guide/workflows/working-with-workflows/) for a text classification task. 
 
 :::tip
 
@@ -103,7 +103,7 @@ This is in contrast to zero-shot prompting, which does not require any examples.
 
 For example, few-shot prompting can be used to train an LLM to classify new types of data, translate languages that it has not been trained on, or generate different creative text formats.
 
-Let’s demonstrate how you can create a few-shot prompter on the [workflow builder](https://docs.clarifai.com/portal-guide/workflows/working_with_workflows/) for a text classification task. 
+Let’s demonstrate how you can create a few-shot prompter on the [workflow builder](https://docs.clarifai.com/portal-guide/workflows/working-with-workflows/) for a text classification task. 
 
 **1.** Search for the **Prompter** template option in the left-hand sidebar of the workflow builder and drag it onto the empty workspace.
 

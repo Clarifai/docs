@@ -62,7 +62,7 @@ The visual detector model will detect bounding box regions in images and then cl
 
 :::
 
-**a.** Go to the [workflow builder](https://docs.clarifai.com/portal-guide/workflows/working_with_workflows/) page. 
+**a.** Go to the [workflow builder](https://docs.clarifai.com/portal-guide/workflows/working-with-workflows/) page. 
 
 **b.** Search for the `visual-detector` node in the left sidebar of the page. 
 

@@ -515,15 +515,15 @@ const config = {
             from: '/portal-guide/workflows/common-workflows/custom-text-walkthrough'
           },
           {
-            to: '/portal-guide/workflows/working_with_workflows',
+            to: '/portal-guide/workflows/working-with-workflows',
             from: '/portal-guide/workflows/input-nodes'
           },
           {
-            to: '/portal-guide/workflows/working_with_workflows',
+            to: '/portal-guide/workflows/working-with-workflows',
             from: '/portal-guide/workflows/workflow-builder'
           },
           {
-            to: '/portal-guide/workflows/working_with_workflows',
+            to: '/portal-guide/workflows/working-with-workflows',
             from: '/portal-guide/workflows/setting-up-a-mesh-workflow'
           }
         ],
