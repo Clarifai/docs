@@ -19,7 +19,7 @@ The embedding layer takes the input image, video, or text, and converts it into 
 
 A key advantage of transfer-learning models is that they can be trained on large datasets of images, videos, or texts without requiring a lot of computational resources. This is because the embedding layer can be pre-trained on a large dataset of images, videos, or texts, and then the classifier layer can be trained on a smaller dataset of labeled images, videos, or texts.
 
-Essentially, [transfer learning](https://docs.clarifai.com/portal-guide/model/model-types/transfer-learning/) leverages the knowledge gained from a pre-trained model to facilitate the learning process of a new model for a related problem. The pre-trained embedding model serves as a feature extractor that has already learned useful features from a large dataset. This knowledge is transferred to the classifier layers, enabling effective classification with minimal training data.
+Essentially, [transfer learning](https://www.clarifai.com/blog/what-is-transfer-learning) leverages the knowledge gained from a pre-trained model to facilitate the learning process of a new model for a related problem. The pre-trained embedding model serves as a feature extractor that has already learned useful features from a large dataset. This knowledge is transferred to the classifier layers, enabling effective classification with minimal training data.
 
 With transfer-learning models, you can transfer the learnings from existing models to your own custom models. This means that you can come up with your own set of custom concepts and quickly train a new model with relatively few training samples.
 

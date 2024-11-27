@@ -57,7 +57,8 @@ import CodeDeleteTS from "!!raw-loader!../../code_snippets/python-sdk/managing-d
 
 import CodeRetry from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/retry_log.py";
 
-
+import MergeDataset from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/merge_dataset.py";
+import ListDatasetInputs from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/list_dataset_inputs.py";
 
 
 import CodeOutputCreateDataset from "!!raw-loader!../../code_snippets/python-sdk/managing-datasets/outputs/create_dataset.txt";
@@ -373,6 +374,29 @@ Set `retry_duplicates` to `True` if you want to retry duplicate with new Input_i
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputRetry}</CodeBlock>
 </details>
+
+## List Dataset Inputs
+
+You can list the inputs in a dataset by providing the dataset ID. 
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{ListDatasetInputs}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
+## Merge Dataset
+
+Here’s an example of merging a dataset with the ID `merge_dataset_id` into another dataset with the ID `dataset_id` using the `merge_dataset` feature from the `Dataset` class.
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{MergeDataset}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 
 
 ## Export Dataset

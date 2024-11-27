@@ -1,39 +1,70 @@
 ---
-description: Learn how to evaluate detection models
+description: Evaluate visual detection models
 sidebar_position: 3
 ---
 
 # Visual Detection Models
 
-**Learn how to evaluate detection models**
+**Evaluate visual detection models**
 <hr />
 
-Once the evaluation process is complete, the **Calculate** button will become a **View Results** button. You can click the **View Results** button to see and interpret the evaluation results of your detection model. 
+[Visual detection](https://docs.clarifai.com/portal-guide/model/model-types/visual-detector) models are machine learning models designed to identify and localize objects within images by predicting bounding boxes and class labels for each detected object. 
+
+Evaluating these models involves measuring their ability to correctly detect and classify objects while minimizing errors like false positives and false negatives.
+
+## Performing Evaluation
+
+You can evaluate a specific version of your custom visual detection model by navigating to the versions table of your model and selecting the version you want to assess.
+
+In the **Evaluation Dataset** column, you can select a [dataset](https://docs.clarifai.com/portal-guide/datasets/create-get-update-delete/) to use for evaluation. Clicking the field opens a drop-down menu that lists available datasets. 
+
+These datasets can come from your current application or other applications under your ownership, enabling cross-app evaluation. This feature allows you to test the model's performance across various contexts or use cases using datasets from separate applications.
+
+:::tip Prepare the Evaluation Dataset
+
+For a reliable evaluation, use a dataset that was not included in the training process. This dataset should contain high-quality annotations, such as accurately labeled bounding boxes for each object in the image, be representative of the scenarios the model will encounter in real-world applications, and include edge cases such as occluded objects, unusual perspectives, and varying environmental conditions (e.g., lighting or weather changes).
+
+:::
+
+![](/img/community/evaluate/evaluate_20.png)
+
+If the dataset you want to use is not listed, you can click the **Evaluate with a new Dataset** button, which opens a pop-up window where you can select a new dataset and its version. 
+
+If no version is specified, the latest one will be automatically selected.
+
+![](/img/community/evaluate/evaluate_21.png)
+
+After selecting the evaluation dataset, click the **Calculate** button to initiate the evaluation process, which could take some time.
+
+Once the evaluation is complete, the **Calculate** button will change to a **View Results** button, and the mAP metric value will be displayed for review.
+
+:::info How Detection Evaluation Works
+
+During the evaluation, the trained model processes each image in the dataset to predict bounding boxes and their associated class labels. These predictions are then compared with the ground truth annotations provided in the dataset. 
+
+Metrics such as Intersection over Union (IoU), precision, recall, and F1 score are computed to assess the model’s performance in terms of detection accuracy, localization precision, and robustness across different object classes.
+
+This comprehensive evaluation ensures that the model's predictions align closely with the true object locations and labels, validating its readiness for deployment in real-world scenarios.
+
+:::
+
+## Evaluation Metrics
+
+Once the evaluation process is complete, you can click the **View Results** button to see and interpret the evaluation results of your detection model.
 
 ![](/img/community/evaluate/evaluate_6.png)
 
-You will then be redirected to the **Evaluation results** page, where you can analyze the outcomes of the evaluation process.
+You will be redirected to the **Evaluation results** page, where you can analyze the outcome of the evaluation process.
 
 ![](/img/community/evaluate/evaluate_7.png)
 
-## Evaluation Highlights
-
-At the top of the page, you will find details about the evaluated model, including:
-
-- Version of the model evaluated
-- Evaluation date
-- Number of concepts used for evaluation
-- App name
-- Dataset name
-- Dataset version ID
+At the top of the page, you will find details about the evaluated model, including the version of the model evaluated and the test dataset details. 
 
 The **Evaluation highlights** section provides key numerical metrics that offer an overview of the model's prediction performance, allowing you to assess the model's effectiveness at a glance.
 
-<br/>
-
 Let’s talk about the crucial metrics used in the evaluation of object detection models. 
 
-## Intersection Over Union (IoU)
+### Intersection Over Union (IoU)
 
 Intersection over Union (IoU) measures the degree of overlap between two bounding boxes: the predicted bounding box and the ground truth bounding box. It is defined as the ratio of the area of overlap to the area of union between the two intersecting boxes.
 
@@ -64,9 +95,15 @@ Different IoU thresholds can be applied to assess the model's performance at var
 
 This is how the metrics are displayed on the **Evaluation Summary** table:
 
+:::tip
+
+Learn how to use the Prediction Threshold slider tool [here](https://docs.clarifai.com/portal-guide/evaluate/interpreting-evaluations#prediction-threshold). 
+
+:::
+
 ![](/img/community/evaluate/evaluate_13.png)
 
-## Precision
+### Precision
 
 Precision measures the accuracy of the model’s positive predictions. It quantifies the model's ability to identify only the relevant objects, specifically assessing how well the model distinguishes true positives from false positives.
 
@@ -74,7 +111,7 @@ A high precision score implies that the model effectively avoids false positives
 
 It is calculated as: `True Positives / (True Positives + False Positives (all detections))`.
 
-## Recall
+### Recall
 
 Recall, also known as sensitivity or the true positive rate, measures a model's ability to correctly identify all relevant objects in the image (all ground truth bounding boxes). It specifically measures the model’s completeness in detecting objects of interest.
 
@@ -82,7 +119,7 @@ A high recall score implies that the model effectively identifies most of the re
 
 It is calculated as: `True Positives / (True Positives + False Negatives (all ground truths))`.
 
-## F1 Score
+### F1 Score
 
 The F1 score offers an overall assessment of a model's ability to balance precision and recall. It is the harmonic mean of precision and recall, providing a balanced measure of a model's performance in relation to both false positives and false negatives.
 
@@ -90,7 +127,7 @@ It is calculated as: `2 * (Precision * Recall) / (Precision + Recall)`
 
 The F1 score ranges from 0 to 1, with 1 being the best possible score. A high F1 score indicates that the model has both high precision and high recall, meaning it accurately identifies most positive instances in the dataset while minimizing false positives.
 
-## Precision-Recall Curve
+### Precision-Recall Curve
 
 The Precision-Recall (PR) curve is an effective tool for evaluating the performance of an object detector as the confidence threshold is varied. This curve is plotted for each object class and provides insights into the trade-off between precision and recall.
 
@@ -104,13 +141,13 @@ This is how the curve is displayed on the page:
 
 ![](/img/community/evaluate/evaluate_14.png)
 
-## Average Precision (AP)
+### Average Precision (AP)
 
 By varying the confidence score threshold for detections, different sets of true positives and false positives are obtained, which are used to plot the precision-recall curve. The area under this curve (AUC), which often exhibits a zigzag pattern, represents the Average Precision (AP) for each class. Higher AUC values indicate superior model performance.
 
 AP is a single value that is crucial in capturing a harmonious balance between false positives and false negatives, which encapsulates the complexities of the model’s performance.
 
-## Mean Average Precision (mAP)
+### Mean Average Precision (mAP)
 
 Mean Average Precision (mAP) extends the concept of Average Precision (AP). Instead of assessing the model’s performance at a single confidence threshold, mAP calculates the average AP values across multiple IoU thresholds. 
 
@@ -120,9 +157,4 @@ mAP is a single number that represents the tradeoff between precision and recall
 
 This approach ensures that the model performs well not only with loose bounding boxes (low IoU) but also with tighter, more accurate detections (high IoU). By averaging the precision across various IoU thresholds, mAP provides a comprehensive performance profile.
 
-:::tip
-
-Learn how to use the Prediction Threshold slider tool [here](https://docs.clarifai.com/portal-guide/evaluate/interpreting-evaluations#prediction-threshold). 
-
-:::
 
