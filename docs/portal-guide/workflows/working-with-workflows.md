@@ -59,7 +59,7 @@ To create a new workflow, select the Workflows option in the collapsible left si
 
 
 
-![alt_text](/img/working_workflows_1.png)
+![alt_text](/img/community_2/input_nodes_create_new_workflow.png)
 
 
 
@@ -80,7 +80,7 @@ Next, in the left sidebar, search for the optical-character-recognizer node. Thi
 After finding the node, drag and drop it on the empty workspace pane and connect it to the IN element.
 
 
-![alt_text](/img/working_workflows_2.png)
+![alt_text](/img/community_2/input_nodes_empty_pane.png)
 
 
 :::tip
@@ -95,7 +95,7 @@ After finding the second node, drag and drop it on the workspace and draw a line
 
 
 
-![alt_text](/img/working_workflows_3.png)
+![alt_text](/img/community_2/input_nodes_add_another_model.png)
 
 
 
@@ -104,14 +104,14 @@ After finding the second node, drag and drop it on the workspace and draw a line
 Click the optical-character-recognizer node. And on the search box that appears on the right side of the page, specify the ocr-scene-english-paddleocr model as the one to use for optical character recognition. Also, select the version of the model you want to use.
 
 
-![alt_text](/img/working_workflows_4.png)
+![alt_text](/img/community_2/input_nodes_ocr_model.png)
 
 
 Similarly, click the text-to-text node and specify the text-translation-english-spanish model as the one to use for translating the extracted text from English to Spanish. Also, select its version.
 
 
 
-![alt_text](/img/working_workflows_5.png)
+![alt_text](/img/community_2/input_nodes_text_to_text.png)
 
 
 
@@ -122,7 +122,7 @@ Finally, click the Save Workflow button to save the workflow. This will save the
 
 
 
-![alt_text](/img/working_workflows_6.png)
+![alt_text](/img/community_2/input_nodes_save_workflow.png)
 
 
 
@@ -133,14 +133,14 @@ After creating your workflow, you can edit it at any time by navigating to its i
 This allows you to make changes easily whenever needed.
 
 
-![alt_text](/img/working_workflows_7.png)
+![alt_text](/img/community_2/input_nodes_edit_workflow_2.png)
 
 
 For example, to add a text-to-audio node to your workflow, first locate it in the left sidebar. Drag the node and connect it to the preceding text-to-text node. Next, use the search box on the right side of the page to select the specific model you want for the text-to-audio conversion.
 
 
 
-![alt_text](/img/working_workflows_8.png)
+![alt_text](/img/community_2/input_nodes_edit_workflow_1.png)
 
 
 Once you've made your changes, click the Save as new version button to save the updated workflow under a new version — without exiting the workflow editor.
@@ -154,7 +154,7 @@ Once you've made your changes, click the Save as new version button to save the 
 
 
 
-![alt_text](/img/working_workflows_9.png)
+![alt_text](/img/community_2/input_nodes_edit_workflow_3.png)
 
 
 
@@ -182,14 +182,14 @@ To do so, go to the workflow's overview page, select the version you want to use
 
 
 
-![alt_text](/img/working_workflows_10.png)
+![alt_text](/img/community_2/workflow_predict_try_your_own_image.png)
 
 
 After the image has been uploaded and processed, the output will contain the predictions each model in the workflow returns. You can see in the screenshot below that the text was successfully extracted from the image and then translated into Spanish.
 
 
 
-![alt_text](/img/working_workflows_11.png)
+![alt_text](/img/community_2/workflow_prediction_output.png)
 
 
 That's the power of using workflows on the Clarifai platform!
