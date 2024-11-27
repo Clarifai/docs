@@ -158,8 +158,6 @@ Note that clicking the Update Workflow button creates a new version of your work
 ![alt_text](/img/working_workflows_9.png)
 
 
-
-
 :::tip
 
 * **You can add a maximum of 20 nodes in a single workflow.**
