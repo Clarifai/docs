@@ -61,6 +61,7 @@ To see it in action, upload the inputs from your local device or use the inputs 
 
 ![Region Thresholder Output](<../../../static/img/agent-system-operators/Region Thresholder Output.png>)
 
+You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Region-Thresholder?version=c6e19afea2a740738cbaad0bb53913f5)
 
 ## Concept Thresholder
 
@@ -103,6 +104,8 @@ To see it in action, upload the inputs from your local device or use the inputs 
 
 ![Concept Thresholder Output](<../../../static/img/agent-system-operators/Concept Thresholder Output.png>)
 
+You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Concept-Thresholder?version=ff04af9f5fff471aa7a4691a23474607)
+
 ## Random Sampler
 
 **Input:** `any`
@@ -137,3 +140,5 @@ Let's demonstrate how you can use the Random Sample operator to handle large dat
 To see it in action, upload the inputs from your local device or use the inputs in the app. As soon as you upload inputs, the workflow will give the output based on the configurations done, displaying a randomly selected subset of the data.
 
 ![Random Sampler Output](<../../../static/img/agent-system-operators/Random Sampler Output.png>)
+
+You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Random-Sampler?version=cc26641fca6b4a5d8a8075e6883deb54)

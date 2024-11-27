@@ -95,6 +95,8 @@ Negative
 
 Note that in the above zero-shot prompt, we did not give the model any examples of text alongside their classifications. The model already knows what "sentiment" means without needing any extra information — that's how its zero-shot abilities work. 
 
+You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Zero-Shot-Prompter?version=aeb30786c61f4b2cbaea7415cdae59e4)
+
 ## Few-Shot Prompting
 
 In few-shot prompting, the large language model is given a limited number of examples or "shots" to adapt to a particular task. With just a few examples, it can perform more specialized tasks that require specific context or knowledge.
@@ -154,6 +156,8 @@ Note that in the above few-shot prompt, we provided a few examples to guide the 
 The prompt template can be used for a variety of prompting methods. Let's delve into the descriptions of other different prompting techniques below.
 
 :::
+
+You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Few-Shot-Prompter?version=9bf7a4dca6834e71906e72b106d6a94e)
 
 ## Task-Specific Prompt
 

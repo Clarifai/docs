@@ -58,6 +58,8 @@ To see it in action, upload the inputs from your local device or use the inputs 
 
 ![alt text](<../../../static/img/agent-system-operators/Image Cropper Output.png>)
 
+You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Image-Cropper?version=1f3c662d2fd540d190a354711fa1ad48)
+
 ## Image Tiler
 
 **Input:** `image`
@@ -94,3 +96,5 @@ Workflow Integration and Setup
 To see it in action, upload the inputs from your local device or use the inputs in the app. As soon as you upload inputs, the workflow will execute, and you will see the images split into the specified tile sizes. This tiling is crucial for handling large-scale images efficiently.
 
 ![alt text](<../../../static/img/agent-system-operators/Image Tiler Output.png>)
+
+You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Image-Tiler?version=c707b2a9f18549d0b36fcdbc580bb6e2)
