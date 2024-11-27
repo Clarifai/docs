@@ -513,6 +513,18 @@ const config = {
           {
             to: '/portal-guide/model/text-classifiers-transfer-learn',
             from: '/portal-guide/workflows/common-workflows/custom-text-walkthrough'
+          },
+          {
+            to: '/portal-guide/workflows/working-with-workflows',
+            from: '/portal-guide/workflows/input-nodes'
+          },
+          {
+            to: '/portal-guide/workflows/working-with-workflows',
+            from: '/portal-guide/workflows/workflow-builder'
+          },
+          {
+            to: '/portal-guide/workflows/working-with-workflows',
+            from: '/portal-guide/workflows/setting-up-a-mesh-workflow'
           }
         ],
         createRedirects(existingPath) {
