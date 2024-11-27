@@ -25,7 +25,12 @@ const sidebars = {
     type: 'link',
     label: 'Swagger API Guide',
     href: 'https://api.clarifai.com/api-doc/?url=https://api.clarifai.com/v2/swagger.json',
-  },
+  },    
+  {
+      type: 'link',
+      label: 'Stack Overflow',
+      href: 'https://stackoverflow.com/tags/clarifai/',
+  },  
   {
       type: 'link',
       label: 'API Status',
