@@ -55,7 +55,7 @@ Let's begin by creating an application that will act as the container for all th
 
 ### Step 2: Create a New Workflow[​](https://docs.clarifai.com/portal-guide/workflows/working-with-workflows#step-2-create-a-new-workflow)
 
-To create a new workflow, select the Workflows option in the collapsible left sidebar. Next, click the Create Workflow button in the upper-right corner of the page.
+To create a new workflow, select the Workflows option in the collapsible left sidebar. Next, click the **Create Workflow** button in the upper-right corner of the page.
 
 
 
@@ -117,7 +117,7 @@ Similarly, click the text-to-text node and specify the text-translation-english-
 
 ### Step 5: Save Workflow[​](https://docs.clarifai.com/portal-guide/workflows/working-with-workflows#step-5-save-workflow)
 
-Finally, click the Save Workflow button to save the workflow. This will save the state of your workflow. Now, you are ready to [predict](https://docs.clarifai.com/portal-guide/workflows/working-with-workflows#using-a-workflow) using your brand-new workflow.
+Finally, click the **Save Workflow** button to save the workflow. This will save the state of your workflow. Now, you are ready to [predict](https://docs.clarifai.com/portal-guide/workflows/working-with-workflows#using-a-workflow) using your brand-new workflow.
 
 
 
@@ -128,7 +128,7 @@ Finally, click the Save Workflow button to save the workflow. This will save the
 
 ## Edit Workflow[​](https://docs.clarifai.com/portal-guide/workflows/working-with-workflows#edit-workflow)
 
-After creating your workflow, you can edit it at any time by navigating to its individual page and clicking the Edit workflow button in the upper-right section.
+After creating your workflow, you can edit it at any time by navigating to its individual page and clicking the **Edit workflow** button in the upper-right section.
 
 This allows you to make changes easily whenever needed.
 
@@ -143,13 +143,13 @@ For example, to add a text-to-audio node to your workflow, first locate it in th
 ![alt_text](/img/community_2/input_nodes_edit_workflow_1.png)
 
 
-Once you've made your changes, click the Save as new version button to save the updated workflow under a new version — without exiting the workflow editor.
+Once you've made your changes, click the **Save as new version** button to save the updated workflow under a new version — without exiting the workflow editor.
 
 
 :::note
 
 * You can easily switch between different versions by selecting the respective version ID from the left sidebar in the workflow editor.
-* Clicking the Update Workflow button creates a new workflow version and exits the workflow editor, redirecting to the workflow's main page.
+* Clicking the **Update Workflow** button creates a new workflow version and exits the workflow editor, redirecting to the workflow's main page.
 :::
 
 
@@ -178,7 +178,7 @@ After creating your workflow, use a workflow:
 
 For example, let's use the custom workflow we created previously to extract text from [this image](https://samples.clarifai.com/featured-models/ocr-woman-holding-sold-sign.jpg), and then translate the extracted text into Spanish.
 
-To do so, go to the workflow's overview page, select the version you want to use, and click the blue "+" button. Next, select the Try your own image or video option on the modal that appears. The small window that pops up allows you to upload the image.
+To do so, go to the workflow's overview page, select the version you want to use, and click the blue **"+"** button. Next, select the Try your own image or video option on the modal that appears. The small window that pops up allows you to upload the image.
 
 
 
