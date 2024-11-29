@@ -67,7 +67,7 @@ You’ll be redirected to a page, where you can specify the configurations for y
     
 - **Instance Settings** — Select your preferred cloud provider and geographic region for deploying your models (*more options are coming soon*).
 
-- **Private Access Token (PAT)** — Select a PAT that is used to verify your identity when connecting to the cluster. Note that if the selected PAT is deleted, the associated compute resources will no longer function. You can generate a new PAT key in your Personal Settings page by navigating to the [Security section](https://clarifai.com/settings/security).
+- **Personal Access Token (PAT)** — Select a PAT that is used to verify your identity when connecting to the cluster. Note that if the selected PAT is deleted, the associated compute resources will no longer function. You can generate a new PAT by clicking the "Create new Personal Access Token" link at the bottom of the corresponding dropdown list or by going to your Personal Settings page by navigating to the [Security section](https://clarifai.com/settings/security).
 
 After configuring the settings, click the **Continue** button in the upper-right corner. You’ll be redirected to a page where you can create a nodepool related to the cluster. 
 
