@@ -15,7 +15,7 @@ Clarifai Workflows is a powerful feature that enables you to combine multiple AI
 Workflows provide a modular architecture for your inference pipeline, serving as building blocks for advanced machine learning ensemble modeling and business logic. With workflows, you can work with your machine learning models like they are nodes in a graph.
 
 
-## **Creating Workflows**
+## Creating Workflows
 
 You can create workflows out of any Clarifai models or custom models that you have created for your app. The inputs and outputs supported by your custom workflows will depend on the inputs and outputs supported by the models that you have used to build them.
 
@@ -126,7 +126,7 @@ Finally, click the Save Workflow button to save the workflow. This will save the
 
 
 
-### Edit Workflow[​](https://docs.clarifai.com/portal-guide/workflows/working-with-workflows#edit-workflow)
+## Edit Workflow[​](https://docs.clarifai.com/portal-guide/workflows/working-with-workflows#edit-workflow)
 
 After creating your workflow, you can edit it at any time by navigating to its individual page and clicking the Edit workflow button in the upper-right section.
 
@@ -148,8 +148,8 @@ Once you've made your changes, click the Save as new version button to save the 
 
 :::note
 
-* **You can easily switch between different versions by selecting the respective version ID from the left sidebar in the workflow editor.**
-* **Clicking the Update Workflow button creates a new version of your workflow and exits the workflow editor, redirecting you to the workflow's main page.**
+* You can easily switch between different versions by selecting the respective version ID from the left sidebar in the workflow editor.
+* Clicking the Update Workflow button creates a new workflow version and exits the workflow editor, redirecting to the workflow's main page.
 :::
 
 
@@ -160,8 +160,8 @@ Once you've made your changes, click the Save as new version button to save the 
 
 :::tip
 
-* **You can add a maximum of 20 nodes in a single workflow.**
-* **Ensure all connections between nodes are correctly set to avoid errors during execution.**
+* You can add a maximum of 20 nodes in a single workflow.
+* Ensure all connections between nodes are correctly set to avoid errors during execution.
 :::
 
 ## **Using a Workflow**
