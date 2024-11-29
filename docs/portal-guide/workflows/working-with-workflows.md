@@ -164,7 +164,7 @@ Once you've made your changes, click the Save as new version button to save the 
 * Ensure all connections between nodes are correctly set to avoid errors during execution.
 :::
 
-## **Using a Workflow**
+## Using a Workflow
 
 Workflows in Clarifai are computational graphs that include one or more models. The cost of making predictions with a workflow is the same as calling individual models.
 
