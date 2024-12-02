@@ -32,12 +32,6 @@ We have a public roadmap that gives you a view of our upcoming plans and helps u
 |--------------------------------------|------------------------|---------------------------|
 | ![new-feature](/img/new_feature.jpg) <br/> **(Public Preview)**  | Released Compute Orchestration in [Public Preview](https://docs.clarifai.com/product-updates/changelog/release-types)   | <ul> <li> Clarifai’s new Compute Orchestration system provides you with an efficient way to deploy inference workloads on any compute, in any bare metal, or cloud environment.  Learn more about it [here](https://docs.clarifai.com/portal-guide/compute-orchestration/). </li><li> To request access, please contact us or sign up [here](https://forms.gle/Cj9r8wgeYk5HQ67Y9). </li> </ul>  |   
 
-## New Released Models​
-
-|Status                                |Change                  |Details                    |
-|--------------------------------------|------------------------|---------------------------|
-| ![new-feature](/img/new_feature.jpg)  | Released new models |  |  
-
 ## Concepts
 
 |Status                                |Change                  |Details                    |
@@ -48,7 +42,7 @@ We have a public roadmap that gives you a view of our upcoming plans and helps u
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
-| ![improvement](/img/improvement.jpg) | Made various improvements to the [single Input-Viewer](https://docs.clarifai.com/glossary/general-ai#input-viewer) screen | <ul> <li>Added ability for users to rotate images and adjust their brightness, sharpness, contrast, and saturation.</li> <li>Improved the autocomplete functionality in the concept search field, making the displayed suggestions to be more relevant when users search for concepts. </li> <li>Relocated the "Add new concept" option to the bottom of the autocomplete table, which appears when users use the search field to annotate inputs with concepts. You can also now use keyboard shortcuts to move from one option to another. </li> <li>Added more keyboard shortcuts for labeling inputs in the Input-Viewer. Improved the visual design of classification and object regions in the Input-Viewer, enhancing clarity and user experience. </li>  </ul>  |  
+| ![improvement](/img/improvement.jpg) | Made various improvements to the [single Input-Viewer](https://docs.clarifai.com/glossary/general-ai#input-viewer) screen | <ul> <li>Added ability for users to rotate images and adjust their brightness, sharpness, contrast, and saturation.</li> <li>Improved the autocomplete functionality in the concept search field, making the displayed suggestions to be more relevant when users search for concepts. </li> <li>Relocated the "Add new concept" option to the bottom of the autocomplete table, which appears when users use the search field to annotate inputs with concepts. You can also now use keyboard shortcuts to move from one option to another. </li> <li>Added more keyboard shortcuts for labeling inputs in the Input-Viewer. </li> <li> Improved the visual design of classification and object regions in the Input-Viewer, enhancing clarity and user experience. </li>  </ul>  |  
 
 
 ## Control Center​
@@ -56,6 +50,12 @@ We have a public roadmap that gives you a view of our upcoming plans and helps u
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
 | ![improvement](/img/improvement.jpg) | Made improvements to the Control Center | <ul> <li> Implemented locale-based date formatting for charts. This ensures the user's browser locale is used to adjust the date format automatically based on their location (e.g., US or EU date formats). </li> </ul>  |  
+
+## Python SDK
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![improvement](/img/improvement.jpg) | Made improvements to the Python SDK  | <ul>  <li>Fixed a bug in runners selection when using `Deployment`. </li> <li>Fixed an ID issue in the multimodal loader during the deletion of failed inputs.</li> <li>Added functionality to list inputs in the `Dataset` class. </li> <li>Added the ability to delete annotations in the `Input` class.</li> <li>Added a Dockerfile template based on new base images by parsing `requirements`. </li> <li>Added validation for the `base_url` parameter. </li> <li>Added CLI support for Compute Orchestration resources, including Compute Cluster, Nodepool, and Deployment. </li> </ul>  |  
 
 ## Platform Bugs
 

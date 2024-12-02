@@ -390,6 +390,8 @@ You can list the inputs in a dataset by providing the dataset ID.
 
 Here’s an example of merging a dataset with the ID `merge_dataset_id` into another dataset with the ID `dataset_id` using the `merge_dataset` feature from the `Dataset` class.
 
+Note that all inputs from the source dataset (`merge_dataset_id`) will be added to the target dataset (`dataset_id`). 
+
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{MergeDataset}</CodeBlock>
