@@ -106,7 +106,7 @@ During the 2019 fiscal year, the organization disbursed $475,000 on machinery re
 
 ###  Step 3: Create a workflow
 
-Go to the [workflow builder](https://docs.clarifai.com/portal-guide/workflows/workflow-builder/). 
+Go to the [workflow builder](https://docs.clarifai.com/portal-guide/workflows/working-with-workflows/). 
 
 Then, search for **rag-prompter** in the left-hand sidebar and drag it onto the empty workspace. Use the pop-up that appears on the right-hand sidebar to set up the template text as a single-line statement.
 

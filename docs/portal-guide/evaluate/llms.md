@@ -117,7 +117,7 @@ The LLM Eval module allows you to evaluate your fine-tuned model using prompt te
 
 A [prompt template](https://docs.clarifai.com/portal-guide/model/agent-system-operators/prompter/) serves as a pre-configured piece of text used to instruct an LLM. It acts as a structured query or input that guides the model in generating the desired response. 
 
-After running the evaluation, the prompt templates will be ranked, allowing you to select the best-performing prompt-model combinations to use for creating [workflows](https://docs.clarifai.com/portal-guide/workflows/workflow-builder/).  
+After running the evaluation, the prompt templates will be ranked, allowing you to select the best-performing prompt-model combinations to use for creating [workflows](https://docs.clarifai.com/portal-guide/workflows/working-with-workflows/).  
 
 ## How to Fine-Tune a Model
 

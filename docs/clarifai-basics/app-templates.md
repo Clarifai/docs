@@ -16,7 +16,7 @@ When you choose a template to create an app, the configurations and resources av
 
 :::info
 
-Apps on the Clarifai platform are like self-contained projects. They store and handle your data, annotations, [models](https://docs.clarifai.com/portal-guide/model/), [workflows](https://docs.clarifai.com/portal-guide/workflows/setting-up-a-mesh-workflow), [modules](https://docs.clarifai.com/portal-guide/modules/), and other resources. 
+Apps on the Clarifai platform are like self-contained projects. They store and handle your data, annotations, [models](https://docs.clarifai.com/portal-guide/model/), [workflows](https://docs.clarifai.com/portal-guide/workflows/working-with-workflows), [modules](https://docs.clarifai.com/portal-guide/modules/), and other resources. 
 
 :::
 

@@ -14,7 +14,7 @@ const config = {
   url: 'https://docs.clarifai.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',  
+  onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.svg',
   organizationName: 'clarifai',
   projectName: 'docs',
@@ -30,7 +30,7 @@ const config = {
           // Please change this to your repo.
           //editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',         
           //this one also works--editUrl: 'https://github.com/Clarifai/docs/blob/main/',
-          editUrl: ({versionDocsDirPath, docPath}) =>
+          editUrl: ({ versionDocsDirPath, docPath }) =>
             `https://github.com/Clarifai/docs/blob/main/${versionDocsDirPath}/${docPath}`,
           docItemComponent: require.resolve('./src/components/CustomDocItem/index.js'),
           docCategoryGeneratedIndexComponent: require.resolve('./src/components/CustomDocCategory/index.js'),
@@ -77,13 +77,13 @@ const config = {
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({      
-      algolia:{
+    ({
+      algolia: {
         appId: 'E9LMD97ZH2',
-        apiKey: 'bb83e0130652ea667b2a9fd12ddb974b',   
-        indexName: 'clarifai',    
+        apiKey: 'bb83e0130652ea667b2a9fd12ddb974b',
+        indexName: 'clarifai',
         insights: true, // Optional, automatically send insights when user interacts with search results    
-        container: 'div',    
+        container: 'div',
         debug: false // Set debug to true if you want to inspect the modal
 
       },
@@ -193,7 +193,7 @@ const config = {
                 label: 'API Reference Guide',
                 to: "/api-reference",
                 rel: "noopener"
-              }, 
+              },
               {
                 label: 'API Guide in Postman',
                 to: 'https://documenter.getpostman.com/view/30622694/2s9YkuZdro',
@@ -218,7 +218,7 @@ const config = {
             ]
           },
           {
-           // type: "",
+            // type: "",
             label: "Product Roadmap",
             position: "left",
             href: "https://portal.productboard.com/bd1rxfuyfbu6vqnmkva3mprx/tabs/1-under-consideration"
@@ -252,11 +252,11 @@ const config = {
             position: 'right',
             'aria-label': 'Get started'
           },
-         // {
-         //   href: 'https://api.clarifai.com/api-doc/?url=https://api.clarifai.com/v2/swagger.json',
-         //   label: 'Swagger API Guide',
-        //    position: 'right',
-        //  }
+          // {
+          //   href: 'https://api.clarifai.com/api-doc/?url=https://api.clarifai.com/v2/swagger.json',
+          //   label: 'Swagger API Guide',
+          //    position: 'right',
+          //  }
         ],
       },
       footer: {
@@ -326,14 +326,14 @@ const config = {
         }
       }
     }),
-    plugins: [
+  plugins: [
     //[
-      //require.resolve("@cmfcmf/docusaurus-search-local"),
-      //{
-        // Options here
-        //indexBlog: false,
-     // },
-   // ],
+    //require.resolve("@cmfcmf/docusaurus-search-local"),
+    //{
+    // Options here
+    //indexBlog: false,
+    // },
+    // ],
     [
       '@docusaurus/plugin-client-redirects',
       {
@@ -513,18 +513,30 @@ const config = {
           {
             to: '/portal-guide/model/text-classifiers-transfer-learn',
             from: '/portal-guide/workflows/common-workflows/custom-text-walkthrough'
-          }
-          ],
-          createRedirects(existingPath) {
-            if (existingPath.includes('/community')) {
-              // Redirect from /community/X to /portal-guide/X
-              return existingPath.replace('/community', '/portal-guide');
-            }
-            return undefined; // Return a falsy value: no redirect created
           },
+          {
+            to: '/portal-guide/workflows/working-with-workflows',
+            from: '/portal-guide/workflows/input-nodes'
+          },
+          {
+            to: '/portal-guide/workflows/working-with-workflows',
+            from: '/portal-guide/workflows/workflow-builder'
+          },
+          {
+            to: '/portal-guide/workflows/working-with-workflows',
+            from: '/portal-guide/workflows/setting-up-a-mesh-workflow'
+          }
+        ],
+        createRedirects(existingPath) {
+          if (existingPath.includes('/community')) {
+            // Redirect from /community/X to /portal-guide/X
+            return existingPath.replace('/community', '/portal-guide');
+          }
+          return undefined; // Return a falsy value: no redirect created
         },
-      ],
+      },
     ],
+  ],
   scripts: [
     {
       src: "/scripts/sidebar.js",

@@ -16,7 +16,7 @@ These operators take specific input types and then return predictions about thin
 
 :::tip
 
-Since the algorithmic predict operators can be "chained" together with models to automate tasks in a workflow, you can learn how to create workflows [here](https://docs.clarifai.com/portal-guide/workflows/input-nodes#create-your-workflow). 
+Since the algorithmic predict operators can be "chained" together with models to automate tasks in a workflow, you can learn how to create workflows [here](https://docs.clarifai.com/portal-guide/workflows/working-with-workflows##step-2-create-a-new-workflow). 
 
 :::
 

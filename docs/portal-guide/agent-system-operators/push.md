@@ -12,7 +12,7 @@ Push operators help you to automate processes. You can trigger a wide variety of
 
 :::tip
 
-Since the push operators can be "chained" together with models to automate tasks in a workflow, you can learn how to create workflows [here](https://docs.clarifai.com/portal-guide/workflows/input-nodes#create-your-workflow). 
+Since the push operators can be "chained" together with models to automate tasks in a workflow, you can learn how to create workflows [here](https://docs.clarifai.com/portal-guide/workflows/working-with-workflows##step-2-create-a-new-workflow). 
 
 :::
 
@@ -47,7 +47,7 @@ This operator allows you to classify text using regular expressions. When the sp
 
 ![](/img/others/annotation_writer_1.png)
 
-**3.** Go to the [workflow builder](https://docs.clarifai.com/portal-guide/workflows/workflow-builder/) page. Search for the `regex-based-classifier` node in the left-hand sidebar and drag and drop it onto the empty workspace.
+**3.** Go to the [workflow builder](https://docs.clarifai.com/portal-guide/workflows/working-with-workflows/) page. Search for the `regex-based-classifier` node in the left-hand sidebar and drag and drop it onto the empty workspace.
 
 ![](/img/others/annotation_writer_1_1.png)
 
@@ -95,7 +95,7 @@ Next, let's demonstrate how you can use an Annotation Writer to automatically la
 
 **3.** Create a [labeling task](https://docs.clarifai.com/portal-guide/annotate/create-a-task). Remember to choose `Classification` as the modeling objective. Then, go to the **Tasks** listing page and copy the ID of the task — as mentioned earlier. 
 
-**4.**  Go to the [workflow builder](https://docs.clarifai.com/portal-guide/workflows/workflow-builder/) page. Search for the `visual-classifier` node in the left-hand sidebar and drag and drop it onto the empty workspace. Connect it to the `IN` element.
+**4.**  Go to the [workflow builder](https://docs.clarifai.com/portal-guide/workflows/working-with-workflows/) page. Search for the `visual-classifier` node in the left-hand sidebar and drag and drop it onto the empty workspace. Connect it to the `IN` element.
 
 :::caution visual classifier
 

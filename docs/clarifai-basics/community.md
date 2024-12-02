@@ -272,7 +272,7 @@ To start with, navigate to your app’s individual page and select the **Workflo
 
 ![select app workflows](/img/community/community_intro_pics/select_app_workflows.png)
 
-You'll be redirected to a simple no-code, drag-and-drop interface that allows you to connect your models together. You'll need to connect the [`input nodes`](https://docs.clarifai.com/portal-guide/workflows/input-nodes) in your workflow. This allows you to link models to any models that precede them in the visual graph.
+You'll be redirected to a simple no-code, drag-and-drop interface that allows you to connect your models together. You'll need to connect the [`input nodes`](https://docs.clarifai.com/portal-guide/workflows/working-with-workflows) in your workflow. This allows you to link models to any models that precede them in the visual graph.
 
 In the **Filter model type** search box on the left side of the page, search successively for an “optical-character-recognizer” node and a “text-to-text” node.
 

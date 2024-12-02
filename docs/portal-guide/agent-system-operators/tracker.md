@@ -20,7 +20,7 @@ The goal of object tracking is to maintain the identity of the object(s) over ti
 :::tip
 
 
-Since the tracker operators can be "chained" together with models to automate tasks in a workflow, you can learn how to create workflows [here](https://docs.clarifai.com/portal-guide/workflows/input-nodes#create-your-workflow).
+Since the tracker operators can be "chained" together with models to automate tasks in a workflow, you can learn how to create workflows [here](https://docs.clarifai.com/portal-guide/workflows/working-with-workflows#step-2-create-a-new-workflow).
 
 
 :::
