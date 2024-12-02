@@ -13,30 +13,11 @@ This is the API Reference documentation extracted from the source code.
 ## User
 
 ```python
-class User(self,
-             user_id: str = None,
-             base_url: str = "https://api.clarifai.com", 
-             pat: str = None,
-             token: str = None,
-             root_certificates_path: str = None,
-             **kwargs)
+class User(user_id=None, base_url="https://api.clarifai.com", pat=None, token=None, root_certificates_path=None, **kwargs)
 ```
 
 User is a class that provides access to Clarifai API endpoints related to user information.
 
-### User.\__init\__()
-
-```python
-def __init__(self,
-             user_id: str = None,
-             base_url: str = "https://api.clarifai.com", 
-             pat: str = None,
-             token: str = None,
-             root_certificates_path: str = None,
-             **kwargs)
-```
-
-Initializes a **User** object.
 
 **Parameters:**
 - `user_id` (*str*) - The user ID for the user to interact with 
@@ -46,10 +27,10 @@ Initializes a **User** object.
 - `root_certificates_path` (*str*) - Path to the SSL root certificates file
 - `**kwargs` - Additional keyword arguments
 
-### User.app()
+### User.app
 
 ```python
-def app(self, app_id: str, **kwargs) -> App
+User.app(app_id, **kwargs)
 ```
 
 Returns an App object for the specified app ID.
@@ -67,10 +48,10 @@ from clarifai.client.user import User
 app = User("user_id").app("app_id")
 ```
 
-### User.create_app()
+### User.create_app
 
 ```python
-def create_app(self, app_id: str, base_workflow: str = 'Empty', **kwargs) -> App
+User.create_app(app_id, base_workflow='Empty', **kwargs)
 ```
 
 Creates an app for the user.
@@ -90,10 +71,10 @@ client = User(user_id="user_id")
 app = client.create_app(app_id="app_id", base_workflow="Universal")
 ```
 
-### User.create_runner()
+### User.create_runner
 
 ```python
-def create_runner(self, runner_id: str, labels: List[str], description: str) -> dict
+User.create_runner(runner_id, labels, description)
 ```
 
 Creates a runner.
@@ -117,10 +98,10 @@ runner = client.create_runner(
 )
 ```
 
-### User.delete_app()
+### User.delete_app
 
 ```python
-def delete_app(self, app_id: str) -> None
+User.delete_app(app_id)
 ```
 
 Deletes an app by app id.
@@ -134,10 +115,10 @@ from clarifai.client.user import User
 User("user_id").delete_app("app_id")
 ```
 
-### User.delete_runner()
+### User.delete_runner
 
 ```python
-def delete_runner(self, runner_id: str) -> None
+User.delete_runner(runner_id)
 ```
 
 Deletes a runner by runner id.
@@ -152,16 +133,16 @@ client = User(user_id="user_id")
 client.delete_runner(runner_id="runner_id")
 ```
 
-### User.list_apps()
+### User.list_apps
 
 ```python
-def list_apps(self, filter_by: Dict[str, Any] = {}, page_no: int = None, per_page: int = None) -> Generator[App, None, None]
+User.list_apps(filter_by={}, page_no=None, per_page=None)
 ```
 
 Lists all apps for the user.
 
 **Parameters:**
-- `filter_by` (*dict*) - Dictionary of filters
+- `filter_by` (*Dict[str, Any]*) - Dictionary of filters
 - `page_no` (*int*) - Page number to list
 - `per_page` (*int*) - Items per page
 
@@ -174,16 +155,16 @@ from clarifai.client.user import User
 apps = list(User("user_id").list_apps())
 ```
 
-### User.list_runners()
+### User.list_runners
 
 ```python
-def list_runners(self, filter_by: Dict[str, Any] = {}, page_no: int = None, per_page: int = None) -> Generator[dict, None, None]
+User.list_runners(filter_by={}, page_no=None, per_page=None) 
 ```
 
 Lists all runners for the user.
 
 **Parameters:**
-- `filter_by` (*dict*) - Dictionary of filters
+- `filter_by` (*Dict[str, Any]*) - Dictionary of filters
 - `page_no` (*int*) - Page number to list
 - `per_page` (*int*) - Items per page
 
@@ -197,10 +178,10 @@ client = User(user_id="user_id")
 all_runners = list(client.list_runners())
 ```
 
-### User.runner()
+### User.runner
 
 ```python
-def runner(self, runner_id: str) -> dict
+User.runner(runner_id) 
 ```
 
 Returns a Runner object if it exists.
@@ -218,24 +199,10 @@ client = User(user_id="user_id")
 runner_info = client.runner(runner_id="runner_id")
 ```
 
-### User._process_compute_cluster_config()
+### User.create_compute_cluster
 
 ```python
-def _process_compute_cluster_config(self, config_filepath: str) -> Dict[str, Any]
-```
-
-Internal method to process compute cluster configuration from YAML file.
-
-**Parameters:**
-- `config_filepath` (*str*) - Path to configuration YAML file
-
-**Returns:**
-- Dict containing processed compute cluster configuration
-
-### User.create_compute_cluster()
-
-```python
-def create_compute_cluster(self, config_filepath: str, compute_cluster_id: str = None) -> ComputeCluster
+User.create_compute_cluster(config_filepath, compute_cluster_id=None) 
 ```
 
 Creates a compute cluster.
@@ -254,10 +221,10 @@ client = User(user_id="user_id")
 cluster = client.create_compute_cluster(config_filepath="config.yml")
 ```
 
-### User.compute_cluster()
+### User.compute_cluster
 
 ```python
-def compute_cluster(self, compute_cluster_id: str) -> ComputeCluster
+User.compute_cluster(compute_cluster_id) 
 ```
 
 Returns a Compute Cluster object for the specified compute cluster ID.
@@ -274,10 +241,10 @@ from clarifai.client.user import User
 compute_cluster = User("user_id").compute_cluster("compute_cluster_id")
 ```
 
-### User.list_compute_clusters()
+### User.list_compute_clusters
 
 ```python
-def list_compute_clusters(self, page_no: int = None, per_page: int = None) -> Generator[dict, None, None]
+User.list_compute_clusters(page_no=None, per_page=None) 
 ```
 
 Lists compute clusters for the user.
@@ -296,10 +263,10 @@ client = User(user_id="user_id")
 clusters = list(client.list_compute_clusters())
 ```
 
-### User.delete_compute_clusters()
+### User.delete_compute_clusters
 
 ```python
-def delete_compute_clusters(self, compute_cluster_ids: List[str]) -> None
+User.delete_compute_clusters(compute_cluster_ids) 
 ```
 
 Deletes multiple compute clusters by their IDs.
@@ -313,10 +280,10 @@ from clarifai.client.user import User
 User("user_id").delete_compute_clusters(["cluster_id1", "cluster_id2"])
 ```
 
-### User.patch_app()
+### User.patch_app
 
 ```python
-def patch_app(self, app_id: str, action: str = 'overwrite', **kwargs) -> App
+User.patch_app(app_id, action='overwrite', **kwargs) 
 ```
 
 Updates an app by app id.
@@ -336,36 +303,14 @@ client = User(user_id="user_id")
 app = client.patch_app("app_id", description="New description")
 ```
 
+
 ## App
 
 ```python
-class App(url: str = None,
-          app_id: str = None,
-          user_id: str = None,
-          base_url: str = "https://api.clarifai.com",
-          pat: str = None,
-          token: str = None,
-          root_certificates_path: str = None,
-          **kwargs)
+class App(url=None, app_id=None, user_id=None, base_url="https://api.clarifai.com", pat=None, token=None, root_certificates_path=None, **kwargs)
 ```
 
 App is a class that provides access to Clarifai API endpoints related to App information.
-
-### App.\__init\__()
-
-```python
-def __init__(self,
-             url: str = None,
-             app_id: str = None,
-             user_id: str = None,
-             base_url: str = "https://api.clarifai.com",
-             pat: str = None,
-             token: str = None,
-             root_certificates_path: str = None,
-             **kwargs)
-```
-
-Initializes an **App** object.
 
 **Parameters:**
 - `url` (*str*) - The URL to initialize the app object
@@ -379,10 +324,10 @@ Initializes an **App** object.
   - `name` (*str*) - The name of the app
   - `description` (*str*) - The description of the app
 
-### App.create_concepts()
+### App.create_concepts
 
 ```python
-def create_concepts(self, concept_ids: List[str], concepts: List[str] = []) -> None
+App.create_concepts(concept_ids, concepts=[]) 
 ```
 
 Add concepts to the app.
@@ -398,10 +343,10 @@ app = App(app_id="app_id", user_id="user_id")
 app.add_concepts(concept_ids=["concept_id_1", "concept_id_2"])
 ```
 
-### App.create_concept_relations()
+### App.create_concept_relations
 
 ```python
-def create_concept_relations(self, subject_concept_id: str, object_concept_ids: List[str], predicates: List[str]) -> None
+App.create_concept_relations(subject_concept_id, object_concept_ids, predicates) 
 ```
 
 Creates concept relations between concepts.
@@ -422,10 +367,10 @@ app.create_concept_relation(
 )
 ```
 
-### App.create_dataset()
+### App.create_dataset
 
 ```python
-def create_dataset(self, dataset_id: str, **kwargs) -> Dataset
+App.create_dataset(dataset_id, **kwargs) 
 ```
 
 Creates a dataset in the app.
@@ -444,10 +389,10 @@ app = App(app_id="app_id", user_id="user_id")
 dataset = app.create_dataset(dataset_id="dataset_id")
 ```
 
-### App.create_model()
+### App.create_model
 
 ```python
-def create_model(self, model_id: str, **kwargs) -> Model
+App.create_model(model_id, **kwargs) 
 ```
 
 Creates a model in the app.
@@ -466,10 +411,10 @@ app = App(app_id="app_id", user_id="user_id")
 model = app.create_model(model_id="model_id")
 ```
 
-### App.create_module()
+### App.create_module
 
 ```python
-def create_module(self, module_id: str, description: str, **kwargs) -> Module
+App.create_module(module_id, description, **kwargs) 
 ```
 
 Creates a module in the app.
@@ -489,10 +434,10 @@ app = App(app_id="app_id", user_id="user_id")
 module = app.create_module(module_id="module_id")
 ```
 
-### App.create_workflow()
+### App.create_workflow
 
 ```python
-def create_workflow(self, config_filepath: str, generate_new_id: bool = False, display: bool = True) -> Workflow
+App.create_workflow(config_filepath, generate_new_id=False, display=True) 
 ```
 
 Creates a workflow in the app.
@@ -512,10 +457,10 @@ app = App(app_id="app_id", user_id="user_id")
 workflow = app.create_workflow(config_filepath="config.yml")
 ```
 
-### App.dataset()
+### App.dataset
 
 ```python
-def dataset(self, dataset_id: str, dataset_version_id: str = None, **kwargs) -> Dataset
+App.dataset(dataset_id, dataset_version_id=None, **kwargs) 
 ```
 
 Returns a Dataset object.
@@ -535,10 +480,10 @@ app = App(app_id="app_id", user_id="user_id")
 dataset = app.dataset(dataset_id="dataset_id")
 ```
 
-### App.delete_concept_relations()
+### App.delete_concept_relations
 
 ```python
-def delete_concept_relations(self, concept_id: str, concept_relation_ids: List[str] = []) -> None
+App.delete_concept_relations(concept_id, concept_relation_ids=[]) 
 ```
 
 Deletes concept relations for a concept.
@@ -554,10 +499,10 @@ app = App(app_id="app_id", user_id="user_id")
 app.delete_concept_relations(concept_id="concept_id")
 ```
 
-### App.delete_dataset()
+### App.delete_dataset
 
 ```python
-def delete_dataset(self, dataset_id: str) -> None
+App.delete_dataset(dataset_id) 
 ```
 
 Deletes a dataset by ID.
@@ -572,10 +517,10 @@ app = App(app_id="app_id", user_id="user_id")
 app.delete_dataset(dataset_id="dataset_id")
 ```
 
-### App.delete_model()
+### App.delete_model
 
 ```python
-def delete_model(self, model_id: str) -> None
+App.delete_model(model_id) 
 ```
 
 Deletes a model by ID.
@@ -590,10 +535,10 @@ app = App(app_id="app_id", user_id="user_id")
 app.delete_model(model_id="model_id")
 ```
 
-### App.delete_module()
+### App.delete_module
 
 ```python
-def delete_module(self, module_id: str) -> None
+App.delete_module(module_id) 
 ```
 
 Deletes a module by ID.
@@ -608,10 +553,10 @@ app = App(app_id="app_id", user_id="user_id")
 app.delete_module(module_id="module_id")
 ```
 
-### App.delete_workflow()
+### App.delete_workflow
 
 ```python
-def delete_workflow(self, workflow_id: str) -> None
+App.delete_workflow(workflow_id) 
 ```
 
 Deletes a workflow by ID.
@@ -626,10 +571,10 @@ app = App(app_id="app_id", user_id="user_id")
 app.delete_workflow(workflow_id="workflow_id")
 ```
 
-### App.get_input_count()
+### App.get_input_count
 
 ```python
-def get_input_count(self) -> int
+App.get_input_count() 
 ```
 
 Gets count of all inputs in the app.
@@ -644,10 +589,10 @@ app = App(app_id="app_id", user_id="user_id")
 count = app.get_input_count()
 ```
 
-### App.inputs()
+### App.inputs
 
 ```python
-def inputs(self) -> Inputs
+App.inputs()
 ```
 
 Returns an Input object.
@@ -658,7 +603,7 @@ Returns an Input object.
 ### App.list_concepts()
 
 ```python
-def list_concepts(self, page_no: int = None, per_page: int = None) -> Generator[Concept, None, None]
+App.list_concepts(page_no=None, per_page=None)
 ```
 
 Lists all concepts in the app.
@@ -677,10 +622,10 @@ app = App(app_id="app_id", user_id="user_id")
 concepts = list(app.list_concepts())
 ```
 
-### App.list_datasets()
+### App.list_datasets
 
 ```python
-def list_datasets(self, page_no: int = None, per_page: int = None) -> Generator[Dataset, None, None]
+App.list_datasets(page_no=None, per_page=None)
 ```
 
 Lists all datasets in the app.
@@ -699,10 +644,10 @@ app = App(app_id="app_id", user_id="user_id")
 datasets = list(app.list_datasets())
 ```
 
-### App.list_installed_module_versions()
+### App.list_installed_module_versions
 
 ```python
-def list_installed_module_versions(self, filter_by: Dict[str, Any] = {}, page_no: int = None, per_page: int = None) -> Generator[Module, None, None]
+App.list_installed_module_versions(filter_by={}, page_no=None, per_page=None)
 ```
 
 Lists installed module versions.
@@ -722,10 +667,10 @@ app = App(app_id="app_id", user_id="user_id")
 versions = list(app.list_installed_module_versions())
 ```
 
-### App.list_models()
+### App.list_models
 
 ```python
-def list_models(self, filter_by: Dict[str, Any] = {}, only_in_app: bool = True, page_no: int = None, per_page: int = None) -> Generator[Model, None, None]
+App.list_models(filter_by={}, only_in_app=True, page_no=None, per_page=None)
 ```
 
 Lists models in the app.
@@ -746,10 +691,10 @@ app = User(user_id="user_id").app(app_id="app_id")
 models = list(app.list_models())
 ```
 
-### App.list_modules()
+### App.list_modules
 
 ```python
-def list_modules(self, filter_by: Dict[str, Any] = {}, only_in_app: bool = True, page_no: int = None, per_page: int = None) -> Generator[Module, None, None]
+App.list_modules(filter_by={}, only_in_app=True, page_no=None, per_page=None)
 ```
 
 Lists modules in the app.
@@ -770,10 +715,10 @@ app = App(app_id="app_id", user_id="user_id")
 modules = list(app.list_modules())
 ```
 
-### App.list_trainable_model_types()
+### App.list_trainable_model_types
 
 ```python
-def list_trainable_model_types(self) -> List[str]
+App.list_trainable_model_types()
 ```
 
 Lists trainable model types.
@@ -787,10 +732,10 @@ from clarifai.client.app import App
 types = app.list_trainable_model_types()
 ```
 
-### App.list_workflows()
+### App.list_workflows
 
 ```python
-def list_workflows(self, filter_by: Dict[str, Any] = {}, only_in_app: bool = True, page_no: int = None, per_page: int = None) -> Generator[Workflow, None, None]
+App.list_workflows(filter_by={}, only_in_app=True, page_no=None, per_page=None)
 ```
 
 Lists workflows in the app.
@@ -811,10 +756,10 @@ app = App(app_id="app_id", user_id="user_id")
 workflows = list(app.list_workflows())
 ```
 
-### App.model()
+### App.model
 
 ```python
-def model(self, model_id: str, model_version: Dict = {'id': ""}, **kwargs) -> Model
+App.model(model_id, model_version={'id': ""}, **kwargs)
 ```
 
 Returns a Model object.
@@ -834,10 +779,10 @@ app = App(app_id="app_id", user_id="user_id")
 model = app.model(model_id="model_id")
 ```
 
-### App.module()
+### App.module
 
 ```python
-def module(self, module_id: str, **kwargs) -> Module
+App.module(module_id, **kwargs)
 ```
 
 Returns a Module object.
@@ -856,10 +801,10 @@ app = App(app_id="app_id", user_id="user_id")
 module = app.module(module_id="module_id")
 ```
 
-### App.patch_dataset()
+### App.patch_dataset
 
 ```python
-def patch_dataset(self, dataset_id: str, action: str = 'merge', **kwargs) -> Dataset
+App.patch_dataset(dataset_id, action='merge', **kwargs)
 ```
 
 Updates a dataset.
@@ -872,10 +817,10 @@ Updates a dataset.
 **Returns:**
 - Updated Dataset object
 
-### App.patch_model()
+### App.patch_model
 
 ```python
-def patch_model(self, model_id: str, action: str = 'merge', **kwargs) -> Model
+App.patch_model(model_id, action='merge', **kwargs)
 ```
 
 Updates a model.
@@ -883,12 +828,12 @@ Updates a model.
 **Parameters:**
 - `model_id` (*str*) - Model ID to update
 - `action` (*str*) - Update action ('merge'/'overwrite'/'remove')
-- `**kwargs` -
+- `**kwargs` - Properties to update
 
-### App.search_concept_relations()
+### App.search_concept_relations
 
 ```python
-def search_concept_relations(self, concept_id: str = None, predicate: str = None, page_no: int = None, per_page: int = None, show_tree: bool = False) -> Generator[ConceptRelation, None, None]
+App.search_concept_relations(concept_id=None, predicate=None, page_no=None, per_page=None, show_tree=False)
 ```
 
 Lists all concept relations of the app.
@@ -910,10 +855,10 @@ app = App(app_id="app_id", user_id="user_id")
 relations = list(app.search_concept_relations())
 ```
 
-### App._process_workflow_config()
+### App._process_workflow_config
 
 ```python
-def _process_workflow_config(self, config_filepath: str)
+App._process_workflow_config(config_filepath)
 ```
 
 Internal method to process workflow configuration from YAML file.
@@ -924,10 +869,10 @@ Internal method to process workflow configuration from YAML file.
 **Returns:**
 - Tuple of workflow configuration and nodes
 
-### App.workflow()
+### App.workflow
 
 ```python
-def workflow(self, workflow_id: str, **kwargs) -> Workflow
+App.workflow(workflow_id, **kwargs)
 ```
 
 Returns a workflow object for the existing workflow ID.
@@ -946,10 +891,10 @@ app = App(app_id="app_id", user_id="user_id")
 workflow = app.workflow(workflow_id="workflow_id")
 ```
 
-### App.patch_workflow()
+### App.patch_workflow
 
 ```python
-def patch_workflow(self, workflow_id: str, action: str = 'merge', config_filepath: str = None, **kwargs) -> Workflow
+App.patch_workflow(workflow_id, action='merge', config_filepath=None, **kwargs)
 ```
 
 Updates a workflow by workflow id.
@@ -973,33 +918,11 @@ workflow = app.patch_workflow(workflow_id="workflow_id", description="New descri
 ## Dataset
 
 ```python
-class Dataset(url: str = None,
-             dataset_id: str = None,
-             dataset_version_id: str = None,
-             base_url: str = "https://api.clarifai.com",
-             pat: str = None,
-             token: str = None,
-             root_certificates_path: str = None,
-             **kwargs)
+class Dataset(url=None, dataset_id=None, dataset_version_id=None, base_url="https://api.clarifai.com", pat=None, token=None, root_certificates_path=None, **kwargs)
 ```
 
 Dataset is a class that provides access to Clarifai API endpoints related to Dataset information.
 
-### Dataset.\__init\__()
-
-```python
-def __init__(self,
-             url: str = None,
-             dataset_id: str = None,
-             dataset_version_id: str = None,
-             base_url: str = "https://api.clarifai.com",
-             pat: str = None,
-             token: str = None,
-             root_certificates_path: str = None,
-             **kwargs)
-```
-
-Initializes a **Dataset** object.
 
 **Parameters:**
 - `url` (*str*) - The URL to initialize the dataset object
@@ -1011,10 +934,10 @@ Initializes a **Dataset** object.
 - `root_certificates_path` (*str*) - Path to SSL root certificates file
 - `**kwargs` - Additional keyword arguments
 
-### Dataset.create_version()
+### Dataset.create_version
 
 ```python
-def create_version(self, **kwargs) -> 'Dataset'
+Dataset.create_version(**kwargs)
 ```
 
 Creates a dataset version.
@@ -1034,10 +957,10 @@ dataset = Dataset(dataset_id='dataset_id', user_id='user_id', app_id='app_id')
 dataset_version = dataset.create_version(description='dataset_version_description')
 ```
 
-### Dataset.delete_version()
+### Dataset.delete_version
 
 ```python
-def delete_version(self, version_id: str) -> None
+Dataset.delete_version(version_id)
 ```
 
 Deletes a dataset version.
@@ -1052,10 +975,10 @@ dataset = Dataset(dataset_id='dataset_id', user_id='user_id', app_id='app_id')
 dataset.delete_version(version_id='version_id')
 ```
 
-### Dataset.list_versions()
+### Dataset.list_versions
 
 ```python
-def list_versions(self, page_no: int = None, per_page: int = None) -> Generator['Dataset', None, None]
+Dataset.list_versions(page_no=None, per_page=None)
 ```
 
 Lists all versions for the dataset.
@@ -1074,10 +997,10 @@ dataset = Dataset(dataset_id='dataset_id', user_id='user_id', app_id='app_id')
 all_dataset_versions = list(dataset.list_versions())
 ```
 
-### Dataset.list_inputs()
+### Dataset.list_inputs
 
 ```python
-def list_inputs(self, page_no: int = None, per_page: int = None, input_type: str = None) -> Generator[Input, None, None]
+Dataset.list_inputs(page_no=None, per_page=None, input_type=None)
 ```
 
 Lists all inputs in the dataset.
@@ -1097,10 +1020,10 @@ dataset = Dataset(dataset_id='dataset_id', user_id='user_id', app_id='app_id')
 all_dataset_inputs = list(dataset.list_inputs())
 ```
 
-### Dataset.\__iter\__()
+### Dataset.\__iter\__
 
 ```python
-def __iter__(self) -> Iterator[DatasetExportReader]
+Dataset.__iter__()
 ```
 
 Makes the Dataset class iterable, returning an iterator over exported dataset contents.
@@ -1117,10 +1040,10 @@ for entry in dataset:
     pass
 ```
 
-### Dataset._concurrent_annot_upload()
+### Dataset._concurrent_annot_upload
 
 ```python
-def _concurrent_annot_upload(self, annots: List[List[resources_pb2.Annotation]]) -> Union[List[resources_pb2.Annotation], List[None]]
+Dataset._concurrent_annot_upload(annots)
 ```
 
 Internal method for concurrent annotation uploads.
@@ -1131,10 +1054,10 @@ Internal method for concurrent annotation uploads.
 **Returns:**
 - List of failed annotation protos
 
-### Dataset._delete_failed_inputs()
+### Dataset._delete_failed_inputs
 
 ```python
-def _delete_failed_inputs(self, batch_input_ids: List[int], dataset_obj: ClarifaiDatasetType, upload_response: MultiInputResponse = None, batch_no: Optional[int] = None) -> Tuple[List[int], List[int]]
+Dataset._delete_failed_inputs(batch_input_ids, dataset_obj, upload_response = None, batch_no = None)
 ```
 
 Internal method to delete failed input IDs.
@@ -1148,10 +1071,10 @@ Internal method to delete failed input IDs.
 **Returns:**
 - Tuple of success and failed input ID lists
 
-### Dataset._upload_inputs_annotations()
+### Dataset._upload_inputs_annotations
 
 ```python
-def _upload_inputs_annotations(self, batch_input_ids: List[int], dataset_obj: ClarifaiDatasetType, batch_no: Optional[int] = None, is_retry_duplicates: bool = False) -> Tuple[List[int], List[resources_pb2.Annotation], MultiInputResponse]
+Dataset._upload_inputs_annotations(batch_input_ids, dataset_obj, batch_no = None, is_retry_duplicates = False)
 ```
 
 Internal method to upload input batches with annotations.
@@ -1165,10 +1088,10 @@ Internal method to upload input batches with annotations.
 **Returns:**
 - Tuple containing failed IDs, retry annotations and response
 
-### Dataset._retry_uploads()
+### Dataset._retry_uploads
 
 ```python
-def _retry_uploads(self, failed_input_ids: List[int], retry_annot_protos: List[resources_pb2.Annotation], dataset_obj: ClarifaiDatasetType, batch_no: Optional[int]) -> None
+Dataset._retry_uploads(failed_input_ids, retry_annot_protos, dataset_obj, batch_no)
 ```
 
 Internal method to retry failed uploads.
@@ -1179,10 +1102,10 @@ Internal method to retry failed uploads.
 - `dataset_obj` (*ClarifaiDatasetType*) - Dataset object
 - `batch_no` (*Optional[int]*) - Batch number
 
-### Dataset._data_upload()
+### Dataset._data_upload
 
 ```python
-def _data_upload(self, dataset_obj: ClarifaiDatasetType, is_log_retry: bool = False, log_retry_ids: List[int] = None, **kwargs) -> None
+Dataset._data_upload(dataset_obj, is_log_retry = False, log_retry_ids = None, **kwargs)
 ```
 
 Internal method for dataset uploads.
@@ -1193,10 +1116,10 @@ Internal method for dataset uploads.
 - `log_retry_ids` (*List[int]*) - IDs to retry
 - `**kwargs` - Additional arguments
 
-### Dataset.upload_dataset()
+### Dataset.upload_dataset
 
 ```python
-def upload_dataset(self, dataloader: Type[ClarifaiDataLoader], batch_size: int = 32, get_upload_status: bool = False, log_warnings: bool = False, **kwargs) -> None
+Dataset.upload_dataset(dataloader, batch_size=32, get_upload_status=False, log_warnings=False, **kwargs)
 ```
 
 Uploads a dataset to the app.
@@ -1215,10 +1138,10 @@ dataset = Dataset(dataset_id='dataset_id')
 dataset.upload_dataset(dataloader=my_dataloader)
 ```
 
-### Dataset.retry_upload_from_logs()
+### Dataset.retry_upload_from_logs
 
 ```python
-def retry_upload_from_logs(self, log_file_path: str, dataloader: Type[ClarifaiDataLoader], retry_duplicates: bool = False, log_warnings: bool = False, **kwargs) -> None
+Dataset.retry_upload_from_logs(log_file_path, dataloader, retry_duplicates=False, log_warnings=False, **kwargs)
 ```
 
 Retries failed uploads from logs.
@@ -1230,10 +1153,10 @@ Retries failed uploads from logs.
 - `log_warnings` (*bool*) - Save warnings to log file if True
 - `**kwargs` - Additional arguments
 
-### Dataset.upload_from_csv()
+### Dataset.upload_from_csv
 
 ```python
-def upload_from_csv(self, csv_path: str, input_type: str = 'text', csv_type: str = None, labels: bool = True, batch_size: int = 128) -> None
+Dataset.upload_from_csv(csv_path, input_type='text', csv_type=None, labels=True, batch_size=128)
 ```
 
 Uploads dataset from CSV file.
@@ -1252,10 +1175,10 @@ dataset = Dataset(user_id='user_id', app_id='app_id', dataset_id='dataset_id')
 dataset.upload_from_csv(csv_path='data.csv', input_type='text', csv_type='raw')
 ```
 
-### Dataset.upload_from_folder()
+### Dataset.upload_from_folder
 
 ```python
-def upload_from_folder(self, folder_path: str, input_type: str, labels: bool = False, batch_size: int = 128) -> None
+Dataset.upload_from_folder(folder_path, input_type, labels=False, batch_size=128)
 ```
 
 Uploads dataset from a folder.
@@ -1273,10 +1196,10 @@ dataset = Dataset(user_id='user_id', app_id='app_id', dataset_id='dataset_id')
 dataset.upload_from_folder(folder_path='data', input_type='image', labels=True)
 ```
 
-### Dataset.get_upload_status()
+### Dataset.get_upload_status
 
 ```python
-def get_upload_status(self, dataloader: Type[ClarifaiDataLoader] = None, delete_version: bool = False, timeout: int = 600, pre_upload_stats: Tuple[Dict[str, int], Dict[str, int]] = None, pre_upload: bool = False) -> Optional[Tuple[Dict[str, int], Dict[str, int]]]
+Dataset.get_upload_status(dataloader=None, delete_version=False, timeout=600, pre_upload_stats=None, pre_upload=False)
 ```
 
 Gets dataset upload status.
@@ -1295,10 +1218,10 @@ dataset = Dataset(dataset_id='dataset_id', user_id='user_id', app_id='app_id')
 dataset.get_upload_status(dataloader=my_dataloader)
 ```
 
-### Dataset.merge_dataset()
+### Dataset.merge_dataset
 
 ```python
-def merge_dataset(self, merge_dataset_id: str) -> None
+Dataset.merge_dataset(merge_dataset_id)
 ```
 
 Merges another dataset into this dataset.
@@ -1313,10 +1236,10 @@ dataset = Dataset(dataset_id='dataset_id', user_id='user_id', app_id='app_id')
 dataset.merge_dataset(merge_dataset_id='other_dataset_id')
 ```
 
-### Dataset.archive_zip()
+### Dataset.archive_zip
 
 ```python
-def archive_zip(self, wait: bool = True) -> str
+Dataset.archive_zip(wait=True)
 ```
 
 Gets dataset archive as ZIP.
@@ -1327,10 +1250,10 @@ Gets dataset archive as ZIP.
 **Returns:**
 - URL to download archive
 
-### Dataset.export()
+### Dataset.export
 
 ```python
-def export(self, save_path: str, archive_url: str = None, local_archive_path: str = None, split: str = 'all', num_workers: int = 4) -> None
+Dataset.export(save_path, archive_url=None, local_archive_path=None, split='all', num_workers=4)
 ```
 
 Exports dataset to local archive.
@@ -1351,33 +1274,10 @@ Dataset().export(save_path='output.zip')
 ## Input
 
 ```python
-class Inputs(user_id: str = None,
-            app_id: str = None,
-            logger_level: str = "INFO", 
-            base_url: str = "https://api.clarifai.com",
-            pat: str = None,
-            token: str = None,
-            root_certificates_path: str = None,
-            **kwargs)
+class Inputs(user_id=None, app_id=None, logger_level="INFO", base_url="https://api.clarifai.com", pat=None, token=None, root_certificates_path=None, **kwargs)
 ```
 
 Inputs is a class that provides access to Clarifai API endpoints related to Input information.
-
-### Inputs.\__init\__()
-
-```python
-def __init__(self,
-             user_id: str = None,
-             app_id: str = None,
-             logger_level: str = "INFO",
-             base_url: str = "https://api.clarifai.com", 
-             pat: str = None,
-             token: str = None,
-             root_certificates_path: str = None,
-             **kwargs)
-```
-
-Initializes an Input object.
 
 **Parameters:**
 - `user_id` (*str*) - User ID for authentication
@@ -1389,20 +1289,10 @@ Initializes an Input object.
 - `root_certificates_path` (*str*) - Path to SSL root certificates file
 - `**kwargs` - Additional keyword arguments
 
-### Inputs._get_proto()
+### Inputs._get_proto
 
 ```python
-@staticmethod 
-def _get_proto(input_id: str,
-               dataset_id: str = None,
-               imagepb: Image = None,
-               video_pb: Video = None, 
-               audio_pb: Audio = None,
-               text_pb: Text = None,
-               geo_info: List = None,
-               labels: List = None,
-               label_ids: List = None,
-               metadata: Struct = None) -> Input
+Inputs._get_proto(input_id, dataset_id=None, imagepb=None, video_pb=None, audio_pb=None, text_pb=None, geo_info=None, labels=None, label_ids=None, metadata=None)
 ```
 
 Creates an input proto object.
@@ -1422,17 +1312,10 @@ Creates an input proto object.
 **Returns:**
 - Input proto object
 
-### Inputs.get_input_from_url()
+### Inputs.get_input_from_url
 
 ```python
-@staticmethod
-def get_input_from_url(input_id: str,
-                      image_url: str = None,
-                      video_url: str = None,
-                      audio_url: str = None, 
-                      text_url: str = None,
-                      dataset_id: str = None,
-                      **kwargs) -> Input
+Inputs.get_input_from_url(input_id, image_url=None, video_url=None, audio_url=None, text_url=None, dataset_id=None, **kwargs)
 ```
 
 Creates input proto from URL.
@@ -1458,17 +1341,10 @@ input_proto = Inputs.get_input_from_url(
 )
 ```
 
-### Inputs.get_input_from_file()
+### Inputs.get_input_from_file
 
 ```python
-@staticmethod
-def get_input_from_file(input_id: str,
-                       image_file: str = None, 
-                       video_file: str = None,
-                       audio_file: str = None,
-                       text_file: str = None,
-                       dataset_id: str = None,
-                       **kwargs) -> Input
+Inputs.get_input_from_file(input_id, image_file=None, video_file=None, audio_file=None, text_file=None, dataset_id=None, **kwargs) 
 ```
 
 Creates input proto from files.
@@ -1494,17 +1370,10 @@ input_proto = Inputs.get_input_from_file(
 )
 ```
 
-### Inputs.get_input_from_bytes()
+### Inputs.get_input_from_bytes
 
 ```python
-@staticmethod
-def get_input_from_bytes(input_id: str,
-                        image_bytes: bytes = None,
-                        video_bytes: bytes = None,
-                        audio_bytes: bytes = None,
-                        text_bytes: bytes = None,
-                        dataset_id: str = None,
-                        **kwargs) -> Input
+Inputs.get_input_from_bytes(input_id, image_bytes=None, video_bytes=None, audio_bytes=None, text_bytes=None, dataset_id=None, **kwargs) 
 ```
 
 Creates input proto from bytes.
@@ -1533,13 +1402,10 @@ input_proto = Inputs.get_input_from_bytes(
 )
 ```
 
-### Inputs.get_image_inputs_from_folder()
+### Inputs.get_image_inputs_from_folder
 
 ```python
-@staticmethod
-def get_image_inputs_from_folder(folder_path: str,
-                               dataset_id: str = None,
-                               labels: bool = False) -> List[Input]
+Inputs.get_image_inputs_from_folder(folder_path, dataset_id=None, labels=False)
 ```
 
 Creates input protos from a folder of images.
@@ -1558,14 +1424,10 @@ from clarifai.client.input import Inputs
 input_protos = Inputs.get_image_inputs_from_folder(folder_path='images_folder')
 ```
 
-### Inputs.get_text_input()
+### Inputs.get_text_input
 
 ```python
-@staticmethod
-def get_text_input(input_id: str,
-                   raw_text: str,
-                   dataset_id: str = None,
-                   **kwargs) -> Text
+Inputs.get_text_input(input_id, raw_text, dataset_id=None, **kwargs)
 ```
 
 Creates text input proto.
@@ -1588,17 +1450,10 @@ input_proto = Inputs.get_text_input(
 )
 ```
 
-### Inputs.get_multimodal_input()
+### Inputs.get_multimodal_input
 
 ```python
-@staticmethod
-def get_multimodal_input(input_id: str,
-                        raw_text: str = None,
-                        text_bytes: bytes = None,
-                        image_url: str = None, 
-                        image_bytes: bytes = None,
-                        dataset_id: str = None,
-                        **kwargs) -> Text
+Inputs.get_multimodal_input(input_id, raw_text=None, text_bytes=None, image_url=None, image_bytes=None, dataset_id=None, **kwargs)
 ```
 
 Creates multimodal input proto with text and image.
@@ -1625,15 +1480,10 @@ input_proto = Inputs.get_multimodal_input(
 )
 ```
 
-### Inputs.get_inputs_from_csv()
+### Inputs.get_inputs_from_csv
 
 ```python
-@staticmethod
-def get_inputs_from_csv(csv_path: str,
-                       input_type: str = 'text',
-                       csv_type: str = 'raw',
-                       dataset_id: str = None,
-                       labels: str = True) -> List[Text]
+Inputs.get_inputs_from_csv(csv_path, input_type='text', csv_type='raw', dataset_id=None, labels=True)
 ```
 
 Creates input protos from CSV file.
@@ -1658,13 +1508,10 @@ input_protos = Inputs.get_inputs_from_csv(
 )
 ```
 
-### Inputs.get_text_inputs_from_folder()
+### Inputs.get_text_inputs_from_folder
 
 ```python
-@staticmethod
-def get_text_inputs_from_folder(folder_path: str,
-                              dataset_id: str = None,
-                              labels: bool = False) -> List[Text]
+Inputs.get_text_inputs_from_folder(folder_path, dataset_id=None, labels=False)
 ```
 
 Creates input protos from folder of text files.
@@ -1683,15 +1530,10 @@ from clarifai.client.input import Inputs
 input_protos = Inputs.get_text_inputs_from_folder(folder_path='text_folder')
 ```
 
-### Inputs.get_bbox_proto()
+### Inputs.get_bbox_proto
 
 ```python
-@staticmethod
-def get_bbox_proto(input_id: str,
-                   label: str,
-                   bbox: List,
-                   label_id: str = None,
-                   annot_id: str = None) -> Annotation
+Inputs.get_bbox_proto(input_id, label, bbox, label_id=None, annot_id=None)
 ```
 
 Creates annotation proto for bounding box.
@@ -1716,15 +1558,10 @@ Inputs.get_bbox_proto(
 )
 ```
 
-### Inputs.get_mask_proto()
+### Inputs.get_mask_proto
 
 ```python
-@staticmethod
-def get_mask_proto(input_id: str,
-                   label: str, 
-                   polygons: List[List[float]],
-                   label_id: str = None,
-                   annot_id: str = None) -> Annotation
+Inputs.get_mask_proto(input_id, label, polygons, label_id=None, annot_id=None)
 ```
 
 Creates annotation proto for polygon mask.
@@ -1749,17 +1586,10 @@ Inputs.get_mask_proto(
 )
 ```
 
-### Inputs.upload_from_url()
+### Inputs.upload_from_url
 
 ```python
-def upload_from_url(self,
-                   input_id: str,
-                   image_url: str = None,
-                   video_url: str = None,
-                   audio_url: str = None,
-                   text_url: str = None,
-                   dataset_id: str = None,
-                   **kwargs) -> str
+Inputs.upload_from_url(input_id, image_url=None, video_url=None, audio_url=None, text_url=None, dataset_id=None, **kwargs)
 ```
 
 Uploads input from URL.
@@ -1786,17 +1616,10 @@ input_obj.upload_from_url(
 )
 ```
 
-### Inputs.upload_from_file()
+### Inputs.upload_from_file
 
 ```python
-def upload_from_file(self,
-                    input_id: str,
-                    image_file: str = None,
-                    video_file: str = None,
-                    audio_file: str = None,
-                    text_file: str = None,
-                    dataset_id: str = None,
-                    **kwargs) -> str
+Inputs.upload_from_file(input_id, image_file=None, video_file=None, audio_file=None, text_file=None, dataset_id=None, **kwargs)
 ```
 
 Uploads input from file.
@@ -1820,17 +1643,10 @@ input_obj = Inputs(user_id='user_id', app_id='demo_app')
 input_obj.upload_from_file(input_id='demo', audio_file='demo.mp3')
 ```
 
-### Inputs.upload_from_bytes()
+### Inputs.upload_from_bytes
 
 ```python
-def upload_from_bytes(self,
-                     input_id: str,
-                     image_bytes: bytes = None,
-                     video_bytes: bytes = None,
-                     audio_bytes: bytes = None,
-                     text_bytes: bytes = None,
-                     dataset_id: str = None,
-                     **kwargs) -> str
+Inputs.upload_from_bytes(input_id, image_bytes=None, video_bytes=None, audio_bytes=None, text_bytes=None, dataset_id=None, **kwargs)
 ```
 
 Uploads input from bytes.
@@ -1839,16 +1655,18 @@ Uploads input from bytes.
 - `input_id` (*str*) - Input ID
 - `image_bytes` (*bytes*) - Image bytes
 - `video_bytes` (*bytes*) - Video bytes
-- `audio_bytes` (*bytes*)
+- `audio_bytes` (*bytes*) - Audio bytes
+- `text_bytes` (*bytes*) - Text bytes
+- `dataset_id` (*str*) - Dataset ID
+- `**kwargs` - Additional arguments
 
-### Inputs.upload_text()
+**Returns:**
+- Upload job ID
+
+### Inputs.upload_text
 
 ```python
-def upload_text(self,
-                input_id: str,
-                raw_text: str,
-                dataset_id: str = None,
-                **kwargs) -> str
+Inputs.upload_text(input_id, raw_text, dataset_id=None, **kwargs)
 ```
 
 Uploads text input from raw text.
@@ -1869,12 +1687,10 @@ input_obj = Inputs(user_id='user_id', app_id='demo_app')
 input_obj.upload_text(input_id='demo', raw_text='This is a test')
 ```
 
-### Inputs.upload_inputs()
+### Inputs.upload_inputs
 
 ```python
-def upload_inputs(self,
-                 inputs: List[Input],
-                 show_log: bool = True) -> str
+Inputs.upload_inputs(inputs, show_log=True)
 ```
 
 Uploads multiple input objects to the app.
@@ -1886,12 +1702,10 @@ Uploads multiple input objects to the app.
 **Returns:**
 - Tuple of (input_job_id, response)
 
-### Inputs.patch_inputs()
+### Inputs.patch_inputs
 
 ```python
-def patch_inputs(self,
-                inputs: List[Input],
-                action: str = 'merge') -> None
+Inputs.patch_inputs(inputs, action='merge')
 ```
 
 Patches existing input objects.
@@ -1900,12 +1714,10 @@ Patches existing input objects.
 - `inputs` (*List[Input]*) - List of input objects to patch
 - `action` (*str*) - Action to perform: 'merge', 'overwrite', or 'remove'
 
-### Inputs.upload_annotations()
+### Inputs.upload_annotations
 
 ```python
-def upload_annotations(self,
-                      batch_annot: List[resources_pb2.Annotation],
-                      show_log: bool = True) -> Union[List[resources_pb2.Annotation], List[None]]
+Inputs.upload_annotations(batch_annot, show_log=True)
 ```
 
 Uploads image annotations.
@@ -1917,12 +1729,10 @@ Uploads image annotations.
 **Returns:**
 - List of failed annotations for retry
 
-### Inputs.patch_annotations()
+### Inputs.patch_annotations
 
 ```python
-def patch_annotations(self,
-                     batch_annot: List[resources_pb2.Annotation],
-                     action: str = 'merge') -> None
+Inputs.patch_annotations(batch_annot, action='merge')
 ```
 
 Patches existing annotations.
@@ -1931,14 +1741,10 @@ Patches existing annotations.
 - `batch_annot` (*List[resources_pb2.Annotation]*) - List of annotation protos
 - `action` (*str*) - Action to perform: 'merge', 'overwrite', or 'remove'
 
-### Inputs.patch_concepts()
+### Inputs.patch_concepts
 
 ```python
-def patch_concepts(self,
-                  concept_ids: List[str],
-                  labels: List[str] = [],
-                  values: List[float] = [],
-                  action: str = 'overwrite') -> None
+Inputs.patch_concepts(concept_ids, labels=[], values=[], action='overwrite')
 ```
 
 Patches concepts in the app.
@@ -1949,10 +1755,10 @@ Patches concepts in the app.
 - `values` (*List[float]*) - List of concept values
 - `action` (*str*) - Action to perform (only 'overwrite' supported)
 
-### Inputs._upload_batch()
+### Inputs._upload_batch
 
 ```python
-def _upload_batch(self, inputs: List[Input]) -> List[Input]
+Inputs._upload_batch(inputs)
 ```
 
 Internal method to upload a batch of input objects to the app. It handles the upload process, waits for input processing, and manages failed inputs.
@@ -1970,11 +1776,10 @@ input_obj = Inputs(user_id='user_id', app_id='app_id')
 failed_inputs = input_obj._upload_batch(input_batch)
 ```
 
-### Inputs.delete_inputs()
+### Inputs.delete_inputs
 
 ```python
-def delete_inputs(self,
-                 inputs: List[Input]) -> None
+Inputs.delete_inputs(inputs)
 ```
 
 Deletes input objects from the app.
@@ -1989,12 +1794,10 @@ input_obj = User(user_id="user_id").app(app_id="app_id").inputs()
 input_obj.delete_inputs(list(input_obj.list_inputs()))
 ```
 
-### Inputs.delete_annotations()
+### Inputs.delete_annotations
 
 ```python
-def delete_annotations(self,
-                      input_ids: List[str],
-                      annotation_ids: List[str] = []) -> None
+Inputs.delete_annotations(input_ids, annotation_ids=[])
 ```
 
 Deletes annotations from inputs.
@@ -2012,11 +1815,10 @@ input_obj.delete_annotations(input_ids=['input_id_1', 'input_id_2'])
 
 **Note:** If annotation_ids are provided, they must match the number and order of input_ids.
 
-### Inputs.download_inputs()
+### Inputs.download_inputs
 
 ```python
-def download_inputs(self,
-                   inputs: List[Input]) -> List[bytes]
+Inputs.download_inputs(inputs)
 ```
 
 Downloads input objects from the app.
@@ -2034,14 +1836,10 @@ input_obj = User(user_id="user_id").app(app_id="app_id").inputs()
 input_obj.download_inputs(list(input_obj.list_inputs()))
 ```
 
-### Inputs.list_inputs()
+### Inputs.list_inputs
 
 ```python
-def list_inputs(self,
-                dataset_id: str = None,
-                page_no: int = None,
-                per_page: int = None,
-                input_type: str = None) -> Generator[Input, None, None]
+Inputs.list_inputs(dataset_id=None, page_no=None, per_page=None, input_type=None)
 ```
 
 Lists inputs in the app.
@@ -2062,13 +1860,10 @@ input_obj = User(user_id="user_id").app(app_id="app_id").inputs()
 all_inputs = list(input_obj.list_inputs(input_type='image'))
 ```
 
-### Inputs.list_annotations()
+### Inputs.list_annotations
 
 ```python
-def list_annotations(self,
-                    batch_input: List[Input] = None,
-                    page_no: int = None,
-                    per_page: int = None) -> Generator[Annotation, None, None]
+Inputs.list_annotations(batch_input=None, page_no=None, per_page=None)
 ```
 
 Lists annotations in the app.
@@ -2089,12 +1884,10 @@ all_inputs = list(input_obj.list_inputs(input_type='image'))
 all_annotations = list(input_obj.list_annotations(batch_input=all_inputs))
 ```
 
-### Inputs._bulk_upload()
+### Inputs._bulk_upload
 
 ```python
-def _bulk_upload(self,
-                inputs: List[Input],
-                batch_size: int = 128) -> None
+Inputs._bulk_upload(inputs, batch_size=128)
 ```
 
 Internal method for uploading large numbers of inputs in batches.
@@ -2103,10 +1896,10 @@ Internal method for uploading large numbers of inputs in batches.
 - `inputs` (*List[Input]*) - List of input protos to upload
 - `batch_size` (*int*) - Batch size for each request (max 128)
 
-### Inputs._wait_for_inputs()
+### Inputs._wait_for_inputs
 
 ```python
-def _wait_for_inputs(self, input_job_id: str) -> bool
+Inputs._wait_for_inputs(input_job_id)
 ```
 
 Internal method to wait for input processing completion.
@@ -2117,10 +1910,10 @@ Internal method to wait for input processing completion.
 **Returns:**
 - True if processed successfully, False if timed out
 
-### Inputs._retry_uploads()
+### Inputs._retry_uploads
 
 ```python
-def _retry_uploads(self, failed_inputs: List[Input]) -> None
+Inputs._retry_uploads(failed_inputs)
 ```
 
 Internal method to retry failed uploads.
@@ -2128,10 +1921,10 @@ Internal method to retry failed uploads.
 **Parameters:**
 - `failed_inputs` (*List[Input]*) - Failed input protos
 
-### Inputs._delete_failed_inputs()
+### Inputs._delete_failed_inputs
 
 ```python
-def _delete_failed_inputs(self, inputs: List[Input]) -> List[Input]
+Inputs._delete_failed_inputs(inputs)
 ```
 
 Internal method to delete failed inputs.
@@ -2145,31 +1938,18 @@ Internal method to delete failed inputs.
 ## Lister
 
 ```python
-class Lister(page_size: int = 16)
+class Lister(page_size=16)
 ```
 
 Lister is a class for obtaining paginated results from the Clarifai API.
 
-### Lister.\__init\__()
-
-```python
-def __init__(self, page_size: int = 16)
-```
-
-Initializes a Lister object.
-
 **Parameters:**
 - `page_size` (*int*) - Default number of items per page. Default is 16.
 
-### Lister.list_pages_generator()
+### Lister.list_pages_generator
 
 ```python
-def list_pages_generator(self,
-                        endpoint: Callable,
-                        proto_message: Any,
-                        request_data: Dict[str, Any],
-                        page_no: int = None,
-                        per_page: int = None) -> Generator[Dict[str, Any], None, None]
+Lister.list_pages_generator(endpoint, proto_message, request_data, page_no=None, per_page=None)
 ```
 
 Lists pages of a resource with pagination support.
@@ -2187,33 +1967,10 @@ Lists pages of a resource with pagination support.
 ## Model
 
 ```python
-class Model(url: str = None,
-           model_id: str = None,
-           model_version: Dict = {'id': ""},
-           base_url: str = "https://api.clarifai.com",
-           pat: str = None,
-           token: str = None,
-           root_certificates_path: str = None,
-           **kwargs)
+class Model(url=None, model_id=None, model_version={'id': ""}, base_url="https://api.clarifai.com", pat=None, token=None, root_certificates_path=None, **kwargs)
 ```
 
 Model is a class that provides access to Clarifai API endpoints related to Model information.
-
-### Model.\__init\__()
-
-```python
-def __init__(self,
-             url: str = None,
-             model_id: str = None,
-             model_version: Dict = {'id': ""},
-             base_url: str = "https://api.clarifai.com",
-             pat: str = None,
-             token: str = None,
-             root_certificates_path: str = None,
-             **kwargs)
-```
-
-Initializes a Model object.
 
 **Parameters:**
 - `url` (*str*) - URL to initialize model object
@@ -2227,10 +1984,10 @@ Initializes a Model object.
 
 **Note:** Either url or model_id must be specified, but not both.
 
-### Model.list_training_templates()
+### Model.list_training_templates
 
 ```python
-def list_training_templates(self) -> List[str]
+Model.list_training_templates()
 ```
 
 Lists all training templates for the model type.
@@ -2245,12 +2002,10 @@ model = Model(model_id='model_id', user_id='user_id', app_id='app_id')
 templates = model.list_training_templates()
 ```
 
-### Model.get_params()
+### Model.get_params
 
 ```python
-def get_params(self,
-              template: str = None,
-              save_to: str = 'params.yaml') -> Dict[str, Any]
+Model.get_params(template=None, save_to='params.yaml')
 ```
 
 Gets model parameters for training.
@@ -2269,10 +2024,10 @@ model = Model(model_id='model_id', user_id='user_id', app_id='app_id')
 params = model.get_params(template='template', save_to='model_params.yaml')
 ```
 
-### Model.update_params()
+### Model.update_params
 
 ```python
-def update_params(self, **kwargs) -> None
+Model.update_params(**kwargs)
 ```
 
 Updates model training parameters.
@@ -2287,10 +2042,10 @@ model = Model(model_id='model_id', user_id='user_id', app_id='app_id')
 model.update_params(batch_size=8, dataset_version='dataset_version_id')
 ```
 
-### Model.get_param_info()
+### Model.get_param_info
 
 ```python
-def get_param_info(self, param: str) -> Dict[str, Any]
+Model.get_param_info(param)
 ```
 
 Gets information about a specific parameter.
@@ -2308,10 +2063,10 @@ model = Model(model_id='model_id', user_id='user_id', app_id='app_id')
 param_info = model.get_param_info('batch_size')
 ```
 
-### Model.train()
+### Model.train
 
 ```python
-def train(self, yaml_file: str = None) -> str
+Model.train(yaml_file=None)
 ```
 
 Trains the model using specified parameters.
@@ -2329,12 +2084,10 @@ model = Model(model_id='model_id', user_id='user_id', app_id='app_id')
 version_id = model.train('model_params.yaml')
 ```
 
-### Model.training_status()
+### Model.training_status
 
 ```python
-def training_status(self,
-                   version_id: str = None,
-                   training_logs: bool = False) -> Dict[str, str]
+Model.training_status(version_id=None, training_logs=False)
 ```
 
 Gets training status for a model version.
@@ -2353,10 +2106,10 @@ model = Model(model_id='model_id', user_id='user_id', app_id='app_id')
 status = model.training_status(version_id='version_id', training_logs=True)
 ```
 
-### Model.delete_version()
+### Model.delete_version
 
 ```python
-def delete_version(self, version_id: str) -> None
+Model.delete_version(version_id)
 ```
 
 Deletes a model version.
@@ -2371,10 +2124,10 @@ model = Model(model_id='model_id', user_id='user_id', app_id='app_id')
 model.delete_version('version_id')
 ```
 
-### Model.create_version()
+### Model.create_version
 
 ```python
-def create_version(self, **kwargs) -> 'Model'
+Model.create_version(**kwargs)
 ```
 
 Creates a new model version.
@@ -2395,12 +2148,10 @@ model = Model(model_id='model_id', user_id='user_id', app_id='app_id')
 new_version = model.create_version(description='New version')
 ```
 
-### Model.list_versions()
+### Model.list_versions
 
 ```python
-def list_versions(self,
-                 page_no: int = None,
-                 per_page: int = None) -> Generator['Model', None, None]
+Model.list_versions(page_no=None, per_page=None)
 ```
 
 Lists all versions of the model.
@@ -2419,14 +2170,10 @@ model = Model(model_id='model_id', user_id='user_id', app_id='app_id')
 versions = list(model.list_versions())
 ```
 
-### Model.predict()
+### Model.predict
 
 ```python
-def predict(self,
-           inputs: List[Input],
-           runner_selector: RunnerSelector = None,
-           inference_params: Dict = {},
-           output_config: Dict = {})
+Model.predict(inputs, runner_selector=None, inference_params={}, output_config={})
 ```
 
 Makes predictions using the model.
@@ -2440,10 +2187,10 @@ Makes predictions using the model.
 **Returns:**
 - Prediction response
 
-### Model._check_predict_input_type()
+### Model._check_predict_input_type
 
 ```python
-def _check_predict_input_type(self, input_type: str) -> None
+Model._check_predict_input_type(input_type)
 ```
 
 Internal method to validate input type.
@@ -2451,25 +2198,18 @@ Internal method to validate input type.
 **Parameters:**
 - `input_type` (*str*) - Input type to validate
 
-### Model.load_input_types()
+### Model.load_input_types
 
 ```python
-def load_input_types(self) -> None
+Model.load_input_types()
 ```
 
 Loads available input types for the model.
 
-### Model.predict_by_filepath()
+### Model.predict_by_filepath
 
-```python 
-def predict_by_filepath(self,
-                       filepath: str, 
-                       input_type: str = None,
-                       compute_cluster_id: str = None,
-                       nodepool_id: str = None,
-                       deployment_id: str = None,
-                       inference_params: Dict = {},
-                       output_config: Dict = {})
+```python
+Model.predict_by_filepath(filepath, input_type=None, compute_cluster_id=None, nodepool_id=None, deployment_id=None, inference_params={}, output_config={})
 ```
 
 Makes predictions from file input.
@@ -2490,17 +2230,10 @@ model = Model(model_id='model_id')
 response = model.predict_by_filepath('image.jpg', input_type='image')
 ```
 
-### Model.predict_by_bytes()
+### Model.predict_by_bytes
 
 ```python
-def predict_by_bytes(self,
-                    input_bytes: bytes,
-                    input_type: str = None,
-                    compute_cluster_id: str = None,
-                    nodepool_id: str = None,
-                    deployment_id: str = None, 
-                    inference_params: Dict = {},
-                    output_config: Dict = {})
+Model.predict_by_bytes(input_bytes, input_type=None, compute_cluster_id=None, nodepool_id=None, deployment_id=None, inference_params={}, output_config={})
 ```
 
 Makes predictions from bytes input.
@@ -2521,17 +2254,10 @@ model = Model("https://clarifai.com/openai/chat-completion/models/GPT-4")
 response = model.predict_by_bytes(text, inference_params={'temperature': 0.7})
 ```
 
-### Model.predict_by_url()
+### Model.predict_by_url
 
 ```python
-def predict_by_url(self,
-                  url: str,
-                  input_type: str = None,
-                  compute_cluster_id: str = None,
-                  nodepool_id: str = None,
-                  deployment_id: str = None,
-                  inference_params: Dict = {},
-                  output_config: Dict = {})
+Model.predict_by_url(url, input_type=None, compute_cluster_id=None, nodepool_id=None, deployment_id=None, inference_params={}, output_config={})
 ```
 
 Makes predictions from URL input.
@@ -2552,14 +2278,10 @@ model = Model(model_id='model_id')
 response = model.predict_by_url('https://example.com/image.jpg', input_type='image')
 ```
 
-### Model.generate()
+### Model.generate
 
 ```python
-def generate(self,
-            inputs: List[Input],
-            runner_selector: RunnerSelector = None,
-            inference_params: Dict = {},
-            output_config: Dict = {})
+Model.generate(inputs, runner_selector=None, inference_params={}, output_config={})
 ```
 
 Generates outputs with streaming response.
@@ -2573,17 +2295,10 @@ Generates outputs with streaming response.
 **Returns:**
 - Generator yielding output responses
 
-### Model.generate_by_filepath()
+### Model.generate_by_filepath
 
 ```python
-def generate_by_filepath(self,
-                        filepath: str,
-                        input_type: str = None,
-                        compute_cluster_id: str = None,
-                        nodepool_id: str = None,
-                        deployment_id: str = None,
-                        inference_params: Dict = {},
-                        output_config: Dict = {})
+Model.generate_by_filepath(filepath, input_type=None, compute_cluster_id=None, nodepool_id=None, deployment_id=None, inference_params={}, output_config={})
 ```
 
 Generates outputs from file input with streaming response.
@@ -2600,17 +2315,10 @@ Generates outputs from file input with streaming response.
 **Returns:**
 - Generator yielding output responses
 
-### Model.generate_by_bytes()
+### Model.generate_by_bytes
 
 ```python
-def generate_by_bytes(self,
-                     input_bytes: bytes,
-                     input_type: str = None,
-                     compute_cluster_id: str = None,
-                     nodepool_id: str = None,
-                     deployment_id: str = None,
-                     inference_params: Dict = {},
-                     output_config: Dict = {})
+Model.generate_by_bytes(input_bytes, input_type=None, compute_cluster_id=None, nodepool_id=None, deployment_id=None, inference_params={}, output_config={})
 ```
 
 Generates outputs from bytes input with streaming response.
@@ -2627,17 +2335,10 @@ Generates outputs from bytes input with streaming response.
 **Returns:**
 - Generator yielding output responses
 
-### Model.generate_by_url()
+### Model.generate_by_url
 
 ```python
-def generate_by_url(self,
-                   url: str,
-                   input_type: str = None,
-                   compute_cluster_id: str = None,
-                   nodepool_id: str = None,
-                   deployment_id: str = None,
-                   inference_params: Dict = {},
-                   output_config: Dict = {})
+Model.generate_by_url(url, input_type=None, compute_cluster_id=None, nodepool_id=None, deployment_id=None, inference_params={}, output_config={})
 ```
 
 Generates outputs from URL input with streaming response.
@@ -2654,13 +2355,10 @@ Generates outputs from URL input with streaming response.
 **Returns:**
 - Generator yielding output responses
 
-
-### Model._req_iterator()
+### Model._req_iterator
 
 ```python
-def _req_iterator(self,
-                 input_iterator: Iterator[List[Input]],
-                 runner_selector: RunnerSelector)
+Model._req_iterator(input_iterator, runner_selector)
 ```
 
 Internal method to create request iterator for streaming predictions.
@@ -2672,15 +2370,10 @@ Internal method to create request iterator for streaming predictions.
 **Yields:**
 - Model output request objects
 
-
-### Model.stream()
+### Model.stream
 
 ```python
-def stream(self,
-          inputs: Iterator[List[Input]],
-          runner_selector: RunnerSelector = None,
-          inference_params: Dict = {},
-          output_config: Dict = {})
+Model.stream(inputs, runner_selector=None, inference_params={}, output_config={})
 ```
 
 Streams predictions for input iterator.
@@ -2694,17 +2387,10 @@ Streams predictions for input iterator.
 **Returns:**
 - Generator yielding output responses
 
-### Model.stream_by_filepath()
+### Model.stream_by_filepath
 
 ```python
-def stream_by_filepath(self,
-                      filepath: str,
-                      input_type: str = None,
-                      compute_cluster_id: str = None,
-                      nodepool_id: str = None,
-                      deployment_id: str = None,
-                      inference_params: Dict = {},
-                      output_config: Dict = {})
+Model.stream_by_filepath(filepath, input_type=None, compute_cluster_id=None, nodepool_id=None, deployment_id=None, inference_params={}, output_config={})
 ```
 
 Streams predictions from file input.
@@ -2713,15 +2399,15 @@ Streams predictions from file input.
 - `filepath` (*str*) - Path to input file
 - `input_type` (*str*) - Input type ('image', 'text', 'video', 'audio')
 - `compute_cluster_id` (*str*) - Compute cluster ID
-- `nodepool_id` (*str*)
+- `nodepool_id` (*str*) - Nodepool ID
+- `deployment_id` (*str*) - Deployment ID
+- `inference_params` (*Dict*) - Inference parameters
+- `output_config` (*Dict*) - Output configuration
 
-
-### Model._override_model_version()
+### Model._override_model_version
 
 ```python
-def _override_model_version(self,
-                          inference_params: Dict = {},
-                          output_config: Dict = {}) -> None
+Model._override_model_version(inference_params={}, output_config={})
 ```
 
 Internal method to override model version configuration.
@@ -2734,10 +2420,10 @@ Internal method to override model version configuration.
   - `select_concepts` (*List*) - Specific concepts to return
   - `sample_ms` (*int*) - Sample duration in milliseconds
 
-### Model._list_concepts()
+### Model._list_concepts
 
 ```python
-def _list_concepts(self) -> List[str]
+Model._list_concepts()
 ```
 
 Internal method to list all concepts for the model type.
@@ -2745,13 +2431,10 @@ Internal method to list all concepts for the model type.
 **Returns:**
 - List of concept IDs
 
-### Model._make_pretrained_config_proto()
+### Model._make_pretrained_config_proto
 
 ```python
-@staticmethod
-def _make_pretrained_config_proto(input_field_maps: dict,
-                                output_field_maps: dict,
-                                url: str = None)
+Model._make_pretrained_config_proto(input_field_maps, output_field_maps, url=None)
 ```
 
 Internal method to create pretrained model config protobuf.
@@ -2764,11 +2447,10 @@ Internal method to create pretrained model config protobuf.
 **Returns:**
 - PretrainedModelConfig protobuf object
 
-### Model._make_inference_params_proto()
+### Model._make_inference_params_proto
 
 ```python
-@staticmethod
-def _make_inference_params_proto(inference_parameters: List[Dict]) -> List[resources_pb2.ModelTypeField]
+Model._make_inference_params_proto(inference_parameters)
 ```
 
 Internal method to convert inference parameters to protobuf format.
@@ -2783,19 +2465,10 @@ Internal method to convert inference parameters to protobuf format.
 **Returns:**
 - List of ModelTypeField protobuf objects
 
-
-### Model.evaluate()
+### Model.evaluate
 
 ```python
-def evaluate(self,
-            dataset: Dataset = None,
-            dataset_id: str = None,
-            dataset_app_id: str = None,
-            dataset_user_id: str = None,
-            dataset_version_id: str = None,
-            eval_id: str = None,
-            extended_metrics: dict = None,
-            eval_info: dict = None) -> resources_pb2.EvalMetrics
+Model.evaluate(dataset=None, dataset_id=None, dataset_app_id=None, dataset_user_id=None, dataset_version_id=None, eval_id=None, extended_metrics=None, eval_info=None)
 ```
 
 Evaluates model performance on a dataset.
@@ -2813,17 +2486,10 @@ Evaluates model performance on a dataset.
 **Returns:**
 - Evaluation metrics
 
-### Model.get_eval_by_id()
+### Model.get_eval_by_id
 
 ```python
-def get_eval_by_id(self,
-                   eval_id: str,
-                   label_counts: bool = False,
-                   test_set: bool = False,
-                   binary_metrics: bool = False,
-                   confusion_matrix: bool = False,
-                   metrics_by_class: bool = False,
-                   metrics_by_area: bool = False) -> resources_pb2.EvalMetrics
+Model.get_eval_by_id(eval_id, label_counts=False, test_set=False, binary_metrics=False, confusion_matrix=False, metrics_by_class=False, metrics_by_area=False)
 ```
 
 Gets detailed evaluation metrics by ID.
@@ -2840,16 +2506,10 @@ Gets detailed evaluation metrics by ID.
 **Returns:**
 - Detailed evaluation metrics
 
-### Model.get_latest_eval()
+### Model.get_latest_eval
 
 ```python
-def get_latest_eval(self,
-                   label_counts: bool = False,
-                   test_set: bool = False,
-                   binary_metrics: bool = False, 
-                   confusion_matrix: bool = False,
-                   metrics_by_class: bool = False,
-                   metrics_by_area: bool = False) -> Union[resources_pb2.EvalMetrics, None]
+Model.get_latest_eval(label_counts=False, test_set=False, binary_metrics=False, confusion_matrix=False, metrics_by_class=False, metrics_by_area=False)
 ```
 
 Gets metrics from latest evaluation.
@@ -2865,10 +2525,10 @@ Gets metrics from latest evaluation.
 **Returns:**
 - Latest evaluation metrics or None if not evaluated
 
-### Model.list_evaluations()
+### Model.list_evaluations
 
 ```python
-def list_evaluations(self) -> resources_pb2.EvalMetrics
+Model.list_evaluations()
 ```
 
 Lists all evaluation metrics for current model version.
@@ -2876,10 +2536,10 @@ Lists all evaluation metrics for current model version.
 **Returns:**
 - List of evaluation metrics
 
-### Model.get_eval_by_dataset()
+### Model.get_eval_by_dataset
 
 ```python
-def get_eval_by_dataset(self, dataset: Dataset) -> List[resources_pb2.EvalMetrics]
+Model.get_eval_by_dataset(dataset)
 ```
 
 Gets all evaluation data for a dataset.
@@ -2890,15 +2550,10 @@ Gets all evaluation data for a dataset.
 **Returns:**
 - List of evaluation metrics for dataset
 
-### Model.get_raw_eval()
+### Model.get_raw_eval
 
 ```python
-def get_raw_eval(self,
-                dataset: Dataset = None,
-                eval_id: str = None,
-                return_format: str = 'array') -> Union[resources_pb2.EvalTestSetEntry, 
-                                                     Tuple[np.array, np.array, list, List[Input]],
-                                                     Tuple[List[dict], List[dict]]]
+Model.get_raw_eval(dataset=None, eval_id=None, return_format='array')
 ```
 
 Gets raw evaluation data in specified format.
@@ -2924,16 +2579,10 @@ y_true, y_pred, classes, inputs = model.get_raw_eval(
 )
 ```
 
-### Model.create_version_by_file()
+### Model.create_version_by_file
 
 ```python
-def create_version_by_file(self,
-                          file_path: str,
-                          input_field_maps: dict,
-                          output_field_maps: dict,
-                          inference_parameter_configs: dict = None,
-                          model_version: str = None,
-                          description: str = "") -> 'Model'
+Model.create_version_by_file(file_path, input_field_maps, output_field_maps, inference_parameter_configs=None, model_version=None, description="")
 ```
 
 Creates new model version from local file.
@@ -2949,15 +2598,10 @@ Creates new model version from local file.
 **Returns:**
 - New Model instance
 
-### Model.create_version_by_url()
+### Model.create_version_by_url
 
 ```python
-def create_version_by_url(self,
-                         url: str,
-                         input_field_maps: dict,
-                         output_field_maps: dict,
-                         inference_parameter_configs: List[dict] = None,
-                         description: str = "") -> 'Model'
+Model.create_version_by_url(url, input_field_maps, output_field_maps, inference_parameter_configs=None, description="")
 ```
 
 Creates new model version from URL.
@@ -2972,10 +2616,10 @@ Creates new model version from URL.
 **Returns:**
 - New Model instance
 
-### Model.export()
+### Model.export
 
 ```python
-def export(self, export_dir: str = None) -> None
+Model.export(export_dir=None)
 ```
 
 Exports model to local file.
@@ -2990,10 +2634,10 @@ model = Model("model_url")
 model.export("exported_models/")
 ```
 
-### Model.load_info()
+### Model.load_info
 
 ```python
-def load_info(self) -> None
+Model.load_info()
 ```
 
 Loads or refreshes model information.
@@ -3008,35 +2652,10 @@ model.load_info()
 ## Workflow
 
 ```python
-class Workflow(url: str = None,
-              workflow_id: str = None,
-              workflow_version: Dict = {'id': ""},
-              output_config: Dict = {'min_value': 0},
-              base_url: str = "https://api.clarifai.com",
-              pat: str = None,
-              token: str = None,
-              root_certificates_path: str = None,
-              **kwargs)
+class Workflow(url=None, workflow_id=None, workflow_version={'id': ""}, output_config={'min_value': 0}, base_url="https://api.clarifai.com", pat=None, token=None, root_certificates_path=None, **kwargs)
 ```
 
 Workflow is a class that provides access to Clarifai API endpoints related to Workflow information.
-
-### Workflow.\__init\__()
-
-```python
-def __init__(self,
-             url: str = None,
-             workflow_id: str = None,
-             workflow_version: Dict = {'id': ""},
-             output_config: Dict = {'min_value': 0},
-             base_url: str = "https://api.clarifai.com",
-             pat: str = None,
-             token: str = None,
-             root_certificates_path: str = None,
-             **kwargs)
-```
-
-Initializes a Workflow object.
 
 **Parameters:**
 - `url` (*str*) - URL to initialize workflow object
@@ -3053,12 +2672,10 @@ Initializes a Workflow object.
 - `root_certificates_path` (*str*) - Path to SSL root certificates file
 - `**kwargs` - Additional keyword arguments
 
-### Workflow.predict()
+### Workflow.predict
 
 ```python
-def predict(self, 
-           inputs: List[Input],
-           workflow_state_id: str = None)
+Workflow.predict(inputs, workflow_state_id=None)
 ```
 
 Makes predictions using the workflow.
@@ -3077,12 +2694,10 @@ workflow = Workflow(workflow_id='workflow_id')
 response = workflow.predict(inputs=[input_proto])
 ```
 
-### Workflow.predict_by_filepath()
+### Workflow.predict_by_filepath
 
 ```python
-def predict_by_filepath(self,
-                       filepath: str,
-                       input_type: str = None)
+Workflow.predict_by_filepath(filepath, input_type=None)
 ```
 
 Makes predictions from file input.
@@ -3098,12 +2713,10 @@ workflow = Workflow("https://clarifai.com/clarifai/main/workflows/Face-Sentiment
 prediction = workflow.predict_by_filepath('image.jpg', input_type='image') 
 ```
 
-### Workflow.predict_by_bytes()
+### Workflow.predict_by_bytes
 
 ```python
-def predict_by_bytes(self,
-                    input_bytes: bytes,
-                    input_type: str = None)
+Workflow.predict_by_bytes(input_bytes, input_type=None)
 ```
 
 Makes predictions from bytes input.
@@ -3123,12 +2736,10 @@ workflow = Workflow(workflow_id='workflow_id')
 prediction = workflow.predict_by_bytes(bytes_data, input_type='image')
 ```
 
-### Workflow.predict_by_url()
+### Workflow.predict_by_url
 
 ```python
-def predict_by_url(self,
-                  url: str,
-                  input_type: str = None)
+Workflow.predict_by_url(url, input_type=None)
 ```
 
 Makes predictions from URL input.
@@ -3143,12 +2754,10 @@ workflow = Workflow("https://clarifai.com/clarifai/main/workflows/Face-Sentiment
 prediction = workflow.predict_by_url('https://example.com/image.jpg', input_type='image')
 ```
 
-### Workflow.list_versions()
+### Workflow.list_versions
 
 ```python
-def list_versions(self,
-                 page_no: int = None,
-                 per_page: int = None) -> Generator['Workflow', None, None]
+Workflow.list_versions(page_no=None, per_page=None)
 ```
 
 Lists all versions of the workflow.
@@ -3168,10 +2777,10 @@ versions = list(workflow.list_versions())
 
 **Note:** Defaults to 16 items per page if only page_no specified. Lists all if neither specified.
 
-### Workflow.export()
+### Workflow.export
 
 ```python
-def export(self, out_path: str)
+Workflow.export(out_path)
 ```
 
 Exports workflow to YAML file.
@@ -3185,10 +2794,10 @@ workflow = Workflow("https://clarifai.com/clarifai/main/workflows/Demographics")
 workflow.export('workflow_config.yml')
 ```
 
-### Workflow.load_info()
+### Workflow.load_info
 
 ```python
-def load_info(self) -> None
+Workflow.load_info()
 ```
 
 Loads or refreshes workflow information and input types.
@@ -3207,33 +2816,10 @@ workflow.load_info()
 ## Module
 
 ```python
-class Module(url: str = None,
-            module_id: str = None,
-            module_version: Dict = {'id': ""},
-            base_url: str = "https://api.clarifai.com",
-            pat: str = None,
-            token: str = None,
-            root_certificates_path: str = None,
-            **kwargs)
+class Module(url=None, module_id=None, module_version={'id': ""}, base_url="https://api.clarifai.com", pat=None, token=None, root_certificates_path=None, **kwargs)
 ```
 
 Module is a class that provides access to Clarifai API endpoints related to Module information.
-
-### Module.\__init\__()
-
-```python
-def __init__(self,
-             url: str = None,
-             module_id: str = None,
-             module_version: Dict = {'id': ""},
-             base_url: str = "https://api.clarifai.com",
-             pat: str = None,
-             token: str = None,
-             root_certificates_path: str = None,
-             **kwargs)
-```
-
-Initializes a Module object.
 
 **Parameters:**
 - `url` (*str*) - URL to initialize module object
@@ -3245,13 +2831,10 @@ Initializes a Module object.
 - `root_certificates_path` (*str*) - Path to SSL root certificates file
 - `**kwargs` - Additional keyword arguments
 
-
-### Module.list_versions()
+### Module.list_versions
 
 ```python
-def list_versions(self,
-                 page_no: int = None,
-                 per_page: int = None) -> Generator['Module', None, None]
+Module.list_versions(page_no=None, per_page=None)
 ```
 
 Lists all versions of the module.
@@ -3273,37 +2856,10 @@ all_module_versions = list(module.list_versions())
 ## Search
 
 ```python
-class Search(user_id: str,
-            app_id: str,
-            top_k: int = None,
-            metric: str = DEFAULT_SEARCH_METRIC,
-            algorithm: str = DEFAULT_SEARCH_ALGORITHM,
-            pagination: bool = False,
-            base_url: str = "https://api.clarifai.com",
-            pat: str = None,
-            token: str = None,
-            root_certificates_path: str = None)
+class Search(user_id, app_id, top_k=None, metric=DEFAULT_SEARCH_METRIC, algorithm=DEFAULT_SEARCH_ALGORITHM, pagination=False, base_url="https://api.clarifai.com", pat=None, token=None, root_certificates_path=None)
 ```
 
 Search is a class that provides access to Clarifai API endpoints related to searching over inputs.
-
-### Search.\__init\__()
-
-```python
-def __init__(self,
-             user_id: str,
-             app_id: str,
-             top_k: int = None,
-             metric: str = DEFAULT_SEARCH_METRIC,
-             algorithm: str = DEFAULT_SEARCH_ALGORITHM,
-             pagination: bool = False,
-             base_url: str = "https://api.clarifai.com",
-             pat: str = None,
-             token: str = None,
-             root_certificates_path: str = None)
-```
-
-Initializes a Search object.
 
 **Parameters:**
 - `user_id` (*str*) - User ID
@@ -3317,18 +2873,10 @@ Initializes a Search object.
 - `token` (*str*) - Session token
 - `root_certificates_path` (*str*) - Path to SSL certificates
 
-**Raises:**
-- UserError if:
-  - Invalid metric specified
-  - Invalid algorithm specified
-  - Cosine metric used with nearest neighbor
-  - Both top_k and pagination enabled
-
-
-### Search._get_annot_proto()
+### Search._get_annot_proto
 
 ```python
-def _get_annot_proto(self, **kwargs)
+Search._get_annot_proto(**kwargs)
 ```
 
 Creates Annotation proto from keyword arguments.
@@ -3345,10 +2893,10 @@ Creates Annotation proto from keyword arguments.
 **Returns:**
 - Annotation proto message
 
-### Search._get_input_proto()
+### Search._get_input_proto
 
 ```python
-def _get_input_proto(self, **kwargs)
+Search._get_input_proto(**kwargs)
 ```
 
 Creates Input proto from keyword arguments.
@@ -3362,13 +2910,10 @@ Creates Input proto from keyword arguments.
 **Returns:**
 - Input proto message
 
-### Search._get_geo_point_proto()
+### Search._get_geo_point_proto
 
 ```python
-def _get_geo_point_proto(self,
-                        longitude: float,
-                        latitude: float,
-                        geo_limit: float) -> resources_pb2.Geo
+Search._get_geo_point_proto(longitude, latitude, geo_limit)
 ```
 
 Creates Geo proto for geographical searches.
@@ -3381,40 +2926,26 @@ Creates Geo proto for geographical searches.
 **Returns:**
 - Geo proto message
 
-
-### Search._list_topk_generator()
+### Search._list_topk_generator
 
 ```python
-def _list_topk_generator(self,
-                        endpoint: Callable[..., Any],
-                        proto_message: Any,
-                        request_data: Dict[str, Any]) -> Generator[Dict[str, Any], None, None]
+Search._list_topk_generator(endpoint, proto_message, request_data)
 ```
 
 Internal generator for top-k search results.
 
-### Search._list_all_pages_generator()
+### Search._list_all_pages_generator
 
 ```python
-def _list_all_pages_generator(self,
-                            endpoint: Callable,
-                            proto_message: Any,
-                            request_data: Dict[str, Any],
-                            page_no: int = None,
-                            per_page: int = None) -> Generator[Dict[str, Any], None, None]
+Search._list_all_pages_generator(endpoint, proto_message, request_data, page_no=None, per_page=None)
 ```
 
 Internal generator for paginated search results.
 
-
-### Search.query()
+### Search.query
 
 ```python
-def query(self,
-          ranks: List[Dict] = [{}],
-          filters: List[Dict] = [{}],
-          page_no: int = None,
-          per_page: int = None)
+Search.query(ranks=[{}], filters=[{}], page_no=None, per_page=None)
 ```
 
 Performs search query with ranking and filtering.
@@ -3438,7 +2969,6 @@ Performs search query with ranking and filtering.
 
 **Examples:**
 ```python
-
 from clarifai.client.search import Search
 search = Search(user_id='user_id', app_id='app_id', top_k=10, metric='cosine')
 results = search.query(
@@ -3461,7 +2991,6 @@ results = search.query(
 )
 ```
 
-
 ## Base
 
 ```python
@@ -3469,14 +2998,6 @@ class BaseClient(**kwargs)
 ```
 
 BaseClient is the base class for all classes interacting with Clarifai endpoints. It provides core authentication and API interaction functionality.
-
-### Base.\__init\__()
-
-```python
-def __init__(self, **kwargs)
-```
-
-Initializes a BaseClient object with authentication and configuration.
 
 **Parameters:**
 - `**kwargs` - Configuration parameters including:
@@ -3495,12 +3016,10 @@ Initializes a BaseClient object with authentication and configuration.
 - Must provide either pat (Personal Access Token) or token (Session Token)
 - Can set tokens via environment variables CLARIFAI_PAT or CLARIFAI_SESSION_TOKEN
 
-
-### Base.from_env()
+### BaseClient.from_env
 
 ```python
-@classmethod
-def from_env(cls, validate: bool = False)
+BaseClient.from_env(cls, validate=False)
 ```
 
 Creates BaseClient instance from environment variables.
@@ -3516,11 +3035,10 @@ Creates BaseClient instance from environment variables.
 client = BaseClient.from_env()
 ```
 
-### Base.from_auth_helper()
+### BaseClient.from_auth_helper
 
 ```python
-@classmethod
-def from_auth_helper(cls, auth: ClarifaiAuthHelper, **kwargs)
+BaseClient.from_auth_helper(auth, **kwargs)
 ```
 
 Creates BaseClient instance from existing ClarifaiAuthHelper.
@@ -3538,11 +3056,10 @@ auth = ClarifaiAuthHelper(pat="your_pat")
 client = BaseClient.from_auth_helper(auth)
 ```
 
-
-### Base._grpc_request()
+### BaseClient._grpc_request
 
 ```python
-def _grpc_request(self, method: Callable, argument: Any)
+BaseClient._grpc_request(method, argument)
 ```
 
 Makes gRPC requests to the Clarifai API.
@@ -3557,11 +3074,10 @@ Makes gRPC requests to the Clarifai API.
 **Raises:**
 - Exception on API error
 
-
-### Base.convert_string_to_timestamp()
+### BaseClient.convert_string_to_timestamp
 
 ```python
-def convert_string_to_timestamp(self, date_str) -> Timestamp
+BaseClient.convert_string_to_timestamp(date_str)
 ```
 
 Converts string to Protobuf Timestamp.
@@ -3577,10 +3093,10 @@ Converts string to Protobuf Timestamp.
 timestamp = client.convert_string_to_timestamp("2023-01-01T12:00:00.000Z")
 ```
 
-### Base.process_response_keys()
+### BaseClient.process_response_keys
 
 ```python
-def process_response_keys(self, old_dict, listing_resource=None)
+BaseClient.process_response_keys(old_dict, listing_resource=None)
 ```
 
 Processes API response dictionary to convert keys to proper format.
@@ -3592,35 +3108,13 @@ Processes API response dictionary to convert keys to proper format.
 **Returns:**
 - new_dict (dict): The dictionary with processed keys.
 
-
 ## ComputeCluster
 
 ```python
-class ComputeCluster(compute_cluster_id: str = None,
-                    user_id: str = None,
-                    base_url: str = "https://api.clarifai.com",
-                    pat: str = None,
-                    token: str = None,
-                    root_certificates_path: str = None,
-                    **kwargs)
+class ComputeCluster(compute_cluster_id=None, user_id=None, base_url="https://api.clarifai.com", pat=None, token=None, root_certificates_path=None, **kwargs)
 ```
 
 ComputeCluster is a class that provides access to Clarifai API endpoints related to Compute Cluster information.
-
-### ComputeCluster.\__init\__()
-
-```python
-def __init__(self,
-             compute_cluster_id: str = None,
-             user_id: str = None,
-             base_url: str = "https://api.clarifai.com",
-             pat: str = None,
-             token: str = None,
-             root_certificates_path: str = None,
-             **kwargs)
-```
-
-Initializes a ComputeCluster object.
 
 **Parameters:**
 - `compute_cluster_id` (*str*) - ComputeCluster ID to interact with
@@ -3631,13 +3125,10 @@ Initializes a ComputeCluster object.
 - `root_certificates_path` (*str*) - Path to SSL certificates
 - `**kwargs` - Additional configurations
 
-
-### ComputeCluster.list_nodepools()
+### ComputeCluster.list_nodepools
 
 ```python
-def list_nodepools(self,
-                   page_no: int = None,
-                   per_page: int = None) -> Generator[Nodepool, None, None]
+ComputeCluster.list_nodepools(page_no=None, per_page=None)
 ```
 
 Lists all nodepools in the compute cluster.
@@ -3659,12 +3150,10 @@ compute_cluster = ComputeCluster(
 all_nodepools = list(compute_cluster.list_nodepools())
 ```
 
-### ComputeCluster.create_nodepool()
+### ComputeCluster.create_nodepool
 
 ```python
-def create_nodepool(self,
-                   config_filepath: str,
-                   nodepool_id: str = None) -> Nodepool
+ComputeCluster.create_nodepool(config_filepath, nodepool_id=None)
 ```
 
 Creates a new nodepool in the compute cluster.
@@ -3685,10 +3174,10 @@ compute_cluster = ComputeCluster(
 nodepool = compute_cluster.create_nodepool(config_filepath="config.yml")
 ```
 
-### ComputeCluster.nodepool()
+### ComputeCluster.nodepool
 
 ```python
-def nodepool(self, nodepool_id: str) -> Nodepool
+ComputeCluster.nodepool(nodepool_id)
 ```
 
 Gets a specific nodepool by ID.
@@ -3708,10 +3197,10 @@ compute_cluster = ComputeCluster(
 nodepool = compute_cluster.nodepool(nodepool_id="nodepool_id")
 ```
 
-### ComputeCluster.delete_nodepools()
+### ComputeCluster.delete_nodepools
 
 ```python
-def delete_nodepools(self, nodepool_ids: List[str]) -> None
+ComputeCluster.delete_nodepools(nodepool_ids)
 ```
 
 Deletes multiple nodepools.
@@ -3730,10 +3219,10 @@ compute_cluster.delete_nodepools(
 )
 ```
 
-### ComputeCluster._process_nodepool_config()
+### ComputeCluster._process_nodepool_config
 
 ```python
-def _process_nodepool_config(self, config_filepath: str) -> Dict[str, Any]
+ComputeCluster._process_nodepool_config(config_filepath)
 ```
 
 Processes nodepool configuration from YAML file.
@@ -3754,31 +3243,10 @@ Processes nodepool configuration from YAML file.
 ## Nodepool
 
 ```python
-class Nodepool(nodepool_id: str = None,
-              user_id: str = None,
-              base_url: str = "https://api.clarifai.com",
-              pat: str = None,
-              token: str = None,
-              root_certificates_path: str = None,
-              **kwargs)
+class Nodepool(nodepool_id=None, user_id=None, base_url="https://api.clarifai.com", pat=None, token=None, root_certificates_path=None, **kwargs)
 ```
 
 Nodepool is a class that provides access to Clarifai API endpoints related to Nodepool information.
-
-### Nodepool.\__init\__()
-
-```python
-def __init__(self,
-             nodepool_id: str = None,
-             user_id: str = None,
-             base_url: str = "https://api.clarifai.com",
-             pat: str = None,
-             token: str = None,
-             root_certificates_path: str = None,
-             **kwargs)
-```
-
-Initializes a Nodepool object.
 
 **Parameters:**
 - `nodepool_id` (*str*) - Nodepool ID to interact with
@@ -3789,14 +3257,10 @@ Initializes a Nodepool object.
 - `root_certificates_path` (*str*) - Path to SSL certificates
 - `**kwargs` - Additional configurations
 
-
-### Nodepool.list_deployments()
+### Nodepool.list_deployments
 
 ```python
-def list_deployments(self,
-                    filter_by: Dict[str, Any] = {},
-                    page_no: int = None,
-                    per_page: int = None) -> Generator[Deployment, None, None]
+Nodepool.list_deployments(filter_by={}, page_no=None, per_page=None)
 ```
 
 Lists all deployments in the nodepool.
@@ -3815,12 +3279,10 @@ nodepool = Nodepool(nodepool_id="nodepool_id", user_id="user_id")
 deployments = list(nodepool.list_deployments())
 ```
 
-### Nodepool.create_deployment()
+### Nodepool.create_deployment
 
 ```python
-def create_deployment(self,
-                     config_filepath: str,
-                     deployment_id: str = None) -> Deployment
+Nodepool.create_deployment(config_filepath, deployment_id=None)
 ```
 
 Creates new deployment in the nodepool.
@@ -3838,10 +3300,10 @@ nodepool = Nodepool(nodepool_id="nodepool_id", user_id="user_id")
 deployment = nodepool.create_deployment(config_filepath="config.yml")
 ```
 
-### Nodepool.deployment()
+### Nodepool.deployment
 
 ```python
-def deployment(self, deployment_id: str) -> Deployment
+Nodepool.deployment(deployment_id)
 ```
 
 Gets specific deployment by ID.
@@ -3858,10 +3320,10 @@ nodepool = Nodepool(nodepool_id="nodepool_id", user_id="user_id")
 deployment = nodepool.deployment(deployment_id="deployment_id")
 ```
 
-### Nodepool.delete_deployments()
+### Nodepool.delete_deployments
 
 ```python
-def delete_deployments(self, deployment_ids: List[str]) -> None
+Nodepool.delete_deployments(deployment_ids)
 ```
 
 Deletes multiple deployments.
@@ -3877,16 +3339,13 @@ nodepool.delete_deployments(
 )
 ```
 
-### Nodepool.get_runner_selector()
+### Nodepool.get_runner_selector
 
 ```python
-@staticmethod
-def get_runner_selector(user_id: str,
-                       compute_cluster_id: str,
-                       nodepool_id: str) -> resources_pb2.RunnerSelector
+Nodepool.get_runner_selector(user_id, compute_cluster_id, nodepool_id)
 ```
 
-Creates RunnerSelector for specified compute cluster and nodepool.
+Returns RunnerSelector for specified compute cluster and nodepool.
 
 **Parameters:**
 - `user_id` (*str*) - User ID
@@ -3905,10 +3364,10 @@ runner_selector = Nodepool.get_runner_selector(
 )
 ```
 
-### Nodepool._process_deployment_config()
+### Nodepool._process_deployment_config
 
 ```python
-def _process_deployment_config(self, config_filepath: str) -> Dict[str, Any]
+Nodepool._process_deployment_config(config_filepath)
 ```
 
 Processes deployment configuration from YAML file.
@@ -3918,19 +3377,5 @@ Processes deployment configuration from YAML file.
 
 **Returns:**
 - Processed configuration dictionary
-
-**Required Configuration Fields:**
-```yaml
-deployment:
-  autoscale_config:
-    # Autoscaling settings
-  worker:
-    model:  # or workflow
-      # Model/workflow configuration
-  scheduling_choice:
-    # Scheduling configuration
-  nodepools:
-    # Nodepool assignments
-```
 
 
