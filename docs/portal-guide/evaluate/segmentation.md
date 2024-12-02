@@ -1,7 +1,6 @@
 ---
 description: Evaluate segmentation models
 sidebar_position: 5
-draft: true
 ---
 
 # Visual Segmentation Models

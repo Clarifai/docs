@@ -1,7 +1,6 @@
 ---
 description: Evaluate visual or text classifiers trained using transfer learning
 sidebar_position: 1
-draft: true
 ---
 
 # Transfer Learn Models
