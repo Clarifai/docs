@@ -855,20 +855,6 @@ app = App(app_id="app_id", user_id="user_id")
 relations = list(app.search_concept_relations())
 ```
 
-### App._process_workflow_config
-
-```python
-App._process_workflow_config(config_filepath)
-```
-
-Internal method to process workflow configuration from YAML file.
-
-**Parameters:**
-- `config_filepath` (*str*) - Path to workflow configuration YAML file
-
-**Returns:**
-- Tuple of workflow configuration and nodes
-
 ### App.workflow
 
 ```python
@@ -1039,82 +1025,6 @@ for entry in dataset:
     # Process each dataset entry
     pass
 ```
-
-### Dataset._concurrent_annot_upload
-
-```python
-Dataset._concurrent_annot_upload(annots)
-```
-
-Internal method for concurrent annotation uploads.
-
-**Parameters:**
-- `annots` (*List[List[resources_pb2.Annotation]]*) - Annotation protos to upload
-
-**Returns:**
-- List of failed annotation protos
-
-### Dataset._delete_failed_inputs
-
-```python
-Dataset._delete_failed_inputs(batch_input_ids, dataset_obj, upload_response = None, batch_no = None)
-```
-
-Internal method to delete failed input IDs.
-
-**Parameters:**
-- `batch_input_ids` (*List[int]*) - Batch input IDs
-- `dataset_obj` (*ClarifaiDatasetType*) - Dataset object
-- `upload_response` (*MultiInputResponse*) - Upload response proto
-- `batch_no` (*Optional[int]*) - Batch number
-
-**Returns:**
-- Tuple of success and failed input ID lists
-
-### Dataset._upload_inputs_annotations
-
-```python
-Dataset._upload_inputs_annotations(batch_input_ids, dataset_obj, batch_no = None, is_retry_duplicates = False)
-```
-
-Internal method to upload input batches with annotations.
-
-**Parameters:**
-- `batch_input_ids` (*List[int]*) - Batch input IDs
-- `dataset_obj` (*ClarifaiDatasetType*) - Dataset object
-- `batch_no` (*Optional[int]*) - Batch number 
-- `is_retry_duplicates` (*bool*) - Whether retrying duplicates
-
-**Returns:**
-- Tuple containing failed IDs, retry annotations and response
-
-### Dataset._retry_uploads
-
-```python
-Dataset._retry_uploads(failed_input_ids, retry_annot_protos, dataset_obj, batch_no)
-```
-
-Internal method to retry failed uploads.
-
-**Parameters:**
-- `failed_input_ids` (*List[int]*) - Failed input IDs
-- `retry_annot_protos` (*List[resources_pb2.Annotation]*) - Annotations to retry
-- `dataset_obj` (*ClarifaiDatasetType*) - Dataset object
-- `batch_no` (*Optional[int]*) - Batch number
-
-### Dataset._data_upload
-
-```python
-Dataset._data_upload(dataset_obj, is_log_retry = False, log_retry_ids = None, **kwargs)
-```
-
-Internal method for dataset uploads.
-
-**Parameters:**
-- `dataset_obj` (*ClarifaiDatasetType*) - Dataset object
-- `is_log_retry` (*bool*) - Whether retrying from logs
-- `log_retry_ids` (*List[int]*) - IDs to retry
-- `**kwargs` - Additional arguments
 
 ### Dataset.upload_dataset
 
@@ -1755,27 +1665,6 @@ Patches concepts in the app.
 - `values` (*List[float]*) - List of concept values
 - `action` (*str*) - Action to perform (only 'overwrite' supported)
 
-### Inputs._upload_batch
-
-```python
-Inputs._upload_batch(inputs)
-```
-
-Internal method to upload a batch of input objects to the app. It handles the upload process, waits for input processing, and manages failed inputs.
-
-**Parameters:**
-- `inputs` (*List[Input]*) - List of input objects to upload
-
-**Returns:**
-- List of failed input objects that couldn't be uploaded
-
-**Example:**
-```python
-from clarifai.client.input import Inputs
-input_obj = Inputs(user_id='user_id', app_id='app_id')
-failed_inputs = input_obj._upload_batch(input_batch)
-```
-
 ### Inputs.delete_inputs
 
 ```python
@@ -1883,86 +1772,6 @@ input_obj = User(user_id="user_id").app(app_id="app_id").inputs()
 all_inputs = list(input_obj.list_inputs(input_type='image'))
 all_annotations = list(input_obj.list_annotations(batch_input=all_inputs))
 ```
-
-### Inputs._bulk_upload
-
-```python
-Inputs._bulk_upload(inputs, batch_size=128)
-```
-
-Internal method for uploading large numbers of inputs in batches.
-
-**Parameters:**
-- `inputs` (*List[Input]*) - List of input protos to upload
-- `batch_size` (*int*) - Batch size for each request (max 128)
-
-### Inputs._wait_for_inputs
-
-```python
-Inputs._wait_for_inputs(input_job_id)
-```
-
-Internal method to wait for input processing completion.
-
-**Parameters:**
-- `input_job_id` (*str*) - Upload job ID
-
-**Returns:**
-- True if processed successfully, False if timed out
-
-### Inputs._retry_uploads
-
-```python
-Inputs._retry_uploads(failed_inputs)
-```
-
-Internal method to retry failed uploads.
-
-**Parameters:**
-- `failed_inputs` (*List[Input]*) - Failed input protos
-
-### Inputs._delete_failed_inputs
-
-```python
-Inputs._delete_failed_inputs(inputs)
-```
-
-Internal method to delete failed inputs.
-
-**Parameters:**
-- `inputs` (*List[Input]*) - Input protos to check
-
-**Returns:**
-- List of failed input protos
-
-## Lister
-
-```python
-class Lister(page_size=16)
-```
-
-Lister is a class for obtaining paginated results from the Clarifai API.
-
-**Parameters:**
-- `page_size` (*int*) - Default number of items per page. Default is 16.
-
-### Lister.list_pages_generator
-
-```python
-Lister.list_pages_generator(endpoint, proto_message, request_data, page_no=None, per_page=None)
-```
-
-Lists pages of a resource with pagination support.
-
-**Parameters:**
-- `endpoint` (*Callable*) - API endpoint function to call
-- `proto_message` (*Any*) - Protobuf message type for request
-- `request_data` (*Dict[str, Any]*) - Request data dictionary
-- `page_no` (*int*) - Specific page number to fetch (optional)
-- `per_page` (*int*) - Number of items per page (optional)
-
-**Yields:** 
-- Dictionary containing resource items from response
 
 ## Model
 
@@ -2187,17 +1996,6 @@ Makes predictions using the model.
 **Returns:**
 - Prediction response
 
-### Model._check_predict_input_type
-
-```python
-Model._check_predict_input_type(input_type)
-```
-
-Internal method to validate input type.
-
-**Parameters:**
-- `input_type` (*str*) - Input type to validate
-
 ### Model.load_input_types
 
 ```python
@@ -2355,21 +2153,6 @@ Generates outputs from URL input with streaming response.
 **Returns:**
 - Generator yielding output responses
 
-### Model._req_iterator
-
-```python
-Model._req_iterator(input_iterator, runner_selector)
-```
-
-Internal method to create request iterator for streaming predictions.
-
-**Parameters:**
-- `input_iterator` (*Iterator[List[Input]]*) - Iterator of input lists
-- `runner_selector` (*RunnerSelector*) - Runner selection configuration
-
-**Yields:**
-- Model output request objects
-
 ### Model.stream
 
 ```python
@@ -2403,67 +2186,6 @@ Streams predictions from file input.
 - `deployment_id` (*str*) - Deployment ID
 - `inference_params` (*Dict*) - Inference parameters
 - `output_config` (*Dict*) - Output configuration
-
-### Model._override_model_version
-
-```python
-Model._override_model_version(inference_params={}, output_config={})
-```
-
-Internal method to override model version configuration.
-
-**Parameters:**
-- `inference_params` (*Dict*) - Inference parameters to override
-- `output_config` (*Dict*) - Output configuration including:
-  - `min_value` (*float*) - Minimum confidence threshold
-  - `max_concepts` (*int*) - Maximum concepts to return
-  - `select_concepts` (*List*) - Specific concepts to return
-  - `sample_ms` (*int*) - Sample duration in milliseconds
-
-### Model._list_concepts
-
-```python
-Model._list_concepts()
-```
-
-Internal method to list all concepts for the model type.
-
-**Returns:**
-- List of concept IDs
-
-### Model._make_pretrained_config_proto
-
-```python
-Model._make_pretrained_config_proto(input_field_maps, output_field_maps, url=None)
-```
-
-Internal method to create pretrained model config protobuf.
-
-**Parameters:**
-- `input_field_maps` (*dict*) - Input field mappings
-- `output_field_maps` (*dict*) - Output field mappings
-- `url` (*str*) - Optional direct download URL
-
-**Returns:**
-- PretrainedModelConfig protobuf object
-
-### Model._make_inference_params_proto
-
-```python
-Model._make_inference_params_proto(inference_parameters)
-```
-
-Internal method to convert inference parameters to protobuf format.
-
-**Parameters:**
-- `inference_parameters` (*List[Dict]*) - List of parameter configurations with:
-  - `field_type` - Parameter type
-  - `path` - Parameter path
-  - `default_value` - Default value
-  - `description` - Parameter description
-
-**Returns:**
-- List of ModelTypeField protobuf objects
 
 ### Model.evaluate
 
@@ -2990,123 +2712,6 @@ results = search.query(
     per_page=5
 )
 ```
-
-## Base
-
-```python
-class BaseClient(**kwargs)
-```
-
-BaseClient is the base class for all classes interacting with Clarifai endpoints. It provides core authentication and API interaction functionality.
-
-**Parameters:**
-- `**kwargs` - Configuration parameters including:
-  - `user_id` (*str*) - User ID for authentication
-  - `app_id` (*str*) - App ID for API interaction
-  - `pat` (*str*) - Personal access token
-  - `token` (*str*) - Session token
-  - `base` (*str*) - Base API URL (default: 'https://api.clarifai.com')
-  - `ui` (*str*) - UI URL (default: 'https://clarifai.com')
-  - `root_certificates_path` (*str*) - Path to SSL certificates
-
-**Raises:**
-- Exception if neither pat nor token is provided
-
-**Note:**
-- Must provide either pat (Personal Access Token) or token (Session Token)
-- Can set tokens via environment variables CLARIFAI_PAT or CLARIFAI_SESSION_TOKEN
-
-### BaseClient.from_env
-
-```python
-BaseClient.from_env(cls, validate=False)
-```
-
-Creates BaseClient instance from environment variables.
-
-**Parameters:**
-- `validate` (*bool*) - Whether to validate credentials
-
-**Returns:**
-- BaseClient instance
-
-**Example:**
-```python
-client = BaseClient.from_env()
-```
-
-### BaseClient.from_auth_helper
-
-```python
-BaseClient.from_auth_helper(auth, **kwargs)
-```
-
-Creates BaseClient instance from existing ClarifaiAuthHelper.
-
-**Parameters:**
-- `auth` (*ClarifaiAuthHelper*) - Authentication helper instance
-- `**kwargs` - Additional configuration parameters
-
-**Returns:**
-- BaseClient instance
-
-**Example:**
-```python
-auth = ClarifaiAuthHelper(pat="your_pat")
-client = BaseClient.from_auth_helper(auth)
-```
-
-### BaseClient._grpc_request
-
-```python
-BaseClient._grpc_request(method, argument)
-```
-
-Makes gRPC requests to the Clarifai API.
-
-**Parameters:**
-- `method` (*Callable*) - gRPC method to call
-- `argument` (*Any*) - Arguments for the method
-
-**Returns:**
-- API response
-
-**Raises:**
-- Exception on API error
-
-### BaseClient.convert_string_to_timestamp
-
-```python
-BaseClient.convert_string_to_timestamp(date_str)
-```
-
-Converts string to Protobuf Timestamp.
-
-**Parameters:**
-- `date_str` (*str*) - Date string in format 'YYYY-MM-DDThh:mm:ss.sssZ' or 'YYYY-MM-DDThh:mm:ssZ'
-
-**Returns:**
-- Protobuf Timestamp object
-
-**Example:**
-```python
-timestamp = client.convert_string_to_timestamp("2023-01-01T12:00:00.000Z")
-```
-
-### BaseClient.process_response_keys
-
-```python
-BaseClient.process_response_keys(old_dict, listing_resource=None)
-```
-
-Processes API response dictionary to convert keys to proper format.
-
-**Parameters:**
-- `old_dict` (*dict*) - Original response dictionary
-- `listing_resource` (*str*) - Optional resource type for listing operations
-
-**Returns:**
-- new_dict (dict): The dictionary with processed keys.
 
 ## ComputeCluster
 
