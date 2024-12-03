@@ -1006,26 +1006,6 @@ dataset = Dataset(dataset_id='dataset_id', user_id='user_id', app_id='app_id')
 all_dataset_inputs = list(dataset.list_inputs())
 ```
 
-### Dataset.\__iter\__
-
-```python
-Dataset.__iter__()
-```
-
-Makes the Dataset class iterable, returning an iterator over exported dataset contents.
-
-**Returns:**
-- Iterator of DatasetExportReader that provides access to dataset contents
-
-**Example:**
-```python
-from clarifai.client.dataset import Dataset
-dataset = Dataset(dataset_id='dataset_id')
-for entry in dataset:
-    # Process each dataset entry
-    pass
-```
-
 ### Dataset.upload_dataset
 
 ```python
@@ -1035,7 +1015,7 @@ Dataset.upload_dataset(dataloader, batch_size=32, get_upload_status=False, log_w
 Uploads a dataset to the app.
 
 **Parameters:**
-- `dataloader` (*Type[ClarifaiDataLoader]*) - Data loader object
+- `dataloader` (*ClarifaiDataLoader*) - Data loader object
 - `batch_size` (*int*) - Batch size for concurrent uploads (max: 128)
 - `get_upload_status` (*bool*) - Get upload status if True
 - `log_warnings` (*bool*) - Save warnings to log file if True
@@ -1198,29 +1178,6 @@ Inputs is a class that provides access to Clarifai API endpoints related to Inpu
 - `token` (*str*) - Session token for authentication. Can be set as env var CLARIFAI_SESSION_TOKEN
 - `root_certificates_path` (*str*) - Path to SSL root certificates file
 - `**kwargs` - Additional keyword arguments
-
-### Inputs._get_proto
-
-```python
-Inputs._get_proto(input_id, dataset_id=None, imagepb=None, video_pb=None, audio_pb=None, text_pb=None, geo_info=None, labels=None, label_ids=None, metadata=None)
-```
-
-Creates an input proto object.
-
-**Parameters:**
-- `input_id` (*str*) - Input ID
-- `dataset_id` (*str*) - Dataset ID to add input to
-- `imagepb` (*Image*) - Image proto
-- `video_pb` (*Video*) - Video proto 
-- `audio_pb` (*Audio*) - Audio proto
-- `text_pb` (*Text*) - Text proto
-- `geo_info` (*List*) - List [longitude, latitude] for geo point
-- `labels` (*List*) - List of label names
-- `label_ids` (*List*) - List of label IDs 
-- `metadata` (*Struct*) - Metadata struct
-
-**Returns:**
-- Input proto object
 
 ### Inputs.get_input_from_url
 
@@ -2595,75 +2552,6 @@ Search is a class that provides access to Clarifai API endpoints related to sear
 - `token` (*str*) - Session token
 - `root_certificates_path` (*str*) - Path to SSL certificates
 
-### Search._get_annot_proto
-
-```python
-Search._get_annot_proto(**kwargs)
-```
-
-Creates Annotation proto from keyword arguments.
-
-**Parameters:**
-- `**kwargs` - Supported keys:
-  - `image_bytes` (*bytes*) - Raw image data
-  - `image_url` (*str*) - Image URL
-  - `concepts` (*List*) - Concept list
-  - `text_raw` (*str*) - Raw text
-  - `metadata` (*dict*) - Metadata
-  - `geo_point` (*dict*) - Geographic data
-
-**Returns:**
-- Annotation proto message
-
-### Search._get_input_proto
-
-```python
-Search._get_input_proto(**kwargs)
-```
-
-Creates Input proto from keyword arguments.
-
-**Parameters:**
-- `**kwargs` - Supported keys:
-  - `input_types` (*List[str]*) - Input types list
-  - `input_dataset_ids` (*List[str]*) - Dataset IDs
-  - `input_status_code` (*int*) - Status code
-
-**Returns:**
-- Input proto message
-
-### Search._get_geo_point_proto
-
-```python
-Search._get_geo_point_proto(longitude, latitude, geo_limit)
-```
-
-Creates Geo proto for geographical searches.
-
-**Parameters:**
-- `longitude` (*float*) - Longitude coordinate
-- `latitude` (*float*) - Latitude coordinate
-- `geo_limit` (*float*) - Geographic limit in kilometers
-
-**Returns:**
-- Geo proto message
-
-### Search._list_topk_generator
-
-```python
-Search._list_topk_generator(endpoint, proto_message, request_data)
-```
-
-Internal generator for top-k search results.
-
-### Search._list_all_pages_generator
-
-```python
-Search._list_all_pages_generator(endpoint, proto_message, request_data, page_no=None, per_page=None)
-```
-
-Internal generator for paginated search results.
-
 ### Search.query
 
 ```python
@@ -2824,27 +2712,6 @@ compute_cluster.delete_nodepools(
 )
 ```
 
-### ComputeCluster._process_nodepool_config
-
-```python
-ComputeCluster._process_nodepool_config(config_filepath)
-```
-
-Processes nodepool configuration from YAML file.
-
-**Parameters:**
-- `config_filepath` (*str*) - Path to YAML configuration file
-
-**Returns:**
-- Processed configuration dictionary
-
-**Required Configuration Fields:**
-- `nodepool`:
-  - `instance_types` - Instance type configurations
-  - `node_capacity_type` - Capacity type settings
-  - `max_instances` - Maximum instance count
-
-
 ## Nodepool
 
 ```python
@@ -2968,19 +2835,3 @@ runner_selector = Nodepool.get_runner_selector(
     nodepool_id="nodepool_id"
 )
 ```
-
-### Nodepool._process_deployment_config
-
-```python
-Nodepool._process_deployment_config(config_filepath)
-```
-
-Processes deployment configuration from YAML file.
-
-**Parameters:**
-- `config_filepath` (*str*) - Path to YAML configuration
-
-**Returns:**
-- Processed configuration dictionary
-
-
