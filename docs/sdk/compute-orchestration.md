@@ -11,7 +11,7 @@ sidebar_position: 6.1
 
 :::note
 
-Compute Orchestration is currently in [private preview](https://docs.clarifai.com/product-updates/changelog/release-types). To request access, please contact us or sign up [here](https://forms.gle/Cj9r8wgeYk5HQ67Y9).
+Compute Orchestration is currently in [Public Preview](https://docs.clarifai.com/product-updates/changelog/release-types). To request access, please contact us [here](https://www.clarifai.com/explore/contact-us-co).
 
 :::
 

@@ -30,7 +30,7 @@ We have a public roadmap that gives you a view of our upcoming plans and helps u
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
-| ![new-feature](/img/new_feature.jpg) <br/> **(Public Preview)**  | Released Compute Orchestration in [Public Preview](https://docs.clarifai.com/product-updates/changelog/release-types)   | <ul> <li> Clarifai’s new Compute Orchestration system provides you with an efficient way to deploy inference workloads on any compute, in any bare metal, or cloud environment.  Learn more about it [here](https://docs.clarifai.com/portal-guide/compute-orchestration/). </li><li> To request access, please contact us or sign up [here](https://forms.gle/Cj9r8wgeYk5HQ67Y9). </li> </ul>  |   
+| ![new-feature](/img/new_feature.jpg) <br/> **(Public Preview)**  | Released Compute Orchestration in [Public Preview](https://docs.clarifai.com/product-updates/changelog/release-types)   | <ul> <li> Clarifai’s new Compute Orchestration capabilities provides you with an efficient way to deploy inference workloads on any compute, in any bare metal, or cloud environment.  Learn more about it [here](https://docs.clarifai.com/portal-guide/compute-orchestration/). </li><li> To request access, please contact us [here](https://www.clarifai.com/explore/contact-us-co). </li> </ul>  |   
 
 ## Concepts
 
