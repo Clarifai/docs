@@ -554,8 +554,14 @@ const config = {
             to: '/portal-guide/input-viewer/predictions/',
             from: '/portal-guide/data/explorer/predictions'
           },
+
+
+
+
+
+          
           {
-            to: '/portal-guide/input-viewer/annotate/',
+            to: '/portal-guide/input-viewer/annotate',
             from: '/portal-guide/explorer/annotations'
           },
           {
