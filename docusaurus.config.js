@@ -555,7 +555,7 @@ const config = {
             from: '/portal-guide/data/explorer/predictions'
           },
           {
-            to: '/portal-guide/inputs-manager/annotate',
+            to: '/portal-guide/input-viewer/annotate/',
             from: '/portal-guide/explorer/annotations/'
           },
           {
@@ -563,7 +563,7 @@ const config = {
             from: '/portal-guide/data/explorer/object-tracking/'
           },
           {
-            to: '/portal-guide/inputs-manager/annotate',
+            to: '/portal-guide/input-viewer/annotate',
             from: '/portal-guide/data/explorer/annotations/'
           },
           {
