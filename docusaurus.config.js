@@ -556,7 +556,7 @@ const config = {
           },
           {
             to: '/portal-guide/input-viewer/annotate/',
-            from: '/portal-guide/explorer/annotations/'
+            from: '/portal-guide/explorer/annotations'
           },
           {
             to: '/portal-guide/input-viewer/object-tracking',
