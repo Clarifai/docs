@@ -13,8 +13,8 @@ const config = {
   tagline: 'Clarifai Docs',
   url: 'https://docs.clarifai.com',
   baseUrl: '/',
-  onBrokenLinks: 'ignore',
-  onBrokenMarkdownLinks: 'ignore',
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.svg',
   organizationName: 'clarifai',
   projectName: 'docs',
@@ -113,11 +113,11 @@ const config = {
               },
               {
                 label: "Exploring Your Data",
-                to: "/portal-guide/data/explorer",
+                to: "/portal-guide/inputs-manager/",
               },
               {
                 label: "Creating Concepts",
-                to: "/portal-guide/concepts"
+                to: "/portal-guide/inputs-manager/concepts"
               },
               {
                 label: "Search Your Data",
@@ -125,7 +125,7 @@ const config = {
               },
               {
                 label: "Label Your Data",
-                to: "/portal-guide/annotate"
+                to: "/portal-guide/inputs-manager/annotate"
               },
               {
                 label: "Handling Datasets",
@@ -561,6 +561,10 @@ const config = {
           {
             to: '/portal-guide/input-viewer/object-tracking',
             from: '/portal-guide/data/explorer/object-tracking/'
+          },
+          {
+            to: '/portal-guide/input-viewer/annotate',
+            from: '/portal-guide/data/explorer/annotations/'
           },
           {
             to: '/portal-guide/input-viewer/label-types',
