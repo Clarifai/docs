@@ -499,7 +499,7 @@ const config = {
             from: '/sdk/advanced-concept management'
           },
           {
-            to: '/portal-guide/annotate/review',
+            to: '/portal-guide/labeling-tasks/review',
             from: '/portal-guide/annotate/workforce-management'
           },
           {
