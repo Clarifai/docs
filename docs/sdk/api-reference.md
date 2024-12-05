@@ -1161,44 +1161,6 @@ from clarifai.client.dataset import Dataset
 Dataset().export(save_path='output.zip')
 ```
 
-## Deployment
-
-```python
-class Deployment(deployment_id=None, user_id=None, base_url="https://api.clarifai.com", pat=None, token=None, root_certificates_path=None, **kwargs)
-```
-
-Deployment class for accessing Clarifai API endpoints related to Deployment information.
-
-**Parameters:**
-- `deployment_id` (*str*) - Deployment ID to interact with
-- `user_id` (*str*) - User ID
-- `base_url` (*str*) - Base API URL. Default "https://api.clarifai.com"
-- `pat` (*str*) - Personal access token
-- `token` (*str*) - Session token 
-- `root_certificates_path` (*str*) - Path to SSL certificates
-- `**kwargs` - Additional configurations
-
-### Deployment.get_runner_selector
-
-```python
-Deployment.get_runner_selector(user_id, deployment_id)
-```
-
-Gets RunnerSelector object for a deployment.
-
-**Parameters:**
-- `user_id` (*str*) - User ID
-- `deployment_id` (*str*) - Deployment ID
-
-**Returns:**
-- RunnerSelector object
-
-**Example:**
-```python
-deployment = Deployment(deployment_id="deployment_id", user_id="user_id")
-runner = Deployment.get_runner_selector(user_id="user_id", deployment_id="deployment_id")
-```
-
 ## Input
 
 ```python
@@ -2872,4 +2834,42 @@ runner_selector = Nodepool.get_runner_selector(
     compute_cluster_id="cluster_id",
     nodepool_id="nodepool_id"
 )
+```
+
+## Deployment
+
+```python
+class Deployment(deployment_id=None, user_id=None, base_url="https://api.clarifai.com", pat=None, token=None, root_certificates_path=None, **kwargs)
+```
+
+Deployment class for accessing Clarifai API endpoints related to Deployment information.
+
+**Parameters:**
+- `deployment_id` (*str*) - Deployment ID to interact with
+- `user_id` (*str*) - User ID
+- `base_url` (*str*) - Base API URL. Default "https://api.clarifai.com"
+- `pat` (*str*) - Personal access token
+- `token` (*str*) - Session token 
+- `root_certificates_path` (*str*) - Path to SSL certificates
+- `**kwargs` - Additional configurations
+
+### Deployment.get_runner_selector
+
+```python
+Deployment.get_runner_selector(user_id, deployment_id)
+```
+
+Gets RunnerSelector object for a deployment.
+
+**Parameters:**
+- `user_id` (*str*) - User ID
+- `deployment_id` (*str*) - Deployment ID
+
+**Returns:**
+- RunnerSelector object
+
+**Example:**
+```python
+deployment = Deployment(deployment_id="deployment_id", user_id="user_id")
+runner = Deployment.get_runner_selector(user_id="user_id", deployment_id="deployment_id")
 ```
