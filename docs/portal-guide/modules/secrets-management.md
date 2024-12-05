@@ -1,6 +1,5 @@
 ---
 description: Keep your credentials secure and build powerful modules
-pagination_next: null
 sidebar_position: 3
 ---
 

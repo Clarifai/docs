@@ -9,7 +9,7 @@ sidebar_position: 3
 **Multilingual support in Clarifai**
 <hr />
 
-The Clarifai platform supports many languages in addition to English. These are represented as translations of the names of concepts so that when you search by concept name or get predictions from a model's concepts you can utilize the language of your choice.
+The Clarifai platform supports many languages in addition to English. These are represented as translations of the names of [concepts](https://docs.clarifai.com/portal-guide/inputs-manager/concepts) so that when you search by concept name or get predictions from a model's concepts you can utilize the language of your choice.
 
 ## Supported Languages
 

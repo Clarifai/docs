@@ -1,14 +1,18 @@
 ---
-description: Manage your concepts
-sidebar_position: 1
+description: Create, get, update, and delete concepts on the Inputs-Manager
+sidebar_position: 3
 ---
 
-# Create, Get, Update, Delete
+# Concepts
 
-**Manage your concepts**
+**Create, get, update, and delete concepts on the Inputs-Manager**
 <hr />
 
-A concept, [as previously explained](README.mdx), represents an entity in the physical world, much like a "tag" or "keyword." On the Clarifai platform, you can create and manage these concepts within your app to enhance your model's ability to recognize and categorize data.
+A concept in machine learning is a label or tag used to describe an entity, similar to a keyword. It helps annotate data, allowing models to learn from patterns associated with that concept.
+
+Over time, through training on annotated data, models can recognize or classify new data based on the concepts they've learned. Concepts are often called "classes" in machine learning tasks.
+
+On the Clarifai platform, you can create and manage these concepts within your app to enhance your model's ability to recognize and categorize data.
 
 :::danger Delete Concepts
 

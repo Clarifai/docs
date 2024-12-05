@@ -1,14 +1,14 @@
 ---
-description: Manage your inputs and training data on the Community Platform
-pagination_prev: null
+description: Learn how to upload inputs on the Clarifai Platform
+sidebar_position: 2
 ---
 
-# Your Data
+# Upload Inputs
 
-**Manage your inputs and training data on the Community Platform**
+**Learn how to upload inputs on the Clarifai platform**
 <hr />
 
-An input is the data you're providing into the Community platform. You can upload your inputs to be used for data labeling, training new models, performing searches, or making predictions. 
+An input is the data you're providing into the Clarifai platform. You can upload your inputs to be used for data labeling, training new models, performing searches, or making predictions. 
 
 The platform lets you upload images, videos, and texts from URLs or from a local directory.
 
@@ -25,10 +25,3 @@ Your inputs should fulfill the following conditions:
 The small window that pops up allows you to upload any type of input data—files from your local directory, text, or publicly accessible URL. 
 
 ![](/img/community_2/data_upload_inputs.png)
-
-
-import DocCardList from '@theme/DocCardList';
-import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
-
-<DocCardList items={useCurrentSidebarCategory().items}/>
-

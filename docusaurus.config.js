@@ -479,10 +479,6 @@ const config = {
             from: ['/python-sdk/notebook-examples'],
           },
           {
-            to: '/portal-guide/model-versions/',
-            from: '/test/portal-guide/model-versions/'
-          },
-          {
             to: '/api-guide/data/create-get-update-delete',
             from: '/api-guide/data/cloud-storage'
           },
@@ -525,7 +521,96 @@ const config = {
           {
             to: '/portal-guide/workflows/working-with-workflows',
             from: '/portal-guide/workflows/setting-up-a-mesh-workflow'
-          }
+          },
+          {
+            to: '/portal-guide/inputs-manager/',
+            from: '/portal-guide/data/'
+          },
+          {
+            to: '/portal-guide/inputs-manager/supported-formats/',
+            from: '/portal-guide/data/supported-formats/'
+          },
+          {
+            to: '/portal-guide/inputs-manager/',
+            from: '/portal-guide/data/explorer/'
+          },
+          {
+            to: '/portal-guide/inputs-manager/bulk-labeling/',
+            from: '/portal-guide/data/explorer/bulk-labeling/'
+          },
+          {
+            to: '/portal-guide/inputs-manager/concepts',
+            from: '/portal-guide/concepts/'
+          },
+          {
+            to: '/portal-guide/inputs-manager/concepts',
+            from: '/portal-guide/concepts/create-get-update-delete/'
+          },
+          {
+            to: '/portal-guide/inputs-manager/annotate/',
+            from: '/portal-guide/annotate/create-get-update-delete'
+          },
+          {
+            to: '/portal-guide/input-viewer/predictions/',
+            from: '/portal-guide/data/explorer/predictions'
+          },
+          {
+            to: '/portal-guide/input-viewer/annotate/',
+            from: '/portal-guide/explorer/annotations/'
+          },
+          {
+            to: '/portal-guide/input-viewer/object-tracking',
+            from: '/portal-guide/data/explorer/object-tracking/'
+          },
+          {
+            to: '/portal-guide/input-viewer/label-types',
+            from: '/portal-guide/annotate/label-types'
+          },
+          {
+            to: '/portal-guide/input-viewer/ai-assist',
+            from: '/portal-guide/annotate/ai-assist'
+          },
+          {
+            to: '/portal-guide/labeling-tasks/',
+            from: '/portal-guide/annotate/'
+          },
+          {
+            to: '/portal-guide/labeling-tasks/create-a-task',
+            from: '/portal-guide/annotate/create-a-task'
+          },
+          {
+            to: '/portal-guide/labeling-tasks/auto-annotation',
+            from: '/portal-guide/annotate/auto-annotation'
+          },
+          {
+            to: '/portal-guide/labeling-tasks/review',
+            from: '/portal-guide/annotate/review'
+          },
+          {
+            to: '/portal-guide/labeling-tasks/labeling-tools',
+            from: '/portal-guide/annotate/labeling-tools'
+          },
+          {
+            to: '/portal-guide/labeling-tasks/positive-and-negative-annotations',
+            from: '/portal-guide/annotate/positive-and-negative-annotations'
+          },
+          {
+            to: '/portal-guide/modules/collectors',
+            from: '/portal-guide/data/collectors'
+          },
+          {
+            to: '/portal-guide/portal-overview/languages',
+            from: '/portal-guide/concepts/languages'
+          },
+          {
+            to: '/portal-guide/model/training-data',
+            from: '/portal-guide/annotate/training-data'
+          },
+          {
+            to: '/portal-guide/modules/hyperparameter-sweeps',
+            from: '/portal-guide/model/hyperparameter-sweeps'
+          },
+
         ],
         createRedirects(existingPath) {
           if (existingPath.includes('/community')) {

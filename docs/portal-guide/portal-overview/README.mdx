@@ -1,6 +1,5 @@
 ---
 description: Your platform for the entire AI lifecycle
-pagination_next: null
 pagination_prev: null
 sidebar_position: 1
 ---
@@ -89,3 +88,9 @@ If you want to use a model or a workflow for making API calls, you need to click
 The modal that pops up has snippets in various programming languages, which you can copy and use in your development environment.
 
 ![](/img/community_2/use_model_workflow.png)
+
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>

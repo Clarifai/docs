@@ -1,10 +1,10 @@
 ---
 description: >-
   Generate annotations for your inputs automatically
-sidebar_position: 5
+sidebar_position: 4
 ---
 
-# AI-Assisted Labeling — Input-Viewer
+# AI-Assisted Labeling 
 
 **Generate annotations for your inputs automatically**
 <hr />

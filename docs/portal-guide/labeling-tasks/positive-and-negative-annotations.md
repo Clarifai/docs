@@ -1,7 +1,7 @@
 ---
 description: Learn how to make positive and negative annotations
 pagination_next: null
-sidebar_position: 9
+sidebar_position: 5
 ---
 
 # Positive and Negative Annotations

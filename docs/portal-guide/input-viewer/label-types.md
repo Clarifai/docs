@@ -3,7 +3,7 @@ description: Learn about the labeling methods on the Input-Viewer
 sidebar_position: 3
 ---
 
-# Label Types — Input-Viewer
+# Label Types
 
 **Learn about the labeling methods on the Input-Viewer**
 <hr />
