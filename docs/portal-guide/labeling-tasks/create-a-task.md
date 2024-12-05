@@ -1,6 +1,6 @@
 ---
 description: Learn how to label a batch of data manually or with AI assistance
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 # Create a Labeling Task

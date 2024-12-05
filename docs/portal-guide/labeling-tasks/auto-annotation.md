@@ -1,6 +1,6 @@
 ---
 description: Learn how to automatically label inputs with ease
-sidebar_position: 2.1
+sidebar_position: 2
 ---
 
 # Auto-Annotation

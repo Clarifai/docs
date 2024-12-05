@@ -1,11 +1,12 @@
 ---
-description: Learn about our hyperparameter sweeps module.
-sidebar_position: 3
+description: Learn about our hyperparameter sweeps module
+pagination_next: null
+sidebar_position: 6
 ---
 
 # Hyperparameter Sweeps
 
-**Learn about our hyperparameter sweeps module.**
+**Learn about our hyperparameter sweeps module**
 <hr />
 
 

@@ -1,6 +1,7 @@
 ---
 description: Label multiple inputs at once
-sidebar_position: 3
+sidebar_position: 5
+pagination_next: null
 ---
 
 # Bulk Labeling
@@ -14,7 +15,7 @@ Clarifai provides a number of convenient ways to label multiple inputs at once i
 
 You can label your inputs as they are uploaded with bulk labeling at upload time. To do so, head to your application's individual page and select the **Inputs** option on the collapsible left sidebar.
 
-You'll be redirected to the inputs manager page, which is the main page showcasing all the inputs in your app. Click the **Upload Inputs** button at the upper-right corner of the page.
+You'll be redirected to the Inputs-Manager page, which is the main page showcasing all the inputs in your app. Click the **Upload Inputs** button at the upper-right corner of the page.
 
 The inputs uploader window that pops up lets you upload inputs to your application—either by uploading them directly from your local device or by providing publicly accessible URLs. 
 
@@ -34,7 +35,7 @@ Finally, click the **Upload inputs** button at the bottom of the pop-up window t
 
 ## Bulk Labeling
 
-After uploading inputs, you can easily add labels to them within the inputs manager page.
+After uploading inputs, you can easily add labels to them within the Inputs-Manager page.
 
 To label your inputs from there, start by selecting the inputs you like to label by clicking the checkmark at the upper-left corner of each image. You can even select multiple inputs by holding down the "shift" key.
 
@@ -62,7 +63,7 @@ Finally, click the **Add to inputs** button at the bottom of the pop-up window t
 
 Metadata gives more information about each input. You can add them to inputs in bulk.
 
-To add the same metadata to multiple inputs, click the **Edit Metadata** button at the bottom of the inputs manager page. As mentioned earlier, the button appears after selecting inputs by clicking the checkmark at the upper-left corner of each of them.
+To add the same metadata to multiple inputs, click the **Edit Metadata** button at the bottom of the Inputs-Manager page. As mentioned earlier, the button appears after selecting inputs by clicking the checkmark at the upper-left corner of each of them.
 
 ![](/img/others/bulk_labeling_5.png)
 
@@ -88,6 +89,7 @@ As demonstrated earlier, you can also add metadata information in bulk via the u
 
 :::
 
+<!--
 ## Bulk Add Geodata
 
 You can "Add geodata to selected."
@@ -98,3 +100,4 @@ Once labeled with geodata, you can view your input on the world map under the ri
 
 ![geodata tab](/img/geoDataTab.jpg)
 
+-->

@@ -1,16 +1,14 @@
 ---
-description: View predictions
-sidebar_position: 1
+description: Get predictions
+sidebar_position: 2
 ---
 
 # Predictions
 
-**View predictions**
+**Get predictions**
 <hr />
 
-The input viewer page is the main page that showcases the details of a single input available in your app. If you click an image listed on the inputs manager page, you'll be redirected to the viewer page for that image, where you can see its predictions. 
-
-Once you're on the input viewer page, set the page's mode to **Predict**. You can find the mode settings at the top-right corner of the page.
+Once you're on the single Input-Viewer page, set the page's mode to **Predict**. You can find the mode settings at the top-right corner of the page.
 
 On the right sidebar, click the **Select a Model or Workflow** link to view the predictions of your input. 
 

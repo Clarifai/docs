@@ -1,6 +1,6 @@
 ---
 description: Teach AI with specially labeled data.
-sidebar_position: 8
+sidebar_position: 3
 ---
 
 # Training Data

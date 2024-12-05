@@ -1,11 +1,13 @@
 ---
-description: Explore your data using the Input-Manager and the Input-Viewer screens
+description: Manage your inputs and training data on the Community Platform
+pagination_prev: null
 ---
 
-# Exploring Your Data
+# Inputs-Manager
 
-**Explore your data using the Input-Manager and the Input-Viewer screens**
+**Manage your inputs and training data on the Clarifai platform**
 <hr />
+
 
 Clarifai provides an easy-to-use UI that lets you explore your data and maximize the performance of your models. The platform offers several features to help you effectively manage and optimize your machine learning projects, including:
 
@@ -13,23 +15,23 @@ Clarifai provides an easy-to-use UI that lets you explore your data and maximize
 
 - **Annotation:** The interface includes robust labeling tools, enabling you to prepare your data for training. This includes adding labels, drawing bounding boxes, and applying other relevant annotations.
 
-## Input-Manager
+## Inputs-Manager Screen
 
-If you click the **Inputs** option in your app's collapsible left sidebar, you'll be redirected to the Input-Manager screen, which is the main page showcasing all the inputs in your app.
+If you click the **Inputs** option in your app's collapsible left sidebar, you'll be redirected to the Inputs-Manager screen, which is the main page showcasing all the inputs in your app.
 
 On this screen, you can:
 
 ![](/img/community_2/data_explorer_1.png)
 
 - **Perform a smart search**: Use the search field to rank, sort, and retrieve inputs based on a predicted match to your query caption text. Learn more about it [here](https://docs.clarifai.com/portal-guide/psearch/visual-search/#smart-image-search-by-caption). 
-- **Upload inputs**: Add new inputs to your app by clicking the **Upload Inputs** button in the upper-right section of the page. Learn more about it [here](https://docs.clarifai.com/portal-guide/data/#upload-inputs). 
+- **Upload inputs**: Add new inputs to your app by clicking the **Upload Inputs** button in the upper-right section of the page. Learn more about it [here](https://docs.clarifai.com/portal-guide/inputs-manager/upload-inputs). 
 - **Filter inputs**: Use the **Input Filters** section to customize how inputs are displayed. By default, inputs are sorted by creation date, with the newest at the top. You can filter inputs by dataset, labels, input type (audio, image, text, or video), or metadata. The number of inputs matching your criteria will be displayed at the top.
 - **Zoom in/out**: Adjust the zoom level of the displayed inputs to suit your preference.
 - **Toggle layout**: Toggle the layout of the displayed items. 
 
 ### Input Mode
 
-The **Input Mode** is the default mode of the Input-Manager screen. It displays a gallery showcasing all inputs in your app. Image inputs are shown as thumbnails, while text inputs are truncated.
+The **Input Mode** is the default mode of the Inputs-Manager screen. It displays a gallery showcasing all inputs in your app. Image inputs are shown as thumbnails, while text inputs are truncated.
 
 ![](/img/community_2/data_explorer_2.png)
 
@@ -49,7 +51,7 @@ When you select an input by clicking the small empty box in its upper-left corne
 
 ### Object Mode
 
-The **Object Mode** is a gallery that shows the objects that have been labeled on your inputs. You can select it by clicking the **Object Mode** button in the upper-right section of the Input-Manager screen. 
+The **Object Mode** is a gallery that shows the objects that have been labeled on your inputs. You can select it by clicking the **Object Mode** button in the upper-right section of the Inputs-Manager screen. 
 
 ![](/img/community_2/data_explorer_3.png)
 
@@ -64,20 +66,9 @@ Additionally, while in **Object Mode**, you can click the ellipsis next to the *
 
 ![](/img/community_2/data_explorer_4.png)
 
-## Input-Viewer
-
-The Input-Viewer screen is the main interface for viewing and interacting with the details of a single input in your app. By clicking an input listed on the Input-Manager screen, you'll be redirected to the viewer page for that input.
-
-![](/img/community_2/explorer_1.png)
-
-You can complete several tasks on the Input-Viewer screen, including:
-
-- Use the assistive tools at the top of the page to manually label your inputs. Learn more about it [here](https://docs.clarifai.com/portal-guide/annotate/label-types/). 
-- Generate annotations for your inputs automatically using AI-assisted labeling. Learn more about it [here](https://docs.clarifai.com/portal-guide/annotate/ai-assist). 
-- Use the carousel to swiftly move from one input to another. 
-- Click the info button in the lower-left section to see details of the input, such as input ID, creation date, and resolution.
 
 import DocCardList from '@theme/DocCardList';
 import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 
 <DocCardList items={useCurrentSidebarCategory().items}/>
+

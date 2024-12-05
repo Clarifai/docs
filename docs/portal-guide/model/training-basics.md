@@ -1,6 +1,6 @@
 ---
 description: Train new models with the click of a button.
-sidebar_position: 3
+sidebar_position: 3.1
 ---
 
 # Training Basics
