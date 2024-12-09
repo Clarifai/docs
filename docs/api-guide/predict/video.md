@@ -28,7 +28,7 @@ You can make an API call by providing the `MODEL_ID` parameter and specifying yo
 
 You can configure the FPS rate in the predict request by setting the `sample_ms` variable, which is the number of milliseconds between each frame for inference.
 
-The number must range betweeen 100 and 60000. 
+The number must range between 100 and 60000. 
 
 :::tip
 

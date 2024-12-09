@@ -13,8 +13,8 @@ import java.nio.file.Files;
 public class ClarifaiExample {
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////
-    // In this section, we set the user authentication, user and app ID, workflow ID, and the video 
-    // we want as an input. Change these strings to run your own example.
+    // In this section, we set the user authentication, user and app ID, workflow ID, video input,
+    // and sample_ms. Change these strings to run your own example.
     /////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //Your PAT (Personal Access Token) can be found in the portal under Authentication
@@ -26,6 +26,8 @@ public class ClarifaiExample {
     static final String VIDEO_URL = "https://samples.clarifai.com/beer.mp4";
     // Or, to use a local video file, assign the location variable
     // static final String VIDEO_FILE_LOCATION = "YOUR_VIDEO_FILE_LOCATION_HERE";
+    // Change this to configure the FPS rate (If it's not configured, it defaults to 1 FPS) 
+    static final int SAMPLE_MS = 500;
 
     ///////////////////////////////////////////////////////////////////////////////////
     // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
@@ -49,6 +51,9 @@ public class ClarifaiExample {
                                         //)))
                                         )
                                 )
+                        )
+                        .setOutputConfig(OutputConfig.newBuilder()
+                        	.setSampleMs(SAMPLE_MS)                        		
                         )
                         .build()
         );

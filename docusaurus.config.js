@@ -620,6 +620,10 @@ const config = {
             to: '/portal-guide/modules/hyperparameter-sweeps',
             from: '/portal-guide/model/hyperparameter-sweeps'
           },
+          {
+            to: '/api-guide/workflows/workflow-predict',
+            from: '/api-guide/workflows/common-workflows/workflow-predict'
+          },
 
         ],
         createRedirects(existingPath) {

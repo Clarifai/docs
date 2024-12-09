@@ -1,6 +1,6 @@
 ---
 description: Make predictions with your workflows.
-sidebar_position: 1
+sidebar_position: 3
 ---
 
 # Workflow Predict
@@ -8,7 +8,7 @@ sidebar_position: 1
 **Make predictions with your workflows**
 <hr />
 
-The Workflow Predict API allows you make predictions using one or more models, whether they are Clarifai's pre-built models or custom creations—all in a single API call.
+The Workflow Predict API allows you make predictions using one or more models, whether they are Clarifai's pre-built models or custom creations — all in a single API call.
 
 The maximum number of inputs that can be processed at once with any given workflow is 32.
 
@@ -26,42 +26,42 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
-import PythonWorkflowPredictImage from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/py/workflow_predict_images.py";
-import JSWorkflowPredictImage from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/js/workflow_predict_images.html";
-import NodeWorkflowPredictImage from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/node/workflow_predict_images.js";
-import JavaWorkflowPredictImage from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/java/workflow_predict_images.java";
-import CurlWorkflowPredictImage from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/curl/workflow_predict_images.sh";
-import PHPWorkflowPredictImage from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/php/workflow_predict_images.php";
+import PythonWorkflowPredictImage from "!!raw-loader!../../../code_snippets/api-guide/workflows/common_workflows/py/workflow_predict_images.py";
+import JSWorkflowPredictImage from "!!raw-loader!../../../code_snippets/api-guide/workflows/common_workflows/js/workflow_predict_images.html";
+import NodeWorkflowPredictImage from "!!raw-loader!../../../code_snippets/api-guide/workflows/common_workflows/node/workflow_predict_images.js";
+import JavaWorkflowPredictImage from "!!raw-loader!../../../code_snippets/api-guide/workflows/common_workflows/java/workflow_predict_images.java";
+import CurlWorkflowPredictImage from "!!raw-loader!../../../code_snippets/api-guide/workflows/common_workflows/curl/workflow_predict_images.sh";
+import PHPWorkflowPredictImage from "!!raw-loader!../../../code_snippets/api-guide/workflows/common_workflows/php/workflow_predict_images.php";
 
-import ExampleCodeWorkflowPredictImage from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/output_examples/example_workflow_predict_images.txt";
-import ExampleJSONWorkflowPredictImage from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/output_examples/example_workflow_predict_images.js";
+import ExampleCodeWorkflowPredictImage from "!!raw-loader!../../../code_snippets/api-guide/workflows/common_workflows/output_examples/example_workflow_predict_images.txt";
+import ExampleJSONWorkflowPredictImage from "!!raw-loader!../../../code_snippets/api-guide/workflows/common_workflows/output_examples/example_workflow_predict_images.js";
 
-import PythonWorkflowPredictText from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/py/workflow_predict_text.py";
-import JSWorkflowPredictText from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/js/workflow_predict_text.html";
-import NodeWorkflowPredictText from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/node/workflow_predict_text.js";
-import JavaWorkflowPredictText from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/java/workflow_predict_text.java";
-import CurlWorkflowPredictText from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/curl/workflow_predict_text.sh";
-import PHPWorkflowPredictText from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/php/workflow_predict_text.php";
+import PythonWorkflowPredictText from "!!raw-loader!../../../code_snippets/api-guide/workflows/common_workflows/py/workflow_predict_text.py";
+import JSWorkflowPredictText from "!!raw-loader!../../../code_snippets/api-guide/workflows/common_workflows/js/workflow_predict_text.html";
+import NodeWorkflowPredictText from "!!raw-loader!../../../code_snippets/api-guide/workflows/common_workflows/node/workflow_predict_text.js";
+import JavaWorkflowPredictText from "!!raw-loader!../../../code_snippets/api-guide/workflows/common_workflows/java/workflow_predict_text.java";
+import CurlWorkflowPredictText from "!!raw-loader!../../../code_snippets/api-guide/workflows/common_workflows/curl/workflow_predict_text.sh";
+import PHPWorkflowPredictText from "!!raw-loader!../../../code_snippets/api-guide/workflows/common_workflows/php/workflow_predict_text.php";
 
-import ExampleCodeWorkflowPredictText from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/output_examples/example_workflow_predict_text.txt";
-import ExampleJSONWorkflowPredictText from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/output_examples/example_workflow_predict_text.js";
+import ExampleCodeWorkflowPredictText from "!!raw-loader!../../../code_snippets/api-guide/workflows/common_workflows/output_examples/example_workflow_predict_text.txt";
+import ExampleJSONWorkflowPredictText from "!!raw-loader!../../../code_snippets/api-guide/workflows/common_workflows/output_examples/example_workflow_predict_text.js";
 
-import PythonWorkflowPredictVideo from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/py/workflow_predict_video.py";
-import JSWorkflowPredictVideo from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/js/workflow_predict_video.html";
-import NodeWorkflowPredictVideo from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/node/workflow_predict_video.js";
-import JavaWorkflowPredictVideo from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/java/workflow_predict_video.java";
-import CurlWorkflowPredictVideo from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/curl/workflow_predict_video.sh";
-import PHPWorkflowPredictVideo from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/php/workflow_predict_video.php";
+import PythonWorkflowPredictVideo from "!!raw-loader!../../../code_snippets/api-guide/workflows/common_workflows/py/workflow_predict_video.py";
+import JSWorkflowPredictVideo from "!!raw-loader!../../../code_snippets/api-guide/workflows/common_workflows/js/workflow_predict_video.html";
+import NodeWorkflowPredictVideo from "!!raw-loader!../../../code_snippets/api-guide/workflows/common_workflows/node/workflow_predict_video.js";
+import JavaWorkflowPredictVideo from "!!raw-loader!../../../code_snippets/api-guide/workflows/common_workflows/java/workflow_predict_video.java";
+import CurlWorkflowPredictVideo from "!!raw-loader!../../../code_snippets/api-guide/workflows/common_workflows/curl/workflow_predict_video.sh";
+import PHPWorkflowPredictVideo from "!!raw-loader!../../../code_snippets/api-guide/workflows/common_workflows/php/workflow_predict_video.php";
 
-import PythonWorkflowPredictAudio from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/py/workflow_predict_audio.py";
-import JSWorkflowPredictAudio from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/js/workflow_predict_audio.html";
-import NodeWorkflowPredictAudio from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/node/workflow_predict_audio.js";
-import JavaWorkflowPredictAudio from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/java/workflow_predict_audio.java";
-import CurlWorkflowPredictAudio from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/curl/workflow_predict_audio.sh";
-import PHPWorkflowPredictAudio from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/php/workflow_predict_audio.php";
+import PythonWorkflowPredictAudio from "!!raw-loader!../../../code_snippets/api-guide/workflows/common_workflows/py/workflow_predict_audio.py";
+import JSWorkflowPredictAudio from "!!raw-loader!../../../code_snippets/api-guide/workflows/common_workflows/js/workflow_predict_audio.html";
+import NodeWorkflowPredictAudio from "!!raw-loader!../../../code_snippets/api-guide/workflows/common_workflows/node/workflow_predict_audio.js";
+import JavaWorkflowPredictAudio from "!!raw-loader!../../../code_snippets/api-guide/workflows/common_workflows/java/workflow_predict_audio.java";
+import CurlWorkflowPredictAudio from "!!raw-loader!../../../code_snippets/api-guide/workflows/common_workflows/curl/workflow_predict_audio.sh";
+import PHPWorkflowPredictAudio from "!!raw-loader!../../../code_snippets/api-guide/workflows/common_workflows/php/workflow_predict_audio.php";
 
-import ExampleCodeWorkflowPredictAudio from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/output_examples/example_workflow_predict_audio.txt";
-import ExampleJSONWorkflowPredictAudio from "!!raw-loader!../../../../code_snippets/api-guide/workflows/common_workflows/output_examples/example_workflow_predict_audio.js";
+import ExampleCodeWorkflowPredictAudio from "!!raw-loader!../../../code_snippets/api-guide/workflows/common_workflows/output_examples/example_workflow_predict_audio.txt";
+import ExampleJSONWorkflowPredictAudio from "!!raw-loader!../../../code_snippets/api-guide/workflows/common_workflows/output_examples/example_workflow_predict_audio.js";
 
 :::tip
 
@@ -119,7 +119,26 @@ Note that the `base64` output representation of the image in bytes is already in
 
 ## Videos
 
-Let's illustrate how you would get predictions from video inputs using a workflow.
+When you input a video into the Workflow Predict API, the response includes a list of predicted concepts for each frame of the video. By default, the video is processed at 1 frame per second (FPS), but this rate can be customized in the predict request. This means you’ll receive a set of concepts for every second (1000 milliseconds) of your video.
+
+To adjust the FPS rate, use the `sample_ms` parameter in your predict request. The `sample_ms` value specifies the time interval (in milliseconds) between frames selected for inference, determining how frequently frames are processed. 
+
+The valid range for `sample_ms` is between 100 and 60,000 milliseconds.
+
+:::tip 
+
+FPS is calculated as: FPS = 1000 / sample_ms
+:::
+
+For example, if `sample_ms` is set to 1000, the FPS rate will be 1 (the default value).
+
+The Workflow Predict API has size and duration limitations for video inputs:
+
+- Videos uploaded via URL can be up to 100 MB in size or 10 minutes in length.
+- Videos sent as byte data are limited to 10 MB in size.
+
+If your video exceeds these limits, you can refer to [this tutorial](https://www.clarifai.com/blog/splitting-video-into-smaller-pieces) on splitting large videos into smaller segments for processing. Exceeding these limits may cause the process to time out and result in an error response.
+
 
 <Tabs>
 
