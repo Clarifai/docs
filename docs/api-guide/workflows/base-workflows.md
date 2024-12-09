@@ -1,7 +1,7 @@
 ---
 description: Index your data and provide your app with a default knowledge base
 pagination_next: null
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 # Base Workflow

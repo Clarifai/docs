@@ -59,6 +59,8 @@ import CO16 from "!!raw-loader!../../code_snippets/python-sdk/compute-orchestrat
 import CO17 from "!!raw-loader!../../code_snippets/python-sdk/compute-orchestration/delete_nodepools.py";
 import CO18 from "!!raw-loader!../../code_snippets/python-sdk/compute-orchestration/delete_clusters.py";
 import CO19 from "!!raw-loader!../../code_snippets/python-sdk/compute-orchestration/predict_with_model.py";
+import CO20 from "!!raw-loader!../../code_snippets/python-sdk/compute-orchestration/predict_with_model_2.py";
+import CO21 from "!!raw-loader!../../code_snippets/python-sdk/compute-orchestration/predict_with_model_3.py";
 
 import CL1 from "!!raw-loader!../../code_snippets/python-sdk/compute-orchestration/cli-1.yaml";
 import CL2 from "!!raw-loader!../../code_snippets/python-sdk/compute-orchestration/cli_create_cluster.sh";
@@ -293,9 +295,30 @@ To initialize the `Deployment` class, provide the `user_id` and `deployment_id` 
 
 ## Predict With Deployed Model
 
-Once your model is deployed, you can use it to make predictions. To do this, pass the `compute_cluster_id` and `nodepool_id` to the `predict` method.
+Once your model is deployed, it can be used to make predictions by calling the appropriate prediction methods. Clarifai's Compute Orchestration system offers different types of prediction calls to suit various use cases.
 
-For example, here is how you can make a prediction using the deployed model.  
+To ensure proper routing and execution, you must specify the following parameters:
+
+- **Compute Cluster ID** — Identifies the compute cluster where your model is deployed.
+- **Nodepool ID** — Specifies the nodepool to use for running your prediction calls.
+
+These parameters are essential for routing prediction requests within the Clarifai's Compute Orchestration system.
+
+:::tip
+
+The following examples illustrate how to make predictions with inputs provided as publicly accessible URLs. [Click here](https://docs.clarifai.com/sdk/Inference-from-AI-Models/) to learn how to make predictions using other types of inputs and models. 
+
+:::
+
+### Unary-Unary Predict Call
+
+This is the simplest type of prediction. In this method, a single input is sent to the model, and it returns a single response. This is ideal for tasks where a quick, non-streaming prediction is required, such as classifying an image.
+
+It supports the following prediction methods:
+
+- `predict_by_url`  — Use a publicly accessible URL for the input.
+- `predict_by_bytes` — Pass raw input data directly.
+- `predict_by_filepath` — Provide the local file path for the input. 
 
 <Tabs>
 <TabItem value="python" label="Python">
@@ -303,11 +326,40 @@ For example, here is how you can make a prediction using the deployed model.
 </TabItem>
 </Tabs>
 
-:::tip
+### Unary-Stream Predict Call 
 
-[Click here](https://docs.clarifai.com/sdk/Inference-from-AI-Models/) to learn more about how to make predictions using different types of models. 
+The **Unary-Stream** predict call processes a single input, but returns a stream of responses. It is particularly useful for tasks where multiple outputs are generated from a single input, such as generating text completions from a prompt.
 
-:::
+It supports the following prediction methods:
+
+- `generate_by_url`  — Provide a publicly accessible URL and handle the streamed responses iteratively.
+- `generate_by_bytes` — Use raw input data.
+- `generate_by_filepath` — Use a local file path for the input.
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CO20}</CodeBlock>
+</TabItem>
+</Tabs>
+
+###  Stream-Stream Predict Call 
+
+The **stream-stream** predict call enables streaming of both inputs and outputs, making it highly effective for processing large datasets or real-time applications.
+
+In this setup, multiple inputs can be continuously sent to the model, and the corresponding predictions are streamed back in real-time. This is ideal for tasks like real-time video processing/predictions or live sensor data analysis.
+
+It supports the following prediction methods:
+
+- `stream_by_url` — Stream a list of publicly accessible URLs and receive a stream of predictions. It takes an iterator of inputs and returns a stream of predictions.
+- `stream_by_bytes` — Stream raw input data.
+- `stream_by_filepath` — Stream inputs from local file paths.
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CO21}</CodeBlock>
+</TabItem>
+</Tabs>
+
 
 ## Delete Resources
 
