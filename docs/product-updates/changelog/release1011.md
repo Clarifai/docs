@@ -52,6 +52,13 @@ We have a public roadmap that gives you a view of our upcoming plans and helps u
 | ![improvement](/img/improvement.jpg) | Made improvements to the [Control Center](https://docs.clarifai.com/portal-guide/control-center/) | <ul> <li> Implemented locale-based date formatting for charts. This ensures the user's browser locale is used to adjust the date format automatically based on their location (e.g., US or EU date formats). </li> <li> Previously, selecting a range like the last 7 days included the current day, even though data for the current date was often unavailable. This has been fixed so that the current date is now excluded when selecting the last "x" days. </li>  <li> We’ve updated Org access for Control Center pages. Previously, only Org Admins could access any of these pages. Now, Org Admins, Org Contributors, and Org Users can access the Overview and Usage pages, while the Costs page remains accessible only to Org Admins. </li> </ul>  |  
 |![bug](/img/bug.jpg) | Fixed bugs on the Control Center  | <ul><li> Fixed an issue where pinning or unpinning charts on the Usage and Operations tab did not correctly update their visibility on the Overview tab as intended. </li> <li> Fixed an issue where selecting the 6-month option in the Date Range selector caused an error. </li>   <li> Previously, when a date range was selected and you navigated to a different tab or section, returning to the Control Center page would reset the date range to the default "Last 7 Days". We’ve fixed this issue, ensuring the selected date range persists.</li> <li> Fixed an issue with header styling in the Control Center.</li></ul>   |
 
+## Agent System Operators
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![new-feature](/img/new_feature.jpg) | Introduced a new agent system operator (node type) for character detection | <ul><li>We developed a new operator that transforms Visual Detector model outputs into an OCR-compatible format. This operator assigns detected concept names as text for each region, enabling seamless integration with the Text Aggregator, particularly for foreign language character detection. </li></ul>|
+
+
 ## Python SDK
 
 |Status                                |Change                  |Details                    |
