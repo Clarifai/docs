@@ -15,8 +15,7 @@ model = Model(
 stream_response = model.stream_by_url(
     iter([text_url]), 
     input_type="text",
-    compute_cluster_id="compute_cluster_id", 
-    nodepool_id="nodepool_id"
+    deployment_id="test-deployment"
 )
 
 # Handle the stream of responses
