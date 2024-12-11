@@ -15,8 +15,7 @@ model = Model(
 stream_response = model.generate_by_url(
     text_url, 
     input_type="text",
-    compute_cluster_id="test-compute-cluster", 
-    nodepool_id="test-nodepool"
+    deployment_id="test-deployment"
 )
 
 # Handle the stream of responses
