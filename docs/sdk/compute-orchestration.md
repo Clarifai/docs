@@ -297,12 +297,7 @@ To initialize the `Deployment` class, provide the `user_id` and `deployment_id` 
 
 Once your model is deployed, it can be used to make predictions by calling the appropriate prediction methods. Clarifai's Compute Orchestration system offers different types of prediction calls to suit various use cases.
 
-To ensure proper routing and execution, you must specify the following parameters:
-
-- **Compute Cluster ID** — Identifies the compute cluster where your model is deployed.
-- **Nodepool ID** — Specifies the nodepool to use for running your prediction calls.
-
-These parameters are essential for routing prediction requests within the Clarifai's Compute Orchestration system.
+To ensure proper routing and execution, you must specify the `deployment_id` parameter. This parameter is essential for routing prediction requests within the Clarifai's Compute Orchestration system.
 
 :::tip
 
