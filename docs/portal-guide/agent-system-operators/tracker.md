@@ -234,7 +234,6 @@ The workflow will analyze the video and identify objects consistently throughout
 
 ![alt text](<../../../static/img/agent-system-operators/Kalman Reid Output.png>)
 
-You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Kalman-Reid-Tracker?version=f4e7f3eb36ce417e8c2c331883d42b8b)
 
 ## Tracker Operators Parameters
 
