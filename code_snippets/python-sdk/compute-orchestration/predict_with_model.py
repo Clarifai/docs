@@ -15,8 +15,7 @@ model = Model(
 model_prediction = model.predict_by_url(
     image_url,
     input_type="image",
-    compute_cluster_id="test-compute-cluster",
-    nodepool_id="test-nodepool"
+    deployment_id="test-deployment"     
 )
 
 # Print the output
