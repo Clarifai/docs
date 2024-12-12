@@ -121,7 +121,6 @@ The operator will process the text and identify its language.
 
 ![](/img/agent-system-operators/language-identification-operator-1.png)
 
-You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Language-Identification-Operator?version=0602988916e5409ea94520ed3f9a96a6)
 
 ## Barcode Operator
 
