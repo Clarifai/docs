@@ -58,7 +58,10 @@ To see it in action, upload the inputs from your local device or use the inputs 
 
 ![alt text](<../../../static/img/agent-system-operators/Image Cropper Output.png>)
 
-You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Image-Cropper?version=1f3c662d2fd540d190a354711fa1ad48)
+You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Image-Cropper?version=1f3c662d2fd540d190a354711fa1ad48). 
+:::note
+Before trying to access the workflow, please make sure that you have a Clarifai account and are logged in to the Clarifai platform to access the example workflow. If you do not have clarifai account you can signup [here](https://clarifai.com/explore).
+:::
 
 ## Image Tiler
 
