@@ -106,7 +106,7 @@ During the 2019 fiscal year, the organization disbursed $475,000 on machinery re
 
 ###  Step 3: Create a workflow
 
-Go to the [workflow builder](https://docs.clarifai.com/portal-guide/workflows/working-with-workflows/). 
+Go to the [workflow builder](https://docs.clarifai.com/portal-guide/workflows/workflow-builder/). 
 
 Then, search for **rag-prompter** in the left-hand sidebar and drag it onto the empty workspace. Use the pop-up that appears on the right-hand sidebar to set up the template text as a single-line statement.
 
@@ -180,4 +180,4 @@ You can then select the version to use for inferencing.
 
 ![](/img/others/rag-prompter-5.png)
 
-That’s it!
+You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/RAG-Prompter?version=0d6fdf0f67df4dbfa386ff8c76a3cb77)

@@ -16,7 +16,7 @@ These operators take specific input types and then return predictions about thin
 
 :::tip
 
-Since the algorithmic predict operators can be "chained" together with models to automate tasks in a workflow, you can learn how to create workflows [here](https://docs.clarifai.com/portal-guide/workflows/working-with-workflows##step-2-create-a-new-workflow). 
+Since the algorithmic predict operators can be "chained" together with models to automate tasks in a workflow, you can learn how to create workflows [here](https://docs.clarifai.com/portal-guide/workflows/input-nodes#create-your-workflow). 
 
 :::
 
@@ -82,6 +82,8 @@ The model will process the input and classify the description into one of the pr
 
 Then, the Regex-Based Classifier will categorize the response into one of the provided concepts, which you can feed into other downstream tasks, such as an [Annotation Writer](https://docs.clarifai.com/portal-guide/agent-system-operators/push#annotation-writer) to create annotations for inputs.
 
+You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Regex-Based-Classifier?version=ee5e074735ab46e6b3a50c3fb6627cd0)
+
 ## Language Identification Operator 
 
 **Input**: Text
@@ -119,6 +121,7 @@ The operator will process the text and identify its language.
 
 ![](/img/agent-system-operators/language-identification-operator-1.png)
 
+
 ## Barcode Operator
 
 **Input**: Image
@@ -154,3 +157,5 @@ For this example, let's provide [this image](https://samples.clarifai.com/model-
 The operator will process the image and detect the QR code. 
 
 ![](/img/agent-system-operators/barcode-operator-1.png)
+
+You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Barcode-Operator?version=6b78ce81239a4381a08ac1502775a90d)

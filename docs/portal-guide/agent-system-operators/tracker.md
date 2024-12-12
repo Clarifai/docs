@@ -20,7 +20,7 @@ The goal of object tracking is to maintain the identity of the object(s) over ti
 :::tip
 
 
-Since the tracker operators can be "chained" together with models to automate tasks in a workflow, you can learn how to create workflows [here](https://docs.clarifai.com/portal-guide/workflows/working-with-workflows#step-2-create-a-new-workflow).
+Since the tracker operators can be "chained" together with models to automate tasks in a workflow, you can learn how to create workflows [here](https://docs.clarifai.com/portal-guide/workflows/input-nodes#create-your-workflow).
 
 
 :::
@@ -73,6 +73,7 @@ The workflow will analyze the video and identify objects consistently throughout
 
 ![alt text](<../../../static/img/agent-system-operators/Byte Tracker Output.png>)
 
+You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/BYTE-Tracker?version=29cfec1d5dbd456c82a54e9302fd37ee)
 
 ## Centroid Tracker
 
@@ -124,9 +125,7 @@ The workflow will analyze the video and identify objects consistently throughout
 
 ![](/img/agent-system-operators/tracker-2.png)
 
-
-
-
+You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Centroid-Tracker?version=ae5e933187e84428bf316caf79b8b3eb)
 
 
 
@@ -182,6 +181,7 @@ The workflow will analyze the video and identify objects consistently throughout
 
 ![alt text](<../../../static/img/agent-system-operators/Kalman Filter Output.png>)
 
+You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Kalman-Filter-Hungarian-Tracker?version=90d7f66dfab548fb9d50f0d6e086f0b6)
 
 ## Kalman Reid Tracker
 

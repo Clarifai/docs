@@ -38,7 +38,7 @@ Zero-shot prompting leverages the model's inherent language understanding to per
 
 It simply requires providing a clear prompt for the LLM to generate relevant responses. The LLM is then able to use its pre-trained knowledge to complete the task. 
 
-Let’s demonstrate how you can create a zero-shot prompter on the [workflow builder](https://docs.clarifai.com/portal-guide/workflows/working-with-workflows/) for a text classification task. 
+Let’s demonstrate how you can create a zero-shot prompter on the [workflow builder](https://docs.clarifai.com/portal-guide/workflows/workflow-builder/) for a text classification task. 
 
 :::tip
 
@@ -95,6 +95,8 @@ Negative
 
 Note that in the above zero-shot prompt, we did not give the model any examples of text alongside their classifications. The model already knows what "sentiment" means without needing any extra information — that's how its zero-shot abilities work. 
 
+You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Zero-Shot-Prompter?version=aeb30786c61f4b2cbaea7415cdae59e4)
+
 ## Few-Shot Prompting
 
 In few-shot prompting, the large language model is given a limited number of examples or "shots" to adapt to a particular task. With just a few examples, it can perform more specialized tasks that require specific context or knowledge.
@@ -103,7 +105,7 @@ This is in contrast to zero-shot prompting, which does not require any examples.
 
 For example, few-shot prompting can be used to train an LLM to classify new types of data, translate languages that it has not been trained on, or generate different creative text formats.
 
-Let’s demonstrate how you can create a few-shot prompter on the [workflow builder](https://docs.clarifai.com/portal-guide/workflows/working-with-workflows/) for a text classification task. 
+Let’s demonstrate how you can create a few-shot prompter on the [workflow builder](https://docs.clarifai.com/portal-guide/workflows/workflow-builder/) for a text classification task. 
 
 **1.** Search for the **Prompter** template option in the left-hand sidebar of the workflow builder and drag it onto the empty workspace.
 
@@ -154,6 +156,8 @@ Note that in the above few-shot prompt, we provided a few examples to guide the 
 The prompt template can be used for a variety of prompting methods. Let's delve into the descriptions of other different prompting techniques below.
 
 :::
+
+You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Few-Shot-Prompter?version=9bf7a4dca6834e71906e72b106d6a94e)
 
 ## Task-Specific Prompt
 
@@ -220,4 +224,3 @@ Here is an example of a prompt for a text extraction task.
 ```
 Please precisely copy any email addresses from the following text and then write them, one per line. Only write an email address if it's precisely spelled out in the input text. If there are no email addresses in the text, write "N/A". Do not say anything else. ### Input: {{TEXT}}. ### Response:
 ```
-
