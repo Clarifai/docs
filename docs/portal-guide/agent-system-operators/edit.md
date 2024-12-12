@@ -21,7 +21,7 @@ They can be used to crop out regions of an image, align an image based on the po
 
 :::tip
 
-Since the transform operators can be "chained" together with models to automate tasks in a workflow, you can learn how to create workflows [here](https://docs.clarifai.com/portal-guide/workflows/working-with-workflows##step-2-create-a-new-workflow). 
+Since the transform operators can be "chained" together with models to automate tasks in a workflow, you can learn how to create workflows [here](https://docs.clarifai.com/portal-guide/workflows/input-nodes#create-your-workflow). 
 
 :::
 
@@ -57,6 +57,8 @@ This model works seamlessly across different types of visual inputs. It is desig
 To see it in action, upload the inputs from your local device or use the inputs in the app. As soon as you upload inputs where regions are detected, the workflow will execute and output the cropped images based on the configurations done.
 
 ![alt text](<../../../static/img/agent-system-operators/Image Cropper Output.png>)
+
+You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Image-Cropper?version=1f3c662d2fd540d190a354711fa1ad48)
 
 ## Image Tiler
 
