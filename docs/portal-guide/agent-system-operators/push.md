@@ -154,5 +154,3 @@ Lastly, select the `concept_threshold_type` as `GREATER_THAN`. Keep the other co
 ![](/img/others/annotation_writer_7.png)
 
 The model successfully classified the input, the thresholder filtered the concepts, and the filtered concept was forwarded to the Annotation Writer for automatic labeling. 
-
-You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Annotate-Image?version=4f09fa9f9b084b86909665b10d161736)
