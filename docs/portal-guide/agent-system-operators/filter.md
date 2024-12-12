@@ -61,7 +61,10 @@ To see it in action, upload the inputs from your local device or use the inputs 
 
 ![Region Thresholder Output](<../../../static/img/agent-system-operators/Region Thresholder Output.png>)
 
-You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Region-Thresholder?version=c6e19afea2a740738cbaad0bb53913f5)
+You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Region-Thresholder?version=c6e19afea2a740738cbaad0bb53913f5). 
+:::note
+Before trying to access the workflow, please make sure that you have a Clarifai account and are logged in to the Clarifai platform to access the example workflow. If you do not have clarifai account you can signup [here](https://clarifai.com/explore).
+:::
 
 ## Concept Thresholder
 
@@ -104,7 +107,10 @@ To see it in action, upload the inputs from your local device or use the inputs 
 
 ![Concept Thresholder Output](<../../../static/img/agent-system-operators/Concept Thresholder Output.png>)
 
-You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Concept-Thresholder?version=ff04af9f5fff471aa7a4691a23474607)
+You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Concept-Thresholder?version=ff04af9f5fff471aa7a4691a23474607). 
+:::note
+Before trying to access the workflow, please make sure that you have a Clarifai account and are logged in to the Clarifai platform to access the example workflow. If you do not have clarifai account you can signup [here](https://clarifai.com/explore).
+:::
 
 ## Random Sampler
 
@@ -141,4 +147,7 @@ To see it in action, upload the inputs from your local device or use the inputs 
 
 ![Random Sampler Output](<../../../static/img/agent-system-operators/Random Sampler Output.png>)
 
-You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Random-Sampler?version=cc26641fca6b4a5d8a8075e6883deb54)
+You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Random-Sampler?version=cc26641fca6b4a5d8a8075e6883deb54). 
+:::note
+Before trying to access the workflow, please make sure that you have a Clarifai account and are logged in to the Clarifai platform to access the example workflow. If you do not have clarifai account you can signup [here](https://clarifai.com/explore).
+:::
