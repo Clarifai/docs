@@ -85,7 +85,10 @@ The **annotation_status** field lets you specify the [status of the annotation](
 
 The Regex-Based Classifier successfully classified the input and forwarded it to the Annotation Writer for labeling. 
 
-You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Annotation-Writer?version=2c31251b6b524a308d723310137a9670)
+You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Annotation-Writer?version=2c31251b6b524a308d723310137a9670). 
+:::note
+Before trying to access the workflow, please make sure that you have a Clarifai account and are logged in to the Clarifai platform to access the example workflow. If you do not have clarifai account you can signup [here](https://clarifai.com/explore).
+:::
 
 ### How to Annotate Image Inputs
 

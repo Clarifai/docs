@@ -95,7 +95,10 @@ Negative
 
 Note that in the above zero-shot prompt, we did not give the model any examples of text alongside their classifications. The model already knows what "sentiment" means without needing any extra information — that's how its zero-shot abilities work. 
 
-You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Zero-Shot-Prompter?version=aeb30786c61f4b2cbaea7415cdae59e4)
+You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Zero-Shot-Prompter?version=aeb30786c61f4b2cbaea7415cdae59e4). 
+:::note
+Before trying to access the workflow, please make sure that you have a Clarifai account and are logged in to the Clarifai platform to access the example workflow. If you do not have clarifai account you can signup [here](https://clarifai.com/explore).
+:::
 
 ## Few-Shot Prompting
 
@@ -157,7 +160,10 @@ The prompt template can be used for a variety of prompting methods. Let's delve 
 
 :::
 
-You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Few-Shot-Prompter?version=9bf7a4dca6834e71906e72b106d6a94e)
+You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Few-Shot-Prompter?version=9bf7a4dca6834e71906e72b106d6a94e). 
+:::note
+Before trying to access the workflow, please make sure that you have a Clarifai account and are logged in to the Clarifai platform to access the example workflow. If you do not have clarifai account you can signup [here](https://clarifai.com/explore).
+:::
 
 ## Task-Specific Prompt
 

@@ -73,7 +73,10 @@ The workflow will analyze the video and identify objects consistently throughout
 
 ![alt text](<../../../static/img/agent-system-operators/Byte Tracker Output.png>)
 
-You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/BYTE-Tracker?version=29cfec1d5dbd456c82a54e9302fd37ee)
+You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/BYTE-Tracker?version=29cfec1d5dbd456c82a54e9302fd37ee). 
+:::note
+Before trying to access the workflow, please make sure that you have a Clarifai account and are logged in to the Clarifai platform to access the example workflow. If you do not have clarifai account you can signup [here](https://clarifai.com/explore).
+:::
 
 ## Centroid Tracker
 
@@ -125,7 +128,10 @@ The workflow will analyze the video and identify objects consistently throughout
 
 ![](/img/agent-system-operators/tracker-2.png)
 
-You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Centroid-Tracker?version=ae5e933187e84428bf316caf79b8b3eb)
+You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Centroid-Tracker?version=ae5e933187e84428bf316caf79b8b3eb). 
+:::note
+Before trying to access the workflow, please make sure that you have a Clarifai account and are logged in to the Clarifai platform to access the example workflow. If you do not have clarifai account you can signup [here](https://clarifai.com/explore).
+:::
 
 
 
@@ -181,7 +187,6 @@ The workflow will analyze the video and identify objects consistently throughout
 
 ![alt text](<../../../static/img/agent-system-operators/Kalman Filter Output.png>)
 
-You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Kalman-Filter-Hungarian-Tracker?version=90d7f66dfab548fb9d50f0d6e086f0b6)
 
 ## Kalman Reid Tracker
 
@@ -241,37 +246,37 @@ The workflow will analyze the video and identify objects consistently throughout
 Here is a table outlining the various output configuration parameters you can configure for each operator (the &#10003; symbol represents the operator that supports the parameter).
 
 
-|Parameter  |Description |BYTE Tracker  | Centroid Tracker | Kalman Filter Hungarian Tracker | Kalman Reid Tracker
-|------------------------|------------------------|--------------|------------------|--------|---------------------|
-| `min_confidence`  |  This is the minimum confidence score for detections to be considered for tracking| &#10003; | &#10003;|&#10003;|&#10003;| &#10003;  |  &#10003;  | 
-| `min_visible_frames`  |   Only return tracks with minimum visible frames > min_visible_frames|&#10003; |&#10003;|&#10003;| &#10003;| &#10003;  | &#10003;      |
-| `track_id_prefix`   | Prefix to add on to track and eliminate conflicts|&#10003;|&#10003;| |&#10003;|   &#10003;  |  &#10003;     |
-|  `max_disappeared`  | This is the number of maximum consecutive frames a given object is allowed to be marked as “disappeared” until we need to deregister the object from tracking |&#10003; |&#10003;|  &#10003; | &#10003;| &#10003; | &#10003;      |
-| `new_track_confidence_thresh`  | Initialize a new track if the confidence score of the new detection is greater than the setting  |&#10003;       |          |             |             |         |       |
-| `confidence_thresh`    | This is used to categorize high score detections for the first association if their scores are greater, and the second association if not |&#10003;       |          |             |             |         |       |  
-|  `high_confidence_match_thresh`  | The distance threshold for high-score detection |&#10003;       |          |             |             |         |       | 
-|  `low_confidence_match_thresh`  | The distance threshold for low-score detection |&#10003;       |          |             |             |         |       |  
-| `unconfirmed_match_thresh` | The distance threshold for unconfirmed tracks, usually tracks with only one beginning frame. `{“min”: 0, “max”: 1}` |&#10003;       |          |             |             |         |       |  
-| `max_distance`| Associate tracks with detections only when their distance is below max_distance|&#10003;|&#10003;| |&#10003; |  &#10003; |  &#10003;     | 
-| `filtered_probability` | If false, return original detection probability; if true, return processed probability from the tracker | | | &#10003; |             |         |       | 
-|`max_detection` |Maximum detection per frame | | |&#10003;|             |         |       | 
-|`has_probability` | | |  | &#10003;  |             |         |       | 
-| `has_embedding` | | |  |&#10003;    |             |         |       | 
-| `association_confidence` | The list of association confidences to perform for each round  | |  |   |&#10003;  | &#10003; |       | 
-| `covariance_error` | Magnitude of the uncertainty on the initial state| |  |   | &#10003;  |  &#10003;        |       | 
-| `observation_error` | Magnitude of the uncertainty on detection coordinates| |  |   | &#10003;   |  &#10003;  |       | 
-| `distance_metric` | Distance metric for Hungarian matching| |  |   | &#10003; |  &#10003;  |       | 
-| `initialization_confidence` |Confidence for starting a new track. Must be > min_confidence to have an effect | |  |   | &#10003; | &#10003;   |       | 
-| `project_track` | How many frames in total to the project box when detection isn’t recorded for track  | |  |   | &#10003; |&#10003; |       | 
-| `use_detect_box` | How many frames to project the last detection box, should be less than project_track_frames (1 is the current frame)  | |  |   | &#10003; | &#10003; |       | 
-| `project_without_detect` | Whether to keep projecting the box forward if no detect is matched  | |  |   | &#10003; |&#10003;  |       | 
-| `project_fix_box_size` | Whether to fix the box size when the track is in a project state   | |  |   | &#10003; |&#10003; |       | 
-| `detect_box_fall_back` | Rely on the detect box if the association error is above this value   | |  |   | &#10003; |&#10003;  |       | 
-| `keep_track_in_image` | If this is 1, then push the tracker predict to stay inside image boundaries  | |  |   | &#10003; |&#10003; |       | 
-| `match_limit_ratio` | Multiplier to constrain association (< 1 is ignored) based on other associations  | |  |   | &#10003; |&#10003; |       | 
-| `match_limit_min_matches` | Minimum number of matched tracks needed to invoke match limit | |  |   | &#10003; |&#10003; |       | 
-| `optimal_assignment` | If True, rule out pairs with distance > max_distance before assignment | |  |   | &#10003; |&#10003;  |       | 
-| `max_emb_distance` |Maximum embedding distance to be considered a re-identification| |  |   | &#10003;  | &#10003; |       | 
-| `max_dead` | Maximum number of frames for track to be dead before we re-assign the ID| |  |   | &#10003;  | &#10003; |       | 
-| `var_tracker` | String that determines how embeddings from multiple timestamps are aggregated, defaults to “na” (most recent embedding overwrites past embeddings) | |  |   | &#10003;  | &#10003; |       | 
-| `reid_model_path` | The path to the linker| |  |   | &#10003; | &#10003; |       | 
+| Parameter                      | Description                                                                                                                                                   | BYTE Tracker | Centroid Tracker | Kalman Filter Hungarian Tracker | Kalman Reid Tracker |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | ---------------- | ------------------------------- | ------------------- |
+| `min_confidence`               | This is the minimum confidence score for detections to be considered for tracking                                                                             | &#10003;     | &#10003;         | &#10003;                        | &#10003;            | &#10003; | &#10003; |
+| `min_visible_frames`           | Only return tracks with minimum visible frames > min_visible_frames                                                                                           | &#10003;     | &#10003;         | &#10003;                        | &#10003;            | &#10003; | &#10003; |
+| `track_id_prefix`              | Prefix to add on to track and eliminate conflicts                                                                                                             | &#10003;     | &#10003;         |                                 | &#10003;            | &#10003; | &#10003; |
+| `max_disappeared`              | This is the number of maximum consecutive frames a given object is allowed to be marked as “disappeared” until we need to deregister the object from tracking | &#10003;     | &#10003;         | &#10003;                        | &#10003;            | &#10003; | &#10003; |
+| `new_track_confidence_thresh`  | Initialize a new track if the confidence score of the new detection is greater than the setting                                                               | &#10003;     |                  |                                 |                     |          |          |
+| `confidence_thresh`            | This is used to categorize high score detections for the first association if their scores are greater, and the second association if not                     | &#10003;     |                  |                                 |                     |          |          |
+| `high_confidence_match_thresh` | The distance threshold for high-score detection                                                                                                               | &#10003;     |                  |                                 |                     |          |          |
+| `low_confidence_match_thresh`  | The distance threshold for low-score detection                                                                                                                | &#10003;     |                  |                                 |                     |          |          |
+| `unconfirmed_match_thresh`     | The distance threshold for unconfirmed tracks, usually tracks with only one beginning frame. `{“min”: 0, “max”: 1}`                                           | &#10003;     |                  |                                 |                     |          |          |
+| `max_distance`                 | Associate tracks with detections only when their distance is below max_distance                                                                               | &#10003;     | &#10003;         |                                 | &#10003;            | &#10003; | &#10003; |
+| `filtered_probability`         | If false, return original detection probability; if true, return processed probability from the tracker                                                       |              |                  | &#10003;                        |                     |          |          |
+| `max_detection`                | Maximum detection per frame                                                                                                                                   |              |                  | &#10003;                        |                     |          |          |
+| `has_probability`              |                                                                                                                                                               |              |                  | &#10003;                        |                     |          |          |
+| `has_embedding`                |                                                                                                                                                               |              |                  | &#10003;                        |                     |          |          |
+| `association_confidence`       | The list of association confidences to perform for each round                                                                                                 |              |                  |                                 | &#10003;            | &#10003; |          |
+| `covariance_error`             | Magnitude of the uncertainty on the initial state                                                                                                             |              |                  |                                 | &#10003;            | &#10003; |          |
+| `observation_error`            | Magnitude of the uncertainty on detection coordinates                                                                                                         |              |                  |                                 | &#10003;            | &#10003; |          |
+| `distance_metric`              | Distance metric for Hungarian matching                                                                                                                        |              |                  |                                 | &#10003;            | &#10003; |          |
+| `initialization_confidence`    | Confidence for starting a new track. Must be > min_confidence to have an effect                                                                               |              |                  |                                 | &#10003;            | &#10003; |          |
+| `project_track`                | How many frames in total to the project box when detection isn’t recorded for track                                                                           |              |                  |                                 | &#10003;            | &#10003; |          |
+| `use_detect_box`               | How many frames to project the last detection box, should be less than project_track_frames (1 is the current frame)                                          |              |                  |                                 | &#10003;            | &#10003; |          |
+| `project_without_detect`       | Whether to keep projecting the box forward if no detect is matched                                                                                            |              |                  |                                 | &#10003;            | &#10003; |          |
+| `project_fix_box_size`         | Whether to fix the box size when the track is in a project state                                                                                              |              |                  |                                 | &#10003;            | &#10003; |          |
+| `detect_box_fall_back`         | Rely on the detect box if the association error is above this value                                                                                           |              |                  |                                 | &#10003;            | &#10003; |          |
+| `keep_track_in_image`          | If this is 1, then push the tracker predict to stay inside image boundaries                                                                                   |              |                  |                                 | &#10003;            | &#10003; |          |
+| `match_limit_ratio`            | Multiplier to constrain association (< 1 is ignored) based on other associations                                                                              |              |                  |                                 | &#10003;            | &#10003; |          |
+| `match_limit_min_matches`      | Minimum number of matched tracks needed to invoke match limit                                                                                                 |              |                  |                                 | &#10003;            | &#10003; |          |
+| `optimal_assignment`           | If True, rule out pairs with distance > max_distance before assignment                                                                                        |              |                  |                                 | &#10003;            | &#10003; |          |
+| `max_emb_distance`             | Maximum embedding distance to be considered a re-identification                                                                                               |              |                  |                                 | &#10003;            | &#10003; |          |
+| `max_dead`                     | Maximum number of frames for track to be dead before we re-assign the ID                                                                                      |              |                  |                                 | &#10003;            | &#10003; |          |
+| `var_tracker`                  | String that determines how embeddings from multiple timestamps are aggregated, defaults to “na” (most recent embedding overwrites past embeddings)            |              |                  |                                 | &#10003;            | &#10003; |          |
+| `reid_model_path`              | The path to the linker                                                                                                                                        |              |                  |                                 | &#10003;            | &#10003; |          |

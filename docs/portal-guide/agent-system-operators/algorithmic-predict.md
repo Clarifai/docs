@@ -82,7 +82,10 @@ The model will process the input and classify the description into one of the pr
 
 Then, the Regex-Based Classifier will categorize the response into one of the provided concepts, which you can feed into other downstream tasks, such as an [Annotation Writer](https://docs.clarifai.com/portal-guide/agent-system-operators/push#annotation-writer) to create annotations for inputs.
 
-You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Regex-Based-Classifier?version=ee5e074735ab46e6b3a50c3fb6627cd0)
+You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Regex-Based-Classifier?version=ee5e074735ab46e6b3a50c3fb6627cd0).
+:::note
+ Before trying to access the workflow, please make sure that you have a Clarifai account and are logged in to the Clarifai platform to access the example workflow. If you do not have clarifai account you can signup [here](https://clarifai.com/explore).
+:::
 
 ## Language Identification Operator 
 
@@ -158,4 +161,8 @@ The operator will process the image and detect the QR code.
 
 ![](/img/agent-system-operators/barcode-operator-1.png)
 
-You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Barcode-Operator?version=6b78ce81239a4381a08ac1502775a90d)
+You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/Barcode-Operator?version=6b78ce81239a4381a08ac1502775a90d). 
+
+:::note
+Before trying to access the workflow, please make sure that you have a Clarifai account and are logged in to the Clarifai platform to access the example workflow. If you do not have clarifai account you can signup [here](https://clarifai.com/explore).
+:::
