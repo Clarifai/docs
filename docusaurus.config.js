@@ -573,7 +573,7 @@ const config = {
             from: '/portal-guide/data/explorer/annotations/'
           },
           {
-            to: '/portal-guide/input-viewer/label-types',
+            to: '/portal-guide/input-viewer/annotate',
             from: '/portal-guide/annotate/label-types'
           },
           {
