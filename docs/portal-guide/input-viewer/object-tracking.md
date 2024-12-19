@@ -1,7 +1,8 @@
 ---
 description: (Beta) Track people and objects in video
 pagination_next: null
-sidebar_position: 5
+sidebar_position: 4
+unlisted: true
 ---
 
 # Object Tracking

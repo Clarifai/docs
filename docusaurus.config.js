@@ -624,6 +624,10 @@ const config = {
             to: '/api-guide/workflows/workflow-predict',
             from: '/api-guide/workflows/common-workflows/workflow-predict'
           },
+          {
+            to: '/portal-guide/input-viewer/annotate',
+            from: '/portal-guide/input-viewer/label-types'
+          },
 
         ],
         createRedirects(existingPath) {

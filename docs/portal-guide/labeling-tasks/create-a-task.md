@@ -146,10 +146,15 @@ You can optionally expand the **Advanced Settings** section to configure additio
 Within the settings, you can assign one of the following priority levels:
 
 - **Low** — The task is of low priority.
-- **Medium (default)** — The task is of medium priority.
+- **Medium** (_default_) — The task is of medium priority.
 - **High** — The task is of high priority.
 
 ![](/img/community/tasks/task_22.png)
+
+Also, you can choose the type of review method to be applied for the task:
+
+- **Evenly distributed review** (_default_) — Each reviewer will get an even split of the inputs to review. Note that each reviewer will get a batch of 10 inputs to review at a time. 
+- **Stacked review** — Each reviewer will review every input.
 
 ## Step 10: Create Labeling Task
 
