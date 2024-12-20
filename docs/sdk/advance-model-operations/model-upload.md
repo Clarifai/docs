@@ -16,7 +16,7 @@ Let’s demonstrate how you can successfully upload different types of models to
 
 :::info
 
-- This new feature is still in [private preview](https://docs.clarifai.com/product-updates/changelog/release-types). If you'd like to test it out and provide feedback, please request access [here](https://forms.gle/MSx7QNxmug2oFZYD6).
+- This new feature is in [Public Preview](https://docs.clarifai.com/product-updates/changelog/release-types). If you'd like to test it out and provide feedback, please request access [here](https://www.clarifai.com/explore/contact-us-co).
 
 - This new upload experience is compatible with the latest [`clarifai`](https://github.com/Clarifai/clarifai-python) Python package, starting from version 10.9.2.
 
