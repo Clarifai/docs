@@ -90,7 +90,7 @@ const config = {
       announcementBar: {
         id: 'support_us_' + Date.now(),
         content:
-          '<span>New!</span> Clarifai Control Center: Your Unified AI Dashboard <a target="_blank" rel="noopener noreferrer" href="https://www.clarifai.com/blog/clarifai-10.9-control-center">read now</a>',
+          '<span>New!</span> Compute Orchestration [Public-Preview] <a target="_blank" rel="noopener noreferrer" href="https://www.clarifai.com/blog/clarifai-10.10-compute-orchestration-public-preview">read now</a>',
         isCloseable: false,
       },
       navbar: {
