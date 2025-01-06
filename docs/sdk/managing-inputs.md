@@ -127,11 +127,11 @@ Visit this [page](https://docs.clarifai.com/api-guide/data/create-get-update-del
 </Tabs>
 
 
-### Remove Unicode From Text 
+## Write Custom Functions for Data Processing
                                           
-Below is an example of how to clean text by removing Unicode characters before uploading it to the Clarifai Platform.
+You can add your own custom functions for data processing with ease. 
 
-Note that you can add any of your own custom functionalities with ease. 
+Below is an example of how to clean text data by removing Unicode characters before uploading it to the Clarifai platform.
 
 <Tabs>
 
