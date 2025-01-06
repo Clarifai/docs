@@ -8,9 +8,15 @@ sidebar_position: 2
 **Learn how to upload inputs to the Clarifai platform**
 <hr />
 
-An input is any data added to the Clarifai platform. You can upload inputs to be used for data labeling, training new models, performing searches, or making predictions. 
+An input is any data added to the Clarifai platform. You can upload inputs and organize them into [datasets](https://docs.clarifai.com/portal-guide/datasets/) to support a wide range of tasks, including:
 
-The platform lets you upload images, videos, and texts from URLs or from a local directory. You can upload as many inputs as you want. 
+- [Data labeling](https://docs.clarifai.com/portal-guide/labeling-tasks/)
+- [Performing searches](https://docs.clarifai.com/portal-guide/psearch/)
+- [Training new models](https://docs.clarifai.com/portal-guide/model/)
+- [Evaluating models](https://docs.clarifai.com/portal-guide/evaluate/)
+- [Making predictions](https://docs.clarifai.com/portal-guide/ppredict/)
+
+The platform lets you upload images, videos, and texts from URLs or local directories. You can upload as many inputs as you want. 
 
 Your inputs should fulfill the following conditions:
 
@@ -22,7 +28,7 @@ Your inputs should fulfill the following conditions:
 
 :::info
 
-As each input is uploaded, it is automatically indexed using the specified [base workflow](https://docs.clarifai.com/portal-guide/workflows/base-workflows) for your app. This indexing enables you to perform searches over the uploaded inputs, leveraging Clarifai’s custom-built [vector database](https://docs.clarifai.com/portal-guide/psearch/) for fast and efficient search capabilities.
+As each input is uploaded, it is automatically indexed using the specified [base workflow](https://docs.clarifai.com/portal-guide/workflows/base-workflows) for your app. This indexing enables you to perform searches over the uploaded inputs, leveraging Clarifai’s custom-built [vector database](https://docs.clarifai.com/portal-guide/psearch/#powered-by-a-vector-database) for fast and efficient search capabilities.
 
 :::
 
@@ -31,6 +37,12 @@ As each input is uploaded, it is automatically indexed using the specified [base
 To upload inputs, navigate to your individual app's page and select the **Inputs** option in the collapsible left sidebar. Then, click the **Upload Inputs** button located in the upper-right corner of the page. 
 
 The inputs uploader window that pops up allows you to upload any type of input data — files from your local directory, texts, or publicly accessible URLs. 
+
+:::note
+
+You can also use the inputs uploader modal to organize your inputs into datasets, [add concepts to inputs](https://docs.clarifai.com/portal-guide/inputs-manager/concepts#via-the-inputs-uploader), or attach JSON metadata for additional context. This modal simplifies the process of managing and enriching your inputs on the platform.
+
+:::
 
 ### Upload Files
 

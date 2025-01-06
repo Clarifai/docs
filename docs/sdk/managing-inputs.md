@@ -52,6 +52,11 @@ import CodePatchInputs4 from "!!raw-loader!../../code_snippets/python-sdk/managi
 
 import CodeGeoInfo from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/geo_info.py";
 import BoundingBoxAnnotation from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/bounding_box_annotation.py";
+import PolygonAnnotation from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/polygon_annotation.py";
+import ConceptsAnnotation from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/concepts_annotation.py";
+import BulkDeleteAnnotations from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/bulk_delete_annotations.py";
+import DownloadInputs from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/download_inputs.py";
+import RemoveUnicode from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/remove_unicode.py";
 
 import CodeOutputImageData from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/outputs/image_data.txt";
 import CodeOutputTextData from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/outputs/text_data.txt";
@@ -122,8 +127,20 @@ Visit this [page](https://docs.clarifai.com/api-guide/data/create-get-update-del
 </Tabs>
 
 
-
+### Remove Unicode From Text 
                                           
+Below is an example of how to clean text by removing Unicode characters before uploading it to the Clarifai Platform.
+
+Note that you can add any of your own custom functionalities with ease. 
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{RemoveUnicode}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
 
 ## Upload Audio Data 
 
@@ -283,11 +300,11 @@ When uploading inputs, you can provide geospatial points information to them, co
 
 </Tabs>
 
-## Upload Images With Annotations
+## Upload Inputs With Annotations
 
-You can upload images along with their corresponding annotations, such as bounding boxes or polygons. 
+You can upload inputs along with their corresponding annotations, such as bounding boxes or polygons. 
 
-### Bounding Box Annotation
+### Bounding Box Annotations
 
 Below is an example of how to label a new rectangular bounding box for a specific region within an image. The bounding box coordinates should be normalized to the image dimensions, with values scaled to the range of [0, 1.0].
 
@@ -301,6 +318,51 @@ This ensures that the coordinates are independent of the image resolution, makin
 
 </Tabs>
 
+### Polygon Annotations
+
+Below is an example of how to annotate any polygon-shaped region within an image.
+
+A polygon is defined by a list of points, each specified by:  
+
+- **row** — The row position of the point, represented as a value between 0.0 and 1.0, where 0.0 corresponds to the top row and 1.0 corresponds to the bottom.  
+- **col** — The column position of the point, represented as a value between 0.0 and 1.0, where 0.0 corresponds to the left column of the image and 1.0 corresponds to the right column.  
+
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PolygonAnnotation}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+### Concepts Annotations
+
+Below is an example of how to annotate different types of inputs with [concepts](http://localhost:3000/portal-guide/inputs-manager/concepts). 
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{ConceptsAnnotation}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+## Bulk Delete Input Annotations  
+
+Below is an example of how to delete all the annotations associated with a given input by setting the input ID(s). 
+
+The `annotation_ids` parameter is optional. However, if provided, the number and order of `annotation_ids` must match the corresponding `input_ids`.  
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{BulkDeleteAnnotations}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+ 
 
 ## List inputs
 
@@ -318,6 +380,16 @@ Visit this [page](https://docs.clarifai.com/api-guide/data/create-get-update-del
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputListInput}</CodeBlock>
 </details> 
+
+## Download Inputs
+
+Below is an example of how to download inputs from your app. 
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{DownloadInputs}</CodeBlock>
+</TabItem>
+</Tabs>
 
 
 ## Delete Inputs
