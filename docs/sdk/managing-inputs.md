@@ -49,6 +49,15 @@ import CodePatchInputs2 from "!!raw-loader!../../code_snippets/python-sdk/managi
 import CodePatchInputs3 from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/patch_inputs_3.py";
 import CodePatchInputs4 from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/patch_inputs_4.py";
 
+
+import CodeGeoInfo from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/geo_info.py";
+import BoundingBoxAnnotation from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/bounding_box_annotation.py";
+import PolygonAnnotation from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/polygon_annotation.py";
+import ConceptsAnnotation from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/concepts_annotation.py";
+import BulkDeleteAnnotations from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/bulk_delete_annotations.py";
+import DownloadInputs from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/download_inputs.py";
+import RemoveUnicode from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/remove_unicode.py";
+
 import CodeOutputImageData from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/outputs/image_data.txt";
 import CodeOutputTextData from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/outputs/text_data.txt";
 import CodeOutputAudioData from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/outputs/audio_data.txt";
@@ -74,7 +83,7 @@ import CodeOutputAudioM from "!!raw-loader!../../code_snippets/python-sdk/managi
 Effortlessly handle and organize your input data with Clarifai SDKs. The Input Management feature empowers you to efficiently manage various types of data, including images, videos, and text, facilitating seamless integration into your machine learning workflows. Take control of your inputs, whether sourced from URLs, file paths, or raw bytes, and streamline the preparation process for predictive model inferences. Clarifai's Input Management simplifies the task of organizing and preparing data for an enhanced and streamlined machine learning experience.
 
 
-## Image Data as Inputs
+## Upload Image Data 
 
 The Clarifai SDKs empowers you to seamlessly upload image data through various methods, providing flexibility and ease of integration. Whether your images are hosted online via URLs, stored locally as file paths, or represented as bytes within your application, our API accommodates all these formats. This versatility ensures a smooth and efficient workflow, allowing you to leverage Clarifai's powerful capabilities with the convenience that suits your specific use case.
 
@@ -98,7 +107,7 @@ Visit this [page](https://docs.clarifai.com/api-guide/data/create-get-update-del
 
 
 
-## Text Data as Inputs
+## Upload Text Data 
 
 Use the potential of the Clarifai SDKs to effortlessly upload text data through diverse methods, providing a seamless experience and fostering adaptability in your integration process. Whether your text is accessible online via URLs, resides locally as file paths, or is represented as bytes within your application, our API seamlessly accommodates these formats. This versatility ensures a fluid and effective workflow, enabling you to unlock Clarifai's robust capabilities with the utmost convenience tailored to your specific use case.
 
@@ -118,10 +127,22 @@ Visit this [page](https://docs.clarifai.com/api-guide/data/create-get-update-del
 </Tabs>
 
 
-
+### Remove Unicode From Text 
                                           
+Below is an example of how to clean text by removing Unicode characters before uploading it to the Clarifai Platform.
 
-## Audio Data as Inputs
+Note that you can add any of your own custom functionalities with ease. 
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{RemoveUnicode}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+
+## Upload Audio Data 
 
 Unlock the potential of audio analysis with the Clarifai SDKs, offering seamless integration for uploading audio data through multiple avenues. Whether your audio files reside on external servers accessible via URLs, are stored locally with file paths, or are represented as raw bytes within your application, our API effortlessly accommodates each of these formats. This adaptability ensures a streamlined and user-friendly workflow, providing you the freedom to harness Clarifai's advanced capabilities with the utmost convenience tailored to your specific use case.
 
@@ -143,7 +164,7 @@ Visit this [page](https://docs.clarifai.com/api-guide/data/create-get-update-del
 
 
 
-## Video Data as Inputs      
+## Upload Video Data       
 
 Unlock the potential of video analysis with the Clarifai SDKs, offering seamless integration for uploading video data through various methods. Whether your videos are accessible online via URLs, residing locally as file paths, or encapsulated as bytes within your application, our API effortlessly accommodates these diverse formats.
 
@@ -165,7 +186,7 @@ Visit this [page](https://docs.clarifai.com/api-guide/data/create-get-update-del
                                    
                                                                                                                  
 
-## Multimodal Data as Inputs
+## Upload Multimodal Data 
 
 With the Clarifai SDKs, the integration of multimodal inputs becomes a seamless and intuitive process. Unlock the power of combining various types of inputs by leveraging our API. Whether you're incorporating a mix of images, text, or other data sources, our SDK allows you to specify and upload these multimodal inputs effortlessly. For now the Clarifai platform only supports multimodal inputs like [Image ,Text]->text.
 
@@ -188,7 +209,7 @@ Visit this [page](https://docs.clarifai.com/api-guide/data/create-get-update-del
 
 
 
-## Custom Metadata
+## Upload Custom Metadata
 
 When working with the Clarifai SDKs, you can add inputs with custom metadata in addition to concepts. This allows you to attach additional information  to your inputs, which can be useful for various purposes such as categorization, filtering, or later reference.
 
@@ -209,9 +230,6 @@ In the below example we are uploading an image with metadata that includes detai
     <CodeBlock className="language-typescript">{CodeImageMTS}</CodeBlock>
 </TabItem>
 </Tabs>
-
-
-
 
 ### Video With Metadata
 
@@ -270,7 +288,81 @@ In the below example we are uploading an audio file with metadata that includes 
 </TabItem>
 </Tabs>
 
+## Upload Inputs With Geoinfo
 
+When uploading inputs, you can provide geospatial points information to them, consisting of longitudes and latitudes in the GPS coordinate system. There can be at most one single geospatial point associated with each input.
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CodeGeoInfo}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+## Upload Inputs With Annotations
+
+You can upload inputs along with their corresponding annotations, such as bounding boxes or polygons. 
+
+### Bounding Box Annotations
+
+Below is an example of how to label a new rectangular bounding box for a specific region within an image. The bounding box coordinates should be normalized to the image dimensions, with values scaled to the range of [0, 1.0].
+
+This ensures that the coordinates are independent of the image resolution, making the annotations consistent across different image sizes.
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{BoundingBoxAnnotation}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+### Polygon Annotations
+
+Below is an example of how to annotate any polygon-shaped region within an image.
+
+A polygon is defined by a list of points, each specified by:  
+
+- **row** — The row position of the point, represented as a value between 0.0 and 1.0, where 0.0 corresponds to the top row and 1.0 corresponds to the bottom.  
+- **col** — The column position of the point, represented as a value between 0.0 and 1.0, where 0.0 corresponds to the left column of the image and 1.0 corresponds to the right column.  
+
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PolygonAnnotation}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+### Concepts Annotations
+
+Below is an example of how to annotate different types of inputs with [concepts](http://localhost:3000/portal-guide/inputs-manager/concepts). 
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{ConceptsAnnotation}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+## Bulk Delete Input Annotations  
+
+Below is an example of how to delete all the annotations associated with a given input by setting the input ID(s). 
+
+The `annotation_ids` parameter is optional. However, if provided, the number and order of `annotation_ids` must match the corresponding `input_ids`.  
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{BulkDeleteAnnotations}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+ 
 
 ## List inputs
 
@@ -288,6 +380,16 @@ Visit this [page](https://docs.clarifai.com/api-guide/data/create-get-update-del
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputListInput}</CodeBlock>
 </details> 
+
+## Download Inputs
+
+Below is an example of how to download inputs from your app. 
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{DownloadInputs}</CodeBlock>
+</TabItem>
+</Tabs>
 
 
 ## Delete Inputs

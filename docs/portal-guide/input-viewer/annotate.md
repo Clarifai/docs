@@ -14,7 +14,7 @@ For example, annotations can indicate whether an image contains a dog or a cat, 
 
 Within the Input-Viewer page, you can add annotations to inputs, get the ones already added to inputs, remove them from inputs, or carry out other management tasks with them.
 
-We support different types of labeling methods, each suited for different tasks and data characteristics. This lets you create high-quality training data depending on the objective you want your machine learning model to achieve. 
+We support different types of labeling methods, each suited for different tasks and data characteristics. This lets you create high-quality training data depending on the objective you want your AI model to achieve. 
 
 These are the different types of labels we support for your image, video, and text inputs:
 
@@ -106,7 +106,7 @@ Ensure you select the appropriate [base workflow](https://docs.clarifai.com/port
 
 ### Video Classification
 
-Support for video labeling is coming soon. 
+Support for video labeling within this tool is coming soon. If you need to label videos, you can create a [Labeling Task](https://docs.clarifai.com/portal-guide/labeling-tasks/create-a-task) and label a dataset with videos.  
 
 ## Detection Labeling
 
