@@ -338,7 +338,7 @@ A polygon is defined by a list of points, each specified by:
 
 ### Concepts Annotations
 
-Below is an example of how to annotate different types of inputs with [concepts](http://localhost:3000/portal-guide/inputs-manager/concepts). 
+Below is an example of how to annotate different types of inputs with [concepts](https://docs.clarifai.com/portal-guide/inputs-manager/concepts). 
 
 <Tabs>
 
