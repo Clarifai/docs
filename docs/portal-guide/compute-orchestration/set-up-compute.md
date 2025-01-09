@@ -32,7 +32,7 @@ Note that the default setup is ideal for general use cases and may not meet more
 
 :::tip info
 
-For the Compute Orchestration private preview, the default shared cluster is available only for deploying out-of-the-box or custom-trained models on our platform. If you want to use dedicated compute instances, you need to upload your models to our platform via the [Python SDK](https://docs.clarifai.com/sdk/advance-model-operations/model-upload).  
+For the Compute Orchestration Public Preview, the default shared cluster is available only for deploying out-of-the-box or custom-trained models on our platform. If you want to use dedicated compute instances, you need to upload your models to our platform via the [Python SDK](https://docs.clarifai.com/sdk/advance-model-operations/model-upload).  
 
 :::
 

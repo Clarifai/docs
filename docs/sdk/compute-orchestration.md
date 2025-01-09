@@ -17,9 +17,9 @@ Compute Orchestration is currently in [Public Preview](https://docs.clarifai.com
 
 Clarifai’s Compute Orchestration offers a streamlined solution for managing the infrastructure required for training, deploying, and scaling machine learning models and workflows. 
 
-This flexible system supports any compute instance — across various hardware providers and deployment methods — and provides automatic scaling to match workload demands.
+These flexible capabilities support any compute instance — across various hardware providers and deployment methods — and provide automatic scaling to match workload demands.
 
-[Click here](https://docs.clarifai.com/portal-guide/compute-orchestration) to learn more about our Compute Orchestration system. 
+[Click here](https://docs.clarifai.com/portal-guide/compute-orchestration) to learn more about our Compute Orchestration capabilities. 
 
 :::tip Tips
 

@@ -1,12 +1,12 @@
 ---
-description: Train and deploy any model on any compute infrastructure, at any scale
+description: Orchestrate your AI workloads better, avoid vendor lock-in, and use compute spend efficiently
 sidebar_position: 1
 pagination_prev: null
 ---
 
 # Compute Orchestration
 
-**Train and deploy any model on any compute infrastructure, at any scale**
+**Orchestrate your AI workloads better, avoid vendor lock-in, and use compute spend efficiently**
 <hr />
 
 :::note
@@ -15,7 +15,7 @@ Compute Orchestration is currently in [Public Preview](https://docs.clarifai.com
 
 :::
 
-Clarifai’s Compute Orchestration provides an efficient system for you to deploy any model on any compute infrastructure, at any scale. This new platform capability brings the convenience of serverless autoscaling to any environment, regardless of deployment location or hardware, and dynamically scales resources to meet workload demands. 
+Clarifai’s Compute Orchestration provides efficient capabilities for you to deploy any model on any compute infrastructure, at any scale. These new platform capabilities bring the convenience of serverless autoscaling to any environment, regardless of deployment location or hardware, and dynamically scale resources to meet workload demands. 
 
 Clarifai handles the containerization, model packing, time slicing, and other performance optimizations on your behalf.  
 
@@ -25,7 +25,7 @@ Previously, our platform supported the following deployment options:
 
 - **Full Platform Deployment** — This option is designed for organizations with high-security requirements. It deploys both the Clarifai control and compute planes into the user’s preferred cloud, on-premises, or air-gapped infrastructure, ensuring full isolation. 
 
-With Compute Orchestration, we are now providing users with the ability to manage any compute planes and access dedicated compute options. This system enables our enterprise customers to deploy production models with enhanced control, performance, and scalability — while addressing specific problems around compute costs, latency, and control over hosted models.
+With Compute Orchestration, we are now providing users with the ability to manage any compute planes and access dedicated compute options. These capabilities enable our enterprise customers to deploy production models with enhanced control, performance, and scalability — while addressing specific problems around compute costs, latency, and control over hosted models.
 
 Compute Orchestration allows us to provide the following additional deployment options — all of which can be customized with your preferred settings for autoscaling, cold start, and more, ensuring maximum cost efficiency and performance:
 
@@ -45,7 +45,7 @@ If you’re not using Compute Orchestration, the Shared SaaS (Serverless) deploy
 
 ## Compute Clusters and Nodepools
 
-We use clusters and nodepools to organize and manage the compute resources required for the Compute Orchestration system.
+We use clusters and nodepools to organize and manage the compute resources required for the Compute Orchestration capabilities.
 
 A compute cluster in Clarifai acts as the overarching computational environment where models are executed, whether for training or inference. A nodepool refers to a set of dedicated nodes (virtual machine instances) within a cluster that share similar configurations and resources, such as CPU or GPU type, memory size, and other performance parameters.
 
@@ -65,7 +65,7 @@ With compute orchestration, you can ensure these nodepools are properly scaled u
 
 - It provides access to a wide range of accelerator options tailored to your use case. You can configure multiple compute clusters each tailored to your AI development stage, performance requirements, and budget. You can also run affordable proof of concepts or compute-heavy LLMs or LVMs in production all from a single product.
 
-- It offers flexibility to make deployments in any cloud service provider or on-premise environment, allowing users to leverage their hardware of choice without being locked into a single vendor. Or, you can make deployments in Clarifai’s compute to avoid having to worry about managing infrastructure.
+- It offers flexibility to make deployments in any cloud service provider, on-premises, or air-gapped environment, allowing users to leverage their hardware of choice without being locked into a single vendor. Or, you can make deployments in Clarifai’s compute to avoid having to worry about managing infrastructure.
 
 - You can customize auto-scaling settings to prevent cold-start issues and handle traffic swings; and scale down to zero for cost efficiency.  The ability to scale from zero to infinity ensures both flexibility and cost management.
 
@@ -73,13 +73,19 @@ With compute orchestration, you can ensure these nodepools are properly scaled u
 
 **2. Enhanced Security** 
 
-- Users can run compute planes within their own cloud service provider or on-premise environments and securely connect to Clarifai’s control plane, while only having to open outbound ports for traffic. This reduces networking complexities and security risks compared to opening inbound access or configuring cloud IAM access within your VPC. 
+- Users can run compute planes within their own cloud service provider or on-premise environments and securely connect to Clarifai’s control plane, while only having to open outbound ports for traffic. This reduces networking complexities and security risks compared to opening inbound access or configuring cloud Identity and Access Management (IAM) access roles within your VPC. 
 
 - Nodepool-based compute allows users to keep their resources isolated and provides precise control over scaling models and nodes. This allows users to specify where models are executed, addressing compliance and security needs for regulated industries.
 
 - Clarifai offers fine-grained access control across apps, teams, users, and compute resources.
 
-**3. Cloud and Compute Cost Efficiency**
+- Users can group CPU and GPU types into dedicated scaling nodepools, enabling them to handle diverse workloads or team-specific requirements while enhancing security and resource management.
+
+**3. Use Compute Cost-Efficiently and Abstract Away Complexity**
+
+- An intuitive control plane enables users to efficiently govern access to AI resources, monitor performance, and manage costs. Clarifai’s expertly designed platform takes care of dependencies and optimizations, offering features like model packing, streamlined dependency management, and customizable autoscaling options — including scale-to-zero for both model replicas and compute nodes.
+
+- The advanced optimizations deliver exceptional efficiency, with model packing reducing compute usage by up to 3.7x and enabling support for over 1.6 million inputs per second with an impressive 99.9997% reliability. Depending on the chosen configuration, customers can achieve cost savings of at least 60%, and in some cases, up to 90%.
 
 - Organizations with pre-committed cloud spend or compute contracts with major cloud service providers, like AWS, Azure, or GCP, or existing GPU and hardware investments, can efficiently leverage their compute using Clarifai Compute Orchestration. 
 
