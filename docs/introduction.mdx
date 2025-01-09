@@ -1,6 +1,6 @@
 ---
 description: >-
-  Clarifai provides a complete platform to deploy, maintain, and manage your AI models. Whether you have one input or billions, you are only steps away from using AI to power your business applications. 
+  Clarifai provides end-to-end, full stack enterprise AI capabilities to build AI faster, leveraging today's modern AI technologies like cutting-edge Large Language Models (LLMs), Generative AI, Retrieval Augmented Generation (RAG), data labeling, inference, and many more.
 sidebar_position: 1
 slug: /
 ---
@@ -10,10 +10,10 @@ slug: /
   <meta name="google-site-verification" content="KOB12UhhFU3dC5xrifk5b20EeiCVWjmElZfZynpITtg" />
 </head>
 
-**Clarifai provides a complete platform to deploy, maintain, and manage your AI models**
+**Clarifai is the leading full stack AI platform to understand, generate, and search for images, video, text, and audio**
 <hr />
 
-Clarifai offers an end-to-end platform for the complete AI lifecycle. Whether you have one input or billions, you are only steps away from using artificial intelligence to power your business applications.
+Clarifai provides end-to-end, full stack enterprise AI capabilities to build AI faster, leveraging today's modern AI technologies like cutting-edge Large Language Models (LLMs), Generative AI, Retrieval Augmented Generation (RAG), data labeling, inference, and many more.
 
 <!--This section mostly uses built-in Docusaurus styles inspired by https://docusaurus.io/docs/sidebar/items#generated-index-page  -->
 
@@ -58,84 +58,180 @@ Clarifai offers an end-to-end platform for the complete AI lifecycle. Whether yo
 
 ## Get Started 
 
-You can get started quickly with a few clicks or a few lines of code.
+You can quickly get started with just a few lines of code or a few simple clicks.
 
 ![](/img/api_v_portal.jpg)
 
-Clarifai offers two powerful ways to integrate AI within your technology stack:
+Clarifai offers powerful ways to effortlessly integrate AI into your technology stack.
 
-[![](/img/api.jpg) **Clarifai API**](https://docs.clarifai.com/api-guide/api-overview/)—Our code-based interface is designed for integration within your software applications. Our API offers clients in many popular programming languages.
+:::tip Clarifai SDK
 
-[![](/img/icon_portal.jpg) **Clarifai Portal**](https://docs.clarifai.com/portal-guide/portal-overview)—Our custom user interface \(UI\) is designed specifically for your AI projects. Portal makes it fast and easy to label data, build and train models, and connect these models into workflows.
+[The Clarifai SDK](https://docs.clarifai.com/sdk/python-installation) enables seamless integration of advanced computer vision and natural language processing capabilities into your applications, offering tools for tasks like classification, detection, segmentation, summarization, and more — with just a few lines of code. It's provided in Python and Node.js programming languages. 
 
-## Create and Organize Your AI Projects
+:::
 
-### Applications
+:::tip Clarifai gRPC API Clients
+
+[The Clarifai gRPC API clients](https://docs.clarifai.com/api-guide/api-overview/api-clients/) are offered in several popular programming languages, making it easy to integrate Clarifai's AI platform capabilities into your applications.
+
+:::
+
+:::tip Clarifai Community Platform 
+
+[Clarifai's full stack portal](https://docs.clarifai.com/clarifai-basics/community) is the ultimate AI workspace for any skill level. It provides everything you need to build reliable AI-powered apps. With its low-code, no-code  solutions, you can easily discover, create, and share futuristic AI models, workflows, app components, and more. 
+
+
+:::
+
+## Applications
 
 ![](/img/applications_overview.jpg)
 
-Applications are the basic containers for your AI projects. You can create as many applications as you want, and applications can be duplicated or shared with collaborators.
+Applications are the basic containers for interacting with the Clarifai platform. An application is a self-contained project for storing and handling, data, annotations, models, concepts, datasets, workflows (chaining of models together), searches, modules, and more.
 
-[![](/img/api.jpg) Applications API](https://docs.clarifai.com/clarifai-basics/applications/create-an-application#create-applications-programmatically) 
+<ul>
+<li>
+[![](/img/api.jpg) Applications via SDK](https://docs.clarifai.com/sdk/create-apps) 
+</li>
+<li>
+[![](/img/api.jpg) Applications via gRPC API Clients](https://docs.clarifai.com/clarifai-basics/applications/create-an-application/#create-apps-programmatically) 
+</li>
+<li>
+[![](/img/icon_portal.jpg) Applications via Portal](https://docs.clarifai.com/clarifai-basics/applications/create-an-application/#create-an-app-on-the-portal)
+</li>
+</ul>
 
-[![](/img/icon_portal.jpg) Applications in Portal](https://docs.clarifai.com/clarifai-basics/applications/create-an-application#create-application-in-portal)
-
-### Datasets
+## Datasets
 
 ![](/img/datasets.jpg)
 
-A dataset is a collection of data examples you can use to train, test, and evaluate your machine learning model. With Clarifai datasets, you can manage the datasets you want to use for visual search, training, and evaluation.
+A dataset is a collection of data examples. With Clarifai datasets, you can manage the inputs you want to use for visual search, model training, evaluation, and more. 
 
-[![](/img/api.jpg) Datasets API](https://docs.clarifai.com/api-guide/data/datasets/) 
+<ul>
+<li>
+[![](/img/api.jpg) Datasets via SDK](https://docs.clarifai.com/sdk/managing-datasets) 
+</li>
+<li>
+[![](/img/api.jpg) Datasets via gRPC API Clients](https://docs.clarifai.com/api-guide/data/datasets/) 
+</li>
+<li>
+[![](/img/icon_portal.jpg) Datasets via Portal](https://docs.clarifai.com/portal-guide/datasets/)
+</li>
+</ul>
 
-[![](/img/icon_portal.jpg) Datasets in Portal](https://docs.clarifai.com/portal-guide/datasets/)
-
-### Scribe Label
+## Labeling
 
 ![](/img/labeler.jpg)
 
-Annotations \(sometimes called "labels"\) are how we "teach" machines to learn new ideas. When you want to create a custom model for your business, you do this by training this model to recognize the concepts that you have annotated on your training data.
+Annotations, often referred to as "labels," are how we teach machines to learn and understand new ideas. To create a custom model for your specific use case, you train it by teaching it to recognize the concepts you've annotated in your training data.
 
-[![](/img/api.jpg) Scribe Label API](https://docs.clarifai.com/api-guide/annotate/) 
+<ul>
+<li>
+[![](/img/api.jpg) Labeling via SDK](https://docs.clarifai.com/sdk/managing-inputs#upload-inputs-with-annotations) 
+</li>
+<li>
+[![](/img/api.jpg) Labeling via gRPC API Clients](https://docs.clarifai.com/api-guide/annotate/) 
+</li>
+<li>
+[![](/img/icon_portal.jpg) Labeling via Portal](https://docs.clarifai.com/portal-guide/annotate/)
+</li>
+</ul>
 
-[![](/img/icon_portal.jpg) Scribe Label in Portal](https://docs.clarifai.com/portal-guide/annotate/)
-
-### Enlight Train
+## Model Training
 
 ![](/img/model_mode.jpg)
 
-Models are where the "thinking" happens in your AI application. Clarifai supports a variety of different [types of models,](https://docs.clarifai.com/portal-guide/model/model-types) including "machine learning" models that can learn new things from your training data and fixed-function model operators that help you control the way that your models interact.
+Models are the "thinking" engines of your AI application. Clarifai supports a wide range of models, including models that can learn and adapt from your training data, as well as [agent system operators](https://docs.clarifai.com/portal-guide/agent-system-operators/) that let you control how your models interact and operate.
 
-[![](/img/api.jpg) Enlight Train API](https://docs.clarifai.com/api-guide/model/) 
+<ul>
+<li>
+[![](/img/api.jpg) Train via SDK](https://docs.clarifai.com/sdk/Model-Training-Tutorial/) 
+</li>
+<li>
+[![](/img/api.jpg) Train via gRPC API Clients](https://docs.clarifai.com/api-guide/model/) 
+</li>
+<li>
+[![](/img/icon_portal.jpg) Train via Portal](https://docs.clarifai.com/portal-guide/model/)
+</li>
+</ul>
 
-[![](/img/icon_portal.jpg) Enlight Train in Portal](https://docs.clarifai.com/portal-guide/model/)
+## Compute Orchestration
 
-### Mesh Workflows
+![](/img/compute-orchestration.jpg)
+
+Clarifai’s Compute Orchestration capabilities let you optimize AI performance and spend. You can orchestrate AI workloads better, avoid vendor lock-in, and use compute spend efficiently. With these capabilities, you can easily deploy any model on any compute infrastructure, at any scale. 
+
+<ul>
+<li>
+[![](/img/api.jpg) Compute Orchestration via SDK](https://docs.clarifai.com/sdk/compute-orchestration) 
+</li>
+<li>
+[![](/img/icon_portal.jpg) Compute Orchestration via Portal](https://docs.clarifai.com/portal-guide/compute-orchestration/)
+</li>
+</ul>
+
+## Workflows
 
 ![](/img/workflows.jpg)
 
 Workflows allow you to link multiple models together so that you can build complex and creative solutions. Clarifai models are designed so that the outputs from one model can be used as the inputs in another model.
 
-[![](/img/api.jpg) Mesh Workflows API](https://docs.clarifai.com/api-guide/workflows/) 
+<ul>
+<li>
+[![](/img/api.jpg) Workflows via SDK](https://docs.clarifai.com/sdk/Building-Workflow-Graphs/) 
+</li>
+<li>
+[![](/img/api.jpg) Workflows via gRPC API Clients](https://docs.clarifai.com/api-guide/workflows/) 
+</li>
+<li>
+[![](/img/icon_portal.jpg) Workflows via Portal](https://docs.clarifai.com/portal-guide/workflows/)
+</li>
+</ul>
 
-[![](/img/icon_portal.jpg) Mesh Workflows in Portal](https://docs.clarifai.com/portal-guide/workflows/)
-
-### Armada Predict
+## Model Predictions
 
 ![](/img/predictions.jpg)
 
-Predictions are the basic "output" of machine learning models. Predictions are returned as a list of concepts with corresponding probabilities that tell you how confident a model is with a given prediction.
+Predictions are the basic output of machine learning models. Predictions are returned as a list of concepts with corresponding probabilities that tell you how confident a model is with a given prediction.
 
-[![](/img/api.jpg) Armada Predict API](https://docs.clarifai.com/api-guide/predict/) 
+<ul>
+<li>
+[![](/img/api.jpg) Predictions via SDK](https://docs.clarifai.com/sdk/Inference-from-AI-Models/) 
+</li>
+<li>
+[![](/img/api.jpg) Predictions via gRPC API Clients](https://docs.clarifai.com/api-guide/predict/) 
+</li>
+<li>
+[![](/img/icon_portal.jpg) Predictions via Portal](https://docs.clarifai.com/portal-guide/ppredict)
+</li>
+</ul>
 
-[![](/img/icon_portal.jpg) Armada Predict in Portal](https://docs.clarifai.com/portal-guide/ppredict)
-
-### Spacetime Search
+## Search
 
 ![](/img/search.jpg)
 
-Clarifai's patented technology automatically indexes your media for search. Concepts in your models can be used as search terms. You can also search with images to find similar images. We offer numerous search types that can be combined to filter and sort your data.
+Clarifai’s search feature allows you to harness the power of AI to search through unstructured or structured data with ease. Whether you're searching for images, videos, or text data, we empower you to quickly find the content you need based on visual, semantic and/or conceptual understanding.
 
-[![](/img/api.jpg) Search API](https://docs.clarifai.com/api-guide/search/) 
+<ul>
+<li>
+[![](/img/api.jpg) Search via SDK](https://docs.clarifai.com/sdk/Search/) 
+</li>
+<li>
+[![](/img/api.jpg) Search via gRPC API Clients](https://docs.clarifai.com/api-guide/search/) 
+</li>
+<li>
+[![](/img/icon_portal.jpg) Search via Portal](https://docs.clarifai.com/portal-guide/psearch)
+</li>
+</ul>
 
-[![](/img/icon_portal.jpg) Search with Portal](https://docs.clarifai.com/portal-guide/psearch)
+## Modules
+
+Clarifai's modules are custom plugins that provide both UI elements and the ability to perform some computation around our API. Modules enable you to extend the Clarifai UIs, augment backend processing capabilities, and build customized solutions quickly and easily.
+
+![](/img/others-2/modules.png)
+
+<ul>
+<li>
+[![](/img/icon_portal.jpg) Modules via Portal](https://docs.clarifai.com/portal-guide/modules/)
+</li>
+</ul>

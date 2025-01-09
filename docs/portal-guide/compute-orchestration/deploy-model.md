@@ -14,7 +14,7 @@ Compute Orchestration is currently in [Public Preview](https://docs.clarifai.com
 
 :::
 
-Clarifai’s Compute Orchestration provides an efficient system for you to deploy any model on any compute infrastructure, at any scale. 
+Clarifai’s Compute Orchestration provides efficient capabilities for you to deploy any model on any compute infrastructure, at any scale. 
 
 This new platform capability brings the convenience of serverless autoscaling to any compute, regardless of where it’s deployed and what hardware it’s running on, and scale automatically to meet workload demands.
 
