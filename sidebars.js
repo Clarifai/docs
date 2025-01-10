@@ -56,7 +56,7 @@ const sidebars = {
   {
     type: 'link',
     label: 'Security Trust Center',
-    href: 'https://app.drata.com/trust/9cc5870a-0c38-11ee-865f-029d78a187d9',
+    href: 'https://trust.clarifai.com/',
   },    
   ],},]
 
