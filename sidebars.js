@@ -49,11 +49,6 @@ const sidebars = {
   },
   */
   {
-      type: 'link',
-      label: 'Clarifai Community',
-      href: 'https://clarifai.com/explore',
-  },
-  {
     type: 'link',
     label: 'Security Trust Center',
     href: 'https://trust.clarifai.com/',
