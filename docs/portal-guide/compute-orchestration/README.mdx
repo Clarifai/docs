@@ -43,11 +43,25 @@ If you’re not using Compute Orchestration, the Shared SaaS (Serverless) deploy
 
 :::
 
+ 
+![ ](/img/compute-orchestration/intro-1.png)
+
+
 ## Compute Clusters and Nodepools
 
-We use clusters and nodepools to organize and manage the compute resources required for the Compute Orchestration capabilities.
+We use [clusters and nodepools](https://docs.clarifai.com/portal-guide/compute-orchestration/set-up-compute) to organize and manage the compute resources required for the Compute Orchestration capabilities.
 
-A compute cluster in Clarifai acts as the overarching computational environment where models are executed, whether for training or inference. A nodepool refers to a set of dedicated nodes (virtual machine instances) within a cluster that share similar configurations and resources, such as CPU or GPU type, memory size, and other performance parameters.
+:::tip Cluster
+
+A compute cluster in Clarifai acts as the overarching computational environment where models are executed, whether for training or inference. 
+
+:::
+
+:::tip nodepool
+
+A nodepool refers to a set of dedicated nodes (virtual machine instances) within a cluster that share similar configurations and resources, such as CPU or GPU type, memory size, and other performance parameters.
+
+:::
 
 Cluster configuration lets you specify where and how your models are run, ensuring better performance, lower latency, and adherence to regional regulations. You can specify a cloud provider, such as AWS, that will provide the underlying compute infrastructure for hosting and running your models. You can also specify the geographic location of the data center where the compute resources will be hosted.
 
@@ -65,7 +79,7 @@ With compute orchestration, you can ensure these nodepools are properly scaled u
 
 - It provides access to a wide range of accelerator options tailored to your use case. You can configure multiple compute clusters each tailored to your AI development stage, performance requirements, and budget. You can also run affordable proof of concepts or compute-heavy LLMs or LVMs in production all from a single product.
 
-- It offers flexibility to make deployments in any cloud service provider, on-premises, or air-gapped environment, allowing users to leverage their hardware of choice without being locked into a single vendor. Or, you can make deployments in Clarifai’s compute to avoid having to worry about managing infrastructure.
+- It offers flexibility to [make deployments](https://docs.clarifai.com/portal-guide/compute-orchestration/deploy-model) in any cloud service provider, on-premises, or air-gapped environment, allowing users to leverage their hardware of choice without being locked into a single vendor. Or, you can make deployments in Clarifai’s compute to avoid having to worry about managing infrastructure.
 
 - You can customize auto-scaling settings to prevent cold-start issues and handle traffic swings; and scale down to zero for cost efficiency.  The ability to scale from zero to infinity ensures both flexibility and cost management.
 
@@ -101,7 +115,7 @@ With compute orchestration, you can ensure these nodepools are properly scaled u
 
 - Low-latency deployment minimizes gRPC hops, speeding up communication.
 
-- New model types are easily supported with a unified protobuf format, and local inference runners allow users to test models before deploying to the cloud.
+- New model types are easily supported with a unified protobuf format, and local inference runners allow users to [test models](https://docs.clarifai.com/sdk/advance-model-operations/model-upload#step-4-test-the-model-locally) before deploying to the cloud.
 
 
 import DocCardList from '@theme/DocCardList';

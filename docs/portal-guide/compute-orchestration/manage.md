@@ -1,7 +1,6 @@
 ---
 description: Edit and delete your clusters and nodepools
 sidebar_position: 3
-pagination_next: null
 ---
 
 # Managing Your Compute
