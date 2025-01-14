@@ -44,7 +44,7 @@ To deploy a model, navigate to your cluster or nodepool page and click the **Dep
  
 ![ ](/img/compute-orchestration/compute-11.png)
 
-> Alternatively, navigate to your model's page, go to the **Deployments** tab, and click the **Deploy a Model** button.
+> _Alternatively, navigate to your model's page, go to the **Deployments** tab, and click the **Deploy a Model** button._
 
 > ![ ](/img/compute-orchestration/compute-12.png)
 

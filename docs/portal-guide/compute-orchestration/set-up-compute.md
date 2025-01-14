@@ -47,7 +47,7 @@ To get started, log in to the Clarifai platform and select the **Compute Orchest
 <br/>
 <br/>
 
-> Alternatively, you can click the **Compute Settings** button found in the **Deployments** tab on a model's viewer page or anywhere this button appears in the platform.
+> _Alternatively, you can click the **Compute Settings** button found in the **Deployments** tab on a model's viewer page or anywhere this button appears in the platform._
 
 > ![ ](/img/compute-orchestration/compute-1-1.png)
 
@@ -78,7 +78,7 @@ After configuring the settings, click the **Continue** button in the upper-right
 
 After clicking the **Continue** button upon creating a cluster, you’ll be redirected to a page where you can specify the configurations for your new nodepool. 
 
-> Alternatively, you can create a new nodepool from an existing cluster by clicking the **Create a new nodepool** button in the upper-right corner of the cluster's page. 
+> _Alternatively, you can create a new nodepool from an existing cluster by clicking the **Create a new nodepool** button in the upper-right corner of the cluster's page._
 
 > ![ ](/img/compute-orchestration/compute-7.png)
 

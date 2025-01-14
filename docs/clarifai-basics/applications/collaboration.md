@@ -54,6 +54,13 @@ Here's how:
 
 **6.** Lastly, click the **Confirm** button. The invited collaborator will receive an email notification informing them that they have been added to the app.
 
+## View Collaborations
+
+You can easily access the apps where you've been added as a collaborator by selecting the **Collaborations** option in the top menu. This will take you to a page that lists all the apps you've been invited to collaborate on.
+
+ ![](/img/others-2/view-collaborations.png)
+
+
 ## Choose Scopes
 
 You can select specific scopes when adding a collaborator. Modifying these scopes provides fine-grained control over the data that users can access, enhancing your app's security and preventing unauthorized intrusions.
@@ -81,7 +88,7 @@ Workflow: Add, Remove and Delete Workflows of Models
 [Click here](https://docs.clarifai.com/clarifai-basics/authentication/scopes/) to learn more about scopes.
 
 
-:::danger Collaboration
+:::tip Collaboration
 
 * [Personal Access Tokens (PATs)](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens) are automatically generated for collaborators, providing them access to the Clarifai API.
 

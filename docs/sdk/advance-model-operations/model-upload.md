@@ -26,10 +26,33 @@ Let’s demonstrate how you can successfully upload different types of models to
 
 :::tip
 
-You can run the following command to clone the repository containing examples of how to upload various model types and follow along with this documentation:
+You can run the following command to clone the [repository](https://github.com/Clarifai/examples/tree/main) containing examples of how to upload various model types and follow along with this documentation:
 `git clone https://github.com/Clarifai/examples.git`. After cloning it, go to the `models/model_upload` folder.
 
 :::
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+
+import ImageClassifierModel from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/image_classifier_model.py";
+import ImageClassifierRequirements from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/image_classifier_requirements.txt";
+import ImageClassifierConfig from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/image_classifier_config.yaml";
+
+import ImageDetectorModel from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/image_detector_model.py";
+import ImageDetectorRequirements from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/image_detector_requirements.txt";
+import ImageDetectorConfig from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/image_detector_config.yaml";
+
+import LLMModel from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/llm_model.py";
+import LLMRequirements from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/llm_requirements.txt";
+import LLMConfig from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/llm_config.yaml";
+
+import SpeechRecognitionModel from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/speech_recognition_model.py";
+import SpeechRecognitionRequirements from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/speech_recognition_requirements.txt";
+import SpeechRecognitionConfig from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/speech_recognition_config.yaml";
+
+import TestModel from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/test_model.py";
+
 
 ## Prerequisites
 
@@ -183,15 +206,17 @@ class YourCustomModelRunner(ModelRunner):
 
 ### Step 4: Test the Model Locally
 
-Before uploading your model to the Clarifai platform, it's important to test it locally to catch any typos or misconfigurations in the code. This can prevent upload failures due to issues in the `model.py` or incorrect model implementation.
+Before uploading your model to the Clarifai platform, it's important to test it locally to catch any typos or misconfigurations in the code. 
 
-It also ensures the model runs smoothly and that all dependencies are correctly configured.
+This can prevent upload failures due to issues in the `model.py` or incorrect model implementation. It also ensures the model runs smoothly and that all dependencies are correctly configured.
 
-To run your model locally, use the following command:
+You can test the model within a Docker container or a Python virtual environment.
 
-```bash
-clarifai model test-locally --model_path <model_directory_path>
-```
+:::note Recommendation
+
+If Docker is installed on your system, it is highly recommended to use it for testing or running the model. Docker provides better isolation and avoids dependency conflicts.
+
+:::
 
 :::warning
 
@@ -199,36 +224,83 @@ Ensure your local environment has sufficient memory and compute resources to loa
 
 :::
 
+There are two types of CLI (command line interface) commands you can use to test your models in your local development environment. 
+
+#### 1. Using the `test-locally` Command
+
+This method allows you to test your model with a single CLI command. It runs the model locally and sends a sample request to verify that the model responds successfully. The results of the request are displayed directly in the console.
+
+Here is how to test a model in a Docker Container:
+
+```bash
+clarifai model test-locally --model_path {add_model_path_here} --mode container
+```
+
+Here is how to test a model in a virtual environment:
+
+```bash
+clarifai model test-locally --model_path {add_model_path_here} --mode env
+```
+
+#### 2. Using the `run-locally` Command
+
+This method starts a local gRPC server at `https://localhost:{port}/` for running the model. Once the server is running, you can perform inference on the model via the Clarifai client SDK.
+
+Here is how to test a model in a Docker Container:
+
+```bash
+clarifai model run-locally --model_path {add_model_path_here} --mode container --port 8000
+```
+
+Here is how to test a model in a virtual environment:
+
+```bash
+clarifai model run-locally --model_path {add_model_path_here} --mode container --port 8000
+```
+
+Once the model is running locally, you need to configure the `CLARIFAI_API_BASE` environment variable to point to the localhost and port where the gRPC server is running.
+
+```bash
+export CLARIFAI_API_BASE="localhost:{port}"
+```
+
+You can then make different [types of inference requests](https://docs.clarifai.com/sdk/compute-orchestration#predict-with-deployed-model) using the model — unary-unary, unary-stream, or stream-stream predict calls.
+
+Here is an example of a unary-unary prediction call:
+
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{TestModel}</CodeBlock>
+</TabItem>
+</Tabs>
+
+:::note CLI Flags
+
+These are the key CLI flags available for local testing and running your models:
+
+- `--model_path` —  Path to the model directory.
+
+- `--mode` —  Specify how to run the model: `env` for virtual environment or `container` for Docker container. Defaults to `env`.
+
+- `-p` or `--port` —  The port to host the gRPC server for running the model locally. Defaults to `8000`.
+
+- `--keep_env` —  Retain the virtual environment after testing the model locally (applicable for `env` mode). Defaults to `False`.
+
+- `--keep_image` —  Retain the Docker image built after testing the model locally (applicable for `container` mode). Defaults to `False`.
+
+:::
+
+
 ### Step 5: Upload the Model to Clarifai
 
 Once your model is ready, upload it to the Clarifai platform by running the following command:
 
 ```bash
-clarifai model upload --model_path <model_directory_path>
+clarifai model upload --model_path {add_model_path_here}
 ```
 
 This command builds the model’s Docker image using the defined compute resources and uploads it to Clarifai, where it can be served in production.
-
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import CodeBlock from "@theme/CodeBlock";
-
-import ImageClassifierModel from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/image_classifier_model.py";
-import ImageClassifierRequirements from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/image_classifier_requirements.txt";
-import ImageClassifierConfig from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/image_classifier_config.yaml";
-
-import ImageDetectorModel from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/image_detector_model.py";
-import ImageDetectorRequirements from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/image_detector_requirements.txt";
-import ImageDetectorConfig from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/image_detector_config.yaml";
-
-import LLMModel from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/llm_model.py";
-import LLMRequirements from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/llm_requirements.txt";
-import LLMConfig from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/llm_config.yaml";
-
-import SpeechRecognitionModel from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/speech_recognition_model.py";
-import SpeechRecognitionRequirements from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/speech_recognition_requirements.txt";
-import SpeechRecognitionConfig from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/speech_recognition_config.yaml";
 
 ## Examples
 
