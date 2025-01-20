@@ -2,7 +2,7 @@
 description: Track what has been performed, by whom and with which results
 pagination_prev: null
 pagination_next: null
-draft: true
+unlisted: true
 ---
 
 # Audit Logging
@@ -34,69 +34,51 @@ import CodeBlock from "@theme/CodeBlock";
 import PythonListAuditLogs from "!!raw-loader!../../../code_snippets/api-guide/audit-log/list_audit_logs.py";
 import JSListAuditLogs from "!!raw-loader!../../../code_snippets/api-guide/audit-log/list_audit_logs.html";
 import NodeListAuditLogs from "!!raw-loader!../../../code_snippets/api-guide/audit-log/list_audit_logs.js";
-import JavaListAuditLogs from "!!raw-loader!../../../code_snippets/api-guide/audit-log/list_audit_logs.java";
-import PHPListAuditLogs from "!!raw-loader!../../../code_snippets/api-guide/audit-log/list_audit_logs.php";
 import CURLListAuditLogs from "!!raw-loader!../../../code_snippets/api-guide/audit-log/list_audit_logs.sh";
 
 
 import PythonOperation from "!!raw-loader!../../../code_snippets/api-guide/audit-log/operation.py";
 import JSOperation from "!!raw-loader!../../../code_snippets/api-guide/audit-log/operation.html";
 import NodeOperation from "!!raw-loader!../../../code_snippets/api-guide/audit-log/operation.js";
-import JavaOperation from "!!raw-loader!../../../code_snippets/api-guide/audit-log/operation.java";
-import PHPOperation from "!!raw-loader!../../../code_snippets/api-guide/audit-log/operation.php";
 import CURLOperation from "!!raw-loader!../../../code_snippets/api-guide/audit-log/operation.sh";
 
 
 import PythonTime from "!!raw-loader!../../../code_snippets/api-guide/audit-log/time.py";
 import JSTime from "!!raw-loader!../../../code_snippets/api-guide/audit-log/time.html";
 import NodeTime from "!!raw-loader!../../../code_snippets/api-guide/audit-log/time.js";
-import JavaTime from "!!raw-loader!../../../code_snippets/api-guide/audit-log/time.java";
-import PHPTime from "!!raw-loader!../../../code_snippets/api-guide/audit-log/time.php";
 import CURLTime from "!!raw-loader!../../../code_snippets/api-guide/audit-log/time.sh";
 
 
 import PythonUser from "!!raw-loader!../../../code_snippets/api-guide/audit-log/user.py";
 import JSUser from "!!raw-loader!../../../code_snippets/api-guide/audit-log/user.html";
 import NodeUser from "!!raw-loader!../../../code_snippets/api-guide/audit-log/user.js";
-import JavaUser from "!!raw-loader!../../../code_snippets/api-guide/audit-log/user.java";
-import PHPUser from "!!raw-loader!../../../code_snippets/api-guide/audit-log/user.php";
 import CURLUser from "!!raw-loader!../../../code_snippets/api-guide/audit-log/user.sh";
 
 
 import PythonTarget from "!!raw-loader!../../../code_snippets/api-guide/audit-log/target.py";
 import JSTarget from "!!raw-loader!../../../code_snippets/api-guide/audit-log/target.html";
 import NodeTarget from "!!raw-loader!../../../code_snippets/api-guide/audit-log/target.js";
-import JavaTarget from "!!raw-loader!../../../code_snippets/api-guide/audit-log/target.java";
-import PHPTarget from "!!raw-loader!../../../code_snippets/api-guide/audit-log/target.php";
 import CURLTarget from "!!raw-loader!../../../code_snippets/api-guide/audit-log/target.sh";
 
 import PythonSuccess from "!!raw-loader!../../../code_snippets/api-guide/audit-log/success.py";
 import JSSuccess from "!!raw-loader!../../../code_snippets/api-guide/audit-log/success.html";
 import NodeSuccess from "!!raw-loader!../../../code_snippets/api-guide/audit-log/success.js";
-import JavaSuccess from "!!raw-loader!../../../code_snippets/api-guide/audit-log/success.java";
-import PHPSuccess from "!!raw-loader!../../../code_snippets/api-guide/audit-log/success.php";
 import CURLSuccess from "!!raw-loader!../../../code_snippets/api-guide/audit-log/success.sh";
 
 import PythonSource from "!!raw-loader!../../../code_snippets/api-guide/audit-log/source.py";
 import JSSource from "!!raw-loader!../../../code_snippets/api-guide/audit-log/source.html";
 import NodeSource from "!!raw-loader!../../../code_snippets/api-guide/audit-log/source.js";
-import JavaSource from "!!raw-loader!../../../code_snippets/api-guide/audit-log/source.java";
-import PHPSource from "!!raw-loader!../../../code_snippets/api-guide/audit-log/source.php";
 import CURLSource from "!!raw-loader!../../../code_snippets/api-guide/audit-log/source.sh";
 
 
 import PythonSort from "!!raw-loader!../../../code_snippets/api-guide/audit-log/sort.py";
 import JSSort from "!!raw-loader!../../../code_snippets/api-guide/audit-log/sort.html";
 import NodeSort from "!!raw-loader!../../../code_snippets/api-guide/audit-log/sort.js";
-import JavaSort from "!!raw-loader!../../../code_snippets/api-guide/audit-log/sort.java";
-import PHPSort from "!!raw-loader!../../../code_snippets/api-guide/audit-log/sort.php";
 import CURLSort from "!!raw-loader!../../../code_snippets/api-guide/audit-log/sort.sh";
 
 import PythonPage from "!!raw-loader!../../../code_snippets/api-guide/audit-log/page.py";
 import JSPage from "!!raw-loader!../../../code_snippets/api-guide/audit-log/page.html";
 import NodePage from "!!raw-loader!../../../code_snippets/api-guide/audit-log/page.js";
-import JavaPage from "!!raw-loader!../../../code_snippets/api-guide/audit-log/page.java";
-import PHPPage from "!!raw-loader!../../../code_snippets/api-guide/audit-log/page.php";
 import CURLPage from "!!raw-loader!../../../code_snippets/api-guide/audit-log/page.sh";
 
 import OutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/audit-log/output-1.json";
@@ -116,14 +98,6 @@ Here is how you can list all the supported audit log events performed by a user 
 
 <TabItem value="nodejs" label="NodeJS">
  <CodeBlock className="language-javascript">{NodeListAuditLogs}</CodeBlock>
-</TabItem>
-
-<TabItem value="java" label="Java">
- <CodeBlock className="language-java">{JavaListAuditLogs}</CodeBlock>
-</TabItem>
-
-<TabItem value="php" label="PHP">
-    <CodeBlock className="language-php">{PHPListAuditLogs}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -272,14 +246,6 @@ The Audit Logging feature currently supports tracking the following critical res
  <CodeBlock className="language-javascript">{NodeOperation}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
- <CodeBlock className="language-java">{JavaOperation}</CodeBlock>
-</TabItem>
-
-<TabItem value="php" label="PHP">
-    <CodeBlock className="language-php">{PHPOperation}</CodeBlock>
-</TabItem>
-
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CURLOperation}</CodeBlock>
 </TabItem>
@@ -305,14 +271,6 @@ Note that for HTTP+JSON requests, timestamps are formatted as `2024-08-25T00:00:
  <CodeBlock className="language-javascript">{NodeTime}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
- <CodeBlock className="language-java">{JavaTime}</CodeBlock>
-</TabItem>
-
-<TabItem value="php" label="PHP">
-    <CodeBlock className="language-php">{PHPTime}</CodeBlock>
-</TabItem>
-
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CURLTime}</CodeBlock>
 </TabItem>
@@ -334,14 +292,6 @@ You can define specific users or groups in your queries to track who performed e
 
 <TabItem value="nodejs" label="NodeJS">
  <CodeBlock className="language-javascript">{NodeUser}</CodeBlock>
-</TabItem>
-
-<TabItem value="java" label="Java">
- <CodeBlock className="language-java">{JavaUser}</CodeBlock>
-</TabItem>
-
-<TabItem value="php" label="PHP">
-    <CodeBlock className="language-php">{PHPUser}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -387,14 +337,6 @@ You can define the target of your query; that is, specify the resource on which 
  <CodeBlock className="language-javascript">{NodeTarget}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
- <CodeBlock className="language-java">{JavaTarget}</CodeBlock>
-</TabItem>
-
-<TabItem value="php" label="PHP">
-    <CodeBlock className="language-php">{PHPTarget}</CodeBlock>
-</TabItem>
-
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CURLTarget}</CodeBlock>
 </TabItem>
@@ -418,14 +360,6 @@ You can filter logs based on the operation outcome, such as whether it was succe
  <CodeBlock className="language-javascript">{NodeSuccess}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
- <CodeBlock className="language-java">{JavaSuccess}</CodeBlock>
-</TabItem>
-
-<TabItem value="php" label="PHP">
-    <CodeBlock className="language-php">{PHPSuccess}</CodeBlock>
-</TabItem>
-
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CURLSuccess}</CodeBlock>
 </TabItem>
@@ -447,14 +381,6 @@ You can filter logs based on the IP address where the request originated from.
 
 <TabItem value="nodejs" label="NodeJS">
  <CodeBlock className="language-javascript">{NodeSource}</CodeBlock>
-</TabItem>
-
-<TabItem value="java" label="Java">
- <CodeBlock className="language-java">{JavaSource}</CodeBlock>
-</TabItem>
-
-<TabItem value="php" label="PHP">
-    <CodeBlock className="language-php">{PHPSource}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
@@ -483,14 +409,6 @@ You can specify the sorting options for the audit logs.
  <CodeBlock className="language-javascript">{NodeSort}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
- <CodeBlock className="language-java">{JavaSort}</CodeBlock>
-</TabItem>
-
-<TabItem value="php" label="PHP">
-    <CodeBlock className="language-php">{PHPSort}</CodeBlock>
-</TabItem>
-
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CURLSort}</CodeBlock>
 </TabItem>
@@ -512,14 +430,6 @@ You can split the results into [pages](https://docs.clarifai.com/api-guide/advan
 
 <TabItem value="nodejs" label="NodeJS">
  <CodeBlock className="language-javascript">{NodePage}</CodeBlock>
-</TabItem>
-
-<TabItem value="java" label="Java">
- <CodeBlock className="language-java">{JavaPage}</CodeBlock>
-</TabItem>
-
-<TabItem value="php" label="PHP">
-    <CodeBlock className="language-php">{PHPPage}</CodeBlock>
 </TabItem>
 
 <TabItem value="curl" label="cURL">
