@@ -1,0 +1,398 @@
+{
+    "status": {
+      "code": 10000,
+      "description": "Ok",
+      "req_id": "c0c3788f56734a07ac468cffc9f96b82"
+    },
+    "entries": [
+      {
+        "timestamp": "2025-01-17T12:04:55.449860Z",
+        "user": {
+          "id": "alfrick",
+          "first_name": "Alfrick",
+          "last_name": "Opidi",
+          "company_name": "Clarifai",
+          "job_title": "Dev",
+          "job_role": "Data Science / Machine Learning",
+          "intention": "Train a custom model",
+          "created_at": "2024-01-11T05:36:46.977773Z",
+          "visibility": {
+            "gettable": 10
+          }
+        },
+        "operation": 403,
+        "description": "Workflow versions created",
+        "targets": [
+          {
+            "workflow": {
+              "id": "workflow-838250",
+              "use_cases": [],
+              "check_consents": []
+            }
+          },
+          {
+            "workflow_version": {
+              "id": "a72a9f65cb2648888b724291a0ba8cef"
+            }
+          },
+          {
+            "app": {
+              "id": "testapp1"
+            }
+          }
+        ],
+        "details": [
+          "Create workflow version 'a72a9f65cb2648888b724291a0ba8cef' for workflow 'workflow-838250'"
+        ],
+        "success": true,
+        "req_id": "webportal-74e9a38774c449a598b67b369ae0064a",
+        "source_ip": "3.234.120.41"
+      },
+      {
+        "timestamp": "2025-01-17T12:04:55.430103Z",
+        "user": {
+          "id": "alfrick",
+          "first_name": "Alfrick",
+          "last_name": "Opidi",
+          "company_name": "Clarifai",
+          "job_title": "Dev",
+          "job_role": "Data Science / Machine Learning",
+          "intention": "Train a custom model",
+          "created_at": "2024-01-11T05:36:46.977773Z",
+          "visibility": {
+            "gettable": 10
+          }
+        },
+        "operation": 400,
+        "description": "Workflows created",
+        "targets": [
+          {
+            "workflow": {
+              "id": "workflow-838250",
+              "use_cases": [],
+              "check_consents": []
+            }
+          },
+          {
+            "app": {
+              "id": "testapp1"
+            }
+          }
+        ],
+        "details": [
+          "Create workflow 'workflow-838250'"
+        ],
+        "success": true,
+        "req_id": "webportal-74e9a38774c449a598b67b369ae0064a",
+        "source_ip": "3.234.120.41"
+      },
+      {
+        "timestamp": "2025-01-17T12:00:06.599812Z",
+        "user": {
+          "id": "alfrick",
+          "first_name": "Alfrick",
+          "last_name": "Opidi",
+          "company_name": "Clarifai",
+          "job_title": "Dev",
+          "job_role": "Data Science / Machine Learning",
+          "intention": "Train a custom model",
+          "created_at": "2024-01-11T05:36:46.977773Z",
+          "visibility": {
+            "gettable": 10
+          }
+        },
+        "operation": 300,
+        "description": "Models created",
+        "targets": [
+          {
+            "model": {
+              "id": "visual-classifier-one2",
+              "app_id": "",
+              "toolkits": [],
+              "use_cases": [],
+              "languages": [],
+              "languages_full": [],
+              "check_consents": []
+            }
+          },
+          {
+            "app": {
+              "id": "testapp1"
+            }
+          }
+        ],
+        "details": [
+          "Create model [visual-classifier-one2]"
+        ],
+        "success": true,
+        "req_id": "webportal-7f53926068b3479bbc5631109ac64377",
+        "source_ip": "3.234.120.41"
+      },
+      {
+        "timestamp": "2025-01-17T11:54:44.706982Z",
+        "user": {
+          "id": "alfrick",
+          "first_name": "Alfrick",
+          "last_name": "Opidi",
+          "company_name": "Clarifai",
+          "job_title": "Dev",
+          "job_role": "Data Science / Machine Learning",
+          "intention": "Train a custom model",
+          "created_at": "2024-01-11T05:36:46.977773Z",
+          "visibility": {
+            "gettable": 10
+          }
+        },
+        "operation": 300,
+        "description": "Models created",
+        "targets": [
+          {
+            "model": {
+              "id": "dogs-vs-cats",
+              "app_id": "",
+              "toolkits": [],
+              "use_cases": [],
+              "languages": [],
+              "languages_full": [],
+              "check_consents": []
+            }
+          },
+          {
+            "app": {
+              "id": "testapp1"
+            }
+          }
+        ],
+        "details": [
+          "Create model [dogs-vs-cats]"
+        ],
+        "success": true,
+        "req_id": "webportal-f488464806a042698840233f070adeec",
+        "source_ip": "3.234.120.41"
+      },
+      {
+        "timestamp": "2025-01-17T11:51:52.065958Z",
+        "user": {
+          "id": "alfrick",
+          "first_name": "Alfrick",
+          "last_name": "Opidi",
+          "company_name": "Clarifai",
+          "job_title": "Dev",
+          "job_role": "Data Science / Machine Learning",
+          "intention": "Train a custom model",
+          "created_at": "2024-01-11T05:36:46.977773Z",
+          "visibility": {
+            "gettable": 10
+          }
+        },
+        "operation": 403,
+        "description": "Workflow versions created",
+        "targets": [
+          {
+            "app": {
+              "id": "test-app2"
+            }
+          },
+          {
+            "workflow": {
+              "id": "Universal",
+              "use_cases": [],
+              "check_consents": []
+            }
+          },
+          {
+            "workflow_version": {
+              "id": "12668c6aa7d149979d01ae716967a6c9"
+            }
+          }
+        ],
+        "details": [
+          "Create workflow version '12668c6aa7d149979d01ae716967a6c9' for workflow 'Universal'"
+        ],
+        "success": true,
+        "req_id": "webportal-9ca7bd88f14f412189312ca4e86dd965",
+        "source_ip": "3.234.120.41"
+      },
+      {
+        "timestamp": "2025-01-17T11:51:52.056626Z",
+        "user": {
+          "id": "alfrick",
+          "first_name": "Alfrick",
+          "last_name": "Opidi",
+          "company_name": "Clarifai",
+          "job_title": "Dev",
+          "job_role": "Data Science / Machine Learning",
+          "intention": "Train a custom model",
+          "created_at": "2024-01-11T05:36:46.977773Z",
+          "visibility": {
+            "gettable": 10
+          }
+        },
+        "operation": 400,
+        "description": "Workflows created",
+        "targets": [
+          {
+            "workflow": {
+              "id": "Universal",
+              "use_cases": [],
+              "check_consents": []
+            }
+          },
+          {
+            "app": {
+              "id": "test-app2"
+            }
+          }
+        ],
+        "details": [
+          "Create workflow 'Universal'"
+        ],
+        "success": true,
+        "req_id": "webportal-9ca7bd88f14f412189312ca4e86dd965",
+        "source_ip": "3.234.120.41"
+      },
+      {
+        "timestamp": "2025-01-17T11:51:52.014376Z",
+        "user": {
+          "id": "alfrick",
+          "first_name": "Alfrick",
+          "last_name": "Opidi",
+          "company_name": "Clarifai",
+          "job_title": "Dev",
+          "job_role": "Data Science / Machine Learning",
+          "intention": "Train a custom model",
+          "created_at": "2024-01-11T05:36:46.977773Z",
+          "visibility": {
+            "gettable": 10
+          }
+        },
+        "operation": 600,
+        "description": "Applications created",
+        "targets": [
+          {
+            "app": {
+              "id": "test-app2"
+            }
+          }
+        ],
+        "details": [
+          "Create application 'test-app2'"
+        ],
+        "success": true,
+        "req_id": "webportal-9ca7bd88f14f412189312ca4e86dd965",
+        "source_ip": "3.234.120.41"
+      },
+      {
+        "timestamp": "2025-01-15T07:01:35.378946Z",
+        "user": {
+          "id": "alfrick",
+          "first_name": "Alfrick",
+          "last_name": "Opidi",
+          "company_name": "Clarifai",
+          "job_title": "Dev",
+          "job_role": "Data Science / Machine Learning",
+          "intention": "Train a custom model",
+          "created_at": "2024-01-11T05:36:46.977773Z",
+          "visibility": {
+            "gettable": 10
+          }
+        },
+        "operation": 403,
+        "description": "Workflow versions created",
+        "targets": [
+          {
+            "workflow": {
+              "id": "Universal",
+              "use_cases": [],
+              "check_consents": []
+            }
+          },
+          {
+            "workflow_version": {
+              "id": "eecdf9bb1e8b4394b9a6337814c4eb5d"
+            }
+          },
+          {
+            "app": {
+              "id": "testapp1"
+            }
+          }
+        ],
+        "details": [
+          "Create workflow version 'eecdf9bb1e8b4394b9a6337814c4eb5d' for workflow 'Universal'"
+        ],
+        "success": true,
+        "req_id": "webportal-0c244223c21b4ee18800c1741ca7be5a",
+        "source_ip": "3.234.120.41"
+      },
+      {
+        "timestamp": "2025-01-15T07:01:35.366665Z",
+        "user": {
+          "id": "alfrick",
+          "first_name": "Alfrick",
+          "last_name": "Opidi",
+          "company_name": "Clarifai",
+          "job_title": "Dev",
+          "job_role": "Data Science / Machine Learning",
+          "intention": "Train a custom model",
+          "created_at": "2024-01-11T05:36:46.977773Z",
+          "visibility": {
+            "gettable": 10
+          }
+        },
+        "operation": 400,
+        "description": "Workflows created",
+        "targets": [
+          {
+            "workflow": {
+              "id": "Universal",
+              "use_cases": [],
+              "check_consents": []
+            }
+          },
+          {
+            "app": {
+              "id": "testapp1"
+            }
+          }
+        ],
+        "details": [
+          "Create workflow 'Universal'"
+        ],
+        "success": true,
+        "req_id": "webportal-0c244223c21b4ee18800c1741ca7be5a",
+        "source_ip": "3.234.120.41"
+      },
+      {
+        "timestamp": "2025-01-15T07:01:35.105312Z",
+        "user": {
+          "id": "alfrick",
+          "first_name": "Alfrick",
+          "last_name": "Opidi",
+          "company_name": "Clarifai",
+          "job_title": "Dev",
+          "job_role": "Data Science / Machine Learning",
+          "intention": "Train a custom model",
+          "created_at": "2024-01-11T05:36:46.977773Z",
+          "visibility": {
+            "gettable": 10
+          }
+        },
+        "operation": 600,
+        "description": "Applications created",
+        "targets": [
+          {
+            "app": {
+              "id": "testapp1"
+            }
+          }
+        ],
+        "details": [
+          "Create application 'testapp1'"
+        ],
+        "success": true,
+        "req_id": "webportal-0c244223c21b4ee18800c1741ca7be5a",
+        "source_ip": "3.234.120.41"
+      }
+    ]
+  }
