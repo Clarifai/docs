@@ -1,0 +1,1 @@
+clarifai model predict --model_url "https://clarifai.com/eleven-labs/audio-generation/models/speech-synthesis" --bytes "Hello, How are you doing today!" --input_type "text" 

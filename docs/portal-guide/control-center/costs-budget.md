@@ -1,6 +1,5 @@
 ---
 description: Get detailed financial data about your operations
-pagination_next: null
 sidebar_position: 2
 ---
 

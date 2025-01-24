@@ -1,0 +1,1 @@
+clarifai model predict --model_url https://clarifai.com/clarifai/main/models/general-image-detection --url https://samples.clarifai.com/beer.mp4 --input_type video --output_config "{\"sample_ms\":2000}"

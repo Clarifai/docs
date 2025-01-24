@@ -1,0 +1,1 @@
+clarifai model predict --model_id claude-v2 --user_id anthropic --app_id completion --file_path <add-predict-filepath-here> --input_type text

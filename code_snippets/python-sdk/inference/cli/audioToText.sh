@@ -1,0 +1,1 @@
+clarifai model predict --model_url https://clarifai.com/facebook/asr/models/asr-wav2vec2-large-robust-ft-swbd-300h-english --url https://s3.amazonaws.com/samples.clarifai.com/GoodMorning.wav --input_type audio

@@ -27,6 +27,13 @@ import CodeTextAudioTS from "!!raw-loader!../../../code_snippets/python-sdk/infe
 import CodeTextEmbedder from "!!raw-loader!../../../code_snippets/python-sdk/inference/text_embedder.py";
 import CodeTextEmbedderTS from "!!raw-loader!../../../code_snippets/python-sdk/inference/textEmbedder.ts";
 
+import CLITextClassifier from "!!raw-loader!../../../code_snippets/python-sdk/inference/cli/text_classifier.sh";
+import CLITextGenLLMInference from "!!raw-loader!../../../code_snippets/python-sdk/inference/cli/text_gen_llm_inference.sh";
+import CLITextGenLLM from "!!raw-loader!../../../code_snippets/python-sdk/inference/cli/text_gen_llm.sh";
+import CLITextClassLLM from "!!raw-loader!../../../code_snippets/python-sdk/inference/cli/text_class_llm.sh";
+import CLITextImage from "!!raw-loader!../../../code_snippets/python-sdk/inference/cli/text_to_image.sh";
+import CLITextAudio from "!!raw-loader!../../../code_snippets/python-sdk/inference/cli/text_to_audio.sh";
+import CLITextEmbedder from "!!raw-loader!../../../code_snippets/python-sdk/inference/cli/text_embedder.sh";
 
 
 import CodeOutputTextClassifier from "!!raw-loader!../../../code_snippets/python-sdk/inference/outputs/text_classifier.txt";
@@ -43,6 +50,11 @@ import CodeOutputTextEmbedder from "!!raw-loader!../../../code_snippets/python-s
 
 Unlock the potential of Clarifai's state-of-the-art text-based AI features, allowing you to elevate your applications with unparalleled accuracy and efficiency. Dive into a comprehensive suite of tools designed to simplify the integration of Clarifai's AI capabilities, empowering developers to unleash the potential of text-driven applications across various domains. Discover a robust and developer-friendly SDKs that streamlines the incorporation of advanced text-based AI models, making it easier than ever to implement powerful natural language processing solutions.
 
+:::tip Clarifai CLI 
+
+Learn how to use the Clarifai CLI (Command Line Interface) tool [here](https://docs.clarifai.com/sdk/Inference-from-AI-Models/#clarifai-cli).
+
+:::
 
 ## Text Classifier 
 
@@ -63,6 +75,9 @@ The file size of each text input should be less than 20MB.
 </TabItem>
 <TabItem value="typescript" label="Typescript">
     <CodeBlock className="language-typescript">{CodeTextClassifierTS}</CodeBlock>
+</TabItem>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash">{CLITextClassifier}</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -86,6 +101,9 @@ Empower your applications with dynamic text creation using the robust capabiliti
 <TabItem value="typescript" label="Typescript">
     <CodeBlock className="language-typescript">{CodeTextGenLLMTS}</CodeBlock>
 </TabItem>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash">{CLITextGenLLM}</CodeBlock>
+</TabItem>
 </Tabs>
 
 ### Set Inference Parameters 
@@ -97,6 +115,9 @@ You can learn more about them [here](https://docs.clarifai.com/portal-guide/ppre
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeTextGenLLMInference}</CodeBlock>
+</TabItem>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash">{CLITextGenLLMInference}</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -115,11 +136,14 @@ Dive into the realm of text classification with Clarifai's Predict API, where yo
 <TabItem value="typescript" label="Typescript">
     <CodeBlock className="language-typescript">{CodeTextClassLLMTS}</CodeBlock>
 </TabItem>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash">{CLITextClassLLM}</CodeBlock>
+</TabItem>
 </Tabs>
 
 
 
-## Text  to image
+## Text  to Image
 
 Leverage the power of the Predict API to seamlessly transform textual input into vibrant and expressive images. With the Text to Image [models](https://clarifai.com/explore/models?page=1&perPage=24&filterData=%5B%7B%22field%22%3A%22model_type_id%22%2C%22value%22%3A%5B%22text-to-image%22%5D%7D%5D), you can effortlessly generate visually compelling content by providing text as input.
 
@@ -137,6 +161,9 @@ Leverage the power of the Predict API to seamlessly transform textual input into
 <TabItem value="typescript" label="Typescript">
     <CodeBlock className="language-typescript">{CodeTextImageTS}</CodeBlock>
 </TabItem>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash">{CLITextImage}</CodeBlock>
+</TabItem>
 </Tabs>
 
 
@@ -151,6 +178,9 @@ The Text to Audio [models](https://clarifai.com/explore/models?page=1&perPage=24
 </TabItem>
 <TabItem value="typescript" label="Typescript">
     <CodeBlock className="language-typescript">{CodeTextAudioTS}</CodeBlock>
+</TabItem>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash">{CLITextAudio}</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -171,6 +201,9 @@ The Predict API offers a versatile set of capabilities, including the conversion
 </TabItem>
 <TabItem value="typescript" label="Typescript">
     <CodeBlock className="language-typescript">{CodeTextEmbedderTS}</CodeBlock>
+</TabItem>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash">{CLITextEmbedder}</CodeBlock>
 </TabItem>
 </Tabs>
 

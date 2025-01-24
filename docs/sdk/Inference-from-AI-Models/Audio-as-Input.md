@@ -10,7 +10,7 @@ import CodeBlock from "@theme/CodeBlock";
 import CodeAudioText from "!!raw-loader!../../../code_snippets/python-sdk/inference/audio_to_text.py";
 import CodeAudioTextTS from "!!raw-loader!../../../code_snippets/python-sdk/inference/audioToText.ts";
 
-
+import CLIAudioText from "!!raw-loader!../../../code_snippets/python-sdk/inference/cli/audioToText.sh";
 
 import CodeOutputAudioText from "!!raw-loader!../../../code_snippets/python-sdk/inference/outputs/audio_to_text.txt";
 
@@ -20,6 +20,12 @@ import CodeOutputAudioText from "!!raw-loader!../../../code_snippets/python-sdk/
 <hr />
 
 The Clarifai SDKs for Audio Processing provides a comprehensive set of tools and functionalities, enabling you to process audio inputs with unparalleled ease and efficiency. Whether you're working on applications related to voice recognition, sound classification, or speech-to-text conversion, our SDK streamlines the development process, allowing you to focus on building cutting-edge functionalities.
+
+:::tip Clarifai CLI 
+
+Learn how to use the Clarifai CLI (Command Line Interface) tool [here](https://docs.clarifai.com/sdk/Inference-from-AI-Models/#clarifai-cli).
+
+:::
 
 
 ## Audio to Text
@@ -36,6 +42,9 @@ Harness the power of the Predict API to seamlessly transform audio files into te
 </TabItem>
 <TabItem value="typescript" label="Typescript">
     <CodeBlock className="language-typescript">{CodeAudioTextTS}</CodeBlock>
+</TabItem>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash">{CLIAudioText}</CodeBlock>
 </TabItem>
 </Tabs>
 
