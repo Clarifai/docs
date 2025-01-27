@@ -1,0 +1,1 @@
+clarifai model predict --model_url https://clarifai.com/openai/chat-completion/models/GPT-4 --bytes "What is the future of AI?" --input_type text

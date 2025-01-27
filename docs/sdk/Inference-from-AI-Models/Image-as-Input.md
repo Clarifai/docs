@@ -7,7 +7,6 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
-
 import CodeVisualClassifier from "!!raw-loader!../../../code_snippets/python-sdk/inference/visual_classifier.py";
 import CodeVisualClassifierTS from "!!raw-loader!../../../code_snippets/python-sdk/inference/visualClassifier.ts";
 
@@ -16,8 +15,6 @@ import CodeVisualDImageTS from "!!raw-loader!../../../code_snippets/python-sdk/i
 
 import CodeVisualDVideo from "!!raw-loader!../../../code_snippets/python-sdk/inference/visual_d_video.py";
 import CodeVisualDVideoTS from "!!raw-loader!../../../code_snippets/python-sdk/inference/visualDetectorVideo.ts";
-
-
 
 import CodeVisualSegmenter from "!!raw-loader!../../../code_snippets/python-sdk/inference/visual_segmenter.py";
 import CodeVisualSegmenterTS from "!!raw-loader!../../../code_snippets/python-sdk/inference/visualSegmenter.ts";
@@ -31,17 +28,20 @@ import CodeImageToImageTS from "!!raw-loader!../../../code_snippets/python-sdk/i
 import CodeVisualEmbed from "!!raw-loader!../../../code_snippets/python-sdk/inference/visual_embedder.py";
 import CodeVisualEmbedTS from "!!raw-loader!../../../code_snippets/python-sdk/inference/visualEmbedder.ts";
 
-
-
-
-
-
 import CodeOutputVisualClassifier from "!!raw-loader!../../../code_snippets/python-sdk/inference/outputs/visual_classifier.txt";
 import CodeOutputVisualDImage from "!!raw-loader!../../../code_snippets/python-sdk/inference/outputs/visual_d_image.txt";
 import CodeOutputVisualDVideo from "!!raw-loader!../../../code_snippets/python-sdk/inference/outputs/visual_d_video.txt";
 import CodeOutputVisualSegmenter from "!!raw-loader!../../../code_snippets/python-sdk/inference/outputs/visual_segmenter.txt";
 import CodeOutputImageToText from "!!raw-loader!../../../code_snippets/python-sdk/inference/outputs/image_to_text.txt";
 import CodeOutputVisualEmbed from "!!raw-loader!../../../code_snippets/python-sdk/inference/outputs/visual_embedder.txt";
+
+import CLIVisualClassifier from "!!raw-loader!../../../code_snippets/python-sdk/inference/cli/visual_classifier.sh";
+import CLIVisualDetectorImage from "!!raw-loader!../../../code_snippets/python-sdk/inference/cli/visual_d_image.sh";
+import CLIVisualDetectorVideo from "!!raw-loader!../../../code_snippets/python-sdk/inference/cli/visual_d_video.sh";
+import CLIVisualSegmenter from "!!raw-loader!../../../code_snippets/python-sdk/inference/cli/visual_segmenter.sh";
+import CLIImageToText from "!!raw-loader!../../../code_snippets/python-sdk/inference/cli/image_to_text.sh";
+import CLIImageToImage from "!!raw-loader!../../../code_snippets/python-sdk/inference/cli/image_to_image.sh";
+import CLIVisualEmbedder from "!!raw-loader!../../../code_snippets/python-sdk/inference/cli/visual_embedder.sh";
 
 
 # Image as Input
@@ -50,6 +50,12 @@ import CodeOutputVisualEmbed from "!!raw-loader!../../../code_snippets/python-sd
 <hr />
 
 Clarifai SDKs empowers you to seamlessly integrate advanced image recognition functionalities into your applications, using the potential of artificial intelligence. The Clarifai SDKs utilises different model types that takes the image as inputs for various tasks.. Whether you're building applications for content moderation, object detection, or image classification, our SDK offers a robust foundation to turn images into actionable information. 
+
+:::tip Clarifai CLI 
+
+Learn how to use the Clarifai CLI (Command Line Interface) tool [here](https://docs.clarifai.com/sdk/Inference-from-AI-Models/#clarifai-cli).
+
+:::
 
 ## Visual Classifier
 
@@ -74,6 +80,11 @@ You can send up to 128 images in one API call. The file size of each image input
 <TabItem value="typescript" label="Typescript">
     <CodeBlock className="language-typescript">{CodeVisualClassifierTS}</CodeBlock>
 </TabItem>
+
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash">{CLIVisualClassifier}</CodeBlock>
+</TabItem>
+
 </Tabs>
 
 
@@ -96,6 +107,11 @@ Dive into a richer understanding of image content with Clarifai's Predict API fo
 <TabItem value="typescript" label="Typescript">
     <CodeBlock className="language-typescript">{CodeVisualDImageTS}</CodeBlock>
 </TabItem>
+
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash">{CLIVisualDetectorImage}</CodeBlock>
+</TabItem>
+
 </Tabs>
 
 
@@ -122,6 +138,11 @@ Video length should be at most 10mins in length or 100 MB in size when uploaded 
 <TabItem value="typescript" label="Typescript">
     <CodeBlock className="language-typescript">{CodeVisualDVideoTS}</CodeBlock>
 </TabItem>
+
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash">{CLIVisualDetectorVideo}</CodeBlock>
+</TabItem>
+
 </Tabs>
 
 
@@ -144,6 +165,10 @@ The Clarifai Predict API offers a powerful capability to generate segmentation m
 <TabItem value="typescript" label="Typescript">
     <CodeBlock className="language-typescript">{CodeVisualSegmenterTS}</CodeBlock>
 </TabItem>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash">{CLIVisualSegmenter}</CodeBlock>
+</TabItem>
+
 </Tabs>
 
 
@@ -164,6 +189,10 @@ Enhance your application by producing descriptive captions for images using the 
 <TabItem value="typescript" label="Typescript">
     <CodeBlock className="language-typescript">{CodeImageToTextTS}</CodeBlock>
 </TabItem>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash">{CLIImageToText}</CodeBlock>
+</TabItem>
+
 </Tabs>
 
 
@@ -181,6 +210,10 @@ Elevate the resolution of your images using the Clarifai Predict API, specifical
 <TabItem value="typescript" label="Typescript">
     <CodeBlock className="language-typescript">{CodeImageToImageTS}</CodeBlock>
 </TabItem>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash">{CLIImageToImage}</CodeBlock>
+</TabItem>
+
 </Tabs>
 
 ## Visual Embedder
@@ -198,6 +231,10 @@ The Predict API empowers you to leverage image embeddings through an embedding [
 <TabItem value="typescript" label="Typescript">
     <CodeBlock className="language-typescript">{CodeVisualEmbedTS}</CodeBlock>
 </TabItem>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash">{CLIVisualEmbedder}</CodeBlock>
+</TabItem>
+
 </Tabs>
 
 

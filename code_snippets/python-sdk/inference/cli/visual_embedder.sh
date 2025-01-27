@@ -1,0 +1,1 @@
+clarifai model predict --model_url https://clarifai.com/clarifai/main/models/image-embedder-clip --url https://s3.amazonaws.com/samples.clarifai.com/featured-models/general-elephants.jpg --input_type image 

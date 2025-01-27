@@ -1,0 +1,1 @@
+$ clarifai model predict --model_id got-ocr-2_0 --user_id stepfun-ai --app_id ocr --url "https://samples.clarifai.com/featured-models/ocr-woman-holding-sold-sign.jpg" --input_type image --deployment_id "test-deployment"

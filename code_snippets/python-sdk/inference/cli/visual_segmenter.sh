@@ -1,0 +1,1 @@
+clarifai model predict --model_url https://clarifai.com/clarifai/main/models/image-general-segmentation --url https://s3.amazonaws.com/samples.clarifai.com/people_walking2.jpeg --input_type image

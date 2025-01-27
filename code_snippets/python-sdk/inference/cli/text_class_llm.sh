@@ -1,0 +1,1 @@
+clarifai model predict --model_url "https://clarifai.com/openai/chat-completion/models/GPT-4" --bytes "Classes: [`positive`, `negative`, `neutral`] Text: Sunny weather makes me happy. Classify the text into one of the above classes." --input_type "text" 

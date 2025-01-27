@@ -38,11 +38,15 @@ To upload inputs, navigate to your individual app's page and select the **Inputs
 
 The inputs uploader window that pops up allows you to upload any type of input data — files from your local directory, texts, or publicly accessible URLs. 
 
-:::note
+Note that you can also use the inputs uploader modal to:
 
-You can also use the inputs uploader modal to organize your inputs into datasets, [add concepts to inputs](https://docs.clarifai.com/portal-guide/inputs-manager/concepts#via-the-inputs-uploader), or attach JSON metadata for additional context. This modal simplifies the process of managing and enriching your inputs on the platform.
+- Organize your inputs into datasets.
 
-:::
+- [Add concepts to inputs](https://docs.clarifai.com/portal-guide/inputs-manager/concepts#via-the-inputs-uploader).
+
+- Attach JSON metadata for additional context. Metadata are additional pieces of information you attach to your inputs when uploading them to the Clarifai platform. This can include product IDs, user IDs, or any other relevant details necessary for achieving specific outcomes
+
+This modal simplifies the process of managing and enriching your inputs on the platform.
 
 ### Upload Files
 

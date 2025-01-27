@@ -224,7 +224,7 @@ Ensure your local environment has sufficient memory and compute resources to loa
 
 :::
 
-There are two types of CLI (command line interface) commands you can use to test your models in your local development environment. 
+There are two types of CLI (command line interface) commands you can use to test your models in your local development environment. You can learn more about the Clarifai CLI tool [here](https://github.com/Clarifai/examples/blob/main/CLI/model.ipynb). 
 
 #### 1. Using the `test-locally` Command
 

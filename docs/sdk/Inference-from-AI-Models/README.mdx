@@ -3,19 +3,155 @@ sidebar_position: 6
 ---
 
 
-# Inference from AI Models
+# Inference From AI Models
 
-**Learn how to do model predictions using  Clarifai SDKs**
+**Learn how to perform model predictions using the Clarifai SDK**
 <hr />
 
-In this comprehensive guide, we illuminate the seamless and robust process of extracting meaningful insights through inference, showcasing the prowess of Clarifai's cutting-edge artificial intelligence models.
+You can leverage the Clarifai Python SDK or the Node.js SDK to make accurate predictions on your data. Whether you're working with images, videos, text, or other formats, the SDKs offer an intuitive and efficient way to interact with AI models and perform inferences seamlessly.
 
-During inference, Clarifai's AI models come to life, taking input information and generating precise output predictions or classifications. This dynamic process is rooted in the patterns and knowledge meticulously acquired during the models' training, resulting in a sophisticated understanding of various data domains. Whether you're going into image recognition, mastering natural language processing, or unraveling the complexities of predictive analytics, the Clarifai SDKs empowers you to harness the full potential of AI inference. Efficiency and accuracy in inference are paramount, especially when deploying Clarifai AI models in real-world scenarios. 
+For an even simpler approach, Clarifai provides a user-friendly Command Line Interface (CLI), bundled within the Python SDK package. The CLI streamlines inferencing tasks, allowing you to quickly run predictions and view results — all without requiring extensive setup.
 
-This documentation serves as your gateway to mastering inference, providing you with the tools and insights needed to automate decision-making, extract valuable information, and elevate the overall efficiency of your applications across diverse domains.
+This combination of tools ensures flexibility and ease of use, empowering you to harness the full potential of Clarifai's AI capabilities.
 
-Embark on this journey with Clarifai SDKs, where the realm of AI inference awaits your exploration. Uncover the possibilities, refine your understanding, and unleash the potential of Clarifai's AI models in your projects.
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
 
+import Login from "!!raw-loader!../../../code_snippets/python-sdk/cli/login.yaml";
+import PredictOptions from "!!raw-loader!../../../code_snippets/python-sdk/cli/predict_options.txt";
+import PredictByIds from "!!raw-loader!../../../code_snippets/python-sdk/cli/predict_by_ids.sh";
+import PredictByIdsOutput from "!!raw-loader!../../../code_snippets/python-sdk/cli/predict_by_ids_output.txt";
+import PredictByFilePath from "!!raw-loader!../../../code_snippets/python-sdk/cli/predict_by_file_path.sh";
+import PredictByURL from "!!raw-loader!../../../code_snippets/python-sdk/cli/predict_by_url.sh";
+import PredictByModelURL from "!!raw-loader!../../../code_snippets/python-sdk/cli/predict_by_model_url.sh";
+import PredictByInputID from "!!raw-loader!../../../code_snippets/python-sdk/cli/predict_by_input_id.sh";
+import PredictByYAML from "!!raw-loader!../../../code_snippets/python-sdk/cli/predict_by_yaml.yaml";
+import PredictByYAMLBash from "!!raw-loader!../../../code_snippets/python-sdk/cli/predict_by_yaml_bash.sh";
+import InferenceParameters from "!!raw-loader!../../../code_snippets/python-sdk/cli/inference_parameters.sh";
+import OutputConfig from "!!raw-loader!../../../code_snippets/python-sdk/cli/output_config.sh";
+
+## Clarifai CLI
+
+To make predictions using the [Clarifai CLI](https://github.com/Clarifai/examples/blob/main/CLI/model.ipynb), you first need to create a login configuration file for storing your account credentials.
+
+<Tabs>
+<TabItem value="yaml" label="YAML">
+    <CodeBlock className="language-yaml">{Login}</CodeBlock>
+</TabItem>
+</Tabs>
+
+Then, authenticate your CLI session with Clarifai using the stored credentials in the configuration file:
+
+```bash
+clarifai login --config <config-filepath>
+```
+
+You can perform model predictions using the Clarifai CLI in the following ways:  
+
+- By specifying `user_id`, `app_id`, and `model_id`
+- By providing the model URL
+- By using a YAML configuration file
+
+
+<details>
+  <summary>CLI Predict Options</summary>
+    <CodeBlock className="language-text">{PredictOptions}</CodeBlock>
+</details>
+
+### Predict by IDs
+
+You can use the `--bytes` argument along with specifying `user_id`, `app_id`, and `model_id`.
+
+<Tabs>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash">{PredictByIds}</CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+  <summary>Output Example</summary>
+    <CodeBlock className="language-text">{PredictByIdsOutput}</CodeBlock>
+</details>
+
+> You can also use the `--file_path` argument, which specifies the local path to the file that contains the instructions for the model to generate predictions.
+
+<Tabs>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash">{PredictByFilePath}</CodeBlock>
+</TabItem>
+</Tabs>
+
+> You can also use the `--url` argument, which specifies the URL of the file that contains the instructions for the model to generate predictions.
+
+<Tabs>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash">{PredictByURL}</CodeBlock>
+</TabItem>
+</Tabs>
+
+<!--
+> You can also use the `--input_id` argument, which specifies an existing input ID in the app for the model to predict.
+
+<Tabs>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash">{PredictByInputID}</CodeBlock>
+</TabItem>
+</Tabs>
+
+-->
+
+### Predict by Model URL
+
+You can make predictions by using the `--model_url` argument, which specifies the URL of the model to be used for generating predictions.
+
+<Tabs>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash">{PredictByModelURL}</CodeBlock>
+</TabItem>
+</Tabs>
+
+### Predict by a YAML file
+
+You can provide the instructions for generating predictions in a YMAL configuration file. 
+
+Here is an example:
+
+<Tabs>
+<TabItem value="yaml" label="YAML">
+    <CodeBlock className="language-yaml">{PredictByYAML}</CodeBlock>
+</TabItem>
+</Tabs>
+
+Then, you need to specify the path to that file. 
+
+<Tabs>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash">{PredictByYAMLBash}</CodeBlock>
+</TabItem>
+</Tabs>
+
+### Specify Prediction Parameters
+
+You can specify prediction parameters to influence the output of some models. These settings allow you to control the model's behavior during prediction, influencing attributes such as creativity, coherence, and diversity in the results.
+
+You can get a description of the prediction parameters [here](https://docs.clarifai.com/sdk/Inference-from-AI-Models/Advance-Inference-Options/#prediction-paramaters). 
+
+Here is how you can specify various inference parameters :
+
+<Tabs>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash">{InferenceParameters}</CodeBlock>
+</TabItem>
+</Tabs>
+
+Here is how you can specify output configuration parameters:
+
+<Tabs>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash">{OutputConfig}</CodeBlock>
+</TabItem>
+</Tabs>
 
 import DocCardList from '@theme/DocCardList';
 import {useCurrentSidebarCategory} from '@docusaurus/theme-common';

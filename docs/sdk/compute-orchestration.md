@@ -72,11 +72,11 @@ import CL7 from "!!raw-loader!../../code_snippets/python-sdk/compute-orchestrati
 import CL8 from "!!raw-loader!../../code_snippets/python-sdk/compute-orchestration/cli_delete_cluster.sh";
 import CL9 from "!!raw-loader!../../code_snippets/python-sdk/compute-orchestration/cli_delete_nodepool.sh";
 import CL10 from "!!raw-loader!../../code_snippets/python-sdk/compute-orchestration/cli_delete_deployment.sh";
-
+import CL22 from "!!raw-loader!../../code_snippets/python-sdk/compute-orchestration/cli_predict_with_model.sh";
 
 ## Prerequisites
 
-#### Installation
+### Installation
 
 To begin, install the latest version of the `clarifai` Python package.
 
@@ -84,7 +84,7 @@ To begin, install the latest version of the `clarifai` Python package.
 pip install --upgrade clarifai
 ```
 
-#### Get a PAT
+### Get a PAT
 
 You need a PAT (Personal Access Token) key to authenticate your connection to the Clarifai platform. You can generate it in your Personal Settings page by navigating to the [Security section](https://clarifai.com/settings/security).
 
@@ -95,13 +95,13 @@ import os
 os.environ["CLARIFAI_PAT"] = "YOUR_PAT_HERE" # replace with your own PAT key 
 ```
 
-#### Set up Project Directory
+### Set up Project Directory
 
 - Create a directory to store your project files.
 - Inside this directory, create a Python file for your Compute Orchestration code.
 - Create a `configs` folder to store your YAML configuration files for clusters, nodepools, and deployments.
 
-In the `configs` folder:
+Create the following files in the `configs` folder:
 
 **1.** `compute_cluster_config.yaml`:
 
@@ -143,7 +143,7 @@ $ clarifai login --config <config-filepath>
 
 ## Cluster Operations
 
-#### Create a Compute Cluster
+### Create a Compute Cluster
 
 To create a new compute cluster, pass the `compute_cluster_id` and `config_filepath` as arguments to the `create_compute_cluster` method of the `User` class.
 
@@ -156,7 +156,7 @@ To create a new compute cluster, pass the `compute_cluster_id` and `config_filep
 </TabItem>
 </Tabs>
 
-#### Get a Cluster
+### Get a Cluster
 
 To get a specific compute cluster, pass the `compute_cluster_id` to the `compute_cluster` method of the `User` class.
 
@@ -166,7 +166,7 @@ To get a specific compute cluster, pass the `compute_cluster_id` to the `compute
 </TabItem>
 </Tabs>
 
-#### List All Clusters
+### List All Clusters
 
 To list your existing compute clusters, call the `list_compute_clusters` method of the `User` class.
 
@@ -179,7 +179,7 @@ To list your existing compute clusters, call the `list_compute_clusters` method 
 </TabItem>
 </Tabs>
 
-#### Initialize the `ComputeCluster` Class
+### Initialize the `ComputeCluster` Class
 
 To initialize the `ComputeCluster` class, provide the `user_id` and `compute_cluster_id` as parameters. 
 
@@ -193,7 +193,7 @@ Initialization is essential because it establishes the specific user and compute
 
 ## Nodepool Operations
 
-#### Create a Nodepool
+### Create a Nodepool
 
 To create a new nodepool, use the `create_nodepool` method with the `nodepool_id` and `config_filepath` as parameters.
 
@@ -206,7 +206,7 @@ To create a new nodepool, use the `create_nodepool` method with the `nodepool_id
 </TabItem>
 </Tabs>
 
-#### Get a Nodepool
+### Get a Nodepool
 
 To get a specific nodepool, provide the `nodepool_id` to the `nodepool` method of the `ComputeCluster` class.
 
@@ -216,7 +216,7 @@ To get a specific nodepool, provide the `nodepool_id` to the `nodepool` method o
 </TabItem>
 </Tabs>
 
-#### List All Nodepools
+### List All Nodepools
 
 To list the existing nodepools, call the `list_nodepools` method of the `ComputeCluster` class.
 
@@ -229,7 +229,7 @@ To list the existing nodepools, call the `list_nodepools` method of the `Compute
 </TabItem>
 </Tabs>
 
-#### Initialize the `Nodepool` Class
+### Initialize the `Nodepool` Class
 
 To initialize the `Nodepool` class, provide the `user_id` and `nodepool_id` parameters. 
 
@@ -241,7 +241,7 @@ To initialize the `Nodepool` class, provide the `user_id` and `nodepool_id` para
 
 ## Deployment Operations
 
-#### Create a Deployment
+### Create a Deployment
 
 To deploy a model within a nodepool, provide the `deployment_id` and `config_filepath` parameters to the `create_deployment` method of the `Nodepool` class.
 
@@ -260,7 +260,7 @@ Each model or workflow can only have one deployment per nodepool.
 </TabItem>
 </Tabs>
 
-#### Get a Deployment
+### Get a Deployment
 
 To get a specific deployment, provide the `deployment_id` to the `deployment` method of the `Nodepool` class.
 
@@ -270,7 +270,7 @@ To get a specific deployment, provide the `deployment_id` to the `deployment` me
 </TabItem>
 </Tabs>
 
-#### List All Deployments
+### List All Deployments
 
 To list existing deployments, call the `list_deployments` method of the `Nodepool` class.
 
@@ -283,7 +283,7 @@ To list existing deployments, call the `list_deployments` method of the `Nodepoo
 </TabItem>
 </Tabs>
 
-#### Initialize the `Deployment` Class
+### Initialize the `Deployment` Class
 
 To initialize the `Deployment` class, provide the `user_id` and `deployment_id` parameters. 
 
@@ -315,9 +315,18 @@ It supports the following prediction methods:
 - `predict_by_bytes` — Pass raw input data directly.
 - `predict_by_filepath` — Provide the local file path for the input. 
 
+:::note
+
+[Click here](https://github.com/Clarifai/examples/blob/main/CLI/model.ipynb) to learn more about making model predictions using the Clarifai CLI tool. 
+
+:::
+
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CO19}</CodeBlock>
+</TabItem>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-yaml">{CL22}</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -358,7 +367,7 @@ It supports the following prediction methods:
 
 ## Delete Resources
 
-#### Delete Deployments
+### Delete Deployments
 
 To delete deployments, pass a list of deployment IDs to the `delete_deployments` method of the `Nodepool` class. 
 
@@ -371,7 +380,7 @@ To delete deployments, pass a list of deployment IDs to the `delete_deployments`
 </TabItem>
 </Tabs>
 
-#### Delete Nodepools
+### Delete Nodepools
 
 To delete nodepools, provide a list of nodepool IDs to the `delete_nodepools` method of the `ComputeCluster` class. 
 
@@ -384,7 +393,7 @@ To delete nodepools, provide a list of nodepool IDs to the `delete_nodepools` me
 </TabItem>
 </Tabs>
 
-#### Delete Compute Clusters
+### Delete Compute Clusters
 
 To delete compute clusters, provide a list of compute cluster IDs to the `delete_compute_clusters` method of the `User` class.
 

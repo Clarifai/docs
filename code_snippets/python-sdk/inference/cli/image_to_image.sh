@@ -1,0 +1,1 @@
+clarifai model predict --model_url https://clarifai.com/stability-ai/Upscale/models/stabilityai-upscale --url https://s3.amazonaws.com/samples.clarifai.com/featured-models/image-captioning-statue-of-liberty.jpeg --input_type image --inference_params "{\"width\":\"1024\"}"
