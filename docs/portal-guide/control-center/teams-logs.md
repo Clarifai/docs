@@ -14,9 +14,18 @@ The Teams & Logs tab allows you to monitor platform operations by capturing deta
 
 It provides the ability to assess user actions and resource changes, identify potential security issues, maintain comprehensive logs to meet regulatory requirements, and monitor request origins to troubleshoot failed operations effectively.  
 
+You can use the tab to track the following critical resource operations (_we're planning to support more resources in the future_):
+
+- **Organization and team membership activities** — Includes creating, updating, or deleting organizations and teams, sending invitations, and managing team users and applications.  
+- **Module activities** — Tracks the creation, updating, and deletion of modules. 
+- **Model activities** — Tracks actions such as creating, training, publishing, and deleting models.  
+- **Workflow activities** — Covers the creation, publishing, updating, and deletion of workflows.  
+- **Application activities** — Includes creating, updating, duplicating, and deleting applications.  
+- **Collaborator activities** — Includes adding collaborators, editing their scopes, and removing them. 
+
 :::note
 
-[Click here](https://docs.clarifai.com/api-guide/audit-log/) to learn how to perform audit tracking via the API. Also, learn about the types of operations this feature supports [here](https://docs.clarifai.com/api-guide/audit-log/#operation-based-filtering). 
+[Click here](https://docs.clarifai.com/api-guide/audit-log/) to learn how to perform audit tracking via the API. 
 
 :::
 
@@ -28,7 +37,7 @@ This feature is currently only available to users on our **Professional** and **
 
 <br/>
 
-To access it, go to the Control Center and select the Teams & Logs tab in the collapsible left sidebar.
+To access the tab, go to the Control Center and select the Teams & Logs option in the collapsible left sidebar.
 
 ![](/img/community/control-center/teams_logs_1.png)
 
@@ -44,7 +53,9 @@ By default, the page displays activities across all your apps. You can customize
 
 ![](/img/community/control-center/teams_logs_2.png)
 
-Additionally, you can filter and view data for specific time periods using the date range selector in the upper-right corner. If you click the tool, a calendar will drop down, which allows you to specify a date range to narrow down the activity logs. You can learn more about the tool [here](https://docs.clarifai.com/portal-guide/control-center/#date-ranges). 
+Additionally, you can filter and view data for specific time periods using the date range selector in the upper-right corner. If you click the tool, a calendar will drop down, which allows you to specify a date range to narrow down the activity logs. 
+
+You can learn more about the date range tool [here](https://docs.clarifai.com/portal-guide/control-center/#date-ranges). 
 
 ![](/img/community/control-center/teams_logs_3.png)
 
