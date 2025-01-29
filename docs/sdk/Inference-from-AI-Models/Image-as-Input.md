@@ -53,7 +53,7 @@ Clarifai SDKs empowers you to seamlessly integrate advanced image recognition fu
 
 :::tip Clarifai CLI 
 
-Learn how to use the Clarifai CLI (Command Line Interface) tool [here](https://docs.clarifai.com/sdk/Inference-from-AI-Models/#clarifai-cli).
+Learn how to use the Clarifai CLI (Command Line Interface) tool [here](https://docs.clarifai.com/sdk/cli).
 
 :::
 

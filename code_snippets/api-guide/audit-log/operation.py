@@ -26,7 +26,7 @@ post_audit_log_searches = stub.PostAuditLogSearches(
     service_pb2.PostAuditLogSearchesRequest(
         user_app_id=userDataObject, # The userDataObject is created in the overview and is required when using a PAT   
         query=resources_pb2.AuditLogQuery(
-            operations=[300, 400, 600]
+            operations=[resources_pb2.EventType.MODEL_CREATE, resources_pb2.EventType.WORKFLOW_CREATE, resources_pb2.EventType.APPLICATION_CREATE]
         )
     ),    
     metadata=metadata

@@ -23,7 +23,7 @@ The Clarifai SDKs for Audio Processing provides a comprehensive set of tools and
 
 :::tip Clarifai CLI 
 
-Learn how to use the Clarifai CLI (Command Line Interface) tool [here](https://docs.clarifai.com/sdk/Inference-from-AI-Models/#clarifai-cli).
+Learn how to use the Clarifai CLI (Command Line Interface) tool [here](https://docs.clarifai.com/sdk/cli).
 
 :::
 

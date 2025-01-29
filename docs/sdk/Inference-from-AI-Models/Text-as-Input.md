@@ -52,7 +52,7 @@ Unlock the potential of Clarifai's state-of-the-art text-based AI features, allo
 
 :::tip Clarifai CLI 
 
-Learn how to use the Clarifai CLI (Command Line Interface) tool [here](https://docs.clarifai.com/sdk/Inference-from-AI-Models/#clarifai-cli).
+Learn how to use the Clarifai CLI (Command Line Interface) tool [here](https://docs.clarifai.com/sdk/cli).
 
 :::
 

@@ -3,6 +3,6 @@ curl -X POST "https://api.clarifai.com/v2/users/YOUR_USER_ID_HERE/audit_log/sear
   -H "Content-Type: application/json" \
   -d '{
     "query": {
-      "operations": [300, 400, 600]
+      "operations": ["MODEL_CREATE", "WORKFLOW_CREATE", "APPLICATION_CREATE"]
     }
   }'
