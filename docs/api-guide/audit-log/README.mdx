@@ -1,5 +1,5 @@
 ---
-description: Track what has been performed, by whom and with which results
+description: Track what was performed, who did it, and the results
 pagination_prev: null
 pagination_next: null
 unlisted: true
@@ -121,7 +121,7 @@ You can apply filters to target specific operation types.
 
 The Audit Logging feature currently supports tracking the following critical resource operations (_we're planning to support more resources in the future_):
 
-- **Organization and Team Membership activities** — Includes creating, updating, or deleting organizations and teams, sending invitations, and managing team users and applications.  
+- **Organization and team membership activities** — Includes creating, updating, or deleting organizations and teams, sending invitations, and managing team users and applications.  
 - **Module activities** — Tracks the creation, updating, and deletion of modules. 
 - **Model activities** — Tracks actions such as creating, training, publishing, and deleting models.  
 - **Workflow activities** — Covers the creation, publishing, updating, and deletion of workflows.  
@@ -308,18 +308,18 @@ You can define the target of your query; that is, specify the resource on which 
   <summary>**Target Types Supported**</summary>
 
 
-| Target           |Code                |
-|-----------------|--------------------|
-|    `User user`       |        1        |
-|   `Role role`              |        2        |
-|     `Team team`            |        3        |
-|     `App app`            |        4        |
-|       `Module module`          |        5        |
-|       `ModuleVersion module_version`          |         6       |
-|     `Workflow workflow`            |           7     |
-|      `WorkflowVersion workflow_version `           |     8           |
-|        `Model model`         |     9           |
-|        `ModelVersion model_version`         |     10           |
+| Target           |
+|-----------------|
+|    `User user`       |        
+|   `Role role`              |        
+|     `Team team`            |        
+|     `App app`            |        
+|       `Module module`          |        
+|       `ModuleVersion module_version`          |         
+|     `Workflow workflow`            |           
+|      `WorkflowVersion workflow_version `           |     
+|        `Model model`         |     
+|        `ModelVersion model_version`         |     
 
  
 </details>

@@ -25,6 +25,8 @@ You can request predictions from any model or workflow available to you on a par
 
 AI-Assist provides you with several benefits, including:
 
+![](/img/annotate/ai_assist_image-1.png)
+
 - Significantly accelerate the labeling process, reducing the time required to create labeled datasets;
 - Automation can reduce the labor costs associated with manual labeling;
 - AI models can provide consistent labeling, minimizing human errors;

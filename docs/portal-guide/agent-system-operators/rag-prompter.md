@@ -14,7 +14,7 @@ LLMs have revolutionized natural language understanding across various applicati
 
 However, LLMs are often plagued by these two main limitations:
 
-- Most traditional LLMs have a static knowledge base that is limited to a specific period; for example, ChatGPT's knowledge cut-off is in January 2022. This makes them outdated and unable to respond accurately to recent events. 
+- Most traditional LLMs have a static knowledge base that is limited to a specific period; for example, as of this writing, ChatGPT's knowledge cut-off is in October 2023. This makes them outdated and unable to respond accurately to recent events. 
 
 - Most traditional LLMs are trained on an extensive, generalized collection of data, which may not be applicable to your specific use case. Whenever LLMs confront voids in their training data, they might generate seemingly plausible yet erroneous information, a phenomenon referred to as "hallucination."
 
@@ -56,7 +56,7 @@ Image source: [Clarifai portal](https://www.clarifai.com/hs-fs/hubfs/rag-query-d
 
 Let’s demonstrate how you can create a RAG Prompter model on the Clarifai platform. 
 
-:::note
+:::note objective
 
 Our intention is to search an app containing textual data for relevant information related to a provided text query. We extract the top k most relevant results from the app, and augment these results into the prompt we provide to the model. By leveraging the additional context, the model should be able to generate a more informative response to the question. 
 
@@ -74,7 +74,13 @@ When creating the application, select the **Text/Document** option as the primar
 
 ###  Step 2: Upload Data
 
-Next, upload the external data you want to use to optimize the output of a large language model. [Click here](https://docs.clarifai.com/portal-guide/data/#upload-inputs) to learn how you can upload data to your application. 
+Next, upload the external data you want to use to optimize the output of a large language model. [Click here](https://docs.clarifai.com/portal-guide/inputs-manager/upload-inputs) to learn how you can upload data to your application. 
+
+You can also [create a dataset](https://docs.clarifai.com/portal-guide/datasets/create-get-update-delete/#create-datasets) and add your inputs to it, then specify the dataset ID when configuring the RAG Prompter. This ensures the RAG Prompter performs context-based searches within the specified dataset, which leads to more accurate and relevant outputs.  
+
+If a dataset ID is not specified, the RAG Prompter will search across all inputs in your app, spanning all datasets. This can result in mixed context searches and less precise outputs due to jumbled context hits from unrelated datasets.
+
+Similarly, you can attach JSON metadata to your inputs when uploading them to the Clarifai platform. Metadata serve as additional information associated with your inputs and, like dataset IDs, can be used to narrow down search results. By specifying metadata, you can filter search results to match specific conditions, which further improves the relevance and accuracy of the context provided by the RAG Prompter.
 
 :::warning RAG in four lines of code
 
@@ -82,7 +88,7 @@ Next, upload the external data you want to use to optimize the output of a large
 
 :::
 
-For this example, let's add the following five inputs to our app:
+For this example, let's add the following inputs to a dataset in our app:
 
 ```
 The audit findings indicate that $460,000 was expended on machinery repairs during the previous twelve months. 
@@ -104,13 +110,15 @@ The financial records indicate that $480,000 was disbursed for machinery repairs
 During the 2019 fiscal year, the organization disbursed $475,000 on machinery repairs to ensure operational efficiency. 
 ``` 
 
-###  Step 3: Create a workflow
+###  Step 3: Create a Workflow
 
 Go to the [workflow builder](https://docs.clarifai.com/portal-guide/workflows/workflow-builder/). 
 
-Then, search for **rag-prompter** in the left-hand sidebar and drag it onto the empty workspace. Use the pop-up that appears on the right-hand sidebar to set up the template text as a single-line statement.
+Then, search for the **rag-prompter** node in the left-hand sidebar and drag it onto the empty workspace. 
 
-For this example, let's use this prompt template text:
+![](/img/others/rag-prompter-1.png)
+
+Use the pop-up that appears on the right-hand sidebar to set up the template text as a single-line statement. For this example, let's use this prompt template text:
 
 ```
 Context information is below: {data.hits} Given the context information and not prior knowledge, answer the query.Query: {data.text.raw} Answer: 
@@ -128,15 +136,15 @@ To customize your search experience, you can:
 
 - Modify `max_results` to specify the maximum number of relevant search results included in the prompt.
 
+- Provide a comma-separated list of `dataset_ids` or a single dataset ID for the RAG Prompter to search within. This ensures the search results are confined to specific datasets, which improves relevance and precision, as earlier explained.  
+
+- Define the `metadata` in JSON format to filter the search results further. Just like specifying a dataset ID, using [metadata](https://docs.clarifai.com/portal-guide/psearch/pfilter/#filter-by-metadata) enhances context generation and boosts the accuracy of the results. 
+
 To finalize creating your workflow, connect the **rag-prompter** to a text-to-text node, and choose a text-to-text LLM from the Clarifai Community, such as [GPT-4 Turbo](https://clarifai.com/openai/chat-completion/models/gpt-4-turbo).
 
-Then, save your workflow.
+Then, click the **Save Workflow** button to save your workflow.
 
-Here is an example:
- 
-![](/img/others/rag-prompter-1.png)
-
-### Step 4: Use the workflow
+### Step 4: Use the Workflow
 
 After saving the workflow, you’ll be directed to its individual page, where you can start using it. 
 
@@ -162,7 +170,7 @@ After creating your RAG Prompter, you can edit it by navigating to its individua
 
 ![](/img/others/rag-prompter-3.png)
 
-You'll be redirected to the workflow editor page, where you can make any changes needed, such as updating the prompt template text or the `min_score` and `max_results` parameters. 
+You'll be redirected to the workflow editor page, where you can make any changes needed, such as updating the prompt template text or other parameters. 
 
 ![](/img/others/rag-prompter-4.png)
 
@@ -180,7 +188,10 @@ You can then select the version to use for inferencing.
 
 ![](/img/others/rag-prompter-5.png)
 
-You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/RAG-Prompter?version=0d6fdf0f67df4dbfa386ff8c76a3cb77). 
+<!--
 :::note
-Before trying to access the workflow, please make sure that you have a Clarifai account and are logged in to the Clarifai platform to access the example workflow. If you do not have clarifai account you can signup [here](https://clarifai.com/explore).
+
+You can try this workflow [here](https://clarifai.com/clarifai/Sample-Workflows-for-Docs/workflows/RAG-Prompter?version=0d6fdf0f67df4dbfa386ff8c76a3cb77). 
+
 :::
+-->

@@ -27,7 +27,7 @@ stub.PostAuditLogSearches(
       user_id: USER_ID,
     },
     query: {
-      operations: [300, 400, 600],
+      operations: ["MODEL_CREATE", "WORKFLOW_CREATE", "APPLICATION_CREATE"]
     },
   },
   metadata,

@@ -1,0 +1,1 @@
+clarifai model predict --model_url https://clarifai.com/clarifai/main/models/general-image-recognition --url https://samples.clarifai.com/dog2.jpeg --input_type image --output_config "{\"max_concepts\":3}"

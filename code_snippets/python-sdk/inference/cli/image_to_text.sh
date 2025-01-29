@@ -1,0 +1,1 @@
+clarifai model predict --model_url https://clarifai.com/salesforce/blip/models/general-english-image-caption-blip --url https://s3.amazonaws.com/samples.clarifai.com/featured-models/image-captioning-statue-of-liberty.jpeg --input_type image

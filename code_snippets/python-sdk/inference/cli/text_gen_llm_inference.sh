@@ -1,0 +1,1 @@
+clarifai model predict --model_url https://clarifai.com/meta/Llama-3/models/llama-3_1-8b-instruct --bytes "What is the future of AI?" --input_type text --inference_params "{\"temperature\":0.7,\"max_tokens\":200,\"top_k\":50,\"top_p\":0.95}"

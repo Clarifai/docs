@@ -1,0 +1,1 @@
+clarifai model predict --model_url https://clarifai.com/erfan/text-classification/models/sentiment-analysis-twitter-roberta-base --url https://samples.clarifai.com/finantial-sentiment-1.txt --input_type text
