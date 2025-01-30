@@ -109,7 +109,7 @@ You can learn how to use the `run-locally`, `test-locally`, and `upload` command
 
 ## Login 
 
-To use the Clarifai CLI, you must first log in using a [Personal Access Token](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens) (PAT). This requires creating a YMAL login configuration file to securely store your credentials.
+To use the Clarifai CLI, you must first log in using a [Personal Access Token](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens) (PAT). This requires creating a YAML login configuration file to securely store your credentials.
 
 <Tabs>
 <TabItem value="yaml" label="YAML">
@@ -201,7 +201,7 @@ You can make predictions by using the `--model_url` argument, which specifies th
 
 ### Predict by a YAML file
 
-You can provide the instructions for generating predictions in a YMAL configuration file. 
+You can provide the instructions for generating predictions in a YAML configuration file. 
 
 Here is an example:
 
