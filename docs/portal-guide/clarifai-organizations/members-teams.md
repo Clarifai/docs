@@ -36,7 +36,7 @@ On the dialog box that appears, enter the invitee’s email address and select a
 You can assign any of the following roles:
 
 - **Admin** — the invitee will have administrative privileges in the organization. 
-- **Financial Manager** — the invitee will have access to key financial data, including current spending based on the organization's pricing plan and budget settings, enabling better financial oversight and management.
+- **Financial Manager** — the invitee will have access to key financial data, including current spending based on the organization's pricing plan and budget settings, enabling better financial oversight and management. This role is only permitted to access the following tabs within the [Control Center](https://docs.clarifai.com/portal-guide/control-center/): Overview, Usage, and Costs. 
 - **Organization Contributor (all apps)** — the invitee will be able to contribute to all the apps within the organization, but without some admin privileges.. 
 - **Organization User (all apps)** — the invitee will have access privileges similar to those of an Organization Contributor for all apps, but with view-only permissions. 
 - **Team Contributor (select apps)** — the invitee will be available to contribute only to some selected applications.

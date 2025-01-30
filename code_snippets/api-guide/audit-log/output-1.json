@@ -122,7 +122,7 @@
           }
         ],
         "details": [
-          "Create model [visual-classifier-one2]"
+          "Create model 'visual-classifier-one2'"
         ],
         "success": true,
         "req_id": "webportal-7f53926068b3479bbc5631109ac64377",
@@ -164,7 +164,7 @@
           }
         ],
         "details": [
-          "Create model [dogs-vs-cats]"
+          "Create model 'dogs-vs-cats'"
         ],
         "success": true,
         "req_id": "webportal-f488464806a042698840233f070adeec",

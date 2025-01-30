@@ -31,7 +31,7 @@ These flexible capabilities support any compute instance — across various hard
 
 :::info Clarifai CLI
 
-Clarifai provides a user-friendly command line interface (CLI) that simplifies Compute Orchestration tasks. With the CLI, you can easily manage the infrastructure required for deploying and scaling machine learning models, even without extensive MLOps expertise.
+Clarifai provides a user-friendly [command line interface](https://docs.clarifai.com/sdk/cli/) (CLI) that simplifies Compute Orchestration tasks. With the CLI, you can easily manage the infrastructure required for deploying and scaling machine learning models, even without extensive MLOps expertise.
 This tool makes it easy to set up clusters, configure nodepools, and deploy models directly from the command line. You can follow its step-by-step tutorial provided [here](https://github.com/Clarifai/clarifai-python/blob/master/clarifai/cli/README.md).
 
 :::

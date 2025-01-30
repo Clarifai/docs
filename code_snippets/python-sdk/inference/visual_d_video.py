@@ -6,9 +6,9 @@ from clarifai.client.model import Model
 USER_ID = "clarifai"
 APP_ID = "main"
 # Change these to whatever model and video URL you want to use
-MODEL_ID = "general-image-recognition"
+MODEL_ID = "general-image-detection"
 # You can also set a particular model version by specifying the  version ID
-# eg: MODEL_VERSION_ID = 'aa7f35c01e0642fda5cf400f543e7c40'
+# eg: MODEL_VERSION_ID = '1580bb1932594c93b7e2e04456af7c6f'
 
 VIDEO_URL = "https://samples.clarifai.com/beer.mp4"
 # Change this to configure the FPS rate (If it's not configured, it defaults to 1 FPS)
@@ -18,13 +18,13 @@ VIDEO_URL = "https://samples.clarifai.com/beer.mp4"
 SAMPLE_MS = 2000
 
 # Model class objects can be inititalised by providing its URL or also by defining respective user_id, app_id and model_id
-# eg: model = Model("https://clarifai.com/clarifai/main/models/general-image-recognition")
+# eg: model = Model("https://clarifai.com/clarifai/main/models/general-image-detection")
 
 
 model = Model(user_id="clarifai", app_id="main", model_id=MODEL_ID, pat="YOUR_PAT")
 output_config = {"sample_ms": SAMPLE_MS}  # Run inference every 2 seconds
 model_prediction = model.predict_by_url(
-    BEER_VIDEO_URL, input_type="video", output_config=output_config
+    VIDEO_URL, input_type="video", output_config=output_config
 )
 
 # The predict API gives flexibility to generate predictions for data provided through filepath, URL and bytes format.
