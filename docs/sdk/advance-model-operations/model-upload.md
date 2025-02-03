@@ -184,9 +184,9 @@ The `model.py` file contains the logic for your model, including how it loads an
 - **`stream(input_data)`** – Manages both streaming input and output, primarily for more advanced use cases where data is processed continuously.
 
 ```python
-from clarifai.runners.models.model_runner import ModelRunner
+from clarifai.runners.models.model_class import ModelClass
 
-class YourCustomModelRunner(ModelRunner):
+class YourCustomModel(ModelClass):
     def load_model(self):
         # Initialize and load the model here
         pass
