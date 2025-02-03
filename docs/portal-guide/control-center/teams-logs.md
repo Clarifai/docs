@@ -2,7 +2,6 @@
 description: Gain insights into platform activities with enhanced visibility, security, and governance
 pagination_next: null
 sidebar_position: 3
-unlisted: true
 ---
 
 # Teams & Logs Tab
