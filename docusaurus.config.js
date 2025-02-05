@@ -628,6 +628,10 @@ const config = {
             to: '/portal-guide/input-viewer/annotate',
             from: '/portal-guide/input-viewer/label-types'
           },
+          {
+            to: '/portal-guide/compute-orchestration/cloud-instances',
+            from: '/portal-guide/compute-orchestration/instance-types'
+          },
 
         ],
         createRedirects(existingPath) {
