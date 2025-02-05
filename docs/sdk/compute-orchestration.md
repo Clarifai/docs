@@ -315,12 +315,6 @@ It supports the following prediction methods:
 - `predict_by_bytes` — Pass raw input data directly.
 - `predict_by_filepath` — Provide the local file path for the input. 
 
-:::note
-
-[Click here](https://github.com/Clarifai/examples/blob/main/CLI/model.ipynb) to learn more about making model predictions using the Clarifai CLI tool. 
-
-:::
-
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CO19}</CodeBlock>

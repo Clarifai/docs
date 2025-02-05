@@ -4,7 +4,7 @@ sidebar_position: 4
 pagination_next: null
 ---
 
-# Instance Types
+# Supported Cloud Instances
 
 **Learn about the instance types we support**
 <hr />

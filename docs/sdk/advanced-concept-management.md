@@ -1,6 +1,6 @@
 ---
 description: Manage your concepts
-sidebar_position: 4.1
+sidebar_position: 4.2
 ---
 
 # Advanced Concept Management
