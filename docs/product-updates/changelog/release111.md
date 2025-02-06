@@ -39,6 +39,12 @@ draft: false
 | ![new-feature](/img/new_feature.jpg) | Published DeepSeek models, which are free for a limited time on our Community platform | <ul><li> Released [DeepSeek-R1-Distill-Qwen-1_5B](https://clarifai.com/deepseek-ai/deepseek-chat/models/DeepSeek-R1-Distill-Qwen-1_5B), a 1.5B-parameter dense model distilled from DeepSeek-R1 based on Qwen-1.5B.</li><li> Released [DeepSeek-R1-Distill-Qwen-7B](https://clarifai.com/deepseek-ai/deepseek-chat/models/DeepSeek-R1-Distill-Qwen-7B), a 7B-parameter dense model distilled from DeepSeek-R1 based on Qwen-7B.</li><li> Released [DeepSeek-R1-Distill-Qwen-14B](https://clarifai.com/deepseek-ai/deepseek-chat/models/DeepSeek-R1-Distill-Qwen-14B), a 14B-parameter dense model distilled from DeepSeek-R1 based on Qwen-14B. </li><li> Released [DeepSeek-R1-Distill-Qwen-32B](https://clarifai.com/deepseek-ai/deepseek-chat/models/DeepSeek-R1-Distill-Qwen-32B), a 32B-parameter dense model distilled from DeepSeek-R1 based on Qwen-32B. </li></ul> | 
 
 
+## Data Utils
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![new-feature](/img/new_feature.jpg)   | Released [Data Utils](https://github.com/Clarifai/clarifai-python-datautils) as an open source Python library |    Get a range of multimedia data utilities designed to streamline your data management and processing operations. <br/> <br/>  <ul> <li>[Image annotation loader](https://github.com/Clarifai/examples/blob/main/Data_Utils/Image%20Annotation/image_annotation_loader.ipynb)  — A comprehensive framework for loading, exporting, and analyzing different annotated datasets.  </li><li> [Data ingestion pipelines](https://github.com/Clarifai/examples/blob/main/Data_Utils/Ingestion%20pipelines/README.md) — Load text files (PDF, DOC, etc.), transform and chunk the content, and upload it to the Clarifai platform. </li> <ul> <li> [Multimodal dataloader](https://github.com/Clarifai/examples/blob/main/Data_Utils/Ingestion%20pipelines/Multimodal_dataloader.ipynb) </li>  <li>[Ready-to-use foundational pipelines](https://github.com/Clarifai/examples/blob/main/Data_Utils/Ingestion%20pipelines/Ready_to_use_foundational_pipelines.ipynb) </li> </ul> </ul>                |                                          
+
 ##  Platform Improvements
 
 |Status                                |Change                  |Details                    |

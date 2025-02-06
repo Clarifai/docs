@@ -1,18 +1,26 @@
 ---
+description: Learn how to upload a custom model using the Python SDK
 sidebar_position: 1
 ---
 
+
 # Model Upload
 
-**Learn how to upload a model using Clarifai SDKs**
+**Learn how to upload a custom model using the Python SDK**
 
 <hr />
 
-The Clarifai SDKs allow you to upload custom models easily. Whether you're working with a pre-trained model from an external source or one you've built from scratch, Clarifai allows seamless integration of your models, enabling you to take advantage of the platform’s powerful capabilities.
+The Clarifai Python SDK allow you to upload custom models easily. Whether you're working with a pre-trained model from an external source or one you've built from scratch, Clarifai allows seamless integration of your models, enabling you to take advantage of the platform’s powerful capabilities.
 
-Once uploaded, your model can be utilized alongside Clarifai's vast suite of AI tools. It will be automatically deployed and ready to be evaluated, combined with other models and agent operators in a workflow, or used to serve inference requests as it is.
+Once uploaded to our platform, your model can be utilized alongside Clarifai's vast suite of AI tools. It will be automatically deployed and ready to be evaluated, combined with other models and agent operators in a workflow, or used to serve inference requests as it is.
 
 Let’s demonstrate how you can successfully upload different types of models to the Clarifai platform. 
+
+:::note
+
+For the Compute Orchestration Public Preview, deployment is only supported for models that users have uploaded to our platform via the Python SDK. We plan to expand this functionality to include out-of-the-box and custom-trained models on our platform in the future.
+
+:::
 
 :::info
 
@@ -305,7 +313,7 @@ This command builds the model’s Docker image using the defined compute resourc
 
 ## Examples
 
-:::info
+:::tip
 
 You can find various model upload examples [here](https://github.com/Clarifai/examples/tree/main/models/model_upload), which demonstrate different use cases and optimizations. 
 
@@ -389,7 +397,7 @@ You can find various model upload examples [here](https://github.com/Clarifai/ex
 </TabItem>
 </Tabs>
 
-:::tip
+:::note
 
 You can refer to the examples repository mentioned above for additional examples of uploading other large language models (LLMs).
 

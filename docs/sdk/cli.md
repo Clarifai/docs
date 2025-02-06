@@ -103,7 +103,7 @@ Commands:
 
 :::tip
 
-You can learn how to use the `run-locally`, `test-locally`, and `upload` commands [here](https://docs.clarifai.com/sdk/advance-model-operations/model-upload#step-4-test-the-model-locally). 
+You can learn how to use the `run-locally`, `test-locally`, and `upload` commands [here](https://docs.clarifai.com/sdk/compute-orchestration/model-upload#step-4-test-the-model-locally). 
 
 :::
 

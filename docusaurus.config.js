@@ -140,6 +140,10 @@ const config = {
                 to: "/portal-guide/model",
               },
               {
+                label: "Compute Orchestration",
+                to: "/portal-guide/compute-orchestration",
+              },
+              {
                 label: "Create Workflows",
                 to: "/portal-guide/workflows",
               },
@@ -165,6 +169,10 @@ const config = {
               {
                 label: "Python SDK",
                 to: "/sdk/python-installation",
+              },
+              {
+                label: "Clarifai CLI",
+                to: "/sdk/cli",
               },
               {
                 label: "Node.js SDK",
@@ -217,12 +225,12 @@ const config = {
               }
             ]
           },
-          {
+          //{
             // type: "",
-            label: "Product Roadmap",
-            position: "left",
-            href: "https://portal.productboard.com/bd1rxfuyfbu6vqnmkva3mprx/tabs/1-under-consideration"
-          },
+            //label: "Product Roadmap",
+            //position: "left",
+            //href: "https://portal.productboard.com/bd1rxfuyfbu6vqnmkva3mprx/tabs/1-under-consideration"
+          //},
           {
             type: 'search',
             position: 'right',
@@ -631,6 +639,10 @@ const config = {
           {
             to: '/portal-guide/compute-orchestration/cloud-instances',
             from: '/portal-guide/compute-orchestration/instance-types'
+          },
+          {
+            to: '/sdk/compute-orchestration/model-upload',
+            from: '/sdk/advance-model-operations/model-upload'
           },
 
         ],

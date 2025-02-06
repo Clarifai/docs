@@ -22,14 +22,14 @@ Compute Orchestration allows you to upload a model, configure your SaaS or self-
 
 :::tip info
 
-For the Compute Orchestration Public Preview, deployment is only supported for models that users have uploaded to our platform via the Python SDK. We plan to expand this functionality to include out-of-the-box and custom-trained models on our platform in the future. You can learn how to upload models [here](https://docs.clarifai.com/sdk/advance-model-operations/model-upload).
+For the Compute Orchestration Public Preview, deployment is only supported for models that users have uploaded to our platform via the Python SDK. We plan to expand this functionality to include out-of-the-box and custom-trained models on our platform in the future. You can learn how to upload models [here](https://docs.clarifai.com/sdk/compute-orchestration/model-upload).
 
 :::
 
 ## Prerequisites
 
 - Set up a compute cluster and nodepool. You can follow the instructions provided [here](https://docs.clarifai.com/portal-guide/compute-orchestration/set-up-compute).
-- [Upload](https://docs.clarifai.com/sdk/advance-model-operations/model-upload) or select a model you'd like to use for running inferences.
+- [Upload](https://docs.clarifai.com/sdk/compute-orchestration/model-upload) or select a model you'd like to use for running inferences.
 
 
 ## Make a Deployment
