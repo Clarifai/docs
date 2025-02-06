@@ -1,4 +1,4 @@
-# This is the sample config file for the image-classifier model
+# This is the sample config file for the image-classifier model.
 
 model:
   id: "model_id"
@@ -7,7 +7,7 @@ model:
   model_type_id: "visual-classifier"
 
 build_info:
-  python_version: "3.10"
+  python_version: "3.11"
 
 inference_compute_info:
   cpu_limit: "1"

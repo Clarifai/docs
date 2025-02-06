@@ -9,7 +9,9 @@ pagination_next: null
 **Learn about the instance types we support**
 <hr />
 
-We offer a range of Amazon Web Services (AWS) instance types, designed to handle a variety of machine learning workloads. These instances vary in their CPU, RAM (Random Access Memory), and GPU configurations, which allow you to orchestrate the right balance of performance and cost for your use case.
+We offer a range of Amazon Web Services (AWS) instance types, which are designed to handle a variety of machine learning workloads. 
+
+These instances vary in their CPU, RAM (Random Access Memory), and GPU configurations, which allow you to orchestrate the right balance of performance and cost for your use case.
 
 :::info
 
@@ -17,7 +19,9 @@ You can [contact us](https://www.clarifai.com/explore/contact-us) to unlock acce
 
 :::
 
-## t3a Instances 
+## AWS Cloud Instances
+
+### t3a Instances 
 
 The `t3a` series is designed for cost-effective, general-purpose workloads that do not require GPU acceleration. It offers a balanced combination of CPU and memory, making it ideal for lightweight applications.
 
@@ -38,13 +42,13 @@ The `t3a` series is designed for cost-effective, general-purpose workloads that 
 
 - Running simple models for classification tasks.
 
-## g4dn Instances
+### g4dn Instances
 
 The `g4dn` series is designed for moderate GPU-accelerated workloads, making it suitable for small-to-medium-scale machine learning tasks.
 
 |Instance Type       |GPUs            | Total GPU RAM  |   CPU         |  RAM          |
 |--------------------|----------------|----------------|---------------|---------------| 
-| `g4dn.xlarge`        |    1x T4      |    16GiB        |   4x CPU      | 16GiB              |              
+| `g4dn.xlarge`        |    1x  NVIDIA-T4      |    16GiB        |   4x CPU      | 16GiB              |              
 
 **Key Features**
 
@@ -58,14 +62,14 @@ The `g4dn` series is designed for moderate GPU-accelerated workloads, making it 
 
 - Fine-tuning pre-trained models for specific tasks like object detection or sentiment analysis.
 
-## g5 Instances 
+### g5 Instances 
 
 The `g5` series delivers enhanced GPU capabilities and is designed for tasks requiring higher memory and computational power, such as large-scale deep learning model training.
 
 |Instance Type       |GPUs            | Total GPU RAM  |   CPU         |  RAM          |
 |--------------------|----------------|----------------|---------------|---------------| 
-|  `g5.xlarge`       | 1x A10G        |  24GiB         | 4x CPU        |   16GiB       |              
-|  `g5.2xlarge`      |  1x A10G       | 24GiB          |  8x CPU       |   32GiB       |
+|  `g5.xlarge`       | 1x  NVIDIA-A10G        |  24GiB         | 4x CPU        |   16GiB       |              
+|  `g5.2xlarge`      |  1x  NVIDIA-A10G       | 24GiB          |  8x CPU       |   32GiB       |
 
 **Key Features**
 
@@ -79,16 +83,16 @@ The `g5` series delivers enhanced GPU capabilities and is designed for tasks req
 
 - Running object tracking or pose estimation workflows in real-time video analysis.
 
-## g6 Instances
+### g6 Instances
 
 The `g6` series offers next-generation GPU technologies and is designed for the most demanding machine learning workloads, including large-scale model training and high-performance simulations. Each instance type in the `g6` series is tailored to specific workloads.
 
 |Instance Type       |GPUs            | Total GPU RAM  |   CPU         |  RAM          |
 |--------------------|----------------|----------------|---------------|---------------| 
-|  `g6.xlarge`         | 1x L4          |  24GiB         |  4x CPU       |  16GiB        |              
-|  `g6.2xlarge`        |  1x L4         | 24GiB          |  8x CPU       |   32GiB            |
-|  `g6e.xlarge`       |  1x L40S        | 48GiB          |   4x CPU      |    32GiB           |
-|   `g6e.12xlarge`    | 4x L40S         |  192GiB        | 48x CPU       |    384GiB           |
+|  `g6.xlarge`         | 1x  NVIDIA-L4          |  24GiB         |  4x CPU       |  16GiB        |              
+|  `g6.2xlarge`        |  1x  NVIDIA-L4         | 24GiB          |  8x CPU       |   32GiB            |
+|  `g6e.xlarge`       |  1x  NVIDIA-L40S        | 48GiB          |   4x CPU      |    32GiB           |
+|   `g6e.12xlarge`    | 4x  NVIDIA-L40S         |  192GiB        | 48x CPU       |    384GiB           |
 
 **Key Features**
 

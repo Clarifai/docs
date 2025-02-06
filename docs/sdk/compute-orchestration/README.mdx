@@ -1,0 +1,115 @@
+---
+description: Train and deploy any model on any compute infrastructure, at any scale
+pagination_prev: null
+---
+
+# Compute Orchestration
+
+**Train and deploy any model on any compute infrastructure, at any scale**
+<hr />
+
+:::note
+
+Compute Orchestration is currently in [Public Preview](https://docs.clarifai.com/product-updates/changelog/release-types). To request access, please contact us [here](https://www.clarifai.com/explore/contact-us-co).
+
+:::
+
+Clarifai’s Compute Orchestration offers a streamlined solution for managing the infrastructure required for training, deploying, and scaling machine learning models and workflows. 
+
+These flexible capabilities support any compute instance — across various hardware providers and deployment methods — and provide automatic scaling to match workload demands.
+
+[Click here](https://docs.clarifai.com/portal-guide/compute-orchestration) to learn more about our Compute Orchestration capabilities. 
+
+:::tip Tips
+
+- Run the following command to clone the repository containing various Compute Orchestration examples: `git clone https://github.com/Clarifai/examples.git`. After cloning, navigate to the `ComputeOrchestration` folder to follow along with this tutorial.
+
+- For a step-by-step tutorial, see the [CRUD operations notebook](https://github.com/Clarifai/examples/blob/main/ComputeOrchestration/crud_operations.ipynb). 
+
+- Clarifai provides a user-friendly [command line interface](https://docs.clarifai.com/sdk/cli/) (CLI) that simplifies Compute Orchestration tasks. You can follow its step-by-step tutorial provided [here](https://github.com/Clarifai/clarifai-python/blob/master/clarifai/cli/README.md).
+
+:::
+
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+
+import CO1 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/compute_cluster_config.yaml";
+import CO6 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/nodepool_config.yaml";
+import CO11 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/deployment_config.yaml";
+import CL1 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/cli-1.yaml";
+
+## Prerequisites
+
+### Installation
+
+To begin, install the latest version of the `clarifai` Python package.
+
+```text
+pip install --upgrade clarifai
+```
+
+### Get a PAT
+
+You need a PAT (Personal Access Token) key to authenticate your connection to the Clarifai platform. You can generate it in your Personal Settings page by navigating to the [Security section](https://clarifai.com/settings/security).
+
+Then, set it as an environment variable in your script.
+
+```text
+import os
+os.environ["CLARIFAI_PAT"] = "YOUR_PAT_HERE" # replace with your own PAT key 
+```
+
+### Set up Project Directory
+
+- Create a directory to store your project files.
+- Inside this directory, create a Python file for your Compute Orchestration code.
+- Create a `configs` folder to store your YAML configuration files for clusters, nodepools, and deployments.
+
+Then, create the following files in the `configs` folder:
+
+**1.** `compute_cluster_config.yaml`:
+
+<Tabs>
+<TabItem value="yaml" label="YAML">
+    <CodeBlock className="language-yaml">{CO1}</CodeBlock>
+</TabItem>
+</Tabs>
+
+**2.** `nodepool_config.yaml`:
+
+<Tabs>
+<TabItem value="yaml" label="YAML">
+    <CodeBlock className="language-yaml">{CO6}</CodeBlock>
+</TabItem>
+</Tabs>
+
+**3.** `deployment_config.yaml`:
+
+<Tabs>
+<TabItem value="yaml" label="YAML">
+    <CodeBlock className="language-yaml">{CO11}</CodeBlock>
+</TabItem>
+</Tabs>
+
+Optionally, if you want to use the Clarifai CLI, create a login configuration file for storing your account credentials:
+
+<Tabs>
+<TabItem value="yaml" label="YAML">
+    <CodeBlock className="language-yaml">{CL1}</CodeBlock>
+</TabItem>
+</Tabs>
+
+Then, authenticate your CLI session with Clarifai using the stored credentials in the configuration file:
+
+```bash
+$ clarifai login --config <config-filepath>
+```
+
+
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>

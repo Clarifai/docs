@@ -7,14 +7,14 @@ deployment:
    traffic_history_seconds: 100
    scale_down_delay_seconds: 30
    scale_up_delay_seconds: 30
-   enable_packing: true
+   disable_packing: false
  worker:
    model:
-     id: "got-ocr-2_0"
+     id: "apparel-clusterering"
      model_version:
-       id: "5d92321db5d341b5b4cf407ab34f618f"
-     user_id: "stepfun-ai"
-     app_id: "ocr"
+       id: "cc911f6b0ed748efb89e3d1359c146c4"
+     user_id: "clarifai"
+     app_id: "main"
  scheduling_choice: 4
  nodepools:
    - id: "test-nodepool"

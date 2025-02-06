@@ -2,10 +2,10 @@
 
 import os
 from threading import Thread
-from typing import Iterator
+from typing import Iterator, List, Optional
 
 import torch
-from clarifai.runners.models.model_runner import ModelRunner
+from clarifai.runners.models.model_class import ModelClass
 from clarifai.utils.logging import logger
 from clarifai_grpc.grpc.api import resources_pb2, service_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2, status_pb2
@@ -13,189 +13,209 @@ from google.protobuf import json_format
 from transformers import (AutoModelForCausalLM, AutoTokenizer, TextIteratorStreamer)
 
 
-class MyRunner(ModelRunner):
-  """A custom runner that loads the Llama model and generates text using it.
-  """
+# Custom streamer for batched text generation
+class BatchTextIteratorStreamer(TextIteratorStreamer):
+  """A custom streamer that handles batched text generation."""
+
+  def __init__(self,
+               batch_size: int,
+               tokenizer: "AutoTokenizer",
+               skip_prompt: bool = False,
+               timeout: Optional[float] = None,
+               **decode_kwargs):
+    super().__init__(tokenizer, skip_prompt, timeout, **decode_kwargs)
+    self.batch_size = batch_size
+    self.token_cache = [[] for _ in range(batch_size)]
+    self.print_len = [0 for _ in range(batch_size)]
+    self.generate_exception = None
+
+  def put(self, value):
+    if len(value.shape) != 2:
+      value = torch.reshape(value, (self.batch_size, value.shape[0] // self.batch_size))
+
+    if self.skip_prompt and self.next_tokens_are_prompt:
+      self.next_tokens_are_prompt = False
+      return
+
+    printable_texts = list()
+    for idx in range(self.batch_size):
+      self.token_cache[idx].extend(value[idx].tolist())
+      text = self.tokenizer.decode(self.token_cache[idx], **self.decode_kwargs)
+
+      if text.endswith("\n"):
+        printable_text = text[self.print_len[idx]:]
+        self.token_cache[idx] = []
+        self.print_len[idx] = 0
+        # If the last token is a CJK character, we print the characters.
+      elif len(text) > 0 and self._is_chinese_char(ord(text[-1])):
+        printable_text = text[self.print_len[idx]:]
+        self.print_len[idx] += len(printable_text)
+      else:
+        printable_text = text[self.print_len[idx]:text.rfind(" ") + 1]
+        self.print_len[idx] += len(printable_text)
+      printable_texts.append(printable_text)
+
+    self.on_finalized_text(printable_texts)
+
+  def end(self):
+    printable_texts = list()
+    for idx in range(self.batch_size):
+      if len(self.token_cache[idx]) > 0:
+        text = self.tokenizer.decode(self.token_cache[idx], **self.decode_kwargs)
+        printable_text = text[self.print_len[idx]:]
+        self.token_cache[idx] = []
+        self.print_len[idx] = 0
+      else:
+        printable_text = ""
+      printable_texts.append(printable_text)
+
+    self.next_tokens_are_prompt = True
+    self.on_finalized_text(printable_texts, stream_end=True)
+
+  def on_finalized_text(self, texts: List[str], stream_end: bool = False):
+    self.text_queue.put(texts, timeout=self.timeout)
+    if stream_end:
+      self.text_queue.put(self.stop_signal, timeout=self.timeout)
+
+
+# Helper function to create an output
+def create_output(text="", code=status_code_pb2.SUCCESS):
+  return resources_pb2.Output(
+      data=resources_pb2.Data(text=resources_pb2.Text(raw=text)),
+      status=status_pb2.Status(code=code))
+
+
+# Helper function to get the inference params
+def get_inference_params(request) -> dict:
+  """Get the inference params from the request."""
+  inference_params = {}
+  if request.model.model_version.id != "":
+    output_info = request.model.model_version.output_info
+    output_info = json_format.MessageToDict(output_info, preserving_proto_field_name=True)
+    if "params" in output_info:
+      inference_params = output_info["params"]
+  return inference_params
+
+
+# Helper function to parse the inference params
+def parse_inference_params(request):
+  default_params = {
+      "temperature": 0.7,
+      "max_tokens": 100,
+      "top_k": 50,
+      "top_p": 1.0,
+      "do_sample": True,
+  }
+  inference_params = get_inference_params(request)
+  return {
+      "temperature": inference_params.get("temperature", default_params["temperature"]),
+      "max_tokens": int(inference_params.get("max_tokens", default_params["max_tokens"])),
+      "top_k": int(inference_params.get("top_k", default_params["top_k"])),
+      "top_p": inference_params.get("top_p", default_params["top_p"]),
+      "do_sample": inference_params.get("do_sample", default_params["do_sample"]),
+  }
+
+
+class MyModel(ModelClass):
+  """A custom runner that loads the model and generates text using batched inference."""
 
   def load_model(self):
     """Load the model here."""
     self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
     logger.info(f"Running on device: {self.device}")
 
+    # Load model and tokenizer
     # if checkpoints section is in config.yaml file then checkpoints will be downloaded at this path during model upload time.
     checkpoints = os.path.join(os.path.dirname(__file__), "checkpoints")
-
-    self.tokenizer = AutoTokenizer.from_pretrained(checkpoints)
+    self.tokenizer = AutoTokenizer.from_pretrained(checkpoints,)
+    self.tokenizer.pad_token = self.tokenizer.eos_token
     self.model = AutoModelForCausalLM.from_pretrained(
         checkpoints,
         low_cpu_mem_usage=True,
         device_map=self.device,
-        torch_dtype=torch.bfloat16,
+        torch_dtype=torch.float16,
     )
-    # Create a streamer for streaming the output of the model
-    self.streamer = TextIteratorStreamer(
-        self.tokenizer, skip_prompt=True, skip_special_tokens=True)
     logger.info("Done loading!")
 
   def predict(self,
               request: service_pb2.PostModelOutputsRequest) -> service_pb2.MultiOutputResponse:
-    """This is the method that will be called when the runner is run. It takes in an input and
-    returns an outputs the response using llama model.
-    """
+    """This method generates outputs text for the given inputs using the model."""
 
-    # TODO: Could cache the model and this conversion if the hash is the same.
-    model = request.model
-    output_info = {}
-    if request.model.model_version.id != "":
-      output_info = json_format.MessageToDict(
-          model.model_version.output_info, preserving_proto_field_name=True)
+    inference_params = parse_inference_params(request)
+
+    prompts = [inp.data.text.raw for inp in request.inputs]
+    inputs = self.tokenizer(prompts, return_tensors="pt", padding=True).to(self.device)
+
+    output_tokens = self.model.generate(
+        **inputs,
+        max_new_tokens=inference_params["max_tokens"],
+        do_sample=inference_params["do_sample"],
+        temperature=inference_params["temperature"],
+        top_k=inference_params["top_k"],
+        top_p=inference_params["top_p"],
+        eos_token_id=self.tokenizer.eos_token_id,
+    )
+
+    outputs_text = self.tokenizer.batch_decode(
+        output_tokens[:, inputs['input_ids'].shape[1]:], skip_special_tokens=True)
 
     outputs = []
-    # TODO: parallelize this over inputs in a single request.
-    for inp in request.inputs:
-      data = inp.data
+    for text in outputs_text:
+      outputs.append(create_output(text=text, code=status_code_pb2.SUCCESS))
 
-      # Optional use of output_info
-      inference_params = {}
-      if "params" in output_info:
-        inference_params = output_info["params"]
-
-      temperature = inference_params.get("temperature", 0.7)
-      max_tokens = inference_params.get("max_tokens", 100)
-      max_tokens = int(max_tokens)
-
-      top_k = inference_params.get("top_k", 40)
-      top_k = int(top_k)
-      top_p = inference_params.get("top_p", 1.0)
-
-      if data.text.raw != "":
-        prompt = data.text.raw
-
-        inputs = self.tokenizer([prompt], return_tensors="pt").to(self.device)
-        output_tokens = self.model.generate(
-            **inputs,
-            eos_token_id=self.tokenizer.eos_token_id,
-            do_sample=True,
-            temperature=temperature,
-            max_new_tokens=max_tokens,
-            top_p=top_p,
-            top_k=top_k,
-        )
-        llm_outputs = self.tokenizer.batch_decode(
-            output_tokens[:, inputs['input_ids'].shape[1]:], skip_special_tokens=True)
-
-        output = resources_pb2.Output()
-        output.data.text.raw = llm_outputs[0]
-
-      output.status.code = status_code_pb2.SUCCESS
-      outputs.append(output)
-    return service_pb2.MultiOutputResponse(outputs=outputs,)
+    return service_pb2.MultiOutputResponse(
+        outputs=outputs, status=status_pb2.Status(code=status_code_pb2.SUCCESS))
 
   def generate(self, request: service_pb2.PostModelOutputsRequest
               ) -> Iterator[service_pb2.MultiOutputResponse]:
-    """Example yielding a whole batch of streamed stuff back."""
+    """This method generates stream of outputs for the given batch of inputs using the model."""
+    inference_params = parse_inference_params(request)
 
-    # TODO: Could cache the model and this conversion if the hash is the same.
-    model = request.model
-    output_info = {}
-    if request.model.model_version.id != "":
-      output_info = json_format.MessageToDict(
-          model.model_version.output_info, preserving_proto_field_name=True)
+    prompts = [inp.data.text.raw for inp in request.inputs]
+    batch_size = len(prompts)
 
-    # TODO: parallelize this over inputs in a single request.
-    for inp in request.inputs:
-      data = inp.data
+    # Initialize the custom streamer
+    streamer = BatchTextIteratorStreamer(
+        batch_size=batch_size,
+        tokenizer=self.tokenizer,
+        skip_prompt=True,
+        decode_kwargs={
+            "skip_special_tokens": True
+        })
 
-      # Optional use of output_info
-      inference_params = {}
-      if "params" in output_info:
-        inference_params = output_info["params"]
+    # Tokenize the inputs
+    inputs = self.tokenizer(prompts, return_tensors="pt", padding=True).to(self.device)
 
-      temperature = inference_params.get("temperature", 0.7)
-      max_tokens = inference_params.get("max_tokens", 100)
-      max_tokens = int(max_tokens)
-      top_p = inference_params.get("top_p", 1.0)
+    generation_kwargs = {
+        "input_ids": inputs.input_ids,
+        "attention_mask": inputs.attention_mask,
+        "max_new_tokens": inference_params["max_tokens"],
+        "do_sample": inference_params["do_sample"],
+        "temperature": inference_params["temperature"],
+        "top_k": inference_params["top_k"],
+        "top_p": inference_params["top_p"],
+        "eos_token_id": self.tokenizer.eos_token_id,
+        "streamer": streamer,
+    }
 
-      top_k = inference_params.get("top_k", 40)
-      top_k = int(top_k)
+    # Start generation in a separate thread
+    thread = Thread(target=self.model.generate, kwargs=generation_kwargs)
+    thread.start()
 
-      kwargs = dict(temperature=temperature, top_p=top_p, max_new_tokens=max_tokens, top_k=top_k)
+    # Initialize outputs
+    outputs = [create_output() for _ in range(batch_size)]
 
-      if data.text.raw != "":
-        prompt = data.text.raw
-
-        inputs = self.tokenizer(prompt, return_tensors="pt").input_ids.cuda()
-        generation_kwargs = dict(input_ids=inputs, streamer=self.streamer, **kwargs)
-        thread = Thread(target=self.model.generate, kwargs=generation_kwargs)
-        thread.start()
-
-        for new_text in self.streamer:
-          output = resources_pb2.Output()
-
-          output.data.text.raw = new_text
-          output.status.code = status_code_pb2.SUCCESS
-          result = service_pb2.MultiOutputResponse(
-              status=status_pb2.Status(
-                  code=status_code_pb2.SUCCESS,
-                  description="Success",
-              ),
-              outputs=[output],
-          )
-          yield result
-        thread.join()
+    try:
+      for streamed_texts in streamer:  # Iterate over new texts generated
+        for idx, text in enumerate(streamed_texts):  # Iterate over each batch
+          outputs[idx].data.text.raw = text  # Append new text to each output
+          outputs[idx].status.code = status_code_pb2.SUCCESS
+        # Yield the current outputs
+        yield service_pb2.MultiOutputResponse(
+            outputs=outputs, status=status_pb2.Status(code=status_code_pb2.SUCCESS))
+    finally:
+      thread.join()
 
   def stream(self, request_iterator: Iterator[service_pb2.PostModelOutputsRequest]
             ) -> Iterator[service_pb2.MultiOutputResponse]:
-    """Example yielding a whole batch of streamed stuff back."""
-    output_info = {}
-    for ri, request in enumerate(request_iterator):
-      if ri == 0:  # only first request has model information.
-        model = request.model
-        if request.model.model_version.id != "":
-          output_info = json_format.MessageToDict(
-              model.model_version.output_info, preserving_proto_field_name=True)
-          # Optional use of output_info
-          inference_params = {}
-          if "params" in output_info:
-            inference_params = output_info["params"]
-      # TODO: parallelize this over inputs in a single request.
-      for inp in request.inputs:
-        data = inp.data
-
-        # Optional use of output_info
-        inference_params = {}
-        if "params" in output_info:
-          inference_params = output_info["params"]
-
-        temperature = inference_params.get("temperature", 0.7)
-        max_tokens = inference_params.get("max_tokens", 100)
-        max_tokens = int(max_tokens)
-        top_p = inference_params.get("top_p", 1.0)
-
-        top_k = inference_params.get("top_k", 40)
-        top_k = int(top_k)
-
-        kwargs = dict(temperature=temperature, top_p=top_p, max_new_tokens=max_tokens, top_k=top_k)
-
-        if data.text.raw != "":
-          prompt = data.text.raw
-
-          inputs = self.tokenizer(prompt, return_tensors="pt").input_ids.cuda()
-          generation_kwargs = dict(input_ids=inputs, streamer=self.streamer, **kwargs)
-          thread = Thread(target=self.model.generate, kwargs=generation_kwargs)
-          thread.start()
-
-          for new_text in self.streamer:
-            output = resources_pb2.Output()
-
-            output.data.text.raw = new_text
-            output.status.code = status_code_pb2.SUCCESS
-            result = service_pb2.MultiOutputResponse(
-                status=status_pb2.Status(
-                    code=status_code_pb2.SUCCESS,
-                    description="Success",
-                ),
-                outputs=[output],
-            )
-            yield result
-          thread.join()
+    raise NotImplementedError("Stream method is not implemented for the models.")
