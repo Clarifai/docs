@@ -471,10 +471,6 @@ const config = {
             from: ['/python-sdk/advance-model-operations/'],
           },
           {
-            to: '/sdk/advance-model-operations/model-upload',
-            from: ['/python-sdk/advance-model-operations/model-upload'],
-          },
-          {
             to: '/sdk/advance-model-operations/model-export',
             from: ['/python-sdk/advance-model-operations/model-export'],
           },
