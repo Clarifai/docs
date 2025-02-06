@@ -4,7 +4,7 @@ description: Changelog for Clarifai Release 11.1
 sidebar_position: -64
 pagination_next: null
 pagination_prev: product-updates/changelog/release110
-draft: true
+draft: false
 ---
 
 # Release 11.1
