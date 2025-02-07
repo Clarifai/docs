@@ -9,7 +9,7 @@ pagination_next: null
 **Learn about the instance types we support**
 <hr />
 
-We offer a range of Amazon Web Services (AWS) instance types, which are designed to handle a variety of machine learning workloads. 
+We offer a range of Amazon Web Services (AWS) and Google Cloud Platform (GCP) instance types, which are designed to handle a variety of machine learning workloads. 
 
 These instances vary in their CPU, RAM (Random Access Memory), and GPU configurations, which allow you to orchestrate the right balance of performance and cost for your use case.
 
@@ -106,3 +106,66 @@ The `g6` series offers next-generation GPU technologies and is designed for the 
 
 - The `g6e.xlarge` and `g6e.12xlarge` instances support high-end workloads, such as training large-scale language models like GPT-4 or T5-XL for multi-modal tasks. 
  
+## GCP Cloud Instances 
+
+### N2-Standard Instances
+
+The N2-Standard series is designed for cost-effective, general-purpose workloads that do not require GPU acceleration. These instances provide a balanced combination of CPU and memory, making them ideal for lightweight applications.  
+
+| Instance Type      | GPUs | Total GPU RAM | CPU     | RAM   |  
+|--------------------|------|--------------|---------|-------|  
+| n2-standard-2     | -    | -            | 2x CPU  | 8 GiB  |  
+| n2-standard-4     | -    | -            | 4x CPU  | 16 GiB |  
+| n2-standard-8     | -    | -            | 8x CPU  | 32 GiB |  
+| n2-standard-16    | -    | -            | 16x CPU | 64 GiB |  
+
+**Key Features**
+
+- vCPUs (Virtual CPUs) — Optimized for CPU-intensive operations like running traditional models or pre-processing pipelines.  
+- RAM — Ranges from 8 GiB to 64 GiB, allowing efficient handling of lightweight, data-intensive workloads.  
+
+**Example Use Case**  
+
+- Running small-scale machine learning models or serving simple inference workloads.  
+
+### G2-Standard Instances 
+
+The G2-Standard series is designed for moderate GPU-accelerated workloads, making it ideal for small-to-medium-scale machine learning tasks.  
+
+| Instance Type     | GPUs         | Total GPU RAM | CPU     | RAM   |  
+|------------------|-------------|--------------|---------|-------|  
+| g2-standard-4   | 1x NVIDIA-L4 | 24 GiB       | 4x CPU  | 16 GiB |  
+| g2-standard-8   | 1x NVIDIA-L4 | 24 GiB       | 8x CPU  | 32 GiB |  
+| g2-standard-12  | 1x NVIDIA-L4 | 24 GiB       | 12x CPU | 48 GiB |  
+| g2-standard-16  | 1x NVIDIA-L4 | 24 GiB       | 16x CPU | 64 GiB |  
+| g2-standard-32  | 1x NVIDIA-L4 | 24 GiB       | 32x CPU | 128 GiB |  
+
+**Key Features**  
+
+- NVIDIA L4 GPUs — Optimized for inference and light model training, offering a balance of performance and cost.  
+- Scalable vCPUs and RAM — Supports larger data processing and orchestration workloads.  
+
+**Example Use Cases**  
+
+- Running NLP models like BERT-base for text summarization.  
+- Fine-tuning small vision models for object detection.  
+
+### A2 & A3 High-Performance Instances
+
+For large-scale deep learning and AI workloads, the A2 and A3 series provide cutting-edge GPUs with high memory bandwidth.  
+
+| Instance Type      | GPUs          | Total GPU RAM | CPU     | RAM    |  
+|-------------------|--------------|--------------|---------|--------|  
+| a2-ultragpu-1g   | 1x NVIDIA-A100 | 80 GiB       | 12x CPU | 170 GiB |  
+| a3-highgpu-1g    | 1x NVIDIA-H100 | 80 GiB       | 26x CPU | 234 GiB |  
+
+**Key Features**
+
+- NVIDIA A100 & H100 GPUs — Designed for high-end AI and deep learning tasks, including large-scale model training.  
+- High CPU & RAM Configurations — Enables parallel processing for massive datasets and complex workflows.  
+
+**Example Use Cases**  
+
+- Training large language models like GPT-4 or T5-XL.  
+- Running real-time AI applications, such as video analytics or autonomous systems.  
+

@@ -130,7 +130,11 @@ To initialize the `Deployment` class, provide the `user_id` and `deployment_id` 
 
 Once your model is deployed, it can be used to make predictions by calling the appropriate prediction methods. Clarifai's Compute Orchestration system offers different types of prediction calls to suit various use cases.
 
-To ensure proper routing and execution, you must specify the `deployment_id` parameter. This parameter is essential for routing prediction requests within the Clarifai's Compute Orchestration system.
+:::warning important
+
+To ensure proper routing and execution, you must specify the `deployment_id` parameter. This parameter is essential in directing prediction requests to the appropriate cluster. For example, you can assign a specific deployment ID to route requests to a GCP cluster, a different ID for an AWS cluster, and yet another for an on-premises deployment. This is important for performance optimization, scalability, and better load balancing. 
+
+:::
 
 :::tip
 
@@ -175,9 +179,9 @@ It supports the following prediction methods:
 
 ###  Stream-Stream Predict Call 
 
-The **stream-stream** predict call enables streaming of both inputs and outputs, making it highly effective for processing large datasets or real-time applications.
+The **stream-stream** predict call enables bidirectional streaming of both inputs and outputs, making it highly effective for processing large datasets or real-time applications.
 
-In this setup, multiple inputs can be continuously sent to the model, and the corresponding predictions are streamed back in real-time. This is ideal for tasks like real-time video processing/predictions or live sensor data analysis.
+In this setup, multiple inputs can be continuously sent to the model, and the corresponding multiple predictions are streamed back in real-time. This is ideal for tasks like real-time video processing/predictions or live sensor data analysis.
 
 It supports the following prediction methods:
 
