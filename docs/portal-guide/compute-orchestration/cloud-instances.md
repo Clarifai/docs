@@ -105,6 +105,8 @@ The `g6` series offers next-generation GPU technologies and is designed for the 
 - The `g6.xlarge` and `g6.2xlarge` instances support mid-tier workloads, such as fine-tuning the BERT-large model or running computer vision tasks like text-to-image generation.
 
 - The `g6e.xlarge` and `g6e.12xlarge` instances support high-end workloads, such as training large-scale language models like GPT-4 or T5-XL for multi-modal tasks. 
+
+<!--
  
 ## GCP Cloud Instances 
 
@@ -168,4 +170,6 @@ For large-scale deep learning and AI workloads, the A2 and A3 series provide cut
 
 - Training large language models like GPT-4 or T5-XL.  
 - Running real-time AI applications, such as video analytics or autonomous systems.  
+
+-->
 
