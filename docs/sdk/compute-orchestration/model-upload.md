@@ -1,18 +1,18 @@
 ---
-description: Learn how to upload a custom model using the Python SDK
+description: Upload models from external sources like Hugging Face and OpenAI
 sidebar_position: 1
 ---
 
 
-# Model Upload
+# Upload Custom Models
 
-**Learn how to upload a custom model using the Python SDK**
+**Import models from external sources like Hugging Face and OpenAI**
 
 <hr />
 
-The Clarifai Python SDK allow you to upload custom models easily. Whether you're working with a pre-trained model from an external source or one you've built from scratch, Clarifai allows seamless integration of your models, enabling you to take advantage of the platform’s powerful capabilities.
+The Clarifai Python SDK allow you to upload custom models easily. Whether you're working with a pre-trained model from an external source like Hugging Face or OpenAI, or one you've built from scratch, Clarifai allows seamless integration of your models, enabling you to take advantage of the platform’s powerful capabilities.
 
-Once uploaded to our platform, your model can be utilized alongside Clarifai's vast suite of AI tools. It will be automatically deployed and ready to be evaluated, combined with other models and agent operators in a workflow, or used to serve inference requests as it is.
+Once imported to our platform, your model can be utilized alongside Clarifai's vast suite of AI tools. It will be automatically deployed and ready to be evaluated, combined with other models and agent operators in a workflow, or used to serve inference requests as it is.
 
 Let’s demonstrate how you can successfully upload different types of models to the Clarifai platform. 
 
@@ -140,7 +140,7 @@ inference_compute_info:
 - **`accelerator_type`** – Specifies the type of accelerators (e.g., GPU or TPU) supported by the model (e.g., "NVIDIA-A10G").
 - **`accelerator_memory`** – Minimum memory required for the GPU or TPU.
 
-#### Model Checkpoints  
+#### Hugging Face Model Checkpoints  
 
 If you're using a model from Hugging Face, you can automatically download its checkpoints by specifying the appropriate configuration in this section. For private or restricted Hugging Face repositories, include an access token.
 
@@ -273,7 +273,7 @@ Once the model is running locally, you need to configure the `CLARIFAI_API_BASE`
 export CLARIFAI_API_BASE="localhost:{port}"
 ```
 
-You can then make different [types of inference requests](https://docs.clarifai.com/sdk/compute-orchestration#predict-with-deployed-model) using the model — unary-unary, unary-stream, or stream-stream predict calls.
+You can then make different [types of inference requests](https://docs.clarifai.com/sdk/compute-orchestration/set-up-compute#predict-with-deployed-model) using the model — unary-unary, unary-stream, or stream-stream predict calls.
 
 Here is an example of a unary-unary prediction call:
 

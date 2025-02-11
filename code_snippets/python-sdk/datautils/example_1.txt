@@ -1,0 +1,10 @@
+Dataset
+        size=19
+        source_path=./assets/annotation_formats/imagenet
+        annotated_items_count=19
+        annotations_count=19
+subsets
+        default: # of items=19, # of annotated items=19, # of annotations=19, annotation types=['1']
+infos
+        categories
+        1: ['bullfrog', 'goldfish', 'kingsnake', 'llama', 'tench']
