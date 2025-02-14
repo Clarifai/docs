@@ -1,0 +1,1 @@
+Supported formats: ['coco_segmentation', 'voc_detection', 'yolo', 'cifar', 'coco_detection', 'cvat', 'imagenet', 'kitti', 'label_me', 'mnist', 'open_images', 'vgg_face2', 'lfw', 'cityscapes', 'ade20k2017', 'clarifai']
