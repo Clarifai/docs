@@ -1,0 +1,2 @@
+Pipeline: basic_pdf
+        <clarifai_datautils.multimodal.pipeline.PDF.PDFPartition object at 0x0000017BFFC92000>

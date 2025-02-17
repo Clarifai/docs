@@ -14,9 +14,13 @@ A compute cluster serves as the primary environment for running models, whether 
 
 After setting up a custom cluster, you can configure nodepools to optimize resource usage, tailoring the infrastructure to specific hardware, performance, cost, or compliance requirements.
 
+:::note
+
 > The following sections will guide you through creating clusters and nodepools and deploying your models. Note that Compute Orchestration supports only models uploaded to the Clarifai platform via the Python SDK, as outlined [here](model-upload.md).
 
 > Before configuring compute clusters and nodepools, ensure you have completed the necessary prerequisites, as outlined [here](README.mdx#prerequisites).
+
+:::
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -128,7 +132,7 @@ To initialize the `Deployment` class, provide the `user_id` and `deployment_id` 
 
 ## Predict With Deployed Model
 
-Once your model is deployed, it can be used to make predictions by calling the appropriate prediction methods. Clarifai's Compute Orchestration system offers different types of prediction calls to suit various use cases.
+Once your model is deployed, it can be used to [make predictions](https://github.com/Clarifai/examples/tree/main/models/model_upload#model-prediction) by calling the appropriate prediction methods. Clarifai's Compute Orchestration system offers different types of prediction calls to suit various use cases.
 
 :::warning important
 

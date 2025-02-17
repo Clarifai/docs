@@ -1,0 +1,1 @@
+Detected format: cifar
