@@ -1,7 +1,6 @@
 ---
 description: Pre-process and ingest diverse data formats, including images and text-based documents
 sidebar_position: 2
-draft: true
 ---
 
 # Data Ingestion Pipelines
