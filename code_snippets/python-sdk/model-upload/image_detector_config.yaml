@@ -10,7 +10,7 @@ build_info:
   python_version: "3.11"
 
 inference_compute_info:
-  cpu_limit: "1"
+  cpu_limit: "4"
   cpu_memory: "2Gi"
   num_accelerators: 1
   accelerator_type: ["NVIDIA-A10G"]
