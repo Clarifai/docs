@@ -44,6 +44,13 @@ import CleanNonASCII from "!!raw-loader!../../../code_snippets/python-sdk/dataut
 import CleanOrderedBullets from "!!raw-loader!../../../code_snippets/python-sdk/datautils/clean_ordered_bullets.py";
 import CleanPrefix from "!!raw-loader!../../../code_snippets/python-sdk/datautils/clean_prefix.py";
 import CleanPostfix from "!!raw-loader!../../../code_snippets/python-sdk/datautils/clean_postfix.py";
+import Datetime from "!!raw-loader!../../../code_snippets/python-sdk/datautils/datetime.py";
+import ExtractEmail from "!!raw-loader!../../../code_snippets/python-sdk/datautils/extract_email.py";
+import ExtractIP from "!!raw-loader!../../../code_snippets/python-sdk/datautils/extract_ip.py";
+import ExtractIPName from "!!raw-loader!../../../code_snippets/python-sdk/datautils/extract_ip_name.py";
+import ExtractTextAfter from "!!raw-loader!../../../code_snippets/python-sdk/datautils/extract_text_after.py";
+import ExtractTextBefore from "!!raw-loader!../../../code_snippets/python-sdk/datautils/extract_text_before.py";
+import ImageSummarization from "!!raw-loader!../../../code_snippets/python-sdk/datautils/image_summarization.py";
 
 import Example1 from "!!raw-loader!../../../code_snippets/python-sdk/datautils/ingestion_example_1.txt";
 import Example2 from "!!raw-loader!../../../code_snippets/python-sdk/datautils/building_pipelines_example.txt";
@@ -161,7 +168,13 @@ Chunking follows partitioning and involves grouping or rearranging document elem
 
 :::info
 
-Once a chunk of text or image data is uploaded to the Clarifai platform, [metadata fields](https://docs.clarifai.com/portal-guide/input-viewer/) — such as `filename`, `page_number`, `last_modified`, and `type` — are automatically added to provide detailed information about the uploaded content.
+Once a chunk of text or image data is uploaded to the Clarifai platform, [metadata fields](https://docs.clarifai.com/portal-guide/input-viewer/) — such as `filename`, `page_number`, `orig_elements`, and `type` — are automatically added to provide detailed information about the uploaded input.
+
+<details>  
+    <summary>Example</summary>
+
+    ![](/img/others/metadata-datautils.png)
+</details> 
 
 :::
 
@@ -193,7 +206,7 @@ Note that:
 
 You can also configure the following arguments for the `PDFPartition` object:
 
-    - Set `chunking_strategy="basic"` for the document to be chunked purely based on character length and sequential order rather than structural elements like section titles or page boundaries. It's useful when you simply want to group text into evenly sized chunks without preserving the document’s logical structure. _Note that if you do not set the chunking strategy, either by `by_title` or `basic`, no chunking is performed._
+    - Set `chunking_strategy="basic"` for the document to be chunked purely based on character length and sequential order rather than structural elements like section titles or page boundaries. It's useful when you simply want to group text into evenly sized chunks without preserving the document’s logical structure. 
     - Set `ocr=True` to enable OCR for extracting text from scanned or image-based PDFs. Set it to `False`, which is the default, to disable OCR. 
     - By default, `overlap=None` or `overlap=0`  ensures no overlap between chunks; that is, chunks are created without any shared text between them. To enable overlap, provide an integer value (e.g., `overlap=100`) to specify the number of overlapping characters between consecutive chunks.
     - Set `overlap_all=True` to enable overlapping across all chunks. Set it to `False`, which is the default, to disable this behavior.
@@ -396,4 +409,92 @@ You can remove a specified postfix from a document using the `Clean_postfix` obj
 </Tabs>
 
 ## Text Extraction
+
+The Data Ingestion Pipelines framework allows you to identify and retrieve meaningful texts from documents. 
+
+### Extract Email Addresses
+
+You can extract email addresses from texts. Note that if a chunk contains the addresses, they will be extracted and stored in the `email_address` metadata field of the uploaded input on the Clarifai platform, [as previously mentioned](#partitioning--chunking).
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{ExtractEmail}</CodeBlock>
+</TabItem>
+</Tabs>
+
+### Datetime With Time Zones
+
+You can extract datetime values with time zones from texts, ensuring accurate timestamp retrieval. Note that if a chunk contains the values, they will be extracted and stored in the `date_time` metadata field of the uploaded input on the Clarifai platform. 
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{Datetime}</CodeBlock>
+</TabItem>
+</Tabs>
+
+### Extract IP Addresses
+
+You can extract IP addresses from texts. Note that if a chunk contains the addresses, they will be extracted and stored in the `ip_address` metadata field of the uploaded input on the Clarifai platform. 
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{ExtractIP}</CodeBlock>
+</TabItem>
+</Tabs>
+
+### Extract IP Addresses Names
+
+You can extract IP addresses along with associated names from texts. Note that if a chunk contains the names, they will be extracted and stored in the `ip_address_name` metadata field of the uploaded input on the Clarifai platform. 
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{ExtractIPName}</CodeBlock>
+</TabItem>
+</Tabs>
+
+### Extract Text After 
+
+You can extract text appearing after a specified string in a given text input. The `ExtractTextAfter` object supports the following string arguments:
+
+- `key` — Key to store the extracted text in the metadata field of the uploaded input on the Clarifai platform. 
+- `string` — The reference string after which the text will be extracted.
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{ExtractTextAfter}</CodeBlock>
+</TabItem>
+</Tabs>
+
+### Extract Text Before 
+
+You can extract text appearing before a specified string in a given text input. The `ExtractTextBefore` object supports the following string arguments:
+
+- `key` — Key to store the extracted text in the metadata field of the uploaded input on the Clarifai platform. 
+- `string` — The reference string before which the text will be extracted.
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{ExtractTextBefore}</CodeBlock>
+</TabItem>
+</Tabs>
+
+## Image Summarization
+
+The Image Summarizer pipeline enables you to utilize a Clarifai's multimodal-to-text model to generate text summaries for the uploaded image data.  
+
+Each summary is stored as an individual input on the Clarifai platform, and you can view its metadata field to see the source image it’s associated with.
+
+The generated summaries are concise, optimized for retrieval, and enriched with relevant keywords, making them highly effective for search and indexing.
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{ImageSummarization}</CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+  <summary>Example</summary>
+
+    ![](/img/others/summarizer_datautils.png)
+</details> 
 

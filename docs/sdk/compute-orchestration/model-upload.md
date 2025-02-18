@@ -1,12 +1,12 @@
 ---
-description: Upload models from external sources like Hugging Face and OpenAI
+description: Import custom models, including from external sources like Hugging Face and OpenAI
 sidebar_position: 1
 ---
 
 
 # Upload Custom Models
 
-**Import models from external sources like Hugging Face and OpenAI**
+**Import custom models, including from external sources like Hugging Face and OpenAI**
 
 <hr />
 
@@ -184,7 +184,7 @@ The `requirements.txt` file lists all the Python dependencies your model needs. 
 
 ### Step 3: Prepare the `model.py` File
 
-The `model.py` file contains the logic for your model, including how it loads and handles predictions. This file must implement a class that inherits from `ModelRunner` and defines the following methods:
+The `model.py` file contains the logic for your model, including how it loads and handles [predictions](https://docs.clarifai.com/sdk/compute-orchestration/set-up-compute#predict-with-deployed-model). This file must implement a class that inherits from `ModelRunner` and defines the following methods, where applicable:
 
 - **`load_model()`** – Initializes and loads the model, preparing it for inference.
 - **`predict(input_data)`** – Handles the core logic for making predictions. It processes the input data and returns the output response.
