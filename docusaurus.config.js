@@ -640,6 +640,10 @@ const config = {
             to: '/sdk/compute-orchestration/model-upload',
             from: '/sdk/advance-model-operations/model-upload'
           },
+          {
+            to: '/sdk/compute-orchestration/model-upload',
+            from: '/api-guide/model/import-model/'
+          },
 
         ],
         createRedirects(existingPath) {

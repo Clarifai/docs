@@ -10,25 +10,18 @@ sidebar_position: 1
 
 <hr />
 
-The Clarifai Python SDK allow you to upload custom models easily. Whether you're working with a pre-trained model from an external source like Hugging Face or OpenAI, or one you've built from scratch, Clarifai allows seamless integration of your models, enabling you to take advantage of the platform’s powerful capabilities.
+The Clarifai Python SDK allows you to upload custom models easily. Whether you're working with a pre-trained model from an external source like Hugging Face or OpenAI, or one you've built from scratch, Clarifai allows seamless integration of your models, enabling you to take advantage of the platform’s powerful capabilities.
 
 Once imported to our platform, your model can be utilized alongside Clarifai's vast suite of AI tools. It will be automatically deployed and ready to be evaluated, combined with other models and agent operators in a workflow, or used to serve inference requests as it is.
 
 Let’s demonstrate how you can successfully upload different types of models to the Clarifai platform. 
 
-:::note
-
-For the Compute Orchestration Public Preview, deployment is only supported for models that users have uploaded to our platform via the Python SDK. We plan to expand this functionality to include out-of-the-box and custom-trained models on our platform in the future.
-
-:::
-
 :::info
 
-- This new feature is in [Public Preview](https://docs.clarifai.com/product-updates/changelog/release-types). If you'd like to test it out and provide feedback, please request access [here](https://www.clarifai.com/explore/contact-us-co).
+- For the Compute Orchestration [Public Preview](https://docs.clarifai.com/product-updates/changelog/release-types), deployment is only supported for models that users have uploaded to our platform via the Python SDK. We plan to expand this functionality to include out-of-the-box and custom-trained models on our platform in the future.
+If you'd like to test it out and provide feedback, please request access [here](https://www.clarifai.com/explore/contact-us-co).
 
-- This new upload experience is compatible with the latest [`clarifai`](https://github.com/Clarifai/clarifai-python) Python package, starting from version 10.9.2.
-
-- If you prefer the previous upload method, which is supported up to version 10.8.4, you can refer to the documentation [here](/others/old_model_upload_method.pdf).
+- This new upload experience is compatible with the latest [`clarifai`](https://github.com/Clarifai/clarifai-python) Python package, starting from version 10.9.2. If you prefer the previous upload method, which is supported up to version 10.8.4, you can refer to the documentation [here](/others/old_model_upload_method.pdf).
 
 :::
 
@@ -42,6 +35,12 @@ You can run the following command to clone the [repository](https://github.com/C
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
+
+import PrepareModelPyFile from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/prepare_model_py_file.py";
+import ModelInfo from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/model_info.yaml";
+import ComputeResources from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/compute_resources.yaml";
+import HFCheckpoints from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/hf_checkpoints.yaml";
+import ModelConcepts from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/model_concepts.yaml";
 
 import ImageClassifierModel from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/image_classifier_model.py";
 import ImageClassifierRequirements from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/image_classifier_requirements.txt";
@@ -64,22 +63,47 @@ import TestModel from "!!raw-loader!../../../code_snippets/python-sdk/model-uplo
 
 ## Prerequisites
 
+### Set up Docker or a Virtual Environment
+
+To test, run, and upload your model, you need to set up either a Docker container or a Python virtual environment. This ensures proper dependency management and prevents conflicts in your project.  
+
+Both options allow you to work with different Python versions. For example, you can use Python 3.11 for uploading one model and Python 3.12 for another — configured via the `config.yaml` file.  
+
+:::note
+
+We currently support Python 3.11 and Python 3.12.
+
+:::
+
+
+If Docker is installed on your system, it is highly recommended to use it for running the model. Docker provides better isolation and a fully portable environment, including for Python and system libraries.   
+ 
+You should ensure your local environment has sufficient memory and compute resources to handle model loading and execution, especially during [testing](#step-4-test-the-model-locally).  
+
+
 ### Installation
 
-To begin, install the latest version of the `clarifai` Python package.
+Install the latest version of the `clarifai` Python package.
 
-```text
-pip install --upgrade clarifai
-```
-### Environment Set Up
 
-Before proceeding, ensure that the `CLARIFAI_PAT` (Personal Access Token) environment variable is set. You can generate the PAT key in your Personal Settings page by navigating to the [Security section](https://clarifai.com/settings/security).
+<Tabs>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash"> pip install --upgrade clarifai </CodeBlock>
+</TabItem>
+</Tabs>
+
+
+### Set a PAT Key
+
+You need to set the `CLARIFAI_PAT` (Personal Access Token) as an environment variable. You can generate the PAT key in your personal settings page by navigating to the [Security section](https://clarifai.com/settings/security).
 
 This token is essential for authenticating your connection to the Clarifai platform.
 
-```text
-export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE
-```
+<Tabs>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash"> export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
+</TabItem>
+</Tabs>
 
 ### Create Project Directory
 
@@ -101,7 +125,7 @@ your_model_directory/
 
 ## How to Upload a Model
 
-Let's talk about the common steps you'd follow to upload any type of model to the Clarifai platform. 
+Let's talk about the general steps you'd follow to upload any type of model to the Clarifai platform. You can refer to the [examples below](#examples) to help you configure your files correctly.
 
 ### Step 1: Define the `config.yaml` File
 
@@ -113,26 +137,24 @@ Here’s a breakdown of the key sections in the file.
 
 This section defines your model ID, Clarifai user ID, and Clarifai app ID, which will determine where the model is uploaded on the Clarifai platform.
 
-```yaml
-model:
-  id: "model_id"
-  user_id: "user_id"
-  app_id: "app_id"
-  model_type_id: "text-to-text" # Change this based on your model type (e.g., image-classifier, text-to-text)
-```
+
+<Tabs>
+<TabItem value="yaml" label="YAML">
+    <CodeBlock className="language-yaml">{ModelInfo}</CodeBlock>
+</TabItem>
+</Tabs>
+
 
 #### Compute Resources  
 
 Here, you define the minimum compute resources required for running your model, including CPU, memory, and optional GPU specifications.
 
-```yaml
-inference_compute_info:
-  cpu_limit: "2"
-  cpu_memory: "13Gi"
-  num_accelerators: 1
-  accelerator_type: ["NVIDIA-A10G"] # Specify the GPU type if needed
-  accelerator_memory: "15Gi"
-```
+
+<Tabs>
+<TabItem value="yaml" label="YAML">
+    <CodeBlock className="language-yaml">{ComputeResources}</CodeBlock>
+</TabItem>
+</Tabs>
 
 - **`cpu_limit`** – Number of CPUs allocated for the model (follows Kubernetes notation, e.g., "1", "2").
 - **`cpu_memory`** – Minimum memory required for the CPU (uses Kubernetes notation, e.g., "1Gi", "1500Mi", "3Gi").
@@ -144,12 +166,12 @@ inference_compute_info:
 
 If you're using a model from Hugging Face, you can automatically download its checkpoints by specifying the appropriate configuration in this section. For private or restricted Hugging Face repositories, include an access token.
 
-```yaml
-checkpoints:
-  type: "huggingface"
-  repo_id: "meta-llama/Meta-Llama-3-8B-Instruct"
-  hf_token: "your_hf_token" # Required for private models
-```
+<Tabs>
+<TabItem value="yaml" label="YAML">
+    <CodeBlock className="language-yaml">{HFCheckpoints}</CodeBlock>
+</TabItem>
+</Tabs>
+
 #### Model Concepts or Labels
 
 :::important
@@ -160,17 +182,11 @@ This section is required if your model outputs concepts or labels and is not bei
 
 For models that output concepts or labels, such as classification or detection models, you must define a `concepts` section in the `config.yaml` file:
 
-```yaml
-concepts:
-  - id: '0'
-    name: bus
-  - id: '1'
-    name: person
-  - id: '2'
-    name: bicycle
-  - id: '3'
-    name: car
-```
+<Tabs>
+<TabItem value="yaml" label="YAML">
+    <CodeBlock className="language-yaml">{ModelConcepts}</CodeBlock>
+</TabItem>
+</Tabs>
 
 :::note 
 
@@ -182,6 +198,15 @@ If you're using a model from Hugging Face and the `checkpoints` section is defin
 
 The `requirements.txt` file lists all the Python dependencies your model needs. This ensures that the necessary libraries are installed in the runtime environment.
 
+Then, run the following command to install the required dependencies:
+
+<Tabs>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash"> pip install -r requirements.txt </CodeBlock>
+</TabItem>
+</Tabs>
+
+
 ### Step 3: Prepare the `model.py` File
 
 The `model.py` file contains the logic for your model, including how it loads and handles [predictions](https://docs.clarifai.com/sdk/compute-orchestration/set-up-compute#predict-with-deployed-model). This file must implement a class that inherits from `ModelRunner` and defines the following methods, where applicable:
@@ -191,47 +216,18 @@ The `model.py` file contains the logic for your model, including how it loads an
 - **`generate(input_data)`** – Provides output in a streaming manner, if applicable to the model's use case.
 - **`stream(input_data)`** – Manages both streaming input and output, primarily for more advanced use cases where data is processed continuously.
 
-```python
-from clarifai.runners.models.model_class import ModelClass
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python"> {PrepareModelPyFile} </CodeBlock>
+</TabItem>
+</Tabs>
 
-class YourCustomModel(ModelClass):
-    def load_model(self):
-        # Initialize and load the model here
-        pass
-
-    def predict(self, request):
-        # Handle input and return the model's predictions
-        return output_data
-
-    def generate(self, request):
-        # Handle streaming output (if applicable)
-        pass
-
-    def stream(self, request):
-        # Handle both streaming input and output
-        pass
-```
 
 ### Step 4: Test the Model Locally
 
 Before uploading your model to the Clarifai platform, it's important to test it locally to catch any typos or misconfigurations in the code. 
 
 This can prevent upload failures due to issues in the `model.py` or incorrect model implementation. It also ensures the model runs smoothly and that all dependencies are correctly configured.
-
-You can test the model within a Docker container or a Python virtual environment.
-
-:::note Recommendation
-
-If Docker is installed on your system, it is highly recommended to use it for testing or running the model. Docker provides better isolation and avoids dependency conflicts.
-
-:::
-
-:::warning
-
-Ensure your local environment has sufficient memory and compute resources to load and run the model for testing.
-
-:::
-
 
 There are two types of CLI (command line interface) commands you can use to test your models in your local development environment. You can learn more about the Clarifai CLI tool [here](https://docs.clarifai.com/sdk/cli). 
 
@@ -241,15 +237,27 @@ This method allows you to test your model with a single CLI command. It runs the
 
 Here is how to test a model in a Docker Container:
 
-```bash
-clarifai model test-locally --model_path {add_model_path_here} --mode container
-```
+<Tabs>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash"> clarifai model test-locally --model_path add_model_path_here --mode container </CodeBlock>
+</TabItem>
+</Tabs>
 
 Here is how to test a model in a virtual environment:
 
-```bash
-clarifai model test-locally --model_path {add_model_path_here} --mode env
-```
+<Tabs>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash"> clarifai model test-locally --model_path add_model_path_here --mode env </CodeBlock>
+</TabItem>
+</Tabs>
+
+
+:::tip tip
+
+The `add_model_path_here` placeholder refers to the path to the directory containing the custom model you want to upload. For example, if all the necessary files for your model are stored in `./examples/models/clarifai_llama`, the command would look like this:
+`clarifai model test-locally --model_path ./examples/models/clarifai_llama --mode container`. 
+
+:::
 
 #### 2. Using the `run-locally` Command
 
@@ -257,21 +265,28 @@ This method starts a local gRPC server at `https://localhost:{port}/` for runnin
 
 Here is how to test a model in a Docker Container:
 
-```bash
-clarifai model run-locally --model_path {add_model_path_here} --mode container --port 8000
-```
+<Tabs>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash"> clarifai model run-locally --model_path add_model_path_here --mode container --port 8000 </CodeBlock>
+</TabItem>
+</Tabs>
 
 Here is how to test a model in a virtual environment:
 
-```bash
-clarifai model run-locally --model_path {add_model_path_here} --mode container --port 8000
-```
+<Tabs>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash"> clarifai model run-locally --model_path add_model_path_here --mode env --port 8000  </CodeBlock>
+</TabItem>
+</Tabs>
+
 
 Once the model is running locally, you need to configure the `CLARIFAI_API_BASE` environment variable to point to the localhost and port where the gRPC server is running.
 
-```bash
-export CLARIFAI_API_BASE="localhost:{port}"
-```
+<Tabs>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash"> export CLARIFAI_API_BASE="localhost:add-port-here" </CodeBlock>
+</TabItem>
+</Tabs>
 
 You can then make different [types of inference requests](https://docs.clarifai.com/sdk/compute-orchestration/set-up-compute#predict-with-deployed-model) using the model — unary-unary, unary-stream, or stream-stream predict calls.
 
@@ -284,32 +299,36 @@ Here is an example of a unary-unary prediction call:
 </TabItem>
 </Tabs>
 
-:::note CLI Flags
+<details>
+<summary> CLI Flags </summary>
 
 These are the key CLI flags available for local testing and running your models:
 
-- `--model_path` —  Path to the model directory.
+  - `--model_path` —  Path to the model directory.
 
-- `--mode` —  Specify how to run the model: `env` for virtual environment or `container` for Docker container. Defaults to `env`.
+  - `--mode` —  Specify how to run the model: `env` for virtual environment or `container` for Docker container. Defaults to `env`.
 
-- `-p` or `--port` —  The port to host the gRPC server for running the model locally. Defaults to `8000`.
+  - `-p` or `--port` —  The port to host the gRPC server for running the model locally. Defaults to `8000`.
 
-- `--keep_env` —  Retain the virtual environment after testing the model locally (applicable for `env` mode). Defaults to `False`.
+  - `--keep_env` —  Retain the virtual environment after testing the model locally (applicable for `env` mode). Defaults to `False`.
 
-- `--keep_image` —  Retain the Docker image built after testing the model locally (applicable for `container` mode). Defaults to `False`.
+  - `--keep_image` —  Retain the Docker image built after testing the model locally (applicable for `container` mode). Defaults to `False`.
 
-:::
-
+</details>
 
 ### Step 5: Upload the Model to Clarifai
 
-Once your model is ready, upload it to the Clarifai platform by running the following command:
+Once your model is ready, upload it to the platform by running the following Clarifai CLI command:
 
-```bash
-clarifai model upload --model_path {add_model_path_here}
-```
+<Tabs>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash"> clarifai model upload --model_path add_model_path_here </CodeBlock>
+</TabItem>
+</Tabs>
 
 This command builds the model’s Docker image using the defined compute resources and uploads it to Clarifai, where it can be served in production.
+
+Note that if you make any changes to your model and upload it again to the Clarifai platform, a new version of the model will be created automatically.
 
 ## Examples
 

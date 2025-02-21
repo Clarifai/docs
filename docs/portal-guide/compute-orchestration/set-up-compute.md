@@ -40,14 +40,13 @@ For the Compute Orchestration Public Preview, the default shared cluster is avai
 
 You can create a custom cluster with custom nodepools that match your computational needs. 
 
-To get started, log in to the Clarifai platform and select the **Compute Orchestration** option in the top navigation bar.  
+To get started, log in to the Clarifai platform and select the **Compute** option in the top navigation bar.  
 
 ![ ](/img/compute-orchestration/compute-1.png)
 
 <br/>
-<br/>
 
-> _Alternatively, you can click the **Compute Settings** button found in the **Deployments** tab on a model's viewer page or anywhere this button appears in the platform._
+> _Alternatively, you can click the **Compute Settings** button found in the **Deployments** tab on a model's viewer page or anywhere this button appears on the platform._
 
 > ![ ](/img/compute-orchestration/compute-1-1.png)
 
@@ -98,7 +97,7 @@ After configuring the settings, click the **Create** button in the upper-right c
 
 ![ ](/img/compute-orchestration/compute-9.png)
 
-If you click on a nodepool listed in the table, you'll be taken to its individual page where you can view its detailed information, such as the cluster type, instance types, and any resource deployments associated with it. 
+If you click on a nodepool listed in the table, you'll be taken to its individual page where you can view its detailed information, such as the cluster type, instance type, and any resource deployments associated with it. 
 
 ![ ](/img/compute-orchestration/compute-10.png)
 

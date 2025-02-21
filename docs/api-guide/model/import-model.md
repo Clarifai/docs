@@ -2,6 +2,8 @@
 description: Learn how to import models into the Clarifai platform
 pagination_next: null
 sidebar_position: 7
+draft: true # Feature obsolete, and already addressed here https://docs.clarifai.com/sdk/compute-orchestration/model-upload
+# Added a redirect to new functionality's page
 ---
 
 # Import Models

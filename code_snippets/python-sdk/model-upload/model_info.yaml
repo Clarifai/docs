@@ -1,0 +1,5 @@
+model:
+  id: "model_id"
+  user_id: "user_id"
+  app_id: "app_id"
+  model_type_id: "text-to-text" # Change this based on your model type (e.g., image-classifier, text-to-text)

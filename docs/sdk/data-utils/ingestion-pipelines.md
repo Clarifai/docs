@@ -240,6 +240,7 @@ You can also configure the following arguments for the `PDFPartitionMultimodal` 
     
 :::
 
+
 ### Text Partitioning
 
 Text partitioning transforms unstructured `.txt` documents into text elements, making them easier to process, analyze, and utilize in downstream applications.
@@ -281,6 +282,28 @@ Markdown partitioning processes `.md` files, breaking them down into structured 
 Note that:
 
 - The `MarkdownPartition` object supports the following arguments for configuration:  `chunking_strategy`, `max_characters`, `overlap`, and `overlap_all`, which have been explained earlier.
+
+
+## Image Summarization
+
+The Image Summarizer pipeline enables you to utilize a Clarifai's multimodal-to-text model to generate text summaries for the uploaded image data.  
+
+Each summary is stored as an individual input on the Clarifai platform, and you can view its metadata field to see the source image it’s associated with.
+
+The generated summaries are concise, optimized for retrieval, and enriched with relevant keywords, making them highly effective for search and indexing.
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{ImageSummarization}</CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+  <summary>Example</summary>
+
+    ![](/img/others/summarizer_datautils.png)
+</details> 
+
 
 ## Text Cleaning
 
@@ -477,23 +500,4 @@ You can extract text appearing before a specified string in a given text input. 
 </TabItem>
 </Tabs>
 
-## Image Summarization
-
-The Image Summarizer pipeline enables you to utilize a Clarifai's multimodal-to-text model to generate text summaries for the uploaded image data.  
-
-Each summary is stored as an individual input on the Clarifai platform, and you can view its metadata field to see the source image it’s associated with.
-
-The generated summaries are concise, optimized for retrieval, and enriched with relevant keywords, making them highly effective for search and indexing.
-
-<Tabs>
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python">{ImageSummarization}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
-  <summary>Example</summary>
-
-    ![](/img/others/summarizer_datautils.png)
-</details> 
 

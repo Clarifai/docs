@@ -29,7 +29,7 @@ For the Compute Orchestration Public Preview, deployment is only supported for m
 ## Prerequisites
 
 - Set up a compute cluster and nodepool. You can follow the instructions provided [here](https://docs.clarifai.com/portal-guide/compute-orchestration/set-up-compute).
-- [Upload](https://docs.clarifai.com/sdk/compute-orchestration/model-upload) or select a model you'd like to use for running inferences.
+- [Upload](https://docs.clarifai.com/sdk/compute-orchestration/model-upload) a model you'd like to use for running inferences.
 
 
 ## Make a Deployment
@@ -44,11 +44,11 @@ To deploy a model, navigate to your cluster or nodepool page and click the **Dep
  
 ![ ](/img/compute-orchestration/compute-11.png)
 
-> _Alternatively, navigate to your model's page, go to the **Deployments** tab, and click the **Deploy a Model** button._
+> _Alternatively, navigate to your model's page, go to the **Deployments** tab, and click the **Deploy model** or **Deploy this model** button._
 
 > ![ ](/img/compute-orchestration/compute-12.png)
 
-You’ll be redirected to a page where you can customize the compute options for deploying your model. 
+You’ll be redirected to a page where you can customize the compute configurations for deploying your model. 
 
 ![ ](/img/compute-orchestration/compute-13.png)
 
@@ -75,21 +75,24 @@ You’ll then be redirected to the nodepool page, where your deployed model will
 
 ## Use Deployed Model
 
-Once the model is deployed, you can make use of it. To do so, go to the nodepool page where the model is listed, and click on the model. 
+Once your model is deployed, you can start utilizing it to run inferences. To access your deployments, navigate to the model’s individual page and select the **Deployments** tab.  
 
-![ ](/img/compute-orchestration/compute-15.png)
-
-You’ll be redirected to the individual model’s page, where you can run [inferences](https://docs.clarifai.com/portal-guide/ppredict/), integrate it into a [workflow](https://docs.clarifai.com/portal-guide/workflows/), or use it for other tasks. 
-
-When inferencing using a deployed model, the request is routed to the nodepool within the cloud region specified in the cluster, and the model’s predictions are returned as output.
-
-In the model's **Deployments** tab, you can view a table listing all the completed deployments.
+Here, you’ll find a table listing all deployments associated with the model, including details such as the cluster and nodepool. You can also sort the table alphabetically (A–Z or Z–A) based on your preferences.
 
 ![ ](/img/compute-orchestration/compute-16.png)
 
+To select a deployment, click the **Deployment** button. 
 
+A dropdown list will appear, showing your available deployments. Choose the one you want to use to direct traffic to a specific cluster and nodepool. If no selection is made, the default **Clarifai Shared** deployment will be used.
 
+![ ](/img/compute-orchestration/compute-15.png)
 
+:::warning Why Deployment Selection Matters
 
+Choosing the right deployment ensures efficient routing and execution of prediction requests. For example, you can route requests to a GCP cluster by selecting a corresponding deployment ID, use a different deployment ID for an AWS cluster, and yet another for an on-premises deployment. This gives you full control over performance, costs, and security, allowing you to focus on building cutting-edge AI solutions while we handle the infrastructure complexity. 
 
+:::
 
+Once you’ve selected a deployment ID, go to the **Overview** pane to use it for making [prediction requests](https://docs.clarifai.com/portal-guide/ppredict/). When inferencing using a deployed model, the request is routed to the nodepool within the cloud region specified in the cluster, and the model’s predictions are returned as output.
+
+![ ](/img/compute-orchestration/compute-21.png)
