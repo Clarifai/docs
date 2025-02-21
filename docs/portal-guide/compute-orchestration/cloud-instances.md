@@ -9,15 +9,9 @@ pagination_next: null
 **Learn about the instance types we support**
 <hr />
 
-We offer a range of Amazon Web Services (AWS) and Google Cloud Platform (GCP) instance types, which are designed to handle a variety of machine learning workloads. 
+We offer a range of Amazon Web Services (AWS) and Google Cloud Platform (GCP) instance types, designed to handle a variety of machine learning workloads. 
 
 These instances vary in their CPU, RAM (Random Access Memory), and GPU configurations, which allow you to orchestrate the right balance of performance and cost for your use case.
-
-:::info
-
-You can [contact us](https://www.clarifai.com/explore/contact-us) to unlock access to our most powerful instances, including NVIDIA A100 and H100 GPUs.
-
-:::
 
 ## AWS Cloud Instances
 
@@ -106,7 +100,6 @@ The `g6` series offers next-generation GPU technologies and is designed for the 
 
 - The `g6e.xlarge` and `g6e.12xlarge` instances support high-end workloads, such as training large-scale language models like GPT-4 or T5-XL for multi-modal tasks. 
 
-<!--
  
 ## GCP Cloud Instances 
 
@@ -171,5 +164,5 @@ For large-scale deep learning and AI workloads, the A2 and A3 series provide cut
 - Training large language models like GPT-4 or T5-XL.  
 - Running real-time AI applications, such as video analytics or autonomous systems.  
 
--->
+
 
