@@ -71,7 +71,7 @@ Both options allow you to work with different Python versions. For example, you 
 
 :::note
 
-We currently support Python 3.11 and Python 3.12.
+We currently support Python 3.11 and Python 3.12 (default).
 
 :::
 
