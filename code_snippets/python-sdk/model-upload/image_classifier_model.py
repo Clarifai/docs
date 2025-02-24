@@ -8,6 +8,7 @@ from typing import Iterator
 import cv2
 import torch
 from clarifai.runners.models.model_class import ModelClass
+from clarifai.runners.models.model_builder import ModelBuilder
 from clarifai.utils.logging import logger
 from clarifai_grpc.grpc.api import resources_pb2, service_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2, status_pb2
@@ -74,14 +75,15 @@ class MyModel(ModelClass):
   def load_model(self):
     """Load the model here."""
 
+    model_path = os.path.dirname(os.path.dirname(__file__))
+    builder = ModelBuilder(model_path, download_validation_only=True)
+    checkpoints = builder.download_checkpoints(stage="runtime")
+
     self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
     logger.info(f"Running on device: {self.device}")
 
-    # if checkpoints section is in config.yaml file then checkpoints will be downloaded at this path during model upload time.
-    checkpoint_path = os.path.join(os.path.dirname(__file__), "checkpoints")
-
-    self.model = AutoModelForImageClassification.from_pretrained(checkpoint_path,).to(self.device)
-    self.processor = ViTImageProcessor.from_pretrained(checkpoint_path)
+    self.model = AutoModelForImageClassification.from_pretrained(checkpoints,).to(self.device)
+    self.processor = ViTImageProcessor.from_pretrained(checkpoints)
     logger.info("Done loading!")
 
   def predict(self, request: service_pb2.PostModelOutputsRequest
@@ -138,3 +140,4 @@ class MyModel(ModelClass):
           yield output
       elif request.inputs[0].data.image.base64:
         yield self.predict(request)
+        
