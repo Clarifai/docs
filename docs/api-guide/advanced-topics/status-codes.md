@@ -226,10 +226,10 @@ If a status comes back that you do not see below, please reach out to support@cl
 
 | CODE | ERROR | DESCRIPTION |
 | :--- | :--- |:---  |
-| 30000 | INPUT_DOWNLOAD_SUCCESS | Download complete | 
-| 30001 | INPUT_DOWNLOAD_PENDING | Download pending; when things are async, this is the default status | 
-| 30002 | INPUT_DOWNLOAD_FAILED | Any type of error downloading and processing; download failed or we could not process it. Check URL or bytes you send in the request | 
-| 30003 | INPUT_DOWNLOAD_IN_PROGRESS | Download in progress | 
+| 30000 | INPUT_SUCCESS (_Previously: INPUT_DOWNLOAD_SUCCESS_) | Download complete | 
+| 30001 | INPUT_PENDING (_Previously: INPUT_DOWNLOAD_PENDING_) | Download pending; when things are async, this is the default status | 
+| 30002 | INPUT_FAILED (_Previously: INPUT_DOWNLOAD_FAILED_) | Any type of error downloading and processing; download failed or we could not process it. Check URL or bytes you send in the request | 
+| 30003 | INPUT_IN_PROGRESS (_Previously: INPUT_DOWNLOAD_IN_PROGRESS_) | Download in progress | 
 | 30004 | INPUT_STATUS_UPDATE_FAILED  |   |
 | 30005 | INPUT_DELETE_FAILED | |
 | 30100 | INPUT_DUPLICATE | Duplicate URL in your application. Check the documentation to allow duplications. | 
