@@ -644,6 +644,14 @@ const config = {
             to: '/sdk/compute-orchestration/model-upload',
             from: '/api-guide/model/import-model/'
           },
+          {
+            to: '/api-guide/api-overview/status-codes',
+            from: '/api-guide/advanced-topics/status-codes'
+          },
+          {
+            to: '/api-guide/api-overview/pagination',
+            from: '/api-guide/advanced-topics/pagination/'
+          },
 
         ],
         createRedirects(existingPath) {
