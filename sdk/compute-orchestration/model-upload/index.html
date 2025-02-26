@@ -18,8 +18,8 @@
 
 <script src="/scripts/sidebar.js" async></script>
 <script src="/scripts/intercomConfig.js" async></script><link rel="stylesheet" href="/assets/css/styles.9421978a.css">
-<script src="/assets/js/runtime~main.2de89f8d.js" defer="defer"></script>
-<script src="/assets/js/main.07ab77b3.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.490f4347.js" defer="defer"></script>
+<script src="/assets/js/main.c36681c1.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5W9P7GR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -94,7 +94,7 @@ If you&#x27;d like to test it out and provide feedback, please request access <a
 <li><strong><code>cpu_limit</code></strong> – Number of CPUs allocated for the model (follows Kubernetes notation, e.g., &quot;1&quot;, &quot;2&quot;).</li>
 <li><strong><code>cpu_memory</code></strong> – Minimum memory required for the CPU (uses Kubernetes notation, e.g., &quot;1Gi&quot;, &quot;1500Mi&quot;, &quot;3Gi&quot;).</li>
 <li><strong><code>num_accelerators</code></strong> – Number of GPUs or TPUs to use for inference.</li>
-<li><strong><code>accelerator_type</code></strong> – Specifies the type of accelerators (e.g., GPU or TPU) supported by the model (e.g., &quot;NVIDIA-A10G&quot;).</li>
+<li><strong><code>accelerator_type</code></strong> – Specifies the type of hardware <a href="https://docs.clarifai.com/portal-guide/compute-orchestration/cloud-instances" target="_blank" rel="noopener noreferrer">accelerators</a> (e.g., GPU or TPU) supported by the model (e.g., &quot;NVIDIA-A10G&quot;). <em>Note that instead of specifying an exact accelerator type, you can use a wildcard <code>(*)</code> to automatically match all available accelerators that fit your use case. For example, using <code>[NVIDIA*]</code> will enable the system to choose from all NVIDIA options compatible with your model.</em></li>
 <li><strong><code>accelerator_memory</code></strong> – Minimum memory required for the GPU or TPU.</li>
 </ul>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="hugging-face-model-checkpoints">Hugging Face Model Checkpoints<a class="hash-link" aria-label="Direct link to Hugging Face Model Checkpoints" title="Direct link to Hugging Face Model Checkpoints" href="/sdk/compute-orchestration/model-upload#hugging-face-model-checkpoints">​</a></h4>
