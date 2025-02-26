@@ -159,7 +159,7 @@ Here, you define the minimum compute resources required for running your model, 
 - **`cpu_limit`** – Number of CPUs allocated for the model (follows Kubernetes notation, e.g., "1", "2").
 - **`cpu_memory`** – Minimum memory required for the CPU (uses Kubernetes notation, e.g., "1Gi", "1500Mi", "3Gi").
 - **`num_accelerators`** – Number of GPUs or TPUs to use for inference.
-- **`accelerator_type`** – Specifies the type of accelerators (e.g., GPU or TPU) supported by the model (e.g., "NVIDIA-A10G").
+- **`accelerator_type`** – Specifies the type of hardware [accelerators](https://docs.clarifai.com/portal-guide/compute-orchestration/cloud-instances) (e.g., GPU or TPU) supported by the model (e.g., "NVIDIA-A10G"). _Note that instead of specifying an exact accelerator type, you can use a wildcard `(*)` to automatically match all available accelerators that fit your use case. For example, using `[NVIDIA*]` will enable the system to choose from all NVIDIA options compatible with your model._
 - **`accelerator_memory`** – Minimum memory required for the GPU or TPU.
 
 #### Hugging Face Model Checkpoints  
