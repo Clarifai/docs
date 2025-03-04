@@ -1,0 +1,215 @@
+status {
+  code: SUCCESS
+  description: "Ok"
+  req_id: "a6073f6b81df496faa084355a05f81f0"
+}
+outputs {
+  id: "515a810bb56b4ac1bb118fe7ec4594be"
+  status {
+    code: SUCCESS
+    description: "Ok"
+  }
+  created_at {
+    seconds: 1740731206
+    nanos: 185089857
+  }
+  model {
+    id: "general-image-recognition"
+    name: "Image Recognition"
+    created_at {
+      seconds: 1457543499
+      nanos: 608845000
+    }
+    modified_at {
+      seconds: 1739900944
+      nanos: 809517000
+    }
+    app_id: "main"
+    model_version {
+      id: "aa7f35c01e0642fda5cf400f543e7c40"
+      created_at {
+        seconds: 1520370624
+        nanos: 454834000
+      }
+      status {
+        code: MODEL_TRAINED
+        description: "Model is trained and ready for deployment"
+      }
+      visibility {
+        gettable: PUBLIC
+      }
+      app_id: "main"
+      user_id: "clarifai"
+      metadata {
+      }
+    }
+    user_id: "clarifai"
+    model_type_id: "visual-classifier"
+    visibility {
+      gettable: PUBLIC
+    }
+    workflow_recommended {
+    }
+    image {
+      url: "https://data.clarifai.com/large/users/clarifai/apps/main/input_owners/artjom/inputs/image/3451432d5ee13c416ec5a4e8e518f1c9"
+      hosted {
+        prefix: "https://data.clarifai.com"
+        suffix: "users/clarifai/apps/main/input_owners/artjom/inputs/image/3451432d5ee13c416ec5a4e8e518f1c9"
+        sizes: "small"
+        sizes: "large"
+        crossorigin: "use-credentials"
+      }
+    }
+  }
+  input {
+    id: "ac7bc26bc08444ca894bff202e28801a"
+    data {
+      image {
+        url: "https://samples.clarifai.com/metro-north.jpg"
+        base64: "true"
+      }
+    }
+  }
+  data {
+    concepts {
+      id: "ai_HLmqFqBf"
+      name: "train"
+      value: 0.999605954
+      app_id: "main"
+      user_id: "clarifai"
+    }
+    concepts {
+      id: "ai_fvlBqXZR"
+      name: "railway"
+      value: 0.999299169
+      app_id: "main"
+      user_id: "clarifai"
+    }
+    concepts {
+      id: "ai_SHNDcmJ3"
+      name: "subway system"
+      value: 0.998259127
+      app_id: "main"
+      user_id: "clarifai"
+    }
+    concepts {
+      id: "ai_6kTjGfF6"
+      name: "station"
+      value: 0.998013735
+      app_id: "main"
+      user_id: "clarifai"
+    }
+    concepts {
+      id: "ai_RRXLczch"
+      name: "locomotive"
+      value: 0.997266769
+      app_id: "main"
+      user_id: "clarifai"
+    }
+    concepts {
+      id: "ai_Xxjc3MhT"
+      name: "transportation system"
+      value: 0.996975541
+      app_id: "main"
+      user_id: "clarifai"
+    }
+    concepts {
+      id: "ai_VRmbGVWh"
+      name: "travel"
+      value: 0.988967478
+      app_id: "main"
+      user_id: "clarifai"
+    }
+    concepts {
+      id: "ai_jlb9q33b"
+      name: "commuter"
+      value: 0.980903447
+      app_id: "main"
+      user_id: "clarifai"
+    }
+    concepts {
+      id: "ai_2gkfMDsM"
+      name: "platform"
+      value: 0.980670214
+      app_id: "main"
+      user_id: "clarifai"
+    }
+    concepts {
+      id: "ai_n9vjC1jB"
+      name: "light"
+      value: 0.974255323
+      app_id: "main"
+      user_id: "clarifai"
+    }
+    concepts {
+      id: "ai_sQQj52KZ"
+      name: "train station"
+      value: 0.968879461
+      app_id: "main"
+      user_id: "clarifai"
+    }
+    concepts {
+      id: "ai_l4WckcJN"
+      name: "blur"
+      value: 0.967263579
+      app_id: "main"
+      user_id: "clarifai"
+    }
+    concepts {
+      id: "ai_WBQfVV0p"
+      name: "city"
+      value: 0.961552262
+      app_id: "main"
+      user_id: "clarifai"
+    }
+    concepts {
+      id: "ai_TZ3C79C6"
+      name: "road"
+      value: 0.961399674
+      app_id: "main"
+      user_id: "clarifai"
+    }
+    concepts {
+      id: "ai_CpFBRWzD"
+      name: "urban"
+      value: 0.960412741
+      app_id: "main"
+      user_id: "clarifai"
+    }
+    concepts {
+      id: "ai_tr0MBp64"
+      name: "traffic"
+      value: 0.959924757
+      app_id: "main"
+      user_id: "clarifai"
+    }
+    concepts {
+      id: "ai_GjVpxXrs"
+      name: "street"
+      value: 0.947632849
+      app_id: "main"
+      user_id: "clarifai"
+    }
+    concepts {
+      id: "ai_mcSHVRfS"
+      name: "public"
+      value: 0.934372783
+      app_id: "main"
+      user_id: "clarifai"
+    }
+    concepts {
+      id: "ai_J6d1kV8t"
+      name: "tramway"
+      value: 0.932164907
+      app_id: "main"
+      user_id: "clarifai"
+    }
+    concepts {
+      id: "ai_6lhccv44"
+      name: "business"
+      value: 0.929403365
+      app_id: "main"
+      user_id: "clarifai"
+    }
+  }
+}

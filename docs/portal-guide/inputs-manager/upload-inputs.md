@@ -20,11 +20,11 @@ The platform lets you upload images, videos, and texts from URLs or local direct
 
 Your inputs should fulfill the following conditions:
 
-* Each image file input should be limited to 85 megapixels and should be less than 20MB in size
-* Each video input uploaded via a URL can be anywhere up to 100MB in size or 10mins in length
-* Each video input uploaded from a local directory (by bytes) should be less than 10MB in size
-* Each text file input should be less than 20MB in size
-* Each audio input should be less than 5MB in size (this is typically suitable for a 48kHz audio file lasting up to 60 seconds, recorded with 16-bit audio quality)
+- **Images** — Each image file input should be limited to 85 megapixels and should be less than 20MB in size.
+- **Videos** — Each video input uploaded via a URL can be anywhere up to 300MB in size or 10mins in length.
+              - Each video input uploaded via direct file upload (by bytes) should be less than 128MB in size.
+- **Text files** — Each text file input should be less than 20MB in size.
+- **Audio files** — Each audio input should be less than 20MB in size (this is typically suitable for a 48kHz audio file lasting up to 60 seconds, recorded with 16-bit audio quality).
 
 :::info
 
@@ -40,7 +40,7 @@ The inputs uploader window that pops up allows you to upload any type of input d
 
 Note that you can also use the inputs uploader modal to:
 
-- Organize your inputs into datasets.
+- Organize your inputs into [datasets](https://docs.clarifai.com/portal-guide/datasets/create-get-update-delete).
 
 - [Add concepts to inputs](https://docs.clarifai.com/portal-guide/inputs-manager/concepts#via-the-inputs-uploader).
 
