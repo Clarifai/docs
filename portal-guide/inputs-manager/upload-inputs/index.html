@@ -18,8 +18,8 @@
 
 <script src="/scripts/sidebar.js" async></script>
 <script src="/scripts/intercomConfig.js" async></script><link rel="stylesheet" href="/assets/css/styles.9421978a.css">
-<script src="/assets/js/runtime~main.490f4347.js" defer="defer"></script>
-<script src="/assets/js/main.c36681c1.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.4a702e24.js" defer="defer"></script>
+<script src="/assets/js/main.967dd120.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5W9P7GR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -39,11 +39,14 @@
 <p>The platform lets you upload images, videos, and texts from URLs or local directories. You can upload as many inputs as you want.</p>
 <p>Your inputs should fulfill the following conditions:</p>
 <ul>
-<li>Each image file input should be limited to 85 megapixels and should be less than 20MB in size</li>
-<li>Each video input uploaded via a URL can be anywhere up to 100MB in size or 10mins in length</li>
-<li>Each video input uploaded from a local directory (by bytes) should be less than 10MB in size</li>
-<li>Each text file input should be less than 20MB in size</li>
-<li>Each audio input should be less than 5MB in size (this is typically suitable for a 48kHz audio file lasting up to 60 seconds, recorded with 16-bit audio quality)</li>
+<li><strong>Images</strong> — Each image file input should be limited to 85 megapixels and should be less than 20MB in size.</li>
+<li><strong>Videos</strong> — Each video input uploaded via a URL can be anywhere up to 300MB in size or 10mins in length.<!-- -->
+<ul>
+<li>Each video input uploaded via direct file upload (by bytes) should be less than 128MB in size.</li>
+</ul>
+</li>
+<li><strong>Text files</strong> — Each text file input should be less than 20MB in size.</li>
+<li><strong>Audio files</strong> — Each audio input should be less than 20MB in size (this is typically suitable for a 48kHz audio file lasting up to 60 seconds, recorded with 16-bit audio quality).</li>
 </ul>
 <div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>As each input is uploaded, it is automatically indexed using the specified <a href="https://docs.clarifai.com/portal-guide/workflows/base-workflows" target="_blank" rel="noopener noreferrer">base workflow</a> for your app. This indexing enables you to perform searches over the uploaded inputs, leveraging Clarifai’s custom-built <a href="https://docs.clarifai.com/portal-guide/psearch/#powered-by-a-vector-database" target="_blank" rel="noopener noreferrer">vector database</a> for fast and efficient search capabilities.</p></div></div>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="upload-inputs-1">Upload Inputs<a class="hash-link" aria-label="Direct link to Upload Inputs" title="Direct link to Upload Inputs" href="/portal-guide/inputs-manager/upload-inputs#upload-inputs-1">​</a></h2>
@@ -52,7 +55,7 @@
 <p>Note that you can also use the inputs uploader modal to:</p>
 <ul>
 <li>
-<p>Organize your inputs into datasets.</p>
+<p>Organize your inputs into <a href="https://docs.clarifai.com/portal-guide/datasets/create-get-update-delete" target="_blank" rel="noopener noreferrer">datasets</a>.</p>
 </li>
 <li>
 <p><a href="https://docs.clarifai.com/portal-guide/inputs-manager/concepts#via-the-inputs-uploader" target="_blank" rel="noopener noreferrer">Add concepts to inputs</a>.</p>
