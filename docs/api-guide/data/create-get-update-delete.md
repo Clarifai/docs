@@ -123,7 +123,7 @@ The initialization code used in the following examples is outlined in detail on 
 
 ## Add Inputs
 
-You can add inputs one by one or in bulk. If you send them in bulk, you are limited to sending 128 inputs at a time.
+You can add inputs one by one or in bulk. If you send them in bulk, you are limited to sending 128 inputs at a time. Learn more [here](https://docs.clarifai.com/sdk/managing-inputs#api-upload-limits).
 
 :::important Note
 

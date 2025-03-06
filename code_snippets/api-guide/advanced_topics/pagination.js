@@ -41,8 +41,7 @@ stub.ListInputs(
             throw new Error("List inputs failed, status: " + response.status.description);
         }
 
-        for (const input of response.inputs) {
-            console.log(JSON.stringify(input, null, 2));
-        }
+        console.log(response);
+        
     }
 );

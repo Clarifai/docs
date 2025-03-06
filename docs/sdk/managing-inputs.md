@@ -1,4 +1,5 @@
 ---
+description: Upload, list, download, update, or delete inputs
 sidebar_position: 5
 ---
 
@@ -70,25 +71,55 @@ import CodeOutputVideoM from "!!raw-loader!../../code_snippets/python-sdk/managi
 import CodeOutputTextM from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/outputs/text_metadata.txt";
 import CodeOutputAudioM from "!!raw-loader!../../code_snippets/python-sdk/managing-inputs/outputs/audio_data_metadata.txt";
 
-
-
-
-
-
 # Managing Inputs
 
-**Learn how to interact with inputs using Clarifai SDKs**
+**Upload, list, download, update, or delete inputs**
 <hr />
 
-Effortlessly handle and organize your input data with Clarifai SDKs. The Input Management feature empowers you to efficiently manage various types of data, including images, videos, and text, facilitating seamless integration into your machine learning workflows. Take control of your inputs, whether sourced from URLs, file paths, or raw bytes, and streamline the preparation process for predictive model inferences. Clarifai's Input Management simplifies the task of organizing and preparing data for an enhanced and streamlined machine learning experience.
+Managing inputs in the Clarifai platform is a streamlined process that includes uploading, updating, deleting, and performing various data processing tasks. Inputs can encompass a wide range of data types, such as images, videos, text, and more. 
+
+Whether your inputs are hosted online via URLs, stored locally as file paths, or represented as bytes, our API supports all these formats, ensuring flexibility and ease of use.
+
+## API Upload Limits
+
+When uploading data to the Clarifai platform by using methods like `upload_from_bytes()` or `upload_from_url()` (which are illustrated below), your inputs should meet the following conditions.
+
+_Note that these conditions also apply when uploading inputs for inferencing._
+
+#### Images
+
+- Each request can include up to 128 image inputs per batch.
+- Each image file must be a maximum of 85 megapixels and less than 20MB in size.
+- The total batch size (in bytes) for each request must be less than 128MB.
+
+#### Videos
+
+- Each request can include only 1 video input.
+- If uploading via URL, the video can be up to 300MB or 10 minutes long.
+- If uploading via direct file upload, the video must be less than 128MB.
+
+#### Text Files
+
+- Each request can include up to 128 text files per batch.
+- Each text file must be less than 20MB.
+- The total batch size (in bytes) must be less than 128MB.
+
+#### Audio Files
+
+- Each request can include up to 128 audio files per batch.
+- Each audio file must be less than 20MB in size (suitable for a 48kHz, 60-second, 16-bit recording).
+- The total batch size (in bytes) must be less than 128MB.
+
+> You can bypass these limits by using the [`upload_from_folder()` method](https://docs.clarifai.com/sdk/managing-datasets/upload-data) from the `Dataset` class, which efficiently handles larger volumes of inputs by automatically batching them while adhering to upload restrictions.
+
+> For example, when uploading images in bulk, the method incrementally processes and uploads them in multiple batches, ensuring that each batch contains a maximum of 128 images and does not exceed 128MB in size.
+
+> You can also customize the `batch_size` variable to better suit your needs. For example, if your folder exceeds 128MB, you can set the variable to ensure that each batch contains an appropriate number of images while staying within the 128MB per batch limit.
 
 
 ## Upload Image Data 
 
-The Clarifai SDKs empowers you to seamlessly upload image data through various methods, providing flexibility and ease of integration. Whether your images are hosted online via URLs, stored locally as file paths, or represented as bytes within your application, our API accommodates all these formats. This versatility ensures a smooth and efficient workflow, allowing you to leverage Clarifai's powerful capabilities with the convenience that suits your specific use case.
-
-Visit this [page](https://docs.clarifai.com/api-guide/data/create-get-update-delete) for more information.
-
+Below is an example of how to upload image data. 
 
 <Tabs>
 <TabItem value="python" label="Python">
@@ -109,9 +140,7 @@ Visit this [page](https://docs.clarifai.com/api-guide/data/create-get-update-del
 
 ## Upload Text Data 
 
-Use the potential of the Clarifai SDKs to effortlessly upload text data through diverse methods, providing a seamless experience and fostering adaptability in your integration process. Whether your text is accessible online via URLs, resides locally as file paths, or is represented as bytes within your application, our API seamlessly accommodates these formats. This versatility ensures a fluid and effective workflow, enabling you to unlock Clarifai's robust capabilities with the utmost convenience tailored to your specific use case.
-
-Visit this [page](https://docs.clarifai.com/api-guide/data/create-get-update-delete) for more information.
+Below is an example of how to upload text data. 
 
 <Tabs>
 <TabItem value="python" label="Python">
@@ -144,9 +173,7 @@ Below is an example of how to clean text data by removing Unicode characters bef
 
 ## Upload Audio Data 
 
-Unlock the potential of audio analysis with the Clarifai SDKs, offering seamless integration for uploading audio data through multiple avenues. Whether your audio files reside on external servers accessible via URLs, are stored locally with file paths, or are represented as raw bytes within your application, our API effortlessly accommodates each of these formats. This adaptability ensures a streamlined and user-friendly workflow, providing you the freedom to harness Clarifai's advanced capabilities with the utmost convenience tailored to your specific use case.
-
-Visit this [page](https://docs.clarifai.com/api-guide/data/create-get-update-delete) for more information.
+Below is an example of how to upload audio data. 
 
 <Tabs>
 <TabItem value="python" label="Python">
@@ -166,9 +193,7 @@ Visit this [page](https://docs.clarifai.com/api-guide/data/create-get-update-del
 
 ## Upload Video Data       
 
-Unlock the potential of video analysis with the Clarifai SDKs, offering seamless integration for uploading video data through various methods. Whether your videos are accessible online via URLs, residing locally as file paths, or encapsulated as bytes within your application, our API effortlessly accommodates these diverse formats.
-
-Visit this [page](https://docs.clarifai.com/api-guide/data/create-get-update-delete) for more information.
+Below is an example of how to upload video data. 
 
 <Tabs>
 <TabItem value="python" label="Python">
@@ -188,9 +213,9 @@ Visit this [page](https://docs.clarifai.com/api-guide/data/create-get-update-del
 
 ## Upload Multimodal Data 
 
-With the Clarifai SDKs, the integration of multimodal inputs becomes a seamless and intuitive process. Unlock the power of combining various types of inputs by leveraging our API. Whether you're incorporating a mix of images, text, or other data sources, our SDK allows you to specify and upload these multimodal inputs effortlessly. For now the Clarifai platform only supports multimodal inputs like [Image ,Text]->text.
+Below is an example of how to upload a combination of different input types, such as images and text, to the Clarifai platform.
 
-Visit this [page](https://docs.clarifai.com/api-guide/data/create-get-update-delete) for more information.
+Currently, Clarifai supports specific multimodal input combinations, such as `[Image, Text] -> Text`. This allows you to process and analyze interconnected data types for advanced use cases.
 
 
 <Tabs>
@@ -211,12 +236,11 @@ Visit this [page](https://docs.clarifai.com/api-guide/data/create-get-update-del
 
 ## Upload Custom Metadata
 
-When working with the Clarifai SDKs, you can add inputs with custom metadata in addition to concepts. This allows you to attach additional information  to your inputs, which can be useful for various purposes such as categorization, filtering, or later reference.
+When using the Clarifai SDKs, you can enhance your inputs by attaching custom metadata alongside concepts. This feature enables you to include additional contextual information, such as categorization, filtering criteria, or reference data, making it easier to organize and retrieve your inputs later.
 
-Visit this [page](https://docs.clarifai.com/api-guide/data/create-get-update-delete#add-inputs-with-custom-metadata) for more information.
+Below are examples of how to upload inputs with custom metadata. In these examples, the metadata includes details about the filename and the dataset split (e.g., train, validate, or test) to which the input belongs.
+
 ### Image With Metadata
-
-In the below example we are uploading an image with metadata that includes details about the filename and to which split it belongs to.
 
 <Tabs>
 <TabItem value="python" label="Python">
@@ -232,8 +256,6 @@ In the below example we are uploading an image with metadata that includes detai
 </Tabs>
 
 ### Video With Metadata
-
-In the below example we are uploading a video file  with metadata that includes details about the filename and to which split it belongs to.
 
 <Tabs>
 <TabItem value="python" label="Python">
@@ -251,8 +273,6 @@ In the below example we are uploading a video file  with metadata that includes 
                                     
 
 ### Text With Metadata
-
-In the below example we are uploading a text file with metadata that includes details about the filename and to which split it belongs to.
 
 <Tabs>
 <TabItem value="python" label="Python">
@@ -273,7 +293,7 @@ In the below example we are uploading a text file with metadata that includes de
 
 ### Audio With Metadata
 
-In the below example we are uploading an audio file with metadata that includes details about the filename and to which split it belongs to.
+
 
 <Tabs>
 <TabItem value="python" label="Python">
@@ -288,9 +308,11 @@ In the below example we are uploading an audio file with metadata that includes 
 </TabItem>
 </Tabs>
 
-## Upload Inputs With Geoinfo
+## Upload Inputs with Geospatial Information
 
-When uploading inputs, you can provide geospatial points information to them, consisting of longitudes and latitudes in the GPS coordinate system. There can be at most one single geospatial point associated with each input.
+When uploading inputs to Clarifai, you can enrich them by including geospatial data, such as longitude and latitude coordinates from the GPS system.
+
+This allows you to associate each input with a specific geographic location. Note that each input can have at most one geospatial point associated with it.
 
 <Tabs>
 
@@ -366,11 +388,13 @@ The `annotation_ids` parameter is optional. However, if provided, the number and
 
 ## List inputs
 
-Effortlessly explore and manage your inputs with the Clarifai SDKs. By utilizing the list_inputs() method, you gain the ability to seamlessly view all inputs within your app. This powerful function supports features like pagination, enabling a well-organized display of information. Tailor your queries by setting parameters such as `page_no` and `per_page` to align with your specific requirements.
+You can retrieve all inputs within your app using the `list_inputs()` method. This method supports pagination, so you can efficiently organize and display data.
 
-Visit this [page](https://docs.clarifai.com/api-guide/data/create-get-update-delete) for more information.
+You can customize your queries by adjusting `page_no` and `per_page` parameters to fit your specific needs.
+
 
 <Tabs>
+
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeListInput}</CodeBlock>
 </TabItem>
@@ -394,13 +418,14 @@ Below is an example of how to download inputs from your app.
 
 ## Delete Inputs
 
-Effortlessly manage your input data with the Clarifai SDKs's Delete Inputs feature. Through the API, you gain the ability to delete inputs seamlessly by providing a list of input IDs. This straightforward and intuitive process empowers you to maintain control over your dataset, allowing for efficient removal of specific inputs as needed.
+Below is an example of how to delete inputs from your app by providing a list of input IDs.
 
 :::caution
 
 Be certain that you want to delete a particular input as the operation cannot be undone.
 
 :::
+
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeDeleteInput}</CodeBlock>

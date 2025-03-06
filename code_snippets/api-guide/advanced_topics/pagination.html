@@ -1,0 +1,31 @@
+<!--index.html file-->
+
+<script>
+    //////////////////////////////////////////////////////////////////////
+    // In this section, we set the user authentication and app ID. 
+    // Change these strings to run your own example.
+    //////////////////////////////////////////////////////////////////////
+  
+    const USER_ID = 'YOUR_USER_ID_HERE';
+    // Your PAT (Personal Access Token) can be found in the Account's Security section
+    const PAT = 'YOUR_PAT_HERE';
+    const APP_ID = 'YOUR_APP_ID_HERE';
+  
+    ///////////////////////////////////////////////////////////////////////////
+    // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
+    ////////////////////////////////////////////////////////////////////////////
+  
+    const requestOptions = {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': 'Key ' + PAT
+      }
+    };
+  
+    fetch(`https://api.clarifai.com/v2/users/${USER_ID}/apps/${APP_ID}/inputs?page=2&per_page=20`, requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+  
+  </script>

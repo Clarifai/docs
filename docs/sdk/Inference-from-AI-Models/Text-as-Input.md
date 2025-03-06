@@ -62,7 +62,7 @@ Empower your applications with text classification [models](https://clarifai.com
 
 
 :::note
-The file size of each text input should be less than 20MB.
+The file size of each text input should be less than 20MB. Learn more [here](https://docs.clarifai.com/sdk/managing-inputs#api-upload-limits).
 :::
 
 <Tabs>

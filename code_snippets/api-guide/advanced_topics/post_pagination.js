@@ -50,7 +50,11 @@ stub.PostAnnotationsSearches(
                     ]
                 }
             }
-        ]
+        ],
+        pagination: {
+            page: 2,
+            per_page: 20,
+          },
     },
     metadata,
     (err, response) => {
@@ -62,9 +66,7 @@ stub.PostAnnotationsSearches(
             throw new Error("Post annotations searches failed, status: " + response.status.description);
         }
 
-        console.log("Search result:");
-        for (const hit of response.hits) {
-            console.log("\tScore " + hit.score + " for annotation: " + hit.annotation.id + " of input: ", hit.input.id);
-        }
+        console.log(response);
+
     }
 );
