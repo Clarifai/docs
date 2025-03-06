@@ -18,8 +18,8 @@
 
 <script src="/scripts/sidebar.js" async></script>
 <script src="/scripts/intercomConfig.js" async></script><link rel="stylesheet" href="/assets/css/styles.9421978a.css">
-<script src="/assets/js/runtime~main.ec511530.js" defer="defer"></script>
-<script src="/assets/js/main.4b5ba569.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.44adb80a.js" defer="defer"></script>
+<script src="/assets/js/main.7cc8b61c.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5W9P7GR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -47,7 +47,7 @@
 <div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>tip</div><div class="admonitionContent_BuS1"><p>FPS = 1000/<code>sample_ms</code></p></div></div>
 <p>If <code>sample_ms</code> is 1000, then the FPS rate is 1, which is the default.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="video-limits">Video limits<a class="hash-link" aria-label="Direct link to Video limits" title="Direct link to Video limits" href="/api-guide/predict/video#video-limits">​</a></h4>
-<p>The Predict API has limits to the length and size it can support. A video, uploaded through URL, can be anywhere up to 100MB in size or 10mins in length. When a video is sent through by bytes, the Predict API can support 10MB in size.</p>
+<p>The Predict API has limits to the length and size it can support. A video, uploaded through URL, can be anywhere up to 300MB in size or 10mins in length. When a video is sent through by bytes, the Predict API can support 128MB in size.</p>
 <p>If your video exceeds the limits, please follow our <a href="https://www.clarifai.com/blog/splitting-video-into-smaller-pieces" target="_blank" rel="noopener noreferrer">tutorial</a> on how to break up a large video into smaller components, and send those into the Video API. Otherwise, the processing will time out and you will receive an error response.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="predict-via-url">Predict via URL<a class="hash-link" aria-label="Direct link to Predict via URL" title="Direct link to Predict via URL" href="/api-guide/predict/video#predict-via-url">​</a></h2>
 <p>Below is an example of how you would send video URLs and receive predictions from Clarifai&#x27;s <a href="https://clarifai.com/clarifai/main/models/general-image-recognition" target="_blank" rel="noopener noreferrer"><code>general-image-recognition</code></a> model.</p>

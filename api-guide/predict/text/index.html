@@ -18,8 +18,8 @@
 
 <script src="/scripts/sidebar.js" async></script>
 <script src="/scripts/intercomConfig.js" async></script><link rel="stylesheet" href="/assets/css/styles.9421978a.css">
-<script src="/assets/js/runtime~main.ec511530.js" defer="defer"></script>
-<script src="/assets/js/main.4b5ba569.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.44adb80a.js" defer="defer"></script>
+<script src="/assets/js/main.7cc8b61c.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5W9P7GR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -29,7 +29,7 @@
 <p><strong>Make predictions on text inputs</strong></p>
 <hr>
 <p>To get predictions for a given text input, you need to supply the text along with the specific model from which you wish to receive predictions. You can supply the text via a publicly accessible URL, a local text file, or in its raw format.</p>
-<p>The file size of each text input should be less than 20MB.</p>
+<p>The file size of each text input should be less than 20MB. You can send up to 128 text files in one API call.</p>
 <p>You need to specify your choice of <a href="https://clarifai.com/explore/models?filterData=%5B%7B%22field%22%3A%22input_fields%22%2C%22value%22%3A%5B%22text%22%5D%7D%5D&amp;page=1&amp;perPage=24" target="_blank" rel="noopener noreferrer">model</a> for prediction by utilizing the <code>MODEL_ID</code> parameter.</p>
 <div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>tip</div><div class="admonitionContent_BuS1"><p>Most of our models now have new versions that support inference hyperparameters like temperature, top_k, etc. You can learn how to configure them <a href="https://docs.clarifai.com/api-guide/predict/llms/#use-hyperparameters-to-customize-llms" target="_blank" rel="noopener noreferrer">here</a>.</p></div></div>
 <div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>The initialization code used in the following examples is outlined in detail on the <a href="https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions" target="_blank" rel="noopener noreferrer">client installation page.</a></p></div></div>

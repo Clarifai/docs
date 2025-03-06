@@ -18,8 +18,8 @@
 
 <script src="/scripts/sidebar.js" async></script>
 <script src="/scripts/intercomConfig.js" async></script><link rel="stylesheet" href="/assets/css/styles.9421978a.css">
-<script src="/assets/js/runtime~main.ec511530.js" defer="defer"></script>
-<script src="/assets/js/main.4b5ba569.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.44adb80a.js" defer="defer"></script>
+<script src="/assets/js/main.7cc8b61c.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5W9P7GR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -38,7 +38,7 @@
 <p>When you add an input to your app, the base workflow of your app runs, computing the outputs from all the models in that workflow and indexing those outputs. Those indexed outputs are what incur the indexing fee monthly, and enable search and training on top of the outputs of the base workflow models.</p>
 <div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>The initialization code used in the following examples is outlined in detail on the <a href="https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions" target="_blank" rel="noopener noreferrer">client installation page.</a></p></div></div>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="add-inputs">Add Inputs<a class="hash-link" aria-label="Direct link to Add Inputs" title="Direct link to Add Inputs" href="/api-guide/data/create-get-update-delete#add-inputs">​</a></h2>
-<p>You can add inputs one by one or in bulk. If you send them in bulk, you are limited to sending 128 inputs at a time.</p>
+<p>You can add inputs one by one or in bulk. If you send them in bulk, you are limited to sending 128 inputs at a time. Learn more <a href="https://docs.clarifai.com/sdk/managing-inputs#api-upload-limits" target="_blank" rel="noopener noreferrer">here</a>.</p>
 <div class="theme-admonition theme-admonition-important admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>Note</div><div class="admonitionContent_BuS1"><p><strong>Adding inputs is an asynchronous operation.</strong> That means it will process indexing of your inputs through your default workflow in the background, which can take some time. In order to check the status of each input you add, see the section on <a href="/api-guide/data/create-get-update-delete#get-inputs">Get Inputs</a> and look for status 30000 (INPUT_IMAGE_DOWNLOAD_SUCCESS) status code on each input to know when it has successfully been indexed.</p></div></div>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="add-inputs-via-url">Add Inputs via URL<a class="hash-link" aria-label="Direct link to Add Inputs via URL" title="Direct link to Add Inputs via URL" href="/api-guide/data/create-get-update-delete#add-inputs-via-url">​</a></h3>
 <p>Below is an example of how to add inputs via a publicly accessible URL.</p>

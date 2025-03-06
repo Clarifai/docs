@@ -18,8 +18,8 @@
 
 <script src="/scripts/sidebar.js" async></script>
 <script src="/scripts/intercomConfig.js" async></script><link rel="stylesheet" href="/assets/css/styles.9421978a.css">
-<script src="/assets/js/runtime~main.ec511530.js" defer="defer"></script>
-<script src="/assets/js/main.4b5ba569.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.44adb80a.js" defer="defer"></script>
+<script src="/assets/js/main.7cc8b61c.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5W9P7GR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -32,7 +32,8 @@
 <p><strong>Output</strong>: Text</p>
 <p>To get predictions for a given audio input, you need to supply the audio along with the specific model from which you wish to receive predictions. You can supply the input via a publicly accessible URL or by directly sending bytes.</p>
 <p>You need to specify your choice of <a href="https://clarifai.com/explore/models?filterData=%5B%7B%22field%22%3A%22input_fields%22%2C%22value%22%3A%5B%22audio%22%5D%7D%5D&amp;page=1&amp;perPage=24" target="_blank" rel="noopener noreferrer">model</a> for prediction by utilizing the <code>MODEL_ID</code> parameter.</p>
-<p>The file size of each audio input should be under 5MB. This is typically suitable for a 48kHz audio file lasting up to 60 seconds, recorded with 16-bit audio quality. If your file exceeds this limit, you will need to split it into smaller chunks.</p>
+<p>The file size of each audio input should be under 20MB. This is typically suitable for a 48kHz audio file lasting up to 60 seconds, recorded with 16-bit audio quality. If your file exceeds this limit, you will need to split it into smaller chunks.</p>
+<p>You can send up to 128 audio files in one API call.</p>
 <!-- -->
 <!-- -->
 <!-- -->
