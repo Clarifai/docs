@@ -63,7 +63,7 @@ Harnessing the power of Clarifai's Visual Classifier [models](https://clarifai.c
 
 
 :::note
-You can send up to 128 images in one API call. The file size of each image input should be less than 20MB.
+You can send up to 128 images in one API call. The file size of each image input should be less than 20MB. Learn more [here](https://docs.clarifai.com/sdk/managing-inputs#api-upload-limits).
 :::
 
 
@@ -124,7 +124,7 @@ Dive into a richer understanding of image content with Clarifai's Predict API fo
 Enhance your capabilities with Clarifai's Predict API, which provides predictions for every frame when processing a video as input. The video Predict API is highly configurable, allowing users to fine-tune requests, including the number of frames processed per second for more control over analysis speed. Choose the most suitable [model](https://clarifai.com/explore/models?filterData=%5B%7B%22field%22%3A%22model_type_id%22%2C%22value%22%3A%5B%22visual-detector%22%5D%7D%5D&page=2&perPage=24) for your visual detection task.
 
 :::note
-Video length should be at most 10mins in length or 100 MB in size when uploaded through URL.
+Video length should be at most 10mins in length or 300MB in size when uploaded through URL. Learn more [here](https://docs.clarifai.com/sdk/managing-inputs#api-upload-limits).
 :::
 
 <Tabs>

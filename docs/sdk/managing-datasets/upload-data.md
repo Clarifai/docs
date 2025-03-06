@@ -71,6 +71,27 @@ import CodeOutputBatch from "!!raw-loader!../../../code_snippets/python-sdk/mana
 import CodeOutputImageMask from "!!raw-loader!../../../code_snippets/python-sdk/managing-datasets/outputs/up_image_annot_mask.txt";
 import CodeOutputRetry from "!!raw-loader!../../../code_snippets/python-sdk/managing-datasets/outputs/retry_log.txt";
 
+
+
+:::note Customize Batch Size
+
+When uploading inputs to the Clarifai platform, there are limits on the size and number of inputs per upload, as detailed [here](https://docs.clarifai.com/sdk/managing-inputs#api-upload-limits). However, by using methods from the `Dataset` class — such as `Dataset.upload_from_folder()`, `Dataset.upload_from_url()`, or `Dataset.upload_dataset()` — you can bypass these restrictions and efficiently upload larger volumes of inputs.
+
+For example, when uploading images in bulk, such methods incrementally process and upload them in multiple batches, ensuring that each batch contains a maximum of 128 images and does not exceed 128MB in size – which ensures adherence to the upload restrictions. 
+
+You can also customize the `batch_size` variable to better suit your needs. For example, if your images folder exceeds 128MB, you can set the variable to ensure that each batch contains an appropriate number of images while staying within the 128MB per batch limit.
+
+The default `batch_size` is set to 32, but you can customize it to any value between 1 (minimum) and 128 (maximum). 
+
+Here is an example: 
+
+```text
+dataset.upload_from_folder(folder_path='./images', input_type='image', labels=True, batch_size=50)
+```
+
+:::
+
+
 ## Upload Image
 
 Simplify your image data upload process with the Clarifai API's DataLoader functionality. This versatile feature allows you to effortlessly upload image data in bulk, streamlining your workflow for enhanced efficiency. Whether you prefer uploading images directly from a folder or leveraging the convenience of a CSV format, our DataLoader seamlessly accommodates both methods.

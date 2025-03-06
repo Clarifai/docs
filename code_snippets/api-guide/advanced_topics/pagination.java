@@ -37,11 +37,9 @@ public class ClarifaiExample {
         if (listInputsResponse.getStatus().getCode() != StatusCode.SUCCESS) {
             throw new RuntimeException("List inputs failed, status: " + listInputsResponse.getStatus());
         }
-
-        for (Input input: listInputsResponse.getInputsList()) {
-            System.out.println(input);
-        }
-
+       
+        System.out.println(listInputsResponse.getInputsList());
+        
     }
 
 }

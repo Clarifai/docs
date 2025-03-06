@@ -31,7 +31,7 @@ The inference API contains certain features that provides more flexibility while
 Efficiently process multiple inputs in a single request by leveraging the Predict API's batch prediction feature. This allows you to streamline the prediction process, saving time and resources. Simply submit a batch of inputs to the model, and receive comprehensive predictions in return.
 
 :::info
-The batch size should not exceed 128.
+The batch size should not exceed 128. Learn more [here](https://docs.clarifai.com/sdk/managing-inputs#api-upload-limits).
 :::
 
 <Tabs>

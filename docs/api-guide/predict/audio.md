@@ -16,7 +16,9 @@ To get predictions for a given audio input, you need to supply the audio along w
 
 You need to specify your choice of [model](https://clarifai.com/explore/models?filterData=%5B%7B%22field%22%3A%22input_fields%22%2C%22value%22%3A%5B%22audio%22%5D%7D%5D&page=1&perPage=24) for prediction by utilizing the `MODEL_ID` parameter.
 
-The file size of each audio input should be under 5MB. This is typically suitable for a 48kHz audio file lasting up to 60 seconds, recorded with 16-bit audio quality. If your file exceeds this limit, you will need to split it into smaller chunks.
+The file size of each audio input should be under 20MB. This is typically suitable for a 48kHz audio file lasting up to 60 seconds, recorded with 16-bit audio quality. If your file exceeds this limit, you will need to split it into smaller chunks.
+
+You can send up to 128 audio files in one API call.
 
 
 import Tabs from '@theme/Tabs';

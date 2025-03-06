@@ -36,5 +36,4 @@ if list_inputs_response.status.code != status_code_pb2.SUCCESS:
     print(list_inputs_response.status)
     raise Exception("List inputs failed, status: " + list_inputs_response.status.description)
 
-for input_object in list_inputs_response.inputs:
-    print(input_object)
+print(list_inputs_response)

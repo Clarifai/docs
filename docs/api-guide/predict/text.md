@@ -10,7 +10,7 @@ sidebar_position: 3
 
 To get predictions for a given text input, you need to supply the text along with the specific model from which you wish to receive predictions. You can supply the text via a publicly accessible URL, a local text file, or in its raw format. 
 
-The file size of each text input should be less than 20MB.
+The file size of each text input should be less than 20MB. You can send up to 128 text files in one API call.
 
 You need to specify your choice of [model](https://clarifai.com/explore/models?filterData=%5B%7B%22field%22%3A%22input_fields%22%2C%22value%22%3A%5B%22text%22%5D%7D%5D&page=1&perPage=24) for prediction by utilizing the `MODEL_ID` parameter.
 
