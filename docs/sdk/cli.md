@@ -109,7 +109,7 @@ You can learn how to use the `run-locally`, `test-locally`, and `upload` command
 
 ## Login 
 
-To use the Clarifai CLI, you must first log in using a [Personal Access Token](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens) (PAT). This requires creating a YAML login configuration file to securely store your credentials.
+To use the CLI tool to interact with the Clarifai platform, you must first log in using a [Personal Access Token](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens) (PAT). This requires creating a YAML login configuration file to securely store your credentials.
 
 <Tabs>
 <TabItem value="yaml" label="YAML">

@@ -114,7 +114,7 @@ _Note that these conditions also apply when uploading inputs for inferencing._
 
 > For example, when uploading images in bulk, the method incrementally processes and uploads them in multiple batches, ensuring that each batch contains a maximum of 128 images and does not exceed 128MB in size.
 
-> You can also customize the `batch_size` variable to better suit your needs. For example, if your folder exceeds 128MB, you can set the variable to ensure that each batch contains an appropriate number of images while staying within the 128MB per batch limit.
+> You can also customize the `batch_size` variable, which allows for concurrent upload of inputs and annotations. For example, if your folder exceeds 128MB, you can set the variable to ensure that each batch contains an appropriate number of images while staying within the 128MB per batch limit.
 
 
 ## Upload Image Data 

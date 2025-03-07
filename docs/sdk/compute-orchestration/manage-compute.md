@@ -1,6 +1,6 @@
 ---
 description: Manage your clusters, nodepools, and deployments
-sidebar_position: 3
+sidebar_position: 4
 pagination_next: null
 ---
 
