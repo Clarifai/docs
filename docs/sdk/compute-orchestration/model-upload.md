@@ -58,9 +58,6 @@ import SpeechRecognitionModel from "!!raw-loader!../../../code_snippets/python-s
 import SpeechRecognitionRequirements from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/speech_recognition_requirements.txt";
 import SpeechRecognitionConfig from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/speech_recognition_config.yaml";
 
-import TestModel from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/test_model.py";
-
-
 ## Prerequisites
 
 ### Set up Docker or a Virtual Environment
@@ -78,12 +75,12 @@ We currently support Python 3.11 and Python 3.12 (default).
 
 If Docker is installed on your system, it is highly recommended to use it for running the model. Docker provides better isolation and a fully portable environment, including for Python and system libraries.   
  
-You should ensure your local environment has sufficient memory and compute resources to handle model loading and execution, especially during [testing](#step-4-test-the-model-locally).  
+You should ensure your local environment has sufficient memory and compute resources to handle model loading and execution, especially during [testing](https://docs.clarifai.com/sdk/compute-orchestration/test-models-locally).  
 
 
 ### Installation
 
-Install the latest version of the `clarifai` Python package.
+Install the latest version of the `clarifai` Python package. This will also install the Clarifai [Command Line Interface](https://docs.clarifai.com/sdk/cli) (CLI), which we'll use for testing and uploading the model. 
 
 
 <Tabs>
@@ -227,102 +224,25 @@ The `model.py` file contains the logic for your model, including how it loads an
 
 Before uploading your model to the Clarifai platform, it's important to test it locally to catch any typos or misconfigurations in the code. 
 
-This can prevent upload failures due to issues in the `model.py` or incorrect model implementation. It also ensures the model runs smoothly and that all dependencies are correctly configured.
-
-There are two types of CLI (command line interface) commands you can use to test your models in your local development environment. You can learn more about the Clarifai CLI tool [here](https://docs.clarifai.com/sdk/cli). 
-
-#### 1. Using the `test-locally` Command
-
-This method allows you to test your model with a single CLI command. It runs the model locally and sends a sample request to verify that the model responds successfully. The results of the request are displayed directly in the console.
-
-Here is how to test a model in a Docker Container:
-
-<Tabs>
-<TabItem value="bash" label="Bash">
-    <CodeBlock className="language-bash"> clarifai model test-locally --model_path add_model_path_here --mode container </CodeBlock>
-</TabItem>
-</Tabs>
-
-Here is how to test a model in a virtual environment:
-
-<Tabs>
-<TabItem value="bash" label="Bash">
-    <CodeBlock className="language-bash"> clarifai model test-locally --model_path add_model_path_here --mode env </CodeBlock>
-</TabItem>
-</Tabs>
-
-
-:::tip tip
-
-The `add_model_path_here` placeholder refers to the path to the directory containing the custom model you want to upload. For example, if all the necessary files for your model are stored in `./examples/models/clarifai_llama`, the command would look like this:
-`clarifai model test-locally --model_path ./examples/models/clarifai_llama --mode container`. 
-
-:::
-
-#### 2. Using the `run-locally` Command
-
-This method starts a local gRPC server at `https://localhost:{port}/` for running the model. Once the server is running, you can perform inference on the model via the Clarifai client SDK.
-
-Here is how to test a model in a Docker Container:
-
-<Tabs>
-<TabItem value="bash" label="Bash">
-    <CodeBlock className="language-bash"> clarifai model run-locally --model_path add_model_path_here --mode container --port 8000 </CodeBlock>
-</TabItem>
-</Tabs>
-
-Here is how to test a model in a virtual environment:
-
-<Tabs>
-<TabItem value="bash" label="Bash">
-    <CodeBlock className="language-bash"> clarifai model run-locally --model_path add_model_path_here --mode env --port 8000  </CodeBlock>
-</TabItem>
-</Tabs>
-
-
-Once the model is running locally, you need to configure the `CLARIFAI_API_BASE` environment variable to point to the localhost and port where the gRPC server is running.
-
-<Tabs>
-<TabItem value="bash" label="Bash">
-    <CodeBlock className="language-bash"> export CLARIFAI_API_BASE="localhost:add-port-here" </CodeBlock>
-</TabItem>
-</Tabs>
-
-You can then make different [types of inference requests](https://docs.clarifai.com/sdk/compute-orchestration/set-up-compute#predict-with-deployed-model) using the model — unary-unary, unary-stream, or stream-stream predict calls.
-
-Here is an example of a unary-unary prediction call:
-
-
-<Tabs>
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python">{TestModel}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
-<summary> CLI Flags </summary>
-
-These are the key CLI flags available for local testing and running your models:
-
-  - `--model_path` —  Path to the model directory.
-
-  - `--mode` —  Specify how to run the model: `env` for virtual environment or `container` for Docker container. Defaults to `env`.
-
-  - `-p` or `--port` —  The port to host the gRPC server for running the model locally. Defaults to `8000`.
-
-  - `--keep_env` —  Retain the virtual environment after testing the model locally (applicable for `env` mode). Defaults to `False`.
-
-  - `--keep_image` —  Retain the Docker image built after testing the model locally (applicable for `container` mode). Defaults to `False`.
-
-</details>
+Learn how to test your models locally [here](https://docs.clarifai.com/sdk/compute-orchestration/test-models-locally). 
 
 ### Step 5: Upload the Model to Clarifai
 
-Once your model is ready, upload it to the platform by running the following Clarifai CLI command:
+Once your model is ready, you can upload it to the platform using Clarifai CLI. _Note that to use the CLI to upload your model, you'll need to first use the tool to [log in](https://docs.clarifai.com/sdk/cli/#login) to your account_. 
+
+To upload your model, run the following command in your terminal:
 
 <Tabs>
 <TabItem value="bash" label="Bash">
-    <CodeBlock className="language-bash"> clarifai model upload --model_path add_model_path_here </CodeBlock>
+    <CodeBlock className="language-bash"> clarifai model upload ./your/model/path/here </CodeBlock>
+</TabItem>
+</Tabs>
+
+Alternatively, navigate to the directory containing your custom model and run the command without specifying the directory path:
+
+<Tabs>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash"> clarifai model upload </CodeBlock>
 </TabItem>
 </Tabs>
 

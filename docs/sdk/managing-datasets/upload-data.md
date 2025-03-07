@@ -79,7 +79,7 @@ When uploading inputs to the Clarifai platform, there are limits on the size and
 
 For example, when uploading images in bulk, such methods incrementally process and upload them in multiple batches, ensuring that each batch contains a maximum of 128 images and does not exceed 128MB in size – which ensures adherence to the upload restrictions. 
 
-You can also customize the `batch_size` variable to better suit your needs. For example, if your images folder exceeds 128MB, you can set the variable to ensure that each batch contains an appropriate number of images while staying within the 128MB per batch limit.
+You can also customize the `batch_size` variable, which allows for concurrent upload of inputs and annotations. For example, if your images folder exceeds 128MB, you can set the variable to ensure that each batch contains an appropriate number of images while staying within the 128MB per batch limit.
 
 The default `batch_size` is set to 32, but you can customize it to any value between 1 (minimum) and 128 (maximum). 
 
