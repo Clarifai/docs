@@ -90,7 +90,7 @@ const config = {
       announcementBar: {
         id: 'support_us_' + Date.now(),
         content:
-          '<span>New!</span> Control Center: One Dashboard, Total Control Over Your AI Operations <a target="_blank" rel="noopener noreferrer" href="https://www.clarifai.com/blog/clarifai-11.1-control-center-public-preview-one-dashboard-total-control-over-your-ai-operations">read now</a>',
+          '<span>New!</span> Automate Data Labeling at Scale with Human-in-the-Loop <a target="_blank" rel="noopener noreferrer" href="https://www.clarifai.com/blog/clarifai-11.2-automate-data-labeling-at-scale-with-human-in-the-loop">read now</a>',
         isCloseable: false,
       },
       navbar: {
