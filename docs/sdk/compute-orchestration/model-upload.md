@@ -38,6 +38,7 @@ import CodeBlock from "@theme/CodeBlock";
 
 import PrepareModelPyFile from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/prepare_model_py_file.py";
 import ModelInfo from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/model_info.yaml";
+import BuildInfo from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/build_info.yaml";
 import ComputeResources from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/compute_resources.yaml";
 import HFCheckpoints from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/hf_checkpoints.yaml";
 import ModelConcepts from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/model_concepts.yaml";
@@ -64,14 +65,7 @@ import SpeechRecognitionConfig from "!!raw-loader!../../../code_snippets/python-
 
 To test, run, and upload your model, you need to set up either a Docker container or a Python virtual environment. This ensures proper dependency management and prevents conflicts in your project.  
 
-Both options allow you to work with different Python versions. For example, you can use Python 3.11 for uploading one model and Python 3.12 for another — configured via the `config.yaml` file.  
-
-:::note
-
-We currently support Python 3.11 and Python 3.12 (default).
-
-:::
-
+Both options allow you to work with different Python versions. For example, you can use Python 3.11 for uploading one model and Python 3.12 for another — configured via the [`config.yaml`](#build-info) file.  
 
 If Docker is installed on your system, it is highly recommended to use it for running the model. Docker provides better isolation and a fully portable environment, including for Python and system libraries.   
  
@@ -141,6 +135,21 @@ This section defines your model ID, Clarifai user ID, and Clarifai app ID, which
 </TabItem>
 </Tabs>
 
+#### Build Info  
+
+This section specifies details about the environment used to build or run the model. You can include the `python_version`, which is useful for ensuring compatibility between the model and its runtime environment, as different Python versions may have varying dependencies, library support, and performance characteristics.
+
+:::note
+
+We currently support Python 3.11 and Python 3.12 (default).
+
+:::
+
+<Tabs>
+<TabItem value="yaml" label="YAML">
+    <CodeBlock className="language-yaml">{BuildInfo}</CodeBlock>
+</TabItem>
+</Tabs>
 
 #### Compute Resources  
 
@@ -163,6 +172,12 @@ Here, you define the minimum compute resources required for running your model, 
 
 If you're using a model from Hugging Face, you can automatically download its checkpoints by specifying the appropriate configuration in this section. For private or restricted Hugging Face repositories, include an access token.
 
+:::note
+
+By default, model checkpoints are downloaded at runtime, meaning they are fetched when the model is executed.
+
+:::
+
 <Tabs>
 <TabItem value="yaml" label="YAML">
     <CodeBlock className="language-yaml">{HFCheckpoints}</CodeBlock>
@@ -177,7 +192,14 @@ This section is required if your model outputs concepts or labels and is not bei
 
 :::
 
-For models that output concepts or labels, such as classification or detection models, you must define a `concepts` section in the `config.yaml` file:
+For models that output concepts or labels, you must define a `concepts` section in the `config.yaml` file. 
+
+The following model types output concepts or labels:
+
+- `visual-classifier`
+- `visual-detector`
+- `visual-segmenter`
+- `text-classifier`. 
 
 <Tabs>
 <TabItem value="yaml" label="YAML">
@@ -193,9 +215,26 @@ If you're using a model from Hugging Face and the `checkpoints` section is defin
 
 ### Step 2: Define Dependencies in `requirements.txt`
 
-The `requirements.txt` file lists all the Python dependencies your model needs. This ensures that the necessary libraries are installed in the runtime environment.
+The `requirements.txt` file lists all the Python dependencies your model needs. If your model requires Torch, we provide optimized pre-built Torch images as the base for machine learning and inference tasks.
 
-Then, run the following command to install the required dependencies:
+These images include all necessary dependencies, ensuring efficient execution. The available pre-built Torch images are:
+
+- `2.4.1-py3.11-cuda124` — Based on PyTorch 2.4.1, Python 3.11, and CUDA 12.4.
+- `2.5.1-py3.11-cuda124` — Based on PyTorch 2.5.1, Python 3.11, and CUDA 12.4.
+- `2.4.1-py3.12-cuda124` — Based on PyTorch 2.4.1, Python 3.12, and CUDA 12.4.
+- `2.5.1-py3.12-cuda124` — Based on PyTorch 2.5.1, Python 3.12, and CUDA 12.4.
+
+To use a specific Torch version, define it in your requirements.txt file like this:
+
+```text
+torch==2.5.1
+```
+
+This ensures the correct pre-built image is pulled from Clarifai's container registry, ensuring the correct environment is used. This minimizes cold start times and speeds up model uploads and runtime execution — avoiding the overhead of building images from scratch or pulling and configuring them from external sources.
+
+We recommend using either `torch==2.5.1` or `torch==2.4.1`. If your model requires a different Torch version, you can specify it in requirements.txt, but this may slightly increase the model upload time.
+
+After stating the required dependencies in the `requirements.txt` file, run the following command to install them:
 
 <Tabs>
 <TabItem value="bash" label="Bash">
