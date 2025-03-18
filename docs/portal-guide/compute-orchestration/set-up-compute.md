@@ -67,7 +67,7 @@ You’ll be redirected to a page, where you can specify the configurations for y
     - **Dedicated Clarifai-managed cloud compute** — Run workloads in dedicated compute instances in Clarifai's cloud. 
     - **Dedicated self-managed compute** (*coming soon*) — Bring your own existing dedicated compute resources, either from cloud or on-premise instances. If you're interested in using your own cloud or on-prem compute, let us know by sending feedback or contacting our support department.
     
-- **Instance Settings** — Select your preferred cloud provider and geographic region for deploying your models (*more options are coming soon*).
+- **Instance Settings** — Select your preferred cloud provider and geographic region for deploying your models (*more options are coming soon*). Note that the choice depends on several factors, including performance needs, costs, and regulatory compliance. For example, selecting an instance type closer to your users reduces network latency, leading to faster response times. 
 
 - **Personal Access Token (PAT)** — Select a PAT that is used to verify your identity when connecting to the cluster. Note that if the selected PAT is deleted, the associated compute resources will no longer function. You can generate a new PAT by clicking the "Create new Personal Access Token" link at the bottom of the corresponding dropdown list or by going to your Personal Settings page by navigating to the [Security section](https://clarifai.com/settings/security).
 
