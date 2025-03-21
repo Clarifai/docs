@@ -13,7 +13,7 @@ inference_compute_info:
   cpu_limit: "2"
   cpu_memory: "2Gi"
   num_accelerators: 1
-  accelerator_type: ["NVIDIA-T4", "NVIDIA-A10G","NVIDIA-L4","NVIDIA-L40S","NVIDIA-A100","NVIDIA-H100"]
+  accelerator_type: ["NVIDIA*"]
   accelerator_memory: "3Gi"
 
 checkpoints:
