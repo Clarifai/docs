@@ -1,0 +1,104 @@
+---
+description: View and interact with your input
+pagination_prev: null
+---
+
+# Single Input-Viewer
+
+**View and interact with your input**
+<hr />
+
+The single Input-Viewer is the main page that showcases the details of a single input available in your app. If you click an input listed on the [Inputs-Manager](https://docs.clarifai.com/portal-guide/inputs-manager/) page, you'll be redirected to the viewer page for that input, where you can view and interact with it.
+
+![](/img/community_2/explorer_1.png)
+
+## Key Features and Tasks 
+
+You can complete several tasks on the Input-Viewer screen, including:
+
+- Use the assistive tools at the top of the page to manually label your inputs. Learn more about them [below](#manual-labeling-tools). 
+- Generate annotations for your inputs automatically using AI-assisted labeling. Learn more about it [here](https://docs.clarifai.com/portal-guide/annotate/ai-assist).
+- Use the **Search concepts** field in the right sidebar to find specific concepts and display their annotations on the page.
+- Use the film strip at the left sidebar to swiftly move from one input to another. You can scroll through to get the specific image you want to annotate. If you click any image on the sidebar, it'll appear on the main workspace.
+- Set the page's mode to **Predict**, and get predictions from your models and workflows. Learn more about it [here](https://docs.clarifai.com/portal-guide/input-viewer/predictions). 
+- Click the **View Metadata** button in the lower-left section to see details of the input, such as input ID, creation date, and resolution.
+
+You can download the original asset directly from the page. If you right-click on the canvas area, a button will appear, which allows you to download the original input.
+
+![](/img/community_2/explorer_1-2.png)
+
+The Input-Viewer page offers a variety of keyboard shortcuts, or hotkeys, to streamline and speed up the labeling process. To view the available shortcuts for canvas-related activities, click the keyboard icon in the upper-right corner of the page. 
+
+Additionally, there are other hotkeys you can use in the labeling process, which will be demonstrated later.
+
+![](/img/others-2/annotate-10.png)
+
+## Manual Labeling Tools
+
+The single Input-Viewer page has various assistive tools to help you make the most of the labeling exercise. 
+
+### Select / Edit Tool
+
+The **Select / Edit** tool allows you to navigate and interact with the interface. You can use it to select already defined bounding boxes or polygons.
+
+The keyboard shortcut for using this tool is **V**. 
+
+![](/img/others-2/annotate-1.png)
+
+### Bounding Box Tool
+
+The **Bounding Box** tool allows you to draw a rectangle on an image to define a region of interest. It's useful for identifying objects in images.
+
+The keyboard shortcut for using this tool is **B**. 
+
+![](/img/others-2/annotate-2.png)
+
+### Polygon Tool
+
+The **Polygon** tool allows you to draw custom, multi-sided shapes on an image. It's ideal for annotating irregularly shaped areas or objects.
+
+The keyboard shortcut for using this tool is **P**. 
+
+![](/img/others-2/annotate-4.png)
+
+### Hand Tool
+
+The **Hand** allows you to click and drag an image in order to pan or move it around the workspace. It's useful for examining different areas of a large or zoomed-in image without changing the zoom level.
+
+The keyboard shortcut for using this tool is **H**. 
+
+![](/img/others-2/annotate-3.png)
+
+### Display Controls
+
+The **Display Controls** tool allows you to use an Electronic Light Table to adjust the visual settings of your input. It supports adjusting for brightness, saturation, and contrast. You can also invert the colors by selecting the **Invert colors** checkbox.
+
+If you select the **Save settings for future inputs** checkbox, your adjusted settings will be applied persistently across all inputs on the Input-Viewer page.
+
+You can click the **Reset** button at the upper-right corner to restore the settings to their default values.
+
+![](/img/others-2/annotate-5.png)
+
+### Rotate Tool
+
+The **Rotate** tool allows you to adjust the orientation of an image to suit your needs. Whether you want to rotate the image clockwise, counterclockwise, or flip it to a specific angle, this tool provides precise control for achieving your desired alignment.
+ 
+![](/img/others-2/annotate-6.png)
+
+### Zoom Tool
+
+The **Zoom** tool allows you to zoom in for a closer look or zoom out to view the image at a broader scale.
+
+![](/img/others-2/annotate-7.png)
+
+### Canvas Options Tool
+
+The **Canvas Options** tool allows you to manage the success notifications for actions performed in the canvas area. You can toggle this feature on or off based on your preference.
+
+![](/img/others-2/annotate-8.png)
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
+

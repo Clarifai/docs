@@ -1,6 +1,6 @@
 ---
 description: Manage your clusters, nodepools, and deployments
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 # Managing Your Compute

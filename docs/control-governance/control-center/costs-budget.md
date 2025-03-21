@@ -1,123 +1,84 @@
 ---
-description: Authenticate access to resources within the scope defined by the key
+description: Get detailed financial data about your operations
 sidebar_position: 2
 ---
 
-# App-Specific API Keys
+# Costs & Budget Tab
 
-**Authenticate access to resources within the scope defined by the key**
+**Get detailed financial data about your operations**
 <hr />
 
+The Costs & Budget page provides detailed insights into the financial data of self-service users, enabling them to easily view and monitor the costs associated with their billable operations on our platform. It simplifies expense tracking and management, offering users with greater control over their spending.
 
-App-specific API Keys are used to authorize access to your Clarifai applications. You can use an API Key to access the resources within the scope of the app defined by that key.
+To access it, go to the Control Center and select the Costs & Budget tab in the collapsible left sidebar.
 
-A key is automatically generated when you create a new application. You can also create a new one, as described [below](#how-to-create-api-keys-on-the-platform). 
+![](/img/community/control-center/costs_budget_1.png)
 
-:::info
+:::tip date range
 
-Each API Key is associated with a specific user and a specific app. It ties in `user_id` and `app_id`, causing only resources in that app to be usable.
-
-:::
-
-When using an app-specific API Key to make a request, you do not need to specify either the user ID or the application ID, as they are already part of the key.
-
-An API Key allows you to have fine-grained control over the data exposed through your app. You can control the scope of your key through a simple checkbox interface displayed when you create a new key or edit a key. 
-
-:::caution API Key Versus PAT
-
-You cannot use an API Key to access models, model versions, workflows, or other resources that are not part of the app that the key is associated with. You need a [PAT](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens) to do so. For example, to access any of Clarifai's resources, you need to use a PAT while specifying Clarifai's `user_id` and the `app_id` to which the resource belongs. 
+You can use the date range control in the upper-right corner of the page to filter and view data for specific time periods. After selecting a date range, the output of the Costs & Budget page will be based on the selected period. You can learn more about the feature [here](https://docs.clarifai.com/portal-guide/control-center/#date-ranges).
 
 :::
 
-## How to Create API Keys on the Platform
+## Overview
 
-Navigate to your application's individual page and select the **Settings** option on the collapsible left sidebar.
+The overview section of the Costs & Budget page provides a quick analysis of your total expenses on the Clarifai platform for the selected time period.
 
-You'll be redirected to the **App Settings** page.
+It tells you:
 
-Within the **API Keys** section, click the **Create API Key** button. 
+- The total costs of all billable operations
+- The total costs of model predictions
+- The total costs of training transfer learning models
+- The total costs of training deep training models
+- The total costs of search operations
+- The total costs of storing inputs
 
-![App settings create key](/img/others/create_api_key_community.png)
+## Charts
 
-Then, use the form that pops up to generate a new key for your application — provide a short description, select the scopes, and click the **Confirm** button. 
+The Costs & Budget page has interactive charts that help you visualize your expenses on the Clarifai platform for the selected period. 
 
-![App key create form](/img/others/create_api_key_community_form.png)
+Some of the key functionalities include the ability to drag charts, pin your favorites, switch between different chart types, and use tooltips for detailed insights. 
 
-The new key will be listed in the **API Keys** section, where you can copy it to the clipboard, edit it, or delete it.
+![](/img/community/control-center/costs_budget_2.png)
 
-![copy, edit, delete api key](/img/others/create_api_key_community_2.png)
+If you click the **View Report Details** button in the lower-right corner of a chart, you’ll be redirected to a detailed report page. Here, you'll find a comprehensive breakdown of each cost type for the selected period, with options to filter charts by specific costs. The page also includes a table that displays the date each expense was incurred, along with other detailed insights. 
 
-## How to Create API Keys Programmatically
+![](/img/community/control-center/costs_budget_3.png)
 
-For enterprise users, it is also possible to generate keys programmatically. 
+[Click here](https://docs.clarifai.com/portal-guide/control-center/usage-dashboard#charts) to learn more about using these chart features.
 
-If you are managing the work of multiple users, who's data, models, and concepts that need to be segregated, we recommend you create keys this way. This ensures that each individual user only has access to their own private resources.
+## Total Costs
 
-:::note
+This section displays the total costs of all your billable operations, along with the average daily cost, during the selected time period. 
 
-You need to use a [Personal Access Token (PAT)](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens) to create an API Key. 
+![](/img/community/control-center/costs_budget_4.png)
 
-:::
+## Training Cost
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import CodeBlock from "@theme/CodeBlock";
+This section displays the total cost of training your [deep training](https://docs.clarifai.com/portal-guide/model/deep-training/) and [transfer learning](https://docs.clarifai.com/portal-guide/model/model-types/transfer-learning) models, along with the average daily cost, during the selected time period. 
 
-import PythonKey from "!!raw-loader!../../../code_snippets/api-guide/authentication/key.py";
-import CurlKey from "!!raw-loader!../../../code_snippets/api-guide/authentication/key.sh";
+![](/img/community/control-center/costs_budget_5.png)
 
-<Tabs>
-<TabItem value="cURL" label="cURL" default>
+## Model Predictions Cost by Type and Date
 
-```bash
-curl --location --request POST "https://api.clarifai.com/v2/users/YOUR_USER_ID_HERE/keys" \
---header "Content-Type: application/json" \
---header "Authorization: Key YOUR_PAT_HERE" \
---data-raw '{
-    "keys": [
-        {
-            "description": "All permissions",
-            "scopes": [
-                "All"
-            ],
-            "apps": [
-                {
-                    "id": "YOUR_APP_ID_HERE",
-                    "user_id": "YOUR_USER_ID_HERE"
-                }
-            ]
-        }
-    ]
-}'
-```
-</TabItem>
-</Tabs>
+This section displays the total cost of all your model predictions, split by type and date, along with the average daily cost, during the selected time period. 
 
-:::note
+![](/img/community/control-center/costs_budget_6.png)
 
-- API Keys do not expire. In case your key gets compromised, you should delete it, and create a new one with the same scopes.
-- We recommend that you do **not** share your API Key with other users.
+## Model Predictions Cost by ID and Date
 
-:::
+This section displays the total cost of all your model predictions, split by model ID and date, along with the average daily cost, during the selected time period. 
 
-## How to Use an API Key Example
+![](/img/community/control-center/costs_budget_7.png)
 
-Here is an example of how to use an API Key to make a prediction request from your own model.
+## Cost of Operations
 
-Note that your `user_id` and `app_id` are already tied to the key, so no need to specify them.
+This section displays the total cost of all your operations that consist of model predictions and search operations, along with the average daily cost, during the selected time period. 
 
-:::tip Set API Key as an Environment Variable
+![](/img/community/control-center/costs_budget_8.png)
 
-It's a good practice to load your API Key from an environment variable. Keeping your key in a secrets manager, and not in the source code, improves its security and management. 
+## Stored Inputs Cost
 
-:::
+This section displays the total cost of storing inputs on our platform during the selected time period. 
 
-<Tabs>
-<TabItem value="python" label="Python">
-     <CodeBlock className="language-python">{PythonKey}</CodeBlock>
-</TabItem>
-
-<TabItem value="curl" label="cURL">
-    <CodeBlock className="language-bash">{CurlKey}</CodeBlock>
-</TabItem>
-</Tabs>
+![](/img/community/control-center/costs_budget_9.png)

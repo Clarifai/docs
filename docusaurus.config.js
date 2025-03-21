@@ -90,7 +90,7 @@ const config = {
       announcementBar: {
         id: 'support_us_' + Date.now(),
         content:
-          '<span>New!</span> Announcement here <a target="_blank" rel="noopener noreferrer" href="#">read now</a>',
+          '<span>New!</span> Deploy, Scale, and Optimize AI with Compute Orchestration <a target="_blank" rel="noopener noreferrer" href="https://www.clarifai.com/products/compute-orchestration">Read Now</a>',
         isCloseable: true,
       },
       navbar: {
@@ -108,8 +108,28 @@ const config = {
             position: "left",
             items: [
               {
-                label: "Configuring Compute",
-                to: "/"
+                label: "Overview",
+                to: "/compute/overview"
+              },
+              {
+                label: "Deploy Your First Model",
+                to: "/compute/first-deployment"
+              },
+              {
+                label: "Test & Upload Models",
+                to: "/compute/models/"
+              },
+              {
+                label: "Configure Compute",
+                to: "/compute/configure/"
+              },
+              {
+                label: "Manage Compute",
+                to: "/compute/manage"
+              },
+              {
+                label: "Supported Cloud Instances",
+                to: "/compute/cloud-instances"
               }
              
             ]
@@ -120,10 +140,22 @@ const config = {
             position: "left",
             items: [
               {
-                label: "Control Center",
-                to: "/",
+                label: "Applications",
+                to: "/control-governance/applications/",
               },
-     
+              {
+                label: "Control Center",
+                to: "/control-governance/control-center/",
+              },
+              {
+                label: "Evaluation Leaderboard",
+                to: "/control-governance/evaluation-leaderboard",
+              },
+              {
+                label: "Clarifai Organizations",
+                to: "/control-governance/clarifai-organizations/",
+              },  
+         
             ]
           },
           {
@@ -133,8 +165,25 @@ const config = {
             items: [
               {
                label: "Data",
-                to: "/",
+                to: "/create-manage/inputs-manager/",
               }, 
+              {
+                label: "Datasets",
+                 to: "/create-manage/datasets/",
+              }, 
+              {
+                label: "Search",
+                 to: "/create-manage/Search/",
+              }, 
+              {
+                label: "Workflows",
+                 to: "/create-manage/workflows/",
+              }, 
+              {
+                label: "Modules",
+                 to: "/create-manage/modules/",
+              }, 
+
             ]
           },
           {

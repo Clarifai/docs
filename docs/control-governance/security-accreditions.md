@@ -1,6 +1,6 @@
 ---
 description: Security Accreditions
-sidebar_position: 3
+draft: true
 ---
 
 # Security Accreditions

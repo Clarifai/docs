@@ -1,6 +1,6 @@
 ---
 description: Share to the Community
-sidebar_position: 1
+draft: true
 ---
 
 # Share to the Community

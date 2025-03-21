@@ -1,0 +1,12 @@
+{
+  "label": "Common Workflows",
+  "position": 5,
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+      "type": "generated-index",
+      "title": "Common Workflows Examples",
+      "description": "Learn how to set up some common types of workflows in the Clarifai platform.",
+      "slug": "/portal-guide/workflows/common-workflows"
+    }
+}

@@ -1,6 +1,6 @@
 ---
 description: Learn about the instance types we support
-sidebar_position: 5
+sidebar_position: 6
 pagination_next: null
 ---
 
