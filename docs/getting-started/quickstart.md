@@ -10,9 +10,11 @@ sidebar_position: 1
 
 Clarifai provides an intuitive interface and robust APIs designed to get you up and running quickly. In just a few simple steps or a few lines of code, you can bring your AI projects to life within minutes. 
 
-## Set up Your Account or Log in
+:::info Set up Your Account or Log in
 
-Start by [creating](https://clarifai.com/signup) a new Clarifai account or [logging into](https://clarifai.com/login) your existing one to access the platform's powerful AI capabilities.
+[Create](https://clarifai.com/signup) a new Clarifai account or [log into](https://clarifai.com/login) your existing one to start accessing the platform's powerful AI capabilities.
+
+:::
 
 ## Get Started With Web UI
 

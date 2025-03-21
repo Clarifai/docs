@@ -1,6 +1,8 @@
 ---
 description: Learn about supported input and output data types along with usage examples
 sidebar_position: 3
+toc_min_heading_level: 2
+toc_max_heading_level: 5
 ---
 
 # Supported Data Types
@@ -92,6 +94,43 @@ images = [
 ]
 predictions = model.predict_images(images=images)
 ```
+
+#### Dynamic Batch Prediction Handling
+
+Clarifai's model framework automatically handles both single and batch predictions through a unified interface. It dynamically adapts to the input format, eliminating the need for code changes to support different input types.
+
+Input detection is carried out automatically by:
+
+- **Single input** — Automatically processed as a singleton batch.
+
+- **Multiple inputs** — When inputs are provided as a list, the system processes them as a parallel batch.
+
+This flexibility allows you  to pass either a single input or a list of inputs, and the system will handle them appropriately without requiring additional configuration.
+
+Here is an example of a model configuration that supports both single and batch predictions:
+
+```python
+class TextClassifier(ModelClass):
+  @ModelClass.method
+  def predict(self, text: Text) -> float:
+    """Single text classification (automatically batched)"""
+    return self.model(text.text)
+```
+
+Here is a client usage example:
+
+```python
+# Single prediction
+single_result = model.predict(Text("Positive review"))
+
+# Batch prediction
+batch_results = model.predict([
+  Text("Great product"),
+  Text("Terrible service"),
+  Text("Average experience")
+  ])
+```
+
 ### Dict[K, V]
 
 This supports JSON-like structures with string keys.

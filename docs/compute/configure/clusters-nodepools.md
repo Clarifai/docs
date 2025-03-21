@@ -3,7 +3,7 @@ description: Set up your compute clusters and nodepools
 sidebar_position: 1
 ---
 
-# Clusters and Nodepools
+# Clusters & Nodepools
 
 **Set up your compute clusters and nodepools**
 <hr />
