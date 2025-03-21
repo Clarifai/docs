@@ -1,6 +1,8 @@
 ---
 description: Import custom models, including from external sources like Hugging Face and OpenAI
 sidebar_position: 2
+toc_min_heading_level: 2
+toc_max_heading_level: 5
 ---
 
 
@@ -18,16 +20,9 @@ Let’s demonstrate how you can successfully upload different types of models to
 
 :::info
 
-- For the Compute Orchestration [Public Preview](https://docs.clarifai.com/product-updates/changelog/release-types), deployment is only supported for models that users have uploaded to our platform via the Python SDK. We plan to expand this functionality to include out-of-the-box and custom-trained models on our platform in the future.
-If you'd like to test it out and provide feedback, please request access [here](https://www.clarifai.com/explore/contact-us-co).
-
 - This new upload experience is compatible with the latest [`clarifai`](https://github.com/Clarifai/clarifai-python) Python package, starting from version 10.9.2. If you prefer the previous upload method, which is supported up to version 10.8.4, you can refer to the documentation [here](/others/old_model_upload_method.pdf).
 
-:::
-
-:::tip
-
-You can run the following command to clone the [repository](https://github.com/Clarifai/examples/tree/main) containing examples of how to upload various model types and follow along with this documentation:
+- You can run the following command to clone the [repository](https://github.com/Clarifai/examples/tree/main) containing examples of how to upload various model types and follow along with this tutorial:
 `git clone https://github.com/Clarifai/examples.git`. After cloning it, go to the `models/model_upload` folder.
 
 :::
@@ -72,7 +67,7 @@ If Docker is installed on your system, it is highly recommended to use it for ru
 You should ensure your local environment has sufficient memory and compute resources to handle model loading and execution, especially during [testing](https://docs.clarifai.com/sdk/compute-orchestration/test-models-locally).  
 
 
-### Installation
+### Install Clarifai Package
 
 Install the latest version of the `clarifai` Python package. This will also install the Clarifai [Command Line Interface](https://docs.clarifai.com/sdk/cli) (CLI), which we'll use for testing and uploading the model. 
 
@@ -172,17 +167,30 @@ Here, you define the minimum compute resources required for running your model, 
 
 If you're using a model from Hugging Face, you can automatically download its checkpoints by specifying the appropriate configuration in this section. For private or restricted Hugging Face repositories, include an access token.
 
-:::note
-
-By default, model checkpoints are downloaded at runtime, meaning they are fetched when the model is executed.
-
-:::
-
 <Tabs>
 <TabItem value="yaml" label="YAML">
     <CodeBlock className="language-yaml">{HFCheckpoints}</CodeBlock>
 </TabItem>
 </Tabs>
+
+
+:::note
+
+The `when` parameter in the `checkpoints` section determines when model checkpoints should be downloaded and stored. It must be set to one of the following options:  
+
+- `runtime` (_default_) – Downloads checkpoints when loading the model in the `load_model` method.  
+- `build` – Downloads checkpoints during the image build process.  
+- `upload` – Downloads checkpoints before uploading the model.  
+
+For larger models, we highly recommend downloading checkpoints at `runtime`. Doing so prevents unnecessary increases in Docker image size, which has some advantages:  
+
+- Smaller image sizes
+- Faster build times
+- Quicker uploads and inference on the Clarifai platform
+
+Downloading checkpoints at `build` or `upload` time can significantly increase image size, resulting in longer upload times and increased cold start latency.
+
+:::
 
 #### Model Concepts or Labels
 
@@ -242,15 +250,52 @@ After stating the required dependencies in the `requirements.txt` file, run the 
 </TabItem>
 </Tabs>
 
-
 ### Step 3: Prepare the `model.py` File
 
-The `model.py` file contains the logic for your model, including how it loads and handles [predictions](https://docs.clarifai.com/sdk/compute-orchestration/set-up-compute#predict-with-deployed-model). This file must implement a class that inherits from `ModelRunner` and defines the following methods, where applicable:
+The `model.py` file contains the core logic for your model, including how the model is loaded and how predictions are made. This file must define a custom class that inherits from `ModelClass` and implements the required methods.
 
-- **`load_model()`** – Initializes and loads the model, preparing it for inference.
-- **`predict(input_data)`** – Handles the core logic for making predictions. It processes the input data and returns the output response.
-- **`generate(input_data)`** – Provides output in a streaming manner, if applicable to the model's use case.
-- **`stream(input_data)`** – Manages both streaming input and output, primarily for more advanced use cases where data is processed continuously.
+To define a custom model, create a class that inherits from `ModelClass` and implements the following:
+
+#### a. `load_model` Method 
+
+The `load_model` method is optional but recommended, as it prepares the model for inference by handling resource-heavy initializations. It is particularly useful for:
+
+- One-time setup of heavy resources, such as loading trained models or initializing data transformations.
+- Executing tasks during model container startup to reduce runtime latency.
+- Loading essential components like tokenizers, pipelines, and other model-related assets.
+
+Here is an example:
+
+```python
+def load_model(self):
+  self.tokenizer = AutoTokenizer.from_pretrained("model/")
+  self.pipeline = transformers.pipeline(...)
+```
+
+#### b. Prediction Methods 
+
+You need to include at least one method decorated with `@ModelClass.method` to define prediction endpoints.
+
+The following three method types are supported based on type hints:
+
+```python
+# Unary-Unary (Standard request-response)
+def predict(self, input: Image) -> Text
+
+# Unary-Stream (Server-side streaming)
+def generate(self, prompt: Text) -> Stream[Text]
+
+# Stream-Stream (Bidirectional streaming)
+def analyze_video(self, frames: Stream[Image]) -> Stream[str]
+```
+
+:::tip
+
+Each parameter in the class methods must be annotated with a type, and the return type must also be specified. Clarifai's model framework supports rich data typing for both inputs and outputs. Supported types include `Text`, `Image`, `Audio`, `Video`, and more as illustrated [here](https://docs.clarifai.com/compute/models/supported-data-types).
+
+:::
+
+Here is an example of a `model.py` file. 
 
 <Tabs>
 <TabItem value="python" label="Python">
@@ -289,11 +334,15 @@ This command builds the model’s Docker image using the defined compute resourc
 
 Note that if you make any changes to your model and upload it again to the Clarifai platform, a new version of the model will be created automatically.
 
+### Step 6: Predict With Model
+
+Once the model is successfully uploaded to Clarifai, you can start making predictions with it. Note that before making a prediction request with our compute orchestration capabilities, ensure that you've created a compute cluster and set up a nodepool. 
+
 ## Examples
 
 :::tip
 
-You can find various model upload examples [here](https://github.com/Clarifai/examples/tree/main/models/model_upload), which demonstrate different use cases and optimizations. 
+You can find various up-to-date model upload examples [here](https://github.com/Clarifai/examples/tree/main/models/model_upload), which demonstrate different use cases and optimizations. 
 
 :::
 

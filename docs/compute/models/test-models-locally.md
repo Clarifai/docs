@@ -99,6 +99,7 @@ Here is how to test a model in a virtual environment:
 </TabItem>
 </Tabs>
 
+## Make Inference Requests
 
 Once the model is running locally, you need to configure the `CLARIFAI_API_BASE` environment variable to point to the localhost and port where the gRPC server is running.
 

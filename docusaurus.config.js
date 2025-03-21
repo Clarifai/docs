@@ -90,7 +90,7 @@ const config = {
       announcementBar: {
         id: 'support_us_' + Date.now(),
         content:
-          '<span>New!</span> Deploy, Scale, and Optimize AI with Compute Orchestration <a target="_blank" rel="noopener noreferrer" href="https://www.clarifai.com/products/compute-orchestration">Read Now</a>',
+          '<span>New!</span> Deploy, Scale, and Optimize AI With Compute Orchestration <a target="_blank" rel="noopener noreferrer" href="https://www.clarifai.com/products/compute-orchestration">Read Now</a>',
         isCloseable: true,
       },
       navbar: {
@@ -116,7 +116,7 @@ const config = {
                 to: "/compute/first-deployment"
               },
               {
-                label: "Test & Upload Models",
+                label: "Models",
                 to: "/compute/models/"
               },
               {

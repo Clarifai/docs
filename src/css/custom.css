@@ -373,6 +373,7 @@ html[data-theme='dark'] .card:hover {
 }
 
 .banner-primary {
+  display: none; /* Remove to display the banner */
   height: 390px;
   background-image: url('/img/banner/getstarted-bg.png');
   background-size: cover;
@@ -864,6 +865,12 @@ html[data-theme='dark'] .header-linkedin-link::before {
   border-radius: 8px;
   padding: 1rem;
   margin: 1rem 0;
+}
+
+.toc-inline::before {
+  content: "Contents";
+  font-size: 1.5em;  
+  display: block;
 }
 
 /* Style the TOC title */
