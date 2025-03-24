@@ -1,7 +1,6 @@
 ---
 description: Deploy any model anywhere, at any scale
-pagination_next: null
-sidebar_position: 2
+sidebar_position: 6
 ---
 
 # Deployments & Inferencing

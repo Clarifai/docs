@@ -27,7 +27,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
-import TestModel from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/test_model.py";
+import TestModel from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/test_model.py";
 
 
 :::note CLI Flags

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 // Import markdown files as React components
-import Content1 from '../../../../ui-to-api-switchers/compute/ui-deployments.md';
-import Content2 from '../../../../ui-to-api-switchers/compute/api-deployments.md';
+import Content1 from '../../../../ui-to-api-switchers/compute/api-deployments.md';
+import Content2 from '../../../../ui-to-api-switchers/compute/ui-deployments.md';
 
 function ToggleDeploymentsPage() {
   // State to manage the selected content
@@ -30,13 +30,13 @@ function ToggleDeploymentsPage() {
           onClick={() => handleToggle('content1')}
           className={`toggle-button ${selectedContent === 'content1' ? 'active' : ''}`}
         >
-          UI
+          API
         </button>
         <button
           onClick={() => handleToggle('content2')}
           className={`toggle-button ${selectedContent === 'content2' ? 'active' : ''}`}
         >
-          API
+          UI
         </button>
       </div>
 

@@ -31,28 +31,28 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
-import PrepareModelPyFile from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/prepare_model_py_file.py";
-import ModelInfo from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/model_info.yaml";
-import BuildInfo from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/build_info.yaml";
-import ComputeResources from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/compute_resources.yaml";
-import HFCheckpoints from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/hf_checkpoints.yaml";
-import ModelConcepts from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/model_concepts.yaml";
+import PrepareModelPyFile from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/prepare_model_py_file.py";
+import ModelInfo from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/model_info.yaml";
+import BuildInfo from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/build_info.yaml";
+import ComputeResources from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/compute_resources.yaml";
+import HFCheckpoints from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/hf_checkpoints.yaml";
+import ModelConcepts from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/model_concepts.yaml";
 
-import ImageClassifierModel from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/image_classifier_model.py";
-import ImageClassifierRequirements from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/image_classifier_requirements.txt";
-import ImageClassifierConfig from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/image_classifier_config.yaml";
+import ImageClassifierModel from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/image_classifier_model.py";
+import ImageClassifierRequirements from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/image_classifier_requirements.txt";
+import ImageClassifierConfig from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/image_classifier_config.yaml";
 
-import ImageDetectorModel from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/image_detector_model.py";
-import ImageDetectorRequirements from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/image_detector_requirements.txt";
-import ImageDetectorConfig from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/image_detector_config.yaml";
+import ImageDetectorModel from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/image_detector_model.py";
+import ImageDetectorRequirements from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/image_detector_requirements.txt";
+import ImageDetectorConfig from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/image_detector_config.yaml";
 
-import LLMModel from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/llm_model.py";
-import LLMRequirements from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/llm_requirements.txt";
-import LLMConfig from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/llm_config.yaml";
+import LLMModel from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/llm_model.py";
+import LLMRequirements from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/llm_requirements.txt";
+import LLMConfig from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/llm_config.yaml";
 
-import SpeechRecognitionModel from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/speech_recognition_model.py";
-import SpeechRecognitionRequirements from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/speech_recognition_requirements.txt";
-import SpeechRecognitionConfig from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/speech_recognition_config.yaml";
+import SpeechRecognitionModel from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/speech_recognition_model.py";
+import SpeechRecognitionRequirements from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/speech_recognition_requirements.txt";
+import SpeechRecognitionConfig from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/speech_recognition_config.yaml";
 
 ## Prerequisites
 

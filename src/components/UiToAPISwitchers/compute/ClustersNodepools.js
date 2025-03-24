@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 // Import markdown files as React components
-import Content1 from '../../../../ui-to-api-switchers/compute/ui_clusters_nodepools.md';
-import Content2 from '../../../../ui-to-api-switchers/compute/api_clusters_nodepools.md';
+import Content1 from '../../../../ui-to-api-switchers/compute/api_clusters_nodepools.md';
+import Content2 from '../../../../ui-to-api-switchers/compute/ui_clusters_nodepools.md';
 
 function ToggleMarkdownPage() {
   // State to manage the selected content
@@ -30,13 +30,13 @@ function ToggleMarkdownPage() {
           onClick={() => handleToggle('content1')}
           className={`toggle-button ${selectedContent === 'content1' ? 'active' : ''}`}
         >
-          UI
+          API
         </button>
         <button
           onClick={() => handleToggle('content2')}
           className={`toggle-button ${selectedContent === 'content2' ? 'active' : ''}`}
         >
-          API
+          UI
         </button>
       </div>
 

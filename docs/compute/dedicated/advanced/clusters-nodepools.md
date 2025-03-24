@@ -1,9 +1,9 @@
 ---
 description: Set up your compute clusters and nodepools
-sidebar_position: 1
+sidebar_position: 4
 ---
 
-# Clusters & Nodepools
+# Configure Clusters & Nodepools
 
 **Set up your compute clusters and nodepools**
 <hr />
