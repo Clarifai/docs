@@ -1,6 +1,6 @@
 ---
 description: Make your first deployment quickly
-sidebar_position: 1
+sidebar_position: 1.1
 ---
 
 # Deploy Your First Model

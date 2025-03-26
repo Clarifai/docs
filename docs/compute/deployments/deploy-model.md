@@ -1,10 +1,13 @@
+---
+description: Deploy any model anywhere, at any scale
+sidebar_position: 2
+toc_max_heading_level: 4
+---
 
-import TOCInline from '@theme/TOCInline';
+# Deploy a Model
 
-<div className="toc-inline">
-  <TOCInline toc={toc} maxHeadingLevel={2}  
-  />
-</div>
+**Deploy any model anywhere, at any scale**
+<hr />
 
 Clarifai’s Compute Orchestration provides efficient capabilities for you to deploy any model on any compute infrastructure, at any scale. 
 
@@ -18,13 +21,59 @@ For the Compute Orchestration Public Preview, deployment is only supported for m
 
 :::
 
-## Prerequisites
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+
+import CO12 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/create_deployment.py";
+import CL4 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/cli_create_deployment.sh";
+import CO15 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/init_deployment.py";
+
+## **Via the API**
+
+### Deployment Operations
+
+#### Create a Deployment
+
+To deploy a model within a nodepool, provide the `deployment_id` and `config_filepath` parameters to the `create_deployment` method of the `Nodepool` class.
+
+:::note
+
+Each model or workflow can only have one deployment per nodepool.
+
+:::
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CO12}</CodeBlock>
+</TabItem>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-yaml">{CL4}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
+#### Initialize the `Deployment` Class
+
+To initialize the `Deployment` class, provide the `user_id` and `deployment_id` parameters. 
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CO15}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
+
+## **Via the UI**
+
+### Prerequisites
 
 - Set up a compute cluster and nodepool. You can follow the instructions provided [here](https://docs.clarifai.com/portal-guide/compute-orchestration/set-up-compute).
 - [Upload](https://docs.clarifai.com/sdk/compute-orchestration/model-upload) a model you'd like to use for running inferences.
 
 
-## Make a Deployment
+### Make a Deployment
 
 :::note
 
@@ -65,7 +114,7 @@ You’ll then be redirected to the nodepool page, where your deployed model will
 
 ![ ](/img/compute-orchestration/compute-14.png)
 
-## Use Deployed Model
+### Use Deployed Model
 
 Once your model is deployed, you can start utilizing it to run inferences. To access your deployments, navigate to the model’s individual page and select the **Deployments** tab.  
 

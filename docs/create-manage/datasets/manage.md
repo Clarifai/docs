@@ -9,6 +9,3 @@ sidebar_position: 1
 **Create, Get, Update, Merge, and Delete**
 <hr />
 
-import ToggleDatasetsPage from '@site/src/components/UiToAPISwitchers/create-manage/Datasets';
-
-<ToggleDatasetsPage />

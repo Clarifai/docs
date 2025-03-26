@@ -1,5 +1,7 @@
 ---
 description: Orchestrate your AI workloads better, avoid vendor lock-in, and use compute spend efficiently
+sidebar_position: 1
+toc_max_heading_level: 3
 ---
 
 # Compute Orchestration
@@ -15,17 +17,21 @@ description: Orchestrate your AI workloads better, avoid vendor lock-in, and use
 
 Clarifai’s Compute Orchestration provides efficient capabilities for you to deploy any model on any compute infrastructure, at any scale. These new platform capabilities bring the convenience of serverless autoscaling to any environment, regardless of deployment location or hardware, and dynamically scale resources to meet workload demands. 
 
-Clarifai handles the containerization, model packing, time slicing, and other performance optimizations on your behalf.  
+With Compute Orchestration, we are providing users with the ability to manage any compute planes and access dedicated compute options. 
 
-Previously, our platform supported the following deployment options: 
+These capabilities enable our enterprise customers to deploy production models with enhanced control, performance, and scalability — while addressing specific problems around compute costs, latency, and control over hosted models. Clarifai handles the containerization, model packing, time slicing, and other performance optimizations on your behalf. 
 
-- **Shared SaaS (Serverless)** — This is our default offering, which abstracts away infrastructure management and allows users to easily deploy models without worrying about the underlying compute resources. In this option, Clarifai maintains multi-tenant GPU pools users can access on-demand.
+## Deployment Options
 
-- **Full Platform Deployment** — This option is designed for organizations with high-security requirements. It deploys both the Clarifai control and compute planes into the user’s preferred cloud, on-premises, or air-gapped infrastructure, ensuring full isolation. 
+Compute Orchestration allows us to provide multiple deployment options — all of which can be customized with your preferred settings for autoscaling, cold start, and more, ensuring maximum cost efficiency and performance. 
 
-With Compute Orchestration, we are now providing users with the ability to manage any compute planes and access dedicated compute options. These capabilities enable our enterprise customers to deploy production models with enhanced control, performance, and scalability — while addressing specific problems around compute costs, latency, and control over hosted models.
+These are the deployment options we provide:
 
-Compute Orchestration allows us to provide the following additional deployment options — all of which can be customized with your preferred settings for autoscaling, cold start, and more, ensuring maximum cost efficiency and performance:
+:::tip Shared SaaS (Serverless)
+
+If you’re not using Compute Orchestration, the Shared SaaS (Serverless) deployment is the default option. It abstracts away infrastructure management and allows users to easily deploy models without worrying about the underlying compute resources. In this option, Clarifai maintains multi-tenant GPU pools users can access on-demand. 
+
+:::
 
 - **Dedicated SaaS** — Provides exclusive access to Clarifai-managed nodes with customizable configurations. For example, you can make a deployment in the AWS US-East region (we have plans to expand to other cloud providers and hardware options). 
 
@@ -35,28 +41,23 @@ Compute Orchestration allows us to provide the following additional deployment o
 
 - **Multi-Site Deployment** — Supports deployments across multiple self-managed compute sources, with potential for future multi-cloud or multi-region dedicated SaaS solutions.
 
-:::warning default deployment
-
-If you’re not using Compute Orchestration, the Shared SaaS (Serverless) deployment remains the default option. 
-
-:::
+- **Full Platform Deployment** — This option is designed for organizations with high-security requirements. It deploys both the Clarifai control and compute planes into the user’s preferred cloud, on-premises, or air-gapped infrastructure, ensuring full isolation. 
 
  
 ![ ](/img/compute-orchestration/intro-1.png)
-
 
 
 ## Compute Clusters and Nodepools
 
 We use [clusters and nodepools](https://docs.clarifai.com/portal-guide/compute-orchestration/set-up-compute) to organize and manage the compute resources required for the Compute Orchestration capabilities.
 
-:::tip Cluster
+:::info Cluster
 
 A compute cluster in Clarifai acts as the overarching computational environment where models are executed, whether for training or inference. 
 
 :::
 
-:::tip nodepool
+:::info nodepool
 
 A nodepool refers to a set of dedicated nodes (virtual machine instances) within a cluster that share similar configurations and resources, such as CPU or GPU type, memory size, and other performance parameters.
 
@@ -76,7 +77,7 @@ With compute orchestration, you can ensure these nodepools are properly scaled u
 
 ![ ](/img/compute-orchestration/intro-2.png)
 
-**1. Performance and Deployment Flexibility**
+### 1. Performance and Deployment Flexibility
 
 - It provides access to a wide range of [accelerator options](https://docs.clarifai.com/portal-guide/compute-orchestration/cloud-instances) tailored to your use case. You can configure multiple compute clusters each tailored to your AI development stage, performance requirements, and budget. You can also run affordable proof of concepts or compute-heavy LLMs or LVMs in production all from a single product.
 
@@ -87,7 +88,7 @@ This allows users to leverage their hardware of choice without being locked into
 
 - Just like with our previous offerings, we ensure efficient resource usage and cost savings through bin-packing (running multiple models per GPU), time slicing, and other optimizations.
 
-**2. Enhanced Security** 
+### 2. Enhanced Security
 
 - Users can run compute planes within their own cloud service provider or on-premise environments and securely connect to Clarifai’s control plane, while only having to open outbound ports for traffic. This reduces networking complexities and security risks compared to opening inbound access or configuring cloud Identity and Access Management (IAM) access roles within your VPC. 
 
@@ -97,7 +98,7 @@ This allows users to leverage their hardware of choice without being locked into
 
 - Users can group CPU and GPU types into dedicated scaling nodepools, enabling them to handle diverse workloads or team-specific requirements while enhancing security and resource management.
 
-**3. Use Compute Cost-Efficiently and Abstract Away Complexity**
+### 3. Use Compute Cost-Efficiently and Abstract Away Complexity
 
 - An intuitive control plane enables users to efficiently govern access to AI resources, monitor performance, and manage costs. Clarifai’s expertly designed platform takes care of dependencies and optimizations, offering features like model packing, streamlined dependency management, and customizable autoscaling options — including scale-to-zero for both model replicas and compute nodes.
 
@@ -105,7 +106,7 @@ This allows users to leverage their hardware of choice without being locked into
 
 - Organizations with pre-committed cloud spend or compute contracts with major cloud service providers, like AWS, Azure, or GCP, or existing GPU and hardware investments, can efficiently leverage their compute using Clarifai Compute Orchestration. 
 
-**4. New Inference Capabilities and Developer Experience Improvements**
+### 4. New Inference Capabilities and Developer Experience Improvements
 
 - Resourceful features such as inference streaming improve time-to-first-token for LLM generations.
 
@@ -118,7 +119,6 @@ This allows users to leverage their hardware of choice without being locked into
 - Low-latency deployment minimizes gRPC hops, speeding up communication.
 
 - New model types are easily supported with a unified protobuf format, and local inference runners allow users to [test models](https://docs.clarifai.com/sdk/compute-orchestration/model-upload/#step-4-test-the-model-locally) before deploying to the cloud.
-
 
 
 import DocCardList from '@theme/DocCardList';

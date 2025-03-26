@@ -1,12 +1,11 @@
 ---
 description: Import custom models, including from external sources like Hugging Face and OpenAI
-sidebar_position: 2
 toc_min_heading_level: 2
 toc_max_heading_level: 5
 ---
 
 
-# Upload Custom Models
+# Model Uploading
 
 **Import custom models, including from external sources like Hugging Face and OpenAI**
 
@@ -455,3 +454,9 @@ You can refer to the examples repository mentioned above for additional examples
     <CodeBlock className="language-yaml">{SpeechRecognitionConfig}</CodeBlock>
 </TabItem>
 </Tabs>
+
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
