@@ -277,7 +277,7 @@ const config = {
           },
           {
             to: '/compute/models/model-upload/',
-            from: ['sdk/compute-orchestration/model-upload']
+            from: ['/sdk/compute-orchestration/model-upload']
           },
           {
             to: '/compute/models/model-upload/test-models-locally',
