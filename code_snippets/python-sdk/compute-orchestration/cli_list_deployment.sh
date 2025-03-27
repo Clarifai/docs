@@ -1,1 +1,1 @@
-$ clarifai deployment list --nodepool_id <nodepool-id>
+clarifai deployment list --nodepool_id <nodepool-id>

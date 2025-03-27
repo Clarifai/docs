@@ -1,1 +1,1 @@
-$ clarifai computecluster list
+clarifai computecluster list

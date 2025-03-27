@@ -1,4 +1,5 @@
 .feedback {
+  display: none; /* Remove to display */
   height: 100%;
   padding: 20px;
   text-align: center;
@@ -9,7 +10,7 @@
 }
 
 .form {
-  display: grid;
+  display: none; /* Remove to display */
   text-align: center;
 
   h3 {

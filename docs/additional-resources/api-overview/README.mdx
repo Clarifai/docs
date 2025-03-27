@@ -1,0 +1,32 @@
+---
+description: The Clarifai API helps you incorporate powerful AI technology in your application
+---
+
+# Clarifai API Overview
+
+**The Clarifai API helps you incorporate powerful AI technology into your application**
+<hr />
+
+The Clarifai API \(Application Programming Interface\) is the interface that allows clients and servers to “talk” to each other. This is for “software to software” communication, and it is useful for programmatically implementing Clarifai's AI technology within your own products and tools. 
+
+The Clarifai API acts as a sort of “gatekeeper” to our software that translates clients like Python, Node, and Java. These clients are used to make requests, which the API translates to commands that the software can understand.
+
+Clarifai’s API allows users to access the Clarifai platform through four request types:
+
+* **POST** - Upload inputs and information
+* **PATCH** - Update or modify existing information
+* **GET** - Request information
+* **DELETE** - Delete existing information
+
+:::tip important
+
+You can access Clarifai's API over HTTPS at `https://api.clarifai.com`.
+
+:::
+
+To integrate the API into different programming languages, use the REST API directly. You can refer to the cURL examples in the documentation, which can be easily translated into other languages for seamless implementation.
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>

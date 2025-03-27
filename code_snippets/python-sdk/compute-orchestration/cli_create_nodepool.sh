@@ -1,1 +1,1 @@
-$ clarifai nodepool create --config <nodepool-config-filepath>
+clarifai nodepool create --config <nodepool-config-filepath>
