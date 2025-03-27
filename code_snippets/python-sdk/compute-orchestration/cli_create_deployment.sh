@@ -1,1 +1,1 @@
-$ clarifai deployment create --config <deployment-config-filepath>
+clarifai deployment create --config <deployment-config-filepath>

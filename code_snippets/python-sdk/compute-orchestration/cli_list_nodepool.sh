@@ -1,1 +1,1 @@
-$ clarifai nodepool list --compute_cluster_id <compute-cluster-id>
+clarifai nodepool list --compute_cluster_id <compute-cluster-id>

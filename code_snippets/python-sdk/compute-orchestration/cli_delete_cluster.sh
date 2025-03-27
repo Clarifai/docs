@@ -1,1 +1,1 @@
-$ clarifai computecluster delete --compute_cluster_id <compute-cluster-id>
+clarifai computecluster delete --compute_cluster_id <compute-cluster-id>

@@ -1,0 +1,62 @@
+<!--index.html file-->
+
+<script>        
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    // In this section, we set the user authentication, user and app ID, model details, and the raw
+    // text we want as a prompt. Change these strings to run your own example.
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // Your PAT (Personal Access Token) can be found in the Account's Security section
+    const PAT = 'YOUR_PAT_HERE';
+    // Specify the correct user_id/app_id pairings
+    // Since you're making inferences outside your app's scope
+    const USER_ID = 'meta';    
+    const APP_ID = 'Llama-3';
+    // Change these to whatever model and text you want to use  
+    const MODEL_ID = 'Llama-3_2-3B-Instruct';
+    const MODEL_VERSION_ID = '52528868e11d431fa0450f00b22af18c';    
+    const RAW_TEXT = 'What is the future of AI?';
+
+    ///////////////////////////////////////////////////////////////////////////////////
+    // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
+    ///////////////////////////////////////////////////////////////////////////////////
+
+    const raw = JSON.stringify({
+        "user_app_id": {
+            "user_id": USER_ID,
+            "app_id": APP_ID
+        },
+        "inputs": [
+            {
+                "data": {
+                    "text": {
+                        "raw": RAW_TEXT
+                    }
+                }
+            }
+        ]
+    });
+
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Key ' + PAT
+        },
+        body: raw
+    };
+
+    // NOTE: MODEL_VERSION_ID is optional, you can also call prediction with the MODEL_ID only
+    // https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/outputs
+    // this will default to the latest version_id
+
+    fetch("https://api.clarifai.com/v2/models/" + MODEL_ID + "/versions/" + MODEL_VERSION_ID + "/outputs", requestOptions)
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            if(data.status.code != 10000) console.log(data.status);
+            else console.log(data['outputs'][0]['data']['text']['raw']);
+        }).catch(error => console.log('error', error));
+
+</script>
