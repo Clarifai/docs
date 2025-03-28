@@ -101,7 +101,34 @@ const config = {
           srcDark: 'img/logo-light.svg',
           href: '/',
         },
-        items: [        
+        items: [   
+          {
+            type: "dropdown",
+            label: "API Guides Overview",
+            position: "left",
+            items: [
+              {
+                label: "Python SDK Installation",
+                to: "/additional-resources/api-overview/python-sdk",
+              },
+              {
+                label: "Node.js SDK Installation",
+                to: "/additional-resources/api-overview/nodejs-sdk"
+              },
+              {
+                label: "CLI Installation",
+                to: "/additional-resources/api-overview/cli",
+              },
+              {
+                label: "gRPC Clients Installation",
+                to: "/additional-resources/api-overview/grpc-clients"
+              },
+              {
+                label: "Postman API Reference",
+                to: "/additional-resources/api-overview/postman"
+              }
+            ]
+          },     
           {
             type: 'search',
             position: 'right',

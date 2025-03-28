@@ -75,6 +75,12 @@ The `g5` series delivers enhanced GPU capabilities and is designed for tasks req
 
 - Running object tracking or pose estimation workflows in real-time video analysis.
 
+:::tip
+
+NVIDIA A10 or L40S? [Learn](https://www.clarifai.com/blog/nvidia-a10-vs-l40s-gpus-for-ai-workloads) how to find the best GPU for your AI workloads. 
+
+:::
+
 ### G6 Instances
 
 The `g6` series offers next-generation GPU technologies and is designed for the most demanding machine learning workloads, including large-scale model training and high-performance simulations. Each instance type in the `g6` series is tailored to specific workloads.
