@@ -8,6 +8,12 @@ sidebar_position: 1
 **Get started quickly with Clarifai in a few simple steps**
 <hr />
 
+<div style={{ "position":"relative","width": "100%","overflow": "hidden","padding-top": "56.25%"}}>
+<iframe width="900" height="500" style={{"position": "absolute","top": "0","left": "0","bottom": "0","right": "0","width": "100%","height": "100%",}} src="https://www.youtube.com/embed/4Cw9SdGPmDg" title="Introducing the AI Playground — Your LLM Battleground to Test Powerful AI Models!" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+<br/><br/>
+
 Clarifai provides an intuitive interface and a robust API designed to get you up and running quickly. In just a few simple steps or a few lines of code, you can bring your AI projects to life within minutes. 
 
 :::tip Set up Your Account or Log in
@@ -50,7 +56,7 @@ For this example, we'll use the [Llama-3.2-3B-Instruct](https://clarifai.com/met
 
 ![](/img/new-docs/playground-2.png)
 
-### Step 2: Run Your Inference
+### Step 2: Run Your Inference in Playground
 
 You'll be taken to the Playground interface, which is a pre-authenticated testing environment that allows you to quickly interact with Clarifai's AI models without additional setup or authentication.
 
