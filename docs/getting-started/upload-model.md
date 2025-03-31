@@ -28,10 +28,6 @@ import RequirementsFile from "!!raw-loader!../../code_snippets/python-sdk/model-
 
 ## Step 1: Perform Prerequisites
 
-### Set up Docker or a Virtual Environment
-
-Set up either a Docker container (recommended ) or a Python virtual environment. This ensures proper dependency management and prevents conflicts in your project.
-
 ### Install Clarifai Package
 
 Install the latest version of the `clarifai` Python SDK. This also installs the Clarifai [Command Line Interface (CLI)](https://docs.clarifai.com/additional-resources/api-overview/cli), which we'll use for uploading the model.
