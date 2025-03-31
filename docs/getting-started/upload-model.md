@@ -10,7 +10,7 @@ sidebar_position: 3
 
 The Clarifai platform allows you to upload custom models for a wide range of use cases. With just a few simple steps, you can get your models up and running and leverage the platform’s powerful capabilities.
 
-Let's demonstrate how you can upload the [Llama-3_2-1B-Instruct](https://github.com/Clarifai/examples/tree/main/models/model_upload/llms/llama-3_2-1b-instruct) model to the Clarifai platform.
+Let's demonstrate how you can upload the [Llama-3_2-1B-Instruct](https://github.com/Clarifai/examples/tree/main/models/model_upload/llms/llama-3_2-1b-instruct) model from Hugging Face to the Clarifai platform.
 
 :::tip
 
@@ -22,7 +22,6 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
-import Login from "!!raw-loader!../../code_snippets/python-sdk/cli/login.yaml";
 import ModelPyFile from "!!raw-loader!../../code_snippets/python-sdk/model-upload/llama-3_2-1B-Instruct.py";
 import ConfigFile from "!!raw-loader!../../code_snippets/python-sdk/model-upload/llama-3_2-1B-Instruct.yaml";
 import RequirementsFile from "!!raw-loader!../../code_snippets/python-sdk/model-upload/llama-3_2-1B-Instruct.txt";
@@ -33,7 +32,7 @@ import RequirementsFile from "!!raw-loader!../../code_snippets/python-sdk/model-
 
 Set up either a Docker container (recommended ) or a Python virtual environment. This ensures proper dependency management and prevents conflicts in your project.
 
-### Set up Clarifai CLI
+### Install Clarifai Package
 
 Install the latest version of the `clarifai` Python SDK. This also installs the Clarifai [Command Line Interface (CLI)](https://docs.clarifai.com/additional-resources/api-overview/cli), which we'll use for uploading the model.
 
@@ -43,25 +42,18 @@ Install the latest version of the `clarifai` Python SDK. This also installs the 
 </TabItem>
 </Tabs>
 
-To use the CLI tool to interact with the Clarifai platform, you must first log in using a Personal Access Token (PAT). You can generate the PAT key in your personal settings page by navigating to the [Security section](https://clarifai.com/settings/security). 
+### Set a PAT Key
 
-Then, create a create a YAML login configuration file to securely store your credentials.
+You need to set the `CLARIFAI_PAT` (Personal Access Token) as an environment variable. You can generate the PAT key in your personal settings page by navigating to the [Security section](https://clarifai.com/settings/security).
+
+This token is essential for authenticating your connection to the Clarifai platform.
 
 <Tabs>
-<TabItem value="yaml" label="YAML">
-    <CodeBlock className="language-yaml">{Login}</CodeBlock>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash"> export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
 </TabItem>
 </Tabs>
 
-Once the configuration file is set up, you can authenticate your CLI session with Clarifai using the stored credentials. 
-
-<Tabs>
-<TabItem value="bash" label="CLI">
-    <CodeBlock className="language-text">
-    clarifai login --config `<add-config-filepath-here>`
-</CodeBlock>
-</TabItem>
-</Tabs>
 
 ## Step 2: Create Files
 
@@ -86,16 +78,16 @@ Add the following snippets to each of the respective files.
 ### `model.py`
 
 <Tabs>
-<TabItem value="yaml" label="YAML">
-    <CodeBlock className="language-yaml">{ModelPyFile}</CodeBlock>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{ModelPyFile}</CodeBlock>
 </TabItem>
 </Tabs>
 
 ### `requirements.txt`
 
 <Tabs>
-<TabItem value="yaml" label="YAML">
-    <CodeBlock className="language-yaml">{RequirementsFile}</CodeBlock>
+<TabItem value="text" label="Text">
+    <CodeBlock className="language-text">{RequirementsFile}</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -103,7 +95,7 @@ Add the following snippets to each of the respective files.
 
 :::note
 
-In the `model` section of the `config.yaml` file, specify your model ID, Clarifai user ID, and Clarifai app ID. These will define where your model will be uploaded on the Clarifai platform.
+In the `model` section of the `config.yaml` file, specify your model ID, Clarifai user ID, and Clarifai app ID. These will define where your model will be uploaded on the Clarifai platform. Also, specify [`hf_token`](https://huggingface.co/docs/hub/en/security-tokens) to authenticate your connection to Hugging Face services.
 
 :::
 
