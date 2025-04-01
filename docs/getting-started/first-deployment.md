@@ -1,14 +1,14 @@
 ---
-description: Make your first deployment quickly
+description: Set up your own computing infrastructure easily and fast
 sidebar_position: 2
 ---
 
 # Deploy Your First Model
 
-**Make your first deployment quickly**
+**Set up your own computing infrastructure easily and fast**
 <hr />
 
-Clarifai offers an intuitive interface and powerful APIs that streamline the process of deploying your machine learning models, allowing you to get up and running in no time.
+Clarifai offers an intuitive interface and a robust API that allow you to quickly provision your own computing infrastructure — making the process of deploying your models easier and faster.
 
 With just a few simple steps or a minimal amount of code, you can take a trained model and set it up for inference. 
 
@@ -26,7 +26,7 @@ Log in to the Clarifai platform and identify the model you want to deploy on the
 
 ## Step 2: Review Your Compute Instances
 
-After clicking the button, a small window will appear, displaying the pre-configured [compute instances](https://docs.clarifai.com/compute/cloud-instances) available for deployment. Review the options and choose the one that best fits your needs.
+After clicking the button, a small window will appear, displaying the pre-configured [compute instances](https://docs.clarifai.com/compute/deployments/cloud-instances) available for deployment. Review the options and choose the one that best fits your needs.
 
 - **Basic Compute** — Recommended for development and quick tests, offering reliable, low-cost performance.  
 - **Advanced Compute** — Ideal for large-scale production inference or training of complex models.  
@@ -35,7 +35,7 @@ After clicking the button, a small window will appear, displaying the pre-config
 
 :::tip
 
-If you prefer more control and want to deploy the model using an existing cluster and nodepool, click the provided link in the pop-up window. This will allow you to [customize](https://docs.clarifai.com/compute/configure/deployments) the deployment based on your infrastructure.
+If you prefer more control and want to deploy the model using an existing cluster and nodepool, click the provided link in the pop-up window. This will allow you to [customize](https://docs.clarifai.com/compute/deployments/clusters-nodepools) the deployment based on your needs.
 
 :::
 
