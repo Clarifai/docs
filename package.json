@@ -22,6 +22,7 @@
     "@docusaurus/plugin-google-gtag": "^3.7.0",
     "@docusaurus/plugin-sitemap": "^3.7.0",
     "@docusaurus/preset-classic": "^3.7.0",
+    "@docusaurus/theme-common": "^3.7.0",
     "@fontsource/poppins": "^5.0.14",
     "@ibm/plex": "^6.4.1",
     "@mdx-js/react": "^3.0.1",
