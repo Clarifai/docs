@@ -12,9 +12,9 @@ Clarifai offers an intuitive interface and a robust API that allow you to quickl
 
 With just a few simple steps or a minimal amount of code, you can take a trained model and set it up for inference. 
 
-:::info Set up Your Account or Log in
+:::warning Log in or Set up an Account
 
-[Create](https://clarifai.com/signup) a new Clarifai account or [log into](https://clarifai.com/login) your existing one to start accessing the platform's powerful AI capabilities.
+[Log in to](https://clarifai.com/login) your existing Clarifai account or [create](https://clarifai.com/signup) a new one to explore the platform's powerful AI capabilities. New accounts receive free operations to begin exploration.
 
 :::
 
