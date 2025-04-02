@@ -29,7 +29,7 @@ draft: true
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
-| ![new-feature](/img/new_feature.jpg) | Introduced the AI Playground | <ul> <li> The Playground interface is a pre-authenticated testing environment that allows you to quickly interact with Clarifai's AI models. </li> <li> Try it [here](https://clarifai.com/playground?model=Qwen2_5-VL-7B-Instruct). </li> </ul>  |   
+| ![new-feature](/img/new_feature.jpg) | Introduced the AI Playground | <ul> <li> The Playground interface is a testing battleground that allows you to quickly interact with powerful Large Language Models (LLMs) without additional setup or authentication. </li> <li> Try it [here](https://clarifai.com/playground?model=Qwen2_5-VL-7B-Instruct). </li> </ul>  |   
 
 ## Labeling Tasks
 
