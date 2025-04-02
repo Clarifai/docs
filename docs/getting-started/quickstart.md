@@ -16,9 +16,9 @@ sidebar_position: 1
 
 Clarifai provides an intuitive interface and a robust API designed to get you up and running quickly. In just a few simple steps or a few lines of code, you can bring your AI projects to life within minutes. 
 
-:::tip Set up Your Account or Log in
+:::warning Log in or Set up an Account
 
-[Create](https://clarifai.com/signup) a new Clarifai account or [log in to](https://clarifai.com/login) your existing one to start accessing the platform's powerful AI capabilities.
+[Log in to](https://clarifai.com/login) your existing Clarifai account or [create](https://clarifai.com/signup) a new one to explore the platform's powerful AI capabilities. New accounts receive free operations to begin exploration.
 
 :::
 
@@ -60,7 +60,7 @@ For this example, we'll use the [Llama-3.2-3B-Instruct](https://clarifai.com/met
 
 You'll be taken to the Playground interface, which is a pre-authenticated testing environment that allows you to quickly interact with Clarifai's AI models without additional setup or authentication.
 
-In the chat interface at the bottom of the Playground, enter your desired prompt to generate text with the selected model. Note that if the model supports image inputs as prompts, you can also upload images directly into the interface.
+In the chat interface at the bottom of the Playground, enter your desired prompt to generate text with the selected model. Note that if the model supports image or video inputs as prompts, you can also upload them directly into the interface.
 
 > _Alternatively, in the upper-left section of the Playground, you can choose the model you'd like to use for inference._
 
