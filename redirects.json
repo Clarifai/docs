@@ -1,0 +1,101 @@
+[
+  {
+    "to": "/getting-started/quickstart",
+    "from": [
+      "/clarifai-basics/community",
+      "/clarifai-basics/start-here-5-mins-or-less",
+      "/clarifai-basics/quick-start/your-first-predictions",
+      "/clarifai-basics/quick-start/your-first-visual-search-app",
+      "/clarifai-basics/quick-start/your-first-custom-model"
+    ]
+  },
+  {
+    "to": "/additional-resources/applications/",
+    "from": ["/clarifai-basics/applications/"]
+  },
+  {
+    "to": "/additional-resources/applications/create-an-application",
+    "from": ["/clarifai-basics/applications/create-an-application"]
+  },
+  {
+    "to": "/additional-resources/applications/application-settings",
+    "from": ["/clarifai-basics/applications/application-settings"]
+  },
+  {
+    "to": "/additional-resources/applications/collaboration",
+    "from": ["/clarifai-basics/applications/collaboration"]
+  },
+  {
+    "to": "/additional-resources/authentication/",
+    "from": ["/clarifai-basics/authentication/"]
+  },
+  {
+    "to": "/additional-resources/authentication/personal-access-tokens",
+    "from": ["/clarifai-basics/authentication/personal-access-tokens"]
+  },
+  {
+    "to": "/additional-resources/authentication/app-specific-api-keys",
+    "from": ["/clarifai-basics/authentication/app-specific-api-keys"]
+  },
+  {
+    "to": "/additional-resources/authentication/authorize",
+    "from": ["/clarifai-basics/authentication/authorize"]
+  },
+  {
+    "to": "/additional-resources/authentication/scopes",
+    "from": ["/clarifai-basics/authentication/scopes"]
+  },
+  {
+    "to": "/additional-resources/authentication/factor-authentication",
+    "from": ["/clarifai-basics/authentication/factor-authentication"]
+  },
+  {
+    "to": "/additional-resources/app-templates",
+    "from": ["/clarifai-basics/app-templates"]
+  },
+  {
+    "to": "/additional-resources/glossary/",
+    "from": ["/glossary/general-ai/"]
+  },
+  {
+    "to": "/additional-resources/glossary/generative-ai",
+    "from": ["/glossary/generative-ai"]
+  },
+  {
+    "to": "/compute/models/model-upload/",
+    "from": ["/sdk/compute-orchestration/model-upload"]
+  },
+  {
+    "to": "/compute/models/model-upload/test-models-locally",
+    "from": ["/sdk/compute-orchestration/test-models-locally"]
+  },
+  {
+    "to": "/compute/overview",
+    "from": [
+      "/portal-guide/compute-orchestration/",
+      "/sdk/compute-orchestration/"
+    ]
+  },
+  {
+    "to": "/compute/deployments/clusters-nodepools",
+    "from": [
+      "/portal-guide/compute-orchestration/set-up-compute",
+      "/sdk/compute-orchestration/set-up-compute"
+    ]
+  },
+  {
+    "to": "/compute/deployments/deploy-model",
+    "from": ["/portal-guide/compute-orchestration/deploy-model"]
+  },
+  {
+    "to": "/compute/deployments/manage-compute",
+    "from": [
+      "/portal-guide/compute-orchestration/manage",
+      "/sdk/compute-orchestration/manage-compute"
+    ]
+  },
+  {
+    "to": "/compute/deployments/cloud-instances",
+    "from": ["/portal-guide/compute-orchestration/cloud-instances"]
+  }
+]

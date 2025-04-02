@@ -58,7 +58,7 @@ For this example, we'll use the [Llama-3.2-3B-Instruct](https://clarifai.com/met
 
 ### Step 2: Run Your Inference in Playground
 
-You'll be taken to the Playground interface, which is a pre-authenticated testing environment that allows you to quickly interact with Clarifai's AI models without additional setup or authentication.
+You'll be taken to the AI Playground interface, which is a testing battleground that allows you to quickly interact with powerful Large Language Models (LLMs) without additional setup or authentication.
 
 In the chat interface at the bottom of the Playground, enter your desired prompt to generate text with the selected model. Note that if the model supports image or video inputs as prompts, you can also upload them directly into the interface.
 
