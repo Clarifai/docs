@@ -103,7 +103,7 @@ In the `model` section of the `config.yaml` file, specify your model ID, Clarifa
 
 ## Step 3: Upload the Model
 
-Once your custom model is ready, upload it to the Clarifai platform by navigating to its directory and running the following command:
+Once your custom model is ready, upload it to the Clarifai platform by navigating to the directory containing the model and running the following command:
 
 <Tabs>
 <TabItem value="bash" label="CLI">
