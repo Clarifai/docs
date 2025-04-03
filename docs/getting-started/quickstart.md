@@ -58,7 +58,7 @@ For this example, we'll use the [Llama-3.2-3B-Instruct](https://clarifai.com/met
 
 ### Step 2: Run Your Inference in Playground
 
-You'll be taken to the AI Playground interface, which is a testing battleground that allows you to quickly interact with powerful Large Language Models (LLMs) without additional setup or authentication.
+You'll be taken to the AI Playground, which is a testing battleground that allows you to quickly interact with powerful AI models without additional setup.
 
 In the chat interface at the bottom of the Playground, enter your desired prompt to generate text with the selected model. Note that if the model supports image or video inputs as prompts, you can also upload them directly into the interface.
 
@@ -72,7 +72,7 @@ The results will be streamed directly in the interface, allowing you to see the 
 
 :::info
 
-- For this example, we're using the default settings for deployment (`Clarifai Shared`), inference parameters, and others. You can customize these settings as needed for more advanced use cases.
+- For this example, we're using the default settings for deployment (`Clarifai Shared`), inference parameters, and others. You can [customize](https://docs.clarifai.com/compute/models/model-inference/#model-playground) these settings as needed for more advanced use cases.
 
 - You can toggle the button in the upper-left section of the Playground to display ready-to-use API code snippets in various programming languages. Simply copy and use them in your project.
 
@@ -147,6 +147,10 @@ For this example, let's use the Llama-3.2-3B-Instruct model to generate text bas
     <CodeBlock className="language-text">{OutputExample}</CodeBlock>
 </details>
 
-<br/><br/>
+:::tip
+
+The examples above use the default `Clarifai Shared` deployment type for requests. Learn how to use our Compute Orchestration capabilities to make different types of inference API requests [here](https://docs.clarifai.com/compute/models/model-inference#via-the-api).
+
+:::
 
 Congratulations — you've just get started with the Clarifai platform!

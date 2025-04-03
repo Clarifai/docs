@@ -3,13 +3,13 @@ description: Changelog for Clarifai Release 11.3
 # For versioning, we use a negative position so that the oldest versions are displayed at the bottom. Any time you add a new version, increase the position by -1. 
 sidebar_position: -66
 pagination_next: null
-pagination_prev: product-updates/changelog/release111
-draft: true
+pagination_prev: product-updates/changelog/release112
+draft: false
 ---
 
 # Release 11.3
 
-**Release Date:** April 1st, 2025
+**Release Date:** April 3rd, 2025
 
 <hr/>
 
@@ -23,13 +23,13 @@ draft: true
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
-| ![new-feature](/img/new_feature.jpg)  | Introduced [Compute Orchestration](https://www.clarifai.com/products/compute-orchestration) | <ul> <li> You can now easily deploy any model, on any compute, at any scale. These capabilities allow you to optimize your AI compute, avoid vendor lock-in, and control spend more efficiently. </li> <li> Learn more about it [here](https://docs.clarifai.com/compute/overview).</li></ul>  |  
+| ![new-feature](/img/new_feature.jpg)  | Introduced [Compute Orchestration](https://www.clarifai.com/products/compute-orchestration) | <ul> <li> You can now easily deploy any model, on any compute, at any scale. These capabilities allow you to optimize your AI compute, avoid vendor lock-in, and control spend more efficiently. </li> <li> Introduced the "compute time" billable item to support this functionality. </li> <li> Learn more about it [here](https://docs.clarifai.com/compute/overview).</li></ul>  |  
 
 ##  AI Playground 
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
-| ![new-feature](/img/new_feature.jpg) | Introduced the AI Playground | <ul> <li> The Playground interface is a testing battleground that allows you to quickly interact with powerful Large Language Models (LLMs) without additional setup or authentication. </li> <li> Try it [here](https://clarifai.com/playground?model=Qwen2_5-VL-7B-Instruct). </li> </ul>  |   
+| ![new-feature](/img/new_feature.jpg) | Introduced the AI Playground | <ul> <li> The Playground interface is a testing battleground that allows you to quickly interact with powerful AI models without additional setup. </li> <li> Try it [here](https://clarifai.com/playground?model=Qwen2_5-VL-7B-Instruct). </li> </ul>  |   
 
 ## Labeling Tasks
 

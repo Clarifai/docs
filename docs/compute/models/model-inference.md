@@ -8,11 +8,19 @@ sidebar_position: 1
 **Perform predictions using your deployed models**
 <hr />
 
-Clarifai's Compute Orchestration capabilities provide efficient ways to make prediction calls to suit various use cases. Once your [model is deployed](https://docs.clarifai.com/compute/deployments/deploy-model), you can use it to perform inferences seamlessly.
+Clarifai's Compute Orchestration capabilities provide efficient ways to make prediction calls to suit various use cases. Once your model is deployed, you can use it to perform inferences seamlessly.
 
-:::warning Why Deployment Selection Matters
+:::warning Deploy model first
 
-To ensure proper routing and execution, you must specify the `deployment_id` parameter. This parameter is essential in directing prediction requests to the appropriate cluster and nodepool. For example, you can route requests to a GCP cluster by selecting a corresponding deployment ID, use a different deployment ID for an AWS cluster, and yet another for an on-premises deployment. This gives you full control over performance, costs, and security, allowing you to focus on building cutting-edge AI solutions while we handle the infrastructure complexity.
+- Before making the following prediction requests, ensure you have [set up a cluster](https://docs.clarifai.com/compute/deployments/clusters-nodepools), created a nodepool, and [deployed your model](https://docs.clarifai.com/compute/deployments/deploy-model). Once the model is deployed, you'll specify its `deployment_id` parameter, which is essential for proper routing and execution of your prediction request. 
+
+- If you do not specify the `deployment_id` parameter, the prediction will default to the `Clarifai Shared` deployment type.
+
+:::
+
+:::note Why Deployment Selection Matters
+
+The `deployment_id` parameter is vital in directing prediction requests to the appropriate cluster and nodepool. For example, you can route requests to a GCP cluster by selecting a corresponding deployment ID, use a different deployment ID for an AWS cluster, and yet another for an on-premises deployment. This gives you full control over performance, costs, and security, allowing you to focus on building cutting-edge AI solutions while we handle the infrastructure complexity.
 
 :::
 
@@ -92,12 +100,6 @@ Here, you’ll find a **Deployments & Usage** table listing all deployments asso
 
 To select a deployment, click the **Deployment** button. A dropdown list will appear, showing your available deployments. Choose the one you want to use to direct traffic to a specific cluster and nodepool. 
 
-:::note
-
-If no selection is made, the default **Clarifai Shared** deployment will be used.
-
-:::
-
 Once you’ve selected a deployment ID, go to the **Overview** pane to use it for making prediction requests.
 
 When inferencing using a deployed model, the request is routed to the nodepool within the cloud region specified in the cluster, and the model’s predictions are returned as output in real time.
@@ -106,7 +108,7 @@ When inferencing using a deployed model, the request is routed to the nodepool w
 
 ### Predictions Within Input-Viewer
 
-The single Input-Viewer is the main page that showcases the details of a single input available in your app. If you click an input listed on the [Inputs-Manager](https://docs.clarifai.com/portal-guide/inputs-manager/) page, you'll be redirected to the viewer page for that input, where you can view and interact with it.
+> The single Input-Viewer is the main page that showcases the details of a single input available in your app. If you click an input listed on the [Inputs-Manager](https://docs.clarifai.com/portal-guide/inputs-manager/) page, you'll be redirected to the viewer page for that input, where you can view and interact with it.
 
 To make predictions on an input, switch to predict mode by toggling the **Predict** button located in the top-right corner of the page. Next, click the **Choose a model or workflow** button in the right-hand sidebar to select the model you want to use. 
 

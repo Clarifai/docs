@@ -112,3 +112,5 @@ Once your custom model is ready, upload it to the Clarifai platform by navigatin
 </Tabs>
 
 Congratulations — you've just uploaded your first model to the Clarifai platform!
+
+Now, you can [deploy](https://docs.clarifai.com/compute/deployments/deploy-model) the model to a cluster and nodepool. This allows you to cost-efficiently and scalably make [inferences](https://docs.clarifai.com/compute/models/model-inference) with it. 
