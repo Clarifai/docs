@@ -22,7 +22,7 @@ Let’s demonstrate how you can successfully upload different types of models to
 - This new upload experience is compatible with the latest [`clarifai`](https://github.com/Clarifai/clarifai-python) Python package, starting from version 10.9.2. If you prefer the previous upload method, which is supported up to version 10.8.4, you can refer to the documentation [here](/others/old_model_upload_method.pdf).
 
 - You can run the following command to clone the [repository](https://github.com/Clarifai/examples/tree/main) containing examples of how to upload various model types and follow along with this tutorial:
-`git clone https://github.com/Clarifai/examples.git`. After cloning it, go to the `models/model_upload` folder.
+`git clone https://github.com/Clarifai/examples.git`. After cloning it, go to the `models/model_upload` directory.
 
 :::
 
@@ -52,6 +52,8 @@ import LLMConfig from "!!raw-loader!../../../../code_snippets/python-sdk/model-u
 import SpeechRecognitionModel from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/speech_recognition_model.py";
 import SpeechRecognitionRequirements from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/speech_recognition_requirements.txt";
 import SpeechRecognitionConfig from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/speech_recognition_config.yaml";
+
+import BuildLogs from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/build_logs.txt";
 
 ## Prerequisites
 
@@ -112,7 +114,7 @@ your_model_directory/
 
 Let's talk about the general steps you'd follow to upload any type of model to the Clarifai platform. You can refer to the [examples below](#examples) to help you configure your files correctly.
 
-### Step 1: Define the `config.yaml` File
+### Step 1: Prepare the `config.yaml` File
 
 The `config.yaml` file is essential for specifying the model’s metadata, compute resource requirements, and model checkpoints. 
 
@@ -159,7 +161,7 @@ Here, you define the minimum compute resources required for running your model, 
 - **`cpu_limit`** – Number of CPUs allocated for the model (follows Kubernetes notation, e.g., "1", "2").
 - **`cpu_memory`** – Minimum memory required for the CPU (uses Kubernetes notation, e.g., "1Gi", "1500Mi", "3Gi").
 - **`num_accelerators`** – Number of GPUs or TPUs to use for inference.
-- **`accelerator_type`** – Specifies the type of hardware [accelerators](https://docs.clarifai.com/portal-guide/compute-orchestration/cloud-instances) (e.g., GPU or TPU) supported by the model (e.g., "NVIDIA-A10G"). _Note that instead of specifying an exact accelerator type, you can use a wildcard `(*)` to automatically match all available accelerators that fit your use case. For example, using `[NVIDIA*]` will enable the system to choose from all NVIDIA options compatible with your model._
+- **`accelerator_type`** – Specifies the type of hardware [accelerators](https://docs.clarifai.com/compute/deployments/cloud-instances/) (e.g., GPU or TPU) supported by the model (e.g., "NVIDIA-A10G"). _Note that instead of specifying an exact accelerator type, you can use a wildcard `(*)` to automatically match all available accelerators that fit your use case. For example, using `[NVIDIA*]` will enable the system to choose from all NVIDIA options compatible with your model._
 - **`accelerator_memory`** – Minimum memory required for the GPU or TPU.
 
 #### Hugging Face Model Checkpoints  
@@ -241,14 +243,6 @@ This ensures the correct pre-built image is pulled from Clarifai's container reg
 
 We recommend using either `torch==2.5.1` or `torch==2.4.1`. If your model requires a different Torch version, you can specify it in requirements.txt, but this may slightly increase the model upload time.
 
-After stating the required dependencies in the `requirements.txt` file, run the following command to install them:
-
-<Tabs>
-<TabItem value="bash" label="Bash">
-    <CodeBlock className="language-bash"> pip install -r requirements.txt </CodeBlock>
-</TabItem>
-</Tabs>
-
 ### Step 3: Prepare the `model.py` File
 
 The `model.py` file contains the core logic for your model, including how the model is loaded and how predictions are made. This file must define a custom class that inherits from `ModelClass` and implements the required methods.
@@ -273,7 +267,7 @@ def load_model(self):
 
 #### b. Prediction Methods 
 
-You need to include at least one method decorated with `@ModelClass.method` to define prediction endpoints.
+You need to include at least one method decorated with `@ModelClass.method` to define [prediction endpoints](https://docs.clarifai.com/compute/models/model-inference).
 
 The following three method types are supported based on type hints:
 
@@ -288,7 +282,7 @@ def generate(self, prompt: Text) -> Stream[Text]
 def analyze_video(self, frames: Stream[Image]) -> Stream[str]
 ```
 
-:::tip
+:::warning Supported Input and Output Data Types
 
 Each parameter in the class methods must be annotated with a type, and the return type must also be specified. Clarifai's model framework supports rich data typing for both inputs and outputs. Supported types include `Text`, `Image`, `Audio`, `Video`, and more as illustrated [here](https://docs.clarifai.com/compute/models/model-upload/data-types).
 
@@ -307,7 +301,7 @@ Here is an example of a `model.py` file.
 
 Before uploading your model to the Clarifai platform, it's important to test it locally to catch any typos or misconfigurations in the code. 
 
-Learn how to test your models locally [here](https://docs.clarifai.com/sdk/compute-orchestration/test-models-locally). 
+Learn how to test your models locally [here](https://docs.clarifai.com/compute/models/model-upload/test-models-locally/). 
 
 ### Step 5: Upload the Model to Clarifai
 
@@ -329,13 +323,20 @@ Alternatively, navigate to the directory containing your custom model and run th
 </TabItem>
 </Tabs>
 
-This command builds the model’s Docker image using the defined compute resources and uploads it to Clarifai, where it can be served in production.
+This command builds the model’s Docker image using the defined compute resources and uploads it to Clarifai, where it can be served in production. 
+The build logs will be displayed in your terminal, which helps you troubleshoot any upload issues.
 
-Note that if you make any changes to your model and upload it again to the Clarifai platform, a new version of the model will be created automatically.
+> Note that if you make any changes to your model and upload it again to the Clarifai platform, a new version of the model will be created automatically.
+
+<details>
+  <summary>Build Logs Example</summary>
+
+    <CodeBlock className="language-text">{BuildLogs}</CodeBlock>
+</details>
 
 ### Step 6: Predict With Model
 
-Once the model is successfully uploaded to Clarifai, you can start making predictions with it. Note that before making a prediction request with our compute orchestration capabilities, ensure that you've created a compute cluster and set up a nodepool. 
+Once the model is successfully uploaded to Clarifai, you can start making predictions with it. Note that before making a prediction request with our Compute Orchestration capabilities, you need to first [deploy](https://docs.clarifai.com/compute/deployments/deploy-model) it into a cluster and nodepool you've created. 
 
 ## Examples
 
@@ -423,9 +424,9 @@ You can find various up-to-date model upload examples [here](https://github.com/
 </TabItem>
 </Tabs>
 
-:::note
+:::tip
 
-You can refer to the examples repository mentioned above for additional examples of uploading other large language models (LLMs).
+You can refer to [this examples repository](https://github.com/Clarifai/examples/tree/main/models/model_upload/llms) for additional examples of uploading other types of LLMs.
 
 :::
 
@@ -455,8 +456,3 @@ You can refer to the examples repository mentioned above for additional examples
 </TabItem>
 </Tabs>
 
-
-import DocCardList from '@theme/DocCardList';
-import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
-
-<DocCardList items={useCurrentSidebarCategory().items}/>

@@ -1,4 +1,5 @@
 checkpoints:
   type: "huggingface"
   repo_id: "meta-llama/Meta-Llama-3-8B-Instruct"
+  when: "runtime"
   hf_token: "your_hf_token" # Required for private models
