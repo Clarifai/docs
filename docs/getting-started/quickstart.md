@@ -29,7 +29,7 @@ import CodeBlock from "@theme/CodeBlock";
 import InstallJava from "!!raw-loader!../../code_snippets/new-docs/assorted/install-java.java";
 import PythonSDKRequest from "!!raw-loader!../../code_snippets/new-docs/assorted/python-sdk-request.py";
 import NodeSDKRequest from "!!raw-loader!../../code_snippets/new-docs/assorted/node-sdk-request.js";
-import CLIRequest from "!!raw-loader!../../code_snippets/new-docs/assorted/cli-request.txt";
+import CLIRequest from "!!raw-loader!../../code_snippets/new-docs/assorted/cli-request.sh";
 import CurlRequest from "!!raw-loader!../../code_snippets/new-docs/assorted/curl-request.sh";
 import JSRequest from "!!raw-loader!../../code_snippets/new-docs/assorted/js-request.html";
 import PyGRPCRequest from "!!raw-loader!../../code_snippets/new-docs/assorted/py-grpc-request.py";

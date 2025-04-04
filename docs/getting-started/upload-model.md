@@ -10,7 +10,7 @@ sidebar_position: 3
 
 The Clarifai platform allows you to upload custom models for a wide range of use cases. With just a few simple steps, you can get your models up and running and leverage the platform’s powerful capabilities.
 
-Let's demonstrate how you can upload the [Llama-3_2-1B-Instruct](https://github.com/Clarifai/examples/tree/main/models/model_upload/llms/llama-3_2-1b-instruct) model from Hugging Face to the Clarifai platform.
+Let's demonstrate how you can upload the [Llama-3-8B-Instruct](https://github.com/Clarifai/examples/tree/main/models/model_upload/llms/llama-3-8b-instruct) model from Hugging Face to the Clarifai platform.
 
 :::tip
 
@@ -22,9 +22,9 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
-import ModelPyFile from "!!raw-loader!../../code_snippets/python-sdk/model-upload/llama-3_2-1B-Instruct.py";
-import ConfigFile from "!!raw-loader!../../code_snippets/python-sdk/model-upload/llama-3_2-1B-Instruct.yaml";
-import RequirementsFile from "!!raw-loader!../../code_snippets/python-sdk/model-upload/llama-3_2-1B-Instruct.txt";
+import ModelPyFile from "!!raw-loader!../../code_snippets/python-sdk/model-upload/upload-first-model.py";
+import ConfigFile from "!!raw-loader!../../code_snippets/python-sdk/model-upload/upload-first-model.yaml";
+import RequirementsFile from "!!raw-loader!../../code_snippets/python-sdk/model-upload/upload-first-model.txt";
 
 ## Step 1: Perform Prerequisites
 
@@ -89,9 +89,9 @@ Add the following snippets to each of the respective files.
 
 ### `config.yaml`
 
-:::note
+:::info important
 
-In the `model` section of the `config.yaml` file, specify your model ID, Clarifai user ID, and Clarifai app ID. These will define where your model will be uploaded on the Clarifai platform. Also, specify [`hf_token`](https://huggingface.co/docs/hub/en/security-tokens) to authenticate your connection to Hugging Face services.
+In the `model` section of the `config.yaml` file, specify your model ID, Clarifai user ID, and Clarifai app ID. These will define where your model will be uploaded on the Clarifai platform. Also, specify [`hf_token`](https://huggingface.co/docs/hub/en/security-tokens) to authenticate your connection to Hugging Face services. You can obtain this token by creating a Hugging Face account.
 
 :::
 

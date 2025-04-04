@@ -130,12 +130,12 @@ class MyModel(ModelClass):
     
     # Load model and tokenizer
     self.tokenizer = AutoTokenizer.from_pretrained(checkpoints,)
-    self.tokenizer.pad_token = self.tokenizer.eos_token  # Set pad token to eos token
+    self.tokenizer.pad_token = self.tokenizer.eos_token
     self.model = AutoModelForCausalLM.from_pretrained(
         checkpoints,
         low_cpu_mem_usage=True,
         device_map=self.device,
-        torch_dtype=torch.bfloat16,
+        torch_dtype=torch.float16,
     )
     logger.info("Done loading!")
 

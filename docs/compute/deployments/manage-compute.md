@@ -162,6 +162,20 @@ To delete compute clusters, provide a list of compute cluster IDs to the `delete
 
 ### Deployments
 
+#### Copy Deployment ID
+
+You can view your deployment details — such as the deployment ID, cluster, and nodepool — by navigating to your model's playground page, selecting the **Deployments** tab, and checking the **Deployments & Usage** table.
+
+To copy a deployment ID, locate the **Deployment ID** column and copy the desired ID.
+
+![](/img/compute-orchestration/compute-26-1.png)
+
+:::tip
+
+The **Deployments & Usage** table also allows you to view deployment logs, edit a deployment, or delete a deployment. To do so, click the three-dot menu in the **Actions** column and select your desired option from the menu that appears. 
+
+:::
+
 #### View Deployment Logs
 
 You can access deployment logs to monitor performance and troubleshoot issues.
@@ -204,11 +218,6 @@ Note that since this action cannot be undone, you need to proceed with caution.
 Click the **Yes, delete** button to complete the deletion. 
 
 ![ ](/img/compute-orchestration/compute-26.png)
-
-> _Alternatively, you can delete a deployment from the model's playground page. In the **Deployments** tab, go to the **Deployments & Usage**
-table and click the three-dot menu in the **Actions** column. Then, select **Delete deployment** from the dropdown menu._
-
-> ![ ](/img/compute-orchestration/compute-26-1.png)
 
 ### Nodepools
 
