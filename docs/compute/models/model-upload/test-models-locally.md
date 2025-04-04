@@ -10,16 +10,37 @@ sidebar_position: 1
 
 <hr />
 
-To successfully upload a custom model to the Clarifai platform — whether you've built it from scratch or sourced it from an external repository like Hugging Face — it's crucial to test it locally in a Docker or virtual environment first. 
+Before uploading a custom model to the Clarifai platform, always test it locally. It ensures smooth performance, verifies dependency compatibility, and streamlines the deployment process.
 
-This step helps identify and resolve potential issues such as setup file errors, typos, code misconfigurations, or incorrect model implementations before uploading.
+This step helps you detect problems like setup file errors, typos, code misconfigurations, or incorrect model implementations — saving you time and avoiding upload failures.
 
-By doing so, you can ensure the model runs seamlessly and that all dependencies are properly configured, minimizing the risk of upload failures and ensuring optimal performance.
+:::note
+
+You should ensure your local environment has sufficient memory and compute resources to handle model loading and execution during the testing process.
+
+:::
 
 ## Prerequisites
 
-- Set up the latest version of the [Clarifai CLI](https://docs.clarifai.com/sdk/cli) (command line interface) tool.  We'll use the tool to test models in the local development environment. 
-- Set up either a Docker container (recommended) or a Python virtual [local development environment](https://docs.clarifai.com/sdk/compute-orchestration/model-upload#set-up-docker-or-a-virtual-environment). This ensures proper dependency management and prevents conflicts in your project.
+### Build a Model
+
+You can either build a custom model from scratch or leverage pre-trained models from external repositories like Hugging Face. 
+
+If you're developing your own model, our [step-by-step guide](https://docs.clarifai.com/compute/models/model-upload/) provides detailed instructions to get started. You can also explore our [examples repository](https://github.com/Clarifai/examples/tree/main/models/model_upload) to learn how to build models compatible with the Clarifai platform.
+
+### Install Clarifai CLI
+
+Install the latest version of the [Clarifai CLI](https://docs.clarifai.com/sdk/cli) (Command Line Interface) tool. We'll use this tool to test models in the local development environment. 
+
+<Tabs>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash"> pip install --upgrade clarifai </CodeBlock>
+</TabItem>
+</Tabs>
+
+### Set up Docker or a Virtual Environment
+
+Set up either a Docker container (recommended) or a Python virtual [local development environment](https://docs.clarifai.com/compute/models/model-upload/#set-up-docker-or-a-virtual-environment) for testing the model locally. This ensures proper dependency management and prevents conflicts in your project.
 
 
 
@@ -28,7 +49,7 @@ import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
 import TestModel from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/test_model.py";
-
+import TestLocally1 from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/test_locally-1.txt";
 
 :::note CLI Flags
 
@@ -78,6 +99,13 @@ Here is how to test a model in a virtual environment:
 </TabItem>
 </Tabs>
 
+<!--
+<details>
+  <summary>Example</summary>
+
+    <CodeBlock className="language-text">{TestLocally1}</CodeBlock>
+</details>
+-->
 
 ## Test by Starting a gRPC Server
 
@@ -109,10 +137,7 @@ Once the model is running locally, you need to configure the `CLARIFAI_API_BASE`
 </TabItem>
 </Tabs>
 
-You can then make different [types of inference requests](https://docs.clarifai.com/sdk/compute-orchestration/set-up-compute#predict-with-deployed-model) using the model — unary-unary, unary-stream, or stream-stream predict calls.
-
-Here is an example of a unary-unary prediction call:
-
+You can then make [inference requests](https://docs.clarifai.com/compute/models/model-inference) using the model. Here is an example:
 
 <Tabs>
 <TabItem value="python" label="Python">

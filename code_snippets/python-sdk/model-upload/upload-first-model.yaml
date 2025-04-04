@@ -1,7 +1,7 @@
 # This is the sample config file for the llama model.
 
 model:
-  id: "llama_3_2_1b_instruct"
+  id: "llama-3-8b-instruct"
   user_id: "user_id"
   app_id: "app_id"
   model_type_id: "text-to-text"
@@ -11,13 +11,12 @@ build_info:
 
 inference_compute_info:
   cpu_limit: "1"
-  cpu_memory: "13Gi"
+  cpu_memory: "8Gi"
   num_accelerators: 1
-  accelerator_type: ["NVIDIA*"]
-  accelerator_memory: "18Gi"
+  accelerator_type: ["NVIDIA-*"]
+  accelerator_memory: "12Gi"
 
 checkpoints:
   type: "huggingface"
-  repo_id: "meta-llama/Llama-3.2-1B-Instruct"
-  when: "runtime"
+  repo_id: "casperhansen/llama-3-8b-instruct-awq"
   hf_token: "hf_token"

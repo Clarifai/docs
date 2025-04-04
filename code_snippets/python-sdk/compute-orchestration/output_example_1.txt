@@ -1,0 +1,5 @@
+2025-04-04 13:27:15.990657 INFO     Qwen2_5-VL-7B-Instruct model is still deploying, please wait...         model.py:443
+2025-04-04 13:27:30.233847 INFO     Qwen2_5-VL-7B-Instruct model is still deploying, please wait...         model.py:443
+2025-04-04 13:27:45.624827 INFO     Qwen2_5-VL-7B-Instruct model is still deploying, please wait...         model.py:443
+2025-04-04 13:28:02.551081 INFO     Qwen2_5-VL-7B-Instruct model is still deploying, please wait...         model.py:443
+This image captures three seagulls in flight over a body of water, likely a lake or river. The background is a natural setting with dry grass and trees, suggesting it might be late autumn or early spring. The seagulls appear to be gliding close to the water's surface, possibly searching for food. The lighting indicates it could be a sunny day. This scene is typical of coastal or lakeside environments where seagulls often congregate.

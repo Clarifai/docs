@@ -1,22 +1,54 @@
+##################################################################################################
+# Change these strings to run your own example
+##################################################################################################
+
+# Your PAT (Personal Access Token) can be found in the Account's Security section
+PAT = "YOUR_PAT_HERE"
+USER_ID = "YOUR_USER_ID_HERE"
+PROMPT = "What is the future of AI?"
+MODEL_URL = "https://clarifai.com/meta/Llama-3/models/Llama-3_2-3B-Instruct"
+DEPLOYMENT_ID = "YOUR_DEPLOYMENT_ID_HERE"
+
+##################################################################################################
+# YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
+##################################################################################################
+
 from clarifai.client.model import Model
 
-model_url = "https://clarifai.com/meta/Llama-3/models/llama-3_2-3b-instruct"
-
-# URL of the prompt text
-text_url = "https://samples.clarifai.com/featured-models/falcon-instruction-guidance.txt"
-
-# Initialize the model 
+# Initialize the model
 model = Model(
-    url=model_url, 
-    pat="YOUR_PAT_HERE" 
+    url=MODEL_URL,  # Or, use model_id="YOUR_MODEL_ID_HERE"
+    pat=PAT
 )
 
-# Perform unary-stream prediction with the specified compute cluster and nodepool
-stream_response = model.generate_by_url(
-    text_url, 
+# Make a unary-stream prediction using the prompt as bytes
+response_stream = model.generate_by_bytes(
+    PROMPT.encode(),
     input_type="text",
-    deployment_id="test-deployment"
+    user_id=USER_ID,
+    deployment_id=DEPLOYMENT_ID
 )
 
-# Handle the stream of responses
-list_stream_response = [response for response in stream_response]
+# Iterate through streamed responses and print them
+for response in response_stream:
+    if response.outputs and response.outputs[0].data.text:
+        print(response.outputs[0].data.text.raw)
+
+# Print a newline at the end for better formatting
+print()
+
+##################################################################################################
+# ADDITIONAL EXAMPLES
+##################################################################################################
+
+# Example stream prediction using a cluster and nodepool (no deployment ID needed):
+# for response in Model(url=MODEL_URL, pat="YOUR_PAT_HERE").generate_by_bytes("YOUR_PROMPT_HERE".encode(), input_type="text", user_id="YOUR_USER_ID_HERE", compute_cluster_id="YOUR_CLUSTER_ID", nodepool_id="YOUR_NODEPOOL_ID"):
+#     print(response.outputs[0].data.text.raw)
+
+# Example unary-stream prediction via URL:
+# for response in Model(url=MODEL_URL, pat="YOUR_PAT_HERE").generate_by_url("INPUT_URL_HERE", input_type="text", user_id="YOUR_USER_ID_HERE", deployment_id="YOUR_DEPLOYMENT_ID_HERE"):
+#     print(response.outputs[0].data.text.raw)
+
+# Example unary-stream prediction via filepath:
+# for response in Model(url=MODEL_URL, pat="YOUR_PAT_HERE").generate_by_filepath("INPUT_FILEPATH_HERE", input_type="text", user_id="YOUR_USER_ID_HERE", deployment_id="YOUR_DEPLOYMENT_ID_HERE"):
+#     print(response.outputs[0].data.text.raw)

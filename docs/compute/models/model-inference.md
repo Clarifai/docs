@@ -12,7 +12,7 @@ Clarifai's Compute Orchestration capabilities provide efficient ways to make pre
 
 :::warning Deploy model first
 
-- Before making the following prediction requests, ensure you have [set up a cluster](https://docs.clarifai.com/compute/deployments/clusters-nodepools), created a nodepool, and [deployed your model](https://docs.clarifai.com/compute/deployments/deploy-model). Once the model is deployed, you'll specify its `deployment_id` parameter, which is essential for proper routing and execution of your prediction request. 
+- Before making the following prediction requests, ensure you have [set up a cluster](https://docs.clarifai.com/compute/deployments/clusters-nodepools), created a nodepool, and [deployed your model](https://docs.clarifai.com/compute/deployments/deploy-model) in it. Once the model is deployed, you'll specify its `deployment_id` parameter, which is essential for proper routing and execution of your prediction request. 
 
 - If you do not specify the `deployment_id` parameter, the prediction will default to the `Clarifai Shared` deployment type.
 
@@ -32,6 +32,11 @@ import CO19 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchest
 import CL22 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/cli_predict_with_model.sh";
 import CO20 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/predict_with_model_2.py";
 import CO21 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/predict_with_model_3.py";
+
+
+import OutputExample1 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/output_example_1.txt";
+import OutputExample2 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/output_example_2.txt";
+import OutputExample3 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/output_example_3.txt";
 
 ## **Via the API**
 
@@ -54,6 +59,11 @@ It supports the following prediction methods:
 </TabItem>
 </Tabs>
 
+<details>
+  <summary>Example Output</summary>
+    <CodeBlock className="language-text">{OutputExample1}</CodeBlock>
+</details>
+
 ### Unary-Stream Predict Call 
 
 The **Unary-Stream** predict call processes a single input, but returns a stream of responses. It is particularly useful for tasks where multiple outputs are generated from a single input, such as generating text completions from a prompt.
@@ -69,6 +79,11 @@ It supports the following prediction methods:
     <CodeBlock className="language-python">{CO20}</CodeBlock>
 </TabItem>
 </Tabs>
+
+<details>
+  <summary>Example Output</summary>
+    <CodeBlock className="language-text">{OutputExample2}</CodeBlock>
+</details>
 
 ###  Stream-Stream Predict Call 
 
@@ -87,6 +102,14 @@ It supports the following prediction methods:
     <CodeBlock className="language-python">{CO21}</CodeBlock>
 </TabItem>
 </Tabs>
+
+<!--
+<details>
+  <summary>Example Output</summary>
+    <CodeBlock className="language-text">{OutputExample3}</CodeBlock>
+</details>
+
+-->
 
 ## **Via the UI**
 
