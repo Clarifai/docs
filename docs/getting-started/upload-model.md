@@ -45,8 +45,11 @@ You need to set the `CLARIFAI_PAT` (Personal Access Token) as an environment var
 This token is essential for authenticating your connection to the Clarifai platform.
 
 <Tabs>
-<TabItem value="bash" label="Bash">
+<TabItem value="bash" label="Unix-Like Systems">
     <CodeBlock className="language-bash"> export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
+</TabItem>
+<TabItem value="bash2" label="Windows">
+    <CodeBlock className="language-bash"> set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
 </TabItem>
 </Tabs>
 
