@@ -12,6 +12,10 @@ sidebar_position: 1
 
 With an intuitive, object-oriented approach, you can accelerate your AI development with just a few lines of code.
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+
 ## Installation
 
 ### Install via PyPI
@@ -47,6 +51,12 @@ Clarifai uses Personal Access Tokens (PATs) to authenticate API requests. You ca
 
 To set your PAT as an environment variable and use it with the Python SDK, run:
 
-```python
-export CLARIFAI_PAT=YOUR_PAT_HERE
-```
+
+<Tabs>
+<TabItem value="bash" label="Unix-Like Systems">
+    <CodeBlock className="language-bash"> export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
+</TabItem>
+<TabItem value="bash2" label="Windows">
+    <CodeBlock className="language-bash"> set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
+</TabItem>
+</Tabs>

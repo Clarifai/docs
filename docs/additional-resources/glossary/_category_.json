@@ -1,6 +1,6 @@
 {
   "label": "Glossary",
-  "position": 10,
-  "collapsible": false,
-  "collapsed": false
+  "position": 5,
+  "collapsible": true,
+  "collapsed": true
 }
