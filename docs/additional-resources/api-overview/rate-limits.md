@@ -1,6 +1,6 @@
 ---
 description: Learn about our API rate limits
-sidebar_position: 1
+sidebar_position: 7
 ---
 
 # Rate Limits

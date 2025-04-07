@@ -50,7 +50,7 @@
     "from": ["/clarifai-basics/authentication/factor-authentication"]
   },
   {
-    "to": "/additional-resources/app-templates",
+    "to": "/additional-resources/applications/app-templates",
     "from": ["/clarifai-basics/app-templates"]
   },
   {
@@ -97,5 +97,50 @@
   {
     "to": "/compute/deployments/cloud-instances",
     "from": ["/portal-guide/compute-orchestration/cloud-instances"]
+  },
+  {
+    "to": "/additional-resources/api-overview/python-sdk",
+    "from": ["/sdk/python-installation"]
+  },
+  {
+    "to": "/additional-resources/api-overview/cli",
+    "from": ["/sdk/cli"]
+  },
+  {
+    "to": "/additional-resources/api-overview/nodejs-sdk",
+    "from": ["/sdk/node-js-installation"]
+  },
+  {
+    "to": "/additional-resources/api-overview/",
+    "from": ["/api-guide/api-overview/"]
+  },
+  {
+    "to": "/additional-resources/api-overview/rate-limits",
+    "from": ["/api-guide/api-overview/rate-limits"]
+  },
+  {
+    "to": "/additional-resources/api-references/api-reference",
+    "from": ["/sdk/api-reference"]
+  },
+  {
+    "to": "/additional-resources/api-references/node-api-reference/",
+    "from": ["/sdk/node-js-installation"]
+  },
+  {
+    "to": "/additional-resources/api-references/postman",
+    "from": ["/api-guide/api-overview/helpful-api-resources/using-postman-with-clarifai-apis", "/api-guide/api-overview/helpful-api-resources"]
+  },
+  {
+    "to": "/additional-resources/api-overview/status-codes",
+    "from": ["/api-guide/api-overview/status-codes"]
+  },
+  {
+    "to": "/additional-resources/api-overview/pagination",
+    "from": ["/api-guide/api-overview/pagination"]
+  },
+  {
+    "to": "/additional-resources/api-overview/grpc-clients",
+    "from": ["/api-guide/api-overview/api-clients/", "/api-guide/api-overview/api-clients/grpc-vs-http-channels"]
   }
+
 ]
