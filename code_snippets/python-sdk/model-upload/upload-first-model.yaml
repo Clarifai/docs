@@ -18,5 +18,6 @@ inference_compute_info:
 
 checkpoints:
   type: "huggingface"
+  when: "runtime"
   repo_id: "casperhansen/llama-3-8b-instruct-awq"
   hf_token: "hf_token"
