@@ -124,7 +124,7 @@
   },
   {
     "to": "/additional-resources/api-references/node-api-reference/",
-    "from": ["/sdk/node-js-installation"]
+    "from": ["/sdk/node-api-reference/"]
   },
   {
     "to": "/additional-resources/api-references/postman",

@@ -118,7 +118,7 @@ const config = {
               }, 
               {
                 label: "Postman API Reference",
-                to: "/additional-resources/api-references/postman"
+                href: "https://documenter.getpostman.com/view/30622694/2s9YkuZdro"
               }
             ]
           }, 
@@ -140,12 +140,6 @@ const config = {
             'aria-label': 'Discord'
           },
           {
-            href: 'https://documenter.getpostman.com/view/30622694/2s9YkuZdro',
-            className: 'header-postman-link',
-            position: 'right',
-            'aria-label': 'Postman'
-          },
-          {
             href: 'https://x.com/clarifai',
             className: 'header-x-link',
             position: 'right',
@@ -156,6 +150,18 @@ const config = {
             className: 'header-linkedin-link',
             position: 'right',
             'aria-label': 'LinkedIn'
+          },
+          {
+            href: 'https://documenter.getpostman.com/view/30622694/2s9YkuZdro',
+            className: 'header-postman-link',
+            position: 'right',
+            'aria-label': 'Postman'
+          },
+          {
+            href: 'https://api.clarifai.com/api-doc/?url=https://api.clarifai.com/v2/swagger.json',
+            className: 'header-swagger-link',
+            position: 'right',
+            'aria-label': 'Swagger'
           },
           {
             label: 'Explore Community',
