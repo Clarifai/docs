@@ -9,7 +9,22 @@
       "/clarifai-basics/quick-start/your-first-custom-model"
     ]
   },
-
+  {
+    "to": "/create-manage/applications/",
+    "from": ["/clarifai-basics/applications/"]
+  },
+  {
+    "to": "/create-manage/applications/create",
+    "from": ["/clarifai-basics/applications/create-an-application"]
+  },
+  {
+    "to": "/create-manage/applications/manage",
+    "from": ["/clarifai-basics/applications/application-settings"]
+  },
+  {
+    "to": "/create-manage/applications/collaboration",
+    "from": ["/clarifai-basics/applications/collaboration"]
+  },
   {
     "to": "/additional-resources/authentication/",
     "from": ["/clarifai-basics/authentication/"]
@@ -34,7 +49,10 @@
     "to": "/additional-resources/authentication/factor-authentication",
     "from": ["/clarifai-basics/authentication/factor-authentication"]
   },
-
+  {
+    "to": "/create-manage/applications/templates",
+    "from": ["/clarifai-basics/app-templates"]
+  },
   {
     "to": "/additional-resources/glossary/",
     "from": ["/glossary/general-ai/"]
