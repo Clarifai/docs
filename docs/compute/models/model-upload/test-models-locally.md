@@ -48,10 +48,9 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
-import TestModel from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/test_model.py";
 import TestLocally1 from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/test_locally-1.txt";
 
-:::note CLI Flags
+:::info CLI Flags
 
 These are the key CLI flags available for local testing and running your models:
 
@@ -63,7 +62,7 @@ These are the key CLI flags available for local testing and running your models:
 
 :::
 
-:::tip Local Model Path
+:::note How to specify Local Model Path
 
 You can specify the path to the directory containing the custom model you want to test. For example, if your model's files are stored in `./examples/models/clarifai_llama`, use the following command:  
 
@@ -127,7 +126,7 @@ Here is how to test a model in a virtual environment:
 </TabItem>
 </Tabs>
 
-## Make Inference Requests
+### Make Inference Requests
 
 Once the model is running locally, you need to configure the `CLARIFAI_API_BASE` environment variable to point to the localhost and port where the gRPC server is running.
 
@@ -137,12 +136,5 @@ Once the model is running locally, you need to configure the `CLARIFAI_API_BASE`
 </TabItem>
 </Tabs>
 
-You can then make [inference requests](https://docs.clarifai.com/compute/models/model-inference) using the model. Here is an example:
-
-<Tabs>
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python">{TestModel}</CodeBlock>
-</TabItem>
-</Tabs>
-
+You can then make [inference requests](https://docs.clarifai.com/compute/models/model-inference) using the model. 
 

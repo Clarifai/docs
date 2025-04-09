@@ -119,6 +119,10 @@ const config = {
               {
                 label: "Postman API Reference",
                 href: "https://documenter.getpostman.com/view/30622694/2s9YkuZdro"
+              },
+              {
+                label: "Swagger API Reference",
+                href: "https://api.clarifai.com/api-doc/?url=https://api.clarifai.com/v2/swagger.json"
               }
             ]
           }, 
@@ -150,25 +154,20 @@ const config = {
             className: 'header-linkedin-link',
             position: 'right',
             'aria-label': 'LinkedIn'
+          }, 
+          {
+            label: 'Login',
+            href: "https://clarifai.com/login?__hstc=56460205.941fd3bdff0d161c2f70ccba4c9dcb6b.1707280236564.1715406292479.1715409915530.11&__hssc=56460205.1.1715409915530&__hsfp=1566939966",
+            className: 'login-link',
+            position: 'right',
+            'aria-label': 'Login'
           },
           {
-            href: 'https://documenter.getpostman.com/view/30622694/2s9YkuZdro',
-            className: 'header-postman-link',
+            label: 'Start for free',
+            href: "https://clarifai.com/signup?__hstc=56460205.941fd3bdff0d161c2f70ccba4c9dcb6b.1707280236564.1715406292479.1715409915530.11&__hssc=56460205.1.1715409915530&__hsfp=1566939966",
+            className: 'signup-button',
             position: 'right',
-            'aria-label': 'Postman'
-          },
-          {
-            href: 'https://api.clarifai.com/api-doc/?url=https://api.clarifai.com/v2/swagger.json',
-            className: 'header-swagger-link',
-            position: 'right',
-            'aria-label': 'Swagger'
-          },
-          {
-            label: 'Explore Community',
-            href: "https://clarifai.com/explore",
-            className: 'header-primary-cta-link',
-            position: 'right',
-            'aria-label': 'Explore Community'
+            'aria-label': 'Start for free'
           },
   
         ],

@@ -1,11 +1,11 @@
 ---
-description: Learn how to upload your model to the Clarifai platform
+description: Upload a model from Hugging Face to the Clarifai platform
 sidebar_position: 3
 ---
 
 # Upload Your First Model
 
-**Learn how to upload your model to the Clarifai platform**
+**Upload a model from Hugging Face to the Clarifai platform**
 <hr />
 
 The Clarifai platform allows you to upload custom models for a wide range of use cases. With just a few simple steps, you can get your models up and running and leverage the platform’s powerful capabilities.
@@ -53,6 +53,11 @@ This token is essential for authenticating your connection to the Clarifai platf
 </TabItem>
 </Tabs>
 
+### Get a Hugging Face Access Token
+
+To download models from the Hugging Face platform, you'll need to authenticate your connection. You can create a Hugging Face account, then generate an access token to authorize your downloads. 
+
+You can follow the step-by-step guide [here](https://huggingface.co/docs/hub/en/security-tokens) to get it.
 
 ## Step 2: Create Files
 
@@ -94,7 +99,7 @@ Add the following snippets to each of the respective files.
 
 :::info important
 
-In the `model` section of the `config.yaml` file, specify your model ID, Clarifai user ID, and Clarifai app ID. These will define where your model will be uploaded on the Clarifai platform. Also, specify [`hf_token`](https://huggingface.co/docs/hub/en/security-tokens) to authenticate your connection to Hugging Face services. You can obtain this token by creating a Hugging Face account.
+In the `model` section of the `config.yaml` file, specify your model ID, Clarifai user ID, and Clarifai app ID. These will define where your model will be uploaded on the Clarifai platform. You also need to specify the `hf_token` to authenticate your connection to Hugging Face, as [described](#get-a-hugging-face-access-token) earlier.
 
 :::
 

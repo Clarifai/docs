@@ -3,14 +3,14 @@ description: Learn how to create a Clarifai App
 sidebar_position: 1
 ---
 
-# Create an Application
+# Apps Creation
 
 **Learn how to create a Clarifai application**
 <hr />
 
-As mentioned previously, [apps](https://docs.clarifai.com/clarifai-basics/applications/) on the Clarifai platform act as a central repository for models, datasets, inputs, and other resources. 
+As mentioned previously, [an app](https://docs.clarifai.com/create-manage/applications/) on the Clarifai platform acts as a central repository for models, datasets, inputs, and other resources. 
 
-## Create an App on the Portal
+## Create an App via the UI 
 
 To create an app, [log in](https://clarifai.com/login) to your account and click the **Create** button at the upper-right section of the navigation bar.
 
@@ -55,7 +55,7 @@ Lastly, click the **Create App** button at the upper-right corner of the page.
 You can also set the default language so that you can create, train, and search concepts in your own language. Please keep in mind that pre-trained model concepts currently only work in English.
 -->
 
-## Copy (Duplicate) Apps
+### Copy (Duplicate) Apps
 
 You can also create an app by cloning an existing application. Cloning an existing application can be a great way to start a new project, or branch an existing one. We’ve made cloning easy with a simple interface in the Portal. 
 
@@ -73,7 +73,7 @@ The small window that pops up lets you select the destination user or organizati
 Lastly, click the **Confirm** button, and the copied app will be automatically created for you. 
 
 
-## Create Apps Programmatically
+## Create an App via the API
 
 For enterprise customers, it is also possible to generate applications programmatically. 
 

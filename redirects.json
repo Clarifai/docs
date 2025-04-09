@@ -10,19 +10,19 @@
     ]
   },
   {
-    "to": "/additional-resources/applications/",
+    "to": "/create-manage/applications/",
     "from": ["/clarifai-basics/applications/"]
   },
   {
-    "to": "/additional-resources/applications/create-an-application",
+    "to": "/create-manage/applications/create",
     "from": ["/clarifai-basics/applications/create-an-application"]
   },
   {
-    "to": "/additional-resources/applications/application-settings",
+    "to": "/create-manage/applications/manage",
     "from": ["/clarifai-basics/applications/application-settings"]
   },
   {
-    "to": "/additional-resources/applications/collaboration",
+    "to": "/create-manage/applications/collaboration",
     "from": ["/clarifai-basics/applications/collaboration"]
   },
   {
@@ -50,7 +50,7 @@
     "from": ["/clarifai-basics/authentication/factor-authentication"]
   },
   {
-    "to": "/additional-resources/applications/app-templates",
+    "to": "/create-manage/applications/templates",
     "from": ["/clarifai-basics/app-templates"]
   },
   {
