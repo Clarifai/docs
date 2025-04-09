@@ -57,7 +57,7 @@ This token is essential for authenticating your connection to the Clarifai platf
 
 To download models from the Hugging Face platform, you'll need to authenticate your connection. You can create a Hugging Face account, then generate an access token to authorize your downloads. 
 
-You can follow the step-by-step guide [here](https://huggingface.co/docs/hub/en/security-tokens) to get it.
+You can follow the guide [here](https://huggingface.co/docs/hub/en/security-tokens) to get it.
 
 ## Step 2: Create Files
 
