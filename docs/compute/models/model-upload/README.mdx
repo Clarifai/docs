@@ -204,20 +204,14 @@ Downloading checkpoints at `build` or `upload` time can significantly increase i
 
 #### Model Concepts or Labels
 
-:::important
-
-This section is required if your model outputs concepts or labels and is not being directly loaded from Hugging Face.
-
-:::
-
-For models that output concepts or labels, you must define a `concepts` section in the `config.yaml` file. 
+This section is required if your model outputs concepts or labels and is not being directly loaded from Hugging Face. So, you must define a `concepts` section in the `config.yaml` file. 
 
 The following model types output concepts or labels:
 
 - `visual-classifier`
 - `visual-detector`
 - `visual-segmenter`
-- `text-classifier`. 
+- `text-classifier` 
 
 <Tabs>
 <TabItem value="yaml" label="YAML">
@@ -256,7 +250,13 @@ We recommend using either `torch==2.5.1` or `torch==2.4.1`. If your model requir
 
 The `model.py` file contains the core logic for your model, including how the model is loaded and how predictions are made. This file must define a custom class that inherits from `ModelClass` and implements the required methods.
 
-To define a custom model, create a class that inherits from `ModelClass` and implements the following:
+:::warning [Supported Input and Output Data Types](https://docs.clarifai.com/compute/models/model-upload/data-types/)
+
+Each parameter in the class methods must be annotated with a type, and the return type must also be specified. Clarifai's model framework supports rich data typing for both inputs and outputs. Supported types include `Text`, `Image`, `Audio`, `Video`, and more.
+
+:::
+
+To define a custom model, create a class that inherits from `ModelClass` and implements the following methods:
 
 #### a. `load_model` Method 
 
@@ -276,26 +276,23 @@ def load_model(self):
 
 #### b. Prediction Methods 
 
-You need to include at least one method decorated with `@ModelClass.method` to define [prediction endpoints](https://docs.clarifai.com/compute/models/model-inference).
+You need to include at least one method decorated with `@ModelClass.method` to define the [prediction endpoints](https://docs.clarifai.com/compute/models/model-inference).
 
 The following three method types are supported based on type hints:
 
 ```python
 # Unary-Unary (Standard request-response)
+@ModelClass.method
 def predict(self, input: Image) -> Text
 
 # Unary-Stream (Server-side streaming)
+@ModelClass.method
 def generate(self, prompt: Text) -> Stream[Text]
 
 # Stream-Stream (Bidirectional streaming)
+@ModelClass.method
 def analyze_video(self, frames: Stream[Image]) -> Stream[str]
 ```
-
-:::warning Supported Input and Output Data Types
-
-Each parameter in the class methods must be annotated with a type, and the return type must also be specified. Clarifai's model framework supports rich data typing for both inputs and outputs. Supported types include `Text`, `Image`, `Audio`, `Video`, and more as illustrated [here](https://docs.clarifai.com/compute/models/model-upload/data-types).
-
-:::
 
 Here is an example of a `model.py` file. 
 
@@ -345,7 +342,7 @@ The build logs will be displayed in your terminal, which helps you troubleshoot 
 
 ### Step 6: Predict With Model
 
-Once the model is successfully uploaded to Clarifai, you can start making predictions with it. Note that before making a prediction request with our Compute Orchestration capabilities, you need to first [deploy](https://docs.clarifai.com/compute/deployments/deploy-model) it into a cluster and nodepool you've created. 
+Once the model is successfully uploaded to Clarifai, you can start making [predictions](https://docs.clarifai.com/compute/models/model-inference) with it. Note that before making a prediction request with our Compute Orchestration capabilities, you need to first deploy it into a cluster and nodepool you've created. 
 
 ## Examples
 

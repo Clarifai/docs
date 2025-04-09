@@ -3,7 +3,7 @@ description: How to view and change the settings of an application
 sidebar_position: 2
 ---
 
-# App Overview and Settings
+# Apps Management
 
 **View and change an application's settings**
 <hr />
