@@ -68,7 +68,8 @@ Then, click the arrow icon to submit your request.
 
 ![](/img/new-docs/playground-3.png)
 
-The results will be streamed directly in the interface, allowing you to see the output in real time.
+The results will be streamed directly in the interface, allowing you to see the output in real time. Note that since we support streaming capabilities, you can interact with language models as they generate responses token by token — just like in a live chat experience.
+
 
 :::info
 

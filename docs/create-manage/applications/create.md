@@ -10,7 +10,7 @@ sidebar_position: 1
 
 As mentioned previously, [an app](https://docs.clarifai.com/create-manage/applications/) on the Clarifai platform acts as a central repository for models, datasets, inputs, and other resources. 
 
-## Create an App via the UI 
+## **Create via the UI**
 
 To create an app, [log in](https://clarifai.com/login) to your account and click the **Create** button at the upper-right section of the navigation bar.
 
@@ -73,32 +73,45 @@ The small window that pops up lets you select the destination user or organizati
 Lastly, click the **Confirm** button, and the copied app will be automatically created for you. 
 
 
-## Create an App via the API
+## **Create via the API**
 
-For enterprise customers, it is also possible to generate applications programmatically. 
+For enterprise customers, it is possible to generate applications programmatically. Note that you need to use a [Personal Access Token (PAT)](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens) to create an application. 
 
-If you are managing the work of multiple users, who's data, models, and concepts that need to be segregated, we recommend you create apps this way. This ensures that each individual user only has access to their own private resources.
+### Create App With Default Base Workflow
 
-:::tip
+[The base workflow](https://docs.clarifai.com/portal-guide/workflows/base-workflows/) acts as the default knowledge base for your app and provides the basic structure for indexing your data. 
 
-You need to use a [Personal Access Token (PAT)](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens) to create an application. 
+If you create an application without specifying the base workflow, a default one will be automatically created for you.
 
-:::
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+
+import CodeCreateApp from "!!raw-loader!../../../code_snippets/python-sdk/create-apps/create_app.py";
+import CodeCreateAppTS from "!!raw-loader!../../../code_snippets/python-sdk/create-apps/createApp.ts";
+import CodeCreateAppBase from "!!raw-loader!../../../code_snippets/python-sdk/create-apps/create_app_base_workflow.py";
+
+import CodeOutputCreateApp from "!!raw-loader!../../../code_snippets/python-sdk/create-apps/outputs/create_app.txt";
+
 
 <Tabs>
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{CodeCreateApp}</CodeBlock> 
+</TabItem>
+<TabItem value="typescript" label="Node.js SDK">
+    <CodeBlock className="language-typescript">{CodeCreateAppTS}</CodeBlock>
+</TabItem>
 <TabItem value="curl" label="cURL">
 
-```text
+```javascript
 curl --location --request POST "https://api.clarifai.com/v2/users/YOUR_USER_ID_HERE/apps/" \
 --header "Content-Type: application/json" \
 --header "Authorization: Key YOUR_PAT_HERE" \
 --data-raw '{
     "apps": [
         {
-            "id": "test-application"
+            "id": "test-app"
         }
     ]
 }'
@@ -107,4 +120,22 @@ curl --location --request POST "https://api.clarifai.com/v2/users/YOUR_USER_ID_H
 </TabItem>
 </Tabs>
 
+<details>
+  <summary>Example Output</summary>
+    <CodeBlock className="language-text">{CodeOutputCreateApp}</CodeBlock>
+</details>
+
+
+
+### Create App With Different Base Workflow
+
+You can create an app with a different base workflow. You can choose from a range of available base workflows, including **Empty**, **Universal**, **Language Understanding**, and **General**. 
+
+This enables you to seamlessly integrate and customize the fundamental structure of your app, ensuring it aligns perfectly with your project requirements.
+
+<Tabs>
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{CodeCreateAppBase}</CodeBlock>
+</TabItem>
+</Tabs>
 

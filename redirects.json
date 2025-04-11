@@ -19,7 +19,7 @@
   },
   {
     "to": "/create-manage/applications/manage",
-    "from": ["/clarifai-basics/applications/application-settings"]
+    "from": ["/clarifai-basics/applications/application-settings", "/sdk/create-apps"]
   },
   {
     "to": "/create-manage/applications/collaboration",
@@ -141,6 +141,10 @@
   {
     "to": "/additional-resources/api-overview/grpc-clients",
     "from": ["/api-guide/api-overview/api-clients/", "/api-guide/api-overview/api-clients/grpc-vs-http-channels"]
+  },
+  {
+    "to": "/create-manage/applications/manage#collaborators",
+    "from": ["/create-manage/applications/collaboration"]
   }
 
 ]

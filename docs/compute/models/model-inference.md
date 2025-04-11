@@ -51,7 +51,7 @@ It supports the following prediction methods:
 - `predict_by_filepath` — Provide the local file path for the input. 
 
 <Tabs>
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO19}</CodeBlock>
 </TabItem>
 <TabItem value="bash" label="CLI">
@@ -75,7 +75,7 @@ It supports the following prediction methods:
 - `generate_by_filepath` — Use a local file path for the input.
 
 <Tabs>
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO20}</CodeBlock>
 </TabItem>
 </Tabs>
@@ -98,7 +98,7 @@ It supports the following prediction methods:
 - `stream_by_filepath` — Stream inputs from local file paths.
 
 <Tabs>
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO21}</CodeBlock>
 </TabItem>
 </Tabs>
