@@ -8,5 +8,5 @@ input_object.patch_concepts(
     concept_ids=["id-face"],  # The ID of the concept you want to update
     labels=["obama_face"],    # The new label name to overwrite the existing one
     values=[],                
-    action='overwrite'        
+    action='overwrite'        # Currently, only the `overwrite` action is supported
 )
