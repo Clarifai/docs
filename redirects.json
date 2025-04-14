@@ -6,7 +6,9 @@
       "/clarifai-basics/start-here-5-mins-or-less",
       "/clarifai-basics/quick-start/your-first-predictions",
       "/clarifai-basics/quick-start/your-first-visual-search-app",
-      "/clarifai-basics/quick-start/your-first-custom-model"
+      "/clarifai-basics/quick-start/your-first-custom-model",
+      "/portal-guide/portal-overview/languages",
+      "/api-guide/concepts/languages"
     ]
   },
   {
@@ -141,6 +143,19 @@
   {
     "to": "/create-manage/applications/manage#collaborators",
     "from": ["/clarifai-basics/applications/collaboration"]
+  }, 
+  {
+    "to": "/create-manage/inputs/manage",
+    "from": ["/sdk/managing-inputs"]
+  },
+  {
+    "to": "/create-manage/inputs/",
+    "from": ["/portal-guide/inputs-manager/"]
+  },
+  {
+    "to": "/create-manage/inputs/upload",
+    "from": ["/portal-guide/inputs-manager/supported-formats", "/portal-guide/inputs-manager/upload-inputs", "/api-guide/data/supported-formats", "/api-guide/data/create-get-update-delete"]
   }
+
 
 ]
