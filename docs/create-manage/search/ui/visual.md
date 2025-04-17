@@ -3,7 +3,7 @@ description: Use vector search to sort, rank, and retrieve images
 sidebar_position: 1
 ---
 
-# Smart Image Search
+# Image Search
 
 **Use vector search to sort, rank, and retrieve images**
 <hr />

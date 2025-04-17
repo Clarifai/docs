@@ -3,7 +3,7 @@ description: Use vector search to sort, rank, and retrieve texts
 sidebar_position: 3
 ---
 
-# Smart Text Search
+# Text Search
 
 **Use vector search to sort, rank, and retrieve texts**
 <hr />

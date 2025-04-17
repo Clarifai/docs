@@ -1,0 +1,31 @@
+---
+description: Perform predictions using your deployed models
+sidebar_position: 1
+---
+
+# Model Inference
+
+**Perform predictions using your deployed models**
+<hr />
+
+
+Clarifai's Compute Orchestration capabilities provide efficient ways to make prediction calls to suit various use cases. Once your model is deployed, you can use it to perform inferences seamlessly.
+
+:::warning Deploy model first
+
+- Before making the prediction requests, ensure you have [set up a cluster](https://docs.clarifai.com/compute/deployments/clusters-nodepools), created a nodepool, and [deployed your model](https://docs.clarifai.com/compute/deployments/deploy-model) in it. Once the model is deployed, you'll specify its `deployment_id` parameter (or `compute_cluster_id` and `nodepool_id`), which is essential for proper routing and execution of your prediction request. 
+
+- If you do not specify any of the parameters, the prediction will default to the `Clarifai Shared` deployment type.
+
+:::
+
+:::note Why Deployment Selection Matters
+
+The `deployment_id` parameter (or `compute_cluster_id` and `nodepool_id`) is vital in directing prediction requests to the appropriate cluster and nodepool. For example, you can route requests to a GCP cluster by selecting a corresponding deployment ID, use a different deployment ID for an AWS cluster, and yet another for an on-premises deployment. This gives you full control over performance, costs, and security, allowing you to focus on building cutting-edge AI solutions while we handle the infrastructure complexity.
+
+:::
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
