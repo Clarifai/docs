@@ -278,7 +278,7 @@ def load_model(self):
 
 You need to include at least one method decorated with `@ModelClass.method` to define the [prediction endpoints](https://docs.clarifai.com/compute/models/model-inference).
 
-The following three method types are supported based on type hints:
+We support various methods of predictions based on type hints:
 
 ```python
 # Unary-Unary (Standard request-response)
@@ -302,6 +302,32 @@ Here is an example of a `model.py` file.
 </TabItem>
 </Tabs>
 
+
+:::note
+
+The structure of prediction methods on the client side directly mirrors the method signatures defined in your `model.py` file. This one-to-one mapping provides flexibility in defining prediction methods with varying names and arguments.
+
+Here are some examples of method mapping:
+
+| `model.py` Model Implementation                 | Client-Side Usage Pattern |
+|-------------------------------------------------|--------------------------|
+| `@ModelClass.method def predict(...)`           | `model.predict(...)`     |
+| `@ModelClass.method def generate(...)`          | `model.generate(...)`    |
+| `@ModelClass.method def stream(...)`            | `model.stream(...)`      |
+
+This design allows you to define any custom method with any number of parameters. For example, you could define a method like `@ModelClass.method def analyze_video(...)` in `model.py`, and then call it on the client side using `model.analyze_video(...)`.
+
+Here are some key characteristics of this design:
+
+- Method names must match exactly between `model.py` and client usage.
+
+- Parameters retain the same names and types as defined in your method.
+
+- Return types follow the structure defined by your model’s outputs.
+
+You can find more details on making predictions [here](https://docs.clarifai.com/compute/models/model-inference). 
+
+:::
 
 ### Step 4: Test the Model Locally
 

@@ -155,7 +155,36 @@
   {
     "to": "/create-manage/inputs/upload",
     "from": ["/portal-guide/inputs-manager/supported-formats", "/portal-guide/inputs-manager/upload-inputs", "/api-guide/data/supported-formats", "/api-guide/data/create-get-update-delete"]
+  },
+  {
+    "to": "/create-manage/search/ui/",
+    "from": ["/portal-guide/psearch/"]
+  },
+  {
+    "to": "/create-manage/search/ui/visual",
+    "from": ["/portal-guide/psearch/visual-search"]
+  },
+  {
+    "to": "/create-manage/search/ui/object",
+    "from": ["/portal-guide/psearch/prank"]
+  },
+  {
+    "to": "/create-manage/search/ui/text-search",
+    "from": ["/portal-guide/psearch/text-search"]
+  },
+  {
+    "to": "/create-manage/search/ui/combine_or_negate",
+    "from": ["/portal-guide/psearch/pcombine_or_negate"]
+  },
+  {
+    "to": "/create-manage/search/ui/filter",
+    "from": ["/portal-guide/psearch/pfilter"]
+  },
+  {
+    "to": "/create-manage/search/",
+    "from": ["/create-manage/search/api/rank-filter-combine-or-negate"]
   }
+
 
 
 ]

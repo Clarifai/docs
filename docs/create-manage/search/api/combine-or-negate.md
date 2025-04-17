@@ -23,26 +23,26 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
-import PythonCombineNegate from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate.py";
-import NodeCombineNegate from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate.js";
-import JSCombineNegate from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate.html";
-import JavaCombineNegate from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate.java";
-import PHPCombineNegate from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate.php";
-import CurlCombineNegate from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate.sh";
+import PythonCombineNegate from "!!raw-loader!../../../../code_snippets/api-guide/search/combine_or_negate.py";
+import NodeCombineNegate from "!!raw-loader!../../../../code_snippets/api-guide/search/combine_or_negate.js";
+import JSCombineNegate from "!!raw-loader!../../../../code_snippets/api-guide/search/combine_or_negate.html";
+import JavaCombineNegate from "!!raw-loader!../../../../code_snippets/api-guide/search/combine_or_negate.java";
+import PHPCombineNegate from "!!raw-loader!../../../../code_snippets/api-guide/search/combine_or_negate.php";
+import CurlCombineNegate from "!!raw-loader!../../../../code_snippets/api-guide/search/combine_or_negate.sh";
 
-import PythonCombineNegate_2 from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate_2.py";
-import NodeCombineNegate_2 from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate_2.js";
-import JSCombineNegate_2 from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate_2.html";
-import JavaCombineNegate_2 from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate_2.java";
-import PHPCombineNegate_2 from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate_2.php";
-import CurlCombineNegate_2 from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate_2.sh";
+import PythonCombineNegate_2 from "!!raw-loader!../../../../code_snippets/api-guide/search/combine_or_negate_2.py";
+import NodeCombineNegate_2 from "!!raw-loader!../../../../code_snippets/api-guide/search/combine_or_negate_2.js";
+import JSCombineNegate_2 from "!!raw-loader!../../../../code_snippets/api-guide/search/combine_or_negate_2.html";
+import JavaCombineNegate_2 from "!!raw-loader!../../../../code_snippets/api-guide/search/combine_or_negate_2.java";
+import PHPCombineNegate_2 from "!!raw-loader!../../../../code_snippets/api-guide/search/combine_or_negate_2.php";
+import CurlCombineNegate_2 from "!!raw-loader!../../../../code_snippets/api-guide/search/combine_or_negate_2.sh";
 
-import PythonCombineNegate_3 from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate_3.py";
-import NodeCombineNegate_3 from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate_3.js";
-import JSCombineNegate_3 from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate_3.html";
-import JavaCombineNegate_3 from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate_3.java";
-import PHPCombineNegate_3 from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate_3.php";
-import CurlCombineNegate_3 from "!!raw-loader!../../../code_snippets/api-guide/search/combine_or_negate_3.sh";
+import PythonCombineNegate_3 from "!!raw-loader!../../../../code_snippets/api-guide/search/combine_or_negate_3.py";
+import NodeCombineNegate_3 from "!!raw-loader!../../../../code_snippets/api-guide/search/combine_or_negate_3.js";
+import JSCombineNegate_3 from "!!raw-loader!../../../../code_snippets/api-guide/search/combine_or_negate_3.html";
+import JavaCombineNegate_3 from "!!raw-loader!../../../../code_snippets/api-guide/search/combine_or_negate_3.java";
+import PHPCombineNegate_3 from "!!raw-loader!../../../../code_snippets/api-guide/search/combine_or_negate_3.php";
+import CurlCombineNegate_3 from "!!raw-loader!../../../../code_snippets/api-guide/search/combine_or_negate_3.sh";
 
 ## Combine Filter and Rank 
 
