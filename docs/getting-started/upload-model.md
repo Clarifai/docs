@@ -10,11 +10,11 @@ sidebar_position: 3
 
 The Clarifai platform allows you to upload custom models for a wide range of use cases. With just a few simple steps, you can get your models up and running and leverage the platform’s powerful capabilities.
 
-Let's demonstrate how you can upload the [Llama-3-8B-Instruct](https://github.com/Clarifai/examples/tree/main/models/model_upload/llms/llama-3-8b-instruct) model from Hugging Face to the Clarifai platform.
+Let's demonstrate how you can upload the [Llama-3.2-1B-Instruct](https://github.com/Clarifai/runners-examples/tree/main/llm/llama-3_2-1b-instruct) model from Hugging Face to the Clarifai platform.
 
 :::tip
 
-To learn more about how to upload different types of models, check out other comprehensive guides [here](https://docs.clarifai.com/compute/models/model-upload/) and [here](https://github.com/Clarifai/examples/tree/main/models/model_upload). 
+To learn more about how to upload different types of models, check out [this comprehensive guide](https://docs.clarifai.com/compute/models/model-upload/). 
 
 :::
 
@@ -121,4 +121,4 @@ Once your custom model is ready, upload it to the Clarifai platform by navigatin
 
 Congratulations — you've just uploaded your first model to the Clarifai platform!
 
-Now, you can [deploy](https://docs.clarifai.com/compute/deployments/deploy-model) the model to a cluster and nodepool. This allows you to cost-efficiently and scalably make [inferences](https://docs.clarifai.com/compute/models/model-inference) with it. 
+Now, you can [deploy](https://docs.clarifai.com/compute/deployments/deploy-model) the model to a cluster and nodepool. This allows you to cost-efficiently and scalably make [inferences](https://docs.clarifai.com/compute/models/inference/api) with it. 

@@ -1,22 +1,23 @@
-# This is the sample config file for the image-classifier model.
-
 model:
-  id: "model_id"
-  user_id: "user_id"
-  app_id: "app_id"
-  model_type_id: "visual-classifier"
-
+  id: model_id
+  user_id: user_id
+  app_id: app_id
+  model_type_id: visual-classifier
 build_info:
-  python_version: "3.11"
-
+  python_version: '3.11'
 inference_compute_info:
-  cpu_limit: "2"
-  cpu_memory: "2Gi"
+  cpu_limit: '2'
+  cpu_memory: 2Gi
   num_accelerators: 1
-  accelerator_type: ["NVIDIA*"]
-  accelerator_memory: "3Gi"
-
+  accelerator_type:
+  - NVIDIA-A10G
+  accelerator_memory: 3Gi
 checkpoints:
-  type: "huggingface"
-  repo_id: "Falconsai/nsfw_image_detection"
-  hf_token: "hf_token"
+  type: huggingface
+  repo_id: Falconsai/nsfw_image_detection
+  hf_token: hf_token
+concepts:
+- id: '0'
+  name: normal
+- id: '1'
+  name: nsfw

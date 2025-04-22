@@ -269,6 +269,12 @@ You can make predictions using models that support multimodal inputs, such as a 
 
 Additionally, you can configure various [inference parameters](https://docs.clarifai.com/sdk/Inference-from-AI-Models/Advance-Inference-Options/#prediction-paramaters) to customize your prediction requests to better suit your use case.
 
+:::tip
+
+[Click here](https://github.com/Clarifai/runners-examples/tree/main/multimodal-models/pythonic-openai_server_vlm) to learn more how to make multimodal predictions, including how to use parameters like `chat_history` and `messages`.
+
+:::
+
 Here is an example:
 
 <Tabs>

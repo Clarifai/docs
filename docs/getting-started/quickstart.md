@@ -150,7 +150,7 @@ For this example, let's use the Llama-3.2-3B-Instruct model to generate text bas
 
 :::tip
 
-The examples above use the default `Clarifai Shared` deployment type for requests. Learn how to use our Compute Orchestration capabilities to make different types of inference API requests [here](https://docs.clarifai.com/compute/models/model-inference#via-the-api).
+The examples above use the default `Clarifai Shared` deployment type for requests. Learn how to use our Compute Orchestration capabilities to make different types of inference API requests [here](https://docs.clarifai.com/compute/models/inference/api).
 
 :::
 

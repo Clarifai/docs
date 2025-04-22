@@ -182,9 +182,45 @@
   },
   {
     "to": "/create-manage/search/",
-    "from": ["/create-manage/search/api/rank-filter-combine-or-negate"]
+    "from": ["/api-guide/search/rank-filter-combine-or-negate"]
+  },
+  {
+    "to": "/compute/models/upload/",
+    "from": ["/compute/models/model-upload/"]
+  },
+  {
+    "to": "/compute/models/upload/test-models-locally",
+    "from": ["/compute/models/model-upload/test-models-locally"]
+  },
+  {
+    "to": "/compute/models/upload/data-types",
+    "from": ["/compute/models/model-upload/data-types"]
+  },
+  {
+    "to": "/compute/models/inference/",
+    "from": ["/compute/models/model-inference"]
+  },
+  {
+    "to": "/create-manage/search/api/",
+    "from": ["/api-guide/search/"]
+  },
+  {
+    "to": "/create-manage/search/api/index-images-for-search",
+    "from": ["/api-guide/search/index-images-for-search"]
+  },
+  {
+    "to": "/create-manage/search/api/filter",
+    "from": ["/api-guide/search/filter"]
+  },
+  {
+    "to": "/create-manage/search/api/rank",
+    "from": ["/api-guide/search/rank"]
+  },
+  {
+    "to": "/create-manage/search/api/combine-or-negate",
+    "from": ["/api-guide/search/combine-or-negate"]
   }
-
+  
 
 
 ]

@@ -1,190 +1,163 @@
-2025-04-03 13:02:32.242005 INFO     Validating folder: C:\Users\Alfrick\Desktop\upload-model\       model_builder.py:122
-2025-04-03 13:02:40.138937 INFO     Skipping downloading checkpoints for stage upload since         model_builder.py:497
-                                    config.yaml says to download them at stage runtime
-2025-04-03 13:02:40.143926 INFO     Using Python version 3.11 from the config file to build the     model_builder.py:389
-                                    Dockerfile
-2025-04-03 13:02:40.154304 INFO     Using Torch version 2.5.1 base image to build the Docker image  model_builder.py:415
-2025-04-03 13:02:40.548090 INFO     New model will be created at                                    model_builder.py:779
-                                    https://clarifai.com/alfrick/my-models/models/Llama-3-8b-Instru
-                                    ct with it's first version.
+[INFO] 13:11:29.227543 Validating folder: C:\Users\Alfrick\Desktop\delete1\ |  thread=13964
+[INFO] 13:11:35.221354 Skipping downloading checkpoints for stage upload since config.yaml says to download them at stage runtime |  thread=13964
+[INFO] 13:11:35.288554 Using Python version 3.11 from the config file to build the Dockerfile |  thread=13964
+[INFO] 13:11:35.307556 Using Torch version 2.5.1 base image to build the Docker image |  thread=13964
+[WARNING] 13:11:35.308554 clarifai version not found in requirements.txt, using the latest version 11.2.3 |  thread=13964
+[WARNING] 13:11:35.319543 Updated requirements.txt to have clarifai==11.2.3 |  thread=13964
+[INFO] 13:11:35.637387 New model will be created at https://clarifai.com/alfrick/upload-models-2/models/test34 with it's first version. |  thread=13964
 Press Enter to continue...
-2025-04-03 13:02:49.958171 INFO     Uploading file...                                               model_builder.py:677
-2025-04-03 13:02:49.965368 INFO     Upload complete!                                                model_builder.py:700
-   Status: Upload in progress, Progress: 0% - Starting upload.  request_id:
+[INFO] 13:11:44.497592 Uploading file... |  thread=19308
+[INFO] 13:11:44.499677 Upload complete! |  thread=19308
    Status: Upload done, Progress: 0% - Completed upload of files, initiating model version image build..  request_id:
    Status: Model image is currently being built., Progress: 0% - Model version image is being built.  request_id:
-2025-04-03 13:02:50.640853 INFO     Created Model Version ID: af882c92324149ae8eeedc1e1f48f28a      model_builder.py:662
-2025-04-03 13:02:50.646760 INFO     Full url to that version is:                                    model_builder.py:663
-                                    https://clarifai.com/alfrick/my-models/models/Llama-3-8b-Instru
-                                    ct
-2025-04-03 13:02:58.050743 INFO     2025-04-03 10:02:49.968987 INFO: Downloading uploaded model     model_builder.py:744
-                                    from storage...
+[INFO] 13:11:45.601654 Created Model Version ID: 2eeea43632294240995c0e1030bc2217 |  thread=13964
+[INFO] 13:11:45.602677 Full url to that version is: https://clarifai.com/alfrick/upload-models-2/models/test34 |  thread=13964
+[INFO] 13:11:50.934179 2025-04-22 10:11:43.505688 INFO: Downloading uploaded model from storage...
 
-                                    2025-04-03 10:02:50.734386 INFO: Done downloading model
+2025-04-22 10:11:44.177740 INFO: Done downloading model
 
-                                    2025-04-03 10:02:50.737053 INFO: Extracting upload...
+2025-04-22 10:11:44.180182 INFO: Extracting upload...
 
-                                    2025-04-03 10:02:50.740340 INFO: Done extracting upload
+2025-04-22 10:11:44.183856 INFO: Done extracting upload
 
-                                    2025-04-03 10:02:50.742230 INFO: Parsing requirements file for
-                                    model version ID ****dc1e1f48f28a
+2025-04-22 10:11:44.185767 INFO: Parsing requirements file for model version ID ****0e1030bc2217
 
-                                    2025-04-03 10:02:50.765409 INFO: Dockerfile found at
-                                    /shared/context/Dockerfile
+2025-04-22 10:11:44.207227 INFO: Dockerfile found at /shared/context/Dockerfile
 
-                                    2025-04-03 10:02:51.827142 INFO: Setting up credentials
+2025-04-22 10:11:45.064052 INFO: Setting up credentials
 
-                                    amazon-ecr-credential-helper
+amazon-ecr-credential-helper
 
-                                    Version:    0.8.0
+Version:    0.8.0
 
-                                    Git commit: ********
+Git commit: ********
 
-                                    2025-04-03 10:02:51.830820 INFO: Building image...
+2025-04-22 10:11:45.067678 INFO: Building image...
 
-                                    #1 \[internal] load build definition from Dockerfile
+#1 \[internal] load build definition from Dockerfile
 
-                                    #1 transferring dockerfile: 2.62kB done
+#1 transferring dockerfile: 2.61kB done
 
-                                    #1 DONE 0.0s
+#1 DONE 0.0s
 
 
 
-                                    #2 resolve image config for
-                                    docker-image://docker.io/docker/dockerfile:1.13-labs
+#2 resolve image config for docker-image://docker.io/docker/dockerfile:1.13-labs
 
-                                    #2 DONE 0.1s
+#2 DONE 0.1s
 
 
 
-                                    #3
-                                    docker-image://docker.io/docker/dockerfile:1.13-labs@sha256:***
-                                    *********18b8
+#3 docker-image://docker.io/docker/dockerfile:1.13-labs@sha256:************18b8
 
-                                    #3 resolve
-                                    docker.io/docker/dockerfile:1.13-labs@sha256:************18b8
-                                    done
+#3 resolve docker.io/docker/dockerfile:1.13-labs@sha256:************18b8 done
 
-                                    #3 CACHED
+#3 CACHED
 
 
 
-                                    #4 \[internal] load metadata for
-                                    public.ecr.aws/clarifai-models/torch:2.5.1-py3.11-cuda124-*****
-                                    ***
+#4 \[internal] load metadata for public.ecr.aws/clarifai-models/torch:2.5.1-py3.11-cu124-********
 
-                                    #4 DONE 0.1s
+#4 DONE 0.1s
 
 
 
-                                    #5 \[internal] load .dockerignore
+#5 \[internal] load .dockerignore
 
-                                    #5 transferring context: 2B done
+#5 transferring context: 2B done
 
-                                    #5 DONE 0.0s
+#5 DONE 0.0s
 
 
 
-                                    #6 \[final 1/8] FROM
-                                    public.ecr.aws/clarifai-models/torch:2.5.1-py3.11-cuda124-*****
-                                    ***@sha256:************c40c
+#6 \[final 1/8] FROM public.ecr.aws/clarifai-models/torch:2.5.1-py3.11-cu124-********@sha256:************ef64
 
-                                    #6 resolve
-                                    public.ecr.aws/clarifai-models/torch:2.5.1-py3.11-cuda124-*****
-                                    ***@sha256:************c40c done
+#6 resolve public.ecr.aws/clarifai-models/torch:2.5.1-py3.11-cu124-********@sha256:************ef64 done
 
-                                    #6 DONE 0.0s
+#6 DONE 0.0s
 
 
 
-                                    #7 \[internal] load build context
+#7 \[internal] load build context
 
-                                    #7 transferring context: 10.86kB done
+#7 transferring context: 7.49kB done
 
-                                    #7 DONE 0.0s
+#7 DONE 0.0s
 
 
 
-                                    #8 \[final 2/8] COPY --link requirements.txt
-                                    /home/nonroot/requirements.txt
+#8 \[final 3/8] RUN ["pip", "install", "--no-cache-dir", "-r", "/home/nonroot/requirements.txt"]
 
-                                    #8 CACHED
+#8 CACHED
 
 
 
-                                    #9 \[final 4/8] RUN ["pip", "show", "clarifai"]
+#9 \[final 5/8] COPY --chown=nonroot:nonroot downloader/unused.yaml /home/nonroot/main/1/checkpoints/.cache/unused.yaml
 
-                                    #9 CACHED
+#9 CACHED
 
 
 
-                                    #10 \[final 5/8] COPY --chown=nonroot:nonroot
-                                    downloader/unused.yaml
-                                    /home/nonroot/main/1/checkpoints/.cache/unused.yaml
+#10 \[final 2/8] COPY --link requirements.txt /home/nonroot/requirements.txt
 
-                                    #10 CACHED
+#10 CACHED
 
 
 
-                                    #11 \[final 3/8] RUN ["pip", "install", "--no-cache-dir", "-r",
-                                    "/home/nonroot/requirements.txt"]
+#11 \[final 4/8] RUN ["pip", "show", "clarifai"]
 
-                                    #11 CACHED
+#11 CACHED
 
 
 
-                                    #12 \[final 6/8] RUN  ["python", "-m", "clarifai.cli", "model",
-                                    "download-checkpoints", "/home/nonroot/main", "--out_path",
-                                    "/home/nonroot/main/1/checkpoints", "--stage", "build"]
+#12 \[final 6/8] RUN  ["python", "-m", "clarifai.cli", "model", "download-checkpoints", "/home/nonroot/main", "--out_path", "/home/nonroot/main/1/checkpoints", "--stage", "build"]
 
-                                    #12 CACHED
+#12 CACHED
 
 
 
-                                    #13 \[final 7/8] COPY --link=true 1 /home/nonroot/main/1
+#13 \[final 7/8] COPY --link=true 1 /home/nonroot/main/1
 
-                                    #13 CACHED
+#13 DONE 0.0s
 
 
 
-                                    #14 \[final 8/8] COPY --link=true requirements.txt config.yaml
-                                    /home/nonroot/main/
+#14 \[final 8/8] COPY --link=true requirements.txt config.yaml /home/nonroot/main/
 
-                                    #14 DONE 0.0s
+#14 DONE 0.0s
 
 
 
-                                    #15 \[auth] sharing credentials for
-                                    891377382885.dkr.ecr.us-east-1.amazonaws.com
+#15 \[auth] sharing credentials for 891377382885.dkr.ecr.us-east-1.amazonaws.com
 
-                                    #15 DONE 0.0s
+#15 DONE 0.0s
 
 
 
-                                    #16 exporting to image
+#16 exporting to image
 
-                                    #16 exporting layers done
+#16 exporting layers done
 
-                                    #16 exporting manifest sha256:************7a9b done
+#16 exporting manifest sha256:************f4b0 done
 
-                                    #16 exporting config sha256:************cdca done
+#16 exporting config sha256:************2c6f done
 
-                                    #16 pushing layers
+#16 pushing layers
 
-                                    #16 pushing layers 0.9s done
+#16 pushing layers 1.2s done
 
-                                    #16 pushing manifest for
-                                    ****/prod/pytorch:****dc1e1f48f28a@sha256:************7a9b
+#16 pushing manifest for ****/prod/pytorch:****0e1030bc2217@sha256:************f4b0
 
-                                    #16 pushing manifest for
-                                    ****/prod/pytorch:****dc1e1f48f28a@sha256:************7a9b 0.4s
-                                    done
+#16 pushing manifest for ****/prod/pytorch:****0e1030bc2217@sha256:************f4b0 0.4s done
 
-                                    #16 DONE 1.3s
+#16 DONE 1.6s
 
-                                    2025-04-03 10:02:53.435557 INFO: Done building image!!!
-2025-04-03 13:03:00.834023 INFO     Model build complete!                                           model_builder.py:751
-2025-04-03 13:03:00.837028 INFO     Build time elapsed 10.2s)                                       model_builder.py:752
-2025-04-03 13:03:00.841022 INFO     Check out the model at                                          model_builder.py:753
-                                    https://clarifai.com/alfrick/my-models/models/Llama-3-8b-Instru
-                                    ct version: af882c92324149ae8eeedc1e1f48f28a
+2025-04-22 10:11:47.054550 INFO: Done building image!!! |  thread=13964
+[INFO] 13:11:52.614363 #16 pushing manifest for ****/prod/pytorch:****0e1030bc2217@sha256:************f4b0 0.4s done
+
+#16 DONE 1.6s
+
+2025-04-22 10:11:47.054550 INFO: Done building image!!! |  thread=13964
+[INFO] 13:11:54.358104 Model build complete! |  thread=13964
+[INFO] 13:11:54.359987 Build time elapsed 8.8s) |  thread=13964
+[INFO] 13:11:54.360985 Check out the model at https://clarifai.com/alfrick/upload-models-2/models/test34 version: 2eeea43632294240995c0e1030bc2217 |  thread=13964

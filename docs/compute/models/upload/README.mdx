@@ -23,12 +23,9 @@ Once imported to our platform, your model can be utilized alongside Clarifai's v
 
 Let’s demonstrate how you can successfully upload different types of models to the Clarifai platform. 
 
-:::info
+:::tip
 
-- This new upload experience is compatible with the latest [`clarifai`](https://github.com/Clarifai/clarifai-python) Python package, starting from version 10.9.2. If you prefer the previous upload method, which is supported up to version 10.8.4, you can refer to the documentation [here](/others/old_model_upload_method.pdf).
-
-- You can run the following command to clone the [repository](https://github.com/Clarifai/examples/tree/main) containing examples of how to upload various model types and follow along with this tutorial:
-`git clone https://github.com/Clarifai/examples.git`. After cloning it, go to the `models/model_upload` directory.
+You can explore [this repository](https://github.com/Clarifai/runners-examples) for examples on uploading different model types. 
 
 :::
 
@@ -55,10 +52,6 @@ import LLMModel from "!!raw-loader!../../../../code_snippets/python-sdk/model-up
 import LLMRequirements from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/llm_requirements.txt";
 import LLMConfig from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/llm_config.yaml";
 
-import SpeechRecognitionModel from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/speech_recognition_model.py";
-import SpeechRecognitionRequirements from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/speech_recognition_requirements.txt";
-import SpeechRecognitionConfig from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/speech_recognition_config.yaml";
-
 import BuildLogs from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/build_logs.txt";
 
 ## Prerequisites
@@ -76,7 +69,7 @@ You should ensure your local environment has sufficient memory and compute resou
 
 ### Install Clarifai Package
 
-Install the latest version of the `clarifai` Python package. This will also install the Clarifai [Command Line Interface](https://docs.clarifai.com/sdk/cli) (CLI), which we'll use for testing and uploading the model. 
+Install the latest version of the `clarifai` Python package. This will also install the Clarifai [Command Line Interface](https://docs.clarifai.com/additional-resources/api-overview/cli/) (CLI), which we'll use for testing and uploading the model. 
 
 
 <Tabs>
@@ -101,6 +94,12 @@ This token is essential for authenticating your connection to the Clarifai platf
 </TabItem>
 </Tabs>
 
+:::note tip
+
+On Windows, the Clarifai Python SDK expects a `HOME` environment variable, which isn’t set by default. To ensure compatibility with file paths used by the SDK, set `HOME` to the value of your `USERPROFILE`. You can set it in your Command Prompt this way: `set HOME=%USERPROFILE%`.
+
+:::
+
 ### Create Project Directory
 
 Create a project directory and organize your files as indicated below to fit the requirements of uploading models to the Clarifai platform. 
@@ -121,7 +120,9 @@ your_model_directory/
 
 ## How to Upload a Model
 
-Let's talk about the general steps you'd follow to upload any type of model to the Clarifai platform. You can refer to the [examples below](#examples) to help you configure your files correctly.
+Let's talk about the general steps you'd follow to upload any type of model to the Clarifai platform. 
+
+You can refer to the [examples below](#examples) to help you configure your files correctly.
 
 ### Step 1: Prepare the `config.yaml` File
 
@@ -170,7 +171,7 @@ Here, you define the minimum compute resources required for running your model, 
 - **`cpu_limit`** – Number of CPUs allocated for the model (follows Kubernetes notation, e.g., "1", "2").
 - **`cpu_memory`** – Minimum memory required for the CPU (uses Kubernetes notation, e.g., "1Gi", "1500Mi", "3Gi").
 - **`num_accelerators`** – Number of GPUs or TPUs to use for inference.
-- **`accelerator_type`** – Specifies the type of hardware [accelerators](https://docs.clarifai.com/compute/deployments/cloud-instances/) (e.g., GPU or TPU) supported by the model (e.g., "NVIDIA-A10G"). _Note that instead of specifying an exact accelerator type, you can use a wildcard `(*)` to automatically match all available accelerators that fit your use case. For example, using `[NVIDIA*]` will enable the system to choose from all NVIDIA options compatible with your model._
+- **`accelerator_type`** – Specifies the type of hardware [accelerators](https://docs.clarifai.com/compute/deployments/cloud-instances/) (e.g., GPU or TPU) supported by the model (e.g., "NVIDIA-A10G"). _Note that instead of specifying an exact accelerator type, you can use a wildcard `(*)` to automatically match all available accelerators that fit your use case. For example, using `["NVIDIA-*"]` will enable the system to choose from all NVIDIA options compatible with your model._
 - **`accelerator_memory`** – Minimum memory required for the GPU or TPU.
 
 #### Hugging Face Model Checkpoints  
@@ -337,7 +338,7 @@ Learn how to test your models locally [here](https://docs.clarifai.com/compute/m
 
 ### Step 5: Upload the Model to Clarifai
 
-Once your model is ready, you can upload it to the platform using Clarifai CLI. _Note that to use the CLI to upload your model, you'll need to first use the tool to [log in](https://docs.clarifai.com/sdk/cli/#login) to your account_. 
+Once your model is ready, you can upload it to the platform using Clarifai CLI.  
 
 To upload your model, run the following command in your terminal:
 
@@ -364,73 +365,23 @@ The build logs will be displayed in your terminal, which helps you troubleshoot 
     <CodeBlock className="language-text">{BuildLogs}</CodeBlock>
 </details>
 
-> Note that if you make any changes to your model and upload it again to the Clarifai platform, a new version of the model will be created automatically.
+> **Note**: If you make any changes to your model and upload it again to the Clarifai platform, a new version of the model will be created automatically.
 
 ### Step 6: Predict With Model
 
-Once the model is successfully uploaded to Clarifai, you can start making [predictions](https://docs.clarifai.com/compute/models/model-inference) with it. Note that before making a prediction request with our Compute Orchestration capabilities, you need to first deploy it into a cluster and nodepool you've created. 
+Once the model is successfully uploaded to Clarifai, you can start making [predictions](https://docs.clarifai.com/compute/models/inference/api) with it. 
+
+Note that before making a prediction request with our Compute Orchestration capabilities, you need to first deploy it into a cluster and nodepool you've created. 
 
 ## Examples
 
 :::tip
 
-You can find various up-to-date model upload examples [here](https://github.com/Clarifai/examples/tree/main/models/model_upload), which demonstrate different use cases and optimizations. 
+You can find various up-to-date model upload examples [here](https://github.com/Clarifai/runners-examples), which demonstrate different use cases and optimizations. 
 
 :::
 
-### Image Classifier
-
-#### `model.py` 
-
-<Tabs>
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python">{ImageClassifierModel}</CodeBlock>
-</TabItem>
-</Tabs>
-
-#### `requirements.txt`
-
-<Tabs>
-<TabItem value="text" label="Text">
-    <CodeBlock className="language-text">{ImageClassifierRequirements}</CodeBlock>
-</TabItem>
-</Tabs>
-
-#### `config.yaml`
-
-<Tabs>
-<TabItem value="yaml" label="YAML">
-    <CodeBlock className="language-yaml">{ImageClassifierConfig}</CodeBlock>
-</TabItem>
-</Tabs>
-
-### Image Detector
-
-#### `model.py` 
-
-<Tabs>
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python">{ImageDetectorModel}</CodeBlock>
-</TabItem>
-</Tabs>
-
-#### `requirements.txt`
-
-<Tabs>
-<TabItem value="text" label="Text">
-    <CodeBlock className="language-text">{ImageDetectorRequirements}</CodeBlock>
-</TabItem>
-</Tabs>
-
-#### `config.yaml`
-
-<Tabs>
-<TabItem value="yaml" label="YAML">
-    <CodeBlock className="language-yaml">{ImageDetectorConfig}</CodeBlock>
-</TabItem>
-</Tabs>
-
-### Large Language Models (LLMs)
+### Llama-3.2-1B-Instruct
 
 #### `model.py` 
 
@@ -456,19 +407,13 @@ You can find various up-to-date model upload examples [here](https://github.com/
 </TabItem>
 </Tabs>
 
-:::tip
-
-You can refer to [this examples repository](https://github.com/Clarifai/examples/tree/main/models/model_upload/llms) for additional examples of uploading other types of LLMs.
-
-:::
-
-### Speech Recognition Model
+### NSFW Image Classifier
 
 #### `model.py` 
 
 <Tabs>
 <TabItem value="python" label="Python">
-    <CodeBlock className="language-python">{SpeechRecognitionModel}</CodeBlock>
+    <CodeBlock className="language-python">{ImageClassifierModel}</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -476,7 +421,7 @@ You can refer to [this examples repository](https://github.com/Clarifai/examples
 
 <Tabs>
 <TabItem value="text" label="Text">
-    <CodeBlock className="language-text">{SpeechRecognitionRequirements}</CodeBlock>
+    <CodeBlock className="language-text">{ImageClassifierRequirements}</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -484,7 +429,33 @@ You can refer to [this examples repository](https://github.com/Clarifai/examples
 
 <Tabs>
 <TabItem value="yaml" label="YAML">
-    <CodeBlock className="language-yaml">{SpeechRecognitionConfig}</CodeBlock>
+    <CodeBlock className="language-yaml">{ImageClassifierConfig}</CodeBlock>
+</TabItem>
+</Tabs>
+
+### DETR Resnet Image Detector
+
+#### `model.py` 
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{ImageDetectorModel}</CodeBlock>
+</TabItem>
+</Tabs>
+
+#### `requirements.txt`
+
+<Tabs>
+<TabItem value="text" label="Text">
+    <CodeBlock className="language-text">{ImageDetectorRequirements}</CodeBlock>
+</TabItem>
+</Tabs>
+
+#### `config.yaml`
+
+<Tabs>
+<TabItem value="yaml" label="YAML">
+    <CodeBlock className="language-yaml">{ImageDetectorConfig}</CodeBlock>
 </TabItem>
 </Tabs>
 

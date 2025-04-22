@@ -20,13 +20,30 @@ You should ensure your local environment has sufficient memory and compute resou
 
 :::
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+
+import TestMethod from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/test-models-locally.py";
+import TestLocally1 from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/test_locally-1.txt";
+
 ## Prerequisites
 
 ### Build a Model
 
 You can either build a custom model from scratch or leverage pre-trained models from external repositories like Hugging Face. 
 
-If you're developing your own model, our [step-by-step guide](https://docs.clarifai.com/compute/models/model-upload/) provides detailed instructions to get started. You can also explore our [examples repository](https://github.com/Clarifai/examples/tree/main/models/model_upload) to learn how to build models compatible with the Clarifai platform.
+If you're developing your own model, our [step-by-step guide](https://docs.clarifai.com/compute/models/model-upload/) provides detailed instructions to get started. You can also explore [this examples repository](https://github.com/Clarifai/runners-examples) to learn how to build models compatible with the Clarifai platform.
+
+Note that to test your model, you need to implement a `test` method in the `model.py` file. This method should internally call other model methods to perform validation. When you run the `test-locally` CLI command shown below, it will automatically invoke the `test` method to carry out the testing process.
+
+Below is a sample `model.py` file with an example implementation of the `test` method:
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{TestMethod}</CodeBlock>
+</TabItem>
+</Tabs>
 
 ### Install Clarifai CLI
 
@@ -41,14 +58,6 @@ Install the latest version of the [Clarifai CLI](https://docs.clarifai.com/sdk/c
 ### Set up Docker or a Virtual Environment
 
 Set up either a Docker container (recommended) or a Python virtual [local development environment](https://docs.clarifai.com/compute/models/model-upload/#set-up-docker-or-a-virtual-environment) for testing the model locally. This ensures proper dependency management and prevents conflicts in your project.
-
-
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import CodeBlock from "@theme/CodeBlock";
-
-import TestLocally1 from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/test_locally-1.txt";
 
 :::info CLI Flags
 
@@ -80,7 +89,9 @@ clarifai model test-locally --mode container
 
 ## Test by Running Locally
 
-The `test-locally` method allows you to test your model with a single CLI command. It runs the model locally and sends a sample request to verify that the model responds successfully. The results of the request are displayed directly in the console.
+The `test-locally` method allows you to test your model with a single CLI command. It runs the model locally and sends a sample request to verify that the model responds successfully. 
+
+The results of the request are displayed directly in the console.
 
 Here is how to test a model in a Docker Container:
 
@@ -131,10 +142,13 @@ Here is how to test a model in a virtual environment:
 Once the model is running locally, you need to configure the `CLARIFAI_API_BASE` environment variable to point to the localhost and port where the gRPC server is running.
 
 <Tabs>
-<TabItem value="bash" label="Bash">
+<TabItem value="bash" label="Unix-Like Systems">
     <CodeBlock className="language-bash"> export CLARIFAI_API_BASE="localhost:add-port-here" </CodeBlock>
+</TabItem>
+<TabItem value="bash2" label="Windows">
+    <CodeBlock className="language-bash"> set CLARIFAI_API_BASE="localhost:add-port-here" </CodeBlock>
 </TabItem>
 </Tabs>
 
-You can then make [inference requests](https://docs.clarifai.com/compute/models/model-inference) using the model. 
+You can then make [inference requests](https://docs.clarifai.com/compute/models/inference/api) using the model. 
 
