@@ -46,7 +46,7 @@ import CurlCombineNegate_3 from "!!raw-loader!../../../../code_snippets/api-guid
 
 ## Combine Filter and Rank 
 
-When you combine both `Filter` and `Rank`, filter will be applied before ranking annotations. This is important because limiting the result set on large applications can speed up the overall query drastically when doing a ranking.
+When you combine both `Filter` and `Rank`, filter will be applied before ranking annotations. This is important because limiting the results set on large applications can speed up the overall query drastically when doing a ranking.
 
 <Tabs>
 
