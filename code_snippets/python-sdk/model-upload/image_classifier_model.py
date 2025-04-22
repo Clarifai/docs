@@ -1,143 +1,108 @@
-# Model to be uploaded: https://huggingface.co/Falconsai/nsfw_image_detection
-
 import os
 import tempfile
+from typing import List
 from io import BytesIO
-from typing import Iterator
-
 import cv2
 import torch
-from clarifai.runners.models.model_class import ModelClass
-from clarifai.runners.models.model_builder import ModelBuilder
-from clarifai.utils.logging import logger
-from clarifai_grpc.grpc.api import resources_pb2, service_pb2
-from clarifai_grpc.grpc.api.status import status_code_pb2, status_pb2
-from PIL import Image
 from transformers import AutoModelForImageClassification, ViTImageProcessor
 
+from clarifai.runners.models.model_class import ModelClass
+from clarifai.runners.utils.data_types import Image,  Concept, Stream, Video
+from clarifai.runners.models.model_builder import ModelBuilder
 
-def preprocess_image(image_bytes):
-  """Fetch and preprocess image data from bytes"""
-  return Image.open(BytesIO(image_bytes)).convert("RGB")
+from PIL import Image as PILImage
 
 
 def video_to_frames(video_bytes):
-  """Convert video bytes to frames"""
-  # Write video bytes to a temporary file
+  """Convert video bytes to frames."""
+  frames = []
   with tempfile.NamedTemporaryFile(delete=False, suffix=".mp4") as temp_video_file:
     temp_video_file.write(video_bytes)
     temp_video_path = temp_video_file.name
-    logger.info(f"temp_video_path: {temp_video_path}")
 
     video = cv2.VideoCapture(temp_video_path)
-    print("video opened")
-    logger.info(f"video opened: {video.isOpened()}")
     while video.isOpened():
       ret, frame = video.read()
       if not ret:
         break
-      # Convert the frame to byte format
       frame_bytes = cv2.imencode('.jpg', frame)[1].tobytes()
-      yield frame_bytes
+      frames.append(frame_bytes)
     video.release()
+  return frames
 
+def preprocess_image(image_bytes):
+  """Convert image bytes into RGB format suitable for model processing
+  Args:
+      image_bytes: Raw image data in bytes format
+  Returns:
+      PIL Image object in RGB format ready for model input
+  """
+  return PILImage.open(BytesIO(image_bytes)).convert("RGB")
 
-def classify_image(images, model, processor, device):
-  """Classify an image using the model and processor."""
-  inputs = processor(images=images, return_tensors="pt")
-  inputs = {name: tensor.to(device) for name, tensor in inputs.items()}
-  logits = model(**inputs).logits
-  return logits
-
-
-def process_concepts(logits, images, concept_protos):
-  """Process the logits and return the concepts."""
+def process_concepts( logits, model_labels):
+  """Process logits and map them to concepts."""
   outputs = []
-  for i, logit in enumerate(logits):
-    output_concepts = []
+  for logit in logits:
     probs = torch.softmax(logit, dim=-1)
     sorted_indices = torch.argsort(probs, dim=-1, descending=True)
+    output_concepts = []
     for idx in sorted_indices:
-      concept_protos[idx.item()].value = probs[idx].item()
-      output_concepts.append(concept_protos[idx.item()])
-    output = resources_pb2.Output()
-    output.data.image.base64 = images[i].tobytes()
-    output.data.concepts.extend(output_concepts)
-    output.status.code = status_code_pb2.SUCCESS
-    outputs.append(output)
+      concept = Concept(id = model_labels[idx.item()],name=model_labels[idx.item()], value=probs[idx].item())
+      output_concepts.append(concept)
+    outputs.append(output_concepts)
   return outputs
 
 
-class MyModel(ModelClass):
-  """A custom runner that loads the model and classifies images using it.
-  """
+class ImageClassifierModel(ModelClass):
+  """A custom runner that classifies images and outputs concepts."""
 
   def load_model(self):
-    """Load the model here."""
+    """Load the model and processor."""
 
     model_path = os.path.dirname(os.path.dirname(__file__))
     builder = ModelBuilder(model_path, download_validation_only=True)
     checkpoints = builder.download_checkpoints(stage="runtime")
 
     self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
-    logger.info(f"Running on device: {self.device}")
 
     self.model = AutoModelForImageClassification.from_pretrained(checkpoints,).to(self.device)
+    self.model_labels = self.model.config.id2label
     self.processor = ViTImageProcessor.from_pretrained(checkpoints)
-    logger.info("Done loading!")
 
-  def predict(self, request: service_pb2.PostModelOutputsRequest
-             ) -> Iterator[service_pb2.MultiOutputResponse]:
-    """This is the method that will be called when the runner is run. It takes in an input and
-    returns an output.
-    """
-
-    outputs = []
-    images = []
-    concept_protos = request.model.model_version.output_info.data.concepts
-    for input in request.inputs:
-      input_data = input.data
-      image = preprocess_image(image_bytes=input_data.image.base64)
-      images.append(image)
-
+  @ModelClass.method
+  def predict(self, image: Image) -> List[List[Concept]]:
+    """Predict concepts for a list of images."""
+    pil_image = preprocess_image(image.bytes)
+    inputs = self.processor(images=pil_image, return_tensors="pt")
+    inputs = {name: tensor.to(self.device) for name, tensor in inputs.items()}
     with torch.no_grad():
-      logits = classify_image(images, self.model, self.processor, self.device)
-      outputs = process_concepts(logits, images, concept_protos)
+      logits = self.model(**inputs).logits
+    return process_concepts(logits, self.model_labels)
 
-    return service_pb2.MultiOutputResponse(
-        outputs=outputs, status=status_pb2.Status(code=status_code_pb2.SUCCESS))
-
-  def generate(self, request: service_pb2.PostModelOutputsRequest
-              ) -> Iterator[service_pb2.MultiOutputResponse]:
-
-    if len(request.inputs) != 1:
-      raise ValueError("Only one input is allowed for image models for this method.")
-    concept_protos = request.model.model_version.output_info.data.concepts
-    for input in request.inputs:
-      input_data = input.data
-      video_bytes = None
-      if input_data.video.base64:
-        video_bytes = input_data.video.base64
-      if video_bytes:
-        frame_generator = video_to_frames(video_bytes)
-        for frame in frame_generator:
+  @ModelClass.method
+  def generate(self, video: Video) -> Stream[List[Concept]]:
+      """Generate concepts for frames extracted from a video."""
+      video_bytes = video.bytes
+      frame_generator = video_to_frames(video_bytes)
+      for frame in frame_generator:
           image = preprocess_image(frame)
-          images = [image]
-
+          inputs = self.processor(images=image, return_tensors="pt")
+          inputs = {name: tensor.to(self.device) for name, tensor in inputs.items()}
           with torch.no_grad():
-            logits = classify_image(images, self.model, self.processor, self.device)
-            outputs = process_concepts(logits, images, concept_protos)
-            yield service_pb2.MultiOutputResponse(
-                outputs=outputs, status=status_pb2.Status(code=status_code_pb2.SUCCESS))
-      else:
-        raise ValueError("Only video input is allowed for this method.")
+              logits = self.model(**inputs).logits
+              yield process_concepts(logits, self.model_labels)  # Yield concepts for each frame
 
-  def stream(self, request_iterator: Iterator[service_pb2.PostModelOutputsRequest]
-            ) -> Iterator[service_pb2.MultiOutputResponse]:
-    for request in request_iterator:
-      if request.inputs[0].data.video.base64:
-        for output in self.generate(request):
-          yield output
-      elif request.inputs[0].data.image.base64:
-        yield self.predict(request)
-        
+
+  @ModelClass.method
+  def stream_image(self, image_stream: Stream[Image]) -> Stream[List[Concept]]:
+      """Stream process image inputs."""
+      for image in image_stream:
+          result = self.predict(image)
+          yield result
+
+  @ModelClass.method
+  def stream_video(self, video_stream: Stream[Video]) -> Stream[List[Concept]]:
+      """Stream process video inputs."""
+      for video in video_stream:
+          for frame_result in self.generate(video):
+              yield frame_result

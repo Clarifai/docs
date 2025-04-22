@@ -1,7 +1,7 @@
 # This is the sample config file for the image-detection model.
 
 model:
-  id: "model_id"
+  id: "detr-resnet-50"
   user_id: "user_id"
   app_id: "app_id"
   model_type_id: "visual-detector"
@@ -13,7 +13,7 @@ inference_compute_info:
   cpu_limit: "4"
   cpu_memory: "2Gi"
   num_accelerators: 1
-  accelerator_type: ["NVIDIA*"]
+  accelerator_type: ["NVIDIA-*"]
   accelerator_memory: "5Gi"
 
 

@@ -1,26 +1,35 @@
 ---
-description: Use vector search to find, sort, and filter what you need in your unstructured data
+description: Manage your inputs and training data on the Community Platform
 pagination_prev: null
 ---
 
-# Smart Search on Inputs-Manager 
+# Vector Search
 
-**Use vector search to find, sort, and filter what you need in your data**
+**Manage your inputs and training data on the Clarifai platform**
 <hr />
 
-The Clarifai’s Smart Search feature on the Input-Manager screen allows you to harness the power of AI to search through unstructured or structured data with ease. 
+## Search Overview
 
-Whether you're searching for images, videos, or text data, Smart Search empowers you to quickly find the content you need based on visual, semantic and/or conceptual understanding. 
+**Search helps you sort, save, organize, and filter your datasets**
+<hr />
 
-With Smart Search, you can unlock the full potential of your data assets, making it easier than ever to locate and retrieve the data of interest. For example, you can use the search results within your app to accelerate [data labeling](https://docs.clarifai.com/portal-guide/annotate/create-get-update-delete) for custom model training tasks.
+You can upload inputs to our platform as URLs or bytes. When you `POST /inputs`, your [base workflow](https://docs.clarifai.com/portal-guide/workflows/base-workflows/) is used to index the inputs, and this index enables search over the outputs of the models in your workflow. Once indexed, you can search for the inputs by concept, annotation, or any other advanced search parameters. 
 
-<figure style={{ display: 'flex', justifyContent: 'center' }}>
-  ![](/img/spacetime.svg)
-</figure>
+## Rank
 
-> The Input-Manager screen is the main page showcasing all the inputs in your app. You can access it by clicking the **Inputs** option in your app's collapsible left sidebar. The screen has [two modes](https://docs.clarifai.com/portal-guide/data/explorer/#input-manager): Input Mode (default) and Object Mode. 
+Your model can identify concepts in your data and rank your search results by how confident it is that a given concept is present. You can even rank search results by how similar one input is to another input.
 
-> ![](/img/community/search/input-manager.png)
+## Filter
+
+Trim down the amount of data returned in search. For example, you may only want to see inputs that one of your collaborators has labeled with the word “dog”. Or, perhaps you want only those inputs that were captured in a certain geographical region.
+
+## 'AND'
+
+Combine multiple search parameters. For example, you can find all the inputs within a geographical region with a "weapon" in them, or all annotations assigned to user "Joe", or visually similar product images that are assigned the word "XL" in metadata.
+
+![Image illustrating how to search by images using Clarifai&apos;s concepts](/img/illustration-search.png)
+
+
 
 :::info
 
@@ -79,9 +88,10 @@ We offer the following types of Smart Search options in our platform.
   - **Text** — Provide a text description to compare input predictions against. 
   - **Concept** — Provide a trained concept to compare input predictions against.
 
+
+
 import DocCardList from '@theme/DocCardList';
 import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 
 <DocCardList items={useCurrentSidebarCategory().items}/>
-
 

@@ -20,12 +20,12 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
-import PythonIndexImages from "!!raw-loader!../../../code_snippets/api-guide/search/index_images_for_search.py";
-import JSIndexImages from "!!raw-loader!../../../code_snippets/api-guide/search/index_images_for_search.html";
-import NodeIndexImages from "!!raw-loader!../../../code_snippets/api-guide/search/index_images_for_search.js";
-import JavaIndexImages from "!!raw-loader!../../../code_snippets/api-guide/search/index_images_for_search.java";
-import CurlIndexImages from "!!raw-loader!../../../code_snippets/api-guide/search/index_images_for_search.sh";
-import PHPIndexImages from "!!raw-loader!../../../code_snippets/api-guide/search/index_images_for_search.php";
+import PythonIndexImages from "!!raw-loader!../../../../code_snippets/api-guide/search/index_images_for_search.py";
+import JSIndexImages from "!!raw-loader!../../../../code_snippets/api-guide/search/index_images_for_search.html";
+import NodeIndexImages from "!!raw-loader!../../../../code_snippets/api-guide/search/index_images_for_search.js";
+import JavaIndexImages from "!!raw-loader!../../../../code_snippets/api-guide/search/index_images_for_search.java";
+import CurlIndexImages from "!!raw-loader!../../../../code_snippets/api-guide/search/index_images_for_search.sh";
+import PHPIndexImages from "!!raw-loader!../../../../code_snippets/api-guide/search/index_images_for_search.php";
 
 <Tabs>
 

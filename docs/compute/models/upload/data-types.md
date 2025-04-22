@@ -14,7 +14,7 @@ Clarifai's model framework supports rich data typing for both inputs and outputs
 
 Note that when [preparing the `model.py` file](https://docs.clarifai.com/compute/models/model-upload#step-3-prepare-the-modelpy-file/) for uploading a model to the Clarifai platform, each parameter in the class methods must be annotated with a type, and the return type must also be specified. 
 
-[The supported types](https://github.com/Clarifai/examples/blob/76d0c27a4deebc3c5150482b45945b64b6d81915/models/model_upload/SUPPORTED_DATATYPE.md) are categorized into Core Primitive, Python Primitive & Generic, and Custom Structured types.
+The [supported types](https://github.com/Clarifai/runners-examples/blob/main/SUPPORTED_DATATYPE.md) are categorized into Core Primitive, Python Primitive & Generic, and Custom Structured types.
 
 ## Core Primitive Types
 

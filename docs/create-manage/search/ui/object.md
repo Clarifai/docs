@@ -3,7 +3,7 @@ description: Use vector search to sort, rank, and retrieve annotated objects wit
 sidebar_position: 2
 ---
 
-# Smart Object Search
+# Object Search
 
 **Use vector search to sort, rank, and retrieve annotated objects within images**
 <hr />

@@ -155,7 +155,72 @@
   {
     "to": "/create-manage/inputs/upload",
     "from": ["/portal-guide/inputs-manager/supported-formats", "/portal-guide/inputs-manager/upload-inputs", "/api-guide/data/supported-formats", "/api-guide/data/create-get-update-delete"]
+  },
+  {
+    "to": "/create-manage/search/ui/",
+    "from": ["/portal-guide/psearch/"]
+  },
+  {
+    "to": "/create-manage/search/ui/visual",
+    "from": ["/portal-guide/psearch/visual-search"]
+  },
+  {
+    "to": "/create-manage/search/ui/object",
+    "from": ["/portal-guide/psearch/prank"]
+  },
+  {
+    "to": "/create-manage/search/ui/text-search",
+    "from": ["/portal-guide/psearch/text-search"]
+  },
+  {
+    "to": "/create-manage/search/ui/combine_or_negate",
+    "from": ["/portal-guide/psearch/pcombine_or_negate"]
+  },
+  {
+    "to": "/create-manage/search/ui/filter",
+    "from": ["/portal-guide/psearch/pfilter"]
+  },
+  {
+    "to": "/create-manage/search/",
+    "from": ["/api-guide/search/rank-filter-combine-or-negate"]
+  },
+  {
+    "to": "/compute/models/upload/",
+    "from": ["/compute/models/model-upload/"]
+  },
+  {
+    "to": "/compute/models/upload/test-models-locally",
+    "from": ["/compute/models/model-upload/test-models-locally"]
+  },
+  {
+    "to": "/compute/models/upload/data-types",
+    "from": ["/compute/models/model-upload/data-types"]
+  },
+  {
+    "to": "/compute/models/inference/",
+    "from": ["/compute/models/model-inference"]
+  },
+  {
+    "to": "/create-manage/search/api/",
+    "from": ["/api-guide/search/"]
+  },
+  {
+    "to": "/create-manage/search/api/index-images-for-search",
+    "from": ["/api-guide/search/index-images-for-search"]
+  },
+  {
+    "to": "/create-manage/search/api/filter",
+    "from": ["/api-guide/search/filter"]
+  },
+  {
+    "to": "/create-manage/search/api/rank",
+    "from": ["/api-guide/search/rank"]
+  },
+  {
+    "to": "/create-manage/search/api/combine-or-negate",
+    "from": ["/api-guide/search/combine-or-negate"]
   }
+  
 
 
 ]
