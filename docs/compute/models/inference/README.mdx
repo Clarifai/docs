@@ -11,19 +11,52 @@ sidebar_position: 1
 
 Clarifai's Compute Orchestration capabilities provide efficient ways to make prediction calls to suit various use cases. Once your model is deployed, you can use it to perform inferences seamlessly.
 
-:::warning Deploy model first
+## Deploy Model First
 
-- Before making the prediction requests, ensure you have [set up a cluster](https://docs.clarifai.com/compute/deployments/clusters-nodepools), created a nodepool, and [deployed your model](https://docs.clarifai.com/compute/deployments/deploy-model) in it. Once the model is deployed, you'll specify its `deployment_id` parameter (or `compute_cluster_id` and `nodepool_id`), which is essential for proper routing and execution of your prediction request. 
+Before making the prediction requests, ensure you have [set up a cluster](https://docs.clarifai.com/compute/deployments/clusters-nodepools), created a nodepool, and [deployed your model](https://docs.clarifai.com/compute/deployments/deploy-model) in it. Once the model is deployed, you'll specify its `deployment_id` parameter (or `compute_cluster_id` and `nodepool_id`), which is essential for proper routing and execution of your prediction request. 
 
-- If you do not specify any of the parameters, the prediction will default to the `Clarifai Shared` deployment type.
+:::warning Default Deployment
+
+If you do not specify the `deployment_id` parameter (or `compute_cluster_id` and `nodepool_id`), the prediction will default to the `Clarifai Shared` deployment type.
+
+:::
+
+The `deployment_id` parameter (or `compute_cluster_id` and `nodepool_id`) is vital in directing prediction requests to the appropriate cluster and nodepool. 
+
+For example, you can route requests to a GCP cluster by selecting a corresponding deployment ID, use a different deployment ID for an AWS cluster, and yet another for an on-premises deployment. 
+
+This gives you full control over performance, costs, and security, allowing you to focus on building cutting-edge AI solutions while we handle the infrastructure complexity.
+
+
+## Structure of Prediction Methods
+
+:::tip Supported Input and Output Data Types
+
+[Click here](https://docs.clarifai.com/compute/models/model-upload/data-types) to explore the wide range of input and output data types supported by Clarifai’s model framework. You'll also find client-side examples that show how to work with these rich data formats effectively.
 
 :::
 
-:::note Why Deployment Selection Matters
+Clarifai models are mostly built using three primary files: `model.py`, `requirements.txt`, and `config.yaml`. As described [here](https://docs.clarifai.com/compute/models/model-upload/#b-prediction-methods), the core prediction logic resides in `model.py`, which defines how your model processes inputs and generates outputs.
 
-The `deployment_id` parameter (or `compute_cluster_id` and `nodepool_id`) is vital in directing prediction requests to the appropriate cluster and nodepool. For example, you can route requests to a GCP cluster by selecting a corresponding deployment ID, use a different deployment ID for an AWS cluster, and yet another for an on-premises deployment. This gives you full control over performance, costs, and security, allowing you to focus on building cutting-edge AI solutions while we handle the infrastructure complexity.
+When making predictions on the client side, the structure of the prediction methods directly reflects the method signatures defined in the `model.py` file. This one-to-one mapping allows you to make custom predictions with flexible naming and argument structures, giving you full control over how you invoke models.
 
-:::
+Here are some examples of this method mapping approach:
+
+| `model.py` Model Implementation                 | Client-Side Usage Pattern |
+|-------------------------------------------------|--------------------------|
+| `@ModelClass.method def predict(...)`           | `model.predict(...)`     |
+| `@ModelClass.method def generate(...)`          | `model.generate(...)`    |
+| `@ModelClass.method def stream(...)`            | `model.stream(...)`      |
+
+This design provides flexibility in how to make model predictions. For example, a method could be defined as `@ModelClass.method def analyze_video(...)` in `model.py`, and then you can call it on the client side using `model.analyze_video(...)`.
+
+Here are some key characteristics of this design:
+
+- Method names must match exactly between `model.py` and client usage.
+
+- Parameters retain the same names and types as defined in the method.
+
+- Return types follow the structure defined by the model's outputs.
 
 import DocCardList from '@theme/DocCardList';
 import {useCurrentSidebarCategory} from '@docusaurus/theme-common';

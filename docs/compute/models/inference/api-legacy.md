@@ -8,15 +8,17 @@ sidebar_position: 2
 **Perform predictions using our older method**
 <hr />
 
-The legacy inference method uses our previous API structure and is best suited for models built using the older techniques. While this method remains functional, we recommend transitioning to the [new inference method](api.md) for improved efficiency, scalability, and access to the latest features.
+The legacy inference technique uses our previous API structure and is best suited for models built using the older techniques.
 
-Before making predictions with this method, ensure that your model has been deployed, [as mentioned previously](README.mdx).
+While this method remains functional, we recommend transitioning to the [new inference method](api.md) for improved efficiency, scalability, and access to the latest features.
 
-:::warning
+:::info
 
-The legacy inference method is supported only up to Clarifai release version 11.2.2.
+Before making a prediction, ensure that your model has been deployed, [as mentioned previously](README.mdx). Otherwise, the prediction will default to the `Clarifai Shared` deployment type. 
 
 :::
+
+
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

@@ -12,7 +12,11 @@ You can perform predictions using your deployed models directly through the User
 
 You can simply upload an input (such as image, text, or video) and view the output predictions in real-time within an intuitive user experience.
 
-Before making predictions with this method, ensure that your model has been deployed, [as mentioned previously](README.mdx).
+:::info
+
+Before making a prediction, ensure that your model has been deployed, [as mentioned previously](README.mdx). Otherwise, the prediction will default to the `Clarifai Shared` deployment type. 
+
+:::
 
 ## Predictions Within Model Playground
 
