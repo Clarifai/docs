@@ -219,6 +219,10 @@
   {
     "to": "/create-manage/search/api/combine-or-negate",
     "from": ["/api-guide/search/combine-or-negate"]
+  },
+  {
+    "to": "/compute/models/upload/test-locally",
+    "from": ["/compute/models/upload/test-models-locally"]
   }
   
 

@@ -16,8 +16,3 @@ checkpoints:
   type: huggingface
   repo_id: Falconsai/nsfw_image_detection
   hf_token: hf_token
-concepts:
-- id: '0'
-  name: normal
-- id: '1'
-  name: nsfw

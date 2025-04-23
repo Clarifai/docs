@@ -1,23 +1,16 @@
-from clarifai.runners.models.model_class import ModelClass
-from clarifai.runners.utils.data_types import Stream
-from clarifai.utils.logging import logger
-from clarifai.runners.models.model_builder import ModelBuilder
-from typing import List, Optional
+from typing import List, Iterator
+from threading import Thread
 import os
 import torch
-from transformers import (AutoModelForCausalLM, AutoTokenizer, TextIteratorStreamer, pipeline)
+
+from clarifai.runners.models.model_class import ModelClass
+from clarifai.utils.logging import logger
+from clarifai.runners.models.model_builder import ModelBuilder
+from clarifai.runners.utils.openai_convertor import openai_response
+from transformers import (AutoModelForCausalLM, AutoTokenizer, TextIteratorStreamer)
 
 
-DEFAULT_INFERENCE_PARAMS = {
-    "temperature": 0.7,
-    "max_new_tokens": 256,
-    "top_k": 50,
-    "top_p": 1.0,
-    "do_sample": True,
-}
-
-
-class MyRunner(ModelClass):
+class MyModel(ModelClass):
   """A custom runner for llama-3.2-1b-instruct llm that integrates with the Clarifai platform"""
 
   def load_model(self):
@@ -39,88 +32,108 @@ class MyRunner(ModelClass):
         device_map=self.device,
         torch_dtype=torch.bfloat16,
     )
-
-    self.default_inference_params = DEFAULT_INFERENCE_PARAMS
+    self.streamer = TextIteratorStreamer(tokenizer=self.tokenizer,)
+    self.chat_template = None
     logger.info("Done loading!")
 
   @ModelClass.method
-  def predict(self, prompt: str = "") -> str:
-    """This method generates outputs text for the given inputs using the model."""
+  def predict(self,
+              prompt: str ="",
+              chat_history: List[dict] = None,
+              max_tokens: int = 512,
+              temperature: float = 0.7,
+              top_p: float = 0.8) -> str:
+    """
+    Predict the response for the given prompt and chat history using the model.
+    """
+    # Construct chat-style messages
+    messages = chat_history if chat_history else []
+    if prompt:
+        messages.append({
+            "role": "user",
+            "content": [{"type": "text", "text": prompt}]
+        })
 
-    # prompts = [prompt]
-    inputs = self.tokenizer([prompt], return_tensors="pt", padding=True).to(self.device)
+    inputs = self.tokenizer.apply_chat_template(messages, tokenize=True, add_generation_prompt=True, return_tensors="pt").to(self.model.device)
 
-    output_tokens = self.model.generate(
-        **inputs,
-        max_new_tokens=self.default_inference_params["max_new_tokens"],
-        do_sample=self.default_inference_params["do_sample"],
-        temperature=self.default_inference_params["temperature"],
-        top_k=self.default_inference_params["top_k"],
-        top_p=self.default_inference_params["top_p"],
-        eos_token_id=self.tokenizer.eos_token_id,
-    )
+    generation_kwargs = {
+        "input_ids": inputs["input_ids"],
+        "do_sample": True,
+        "max_new_tokens": max_tokens,
+        "temperature": temperature,
+        "top_p": top_p,
+        "eos_token_id": self.tokenizer.eos_token_id,
+    }
 
-    outputs_text = self.tokenizer.batch_decode(
-        output_tokens[:, inputs['input_ids'].shape[1]:], skip_special_tokens=True)
-
-    return outputs_text[0]
+    output = self.model.generate(**generation_kwargs)
+    generated_tokens = output[0][inputs["input_ids"].shape[-1]:]
+    return self.tokenizer.decode(generated_tokens, skip_special_tokens=True)
 
   @ModelClass.method
-  def generate(self, prompt: str = '') -> Stream[str]:
-    """Example yielding a whole batch of streamed stuff back."""
-    
-    inputs = self.tokenizer([prompt], return_tensors="pt", padding=True).to(self.device)
+  def generate(self,
+              prompt: str="",
+              chat_history: List[dict] = None,
+              max_tokens: int = 512,
+              temperature: float = 0.7,
+              top_p: float = 0.8) -> Iterator[str]:
+      """Stream generated text tokens from a prompt + optional chat history."""
 
-    output_tokens = self.model.generate(
-        **inputs,
-        max_new_tokens=self.default_inference_params["max_new_tokens"],
-        do_sample=self.default_inference_params["do_sample"],
-        temperature=self.default_inference_params["temperature"],
-        top_k=self.default_inference_params["top_k"],
-        top_p=self.default_inference_params["top_p"],
-        eos_token_id=self.tokenizer.eos_token_id,
-    )
+      # Construct chat-style messages
+      messages = chat_history if chat_history else []
+      if prompt:
+          messages.append({
+              "role": "user",
+              "content": [{"type": "text", "text": prompt}]
+          })
+      
+      response = self.chat(
+          messages=messages,
+          max_tokens=max_tokens,
+          temperature=temperature,
+          top_p=top_p
+      )
+      for each in response:
+        yield each['choices'][0]['delta']['content']
 
-    outputs_text = self.tokenizer.batch_decode(
-        output_tokens[:, inputs['input_ids'].shape[1]:], skip_special_tokens=True)
-
-    for token in outputs_text[0]:  
-      yield token
 
   @ModelClass.method
   def chat(self,
-           messages: List[dict],
-           max_tokens: int = DEFAULT_INFERENCE_PARAMS["max_new_tokens"],
-           temperature: float = DEFAULT_INFERENCE_PARAMS["temperature"],
-           top_p: int = DEFAULT_INFERENCE_PARAMS["top_p"]) -> Stream[dict]:
-    """Chat with the model."""
-    pipe = pipeline(
-        "text-generation",
-        model=self.checkpoints,
-        torch_dtype=torch.bfloat16,
-        device_map="auto",
-    )
-    for msg in messages:
-      if "role" not in msg and "content" not in msg:
-        raise ValueError("Message must contain 'role' and 'content' keys.")
-      if msg["role"] not in ["user", "assistant", "system"]:
-        raise ValueError("Role must be 'user', 'assistant', or 'system'.")
-      if not isinstance(msg["content"], str):
-        raise ValueError("Content must be a string.")
-        
-    outputs = pipe(
-        messages,
-        max_new_tokens=max_tokens,
-        do_sample=self.default_inference_params["do_sample"],
-        temperature=temperature,
-        top_k=self.default_inference_params["top_k"],
-        top_p=top_p,
-        eos_token_id=self.tokenizer.eos_token_id,
-    )
-    output_tokens = outputs[0]["generated_text"][-1]
+          messages: List[dict],
+          max_tokens: int = 512,
+          temperature: float = 0.7,
+          top_p: float = 0.8) -> Iterator[dict]:
+      """
+      Stream back JSON dicts for assistant messages.
+      Example return format:
+      {"role": "assistant", "content": [{"type": "text", "text": "response here"}]}
+      """
 
-    for token in output_tokens['content']:  
-      yield token
+      # Tokenize using chat template
+      inputs = self.tokenizer.apply_chat_template(
+          messages,
+          tokenize=True,
+          add_generation_prompt=True,
+          return_tensors="pt"
+      ).to(self.model.device)
+
+      generation_kwargs = {
+          "input_ids": inputs["input_ids"],
+          "do_sample": True,
+          "max_new_tokens": max_tokens,
+          "temperature": temperature,
+          "top_p": top_p,
+          "eos_token_id": self.tokenizer.eos_token_id,
+          "streamer": self.streamer
+      }
+
+      thread = Thread(target=self.model.generate, kwargs=generation_kwargs)
+      thread.start()
+
+      # Accumulate response text
+      for token_text in self.streamer:
+         yield openai_response(token_text)
+
+      thread.join()
 
 
   def test(self):
