@@ -62,11 +62,7 @@
   {
     "to": "/compute/models/upload/",
     "from": ["/sdk/compute-orchestration/model-upload"]
-  },
-  {
-    "to": "/compute/models/upload/test-models-locally",
-    "from": ["/sdk/compute-orchestration/test-models-locally"]
-  },
+  },  
   {
     "to": "/compute/overview",
     "from": [
@@ -189,8 +185,8 @@
     "from": ["/compute/models/model-upload/"]
   },
   {
-    "to": "/compute/models/upload/test-models-locally",
-    "from": ["/compute/models/model-upload/test-models-locally"]
+    "to": "/compute/models/upload/test-locally",
+    "from": ["/sdk/compute-orchestration/test-models-locally", "/compute/models/model-upload/test-models-locally", "/compute/models/upload/test-models-locally"]
   },
   {
     "to": "/compute/models/upload/data-types",
@@ -219,10 +215,6 @@
   {
     "to": "/create-manage/search/api/combine-or-negate",
     "from": ["/api-guide/search/combine-or-negate"]
-  },
-  {
-    "to": "/compute/models/upload/test-locally",
-    "from": ["/compute/models/upload/test-models-locally"]
   }
   
 
