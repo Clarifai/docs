@@ -1,26 +1,51 @@
 ---
 description: Use vector search to find, sort, and filter what you need in your unstructured data
-pagination_prev: null
 ---
 
 # Search via the UI
 
-**Use vector search to find, sort, and filter what you need in your data**
+**Use vector search to find, sort, and filter what you need in your unstructured data**
 <hr />
 
-The Clarifai’s Smart Search feature on the Input-Manager screen allows you to harness the power of AI to search through unstructured or structured data with ease. 
 
-Whether you're searching for images, videos, or text data, Smart Search empowers you to quickly find the content you need based on visual, semantic and/or conceptual understanding. 
+Our Smart Search feature leverages vector search capabilities to power the search experience. 
 
-With Smart Search, you can unlock the full potential of your data assets, making it easier than ever to locate and retrieve the data of interest. For example, you can use the search results within your app to accelerate [data labeling](https://docs.clarifai.com/portal-guide/annotate/create-get-update-delete) for custom model training tasks.
+Available directly on the Input-Manager screen, it enables you to seamlessly search through both structured and unstructured data by leveraging AI to surface the most relevant results with ease.
 
 <figure style={{ display: 'flex', justifyContent: 'center' }}>
   ![](/img/spacetime.svg)
 </figure>
 
-> The Input-Manager screen is the main page showcasing all the inputs in your app. You can access it by clicking the **Inputs** option in your app's collapsible left sidebar. The screen has [two modes](https://docs.clarifai.com/portal-guide/data/explorer/#input-manager): Input Mode (default) and Object Mode. 
+> **Note**: _The Inputs-Manager screen is the main page showcasing all the inputs in your app. You can access it by clicking the **Inputs** option in your app's collapsible left sidebar. The screen has [two modes](https://docs.clarifai.com/create-manage/inputs/#inputs-manager-screen): Input Mode (default) and Object Mode._
 
 > ![](/img/community/search/input-manager.png)
+
+
+:::info
+
+When performing a Smart Search with custom concepts, ensure that these concepts are first trained using an embedding-classifier model ([transfer-learning](https://docs.clarifai.com/portal-guide/model/model-types/transfer-learning/) model). Without this training, the search query may not work. On the Inputs-Manager screen, concepts that have already been trained with a model are marked with a blue circle, while untrained concepts are marked with a grey circle. 
+
+:::
+
+
+## Types of Smart Search
+
+We offer the following types of Smart Search options in our platform.
+
+- [**Smart Image Search**](https://docs.clarifai.com/create-manage/search/ui/visual/) — Allows you to retrieve images sorted by their visual relevance to a query in the form of: 
+   - **Image** — Provide a reference image of interest to compare inputs against.
+   - **Concept** — Provide a trained concept to compare input predictions against.
+   - **Caption** — Provide a full-text description to compare inputs against.
+
+- [**Smart Object Search**](https://docs.clarifai.com/create-manage/search/ui/object) — Allows you to retrieve annotated objects (bounding boxes within images) sorted by their visual relevance to a query in the form of:
+  - **Image** — Provide a reference image of interest to compare inputs against.
+  - **Concept** — Provide a trained concept to compare input predictions against.
+  - **Caption** — Provide a full-text description to compare inputs against.
+
+- [**Smart Text Search**](https://docs.clarifai.com/create-manage/search/ui/text-search) — Allows you to retrieve text data sorted by their content and semantic similarity to a query in the form of:
+  - **Text** — Provide a text description to compare input predictions against. 
+  - **Concept** — Provide a trained concept to compare input predictions against.
+
 
 
 import DocCardList from '@theme/DocCardList';

@@ -150,7 +150,7 @@
   },
   {
     "to": "/create-manage/inputs/upload",
-    "from": ["/portal-guide/inputs-manager/supported-formats", "/portal-guide/inputs-manager/upload-inputs", "/api-guide/data/supported-formats", "/api-guide/data/create-get-update-delete"]
+    "from": ["/api-guide/search/index-images-for-search", "/portal-guide/inputs-manager/supported-formats", "/portal-guide/inputs-manager/upload-inputs", "/api-guide/data/supported-formats", "/api-guide/data/create-get-update-delete"]
   },
   {
     "to": "/create-manage/search/ui/",
@@ -199,11 +199,7 @@
   {
     "to": "/create-manage/search/api/",
     "from": ["/api-guide/search/"]
-  },
-  {
-    "to": "/create-manage/search/api/index-images-for-search",
-    "from": ["/api-guide/search/index-images-for-search"]
-  },
+  },  
   {
     "to": "/create-manage/search/api/filter",
     "from": ["/api-guide/search/filter"]

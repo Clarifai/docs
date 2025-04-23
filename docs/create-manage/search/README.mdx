@@ -1,50 +1,25 @@
 ---
-description: Manage your inputs and training data on the Community Platform
-pagination_prev: null
+description: Leverage vector search capabilities to find similar items in a dataset
 ---
 
 # Vector Search
 
-**Manage your inputs and training data on the Clarifai platform**
+**Leverage vector search capabilities to find similar items in a dataset**
 <hr />
 
-## Search Overview
+Vector search is a technique that enables searching and retrieving unstructured data — like text, images, and videos — based on meaning rather than exact matches.
 
-**Search helps you sort, save, organize, and filter your datasets**
-<hr />
+At its core are vector embeddings — numerical representations of data that capture their semantic or visual essence. These embeddings allow data to be mathematically processed and compared, making it possible to find similar items even when they don’t share exact words or features.
 
-You can upload inputs to our platform as URLs or bytes. When you `POST /inputs`, your [base workflow](https://docs.clarifai.com/portal-guide/workflows/base-workflows/) is used to index the inputs, and this index enables search over the outputs of the models in your workflow. Once indexed, you can search for the inputs by concept, annotation, or any other advanced search parameters. 
+Unlike traditional keyword-based search, which relies on exact or fuzzy text matches, [vector search](https://www.clarifai.com/blog/finding-what-you-need-a-comprehensive-guide-to-vector-search) compares the distances between embeddings to find results that are contextually or visually similar. This allows for much more intelligent and intuitive retrieval.
 
-## Rank
+:::note
 
-Your model can identify concepts in your data and rank your search results by how confident it is that a given concept is present. You can even rank search results by how similar one input is to another input.
-
-## Filter
-
-Trim down the amount of data returned in search. For example, you may only want to see inputs that one of your collaborators has labeled with the word “dog”. Or, perhaps you want only those inputs that were captured in a certain geographical region.
-
-## 'AND'
-
-Combine multiple search parameters. For example, you can find all the inputs within a geographical region with a "weapon" in them, or all annotations assigned to user "Joe", or visually similar product images that are assigned the word "XL" in metadata.
-
-![Image illustrating how to search by images using Clarifai&apos;s concepts](/img/illustration-search.png)
-
-
-
-:::info
-
-- When performing a Smart Search with custom concepts, ensure that these concepts are first trained using an embedding-classifier model ([transfer-learning](https://docs.clarifai.com/portal-guide/model/model-types/transfer-learning/) model). Without this training, the search query may not work. In the Input-Manager screen, concepts that have already been trained with a model are marked with a blue circle, while untrained concepts are marked with a grey circle. 
-- When you upload inputs to our platform, we use your app’s [base workflow](https://docs.clarifai.com/portal-guide/workflows/base-workflows/) to index them. This immediately makes them searchable by concept, annotation, or other advanced parameters. You can update the search index by clicking the **Update** button in the search bar, then clicking the reindex button in menu that drops down. 
+When you post inputs to our platform, either via the UI or API, your app's [base workflow](https://docs.clarifai.com/portal-guide/workflows/base-workflows/) automatically indexes those inputs using the outputs from your models. This index powers vector search capabilities — so you can search using concepts, annotations, or advanced parameters to find inputs that align with the meanings you're interested in.
 
 :::
 
-## Fully-Managed Vector Search Engine 
-
-Our Smart Search feature leverages vector search capabilities to power the search experience. [Vector search](https://www.clarifai.com/blog/finding-what-you-need-a-comprehensive-guide-to-vector-search) is a type of search engine that uses vectors to search and retrieve text, images, and videos.
-
-Vector embeddings are numerical “representations” of unstructured data, which enable their meaning to be encoded and processed mathematically. By converting the data into vectors, which is a language native to computers, we can efficiently perform search operations on them. 
-
-Instead of traditional keyword-based search, where exact matches are sought, vector search allows for searching based on visual and/or semantic similarity by calculating distances between vector embedding representations of the data. 
+![Image illustrating how to search by images using Clarifai&apos;s concepts](/img/illustration-search.png)
 
 ## Powered by a Vector Database
 
@@ -56,38 +31,13 @@ When a user performs a search, their query is also converted into a vector repre
 
 By using our vector search as a service, you can get more relevant search results, faster search times, and scalable performance. 
 
-## Simplifies Smart Search Integration
+## Types of Vector Search
 
-Choosing Clarifai's turnkey smart search solution is better than building your own from scratch.  
+- **Rank** — Leverage your model’s understanding of concepts to rank search results by relevance. This can be based on how confident the model is that a specific concept (like “cat” or “tree”) is present in an input, or how similar one input is to another. This is especially powerful for semantic and visual similarity use cases.
 
-Without Clarifai, you would need to do the following in order to build smart search features into your own solutions:
+- **Filter** — Use filters to narrow down search results and focus only on the data that matters to you. For example, you might want to see only inputs that a specific collaborator has labeled with the word “dog,” or filter by metadata, such as limiting your results to inputs captured in a certain geographic region. 
 
-- Set up your own vector database instance. This involves choosing a database platform, installing the software, and configuring the database.
-- Build out the entire pipeline for turning images/text into embeddings. This involves using a computer vision or natural language processing (NLP) library to extract features from images or text, and then converting those features into a vector representation.
-- Insert or query the vector database. This involves using the database's API to add new data or search for existing data.
-
-This process can be very time-consuming and complex, especially for developers who are not familiar with vector databases or machine learning. 
-
-Clarifai eliminates the need for developers to do all of this work by providing an out of the box solution for building state-of-the-art smart search capabilities.
-
-## Types of Smart Search
-
-We offer the following types of Smart Search options in our platform.
-
-- [**Smart Image Search**](https://docs.clarifai.com/portal-guide/psearch/visual-search) — Allows you to retrieve images sorted by their visual relevance to a query in the form of: 
-   - **Image** — Provide a reference image of interest to compare inputs against.
-   - **Concept** — Provide a trained concept to compare input predictions against.
-   - **Caption** — Provide a full-text description to compare inputs against.
-
-- [**Smart Object Search**](https://docs.clarifai.com/portal-guide/psearch/prank) — Allows you to retrieve annotated objects (bounding boxes within images) sorted by their visual relevance to a query in the form of:
-  - **Image** — Provide a reference image of interest to compare inputs against.
-  - **Concept** — Provide a trained concept to compare input predictions against.
-  - **Caption** — Provide a full-text description to compare inputs against.
-
-- [**Smart Text Search**](https://docs.clarifai.com/portal-guide/psearch/text-search) — Allows you to retrieve text data sorted by their content and semantic similarity to a query in the form of:
-  - **Text** — Provide a text description to compare input predictions against. 
-  - **Concept** — Provide a trained concept to compare input predictions against.
-
+- **'AND'** — Create more precise queries by combining multiple conditions.  This makes your searches even more targeted. For instance, you might look for all inputs within a specific geographic area that also contain the concept of a “weapon,” or find annotations assigned to a particular user like “Joe.”
 
 
 import DocCardList from '@theme/DocCardList';
