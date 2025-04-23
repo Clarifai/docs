@@ -60,11 +60,11 @@
     "from": ["/glossary/generative-ai"]
   },
   {
-    "to": "/compute/models/model-upload/",
+    "to": "/compute/models/upload/",
     "from": ["/sdk/compute-orchestration/model-upload"]
   },
   {
-    "to": "/compute/models/model-upload/test-models-locally",
+    "to": "/compute/models/upload/test-models-locally",
     "from": ["/sdk/compute-orchestration/test-models-locally"]
   },
   {
