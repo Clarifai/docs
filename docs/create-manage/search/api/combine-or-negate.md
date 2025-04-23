@@ -78,7 +78,7 @@ When you combine both `Filter` and `Rank`, filter will be applied before ranking
 
 ## Combine Filter by Metadata and Rank 
 
-You can also [search over custom metadata](https://docs.clarifai.com/api-guide/search/filter#by-custom-metadata) and rank the results. 
+You can also [search over custom metadata](https://docs.clarifai.com/api-guide/search/filter#by-custom-metadata) and easily rank the results. 
 
 <Tabs>
 
