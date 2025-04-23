@@ -14,7 +14,7 @@ from transformers import DetrForObjectDetection, DetrImageProcessor
 # Clarifai imports
 from clarifai.runners.models.model_class import ModelClass
 from clarifai.runners.models.model_builder import ModelBuilder
-from clarifai.runners.utils.data_types import Concept, Image, Video, Stream, Region
+from clarifai.runners.utils.data_types import Concept, Image, Video, Region
 from clarifai.utils.logging import logger
 
 
@@ -148,7 +148,7 @@ class MyRunner(ModelClass):
             return outputs[0]  # Return detections for single image
 
     @ModelClass.method
-    def generate(self, video: Video) -> Stream[List[Region]]:
+    def generate(self, video: Video) -> Iterator[List[Region]]:
         """Process video frames and yield detected objects for each frame."""
         video_bytes = video.bytes
         frame_generator = video_to_frames(video_bytes)
@@ -160,7 +160,7 @@ class MyRunner(ModelClass):
                 yield outputs[0]  # Yield detections for each frame
 
     @ModelClass.method
-    def stream_image(self, image_stream: Stream[Image]) -> Stream[List[Region]]:
+    def stream_image(self, image_stream: Iterator[Image]) -> Iterator[List[Region]]:
         """Stream process image inputs."""
         logger.info("Starting stream processing for images")
         for image in image_stream:
@@ -170,7 +170,7 @@ class MyRunner(ModelClass):
             logger.info(f"Processing time: {time.time() - start_time:.3f}s")
 
     @ModelClass.method
-    def stream_video(self, video_stream: Stream[Video]) -> Stream[List[Region]]:
+    def stream_video(self, video_stream: Iterator[Video]) -> Iterator[List[Region]]:
         """Stream process video inputs."""
         logger.info("Starting stream processing for videos")
         for video in video_stream:

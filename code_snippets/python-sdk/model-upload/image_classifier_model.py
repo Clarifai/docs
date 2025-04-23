@@ -1,13 +1,13 @@
 import os
 import tempfile
-from typing import List
+from typing import List, Iterator
 from io import BytesIO
 import cv2
 import torch
 from transformers import AutoModelForImageClassification, ViTImageProcessor
 
 from clarifai.runners.models.model_class import ModelClass
-from clarifai.runners.utils.data_types import Image,  Concept, Stream, Video
+from clarifai.runners.utils.data_types import Image,  Concept, Video
 from clarifai.runners.models.model_builder import ModelBuilder
 
 from PIL import Image as PILImage
@@ -80,7 +80,7 @@ class ImageClassifierModel(ModelClass):
     return process_concepts(logits, self.model_labels)
 
   @ModelClass.method
-  def generate(self, video: Video) -> Stream[List[Concept]]:
+  def generate(self, video: Video) -> Iterator[List[Concept]]:
       """Generate concepts for frames extracted from a video."""
       video_bytes = video.bytes
       frame_generator = video_to_frames(video_bytes)
@@ -94,14 +94,14 @@ class ImageClassifierModel(ModelClass):
 
 
   @ModelClass.method
-  def stream_image(self, image_stream: Stream[Image]) -> Stream[List[Concept]]:
+  def stream_image(self, image_stream: Iterator[Image]) -> Iterator[List[Concept]]:
       """Stream process image inputs."""
       for image in image_stream:
           result = self.predict(image)
           yield result
 
   @ModelClass.method
-  def stream_video(self, video_stream: Stream[Video]) -> Stream[List[Concept]]:
+  def stream_video(self, video_stream: Iterator[Video]) -> Iterator[List[Concept]]:
       """Stream process video inputs."""
       for video in video_stream:
           for frame_result in self.generate(video):

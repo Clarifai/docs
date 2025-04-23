@@ -10,7 +10,7 @@ sidebar_position: 3
 
 The Clarifai platform allows you to upload custom models for a wide range of use cases. With just a few simple steps, you can get your models up and running and leverage the platform’s powerful capabilities.
 
-Let's demonstrate how you can upload the [Llama-3.2-1B-Instruct](https://github.com/Clarifai/runners-examples/tree/main/llm/llama-3_2-1b-instruct) model from Hugging Face to the Clarifai platform.
+Let's demonstrate how you can upload the [Llama-3.2-1B-Instruct](https://github.com/Clarifai/runners-examples/tree/main/llm/hf-llama-3_2-1b-instruct) model from Hugging Face to the Clarifai platform.
 
 :::tip
 

@@ -6,5 +6,5 @@ timm==1.0.12
 opencv-python-headless==4.10.0.84
 numpy
 aiohttp
-clarifai==11.1.7rc7
+clarifai>=11.3.0
 clarifai-protocol>=0.0.20
