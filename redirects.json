@@ -223,7 +223,25 @@
   {
     "to": "/create-manage/search/api/filter",
     "from": ["/sdk/Search/Filter"]
+  },
+  {
+    "to": "/create-manage/datasets/upload",
+    "from": ["/sdk/managing-datasets/upload-data"]
+  },
+  {
+    "to": "/create-manage/datasets/",
+    "from": ["/portal-guide/datasets/", "/portal-guide/datasets/create-get-update-delete"]
+  },
+  {
+    "to": "/create-manage/datasets/manage",
+    "from": ["/sdk/managing-datasets/", "/api-guide/data/datasets/dataset-basics", "/api-guide/data/datasets/dataset-inputs"]
+  },
+  {
+    "to": "/create-manage/datasets/filters",
+    "from": ["/api-guide/data/datasets/dataset-filters"]
   }
+
+
 
   
 

@@ -3,7 +3,7 @@ description: Perform predictions using our older method
 sidebar_position: 2
 ---
 
-# Legacy Inference via the API
+# Legacy Inference via API
 
 **Perform predictions using our older method**
 <hr />

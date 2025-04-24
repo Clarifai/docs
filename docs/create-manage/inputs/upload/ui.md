@@ -3,7 +3,7 @@ description: Add data to the Clarifai platform via the UI
 sidebar_position: 2
 ---
 
-# Upload via the UI
+# Upload via UI
 
 **Add data to the Clarifai platform via the UI**
 <hr />

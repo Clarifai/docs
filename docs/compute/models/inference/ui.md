@@ -3,7 +3,7 @@ description: Perform predictions on the UI using your deployed models
 sidebar_position: 3
 ---
 
-# Inference via the UI
+# Inference via UI
 
 **Perform predictions on the UI using your deployed models**
 <hr />

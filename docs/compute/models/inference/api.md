@@ -3,7 +3,7 @@ description: Perform predictions using your deployed models
 sidebar_position: 1
 ---
 
-# Inference via the API
+# Inference via API
 
 **Perform predictions using your deployed models**
 <hr />

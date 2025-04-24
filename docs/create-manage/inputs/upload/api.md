@@ -3,7 +3,7 @@ description: Add data to the Clarifai platform via the API
 sidebar_position: 1
 ---
 
-# Upload via the API
+# Upload via API
 
 **Add data to the Clarifai platform via the API**
 <hr />

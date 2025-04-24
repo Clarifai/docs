@@ -1,6 +1,6 @@
 ---
 description: Use filter and search functionality over your datasets
-sidebar_position: 2
+sidebar_position: 4
 ---
 
 # Dataset Annotation Filters
@@ -19,11 +19,11 @@ Comparing the performance of those two models is a common technique for assessin
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
-import curlAddDatasetFilters from "!!raw-loader!../../../../code_snippets/api-guide/data/datasets/add_dataset_filters.sh";
-import curlListDatasetFilters from "!!raw-loader!../../../../code_snippets/api-guide/data/datasets/list_dataset_filters.sh";
-import curlGetDatasetFilter from "!!raw-loader!../../../../code_snippets/api-guide/data/datasets/get_dataset_filter.sh";
-import curlChangeDatasetFilter from "!!raw-loader!../../../../code_snippets/api-guide/data/datasets/change_dataset_filter.sh";
-import curlDeleteDatasetFilter from "!!raw-loader!../../../../code_snippets/api-guide/data/datasets/delete_dataset_filter.sh";
+import curlAddDatasetFilters from "!!raw-loader!../../../code_snippets/api-guide/data/datasets/add_dataset_filters.sh";
+import curlListDatasetFilters from "!!raw-loader!../../../code_snippets/api-guide/data/datasets/list_dataset_filters.sh";
+import curlGetDatasetFilter from "!!raw-loader!../../../code_snippets/api-guide/data/datasets/get_dataset_filter.sh";
+import curlChangeDatasetFilter from "!!raw-loader!../../../code_snippets/api-guide/data/datasets/change_dataset_filter.sh";
+import curlDeleteDatasetFilter from "!!raw-loader!../../../code_snippets/api-guide/data/datasets/delete_dataset_filter.sh";
 
 ## Add Dataset Annotation Filters
 
