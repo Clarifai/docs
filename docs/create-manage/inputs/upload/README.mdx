@@ -1,0 +1,78 @@
+---
+description: Add structured or unstructured data to the Clarifai platform
+---
+
+# Upload Inputs
+
+**Add structured or unstructured data to the Clarifai platform**
+<hr />
+
+
+An input is any piece of structured or unstructured data added to the Clarifai platform. This includes images, text, videos, and more — you can add as many inputs as you want. 
+
+Whether your data is hosted online via URLs, stored locally as file paths, or represented as bytes, our platform supports a wide range of formats, ensuring flexibility and ease of use. You can also upload zipped archive files (ZIP format) containing mixed data types, such as text and images.
+
+Once uploaded, you can organize your inputs into [datasets](https://docs.clarifai.com/portal-guide/datasets/) to support a wide range of tasks, including:
+
+- [Data labeling](https://docs.clarifai.com/portal-guide/labeling-tasks/)
+- [Performing searches](https://docs.clarifai.com/portal-guide/psearch/)
+- [Training new models](https://docs.clarifai.com/portal-guide/model/)
+- [Evaluating models](https://docs.clarifai.com/portal-guide/evaluate/)
+- [Making predictions](https://docs.clarifai.com/portal-guide/ppredict/)
+
+:::info
+
+As each input is uploaded, it is automatically indexed using the specified [base workflow](https://docs.clarifai.com/portal-guide/workflows/base-workflows) for your app. This indexing enables you to perform searches over the uploaded inputs, leveraging Clarifai’s custom-built [vector database](https://docs.clarifai.com/portal-guide/psearch/#powered-by-a-vector-database) for fast and efficient search capabilities.
+
+:::
+
+
+## Upload Limits
+
+When uploading data to the Clarifai platform, your inputs should meet the conditions outlined below.
+
+Note that if the size of your input, such as a video or an audio file, exceeds these limits, you will need to split ithem into smaller chunks. Otherwise, the processing will time out, and you will receive an error response.
+
+### Images
+
+- The supported image formats include `JPEG`, `PNG`, `TIFF`, `BMP`, `WEBP`, and `GIF`. 
+- Each request can include up to 128 image inputs per batch.
+- Each image file must be a maximum of 85 megapixels and less than 20MB in size.
+- The total batch size (in bytes) for each request must be less than 128MB.
+
+### Videos
+
+- The supported video formats include `AVI`, `MP4`, `WMV`, `MOV`, and `3GPP`.
+- Each request can include only 1 video input.
+- If uploading via URL, the video can be up to 300MB or 10 minutes long.
+- If uploading via direct file upload (byte data), the video must be less than 128MB. 
+
+### Text Files
+
+- The supported text formats include plain texts, CSV files, and TSV files. 
+- Each request can include up to 128 text files per batch.
+- Each text file must be less than 20MB.
+- The total batch size (in bytes) must be less than 128MB.
+
+### Audio Files
+
+- The supported audio format is `WAV`. 
+- Each request can include up to 128 audio files per batch.
+- Each audio file must be less than 20MB in size (suitable for a 48kHz, 60-second, 16-bit recording).
+- The total batch size (in bytes) must be less than 128MB.
+
+:::note bypass upload limits
+
+When uploading data to the Clarifai platform using the Python SDK — such as with `upload_from_bytes()` or `upload_from_url()` methods (demonstrated [here](api.md)) — the standard upload limits apply. However, you can bypass these limits by using the [`upload_from_folder()`](https://docs.clarifai.com/sdk/managing-datasets/upload-data) method from the `Dataset` class, which efficiently handles larger volumes of inputs by automatically batching them while adhering to upload restrictions.
+
+For example, when uploading images in bulk, the method incrementally processes and uploads them in multiple batches, ensuring that each batch contains a maximum of 128 images and does not exceed 128MB in size.
+
+You can also customize the `batch_size` variable, which allows for concurrent upload of inputs and annotations. For example, if your folder exceeds 128MB, you can set the variable to ensure that each batch contains an appropriate number of images while staying within the 128MB per batch limit.
+
+:::
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
+

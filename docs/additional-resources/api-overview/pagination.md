@@ -19,7 +19,7 @@ Creating a pagination request may vary depending on whether you're working with 
 
 :::info
 
-The initialization code used in the following example is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
+Before using the [Python SDK](https://docs.clarifai.com/additional-resources/api-overview/python-sdk), [Node.js SDK](https://docs.clarifai.com/additional-resources/api-overview/nodejs-sdk), or any of our [gRPC clients](https://docs.clarifai.com/additional-resources/api-overview/grpc-clients), ensure they are properly installed on your machine. Refer to their respective installation guides for instructions on how to install and initialize them.
 
 :::
 
@@ -42,15 +42,24 @@ import CurlPaginationPost from "!!raw-loader!../../../code_snippets/api-guide/ad
 import JavaScriptPaginationPost from "!!raw-loader!../../../code_snippets/api-guide/advanced_topics/post_pagination.html";
 import PHPPaginationPost from "!!raw-loader!../../../code_snippets/api-guide/advanced_topics/post_pagination.php";
 
+import PythonSDKPaginationGet from "!!raw-loader!../../../code_snippets/api-guide/advanced_topics/pagination-py-sdk.py";
+import NodeSDKPaginationGet from "!!raw-loader!../../../code_snippets/api-guide/advanced_topics/pagination-node-sdk.js";
+
 ## GET Endpoints
 
 For GET requests, the pagination parameters are included in the query string of the URL.
 
-Below is an example using [`ListInputs`](https://docs.clarifai.com/api-guide/data/create-get-update-delete#list-all-inputs) to retrieve inputs from an app, starting at page 2 with 20 results per page.
-
 <Tabs>
 
-<TabItem value="python" label="Python (gRPC)">
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{PythonSDKPaginationGet}</CodeBlock>
+
+</TabItem>
+<TabItem value="typescript" label="Node.js SDK">
+    <CodeBlock className="language-typescript">{NodeSDKPaginationGet}</CodeBlock>
+</TabItem>
+
+<TabItem value="python2" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonPaginationGet}</CodeBlock>
 </TabItem>
 
@@ -79,8 +88,6 @@ Below is an example using [`ListInputs`](https://docs.clarifai.com/api-guide/dat
 ## POST Endpoints
 
 For POST requests, the pagination parameters are included in the request body.
-
-Below is an example using [`PostAnnotationsSearches`](https://docs.clarifai.com/api-guide/search/filter#by-custom-concepts) to filter your search results by custom concepts, starting at page 2 with 20 results per page.
 
 <Tabs>
 
