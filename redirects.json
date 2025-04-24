@@ -211,7 +211,20 @@
   {
     "to": "/create-manage/search/api/combine-or-negate",
     "from": ["/api-guide/search/combine-or-negate"]
+  },
+  {
+    "to": "/create-manage/search/api/",
+    "from": ["/sdk/Search/", "/sdk/Search/Advance-Search"]
+  },
+  {
+    "to": "/create-manage/search/api/rank",
+    "from": ["/sdk/Search/Ranks"]
+  },
+  {
+    "to": "/create-manage/search/api/filter",
+    "from": ["/sdk/Search/Filter"]
   }
+
   
 
 
