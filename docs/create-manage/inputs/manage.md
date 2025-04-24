@@ -3,7 +3,7 @@ description: Learn how to use our API to manage, organize, and process your inpu
 sidebar_position: 3
 ---
 
-# Manage Inputs 
+# Manage Inputs via the API
 
 **Learn how to use our API to manage, organize, and process your inputs**
 <hr />

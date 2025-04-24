@@ -16,6 +16,49 @@ Whether you're working with images, text, or other data types, vector search via
 ![](/img/spacetime.svg)
 </center>
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+
+
+import CodeOR from "!!raw-loader!../../../../code_snippets/python-sdk/Search/as/or.py";
+import CodeORTS from "!!raw-loader!../../../../code_snippets/python-sdk/Search/as/or.ts";
+
+import CodeAND from "!!raw-loader!../../../../code_snippets/python-sdk/Search/as/and.py";
+import CodeANDTS from "!!raw-loader!../../../../code_snippets/python-sdk/Search/as/and.ts";
+
+## OR Search Operation
+
+The **OR** filter lets you expand your search to include results that match any of the specified conditions, rather than requiring all of them to be met.
+
+<Tabs>
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{CodeOR}</CodeBlock>
+
+</TabItem>
+<TabItem value="typescript" label="Node.js SDK">
+    <CodeBlock className="language-typescript">{CodeORTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+## AND Search Operation
+
+The **AND** operation enables you to refine search results by specifying multiple conditions that must all be satisfied at the same time. 
+
+For example, if a user searches for images containing both the concepts "dog" and "deer," only those images labeled with both concepts will be returned.
+
+
+<Tabs>
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{CodeAND}</CodeBlock>
+
+</TabItem>
+<TabItem value="typescript" label="Node.js SDK">
+    <CodeBlock className="language-typescript">{CodeANDTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 import DocCardList from '@theme/DocCardList';
 import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 

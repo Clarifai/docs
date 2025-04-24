@@ -15,12 +15,14 @@ You can even rank search results by how similar one input is to another input or
 In annotation search, `Rank` is a list of `Annotation` objects.
 
 :::info
-The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
+
+Before using the [Python SDK](https://docs.clarifai.com/additional-resources/api-overview/python-sdk), [Node.js SDK](https://docs.clarifai.com/additional-resources/api-overview/nodejs-sdk), or any of our [gRPC clients](https://docs.clarifai.com/additional-resources/api-overview/grpc-clients), ensure they are properly installed on your machine. Refer to their respective installation guides for instructions on how to install and initialize them.
+
 :::
 
 :::tip
 
-You can learn how to paginate your API requests results [here](https://docs.clarifai.com/api-guide/advanced-topics/pagination/). 
+You can learn how to paginate your API requests results [here](https://docs.clarifai.com/additional-resources/api-overview/pagination). 
 
 :::
 
@@ -83,6 +85,14 @@ import CurlImageBytes from "!!raw-loader!../../../../code_snippets/api-guide/sea
 import CurlInputID from "!!raw-loader!../../../../code_snippets/api-guide/search/rank/curl/by_input_id.sh";
 import CurlSearchText from "!!raw-loader!../../../../code_snippets/api-guide/search/rank/curl/search_by_text.sh";
 
+import CodeRKTXT from "!!raw-loader!../../../../code_snippets/python-sdk/Search/ranks/rk_text.py";
+import CodeRKTXTTS from "!!raw-loader!../../../../code_snippets/python-sdk/Search/ranks/rankWithText.ts";
+
+import CodeIMURL from "!!raw-loader!../../../../code_snippets/python-sdk/Search/ranks/rk_imurl.py";
+import CodeIMURLTS from "!!raw-loader!../../../../code_snippets/python-sdk/Search/ranks/rankWithImageUrl.ts";
+
+
+
 ## Search by Concepts
 
 Once your inputs are indexed, you can search for them by concepts.
@@ -95,7 +105,7 @@ When you add an input, it automatically gets predictions from the workflow in yo
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonAppConcepts}</CodeBlock>
 </TabItem>
 
@@ -103,15 +113,15 @@ When you add an input, it automatically gets predictions from the workflow in yo
     <CodeBlock className="language-javascript">{JSAppConcepts}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeAppConcepts}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaAppConcepts}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPAppConcepts}</CodeBlock>
 </TabItem>
 
@@ -127,7 +137,7 @@ After you have added inputs, annotated the inputs, and trained a custom model, y
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonCustomConcepts}</CodeBlock>
 </TabItem>
 
@@ -135,15 +145,15 @@ After you have added inputs, annotated the inputs, and trained a custom model, y
     <CodeBlock className="language-javascript">{JSCustomConcepts}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeCustomConcepts}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaCustomConcepts}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPCustomConcepts}</CodeBlock>
 </TabItem>
 
@@ -159,7 +169,7 @@ You can combine a search to find inputs that have concepts you have supplied as 
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonClarifaiCustomConcepts}</CodeBlock>
 </TabItem>
 
@@ -167,15 +177,15 @@ You can combine a search to find inputs that have concepts you have supplied as 
     <CodeBlock className="language-javascript">{JSClarifaiCustomConcepts}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeClarifaiCustomConcepts}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaClarifaiCustomConcepts}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPClarifaiCustomConcepts}</CodeBlock>
 </TabItem>
 
@@ -193,7 +203,7 @@ For example, if your app is in English and you want to search for "dog" in Japan
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonConceptLanguage}</CodeBlock>
 </TabItem>
 
@@ -201,15 +211,15 @@ For example, if your app is in English and you want to search for "dog" in Japan
     <CodeBlock className="language-javascript">{JSConceptLanguage}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeConceptLanguage}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaConceptLanguage}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPConceptLanguage}</CodeBlock>
 </TabItem>
 
@@ -227,7 +237,15 @@ You can use images to search through your collection. The API will return ranked
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{CodeIMURL}</CodeBlock>
+
+</TabItem>
+<TabItem value="typescript" label="Node.js SDK">
+    <CodeBlock className="language-typescript">{CodeIMURLTS}</CodeBlock>
+</TabItem>
+
+<TabItem value="python2" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonSearchImage}</CodeBlock>
 </TabItem>
 
@@ -235,15 +253,15 @@ You can use images to search through your collection. The API will return ranked
     <CodeBlock className="language-javascript">{JSSearchImage}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeSearchImage}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaSearchImage}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPSearchImage}</CodeBlock>
 </TabItem>
 
@@ -259,7 +277,7 @@ You can also search for an input by bytes, with the bytes being from local stora
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonImageBytes}</CodeBlock>
 </TabItem>
 
@@ -267,15 +285,15 @@ You can also search for an input by bytes, with the bytes being from local stora
     <CodeBlock className="language-javascript">{JSImageBytes}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeImageBytes}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaImageBytes}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPImageBytes}</CodeBlock>
 </TabItem>
 
@@ -291,7 +309,7 @@ If the input has been indexed, we can use the input ID. If there are multiple em
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonInputID}</CodeBlock>
 </TabItem>
 
@@ -299,15 +317,15 @@ If the input has been indexed, we can use the input ID. If there are multiple em
     <CodeBlock className="language-javascript">{JSInputID}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeInputID}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaInputID}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPInputID}</CodeBlock>
 </TabItem>
 
@@ -330,7 +348,14 @@ You can use texts to search through your collection of texts. The text-to-text s
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{CodeRKTXT}</CodeBlock>
+</TabItem>
+<TabItem value="typescript" label="Node.js SDK">
+    <CodeBlock className="language-typescript">{CodeRKTXTTS}</CodeBlock>
+</TabItem>
+
+<TabItem value="python2" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonSearchText}</CodeBlock>
 </TabItem>
 
@@ -338,15 +363,15 @@ You can use texts to search through your collection of texts. The text-to-text s
     <CodeBlock className="language-javascript">{JSSearchText}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeSearchText}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaSearchText}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPSearchText}</CodeBlock>
 </TabItem>
 

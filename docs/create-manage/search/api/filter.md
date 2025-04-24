@@ -13,12 +13,14 @@ You can filter and customize your search results to find exactly what you want. 
 In annotation search, `Filter` is a list of `Annotation` objects.
 
 :::info
-The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
+
+Before using the [Python SDK](https://docs.clarifai.com/additional-resources/api-overview/python-sdk), [Node.js SDK](https://docs.clarifai.com/additional-resources/api-overview/nodejs-sdk), or any of our [gRPC clients](https://docs.clarifai.com/additional-resources/api-overview/grpc-clients), ensure they are properly installed on your machine. Refer to their respective installation guides for instructions on how to install and initialize them.
+
 :::
 
 :::tip
 
-You can learn how to paginate your API requests results [here](https://docs.clarifai.com/api-guide/advanced-topics/pagination/). 
+You can learn how to paginate your API requests results [here](https://docs.clarifai.com/additional-resources/api-overview/pagination). 
 
 :::
 
@@ -81,6 +83,42 @@ import CurlTwoGeoPoints from "!!raw-loader!../../../../code_snippets/api-guide/s
 import CurlCustomAnnotation from "!!raw-loader!../../../../code_snippets/api-guide/search/filter/curl/by_custom_annotation_info.sh";
 import CurlAnnotationInfo from "!!raw-loader!../../../../code_snippets/api-guide/search/filter/curl/by_annotation_info.sh";
 
+import CodeIT from "!!raw-loader!../../../../code_snippets/python-sdk/Search/filters/fl_it.py";
+import CodeITTS from "!!raw-loader!../../../../code_snippets/python-sdk/Search/filters/filterWithInputType.ts";
+
+import CodeMD from "!!raw-loader!../../../../code_snippets/python-sdk/Search/filters/fl_md.py";
+import CodeMDTS from "!!raw-loader!../../../../code_snippets/python-sdk/Search/filters/filterWithMetadata.ts";
+
+
+import CodeGP from "!!raw-loader!../../../../code_snippets/python-sdk/Search/filters/fl_gp.py";
+import CodeGPTS from "!!raw-loader!../../../../code_snippets/python-sdk/Search/filters/filterWithGeoPoint.ts";
+
+
+import CodeIS from "!!raw-loader!../../../../code_snippets/python-sdk/Search/filters/fl_is.py";
+import CodeISTS from "!!raw-loader!../../../../code_snippets/python-sdk/Search/filters/filterWithInputStatusCode.ts";
+
+import CodeData from "!!raw-loader!../../../../code_snippets/python-sdk/Search/filters/fl_data.py";
+import CodeDataTS from "!!raw-loader!../../../../code_snippets/python-sdk/Search/filters/filterWithDatasetID.ts";
+
+import CodeMM from "!!raw-loader!../../../../code_snippets/python-sdk/Search/filters/fl_mm.py";
+import CodeMMTS from "!!raw-loader!../../../../code_snippets/python-sdk/Search/filters/multiModalFiltering.ts";
+
+import CodeCC from "!!raw-loader!../../../../code_snippets/python-sdk/Search/as/cc.py";
+import CodeCCTS from "!!raw-loader!../../../../code_snippets/python-sdk/Search/as/customConcepts.ts";
+
+
+## By Input Type
+
+You can specify that search results should only include inputs of a particular data type, such as images, videos, or text.
+
+<Tabs>
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{CodeIT}</CodeBlock>
+</TabItem>
+<TabItem value="typescript" label="Node.js SDK">
+    <CodeBlock className="language-typescript">{CodeITTS}</CodeBlock>
+</TabItem>
+</Tabs>
 
 ## By Custom Concepts
 
@@ -96,7 +134,15 @@ Training a model generates embeddings for each custom concept. These concept emb
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{CodeCC}</CodeBlock>
+ 
+</TabItem>
+<TabItem value="typescript" label="Node.js SDK">
+    <CodeBlock className="language-typescript">{CodeCCTS}</CodeBlock>
+</TabItem>
+
+<TabItem value="python2" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonCustomConcepts}</CodeBlock>
 </TabItem>
 
@@ -104,15 +150,15 @@ Training a model generates embeddings for each custom concept. These concept emb
     <CodeBlock className="language-javascript">{JSCustomConcepts}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeCustomConcepts}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaCustomConcepts}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPCustomConcepts}</CodeBlock>
 </TabItem>
 
@@ -128,7 +174,7 @@ If you have collaborators in your app and they helped you annotate your inputs, 
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonUserID}</CodeBlock>
 </TabItem>
 
@@ -136,15 +182,15 @@ If you have collaborators in your app and they helped you annotate your inputs, 
     <CodeBlock className="language-javascript">{JSUserID}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeUserID}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaUserID}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPUserID}</CodeBlock>
 </TabItem>
 
@@ -154,13 +200,37 @@ If you have collaborators in your app and they helped you annotate your inputs, 
 
 </Tabs>
 
-## By Annotation Status
+## By Dataset ID
 
-You can also filter the annotations by their [status](https://docs.clarifai.com/api-guide/advanced-topics/status-codes/#annotation-related-codes-24xxx). 
+You can include a dataset ID in the filter to narrow the search results to only inputs or data entries within that specific dataset.
+
+<Tabs>
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{CodeData}</CodeBlock>
+
+</TabItem>
+<TabItem value="typescript" label="Node.js SDK">
+    <CodeBlock className="language-typescript">{CodeDataTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+## By Status Code
+
+You can refine search results based on the [status](https://docs.clarifai.com/additional-resources/api-overview/status-codes) of the input data, such as whether it has been successfully processed, is pending processing, or has encountered errors.
+
+You can also filter the annotations by their status. 
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{CodeIS}</CodeBlock>
+ 
+</TabItem>
+<TabItem value="typescript" label="Node.js SDK">
+    <CodeBlock className="language-typescript">{CodeISTS}</CodeBlock>
+</TabItem>
+
+<TabItem value="python2" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonAnnotationStatus}</CodeBlock>
 </TabItem>
 
@@ -168,15 +238,15 @@ You can also filter the annotations by their [status](https://docs.clarifai.com/
     <CodeBlock className="language-javascript">{JSAnnotationStatus}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeAnnotationStatus}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaAnnotationStatus}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPAnnotationStatus}</CodeBlock>
 </TabItem>
 
@@ -204,7 +274,15 @@ Provide a geo point to an input. The geo point is a JSON object consisting of a 
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{CodeGP}</CodeBlock>
+
+</TabItem>
+<TabItem value="typescript" label="Node.js SDK">
+    <CodeBlock className="language-typescript">{CodeGPTS}</CodeBlock>
+</TabItem>
+
+<TabItem value="python2" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonInputsLongitude}</CodeBlock>
 </TabItem>
 
@@ -212,15 +290,15 @@ Provide a geo point to an input. The geo point is a JSON object consisting of a 
     <CodeBlock className="language-javascript">{JSInputsLongitude}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeInputsLongitude}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaInputsLongitude}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPInputsLongitude}</CodeBlock>
 </TabItem>
 
@@ -234,7 +312,7 @@ Provide a geo point to an input. The geo point is a JSON object consisting of a 
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonOneGeoPoint}</CodeBlock>
 </TabItem>
 
@@ -242,15 +320,15 @@ Provide a geo point to an input. The geo point is a JSON object consisting of a 
     <CodeBlock className="language-javascript">{JSOneGeoPoint}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeOneGeoPoint}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-javascript">{JavaOneGeoPoint}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPOneGeoPoint}</CodeBlock>
 </TabItem>
 
@@ -264,7 +342,7 @@ Provide a geo point to an input. The geo point is a JSON object consisting of a 
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonTwoGeoPoints}</CodeBlock>
 </TabItem>
 
@@ -272,15 +350,15 @@ Provide a geo point to an input. The geo point is a JSON object consisting of a 
     <CodeBlock className="language-javascript">{JSTwoGeoPoints}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeTwoGeoPoints}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaTwoGeoPoints}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPTwoGeoPoints}</CodeBlock>
 </TabItem>
 
@@ -345,7 +423,15 @@ How to perform searches:
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{CodeMD}</CodeBlock>
+
+</TabItem>
+<TabItem value="typescript" label="Node.js SDK">
+    <CodeBlock className="language-typescript">{CodeMMTS}</CodeBlock>
+</TabItem>
+
+<TabItem value="python2" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonCustomAnnotation}</CodeBlock>
 </TabItem>
 
@@ -353,15 +439,15 @@ How to perform searches:
     <CodeBlock className="language-javascript">{JSCustomAnnotation}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeCustomAnnotation}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaCustomAnnotation}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPCustomAnnotation}</CodeBlock>
 </TabItem>
 
@@ -377,7 +463,7 @@ Each annotation has annotation info. Similar to metadata, you have full control 
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonAnnotationInfo}</CodeBlock>
 </TabItem>
 
@@ -385,15 +471,15 @@ Each annotation has annotation info. Similar to metadata, you have full control 
     <CodeBlock className="language-javascript">{JSAnnotationInfo}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeAnnotationInfo}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaAnnotationInfo}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPAnnotationInfo}</CodeBlock>
 </TabItem>
 
@@ -401,4 +487,20 @@ Each annotation has annotation info. Similar to metadata, you have full control 
     <CodeBlock className="language-bash">{CurlAnnotationInfo}</CodeBlock>
 </TabItem>
 
+</Tabs>
+
+## Multimodal Filtering
+
+Multimodal filtering allows you to refine search results based on a combination of visual and textual criteria. 
+
+Unlike unimodal filtering, which limits filtering to a single data type — such as images or text — multimodal filtering enables more comprehensive queries by considering multiple modalities at once. 
+
+<Tabs>
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{CodeMM}</CodeBlock>
+
+</TabItem>
+<TabItem value="typescript" label="Node.js SDK">
+    <CodeBlock className="language-typescript">{CodeMMTS}</CodeBlock>
+</TabItem>
 </Tabs>

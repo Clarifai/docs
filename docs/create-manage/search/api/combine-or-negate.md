@@ -15,7 +15,7 @@ In annotation search, `Filter` and `Rank` is a list of `Annotation` objects. Fil
 
 :::info
 
-The initialization code used in the following example is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
+Before using the [Python SDK](https://docs.clarifai.com/additional-resources/api-overview/python-sdk), [Node.js SDK](https://docs.clarifai.com/additional-resources/api-overview/nodejs-sdk), or any of our [gRPC clients](https://docs.clarifai.com/additional-resources/api-overview/grpc-clients), ensure they are properly installed on your machine. Refer to their respective installation guides for instructions on how to install and initialize them.
 
 :::
 
@@ -50,7 +50,7 @@ When you combine both `Filter` and `Rank`, filter will be applied before ranking
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonCombineNegate}</CodeBlock>
 </TabItem>
 
@@ -58,15 +58,15 @@ When you combine both `Filter` and `Rank`, filter will be applied before ranking
     <CodeBlock className="language-javascript">{JSCombineNegate}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeCombineNegate}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaCombineNegate}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPCombineNegate}</CodeBlock>
 </TabItem>
 
@@ -82,7 +82,7 @@ You can also [search over custom metadata](https://docs.clarifai.com/api-guide/s
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonCombineNegate_3}</CodeBlock>
 </TabItem>
 
@@ -90,15 +90,15 @@ You can also [search over custom metadata](https://docs.clarifai.com/api-guide/s
     <CodeBlock className="language-javascript">{JSCombineNegate_3}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeCombineNegate_3}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaCombineNegate_3}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPCombineNegate_3}</CodeBlock>
 </TabItem>
 
@@ -114,7 +114,7 @@ You can find all the data that is NOT similar to a given criteria.
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonCombineNegate_2}</CodeBlock>
 </TabItem>
 
@@ -122,15 +122,15 @@ You can find all the data that is NOT similar to a given criteria.
     <CodeBlock className="language-javascript">{JSCombineNegate_2}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeCombineNegate_2}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaCombineNegate_2}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPCombineNegate_2}</CodeBlock>
 </TabItem>
 
