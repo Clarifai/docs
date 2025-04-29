@@ -44,6 +44,8 @@ import JavaCombineNegate_3 from "!!raw-loader!../../../../code_snippets/api-guid
 import PHPCombineNegate_3 from "!!raw-loader!../../../../code_snippets/api-guide/search/combine_or_negate_3.php";
 import CurlCombineNegate_3 from "!!raw-loader!../../../../code_snippets/api-guide/search/combine_or_negate_3.sh";
 
+import curlDatasetSearches from "!!raw-loader!../../../../code_snippets/api-guide/data/datasets/dataset_searches.sh";
+
 ## Combine Filter and Rank 
 
 When you combine both `Filter` and `Rank`, filter will be applied before ranking annotations. This is important because limiting the results set on large applications can speed up the overall query drastically when doing a ranking.
@@ -136,6 +138,20 @@ You can find all the data that is NOT similar to a given criteria.
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlCombineNegate_2}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+## Find Duplicate Images in Dataset
+
+Here's how you can use the `PostInputsSearches` endpoint to identify near-duplicate images within a given [dataset](https://docs.clarifai.com/create-manage/datasets/). 
+
+You can also use the  `min_value` threshold parameter to refine the search results, ensuring that only images surpassing a specified minimum probability resemblance score are included in the output. . 
+
+<Tabs>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{curlDatasetSearches}</CodeBlock>
 </TabItem>
 
 </Tabs>

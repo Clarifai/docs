@@ -1,51 +1,101 @@
 ---
-description: Learn how to make predictions using our generative AI models, including LLMs
-pagination_next: null
-sidebar_position: 2
+description: Learn how to use our advanced inference operations 
+sidebar_position: 5
 ---
 
-# Generative AI
+# Advanced Inference Options 
 
-**Make predictions using our generative AI models, including LLMs**
+**Learn how to use our advanced inference operations**
 <hr />
+
+The advanced inference operations allow you to fine-tune how outputs are generated, giving you greater control to manipulate results according to their specific tasks and requirements.
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+
+
+import CodeBP from "!!raw-loader!../../../../code_snippets/python-sdk/inference/batch_predict.py";
+import CodeBPTS from "!!raw-loader!../../../../code_snippets/python-sdk/inference/batchPredict.ts";
+
+import CodeDiffBase from "!!raw-loader!../../../../code_snippets/python-sdk/inference/diff_baseurl.py";
+import CodeRoot from "!!raw-loader!../../../../code_snippets/python-sdk/inference/root_ca.py";
+
+
+
+
+## Perform Batch Predictions
+
+You can process multiple inputs in a single request, streamlining the prediction workflow and saving both time and resources.
+
+:::info
+
+The batch size should not exceed 128. Learn more [here](https://docs.clarifai.com/create-manage/inputs/upload/#upload-limits).
+
+:::
+
+<Tabs>
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{CodeBP}</CodeBlock>
+</TabItem>
+<TabItem value="typescript" label="Node.js SDK">
+    <CodeBlock className="language-typescript">{CodeBPTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
+
+
+## Customize Base_URL
+
+You can obtain model predictions by customizing the `base_url`. This allows you to easily adapt your endpoint to different environments, providing a flexible and seamless way to access model predictions.
+
+:::info
+
+This feature is particularly useful for enterprises using on-premises deployments, allowing the `base_url` to be configured to point to their respective servers.
+
+:::
+
+<Tabs>
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{CodeDiffBase}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
+## Add Root Certificate
+
+A root certificate provides an additional layer of security when communicating through APIs. As a self-signed certificate that verifies the legitimacy of other certificates, it establishes a chain of trust — ensuring that you are connecting to authentic APIs and that your data remains encrypted.
+
+You can add your own root certificates to further strengthen data security and protect user privacy.
+
+
+<Tabs>
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{CodeRoot}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
+## Prompt Types
+
+A prompt is a piece of text or set of instructions that you provide to generative AI models, such as Large Language Models (LLMs),  to generate a specific response or action. 
 
 Generative AI models are a type of artificial intelligence system that are designed to create new content, such as text, images, audio, or even videos, based on patterns learned from existing data.
 
-Unlike traditional AI models, which typically classify or predict data, generative models can produce novel and creative outputs that are similar to, but not exactly the same as, the data they were trained on.
-
-Large Language Models (LLMs) are a specific type of generative AI models designed primarily for natural language processing (NLP) tasks. LLMs are able to understand and generate text based on the instructions they receive.
-
-## Prompt
-
-A prompt is a piece of text or set of instructions that you provide to an LLM to generate a specific response or action. The clarity and specificity of the provided input prompt will greatly determine the quality and relevance of the generated response. 
-
-So, it's important to design and refine prompts to effectively interact with and generate desired responses. Prompt engineering involves crafting specific questions, statements, or input formats that guide the model to generate useful, relevant, and accurate predictions.
-
-There are several prompting techniques you can use to communicate with an LLM. For example, zero-shot prompting leverages a model’s inherent language understanding capabilities to generate responses without any specific preparation or examples. 
+There are several prompting techniques you can use to communicate with generative AI models. For example, zero-shot prompting leverages a model’s inherent language understanding capabilities to generate responses without any specific preparation or examples. 
 
 You can learn about other prompting techniques [here](https://docs.clarifai.com/portal-guide/agent-system-operators/prompter/). 
 
 Here are some examples of prompts.
 
-#### Question Answering
+### Question Answering
 
 ```text
 Prompt: 
 Who was president of the United States in 1955?
 ```
-Here is how you can provide it to a model, such as the [Llama 3.1-8b-Instruct]( https://clarifai.com/meta/Llama-3/models/llama-3_1-8b-instruct) model. 
-
-![](/img/community_2/generative-ai-1.png)
-
-To get a response, click the **Generate** button.
-
-![](/img/community_2/generative-ai-2.png)
-
-After processing the prompt, the model will output the response. 
-
-![](/img/community_2/generative-ai-3.png)
-
-#### Grammar Correction
+### Grammar Correction
 
 ```text
 Prompt: 
@@ -55,7 +105,7 @@ Sample Response:
 She did not go to the market.
 ```
 
-#### Summarize
+### Summarize
 
 ```text
 Prompt: 
@@ -75,7 +125,7 @@ name comes from the Roman god Jupiter. It is usually the third brightest object 
 the night sky after the Moon and Venus.
 ```
 
-#### Translation
+### Translation
 
 ```text
 Prompt: 
@@ -93,9 +143,11 @@ Quels sont les chambres que vous avez disponibles?
  
 ::: 
 
-## Inference Parameters
+## Types of Inference Parameters
 
-When making predictions using LLMs on our platform, some models offer the ability to specify various inference parameters to influence their output. These parameters control the behavior of the model during the generation process, affecting aspects like creativity, coherence, and the diversity of the generated text. 
+When making predictions using generative models on our platform, some of them offer the ability to specify various inference parameters to influence their output. 
+
+These parameters control the behavior of the model during the generation process, affecting aspects like creativity, coherence, and the diversity of the generated text. 
 
 Let’s talk about them. 
 
@@ -105,13 +157,69 @@ Max Tokens specifies the maximum number of tokens (words or characters) the mode
 
 This inference parameter helps in controlling the verbosity of the output, especially in applications where concise responses are required.
 
+Here is a usage example:
+
+<Tabs>
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">inference_params = dict(max_tokens=100) 
+Model(model_url).predict(inputs,inference_params=inference_params)</CodeBlock>
+</TabItem>
+</Tabs>
+
+### Minimum Value 
+
+The `min_value` specifies the minimum prediction confidence required to include a result in the output.
+
+Here is a usage example:
+
+<Tabs>
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">output_config = dict(min_value=0.6) 
+Model(model_url).predict(inputs,output_config=output_config)</CodeBlock>
+</TabItem>
+</Tabs>
+
+### Maximum Concepts
+
+The `max_concepts` defines the maximum number of concepts to return in the prediction results.
+
+<Tabs>
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">output_config = dict(max_concepts=3) 
+Model(model_url).predict(inputs,output_config=output_config)</CodeBlock>
+</TabItem>
+</Tabs>
+
+
+### Select Concepts
+
+The `select_concepts` specifies the concepts to include in the prediction results.
+
+<Tabs>
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">output_config = dict(select_concepts=["concept_name"]) 
+Model(model_url).predict(inputs,output_config=output_config)</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 ### Temperature
 
-Temperature is a decimal number that controls the degree of randomness in the response. 
+Temperature is a decimal number (between 0 and 1) that controls the degree of randomness in the response.
 
 A low temperature (e.g., 0.2) makes the model more deterministic, leading to a more conservative and predictable output. A high temperature (e.g., 0.8) increases the randomness, allowing for more creative and varied responses.
 
 Adjusting temperature is useful when you want to balance between creative responses and focused, precise answers.
+
+Here is a usage example:
+
+<Tabs>
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">inference_params = dict(temperature=0.2) 
+Model(model_url).predict(inputs,inference_params=inference_params)</CodeBlock>
+</TabItem>
+</Tabs>
+           
 
 ### Top-p (Nucleus) 
 

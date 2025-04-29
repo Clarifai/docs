@@ -1,11 +1,11 @@
 ---
-description: Perform predictions using your deployed models
+description: Generate predictions using your deployed models
 sidebar_position: 1
 ---
 
 # Inference via API
 
-**Perform predictions using your deployed models**
+**Generate predictions using your deployed models**
 <hr />
 
 Our new inference technique provides an efficient, scalable, and streamlined way to perform predictions with models. 

@@ -163,6 +163,10 @@ import curlDeleteDatasets from "!!raw-loader!../../../code_snippets/api-guide/da
 import curlListInputsDatasets from "!!raw-loader!../../../code_snippets/api-guide/data/datasets/list_inputs_datasets.sh";
 import curlGetDatasetInputs from "!!raw-loader!../../../code_snippets/api-guide/data/datasets/get_dataset_input.sh";
 import curlDeleteInputs from "!!raw-loader!../../../code_snippets/api-guide/data/datasets/delete_inputs.sh";
+import curlListDatasetVersions from "!!raw-loader!../../../code_snippets/api-guide/data/datasets/list_dataset_versions.sh";
+import curlGetDatasetVersions from "!!raw-loader!../../../code_snippets/api-guide/data/datasets/get_dataset_versions.sh";
+import curlChangeDatasetVersion from "!!raw-loader!../../../code_snippets/api-guide/data/datasets/change_dataset_version.sh";
+import curlDeleteDatasetVersion from "!!raw-loader!../../../code_snippets/api-guide/data/datasets/delete_dataset_version.sh";
 
 ### List Datasets
 
@@ -176,6 +180,18 @@ You can list the datasets in your app.
 
 </Tabs>
 
+### List Dataset Versions
+
+You can list all the versions associated with your dataset to view its update history and changes over time.
+
+<Tabs>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{curlListDatasetVersions}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
 ### Get a Dataset
 
 You can retrieve the details of a specific dataset by providing its ID. 
@@ -184,6 +200,18 @@ You can retrieve the details of a specific dataset by providing its ID.
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{curlGetDatasets}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+### Get a Dataset Version
+
+You can retrieve the details of a specific dataset version by providing its version ID.
+
+<Tabs>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{curlGetDatasetVersions}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -269,12 +297,26 @@ Below is an example of updating dataset's description and metadata.
 
 </Tabs>
 
+#### Patch With a Default Filter
+
 Below is an example of updating a dataset with a default filter. 
 
 <Tabs>
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{curlUpdateDatasetsDefaultFilter}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+#### Patch Dataset Version
+
+Below is an example of updating a dataset version's name.
+
+<Tabs>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{curlChangeDatasetVersion}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -322,6 +364,11 @@ Be certain that you want to delete a particular dataset version as the operation
 <TabItem value="typescript" label="Node.js SDK">
     <CodeBlock className="language-typescript">{CodeDVTS}</CodeBlock>
 </TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{curlDeleteDatasetVersion}</CodeBlock>
+</TabItem>
+
 </Tabs>
                                                                                                               
 ### Delete Dataset

@@ -133,6 +133,7 @@ import CodeCreateDatasetTS from "!!raw-loader!../../../code_snippets/python-sdk/
 import CodeCreateDatasetV from "!!raw-loader!../../../code_snippets/python-sdk/managing-datasets/create_data_version.py";
 import CodeCreateDatasetVTS from "!!raw-loader!../../../code_snippets/python-sdk/managing-datasets/createDatasetVersion.ts";
 import curlCreateDataset from "!!raw-loader!!../../../code_snippets/api-guide/data/datasets/create_dataset.sh";
+import curlAddDatasetVersion from "!!raw-loader!../../../code_snippets/api-guide/data/datasets/add_dataset_version.sh";
 
 :::info
 
@@ -156,6 +157,7 @@ You can create a dataset by specifying a unique dataset ID.
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{curlCreateDataset}</CodeBlock>
 </TabItem>
+
 </Tabs>
 
 ### Create a Dataset Version
@@ -170,6 +172,11 @@ After making changes to a dataset, such as adding new inputs, you can create a n
 <TabItem value="typescript" label="Node.js SDK">
     <CodeBlock className="language-typescript">{CodeCreateDatasetVTS}</CodeBlock>
 </TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{curlAddDatasetVersion}</CodeBlock>
+</TabItem>
+
 </Tabs>
 
 

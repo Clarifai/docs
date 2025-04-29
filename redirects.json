@@ -210,7 +210,7 @@
   },
   {
     "to": "/create-manage/search/api/combine-or-negate",
-    "from": ["/api-guide/search/combine-or-negate"]
+    "from": ["/api-guide/search/combine-or-negate", "/api-guide/data/datasets/dataset-searches"]
   },
   {
     "to": "/create-manage/search/api/",
@@ -234,11 +234,27 @@
   },
   {
     "to": "/create-manage/datasets/manage",
-    "from": ["/sdk/managing-datasets/", "/api-guide/data/datasets/dataset-basics", "/api-guide/data/datasets/dataset-inputs"]
+    "from": [ "/api-guide/data/datasets/dataset-versions", "/sdk/managing-datasets/", "/api-guide/data/datasets/dataset-basics", "/api-guide/data/datasets/dataset-inputs"]
   },
   {
     "to": "/create-manage/datasets/filters",
     "from": ["/api-guide/data/datasets/dataset-filters"]
+  },
+  {
+    "to": "/create-manage/datasets/",
+    "from": ["/api-guide/data/datasets/", "/api-guide/data/"]
+  },
+  {
+    "to": "/compute/models/inference/ui",
+    "from": ["/portal-guide/input-viewer/predictions", "/portal-guide/ppredict/"]
+  },
+  {
+    "to": "/compute/models/inference/advanced",
+    "from": ["/sdk/Inference-from-AI-Models/Advance-Inference-Options", "/portal-guide/ppredict/generative-ai"]
+  },
+  {
+    "to": "/compute/models/inference/api-legacy",
+    "from": ["/sdk/Inference-from-AI-Models/", "/sdk/Inference-from-AI-Models/Image-as-Input", "/sdk/Inference-from-AI-Models/Text-as-Input", "/sdk/Inference-from-AI-Models/Audio-as-Input", "/sdk/Inference-from-AI-Models/Multimodal-as-Input"]
   }
 
 
