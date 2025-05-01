@@ -8,7 +8,7 @@ curl -X POST "https://api.clarifai.com/v2/users/YOUR_USER_ID_HERE/apps/YOUR_APP_
           "filters": [
             {
               "input": {
-				"dataset_ids" : ["YOUR_DATASET_ID_HERE"]
+                "dataset_ids": ["YOUR_DATASET_ID_HERE"]
               }
             }
           ],
@@ -17,14 +17,14 @@ curl -X POST "https://api.clarifai.com/v2/users/YOUR_USER_ID_HERE/apps/YOUR_APP_
               "annotation": {
                 "data": {
                   "image": {
-                      "url":"https://samples.clarifai.com/metro-north.jpg"
-                    }                  
+                    "url": "https://samples.clarifai.com/metro-north.jpg"
+                  }
                 }
               }
             }
           ]
         },
-		"min_value": 0.95		
+        "min_value": 0.95
       }
     ]
   }'

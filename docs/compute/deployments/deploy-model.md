@@ -11,15 +11,9 @@ toc_max_heading_level: 4
 
 Clarifai’s Compute Orchestration provides efficient capabilities for you to deploy any model on any compute infrastructure, at any scale. 
 
-These platform capabilities bring the convenience of serverless autoscaling to any compute, regardless of where it’s deployed and what hardware it’s running on, and scale automatically to meet workload demands.
+You can configure your compute environment and deploy your models into nodepools with your preferred settings, optimizing for both cost and scalability.
 
-Compute Orchestration allows you to upload a model, configure your SaaS or self-managed compute, and then deploy your model into your nodepools with your preferred settings cost-efficiently and scalably. 
-
-:::tip
-
-Learn how to make your first deployment quickly on the UI using a pre-configured cluster and nodepool [here](https://docs.clarifai.com/getting-started/first-deployment). 
-
-:::
+With model deployment, you can quickly take a trained model and set it up for inference.
 
 
 import Tabs from '@theme/Tabs';

@@ -1,3 +1,0 @@
-Predicted concepts:
-train 1.00
-station 1.00

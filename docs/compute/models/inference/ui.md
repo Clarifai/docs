@@ -1,24 +1,65 @@
 ---
-description: Perform predictions on the UI using your deployed models
+description: Generate model or workflow predictions on the UI
 sidebar_position: 3
+toc_max_heading_level: 4
 ---
 
-# Inference via the UI
+# Inference via UI
 
-**Perform predictions on the UI using your deployed models**
+**Generate model or workflow predictions on the UI**
 <hr />
 
 You can perform predictions using your deployed models directly through the User Interface (UI) — no code required. This method is ideal for quick testing, demos, and visual validation of your model's performance. 
 
 You can simply upload an input (such as image, text, or video) and view the output predictions in real-time within an intuitive user experience.
 
-:::info
+:::tip Deploy Model
 
-Before making a prediction, ensure that your model has been deployed, [as mentioned previously](README.mdx). Otherwise, the prediction will default to the `Clarifai Shared` deployment type. 
+Before making a prediction using our Compute Orchestration capabilities, ensure that your model has been deployed, [as mentioned previously](README.mdx). Otherwise, the prediction will default to the `Clarifai Shared` deployment type. 
 
 :::
 
 ## Predictions Within Model Playground
+
+### Prediction With Legacy Method
+
+Let's say you want to use the pre-built Clarifai's [general-image-recognition](https://clarifai.com/clarifai/main/models/general-image-recognition) model to identify and classify a variety of concepts in images. 
+
+To do so, navigate to the model’s viewer screen and click the blue **Try your own images or videos** button. A modal will pop up, providing a convenient interface for adding input data and examining predictions.
+
+![](/img/community_2/model_predictions.png)
+
+The modal provides three distinct options for making predictions.
+
+#### Try Your Own Images or Videos
+
+This option lets you add an input and see its predictions without leaving that model viewer screen. If you click the button, a small window will pop up, allowing you to upload your input.
+
+![](/img/community_2/model_predictions-2.png)
+
+After uploading the image, the model will analyze it and return a list of concepts identified on the right side of the page. 
+
+#### Batch Predict on App Inputs
+
+This option lets you select an app and a dataset. If you click the button, a small window will pop up, allowing you to choose an app and a dataset with the inputs you want to view their predictions. 
+
+![](/img/community_2/model_predictions-3.png)
+
+After selecting an app and a dataset, click the **Try Inputs** button. 
+
+You’ll be redirected to the Input-Viewer screen with the default mode set to Predict, allowing you to see the predictions on an input based on your selections.
+
+![](/img/community_2/model_predictions-4.png)
+
+#### Add Public Preview Examples
+
+This option lets model owners add public preview examples. It's only visible on the model viewer screen of a model you own. 
+
+If you click the button, a small window will pop up, allowing you to add public prediction examples for anyone who wants to see how your model works. 
+
+![](/img/community_2/model_predictions-5.png)
+
+### Prediction With Compute Orchestration
 
 To make predictions this way, go to your model’s playground page and click on the **Deployments** tab. 
 
@@ -38,14 +79,38 @@ When inferencing using a deployed model, the request is routed to the nodepool w
 
 > The single Input-Viewer is the main page that showcases the details of a single input available in your app. If you click an input listed on the [Inputs-Manager](https://docs.clarifai.com/portal-guide/inputs-manager/) page, you'll be redirected to the viewer page for that input, where you can view and interact with it.
 
-To make predictions on an input, switch to predict mode by toggling the **Predict** button located in the top-right corner of the page. Next, click the **Choose a model or workflow** button in the right-hand sidebar to select the model you want to use. 
+To make predictions on an input, switch to predict mode by toggling the **Predict** button located in the top-left corner of the page. 
+
+Next, click the **Choose a model or workflow** button in the right-hand sidebar to select the model you want to use. 
 
 ![ ](/img/compute-orchestration/compute-27.png)
 
-In the window that appears, choose your desired model and then select a deployment from the **Deployment** dropdown. If needed, you can also create a new deployment from this window. 
+In the window that appears, choose your desired model. You can choose your own customized model or workflow, or look for a public one from the Community platform. You can also create your own model or workflow from there.
+
+> To select a public model or workflow from the Community, click the **Explore Community Models / Workflows** button. In the pop-up window, use the search bar to find the desired model or workflow.
+
+> For this example, let’s choose the Community’s [Qwen2_5-VL-7B-Instruct](https://clarifai.com/qwen/qwen-VL/models/Qwen2_5-VL-7B-Instruct) model, which is a vision-language model that excels in visual recognition tasks. 
+
+:::note
+
+When working with image inputs, you need to choose a model or workflow that outputs concepts or objects (bounding box regions). This ensures the generation and display of the predictions.
+
+:::
+
+![ ](/img/compute-orchestration/compute-27-1.png)
+
+Then select a deployment from the **Deployment** dropdown. If needed, you can also [create a new deployment](https://docs.clarifai.com/compute/deployments/deploy-model#via-the-ui) from this window. 
 
 ![ ](/img/compute-orchestration/compute-28.png)
 
-Lastly, click the **Predict** button at the bottom of the sidebar. The model will process the input and return predictions in real time, allowing you to immediately view the results within the Input-Viewer screen.
+Lastly, click the **Predict** button at the bottom of the sidebar to start making the predictions. 
+
+The model will process the input and return predictions in real time, allowing you to immediately view the results within the Input-Viewer screen.
 
 ![ ](/img/compute-orchestration/compute-29.png)
+
+:::note
+
+For models that ouput concepts, the **Prediction Threshold** slider allows you to set the threshold that will allow you to see only the prediction probabilities that meet your defined criteria. You can also use the **Filter by concept** search field to find specific concepts and display their predictions on the page.
+
+:::
