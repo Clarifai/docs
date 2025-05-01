@@ -10,6 +10,12 @@ sidebar_position: 5
 
 The advanced inference operations allow you to fine-tune how outputs are generated, giving you greater control to manipulate results according to their specific tasks and requirements.
 
+:::info
+
+Before using the [Python SDK](https://docs.clarifai.com/additional-resources/api-overview/python-sdk), [CLI](https://docs.clarifai.com/additional-resources/api-overview/cli), [Node.js SDK](https://docs.clarifai.com/additional-resources/api-overview/nodejs-sdk), or any of our [gRPC clients](https://docs.clarifai.com/additional-resources/api-overview/grpc-clients), ensure they are properly installed on your machine. Refer to their respective installation guides for instructions on how to install and initialize them.
+
+:::
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
@@ -21,7 +27,38 @@ import CodeBPTS from "!!raw-loader!../../../../code_snippets/python-sdk/inferenc
 import CodeDiffBase from "!!raw-loader!../../../../code_snippets/python-sdk/inference/diff_baseurl.py";
 import CodeRoot from "!!raw-loader!../../../../code_snippets/python-sdk/inference/root_ca.py";
 
+import PythonByModelVersion from "!!raw-loader!../../../../code_snippets/api-guide/predict/python/prediction_parameters_by_model_version_id.py";
+import PythonMaxConcepts from "!!raw-loader!../../../../code_snippets/api-guide/predict/python/prediction_parameters_max_concepts.py";
+import PythonMinPredictValue from "!!raw-loader!../../../../code_snippets/api-guide/predict/python/prediction_parameters_min_predict_value.py";
+import PythonSelectConcepts from "!!raw-loader!../../../../code_snippets/api-guide/predict/python/prediction_parameters_select_concepts.py";
 
+import JavaScriptByModelVersion from "!!raw-loader!../../../../code_snippets/api-guide/predict/js/prediction_parameters_by_model_version_id.html";
+import JavaScriptMaxConcepts from "!!raw-loader!../../../../code_snippets/api-guide/predict/js/prediction_parameters_max_concepts.html";
+import JavaScriptMinPredictValue from "!!raw-loader!../../../../code_snippets/api-guide/predict/js/prediction_parameters_min_predict_value.html";
+import JavaScriptSelectConcepts from "!!raw-loader!../../../../code_snippets/api-guide/predict/js/prediction_parameters_select_concepts.html";
+
+import NodeJSByModelVersion from "!!raw-loader!../../../../code_snippets/api-guide/predict/node/prediction_parameters_by_model_version_id.js";
+import NodeJSMaxConcepts from "!!raw-loader!../../../../code_snippets/api-guide/predict/node/prediction_parameters_max_concepts.js";
+import NodeJSMinPredictValue from "!!raw-loader!../../../../code_snippets/api-guide/predict/node/prediction_parameters_min_predict_value.js";
+import NodeJSSelectConcepts from "!!raw-loader!../../../../code_snippets/api-guide/predict/node/prediction_parameters_select_concepts.js";
+
+import JavaByModelVersion from "!!raw-loader!../../../../code_snippets/api-guide/predict/java/prediction_parameters_by_model_version_id.java";
+import JavaMaxConcepts from "!!raw-loader!../../../../code_snippets/api-guide/predict/java/prediction_parameters_max_concepts.java";
+import JavaMinPredictValue from "!!raw-loader!../../../../code_snippets/api-guide/predict/java/prediction_parameters_min_predict_value.java";
+import JavaSelectConcepts from "!!raw-loader!../../../../code_snippets/api-guide/predict/java/prediction_parameters_select_concepts.java";
+
+import PHPByModelVersion from "!!raw-loader!../../../../code_snippets/api-guide/predict/php/prediction_parameters_by_model_version_id.php";
+import PHPMaxConcepts from "!!raw-loader!../../../../code_snippets/api-guide/predict/php/prediction_parameters_max_concepts.php";
+import PHPMinPredictValue from "!!raw-loader!../../../../code_snippets/api-guide/predict/php/prediction_parameters_min_predict_value.php";
+import PHPSelectConcepts from "!!raw-loader!../../../../code_snippets/api-guide/predict/php/prediction_parameters_select_concepts.php";
+
+import CurlByModelVersion from "!!raw-loader!../../../../code_snippets/api-guide/predict/curl/prediction_parameters_by_model_version_id.sh";
+import CurlMaxConcepts from "!!raw-loader!../../../../code_snippets/api-guide/predict/curl/prediction_parameters_max_concepts.sh";
+import CurlMinPredictValue from "!!raw-loader!../../../../code_snippets/api-guide/predict/curl/prediction_parameters_min_predict_value.sh";
+import CurlSelectConcepts from "!!raw-loader!../../../../code_snippets/api-guide/predict/curl/prediction_parameters_select_concepts.sh";
+
+
+import CodeOutputExample4 from "!!raw-loader!../../../../code_snippets/api-guide/predict/code_output_examples/prediction_parameters_model_version_id.txt";
 
 
 ## Perform Batch Predictions
@@ -145,9 +182,9 @@ Quels sont les chambres que vous avez disponibles?
 
 ## Types of Inference Parameters
 
-When making predictions using generative models on our platform, some of them offer the ability to specify various inference parameters to influence their output. 
+When making predictions using the models on our platform, some of them offer the ability to specify various inference parameters to influence their output. 
 
-These parameters control the behavior of the model during the generation process, affecting aspects like creativity, coherence, and the diversity of the generated text. 
+These parameters control the behavior of the model during the prediction process, affecting aspects like creativity, coherence, and the diversity of the output. 
 
 Let’s talk about them. 
 
@@ -166,9 +203,11 @@ Model(model_url).predict(inputs,inference_params=inference_params)</CodeBlock>
 </TabItem>
 </Tabs>
 
-### Minimum Value 
+### Minimum Prediction Value 
 
-The `min_value` specifies the minimum prediction confidence required to include a result in the output.
+The `min_value` specifies the minimum prediction confidence required to include a result in the output. For example if you want to see all concepts with a probability score of `.95` or higher, this parameter will allow you to accomplish that. 
+
+Also note that if you don't specify the number of `max_concepts`, you will only see the top 20. If your result can contain more values you will have to increase the number of maximum concepts as well.
 
 Here is a usage example:
 
@@ -177,28 +216,114 @@ Here is a usage example:
     <CodeBlock className="language-python">output_config = dict(min_value=0.6) 
 Model(model_url).predict(inputs,output_config=output_config)</CodeBlock>
 </TabItem>
+
+<TabItem value="python2" label="Python (gRPC)">
+    <CodeBlock className="language-python">{PythonMinPredictValue}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JavaScriptMinPredictValue}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="Node.js (gRPC)">
+    <CodeBlock className="language-javascript">{NodeJSMinPredictValue}</CodeBlock>
+</TabItem>
+
+<TabItem value="java" label="Java (gRPC)">
+    <CodeBlock className="language-java">{JavaMinPredictValue}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP (gRPC)">
+    <CodeBlock className="language-php">{PHPMinPredictValue}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlMinPredictValue}</CodeBlock>
+</TabItem>
+
 </Tabs>
 
 ### Maximum Concepts
 
-The `max_concepts` defines the maximum number of concepts to return in the prediction results.
+The `max_concepts` parameter specifies how many concepts and their associated probability scores the Predict endpoint should return. If not set, the endpoint defaults to returning the top 20 concepts.
+
+You can currently set `max_concepts` to any value between 1 and 200.
+
+If your use case requires more than 200 concepts, please reach out to our [support team](mailto:support@clarifai.com) for assistance.
 
 <Tabs>
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">output_config = dict(max_concepts=3) 
 Model(model_url).predict(inputs,output_config=output_config)</CodeBlock>
 </TabItem>
-</Tabs>
 
+<TabItem value="python2" label="Python (gRPC)">
+    <CodeBlock className="language-python">{PythonMaxConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JavaScriptMaxConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="Node.js (gRPC)">
+    <CodeBlock className="language-javascript">{NodeJSMaxConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="java" label="Java (gRPC)">
+    <CodeBlock className="language-java">{JavaMaxConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP (gRPC)">
+    <CodeBlock className="language-php">{PHPMaxConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlMaxConcepts}</CodeBlock>
+</TabItem>
+</Tabs>
 
 ### Select Concepts
 
-The `select_concepts` specifies the concepts to include in the prediction results.
+The `select_concepts` specifies the concepts to include in the prediction results. By putting this additional parameter on your predict calls, you can receive predict value\(s\) for **only** the concepts that you want to. You can specify particular concepts by either their id and/or their name. 
+
+The concept names and ids are case sensitive; and so, these must be exact matches.
+
+> **Note**: You can use the [`GetModelOutputInfo`](https://docs.clarifai.com/api-guide/model/create-get-update-and-delete#get-model-output-info-by-id) endpoint to retrieve an entire list of concepts from a given model, and get their ids and names.
+
+:::caution
+
+If you submit a request with not an exact match of the concept id or name, you will receive an invalid model argument error. However, if one or more matches while one or more do not, the API will respond with a Mixed Success.
+
+:::
 
 <Tabs>
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">output_config = dict(select_concepts=["concept_name"]) 
 Model(model_url).predict(inputs,output_config=output_config)</CodeBlock>
+</TabItem>
+
+<TabItem value="python2" label="Python (gRPC)">
+    <CodeBlock className="language-python">{PythonSelectConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JavaScriptSelectConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="Node.js (gRPC)">
+    <CodeBlock className="language-javascript">{NodeJSSelectConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="java" label="Java (gRPC)">
+    <CodeBlock className="language-java">{JavaSelectConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP (gRPC)">
+    <CodeBlock className="language-php">{PHPSelectConcepts}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlSelectConcepts}</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -321,3 +446,46 @@ Let’s break down its meaning:
 -  `{prompt}` — As earlier described, this placeholder represents the actual prompt or query from the user.
 - `<|eot_id|>` — This marks the end of a text unit; in this case, the user's input.
 -  `<|start_header_id|>assistant<|end_header_id|>` —  This indicates the beginning of the assistant's response.
+
+
+## Predict By Model Version ID
+
+Every time you train a custom model, it creates a new model version. By specifying `version_id` in your predict call, you can continue to predict on a previous version, for consistent prediction results. Clarifai also updates its pre-built models on a regular basis.
+
+If you are looking for consistent results from your predict calls, use `version_id`. If the model `version_id` is not specified, predict will default to the most current model.
+
+Below is an example of how you would set a model version ID and receive predictions from Clarifai's [`general-image-recognition`](https://clarifai.com/clarifai/main/models/general-image-recognition) model. 
+
+
+<Tabs>
+
+<TabItem value="python" label="Python (gRPC)">
+    <CodeBlock className="language-python">{PythonByModelVersion}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JavaScriptByModelVersion}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="Node.js (gRPC)">
+    <CodeBlock className="language-javascript">{NodeJSByModelVersion}</CodeBlock>
+</TabItem>
+
+<TabItem value="java" label="Java (gRPC)">
+    <CodeBlock className="language-java">{JavaByModelVersion}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP (gRPC)">
+    <CodeBlock className="language-php">{PHPByModelVersion}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlByModelVersion}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+<details>
+  <summary>Output Example</summary>
+    <CodeBlock className="language-text">{CodeOutputExample4}</CodeBlock>
+</details>

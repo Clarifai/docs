@@ -1,6 +1,0 @@
-Predicted concepts:
-3-stars 0.25
-2-stars 0.23
-1-star 0.20
-4-stars 0.17
-5-stars 0.14
