@@ -9,20 +9,25 @@ jobs:
     name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v4  # Updated to v4
+      
+      - uses: actions/setup-node@v3  # Updated to v3
         with:
           node-version: 20.x
-          cache: yarn
-      - name: Build website
+          cache: 'yarn'  # Make sure this is a string
+          
+      - name: Install dependencies
         run: |
           yarn install --frozen-lockfile
-          yarn build
+          yarn cache clean  # Helps prevent cache issues
+          
+      - name: Build website
+        run: yarn build
+        
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
-          # Assign commit authorship to the official GH-Actions bot for deploys to `gh-pages` branch:
           user_name: github-actions[bot]
           user_email: 41898282+github-actions[bot]@users.noreply.github.com
