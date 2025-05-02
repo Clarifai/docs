@@ -5,7 +5,7 @@ from clarifai.client import Model
 os.environ["CLARIFAI_PAT"] = "YOUR_PAT_HERE"
 
 # Initialize with model URL
-model = Model(url="MODEL_URL_HERE")
+model = Model(url="https://clarifai.com/openai/chat-completion/models/o4-mini")
 
 model_methods = model.available_methods()
 
