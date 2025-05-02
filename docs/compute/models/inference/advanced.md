@@ -362,9 +362,23 @@ A low k (e.g., 10) reduces diversity by restricting the choice of tokens, leadin
 
 It’s useful when you want to prevent the model from choosing rare, less likely words, but still allow for some diversity.
 
+### Reasoning Effort 
+
+The Reasoning Effort parameter controls how much internal reasoning the model performs before generating a response.
+
+You can set it to:
+
+- **Low** – Prioritizes faster responses and minimal token usage.
+
+- **Medium** – Strikes a balance between response time and depth of reasoning.
+
+- **High** – Emphasizes thorough reasoning, which may lead to slower but more detailed answers.
+
+You can adjust this setting based on your needs — whether you value speed, detail, or a balance of both.
+
 ### Number of Beams
 
-The number of beams inference parameter is integral to a method called beam search. Beam search is a search algorithm that keeps track of the top n (beam width) sequences at each step of generation, considering multiple possibilities before selecting the best one.
+The Number of Beams inference parameter is integral to a method called beam search. Beam search is a search algorithm that keeps track of the top n (beam width) sequences at each step of generation, considering multiple possibilities before selecting the best one.
 
 It helps produce more coherent and optimized outputs by exploring multiple potential sequences. This parameter is particularly useful in tasks where the quality and diversity of the entire sequence is crucial, such as translation or summarization.
 

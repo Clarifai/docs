@@ -205,10 +205,6 @@
     "from": ["/api-guide/search/filter"]
   },
   {
-    "to": "/create-manage/search/api/rank",
-    "from": ["/api-guide/search/rank"]
-  },
-  {
     "to": "/create-manage/search/api/combine-or-negate",
     "from": ["/api-guide/search/combine-or-negate", "/api-guide/data/datasets/dataset-searches"]
   },
@@ -218,7 +214,7 @@
   },
   {
     "to": "/create-manage/search/api/rank",
-    "from": ["/sdk/Search/Ranks"]
+    "from": ["/sdk/Search/Ranks", "/api-guide/search/rank", "/api-guide/concepts/search-by-concept"]
   },
   {
     "to": "/create-manage/search/api/filter",
@@ -259,7 +255,34 @@
   {
     "to": "/compute/models/inference/advanced",
     "from": ["/api-guide/predict/prediction-parameters"]
+  },
+  {
+    "to": "/create-manage/concepts/",
+    "from": ["/api-guide/concepts/"]
+  },
+  {
+    "to": "/create-manage/concepts/create",
+    "from": ["/api-guide/concepts/create-get-update", "/portal-guide/inputs-manager/concepts"]
+  },
+  {
+    "to": "/create-manage/concepts/concepts-relations",
+    "from": ["/api-guide/concepts/knowledge_graph", "/sdk/advanced-concept-management"]
+  },
+  {
+    "to": "",
+    "from": [""]
+  },
+  {
+    "to": "",
+    "from": [""]
+  },
+  {
+    "to": "",
+    "from": [""]
   }
+
+
+
 
 
 

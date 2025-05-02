@@ -200,7 +200,11 @@ You can delete the application by clicking the **Delete App** button. A small wi
 
 ![delete app](/img/application_settings_11.png)
 
+:::warning
+
 Remember that once you delete an application, we cannot recover it. You will also lose all images, concepts, models, and other resources associated with that application. 
+
+:::
 
 #### Delete all Models
 
