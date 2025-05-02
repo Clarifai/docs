@@ -267,18 +267,6 @@
   {
     "to": "/create-manage/concepts/concepts-relations",
     "from": ["/api-guide/concepts/knowledge_graph", "/sdk/advanced-concept-management"]
-  },
-  {
-    "to": "",
-    "from": [""]
-  },
-  {
-    "to": "",
-    "from": [""]
-  },
-  {
-    "to": "",
-    "from": [""]
   }
 
 
