@@ -1,6 +1,6 @@
 ---
 description: Search your data based on concepts or visual similarity
-sidebar_position: 4
+sidebar_position: 2
 ---
 
 # Rank
@@ -91,6 +91,15 @@ import CodeRKTXTTS from "!!raw-loader!../../../../code_snippets/python-sdk/Searc
 import CodeIMURL from "!!raw-loader!../../../../code_snippets/python-sdk/Search/ranks/rk_imurl.py";
 import CodeIMURLTS from "!!raw-loader!../../../../code_snippets/python-sdk/Search/ranks/rankWithImageUrl.ts";
 
+import PythonSearchByConcept from "!!raw-loader!../../../../code_snippets/api-guide/concepts/python/search_by_concept.py";
+import JavaScriptSearchByConcept from "!!raw-loader!../../../../code_snippets/api-guide/concepts/js/search_by_concept.html";
+import NodeJSSearchByConcept from "!!raw-loader!../../../../code_snippets/api-guide/concepts/node/search_by_concept.js";
+import JavaSearchByConcept from "!!raw-loader!../../../../code_snippets/api-guide/concepts/java/search_by_concept.java";
+import PHPSearchByConcept from "!!raw-loader!../../../../code_snippets/api-guide/concepts/php/search_by_concept.php";
+import CurlSearchByConcept from "!!raw-loader!../../../../code_snippets/api-guide/concepts/curl/search_by_concept.sh";
+import CodeOutputExample from "!!raw-loader!../../../../code_snippets/api-guide/concepts/code_output_examples/search_by_concept.txt";
+import JSONOutputExample from "!!raw-loader!../../../../code_snippets/api-guide/concepts/code_output_examples/search_by_concept.js";
+
 
 
 ## Search by Concepts
@@ -134,6 +143,14 @@ When you add an input, it automatically gets predictions from the workflow in yo
 ### By Custom Concepts
 
 After you have added inputs, annotated the inputs, and trained a custom model, you can search by those concepts.
+
+:::caution train a model
+
+When performing a search with custom concepts, ensure that these concepts are first trained using an `embedding-classifier` model ([transfer-learning](https://docs.clarifai.com/portal-guide/model/model-types/transfer-learning/) model). Without this training, the search query will result in an error.
+
+Training a model generates embeddings for each custom concept. These concept embeddings are then utilized in the search process.
+
+:::
 
 <Tabs>
 
@@ -228,6 +245,51 @@ For example, if your app is in English and you want to search for "dog" in Japan
 </TabItem>
 
 </Tabs>
+
+###  By Using ConceptSearches Endpoint
+
+You can search for concepts by `name`, even across different languages, using the `ConceptSearches` endpoint.
+
+
+<Tabs>
+
+<TabItem value="python" label="Python (gRPC)">
+    <CodeBlock className="language-python">{PythonSearchByConcept}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JavaScriptSearchByConcept}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="Node.js (gRPC)">
+    <CodeBlock className="language-javascript">{NodeJSSearchByConcept}</CodeBlock>
+</TabItem>
+
+<TabItem value="java" label="Java (gRPC)">
+    <CodeBlock className="language-java">{JavaSearchByConcept}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP (gRPC)">
+    <CodeBlock className="language-php">{PHPSearchByConcept}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlSearchByConcept}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+<details>
+  <summary>Raw Output Example</summary>
+    <CodeBlock className="language-js">{CodeOutputExample}</CodeBlock>
+</details>
+
+<details>
+  <summary>JSON Output Example</summary>
+    <CodeBlock className="language-js">{JSONOutputExample}</CodeBlock>
+</details>
+
+
 
 ## Search by Visual Similarity
 

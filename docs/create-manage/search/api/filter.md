@@ -1,6 +1,6 @@
 ---
 description: Select a subset of your data based on useful filters.
-sidebar_position: 3
+sidebar_position: 1
 ---
 
 # Filter
@@ -103,8 +103,7 @@ import CodeDataTS from "!!raw-loader!../../../../code_snippets/python-sdk/Search
 import CodeMM from "!!raw-loader!../../../../code_snippets/python-sdk/Search/filters/fl_mm.py";
 import CodeMMTS from "!!raw-loader!../../../../code_snippets/python-sdk/Search/filters/multiModalFiltering.ts";
 
-import CodeCC from "!!raw-loader!../../../../code_snippets/python-sdk/Search/as/cc.py";
-import CodeCCTS from "!!raw-loader!../../../../code_snippets/python-sdk/Search/as/customConcepts.ts";
+
 
 
 ## By Input Type
@@ -133,14 +132,6 @@ Training a model generates embeddings for each custom concept. These concept emb
 :::
 
 <Tabs>
-
-<TabItem value="python" label="Python SDK">
-    <CodeBlock className="language-python">{CodeCC}</CodeBlock>
- 
-</TabItem>
-<TabItem value="typescript" label="Node.js SDK">
-    <CodeBlock className="language-typescript">{CodeCCTS}</CodeBlock>
-</TabItem>
 
 <TabItem value="python2" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonCustomConcepts}</CodeBlock>

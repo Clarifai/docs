@@ -1,12 +1,11 @@
 ---
-description: Group or separate items in your dataset
-pagination_next: null
-sidebar_position: 5
+description: Group or separate items in your search
+sidebar_position: 3
 ---
 
 # Combine or Negate
 
-**Group or separate items in your dataset**
+**Group or separate items in your search**
 <hr />
 
 You can add together multiple search parameters to expand your search. You can even combine negated search terms for more advanced tasks.
@@ -46,13 +45,65 @@ import CurlCombineNegate_3 from "!!raw-loader!../../../../code_snippets/api-guid
 
 import curlDatasetSearches from "!!raw-loader!../../../../code_snippets/api-guide/data/datasets/dataset_searches.sh";
 
+import CodeCC from "!!raw-loader!../../../../code_snippets/python-sdk/Search/as/cc.py";
+import CodeCCTS from "!!raw-loader!../../../../code_snippets/python-sdk/Search/as/customConcepts.ts";
+
+import CodeOR from "!!raw-loader!../../../../code_snippets/python-sdk/Search/as/or.py";
+import CodeORTS from "!!raw-loader!../../../../code_snippets/python-sdk/Search/as/or.ts";
+
+import CodeAND from "!!raw-loader!../../../../code_snippets/python-sdk/Search/as/and.py";
+import CodeANDTS from "!!raw-loader!../../../../code_snippets/python-sdk/Search/as/and.ts";
+
+
+
+## OR Search Operation
+
+The **OR** filter lets you expand your search to include results that match any of the specified conditions, rather than requiring all of them to be met.
+
+<Tabs>
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{CodeOR}</CodeBlock>
+
+</TabItem>
+<TabItem value="typescript" label="Node.js SDK">
+    <CodeBlock className="language-typescript">{CodeORTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+## AND Search Operation
+
+The **AND** operation enables you to refine search results by specifying multiple conditions that must all be satisfied at the same time. 
+
+For example, if a user searches for images containing both the concepts "dog" and "deer," only those images labeled with both concepts will be returned.
+
+
+<Tabs>
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{CodeAND}</CodeBlock>
+
+</TabItem>
+<TabItem value="typescript" label="Node.js SDK">
+    <CodeBlock className="language-typescript">{CodeANDTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
+
 ## Combine Filter and Rank 
 
 When you combine both `Filter` and `Rank`, filter will be applied before ranking annotations. This is important because limiting the results set on large applications can speed up the overall query drastically when doing a ranking.
 
 <Tabs>
 
-<TabItem value="python" label="Python (gRPC)">
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{CodeCC}</CodeBlock>
+ 
+</TabItem>
+<TabItem value="typescript" label="Node.js SDK">
+    <CodeBlock className="language-typescript">{CodeCCTS}</CodeBlock>
+</TabItem>
+
+<TabItem value="python2" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonCombineNegate}</CodeBlock>
 </TabItem>
 
