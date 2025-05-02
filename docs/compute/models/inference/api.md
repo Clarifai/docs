@@ -101,7 +101,7 @@ A method signature defines the method's name, its input parameters (with types a
 
 <details>
   <summary>Example Output</summary>
-    <CodeBlock className="language-text">def predict(prompt: str, image: data_types.Image, images: List[data_types.Image], chat_history: List[data_types.JSON], max_tokens: int = 512, temperature: float = 0.7, top_p: float = 0.8) -> str:</CodeBlock>
+    <CodeBlock className="language-text">def predict(prompt: str, image: data_types.Image, images: Any, chat_history: Any, max_tokens: float = 512.0, temperature: float = 1.0, top_p: float = 0.8, reasoning_effort: str = '"low"') -> str:</CodeBlock>
 </details>
 
 ### Generate Example Code

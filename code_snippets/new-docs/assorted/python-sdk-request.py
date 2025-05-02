@@ -1,10 +1,12 @@
-from clarifai.client.model import Model
+import os
+from clarifai.client import Model
 
-prompt = "What is the future of AI?"
+# Set your Personal Access Token (PAT)
+os.environ["CLARIFAI_PAT"] = "YOUR_PAT_HERE"
 
-model_url="https://clarifai.com/meta/Llama-3/models/Llama-3_2-3B-Instruct"
+# Initialize with model URL
+model = Model(url="https://clarifai.com/qwen/qwenLM/models/Qwen3-30B-A3B-GGUF")
 
-# Model Predict
-model_prediction = Model(url=model_url, pat="YOUR_PAT_HERE").predict_by_bytes(prompt.encode(), input_type="text")
+response = model.predict(prompt="What is the future of AI?")
 
-print(model_prediction.outputs[0].data.text.raw)
+print(response)

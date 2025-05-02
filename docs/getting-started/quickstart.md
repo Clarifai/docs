@@ -83,6 +83,9 @@ The results will be streamed directly in the interface, allowing you to see the 
 
 ## Call Your First Model With Our API
 
+You can get started quickly by using the Clarifai [Python SDK](https://docs.clarifai.com/additional-resources/api-overview/python-sdk) to make your first API call.
+
+<!--
 You can access the Clarifai API effortlessly using your preferred method:
 
 - SDKs – Quick integration with official client libraries.
@@ -92,19 +95,22 @@ You can access the Clarifai API effortlessly using your preferred method:
 - HTTP Requests – Use any programming language with REST API calls.
 
 - gRPC Clients – High-performance support for popular languages.
-
+-->
 
 ### Step 1: Get a PAT Key
 
 You need a PAT (Personal Access Token) key to authenticate your connection to the Clarifai platform. You can generate the PAT key in your personal settings page by navigating to the [Security section](https://clarifai.com/settings/security).
 
-### Step 2: Install Your Preferred Client
+### Step 2: Install Python SDK
+
+Install the latest version of the Clarifai Python SDK package.
 
 <Tabs>
 <TabItem value="python1" label="Python SDK">
     <CodeBlock className="language-python">pip install --upgrade clarifai</CodeBlock>
 </TabItem>
 
+<!--
 <TabItem value="cli" label="CLI">
  <CodeBlock className="language-javascript">pip install --upgrade clarifai</CodeBlock>
 </TabItem>
@@ -112,19 +118,21 @@ You need a PAT (Personal Access Token) key to authenticate your connection to th
 <TabItem value="python2" label="Python (gRPC)">
     <CodeBlock className="language-php">python -m pip install clarifai-grpc</CodeBlock>
 </TabItem>
+-->
 
 </Tabs>
 
 
 ### Step 3: Send an API Request
 
-For this example, let's use the Llama-3.2-3B-Instruct model to generate text based on a given prompt.
+For this example, let's use the [Qwen3](https://clarifai.com/qwen/qwenLM/models/Qwen3-30B-A3B-GGUF) model to generate text based on a given prompt.
 
 <Tabs>
-<TabItem value="python11" label="Python SDK">
+<TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{PythonSDKRequest}</CodeBlock>
 </TabItem>
 
+<!--
 <TabItem value="cli1" label="CLI">
  <CodeBlock className="language-bash">{CLIRequest}</CodeBlock>
 </TabItem>
@@ -140,6 +148,7 @@ For this example, let's use the Llama-3.2-3B-Instruct model to generate text bas
 <TabItem value="python21" label="Python (gRPC)">
     <CodeBlock className="language-python">{PyGRPCRequest}</CodeBlock>
 </TabItem>
+-->
 
 </Tabs>
 
@@ -150,7 +159,7 @@ For this example, let's use the Llama-3.2-3B-Instruct model to generate text bas
 
 :::tip
 
-The examples above use the default `Clarifai Shared` deployment type for requests. Learn how to use our Compute Orchestration capabilities to make different types of inference API requests [here](https://docs.clarifai.com/compute/models/inference/api).
+[Click here](https://docs.clarifai.com/compute/models/inference/api/) to learn more about how to make inference requests using our API. You'll discover how to list all the available inference methods defined in a model's configuration, generate example code, leverage our Compute Orchestration capabilities for various types of inference requests, and more.
 
 :::
 

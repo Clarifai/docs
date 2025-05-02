@@ -261,6 +261,8 @@ import CodeJavaEmbedding from "!!raw-loader!../../../../code_snippets/api-guide/
 import CodePHPEmbedding from "!!raw-loader!../../../../code_snippets/api-guide/predict/php/embeddings.php";
 import CodeCurlEmbedding from "!!raw-loader!../../../../code_snippets/api-guide/predict/curl/embeddings.sh";
 
+import CurlUnaryStream from "!!raw-loader!../../../../code_snippets/api-guide/predict/curl/unary-stream.sh";
+
 
 ## Legacy Inference via Compute Orchestration
 
@@ -310,6 +312,11 @@ It supports the following prediction methods:
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO20}</CodeBlock>
 </TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlUnaryStream}</CodeBlock>
+</TabItem>
+
 </Tabs>
 
 <details>
