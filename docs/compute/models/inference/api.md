@@ -10,6 +10,9 @@ sidebar_position: 1
 
 Our new inference technique provides an efficient, scalable, and streamlined way to perform predictions with models. 
 
+Built with a Python-first, user-centric design, this flexible approach simplifies the process of working with models — enabling users to focus more on building and iterating, and less on navigating API mechanics. 
+
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";

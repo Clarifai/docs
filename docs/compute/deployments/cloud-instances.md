@@ -11,6 +11,12 @@ pagination_next: null
 
 We offer a range of instance types designed to handle a variety of machine learning workloads. These cloud instances vary in their CPU, RAM (Random Access Memory), and GPU configurations, which allow you to orchestrate the right balance of performance and cost for your use case.
 
+:::tip pricing
+
+To learn more about pricing for each instance type, [click here](https://www.clarifai.com/pricing).
+
+:::
+
 ## Amazon Web Services (AWS) Instances
 
 ### T3A Instances 
