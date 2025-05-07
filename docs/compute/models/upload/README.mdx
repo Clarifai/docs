@@ -21,7 +21,12 @@ The Clarifai Python SDK allows you to upload custom models easily. Whether you'r
 
 Once imported to our platform, your model can be utilized alongside Clarifai's vast suite of AI tools. It will be automatically deployed and ready to be evaluated, combined with other models and agent operators in a workflow, or used to serve inference requests as it is.
 
-Let’s demonstrate how you can successfully upload different types of models to the Clarifai platform. 
+:::info Objective
+
+Let’s walk through how to build and upload a custom model to the Clarifai platform. This example model appends the phrase `Hello World` to any input text and also supports streaming responses.
+You can test the already uploaded model [here](https://clarifai.com/alfrick/docs-demos/models/my-uploaded-model).
+
+:::
 
 :::tip
 
@@ -34,9 +39,7 @@ import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
 import PrepareModelPyFile from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/prepare_model_py_file.py";
-import ModelInfo from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/model_info.yaml";
-import BuildInfo from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/build_info.yaml";
-import ComputeResources from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/compute_resources.yaml";
+import ConfigModelInfo from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/model_info.yaml";
 import HFCheckpoints from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/hf_checkpoints.yaml";
 import ModelConcepts from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/model_concepts.yaml";
 
@@ -54,6 +57,14 @@ import LLMConfig from "!!raw-loader!../../../../code_snippets/python-sdk/model-u
 
 import BuildLogs from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/build_logs.txt";
 
+import UnaryUnaryPredict from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/unary-unary-predict.py";
+import UnaryStreamPredict from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/unary-stream-predict.py";
+import StreamStreamPredict from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/stream-stream-predict.py";
+
+import PredictOutput1 from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/predict_output_1.txt";
+import PredictOutput2 from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/predict_output_2.txt";
+import PredictOutput3 from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/predict_output_3.txt";
+
 ## Prerequisites
 
 ### Set up Docker or a Virtual Environment
@@ -62,7 +73,7 @@ To test, run, and upload your model, you need to set up either a Docker containe
 
 Both options allow you to work with different Python versions. For example, you can use Python 3.11 for uploading one model and Python 3.12 for another — configured via the [`config.yaml`](#build-info) file.  
 
-If Docker is installed on your system, it is highly recommended to use it for running the model. Docker provides better isolation and a fully portable environment, including for Python and system libraries.   
+> If Docker is installed on your system, it is highly recommended to use it for running the model. Docker provides better isolation and a fully portable environment, including for Python and system libraries.   
  
 You should ensure your local environment has sufficient memory and compute resources to handle model loading and execution, especially during [testing](https://docs.clarifai.com/sdk/compute-orchestration/test-models-locally).  
 
@@ -112,34 +123,91 @@ your_model_directory/
 └── config.yaml
 ```
 
-- **your_model_directory/** – The main directory containing your model files.
+- **your_model_directory/** – The root directory containing all files related to your custom model.
   - **1/** – A subdirectory that holds the model file (_Note that the folder is named as **1**_).
     - **model.py** – Contains the code that defines your model, including loading the model and running inference.
-  - **requirements.txt** – Lists the Python libraries and dependencies required to run your model.
+  - **requirements.txt** – Lists the Python dependencies required to run your model.
   - **config.yaml** – Contains model metadata and configuration details necessary for building the Docker image, defining compute resources, and uploading the model to Clarifai.
 
 ## How to Upload a Model
 
 Let's talk about the general steps you'd follow to upload any type of model to the Clarifai platform. 
 
-You can refer to the [examples below](#examples) to help you configure your files correctly.
+### Step 1: Prepare the `model.py` File
 
-### Step 1: Prepare the `config.yaml` File
+The `model.py` file contains the core logic for your model, including how the model is loaded and how predictions are made. This file must define a custom class that inherits from `ModelClass` and implements the required methods.
+
+This is the `model.py` file for the custom model we want to upload:
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python"> {PrepareModelPyFile} </CodeBlock>
+</TabItem>
+</Tabs>
+
+Let’s break down what each part of the file does.
+
+#### a. `load_model` Method 
+
+The `load_model` method is optional but recommended, as it prepares the model for inference by handling resource-heavy initializations. It is particularly useful for:
+
+- One-time setup of heavy resources, such as loading trained models or initializing data transformations.
+- Executing tasks during model container startup to reduce runtime latency.
+- Loading essential components like tokenizers, pipelines, and other model-related assets.
+
+Here is an example:
+
+```python
+def load_model(self):
+  self.tokenizer = AutoTokenizer.from_pretrained("model/")
+  self.pipeline = transformers.pipeline(...)
+```
+
+#### b. Prediction Methods 
+
+The `model.py` file must include at least one method decorated with `@ModelClass.method` to define the prediction endpoints.
+
+In the example model we want to upload, we defined a method that appends the phrase `Hello World` to any input text and added support for different types of [streaming responses](#step-6-predict-with-model).
+
+> **Note:** The structure of prediction methods on the client side directly mirrors the method signatures defined in your `model.py` file. This one-to-one mapping provides flexibility in defining prediction methods with varying names and arguments.
+
+> Here are some examples of method mapping:
+
+> | `model.py` Model Implementation                 | Client-Side Usage Pattern |
+> |-------------------------------------------------|--------------------------|
+> | `@ModelClass.method def predict(...)`           | `model.predict(...)`     |
+> | `@ModelClass.method def generate(...)`          | `model.generate(...)`    |
+> | `@ModelClass.method def stream(...)`            | `model.stream(...)`      |
+
+> You can learn more about the structure of prediction methods [here](https://docs.clarifai.com/compute/models/inference/#structure-of-prediction-methods). 
+
+
+:::warning [Supported Input and Output Data Types](https://docs.clarifai.com/compute/models/model-upload/data-types/)
+
+Each parameter in the class methods must be annotated with a type, and the return type must also be specified. Clarifai's model framework supports rich data typing for both inputs and outputs. Supported types include `Text`, `Image`, `Audio`, `Video`, and more.
+
+:::
+
+### Step 2: Prepare the `config.yaml` File
 
 The `config.yaml` file is essential for specifying the model’s metadata, compute resource requirements, and model checkpoints. 
 
-Here’s a breakdown of the key sections in the file. 
+This is the `config.yaml` file for the custom model we want to upload:
+
+<Tabs>
+<TabItem value="yaml" label="YAML">
+    <CodeBlock className="language-yaml">{ConfigModelInfo}</CodeBlock>
+</TabItem>
+</Tabs>
+
+Let’s break down what each part of the file does.
 
 #### Model Info  
 
 This section defines your model ID, Clarifai user ID, and Clarifai app ID, which will determine where the model is uploaded on the Clarifai platform.
 
 
-<Tabs>
-<TabItem value="yaml" label="YAML">
-    <CodeBlock className="language-yaml">{ModelInfo}</CodeBlock>
-</TabItem>
-</Tabs>
+
 
 #### Build Info  
 
@@ -151,22 +219,11 @@ We currently support Python 3.11 and Python 3.12 (default).
 
 :::
 
-<Tabs>
-<TabItem value="yaml" label="YAML">
-    <CodeBlock className="language-yaml">{BuildInfo}</CodeBlock>
-</TabItem>
-</Tabs>
-
 #### Compute Resources  
 
-Here, you define the minimum compute resources required for running your model, including CPU, memory, and optional GPU specifications.
+You must define the minimum compute resources required for running your model, including CPU, memory, and optional GPU specifications.
 
-
-<Tabs>
-<TabItem value="yaml" label="YAML">
-    <CodeBlock className="language-yaml">{ComputeResources}</CodeBlock>
-</TabItem>
-</Tabs>
+These are some parameters you can define:
 
 - **`cpu_limit`** – Number of CPUs allocated for the model (follows Kubernetes notation, e.g., "1", "2").
 - **`cpu_memory`** – Minimum memory required for the CPU (uses Kubernetes notation, e.g., "1Gi", "1500Mi", "3Gi").
@@ -177,6 +234,8 @@ Here, you define the minimum compute resources required for running your model, 
 #### Hugging Face Model Checkpoints  
 
 If you're using a model from Hugging Face, you can automatically download its checkpoints by specifying the appropriate configuration in this section. For private or restricted Hugging Face repositories, include an access token.
+
+See the [example below](#llama-32-1b-instruct) for how to define Hugging Face checkpoints.
 
 <Tabs>
 <TabItem value="yaml" label="YAML">
@@ -226,9 +285,17 @@ If you're using a model from Hugging Face and the `checkpoints` section is defin
 
 :::
 
-### Step 2: Define Dependencies in `requirements.txt`
+### Step 3: Define Dependencies in `requirements.txt`
 
-The `requirements.txt` file lists all the Python dependencies your model needs. If your model requires Torch, we provide optimized pre-built Torch images as the base for machine learning and inference tasks.
+The `requirements.txt` file lists all the Python dependencies your model needs. 
+
+This is the `requirements.txt` file for the custom model we want to upload:
+
+```text
+clarifai>=11.3.0
+```
+
+If your model requires Torch, we provide optimized pre-built Torch images as the base for machine learning and inference tasks.
 
 These images include all necessary dependencies, ensuring efficient execution. The available pre-built Torch images are:
 
@@ -246,89 +313,6 @@ torch==2.5.1
 This ensures the correct pre-built image is pulled from Clarifai's container registry, ensuring the correct environment is used. This minimizes cold start times and speeds up model uploads and runtime execution — avoiding the overhead of building images from scratch or pulling and configuring them from external sources.
 
 We recommend using either `torch==2.5.1` or `torch==2.4.1`. If your model requires a different Torch version, you can specify it in requirements.txt, but this may slightly increase the model upload time.
-
-### Step 3: Prepare the `model.py` File
-
-The `model.py` file contains the core logic for your model, including how the model is loaded and how predictions are made. This file must define a custom class that inherits from `ModelClass` and implements the required methods.
-
-:::warning [Supported Input and Output Data Types](https://docs.clarifai.com/compute/models/model-upload/data-types/)
-
-Each parameter in the class methods must be annotated with a type, and the return type must also be specified. Clarifai's model framework supports rich data typing for both inputs and outputs. Supported types include `Text`, `Image`, `Audio`, `Video`, and more.
-
-:::
-
-To define a custom model, create a class that inherits from `ModelClass` and implements the following methods:
-
-#### a. `load_model` Method 
-
-The `load_model` method is optional but recommended, as it prepares the model for inference by handling resource-heavy initializations. It is particularly useful for:
-
-- One-time setup of heavy resources, such as loading trained models or initializing data transformations.
-- Executing tasks during model container startup to reduce runtime latency.
-- Loading essential components like tokenizers, pipelines, and other model-related assets.
-
-Here is an example:
-
-```python
-def load_model(self):
-  self.tokenizer = AutoTokenizer.from_pretrained("model/")
-  self.pipeline = transformers.pipeline(...)
-```
-
-#### b. Prediction Methods 
-
-You need to include at least one method decorated with `@ModelClass.method` to define the [prediction endpoints](https://docs.clarifai.com/compute/models/model-inference).
-
-We support various methods of predictions based on type hints:
-
-```python
-# Unary-Unary (Standard request-response)
-@ModelClass.method
-def predict(self, input: Image) -> Text
-
-# Unary-Stream (Server-side streaming)
-@ModelClass.method
-def generate(self, prompt: Text) -> Stream[Text]
-
-# Stream-Stream (Bidirectional streaming)
-@ModelClass.method
-def analyze_video(self, frames: Stream[Image]) -> Stream[str]
-```
-
-Here is an example of a `model.py` file. 
-
-<Tabs>
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python"> {PrepareModelPyFile} </CodeBlock>
-</TabItem>
-</Tabs>
-
-
-:::note
-
-The structure of prediction methods on the client side directly mirrors the method signatures defined in your `model.py` file. This one-to-one mapping provides flexibility in defining prediction methods with varying names and arguments.
-
-Here are some examples of method mapping:
-
-| `model.py` Model Implementation                 | Client-Side Usage Pattern |
-|-------------------------------------------------|--------------------------|
-| `@ModelClass.method def predict(...)`           | `model.predict(...)`     |
-| `@ModelClass.method def generate(...)`          | `model.generate(...)`    |
-| `@ModelClass.method def stream(...)`            | `model.stream(...)`      |
-
-This design allows you to define any custom method with any number of parameters. For example, you could define a method like `@ModelClass.method def analyze_video(...)` in `model.py`, and then call it on the client side using `model.analyze_video(...)`.
-
-Here are some key characteristics of this design:
-
-- Method names must match exactly between `model.py` and client usage.
-
-- Parameters retain the same names and types as defined in your method.
-
-- Return types follow the structure defined by your model’s outputs.
-
-You can find more details on making predictions [here](https://docs.clarifai.com/compute/models/model-inference). 
-
-:::
 
 ### Step 4: Test the Model Locally
 
@@ -369,11 +353,59 @@ The build logs will be displayed in your terminal, which helps you troubleshoot 
 
 ### Step 6: Predict With Model
 
-Once the model is successfully uploaded to Clarifai, you can start making [predictions](https://docs.clarifai.com/compute/models/inference/api) with it. 
+Once the model is successfully uploaded to Clarifai, you can start making predictions with it. 
 
-Note that before making a prediction request with our Compute Orchestration capabilities, you need to first deploy it into a cluster and nodepool you've created. 
+> **Note:** If you want to make a prediction request with our Compute Orchestration capabilities, you need to first [deploy](https://docs.clarifai.com/compute/deployments/deploy-model) it into a cluster and nodepool you've created. 
 
-## Examples
+#### Unary-Unary Predict Call
+
+You can make a [unary-unary](https://docs.clarifai.com/compute/models/inference/api/#unary-unary-predict-call) predict call using the uploaded model.
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python"> {UnaryUnaryPredict} </CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+  <summary>Example Output</summary>
+
+    <CodeBlock className="language-text">{PredictOutput1}</CodeBlock>
+</details>
+
+#### Unary-Stream Predict Call
+
+You can make a [unary-stream](https://docs.clarifai.com/compute/models/inference/api/#unary-stream-predict-call) predict call using the uploaded model.
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python"> {UnaryStreamPredict} </CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+  <summary>Example Output</summary>
+
+    <CodeBlock className="language-text">{PredictOutput2}</CodeBlock>
+</details>
+
+#### Stream-Stream Predict Call
+
+You can make a [stream-stream](https://docs.clarifai.com/compute/models/inference/api/#stream-stream-predict-call) predict call using the uploaded model. 
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python"> {StreamStreamPredict} </CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+  <summary>Example Output</summary>
+
+    <CodeBlock className="language-text">{PredictOutput3}</CodeBlock>
+</details>
+
+## Additional Examples
 
 :::tip
 
@@ -383,79 +415,52 @@ You can find various up-to-date model upload examples [here](https://github.com/
 
 ### Llama-3.2-1B-Instruct
 
-#### `model.py` 
+<details>
+  <summary>model.py</summary>
+    <CodeBlock className="language-text">{LLMModel}</CodeBlock>
+</details>
 
-<Tabs>
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python">{LLMModel}</CodeBlock>
-</TabItem>
-</Tabs>
+<details>
+  <summary>config.yaml</summary>
+    <CodeBlock className="language-text">{LLMConfig}</CodeBlock>
+</details>
 
-#### `requirements.txt`
-
-<Tabs>
-<TabItem value="text" label="Text">
+<details>
+  <summary>requirements.txt</summary>
     <CodeBlock className="language-text">{LLMRequirements}</CodeBlock>
-</TabItem>
-</Tabs>
-
-#### `config.yaml`
-
-<Tabs>
-<TabItem value="yaml" label="YAML">
-    <CodeBlock className="language-yaml">{LLMConfig}</CodeBlock>
-</TabItem>
-</Tabs>
+</details>
 
 ### NSFW Image Classifier
 
-#### `model.py` 
 
-<Tabs>
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python">{ImageClassifierModel}</CodeBlock>
-</TabItem>
-</Tabs>
+<details>
+  <summary>model.py</summary>
+    <CodeBlock className="language-text">{ImageClassifierModel}</CodeBlock>
+</details>
 
-#### `requirements.txt`
+<details>
+  <summary>config.yaml</summary>
+    <CodeBlock className="language-text">{ImageClassifierConfig}</CodeBlock>
+</details>
 
-<Tabs>
-<TabItem value="text" label="Text">
+<details>
+  <summary>requirements.txt</summary>
     <CodeBlock className="language-text">{ImageClassifierRequirements}</CodeBlock>
-</TabItem>
-</Tabs>
-
-#### `config.yaml`
-
-<Tabs>
-<TabItem value="yaml" label="YAML">
-    <CodeBlock className="language-yaml">{ImageClassifierConfig}</CodeBlock>
-</TabItem>
-</Tabs>
+</details>
 
 ### DETR Resnet Image Detector
 
-#### `model.py` 
+<details>
+  <summary>model.py</summary>
+    <CodeBlock className="language-text">{ImageDetectorModel}</CodeBlock>
+</details>
 
-<Tabs>
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python">{ImageDetectorModel}</CodeBlock>
-</TabItem>
-</Tabs>
+<details>
+  <summary>config.yaml</summary>
+    <CodeBlock className="language-text">{ImageDetectorConfig}</CodeBlock>
+</details>
 
-#### `requirements.txt`
-
-<Tabs>
-<TabItem value="text" label="Text">
+<details>
+  <summary>requirements.txt</summary>
     <CodeBlock className="language-text">{ImageDetectorRequirements}</CodeBlock>
-</TabItem>
-</Tabs>
-
-#### `config.yaml`
-
-<Tabs>
-<TabItem value="yaml" label="YAML">
-    <CodeBlock className="language-yaml">{ImageDetectorConfig}</CodeBlock>
-</TabItem>
-</Tabs>
-
+</details>

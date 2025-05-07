@@ -1,5 +1,15 @@
 model:
-  id: "model_id"
-  user_id: "user_id"
-  app_id: "app_id"
-  model_type_id: "text-to-text" # Change this based on your model type (e.g., image-classifier, text-to-text)
+  id: "my-uploaded-model"
+  user_id: "YOUR_USER_ID_HERE"
+  app_id: "YOUR_APP_ID_HERE"
+  model_type_id: "text-to-text"
+
+build_info:
+  python_version: "3.11"
+
+inference_compute_info:
+  cpu_limit: "1"
+  cpu_memory: "13Gi"
+  num_accelerators: 1
+  accelerator_type: ["NVIDIA-*"]
+  accelerator_memory: "15Gi"

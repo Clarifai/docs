@@ -1,6 +1,0 @@
-inference_compute_info:
-  cpu_limit: "2"
-  cpu_memory: "13Gi"
-  num_accelerators: 1
-  accelerator_type: ["NVIDIA-A10G"] # Specify the GPU type if needed
-  accelerator_memory: "15Gi"

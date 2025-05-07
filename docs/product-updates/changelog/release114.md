@@ -25,6 +25,13 @@ draft: true
 |--------------------------------------|------------------------|---------------------------|
 | ![new-feature](/img/new_feature.jpg) | Introduced a new Python-based method for model uploading and inference  | <ul> <li> Built with a Python-first, user-centric design, this flexible approach simplifies the process of working with models — enabling users to focus more on building and iterating, and less on navigating API mechanics. It streamlines inference, accelerates development, and enhances overall usability. </li> <li> Learn more about it [here](https://docs.clarifai.com/compute/models/inference/api) and [here](https://docs.clarifai.com/compute/models/upload/). </li> </ul>  |
 
+
+## New Published Models
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![new-feature](/img/new_feature.jpg)  |  Published new models |  <ul> <li> Published [Llama-4-Scout-17B-16E-Instruct](https://clarifai.com/meta/Llama-4/models/Llama-4-Scout-17B-16E-Instruct), a powerful model in the Llama 4 series featuring 17 billion parameters and 16 experts for advanced instruction tuning.</li> <li> Published [Qwen3-30B-A3B-GGUF](https://clarifai.com/qwen/qwenLM/models/Qwen3-30B-A3B-GGUF), the newest in the Qwen series, featuring dense and MoE models with major improvements in reasoning, instruction-following, agent tasks, and multilingual support.</li> <li>Published [o4-mini]( https://clarifai.com/openai/chat-completion/models/o4-mini) model from OpenAI. It’s a smaller model optimized for fast, cost-efficient reasoning — it achieves remarkable performance for its size and cost, particularly in math, coding, and visual tasks. </li> <li> Published [o3](https://clarifai.com/openai/chat-completion/models/o3) model from OpenAI. It’s a well-rounded and powerful model across domains. It sets a new standard for math, science, coding, and visual reasoning tasks. </li> </ul>                  |
+
 ## Playground
 
 |Status                                |Change                  |Details                    |
