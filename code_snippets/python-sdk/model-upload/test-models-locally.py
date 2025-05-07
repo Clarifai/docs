@@ -1,5 +1,6 @@
 from clarifai.runners.models.model_class import ModelClass
 from clarifai.runners.utils.data_types import Text
+from typing import Iterator
 
 
 class MyModel(ModelClass):

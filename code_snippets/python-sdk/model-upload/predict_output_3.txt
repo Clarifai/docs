@@ -1,0 +1,5 @@
+Streaming output:
+
+First input.Stream Hello World 0
+Second input.Stream Hello World 1
+Third input.Stream Hello World 2

@@ -10,6 +10,9 @@ sidebar_position: 1
 
 Our new inference technique provides an efficient, scalable, and streamlined way to perform predictions with models. 
 
+Built with a Python-first, user-centric design, this flexible approach simplifies the process of working with models — enabling users to focus more on building and iterating, and less on navigating API mechanics. 
+
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
@@ -19,11 +22,15 @@ import CO2 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orche
 import CO3 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_3.py";
 import CO4 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_4.py";
 import CO5 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_5.py";
+import CO5Text from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_5-text.py";
 import CO6 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_6.py";
 import CO7 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_7.py";
+import CO7Text from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_7_text.py";
 import CO8 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_8.py";
 import CO9 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_9.py";
 import C10 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_10.py";
+
+
 
 ## Prerequisites
 
@@ -141,6 +148,28 @@ This is the simplest form of prediction: a single input is sent to the model, an
 
 > **NOTE**: Streaming refers to the continuous flow of data between a client and a model, rather than sending or receiving all the data at once.
 
+### Text inputs
+
+Here is an example of a [model signature](https://docs.clarifai.com/compute/models/upload/#step-1-prepare-the-modelpy-file) configured on the server side for handling text inputs:
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">@ModelClass.method
+  def predict(self, text1: Text = "") -> Text:</CodeBlock>
+</TabItem>
+</Tabs>
+
+Here’s how you can make a corresponding unary-unary predict call from the client side:
+
+<Tabs>
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{CO5Text}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
+### Image inputs
+
 Here is an example of a model signature configured on the server side for handling image inputs:
 
 <Tabs>
@@ -169,6 +198,8 @@ Here’s how you can make a corresponding unary-unary predict call from the clie
 
 This call sends a single input to the model but returns a stream of responses. This is especially useful for tasks that produce multiple outputs from one input, such as generating text completions or progressive predictions from a prompt.
 
+### Text Inputs
+
 Here is an example of a model signature configured on the server side for handling text inputs:
 
 <Tabs>
@@ -191,6 +222,28 @@ Here’s how you can make a corresponding unary-stream predict call from the cli
 This call enables bidirectional streaming of both inputs and outputs, making it ideal for real-time applications and processing large datasets.
 
 In this setup, multiple inputs can be continuously streamed to the model, while predictions are returned in real time. It’s especially useful for use cases like live video analysis or streaming sensor data.
+
+
+### Text Inputs
+
+Here is an example of a [model signature](https://docs.clarifai.com/compute/models/upload/#step-1-prepare-the-modelpy-file) configured on the server side for handling text inputs:
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">@ModelClass.method
+  def stream(self, input_iterator: Iterator[Text]) -> Iterator[Text]:</CodeBlock>
+</TabItem>
+</Tabs>
+
+Here’s how you can make a corresponding stream-stream predict call from the client side:
+
+<Tabs>
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{CO7Text}</CodeBlock>
+</TabItem>
+</Tabs>
+
+### Audio Inputs
 
 Here is an example of a model signature configured on the server side for handling audio inputs:
 

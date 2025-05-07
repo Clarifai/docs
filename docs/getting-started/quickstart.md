@@ -73,7 +73,7 @@ The results will be streamed directly in the interface, allowing you to see the 
 
 :::info
 
-- For this example, we're using the default settings for deployment (`Clarifai Shared`), inference parameters, and others. You can [customize](https://docs.clarifai.com/compute/models/model-inference/#model-playground) these settings as needed for more advanced use cases.
+- For this example, we're using the default settings for deployment (`Clarifai Shared`), inference parameters, and others. You can [customize](https://docs.clarifai.com/compute/models/) these settings as needed for more advanced use cases.
 
 - You can toggle the button in the upper-left section of the Playground to display ready-to-use API code snippets in various programming languages. Simply copy and use them in your project.
 
@@ -122,6 +122,11 @@ Install the latest version of the Clarifai Python SDK package.
 
 </Tabs>
 
+:::note tip
+
+On Windows, the Clarifai Python SDK expects a `HOME` environment variable, which isn’t set by default. To ensure compatibility with file paths used by the SDK, set `HOME` to the value of your `USERPROFILE`. You can set it in your Command Prompt this way: `set HOME=%USERPROFILE%`.
+
+:::
 
 ### Step 3: Send an API Request
 
@@ -157,7 +162,7 @@ For this example, let's use the [Qwen3](https://clarifai.com/qwen/qwenLM/models/
     <CodeBlock className="language-text">{OutputExample}</CodeBlock>
 </details>
 
-:::tip
+:::tip Learn more
 
 [Click here](https://docs.clarifai.com/compute/models/inference/api/) to learn more about how to make inference requests using our API. You'll discover how to list all the available inference methods defined in a model's configuration, generate example code, leverage our Compute Orchestration capabilities for various types of inference requests, and more.
 

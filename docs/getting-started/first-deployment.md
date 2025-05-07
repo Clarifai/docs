@@ -1,16 +1,16 @@
 ---
-description: Set up your own computing infrastructure easily and fast
+description: Set up your computing infrastructure easily and fast for inference
 sidebar_position: 2
 ---
 
 # Deploy Your First Model
 
-**Set up your own computing infrastructure easily and fast**
+**Set up your computing infrastructure easily and fast for inference**
 <hr />
 
-Clarifai offers an intuitive interface and a robust API that allow you to quickly provision your own computing infrastructure — making the process of deploying your models easier and faster.
+Clarifai offers an intuitive user interface and a robust API that allow you to quickly provision your own computing infrastructure — making the process of deploying your models easier and faster.
 
-With just a few simple steps or a minimal amount of code, you can take a trained model and set it up for inference. 
+With just a few simple steps or a minimal amount of code, you can take a trained model and **set it up for inference**. 
 
 :::warning Log in or Set up an Account
 

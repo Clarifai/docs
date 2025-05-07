@@ -1,20 +1,22 @@
 ---
-description: Upload a model from Hugging Face to the Clarifai platform
+description: Upload a custom model to the Clarifai platform
 sidebar_position: 3
 ---
 
 # Upload Your First Model
 
-**Upload a model from Hugging Face to the Clarifai platform**
+**Upload a custom model to the Clarifai platform**
 <hr />
 
 The Clarifai platform allows you to upload custom models for a wide range of use cases. With just a few simple steps, you can get your models up and running and leverage the platform’s powerful capabilities.
 
-Let's demonstrate how you can upload the [Llama-3.2-1B-Instruct](https://github.com/Clarifai/runners-examples/tree/main/llm/hf-llama-3_2-1b-instruct) model from Hugging Face to the Clarifai platform.
+Let’s walk through how to upload a simple custom model that appends the phrase `Hello World` to any input text.
+
+You can test the already uploaded model [here](https://clarifai.com/alfrick/docs-demos/models/my-first-model).
 
 :::tip
 
-To learn more about how to upload different types of models, check out [this comprehensive guide](https://docs.clarifai.com/compute/models/model-upload/). 
+To learn more about how to upload different types of models, check out [this comprehensive guide](https://docs.clarifai.com/compute/models/upload/). 
 
 :::
 
@@ -25,6 +27,7 @@ import CodeBlock from "@theme/CodeBlock";
 import ModelPyFile from "!!raw-loader!../../code_snippets/python-sdk/model-upload/upload-first-model.py";
 import ConfigFile from "!!raw-loader!../../code_snippets/python-sdk/model-upload/upload-first-model.yaml";
 import RequirementsFile from "!!raw-loader!../../code_snippets/python-sdk/model-upload/upload-first-model.txt";
+import PythonSDKRequest from "!!raw-loader!../../code_snippets/python-sdk/model-upload/predict-first-model.py";
 
 ## Step 1: Perform Prerequisites
 
@@ -53,11 +56,19 @@ This token is essential for authenticating your connection to the Clarifai platf
 </TabItem>
 </Tabs>
 
+:::note tip
+
+On Windows, the Clarifai Python SDK expects a `HOME` environment variable, which isn’t set by default. To ensure compatibility with file paths used by the SDK, set `HOME` to the value of your `USERPROFILE`. You can set it in your Command Prompt this way: `set HOME=%USERPROFILE%`.
+
+:::
+
+<!--
 ### Get a Hugging Face Access Token
 
 To download models from the Hugging Face platform, you'll need to authenticate your connection. You can create a Hugging Face account, then generate an access token to authorize your downloads. 
 
 You can follow the guide [here](https://huggingface.co/docs/hub/en/security-tokens) to get it.
+-->
 
 ## Step 2: Create Files
 
@@ -71,11 +82,13 @@ your_model_directory/
 └── config.yaml
 ```
 
-- **your_model_directory/** – The main directory containing your model files.
+- **your_model_directory/** – The root directory containing all files related to your custom model.
   - **1/** – A subdirectory that holds the model file (_Note that the folder is named as **1**_).
-    - **model.py** – Contains the code that defines your model, including loading the model and running inference.
-  - **requirements.txt** – Lists the Python libraries and dependencies required to run your model.
-  - **config.yaml** – Contains model metadata and configuration details necessary for building the Docker image, defining compute resources, and uploading the model to Clarifai.
+    - **model.py** – Contains the code that defines your model, including running inference.
+  - **requirements.txt** – Lists the Python dependencies required to run your model.
+  - **config.yaml** – Contains metadata and configuration settings, such as compute requirements, needed for uploading the model to Clarifai.
+
+
 
 Add the following snippets to each of the respective files. 
 
@@ -99,7 +112,7 @@ Add the following snippets to each of the respective files.
 
 :::info important
 
-In the `model` section of the `config.yaml` file, specify your model ID, Clarifai user ID, and Clarifai app ID. These will define where your model will be uploaded on the Clarifai platform. You also need to specify the `hf_token` to authenticate your connection to Hugging Face, as [described](#get-a-hugging-face-access-token) earlier.
+In the `model` section of the `config.yaml` file, specify your model ID, Clarifai user ID, and Clarifai app ID. These will define where your model will be uploaded on the Clarifai platform. 
 
 :::
 
@@ -119,6 +132,30 @@ Once your custom model is ready, upload it to the Clarifai platform by navigatin
 </TabItem>
 </Tabs>
 
-Congratulations — you've just uploaded your first model to the Clarifai platform!
+## Step 4: Predict With Model
 
-Now, you can [deploy](https://docs.clarifai.com/compute/deployments/deploy-model) the model to a cluster and nodepool. This allows you to cost-efficiently and scalably make [inferences](https://docs.clarifai.com/compute/models/inference/api) with it. 
+Once your model is successfully uploaded to Clarifai, you can start making predictions with it.
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonSDKRequest}</CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+  <summary>Output Example</summary>
+    <CodeBlock className="language-text">Text(text='Yes, I uploaded it! Hello World', url=None)</CodeBlock>
+</details>
+
+
+**Congratulations!**
+
+You've successfully uploaded your first model to the Clarifai platform and run inference with it!
+
+
+:::tip
+
+In this example, we used the default deployment setting (`Clarifai Shared`). To learn how to leverage our Compute Orchestration capabilities for scalable and cost-efficient inference across various use cases, [click here](https://docs.clarifai.com/compute/models/inference/api/).
+
+:::
+
