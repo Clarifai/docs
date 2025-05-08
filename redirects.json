@@ -238,7 +238,7 @@
   },
   {
     "to": "/create-manage/datasets/",
-    "from": ["/api-guide/data/datasets/", "/api-guide/data/"]
+    "from": ["/api-guide/data/datasets/", "/api-guide/data/", "/api-guide/annotate/training-data"]
   },
   {
     "to": "/compute/models/inference/ui",
@@ -262,14 +262,76 @@
   },
   {
     "to": "/create-manage/concepts/create",
-    "from": ["/api-guide/concepts/create-get-update", "/portal-guide/inputs-manager/concepts"]
+    "from": ["/api-guide/concepts/create-get-update", "/portal-guide/inputs-manager/concepts", "/portal-guide/concepts/create-get-update-delete"]
   },
   {
     "to": "/create-manage/concepts/concepts-relations",
     "from": ["/api-guide/concepts/knowledge_graph", "/sdk/advanced-concept-management"]
+  },
+  {
+    "to": "/create-manage/labeling/ui/",
+    "from": ["/portal-guide/inputs-manager/annotate"]
+  },
+  {
+    "to": "/create-manage/labeling/ui/bulk",
+    "from": ["/portal-guide/inputs-manager/bulk-labeling"]
+  },
+  {
+    "to": "/create-manage/labeling/ui/tasks/",
+    "from": ["/portal-guide/labeling-tasks/"]
+  },
+  {
+    "to": "/create-manage/labeling/ui/tasks/create",
+    "from": ["/portal-guide/labeling-tasks/create-a-task"]
+  },
+  {
+    "to": "/create-manage/labeling/ui/tasks/auto",
+    "from": ["/portal-guide/labeling-tasks/auto-annotation"]
+  },
+  {
+    "to": "/create-manage/labeling/ui/tasks/review",
+    "from": ["/portal-guide/labeling-tasks/review"]
+  },
+  {
+    "to": "/create-manage/labeling/ui/tasks/tools",
+    "from": ["/portal-guide/labeling-tasks/labeling-tools"]
+  },
+  {
+    "to": "/create-manage/labeling/ui/tasks/positive-negative",
+    "from": ["/portal-guide/labeling-tasks/positive-and-negative-annotations"]
+  },
+  {
+    "to": "/create-manage/labeling/ui/",
+    "from": ["/portal-guide/input-viewer/"]
+  },
+  {
+    "to": "/create-manage/labeling/ui/create",
+    "from": ["/portal-guide/input-viewer/annotate"]
+  },
+  {
+    "to": "/create-manage/labeling/ui/ai-assist",
+    "from": ["/portal-guide/input-viewer/ai-assist"]
+  },
+  {
+    "to": "/create-manage/labeling/ui/object-tracking",
+    "from": ["/portal-guide/input-viewer/object-tracking"]
+  },
+  {
+    "to": "/create-manage/labeling/api/",
+    "from": ["/api-guide/annotate/"]
+  },
+  {
+    "to": "/create-manage/labeling/api/annotations",
+    "from": ["/api-guide/annotate/annotations"]
+  },
+  {
+    "to": "/create-manage/labeling/api/positive-and-negative-annotations",
+    "from": ["/api-guide/annotate/positive-and-negative-annotations"]
+  },
+  {
+    "to": "/create-manage/labeling/api/tasks",
+    "from": ["/api-guide/annotate/tasks", "/api-guide/annotate/task-annotations"]
   }
-
-
 
 
 

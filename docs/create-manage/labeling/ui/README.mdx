@@ -1,18 +1,30 @@
 ---
-description: View and interact with your input
-pagination_prev: null
+description: Label inputs on the Inputs-Manager or Input-Viewer page
+toc_max_heading_level: 4
 ---
 
-# Single Input-Viewer
+# Labeling via the UI
 
-**View and interact with your input**
+**Label inputs on the Inputs-Manager or Input-Viewer page**
 <hr />
 
-The single Input-Viewer is the main page that showcases the details of a single input available in your app. If you click an input listed on the [Inputs-Manager](https://docs.clarifai.com/portal-guide/inputs-manager/) page, you'll be redirected to the viewer page for that input, where you can view and interact with it.
+
+## Inputs-Manager Page
+
+If you click the **Inputs** option in your app's collapsible left sidebar, you'll be redirected to the Inputs-Manager screen, which is the main page showcasing all the inputs in your app.
+
+[Click here](https://docs.clarifai.com/create-manage/inputs/#inputs-manager-screen) to learn more about the Inputs-Manager page.
+
+![](/img/community/annotate/create_annotations_1.png)
+
+
+## Single Input-Viewer
+
+The single Input-Viewer is the main page that showcases the details of a single input available in your app. If you click an input listed on the Inputs-Manager page, you'll be redirected to the viewer page for that input, where you can view and interact with it.
 
 ![](/img/community_2/explorer_1.png)
 
-## Key Features and Tasks 
+### Key Features and Tasks 
 
 You can complete several tasks on the Input-Viewer screen, including:
 
@@ -33,11 +45,11 @@ Additionally, there are other hotkeys you can use in the labeling process, which
 
 ![](/img/others-2/annotate-10.png)
 
-## Manual Labeling Tools
+### Manual Labeling Tools
 
 The single Input-Viewer page has various assistive tools to help you make the most of the labeling exercise. 
 
-### Select / Edit Tool
+#### Select / Edit Tool
 
 The **Select / Edit** tool allows you to navigate and interact with the interface. You can use it to select already defined bounding boxes or polygons.
 
@@ -45,7 +57,7 @@ The keyboard shortcut for using this tool is **V**.
 
 ![](/img/others-2/annotate-1.png)
 
-### Bounding Box Tool
+#### Bounding Box Tool
 
 The **Bounding Box** tool allows you to draw a rectangle on an image to define a region of interest. It's useful for identifying objects in images.
 
@@ -53,7 +65,7 @@ The keyboard shortcut for using this tool is **B**.
 
 ![](/img/others-2/annotate-2.png)
 
-### Polygon Tool
+#### Polygon Tool
 
 The **Polygon** tool allows you to draw custom, multi-sided shapes on an image. It's ideal for annotating irregularly shaped areas or objects.
 
@@ -61,7 +73,7 @@ The keyboard shortcut for using this tool is **P**.
 
 ![](/img/others-2/annotate-4.png)
 
-### Hand Tool
+#### Hand Tool
 
 The **Hand** allows you to click and drag an image in order to pan or move it around the workspace. It's useful for examining different areas of a large or zoomed-in image without changing the zoom level.
 
@@ -69,7 +81,7 @@ The keyboard shortcut for using this tool is **H**.
 
 ![](/img/others-2/annotate-3.png)
 
-### Display Controls
+#### Display Controls
 
 The **Display Controls** tool allows you to use an Electronic Light Table to adjust the visual settings of your input. It supports adjusting for brightness, saturation, and contrast. You can also invert the colors by selecting the **Invert colors** checkbox.
 
@@ -79,26 +91,28 @@ You can click the **Reset** button at the upper-right corner to restore the sett
 
 ![](/img/others-2/annotate-5.png)
 
-### Rotate Tool
+#### Rotate Tool
 
 The **Rotate** tool allows you to adjust the orientation of an image to suit your needs. Whether you want to rotate the image clockwise, counterclockwise, or flip it to a specific angle, this tool provides precise control for achieving your desired alignment.
  
 ![](/img/others-2/annotate-6.png)
 
-### Zoom Tool
+#### Zoom Tool
 
 The **Zoom** tool allows you to zoom in for a closer look or zoom out to view the image at a broader scale.
 
 ![](/img/others-2/annotate-7.png)
 
-### Canvas Options Tool
+#### Canvas Options Tool
 
 The **Canvas Options** tool allows you to manage the success notifications for actions performed in the canvas area. You can toggle this feature on or off based on your preference.
 
 ![](/img/others-2/annotate-8.png)
 
+
 import DocCardList from '@theme/DocCardList';
 import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 
 <DocCardList items={useCurrentSidebarCategory().items}/>
+
 

@@ -1,18 +1,14 @@
 ---
-description: Create, get, update, and delete annotations on Input-Viewer page
+description: Learn how to create annotations
 sidebar_position: 1
+toc_max_heading_level: 5
 ---
 
-# Manual Annotation
+# Create Annotations
 
-**Create, get, update, and delete annotations on Input-Viewer page**
+**Learn how to create annotations**
 <hr />
 
-Labeling, or annotation, involves assigning one or more descriptive tags or keywords — known as [concepts](https://docs.clarifai.com/portal-guide/inputs-manager/concepts) — to accurately characterize the attributes or content of your inputs.
-
-For example, annotations can indicate whether an image contains a dog or a cat, identify the spoken words in an audio recording, or recognize cracks in a concrete block.
-
-Within the Input-Viewer page, you can add annotations to inputs, get the ones already added to inputs, remove them from inputs, or carry out other management tasks with them.
 
 We support different types of labeling methods, each suited for different tasks and data characteristics. This lets you create high-quality training data depending on the objective you want your AI model to achieve. 
 
@@ -35,15 +31,72 @@ These are the different types of labels we support for your image, video, and te
 
 :::
 
+
+## Label on Inputs-Manager Page 
+
+
+To label your inputs, head to your application's individual page. Then, select the **Inputs** option in the collapsible left sidebar.
+
+You'll be redirected to the Input Mode of the Inputs-Manager page, where you can create and manage the annotations of your inputs. It is the default mode of the Inputs-Manager page.
+
+![](/img/community/annotate/create_annotations_1.png)
+
+You can use different ways to label your inputs. 
+
+### Classification Labeling
+
+To label an image input for classification tasks on the Inputs-Manager page, hover over it and click the small empty box in the upper-left corner to select it.
+
+:::tip multi-select feature
+
+- **Mouse click**: Selects a single item or input.
+- **Shift + mouse click**: Selects a range of inputs between the first and last clicked item.
+
+:::
+
+Next, click the **Label as…** button that appears at the bottom section of the page.
+
+![](/img/community/annotate/create_annotations_2.png)
+
+The small window that pops up allows you to annotate the selected input(s) with concepts. 
+
+![](/img/community/annotate/create_annotations_4.png)
+
+Select the **Add** option, which lets you add annotations to your inputs (the option is selected by default). 
+
+If you want to create a new concept and use it for labeling your inputs:
+
+- Click the plus sign (**+**) next to the **Select or add concepts** search field;
+- Type the new concept name in the search field. The new name you've typed will appear underneath the search field;
+- Click the **Add new concept** button to create the concept. The new concept will be successfully added to your app;
+- Finally, click the **Add to inputs** button at the bottom of the pop-up window to complete labeling your inputs with the newly created concept.
+
+:::tip
+
+If you select the **Apply to all search results** button, all the inputs that are visually similar to the one(s) you've initially selected will also be annotated. This allows you to label your inputs easily and fast. 
+
+:::
+
+If you've already created concepts and want to use them for annotating your input(s), simply select them from the **Concepts** field.
+
+![](/img/community/annotate/create_annotations_3.png)
+
+After selecting the already existing concepts, click the **Add to inputs** button at the bottom of the pop-up window to complete labeling your inputs with them.
+
+
+## Label on Input-Viewer Page
+
+If you click an input listed on the Inputs-Manager page, you'll be redirected to the viewer page for that input, where you can view and interact with it.
+
 To carry out manual annotation on the Input-Viewer page, ensure the page's mode is set to **Annotate**, which is the default status. You can find the mode settings in the upper-left corner of the page.
 
 ![](/img/others-2/label-types-1.png)
 
-## Classification Labeling
+### Classification Labeling
 
 The classification label type lets you assign annotations to an entire image, a single frame of video, or a piece of text.
 
-### Image Classification
+#### Image Classification
 
 To manually classify an image on the Input-Viewer page, start by clicking the **Select / Edit** tool in the navigation bar (this tool is selected by default).
 
@@ -64,35 +117,12 @@ You can add as many annotations as you want. The added annotations will appear i
 
 :::note
 
-Alternatively, you can manually classify an image on the Input Viewer page by navigating to the **Classifications** pane. Then, use the **Select or add concepts** search box to choose or add concepts for annotating your inputs, as described earlier.
+Alternatively, you can manually classify an image on the Input-Viewer page by navigating to the **Classifications** pane. Then, use the **Select or add concepts** search box to choose or add concepts for annotating your inputs, as described earlier.
 
 :::
 
-#### View Individual Annotators
 
-If you hover over the person icon on an annotation field in the **Classifications** pane, you can view the annotator(s) who added that annotation. The displayed number indicates how many annotators labeled that input.
-
-#### Update Annotations
-
-![](/img/others-2/label-types-4-1.png)
-
-To update an annotation, hover over its field in the right sidebar and click the pencil icon that appears. Next, enter a new name for the annotation in the text field that appears, then click the **Update** button to save your changes.
-
-The new concept will be added to your app and annotated with your input. This newly added concept is referred to as a **concept relation**, with the original concept displayed as a superscript next to it. As a result, if you create an annotation using the original concept, the updated concept will be used instead.
-
-Note that if you edit the concept relation back to its original value, the existing concept relation annotation on the input will be removed. It will only be removed from the input, and not from your app. 
-
-#### Delete Annotations
-
-There are several ways of deleting an annotation via the Input-Viewer page:
-
-- If you hover over an annotation field, a delete icon will appear that you can use to remove the annotation. Note that deleting an annotation only removes it from the input; it does not delete the concept from your app.  
-
-- You can remove an annotation by deselecting the checkmark next to it in the annotation field.  
-
-- Additionally, each annotation is assigned a hotkey number. Clicking this number will delete the corresponding annotation from the input. For example, clicking "2" will remove the **sheep** annotation from the image. Up to 20 hotkeys can be assigned to an input. 
-
-### Text Classification
+#### Text Classification
 
 You can classify your text inputs into predefined categories in the same way as described earlier for image classification.
 
@@ -104,15 +134,15 @@ Ensure you select the appropriate [base workflow](https://docs.clarifai.com/port
 
 ![](/img/others-2/label-types-5.png)
 
-### Video Classification
+#### Video Classification
 
 Support for video labeling within this tool is coming soon. If you need to label videos, you can create a [Labeling Task](https://docs.clarifai.com/portal-guide/labeling-tasks/create-a-task) and label a dataset with videos.  
 
-## Detection Labeling
+### Detection Labeling
 
 The detection label type lets you identify the objects in your inputs and also draw bounding boxes around them. 
 
-### Detection for Still Images
+#### Detection for Still Images
 
 To manually add detection labels on the Input-Viewer page, start by clicking the **Bounding Box** tool in the navigation bar.
 
@@ -150,7 +180,7 @@ The **Objects** pane displays categories of concepts used for annotations, along
     - Hovering over an individual annotation instance reveals these icons: pencil icon for reassigning the annotation to a different concept, eye icon for hiding the specific annotation instance, and delete icon for removing the specific annotation instance. 
     - Clicking an individual annotation instance highlights its corresponding bounding box in the canvas, enabling easy editing or deletion (by clicking the delete button on the keyboard).
 
-### Detection for Video
+#### Detection for Video
 
 Support for video labeling is coming soon. 
 
@@ -160,7 +190,7 @@ Support for video labeling is coming soon.
 
 :::
 
-## Segmentation Labeling
+### Segmentation Labeling
 
 The segmentation label type lets you outline a boundary of an object using a series of vertices that define a closed polygonal shape. It's ideal for annotating irregularly shaped areas or objects. 
 
@@ -176,7 +206,7 @@ After creating the initial shape by placing your dots, you'll need to close the 
 
 Note that segmentation labeling works just as the previously described detection labeling. For example, if you click the polygon icon in an annotation category field, the drawing mode will be activated, enabling you to create annotations with the selected concept.
 
-## Masks Labeling
+### Masks Labeling
 
 The mask label type lets you label each pixel within the region of interest. It provides pixel-level labeling that allows you to precisely identify and delineate objects within an image. 
 

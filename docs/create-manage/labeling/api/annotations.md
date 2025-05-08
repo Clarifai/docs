@@ -3,7 +3,7 @@ description: Label your data.
 sidebar_position: 1
 ---
 
-# Annotations : Create, Get, Update, Delete
+# Create, Get, Update, Delete
 
 **Label your data**
 <hr />
@@ -16,130 +16,136 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
-import PythonAnnotateExistingRegionsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/annotate_existing_regions_image.py";
-import PythonAnnotateImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/annotate_images_concepts.py";
-import PythonAnnotateImagesMultipleConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/annotate_images_multiple_concepts.py";
-import PythonAnnotateImagesUserIdStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/annotate_images_user_id_status.py";
-import PythonAnnotateNewBoundingBoxesImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/annotate_new_bounding_boxes_image.py";
-import PythonAnnotatePolygonsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/annotate_polygons_image.py";
-import PythonbulkDeleteAnnotationsInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/bulk_delete_annotations_input_annotation_ids.py";
-import PythonBulkDeleteAnnotationsInputIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/bulk_delete_annotations_input_ids.py";
-import PythonDeleteAnnotationInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/delete_annotation_input_annotation_ids.py";
-import PythonListAllAnnotationsApp from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/list_all_annotations_app.py";
-import PythonListAnnotationsInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/list_annotations_input_annotation_ids.py";
-import PythonListAnnotationsModelVersionIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/list_annotations_model_version_ids.py";
-import PythonListAnnotationsUserIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/list_annotations_user_ids.py";
-import PythonlistUserCreatedAnnotationsApp from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/list_user_created_annotations_app.py";
-import PythonListUserCreatedAnnotationsInputIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/list_user_created_annotations_input_ids.py";
-import PythonUpdateAnnotationConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/update_annotation_concepts.py";
-import PythonUpdateAnnotationConceptsRegion from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/update_annotation_concepts_region.py";
-import PythonUpdateAnnotationRegionCoordinates from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/update_annotation_region_coordinates.py";
-import PythonUpdateAnnotationStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/update_annotation_status.py";
+import PythonAnnotateExistingRegionsImage from "!!raw-loader!../../../../code_snippets/api-guide/annotate/py/annotate_existing_regions_image.py";
+import PythonAnnotateImagesConcepts from "!!raw-loader!../../../../code_snippets/api-guide/annotate/py/annotate_images_concepts.py";
+import PythonAnnotateImagesMultipleConcepts from "!!raw-loader!../../../../code_snippets/api-guide/annotate/py/annotate_images_multiple_concepts.py";
+import PythonAnnotateImagesUserIdStatus from "!!raw-loader!../../../../code_snippets/api-guide/annotate/py/annotate_images_user_id_status.py";
+import PythonAnnotateNewBoundingBoxesImage from "!!raw-loader!../../../../code_snippets/api-guide/annotate/py/annotate_new_bounding_boxes_image.py";
+import PythonAnnotatePolygonsImage from "!!raw-loader!../../../../code_snippets/api-guide/annotate/py/annotate_polygons_image.py";
+import PythonbulkDeleteAnnotationsInputAnnotationIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/py/bulk_delete_annotations_input_annotation_ids.py";
+import PythonBulkDeleteAnnotationsInputIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/py/bulk_delete_annotations_input_ids.py";
+import PythonDeleteAnnotationInputAnnotationIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/py/delete_annotation_input_annotation_ids.py";
+import PythonListAllAnnotationsApp from "!!raw-loader!../../../../code_snippets/api-guide/annotate/py/list_all_annotations_app.py";
+import PythonListAnnotationsInputAnnotationIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/py/list_annotations_input_annotation_ids.py";
+import PythonListAnnotationsModelVersionIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/py/list_annotations_model_version_ids.py";
+import PythonListAnnotationsUserIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/py/list_annotations_user_ids.py";
+import PythonlistUserCreatedAnnotationsApp from "!!raw-loader!../../../../code_snippets/api-guide/annotate/py/list_user_created_annotations_app.py";
+import PythonListUserCreatedAnnotationsInputIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/py/list_user_created_annotations_input_ids.py";
+import PythonUpdateAnnotationConcepts from "!!raw-loader!../../../../code_snippets/api-guide/annotate/py/update_annotation_concepts.py";
+import PythonUpdateAnnotationConceptsRegion from "!!raw-loader!../../../../code_snippets/api-guide/annotate/py/update_annotation_concepts_region.py";
+import PythonUpdateAnnotationRegionCoordinates from "!!raw-loader!../../../../code_snippets/api-guide/annotate/py/update_annotation_region_coordinates.py";
+import PythonUpdateAnnotationStatus from "!!raw-loader!../../../../code_snippets/api-guide/annotate/py/update_annotation_status.py";
 
-import JSAnnotateExistingRegionsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/annotate_existing_regions_image.html";
-import JSAnnotateImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/annotate_images_concepts.html";
-import JSAnnotateImagesMultipleConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/annotate_images_multiple_concepts.html";
-import JSAnnotateImagesUserIdStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/annotate_images_user_id_status.html";
-import JSAnnotateNewBoundingBoxesImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/annotate_new_bounding_boxes_image.html";
-import JSAnnotatePolygonsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/annotate_polygons_image.html";
-import JSbulkDeleteAnnotationsInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/bulk_delete_annotations_input_annotation_ids.html";
-import JSBulkDeleteAnnotationsInputIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/bulk_delete_annotations_input_ids.html";
-import JSDeleteAnnotationInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/delete_annotation_input_annotation_ids.html";
-import JSListAllAnnotationsApp from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/list_all_annotations_app.html";
-import JSListAnnotationsInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/list_annotations_input_annotation_ids.html";
-import JSListAnnotationsModelVersionIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/list_annotations_model_version_ids.html";
-import JSListAnnotationsUserIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/list_annotations_user_ids.html";
-import JSlistUserCreatedAnnotationsApp from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/list_user_created_annotations_app.html";
-import JSListUserCreatedAnnotationsInputIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/list_user_created_annotations_input_ids.html";
-import JSUpdateAnnotationConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/update_annotation_concepts.html";
-import JSUpdateAnnotationConceptsRegion from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/update_annotation_concepts_region.html";
-import JSUpdateAnnotationRegionCoordinates from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/update_annotation_region_coordinates.html";
-import JSUpdateAnnotationStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/update_annotation_status.html";
+import JSAnnotateExistingRegionsImage from "!!raw-loader!../../../../code_snippets/api-guide/annotate/js/annotate_existing_regions_image.html";
+import JSAnnotateImagesConcepts from "!!raw-loader!../../../../code_snippets/api-guide/annotate/js/annotate_images_concepts.html";
+import JSAnnotateImagesMultipleConcepts from "!!raw-loader!../../../../code_snippets/api-guide/annotate/js/annotate_images_multiple_concepts.html";
+import JSAnnotateImagesUserIdStatus from "!!raw-loader!../../../../code_snippets/api-guide/annotate/js/annotate_images_user_id_status.html";
+import JSAnnotateNewBoundingBoxesImage from "!!raw-loader!../../../../code_snippets/api-guide/annotate/js/annotate_new_bounding_boxes_image.html";
+import JSAnnotatePolygonsImage from "!!raw-loader!../../../../code_snippets/api-guide/annotate/js/annotate_polygons_image.html";
+import JSbulkDeleteAnnotationsInputAnnotationIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/js/bulk_delete_annotations_input_annotation_ids.html";
+import JSBulkDeleteAnnotationsInputIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/js/bulk_delete_annotations_input_ids.html";
+import JSDeleteAnnotationInputAnnotationIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/js/delete_annotation_input_annotation_ids.html";
+import JSListAllAnnotationsApp from "!!raw-loader!../../../../code_snippets/api-guide/annotate/js/list_all_annotations_app.html";
+import JSListAnnotationsInputAnnotationIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/js/list_annotations_input_annotation_ids.html";
+import JSListAnnotationsModelVersionIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/js/list_annotations_model_version_ids.html";
+import JSListAnnotationsUserIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/js/list_annotations_user_ids.html";
+import JSlistUserCreatedAnnotationsApp from "!!raw-loader!../../../../code_snippets/api-guide/annotate/js/list_user_created_annotations_app.html";
+import JSListUserCreatedAnnotationsInputIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/js/list_user_created_annotations_input_ids.html";
+import JSUpdateAnnotationConcepts from "!!raw-loader!../../../../code_snippets/api-guide/annotate/js/update_annotation_concepts.html";
+import JSUpdateAnnotationConceptsRegion from "!!raw-loader!../../../../code_snippets/api-guide/annotate/js/update_annotation_concepts_region.html";
+import JSUpdateAnnotationRegionCoordinates from "!!raw-loader!../../../../code_snippets/api-guide/annotate/js/update_annotation_region_coordinates.html";
+import JSUpdateAnnotationStatus from "!!raw-loader!../../../../code_snippets/api-guide/annotate/js/update_annotation_status.html";
 
-import NodeAnnotateExistingRegionsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/annotate_existing_regions_image.js";
-import NodeAnnotateImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/annotate_images_concepts.js";
-import NodeAnnotateImagesMultipleConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/annotate_images_multiple_concepts.js";
-import NodeAnnotateImagesUserIdStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/annotate_images_user_id_status.js";
-import NodeAnnotateNewBoundingBoxesImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/annotate_new_bounding_boxes_image.js";
-import NodeAnnotatePolygonsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/annotate_polygons_image.js";
-import NodebulkDeleteAnnotationsInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/bulk_delete_annotations_input_annotation_ids.js";
-import NodeBulkDeleteAnnotationsInputIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/bulk_delete_annotations_input_ids.js";
-import NodeDeleteAnnotationInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/delete_annotation_input_annotation_ids.js";
-import NodeListAllAnnotationsApp from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/list_all_annotations_app.js";
-import NodeListAnnotationsInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/list_annotations_input_annotation_ids.js";
-import NodeListAnnotationsModelVersionIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/list_annotations_model_version_ids.js";
-import NodeListAnnotationsUserIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/list_annotations_user_ids.js";
-import NodelistUserCreatedAnnotationsApp from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/list_user_created_annotations_app.js";
-import NodeListUserCreatedAnnotationsInputIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/list_user_created_annotations_input_ids.js";
-import NodeUpdateAnnotationConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/update_annotation_concepts.js";
-import NodeUpdateAnnotationConceptsRegion from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/update_annotation_concepts_region.js";
-import NodeUpdateAnnotationRegionCoordinates from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/update_annotation_region_coordinates.js";
-import NodeUpdateAnnotationStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/update_annotation_status.js";
+import NodeAnnotateExistingRegionsImage from "!!raw-loader!../../../../code_snippets/api-guide/annotate/node/annotate_existing_regions_image.js";
+import NodeAnnotateImagesConcepts from "!!raw-loader!../../../../code_snippets/api-guide/annotate/node/annotate_images_concepts.js";
+import NodeAnnotateImagesMultipleConcepts from "!!raw-loader!../../../../code_snippets/api-guide/annotate/node/annotate_images_multiple_concepts.js";
+import NodeAnnotateImagesUserIdStatus from "!!raw-loader!../../../../code_snippets/api-guide/annotate/node/annotate_images_user_id_status.js";
+import NodeAnnotateNewBoundingBoxesImage from "!!raw-loader!../../../../code_snippets/api-guide/annotate/node/annotate_new_bounding_boxes_image.js";
+import NodeAnnotatePolygonsImage from "!!raw-loader!../../../../code_snippets/api-guide/annotate/node/annotate_polygons_image.js";
+import NodebulkDeleteAnnotationsInputAnnotationIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/node/bulk_delete_annotations_input_annotation_ids.js";
+import NodeBulkDeleteAnnotationsInputIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/node/bulk_delete_annotations_input_ids.js";
+import NodeDeleteAnnotationInputAnnotationIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/node/delete_annotation_input_annotation_ids.js";
+import NodeListAllAnnotationsApp from "!!raw-loader!../../../../code_snippets/api-guide/annotate/node/list_all_annotations_app.js";
+import NodeListAnnotationsInputAnnotationIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/node/list_annotations_input_annotation_ids.js";
+import NodeListAnnotationsModelVersionIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/node/list_annotations_model_version_ids.js";
+import NodeListAnnotationsUserIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/node/list_annotations_user_ids.js";
+import NodelistUserCreatedAnnotationsApp from "!!raw-loader!../../../../code_snippets/api-guide/annotate/node/list_user_created_annotations_app.js";
+import NodeListUserCreatedAnnotationsInputIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/node/list_user_created_annotations_input_ids.js";
+import NodeUpdateAnnotationConcepts from "!!raw-loader!../../../../code_snippets/api-guide/annotate/node/update_annotation_concepts.js";
+import NodeUpdateAnnotationConceptsRegion from "!!raw-loader!../../../../code_snippets/api-guide/annotate/node/update_annotation_concepts_region.js";
+import NodeUpdateAnnotationRegionCoordinates from "!!raw-loader!../../../../code_snippets/api-guide/annotate/node/update_annotation_region_coordinates.js";
+import NodeUpdateAnnotationStatus from "!!raw-loader!../../../../code_snippets/api-guide/annotate/node/update_annotation_status.js";
 
-import JavaAnnotateExistingRegionsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/annotate_existing_regions_image.java";
-import JavaAnnotateImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/annotate_images_concepts.java";
-import JavaAnnotateImagesUserIdStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/annotate_images_user_id_status.java";
-import JavaAnnotateNewBoundingBoxesImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/annotate_new_bounding_boxes_image.java";
-import JavaAnnotatePolygonsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/annotate_polygons_image.java";
-import JavabulkDeleteAnnotationsInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/bulk_delete_annotations_input_annotation_ids.java";
-import JavaBulkDeleteAnnotationsInputIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/bulk_delete_annotations_input_ids.java";
-import JavaDeleteAnnotationInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/delete_annotation_input_annotation_ids.java";
-import JavaListAllAnnotationsApp from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/list_all_annotations_app.java";
-import JavaListAnnotationsInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/list_annotations_input_annotation_ids.java";
-import JavaListAnnotationsModelVersionIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/list_annotations_model_version_ids.java";
-import JavaListAnnotationsUserIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/list_annotations_user_ids.java";
-import JavalistUserCreatedAnnotationsApp from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/list_user_created_annotations_app.java";
-import JavaListUserCreatedAnnotationsInputIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/list_user_created_annotations_input_ids.java";
-import JavaUpdateAnnotationConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/update_annotation_concepts.java";
-import JavaUpdateAnnotationConceptsRegion from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/update_annotation_concepts_region.java";
-import JavaUpdateAnnotationRegionCoordinates from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/update_annotation_region_coordinates.java";
-import JavaUpdateAnnotationStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/update_annotation_status.java";
+import JavaAnnotateExistingRegionsImage from "!!raw-loader!../../../../code_snippets/api-guide/annotate/java/annotate_existing_regions_image.java";
+import JavaAnnotateImagesConcepts from "!!raw-loader!../../../../code_snippets/api-guide/annotate/java/annotate_images_concepts.java";
+import JavaAnnotateImagesUserIdStatus from "!!raw-loader!../../../../code_snippets/api-guide/annotate/java/annotate_images_user_id_status.java";
+import JavaAnnotateNewBoundingBoxesImage from "!!raw-loader!../../../../code_snippets/api-guide/annotate/java/annotate_new_bounding_boxes_image.java";
+import JavaAnnotatePolygonsImage from "!!raw-loader!../../../../code_snippets/api-guide/annotate/java/annotate_polygons_image.java";
+import JavabulkDeleteAnnotationsInputAnnotationIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/java/bulk_delete_annotations_input_annotation_ids.java";
+import JavaBulkDeleteAnnotationsInputIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/java/bulk_delete_annotations_input_ids.java";
+import JavaDeleteAnnotationInputAnnotationIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/java/delete_annotation_input_annotation_ids.java";
+import JavaListAllAnnotationsApp from "!!raw-loader!../../../../code_snippets/api-guide/annotate/java/list_all_annotations_app.java";
+import JavaListAnnotationsInputAnnotationIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/java/list_annotations_input_annotation_ids.java";
+import JavaListAnnotationsModelVersionIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/java/list_annotations_model_version_ids.java";
+import JavaListAnnotationsUserIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/java/list_annotations_user_ids.java";
+import JavalistUserCreatedAnnotationsApp from "!!raw-loader!../../../../code_snippets/api-guide/annotate/java/list_user_created_annotations_app.java";
+import JavaListUserCreatedAnnotationsInputIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/java/list_user_created_annotations_input_ids.java";
+import JavaUpdateAnnotationConcepts from "!!raw-loader!../../../../code_snippets/api-guide/annotate/java/update_annotation_concepts.java";
+import JavaUpdateAnnotationConceptsRegion from "!!raw-loader!../../../../code_snippets/api-guide/annotate/java/update_annotation_concepts_region.java";
+import JavaUpdateAnnotationRegionCoordinates from "!!raw-loader!../../../../code_snippets/api-guide/annotate/java/update_annotation_region_coordinates.java";
+import JavaUpdateAnnotationStatus from "!!raw-loader!../../../../code_snippets/api-guide/annotate/java/update_annotation_status.java";
 
-import PHPAnnotateExistingRegionsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/annotate_existing_regions_image.php";
-import PHPAnnotateImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/annotate_images_concepts.php";
-import PHPAnnotateImagesUserIdStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/annotate_images_user_id_status.php";
-import PHPAnnotateNewBoundingBoxesImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/annotate_new_bounding_boxes_image.php";
-import PHPAnnotatePolygonsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/annotate_polygons_image.php";
-import PHPbulkDeleteAnnotationsInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/bulk_delete_annotations_input_annotation_ids.php";
-import PHPBulkDeleteAnnotationsInputIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/bulk_delete_annotations_input_ids.php";
-import PHPDeleteAnnotationInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/delete_annotation_input_annotation_ids.php";
-import PHPListAllAnnotationsApp from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/list_all_annotations_app.php";
-import PHPListAnnotationsInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/list_annotations_input_annotation_ids.php";
-import PHPListAnnotationsModelVersionIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/list_annotations_model_version_ids.php";
-import PHPListAnnotationsUserIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/list_annotations_user_ids.php";
-import PHPlistUserCreatedAnnotationsApp from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/list_user_created_annotations_app.php";
-import PHPListUserCreatedAnnotationsInputIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/list_user_created_annotations_input_ids.php";
-import PHPUpdateAnnotationConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/update_annotation_concepts.php";
-import PHPUpdateAnnotationConceptsRegion from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/update_annotation_concepts_region.php";
-import PHPUpdateAnnotationRegionCoordinates from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/update_annotation_region_coordinates.php";
-import PHPUpdateAnnotationStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/update_annotation_status.php";
+import PHPAnnotateExistingRegionsImage from "!!raw-loader!../../../../code_snippets/api-guide/annotate/php/annotate_existing_regions_image.php";
+import PHPAnnotateImagesConcepts from "!!raw-loader!../../../../code_snippets/api-guide/annotate/php/annotate_images_concepts.php";
+import PHPAnnotateImagesUserIdStatus from "!!raw-loader!../../../../code_snippets/api-guide/annotate/php/annotate_images_user_id_status.php";
+import PHPAnnotateNewBoundingBoxesImage from "!!raw-loader!../../../../code_snippets/api-guide/annotate/php/annotate_new_bounding_boxes_image.php";
+import PHPAnnotatePolygonsImage from "!!raw-loader!../../../../code_snippets/api-guide/annotate/php/annotate_polygons_image.php";
+import PHPbulkDeleteAnnotationsInputAnnotationIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/php/bulk_delete_annotations_input_annotation_ids.php";
+import PHPBulkDeleteAnnotationsInputIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/php/bulk_delete_annotations_input_ids.php";
+import PHPDeleteAnnotationInputAnnotationIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/php/delete_annotation_input_annotation_ids.php";
+import PHPListAllAnnotationsApp from "!!raw-loader!../../../../code_snippets/api-guide/annotate/php/list_all_annotations_app.php";
+import PHPListAnnotationsInputAnnotationIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/php/list_annotations_input_annotation_ids.php";
+import PHPListAnnotationsModelVersionIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/php/list_annotations_model_version_ids.php";
+import PHPListAnnotationsUserIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/php/list_annotations_user_ids.php";
+import PHPlistUserCreatedAnnotationsApp from "!!raw-loader!../../../../code_snippets/api-guide/annotate/php/list_user_created_annotations_app.php";
+import PHPListUserCreatedAnnotationsInputIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/php/list_user_created_annotations_input_ids.php";
+import PHPUpdateAnnotationConcepts from "!!raw-loader!../../../../code_snippets/api-guide/annotate/php/update_annotation_concepts.php";
+import PHPUpdateAnnotationConceptsRegion from "!!raw-loader!../../../../code_snippets/api-guide/annotate/php/update_annotation_concepts_region.php";
+import PHPUpdateAnnotationRegionCoordinates from "!!raw-loader!../../../../code_snippets/api-guide/annotate/php/update_annotation_region_coordinates.php";
+import PHPUpdateAnnotationStatus from "!!raw-loader!../../../../code_snippets/api-guide/annotate/php/update_annotation_status.php";
 
-import CurlAnnotateExistingRegionsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/annotate_existing_regions_image.sh";
-import CurlAnnotateImagesConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/annotate_images_concepts.sh";
-import CurlAnnotateImagesUserIdStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/annotate_images_user_id_status.sh";
-import CurlAnnotateNewBoundingBoxesImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/annotate_new_bounding_boxes_image.sh";
-import CurlAnnotatePolygonsImage from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/annotate_polygons_image.sh";
-import CurlbulkDeleteAnnotationsInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/bulk_delete_annotations_input_annotation_ids.sh";
-import CurlBulkDeleteAnnotationsInputIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/bulk_delete_annotations_input_ids.sh";
-import CurlDeleteAnnotationInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/delete_annotation_input_annotation_ids.sh";
-import CurlListAllAnnotationsApp from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/list_all_annotations_app.sh";
-import CurlListAnnotationsInputAnnotationIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/list_annotations_input_annotation_ids.sh";
-import CurlListAnnotationsModelVersionIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/list_annotations_model_version_ids.sh";
-import CurlListAnnotationsUserIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/list_annotations_user_ids.sh";
-import CurllistUserCreatedAnnotationsApp from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/list_user_created_annotations_app.sh";
-import CurlListUserCreatedAnnotationsInputIds from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/list_user_created_annotations_input_ids.sh";
-import CurlUpdateAnnotationConcepts from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/update_annotation_concepts.sh";
-import CurlUpdateAnnotationConceptsRegion from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/update_annotation_concepts_region.sh";
-import CurlUpdateAnnotationRegionCoordinates from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/update_annotation_region_coordinates.sh";
-import CurlUpdateAnnotationStatus from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/update_annotation_status.sh";
+import CurlAnnotateExistingRegionsImage from "!!raw-loader!../../../../code_snippets/api-guide/annotate/curl/annotate_existing_regions_image.sh";
+import CurlAnnotateImagesConcepts from "!!raw-loader!../../../../code_snippets/api-guide/annotate/curl/annotate_images_concepts.sh";
+import CurlAnnotateImagesUserIdStatus from "!!raw-loader!../../../../code_snippets/api-guide/annotate/curl/annotate_images_user_id_status.sh";
+import CurlAnnotateNewBoundingBoxesImage from "!!raw-loader!../../../../code_snippets/api-guide/annotate/curl/annotate_new_bounding_boxes_image.sh";
+import CurlAnnotatePolygonsImage from "!!raw-loader!../../../../code_snippets/api-guide/annotate/curl/annotate_polygons_image.sh";
+import CurlbulkDeleteAnnotationsInputAnnotationIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/curl/bulk_delete_annotations_input_annotation_ids.sh";
+import CurlBulkDeleteAnnotationsInputIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/curl/bulk_delete_annotations_input_ids.sh";
+import CurlDeleteAnnotationInputAnnotationIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/curl/delete_annotation_input_annotation_ids.sh";
+import CurlListAllAnnotationsApp from "!!raw-loader!../../../../code_snippets/api-guide/annotate/curl/list_all_annotations_app.sh";
+import CurlListAnnotationsInputAnnotationIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/curl/list_annotations_input_annotation_ids.sh";
+import CurlListAnnotationsModelVersionIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/curl/list_annotations_model_version_ids.sh";
+import CurlListAnnotationsUserIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/curl/list_annotations_user_ids.sh";
+import CurllistUserCreatedAnnotationsApp from "!!raw-loader!../../../../code_snippets/api-guide/annotate/curl/list_user_created_annotations_app.sh";
+import CurlListUserCreatedAnnotationsInputIds from "!!raw-loader!../../../../code_snippets/api-guide/annotate/curl/list_user_created_annotations_input_ids.sh";
+import CurlUpdateAnnotationConcepts from "!!raw-loader!../../../../code_snippets/api-guide/annotate/curl/update_annotation_concepts.sh";
+import CurlUpdateAnnotationConceptsRegion from "!!raw-loader!../../../../code_snippets/api-guide/annotate/curl/update_annotation_concepts_region.sh";
+import CurlUpdateAnnotationRegionCoordinates from "!!raw-loader!../../../../code_snippets/api-guide/annotate/curl/update_annotation_region_coordinates.sh";
+import CurlUpdateAnnotationStatus from "!!raw-loader!../../../../code_snippets/api-guide/annotate/curl/update_annotation_status.sh";
 
-import PythonAnnotateMask from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/annotate_mask.py";
-import JavascriptAnnotateMask from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/annotate_mask.html";
-import NodeAnnotateMask from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/annotate_mask.js";
-import JavaAnnotateMask from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/annotate_mask.java";
-import PHPAnnotateMask from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/annotate_mask.php";
-import CURLAnnotateMask from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/annotate_mask.sh";
+import PythonAnnotateMask from "!!raw-loader!../../../../code_snippets/api-guide/annotate/py/annotate_mask.py";
+import JavascriptAnnotateMask from "!!raw-loader!../../../../code_snippets/api-guide/annotate/js/annotate_mask.html";
+import NodeAnnotateMask from "!!raw-loader!../../../../code_snippets/api-guide/annotate/node/annotate_mask.js";
+import JavaAnnotateMask from "!!raw-loader!../../../../code_snippets/api-guide/annotate/java/annotate_mask.java";
+import PHPAnnotateMask from "!!raw-loader!../../../../code_snippets/api-guide/annotate/php/annotate_mask.php";
+import CURLAnnotateMask from "!!raw-loader!../../../../code_snippets/api-guide/annotate/curl/annotate_mask.sh";
 
+
+:::info
+
+Before using the [Python SDK](https://docs.clarifai.com/additional-resources/api-overview/python-sdk), [Node.js SDK](https://docs.clarifai.com/additional-resources/api-overview/nodejs-sdk), or any of our [gRPC clients](https://docs.clarifai.com/additional-resources/api-overview/grpc-clients), ensure they are properly installed on your machine. Refer to their respective installation guides for instructions on how to install and initialize them.
+
+:::
 
 ## Add Annotations
 
@@ -153,11 +159,6 @@ You can add from 1 up to 128 annotations in a single API call.
 
 Each annotation should contain at most one region. If it is a video, each annotation should contain 1 frame. If there are multiple regions in a frame you want to label, you can add multiple annotations for each region and each annotation will be contained within the same frame but in a different region.
 
-:::info
-
-The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
-
-:::
 
 ### Annotate Images With Concepts
 
@@ -165,7 +166,7 @@ Below is an example of how to annotate a concept present anywhere in an image.
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonAnnotateImagesConcepts}</CodeBlock>
 </TabItem>
 
@@ -173,15 +174,15 @@ Below is an example of how to annotate a concept present anywhere in an image.
     <CodeBlock className="language-javascript">{JSAnnotateImagesConcepts}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="NodeJ.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeAnnotateImagesConcepts}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaAnnotateImagesConcepts}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPAnnotateImagesConcepts}</CodeBlock>
 </TabItem>
 
@@ -197,7 +198,7 @@ Below is an example of how to annotate an image with multiple concepts in a sing
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonAnnotateImagesMultipleConcepts}</CodeBlock>
 </TabItem>
 
@@ -205,7 +206,7 @@ Below is an example of how to annotate an image with multiple concepts in a sing
     <CodeBlock className="language-javascript">{JSAnnotateImagesMultipleConcepts}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeAnnotateImagesMultipleConcepts}</CodeBlock>
 </TabItem>
 
@@ -224,7 +225,7 @@ These are the bounding box coordinates you need to provide:
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonAnnotateNewBoundingBoxesImage}</CodeBlock>
 </TabItem>
 
@@ -232,15 +233,15 @@ These are the bounding box coordinates you need to provide:
     <CodeBlock className="language-javascript">{JSAnnotateNewBoundingBoxesImage}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeAnnotateNewBoundingBoxesImage}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaAnnotateNewBoundingBoxesImage}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPAnnotateNewBoundingBoxesImage}</CodeBlock>
 </TabItem>
 
@@ -264,7 +265,7 @@ being the right col;
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonAnnotatePolygonsImage}</CodeBlock>
 </TabItem>
 
@@ -272,15 +273,15 @@ being the right col;
     <CodeBlock className="language-javascript">{JSAnnotatePolygonsImage}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeAnnotatePolygonsImage}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaAnnotatePolygonsImage}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPAnnotatePolygonsImage}</CodeBlock>
 </TabItem>
 
@@ -300,7 +301,7 @@ Below is an example of how to annotate existing regions in an image.
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonAnnotateExistingRegionsImage}</CodeBlock>
 </TabItem>
 
@@ -308,15 +309,15 @@ Below is an example of how to annotate existing regions in an image.
     <CodeBlock className="language-javascript">{JSAnnotateExistingRegionsImage}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeAnnotateExistingRegionsImage}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaAnnotateExistingRegionsImage}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPAnnotateExistingRegionsImage}</CodeBlock>
 </TabItem>
 
@@ -333,7 +334,7 @@ Below is an example of how to add a mask to an Image using a single API call. In
 Click [here](https://docs.clarifai.com/portal-guide/annotate/label-types/#how-to-choose-a-label-type) to learn more about image mask annotations.
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonAnnotateMask}</CodeBlock>
 </TabItem>
 
@@ -341,15 +342,15 @@ Click [here](https://docs.clarifai.com/portal-guide/annotate/label-types/#how-to
     <CodeBlock className="language-javascript">{JavascriptAnnotateMask}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeAnnotateMask}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaAnnotateMask}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPAnnotateMask}</CodeBlock>
 </TabItem>
 
@@ -375,7 +376,7 @@ Below is an example of how to annotate images with different `user_id` and `stat
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonAnnotateImagesUserIdStatus}</CodeBlock>
 </TabItem>
 
@@ -383,15 +384,15 @@ Below is an example of how to annotate images with different `user_id` and `stat
     <CodeBlock className="language-javascript">{JSAnnotateImagesUserIdStatus}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeAnnotateImagesUserIdStatus}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaAnnotateImagesUserIdStatus}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPAnnotateImagesUserIdStatus}</CodeBlock>
 </TabItem>
 
@@ -419,7 +420,7 @@ This will not show annotations by models in your workflow. To include model crea
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonlistUserCreatedAnnotationsApp}</CodeBlock>
 </TabItem>
 
@@ -427,15 +428,15 @@ This will not show annotations by models in your workflow. To include model crea
     <CodeBlock className="language-javascript">{JSlistUserCreatedAnnotationsApp}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodelistUserCreatedAnnotationsApp}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavalistUserCreatedAnnotationsApp}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPlistUserCreatedAnnotationsApp}</CodeBlock>
 </TabItem>
 
@@ -451,7 +452,7 @@ Below is an example of how to list all annotations, including those created by m
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonListAllAnnotationsApp}</CodeBlock>
 </TabItem>
 
@@ -459,15 +460,15 @@ Below is an example of how to list all annotations, including those created by m
     <CodeBlock className="language-javascript">{JSListAllAnnotationsApp}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeListAllAnnotationsApp}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaListAllAnnotationsApp}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPListAllAnnotationsApp}</CodeBlock>
 </TabItem>
 
@@ -489,7 +490,7 @@ This will not show annotations by models in your workflow. To include model crea
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonListUserCreatedAnnotationsInputIds}</CodeBlock>
 </TabItem>
 
@@ -497,15 +498,15 @@ This will not show annotations by models in your workflow. To include model crea
     <CodeBlock className="language-javascript">{JSListUserCreatedAnnotationsInputIds}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeListUserCreatedAnnotationsInputIds}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaListUserCreatedAnnotationsInputIds}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPListUserCreatedAnnotationsInputIds}</CodeBlock>
 </TabItem>
 
@@ -533,7 +534,7 @@ Below is an example of how to do that.
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonListAnnotationsInputAnnotationIds}</CodeBlock>
 </TabItem>
 
@@ -541,15 +542,15 @@ Below is an example of how to do that.
     <CodeBlock className="language-javascript">{JSListAnnotationsInputAnnotationIds}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeListAnnotationsInputAnnotationIds}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaListAnnotationsInputAnnotationIds}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPListAnnotationsInputAnnotationIds}</CodeBlock>
 </TabItem>
 
@@ -567,7 +568,7 @@ Below is an example of how to do that.
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonListAnnotationsUserIds}</CodeBlock>
 </TabItem>
 
@@ -575,15 +576,15 @@ Below is an example of how to do that.
     <CodeBlock className="language-javascript">{JSListAnnotationsUserIds}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeListAnnotationsUserIds}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaListAnnotationsUserIds}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPListAnnotationsUserIds}</CodeBlock>
 </TabItem>
 
@@ -603,7 +604,7 @@ Below is an example of how to list annotations by model version IDs.
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonListAnnotationsModelVersionIds}</CodeBlock>
 </TabItem>
 
@@ -611,15 +612,15 @@ Below is an example of how to list annotations by model version IDs.
     <CodeBlock className="language-javascript">{JSListAnnotationsModelVersionIds}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeListAnnotationsModelVersionIds}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaListAnnotationsModelVersionIds}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPListAnnotationsModelVersionIds}</CodeBlock>
 </TabItem>
 
@@ -645,7 +646,7 @@ Below is an example of how to update an annotation of an image with a new concep
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonUpdateAnnotationConcepts}</CodeBlock>
 </TabItem>
 
@@ -653,15 +654,15 @@ Below is an example of how to update an annotation of an image with a new concep
     <CodeBlock className="language-javascript">{JSUpdateAnnotationConcepts}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeUpdateAnnotationConcepts}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaUpdateAnnotationConcepts}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPUpdateAnnotationConcepts}</CodeBlock>
 </TabItem>
 
@@ -679,7 +680,7 @@ Below is an example of how to update annotation with concepts in a region.
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonUpdateAnnotationConceptsRegion}</CodeBlock>
 </TabItem>
 
@@ -687,15 +688,15 @@ Below is an example of how to update annotation with concepts in a region.
     <CodeBlock className="language-javascript">{JSUpdateAnnotationConceptsRegion}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeUpdateAnnotationConceptsRegion}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaUpdateAnnotationConceptsRegion}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPUpdateAnnotationConceptsRegion}</CodeBlock>
 </TabItem>
 
@@ -713,7 +714,7 @@ Below is an example of how to do that.
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonUpdateAnnotationRegionCoordinates}</CodeBlock>
 </TabItem>
 
@@ -721,15 +722,15 @@ Below is an example of how to do that.
     <CodeBlock className="language-javascript">{JSUpdateAnnotationRegionCoordinates}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeUpdateAnnotationRegionCoordinates}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaUpdateAnnotationRegionCoordinates}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPUpdateAnnotationRegionCoordinates}</CodeBlock>
 </TabItem>
 
@@ -745,7 +746,7 @@ Below is an example of how to update an annotation status.
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonUpdateAnnotationStatus}</CodeBlock>
 </TabItem>
 
@@ -753,15 +754,15 @@ Below is an example of how to update an annotation status.
     <CodeBlock className="language-javascript">{JSUpdateAnnotationStatus}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeUpdateAnnotationStatus}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaUpdateAnnotationStatus}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPUpdateAnnotationStatus}</CodeBlock>
 </TabItem>
 
@@ -780,7 +781,7 @@ Below is an example of how to delete a single annotation by input ID and annotat
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonDeleteAnnotationInputAnnotationIds}</CodeBlock>
 </TabItem>
 
@@ -788,15 +789,15 @@ Below is an example of how to delete a single annotation by input ID and annotat
     <CodeBlock className="language-javascript">{JSDeleteAnnotationInputAnnotationIds}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeDeleteAnnotationInputAnnotationIds}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaDeleteAnnotationInputAnnotationIds}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPDeleteAnnotationInputAnnotationIds}</CodeBlock>
 </TabItem>
 
@@ -814,7 +815,7 @@ Below is an example of how to do that.
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonbulkDeleteAnnotationsInputAnnotationIds}</CodeBlock>
 </TabItem>
 
@@ -822,15 +823,15 @@ Below is an example of how to do that.
     <CodeBlock className="language-javascript">{JSbulkDeleteAnnotationsInputAnnotationIds}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodebulkDeleteAnnotationsInputAnnotationIds}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavabulkDeleteAnnotationsInputAnnotationIds}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPbulkDeleteAnnotationsInputAnnotationIds}</CodeBlock>
 </TabItem>
 
@@ -848,7 +849,7 @@ Below is an example of how to do that.
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonBulkDeleteAnnotationsInputIds}</CodeBlock>
 </TabItem>
 
@@ -856,15 +857,15 @@ Below is an example of how to do that.
     <CodeBlock className="language-javascript">{JSBulkDeleteAnnotationsInputIds}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeBulkDeleteAnnotationsInputIds}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaBulkDeleteAnnotationsInputIds}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPBulkDeleteAnnotationsInputIds}</CodeBlock>
 </TabItem>
 
