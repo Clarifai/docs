@@ -17,11 +17,6 @@ Some inputs may also have overlapping features, especially in complex datasets. 
 
 By annotating your data with both positive and negative labels, you provide your model with the comprehensive information it needs to learn effectively, which results in better performance and more reliable outcomes.
 
-:::info
-
-The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
-
-:::
 
 :::warning value
 
@@ -35,19 +30,25 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
-import PythonPositive from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/positive_negative_1.py";
-import JSPositive from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/positive_negative_1.html";
-import NodePositive from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/positive_negative_1.js";
-import JavaPositive from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/positive_negative_1.java";
-import PHPPositive from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/positive_negative_1.php";
-import CurlPositive from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/positive_negative_1.sh";
+import PythonPositive from "!!raw-loader!../../../../code_snippets/api-guide/annotate/py/positive_negative_1.py";
+import JSPositive from "!!raw-loader!../../../../code_snippets/api-guide/annotate/js/positive_negative_1.html";
+import NodePositive from "!!raw-loader!../../../../code_snippets/api-guide/annotate/node/positive_negative_1.js";
+import JavaPositive from "!!raw-loader!../../../../code_snippets/api-guide/annotate/java/positive_negative_1.java";
+import PHPPositive from "!!raw-loader!../../../../code_snippets/api-guide/annotate/php/positive_negative_1.php";
+import CurlPositive from "!!raw-loader!../../../../code_snippets/api-guide/annotate/curl/positive_negative_1.sh";
 
-import PythonNegative from "!!raw-loader!../../../code_snippets/api-guide/annotate/py/positive_negative_2.py";
-import JSNegative from "!!raw-loader!../../../code_snippets/api-guide/annotate/js/positive_negative_2.html";
-import NodeNegative from "!!raw-loader!../../../code_snippets/api-guide/annotate/node/positive_negative_2.js";
-import JavaNegative from "!!raw-loader!../../../code_snippets/api-guide/annotate/java/positive_negative_2.java";
-import PHPNegative from "!!raw-loader!../../../code_snippets/api-guide/annotate/php/positive_negative_2.php";
-import CurlNegative from "!!raw-loader!../../../code_snippets/api-guide/annotate/curl/positive_negative_2.sh";
+import PythonNegative from "!!raw-loader!../../../../code_snippets/api-guide/annotate/py/positive_negative_2.py";
+import JSNegative from "!!raw-loader!../../../../code_snippets/api-guide/annotate/js/positive_negative_2.html";
+import NodeNegative from "!!raw-loader!../../../../code_snippets/api-guide/annotate/node/positive_negative_2.js";
+import JavaNegative from "!!raw-loader!../../../../code_snippets/api-guide/annotate/java/positive_negative_2.java";
+import PHPNegative from "!!raw-loader!../../../../code_snippets/api-guide/annotate/php/positive_negative_2.php";
+import CurlNegative from "!!raw-loader!../../../../code_snippets/api-guide/annotate/curl/positive_negative_2.sh";
+
+:::info
+
+Before using the [Python SDK](https://docs.clarifai.com/additional-resources/api-overview/python-sdk), [Node.js SDK](https://docs.clarifai.com/additional-resources/api-overview/nodejs-sdk), or any of our [gRPC clients](https://docs.clarifai.com/additional-resources/api-overview/grpc-clients), ensure they are properly installed on your machine. Refer to their respective installation guides for instructions on how to install and initialize them.
+
+:::
 
 ## Positive Annotation
 
@@ -55,7 +56,7 @@ If an input is tagged with a positive annotation, it is considered a positive la
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonPositive}</CodeBlock>
 </TabItem>
 
@@ -63,15 +64,15 @@ If an input is tagged with a positive annotation, it is considered a positive la
     <CodeBlock className="language-javascript">{JSPositive}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodePositive}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaPositive}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPPositive}</CodeBlock>
 </TabItem>
 
@@ -87,7 +88,7 @@ If an input is tagged with a negative annotation, it is treated as a negative la
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonNegative}</CodeBlock>
 </TabItem>
 
@@ -95,15 +96,15 @@ If an input is tagged with a negative annotation, it is treated as a negative la
     <CodeBlock className="language-javascript">{JSNegative}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeNegative}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaNegative}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPNegative}</CodeBlock>
 </TabItem>
 

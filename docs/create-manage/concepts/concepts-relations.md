@@ -46,6 +46,13 @@ Each relation should have a specified predicate, which can be _hyponym_, _hypern
 
 Below is an example of how to create a relation between two concepts. 
 
+:::tip
+
+Learn how to create concept relations via the UI [here](https://docs.clarifai.com/create-manage/labeling/ui/create#update-annotations). 
+
+:::
+
+
 :::info
 
 Before using the [Python SDK](https://docs.clarifai.com/additional-resources/api-overview/python-sdk), [Node.js SDK](https://docs.clarifai.com/additional-resources/api-overview/nodejs-sdk), or any of our [gRPC clients](https://docs.clarifai.com/additional-resources/api-overview/grpc-clients), ensure they are properly installed on your machine. Refer to their respective installation guides for instructions on how to install and initialize them.

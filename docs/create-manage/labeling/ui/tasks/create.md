@@ -9,7 +9,6 @@ sidebar_position: 1
 
 <hr />
 
-Tasks enable you to label the inputs in your dataset easily, fast, and conveniently. You can create new labeling tasks, distribute these tasks to your workforce, and review their work in one convenient tool.  
 
 Let's demonstrate how you can label a batch of data manually or with AI assistance. 
 

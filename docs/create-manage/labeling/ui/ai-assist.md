@@ -1,11 +1,11 @@
 ---
-description: Automatically generate annotations for your inputs 
-sidebar_position: 2
+description: Automatically generate annotations on Input-Viewer page
+sidebar_position: 3
 ---
 
-# AI-Assisted Labeling 
+# AI-Assisted Labeling
 
-**Automatically generate annotations for your inputs**
+**Automatically generate annotations on Input-Viewer page**
 <hr />
 
 
