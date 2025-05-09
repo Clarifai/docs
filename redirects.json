@@ -331,6 +331,146 @@
   {
     "to": "/create-manage/labeling/api/tasks",
     "from": ["/api-guide/annotate/tasks", "/api-guide/annotate/task-annotations"]
+  },
+  {
+    "to": "/create-manage/models/transfer-learning/visual-classifiers",
+    "from": ["/portal-guide/model/pcustom-model-walkthrough"]
+  },
+  {
+    "to": "/create-manage/models/transfer-learning/text-classifiers",
+    "from": ["/portal-guide/model/text-classifiers-transfer-learn"]
+  },
+  {
+    "to": "/create-manage/models/deep-fine-tuning/visual-classifier",
+    "from": ["/portal-guide/model/model-types/visual-classifier"]
+  },
+  {
+    "to": "/create-manage/models/deep-fine-tuning/visual-detector",
+    "from": ["/portal-guide/model/model-types/visual-detector"]
+  },
+  {
+    "to": "/create-manage/models/deep-fine-tuning/visual-segmenter",
+    "from": ["/portal-guide/model/model-types/visual-segmenter"]
+  },
+  {
+    "to": "/create-manage/models/deep-fine-tuning/visual-anomaly",
+    "from": ["/portal-guide/model/model-types/visual-anomaly"]
+  },
+  {
+    "to": "/create-manage/models/deep-fine-tuning/visual-embedder",
+    "from": ["/portal-guide/model/model-types/visual-embedder"]
+  },
+  {
+    "to": "/create-manage/models/deep-fine-tuning/clusterer",
+    "from": ["/portal-guide/model/model-types/clusterer"]
+  },
+  {
+    "to": "/create-manage/models/deep-fine-tuning/text-classifier",
+    "from": ["/portal-guide/model/model-types/text-classifier"]
+  },
+  {
+    "to": "/create-manage/models/deep-fine-tuning/text-to-text",
+    "from": ["/portal-guide/model/model-types/text-to-text"]
+  },  
+  {
+    "to": "/create-manage/models/templates/visual-classification",
+    "from": ["/portal-guide/model/deep-training/visual-classification-templates"]
+  },
+  {
+    "to": "/create-manage/models/templates/visual-detection",
+    "from": ["/portal-guide/model/deep-training/visual-detection-templates"]
+  },
+  {
+    "to": "/create-manage/models/templates/visual-embedding",
+    "from": ["/portal-guide/model/deep-training/visual-embedding-templates"]
+  },  
+  {
+    "to": "/create-manage/models/templates/visual-segmentation",
+    "from": ["/portal-guide/model/deep-training/visual-segmenter-templates"]
+  },
+  {
+    "to": "/create-manage/models/templates/text",
+    "from": ["/portal-guide/model/deep-training/text-templates"]
+  },
+  {
+    "to": "/create-manage/models/templates/custom",
+    "from": ["/portal-guide/model/deep-training/custom-templates"]
+  },
+  {
+    "to": "/create-manage/models/hf-import",
+    "from": ["/portal-guide/model/hf-model-importer"]
+  },
+  {
+    "to": "/create-manage/models/local-upload",
+    "from": ["/portal-guide/model/local-model-upload"]
+  },
+  {
+    "to": "/create-manage/models/model-versions/",
+    "from": ["/portal-guide/model-versions/"]
+  },
+  {
+    "to": "/create-manage/models/",
+    "from": ["/portal-guide/model/model-types/", "/portal-guide/model/training-faqs", "/portal-guide/model/", "/portal-guide/model/clarifai-models", "/portal-guide/model/training-data", "/portal-guide/model/training-basics"]
+  },  
+  {
+    "to": "/create-manage/models/transfer-learning/",
+    "from": ["/portal-guide/model/model-types/transfer-learning"]
+  },
+  {
+    "to": "/create-manage/models/deep-fine-tuning/",
+    "from": ["/portal-guide/model/deep-training/"]
+  },
+  {
+    "to": "",
+    "from": [""]
+  },
+  {
+    "to": "",
+    "from": [""]
+  },
+  {
+    "to": "",
+    "from": [""]
+  },
+  {
+    "to": "",
+    "from": [""]
+  },
+  {
+    "to": "",
+    "from": [""]
+  },
+  {
+    "to": "",
+    "from": [""]
+  },
+  {
+    "to": "",
+    "from": [""]
+  },
+  {
+    "to": "",
+    "from": [""]
+  },
+  {
+    "to": "",
+    "from": [""]
+  },
+  {
+    "to": "",
+    "from": [""]
+  },
+  {
+    "to": "",
+    "from": [""]
+  },
+  {
+    "to": "",
+    "from": [""]
+  },
+  {
+    "to": "",
+    "from": [""]
   }
 
 

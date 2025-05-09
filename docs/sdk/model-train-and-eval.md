@@ -6,7 +6,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
-import CodeIMT from "!!raw-loader!../../code_snippets/python-sdk/model-train-eval/model_train.py";
+
 import CodeEval1 from "!!raw-loader!../../code_snippets/python-sdk/model-train-eval/model_eval1.py";
 import CodeEval2 from "!!raw-loader!../../code_snippets/python-sdk/model-train-eval/model_eval2.py";
 
@@ -18,24 +18,7 @@ import CodeOutputEval2 from "!!raw-loader!../../code_snippets/python-sdk/model-t
 **Get a brief overview about model training and evaluation using Clarifai Python SDK**
 <hr />
 
-## Model Training 
 
-Model training is the process of feeding data to an algorithm and iteratively adjusting its internal parameters to enable it to make accurate predictions on unseen data. After defining the model architecture, you can initiate the training process using the Clarifai Python SDK. During training, the SDK provides valuable feedback on the model's progress, allowing you to monitor metrics such as accuracy and loss. The structure followed during model training is app creation -> data upload -> model creation -> setting training configuration -> model training.
-
-Click [here](https://docs.clarifai.com/python-sdk/Model-Training-Tutorial/) to learn more about model training.
-
-:::tip
-Clone [this](https://github.com/Clarifai/examples.git ) repository to get the dataset used for training.
-:::
-<Tabs>
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python">{CodeIMT}</CodeBlock>
-</TabItem>
-</Tabs>
-<details>
-  <summary>Output</summary>
-    <img src="/img/python-sdk/tc_imt.png" />
-</details>
 
 ## Model Evaluation
 

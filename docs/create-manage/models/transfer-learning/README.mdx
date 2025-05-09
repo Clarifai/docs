@@ -1,17 +1,15 @@
 ---
 description: Learn about our transfer learning model type
-sidebar_position: 1
-keywords: [transfer learning models, AI transfer learning, machine learning transfer learning, transfer learning in AI, transfer learning techniques, deep learning transfer learning, transfer learning examples, pre-trained models transfer learning, benefits of transfer learning, transfer learning for image recognition, transfer learning for NLP]
 ---
 
-# Transfer Learning 
+# Transfer Learning
 
 **Learn about our transfer learning model type**
 <hr />
 
 **Input**: Images, videos, and texts
 
-**Output**: [Concepts]( https://docs.clarifai.com/portal-guide/concepts)
+**Output**: [Concepts](https://docs.clarifai.com/create-manage/concepts/)
 
 A transfer-learning model, which we previously called an "embedding-classifier", is a type of machine learning model that uses an embedding layer to represent images, videos, or texts as low-dimensional vectors, and then uses a classifier layer to predict the class of the input.
 
@@ -29,8 +27,13 @@ You may choose the transfer learning model type if you want to:
 
 - Take advantage of a model that has been trained on a similar task, such as object recognition in images. Then, fine-tune this pre-trained model to recognize the specific classes that align with your objectives.
 
-- Get results in seconds, not minutes or hours—allowing you to achieve significant progress with minimal training data.
+- Get results in seconds, not minutes or hours — allowing you to achieve significant progress with minimal training data.
 
-## Example use case
 
-A security company wants to use face verification as part of its two-factor identification system. They would train a model to recognize the identities of permitted individuals. They would accomplish that by simply uploading images of the people they want to identify, adding individual names as concepts, and then training a model using the transfer learning classifier model type.
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
+
+

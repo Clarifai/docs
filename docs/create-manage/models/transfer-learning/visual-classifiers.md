@@ -3,18 +3,16 @@ description: Learn how to use transfer learning to create custom visual classifi
 sidebar_position: 2
 ---
 
-# Visual Classifiers By Transfer Learning
+# Visual Classifiers 
 
 **Learn how to use transfer learning to create custom visual classifier models**
 <hr />
 
-Transfer learning is a model training technique that utilizes the feature representations of a pre-trained model, which has been trained on vast amounts of data. This allows you to build new models more efficiently by reducing the need for extensive training from scratch and enabling faster learning with minimal data.
+A visual classifier model is a type of machine learning model that is trained to recognize and categorize images or visual inputs into predefined classes or labels. It "classifies" visual data based on patterns it has learned from training examples.
 
-You can learn more about transfer learning [here](https://docs.clarifai.com/portal-guide/model/model-types/transfer-learning).
+Let's demonstrate how you can create a custom visual classifier model using the [transfer learning](README.mdx) technique. 
 
-Let's demonstrate how you can create a custom visual classifier model using the transfer learning technique. 
-
-:::info Objective
+:::warning Objective
 
 We intend to create a model that differentiates between pants and shorts. 
 
@@ -104,7 +102,7 @@ Next, you need to set up the model for training by providing the required detail
 ![Create model page](/img/community_2/custom_model_create_model_page.png)
 
 - **Dataset** — Select a dataset to use to train the model. For this example, let's select the dataset we previously created — alongside its version. 
-- **Base Embed Model** — You can select the base model to be used for embeddings. For this example, let's go with the default option.
+- **Base Embed Model** — You can select the base model version to use for embeddings, which has to be one of the embed models in the app workflow. This allows you to specify the specific model in case the default workflow of your app has multiple embedding models present in it. For this example, let's go with the default option.
 - **Concepts** — Select the concepts that you want the model to predict. For this example, let's choose the `pants` and `shorts` concepts. 
 - **Concepts Mutually Exclusive** — Let's turn the button on to indicate no overlap between any of the model concepts. 
 - **Enrich Dataset** — If enabled and set to `Automatic`, this option enhances your model by incorporating supplemental data from pre-built datasets of negative embeddings, helping to improve accuracy. Alternatively, setting it to `Disabled` will exclude the use of negative embeddings, regardless of their availability.

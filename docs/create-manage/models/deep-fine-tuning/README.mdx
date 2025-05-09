@@ -1,13 +1,12 @@
 ---
-description: Train the entire graph of your custom model
-pagination_prev: null
-keywords: [deep training, deep learning training, AI model training, machine learning model training, deep learning models, custom deep training, pre-trained deep learning models, AI training models, model training techniques, deep learning AI ]
+description: Learn how to fine-tune pre-trained models
 ---
 
 # Deep Fine-Tuning 
 
 **Learn how to fine-tune pre-trained models**
 <hr />
+
 
 Fine-tuning is a deep learning technique that refers to taking a pre-trained model and further training it on a new dataset or task. The term "fine-tuning" implies making small adjustments or refinements to the already learned representations in the pre-trained model rather than training from scratch. 
 
@@ -29,17 +28,6 @@ You might consider deep fine-tuning if:
 * You have the expertise and time to fine-tune models. So, you can modify the model's behavior to eliminate unwanted traits and instill desired ones.
 * You want to reduce hallucinations, especially when presenting the model with questions or prompts it hasn't encountered during its initial training.
 
-## Template Types
-
-You can take advantage of a variety of pre-configured templates when building your deep fine-tuned models. Templates give you the control to choose the specific architecture used by your neural network, and also define a set of hyperparameters that you can use to fine-tune the way that your model learns.
-
-Here are the template types we offer:
-
-import DocCardList from '@theme/DocCardList';
-import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
-
-<DocCardList items={useCurrentSidebarCategory().items}/>
-
 ## How to Fine-Tune a Model
 
 Let's demonstrate how you can create and fine-tune a deep learning model. 
@@ -50,7 +38,7 @@ Before diving into fine-tuning, it's crucial to decide on the appropriate deep l
 
 [Click here](https://docs.clarifai.com/portal-guide/model/model-types/) to learn more about the model types available on the Clarifai platform. 
 
-:::note
+:::info
 
 To illustrate how fine-tuning works, let's opt for a visual classifier model. This type of model excels at categorizing images into predefined classes or concepts. 
 Our goal here is to create a fine-tuned visual classifier that can distinguish between images of cats and dogs.
@@ -150,9 +138,34 @@ After creating the model, set it up for training.
 - **Invalid Data Tolerance Percent** — Optionally, you can set a tolerance threshold (0 to 100) for the percentage of invalid inputs during training, and if this threshold is exceeded, training is stopped with an error.
 - **Template** — Select a pre-configured model template you want to use to fine-tune your model. When you choose a deep training template, you will see the hyperparameters that are available within that template populated with default values. You can adjust these values as desired. For this example, we’ll go with the recommended template: `MMClassification_ResNet_50_RSB_A1`. [Click here](https://docs.clarifai.com/portal-guide/model/deep-training/visual-classification-templates) to learn more about the visual classification templates. 
 
-:::note
+:::note Training Time Estimator
 
-Notice that the estimated duration for the training process is displayed for you. This [Training Time Estimator](https://docs.clarifai.com/portal-guide/model/training-basics#training-time-estimator) feature offers transparency in expected training costs.
+Before initiating the training of a deep fine-tuned model, you will get an estimate outlining the anticipated duration of the training process. This offers transparency in expected training costs. We currently charge $4 per hour.
+
+The estimate is displayed above the **Train Model** button (check the above screenshot), rounded down to the nearest hour with 15-minute increments. 
+
+The exact training time estimate depends on the following:
+
+- Model type;
+- Model configuration details;
+- Dataset statistics;
+- Hardware.
+
+Clarifai’s Training Time Estimator is carefully designed to balance trade-offs between simplicity, generalization, and accuracy. 
+
+Notably, some model configurations and dataset statistics affect training time much more than others. For example, the number of items in the dataset directly affects the number of training steps in most configs, while the learning rate has no impact. 
+
+In addition, some parameters affect the time linearly (e.g. number of items), while others may be quadratic (e.g. image size), and others approximately linear, quadratic, or subquadratic—depending on the model (e.g. number of tokens in each input). 
+
+The current version of the Training Time Estimator provides estimates only for each template’s default parameter configuration, and we plan to include other parameter configurations in the upcoming releases. 
+
+The exact calculation based on the current AWS A10 GPU is:
+
+```text
+training time = int(round(A * num_inputs * num_epochs + B)) 
+```
+
+_Where A and B are parameter coefficients estimated specific to the template of each model type._
 
 :::
 
@@ -197,3 +210,8 @@ Once you've created and trained your new model, you can put it to work. It will 
 
 That's it!
 
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
