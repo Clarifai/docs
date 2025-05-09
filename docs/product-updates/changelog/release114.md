@@ -4,12 +4,12 @@ description: Changelog for Clarifai Release 11.4
 sidebar_position: -67
 pagination_next: null
 pagination_prev: product-updates/changelog/release113
-draft: true
+draft: false
 ---
 
 # Release 11.4
 
-**Release Date:** May 6th, 2025
+**Release Date:** May 9th, 2025
 
 <hr/>
 
