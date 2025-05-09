@@ -1,7 +1,6 @@
 ---
 description: Learn about our text classifier model type
 sidebar_position: 8
-keywords: [text classifier, text classification models, natural language processing, NLP text classification, machine learning text classification, AI text classification, text analysis models, text categorization, deep learning text classification, custom text classifier, pre-trained text classifier, text recognition AI ]
 ---
 
 # Text Classifier 
@@ -27,7 +26,7 @@ You may choose a text classifier model type in cases where:
 - You need a text classification model to learn new features not recognized by the existing Clarifai models. In that case, you may need to "deep fine-tune" your custom model and integrate it directly within your [workflows](https://docs.clarifai.com/portal-guide/workflows/).
 - You have a custom-tailored dataset, accurate labels, and the expertise and time to fine-tune models.
 
-## Example use case
+## Example Use Case
 
 A company wants to monitor customer sentiment towards its products by analyzing online reviews. They receive a large number of product reviews on their website and social media platforms. To efficiently understand customer opinions, they can employ a text classifier model to automatically classify these reviews as positive, negative, or neutral. 
 
@@ -36,3 +35,25 @@ A company wants to monitor customer sentiment towards its products by analyzing 
 You can explore the step-by-step tutorial on fine-tuning the GPT-Neo LoRA template for text classification tasks [here](https://www.clarifai.com/blog/fine-tuning-gpt-neo-for-text-classification).
 
 :::
+
+## Train Text Classifier
+
+Let's demonstrate how to train a text classifier model using our API.
+
+:::info
+
+Before using the [Python SDK](https://docs.clarifai.com/additional-resources/api-overview/python-sdk), [Node.js SDK](https://docs.clarifai.com/additional-resources/api-overview/nodejs-sdk), or any of our [gRPC clients](https://docs.clarifai.com/additional-resources/api-overview/grpc-clients), ensure they are properly installed on your machine. Refer to their respective installation guides for instructions on how to install and initialize them.
+
+:::
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+
+import CodeIMT from "!!raw-loader!../../../../code_snippets/python-sdk/model-train-eval/model_train.py";
+
+<Tabs>
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{CodeIMT}</CodeBlock>
+</TabItem>
+</Tabs>

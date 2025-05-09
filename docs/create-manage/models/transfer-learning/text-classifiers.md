@@ -1,22 +1,18 @@
 ---
 description: Learn how to use transfer learning to create custom text classifier models
-sidebar_position: 2.1
+sidebar_position: 1
 ---
 
-# Text Classifiers By Transfer Learning
+# Text Classifiers 
 
 **Learn how to use transfer learning to create custom text classifier models**
 <hr />
 
-Text classification is a natural language processing (NLP) task that involves categorizing or assigning predefined labels or categories to a given text document. It is a fundamental problem in machine learning and NLP, where the goal is to automatically analyze and classify textual data based on its content.
+A text classifier is a machine learning model designed to categorize text data into predefined classes or labels.
 
-With transfer learning, you can train a text model to understand the meaning of text passages. Transfer learning allows you to use pre-trained models, which have already learned linguistic patterns and structures from vast amounts of data. This reduces the need for extensive labeled datasets and speeds up training.
+Let's demonstrate how you can create a custom text classifier model using the [transfer learning](README.mdx) technique.
 
-You can learn more about transfer learning [here](https://docs.clarifai.com/portal-guide/model/model-types/transfer-learning/).
-
-Let's demonstrate how you can create a custom text classifier model using the transfer learning technique.
-
-:::info objective
+:::warning objective
 
 We intend to create a model that identifies whether an email message is a spam or not a spam. 
 
@@ -126,7 +122,7 @@ Next, provide the details for training your text classification model.
 ![](/img/others/custom-transfer-text-model-1.png) 
 
 - **Dataset selection** — Choose the dataset you want to use for training. For this example, let's select the dataset we previously created, along with its specific version.
-- **Base embedding model** — You can pick a base model to generate embeddings. Let's use the default option.
+- **Base embedding model** — You can select the base model version to use for embeddings, which has to be one of the embed models in the app workflow. This allows you to specify the specific model in case the default workflow of your app has multiple embedding models present in it. For this example, let's use the default option.
 - **Define concepts** — Specify the concepts you want the model to classify. Here, let's use `spam` and `non-spam` as the two concepts.
 - **Set concepts as mutually exclusive** — Enable this option to indicate that there is no overlap between the defined concepts.
 - **Enrich dataset** — If set to `Automatic`, this feature will enhance the model by including additional data from pre-built datasets with negative embeddings, improving accuracy. If set to `Disabled`, it will exclude these embeddings. Let's use the default `Automatic` setting for this example.
