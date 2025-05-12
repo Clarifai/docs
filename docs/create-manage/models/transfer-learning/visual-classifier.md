@@ -3,7 +3,7 @@ description: Learn how to use transfer learning to create custom visual classifi
 sidebar_position: 2
 ---
 
-# Visual Classifiers 
+# Visual Classifier
 
 **Learn how to use transfer learning to create custom visual classifier models**
 <hr />

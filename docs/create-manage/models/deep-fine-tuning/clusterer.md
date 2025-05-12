@@ -32,9 +32,9 @@ You may choose a visual classifier model type in cases where:
 
 If you want to find all images of cats in your dataset, you can simply use the cluster model to find all images that are clustered together with the embedding of a cat image.
 
-## Train Cluster Model
+## Create and Train a Clusterer
 
-Let's demonstrate how to train a clustering model using our API.
+Let's demonstrate how to create and train a clustering model using our API.
 
 :::info
 
@@ -61,7 +61,7 @@ import CodeOutputS from "!!raw-loader!../../../../code_snippets/python-sdk/model
 import CodeOutputMP from "!!raw-loader!../../../../code_snippets/python-sdk/model_training/outputs/clusterer/mp.txt";
 
 
-### App Creation
+### Step 1: App Creation
 
 Let's start by creating an [app](https://docs.clarifai.com/create-manage/applications/create). 
 
@@ -71,7 +71,7 @@ Let's start by creating an [app](https://docs.clarifai.com/create-manage/applica
 </TabItem>
 </Tabs>
 
-### Dataset Upload
+### Step 2: Dataset Upload
 
 Next, let’s upload the [dataset](https://docs.clarifai.com/create-manage/datasets/upload) that will be used to train the model to the app.
 
@@ -83,7 +83,7 @@ You can find the dataset we used [here](https://github.com/Clarifai/examples/tre
 </TabItem>
 </Tabs>
 
-### Model Creation
+### Step 3: Model Creation
 
 Let's list all the available trainable model types in the Clarifai platform. 
 
@@ -108,7 +108,7 @@ Next, let's select the `clusterer` model type and use it to create a model.
 
 
 
-### Patch Model
+### Step 4: Patch Model (optional)
 
 After creating a model, you can perform patch operations on it by merging, removing, or overwriting data. By default, all actions support overwriting, but they handle lists of objects in specific ways. 
 
@@ -124,7 +124,7 @@ Below is an example of performing patch operations on a model, such as updating 
 </TabItem>
 </Tabs>
 
-### Set Up Model Parameters
+### Step 5: Set Up Model Parameters
 
 You can customize the model parameters as needed before starting the training process.
 
@@ -138,7 +138,7 @@ You can customize the model parameters as needed before starting the training pr
     <CodeBlock className="language-text">{CodeOutputS}</CodeBlock>
 </details>
 
-### Initiate Model Training
+### Step 6: Initiate Model Training
 
 To initiate the model training process, call the `model.train()` method. The Clarifai API also provides features for monitoring training status and saving training logs to a local file.
 
@@ -156,9 +156,9 @@ If the training status code returns `MODEL-TRAINED`, it means the model has succ
 
 
 
-### Model Prediction
+### Step 7: Model Prediction
 
-After the model is trained and ready to use, you can run some predictions to evaluate its performance.
+After the model is trained and ready to use, you can run some predictions with it.
 
 <Tabs>
 <TabItem value="python" label="Python SDK">

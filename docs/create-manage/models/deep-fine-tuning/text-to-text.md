@@ -1,9 +1,6 @@
 ---
 description: Learn about our text-to-text model type and understand its fine-tuning process
 sidebar_position: 9
-pagination_next: null
-keywords: [text-to-text models, text generation models, natural language processing, NLP text generation, machine learning text generation,
-AI text generation, text synthesis, text-to-text conversion, deep learning text generation, custom text-to-text models, pre-trained text-to-text models, text transformation AI]
 ---
 
 # Text Generation
@@ -42,7 +39,7 @@ You may choose a text-to-text model type in cases where:
 - You need a text-to-text model to learn new features not recognized by the existing Clarifai models. In that case, you may need to "deep fine-tune" your custom model and integrate it directly within your [workflows](https://docs.clarifai.com/portal-guide/workflows/).
 - You have a custom-tailored dataset, accurate labels, and the expertise and time to fine-tune models.
 
-## How to Fine-Tune Text Generation Models
+## Fine-Tune via the UI
 
 You can fine-tune a large language model for text generation tasks. In this example, we’ll demonstrate how to fine-tune the [LLaMA 3.1 8B Instruct](https://clarifai.com/meta/Llama-3/models/Llama-3-8B-Instruct) model for a specific use case using Clarifai's no-code platform.
 
@@ -56,7 +53,7 @@ You can watch the video below for a step-by-step guide.
 
 You can also follow these steps to learn how to fine-tune a text-to-text model for generative or conversion tasks. 
 
-### 1. Prepare Your Training Data
+### Step 1: Prepare Your Training Data
 
 Fine-tuning a text-to-text model requires a dataset with examples in a specific format that includes both input and target sequences. The training data must be formatted according to the model's specific requirements to ensure effective learning.
 
@@ -105,7 +102,7 @@ We recommend starting with more than 50 well-crafted examples for fine-tuning a 
 
 :::
 
-### 2. Create an App
+### Step 2: Create an App
 
 After preparing your dataset, the next step is to [create an application]( https://docs.clarifai.com/clarifai-basics/applications/create-an-application/#create-an-application-on-the-portal).
 
@@ -115,13 +112,13 @@ When creating an application, choose the **Text/Document** option as the primary
 
 :::
 
-### 3. Create a Dataset
+### Step 3: Create a Dataset
 
 Create a dataset within your application. Note that after adding inputs to the dataset, you'll need to create a version for it. 
 
 [Click here](https://docs.clarifai.com/portal-guide/datasets/create-get-update-delete/) to learn more about how to create and manage datasets. 
 
-### 3. Upload Your Data
+### Step 4: Upload Your Data
 
 In the collapsible left sidebar, select the **Inputs** option, then use the input uploader pop-up window to upload your prepared text data to the dataset you created.
 
@@ -133,7 +130,7 @@ The data will be uploaded to your application.
 
 After successfully uploading the data to a dataset, remember to update the dataset version. 
 
-### 3. Choose a Model 
+### Step 5: Choose a Model 
 
 Next, choose the **Models** option on the collapsible left sidebar. Click the **Add Model** button in the upper-right corner of the page. 
 
@@ -147,7 +144,7 @@ Select the **Text Generator** option.
 
 ![model types](/img/others/fine-tune-3.png)
 
-### 4. Create and Train the Model
+### Step 6: Create and Train the Model
 
 The ensuing page allows you to create and train a text-to-text model for generation or conversion purposes. 
 
@@ -176,7 +173,7 @@ The ensuing page allows you to create and train a text-to-text model for generat
 
 Finally, click the **Train** button. 
 
-### 5. Generate Texts
+### Step 7: Generate Texts
 
 After the model has been trained, you can start using it to make generative text-to-text predictions. 
 
@@ -199,3 +196,159 @@ Click the **Generate** button. It will generate the output in JSON format, provi
 - [Click here](https://docs.clarifai.com/portal-guide/ppredict/generative-ai#inference-parameters) to learn more about the different inference parameters you can specify to influence the output of LLMs.
 
 :::
+
+
+## Fine-Tune via the API
+
+Let's demonstrate how to fine-tune a text-to-text model using our API.
+
+
+:::info
+
+Before using the [Python SDK](https://docs.clarifai.com/additional-resources/api-overview/python-sdk), [Node.js SDK](https://docs.clarifai.com/additional-resources/api-overview/nodejs-sdk), or any of our [gRPC clients](https://docs.clarifai.com/additional-resources/api-overview/grpc-clients), ensure they are properly installed on your machine. Refer to their respective installation guides for instructions on how to install and initialize them.
+
+:::
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+
+
+import CodeAC from "!!raw-loader!../../../../code_snippets/python-sdk/model_training/text_to_text/ac.py";
+import CodeDU from "!!raw-loader!../../../../code_snippets/python-sdk/model_training/text_to_text/du.py";
+import CodeMT from "!!raw-loader!../../../../code_snippets/python-sdk/model_training/text_to_text/mt.py";
+import CodeMC from "!!raw-loader!../../../../code_snippets/python-sdk/model_training/text_to_text/mc.py";
+import CodeTS from "!!raw-loader!../../../../code_snippets/python-sdk/model_training/text_to_text/ts.py";
+import CodeS from "!!raw-loader!../../../../code_snippets/python-sdk/model_training/text_to_text/s.py";
+import CodeIMT from "!!raw-loader!../../../../code_snippets/python-sdk/model_training/text_to_text/imt.py";
+import CodeMP from "!!raw-loader!../../../../code_snippets/python-sdk/model_training/text_to_text/mp.py";
+
+
+import CodeOutputMT from "!!raw-loader!../../../../code_snippets/python-sdk/model_training/outputs/text_to_text/mt.txt";
+import CodeOutputTS from "!!raw-loader!../../../../code_snippets/python-sdk/model_training/outputs/text_to_text/ts.txt";
+import CodeOutputS from "!!raw-loader!../../../../code_snippets/python-sdk/model_training/outputs/text_to_text/s.txt";
+import CodeOutputMP from "!!raw-loader!../../../../code_snippets/python-sdk/model_training/outputs/text_to_text/mp.txt";
+
+
+
+
+### Step 1: App Creation
+
+Let's start by creating an [app](https://docs.clarifai.com/create-manage/applications/create). 
+
+<Tabs>
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{CodeAC}</CodeBlock>
+</TabItem>
+</Tabs>
+
+### Step 2: Dataset Upload
+
+Next, let’s upload the [dataset](https://docs.clarifai.com/create-manage/datasets/upload) that will be used to train the model to the app.
+
+You can find the dataset we used [here](https://github.com/Clarifai/examples/tree/main/datasets/upload/data).
+
+
+<Tabs>
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{CodeDU}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
+### Step 3: Model Creation
+
+Let's list all the available trainable model types in the Clarifai platform.
+
+<Tabs>
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{CodeMT}</CodeBlock>
+</TabItem>
+</Tabs>
+<details>
+  <summary>Output</summary>
+    <CodeBlock className="language-text">{CodeOutputMT}</CodeBlock>
+</details>
+
+Next, let's select the `text-to-text` model type and use it to create a model.  
+
+<Tabs>
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{CodeMC}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
+
+:::tip
+
+[Click here](https://docs.clarifai.com/create-manage/models/deep-fine-tuning/clusterer#step-4-patch-model-optional) to learn how to patch your model. 
+
+:::
+
+
+### Step 4: Template Selection
+
+Let's list all the available training templates in the Clarifai platform.
+
+<Tabs>
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{CodeTS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+  <summary>Output</summary>
+    <CodeBlock className="language-text">{CodeOutputTS}</CodeBlock>
+</details>
+
+Next, let's choose the `'HuggingFace_AdvancedConfig' `template to use for training our model, as demonstrated below.
+
+### Step 5: Set Up Model Parameters
+
+You can customize the model parameters as needed before starting the training process.
+
+<Tabs>
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{CodeS}</CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+  <summary>Output</summary>
+    <CodeBlock className="language-text">{CodeOutputS}</CodeBlock>
+</details>
+
+
+### Step 6: Initiate Model Training
+
+To initiate the model training process, call the `model.train()` method. The Clarifai API also provides features for monitoring training status and saving training logs to a local file.
+
+:::note
+
+If the training status code returns `MODEL-TRAINED`, it means the model has successfully completed training and is ready for use.
+
+:::
+
+<Tabs>
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{CodeIMT}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
+
+### Step 7: Model Prediction
+
+After the model is trained and ready to use, you can run some predictions with it.
+
+<Tabs>
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{CodeMP}</CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+  <summary>Output</summary>
+    <CodeBlock className="language-text">{CodeOutputMP}</CodeBlock>
+</details>

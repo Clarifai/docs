@@ -333,11 +333,11 @@
     "from": ["/api-guide/annotate/tasks", "/api-guide/annotate/task-annotations"]
   },
   {
-    "to": "/create-manage/models/transfer-learning/visual-classifiers",
+    "to": "/create-manage/models/transfer-learning/visual-classifier",
     "from": ["/portal-guide/model/pcustom-model-walkthrough"]
   },
   {
-    "to": "/create-manage/models/transfer-learning/text-classifiers",
+    "to": "/create-manage/models/transfer-learning/text-classifier",
     "from": ["/portal-guide/model/text-classifiers-transfer-learn"]
   },
   {
@@ -397,11 +397,11 @@
     "from": ["/portal-guide/model/deep-training/custom-templates"]
   },
   {
-    "to": "/create-manage/models/hf-import",
+    "to": "/compute/models/upload/",
     "from": ["/portal-guide/model/hf-model-importer"]
   },
   {
-    "to": "/create-manage/models/local-upload",
+    "to": "/compute/models/upload/",
     "from": ["/portal-guide/model/local-model-upload"]
   },
   {
@@ -421,56 +421,40 @@
     "from": ["/portal-guide/model/deep-training/"]
   },
   {
-    "to": "",
-    "from": [""]
+    "to": "/create-manage/models/deep-fine-tuning/",
+    "from": ["/sdk/Model-Training-Tutorial/"]
   },
   {
-    "to": "",
-    "from": [""]
+    "to": "/create-manage/models/deep-fine-tuning/clusterer",
+    "from": ["/sdk/Model-Training-Tutorial/clusterer"]
   },
   {
-    "to": "",
-    "from": [""]
+    "to": "/create-manage/models/transfer-learning/text-classifier",
+    "from": ["/sdk/Model-Training-Tutorial/embedding_classifier"]
   },
   {
-    "to": "",
-    "from": [""]
+    "to": "/create-manage/models/deep-fine-tuning/text-classifier",
+    "from": ["/sdk/Model-Training-Tutorial/text_classifier"]
   },
   {
-    "to": "",
-    "from": [""]
+    "to": "/create-manage/models/deep-fine-tuning/text-to-text",
+    "from": ["/sdk/Model-Training-Tutorial/text_to_text"]
   },
   {
-    "to": "",
-    "from": [""]
+    "to": "/create-manage/models/deep-fine-tuning/visual-classifier",
+    "from": ["/sdk/Model-Training-Tutorial/visual_classifier"]
   },
   {
-    "to": "",
-    "from": [""]
+    "to": "/create-manage/models/deep-fine-tuning/visual-detector",
+    "from": ["/sdk/Model-Training-Tutorial/visual_detector"]
   },
   {
-    "to": "",
-    "from": [""]
+    "to": "/create-manage/models/deep-fine-tuning/visual-embedder",
+    "from": ["/sdk/Model-Training-Tutorial/visual_embedder"]
   },
   {
-    "to": "",
-    "from": [""]
-  },
-  {
-    "to": "",
-    "from": [""]
-  },
-  {
-    "to": "",
-    "from": [""]
-  },
-  {
-    "to": "",
-    "from": [""]
-  },
-  {
-    "to": "",
-    "from": [""]
+    "to": "/create-manage/models/deep-fine-tuning/visual-segmenter",
+    "from": ["/sdk/Model-Training-Tutorial/visual_segmenter"]
   }
 
 
