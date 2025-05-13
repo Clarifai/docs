@@ -467,10 +467,6 @@
   {
     "to": "/create-manage/models/manage",
     "from": ["/api-guide/model/create-get-update-and-delete"]
-  },
-  {
-    "to": "",
-    "from": []
   }
   
 
