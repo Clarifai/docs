@@ -410,7 +410,7 @@
   },
   {
     "to": "/create-manage/models/",
-    "from": ["/portal-guide/model/model-types/", "/portal-guide/model/training-faqs", "/portal-guide/model/", "/portal-guide/model/clarifai-models", "/portal-guide/model/training-data", "/portal-guide/model/training-basics"]
+    "from": ["/api-guide/model/model-types", "/api-guide/model/clarifai-models", "/api-guide/model/", "/portal-guide/model/model-types/", "/portal-guide/model/training-faqs", "/portal-guide/model/", "/portal-guide/model/clarifai-models", "/portal-guide/model/training-data", "/portal-guide/model/training-basics"]
   },  
   {
     "to": "/create-manage/models/transfer-learning/",
@@ -418,7 +418,7 @@
   },
   {
     "to": "/create-manage/models/deep-fine-tuning/",
-    "from": ["/portal-guide/model/deep-training/"]
+    "from": ["/portal-guide/model/deep-training/", "/api-guide/model/deep-training"]
   },
   {
     "to": "/create-manage/models/deep-fine-tuning/",
@@ -455,11 +455,23 @@
   {
     "to": "/create-manage/models/deep-fine-tuning/visual-segmenter",
     "from": ["/sdk/Model-Training-Tutorial/visual_segmenter"]
+  },     
+  {
+    "to": "/create-manage/models/transfer-learning/visual-classifier",
+    "from": ["/api-guide/model/custom-model-walkthrough"]
+  },
+  {
+    "to": "/create-manage/models/transfer-learning/text-classifier",
+    "from": ["/api-guide/model/custom-text-model-walkthrough"]
+  },
+  {
+    "to": "/create-manage/models/manage",
+    "from": ["/api-guide/model/create-get-update-and-delete"]
+  },
+  {
+    "to": "",
+    "from": []
   }
-
-
-
-
   
 
 

@@ -1,18 +1,19 @@
 ---
-description: Learn how to create, train, get, update, delete, predict, and search your models
-sidebar_position: 5
+description: Learn how to get, update, search, and delete models
+sidebar_position: 2
 ---
 
-# Create, Train, Get, Update, Delete
+# Manage Models
 
-**Learn how to create, train, get, update, delete, predict, and search your models**
+**Learn how to get, update, search, and delete models**
 <hr />
+
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
-import PythonCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/create_model.py";
+
 import PythonUpdateConfiguration from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/update_model_name_configuration.py";
 import PythonUpdateConfiguration2 from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/update_model_name_configuration_2.py";
 import PythonListModelTypes from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/list_model_types.py";
@@ -25,11 +26,10 @@ import PythonGetModelVersion from "!!raw-loader!../../../code_snippets/api-guide
 import PythonDeleteModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/delete_model.py";
 import PythonDeleteModelVersion from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/delete_model_version.py";
 import PythonDeleteAllModels from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/delete_all_models.py";
-import PythonTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/train_model.py";
-import PythonPredictModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/predict_model.py";
+
 import PythonSearchModelsName from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/search_models_name_type.py";
 
-import JSCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/create_model.html";
+
 import JSUpdateConfiguration from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/update_model_name_configuration.html";
 import JSUpdateConfiguration2 from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/update_model_name_configuration_2.html";
 import JSListModelTypes from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/list_model_types.html";
@@ -42,11 +42,10 @@ import JSGetModelVersion from "!!raw-loader!../../../code_snippets/api-guide/mod
 import JSDeleteModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/delete_model.html";
 import JSDeleteModelVersion from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/delete_model_version.html";
 import JSDeleteAllModels from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/delete_all_models.html";
-import JSTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/train_model.html";
-import JSPredictModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/predict_model.html";
+
 import JSSearchModelsName from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/search_models_name_type.html";
 
-import NodeCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/create_model.js";
+
 import NodeUpdateConfiguration from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/update_model_name_configuration.js";
 import NodeUpdateConfiguration2 from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/update_model_name_configuration_2.js";
 import NodeListModelTypes from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/list_model_types.js";
@@ -59,11 +58,10 @@ import NodeGetModelVersion from "!!raw-loader!../../../code_snippets/api-guide/m
 import NodeDeleteModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/delete_model.js";
 import NodeDeleteModelVersion from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/delete_model_version.js";
 import NodeDeleteAllModels from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/delete_all_models.js";
-import NodeTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/train_model.js";
-import NodePredictModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/predict_model.js";
+
 import NodeSearchModelsName from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/node/search_models_name_type.js";
 
-import JavaCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/create_model.java";
+
 import JavaUpdateConfiguration from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/update_model_name_configuration.java";
 import JavaUpdateConfiguration2 from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/update_model_name_configuration_2.java";
 import JavaListModelTypes from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/list_model_types.java";
@@ -76,11 +74,10 @@ import JavaGetModelVersion from "!!raw-loader!../../../code_snippets/api-guide/m
 import JavaDeleteModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/delete_model.java";
 import JavaDeleteModelVersion from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/delete_model_version.java";
 import JavaDeleteAllModels from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/delete_all_models.java";
-import JavaTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/train_model.java";
-import JavaPredictModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/predict_model.java";
+
 import JavaSearchModelsName from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/java/search_models_name_type.java";
 
-import PHPCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/php/create_model.php";
+
 import PHPUpdateConfiguration from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/php/update_model_name_configuration.php";
 import PHPUpdateConfiguration2 from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/php/update_model_name_configuration_2.php";
 import PHPListModelTypes from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/php/list_model_types.php";
@@ -93,11 +90,11 @@ import PHPGetModelVersion from "!!raw-loader!../../../code_snippets/api-guide/mo
 import PHPDeleteModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/php/delete_model.php";
 import PHPDeleteModelVersion from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/php/delete_model_version.php";
 import PHPDeleteAllModels from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/php/delete_all_models.php";
-import PHPTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/php/train_model.php";
-import PHPPredictModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/php/predict_model.php";
+
+
 import PHPSearchModelsName from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/php/search_models_name_type.php";
 
-import CurlCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/create_model.sh";
+
 import CurlUpdateConfiguration from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/update_model_name_configuration.sh";
 import CurlUpdateConfiguration2 from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/update_model_name_configuration_2.sh";
 import CurlListModelTypes from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/list_model_types.sh";
@@ -110,113 +107,23 @@ import CurlGetModelVersion from "!!raw-loader!../../../code_snippets/api-guide/m
 import CurlDeleteModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/delete_model.sh";
 import CurlDeleteModelVersion from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/delete_model_version.sh";
 import CurlDeleteAllModels from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/delete_all_models.sh";
-import CurlTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/train_model.sh";
-import CurlPredictModel from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/predict_model.sh";
+
+
 import CurlSearchModelsName from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/curl/search_models_name_type.sh";
+
+
+import SDKPatchModel from "!!raw-loader!../../../code_snippets/python-sdk/model_training/clusterer/patch_model.py";
+
+
 
 :::info
 
-The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients/#client-installation-instructions)
+Before using the [Python SDK](https://docs.clarifai.com/additional-resources/api-overview/python-sdk), [Node.js SDK](https://docs.clarifai.com/additional-resources/api-overview/nodejs-sdk), or any of our [gRPC clients](https://docs.clarifai.com/additional-resources/api-overview/grpc-clients), ensure they are properly installed on your machine. Refer to their respective installation guides for instructions on how to install and initialize them.
 
 :::
 
-## Create
-
-### Create a Model
-
-To create a model, you need to specify the model's ID. 
-
-If you want to specify [the type of model](https://docs.clarifai.com/portal-guide/model/model-types/) you want to create, you need to provide its ID using the `model_type_id` parameter⁠—though specifying the model type ID is optional. You can call the [**ListModelTypes**](#list-model-types) endpoint to learn more about the model types we offer.  
-
-Below is an example of how you would create an `embedding-classifier` (Transfer Learning Classifier) model. It's also the default model type created if you do not specify the `model_type_id`. 
-
-:::tip
-
-**PostModels** will create new models but not create new model versions. This means trainable models that have not yet been trained will require the additional step of calling the [**PostModelVersions**](#train-a-model) endpoint, while providing the `*_info` fields in the model version—to affect training.
-
-:::
-
-<Tabs>
-
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python">{PythonCreateModel}</CodeBlock>
-</TabItem>
-
-<TabItem value="js_rest" label="JavaScript (REST)">
-    <CodeBlock className="language-javascript">{JSCreateModel}</CodeBlock>
-</TabItem>
-
-<TabItem value="nodejs" label="NodeJS">
-    <CodeBlock className="language-javascript">{NodeCreateModel}</CodeBlock>
-</TabItem>
-
-<TabItem value="java" label="Java">
-    <CodeBlock className="language-java">{JavaCreateModel}</CodeBlock>
-</TabItem>
-
-<TabItem value="php" label="PHP">
-    <CodeBlock className="language-php">{PHPCreateModel}</CodeBlock>
-</TabItem>
-
-<TabItem value="curl" label="cURL">
-    <CodeBlock className="language-bash">{CurlCreateModel}</CodeBlock>
-</TabItem>
-
-</Tabs>
 
 
-## Train
-
-### Train a Model
-
-When you train an `embedding-classifier` model, you are telling the system to look at successfully indexed inputs with concepts you've provided and learn from them. 
-This train operation is asynchronous. It may take a few seconds for your model to be fully trained and ready.
-
-However, if training other types of models, such as the [deep fine-tuned](https://docs.clarifai.com/api-guide/model/deep-training) models, the train operation can take much longer and does not necessarily need indexed inputs.
-
-You can repeat this operation as often as you like. By adding more images with concepts and training, you can get the model to predict exactly how you want it to.
-
-:::tip
-
-- The **PostModelVersions** endpoint kicks off training and creates a new model version. You can also add concepts to a model when creating the model version—and only if the model type supports it as defined in the model type parameters.
-
-- You can use the **PostModelVersions** endpoint to give information specific to a model version. All the `*_info` fields—such as `output_info`, `input_info`, `train_info`, and `import_info`—are available on this endpoint. 
-
-- You cannot remove the training concepts from a model version. However, you can edit the additional `OutputInfo.Params` concept options if they are defined in the model type.
-
-- When training an embedding-classifier, you could specify the [`enrich_dataset`](https://docs.clarifai.com/product-updates/upcoming-api-changes/closed-environment) variable inside `modelVersion.TrainInfo.Params` of the **PostModelVersions** endpoint. It lets you enrich the model with supplemental data from pre-built datasets of negative embeddings, which improves the model's accuracy. It has two options: 
-    - `Automatic` (default) means that if there are negative embeddings for a base model, we will use them—and we won’t use them if they’re not available. 
-    - `Disabled` means that we should not use the negative embeddings whether they are available or not. 
-
-:::
-
-<Tabs>
-
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python">{PythonTrainModel}</CodeBlock>
-</TabItem>
-
-<TabItem value="js_rest" label="JavaScript (REST)">
-    <CodeBlock className="language-javascript">{JSTrainModel}</CodeBlock>
-</TabItem>
-
-<TabItem value="nodejs" label="NodeJS">
-    <CodeBlock className="language-javascript">{NodeTrainModel}</CodeBlock>
-</TabItem>
-
-<TabItem value="java" label="Java">
-    <CodeBlock className="language-java">{JavaTrainModel}</CodeBlock>
-</TabItem>
-
-<TabItem value="php" label="PHP">
-    <CodeBlock className="language-php">{PHPTrainModel}</CodeBlock>
-</TabItem>
-
-<TabItem value="curl" label="cURL">
-    <CodeBlock className="language-bash">{CurlTrainModel}</CodeBlock>
-</TabItem>
-
-</Tabs>
 
 ## Get
 
@@ -226,7 +133,7 @@ Learn about the available model types and their hyperparameters. This endpoint l
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonListModelTypes}</CodeBlock>
 </TabItem>
 
@@ -234,15 +141,15 @@ Learn about the available model types and their hyperparameters. This endpoint l
     <CodeBlock className="language-javascript">{JSListModelTypes}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeListModelTypes}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaListModelTypes}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPListModelTypes}</CodeBlock>
 </TabItem>
 
@@ -270,7 +177,7 @@ If you want to get a list of the models not within the scope of your app, you ne
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonGetModels}</CodeBlock>
 </TabItem>
 
@@ -278,15 +185,15 @@ If you want to get a list of the models not within the scope of your app, you ne
     <CodeBlock className="language-javascript">{JSGetModels}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeGetModels}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaGetModels}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPGetModels}</CodeBlock>
 </TabItem>
 
@@ -302,7 +209,7 @@ All models have unique IDs. You can get a specific model by its ID.
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonGetModelID}</CodeBlock>
 </TabItem>
 
@@ -310,15 +217,15 @@ All models have unique IDs. You can get a specific model by its ID.
     <CodeBlock className="language-javascript">{JSGetModelID}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeGetModelID}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaGetModelID}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPGetModelID}</CodeBlock>
 </TabItem>
 
@@ -340,7 +247,7 @@ The `GetModelOutputInfo` endpoint does not support pagination. If you want to sp
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonGetModelOutput}</CodeBlock>
 </TabItem>
 
@@ -348,15 +255,15 @@ The `GetModelOutputInfo` endpoint does not support pagination. If you want to sp
     <CodeBlock className="language-javascript">{JSGetModelOutput}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeGetModelOutput}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaGetModelOutput}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPGetModelOutput}</CodeBlock>
 </TabItem>
 
@@ -381,7 +288,7 @@ If you are using any of the Clarifai gRPC clients, the `ListModelConcepts` endpo
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonListModelConcepts}</CodeBlock>
 </TabItem>
 
@@ -389,15 +296,15 @@ If you are using any of the Clarifai gRPC clients, the `ListModelConcepts` endpo
     <CodeBlock className="language-javascript">{JSListModelConcepts}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeListModelConcepts}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaListModelConcepts}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPListModelConcepts}</CodeBlock>
 </TabItem>
 
@@ -413,7 +320,7 @@ Every time you train a model, it creates a new version. You can list all the ver
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonListModelVersions}</CodeBlock>
 </TabItem>
 
@@ -421,15 +328,15 @@ Every time you train a model, it creates a new version. You can list all the ver
     <CodeBlock className="language-javascript">{JSListModelVersions}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeListModelVersions}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaListModelVersions}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPListModelVersions}</CodeBlock>
 </TabItem>
 
@@ -445,7 +352,7 @@ To get the details of a specific model version, you must provide the `model_id` 
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonGetModelVersion}</CodeBlock>
 </TabItem>
 
@@ -453,15 +360,15 @@ To get the details of a specific model version, you must provide the `model_id` 
     <CodeBlock className="language-javascript">{JSGetModelVersion}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeGetModelVersion}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaGetModelVersion}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPGetModelVersion}</CodeBlock>
 </TabItem>
 
@@ -472,6 +379,12 @@ To get the details of a specific model version, you must provide the `model_id` 
 </Tabs>
 
 ## Update
+
+After creating a model, you can perform patch operations on it by merging, removing, or overwriting data. By default, all actions support overwriting, but they handle lists of objects in specific ways. 
+
+- The `merge` action updates a `key:value` pair with `key:new_value` or appends to an existing list. For dictionaries, it merges entries that share the same `id` field.
+- The `remove` action is only used to delete the model's cover image on the platform UI.
+- The `overwrite` action completely replaces an existing object with a new one.
 
 :::info
 
@@ -486,7 +399,7 @@ Let's use the **PatchModels** endpoint to change the model name to `newname`.
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonUpdateConfiguration}</CodeBlock>
 </TabItem>
 
@@ -494,15 +407,15 @@ Let's use the **PatchModels** endpoint to change the model name to `newname`.
     <CodeBlock className="language-javascript">{JSUpdateConfiguration}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeUpdateConfiguration}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaUpdateConfiguration}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPUpdateConfiguration}</CodeBlock>
 </TabItem>
 
@@ -525,7 +438,7 @@ For embedding-classifiers, the `min_value` parameter falls within the range of 0
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonUpdateConfiguration2}</CodeBlock>
 </TabItem>
 
@@ -533,15 +446,15 @@ For embedding-classifiers, the `min_value` parameter falls within the range of 0
     <CodeBlock className="language-javascript">{JSUpdateConfiguration2}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeUpdateConfiguration2}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaUpdateConfiguration2}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPUpdateConfiguration2}</CodeBlock>
 </TabItem>
 
@@ -551,6 +464,49 @@ For embedding-classifiers, the `min_value` parameter falls within the range of 0
 
 </Tabs>
 
+### Other Patch Operations
+
+Below is an example of performing other patch operations on a model, such as updating its description and notes. 
+
+<Tabs>
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{SDKPatchModel}</CodeBlock>
+</TabItem>
+</Tabs>
+
+## Search
+
+### Search Models by Name and Type
+
+You can search all your models by name and type of model.
+
+<Tabs>
+
+<TabItem value="python" label="Python (gRPC)">
+    <CodeBlock className="language-python">{PythonSearchModelsName}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSSearchModelsName}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="Node.js (gRPC)">
+    <CodeBlock className="language-javascript">{NodeSearchModelsName}</CodeBlock>
+</TabItem>
+
+<TabItem value="java" label="Java (gRPC)">
+    <CodeBlock className="language-java">{JavaSearchModelsName}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP (gRPC)">
+    <CodeBlock className="language-php">{PHPSearchModelsName}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlSearchModelsName}</CodeBlock>
+</TabItem>
+
+</Tabs>
 
 ## Delete
 
@@ -560,7 +516,7 @@ You can delete a model by using the `model_id` parameter.
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonDeleteModel}</CodeBlock>
 </TabItem>
 
@@ -568,15 +524,15 @@ You can delete a model by using the `model_id` parameter.
     <CodeBlock className="language-javascript">{JSDeleteModel}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeDeleteModel}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaDeleteModel}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPDeleteModel}</CodeBlock>
 </TabItem>
 
@@ -592,7 +548,7 @@ You can also delete a specific version of a model with the `model_id` and `versi
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonDeleteModelVersion}</CodeBlock>
 </TabItem>
 
@@ -600,15 +556,15 @@ You can also delete a specific version of a model with the `model_id` and `versi
     <CodeBlock className="language-javascript">{JSDeleteModelVersion}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeDeleteModelVersion}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaDeleteModelVersion}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPDeleteModelVersion}</CodeBlock>
 </TabItem>
 
@@ -630,7 +586,7 @@ Please proceed with extreme caution as deleted models cannot be recovered.
 
 <Tabs>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonDeleteAllModels}</CodeBlock>
 </TabItem>
 
@@ -638,15 +594,15 @@ Please proceed with extreme caution as deleted models cannot be recovered.
     <CodeBlock className="language-javascript">{JSDeleteAllModels}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJS">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeDeleteAllModels}</CodeBlock>
 </TabItem>
 
-<TabItem value="java" label="Java">
+<TabItem value="java" label="Java (gRPC)">
     <CodeBlock className="language-java">{JavaDeleteAllModels}</CodeBlock>
 </TabItem>
 
-<TabItem value="php" label="PHP">
+<TabItem value="php" label="PHP (gRPC)">
     <CodeBlock className="language-php">{PHPDeleteAllModels}</CodeBlock>
 </TabItem>
 
@@ -656,70 +612,3 @@ Please proceed with extreme caution as deleted models cannot be recovered.
 
 </Tabs>
 
-## Predict
-
-### Predict With a Model
-
-Once you have trained a model, you are ready to use the new model to make predictions. The predictions returned will only contain the concepts that you told it to see.
-
-<Tabs>
-
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python">{PythonPredictModel}</CodeBlock>
-</TabItem>
-
-<TabItem value="js_rest" label="JavaScript (REST)">
-    <CodeBlock className="language-javascript">{JSPredictModel}</CodeBlock>
-</TabItem>
-
-<TabItem value="nodejs" label="NodeJS">
-    <CodeBlock className="language-javascript">{NodePredictModel}</CodeBlock>
-</TabItem>
-
-<TabItem value="java" label="Java">
-    <CodeBlock className="language-java">{JavaPredictModel}</CodeBlock>
-</TabItem>
-
-<TabItem value="php" label="PHP">
-    <CodeBlock className="language-php">{PHPPredictModel}</CodeBlock>
-</TabItem>
-
-<TabItem value="curl" label="cURL">
-    <CodeBlock className="language-bash">{CurlPredictModel}</CodeBlock>
-</TabItem>
-
-</Tabs>
-
-## Search
-
-### Search Models by Name and Type
-
-You can search all your models by name and type of model.
-
-<Tabs>
-
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python">{PythonSearchModelsName}</CodeBlock>
-</TabItem>
-
-<TabItem value="js_rest" label="JavaScript (REST)">
-    <CodeBlock className="language-javascript">{JSSearchModelsName}</CodeBlock>
-</TabItem>
-
-<TabItem value="nodejs" label="NodeJS">
-    <CodeBlock className="language-javascript">{NodeSearchModelsName}</CodeBlock>
-</TabItem>
-
-<TabItem value="java" label="Java">
-    <CodeBlock className="language-java">{JavaSearchModelsName}</CodeBlock>
-</TabItem>
-
-<TabItem value="php" label="PHP">
-    <CodeBlock className="language-php">{PHPSearchModelsName}</CodeBlock>
-</TabItem>
-
-<TabItem value="curl" label="cURL">
-    <CodeBlock className="language-bash">{CurlSearchModelsName}</CodeBlock>
-</TabItem>
-
-</Tabs>

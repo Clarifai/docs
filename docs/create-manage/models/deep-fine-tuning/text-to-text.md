@@ -280,13 +280,6 @@ Next, let's select the `text-to-text` model type and use it to create a model.
 
 
 
-:::tip
-
-[Click here](https://docs.clarifai.com/create-manage/models/deep-fine-tuning/clusterer#step-4-patch-model-optional) to learn how to patch your model. 
-
-:::
-
-
 ### Step 4: Template Selection
 
 Let's list all the available training templates in the Clarifai platform.

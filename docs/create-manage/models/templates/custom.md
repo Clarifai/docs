@@ -1,8 +1,6 @@
 ---
 description: Learn how to create your own custom deep fine-tuned template
 sidebar_position: 6
-pagination_next: null
-keywords: [custom training templates, deep learning custom templates, AI custom training, custom model training, deep training custom models machine learning custom templates, custom AI models, pre-trained custom templates, custom model development, custom deep learning templates, training custom AI models]
 ---
 
 # Advanced Config
@@ -308,7 +306,7 @@ test_cfg = dict(type='TestLoop')  # Type of testing loop
 val_cfg = None  # The type of validation loop
 ```
 
-## Configuration File Example
+## Example 1
 
 Here is the final `config.py` file from the previous steps for creating an advanced configuration template using the MMDetection toolbox.
 
@@ -316,11 +314,39 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 import Template1 from "!!raw-loader!../../../../code_snippets/api-guide/others/create-your-own-template.py";
+import PythonCreateOwnTemplate1 from "!!raw-loader!../../../../code_snippets/api-guide/model/deep_training/create_own_template_1.py";
+import PythonCreateOwnTemplate2 from "!!raw-loader!../../../../code_snippets/api-guide/model/deep_training/create_own_template_2.py";
 
 <Tabs>
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{Template1}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+## Example 2
+
+As mentioned previously, you can create your own deep fine-tuned template and use it to train a model. 
+
+You need to create a Python configuration file and pass it as a training parameter to the `PostModelVersions` endpoint.
+
+Here is an example of a `training_config.py` file for creating a custom deep fine-tuned template using the MMDetection open source toolbox for visual detection tasks.
+
+<Tabs>
+
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PythonCreateOwnTemplate1}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+Here is how you could use the custom template to train a deep fine-tuned model.
+
+<Tabs>
+
+<TabItem value="python" label="Python (gRPC)">
+    <CodeBlock className="language-python">{PythonCreateOwnTemplate2}</CodeBlock>
 </TabItem>
 
 </Tabs>

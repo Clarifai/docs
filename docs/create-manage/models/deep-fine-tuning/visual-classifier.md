@@ -1,12 +1,11 @@
 ---
-description: Learn about our visual classifier model type
+description: Learn how to create and train a visual classifier model 
 sidebar_position: 2
-keywords: [AI visual classifier, image classification, visual classification models, machine learning image classifier, computer vision image classification, visual classification AI]
 ---
 
 # Visual Classifier 
 
-**Learn about our visual classifier model type**
+**Learn how to create and train a visual classifier model**
 <hr />
 
 **Input**: Images and videos
@@ -38,7 +37,147 @@ You may choose a visual classifier model type in cases where:
 
 A large retailer is looking to find and remove listings for illegal objects and substances across thousands of listings that include user-generated data. A classification model allows the retailer to quickly find listings that violate their community rules, and remove them from the site.
 
-##  Create and Train a Visual Classifier
+##  **Via the UI**
+
+Let's demonstrate how to create and train a visual classifier model using the UI. We intend to create a model that can distinguish between images of cats and dogs.
+
+### Step 1: Prepare Training Data
+
+Preparing data for fine-tuning ensures that the custom model learns effectively from the new task or domain, generalizes well to unseen data, and produces reliable predictions.
+
+Ensure that you collect high-quality, well-prepared data that will help achieve optimized performance in your model. 
+
+You can prepare your data using your preferred spreadsheet software. 
+[Click here](https://docs.clarifai.com/portal-guide/advanced-topics/csv-and-tsv) to download a CSV template you can use to prepare your data.
+
+To illustrate how fine-tuning works, we'll prepare the following simple dataset consisting of images of dogs and cats. Note that for your model to perform well, you need to provide it with enough diverse data to learn meaningful patterns. [Click here](https://www.clarifai.com/blog/using-ai-to-create-applications-downloading-images-easily) to learn how you can get images to enrich your dataset. 
+
+<details>
+  <summary>Sample Dataset</summary>
+
+```
+https://samples.clarifai.com/dog1.jpeg
+https://samples.clarifai.com/dog2.jpeg
+https://samples.clarifai.com/dog3.jpeg
+https://samples.clarifai.com/dog2_tiny.jpeg
+https://samples.clarifai.com/dog.tiff
+https://samples.clarifai.com/cat1.jpeg
+https://samples.clarifai.com/cat2.jpeg
+https://samples.clarifai.com/cat3.jpeg
+https://samples.clarifai.com/featured-models/blip-flying-cat.jpg
+https://samples.clarifai.com/featured-models/social-media-cat-laying-down.jpg
+```
+</details>
+
+
+### Step 2: Create an App
+
+[Click here](https://docs.clarifai.com/clarifai-basics/applications/create-an-application/#create-an-application-on-the-portal) to learn how to create an application on the Clarifai portal. 
+
+:::note
+
+When creating the application, go with the default Image/Video option as the primary input type. And in the collapsible **Advanced Settings** field, also go with the default **Universal** as the [base workflow](https://docs.clarifai.com/portal-guide/workflows/base-workflows/). 
+
+:::
+
+### Step 3: Add and Annotate Inputs
+
+Select the **Inputs** option on your app’s collapsible left sidebar. Next, use the inputs uploader pop-up window to [upload](https://docs.clarifai.com/portal-guide/datasets/create-get-update-delete#add-inputs) the images of dogs you prepared to a [dataset](https://docs.clarifai.com/portal-guide/datasets/create-get-update-delete) within your application.  
+
+Also, [label](https://docs.clarifai.com/portal-guide/annotate/create-get-update-delete) the images with the "dog" concept. 
+
+![](/img/community_2/my-deep-training-1.png)
+
+Click the **Upload inputs** button to add the annotated images of dogs to your app. 
+
+Similarly, use the inputs uploader pop-up window to upload the images of cats you prepared to the same dataset.
+
+Also, label the images with the "cat" concept.
+
+![](/img/community_2/my-deep-training-2.png)
+
+Click the **Upload inputs** button to add the annotated images of cats to your app.
+
+### Step 4: Choose a Model Type
+
+Select the **Models** option on your app’s collapsible left sidebar. 
+
+Click the **Add Model** button on the upper-right corner of the page. On the window that pops up, select the **Build a Custom Model** option and click the **Continue** button.
+
+![](/img/community_2/my-deep-training-3.png)
+
+You’ll be redirected to a page where you can choose the type of model you want to create and fine-tune.
+
+Select the **Visual Classifier** option.
+
+![](/img/community_2/my-deep-training-4.png)
+
+### Step 5: Create the Model
+
+The ensuing page allows you to create and fine-tune a visual classifier model that categorizes images into a set of predefined concepts.
+
+Provide a unique ID and click the **Continue to Configure model** button to create your model. 
+
+![](/img/community_2/my-deep-training-5.png)
+
+After creating the model, set it up for training. 
+
+![](/img/community_2/my-deep-training-6.png)
+
+- **Dataset** — Select the dataset you previously created that has the images of the dogs and cats. You can also select [a specific version](https://docs.clarifai.com/portal-guide/datasets/create-get-update-delete#update-a-dataset-version) for it. 
+- **Concepts** — Select the list of concepts you want the model to predict from the existing concepts in your app. For this example, let's select "cat" and "dog."
+- **Invalid Data Tolerance Percent** — Optionally, you can set a tolerance threshold (0 to 100) for the percentage of invalid inputs during training, and if this threshold is exceeded, training is stopped with an error.
+- **Template** — Select a pre-configured model template you want to use to fine-tune your model. When you choose a deep training template, you will see the hyperparameters that are available within that template populated with default values. You can adjust these values as desired. For this example, we’ll go with the recommended template: `MMClassification_ResNet_50_RSB_A1`. [Click here](https://docs.clarifai.com/portal-guide/model/deep-training/visual-classification-templates) to learn more about the visual classification templates. 
+
+
+:::note
+
+Notice that the estimated duration for the training process is displayed for you. This [Training Time Estimator](https://docs.clarifai.com/create-manage/models/deep-fine-tuning/#training-time-estimator) feature offers transparency in expected training costs.
+
+:::
+
+### Step 6: Train the Model​
+
+After configuring the training settings, click the **Train Model** button to initiate training your model. 
+
+You'll be redirected to the individual page of your model. 
+
+![](/img/community_2/my-deep-training-7.png)
+
+If you check the [model's versions table](https://docs.clarifai.com/portal-guide/model-versions/#model-versions-table), you’ll notice that the model is still being trained. 
+
+Many hours may be required to deep train models with large numbers of inputs and complex taxonomies. You can cancel a deep fine-tuning job at any time by clicking the **Cancel training** button. 
+
+:::caution
+
+Deep fine-tuning is billed at an hourly rate, and for canceled jobs, you will be charged for the time you've used to train your model. You can learn more about deep fine-tuning pricing [here](https://www.clarifai.com/pricing).
+
+:::
+
+You can check the training progress by clicking the **View Training Log** button. If you click the button, a small sidebar will appear with details of the training exercise. 
+You can also download the training log data by clicking the **download** button. 
+
+![](/img/community_2/my-deep-training-7-1.png)
+
+### Step 7: Use the Model​
+
+After the model has been trained, the status will change to **Model Trained**.
+
+In the **Actions** column, you can carry out the following:
+
+- Copy the model version ID
+- View the model in the [leaderboard](https://docs.clarifai.com/portal-guide/evaluate/leaderboard/)
+- View the [model version details](https://docs.clarifai.com/portal-guide/model-versions/)
+- Download the training log data
+- Delete the model version
+
+![](/img/community_2/my-deep-training-8.png)
+
+Once you've created and trained your new model, you can put it to work. It will be ready to be [evaluated](https://docs.clarifai.com/portal-guide/evaluate/), combined with other models and [agent operators](https://docs.clarifai.com/portal-guide/model/agent-system-operators/) in a workflow, or used to serve [inference](https://docs.clarifai.com/portal-guide/ppredict) requests as it is.
+
+That's it!
+
+##  **Via the API**
 
 Let's demonstrate how to create and train a visual classifier model using our API.
 
@@ -76,7 +215,19 @@ import CodeOutputTrEv from "!!raw-loader!../../../../code_snippets/python-sdk/mo
 import CodeOutputTeEv from "!!raw-loader!../../../../code_snippets/python-sdk/model_eval/visual_classifier/outputs/test_eval.txt";
 import CodeOutputCMP from "!!raw-loader!../../../../code_snippets/python-sdk/model_eval/visual_classifier/outputs/cmp.txt";
 
+import PythonCreateModel from "!!raw-loader!../../../../code_snippets/api-guide/model/deep_training/create_model.py";
+import JSCreateModel from "!!raw-loader!../../../../code_snippets/api-guide/model/deep_training/create_model.html";
+import NodeCreateModel from "!!raw-loader!../../../../code_snippets/api-guide/model/deep_training/create_model.js";
+import JavaCreateModel from "!!raw-loader!../../../../code_snippets/api-guide/model/deep_training/create_model.java";
+import PHPCreateModel from "!!raw-loader!../../../../code_snippets/api-guide/model/deep_training/create_model.php";
+import CurlCreateModel from "!!raw-loader!../../../../code_snippets/api-guide/model/deep_training/create_model.sh";
 
+import PythonTrainModel from "!!raw-loader!../../../../code_snippets/api-guide/model/deep_training/train_model.py";
+import JSTrainModel from "!!raw-loader!../../../../code_snippets/api-guide/model/deep_training/train_model.html";
+import NodeTrainModel from "!!raw-loader!../../../../code_snippets/api-guide/model/deep_training/train_model.js";
+import JavaTrainModel from "!!raw-loader!../../../../code_snippets/api-guide/model/deep_training/train_model.java";
+import PHPTrainModel from "!!raw-loader!../../../../code_snippets/api-guide/model/deep_training/train_model.php";
+import CurlTrainModel from "!!raw-loader!../../../../code_snippets/api-guide/model/deep_training/train_model.sh";
 
 ### Step 1: App Creation
 
@@ -124,14 +275,30 @@ Next, let's select the `visual-classifier` model type and use it to create a mod
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeMC}</CodeBlock>
 </TabItem>
+<TabItem value="python2" label="Python (gRPC)">
+    <CodeBlock className="language-python">{PythonCreateModel}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSCreateModel}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="Node.js (gRPC)">
+    <CodeBlock className="language-javascript">{NodeCreateModel}</CodeBlock>
+</TabItem>
+
+<TabItem value="java" label="Java (gRPC)">
+    <CodeBlock className="language-java">{JavaCreateModel}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP (gRPC)">
+    <CodeBlock className="language-php">{PHPCreateModel}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlCreateModel}</CodeBlock>
+</TabItem>
 </Tabs>
-
-:::tip
-
-[Click here](https://docs.clarifai.com/create-manage/models/deep-fine-tuning/clusterer#step-4-patch-model-optional) to learn how to patch your model. 
-
-:::
-
 
 ### Step 4: Template Selection
 
@@ -192,6 +359,34 @@ If the status code is `MODEL-TRAINED`, it indicates that the model has been succ
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeIMT}</CodeBlock>
+</TabItem>
+
+<TabItem value="python2" label="Python (gRPC)">
+    <CodeBlock className="language-python">{PythonTrainModel}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSTrainModel}</CodeBlock>
+</TabItem>
+
+<!--
+<TabItem value="nodejs" label="NodeJS">
+    <CodeBlock className="language-javascript">{NodeTrainModel}</CodeBlock>
+</TabItem>
+-->
+
+<TabItem value="java" label="Java (gRPC)">
+    <CodeBlock className="language-java">{JavaTrainModel}</CodeBlock>
+</TabItem>
+
+<!--
+<TabItem value="php" label="PHP">
+    <CodeBlock className="language-php">{PHPTrainModel}</CodeBlock>
+</TabItem>
+-->
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlTrainModel}</CodeBlock>
 </TabItem>
 </Tabs>
 <details>

@@ -31,12 +31,6 @@ Clarifai models are designed to be fast, scalable, and highly flexible, providin
 
 Our model library is continually expanding and evolving. You can explore the [Community](https://clarifai.com/explore) platform to find a model that best fits your needs.
 
-:::tip 
-
-You can use the [`Get`](https://docs.clarifai.com/api-guide/model/create-get-update-and-delete#get) commands to view a complete list of available pre-built models that you can integrate into your application.
-
-:::
-
 Our models are fully "trainable" machine learning models developed in-house and rigorously tested, ready to make predictions right out of the box. 
 
 We offer models across a wide range of categories, including generative models like large language models (LLMs), as well as classification, detection, and segmentation models.
@@ -46,6 +40,29 @@ We offer models across a wide range of categories, including generative models l
 Before training your own model, we recommend trying these pre-built models to see if they meet your needs.
 
 :::
+
+## Model Types
+
+Whether you build a custom model or use one of Clarifai’s pre-built models, selecting the right model type is essential for your specific use case.
+
+Different model types are optimized for different tasks and produce distinct outputs based on your input data and desired AI functionality.
+
+Choosing the appropriate model type enables you to fully leverage the Clarifai platform and power your business with advanced AI capabilities.
+
+:::note
+
+- You can use the [`Get`](https://docs.clarifai.com/api-guide/model/create-get-update-and-delete#get) commands to view a complete list of available model types suited to your needs.
+
+- To create a model with a specific type, you need to specify the desired [`model_type_id`](https://docs.clarifai.com/create-manage/models/deep-fine-tuning/visual-classifier#step-3-model-creation) in the request body.
+
+:::
+
+Broadly, you can create and train different model types on our platform using either of the following techniques:
+
+- [Transfer learning](transfer-learning/)
+
+- [Deep fine-tuning](deep-fine-tuning/)
+
 
 import DocCardList from '@theme/DocCardList';
 import {useCurrentSidebarCategory} from '@docusaurus/theme-common';

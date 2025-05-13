@@ -1,6 +1,7 @@
 ---
 description: Learn how to use transfer learning to create custom text classifier models
 sidebar_position: 1
+toc_max_heading_level: 4
 ---
 
 # Text Classifier
@@ -145,6 +146,14 @@ To test it:
 
 ## **Via the API**
 
+:::info
+
+Before using the [Python SDK](https://docs.clarifai.com/additional-resources/api-overview/python-sdk), [Node.js SDK](https://docs.clarifai.com/additional-resources/api-overview/nodejs-sdk), or any of our [gRPC clients](https://docs.clarifai.com/additional-resources/api-overview/grpc-clients), ensure they are properly installed on your machine. Refer to their respective installation guides for instructions on how to install and initialize them.
+
+:::
+
+### Example 1
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
@@ -169,15 +178,10 @@ import CodeOutputTrEv from "!!raw-loader!../../../../code_snippets/python-sdk/mo
 import CodeOutputTeEv from "!!raw-loader!../../../../code_snippets/python-sdk/model_eval/embedding_classifier/outputs/test_eval.txt";
 import CodeOutputCMP from "!!raw-loader!../../../../code_snippets/python-sdk/model_eval/embedding_classifier/outputs/cmp.txt";
 
-:::info
-
-Before using the [Python SDK](https://docs.clarifai.com/additional-resources/api-overview/python-sdk), [Node.js SDK](https://docs.clarifai.com/additional-resources/api-overview/nodejs-sdk), or any of our [gRPC clients](https://docs.clarifai.com/additional-resources/api-overview/grpc-clients), ensure they are properly installed on your machine. Refer to their respective installation guides for instructions on how to install and initialize them.
-
-:::
 
 Let's demonstrate how you can create a text classifier model using our API. 
 
-### Step 1: App Creation
+#### Step 1: App Creation
 
 Let's start by creating an [app](https://docs.clarifai.com/create-manage/applications/create). 
 
@@ -187,7 +191,7 @@ Let's start by creating an [app](https://docs.clarifai.com/create-manage/applica
 </TabItem>
 </Tabs>
 
-### Step 2: Dataset Upload
+#### Step 2: Dataset Upload
 
 Next, let’s upload the [dataset](https://docs.clarifai.com/create-manage/datasets/upload) that will be used to train the model to the app.
 
@@ -201,7 +205,7 @@ You can find the dataset we used [here](https://github.com/Clarifai/examples/tre
 
 
 
-### Step 3: Model Creation
+#### Step 3: Model Creation
 
 Let's list all the available trainable model types in the Clarifai platform. 
 
@@ -231,7 +235,7 @@ Next, let's select the `embedding-classifier` model type and use it to create a 
 
 :::
 
-### Step 4: Set Up Model Parameters
+#### Step 4: Set Up Model Parameters
 
 You can customize the model parameters as needed before starting the training process.
 
@@ -246,7 +250,7 @@ You can customize the model parameters as needed before starting the training pr
     <CodeBlock className="language-text">{CodeOutputS}</CodeBlock>
 </details>
 
-### Step 5: Initiate Model Training
+#### Step 5: Initiate Model Training
 
 To initiate the model training process, call the `model.train()` method. The Clarifai API also provides features for monitoring training status and saving training logs to a local file.
 
@@ -265,7 +269,7 @@ If the training status code returns `MODEL-TRAINED`, it means the model has succ
 
 
 
-### Step 6: Model Prediction
+#### Step 6: Model Prediction
 
 After the model is trained and ready to use, you can run some predictions with it.
 
@@ -280,7 +284,7 @@ After the model is trained and ready to use, you can run some predictions with i
 </details>
 
 
-### Step 7: Model Evaluation
+#### Step 7: Model Evaluation
 
 Let’s evaluate the model using both the training and test datasets. We’ll start by reviewing the evaluation metrics for the training dataset.
 
@@ -316,4 +320,184 @@ Finally, to gain deeper insights into the model’s performance, use the `EvalRe
 <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputCMP}</CodeBlock>
+</details>
+
+### Example 2
+
+Let's demonstrate how you can create a custom text classifier using transfer learning. 
+
+#### Step 1: App Creation
+
+Let's start by creating an [app](https://docs.clarifai.com/create-manage/applications/create). 
+
+
+<!--
+![](https://s3.amazonaws.com/clarifai-api/img3/prod/large/e12ce254f2824b0ab2aef1b10784ff23/3e695b780f597cd263b06d0aeb30b3d1?v=001)
+-->
+
+<!--
+Afterward, copy the newly-created application's _API key_ and set it in the variable below. This variable is going to be used by all Clarifai API calls for authorization purposes.
+-->
+
+import PythonAddBatchTexts from "!!raw-loader!../../../../code_snippets/api-guide/model/py/add_batch_texts.py";
+import PythonWaitInputsDownload from "!!raw-loader!../../../../code_snippets/api-guide/model/py/wait_inputs_download.py";
+import PythonCreateCustomModel from "!!raw-loader!../../../../code_snippets/api-guide/model/py/create_custom_text_model.py";
+import PythonTrainTextModel from "!!raw-loader!../../../../code_snippets/api-guide/model/py/train_text_model.py";
+import PythonWaitModelTraining from "!!raw-loader!../../../../code_snippets/api-guide/model/py/wait_model_training_complete.py";
+import PythonPredictNewInputs from "!!raw-loader!../../../../code_snippets/api-guide/model/py/predict_new_inputs.py";
+import PythonStartModelEvaluation from "!!raw-loader!../../../../code_snippets/api-guide/model/py/start_model_evaluation.py";
+import PythonWaitModelEvaluationResults from "!!raw-loader!../../../../code_snippets/api-guide/model/py/wait_model_evaluation_results.py";
+
+import OutputExample1 from "!!raw-loader!../../../../code_snippets/api-guide/model/code_output_examples/custom-text-model-walkthrough_1.js";
+import OutputExample2 from "!!raw-loader!../../../../code_snippets/api-guide/model/code_output_examples/custom-text-model-walkthrough_2.js";
+
+<!--
+<Tabs>
+<TabItem value="grpc_python" label="gRPC Python">
+
+```python
+# Insert here the initialization code as outlined on this page:
+# https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions
+
+api_key_metadata = (('authorization', 'Key ' + post_keys_response.keys[0].id),)
+```
+</TabItem>
+</Tabs>
+-->
+
+#### Step 2: Add a Batch of Texts
+
+We'll now add several text inputs that we will later use as training data in our custom model. The idea is that we'll create a model which can differentiate between positive and negative sentences \(in a grammatical sense\). 
+
+We'll mark each input with one of the two concepts: `positive` or `negative`.
+
+The texts can be added either directly \(it's called raw\) or from a URL.
+
+<Tabs>
+
+<TabItem value="grpc_python" label="Python (gRPC)">
+    <CodeBlock className="language-python">{PythonAddBatchTexts}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+#### Step 3: Wait for Inputs to Download
+
+Let's now wait for all the inputs to download.
+
+<Tabs>
+
+<TabItem value="grpc_python" label="Python (gRPC)">
+    <CodeBlock className="language-python">{PythonWaitInputsDownload}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+#### Step 4: Create a Custom Model
+
+Let's create a custom transfer learning model (also called an "embedding-classifier"). 
+
+<Tabs>
+
+<TabItem value="grpc_python" label="Python (gRPC)">
+    <CodeBlock className="language-python">{PythonCreateCustomModel}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+#### Step 5: Train the Model
+
+Let's train the model using the `positive` and `negative` concepts. 
+
+All inputs \(in our application\) associated with these two concepts will be used as training data. This will make the model to learn from these inputs so that we can later predict new text examples. 
+
+<Tabs>
+
+<TabItem value="grpc_python" label="Python (gRPC)">
+    <CodeBlock className="language-python">{PythonTrainTextModel}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+#### Step 6: Wait for Model Training to Complete
+
+Let's wait for the model training to complete.
+
+Each model training produces a new model version. Notice that on the bottom of the following code example, we placed the model version ID into its own variable.
+
+We'll be using it later to specify which specific model version we want to use \(since a model can have multiple versions\).
+
+<Tabs>
+
+<TabItem value="grpc_python" label="Python (gRPC)">
+    <CodeBlock className="language-python">{PythonWaitModelTraining}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+#### Step 7: Predict on New Inputs
+
+Let's now use the trained custom model to predict new text examples.
+
+<Tabs>
+
+<TabItem value="grpc_python" label="Python (gRPC)">
+    <CodeBlock className="language-python">{PythonPredictNewInputs}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+<details>
+  <summary>Text Output Example</summary>
+
+```text
+The following concepts were predicted for the input `Butchart Gardens contains over 900 varieties of plants.`:
+	positive: 0.83
+	negative: 0.17
+The following concepts were predicted for the input `https://samples.clarifai.com/negative_sentence_12.txt`:
+	negative: 1.00
+	positive: 0.00
+```
+</details>
+
+#### Step 8: Start Model Evaluation
+
+Let's now test the performance of the model by using model evaluation. Take note of the `evaluation_id` returned in the response, as you will need it for the next step. 
+
+:::tip
+
+See the [Evaluating Models](https://docs.clarifai.com/api-guide/evaluate/) section to learn more.
+
+:::
+
+<Tabs>
+
+<TabItem value="grpc_python" label="Python (gRPC)">
+    <CodeBlock className="language-python">{PythonStartModelEvaluation}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+<details>
+  <summary>Raw Output Example</summary>
+    <CodeBlock className="language-javascript">{OutputExample1}</CodeBlock>
+</details>
+
+#### Step 9: Wait for Model Evaluation Results
+
+Model evaluation takes some time — depending on the amount of data the model has. 
+
+Let's wait for it to complete, and print all the results that it gives us.
+
+<Tabs>
+
+<TabItem value="grpc_python" label="Python (gRPC)">
+    <CodeBlock className="language-python">{PythonWaitModelEvaluationResults}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+<details>
+  <summary>Raw Output Example</summary>
+    <CodeBlock className="language-javascript">{OutputExample2}</CodeBlock>
 </details>

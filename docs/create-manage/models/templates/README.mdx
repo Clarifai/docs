@@ -11,6 +11,62 @@ You can take advantage of a variety of our pre-configured templates when develop
 
 Templates give you the control to choose the specific architecture used by your neural network, and also define a set of hyperparameters that you can use to fine-tune the way your model learns.
 
+## List Template Types
+
+:::info
+
+Before using the [Python SDK](https://docs.clarifai.com/additional-resources/api-overview/python-sdk), [Node.js SDK](https://docs.clarifai.com/additional-resources/api-overview/nodejs-sdk), or any of our [gRPC clients](https://docs.clarifai.com/additional-resources/api-overview/grpc-clients), ensure they are properly installed on your machine. Refer to their respective installation guides for instructions on how to install and initialize them.
+
+:::
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+
+import PythonTemplateTypes from "!!raw-loader!../../../../code_snippets/api-guide/model/deep_training/template_types.py";
+import JSTemplateTypes from "!!raw-loader!../../../../code_snippets/api-guide/model/deep_training/template_types.html";
+import NodeTemplateTypes from "!!raw-loader!../../../../code_snippets/api-guide/model/deep_training/template_types.js";
+import JavaTemplateTypes from "!!raw-loader!../../../../code_snippets/api-guide/model/deep_training/template_types.java";
+import PHPTemplateTypes from "!!raw-loader!../../../../code_snippets/api-guide/model/deep_training/template_types.php";
+import CurlTemplateTypes from "!!raw-loader!../../../../code_snippets/api-guide/model/deep_training/template_types.sh";
+import CodeOutputExample1 from "!!raw-loader!../../../../code_snippets/api-guide/model/deep_training/output_example_1.js";
+
+Below is an example of how you would use the `ListModelTypes` endpoint to list the templates and hyperparameters available in a specific [model type](https://docs.clarifai.com/create-manage/models/manage#list-model-types). 
+
+<Tabs>
+
+<TabItem value="python" label="Python (gRPC)">
+    <CodeBlock className="language-python">{PythonTemplateTypes}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSTemplateTypes}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="Node.js (gRPC)">
+    <CodeBlock className="language-javascript">{NodeTemplateTypes}</CodeBlock>
+</TabItem>
+
+<TabItem value="java" label="Java (gRPC)">
+    <CodeBlock className="language-java">{JavaTemplateTypes}</CodeBlock>
+</TabItem>
+
+<TabItem value="php" label="PHP (gRPC)">
+    <CodeBlock className="language-php">{PHPTemplateTypes}</CodeBlock>
+</TabItem>
+
+<!--
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlTemplateTypes}</CodeBlock>
+</TabItem>
+-->
+
+</Tabs>
+
+<details>
+  <summary>Raw Output Example</summary>
+    <CodeBlock className="language-text">{CodeOutputExample1}</CodeBlock>
+</details>
 
 
 import DocCardList from '@theme/DocCardList';
