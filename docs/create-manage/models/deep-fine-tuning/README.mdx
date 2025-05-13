@@ -1,0 +1,190 @@
+---
+description: Learn how to fine-tune pre-trained models
+---
+
+# Deep Fine-Tuning 
+
+**Learn how to fine-tune pre-trained models**
+<hr />
+
+
+Fine-tuning is a deep learning technique that refers to taking a pre-trained model and further training it on a new dataset or task. The term "fine-tuning" implies making small adjustments or refinements to the already learned representations in the pre-trained model rather than training from scratch. 
+
+Fine-tuning leverages the power of pre-trained models to improve their performance on a new, related task. It involves taking a pre-trained model, which was previously trained on a vast dataset for a general-purpose task, and tailoring it to a more specific task. 
+
+## Why Choose Deep Fine-Tuning?
+
+
+Clarifai offers a variety of pre-built models that are designed to help you create AI solutions quickly and efficiently. Clarifai models are the recommended starting point for many users because they offer incredibly fast training times, especially when you customize them using the [transfer learning](https://docs.clarifai.com/portal-guide/model/model-types/transfer-learning) model type.
+
+But there are some cases where accuracy and the ability to carefully target solutions takes priority over speed and ease of use. Additionally, you may need a model to learn new features not recognized by existing [Clarifai models](https://docs.clarifai.com/portal-guide/model/clarifai-models#clarifai-models-1). 
+
+For such cases, it is possible to "deep fine-tune" your custom models and integrate them directly within your [workflows](https://docs.clarifai.com/portal-guide/workflows/working-with-workflows).
+
+You might consider deep fine-tuning if:
+
+* You have a custom tailored dataset. This will help you to tailor the model to a specific application or domain, such as customizing it with proprietary data from a private company.
+* You have accurate labels. This provides a strong foundation for training your models, resulting in improved performance, reduced errors, and better alignment with the desired task or domain.
+* You have the expertise and time to fine-tune models. So, you can modify the model's behavior to eliminate unwanted traits and instill desired ones.
+* You want to reduce hallucinations, especially when presenting the model with questions or prompts it hasn't encountered during its initial training.
+
+
+## Types of Deep Fine-Tuned Models
+
+To create a deep fine-tuned model using the Clarifai API, you need to specify the [type of model](https://docs.clarifai.com/portal-guide/model/model-types/) using the `model_type_id` parameter⁠. 
+
+:::tip
+
+You can use the [`ListModelTypes`](https://docs.clarifai.com/create-manage/models/manage#list-model-types) method to learn more about the available model types and their hyperparameters.
+
+:::
+
+Here some types of deep fine-tuned models you can create:
+
+- **Visual classifier** (`visual-classifier`) — Create this model to classify images and video frames into a set of concepts. 
+- **Visual detector** (`visual-detector`) — Create this model to detect bounding box regions in images or video frames and then classify the detected images. You can also send the image regions to an image cropper model to create a new cropped image.
+- **Visual embedder** (`visual-embedder`) — Create this model to transform images and video frames into "high level" vector representation understood by our AI models. These embeddings enable visual search and can be used as base models to train other models.
+- **Visual segmenter** (`visual-segmenter`) — Create this model to segment a per-pixel mask in images where things are and then classify objects, descriptive words, or topics within the masks.
+-  **Visual anomaly heatmap** (`visual-anomaly-heatmap`) — Create this model to perform visual anomaly detection with image-level score and anomaly heatmap.
+- **Text classifier** (`text-classifier`) — Create this model to classify text into a set of concepts.
+- **Text generator** (`text-to-text`) — Create this model to generate or convert text based on the provided text input. For example, you can create it for prompt completion, translation, or summarization tasks.
+
+## Number of Inputs
+
+In general, deep fine-tuned models need more data than those trained using the [transfer learning technique](https://docs.clarifai.com/portal-guide/model/model-types/transfer-learning/). 
+
+For most use cases, you’ll need at least 1000 training inputs, but it could be much more than this depending on your specific scenario.
+
+## Training Time Estimator
+
+Before initiating the training of a deep fine-tuned model, you can estimate the anticipated duration of the training process. This offers transparency in expected training costs. We currently charge $4 per hour.
+
+The exact training time estimate depends on the following:
+
+- Model type;
+- Model configuration details;
+- Dataset statistics;
+- Hardware.
+
+Clarifai’s Training Time Estimator is carefully designed to balance trade-offs between simplicity, generalization, and accuracy. 
+
+Notably, some model configurations and dataset statistics affect training time much more than others. For example, the number of items in the dataset directly affects the number of training steps in most configs, while the learning rate has no impact. 
+
+In addition, some parameters affect the time linearly (e.g. number of items), while others may be quadratic (e.g. image size), and others approximately linear, quadratic, or subquadratic—depending on the model (e.g. number of tokens in each input). 
+
+The current version of the Training Time Estimator provides estimates only for each template’s default parameter configuration, and we plan to include other parameter configurations in the upcoming releases. 
+
+The exact calculation based on the current AWS A10 GPU is:
+
+```text
+training time = int(round(A * num_inputs * num_epochs + B)) 
+```
+
+_Where A and B are parameter coefficients estimated specific to the template of each model type._
+
+### How to Estimate Training Time
+
+:::info
+
+Before using the [Python SDK](https://docs.clarifai.com/additional-resources/api-overview/python-sdk), [Node.js SDK](https://docs.clarifai.com/additional-resources/api-overview/nodejs-sdk), or any of our [gRPC clients](https://docs.clarifai.com/additional-resources/api-overview/grpc-clients), ensure they are properly installed on your machine. Refer to their respective installation guides for instructions on how to install and initialize them.
+
+:::
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+
+import PythonTrainingTimeEstimator from "!!raw-loader!../../../../code_snippets/api-guide/model/deep_training/training_time_estimator.py";
+import JSTrainingTimeEstimator from "!!raw-loader!../../../../code_snippets/api-guide/model/deep_training/training_time_estimator.html";
+import NodeTrainingTimeEstimator from "!!raw-loader!../../../../code_snippets/api-guide/model/deep_training/training_time_estimator.js";
+import PHPTrainingTimeEstimator from "!!raw-loader!../../../../code_snippets/api-guide/model/deep_training/training_time_estimator.php";
+import JavaTrainingTimeEstimator from "!!raw-loader!../../../../code_snippets/api-guide/model/deep_training/training_time_estimator.java";
+import CurlTrainingTimeEstimator from "!!raw-loader!../../../../code_snippets/api-guide/model/deep_training/training_time_estimator.sh";
+import CodeOutputExample2 from "!!raw-loader!../../../../code_snippets/api-guide/model/deep_training/output_example_2.js";
+
+import PythonIncrementalTrainModel from "!!raw-loader!../../../../code_snippets/api-guide/model/deep_training/incremental_train_model.py";
+import JSIncrementalTrainModel from "!!raw-loader!../../../../code_snippets/api-guide/model/deep_training/incremental_train_model.html";
+import JavaIncrementalTrainModel from "!!raw-loader!../../../../code_snippets/api-guide/model/deep_training/incremental_train_model.java";
+import CurlIncrementalTrainModel from "!!raw-loader!../../../../code_snippets/api-guide/model/deep_training/incremental_train_model.sh";
+
+
+When training a deep fine-tuned model using the UI, the estimated duration for the training process will be [displayed](https://docs.clarifai.com/create-manage/models/deep-fine-tuning/visual-classifier#step-5-create-the-model), rounded down to the nearest hour with 15-minute increments.
+
+Below is an example of how you can use the API to estimate the expected training time programmatically.
+
+
+:::tip
+
+Instead of providing an estimated input count, an alternative approach is to specify a dataset version ID in the `train_info.params` of the request. Here is an example: `params.update({"template":"MMDetection_FasterRCNN", "dataset_version_id":"dataset-version-1681974758238s"})`.
+
+:::
+
+<Tabs>
+
+<TabItem value="python" label="Python (gRPC)">
+    <CodeBlock className="language-python">{PythonTrainingTimeEstimator}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSTrainingTimeEstimator}</CodeBlock>
+</TabItem>
+
+<!--
+<TabItem value="nodejs" label="Node.js (gRPC)">
+    <CodeBlock className="language-javascript">{NodeTrainingTimeEstimator}</CodeBlock>
+</TabItem>
+-->
+
+<TabItem value="java" label="Java (gRPC)">
+    <CodeBlock className="language-java">{JavaTrainingTimeEstimator}</CodeBlock>
+</TabItem>
+
+<!--
+<TabItem value="php" label="PHP (gRPC)">
+    <CodeBlock className="language-php">{PHPTrainingTimeEstimator}</CodeBlock>
+</TabItem>
+-->
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlTrainingTimeEstimator}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+<details>
+  <summary>Raw Output Example</summary>
+    <CodeBlock className="language-text">{CodeOutputExample2}</CodeBlock>
+</details>
+
+## Incrementally Train a Model
+
+You can update existing deep fine-tuned models with new data without retraining from scratch. After training a model version, a checkpoint file is automatically saved. And you can initiate incremental training from that previously trained version checkpoint. 
+
+Below is an example of how you would perform incremental training from a specific version of a visual detector model. 
+
+
+<Tabs>
+
+<TabItem value="python" label="Python (gRPC)">
+    <CodeBlock className="language-python">{PythonIncrementalTrainModel}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSIncrementalTrainModel}</CodeBlock>
+</TabItem>
+
+<TabItem value="java" label="Java (gRPC)">
+    <CodeBlock className="language-java">{JavaIncrementalTrainModel}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlIncrementalTrainModel}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>

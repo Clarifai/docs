@@ -24,42 +24,6 @@ import CO12 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchest
 import CL4 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/cli_create_deployment.sh";
 import CO15 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/init_deployment.py";
 
-## **Via the API**
-
-### Create a Deployment
-
-To deploy a model within a nodepool you've created, provide the `deployment_id` and `config_filepath` parameters to the `create_deployment` method of the `Nodepool` class.
-
-You can learn how to create the `deployment_config.yaml` file, which contains the deployment configuration details, [here](clusters-nodepools.md#set-up-project-directory).
-
-:::note
-
-Each model or workflow can only have one deployment per nodepool.
-
-:::
-
-<Tabs>
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python">{CO12}</CodeBlock>
-</TabItem>
-<TabItem value="bash" label="CLI">
-    <CodeBlock className="language-yaml">{CL4}</CodeBlock>
-</TabItem>
-</Tabs>
-
-After creating it, initialize the `Deployment` class by providing the `user_id` and `deployment_id` parameters. 
-
-<Tabs>
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python">{CO15}</CodeBlock>
-</TabItem>
-</Tabs>
-
-:::tip Model Inferencing
-
-Once your model is deployed, you can use it for [inferencing](https://docs.clarifai.com/compute/models/model-inference) by calling the appropriate prediction methods. Note that you need to specify the `deployment_id` parameter for ensure proper routing and execution of your prediction call. 
-
-:::
 
 ## **Via the UI**
 
@@ -98,6 +62,7 @@ You’ll be redirected to a page where you can customize the compute configurati
     - **Scale Down Delay** — This sets the waiting period (in seconds) before reducing resources after a demand decrease. Note that your nodepool will only scale down to the minimum number of replica(s) configured.
     - **Traffic History Timeframe** — This defines the traffic history period (in seconds) that your deployment will review before making scaling decisions.
     - **Scale To Zero Delay** — This sets the idle time (in seconds) before scaling down to zero replicas after inactivity.
+    - **Disable Nodepool Packing** — Enabling this option restricts deployments to a single model replica per node. While this can be useful for specific performance needs, it may lead to underutilized nodes and increased costs due to reduced resource efficiency.
    
 After completing the setup, click the **Deploy Model** button at the bottom of the page to create the deployment. 
 
@@ -108,3 +73,40 @@ You’ll then be redirected to the nodepool page, where your deployed model will
 You can find the deployment listed in the **Deployment** dropdown menu in the model's playground, where you can select it for [inferencing](https://docs.clarifai.com/compute/models/model-inference).
 
 ![ ](/img/compute-orchestration/compute-14-1.png)
+
+## **Via the API**
+
+### Create a Deployment
+
+To deploy a model within a nodepool you've created, provide the `deployment_id` and `config_filepath` parameters to the `create_deployment` method of the `Nodepool` class.
+
+You can learn how to create the `deployment_config.yaml` file, which contains the deployment configuration details, [here](clusters-nodepools.md#set-up-project-directory).
+
+:::note
+
+Each model or workflow can only have one deployment per nodepool.
+
+:::
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CO12}</CodeBlock>
+</TabItem>
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-yaml">{CL4}</CodeBlock>
+</TabItem>
+</Tabs>
+
+After creating it, initialize the `Deployment` class by providing the `user_id` and `deployment_id` parameters. 
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CO15}</CodeBlock>
+</TabItem>
+</Tabs>
+
+:::tip Model Inferencing
+
+Once your model is deployed, you can use it for [inferencing](https://docs.clarifai.com/compute/models/model-inference) by calling the appropriate prediction methods. Note that you need to specify the `deployment_id` parameter for ensure proper routing and execution of your prediction call. 
+
+:::
