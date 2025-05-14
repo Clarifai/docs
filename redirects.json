@@ -149,7 +149,7 @@
     "from": ["/portal-guide/inputs-manager/"]
   },
   {
-    "to": "/create/inputs/upload",
+    "to": "/create/inputs/upload/",
     "from": ["/api-guide/search/index-images-for-search", "/portal-guide/inputs-manager/supported-formats", "/portal-guide/inputs-manager/upload-inputs", "/api-guide/data/supported-formats", "/api-guide/data/create-get-update-delete"]
   },
   {
