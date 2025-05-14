@@ -110,11 +110,11 @@ const config = {
             items: [
               {
                 label: "Python SDK Reference",
-                to: "/additional-resources/api-references/api-reference",
+                to: "/resources/api-references/python",
               },
               {
                 label: "Node.js SDK Reference",
-                to: "/additional-resources/api-references/node-api-reference/"
+                to: "/resources/api-references/node/"
               }, 
               {
                 label: "Postman API Reference",

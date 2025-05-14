@@ -24,27 +24,27 @@
     "from": ["/clarifai-basics/applications/application-settings", "/sdk/create-apps"]
   },
   {
-    "to": "/additional-resources/authentication/",
+    "to": "/resources/authentication/",
     "from": ["/clarifai-basics/authentication/"]
   },
   {
-    "to": "/additional-resources/authentication/personal-access-tokens",
+    "to": "/resources/authentication/pat",
     "from": ["/clarifai-basics/authentication/personal-access-tokens"]
   },
   {
-    "to": "/additional-resources/authentication/app-specific-api-keys",
+    "to": "/resources/authentication/key",
     "from": ["/clarifai-basics/authentication/app-specific-api-keys"]
   },
   {
-    "to": "/additional-resources/authentication/authorize",
+    "to": "/resources/authentication/authorize",
     "from": ["/clarifai-basics/authentication/authorize"]
   },
   {
-    "to": "/additional-resources/authentication/scopes",
+    "to": "/resources/authentication/scopes",
     "from": ["/clarifai-basics/authentication/scopes"]
   },
   {
-    "to": "/additional-resources/authentication/factor-authentication",
+    "to": "/resources/authentication/two-factor",
     "from": ["/clarifai-basics/authentication/factor-authentication"]
   },
   {
@@ -52,11 +52,11 @@
     "from": ["/clarifai-basics/app-templates"]
   },
   {
-    "to": "/additional-resources/glossary/",
+    "to": "/resources/glossary/",
     "from": ["/glossary/general-ai/"]
   },
   {
-    "to": "/additional-resources/glossary/generative-ai",
+    "to": "/resources/glossary/generative-ai",
     "from": ["/glossary/generative-ai"]
   },
   {
@@ -93,47 +93,47 @@
     "from": ["/portal-guide/compute-orchestration/cloud-instances"]
   },
   {
-    "to": "/additional-resources/api-overview/python-sdk",
+    "to": "/resources/api-overview/python-sdk",
     "from": ["/sdk/python-installation"]
   },
   {
-    "to": "/additional-resources/api-overview/cli",
+    "to": "/resources/api-overview/cli",
     "from": ["/sdk/cli"]
   },
   {
-    "to": "/additional-resources/api-overview/nodejs-sdk",
+    "to": "/resources/api-overview/nodejs-sdk",
     "from": ["/sdk/node-js-installation"]
   },
   {
-    "to": "/additional-resources/api-overview/",
+    "to": "/resources/api-overview/",
     "from": ["/api-guide/api-overview/"]
   },
   {
-    "to": "/additional-resources/api-overview/rate-limits",
+    "to": "/resources/api-overview/rate-limits",
     "from": ["/api-guide/api-overview/rate-limits"]
   },
   {
-    "to": "/additional-resources/api-references/api-reference",
+    "to": "/resources/api-references/python",
     "from": ["/sdk/api-reference"]
   },
   {
-    "to": "/additional-resources/api-references/node-api-reference/",
+    "to": "/resources/api-references/node/",
     "from": ["/sdk/node-api-reference/"]
   },
   {
-    "to": "/additional-resources/api-references/postman",
+    "to": "/resources/api-references/postman",
     "from": ["/api-guide/api-overview/helpful-api-resources/using-postman-with-clarifai-apis", "/api-guide/api-overview/helpful-api-resources"]
   },
   {
-    "to": "/additional-resources/api-overview/status-codes",
+    "to": "/resources/api-overview/status-codes",
     "from": ["/api-guide/api-overview/status-codes"]
   },
   {
-    "to": "/additional-resources/api-overview/pagination",
+    "to": "/resources/api-overview/pagination",
     "from": ["/api-guide/api-overview/pagination"]
   },
   {
-    "to": "/additional-resources/api-overview/grpc-clients",
+    "to": "/resources/api-overview/grpc-clients",
     "from": ["/api-guide/api-overview/api-clients/", "/api-guide/api-overview/api-clients/grpc-vs-http-channels"]
   },
   {
@@ -647,6 +647,54 @@
     {
       "to": "/create/labeling/ui/manage",
       "from": ["/create-manage/labeling/ui/manage"]
+    },
+    {
+      "to": "/resources/api-overview/",
+      "from": ["/additional-resources/api-overview/"]
+    },
+    {
+      "to": "/resources/api-overview/python-sdk",
+      "from": ["/additional-resources/api-overview/python-sdk"]
+    },
+    {
+      "to": "/resources/api-overview/nodejs-sdk",
+      "from": ["/additional-resources/api-overview/nodejs-sdk"]
+    },
+    {
+      "to": "/resources/api-overview/cli",
+      "from": ["/additional-resources/api-overview/cli"]
+    },
+    {
+      "to": "/resources/api-overview/grpc-clients",
+      "from": ["/additional-resources/api-overview/grpc-clients"]
+    },
+    {
+      "to": "/resources/api-overview/status-codes",
+      "from": ["/additional-resources/api-overview/status-codes"]
+    },
+    {
+      "to": "/resources/api-overview/pagination",
+      "from": ["/additional-resources/api-overview/pagination"]
+    },
+    {
+      "to": "/resources/api-references/",
+      "from": ["/additional-resources/api-references/"]
+    },
+    {
+      "to": "/resources/api-references/python",
+      "from": ["/additional-resources/api-references/api-reference"]
+    },
+    {
+      "to": "/resources/api-references/node/",
+      "from": ["/additional-resources/api-references/node-api-reference/"]
+    },
+    {
+      "to": "/resources/api-references/postman",
+      "from": ["/additional-resources/api-references/postman"]
+    },
+    {
+      "to": "/resources/authentication/pat",
+      "from": ["/additional-resources/authentication/personal-access-tokens"]
     }
   
   
