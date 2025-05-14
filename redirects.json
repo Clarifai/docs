@@ -12,15 +12,15 @@
     ]
   },
   {
-    "to": "/create-manage/applications/",
+    "to": "/create/applications/",
     "from": ["/clarifai-basics/applications/"]
   },
   {
-    "to": "/create-manage/applications/create",
+    "to": "/create/applications/create",
     "from": ["/clarifai-basics/applications/create-an-application"]
   },
   {
-    "to": "/create-manage/applications/manage",
+    "to": "/create/applications/manage",
     "from": ["/clarifai-basics/applications/application-settings", "/sdk/create-apps"]
   },
   {
@@ -48,7 +48,7 @@
     "from": ["/clarifai-basics/authentication/factor-authentication"]
   },
   {
-    "to": "/create-manage/applications/templates",
+    "to": "/create/applications/templates",
     "from": ["/clarifai-basics/app-templates"]
   },
   {
@@ -137,47 +137,47 @@
     "from": ["/api-guide/api-overview/api-clients/", "/api-guide/api-overview/api-clients/grpc-vs-http-channels"]
   },
   {
-    "to": "/create-manage/applications/manage#collaborators",
+    "to": "/create/applications/manage#collaborators",
     "from": ["/clarifai-basics/applications/collaboration"]
   }, 
   {
-    "to": "/create-manage/inputs/manage",
+    "to": "/create/inputs/manage",
     "from": ["/sdk/managing-inputs"]
   },
   {
-    "to": "/create-manage/inputs/",
+    "to": "/create/inputs/",
     "from": ["/portal-guide/inputs-manager/"]
   },
   {
-    "to": "/create-manage/inputs/upload",
+    "to": "/create/inputs/upload",
     "from": ["/api-guide/search/index-images-for-search", "/portal-guide/inputs-manager/supported-formats", "/portal-guide/inputs-manager/upload-inputs", "/api-guide/data/supported-formats", "/api-guide/data/create-get-update-delete"]
   },
   {
-    "to": "/create-manage/search/ui/",
+    "to": "/create/search/ui/",
     "from": ["/portal-guide/psearch/"]
   },
   {
-    "to": "/create-manage/search/ui/visual",
+    "to": "/create/search/ui/visual",
     "from": ["/portal-guide/psearch/visual-search"]
   },
   {
-    "to": "/create-manage/search/ui/object",
+    "to": "/create/search/ui/object",
     "from": ["/portal-guide/psearch/prank"]
   },
   {
-    "to": "/create-manage/search/ui/text-search",
+    "to": "/create/search/ui/text-search",
     "from": ["/portal-guide/psearch/text-search"]
   },
   {
-    "to": "/create-manage/search/ui/combine-negate",
+    "to": "/create/search/ui/combine-negate",
     "from": ["/portal-guide/psearch/pcombine_or_negate"]
   },
   {
-    "to": "/create-manage/search/ui/filter",
+    "to": "/create/search/ui/filter",
     "from": ["/portal-guide/psearch/pfilter"]
   },
   {
-    "to": "/create-manage/search/",
+    "to": "/create/search/",
     "from": ["/api-guide/search/rank-filter-combine-or-negate"]
   },
   {
@@ -197,47 +197,47 @@
     "from": ["/compute/models/model-inference"]
   },
   {
-    "to": "/create-manage/search/api/",
+    "to": "/create/search/api/",
     "from": ["/api-guide/search/"]
   },  
   {
-    "to": "/create-manage/search/api/filter",
+    "to": "/create/search/api/filter",
     "from": ["/api-guide/search/filter"]
   },
   {
-    "to": "/create-manage/search/api/combine-negate",
+    "to": "/create/search/api/combine-negate",
     "from": ["/api-guide/search/combine-or-negate", "/api-guide/data/datasets/dataset-searches"]
   },
   {
-    "to": "/create-manage/search/api/",
+    "to": "/create/search/api/",
     "from": ["/sdk/Search/", "/sdk/Search/Advance-Search"]
   },
   {
-    "to": "/create-manage/search/api/rank",
+    "to": "/create/search/api/rank",
     "from": ["/sdk/Search/Ranks", "/api-guide/search/rank", "/api-guide/concepts/search-by-concept"]
   },
   {
-    "to": "/create-manage/search/api/filter",
+    "to": "/create/search/api/filter",
     "from": ["/sdk/Search/Filter"]
   },
   {
-    "to": "/create-manage/datasets/upload",
+    "to": "/create/datasets/upload",
     "from": ["/sdk/managing-datasets/upload-data"]
   },
   {
-    "to": "/create-manage/datasets/",
+    "to": "/create/datasets/",
     "from": ["/portal-guide/datasets/", "/portal-guide/datasets/create-get-update-delete"]
   },
   {
-    "to": "/create-manage/datasets/manage",
+    "to": "/create/datasets/manage",
     "from": [ "/api-guide/data/datasets/dataset-versions", "/sdk/managing-datasets/", "/api-guide/data/datasets/dataset-basics", "/api-guide/data/datasets/dataset-inputs"]
   },
   {
-    "to": "/create-manage/datasets/filters",
+    "to": "/create/datasets/filters",
     "from": ["/api-guide/data/datasets/dataset-filters"]
   },
   {
-    "to": "/create-manage/datasets/",
+    "to": "/create/datasets/",
     "from": ["/api-guide/data/datasets/", "/api-guide/data/", "/api-guide/annotate/training-data"]
   },
   {
@@ -257,79 +257,79 @@
     "from": ["/api-guide/predict/prediction-parameters"]
   },
   {
-    "to": "/create-manage/concepts/",
+    "to": "/create/concepts/",
     "from": ["/api-guide/concepts/"]
   },
   {
-    "to": "/create-manage/concepts/create",
+    "to": "/create/concepts/create",
     "from": ["/api-guide/concepts/create-get-update", "/portal-guide/inputs-manager/concepts", "/portal-guide/concepts/create-get-update-delete"]
   },
   {
-    "to": "/create-manage/concepts/concepts-relations",
+    "to": "/create/concepts/concepts-relations",
     "from": ["/api-guide/concepts/knowledge_graph", "/sdk/advanced-concept-management"]
   },
   {
-    "to": "/create-manage/labeling/ui/",
+    "to": "/create/labeling/ui/",
     "from": ["/portal-guide/inputs-manager/annotate"]
   },
   {
-    "to": "/create-manage/labeling/ui/bulk",
+    "to": "/create/labeling/ui/bulk",
     "from": ["/portal-guide/inputs-manager/bulk-labeling"]
   },
   {
-    "to": "/create-manage/labeling/ui/tasks/",
+    "to": "/create/labeling/ui/tasks/",
     "from": ["/portal-guide/labeling-tasks/"]
   },
   {
-    "to": "/create-manage/labeling/ui/tasks/create",
+    "to": "/create/labeling/ui/tasks/create",
     "from": ["/portal-guide/labeling-tasks/create-a-task"]
   },
   {
-    "to": "/create-manage/labeling/ui/tasks/auto",
+    "to": "/create/labeling/ui/tasks/auto",
     "from": ["/portal-guide/labeling-tasks/auto-annotation"]
   },
   {
-    "to": "/create-manage/labeling/ui/tasks/review",
+    "to": "/create/labeling/ui/tasks/review",
     "from": ["/portal-guide/labeling-tasks/review"]
   },
   {
-    "to": "/create-manage/labeling/ui/tasks/tools",
+    "to": "/create/labeling/ui/tasks/tools",
     "from": ["/portal-guide/labeling-tasks/labeling-tools"]
   },
   {
-    "to": "/create-manage/labeling/ui/tasks/positive-negative",
+    "to": "/create/labeling/ui/tasks/positive-negative",
     "from": ["/portal-guide/labeling-tasks/positive-and-negative-annotations"]
   },
   {
-    "to": "/create-manage/labeling/ui/",
+    "to": "/create/labeling/ui/",
     "from": ["/portal-guide/input-viewer/"]
   },
   {
-    "to": "/create-manage/labeling/ui/create",
+    "to": "/create/labeling/ui/create",
     "from": ["/portal-guide/input-viewer/annotate"]
   },
   {
-    "to": "/create-manage/labeling/ui/ai-assist",
+    "to": "/create/labeling/ui/ai-assist",
     "from": ["/portal-guide/input-viewer/ai-assist"]
   },
   {
-    "to": "/create-manage/labeling/ui/object-tracking",
+    "to": "/create/labeling/ui/object-tracking",
     "from": ["/portal-guide/input-viewer/object-tracking"]
   },
   {
-    "to": "/create-manage/labeling/api/",
+    "to": "/create/labeling/api/",
     "from": ["/api-guide/annotate/"]
   },
   {
-    "to": "/create-manage/labeling/api/annotations",
+    "to": "/create/labeling/api/annotations",
     "from": ["/api-guide/annotate/annotations"]
   },
   {
-    "to": "/create-manage/labeling/api/positive-negative",
+    "to": "/create/labeling/api/positive-negative",
     "from": ["/api-guide/annotate/positive-and-negative-annotations"]
   },
   {
-    "to": "/create-manage/labeling/api/tasks",
+    "to": "/create/labeling/api/tasks",
     "from": ["/api-guide/annotate/tasks", "/api-guide/annotate/task-annotations"]
   },
   {
@@ -405,67 +405,67 @@
     "from": ["/portal-guide/model/local-model-upload"]
   },
   {
-    "to": "/create-manage/models/model-versions/",
+    "to": "/create/models/model-versions/",
     "from": ["/portal-guide/model-versions/"]
   },
   {
-    "to": "/create-manage/models/",
+    "to": "/create/models/",
     "from": ["/api-guide/model/model-types", "/api-guide/model/clarifai-models", "/api-guide/model/", "/portal-guide/model/model-types/", "/portal-guide/model/training-faqs", "/portal-guide/model/", "/portal-guide/model/clarifai-models", "/portal-guide/model/training-data", "/portal-guide/model/training-basics"]
   },  
   {
-    "to": "/create-manage/models/transfer-learning/",
+    "to": "/create/models/transfer-learning/",
     "from": ["/portal-guide/model/model-types/transfer-learning"]
   },
   {
-    "to": "/create-manage/models/deep-fine-tuning/",
+    "to": "/create/models/deep-fine-tuning/",
     "from": ["/portal-guide/model/deep-training/", "/api-guide/model/deep-training"]
   },
   {
-    "to": "/create-manage/models/deep-fine-tuning/",
+    "to": "/create/models/deep-fine-tuning/",
     "from": ["/sdk/Model-Training-Tutorial/"]
   },
   {
-    "to": "/create-manage/models/deep-fine-tuning/clusterer",
+    "to": "/create/models/deep-fine-tuning/clusterer",
     "from": ["/sdk/Model-Training-Tutorial/clusterer"]
   },
   {
-    "to": "/create-manage/models/transfer-learning/text-classifier",
+    "to": "/create/models/transfer-learning/text-classifier",
     "from": ["/sdk/Model-Training-Tutorial/embedding_classifier"]
   },
   {
-    "to": "/create-manage/models/deep-fine-tuning/text-classifier",
+    "to": "/create/models/deep-fine-tuning/text-classifier",
     "from": ["/sdk/Model-Training-Tutorial/text_classifier"]
   },
   {
-    "to": "/create-manage/models/deep-fine-tuning/text-to-text",
+    "to": "/create/models/deep-fine-tuning/text-to-text",
     "from": ["/sdk/Model-Training-Tutorial/text_to_text"]
   },
   {
-    "to": "/create-manage/models/deep-fine-tuning/visual-classifier",
+    "to": "/create/models/deep-fine-tuning/visual-classifier",
     "from": ["/sdk/Model-Training-Tutorial/visual_classifier"]
   },
   {
-    "to": "/create-manage/models/deep-fine-tuning/visual-detector",
+    "to": "/create/models/deep-fine-tuning/visual-detector",
     "from": ["/sdk/Model-Training-Tutorial/visual_detector"]
   },
   {
-    "to": "/create-manage/models/deep-fine-tuning/visual-embedder",
+    "to": "/create/models/deep-fine-tuning/visual-embedder",
     "from": ["/sdk/Model-Training-Tutorial/visual_embedder"]
   },
   {
-    "to": "/create-manage/models/deep-fine-tuning/visual-segmenter",
+    "to": "/create/models/deep-fine-tuning/visual-segmenter",
     "from": ["/sdk/Model-Training-Tutorial/visual_segmenter"]
   },     
   {
-    "to": "/create-manage/models/transfer-learning/visual-classifier",
+    "to": "/create/models/transfer-learning/visual-classifier",
     "from": ["/api-guide/model/custom-model-walkthrough"]
   },
   {
-    "to": "/create-manage/models/transfer-learning/text-classifier",
+    "to": "/create/models/transfer-learning/text-classifier",
     "from": ["/api-guide/model/custom-text-model-walkthrough"]
   },
   {
-    "to": "/create-manage/models/manage",
+    "to": "/create/models/manage",
     "from": ["/api-guide/model/create-get-update-and-delete"]
   },
   {
