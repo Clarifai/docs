@@ -1,6 +1,6 @@
 ---
 description: Evaluate visual or text classifiers trained using transfer learning
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # Transfer Learn Models

@@ -1,6 +1,6 @@
 ---
 description: Evaluate visual or text classifiers trained using deep fine-tuning
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # Classification Models

@@ -695,7 +695,80 @@
     {
       "to": "/resources/authentication/pat",
       "from": ["/additional-resources/authentication/personal-access-tokens"]
+    },
+    {
+      "to": "/resources/platform/",
+      "from": ["/portal-guide/portal-overview/"]
+    },
+    {
+      "to": "/create/models/evaluate/",
+      "from": ["/portal-guide/evaluate/", "/create/models/evaluate/improving-your-model", "/create/models/evaluate/evaluation-faqs", "/api-guide/evaluate/improving-your-model"]
+    },
+    {
+      "to": "/create/models/evaluate/transfer-learn",
+      "from": ["/portal-guide/evaluate/transfer-learn"]
+    },
+    {
+      "to": "/create/models/evaluate/classification",
+      "from": ["/portal-guide/evaluate/interpreting-evaluations"]
+    },
+    {
+      "to": "/create/models/evaluate/detection",
+      "from": ["/portal-guide/evaluate/detection"]
+    },
+    {
+      "to": "/create/models/evaluate/segmentation",
+      "from": ["/portal-guide/evaluate/segmentation"]
+    },
+    {
+      "to": "/create/models/evaluate/llms",
+      "from": ["/portal-guide/evaluate/llms"]
+    },
+    {
+      "to": "/create/models/evaluate/leaderboard",
+      "from": ["/portal-guide/evaluate/leaderboard"]
+    },
+    {
+      "to": "/create/models/evaluate/api",
+      "from": ["/sdk/model-train-and-eval", "/api-guide/evaluate/", "/api-guide/evaluate/interpreting-evaluations"]
+    },
+    {
+      "to": "/create/workflows/",
+      "from": ["/portal-guide/workflows/"]
+    },
+    {
+      "to": "/create/workflows/create",
+      "from": ["/portal-guide/workflows/working-with-workflows"]
+    },
+    {
+      "to": "/create/workflows/base-workflows",
+      "from": ["/portal-guide/workflows/base-workflows"]
+    },
+    {
+      "to": "/create/workflows/examples/",
+      "from": ["/portal-guide/workflows/common-workflows", "/portal-guide/workflows/common-workflows/visual-text-recognition-walkthrough"]
+    },
+    {
+      "to": "/create/workflows/examples/auto-annotation",
+      "from": ["/portal-guide/workflows/common-workflows/auto-annotation-walkthrough"]
+    },
+    {
+      "to": "/create/workflows/examples/yaml",
+      "from": ["/sdk/Building-Workflow-Graphs/"]
+    },
+    {
+      "to": "/create/workflows/inference",
+      "from": ["/sdk/Building-Workflow-Graphs/Inference-from-Workflows/"]
+    },
+    {
+      "to": "",
+      "from": [""]
+    },
+    {
+      "to": "",
+      "from": [""]
     }
+  
   
   
 

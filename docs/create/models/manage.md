@@ -1,6 +1,6 @@
 ---
 description: Learn how to get, update, search, and delete models
-sidebar_position: 2
+sidebar_position: 4
 ---
 
 # Manage Models

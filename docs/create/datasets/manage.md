@@ -168,6 +168,12 @@ import curlGetDatasetVersions from "!!raw-loader!../../../code_snippets/api-guid
 import curlChangeDatasetVersion from "!!raw-loader!../../../code_snippets/api-guide/data/datasets/change_dataset_version.sh";
 import curlDeleteDatasetVersion from "!!raw-loader!../../../code_snippets/api-guide/data/datasets/delete_dataset_version.sh";
 
+:::info
+
+Before using the [Python SDK](https://docs.clarifai.com/additional-resources/api-overview/python-sdk), [Node.js SDK](https://docs.clarifai.com/additional-resources/api-overview/nodejs-sdk), or any of our [gRPC clients](https://docs.clarifai.com/additional-resources/api-overview/grpc-clients), ensure they are properly installed on your machine. Refer to their respective installation guides for instructions on how to install and initialize them.
+
+:::
+
 ### List Datasets
 
 You can list the datasets in your app. 
