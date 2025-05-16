@@ -1,6 +1,7 @@
 ---
 description: Create computational graphs that include one or more models
 sidebar_position: 1
+toc_max_heading_level: 4
 ---
 
 # Create Workflows
@@ -18,21 +19,8 @@ This model-linking approach enables you to form a graph of interconnected models
 
 Different models support different input and output formats. Here are some common examples:
 
-#### Inputs
-
-* Concepts
-* Embeddings
-* Images
-* Images or videos
-* Regions
-
-#### Outputs
-
-* Concepts
-* Clusters
-* Regions
-
-
+- **Inputs** — Concepts, embeddings, images, videos, and regions.
+- **Outputs** — Concepts, clusters, and regions.
 
 ## Create via the UI
 

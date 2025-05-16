@@ -166,7 +166,7 @@ If you want to make a predict call with an external workflow that is outside the
 
 :::
 
-### Text Classifier
+### Text Classification
 
 You can use a workflow to categorize and analyze text data.
 
@@ -313,7 +313,7 @@ Let's illustrate how you would produce embeddings and clusters from text inputs 
 </details>
 
 
-### Visual Classifier
+### Visual Classification
 
 You can use a workflow for visual classification tasks. This enables accurate and efficient categorization of images based on learned visual patterns.
 
@@ -383,7 +383,7 @@ Note that the `base64` output representation of the image in bytes is already in
 </details>
 
 
-### Visual Segmenter
+### Visual Segmentation
 
 You can use a workflow for visual segmentation tasks. This enables precise categorization of distinct regions within an image.
 
@@ -502,7 +502,7 @@ Let's illustrate how you would get the sentiment of an audio input using Clarifa
 </details>
 
 
-### Visual Detector - Object Search
+### Visual Detection - Object Search
 
 You can use a workflow to detect common objects in images and generate embeddings to enable fast, accurate visual search based on each object’s unique features.
 
@@ -566,7 +566,7 @@ If your video exceeds these limits, you can split it into smaller segments for p
 </Tabs>
 
 
-### Visual Detector - Face Search
+### Visual Detection - Face Search
 
 You can use a workflow that combines face detection, recognition, and embedding to accurately identify facial landmarks. This approach not only detects faces but also generates distinctive embeddings, enabling efficient visual searches based on the unique features of each face.
 
@@ -584,7 +584,7 @@ You can use a workflow that combines face detection, recognition, and embedding 
 </Tabs>
 
 
-### Visual Detector  - Custom Workflow
+### Visual Detection  - Custom Workflow
 
 You can use a workflow to detect a wide range of common objects within a video. It processes each frame to identify and localize objects, generating regions of interest that outline where the detected objects appear.
 
@@ -621,7 +621,7 @@ You can provide data in multiple formats — such as text, images, or a combinat
 
 
 
-### Batch Predict - Workflows
+### Batch Prediction - Workflows
 
 You can use a workflow to process multiple inputs in a single request. You can submit a batch of data and receive comprehensive predictions for all inputs.
 

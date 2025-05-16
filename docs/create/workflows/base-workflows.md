@@ -1,13 +1,11 @@
 ---
-description: >-
-  Base workflows index your data and provide your app with a default knowledge
-  base.
+description: Index your data and provide your app with a default knowledge base
 sidebar_position: 3
 ---
 
 # Base Workflows
 
-**Base workflows index your data and provide your app with a default knowledge base**
+**Index your data and provide your app with a default knowledge base**
 <hr />
 
 The base workflow acts as the default knowledge base for your app and provides the basic structure for indexing your data. It gives you a "head start" when working with your data — by pre-indexing your inputs for search and by providing a default embedding for your custom models.
@@ -37,7 +35,9 @@ Alternatively, you can select the one that aligns most with your specific use ca
 
 ## How to Change a Base Workflow
 
-You can also change the base workflow once your app is created. You can choose a public workflow available in the Clarifai app [here](https://clarifai.com/clarifai/main/workflows) or a workflow you've created in your app. 
+You can change the base workflow once your app is created. You can choose a public workflow available in the Clarifai app [here](https://clarifai.com/clarifai/main/workflows) or a workflow you've created in your app. 
+
+### Update via the UI
 
 To change it, go to your [**App Settings**](https://docs.clarifai.com/clarifai-basics/applications/application-settings#base-workflow) page and select the one you prefer from the list that drops down when you click the workflows search box. 
 
@@ -51,6 +51,55 @@ After selecting your preferred base workflow, click the **Change Base Workflow**
 :::
 
 ![change base workflow](/img/community_2/base_workflow_change.png)
+
+### Update via the API
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+
+import PythonUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.py";
+import JSUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.html";
+import NodeUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.js";
+import JavaUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.java";
+import PHPUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.php";
+import CurlUpdateWorkflow from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/update_default_workflow.sh";
+
+Note that, as previously mentioned, updating the base workflow will re-index your app, processing all inputs through the new base workflow. 
+
+This may take some time, and could incur costs. You could avoid the costs by deleting all your inputs before updating the base workflow.
+
+<Tabs>
+
+<TabItem value="python" label="Python (gRPC)">
+    <CodeBlock className="language-python">{PythonUpdateWorkflow}</CodeBlock>
+</TabItem>
+
+<!--
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSUpdateWorkflow}</CodeBlock>
+</TabItem>
+-->
+
+<TabItem value="nodejs" label="Node.js (gRPC)">
+    <CodeBlock className="language-javascript">{NodeUpdateWorkflow}</CodeBlock>
+</TabItem>
+
+<TabItem value="java" label="Java (gRPC)">
+    <CodeBlock className="language-java">{JavaUpdateWorkflow}</CodeBlock>
+</TabItem>
+
+<!--
+<TabItem value="php" label="PHP (gRPC)">
+    <CodeBlock className="language-php">{PHPUpdateWorkflow}</CodeBlock>
+</TabItem>
+-->
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlUpdateWorkflow}</CodeBlock>
+</TabItem>
+
+</Tabs>
 
 ## Base Workflows Use Cases
 

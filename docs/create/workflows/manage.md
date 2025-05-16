@@ -323,7 +323,7 @@ Instead of `delete_all`, you can specify a list of workflow IDs to be deleted, u
 </Tabs>
 
                             
-### Export workflow
+### Export Workflow
 
 You can easily export your entire workflow as a YAML file. This local copy enables convenient editing and offers the flexibility to create, reuse, or manage workflows with ease.
 
