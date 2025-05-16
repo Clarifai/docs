@@ -24,27 +24,27 @@
     "from": ["/clarifai-basics/applications/application-settings", "/sdk/create-apps"]
   },
   {
-    "to": "/resources/authentication/",
+    "to": "/control/authentication/",
     "from": ["/clarifai-basics/authentication/"]
   },
   {
-    "to": "/resources/authentication/pat",
+    "to": "/control/authentication/pat",
     "from": ["/clarifai-basics/authentication/personal-access-tokens"]
   },
   {
-    "to": "/resources/authentication/key",
+    "to": "/control/authentication/key",
     "from": ["/clarifai-basics/authentication/app-specific-api-keys"]
   },
   {
-    "to": "/resources/authentication/authorize",
+    "to": "/control/authentication/authorize",
     "from": ["/clarifai-basics/authentication/authorize"]
   },
   {
-    "to": "/resources/authentication/scopes",
+    "to": "/control/authentication/scopes",
     "from": ["/clarifai-basics/authentication/scopes"]
   },
   {
-    "to": "/resources/authentication/two-factor",
+    "to": "/control/authentication/two-factor",
     "from": ["/clarifai-basics/authentication/factor-authentication"]
   },
   {
@@ -226,7 +226,7 @@
   },
   {
     "to": "/create/datasets/",
-    "from": ["/portal-guide/datasets/", "/portal-guide/datasets/create-get-update-delete"]
+    "from": ["/portal-guide/datasets/", "/portal-guide/datasets/create-get-update-delete", "/api-guide/data/"]
   },
   {
     "to": "/create/datasets/manage",
@@ -693,9 +693,270 @@
       "from": ["/additional-resources/api-references/postman"]
     },
     {
-      "to": "/resources/authentication/pat",
+      "to": "/control/authentication/pat",
       "from": ["/additional-resources/authentication/personal-access-tokens"]
+    },
+    {
+      "to": "/resources/platform/",
+      "from": ["/portal-guide/portal-overview/"]
+    },
+    {
+      "to": "/create/models/evaluate/",
+      "from": ["/portal-guide/evaluate/", "/create/models/evaluate/improving-your-model", "/create/models/evaluate/evaluation-faqs", "/api-guide/evaluate/improving-your-model"]
+    },
+    {
+      "to": "/create/models/evaluate/transfer-learn",
+      "from": ["/portal-guide/evaluate/transfer-learn"]
+    },
+    {
+      "to": "/create/models/evaluate/classification",
+      "from": ["/portal-guide/evaluate/interpreting-evaluations"]
+    },
+    {
+      "to": "/create/models/evaluate/detection",
+      "from": ["/portal-guide/evaluate/detection"]
+    },
+    {
+      "to": "/create/models/evaluate/segmentation",
+      "from": ["/portal-guide/evaluate/segmentation"]
+    },
+    {
+      "to": "/create/models/evaluate/llms",
+      "from": ["/portal-guide/evaluate/llms"]
+    },
+    {
+      "to": "/create/models/evaluate/leaderboard",
+      "from": ["/portal-guide/evaluate/leaderboard"]
+    },
+    {
+      "to": "/create/models/evaluate/api",
+      "from": ["/sdk/model-train-and-eval", "/api-guide/evaluate/", "/api-guide/evaluate/interpreting-evaluations"]
+    },
+    {
+      "to": "/create/workflows/",
+      "from": ["/portal-guide/workflows/", "/api-guide/workflows/"]
+    },
+    {
+      "to": "/create/workflows/create",
+      "from": ["/portal-guide/workflows/working-with-workflows", "/api-guide/workflows/input_nodes"]
+    },
+    {
+      "to": "/create/workflows/base-workflows",
+      "from": ["/portal-guide/workflows/base-workflows", "/api-guide/workflows/base-workflows"]
+    },
+    {
+      "to": "/create/workflows/examples/",
+      "from": ["/api-guide/workflows/common-workflows/", "/portal-guide/workflows/common-workflows", "/portal-guide/workflows/common-workflows/visual-text-recognition-walkthrough"]
+    },
+    {
+      "to": "/create/workflows/examples/auto-annotation-ui",
+      "from": ["/portal-guide/workflows/common-workflows/auto-annotation-walkthrough"]
+    },
+    {
+      "to": "/create/workflows/examples/yaml",
+      "from": ["/sdk/Building-Workflow-Graphs/"]
+    },
+    {
+      "to": "/create/workflows/inference",
+      "from": ["/sdk/Building-Workflow-Graphs/Inference-from-Workflows/", "/api-guide/workflows/workflow-predict"]
+    },
+    {
+      "to": "/create/workflows/manage",
+      "from": ["/api-guide/workflows/create-get-update-delete"]
+    },
+    {
+      "to": "/create/workflows/examples/auto-annotation-api",
+      "from": ["/api-guide/workflows/common-workflows/auto-annotation-walkthrough"]
+    },
+    {
+      "to": "/create/workflows/examples/knn-classifier",
+      "from": ["/api-guide/workflows/common-workflows/knn-face-classifier-workflow-walkthrough"]
+    },
+    {
+      "to": "/create/workflows/examples/prompter-model",
+      "from": ["/api-guide/workflows/common-workflows/prompter-model"]
+    },
+    {
+      "to": "/create/agent-system-operators/",
+      "from": ["/portal-guide/agent-system-operators/"]
+    },
+    {
+      "to": "/create/agent-system-operators/prompter",
+      "from": ["/portal-guide/agent-system-operators/prompter"]
+    },
+    {
+      "to": "/create/agent-system-operators/rag-prompter",
+      "from": ["/portal-guide/agent-system-operators/rag-prompter"]
+    },
+    {
+      "to": "/create/agent-system-operators/filter",
+      "from": ["/portal-guide/agent-system-operators/filter"]
+    },
+    {
+      "to": "/create/agent-system-operators/edit",
+      "from": ["/portal-guide/agent-system-operators/edit"]
+    },
+    {
+      "to": "/create/agent-system-operators/push",
+      "from": ["/portal-guide/agent-system-operators/push"]
+    },
+    {
+      "to": "/create/agent-system-operators/aggregate",
+      "from": ["/portal-guide/agent-system-operators/aggregate"]
+    },
+    {
+      "to": "/create/agent-system-operators/algorithmic-predict",
+      "from": ["/portal-guide/agent-system-operators/algorithmic-predict"]
+    },
+    {
+      "to": "/create/agent-system-operators/tracker",
+      "from": ["/portal-guide/agent-system-operators/tracker"]
+    },
+    {
+      "to": "/create/agent-system-operators/embed",
+      "from": ["/portal-guide/agent-system-operators/embed"]
+    },
+    {
+      "to": "/create/agent-system-operators/map",
+      "from": ["/portal-guide/agent-system-operators/map"]
+    },
+    {
+      "to": "/create/modules/",
+      "from": ["/portal-guide/modules/"]
+    },
+    {
+      "to": "/create/modules/create-install",
+      "from": ["/portal-guide/modules/create-install"]
+    },
+    {
+      "to": "/create/modules/manage",
+      "from": ["/portal-guide/modules/manage"]
+    },
+    {
+      "to": "/create/modules/secrets-management",
+      "from": ["/portal-guide/modules/secrets-management"]
+    },
+    {
+      "to": "/create/modules/examples/collectors",
+      "from": ["/portal-guide/modules/collectors"]
+    },
+    {
+      "to": "/create/modules/examples/ocr-evaluation",
+      "from": ["/portal-guide/modules/ocr-evaluation-module"]
+    },
+    {
+      "to": "/create/modules/examples/hyperparameter-sweeps",
+      "from": ["/portal-guide/modules/hyperparameter-sweeps"]
+    },
+    {
+      "to": "/create/modules/examples/collectors",
+      "from": ["/api-guide/data/collectors"]
+    },
+    {
+      "to": "/create/models/export",
+      "from": ["/sdk/advance-model-operations/model-export", "/sdk/advance-model-operations/"]
+    },
+    {
+      "to": "/resources/data-utils/",
+      "from": ["/sdk/data-utils/"]
+    },
+    {
+      "to": "/resources/data-utils/image-annotation-loader",
+      "from": ["/sdk/data-utils/image-annotation-loader"]
+    },
+    {
+      "to": "/resources/data-utils/ingestion-pipelines",
+      "from": ["/sdk/data-utils/ingestion-pipelines"]
+    },
+    {
+      "to": "/resources/sdk-examples",
+      "from": ["/sdk/notebook-examples"]
+    },
+    {
+      "to": "/resources/complementary-topics/rag",
+      "from": ["/sdk/rag"]
+    },
+    {
+      "to": "/resources/complementary-topics/",
+      "from": ["/portal-guide/advanced-topics/", "/api-guide/advanced-topics/"]
+    },
+    {
+      "to": "/resources/complementary-topics/csv-tsv",
+      "from": ["/portal-guide/advanced-topics/csv-and-tsv"]
+    },    
+    {
+      "to": "/resources/complementary-topics/patching",
+      "from": ["/api-guide/advanced-topics/patching"]
+    },
+    {
+      "to": "/resources/complementary-topics/batch-predict-csv",
+      "from": ["/api-guide/advanced-topics/batch-predict-csv-on-custom-text-model"]
+    },
+    {
+      "to": "/resources/complementary-topics/intelligent-document-processing",
+      "from": ["/api-guide/advanced-topics/intelligent-document-processing"]
+    },
+    {
+      "to": "/control/clarifai-organizations/",
+      "from": ["/portal-guide/clarifai-organizations/"]
+    },
+    {
+      "to": "/control/clarifai-organizations/members-teams",
+      "from": ["/portal-guide/clarifai-organizations/members-teams"]
+    },
+    {
+      "to": "/control/clarifai-organizations/apps-models-workflows",
+      "from": ["/portal-guide/clarifai-organizations/apps-models-workflows"]
+    },
+    {
+      "to": "/control/clarifai-organizations/security",
+      "from": ["/portal-guide/clarifai-organizations/security"]
+    },
+    {
+      "to": "/control/control-center/",
+      "from": ["/portal-guide/control-center/"]
+    },
+    {
+      "to": "/control/control-center/usage",
+      "from": ["/portal-guide/control-center/usage-dashboard"]
+    },
+    {
+      "to": "/control/control-center/costs",
+      "from": ["/portal-guide/control-center/costs-budget"]
+    },
+    {
+      "to": "/control/control-center/teams-logs",
+      "from": ["/portal-guide/control-center/teams-logs"]
+    },
+    {
+      "to": "/control/control-center/audit-log",
+      "from": ["/api-guide/audit-log/"]
+    },
+    {
+      "to": "/control/authentication/",
+      "from": ["/resources/authentication/"]
+    },
+    {
+      "to": "/control/authentication/pat",
+      "from": ["/resources/authentication/pat"]
+    },
+    {
+      "to": "/control/authentication/key",
+      "from": ["/resources/authentication/key"]
+    },
+    {
+      "to": "/control/authentication/authorize",
+      "from": ["/resources/authentication/authorize"]
+    },
+    {
+      "to": "/control/authentication/scopes",
+      "from": ["/resources/authentication/scopes"]
+    },
+    {
+      "to": "/control/authentication/two-factor",
+      "from": ["/resources/authentication/two-factor"]
     }
+  
   
   
 
