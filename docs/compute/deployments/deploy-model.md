@@ -55,9 +55,18 @@ You’ll be redirected to a page where you can customize the compute configurati
 
 - **Nodepool** — Select or create a nodepool to deploy your model considering your performance goals. The details of the dedicated cluster and nodepool you’ve selected will be displayed. 
 
+<a id="model-replica"></a>
+
 - **Advanced Settings** — Optionally, you can click the collapsible section to configure the following settings:
 
     - **Model Replicas** — This specifies the minimum and maximum range of model replicas to deploy, adjusting based on your performance needs and anticipated workload. Adding replicas enables horizontal scaling, where the workload is distributed across several instances of the model rather than relying on a single one. However, increasing them consumes more resources and may lead to higher costs. Each node in your nodepool can host multiple replicas, depending on model size and available resources.
+
+   :::tip node autoscaling range
+
+    [Click here](clusters-nodepools.md#node-range) to find out how to set up node autoscaling ranges to automatically adjust your infrastructure based on traffic demand.
+
+    :::
+
     - **Scale Up Delay** — This sets the waiting period (in seconds) before adding resources in response to rising demand.
     - **Scale Down Delay** — This sets the waiting period (in seconds) before reducing resources after a demand decrease. Note that your nodepool will only scale down to the minimum number of replica(s) configured.
     - **Traffic History Timeframe** — This defines the traffic history period (in seconds) that your deployment will review before making scaling decisions.
