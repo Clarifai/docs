@@ -1,5 +1,4 @@
 from clarifai.runners.models.model_class import ModelClass
-from clarifai.runners.utils.data_types import Text
 from typing import Iterator
 
 
@@ -10,27 +9,27 @@ class MyModel(ModelClass):
     """Load the model here."""
 
   @ModelClass.method
-  def predict(self, text1: Text = "") -> Text:
+  def predict(self, text1: str = "") -> str:
     """This is the method that will be called when the runner is run. It takes in an input and
     returns an output.
     """
 
-    output_text = text1.text + " Hello World!"
+    output_text = text1 + " Hello World!"
 
-    return Text(output_text)
+    return output_text
 
   @ModelClass.method
-  def generate(self, text1: Text = Text("")) -> Iterator[Text]:
+  def generate(self, text1: str = "") -> Iterator[str]:
     """Example yielding a whole batch of streamed stuff back."""
 
     for i in range(10):  # fake something iterating generating 10 times.
-      output_text = text1.text + f"Generate Hello World {i}"
-      yield Text(output_text)
+      output_text = text1 + f"Generate Hello World {i}"
+      yield output_text
 
   @ModelClass.method
-  def stream(self, input_iterator: Iterator[Text]) -> Iterator[Text]:
+  def stream(self, input_iterator: Iterator[str]) -> Iterator[str]:
     """Example yielding a whole batch of streamed stuff back."""
 
     for i, input in enumerate(input_iterator):
-      output_text = input.text + f"Stream Hello World {i}"
-      yield Text(output_text)
+      output_text = input + f"Stream Hello World {i}"
+      yield output_text
