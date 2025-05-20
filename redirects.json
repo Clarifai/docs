@@ -410,7 +410,7 @@
   },
   {
     "to": "/create/models/",
-    "from": ["/api-guide/model/model-types", "/api-guide/model/clarifai-models", "/api-guide/model/", "/portal-guide/model/model-types/", "/portal-guide/model/training-faqs", "/portal-guide/model/", "/portal-guide/model/clarifai-models", "/portal-guide/model/training-data", "/portal-guide/model/training-basics"]
+    "from": ["/portal-guide/evaluate/improving-your-model", "/api-guide/model/model-types", "/api-guide/model/clarifai-models", "/api-guide/model/", "/portal-guide/model/model-types/", "/portal-guide/model/training-faqs", "/portal-guide/model/", "/portal-guide/model/clarifai-models", "/portal-guide/model/training-data", "/portal-guide/model/training-basics"]
   },  
   {
     "to": "/create/models/transfer-learning/",
@@ -955,7 +955,12 @@
     {
       "to": "/control/authentication/two-factor",
       "from": ["/resources/authentication/two-factor"]
+    },
+    {
+      "href": "https://www.clarifai.com/blog/clarifai-11.4-faster-model-deployment-inference-with-python-sdk",
+      "from": ["/resources/authentication/two-factor/testone"]
     }
+  
   
   
   

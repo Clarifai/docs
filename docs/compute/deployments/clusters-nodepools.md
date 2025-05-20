@@ -80,9 +80,17 @@ These are the configurations options you can set for your new nodepool:
 
 ![ ](/img/compute-orchestration/compute-8.png)
 
+<a id="node-range"></a>
+
 - **Instance Configuration** — Provide an ID that helps identify the nodepool to use when deploying your models. We recommend an easy-to-remember ID that’s related to the nodepool’s use case. Optionally, provide a short description that summarizes the details related to the nodepool. 
 
 - **Node Autoscaling Range** — Specify the minimum and maximum number of nodes that the system can automatically scale within a nodepool, based on the workload demand. This means that the system will spin up more nodes to handle increased traffic or scale down when demand decreases to optimize costs. For instance, you can set your nodepool to scale between 1 and 5 nodes, depending on how many requests your model is processing. A minimum value of 1 (rather than 0) prevents cold start delays after inactivity, which is essential for meeting latency requirements, though it ensures that at least one node will always be running, which incurs compute costs. Alternatively, setting the minimum to 0 eliminates costs during idle periods but may introduce cold start delays when traffic resumes. 
+
+:::tip model replicas
+
+[Click here](deploy-model.md#model-replica) to learn how to configure model replicas to distribute your workload efficiently across multiple instances of a model.
+
+:::
 
 - **Instance Type** — Select the instance type you would like the deployment to run on.  You can find an explanation of the available instance types [here](https://docs.clarifai.com/compute/deployments/cloud-instances). 
 
