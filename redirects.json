@@ -957,7 +957,7 @@
       "from": ["/resources/authentication/two-factor"]
     },
     {
-      "href": "https://www.clarifai.com/blog/clarifai-11.4-faster-model-deployment-inference-with-python-sdk",
+      "to": "https://www.clarifai.com/blog/clarifai-11.4-faster-model-deployment-inference-with-python-sdk",
       "from": ["/resources/authentication/two-factor/testone"]
     }
   
