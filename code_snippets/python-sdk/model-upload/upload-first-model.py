@@ -2,7 +2,7 @@ from clarifai.runners.models.model_class import ModelClass
 
 
 class MyFirstModel(ModelClass):
-    """A custom model that adds 'Hello World' to the end of a text."""
+    """A custom model that adds the words 'Hello World' to the end of a text."""
 
     @ModelClass.method
     def predict(self, text1: str = "") -> str:
