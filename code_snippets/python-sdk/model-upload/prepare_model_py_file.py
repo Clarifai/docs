@@ -32,4 +32,7 @@ class MyModel(ModelClass):
 
     for i, input in enumerate(input_iterator):
       output_text = input + f"Stream Hello World {i}"
+
+
       yield output_text
+
