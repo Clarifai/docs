@@ -3,7 +3,7 @@ from typing import Iterator
 
 
 class MyModel(ModelClass):
-  """A custom runner that adds "Hello World" to the end of the text."""
+  """A custom runner that adds the words "Hello World" to the end of the text."""
 
   def load_model(self):
     """Load the model here."""
