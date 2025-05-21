@@ -11,4 +11,6 @@ class MyFirstModel(ModelClass):
         It takes in an input and returns an output.
         """
         output_text = text1 + " Hello World"
+
         return output_text
+ 

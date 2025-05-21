@@ -955,10 +955,6 @@
     {
       "to": "/control/authentication/two-factor",
       "from": ["/resources/authentication/two-factor"]
-    },
-    {
-      "to": "https://www.clarifai.com/blog/clarifai-11.4-faster-model-deployment-inference-with-python-sdk",
-      "from": ["/resources/authentication/two-factor/testone"]
     }
   
   
