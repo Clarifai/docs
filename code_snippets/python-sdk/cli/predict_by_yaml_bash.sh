@@ -1,1 +1,0 @@
-clarifai model predict --config <add-config-filepath-here>

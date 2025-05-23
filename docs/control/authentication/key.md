@@ -113,7 +113,7 @@ It's a good practice to load your API Key from an environment variable. Keeping 
 :::
 
 <Tabs>
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
      <CodeBlock className="language-python">{PythonKey}</CodeBlock>
 </TabItem>
 
