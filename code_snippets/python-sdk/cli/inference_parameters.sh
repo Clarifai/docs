@@ -1,1 +1,0 @@
-clarifai model predict --model_url https://clarifai.com/openai/whisper/models/whisper-large-v2 --url https://s3.amazonaws.com/samples.clarifai.com/featured-models/record_out+(3).wav --input_type audio --inference_params "{\"task\":\"transcribe\"}"

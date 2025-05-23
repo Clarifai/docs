@@ -1,1 +1,0 @@
-clarifai model predict --model_id llama2-7b-chat --user_id meta --app_id Llama-2 --url https://samples.clarifai.com/featured-models/llama2-prompt3.txt --input_type text

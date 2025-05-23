@@ -1,1 +1,0 @@
-clarifai model predict --model_url https://clarifai.com/anthropic/completion/models/claude-v2 --bytes "Human: Write a tweet on future of AI\nAssistant:" --input_type text

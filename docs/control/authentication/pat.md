@@ -80,7 +80,7 @@ import PythonPat from "!!raw-loader!../../../code_snippets/api-guide/authenticat
 import CurlPat from "!!raw-loader!../../../code_snippets/api-guide/authentication/pat.sh";
 
 <Tabs>
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python (gRPC)">
      <CodeBlock className="language-python">{PythonPat}</CodeBlock>
 </TabItem>
 
