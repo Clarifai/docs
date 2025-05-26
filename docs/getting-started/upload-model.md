@@ -12,7 +12,7 @@ The Clarifai platform allows you to upload custom models for a wide range of use
 
 Let’s walk through how to upload a simple custom model that appends the phrase `Hello World` to any input text.
 
-You can test the already uploaded model [here](https://clarifai.com/alfrick/docs-demos/models/my-first-model).
+<!--You can test the already uploaded model [here](https://clarifai.com/alfrick/docs-demos/models/my-first-model).-->
 
 :::tip
 
@@ -144,7 +144,7 @@ Once your model is successfully uploaded to Clarifai, you can start making predi
 
 <details>
   <summary>Output Example</summary>
-    <CodeBlock className="language-text">Text(text='Yes, I uploaded it! Hello World', url=None)</CodeBlock>
+    <CodeBlock className="language-text">Yes, I uploaded it! Hello World</CodeBlock>
 </details>
 
 

@@ -324,7 +324,7 @@ Additionally, you can configure various [inference parameters](https://docs.clar
 
 :::tip
 
-[Click here](https://github.com/Clarifai/runners-examples/tree/main/multimodal-models/pythonic-openai_server_vlm) to learn more how to make multimodal predictions, including how to use parameters like `chat_history` and `messages`.
+[Click here](https://github.com/Clarifai/runners-examples/tree/main/multimodal-models/openai_server_vlm) to learn more how to make multimodal predictions, including how to use parameters like `chat_history` and `messages`.
 
 :::
 
