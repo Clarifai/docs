@@ -150,7 +150,7 @@ Next, start a local development runner.
 
 If the runner doesn't detect the necessary context configurations in your environment, it will prompt you to create them using default values. This ensures that all essential components required for Local Dev Runners are properly set up or included in your configuration context, including:
 
-- A compute [cluster and nodepool](https://docs.clarifai.com/compute/deployments/clusters-nodepools) configured for Local Dev Runners. 
+- A compute cluster and nodepool configured for Local Dev Runners. 
 
 > **Note:** This cluster is created exclusively for Local Dev Runners. It is not designed to support other tasks and lacks features like autoscaling to handle variable traffic demands, among other cloud-specific capabilities. You also cannot use other types of clusters for Local Dev Runners — only the special cluster created for this purpose is supported.
 
