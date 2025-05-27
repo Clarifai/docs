@@ -10,7 +10,7 @@ sidebar_position: 2
 
 :::warning note
 
- These Advanced Inference Options are considered legacy and are only compatible with our older models. For more scalable and flexible predictions, we recommend using our [new inference](api.md) technique.
+ These Advanced Inference Options are considered legacy and are only compatible with our older models. For more scalable and flexible predictions, we recommend using our [new inference](https://docs.clarifai.com/compute/models/inference/api) technique.
 
 :::
 
