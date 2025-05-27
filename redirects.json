@@ -245,16 +245,12 @@
     "from": ["/portal-guide/input-viewer/predictions", "/portal-guide/ppredict/"]
   },
   {
-    "to": "/compute/models/inference/advanced",
-    "from": ["/sdk/Inference-from-AI-Models/Advance-Inference-Options", "/portal-guide/ppredict/generative-ai"]
+    "to": "/compute/models/inference/api-legacy/advanced",
+    "from": ["/compute/models/inference/advanced", "/api-guide/predict/prediction-parameters", "/sdk/Inference-from-AI-Models/Advance-Inference-Options", "/portal-guide/ppredict/generative-ai"]
   },
   {
     "to": "/compute/models/inference/api-legacy",
     "from": ["/api-guide/predict/embeddings","/api-guide/predict/multimodal-to-text","/api-guide/predict/audio","/api-guide/predict/llms","/api-guide/predict/text","/api-guide/predict/video","/api-guide/predict/images","/api-guide/predict/", "/api-guide/predict/multilingual-classification", "/sdk/Inference-from-AI-Models/", "/sdk/Inference-from-AI-Models/Image-as-Input", "/sdk/Inference-from-AI-Models/Text-as-Input", "/sdk/Inference-from-AI-Models/Audio-as-Input", "/sdk/Inference-from-AI-Models/Multimodal-as-Input"]
-  },
-  {
-    "to": "/compute/models/inference/advanced",
-    "from": ["/api-guide/predict/prediction-parameters"]
   },
   {
     "to": "/create/concepts/",
