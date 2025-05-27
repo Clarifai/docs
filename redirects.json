@@ -226,7 +226,7 @@
   },
   {
     "to": "/create/datasets/",
-    "from": ["/portal-guide/datasets/", "/portal-guide/datasets/create-get-update-delete", "/api-guide/data/"]
+    "from": ["/api-guide/data/datasets/", "/api-guide/annotate/training-data", "/portal-guide/datasets/", "/portal-guide/datasets/create-get-update-delete", "/api-guide/data/"]
   },
   {
     "to": "/create/datasets/manage",
@@ -235,11 +235,7 @@
   {
     "to": "/create/datasets/filters",
     "from": ["/api-guide/data/datasets/dataset-filters"]
-  },
-  {
-    "to": "/create/datasets/",
-    "from": ["/api-guide/data/datasets/", "/api-guide/data/", "/api-guide/annotate/training-data"]
-  },
+  },  
   {
     "to": "/compute/models/inference/ui",
     "from": ["/portal-guide/input-viewer/predictions", "/portal-guide/ppredict/"]
