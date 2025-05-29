@@ -8,7 +8,7 @@ os.environ["CLARIFAI_PAT"] = "YOUR_PAT_HERE"
 # Initialize with model URL
 model = Model(
     url="MODEL_URL_HERE",
-    deployment_id="DEPLOYMENT_ID_HERE"
+    # deployment_id="DEPLOYMENT_ID_HERE"
 )
 
 # client-side streaming

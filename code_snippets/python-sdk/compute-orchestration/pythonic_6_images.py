@@ -11,12 +11,14 @@ model = Model(
     # deployment_id="DEPLOYMENT_ID_HERE"
 )
 
-response = model.predict(
+response_stream = model.generate(
     prompt="Describe the image",
     image=Image(url="https://samples.clarifai.com/cat1.jpeg") 
 )
 
-print(response)
+for text_chunk in response_stream:
+    print(text_chunk, end="", flush=True)
+
 
 """
 # --- Predict using an image uploaded from a local machine ---
@@ -28,13 +30,14 @@ local_image_path = "path/to/your/image.jpg"  # Replace with the actual path to y
 with open(local_image_path, "rb") as f:
     image_bytes = f.read()
 
-response = model.predict(
+response_stream = model.generate(
     prompt="Describe the image",
     # Provide Image as bytes
     image=Image(bytes=image_bytes)
 )
 
-print(response)
+for text_chunk in response_stream:
+    print(text_chunk, end="", flush=True)
 
 # You can also convert a Pillow (PIL) Image object into a Clarifai Image data type 
 # image=Image.from_pil(pil_image)

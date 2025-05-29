@@ -1,7 +1,7 @@
 import { Model } from "clarifai-nodejs";
 
 const model = new Model({
-  url: "https://clarifai.com/qwen/qwenLM/models/Qwen3-30B-A3B-GGUF",
+  url: "https://clarifai.com/openai/chat-completion/models/o4-mini",
   authConfig: {
     pat: process.env.CLARIFAI_PAT,
   },
@@ -10,7 +10,10 @@ const model = new Model({
 const response = await model.predict({
   // see available methodNames using model.availableMethods()
   methodName: "predict",
-  prompt: "What is the future of AI?",
+  prompt: "Describe the image",
+  image: {
+    url: "https://samples.clarifai.com/cat1.jpeg",
+  },
 });
 
 console.log(JSON.stringify(response));

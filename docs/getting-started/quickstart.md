@@ -9,7 +9,7 @@ sidebar_position: 1
 <hr />
 
 <div style={{ "position":"relative","width": "100%","overflow": "hidden","padding-top": "56.25%"}}>
-<iframe width="900" height="500" style={{"position": "absolute","top": "0","left": "0","bottom": "0","right": "0","width": "100%","height": "100%",}} src="https://www.youtube.com/embed/4Cw9SdGPmDg" title="Introducing the AI Playground — Your LLM Battleground to Test Powerful AI Models!" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="900" height="500" style={{"position": "absolute","top": "0","left": "0","bottom": "0","right": "0","width": "100%","height": "100%",}} src="https://www.youtube.com/embed/8oWjmB3Bmqk" title="How to Use a Model on the Clarifai Platform (Playground or API)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
 <br/><br/>
@@ -135,6 +135,9 @@ For this example, let's use the [Qwen3](https://clarifai.com/qwen/qwenLM/models/
 <Tabs>
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{PythonSDKRequest}</CodeBlock>
+</TabItem>
+<TabItem value="node.js" label="Node.js SDK">
+    <CodeBlock className="language-javascript">{NodeSDKRequest}</CodeBlock>
 </TabItem>
 
 <!--
