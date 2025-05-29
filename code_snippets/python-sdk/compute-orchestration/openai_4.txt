@@ -1,0 +1,14 @@
+--- Initial LLM Call (Tool Recommendation) ---
+
+LLM recommended tool calls: [ChatCompletionMessageToolCall(id='toolu_01Mhqb1c7ne4GPKWY9eZtgxd', function=Function(arguments='{"location": "New York, United States"}', name='get_weather'), type='function')]
+
+Executing tool: get_weather({'location': 'New York, United States'}) -> {'location': 'New York', 'temperature': '20°C', 'conditions': 'Partly cloudy'}
+
+--- Second LLM Call (Summarizing Tool Output) ---
+
+Final Assistant's Response:
+The weather in New York today is:
+- **Temperature:** 20°C (68°F)
+- **Conditions:** Partly cloudy
+
+It's a pleasant day with mild temperatures and partly cloudy skies!

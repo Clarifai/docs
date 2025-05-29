@@ -28,6 +28,7 @@ import ModelPyFile from "!!raw-loader!../../code_snippets/python-sdk/model-uploa
 import ConfigFile from "!!raw-loader!../../code_snippets/python-sdk/model-upload/upload-first-model.yaml";
 import RequirementsFile from "!!raw-loader!../../code_snippets/python-sdk/model-upload/upload-first-model.txt";
 import PythonSDKRequest from "!!raw-loader!../../code_snippets/python-sdk/model-upload/predict-first-model.py";
+import NodeSDKRequest from "!!raw-loader!../../code_snippets/python-sdk/model-upload/predict-first-model.js";
 
 ## Step 1: Perform Prerequisites
 
@@ -139,6 +140,9 @@ Once your model is successfully uploaded to Clarifai, you can start making predi
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonSDKRequest}</CodeBlock>
+</TabItem>
+<TabItem value="node.js" label="Node.js SDK">
+    <CodeBlock className="language-javascript">{NodeSDKRequest}</CodeBlock>
 </TabItem>
 </Tabs>
 

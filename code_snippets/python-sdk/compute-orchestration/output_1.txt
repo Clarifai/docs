@@ -1,0 +1,22 @@
+Photosynthesis is the process by which certain organisms—primarily plants, algae, and some bacteria—convert light energy (usually from the sun) into chemical energy stored in sugars. In essence, these organisms capture carbon dioxide (CO₂) from the air and water (H₂O) from the soil, then use sunlight to drive a series of reactions that produce oxygen (O₂) as a by-product and synthesize glucose (C₆H₁₂O₆) or related carbohydrates.
+
+Key points:
+
+1. Light absorption
+   • Chlorophyll and other pigments in chloroplasts (in plants and algae) absorb photons, elevating electrons to higher energy states.
+
+2. Light-dependent reactions (in thylakoid membranes)
+   • Convert light energy into chemical energy in the form of ATP and NADPH.
+   • Split water molecules, releasing O₂.
+
+3. Calvin cycle (light-independent reactions, in the stroma)
+   • Use ATP and NADPH to fix CO₂ into organic molecules.
+   • Produce glyceraldehyde-3-phosphate (G3P), which can be converted into glucose and other carbs.
+
+Overall simplified equation:
+6 CO₂ + 6 H₂O + light energy → C₆H₁₂O₆ + 6 O₂
+
+Importance:
+• Generates the oxygen we breathe.
+• Forms the base of most food chains by producing organic matter.
+• Plays a critical role in the global carbon cycle and helps mitigate CO₂ in the atmosphere.

@@ -30,13 +30,27 @@ import CO8 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orche
 import CO9 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_9.py";
 import C10 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_10.py";
 
+import NodeAvailableMethods from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/available_methods.js";
+import NodeMethodSignatures from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/method_signatures.js";
+import NodePredictInterface from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/predict_interface.js";
+import NodePredictInterfaceImageInputs from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/predict_interface_image_inputs.js";
+import NodeStreamInterface from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/stream_interface.js";
 
+import OutputUnaryTextInputs from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/output_1.txt";
+import OutputUnaryImageInputs from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/output_2.txt";
+
+import CO6Images from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_6_images.py";
+import NodeStreamInterfaceImages from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/stream_interface_images.js";
+
+import PyModelClient from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/py_model_client.py";
+import NodeModelClient from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/node_model_client.js";
+import PyToolCalling from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/tool_calling.py";
 
 ## Prerequisites
 
-### Install Clarifai Package
+### Install Clarifai Packages
 
-Install the latest version of the `clarifai` Python SDK package. 
+- Install the latest version of the Clarifai [Python](https://github.com/Clarifai/clarifai-python/) SDK package:
 
 <Tabs>
 <TabItem value="bash" label="Bash">
@@ -44,11 +58,28 @@ Install the latest version of the `clarifai` Python SDK package.
 </TabItem>
 </Tabs>
 
+- Install the latest version of the Clarifai [Node.js](https://github.com/Clarifai/clarifai-nodejs) SDK package:
+
+<Tabs>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash"> npm install clarifai-nodejs </CodeBlock>
+</TabItem>
+</Tabs>
+
 ### Get a PAT Key
 
 You need a PAT (Personal Access Token) key to authenticate your connection to the Clarifai platform. You can generate the PAT key in your personal settings page by navigating to the [Security section](https://clarifai.com/settings/security). 
 
-You can then set the PAT as an environment variable using `CLARIFAI_PAT`.
+You can then set the PAT as an environment variable using `CLARIFAI_PAT`:
+
+<Tabs>
+<TabItem value="bash" label="Unix-Like Systems">
+    <CodeBlock className="language-bash"> export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
+</TabItem>
+<TabItem value="bash2" label="Windows">
+    <CodeBlock className="language-bash"> set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
+</TabItem>
+</Tabs>
 
 :::note tip
 
@@ -62,6 +93,19 @@ Before making a prediction with a model, it’s important to understand how its 
 
 You can learn more about the structure of model prediction methods [here](README.mdx#structure-of-prediction-methods).
 
+:::note Initializing the Model Client
+
+<Tabs>
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{PyModelClient}</CodeBlock>
+</TabItem>
+<TabItem value="node.js" label="Node.js SDK">
+    <CodeBlock className="language-javascript">{NodeModelClient}</CodeBlock>
+</TabItem>
+</Tabs>
+
+:::
+
 ### Get Available Methods
 
 You can list all the methods implemented in the model's configuration that are available for performing model inference.
@@ -70,29 +114,15 @@ You can list all the methods implemented in the model's configuration that are a
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO1}</CodeBlock>
 </TabItem>
+<TabItem value="node.js" label="Node.js SDK">
+    <CodeBlock className="language-javascript">{NodeAvailableMethods}</CodeBlock>
+</TabItem>
 </Tabs>
 
 <details>
   <summary>Example Output</summary>
     <CodeBlock className="language-text">dict_keys(['predict', 'generate', 'chat'])</CodeBlock>
 </details>
-
-:::note Initializing the Model Client
-
-When instantiating a model, you can use either its explicit IDs or its URL.
-
-```text
-# Initialize with explicit IDs
-model = Model(user_id="model_user_id", app_id="model_app_id", model_id="model_id"
-)
-```
-
-```text
-# Or initialize with model URL
-model = Model(url="https://clarifai.com/model_user_id/model_app_id/models/model_id")
-```
-
-:::
 
 ### Get Method Signature
 
@@ -103,6 +133,9 @@ A method signature defines the method's name, its input parameters (with types a
 <Tabs>
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO2}</CodeBlock>
+</TabItem>
+<TabItem value="node.js" label="Node.js SDK">
+    <CodeBlock className="language-javascript">{NodeMethodSignatures}</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -146,16 +179,16 @@ model = Model(
 
 This is the simplest form of prediction: a single input is sent to the model, and a single response is returned. It’s ideal for quick, non-streaming tasks, such as classifying an image or analyzing a short piece of text.
 
-> **NOTE**: Streaming refers to the continuous flow of data between a client and a model, rather than sending or receiving all the data at once.
+> **NOTE**: Streaming means that the response is streamed back token by token, rather than waiting for the entire completion to be generated before returning. This is useful for building interactive applications where you want to display the response as it's being generated.
 
-### Text inputs
+### Text Inputs
 
 Here is an example of a [model signature](https://docs.clarifai.com/compute/models/upload/#step-1-prepare-the-modelpy-file) configured on the server side for handling text inputs:
 
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">@ModelClass.method
-  def predict(self, text1: Text = "") -> Text:</CodeBlock>
+  def predict(self, prompt: str = "") -> str:</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -165,17 +198,24 @@ Here’s how you can make a corresponding unary-unary predict call from the clie
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO5Text}</CodeBlock>
 </TabItem>
+<TabItem value="node.js" label="Node.js SDK">
+    <CodeBlock className="language-javascript">{NodePredictInterface}</CodeBlock>
+</TabItem>
 </Tabs>
 
+<details>
+  <summary>Example Output</summary>
+    <CodeBlock className="language-text">{OutputUnaryTextInputs}</CodeBlock>
+</details>
 
-### Image inputs
+### Image Inputs
 
 Here is an example of a model signature configured on the server side for handling image inputs:
 
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">@ModelClass.method
-def predict_image(self, image: Image) -> Dict[str, float]:</CodeBlock>
+def predict(self, image: Image) -> str:</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -185,7 +225,15 @@ Here’s how you can make a corresponding unary-unary predict call from the clie
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO5}</CodeBlock>
 </TabItem>
+<TabItem value="node.js" label="Node.js SDK">
+    <CodeBlock className="language-javascript">{NodePredictInterfaceImageInputs}</CodeBlock>
+</TabItem>
 </Tabs>
+
+<details>
+  <summary>Example Output</summary>
+    <CodeBlock className="language-text">{OutputUnaryImageInputs}</CodeBlock>
+</details>
 
 :::tip
 
@@ -205,7 +253,7 @@ Here is an example of a model signature configured on the server side for handli
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">@ModelClass.method
-def generate(self, prompt: Text) -> Iterator[Text]:</CodeBlock>
+def generate(self, prompt: str) -> Iterator[str]:</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -215,7 +263,35 @@ Here’s how you can make a corresponding unary-stream predict call from the cli
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO6}</CodeBlock>
 </TabItem>
+<TabItem value="node.js" label="Node.js SDK">
+    <CodeBlock className="language-javascript">{NodeStreamInterface}</CodeBlock>
+</TabItem>
 </Tabs>
+
+### Image Inputs
+
+Here is an example of a model signature configured on the server side for handling image inputs:
+
+<Tabs>
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">@ModelClass.method
+def generate(self, image: Image) -> Iterator[str]:</CodeBlock>
+</TabItem>
+</Tabs>
+
+Here’s how you can make a corresponding unary-stream predict call from the client side:
+
+<Tabs>
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{CO6Images}</CodeBlock>
+</TabItem>
+<TabItem value="node.js" label="Node.js SDK">
+    <CodeBlock className="language-javascript">{NodeStreamInterfaceImages}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
+
 
 ## Stream-Stream Predict Call
 
@@ -231,7 +307,7 @@ Here is an example of a [model signature](https://docs.clarifai.com/compute/mode
 <Tabs>
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">@ModelClass.method
-  def stream(self, input_iterator: Iterator[Text]) -> Iterator[Text]:</CodeBlock>
+  def stream(self, input_iterator: Iterator[str]) -> Iterator[str]:</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -333,5 +409,17 @@ Here is an example:
 <Tabs>
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{C10}</CodeBlock>
+</TabItem>
+</Tabs>
+
+## Tool Calling
+
+Tool calling in LLMs is a capability that allows models to autonomously decide when and how to call external tools, functions, or APIs during a conversation — based on the user’s input and the context.
+
+You can learn more about it [here](https://docs.clarifai.com/compute/models/inference/open-ai#tool-calling). 
+
+<Tabs>
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{PyToolCalling}</CodeBlock>
 </TabItem>
 </Tabs>

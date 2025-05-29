@@ -6,7 +6,10 @@ from clarifai.runners.utils.data_types import Text
 os.environ["CLARIFAI_PAT"] = "YOUR_PAT_HERE"
 
 # Initialize with model URL
-model = Model(url="MODEL_URL_HERE", deployment_id="YOUR_DEPLOYMENT_ID_HERE")
+model = Model(
+    url="MODEL_URL_HERE", 
+    # deployment_id="YOUR_DEPLOYMENT_ID_HERE"
+)
 
 # Create a list of input Texts to simulate a stream
 input_texts = iter([
