@@ -44,6 +44,7 @@ import NodeStreamInterfaceImages from "!!raw-loader!../../../../code_snippets/py
 
 import PyModelClient from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/py_model_client.py";
 import NodeModelClient from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/node_model_client.js";
+import PyToolCalling from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/tool_calling.py";
 
 ## Prerequisites
 
@@ -178,7 +179,7 @@ model = Model(
 
 This is the simplest form of prediction: a single input is sent to the model, and a single response is returned. It’s ideal for quick, non-streaming tasks, such as classifying an image or analyzing a short piece of text.
 
-> **NOTE**: Streaming refers to the continuous flow of data between a client and a model, rather than sending or receiving all the data at once.
+> **NOTE**: Streaming means that the response is streamed back token by token, rather than waiting for the entire completion to be generated before returning. This is useful for building interactive applications where you want to display the response as it's being generated.
 
 ### Text Inputs
 
@@ -408,5 +409,17 @@ Here is an example:
 <Tabs>
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{C10}</CodeBlock>
+</TabItem>
+</Tabs>
+
+## Tool Calling
+
+Tool calling in LLMs is a capability that allows models to autonomously decide when and how to call external tools, functions, or APIs during a conversation — based on the user’s input and the context.
+
+You can learn more about it [here](https://docs.clarifai.com/compute/models/inference/open-ai#tool-calling). 
+
+<Tabs>
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{PyToolCalling}</CodeBlock>
 </TabItem>
 </Tabs>
