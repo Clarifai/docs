@@ -119,7 +119,8 @@ You can apply filters to target specific operation types.
 
 The Audit Logging feature currently supports tracking the following critical resource operations (_we're planning to support more resources in the future_):
 
-- **Organization and team membership activities** — Includes creating, updating, or deleting organizations and teams, sending invitations, and managing team users and applications.  
+- **Organization and team membership activities** — Includes creating, updating, or deleting organizations and teams, sending invitations, and managing team users and applications.
+- **Compute Orchestration** – Cover creating, modifying, deleting clusters, nodepools, deployments 
 - **Module activities** — Tracks the creation, updating, and deletion of modules. 
 - **Model activities** — Tracks actions such as creating, training, publishing, and deleting models.  
 - **Workflow activities** — Covers the creation, publishing, updating, and deletion of workflows.  
