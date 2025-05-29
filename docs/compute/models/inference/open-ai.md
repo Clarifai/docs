@@ -1,6 +1,7 @@
 ---
 description: Generate predictions using your deployed models
 sidebar_position: 1.1
+toc_max_heading_level: 4
 ---
 
 # OpenAI Inferences 
@@ -14,6 +15,8 @@ The built-in compatibility layer converts your OpenAI calls directly into Clarif
 
 This simplifies the integration process, as you don't need to rewrite your code specifically for Clarifai's native API structure if you're already familiar with OpenAI's. 
 
+> **Note** Usage-based billing is handled directly through Clarifai — not through OpenAI or any other external tool. Also, while most OpenAI parameters are supported, certain advanced features may be unavailable depending on the specific model or endpoint.
+
 
 
 import Tabs from '@theme/Tabs';
@@ -25,7 +28,12 @@ import Example2 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-
 import Example3 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/openai_3.py";
 import Example4 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/openai_4.txt";
 
-## Prerequisites
+import Example5 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/litellm_1.py";
+import Example6 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/litellm_2.py";
+
+## OpenAI
+
+### Prerequisites
 
 ### Install Clarifai Package
 
@@ -37,11 +45,11 @@ Install the latest version of the Clarifai [Python](https://github.com/Clarifai/
 </TabItem>
 </Tabs>
 
-### Get a PAT Key
+#### Get a PAT Key
 
 You need a PAT (Personal Access Token) key to authenticate your connection to the Clarifai platform. You can generate the PAT key in your personal settings page by navigating to the [Security section](https://clarifai.com/settings/security). 
 
-### Install Openai Package
+#### Install Openai Package
 
 Install the `openai` package:
 
@@ -51,7 +59,7 @@ Install the `openai` package:
 </TabItem>
 </Tabs>
 
-## Example
+### Example
 
 Here is an example that uses the OpenAI Python client library to interact with a Clarifai model via Clarifai's OpenAI-compatible API endpoint.
 
@@ -67,7 +75,7 @@ Here is an example that uses the OpenAI Python client library to interact with a
 I'm Claude, an AI assistant created by Anthropic. I'm here to help with a wide variety of tasks like answering questions, helping with analysis and research, creative projects, math and coding, and having conversations. Is there something specific I can help you with today?</CodeBlock>
 </details>
 
-## Tool Calling
+### Tool Calling
 
 Tool calling (formerly known as function calling) enables large language models (LLMs) to autonomously decide when and how to invoke external tools — such as APIs or custom functions — based on user input. 
 
@@ -86,3 +94,31 @@ Here is an example code that sets up a basic tool-calling interaction. It simula
     <CodeBlock className="language-python">{Example3}</CodeBlock>
     <CodeBlock className="language-text">{Example4}</CodeBlock>
 </details>
+
+## LiteLLM 
+
+You can use the [LiteLLM Python SDK](https://github.com/BerriAI/litellm) to directly route inference requests to their Clarifai-hosted models. This provides a lightweight, OpenAI-compatible interface for interacting with Clarifai's powerful LLMs using a single, unified API.
+
+To use Clarifai models via LiteLLM, you'll need to:
+
+- Install the Clarifai package and get a PAT key as mentioned earlier.
+- Install LiteLLM by running `pip install litellm`.
+- Specify Clarifai models by using the model path prefixed with `openai/` followed by the Clarifai model URL (e.g., `openai/https://clarifai.com/...`).
+
+### Example
+
+<Tabs>
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{Example5}</CodeBlock>
+</TabItem>
+</Tabs>
+
+### Tool Calling
+
+Clarifai models accessed via LiteLLM also support tool calling.
+
+<Tabs>
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{Example6}</CodeBlock>
+</TabItem>
+</Tabs>
