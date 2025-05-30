@@ -1,8 +1,8 @@
 build_info:
   python_version: '3.11'
 inference_compute_info:
-  cpu_limit: 1000m
-  cpu_memory: 1Gi
+  cpu_limit: 500m
+  cpu_memory: 500Mi
   num_accelerators: 0
 model:
   app_id: app-id

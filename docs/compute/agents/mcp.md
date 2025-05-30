@@ -14,7 +14,7 @@ Think of it as a specialized web API built specifically for LLM interactions.
 
 Clarifai allows you to build [MCP servers](https://www.clarifai.com/blog/mcp-vs-a2a-clearly-explained) by providing the necessary infrastructure and tools to define and deploy custom MCP servers. This allows you to seamlessly integrate your proprietary data sources, custom APIs, and application-specific functionalities with various LLM applications. 
 
-Let's illustrate how you can build an MCP server that answers questions and provides information using [Perplexity's](https://www.perplexity.ai/) web search capabilities. We'll build it with the [FastMCP](https://github.com/jlowin/fastmcp) framework, which allows for building MCP servers with minimal boilerplate. 
+Let's illustrate how you can build a simple MCP server.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
