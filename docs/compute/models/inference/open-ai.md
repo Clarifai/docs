@@ -33,6 +33,10 @@ import Example4 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-
 import Example5 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/litellm_1.py";
 import Example6 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/litellm_2.py";
 
+import VercelExample1 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/vercel_1.ts";
+import VercelExample2 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/vercel_2.ts";
+import VercelExample3 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/vercel_3.ts";
+
 ## OpenAI
 
 ### Prerequisites
@@ -105,6 +109,23 @@ Here is an example code that sets up a basic tool-calling interaction. It simula
     <CodeBlock className="language-python">{Example3}</CodeBlock>
     <CodeBlock className="language-text">{Example4}</CodeBlock>
 </details>
+
+## Vercel AI SDK
+
+The [Vercel AI SDK](https://vercel.com/docs/ai-sdk) provides a convenient way to interact with Clarifai's OpenAI-compatible API. You can leverage the [OpenAI provider](https://ai-sdk.dev/providers/ai-sdk-providers/openai) to interact with Clarifai models.
+
+### Example
+<Tabs>
+    <TabItem value="text-response" label="Text Response">
+        <CodeBlock className="language-typescript">{VercelExample1}</CodeBlock>
+    </TabItem>
+    <TabItem value="streaming" label="Streaming">
+        <CodeBlock className="language-typescript">{VercelExample2}</CodeBlock>
+    </TabItem>
+    <TabItem value="tool-calling" label="Tool Calling">
+        <CodeBlock className="language-typescript">{VercelExample3}</CodeBlock>
+    </TabItem>
+</Tabs>
 
 ## LiteLLM
 
