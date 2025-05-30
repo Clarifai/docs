@@ -16,6 +16,12 @@ Clarifai allows you to build [MCP servers](https://www.clarifai.com/blog/mcp-vs-
 
 Let's illustrate how you can build a simple MCP server.
 
+:::tip
+
+- [Click here](https://github.com/Clarifai/examples/tree/main/agents/mcp) to see some examples of MCP servers. 
+
+:::
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
