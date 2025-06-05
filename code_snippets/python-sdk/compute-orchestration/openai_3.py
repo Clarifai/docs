@@ -4,7 +4,7 @@ from openai import OpenAI
 # Initialize the OpenAI client, pointing to Clarifai's OpenAI-compatible API endpoint
 client = OpenAI(
     base_url="https://api.clarifai.com/v2/ext/openai/v1",
-    api_key="c02f72c90a884d2aa25be93c75a0e6d0",
+    api_key="YOUR_CLARIFAI_PAT_KEY_HERE",
 )
 
 # Define the external tools (functions) that the LLM can call.
