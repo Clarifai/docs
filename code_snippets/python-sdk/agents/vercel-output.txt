@@ -1,0 +1,9 @@
+[
+  {
+    type: 'tool-result',
+    toolCallId: 'toolu_01PLpW54QaJx6K7LRq1cu9RN',
+    toolName: 'weather',
+    args: { location: 'San Francisco' },
+    result: { location: 'San Francisco', temperature: 75 }
+  }
+]

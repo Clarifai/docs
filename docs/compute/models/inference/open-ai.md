@@ -9,15 +9,28 @@ toc_max_heading_level: 4
 **Make inferences with Clarifai using an OpenAI-compatible format**
 <hr />
 
-Clarifai provides an OpenAI-compatible API endpoint, which allows you to leverage your existing OpenAI API code and workflows to make inferences with Clarifai models, including those that integrate or wrap OpenAI models. 
+Clarifai provides an OpenAI-compatible API endpoint, which allows you to apply the widely adopted OpenAI standard to interact with Clarifai models. 
 
-The built-in compatibility layer converts your OpenAI calls directly into Clarifai API requests, letting you harness Clarifai's diverse models as custom tools in your OpenAI projects.
+With this integration capability, your existing OpenAI-compatible libraries can seamlessly connect with Clarifai's models, requiring minimal code changes.
 
-This simplifies the integration process, as you don't need to rewrite your code specifically for Clarifai's native API structure if you're already familiar with OpenAI's. 
+:::note
+
+This is the endpoint we offer: `https://api.clarifai.com/v2/ext/openai/v1`.
+
+:::
+
+This endpoint offers several advantages, including:
+
+- **Access to diverse models** — Harness Clarifai's rich array of models directly within your OpenAI projects, expanding your AI capabilities.
+- **Standardized interaction** — Interact with Clarifai-hosted models using familiar OpenAI API patterns and interfaces, reducing the learning curve and streamlining development.
+- **Enhanced flexibility** — Leverage the power of Clarifai's platform while maintaining the flexibility of your chosen OpenAI development environment.
+
 
 > **Note** Usage-based billing is handled directly through Clarifai — not through OpenAI or any other external tool. Also, while most OpenAI parameters are supported, certain advanced features may be unavailable depending on the specific model or endpoint.
 
-
+<!--
+Add Streaming heading
+-->
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -99,7 +112,7 @@ Here is an example code that sets up a basic tool-calling interaction. It simula
 
 You can use the [LiteLLM Python SDK](https://github.com/BerriAI/litellm) to directly route inference requests to their Clarifai-hosted models. This provides a lightweight, OpenAI-compatible interface for interacting with Clarifai's powerful LLMs using a single, unified API.
 
-To use Clarifai models via LiteLLM, you'll need to:
+To use Clarifai models via [LiteLLM](https://docs.litellm.ai/docs/providers/clarifai), you'll need to:
 
 - Install the Clarifai package and get a PAT key as mentioned earlier.
 - Install LiteLLM by running `pip install litellm`.
