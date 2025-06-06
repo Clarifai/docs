@@ -28,7 +28,8 @@ This feature is currently only available to users on our Professional and Enterp
 
 You can use the Teams & Logs tab to track the following critical resource operations (_we're planning to support more resources in the future_):
 
-- **Organization and team membership activities** — Includes creating, updating, or deleting organizations and teams, sending invitations, and managing team users and applications.  
+- **Organization and team membership activities** — Includes creating, updating, or deleting organizations and teams, sending invitations, and managing team users and applications.
+- **Compute Orchestration** – Cover creating, modifying, deleting clusters, nodepools, deployments 
 - **Collaborator activities** — Includes adding collaborators, editing their scopes, and removing them. 
 - **Application activities** — Includes creating, updating, duplicating, and deleting applications. 
 - **Model activities** — Tracks actions such as creating, training, publishing, and deleting models. 
