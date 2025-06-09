@@ -17,7 +17,7 @@ Let’s illustrate how you can build agents with the various toolkits we support
 
 :::note LiteLLM
 
-LiteLLM is a library that offers a unified API for working with various LLM providers. When using an agent toolkit that supports LiteLLM to access Clarifai's models, specify the model using the `openai/` prefix followed by the Clarifai model URL — for example:
+[LiteLLM](https://docs.litellm.ai/docs/providers/clarifai) is a library that offers a unified API for working with various LLM providers. When using an agent toolkit that supports LiteLLM to access Clarifai's models, specify the model using the `openai/` prefix followed by the Clarifai model URL — for example:
 `openai/deepseek-ai/deepseek-chat/models/DeepSeek-R1-Distill-Qwen-7B`.
 
 :::

@@ -4,12 +4,12 @@ sidebar_position: 2
 toc_max_heading_level: 4
 ---
 
-# Clarifai MCP Servers
+# MCP 
 
 **Build performant MCP Servers with Clarifai**
 <hr />
 
-The Model Context Protocol (MCP) is a standardized, secure framework for building servers that expose data and functionality to LLM-based applications. 
+[The Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction) is a standardized, secure framework for building servers that expose data and functionality to LLM-based applications. 
 Think of it as a specialized web API built specifically for LLM interactions.
 
 Clarifai allows you to build [MCP servers](https://www.clarifai.com/blog/mcp-vs-a2a-clearly-explained) by providing the necessary infrastructure and tools to define and deploy custom MCP servers. This allows you to seamlessly integrate your proprietary data sources, custom APIs, and application-specific functionalities with various LLM applications. 
