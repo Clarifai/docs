@@ -124,7 +124,7 @@ Here is an example code that sets up a basic tool-calling interaction. It simula
 
 ## Vercel AI SDK
 
-The [Vercel AI SDK](https://vercel.com/docs/ai-sdk) provides a convenient way to interact with Clarifai's OpenAI-compatible API. You can leverage the [OpenAI provider](https://ai-sdk.dev/providers/ai-sdk-providers/openai) to interact with Clarifai models.
+The [Vercel AI SDK](https://vercel.com/docs/ai-sdk) provides a convenient way to interact with Clarifai's OpenAI-compatible API. You can leverage the [@ai-sdk/openai-compatible](https://www.npmjs.com/package/@ai-sdk/openai-compatible) to interact with Clarifai models.
 
 ### Example
 <Tabs>
