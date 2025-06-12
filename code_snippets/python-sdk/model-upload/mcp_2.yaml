@@ -1,11 +1,11 @@
 build_info:
-  python_version: '3.11'
+  python_version: '3.12'
 inference_compute_info:
-  cpu_limit: 500m
-  cpu_memory: 500Mi
+  cpu_limit: '1'
+  cpu_memory: 1Gi
   num_accelerators: 0
 model:
-  app_id: app-id
-  id: model-id
-  model_type_id: mcp
-  user_id: user-id
+  app_id: YOUR_APP_ID_HERE
+  id: YOUR_MODEL_ID_HERE
+  model_type_id: text-to-text
+  user_id: YOUR_USER_ID_HERE

@@ -13,9 +13,10 @@ Clarifai provides an OpenAI-compatible API endpoint, which allows you to apply t
 
 With this integration capability, your existing OpenAI-compatible libraries can seamlessly connect with Clarifai's models, requiring minimal code changes.
 
-:::note
+:::info
 
-This is the endpoint we offer: `https://api.clarifai.com/v2/ext/openai/v1`.
+- This is the endpoint we offer: `https://api.clarifai.com/v2/ext/openai/v1`.
+- If you want to use your custom uploaded model for inference through the OpenAI-compatible API endpoint, you'll first need to deploy it to a [dedicated cluster and nodepool](https://docs.clarifai.com/compute/deployments/clusters-nodepools).
 
 :::
 

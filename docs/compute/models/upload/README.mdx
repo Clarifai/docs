@@ -1,13 +1,13 @@
 ---
-description: Import custom models, including from external sources like Hugging Face and OpenAI
+description: Build and import models, including from external sources like Hugging Face and OpenAI
 toc_min_heading_level: 2
 toc_max_heading_level: 5
 ---
 
 
-# Model Uploading
+# Build and Upload Models
 
-**Import custom models, including from external sources like Hugging Face and OpenAI**
+**Build and import models, including from sources like Hugging Face and OpenAI**
 
 <hr />
 
@@ -42,18 +42,6 @@ import PrepareModelPyFile from "!!raw-loader!../../../../code_snippets/python-sd
 import ConfigModelInfo from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/model_info.yaml";
 import HFCheckpoints from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/hf_checkpoints.yaml";
 import ModelConcepts from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/model_concepts.yaml";
-
-import ImageClassifierModel from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/image_classifier_model.py";
-import ImageClassifierRequirements from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/image_classifier_requirements.txt";
-import ImageClassifierConfig from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/image_classifier_config.yaml";
-
-import ImageDetectorModel from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/image_detector_model.py";
-import ImageDetectorRequirements from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/image_detector_requirements.txt";
-import ImageDetectorConfig from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/image_detector_config.yaml";
-
-import LLMModel from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/llm_model.py";
-import LLMRequirements from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/llm_requirements.txt";
-import LLMConfig from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/llm_config.yaml";
 
 import BuildLogs from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/build_logs.txt";
 
@@ -318,7 +306,7 @@ We recommend using either `torch==2.5.1` or `torch==2.4.1`. If your model requir
 
 Before uploading your model to the Clarifai platform, it's important to test it locally to catch any typos or misconfigurations in the code. 
 
-Learn how to test your models locally [here](https://docs.clarifai.com/compute/models/model-upload/test-models-locally/). 
+Learn how to  run and test your models locally [here](https://docs.clarifai.com/compute/models/upload/run-locally). 
 
 ### Step 5: Upload the Model to Clarifai
 
@@ -413,54 +401,7 @@ You can find various up-to-date model upload examples [here](https://github.com/
 
 :::
 
-### Llama-3.2-1B-Instruct
+- [Llama-3.2-1B-Instruct](https://github.com/Clarifai/runners-examples/tree/main/llm/hf-llama-3_2-1b-instruct)
+- [NSFW Image Classifier](https://github.com/Clarifai/runners-examples/tree/main/image-clasifier/nsfw-image-classifier)
+- [DETR Resnet Image Detector](https://github.com/Clarifai/runners-examples/tree/main/image-detector/detr-resnet-image-detection)
 
-<details>
-  <summary>model.py</summary>
-    <CodeBlock className="language-text">{LLMModel}</CodeBlock>
-</details>
-
-<details>
-  <summary>config.yaml</summary>
-    <CodeBlock className="language-text">{LLMConfig}</CodeBlock>
-</details>
-
-<details>
-  <summary>requirements.txt</summary>
-    <CodeBlock className="language-text">{LLMRequirements}</CodeBlock>
-</details>
-
-### NSFW Image Classifier
-
-
-<details>
-  <summary>model.py</summary>
-    <CodeBlock className="language-text">{ImageClassifierModel}</CodeBlock>
-</details>
-
-<details>
-  <summary>config.yaml</summary>
-    <CodeBlock className="language-text">{ImageClassifierConfig}</CodeBlock>
-</details>
-
-<details>
-  <summary>requirements.txt</summary>
-    <CodeBlock className="language-text">{ImageClassifierRequirements}</CodeBlock>
-</details>
-
-### DETR Resnet Image Detector
-
-<details>
-  <summary>model.py</summary>
-    <CodeBlock className="language-text">{ImageDetectorModel}</CodeBlock>
-</details>
-
-<details>
-  <summary>config.yaml</summary>
-    <CodeBlock className="language-text">{ImageDetectorConfig}</CodeBlock>
-</details>
-
-<details>
-  <summary>requirements.txt</summary>
-    <CodeBlock className="language-text">{ImageDetectorRequirements}</CodeBlock>
-</details>
