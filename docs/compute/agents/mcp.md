@@ -172,7 +172,7 @@ When Clarifai runs the model, it calls `get_server()` to load your MCP server an
 
 ### Step 3: Prepare `config.yaml` File
 
-The `config.yaml` file is used to configure the build and deployment settings for a custom AI model on the Clarifai platform. It tells Clarifai how to build your model's environment and where to place it within your account.
+The `config.yaml` file is used to configure the build and deployment settings for a custom model on the Clarifai platform. It tells Clarifai how to build your model's environment and where to place it within your account.
 
 This is the `config.yaml` file for the custom model (or, in this case, a server) we want to build:
 

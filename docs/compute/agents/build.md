@@ -11,7 +11,7 @@ toc_max_heading_level: 4
 
 Clarifai provides a streamlined developer experience that allows you to quickly prototype, build, and deploy  agentic AI applications. 
 
-As mentioned [here](https://docs.clarifai.com/compute/models/inference/open-ai), we provide an OpenAI-compatible API endpoint, which allows you to seamlessly integrate with popular agent development toolkits that support the OpenAI's API standard. This empowers you to create powerful, flexible, and tool-using AI agents with minimal configuration.
+We provide an [OpenAI-compatible API endpoint](https://docs.clarifai.com/compute/models/inference/open-ai), which allows you to seamlessly integrate with popular agent development toolkits that support the OpenAI's API standard. This empowers you to create powerful, flexible, and tool-using AI agents with minimal configuration.
 
 Let’s illustrate how you can build agents with the various toolkits we support.  
 
