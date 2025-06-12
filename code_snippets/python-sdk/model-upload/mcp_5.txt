@@ -1,0 +1,17 @@
+https://api.clarifai.com/v2/ext/mcp/v1/users/user-id/apps/app-id/models/model-id
+=== Sample MCP Server Client Examples ===
+
+Available tools:
+- calculate_sum: Add two numbers together
+- weather: Get the current weather information for the given city
+
+==================================================
+
+1. Calling 'calculate_sum' to add two numbers:
+Result of 10 + 25: 35.0
+
+==================================================
+
+2. Calling 'weather' for different cities:
+Weather in Philly: It's always sunny in Philadelphia!
+Weather in Seattle: It's always rainy in Seattle!

@@ -174,7 +174,7 @@ Below is an example of how to annotate a concept present anywhere in an image.
     <CodeBlock className="language-javascript">{JSAnnotateImagesConcepts}</CodeBlock>
 </TabItem>
 
-<TabItem value="nodejs" label="NodeJ.js (gRPC)">
+<TabItem value="nodejs" label="Node.js (gRPC)">
     <CodeBlock className="language-javascript">{NodeAnnotateImagesConcepts}</CodeBlock>
 </TabItem>
 

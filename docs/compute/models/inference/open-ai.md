@@ -13,7 +13,7 @@ Clarifai provides an OpenAI-compatible API endpoint, which allows you to apply t
 
 With this integration capability, your existing OpenAI-compatible libraries can seamlessly connect with Clarifai's models, requiring minimal code changes.
 
-:::note
+:::info
 
 Base URL for Clarifai's OpenAI endpoint: `https://api.clarifai.com/v2/ext/openai/v1`.
 
