@@ -1,13 +1,13 @@
-import { createOpenAICompatible } from "@ai-sdk/openai-compatible";
+import { createOpenAI } from "@ai-sdk/openai";
 import { generateText, tool } from "ai";
 import { z } from "zod";
 
-const clarifai = createOpenAICompatible({
+const openai = createOpenAI({
   baseURL: "https://api.clarifai.com/v2/ext/openai/v1",
   apiKey: process.env.CLARIFAI_PAT,
 });
 
-const model = clarifai(
+const model = openai(
   "https://clarifai.com/anthropic/completion/models/claude-sonnet-4",
 );
 

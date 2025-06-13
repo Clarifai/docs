@@ -107,7 +107,7 @@ your_model_directory/
 
 :::tip
 
-You can automatically generate these files by running this CLI command: `clarifai model init --model-type-id mcp`. You can then edit them as needed.
+You can automatically generate these files by running this CLI command: [`clarifai model init --model-type-id mcp`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init). You can then edit them as needed.
 
 :::
 

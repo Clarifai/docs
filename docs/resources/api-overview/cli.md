@@ -423,3 +423,75 @@ Here is an example:
 </Tabs>
 
 The Clarifai CLI will now use the `my_other_project` context for all subsequent commands (such as uploading models and generating predictions) until you switch it again.
+
+
+## Clarifai Model Init
+
+The `clarifai model init` command initializes a new Clarifai model directory structure. This command helps you set up the necessary files and folders to begin building a [custom model](https://docs.clarifai.com/compute/models/upload/) suitable for the Clarifai platform.
+
+<Tabs>
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash"> clarifai model init [OPTIONS] [MODEL_PATH] </CodeBlock>
+</TabItem>
+</Tabs>
+
+The command creates a standardized directory structure in the specified `MODEL_PATH`. If `MODEL_PATH` is not provided, the command will use the current directory by default.
+
+The generated structure includes:
+
+```
+├── 1/
+│   └── model.py
+├── requirements.txt
+└── config.yaml
+```
+
+* **`1/`** — A directory that holds the model file (_Note that the folder is named as 1_)
+    * **`model.py`** — This file will contain the Python code for your Clarifai model. You will define your model's logic and how it interacts with the Clarifai platform within this file.
+* **`requirements.txt`** — This file is used to list any Python dependencies your model requires. When your model is deployed, Clarifai will install these dependencies.
+* **`config.yaml`** — This YAML file is used for model configuration, allowing you to define settings and parameters for your model.
+
+### Options
+
+The `--model-type-id` option specifies the type of model class to initialize. This ensures that the generated files are tailored to the chosen model type. 
+
+The accepted values for this option are:
+
+* `mcp` — Initializes the model structure using `MCPModelClass`, which is used for models that will run on Clarifai using the [Model Context Protocol (MCP)](https://docs.clarifai.com/compute/agents/mcp).
+* `openai` — Initializes the model structure using `OpenAIModelClass`, intended for models that integrate with OpenAI's APIs.
+* If no value is provided, the command defaults to initializing the standard `ModelClass`.
+
+
+Here is how to initialize a model in the current directory with the default model class:
+
+<Tabs>
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash"> clarifai model init </CodeBlock>
+</TabItem>
+</Tabs>
+
+Here is how to initialize a model named `my_custom_model` in a new directory:
+
+<Tabs>
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash"> clarifai model init my_custom_model </CodeBlock>
+</TabItem>
+</Tabs>
+
+This will create a directory `my_custom_model` with the standard model structure inside it.
+
+Here is how to initialize an MCP model in the current directory:
+
+<Tabs>
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash"> clarifai model init --model-type-id mcp </CodeBlock>
+</TabItem>
+</Tabs>
+
+Here is how to initialize an OpenAI model in a specific path:
+
+<Tabs>
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash"> clarifai model init C:\Projects\MyOpenAIModel --model-type-id openai </CodeBlock>
+</TabItem>
+</Tabs>

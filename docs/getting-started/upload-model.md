@@ -73,6 +73,12 @@ You can follow the guide [here](https://huggingface.co/docs/hub/en/security-toke
 
 ## Step 2: Create Files
 
+:::tip
+
+You can automatically generate the required files by running the [`clarifai model init`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init) command in the terminal from your current directory. After the files are created, you can modify them as needed.
+
+:::
+
 Create a project directory and organize your files as indicated below to fit the requirements of uploading models to the Clarifai platform. 
 
 ```text
