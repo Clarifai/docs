@@ -9,7 +9,7 @@ toc_max_heading_level: 4
 **Make inferences with Clarifai using an OpenAI-compatible format**
 <hr />
 
-Clarifai provides an OpenAI-compatible API endpoint, which allows you to apply the widely adopted OpenAI standard to interact with Clarifai models. Any OpenAI-compatible library can use this endpoint to send requests to Clarifai.
+Clarifai provides an OpenAI-compatible API endpoint, which allows you to leverage your existing OpenAI API code and workflows to make inferences with Clarifai models, including those that integrate or wrap OpenAI models.
 
 With this integration capability, your existing OpenAI-compatible libraries can seamlessly connect with Clarifai's models, requiring minimal code changes.
 
@@ -121,6 +121,23 @@ Here is an example code that sets up a basic tool-calling interaction. It simula
     <CodeBlock className="language-python">{Example3}</CodeBlock>
     <CodeBlock className="language-text">{Example4}</CodeBlock>
 </details>
+
+## Vercel AI SDK
+
+The [Vercel AI SDK](https://vercel.com/docs/ai-sdk) provides a convenient way to interact with Clarifai's OpenAI-compatible API. You can leverage the [OpenAI provider](https://ai-sdk.dev/providers/ai-sdk-providers/openai) to interact with Clarifai models.
+
+### Example
+<Tabs>
+    <TabItem value="text-response" label="Text Response">
+        <CodeBlock className="language-typescript">{VercelExample1}</CodeBlock>
+    </TabItem>
+    <TabItem value="streaming" label="Streaming">
+        <CodeBlock className="language-typescript">{VercelExample2}</CodeBlock>
+    </TabItem>
+    <TabItem value="tool-calling" label="Tool Calling">
+        <CodeBlock className="language-typescript">{VercelExample3}</CodeBlock>
+    </TabItem>
+</Tabs>
 
 ## LiteLLM
 
