@@ -48,7 +48,7 @@ Clarifai provides various clients you can use to access the API in your favorite
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python">
 

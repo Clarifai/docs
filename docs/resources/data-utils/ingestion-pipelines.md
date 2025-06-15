@@ -60,7 +60,7 @@ import Example2 from "!!raw-loader!../../../code_snippets/python-sdk/datautils/b
 
 Install the latest version of the `clarifai` Python SDK package. Also, install the Data Utils library.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Bash">
     <CodeBlock className="language-text">
     pip install --upgrade clarifai
@@ -73,7 +73,7 @@ Install the latest version of the `clarifai` Python SDK package. Also, install t
 
 The Data Ingestion Pipelines framework requires additional libraries to function properly. First, create a `requirements-dev.txt` file and add the following dependencies:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="text" label="Text">
     <CodeBlock className="language-text">
     unstructured[pdf] @ git+https://github.com/clarifai/unstructured.git@support_clarifai_model
@@ -91,7 +91,7 @@ The Data Ingestion Pipelines framework requires additional libraries to function
 
 Then, run the following command to install the required dependencies:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Bash">
     <CodeBlock className="language-text">
     pip install -r requirements-dev.txt
@@ -114,7 +114,7 @@ You need a PAT (Personal Access Token) key to authenticate your connection to th
 
 Then, set it as an environment variable in your script.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">
     import os
@@ -127,7 +127,7 @@ Then, set it as an environment variable in your script.
 
 [Create a dataset](https://docs.clarifai.com/sdk/managing-datasets#creating-datasets) on the Clarifai platform to use for uploading your pre-processed data. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CreateDataset}</CodeBlock>
 </TabItem>
@@ -139,7 +139,7 @@ When working with unstructured documents like PDFs, building pipelines is a cruc
 
 Here is an example of a basic pipeline for PDF partitioning. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{BuildingPipelines}</CodeBlock>
 </TabItem>
@@ -181,7 +181,7 @@ Once a chunk of text or image data is uploaded to the Clarifai platform, [metada
 
 PDF partitioning helps transform PDFs into a structured format that can be used for further processing. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PDFPartition}</CodeBlock>
 </TabItem>
@@ -220,7 +220,7 @@ The `PDFPartitionMultimodal` ingestion pipeline supports multimodal scenarios, w
 
 We use the Clarifai-hosted YOLOX object detection model to process the PDFs containing embedded images.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PDFPartitionMultimodal}</CodeBlock>
 </TabItem>
@@ -245,7 +245,7 @@ You can also configure the following arguments for the `PDFPartitionMultimodal` 
 
 Text partitioning transforms unstructured `.txt` documents into text elements, making them easier to process, analyze, and utilize in downstream applications.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{TextPartition}</CodeBlock>
 </TabItem>
@@ -259,7 +259,7 @@ Note that:
 
 Docx partitioning processes `.docx` files, extracting and partitioning their contents into structured text elements. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{DocxPartition}</CodeBlock>
 </TabItem>
@@ -273,7 +273,7 @@ Note that:
 
 Markdown partitioning processes `.md` files, breaking them down into structured text elements for improved usability in downstream applications. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{MarkdownPartition}</CodeBlock>
 </TabItem>
@@ -292,7 +292,7 @@ Each summary is stored as an individual input on the Clarifai platform, and you 
 
 The generated summaries are concise, optimized for retrieval, and enriched with relevant keywords, making them highly effective for search and indexing.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{ImageSummarization}</CodeBlock>
 </TabItem>
@@ -319,7 +319,7 @@ The following examples use the `PDFPartition` object, but they can also be appli
 
 You can remove unnecessary spaces, tabs, or newlines from documents. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CleanExtraWhitespace}</CodeBlock>
 </TabItem>
@@ -329,7 +329,7 @@ You can remove unnecessary spaces, tabs, or newlines from documents.
 
 You can replace Unicode quotes with ASCII quotes for standardization.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{ReplaceUnicodeQuotes}</CodeBlock>
 </TabItem>
@@ -339,7 +339,7 @@ You can replace Unicode quotes with ASCII quotes for standardization.
 
 You can remove unnecessary dashes from texts.  
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CleanDashes}</CodeBlock>
 </TabItem>
@@ -349,7 +349,7 @@ You can remove unnecessary dashes from texts.
 
 You can remove unnecessary bullets from texts.  
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CleanBullets}</CodeBlock>
 </TabItem>
@@ -360,7 +360,7 @@ You can remove unnecessary bullets from texts.
 
 You can merge fragmented paragraphs that were unintentionally split, restoring proper text flow and improving readability.  
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{GroupBrokenParagraphs}</CodeBlock>
 </TabItem>
@@ -370,7 +370,7 @@ You can merge fragmented paragraphs that were unintentionally split, restoring p
 
 You can remove unnecessary punctuations from texts.  
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{RemovePunctuation}</CodeBlock>
 </TabItem>
@@ -380,7 +380,7 @@ You can remove unnecessary punctuations from texts.
 
 You can convert a byte string (such as `b'hello'`) into a regular string (`'hello'`), ensuring proper text formatting and usability.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{ConvertByteStrings}</CodeBlock>
 </TabItem>
@@ -390,7 +390,7 @@ You can convert a byte string (such as `b'hello'`) into a regular string (`'hell
 
 You can remove non-ASCII characters from text, ensuring compatibility with systems that only support standard ASCII encoding.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CleanNonASCII}</CodeBlock>
 </TabItem>
@@ -400,7 +400,7 @@ You can remove non-ASCII characters from text, ensuring compatibility with syste
 
 You can remove ordered bullet points(such as `1.`, `2)`, or `III.`) from text.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CleanOrderedBullets}</CodeBlock>
 </TabItem>
@@ -414,7 +414,7 @@ You can remove a specified prefix from a document. The `Clean_prefix` object sup
 - `ignore_case` (optional, default is `False`) — Determines whether to ignore case. If `True`, ensures case-insensitive matching.
 - `strip` (optional, default is `True`) — If `True`, removes any leading whitespace after the prefix is removed.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CleanPrefix}</CodeBlock>
 </TabItem>
@@ -424,7 +424,7 @@ You can remove a specified prefix from a document. The `Clean_prefix` object sup
 
 You can remove a specified postfix from a document using the `Clean_postfix` object, which supports the same arguments as `Clean_prefix`.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CleanPostfix}</CodeBlock>
 </TabItem>
@@ -438,7 +438,7 @@ The Data Ingestion Pipelines framework allows you to identify and retrieve meani
 
 You can extract email addresses from texts. Note that if a chunk contains the addresses, they will be extracted and stored in the `email_address` metadata field of the uploaded input on the Clarifai platform, [as previously mentioned](#partitioning--chunking).
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{ExtractEmail}</CodeBlock>
 </TabItem>
@@ -448,7 +448,7 @@ You can extract email addresses from texts. Note that if a chunk contains the ad
 
 You can extract datetime values with time zones from texts, ensuring accurate timestamp retrieval. Note that if a chunk contains the values, they will be extracted and stored in the `date_time` metadata field of the uploaded input on the Clarifai platform. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{Datetime}</CodeBlock>
 </TabItem>
@@ -458,7 +458,7 @@ You can extract datetime values with time zones from texts, ensuring accurate ti
 
 You can extract IP addresses from texts. Note that if a chunk contains the addresses, they will be extracted and stored in the `ip_address` metadata field of the uploaded input on the Clarifai platform. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{ExtractIP}</CodeBlock>
 </TabItem>
@@ -468,7 +468,7 @@ You can extract IP addresses from texts. Note that if a chunk contains the addre
 
 You can extract IP addresses along with associated names from texts. Note that if a chunk contains the names, they will be extracted and stored in the `ip_address_name` metadata field of the uploaded input on the Clarifai platform. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{ExtractIPName}</CodeBlock>
 </TabItem>
@@ -481,7 +481,7 @@ You can extract text appearing after a specified string in a given text input. T
 - `key` — Key to store the extracted text in the metadata field of the uploaded input on the Clarifai platform. 
 - `string` — The reference string after which the text will be extracted.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{ExtractTextAfter}</CodeBlock>
 </TabItem>
@@ -494,7 +494,7 @@ You can extract text appearing before a specified string in a given text input. 
 - `key` — Key to store the extracted text in the metadata field of the uploaded input on the Clarifai platform. 
 - `string` — The reference string before which the text will be extracted.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{ExtractTextBefore}</CodeBlock>
 </TabItem>

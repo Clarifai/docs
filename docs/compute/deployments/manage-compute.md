@@ -43,7 +43,7 @@ import CL10 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchest
 
 To get a specific compute cluster, pass the `compute_cluster_id` to the `compute_cluster` method of the `User` class.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CO3}</CodeBlock>
 </TabItem>
@@ -54,7 +54,7 @@ To get a specific compute cluster, pass the `compute_cluster_id` to the `compute
 
 To list your existing compute clusters, call the `list_compute_clusters` method of the `User` class.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CO4}</CodeBlock>
 </TabItem>
@@ -69,7 +69,7 @@ To list your existing compute clusters, call the `list_compute_clusters` method 
 
 To get a specific nodepool, provide the `nodepool_id` to the `nodepool` method of the `ComputeCluster` class.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CO8}</CodeBlock>
 </TabItem>
@@ -80,7 +80,7 @@ To get a specific nodepool, provide the `nodepool_id` to the `nodepool` method o
 
 To list the existing nodepools, call the `list_nodepools` method of the `ComputeCluster` class.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CO9}</CodeBlock>
 </TabItem>
@@ -95,7 +95,7 @@ To list the existing nodepools, call the `list_nodepools` method of the `Compute
 
 To get a specific deployment, provide the `deployment_id` to the `deployment` method of the `Nodepool` class.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CO13}</CodeBlock>
 </TabItem>
@@ -106,7 +106,7 @@ To get a specific deployment, provide the `deployment_id` to the `deployment` me
 
 To list existing deployments, call the `list_deployments` method of the `Nodepool` class.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CO14}</CodeBlock>
 </TabItem>
@@ -122,7 +122,7 @@ To list existing deployments, call the `list_deployments` method of the `Nodepoo
 
 To delete deployments, pass a list of deployment IDs to the `delete_deployments` method of the `Nodepool` class. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CO16}</CodeBlock>
 </TabItem>
@@ -135,7 +135,7 @@ To delete deployments, pass a list of deployment IDs to the `delete_deployments`
 
 To delete nodepools, provide a list of nodepool IDs to the `delete_nodepools` method of the `ComputeCluster` class. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CO17}</CodeBlock>
 </TabItem>
@@ -148,7 +148,7 @@ To delete nodepools, provide a list of nodepool IDs to the `delete_nodepools` me
 
 To delete compute clusters, provide a list of compute cluster IDs to the `delete_compute_clusters` method of the `User` class.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CO18}</CodeBlock>
 </TabItem>

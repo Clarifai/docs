@@ -95,7 +95,7 @@ import JSONOutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/co
 import JSONOutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/concepts/code_output_examples/knowledge_graph_list.js";
 import JSONOutputExample3 from "!!raw-loader!../../../code_snippets/api-guide/concepts/code_output_examples/knowledge_graph_delete.js";
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{PythonSDKCreateRelations}</CodeBlock>
@@ -138,7 +138,7 @@ import JSONOutputExample3 from "!!raw-loader!../../../code_snippets/api-guide/co
 
 Below is an example of how to list all the existing relations between concepts. 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{PythonSearchRelations}</CodeBlock>
@@ -179,7 +179,7 @@ Below is an example of how to list all the existing relations between concepts.
 
 Below is an example of how to list the specific relations between concepts. 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{PythonSearchSpecificRelations}</CodeBlock>
@@ -191,7 +191,7 @@ Below is an example of how to list the specific relations between concepts.
 
 You can set the `show_tree` argument to `True` in `search_concept_relations()` to display concept relationships in a rich, hierarchical tree structure.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{PythonSearchRelationsShowTree}</CodeBlock>
@@ -212,7 +212,7 @@ You can use either of the following ways to retrieve the `CONCEPT_RELATION_IDS`:
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonDeleteRelations}</CodeBlock>

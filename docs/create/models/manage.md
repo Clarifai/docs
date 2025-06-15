@@ -131,7 +131,7 @@ Before using the [Python SDK](https://docs.clarifai.com/additional-resources/api
 
 Learn about the available model types and their hyperparameters. This endpoint lets you list all the possible models that are creatable (when `creatable=true`) or generally in the platform (the other ones have `creatable=false`).
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonListModelTypes}</CodeBlock>
@@ -175,7 +175,7 @@ If you want to get a list of the models not within the scope of your app, you ne
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonGetModels}</CodeBlock>
@@ -207,7 +207,7 @@ If you want to get a list of the models not within the scope of your app, you ne
 
 All models have unique IDs. You can get a specific model by its ID.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonGetModelID}</CodeBlock>
@@ -245,7 +245,7 @@ The `GetModelOutputInfo` endpoint does not support pagination. If you want to sp
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonGetModelOutput}</CodeBlock>
@@ -286,7 +286,7 @@ If you are using any of the Clarifai gRPC clients, the `ListModelConcepts` endpo
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonListModelConcepts}</CodeBlock>
@@ -318,7 +318,7 @@ If you are using any of the Clarifai gRPC clients, the `ListModelConcepts` endpo
 
 Every time you train a model, it creates a new version. You can list all the versions created.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonListModelVersions}</CodeBlock>
@@ -350,7 +350,7 @@ Every time you train a model, it creates a new version. You can list all the ver
 
 To get the details of a specific model version, you must provide the `model_id` as well as the `version_id` parameters. You can inspect the model version status to determine if your model is trained or still training.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonGetModelVersion}</CodeBlock>
@@ -397,7 +397,7 @@ After creating a model, you can perform patch operations on it by merging, remov
 
 Let's use the **PatchModels** endpoint to change the model name to `newname`.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonUpdateConfiguration}</CodeBlock>
@@ -436,7 +436,7 @@ For embedding-classifiers, the `min_value` parameter falls within the range of 0
 :::
 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonUpdateConfiguration2}</CodeBlock>
@@ -468,7 +468,7 @@ For embedding-classifiers, the `min_value` parameter falls within the range of 0
 
 Below is an example of performing other patch operations on a model, such as updating its description and notes. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{SDKPatchModel}</CodeBlock>
 </TabItem>
@@ -480,7 +480,7 @@ Below is an example of performing other patch operations on a model, such as upd
 
 You can search all your models by name and type of model.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonSearchModelsName}</CodeBlock>
@@ -514,7 +514,7 @@ You can search all your models by name and type of model.
 
 You can delete a model by using the `model_id` parameter.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonDeleteModel}</CodeBlock>
@@ -546,7 +546,7 @@ You can delete a model by using the `model_id` parameter.
 
 You can also delete a specific version of a model with the `model_id` and `version_id` parameters.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonDeleteModelVersion}</CodeBlock>
@@ -584,7 +584,7 @@ Please proceed with extreme caution as deleted models cannot be recovered.
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonDeleteAllModels}</CodeBlock>

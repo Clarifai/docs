@@ -52,7 +52,7 @@ Guide to get your [PAT](https://docs.clarifai.com/clarifai-basics/authentication
 
 The first part of creating a DSPy-Clarifai application is to set some initial fields. The variables should be configured correctly for authentication and model access.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeInit}</CodeBlock>
 </TabItem>
@@ -69,7 +69,7 @@ To use Clarifai as a retriever, the straightforward approach involves ingesting 
 Langchain is required only for the data ingestion step, which you can skip if data has been already ingested through alternate methods.
 :::
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeData}</CodeBlock>
 </TabItem>
@@ -85,7 +85,7 @@ Langchain is required only for the data ingestion step, which you can skip if da
 
 In the next step we are going to initialize DSPy with an LLM model from the Clarifai platform, this showcases the flexibility Clarifai offers. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeDsp}</CodeBlock>
 </TabItem>
@@ -93,7 +93,7 @@ In the next step we are going to initialize DSPy with an LLM model from the Clar
 
 Before we move on to the next section let’s do a test run,
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeTrun}</CodeBlock>
 </TabItem>
@@ -109,14 +109,14 @@ Before we move on to the next section let’s do a test run,
 To construct a RAG module in DSPy effectively, you first need to define its signature. The signature explains the input and output fields succinctly, mapping from "question" to "answer" in a clear and intuitive manner. Once the signature is established, you proceed to create the module itself. A module in DSPy is where you put the signature into action, defining a specific functionality that compiles and generates responses based on the given queries. To begin, you construct a signature class, detailing the required input fields and the corresponding output fields. It's essential to provide comprehensive docstrings and descriptions within the class to ensure that the DSPy signature understands the context thoroughly and can compile the best prompt for the given use case. By following these steps, you can create robust and effective modules within DSPy, enabling seamless processing and response generation for various natural language processing tasks.
 
 The ```GenerateAnswer``` class is given below,
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeGA}</CodeBlock>
 </TabItem>
 </Tabs>
 
 The ```RAG``` class is given below,
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeRAG}</CodeBlock>
 </TabItem>
@@ -125,7 +125,7 @@ The ```RAG``` class is given below,
 ## Chat
 
 In the final step, we are going to perform information retrieval using a Clarifai retriever based on factual evidence.
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeChat}</CodeBlock>
 </TabItem>

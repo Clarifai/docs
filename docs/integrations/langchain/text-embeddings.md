@@ -38,7 +38,7 @@ import OutputExample3 from "!!raw-loader!../../../code_snippets/api-guide/integr
 
 Here is how you can create text embeddings.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{Langchain3}</CodeBlock>
 </TabItem>

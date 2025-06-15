@@ -270,7 +270,7 @@ This is the ID of the caller who will be making the prediction requests. You can
 
 Here is how to add a new collector to your application.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonAddCollector}</CodeBlock>
@@ -302,7 +302,7 @@ Here is how to add a new collector to your application.
 
 You can update an existing collector.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonUpdateCollector}</CodeBlock>
@@ -334,7 +334,7 @@ You can update an existing collector.
 
 You can list all the collectors in your app. Click [here](https://docs.clarifai.com/api-guide/advanced-topics/pagination/) to learn how to control the page that gets displayed.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonListCollectors}</CodeBlock>
@@ -367,7 +367,7 @@ You can list all the collectors in your app. Click [here](https://docs.clarifai.
 
 You can return the details of a certain collector.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonGetCollector}</CodeBlock>
@@ -399,7 +399,7 @@ You can return the details of a certain collector.
 
 You can delete a collector.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonDeleteCollector}</CodeBlock>

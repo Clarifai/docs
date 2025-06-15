@@ -72,7 +72,7 @@ import JSONOutputExample4 from "!!raw-loader!../../../code_snippets/api-guide/co
 
 Below is an example of how to get a single concept by its ID.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonGetConcept}</CodeBlock>
@@ -111,7 +111,7 @@ You can get a list of concepts within your app with a GET call. This call suppor
 
 Below is an example of how to list concepts. 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonListConcepts}</CodeBlock>
@@ -156,7 +156,7 @@ If you are using any of the Clarifai gRPC clients, the `ListModelConcepts` endpo
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonListModelConcepts}</CodeBlock>
@@ -182,7 +182,7 @@ If you are using any of the Clarifai gRPC clients, the `ListModelConcepts` endpo
 
 Below is an example of how to update a concept's name given its id by using the "overwrite" action. You can also patch multiple concepts by sending a list of concepts.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonUpdateConcept}</CodeBlock>

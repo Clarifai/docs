@@ -84,7 +84,7 @@ import CodeOutputS3 from "!!raw-loader!../../../../code_snippets/python-sdk/mode
 
 Let's start by creating an [app](https://docs.clarifai.com/create-manage/applications/create). 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeVC}</CodeBlock>
 </TabItem>
@@ -98,7 +98,7 @@ Next, let’s upload the [dataset](https://docs.clarifai.com/create-manage/datas
 
 You can find the dataset we used [here](https://github.com/Clarifai/examples/tree/main/datasets/upload/image_segmentation).
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeDU}</CodeBlock>
 </TabItem>
@@ -110,7 +110,7 @@ You can find the dataset we used [here](https://github.com/Clarifai/examples/tre
 Let's list all the available trainable model types in the Clarifai platform.
 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeMT}</CodeBlock>
 </TabItem>
@@ -122,7 +122,7 @@ Let's list all the available trainable model types in the Clarifai platform.
 
 Next, let's select the `visual-segmenter` model type and use it to create a model.  
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeMC}</CodeBlock>
 </TabItem>
@@ -133,7 +133,7 @@ Next, let's select the `visual-segmenter` model type and use it to create a mode
 
 Let's list all the available training templates in the Clarifai platform.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeTS}</CodeBlock>
 </TabItem>
@@ -150,7 +150,7 @@ Next, let's choose the `'MMSegmentation_SegFormer' ` template to use for trainin
 
 You can save the model parameters in a YAML file, which can then be passed to the model when initiating training.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeS1}</CodeBlock>
 </TabItem>
@@ -165,7 +165,7 @@ You can modify the YAML file to suit your specific needs and reload it for model
 Before making changes, let’s first list the available concepts in the app. After that, we’ll show an example of the edited YAML configuration.
 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeS2}</CodeBlock>
 </TabItem>
@@ -177,7 +177,7 @@ Before making changes, let’s first list the available concepts in the app. Aft
 
 Next, we’ll create a dataset version and then use the `model.update_params()` method to update the model parameters accordingly.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeS3}</CodeBlock>
 </TabItem>
@@ -198,7 +198,7 @@ If the status code is `MODEL-TRAINED`, it indicates that the model has been succ
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeIMT}</CodeBlock>
 </TabItem>
@@ -215,7 +215,7 @@ If the status code is `MODEL-TRAINED`, it indicates that the model has been succ
 
 After the model is trained and ready to use, you can run some predictions with it.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeMP}</CodeBlock>
 </TabItem>

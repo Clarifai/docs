@@ -38,7 +38,7 @@ Before using the [Python SDK](https://docs.clarifai.com/additional-resources/api
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeME}</CodeBlock>
 </TabItem>
@@ -80,7 +80,7 @@ Install the ```requirements.txt``` file with ```pip install requirements.txt```.
 :::
 
 Below is an example of running predictions on a model using ONNX runtime. We are going to use ```model.onnx``` file we received after unpacking the ```model.tar``` file.
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeON}</CodeBlock>
 </TabItem>
@@ -133,7 +133,7 @@ If you have followed the steps correctly, you should receive an output that look
 
 Since the inference server is up and running successfully, let's create an inference script that will communicate with the server and return the prediction. 
 Below is an example inference script that does image classification using the exported model,
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeInf}</CodeBlock>
 </TabItem>

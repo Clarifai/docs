@@ -96,7 +96,7 @@ import PythonFullImplementation from "!!raw-loader!../../../code_snippets/api-gu
 
 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python" default>
     <CodeBlock className="language-python">{PythonSetup}</CodeBlock>
@@ -112,7 +112,7 @@ For simplicity's sake, our form only has one page.
 
 ## Full implementation
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="intelligent_document_processing.py" label="intelligent_document_processing.py">
     <CodeBlock className="language-python">{PythonFullImplementation}</CodeBlock>

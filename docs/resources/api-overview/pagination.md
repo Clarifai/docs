@@ -49,7 +49,7 @@ import NodeSDKPaginationGet from "!!raw-loader!../../../code_snippets/api-guide/
 
 For GET requests, the pagination parameters are included in the query string of the URL.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{PythonSDKPaginationGet}</CodeBlock>
@@ -89,7 +89,7 @@ For GET requests, the pagination parameters are included in the query string of 
 
 For POST requests, the pagination parameters are included in the request body.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonPaginationPost}</CodeBlock>

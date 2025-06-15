@@ -90,7 +90,7 @@ dataset.upload_from_folder(folder_path='./images', input_type='image', labels=Tr
 
 You can add inputs to a dataset by specifying their input IDs.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{curlAddInputsDatasets}</CodeBlock>
@@ -102,7 +102,7 @@ You can add inputs to a dataset by specifying their input IDs.
 
 You can upload image data in bulk either from a folder or by using a [CSV file](https://docs.clarifai.com/additional-resources/api-references/api-reference/#datasetupload_from_csv).
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeUpImage}</CodeBlock>
  
@@ -119,7 +119,7 @@ You can upload image data in bulk either from a folder or by using a [CSV file](
 You can upload text data in bulk either from a folder or by using a CSV file.
 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeUpText}</CodeBlock>
 
@@ -137,7 +137,7 @@ You can upload text data in bulk either from a folder or by using a CSV file.
 
 You can upload audio data in bulk either from a folder or by using a CSV file.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeUpAudio}</CodeBlock>
 
@@ -156,7 +156,7 @@ You can upload audio data in bulk either from a folder or by using a CSV file.
 
 You can upload video data in bulk either from a folder or by using a CSV file.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeUpAudio}</CodeBlock>
 
@@ -175,7 +175,7 @@ You can upload video data in bulk either from a folder or by using a CSV file.
 
 You can upload image data along with bounding box annotations, allowing you to add depth and contextual information to your visual data.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeUpImageAN}</CodeBlock>
 
@@ -189,7 +189,7 @@ You can upload image data along with bounding box annotations, allowing you to a
 
 You can add masks to image data by providing polygon coordinates along with the image, enabling precise region-based annotations.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeUpImageMask}</CodeBlock>
  
@@ -211,7 +211,7 @@ You can add masks to image data by providing polygon coordinates along with the 
 
 You can upload videos with enriched annotations by including bounding box coordinates that define regions of interest within individual frames, adding valuable context to your video content.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeUpVideoAN}</CodeBlock>
   
@@ -231,7 +231,7 @@ You can upload videos with enriched annotations by including bounding box coordi
 You can enrich your uploaded text data by attaching metadata, categorizing the content, or adding detailed annotations to enhance structure and context.
 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeUpTextAN}</CodeBlock>
 
@@ -252,7 +252,7 @@ You can enrich your uploaded text data by attaching metadata, categorizing the c
 
 You can actively monitor the status of your dataset upload, giving you clear visibility into the progress and making it easy to track and analyze the data transfer process.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeUpBatch}</CodeBlock>
 </TabItem>
@@ -269,7 +269,7 @@ Set `retry_duplicates` to `True` if you want to retry duplicate with new Input_i
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeRetry}</CodeBlock>
 </TabItem>

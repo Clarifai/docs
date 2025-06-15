@@ -72,7 +72,7 @@ import sdh4 from "!!raw-loader!../../../code_snippets/api-guide/others/sdh-4.sh"
 import sdh5 from "!!raw-loader!../../../code_snippets/api-guide/others/sdh-5.sh";
 import sdh6 from "!!raw-loader!../../../code_snippets/api-guide/others/sdh-6.py";
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{sdh1}</CodeBlock>
 </TabItem>
@@ -82,7 +82,7 @@ If you run the above command, and SDH has not been enabled on your account, you�
 
 Here is an example response (it’s truncated for brevity):
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="json" label="JSON">
     <CodeBlock className="language-json">{sdh2}</CodeBlock>
 </TabItem>
@@ -91,7 +91,7 @@ Here is an example response (it’s truncated for brevity):
 
 And if SDH has been enabled on your account, you’ll get the following response:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="json" label="JSON">
     <CodeBlock className="language-json">{sdh3}</CodeBlock>
 </TabItem>
@@ -119,7 +119,7 @@ If you click the above URL to access the image, you’ll get an error message. S
 
 However, if you provide the authorization, like in the example below, the request will be successful:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{sdh4}</CodeBlock>
 </TabItem>
@@ -137,7 +137,7 @@ If you click the above S3 URL, you’ll notice that you can access the image eve
 
 However, if you provide the authorization, like in the example below, the request will fail:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{sdh5}</CodeBlock>
 </TabItem>
@@ -156,7 +156,7 @@ In order to download the input URL, you need to first check if the URL is an SDH
 
 Here is an example in Python:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-bash">{sdh6}</CodeBlock>
 </TabItem>

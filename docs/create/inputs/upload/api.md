@@ -116,7 +116,7 @@ import PHPAddInputsCustomMetadata from "!!raw-loader!../../../../code_snippets/a
 
 Below is an example of how to upload image data. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeImageData}</CodeBlock>
     <details>
@@ -137,7 +137,7 @@ Below is an example of how to upload image data.
 
 Below is an example of how to upload text data. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeTextData}</CodeBlock>
     <details>
@@ -157,7 +157,7 @@ You can add your own custom functions for data processing with ease.
 
 Below is an example of how to clean text data by removing Unicode characters before uploading it to the Clarifai platform.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{RemoveUnicode}</CodeBlock>
@@ -170,7 +170,7 @@ Below is an example of how to clean text data by removing Unicode characters bef
 
 Below is an example of how to upload audio data. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeAudioData}</CodeBlock>
     <details>
@@ -190,7 +190,7 @@ Below is an example of how to upload audio data.
 
 Below is an example of how to upload video data. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeVideoData}</CodeBlock>
     <details>
@@ -213,7 +213,7 @@ Below is an example of how to upload a combination of different input types, suc
 Currently, Clarifai supports specific multimodal input combinations, such as `[Image, Text] -> Text`. This allows you to process and analyze interconnected data types for advanced use cases.
 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeMMData}</CodeBlock>
     <details>
@@ -237,7 +237,7 @@ Below are examples of how to upload inputs with custom metadata. In these exampl
 
 ### Image With Metadata
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeImageM}</CodeBlock>
     <details>
@@ -252,7 +252,7 @@ Below are examples of how to upload inputs with custom metadata. In these exampl
 
 ### Video With Metadata
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeVideoM}</CodeBlock>
     <details>
@@ -269,7 +269,7 @@ Below are examples of how to upload inputs with custom metadata. In these exampl
 
 ### Text With Metadata
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeTextM}</CodeBlock>
     <details>
@@ -290,7 +290,7 @@ Below are examples of how to upload inputs with custom metadata. In these exampl
 
 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeAudioM}</CodeBlock>
     <details>
@@ -309,7 +309,7 @@ When uploading inputs to Clarifai, you can enrich them by including geospatial d
 
 This allows you to associate each input with a specific geographic location. Note that each input can have at most one geospatial point associated with it.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeGeoInfo}</CodeBlock>
@@ -327,7 +327,7 @@ Below is an example of how to label a new rectangular bounding box for a specifi
 
 This ensures that the coordinates are independent of the image resolution, making the annotations consistent across different image sizes.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{BoundingBoxAnnotation}</CodeBlock>
@@ -345,7 +345,7 @@ A polygon is defined by a list of points, each specified by:
 - **col** — The column position of the point, represented as a value between 0.0 and 1.0, where 0.0 corresponds to the left column of the image and 1.0 corresponds to the right column.  
 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{PolygonAnnotation}</CodeBlock>
@@ -357,7 +357,7 @@ A polygon is defined by a list of points, each specified by:
 
 Below is an example of how to annotate different types of inputs with [concepts](https://docs.clarifai.com/portal-guide/inputs-manager/concepts). 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{ConceptsAnnotation}</CodeBlock>
@@ -375,7 +375,7 @@ You can add inputs one by one or in bulk. If you send them in bulk, you are limi
 
 Below is an example of how to add inputs via a publicly accessible URL. 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonAddInputsViaURL}</CodeBlock>
@@ -452,7 +452,7 @@ The data must be base64 encoded. When you add a base64 image to our servers, a c
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonAddInputsViaBytes}</CodeBlock>
@@ -525,7 +525,7 @@ In cases where you have your own `id` and you only have one item per image, you 
 
 If you do not send an `id`, one will be created for you. If you have more than one item per image, it is recommended that you put the product `id` in the metadata.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonAddMultipleInputsIds}</CodeBlock>
@@ -615,7 +615,7 @@ When you add a concept to an input, you need to indicate whether the concept is 
 
 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonAddInputsConcepts}</CodeBlock>
@@ -699,7 +699,7 @@ You can also add an input with multiple concepts in a single API call. You can p
 
 You can add the inputs via URLs or bytes.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonAddInputsMultipleConcepts}</CodeBlock>
@@ -728,7 +728,7 @@ If you have more than one item per image, it is recommended to put the `id` in t
 }
 ```
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonAddInputsCustomMetadata}</CodeBlock>
@@ -825,7 +825,7 @@ import OutputExample3 from "!!raw-loader!../../../../code_snippets/api-guide/dat
 import OutputExample4 from "!!raw-loader!../../../../code_snippets/api-guide/data/cloud-storage/concepts_datasets.txt";
 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonCloudStorageURLs}</CodeBlock>
@@ -862,7 +862,7 @@ import OutputExample4 from "!!raw-loader!../../../../code_snippets/api-guide/dat
 
 After starting to pull the inputs from a cloud storage service, you can track the progress of the exercise. Note that we’ll use the `inputs_extraction_job_id` returned after running the extraction job. 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonTrackUploadProcess}</CodeBlock>
@@ -899,7 +899,7 @@ After starting to pull the inputs from a cloud storage service, you can track th
 
 You can list all your inputs extraction jobs and get their details. 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonListInputsJobs}</CodeBlock>
@@ -936,7 +936,7 @@ You can list all your inputs extraction jobs and get their details.
 
 You can cancel the process of extraction of inputs from a cloud storage service. Note that we’ll use the `inputs_extraction_job_id` returned after starting the extraction process. 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonCancelJobs}</CodeBlock>
@@ -970,7 +970,7 @@ You can also add inputs from cloud storage platforms while attaching relevant co
 
 The `input_template` parameter allows you to do that. 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonConceptsDatasets}</CodeBlock>

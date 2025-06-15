@@ -21,7 +21,7 @@ import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 import PythonBatchPredict from "!!raw-loader!../../../code_snippets/api-guide/advanced_topics/batch_predict_csv.py";
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="nlp_model_predicts.py" label="nlp_model_predicts.py" default>
     <CodeBlock className="language-python">{PythonBatchPredict}</CodeBlock>
 </TabItem>
@@ -34,7 +34,7 @@ Let's say you have the following CSV file, and you want to predict whether the s
 
 See our [Custom Text Model walkthrough](https://docs.clarifai.com/api-guide/model/custom-text-model-walkthrough/) on how to do that via our API.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="my_data.csv" label="my_data.csv" default>
 
 ```bash
@@ -54,7 +54,7 @@ python nlp_model_predicts.py --api_key YOUR_API_KEY --model_id YOUR_MODEL_ID --m
 </TabItem>
 </Tabs>
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="my_data_results.csv" label="my_data_results.csv" default>
 
 ```bash

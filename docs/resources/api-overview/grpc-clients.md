@@ -54,7 +54,7 @@ Learn how to resolve CORS errors in your JavaScript application(s) [here](https:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
 
 ```python

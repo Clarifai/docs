@@ -66,7 +66,7 @@ import CodeBlock from "@theme/CodeBlock";
 import PythonKey from "!!raw-loader!../../../code_snippets/api-guide/authentication/key.py";
 import CurlKey from "!!raw-loader!../../../code_snippets/api-guide/authentication/key.sh";
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="cURL" label="cURL" default>
 
 ```bash
@@ -112,7 +112,7 @@ It's a good practice to load your API Key from an environment variable. Keeping 
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python (gRPC)">
      <CodeBlock className="language-python">{PythonKey}</CodeBlock>
 </TabItem>

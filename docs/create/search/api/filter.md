@@ -110,7 +110,7 @@ import CodeMMTS from "!!raw-loader!../../../../code_snippets/python-sdk/Search/f
 
 You can specify that search results should only include inputs of a particular data type, such as images, videos, or text.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeIT}</CodeBlock>
 </TabItem>
@@ -131,7 +131,7 @@ Training a model generates embeddings for each custom concept. These concept emb
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python2" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonCustomConcepts}</CodeBlock>
@@ -163,7 +163,7 @@ Training a model generates embeddings for each custom concept. These concept emb
 
 If you have collaborators in your app and they helped you annotate your inputs, you can also filter annotations by their user ID.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonUserID}</CodeBlock>
@@ -195,7 +195,7 @@ If you have collaborators in your app and they helped you annotate your inputs, 
 
 You can include a dataset ID in the filter to narrow the search results to only inputs or data entries within that specific dataset.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeData}</CodeBlock>
 
@@ -211,7 +211,7 @@ You can refine search results based on the [status](https://docs.clarifai.com/ad
 
 You can also filter the annotations by their status. 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeIS}</CodeBlock>
@@ -263,7 +263,7 @@ Before you perform a search by geo location, make sure you have added inputs wit
 
 Provide a geo point to an input. The geo point is a JSON object consisting of a longitude and a latitude in GPS coordinate system \(SRID 4326\). There can be at most one single geo point associated with each input.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeGP}</CodeBlock>
@@ -301,7 +301,7 @@ Provide a geo point to an input. The geo point is a JSON object consisting of a 
 
 ### Perform a Search With One Geo Point and Radius in Kilometers
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonOneGeoPoint}</CodeBlock>
@@ -331,7 +331,7 @@ Provide a geo point to an input. The geo point is a JSON object consisting of a 
 
 ### Perform a Search With Two Geo Points
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonTwoGeoPoints}</CodeBlock>
@@ -412,7 +412,7 @@ Then the following searches will find this:
 
 How to perform searches:
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeMD}</CodeBlock>
@@ -452,7 +452,7 @@ How to perform searches:
 
 Each annotation has annotation info. Similar to metadata, you have full control of this field and can be any arbitrary JSON.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonAnnotationInfo}</CodeBlock>
@@ -486,7 +486,7 @@ Multimodal filtering allows you to refine search results based on a combination 
 
 Unlike unimodal filtering, which limits filtering to a single data type — such as images or text — multimodal filtering enables more comprehensive queries by considering multiple modalities at once. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeMM}</CodeBlock>
 

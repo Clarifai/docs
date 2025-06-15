@@ -164,7 +164,7 @@ Each annotation should contain at most one region. If it is a video, each annota
 
 Below is an example of how to annotate a concept present anywhere in an image.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonAnnotateImagesConcepts}</CodeBlock>
@@ -196,7 +196,7 @@ Below is an example of how to annotate a concept present anywhere in an image.
 
 Below is an example of how to annotate an image with multiple concepts in a single API call. You can provide the concepts in a list and iterate through it.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonAnnotateImagesMultipleConcepts}</CodeBlock>
@@ -223,7 +223,7 @@ These are the bounding box coordinates you need to provide:
 - **bottom_row**—The bottom row of the bounding box normalized to the data dimension to be within [0-1.0];
 - **right_col**—The right col of the bounding box normalized to the data dimension to be within [0-1.0].
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonAnnotateNewBoundingBoxesImage}</CodeBlock>
@@ -263,7 +263,7 @@ being the bottom row;
 being the right col;
 - **z**—Depth, if applicable, of the point.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonAnnotatePolygonsImage}</CodeBlock>
@@ -299,7 +299,7 @@ Your labels should be contained within `Region.data`. Each annotation can only h
 
 Below is an example of how to annotate existing regions in an image.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonAnnotateExistingRegionsImage}</CodeBlock>
@@ -332,7 +332,7 @@ Below is an example of how to annotate existing regions in an image.
 Below is an example of how to add a mask to an Image using a single API call. In this example, we provide an image mask as a `base64` string. 
 
 Click [here](https://docs.clarifai.com/portal-guide/annotate/label-types/#how-to-choose-a-label-type) to learn more about image mask annotations.
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonAnnotateMask}</CodeBlock>
@@ -374,7 +374,7 @@ Only the app owner can post an annotation with other user's `user_id`; collabora
 
 Below is an example of how to annotate images with different `user_id` and `status`.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonAnnotateImagesUserIdStatus}</CodeBlock>
@@ -418,7 +418,7 @@ This will not show annotations by models in your workflow. To include model crea
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonlistUserCreatedAnnotationsApp}</CodeBlock>
@@ -450,7 +450,7 @@ This will not show annotations by models in your workflow. To include model crea
 
 Below is an example of how to list all annotations, including those created by models.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonListAllAnnotationsApp}</CodeBlock>
@@ -488,7 +488,7 @@ This will not show annotations by models in your workflow. To include model crea
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonListUserCreatedAnnotationsInputIds}</CodeBlock>
@@ -532,7 +532,7 @@ Below is an example of how to do that.
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonListAnnotationsInputAnnotationIds}</CodeBlock>
@@ -566,7 +566,7 @@ An annotation is created by either a user or a model. You can list annotations c
 
 Below is an example of how to do that.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonListAnnotationsUserIds}</CodeBlock>
@@ -602,7 +602,7 @@ You can also label these regions by using `Post annotation` with the region ID r
 
 Below is an example of how to list annotations by model version IDs.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonListAnnotationsModelVersionIds}</CodeBlock>
@@ -644,7 +644,7 @@ Update supports `overwrite`, `merge`, and `remove` actions. You can update from 
 
 Below is an example of how to update an annotation of an image with a new concept, or  change a concept value from true to false \(or vice versa\).
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonUpdateAnnotationConcepts}</CodeBlock>
@@ -678,7 +678,7 @@ When you update region data, you must nest this new data within `region.data`. S
 
 Below is an example of how to update annotation with concepts in a region.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonUpdateAnnotationConceptsRegion}</CodeBlock>
@@ -712,7 +712,7 @@ You can update region bounding boxes coordinates. When changing the region, you 
 
 Below is an example of how to do that.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonUpdateAnnotationRegionCoordinates}</CodeBlock>
@@ -744,7 +744,7 @@ Below is an example of how to do that.
 
 Below is an example of how to update an annotation status.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonUpdateAnnotationStatus}</CodeBlock>
@@ -779,7 +779,7 @@ Below is an example of how to update an annotation status.
 Below is an example of how to delete a single annotation by input ID and annotation ID.
 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonDeleteAnnotationInputAnnotationIds}</CodeBlock>
@@ -813,7 +813,7 @@ You can delete multiple annotations in one API call. You need to provide a list 
 
 Below is an example of how to do that. 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonbulkDeleteAnnotationsInputAnnotationIds}</CodeBlock>
@@ -847,7 +847,7 @@ To delete all annotations of a given input, you just need to set their input ID\
 
 Below is an example of how to do that. 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonBulkDeleteAnnotationsInputIds}</CodeBlock>

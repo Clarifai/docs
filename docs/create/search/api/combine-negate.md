@@ -60,7 +60,7 @@ import CodeANDTS from "!!raw-loader!../../../../code_snippets/python-sdk/Search/
 
 The **OR** filter lets you expand your search to include results that match any of the specified conditions, rather than requiring all of them to be met.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeOR}</CodeBlock>
 
@@ -77,7 +77,7 @@ The **AND** operation enables you to refine search results by specifying multipl
 For example, if a user searches for images containing both the concepts "dog" and "deer," only those images labeled with both concepts will be returned.
 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeAND}</CodeBlock>
 
@@ -93,7 +93,7 @@ For example, if a user searches for images containing both the concepts "dog" an
 
 When you combine both `Filter` and `Rank`, filter will be applied before ranking annotations. This is important because limiting the results set on large applications can speed up the overall query drastically when doing a ranking.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeCC}</CodeBlock>
@@ -133,7 +133,7 @@ When you combine both `Filter` and `Rank`, filter will be applied before ranking
 
 You can also [search over custom metadata](https://docs.clarifai.com/api-guide/search/filter#by-custom-metadata) and easily rank the results. 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonCombineNegate_3}</CodeBlock>
@@ -165,7 +165,7 @@ You can also [search over custom metadata](https://docs.clarifai.com/api-guide/s
 
 You can find all the data that is NOT similar to a given criteria. 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonCombineNegate_2}</CodeBlock>
@@ -199,7 +199,7 @@ Here's how you can use the `PostInputsSearches` endpoint to identify near-duplic
 
 You can also use the  `min_value` threshold parameter to refine the search results, ensuring that only images surpassing a specified minimum probability resemblance score are included in the output. . 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{curlDatasetSearches}</CodeBlock>

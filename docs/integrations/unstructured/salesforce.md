@@ -51,7 +51,7 @@ os.environ['CLARIFAI_PAT'] ="YOUR_PAT"
 
 The data we are going to ingest into our app is the body of the email messages in Salesforce. Since we have already set the JWT authorization for Salesforce let’s import some required libraries,
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeInit1}</CodeBlock>
 </TabItem>
@@ -59,7 +59,7 @@ The data we are going to ingest into our app is the body of the email messages i
 
 Next we will have to write a function to setup the ingestion configurations required to upload the data into our app in the Clarifai platform.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeInit2}</CodeBlock>
 </TabItem>
@@ -76,7 +76,7 @@ Click [here](https://unstructured-io.github.io/unstructured/ingest/index.html) t
 In `SalesforceAccessConfig`, the category is set as `EmailMessage` for this task. Unstructured.io also supports other fields like `Account`, `Case`, `Campaign`, and `Lead` .
 :::
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeDI}</CodeBlock>
 </TabItem>
@@ -91,7 +91,7 @@ In `SalesforceAccessConfig`, the category is set as `EmailMessage` for this task
 In the final step, we are going to chat with the data using RAG. You can use a workflow with a RAG prompter for initialising RAG. After successfully creating a workflow, you can get the URL from the Clarifai portal. After creating the rag object using workflow URL you can start retrieving text from the data we ingested using Unstructured.io. 
 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeChat1}</CodeBlock>
 </TabItem>
@@ -101,7 +101,7 @@ In the final step, we are going to chat with the data using RAG. You can use a w
    <CodeBlock className="language-python">{CodeOutputChat1}</CodeBlock>
 </details>
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeChat2}</CodeBlock>
 </TabItem>

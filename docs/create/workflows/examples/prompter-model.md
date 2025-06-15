@@ -54,7 +54,7 @@ import ExampleOutput1 from "!!raw-loader!../../../../code_snippets/api-guide/mod
 
 ## Create a Prompter Model
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="grpc_python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonCreatePromptModel}</CodeBlock>
@@ -93,7 +93,7 @@ When training a prompter model, you need to provide a prompt template, which ser
 
 Note that your prompt template should include at least one instance of the placeholder `{data.text.raw}`. When you input your text data at inference time, all occurrences of `{data.text.raw}` within the template will be replaced with the provided text.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="grpc_python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonTrainPromptModel}</CodeBlock>
@@ -131,7 +131,7 @@ After training your prompter model, you can now put it to work by integrating it
 
 Below is an example of how to connect a prompter model to an LLM like [GPT-4](https://clarifai.com/openai/chat-completion/models/GPT-4) for text-to-text tasks. 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="grpc_python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonPromptWorkflow}</CodeBlock>
@@ -163,7 +163,7 @@ Below is an example of how to connect a prompter model to an LLM like [GPT-4](ht
 
 After creating the workflow, let's now use it to perform a text sentiment prediction task. 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="grpc_python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonPromptWorkflowPredict}</CodeBlock>

@@ -77,7 +77,7 @@ The batch size should not exceed 128. Learn more [here](https://docs.clarifai.co
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeBP}</CodeBlock>
 </TabItem>
@@ -99,7 +99,7 @@ This feature is particularly useful for enterprises using on-premises deployment
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeDiffBase}</CodeBlock>
 </TabItem>
@@ -113,7 +113,7 @@ A root certificate provides an additional layer of security when communicating t
 You can add your own root certificates to further strengthen data security and protect user privacy.
 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeRoot}</CodeBlock>
 </TabItem>
@@ -202,7 +202,7 @@ This inference parameter helps in controlling the verbosity of the output, espec
 
 Here is a usage example:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">inference_params = dict(max_tokens=100) 
 Model(model_url).predict(inputs,inference_params=inference_params)</CodeBlock>
@@ -217,7 +217,7 @@ Also note that if you don't specify the number of `max_concepts`, you will only 
 
 Here is a usage example:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">output_config = dict(min_value=0.6) 
 Model(model_url).predict(inputs,output_config=output_config)</CodeBlock>
@@ -257,7 +257,7 @@ You can currently set `max_concepts` to any value between 1 and 200.
 
 If your use case requires more than 200 concepts, please reach out to our [support team](mailto:support@clarifai.com) for assistance.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">output_config = dict(max_concepts=3) 
 Model(model_url).predict(inputs,output_config=output_config)</CodeBlock>
@@ -302,7 +302,7 @@ If you submit a request with not an exact match of the concept id or name, you w
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">output_config = dict(select_concepts=["concept_name"]) 
 Model(model_url).predict(inputs,output_config=output_config)</CodeBlock>
@@ -344,7 +344,7 @@ Adjusting temperature is useful when you want to balance between creative respon
 
 Here is a usage example:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">inference_params = dict(temperature=0.2) 
 Model(model_url).predict(inputs,inference_params=inference_params)</CodeBlock>
@@ -477,7 +477,7 @@ If you are looking for consistent results from your predict calls, use `version_
 Below is an example of how you would set a model version ID and receive predictions from Clarifai's [`general-image-recognition`](https://clarifai.com/clarifai/main/models/general-image-recognition) model. 
 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonByModelVersion}</CodeBlock>

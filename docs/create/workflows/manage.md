@@ -116,7 +116,7 @@ If you want to get a list of the workflows not within the scope of your app, you
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeLW}</CodeBlock>
@@ -157,7 +157,7 @@ If you want to get a list of the workflows not within the scope of your app, you
 
 You can return information about a specific workflow.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonGetWorkflowID}</CodeBlock>
@@ -197,7 +197,7 @@ After creating a workflow, you can perform patch operations on it by merging, re
 
 You can change a workflow; that is, change the models of which the workflow consists.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonPatchWorkflow}</CodeBlock>
@@ -229,7 +229,7 @@ You can change a workflow; that is, change the models of which the workflow cons
 
 Below is an example of performing patch operations on a workflow, where the YAML configuration is updated, and changes are made to its description, notes, and image URL. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{PatchWorkflow}</CodeBlock>
 </TabItem>
@@ -247,7 +247,7 @@ Be certain that you want to delete a particular workflow as the operation cannot
 
 You can delete a specific workflow.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeDW}</CodeBlock>
@@ -294,7 +294,7 @@ Instead of `delete_all`, you can specify a list of workflow IDs to be deleted, u
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonDeleteAllWorkflows}</CodeBlock>
@@ -327,7 +327,7 @@ Instead of `delete_all`, you can specify a list of workflow IDs to be deleted, u
 
 You can easily export your entire workflow as a YAML file. This local copy enables convenient editing and offers the flexibility to create, reuse, or manage workflows with ease.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeExport}</CodeBlock>
 </TabItem>

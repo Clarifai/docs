@@ -145,7 +145,7 @@ Before using the [Python SDK](https://docs.clarifai.com/additional-resources/api
 
 You can create a dataset by specifying a unique dataset ID.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeCreateDataset}</CodeBlock>
  
@@ -164,7 +164,7 @@ You can create a dataset by specifying a unique dataset ID.
 
 After making changes to a dataset, such as adding new inputs, you can create a new version to reflect those updates, [as previously explained](#create-dataset-version).
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeCreateDatasetV}</CodeBlock>
  

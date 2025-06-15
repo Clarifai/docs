@@ -57,7 +57,7 @@ import VercelExample3 from "!!raw-loader!../../../../code_snippets/python-sdk/co
 
 Install the latest version of the Clarifai [Python](https://github.com/Clarifai/clarifai-python/) SDK package:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Bash">
     <CodeBlock className="language-bash"> pip install --upgrade clarifai </CodeBlock>
 </TabItem>
@@ -71,7 +71,7 @@ You need a PAT (Personal Access Token) key to authenticate your connection to th
 
 Install the `openai` package:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-bash"> pip install openai </CodeBlock>
 </TabItem>
@@ -84,7 +84,7 @@ Install the `openai` package:
 
 Here is an example that uses the OpenAI Python client library to interact with a Clarifai model via Clarifai's OpenAI-compatible API endpoint.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{Example1}</CodeBlock>
 </TabItem>
@@ -107,7 +107,7 @@ With Clarifai’s support for OpenAI-compatible APIs, you can seamlessly integra
 
 Here is an example code that sets up a basic tool-calling interaction. It simulates a weather API and shows how the LLM would "call" that tool when asked about the weather.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{Example2}</CodeBlock>
 </TabItem>
@@ -127,7 +127,7 @@ Here is an example code that sets up a basic tool-calling interaction. It simula
 The [Vercel AI SDK](https://vercel.com/docs/ai-sdk) provides a convenient way to interact with Clarifai's OpenAI-compatible API. You can leverage the [@ai-sdk/openai-compatible](https://www.npmjs.com/package/@ai-sdk/openai-compatible) to interact with Clarifai models.
 
 ### Example
-<Tabs>
+<Tabs groupId="code">
     <TabItem value="text-response" label="Text Response">
         <CodeBlock className="language-typescript">{VercelExample1}</CodeBlock>
     </TabItem>
@@ -184,7 +184,7 @@ To use Clarifai models via [LiteLLM](https://docs.litellm.ai/docs/providers/clar
 
 ### Example
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{Example5}</CodeBlock>
 </TabItem>
@@ -194,7 +194,7 @@ To use Clarifai models via [LiteLLM](https://docs.litellm.ai/docs/providers/clar
 
 Clarifai models accessed via LiteLLM also support tool calling.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{Example6}</CodeBlock>
 </TabItem>

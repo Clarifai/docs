@@ -174,7 +174,7 @@ We'll connect the following two models to achieve our objective:
 
 We'll specify the IDs of the models and their versions — since a model can have several versions. 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonCreate}</CodeBlock>
@@ -208,7 +208,7 @@ After creating the workflow, let's now use it to extract texts from [this image]
 
 The response will contain the predictions each model in the workflow returns for the input.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonWorkflowPredict}</CodeBlock>
@@ -293,7 +293,7 @@ foreach (var concept in response.Outputs[0].Data.Concepts)
 
 The following is an example of how to build a workflow with multiple connected nodes. 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonSampleNodes}</CodeBlock>
@@ -327,7 +327,7 @@ It is possible to turn the outputs from given nodes in your workflow on and off 
 
 By default, this endpoint will be set to false, meaning that we do not suppress any model's output.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonSuppressNodes}</CodeBlock>
@@ -361,7 +361,7 @@ By default, this endpoint will be set to false, meaning that we do not suppress 
 
 Note that when creating a workflow using the Python SDK, you need to provide its YAML specification.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeCW}</CodeBlock>
 </TabItem>

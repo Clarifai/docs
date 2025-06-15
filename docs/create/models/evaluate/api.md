@@ -81,7 +81,7 @@ You can obtain evaluation metrics for each dataset split (e.g., training, valida
 
 Each evaluation is assigned a unique `eval_id`, allowing you to perform and track multiple evaluations across different datasets for deeper analysis.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeEval1}</CodeBlock>
 </TabItem>
@@ -95,7 +95,7 @@ Each evaluation is assigned a unique `eval_id`, allowing you to perform and trac
 
 The Python SDK also includes a feature called `EvalResultCompare`, which allows you to compare the results from different evaluations. This is useful for analyzing how model performance varies across different datasets or parameter settings.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeEval2}</CodeBlock>
 </TabItem>
@@ -116,7 +116,7 @@ If evaluating an `embedding-classifier` model type, you need to set `use_kfold` 
 
 Below is an example of how you would use the `PostModelVersionEvaluations` method to run an evaluation on a specific version of a custom model.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonEvaluateModelVersion}</CodeBlock>
@@ -148,7 +148,7 @@ Below is an example of how you would use the `PostModelVersionEvaluations` metho
 
 Below is an example of how you would use the `PostEvaluations` method to run an evaluation on a specific version of a custom model. The method allows you to choose models and datasets from different apps that you have access to.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonEvaluateModel}</CodeBlock>
@@ -189,7 +189,7 @@ Below are examples of how you would use different methods to get the evaluation 
 
 Get the evaluation results by using the `evaluation_id` returned after starting an evaluation.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonInterpretEvaluations}</CodeBlock>
@@ -227,7 +227,7 @@ Get the evaluation results by using the `evaluation_id` returned after starting 
 
 List the evaluation results of all models in your app. 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonListEvaluations}</CodeBlock>
@@ -259,7 +259,7 @@ List the evaluation results of all models in your app.
 
 Get the evaluation results of a specific version of a custom model by using the `evaluation_id` returned after starting an evaluation.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonGetModelVersionEvaluation}</CodeBlock>
@@ -291,7 +291,7 @@ Get the evaluation results of a specific version of a custom model by using the 
 
 List the evaluation results of a model version in your app.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonListModelVersionEvaluations}</CodeBlock>

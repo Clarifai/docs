@@ -183,7 +183,7 @@ This walkthrough example assumes that you've selected a Classification Base Work
 
 To get started training your own model, you need to first add images that already contain the concepts you want your model to see.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="grpc_python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonAddImagesConcepts}</CodeBlock>
@@ -231,7 +231,7 @@ If you want to [create another type of model](https://docs.clarifai.com/api-guid
 
 Take note of the `model id`, as we'll need that for the next steps.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="grpc_python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonCreateModel}</CodeBlock>
@@ -286,7 +286,7 @@ Take note of the `model_version id` in the response. We'll need that for the nex
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="grpc_python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonTrainModel}</CodeBlock>
@@ -329,7 +329,7 @@ You can repeat the above steps as often as you like. By adding more images with 
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="grpc_python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonPredictModel}</CodeBlock>

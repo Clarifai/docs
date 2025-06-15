@@ -170,7 +170,7 @@ If you want to make a predict call with an external workflow that is outside the
 
 You can use a workflow to categorize and analyze text data.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeTC}</CodeBlock>
     <details>
@@ -189,7 +189,7 @@ You can use a workflow to categorize and analyze text data.
 
 You can use a workflow to generate concise summaries by extracting key insights from lengthy or complex textual content.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeSumm}</CodeBlock>
     <details>
@@ -206,7 +206,7 @@ You can use a workflow to generate concise summaries by extracting key insights 
 
 You can use a workflow to generate textual content based on a given prompt. This enables dynamic text generation for a wide range of use cases.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeTGen}</CodeBlock>
     <details>
@@ -224,7 +224,7 @@ You can use a workflow to generate textual content based on a given prompt. This
 You can use a workflow generate images from textual prompts. This enables creative visual content generation based on descriptive input.
 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeTI}</CodeBlock>
     <details>
@@ -242,7 +242,7 @@ You can use a workflow generate images from textual prompts. This enables creati
 
 You can use a workflow to convert written text into high-quality audio. Simply submit text as input to generate natural-sounding speech.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeTA}</CodeBlock>
 </TabItem>
@@ -257,7 +257,7 @@ You can use a workflow to convert written text into high-quality audio. Simply s
 
 You can use a workflow that combines embeddings and clustering to process, organize, and analyze diverse text data. This enables advanced language understanding and categorization.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeTE}</CodeBlock>
     <details>
@@ -274,7 +274,7 @@ You can use a workflow that combines embeddings and clustering to process, organ
 
 Let's illustrate how you would produce embeddings and clusters from text inputs using Clarifai's [Language-Understanding](https://clarifai.com/clarifai/main/workflows/Language-Understanding) text workflow.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonWorkflowPredictText}</CodeBlock>
@@ -321,7 +321,7 @@ You can use a workflow for visual classification tasks. This enables accurate an
 
 Let's illustrate how you would get predictions from a visual classifier workflow. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeVC}</CodeBlock>
     <details>
@@ -344,7 +344,7 @@ Let's illustrate how you would get predictions from image inputs using Clarifai'
 
 Note that the `base64` output representation of the image in bytes is already in binary format. It is not encoded, so you do not need to decode it for further downstream tasks.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonWorkflowPredictImage}</CodeBlock>
@@ -388,7 +388,7 @@ Note that the `base64` output representation of the image in bytes is already in
 You can use a workflow for visual segmentation tasks. This enables precise categorization of distinct regions within an image.
 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeVS}</CodeBlock>
     <details>
@@ -408,7 +408,7 @@ You can use a workflow for visual segmentation tasks. This enables precise categ
 
 You can use a workflow to extract and interpret text from images. This enables OCR applications to efficiently recognize, process, and convert visual text into machine-readable format.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeIT}</CodeBlock>
     <details>
@@ -425,7 +425,7 @@ You can use a workflow to extract and interpret text from images. This enables O
 
 You can use a workflow to enhance and transform images, including upscaling for higher resolution and improved visual quality. This delivers a superior visual experience for end users.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeII}</CodeBlock>
     <details>
@@ -446,7 +446,7 @@ You can use a workflow to enhance and transform images, including upscaling for 
 
 You can use a workflow to convert audio into text by transcribing the provided spoken content. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeAT}</CodeBlock>
     <details>
@@ -463,7 +463,7 @@ You can use a workflow to convert audio into text by transcribing the provided s
 
 Let's illustrate how you would get the sentiment of an audio input using Clarifai's [asr-sentiment](https://clarifai.com/clarifai/main/workflows/asr-sentiment) workflow.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonWorkflowPredictAudio}</CodeBlock>
@@ -527,7 +527,7 @@ If your video exceeds these limits, you can split it into smaller segments for p
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeVDO}</CodeBlock>
     <details>
@@ -570,7 +570,7 @@ If your video exceeds these limits, you can split it into smaller segments for p
 
 You can use a workflow that combines face detection, recognition, and embedding to accurately identify facial landmarks. This approach not only detects faces but also generates distinctive embeddings, enabling efficient visual searches based on the unique features of each face.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeVDF}</CodeBlock>
     <details>
@@ -588,7 +588,7 @@ You can use a workflow that combines face detection, recognition, and embedding 
 
 You can use a workflow to detect a wide range of common objects within a video. It processes each frame to identify and localize objects, generating regions of interest that outline where the detected objects appear.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeVD}</CodeBlock>
     <details>
@@ -606,7 +606,7 @@ You can use a workflow to detect a wide range of common objects within a video. 
 
 You can provide data in multiple formats — such as text, images, or a combination of both — to a workflow and receive prediction results tailored to your input.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeMM}</CodeBlock>
     <details>
@@ -631,7 +631,7 @@ The batch size should not exceed 32.
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeBP}</CodeBlock>
     <details>

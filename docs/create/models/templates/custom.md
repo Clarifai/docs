@@ -317,7 +317,7 @@ import Template1 from "!!raw-loader!../../../../code_snippets/api-guide/others/c
 import PythonCreateOwnTemplate1 from "!!raw-loader!../../../../code_snippets/api-guide/model/deep_training/create_own_template_1.py";
 import PythonCreateOwnTemplate2 from "!!raw-loader!../../../../code_snippets/api-guide/model/deep_training/create_own_template_2.py";
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{Template1}</CodeBlock>
@@ -333,7 +333,7 @@ You need to create a Python configuration file and pass it as a training paramet
 
 Here is an example of a `training_config.py` file for creating a custom deep fine-tuned template using the MMDetection open source toolbox for visual detection tasks.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonCreateOwnTemplate1}</CodeBlock>
@@ -343,7 +343,7 @@ Here is an example of a `training_config.py` file for creating a custom deep fin
 
 Here is how you could use the custom template to train a deep fine-tuned model.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonCreateOwnTemplate2}</CodeBlock>

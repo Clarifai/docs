@@ -49,7 +49,7 @@ The `completion` method is the core functionality of LiteLLM for interacting wit
 Click [here](https://litellm.vercel.app/docs/completion) to learn more about completion in LiteLLM.
 
 In the example given below, we are going to chat with the `Mistral-Large` model from Clarifai.
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeCP}</CodeBlock>
 </TabItem>
@@ -60,7 +60,7 @@ In the example given below, we are going to chat with the `Mistral-Large` model 
 </details>
 
 Now let’s ask the same question to `Claude-2.1` model.  Claude models require special tokens as input. Therefore by using LiteLLM we are standardizing the inputs for LLM applications.
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeCP2}</CodeBlock>
 </TabItem>
@@ -81,7 +81,7 @@ Click [here](https://litellm.vercel.app/docs/completion/stream#streaming-respons
 :::info
 Set stream=True as an argument to the completion function.
 :::
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeST}</CodeBlock>
 </TabItem>
@@ -98,7 +98,7 @@ Async completion in LiteLLM uses asynchronous capabilities to handle language mo
 
 Click [here](https://litellm.vercel.app/docs/completion/stream#async-completion) to learn more about async completion in LiteLLM.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeAC}</CodeBlock>
 </TabItem>
@@ -114,7 +114,7 @@ Async streaming in LiteLLM refers to the process of handling real-time data stre
 
 Click [here](https://litellm.vercel.app/docs/completion/stream#async-streaming) to learn more about async streaming in LiteLLM.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeAS}</CodeBlock>
 </TabItem>
