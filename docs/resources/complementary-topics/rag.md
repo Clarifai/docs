@@ -87,7 +87,7 @@ You can set a specific version of LLM like this: `https://clarifai.com/mistralai
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeInit}</CodeBlock>
     <details>
@@ -110,7 +110,7 @@ You should only use `RAG(workflow_url)` or `RAG(workflow)` when a rag workflow a
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeWF1}</CodeBlock>
 </TabItem>
@@ -123,7 +123,7 @@ You should only use `RAG(workflow_url)` or `RAG(workflow)` when a rag workflow a
 
 The next option is to pass `workflow_id` parameter in `RAG.setup()`. This will create a new workflow in your app with the defined parameters.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeWF2}</CodeBlock>
 </TabItem>
@@ -143,7 +143,7 @@ Supported formats for upload include: DOC, PDF, plain text files, folders contai
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeDU}</CodeBlock>
     <details>
@@ -161,7 +161,7 @@ Supported formats for upload include: DOC, PDF, plain text files, folders contai
 
 In the final step, we are going to perform information retrieval using RAG based on the data we provided.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeChat}</CodeBlock>
     <details>
@@ -178,7 +178,7 @@ In the final step, we are going to perform information retrieval using RAG based
 
 Now let's ask questions that are related to the answer we received before so that we can be sure the RAG has understood the context properly.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeChat2}</CodeBlock>
 </TabItem>

@@ -83,7 +83,7 @@ To create a new concept in your app, you POST the concept with an id and name. Y
 Below is an example of how to add concepts.  
 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{PythonSDKCreateConcepts}</CodeBlock>

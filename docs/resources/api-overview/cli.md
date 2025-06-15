@@ -35,7 +35,7 @@ You need to set the `CLARIFAI_PAT` (Personal Access Token) as an environment var
 
 This token is essential for authenticating your connection to the Clarifai platform. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Unix-Like Systems">
     <CodeBlock className="language-bash"> export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
 </TabItem>
@@ -78,7 +78,7 @@ Commands:
 
 The `--help` option is particularly useful to quickly understand the available functionalities and how to use them.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">
     clarifai COMMAND --help
@@ -88,7 +88,7 @@ The `--help` option is particularly useful to quickly understand the available f
 
 For example:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">
     clarifai config --help
@@ -126,7 +126,7 @@ A context refers to the active environment settings that determine how your comm
 
 The `clarifai context` command allows you to manage different Clarifai configurations or environments, referred to as "contexts."
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">
     clarifai context [OPTIONS] COMMAND [ARGS]...
@@ -140,7 +140,7 @@ This command provides subcommands to create, delete, and switch between differen
 
 The `create` subcommand creates a new Clarifai context.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">
     clarifai context create CONTEXT_NAME_HERE
@@ -150,7 +150,7 @@ The `create` subcommand creates a new Clarifai context.
 
 Here is an example of creating a context called `my_new_context`. Note that you'll be prompted to configure the context by providing the necessary details for that context — user ID, API URL, and PAT.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">
     C:\#############>clarifai context create my_new_context
@@ -165,7 +165,7 @@ Here is an example of creating a context called `my_new_context`. Note that you'
 
 The `delete` (alias `rm`) subcommand deletes an existing Clarifai context.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">
     clarifai context delete CONTEXT_NAME_HERE
@@ -177,7 +177,7 @@ The `delete` (alias `rm`) subcommand deletes an existing Clarifai context.
 
 Here is an example:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">
     clarifai context delete old_project_context
@@ -192,7 +192,7 @@ The `use` subcommand sets a specified context as the currently active context. A
 
 This is useful when you need to switch between different Clarifai applications, user accounts, or API settings without repeatedly re-authenticating or reconfiguring.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">
     clarifai context use CONTEXT_NAME_HERE
@@ -202,7 +202,7 @@ This is useful when you need to switch between different Clarifai applications, 
 
 Here is an example:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">
     clarifai context use my_other_project
@@ -215,7 +215,7 @@ Here is an example:
 
 The `clarifai login` command is used to authenticate and configure your access to the Clarifai platform. This involves setting up a Personal Access Token (PAT) and other necessary configurations for making API requests.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">
     clarifai login [OPTIONS] [API_URL]
@@ -225,7 +225,7 @@ The `clarifai login` command is used to authenticate and configure your access t
 
 Here is an example of the standard way to use the command. You'll be prompted to enter a context name (a new, existing, or the default name), user ID, and PAT interactively.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">
     C:#############>clarifai login
@@ -238,7 +238,7 @@ Here is an example of the standard way to use the command. You'll be prompted to
 
 You can also log in with a user ID:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">
     C:#############>clarifai login --user_id alfrick
@@ -250,7 +250,7 @@ You can also log in with a user ID:
 
  You can optionally specify a custom API URL if you are connecting to a Clarifai instance other than the default. Here is an example:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">
     C:#############>clarifai login https://api-dev.clarifai.com/
@@ -271,7 +271,7 @@ This command provides subcommands to manage various aspects of your CLI configur
 
 The `current-context` (alias `current`) subcommand displays the currently active CLI context. This is useful when you have multiple contexts with different configurations and you want to ensure you're operating under the correct one. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">
     clarifai config current-context
@@ -283,7 +283,7 @@ The `current-context` (alias `current`) subcommand displays the currently active
 
 Here is an example:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">
     C:#############>clarifai config current-context
@@ -296,7 +296,7 @@ Here is an example:
 
 The `dump` (alias `cat`) subcommand displays the entire CLI configuration file (in YAML format) to your console. This is helpful for inspecting all your defined contexts and their associated details.
  
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">
     clarifai config dump
@@ -308,7 +308,7 @@ The `dump` (alias `cat`) subcommand displays the entire CLI configuration file (
 
 Here is an example:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">{ConfigFile}
 </CodeBlock>
@@ -321,7 +321,7 @@ The `edit` (alias `e`) subcommand opens the CLI configuration file in your defau
 
 Remember to save the file after making changes.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">
     clarifai config edit
@@ -337,7 +337,7 @@ The `env` (alias `cat`) subcommand outputs your currently active context in a fo
 
 It generates a string of shell commands that can be useful if you want to use these values in a script or another process that relies on environment variables rather than the Clarifai config file.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">
     clarifai config env
@@ -349,7 +349,7 @@ It generates a string of shell commands that can be useful if you want to use th
 
 Here is an example:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">
     C:#############>clarifai config env --help
@@ -375,7 +375,7 @@ Here is an example:
 
 The `get-contexts` (alias `list` or `ls`) subcommand lists all Clarifai contexts defined in your configuration file, displayed in a table format. This provides an overview of the different Clarifai setups you can switch between.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">
     clarifai config get-contexts
@@ -389,7 +389,7 @@ The `get-contexts` (alias `list` or `ls`) subcommand lists all Clarifai contexts
 
 Here is an example:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">{GetContexts}</CodeBlock>
 </TabItem>
@@ -401,7 +401,7 @@ The `use-context` (alias `use`) subcommand switches the active Clarifai context 
 
 This is crucial when you want to interact with a different Clarifai application or use a different API key without manually changing it every time.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">
     clarifai config use-context
@@ -413,7 +413,7 @@ This is crucial when you want to interact with a different Clarifai application 
 
 Here is an example:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">
     C:#############>clarifai config use-context my_other_project

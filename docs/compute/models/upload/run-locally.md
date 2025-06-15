@@ -19,7 +19,7 @@ Your model can securely receive and process requests, just as it would in a prod
 
 Here is how to run a model as a local development runner:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Bash">
     <CodeBlock className="language-bash"> clarifai model local-dev [OPTIONS] [MODEL_PATH] </CodeBlock>
 </TabItem>
@@ -58,7 +58,7 @@ You can also explore our [examples repository](https://github.com/Clarifai/runne
 
 Install the latest version of the [Clarifai CLI](https://docs.clarifai.com/sdk/cli) (Command Line Interface) tool. It includes built-in support for Local Dev Runners. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Bash">
     <CodeBlock className="language-bash"> pip install --upgrade clarifai </CodeBlock>
 </TabItem>
@@ -113,7 +113,7 @@ Then, follow these steps.
 
 Run the following command to log in to the Clarifai platform and establish a connection.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Bash">
     <CodeBlock className="language-bash"> clarifai login </CodeBlock>
 </TabItem>
@@ -121,7 +121,7 @@ Run the following command to log in to the Clarifai platform and establish a con
 
 After running the `login` command, you'll be prompted to enter the following details to authenticate your connection:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Bash">
 
 <CodeBlock className="language-bash"> 
@@ -140,7 +140,7 @@ personal access token value (default: "ENVVAR" to get our env var rather than co
 
 Next, start a local development runner.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Bash">
     <CodeBlock className="language-bash"> clarifai model local-dev </CodeBlock>
 </TabItem>

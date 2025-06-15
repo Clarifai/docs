@@ -45,7 +45,7 @@ Embedchain allows users to create personalised AI apps using the `App` method. I
 
 Click [here](https://docs.embedchain.ai/api-reference/app/overview) to learn more about apps in embedchain.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeInit}</CodeBlock>
 </TabItem>
@@ -64,7 +64,7 @@ Click [here](https://docs.embedchain.ai/api-reference/app/add) to learn more abo
 By default, embedchain uses `chromadb` as vectorstore for your app.
 :::
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeDI}</CodeBlock>
 </TabItem>
@@ -80,7 +80,7 @@ Users can now run queries on the data they ingested using the `app.query()` meth
 
 Refer to [this](https://docs.embedchain.ai/api-reference/app/query) page to know more about `app.query()`.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeQuery}</CodeBlock>
 </TabItem>

@@ -65,7 +65,7 @@ import CodeOutputMP from "!!raw-loader!../../../../code_snippets/python-sdk/mode
 
 Let's start by creating an [app](https://docs.clarifai.com/create-manage/applications/create). 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeAC}</CodeBlock>
 </TabItem>
@@ -77,7 +77,7 @@ Next, let’s upload the [dataset](https://docs.clarifai.com/create-manage/datas
 
 You can find the dataset we used [here](https://github.com/Clarifai/examples/tree/main/datasets/upload/data).
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeDU}</CodeBlock>
 </TabItem>
@@ -87,7 +87,7 @@ You can find the dataset we used [here](https://github.com/Clarifai/examples/tre
 
 Let's list all the available trainable model types in the Clarifai platform. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeMT}</CodeBlock>
 </TabItem>
@@ -100,7 +100,7 @@ Let's list all the available trainable model types in the Clarifai platform.
 
 Next, let's select the `clusterer` model type and use it to create a model.  
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeMC}</CodeBlock>
 </TabItem>
@@ -118,7 +118,7 @@ After creating a model, you can perform patch operations on it by merging, remov
 
 Below is an example of performing patch operations on a model, such as updating its description and notes. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{PatchModel}</CodeBlock>
 </TabItem>
@@ -128,7 +128,7 @@ Below is an example of performing patch operations on a model, such as updating 
 
 You can customize the model parameters as needed before starting the training process.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeS}</CodeBlock>
 </TabItem>
@@ -148,7 +148,7 @@ If the training status code returns `MODEL-TRAINED`, it means the model has succ
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeIMT}</CodeBlock>
 </TabItem>
@@ -160,7 +160,7 @@ If the training status code returns `MODEL-TRAINED`, it means the model has succ
 
 After the model is trained and ready to use, you can run some predictions with it.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeMP}</CodeBlock>
 </TabItem>
