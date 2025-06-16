@@ -46,7 +46,7 @@ Run the following command to clone the repository containing various examples fo
 
 Install the latest version of the `clarifai` Python SDK package. Also, install the Data Utils library.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Bash">
     <CodeBlock className="language-text">
     pip install --upgrade clarifai
@@ -62,7 +62,7 @@ The Image Annotation Loader requires additional libraries to function properly. 
 
 To install them, run:  
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Bash">
     <CodeBlock className="language-text">
     pip install clarifai-datautils[annotations]
@@ -78,7 +78,7 @@ You need a PAT (Personal Access Token) key to authenticate your connection to th
 
 Then, set it as an environment variable in your script.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">
     import os
@@ -91,7 +91,7 @@ Then, set it as an environment variable in your script.
 
 [Create a dataset](https://docs.clarifai.com/sdk/managing-datasets#creating-datasets) on the Clarifai platform to use for uploading your annotated image datasets.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CreateDataset}</CodeBlock>
 </TabItem>
@@ -104,7 +104,7 @@ Then, set it as an environment variable in your script.
 
 You can retrieve and display all the annotation formats that the Image Annotation Loader framework supports. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{SupportedFormats}</CodeBlock>
 </TabItem>
@@ -145,7 +145,7 @@ Here is a table that illustrates the annotation formats that the framework suppo
 
 You can identify the annotation format that a dataset uses. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{FormatDetection}</CodeBlock>
 </TabItem>
@@ -164,7 +164,7 @@ Note that:
 
 You can get the details of a dataset you want to upload to the Clarifai platform. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{GetDatasetInfo}</CodeBlock>
 </TabItem>
@@ -188,7 +188,7 @@ To upload a pre-labeled dataset from your local environment to the Clarifai plat
 
 Then, call the `upload_dataset()` method on the `Dataset` object. This method takes a `dataloader` as an argument, which iterates over the dataset and yield data in a format compatible with the Clarifai platform.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{UploadToClarifai}</CodeBlock>
 </TabItem>
@@ -198,7 +198,7 @@ Then, call the `upload_dataset()` method on the `Dataset` object. This method ta
 
 You can download a dataset from [Kaggle](https://www.kaggle.com/datasets) and upload it to the Clarifai platform. To begin, install the `opendatasets` Python package, which enables direct dataset downloads from Kaggle.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Bash">
     <CodeBlock className="language-text">
     pip install -q opendatasets
@@ -208,7 +208,7 @@ You can download a dataset from [Kaggle](https://www.kaggle.com/datasets) and up
 
 Next, download the dataset from Kaggle. For example, here is how you could download this [dogs-vs-wolves](https://www.kaggle.com/datasets/harishvutukuri/dogs-vs-wolves) dataset.  
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{DownloadFromKaggle}</CodeBlock>
 </TabItem>
@@ -216,7 +216,7 @@ Next, download the dataset from Kaggle. For example, here is how you could downl
 
 Then, you can upload it to Clarifai.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{UploadFromKaggle}</CodeBlock>
 </TabItem>
@@ -226,7 +226,7 @@ Then, you can upload it to Clarifai.
 
 You can convert datasets between various annotation formats in your local development environment. For example, you can convert a dataset from COCO format to VOC format.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{ConvertDataset}</CodeBlock>
 </TabItem>
@@ -238,7 +238,7 @@ You can export a dataset version from the Clarifai platform and convert it into 
 
 First, use the Clarifai SDK to export the dataset from the platform. The dataset will be downloaded as a ZIP file to your specified local directory. If the directory does not already exist, it will be automatically created for you.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{ExportClarifai1}</CodeBlock>
 </TabItem>
@@ -246,7 +246,7 @@ First, use the Clarifai SDK to export the dataset from the platform. The dataset
 
 Next, extract the contents of the ZIP file to a folder. Then, pass the folder path to `ImageAnnotations` and convert the dataset into your desired format.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{ExportClarifai2}</CodeBlock>
 </TabItem>

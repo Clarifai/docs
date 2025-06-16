@@ -157,7 +157,7 @@ Then, create the following files in the `configs` folder:
 
 **1.** `compute_cluster_config.yaml`:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="yaml" label="YAML">
     <CodeBlock className="language-yaml">{CO1}</CodeBlock>
 </TabItem>
@@ -165,7 +165,7 @@ Then, create the following files in the `configs` folder:
 
 **2.** `nodepool_config.yaml`:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="yaml" label="YAML">
     <CodeBlock className="language-yaml">{CO6}</CodeBlock>
 </TabItem>
@@ -175,7 +175,7 @@ Then, create the following files in the `configs` folder:
 
 _We'll use this later to [deploy the model](deploy-model.md)._
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="yaml" label="YAML">
     <CodeBlock className="language-yaml">{CO11}</CodeBlock>
 </TabItem>
@@ -185,7 +185,7 @@ _We'll use this later to [deploy the model](deploy-model.md)._
 
 To create a new compute cluster, pass the `compute_cluster_id` and `config_filepath` as arguments to the `create_compute_cluster` method of the `User` class.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CO2}</CodeBlock>
 </TabItem>
@@ -198,7 +198,7 @@ After creating it, initialize the `ComputeCluster` class by providing the `user_
 
 > Initialization is essential because it establishes the specific user and compute cluster context, which allows the subsequent operations to accurately target and manage the intended resources.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CO5}</CodeBlock>
 </TabItem>
@@ -209,7 +209,7 @@ After creating it, initialize the `ComputeCluster` class by providing the `user_
 
 To create a new nodepool, use the `create_nodepool` method with the `nodepool_id` and `config_filepath` parameters.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CO7}</CodeBlock>
 </TabItem>
@@ -221,7 +221,7 @@ To create a new nodepool, use the `create_nodepool` method with the `nodepool_id
 
 After creating it, initialize the `Nodepool` class by providing the `user_id` and `nodepool_id` parameters. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CO10}</CodeBlock>
 </TabItem>

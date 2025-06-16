@@ -20,7 +20,7 @@ This will not show annotations by models in your workflow. To include model crea
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonlistUserCreatedAnnotationsApp}</CodeBlock>
@@ -52,7 +52,7 @@ This will not show annotations by models in your workflow. To include model crea
 
 Below is an example of how to list all annotations, including those created by models.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonListAllAnnotationsApp}</CodeBlock>
@@ -90,7 +90,7 @@ This will not show annotations by models in your workflow. To include model crea
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonListUserCreatedAnnotationsInputIds}</CodeBlock>
@@ -134,7 +134,7 @@ Below is an example of how to do that.
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonListAnnotationsInputAnnotationIds}</CodeBlock>
@@ -168,7 +168,7 @@ An annotation is created by either a user or a model. You can list annotations c
 
 Below is an example of how to do that.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonListAnnotationsUserIds}</CodeBlock>
@@ -204,7 +204,7 @@ You can also label these regions by using `Post annotation` with the region ID r
 
 Below is an example of how to list annotations by model version IDs.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonListAnnotationsModelVersionIds}</CodeBlock>

@@ -38,7 +38,7 @@ import OutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/integr
 
 Here is an example of how to use a Clarifai model and LangChain for a question answering task.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{Langchain1}</CodeBlock>
 </TabItem>
@@ -65,7 +65,7 @@ LangChain provides the necessary tooling that lets you create and work with [pro
 
 Here is an example of how you can use a prompt template for a question answering task.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{Langchain2}</CodeBlock>
 </TabItem>

@@ -88,7 +88,7 @@ import CurlListAnnotations from "!!raw-loader!../../../../code_snippets/api-guid
 
 Let's start by creating the concepts we'll use in our model. We'll create the following concepts: `people`, `man` and `adult`.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="grpc_python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonCreateConcepts}</CodeBlock>
@@ -120,7 +120,7 @@ Run the code below three times; once for each concept you created previously. Th
 
 Your model's concept IDs are the ones you created in the previous step: `peopleID`, `manID`, and `adultID`.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="grpc_python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonLinkConcepts}</CodeBlock>
@@ -148,7 +148,7 @@ We'll be setting the `knowledge_graph_id` value to be empty.
 
 If you want to define a subset of relationships in your app to be related to each other, you can provide the `knowledge_graph_id` to each concept relation and then provide that `knowledge_graph_id` as input to this model as well, which will only follow relationships in that subset of your app's knowledge graph.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="grpc_python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonCreateConceptMapperModel}</CodeBlock>
@@ -172,7 +172,7 @@ If you want to define a subset of relationships in your app to be related to eac
 
 This model will allow any predictions &gt;= the concept values defined in the model to be outputted from the model.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="grpc_python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonCreateGreaterThan}</CodeBlock>
@@ -196,7 +196,7 @@ This model will allow any predictions &gt;= the concept values defined in the mo
 
 This model will allow any predictions &lt; the concept values defined in the model to be outputted from the model.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="grpc_python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonCreateLessThan}</CodeBlock>
@@ -220,7 +220,7 @@ This model will allow any predictions &lt; the concept values defined in the mod
 
 Any incoming Data object full of concepts, regions, etc. will be written by this model to the database as an annotation with ANNOTATION\_SUCCESS status as if the app owner did the work themself.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="grpc_python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonCreateWriteSuccess}</CodeBlock>
@@ -244,7 +244,7 @@ Any incoming Data object full of concepts, regions, etc. will be written by this
 
 Any incoming Data object full of concepts, regions, etc. will be written by this model to the database as an annotation with ANNOTATION\_PENDING status as if the app owner did the work themself, but needs further review. So, it is marked as pending.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="grpc_python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonCreateWritePending}</CodeBlock>
@@ -278,7 +278,7 @@ The model IDs and model version IDs from the public `clarifai/main` application 
 
 It's possible to use other public models or model version IDs.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="grpc_python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonCreateWorkflow}</CodeBlock>
@@ -304,7 +304,7 @@ Make this the default workflow in the app. So, it will run every time we add an 
 
 If the workflow is not the default workflow of your app, you can still use `PostWorkflowResults` on new inputs to check that you configured the workflow graph and your models properly, but the data will not be written to the DB. This is recommended before making it your default workflow and adding inputs to your app.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="grpc_python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonMakeWorkflowDefault}</CodeBlock>
@@ -328,7 +328,7 @@ If the workflow is not the default workflow of your app, you can still use `Post
 
 Adding an image will trigger the default workflow.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="grpc_python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonAddImage}</CodeBlock>
@@ -352,7 +352,7 @@ Adding an image will trigger the default workflow.
 
 You can now list annotations with your user ID and see the annotations created by your workflow.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="grpc_python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonListAnnotations}</CodeBlock>

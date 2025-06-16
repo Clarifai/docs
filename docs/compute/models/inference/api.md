@@ -52,7 +52,7 @@ import PyToolCalling from "!!raw-loader!../../../../code_snippets/python-sdk/com
 
 - Install the latest version of the Clarifai [Python](https://github.com/Clarifai/clarifai-python/) SDK package:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Bash">
     <CodeBlock className="language-bash"> pip install --upgrade clarifai </CodeBlock>
 </TabItem>
@@ -60,7 +60,7 @@ import PyToolCalling from "!!raw-loader!../../../../code_snippets/python-sdk/com
 
 - Install the latest version of the Clarifai [Node.js](https://github.com/Clarifai/clarifai-nodejs) SDK package:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Bash">
     <CodeBlock className="language-bash"> npm install clarifai-nodejs </CodeBlock>
 </TabItem>
@@ -72,7 +72,7 @@ You need a PAT (Personal Access Token) key to authenticate your connection to th
 
 You can then set the PAT as an environment variable using `CLARIFAI_PAT`:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Unix-Like Systems">
     <CodeBlock className="language-bash"> export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
 </TabItem>
@@ -95,7 +95,7 @@ You can learn more about the structure of model prediction methods [here](README
 
 :::note Initializing the Model Client
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{PyModelClient}</CodeBlock>
 </TabItem>
@@ -110,7 +110,7 @@ You can learn more about the structure of model prediction methods [here](README
 
 You can list all the methods implemented in the model's configuration that are available for performing model inference.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO1}</CodeBlock>
 </TabItem>
@@ -130,7 +130,7 @@ You can retrieve the method signature of a specified model's method to identify 
 
 A method signature defines the method's name, its input parameters (with types and default values), and the return type, helping you understand how to properly call the method.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO2}</CodeBlock>
 </TabItem>
@@ -148,7 +148,7 @@ A method signature defines the method's name, its input parameters (with types a
 
 You can generate a sample code snippet to better understand how to perform inference using a model.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO3}</CodeBlock>
 </TabItem>
@@ -185,7 +185,7 @@ This is the simplest form of prediction: a single input is sent to the model, an
 
 Here is an example of a [model signature](https://docs.clarifai.com/compute/models/upload/#step-1-prepare-the-modelpy-file) configured on the server side for handling text inputs:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">@ModelClass.method
   def predict(self, prompt: str = "") -> str:</CodeBlock>
@@ -194,7 +194,7 @@ Here is an example of a [model signature](https://docs.clarifai.com/compute/mode
 
 Here’s how you can make a corresponding unary-unary predict call from the client side:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO5Text}</CodeBlock>
 </TabItem>
@@ -212,7 +212,7 @@ Here’s how you can make a corresponding unary-unary predict call from the clie
 
 Here is an example of a model signature configured on the server side for handling image inputs:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">@ModelClass.method
 def predict(self, image: Image) -> str:</CodeBlock>
@@ -221,7 +221,7 @@ def predict(self, image: Image) -> str:</CodeBlock>
 
 Here’s how you can make a corresponding unary-unary predict call from the client side:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO5}</CodeBlock>
 </TabItem>
@@ -250,7 +250,7 @@ This call sends a single input to the model but returns a stream of responses. T
 
 Here is an example of a model signature configured on the server side for handling text inputs:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">@ModelClass.method
 def generate(self, prompt: str) -> Iterator[str]:</CodeBlock>
@@ -259,7 +259,7 @@ def generate(self, prompt: str) -> Iterator[str]:</CodeBlock>
 
 Here’s how you can make a corresponding unary-stream predict call from the client side:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO6}</CodeBlock>
 </TabItem>
@@ -272,7 +272,7 @@ Here’s how you can make a corresponding unary-stream predict call from the cli
 
 Here is an example of a model signature configured on the server side for handling image inputs:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">@ModelClass.method
 def generate(self, image: Image) -> Iterator[str]:</CodeBlock>
@@ -281,7 +281,7 @@ def generate(self, image: Image) -> Iterator[str]:</CodeBlock>
 
 Here’s how you can make a corresponding unary-stream predict call from the client side:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO6Images}</CodeBlock>
 </TabItem>
@@ -304,7 +304,7 @@ In this setup, multiple inputs can be continuously streamed to the model, while 
 
 Here is an example of a [model signature](https://docs.clarifai.com/compute/models/upload/#step-1-prepare-the-modelpy-file) configured on the server side for handling text inputs:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">@ModelClass.method
   def stream(self, input_iterator: Iterator[str]) -> Iterator[str]:</CodeBlock>
@@ -313,7 +313,7 @@ Here is an example of a [model signature](https://docs.clarifai.com/compute/mode
 
 Here’s how you can make a corresponding stream-stream predict call from the client side:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO7Text}</CodeBlock>
 </TabItem>
@@ -323,7 +323,7 @@ Here’s how you can make a corresponding stream-stream predict call from the cl
 
 Here is an example of a model signature configured on the server side for handling audio inputs:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">@ModelClass.method
 def transcribe_audio(self, audio: Iterator[Audio]) -> Iterator[Text]:</CodeBlock>
@@ -332,7 +332,7 @@ def transcribe_audio(self, audio: Iterator[Audio]) -> Iterator[Text]:</CodeBlock
 
 Here’s how you can make a corresponding stream-stream predict call from the client side:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO7}</CodeBlock>
 </TabItem>
@@ -354,7 +354,7 @@ This means you can pass either a single input or a list of inputs, and the syste
 
 Here is an example of a model signature configured on the server side for handling image inputs:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">@ModelClass.method
 def predict_image(self, image: Image) -> Dict[str, float]:</CodeBlock>
@@ -363,7 +363,7 @@ def predict_image(self, image: Image) -> Dict[str, float]:</CodeBlock>
 
 Here’s how you can perform batch predictions with image inputs from the client side:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO8}</CodeBlock>
 </TabItem>
@@ -373,7 +373,7 @@ Here’s how you can perform batch predictions with image inputs from the client
 
 Here is an example of a model signature configured on the server side for handling text inputs:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">class TextClassifier(ModelClass):
   @ModelClass.method
@@ -385,7 +385,7 @@ Here is an example of a model signature configured on the server side for handli
 
 Here’s how you can perform batch predictions with text inputs from the client side:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO9}</CodeBlock>
 </TabItem>
@@ -406,7 +406,7 @@ Additionally, you can configure various [inference parameters](https://docs.clar
 
 Here is an example:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{C10}</CodeBlock>
 </TabItem>
@@ -418,7 +418,7 @@ Tool calling in LLMs is a capability that allows models to autonomously decide w
 
 You can learn more about it [here](https://docs.clarifai.com/compute/models/inference/open-ai#tool-calling). 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{PyToolCalling}</CodeBlock>
 </TabItem>

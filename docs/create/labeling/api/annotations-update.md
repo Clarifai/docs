@@ -17,7 +17,7 @@ Update supports `overwrite`, `merge`, and `remove` actions. You can update from 
 
 Below is an example of how to update an annotation of an image with a new concept, or  change a concept value from true to false \(or vice versa\).
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonUpdateAnnotationConcepts}</CodeBlock>
@@ -51,7 +51,7 @@ When you update region data, you must nest this new data within `region.data`. S
 
 Below is an example of how to update annotation with concepts in a region.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonUpdateAnnotationConceptsRegion}</CodeBlock>
@@ -85,7 +85,7 @@ You can update region bounding boxes coordinates. When changing the region, you 
 
 Below is an example of how to do that.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonUpdateAnnotationRegionCoordinates}</CodeBlock>
@@ -117,7 +117,7 @@ Below is an example of how to do that.
 
 Below is an example of how to update an annotation status.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonUpdateAnnotationStatus}</CodeBlock>

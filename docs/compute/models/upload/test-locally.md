@@ -41,7 +41,7 @@ If you're developing your own model, our [step-by-step guide](https://docs.clari
 
 Install the latest version of the [Clarifai CLI](https://docs.clarifai.com/sdk/cli) (Command Line Interface) tool. We'll use this tool to test models in the local development environment. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Bash">
     <CodeBlock className="language-bash"> pip install --upgrade clarifai </CodeBlock>
 </TabItem>
@@ -79,7 +79,7 @@ When you run the `test-locally` CLI command shown below, it will automatically i
 
 Below is a sample `model.py` file with an example implementation of the `test` method:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{TestMethod}</CodeBlock>
 </TabItem>
@@ -103,7 +103,7 @@ clarifai model test-locally --mode container
 
 Here is how to test a model in a Docker Container:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Bash">
     <CodeBlock className="language-bash"> clarifai model test-locally --mode container </CodeBlock>
 </TabItem>
@@ -111,7 +111,7 @@ Here is how to test a model in a Docker Container:
 
 Here is how to test a model in a virtual environment:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Bash">
     <CodeBlock className="language-bash"> clarifai model test-locally --mode env </CodeBlock>
 </TabItem>
@@ -131,7 +131,7 @@ The  `run-locally` method starts a local gRPC server at `https://localhost:{port
 
 Here is how to test a model in a Docker Container:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Bash">
     <CodeBlock className="language-bash"> clarifai model run-locally --mode container --port 8000 </CodeBlock>
 </TabItem>
@@ -139,7 +139,7 @@ Here is how to test a model in a Docker Container:
 
 Here is how to test a model in a virtual environment:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Bash">
     <CodeBlock className="language-bash"> clarifai model run-locally --mode env --port 8000  </CodeBlock>
 </TabItem>
@@ -149,7 +149,7 @@ Here is how to test a model in a virtual environment:
 
 Once the model is running locally, you need to configure the `CLARIFAI_API_BASE` environment variable to point to the localhost and port where the gRPC server is running.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Unix-Like Systems">
     <CodeBlock className="language-bash"> export CLARIFAI_API_BASE="localhost:add-port-here" </CodeBlock>
 </TabItem>

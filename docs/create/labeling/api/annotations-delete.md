@@ -17,7 +17,7 @@ Before using the [Python SDK](https://docs.clarifai.com/additional-resources/api
 Below is an example of how to delete a single annotation by input ID and annotation ID.
 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonDeleteAnnotationInputAnnotationIds}</CodeBlock>
@@ -51,7 +51,7 @@ You can delete multiple annotations in one API call. You need to provide a list 
 
 Below is an example of how to do that. 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonbulkDeleteAnnotationsInputAnnotationIds}</CodeBlock>
@@ -85,7 +85,7 @@ To delete all annotations of a given input, you just need to set their input ID\
 
 Below is an example of how to do that. 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonBulkDeleteAnnotationsInputIds}</CodeBlock>

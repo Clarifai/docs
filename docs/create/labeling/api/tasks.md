@@ -132,7 +132,7 @@ To create a new task in your app, you `POST` the task information to the `v2/tas
 
 A task should be assigned to a list of users. These users will do the labeling work, so they're also called workers. A task may also be assigned to a list of users for review purposes.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PyAssignedTask}</CodeBlock>
@@ -181,7 +181,7 @@ In the following example, there are two workers:
 * `weights.user_id_1`: the first worker will get 90% of inputs
 * `weights.user_id_2`: the second worker will get 10% of inputs
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PyTaskPartitionedWorkerStrategy}</CodeBlock>
@@ -228,7 +228,7 @@ Note that an approval threshold must be set. It is the number of labelers that n
 
 For example, in case of 3 workers and `approval_threshold` set to 2, if an input is labeled in the same way by 2 workers, they form a majority and the group reaches a consensus.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PyConsensusReview}</CodeBlock>
@@ -266,7 +266,7 @@ You can learn how to perform auto-annotation via the UI [here](https://docs.clar
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PyAutoAnnotation}</CodeBlock>
@@ -302,7 +302,7 @@ You can get the details of a single task by its ID, which is automatically gener
 
 Alternatively, you can also locate the task ID within the [Clarifai platform's user interface](https://docs.clarifai.com/portal-guide/annotate/create-a-task#tasks-listing).
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PyGetTaskByID}</CodeBlock>
@@ -334,7 +334,7 @@ Alternatively, you can also locate the task ID within the [Clarifai platform's u
 
 You can get a list of tasks within your app with a `GET` call. This call supports [pagination](https://docs.clarifai.com/api-guide/advanced-topics/pagination/).
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PyListAllTasks}</CodeBlock>
@@ -366,7 +366,7 @@ You can get a list of tasks within your app with a `GET` call. This call support
 
 Get only the tasks assigned to a specific user for work.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PyListTasksAssignedUser}</CodeBlock>
@@ -398,7 +398,7 @@ Get only the tasks assigned to a specific user for work.
 
 Get only the tasks assigned to a specific user for review.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PyListTasksAssignedUserReview}</CodeBlock>
@@ -432,7 +432,7 @@ Currently, we only support updating a task by providing all information at once.
 
 ### Update Task
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PyUpdateTask}</CodeBlock>
@@ -463,7 +463,7 @@ In order to keep track of each user's work assigned to a task, all the annotatio
 
 Therefore, when a user creates an annotation, the task ID should be provided as below:
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PyTaskAnnotations}</CodeBlock>
@@ -496,7 +496,7 @@ Therefore, when a user creates an annotation, the task ID should be provided as 
 
 You can delete a task by specifying its ID. You can also delete multiple tasks by specifying a list of their IDs. 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PyDeleteMultipleTasks}</CodeBlock>

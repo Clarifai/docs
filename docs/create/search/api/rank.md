@@ -112,7 +112,7 @@ When you add an input, it automatically gets predictions from the workflow in yo
 
 [Click here](https://docs.clarifai.com/api-guide/concepts/create-get-update#list-concepts) to learn how to get a list of concepts available in the app.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonAppConcepts}</CodeBlock>
@@ -152,7 +152,7 @@ Training a model generates embeddings for each custom concept. These concept emb
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonCustomConcepts}</CodeBlock>
@@ -184,7 +184,7 @@ Training a model generates embeddings for each custom concept. These concept emb
 
 You can combine a search to find inputs that have concepts you have supplied as well as predictions from your model.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonClarifaiCustomConcepts}</CodeBlock>
@@ -218,7 +218,7 @@ Concepts that have a translation into another language can be searched for in th
 
 For example, if your app is in English and you want to search for "dog" in Japanese, then you could search with `language="ja"` and `name="犬"`.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonConceptLanguage}</CodeBlock>
@@ -251,7 +251,7 @@ For example, if your app is in English and you want to search for "dog" in Japan
 You can search for concepts by `name`, even across different languages, using the `ConceptSearches` endpoint.
 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonSearchByConcept}</CodeBlock>
@@ -297,7 +297,7 @@ You can use images to search through your collection. The API will return ranked
 
 ### Search by Image URL
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeIMURL}</CodeBlock>
@@ -337,7 +337,7 @@ You can use images to search through your collection. The API will return ranked
 
 You can also search for an input by bytes, with the bytes being from local storage.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonImageBytes}</CodeBlock>
@@ -369,7 +369,7 @@ You can also search for an input by bytes, with the bytes being from local stora
 
 If the input has been indexed, we can use the input ID. If there are multiple embeddings \(for example multiple regions\), we will average the embeddings.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonInputID}</CodeBlock>
@@ -408,7 +408,7 @@ You can use texts to search through your collection of texts. The text-to-text s
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeRKTXT}</CodeBlock>

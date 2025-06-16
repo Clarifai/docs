@@ -44,7 +44,7 @@ import Databricks5 from "!!raw-loader!../../../code_snippets/api-guide/integrati
 
 You can upload images or text files stored in a Databricks volume to your Clarifai application. It’s important to ensure that the folder exclusively contains either images or text files. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{Databricks1}</CodeBlock>
 </TabItem>
@@ -56,7 +56,7 @@ You can upload data from a CSV file stored in a Databricks volume to your Clarif
 
 You can also include additional supported columns such as `concepts`, `metadata`, and `geopoints`. The `input` column within the CSV is a versatile field, capable of accommodating either a file URL or path, or it can contain raw text. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{Databricks2}</CodeBlock>
 </TabItem>
@@ -68,7 +68,7 @@ You can upload data from a delta table in a Databricks volume to your Clarifai a
 
 You can also include additional supported columns such as `concepts`, `metadata`, and `geopoints`. The `input` column within the table is a versatile field, capable of accommodating either a file URL or path, or it can contain raw text. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{Databricks3}</CodeBlock>
 </TabItem>
@@ -80,7 +80,7 @@ You can upload data from a PySpark dataframe in a Databricks volume to your Clar
 
 You can also include additional supported columns such as `concepts`, `metadata`, and `geopoints`. The `input` column within the table is a versatile field, capable of accommodating either a file URL or path, or it can contain raw text. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{Databricks4}</CodeBlock>
 </TabItem>
@@ -94,7 +94,7 @@ For reference, you can explore a variety of data loader examples [here](https://
 
 Ensure that the necessary files and folders for the dataloader are stored in Databricks volume storage to facilitate seamless integration and accessibility.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{Databricks5}</CodeBlock>
 </TabItem>

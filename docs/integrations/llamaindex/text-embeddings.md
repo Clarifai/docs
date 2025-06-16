@@ -43,7 +43,7 @@ import LlamaIndex3 from "!!raw-loader!../../../code_snippets/api-guide/integrati
 
 import OutputExample3 from "!!raw-loader!../../../code_snippets/api-guide/integrations/llamaindex_output_3.txt";
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{LlamaIndex3}</CodeBlock>
 </TabItem>

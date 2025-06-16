@@ -45,7 +45,7 @@ You can retrieve detailed information about the annotations in your Clarifai app
 
 Optionally, you can specify a list of input IDs for which you want to fetch their annotations. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{Databricks1}</CodeBlock>
 </TabItem>
@@ -59,7 +59,7 @@ Note that the JSON response may include supplementary attributes, offering compr
 
 Optionally, you can specify a list of input IDs for which you want to fetch their annotations.  
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{Databricks2}</CodeBlock>
 </TabItem>
@@ -71,7 +71,7 @@ You can obtain inputs along with their corresponding annotations in a structured
 
 The resulting dataframe consolidates information seamlessly from both the annotations and inputs dataframes, as outlined in the previously mentioned functions.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{Databricks3}</CodeBlock>
 </TabItem>

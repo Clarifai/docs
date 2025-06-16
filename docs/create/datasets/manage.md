@@ -178,7 +178,7 @@ Before using the [Python SDK](https://docs.clarifai.com/additional-resources/api
 
 You can list the datasets in your app. 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{curlListDatasets}</CodeBlock>
@@ -190,7 +190,7 @@ You can list the datasets in your app.
 
 You can list all the versions associated with your dataset to view its update history and changes over time.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{curlListDatasetVersions}</CodeBlock>
@@ -202,7 +202,7 @@ You can list all the versions associated with your dataset to view its update hi
 
 You can retrieve the details of a specific dataset by providing its ID. 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{curlGetDatasets}</CodeBlock>
@@ -214,7 +214,7 @@ You can retrieve the details of a specific dataset by providing its ID.
 
 You can retrieve the details of a specific dataset version by providing its version ID.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{curlGetDatasetVersions}</CodeBlock>
@@ -226,7 +226,7 @@ You can retrieve the details of a specific dataset version by providing its vers
 
 You can retrieve an input in a dataset by specifying its ID. 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{curlGetDatasetInputs}</CodeBlock>
@@ -239,7 +239,7 @@ You can retrieve an input in a dataset by specifying its ID.
 
 You can list the inputs in a dataset by providing the dataset ID. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{ListDatasetInputs}</CodeBlock>
 </TabItem>
@@ -258,7 +258,7 @@ The `clarifai-data-protobuf.zip` file can be downloaded from the [export dataset
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeExport}</CodeBlock>
 </TabItem>
@@ -270,7 +270,7 @@ You can download inputs that have been enhanced or optimized using [Secure Data 
 
 This feature leverages the power of SDH to deliver a faster, more efficient download experience — offering performance and flexibility tailored to modern computing needs.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeSDH}</CodeBlock>
 </TabItem>
@@ -287,7 +287,7 @@ You can apply patch operations to a dataset — merging, removing, or overwritin
 
 Below is an example of patching a dataset to update its description, notes, and image URL. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodePatchDataset}</CodeBlock>
 </TabItem>
@@ -295,7 +295,7 @@ Below is an example of patching a dataset to update its description, notes, and 
 
 Below is an example of updating dataset's description and metadata. 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{curlUpdateDatasets}</CodeBlock>
@@ -307,7 +307,7 @@ Below is an example of updating dataset's description and metadata.
 
 Below is an example of updating a dataset with a default filter. 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{curlUpdateDatasetsDefaultFilter}</CodeBlock>
@@ -319,7 +319,7 @@ Below is an example of updating a dataset with a default filter.
 
 Below is an example of updating a dataset version's name.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{curlChangeDatasetVersion}</CodeBlock>
@@ -333,7 +333,7 @@ Here’s an example of merging a dataset with the ID `merge_dataset_id` into ano
 
 Note that all inputs from the source dataset (`merge_dataset_id`) will be added to the target dataset (`dataset_id`). 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{MergeDataset}</CodeBlock>
 </TabItem>
@@ -343,7 +343,7 @@ Note that all inputs from the source dataset (`merge_dataset_id`) will be added 
 
 You can delete the inputs in a dataset by specifying their IDs. 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{curlDeleteInputs}</CodeBlock>
@@ -362,7 +362,7 @@ Be certain that you want to delete a particular dataset version as the operation
 :::
 
                                          
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeDV}</CodeBlock>
   
@@ -389,7 +389,7 @@ Be certain that you want to delete a particular dataset as the operation cannot 
 :::
 
                                          
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeDelete}</CodeBlock>
  
