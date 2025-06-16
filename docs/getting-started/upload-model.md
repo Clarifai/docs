@@ -36,7 +36,7 @@ import NodeSDKRequest from "!!raw-loader!../../code_snippets/python-sdk/model-up
 
 Install the latest version of the `clarifai` Python SDK. This also installs the Clarifai [Command Line Interface (CLI)](https://docs.clarifai.com/additional-resources/api-overview/cli), which we'll use for uploading the model.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Bash">
     <CodeBlock className="language-bash"> pip install --upgrade clarifai </CodeBlock>
 </TabItem>
@@ -48,7 +48,7 @@ You need to set the `CLARIFAI_PAT` (Personal Access Token) as an environment var
 
 This token is essential for authenticating your connection to the Clarifai platform.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Unix-Like Systems">
     <CodeBlock className="language-bash"> export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
 </TabItem>
@@ -95,7 +95,7 @@ Add the following snippets to each of the respective files.
 
 ### `model.py`
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{ModelPyFile}</CodeBlock>
 </TabItem>
@@ -103,7 +103,7 @@ Add the following snippets to each of the respective files.
 
 ### `requirements.txt`
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="text" label="Text">
     <CodeBlock className="language-text">{RequirementsFile}</CodeBlock>
 </TabItem>
@@ -117,7 +117,7 @@ In the `model` section of the `config.yaml` file, specify your model ID, Clarifa
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="yaml" label="YAML">
     <CodeBlock className="language-yaml">{ConfigFile}</CodeBlock>
 </TabItem>
@@ -127,7 +127,7 @@ In the `model` section of the `config.yaml` file, specify your model ID, Clarifa
 
 Once your custom model is ready, upload it to the Clarifai platform by navigating to the directory containing the model and running the following command:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash"> clarifai model upload </CodeBlock>
 </TabItem>
@@ -137,7 +137,7 @@ Once your custom model is ready, upload it to the Clarifai platform by navigatin
 
 Once your model is successfully uploaded to Clarifai, you can start making predictions with it.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonSDKRequest}</CodeBlock>
 </TabItem>

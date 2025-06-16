@@ -95,7 +95,7 @@ import CodeCreateAppBase from "!!raw-loader!../../../code_snippets/python-sdk/cr
 import CodeOutputCreateApp from "!!raw-loader!../../../code_snippets/python-sdk/create-apps/outputs/create_app.txt";
 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeCreateApp}</CodeBlock> 
 </TabItem>
@@ -133,7 +133,7 @@ You can create an app with a different base workflow. You can choose from a rang
 
 This enables you to seamlessly integrate and customize the fundamental structure of your app, ensuring it aligns perfectly with your project requirements.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeCreateAppBase}</CodeBlock>
 </TabItem>

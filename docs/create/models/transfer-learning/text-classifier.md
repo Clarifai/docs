@@ -185,7 +185,7 @@ Let's demonstrate how you can create a text classifier model using our API.
 
 Let's start by creating an [app](https://docs.clarifai.com/create-manage/applications/create). 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeAC}</CodeBlock>
 </TabItem>
@@ -197,7 +197,7 @@ Next, let’s upload the [dataset](https://docs.clarifai.com/create-manage/datas
 
 You can find the dataset we used [here](https://github.com/Clarifai/examples/tree/main/datasets/upload/data).
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeDU}</CodeBlock>
 </TabItem>
@@ -209,7 +209,7 @@ You can find the dataset we used [here](https://github.com/Clarifai/examples/tre
 
 Let's list all the available trainable model types in the Clarifai platform. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeMT}</CodeBlock>
 </TabItem>
@@ -222,7 +222,7 @@ Let's list all the available trainable model types in the Clarifai platform.
 Next, let's select the `embedding-classifier` model type and use it to create a model.  
 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeMC}</CodeBlock>
 </TabItem>
@@ -240,7 +240,7 @@ Next, let's select the `embedding-classifier` model type and use it to create a 
 You can customize the model parameters as needed before starting the training process.
 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeS}</CodeBlock>
 </TabItem>
@@ -260,7 +260,7 @@ If the training status code returns `MODEL-TRAINED`, it means the model has succ
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeIMT}</CodeBlock>
 </TabItem>
@@ -273,7 +273,7 @@ If the training status code returns `MODEL-TRAINED`, it means the model has succ
 
 After the model is trained and ready to use, you can run some predictions with it.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeMP}</CodeBlock>
 </TabItem>
@@ -288,7 +288,7 @@ After the model is trained and ready to use, you can run some predictions with i
 
 Let’s evaluate the model using both the training and test datasets. We’ll start by reviewing the evaluation metrics for the training dataset.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeTrEv}</CodeBlock>
 </TabItem>
@@ -300,7 +300,7 @@ Let’s evaluate the model using both the training and test datasets. We’ll st
 
 Before evaluating the model on the test dataset, ensure it is uploaded using the data loader. Once uploaded, proceed with the evaluation.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeTeEv}</CodeBlock>
 </TabItem>
@@ -312,7 +312,7 @@ Before evaluating the model on the test dataset, ensure it is uploaded using the
 
 Finally, to gain deeper insights into the model’s performance, use the `EvalResultCompare` method to compare results across multiple datasets.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeCMP}</CodeBlock>
 </TabItem>
@@ -352,7 +352,7 @@ import OutputExample1 from "!!raw-loader!../../../../code_snippets/api-guide/mod
 import OutputExample2 from "!!raw-loader!../../../../code_snippets/api-guide/model/code_output_examples/custom-text-model-walkthrough_2.js";
 
 <!--
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="grpc_python" label="gRPC Python">
 
 ```python
@@ -373,7 +373,7 @@ We'll mark each input with one of the two concepts: `positive` or `negative`.
 
 The texts can be added either directly \(it's called raw\) or from a URL.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="grpc_python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonAddBatchTexts}</CodeBlock>
@@ -385,7 +385,7 @@ The texts can be added either directly \(it's called raw\) or from a URL.
 
 Let's now wait for all the inputs to download.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="grpc_python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonWaitInputsDownload}</CodeBlock>
@@ -397,7 +397,7 @@ Let's now wait for all the inputs to download.
 
 Let's create a custom transfer learning model (also called an "embedding-classifier"). 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="grpc_python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonCreateCustomModel}</CodeBlock>
@@ -411,7 +411,7 @@ Let's train the model using the `positive` and `negative` concepts.
 
 All inputs \(in our application\) associated with these two concepts will be used as training data. This will make the model to learn from these inputs so that we can later predict new text examples. 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="grpc_python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonTrainTextModel}</CodeBlock>
@@ -427,7 +427,7 @@ Each model training produces a new model version. Notice that on the bottom of t
 
 We'll be using it later to specify which specific model version we want to use \(since a model can have multiple versions\).
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="grpc_python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonWaitModelTraining}</CodeBlock>
@@ -439,7 +439,7 @@ We'll be using it later to specify which specific model version we want to use \
 
 Let's now use the trained custom model to predict new text examples.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="grpc_python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonPredictNewInputs}</CodeBlock>
@@ -470,7 +470,7 @@ See the [Evaluating Models](https://docs.clarifai.com/api-guide/evaluate/) secti
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="grpc_python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonStartModelEvaluation}</CodeBlock>
@@ -489,7 +489,7 @@ Model evaluation takes some time — depending on the amount of data the model h
 
 Let's wait for it to complete, and print all the results that it gives us.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="grpc_python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonWaitModelEvaluationResults}</CodeBlock>

@@ -85,7 +85,7 @@ import OutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/audit-
 
 Here is how you can list all the supported audit log events performed by a user on the Clarifai platform.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonListAuditLogs}</CodeBlock>
 </TabItem>
@@ -129,7 +129,7 @@ The Audit Logging feature currently supports tracking the following critical res
 
 <details>
   <summary>**Operations Event Types Supported**</summary>
-   <Tabs>
+   <Tabs groupId="code">
 
 <TabItem value="default" label="Default">
 
@@ -232,7 +232,7 @@ The Audit Logging feature currently supports tracking the following critical res
 </details>
 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonOperation}</CodeBlock>
 </TabItem>
@@ -257,7 +257,7 @@ You can specify precise time ranges for your queries to track exactly when opera
 
 Note that for HTTP+JSON requests, timestamps are formatted as `2024-08-25T00:00:00Z`. And for gRPC requests, timestamps use separate `seconds` and `nanos` fields, as detailed here: [Protobuf Timestamp Reference](https://protobuf.dev/reference/protobuf/google.protobuf/#timestamp).  
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonTime}</CodeBlock>
 </TabItem>
@@ -280,7 +280,7 @@ Note that for HTTP+JSON requests, timestamps are formatted as `2024-08-25T00:00:
 
 You can define specific users or groups in your queries to track who performed each operation.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonUser}</CodeBlock>
 </TabItem>
@@ -323,7 +323,7 @@ You can define the target of your query; that is, specify the resource on which 
  
 </details>
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonTarget}</CodeBlock>
 </TabItem>
@@ -346,7 +346,7 @@ You can define the target of your query; that is, specify the resource on which 
 
 You can filter logs based on the operation outcome, such as whether it was successful. This also enables you to identify failed attempts and take appropriate action. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonSuccess}</CodeBlock>
 </TabItem>
@@ -369,7 +369,7 @@ You can filter logs based on the operation outcome, such as whether it was succe
 
 You can filter logs based on the IP address where the request originated from. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonSource}</CodeBlock>
 </TabItem>
@@ -395,7 +395,7 @@ You can specify the sorting options for the audit logs.
 - If `true`, logs are sorted by timestamp in ascending order (oldest to newest).  
 - If `false`, logs are sorted in descending order (newest to oldest).  
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonSort}</CodeBlock>
 </TabItem>
@@ -418,7 +418,7 @@ You can specify the sorting options for the audit logs.
 
 You can split the results into [pages](https://docs.clarifai.com/api-guide/advanced-topics/pagination), which makes it easier to navigate and review the data.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonPage}</CodeBlock>
 </TabItem>

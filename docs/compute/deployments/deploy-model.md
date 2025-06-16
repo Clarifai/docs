@@ -97,7 +97,7 @@ Each model or workflow can only have one deployment per nodepool.
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CO12}</CodeBlock>
 </TabItem>
@@ -108,7 +108,7 @@ Each model or workflow can only have one deployment per nodepool.
 
 After creating it, initialize the `Deployment` class by providing the `user_id` and `deployment_id` parameters. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CO15}</CodeBlock>
 </TabItem>

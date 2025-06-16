@@ -56,7 +56,7 @@ import PythonRateLimits from "!!raw-loader!../../../code_snippets/api-guide/othe
 import NodeRateLimits from "!!raw-loader!../../../code_snippets/api-guide/others/api-rate-limits.js";
 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonRateLimits}</CodeBlock>

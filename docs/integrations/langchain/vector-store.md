@@ -49,7 +49,7 @@ You can then use your Clarifai application to perform a semantic search and find
 
 Here is an example.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{Langchain4}</CodeBlock>
 </TabItem>
@@ -85,7 +85,7 @@ We’ll use the [`unstructured` library](https://python.langchain.com/docs/integ
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{Langchain5}</CodeBlock>
 </TabItem>
@@ -103,7 +103,7 @@ Most users are likely to have already added data to their Clarifai applications 
 
 In this example, we will leverage the existing data within an application to perform a semantic search and find relevant documents.
  
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{Langchain6}</CodeBlock>
 </TabItem>

@@ -79,7 +79,7 @@ import CodeBlock from "@theme/CodeBlock";
 import PythonPat from "!!raw-loader!../../../code_snippets/api-guide/authentication/pat.py";
 import CurlPat from "!!raw-loader!../../../code_snippets/api-guide/authentication/pat.sh";
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python (gRPC)">
      <CodeBlock className="language-python">{PythonPat}</CodeBlock>
 </TabItem>

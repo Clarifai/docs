@@ -27,7 +27,7 @@ import curlDeleteDatasetFilter from "!!raw-loader!../../../code_snippets/api-gui
 
 ## Add Dataset Annotation Filters
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{curlAddDatasetFilters}</CodeBlock>
@@ -37,7 +37,7 @@ import curlDeleteDatasetFilter from "!!raw-loader!../../../code_snippets/api-gui
 
 ## List Dataset Annotation Filters
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{curlListDatasetFilters}</CodeBlock>
@@ -47,7 +47,7 @@ import curlDeleteDatasetFilter from "!!raw-loader!../../../code_snippets/api-gui
 
 ## Get a Dataset Annotation Filter
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{curlGetDatasetFilter}</CodeBlock>
@@ -57,7 +57,7 @@ import curlDeleteDatasetFilter from "!!raw-loader!../../../code_snippets/api-gui
 
 ## Change a Dataset Annotation Filter
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{curlChangeDatasetFilter}</CodeBlock>
@@ -67,7 +67,7 @@ import curlDeleteDatasetFilter from "!!raw-loader!../../../code_snippets/api-gui
 
 ## Delete a Dataset Annotation Filter
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{curlDeleteDatasetFilter}</CodeBlock>

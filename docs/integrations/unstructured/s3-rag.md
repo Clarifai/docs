@@ -53,14 +53,14 @@ secret_access='YOUR_S3_SECRET_ACCESS_KEYS'
 ```
 After setting up the access keys for the s3 bucket, let’s import some necessary libraries.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeInit1}</CodeBlock>
 </TabItem>
 </Tabs>
 
 Next, we have to write a function that will configure the target Clarifai app where the ingested documents will be loaded,
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeInit2}</CodeBlock>
 </TabItem>
@@ -72,7 +72,7 @@ In data ingestion, there are two important concepts Source Connector and Destina
 
 Click [here](https://unstructured-io.github.io/unstructured/ingest/index.html) to learn more about Ingestion.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeDI}</CodeBlock>
 </TabItem>
@@ -86,7 +86,7 @@ Click [here](https://unstructured-io.github.io/unstructured/ingest/index.html) t
 
 In the final step, we are going to perform information retrieval using RAG based on the data we ingested from S3 to the Clarifai app using Unstructured.io. You can use a workflow with a RAG prompter for initialising RAG. After successfully creating a workflow, you can get the URL from the Clarifai portal. After creating the rag object using workflow URL you can start retrieving text from the data we ingested using Unstructured.io.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeChat}</CodeBlock>
 </TabItem>

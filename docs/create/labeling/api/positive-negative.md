@@ -54,7 +54,7 @@ Before using the [Python SDK](https://docs.clarifai.com/additional-resources/api
 
 If an input is tagged with a positive annotation, it is considered a positive label for it. 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonPositive}</CodeBlock>
@@ -86,7 +86,7 @@ If an input is tagged with a positive annotation, it is considered a positive la
 
 If an input is tagged with a negative annotation, it is treated as a negative label for that concept. It emphasizes that the input does not belong to that concept.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonNegative}</CodeBlock>
