@@ -50,7 +50,7 @@ Add images that contain the faces you want to use as a training set.
 Since the application's base model is Face, after adding an image, faces are automatically located and are available to be annotated.
 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="grpc_python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonAddImages}</CodeBlock>
@@ -62,7 +62,7 @@ Since the application's base model is Face, after adding an image, faces are aut
 
 Now we'll wait for all the images to finish uploading, and then create a dictionary mapping from an input ID to the URL. This will help us to annotate the proper image in the next step.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="grpc_python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonWaitUploadMap}</CodeBlock>
@@ -76,7 +76,7 @@ Let's now print all the regions that the Face base model detected on our images.
 
 The code below prints the annotations together with the model version ID and region ID. These two IDs will be needed in the next step to annotate using our custom concepts. We'll also need the base Face model ID, which is the one where `model_version_id` equals to `embedding_model_version_id`.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="grpc_python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonListAnnotations}</CodeBlock>
@@ -90,7 +90,7 @@ Let's use the above information to add annotations, in the form of a concept, to
 
 Input below the IDs from the previous call, and choose your concept ID and name that you want to annotate the region with \(you may want to use e.g. person's name\).
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="grpc_python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonPostNewAnnotations}</CodeBlock>
@@ -102,7 +102,7 @@ Input below the IDs from the previous call, and choose your concept ID and name 
 
 Let's now create a KNN model using the concept IDs that were added above. The model type ID should be set to `knn-concept`.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="grpc_python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonCreateKnnModel}</CodeBlock>
@@ -114,7 +114,7 @@ Let's now create a KNN model using the concept IDs that were added above. The mo
 
 One last step before making predictions: let's create a workflow that's going to map from the base Face model to our custom KNN model.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="grpc_python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonCreateWorkflow}</CodeBlock>
@@ -126,7 +126,7 @@ One last step before making predictions: let's create a workflow that's going to
 
 We're going to run a prediction on the workflow created above.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="grpc_python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonPredict}</CodeBlock>

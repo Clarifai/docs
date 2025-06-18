@@ -71,7 +71,7 @@ You should ensure your local environment has sufficient memory and compute resou
 Install the latest version of the `clarifai` Python package. This will also install the Clarifai [Command Line Interface](https://docs.clarifai.com/additional-resources/api-overview/cli/) (CLI), which we'll use for testing and uploading the model. 
 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Bash">
     <CodeBlock className="language-bash"> pip install --upgrade clarifai </CodeBlock>
 </TabItem>
@@ -84,7 +84,7 @@ You need to set the `CLARIFAI_PAT` (Personal Access Token) as an environment var
 
 This token is essential for authenticating your connection to the Clarifai platform.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Unix-Like Systems">
     <CodeBlock className="language-bash"> export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
 </TabItem>
@@ -133,7 +133,7 @@ The `model.py` file contains the core logic for your model, including how the mo
 
 This is the `model.py` file for the custom model we want to upload:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python"> {PrepareModelPyFile} </CodeBlock>
 </TabItem>
@@ -188,7 +188,7 @@ The `config.yaml` file is essential for specifying the model’s metadata, compu
 
 This is the `config.yaml` file for the custom model we want to upload:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="yaml" label="YAML">
     <CodeBlock className="language-yaml">{ConfigModelInfo}</CodeBlock>
 </TabItem>
@@ -231,7 +231,7 @@ If you're using a model from Hugging Face, you can automatically download its ch
 
 See the [example below](#llama-32-1b-instruct) for how to define Hugging Face checkpoints.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="yaml" label="YAML">
     <CodeBlock className="language-yaml">{HFCheckpoints}</CodeBlock>
 </TabItem>
@@ -267,7 +267,7 @@ The following model types output concepts or labels:
 - `visual-segmenter`
 - `text-classifier` 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="yaml" label="YAML">
     <CodeBlock className="language-yaml">{ModelConcepts}</CodeBlock>
 </TabItem>
@@ -320,7 +320,7 @@ Once your model is ready, you can upload it to the platform using Clarifai CLI.
 
 To upload your model, run the following command in your terminal:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Bash">
     <CodeBlock className="language-bash"> clarifai model upload ./your/model/path/here </CodeBlock>
 </TabItem>
@@ -328,7 +328,7 @@ To upload your model, run the following command in your terminal:
 
 Alternatively, navigate to the directory containing your custom model and run the command without specifying the directory path:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Bash">
     <CodeBlock className="language-bash"> clarifai model upload </CodeBlock>
 </TabItem>
@@ -355,7 +355,7 @@ Once the model is successfully uploaded to Clarifai, you can start making predic
 
 You can make a [unary-unary](https://docs.clarifai.com/compute/models/inference/api/#unary-unary-predict-call) predict call using the uploaded model.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python"> {UnaryUnaryPredict} </CodeBlock>
 </TabItem>
@@ -371,7 +371,7 @@ You can make a [unary-unary](https://docs.clarifai.com/compute/models/inference/
 
 You can make a [unary-stream](https://docs.clarifai.com/compute/models/inference/api/#unary-stream-predict-call) predict call using the uploaded model.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python"> {UnaryStreamPredict} </CodeBlock>
 </TabItem>
@@ -387,7 +387,7 @@ You can make a [unary-stream](https://docs.clarifai.com/compute/models/inference
 
 You can make a [stream-stream](https://docs.clarifai.com/compute/models/inference/api/#stream-stream-predict-call) predict call using the uploaded model. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python"> {StreamStreamPredict} </CodeBlock>
 </TabItem>

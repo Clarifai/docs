@@ -105,7 +105,7 @@ You need a PAT (Personal Access Token) key to authenticate your connection to th
 
 Install the latest version of the Clarifai Python SDK package.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python1" label="Python SDK">
     <CodeBlock className="language-python">pip install --upgrade clarifai</CodeBlock>
 </TabItem>
@@ -132,7 +132,7 @@ On Windows, the Clarifai Python SDK expects a `HOME` environment variable, which
 
 For this example, let's use the [Qwen3](https://clarifai.com/qwen/qwenLM/models/Qwen3-30B-A3B-GGUF) model to generate text based on a given prompt.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{PythonSDKRequest}</CodeBlock>
 </TabItem>

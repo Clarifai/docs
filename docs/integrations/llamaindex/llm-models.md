@@ -44,7 +44,7 @@ import OutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/integr
 import OutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/integrations/llamaindex_output_2.txt";
 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{LlamaIndex1}</CodeBlock>
 </TabItem>
@@ -60,7 +60,7 @@ import OutputExample2 from "!!raw-loader!../../../code_snippets/api-guide/integr
 
 Here is an example of how to use a Clarifai LLM and LlamaIndex for a chatting task. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{LlamaIndex2}</CodeBlock>
 </TabItem>

@@ -69,7 +69,7 @@ Note that, as previously mentioned, updating the base workflow will re-index you
 
 This may take some time, and could incur costs. You could avoid the costs by deleting all your inputs before updating the base workflow.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonUpdateWorkflow}</CodeBlock>

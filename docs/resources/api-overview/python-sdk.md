@@ -52,7 +52,7 @@ Clarifai uses Personal Access Tokens (PATs) to authenticate API requests. You ca
 To set your PAT as an environment variable and use it with the Python SDK, run:
 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Unix-Like Systems">
     <CodeBlock className="language-bash"> export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
 </TabItem>

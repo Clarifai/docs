@@ -284,7 +284,7 @@ It supports the following prediction methods:
 - `predict_by_bytes` — Pass raw input data directly.
 - `predict_by_filepath` — Provide the local file path for the input. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO19}</CodeBlock>
 </TabItem>
@@ -308,7 +308,7 @@ It supports the following prediction methods:
 - `generate_by_bytes` — Use raw input data.
 - `generate_by_filepath` — Use a local file path for the input.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO20}</CodeBlock>
 </TabItem>
@@ -336,7 +336,7 @@ It supports the following prediction methods:
 - `stream_by_bytes` — Stream raw input data.
 - `stream_by_filepath` — Stream inputs from local file paths.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO21}</CodeBlock>
 </TabItem>
@@ -378,7 +378,7 @@ You can send up to 128 images in a single API call, with each image file sized u
 
 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeVisualClassifier}</CodeBlock>
 
@@ -427,7 +427,7 @@ You can send up to 128 images in a single API call, with each image file sized u
 
 Below is an example of how you would send the bytes of an image and receive model predictions.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{CodePythonViaBytes}</CodeBlock>
 </TabItem>
@@ -460,7 +460,7 @@ To predict multiple inputs at once and avoid the need for numerous API calls, yo
 
 Note that these examples are provided for cURL and Python, but the same concept is applicable to any supported programming language. 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{CurlViaURLMultiple}</CodeBlock>
@@ -478,7 +478,7 @@ Unlike image classification, which assigns a single label to an entire image, a 
 
 You can provide input images either through URLs or by uploading files.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeVisualDImage}</CodeBlock>
 </TabItem>
@@ -525,7 +525,7 @@ You can provide input images either through URLs or by uploading files.
 
 You can use a [segmentation model](https://clarifai.com/explore/models?page=1&perPage=24&filterData=%5B%7B%22field%22%3A%22model_type_id%22%2C%22value%22%3A%5B%22visual-segmenter%22%5D%7D%5D) to generate segmentation masks by providing an image as input. This enables detailed analysis by identifying distinct regions within the image and associating them with specific concepts.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeVisualSegmenter}</CodeBlock>
     <details>
@@ -571,7 +571,7 @@ You can use a [segmentation model](https://clarifai.com/explore/models?page=1&pe
 You can use an [image-to-text](https://clarifai.com/explore/models?page=1&perPage=24&filterData=%5B%7B%22field%22%3A%22model_type_id%22%2C%22value%22%3A%5B%22image-to-text%22%5D%7D%5D) model to generate meaningful textual descriptions from images.
 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeImageToText}</CodeBlock>
     <details>
@@ -621,7 +621,7 @@ You can use an [image-to-text](https://clarifai.com/explore/models?page=1&perPag
 You can use an upscaling [image-to-image](https://clarifai.com/explore/models?page=1&perPage=24&filterData=%5B%7B%22field%22%3A%22model_type_id%22%2C%22value%22%3A%5B%22image-to-image%22%5D%7D%5D) model to improve the quality of an image.
 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeImageToImage}</CodeBlock>
 </TabItem>
@@ -638,7 +638,7 @@ You can use an upscaling [image-to-image](https://clarifai.com/explore/models?pa
 
 You can use an [embedding model](https://clarifai.com/explore/models?page=1&perPage=24&filterData=%5B%7B%22field%22%3A%22model_type_id%22%2C%22value%22%3A%5B%22visual-embedder%22%5D%7D%5D) to generate embeddings from an image. Image embeddings are vector representations that capture the semantic content of an image, providing a powerful foundation for applications like similarity search, recommendation systems, and more.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeVisualEmbed}</CodeBlock>
     <details>
@@ -685,7 +685,7 @@ When uploading via URL, videos must be no longer than 10 minutes in duration or 
 
 Below is an example of how you would send video URLs and receive predictions.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeVisualDVideo}</CodeBlock>
     <details>
@@ -731,7 +731,7 @@ Below is an example of how you would send video URLs and receive predictions.
 
 Below is an example of how you would send the bytes of a video and receive predictions.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{CodePythonViaBytesVideo}</CodeBlock>
@@ -779,7 +779,7 @@ The file size of each text input should be less than 20MB. Learn more [here](htt
 
 Below is an example of how you would make predictions on passages of text hosted on the web.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeTextClassifier}</CodeBlock>
 </TabItem>
@@ -825,7 +825,7 @@ Below is an example of how you would make predictions on passages of text hosted
 
 Below is an example of how you would provide text inputs via local text files and receive predictions. 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{CodePythonViaBytesText}</CodeBlock>
@@ -857,7 +857,7 @@ Below is an example of how you would provide text inputs via local text files an
 
 Below is an example of how you would provide raw text inputs and receive predictions. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{CodePythonViaRawText}</CodeBlock>
 </TabItem>
@@ -888,7 +888,7 @@ Below is an example of how you would provide raw text inputs and receive predict
 
 You can use [text generation](https://clarifai.com/explore/models?page=1&perPage=24&filterData=%5B%7B%22field%22%3A%22model_type_id%22%2C%22value%22%3A%5B%22text-to-text%22%5D%7D%5D) models to dynamically create textual content based on user-defined prompts.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeTextGenLLM}</CodeBlock>
 
@@ -939,7 +939,7 @@ You can learn more about them [here](advanced.md#types-of-inference-parameters).
 
 > **Note:** You can also find various examples of how to set inference parameters throughout this guide.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeTextGenLLMInference}</CodeBlock>
 </TabItem>
@@ -975,7 +975,7 @@ You can learn more about them [here](advanced.md#types-of-inference-parameters).
 
 You can leverage [LLMs](https://clarifai.com/explore/models?filterData=%5B%7B%22field%22%3A%22use_cases%22%2C%22value%22%3A%5B%22llm%22%5D%7D%5D&page=1&perPage=24) to categorize text using carefully crafted prompts.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeTextClassLLM}</CodeBlock>
     <details>
@@ -997,7 +997,7 @@ You can leverage [LLMs](https://clarifai.com/explore/models?filterData=%5B%7B%22
 
 You can use a [text-to-image](https://clarifai.com/explore/models?page=1&perPage=24&filterData=%5B%7B%22field%22%3A%22model_type_id%22%2C%22value%22%3A%5B%22text-to-image%22%5D%7D%5D) model to transform textual input into vibrant and expressive images.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeTextImage}</CodeBlock>
 </TabItem>
@@ -1043,7 +1043,7 @@ You can use a [text-to-image](https://clarifai.com/explore/models?page=1&perPage
 
 You can use a [text-to-audio](https://clarifai.com/explore/models?page=1&perPage=24&filterData=%5B%7B%22field%22%3A%22input_fields%22%2C%22value%22%3A%5B%22text%22%5D%7D%2C%7B%22field%22%3A%22use_cases%22%2C%22value%22%3A%5B%22speech-synthesis%22%2C%22text-to-speech%22%5D%7D%5D) model to convert written text into natural, expressive speech.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeTextAudio}</CodeBlock>
 </TabItem>
@@ -1098,7 +1098,7 @@ You can use an [embedding model](https://clarifai.com/explore/models?page=1&perP
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeTextEmbedder}</CodeBlock>
 
@@ -1148,7 +1148,7 @@ You can use an [audio-to-text](https://clarifai.com/explore/models?page=1&perPag
 
 ##### Predict via URL
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeAudioText}</CodeBlock>
 </TabItem>
@@ -1191,7 +1191,7 @@ You can use an [audio-to-text](https://clarifai.com/explore/models?page=1&perPag
 ##### Predict via Bytes
 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonViaBytesAudio}</CodeBlock>
@@ -1229,7 +1229,7 @@ Below is an example of how you can send both image and text inputs to a model.
 
 ##### Predict via Image URL
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeImageText}</CodeBlock>
 </TabItem>
@@ -1270,7 +1270,7 @@ Below is an example of how you can send both image and text inputs to a model.
 
 ##### Predict via Local Image
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeImageText01}</CodeBlock>
     <details>
@@ -1297,7 +1297,7 @@ This Bring Your Own Key (BYOK) flexibility allows you to integrate your preferre
 
 Here is an example of how to add an OpenAI API key for [Dalle-3](https://clarifai.com/openai/dall-e/models/dall-e-3) for text-to-image tasks. 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="curl" label="cURL">
     <CodeBlock className="language-bash">{ThirdPartyKey}</CodeBlock>

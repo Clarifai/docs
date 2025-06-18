@@ -53,14 +53,14 @@ DROPBOX_ACCESS_TOKEN="YOUR_ACCESS_TOKEN"
 ```
 
 After setting up the access tokens, let’s import some necessary libraries.
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeInit1}</CodeBlock>
 </TabItem>
 </Tabs>
 
 Next, we will have to write a function to set up the ingestion configurations required to upload the data into our app in the Clarifai platform.
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeInit2}</CodeBlock>
 </TabItem>
@@ -72,7 +72,7 @@ In data ingestion, there are two important concepts Source Connector and Destina
 
 Click [here](https://unstructured-io.github.io/unstructured/ingest/index.html) to learn more about Ingestion.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeDI}</CodeBlock>
 </TabItem>
@@ -86,7 +86,7 @@ Click [here](https://unstructured-io.github.io/unstructured/ingest/index.html) t
 ## Chat
 
 In the final step, we are going to perform information retrieval using RAG based on the data we ingested from Dropbox to the Clarifai app using Unstructured.io. You can use a workflow with a RAG prompter for initialising RAG. After successfully creating a workflow, you can get the URL from the Clarifai portal. After creating the rag object using workflow URL you can start retrieving text from the data we ingested using Unstructured.io.
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CodeChat}</CodeBlock>
 </TabItem>

@@ -49,7 +49,7 @@ You can use the [OpenAI Agents SDK](https://openai.github.io/openai-agents-pytho
 
 The following command will install the `openai-agents` package and the optional `litellm` dependency group. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Bash">
     <CodeBlock className="language-bash"> pip install "openai-agents[litellm]" </CodeBlock>
 </TabItem>
@@ -71,7 +71,7 @@ You'll also need the `Runner` class to run your agent.
 
 Here is an example of an AI agent powered by a Clarifai-hosted model and equipped with a simple weather lookup tool. When asked about the weather, the agent will recognize the need to use its tool, get the information, and then summarize it in the form of a haiku.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{OpenAI}</CodeBlock>
 </TabItem>
@@ -96,7 +96,7 @@ You can install the following necessary packages:
 
 This is the combined commands for installing them:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Bash">
     <CodeBlock className="language-bash"> pip install google-adk litellm google-generativeai </CodeBlock>
 </TabItem>
@@ -116,7 +116,7 @@ You'll also need the `Runner` class to run your agent.
 
 Here is an example of an interactive AI agent that is designed to act as a helpful weather assistant, leveraging a Clarifai-hosted LLM and a custom tool to fetch weather information.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{GoogleADK}</CodeBlock>
 </TabItem>
@@ -141,7 +141,7 @@ You can use [CrewAI](https://docs.crewai.com/introduction) to build agentic AI a
 
 The following command will install the core CrewAI package. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Bash">
     <CodeBlock className="language-bash"> pip install crewai </CodeBlock>
 </TabItem>
@@ -174,7 +174,7 @@ When building an agent with CrewAI, the most common properties you'll configure 
 
 Here is an example of a specialized AI agent powered by a Clarifai-hosted model. When you provide a topic, the agent performs a detailed analysis and then generates responses.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CrewAI}</CodeBlock>
 </TabItem>
@@ -206,7 +206,7 @@ You can install the following necessary packages:
 
 This is the combined commands for installing them:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Bash">
     <CodeBlock className="language-bash"> npm install ai @ai-sdk/openai-compatible zod </CodeBlock>
 </TabItem>
@@ -227,7 +227,7 @@ The most common properties you'll configure in a `generateText` call are:
 
 Here is an example that demonstrates how to build an agent using the Vercel AI SDK that interacts with a Clarifai-hosted language model.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="typescript" label="TypeScript">
     <CodeBlock className="language-typescript">{Vercel}</CodeBlock>
 </TabItem>

@@ -117,7 +117,7 @@ You can retrieve all inputs available in your app. If you added inputs with conc
 Note that this request supports [pagination](https://docs.clarifai.com/additional-resources/api-overview/pagination), allowing you to navigate through large sets of inputs efficiently.
 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeListInput}</CodeBlock>
@@ -185,7 +185,7 @@ This is another method for listing inputs, which was built to scalably list an a
 
 By default, the stream will return inputs from oldest to newest. Set the `descending` field to true to reverse that order.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonListInputsStreaming}</CodeBlock>
@@ -215,7 +215,7 @@ By default, the stream will return inputs from oldest to newest. Set the `descen
 
 If you'd like to get the details of a specific input by its `id`, you can do that as well.
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonGetInputId}</CodeBlock>
@@ -270,7 +270,7 @@ if (response.Status.Code != StatusCode.Success)
 
 If you add inputs in bulk, they will be procesed in the background. You can get the status of all your inputs \(processed, to\_process, and errors\) like this:
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonGetInputsStatus}</CodeBlock>
@@ -326,7 +326,7 @@ Console.WriteLine(response.Counts);
 
 Below is an example of how to download inputs from your app. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{DownloadInputs}</CodeBlock>
 </TabItem>
@@ -349,7 +349,7 @@ You can apply patch operations to an input, allowing for the merging or removal 
 
 Here is an example of how to patch the metadata of an input.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodePatchInputs3}</CodeBlock>
 </TabItem>
@@ -359,7 +359,7 @@ Here is an example of how to patch the metadata of an input.
 
 Here is an example of how to patch a bounding box annotation on an input.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodePatchInputs1}</CodeBlock>
 </TabItem>
@@ -369,7 +369,7 @@ Here is an example of how to patch a bounding box annotation on an input.
 
 Here is an example of how to patch a polygon annotation on an input.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodePatchInputs2}</CodeBlock>
 </TabItem>
@@ -379,7 +379,7 @@ Here is an example of how to patch a polygon annotation on an input.
 
 To update an input with a new concept, or to change a concept value from true/false, you can do the following:
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodePatchInputs4}</CodeBlock>
@@ -469,7 +469,7 @@ You can update existing inputs using their `ids`. This is useful if you'd like t
 
 Below is an example of how to update multiple inputs with concepts at once. 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonBulkUpdateInputsConcepts}</CodeBlock>
@@ -580,7 +580,7 @@ Below is an example of how to delete all the annotations associated with a given
 
 The `annotation_ids` parameter is optional. However, if provided, the number and order of `annotation_ids` must match the corresponding `input_ids`.  
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{BulkDeleteAnnotations}</CodeBlock>
@@ -602,7 +602,7 @@ Be certain that you want to delete a particular input as the operation cannot be
 
 To remove concepts that were already added to an input, you can do this:
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonDeleteConceptsInput}</CodeBlock>
@@ -680,7 +680,7 @@ if (response.Status.Code != StatusCode.Success)
 
 Below is an example of how to bulk delete multiple concepts from a list of inputs. 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonBulkDeleteConceptsInputs}</CodeBlock>
@@ -789,7 +789,7 @@ if (response.Status.Code != StatusCode.Success)
 
 Below is an example of how to delete a single input by its `id`. 
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonDeleteInputId}</CodeBlock>
@@ -850,7 +850,7 @@ We currently support a batch size of 128 inputs per request. So, you can provide
 
 :::
 
-<Tabs>
+<Tabs groupId="code">
 
 <TabItem value="python" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonDeleteListInputs}</CodeBlock>
@@ -914,7 +914,7 @@ Below is an example of how to delete all inputs from your app.
 
 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeDeleteInput}</CodeBlock>
 </TabItem>

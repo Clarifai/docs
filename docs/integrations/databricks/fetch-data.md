@@ -41,7 +41,7 @@ You can retrieve detailed information about the input data in your Clarifai appâ
 
 Ensure you use the `input_type` parameter for targeted retrieval based on the data file types. You can specify the desired type, such as "image", "video", "audio", or "text", to obtain specific details relevant to that file type. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{Databricks1}</CodeBlock>
 </TabItem>
@@ -55,7 +55,7 @@ Ensure to specify the `input_type` parameter to tailor the results to a specific
 
 Note that the JSON response may include additional attributes, offering comprehensive insights beyond the specified columns in the dataframe. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{Databricks2}</CodeBlock>
 </TabItem>
@@ -67,7 +67,7 @@ You can effortlessly download image and text files from your Clarifai appâ€™s da
 
 You need to specify the path where the retrieved data will be stored in the volume and utilize the response obtained from the `list_inputs()` function as the parameter. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{Databricks3}</CodeBlock>
 </TabItem>

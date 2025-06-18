@@ -54,7 +54,7 @@ You need to install the following Python packages:
 
 You can run the following command to install them:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Bash">
     <CodeBlock className="language-bash"> pip install --upgrade fastmcp pydantic clarifai </CodeBlock>
 </TabItem>
@@ -64,7 +64,7 @@ You can run the following command to install them:
 Or, you can define the packages in a [`requirements.txt`](#step-4-define-dependencies-in-requirementstxt) file and run the following command to install them:
 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Bash">
     <CodeBlock className="language-bash"> pip install -r requirements.txt </CodeBlock>
 </TabItem>
@@ -77,7 +77,7 @@ You also need to have a Personal Access Token (PAT) to authenticate your connect
 
 Then, set the `CLARIFAI_PAT` as an environment variable. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Unix-Like Systems">
     <CodeBlock className="language-bash"> export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
 </TabItem>
@@ -124,7 +124,7 @@ You can automatically generate these files by running this CLI command: [`clarif
 
 Here's the `model.py` file for the custom model (or, in this case, a server) we want to build:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{MCPModelPyFile}</CodeBlock>
 </TabItem>
@@ -176,7 +176,7 @@ The `config.yaml` file is used to configure the build and deployment settings fo
 
 This is the `config.yaml` file for the custom model (or, in this case, a server) we want to build:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="yaml" label="YAML">
     <CodeBlock className="language-yaml">{MCPConfigFile}</CodeBlock>
 </TabItem>
@@ -197,7 +197,7 @@ The `requirements.txt` file lists all the Python packages your MCP server depend
 
 Here's the `requirements.txt` file for the custom model (or, in this case, a server) we want to build:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="text" label="txt">
     <CodeBlock className="language-text">{MCPRequirementsFile}</CodeBlock>
 </TabItem>
@@ -211,7 +211,7 @@ Before uploading your server to the Clarifai platform, you can test it locally t
 
 You can use Clarifai's `local-dev` CLI tool to test and run your model as a local development runner. You can learn how to use the tool [here](https://docs.clarifai.com/compute/models/upload/run-locally).
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Bash">
     <CodeBlock className="language-bash"> clarifai model local-dev </CodeBlock>
 </TabItem>
@@ -223,7 +223,7 @@ You can also use the [MCP Inspector](https://github.com/modelcontextprotocol/ins
 
 To launch the Inspector, run the following command. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Bash">
     <CodeBlock className="language-bash"> npx @modelcontextprotocol/inspector </CodeBlock>
 </TabItem>
@@ -244,7 +244,7 @@ After entering these details, click the **Connect** button to establish a connec
 
 To upload the MCP server to the Clarifai platform, navigate to its root directory and run the following command:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash"> clarifai model upload </CodeBlock>
 </TabItem>
@@ -277,7 +277,7 @@ After uploading your server to Clarifai, you can create a separate client script
 
 Here’s an example `client.py` that demonstrates how to interact with your deployed MCP server:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{MCPClientFile}</CodeBlock>
 </TabItem>
@@ -293,7 +293,7 @@ Let’s break down what each part of the file does.
 
 To execute the client example, run the following command:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="Bash">
     <CodeBlock className="language-bash"> python client.py </CodeBlock>
 </TabItem>

@@ -262,7 +262,7 @@ You can perform patch operations on an app by merging, removing, or overwriting 
 
 Below is an example of performing patch operations on an app, where the base workflow is updated, the app is switched to an [app template](https://docs.clarifai.com/create-manage/applications/templates/), and changes are made to the app's description, notes, default language, and image URL. 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodePatchApp}</CodeBlock>
 </TabItem>
@@ -273,7 +273,7 @@ Below is an example of performing patch operations on an app, where the base wor
 You can use the `list_apps` method to retrieve all the apps associated with your account. This method supports [pagination](https://docs.clarifai.com/additional-resources/api-overview/pagination), allowing you to tailor the results using parameters like `page_no` and `per_page` to fit your specific needs.
 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeListApp}</CodeBlock>
     <details>
@@ -291,7 +291,7 @@ You can use the `list_apps` method to retrieve all the apps associated with your
 
 You can remove an app from your account by specifying its app ID. Note that you need to be certain that you want to delete a particular app as the operation cannot be undone.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeDeleteApp}</CodeBlock>
     <details>
@@ -311,7 +311,7 @@ You can remove an app from your account by specifying its app ID. Note that you 
 
 You can create [concepts](https://docs.clarifai.com/portal-guide/inputs-manager/concepts) by uploading input data to your app along with a specified label. This automatically generates new concepts, making it easier to integrate and manage new ideas or entities within your application.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeCreateConcept}</CodeBlock>
     <details>
@@ -334,7 +334,7 @@ You can create [concepts](https://docs.clarifai.com/portal-guide/inputs-manager/
 You can use the `list_concepts` method to retrieve all the concepts within your application. This method supports [pagination](https://docs.clarifai.com/additional-resources/api-overview/pagination), allowing you to tailor the results using parameters like `page_no` and `per_page` to fit your specific needs.
 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeListConcept}</CodeBlock>
     <details>
