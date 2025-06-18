@@ -1,14 +1,19 @@
+import os
 import litellm
 
-# Call litellm.completion or litellm.chat_completion to send requests
-for chunk in litellm.completion(
-    model="openai/https://clarifai.com/openai/chat-completion/models/o4-mini",
-    api_key="CLARIFAI_PAT",
+response = litellm.completion(
+    model="openai/https://clarifai.com/anthropic/completion/models/claude-sonnet-4",
+    api_key=os.environ["CLARIFAI_PAT"],  # Ensure CLARIFAI_PAT is set as an environment variable
     api_base="https://api.clarifai.com/v2/ext/openai/v1",
     # Message formatting is consistent with OpenAI's schema ({"role": ..., "content": ...}).
     messages=[
-        {"role": "user", "content": "Tell me a fun fact about space."}
+        {"role": "system", "content": "You are a friendly assistant."},
+        {"role": "user", "content": "Hey, how's it going?"}
     ],
-    stream=True, # Supports streaming responses
-):
-    print(chunk.choices[0].delta)
+    # You can add OpenAI-compatible parameters here
+    temperature=0.7,         # Optional: controls randomness
+    max_tokens=100           # Optional: limits response length
+)
+
+# Print the assistant's reply
+print(response['choices'][0]['message']['content'])

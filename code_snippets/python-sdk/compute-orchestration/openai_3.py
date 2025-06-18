@@ -1,10 +1,11 @@
+import os
 import json
 from openai import OpenAI
 
 # Initialize the OpenAI client, pointing to Clarifai's OpenAI-compatible API endpoint
 client = OpenAI(
     base_url="https://api.clarifai.com/v2/ext/openai/v1",
-    api_key="YOUR_CLARIFAI_PAT_KEY_HERE",
+    api_key=os.environ["CLARIFAI_PAT"]  # Ensure CLARIFAI_PAT is set as an environment variable  
 )
 
 # Define the external tools (functions) that the LLM can call.
@@ -100,7 +101,8 @@ if first_response.choices[0].message.tool_calls:
     # Now, send the tool's output back to the LLM to get a natural language response
     print("\n--- Second LLM Call (Summarizing Tool Output) ---")
     second_response = client.chat.completions.create(
-        model="anthropic/completion/models/claude-sonnet-4",
+        model="https://clarifai.com/anthropic/completion/models/claude-sonnet-4",
+        #model="anthropic/completion/models/claude-sonnet-4", # Or, provide Clarifai model name
         messages=messages, # Continue the conversation with tool output
     )
 

@@ -9,17 +9,41 @@ sidebar_position: -8
 **Learn about breaking changes to the use of PATs and API keys**
 <hr />
 
-## Implementation Date
-
-November, 2024
-
 ## Change
 
-**Breaking change** — Important changes to the use of PATs and API keys
+- **Type of Change** — Important [breaking change](https://docs.clarifai.com/product-updates/changelog/release-types#release-types) regarding the use of PATs and API keys.
+
+- **Implementation Date** — June 11th, 2025
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+
+:::info TL;DR
+
+Previously, you could access Clarifai models like this:
+
+```bash
+curl -X POST "clarifai.com/api/_api/v2/users/$YOUR_USER_ID/apps/$YOUR_APP_ID/models/general-image-recognition/outputs" \
+-H "Authorization: Key $YOUR_API_KEY" \
+# ... (rest of your request)
+```
+
+The above method will now fail.
+
+You must now specify Clarifai’s user and app ID instead of your own, and authenticate using a PAT instead of an API key.
+
+```bash
+curl -X POST "clarifai.com/api/_api/v2/users/clarifai/apps/main/models/general-image-recognition/outputs" \
+-H "Authorization: Key $YOUR_PAT_TOKEN" \
+# ... (rest of your request)
+```
+
+:::
 
 ## Details
 
-An upcoming release of Clarifai’s API, **10.10**, will significantly change how [Personal Access Tokens (PATs)](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens/) and [API keys](https://docs.clarifai.com/clarifai-basics/authentication/app-specific-api-keys/) work. We plan to implement this change on November 5th, 2024, providing more than 45 days to change the way your applications authenticate on our platform.  
+An upcoming release of Clarifai’s API, **11.6**, will significantly change how [Personal Access Tokens (PATs)](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens/) and [API keys](https://docs.clarifai.com/clarifai-basics/authentication/app-specific-api-keys/) work. We plan to implement this change on June 11th, 2025, providing sufficient notice to change the way your applications authenticate on our platform.  
 
 #### Terminology
 
