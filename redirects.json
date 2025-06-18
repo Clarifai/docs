@@ -947,6 +947,14 @@
     {
       "to": "/control/authentication/two-factor",
       "from": ["/resources/authentication/two-factor"]
+    },
+    {
+      "to": "/compute/providers/open-ai",
+      "from": ["/compute/models/inference/open-ai"]
+    },
+    {
+      "to": "/compute/providers/litellm",
+      "from": ["/integrations/LiteLLM/", "/integrations/LiteLLM/clarifai-litellm"]
     }
   
   

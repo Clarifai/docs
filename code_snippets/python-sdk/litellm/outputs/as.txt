@@ -1,6 +1,0 @@
-test acompletion + streaming
-response: <litellm.utils.CustomStreamWrapper object at 0x7e7b640d5250>
-ModelResponse(id='chatcmpl-d70421b5-9701-4ed1-8926-09ccd79abd25', choices=[StreamingChoices(finish_reason=None, 
-index=0, delta=Delta(content="Hello! I'm an assistant designed to help answer your questions and provide information, so I don't have feelings, but I'm here and ready to assist you. How can I help you today?", role='assistant', function_call=None, tool_calls=None), logprobs=None)], created=1718733588, model='https://api.clarifai.com/v2/users/mistralai/apps/completion/models/mistral-large/outputs', object='chat.completion.chunk', system_fingerprint=None)
-ModelResponse(id='chatcmpl-d70421b5-9701-4ed1-8926-09ccd79abd25', 
-choices=[StreamingChoices(finish_reason='stop', index=0, delta=Delta(content=None, role=None, function_call=None, tool_calls=None), logprobs=None)], created=1718733588, model='https://api.clarifai.com/v2/users/mistralai/apps/completion/models/mistral-large/outputs', object='chat.completion.chunk', system_fingerprint=None)

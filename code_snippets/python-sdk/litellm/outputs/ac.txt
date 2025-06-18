@@ -1,3 +1,0 @@
-ModelResponse(id='chatcmpl-095f1f4f-66b0-4f1f-988d-159a809f0c9c', choices=[Choices(finish_reason='stop', index=1, message=Message(content="Hello! As an artificial intelligence, 
-I don't have feelings, but I'm here and ready to assist you. How can I help you today?", role='assistant'))], 
-created=1717782689, model='https://api.clarifai.com/v2/users/openai/apps/chat-completion/models/GPT-4/outputs', object='chat.completion', system_fingerprint=None, usage=Usage(prompt_tokens=6, completion_tokens=30, total_tokens=36))

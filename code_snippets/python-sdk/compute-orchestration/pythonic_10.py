@@ -7,17 +7,15 @@ os.environ["CLARIFAI_PAT"] = "YOUR_PAT_HERE"
 
 # Initialize model
 model = Model(
-    url="MODEL_URL_HERE",
+    url="https://clarifai.com/openai/chat-completion/models/o4-mini",
     # deployment_id="DEPLOYMENT_ID_HERE"
 )
 
 # Perform prediction with prompt and image
 result = model.predict(
-    prompt="What is the future of AI?",
+    prompt="Describe this image",
     image=Image(url="https://samples.clarifai.com/metro-north.jpg"),
-    max_tokens=512,
-    temperature=0.7,
-    top_p=0.8
+    max_tokens=1024    
 )
 
 # Print the prediction result

@@ -17,8 +17,15 @@ response = client.chat.completions.create(
     ],
     # You can also add other OpenAI-compatible parameters like max_tokens, etc.
     max_completion_tokens=100,  # Limits the response length
-    temperature=0.7,  # Controls randomness of the output    
+    temperature=0.7,  # Controls randomness of the output
+    stream=True  # Enables streaming the response token by token
 )
 
-# Print the model's response
-print(response.choices[0].message.content)
+print("Assistant's Response:")
+for chunk in response:
+    # Safely check if choices, delta, and content exist before accessing
+    if chunk.choices and \
+       chunk.choices[0].delta and \
+       chunk.choices[0].delta.content is not None:
+        print(chunk.choices[0].delta.content, end='')
+print("\n")  

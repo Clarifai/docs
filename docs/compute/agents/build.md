@@ -15,7 +15,7 @@ We provide an [OpenAI-compatible API endpoint](https://docs.clarifai.com/compute
 
 Let’s illustrate how you can build agents with the various toolkits we support.  
 
-:::note LiteLLM
+:::warning LiteLLM
 
 [LiteLLM](https://docs.litellm.ai/docs/providers/clarifai) is a library that offers a unified API for working with various LLM providers. When using an agent toolkit that supports LiteLLM to access Clarifai's models, specify the model using the `openai/` prefix followed by the Clarifai model URL — for example:
 `openai/deepseek-ai/deepseek-chat/models/DeepSeek-R1-Distill-Qwen-7B`.
@@ -201,14 +201,14 @@ You can use the [Vercel](https://vercel.com/docs/agents) platform to build agent
 You can install the following necessary packages:
 
 - `ai` — This is the Vercel AI SDK, the main library.
-- `@ai-sdk/openai`— The [OpenAI provider](https://ai-sdk.dev/providers/ai-sdk-providers/openai) package for the AI SDK, which allows you to connect to OpenAI-compatible APIs (like Clarifai's).
+- `@ai-sdk/openai-compatible`— The [OpenAI Compatible Provider ](https://ai-sdk.dev/providers/openai-compatible-providers) package for the AI SDK, which allows you to connect to OpenAI-compatible APIs (like Clarifai's).
 - `zod`— For schema validation of tool parameters.
 
 This is the combined commands for installing them:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">
-    <CodeBlock className="language-bash"> npm install ai @ai-sdk/openai zod </CodeBlock>
+    <CodeBlock className="language-bash"> npm install ai @ai-sdk/openai-compatible zod </CodeBlock>
 </TabItem>
 </Tabs>
 

@@ -1,9 +1,10 @@
+import os
 from openai import OpenAI
 
 # Initialize the OpenAI-compatible client for Clarifai
-client = OpenAI(
-    api_key="YOUR_CLARIFAI_PAT_KEY_HERE",
-    base_url="https://api.clarifai.com/v2/ext/openai/v1"   
+client = OpenAI(    
+    base_url="https://api.clarifai.com/v2/ext/openai/v1",
+    api_key=os.environ["CLARIFAI_PAT"]  # Ensure CLARIFAI_PAT is set as an environment variable   
 )
 
 # Define the external tools (functions) that the LLM can call.
@@ -31,7 +32,8 @@ tools = [
 
 # Create a chat completion request with tool-calling enabled
 response = client.chat.completions.create(
-    model="anthropic/completion/models/claude-sonnet-4",  # Clarifai-compatible OpenAI model name
+    model="https://clarifai.com/anthropic/completion/models/claude-sonnet-4",
+    #model="anthropic/completion/models/claude-sonnet-4", # Or, provide Clarifai model name
     messages=[
         {"role": "user", "content": "What is the weather like in New York today?"}
     ],
