@@ -13,6 +13,12 @@ LiteLLM provides a universal interface that simplifies working with LLMs across 
 
 LiteLLM natively supports OpenAI-compatible APIs, making it easy to run inferences on [Clarifai-hosted](https://docs.litellm.ai/docs/providers/clarifai) models with minimal setup.
 
+:::tip
+
+[Click here](https://github.com/Clarifai/examples/tree/main/models/model_predict) for additional examples on how to perform model predictions using various SDKs — such as the Clarifai SDK, OpenAI client, and LiteLLM. The examples demonstrate various model types and include both streaming and non-streaming modes, as well as tool calling capabilities.
+
+:::
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";

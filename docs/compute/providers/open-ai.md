@@ -13,6 +13,12 @@ You can run inferences on Clarifai-hosted models using the OpenAI client library
 
 This allows you to use the same code and tools you would with OpenAI, in either Python or JavaScript, by simply configuring the client to point to Clarifai and providing your PAT (Personal Access Token) key.
 
+:::tip
+
+[Click here](https://github.com/Clarifai/examples/tree/main/models/model_predict) for additional examples on how to perform model predictions using various SDKs — such as the Clarifai SDK, OpenAI client, and LiteLLM. The examples demonstrate various model types and include both streaming and non-streaming modes, as well as tool calling capabilities.
+
+:::
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";

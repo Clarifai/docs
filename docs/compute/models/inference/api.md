@@ -1,6 +1,7 @@
 ---
 description: Generate predictions using your deployed models
 sidebar_position: 1
+toc_max_heading_level: 4
 ---
 
 # Inference via API
@@ -11,6 +12,13 @@ sidebar_position: 1
 Our new inference technique provides an efficient, scalable, and streamlined way to perform predictions with models. 
 
 Built with a Python-first, user-centric design, this flexible approach simplifies the process of working with models — enabling users to focus more on building and iterating, and less on navigating API mechanics. 
+
+
+:::tip
+
+[Click here](https://github.com/Clarifai/examples/tree/main/models/model_predict) for additional examples on how to perform model predictions using various SDKs — such as the Clarifai SDK, OpenAI client, and LiteLLM. The examples demonstrate various model types and include both streaming and non-streaming modes, as well as tool calling capabilities.
+
+:::
 
 
 import Tabs from '@theme/Tabs';
@@ -46,6 +54,10 @@ import PyModelClient from "!!raw-loader!../../../../code_snippets/python-sdk/com
 import NodeModelClient from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/node_model_client.js";
 import PyToolCalling from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/tool_calling.py";
 
+import Mask1 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/mask_1.py";
+import Mask2 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/mask_2.py";
+import Mask3 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/mask_3.py";
+
 ## Prerequisites
 
 ### Install Clarifai Packages
@@ -70,7 +82,7 @@ import PyToolCalling from "!!raw-loader!../../../../code_snippets/python-sdk/com
 
 You need a PAT (Personal Access Token) key to authenticate your connection to the Clarifai platform. You can generate the PAT key in your personal settings page by navigating to the [Security section](https://clarifai.com/settings/security). 
 
-You can then set the PAT as an environment variable using `CLARIFAI_PAT`:
+You can then set the PAT as an environment variable using `CLARIFAI_PAT`, in which case you don’t need to define it explicitly in your code. 
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Unix-Like Systems">
@@ -210,6 +222,8 @@ Here’s how you can make a corresponding unary-unary predict call from the clie
 
 ### Image Inputs
 
+#### Image-to-Text
+
 Here is an example of a model signature configured on the server side for handling image inputs:
 
 <Tabs groupId="code">
@@ -234,6 +248,48 @@ Here’s how you can make a corresponding unary-unary predict call from the clie
   <summary>Example Output</summary>
     <CodeBlock className="language-text">{OutputUnaryImageInputs}</CodeBlock>
 </details>
+
+#### Visual Segmentation 
+
+> **Note:** The following visual segmentation examples use Matplotlib, Pillow, and NumPy. You can install them by running: `pip install matplotlib Pillow numpy`. 
+
+##### Example 1
+
+Here is an example of a [model signature](https://clarifai.com/meta/segment-anything/models/sam2_1-hiera-base-plus?tab=overview) configured on the server side for automatic mask generation:
+
+<Tabs groupId="code">
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">@ModelClass.method
+def segment_anything(image: data_types.Image) -> List[data_types.Region]:</CodeBlock>
+</TabItem>
+</Tabs>
+
+Here’s how to make a corresponding unary-unary predict call from the client side to generate masks for all objects in a given image.
+
+<Tabs groupId="code">
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{Mask1}</CodeBlock>
+</TabItem>
+</Tabs>
+
+##### Example 2
+
+Here is an example of a model signature configured on the server side for creating masks in a given image:
+
+<Tabs groupId="code">
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">@ModelClass.method
+def predict(image: data_types.Image, regions: List[data_types.Region], dict_inputs: data_types.JSON, round_mask: bool = False, multimask_output: bool = False, denormalize_coord: bool = True) -> List[data_types.Region]:</CodeBlock>
+</TabItem>
+</Tabs>
+
+Here’s how to make a corresponding unary-unary predict call from the client side to generate masks using a points or boxes prompt.
+
+<Tabs groupId="code">
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{Mask2}</CodeBlock>
+</TabItem>
+</Tabs>
 
 :::tip
 
@@ -291,7 +347,26 @@ Here’s how you can make a corresponding unary-stream predict call from the cli
 </Tabs>
 
 
+### Video Inputs
 
+> **Note:** The following video tracking example uses Matplotlib and NumPy. You can install them by running: `pip install matplotlib numpy`. 
+
+Here is an example of a [model signature](https://clarifai.com/meta/segment-anything/models/sam2_1-hiera-base-plus?tab=overview) configured on the server side for handling video inputs:
+
+<Tabs groupId="code">
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">@ModelClass.method
+def generate(video: data_types.Video, frames: List[data_types.Frame], list_dict_inputs: List[data_types.JSON], denormalize_coord: bool = True) -> Iterator[data_types.Frame]:</CodeBlock>
+</TabItem>
+</Tabs>
+
+Here’s how to make a corresponding unary-stream predict call from the client side to track objects in a video:
+
+<Tabs groupId="code">
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{Mask3}</CodeBlock>
+</TabItem>
+</Tabs>
 
 ## Stream-Stream Predict Call
 
