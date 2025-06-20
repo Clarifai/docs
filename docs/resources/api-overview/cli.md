@@ -488,7 +488,15 @@ Here is how to initialize an MCP model in the current directory:
 </TabItem>
 </Tabs>
 
-Here is how to initialize an OpenAI model in a specific path:
+Here is how to initialize an OpenAI-compatible model in the current directory:
+
+<Tabs>
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash"> clarifai model init --model-type-id openai </CodeBlock>
+</TabItem>
+</Tabs>
+
+Here is how to initialize an OpenAI-compatible model in a specific path:
 
 <Tabs>
 <TabItem value="bash" label="CLI">
