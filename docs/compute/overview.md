@@ -15,11 +15,15 @@ toc_max_heading_level: 3
 
 <br />
 
-Clarifai’s Compute Orchestration provides efficient capabilities for you to deploy any model on any compute infrastructure, at any scale. These new platform capabilities bring the convenience of serverless autoscaling to any environment, regardless of deployment location or hardware, and dynamically scale resources to meet workload demands. 
+Clarifai’s Compute Orchestration provides efficient capabilities for you to deploy any model on any compute infrastructure, at any scale. 
 
-With Compute Orchestration, we are providing users with the ability to manage any compute planes and access dedicated compute options. 
+These new platform capabilities bring the convenience of serverless autoscaling to any environment, regardless of deployment location or hardware, and dynamically scale resources to meet workload demands. 
 
-These capabilities enable our enterprise customers to deploy production models with enhanced control, performance, and scalability — while addressing specific problems around compute costs, latency, and control over hosted models. Clarifai handles the containerization, model packing, time slicing, and other performance optimizations on your behalf. 
+With Compute Orchestration, we are providing users with the ability to organize and manage (_orchestrate_) the compute resources necessary for running their models and workflows.
+
+These capabilities enable our enterprise customers to deploy production models with enhanced control, performance, and scalability — while addressing specific problems around compute costs, latency, and control over hosted models. 
+
+Clarifai handles the containerization, model packing, time slicing, and other performance optimizations on your behalf. 
 
 ## Deployment Options
 
@@ -33,15 +37,15 @@ If you’re not using Compute Orchestration, the Shared SaaS (Serverless) deploy
 
 :::
 
-- **Dedicated SaaS** — Provides exclusive access to Clarifai-managed nodes with customizable configurations. For example, you can make a deployment in the AWS US-East region (we have plans to expand to other cloud providers and hardware options). 
+- **Dedicated SaaS** — Provides access to Clarifai‑managed, isolated nodes with customizable configurations. For example, you can launch a dedicated deployment in AWS US‑East, with plans to expand to other cloud providers and hardware options in the future.
 
-- **Self-Managed VPC (Virtual Private Cloud)** — Users securely connect their own cloud provider VPC, enabling Clarifai to orchestrate deployments within the user’s cloud environment while leveraging existing cloud compute or spend commitments.
+- **Self-Managed VPC (Virtual Private Cloud)** — Connect your own cloud provider’s VPC to Clarifai, allowing Clarifai to run and orchestrate deployments within your environment. This approach lets you maintain full control of your infrastructure while leveraging existing cloud resources and spend commitments.
 
-- **Self-Managed On-Premises** — Users securely connect their own on-premises or bare-metal infrastructure to leverage existing compute investments, which Clarifai then orchestrates for model deployment.
+- **Self-Managed On-Premises** — Connect your own on‑premises or bare‑metal infrastructure to Clarifai, allowing you to utilize existing compute resources. Clarifai then orchestrates model deployments within your environment, making the most of your infrastructure investments.
 
-- **Multi-Site Deployment** — Supports deployments across multiple self-managed compute sources, with potential for future multi-cloud or multi-region dedicated SaaS solutions.
+- **Multi-Site Deployment** — Enables deployments across multiple self‑managed compute environments, with support for a mix of on‑premises, cloud, or edge locations — and a roadmap for future multi‑cloud or multi‑region SaaS options.
 
-- **Full Platform Deployment** — This option is designed for organizations with high-security requirements. It deploys both the Clarifai control and compute planes into the user’s preferred cloud, on-premises, or air-gapped infrastructure, ensuring full isolation. 
+- **Full Platform Deployment** — Designed for organizations with stringent security and compliance needs, this option allows you to run both the Clarifai control and compute planes within your chosen cloud, on‑premises, or air‑gapped infrastructure, ensuring complete isolation and control.
 
  
 ![ ](/img/compute-orchestration/intro-1.png)

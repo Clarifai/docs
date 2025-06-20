@@ -194,7 +194,7 @@
   },
   {
     "to": "/compute/models/inference/",
-    "from": ["/compute/models/model-inference"]
+    "from": ["/compute/models/model-inference", "/tutorials/node-js-tutorial"]
   },
   {
     "to": "/create/search/api/",
@@ -955,6 +955,22 @@
     {
       "to": "/compute/providers/litellm",
       "from": ["/integrations/LiteLLM/", "/integrations/LiteLLM/clarifai-litellm"]
+    },
+    {
+      "to": "",
+      "from": ["/tutorials/node-js-tutorial"]
+    },
+    {
+      "to": "",
+      "from": [""]
+    },
+    {
+      "to": "",
+      "from": [""]
+    },
+    {
+      "to": "",
+      "from": [""]
     }
   
   
