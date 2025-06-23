@@ -14,6 +14,9 @@ sidebar_position: 2
 
 Visual classifier is a type of deep fine-tuned model that allows you to classify images and video frames into a set of concepts. It helps you answer the question "What" or "Who" is in your data.
 
+![](/img/others-2/image_classification_example.webp)
+<center>Image classification example</center>
+
 :::info
 
 The visual classifier model type also comes with various [templates](https://docs.clarifai.com/portal-guide/model/deep-training/visual-classification-templates/) that give you the control to choose the specific architecture used by your neural network, as well as define a set of hyperparameters you can use to fine-tune the way your model learns.

@@ -1,19 +1,20 @@
 ---
-description: Perform predictions using your deployed models
+description: Perform predictions with models
 sidebar_position: 1
 ---
 
 # Model Inference
 
-**Perform predictions using your deployed models**
+**Perform predictions with models**
 <hr />
 
+Clarifai’s Compute Orchestration capabilities enable you to make prediction calls efficiently, tailored to a variety of use cases. You can use these features to run inferences seamlessly and get results from your model with ease.
 
-Clarifai's Compute Orchestration capabilities provide efficient ways to make prediction calls to suit various use cases. Once your model is deployed, you can use it to perform inferences seamlessly.
+## Optionally Deploy a Model
 
-## Deploy Model First
+If you want to make a prediction request using our Compute Orchestration capabilities, you need to [set up a cluster](https://docs.clarifai.com/compute/deployments/clusters-nodepools), create a nodepool, and [deploy your model](https://docs.clarifai.com/compute/deployments/deploy-model) in it. 
 
-Before making the prediction requests, ensure you have [set up a cluster](https://docs.clarifai.com/compute/deployments/clusters-nodepools), created a nodepool, and [deployed your model](https://docs.clarifai.com/compute/deployments/deploy-model) in it. Once the model is deployed, you'll specify its `deployment_id` parameter (or `compute_cluster_id` and `nodepool_id`), which is essential for proper routing and execution of your prediction request. 
+Once the model is deployed, you'll specify its `deployment_id` parameter (or `compute_cluster_id` and `nodepool_id`), which is essential for proper routing and execution of your prediction request. 
 
 :::warning Default Deployment
 

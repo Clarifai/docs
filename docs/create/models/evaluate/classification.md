@@ -77,6 +77,15 @@ This metric provides a concise summary of how well each model discriminates betw
 
 A higher ROC/AUC score generally indicates better discrimination between classes or concepts. A score of 1 represents a perfect model, while a score of 0.5 represents a model with no discrimination ability, essentially performing no better than random chance. Generally, a score above 0.9 is considered excellent.
 
+![](/img/others-2/roc_curve_example.webp)
+<center>ROC curve example</center>
+
+<br/>
+<br/>
+
+![](/img/others-2/roc_auc_example.webp)
+<center>ROC and AUC example</center>
+
 :::note
 
 It's important to note that the ROC/AUC is not dependent on the specified [prediction threshold](#prediction-threshold). 
@@ -229,12 +238,6 @@ The PR curve is created by plotting precision on the y-axis and recall on the x-
 When a model has high recall but low precision, it correctly identifies most of the positive samples but also generates many false positives (i.e., it incorrectly classifies many negative samples as positive). On the other hand, when a model has high precision but low recall, it accurately classifies samples as positive but may miss many actual positive samples, resulting in fewer positive detections overall.
 
 Because both precision and recall are important, the precision-recall curve is used to illustrate the trade-off between these metrics at different threshold levels. This curve helps in selecting the optimal threshold to balance and maximize both precision and recall, thereby improving the overall performance of the model.
-
-:::
-
-:::tip Learn More
-
-[Click here](https://docs.clarifai.com/tutorials/how-to-evaluate-an-image-classification-model) to learn more about how to evaluate an image classification model. 
 
 :::
 

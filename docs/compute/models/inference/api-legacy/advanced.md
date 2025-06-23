@@ -10,7 +10,7 @@ sidebar_position: 2
 
 :::warning note
 
- These Advanced Inference Options are considered legacy and are only compatible with our older models. For more scalable and flexible predictions, we recommend using our [new inference](https://docs.clarifai.com/compute/models/inference/api) technique.
+To find out which advanced inference parameters a model supports, you can review its description and notes on the Clarifai Community platform, or run the snippet shown [here](https://docs.clarifai.com/compute/models/inference/api#get-method-signature) to inspect the model’s signature.
 
 :::
 
