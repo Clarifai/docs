@@ -414,7 +414,7 @@
   },
   {
     "to": "/create/models/deep-fine-tuning/",
-    "from": ["/sdk/Model-Training-Tutorial/"]
+    "from": ["/sdk/Model-Training-Tutorial/", "/tutorials/image-classification-detection-segmentation"]
   },
   {
     "to": "/create/models/deep-fine-tuning/clusterer",
@@ -702,7 +702,7 @@
     },
     {
       "to": "/create/models/evaluate/classification",
-      "from": ["/portal-guide/evaluate/interpreting-evaluations"]
+      "from": ["/portal-guide/evaluate/interpreting-evaluations", "/tutorials/how-to-evaluate-an-image-classification-model"]
     },
     {
       "to": "/create/models/evaluate/detection",
@@ -894,7 +894,7 @@
     },
     {
       "to": "/control/clarifai-organizations/members-teams",
-      "from": ["/portal-guide/clarifai-organizations/members-teams"]
+      "from": ["/portal-guide/clarifai-organizations/members-teams", "/tutorials/organizations-and-teams"]
     },
     {
       "to": "/control/clarifai-organizations/apps-models-workflows",
@@ -955,25 +955,7 @@
     {
       "to": "/compute/providers/litellm",
       "from": ["/integrations/LiteLLM/", "/integrations/LiteLLM/clarifai-litellm"]
-    },
-    {
-      "to": "",
-      "from": ["/tutorials/node-js-tutorial"]
-    },
-    {
-      "to": "",
-      "from": [""]
-    },
-    {
-      "to": "",
-      "from": [""]
-    },
-    {
-      "to": "",
-      "from": [""]
-    }
-  
-  
+    } 
   
   
 
