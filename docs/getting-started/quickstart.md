@@ -1,26 +1,14 @@
 ---
-description: Get started quickly with Clarifai in a few simple steps
+description: Start quickly with Clarifai API in a few simple steps
 sidebar_position: 1
 ---
 
-# Quick Start
+# Quick Start With API
 
-**Get started quickly with Clarifai in a few simple steps**
+**Start quickly with Clarifai API in a few simple steps**
 <hr />
 
-<div style={{ "position":"relative","width": "100%","overflow": "hidden","padding-top": "56.25%"}}>
-<iframe width="900" height="500" style={{"position": "absolute","top": "0","left": "0","bottom": "0","right": "0","width": "100%","height": "100%",}} src="https://www.youtube.com/embed/8oWjmB3Bmqk" title="How to Use a Model on the Clarifai Platform (Playground or API)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-</div>
-
-<br/><br/>
-
-Clarifai provides an intuitive interface and a robust API designed to get you up and running quickly. In just a few simple steps or a few lines of code, you can bring your AI projects to life within minutes. 
-
-:::warning Log in or Set up an Account
-
-[Log in to](https://clarifai.com/login) your existing Clarifai account or [create](https://clarifai.com/signup) a new one to explore the platform's powerful AI capabilities. New accounts receive free operations to begin exploration.
-
-:::
+Clarifai provides a robust API designed to get you up and running quickly. With just a few lines of code, you can bring your AI projects to life within minutes. 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -28,6 +16,7 @@ import CodeBlock from "@theme/CodeBlock";
 
 import InstallJava from "!!raw-loader!../../code_snippets/new-docs/assorted/install-java.java";
 import PythonSDKRequest from "!!raw-loader!../../code_snippets/new-docs/assorted/python-sdk-request.py";
+import OpenAIRequest from "!!raw-loader!../../code_snippets/new-docs/assorted/open-ai-request.py";
 import NodeSDKRequest from "!!raw-loader!../../code_snippets/new-docs/assorted/node-sdk-request.js";
 import CLIRequest from "!!raw-loader!../../code_snippets/new-docs/assorted/cli-request.sh";
 import CurlRequest from "!!raw-loader!../../code_snippets/new-docs/assorted/curl-request.sh";
@@ -39,86 +28,49 @@ import PHPGRPCRequest from "!!raw-loader!../../code_snippets/new-docs/assorted/p
 
 import OutputExample from "!!raw-loader!../../code_snippets/new-docs/assorted/output-request.txt";
 
+## Step 1: Sign Up or Log In 
 
-## Try Out Our Community Models
+Start by [logging into](https://clarifai.com/login) your existing Clarifai account, or [sign up](https://clarifai.com/signup) for a new one to unlock access to the platform’s powerful AI capabilities. New users receive free operations to help kickstart their exploration.
 
-We offer a diverse collection of [Community](https://clarifai.com/explore) models that you can browse, test, and integrate into your projects.
+## Step 2: Get a PAT Key
 
-### Step 1: Find a Model
+To authenticate your connection to Clarifai, you’ll need a Personal Access Token (PAT). You can obtain one from your personal settings page by navigating to the [Security section](https://clarifai.com/settings/security).
 
-You can easily find a model to use by heading to the homepage and exploring the **Trending AI models** section, which showcases popular and ready-to-use options.
-
-After finding the model, click the **TEST IN PLAYGROUND** button in the bottom left corner of its information card. 
-
-For this example, we'll use the [Llama-3.2-3B-Instruct](https://clarifai.com/meta/Llama-3/models/Llama-3_2-3B-Instruct) model.
-
-> _Alternatively, you can select the **Playground** option in the top navigation bar._
-
-![](/img/new-docs/playground-2.png)
-
-### Step 2: Run Your Inference in Playground
-
-You'll be taken to the AI Playground, which is a testing battleground that allows you to quickly interact with powerful AI models without additional setup.
-
-In the chat interface at the bottom of the Playground, enter your desired prompt to generate text with the selected model. Note that if the model supports image or video inputs as prompts, you can also upload them directly into the interface.
-
-> _Alternatively, in the upper-left section of the Playground, you can choose the model you'd like to use for inference._
-
-Then, click the arrow icon to submit your request.
-
-![](/img/new-docs/playground-3.png)
-
-The results will be streamed directly in the interface, allowing you to see the output in real time. Note that since we support streaming capabilities, you can interact with language models as they generate responses token by token — just like in a live chat experience.
-
-
-:::info
-
-- For this example, we're using the default settings for deployment (`Clarifai Shared`), inference parameters, and others. You can [customize](https://docs.clarifai.com/compute/models/) these settings as needed for more advanced use cases.
-
-- You can toggle the button in the upper-left section of the Playground to display ready-to-use API code snippets in various programming languages. Simply copy and use them in your project.
-
-![](/img/new-docs/playground-4.png)
-
-:::
-
-## Call Your First Model With Our API
-
-You can get started quickly by using the Clarifai [Python SDK](https://docs.clarifai.com/additional-resources/api-overview/python-sdk) to make your first API call.
-
-<!--
-You can access the Clarifai API effortlessly using your preferred method:
-
-- SDKs – Quick integration with official client libraries.
-
-- CLI (Command Line Interface) – Manage tasks directly from the command line.
-
-- HTTP Requests – Use any programming language with REST API calls.
-
-- gRPC Clients – High-performance support for popular languages.
--->
-
-### Step 1: Get a PAT Key
-
-You need a PAT (Personal Access Token) key to authenticate your connection to the Clarifai platform. You can generate the PAT key in your personal settings page by navigating to the [Security section](https://clarifai.com/settings/security).
-
-### Step 2: Install Python SDK
-
-Install the latest version of the Clarifai Python SDK package.
+You can then set the PAT as an environment variable using `CLARIFAI_PAT`.
 
 <Tabs groupId="code">
-<TabItem value="python1" label="Python SDK">
-    <CodeBlock className="language-python">pip install --upgrade clarifai</CodeBlock>
+<TabItem value="bash" label="Unix-Like Systems">
+    <CodeBlock className="language-bash"> export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
+</TabItem>
+<TabItem value="bash2" label="Windows">
+    <CodeBlock className="language-bash"> set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
+</TabItem>
+</Tabs>
+
+## Step 3: Install Your Preferred SDK
+
+You can connect to the Clarifai API using the method that best fits your development environment:
+
+- [Python SDK](https://docs.clarifai.com/resources/api-overview/python-sdk) – Seamlessly integrate with Clarifai using our Python client.
+
+- [Node.js SDK](https://docs.clarifai.com/resources/api-overview/nodejs-sdk) – Use our SDK for integration in your JavaScript or TypeScript projects.
+
+- [OpenAI client](https://docs.clarifai.com/compute/providers/open-ai) –  Leverage Clarifai’s OpenAI-compatible endpoint to run inferences using the OpenAI client library.
+
+Here's how to install your preferred package:
+
+<Tabs groupId="code">
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-bash">pip install --upgrade clarifai</CodeBlock>
 </TabItem>
 
-<!--
-<TabItem value="cli" label="CLI">
- <CodeBlock className="language-javascript">pip install --upgrade clarifai</CodeBlock>
+<TabItem value="node.js" label="Node.js SDK">
+ <CodeBlock className="language-bash">  npm install clarifai-nodejs  </CodeBlock>
 </TabItem>
 
-<TabItem value="python2" label="Python (gRPC)">
-    <CodeBlock className="language-php">python -m pip install clarifai-grpc</CodeBlock>
+<TabItem value="openai" label="Python (OpenAI)">
+    <CodeBlock className="language-bash"> pip install openai </CodeBlock>
 </TabItem>
--->
 
 </Tabs>
 
@@ -128,9 +80,16 @@ On Windows, the Clarifai Python SDK expects a `HOME` environment variable, which
 
 :::
 
-### Step 3: Send an API Request
+## Step 4: Get a Model
+
+Clarifai’s [Community platform](https://clarifai.com/explore) offers a wide range of latest models to help you make your first API call.
+
+You can easily find a model to use by heading to the Community homepage and exploring the **Trending Models** section, which showcases popular and ready-to-use options.
+
+## Step 5: Send an API Request
 
 For this example, let's use the [Qwen3](https://clarifai.com/qwen/qwenLM/models/Qwen3-30B-A3B-GGUF) model to generate text based on a given prompt.
+
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
@@ -138,6 +97,10 @@ For this example, let's use the [Qwen3](https://clarifai.com/qwen/qwenLM/models/
 </TabItem>
 <TabItem value="node.js" label="Node.js SDK">
     <CodeBlock className="language-javascript">{NodeSDKRequest}</CodeBlock>
+</TabItem>
+
+<TabItem value="openai" label="Python (OpenAI)">
+    <CodeBlock className="language-php"> {OpenAIRequest} </CodeBlock>
 </TabItem>
 
 <!--
@@ -165,10 +128,10 @@ For this example, let's use the [Qwen3](https://clarifai.com/qwen/qwenLM/models/
     <CodeBlock className="language-text">{OutputExample}</CodeBlock>
 </details>
 
+Congratulations — you've just gotten started with the Clarifai platform!
+
 :::tip Learn more
 
 [Click here](https://docs.clarifai.com/compute/models/inference/api/) to learn more about how to make inference requests using our API. You'll discover how to list all the available inference methods defined in a model's configuration, generate example code, leverage our Compute Orchestration capabilities for various types of inference requests, and more.
 
 :::
-
-Congratulations — you've just get started with the Clarifai platform!
