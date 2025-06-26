@@ -465,6 +465,26 @@ html[data-theme='dark'] aside .thin-scrollbar {
   margin-left: 16px;
 }
 
+/* DOCS LOGO
+/* Make logo smaller on all screen sizes */
+.navbar__brand .navbar__logo {
+  height: 24px; 
+  width: auto;
+}
+
+.navbar__brand .navbar__title {
+  font-size: 1.1rem; /* Make title text smaller too if needed */
+}
+
+/* Hide logo on mobile devices */
+@media (max-width: 720px) {
+  .navbar__brand,
+  .navbar__logo,
+  .navbar__title {
+    display: none !important;
+  }
+}
+
 /* ---- REMOVE SOCIAL ICONS FROM NAVBAR ---- */
 /* Target social icons specifically within the navbar right section */
 .navbar__items--right .header-github-link,
@@ -500,6 +520,14 @@ html[data-theme='dark'] aside .thin-scrollbar {
   padding: 10px 16px; /* Increase from default padding */
   min-width: 240px; /* Make it wider */
   height: 44px; /* Set specific height */
+}
+
+/* Force search placeholder text to show on mobile */
+@media (max-width: 768px) {
+  .DocSearch-Button-Placeholder {
+    display: block !important;
+    font-size: 14px; /* Make text smaller to fit */
+  }
 }
 
 /* Add border to DocSearch button in dark mode */
