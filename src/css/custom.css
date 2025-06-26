@@ -3,13 +3,15 @@
  * bundles Infima by default. Infima is a CSS framework designed to
  * work well for content-centric websites.
  */
-/* 3.4 DOCUSAURUS CUSTOM CSS */
+
+/* ===== FONT IMPORTS ===== */
+/* 3.7 DOCUSAURUS CUSTOM CSS */
 /* You can override the default Infima variables here. */
-@import '~@ibm/plex/css/ibm-plex.css';
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 /* Add Figtree font import */
 @import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800;900&display=swap');
 
-
+/* ===== CSS CUSTOM PROPERTIES / VARIABLES ===== */
 :root {
   /* Custom Variables */
   --color-gray-0: #ffffff;
@@ -49,6 +51,7 @@
   --ifm-color-primary-light: #254cf7;
   --ifm-color-primary-lighter: #3157f7;
   --ifm-color-primary-lightest: #5775f9;
+  --ifm-color-primary-lightbackground: #f2f6fe;
   --ifm-color-primary-contrast-background: #e1f4ff;
   --ifm-color-primary-contrast-foreground: #00324e;
   --ifm-color-secondary: #e0e7ee;
@@ -158,7 +161,7 @@
   --ifm-footer-padding-vertical: 3rem;
 }
 
-/* Dark Mode Styles */
+/* ===== DARK MODE STYLES ===== */
 html[data-theme='dark'] {
   --ifm-color-primary: #a5b4fc;
   --ifm-color-primary-dark: #7d92fb;
@@ -185,6 +188,7 @@ html[data-theme='dark'] {
   --ifm-menu-link-hover-background: rgba(30, 41, 59, 0.7);
 }
 
+/* ===== TABLES ===== */
 table {
   width: 100%;
   display: inline-table;
@@ -224,16 +228,24 @@ div[class^="tableWrapper_"] {
   border-bottom: 2px solid var(--ifm-table-border-color);
 }
 
-.docusaurus-highlight-code-line {
-  background-color: rgba(0, 0, 0, 0.1);
-  display: block;
-  margin: 0 calc(-1 * var(--ifm-pre-padding));
-  padding: 0 var(--ifm-pre-padding);
+/* ===== SIDEBAR NAVIGATION ===== */
+.theme-doc-sidebar-container {
+  border-right: 1px solid rgba(0, 0, 0, 0.1) !important;
+  padding-top: 24px !important; /* Increase top padding */
 }
 
-html[data-theme='dark'] .docusaurus-highlight-code-line {
-  background-color: rgba(0, 0, 0, 0.3);
+html[data-theme='dark'] .theme-doc-sidebar-container {
+  border-right: 1px solid rgba(255, 255, 255, 0.0) !important;
 }
+
+/* Make selected sidebar menu items bold and brand blue */
+.menu__link--active,
+.menu__link[aria-current="page"],
+.menu__list-item--active > .menu__link {
+  font-weight: bold;
+  color: var(--ifm-color-primary)
+}
+
 .menu__link:not([href]) {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
@@ -262,7 +274,6 @@ html[data-theme='dark'] .menu__link:not([href]) {
 .menu__list-item:hover > .menu__link {
   background-color: rgba(242, 246, 254, 0.7);
 }
-
 
 /* All possible active states  */
 .menu__link--active,
@@ -297,38 +308,399 @@ html[data-theme='dark'] .menu__list-item-collapsible-button--active {
   background-color: #1E293B;
 }
 
+/* ---- LEFT NAVIGATION SIDEBAR ---- */
+.menu__link:not([href]) {
+  font-size: 0.9em; /* Adjust font size */
+}
 
-header .join__slack {
-  color: rgba(0, 0, 0, .5);
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 14px;
-  position: absolute;
-  right: 0;
-  padding: 8px 10px;
+.menu__link {
+  font-size: 0.9em; /* Adjust font size */
+}
+
+.inline-flex {
   display: flex;
-  text-decoration: none;
-  color: white;
-}
-header .join__slack img {
-  max-height: 16px;
-  margin-right: 6px;
-}
-header .join__slack:active {
-  background: white;
-}
-header .join__slack:hover {
-  border-color: #ddd;
-  color: #5c1751cc;
-  background: white;
+  align-items: center;
 }
 
+/* Replace collapse button icon with simple chevron - using text-align centering */
+.theme-doc-sidebar-container button[class*="collapseSidebarButton"] svg {
+  display: none;
+}
+
+.theme-doc-sidebar-container button[class*="collapseSidebarButton"] {
+  text-align: center;
+  line-height: 1;
+}
+
+.theme-doc-sidebar-container button[class*="collapseSidebarButton"]::before {
+  content: '';
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  vertical-align: middle;
+  background: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 4L6 8L10 12' stroke='%23666' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center;
+  background-size: contain;
+}
+
+/* Replace expand button icon with simple chevron */
+div[class*="expandButton"] svg {
+  display: none;
+}
+
+div[class*="expandButton"]::before {
+  content: '';
+  width: 16px;
+  height: 16px;
+  display: block;
+  background: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 4L10 8L6 12' stroke='%23666' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center;
+  background-size: contain;
+}
+
+/* Dark mode versions */
+html[data-theme='dark'] .theme-doc-sidebar-container button[class*="collapseSidebarButton"]::before {
+  background: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 4L6 8L10 12' stroke='%23ccc' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center;
+  background-size: contain;
+}
+
+html[data-theme='dark'] div[class*="expandButton"]::before {
+  background: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 4L10 8L6 12' stroke='%23ccc' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center;
+  background-size: contain;
+}
+
+/* Add background to sidebar collapse/expand button - minimal approach */
+.theme-doc-sidebar-container button[class*="collapseSidebarButton"] {
+  background-color: white;
+
+  border: 1px solid var(--ifm-color-gray-200);
+  border-radius: 4px;
+}
+
+/* Dark mode version */
+html[data-theme='dark'] .theme-doc-sidebar-container button[class*="collapseSidebarButton"] {
+  background-color: var(--ifm-color-gray-900);
+  border: 1px solid var(--ifm-color-gray-800);
+}
+
+/* Hover effect */
+.theme-doc-sidebar-container button[class*="collapseSidebarButton"]:hover {
+  background-color: var(--ifm-color-primary-lightbackground);
+}
+
+html[data-theme='dark'] .theme-doc-sidebar-container button[class*="collapseSidebarButton"]:hover {
+  background-color: var(--ifm-color-gray-800);
+}
+
+/* Hover effect for expand button */
+div[class*="expandButton"]:hover {
+  background-color: var(--ifm-color-primary-lightbackground);
+}
+
+/* Dark mode version */
+html[data-theme='dark'] div[class*="expandButton"]:hover {
+  background-color: var(--ifm-color-gray-800);
+}
+
+/* Lighter sidebar chevrons */
+.menu__caret:before,
+.menu__link--sublist-caret:after {
+  opacity: 0.6;
+  width: 16px;
+  height: 16px;
+  background-size: 1.25rem 1.25rem;
+  transform-origin: center;
+  transition: transform 0.2s ease;
+}
+
+/* Custom chevron SVG */
+.menu__link--sublist-caret:after {
+  background: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9 18L15 12L9 6' stroke='%23666' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") 
+    no-repeat 50% / 1rem 1rem;
+}
+
+/* Sidebar adjustments - solid border and increased top padding */
+.theme-doc-sidebar-container,
+.menu--responsive,
+nav.menu,
+.thin-scrollbar,
+.menu__list,
+aside .thin-scrollbar {
+  border-right: 1px solid rgba(0, 0, 0, 0) !important; /* Fully solid border (0% transparency) */
+}
+
+html[data-theme='dark'] .theme-doc-sidebar-container,
+html[data-theme='dark'] .menu--responsive,
+html[data-theme='dark'] nav.menu,
+html[data-theme='dark'] .thin-scrollbar,
+html[data-theme='dark'] .menu__list,
+html[data-theme='dark'] aside .thin-scrollbar {
+  border-right: 1px solid rgba(255, 255, 255, 0) !important; /* Fully solid border (0% transparency) */
+}
+
+/* Increase top padding */
+.menu__list,
+.menu--responsive,
+.thin-scrollbar {
+  padding-top: 2px !important;
+}
+
+/* ===== NAVIGATION HEADER ===== */
 /* ---- HEADER ---- */
 .navbar__items {
   height: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+/* Add more space between social media icons and button group */
+.navbar__items--right .header-buttons {
+  margin-left: 16px;
 }
 
-/* Your existing prism-code styles */
+/* Target the login/signup buttons specifically */
+.navbar__items--right .login-link {
+  margin-left: 16px;
+}
+
+/* Margin to the first button element */
+.navbar__items--right .header-buttons > *:first-child {
+  margin-left: 16px;
+}
+
+/* ---- REMOVE SOCIAL ICONS FROM NAVBAR ---- */
+/* Target social icons specifically within the navbar right section */
+.navbar__items--right .header-github-link,
+.navbar__items--right .header-discord-link, 
+.navbar__items--right .header-x-link,
+.navbar__items--right .header-linkedin-link {
+  display: none;
+}
+
+/* Add spacing between navbar right items */
+.navbar__items--right {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Adjust this value for more/less spacing */
+}
+
+/* Remove search button margins */
+.theme-layout-navbar-right .navbarSearchContainer_Bca1 {
+  margin: 0;
+  padding: 0 ;
+}
+
+.theme-layout-navbar-right .DocSearch.DocSearch-Button {
+  margin: 0;
+}
+
+/* Hide the social icons container within navbar */
+.navbar__items--right .header-social-icons {
+  display: none;
+}
+
+.DocSearch-Button {
+  padding: 10px 16px; /* Increase from default padding */
+  min-width: 240px; /* Make it wider */
+  height: 44px; /* Set specific height */
+}
+
+/* Add border to DocSearch button in dark mode */
+html[data-theme='dark'] .DocSearch-Button {
+  border: 1px solid var(--ifm-color-gray-700);
+  color: var(--ifm-color-gray-400)
+}
+
+.header-buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Add a container for social icons */
+.header-social-icons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-right: 24px; /* Add padding between social icons and buttons */
+  border-right: 1px solid var(--ifm-color-gray-200); /* Add a subtle divider */
+}
+
+html[data-theme='dark'] .header-social-icons {
+  border-right: 1px solid var(--ifm-color-gray-700); /* Dark mode divider color */
+}
+
+/* Individual icon styles */
+.header-github-link {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.header-github-link::before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  display: flex;
+  background: url('/src/icons/github.svg') no-repeat;
+  background-size: contain;
+}
+.header-github-link:hover {
+  opacity: 0.8;
+}
+html[data-theme='dark'] .header-github-link:hover {
+  opacity: 0.6;
+}
+@media (max-width: 768px) {
+  .header-github-link {
+    display: none;
+  }
+}
+
+.header-discord-link {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.header-discord-link::before {
+  content: '';
+  width: 30px;
+  height: 24px;
+  display: flex;
+  background: url('/src/icons/discord.svg') no-repeat;
+  background-size: contain;
+}
+.header-discord-link:hover {
+  opacity: 0.8;
+}
+html[data-theme='dark'] .header-discord-link:hover {
+  opacity: 0.6;
+}
+@media (max-width: 768px) {
+  .header-discord-link {
+    display: none;
+  }
+}
+
+.header-x-link::before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  display: flex;
+  background: url('/src/icons/twitter.svg') no-repeat center;
+  background-size: contain;
+}
+.header-x-link:hover {
+  opacity: 0.8;
+}
+html[data-theme='dark'] .header-x-link:hover {
+  opacity: 0.6;
+}
+@media (max-width: 768px) {
+  .header-x-link {
+    display: none;
+  }
+}
+
+.header-linkedin-link {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.header-linkedin-link::before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  display: flex;
+  background: url('/src/icons/linkedin.svg') no-repeat center;
+  background-size: contain;
+}
+.header-linkedin-link:hover {
+  opacity: 0.8;
+}
+html[data-theme='dark'] .header-linkedin-link:hover {
+  opacity: 0.6;
+}
+@media (max-width: 768px) {
+  .header-linkedin-link {
+    display: none;
+  }
+}
+
+.login-link {
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+  margin-right: 8px; /* Adjust spacing */
+}
+
+/* Light Theme */
+html[data-theme='light'] .login-link {
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+html[data-theme='light'] .login-link:hover {
+  background-color: #e0e0e0;
+  opacity: 0.95;
+}
+
+/* Dark Theme */
+html[data-theme='dark'] .login-link {
+  color: #fff;
+}
+
+html[data-theme='dark'] .login-link:hover {
+  background-color: #444;
+  opacity: 0.95;
+}
+
+/* Primary button with Clarifai's specific gradient colors */
+.signup-button {
+  background: linear-gradient(135deg, #47E6DE 0%, #52BAF5 100%);
+  color: #000; /* Black text like Clarifai */
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+/* Hover effect for primary button */
+.signup-button:hover {
+  background: linear-gradient(135deg, #3DD4CC 0%, #4AA8E3 100%);
+  color: #000; /* Keep black text on hover */
+  transform: translateY(-1px); /* Subtle lift effect */
+  box-shadow: 0 4px 8px rgba(71, 230, 222, 0.3);
+}
+
+/* Dark mode version */
+html[data-theme='dark'] .signup-button {
+  background: linear-gradient(135deg, #47E6DE 0%, #52BAF5 100%);
+  color: #000; /* Black text in dark mode too */
+}
+
+html[data-theme='dark'] .signup-button:hover {
+  background: linear-gradient(135deg, #3DD4CC 0%, #4AA8E3 100%);
+  color: #000;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(71, 230, 222, 0.3);
+}
+
+/* ===== CODE BLOCKS & SYNTAX HIGHLIGHTING ===== */
+.docusaurus-highlight-code-line {
+  background-color: rgba(0, 0, 0, 0.1);
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+}
+
+html[data-theme='dark'] .docusaurus-highlight-code-line {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Prism-code styles */
 .prism-code {
   counter-reset: line-number;
 }
@@ -372,6 +744,93 @@ div[class^="codeBlockContent_"] {
   margin-right: auto !important;
 }
 
+/* Remove shadow and add clean border to code blocks */
+.markdown .codeBlockContainer_node_modules-\@docusaurus-theme-classic-lib-theme-CodeBlock-Container-styles-module,
+.theme-doc-markdown div[class^="codeBlockContainer_"],
+.theme-doc-markdown .theme-code-block {
+  box-shadow: none;
+  border: 1px solid var(--ifm-color-gray-300);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* Dark mode styling */
+html[data-theme='dark'] .theme-doc-markdown div[class^="codeBlockContainer_"],
+html[data-theme='dark'] .theme-doc-markdown .theme-code-block {
+  border: 1px solid var(--ifm-color-gray-600);
+}
+
+/* Make copy and expand buttons always visible */
+.theme-doc-markdown button[class^="copyButton_"],
+.theme-doc-markdown div[class^="codeBlockLines_"] button {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Make buttons always visible and add spacing with specific selectors */
+.theme-doc-markdown div[class*="codeBlockContainer"] div[class*="buttonGroup_"] {
+  opacity: 1;
+  visibility: visible;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* Add 8px margin to create spacing between buttons */
+.theme-doc-markdown div[class*="codeBlockContainer"] div[class*="buttonGroup_"] button {
+  opacity: 1;
+  visibility: visible;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+}
+
+/* Remove margin from the first button */
+.theme-doc-markdown div[class*="codeBlockContainer"] div[class*="buttonGroup_"] button:first-child {
+  margin-left: 0;
+}
+
+/* Override any conflicting styles with specific targeting */
+.theme-doc-markdown div[class*="codeBlockContainer"] button[class*="copyButton"],
+.theme-doc-markdown div[class*="codeBlockContainer"] button[class*="clean-btn"] {
+  float: none;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Ensure visibility even when not hovering */
+.theme-doc-markdown div[class*="codeBlockContainer"]:not(:hover) div[class*="buttonGroup_"],
+.theme-doc-markdown div[class*="codeBlockContainer"]:not(:hover) div[class*="buttonGroup_"] button {
+  opacity: 1;
+  visibility: visible;
+  display: flex;
+}
+
+/* Add tooltips and hover effects for code snippet buttons */
+.theme-doc-markdown div[class*="codeBlockContainer"] div[class*="buttonGroup_"] button {
+  opacity: 1;
+  visibility: visible;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+  position: relative;
+  transition: background-color 0.2s ease;
+}
+
+/* Add 10% overlay on hover */
+.theme-doc-markdown div[class*="codeBlockContainer"] div[class*="buttonGroup_"] button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+/* Dark mode hover overlay */
+html[data-theme='dark'] .theme-doc-markdown div[class*="codeBlockContainer"] div[class*="buttonGroup_"] button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ===== TABS ===== */
 /* NEW TAB STYLING */
 /* Set max-width for tabs associated with code blocks */
 .tabs,
@@ -394,11 +853,50 @@ li[class^="tabItem_"] {
   transition: background-color 200ms ease-in-out;
 }
 
+/* Reduce spacing between tab text and active indicator line */
+.theme-doc-markdown .tabs__item,
+.theme-doc-markdown .tabItem_node_modules-\@docusaurus-theme-classic-lib-theme-Tabs-styles-module,
+.theme-doc-markdown li[class^="tabItem_"] {
+  padding-bottom: 4px;
+  margin-bottom: 0;
+}
+
 /* Ensure active tab indicator aligns properly */
 .tabs__item--active,
 li[aria-selected="true"].tabItem_node_modules-\@docusaurus-theme-classic-lib-theme-Tabs-styles-module,
 li[aria-selected="true"][class^="tabItem_"] {
-  border-bottom-color: var(--ifm-tabs-color-active);
+  border-bottom-color: var(--ifm-font-color-base);
+}
+
+/* Make tabs connect properly with code block border */
+.theme-doc-markdown .tabs,
+.theme-doc-markdown div[role="tablist"],
+.theme-doc-markdown ul[role="tablist"] {
+  margin-bottom: 0;
+  border-bottom: 1px solid var(--ifm-color-gray-100);
+}
+
+/* Remove conflicting borders where tabs meet code blocks */
+.theme-doc-markdown .tabs + div[class^="codeBlockContainer_"],
+.theme-doc-markdown .tabs-container + div[class^="codeBlockContainer_"] {
+  border-top: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+/* Make selected tab bold like sidebar menu items */
+.theme-doc-markdown .tabs__item--active,
+.theme-doc-markdown li[aria-selected="true"][class^="tabItem_"],
+.theme-doc-markdown .tabItem_node_modules-\@docusaurus-theme-classic-lib-theme-Tabs-styles-module[aria-selected="true"] {
+  font-weight: bold;
+  color: var(--ifm-font-color-base) 
+}
+
+/* Ensure non-selected tabs stay normal weight */
+.theme-doc-markdown .tabs__item:not(.tabs__item--active),
+.theme-doc-markdown li[aria-selected="false"][class^="tabItem_"],
+.theme-doc-markdown .tabItem_node_modules-\@docusaurus-theme-classic-lib-theme-Tabs-styles-module[aria-selected="false"] {
+  font-weight: normal;
 }
 
 /* Maintain connection between tabs and code blocks */
@@ -408,63 +906,13 @@ ul[role="tablist"] + div,
   margin-top: 0 !important;
 }
 
-/* ---- LEFT NAVIGATION SIDEBAR ---- */
-.menu__link:not([href]) {
-  font-size: 0.9em; /* Adjust font size */
+html[data-theme='dark'] .theme-doc-markdown .tabs,
+html[data-theme='dark'] .theme-doc-markdown div[role="tablist"],
+html[data-theme='dark'] .theme-doc-markdown ul[role="tablist"] {
+  border-bottom: 1px solid var(--ifm-color-gray-300);
 }
 
-.menu__link {
-  font-size: 0.9em; /* Adjust font size */
-}
-
-.inline-flex {
-  display: flex;
-  align-items: center;
-}
-
-/* ---- LEFT NAVIGATION SIDEBAR ---- */
-.menu__link:not([href]) {
-  font-size: 0.9em; /* Adjust font size */
-}
-
-.menu__link {
-  font-size: 0.9em; /* Adjust font size */
-}
-
-/* New chevron styles */
-/* Lighter sidebar chevrons */
-.menu__caret:before,
-.menu__link--sublist-caret:after {
-  opacity: 0.6;
-  width: 16px;
-  height: 16px;
-  background-size: 1.25rem 1.25rem;
-  transform-origin: center;
-  transition: transform 0.2s ease;
-}
-
-/* Custom chevron SVG */
-.menu__link--sublist-caret:after {
-  background: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9 18L15 12L9 6' stroke='%23666' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") 
-    no-repeat 50% / 1rem 1rem;
-}
-
-#redocly-ui {
-  background-color: white;
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-  overflow: scroll;
-  -ms-overflow-style: none;  /* Internet Explorer 10+ */
-  scrollbar-width: none;  /* Firefox */
-  z-index: 9999999999;
-}
-#redocly-ui::-webkit-scrollbar { 
-    display: none;  /* Safari and Chrome */
-}
-
+/* ===== DROPDOWNS ===== */
 .dropdown__menu {
   padding: 15px;
 }
@@ -505,553 +953,7 @@ html[data-theme='dark'] .dropdown__menu {
   backdrop-filter: blur(7.5px);
 }
 
-.gallery {
-	 display: grid;
-	 grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-	 grid-gap: 20px;
-}
-.card {
-  display: flex;
-  flex-direction: column;
-  border-radius: 8px;
-  padding: 20px;
-}
-.card h4 {
-  text-transform: uppercase;
-  font-size: 1.1rem;
-  margin: 0;
-}
-.card a {
-  margin-left: auto;
-  margin-top: auto;
-  display: flex;
-  align-items: center;
-}
-.card .arrow {
-  transition: transform 0.3s ease;
-  margin-top: 2px;
-  margin-left: 4px;
-}
-.card:hover .arrow {
-  transform: translateX(5px);
-}
-.card-header {
-  display: flex;
-  gap: 0.75rem;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-/* Dark Mode Styles */
-html[data-theme='dark'] .card:hover {
-  --ifm-card-background-color: var(--color-gray-78) !important;
-}
-
-.banner-primary {
-  display: none; /* Remove to display */
-  height: 390px;
-  background-image: url('/img/banner/getstarted-bg.png');
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  overflow: hidden;
-  margin-top: 24px;
-  margin-bottom: 24px;
-  border-radius: 8px;
-}
-.banner-primary::after {
-  content: "";
-  position: absolute;
-  top: 32px;
-  right: 0;
-  background-image: url('/img/banner/pattern-black.png');
-  background-repeat: no-repeat;
-  height: 336px;
-  width: 336px;
-}
-.banner-primary p {
-  font-weight: 500;
-  font-size: 26px;
-  line-height: 34px;
-  color: #0A0D15;
-  max-width: 336px;
-  margin-left: 32px;
-  padding-top: 200px;
-}
-.banner-primary a {
-  background-color: #0A0D15;
-  padding: 10px 14px 10px 14px;
-  border-radius: 4px;
-  padding-top: 10px;
-  margin-left: 32px;
-  color: #F9FBFF;
-}
-.banner-primary a:hover {
-  text-decoration: none;
-}
-@media (max-width: 480px) {
-    .banner-primary::after {
-      top: 0;
-      right: 0;
-      height: 164px;
-      width: 160px;
-      background-size: contain;
-    }
-}
-@media (max-width: 320px) {
-  .banner-primary p {
-    padding-top: 165px;
-  }
-}
-@media (min-width: 1024px) and (max-width: 1339px) {
-    .banner-primary::after {
-      display: none;
-    }
-}
-
-.banner-secondary {
-  height: 318px;
-  background-color: #121725;
-  border-radius: 8px;
-  border: 1px;
-  position: relative;
-  overflow: hidden;
-  margin-top: 24px;
-  margin-bottom: 24px;
-}
-.banner-secondary::after {
-  content: "";
-  position: absolute;
-  top: 46px;
-  right: 0;
-  background-image: url('/img/banner/info-text-pattern.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-  height: 240px;
-  width: 300px;
-}
-.banner-secondary .banner-header {
-  padding-top: 56px;
-  margin-left: 40px;
-  font-weight: 500px;
-  font-size: 19px;
-  line-height: 27px;
-  color: white;
-}
-.banner-secondary .banner-content {
-  margin-left: 40px;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 24px;
-  max-width: 360px;
-  color: #7C86A1;
-  margin-bottom: 64px;
-}
-.banner-secondary .banner-cta {
-  margin-left: 40px;
-  background-color: white;
-  padding: 10px 14px 10px 14px;
-  border-radius: 4px;
-  color: #0A0D15;
-  font-size: 14px;
-  line-height: 24px;
-  font-weight: 500;
-}
-.banner-secondary .banner-cta:hover {
-  text-decoration: none;
-}
-@media (max-width: 480px) {
-    .banner-secondary::after {
-      display: none;
-    }
-}
-@media (max-width: 320px) {
-  .banner-secondary {
-    height: 400px;
-  }
-}
-@media (min-width: 1024px) and (max-width: 1339px) {
-    .banner-secondary::after {
-      display: none;
-    }
-}
-
-.banner-tertiary {
-  height: 318px;
-  background-color: #121725;
-  border-radius: 8px;
-  border: 1px;
-  position: relative;
-  overflow: hidden;
-  margin-top: 24px;
-  margin-bottom: 24px;
-}
-.banner-tertiary::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-image: url('/img/banner/info-pattern.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 318px;
-  width: 400px;
-}
-.banner-tertiary .banner-header {
-  padding-top: 56px;
-  margin-left: 40px;
-  font-weight: 500px;
-  font-size: 26px;
-  line-height: 34px;
-  color: white;
-}
-.banner-tertiary .banner-content {
-  margin-left: 40px;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 24px;
-  max-width: 360px;
-  color: #7C86A1;
-  margin-bottom: 24px;
-  min-height: 120px;
-}
-.banner-tertiary .banner-content li {
-  color: #7C86A1 !important;
-}
-.banner-tertiary .banner-cta {
-  margin-left: 40px;
-  background-color: white;
-  padding: 10px 14px 10px 14px;
-  border-radius: 4px;
-  color: #0A0D15;
-  font-size: 14px;
-  line-height: 24px;
-  font-weight: 500;
-}
-.banner-tertiary .banner-cta:hover {
-  text-decoration: none;
-}
-@media (max-width: 768px) {
-    .banner-tertiary::after {
-      display: none;
-    }
-}
-@media (max-width: 320px) {
-  .banner-tertiary {
-    height: 400px;
-  }
-}
-@media (min-width: 1024px) and (max-width: 1339px) {
-    .banner-tertiary::after {
-      display: none;
-    }
-}
-
-.header-github-link {
-	 display: flex;
-	 gap: 8px;
-	 align-items: center;
-}
- .header-github-link::before {
-	 content: '';
-	 width: 24px;
-	 height: 24px;
-	 display: flex;
-	 background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E") 
-          no-repeat;
-}
-.header-github-link:hover {
-	 opacity: 0.8;
-}
-html[data-theme='dark'] .header-github-link:hover {
-	 opacity: 0.6;
-}
- html[data-theme='dark'] .header-github-link::before {
-	 background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E") 
-          no-repeat;
-}
-@media (max-width: 768px) {
-    .header-github-link {
-      display: none;
-    }
-}
-.header-discord-link {
-	 display: flex;
-	 gap: 8px;
-	 align-items: center;
-}
- .header-discord-link::before {
-	 content: '';
-	 width: 30px;
-	 height: 24px;
-   background-color: red;
-	 display: flex;
-	 background: url('data:image/svg+xml,<svg viewBox="0 0 256 199" width="256" height="199" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"><path d="M216.856 16.597A208.502 208.502 0 0 0 164.042 0c-2.275 4.113-4.933 9.645-6.766 14.046-19.692-2.961-39.203-2.961-58.533 0-1.832-4.4-4.55-9.933-6.846-14.046a207.809 207.809 0 0 0-52.855 16.638C5.618 67.147-3.443 116.4 1.087 164.956c22.169 16.555 43.653 26.612 64.775 33.193A161.094 161.094 0 0 0 79.735 175.3a136.413 136.413 0 0 1-21.846-10.632 108.636 108.636 0 0 0 5.356-4.237c42.122 19.702 87.89 19.702 129.51 0a131.66 131.66 0 0 0 5.355 4.237 136.07 136.07 0 0 1-21.886 10.653c4.006 8.02 8.638 15.67 13.873 22.848 21.142-6.58 42.646-16.637 64.815-33.213 5.316-56.288-9.08-105.09-38.056-148.36ZM85.474 135.095c-12.645 0-23.015-11.805-23.015-26.18s10.149-26.2 23.015-26.2c12.867 0 23.236 11.804 23.015 26.2.02 14.375-10.148 26.18-23.015 26.18Zm85.051 0c-12.645 0-23.014-11.805-23.014-26.18s10.148-26.2 23.014-26.2c12.867 0 23.236 11.804 23.015 26.2 0 14.375-10.148 26.18-23.015 26.18Z" fill="%235865F2"/></svg>') 
-          no-repeat;
-   background-size: contain;
-}
-.header-discord-link:hover {
-	 opacity: 0.8;
-}
-html[data-theme='dark'] .header-discord-link:hover {
-	 opacity: 0.6;
-}
-@media (max-width: 768px) {
-    .header-discord-link {
-      display: none;
-    }
-}
-
-@media (min-width: 769px) {
-  .DocSearch-Button {
-    width: 240px;
-  }
-}
-
-/* Remove in-built footer */
-footer.footer {
-  display: none !important;
-}
-
-/* Primary HEADER CTA style */
-.header-primary-cta-link {
-  background: linear-gradient(90deg, #47E6DE 0%, #52BAF5 100%);
-  color: #0F172A; /* Dark text for good contrast */
-  font-weight: 500;
-  padding: 10px 16px;
-  border-radius: 6px;
-  border: none;
-  transition: all 0.2s ease;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  margin-right: 8px;
-  margin-left: 4px;
-}
-
-.header-primary-cta-link svg {
-  display: none;
-}
-
-.header-primary-cta-link:hover {
-  background: linear-gradient(90deg, #3AD6CE 0%, #41A9E4 100%); /* Slightly darker gradient on hover */
-  transform: translateY(-1px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  text-decoration: none;
-  color: #0F172A; /* Keep text black on hover */
-}
-
-.header-primary-cta-link:active {
-  transform: translateY(0);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-/* For dark mode */
-html[data-theme='dark'] .header-primary-cta-link {
-  color: #0F172A; /* Keep dark text in dark mode for this button */
-}
-
-html[data-theme='dark'] .header-primary-cta-link:hover {
-  color: #0F172A; /* Keep dark text on hover in dark mode */
-}
-
-/* Docs Search input fix */
-.DocSearch-Input {
-  margin-top: 0px;
-}
-/* Navbar fix */
-.navbar__toggle.clean-btn {
-  margin-left: 0px;
-}
-/* Logo style */
-.navbar__logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.navbar__logo img {
-  height: 70%;
-}
-/* Hide navbar items in mobile */
-@media (max-width: 1024px) {
-  .navbar__items--right a {
-    display: none !important;
-  }
-}
-/* Match Navbar dropdown to clarifai website */
-a.navbar__link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-a.navbar__link::after {
-  border-color: unset !important;
-  border-style: unset !important;
-  border-width: unset !important;
-  position: unset !important;
-  display: unset !important;
-  background-image: url('/img/menu-dropdown-white.svg');
-  background-repeat: no-repeat;
-  height: 15px;
-  width: 15px;
-  margin-top: 16px;
-}
-html[data-theme='light'] a.navbar__link::after {
-  background-image: url('/img/menu-dropdown-black.svg');
-}
-/* Navbar Banner  */
-.header-navbar-banner {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  text-decoration-line: none;
-  gap: 4px;
-}
-.header-navbar-banner:hover {
-  text-decoration-line: none;
-}
-.header-navbar-banner img {
-  height: 160px;
-  width: 312px;
-  border-radius: 8px;
-  overflow: hidden,
-}
-.header-navbar-banner h6 {
-  font-size: 13px;
-  font-weight: 600;
-  line-height: 24px;
-  color: #04AFFF;
-  letter-spacing: 0.1em;
-  margin-bottom: 0px;
-}
-html[data-theme='light'] .header-navbar-banner h6 {
-  color: var(--ifm-color-primary);
-}
-.header-navbar-banner span {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 22px;
-  width: 312px;
-  color: white;
-}
-html[data-theme='light'] .header-navbar-banner span {
-  font-weight: 500;
-  color: var(--ifm-dropdown-link-color);
-}
-
-.header-x-link::before {
-  content: '';
-  width: 24px;
-  height: 24px;
-  display: flex;
-  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17.5 2h3L13 10l9 12h-6l-6-8-5 5H1l8-8L2 2h6l5 7 4.5-4.5z'/%3E%3C/svg%3E") 
-         no-repeat center;
-    background-size: contain;
-}
-.header-x-link:hover {
-  opacity: 0.8;
-}
-html[data-theme='dark'] .header-x-link:hover {
-  opacity: 0.6;
-}
-html[data-theme='dark'] .header-x-link::before {
-  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M17.5 2h3L13 10l9 12h-6l-6-8-5 5H1l8-8L2 2h6l5 7 4.5-4.5z'/%3E%3C/svg%3E") 
-         no-repeat center;
-    background-size: contain;
-}
-@media (max-width: 768px) {
-   .header-x-link {
-     display: none;
-   }
-}
-
-
-.header-linkedin-link {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-.header-linkedin-link::before {
-  content: '';
-  width: 24px;
-  height: 24px;
-  display: flex;
-  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%230077B5' d='M22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0zM7.12 20.45H3.56V9h3.56v11.45zM5.34 7.53a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM20.45 20.45h-3.56v-5.62c0-1.34-.02-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97v5.72H9.3V9h3.41v1.56h.05c.48-.9 1.64-1.87 3.38-1.87 3.62 0 4.31 2.38 4.31 5.48v6.28z'/%3E%3C/svg%3E") 
-         no-repeat center;
-    background-size: contain;
-}
-.header-linkedin-link:hover {
-  opacity: 0.8;
-}
-html[data-theme='dark'] .header-linkedin-link:hover {
-  opacity: 0.6;
-}
-html[data-theme='dark'] .header-linkedin-link::before {
-  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0zM7.12 20.45H3.56V9h3.56v11.45zM5.34 7.53a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM20.45 20.45h-3.56v-5.62c0-1.34-.02-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97v5.72H9.3V9h3.41v1.56h.05c.48-.9 1.64-1.87 3.38-1.87 3.62 0 4.31 2.38 4.31 5.48v6.28z'/%3E%3C/svg%3E") 
-         no-repeat center;
-    background-size: contain;
-}
-@media (max-width: 768px) {
-   .header-linkedin-link {
-     display: none;
-   }
-}
-
-
-.header-buttons {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.login-link {
-  font-weight: 500;
-  text-decoration: none;
-  font-size: 16px;
-  padding: 8px 16px;
-  border-radius: 8px;
-  transition: background-color 0.2s ease, opacity 0.2s ease;
-  border-right: 1px solid #ccc; /* Light gray divider */
-  margin-right: 8px; /* Adjust spacing */
-}
-
-/* Light Theme */
-html[data-theme='light'] .login-link {
-  background-color: #f0f0f0;
-  color: #000;
-}
-
-html[data-theme='light'] .login-link:hover {
-  background-color: #e0e0e0;
-  opacity: 0.95;
-}
-
-/* Dark Theme */
-html[data-theme='dark'] .login-link {
-  background-color: #333;
-  color: #fff;
-}
-
-html[data-theme='dark'] .login-link:hover {
-  background-color: #444;
-  opacity: 0.95;
-}
-
-/* Start for signup free button (Primary) */
-.signup-button {
-  background-color: #007bff;
-  color: #fff;
-  font-weight: 600;
-  padding: 8px 16px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 16px;
-  transition: background-color 0.2s ease, opacity 0.2s ease;
-}
-
-.signup-button:hover {
-  background-color: #0056b3;
-  color: #fff;
-  opacity: 0.95;
-}
-
+/* ===== CONTENT LAYOUT & CENTERING ===== */
 /* Center content with max-width */
 .markdown > p, 
 .markdown > ul, 
@@ -1096,6 +998,123 @@ html[data-theme='dark'] .login-link:hover {
   width: 100%;
   box-sizing: border-box;
 }
+
+/* Center section.row with max-width */
+section.row {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Handle nested rows */
+section.row .row {
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Mobile display */
+@media (max-width: 768px) {
+  section.row {
+    padding-left: var(--ifm-spacing-horizontal);
+    padding-right: var(--ifm-spacing-horizontal);
+  }
+}
+
+/* Set max-width for horizontal dividers/separators */
+.markdown hr,
+.theme-doc-markdown hr {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Ensure consistent styling in both light and dark themes */
+html[data-theme='light'] hr,
+html[data-theme='dark'] hr {
+  border-color: var(--ifm-hr-border-color, rgba(0, 0, 0, 0.1));
+}
+
+/* ===== ALERTS & ADMONITIONS ===== */
+/* Set max-width for Alert components */
+.alert,
+.markdown .admonition,
+.theme-admonition {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Remove shadow from alert/admonition components */
+.theme-doc-markdown .alert,
+.theme-doc-markdown .admonition,
+.theme-doc-markdown .theme-admonition,
+.theme-doc-markdown .theme-admonition-warning,
+.theme-doc-markdown .theme-admonition-info,
+.theme-doc-markdown .theme-admonition-tip,
+.theme-doc-markdown .theme-admonition-note,
+.theme-doc-markdown .theme-admonition-danger {
+  box-shadow: none;
+  border-radius: 8px;
+}
+
+/* Also target the specific alert classes */
+.theme-doc-markdown .alert--warning,
+.theme-doc-markdown .alert--info,
+.theme-doc-markdown .alert--success,
+.theme-doc-markdown .alert--danger {
+  box-shadow: none;
+  border-radius: 8px;
+}
+
+/* Dark mode version */
+html[data-theme='dark'] .theme-doc-markdown .alert,
+html[data-theme='dark'] .theme-doc-markdown .theme-admonition {
+  box-shadow: none;
+}
+
+/* ===== BREADCRUMBS ===== */
+/* Set max-width for Breadcrumbs */
+.breadcrumbs {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: var(--ifm-spacing-horizontal);
+  padding-right: var(--ifm-spacing-horizontal);
+}
+
+/* Ensure breadcrumb items have proper spacing */
+.breadcrumbs__item {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Remove side padding from breadcrumbs */
+.breadcrumbs {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Make active breadcrumb text use the light background color */
+.breadcrumbs__item--active span[itemprop="name"] {
+  background-color: var(--ifm-color-primary-lightbackground);
+}
+
+/* Dark mode - match sidebar active background */
+html[data-theme='dark'] .breadcrumbs__item--active span[itemprop="name"] {
+  background-color: #1E293B;
+  color: var(--ifm-color-primary);
+}
+
+/* ===== PAGINATION ===== */
 /* Center Pagination Navigation */
 .pagination-nav.docusaurus-mt-lg {
   max-width: 720px;
@@ -1122,6 +1141,8 @@ html[data-theme='dark'] .pagination-nav__link:hover {
   font-size: 16px;
   font-weight: 600;
 }
+
+/* ===== FOOTER ===== */
 /* Center Footer Edit Row */
 .theme-doc-footer-edit-meta-row.row {
   max-width: 720px;
@@ -1131,28 +1152,131 @@ html[data-theme='dark'] .pagination-nav__link:hover {
   box-sizing: border-box;
 }
 
-/* Center section.row with max-width */
-section.row {
-  max-width: 720px;
+/* Footer social icons - use white versions in dark mode */
+html[data-theme='dark'] .footerSocialIconsWrapper_tJhP .socialBrands__tjK:first-child svg {
+  display: none;
+}
+
+html[data-theme='dark'] .footerSocialIconsWrapper_tJhP .socialBrands__tjK:first-child a::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  display: block;
+  background: url('/src/icons/github-white.svg') no-repeat;
+  background-size: contain;
+}
+
+html[data-theme='dark'] .footerSocialIconsWrapper_tJhP .socialBrands__tjK:nth-child(2) svg {
+  display: none;
+}
+
+html[data-theme='dark'] .footerSocialIconsWrapper_tJhP .socialBrands__tjK:nth-child(2) a::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  display: block;
+  background: url('/src/icons/twitter-white.svg') no-repeat;
+  background-size: contain;
+}
+
+html[data-theme='dark'] .footerSocialIconsWrapper_tJhP .socialBrands__tjK:nth-child(3) svg {
+  display: none;
+}
+
+html[data-theme='dark'] .footerSocialIconsWrapper_tJhP .socialBrands__tjK:nth-child(3) a::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  display: block;
+  background: url('/src/icons/discord-white.svg') no-repeat;
+  background-size: contain;
+}
+
+html[data-theme='dark'] .footerSocialIconsWrapper_tJhP .socialBrands__tjK:nth-child(4) svg {
+  display: none;
+}
+
+html[data-theme='dark'] .footerSocialIconsWrapper_tJhP .socialBrands__tjK:nth-child(4) a::before {
+  content: '';
+  width: 24px;
+  height: 20px;
+  display: block;
+  background: url('/src/icons/youtube-white.svg') no-repeat;
+  background-size: contain;
+}
+
+html[data-theme='dark'] .footerSocialIconsWrapper_tJhP .socialBrands__tjK:nth-child(5) svg {
+  display: none;
+}
+
+html[data-theme='dark'] .footerSocialIconsWrapper_tJhP .socialBrands__tjK:nth-child(5) a::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  display: block;
+  background: url('/src/icons/linkedin-white.svg') no-repeat;
+  background-size: contain;
+}
+
+/* ===== CARDS & GALLERIES ===== */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.card h4 {
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.card a {
   margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  box-sizing: border-box;
+  margin-top: auto;
+  display: flex;
+  align-items: center;
 }
 
-/* Handle nested rows */
-section.row .row {
-  width: 100%;
-  margin-left: 0;
-  margin-right: 0;
+.card .arrow {
+  transition: transform 0.3s ease;
+  margin-top: 2px;
+  margin-left: 4px;
 }
 
-/* Mobile display */
-@media (max-width: 768px) {
-  section.row {
-    padding-left: var(--ifm-spacing-horizontal);
-    padding-right: var(--ifm-spacing-horizontal);
-  }
+.card:hover .arrow {
+  transform: translateX(5px);
+}
+
+.card-header {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+/* Dark Mode Styles */
+html[data-theme='dark'] .card:hover {
+  --ifm-card-background-color: var(--color-gray-78) !important;
+}
+
+/* Style for Docusaurus Card Container */
+.card.padding--lg.cardContainer_node_modules-\@docusaurus-theme-classic-lib-theme-DocCard-styles-module {
+  padding: 0rem; /* Reduced padding */
+  margin-bottom: 0rem; /* Smaller bottom margin */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Subtle shadow */
+  border-radius: 0.5rem; /* Slightly rounded corners */
+}
+
+.cardContainer_node_modules-\@docusaurus-theme-classic-lib-theme-DocCard-styles-module.padding--lg {
+  padding: 0.0rem; 
 }
 
 /* Set card title size to 16px */
@@ -1176,9 +1300,11 @@ section.row .row {
 .cardContainer_node_modules-\@docusaurus-theme-classic-lib-theme-DocCard-styles-module .cardTitle_node_modules-\@docusaurus-theme-classic-lib-theme-DocCard-styles-module {
   padding: 0.5rem 0.75rem 0.25rem; /* Top, sides, bottom */
 }
+
 .cardContainer_node_modules-\@docusaurus-theme-classic-lib-theme-DocCard-styles-module .cardDescription_node_modules-\@docusaurus-theme-classic-lib-theme-DocCard-styles-module {
   padding: 0 0.75rem 0.75rem; /* Top, sides, bottom */
 }
+
 /* If there's an image or other content in the card */
 .cardContainer_node_modules-\@docusaurus-theme-classic-lib-theme-DocCard-styles-module .cardImage_node_modules-\@docusaurus-theme-classic-lib-theme-DocCard-styles-module {
   margin-bottom: 0.25rem; /* Reduce spacing after images */
@@ -1196,91 +1322,353 @@ section.row .row {
   margin: 0.2rem 0;
 }
 
-/* Set max-width for Alert components */
-.alert,
-.markdown .admonition,
-.theme-admonition {
-  max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  box-sizing: border-box;
-}
-/* Set max-width for Breadcrumbs */
-.breadcrumbs {
-  max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  box-sizing: border-box;
-  padding-left: var(--ifm-spacing-horizontal);
-  padding-right: var(--ifm-spacing-horizontal);
+/* ===== BANNERS ===== */
+.banner-primary {
+  display: none; /* Remove to display */
+  height: 390px;
+  background-image: url('/img/banner/getstarted-bg.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  border-radius: 8px;
 }
 
-/* Ensure breadcrumb items have proper spacing */
-.breadcrumbs__item {
-  display: inline-flex;
+.banner-primary::after {
+  content: "";
+  position: absolute;
+  top: 32px;
+  right: 0;
+  background-image: url('/img/banner/pattern-black.png');
+  background-repeat: no-repeat;
+  height: 336px;
+  width: 336px;
+}
+
+.banner-primary p {
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 34px;
+  color: #0A0D15;
+  max-width: 336px;
+  margin-left: 32px;
+  padding-top: 200px;
+}
+
+.banner-primary a {
+  background-color: #0A0D15;
+  padding: 10px 14px 10px 14px;
+  border-radius: 4px;
+  padding-top: 10px;
+  margin-left: 32px;
+  color: #F9FBFF;
+}
+
+.banner-primary a:hover {
+  text-decoration: none;
+}
+
+@media (max-width: 480px) {
+  .banner-primary::after {
+    top: 0;
+    right: 0;
+    height: 164px;
+    width: 160px;
+    background-size: contain;
+  }
+}
+
+@media (max-width: 320px) {
+  .banner-primary p {
+    padding-top: 165px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1339px) {
+  .banner-primary::after {
+    display: none;
+  }
+}
+
+.banner-secondary {
+  height: 318px;
+  background-color: #121725;
+  border-radius: 8px;
+  border: 1px;
+  position: relative;
+  overflow: hidden;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.banner-secondary::after {
+  content: "";
+  position: absolute;
+  top: 46px;
+  right: 0;
+  background-image: url('/img/banner/info-text-pattern.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 240px;
+  width: 300px;
+}
+
+.banner-secondary .banner-header {
+  padding-top: 56px;
+  margin-left: 40px;
+  font-weight: 500px;
+  font-size: 19px;
+  line-height: 27px;
+  color: white;
+}
+
+.banner-secondary .banner-content {
+  margin-left: 40px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  max-width: 360px;
+  color: #7C86A1;
+  margin-bottom: 64px;
+}
+
+.banner-secondary .banner-cta {
+  margin-left: 40px;
+  background-color: white;
+  padding: 10px 14px 10px 14px;
+  border-radius: 4px;
+  color: #0A0D15;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 500;
+}
+
+.banner-secondary .banner-cta:hover {
+  text-decoration: none;
+}
+
+@media (max-width: 480px) {
+  .banner-secondary::after {
+    display: none;
+  }
+}
+
+@media (max-width: 320px) {
+  .banner-secondary {
+    height: 400px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1339px) {
+  .banner-secondary::after {
+    display: none;
+  }
+}
+
+.banner-tertiary {
+  height: 318px;
+  background-color: #121725;
+  border-radius: 8px;
+  border: 1px;
+  position: relative;
+  overflow: hidden;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.banner-tertiary::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-image: url('/img/banner/info-pattern.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 318px;
+  width: 400px;
+}
+
+.banner-tertiary .banner-header {
+  padding-top: 56px;
+  margin-left: 40px;
+  font-weight: 500px;
+  font-size: 26px;
+  line-height: 34px;
+  color: white;
+}
+
+.banner-tertiary .banner-content {
+  margin-left: 40px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  max-width: 360px;
+  color: #7C86A1;
+  margin-bottom: 24px;
+  min-height: 120px;
+}
+
+.banner-tertiary .banner-content li {
+  color: #7C86A1 !important;
+}
+
+.banner-tertiary .banner-cta {
+  margin-left: 40px;
+  background-color: white;
+  padding: 10px 14px 10px 14px;
+  border-radius: 4px;
+  color: #0A0D15;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 500;
+}
+
+.banner-tertiary .banner-cta:hover {
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .banner-tertiary::after {
+    display: none;
+  }
+}
+
+@media (max-width: 320px) {
+  .banner-tertiary {
+    height: 400px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1339px) {
+  .banner-tertiary::after {
+    display: none;
+  }
+}
+
+/* ===== VIDEO EMBEDS ===== */
+/* Target YouTube videos more broadly */
+iframe[src*="youtube"],
+iframe[src*="youtu.be"] {
+  max-width: 720px !important;
+  width: 100% !important;
+  height: 405px !important;
+  margin: 0 auto !important;
+  display: block !important;
+}
+
+/* Target any video containers */
+div[class*="video"],
+div[data-layer] {
+  max-width: 720px !important;
+  width: 720px !important;
+  margin: 0 auto !important;
+}
+
+/* Target responsive video wrappers */
+div[style*="position: relative"],
+div[style*="padding-top"] {
+  max-width: 720px !important;
+  margin: 0 auto !important;
+}
+
+/* Fix YouTube video width and spacing */
+iframe[src*="youtube"],
+iframe[src*="youtu.be"] {
+  max-width: 720px !important;
+  width: 720px !important;
+  height: 405px !important;
+  margin: 0 auto !important;
+  display: block !important;
+}
+
+/* Fix the container around YouTube videos */
+div[style*="position: relative"] {
+  max-width: 720px !important;
+  margin: 0 auto 24px auto !important; /* Add bottom margin for spacing */
+  width: 720px !important;
+}
+
+/* Fix responsive wrapper padding */
+div[style*="padding-top: 56.25%"],
+div[style*="padding-top:56.25%"] {
+  padding-top: 405px !important; /* Fixed height instead of percentage */
+  height: 405px !important;
+  max-width: 720px !important;
+  margin: 0 auto !important;
+}
+
+/* Ensure proper spacing after video */
+iframe[src*="youtube"] + *,
+div[style*="padding-top: 56.25%"] + * {
+  margin-top: 24px !important;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  iframe[src*="youtube"],
+  iframe[src*="youtu.be"],
+  div[style*="position: relative"],
+  div[style*="padding-top: 56.25%"] {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  div[style*="padding-top: 56.25%"] {
+    padding-top: 56.25% !important;
+    height: auto !important;
+  }
+}
+
+/* ===== SPECIAL COMPONENTS ===== */
+.inline-flex {
+  display: flex;
   align-items: center;
 }
 
-/* Set max-width for horizontal dividers/separators */
-.markdown hr,
-.theme-doc-markdown hr {
-  max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  box-sizing: border-box;
+#redocly-ui {
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: scroll;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+  z-index: 9999999999;
 }
 
-/* Ensure consistent styling in both light and dark themes */
-html[data-theme='light'] hr,
-html[data-theme='dark'] hr {
-  border-color: var(--ifm-hr-border-color, rgba(0, 0, 0, 0.1));
+#redocly-ui::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
 }
 
-.theme-doc-sidebar-container {
-  border-right: 1px solid rgba(0, 0, 0, 0.1) !important;
-  padding-top: 24px !important; /* Increase top padding */
+/* ===== LEGACY HEADER STYLES (DEPRECATED) ===== */
+header .join__slack {
+  color: rgba(0, 0, 0, .5);
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  position: absolute;
+  right: 0;
+  padding: 8px 10px;
+  display: flex;
+  text-decoration: none;
+  color: white;
 }
 
-html[data-theme='dark'] .theme-doc-sidebar-container {
-  border-right: 1px solid rgba(255, 255, 255, 0.0) !important;
+header .join__slack img {
+  max-height: 16px;
+  margin-right: 6px;
 }
 
-/* Sidebar adjustments - solid border and increased top padding */
-.theme-doc-sidebar-container,
-.menu--responsive,
-nav.menu,
-.thin-scrollbar,
-.menu__list,
-aside .thin-scrollbar {
-  border-right: 1px solid rgba(0, 0, 0, 0) !important; /* Fully solid border (0% transparency) */
+header .join__slack:active {
+  background: white;
 }
 
-html[data-theme='dark'] .theme-doc-sidebar-container,
-html[data-theme='dark'] .menu--responsive,
-html[data-theme='dark'] nav.menu,
-html[data-theme='dark'] .thin-scrollbar,
-html[data-theme='dark'] .menu__list,
-html[data-theme='dark'] aside .thin-scrollbar {
-  border-right: 1px solid rgba(255, 255, 255, 0) !important; /* Fully solid border (0% transparency) */
-}
-
-/* Increase top padding */
-.menu__list,
-.menu--responsive,
-.thin-scrollbar {
-  padding-top: 2px !important;
-}
-
-/* Style for Docusaurus Card Container */
-.card.padding--lg.cardContainer_node_modules-\@docusaurus-theme-classic-lib-theme-DocCard-styles-module {
-  padding: 0rem; /* Reduced padding */
-  margin-bottom: 0rem; /* Smaller bottom margin */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Subtle shadow */
-  border-radius: 0.5rem; /* Slightly rounded corners */
-}
-.cardContainer_node_modules-\@docusaurus-theme-classic-lib-theme-DocCard-styles-module.padding--lg {
-  padding: 0.0rem; /* Or whatever smaller value you prefer */
+header .join__slack:hover {
+  border-color: #ddd;
+  color: #5c1751cc;
+  background: white;
 }
