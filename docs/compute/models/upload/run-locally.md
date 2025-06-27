@@ -1,6 +1,6 @@
 ---
 description: Develop, test, and run your models directly on your own infrastructure
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 
@@ -11,9 +11,9 @@ sidebar_position: 1
 
 Local Dev Runners are a powerful feature of the Clarifai platform that let you develop, test, and execute models on your local machine. 
 
-Instead of running solely in the cloud, you can run your models anywhere that supports Python and has an internet connection — whether it's your laptop, workstation, or on-premise server.
+Instead of running solely in the cloud, you can run your models anywhere that supports Python and has an internet connection — whether it's your workstation or on-premise server.
 
-By leveraging your own compute resources, Local Dev Runners give you full control over your development environment while maintaining seamless integration with the Clarifai API. 
+With local Dev Runners, you can connect your own models to Clarifai's compute plane. This seamless integration enables you to leverage the Clarifai cloud API, workflows, and other platform capabilities with your custom models.
 
 Your model can securely receive and process requests, just as it would in a production cloud deployment.
 
@@ -97,7 +97,7 @@ These are the environment variables required to create a runner:
 | CLARIFAI_RUNNER_ID (`runner_id`)      | Auto-generated runner ID, created by the API and stored in the context |
 
 
-## Run the Test
+## Run Your Model
 
 :::info note
 

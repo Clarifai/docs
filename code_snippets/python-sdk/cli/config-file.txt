@@ -1,4 +1,4 @@
-C:#############>clarifai config dump
+clarifai config dump
 contexts:
   default:
     CLARIFAI_API_BASE: https://api.clarifai.com
@@ -9,9 +9,9 @@ contexts:
     CLARIFAI_NODEPOOL_ID: local-dev-nodepool
     CLARIFAI_PAT: XXXXXXXXXXXXXXXXXXX
     CLARIFAI_RUNNER_ID: f35b7e4f3c774e48a8e54b74785debca
-    CLARIFAI_USER_ID: alfrick
+    CLARIFAI_USER_ID: your_user_id_here
   my_new_context:
     CLARIFAI_API_BASE: https://api.clarifai.com/
     CLARIFAI_PAT: XXXXXXXXXXXX
-    CLARIFAI_USER_ID: alfrick
+    CLARIFAI_USER_ID: your_user_id_here
 current_context: my_new_context

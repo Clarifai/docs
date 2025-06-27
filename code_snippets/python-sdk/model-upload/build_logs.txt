@@ -1,164 +1,155 @@
-[INFO] 13:21:18.571215 Validating folder: """" |  thread=15892
-[INFO] 13:21:19.635009 No checkpoints specified in the config file |  thread=15892
-[INFO] 13:21:19.644012 Using Python version 3.11 from the config file to build the Dockerfile |  thread=15892
-[INFO] 13:21:19.977325 New model will be created at https://clarifai.com/alfrick/docs-demos/models/my-uploaded-model with it's first version. |  thread=15892
+clarifai model upload
+[INFO] 16:53:31.153832 No checkpoints specified in the config file |  thread=2540
+[INFO] 16:53:31.169705 Setup: Using Python version 3.11 from the config file to build the Dockerfile |  thread=2540
+[INFO] 16:53:31.179960 Setup: Validating requirements.txt file at C:\Users\Alfrick\Desktop\upload-model\new2\requirements.txt using uv pip compile |  thread=2540
+[INFO] 16:53:32.919408 Setup: Requirements.txt file validated successfully |  thread=2540
+[INFO] 16:53:32.932616 Setup: Linting Python files: ['C:\\Users\\Alfrick\\Desktop\\upload-model\\new2\\1\\model.py'] |  thread=2540
+[INFO] 16:53:33.054929 Setup: Python code linted successfully, no errors found. |  thread=2540
+[INFO] 16:53:33.056731 Setup: Using NVIDIA base image to build the Docker image and upload the model |  thread=2540
+[INFO] 16:53:33.343749 New model will be created at https://clarifai.com/alfrick/upload-models-2/models/new2 with it's first version. |  thread=2540
 Press Enter to continue...
-[INFO] 13:21:24.984514 Uploading file... |  thread=10284
-[INFO] 13:21:24.985517 Upload complete! |  thread=10284
-   Status: Upload done, Progress: 0% - Completed upload of files, initiating model version image build..  request_id:
-   Status: Model image is currently being built., Progress: 0% - Model version image is being built.  request_id:
-[INFO] 13:21:25.791835 Created Model Version ID: 959b32947f0f4061b598f56b8ffc152f |  thread=15892
-[INFO] 13:21:25.791835 Full url to that version is: https://clarifai.com/alfrick/docs-demos/models/my-uploaded-model |  thread=15892
-[INFO] 13:21:31.140198 2025-05-07 10:21:26.135234 INFO: Downloading uploaded model from storage... |  thread=15892
-[INFO] 13:21:37.939478 2025-05-07 10:21:31.839495 INFO: Done downloading model
-
-2025-05-07 10:21:31.842088 INFO: Extracting upload...
-
-2025-05-07 10:21:31.846218 INFO: Done extracting upload
-
-2025-05-07 10:21:31.848309 INFO: Parsing requirements file for model version ID ****f56b8ffc152f
-
-2025-05-07 10:21:31.869731 INFO: Dockerfile found at /shared/context/Dockerfile
-
+[INFO] 16:53:36.893686 Uploading file... |  thread=22676
+[INFO] 16:53:36.897061 Upload complete! |  thread=22676
+Status: Upload in progress, Progress: 0% - Starting upload.  request_id: sdk-python-11.5.4-8151d7189a23425da945528977ea9Status: Upload done, Progress: 0% - Completed upload of files, initiating model version image build..  request_id: sdk-pStatus: Model image is currently being built., Progress: 0% - Model version image is being built.  request_id: sdk-pytho[INFO] 16:53:37.541441 Created Model Version ID: cd24a0369c4443e1b494ddddc3b42ef9 |  thread=2540
+[INFO] 16:53:37.541441 Full url to that version is: https://clarifai.com/alfrick/upload-models-2/models/new2 |  thread=2540
+[INFO] 16:53:43.222157 2025-06-27 13:53:36.865379 INFO: Downloading uploaded model from storage... |  thread=2540
+[INFO] 16:53:48.357261 2025-06-27 13:53:42.654003 INFO: Done downloading model
+2025-06-27 13:53:42.657878 INFO: Extracting upload...
+2025-06-27 13:53:42.662686 INFO: Done extracting upload
+2025-06-27 13:53:42.665555 INFO: Parsing requirements file for model version ID ****ddddc3b42ef9
+2025-06-27 13:53:42.691445 INFO: Dockerfile found at /shared/context/Dockerfile
 cat: /shared/context/downloader/hf_token: No such file or directory
-
-2025-05-07 10:21:32.520135 INFO: Setting up credentials
-
+2025-06-27 13:53:43.397865 INFO: Setting up credentials
 amazon-ecr-credential-helper
-
 Version:    0.8.0
-
 Git commit: ********
-
-2025-05-07 10:21:32.523522 INFO: Building image...
-
+2025-06-27 13:53:43.402700 INFO: Building image...
 #1 \[internal] load build definition from Dockerfile
-
+#1 transferring dockerfile: 2.72kB done
 #1 DONE 0.0s
-
-
-
-#1 \[internal] load build definition from Dockerfile
-
-#1 transferring dockerfile: 2.61kB done
-
-#1 WARN: FromAsCasing: 'as' and 'FROM' keywords' casing do not match (line 2)
-
-#1 DONE 0.0s
-
-
 
 #2 resolve image config for docker-image://docker.io/docker/dockerfile:1.13-labs
-
 #2 DONE 0.1s
 
-
-
 #3 docker-image://docker.io/docker/dockerfile:1.13-labs@sha256:************18b8
-
 #3 resolve docker.io/docker/dockerfile:1.13-labs@sha256:************18b8 done
-
 #3 CACHED
 
-
-
 #4 \[internal] load metadata for public.ecr.aws/clarifai-models/python-base:3.11-********
-
 #4 DONE 0.1s
 
-
-
 #5 \[internal] load .dockerignore
-
 #5 transferring context: 2B done
-
 #5 DONE 0.0s
 
-
-
-#6 \[internal] load build context
-
-#6 transferring context: 2.66kB done
-
+#6 \[final 1/8] FROM public.ecr.aws/clarifai-models/python-base:3.11-********@sha256:************0579
+#6 resolve public.ecr.aws/clarifai-models/python-base:3.11-********@sha256:************0579 done
 #6 DONE 0.0s
 
-
-
-#7 \[final 1/8] FROM public.ecr.aws/clarifai-models/python-base:3.11-********@sha256:************6ab0
-
-#7 resolve public.ecr.aws/clarifai-models/python-base:3.11-********@sha256:************6ab0 done
-
+#7 \[internal] load build context
+#7 transferring context: 2.73kB done
 #7 DONE 0.0s
 
-
-
 #8 \[final 5/8] COPY --chown=nonroot:nonroot downloader/unused.yaml /home/nonroot/main/1/checkpoints/.cache/unused.yaml
-
 #8 CACHED
 
-
-
-#9 \[final 4/8] RUN ["pip", "show", "clarifai"]
-
+#9 \[final 4/8] RUN ["uv", "pip", "show", "--no-cache-dir", "clarifai"]
 #9 CACHED
 
-
-
 #10 \[final 2/8] COPY --link requirements.txt /home/nonroot/requirements.txt
-
 #10 CACHED
 
-
-
-#11 \[final 3/8] RUN ["pip", "install", "--no-cache-dir", "-r", "/home/nonroot/requirements.txt"]
-
+#11 \[final 3/8] RUN ["uv", "pip", "install", "--no-cache-dir", "-r", "/home/nonroot/requirements.txt"]
 #11 CACHED
 
-
-
 #12 \[final 6/8] RUN  ["python", "-m", "clarifai.cli", "model", "download-checkpoints", "/home/nonroot/main", "--out_path", "/home/nonroot/main/1/checkpoints", "--stage", "build"]
-
 #12 CACHED
 
-
-
 #13 \[final 7/8] COPY --link=true 1 /home/nonroot/main/1
-
 #13 DONE 0.0s
 
-
-
 #14 \[final 8/8] COPY --link=true requirements.txt config.yaml /home/nonroot/main/
-
 #14 DONE 0.0s
 
+#15 exporting to image
+#15 exporting layers done
+#15 exporting manifest sha256:************2afa done
+#15 exporting config sha256:************79d5 done
+#15 pushing layers
+#15 ...
+
+#16 \[auth] sharing credentials for 891377382885.dkr.ecr.us-east-1.amazonaws.com
+#16 DONE 0.0s
+
+#15 exporting to image
+#15 pushing layers 1.1s done
+#15 pushing manifest for ****/prod/pytorch:****ddddc3b42ef9@sha256:************2afa
+#15 pushing manifest for ****/prod/pytorch:****ddddc3b42ef9@sha256:************2afa 0.4s done
+#15 DONE 1.5s
+2025-06-27 13:53:45.299206 INFO: Done building image!!! |  thread=2540
+[INFO] 16:53:50.090215 Model build complete! |  thread=2540
+[INFO] 16:53:50.096221 Build time elapsed 12.6s) |  thread=2540
+[INFO] 16:53:50.096221 Check out the model at https://clarifai.com/alfrick/upload-models-2/models/new2 version: cd24a0369c4443e1b494ddddc3b42ef9 |  thread=2540
+[INFO] 16:53:50.106292
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+# Here is a code snippet to use this model:
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                 |  thread=2540
+[INFO] 16:53:50.108847
+# Clarifai Model Client Script
+# Set the environment variables `CLARIFAI_DEPLOYMENT_ID` and `CLARIFAI_PAT` to run this script.
+# Example usage:
+import os
+
+from clarifai.client import Model
+from clarifai.runners.utils import data_types
+
+model = Model("https://clarifai.com/alfrick/upload-models-2/models/new2",
+    deployment_id = os.environ['CLARIFAI_DEPLOYMENT_ID'], # Only needed for dedicated deployed models
+ )
 
 
-#15 \[auth] sharing credentials for 891377382885.dkr.ecr.us-east-1.amazonaws.com
+# Example model prediction from different model methods:
 
-#15 DONE 0.0s
+response = model.predict(text1="What is the future of AI?")
+print(response)
 
+response = model.generate(text1="What is the future of AI?")
+for res in response:
+    print(res)
 
+response = model.stream(input_iterator=iter([What is the future of AI?]))
 
-#16 exporting to image
-
-#16 exporting layers done
-
-#16 exporting manifest sha256:************4cc5 done
-
-#16 exporting config sha256:************bd5a done
-
-#16 pushing layers
-
-#16 pushing layers 1.0s done
-
-#16 pushing manifest for ****/prod/python:****f56b8ffc152f@sha256:************4cc5
-
-#16 pushing manifest for ****/prod/python:****f56b8ffc152f@sha256:************4cc5 0.4s done
-
-#16 DONE 1.4s
-
-2025-05-07 10:21:34.241532 INFO: Done building image!!! |  thread=15892
-[INFO] 13:21:39.758911 Model build complete! |  thread=15892
-[INFO] 13:21:39.760236 Build time elapsed 14.0s) |  thread=15892
-[INFO] 13:21:39.760236 Check out the model at https://clarifai.com/alfrick/docs-demos/models/my-uploaded-model version: 959b32947f0f4061b598f56b8ffc152f |  thread=15892
+ |  thread=2540
+Do you want to deploy the model? (y/n): y
+[INFO] 16:53:59.722256 Checking for available compute clusters... |  thread=2540
+[INFO] 16:54:01.175314 Available compute clusters: |  thread=2540
+[INFO] 16:54:01.175314 1. new-cluster () |  thread=2540
+[INFO] 16:54:01.175314 2. local-dev-compute-cluster (Default Local Dev Compute Cluster) |  thread=2540
+Choose a compute cluster (1-2) or 'n' to create a new one: n
+[INFO] 16:54:23.170187 Please create a new compute cluster by visiting: https://clarifai.com/settings/compute/new |  thread=2540
+Do you want to open the compute cluster creation page in your browser? (y/n): y
+After creating the compute cluster, press Enter to continue...
+[INFO] 16:56:17.225197 Re-checking for available compute clusters... |  thread=2540
+[INFO] 16:58:37.998573 Available compute clusters: |  thread=2540
+[INFO] 16:58:38.002603 1. new-cluster2 () |  thread=2540
+[INFO] 16:58:38.002603 2. new-cluster () |  thread=2540
+[INFO] 16:58:38.002603 3. local-dev-compute-cluster (Default Local Dev Compute Cluster) |  thread=2540
+Choose a compute cluster (1-3): 1
+[INFO] 16:58:52.048631 Checking for available nodepools in compute cluster 'new-cluster2'... |  thread=2540
+[INFO] 16:58:53.611561 Available nodepools: |  thread=2540
+[INFO] 16:58:53.613665 1. new-nodepool2 () |  thread=2540
+Choose a nodepool (1-1) or 'n' to create a new one: n
+[INFO] 16:58:59.948120 Please create a new nodepool by visiting: https://clarifai.com/settings/compute/new-cluster2/nodepools/new |  thread=2540
+Do you want to open the nodepool creation page in your browser? (y/n): y
+After creating the nodepool, press Enter to continue...
+[INFO] 17:00:27.299095 Re-checking for available nodepools in compute cluster 'new-cluster2'... |  thread=2540
+[INFO] 17:00:28.105393 Available nodepools: |  thread=2540
+[INFO] 17:00:28.110061 1. new-nodepool3 () |  thread=2540
+[INFO] 17:00:28.112077 2. new-nodepool2 () |  thread=2540
+Choose a nodepool (1-2): 1
+[INFO] 17:00:33.084285 Please create a new deployment by visiting: https://clarifai.com/settings/compute/deployments/new?computeClusterId=new-cluster2&nodePoolId=new-nodepool3 |  thread=2540
+Do you want to open the deployment creation page in your browser? (y/n): y
+[INFO] 17:00:38.341840 After creating the deployment, your model will be ready for inference! |  thread=2540
+[INFO] 17:00:38.343856 You can always return to view your deployments at: https://clarifai.com/settings/compute/deployments/new?computeClusterId=new-cluster2&nodePoolId=new-nodepool3 |  thread=2540

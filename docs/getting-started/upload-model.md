@@ -29,6 +29,7 @@ import ConfigFile from "!!raw-loader!../../code_snippets/python-sdk/model-upload
 import RequirementsFile from "!!raw-loader!../../code_snippets/python-sdk/model-upload/upload-first-model.txt";
 import PythonSDKRequest from "!!raw-loader!../../code_snippets/python-sdk/model-upload/predict-first-model.py";
 import NodeSDKRequest from "!!raw-loader!../../code_snippets/python-sdk/model-upload/predict-first-model.js";
+import BuildLogsExample from "!!raw-loader!../../code_snippets/python-sdk/model-upload/upload-first-build-logs.txt";
 
 ## Step 1: Perform Prerequisites
 
@@ -139,9 +140,24 @@ Once your custom model is ready, upload it to the Clarifai platform by navigatin
 </TabItem>
 </Tabs>
 
-## Step 4: Predict With Model
+## Step 4: Deploy the Model
 
-Once your model is successfully uploaded to Clarifai, you can start making predictions with it.
+After successfully uploading your model to the Clarifai platform, the terminal will prompt you to proceed with deployment and set up your model for inference.
+
+Follow the prompts to:
+
+* **[Set up a cluster](https://docs.clarifai.com/compute/deployments/clusters-nodepools)** – This serves as the foundation of your compute environment.
+* **Create a nodepool** – A nodepool is a group of compute nodes within your cluster that provides the resources needed to run your model.
+* **[Deploy your model](https://docs.clarifai.com/compute/deployments/deploy-model)** – Once the nodepool is ready, deploy your model to make it available for inference.
+
+<details>
+  <summary>Build Logs Example</summary>
+    <CodeBlock className="language-text">{BuildLogsExample}</CodeBlock>
+</details>
+
+## Step 5: Predict With Model
+
+Once your model is successfully deployed, you can start making predictions with it.
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python">
@@ -161,11 +177,4 @@ Once your model is successfully uploaded to Clarifai, you can start making predi
 **Congratulations!**
 
 You've successfully uploaded your first model to the Clarifai platform and run inference with it!
-
-
-:::tip
-
-In this example, we used the default deployment setting (`Clarifai Shared`). To learn how to leverage our Compute Orchestration capabilities for scalable and cost-efficient inference across various use cases, [click here](https://docs.clarifai.com/compute/models/inference/api/).
-
-:::
 

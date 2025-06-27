@@ -10,23 +10,23 @@ sidebar_position: 1
 
 Clarifai’s Compute Orchestration capabilities enable you to make prediction calls efficiently, tailored to a variety of use cases. You can use these features to run inferences seamlessly and get results from your model with ease.
 
-## Optionally Deploy a Model
+## Predict With Compute Orchestration
 
-If you want to make a prediction request using our Compute Orchestration capabilities, you need to [set up a cluster](https://docs.clarifai.com/compute/deployments/clusters-nodepools), create a nodepool, and [deploy your model](https://docs.clarifai.com/compute/deployments/deploy-model) in it. 
+To make a prediction request using our Compute Orchestration capabilities, you'll need to [set up a cluster](https://docs.clarifai.com/compute/deployments/clusters-nodepools), create a nodepool, and [deploy your model](https://docs.clarifai.com/compute/deployments/deploy-model) to it.
 
-Once the model is deployed, you'll specify its `deployment_id` parameter (or `compute_cluster_id` and `nodepool_id`), which is essential for proper routing and execution of your prediction request. 
+Once deployed, you’ll need to reference the model’s `deployment_id` — or alternatively, specify both the `compute_cluster_id` and `nodepool_id`. These parameters ensure that your prediction request is routed correctly to the intended compute resources.
 
-:::warning Default Deployment
-
-If you do not specify the `deployment_id` parameter (or `compute_cluster_id` and `nodepool_id`), the prediction will default to the `Clarifai Shared` deployment type.
-
-:::
-
-The `deployment_id` parameter (or `compute_cluster_id` and `nodepool_id`) is vital in directing prediction requests to the appropriate cluster and nodepool. 
-
-For example, you can route requests to a GCP cluster by selecting a corresponding deployment ID, use a different deployment ID for an AWS cluster, and yet another for an on-premises deployment. 
+For example, you can route requests to a GCP cluster by selecting a corresponding deployment ID, use a different deployment ID for an AWS cluster, and yet another for an on-premises deployment.
 
 This gives you full control over performance, costs, and security, allowing you to focus on building cutting-edge AI solutions while we handle the infrastructure complexity.
+
+Here's how prediction requests are routed:
+
+- **Prioritized Deployment Routing:** If you specify a deployment ID in the prediction request, Clarifai will route it directly to the associated nodepool.
+- **Owner-Defined Default Routing:** If you do not specify a deployment ID, but the model owner has pre-configured a deployment for that model version, the request will be routed to the nodepool specified in that deployment. 
+- **Fallback to Shared Routing:** If neither condition above is met and the model is uploaded and owned by Clarifai, the request defaults to the most cost-effective Clarifai shared compute nodepool.
+
+> **Note:** Shared compute is not available for user-uploaded models — you must set up a deployment when uploading your own models.
 
 
 ## Structure of Prediction Methods

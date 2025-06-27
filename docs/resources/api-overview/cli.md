@@ -153,8 +153,8 @@ Here is an example of creating a context called `my_new_context`. Note that you'
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">
-    C:\#############>clarifai context create my_new_context
-    user id: alfrick
+    clarifai context create my_new_context
+    user id: your_user_id_here
     base url (default: https://api.clarifai.com):
     personal access token value (default: "ENVVAR" to get out of env var rather than config): xxxxxxxxxxxx
 </CodeBlock>
@@ -228,9 +228,9 @@ Here is an example of the standard way to use the command. You'll be prompted to
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">
-    C:#############>clarifai login
+    clarifai login
     context name (default: "default"): my_new_context
-    user id: alfrick
+    user id: your_user_id_here
     personal access token value (default: "ENVVAR" to get out of env var rather than config): XXXXXXXXXXXX
 </CodeBlock>
 </TabItem>
@@ -241,7 +241,7 @@ You can also log in with a user ID:
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">
-    C:#############>clarifai login --user_id alfrick
+    clarifai login --user_id your_user_id_here
     context name (default: "default"): my_new_context
     personal access token value (default: "ENVVAR" to get out of env var rather than config): XXXXXXXXXX
 </CodeBlock>
@@ -253,9 +253,9 @@ You can also log in with a user ID:
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">
-    C:#############>clarifai login https://api-dev.clarifai.com/
+    clarifai login https://api-dev.clarifai.com/
     context name (default: "default"): my_new_context
-    user id: alfrick
+    user id: your_user_id_here
     personal access token value (default: "ENVVAR" to get out of env var rather than config): XXXXXXXXXXXX
 </CodeBlock>
 </TabItem>
@@ -286,7 +286,7 @@ Here is an example:
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">
-    C:#############>clarifai config current-context
+    clarifai config current-context
     my_new_context
 </CodeBlock>
 </TabItem>
@@ -352,7 +352,7 @@ Here is an example:
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">
-    C:#############>clarifai config env --help
+    clarifai config env --help
     Usage: clarifai config env [OPTIONS]
 
         Print env vars. Use: eval "$(clarifai config env)"
@@ -360,10 +360,10 @@ Here is an example:
     Options:
       --help  Show this message and exit.
 
-    C:#############>clarifai config env
+    clarifai config env
     export CLARIFAI_API_BASE="https://api.clarifai.com/"
     export CLARIFAI_PAT="XXXXXXXXXXXX"
-    export CLARIFAI_USER_ID="alfrick"
+    export CLARIFAI_USER_ID="your_user_id_here"
 </CodeBlock>
 </TabItem>
 </Tabs>
@@ -416,7 +416,7 @@ Here is an example:
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">
-    C:#############>clarifai config use-context my_other_project
+    clarifai config use-context my_other_project
     Set my_other_project as the current context
 </CodeBlock>
 </TabItem>
@@ -500,6 +500,6 @@ Here is how to initialize an OpenAI-compatible model in a specific path:
 
 <Tabs>
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash"> clarifai model init C:\Projects\MyOpenAIModel --model-type-id openai </CodeBlock>
+    <CodeBlock className="language-bash"> clarifai model init /home/username/Projects/MyOpenAIModel --model-type-id openai</CodeBlock>
 </TabItem>
 </Tabs>

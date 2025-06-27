@@ -15,6 +15,12 @@ You can configure your compute environment and deploy your models into nodepools
 
 With model deployment, you can quickly take a trained model and set it up for inference.
 
+:::tip 
+
+Learn how deployment works when making a prediction using our Compute Orchestration capabilities [here](https://docs.clarifai.com/compute/models/inference/). 
+
+:::
+
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -114,8 +120,3 @@ After creating it, initialize the `Deployment` class by providing the `user_id` 
 </TabItem>
 </Tabs>
 
-:::tip Model Inferencing
-
-Once your model is deployed, you can use it for [inferencing](https://docs.clarifai.com/compute/models/model-inference) by calling the appropriate prediction methods. Note that you need to specify the `deployment_id` parameter for ensure proper routing and execution of your prediction call. 
-
-:::

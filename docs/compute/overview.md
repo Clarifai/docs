@@ -33,7 +33,7 @@ These are the deployment options we provide:
 
 :::tip Shared SaaS (Serverless)
 
-If you’re not using Compute Orchestration, the Shared SaaS (Serverless) deployment is the default option. It abstracts away infrastructure management and allows users to easily deploy models without worrying about the underlying compute resources. In this option, Clarifai maintains multi-tenant GPU pools users can access on-demand. 
+If you’re not using Compute Orchestration for inference with models uploaded and owned by Clarifai, your requests will default to the Shared SaaS (Serverless) deployment. This serverless environment eliminates the need to manage infrastructure, allowing you to make predictions effortlessly — without configuring or maintaining any compute resources. Learn more [here](https://docs.clarifai.com/compute/models/inference/). 
 
 :::
 

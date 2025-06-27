@@ -173,8 +173,7 @@ You can generate a sample code snippet to better understand how to perform infer
 
 :::warning Set up a deployment
 
-To use Clarifai’s Compute Orchestration capabilities, ensure your model is deployed, [as described previously](README.mdx).
-Then, configure the `deployment_id` parameter — alternatively, you can specify `compute_cluster_id` and `nodepool_id`. If none of these are set, the prediction will default to the `Clarifai Shared` deployment type.
+To use our Compute Orchestration capabilities, ensure your model is [deployed](https://docs.clarifai.com/compute/deployments/deploy-model). Then, specify the `deployment_id` parameter — alternatively, you can specify both `compute_cluster_id` and `nodepool_id`, as explained [here](https://docs.clarifai.com/compute/models/inference/). 
 
 ```text
 model = Model(

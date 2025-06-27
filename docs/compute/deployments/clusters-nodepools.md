@@ -17,18 +17,6 @@ For example, you may create a nodepool for GPU-intensive tasks and another for l
 
 With clusters and nodepools, you can organize and manage (_orchestrate_) the compute resources necessary for running your models and workflows. 
 
-:::tip Shared Compute
-
-By default, Clarifai offers a Shared SaaS (Serverless) compute cluster with a nodepool. This allows you to quickly get started without configuring any underlying compute instances (such as clusters, nodepools, and accelerators) — the pre-configured nodepool dynamically scales resources based on your model's needs.
-
-If you opt for the shared cluster, you do not need to make any setup configurations on the Compute Orchestration pane — your models will automatically be deployed using it.  
-
-Note that the default setup is ideal for general use cases and may not meet more specific or demanding performance scenarios. 
-
-:::
-
-
-
 ## **Via the UI**
 
 ### Create a Cluster
