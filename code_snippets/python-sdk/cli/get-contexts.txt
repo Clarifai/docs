@@ -1,4 +1,4 @@
-C::#############>clarifai config get-contexts
+clarifai config get-contexts
     NAME            USER_ID    API_BASE                   PAT        APP_ID                COMPUTE_CLUSTER_ID         DEPLOYMENT_ID         MODEL_ID         NODEPOOL_ID         RUNNER_ID
     default         alfrick    https://api.clarifai.com   c02f7****  local-dev-runner-app  local-dev-compute-cluster  local-dev-deployment  local-dev-model  local-dev-nodepool  f35b7e4f3c774e48a8e54b74785debca
 *   my_new_context  alfrick    https://api.clarifai.com/  XXXXX****   

@@ -1,5 +1,5 @@
 ---
-description: Build and import models, including from external sources like Hugging Face and OpenAI
+description: Build and import models, including from external sources like Hugging Face
 toc_min_heading_level: 2
 toc_max_heading_level: 5
 ---
@@ -7,7 +7,7 @@ toc_max_heading_level: 5
 
 # Build and Upload Models
 
-**Build and import models, including from sources like Hugging Face and OpenAI**
+**Build and import models, including from sources like Hugging Face**
 
 <hr />
 
@@ -17,7 +17,7 @@ toc_max_heading_level: 5
 
 <br/><br/>
 
-The Clarifai Python SDK allows you to upload custom models easily. Whether you're working with a pre-trained model from an external source like Hugging Face or OpenAI, or one you've built from scratch, Clarifai allows seamless integration of your models, enabling you to take advantage of the platform’s powerful capabilities.
+The Clarifai Python SDK allows you to upload custom models easily. Whether you're working with a pre-trained model from an external source like Hugging Face, or one you've built from scratch, Clarifai allows seamless integration of your models, enabling you to take advantage of the platform’s powerful capabilities.
 
 Once imported to our platform, your model can be utilized alongside Clarifai's vast suite of AI tools. It will be automatically deployed and ready to be evaluated, combined with other models and agent operators in a workflow, or used to serve inference requests as it is.
 
@@ -53,7 +53,7 @@ import PredictOutput1 from "!!raw-loader!../../../../code_snippets/python-sdk/mo
 import PredictOutput2 from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/predict_output_2.txt";
 import PredictOutput3 from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/predict_output_3.txt";
 
-## Prerequisites
+## Step 1: Perform Prerequisites
 
 ### Set up Docker or a Virtual Environment
 
@@ -121,13 +121,13 @@ your_model_directory/
   - **1/** – A subdirectory that holds the model file (_Note that the folder is named as **1**_).
     - **model.py** – Contains the code that defines your model, including loading the model and running inference.
   - **requirements.txt** – Lists the Python dependencies required to run your model.
-  - **config.yaml** – Contains model metadata and configuration details necessary for building the Docker image, defining compute resources, and uploading the model to Clarifai.
+  - **config.yaml** – Contains model metadata and configuration details necessary for building the model, defining compute resources, and more.
 
-## How to Upload a Model
+## Step 2: Build a Model
 
 Let's talk about the general steps you'd follow to upload any type of model to the Clarifai platform. 
 
-### Step 1: Prepare the `model.py` File
+### Prepare `model.py` 
 
 The `model.py` file contains the core logic for your model, including how the model is loaded and how predictions are made. This file must define a custom class that inherits from `ModelClass` and implements the required methods.
 
@@ -182,7 +182,7 @@ Each parameter in the class methods must be annotated with a type, and the retur
 
 :::
 
-### Step 2: Prepare the `config.yaml` File
+### Prepare `config.yaml` 
 
 The `config.yaml` file is essential for specifying the model’s metadata, compute resource requirements, and model checkpoints. 
 
@@ -227,9 +227,11 @@ These are some parameters you can define:
 
 #### Hugging Face Model Checkpoints  
 
-If you're using a model from Hugging Face, you can automatically download its checkpoints by specifying the appropriate configuration in this section. For private or restricted Hugging Face repositories, include an access token.
+If you're using a model from Hugging Face, you can automatically download its checkpoints by specifying the appropriate configuration in this section. 
 
-See the [example below](#llama-32-1b-instruct) for how to define Hugging Face checkpoints.
+For private or restricted Hugging Face repositories, make sure to include an access token. Learn how to generate one [here](https://huggingface.co/docs/hub/en/security-tokens).
+
+See the [additional examples](#additional-examples) below for how to define Hugging Face checkpoints.
 
 <Tabs groupId="code">
 <TabItem value="yaml" label="YAML">
@@ -279,7 +281,7 @@ If you're using a model from Hugging Face and the `checkpoints` section is defin
 
 :::
 
-### Step 3: Define Dependencies in `requirements.txt`
+### Prepare `requirements.txt`
 
 The `requirements.txt` file lists all the Python dependencies your model needs. 
 
@@ -308,13 +310,13 @@ This ensures the correct pre-built image is pulled from Clarifai's container reg
 
 We recommend using either `torch==2.5.1` or `torch==2.4.1`. If your model requires a different Torch version, you can specify it in requirements.txt, but this may slightly increase the model upload time.
 
-### Step 4: Test the Model Locally
+## Step 3: Test the Model Locally
 
 Before uploading your model to the Clarifai platform, it's important to test it locally to catch any typos or misconfigurations in the code. 
 
 Learn how to  run and test your models locally [here](https://docs.clarifai.com/compute/models/upload/run-locally). 
 
-### Step 5: Upload the Model to Clarifai
+## Step 4: Upload the Model to Clarifai
 
 Once your model is ready, you can upload it to the platform using Clarifai CLI.  
 
@@ -345,13 +347,13 @@ The build logs will be displayed in your terminal, which helps you troubleshoot 
 
 > **Note**: If you make any changes to your model and upload it again to the Clarifai platform, a new version of the model will be created automatically.
 
-### Step 6: Predict With Model
+## Step 5: Predict With Model
 
 Once the model is successfully uploaded to Clarifai, you can start making predictions with it. 
 
 > **Note:** If you want to make a prediction request with our Compute Orchestration capabilities, you need to first [deploy](https://docs.clarifai.com/compute/deployments/deploy-model) it into a cluster and nodepool you've created. 
 
-#### Unary-Unary Predict Call
+### Unary-Unary Predict Call
 
 You can make a [unary-unary](https://docs.clarifai.com/compute/models/inference/api/#unary-unary-predict-call) predict call using the uploaded model.
 
@@ -367,7 +369,7 @@ You can make a [unary-unary](https://docs.clarifai.com/compute/models/inference/
     <CodeBlock className="language-text">{PredictOutput1}</CodeBlock>
 </details>
 
-#### Unary-Stream Predict Call
+### Unary-Stream Predict Call
 
 You can make a [unary-stream](https://docs.clarifai.com/compute/models/inference/api/#unary-stream-predict-call) predict call using the uploaded model.
 
@@ -383,7 +385,7 @@ You can make a [unary-stream](https://docs.clarifai.com/compute/models/inference
     <CodeBlock className="language-text">{PredictOutput2}</CodeBlock>
 </details>
 
-#### Stream-Stream Predict Call
+### Stream-Stream Predict Call
 
 You can make a [stream-stream](https://docs.clarifai.com/compute/models/inference/api/#stream-stream-predict-call) predict call using the uploaded model. 
 
@@ -408,6 +410,6 @@ You can find various up-to-date model upload examples [here](https://github.com/
 :::
 
 - [Llama-3.2-1B-Instruct](https://github.com/Clarifai/runners-examples/tree/main/llm/hf-llama-3_2-1b-instruct)
-- [NSFW Image Classifier](https://github.com/Clarifai/runners-examples/tree/main/image-clasifier/nsfw-image-classifier)
+- [NSFW Image Classifier](https://github.com/Clarifai/runners-examples/tree/main/image-classifier/nsfw-image-classifier)
 - [DETR Resnet Image Detector](https://github.com/Clarifai/runners-examples/tree/main/image-detector/detr-resnet-image-detection)
 

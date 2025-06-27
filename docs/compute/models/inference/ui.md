@@ -15,7 +15,8 @@ You can simply upload an input (such as image, text, or video) and view the outp
 
 :::tip Deploy Model
 
-Before making a prediction using our Compute Orchestration capabilities, ensure that your model has been deployed, [as mentioned previously](README.mdx). Otherwise, the prediction will default to the `Clarifai Shared` deployment type. 
+Before making a prediction using our Compute Orchestration capabilities, ensure that your model has been [deployed](https://docs.clarifai.com/compute/deployments/deploy-model), [as explained here](https://docs.clarifai.com/compute/models/inference/). 
+
 
 :::
 
