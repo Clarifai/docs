@@ -339,23 +339,31 @@ Alternatively, navigate to the directory containing your custom model and run th
 This command builds the model’s Docker image using the defined compute resources and uploads it to Clarifai, where it can be served in production. 
 The build logs will be displayed in your terminal, which helps you troubleshoot any upload issues.
 
+> **Note**: If you make any changes to your model and upload it again to the Clarifai platform, a new version of the model will be created automatically.
+
+## Step 5: Deploy the Model
+
+After you've successfully uploaded your model to the Clarifai platform, the terminal will guide you through the deployment process, getting your model ready for inference. 
+
+You can follow the prompts to:
+
+* **[Set up a cluster](https://docs.clarifai.com/compute/deployments/clusters-nodepools)** – This serves as the overarching computational environment.
+* **Create a nodepool** – A nodepool is a group of compute nodes within your cluster that provides the resources needed to run your model.
+* **[Deploy your model](https://docs.clarifai.com/compute/deployments/deploy-model)** – Once your nodepool is set up, you can deploy your model, making it available to process prediction requests.
+
 <details>
   <summary>Build Logs Example</summary>
 
     <CodeBlock className="language-text">{BuildLogs}</CodeBlock>
 </details>
 
-> **Note**: If you make any changes to your model and upload it again to the Clarifai platform, a new version of the model will be created automatically.
+## Step 6: Predict With Model
 
-## Step 5: Predict With Model
-
-Once the model is successfully uploaded to Clarifai, you can start making predictions with it. 
-
-> **Note:** If you want to make a prediction request with our Compute Orchestration capabilities, you need to first [deploy](https://docs.clarifai.com/compute/deployments/deploy-model) it into a cluster and nodepool you've created. 
+Once the model is successfully deployed, you can start making predictions with it. 
 
 ### Unary-Unary Predict Call
 
-You can make a [unary-unary](https://docs.clarifai.com/compute/models/inference/api/#unary-unary-predict-call) predict call using the uploaded model.
+You can make a [unary-unary](https://docs.clarifai.com/compute/models/inference/api/#unary-unary-predict-call) predict call using the model.
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python">
@@ -371,7 +379,7 @@ You can make a [unary-unary](https://docs.clarifai.com/compute/models/inference/
 
 ### Unary-Stream Predict Call
 
-You can make a [unary-stream](https://docs.clarifai.com/compute/models/inference/api/#unary-stream-predict-call) predict call using the uploaded model.
+You can make a [unary-stream](https://docs.clarifai.com/compute/models/inference/api/#unary-stream-predict-call) predict call using the model.
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python">
@@ -387,7 +395,7 @@ You can make a [unary-stream](https://docs.clarifai.com/compute/models/inference
 
 ### Stream-Stream Predict Call
 
-You can make a [stream-stream](https://docs.clarifai.com/compute/models/inference/api/#stream-stream-predict-call) predict call using the uploaded model. 
+You can make a [stream-stream](https://docs.clarifai.com/compute/models/inference/api/#stream-stream-predict-call) predict call using the model. 
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python">

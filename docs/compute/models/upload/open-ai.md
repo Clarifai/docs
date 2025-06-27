@@ -147,9 +147,21 @@ Once your OpenAI-compatible model is ready, you can upload it to the Clarifai pl
 
 This command packages your model files and uploads them to the Clarifai platform under the specified user, app, and model ID defined in your `config.yaml`.
 
-## Step 5: Predict with the Model
+## Step 5: Deploy the Model
 
-Once your model has been successfully uploaded to Clarifai, you can begin making predictions with it.
+After you've successfully uploaded your model to the Clarifai platform, the terminal will guide you through the deployment process, getting your model ready for inference. 
+
+You can follow the prompts to [set up a cluster](https://docs.clarifai.com/compute/deployments/clusters-nodepools), create a nodepool, and [deploy your model](https://docs.clarifai.com/compute/deployments/deploy-model).
+
+<details>
+  <summary>Build Logs Example</summary>
+
+    <CodeBlock className="language-text">{}</CodeBlock>
+</details>
+
+## Step 6: Predict with the Model
+
+Once your model has been successfully deployed, you can begin making predictions with it.
 
 Here’s an example of how to run a prediction.
 
