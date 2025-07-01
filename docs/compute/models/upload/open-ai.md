@@ -166,3 +166,11 @@ Once your model has been successfully deployed, you can begin making predictions
 Here’s an example of how to run a prediction.
 
 That's it!
+
+## Additional Examples
+
+:::tip
+
+You can find various up-to-date model upload examples [here](https://github.com/Clarifai/runners-examples), which demonstrate different use cases and optimizations. 
+
+:::

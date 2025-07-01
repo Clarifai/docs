@@ -171,7 +171,7 @@ You can generate a sample code snippet to better understand how to perform infer
     <CodeBlock className="language-text">{CO4}</CodeBlock>
 </details>
 
-:::warning Set up a deployment
+:::tip Set up a deployment
 
 To use our Compute Orchestration capabilities, ensure your model is [deployed](https://docs.clarifai.com/compute/deployments/deploy-model). Then, specify the `deployment_id` parameter — alternatively, you can specify both `compute_cluster_id` and `nodepool_id`, as explained [here](https://docs.clarifai.com/compute/models/inference/). 
 
@@ -185,6 +185,22 @@ model = Model(
 )
 ```
 :::
+
+:::info Specify a Model Version
+
+By default, the latest version of the model is used for inference. However, you can specify a different version in either of the following two ways:
+
+```python
+model = Model(url="https://clarifai.com/model_user_id/model_app_id/models/model_id/model_version/model_version_id")
+```
+Or:
+
+```python
+model = Model(url="https://clarifai.com/model_user_id/model_app_id/models/model_id", model_version = {"id": "model_version_id"})
+```
+:::
+
+
 
 ## Unary-Unary Predict Call
 
