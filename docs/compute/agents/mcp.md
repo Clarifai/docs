@@ -19,7 +19,7 @@ At its core, MCP follows a [client-server architecture](https://www.clarifai.com
 
 An MCP server can expose several key capabilities — most notably, tools that function as callable actions for LLMs, such as updating records or interacting with external systems.
 
-While MCP provides the specification, implementing clients and servers that adhere to it can involve substantial boilerplate code and intricate protocol handling. This is exactly where [FastMCP](https://github.com/jlowin/fastmcp) excels. FastMCP is a high-level, Pythonic framework that significantly simplifies the development of MCP servers and clients. 
+While MCP provides the specification, implementing clients and servers that adhere to it can involve substantial boilerplate code and intricate protocol handling. This is exactly where [FastMCP](https://github.com/jlowin/fastmcp) excels. FastMCP is a high-level framework that significantly simplifies the development of MCP servers and clients. 
 
 Clarifai allows you to build performant MCP servers with FastMCP by providing the necessary infrastructure needed to define, deploy, and manage custom MCP servers at scale.
 
