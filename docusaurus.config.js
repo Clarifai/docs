@@ -27,12 +27,11 @@ const config = {
       ({
         docs: {
           routeBasePath: '/', // Serve the docs at the site's root
-          sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          //editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',         
-          //this one also works--editUrl: 'https://github.com/Clarifai/docs/blob/main/',
+          sidebarPath: require.resolve('./sidebars.js'),    
+          /* Removed Edit This Page feature    
           editUrl: ({ versionDocsDirPath, docPath }) =>
             `https://github.com/Clarifai/docs/blob/main/${versionDocsDirPath}/${docPath}`,
+          */
           docItemComponent: require.resolve('./src/components/CustomDocItem/index.js'),
           docCategoryGeneratedIndexComponent: require.resolve('./src/components/CustomDocCategory/index.js'),
         },
@@ -55,6 +54,7 @@ const config = {
         },
       }),
     ],
+     
     [
       'redocusaurus',
       {
@@ -74,6 +74,7 @@ const config = {
         config: path.join(__dirname, 'redocly.yaml'),
       },
     ]
+    
   ],
 
   themeConfig:
@@ -241,11 +242,34 @@ const config = {
     }),
   plugins: [  
     [
-      '@docusaurus/plugin-client-redirects',
+      '@docusaurus/plugin-client-redirects', 
       {
         redirects,
       },
     ],
+    /*
+    // If this is activated, then deactivate redocusaurus as configured above
+    // Current issue is that if this is activated, it says that the file is too large to be processed
+    // Check this implementation https://github.com/Unleash/unleash/blob/8ffc92af5ba410431ce3040b7389a5ddc52aab35/website/docusaurus.config.js#L715-L734
+    [
+      "docusaurus-plugin-openapi-docs",
+      {
+        id: "openapi",
+        docsPluginId: "classic",
+        config:{
+          clarifai:{
+            specPath: "https://api.clarifai.com/v2/swagger.json", 
+            outputDir: "/api-reference",
+            sidebarOptions:{
+              groupPathsBy: "tag",
+              categoryLinkSource: "tag"              
+            }
+          }
+        }
+
+      }
+    ],
+    */
   ],
   scripts: [
     {

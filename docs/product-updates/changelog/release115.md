@@ -64,7 +64,7 @@ draft: false
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
-| ![improvement](/img/improvement.jpg)  | Made improvements to [Clarifai Organizations](https://docs.clarifai.com/control/clarifai-organizations/)  | <ul> <li> The create button is no longer visible to users who lack the necessary permissions to create resources within an organization.   </li> <li> Users receiving organization invites will now see a persistent popup upon login until they accept or decline the invitation. This aims to improve the visibility and acceptance rate of organization invites.  </li> </ul>  |
+| ![improvement](/img/improvement.jpg)  | Made improvements to [Clarifai Organizations](https://docs.clarifai.com/control/clarifai-organizations/)  | <ul> <li> The create button is no longer visible to users who lack the necessary permissions to create resources within an organization.   </li>  </ul>  |
 
 ##  Control Center
 
