@@ -22,9 +22,9 @@ This gives you full control over performance, costs, and security, allowing you 
 
 Here's how prediction requests are routed:
 
-- **Prioritized Deployment Routing:** If you specify a deployment ID in the prediction request, Clarifai will route it directly to the associated nodepool.
-- **Owner-Defined Default Routing:** If you do not specify a deployment ID, but the model owner has pre-configured a deployment for that model version, the request will be routed to the nodepool specified in that deployment. 
-- **Fallback to Shared Routing:** If neither condition above is met and the model is uploaded and owned by Clarifai, the request defaults to the most cost-effective Clarifai shared compute nodepool.
+- **Prioritized deployment routing** — If you specify a deployment ID in the prediction request, Clarifai will route it directly to the associated nodepool.
+- **Owner-defined default routing** —  If you do not specify a deployment ID, but the model owner has pre-configured a deployment for that model version, the request will be routed to the nodepool specified in that deployment. 
+- **Fallback to shared routing** — If neither condition above is met and the model is uploaded and owned by Clarifai, the request defaults to the most cost-effective Clarifai shared compute nodepool.
 
 > **Note:** Shared compute is not available for user-uploaded models — you must set up a deployment when uploading your own models.
 

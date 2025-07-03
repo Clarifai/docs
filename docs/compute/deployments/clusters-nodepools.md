@@ -19,79 +19,115 @@ With clusters and nodepools, you can organize and manage (_orchestrate_) the com
 
 ## **Via the UI**
 
-### Create a Cluster
-
 Log in to the Clarifai platform and select the **Compute** option in the top navigation bar.  
 
 ![ ](/img/compute-orchestration/compute-1.png)
 
 <br/>
 
-> _Alternatively, you can click the **Compute settings** button found in the **Deployments** tab on a model's viewer page or anywhere this button appears on the platform._
 
-<br/>
+You’ll be redirected to the Compute Orchestration page, where you can view and create clusters, nodepools, and deployments. 
 
-> ![ ](/img/compute-orchestration/compute-1-1.png)
+### Step 1: Start Creating a Cluster
 
-You’ll be redirected to the Compute Orchestration pane.  Then, click the **Create a new cluster** button. 
+Click the **Create a Cluster** button to begin setting up a new cluster along with its associated nodepool.
 
 ![ ](/img/compute-orchestration/compute-2.png)
 
-You’ll be redirected to a page, where you can specify the configurations for your new cluster. 
+You’ll be redirected to a page, where you can specify the configurations for your new cluster and nodepool. 
 
-![ ](/img/compute-orchestration/compute-3.png)
+### Step 2: Select an Instance
 
-- **Cluster ID** — Provide an ID that helps identify the cluster to use when deploying your models. We recommend an easy-to-remember ID that’s related to the cluster’s use case. 
+Select an instance type that aligns with your specific requirements. The table displays essential details for each instance type, which helps you make an informed decision.
 
-- **Cluster Description** — Optionally, provide a short description that summarizes the details related to the cluster. 
+:::tip
 
-- **Cluster Type** — Choose the type of cluster you want to use:
+See [Supported Cloud Instances](https://docs.clarifai.com/compute/deployments/cloud-instances) to learn more about the instance types we provide.
 
-    - **Dedicated Clarifai-managed cloud compute** — Run workloads in dedicated compute instances in Clarifai's cloud. 
-    - **Dedicated self-managed compute** (*coming soon*) — Bring your own existing dedicated compute resources, either from cloud or on-premise instances. If you're interested in using your own cloud or on-prem compute, let us know by sending feedback or contacting our support department.
-    
-- **Instance Settings** — Select your preferred cloud provider and geographic region for deploying your models (*more options are coming soon*). Note that the choice depends on several factors, including performance needs, costs, and regulatory compliance. For example, selecting an instance type closer to your users reduces network latency, leading to faster response times. 
+:::
 
-- **Personal Access Token (PAT)** — Select a PAT that is used to verify your identity when connecting to the cluster. Note that if the selected PAT is deleted, the associated compute resources will no longer function. You can generate a new PAT by clicking the "Create new Personal Access Token" link at the bottom of the corresponding dropdown list or by going to your Personal Settings page by navigating to the [Security section](https://clarifai.com/settings/security).
+![ ](/img/compute-orchestration/compute-3-1.png)
 
-After configuring the settings, click the **Continue** button in the upper-right corner. You’ll be redirected to a page where you can create a nodepool related to the cluster. 
+You can narrow down the displayed options using the filters and tools provided in the top bar:
 
-### Create a Nodepool
+- **Search bar** — Quickly find instance types by name.
+- **Provider filter** — Choose from available cloud providers to match your preferred infrastructure.
+- **Region filter** — Select the geographic location for the instance. Choosing a region closer to your users can reduce latency and improve performance.
+- **Instance type filter** — Directly filter for a specific instance type if you already know what you're looking for.
+- **Hardware filter** — Filter based on the instance's available hardware, such as CPU or GPU.
+- **Price/hour filter** — Filter instances by their hourly cost, helping you manage your budget.
+- **Sorting controls** — Click the sorting arrows next to each column header to sort values in ascending or descending order, making comparisons easier.
 
-After clicking the **Continue** button upon creating a cluster, you’ll be redirected to a page where you can specify the configurations for your new nodepool. 
+Before making your final choice, here are some key considerations to make:
 
-> _Alternatively, you can create a new nodepool from an existing cluster by clicking the **Create a Nodepool** button in the upper-right corner of the cluster's page._
+- **Workload requirements (CPU and memory)** — For applications demanding significant processing power, opt for instances with a higher number of CPU cores. For example, a `t3a.2xlarge` offers `7.6 cores`, considerably more than a `t3a.medium` with `1.6 cores`. Also, the `Gi` value displayed alongside the core count (such as `2.99Gi`) indicates the amount of RAM in Gigabytes. A higher `Gi` value signifies more available memory.
+- **Cost sensitivity** — The `PRICE/HR` column helps you evaluate cost. Choose an instance that balances price and performance according to your budget.
+- **GPU requirements** — If your workload involves intensive tasks like running models for video processing or other GPU-heavy tasks, you'll need to select instances equipped with GPUs.
+- **Regulatory compliance** – Ensure the chosen region and instance type comply with any relevant data residency or industry-specific regulations.
 
-> ![ ](/img/compute-orchestration/compute-7.png)
-
-These are the configurations options you can set for your new nodepool:
-
-![ ](/img/compute-orchestration/compute-8.png)
+Once you've found the right instance, click the circular radio button to the left of the row to select it.
 
 <a id="node-range"></a>
 
-- **Instance Configuration** — Provide an ID that helps identify the nodepool to use when deploying your models. We recommend an easy-to-remember ID that’s related to the nodepool’s use case. Optionally, provide a short description that summarizes the details related to the nodepool. 
+### Step 3: Set Node Autoscaling Range
 
-- **Node Autoscaling Range** — Specify the minimum and maximum number of nodes that the system can automatically scale within a nodepool, based on the workload demand. This means that the system will spin up more nodes to handle increased traffic or scale down when demand decreases to optimize costs. For instance, you can set your nodepool to scale between 1 and 5 nodes, depending on how many requests your model is processing. A minimum value of 1 (rather than 0) prevents cold start delays after inactivity, which is essential for meeting latency requirements, though it ensures that at least one node will always be running, which incurs compute costs. Alternatively, setting the minimum to 0 eliminates costs during idle periods but may introduce cold start delays when traffic resumes. 
+![ ](/img/compute-orchestration/compute-7.png)
 
-:::tip model replicas
+Define the minimum and maximum number of nodes your nodepool can scale to based on workload demand. This ensures your system automatically adjusts its capacity by adding nodes during high traffic and scaling down during low usage, which balances performance and cost.
+
+For example, setting the autoscaling range to **1–5** nodes allows the nodepool to scale up to handle more requests and scale down when demand drops.
+
+- Setting a minimum of **1** ensures that at least one node is always running. This helps avoid cold start delays after periods of inactivity, which is crucial for maintaining low-latency response times. However, it also means incurring continuous compute costs.
+
+- Setting a minimum of **0** reduces costs during idle periods, as no nodes will be running. Keep in mind this can introduce cold starts when traffic resumes, potentially impacting response times.
+
+Choose your range based on the balance you need between cost-efficiency and responsiveness. 
+
+:::info model replicas
 
 [Click here](deploy-model.md#model-replica) to learn how to configure model replicas to distribute your workload efficiently across multiple instances of a model.
 
 :::
 
-- **Instance Type** — Select the instance type you would like the deployment to run on.  You can find an explanation of the available instance types [here](https://docs.clarifai.com/compute/deployments/cloud-instances). 
+### Step 4: Enable Spot Instances
 
-- **Spot Instances** (_default is off_) — Enable this option if you want to rent spare, unused compute capacity at significantly lower prices compared to regular on-demand instances. If no spot instances are available, Clarifai will automatically fall back to on-demand instances. Note that spot instances can be terminated if capacity is needed elsewhere, making your node temporarily unavailable. For greater reliability, leave this option unchecked to use only on-demand instances.
+You can enable this option  (_default is off_) if you want to rent spare, unused compute capacity at significantly lower prices compared to regular on-demand instances.
 
-After configuring the settings, click the **Create** button in the upper-right corner. You'll then be redirected to your cluster's page, where the newly created nodepool will be listed in a table.
+These spot instances are sourced from the underlying cloud provider (such as AWS or GCP) based on the region and instance type you've selected.
+
+If spot instances are unavailable, Clarifai will automatically fall back to on-demand instances to maintain service continuity.
+
+Keep in mind that spot instances can be terminated at any time if the capacity is reclaimed by the provider, which may cause temporary disruptions. For higher reliability and uninterrupted service, it's recommended to leave this option disabled and use on-demand instances only.
+
+
+### Step 5: Provide Cluster and Nodepool Details
+
+Fill out the form to specify the details for your cluster and nodepool. 
+
+![ ](/img/compute-orchestration/compute-8.png)
+
+
+- **Cluster ID** — Enter a unique identifier for your cluster. This ID is used when deploying models and should reflect the cluster’s purpose or workload. It is auto-filled based on your selected instance type, but you can modify it as needed.
+- **Cluster Description** — Optionally, provide a short description that summarizes the details related to the cluster. 
+- **Nodepool ID** — Enter a unique identifier for your nodepool. This ID is used when deploying models and should reflect the nodepool’s purpose or workload. It is auto-filled based on your selected instance type, but you can modify it as needed.
+- **Nodepool Description** — Optionally, provide a short description that summarizes the details related to the nodepool. 
+- **Personal Access Token (PAT)** — Select a [PAT](https://docs.clarifai.com/control/authentication/pat) to authenticate your identity when connecting to the cluster. The token must have the necessary permissions to manage compute resources. If the selected PAT is deleted, any associated compute functionality will stop working. Click the dropdown to view available PATs, or generate a new one by selecting "Create new Personal Access Token" or by visiting the [Security section](https://clarifai.com/settings/security) of your Personal Settings.
+
+### Step 6: Finalize and Create the Cluster
+
+Before you enter the required details for creating a cluster, the **Create Cluster** button in the upper-right corner will be disabled (greyed out).
+
+After providing the details, the button will become active. Click it to launch your cluster and nodepool.
+
+You'll then be redirected to your newly created cluster's page, where its associated nodepool will be listed in a table.
 
 ![ ](/img/compute-orchestration/compute-9.png)
 
-If you click on a nodepool listed in the table, you'll be taken to its individual page where you can view its detailed information, such as the cluster type, instance type, and any resource deployments associated with it. 
+> **Note:** _Alternatively, you can create a new nodepool from an existing cluster by clicking the **Create Nodepool** button in the upper-right corner of the cluster's page.You’ll be redirected to a page where you can specify the configurations for your new nodepool._ 
+
+If you click on a nodepool listed in the table, you'll be taken to its individual page, where you can view its detailed information, such as the cluster type, instance type, and any resource deployments associated with it. 
 
 ![ ](/img/compute-orchestration/compute-10.png)
-
 
 
 ## **Via the API**

@@ -33,59 +33,77 @@ import CO15 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchest
 
 ## **Via the UI**
 
-### Create a Deployment
-
 :::note
 
 Each model or workflow can only have one deployment per nodepool.
 
 :::
 
-To deploy a model, navigate to your cluster or nodepool and click the **Deploy model** button in the page. 
+### Step 1: Start Creating a Deployment
+
+To create a deployment, navigate to the model’s page and click the **Deploy Model** button.
+
+You can also open the **Deployments** tab to check if the model is already running on any compute environments.
+
+This tab displays the compute requirements needed for successfully deploying the model, allowing you to choose a nodepool that meets those requirements.
+
+![ ](/img/compute-orchestration/compute-12.png)
+
+
+> _Alternatively, to create a deployment, go to the specific cluster or nodepool where you want the deployment to run, then click the **Deploy Model** button on that page._
  
-![ ](/img/compute-orchestration/compute-11.png)
+> _![ ](/img/compute-orchestration/compute-11.png)_
 
-> _Alternatively, navigate to a model's page, go to the **Deployments** tab, and click the **Deploy model** or **Deploy this model** button._
+### Step 2: Select a Model
 
-> ![ ](/img/compute-orchestration/compute-12.png)
-
-You’ll be redirected to a page where you can customize the compute configurations for deploying your model. 
+You’ll be redirected to a page where you can configure the compute settings for your deployment.
 
 ![ ](/img/compute-orchestration/compute-13.png)
 
--  **Deployment details** — Create a deployment ID and description that helps identify your model version and selected compute combination.
+If you haven’t already selected a trained model, you can do so here. By default, the latest version of the model will be used, unless you switch the version toggle off to manually select a different version.
 
-- **Model and version** — Select an already trained model and the version you want to deploy.
+The model’s compute requirements will also be displayed, helping you select a compatible cluster and nodepool that meet those specifications.
 
-- **Cluster** —Select or create a cluster.
+### Step 3: Select Cluster and Nodepool
 
-- **Nodepool** — Select or create a nodepool to deploy your model considering your performance goals. The details of the dedicated cluster and nodepool you’ve selected will be displayed. 
+Choose an existing cluster and nodepool — or create new ones — based on your model’s compute requirements and performance goals. 
 
-<a id="model-replica"></a>
-
-- **Advanced Settings** — Optionally, you can click the collapsible section to configure the following settings:
-
-    - **Model Replicas** — This specifies the minimum and maximum range of model replicas to deploy, adjusting based on your performance needs and anticipated workload. Adding replicas enables horizontal scaling, where the workload is distributed across several instances of the model rather than relying on a single one. However, increasing them consumes more resources and may lead to higher costs. Each node in your nodepool can host multiple replicas, depending on model size and available resources.
-
-   :::tip node autoscaling range
-
-    [Click here](clusters-nodepools.md#node-range) to find out how to set up node autoscaling ranges to automatically adjust your infrastructure based on traffic demand.
-
-    :::
-
-    - **Scale Up Delay** — This sets the waiting period (in seconds) before adding resources in response to rising demand.
-    - **Scale Down Delay** — This sets the waiting period (in seconds) before reducing resources after a demand decrease. Note that your nodepool will only scale down to the minimum number of replica(s) configured.
-    - **Traffic History Timeframe** — This defines the traffic history period (in seconds) that your deployment will review before making scaling decisions.
-    - **Scale To Zero Delay** — This sets the idle time (in seconds) before scaling down to zero replicas after inactivity.
-    - **Disable Nodepool Packing** — Enabling this option restricts deployments to a single model replica per node. While this can be useful for specific performance needs, it may lead to underutilized nodes and increased costs due to reduced resource efficiency.
-   
-After completing the setup, click the **Deploy Model** button at the bottom of the page to create the deployment. 
-
-You’ll then be redirected to the nodepool page, where your deployed model will be listed.
+Once selected, the details of the chosen cluster and nodepool will be displayed for your review.
 
 ![ ](/img/compute-orchestration/compute-14.png)
 
-You can find the deployment listed in the **Deployment** dropdown menu in the model's playground, where you can select it for [inferencing](https://docs.clarifai.com/compute/models/model-inference).
+### Step 4: Provide Deployment ID
+
+Provide a deployment ID to uniquely identify your deployment. 
+
+You can also add an optional description to provide additional context and make it easier to recognize later.
+
+### Step 5: Configure Advanced Settings
+
+You can also configure advanced deployment settings if needed. If you choose not to, the default values will be applied automatically.
+
+<a id="model-replica"></a>
+
+- **Model Replicas** — This specifies the minimum and maximum range of model replicas to deploy, adjusting based on your performance needs and anticipated workload. Adding replicas enables horizontal scaling, where the workload is distributed across several instances of the model rather than relying on a single one. However, increasing them consumes more resources and may lead to higher costs. Each node in your nodepool can host multiple replicas, depending on model size and available resources.
+
+:::tip node autoscaling range
+
+    [Click here](clusters-nodepools.md#node-range) to find out how to set up node autoscaling ranges to automatically adjust your infrastructure based on traffic demand.
+
+:::
+
+- **Scale Up Delay** — This sets the waiting period (in seconds) before adding resources in response to rising demand.
+- **Scale Down Delay** — This sets the waiting period (in seconds) before reducing resources after a demand decrease. Note that your nodepool will only scale down to the minimum number of replica(s) configured.
+- **Scale To Zero Delay** — This sets the idle time (in seconds) before scaling down to zero replicas after inactivity.
+- **Traffic History Timeframe** — This defines the traffic history period (in seconds) that your deployment will review before making scaling decisions.
+- **Disable Nodepool Packing** — Enabling this option restricts deployments to a single model replica per node. While this can be useful for specific performance needs, it may lead to underutilized nodes and increased costs due to reduced resource efficiency.
+   
+
+### Step 6: Finalize and Create the Deployment
+
+After completing the setup, click the **Deploy Model** button to create the deployment. You’ll be redirected to the nodepool page, where your deployed model will be listed.
+
+You can also find the deployment listed in the **Deployments** tab within the model's page. From there, you can select it to run [inferences](https://docs.clarifai.com/compute/models/model-inference).
 
 ![ ](/img/compute-orchestration/compute-14-1.png)
 
