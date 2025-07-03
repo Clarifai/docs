@@ -19,8 +19,8 @@
 
 <script src="/scripts/sidebar.js" async></script>
 <script src="/scripts/intercomConfig.js" async></script><link rel="stylesheet" href="/assets/css/styles.09525a61.css">
-<script src="/assets/js/runtime~main.c10db139.js" defer="defer"></script>
-<script src="/assets/js/main.036637c2.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.7f1f0e74.js" defer="defer"></script>
+<script src="/assets/js/main.6e6d7162.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5W9P7GR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -38,9 +38,9 @@
 <p>This gives you full control over performance, costs, and security, allowing you to focus on building cutting-edge AI solutions while we handle the infrastructure complexity.</p>
 <p>Here&#x27;s how prediction requests are routed:</p>
 <ul>
-<li><strong>Prioritized Deployment Routing:</strong> If you specify a deployment ID in the prediction request, Clarifai will route it directly to the associated nodepool.</li>
-<li><strong>Owner-Defined Default Routing:</strong> If you do not specify a deployment ID, but the model owner has pre-configured a deployment for that model version, the request will be routed to the nodepool specified in that deployment.</li>
-<li><strong>Fallback to Shared Routing:</strong> If neither condition above is met and the model is uploaded and owned by Clarifai, the request defaults to the most cost-effective Clarifai shared compute nodepool.</li>
+<li><strong>Prioritized deployment routing</strong> — If you specify a deployment ID in the prediction request, Clarifai will route it directly to the associated nodepool.</li>
+<li><strong>Owner-defined default routing</strong> —  If you do not specify a deployment ID, but the model owner has pre-configured a deployment for that model version, the request will be routed to the nodepool specified in that deployment.</li>
+<li><strong>Fallback to shared routing</strong> — If neither condition above is met and the model is uploaded and owned by Clarifai, the request defaults to the most cost-effective Clarifai shared compute nodepool.</li>
 </ul>
 <blockquote>
 <p><strong>Note:</strong> Shared compute is not available for user-uploaded models — you must set up a deployment when uploading your own models.</p>
