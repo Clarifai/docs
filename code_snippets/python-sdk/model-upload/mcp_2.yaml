@@ -7,5 +7,5 @@ inference_compute_info:
 model:
   app_id: YOUR_APP_ID_HERE
   id: YOUR_MODEL_ID_HERE
-  model_type_id: text-to-text
+  model_type_id: mcp
   user_id: YOUR_USER_ID_HERE

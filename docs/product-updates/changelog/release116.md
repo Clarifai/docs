@@ -20,11 +20,23 @@ draft: true
 | ![new-feature](/img/new_feature.jpg) |![improvement](/img/improvement.jpg) | ![bug](/img/bug.jpg) | ![enterprise](/img/enterprise.jpg) |
 
 
-##  AMD GPU Support
+##  Local Runners
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
-|![new-feature](/img/new_feature.jpg) |  Added support for AMD GPU [instances](https://docs.clarifai.com/compute/deployments/cloud-instances) | <ul> <li>Set up public containers for AMD-compatible inference.</li>  <li> Launched a new Kubernetes cluster in Chicago with AMD GPU support. </li> <li> Updated the agent and autoscaler to work with AMD-based nodes. </li></ul>  |
+|![new-feature](/img/new_feature.jpg) |  Introduced Local Runners | <ul> <li> Local Runners are a powerful feature of the Clarifai platform that lets you develop, test, and execute models on your local machine. </li><li> Learn more about the feature [here](https://docs.clarifai.com/compute/models/upload/run-locally). </li> </ul>  |
+
+##  AMD and Oracle Support
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+|![new-feature](/img/new_feature.jpg) |  Added support for AMD and Oracle [instances](https://docs.clarifai.com/compute/deployments/cloud-instances) | <ul> <li> You can now deploy models using AMD-based compute and Oracle Cloud infrastructure, giving you more flexibility in performance and cost options.</li> </ul>  |
+
+##  Token-Based Billing
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![new-feature](/img/new_feature.jpg) | Started rolling out token-based [billing](https://www.clarifai.com/pricing) for some models | <ul> <li> We’ve begun applying [token-based](https://docs.clarifai.com/product-updates/changelog/release115#token-based-billing) pricing to certain models on our Community platform as part of a gradual rollout. </li> </ul>  |
 
 ##  Published Models
 
