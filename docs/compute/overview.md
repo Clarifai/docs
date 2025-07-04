@@ -63,7 +63,7 @@ A compute cluster in Clarifai acts as the overarching computational environment 
 
 :::info nodepool
 
-A nodepool refers to a set of dedicated nodes (virtual machine instances) within a cluster that share similar configurations and resources, such as CPU or GPU type, memory size, and other performance parameters.
+A nodepool refers to a set of dedicated nodes (virtual machine instances) within a cluster that share similar configurations and resources, such as CPU or GPU type, memory size, and other performance parameters for running your models.
 
 :::
 
