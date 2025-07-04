@@ -189,7 +189,7 @@ Let’s break down what each part of the file does.
     - `cpu_limit` – '1' : Allocates 1 CPU core for the model's inference tasks.
     - `cpu_memory` – 1Gi : Provides 1 Gigabyte of RAM for the model.
     - `num_accelerators`– 0 : Indicates that no specialized hardware accelerators (like GPUs) are requested for this model. This is typical for basic MCP servers that might not require heavy computational power.
-* `model` – This specifies your Clarifai app ID, model ID, and Clarifai user ID. These will define where your model will be uploaded on the Clarifai platform. The `model_type_id` parameter indicates the type of model being uploaded; note that we use `mcp` in this case.  
+* `model` – This specifies your Clarifai app ID, model ID, and Clarifai user ID. These will define where your model will be uploaded on the Clarifai platform. The `model_type_id` parameter indicates the type of model being uploaded; in this case, we use `mcp`.  
 
 ### Step 4: Define Dependencies in `requirements.txt`
 
