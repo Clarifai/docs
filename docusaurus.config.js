@@ -92,7 +92,7 @@ const config = {
       announcementBar: {
         id: 'support_us_' + Date.now(),
         content:
-          '<span>New!</span> Introducing the AI Playground — Your LLM Battleground to Test Powerful AI Models! <a target="_blank" rel="noopener noreferrer" href="https://clarifai.com/playground?model=Qwen2_5-VL-7B-Instruct">Try Now</a>',
+          '<span>New!</span> Local Runners let you run models locally for development, debugging, or compute tasks.  <a target="_blank" rel="noopener noreferrer" href="https://docs.clarifai.com/compute/models/upload/local-runners/">Learn more.</a>',
         isCloseable: true,
       },
       navbar: {

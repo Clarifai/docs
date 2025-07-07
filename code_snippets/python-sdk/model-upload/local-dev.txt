@@ -1,9 +1,9 @@
-C:\#############>clarifai login
+clarifai login
 context name (default: "default"):
 user id: alfrick
 personal access token value (default: "ENVVAR" to get our of env var rather than config): c02f72c***************
 
-C:\#############>clarifai model local-dev
+clarifai model local-runner 
 [INFO] 14:00:01.177806 Checking setup for local development runner... |  thread=3524
 [INFO] 14:00:01.179203 Current context: default |  thread=3524
 [INFO] 14:00:01.189128 Current user_id: alfrick |  thread=3524

@@ -69,13 +69,13 @@ These are the key CLI flags available for local testing and running your models:
 
 ## Test by Running Locally
 
-The `test-locally` method allows you to test your model with a single CLI command. It runs the model locally and sends a sample request to verify that the model responds successfully. 
+The `local-test` method allows you to test your model with a single CLI command. It runs the model locally and sends a sample request to verify that the model responds successfully. 
 
 The results of the request are displayed directly in the console.
 
 Note that to test your model locally, you need to implement a `test` method in the [`model.py`](https://docs.clarifai.com/compute/models/upload/#step-1-prepare-the-modelpy-file) file. This method should internally call other model methods to perform validation.
 
-When you run the `test-locally` CLI command shown below, it will automatically invoke the `test` method to carry out the testing process.
+When you run the `local-test` CLI command shown below, it will automatically invoke the `test` method to carry out the testing process.
 
 Below is a sample `model.py` file with an example implementation of the `test` method:
 
@@ -90,13 +90,13 @@ Below is a sample `model.py` file with an example implementation of the `test` m
 You can specify the path to the directory containing the custom model you want to test. For example, if your model's files are stored in `./examples/models/clarifai_llama`, use the following command:  
 
 ```sh
-clarifai model test-locally ./examples/models/clarifai_llama --mode container
+clarifai model local-test ./examples/models/clarifai_llama --mode container
 ```
 
 If you don’t specify a path, the current directory is used by default. In that case, simply navigate to the directory and run:  
 
 ```sh
-clarifai model test-locally --mode container
+clarifai model local-test --mode container
 ```
 
 :::
@@ -105,7 +105,7 @@ Here is how to test a model in a Docker Container:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">
-    <CodeBlock className="language-bash"> clarifai model test-locally --mode container </CodeBlock>
+    <CodeBlock className="language-bash"> clarifai model local-test --mode container </CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -113,7 +113,7 @@ Here is how to test a model in a virtual environment:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">
-    <CodeBlock className="language-bash"> clarifai model test-locally --mode env </CodeBlock>
+    <CodeBlock className="language-bash"> clarifai model local-test --mode env </CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -127,13 +127,13 @@ Here is how to test a model in a virtual environment:
 
 ## Test by Starting a gRPC Server
 
-The  `run-locally` method starts a local gRPC server at `https://localhost:{port}/` for running the model. Once the server is running, you can perform inference on the model via the Clarifai Python SDK.
+The  `local-grpc` method starts a local gRPC server at `https://localhost:{port}/` for running the model. Once the server is running, you can perform inference on the model via the Clarifai Python SDK.
 
 Here is how to test a model in a Docker Container:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">
-    <CodeBlock className="language-bash"> clarifai model run-locally --mode container --port 8000 </CodeBlock>
+    <CodeBlock className="language-bash"> clarifai model local-grpc --mode container --port 8000 </CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -141,7 +141,7 @@ Here is how to test a model in a virtual environment:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">
-    <CodeBlock className="language-bash"> clarifai model run-locally --mode env --port 8000  </CodeBlock>
+    <CodeBlock className="language-bash"> clarifai model local-grpc --mode env --port 8000  </CodeBlock>
 </TabItem>
 </Tabs>
 
