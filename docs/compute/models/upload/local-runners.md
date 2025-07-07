@@ -27,7 +27,7 @@ Here is how to run a model as a local runner:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash"> clarifai model local-dev [OPTIONS] [MODEL_PATH] </CodeBlock>
+    <CodeBlock className="language-bash"> clarifai model local-runner [OPTIONS] [MODEL_PATH] </CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -81,7 +81,7 @@ To authenticate your connection with the Clarifai platform, you'll need a Person
 
 Running the local development runner relies on certain environment variables defined in your current context. The _context_ refers to the active environment settings that determine how your commands interact with the Clarifai platform.
 
-You can create this context using the provided default values when you run the `local-dev` command. 
+You can create this context using the provided default values when you run the `local-runner` command. 
 
 Any configurations you create locally — such as the computer cluster and app — will also be created on the Clarifai platform, making them reusable whenever you test your model with the local development runner.
 
@@ -150,7 +150,7 @@ Next, start a local development runner.
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash"> clarifai model local-dev </CodeBlock>
+    <CodeBlock className="language-bash"> clarifai model local-runner </CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -175,7 +175,7 @@ This ensures that all essential components required for Local Runners are proper
 
 :::tip
 
-You can view all runners associated with your models in the Runners section of the Clarifai platform. This dashboard provides a centralized view to monitor and manage your runners, including their current status — such as `active`, `idle`, or `deploying`.
+You can view the active runners linked to your model on its individual page in the Clarifai platform. The dashboard offers a centralized view of real-time status and metrics for each active runner.
 
 :::
 
@@ -192,3 +192,7 @@ If you run the generated snippet in a separate terminal, but within the same dir
 
 After you're done testing, simply close the terminal running the local development runner to shut it down.
 
+
+## Examples
+
+- [Examples for running models locally with Clarifai’s Local Runners](https://github.com/Clarifai/runners-examples/tree/main/local%20runners)

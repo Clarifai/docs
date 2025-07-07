@@ -48,11 +48,13 @@ const sidebars = {
       href: 'https://help.clarifai.com/',
   },
   */
+ /*
   {
     type: 'link',
     label: 'Security Trust Center',
     href: 'https://trust.clarifai.com/',
-  },    
+  },
+  */    
   ],},]
 
 
