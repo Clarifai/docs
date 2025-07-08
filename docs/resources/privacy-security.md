@@ -28,9 +28,11 @@ Here’s how we handle your data:
 
 - **Your Data is Not Used for Training:** We do not use your private data to train our models or any other models on the platform unless you explicitly choose to share your inputs and annotations with the "Community."
 
+<!--
 - **Full Control Over Retention:** You can configure data retention policies to meet your specific security and privacy needs. This can be done via the API, allowing you to set a specific retention period (e.g., 30 days) after which your data will be automatically purged.
+-->
 
-
+<!--
 ## How to Opt-Out of Data Storage
 
 For use cases where storing inputs is not desired, you have the option to prevent data from being written to persistent storage.
@@ -38,6 +40,7 @@ For use cases where storing inputs is not desired, you have the option to preven
 Here’s how you can control that behavior:
 
 - **API Control:** When making an API call, you can specify that the input data should not be stored. In this case, the data is used only to generate a prediction and is not retained.
+-->
 
 ## Metadata Usage and Analytics Practices
 
