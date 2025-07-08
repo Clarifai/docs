@@ -247,6 +247,25 @@ const config = {
         redirects,
       },
     ],
+    [
+      'plugin-image-zoom',
+      {
+        themeConfig:{
+          imageZoom:{
+            selector: '.markdown img',
+            options:{
+                margin: 24,
+                background: '#BADA55',
+                scrollOffset: 0,
+                container: '#zoom-container',
+                template: '#zoom-template',
+            }
+          }
+        }
+
+      }
+    ],
+ 
     /*
     // If this is activated, then deactivate redocusaurus as configured above
     // Current issue is that if this is activated, it says that the file is too large to be processed
