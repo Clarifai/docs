@@ -88,7 +88,7 @@ You can easily find a model to use by heading to the Community homepage and expl
 
 ## Step 5: Send an API Request
 
-For this example, let's use the [Qwen3](https://clarifai.com/qwen/qwenLM/models/Qwen3-30B-A3B-GGUF) model to generate text based on a given prompt.
+For this example, let's use the [GPT-4.1](https://clarifai.com/openai/chat-completion/models/gpt-4_1) model to generate text based on a given prompt.
 
 
 <Tabs groupId="code">

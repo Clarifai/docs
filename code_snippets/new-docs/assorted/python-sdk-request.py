@@ -5,7 +5,7 @@ from clarifai.client import Model
 os.environ["CLARIFAI_PAT"] = "YOUR_PAT_HERE"
 
 # Initialize with model URL
-model = Model(url="https://clarifai.com/qwen/qwenLM/models/Qwen3-30B-A3B-GGUF")
+model = Model(url="https://clarifai.com/openai/chat-completion/models/gpt-4_1")
 
 response = model.predict(prompt="What is the future of AI?")
 

@@ -1,7 +1,7 @@
 import { Model } from "clarifai-nodejs";
 
 const model = new Model({
-  url: "https://clarifai.com/qwen/qwenLM/models/Qwen3-30B-A3B-GGUF",
+  url: "https://clarifai.com/openai/chat-completion/models/gpt-4_1",
   authConfig: {
     pat: process.env.CLARIFAI_PAT,
   },
