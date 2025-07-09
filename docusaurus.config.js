@@ -255,7 +255,7 @@ const config = {
             selector: '.markdown img',
             options:{
                 margin: 24,
-                background: '#BADA55',
+                background: '#000000',
                 scrollOffset: 0,
                 container: '#zoom-container',
                 template: '#zoom-template',

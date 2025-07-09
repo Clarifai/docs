@@ -9,7 +9,7 @@ sidebar_position: 2
 **Run models locally for development, debugging, or compute tasks**
 <hr />
 
-Local Runners are a powerful feature of the Clarifai platform that lets you develop, test, and execute models on your local machine. 
+[Local Runners](https://www.clarifai.com/products/local-runners) are a powerful feature of the Clarifai platform that lets you develop, test, and execute models on your local machine. 
 
 Instead of running solely in the cloud, you can run your models anywhere that supports Python and has an internet connection — whether it's your workstation or on-premise server.
 
@@ -23,7 +23,7 @@ A runner is the actual running instance of your model. It is a unique process th
 
 :::
 
-Here is how to run a model as a local runner:
+Here is how to run a model as a local runner instance:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
@@ -39,6 +39,8 @@ import CodeBlock from "@theme/CodeBlock";
 
 import LocalDev from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/local-dev.txt";
 import LocalDevExampleCode from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/local-dev-example-code.py";
+
+![ ](/img/others-2/local-runners.png)
 
 ## Use Cases for Local Runners
 
@@ -175,7 +177,7 @@ This ensures that all essential components required for Local Runners are proper
 
 :::tip
 
-You can view the active runners linked to your model on its individual page in the Clarifai platform. The dashboard offers a centralized view of real-time status and metrics for each active runner.
+You can view the active runners associated with your model on its individual page in the Clarifai platform. For a centralized view and easier management of all active runners, use the [Runners dashboard](https://clarifai.com/compute/runners).
 
 :::
 
@@ -197,3 +199,4 @@ After you're done testing, simply close the terminal running the local developme
 
 - [Simple example for running Hello World model locally with Clarifai’s Local Runners](https://github.com/Clarifai/runners-examples/tree/main/hello-world)
 - [Example for running Ollama models locally with Clarifai’s Local Runners](https://github.com/Clarifai/runners-examples/tree/main/local%20runners)
+- [YouTube video on how to build your own local AI agent using Clarifai’s Local Runners](https://www.youtube.com/watch?v=JOdtZDmCFfk)

@@ -74,12 +74,6 @@ Here's how to install your preferred package:
 
 </Tabs>
 
-:::note tip
-
-On Windows, the Clarifai Python SDK expects a `HOME` environment variable, which isn’t set by default. To ensure compatibility with file paths used by the SDK, set `HOME` to the value of your `USERPROFILE`. You can set it in your Command Prompt this way: `set HOME=%USERPROFILE%`.
-
-:::
-
 ## Step 4: Get a Model
 
 Clarifai’s [Community platform](https://clarifai.com/explore) offers a wide range of latest models to help you make your first API call.
