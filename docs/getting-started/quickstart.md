@@ -86,6 +86,8 @@ Clarifai’s [Community platform](https://clarifai.com/explore) offers a wide ra
 
 You can easily find a model to use by heading to the Community homepage and exploring the **Trending Models** section, which showcases popular and ready-to-use options.
 
+> **Note:** Once you’ve found a model you'd like to use, copy its full model URL — you’ll need this when making prediction requests via the API.
+
 ## Step 5: Send an API Request
 
 For this example, let's use the [GPT-4.1](https://clarifai.com/openai/chat-completion/models/gpt-4_1) model to generate text based on a given prompt.
