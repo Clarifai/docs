@@ -195,4 +195,5 @@ After you're done testing, simply close the terminal running the local developme
 
 ## Examples
 
-- [Examples for running models locally with Clarifai’s Local Runners](https://github.com/Clarifai/runners-examples/tree/main/local%20runners)
+- [Simple example for running Hello World model locally with Clarifai’s Local Runners](https://github.com/Clarifai/runners-examples/tree/main/hello-world)
+- [Example for running Ollama models locally with Clarifai’s Local Runners](https://github.com/Clarifai/runners-examples/tree/main/local%20runners)
