@@ -1,16 +1,16 @@
 ---
-description: Upload a custom model to the Clarifai platform
+description: Build and upload your first custom model to the Clarifai platform
 sidebar_position: 3
 ---
 
-# Upload Your First Model
+# Build and Upload a Model
 
-**Upload a custom model to the Clarifai platform**
+**Build and upload your first custom model to the Clarifai platform**
 <hr />
 
 The Clarifai platform allows you to upload custom models for a wide range of use cases. With just a few simple steps, you can get your models up and running and leverage the platform’s powerful capabilities.
 
-Let’s walk through how to upload a simple custom model that appends the phrase `Hello World` to any input text.
+Let’s walk through how to build and upload a simple custom model that appends the phrase `Hello World` to any input text.
 
 <!--You can test the already uploaded model [here](https://clarifai.com/alfrick/docs-demos/models/my-first-model).-->
 
@@ -57,12 +57,6 @@ This token is essential for authenticating your connection to the Clarifai platf
     <CodeBlock className="language-bash"> set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
 </TabItem>
 </Tabs>
-
-:::note tip
-
-On Windows, the Clarifai Python SDK expects a `HOME` environment variable, which isn’t set by default. To ensure compatibility with file paths used by the SDK, set `HOME` to the value of your `USERPROFILE`. You can set it in your Command Prompt this way: `set HOME=%USERPROFILE%`.
-
-:::
 
 <!--
 ### Get a Hugging Face Access Token

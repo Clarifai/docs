@@ -93,12 +93,6 @@ You can then set the PAT as an environment variable using `CLARIFAI_PAT`, in whi
 </TabItem>
 </Tabs>
 
-:::note tip
-
-On Windows, the Clarifai Python SDK expects a `HOME` environment variable, which isn’t set by default. To ensure compatibility with file paths used by the SDK, set `HOME` to the value of your `USERPROFILE`. You can set it in your Command Prompt this way: `set HOME=%USERPROFILE%`.
-
-:::
-
 ## Structure of Prediction Methods
 
 Before making a prediction with a model, it’s important to understand how its prediction methods are structured.
