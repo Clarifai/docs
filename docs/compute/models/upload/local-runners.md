@@ -9,7 +9,7 @@ sidebar_position: 2
 **Run models locally for development, debugging, or compute tasks**
 <hr />
 
-[Local Runners](https://www.clarifai.com/products/local-runners) are a powerful feature that let you securely expose your locally running models or servers via a public URL, allow you to quickly develop, test, and share any models running on your own hardware.
+[Local Runners](https://www.clarifai.com/products/local-runners) are a powerful feature that let you securely expose your locally running models or servers via a public URL, allowing you to quickly develop, test, and share any models running on your own hardware.
 
 Instead of running solely in the cloud, you can run your models anywhere that supports Python and has an internet connection — whether it's your workstation or on-premise server.
 
