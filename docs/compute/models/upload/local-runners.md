@@ -9,26 +9,15 @@ sidebar_position: 2
 **Run models locally for development, debugging, or compute tasks**
 <hr />
 
-[Local Runners](https://www.clarifai.com/products/local-runners) are a powerful feature of the Clarifai platform that lets you develop, test, and execute models on your local machine. 
+[Local Runners](https://www.clarifai.com/products/local-runners) are a powerful feature that let you securely expose your locally running models or servers via a public URL, allow you to quickly develop, test, and share any models running on your own hardware.
 
 Instead of running solely in the cloud, you can run your models anywhere that supports Python and has an internet connection — whether it's your workstation or on-premise server.
 
 With Local Runners, you can connect your own models to Clarifai's compute plane. This seamless integration enables you to leverage the Clarifai cloud API, workflows, and other platform capabilities with your custom models.
 
-Your model can securely receive and process requests, just as it would in a production cloud deployment.
+Your model can securely receive and process requests from anywhere, just as it would in a production cloud deployment.
 
 > **Note:** A runner is the actual running instance of your model. It is a unique process that pulls tasks (such as prediction requests) from a queue and executes them using the model’s logic. 
-
-:::info **Quick Start**
-
-To quickly get started with Local Runners, install the Clarifai CLI and get a PAT key, as [outlined below](#prerequisites). Then, run the following commands and follow the terminal prompts:
-
-1. `clarifai model init` – Generates a default model with the necessary files.
-2. `clarifai login` – Connects your environment to the Clarifai platform.
-3. `clarifai model local-runner` – Starts a local development runner for your model.
-
-:::
-
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -38,6 +27,65 @@ import LocalDev from "!!raw-loader!../../../../code_snippets/python-sdk/model-up
 import LocalDevExampleCode from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/local-dev-example-code.py";
 
 ![ ](/img/others-2/local-runners.png)
+
+## Quick Start
+
+The below will show you how to install the `clarifai` SDK, find your authentication credentials, initialize and create a sample model, then connect it to an externally available URL using our API.
+
+#### Install the latest version of the Clarifai Python SDK
+
+:::tip
+Make sure you have version `11.6.3` or above to use Local Runners.
+:::
+
+<Tabs groupId="code">
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash"> pip install --upgrade clarifai </CodeBlock>
+</TabItem>
+</Tabs>
+
+
+#### Log in to Clarifai
+
+If you haven't already, please sign up and log into Clarifai via the UI first. Once logged in through our UI, go to the [Account Settings](https://clarifai.com/me/settings) page to find your `user_id` and to create a Personal Access Token (PAT) in the Security tab.
+
+Run the following command to set up the CLI and create a context profile.  
+**^ @alfrick, can we link the word "context" above to the "Create a Context" section below?**
+
+<Tabs groupId="code">
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash"> clarifai login </CodeBlock>
+</TabItem>
+</Tabs>
+
+#### Set up the model codebase
+
+This will generate a sample toy model with the necessary files. Learn more in Build a Model.  
+**^ same here. link "Build a Model" text to the "Build a Model" section below.**
+
+<Tabs groupId="code">
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash"> clarifai model init </CodeBlock>
+</TabItem>
+</Tabs>
+
+#### Start your Local Runner
+
+Next, we'll connect the above model to a public URL using Local Runners.  
+
+If this is your first time, the CLI was ask for confirmation about a series of items, such as compute clusters, nodepools, applications, models, and deployments.
+
+These are objects used within our platform. and are more important once you're ready to start scaling up to dedicated compute, learn more at [Compute Orchestration](https://docs.clarifai.com/compute/overview), but for now feel free to confirm and proceed. These can be easily managed and modified from within our UI.
+
+<Tabs groupId="code">
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash"> clarifai model local runner </CodeBlock>
+</TabItem>
+</Tabs>
+
+You should now have the example model running and accessible via a public URL. Open a new terminal, copy the sample code that was outputted, and give it a test!
+
+Keep on reading below to learn more details about Local Runners.
 
 ## Use Cases for Local Runners
 
