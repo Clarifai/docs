@@ -40,7 +40,7 @@ Make sure you have version `11.6.3` or above to use Local Runners.
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">
-    <CodeBlock className="language-bash"> pip install --upgrade clarifai </CodeBlock>
+    <CodeBlock className="language-bash">pip install --upgrade clarifai</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -54,7 +54,7 @@ Run the following command to set up the CLI and create a context profile.
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">
-    <CodeBlock className="language-bash"> clarifai login </CodeBlock>
+    <CodeBlock className="language-bash">clarifai login</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -65,7 +65,7 @@ This will generate a sample toy model with the necessary files. Learn more in Bu
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">
-    <CodeBlock className="language-bash"> clarifai model init </CodeBlock>
+    <CodeBlock className="language-bash">clarifai model init</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -79,7 +79,7 @@ These are objects used within our platform. and are more important once you're r
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">
-    <CodeBlock className="language-bash"> clarifai model local runner </CodeBlock>
+    <CodeBlock className="language-bash">clarifai model local runner</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -121,7 +121,7 @@ Install the latest version of the [Clarifai CLI](https://docs.clarifai.com/sdk/c
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">
-    <CodeBlock className="language-bash"> pip install --upgrade clarifai </CodeBlock>
+    <CodeBlock className="language-bash">pip install --upgrade clarifai</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -176,7 +176,7 @@ Run the following command to log in to the Clarifai platform and establish a con
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash"> clarifai login </CodeBlock>
+    <CodeBlock className="language-bash">clarifai login</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -203,7 +203,7 @@ Next, start a local development runner.
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash"> clarifai model local-runner [OPTIONS] [MODEL_PATH] </CodeBlock>
+    <CodeBlock className="language-bash">clarifai model local-runner [OPTIONS] [MODEL_PATH]</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -213,7 +213,7 @@ Or:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash"> clarifai model local-runner </CodeBlock>
+    <CodeBlock className="language-bash">clarifai model local-runner</CodeBlock>
 </TabItem>
 </Tabs>
 
