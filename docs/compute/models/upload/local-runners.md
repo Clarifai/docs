@@ -17,21 +17,18 @@ With Local Runners, you can connect your own models to Clarifai's compute plane.
 
 Your model can securely receive and process requests, just as it would in a production cloud deployment.
 
-:::note What is a runner?
+> **Note:** A runner is the actual running instance of your model. It is a unique process that pulls tasks (such as prediction requests) from a queue and executes them using the model’s logic. 
 
-A runner is the actual running instance of your model. It is a unique process that pulls tasks (such as prediction requests) from a queue and executes them using the model’s logic. 
+:::info **Quick Start**
+
+To quickly get started with Local Runners, install the Clarifai CLI and get a PAT key, as [outlined below](#prerequisites). Then, run the following commands and follow the terminal prompts:
+
+1. `clarifai model init` – Generates a default model with the necessary files.
+2. `clarifai login` – Connects your environment to the Clarifai platform.
+3. `clarifai model local-runner` – Starts a local development runner for your model.
 
 :::
 
-Here is how to run a model as a local runner instance:
-
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash"> clarifai model local-runner [OPTIONS] [MODEL_PATH] </CodeBlock>
-</TabItem>
-</Tabs>
-
-> `MODEL_PATH` is an optional path to the model directory. If omitted, the current directory is used by default.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -63,6 +60,12 @@ You can either create a custom model from scratch or leverage pre-trained models
 If you're building your own model, follow our comprehensive [step-by-step](https://docs.clarifai.com/compute/models/model-upload/) guide to get started.
 
 You can also explore our [examples repository](https://github.com/Clarifai/runners-examples) to see models built for compatibility with the Clarifai platform.
+
+:::note tip
+
+You can automatically generate a default model by running the [`clarifai model init`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init) command in the terminal from your current directory. After the model's files are created, you can modify them as needed or go with the default options.
+
+:::
 
 ### Install Clarifai CLI
 
@@ -152,6 +155,16 @@ Next, start a local development runner.
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash"> clarifai model local-runner [OPTIONS] [MODEL_PATH] </CodeBlock>
+</TabItem>
+</Tabs>
+
+> `MODEL_PATH` is an optional path to the model directory. If omitted, the current directory is used by default.
+
+Or:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash"> clarifai model local-runner </CodeBlock>
 </TabItem>
 </Tabs>
@@ -198,5 +211,5 @@ After you're done testing, simply close the terminal running the local developme
 ## Examples
 
 - [Simple example for running Hello World model locally with Clarifai’s Local Runners](https://github.com/Clarifai/runners-examples/tree/main/hello-world)
-- [Example for running Ollama models locally with Clarifai’s Local Runners](https://github.com/Clarifai/runners-examples/tree/main/local%20runners)
+- [Example for running Ollama models locally with Clarifai’s Local Runners](https://github.com/Clarifai/runners-examples/tree/main/local-runners/ollama-model-upload)
 - [YouTube video on how to build your own local AI agent using Clarifai’s Local Runners](https://www.youtube.com/watch?v=JOdtZDmCFfk)
