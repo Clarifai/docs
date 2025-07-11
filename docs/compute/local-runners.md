@@ -1,6 +1,6 @@
 ---
 description: Run models locally for development, debugging, or compute tasks
-sidebar_position: 2
+sidebar_position: 5
 ---
 
 
@@ -9,35 +9,91 @@ sidebar_position: 2
 **Run models locally for development, debugging, or compute tasks**
 <hr />
 
-[Local Runners](https://www.clarifai.com/products/local-runners) are a powerful feature of the Clarifai platform that lets you develop, test, and execute models on your local machine. 
+[Local Runners](https://www.clarifai.com/products/local-runners) are a powerful feature that let you securely expose your locally running models or servers via a public URL, allowing you to quickly develop, test, and share any models running on your own hardware.
 
 Instead of running solely in the cloud, you can run your models anywhere that supports Python and has an internet connection — whether it's your workstation or on-premise server.
 
 With Local Runners, you can connect your own models to Clarifai's compute plane. This seamless integration enables you to leverage the Clarifai cloud API, workflows, and other platform capabilities with your custom models.
 
-Your model can securely receive and process requests, just as it would in a production cloud deployment.
+Your model can securely receive and process requests from anywhere, just as it would in a production cloud deployment.
 
 > **Note:** A runner is the actual running instance of your model. It is a unique process that pulls tasks (such as prediction requests) from a queue and executes them using the model’s logic. 
-
-:::info **Quick Start**
-
-To quickly get started with Local Runners, install the Clarifai CLI and get a PAT key, as [outlined below](#prerequisites). Then, run the following commands and follow the terminal prompts:
-
-1. `clarifai model init` – Generates a default model with the necessary files.
-2. `clarifai login` – Connects your environment to the Clarifai platform.
-3. `clarifai model local-runner` – Starts a local development runner for your model.
-
-:::
-
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
-import LocalDev from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/local-dev.txt";
-import LocalDevExampleCode from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/local-dev-example-code.py";
+import LocalDev from "!!raw-loader!../../code_snippets/python-sdk/model-upload/local-dev.txt";
+import LocalDevExampleCode from "!!raw-loader!../../code_snippets/python-sdk/model-upload/local-dev-example-code.py";
 
 ![ ](/img/others-2/local-runners.png)
+
+
+
+## Prerequisites
+
+Before you can start developing and testing your models locally with Local Runners, there are a couple of things you'll need.
+
+### Install Clarifai CLI
+
+Install the latest version of the [Clarifai CLI](https://docs.clarifai.com/sdk/cli) (version `11.6.3` or higher) tool. It includes built-in support for Local Runners. 
+
+<Tabs groupId="code">
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash">pip install --upgrade clarifai</CodeBlock>
+</TabItem>
+</Tabs>
+
+> **Note:** You'll need **Python 3.10 or higher** installed to successfully run the Local Runners.
+
+### Get a PAT Key and User ID
+
+To authenticate your connection with the Clarifai platform, you'll need a [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat) key. You can generate the PAT key in your personal settings page by navigating to the **Security** section.
+
+Additionally, visit the **Account** section to find your User ID, which is also required for setup.
+
+---
+
+## Quick Start
+
+Once you've completed the prerequisites above, run the following commands and follow the prompts in your terminal to quickly get started with Local Runners.
+
+### Log in to Clarifai
+
+Connect your environment to the Clarifai platform and [create a context](#step-2-create-a-context-optional) profile.  
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai login</CodeBlock>
+</TabItem>
+</Tabs>
+
+### Set up a Model 
+
+Generate a sample toy [model](#step-1-build-a-model) with the necessary files.
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai model init</CodeBlock>
+</TabItem>
+</Tabs>
+
+### Start Your Local Runner
+
+Next, you'll connect your model to a public URL using Local Runners. The CLI will guide you through a series of confirmations for key objects on the Clarifai platform, such as compute clusters, nodepools, and deployments — which are described [below](#table). 
+
+Just review each prompt and confirm to proceed.
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai model local runner</CodeBlock>
+</TabItem>
+</Tabs>
+
+Once your runner launches successfully, your model will be running and accessible via a public URL. You can then open a new terminal, copy the sample code provided in the output, and [test your model](#step-4-test-with-snippet)!
+
+---
+
 
 ## Use Cases for Local Runners
 
@@ -49,11 +105,9 @@ import LocalDevExampleCode from "!!raw-loader!../../../../code_snippets/python-s
 
 - **Run models anywhere** — Whether on a local development machine, an on-premises server, or a private cloud cluster, Local Runners seamlessly connect your models to our platform. This enables you to keep sensitive data and custom-built models securely within your own environment.
 
-## Prerequisites
+## Step 1: Build a Model
 
-Before you can start developing and testing your models locally with Local Runners, there are a couple of things you'll need.
-
-### Build a Model
+Start by building the model you want to run using Local Runners. 
 
 You can either create a custom model from scratch or leverage pre-trained models from external sources like Hugging Face.
 
@@ -67,26 +121,11 @@ You can automatically generate a default model by running the [`clarifai model i
 
 :::
 
-### Install Clarifai CLI
-
-Install the latest version of the [Clarifai CLI](https://docs.clarifai.com/sdk/cli) (Command Line Interface) tool. It includes built-in support for Local Runners. 
-
-<Tabs groupId="code">
-<TabItem value="bash" label="Bash">
-    <CodeBlock className="language-bash"> pip install --upgrade clarifai </CodeBlock>
-</TabItem>
-</Tabs>
-
-### Get a PAT Key
-
-To authenticate your connection with the Clarifai platform, you'll need a Personal Access Token (PAT) key. You can generate the PAT key in your personal settings page by navigating to the [Security](https://clarifai.com/settings/security) section.
-
-
-### Create a Context
+## Step 2: Create a Context (Optional)
 
 Running the local development runner relies on certain environment variables defined in your current context. The _context_ refers to the active environment settings that determine how your commands interact with the Clarifai platform.
 
-You can create this context using the provided default values when you run the `local-runner` command. 
+> **Note:** You can create this context using the provided default values when you run `clarifai login` and `local-runner` commands. 
 
 Any configurations you create locally — such as the computer cluster and app — will also be created on the Clarifai platform, making them reusable whenever you test your model with the local development runner.
 
@@ -96,11 +135,13 @@ Any configurations you create locally — such as the computer cluster and app �
 
 :::
 
+<a id="table"></a>
+
 These are the environment variables required to create a runner:
 
 | Variable                      | Description                                                             |
 | ----------------------------- | ----------------------------------------------------------------------- |
-| CLARIFAI_PAT                | [Personal Access Token](https://docs.clarifai.com/control/authentication/pat) for authentication                            |
+| CLARIFAI_PAT                | Personal Access Token (PAT) for authentication                            |
 | CLARIFAI_USER_ID (`user_id`)           | User ID of the account owning the model                                |
 | CLARIFAI_APP_ID (`app_id`)            | App ID containing the model                                            |
 | CLARIFAI_MODEL_ID  (`model_id`)         | The model ID for the model to be run locally                           |
@@ -110,7 +151,7 @@ These are the environment variables required to create a runner:
 | CLARIFAI_RUNNER_ID (`runner_id`)      | Auto-generated unique runner ID, created by the API and stored in the context |
 
 
-## Run Your Model
+## Step 3: Run Your Model
 
 :::info note
 
@@ -122,13 +163,13 @@ To run your model with the local development runner, navigate to the directory w
 
 Then, follow these steps.
 
-### Log In 
+### Log in to Clarifai
 
 Run the following command to log in to the Clarifai platform and establish a connection.
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash"> clarifai login </CodeBlock>
+    <CodeBlock className="language-bash">clarifai login</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -147,29 +188,31 @@ personal access token value (default: "ENVVAR" to get our env var rather than co
 
 - **Context name** — You can provide a custom name for your Clarifai configuration context, or simply press Enter to use the default name, "default". This helps you manage different configurations if needed.
 - **User ID** —  Enter your Clarifai user ID.
-- **PAT** — Enter your Clarifai [PAT](#get-a-pat-key). Note that if you press Enter, and you have set the `CLARIFAI_PAT` environment variable, it will use that token automatically.
+- **PAT** — Enter your Clarifai [PAT](#get-a-pat-key-and-user-id). Note that if you press Enter, and you have set the `CLARIFAI_PAT` environment variable, it will use that token automatically.
 
-### Start the Runner
+### Start Your Local Runner
 
 Next, start a local development runner.
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash"> clarifai model local-runner [OPTIONS] [MODEL_PATH] </CodeBlock>
+    <CodeBlock className="language-bash">clarifai model local-runner</CodeBlock>
 </TabItem>
 </Tabs>
-
-> `MODEL_PATH` is an optional path to the model directory. If omitted, the current directory is used by default.
 
 Or:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash"> clarifai model local-runner </CodeBlock>
+    <CodeBlock className="language-bash">clarifai model local-runner [OPTIONS] [MODEL_PATH]</CodeBlock>
 </TabItem>
 </Tabs>
 
-If the runner doesn't detect the necessary [context configurations](#create-a-context) in your environment, it will prompt you to create them using default values. 
+> `MODEL_PATH` is an optional path to the model directory. If omitted, the current directory is used by default.
+
+<br/>
+
+If the runner doesn't detect the necessary [context configurations](#step-2-create-a-context-optional) in your environment, it will prompt you to create them using default values. 
 
 This ensures that all essential components required for Local Runners are properly set up or included in your configuration context, including:
 
@@ -194,7 +237,7 @@ You can view the active runners associated with your model on its individual pag
 
 :::
 
-### Test with Snippet
+## Step 4: Test with Snippet
 
 Once the local development runner starts in your terminal, an example client code snippet is automatically generated based on the [model's signature](https://docs.clarifai.com/compute/models/inference/api#generate-example-code) to help you test it.
 
@@ -208,7 +251,7 @@ If you run the generated snippet in a separate terminal, but within the same dir
 After you're done testing, simply close the terminal running the local development runner to shut it down.
 
 
-## Examples
+## Additional Examples
 
 - [Simple example for running Hello World model locally with Clarifai’s Local Runners](https://github.com/Clarifai/runners-examples/tree/main/hello-world)
 - [Example for running Ollama models locally with Clarifai’s Local Runners](https://github.com/Clarifai/runners-examples/tree/main/local-runners/ollama-model-upload)

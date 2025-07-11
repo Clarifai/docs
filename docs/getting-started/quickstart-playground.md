@@ -1,6 +1,6 @@
 ---
 description: Start quickly with Clarifai Playground in a few simple steps
-sidebar_position: 1.1
+sidebar_position: 2
 ---
 
 # Quick Start With Playground
@@ -47,7 +47,7 @@ You'll be taken to the AI Playground interface.
 
 > _Alternatively, in the upper-left section of the Playground, you can choose the model you'd like to use for inference._
 
-In the message box at the bottom of the Playground, enter your desired prompt to generate text with the selected model. 
+In the message box at the bottom of the Playground, enter your desired prompt to generate text with the selected model. You can also use any of the provided predefined prompt examples. 
 
 **Note:** If your chosen model supports image or video inputs as prompts, you can also upload them directly into the interface.
 

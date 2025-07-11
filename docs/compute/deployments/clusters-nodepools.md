@@ -17,6 +17,12 @@ For example, you may create a nodepool for GPU-intensive tasks and another for l
 
 With clusters and nodepools, you can organize and manage (_orchestrate_) the compute resources necessary for running your models and workflows. 
 
+:::info Connect Your Own Cloud
+
+You can connect your existing AWS, Google Cloud (GCP), or Oracle infrastructure to leverage your current investments. This lets you maintain full control over your data while optimizing for cost and flexibility. [Contact](https://www.clarifai.com/explore/contact-us) our support team for assistance.
+
+:::
+
 ## **Via the UI**
 
 Log in to the Clarifai platform and select the **Compute** option in the top navigation bar.  

@@ -1,6 +1,6 @@
 ---
 description: Build and upload your first custom model to the Clarifai platform
-sidebar_position: 3
+sidebar_position: 5
 ---
 
 # Build and Upload a Model

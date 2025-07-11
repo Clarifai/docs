@@ -957,8 +957,8 @@
       "from": ["/integrations/LiteLLM/", "/integrations/LiteLLM/clarifai-litellm"]
     } ,
     {
-      "to": "/compute/models/upload/local-runners",
-      "from": ["/compute/models/upload/run-locally"]
+      "to": "/compute/local-runners",
+      "from": ["/compute/models/upload/run-locally", "/compute/models/upload/local-runners"]
     } 
   
   
