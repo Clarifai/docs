@@ -238,33 +238,32 @@ const config = {
         sidebar: {
           hideable: true
         }
-      }
-    }),
-  plugins: [  
-    [
-      '@docusaurus/plugin-client-redirects', 
-      {
-        redirects,
       },
-    ],
-    [
-      'plugin-image-zoom',
-      {
-        themeConfig:{
-          imageZoom:{
-            selector: '.markdown img',
-            options:{
-                margin: 24,
-                background: '#000',
-                scrollOffset: 0,
-                container: '#zoom-container',
-                template: '#zoom-template',
-            }
-          }
-        }
-
-      }
-    ],
+      /*
+      imageZoom: {
+        // CSS selector to apply the plugin to, defaults to '.markdown img'
+        selector: '.markdown img',
+          // Optional medium-zoom options
+          // see: https://www.npmjs.com/package/medium-zoom#options
+          options: {
+            margin: 24,
+            background: '#000',
+            scrollOffset: 0,
+            container: '#zoom-container',
+            template: '#zoom-template',
+      },
+    },
+    */
+    }),
+    plugins: [
+  [
+    '@docusaurus/plugin-client-redirects',
+    {
+      redirects, 
+    },
+  ],
+  
+  'plugin-image-zoom',
  
     /*
     // If this is activated, then deactivate redocusaurus as configured above
