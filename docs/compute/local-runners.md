@@ -86,7 +86,7 @@ Just review each prompt and confirm to proceed.
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">clarifai model local runner</CodeBlock>
+    <CodeBlock className="language-bash">clarifai model local-runner</CodeBlock>
 </TabItem>
 </Tabs>
 
