@@ -261,7 +261,6 @@ const config = {
     [
       'plugin-image-zoom', {}
     ],
- 
     /*
     // If this is activated, then deactivate redocusaurus as configured above
     // Current issue is that if this is activated, it says that the file is too large to be processed
