@@ -59,6 +59,32 @@ Here are some key characteristics of this design:
 
 - Return types follow the structure defined by the model's outputs.
 
+
+## Predict With OpenAI-Compatible Format
+
+Clarifai supports various providers that you can use to interact with different models. We offer an OpenAI-compatible API endpoint, allowing any OpenAI-compatible library or client to seamlessly send requests directly to Clarifai.
+
+:::info
+
+Base URL for Clarifai's OpenAI endpoint: `https://api.clarifai.com/v2/ext/openai/v1`.
+
+:::
+
+This integration capability offers several advantages, including:
+
+- **Access to diverse models** — Harness Clarifai's rich array of models directly within your OpenAI projects, expanding your AI capabilities.
+- **Standardized interaction** — Interact with Clarifai-hosted models using familiar OpenAI API patterns and interfaces, reducing the learning curve and streamlining development.
+- **Enhanced flexibility** — Leverage the power of Clarifai's platform while maintaining the flexibility of your chosen OpenAI development environment.
+
+:::note
+
+Usage-based billing is handled directly through Clarifai — not through OpenAI or any other provider. Also, while most OpenAI parameters are supported, certain advanced features may be unavailable depending on the specific model or endpoint.
+
+:::
+
+
+
+
 import DocCardList from '@theme/DocCardList';
 import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 

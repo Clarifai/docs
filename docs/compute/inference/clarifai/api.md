@@ -1,17 +1,15 @@
 ---
-description: Generate predictions using your deployed models
-sidebar_position: 1
+description: Generate predictions with models
+sidebar_position: 2
 toc_max_heading_level: 4
 ---
 
 # Inference via API
 
-**Generate predictions using your deployed models**
+**Generate predictions with models**
 <hr />
 
-Our new inference technique provides an efficient, scalable, and streamlined way to perform predictions with models. 
 
-Built with a Python-first, user-centric design, this flexible approach simplifies the process of working with models — enabling users to focus more on building and iterating, and less on navigating API mechanics. 
 
 
 :::tip
@@ -25,10 +23,6 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
-import CO1 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_1.py";
-import CO2 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_2.py";
-import CO3 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_3.py";
-import CO4 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_4.py";
 import CO5 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_5.py";
 import CO5Text from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_5-text.py";
 import CO6 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_6.py";
@@ -38,8 +32,6 @@ import CO8 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orche
 import CO9 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_9.py";
 import C10 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_10.py";
 
-import NodeAvailableMethods from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/available_methods.js";
-import NodeMethodSignatures from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/method_signatures.js";
 import NodePredictInterface from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/predict_interface.js";
 import NodePredictInterfaceImageInputs from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/predict_interface_image_inputs.js";
 import NodeStreamInterface from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/stream_interface.js";
@@ -50,13 +42,13 @@ import OutputUnaryImageInputs from "!!raw-loader!../../../../code_snippets/pytho
 import CO6Images from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_6_images.py";
 import NodeStreamInterfaceImages from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/stream_interface_images.js";
 
-import PyModelClient from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/py_model_client.py";
-import NodeModelClient from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/node_model_client.js";
 import PyToolCalling from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/tool_calling.py";
 
 import Mask1 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/mask_1.py";
 import Mask2 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/mask_2.py";
 import Mask3 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/mask_3.py";
+import PyModelClient from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/py_model_client.py";
+import NodeModelClient from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/node_model_client.js";
 
 ## Prerequisites
 
@@ -80,7 +72,7 @@ import Mask3 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orc
 
 ### Get a PAT Key
 
-You need a PAT (Personal Access Token) key to authenticate your connection to the Clarifai platform. You can generate the PAT key in your personal settings page by navigating to the [Security section](https://clarifai.com/settings/security). 
+You need a PAT (Personal Access Token) key to authenticate your connection to the Clarifai platform. You can generate the PAT key in your personal settings page by navigating to the **Security** section. 
 
 You can then set the PAT as an environment variable using `CLARIFAI_PAT`, in which case you don’t need to define it explicitly in your code. 
 
@@ -93,79 +85,9 @@ You can then set the PAT as an environment variable using `CLARIFAI_PAT`, in whi
 </TabItem>
 </Tabs>
 
-## Structure of Prediction Methods
+## Prediction Tips
 
-Before making a prediction with a model, it’s important to understand how its prediction methods are structured.
-
-You can learn more about the structure of model prediction methods [here](README.mdx#structure-of-prediction-methods).
-
-:::note Initializing the Model Client
-
-<Tabs groupId="code">
-<TabItem value="python" label="Python SDK">
-    <CodeBlock className="language-python">{PyModelClient}</CodeBlock>
-</TabItem>
-<TabItem value="node.js" label="Node.js SDK">
-    <CodeBlock className="language-javascript">{NodeModelClient}</CodeBlock>
-</TabItem>
-</Tabs>
-
-:::
-
-### Get Available Methods
-
-You can list all the methods implemented in the model's configuration that are available for performing model inference.
-
-<Tabs groupId="code">
-<TabItem value="python" label="Python SDK">
-    <CodeBlock className="language-python">{CO1}</CodeBlock>
-</TabItem>
-<TabItem value="node.js" label="Node.js SDK">
-    <CodeBlock className="language-javascript">{NodeAvailableMethods}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
-  <summary>Example Output</summary>
-    <CodeBlock className="language-text">dict_keys(['predict', 'generate', 'chat'])</CodeBlock>
-</details>
-
-### Get Method Signature
-
-You can retrieve the method signature of a specified model's method to identify all its arguments and their type annotations, which are essential for performing model inference. 
-
-A method signature defines the method's name, its input parameters (with types and default values), and the return type, helping you understand how to properly call the method.
-
-<Tabs groupId="code">
-<TabItem value="python" label="Python SDK">
-    <CodeBlock className="language-python">{CO2}</CodeBlock>
-</TabItem>
-<TabItem value="node.js" label="Node.js SDK">
-    <CodeBlock className="language-javascript">{NodeMethodSignatures}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
-  <summary>Example Output</summary>
-    <CodeBlock className="language-text">def predict(prompt: str, image: data_types.Image, images: Any, chat_history: Any, max_tokens: float = 512.0, temperature: float = 1.0, top_p: float = 0.8, reasoning_effort: str = '"low"') -> str:</CodeBlock>
-</details>
-
-### Generate Example Code
-
-You can generate a sample code snippet to better understand how to perform inference using a model.
-
-<Tabs groupId="code">
-<TabItem value="python" label="Python SDK">
-    <CodeBlock className="language-python">{CO3}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
-  <summary>Example Output</summary>
-    <CodeBlock className="language-text">{CO4}</CodeBlock>
-</details>
-
-:::tip Set up a deployment
+#### Set up a Deployment
 
 To use our Compute Orchestration capabilities, ensure your model is [deployed](https://docs.clarifai.com/compute/deployments/deploy-model). Then, specify the `deployment_id` parameter — alternatively, you can specify both `compute_cluster_id` and `nodepool_id`, as explained [here](https://docs.clarifai.com/compute/models/inference/). 
 
@@ -178,9 +100,8 @@ model = Model(
     # nodepool_id = "NODEPOOL_ID_HERE"
 )
 ```
-:::
 
-:::info Specify a Model Version
+#### Specify a Model Version
 
 By default, the latest version of the model is used for inference. However, you can specify a different version in either of the following two ways:
 
@@ -192,8 +113,20 @@ Or:
 ```python
 model = Model(url="https://clarifai.com/model_user_id/model_app_id/models/model_id", model_version = {"id": "model_version_id"})
 ```
-:::
 
+
+#### Initialize the Model Client
+
+You can initialize the model client using either explicit IDs or the full model URL.
+
+<Tabs groupId="code">
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{PyModelClient}</CodeBlock>
+</TabItem>
+<TabItem value="node.js" label="Node.js SDK">
+    <CodeBlock className="language-javascript">{NodeModelClient}</CodeBlock>
+</TabItem>
+</Tabs>
 
 
 ## Unary-Unary Predict Call
@@ -204,7 +137,7 @@ This is the simplest form of prediction: a single input is sent to the model, an
 
 ### Text Inputs
 
-Here is an example of a [model signature](https://docs.clarifai.com/compute/models/upload/#step-1-prepare-the-modelpy-file) configured on the server side for handling text inputs:
+Here is an example of a model signature configured on the server side for handling text inputs:
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python">

@@ -60,7 +60,7 @@
     "from": ["/glossary/generative-ai"]
   },
   {
-    "to": "/compute/models/upload/",
+    "to": "/compute/upload/",
     "from": ["/sdk/compute-orchestration/model-upload"]
   },  
   {
@@ -181,19 +181,19 @@
     "from": ["/api-guide/search/rank-filter-combine-or-negate"]
   },
   {
-    "to": "/compute/models/upload/",
+    "to": "/compute/upload/",
     "from": ["/compute/models/model-upload/"]
   },
   {
-    "to": "/compute/models/upload/test-locally",
+    "to": "/compute/upload/test-locally",
     "from": ["/sdk/compute-orchestration/test-models-locally", "/compute/models/model-upload/test-models-locally", "/compute/models/upload/test-models-locally"]
   },
   {
-    "to": "/compute/models/upload/data-types",
+    "to": "/compute/upload/data-types",
     "from": ["/compute/models/model-upload/data-types"]
   },
   {
-    "to": "/compute/models/inference/",
+    "to": "/compute/inference/",
     "from": ["/compute/models/model-inference", "/tutorials/node-js-tutorial"]
   },
   {
@@ -237,15 +237,15 @@
     "from": ["/api-guide/data/datasets/dataset-filters"]
   },  
   {
-    "to": "/compute/models/inference/ui",
+    "to": "/compute/inference/clarifai/ui",
     "from": ["/portal-guide/input-viewer/predictions", "/portal-guide/ppredict/"]
   },
   {
-    "to": "/compute/models/inference/api-legacy/advanced",
+    "to": "/compute/inference/advanced",
     "from": ["/compute/models/inference/advanced", "/api-guide/predict/prediction-parameters", "/sdk/Inference-from-AI-Models/Advance-Inference-Options", "/portal-guide/ppredict/generative-ai"]
   },
   {
-    "to": "/compute/models/inference/api-legacy",
+    "to": "/compute/inference/clarifai/api-legacy",
     "from": ["/api-guide/predict/embeddings","/api-guide/predict/multimodal-to-text","/api-guide/predict/audio","/api-guide/predict/llms","/api-guide/predict/text","/api-guide/predict/video","/api-guide/predict/images","/api-guide/predict/", "/api-guide/predict/multilingual-classification", "/sdk/Inference-from-AI-Models/", "/sdk/Inference-from-AI-Models/Image-as-Input", "/sdk/Inference-from-AI-Models/Text-as-Input", "/sdk/Inference-from-AI-Models/Audio-as-Input", "/sdk/Inference-from-AI-Models/Multimodal-as-Input"]
   },
   {
@@ -389,12 +389,8 @@
     "from": ["/portal-guide/model/deep-training/custom-templates"]
   },
   {
-    "to": "/compute/models/upload/",
-    "from": ["/portal-guide/model/hf-model-importer"]
-  },
-  {
-    "to": "/compute/models/upload/",
-    "from": ["/portal-guide/model/local-model-upload"]
+    "to": "/compute/upload/",
+    "from": ["/portal-guide/model/local-model-upload", "/portal-guide/model/hf-model-importer"]
   },
   {
     "to": "/create/models/model-versions/",
@@ -949,17 +945,65 @@
       "from": ["/resources/authentication/two-factor"]
     },
     {
-      "to": "/compute/providers/open-ai",
+      "to": "/compute/inference/open-ai",
       "from": ["/compute/models/inference/open-ai"]
     },
     {
-      "to": "/compute/providers/litellm",
+      "to": "/compute/inference/litellm",
       "from": ["/integrations/LiteLLM/", "/integrations/LiteLLM/clarifai-litellm"]
-    } ,
+    },
     {
       "to": "/compute/local-runners",
       "from": ["/compute/models/upload/run-locally", "/compute/models/upload/local-runners"]
-    } 
+    },
+    {
+      "to": "/compute/inference/",
+      "from": ["/compute/models/", "/compute/providers/"]
+    },
+    {
+      "to": "/compute/inference/clarifai/",
+      "from": ["/compute/models/inference/"]
+    },
+    {
+      "to": "/compute/inference/clarifai/api",
+      "from": ["/compute/models/inference/api"]
+    },
+    {
+      "to": "/compute/inference/clarifai/api-legacy",
+      "from": ["/compute/models/inference/api-legacy/"]
+    },
+    {
+      "to": "/compute/inference/advanced",
+      "from": ["/compute/models/inference/api-legacy/advanced"]
+    },
+    {
+      "to": "/compute/inference/clarifai/ui",
+      "from": ["/compute/models/inference/ui"]
+    },
+    {
+      "to": "/compute/upload/",
+      "from": ["/compute/models/upload/"]
+    },
+    {
+      "to": "/compute/upload/test-locally",
+      "from": ["/compute/models/upload/test-locally"]
+    },
+    {
+      "to": "/compute/upload/data-types",
+      "from": ["/compute/models/upload/data-types"]
+    },   
+    {
+      "to": "/compute/inference/open-ai",
+      "from": ["/compute/providers/open-ai"]
+    },
+    {
+      "to": "/compute/inference/litellm",
+      "from": ["/compute/providers/litellm"]
+    },
+    {
+      "to": "/compute/inference/vercel",
+      "from": ["/compute/providers/vercel"]
+    }
   
   
 

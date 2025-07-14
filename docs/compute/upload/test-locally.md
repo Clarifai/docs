@@ -25,8 +25,8 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
-import TestMethod from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/test-models-locally.py";
-import TestLocally1 from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/test_locally-1.txt";
+import TestMethod from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/test-models-locally.py";
+import TestLocally1 from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/test_locally-1.txt";
 
 
 ## Prerequisites

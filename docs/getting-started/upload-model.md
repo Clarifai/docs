@@ -5,7 +5,7 @@ sidebar_position: 5
 
 # Build and Upload a Model
 
-**Build and upload your first custom model to the Clarifai platform**
+**Quickly build and upload your first custom model to Clarifai platform**
 <hr />
 
 The Clarifai platform allows you to upload custom models for a wide range of use cases. With just a few simple steps, you can get your models up and running and leverage the platform’s powerful capabilities.

@@ -17,8 +17,8 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
-import ModelPyFile from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/open_ai_model_py.py";
-import ConfigYAML from "!!raw-loader!../../../../code_snippets/python-sdk/model-upload/open_ai_config.yaml";
+import ModelPyFile from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/open_ai_model_py.py";
+import ConfigYAML from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/open_ai_config.yaml";
 
 ## Step 1: Perform Prerequisites
 
