@@ -239,32 +239,28 @@ const config = {
           hideable: true
         }
       },
-      /*
       imageZoom: {
         // CSS selector to apply the plugin to, defaults to '.markdown img'
         selector: '.markdown img',
-          // Optional medium-zoom options
-          // see: https://www.npmjs.com/package/medium-zoom#options
-          options: {
-            margin: 24,
-            background: '#000',
-            scrollOffset: 0,
-            container: '#zoom-container',
-            template: '#zoom-template',
+        // Optional medium-zoom options
+        // see: https://www.npmjs.com/package/medium-zoom#options
+        options: {
+          margin: 24,
+          background: 'rgba(0, 0, 0, 0.6)',
+          scrollOffset: 0
+        },
       },
-    },
-    */
     }),
-    plugins: [
-  [
-    '@docusaurus/plugin-client-redirects',
-    {
-      redirects, 
-    },
-  ],
-  
-  'plugin-image-zoom',
- 
+  plugins: [  
+    [
+      '@docusaurus/plugin-client-redirects', 
+      {
+        redirects,
+      },
+    ],
+    [
+      'plugin-image-zoom', {}
+    ],
     /*
     // If this is activated, then deactivate redocusaurus as configured above
     // Current issue is that if this is activated, it says that the file is too large to be processed
