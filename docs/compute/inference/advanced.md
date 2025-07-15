@@ -1,6 +1,6 @@
 ---
 description: Learn how to use our advanced inference operations 
-sidebar_position: 2
+sidebar_position: 5
 ---
 
 # Advanced Inference Options 
@@ -10,7 +10,7 @@ sidebar_position: 2
 
 :::warning note
 
-To find out which advanced inference parameters a model supports, you can review its description and notes on the Clarifai Community platform, or run the snippet shown [here](https://docs.clarifai.com/compute/models/inference/api#get-method-signature) to inspect the model’s signature.
+To find out which advanced inference parameters a model supports, you can review its description and notes on the Clarifai Community platform, or run the snippet shown [here](https://docs.clarifai.com/compute/inference/clarifai/#get-method-signature) to inspect the model’s signature.
 
 :::
 
@@ -27,44 +27,44 @@ import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
 
-import CodeBP from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/batch_predict.py";
-import CodeBPTS from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/batchPredict.ts";
+import CodeBP from "!!raw-loader!../../../code_snippets/python-sdk/inference/batch_predict.py";
+import CodeBPTS from "!!raw-loader!../../../code_snippets/python-sdk/inference/batchPredict.ts";
 
-import CodeDiffBase from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/diff_baseurl.py";
-import CodeRoot from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/root_ca.py";
+import CodeDiffBase from "!!raw-loader!../../../code_snippets/python-sdk/inference/diff_baseurl.py";
+import CodeRoot from "!!raw-loader!../../../code_snippets/python-sdk/inference/root_ca.py";
 
-import PythonByModelVersion from "!!raw-loader!../../../../../code_snippets/api-guide/predict/python/prediction_parameters_by_model_version_id.py";
-import PythonMaxConcepts from "!!raw-loader!../../../../../code_snippets/api-guide/predict/python/prediction_parameters_max_concepts.py";
-import PythonMinPredictValue from "!!raw-loader!../../../../../code_snippets/api-guide/predict/python/prediction_parameters_min_predict_value.py";
-import PythonSelectConcepts from "!!raw-loader!../../../../../code_snippets/api-guide/predict/python/prediction_parameters_select_concepts.py";
+import PythonByModelVersion from "!!raw-loader!../../../code_snippets/api-guide/predict/python/prediction_parameters_by_model_version_id.py";
+import PythonMaxConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/python/prediction_parameters_max_concepts.py";
+import PythonMinPredictValue from "!!raw-loader!../../../code_snippets/api-guide/predict/python/prediction_parameters_min_predict_value.py";
+import PythonSelectConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/python/prediction_parameters_select_concepts.py";
 
-import JavaScriptByModelVersion from "!!raw-loader!../../../../../code_snippets/api-guide/predict/js/prediction_parameters_by_model_version_id.html";
-import JavaScriptMaxConcepts from "!!raw-loader!../../../../../code_snippets/api-guide/predict/js/prediction_parameters_max_concepts.html";
-import JavaScriptMinPredictValue from "!!raw-loader!../../../../../code_snippets/api-guide/predict/js/prediction_parameters_min_predict_value.html";
-import JavaScriptSelectConcepts from "!!raw-loader!../../../../../code_snippets/api-guide/predict/js/prediction_parameters_select_concepts.html";
+import JavaScriptByModelVersion from "!!raw-loader!../../../code_snippets/api-guide/predict/js/prediction_parameters_by_model_version_id.html";
+import JavaScriptMaxConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/js/prediction_parameters_max_concepts.html";
+import JavaScriptMinPredictValue from "!!raw-loader!../../../code_snippets/api-guide/predict/js/prediction_parameters_min_predict_value.html";
+import JavaScriptSelectConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/js/prediction_parameters_select_concepts.html";
 
-import NodeJSByModelVersion from "!!raw-loader!../../../../../code_snippets/api-guide/predict/node/prediction_parameters_by_model_version_id.js";
-import NodeJSMaxConcepts from "!!raw-loader!../../../../../code_snippets/api-guide/predict/node/prediction_parameters_max_concepts.js";
-import NodeJSMinPredictValue from "!!raw-loader!../../../../../code_snippets/api-guide/predict/node/prediction_parameters_min_predict_value.js";
-import NodeJSSelectConcepts from "!!raw-loader!../../../../../code_snippets/api-guide/predict/node/prediction_parameters_select_concepts.js";
+import NodeJSByModelVersion from "!!raw-loader!../../../code_snippets/api-guide/predict/node/prediction_parameters_by_model_version_id.js";
+import NodeJSMaxConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/node/prediction_parameters_max_concepts.js";
+import NodeJSMinPredictValue from "!!raw-loader!../../../code_snippets/api-guide/predict/node/prediction_parameters_min_predict_value.js";
+import NodeJSSelectConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/node/prediction_parameters_select_concepts.js";
 
-import JavaByModelVersion from "!!raw-loader!../../../../../code_snippets/api-guide/predict/java/prediction_parameters_by_model_version_id.java";
-import JavaMaxConcepts from "!!raw-loader!../../../../../code_snippets/api-guide/predict/java/prediction_parameters_max_concepts.java";
-import JavaMinPredictValue from "!!raw-loader!../../../../../code_snippets/api-guide/predict/java/prediction_parameters_min_predict_value.java";
-import JavaSelectConcepts from "!!raw-loader!../../../../../code_snippets/api-guide/predict/java/prediction_parameters_select_concepts.java";
+import JavaByModelVersion from "!!raw-loader!../../../code_snippets/api-guide/predict/java/prediction_parameters_by_model_version_id.java";
+import JavaMaxConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/java/prediction_parameters_max_concepts.java";
+import JavaMinPredictValue from "!!raw-loader!../../../code_snippets/api-guide/predict/java/prediction_parameters_min_predict_value.java";
+import JavaSelectConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/java/prediction_parameters_select_concepts.java";
 
-import PHPByModelVersion from "!!raw-loader!../../../../../code_snippets/api-guide/predict/php/prediction_parameters_by_model_version_id.php";
-import PHPMaxConcepts from "!!raw-loader!../../../../../code_snippets/api-guide/predict/php/prediction_parameters_max_concepts.php";
-import PHPMinPredictValue from "!!raw-loader!../../../../../code_snippets/api-guide/predict/php/prediction_parameters_min_predict_value.php";
-import PHPSelectConcepts from "!!raw-loader!../../../../../code_snippets/api-guide/predict/php/prediction_parameters_select_concepts.php";
+import PHPByModelVersion from "!!raw-loader!../../../code_snippets/api-guide/predict/php/prediction_parameters_by_model_version_id.php";
+import PHPMaxConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/php/prediction_parameters_max_concepts.php";
+import PHPMinPredictValue from "!!raw-loader!../../../code_snippets/api-guide/predict/php/prediction_parameters_min_predict_value.php";
+import PHPSelectConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/php/prediction_parameters_select_concepts.php";
 
-import CurlByModelVersion from "!!raw-loader!../../../../../code_snippets/api-guide/predict/curl/prediction_parameters_by_model_version_id.sh";
-import CurlMaxConcepts from "!!raw-loader!../../../../../code_snippets/api-guide/predict/curl/prediction_parameters_max_concepts.sh";
-import CurlMinPredictValue from "!!raw-loader!../../../../../code_snippets/api-guide/predict/curl/prediction_parameters_min_predict_value.sh";
-import CurlSelectConcepts from "!!raw-loader!../../../../../code_snippets/api-guide/predict/curl/prediction_parameters_select_concepts.sh";
+import CurlByModelVersion from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/prediction_parameters_by_model_version_id.sh";
+import CurlMaxConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/prediction_parameters_max_concepts.sh";
+import CurlMinPredictValue from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/prediction_parameters_min_predict_value.sh";
+import CurlSelectConcepts from "!!raw-loader!../../../code_snippets/api-guide/predict/curl/prediction_parameters_select_concepts.sh";
 
+import CodeOutputExample4 from "!!raw-loader!../../../code_snippets/api-guide/predict/code_output_examples/prediction_parameters_model_version_id.txt";
 
-import CodeOutputExample4 from "!!raw-loader!../../../../../code_snippets/api-guide/predict/code_output_examples/prediction_parameters_model_version_id.txt";
 
 
 ## Perform Batch Predictions

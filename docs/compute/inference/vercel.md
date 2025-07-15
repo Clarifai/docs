@@ -1,10 +1,10 @@
 ---
 description: Run inferences on Clarifai models using Vercel 
-sidebar_position: 3
+sidebar_position: 4
 toc_max_heading_level: 4
 ---
 
-# Vercel
+# Vercel AI SDK
 
 **Run inferences on Clarifai models using Vercel**
 <hr />

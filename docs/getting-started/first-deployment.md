@@ -12,9 +12,15 @@ Clarifai provides an intuitive interface that makes it easy to provision compute
 
 [Deployment](https://docs.clarifai.com/compute/deployments/deploy-model) allows you to configure and activate the infrastructure needed to serve model predictions. With just a few simple steps, you can deploy a trained model and start generating predictions.
 
+:::note
+
+Cloud model deployment via Clarifai requires a [paid plan](https://www.clarifai.com/pricing). You can try local deployment with [Local Runners](https://docs.clarifai.com/compute/local-runners) for free.
+
+:::
+
 ## Step 1: Sign Up or Log In 
 
-Start by [logging into](https://clarifai.com/login) your Clarifai account, or [sign up](https://clarifai.com/signup) for a new one to unlock access to the platform’s powerful AI capabilities. New users get free operations to jumpstart their exploration.
+Start by [logging in to](https://clarifai.com/login) your Clarifai account, or [sign up](https://clarifai.com/signup) for a new one to unlock access to the platform’s powerful AI capabilities. 
 
 ## Step 2: Get a Model
 
@@ -28,7 +34,7 @@ After finding a model, click the **DEPLOY THE MODEL** button in the bottom right
 
 ## Step 3: Review Your Compute Instances
 
-After clicking the button, a pop-up window will appear showing the available pre-configured [compute instances](https://docs.clarifai.com/compute/deployments/cloud-instances) for deployment, along with a pre-filled [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat) for authentication.
+After clicking the button, a pop-up window will appear showing the available pre-configured [compute instance](https://docs.clarifai.com/compute/deployments/cloud-instances) for deployment, along with a pre-filled [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat) for authentication.
 
 Review the options and choose the one that best fits your needs.
 

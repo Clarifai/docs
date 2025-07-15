@@ -25,13 +25,19 @@ These capabilities enable our enterprise customers to deploy production models w
 
 Clarifai handles the containerization, model packing, time slicing, and other performance optimizations on your behalf. 
 
+:::tip Quick Start
+
+Learn how to get started quickly with Compute Orchestration [here](https://docs.clarifai.com/getting-started/set-up-compute). 
+
+:::
+
 ## Deployment Options
 
 Compute Orchestration allows us to provide multiple deployment options — all of which can be customized with your preferred settings for autoscaling, cold start, and more, ensuring maximum cost efficiency and performance. 
 
 These are the deployment options we provide:
 
-:::tip Shared SaaS (Serverless)
+:::note Shared SaaS (Serverless)
 
 If you’re not using Compute Orchestration for inference with models uploaded and owned by Clarifai, your requests will default to the Shared SaaS (Serverless) deployment. This serverless environment eliminates the need to manage infrastructure, allowing you to make predictions effortlessly — without configuring or maintaining any compute resources. Learn more [here](https://docs.clarifai.com/compute/models/inference/). 
 
@@ -122,7 +128,7 @@ This allows users to leverage their hardware of choice without being locked into
 
 - Low-latency deployment minimizes gRPC hops, speeding up communication.
 
-- New model types are easily supported with a unified protobuf format, and local inference runners allow users to [test models](https://docs.clarifai.com/sdk/compute-orchestration/model-upload/#step-4-test-the-model-locally) before deploying to the cloud.
+- New model types are easily supported with a unified protobuf format, and local inference runners allow users to [test models](https://docs.clarifai.com/compute/local-runners) before deploying to the cloud.
 
 
 import DocCardList from '@theme/DocCardList';

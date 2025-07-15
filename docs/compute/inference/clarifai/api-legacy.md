@@ -1,6 +1,6 @@
 ---
 description: Generate predictions using our older method
-sidebar_position: 2
+sidebar_position: 3
 toc_max_heading_level: 4
 ---
 
@@ -25,243 +25,243 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
-import CO19 from "!!raw-loader!../../../../../code_snippets/python-sdk/compute-orchestration/predict_with_model.py";
-import CL22 from "!!raw-loader!../../../../../code_snippets/python-sdk/compute-orchestration/cli_predict_with_model.sh";
-import CO20 from "!!raw-loader!../../../../../code_snippets/python-sdk/compute-orchestration/predict_with_model_2.py";
-import CO21 from "!!raw-loader!../../../../../code_snippets/python-sdk/compute-orchestration/predict_with_model_3.py";
+import CO19 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/predict_with_model.py";
+import CL22 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/cli_predict_with_model.sh";
+import CO20 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/predict_with_model_2.py";
+import CO21 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/predict_with_model_3.py";
 
 
-import OutputExample1 from "!!raw-loader!../../../../../code_snippets/python-sdk/compute-orchestration/output_example_1.txt";
-import OutputExample2 from "!!raw-loader!../../../../../code_snippets/python-sdk/compute-orchestration/output_example_2.txt";
-import OutputExample3 from "!!raw-loader!../../../../../code_snippets/python-sdk/compute-orchestration/output_example_3.txt";
+import OutputExample1 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/output_example_1.txt";
+import OutputExample2 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/output_example_2.txt";
+import OutputExample3 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/output_example_3.txt";
 
-import CodeVisualClassifier from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/visual_classifier.py";
-import CodeVisualClassifierTS from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/visualClassifier.ts";
+import CodeVisualClassifier from "!!raw-loader!../../../../code_snippets/python-sdk/inference/visual_classifier.py";
+import CodeVisualClassifierTS from "!!raw-loader!../../../../code_snippets/python-sdk/inference/visualClassifier.ts";
 
-import CodeVisualDImage from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/visual_d_image.py";
-import CodeVisualDImageTS from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/visualDetectorImage.ts";
+import CodeVisualDImage from "!!raw-loader!../../../../code_snippets/python-sdk/inference/visual_d_image.py";
+import CodeVisualDImageTS from "!!raw-loader!../../../../code_snippets/python-sdk/inference/visualDetectorImage.ts";
 
-import CodeVisualDVideo from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/visual_d_video.py";
-import CodeVisualDVideoTS from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/visualDetectorVideo.ts";
+import CodeVisualDVideo from "!!raw-loader!../../../../code_snippets/python-sdk/inference/visual_d_video.py";
+import CodeVisualDVideoTS from "!!raw-loader!../../../../code_snippets/python-sdk/inference/visualDetectorVideo.ts";
 
-import CodeVisualSegmenter from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/visual_segmenter.py";
-import CodeVisualSegmenterTS from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/visualSegmenter.ts";
+import CodeVisualSegmenter from "!!raw-loader!../../../../code_snippets/python-sdk/inference/visual_segmenter.py";
+import CodeVisualSegmenterTS from "!!raw-loader!../../../../code_snippets/python-sdk/inference/visualSegmenter.ts";
 
-import CodeImageToText from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/image_to_text.py";
-import CodeImageToTextTS from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/imageToText.ts";
+import CodeImageToText from "!!raw-loader!../../../../code_snippets/python-sdk/inference/image_to_text.py";
+import CodeImageToTextTS from "!!raw-loader!../../../../code_snippets/python-sdk/inference/imageToText.ts";
 
-import CodeImageToImage from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/image_to_image.py";
-import CodeImageToImageTS from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/imageToImage.ts";
+import CodeImageToImage from "!!raw-loader!../../../../code_snippets/python-sdk/inference/image_to_image.py";
+import CodeImageToImageTS from "!!raw-loader!../../../../code_snippets/python-sdk/inference/imageToImage.ts";
 
-import CodeVisualEmbed from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/visual_embedder.py";
-import CodeVisualEmbedTS from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/visualEmbedder.ts";
+import CodeVisualEmbed from "!!raw-loader!../../../../code_snippets/python-sdk/inference/visual_embedder.py";
+import CodeVisualEmbedTS from "!!raw-loader!../../../../code_snippets/python-sdk/inference/visualEmbedder.ts";
 
-import CodeOutputVisualClassifier from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/outputs/visual_classifier.txt";
-import CodeOutputVisualDImage from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/outputs/visual_d_image.txt";
-import CodeOutputVisualDVideo from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/outputs/visual_d_video.txt";
-import CodeOutputVisualSegmenter from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/outputs/visual_segmenter.txt";
-import CodeOutputImageToText from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/outputs/image_to_text.txt";
-import CodeOutputVisualEmbed from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/outputs/visual_embedder.txt";
+import CodeOutputVisualClassifier from "!!raw-loader!../../../../code_snippets/python-sdk/inference/outputs/visual_classifier.txt";
+import CodeOutputVisualDImage from "!!raw-loader!../../../../code_snippets/python-sdk/inference/outputs/visual_d_image.txt";
+import CodeOutputVisualDVideo from "!!raw-loader!../../../../code_snippets/python-sdk/inference/outputs/visual_d_video.txt";
+import CodeOutputVisualSegmenter from "!!raw-loader!../../../../code_snippets/python-sdk/inference/outputs/visual_segmenter.txt";
+import CodeOutputImageToText from "!!raw-loader!../../../../code_snippets/python-sdk/inference/outputs/image_to_text.txt";
+import CodeOutputVisualEmbed from "!!raw-loader!../../../../code_snippets/python-sdk/inference/outputs/visual_embedder.txt";
 
-import CLIVisualClassifier from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/cli/visual_classifier.sh";
-import CLIVisualDetectorImage from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/cli/visual_d_image.sh";
-import CLIVisualDetectorVideo from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/cli/visual_d_video.sh";
-import CLIVisualSegmenter from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/cli/visual_segmenter.sh";
-import CLIImageToText from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/cli/image_to_text.sh";
-import CLIImageToImage from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/cli/image_to_image.sh";
-import CLIVisualEmbedder from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/cli/visual_embedder.sh";
+import CLIVisualClassifier from "!!raw-loader!../../../../code_snippets/python-sdk/inference/cli/visual_classifier.sh";
+import CLIVisualDetectorImage from "!!raw-loader!../../../../code_snippets/python-sdk/inference/cli/visual_d_image.sh";
+import CLIVisualDetectorVideo from "!!raw-loader!../../../../code_snippets/python-sdk/inference/cli/visual_d_video.sh";
+import CLIVisualSegmenter from "!!raw-loader!../../../../code_snippets/python-sdk/inference/cli/visual_segmenter.sh";
+import CLIImageToText from "!!raw-loader!../../../../code_snippets/python-sdk/inference/cli/image_to_text.sh";
+import CLIImageToImage from "!!raw-loader!../../../../code_snippets/python-sdk/inference/cli/image_to_image.sh";
+import CLIVisualEmbedder from "!!raw-loader!../../../../code_snippets/python-sdk/inference/cli/visual_embedder.sh";
 
-import CodeTextClassifier from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/text_classifier.py";
-import CodeTextClassifierTS from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/textClassifier.ts";
+import CodeTextClassifier from "!!raw-loader!../../../../code_snippets/python-sdk/inference/text_classifier.py";
+import CodeTextClassifierTS from "!!raw-loader!../../../../code_snippets/python-sdk/inference/textClassifier.ts";
 
-import CodeTextGenLLM from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/text_gen_llm.py";
-import CodeTextGenLLMInference from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/text_gen_llm_inference.py";
-import CodeTextGenLLMTS from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/textGenerationUsingLLM.ts";
+import CodeTextGenLLM from "!!raw-loader!../../../../code_snippets/python-sdk/inference/text_gen_llm.py";
+import CodeTextGenLLMInference from "!!raw-loader!../../../../code_snippets/python-sdk/inference/text_gen_llm_inference.py";
+import CodeTextGenLLMTS from "!!raw-loader!../../../../code_snippets/python-sdk/inference/textGenerationUsingLLM.ts";
 
-import CodeTextClassLLM from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/text_class_llm.py";
-import CodeTextClassLLMTS from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/textClassifierUsingLLM.ts";
-
-
-import CodeTextImage from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/text_to_image.py";
-import CodeTextImageTS from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/textToImage.ts";
-
-import CodeTextAudio from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/text_to_audio.py";
-import CodeTextAudioTS from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/textToAudio.ts";
-
-import CodeTextEmbedder from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/text_embedder.py";
-import CodeTextEmbedderTS from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/textEmbedder.ts";
-
-import CLITextClassifier from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/cli/text_classifier.sh";
-import CLITextGenLLMInference from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/cli/text_gen_llm_inference.sh";
-import CLITextGenLLM from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/cli/text_gen_llm.sh";
-import CLITextClassLLM from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/cli/text_class_llm.sh";
-import CLITextImage from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/cli/text_to_image.sh";
-import CLITextAudio from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/cli/text_to_audio.sh";
-import CLITextEmbedder from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/cli/text_embedder.sh";
+import CodeTextClassLLM from "!!raw-loader!../../../../code_snippets/python-sdk/inference/text_class_llm.py";
+import CodeTextClassLLMTS from "!!raw-loader!../../../../code_snippets/python-sdk/inference/textClassifierUsingLLM.ts";
 
 
-import CodeOutputTextClassifier from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/outputs/text_classifier.txt";
-import CodeOutputTextGenLLM from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/outputs/text_gen_llm.txt";
-import CodeOutputTextClassLLM from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/outputs/text_class_llm.txt";
-import CodeOutputTextEmbedder from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/outputs/text_embedder.txt";
+import CodeTextImage from "!!raw-loader!../../../../code_snippets/python-sdk/inference/text_to_image.py";
+import CodeTextImageTS from "!!raw-loader!../../../../code_snippets/python-sdk/inference/textToImage.ts";
 
-import CodeAudioText from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/audio_to_text.py";
-import CodeAudioTextTS from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/audioToText.ts";
+import CodeTextAudio from "!!raw-loader!../../../../code_snippets/python-sdk/inference/text_to_audio.py";
+import CodeTextAudioTS from "!!raw-loader!../../../../code_snippets/python-sdk/inference/textToAudio.ts";
 
-import CLIAudioText from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/cli/audioToText.sh";
+import CodeTextEmbedder from "!!raw-loader!../../../../code_snippets/python-sdk/inference/text_embedder.py";
+import CodeTextEmbedderTS from "!!raw-loader!../../../../code_snippets/python-sdk/inference/textEmbedder.ts";
 
-import CodeOutputAudioText from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/outputs/audio_to_text.txt";
-
-import CodeImageText from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/imagetext_text.py";
-import CodeImageTextTS from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/imageTextToText.ts";
-
-import CodeImageText01 from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/imagetexttotext_localimage.py";
-import CodeImageTextTS01 from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/imagetexttotext_localimage.ts";
-
-import CodeOutputImageText from "!!raw-loader!../../../../../code_snippets/python-sdk/inference/outputs/imagetext_text.txt";
-
-import CodePythonViaURL from "!!raw-loader!../../../../../code_snippets/api-guide/predict/python/images_via_url.py";
-import CodePythonViaURLMultiple from "!!raw-loader!../../../../../code_snippets/api-guide/predict/python/images_via_url_multiple.py";
-import CodePythonViaBytes from "!!raw-loader!../../../../../code_snippets/api-guide/predict/python/images_via_bytes.py";
-import CodePythonImageDetection from "!!raw-loader!../../../../../code_snippets/api-guide/predict/python/image_detection.py";
-import CodePythonImageSegmentation from "!!raw-loader!../../../../../code_snippets/api-guide/predict/python/image_segmentation.py";
-import PythonImageToText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/python/image_to_text.py";
-
-import CodeJavaScriptViaURL from "!!raw-loader!../../../../../code_snippets/api-guide/predict/js/images_via_url.html"
-import CodeJavaScriptViaBytes from "!!raw-loader!../../../../../code_snippets/api-guide/predict/js/images_via_bytes.html"
-import CodeJavaScriptImageDetection from "!!raw-loader!../../../../../code_snippets/api-guide/predict/js/image_detection.html"
-import CodeJavaScriptImageSegmentation from "!!raw-loader!../../../../../code_snippets/api-guide/predict/js/image_segmentation.html"
-import JavaScriptImageToText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/js/image_to_text.html"
-
-import CodeNodeJSViaURL from "!!raw-loader!../../../../../code_snippets/api-guide/predict/node/images_via_url.js";
-import CodeNodeJSViaBytes from "!!raw-loader!../../../../../code_snippets/api-guide/predict/node/images_via_bytes.js";
-import CodeNodeJSImageDetection from "!!raw-loader!../../../../../code_snippets/api-guide/predict/node/image_detection.js";
-import CodeNodeJSImageSegmentation from "!!raw-loader!../../../../../code_snippets/api-guide/predict/node/image_segmentation.js";
-import NodeJSImageToText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/node/image_to_text.js";
-
-import CodeJavaViaURL from "!!raw-loader!../../../../../code_snippets/api-guide/predict/java/images_via_url.java";
-import CodeJavaViaBytes from "!!raw-loader!../../../../../code_snippets/api-guide/predict/java/images_via_bytes.java";
-import JavaImageDetection from "!!raw-loader!../../../../../code_snippets/api-guide/predict/java/image_detection.java";
-import JavaImageSegmentation from "!!raw-loader!../../../../../code_snippets/api-guide/predict/java/image_segmentation.java";
-import JavaImageToText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/java/image_to_text.java";
-
-import CodePHPViaURL from "!!raw-loader!../../../../../code_snippets/api-guide/predict/php/images_via_url.php";
-import CodePHPViaBytes from "!!raw-loader!../../../../../code_snippets/api-guide/predict/php/images_via_bytes.php";
-import PHPImageDetection from "!!raw-loader!../../../../../code_snippets/api-guide/predict/php/image_detection.php";
-import PHPImageSegmentation from "!!raw-loader!../../../../../code_snippets/api-guide/predict/php/image_segmentation.php";
-import PHPImageToText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/php/image_to_text.php";
-
-import CurlViaURL from "!!raw-loader!../../../../../code_snippets/api-guide/predict/curl/images_via_url.sh";
-import CurlViaBytes from "!!raw-loader!../../../../../code_snippets/api-guide/predict/curl/images_via_bytes.sh";
-import CurlImageDetection from "!!raw-loader!../../../../../code_snippets/api-guide/predict/curl/image_detection.sh";
-import CurlImageSegmentation from "!!raw-loader!../../../../../code_snippets/api-guide/predict/curl/image_segmentation.sh";
-import CurlViaURLMultiple from "!!raw-loader!../../../../../code_snippets/api-guide/predict/curl/images_via_url_multiple.sh";
-import CurlImageToText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/curl/image_to_text.sh";
+import CLITextClassifier from "!!raw-loader!../../../../code_snippets/python-sdk/inference/cli/text_classifier.sh";
+import CLITextGenLLMInference from "!!raw-loader!../../../../code_snippets/python-sdk/inference/cli/text_gen_llm_inference.sh";
+import CLITextGenLLM from "!!raw-loader!../../../../code_snippets/python-sdk/inference/cli/text_gen_llm.sh";
+import CLITextClassLLM from "!!raw-loader!../../../../code_snippets/python-sdk/inference/cli/text_class_llm.sh";
+import CLITextImage from "!!raw-loader!../../../../code_snippets/python-sdk/inference/cli/text_to_image.sh";
+import CLITextAudio from "!!raw-loader!../../../../code_snippets/python-sdk/inference/cli/text_to_audio.sh";
+import CLITextEmbedder from "!!raw-loader!../../../../code_snippets/python-sdk/inference/cli/text_embedder.sh";
 
 
-import CodePythonViaURLVideo from "!!raw-loader!../../../../../code_snippets/api-guide/predict/python/video_via_url.py";
-import CodePythonViaBytesVideo from "!!raw-loader!../../../../../code_snippets/api-guide/predict/python/video_via_bytes.py";
+import CodeOutputTextClassifier from "!!raw-loader!../../../../code_snippets/python-sdk/inference/outputs/text_classifier.txt";
+import CodeOutputTextGenLLM from "!!raw-loader!../../../../code_snippets/python-sdk/inference/outputs/text_gen_llm.txt";
+import CodeOutputTextClassLLM from "!!raw-loader!../../../../code_snippets/python-sdk/inference/outputs/text_class_llm.txt";
+import CodeOutputTextEmbedder from "!!raw-loader!../../../../code_snippets/python-sdk/inference/outputs/text_embedder.txt";
 
-import CodeJavaScriptViaURLVideo from "!!raw-loader!../../../../../code_snippets/api-guide/predict/js/video_via_url.html";
-import CodeJavaScriptViaBytesVideo from "!!raw-loader!../../../../../code_snippets/api-guide/predict/js/video_via_bytes.html";
+import CodeAudioText from "!!raw-loader!../../../../code_snippets/python-sdk/inference/audio_to_text.py";
+import CodeAudioTextTS from "!!raw-loader!../../../../code_snippets/python-sdk/inference/audioToText.ts";
 
-import CodeNodeJSViaURLVideo from "!!raw-loader!../../../../../code_snippets/api-guide/predict/node/video_via_url.js";
-import CodeNodeJSViaBytesVideo from "!!raw-loader!../../../../../code_snippets/api-guide/predict/node/video_via_bytes.js";
+import CLIAudioText from "!!raw-loader!../../../../code_snippets/python-sdk/inference/cli/audioToText.sh";
 
-import CodeJavaViaURLVideo from "!!raw-loader!../../../../../code_snippets/api-guide/predict/java/video_via_url.java";
-import CodeJavaViaBytesVideo from "!!raw-loader!../../../../../code_snippets/api-guide/predict/java/video_via_bytes.java";
+import CodeOutputAudioText from "!!raw-loader!../../../../code_snippets/python-sdk/inference/outputs/audio_to_text.txt";
 
-import CodePHPViaURLVideo from "!!raw-loader!../../../../../code_snippets/api-guide/predict/php/video_via_url.php";
-import CodePHPViaBytesVideo from "!!raw-loader!../../../../../code_snippets/api-guide/predict/php/video_via_bytes.php";
+import CodeImageText from "!!raw-loader!../../../../code_snippets/python-sdk/inference/imagetext_text.py";
+import CodeImageTextTS from "!!raw-loader!../../../../code_snippets/python-sdk/inference/imageTextToText.ts";
 
-import CurlViaURLVideo from "!!raw-loader!../../../../../code_snippets/api-guide/predict/curl/video_via_url.sh";
-import CurlViaBytesVideo from "!!raw-loader!../../../../../code_snippets/api-guide/predict/curl/video_via_bytes.sh";
+import CodeImageText01 from "!!raw-loader!../../../../code_snippets/python-sdk/inference/imagetexttotext_localimage.py";
+import CodeImageTextTS01 from "!!raw-loader!../../../../code_snippets/python-sdk/inference/imagetexttotext_localimage.ts";
 
-import CodePythonViaURLText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/python/text_via_url.py";
-import CodePythonViaBytesText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/python/text_via_bytes.py";
-import CodePythonViaRawText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/python/text_via_raw.py";
-import CodePythonImageGenerationText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/python/image_generation.py";
-import CodePythonTextToSpeechText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/python/text_to_speech.py";
+import CodeOutputImageText from "!!raw-loader!../../../../code_snippets/python-sdk/inference/outputs/imagetext_text.txt";
 
-import CodeJavaScriptViaURLText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/js/text_via_url.html";
-import CodeJavaScriptViaBytesText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/js/text_via_bytes.html";
-import CodeJavaScriptViaRawText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/js/text_via_raw.html";
-import CodeJavaScriptImageGenerationText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/js/image_generation.html";
-import CodeJavaScriptTextToSpeechText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/js/text_to_speech.html";
+import CodePythonViaURL from "!!raw-loader!../../../../code_snippets/api-guide/predict/python/images_via_url.py";
+import CodePythonViaURLMultiple from "!!raw-loader!../../../../code_snippets/api-guide/predict/python/images_via_url_multiple.py";
+import CodePythonViaBytes from "!!raw-loader!../../../../code_snippets/api-guide/predict/python/images_via_bytes.py";
+import CodePythonImageDetection from "!!raw-loader!../../../../code_snippets/api-guide/predict/python/image_detection.py";
+import CodePythonImageSegmentation from "!!raw-loader!../../../../code_snippets/api-guide/predict/python/image_segmentation.py";
+import PythonImageToText from "!!raw-loader!../../../../code_snippets/api-guide/predict/python/image_to_text.py";
 
-import CodeNodeJSViaURLText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/node/text_via_url.js";
-import CodeNodeJSViaBytesText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/node/text_via_bytes.js";
-import CodeNodeJSViaRawText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/node/text_via_raw.js";
-import CodeNodeJSImageGenerationText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/node/image_generation.js";
-import CodeNodeJSTextToSpeechText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/node/text_to_speech.js";
+import CodeJavaScriptViaURL from "!!raw-loader!../../../../code_snippets/api-guide/predict/js/images_via_url.html"
+import CodeJavaScriptViaBytes from "!!raw-loader!../../../../code_snippets/api-guide/predict/js/images_via_bytes.html"
+import CodeJavaScriptImageDetection from "!!raw-loader!../../../../code_snippets/api-guide/predict/js/image_detection.html"
+import CodeJavaScriptImageSegmentation from "!!raw-loader!../../../../code_snippets/api-guide/predict/js/image_segmentation.html"
+import JavaScriptImageToText from "!!raw-loader!../../../../code_snippets/api-guide/predict/js/image_to_text.html"
 
-import CodeJavaViaURLText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/java/text_via_url.java";
-import CodeJavaViaBytesText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/java/text_via_bytes.java";
-import CodeJavaViaRawText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/java/text_via_raw.java";
-import CodeJavaImageGenerationText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/java/image_generation.java";
-import CodeJavaTextToSpeechText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/java/text_to_speech.java";
+import CodeNodeJSViaURL from "!!raw-loader!../../../../code_snippets/api-guide/predict/node/images_via_url.js";
+import CodeNodeJSViaBytes from "!!raw-loader!../../../../code_snippets/api-guide/predict/node/images_via_bytes.js";
+import CodeNodeJSImageDetection from "!!raw-loader!../../../../code_snippets/api-guide/predict/node/image_detection.js";
+import CodeNodeJSImageSegmentation from "!!raw-loader!../../../../code_snippets/api-guide/predict/node/image_segmentation.js";
+import NodeJSImageToText from "!!raw-loader!../../../../code_snippets/api-guide/predict/node/image_to_text.js";
 
-import CodePHPViaURLText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/php/text_via_url.php";
-import CodePHPViaBytesText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/php/text_via_bytes.php";
-import CodePHPViaRawText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/php/text_via_raw.php";
-import CodePHPImageGenerationText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/php/image_generation.php";
-import CodePHPTextToSpeechText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/php/text_to_speech.php";
+import CodeJavaViaURL from "!!raw-loader!../../../../code_snippets/api-guide/predict/java/images_via_url.java";
+import CodeJavaViaBytes from "!!raw-loader!../../../../code_snippets/api-guide/predict/java/images_via_bytes.java";
+import JavaImageDetection from "!!raw-loader!../../../../code_snippets/api-guide/predict/java/image_detection.java";
+import JavaImageSegmentation from "!!raw-loader!../../../../code_snippets/api-guide/predict/java/image_segmentation.java";
+import JavaImageToText from "!!raw-loader!../../../../code_snippets/api-guide/predict/java/image_to_text.java";
 
-import CurlViaURLText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/curl/text_via_url.sh";
-import CurlViaBytesText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/curl/text_via_bytes.sh";
-import CurlImageGenerationText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/curl/image_generation.sh";
-import CurlViaRawText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/curl/text_via_raw.sh";
-import CurlTextToSpeechText from "!!raw-loader!../../../../../code_snippets/api-guide/predict/curl/text_to_speech.sh";
-import ThirdPartyKey from "!!raw-loader!../../../../../code_snippets/api-guide/predict/curl/third_party_api_key.sh";
+import CodePHPViaURL from "!!raw-loader!../../../../code_snippets/api-guide/predict/php/images_via_url.php";
+import CodePHPViaBytes from "!!raw-loader!../../../../code_snippets/api-guide/predict/php/images_via_bytes.php";
+import PHPImageDetection from "!!raw-loader!../../../../code_snippets/api-guide/predict/php/image_detection.php";
+import PHPImageSegmentation from "!!raw-loader!../../../../code_snippets/api-guide/predict/php/image_segmentation.php";
+import PHPImageToText from "!!raw-loader!../../../../code_snippets/api-guide/predict/php/image_to_text.php";
 
-import CodePythonLLM from "!!raw-loader!../../../../../code_snippets/api-guide/predict/python/llms_3.py";
-import CodeJavaScriptLLM from "!!raw-loader!../../../../../code_snippets/api-guide/predict/js/llms_3.html"
-import CodeNodeJSLLM from "!!raw-loader!../../../../../code_snippets/api-guide/predict/node/llms_3.js";
-import CodeJavaLLM from "!!raw-loader!../../../../../code_snippets/api-guide/predict/java/llms_3.java";
-import CodePHPLLM from "!!raw-loader!../../../../../code_snippets/api-guide/predict/php/llms_3.php";
-import CodeCurlLLM from "!!raw-loader!../../../../../code_snippets/api-guide/predict/curl/llms_3.sh";
-
-import CodePythonParam from "!!raw-loader!../../../../../code_snippets/api-guide/predict/python/llms_param.py";
-import CodeJavaScriptParam from "!!raw-loader!../../../../../code_snippets/api-guide/predict/js/llms_param.html"
-import CodeNodeJSParam from "!!raw-loader!../../../../../code_snippets/api-guide/predict/node/llms_param.js";
-import CodeJavaParam from "!!raw-loader!../../../../../code_snippets/api-guide/predict/java/llms_param.java";
-import CodePHPParam from "!!raw-loader!../../../../../code_snippets/api-guide/predict/php/llms_param.php";
-import CodeCurlParam from "!!raw-loader!../../../../../code_snippets/api-guide/predict/curl/llms_param.sh";
+import CurlViaURL from "!!raw-loader!../../../../code_snippets/api-guide/predict/curl/images_via_url.sh";
+import CurlViaBytes from "!!raw-loader!../../../../code_snippets/api-guide/predict/curl/images_via_bytes.sh";
+import CurlImageDetection from "!!raw-loader!../../../../code_snippets/api-guide/predict/curl/image_detection.sh";
+import CurlImageSegmentation from "!!raw-loader!../../../../code_snippets/api-guide/predict/curl/image_segmentation.sh";
+import CurlViaURLMultiple from "!!raw-loader!../../../../code_snippets/api-guide/predict/curl/images_via_url_multiple.sh";
+import CurlImageToText from "!!raw-loader!../../../../code_snippets/api-guide/predict/curl/image_to_text.sh";
 
 
-import PythonPredictURLAudio from "!!raw-loader!../../../../../code_snippets/api-guide/predict/python/audio_via_url.py";
-import PythonViaBytesAudio from "!!raw-loader!../../../../../code_snippets/api-guide/predict/python/audio_via_bytes.py";
+import CodePythonViaURLVideo from "!!raw-loader!../../../../code_snippets/api-guide/predict/python/video_via_url.py";
+import CodePythonViaBytesVideo from "!!raw-loader!../../../../code_snippets/api-guide/predict/python/video_via_bytes.py";
 
-import JSPredictURLAudio from "!!raw-loader!../../../../../code_snippets/api-guide/predict/js/audio_via_url.html";
-import JSViaBytesAudio from "!!raw-loader!../../../../../code_snippets/api-guide/predict/js/audio_via_bytes.html";
+import CodeJavaScriptViaURLVideo from "!!raw-loader!../../../../code_snippets/api-guide/predict/js/video_via_url.html";
+import CodeJavaScriptViaBytesVideo from "!!raw-loader!../../../../code_snippets/api-guide/predict/js/video_via_bytes.html";
 
-import NodePredictURLAudio from "!!raw-loader!../../../../../code_snippets/api-guide/predict/node/audio_via_url.js";
-import NodeViaBytesAudio from "!!raw-loader!../../../../../code_snippets/api-guide/predict/node/audio_via_bytes.js";
+import CodeNodeJSViaURLVideo from "!!raw-loader!../../../../code_snippets/api-guide/predict/node/video_via_url.js";
+import CodeNodeJSViaBytesVideo from "!!raw-loader!../../../../code_snippets/api-guide/predict/node/video_via_bytes.js";
 
-import JavaPredictURLAudio from "!!raw-loader!../../../../../code_snippets/api-guide/predict/java/audio_via_url.java";
-import JavaViaBytesAudio from "!!raw-loader!../../../../../code_snippets/api-guide/predict/java/audio_via_bytes.java";
+import CodeJavaViaURLVideo from "!!raw-loader!../../../../code_snippets/api-guide/predict/java/video_via_url.java";
+import CodeJavaViaBytesVideo from "!!raw-loader!../../../../code_snippets/api-guide/predict/java/video_via_bytes.java";
 
-import PHPPredictURLAudio from "!!raw-loader!../../../../../code_snippets/api-guide/predict/php/audio_via_url.php";
-import PHPViaBytesAudio from "!!raw-loader!../../../../../code_snippets/api-guide/predict/php/audio_via_bytes.php";
+import CodePHPViaURLVideo from "!!raw-loader!../../../../code_snippets/api-guide/predict/php/video_via_url.php";
+import CodePHPViaBytesVideo from "!!raw-loader!../../../../code_snippets/api-guide/predict/php/video_via_bytes.php";
 
-import CurlPredictURLAudio from "!!raw-loader!../../../../../code_snippets/api-guide/predict/curl/audio_via_url.sh";
-import CurlViaBytesAudio from "!!raw-loader!../../../../../code_snippets/api-guide/predict/curl/audio_via_bytes.sh";
+import CurlViaURLVideo from "!!raw-loader!../../../../code_snippets/api-guide/predict/curl/video_via_url.sh";
+import CurlViaBytesVideo from "!!raw-loader!../../../../code_snippets/api-guide/predict/curl/video_via_bytes.sh";
 
-import CodePythonMultimodal from "!!raw-loader!../../../../../code_snippets/api-guide/predict/python/multimodal-to-text.py";
-import CodeJavaScriptMultimodal from "!!raw-loader!../../../../../code_snippets/api-guide/predict/js/multimodal-to-text.html"
-import CodeNodeJSMultimodal from "!!raw-loader!../../../../../code_snippets/api-guide/predict/node/multimodal-to-text.js";
-import CodeJavaMultimodal from "!!raw-loader!../../../../../code_snippets/api-guide/predict/java/multimodal-to-text.java";
-import CodePHPMultimodal from "!!raw-loader!../../../../../code_snippets/api-guide/predict/php/multimodal-to-text.php";
-import CodeCurlMultimodal from "!!raw-loader!../../../../../code_snippets/api-guide/predict/curl/multimodal-to-text.sh";
+import CodePythonViaURLText from "!!raw-loader!../../../../code_snippets/api-guide/predict/python/text_via_url.py";
+import CodePythonViaBytesText from "!!raw-loader!../../../../code_snippets/api-guide/predict/python/text_via_bytes.py";
+import CodePythonViaRawText from "!!raw-loader!../../../../code_snippets/api-guide/predict/python/text_via_raw.py";
+import CodePythonImageGenerationText from "!!raw-loader!../../../../code_snippets/api-guide/predict/python/image_generation.py";
+import CodePythonTextToSpeechText from "!!raw-loader!../../../../code_snippets/api-guide/predict/python/text_to_speech.py";
 
-import CodePythonEmbedding from "!!raw-loader!../../../../../code_snippets/api-guide/predict/python/embeddings.py";
-import CodeJavaScriptEmbedding from "!!raw-loader!../../../../../code_snippets/api-guide/predict/js/embeddings.html"
-import CodeNodeJSEmbedding from "!!raw-loader!../../../../../code_snippets/api-guide/predict/node/embeddings.js";
-import CodeJavaEmbedding from "!!raw-loader!../../../../../code_snippets/api-guide/predict/java/embeddings.java";
-import CodePHPEmbedding from "!!raw-loader!../../../../../code_snippets/api-guide/predict/php/embeddings.php";
-import CodeCurlEmbedding from "!!raw-loader!../../../../../code_snippets/api-guide/predict/curl/embeddings.sh";
+import CodeJavaScriptViaURLText from "!!raw-loader!../../../../code_snippets/api-guide/predict/js/text_via_url.html";
+import CodeJavaScriptViaBytesText from "!!raw-loader!../../../../code_snippets/api-guide/predict/js/text_via_bytes.html";
+import CodeJavaScriptViaRawText from "!!raw-loader!../../../../code_snippets/api-guide/predict/js/text_via_raw.html";
+import CodeJavaScriptImageGenerationText from "!!raw-loader!../../../../code_snippets/api-guide/predict/js/image_generation.html";
+import CodeJavaScriptTextToSpeechText from "!!raw-loader!../../../../code_snippets/api-guide/predict/js/text_to_speech.html";
 
-import CurlUnaryStream from "!!raw-loader!../../../../../code_snippets/api-guide/predict/curl/unary-stream.sh";
+import CodeNodeJSViaURLText from "!!raw-loader!../../../../code_snippets/api-guide/predict/node/text_via_url.js";
+import CodeNodeJSViaBytesText from "!!raw-loader!../../../../code_snippets/api-guide/predict/node/text_via_bytes.js";
+import CodeNodeJSViaRawText from "!!raw-loader!../../../../code_snippets/api-guide/predict/node/text_via_raw.js";
+import CodeNodeJSImageGenerationText from "!!raw-loader!../../../../code_snippets/api-guide/predict/node/image_generation.js";
+import CodeNodeJSTextToSpeechText from "!!raw-loader!../../../../code_snippets/api-guide/predict/node/text_to_speech.js";
+
+import CodeJavaViaURLText from "!!raw-loader!../../../../code_snippets/api-guide/predict/java/text_via_url.java";
+import CodeJavaViaBytesText from "!!raw-loader!../../../../code_snippets/api-guide/predict/java/text_via_bytes.java";
+import CodeJavaViaRawText from "!!raw-loader!../../../../code_snippets/api-guide/predict/java/text_via_raw.java";
+import CodeJavaImageGenerationText from "!!raw-loader!../../../../code_snippets/api-guide/predict/java/image_generation.java";
+import CodeJavaTextToSpeechText from "!!raw-loader!../../../../code_snippets/api-guide/predict/java/text_to_speech.java";
+
+import CodePHPViaURLText from "!!raw-loader!../../../../code_snippets/api-guide/predict/php/text_via_url.php";
+import CodePHPViaBytesText from "!!raw-loader!../../../../code_snippets/api-guide/predict/php/text_via_bytes.php";
+import CodePHPViaRawText from "!!raw-loader!../../../../code_snippets/api-guide/predict/php/text_via_raw.php";
+import CodePHPImageGenerationText from "!!raw-loader!../../../../code_snippets/api-guide/predict/php/image_generation.php";
+import CodePHPTextToSpeechText from "!!raw-loader!../../../../code_snippets/api-guide/predict/php/text_to_speech.php";
+
+import CurlViaURLText from "!!raw-loader!../../../../code_snippets/api-guide/predict/curl/text_via_url.sh";
+import CurlViaBytesText from "!!raw-loader!../../../../code_snippets/api-guide/predict/curl/text_via_bytes.sh";
+import CurlImageGenerationText from "!!raw-loader!../../../../code_snippets/api-guide/predict/curl/image_generation.sh";
+import CurlViaRawText from "!!raw-loader!../../../../code_snippets/api-guide/predict/curl/text_via_raw.sh";
+import CurlTextToSpeechText from "!!raw-loader!../../../../code_snippets/api-guide/predict/curl/text_to_speech.sh";
+import ThirdPartyKey from "!!raw-loader!../../../../code_snippets/api-guide/predict/curl/third_party_api_key.sh";
+
+import CodePythonLLM from "!!raw-loader!../../../../code_snippets/api-guide/predict/python/llms_3.py";
+import CodeJavaScriptLLM from "!!raw-loader!../../../../code_snippets/api-guide/predict/js/llms_3.html"
+import CodeNodeJSLLM from "!!raw-loader!../../../../code_snippets/api-guide/predict/node/llms_3.js";
+import CodeJavaLLM from "!!raw-loader!../../../../code_snippets/api-guide/predict/java/llms_3.java";
+import CodePHPLLM from "!!raw-loader!../../../../code_snippets/api-guide/predict/php/llms_3.php";
+import CodeCurlLLM from "!!raw-loader!../../../../code_snippets/api-guide/predict/curl/llms_3.sh";
+
+import CodePythonParam from "!!raw-loader!../../../../code_snippets/api-guide/predict/python/llms_param.py";
+import CodeJavaScriptParam from "!!raw-loader!../../../../code_snippets/api-guide/predict/js/llms_param.html"
+import CodeNodeJSParam from "!!raw-loader!../../../../code_snippets/api-guide/predict/node/llms_param.js";
+import CodeJavaParam from "!!raw-loader!../../../../code_snippets/api-guide/predict/java/llms_param.java";
+import CodePHPParam from "!!raw-loader!../../../../code_snippets/api-guide/predict/php/llms_param.php";
+import CodeCurlParam from "!!raw-loader!../../../../code_snippets/api-guide/predict/curl/llms_param.sh";
+
+
+import PythonPredictURLAudio from "!!raw-loader!../../../../code_snippets/api-guide/predict/python/audio_via_url.py";
+import PythonViaBytesAudio from "!!raw-loader!../../../../code_snippets/api-guide/predict/python/audio_via_bytes.py";
+
+import JSPredictURLAudio from "!!raw-loader!../../../../code_snippets/api-guide/predict/js/audio_via_url.html";
+import JSViaBytesAudio from "!!raw-loader!../../../../code_snippets/api-guide/predict/js/audio_via_bytes.html";
+
+import NodePredictURLAudio from "!!raw-loader!../../../../code_snippets/api-guide/predict/node/audio_via_url.js";
+import NodeViaBytesAudio from "!!raw-loader!../../../../code_snippets/api-guide/predict/node/audio_via_bytes.js";
+
+import JavaPredictURLAudio from "!!raw-loader!../../../../code_snippets/api-guide/predict/java/audio_via_url.java";
+import JavaViaBytesAudio from "!!raw-loader!../../../../code_snippets/api-guide/predict/java/audio_via_bytes.java";
+
+import PHPPredictURLAudio from "!!raw-loader!../../../../code_snippets/api-guide/predict/php/audio_via_url.php";
+import PHPViaBytesAudio from "!!raw-loader!../../../../code_snippets/api-guide/predict/php/audio_via_bytes.php";
+
+import CurlPredictURLAudio from "!!raw-loader!../../../../code_snippets/api-guide/predict/curl/audio_via_url.sh";
+import CurlViaBytesAudio from "!!raw-loader!../../../../code_snippets/api-guide/predict/curl/audio_via_bytes.sh";
+
+import CodePythonMultimodal from "!!raw-loader!../../../../code_snippets/api-guide/predict/python/multimodal-to-text.py";
+import CodeJavaScriptMultimodal from "!!raw-loader!../../../../code_snippets/api-guide/predict/js/multimodal-to-text.html"
+import CodeNodeJSMultimodal from "!!raw-loader!../../../../code_snippets/api-guide/predict/node/multimodal-to-text.js";
+import CodeJavaMultimodal from "!!raw-loader!../../../../code_snippets/api-guide/predict/java/multimodal-to-text.java";
+import CodePHPMultimodal from "!!raw-loader!../../../../code_snippets/api-guide/predict/php/multimodal-to-text.php";
+import CodeCurlMultimodal from "!!raw-loader!../../../../code_snippets/api-guide/predict/curl/multimodal-to-text.sh";
+
+import CodePythonEmbedding from "!!raw-loader!../../../../code_snippets/api-guide/predict/python/embeddings.py";
+import CodeJavaScriptEmbedding from "!!raw-loader!../../../../code_snippets/api-guide/predict/js/embeddings.html"
+import CodeNodeJSEmbedding from "!!raw-loader!../../../../code_snippets/api-guide/predict/node/embeddings.js";
+import CodeJavaEmbedding from "!!raw-loader!../../../../code_snippets/api-guide/predict/java/embeddings.java";
+import CodePHPEmbedding from "!!raw-loader!../../../../code_snippets/api-guide/predict/php/embeddings.php";
+import CodeCurlEmbedding from "!!raw-loader!../../../../code_snippets/api-guide/predict/curl/embeddings.sh";
+
+import CurlUnaryStream from "!!raw-loader!../../../../code_snippets/api-guide/predict/curl/unary-stream.sh";
 
 
 ## Legacy Inference via Compute Orchestration
@@ -935,7 +935,7 @@ When making predictions using LLMs on our platform, some models offer the abilit
 
 These parameters control the behavior of the model during the generation process, affecting aspects like creativity, coherence, and the diversity of the generated text.
 
-You can learn more about them [here](advanced.md#types-of-inference-parameters). 
+You can learn more about them [here](https://docs.clarifai.com/compute/inference/advanced). 
 
 > **Note:** You can also find various examples of how to set inference parameters throughout this guide.
 
