@@ -37,10 +37,10 @@ This token is essential for authenticating your connection to the Clarifai platf
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Unix-Like Systems">
-    <CodeBlock className="language-bash"> export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
+    <CodeBlock className="language-bash">export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE</CodeBlock>
 </TabItem>
 <TabItem value="bash2" label="Windows">
-    <CodeBlock className="language-bash"> set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
+    <CodeBlock className="language-bash">set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -73,9 +73,7 @@ The `--help` option is particularly useful to quickly understand the available f
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">
-    clarifai COMMAND --help
-</CodeBlock>
+    <CodeBlock className="language-bash">clarifai COMMAND --help</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -83,9 +81,7 @@ For example:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">
-    clarifai config --help
-</CodeBlock>
+    <CodeBlock className="language-bash">clarifai config --help</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -121,9 +117,7 @@ The `clarifai context` command allows you to manage different Clarifai configura
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">
-    clarifai context [OPTIONS] COMMAND [ARGS]...
-</CodeBlock>
+    <CodeBlock className="language-bash">clarifai context [OPTIONS] COMMAND [ARGS]...</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -135,9 +129,7 @@ The `create` subcommand creates a new Clarifai context.
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">
-    clarifai context create CONTEXT_NAME_HERE
-</CodeBlock>
+    <CodeBlock className="language-bash">clarifai context create CONTEXT_NAME_HERE</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -172,9 +164,7 @@ Here is an example:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">
-    clarifai context delete old_project_context
-</CodeBlock>
+    <CodeBlock className="language-bash">clarifai context delete old_project_context</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -187,9 +177,7 @@ This is useful when you need to switch between different Clarifai applications, 
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">
-    clarifai context use CONTEXT_NAME_HERE
-</CodeBlock>
+    <CodeBlock className="language-bash">clarifai context use CONTEXT_NAME_HERE</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -197,9 +185,7 @@ Here is an example:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">
-    clarifai context use my_other_project
-</CodeBlock>
+    <CodeBlock className="language-bash">clarifai context use my_other_project</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -210,9 +196,7 @@ The `clarifai login` command is used to authenticate and configure your access t
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">
-    clarifai login [OPTIONS] [API_URL]
-</CodeBlock>
+    <CodeBlock className="language-bash">clarifai login [OPTIONS] [API_URL]</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -422,7 +406,7 @@ The Clarifai CLI will now use the `my_other_project` context for all subsequent 
 
 The `clarifai model init` command initializes a new Clarifai model directory structure. This command helps you set up the necessary files and folders to begin building a [custom model](https://docs.clarifai.com/compute/models/upload/) suitable for the Clarifai platform.
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash"> clarifai model init [OPTIONS] [MODEL_PATH] </CodeBlock>
 </TabItem>
@@ -444,55 +428,113 @@ The generated structure includes:
 * **`requirements.txt`** — This file is used to list any Python dependencies your model requires. When your model is deployed, Clarifai will install these dependencies.
 * **`config.yaml`** — This YAML file is used for model configuration, allowing you to define settings and parameters for your model.
 
-### Options
 
-The `--model-type-id` option specifies the type of model class to initialize. This ensures that the generated files are tailored to the chosen model type. 
+### Basic Initialization
 
-The accepted values for this option are:
-
-* `mcp` — Initializes the model structure using `MCPModelClass`, which is used for models that will run on Clarifai using the [Model Context Protocol (MCP)](https://docs.clarifai.com/compute/agents/mcp).
-* `openai` — Initializes the model structure using `OpenAIModelClass`, intended for models that integrate with OpenAI's APIs.
-* If no value is provided, the command defaults to initializing the standard `ModelClass`.
-
+If no option value is provided, the command defaults to initializing the standard `ModelClass`.
 
 Here is how to initialize a model in the current directory with the default model class:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash"> clarifai model init </CodeBlock>
+    <CodeBlock className="language-bash">clarifai model init</CodeBlock>
 </TabItem>
 </Tabs>
 
 Here is how to initialize a model named `my_custom_model` in a new directory:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash"> clarifai model init my_custom_model </CodeBlock>
+    <CodeBlock className="language-bash">clarifai model init my_custom_model</CodeBlock>
 </TabItem>
 </Tabs>
 
 This will create a directory `my_custom_model` with the standard model structure inside it.
 
+:::note
+
+The `--model-type-id` option specifies the type of model class to initialize. This ensures that the generated files are tailored to the chosen model type. 
+
+:::
+
+### Initialize `mcp` Model Type
+
+Providing the `mcp` option initializes the model structure using `MCPModelClass`, which is used for models that will run on Clarifai using the [Model Context Protocol (MCP)](https://docs.clarifai.com/compute/agents/mcp).
+
 Here is how to initialize an MCP model in the current directory:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash"> clarifai model init --model-type-id mcp </CodeBlock>
+    <CodeBlock className="language-bash">clarifai model init --model-type-id mcp</CodeBlock>
 </TabItem>
 </Tabs>
 
+Here is how to initialize an MCP model in a specific path:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai model init /home/username/Projects/MyMCPModel --model-type-id mcp</CodeBlock>
+</TabItem>
+</Tabs>
+
+### Initialize `openai` Model Type
+
+Providing the `openai` option initializes the model structure using `OpenAIModelClass`, intended for models that integrate with [OpenAI's APIs](https://docs.clarifai.com/compute/inference/open-ai).
+
 Here is how to initialize an OpenAI-compatible model in the current directory:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash"> clarifai model init --model-type-id openai </CodeBlock>
+    <CodeBlock className="language-bash">clarifai model init --model-type-id openai</CodeBlock>
 </TabItem>
 </Tabs>
 
 Here is how to initialize an OpenAI-compatible model in a specific path:
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash"> clarifai model init /home/username/Projects/MyOpenAIModel --model-type-id openai</CodeBlock>
+    <CodeBlock className="language-bash">clarifai model init /home/username/Projects/MyOpenAIModel --model-type-id openai</CodeBlock>
+</TabItem>
+</Tabs>
+
+### Initialize With GitHub Template
+
+You can clone a custom template from a GitHub repository to initialize your model. Simply provide the full GitHub repository URL or use the convenient `user/repo` format. This allows you to quickly set up your project with an existing structure and files.
+
+Here is how to clone a public GitHub repository named `my_awesome_model` into a new directory with the same name:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai model init my_awesome_model --github-repo your-username/my-awesome-model</CodeBlock>
+</TabItem>
+</Tabs>
+
+> **Note:** Replace `your-username/my-awesome-model` with the actual repository path. You can also provide the full URL path like `https://github.com/your-username/my-awesome-model`.
+
+Here is how to clone a private GitHub repository named `my_private_model` into a new directory with the same name, using a GitHub Personal Access Token:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai model init my_private_model --github-repo your-username/my-private-model --github-pat YOUR_GITHUB_PAT_TOKEN</CodeBlock>
+</TabItem>
+</Tabs>
+
+> **Note:** Replace `your-username/my-private-model` and `YOUR_GITHUB_PAT_TOKEN` with your actual values.
+
+Here is how to clone a specific branch (called `development`) of a GitHub repository:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai model init feature_model --github-repo your-username/my-model-repo --branch development</CodeBlock>
+</TabItem>
+</Tabs>
+
+### Initialize With Ollama Template
+
+Here is how to create an [Ollama-compatible](https://ollama.com/search) model template in the `my_ollama_model` directory:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai model init my_ollama_model --local-ollama-model</CodeBlock>
 </TabItem>
 </Tabs>
