@@ -32,7 +32,12 @@ import LocalDevExampleCode from "!!raw-loader!../../code_snippets/python-sdk/mod
 
 ## Prerequisites
 
-Before you can start developing and testing your models locally with Local Runners, there are a couple of things you'll need.
+### Sign Up or Log In 
+
+[Log in to](https://clarifai.com/login) your existing Clarifai account or [sign up](https://clarifai.com/signup) for a new one. Next, retrieve the following credentials required for setup:
+
+- **User ID** – Go to your personal settings page and locate your user ID under the **Account** section.
+- **PAT** – From the same personal settings page, go to the **Security** section to generate or copy your [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat). This token is used to authenticate your connection with the Clarifai platform.
 
 ### Install Clarifai CLI
 
@@ -45,12 +50,6 @@ Install the latest version of the [Clarifai CLI](https://docs.clarifai.com/sdk/c
 </Tabs>
 
 > **Note:** You'll need **Python 3.10 or higher** installed to successfully run the Local Runners.
-
-### Get a PAT Key and User ID
-
-To authenticate your connection with the Clarifai platform, you'll need a [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat) key. You can generate the PAT key in your personal settings page by navigating to the **Security** section.
-
-Additionally, visit the **Account** section to find your User ID, which is also required for setup.
 
 ---
 

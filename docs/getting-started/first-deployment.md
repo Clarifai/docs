@@ -20,7 +20,7 @@ Cloud model deployment via Clarifai requires a [paid plan](https://www.clarifai.
 
 ## Step 1: Sign Up or Log In 
 
-Start by [logging into](https://clarifai.com/login) your Clarifai account, or [sign up](https://clarifai.com/signup) for a new one to unlock access to the platform’s powerful AI capabilities. 
+Start by [logging in to](https://clarifai.com/login) your Clarifai account, or [sign up](https://clarifai.com/signup) for a new one to unlock access to the platform’s powerful AI capabilities. 
 
 ## Step 2: Get a Model
 

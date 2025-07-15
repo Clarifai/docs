@@ -55,16 +55,26 @@ import PredictOutput3 from "!!raw-loader!../../../code_snippets/python-sdk/model
 
 ## Step 1: Perform Prerequisites
 
-### Set up Docker or a Virtual Environment
+### Sign Up or Log In 
 
-To test, run, and upload your model, you need to set up either a Docker container or a Python virtual environment. This ensures proper dependency management and prevents conflicts in your project.  
+[Log in to](https://clarifai.com/login) your existing Clarifai account, or [sign up](https://clarifai.com/signup) for a new one. If you're creating a new account, a default application will be provided for you.
 
-Both options allow you to work with different Python versions. For example, you can use Python 3.11 for uploading one model and Python 3.12 for another — configured via the [`config.yaml`](#build-info) file.  
+Next, retrieve the following credentials:
 
-> If Docker is installed on your system, it is highly recommended to use it for running the model. Docker provides better isolation and a fully portable environment, including for Python and system libraries.   
- 
-You should ensure your local environment has sufficient memory and compute resources to handle model loading and execution, especially during [testing](https://docs.clarifai.com/sdk/compute-orchestration/test-models-locally).  
+- **App ID** – Go to your application’s page and select the [**Overview**](https://docs.clarifai.com/create/applications/manage#app-overview) option in the collapsible left sidebar. Get the app ID from there. 
+- **User ID** – Go to your personal settings page and find your user ID under the **Account** section.
+- **PAT** – From the same personal settings page, go to the **Security** section to generate or copy your [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat). This token is used to authenticate your connection with the Clarifai platform.
 
+You need to set the `CLARIFAI_PAT` you've retrieved as an environment variable. 
+
+<Tabs groupId="code">
+<TabItem value="bash" label="Unix-Like Systems">
+    <CodeBlock className="language-bash"> export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
+</TabItem>
+<TabItem value="bash2" label="Windows">
+    <CodeBlock className="language-bash"> set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
+</TabItem>
+</Tabs>
 
 ### Install Clarifai Package
 
@@ -77,21 +87,15 @@ Install the latest version of the `clarifai` Python package. This will also inst
 </TabItem>
 </Tabs>
 
+### Set up Docker or a Virtual Environment
 
-### Set a PAT Key
+To test, run, and upload your model, you need to set up either a Docker container or a Python virtual environment. This ensures proper dependency management and prevents conflicts in your project.  
 
-You need to set the `CLARIFAI_PAT` (Personal Access Token) as an environment variable. You can generate the PAT key in your personal settings page by navigating to the [Security section](https://clarifai.com/settings/security).
+Both options allow you to work with different Python versions. For example, you can use Python 3.11 for uploading one model and Python 3.12 for another — configured via the [`config.yaml`](#build-info) file.  
 
-This token is essential for authenticating your connection to the Clarifai platform.
-
-<Tabs groupId="code">
-<TabItem value="bash" label="Unix-Like Systems">
-    <CodeBlock className="language-bash"> export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
-</TabItem>
-<TabItem value="bash2" label="Windows">
-    <CodeBlock className="language-bash"> set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
-</TabItem>
-</Tabs>
+> If Docker is installed on your system, it is highly recommended to use it for running the model. Docker provides better isolation and a fully portable environment, including for Python and system libraries.   
+ 
+You should ensure your local environment has sufficient memory and compute resources to handle model loading and execution, especially during [testing](https://docs.clarifai.com/sdk/compute-orchestration/test-models-locally).  
 
 ### Create Project Directory
 
@@ -192,10 +196,7 @@ Let’s break down what each part of the file does.
 
 #### Model Info  
 
-This section defines your model ID, Clarifai user ID, and Clarifai app ID, which will determine where the model is uploaded on the Clarifai platform.
-
-
-
+This section defines your unique model ID (any arbitrary name you choose), along with the Clarifai user ID and app ID you retrieved [earlier](#sign-up-or-log-in). These values will determine where the model is uploaded on the Clarifai platform.
 
 #### Build Info  
 

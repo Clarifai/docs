@@ -23,7 +23,7 @@ You can quickly test performance, experiment with real inputs, and explore Clari
  
 ## Step 1: Sign Up or Log In 
 
-Start by [logging into](https://clarifai.com/login) your existing Clarifai account, or [sign up](https://clarifai.com/signup) for a new one to unlock access to the platform’s powerful AI capabilities. New users receive free operations to help kickstart their exploration.
+Start by [logging in to](https://clarifai.com/login) your existing Clarifai account, or [sign up](https://clarifai.com/signup) for a new one to unlock access to the platform’s powerful AI capabilities. New users receive free operations to help kickstart their exploration.
 
 ## Step 2: Get a Model
 

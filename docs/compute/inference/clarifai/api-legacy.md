@@ -935,7 +935,7 @@ When making predictions using LLMs on our platform, some models offer the abilit
 
 These parameters control the behavior of the model during the generation process, affecting aspects like creativity, coherence, and the diversity of the generated text.
 
-You can learn more about them [here](advanced.md#types-of-inference-parameters). 
+You can learn more about them [here](https://docs.clarifai.com/compute/inference/advanced). 
 
 > **Note:** You can also find various examples of how to set inference parameters throughout this guide.
 

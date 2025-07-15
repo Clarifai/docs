@@ -18,7 +18,7 @@ Setting up a cloud compute infrastructure via Clarifai requires a [paid plan](ht
 
 ## Step 1: Sign Up or Log In 
 
-Start by [logging into](https://clarifai.com/login) your existing Clarifai account, or [sign up](https://clarifai.com/signup) for a new one to unlock access to the platform’s powerful AI capabilities. 
+Start by [logging in to](https://clarifai.com/login) your existing Clarifai account, or [sign up](https://clarifai.com/signup) for a new one to unlock access to the platform’s powerful AI capabilities. 
 
 ## Step 2: Choose Your Compute Option
 

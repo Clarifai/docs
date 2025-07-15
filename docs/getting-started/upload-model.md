@@ -33,21 +33,17 @@ import BuildLogsExample from "!!raw-loader!../../code_snippets/python-sdk/model-
 
 ## Step 1: Perform Prerequisites
 
-### Install Clarifai Package
+### Sign Up or Log In 
 
-Install the latest version of the `clarifai` Python SDK. This also installs the Clarifai [Command Line Interface (CLI)](https://docs.clarifai.com/additional-resources/api-overview/cli), which we'll use for uploading the model.
+To get started, [log in to](https://clarifai.com/login) your existing Clarifai account or [sign up](https://clarifai.com/signup) for a new one. If you're creating a new account, a default application will be automatically generated for you.
 
-<Tabs groupId="code">
-<TabItem value="bash" label="Bash">
-    <CodeBlock className="language-bash"> pip install --upgrade clarifai </CodeBlock>
-</TabItem>
-</Tabs>
+Next, retrieve the following credentials:
 
-### Set a PAT Key
+- **App ID** – Navigate to your application’s page and select the [**Overview**](https://docs.clarifai.com/create/applications/manage#app-overview) option in the collapsible left sidebar. Get the app ID from there. 
+- **User ID** – Go to your personal settings page and locate your user ID under the **Account** section.
+- **PAT** – From the same personal settings page, go to the **Security** section to generate or copy your [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat). This token is used to authenticate your connection with the Clarifai platform.
 
-You need to set the `CLARIFAI_PAT` (Personal Access Token) as an environment variable. You can generate the PAT key in your personal settings page by navigating to the [Security section](https://clarifai.com/settings/security).
-
-This token is essential for authenticating your connection to the Clarifai platform.
+You need to set the `CLARIFAI_PAT` you've retrieved as an environment variable. 
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Unix-Like Systems">
@@ -58,13 +54,15 @@ This token is essential for authenticating your connection to the Clarifai platf
 </TabItem>
 </Tabs>
 
-<!--
-### Get a Hugging Face Access Token
+### Install Clarifai Package
 
-To download models from the Hugging Face platform, you'll need to authenticate your connection. You can create a Hugging Face account, then generate an access token to authorize your downloads. 
+Install the latest version of the `clarifai` Python SDK. This also installs the Clarifai [Command Line Interface (CLI)](https://docs.clarifai.com/additional-resources/api-overview/cli), which we'll use for uploading the model.
 
-You can follow the guide [here](https://huggingface.co/docs/hub/en/security-tokens) to get it.
--->
+<Tabs groupId="code">
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash"> pip install --upgrade clarifai </CodeBlock>
+</TabItem>
+</Tabs>
 
 ## Step 2: Create Files
 
@@ -114,7 +112,7 @@ Add the following snippets to each of the respective files.
 
 :::info important
 
-In the `model` section of the `config.yaml` file, specify your model ID, Clarifai user ID, and Clarifai app ID. These will define where your model will be uploaded on the Clarifai platform. 
+In the `model` section of the `config.yaml` file, specify a unique model ID (any arbitrary name you choose), along with the Clarifai user ID and app ID you retrieved [earlier](#sign-up-or-log-in). These values determine the destination where your model will be uploaded on the Clarifai platform.
 
 :::
 
