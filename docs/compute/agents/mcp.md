@@ -56,7 +56,7 @@ You can run the following command to install them:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">
-    <CodeBlock className="language-bash"> pip install --upgrade fastmcp pydantic clarifai </CodeBlock>
+    <CodeBlock className="language-bash">pip install --upgrade fastmcp pydantic clarifai</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -66,7 +66,7 @@ Or, you can define the packages in a [`requirements.txt`](#step-4-define-depende
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">
-    <CodeBlock className="language-bash"> pip install -r requirements.txt </CodeBlock>
+    <CodeBlock className="language-bash">pip install -r requirements.txt</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -79,10 +79,10 @@ Then, set the `CLARIFAI_PAT` as an environment variable.
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Unix-Like Systems">
-    <CodeBlock className="language-bash"> export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
+    <CodeBlock className="language-bash">export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE</CodeBlock>
 </TabItem>
 <TabItem value="bash2" label="Windows">
-    <CodeBlock className="language-bash"> set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
+    <CodeBlock className="language-bash">set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -202,13 +202,13 @@ Here's the `requirements.txt` file for the custom model (or, in this case, a ser
 
 Before uploading your server to the Clarifai platform, you can test it locally to catch any typos or misconfigurations in the code.
 
-#### a. Local-Dev
+#### a. Local Runners
 
-You can use Clarifai's `local-dev` CLI tool to test and run your model as a local development runner. You can learn how to use the tool [here](https://docs.clarifai.com/compute/models/upload/run-locally).
+You can use Clarifai's `local-runner` CLI tool to test and run your model as a local development runner. You can learn how to use the tool [here](https://docs.clarifai.com/compute/local-runners/).
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">
-    <CodeBlock className="language-bash"> clarifai model local-dev </CodeBlock>
+    <CodeBlock className="language-bash">clarifai model local-runner</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -220,7 +220,7 @@ To launch the Inspector, run the following command.
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">
-    <CodeBlock className="language-bash"> npx @modelcontextprotocol/inspector </CodeBlock>
+    <CodeBlock className="language-bash">npx @modelcontextprotocol/inspector</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -241,7 +241,7 @@ To upload the MCP server to the Clarifai platform, navigate to its root director
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash"> clarifai model upload </CodeBlock>
+    <CodeBlock className="language-bash">clarifai model upload</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -290,7 +290,7 @@ To execute the client example, run the following command:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">
-    <CodeBlock className="language-bash"> python client.py </CodeBlock>
+    <CodeBlock className="language-bash">python client.py</CodeBlock>
 </TabItem>
 </Tabs>
 
