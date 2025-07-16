@@ -441,7 +441,7 @@ Here is how to initialize a model in the current directory with the default mode
 </TabItem>
 </Tabs>
 
-Here is how to initialize a model named `my_custom_model` in a new directory:
+Here is how to initialize a model in a new directory:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
