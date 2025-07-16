@@ -499,7 +499,9 @@ Here is how to initialize an OpenAI-compatible model in a specific path:
 
 ### Initialize With GitHub Template
 
-You can clone a custom template from a GitHub repository to initialize your model. Simply provide the full GitHub repository URL or use the convenient `user/repo` format. This allows you to quickly set up your project with an existing structure and files.
+You can initialize your model using a custom template from a GitHub repository. The repository must follow the standardized directory structure described [above](#clarifai-model-init) to ensure compatibility with the Clarifai platform. 
+
+Simply provide the full GitHub repository URL or use the convenient `user/repo` format. This allows you to quickly set up your project with an existing structure and files.
 
 Here is how to clone a public GitHub repository named `my_awesome_model` into a new directory with the same name:
 
@@ -531,10 +533,10 @@ Here is how to clone a specific branch (called `development`) of a GitHub reposi
 
 ### Initialize With Ollama Template
 
-Here is how to create an [Ollama-compatible](https://ollama.com/search) model template in the `my_ollama_model` directory:
+Here is how to create an [Ollama-compatible](https://ollama.com/search) model template in the current directory:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">clarifai model init my_ollama_model --local-ollama-model</CodeBlock>
+    <CodeBlock className="language-bash">clarifai model init --local-ollama-model</CodeBlock>
 </TabItem>
 </Tabs>

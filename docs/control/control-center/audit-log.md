@@ -20,7 +20,7 @@ To learn how to perform audit tracking via the UI, see [Teams & Logs](teams-logs
 
 :::info
 
-The initialization code used in the following examples is outlined in detail on the [client installation page.](https://docs.clarifai.com/api-guide/api-overview/api-clients#client-installation-instructions)
+Before using the [Python SDK](https://docs.clarifai.com/additional-resources/api-overview/python-sdk), [CLI](https://docs.clarifai.com/additional-resources/api-overview/cli), [Node.js SDK](https://docs.clarifai.com/additional-resources/api-overview/nodejs-sdk), or any of our [gRPC clients](https://docs.clarifai.com/additional-resources/api-overview/grpc-clients), ensure they are properly installed on your machine. Refer to their respective installation guides for instructions on how to install and initialize them.
 
 :::
 
@@ -81,55 +81,21 @@ import CURLPage from "!!raw-loader!../../../code_snippets/api-guide/audit-log/pa
 
 import OutputExample1 from "!!raw-loader!../../../code_snippets/api-guide/audit-log/output-1.json";
 
-## List Audit Log Events
-
-Here is how you can list all the supported audit log events performed by a user on the Clarifai platform.
-
-<Tabs groupId="code">
-<TabItem value="python" label="Python (gRPC)">
-    <CodeBlock className="language-python">{PythonListAuditLogs}</CodeBlock>
-</TabItem>
-
-<TabItem value="js_rest" label="JavaScript (REST)">
-    <CodeBlock className="language-javascript">{JSListAuditLogs}</CodeBlock>
-</TabItem>
-
-<TabItem value="nodejs" label="Node.js (gRPC)">
- <CodeBlock className="language-javascript">{NodeListAuditLogs}</CodeBlock>
-</TabItem>
-
-<TabItem value="curl" label="cURL">
-    <CodeBlock className="language-bash">{CURLListAuditLogs}</CodeBlock>
-</TabItem>
-
-</Tabs>
-
-<details>
-  <summary>Output Example</summary>
-    <CodeBlock className="language-text">{OutputExample1}</CodeBlock>
-</details>
-
-## Filter Searches
-
-You can optionally refine your searches to retrieve only the operations of interest. This enables targeted audit trails for the activities performed on the Clarifai platform.
-
-### Operation-Based Filtering
-
-You can apply filters to target specific operation types. 
+## Supported Operations
 
 The Audit Logging feature currently supports tracking the following critical resource operations (_we're planning to support more resources in the future_):
 
-- **Organization and team membership activities** — Includes creating, updating, or deleting organizations and teams, sending invitations, and managing team users and applications.
-- **Compute Orchestration** – Cover creating, modifying, deleting clusters, nodepools, deployments 
-- **Module activities** — Tracks the creation, updating, and deletion of modules. 
-- **Model activities** — Tracks actions such as creating, training, publishing, and deleting models.  
-- **Workflow activities** — Covers the creation, publishing, updating, and deletion of workflows.  
-- **Application activities** — Includes creating, updating, duplicating, and deleting applications.  
-- **Collaborator activities** — Includes adding collaborators, editing their scopes, and removing them. 
+- **[Organization and team membership activities](https://docs.clarifai.com/control/clarifai-organizations/)** — Includes creating, updating, or deleting organizations and teams, sending invitations, and managing team users and applications.
+- **[Compute Orchestration](https://docs.clarifai.com/compute/overview)** – Cover creating, modifying, deleting clusters, nodepools, deployments 
+- **[Module activities](https://docs.clarifai.com/create/modules/)** — Tracks the creation, updating, and deletion of modules. 
+- **[Model activities](https://docs.clarifai.com/create/models/)** — Tracks actions such as creating, training, publishing, and deleting models.  
+- **[Workflow activities](https://docs.clarifai.com/create/workflows/)** — Covers the creation, publishing, updating, and deletion of workflows.  
+- **[Application activities](https://docs.clarifai.com/create/applications/create)** — Includes creating, updating, duplicating, and deleting applications.  
+- **[Collaborator activities](https://docs.clarifai.com/create/applications/manage#collaborators)** — Includes adding collaborators, editing their scopes, and removing them. 
 
-<details>
-  <summary>**Operations Event Types Supported**</summary>
-   <Tabs groupId="code">
+Here is a table that showcases the supported operations. 
+
+<Tabs groupId="code">
 
 <TabItem value="default" label="Default">
 
@@ -158,6 +124,21 @@ The Audit Logging feature currently supports tracking the following critical res
 |  `ORGANIZATION_TEAM_MEMBER_REMOVE`   | 111                   | Organization team members removed                          |
 |  `ORGANIZATION_TEAM_APP_ADD`        |   112            | Organization team applications added                          |
 |   `ORGANIZATION_TEAM_APP_REMOVE`   |  113             | Organization team applications removed                          |
+
+</TabItem>
+
+<TabItem value="co" label="Compute Orchestration">
+
+|Event Type                            |Code                |Description                    |
+|--------------------------------------|--------------------|---------------------------|
+| `COMPUTE_CLUSTER_CREATE` |    900           | Compute clusters created           |
+|   `COMPUTE_CLUSTER_DELETE `     | 901       |  Compute clusters deleted          |
+| `NODEPOOL_CREATE `       | 1000               | Nodepools created           |
+|   `NODEPOOL_UPDATE`      | 1001               |   Nodepools updated         |
+|   `NODEPOOL_DELETE`                    | 1002              |  Nodepool deleted          |
+| `DEPLOYMENT_CREATE `   | 1100           | Deployments created           |
+|   `DEPLOYMENT_UPDATE`    |   1101            |   Deployments updated         |
+|   `DEPLOYMENT_DELETE`    |   1102            |  Deployments deleted          |
 
 </TabItem>
 
@@ -229,8 +210,42 @@ The Audit Logging feature currently supports tracking the following critical res
 </TabItem>
 
 </Tabs>  
+
+## List Audit Log Events
+
+Here is how you can list all the supported audit log events performed by a user on the Clarifai platform.
+
+<Tabs groupId="code">
+<TabItem value="python" label="Python (gRPC)">
+    <CodeBlock className="language-python">{PythonListAuditLogs}</CodeBlock>
+</TabItem>
+
+<TabItem value="js_rest" label="JavaScript (REST)">
+    <CodeBlock className="language-javascript">{JSListAuditLogs}</CodeBlock>
+</TabItem>
+
+<TabItem value="nodejs" label="Node.js (gRPC)">
+ <CodeBlock className="language-javascript">{NodeListAuditLogs}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CURLListAuditLogs}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+<details>
+  <summary>Output Example</summary>
+    <CodeBlock className="language-text">{OutputExample1}</CodeBlock>
 </details>
 
+## Filter Searches
+
+You can optionally refine your searches to retrieve only the operations of interest. This enables targeted audit trails for the activities performed on the Clarifai platform.
+
+### Operation-Based Filtering
+
+You can apply filters to target specific operation types. 
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python (gRPC)">
@@ -436,3 +451,82 @@ You can split the results into [pages](https://docs.clarifai.com/api-guide/advan
 </TabItem>
 
 </Tabs>
+
+
+## Additional Actions That Generate Logs
+
+In addition to the explicitly defined audit log event types, other API actions — such as `Delete`, `Patch`, and `Post` operations on various Clarifai resources — will automatically generate audit logs when they match supported event types. 
+
+These actions are part of the broader set of activities tracked by the Audit Logging feature.
+
+<Tabs groupId="code">
+
+<TabItem value="users" label="Post (Create/Add) Actions">
+
+   * `PostAppDuplications`
+    * `PostApps`
+    * `PostCollaborators`
+    * `PostInstalledModuleVersions`
+    * `PostModels`
+    * `PostModelVersions`
+    * `PostModelVersionsPublish`
+    * `PostModelVersionsUnPublish`
+    * `PostModelVersionsUpload`
+    * `PostModules`
+    * `PostModuleVersions`
+    * `PostOrganizationInvitations`
+    * `PostOrganizationMember`
+    * `PostTeamApps`
+    * `PostTeams`
+    * `PostTeamUsers`
+    * `PostWorkflows`
+    * `PostWorkflowVersionsPublish`
+    * `PostWorkflowVersionsUnPublish`
+
+</TabItem>
+
+<TabItem value="modules" label="Patch (Update) Actions">
+
+  * `PatchApp`
+  * `PatchAppOwner`
+  * `PatchApps`
+  * `PatchCollaborators`
+  * `PatchModelCheckConsents`
+  * `PatchModelIds`
+  * `PatchModelLanguages`
+  * `PatchModels`
+  * `PatchModelToolkits`
+  * `PatchModelUseCases`
+  * `PatchModelVersions`
+  * `PatchModules`
+  * `PatchOrganizationInvitations`
+  * `PatchOrganizationMember`
+  * `PatchTeams`
+  * `PatchWorkflows`
+
+</TabItem>
+
+<TabItem value="text" label="Delete Actions">
+    
+
+  * `DeleteApp`
+  * `DeleteCollaborators`
+  * `DeleteInstalledModuleVersions`
+  * `DeleteModel`
+  * `DeleteModels`
+  * `DeleteModelVersion`
+  * `DeleteModules`
+  * `DeleteModuleVersions`
+  * `DeleteOrganizationMember`
+  * `DeleteRequestingUserFromOrganization`
+  * `DeleteTeamApps`
+  * `DeleteTeams`
+  * `DeleteTeamUsers`
+  * `DeleteWorkflow`
+  * `DeleteWorkflows`
+  * `DeleteWorkflowVersions`
+
+
+</TabItem>
+
+</Tabs>  
