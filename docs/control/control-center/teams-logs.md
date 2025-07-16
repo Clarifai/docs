@@ -28,13 +28,13 @@ This feature is currently only available to users on our Professional and Enterp
 
 You can use the Teams & Logs tab to track the following critical resource operations (_we're planning to support more resources in the future_):
 
-- **Organization and team membership activities** — Includes creating, updating, or deleting organizations and teams, sending invitations, and managing team users and applications.
-- **Compute Orchestration** – Cover creating, modifying, deleting clusters, nodepools, deployments 
-- **Collaborator activities** — Includes adding collaborators, editing their scopes, and removing them. 
-- **Application activities** — Includes creating, updating, duplicating, and deleting applications. 
-- **Model activities** — Tracks actions such as creating, training, publishing, and deleting models. 
-- **Workflow activities** — Covers the creation, publishing, updating, and deletion of workflows.  
-- **Module activities** — Tracks the creation, updating, and deletion of modules. 
+- **[Organization and team membership activities](https://docs.clarifai.com/control/clarifai-organizations/)** — Includes creating, updating, or deleting organizations and teams, sending invitations, and managing team users and applications.
+- **[Compute Orchestration](https://docs.clarifai.com/compute/overview)** – Cover creating, modifying, deleting clusters, nodepools, deployments 
+- **[Collaborator activities](https://docs.clarifai.com/create/applications/manage#collaborators)** — Includes adding collaborators, editing their scopes, and removing them. 
+- **[Application activities](https://docs.clarifai.com/create/applications/create)** — Includes creating, updating, duplicating, and deleting applications. 
+- **[Model activities](https://docs.clarifai.com/create/models/)** — Tracks actions such as creating, training, publishing, and deleting models. 
+- **[Workflow activities](https://docs.clarifai.com/create/workflows/)** — Covers the creation, publishing, updating, and deletion of workflows.  
+- **[Module activities](https://docs.clarifai.com/create/modules/)** — Tracks the creation, updating, and deletion of modules. 
 
 
 ## Audit Log Details
