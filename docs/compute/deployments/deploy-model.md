@@ -103,7 +103,7 @@ You can also configure advanced deployment settings if needed. If you choose not
 
 After completing the setup, click the **Deploy Model** button to create the deployment. You’ll be redirected to the nodepool page, where your deployed model will be listed.
 
-You can also find the deployment listed in the **Deployments** tab within the model's page. From there, you can select it to run [inferences](https://docs.clarifai.com/compute/models/model-inference).
+You can also find the deployment listed in the **Activity** tab within the model's page. From there, you can select it to run [inferences](https://docs.clarifai.com/compute/models/model-inference).
 
 ![ ](/img/compute-orchestration/compute-14-1.png)
 
