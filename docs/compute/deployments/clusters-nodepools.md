@@ -168,7 +168,7 @@ _Note that if you want to use the Clarifai CLI, you'll need to authenticate your
 
 #### Get a PAT
 
-You need a PAT (Personal Access Token) key to authenticate your connection to the Clarifai platform. You can generate it in your Personal Settings page by navigating to the [Security section](https://clarifai.com/settings/security).
+You need a [PAT (Personal Access Token)](https://docs.clarifai.com/control/authentication/pat) key to authenticate your connection to the Clarifai platform. You can generate it in your Personal Settings page by navigating to the Security section.
 
 Then, set it as an environment variable in your script.
 

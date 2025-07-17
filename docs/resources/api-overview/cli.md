@@ -499,44 +499,72 @@ Here is how to initialize an OpenAI-compatible model in a specific path:
 
 ### Initialize With GitHub Template
 
-You can initialize your model using a custom template from a GitHub repository. The repository must follow the standardized directory structure described [above](#clarifai-model-init) to ensure compatibility with the Clarifai platform. 
+You can initialize your model using a custom template from a GitHub repository using the `--github-url` option and providing the full repository URL.
 
-Simply provide the full GitHub repository URL or use the convenient `user/repo` format. This allows you to quickly set up your project with an existing structure and files.
-
-Here is how to clone a public GitHub repository named `my_awesome_model` into a new directory with the same name:
+Here is how to clone a public GitHub repository in the current directory:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">clarifai model init my_awesome_model --github-repo your-username/my-awesome-model</CodeBlock>
+    ```bash
+    clarifai model init --github-url https://github.com/Clarifai/runners-examples/tree/main/local-runners/ollama-model-upload
+    ```
 </TabItem>
 </Tabs>
 
-> **Note:** Replace `your-username/my-awesome-model` with the actual repository path. You can also provide the full URL path like `https://github.com/your-username/my-awesome-model`.
-
-Here is how to clone a private GitHub repository named `my_private_model` into a new directory with the same name, using a GitHub Personal Access Token:
+Here is how to clone a specific branch of a GitHub repository by including the branch reference directly in the URL:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">clarifai model init my_private_model --github-repo your-username/my-private-model --github-pat YOUR_GITHUB_PAT_TOKEN</CodeBlock>
+    ```bash
+    clarifai model init --github-url https://github.com/Clarifai/runners-examples/tree/vllm-tool-calling
+    ```
 </TabItem>
 </Tabs>
 
-> **Note:** Replace `your-username/my-private-model` and `YOUR_GITHUB_PAT_TOKEN` with your actual values.
-
-Here is how to clone a specific branch (called `development`) of a GitHub repository:
+Here is how to clone a private GitHub repository using a GitHub Personal Access Token:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">clarifai model init feature_model --github-repo your-username/my-model-repo --branch development</CodeBlock>
+    ```bash
+    clarifai model init --github-url https://github.com/your-username/my-private-model --github-pat YOUR_GITHUB_PAT_TOKEN
+    ```
 </TabItem>
 </Tabs>
 
-### Initialize With Ollama Template
+> **Note:** Replace `https://github.com/your-username/my-private-model` and `YOUR_GITHUB_PAT_TOKEN` with your actual values.
 
-Here is how to create an [Ollama-compatible](https://ollama.com/search) model template in the current directory:
+### Initialize With Toolkit
+
+You can initialize a new Clarifai model directory structure from a toolkit using the `--toolkit` option. Toolkits allow you to run large language models (LLMs) and other generative AI models locally on your own machine.
+
+Currently, we support initialization using the [Ollama toolkit](https://ollama.com/search).
+
+Here is how to initialize a model using Ollama in the current directory:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">clarifai model init --local-ollama-model</CodeBlock>
+    <CodeBlock className="language-bash">clarifai model init --toolkit ollama</CodeBlock>
 </TabItem>
 </Tabs>
+
+Additionally, you can specify different options when initializing a model from the Ollama library:
+
+- `--model-name` – Name of the Ollama model to use (default: `llama3.2`). This lets you specify any model from the Ollama library
+
+- `--port` – Port where the model is running (default: `23333`)
+
+- `--context-length` – Define the context window size for the model in tokens (default: `8192`)
+
+Here is an example of initializing a `gemma3n` model with a context length of 16,000 tokens, running on port 8008:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai model init --toolkit ollama --model-name gemma3n --port 8008 --context-length 16000</CodeBlock>
+</TabItem>
+</Tabs>
+
+:::tip
+
+Learn how to run Ollama models using Clarifai Local Runners [here](https://github.com/Clarifai/runners-examples/tree/main/local-runners/ollama-model-upload). 
+
+:::

@@ -4925,6 +4925,13 @@ dns-packet@^5.2.2:
   dependencies:
     "@leichtgewicht/ip-codec" "^2.0.1"
 
+docusaurus-plugin-generate-llms-txt@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/docusaurus-plugin-generate-llms-txt/-/docusaurus-plugin-generate-llms-txt-0.0.1.tgz#e2104a73bdf59ea9f576f319e73e7d9c664e6ea8"
+  integrity sha512-XlUeQ23anYc85I1k9pO61fWcMWcUs8Tx7n3zqIus/1wjZ1mjezm0lOX9jymu9Y2MAi3/YQbDxsfo4kZrMf5q6A==
+  dependencies:
+    js-yaml "^4.1.0"
+
 docusaurus-plugin-openapi-docs@^4.5.1:
   version "4.5.1"
   resolved "https://registry.yarnpkg.com/docusaurus-plugin-openapi-docs/-/docusaurus-plugin-openapi-docs-4.5.1.tgz#b1133b0e03e284a6ade47fa2c3fcf5eab8ec6911"

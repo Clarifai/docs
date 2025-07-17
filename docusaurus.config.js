@@ -260,6 +260,12 @@ const config = {
     ],
     [
       'plugin-image-zoom', {}
+    ],    
+    [
+      'docusaurus-plugin-generate-llms-txt', 
+      {
+        outputFile: 'llms.txt', // defaults to llms.txt if not specified
+      }
     ],
     /*
     // If this is activated, then deactivate redocusaurus as configured above
