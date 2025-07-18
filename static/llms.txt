@@ -39256,7 +39256,7 @@ Here is how to initialize an OpenAI-compatible model in a specific path:
 
 ### Initialize With GitHub Template
 
-You can initialize your model using a custom template from a GitHub repository by providing either the full repository URL or the shorthand `user/repo` format.
+You can initialize your model using a custom template from a GitHub repository using the `--github-url` option and providing the full repository URL.
 
 Here is how to clone a public GitHub repository in the current directory:
 
@@ -39265,14 +39265,6 @@ Here is how to clone a public GitHub repository in the current directory:
     ```bash
     clarifai model init --github-url https://github.com/Clarifai/runners-examples/tree/main/local-runners/ollama-model-upload
     ```
-</TabItem>
-</Tabs>
-
-Here is how to clone a public GitHub repository using the shorthand `user/repo` format:
-
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">clarifai model init --github-url your-username/my-model-repo</CodeBlock>
 </TabItem>
 </Tabs>
 
