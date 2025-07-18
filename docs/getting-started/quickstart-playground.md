@@ -61,7 +61,7 @@ The results will be streamed directly on the interface, allowing you to see the 
 
 :::tip
 
-For this example, we're using the default settings for deployment (`Clarifai Shared`), inference parameters, and others. You can [customize](https://docs.clarifai.com/compute/models/inference/ui/#prediction-with-compute-orchestration) these settings as needed for more advanced use cases.
+For this example, we're using the default settings for deployment ([`Clarifai Shared`](https://docs.clarifai.com/compute/deployments/clusters-nodepools)) and [inference parameters](https://docs.clarifai.com/compute/inference/advanced). You can customize these settings as needed for more advanced use cases.
 
 :::
 
