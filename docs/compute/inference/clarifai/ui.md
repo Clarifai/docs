@@ -61,6 +61,28 @@ For these examples, we’re using the default deployment settings (**Clarifai Sh
 
 > ![](/img/community_2/ui_inference_3.png)
 
+## Generate Multimodal Predictions
+
+Clarifai supports multimodal models — models that can process and understand more than one type of input at a time, such as images combined with text. These models are designed to handle complex scenarios where context from multiple input types improves prediction quality.
+
+Their common use cases include tasks like image captioning, visual question answering (VQA), and multimodal classification.
+
+### Step 1: Get a Model
+
+After finding a multimodal model you want to use, go to its individual page and click the **Open in Playground** button located in the upper-right corner, as illustrated earlier.
+
+For this example, we’ll use the [GPT-4o](https://clarifai.com/openai/chat-completion/models/gpt-4o) model, which can process both an image and a text prompt simultaneously. 
+
+### Step 2: Run Your Inference
+
+While on the AI Playground, navigate to the message box at the bottom and click the plus (**+**) button. A pop-up window will appear, allowing you to select and upload an image.
+
+Once the image is uploaded, enter your accompanying text prompt in the message box. Then, click the arrow icon to submit your request.
+
+The model’s response will be streamed in real time, allowing you to see the output as it’s being generated.
+
+![](/img/community_2/ui_inference_4.png)
+
 ## Generate Visual Predictions
 
 The Clarifai platform allows you to leverage powerful AI models to analyze and understand visual data such as images and videos. By providing visual input, you can prompt a model to analyze the content and generate an output based on its learned visual understanding.
@@ -81,7 +103,7 @@ While on the AI Playground, click the plus (**+**) blue button on the left side.
 - Try your own image or video
 - Batch predict on app inputs
 
-![](/img/community_2/ui_inference_4.png)
+![](/img/community_2/ui_inference_5.png)
 
 #### Try Your Own Images or Videos
 
@@ -104,18 +126,15 @@ You’ll be redirected to the [single Input-Viewer](https://docs.clarifai.com/cr
 ![](/img/community_2/model_predictions-4.png)
 
 
-## Generate Multimodal Predictions
-
-https://docs.clarifai.com/compute/inference/clarifai/api#multimodal-predictions
-
-
-## Predictions Within Input-Viewer
+## Generate Predictions Within Input-Viewer
 
 > The single Input-Viewer is the main page that showcases the details of a single input available in your app. If you click an input listed on the [Inputs-Manager](https://docs.clarifai.com/portal-guide/inputs-manager/) page, you'll be redirected to the viewer page for that input, where you can view and interact with it.
 
-To make predictions on an input, switch to predict mode by toggling the **Predict** button located in the top-left corner of the page. 
+### Step 1: Get a Model
 
-Next, click the **Choose a model or workflow** button in the right-hand sidebar to select the model you want to use. 
+To make predictions on an input within the single Input-Viewer, start by switching to predict mode by toggling the **Predict** button located in the upper-left corner of the page. 
+
+Next, click the **Choose a model or workflow** button in the right sidebar to select the model you want to use. 
 
 ![ ](/img/compute-orchestration/compute-27.png)
 
@@ -123,17 +142,15 @@ In the window that appears, choose your desired model. You can choose your own c
 
 > To select a public model or workflow from the Community, click the **Explore Community Models / Workflows** button. In the pop-up window, use the search bar to find the desired model or workflow.
 
-> For this example, let’s choose the Community’s [Qwen2_5-VL-7B-Instruct](https://clarifai.com/qwen/qwen-VL/models/Qwen2_5-VL-7B-Instruct) model, which is a vision-language model that excels in visual recognition tasks. 
-
-:::note
-
-When working with image inputs, you need to choose a model or workflow that outputs concepts or objects (bounding box regions). This ensures the generation and display of the predictions.
-
-:::
-
 ![ ](/img/compute-orchestration/compute-27-1.png)
 
-Then select a deployment from the **Deployment** dropdown. If needed, you can also [create a new deployment](https://docs.clarifai.com/compute/deployments/deploy-model#via-the-ui) from this window. 
+For this example, let’s choose the Community’s [Qwen2_5-VL-7B-Instruct](https://clarifai.com/qwen/qwen-VL/models/Qwen2_5-VL-7B-Instruct) model, which is a vision-language model that excels in visual recognition tasks. 
+
+### Step 2: Run Your Inference
+
+Next, select a deployment from the **Deployment** dropdown. For this example, we’re using the default deployment settings (**Clarifai Shared**). 
+
+If needed, you can also [create a new deployment](https://docs.clarifai.com/compute/deployments/deploy-model#via-the-ui) from this window. 
 
 ![ ](/img/compute-orchestration/compute-28.png)
 
@@ -145,6 +162,6 @@ The model will process the input and return predictions in real time, allowing y
 
 :::note
 
-For models that ouput concepts, the **Prediction Threshold** slider allows you to set the threshold that will allow you to see only the prediction probabilities that meet your defined criteria. You can also use the **Filter by concept** search field to find specific concepts and display their predictions on the page.
+For models that output concepts, the **Prediction Threshold** slider allows you to control which predictions are displayed by setting a minimum confidence level. Only predictions with probabilities that meet or exceed this threshold will be shown. You can also use the **Filter by concept** search field to quickly locate specific concepts and view their associated predictions on the page.
 
 :::
