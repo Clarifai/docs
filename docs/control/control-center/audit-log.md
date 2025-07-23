@@ -1,6 +1,6 @@
 ---
 description: Track what was performed, who did it, and the results
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 # Audit Logging via API

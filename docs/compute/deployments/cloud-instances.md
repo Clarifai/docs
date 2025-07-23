@@ -13,7 +13,7 @@ We offer a range of instance types designed to handle a variety of machine learn
 
 :::tip pricing
 
-To learn more about pricing for each instance type, [click here](https://www.clarifai.com/pricing).
+To learn more about pricing for each instance type, see the [pricing page](https://www.clarifai.com/pricing).
 
 :::
 
@@ -81,9 +81,10 @@ The `g5` series delivers enhanced GPU capabilities and is designed for tasks req
 
 - Running object tracking or pose estimation workflows in real-time video analysis.
 
-:::tip
+:::info How to Choose the best GPU 
 
-NVIDIA A10 or L40S? [Learn](https://www.clarifai.com/blog/nvidia-a10-vs-l40s-gpus-for-ai-workloads) how to find the best GPU for your AI workloads. 
+- [NVIDIA A10 or NVIDIA L40S?](https://www.clarifai.com/blog/nvidia-a10-vs-l40s-gpus-for-ai-workloads) 
+- [NVIDIA A10 or NVIDIA A100?](https://www.clarifai.com/blog/nvidia-a10-vs-a100-choosing-the-right-gpu-for-ai-workloads)
 
 :::
 

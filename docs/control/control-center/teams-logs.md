@@ -1,6 +1,6 @@
 ---
 description: Gain insights into platform activities with enhanced visibility, security, and governance
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 # Teams & Logs Tab
@@ -12,6 +12,8 @@ The Teams & Logs tab allows you to monitor platform operations by capturing deta
 
 It provides the ability to assess user actions and resource changes, identify potential security issues, maintain comprehensive logs to meet regulatory requirements, and monitor request origins to troubleshoot failed operations effectively.  
 
+> **Note:** The tab is hidden for users who do not have audit logging access.
+
 :::tip
 
 [Click here](audit-log.md) to learn how to perform audit tracking via the API. 
@@ -20,7 +22,7 @@ It provides the ability to assess user actions and resource changes, identify po
 
 :::info
 
-This feature is currently only available to users on our Professional and Enterprise subscription [plans](https://www.clarifai.com/pricing). 
+This audit logging feature is currently only available to users on our Professional and Enterprise subscription [plans](https://www.clarifai.com/pricing). 
 
 :::
 
@@ -47,7 +49,7 @@ You can get details of the following activity logs:
 
 - **When** — Timestamp of the operation.  
 - **Who** — Identity of the user performing the action.  
-- **What** — Description of the operation. Note that if you 
+- **What** — Description of the operation.
 - **Where** — IP address where the request originated from.  
 - **Status** — Success or failure results of the operation.  
 
@@ -61,7 +63,7 @@ By default, the page displays activities across all your apps. You can customize
 
 You can filter and view data for specific time periods using the date range selector in the upper-right corner. If you click the tool, a calendar will drop down, which allows you to specify a date range to narrow down the activity logs. _Note that the current date is not selected by default._ 
 
-You can learn more about the date range tool [here](https://docs.clarifai.com/portal-guide/control-center/#date-ranges). 
+You can learn more about the date range tool [here](overview.md#date-range-selection). 
 
 ![](/img/community/control-center/teams_logs_3.png)
 
