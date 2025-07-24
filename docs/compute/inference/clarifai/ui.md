@@ -90,6 +90,12 @@ The Clarifai platform allows you to leverage powerful AI models to analyze and u
 Depending on the model type, the output may include [image classifications](https://docs.clarifai.com/create/models/deep-fine-tuning/visual-classifier), [object detections](https://docs.clarifai.com/create/models/deep-fine-tuning/visual-detector), [segmentation masks](https://docs.clarifai.com/create/models/deep-fine-tuning/visual-segmenter), or even AI-generated visuals.
 
 
+:::note
+
+The Playground automatically detects the appropriate mode based on the selected model — intelligently switching between **Chat** and **Vision** modes to match the model's capabilities.
+
+:::
+
 ### Step 1: Get a Model
 
 After finding a visual model you want to use, go to its individual page and click the **Open in Playground** button located in the upper-right corner, as illustrated earlier.

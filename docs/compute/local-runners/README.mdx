@@ -1,6 +1,5 @@
 ---
 description: Run models locally for development, debugging, or compute tasks
-sidebar_position: 5
 ---
 
 
@@ -23,8 +22,8 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
-import LocalDev from "!!raw-loader!../../code_snippets/python-sdk/model-upload/local-dev.txt";
-import LocalDevExampleCode from "!!raw-loader!../../code_snippets/python-sdk/model-upload/local-dev-example-code.py";
+import LocalDev from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/local-dev.txt";
+import LocalDevExampleCode from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/local-dev-example-code.py";
 
 ![ ](/img/others-2/local-runners.png)
 
@@ -152,12 +151,6 @@ These are the environment variables required to create a runner:
 
 ## Step 3: Run Your Model
 
-:::info note
-
-We'll use this method to run and test the model we created [here](https://docs.clarifai.com/compute/models/upload/). 
-
-:::
-
 To run your model with the local development runner, navigate to the directory where your custom model is located. 
 
 Then, follow these steps.
@@ -253,5 +246,4 @@ After you're done testing, simply close the terminal running the local developme
 ## Additional Examples
 
 - [Simple example for running Hello World model locally with Clarifai’s Local Runners](https://github.com/Clarifai/runners-examples/tree/main/hello-world)
-- [Example for running Ollama models locally with Clarifai’s Local Runners](https://github.com/Clarifai/runners-examples/tree/main/local-runners/ollama-model-upload)
 - [YouTube video on how to build your own local AI agent using Clarifai’s Local Runners](https://www.youtube.com/watch?v=JOdtZDmCFfk)
