@@ -32,6 +32,7 @@ import Example3 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orc
 import Example4 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/openai_4.txt";
 import PyImageGeneration from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/open_ai_image_generation.py";
 import PyResponses from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/open_ai_responses.py";
+import PyMultimodal from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/open_ai_multimodal.py";
 
 ## Prerequisites
 
@@ -118,6 +119,21 @@ The OpenAI [Chat Completions](https://platform.openai.com/docs/api-reference/cha
 <details>
   <summary>Example Output</summary>
     <CodeBlock className="language-text">I'm Claude, an AI assistant created by Anthropic. I'm here to help with a wide variety of tasks like answering questions, helping with analysis and research, creative writing, math and coding problems, and having conversations. Is there something specific I can help you with today?</CodeBlock>
+</details>
+
+### Multimodal Predictions
+
+The OpenAI Chat Completions API supports multimodal inputs, allowing you to combine text and image data in a single request for more advanced predictions.
+
+<Tabs groupId="code">
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PyMultimodal}</CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+  <summary>Example Output</summary>
+    <CodeBlock className="language-text">Response: The image shows a ginger tabby cat lying down on a stone surface. The cat has a striped pattern on its fur and is looking directly at the camera with alert, bright eyes. The background features a textured wall, and the lighting highlights the cat's features, giving a warm and cozy atmosphere.</CodeBlock>
 </details>
 
 <!--

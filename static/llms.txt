@@ -205,262 +205,6 @@ import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 
 ---
 
-// File: compute\local-runners
-
-# Local Runners
-
-**Run models locally for development, debugging, or compute tasks**
-<hr />
-
-[Local Runners](https://www.clarifai.com/products/local-runners) are a powerful feature that let you securely expose your locally running models or servers via a public URL, allowing you to quickly develop, test, and share any models running on your own hardware.
-
-Instead of running solely in the cloud, you can run your models anywhere that supports Python and has an internet connection — whether it's your workstation or on-premise server.
-
-With Local Runners, you can connect your own models to Clarifai's compute plane. This seamless integration enables you to leverage the Clarifai cloud API, workflows, and other platform capabilities with your custom models.
-
-Your model can securely receive and process requests from anywhere, just as it would in a production cloud deployment.
-
-> **Note:** A runner is the actual running instance of your model. It is a unique process that pulls tasks (such as prediction requests) from a queue and executes them using the model’s logic. 
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import CodeBlock from "@theme/CodeBlock";
-
-import LocalDev from "!!raw-loader!../../code_snippets/python-sdk/model-upload/local-dev.txt";
-import LocalDevExampleCode from "!!raw-loader!../../code_snippets/python-sdk/model-upload/local-dev-example-code.py";
-
-![ ](/img/others-2/local-runners.png)
-
-
-
-## Prerequisites
-
-### Sign Up or Log In 
-
-[Log in to](https://clarifai.com/login) your existing Clarifai account or [sign up](https://clarifai.com/signup) for a new one. Next, retrieve the following credentials required for setup:
-
-- **User ID** – Go to your personal settings page and locate your user ID under the **Account** section.
-- **PAT** – From the same personal settings page, go to the **Security** section to generate or copy your [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat). This token is used to authenticate your connection with the Clarifai platform.
-
-### Install Clarifai CLI
-
-Install the latest version of the [Clarifai CLI](https://docs.clarifai.com/sdk/cli) (version `11.6.3` or higher) tool. It includes built-in support for Local Runners. 
-
-<Tabs groupId="code">
-<TabItem value="bash" label="Bash">
-    <CodeBlock className="language-bash">pip install --upgrade clarifai</CodeBlock>
-</TabItem>
-</Tabs>
-
-> **Note:** You'll need **Python 3.10 or higher** installed to successfully run the Local Runners.
-
----
-
-## Quick Start
-
-Once you've completed the prerequisites above, run the following commands and follow the prompts in your terminal to quickly get started with Local Runners.
-
-### Log in to Clarifai
-
-Connect your environment to the Clarifai platform and [create a context](#step-2-create-a-context-optional) profile.  
-
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">clarifai login</CodeBlock>
-</TabItem>
-</Tabs>
-
-### Set up a Model 
-
-Generate a sample toy [model](#step-1-build-a-model) with the necessary files.
-
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">clarifai model init</CodeBlock>
-</TabItem>
-</Tabs>
-
-### Start Your Local Runner
-
-Next, you'll connect your model to a public URL using Local Runners. The CLI will guide you through a series of confirmations for key objects on the Clarifai platform, such as compute clusters, nodepools, and deployments — which are described [below](#table). 
-
-Just review each prompt and confirm to proceed.
-
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">clarifai model local-runner</CodeBlock>
-</TabItem>
-</Tabs>
-
-Once your runner launches successfully, your model will be running and accessible via a public URL. You can then open a new terminal, copy the sample code provided in the output, and [test your model](#step-4-test-with-snippet)!
-
----
-
-
-## Use Cases for Local Runners
-
-- **Streamlined model development** — Local Runners make it easy to build and test new models directly within your local environment. You can spin up a runner on your machine, route API calls through our public cloud endpoint, and watch requests hit your model in real time. This allows you to debug, set breakpoints, return results, and validate outputs.
-
-- **Leverage your own compute resources** — If you have powerful hardware, you can take advantage of that local compute without relying on Clarifai's [autoscaling](https://docs.clarifai.com/compute/deployments/clusters-nodepools/#step-3-set-node-autoscaling-range) infrastructure. Your model remains accessible through our API with full authentication, even though it runs locally.
-
-- **Locally connect agents** — Because Local Runners execute on your chosen hardware, they can interact with local file systems, make OS-level calls, or access private data stores. With our [MCP (Model Context Protocol)](https://docs.clarifai.com/compute/agents/mcp) model type, you can give your cloud-hosted agents or any MCP-enabled clients authenticated access to your locally controlled information, regardless of their deployment location.
-
-- **Run models anywhere** — Whether on a local development machine, an on-premises server, or a private cloud cluster, Local Runners seamlessly connect your models to our platform. This enables you to keep sensitive data and custom-built models securely within your own environment.
-
-## Step 1: Build a Model
-
-Start by building the model you want to run using Local Runners. 
-
-You can either create a custom model from scratch or leverage pre-trained models from external sources like Hugging Face.
-
-If you're building your own model, follow our comprehensive [step-by-step](https://docs.clarifai.com/compute/models/model-upload/) guide to get started.
-
-You can also explore our [examples repository](https://github.com/Clarifai/runners-examples) to see models built for compatibility with the Clarifai platform.
-
-:::note tip
-
-You can automatically generate a default model by running the [`clarifai model init`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init) command in the terminal from your current directory. After the model's files are created, you can modify them as needed or go with the default options.
-
-:::
-
-## Step 2: Create a Context (Optional)
-
-Running the local development runner relies on certain environment variables defined in your current context. The _context_ refers to the active environment settings that determine how your commands interact with the Clarifai platform.
-
-> **Note:** You can create this context using the provided default values when you run `clarifai login` and `local-runner` commands. 
-
-Any configurations you create locally — such as the computer cluster and app — will also be created on the Clarifai platform, making them reusable whenever you test your model with the local development runner.
-
-:::tip
-
-[Click here](https://docs.clarifai.com/resources/api-overview/cli) to learn how to create and manage various aspects of your Clarifai context, including switching contexts and editing your configuration information. 
-
-:::
-
-<a id="table"></a>
-
-These are the environment variables required to create a runner:
-
-| Variable                      | Description                                                             |
-| ----------------------------- | ----------------------------------------------------------------------- |
-| CLARIFAI_PAT                | Personal Access Token (PAT) for authentication                            |
-| CLARIFAI_USER_ID (`user_id`)           | User ID of the account owning the model                                |
-| CLARIFAI_APP_ID (`app_id`)            | App ID containing the model                                            |
-| CLARIFAI_MODEL_ID  (`model_id`)         | The model ID for the model to be run locally                           |
-| CLARIFAI_COMPUTE_CLUSTER_ID (`compute_cluster_id`) | [Compute cluster](https://docs.clarifai.com/compute/deployments/clusters-nodepools) where the Local Runner will reside. _Note that the `user_id` of the compute cluster must match the `user_id` of the model._                |
-| CLARIFAI_NODEPOOL_ID (`nodepool_id`)    | Nodepool within the compute cluster                                   |
-| CLARIFAI_DEPLOYMENT (`deployment_id`)    | [Deployment](https://docs.clarifai.com/compute/deployments/deploy-model) for a model into the cluster and nodepool                                  |
-| CLARIFAI_RUNNER_ID (`runner_id`)      | Auto-generated unique runner ID, created by the API and stored in the context |
-
-
-## Step 3: Run Your Model
-
-:::info note
-
-We'll use this method to run and test the model we created [here](https://docs.clarifai.com/compute/models/upload/). 
-
-:::
-
-To run your model with the local development runner, navigate to the directory where your custom model is located. 
-
-Then, follow these steps.
-
-### Log in to Clarifai
-
-Run the following command to log in to the Clarifai platform and establish a connection.
-
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">clarifai login</CodeBlock>
-</TabItem>
-</Tabs>
-
-After running the `login` command, you'll be prompted to enter the following details to authenticate your connection:
-
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-
-<CodeBlock className="language-bash"> 
-context name (default: "default"): 
-user id:
-personal access token value (default: "ENVVAR" to get our env var rather than config):
-</CodeBlock>
-</TabItem>
-</Tabs>
-
-- **Context name** — You can provide a custom name for your Clarifai configuration context, or simply press Enter to use the default name, "default". This helps you manage different configurations if needed.
-- **User ID** —  Enter your Clarifai user ID.
-- **PAT** — Enter your Clarifai [PAT](#get-a-pat-key-and-user-id). Note that if you press Enter, and you have set the `CLARIFAI_PAT` environment variable, it will use that token automatically.
-
-### Start Your Local Runner
-
-Next, start a local development runner.
-
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">clarifai model local-runner</CodeBlock>
-</TabItem>
-</Tabs>
-
-Or:
-
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">clarifai model local-runner [OPTIONS] [MODEL_PATH]</CodeBlock>
-</TabItem>
-</Tabs>
-
-> `MODEL_PATH` is an optional path to the model directory. If omitted, the current directory is used by default.
-
-<br/>
-
-If the runner doesn't detect the necessary [context configurations](#step-2-create-a-context-optional) in your environment, it will prompt you to create them using default values. 
-
-This ensures that all essential components required for Local Runners are properly set up or included in your configuration context, including:
-
-- A compute cluster and nodepool configured for Local Runners. 
-
-> **Note:** This cluster is created exclusively for Local Runners. It is not designed to support other tasks and lacks features like autoscaling to handle variable traffic demands, among other cloud-specific capabilities. You also cannot use other types of clusters for Local Runners — only the special cluster created for this purpose is supported.
-
-- An app with a model and model version representing the local runner.
-
-- A deployment that places the model version into the designated nodepool.
-
-<details>
-  <summary>Example Output</summary>
-    <CodeBlock className="language-text">{LocalDev}</CodeBlock>
-</details>
-
-> **Note:** If the [`config.yaml`](https://docs.clarifai.com/compute/models/upload/#step-2-prepare-the-configyaml-file) file does not contain model information that matches the `user_id`, `app_id`, and `model_id` defined in your current context, it will be automatically updated to include the new model details. This ensures that the model started by the local development runner is the same one you intend to call via the API. If needed, you can back up the existing `config.yaml` file as `config.yaml.bk`.
-
-:::tip
-
-You can view the active runners associated with your model on its individual page in the Clarifai platform. For a centralized view and easier management of all active runners, use the [Runners dashboard](https://clarifai.com/compute/runners).
-
-:::
-
-## Step 4: Test with Snippet
-
-Once the local development runner starts in your terminal, an example client code snippet is automatically generated based on the [model's signature](https://docs.clarifai.com/compute/models/inference/api#generate-example-code) to help you test it.
-
-<details>
-  <summary>Example Code Snippet</summary>
-    <CodeBlock className="language-text">{LocalDevExampleCode}</CodeBlock>
-</details>
-
-If you run the generated snippet in a separate terminal, but within the same directory, you’ll receive the model’s response output.
-
-After you're done testing, simply close the terminal running the local development runner to shut it down.
-
-
-## Additional Examples
-
-- [Simple example for running Hello World model locally with Clarifai’s Local Runners](https://github.com/Clarifai/runners-examples/tree/main/hello-world)
-- [Example for running Ollama models locally with Clarifai’s Local Runners](https://github.com/Clarifai/runners-examples/tree/main/local-runners/ollama-model-upload)
-- [YouTube video on how to build your own local AI agent using Clarifai’s Local Runners](https://www.youtube.com/watch?v=JOdtZDmCFfk)
-
----
-
 // File: compute\agents\build
 
 # Build Agents
@@ -470,7 +214,7 @@ After you're done testing, simply close the terminal running the local developme
 
 Clarifai provides a streamlined developer experience that allows you to quickly prototype, build, and deploy  agentic AI applications. 
 
-We provide an [OpenAI-compatible API endpoint](https://docs.clarifai.com/compute/models/inference/open-ai), which allows you to seamlessly integrate with popular agent development toolkits that support the OpenAI's API standard. This empowers you to create powerful, flexible, and tool-using AI agents with minimal configuration.
+We provide an [OpenAI-compatible API endpoint](https://docs.clarifai.com/compute/inference/#predict-with-openai-compatible-format), which allows you to seamlessly integrate with popular agent development toolkits that support the OpenAI's API standard. This empowers you to create powerful, flexible, and tool-using AI agents with minimal configuration.
 
 Let’s illustrate how you can build agents with the various toolkits we support.  
 
@@ -4961,6 +4705,12 @@ The Clarifai platform allows you to leverage powerful AI models to analyze and u
 Depending on the model type, the output may include [image classifications](https://docs.clarifai.com/create/models/deep-fine-tuning/visual-classifier), [object detections](https://docs.clarifai.com/create/models/deep-fine-tuning/visual-detector), [segmentation masks](https://docs.clarifai.com/create/models/deep-fine-tuning/visual-segmenter), or even AI-generated visuals.
 
 
+:::note
+
+The Playground automatically detects the appropriate mode based on the selected model — intelligently switching between **Chat** and **Vision** modes to match the model's capabilities.
+
+:::
+
 ### Step 1: Get a Model
 
 After finding a visual model you want to use, go to its individual page and click the **Open in Playground** button located in the upper-right corner, as illustrated earlier.
@@ -5036,6 +4786,385 @@ The model will process the input and return predictions in real time, allowing y
 For models that output concepts, the **Prediction Threshold** slider allows you to control which predictions are displayed by setting a minimum confidence level. Only predictions with probabilities that meet or exceed this threshold will be shown. You can also use the **Filter by concept** search field to quickly locate specific concepts and view their associated predictions on the page.
 
 :::
+
+---
+
+// File: compute\local-runners\ollama
+
+# Run Ollama Models Locally
+
+**Download and run Ollama models locally with Clarifai’s Local Runners**
+<hr />
+
+Ollama is an open-source tool that allows you to download, run, and manage large language models (LLMs) directly on your local machine. 
+
+When combined with Clarifai’s Local Runners, it enables you to run Ollama models on your machine, expose them securely via a public URL, and tap into Clarifai’s powerful platform — all while keeping the speed, privacy, and control of local deployment.
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+
+## Prerequisites
+
+### Download Ollama
+
+Go to the [Ollama website](https://ollama.com/download) and choose the appropriate installer for your system (macOS, Windows, or Linux).
+
+> **Note:** If you're using Windows, make sure to restart your machine after installing Ollama to ensure that the updated environment variables are properly applied.
+
+### Sign Up or Log In
+
+Start by [logging in](https://clarifai.com/login) to your existing Clarifai account or [signing up](https://clarifai.com/signup) for a new one. Once logged in, you'll need the following credentials for setup:
+
+- **User ID** – Navigate to your personal settings and find your user ID under the **Account** section.
+
+- **Personal Access Token (PAT)** – In the same personal settings page, go to the **Security** section to generate or copy your [PAT](https://docs.clarifai.com/control/authentication/pat). This token is used to securely authenticate your connection to the Clarifai platform.
+
+You can then set the PAT as an environment variable using `CLARIFAI_PAT`, which is important when running inference with your models. 
+
+<Tabs groupId="code">
+<TabItem value="bash" label="Unix-Like Systems">
+    <CodeBlock className="language-bash">export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE</CodeBlock>
+</TabItem>
+<TabItem value="bash2" label="Windows">
+    <CodeBlock className="language-bash">set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE</CodeBlock>
+</TabItem>
+</Tabs>
+
+### Install the Clarifai CLI
+
+Install the latest version of the [Clarifai CLI](https://docs.clarifai.com/sdk/cli), which includes built-in support for Local Runners.
+
+<Tabs groupId="code">
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash">pip install --upgrade clarifai</CodeBlock>
+</TabItem>
+</Tabs>
+
+> **Note:** You must have **Python 3.10 or higher** installed to use Local Runners.
+
+### Install OpenAI Package
+
+Install the `openai` package, which is required when performing inference with models using the [OpenAI-compatible format](https://docs.clarifai.com/compute/inference/#predict-with-openai-compatible-format). 
+
+<Tabs groupId="code">
+<TabItem value="bash" label="Python">
+    <CodeBlock className="language-bash"> pip install openai </CodeBlock>
+</TabItem>
+</Tabs>
+
+## Initialize a Model From Ollama
+
+You can use the Clarifai CLI to download and initialize any model available in the Ollama library directly into your local environment.
+
+For example, here's how to initialize the [`llama3.2`](https://ollama.com/library/llama3.2) model in your current directory:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai model init --toolkit ollama</CodeBlock>
+</TabItem>
+</Tabs>
+
+> **Note:** The above command will create a new model directory structure that is compatible with the Clarifai platform.
+
+You can customize model initialization from the Ollama library using the Clarifai CLI with the following options:
+
+- `--model-name` – Name of the Ollama model to use (default: `llama3.2`). This lets you specify any model from the Ollama library
+- `--port` – Port to run the model on (default: `23333`)
+- `--context-length` – Context window size for the model in tokens (default: `8192`)
+
+Learn more about setting up a model with Ollama [here](https://docs.clarifai.com/resources/api-overview/cli#initialize-with-toolkit). 
+
+:::note tip
+
+Here is a quickstart for Ollama models and their common use cases:
+
+* `llama3.2-vision:latest` – For multimodal tasks (text + image), like image captioning or visual Q\&A.
+* `llama3-groq-tool-use:latest` – Ideal for tool calling and function execution in [agent](https://docs.clarifai.com/compute/agents/) use cases.
+* `devstral:latest` – Best for code generation, debugging, and development assistant use cases.
+
+:::
+
+## Log In to Clarifai
+
+Use the following command to log in to the Clarifai platform to create a configuration [context](README.mdx#step-2-create-a-context-optional) and establish a connection:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai login</CodeBlock>
+</TabItem>
+</Tabs>
+
+After running the command, you'll be prompted to provide a few details for authentication:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+
+<CodeBlock className="language-bash"> 
+context name (default: "default"): 
+user id:
+personal access token value (default: "ENVVAR" to get our env var rather than config):
+</CodeBlock>
+</TabItem>
+</Tabs>
+
+Here’s what each field means:
+
+* **Context name** – You can assign a custom name to this configuration context, or simply press Enter to use the default name, `"default"`. This is useful if you manage multiple environments or configurations.
+* **User ID** – Enter your Clarifai user ID.
+* **Personal Access Token (PAT)** – Paste your Clarifai PAT here. If you've already set the `CLARIFAI_PAT` environment variable, you can just press Enter to use it automatically.
+
+## Start Your Local Runner
+
+---
+
+// File: compute\local-runners\README
+
+# Local Runners
+
+**Run models locally for development, debugging, or compute tasks**
+<hr />
+
+[Local Runners](https://www.clarifai.com/products/local-runners) are a powerful feature that let you securely expose your locally running models or servers via a public URL, allowing you to quickly develop, test, and share any models running on your own hardware.
+
+Instead of running solely in the cloud, you can run your models anywhere that supports Python and has an internet connection — whether it's your workstation or on-premise server.
+
+With Local Runners, you can connect your own models to Clarifai's compute plane. This seamless integration enables you to leverage the Clarifai cloud API, workflows, and other platform capabilities with your custom models.
+
+Your model can securely receive and process requests from anywhere, just as it would in a production cloud deployment.
+
+> **Note:** A runner is the actual running instance of your model. It is a unique process that pulls tasks (such as prediction requests) from a queue and executes them using the model’s logic. 
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+
+import LocalDev from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/local-dev.txt";
+import LocalDevExampleCode from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/local-dev-example-code.py";
+
+![ ](/img/others-2/local-runners.png)
+
+
+
+## Prerequisites
+
+### Sign Up or Log In 
+
+[Log in to](https://clarifai.com/login) your existing Clarifai account or [sign up](https://clarifai.com/signup) for a new one. Next, retrieve the following credentials required for setup:
+
+- **User ID** – Go to your personal settings page and locate your user ID under the **Account** section.
+- **PAT** – From the same personal settings page, go to the **Security** section to generate or copy your [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat). This token is used to authenticate your connection with the Clarifai platform.
+
+### Install Clarifai CLI
+
+Install the latest version of the [Clarifai CLI](https://docs.clarifai.com/sdk/cli) (version `11.6.3` or higher) tool. It includes built-in support for Local Runners. 
+
+<Tabs groupId="code">
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash">pip install --upgrade clarifai</CodeBlock>
+</TabItem>
+</Tabs>
+
+> **Note:** You'll need **Python 3.10 or higher** installed to successfully run the Local Runners.
+
+---
+
+## Quick Start
+
+Once you've completed the prerequisites above, run the following commands and follow the prompts in your terminal to quickly get started with Local Runners.
+
+### Log in to Clarifai
+
+Connect your environment to the Clarifai platform and [create a context](#step-2-create-a-context-optional) profile.  
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai login</CodeBlock>
+</TabItem>
+</Tabs>
+
+### Set up a Model 
+
+Generate a sample toy [model](#step-1-build-a-model) with the necessary files.
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai model init</CodeBlock>
+</TabItem>
+</Tabs>
+
+### Start Your Local Runner
+
+Next, you'll connect your model to a public URL using Local Runners. The CLI will guide you through a series of confirmations for key objects on the Clarifai platform, such as compute clusters, nodepools, and deployments — which are described [below](#table). 
+
+Just review each prompt and confirm to proceed.
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai model local-runner</CodeBlock>
+</TabItem>
+</Tabs>
+
+Once your runner launches successfully, your model will be running and accessible via a public URL. You can then open a new terminal, copy the sample code provided in the output, and [test your model](#step-4-test-with-snippet)!
+
+---
+
+
+## Use Cases for Local Runners
+
+- **Streamlined model development** — Local Runners make it easy to build and test new models directly within your local environment. You can spin up a runner on your machine, route API calls through our public cloud endpoint, and watch requests hit your model in real time. This allows you to debug, set breakpoints, return results, and validate outputs.
+
+- **Leverage your own compute resources** — If you have powerful hardware, you can take advantage of that local compute without relying on Clarifai's [autoscaling](https://docs.clarifai.com/compute/deployments/clusters-nodepools/#step-3-set-node-autoscaling-range) infrastructure. Your model remains accessible through our API with full authentication, even though it runs locally.
+
+- **Locally connect agents** — Because Local Runners execute on your chosen hardware, they can interact with local file systems, make OS-level calls, or access private data stores. With our [MCP (Model Context Protocol)](https://docs.clarifai.com/compute/agents/mcp) model type, you can give your cloud-hosted agents or any MCP-enabled clients authenticated access to your locally controlled information, regardless of their deployment location.
+
+- **Run models anywhere** — Whether on a local development machine, an on-premises server, or a private cloud cluster, Local Runners seamlessly connect your models to our platform. This enables you to keep sensitive data and custom-built models securely within your own environment.
+
+## Step 1: Build a Model
+
+Start by building the model you want to run using Local Runners. 
+
+You can either create a custom model from scratch or leverage pre-trained models from external sources like Hugging Face.
+
+If you're building your own model, follow our comprehensive [step-by-step](https://docs.clarifai.com/compute/models/model-upload/) guide to get started.
+
+You can also explore our [examples repository](https://github.com/Clarifai/runners-examples) to see models built for compatibility with the Clarifai platform.
+
+:::note tip
+
+You can automatically generate a default model by running the [`clarifai model init`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init) command in the terminal from your current directory. After the model's files are created, you can modify them as needed or go with the default options.
+
+:::
+
+## Step 2: Create a Context (Optional)
+
+Running the local development runner relies on certain environment variables defined in your current context. The _context_ refers to the active environment settings that determine how your commands interact with the Clarifai platform.
+
+> **Note:** You can create this context using the provided default values when you run `clarifai login` and `local-runner` commands. 
+
+Any configurations you create locally — such as the computer cluster and app — will also be created on the Clarifai platform, making them reusable whenever you test your model with the local development runner.
+
+:::tip
+
+[Click here](https://docs.clarifai.com/resources/api-overview/cli) to learn how to create and manage various aspects of your Clarifai context, including switching contexts and editing your configuration information. 
+
+:::
+
+<a id="table"></a>
+
+These are the environment variables required to create a runner:
+
+| Variable                      | Description                                                             |
+| ----------------------------- | ----------------------------------------------------------------------- |
+| CLARIFAI_PAT                | Personal Access Token (PAT) for authentication                            |
+| CLARIFAI_USER_ID (`user_id`)           | User ID of the account owning the model                                |
+| CLARIFAI_APP_ID (`app_id`)            | App ID containing the model                                            |
+| CLARIFAI_MODEL_ID  (`model_id`)         | The model ID for the model to be run locally                           |
+| CLARIFAI_COMPUTE_CLUSTER_ID (`compute_cluster_id`) | [Compute cluster](https://docs.clarifai.com/compute/deployments/clusters-nodepools) where the Local Runner will reside. _Note that the `user_id` of the compute cluster must match the `user_id` of the model._                |
+| CLARIFAI_NODEPOOL_ID (`nodepool_id`)    | Nodepool within the compute cluster                                   |
+| CLARIFAI_DEPLOYMENT (`deployment_id`)    | [Deployment](https://docs.clarifai.com/compute/deployments/deploy-model) for a model into the cluster and nodepool                                  |
+| CLARIFAI_RUNNER_ID (`runner_id`)      | Auto-generated unique runner ID, created by the API and stored in the context |
+
+
+## Step 3: Run Your Model
+
+To run your model with the local development runner, navigate to the directory where your custom model is located. 
+
+Then, follow these steps.
+
+### Log in to Clarifai
+
+Run the following command to log in to the Clarifai platform and establish a connection.
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai login</CodeBlock>
+</TabItem>
+</Tabs>
+
+After running the `login` command, you'll be prompted to enter the following details to authenticate your connection:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+
+<CodeBlock className="language-bash"> 
+context name (default: "default"): 
+user id:
+personal access token value (default: "ENVVAR" to get our env var rather than config):
+</CodeBlock>
+</TabItem>
+</Tabs>
+
+- **Context name** — You can provide a custom name for your Clarifai configuration context, or simply press Enter to use the default name, "default". This helps you manage different configurations if needed.
+- **User ID** —  Enter your Clarifai user ID.
+- **PAT** — Enter your Clarifai [PAT](#get-a-pat-key-and-user-id). Note that if you press Enter, and you have set the `CLARIFAI_PAT` environment variable, it will use that token automatically.
+
+### Start Your Local Runner
+
+Next, start a local development runner.
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai model local-runner</CodeBlock>
+</TabItem>
+</Tabs>
+
+Or:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai model local-runner [OPTIONS] [MODEL_PATH]</CodeBlock>
+</TabItem>
+</Tabs>
+
+> `MODEL_PATH` is an optional path to the model directory. If omitted, the current directory is used by default.
+
+<br/>
+
+If the runner doesn't detect the necessary [context configurations](#step-2-create-a-context-optional) in your environment, it will prompt you to create them using default values. 
+
+This ensures that all essential components required for Local Runners are properly set up or included in your configuration context, including:
+
+- A compute cluster and nodepool configured for Local Runners. 
+
+> **Note:** This cluster is created exclusively for Local Runners. It is not designed to support other tasks and lacks features like autoscaling to handle variable traffic demands, among other cloud-specific capabilities. You also cannot use other types of clusters for Local Runners — only the special cluster created for this purpose is supported.
+
+- An app with a model and model version representing the local runner.
+
+- A deployment that places the model version into the designated nodepool.
+
+<details>
+  <summary>Example Output</summary>
+    <CodeBlock className="language-text">{LocalDev}</CodeBlock>
+</details>
+
+> **Note:** If the [`config.yaml`](https://docs.clarifai.com/compute/models/upload/#step-2-prepare-the-configyaml-file) file does not contain model information that matches the `user_id`, `app_id`, and `model_id` defined in your current context, it will be automatically updated to include the new model details. This ensures that the model started by the local development runner is the same one you intend to call via the API. If needed, you can back up the existing `config.yaml` file as `config.yaml.bk`.
+
+:::tip
+
+You can view the active runners associated with your model on its individual page in the Clarifai platform. For a centralized view and easier management of all active runners, use the [Runners dashboard](https://clarifai.com/compute/runners).
+
+:::
+
+## Step 4: Test with Snippet
+
+Once the local development runner starts in your terminal, an example client code snippet is automatically generated based on the [model's signature](https://docs.clarifai.com/compute/models/inference/api#generate-example-code) to help you test it.
+
+<details>
+  <summary>Example Code Snippet</summary>
+    <CodeBlock className="language-text">{LocalDevExampleCode}</CodeBlock>
+</details>
+
+If you run the generated snippet in a separate terminal, but within the same directory, you’ll receive the model’s response output.
+
+After you're done testing, simply close the terminal running the local development runner to shut it down.
+
+
+## Additional Examples
+
+- [Simple example for running Hello World model locally with Clarifai’s Local Runners](https://github.com/Clarifai/runners-examples/tree/main/hello-world)
+- [Example for running Ollama models locally with Clarifai’s Local Runners](https://github.com/Clarifai/runners-examples/tree/main/local-runners/ollama-model-upload)
+- [YouTube video on how to build your own local AI agent using Clarifai’s Local Runners](https://www.youtube.com/watch?v=JOdtZDmCFfk)
 
 ---
 
@@ -7325,9 +7454,11 @@ Click the **Create organization** button.
 
 And your Clarifai Org account will be created!
 
-:::warning Create Org during registration
+:::info 
 
-You can create an Org account when registering for an account on the Clarifai platform. When activating your account, you'll be presented with a form that allows you to create an organization and invite members to join it. 
+- You can create an Org account when registering for an account on the Clarifai platform. When activating your account, you'll be presented with a form that allows you to create an organization and invite members to join it. 
+
+- All new organization accounts are created on the Community [pricing plan](https://www.clarifai.com/pricing) by default, with the option to upgrade at any time. This applies to users on the Community, Essential, and Professional plans. Enterprise users are not affected.
 
 :::
 
@@ -7482,7 +7613,7 @@ It tells you:
 - The total number of search operations you’ve made
 - The average number of inputs you’ve added and stored in the platform
 - The total training hours of your [transfer learning](https://docs.clarifai.com/portal-guide/model/model-types/transfer-learning) models
-- The total training hours of your [deep train](https://docs.clarifai.com/portal-guide/model/deep-training/) models
+- The total training hours of your [deep training](https://docs.clarifai.com/portal-guide/model/deep-training/) models
 
 Let’s talk about the different elements of the page.
 
@@ -7494,7 +7625,7 @@ Let’s talk about some functionalities that are common across the charts.
 
 ![](/img/community/control-center/control_center_7_1.png)
 
-- **Drag charts** — You can easily drag a chart up and down within the page by clicking and holding the dots in its upper-left corner. This allows you to customize the layout and manage the charts that appear in the page. 
+- **Drag charts** — You can easily drag a chart up and down within the page by clicking and holding the dots in its upper-left corner. This allows you to customize the layout and manage the charts that appear on the page. 
 
 - **Pin icon** — The pin icon allows you to "pin" or "save" charts for quick access. If you click it, the chart will be displayed in the [Overview](overview.md) section within the Control Center. This ensures that it remains easily accessible in the Control Center. If the pin icon is highlighted in the Usage & Operations page, it indicates that the respective chart has already been saved to the Overview section.
 
@@ -7514,7 +7645,7 @@ If you click the **View Report Details** button in the lower-right corner of a c
 
 The chart in the detailed report page displays all the activities performed, plotted against specific dates. If you want to focus on a particular activity, simply click the block at the top showing its corresponding number. This action will filter the chart to display only the selected activity.
 
-The table in the page includes the date each activity was performed. Additionally, you can sort the items in the table for easier navigation. 
+The table on the page includes the date each activity was performed. Additionally, you can sort the items in the table for easier navigation. 
 
 ![](/img/community/control-center/control_center_9.png)
 
@@ -7633,7 +7764,7 @@ Here is a line chart:
 **Get detailed financial data about your operations**
 <hr />
 
-The Costs & Budget tab offers detailed insights into your financial data, allowing self-service users to easily view and monitor the costs associated with billable operations on our platform. It simplifies expense tracking and management, offering you with greater control over your spending.
+The Costs & Budget tab offers detailed insights into your financial data, allowing self-service users to easily view and monitor the costs associated with billable operations on our platform. It simplifies expense tracking and management, offering greater control over your spending.
 
 To access it, go to the Control Center and select the Costs & Budget tab in the collapsible left sidebar.
 
@@ -7653,12 +7784,12 @@ The overview section of the Costs & Budget page provides a quick analysis of you
 
 It tells you:
 
-- The total costs of all billable operations
-- The total costs of [Compute Orchestration](https://docs.clarifai.com/compute/overview) tasks
-- The total costs of model predictions
-- The total costs of training models
-- The total costs of search operations
-- The total costs of storing inputs
+- The total cost of all billable operations
+- The total cost of [Compute Orchestration](https://docs.clarifai.com/compute/overview) tasks
+- The total cost of model predictions
+- The total cost of training models
+- The total cost of search operations
+- The total cost of storing inputs
 
 ##  Common Chart Features
 
@@ -7680,7 +7811,7 @@ Learn more about using these chart features [here](./usage/#common-chart-feature
 
 ## Total Costs
 
-This section displays the total costs of all your billable operations, along with the average daily cost, during the selected time period. 
+This section displays the total cost of all your billable operations, along with the average daily cost, during the selected time period. 
 
 It helps you track spending across each operation.
 
@@ -7724,7 +7855,7 @@ This section displays the total cost of storing inputs on our platform during th
 
 ## Compute Cost by Instance and Date
 
-This section displays the total compute cost for instance types, as well as the average daily cost, over the selected time period. 
+This section displays the total compute cost for instance types, as well as the average daily cost, during the selected time period. 
 
 It helps you track spending across each instance type.
 
@@ -7753,7 +7884,7 @@ It provides the ability to assess user actions and resource changes, identify po
 
 :::info
 
-This feature is currently only available to users on our Professional and Enterprise subscription [plans](https://www.clarifai.com/pricing). 
+This audit logging feature is currently only available to users on our Professional and Enterprise subscription [plans](https://www.clarifai.com/pricing). 
 
 :::
 
@@ -7780,7 +7911,7 @@ You can get details of the following activity logs:
 
 - **When** — Timestamp of the operation.  
 - **Who** — Identity of the user performing the action.  
-- **What** — Description of the operation. Note that if you 
+- **What** — Description of the operation.
 - **Where** — IP address where the request originated from.  
 - **Status** — Success or failure results of the operation.  
 
@@ -7794,7 +7925,7 @@ By default, the page displays activities across all your apps. You can customize
 
 You can filter and view data for specific time periods using the date range selector in the upper-right corner. If you click the tool, a calendar will drop down, which allows you to specify a date range to narrow down the activity logs. _Note that the current date is not selected by default._ 
 
-You can learn more about the date range tool [here](https://docs.clarifai.com/portal-guide/control-center/#date-ranges). 
+You can learn more about the date range tool [here](overview.md#date-range-selection). 
 
 ![](/img/community/control-center/teams_logs_3.png)
 
