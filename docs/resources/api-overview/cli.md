@@ -550,10 +550,9 @@ Here is how to initialize a model using Ollama in the current directory:
 Additionally, you can specify different options when initializing a model from the Ollama library:
 
 - `--model-name` – Name of the Ollama model to use (default: `llama3.2`). This lets you specify any model from the Ollama library
-
 - `--port` – Port where the model is running (default: `23333`)
-
 - `--context-length` – Define the context window size for the model in tokens (default: `8192`)
+- `--verbose` – Enables detailed Ollama logs during execution. By default, logs are suppressed unless this option is specified.
 
 Here is an example of initializing a `gemma3n` model with a context length of 16,000 tokens, running on port 8008:
 
@@ -563,8 +562,8 @@ Here is an example of initializing a `gemma3n` model with a context length of 16
 </TabItem>
 </Tabs>
 
-:::tip
+:::note Learn more
 
-Learn how to run Ollama models using Clarifai Local Runners [here](https://github.com/Clarifai/runners-examples/tree/main/local-runners/ollama-model-upload). 
+Learn how to run Ollama models using Clarifai Local Runners [here](https://docs.clarifai.com/compute/local-runners/ollama). 
 
 :::
