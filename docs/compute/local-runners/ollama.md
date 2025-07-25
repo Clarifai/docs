@@ -1,7 +1,6 @@
 ---
 description: Download and run Ollama models locally with Clarifai’s Local Runners
 sidebar_position: 1
-draft: true
 ---
 
 # Run Ollama Models Locally
@@ -85,6 +84,7 @@ You can customize model initialization from the Ollama library using the Clarifa
 - `--model-name` – Name of the Ollama model to use (default: `llama3.2`). This lets you specify any model from the Ollama library
 - `--port` – Port to run the model on (default: `23333`)
 - `--context-length` – Context window size for the model in tokens (default: `8192`)
+- `--verbose` – Enables detailed Ollama logs during execution. By default, logs are suppressed unless this flag is provided.
 
 Learn more about setting up a model with Ollama [here](https://docs.clarifai.com/resources/api-overview/cli#initialize-with-toolkit). 
 
