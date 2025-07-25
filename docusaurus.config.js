@@ -267,29 +267,6 @@ const config = {
         outputFile: 'llms.txt', // defaults to llms.txt if not specified
       }
     ],
-    /*
-    // If this is activated, then deactivate redocusaurus as configured above
-    // Current issue is that if this is activated, it says that the file is too large to be processed
-    // Check this implementation https://github.com/Unleash/unleash/blob/8ffc92af5ba410431ce3040b7389a5ddc52aab35/website/docusaurus.config.js#L715-L734
-    [
-      "docusaurus-plugin-openapi-docs",
-      {
-        id: "openapi",
-        docsPluginId: "classic",
-        config:{
-          clarifai:{
-            specPath: "https://api.clarifai.com/v2/swagger.json", 
-            outputDir: "/api-reference",
-            sidebarOptions:{
-              groupPathsBy: "tag",
-              categoryLinkSource: "tag"              
-            }
-          }
-        }
-
-      }
-    ],
-    */
   ],
   scripts: [
     {

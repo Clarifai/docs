@@ -89,6 +89,10 @@ Here is a bar chart:
 
 ![](/img/community/control-center/control_center_10.png)
 
+Here is a line graph:
+
+![](/img/community/control-center/control_center_10_1.png)
+
 ## Total Inputs Stored 
 
 This section displays the number of inputs you’ve added and stored in the Clarifai platform for the selected time period. The average number of stored inputs across the time period is displayed in the top section. 
