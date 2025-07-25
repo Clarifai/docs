@@ -1872,6 +1872,7 @@ import Example3 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orc
 import Example4 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/openai_4.txt";
 import PyImageGeneration from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/open_ai_image_generation.py";
 import PyResponses from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/open_ai_responses.py";
+import PyMultimodal from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/open_ai_multimodal.py";
 
 ## Prerequisites
 
@@ -1958,6 +1959,21 @@ The OpenAI [Chat Completions](https://platform.openai.com/docs/api-reference/cha
 <details>
   <summary>Example Output</summary>
     <CodeBlock className="language-text">I'm Claude, an AI assistant created by Anthropic. I'm here to help with a wide variety of tasks like answering questions, helping with analysis and research, creative writing, math and coding problems, and having conversations. Is there something specific I can help you with today?</CodeBlock>
+</details>
+
+### Multimodal Predictions
+
+The OpenAI Chat Completions API supports multimodal inputs, allowing you to combine text and image data in a single request for more advanced predictions.
+
+<Tabs groupId="code">
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PyMultimodal}</CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+  <summary>Example Output</summary>
+    <CodeBlock className="language-text">Response: The image shows a ginger tabby cat lying down on a stone surface. The cat has a striped pattern on its fur and is looking directly at the camera with alert, bright eyes. The background features a textured wall, and the lighting highlights the cat's features, giving a warm and cozy atmosphere.</CodeBlock>
 </details>
 
 <!--
@@ -4804,9 +4820,9 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
-## Prerequisites
+## Step 1: Perform Prerequisites
 
-### Download Ollama
+### Install Ollama
 
 Go to the [Ollama website](https://ollama.com/download) and choose the appropriate installer for your system (macOS, Windows, or Linux).
 
@@ -4853,7 +4869,7 @@ Install the `openai` package, which is required when performing inference with m
 </TabItem>
 </Tabs>
 
-## Initialize a Model From Ollama
+## Step 2: Initialize a Model From Ollama
 
 You can use the Clarifai CLI to download and initialize any model available in the Ollama library directly into your local environment.
 
@@ -4865,7 +4881,7 @@ For example, here's how to initialize the [`llama3.2`](https://ollama.com/librar
 </TabItem>
 </Tabs>
 
-> **Note:** The above command will create a new model directory structure that is compatible with the Clarifai platform.
+> **Note:** The above command will create a new model directory structure that is compatible with the Clarifai platform. You can customize or optimize the generated model by modifying the `1/model.py` file as needed.
 
 You can customize model initialization from the Ollama library using the Clarifai CLI with the following options:
 
@@ -4880,12 +4896,12 @@ Learn more about setting up a model with Ollama [here](https://docs.clarifai.com
 Here is a quickstart for Ollama models and their common use cases:
 
 * `llama3.2-vision:latest` – For multimodal tasks (text + image), like image captioning or visual Q\&A.
-* `llama3-groq-tool-use:latest` – Ideal for tool calling and function execution in [agent](https://docs.clarifai.com/compute/agents/) use cases.
+* `llama3-groq-tool-use:latest` – Ideal for tool calling and function execution in [agent](https://docs.clarifai.com/compute/agents/) tasks.
 * `devstral:latest` – Best for code generation, debugging, and development assistant use cases.
 
 :::
 
-## Log In to Clarifai
+## Step 3: Log In to Clarifai
 
 Use the following command to log in to the Clarifai platform to create a configuration [context](README.mdx#step-2-create-a-context-optional) and establish a connection:
 
@@ -4914,7 +4930,72 @@ Here’s what each field means:
 * **User ID** – Enter your Clarifai user ID.
 * **Personal Access Token (PAT)** – Paste your Clarifai PAT here. If you've already set the `CLARIFAI_PAT` environment variable, you can just press Enter to use it automatically.
 
-## Start Your Local Runner
+## Step 4: Start Your Local Runner
+
+Start a local runner using the following command:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai model local-runner</CodeBlock>
+</TabItem>
+</Tabs>
+
+If the necessary context configurations aren’t detected, the CLI will guide you through creating them using default values.
+
+This setup ensures all required components — such as compute clusters, nodepools, and deployments — are properly included in your configuration context, which are described [here](README.mdx#start-your-local-runner-1).
+
+Simply review each prompt and confirm to proceed.
+
+## Step 5: Run Inference
+
+Once your local runner starts successfully, it will display a public URL where your model is hosted and accessible.
+
+The CLI also generates an example client code snippet to help you quickly test the model. Simply run the snippet in a separate terminal (within the same directory) to receive the model’s response output.
+
+Below is an example of running inference using the OpenAI-compatible format:
+
+<Tabs groupId="code">
+<TabItem value="python" label="Python">
+
+```python
+import os
+from openai import OpenAI
+
+# Initialize the OpenAI client with Clarifai's OpenAI-compatible endpoint
+client = OpenAI(
+    base_url="https://api.clarifai.com/v2/ext/openai/v1",
+    api_key=os.environ['CLARIFAI_PAT'],
+)
+
+# Replace 'user-id' with your actual Clarifai user ID
+response = client.chat.completions.create(
+    model="https://clarifai.com/user-id/local-runner-app/models/local-runner-model",
+    messages=[
+        {"role": "system", "content": "Talk like a pirate."},
+        {"role": "user", "content": "How do I check if a Python object is an instance of a class?"},
+    ],
+    temperature=0.7,
+    stream=False,  # Set to True for streaming responses
+)
+
+# Print the full response
+print(response)
+
+# Example for handling a streaming response:
+# if stream=True, uncomment below to print chunks as they arrive
+# for chunk in response:
+#     print(chunk.choices[0].message['content'], end='')
+```
+</TabItem>
+</Tabs>
+
+When you're done, just close the terminal running the local runner to shut it down.
+
+## Additional Examples
+
+*  [More examples of calling Ollama models](https://github.com/ollama/ollama-python/tree/main/examples)
+*  [Clarifai-specific inference examples with Ollama models](https://docs.clarifai.com/compute/inference/clarifai/api)
+* [Example for running Ollama models locally with Clarifai’s Local Runners](https://github.com/Clarifai/runners-examples/tree/main/local-runners/ollama-model-upload)
 
 ---
 
@@ -5163,7 +5244,6 @@ After you're done testing, simply close the terminal running the local developme
 ## Additional Examples
 
 - [Simple example for running Hello World model locally with Clarifai’s Local Runners](https://github.com/Clarifai/runners-examples/tree/main/hello-world)
-- [Example for running Ollama models locally with Clarifai’s Local Runners](https://github.com/Clarifai/runners-examples/tree/main/local-runners/ollama-model-upload)
 - [YouTube video on how to build your own local AI agent using Clarifai’s Local Runners](https://www.youtube.com/watch?v=JOdtZDmCFfk)
 
 ---
@@ -7670,6 +7750,10 @@ A stacked bar chart (displayed by default) or a line graph shows the number of t
 Here is a bar chart:
 
 ![](/img/community/control-center/control_center_10.png)
+
+Here is a line graph:
+
+![](/img/community/control-center/control_center_10_1.png)
 
 ## Total Inputs Stored 
 
@@ -38460,12 +38544,13 @@ The dates listed in the following tables indicate when we plan to implement the 
 
 | Date | Change | Details |
 | :--- | :--- | :--- |
-|  November, 2024   | Changes to the use of PATs and API keys   | **(Breaking change)**  Important changes to the use of PATs and API keys. Learn more [here](./pat-api-keys) |
+|      |      |      |
 
 ## Completed Changes
 
 | Date | Change | Details |
 | :--- | :--- | :--- |
+|  June 11th, 2025   | Changes to the use of PATs and API keys   | **(Breaking change)**  Important changes to the use of PATs and API keys. Learn more [here](./pat-api-keys) |
 | July 2nd, 2024 | Changed the default base workflow to Universal for applications created via the API | **(Breaking change)** Learn more [here](https://docs.clarifai.com/product-updates/changelog/release106#base-workflow) |
 | August 15, 2023 | Enabling Secure Data Hosting (SDH) feature for all users | **(Breaking change)** Learn more [here](./secure-data-hosting) |
 | July 27th, 2023 | Fixed critical issue with the workflow builder returning old hash-based ID | **(Breaking change)** Learn more [here](./workflow-builder-ids) |
