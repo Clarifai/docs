@@ -2982,10 +2982,18 @@ You can then set the PAT as an environment variable using `CLARIFAI_PAT`, in whi
 
 To use our Compute Orchestration capabilities, ensure your model is [deployed](https://docs.clarifai.com/compute/deployments/deploy-model). Then, specify the `deployment_id` parameter — alternatively, you can specify both `compute_cluster_id` and `nodepool_id`, as explained [here](https://docs.clarifai.com/compute/models/inference/). 
 
+:::info
+
+For deployments owned by an organization, also provide the organization id as the `Model`'s `deployment_user_id`.
+
+:::
+
 ```text
 model = Model(
     url="MODEL_URL_HERE",  
     deployment_id="DEPLOYMENT_ID_HERE",
+    # if you are targeting a specific deployment owned by an organization:
+    # deployment_user_id="ORGANIZATION_ID_HERE", 
     # Or, set cluster and nodepool 
     # compute_cluster_id = "COMPUTE_CLUSTER_ID_HERE",
     # nodepool_id = "NODEPOOL_ID_HERE"
