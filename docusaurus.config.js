@@ -245,7 +245,7 @@ const config = {
         // Optional medium-zoom options
         // see: https://www.npmjs.com/package/medium-zoom#options
         options: {
-          margin: 50,
+          margin: 24,
           background: 'rgba(0, 0, 0, 0.6)',
           scrollOffset: 0
         },
