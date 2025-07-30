@@ -189,7 +189,8 @@ Here is an example of a specialized AI agent powered by a Clarifai-hosted model.
 
 To learn more about building AI agents with CrewAI, see the following examples:
 
-- [YouTube Video: Building an AI Blog Writing Agent with Clarifai and CrewAI](https://www.youtube.com/watch?v=1XZT2wD4UzQ&t=25s)
+- [YouTube Video: Building an AI Blog Writing Agent With Clarifai and CrewAI](https://www.youtube.com/watch?v=1XZT2wD4UzQ&t=25s)
+- [Blog Post: Build an AI Agent From Scratch With CrewAI and Clarifai](https://www.clarifai.com/blog/build-an-ai-agent-from-scratch-with-crewai-and-clarifai)
 - [Repository for Clarifai-Powered CrewAI Agents](https://github.com/Clarifai/examples/tree/main/agents/CrewAI)
 
 ## Vercel

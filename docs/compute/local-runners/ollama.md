@@ -1,11 +1,11 @@
 ---
-description: Download and run Ollama models locally with Clarifai’s Local Runners
+description: Run Ollama models locally and make them available via a public API
 sidebar_position: 1
 ---
 
 # Run Ollama Models Locally
 
-**Download and run Ollama models locally with Clarifai’s Local Runners**
+**Run Ollama models locally and make them available via a public API**
 <hr />
 
 Ollama is an open-source tool that allows you to download, run, and manage large language models (LLMs) directly on your local machine. 

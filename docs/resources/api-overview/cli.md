@@ -29,6 +29,12 @@ To begin, install the latest version of the `clarifai` Python package.
 pip install --upgrade clarifai
 ```
 
+Once installed, you can confirm the version by running the following command:
+
+```text
+clarifai --version
+```
+
 ### Set a PAT Key
 
 You need to set the `CLARIFAI_PAT` (Personal Access Token) as an environment variable before using the CLI tool. You can generate the PAT key in your personal settings page by navigating to the [Security section](https://clarifai.com/settings/security).

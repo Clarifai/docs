@@ -96,7 +96,7 @@ This allows users to leverage their hardware of choice without being locked into
 
 - You can customize auto-scaling settings to prevent cold-start issues and handle traffic swings; and scale down to zero for cost efficiency.  The ability to scale from zero to infinity ensures both flexibility and cost management.
 
-- Just like with our previous offerings, we ensure efficient resource usage and cost savings through bin-packing (running multiple models per GPU), time slicing, and other optimizations.
+- We ensure efficient resource usage and cost savings through [GPU fractioning](https://www.clarifai.com/blog/gpu-fractioning-explained-how-to-run-multiple-ai-workloads-on-a-single-gpu) (running multiple models per GPU), time slicing, and other optimizations.
 
 ### 2. Enhanced Security
 
