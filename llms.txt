@@ -163,7 +163,7 @@ This allows users to leverage their hardware of choice without being locked into
 
 - You can customize auto-scaling settings to prevent cold-start issues and handle traffic swings; and scale down to zero for cost efficiency.  The ability to scale from zero to infinity ensures both flexibility and cost management.
 
-- Just like with our previous offerings, we ensure efficient resource usage and cost savings through bin-packing (running multiple models per GPU), time slicing, and other optimizations.
+- We ensure efficient resource usage and cost savings through [GPU fractioning](https://www.clarifai.com/blog/gpu-fractioning-explained-how-to-run-multiple-ai-workloads-on-a-single-gpu) (running multiple models per GPU), time slicing, and other optimizations.
 
 ### 2. Enhanced Security
 
@@ -392,7 +392,8 @@ Here is an example of a specialized AI agent powered by a Clarifai-hosted model.
 
 To learn more about building AI agents with CrewAI, see the following examples:
 
-- [YouTube Video: Building an AI Blog Writing Agent with Clarifai and CrewAI](https://www.youtube.com/watch?v=1XZT2wD4UzQ&t=25s)
+- [YouTube Video: Building an AI Blog Writing Agent With Clarifai and CrewAI](https://www.youtube.com/watch?v=1XZT2wD4UzQ&t=25s)
+- [Blog Post: Build an AI Agent From Scratch With CrewAI and Clarifai](https://www.clarifai.com/blog/build-an-ai-agent-from-scratch-with-crewai-and-clarifai)
 - [Repository for Clarifai-Powered CrewAI Agents](https://github.com/Clarifai/examples/tree/main/agents/CrewAI)
 
 ## Vercel
@@ -2980,7 +2981,7 @@ You can then set the PAT as an environment variable using `CLARIFAI_PAT`, in whi
 
 #### Set up a Deployment
 
-To use our Compute Orchestration capabilities, ensure your model is [deployed](https://docs.clarifai.com/compute/deployments/deploy-model). Then, specify the `deployment_id` parameter — alternatively, you can specify both `compute_cluster_id` and `nodepool_id`, as explained [here](https://docs.clarifai.com/compute/models/inference/). 
+To use our Compute Orchestration capabilities, ensure your model is [deployed](https://docs.clarifai.com/compute/deployments/deploy-model). Then, specify the `deployment_id` parameter — alternatively, you can specify both `compute_cluster_id` and `nodepool_id`, as explained [here](https://docs.clarifai.com/compute/inference/#predict-with-compute-orchestration). 
 
 :::info
 
@@ -4817,7 +4818,7 @@ For models that output concepts, the **Prediction Threshold** slider allows you 
 
 # Run Ollama Models Locally
 
-**Download and run Ollama models locally with Clarifai’s Local Runners**
+**Run Ollama models locally and make them available via a public API**
 <hr />
 
 Ollama is an open-source tool that allows you to download, run, and manage large language models (LLMs) directly on your local machine. 
@@ -5012,7 +5013,7 @@ When you're done, just close the terminal running the local runner to shut it do
 
 # Local Runners
 
-**Run models locally for development, debugging, or compute tasks**
+**Run and test models locally, while exposing them through Clarifai’s enterprise‑grade API**
 <hr />
 
 [Local Runners](https://www.clarifai.com/products/local-runners) are a powerful feature that let you securely expose your locally running models or servers via a public URL, allowing you to quickly develop, test, and share any models running on your own hardware.
@@ -38749,6 +38750,12 @@ For additional functionality, you can install all the optional libraries mention
 pip install "clarifai[all]"
 ```
 
+Once installed, you can confirm the version by running the following command:
+
+```text
+clarifai --version
+```
+
 ### Install from Source (for Development)
 
 If you’re contributing to development or need the latest updates, install from source:
@@ -38958,6 +38965,12 @@ To begin, install the latest version of the `clarifai` Python package.
 
 ```text
 pip install --upgrade clarifai
+```
+
+Once installed, you can confirm the version by running the following command:
+
+```text
+clarifai --version
 ```
 
 ### Set a PAT Key
