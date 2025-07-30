@@ -276,7 +276,20 @@ const config = {
     {
       src: "/scripts/intercomConfig.js",
       async: true,
-    }
+    },
+    {
+      src: "https://cdn.amplitude.com/libs/analytics-browser-2.12.0-min.js.gz",
+      defer: true, // load after HTML is parsed; preserves the order in this array
+    },
+    {
+      src: "https://cdn.amplitude.com/libs/plugin-session-replay-browser-1.4.0-min.js.gz",
+      defer: true,
+    },
+    {
+      src: "/scripts/amplitude.js",
+      defer: true,
+    },
+  
   ],
 };
 

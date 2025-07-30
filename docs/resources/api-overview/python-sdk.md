@@ -32,6 +32,12 @@ For additional functionality, you can install all the optional libraries mention
 pip install "clarifai[all]"
 ```
 
+Once installed, you can confirm the version by running the following command:
+
+```text
+clarifai --version
+```
+
 ### Install from Source (for Development)
 
 If you’re contributing to development or need the latest updates, install from source:
