@@ -239,17 +239,6 @@ const config = {
           hideable: true
         }
       },
-      imageZoom: {
-        // CSS selector to apply the plugin to, defaults to '.markdown img'
-        selector: '.markdown img',
-        // Optional medium-zoom options
-        // see: https://www.npmjs.com/package/medium-zoom#options
-        options: {
-          margin: 24,
-          background: 'rgba(0, 0, 0, 0.6)',
-          scrollOffset: 0
-        },
-      },
     }),
   plugins: [  
     [
@@ -260,13 +249,14 @@ const config = {
     ],
     [
       'plugin-image-zoom', {}
-    ],    
-    [
-      'docusaurus-plugin-generate-llms-txt', 
-      {
-        outputFile: 'llms.txt', // defaults to llms.txt if not specified
-      }
     ],
+    [
+      'docusaurus-plugin-llms',
+      {
+       excludeImports: true,
+       
+      }
+    ]  
   ],
   scripts: [
     {
