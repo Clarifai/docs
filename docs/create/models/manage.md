@@ -28,7 +28,9 @@ import PythonDeleteModelVersion from "!!raw-loader!../../../code_snippets/api-gu
 import PythonDeleteAllModels from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/delete_all_models.py";
 
 import PythonSearchModelsName from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/search_models_name_type.py";
-
+import PythonSDKListModels from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/sdk_list_models.py";
+import PythonCLIListModels from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/cli_list_models.sh";
+import PythonSDKModelOutput from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/py/list_model_output.txt";
 
 import JSUpdateConfiguration from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/update_model_name_configuration.html";
 import JSUpdateConfiguration2 from "!!raw-loader!../../../code_snippets/api-guide/model/create_get_update_delete/js/update_model_name_configuration_2.html";
@@ -118,7 +120,7 @@ import SDKPatchModel from "!!raw-loader!../../../code_snippets/python-sdk/model_
 
 :::info
 
-Before using the [Python SDK](https://docs.clarifai.com/additional-resources/api-overview/python-sdk), [Node.js SDK](https://docs.clarifai.com/additional-resources/api-overview/nodejs-sdk), or any of our [gRPC clients](https://docs.clarifai.com/additional-resources/api-overview/grpc-clients), ensure they are properly installed on your machine. Refer to their respective installation guides for instructions on how to install and initialize them.
+Before using the [Python SDK](https://docs.clarifai.com/additional-resources/api-overview/python-sdk), [CLI](https://docs.clarifai.com/resources/api-overview/cli), [Node.js SDK](https://docs.clarifai.com/additional-resources/api-overview/nodejs-sdk), or any of our [gRPC clients](https://docs.clarifai.com/additional-resources/api-overview/grpc-clients), ensure they are properly installed on your machine. Refer to their respective installation guides for instructions on how to install and initialize them.
 
 :::
 
@@ -177,7 +179,15 @@ If you want to get a list of the models not within the scope of your app, you ne
 
 <Tabs groupId="code">
 
-<TabItem value="python" label="Python (gRPC)">
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{PythonSDKListModels}</CodeBlock>
+</TabItem>
+
+<TabItem value="CLI" label="CLI">
+    <CodeBlock className="language-python">{PythonCLIListModels}</CodeBlock>
+</TabItem>
+
+<TabItem value="python2" label="Python (gRPC)">
     <CodeBlock className="language-python">{PythonGetModels}</CodeBlock>
 </TabItem>
 
@@ -202,6 +212,11 @@ If you want to get a list of the models not within the scope of your app, you ne
 </TabItem>
 
 </Tabs>
+
+<details>
+  <summary>Output Example</summary>
+    <CodeBlock className="language-text">{PythonSDKModelOutput}</CodeBlock>
+</details>
 
 ### Get Model by ID
 

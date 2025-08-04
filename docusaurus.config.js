@@ -253,8 +253,11 @@ const config = {
     [
       'docusaurus-plugin-llms',
       {
-       excludeImports: true,
-       
+        generateLLMsTxt: true,
+        generateLLMsFullTxt: true,
+        excludeImports: true,
+        removeDuplicateHeadings: true,
+        llmsFullTxtFilename: 'llms-full.txt',      
       }
     ]  
   ],
