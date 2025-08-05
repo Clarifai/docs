@@ -274,8 +274,10 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [API References](https://docs.clarifai.com/docs/resources/api-references/README): Learn about our API references
 - [Node.js API Reference](https://docs.clarifai.com/docs/resources/api-references/node/README): Clarifai Node.js SDK API Reference
 - [Class: App](https://docs.clarifai.com/docs/resources/api-references/node/classes/App): [clarifai-nodejs](../README.mdx) / [Exports](../modules.md) / App
+- [Class: Dataset](https://docs.clarifai.com/docs/resources/api-references/node/classes/Dataset): [clarifai-nodejs](../README.mdx) / [Exports](../modules.md) / Dataset
 - [Class: Input](https://docs.clarifai.com/docs/resources/api-references/node/classes/Input): [clarifai-nodejs](../README.mdx) / [Exports](../modules.md) / Input
 - [Class: Model](https://docs.clarifai.com/docs/resources/api-references/node/classes/Model): [clarifai-nodejs](../README.mdx) / [Exports](../modules.md) / Model
+- [Class: RAG](https://docs.clarifai.com/docs/resources/api-references/node/classes/RAG): [clarifai-nodejs](../README.mdx) / [Exports](../modules.md) / RAG
 - [Class: Search](https://docs.clarifai.com/docs/resources/api-references/node/classes/Search): [clarifai-nodejs](../README.mdx) / [Exports](../modules.md) / Search
 - [Class: User](https://docs.clarifai.com/docs/resources/api-references/node/classes/User): [clarifai-nodejs](../README.mdx) / [Exports](../modules.md) / User
 - [Class: Workflow](https://docs.clarifai.com/docs/resources/api-references/node/classes/Workflow): [clarifai-nodejs](../README.mdx) / [Exports](../modules.md) / Workflow
