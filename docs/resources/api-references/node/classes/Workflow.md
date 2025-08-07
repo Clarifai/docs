@@ -1,4 +1,4 @@
-[clarifai-nodejs](../README.mdx) / [Exports](../modules.md) / Workflow 
+[clarifai-nodejs](../README.mdx) / [Exports](../modules.md) / Workflow
 
 # Class: Workflow
 
@@ -16,6 +16,7 @@
 
 ### Properties
 
+- [appId](Workflow.md#appid)
 - [id](Workflow.md#id)
 - [outputConfig](Workflow.md#outputconfig)
 - [versionId](Workflow.md#versionid)
@@ -50,17 +51,27 @@ Lister.constructor
 
 #### Defined in
 
-[client/workflow.ts:53](https://github.com/Clarifai/clarifai-nodejs/blob/4511094/src/client/workflow.ts#L53)
+[src/client/workflow.ts:55](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/workflow.ts#L55)
 
 ## Properties
 
-### id
+### appId
 
-• `Private` **id**: `string`
+• **appId**: `string`
 
 #### Defined in
 
-[client/workflow.ts:50](https://github.com/Clarifai/clarifai-nodejs/blob/4511094/src/client/workflow.ts#L50)
+[src/client/workflow.ts:52](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/workflow.ts#L52)
+
+___
+
+### id
+
+• **id**: `string`
+
+#### Defined in
+
+[src/client/workflow.ts:51](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/workflow.ts#L51)
 
 ___
 
@@ -70,7 +81,7 @@ ___
 
 #### Defined in
 
-[client/workflow.ts:51](https://github.com/Clarifai/clarifai-nodejs/blob/4511094/src/client/workflow.ts#L51)
+[src/client/workflow.ts:53](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/workflow.ts#L53)
 
 ___
 
@@ -80,7 +91,7 @@ ___
 
 #### Defined in
 
-[client/workflow.ts:49](https://github.com/Clarifai/clarifai-nodejs/blob/4511094/src/client/workflow.ts#L49)
+[src/client/workflow.ts:50](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/workflow.ts#L50)
 
 ## Methods
 
@@ -111,7 +122,7 @@ await workflow.export("out_path.yml");
 
 #### Defined in
 
-[client/workflow.ts:256](https://github.com/Clarifai/clarifai-nodejs/blob/4511094/src/client/workflow.ts#L256)
+[src/client/workflow.ts:267](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/workflow.ts#L267)
 
 ___
 
@@ -133,7 +144,7 @@ ___
 
 #### Defined in
 
-[client/workflow.ts:214](https://github.com/Clarifai/clarifai-nodejs/blob/4511094/src/client/workflow.ts#L214)
+[src/client/workflow.ts:221](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/workflow.ts#L221)
 
 ___
 
@@ -155,7 +166,7 @@ ___
 
 #### Defined in
 
-[client/workflow.ts:82](https://github.com/Clarifai/clarifai-nodejs/blob/4511094/src/client/workflow.ts#L82)
+[src/client/workflow.ts:84](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/workflow.ts#L84)
 
 ___
 
@@ -176,7 +187,7 @@ ___
 
 #### Defined in
 
-[client/workflow.ts:153](https://github.com/Clarifai/clarifai-nodejs/blob/4511094/src/client/workflow.ts#L153)
+[src/client/workflow.ts:160](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/workflow.ts#L160)
 
 ___
 
@@ -197,4 +208,4 @@ ___
 
 #### Defined in
 
-[client/workflow.ts:192](https://github.com/Clarifai/clarifai-nodejs/blob/4511094/src/client/workflow.ts#L192)
+[src/client/workflow.ts:199](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/workflow.ts#L199)

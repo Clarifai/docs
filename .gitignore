@@ -21,9 +21,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 package-lock.json
-yarn.lock
 *.lock
-.idea
+!yarn.lock
 .idea
 
 # log files
