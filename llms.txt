@@ -204,6 +204,7 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [Release 11.4](https://docs.clarifai.com/docs/product-updates/changelog/release114): Changelog for Clarifai Release 11.4
 - [Release 11.5](https://docs.clarifai.com/docs/product-updates/changelog/release115): Changelog for Clarifai Release 11.5
 - [Release 11.6](https://docs.clarifai.com/docs/product-updates/changelog/release116): Changelog for Clarifai Release 11.6
+- [Release 11.7](https://docs.clarifai.com/docs/product-updates/changelog/release117): Changelog for Clarifai Release 11.7
 - [Release 5.10](https://docs.clarifai.com/docs/product-updates/changelog/release510): Changelog for Clarifai Release 5.10
 - [Release 5.11](https://docs.clarifai.com/docs/product-updates/changelog/release511): Changelog for Clarifai Release 5.11
 - [Release 6.0](https://docs.clarifai.com/docs/product-updates/changelog/release60): Changelog for Clarifai Release 6.0
@@ -298,3 +299,5 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [Clarifai Platform Overview](https://docs.clarifai.com/docs/resources/platform/README): Your platform for the entire AI lifecycle
 - [Data Privacy and Security](https://docs.clarifai.com/docs/resources/privacy-security): Learn how we secure and handle your data
 - [Python SDK Notebook Examples](https://docs.clarifai.com/docs/resources/sdk-examples): Learn how to use the Clarifai SDKs
+- [Additional Tips](https://docs.clarifai.com/docs/resources/tips): Enhance your implementation with Clarifai
+- [Troubleshooting](https://docs.clarifai.com/docs/resources/troubleshooting): Common issues and solutions

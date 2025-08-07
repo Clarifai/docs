@@ -2828,6 +2828,9 @@ import Mask3 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orc
 import PyModelClient from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/py_model_client.py";
 import NodeModelClient from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/node_model_client.js";
 
+import AsyncPredict from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/async_predict.py";
+import AsyncGenerate from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/async_generate.py";
+
 ## Prerequisites
 
 ### Install Clarifai Packages
@@ -3092,6 +3095,22 @@ Tool calling in LLMs is a capability that allows models to autonomously decide w
 You can learn more about it [here](https://docs.clarifai.com/compute/models/inference/open-ai#tool-calling). 
 
     {PyToolCalling}
+
+## Asynchronous Inference
+
+Asynchronous inference enables non-blocking execution of model prediction tasks. Instead of waiting for each prediction to complete before proceeding, you can use the `async_predict` and `async_generate` methods to submit multiple requests concurrently and retrieve the results once they're ready.
+
+### Async Prediction 
+
+You can use this for standard prediction tasks that return a complete result in a single response. The output is typically a structured object, like a dictionary or JSON. 
+
+    {AsyncPredict}
+
+### Async Generation  
+
+You can use this for generative models that produce output incrementally — such as large language models that stream tokens one by one. The response is an asynchronous stream, which you iterate over.
+
+    {AsyncGenerate}
 
 ---
 
@@ -23917,7 +23936,7 @@ Start by [logging in to](https://clarifai.com/login) your existing Clarifai acco
 
 ## Step 2: Get a PAT Key
 
-To authenticate your connection to Clarifai, you’ll need a Personal Access Token (PAT). You can obtain one from your personal settings page by navigating to the [Security section](https://clarifai.com/settings/security).
+To authenticate your connection to Clarifai, you’ll need a Personal Access Token (PAT). You can obtain one from your personal settings page by navigating to the **Security** section.
 
 You can then set the PAT as an environment variable using `CLARIFAI_PAT`.
 
@@ -27663,6 +27682,49 @@ We have a public roadmap that gives you a view of our upcoming plans and helps u
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
 |![improvement](/img/improvement.jpg) | Made improvements to [Clarifai Organizations](https://docs.clarifai.com/control/clarifai-organizations/)  |   Personal access tokens (PATs) are now shown in the PAT dropdown menu, regardless of whether the user is operating under their personal account or within an organization context.   The Join Org notification in the navbar has been updated to match the design of the Join Org modal/page, ensuring a consistent behavior.  Any user with a verified email address that matches the one used in an organization invitation can now accept or decline the invitation.   Users receiving organization invites will now see a persistent popup upon login until they accept or decline the invitation.    |
+
+---
+
+## Release 11.7
+
+# Release 11.7
+
+**Release Date:** August 7th, 2025
+
+| New Feature | Improvement | Bug Fix | Enterprise Only |
+| :---: | :---: | :---: | :---: |
+| ![new-feature](/img/new_feature.jpg) |![improvement](/img/improvement.jpg) | ![bug](/img/bug.jpg) | ![enterprise](/img/enterprise.jpg) |
+
+## Developer Plan
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+|![new-feature](/img/new_feature.jpg) | Introduced a Developer Plan |   This plan provides access to [Local Runners](https://docs.clarifai.com/compute/local-runners/) at a promotional price of $1 per month.  Learn more [here](https://www.clarifai.com/pricing).    |
+
+##  Published Models
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![new-feature](/img/new_feature.jpg) | Published new models   |   Published [GPT‑OSS-120B and GPT‑OSS-20B](https://clarifai.com/openai/chat-completion/models/gpt-oss-120b), OpenAI's latest state-of-the-art open-weight language models, designed for real-world reasoning, tool use, and on-device deployment.  Published [Qwen3-Coder-30B-A3B-Instruct](https://clarifai.com/qwen/qwenCoder/models/Qwen3-Coder-30B-A3B-Instruct), a high-performing, efficient model with strong agentic coding abilities, long-context support, and broad platform compatibility.   |
+
+## Ollama Models
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+|![new-feature](/img/new_feature.jpg) | Added support for running Ollama models locally |   You can now download and run Ollama models locally with Clarifai’s Local Runners.  Learn more [here](https://docs.clarifai.com/compute/local-runners/ollama).    |
+
+## Python SDK
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+|![improvement](/img/improvement.jpg) | Improved the Python SDK.   Learn more [here](https://github.com/Clarifai/clarifai-python/blob/master/CHANGELOG.md).   |   Added a quick fix for local runner signature handling Added a check to skip code generation when context is not set Ensured pipeline_steps are properly used in templates Fixed issues related to nodepool creation Improved pipeline status code checks for better reliability Implemented various bug fixes and enhancements for pipelines Added list / ls CLI commands for pipelines and pipeline steps Fixed the broken link to the PAT account settings pageAdded support for verbose logging in OllamaEnhanced error messages for Pythonic models Improved logging experience during login Refined logging output for the Local Runner Added CLI config context support to `BaseClient` authentication for easier environment switching.  Introduced live logging functionality for model runners to monitor outputs in real-time.  Unified context management under a single `config` command for consistency and simplicity.  Added a utility function to return both gRPC stub and channel in one call.  Added validation checks for Local Runner requirements during initialization.  Improved error handling for failed URL downloads to provide clearer feedback.  Included Playground URLs in Local Runner logs for easier navigation and debugging.  Added unit tests for toolkits to ensure reliability and code quality.  Improved logging in the Local Runner CLI for better clarity and troubleshooting.  Formatted client scripts using `black` for consistent and clean code style.  Added support for downloading GitHub folders and specifying toolkits in `model init`.  Improved handling of `PAT` and `USER_ID` for better authentication reliability.  Fixed thread flag handling in Local Runner and added validation for invalid users.  Implemented PAT token validation during the `clarifai login` command.  Standardized Local Runner naming across the SDK for consistency.  Fixed the `pipelinestep upload` command to properly parse all `compute-info` parameters and preserve custom Dockerfiles.  Resolved base model template import and return issues in the SDK.  Set the default `pool_size` flag to 1 for local development runner threads.  Updated constants used by the Local Runner for better configuration control.  Added support for the `--version` flag in the Clarifai CLI for easier version tracking.  Improved handling of `model_type_id` and enhanced configuration management.   Enabled support for specifying `deployment_user_id` in the `Model` class to refine runner selection.  Enhanced the `model init` command by allowing initialization from a GitHub repository for greater flexibility.   Fixed CLI `PATH` handling issues on Windows systems.   Corrected issues in the code generation script for improved output consistency.   Added an alias for the `pipelinestep` CLI command and significantly increased test coverage for the `clarifai.runners.pipeline_steps` module.  Improved CLI documentation and added detailed help messages for various model-related commands.   Set the default number of gRPC server threads to `CLARIFAI_NUM_THREADS` or 32, if unspecified.   Integrated configuration contexts into the `model upload` CLI command for environment-specific behavior.  Introduced a `pipeline run` CLI command similar to `model predict` for easier pipeline execution.  Updated `requirements.txt` to reflect the latest supported protocol version.  |
+
+## Platform
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+|![improvement](/img/improvement.jpg)| Made some platform improvements   |   Token-based models now clearly show accurate input and output pricing, including when used within workflows.   Workflow pricing now displays multiple pricing tiers for each model included in the workflow.   Updated the Settings sidebar to support URL-based account switching. Access to any Settings page now requires this URL format: `/userOrOrgId/settings/{resource-type}`.  Added support for redirecting users back to their original source page after login or sign-up, where applicable.  Added the "Create Organization" flow as a follow-up step after the new user onboarding process.   |
+|![bug](/img/bug.jpg) |  Fixed some bugs |   Fixed an issue where a renamed app continued to show its old ID in the Settings page and deletion toast notification.    Fixed an issue where accessing unauthorized resources triggered multiple error pop-ups; it now shows a single, graceful notification.  Fixed an issue where both My Resources and Community tabs were highlighted when opening an app under My Resources in Org accounts; now only My Resources is correctly highlighted.   Fixed an issue in the mobile view of Configure Home settings where enabling one option would unexpectedly disable another.   Fixed an issue where reordering Home page card layouts via ‘Configure Home’ did not save the intended order.  Fixed an issue where the recent activity section on the Home page displayed incorrect information when users performed operations across multiple apps.  Fixed an issue where the Sign Up and verify email pages did not redirect after successful authentication, or triggered the onboarding modal.   |
 
 ---
 
@@ -44868,3 +44930,259 @@ Here are comprehensive step-by-step walkthroughs within Jupyter or Colab noteboo
 |          |  [S3 data ingestion](https://github.com/Clarifai/examples/blob/main/Integrations/Unstructured/Clarifai_Unstructured_integration_demo.ipynb) |  [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Clarifai/examples/blob/main/Integrations/Unstructured/Clarifai_Unstructured_integration_demo.ipynb)                   |
 |          |  [GitHub data ingestion](https://github.com/Clarifai/examples/blob/main/Integrations/Unstructured/Clarifai_github_using_unstructured_io_integration_example.ipynb)                         | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Clarifai/examples/blob/main/Integrations/Unstructured/Clarifai_github_using_unstructured_io_integration_example.ipynb)    |
 |          | [DropBox data ingestion](https://github.com/Clarifai/examples/blob/main/Integrations/Unstructured/Dropbox_Clarifai_Unstructured_integration_example.ipynb) |  [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Clarifai/examples/blob/main/Integrations/Unstructured/Dropbox_Clarifai_Unstructured_integration_example.ipynb)   |
+
+---
+
+## Additional Tips
+
+# Additional Tips
+
+**Enhance your implementation with Clarifai**
+
+This page provides extra guidance to help you get the most out of your development experience with Clarifai. Whether you're optimizing performance or just looking for best practices, these tips offer practical advice beyond the basics. 
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+
+import WebhookIntegration from "!!raw-loader!../../code_snippets/api-guide/others/webhook_integration.py";
+import CachingPredictions from "!!raw-loader!../../code_snippets/api-guide/others/caching_predictions.py";
+
+## Webhook Integration
+
+You can enable real-time automation by integrating Clarifai webhooks into your backend system. For example, you can set up a secure Flask endpoint to receive and validate webhook notifications for events like model training completion or new input uploads.
+
+    {WebhookIntegration}
+
+## Caching Predictions
+
+You can avoid repeated computation for identical inputs by caching model predictions locally. For example, you can introduce a simple decorator-based caching mechanism  to store and retrieve results from disk, which optimizes performance for resource-intensive prediction tasks.
+
+    {CachingPredictions}
+
+---
+
+## Troubleshooting
+
+# Troubleshooting
+
+**Solve common issues quickly and effectively**
+
+Troubleshooting helps you identify and fix the most common issues encountered when working with Clarifai-based scripts and applications.
+
+Whether you're facing installation errors, API authentication problems, or image processing glitches, this guide offers step-by-step solutions to get you back on track.
+
+## Common Installation Issues
+
+Setups often break due to missing or incorrectly installed packages. These errors are usually easy to resolve once you've verified your environment and dependencies.
+
+### Missing Dependencies
+
+**Error**: `Import could not be resolved` or `ModuleNotFoundError`
+
+This error means that Python can't find the required module — likely because it wasn't installed or was installed in the wrong environment.
+
+Try the following solutions:
+
+```bash
+# 1. Make sure you installed the required package
+pip install 
+
+# 2. Check if packages are installed
+pip list | grep -E "(clarifai|openai|opencv|numpy)"
+
+# 3. If using conda, activate your environment
+conda activate your_environment_name
+pip install 
+
+# 4. Upgrade pip, then try again
+pip install --upgrade pip
+pip install 
+```
+
+### Package Not Installed Properly
+
+**Error**: `ModuleNotFoundError: No module named 'cv2'`
+
+This usually means OpenCV isn't installed or is incompatible with your current setup.
+
+Try the following in order:
+
+```bash
+pip install opencv-python
+# or
+pip install opencv-contrib-python
+# or (for conda users)
+conda install -c conda-forge opencv
+```
+
+## API and Authentication Issues
+
+API errors often stem from incorrect or missing credentials. Make sure your [Personal Access Token](https://docs.clarifai.com/control/authentication/pat) (PAT) is properly set and valid.
+
+### Unconfigured PAT Key
+
+**Error**: `Please set the CLARIFAI_PAT environment variable`
+
+This happens when the Clarifai PAT is not found in your environment.
+
+Set it based on your platform:
+
+```bash
+# Linux / macOS
+export CLARIFAI_PAT="your_actual_api_key_here"
+
+# Windows Command Prompt
+set CLARIFAI_PAT=your_actual_api_key_here
+
+# Windows PowerShell
+$env:CLARIFAI_PAT="your_actual_api_key_here"
+
+# (Optional) Make it permanent
+echo 'export CLARIFAI_PAT="your_key_here"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+### Incorrect PAT
+
+**Error**: `Authentication failed` or `Invalid token`
+
+These indicate that the PAT was not set correctly or has expired.
+
+To fix:
+
+1. Generate a new PAT from your personal settings page by navigating to the **Security** section
+2. Ensure the key is copied properly
+3. Check for extra spaces or characters when setting the environment variable
+4. Confirm your account is active and has API access
+
+## Runtime Errors
+
+Runtime errors occur while executing your code and often result from unexpected data or an unhandled response.
+
+### Index Error
+
+**Error**: `IndexError: list index out of range`
+
+This typically means the code tried to access an element in a list that doesn't exist — often due to an empty or malformed API response.
+
+Try the following:
+
+1. Ensure the input (e.g., an image URL) is valid and accessible
+2. Try a different input or a simpler model
+3. Confirm your internet connection is stable
+4. Log the full API response to investigate
+
+### Network Errors
+
+**Error**: `Network error` or `Connection timeout`
+
+These errors suggest that your script couldn't reach the Clarifai servers.
+
+Possible solutions:
+
+1. Check your internet connection
+2. Retry after a few minutes — there might be temporary downtime
+3. Ensure your firewall or proxy isn’t blocking traffic
+4. Check [Clarifai’s status page](https://status.clarifai.com)
+
+## Image Processing Issues
+
+Working with images can introduce additional complications — from data corruption to file permission errors.
+
+### Corrupted or Unreadable Images
+
+**Error**: Generated images are corrupted or won't open
+
+This usually happens if the image data wasn’t fully received or saved correctly.
+
+Use error checking like this:
+
+```python
+if img_np is not None and img_np.size > 0:
+    cv2.imwrite("output.jpg", img_np)
+    print("✅ Image saved successfully")
+else:
+    print("❌ Failed to process image data")
+```
+
+### Permission Denied
+
+**Error**: Permission denied when saving files
+
+Your script may not have write permissions in the current directory.
+
+Steps to resolve:
+
+```bash
+# Check directory permissions
+ls -la
+
+# Navigate to a writable directory
+cd ~/Documents
+
+# Run the script again
+python /path/to/your/script.py
+```
+
+## Performance Issues
+
+Slow performance or memory-related crashes can often be addressed through optimization and lighter alternatives.
+
+### Scripts Running Slowly
+
+Common reasons and optimizations:
+
+1. **Large input files:** Resize images before processing
+2. **Slow internet:** Use local files when possible
+3. **Complex models:** Choose simpler models when speed is a priority
+4. **Server load:** Run scripts during off-peak hours
+
+### Out of Memory Errors
+
+These usually occur when handling high-resolution images or large batches.
+
+Tips to reduce memory usage:
+
+```bash
+# Use a lightweight version of OpenCV
+pip install opencv-python-headless
+
+# Or resize images in your code before processing
+```
+
+## Additional Debugging Tips
+
+Debugging effectively helps you isolate and resolve issues faster. Use these tips to gain visibility into what your code is doing.
+
+### Enable Verbose Output
+
+Add print statements to verify assumptions at runtime:
+
+```python
+print(f"PAT loaded: {'Yes' if pat else 'No'}")
+print(f"Image URL: {image_url}")
+print(f"Model prediction type: {type(model_prediction)}")
+```
+
+### Check API Responses
+
+Always validate the API response before processing it:
+
+```python
+if model_prediction.outputs and len(model_prediction.outputs) > 0:
+    # Process results
+    pass
+else:
+    print("No outputs received from the model")
+```
+
+## Getting Help
+
+If you're still facing issues:
+
+1. **Read the error message carefully** – it often points to the exact problem
+2. **Review the full traceback** – it tells you where the failure occurred
+3. **Test with minimal examples** – start simple and build up
+4. **Check Clarifai’s status page** – [status.clarifai.com](https://status.clarifai.com)
+5. **Consult the documentation, especially on interpreting error codes** – [docs.clarifai.com](https://docs.clarifai.com/resources/api-overview/status-codes)
