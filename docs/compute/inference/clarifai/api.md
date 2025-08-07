@@ -50,6 +50,9 @@ import Mask3 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orc
 import PyModelClient from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/py_model_client.py";
 import NodeModelClient from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/node_model_client.js";
 
+import AsyncPredict from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/async_predict.py";
+import AsyncGenerate from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/async_generate.py";
+
 ## Prerequisites
 
 ### Install Clarifai Packages
@@ -432,5 +435,29 @@ You can learn more about it [here](https://docs.clarifai.com/compute/models/infe
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{PyToolCalling}</CodeBlock>
+</TabItem>
+</Tabs>
+
+## Asynchronous Inference
+
+Asynchronous inference enables non-blocking execution of model prediction tasks. Instead of waiting for each prediction to complete before proceeding, you can use the `async_predict` and `async_generate` methods to submit multiple requests concurrently and retrieve the results once they're ready.
+
+### Async Prediction 
+
+You can use this for standard prediction tasks that return a complete result in a single response. The output is typically a structured object, like a dictionary or JSON. 
+
+<Tabs groupId="code">
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{AsyncPredict}</CodeBlock>
+</TabItem>
+</Tabs>
+
+### Async Generation  
+
+You can use this for generative models that produce output incrementally — such as large language models that stream tokens one by one. The response is an asynchronous stream, which you iterate over.
+
+<Tabs groupId="code">
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{AsyncGenerate}</CodeBlock>
 </TabItem>
 </Tabs>

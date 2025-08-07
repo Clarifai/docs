@@ -1,6 +1,6 @@
 ---
 description: Learn how to use our advanced inference operations 
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 # Advanced Inference Options 
