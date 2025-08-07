@@ -1,6 +1,6 @@
 ---
 description: Learn how we secure and handle your data
-sidebar_position: 11
+sidebar_position: 13
 ---
 
 # Data Privacy and Security

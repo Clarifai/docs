@@ -34,7 +34,7 @@ Start by [logging in to](https://clarifai.com/login) your existing Clarifai acco
 
 ## Step 2: Get a PAT Key
 
-To authenticate your connection to Clarifai, you’ll need a Personal Access Token (PAT). You can obtain one from your personal settings page by navigating to the [Security section](https://clarifai.com/settings/security).
+To authenticate your connection to Clarifai, you’ll need a Personal Access Token (PAT). You can obtain one from your personal settings page by navigating to the **Security** section.
 
 You can then set the PAT as an environment variable using `CLARIFAI_PAT`.
 
