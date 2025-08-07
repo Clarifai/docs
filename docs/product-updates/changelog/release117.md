@@ -24,7 +24,7 @@ draft: false
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
-|![new-feature](/img/new_feature.jpg) | Introduced a Developer Plan | <ul> <li> This plan provides access to [Local Runners](https://docs.clarifai.com/compute/local-runners/) at a promotional price of $1 per month.</li> <li> Learn more [here](https://www.clarifai.com/pricing). </li> </ul>  |
+|![new-feature](/img/new_feature.jpg) | Introduced a Developer Plan | <ul> <li> This plan provides access to [Local Runners](https://docs.clarifai.com/compute/local-runners/) and  open-source models at a promotional price of $1 per month.</li> <li> Learn more [here](https://www.clarifai.com/pricing). </li> </ul>  |
 
 ##  Published Models
 
@@ -38,6 +38,11 @@ draft: false
 |--------------------------------------|------------------------|---------------------------|
 |![new-feature](/img/new_feature.jpg) | Added support for running Ollama models locally | <ul> <li> You can now download and run Ollama models locally with Clarifai’s Local Runners.</li> <li> Learn more [here](https://docs.clarifai.com/compute/local-runners/ollama). </li> </ul>  |
 
+## Playground
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+|![improvement](/img/improvement.jpg) | Improved the [AI Playground](https://docs.clarifai.com/getting-started/quickstart-playground) with a side-by-side comparison view | <ul> <li>  This allows users to easily test and compare different models, or the same model on different instances, to select the most suitable option. </li> </ul>  |
 
 ## Python SDK
 
@@ -50,5 +55,5 @@ draft: false
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
 |![improvement](/img/improvement.jpg)| Made some platform improvements   | <ul> <li> Token-based models now clearly show accurate input and output pricing, including when used within workflows. </li> <li> Workflow pricing now displays multiple pricing tiers for each model included in the workflow. </li> <li> Updated the Settings sidebar to support URL-based account switching. Access to any Settings page now requires this URL format: `/userOrOrgId/settings/{resource-type}`.</li> <li> Added support for redirecting users back to their original source page after login or sign-up, where applicable.</li> <li> Added the "Create Organization" flow as a follow-up step after the new user onboarding process.</li> </ul>  |
-|![bug](/img/bug.jpg) |  Fixed some bugs | <ul> <li> Fixed an issue where a renamed app continued to show its old ID in the Settings page and deletion toast notification. </li>  <li> Fixed an issue where accessing unauthorized resources triggered multiple error pop-ups; it now shows a single, graceful notification.</li> <li> Fixed an issue where both My Resources and Community tabs were highlighted when opening an app under My Resources in Org accounts; now only My Resources is correctly highlighted. </li> <li> Fixed an issue in the mobile view of Configure Home settings where enabling one option would unexpectedly disable another. </li> <li> Fixed an issue where reordering Home page card layouts via ‘Configure Home’ did not save the intended order.</li> <li> Fixed an issue where the recent activity section on the Home page displayed incorrect information when users performed operations across multiple apps.</li> <li> Fixed an issue where the Sign Up and verify email pages did not redirect after successful authentication, or triggered the onboarding modal.</li> </ul>  |
+|![bug](/img/bug.jpg) |  Fixed some bugs | <ul> <li> Fixed an issue where a renamed app continued to show its old ID in the Settings page and deletion toast notification. </li>  <li> Fixed an issue where accessing unauthorized resources triggered multiple error pop-ups; it now shows a single, graceful notification.</li> <li> Fixed an issue where both My Resources and Community tabs were highlighted when opening an app under My Resources in Org accounts; now only My Resources is correctly highlighted. </li> <li> Fixed an issue where reordering Home page card layouts via ‘Configure Home’ did not save the intended order.</li> <li> Fixed an issue where the recent activity section on the Home page displayed incorrect information when users performed operations across multiple apps.</li> <li> Fixed an issue where the Sign Up and verify email pages did not redirect after successful authentication, or triggered the organization onboarding modal.</li> </ul>  |
 
