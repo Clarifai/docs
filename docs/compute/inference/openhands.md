@@ -1,7 +1,6 @@
 ---
 description: Run inference with Clarifai models locally using OpenHands
 sidebar_position: 5
-draft: true
 ---
 
 # OpenHands
@@ -9,9 +8,9 @@ draft: true
 **Run inference with Clarifai models locally using OpenHands**
 <hr />
 
-[OpenHands](https://docs.all-hands.dev/) is an AI-powered code assistance framework that streamlines development by leveraging the flexibility of large language models (LLMs). It can assist with a wide range of coding tasks using LLMs.
+[OpenHands](https://docs.all-hands.dev/) is an AI-powered code assistance framework designed to streamline development by harnessing the flexibility of large language models (LLMs).
 
-Let's demonstrate how to use OpenHands to run inference with Clarifai models in your local development environment.
+Let's walk through how to run inference with Clarifai models locally using OpenHands, while leveraging its intelligent assistance to boost your coding productivity.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -60,7 +59,7 @@ Start OpenHands using the following comprehensive `docker run` command.
 </TabItem>
 </Tabs>
 
-This command:
+The above command:
 
 * Launches a new Docker container to run OpenHands.
 * Sets environment variables for the runtime image and logging.
@@ -72,4 +71,66 @@ This command:
 * Uses the OpenHands `0.51` image from the official registry.
 * Automatically deletes the container after it exits.
 
-## Step 3: Run OpenHands
+## Step 3: Access the Web Interface
+
+After running the `docker run` command, monitor the terminal for log output. Once the application finishes its startup process, open your preferred web browser and go to:
+
+```
+http://localhost:3000
+```
+
+At this point, OpenHands is successfully installed and running on your local machine.
+
+![](/img/new-docs/openhands_1.png)
+
+## Step 4: Configure OpenHands
+
+To configure OpenHands, open its interface and click the **Settings** (gear icon) in the bottom-left corner of the sidebar. 
+
+The Settings page allows you to connect OpenHands to a language model, which serves as its cognitive engine, and integrate it with GitHub for version control and collaboration.
+
+### Connect to an LLM
+
+In the Settings page, go to the **LLM** tab and toggle the **Advanced** button.
+
+![](/img/new-docs/openhands_2.png)
+
+Then, fill in the following fields:
+
+* **Custom Model** — Enter the Clarifai model URL you want to use. To ensure OpenAI compatibility, prefix the model path with `openai/`, followed by the full Clarifai model URL. Here is an example: `openai/https://clarifai.com/openai/chat-completion/models/gpt-oss-120b`. 
+* **Base URL** — Enter Clarifai's [OpenAI-compatible](https://docs.clarifai.com/compute/inference/#predict-with-openai-compatible-format) API endpoint: `https://api.clarifai.com/v2/ext/openai/v1`. 
+* **API Key** — Enter your PAT, as explained earlier.
+
+> **Note:** You can leave the remaining settings at their default values, including the selected agent.
+
+After filling in the fields, click the **Save Changes** button at the bottom-right corner of the interface.
+
+### Integrate with GitHub
+
+Within the same Settings page, navigate to the **Integrations** tab.
+
+Enter your [GitHub token](https://github.com/settings/tokens) in the provided field, then click **Save Changes** in the bottom-right corner of the interface to apply the integration.
+
+![](/img/new-docs/openhands_3.png)
+
+Next, click the plus (**+**) **Start new conversation** button at the top of the sidebar. From there, connect to a repository by selecting the desired repo and its branch.
+
+Once selected, click the **Launch** button to begin your coding session.
+
+![](/img/new-docs/openhands_4.png)
+
+## Step 5: Start Building
+
+In the main interface, use the input field to prompt the agent and begin generating your script. You can continue interacting with the agent to refine, extend, or troubleshoot your code as needed.
+
+Here is a prompt example you can use:
+
+```text
+Write a Bash script named hello.sh that prints "Hello, world!" to the console when executed.
+```
+
+![](/img/new-docs/openhands_5.png)
+
+OpenHands forwards the request to the configured LLM, which responds by generating a snippet to fulfill the task.
+
+Once you're satisfied with your work, you can seamlessly push your code to GitHub directly from the interface.
