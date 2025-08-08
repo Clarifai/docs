@@ -4395,8 +4395,10 @@ You must define the minimum compute resources required for running your model, i
 
 These are some parameters you can define:
 
-- **`cpu_limit`** – Number of CPUs allocated for the model (follows Kubernetes notation, e.g., "1", "2").
+- **`cpu_limit`** – Number of CPUs allocated for the model (follows [Kubernetes notation](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/), e.g., "1", "2").
+- **`cpu_requests`** (default: `500m` (500 millicores)) – Specifies the minimum amount of CPU resources to request. Follows Kubernetes notation (e.g., "100m", "1", "4.5"), where 1 equals one full CPU core.
 - **`cpu_memory`** – Minimum memory required for the CPU (uses Kubernetes notation, e.g., "1Gi", "1500Mi", "3Gi").
+-	**`cpu_memory_requests`** (default: `500Mi` (500 mebibytes)) – Specifies the minimum amount of memory to request for the CPU. Also follows Kubernetes notation, such as 1Ki (1 kibibyte), 1500Mi (1500 mebibytes), 3Gi(3 gibibytes), and 4Ti (4 tebibytes).
 - **`num_accelerators`** – Number of GPUs or TPUs to use for inference.
 - **`accelerator_type`** – Specifies the type of hardware [accelerators](https://docs.clarifai.com/compute/deployments/cloud-instances/) (e.g., GPU or TPU) supported by the model (e.g., "NVIDIA-A10G"). _Note that instead of specifying an exact accelerator type, you can use a wildcard `(*)` to automatically match all available accelerators that fit your use case. For example, using `["NVIDIA-*"]` will enable the system to choose from all NVIDIA options compatible with your model._
 - **`accelerator_memory`** – Minimum memory required for the GPU or TPU.
@@ -32726,9 +32728,10 @@ Commands:
 
                                       Model Inference: list, predict
   nodepool (np)                   Manage Nodepools: create, delete, list
-  pipeline (pl)                   Manage pipelines: upload, init, etc
+  pipeline (pl)                   Manage pipelines: upload, init, list, etc
   pipeline-step (pipelinestep, ps)
-                                  Manage pipeline steps: upload, test, etc
+                                  Manage pipeline steps: upload, test, list,
+                                  etc
   run                             Execute a script with the current context's
                                   environment
   shell-completion                Shell completion script
@@ -32864,6 +32867,7 @@ Usage: clarifai config [OPTIONS] COMMAND [ARGS]...
   Manage multiple configuration profiles (contexts).
 
   Authentication Precedence:
+
     1. Environment variables (e.g., `CLARIFAI_PAT`) are used first if set.
     2. The settings from the active context are used if no environment
     variables are provided.
@@ -32872,19 +32876,20 @@ Options:
   --help  Show this message and exit.
 
 Commands:
-  create-context (set-context)  Create a new context.
-  current-context               Show the current context's details.
-  delete-context                Delete a context.
-  edit (e)                      Open the configuration file for editing.
-  env (get-env)                 Print env vars for the active context.
-  get-contexts (list-contexts)  List all available contexts.
-  use-context                   Set the current context.
-  view (show)                   Display the current configuration.
+  create-context (create)         Create a new context.
+  current-context (current)       Show the current context's details.
+  delete-context (delete)         Delete a context.
+  edit (e)                        Open the configuration file for editing.
+  env (get-env)                   Print env vars for the active context.
+  get-contexts (list-contexts, ls)
+                                  List all available contexts.
+  use-context (use)               Set the current context.
+  view (show)                     Display the current configuration.
 ```
 
 ### Create Context
 
-The `create-context` (or `set-context`) subcommand creates a new Clarifai context. Note that you'll be prompted to configure the context by providing the necessary details for that context — such as user ID, API URL, and PAT.
+The `create-context` (or `create`) subcommand creates a new Clarifai context. Note that you'll be prompted to configure the context by providing the necessary details for that context — such as user ID, API URL, and PAT.
 
 :::note
 
@@ -32905,7 +32910,7 @@ Options:
 Or:
 
     
-Usage: clarifai config set-context [OPTIONS] NAME
+Usage: clarifai config create [OPTIONS] NAME
 
   Create a new context.
 
@@ -32944,7 +32949,7 @@ Example
 
 ### Display Current Context
 
-The `current-context` subcommand displays the details of the currently active Clarifai context. It helps you verify which context is in use and view its associated configuration, such as the user ID, PAT, and base URL. 
+The `current-context` (or `current`) subcommand displays the details of the currently active Clarifai context. It helps you verify which context is in use and view its associated configuration, such as the user ID, PAT, and base URL. 
 
 ```text
 Usage: clarifai config current-context [OPTIONS]
@@ -32957,7 +32962,16 @@ Options:
 
 > **Note:** The `-o` flag is the short form of the `--output-format` flag. 
 
-&nbsp;
+Or:
+
+```text
+Usage: clarifai config current [OPTIONS]
+
+  Show the current context's details.
+
+Options:
+  -o, --output-format [name|json|yaml]
+```
 
 Here is how you can show the currently active context:
 
@@ -33007,10 +33021,18 @@ CLARIFAI_USER_ID: XXXX
 
 ### Delete Context
 
-The `delete-context` subcommand deletes an existing Clarifai context.
+The `delete-context` or (`delete`) subcommand deletes an existing Clarifai context.
 
 ```text
 Usage: clarifai config delete-context [OPTIONS] NAME
+
+  Delete a context.
+```
+
+Or:
+
+```text
+Usage: clarifai config delete [OPTIONS] NAME
 
   Delete a context.
 ```
@@ -33091,7 +33113,7 @@ export CLARIFAI_USER_ID="XXXX"
 
 ### Get All Contexts
 
-The `get-contexts` (or `list-contexts`) subcommand lists all Clarifai contexts defined in your configuration file, displayed in a table format. The currently active context is marked with an asterisk (`*`).
+The `get-contexts` (or `list-contexts`, or `ls`) subcommand lists all Clarifai contexts defined in your configuration file, displayed in a table format. The currently active context is marked with an asterisk (`*`).
 
 This provides an overview of the different Clarifai setups you can switch between.
 
@@ -33159,11 +33181,20 @@ Here is how you can output context data as YAML:
 
 ### Switch Contexts
 
-The `use-context` subcommand sets a different Clarifai context as the active one. This is useful when you need to switch between environments or credentials without manually updating your configuration each time.
+The `use-context` (or `use`) subcommand sets a different Clarifai context as the active one. This is useful when you need to switch between environments or credentials without manually updating your configuration each time.
 
     
 ```text
 Usage: clarifai config use-context [OPTIONS] NAME
+
+  Set the current context.
+```
+
+Or:
+
+    
+```text
+Usage: clarifai config use [OPTIONS] NAME
 
   Set the current context.
 ```
