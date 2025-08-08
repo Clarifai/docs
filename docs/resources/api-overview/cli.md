@@ -72,9 +72,10 @@ Commands:
 
                                       Model Inference: list, predict
   nodepool (np)                   Manage Nodepools: create, delete, list
-  pipeline (pl)                   Manage pipelines: upload, init, etc
+  pipeline (pl)                   Manage pipelines: upload, init, list, etc
   pipeline-step (pipelinestep, ps)
-                                  Manage pipeline steps: upload, test, etc
+                                  Manage pipeline steps: upload, test, list,
+                                  etc
   run                             Execute a script with the current context's
                                   environment
   shell-completion                Shell completion script
@@ -248,6 +249,7 @@ Usage: clarifai config [OPTIONS] COMMAND [ARGS]...
   Manage multiple configuration profiles (contexts).
 
   Authentication Precedence:
+
     1. Environment variables (e.g., `CLARIFAI_PAT`) are used first if set.
     2. The settings from the active context are used if no environment
     variables are provided.
@@ -256,14 +258,15 @@ Options:
   --help  Show this message and exit.
 
 Commands:
-  create-context (set-context)  Create a new context.
-  current-context               Show the current context's details.
-  delete-context                Delete a context.
-  edit (e)                      Open the configuration file for editing.
-  env (get-env)                 Print env vars for the active context.
-  get-contexts (list-contexts)  List all available contexts.
-  use-context                   Set the current context.
-  view (show)                   Display the current configuration.
+  create-context (create)         Create a new context.
+  current-context (current)       Show the current context's details.
+  delete-context (delete)         Delete a context.
+  edit (e)                        Open the configuration file for editing.
+  env (get-env)                   Print env vars for the active context.
+  get-contexts (list-contexts, ls)
+                                  List all available contexts.
+  use-context (use)               Set the current context.
+  view (show)                     Display the current configuration.
 ```
 
 </TabItem>
@@ -272,7 +275,7 @@ Commands:
 
 ### Create Context
 
-The `create-context` (or `set-context`) subcommand creates a new Clarifai context. Note that you'll be prompted to configure the context by providing the necessary details for that context — such as user ID, API URL, and PAT.
+The `create-context` (or `create`) subcommand creates a new Clarifai context. Note that you'll be prompted to configure the context by providing the necessary details for that context — such as user ID, API URL, and PAT.
 
 :::note
 
@@ -300,7 +303,7 @@ Or:
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">
-Usage: clarifai config set-context [OPTIONS] NAME
+Usage: clarifai config create [OPTIONS] NAME
 
   Create a new context.
 
@@ -354,7 +357,7 @@ Here is how you can create a new context with all values specified inline:
 
 ### Display Current Context
 
-The `current-context` subcommand displays the details of the currently active Clarifai context. It helps you verify which context is in use and view its associated configuration, such as the user ID, PAT, and base URL. 
+The `current-context` (or `current`) subcommand displays the details of the currently active Clarifai context. It helps you verify which context is in use and view its associated configuration, such as the user ID, PAT, and base URL. 
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
@@ -372,7 +375,21 @@ Options:
 
 > **Note:** The `-o` flag is the short form of the `--output-format` flag. 
 
-&nbsp;
+Or:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+
+```text
+Usage: clarifai config current [OPTIONS]
+
+  Show the current context's details.
+
+Options:
+  -o, --output-format [name|json|yaml]
+```
+</TabItem>
+</Tabs>
 
 Here is how you can show the currently active context:
 
@@ -446,13 +463,26 @@ CLARIFAI_USER_ID: XXXX
 
 ### Delete Context
 
-The `delete-context` subcommand deletes an existing Clarifai context.
+The `delete-context` or (`delete`) subcommand deletes an existing Clarifai context.
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
 
 ```text
 Usage: clarifai config delete-context [OPTIONS] NAME
+
+  Delete a context.
+```
+</TabItem>
+</Tabs>
+
+Or:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+
+```text
+Usage: clarifai config delete [OPTIONS] NAME
 
   Delete a context.
 ```
@@ -574,7 +604,7 @@ export CLARIFAI_USER_ID="XXXX"
 
 ### Get All Contexts
 
-The `get-contexts` (or `list-contexts`) subcommand lists all Clarifai contexts defined in your configuration file, displayed in a table format. The currently active context is marked with an asterisk (`*`).
+The `get-contexts` (or `list-contexts`, or `ls`) subcommand lists all Clarifai contexts defined in your configuration file, displayed in a table format. The currently active context is marked with an asterisk (`*`).
 
 This provides an overview of the different Clarifai setups you can switch between.
 
@@ -672,13 +702,26 @@ Here is how you can output context data as YAML:
 
 ### Switch Contexts
 
-The `use-context` subcommand sets a different Clarifai context as the active one. This is useful when you need to switch between environments or credentials without manually updating your configuration each time.
+The `use-context` (or `use`) subcommand sets a different Clarifai context as the active one. This is useful when you need to switch between environments or credentials without manually updating your configuration each time.
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
     
 ```text
 Usage: clarifai config use-context [OPTIONS] NAME
+
+  Set the current context.
+```
+</TabItem>
+</Tabs>
+
+Or:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    
+```text
+Usage: clarifai config use [OPTIONS] NAME
 
   Set the current context.
 ```

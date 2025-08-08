@@ -9,7 +9,9 @@ build_info:
 
 inference_compute_info:
   cpu_limit: "1"
+  cpu_requests: "1"
   cpu_memory: "13Gi"
+  cpu_memory_requests: "2Gi"
   num_accelerators: 1
   accelerator_type: ["NVIDIA-*"]
   accelerator_memory: "15Gi"
