@@ -214,8 +214,10 @@ You must define the minimum compute resources required for running your model, i
 
 These are some parameters you can define:
 
-- **`cpu_limit`** – Number of CPUs allocated for the model (follows Kubernetes notation, e.g., "1", "2").
+- **`cpu_limit`** – Number of CPUs allocated for the model (follows [Kubernetes notation](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/), e.g., "1", "2").
+- **`cpu_requests`** (default: `500m` (500 millicores)) – Specifies the minimum amount of CPU resources to request. Follows Kubernetes notation (e.g., "100m", "1", "4.5"), where 1 equals one full CPU core.
 - **`cpu_memory`** – Minimum memory required for the CPU (uses Kubernetes notation, e.g., "1Gi", "1500Mi", "3Gi").
+-	**`cpu_memory_requests`** (default: `500Mi` (500 mebibytes)) – Specifies the minimum amount of memory to request for the CPU. Also follows Kubernetes notation, such as 1Ki (1 kibibyte), 1500Mi (1500 mebibytes), 3Gi(3 gibibytes), and 4Ti (4 tebibytes).
 - **`num_accelerators`** – Number of GPUs or TPUs to use for inference.
 - **`accelerator_type`** – Specifies the type of hardware [accelerators](https://docs.clarifai.com/compute/deployments/cloud-instances/) (e.g., GPU or TPU) supported by the model (e.g., "NVIDIA-A10G"). _Note that instead of specifying an exact accelerator type, you can use a wildcard `(*)` to automatically match all available accelerators that fit your use case. For example, using `["NVIDIA-*"]` will enable the system to choose from all NVIDIA options compatible with your model._
 - **`accelerator_memory`** – Minimum memory required for the GPU or TPU.
