@@ -33804,7 +33804,7 @@ npm install clarifai-nodejs
 
 ## Authentication
 
-Clarifai uses Personal Access Tokens (PATs) to authenticate API requests. You can create and manage PATs in your Clarifai account [security settings](https://clarifai.com/settings/security).
+Clarifai uses [Personal Access Tokens](https://docs.clarifai.com/control/authentication/pat) (PATs) to authenticate API requests. You can obtain one from your personal settings page by navigating to the **Security** section.
 
 You can export your PAT as an environment variable. Then, import and initialize the API client.
 
@@ -33832,6 +33832,14 @@ const nextConfig = {
 
 module.exports = nextConfig
 ```
+
+## Minimum System Requirements
+
+The Clarifai Node.js package is lightweight and designed to run on any modern system.
+
+You’ll need Node.js version 18 or higher to run it.
+
+> **Note**: The package supports all major operating systems (Windows, macOS — including Intel and Apple Silicon — and Linux) as long as Node.js 18+ is installed.
 
  {
     const result = response?.[0].data?.conceptsList[0].name ?? "unrecognized";
@@ -34038,13 +34046,40 @@ pip install -e .
 
 ## Authentication
 
-Clarifai uses Personal Access Tokens (PATs) to authenticate API requests. You can create and manage PATs in your Clarifai account [security settings](https://clarifai.com/settings/security).
+Clarifai uses [Personal Access Tokens](https://docs.clarifai.com/control/authentication/pat) (PATs) to authenticate API requests. You can obtain one from your personal settings page by navigating to the **Security** section.
 
 To set your PAT as an environment variable and use it with the Python SDK, run:
 
      export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE 
 
-     set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE
+     set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE 
+
+## Minimum System Requirements
+
+The Clarifai Python package is lightweight and designed to run on most modern systems. No special hardware is required. It will run on standard consumer-grade laptops and desktops.
+
+Below are the minimum system requirements for different operating systems.
+
+### Supported Operating Systems
+
+- **Windows**: Windows 10 (64-bit) or later
+- **macOS**: macOS 11.0 (Big Sur) or later, Apple Silicon (M1, M2, M3, …) only
+> **Note**: Intel-based Macs are not supported
+- **Linux**: Ubuntu 18.04 LTS or later, or equivalent distributions
+
+### Python Requirements
+
+- Python 3.11 – 3.12 (3.12 is supported by default)
+- Pip 21.0 or higher
+
+### Hardware Requirements
+
+- **Processor**:
+    - Windows/Linux: x86_64 or ARM64 (Intel, AMD, or ARM)
+    - macOS: Apple Silicon only (M1, M2, M3, …)
+- **Memory**: Minimum 2 GB RAM (4 GB or more is recommended)
+- **Disk Space**: At least 200 MB free storage for installation and dependencies
+- **GPU**: Not required. However, for more intensive tasks, you may need access to a GPU. We provide various [GPU options](https://docs.clarifai.com/compute/deployments/cloud-instances) (e.g., NVIDIA A100, L40S) through our cloud compute services. These resources are managed on our platform, not on your local machine.
 
 ---
 
