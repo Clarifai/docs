@@ -76,7 +76,7 @@ Below are the minimum system requirements for different operating systems.
 
 - **Windows**: Windows 10 (64-bit) or later
 - **macOS**: macOS 11.0 (Big Sur) or later, Apple Silicon (M1, M2, M3, …) only
-> **Note**: Intel-based Macs are not supported.
+> **Note**: Intel-based Macs are not supported
 - **Linux**: Ubuntu 18.04 LTS or later, or equivalent distributions
 
 ### Python Requirements
