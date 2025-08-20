@@ -22,7 +22,7 @@ npm install clarifai-nodejs
 
 ## Authentication
 
-Clarifai uses Personal Access Tokens (PATs) to authenticate API requests. You can create and manage PATs in your Clarifai account [security settings](https://clarifai.com/settings/security).
+Clarifai uses [Personal Access Tokens](https://docs.clarifai.com/control/authentication/pat) (PATs) to authenticate API requests. You can obtain one from your personal settings page by navigating to the **Security** section.
 
 You can export your PAT as an environment variable. Then, import and initialize the API client.
 
@@ -51,6 +51,13 @@ const nextConfig = {
 module.exports = nextConfig
 ```
 
+## Minimum System Requirements
+
+The Clarifai Node.js package is lightweight and designed to run on any modern system.
+
+You’ll need Node.js version 18 or higher to run it.
+
+> **Note**: The package supports all major operating systems (Windows, macOS — including Intel and Apple Silicon — and Linux) as long as Node.js 18+ is installed.
 
 <!--### Using Models
 
