@@ -516,7 +516,7 @@ import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 
 We offer a range of instance types designed to handle a variety of machine learning workloads. These cloud instances vary in their CPU, RAM (Random Access Memory), and GPU configurations, which allow you to orchestrate the right balance of performance and cost for your use case.
 
-:::tip pricing
+:::info pricing
 
 To learn more about pricing for each instance type, see the [pricing page](https://www.clarifai.com/pricing).
 
@@ -586,10 +586,12 @@ The `g5` series delivers enhanced GPU capabilities and is designed for tasks req
 
 - Running object tracking or pose estimation workflows in real-time video analysis.
 
-:::info How to Choose the best GPU 
+:::tip How to Choose the best GPU 
 
 - [NVIDIA A10 or NVIDIA L40S?](https://www.clarifai.com/blog/nvidia-a10-vs-l40s-gpus-for-ai-workloads) 
 - [NVIDIA A10 or NVIDIA A100?](https://www.clarifai.com/blog/nvidia-a10-vs-a100-choosing-the-right-gpu-for-ai-workloads)
+- [NVIDIA B200 or NVIDIA H100?](https://www.clarifai.com/blog/nvidia-b200-vs-h100)
+- [NVIDIA A100 or NVIDIA H100?](https://www.clarifai.com/blog/nvidia-a100-vs.-h100-choosing-the-right-gpu-for-your-ai-workloads)
 
 :::
 
@@ -3466,12 +3468,14 @@ The OpenAI Chat Completions API supports multimodal inputs, allowing you to comb
   Example Output
     Response: The image shows a ginger tabby cat lying down on a stone surface. The cat has a striped pattern on its fur and is looking directly at the camera with alert, bright eyes. The background features a textured wall, and the lighting highlights the cat's features, giving a warm and cozy atmosphere.
 
+## Responses
+
+The OpenAI [Responses](https://platform.openai.com/docs/api-reference/responses) API endpoint enables you to take advantage of the latest OpenAI platform features. 
+
     {PyResponses}
 
   Example Output
-     
-
--->
+    Under a silver‑shimmering moon, a gentle unicorn named Lira tiptoed into the sleepy meadow, her horn casting soft, glittering lullabies over the swaying wildflowers. As the night wind whispered sweet dreams, she gathered a handful of moon‑kissed dew and sprinkled it over the slumbering forest creatures, coax
 
 ## Streaming
 
@@ -4083,6 +4087,7 @@ When you're done, just close the terminal running the local runner to shut it do
 *  [More examples of calling Ollama models](https://github.com/ollama/ollama-python/tree/main/examples)
 *  [Clarifai-specific inference examples with Ollama models](https://docs.clarifai.com/compute/inference/clarifai/api)
 * [Example for running Ollama models locally with Clarifai’s Local Runners](https://github.com/Clarifai/runners-examples/tree/main/local-runners/ollama-model-upload)
+* [YouTube video on running OpenAI’s open-source GPT-OSS-20B model locally with Ollama](https://www.youtube.com/watch?v=TfS2p8LZYBE)
 
 ---
 
@@ -14250,9 +14255,11 @@ Our models are fully "trainable" machine learning models developed in-house and 
 
 We offer models across a wide range of categories, including generative models like large language models (LLMs), as well as classification, detection, and segmentation models.
 
-:::info Try our Pre-Built Models
+:::info Try our Hosted Models
 
-Before training your own model, we recommend trying these pre-built models to see if they meet your needs.
+Before training your own model, we recommend trying the models hosted on our platform to see if they meet your needs.
+
+> _**Tip**: [Read](https://www.clarifai.com/blog/gpt-5-vs-other-models) a comparison of GPT-5 and other models — covering features, pricing, and use cases._
 
 :::
 
@@ -27833,7 +27840,7 @@ We have a public roadmap that gives you a view of our upcoming plans and helps u
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
-| ![new-feature](/img/new_feature.jpg) | Published new models   |   Published [GPT‑OSS-120B and GPT‑OSS-20B](https://clarifai.com/openai/chat-completion/models/gpt-oss-120b), OpenAI's latest state-of-the-art open-weight language models, designed for real-world reasoning, tool use, and on-device deployment.  Published [Qwen3-Coder-30B-A3B-Instruct](https://clarifai.com/qwen/qwenCoder/models/Qwen3-Coder-30B-A3B-Instruct), a high-performing, efficient model with strong agentic coding abilities, long-context support, and broad platform compatibility.   |
+| ![new-feature](/img/new_feature.jpg) | Published new models   |   Published [GPT‑OSS-120B and GPT‑OSS-20B](https://clarifai.com/openai/chat-completion/models/gpt-oss-120b), OpenAI's latest state-of-the-art open-weight language models, designed for real-world reasoning, tool use, and on-device deployment. Published GPT-5 family of models, which spans three tiers: [GPT-5](https://clarifai.com/openai/chat-completion/models/gpt-5) for advanced reasoning and generative tasks, [GPT-5 Mini](https://clarifai.com/openai/chat-completion/models/gpt-5-mini) for fast, cost-effective real-time use, and [GPT-5 Nano](https://clarifai.com/openai/chat-completion/models/gpt-5-nano) for ultra-low-latency edge and budget-sensitive deployments.  Published [Qwen3-Coder-30B-A3B-Instruct](https://clarifai.com/qwen/qwenCoder/models/Qwen3-Coder-30B-A3B-Instruct), a high-performing, efficient model with strong agentic coding abilities, long-context support, and broad platform compatibility.   |
 
 ## Ollama Models
 
