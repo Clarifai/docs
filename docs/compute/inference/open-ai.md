@@ -136,7 +136,6 @@ The OpenAI Chat Completions API supports multimodal inputs, allowing you to comb
     <CodeBlock className="language-text">Response: The image shows a ginger tabby cat lying down on a stone surface. The cat has a striped pattern on its fur and is looking directly at the camera with alert, bright eyes. The background features a textured wall, and the lighting highlights the cat's features, giving a warm and cozy atmosphere.</CodeBlock>
 </details>
 
-<!--
 ## Responses
 
 The OpenAI [Responses](https://platform.openai.com/docs/api-reference/responses) API endpoint enables you to take advantage of the latest OpenAI platform features. 
@@ -149,10 +148,8 @@ The OpenAI [Responses](https://platform.openai.com/docs/api-reference/responses)
 
 <details>
   <summary>Example Output</summary>
-    <CodeBlock className="language-text"> </CodeBlock>
+    <CodeBlock className="language-text">Under a silver‑shimmering moon, a gentle unicorn named Lira tiptoed into the sleepy meadow, her horn casting soft, glittering lullabies over the swaying wildflowers. As the night wind whispered sweet dreams, she gathered a handful of moon‑kissed dew and sprinkled it over the slumbering forest creatures, coax</CodeBlock>
 </details>
-
--->
 
 ## Streaming
 

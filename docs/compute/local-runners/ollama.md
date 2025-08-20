@@ -193,3 +193,4 @@ When you're done, just close the terminal running the local runner to shut it do
 *  [More examples of calling Ollama models](https://github.com/ollama/ollama-python/tree/main/examples)
 *  [Clarifai-specific inference examples with Ollama models](https://docs.clarifai.com/compute/inference/clarifai/api)
 * [Example for running Ollama models locally with Clarifai’s Local Runners](https://github.com/Clarifai/runners-examples/tree/main/local-runners/ollama-model-upload)
+* [YouTube video on running OpenAI’s open-source GPT-OSS-20B model locally with Ollama](https://www.youtube.com/watch?v=TfS2p8LZYBE)
