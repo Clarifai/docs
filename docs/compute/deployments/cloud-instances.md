@@ -11,7 +11,7 @@ pagination_next: null
 
 We offer a range of instance types designed to handle a variety of machine learning workloads. These cloud instances vary in their CPU, RAM (Random Access Memory), and GPU configurations, which allow you to orchestrate the right balance of performance and cost for your use case.
 
-:::tip pricing
+:::info pricing
 
 To learn more about pricing for each instance type, see the [pricing page](https://www.clarifai.com/pricing).
 
@@ -81,10 +81,12 @@ The `g5` series delivers enhanced GPU capabilities and is designed for tasks req
 
 - Running object tracking or pose estimation workflows in real-time video analysis.
 
-:::info How to Choose the best GPU 
+:::tip How to Choose the best GPU 
 
 - [NVIDIA A10 or NVIDIA L40S?](https://www.clarifai.com/blog/nvidia-a10-vs-l40s-gpus-for-ai-workloads) 
 - [NVIDIA A10 or NVIDIA A100?](https://www.clarifai.com/blog/nvidia-a10-vs-a100-choosing-the-right-gpu-for-ai-workloads)
+- [NVIDIA B200 or NVIDIA H100?](https://www.clarifai.com/blog/nvidia-b200-vs-h100)
+- [NVIDIA A100 or NVIDIA H100?](https://www.clarifai.com/blog/nvidia-a100-vs.-h100-choosing-the-right-gpu-for-your-ai-workloads)
 
 :::
 
