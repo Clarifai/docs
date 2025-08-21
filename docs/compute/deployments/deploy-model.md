@@ -43,9 +43,7 @@ Each model or workflow can only have one deployment per nodepool.
 
 To create a deployment, navigate to the model’s page and click the **Deploy Model** button.
 
-You can also open the **Deployments** tab to check if the model is already running on any compute environments.
-
-This tab displays the compute requirements needed for successfully deploying the model, allowing you to choose a nodepool that meets those requirements.
+You can also open the **Activity** tab to check if the model is already running on any compute environments. This tab displays the compute requirements needed for successfully deploying the model, allowing you to choose a nodepool that meets those requirements.
 
 ![ ](/img/compute-orchestration/compute-12.png)
 
@@ -81,6 +79,8 @@ You can also add an optional description to provide additional context and make 
 ### Step 5: Configure Advanced Settings
 
 You can also configure advanced deployment settings if needed. If you choose not to, the default values will be applied automatically.
+
+![ ](/img/compute-orchestration/compute-13-2.png)
 
 <a id="model-replica"></a>
 

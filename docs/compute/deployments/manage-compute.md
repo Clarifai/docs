@@ -112,9 +112,7 @@ Then, click the **Delete Nodepool** button that appears.
 
 A confirmation pop-up will appear, warning you that deleting the nodepool will cause the associated deployments to stop functioning. So, you may reassign the deployments to a different nodepool if you want to continue using them.
 
-Note that since this action cannot be undone, you need to proceed with caution.
-
-To complete the deletion, enter the name of the nodepool in the provided field, then click **Yes, Delete**.
+Note that since this action cannot be undone, you need to proceed with caution. To complete the deletion, enter the name of the nodepool in the provided field, then click **Yes, Delete**.
 
 ![ ](/img/compute-orchestration/compute-19-1.png)
 
