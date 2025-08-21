@@ -784,13 +784,11 @@ You can connect your existing AWS, Google Cloud (GCP), or Oracle infrastructure 
 
 ## **Via the UI**
 
+### Step 1: Start Creating a Cluster
+
 Log in to the Clarifai platform and select the **Compute** option in the top navigation bar.  
 
-![ ](/img/compute-orchestration/compute-1.png)
-
 You’ll be redirected to the Compute Orchestration page, where you can view and create clusters, nodepools, and deployments. 
-
-### Step 1: Start Creating a Cluster
 
 Click the **Create a Cluster** button to begin setting up a new cluster along with its associated nodepool.
 
@@ -873,9 +871,7 @@ Fill out the form to specify the details for your cluster and nodepool.
 
 ### Step 6: Finalize and Create the Cluster
 
-Before you enter the required details for creating a cluster, the **Create Cluster** button in the upper-right corner will be disabled (greyed out).
-
-After providing the details, the button will become active. Click it to launch your cluster and nodepool.
+Before you enter the required details for creating a cluster, the **Create Cluster** button in the upper-right corner will be disabled (greyed out). After providing the details, the button will become active. Click it to launch your cluster and nodepool.
 
 You'll then be redirected to your newly created cluster's page, where its associated nodepool will be listed in a table.
 
@@ -1014,9 +1010,7 @@ Each model or workflow can only have one deployment per nodepool.
 
 To create a deployment, navigate to the model’s page and click the **Deploy Model** button.
 
-You can also open the **Deployments** tab to check if the model is already running on any compute environments.
-
-This tab displays the compute requirements needed for successfully deploying the model, allowing you to choose a nodepool that meets those requirements.
+You can also open the **Activity** tab to check if the model is already running on any compute environments. This tab displays the compute requirements needed for successfully deploying the model, allowing you to choose a nodepool that meets those requirements.
 
 ![ ](/img/compute-orchestration/compute-12.png)
 
@@ -1051,6 +1045,8 @@ You can also add an optional description to provide additional context and make 
 ### Step 5: Configure Advanced Settings
 
 You can also configure advanced deployment settings if needed. If you choose not to, the default values will be applied automatically.
+
+![ ](/img/compute-orchestration/compute-13-2.png)
 
 - **Model Replicas** — This specifies the minimum and maximum range of model replicas to deploy, adjusting based on your performance needs and anticipated workload. Adding replicas enables horizontal scaling, where the workload is distributed across several instances of the model rather than relying on a single one. However, increasing them consumes more resources and may lead to higher costs. Each node in your nodepool can host multiple replicas, depending on model size and available resources.
 
@@ -1205,9 +1201,7 @@ Then, click the **Delete Nodepool** button that appears.
 
 A confirmation pop-up will appear, warning you that deleting the nodepool will cause the associated deployments to stop functioning. So, you may reassign the deployments to a different nodepool if you want to continue using them.
 
-Note that since this action cannot be undone, you need to proceed with caution.
-
-To complete the deletion, enter the name of the nodepool in the provided field, then click **Yes, Delete**.
+Note that since this action cannot be undone, you need to proceed with caution. To complete the deletion, enter the name of the nodepool in the provided field, then click **Yes, Delete**.
 
 ![ ](/img/compute-orchestration/compute-19-1.png)
 
