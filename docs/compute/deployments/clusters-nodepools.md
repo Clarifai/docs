@@ -25,16 +25,11 @@ You can connect your existing AWS, Google Cloud (GCP), or Oracle infrastructure 
 
 ## **Via the UI**
 
+### Step 1: Start Creating a Cluster
+
 Log in to the Clarifai platform and select the **Compute** option in the top navigation bar.  
 
-![ ](/img/compute-orchestration/compute-1.png)
-
-<br/>
-
-
 You’ll be redirected to the Compute Orchestration page, where you can view and create clusters, nodepools, and deployments. 
-
-### Step 1: Start Creating a Cluster
 
 Click the **Create a Cluster** button to begin setting up a new cluster along with its associated nodepool.
 
@@ -121,9 +116,7 @@ Fill out the form to specify the details for your cluster and nodepool.
 
 ### Step 6: Finalize and Create the Cluster
 
-Before you enter the required details for creating a cluster, the **Create Cluster** button in the upper-right corner will be disabled (greyed out).
-
-After providing the details, the button will become active. Click it to launch your cluster and nodepool.
+Before you enter the required details for creating a cluster, the **Create Cluster** button in the upper-right corner will be disabled (greyed out). After providing the details, the button will become active. Click it to launch your cluster and nodepool.
 
 You'll then be redirected to your newly created cluster's page, where its associated nodepool will be listed in a table.
 
