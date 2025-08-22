@@ -24,11 +24,13 @@ Start by [logging in to](https://clarifai.com/login) your Clarifai account, or [
 
 ## Step 2: Get a Model
 
-Clarifai’s [Community platform](https://clarifai.com/explore) offers a wide selection of cutting-edge models ready for integration into your AI projects.
+Clarifai’s [platform](https://clarifai.com/home) offers a wide selection of cutting-edge models ready for integration into your AI projects.
 
-You can easily find a model to use by visiting the Community homepage and exploring the **Trending AI Models** section, which highlights popular and ready-to-use models.
+You can easily find a model to use by visiting the homepage and exploring the **Trending AI Models** section, which highlights popular and ready-to-use models.
 
 After finding a model, click the **DEPLOY THE MODEL** button in the bottom right corner of its information card.
+
+For this example, we'll use the Llama-3_2-3B-Instruct model.
 
 ![](/img/new-docs/deploy-1.png)
 
@@ -38,7 +40,7 @@ After clicking the button, a pop-up window will appear showing the available pre
 
 Review the options and choose the one that best fits your needs.
 
-- **Basic Compute** — Recommended for development and quick tests, offering reliable, low-cost performance.  
+- **Basic Compute** — Recommended for development and quick tests, offering reliable, low-cost performance. For this example, we'll go with this option. 
 - **Advanced Compute** — Ideal for large-scale production inference or training of complex models.  
 
 ![](/img/new-docs/deploy-2.png)
@@ -69,7 +71,7 @@ You’ll be taken to the [Playground](https://docs.clarifai.com/getting-started/
 
 ![](/img/new-docs/deploy-8.png)
 
-Click the arrow icon in the message box to submit your request.
+Next, submit your request by clicking the arrow icon in the message box or pressing Enter on your keyboard.
 
 The response will be streamed directly on the interface, allowing you to view the output in real time.
 

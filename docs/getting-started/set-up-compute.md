@@ -24,7 +24,7 @@ Start by [logging in to](https://clarifai.com/login) your existing Clarifai acco
 
 Navigate to the **Set Up Compute** section and choose your preferred compute settings. You can access the section in any of the following ways:
 
-- From the platform's [homepage](https://clarifai.com/home), scroll down to the **Set Up Compute** section.
+- From the platform's [homepage](https://clarifai.com/home), go to the **Set Up Compute** section.
 - From an individual model's page, go to the **Activity** tab and scroll to the **Set Up Compute** section at the bottom.
 
 ![](/img/new-docs/deploy-9.png)
@@ -40,10 +40,10 @@ Then, select one of the following pre-configured compute options based on your n
 
 Once you’ve selected a pre-configured option, a pop-up window will appear, displaying your chosen [compute instance](https://docs.clarifai.com/compute/deployments/cloud-instances) and settings.
 
+A [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat) will be pre-populated for your convenience. If needed, you can select a different token from the dropdown list or create a new one.
+
 ![](/img/new-docs/deploy-5.png)
 
-A [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat) will be pre-populated for your convenience. If needed, you can select a different token from the dropdown list or create a new one.
- 
 After confirming your settings, click the **Create** button. This will automatically generate a compute cluster and nodepool based on your pre-configured settings.
 
 ## Step 4: Deploy a Model

@@ -1,0 +1,7 @@
+[INFO] 11:29:45.137222 Initializing model from GitHub repository: https://github.com/Clarifai/runners-examples |  thread=8589516992 
+[INFO] 11:29:46.985596 Successfully cloned repository from https://github.com/Clarifai/runners-examples (branch: ollama) |  thread=8589516992 
+[INFO] 11:29:46.991283 Model initialization complete with GitHub repository |  thread=8589516992 
+[INFO] 11:29:46.991330 Next steps: |  thread=8589516992 
+[INFO] 11:29:46.991358 1. Review the model configuration |  thread=8589516992 
+[INFO] 11:29:46.991380 2. Install any required dependencies manually |  thread=8589516992 
+[INFO] 11:29:46.991403 3. Test the model locally using 'clarifai model local-test' |  thread=8589516992 

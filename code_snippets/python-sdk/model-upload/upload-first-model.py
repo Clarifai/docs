@@ -1,14 +1,16 @@
 from clarifai.runners.models.model_class import ModelClass
+from typing import Iterator
 
 
 class MyFirstModel(ModelClass):
-    """A custom model that adds 'Hello World' to the end of a text."""
+    """A custom model that generates 'Hello World' outputs in a streaming fashion."""
 
     @ModelClass.method
-    def predict(self, text1: str = "") -> str:
+    def generate(self, text1: str = "") -> Iterator[str]:
         """
-        This is the method that will be called when the model is run.
-        It takes in an input and returns an output.
+        This method streams multiple outputs instead of returning just one.
+        It takes an input string and yields a sequence of outputs.
         """
-        output_text = text1 + " Hello World"
-        return output_text
+        for i in range(5):  # number of generated outputs
+            output_text = text1 + f" Hello World {i}"
+            yield output_text

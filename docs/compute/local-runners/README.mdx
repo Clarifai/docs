@@ -48,9 +48,11 @@ Install the latest version of the [Clarifai CLI](https://docs.clarifai.com/sdk/c
 </TabItem>
 </Tabs>
 
-> **Note:** You'll need **Python 3.10 or higher** installed to successfully run the Local Runners.
+> **Note:** You'll need **[Python 3.11 or 3.12](https://docs.clarifai.com/resources/api-overview/python-sdk#python-requirements)** installed to successfully run the Local Runners.
 
 ---
+
+:::note
 
 ## Quick Start
 
@@ -89,6 +91,8 @@ Just review each prompt and confirm to proceed.
 </Tabs>
 
 Once your runner launches successfully, your model will be running and accessible via a public URL. You can then open a new terminal, copy the sample code provided in the output, and [test your model](#step-4-test-with-snippet)!
+
+:::
 
 ---
 
@@ -200,7 +204,11 @@ Or:
 </TabItem>
 </Tabs>
 
-> `MODEL_PATH` is an optional path to the model directory. If omitted, the current directory is used by default.
+> - `--pool_size` is an integer option that sets the number of threads used to handle inference requests (default is 32). Increasing the pool size enables more requests to be processed in parallel, which can speed up testing and throughput. However, on the Community plan, your compute time allocation is consumed faster when you increase the number of threads, since usage is billed in proportion to the thread count.
+
+>  - `--verbose` option enables detailed display of logs for troubleshooting issues, especially when running an [Ollama server](https://docs.clarifai.com/compute/local-runners/ollama/#step-4-start-your-local-runner).
+
+> - `MODEL_PATH` is an optional path to the model directory. If omitted, the current directory is used by default.
 
 <br/>
 
