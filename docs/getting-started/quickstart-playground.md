@@ -33,7 +33,7 @@ You can easily find a model to use by heading to the Community homepage and expl
 
 After finding a model, click the **TEST IN PLAYGROUND** button in the bottom right corner of its information card. 
 
-For this example, we'll use the [Llama-3.2-3B-Instruct](https://clarifai.com/meta/Llama-3/models/Llama-3_2-3B-Instruct) model.
+For this example, we'll use the [gpt-oss-120b](https://clarifai.com/openai/chat-completion/models/gpt-oss-120b) model.
 
 > _Alternatively, you can select the **Playground** option in the top navigation bar._
 
@@ -51,7 +51,7 @@ In the message box at the bottom of the Playground, enter your desired prompt to
 
 **Note:** If your chosen model supports image or video inputs as prompts, you can also upload them directly into the interface.
 
-Then, click the arrow icon in the message box to submit your request.
+Then, submit your request by clicking the arrow icon in the message box or pressing Enter on your keyboard.
 
 ![](/img/new-docs/playground-3.png)
 
@@ -65,7 +65,25 @@ For this example, we're using the default settings for deployment ([`Clarifai Sh
 
 :::
 
-> _You can toggle the button in the upper-left section of the Playground to display ready-to-use API code snippets in various programming languages. Simply copy and use them in your project._
+## Additional Playground Features
 
-> ![](/img/new-docs/playground-4.png)
+### Compare Models
+
+The AI Playground includes a side-by-side comparison view, making it easy to test different models — or even the same model across multiple versions and instances — to identify the best fit for your needs. You can directly compare factors such as speed, accuracy, and overall performance.
+
+Click the **Compare Models** button in the upper-right corner of the Playground to launch the side-by-side comparison.
+
+![](/img/new-docs/playground-5.png)
+
+Next, choose a model for the left panel and another for the right. When you’re done, close the comparison by clicking the **X** button in the upper-right corner of the right panel.
+
+![](/img/new-docs/playground-6.png)
+
+### Get Code Snippets
+
+You can toggle the button in the upper-left section of the Playground to display ready-to-use API code snippets in various programming languages. 
+
+Simply copy and use them in your project.
+
+![](/img/new-docs/playground-4.png)
 

@@ -10,7 +10,7 @@ sidebar_position: 5
 
 The Clarifai platform allows you to upload custom models for a wide range of use cases. With just a few simple steps, you can get your models up and running and leverage the platform’s powerful capabilities.
 
-Let’s walk through how to build and upload a simple custom model that appends the phrase `Hello World` to any input text.
+Let’s walk through how to build and upload a simple custom model.
 
 <!--You can test the already uploaded model [here](https://clarifai.com/alfrick/docs-demos/models/my-first-model).-->
 
@@ -149,20 +149,26 @@ Follow the prompts to:
 
 ## Step 5: Predict With Model
 
-Once your model is successfully deployed, you can start making predictions with it.
+Once your model is successfully deployed, you can start making predictions with it. You can also test it directly in the [Playground](https://docs.clarifai.com/getting-started/quickstart-playground).
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonSDKRequest}</CodeBlock>
 </TabItem>
+<!--
 <TabItem value="node.js" label="Node.js SDK">
     <CodeBlock className="language-javascript">{NodeSDKRequest}</CodeBlock>
 </TabItem>
+-->
 </Tabs>
 
 <details>
   <summary>Output Example</summary>
-    <CodeBlock className="language-text">Yes, I uploaded it! Hello World</CodeBlock>
+    <CodeBlock className="language-text">Yes, I uploaded it!  Hello World 0
+Yes, I uploaded it!  Hello World 1
+Yes, I uploaded it!  Hello World 2
+Yes, I uploaded it!  Hello World 3
+Yes, I uploaded it!  Hello World 4</CodeBlock>
 </details>
 
 

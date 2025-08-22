@@ -16,6 +16,10 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
+import OllamaInit from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/ollama-init.txt";
+import OllamaRun from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/ollama-run.txt";
+import OllamaOutput from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/ollama-output.txt";
+
 ## Step 1: Perform Prerequisites
 
 ### Install Ollama
@@ -53,7 +57,7 @@ Install the latest version of the [Clarifai CLI](https://docs.clarifai.com/sdk/c
 </TabItem>
 </Tabs>
 
-> **Note:** You must have **Python 3.10 or higher** installed to use Local Runners.
+> **Note:** You must have **[Python 3.11 or 3.12](https://docs.clarifai.com/resources/api-overview/python-sdk#python-requirements)**  installed to use Local Runners.
 
 ### Install OpenAI Package
 
@@ -79,6 +83,11 @@ For example, here's how to initialize the [`llama3.2`](https://ollama.com/librar
 
 > **Note:** The above command will create a new model directory structure that is compatible with the Clarifai platform. You can customize or optimize the generated model by modifying the `1/model.py` file as needed.
 
+<details>
+  <summary>Example Output</summary>
+    <CodeBlock className="language-text">{OllamaInit}</CodeBlock>
+</details>
+
 You can customize model initialization from the Ollama library using the Clarifai CLI with the following options:
 
 - `--model-name` – Name of the Ollama model to use (default: `llama3.2`). This lets you specify any model from the Ollama library
@@ -86,15 +95,10 @@ You can customize model initialization from the Ollama library using the Clarifa
 - `--context-length` – Context window size for the model in tokens (default: `8192`)
 - `--verbose` – Enables detailed Ollama logs during execution. By default, logs are suppressed unless this flag is provided.
 
-Learn more about setting up a model with Ollama [here](https://docs.clarifai.com/resources/api-overview/cli#initialize-with-toolkit). 
 
 :::note tip
 
-Here is a quickstart for Ollama models and their common use cases:
-
-* `llama3.2-vision:latest` – For multimodal tasks (text + image), like image captioning or visual Q\&A.
-* `llama3-groq-tool-use:latest` – Ideal for tool calling and function execution in [agent](https://docs.clarifai.com/compute/agents/) tasks.
-* `devstral:latest` – Best for code generation, debugging, and development assistant use cases.
+You can use Ollama commands such as `ollama list` to list downloaded models and `ollama rm` to remove a model. Run `ollama --help` to see the full list of available commands.
 
 :::
 
@@ -139,15 +143,20 @@ Start a local runner using the following command:
 
 If the necessary context configurations aren’t detected, the CLI will guide you through creating them using default values.
 
-This setup ensures all required components — such as compute clusters, nodepools, and deployments — are properly included in your configuration context, which are described [here](README.mdx#start-your-local-runner-1).
+This setup ensures all required components — such as compute clusters, nodepools, and deployments — are properly included in your configuration context, which are described [here](README.mdx#step-2-create-a-context-optional). Simply review each prompt and confirm to proceed.
 
-Simply review each prompt and confirm to proceed.
+> **Note**: Use the `--verbose` option to show detailed logs from the Ollama server, which is helpful for debugging: `clarifai model local-runner --verbose`.
+
+<details>
+  <summary>Example Output</summary>
+    <CodeBlock className="language-text">{OllamaRun}</CodeBlock>
+</details>
 
 ## Step 5: Run Inference
 
-Once your local runner starts successfully, it will display a public URL where your model is hosted and accessible.
+When the local runner starts, it displays a public URL where your model is hosted and provides a sample client code snippet for quick testing. 
 
-The CLI also generates an example client code snippet to help you quickly test the model. Simply run the snippet in a separate terminal (within the same directory) to receive the model’s response output.
+Pulling a model from Ollama may take some time depending on your machine’s resources, but once the download finishes, you can run the snippet in a separate terminal within the same directory to get the model’s response.
 
 Below is an example of running inference using the OpenAI-compatible format:
 
@@ -185,6 +194,11 @@ print(response)
 ```
 </TabItem>
 </Tabs>
+
+<details>
+  <summary>Example Output</summary>
+    <CodeBlock className="language-text">{OllamaOutput}</CodeBlock>
+</details>
 
 When you're done, just close the terminal running the local runner to shut it down.
 
