@@ -3765,9 +3765,11 @@ Install the latest version of the [Clarifai CLI](https://docs.clarifai.com/sdk/c
 
     pip install --upgrade clarifai
 
-> **Note:** You'll need **Python 3.10 or higher** installed to successfully run the Local Runners.
+> **Note:** You'll need **[Python 3.11 or 3.12](https://docs.clarifai.com/resources/api-overview/python-sdk#python-requirements)** installed to successfully run the Local Runners.
 
 ---
+
+:::note
 
 ## Quick Start
 
@@ -3794,6 +3796,8 @@ Just review each prompt and confirm to proceed.
     clarifai model local-runner
 
 Once your runner launches successfully, your model will be running and accessible via a public URL. You can then open a new terminal, copy the sample code provided in the output, and [test your model](#step-4-test-with-snippet)!
+
+:::
 
 ---
 
@@ -3883,7 +3887,11 @@ Or:
 
     clarifai model local-runner [OPTIONS] [MODEL_PATH]
 
-> `MODEL_PATH` is an optional path to the model directory. If omitted, the current directory is used by default.
+> - `--pool_size` is an integer option that sets the number of threads used to handle inference requests (default is 32). Increasing the pool size enables more requests to be processed in parallel, which can speed up testing and throughput. However, on the Community plan, your compute time allocation is consumed faster when you increase the number of threads, since usage is billed in proportion to the thread count.
+
+>  - `--verbose` option enables detailed display of logs for troubleshooting issues, especially when running an [Ollama server](https://docs.clarifai.com/compute/local-runners/ollama/#step-4-start-your-local-runner).
+
+> - `MODEL_PATH` is an optional path to the model directory. If omitted, the current directory is used by default.
 
 If the runner doesn't detect the necessary [context configurations](#step-2-create-a-context-optional) in your environment, it will prompt you to create them using default values. 
 
@@ -3940,6 +3948,10 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
+import OllamaInit from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/ollama-init.txt";
+import OllamaRun from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/ollama-run.txt";
+import OllamaOutput from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/ollama-output.txt";
+
 ## Step 1: Perform Prerequisites
 
 ### Install Ollama
@@ -3968,7 +3980,7 @@ Install the latest version of the [Clarifai CLI](https://docs.clarifai.com/sdk/c
 
     pip install --upgrade clarifai
 
-> **Note:** You must have **Python 3.10 or higher** installed to use Local Runners.
+> **Note:** You must have **[Python 3.11 or 3.12](https://docs.clarifai.com/resources/api-overview/python-sdk#python-requirements)**  installed to use Local Runners.
 
 ### Install OpenAI Package
 
@@ -3986,6 +3998,9 @@ For example, here's how to initialize the [`llama3.2`](https://ollama.com/librar
 
 > **Note:** The above command will create a new model directory structure that is compatible with the Clarifai platform. You can customize or optimize the generated model by modifying the `1/model.py` file as needed.
 
+  Example Output
+    {OllamaInit}
+
 You can customize model initialization from the Ollama library using the Clarifai CLI with the following options:
 
 - `--model-name` – Name of the Ollama model to use (default: `llama3.2`). This lets you specify any model from the Ollama library
@@ -3993,15 +4008,9 @@ You can customize model initialization from the Ollama library using the Clarifa
 - `--context-length` – Context window size for the model in tokens (default: `8192`)
 - `--verbose` – Enables detailed Ollama logs during execution. By default, logs are suppressed unless this flag is provided.
 
-Learn more about setting up a model with Ollama [here](https://docs.clarifai.com/resources/api-overview/cli#initialize-with-toolkit). 
-
 :::note tip
 
-Here is a quickstart for Ollama models and their common use cases:
-
-* `llama3.2-vision:latest` – For multimodal tasks (text + image), like image captioning or visual Q\&A.
-* `llama3-groq-tool-use:latest` – Ideal for tool calling and function execution in [agent](https://docs.clarifai.com/compute/agents/) tasks.
-* `devstral:latest` – Best for code generation, debugging, and development assistant use cases.
+You can use Ollama commands such as `ollama list` to list downloaded models and `ollama rm` to remove a model. Run `ollama --help` to see the full list of available commands.
 
 :::
 
@@ -4032,15 +4041,18 @@ Start a local runner using the following command:
 
 If the necessary context configurations aren’t detected, the CLI will guide you through creating them using default values.
 
-This setup ensures all required components — such as compute clusters, nodepools, and deployments — are properly included in your configuration context, which are described [here](README.mdx#start-your-local-runner-1).
+This setup ensures all required components — such as compute clusters, nodepools, and deployments — are properly included in your configuration context, which are described [here](README.mdx#step-2-create-a-context-optional). Simply review each prompt and confirm to proceed.
 
-Simply review each prompt and confirm to proceed.
+> **Note**: Use the `--verbose` option to show detailed logs from the Ollama server, which is helpful for debugging: `clarifai model local-runner --verbose`.
+
+  Example Output
+    {OllamaRun}
 
 ## Step 5: Run Inference
 
-Once your local runner starts successfully, it will display a public URL where your model is hosted and accessible.
+When the local runner starts, it displays a public URL where your model is hosted and provides a sample client code snippet for quick testing. 
 
-The CLI also generates an example client code snippet to help you quickly test the model. Simply run the snippet in a separate terminal (within the same directory) to receive the model’s response output.
+Pulling a model from Ollama may take some time depending on your machine’s resources, but once the download finishes, you can run the snippet in a separate terminal within the same directory to get the model’s response.
 
 Below is an example of running inference using the OpenAI-compatible format:
 
@@ -4073,6 +4085,9 @@ print(response)
 # for chunk in response:
 #     print(chunk.choices[0].message['content'], end='')
 ```
+
+  Example Output
+    {OllamaOutput}
 
 When you're done, just close the terminal running the local runner to shut it down.
 
@@ -23920,11 +23935,13 @@ Start by [logging in to](https://clarifai.com/login) your Clarifai account, or [
 
 ## Step 2: Get a Model
 
-Clarifai’s [Community platform](https://clarifai.com/explore) offers a wide selection of cutting-edge models ready for integration into your AI projects.
+Clarifai’s [platform](https://clarifai.com/home) offers a wide selection of cutting-edge models ready for integration into your AI projects.
 
-You can easily find a model to use by visiting the Community homepage and exploring the **Trending AI Models** section, which highlights popular and ready-to-use models.
+You can easily find a model to use by visiting the homepage and exploring the **Trending AI Models** section, which highlights popular and ready-to-use models.
 
 After finding a model, click the **DEPLOY THE MODEL** button in the bottom right corner of its information card.
+
+For this example, we'll use the Llama-3_2-3B-Instruct model.
 
 ![](/img/new-docs/deploy-1.png)
 
@@ -23934,7 +23951,7 @@ After clicking the button, a pop-up window will appear showing the available pre
 
 Review the options and choose the one that best fits your needs.
 
-- **Basic Compute** — Recommended for development and quick tests, offering reliable, low-cost performance.  
+- **Basic Compute** — Recommended for development and quick tests, offering reliable, low-cost performance. For this example, we'll go with this option. 
 - **Advanced Compute** — Ideal for large-scale production inference or training of complex models.  
 
 ![](/img/new-docs/deploy-2.png)
@@ -23965,7 +23982,7 @@ You’ll be taken to the [Playground](https://docs.clarifai.com/getting-started/
 
 ![](/img/new-docs/deploy-8.png)
 
-Click the arrow icon in the message box to submit your request.
+Next, submit your request by clicking the arrow icon in the message box or pressing Enter on your keyboard.
 
 The response will be streamed directly on the interface, allowing you to view the output in real time.
 
@@ -23997,7 +24014,7 @@ You can easily find a model to use by heading to the Community homepage and expl
 
 After finding a model, click the **TEST IN PLAYGROUND** button in the bottom right corner of its information card. 
 
-For this example, we'll use the [Llama-3.2-3B-Instruct](https://clarifai.com/meta/Llama-3/models/Llama-3_2-3B-Instruct) model.
+For this example, we'll use the [gpt-oss-120b](https://clarifai.com/openai/chat-completion/models/gpt-oss-120b) model.
 
 > _Alternatively, you can select the **Playground** option in the top navigation bar._
 
@@ -24013,7 +24030,7 @@ In the message box at the bottom of the Playground, enter your desired prompt to
 
 **Note:** If your chosen model supports image or video inputs as prompts, you can also upload them directly into the interface.
 
-Then, click the arrow icon in the message box to submit your request.
+Then, submit your request by clicking the arrow icon in the message box or pressing Enter on your keyboard.
 
 ![](/img/new-docs/playground-3.png)
 
@@ -24027,9 +24044,27 @@ For this example, we're using the default settings for deployment ([`Clarifai Sh
 
 :::
 
-> _You can toggle the button in the upper-left section of the Playground to display ready-to-use API code snippets in various programming languages. Simply copy and use them in your project._
+## Additional Playground Features
 
-> ![](/img/new-docs/playground-4.png)
+### Compare Models
+
+The AI Playground includes a side-by-side comparison view, making it easy to test different models — or even the same model across multiple versions and instances — to identify the best fit for your needs. You can directly compare factors such as speed, accuracy, and overall performance.
+
+Click the **Compare Models** button in the upper-right corner of the Playground to launch the side-by-side comparison.
+
+![](/img/new-docs/playground-5.png)
+
+Next, choose a model for the left panel and another for the right. When you’re done, close the comparison by clicking the **X** button in the upper-right corner of the right panel.
+
+![](/img/new-docs/playground-6.png)
+
+### Get Code Snippets
+
+You can toggle the button in the upper-left section of the Playground to display ready-to-use API code snippets in various programming languages. 
+
+Simply copy and use them in your project.
+
+![](/img/new-docs/playground-4.png)
 
 ---
 
@@ -24154,7 +24189,7 @@ Start by [logging in to](https://clarifai.com/login) your existing Clarifai acco
 
 Navigate to the **Set Up Compute** section and choose your preferred compute settings. You can access the section in any of the following ways:
 
-- From the platform's [homepage](https://clarifai.com/home), scroll down to the **Set Up Compute** section.
+- From the platform's [homepage](https://clarifai.com/home), go to the **Set Up Compute** section.
 - From an individual model's page, go to the **Activity** tab and scroll to the **Set Up Compute** section at the bottom.
 
 ![](/img/new-docs/deploy-9.png)
@@ -24170,10 +24205,10 @@ Then, select one of the following pre-configured compute options based on your n
 
 Once you’ve selected a pre-configured option, a pop-up window will appear, displaying your chosen [compute instance](https://docs.clarifai.com/compute/deployments/cloud-instances) and settings.
 
+A [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat) will be pre-populated for your convenience. If needed, you can select a different token from the dropdown list or create a new one.
+
 ![](/img/new-docs/deploy-5.png)
 
-A [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat) will be pre-populated for your convenience. If needed, you can select a different token from the dropdown list or create a new one.
- 
 After confirming your settings, click the **Create** button. This will automatically generate a compute cluster and nodepool based on your pre-configured settings.
 
 ## Step 4: Deploy a Model
@@ -24204,7 +24239,7 @@ You can then use the deployed model to run [inferences](https://docs.clarifai.co
 
 The Clarifai platform allows you to upload custom models for a wide range of use cases. With just a few simple steps, you can get your models up and running and leverage the platform’s powerful capabilities.
 
-Let’s walk through how to build and upload a simple custom model that appends the phrase `Hello World` to any input text.
+Let’s walk through how to build and upload a simple custom model.
 
 :::tip
 
@@ -24312,14 +24347,20 @@ Follow the prompts to:
 
 ## Step 5: Predict With Model
 
-Once your model is successfully deployed, you can start making predictions with it.
+Once your model is successfully deployed, you can start making predictions with it. You can also test it directly in the [Playground](https://docs.clarifai.com/getting-started/quickstart-playground).
 
     {PythonSDKRequest}
 
     {NodeSDKRequest}
 
+-->
+
   Output Example
-    Yes, I uploaded it! Hello World
+    Yes, I uploaded it!  Hello World 0
+Yes, I uploaded it!  Hello World 1
+Yes, I uploaded it!  Hello World 2
+Yes, I uploaded it!  Hello World 3
+Yes, I uploaded it!  Hello World 4
 
 **Congratulations!**
 
