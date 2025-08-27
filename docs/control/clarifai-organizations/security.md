@@ -18,49 +18,50 @@ Our robust security measures ensure the protection and confidentiality of your v
 
 Scopes and access levels play a crucial role in defining the boundaries of the components, resources, or data that members of an organization can access or manipulate. 
 
-Every member of a Clarifai organization — Administrator, Organization Contributor, Team Contributor, or Organization User — has their own pre-set scopes that determine what actions they can perform and what resources they can access. 
+Every member of a Clarifai organization has their own pre-set scopes that determine what actions they can perform and what resources they can access. 
 
 The permissions allowed for each user type help to protect your organization’s resources from unauthorized infiltration, maintain the privacy of your assets, and ensure trackability of resources by knowing who has access to what. 
 
-Here is a summary of the permissions:
+[Click here](members-teams.md#roles-for-members) to see a summary of the permissions assigned to each role.
 
-- **Administrator** — the user has administrative privileges in the organization. 
-- **Organization Contributor** — the user can contribute to all the apps within the organization, but without some admin privileges.
-- **Team Contributor** — the user can perform only some selected actions.
-- **Organization User** — the user has access privileges similar to those of an Organization Contributor for all apps and scopes. However, the role comes with view-only permissions without ability to perform certain CRUD operations — create, update, or delete resources.
+Here is a table detailing the scopes and access levels allowed for each user type within a Clarifai organization.
 
-Here is a table detailing the scopes and access levels allowed for each user type within a Clarifai organization:
+| Permission                                    | Administrator | Financial Manager | Organization Contributor (all apps) | Team Contributor (select apps) | Organization User (all apps) | Infrastructure Manager |
+| --------------------------------------------- | ------------- | ----------------- | ----------------------------------- | ------------------------------ | ---------------------------- | ---------------------- |
+| View Sidebar Items                            | Yes           |                   | Yes                                 | Yes                            | Yes                          |                        |
+| Create Models                                 | Yes           |                   | Yes                                 | Yes                            | No                           |                        |
+| Create Workflows                              | Yes           |                   | Yes                                 | Yes                            | No                           |                        |
+| Edit App ID                                   | Yes           |                   | Yes                                 | No                             | No                           |                        |
+| Edit App Description                          | Yes           |                   | Yes                                 | Yes                            | No                           |                        |
+| Edit App Notes                                | Yes           |                   | Yes                                 | Yes                            | No                           |                        |
+| View Collaborators                            | Yes           |                   | Yes                                 | Yes                            | Yes                          |                        |
+| Edit Collaborators                            | Yes           |                   | Yes                                 | No                             | No                           |                        |
+| Base Workflow View                            | Yes           |                   | Yes                                 | Yes                            | Yes                          |                        |
+| Base Workflow Edit                            | Yes           |                   | Yes                                 | No                             | No                           |                        |
+| Delete All Models                             | Yes           |                   | Yes                                 | Yes                            | No                           |                        |
+| Delete App                                    | Yes           |                   | Yes                                 | No                             | No                           |                        |
+| Invite / Modify / Delete Members              | Yes           |                   | No                                  | No                             | No                           |                        |
+| Create / Edit / Delete Teams                  | Yes           |                   | Yes                                 | No                             | No                           |                        |
+| Add Members to Teams                          | Yes           |                   | Yes                                 | No                             | No                           |                        |
+| Add Apps to Teams                             | Yes           |                   | Yes                                 | No                             | No                           |                        |
+| Create Apps                                   | Yes           |                   | Yes                                 | No                             | No                           |                        |
+| Change Visibility of Apps                     | Yes           |                   | Yes                                 | No                             | No                           |                        |
+| Change Visibility of Apps Resources           | Yes           |                   | Yes                                 | Yes                            | No                           |                        |
+| Use Modules                                   | Yes           |                   | Yes                                 | Yes                            | Yes                          |                        |
+| Create / Delete Modules                       | Yes           |                   | Yes                                 | Yes                            | No                           |                        |
+| Install / Uninstall Modules                   | Yes           |                   | Yes                                 | Yes                            | No                           |                        |
+| Create / Edit / Delete Clusters and Nodepools | Yes           | No                | No                                  | No                             | No                           | Yes                    |
+| Deploy and View Models in Clusters            | Yes           | No                | Yes                                 | No                             | No                           | Yes                    |
+| View Clusters and Nodepools                   | Yes           | No                | Yes                                 | No                            | Yes                           | Yes                    |
+| View Financial Data                           | Yes           | Yes               | No                                  | No                             | No                           | No                     |
 
-| <br/>                                       | Administrator<br/>    | Organization Contributor<br/>    | Team Contributor<br/>    | Organization User<br/>  |
-|--------------------------------------------|----------------------|---------------------------------|-------------------------|-----------------------------|
-| View Sidebar Items<br/>                     | Yes<br/>              | Yes<br/>                         | Yes<br/>                 | Yes<br/> |
-| Create Models<br/>                          | Yes<br/>              | Yes<br/>                         | Yes<br/>                 | No<br/> |
-| Create Workflows<br/>                       | Yes<br/>              | Yes<br/>                         | Yes<br/>                 | No<br/> |
-| Edit App ID<br/>                            | Yes<br/>              | Yes<br/>                         | No<br/>                  | No<br/> |
-| Edit App Description<br/>                   | Yes<br/>              | Yes<br/>                         | Yes<br/>                 | No<br/> |
-| Edit App Notes<br/>                         | Yes<br/>              | Yes<br/>                         | Yes<br/>                 | No<br/> |
-| View Collaborators<br/>                     | Yes<br/>              | Yes<br/>                         | Yes<br/>                 | Yes<br/> |
-| Edit Collaborators<br/>                     | Yes<br/>              | Yes<br/>                         | No<br/>                  | No<br/> |
-| Base Workflow View<br/>                     | Yes<br/>              | Yes<br/>                         | Yes<br/>                 | Yes<br/> |
-| Base Workflow Edit<br/>                     | Yes<br/>              | Yes<br/>                         | No<br/>                  | No<br/> |
-| Delete All Models<br/>                      | Yes<br/>              | Yes<br/>                         | Yes<br/>                 | No<br/> |
-| Delete App<br/>                             | Yes<br/>              | Yes<br/>                         | No<br/>                  | No<br/> |
-| Invite / Modify / Delete Members<br/>       | Yes<br/>              | No<br/>                          | No<br/>                  | No<br/> |
-| Create / Edit / Delete Teams<br/>           | Yes<br/>              | Yes<br/>                         | No<br/>                  | No<br/> |
-| Add Members to Teams<br/>                   | Yes<br/>              | Yes<br/>                         | No<br/>                  | No<br/> |
-| Add Apps to Teams<br/>                      | Yes<br/>              | Yes<br/>                         | No<br/>                  | No<br/> |
-| Create Apps<br/>                            | Yes<br/>              | Yes<br/>                         | No<br/>                  | No<br/> |
-| Change Visibility of Apps<br/>              | Yes<br/>              | Yes<br/>                         | No<br/>                  | No<br/> |
-| Change Visibility of Apps Resources<br/>    | Yes<br/>              | Yes<br/>                         | Yes<br/>                 | No<br/> |
-| Use Modules<br/>                            | Yes<br/>              | Yes<br/>                         | Yes<br/>                 | Yes<br/> |
-| Create / Delete Modules<br/>                | Yes<br/>              | Yes<br/>                         | Yes<br/>                 | No<br/> |
-| Install / Uninstall Modules<br/>            | Yes<br/>              | Yes<br/>                         | Yes<br/>                 | No<br/> |
 
-## How to Enforce the Security of Your Clarifai Organization
+
+## Enforce Your Clarifai Organization's Security
 
 You can take some additional actions to augment the security of your organization at Clarifai.
 
-To access the security settings of your organization, start by clicking your organization’s profile icon at the upper-right section of the navigation bar. In the drop-down list that follows, select the **Security** option. 
+To access the security settings of your organization, [log into](README.mdx#how-to-use-an-org) your organization’s account, click the menu in the upper-right corner of the navigation bar, and select **Security** from the drop-down list.
 
 ![Security organization settings](/img/clarifai_orgs/security_option.png)
 
@@ -70,7 +71,7 @@ For example, if you want to add a security identity provider, such as SAML (Secu
 
 ![Security page](/img/clarifai_orgs/security_page.png)
 
-On the next page, provide its details and click the **Create** button to finalize the process. 
+On the next page, provide the required details, toggle the enable button, and click the **Create** button to finalize the process. 
 
 ![Create identity provider](/img/clarifai_orgs/create_identity_provider.png)
 

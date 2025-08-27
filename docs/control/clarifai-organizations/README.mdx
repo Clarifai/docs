@@ -27,19 +27,16 @@ This centralized control makes it easy to track your usage of the Clarifai platf
 - **Set up siloed access permissions** — As an administrator, you can set up various teams and attach different access permissions to them. You can specify which applications and individual actions the users in each team can access. 
 For example, if you have members within your organization who must access only the resources that meet certain data regulatory requirements, you can aggregate those accounts in their own team. You then define a policy that prevents members of that team from accessing resources that do not comply with those regulatory standards.
 
-:::tip
-
-If you want to access any feature of Clarifai Organization via the API, you must use a [PAT](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens). 
-
-:::
 
 ## How to Create an Organization
 
-To create an Org account, start by logging in to the [Clarifai platform](https://clarifai.com/explore). Next, click your user’s profile icon at the upper-right section of the navigation bar and select the **+ Add an Organization** button in the drop-down list.
+To create an Org account, start by logging in to the [Clarifai platform](https://clarifai.com/explore). 
+
+Next, click the workspace switcher icon at the upper-left section of the navigation bar and select the **Create New Organization** button in the drop-down list.
 
 ![Add an organization](/img/clarifai_orgs/add_an_organization.png)
 
-On the dialog box that appears, provide the details of your organization.
+In the dialog box that appears, provide the details of your organization.
 
 ![Create an organization](/img/clarifai_orgs/create_organization.png)
 
@@ -47,7 +44,7 @@ On the dialog box that appears, provide the details of your organization.
 - **Organization ID:** Enter a unique identifier for your organization, such as _123455_. This is what will appear in the URL when browsing the Clarifai platform as an organization.  
 - **Billing email:** Enter your billing email, such as test-org@example.com. 
 
-Click the **Create organization** button. 
+Click the **Create organization** button to finalize creating the organization. 
 
 And your Clarifai Org account will be created!
 
@@ -55,7 +52,7 @@ And your Clarifai Org account will be created!
 
 - You can create an Org account when registering for an account on the Clarifai platform. When activating your account, you'll be presented with a form that allows you to create an organization and invite members to join it. 
 
-- All new organization accounts are created on the Community [pricing plan](https://www.clarifai.com/pricing) by default, with the option to upgrade at any time. This applies to users on the Community, Essential, and Professional plans. Enterprise users are not affected.
+- All new organization accounts start on the Community [pricing plan](https://www.clarifai.com/pricing) by default, with the option to upgrade at any time. This applies to Community, Essential, and Professional users, but not to Enterprise users.
 
 :::
 
@@ -63,22 +60,21 @@ And your Clarifai Org account will be created!
 
 After creating a Clarifai organization, you can begin interacting with our platform as an organization — just like a normal user would, albeit with some other added capabilities.
 
-To start accessing the platform with your organization’s profile, click your user’s profile icon at the upper-right section of the navigation bar and select your organization’s profile in the drop-down list.
+To start accessing the platform with your organization account, click the workspace switcher icon at the upper-left section of the navigation bar and select your organization in the drop-down list.
  
-![Select your organization’s profile ](/img/clarifai_orgs/select_organization_profile.png)
-
-<br/>
-
 You’ll notice that your user’s profile will change to your organization’s profile. 
 
-If you click your organization’s profile icon at the upper-right section of the navigation bar, you’ll find various items in the drop-down list that let you manage various aspects of your Clarifai organization.
+![Select your organization’s profile ](/img/clarifai_orgs/select_organization_profile.png)
 
-- **Org Apps** — Allows you to access and manage your organization’s applications and organize all your content, including models, workflows, inputs, and more.
-- **Collaborations** — Allows you to access and manage the collaborations associated with your organization. 
+When logged in as an organization, click the menu in the upper-right corner of the navigation bar to access a drop-down with settings for managing different aspects of your Clarifai organization.
+
+![Select your organization’s profile ](/img/clarifai_orgs/select_organization_profile_2.png)
+
 - **Account** — Allows you to update your organization’s profile, delete the account information related to your organization, or leave the organization. 
-- **Security** — Allows you to enforce the security of your Clarifai organization. 
-- **Members** — Allows you to access and manage the [members](https://docs.clarifai.com/portal-guide/clarifai-organizations/members-teams) associated with your Clarifai organization.
-- **Teams** — Allows you to access and manage the teams associated with your Clarifai organization.
+- **Security** — Allows you to enforce the [security](security#enforce-your-clarifai-organizations-security) of your organization by setting password policies and creating identity providers. 
+- **Billing** — Allows you to access and manage your subscription and billing information, including adding a credit card. 
+- **Members** — Allows you to access and manage the [members](members-teams/#organization-members) associated with your organization.
+- **Teams** — Allows you to access and manage the [teams](members-teams#organization-teams) associated with your organization.
 - **Sign Out** — Allows you to sign out of the Clarifai platform, which includes your user and organization accounts.
 
 ## Org Feature Availability

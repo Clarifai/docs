@@ -1,60 +1,74 @@
 ---
 description: Learn how to manage members and teams 
 sidebar_position: 1
+toc_max_heading_level: 4
 ---
 
-# Manage Members and Teams
+# Members and Teams
 
-**Learn how to manage members and teams**
+**Learn how to add and manage members and teams**
 
 <hr />
 
 Having members and teams within your Clarifai organization enhances productivity, ensures efficient task management, and supports the collaborative development of your machine learning projects.
 
-Let's illustrate how to manage members and teams within your Clarifai organization. 
+Let's illustrate how to add and manage members and teams within your Clarifai organization. 
 
-## How to Add and Manage Members 
+## Organization Members
 
-To add new members to your organization, start by clicking your organization’s profile icon at the upper-right section of the navigation bar. In the drop-down list that follows, select the **Account** option. 
+Organization members are individuals who have been invited to join an organization. They are assigned specific roles that define their level of access, responsibilities, and permissions within the organization. 
+
+### How to Add Members 
+
+[Log into](README.mdx#how-to-use-an-org) your organization’s account, click the menu in the upper-right corner of the navigation bar, and select **Members** from the drop-down list.
 
 ![Account option](/img/clarifai_orgs/account_option.png)
 
-<br/>
-
-You’ll be redirected to your organization’s settings page. 
-
-On the left sidebar, select the **Members** option. You’ll be redirected to the **Members** page, where you can add new members and carry out various member management tasks. 
-
-To add a new team member to your organization, you need to send them an invitation first. Click the **Invite Members** button to do so. 
+You’ll be redirected to the **Members** page, where you can add new members and carry out various member management tasks. 
 
 ![Organization settings page](/img/clarifai_orgs/organization_settings_page.png)
 
-On the dialog box that appears, enter the invitee’s email address and select a role you wish to assign to them.
+To add a new team member to your organization, you need to send them an invitation first. Click the **Invite Members** button to do so. 
+
+In the dialog box that appears, enter the invitee’s email address and select a role you wish to assign to them, [as described below](#roles-for-members).
 
 ![Invite member dialog box](/img/clarifai_orgs/invite_member_dialog_box.png)
 
-You can assign any of the following roles:
+After providing the details, click the **Confirm** button. 
 
-- **Admin** — the invitee will have administrative privileges in the organization. 
-- **Financial Manager** — the invitee will have access to key financial data, including current spending based on the organization's pricing plan and budget settings, enabling better financial oversight and management. This role is only permitted to access the following tabs within the [Control Center](https://docs.clarifai.com/portal-guide/control-center/): Overview, Usage, and Costs. 
-- **Organization Contributor (all apps)** — the invitee will be able to contribute to all the apps within the organization, but without some admin privileges.. 
-- **Organization User (all apps)** — the invitee will have access privileges similar to those of an Organization Contributor for all apps, but with view-only permissions. 
-- **Team Contributor (select apps)** — the invitee will be available to contribute only to some selected applications.
+> When you send an invitation, the invitee will receive a notification in their email address as well as in the platform's notification bar for them to decide whether to accept or decline the request. If they do not already have an account with Clarifai, they will need to register first before joining your organization. 
 
+> You can track the invitations in the **Pending invitations** tab. If you want to rescind any pending invitations, you can also delete them from there.
 
-:::tip
+> ![Pending Invitations](/img/clarifai_orgs/pending_invitation.png)
 
-[Click here](https://docs.clarifai.com/portal-guide/clarifai-organizations/security#scopes-and-access-levels-of-organization-members) to learn more about the scopes and access levels allowed for each user type within a Clarifai organization. 
+:::note 
+
+#### Roles for Members
+
+| **Role**                         | **Permissions Description**                                                                                                                                                                                                                  |
+|----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Admin**                        | The invitee will have administrative privileges in the organization                                                                                                                                                           |
+| **Financial Manager**            | The invitee will have access to key financial data, including current spending based on the organization's pricing plan and budget settings, enabling better financial oversight and management. This role is only permitted to access the following tabs within the [Control Center](https://docs.clarifai.com/control/control-center/): Overview, Usage & Operations, and Costs & Budget |
+| **Organization Contributor (all apps)** | The invitee will be able to contribute to all the apps within the organization, but without some admin privileges                                                                                                             |
+| **Organization User (all apps)** | The invitee will have access privileges similar to those of an Organization Contributor for all apps, but with view-only permissions without ability to perform certain CRUD operations — create, update, or delete resources                                                                                           |
+| **Team Contributor (select apps)** | The invitee will be able to contribute only to some selected applications                                                                                                                                                      |
+| **Infrastructure Manager**       | The invitee will be able to create, modify, and delete [clusters and nodepools](https://docs.clarifai.com/compute/deployments/clusters-nodepools)                                                                                                                                                  |
+
 
 :::
 
-After providing the details, click the **Confirm** button. 
+:::tip
 
-When you send an invitation, the invitee will receive a notification in their email address as well as in the platform's notification bar for them to decide whether to accept or decline the request. If they do not already have an account with Clarifai, they will need to register first before joining your organization. 
+[Click here](security.md#scopes-and-access-levels-of-organization-members) to learn more about the scopes and access levels allowed for each user type within a Clarifai organization. 
 
-You can track the invitations on the **Pending invitations** section of the page. If you want to rescind any pending invitations, you can also delete them from there.
+:::
 
-![Pending Invitations](/img/clarifai_orgs/pending_invitation.png)
+### How to Manage Members 
+
+Once invitees have accepted your invitation, their details will appear in the **Organization members** tab. From there, you can view team members, reassign roles, or delete members. 
+
+![Current members section](/img/clarifai_orgs/current_members_section.png)
 
 :::warning multi-org membership
 
@@ -62,138 +76,55 @@ We offer a multi-org membership functionality. Users can create, join, and engag
 
 :::
 
-Once invitees have accepted your invitation, their details will appear under the **Organization members** section of the table. From there, you can search for team members, reassign roles, or delete members. 
-
-![Current members section](/img/clarifai_orgs/current_members_section.png)
-
-## How to Add and Manage Teams
+## Organization Teams
 
 Teams allow you to bring different members of your organization together to accomplish specific tasks. For example, you can aggregate users with the same access privileges to certain apps together in a single team.
 
-To add a new team to your organization, start by clicking your organization’s profile icon at the upper-right section of the navigation bar. In the drop-down list that follows, select the **Account** option — as earlier highlighted. 
+### How to Add Teams
 
-You’ll be redirected to your organization’s settings page. 
+[Log into](README.mdx#how-to-use-an-org) your organization’s account, click the menu in the upper-right corner of the navigation bar, and select **Teams** from the drop-down list.
 
-On the left sidebar, select the **Teams** option. You’ll be redirected to the **Teams** listing page, where you can create new teams and carry out various team management tasks. 
+![ ](/img/clarifai_orgs/organization_teams_1.png)
 
-Click the **Create Team** button to add a new team to your organization.
+You’ll be redirected to the **Teams** page, where you can create new teams and carry out various team management tasks. 
 
 ![Organization teams](/img/clarifai_orgs/organization_teams.png)
 
-In the dialog box that appears, enter the team ID, team name, and set default permissions for the team. 
+Click the **Create Team** button to add a new team to your organization. In the dialog box that appears, enter the team ID, team name, and set the permissions for the team (the permissions are [described below](#permission-types-for-teams)). 
 
 ![Create team dialog box](/img/clarifai_orgs/create_team_dialog_box.png)
 
-Click the **Confirm** button.
+Click the **Confirm** button to finalize creating the team. 
 
-
-### Permission Types
-
-The "Team Permissions" dropdown currently offers four distinct permission levels, each tailored to different roles and responsibilities within Apps assigned. These levels ensure proper access control and security while enabling team members to perform their tasks effectively. As our needs evolve, we may introduce additional roles in the future to provide even more flexibility.
-
-These permissions follow the below hierarchy: 
-
-
-   <pre>   
-   **Full Access**
-      
-         &nbsp; &nbsp;&nbsp; &nbsp;├──Model Trainer
-
-          &nbsp; &nbsp;&nbsp; &nbsp;├── Labeler Lead
-
-          &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; └── Labeler Worker
-            </pre>
-
-
-
-![Teams listing page](/img/clarifai_orgs/gs_1.png)
-
-
-Each of them is discussed below:
-
-
-#### 1. Full Access
-
-The highest level of access that provides complete control over all aspects of the application. It has following capabilities:
-
-* Access to App’s features and functionalities
-* Full access to features and CRUD operations on all resources
-
-**Note**: Full Access should be granted only to team members who require complete administrative control.
-
-
-#### 2. Model Trainer
-
-Designed for team members focused on model development and training operations. It has following capabilities:
-
-
-
-* View all models
-* Create new models
-* Update existing models
-* Delete models
-* Train models
-* Access model metrics and performance data
-* View inputs and concepts
-* Access datasets
-
-**Best Practice**: Grant Model Trainer access to team members responsible for developing and maintaining AI models.
-
-
-#### 3. Labeler Lead
-
-Enhanced labeling permissions with additional task management capabilities.It has following capabilities:
-
-
-
-* All Labeler Worker permissions, plus:
-    - Create new labeling tasks
-    - Assign tasks to team members
-    - Monitor task progress
-    - View team member details (First/Last names)
-    - Access task analytics
-    - Review annotations
-    - Provide feedback on labeling quality
-    - Create, modify, and delete concepts
-
-**Important**: Labeler Leads serve as supervisors for labeling operations and quality control.
-
-
-#### 4. Labeler Worker
-
-Basic access level focused on performing labeling tasks. It has the following capabilities:
-
-
-
-* Access assigned labeling tasks
-* Read access to:
-    * Concepts within tasks
-    * Input data for assigned tasks
-    * Task instructions and guidelines
-* Write access to:
-    * Annotations
-    * Task status updates
-    * Progress reports
-* Evaluate and assess workers’ completed work to ensure quality and consistency.
-
-
-Your newly created team will appear on the **Teams** listing page. You can search for other teams you've added and delete them on that table.
+Your newly created team will appear on the **Teams** listing page. You can view other teams you've added and delete them from that table.
 
 ![Teams listing page](/img/clarifai_orgs/teams_listing_page.png)
 
-If you click on any listed team’s name, you’ll be redirected to its individual page, where you can accomplish several management tasks, including adding and managing team members and apps. 
+:::note 
 
-Let's demonstrate how you can achieve some of the tasks. 
+#### Permission Types for Teams
+
+| **Role**          | **Description**                                                                 | **Capabilities**                                                                                                                                                                                                                   | **Notes / Best Practices**                                                                 |
+|-------------------|---------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
+| **Full Access**   | Highest level of access with complete administrative control over the app      | <ul><li>Access to all app features and functionalities</li><li>Full CRUD (Create, Read, Update, & Delete) operations on all resources</li></ul>                                                                                                                     | Should only be granted to team members requiring full administrative control              |
+| **Model Trainer** | For team members focused on model development and training                     | <ul><li>View all models</li><li>Create, update, delete models</li><li>Train models</li><li>Access model metrics & performance data</li><li>View inputs & concepts</li><li>Access datasets</li><li>Deploy and view models in clusters</li><li>View clusters and nodepools</li></ul>                               | Assign to members responsible for developing and maintaining AI models      |
+| **Labeler Lead**  | Supervisory role for labeling operations and quality control                  | <ul><li>All <b>Labeler Worker</b> permissions, plus:</li><li>Create labeling tasks</li><li>Assign tasks</li><li>Monitor task progress</li><li>View team member details (first/last names)</li><li>Access task analytics</li><li>Review annotations</li><li>Provide feedback</li><li>Create, modify, delete concepts</li></ul> | Serves as supervisors for labeling operations and ensures quality control                 |
+| **Labeler Worker**| Basic role focused on performing labeling tasks                               | <ul><li>Access assigned labeling tasks</li><li><b>Read</b> access to: concepts within tasks, input data for assigned tasks, task instructions, and guidelines</li><li><b>Write</b> access to: annotations, task status updates, progress reports</li><li>Evaluate & assess completed work for quality and consistency</li></ul> | Entry-level labeling role with limited permissions                                        |
+
+
+:::
 
 ### How to Manage a Team
 
-To edit a team's name, click the **Edit Team Name** button and provide your new team's name. To delete a team, click the **Delete Team** button.
+When you click on a team from the **Teams** listing page, you’ll be taken to its individual page, where you can manage and perform various team-related tasks.
+
+For example, click the three-dot menu in the upper-right corner to open a drop-down list, where you can select either **Edit Team Name** to rename the team or **Delete Team** to remove it.
 
 ![manage a team](/img/clarifai_orgs/how_to_manage_team.png)
 
-### How to Add and Manage Team Members
+#### Add and Manage Team Members
 
-To add members to a team, first select the **Members** tab. Then, click the **Add Members** button. 
+To add members to a team, first select the **Members** tab. Then, click the **Add Members** button at the upper-right section of the page. 
 
 ![Individual team page](/img/clarifai_orgs/individual_team_page.png)
 
@@ -201,31 +132,31 @@ In the dialog box that appears, search for a member(s) of your organization and 
 
 ![Add members to your team](/img/clarifai_orgs/add_team_members_dialog_box.png)
 
-The newly added member will appear on the **Members** listing page. You can also search for other members you've added and delete them on that page.
+The newly added member will appear in the **Members** tab, where you can also view all existing members and remove them if needed.
 
-![newly added member](/img/clarifai_orgs/newly_added_member.png)
-
-### How to Add and Manage Team Apps
+#### Add and Manage Team Apps
 
 To assign an app to a team, first select the **Apps** tab. Then, click the **Add App** button at the upper-right section of the page. 
 
 ![add app  to team](/img/clarifai_orgs/add_app_to_team.png)
 
-In the dialog box that appears, search for the app(s) you want to add to your team. Note that you can only add the existing apps that belong to your organization to a team. You can also define a role the app should have. 
+> **Note**: You can set the default access level for your team members when adding apps — Full Access, Labeler Worker, Labeler Lead, or Model Trainer, [as explained previously](#permission-types-for-teams). Use the drop-down menu on the right side of the apps listing page to set these permissions, which you can always customize later if needed.
 
-Click the **Confirm** button to add the app(s) you've selected to the team. 
+In the dialog box that appears, search for the app(s) you want to add to your team. Note that you can only add apps that already belong to your organization — either those you created or those [transferred](apps-models-workflows.md#transfer-an-app) into it. From the same dialog, you can also set the permissions for the added app(s).
+
+Next, click the **Add apps** button in the dialog box to add the app(s) you've selected to the team. 
 
 ![Add apps to your team](/img/clarifai_orgs/apps_dialog_box.png)
 
-While selecting the apps, access can be modified. Read about different access types [here](https://docs.clarifai.com/portal-guide/clarifai-organizations/members-teams#permission-types).
-
-![newly added app](/img/clarifai_orgs/gs_2.png)
-
-The newly added app will appear on the **Apps** listing page. You can also search for other apps you've added and delete them on that page.
+The newly added app will appear on the apps listing page, where you can also view other apps, edit their permissions, or delete them.
 
 ![newly added app](/img/clarifai_orgs/gs_3.png)
 
-You can also browse Team access and configuration from individual App’s Settings page.
+:::note tip
+
+On the **App Settings** page of an organization app, you can view the teams that have access to the app, edit their permissions, or add new teams.
 
 ![newly added app](/img/clarifai_orgs/gs_4.png)
+
+:::
 
