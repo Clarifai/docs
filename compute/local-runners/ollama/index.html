@@ -24,8 +24,8 @@
 <script src="https://cdn.amplitude.com/libs/analytics-browser-2.12.0-min.js.gz" defer="defer"></script>
 <script src="https://cdn.amplitude.com/libs/plugin-session-replay-browser-1.4.0-min.js.gz" defer="defer"></script>
 <script src="/scripts/amplitude.js" defer="defer"></script><link rel="stylesheet" href="/assets/css/styles.f5cdd416.css">
-<script src="/assets/js/runtime~main.57c86686.js" defer="defer"></script>
-<script src="/assets/js/main.e521b057.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.2a27107f.js" defer="defer"></script>
+<script src="/assets/js/main.a1ad8991.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5W9P7GR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -79,7 +79,7 @@
 <details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary>Example Output</summary><div><div class="collapsibleContent_i85q"><div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">[INFO] 11:29:45.137222 Initializing model from GitHub repository: https://github.com/Clarifai/runners-examples |  thread=8589516992 </span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">[INFO] 11:29:46.985596 Successfully cloned repository from https://github.com/Clarifai/runners-examples (branch: ollama) |  thread=8589516992 </span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">[INFO] 11:29:46.991283 Model initialization complete with GitHub repository |  thread=8589516992 </span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">[INFO] 11:29:46.991330 Next steps: |  thread=8589516992 </span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">[INFO] 11:29:46.991358 1. Review the model configuration |  thread=8589516992 </span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">[INFO] 11:29:46.991380 2. Install any required dependencies manually |  thread=8589516992 </span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">[INFO] 11:29:46.991403 3. Test the model locally using &#x27;clarifai model local-test&#x27; |  thread=8589516992 </span><br></span></code></pre></div></div></div></div></details>
 <p>You can customize model initialization from the Ollama library using the Clarifai CLI with the following options:</p>
 <ul>
-<li><code>--model-name</code> – Name of the Ollama model to use (default: <code>llama3.2</code>). This lets you specify any model from the Ollama library</li>
+<li><code>--model-name</code> – Name of the Ollama model to use (default: <code>llama3.2</code>). This lets you specify any model from the Ollama library. Example: <code>clarifai model init --toolkit ollama --model-name gpt-oss:20b</code></li>
 <li><code>--port</code> – Port to run the model on (default: <code>23333</code>)</li>
 <li><code>--context-length</code> – Context window size for the model in tokens (default: <code>8192</code>)</li>
 <li><code>--verbose</code> – Enables detailed Ollama logs during execution. By default, logs are suppressed unless this flag is provided.</li>

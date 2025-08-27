@@ -37,8 +37,8 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [Scopes](https://docs.clarifai.com/docs/control/authentication/scopes): Implement fine-grained control over the data that users have access to
 - [Two-Factor Authentication](https://docs.clarifai.com/docs/control/authentication/two-factor): Use 2FA to add an extra layer of security to your account
 - [Clarifai Organizations](https://docs.clarifai.com/docs/control/clarifai-organizations/README): Consolidate multiple accounts and enhance collaboration
-- [Apps, Models, and Workflows](https://docs.clarifai.com/docs/control/clarifai-organizations/apps-models-workflows): Create and manage apps, models, and workflows
-- [Manage Members and Teams](https://docs.clarifai.com/docs/control/clarifai-organizations/members-teams): Learn how to manage members and teams
+- [Apps, Models, Workflows, & Compute](https://docs.clarifai.com/docs/control/clarifai-organizations/apps-models-workflows): Create and manage apps, models, workflows, and dedicated compute
+- [Members and Teams](https://docs.clarifai.com/docs/control/clarifai-organizations/members-teams): Learn how to manage members and teams
 - [Security](https://docs.clarifai.com/docs/control/clarifai-organizations/security): Learn how to enhance the security of your Clarifai organization
 - [Control Center](https://docs.clarifai.com/docs/control/control-center/README): A unified interface for centralized visibility into your platform usage
 - [Audit Logging via API](https://docs.clarifai.com/docs/control/control-center/audit-log): Track what was performed, who did it, and the results
