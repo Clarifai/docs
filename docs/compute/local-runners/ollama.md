@@ -90,7 +90,7 @@ For example, here's how to initialize the [`llama3.2`](https://ollama.com/librar
 
 You can customize model initialization from the Ollama library using the Clarifai CLI with the following options:
 
-- `--model-name` – Name of the Ollama model to use (default: `llama3.2`). This lets you specify any model from the Ollama library
+- `--model-name` – Name of the Ollama model to use (default: `llama3.2`). This lets you specify any model from the Ollama library. Example: `clarifai model init --toolkit ollama --model-name gpt-oss:20b`
 - `--port` – Port to run the model on (default: `23333`)
 - `--context-length` – Context window size for the model in tokens (default: `8192`)
 - `--verbose` – Enables detailed Ollama logs during execution. By default, logs are suppressed unless this flag is provided.
