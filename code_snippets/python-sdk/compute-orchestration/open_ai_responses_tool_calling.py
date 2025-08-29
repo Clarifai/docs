@@ -24,23 +24,25 @@ tools = [
                     }
                 },
                 "required": ["location"],
-                "additionalProperties": False # Ensures no extra parameters are passed
+                "additionalProperties": False  # Ensures no extra parameters are passed
             }
         }
     }
 ]
 
-# Create a chat completion request with tool-calling enabled
-response = client.chat.completions.create(
+# Create a response request with tool-calling enabled
+response = client.responses.create(
     model="https://clarifai.com/openai/chat-completion/models/gpt-oss-120b",
     #model="anthropic/completion/models/claude-sonnet-4", # Or, provide Clarifai model name
-    messages=[
+    input=[
         {"role": "user", "content": "What is the weather like in New York today?"}
     ],
     tools=tools,
-    tool_choice='auto' # Let the LLM decide if it needs to use a tool
+    tool_choice="auto"  # Let the LLM decide if it needs to use a tool
 )
 
 # Print the tool call proposed by the model, if any
-tool_calls = response.choices[0].message.tool_calls
-print("Tool calls:", tool_calls)
+if response.output and response.output[0].content[0].type == "tool_call":
+    print("Tool calls:", response.output[0].content[0].tool_calls)
+else:
+    print("No tool calls in response")

@@ -1,7 +1,7 @@
 import { Model } from "clarifai-nodejs";
 
 const model = new Model({
-  url: "https://clarifai.com/openai/chat-completion/models/gpt-4_1",
+  url: "https://clarifai.com/openai/chat-completion/models/gpt-oss-120b",
   authConfig: {
     pat: process.env.CLARIFAI_PAT,
   },

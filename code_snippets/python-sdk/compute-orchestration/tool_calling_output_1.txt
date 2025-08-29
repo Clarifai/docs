@@ -1,0 +1,1 @@
+Tool calls: [ChatCompletionMessageFunctionToolCall(id='call_d81a514ab00346a78e65318e', function=Function(arguments='{"location": "New York, USA"}', name='get_weather'), type='function', index=0)]

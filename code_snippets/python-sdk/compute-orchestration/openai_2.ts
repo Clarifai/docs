@@ -29,7 +29,7 @@ const tools: ChatCompletionTool[] = [
 ];
 
 const toolCompletion = await client.chat.completions.create({
-  model: "https://clarifai.com/anthropic/completion/models/claude-sonnet-4",
+  model: "https://clarifai.com/openai/chat-completion/models/gpt-oss-120b",
   messages: [
     { role: "system", content: "You are a helpful assistant." },
     { role: "user", content: "What is the weather in New York?" },

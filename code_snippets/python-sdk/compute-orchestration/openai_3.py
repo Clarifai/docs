@@ -49,7 +49,7 @@ def get_weather(location: str):
 # First API call: The LLM decides if a tool needs to be called.
 print("--- Initial LLM Call (Tool Recommendation) ---")
 first_response = client.chat.completions.create(
-    model="anthropic/completion/models/claude-sonnet-4", # Ensure this model supports tool calling on Clarifai's platform
+    model="https://clarifai.com/openai/chat-completion/models/gpt-oss-120b", # Ensure this model supports tool calling on Clarifai's platform
     messages=[
         {"role": "user", "content": "What is the weather like in New York today?"}
     ],
@@ -101,7 +101,7 @@ if first_response.choices[0].message.tool_calls:
     # Now, send the tool's output back to the LLM to get a natural language response
     print("\n--- Second LLM Call (Summarizing Tool Output) ---")
     second_response = client.chat.completions.create(
-        model="https://clarifai.com/anthropic/completion/models/claude-sonnet-4",
+        model="https://clarifai.com/openai/chat-completion/models/gpt-oss-120b",
         #model="anthropic/completion/models/claude-sonnet-4", # Or, provide Clarifai model name
         messages=messages, # Continue the conversation with tool output
     )

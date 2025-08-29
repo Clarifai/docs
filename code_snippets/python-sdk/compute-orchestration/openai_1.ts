@@ -6,7 +6,7 @@ const client = new OpenAI({
 });
 
 const response = await client.chat.completions.create({
-  model: "https://clarifai.com/anthropic/completion/models/claude-sonnet-4",
+  model: "https://clarifai.com/openai/chat-completion/models/gpt-oss-120b",
   messages: [
     { role: "system", content: "You are a helpful assistant." },
     { role: "user", content: "Who are you?" },
