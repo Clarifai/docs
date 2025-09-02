@@ -32,6 +32,8 @@ import OutputExample from "!!raw-loader!../../code_snippets/new-docs/assorted/ou
 
 Start by [logging in to](https://clarifai.com/login) your existing Clarifai account, or [sign up](https://clarifai.com/signup) for a new one to unlock access to the platform’s powerful AI capabilities. New users receive free operations to help kickstart their exploration.
 
+> **Note:**  The length of a login session depends on how you sign in. If you use Google or GitHub single‑sign‑on, your session will remain active for seven days. When you log in with a regular username and password, selecting the “remember me” option extends the session to 30 days, whereas logging in without that option limits the session to just one day.
+
 ## Step 2: Get a PAT Key
 
 To authenticate your connection to Clarifai, you’ll need a Personal Access Token (PAT). You can obtain one from your personal settings page by navigating to the **Security** section.
