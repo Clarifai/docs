@@ -32,8 +32,6 @@ import OutputExample from "!!raw-loader!../../code_snippets/new-docs/assorted/ou
 
 Start by [logging in to](https://clarifai.com/login) your existing Clarifai account, or [sign up](https://clarifai.com/signup) for a new one to unlock access to the platform’s powerful AI capabilities. New users receive free operations to help kickstart their exploration.
 
-> **Note:**  The length of a login session depends on how you sign in. If you use Google or GitHub single‑sign‑on, your session will remain active for seven days. When you log in with a regular username and password, selecting the “remember me” option extends the session to 30 days, whereas logging in without that option limits the session to just one day.
-
 ## Step 2: Get a PAT Key
 
 To authenticate your connection to Clarifai, you’ll need a Personal Access Token (PAT). You can obtain one from your personal settings page by navigating to the **Security** section.
@@ -53,9 +51,9 @@ You can then set the PAT as an environment variable using `CLARIFAI_PAT`.
 
 You can connect to the Clarifai API using the method that best fits your development environment:
 
-- [Python SDK](https://docs.clarifai.com/resources/api-overview/python-sdk) – Seamlessly integrate with Clarifai using our Python client.
+- [Python SDK](https://docs.clarifai.com/resources/api-overview/python-sdk) – Seamlessly integrate with Clarifai using our Python client. See the minimum system requirements [here](https://docs.clarifai.com/resources/api-overview/python-sdk#minimum-system-requirements).
 
-- [Node.js SDK](https://docs.clarifai.com/resources/api-overview/nodejs-sdk) – Use our SDK for integration in your JavaScript or TypeScript projects.
+- [Node.js SDK](https://docs.clarifai.com/resources/api-overview/nodejs-sdk) – Use our SDK for integration in your JavaScript or TypeScript projects. See the minimum system requirements [here](https://docs.clarifai.com/resources/api-overview/nodejs-sdk/#minimum-system-requirements).
 
 - [OpenAI client](https://docs.clarifai.com/compute/providers/open-ai) –  Leverage Clarifai’s OpenAI-compatible endpoint to run inferences using the OpenAI client library.
 
