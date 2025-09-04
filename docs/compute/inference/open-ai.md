@@ -109,7 +109,7 @@ https://clarifai.com/deepseek-ai/deepseek-chat/models/DeepSeek-R1-Distill-Qwen-7
 https://clarifai.com/qwen/qwenCoder/models/Qwen2_5-Coder-7B-Instruct</CodeBlock>    
 </details>
 
-## Responses Endpoint
+## Responses API
 
 The [OpenAI Responses](https://platform.openai.com/docs/api-reference/responses) API endpoint provides a powerful interface for generating model responses, allowing you to leverage OpenAI's most advanced capabilities.
 
@@ -128,6 +128,7 @@ It’s highly versatile, supporting both text and image inputs and producing tex
     <CodeBlock className="language-text">Under a silver‑shimmering moon, a gentle unicorn named Lira tiptoed into the sleepy meadow, her horn casting soft, glittering lullabies over the swaying wildflowers. As the night wind whispered sweet dreams, she gathered a handful of moon‑kissed dew and sprinkled it over the slumbering forest creatures, coax</CodeBlock>
 </details>
 
+<!--
 ### Multimodal Inputs
 
 The OpenAI Responses API supports multimodal inputs, letting you combine text and images in a single request to get more advanced responses.
@@ -182,8 +183,9 @@ The following example demonstrates a simple tool-calling interaction. It simulat
     <CodeBlock className="language-python">{ResponsesToolCallingExample}</CodeBlock>
     <CodeBlock className="language-text"></CodeBlock>
 </details>
+-->
 
-## Chat Completions Endpoint
+## Chat Completions API
 
 The [OpenAI Chat Completions](https://platform.openai.com/docs/api-reference/chat) API endpoint enables you to generate a model response by providing a list of messages that constitute a conversation.
 
@@ -261,7 +263,9 @@ Here is an example code that sets up a basic tool-calling interaction. It simula
     <CodeBlock className="language-text">{Example4}</CodeBlock>
 </details>
 
-## Image Generation
+## Images Generate API 
+
+The [OpenAI Images Generate](https://platform.openai.com/docs/api-reference/images) API endpoint enables you to generate an image by providing a prompt. 
 
 Here is an example of how to generate an image using a model that supports Clarifai's OpenAI-compatible API endpoint.
 

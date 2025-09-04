@@ -121,7 +121,7 @@ The `clarifai login` command is used to authenticate and configure your connecti
 
 :::note Authentication Precedence
 
-Authentication follows a specific order of precedence. If environment variables — such as `CLARIFAI_PAT` — are set, they take priority and are used first. If no relevant environment variables are provided, the CLI falls back to using the credentials and settings defined in the [active context](#clarifai-config).
+Authentication follows a defined order of precedence. If you hardcode variables (such as `CLARIFAI_PAT`) directly in your code, they take priority. If you set them in your terminal as environment variables without hardcoding them in your code, those values take the precedence. Otherwise, if no relevant environment variables are provided, the CLI falls back to using the credentials and settings defined in the [active context](#clarifai-config).
 
 Here is an example of setting PAT as an environment variable: 
 

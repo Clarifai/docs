@@ -1,11 +1,13 @@
 ---
 description: Common issues and solutions
 sidebar_position: 11
+toc_max_heading_level: 4
 ---
 
 # Troubleshooting
 
 **Solve common issues quickly and effectively**
+<hr />
 
 Troubleshooting helps you identify and fix the most common issues encountered when working with Clarifai-based scripts and applications.
 
@@ -15,7 +17,13 @@ Whether you're facing installation errors, API authentication problems, or image
 
 Setups often break due to missing or incorrectly installed packages. These errors are usually easy to resolve once you've verified your environment and dependencies.
 
-### Missing Dependencies
+### Unsupported Environment
+
+**Error**: You may encounter install-time issues (pip refusal, syntax errors, or compilation failures), run-time issues (syntax errors, missing modules, or incompatible APIs), or architecture incompatibilities.
+
+These errors indicate that the Clarifai Python SDK is running in an unsupported environment. Refer to the [system requirements guide](https://docs.clarifai.com/resources/api-overview/python-sdk#minimum-system-requirements) to ensure your setup meets the minimum requirements for successful installation and use of the Clarifai package.
+
+#### Missing Dependencies
 
 **Error**: `Import could not be resolved` or `ModuleNotFoundError`
 
@@ -39,7 +47,7 @@ pip install --upgrade pip
 pip install <package-name>
 ```
 
-### Package Not Installed Properly
+#### Package Not Installed Properly
 
 **Error**: `ModuleNotFoundError: No module named 'cv2'`
 
@@ -54,6 +62,30 @@ pip install opencv-contrib-python
 # or (for conda users)
 conda install -c conda-forge opencv
 ```
+
+#### Dependency Conflicts
+
+**Error**: Version conflicts occur when different projects require different versions of the same library.
+
+This often results in import errors, broken functionality, or one project overwriting another project’s dependencies.
+
+You can solve it by using a virtual environment. A virtual environment isolates your project’s dependencies, protecting you from dependency conflicts, version mismatches, and system corruption. 
+
+Here is how to create a virtual environment:
+
+```bash
+# Create a new virtual environment
+python3 -m venv venv
+
+# Activate the environment (Linux/macOS)
+source venv/bin/activate
+
+# Activate the environment (Windows PowerShell)
+venv\Scripts\activate
+```
+
+Once activated, any packages you install with `pip` will be isolated to that environment.
+
 
 ## API and Authentication Issues
 

@@ -152,23 +152,28 @@ import CO11 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchest
 
 #### Installation
 
-To begin, install the latest version of the `clarifai` Python package.
+To begin, install the latest version of the `clarifai` Python package. This will also install the Clarifai [Command Line Interface](https://docs.clarifai.com/resources/api-overview/cli/#clarifai-login) (CLI), which we'll also use to demonstrate how to create clusters and nodepools. 
 
 ```text
 pip install --upgrade clarifai
 ```
-_Note that if you want to use the Clarifai CLI, you'll need to authenticate your CLI session with Clarifai. Learn how to do that [here](https://docs.clarifai.com/additional-resources/api-overview/cli)._
 
 #### Get a PAT
 
-You need a [PAT (Personal Access Token)](https://docs.clarifai.com/control/authentication/pat) key to authenticate your connection to the Clarifai platform. You can generate it in your Personal Settings page by navigating to the Security section.
+You need a [PAT (Personal Access Token)](https://docs.clarifai.com/control/authentication/pat) key to authenticate with the Clarifai platform. You can generate one from your personal settings page under the **Security** section.
 
-Then, set it as an environment variable in your script.
+After generating it, set the token as an environment variable.
 
-```text
-import os
-os.environ["CLARIFAI_PAT"] = "YOUR_PAT_HERE" # replace with your own PAT key 
-```
+<Tabs groupId="code">
+<TabItem value="bash" label="Unix-Like Systems">
+    <CodeBlock className="language-bash"> export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
+</TabItem>
+<TabItem value="bash2" label="Windows">
+    <CodeBlock className="language-bash"> set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
+</TabItem>
+</Tabs>
+
+> **Note**: When you set the PAT as an environment variable, you don’t need to hardcode it in your code. This also ensures that your CLI session is automatically authenticated with Clarifai.
 
 #### Set up Project Directory
 
@@ -176,7 +181,20 @@ os.environ["CLARIFAI_PAT"] = "YOUR_PAT_HERE" # replace with your own PAT key
 - Inside this directory, create a Python file for your Compute Orchestration code.
 - Create a `configs` folder to store your YAML configuration files for clusters, nodepools, and deployments.
 
-Then, create the following files in the `configs` folder:
+Here’s the structure of the directory:
+
+```
+project-directory/               # Overarching project folder
+│
+├── compute_orchestration.py     # Python file for your orchestration code
+│
+└── configs/                     # Folder for configuration files
+    ├── compute_cluster_config.yaml
+    ├── nodepool_config.yaml
+    └── deployment_config.yaml
+```
+
+Then, add the following code snippets to their corresponding files in the `configs` folder. 
 
 **1.** `compute_cluster_config.yaml`:
 
