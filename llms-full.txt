@@ -904,23 +904,23 @@ import CO11 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchest
 
 #### Installation
 
-To begin, install the latest version of the `clarifai` Python package.
+To begin, install the latest version of the `clarifai` Python package. This will also install the Clarifai [Command Line Interface](https://docs.clarifai.com/resources/api-overview/cli/#clarifai-login) (CLI), which we'll also use to demonstrate how to create clusters and nodepools. 
 
 ```text
 pip install --upgrade clarifai
 ```
-_Note that if you want to use the Clarifai CLI, you'll need to authenticate your CLI session with Clarifai. Learn how to do that [here](https://docs.clarifai.com/additional-resources/api-overview/cli)._
 
 #### Get a PAT
 
-You need a [PAT (Personal Access Token)](https://docs.clarifai.com/control/authentication/pat) key to authenticate your connection to the Clarifai platform. You can generate it in your Personal Settings page by navigating to the Security section.
+You need a [PAT (Personal Access Token)](https://docs.clarifai.com/control/authentication/pat) key to authenticate with the Clarifai platform. You can generate one from your personal settings page under the **Security** section.
 
-Then, set it as an environment variable in your script.
+After generating it, set the token as an environment variable.
 
-```text
-import os
-os.environ["CLARIFAI_PAT"] = "YOUR_PAT_HERE" # replace with your own PAT key 
-```
+     export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE 
+
+     set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE 
+
+> **Note**: When you set the PAT as an environment variable, you don’t need to hardcode it in your code. This also ensures that your CLI session is automatically authenticated with Clarifai.
 
 #### Set up Project Directory
 
@@ -928,7 +928,20 @@ os.environ["CLARIFAI_PAT"] = "YOUR_PAT_HERE" # replace with your own PAT key
 - Inside this directory, create a Python file for your Compute Orchestration code.
 - Create a `configs` folder to store your YAML configuration files for clusters, nodepools, and deployments.
 
-Then, create the following files in the `configs` folder:
+Here’s the structure of the directory:
+
+```
+project-directory/               # Overarching project folder
+│
+├── compute_orchestration.py     # Python file for your orchestration code
+│
+└── configs/                     # Folder for configuration files
+    ├── compute_cluster_config.yaml
+    ├── nodepool_config.yaml
+    └── deployment_config.yaml
+```
+
+Then, add the following code snippets to their corresponding files in the `configs` folder. 
 
 **1.** `compute_cluster_config.yaml`:
 
@@ -3361,7 +3374,7 @@ Clarifai models accessed via LiteLLM fully support [tool calling](https://docs.c
 
 **Run inferences on Clarifai models using OpenAI**
 
-You can run inferences on Clarifai-hosted models using the OpenAI client library by leveraging the Clarifai’s OpenAI-compatible API endpoint.
+You can run inferences on Clarifai-hosted models using the OpenAI client library by leveraging the Clarifai’s [OpenAI-compatible API endpoint](README.mdx#predict-with-openai-compatible-format).
 
 This allows you to use the same code and tools you would with OpenAI, in either Python or JavaScript, by simply configuring the client to point to Clarifai and providing your PAT (Personal Access Token) key.
 
@@ -3385,6 +3398,11 @@ import Example4 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orc
 import PyImageGeneration from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/open_ai_image_generation.py";
 import PyResponses from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/open_ai_responses.py";
 import PyMultimodal from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/open_ai_multimodal.py";
+import PyResponsesMultimodal from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/open_ai_responses_multimodal.py";
+import PyResponsesStreaming from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/open_ai_responses_streaming.py";
+import PyResponsesToolCalling from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/open_ai_responses_tool_calling.py";
+import ResponsesToolCallingExample from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/responses_tool_calling_1.py";
+import ToolCallingOutput1 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/tool_calling_output_1.txt";
 
 ## Prerequisites
 
@@ -3398,7 +3416,7 @@ Install the `openai` package.
 
 ### Get a PAT Key
 
-You need a [PAT](https://docs.clarifai.com/control/authentication/pat) key to authenticate your connection to the Clarifai platform. You can generate the PAT key in your personal settings page by navigating to the [Security section](https://clarifai.com/settings/security).
+You need a [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat) key to authenticate your connection to the Clarifai platform. You can obtain one from your personal settings page by navigating to the **Security** section.
 
 You can then set the PAT as an environment variable using `CLARIFAI_PAT`:
 
@@ -3411,7 +3429,8 @@ You can then set the PAT as an environment variable using `CLARIFAI_PAT`:
 Go to the Clarifai [Community](https://clarifai.com/explore) platform and select the model you want to use for making predictions.
 
   Some Clarifai models that support OpenAI
-    https://clarifai.com/deepseek-ai/deepseek-chat/models/DeepSeek-R1-0528-Qwen3-8B
+    https://clarifai.com/openai/chat-completion/models/gpt-oss-120b
+https://clarifai.com/deepseek-ai/deepseek-chat/models/DeepSeek-R1-0528-Qwen3-8B
 https://clarifai.com/meta/Llama-3/models/Llama-3_2-3B-Instruct
 https://clarifai.com/anthropic/completion/models/claude-sonnet-4
 https://clarifai.com/qwen/qwenLM/models/Qwen3-14B
@@ -3442,44 +3461,87 @@ https://clarifai.com/openbmb/miniCPM/models/MiniCPM-o-2_6-language
 https://clarifai.com/deepseek-ai/deepseek-chat/models/DeepSeek-R1-Distill-Qwen-7B
 https://clarifai.com/qwen/qwenCoder/models/Qwen2_5-Coder-7B-Instruct    
 
-## Chat Completions
+## Responses API
 
-The OpenAI [Chat Completions](https://platform.openai.com/docs/api-reference/chat) API endpoint enables you to generate a model response by providing a list of messages that constitute a conversation.
+The [OpenAI Responses](https://platform.openai.com/docs/api-reference/responses) API endpoint provides a powerful interface for generating model responses, allowing you to leverage OpenAI's most advanced capabilities.
 
-    {PyOpenAI}
+It’s highly versatile, supporting both text and image inputs and producing text outputs, as well as advanced features like streaming and tool calling.
 
-    {NodeOpenAI}
-
-  Example Output
-    I'm Claude, an AI assistant created by Anthropic. I'm here to help with a wide variety of tasks like answering questions, helping with analysis and research, creative writing, math and coding problems, and having conversations. Is there something specific I can help you with today?
-
-### Multimodal Predictions
-
-The OpenAI Chat Completions API supports multimodal inputs, allowing you to combine text and image data in a single request for more advanced predictions.
-
-    {PyMultimodal}
-
-  Example Output
-    Response: The image shows a ginger tabby cat lying down on a stone surface. The cat has a striped pattern on its fur and is looking directly at the camera with alert, bright eyes. The background features a textured wall, and the lighting highlights the cat's features, giving a warm and cozy atmosphere.
-
-## Responses
-
-The OpenAI [Responses](https://platform.openai.com/docs/api-reference/responses) API endpoint enables you to take advantage of the latest OpenAI platform features. 
+### Text Inputs
 
     {PyResponses}
 
   Example Output
     Under a silver‑shimmering moon, a gentle unicorn named Lira tiptoed into the sleepy meadow, her horn casting soft, glittering lullabies over the swaying wildflowers. As the night wind whispered sweet dreams, she gathered a handful of moon‑kissed dew and sprinkled it over the slumbering forest creatures, coax
 
-## Streaming
+    {PyResponsesMultimodal}
 
-Clarifai offers support for streaming — the response is streamed back token by token, rather than waiting for the entire completion to be generated before returning. 
+  Example Output
+    
+
+### Streaming
+
+The OpenAI Responses API supports supports streaming, which means you get the response one token at a time instead of waiting for the full completion. 
+
+    {PyResponsesStreaming}
+
+  Example Output
+    
+
+### Tool Calling
+
+The OpenAI Responses API supports supports tool calling (also known as function calling), allowing you to enable large language models (LLMs) to interact with external tools. 
+
+Based on user input, the LLM can autonomously decide when and how to invoke functions — such as fetching real-time data from an API or running custom code.
+
+The following example demonstrates a simple tool-calling interaction. It simulates a weather API and shows how the model automatically “calls” that tool when asked about the weather.
+
+    {PyResponsesToolCalling}
+
+  Example Output
+    
+
+  Tool Calling Implementation Example
+    {ResponsesToolCallingExample}
+    
+
+-->
+
+## Chat Completions API
+
+The [OpenAI Chat Completions](https://platform.openai.com/docs/api-reference/chat) API endpoint enables you to generate a model response by providing a list of messages that constitute a conversation.
+
+### Text Inputs
+
+    {PyOpenAI}
+
+    {NodeOpenAI}
+
+  Example Output
+    I’m ChatGPT, an AI language model created by OpenAI. I’ve been trained on a wide range of text so I can help answer questions, brainstorm ideas, explain concepts, and assist with many other tasks. Think of me as a virtual assistant you can chat with—
+
+### Multimodal Inputs
+
+The OpenAI Chat Completions API supports multimodal inputs.
+
+    {PyMultimodal}
+
+  Example Output
+    Response: The image shows a ginger tabby cat lying down on a stone surface. The cat has a striped pattern on its fur and is looking directly at the camera with alert, bright eyes. The background features a textured wall, and the lighting highlights the cat's features, giving a warm and cozy atmosphere.
+
+### Streaming
+
+The OpenAI Chat Completions API supports streaming. 
 
     {PyOpenAIStreaming}
 
-## Tool Calling
+  Example Output
+    Assistant's Response:
+I’m ChatGPT, an AI language model created by OpenAI. I’ve been trained on a wide range of text data so I can help answer questions, explain concepts, brainstorm ideas, draft writing, solve problems, and more. Think of me as a virtual assistant that can converse with you on many topics—
 
-Tool calling (also known as function calling) enables LLMs to autonomously decide when and how to invoke external tools — such as APIs or custom functions — based on user input.
+### Tool Calling
+
+The OpenAI Chat Completions API supports tool calling (also known as function calling). 
 
 Here is an example code that sets up a basic tool-calling interaction. It simulates a weather API and shows how the LLM would "call" that tool when asked about the weather.
 
@@ -3487,18 +3549,25 @@ Here is an example code that sets up a basic tool-calling interaction. It simula
 
     {TSExample2}
 
+  Example Output
+    {ToolCallingOutput1}
+
   Tool Calling Implementation Example
     {Example3}
     {Example4}
 
-## Image Generation
+## Images Generate API 
+
+The [OpenAI Images Generate](https://platform.openai.com/docs/api-reference/images) API endpoint enables you to generate an image by providing a prompt. 
 
 Here is an example of how to generate an image using a model that supports Clarifai's OpenAI-compatible API endpoint.
 
     {PyImageGeneration}
 
   Example Output
+    ```text
     ImagesResponse(created=None, data=[Image(b64_json=None, revised_prompt='A high-resolution photograph of a cat perched on a branch in a lush, green tree during the daytime. The cat, possibly a tabby, is the central focus of the image, looking slightly to the side with its fur naturally positioned. The background features a soft, slightly blurred forest setting with sunlight filtering through the leaves, creating a serene and natural environment. The composition avoids any distracting elements, ensuring the cat remains the primary subject in a peaceful outdoor scene.', url='https://imgen.x.ai/xai-imgen/xai-tmp-imgen-41202340-c0e1-4669-bed5-e70f7b491176.jpeg')], usage=None)
+    ```
 
 ---
 
@@ -5948,7 +6017,7 @@ After providing the details, click the **Confirm** button.
 | **Role**                         | **Permissions Description**                                                                                                                                                                                                                  |
 |----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Admin**                        | The invitee will have administrative privileges in the organization                                                                                                                                                           |
-| **Financial Manager**            | The invitee will have access to key financial data, including current spending based on the organization's pricing plan and budget settings, enabling better financial oversight and management. This role is only permitted to access the following tabs within the [Control Center](https://docs.clarifai.com/control/control-center/): Overview, Usage & Operations, and Costs & Budget |
+| **Financial Manager**            | The invitee will have access to key [financial data](https://docs.clarifai.com/control/control-center/costs), including current spending based on the organization's pricing plan and budget settings, enabling better financial oversight and management |
 | **Organization Contributor (all apps)** | The invitee will be able to contribute to all the apps within the organization, but without some admin privileges                                                                                                             |
 | **Organization User (all apps)** | The invitee will have access privileges similar to those of an Organization Contributor for all apps, but with view-only permissions without ability to perform certain CRUD operations — create, update, or delete resources                                                                                           |
 | **Team Contributor (select apps)** | The invitee will be able to contribute only to some selected applications                                                                                                                                                      |
@@ -24053,9 +24122,9 @@ You can then set the PAT as an environment variable using `CLARIFAI_PAT`.
 
 You can connect to the Clarifai API using the method that best fits your development environment:
 
-- [Python SDK](https://docs.clarifai.com/resources/api-overview/python-sdk) – Seamlessly integrate with Clarifai using our Python client.
+- [Python SDK](https://docs.clarifai.com/resources/api-overview/python-sdk) – Seamlessly integrate with Clarifai using our Python client. See the minimum system requirements [here](https://docs.clarifai.com/resources/api-overview/python-sdk#minimum-system-requirements).
 
-- [Node.js SDK](https://docs.clarifai.com/resources/api-overview/nodejs-sdk) – Use our SDK for integration in your JavaScript or TypeScript projects.
+- [Node.js SDK](https://docs.clarifai.com/resources/api-overview/nodejs-sdk) – Use our SDK for integration in your JavaScript or TypeScript projects. See the minimum system requirements [here](https://docs.clarifai.com/resources/api-overview/nodejs-sdk/#minimum-system-requirements).
 
 - [OpenAI client](https://docs.clarifai.com/compute/providers/open-ai) –  Leverage Clarifai’s OpenAI-compatible endpoint to run inferences using the OpenAI client library.
 
@@ -24077,7 +24146,7 @@ You can easily find a model to use by heading to the Community homepage and expl
 
 ## Step 5: Send an API Request
 
-For this example, let's use the [GPT-4.1](https://clarifai.com/openai/chat-completion/models/gpt-4_1) model to generate text based on a given prompt.
+For this example, let's use the [gpt-oss-120b](https://clarifai.com/openai/chat-completion/models/gpt-oss-120b) model to generate text based on a given prompt.
 
     {PythonSDKRequest}
 
@@ -26134,43 +26203,52 @@ Clarifai is designed for three core journeys:
 - **Control & Governance** – Manage AI resources, monitor performance, and track costs through a unified control plane.
 - **Create & Manage** – Customize AI workloads with a set of tools to compliment your own, enabling you to label data, train and evaluate models, and deploy them.
 
-## Compute
-
-![](/img/new-docs/homepage2.png)
-
-- **Deploy AI Anywhere** — Run AI on any hardware, cloud, or on-premise infrastructure, including private VPCs or Clarifai’s managed compute.
-
-- **Optimize Costs** — Leverage GPU fractioning, auto-scaling including scale-to-zero, and batched or streaming inference to more efficiently utilize compute resources.
-
-- **Enterprise-Grade Security** — Manage access and permissions with role-based access controls, organizations and teams, and audit logging.
-
-- **Scale to Production** — Deploy models with push-button builds and automated scaling.
-
-## Unified Control and Governance
-
-- **Monitor Performance** — Track model activity and system performance in real time.
-
-- **Manage Cost** — Monitor resource usage and expenses across deployments.
-
-- **Audit Activity** — Review time-stamped logs for updates and system changes.
-
-- **Control Access** — Manage permissions and control who can create, update, or delete AI resources.
-
-## Create and Manage
-
-- **Automated Data Labeling** — Auto-label images, videos, and text faster and more accurately. 
-
-- **Vector Search** — Search unstructured data with high precision.
-
-- **Resource Versioning** — Track changes to datasets, models, and workflows by versioning your AI assets.
-
-- **Dataset Management** — Ingest, exlore, and manage your datasets for model training, model  evaluation, and data labeling. 
-
-- **Model Training & Evaluation** — Train AI models using one-click training templates and make custom AI accessible across teams.
-
-- **AI Workflows** — Combine multiple models and operators with a drag-and-drop interface.
-
-- **UI Modules** — Extend functionality with reusable web apps leveraging our APIs.
+   
+      
+         
+         
+            Getting Started            
+            Get up and running with Clarifai within a few minutes          
+         
+         
+      
+      
+         
+         
+            Compute Orchestration
+            Compute without limits – deploy AI anywhere, optimize costs, get enterprise-grade security, and scale to production fast             
+         
+         
+      
+      
+         
+         
+            Control & Governance
+            Monitor, manage, audit, and secure every move of your AI             
+         
+         
+      
+      
+         
+         
+            Create & Manage
+            Auto-label data, search unstructured content, version resources, manage datasets, train and evaluate models, build workflows, and create modules            
+         
+         
+      
+      
+         
+         
+            Product Updates
+            Stay up-to-date with our latest features, fixes, and innovations            
+         
+         
+      
+      
+         
+         
+            Contact Us
+            Get in touch for questions or support
 
 ---
 
@@ -27842,6 +27920,43 @@ We have a public roadmap that gives you a view of our upcoming plans and helps u
 |--------------------------------------|------------------------|---------------------------|
 |![improvement](/img/improvement.jpg)| Made some platform improvements   |   Token-based models now clearly show accurate input and output pricing, including when used within workflows.   Workflow pricing now displays multiple pricing tiers for each model included in the workflow.   Updated the Settings sidebar to support URL-based account switching. Access to any Settings page now requires this URL format: `/userOrOrgId/settings/{resource-type}`.  Added support for redirecting users back to their original source page after login or sign-up, where applicable.  Added the "Create Organization" flow as a follow-up step after the new user onboarding process.   |
 |![bug](/img/bug.jpg) |  Fixed some bugs |   Fixed an issue where a renamed app continued to show its old ID in the Settings page and deletion toast notification.    Fixed an issue where accessing unauthorized resources triggered multiple error pop-ups; it now shows a single, graceful notification.  Fixed an issue where both My Resources and Community tabs were highlighted when opening an app under My Resources in Org accounts; now only My Resources is correctly highlighted.   Fixed an issue where reordering Home page card layouts via ‘Configure Home’ did not save the intended order.  Fixed an issue where the recent activity section on the Home page displayed incorrect information when users performed operations across multiple apps.  Fixed an issue where the Sign Up and verify email pages did not redirect after successful authentication, or triggered the organization onboarding modal.   |
+
+---
+
+## Release 11.8
+
+# Release 11.8
+
+**Release Date:** September 3rd, 2025
+
+| New Feature | Improvement | Bug Fix | Enterprise Only |
+| :---: | :---: | :---: | :---: |
+| ![new-feature](/img/new_feature.jpg) |![improvement](/img/improvement.jpg) | ![bug](/img/bug.jpg) | ![enterprise](/img/enterprise.jpg) |
+
+## Billing 
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+|![improvement](/img/improvement.jpg)| Made changes to billing system  |   Introduced monthly spending limits of $100 for Developer and Essential plans, and $500 for the Professional plan. You can contact us if you require higher limits.  Added a new credit card pre-authorization process. A temporary charge of $50 for Developer, $100 for Essential, and $500 for Professional plans is applied to verify card validity and available funds. The amount is automatically refunded within seven days.   |
+
+## Control Center
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![improvement](/img/improvement.jpg) | Made improvements to [Control Center](https://docs.clarifai.com/control/control-center/) |   Added half-size widgets in the Control Center configure page, allowing users to resize charts to half their original size. This enhancement makes it easier to rearrange charts and optimize the layout for side-by-side comparisons. Fixed the Stored Inputs Cost chart to correctly display the average cost for the selected period instead of showing an incorrect total.  Enhanced the date grouping for charts, where periods longer than one month now display weekly aggregated data for better readability.  Empty states have been added to charts to display meaningful messages when no data is available, rather than just showing zero. Added cross-links between compute cost and usage charts, allowing users to navigate easily between these views.  |
+
+## Python SDK
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+|![improvement](/img/improvement.jpg)  | Improved the Python SDK.   Learn more [here](https://github.com/Clarifai/clarifai-python/blob/master/CHANGELOG.md).   |  Fixed Local Runner CLI commandUpdated protocol and gRPC versionsPrevented downloading of original checkpointsIntegrated secrets into SDKFixed num_threads settingFixed pip checks when cache is brokenCorrected usage setting on OpenAI responsesAdded stream_options validation for internal streaming model uploadAdded missing packaging dependencyEnsured JSON errors are always returned on OpenAI callsSet default to 32 threadsFixed ruff and dependency-related issuesFixed model upload deploymentAdopted method signature for Local RunnerAdded user confirmation to prevent Dockerfile overwrite during model upload   |
+
+## Platform
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+|![improvement](/img/improvement.jpg) | Made improvements to platform|   Added a public resource filter button that lets users quickly view resources shared with the Community. This feature makes it easy to filter and explore resources based on their public visibility.  Improved the playground to show a clear error message when users exceed streaming prediction limits.  Extended the login session duration for users logging in via Google or GitHub SSO to seven days, which was previously much shorter.   |
+|![bug](/img/bug.jpg)  | Fixed some bugs  |   Fixed an issue where the toast notification displayed the old app ID when deleting a renamed app, instead of showing the updated ID.  Fixed an issue where users were not redirected to the intended page after login, causing them to get stuck.  Fixed an issue where the model page layout expanded incorrectly in width.  Fixed issues in the Recent Activity section of the Community home page where resource ID links were not visible on smaller screens, and where audit logs displayed an incorrect target app ID.   |
 
 ---
 
@@ -32748,7 +32863,7 @@ The `clarifai login` command is used to authenticate and configure your connecti
 
 :::note Authentication Precedence
 
-Authentication follows a specific order of precedence. If environment variables — such as `CLARIFAI_PAT` — are set, they take priority and are used first. If no relevant environment variables are provided, the CLI falls back to using the credentials and settings defined in the [active context](#clarifai-config).
+Authentication follows a defined order of precedence. If you hardcode variables (such as `CLARIFAI_PAT`) directly in your code, they take priority. If you set them in your terminal as environment variables without hardcoding them in your code, those values take the precedence. Otherwise, if no relevant environment variables are provided, the CLI falls back to using the credentials and settings defined in the [active context](#clarifai-config).
 
 Here is an example of setting PAT as an environment variable: 
 
@@ -45156,7 +45271,13 @@ Whether you're facing installation errors, API authentication problems, or image
 
 Setups often break due to missing or incorrectly installed packages. These errors are usually easy to resolve once you've verified your environment and dependencies.
 
-### Missing Dependencies
+### Unsupported Environment
+
+**Error**: You may encounter install-time issues (pip refusal, syntax errors, or compilation failures), run-time issues (syntax errors, missing modules, or incompatible APIs), or architecture incompatibilities.
+
+These errors indicate that the Clarifai Python SDK is running in an unsupported environment. Refer to the [system requirements guide](https://docs.clarifai.com/resources/api-overview/python-sdk#minimum-system-requirements) to ensure your setup meets the minimum requirements for successful installation and use of the Clarifai package.
+
+#### Missing Dependencies
 
 **Error**: `Import could not be resolved` or `ModuleNotFoundError`
 
@@ -45180,7 +45301,7 @@ pip install --upgrade pip
 pip install 
 ```
 
-### Package Not Installed Properly
+#### Package Not Installed Properly
 
 **Error**: `ModuleNotFoundError: No module named 'cv2'`
 
@@ -45195,6 +45316,29 @@ pip install opencv-contrib-python
 # or (for conda users)
 conda install -c conda-forge opencv
 ```
+
+#### Dependency Conflicts
+
+**Error**: Version conflicts occur when different projects require different versions of the same library.
+
+This often results in import errors, broken functionality, or one project overwriting another project’s dependencies.
+
+You can solve it by using a virtual environment. A virtual environment isolates your project’s dependencies, protecting you from dependency conflicts, version mismatches, and system corruption. 
+
+Here is how to create a virtual environment:
+
+```bash
+# Create a new virtual environment
+python3 -m venv venv
+
+# Activate the environment (Linux/macOS)
+source venv/bin/activate
+
+# Activate the environment (Windows PowerShell)
+venv\Scripts\activate
+```
+
+Once activated, any packages you install with `pip` will be isolated to that environment.
 
 ## API and Authentication Issues
 
