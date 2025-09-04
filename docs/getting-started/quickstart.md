@@ -51,9 +51,9 @@ You can then set the PAT as an environment variable using `CLARIFAI_PAT`.
 
 You can connect to the Clarifai API using the method that best fits your development environment:
 
-- [Python SDK](https://docs.clarifai.com/resources/api-overview/python-sdk) – Seamlessly integrate with Clarifai using our Python client.
+- [Python SDK](https://docs.clarifai.com/resources/api-overview/python-sdk) – Seamlessly integrate with Clarifai using our Python client. See the minimum system requirements [here](https://docs.clarifai.com/resources/api-overview/python-sdk#minimum-system-requirements).
 
-- [Node.js SDK](https://docs.clarifai.com/resources/api-overview/nodejs-sdk) – Use our SDK for integration in your JavaScript or TypeScript projects.
+- [Node.js SDK](https://docs.clarifai.com/resources/api-overview/nodejs-sdk) – Use our SDK for integration in your JavaScript or TypeScript projects. See the minimum system requirements [here](https://docs.clarifai.com/resources/api-overview/nodejs-sdk/#minimum-system-requirements).
 
 - [OpenAI client](https://docs.clarifai.com/compute/providers/open-ai) –  Leverage Clarifai’s OpenAI-compatible endpoint to run inferences using the OpenAI client library.
 
@@ -84,7 +84,7 @@ You can easily find a model to use by heading to the Community homepage and expl
 
 ## Step 5: Send an API Request
 
-For this example, let's use the [GPT-4.1](https://clarifai.com/openai/chat-completion/models/gpt-4_1) model to generate text based on a given prompt.
+For this example, let's use the [gpt-oss-120b](https://clarifai.com/openai/chat-completion/models/gpt-oss-120b) model to generate text based on a given prompt.
 
 
 <Tabs groupId="code">

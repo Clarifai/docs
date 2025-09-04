@@ -1700,3 +1700,27 @@ header .join__slack:hover {
   color: #5c1751cc;
   background: white;
 }
+
+.fixed-height-card {
+  height: 200px; /* This is used for the cards on the welcome homepage */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: rgba(243, 245, 247, 0.85); 
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.fixed-height-card:hover {
+  background: rgba(67, 194, 212, 0.61); /* Intensified light gray on hover */
+}
+
+html[data-theme='dark'] .fixed-height-card {
+  background: rgba(44, 59, 75, 0.85); /* Soft dark blue-gray for dark mode */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+html[data-theme='dark'] .fixed-height-card:hover {
+  background: rgb(125, 157, 192); /* Intensified dark color on hover */
+}

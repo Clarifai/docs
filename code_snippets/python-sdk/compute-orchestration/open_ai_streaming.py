@@ -9,7 +9,7 @@ client = OpenAI(
 
 # Make a chat completion request to a Clarifai-hosted model
 response = client.chat.completions.create(    
-    model="https://clarifai.com/anthropic/completion/models/claude-sonnet-4",
+    model="https://clarifai.com/openai/chat-completion/models/gpt-oss-120b",
     #model="anthropic/completion/models/claude-sonnet-4", # Or, provide Clarifai model name
     messages=[
         {"role": "system", "content": "You are a helpful assistant."},
