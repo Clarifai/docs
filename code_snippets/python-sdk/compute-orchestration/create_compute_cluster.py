@@ -1,8 +1,8 @@
 from clarifai.client.user import User
 import os
 
-# Set the PAT key
-os.environ["CLARIFAI_PAT"] = "YOUR_PAT_HERE" 
+# Set PAT as an environment variable
+# export CLARIFAI_PAT=YOUR_PAT_HERE 
 
 # Initialize the client
 client = User(

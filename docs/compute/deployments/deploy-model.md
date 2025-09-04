@@ -96,7 +96,7 @@ You can also configure advanced deployment settings if needed. If you choose not
 - **Scale Down Delay** — This sets the waiting period (in seconds) before reducing resources after a demand decrease. Note that your nodepool will only scale down to the minimum number of replica(s) configured.
 - **Scale To Zero Delay** — This sets the idle time (in seconds) before scaling down to zero replicas after inactivity.
 - **Traffic History Timeframe** — This defines the traffic history period (in seconds) that your deployment will review before making scaling decisions.
-- **Disable Nodepool Packing** — Enabling this option restricts deployments to a single model replica per node. While this can be useful for specific performance needs, it may lead to underutilized nodes and increased costs due to reduced resource efficiency.
+- **Disable Nodepool Packing** — Packing refers to placing multiple replicas on the same node to improve resource utilization and reduce costs. When set to `false` (default), replicas may be packed together for efficiency. When set to `true`, deployments are restricted to a single model replica per node, which can improve isolation or meet specific performance needs, but may result in underutilized nodes and higher costs.
    
 
 ### Step 6: Finalize and Create the Deployment
