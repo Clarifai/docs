@@ -29,6 +29,8 @@ import CodeBlock from "@theme/CodeBlock";
 import CO12 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/create_deployment.py";
 import CL4 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/cli_create_deployment.sh";
 import CO15 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/init_deployment.py";
+import CURLRestrictDeployment from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/restrict_deployment.sh";
+import OutputCURLRestrictDeployment from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/output_restrict_deployment.txt";
 
 
 ## **Via the UI**
@@ -148,3 +150,24 @@ After creating it, initialize the `Deployment` class by providing the `user_id` 
 </TabItem>
 </Tabs>
 
+### Restrict Deployments
+
+You can specify the type of compute cluster an existing model you own is deployed to. By setting the `deploy_restriction` value, you can patch a model and define whether it runs on shared or dedicated resources.
+
+These are the values you can set:
+
+- `0` (`USAGE_RESTRICTION_NOT_SET`) — The default where no explicit restriction is set.
+- `1` (`NO_LIMITS`) — The model can be deployed on any kind of compute (shared or dedicated). There are no policy constraints.
+- `2` (`SHARED_COMPUTE_ONLY`) — The model can only run on shared compute resources. This is typically cheaper but may have lower isolation or performance guarantees.
+- `3` (`DEDICATED_COMPUTE_ONLY`) — The model can only run on dedicated compute resources. This is used when you need guaranteed performance, security isolation, or compliance.
+
+<Tabs groupId="code">
+<TabItem value="curl" label="cURL">
+       <CodeBlock className="language-python">{CURLRestrictDeployment}</CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+  <summary>Example Output</summary>
+    <CodeBlock className="language-python">{OutputCURLRestrictDeployment}</CodeBlock>
+</details>

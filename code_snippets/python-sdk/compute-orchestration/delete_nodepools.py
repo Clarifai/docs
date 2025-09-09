@@ -19,5 +19,5 @@ nodepool_ids = [nodepool.id for nodepool in all_nodepools]
 # Delete a specific nodepool by providing its ID
 # nodepool_ids = ["test-nodepool"]
 
-# Delete the nodepools
+# Delete  all the nodepools
 compute_cluster.delete_nodepools(nodepool_ids=nodepool_ids)

@@ -1,1 +1,1 @@
-clarifai computecluster create --config <compute-cluster-config-filepath>
+clarifai computecluster create COMPUTE_CLUSTER_ID --config COMPUTE-CLUSTER-CONFIG-FILEPATH

@@ -19,6 +19,13 @@ draft: false
 | :---: | :---: | :---: | :---: |
 | ![new-feature](/img/new_feature.jpg) |![improvement](/img/improvement.jpg) | ![bug](/img/bug.jpg) | ![enterprise](/img/enterprise.jpg) |
 
+## Unified Navigation Experience
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+|![improvement](/img/improvement.jpg)| Made unified navigation enhancements | <ul> <li>We’ve moved the main navigation elements into the collapsible left sidebar. This streamlines the UI, frees up valuable screen real estate, and delivers a discoverable navigation experience across the entire platform. </li> </ul>  |
+
+
 ## Billing 
 
 |Status                                |Change                  |Details                    |

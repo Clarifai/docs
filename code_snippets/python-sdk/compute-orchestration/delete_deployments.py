@@ -19,5 +19,5 @@ deployment_ids = [deployment.id for deployment in all_deployments]
 # Delete a specific deployment by providing its deployment ID
 # deployment_ids = ["test-deployment"]
 
-# Delete the deployments
+# Delete all the deployments
 nodepool.delete_deployments(deployment_ids=deployment_ids)

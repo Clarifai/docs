@@ -18,5 +18,5 @@ compute_cluster_ids = [compute_cluster.id for compute_cluster in all_compute_clu
 # Delete a specific cluster by providing its ID
 # compute_cluster_ids = ["test-compute-cluster"]
 
-# Delete the compute clusters
+# Delete all the compute clusters
 client.delete_compute_clusters(compute_cluster_ids=compute_cluster_ids)

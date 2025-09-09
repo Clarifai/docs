@@ -1,0 +1,88 @@
+{
+    "status": {
+        "code": 10000,
+        "description": "Ok",
+        "req_id": "b6af331eac444e76b88abea88d2d4579"
+    },
+    "models": [{
+        "id": "upload55",
+        "name": "upload55",
+        "created_at": "2025-08-21T17:05:33.491470Z",
+        "modified_at": "2025-09-09T18:36:48.844230Z",
+        "app_id": "uploaded-models",
+        "model_version": {
+            "id": "991d5569b152462aad563cfc24faf477",
+            "created_at": "2025-08-21T17:05:34.086694Z",
+            "status": {
+                "code": 21100,
+                "description": "Model is trained and ready for deployment"
+            },
+            "completed_at": "2025-08-21T17:05:41.982881Z",
+            "visibility": {
+                "gettable": 10
+            },
+            "app_id": "uploaded-models",
+            "user_id": "alfrick",
+            "metadata": {},
+            "output_info": {
+                "output_config": {
+                    "max_concepts": 0,
+                    "min_value": 0
+                },
+                "message": "Show output_info with: GET /models/{model_id}/output_info",
+                "fields_map": {},
+                "params": {
+                    "max_tokens": 512,
+                    "secrets": [],
+                    "temperature": 1
+                }
+            },
+            "input_info": {
+                "fields_map": {}
+            },
+            "train_info": {},
+            "import_info": {},
+            "inference_compute_info": {
+                "cpu_limit": "1",
+                "cpu_memory": "13Gi",
+                "cpu_requests": "1",
+                "cpu_memory_requests": "2Gi",
+                "num_accelerators": 1,
+                "accelerator_memory": "15Gi",
+                "accelerator_type": ["NVIDIA-*"]
+            },
+            "method_signatures": [{
+                "name": "generate",
+                "method_type": 2,
+                "description": "This method streams multiple outputs instead of returning just one.\nIt takes an input string and yields a sequence of outputs.",
+                "input_fields": [{
+                    "name": "text1",
+                    "type": 1
+                }],
+                "output_fields": [{
+                    "name": "return",
+                    "type": 1,
+                    "iterator": true
+                }]
+            }]
+        },
+        "user_id": "alfrick",
+        "model_type_id": "text-to-text",
+        "visibility": {
+            "gettable": 10
+        },
+        "metadata": {},
+        "presets": {},
+        "toolkits": [],
+        "use_cases": [],
+        "languages": [],
+        "languages_full": [],
+        "check_consents": [],
+        "workflow_recommended": false,
+        "featured_order": 0,
+        "deploy_restriction": 2,
+        "open_router_info": {
+            "params": {}
+        }
+    }]
+}

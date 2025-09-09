@@ -1,1 +1,1 @@
-clarifai deployment delete --nodepool_id <nodepool-id> --deployment_id <deployment-id>
+clarifai deployment delete NODEPOOL_ID DEPLOYMENT_ID

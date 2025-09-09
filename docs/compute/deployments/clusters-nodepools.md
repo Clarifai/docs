@@ -294,7 +294,7 @@ req_id: "sdk-python-11.7.5-1a5ceed7df3346dbb2451f2501f37f66"
 
 After creating it, initialize the `ComputeCluster` class by providing the `user_id` and `compute_cluster_id` parameters. 
 
-> Initialization is essential because it establishes the specific user and compute cluster context, which allows the subsequent operations to accurately target and manage the intended resources.
+> **Note:** Initialization is essential because it establishes the specific user and compute cluster context, which allows the subsequent operations to accurately target and manage the intended resources.
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
@@ -305,7 +305,7 @@ After creating it, initialize the `ComputeCluster` class by providing the `user_
 
 ### Create a Nodepool 
 
-To create a new nodepool, use the `create_nodepool` method with the `nodepool_id` and `config_filepath` parameters.
+To create a new nodepool within an already existing cluster, use the `create_nodepool` method with the `nodepool_id` and `config_filepath` parameters.
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
