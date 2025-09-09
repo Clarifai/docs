@@ -113,7 +113,7 @@ You can also find the deployment listed in the **Activity** tab within the model
 
 To deploy a model within a nodepool you've created, provide the `deployment_id` and `config_filepath` parameters to the `create_deployment` method of the `Nodepool` class.
 
-You can learn how to create the `deployment_config.yaml` file, which contains the deployment configuration details, [here](clusters-nodepools.md#set-up-project-directory).
+You can learn how to create the `deployment_config.yaml` file, which contains the deployment configuration details, [here](clusters-nodepools.md#3-deployment_configyaml).
 
 :::note
 
@@ -122,7 +122,7 @@ Each model or workflow can only have one deployment per nodepool.
 :::
 
 <Tabs groupId="code">
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO12}</CodeBlock>
 </TabItem>
 <TabItem value="bash" label="CLI">
@@ -130,10 +130,20 @@ Each model or workflow can only have one deployment per nodepool.
 </TabItem>
 </Tabs>
 
+<details>
+  <summary>Example Output</summary>
+  ```text
+[INFO] 14:45:29.871319 Deployment with ID 'test-deployment' is created:
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-11.7.5-1eb407b9e125478287d552fb76bc37dd"
+```
+</details>
+
 After creating it, initialize the `Deployment` class by providing the `user_id` and `deployment_id` parameters. 
 
 <Tabs groupId="code">
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO15}</CodeBlock>
 </TabItem>
 </Tabs>
