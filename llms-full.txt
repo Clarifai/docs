@@ -943,41 +943,97 @@ project-directory/               # Overarching project folder
 
 Then, add the following code snippets to their corresponding files in the `configs` folder. 
 
-**1.** `compute_cluster_config.yaml`:
+##### 1. `compute_cluster_config.yaml`
 
     {CO1}
 
-**2.** `nodepool_config.yaml`:
+- `compute_cluster` — Defines the top-level configuration for the compute cluster.
+- `compute_cluster.id` — A unique identifier for the cluster within the Clarifai workspace (here, named *test-compute-cluster*).
+- `compute_cluster.description` — A human-readable description of the cluster.
+- `compute_cluster.cloud_provider.id` — The cloud provider that will host the cluster. Clarifai supports a wide range of providers, such as `aws` and `gcp`.
+- `compute_cluster.region` — Geographic region for the resources. Must be a region supported by the selected provider. Choosing the right region reduces latency to your data and can affect cost.
+- `compute_cluster.managed_by` — Who is responsible for lifecycle management. `clarifai` means the platform will automatically handle patching, scaling, and health‑checks, rather than self-managed.
+- `compute_cluster.cluster_type` — Mode of operation. `dedicated` means the cluster’s compute resources are reserved exclusively for your workloads (not shared).
+- `compute_cluster.visibility.gettable` — A numeric permission level that defines who can see or access the cluster. `10` means it's visible privately. 
+  
+##### 2. `nodepool_config.yaml`
 
     {CO6}
 
-**3.** `deployment_config.yaml`:
+- `nodepool` — Defines the top-level configuration for the nodepool.
+- `nodepool.id` — A unique identifier for the nodepool within the workspace (here, named *test-nodepool*). 
+- `nodepool.compute_cluster.id` — The ID of the parent compute cluster that this nodepool belongs to. The cluster must already exist.
+- `nodepool.description` — A human-readable description of the nodepool.
+- `nodepool.instance_types` — A list that details the types of instances (virtual machines) that will make up this nodepool.
+- `nodepool.instance_types[0].id` — Specifies the type of instance to use; in this case, ["g5.2xlarge,"](https://docs.clarifai.com/compute/deployments/cloud-instances/#g5-instances) which is a type of GPU-optimized instance from AWS.
+- `nodepool.instance_types[0].compute_info` — A nested object that provides detailed specifications for the instance.
+- `nodepool.instance_types[0].compute_info.cpu_limit` — Number of virtual CPUs the instance provides. It's stored as a string (follows [Kubernetes notation](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/)), and the value must match the provider’s specification for the chosen type.
+- `nodepool.instance_types[0].compute_info.cpu_memory` — Amount of system memory (RAM) available to the node. The value can be expressed in gigabytes (Gi) or other supported memory units.
+- `nodepool.instance_types[0].compute_info.accelerator_type` — A list specifying the type of accelerator. In this case, it's an NVIDIA A10.
+- `nodepool.instance_types[0].compute_info.num_accelerators` — The number of accelerators (GPUs) per instance. 
+- `nodepool.instance_types[0].compute_info.accelerator_memory` — The memory of the accelerator. 
+- `nodepool.node_capacity_type.capacity_types` — A list of numerical values specifying allowed capacity modes for the nodepool. In this case, `1` correspond to "on-demand" instances (standard pricing) and `2` for "spot" instances (lower cost, but can be reclaimed).
+- `nodepool.min_instances` — The minimum number of instances that must run in the nodepool at any time. A value of `0` allows the pool to scale down to zero instances when idle.
+- `nodepool.max_instances` — The maximum number of instances the nodepool can scale to. A value of `0` disables the pool, while higher values (e.g., `10`) allow scaling out as demand increases.
 
-_We'll use this later to [deploy the model](deploy-model.md)._
+##### 3. `deployment_config.yaml`
+
+_We'll use this later to [deploy the model](deploy-model.md#via-the-api)._
 
     {CO11}
 
-### Create a Cluster 
-
-To create a new compute cluster, pass the `compute_cluster_id` and `config_filepath` as arguments to the `create_compute_cluster` method of the `User` class.
+- `deployment` — Defines the top-level deployment configuration, which specifies how a model runs in a compute environment.
+- `deployment.id` — A unique identifier for this deployment. (here, named *test-deployment*). 
+- `deployment.description` — A human-readable description of the deployment.
+- `deployment.autoscale_config` — This section dictates how the deployment will automatically adjust its resources based on demand.
+- `deployment.autoscale_config.min_replicas` — The minimum number of running replicas the deployment is allowed to have. Setting it to 0 means the service can shut down completely when there is no traffic, saving costs.
+- `deployment.autoscale_config.max_replicas` — The maximum number of concurrent replicas. Setting it to 1 means the deployment will never have more than one copy of the model running.
+- `deployment.autoscale_config.traffic_history_seconds` — Length of the sliding window (in seconds) that the autoscaler looks at to decide whether to scale up or down. A longer window smooths out spikes; a shorter window reacts faster.
+- `deployment.autoscale_config.scale_down_delay_seconds` — The waiting period (in seconds) before scaling down after low traffic. This prevents “thrashing” when traffic briefly dips.
+- `deployment.autoscale_config.scale_to_zero_delay_seconds` — The waiting period (in seconds) before scaling all the way down to zero replicas after traffic stops. It must be greater than or equal to `scale_down_delay_seconds` to ensure that normal scale-down events happen before the system completely shuts down idle workers.
+- `deployment.autoscale_config.scale_up_delay_seconds` —  The waiting period (in seconds) before scaling up after detecting higher demand. This gives the system a chance to see if the spike is sustained.
+- `deployment.autoscale_config.disable_packing` — Packing means placing multiple replicas on the same node when possible (to improve bin‑packing and reduce costs). `false` means packing is allowed (the default). Set to `true` if you want each replica on a dedicated node for isolation.
+- `deployment.worker` — This section specifies the core component of the deployment, which is the machine learning model itself.
+- `deployment.worker.model` — Specifies which model this deployment serves.
+- `deployment.worker.model.id` — The model ID.
+- `deployment.worker.model.model_version.id` — Refers to a specific version of the model.
+- `deployment.worker.model.user_id` — The model owner’s Clarifai user ID.
+- `deployment.worker.model.app_id` — The application (or project) under which the model lives.
+- `deployment.scheduling_choice` — An integer that maps to a pre‑defined scheduling policy. Typical mapping: 1 = Spread (maximise fault‑tolerance), 
 
     {CO2}
 
     {CL2}
 
+  Example Output
+  ```text
+[INFO] 22:41:42.362861 Compute Cluster with ID 'test-compute-cluster' is created:
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-11.7.5-1a5ceed7df3346dbb2451f2501f37f66"
+```
+
 After creating it, initialize the `ComputeCluster` class by providing the `user_id` and `compute_cluster_id` parameters. 
 
-> Initialization is essential because it establishes the specific user and compute cluster context, which allows the subsequent operations to accurately target and manage the intended resources.
+> **Note:** Initialization is essential because it establishes the specific user and compute cluster context, which allows the subsequent operations to accurately target and manage the intended resources.
 
     {CO5}
 
 ### Create a Nodepool 
 
-To create a new nodepool, use the `create_nodepool` method with the `nodepool_id` and `config_filepath` parameters.
+To create a new nodepool within an already existing cluster, use the `create_nodepool` method with the `nodepool_id` and `config_filepath` parameters.
 
     {CO7}
 
     {CL3}
+
+  Example Output
+    ```text
+    [INFO] 23:09:07.978155 Nodepool with ID 'test-nodepool' is created:
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-11.7.5-99ad19030249400cabd9be8ade0df602"
+    ```
 
 After creating it, initialize the `Nodepool` class by providing the `user_id` and `nodepool_id` parameters. 
 
@@ -1010,6 +1066,8 @@ import CodeBlock from "@theme/CodeBlock";
 import CO12 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/create_deployment.py";
 import CL4 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/cli_create_deployment.sh";
 import CO15 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/init_deployment.py";
+import CURLRestrictDeployment from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/restrict_deployment.sh";
+import OutputCURLRestrictDeployment from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/output_restrict_deployment.txt";
 
 ## **Via the UI**
 
@@ -1073,7 +1131,7 @@ You can also configure advanced deployment settings if needed. If you choose not
 - **Scale Down Delay** — This sets the waiting period (in seconds) before reducing resources after a demand decrease. Note that your nodepool will only scale down to the minimum number of replica(s) configured.
 - **Scale To Zero Delay** — This sets the idle time (in seconds) before scaling down to zero replicas after inactivity.
 - **Traffic History Timeframe** — This defines the traffic history period (in seconds) that your deployment will review before making scaling decisions.
-- **Disable Nodepool Packing** — Enabling this option restricts deployments to a single model replica per node. While this can be useful for specific performance needs, it may lead to underutilized nodes and increased costs due to reduced resource efficiency.
+- **Disable Nodepool Packing** — Packing refers to placing multiple replicas on the same node to improve resource utilization and reduce costs. When set to `false` (default), replicas may be packed together for efficiency. When set to `true`, deployments are restricted to a single model replica per node, which can improve isolation or meet specific performance needs, but may result in underutilized nodes and higher costs.
    
 
 ### Step 6: Finalize and Create the Deployment
@@ -1090,7 +1148,7 @@ You can also find the deployment listed in the **Activity** tab within the model
 
 To deploy a model within a nodepool you've created, provide the `deployment_id` and `config_filepath` parameters to the `create_deployment` method of the `Nodepool` class.
 
-You can learn how to create the `deployment_config.yaml` file, which contains the deployment configuration details, [here](clusters-nodepools.md#set-up-project-directory).
+You can learn how to create the `deployment_config.yaml` file, which contains the deployment configuration details, [here](clusters-nodepools.md#3-deployment_configyaml).
 
 :::note
 
@@ -1102,9 +1160,33 @@ Each model or workflow can only have one deployment per nodepool.
 
     {CL4}
 
+  Example Output
+  ```text
+[INFO] 14:45:29.871319 Deployment with ID 'test-deployment' is created:
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-11.7.5-1eb407b9e125478287d552fb76bc37dd"
+```
+
 After creating it, initialize the `Deployment` class by providing the `user_id` and `deployment_id` parameters. 
 
     {CO15}
+
+### Restrict Deployments
+
+You can specify the type of compute cluster an existing model you own is deployed to. By setting the `deploy_restriction` value, you can patch a model and define whether it runs on shared or dedicated resources.
+
+These are the values you can set:
+
+- `0` (`USAGE_RESTRICTION_NOT_SET`) — The default where no explicit restriction is set.
+- `1` (`NO_LIMITS`) — The model can be deployed on any kind of compute (shared or dedicated). There are no policy constraints.
+- `2` (`SHARED_COMPUTE_ONLY`) — The model can only run on shared compute resources. This is typically cheaper but may have lower isolation or performance guarantees.
+- `3` (`DEDICATED_COMPUTE_ONLY`) — The model can only run on dedicated compute resources. This is used when you need guaranteed performance, security isolation, or compliance.
+
+       {CURLRestrictDeployment}
+
+  Example Output
+    {OutputCURLRestrictDeployment}
 
 ---
 
@@ -1257,80 +1339,198 @@ import CL7 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestr
 import CL8 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/cli_delete_cluster.sh";
 import CL9 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/cli_delete_nodepool.sh";
 import CL10 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/cli_delete_deployment.sh";
+import GetDeploymentOutput from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/get_deployment_output.txt";
+
+:::note tip
+
+A Personal Access Token (PAT) authenticates your connection to the Clarifai platform, including CLI sessions. Set the token as an environment variable [as explained previously](clusters-nodepools.md#get-a-pat).
+
+:::
 
 ### Clusters
 
 #### Get a Cluster
 
-To get a specific compute cluster, pass the `compute_cluster_id` to the `compute_cluster` method of the `User` class.
+To get the details of your compute cluster, pass the `compute_cluster_id` to the `compute_cluster` method of the `User` class.
 
     {CO3}
 
+  Example Output
+  ```text
+Clarifai Compute Cluster Details: 
+description=My AWS compute cluster, cloud_provider=id: "aws"
+name: "AWS"
+, region=us-east-1, created_at=seconds: 1757331634
+nanos: 59523000
+, modified_at=seconds: 1757331634
+nanos: 59523000
+, visibility=gettable: PRIVATE
+, cluster_type=dedicated, managed_by=clarifai, key=id: "****"
+, id=test-compute-cluster, user_id=alfrick
+```
+
 #### List All Clusters
 
-To list your existing compute clusters, call the `list_compute_clusters` method of the `User` class.
+To list all your existing compute clusters, call the `list_compute_clusters` method of the `User` class.
 
     {CO4}
 
     {CL5}
 
+  Example Output
+  ```text
+Available Compute Clusters:
+- ID: advanced-cluster-ebus, Description: , Region: us-east-1
+- ID: test-compute-cluster, Description: My AWS compute cluster, Region: us-east-1
+```
+
 ### Nodepools
 
 #### Get a Nodepool
 
-To get a specific nodepool, provide the `nodepool_id` to the `nodepool` method of the `ComputeCluster` class.
+To get the details of your nodepool, provide the `nodepool_id` to the `nodepool` method of the `ComputeCluster` class.
 
     {CO8}
 
+  Example Output
+  ```text
+Nodepool Details: 
+description=First nodepool in AWS in a proper compute cluster, created_at=seconds: 1757331678
+nanos: 990816000
+, modified_at=seconds: 1757331678
+nanos: 990816000
+, compute_cluster=id: "test-compute-cluster"
+description: "My AWS compute cluster"
+cloud_provider {
+  id: "aws"
+  name: "AWS"
+}
+region: "us-east-1"
+user_id: "alfrick"
+created_at {
+  seconds: 1757331634
+  nanos: 59523000
+}
+modified_at {
+  seconds: 1757331634
+  nanos: 59523000
+}
+visibility {
+  gettable: PRIVATE
+}
+cluster_type: "dedicated"
+managed_by: "clarifai"
+key {
+  id: "****"
+}
+, node_capacity_type=capacity_types: ON_DEMAND_TYPE
+, instance_types=[id: "g5.2xlarge"
+description: "g5.2xlarge"
+compute_info {
+  cpu_memory: "29033Mi"
+  num_accelerators: 1
+  accelerator_memory: "23028Mi"
+  accelerator_type: "NVIDIA-A10G"
+  cpu_limit: "7525m"
+}
+price: "42.000000"
+cloud_provider {
+  id: "aws"
+  name: "aws"
+}
+region: "us-east-1"
+], max_instances=1, visibility=gettable: PRIVATE
+, enforced_max_instances=1, id=test-nodepool
+```
+
 #### List All Nodepools
 
-To list the existing nodepools, call the `list_nodepools` method of the `ComputeCluster` class.
+To list all the existing nodepools in your cluster, call the `list_nodepools` method of the `ComputeCluster` class.
 
     {CO9}
 
     {CL6}
 
+  Example Output
+  ```text
+Available Nodepools:
+- ID: test-nodepool, Description: First nodepool in AWS in a proper compute cluster, Min Instances: 0, Max Instances: 1
+```
+
 ### Deployments
 
 #### Get a Deployment
 
-To get a specific deployment, provide the `deployment_id` to the `deployment` method of the `Nodepool` class.
+To get the details of your deployment, provide the `deployment_id` to the `deployment` method of the `Nodepool` class.
 
     {CO13}
 
+  Example Output
+    {GetDeploymentOutput}
+
 #### List All Deployments
 
-To list existing deployments, call the `list_deployments` method of the `Nodepool` class.
+To list all the existing deployments in your nodepool, call the `list_deployments` method of the `Nodepool` class.
 
     {CO14}
 
     {CL7}
 
+  Example Output
+  ```text
+Available Deployments:
+- ID: test-deployment, Description: some random deployment, Min Replicas: 0, Max Replicas: 5
+```
+
 ### Delete Resources
 
 #### Delete Deployments
 
-To delete deployments, pass a list of deployment IDs to the `delete_deployments` method of the `Nodepool` class. 
+To delete your deployments, pass a list of deployment IDs to the `delete_deployments` method of the `Nodepool` class. 
 
     {CO16}
 
     {CL10}
 
+  Example Output
+  ```text
+Deployments Deleted
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-11.7.5-a08b6c5f21674916ba5791df8eae5dd8"
+```
+
 #### Delete Nodepools
 
-To delete nodepools, provide a list of nodepool IDs to the `delete_nodepools` method of the `ComputeCluster` class. 
+To delete your nodepools, provide a list of nodepool IDs to the `delete_nodepools` method of the `ComputeCluster` class. 
 
     {CO17}
 
     {CL9}
 
+  Example Output
+  ```text
+Nodepools Deleted
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-11.7.5-d69f92a0263b41719b51083f44d6ed43"
+```
+
 #### Delete Compute Clusters
 
-To delete compute clusters, provide a list of compute cluster IDs to the `delete_compute_clusters` method of the `User` class.
+To delete your compute clusters, provide a list of compute cluster IDs to the `delete_compute_clusters` method of the `User` class.
 
     {CO18}
 
     {CL8}
+
+  Example Output
+  ```text
+Compute Cluster Deleted
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-11.7.5-dc2a5ef7b8824ed0999dad18b5594a12"
+```
 
 ---
 
@@ -27933,6 +28133,12 @@ We have a public roadmap that gives you a view of our upcoming plans and helps u
 | :---: | :---: | :---: | :---: |
 | ![new-feature](/img/new_feature.jpg) |![improvement](/img/improvement.jpg) | ![bug](/img/bug.jpg) | ![enterprise](/img/enterprise.jpg) |
 
+## Unified Navigation Experience
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+|![improvement](/img/improvement.jpg)| Made unified navigation enhancements |  We’ve moved the main navigation elements into the collapsible left sidebar. This streamlines the UI, frees up valuable screen real estate, and delivers a discoverable navigation experience across the entire platform.    |
+
 ## Billing 
 
 |Status                                |Change                  |Details                    |
@@ -32863,7 +33069,7 @@ The `clarifai login` command is used to authenticate and configure your connecti
 
 :::note Authentication Precedence
 
-Authentication follows a defined order of precedence. If you hardcode variables (such as `CLARIFAI_PAT`) directly in your code, they take priority. If you set them in your terminal as environment variables without hardcoding them in your code, those values take the precedence. Otherwise, if no relevant environment variables are provided, the CLI falls back to using the credentials and settings defined in the [active context](#clarifai-config).
+Authentication follows a defined order of precedence. If you set values (such as `CLARIFAI_PAT`) as environment variables in your terminal, these take priority and are used first. If no relevant environment variables are found, the CLI falls back to the credentials and settings defined in the [active context](#clarifai-config). **For security best practices, we recommend using environment variables instead of hardcoding credentials directly in your code.**
 
 Here is an example of setting PAT as an environment variable: 
 
