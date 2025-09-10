@@ -1,13 +1,12 @@
 from clarifai.client.user import User
-import os
 
-# Set the PAT key
-os.environ["CLARIFAI_PAT"] = "YOUR_PAT_HERE" 
+# Set PAT as an environment variable
+#   export CLARIFAI_PAT=YOUR_PAT_HERE # Unix-Like Systems
+#   set CLARIFAI_PAT=YOUR_PAT_HERE  # Windows
 
 # Initialize the client
 client = User(
-    user_id="YOUR_USER_ID_HERE",
-    base_url="https://api.clarifai.com"
+    user_id="YOUR_USER_ID_HERE"   
 )
 
 # Create a new compute cluster

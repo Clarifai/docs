@@ -1,0 +1,383 @@
+Deployment Details: 
+autoscale_config=max_replicas: 5
+traffic_history_seconds: 300
+scale_down_delay_seconds: 300
+scale_up_delay_seconds: 300
+scale_to_zero_delay_seconds: 1800
+, nodepools=[id: "test-nodepool"
+description: "First nodepool in AWS in a proper compute cluster"
+created_at {
+  seconds: 1757331678
+  nanos: 990816000
+}
+modified_at {
+  seconds: 1757331678
+  nanos: 990816000
+}
+compute_cluster {
+  id: "test-compute-cluster"
+  description: "My AWS compute cluster"
+  cloud_provider {
+    id: "aws"
+    name: "AWS"
+  }
+  region: "us-east-1"
+  user_id: "alfrick"
+  created_at {
+    seconds: 1757331634
+    nanos: 59523000
+  }
+  modified_at {
+    seconds: 1757331634
+    nanos: 59523000
+  }
+  visibility {
+    gettable: PRIVATE
+  }
+  cluster_type: "dedicated"
+  managed_by: "clarifai"
+  key {
+    id: "****"
+  }
+}
+node_capacity_type {
+  capacity_types: ON_DEMAND_TYPE
+}
+instance_types {
+  id: "g5.2xlarge"
+  description: "g5.2xlarge"
+  compute_info {
+    cpu_memory: "29033Mi"
+    num_accelerators: 1
+    accelerator_memory: "23028Mi"
+    accelerator_type: "NVIDIA-A10G"
+    cpu_limit: "7525m"
+  }
+  price: "42.000000"
+  cloud_provider {
+    id: "aws"
+    name: "aws"
+  }
+  region: "us-east-1"
+}
+max_instances: 1
+visibility {
+  gettable: PRIVATE
+}
+enforced_max_instances: 1
+], scheduling_choice=4, visibility=gettable: PRIVATE
+, description=some random deployment, worker=model {
+  id: "Llama-3_2-3B-Instruct"
+  name: "Llama-3_2-3B-Instruct"
+  created_at {
+    seconds: 1741889414
+    nanos: 819619000
+  }
+  app_id: "Llama-3"
+  model_version {
+    id: "fe271b43266a45a5b068766b6437687f"
+    created_at {
+      seconds: 1748538551
+      nanos: 64876000
+    }
+    status {
+      code: MODEL_TRAINED
+      description: "Model is trained and ready for deployment"
+    }
+    completed_at {
+      seconds: 1748538558
+      nanos: 456045000
+    }
+    visibility {
+      gettable: PUBLIC
+    }
+    app_id: "Llama-3"
+    user_id: "meta"
+    inference_compute_info {
+      cpu_memory: "14Gi"
+      num_accelerators: 1
+      accelerator_memory: "21Gi"
+      accelerator_type: "NVIDIA-A10G"
+      accelerator_type: "NVIDIA-L40S"
+      accelerator_type: "NVIDIA-A100"
+      accelerator_type: "NVIDIA-H100"
+      cpu_limit: "3"
+    }
+    method_signatures {
+      name: "predict"
+      method_type: UNARY_UNARY
+      description: "Method to call from UI\n    "
+      input_fields {
+        name: "prompt"
+        type: STR
+        default: "\"\""
+      }
+      input_fields {
+        name: "images"
+        type: LIST
+        type_args {
+          name: "images_item"
+          type: IMAGE
+        }
+        default: "[]"
+      }
+      input_fields {
+        name: "audios"
+        type: LIST
+        type_args {
+          name: "audios_item"
+          type: AUDIO
+        }
+        default: "[]"
+      }
+      input_fields {
+        name: "videos"
+        type: LIST
+        type_args {
+          name: "videos_item"
+          type: VIDEO
+        }
+        default: "[]"
+      }
+      input_fields {
+        name: "chat_history"
+        type: LIST
+        type_args {
+          name: "chat_history_item"
+          type: JSON_DATA
+        }
+        default: "[]"
+      }
+      input_fields {
+        name: "audio"
+        type: AUDIO
+        default: "null"
+      }
+      input_fields {
+        name: "video"
+        type: VIDEO
+        default: "null"
+      }
+      input_fields {
+        name: "image"
+        type: IMAGE
+        default: "null"
+      }
+      input_fields {
+        name: "tools"
+        type: LIST
+        type_args {
+          name: "tools_item"
+          type: JSON_DATA
+        }
+        default: "null"
+      }
+      input_fields {
+        name: "tool_choice"
+        type: STR
+        default: "null"
+      }
+      input_fields {
+        description: "The system-level prompt used to define the assistant\'s behavior."
+        name: "system_prompt"
+        type: STR
+        default: "\"\""
+        is_param: true
+      }
+      input_fields {
+        description: "The maximum number of tokens to generate. Shorter token lengths will provide faster performance."
+        name: "max_tokens"
+        type: INT
+        default: "512"
+        is_param: true
+      }
+      input_fields {
+        description: "A decimal number that determines the degree of randomness in the response."
+        name: "temperature"
+        type: FLOAT
+        default: "0.7"
+        is_param: true
+      }
+      input_fields {
+        description: "An alternative to sampling with temperature, where the model considers the results of the tokens with top_p probability mass."
+        name: "top_p"
+        type: FLOAT
+        default: "0.9"
+        is_param: true
+      }
+      output_fields {
+        name: "return"
+        type: STR
+      }
+    }
+    method_signatures {
+      name: "generate"
+      method_type: UNARY_STREAMING
+      description: "Method to call generate from UI\n    "
+      input_fields {
+        name: "prompt"
+        type: STR
+        default: "\"\""
+      }
+      input_fields {
+        name: "images"
+        type: LIST
+        type_args {
+          name: "images_item"
+          type: IMAGE
+        }
+        default: "[]"
+      }
+      input_fields {
+        name: "audios"
+        type: LIST
+        type_args {
+          name: "audios_item"
+          type: AUDIO
+        }
+        default: "[]"
+      }
+      input_fields {
+        name: "videos"
+        type: LIST
+        type_args {
+          name: "videos_item"
+          type: VIDEO
+        }
+        default: "[]"
+      }
+      input_fields {
+        name: "chat_history"
+        type: LIST
+        type_args {
+          name: "chat_history_item"
+          type: JSON_DATA
+        }
+        default: "[]"
+      }
+      input_fields {
+        name: "audio"
+        type: AUDIO
+        default: "null"
+      }
+      input_fields {
+        name: "video"
+        type: VIDEO
+        default: "null"
+      }
+      input_fields {
+        name: "image"
+        type: IMAGE
+        default: "null"
+      }
+      input_fields {
+        name: "tools"
+        type: LIST
+        type_args {
+          name: "tools_item"
+          type: JSON_DATA
+        }
+        default: "null"
+      }
+      input_fields {
+        name: "tool_choice"
+        type: STR
+        default: "null"
+      }
+      input_fields {
+        description: "The system-level prompt used to define the assistant\'s behavior."
+        name: "system_prompt"
+        type: STR
+        default: "\"\""
+        is_param: true
+      }
+      input_fields {
+        description: "The maximum number of tokens to generate. Shorter token lengths will provide faster performance."
+        name: "max_tokens"
+        type: INT
+        default: "512"
+        is_param: true
+      }
+      input_fields {
+        description: "A decimal number that determines the degree of randomness in the response."
+        name: "temperature"
+        type: FLOAT
+        default: "0.7"
+        is_param: true
+      }
+      input_fields {
+        description: "An alternative to sampling with temperature, where the model considers the results of the tokens with top_p probability mass."
+        name: "top_p"
+        type: FLOAT
+        default: "0.9"
+        is_param: true
+      }
+      output_fields {
+        name: "return"
+        type: STR
+        iterator: true
+      }
+    }
+    method_signatures {
+      name: "openai_transport"
+      method_type: UNARY_UNARY
+      description: "The single model method to get the OpenAI-compatible request and send it to the OpenAI server\n  then return its response.\n\nArgs:\n    msg: JSON string containing the request parameters\n\nReturns:\n    JSON string containing the response or error"
+      input_fields {
+        required: true
+        name: "msg"
+        type: STR
+      }
+      output_fields {
+        name: "return"
+        type: STR
+      }
+    }
+    method_signatures {
+      name: "openai_stream_transport"
+      method_type: UNARY_STREAMING
+      description: "Process an OpenAI-compatible request and return a streaming response iterator.\nThis method is used when stream=True and returns an iterator of strings directly,\nwithout converting to a list or JSON serializing.\n\nArgs:\n    msg: The request as a JSON string.\n\nReturns:\n    Iterator[str]: An iterator yielding text chunks from the streaming response."
+      input_fields {
+        required: true
+        name: "msg"
+        type: STR
+      }
+      output_fields {
+        name: "return"
+        type: STR
+        iterator: true
+      }
+    }
+  }
+  user_id: "meta"
+  model_type_id: "text-to-text"
+  visibility {
+    gettable: PUBLIC
+  }
+  description: "Llama 3.2 (3B) is a multilingual, instruction-tuned LLM by Meta, optimized for dialogue, retrieval, and summarization. It uses an autoregressive transformer with SFT and RLHF for improved alignment and outperforms many industry models."
+  modified_at {
+    seconds: 1751896217
+    nanos: 890327000
+  }
+  workflow_recommended {
+    value: true
+  }
+  image {
+    url: "https://data.clarifai.com/large/users/meta/apps/Llama-3/input_owners/phatvo/inputs/image/7b9fe837fdb9ed1272b35c98ef3b6245"
+    hosted {
+      prefix: "https://data.clarifai.com"
+      suffix: "users/meta/apps/Llama-3/input_owners/phatvo/inputs/image/7b9fe837fdb9ed1272b35c98ef3b6245"
+      sizes: "large"
+      sizes: "small"
+      crossorigin: "use-credentials"
+    }
+  }
+  billing_type: Tokens
+  featured_order {
+    value: 9950
+  }
+}
+, created_at=seconds: 1757331930
+nanos: 95906000
+, modified_at=seconds: 1757331930
+nanos: 95906000
+, id=test-deployment, user_id=alfrick

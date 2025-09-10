@@ -1,1 +1,1 @@
-clarifai nodepool create --config <nodepool-config-filepath>
+clarifai nodepool create COMPUTE_CLUSTER_ID NODEPOOL_ID --config NODEPOOL-CONFIG-FILEPATH

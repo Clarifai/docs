@@ -157,13 +157,20 @@ import CL7 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestr
 import CL8 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/cli_delete_cluster.sh";
 import CL9 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/cli_delete_nodepool.sh";
 import CL10 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/cli_delete_deployment.sh";
+import GetDeploymentOutput from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/get_deployment_output.txt";
 
+
+:::note tip
+
+A Personal Access Token (PAT) authenticates your connection to the Clarifai platform, including CLI sessions. Set the token as an environment variable [as explained previously](clusters-nodepools.md#get-a-pat).
+
+:::
 
 ### Clusters
 
 #### Get a Cluster
 
-To get a specific compute cluster, pass the `compute_cluster_id` to the `compute_cluster` method of the `User` class.
+To get the details of your compute cluster, pass the `compute_cluster_id` to the `compute_cluster` method of the `User` class.
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python">
@@ -171,10 +178,25 @@ To get a specific compute cluster, pass the `compute_cluster_id` to the `compute
 </TabItem>
 </Tabs>
 
+<details>
+  <summary>Example Output</summary>
+  ```text
+Clarifai Compute Cluster Details: 
+description=My AWS compute cluster, cloud_provider=id: "aws"
+name: "AWS"
+, region=us-east-1, created_at=seconds: 1757331634
+nanos: 59523000
+, modified_at=seconds: 1757331634
+nanos: 59523000
+, visibility=gettable: PRIVATE
+, cluster_type=dedicated, managed_by=clarifai, key=id: "****"
+, id=test-compute-cluster, user_id=alfrick
+```
+</details>
 
 #### List All Clusters
 
-To list your existing compute clusters, call the `list_compute_clusters` method of the `User` class.
+To list all your existing compute clusters, call the `list_compute_clusters` method of the `User` class.
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python">
@@ -185,11 +207,20 @@ To list your existing compute clusters, call the `list_compute_clusters` method 
 </TabItem>
 </Tabs>
 
+<details>
+  <summary>Example Output</summary>
+  ```text
+Available Compute Clusters:
+- ID: advanced-cluster-ebus, Description: , Region: us-east-1
+- ID: test-compute-cluster, Description: My AWS compute cluster, Region: us-east-1
+```
+</details>
+
 ### Nodepools
 
 #### Get a Nodepool
 
-To get a specific nodepool, provide the `nodepool_id` to the `nodepool` method of the `ComputeCluster` class.
+To get the details of your nodepool, provide the `nodepool_id` to the `nodepool` method of the `ComputeCluster` class.
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python">
@@ -197,10 +228,62 @@ To get a specific nodepool, provide the `nodepool_id` to the `nodepool` method o
 </TabItem>
 </Tabs>
 
+<details>
+  <summary>Example Output</summary>
+  ```text
+Nodepool Details: 
+description=First nodepool in AWS in a proper compute cluster, created_at=seconds: 1757331678
+nanos: 990816000
+, modified_at=seconds: 1757331678
+nanos: 990816000
+, compute_cluster=id: "test-compute-cluster"
+description: "My AWS compute cluster"
+cloud_provider {
+  id: "aws"
+  name: "AWS"
+}
+region: "us-east-1"
+user_id: "alfrick"
+created_at {
+  seconds: 1757331634
+  nanos: 59523000
+}
+modified_at {
+  seconds: 1757331634
+  nanos: 59523000
+}
+visibility {
+  gettable: PRIVATE
+}
+cluster_type: "dedicated"
+managed_by: "clarifai"
+key {
+  id: "****"
+}
+, node_capacity_type=capacity_types: ON_DEMAND_TYPE
+, instance_types=[id: "g5.2xlarge"
+description: "g5.2xlarge"
+compute_info {
+  cpu_memory: "29033Mi"
+  num_accelerators: 1
+  accelerator_memory: "23028Mi"
+  accelerator_type: "NVIDIA-A10G"
+  cpu_limit: "7525m"
+}
+price: "42.000000"
+cloud_provider {
+  id: "aws"
+  name: "aws"
+}
+region: "us-east-1"
+], max_instances=1, visibility=gettable: PRIVATE
+, enforced_max_instances=1, id=test-nodepool
+```
+</details>
 
 #### List All Nodepools
 
-To list the existing nodepools, call the `list_nodepools` method of the `ComputeCluster` class.
+To list all the existing nodepools in your cluster, call the `list_nodepools` method of the `ComputeCluster` class.
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python">
@@ -211,11 +294,19 @@ To list the existing nodepools, call the `list_nodepools` method of the `Compute
 </TabItem>
 </Tabs>
 
+<details>
+  <summary>Example Output</summary>
+  ```text
+Available Nodepools:
+- ID: test-nodepool, Description: First nodepool in AWS in a proper compute cluster, Min Instances: 0, Max Instances: 1
+```
+</details>
+
 ### Deployments
 
 #### Get a Deployment
 
-To get a specific deployment, provide the `deployment_id` to the `deployment` method of the `Nodepool` class.
+To get the details of your deployment, provide the `deployment_id` to the `deployment` method of the `Nodepool` class.
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python">
@@ -223,10 +314,14 @@ To get a specific deployment, provide the `deployment_id` to the `deployment` me
 </TabItem>
 </Tabs>
 
+<details>
+  <summary>Example Output</summary>
+    <CodeBlock className="language-python">{GetDeploymentOutput}</CodeBlock>
+</details>
 
 #### List All Deployments
 
-To list existing deployments, call the `list_deployments` method of the `Nodepool` class.
+To list all the existing deployments in your nodepool, call the `list_deployments` method of the `Nodepool` class.
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python">
@@ -237,12 +332,20 @@ To list existing deployments, call the `list_deployments` method of the `Nodepoo
 </TabItem>
 </Tabs>
 
+<details>
+  <summary>Example Output</summary>
+  ```text
+Available Deployments:
+- ID: test-deployment, Description: some random deployment, Min Replicas: 0, Max Replicas: 5
+```
+</details>
+
 
 ### Delete Resources
 
 #### Delete Deployments
 
-To delete deployments, pass a list of deployment IDs to the `delete_deployments` method of the `Nodepool` class. 
+To delete your deployments, pass a list of deployment IDs to the `delete_deployments` method of the `Nodepool` class. 
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python">
@@ -253,9 +356,19 @@ To delete deployments, pass a list of deployment IDs to the `delete_deployments`
 </TabItem>
 </Tabs>
 
+<details>
+  <summary>Example Output</summary>
+  ```text
+Deployments Deleted
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-11.7.5-a08b6c5f21674916ba5791df8eae5dd8"
+```
+</details>
+
 #### Delete Nodepools
 
-To delete nodepools, provide a list of nodepool IDs to the `delete_nodepools` method of the `ComputeCluster` class. 
+To delete your nodepools, provide a list of nodepool IDs to the `delete_nodepools` method of the `ComputeCluster` class. 
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python">
@@ -266,9 +379,19 @@ To delete nodepools, provide a list of nodepool IDs to the `delete_nodepools` me
 </TabItem>
 </Tabs>
 
+<details>
+  <summary>Example Output</summary>
+  ```text
+Nodepools Deleted
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-11.7.5-d69f92a0263b41719b51083f44d6ed43"
+```
+</details>
+
 #### Delete Compute Clusters
 
-To delete compute clusters, provide a list of compute cluster IDs to the `delete_compute_clusters` method of the `User` class.
+To delete your compute clusters, provide a list of compute cluster IDs to the `delete_compute_clusters` method of the `User` class.
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python">
@@ -279,3 +402,12 @@ To delete compute clusters, provide a list of compute cluster IDs to the `delete
 </TabItem>
 </Tabs>
 
+<details>
+  <summary>Example Output</summary>
+  ```text
+Compute Cluster Deleted
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-11.7.5-dc2a5ef7b8824ed0999dad18b5594a12"
+```
+</details>

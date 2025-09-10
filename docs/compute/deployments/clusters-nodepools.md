@@ -1,7 +1,7 @@
 ---
 description: Set up capabilities that match your computational needs
 sidebar_position: 1
-toc_max_heading_level: 4
+toc_max_heading_level: 5
 ---
 
 # Create Clusters and Nodepools
@@ -196,7 +196,7 @@ project-directory/               # Overarching project folder
 
 Then, add the following code snippets to their corresponding files in the `configs` folder. 
 
-**1.** `compute_cluster_config.yaml`:
+##### 1. `compute_cluster_config.yaml`
 
 <Tabs groupId="code">
 <TabItem value="yaml" label="YAML">
@@ -204,7 +204,16 @@ Then, add the following code snippets to their corresponding files in the `confi
 </TabItem>
 </Tabs>
 
-**2.** `nodepool_config.yaml`:
+- `compute_cluster` — Defines the top-level configuration for the compute cluster.
+- `compute_cluster.id` — A unique identifier for the cluster within the Clarifai workspace (here, named *test-compute-cluster*).
+- `compute_cluster.description` — A human-readable description of the cluster.
+- `compute_cluster.cloud_provider.id` — The cloud provider that will host the cluster. Clarifai supports a wide range of providers, such as `aws` and `gcp`.
+- `compute_cluster.region` — Geographic region for the resources. Must be a region supported by the selected provider. Choosing the right region reduces latency to your data and can affect cost.
+- `compute_cluster.managed_by` — Who is responsible for lifecycle management. `clarifai` means the platform will automatically handle patching, scaling, and health‑checks, rather than self-managed.
+- `compute_cluster.cluster_type` — Mode of operation. `dedicated` means the cluster’s compute resources are reserved exclusively for your workloads (not shared).
+- `compute_cluster.visibility.gettable` — A numeric permission level that defines who can see or access the cluster. `10` means it's visible privately. 
+  
+##### 2. `nodepool_config.yaml`
 
 <Tabs groupId="code">
 <TabItem value="yaml" label="YAML">
@@ -212,9 +221,25 @@ Then, add the following code snippets to their corresponding files in the `confi
 </TabItem>
 </Tabs>
 
-**3.** `deployment_config.yaml`:
+- `nodepool` — Defines the top-level configuration for the nodepool.
+- `nodepool.id` — A unique identifier for the nodepool within the workspace (here, named *test-nodepool*). 
+- `nodepool.compute_cluster.id` — The ID of the parent compute cluster that this nodepool belongs to. The cluster must already exist.
+- `nodepool.description` — A human-readable description of the nodepool.
+- `nodepool.instance_types` — A list that details the types of instances (virtual machines) that will make up this nodepool.
+- `nodepool.instance_types[0].id` — Specifies the type of instance to use; in this case, ["g5.2xlarge,"](https://docs.clarifai.com/compute/deployments/cloud-instances/#g5-instances) which is a type of GPU-optimized instance from AWS.
+- `nodepool.instance_types[0].compute_info` — A nested object that provides detailed specifications for the instance.
+- `nodepool.instance_types[0].compute_info.cpu_limit` — Number of virtual CPUs the instance provides. It's stored as a string (follows [Kubernetes notation](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/)), and the value must match the provider’s specification for the chosen type.
+- `nodepool.instance_types[0].compute_info.cpu_memory` — Amount of system memory (RAM) available to the node. The value can be expressed in gigabytes (Gi) or other supported memory units.
+- `nodepool.instance_types[0].compute_info.accelerator_type` — A list specifying the type of accelerator. In this case, it's an NVIDIA A10.
+- `nodepool.instance_types[0].compute_info.num_accelerators` — The number of accelerators (GPUs) per instance. 
+- `nodepool.instance_types[0].compute_info.accelerator_memory` — The memory of the accelerator. 
+- `nodepool.node_capacity_type.capacity_types` — A list of numerical values specifying allowed capacity modes for the nodepool. In this case, `1` correspond to "on-demand" instances (standard pricing) and `2` for "spot" instances (lower cost, but can be reclaimed).
+- `nodepool.min_instances` — The minimum number of instances that must run in the nodepool at any time. A value of `0` allows the pool to scale down to zero instances when idle.
+- `nodepool.max_instances` — The maximum number of instances the nodepool can scale to. A value of `0` disables the pool, while higher values (e.g., `10`) allow scaling out as demand increases.
 
-_We'll use this later to [deploy the model](deploy-model.md)._
+##### 3. `deployment_config.yaml`
+
+_We'll use this later to [deploy the model](deploy-model.md#via-the-api)._
 
 <Tabs groupId="code">
 <TabItem value="yaml" label="YAML">
@@ -222,12 +247,34 @@ _We'll use this later to [deploy the model](deploy-model.md)._
 </TabItem>
 </Tabs>
 
+- `deployment` — Defines the top-level deployment configuration, which specifies how a model runs in a compute environment.
+- `deployment.id` — A unique identifier for this deployment. (here, named *test-deployment*). 
+- `deployment.description` — A human-readable description of the deployment.
+- `deployment.autoscale_config` — This section dictates how the deployment will automatically adjust its resources based on demand.
+- `deployment.autoscale_config.min_replicas` — The minimum number of running replicas the deployment is allowed to have. Setting it to 0 means the service can shut down completely when there is no traffic, saving costs.
+- `deployment.autoscale_config.max_replicas` — The maximum number of concurrent replicas. Setting it to 1 means the deployment will never have more than one copy of the model running.
+- `deployment.autoscale_config.traffic_history_seconds` — Length of the sliding window (in seconds) that the autoscaler looks at to decide whether to scale up or down. A longer window smooths out spikes; a shorter window reacts faster.
+- `deployment.autoscale_config.scale_down_delay_seconds` — The waiting period (in seconds) before scaling down after low traffic. This prevents “thrashing” when traffic briefly dips.
+- `deployment.autoscale_config.scale_to_zero_delay_seconds` — The waiting period (in seconds) before scaling all the way down to zero replicas after traffic stops. It must be greater than or equal to `scale_down_delay_seconds` to ensure that normal scale-down events happen before the system completely shuts down idle workers.
+- `deployment.autoscale_config.scale_up_delay_seconds` —  The waiting period (in seconds) before scaling up after detecting higher demand. This gives the system a chance to see if the spike is sustained.
+- `deployment.autoscale_config.disable_packing` — Packing means placing multiple replicas on the same node when possible (to improve bin‑packing and reduce costs). `false` means packing is allowed (the default). Set to `true` if you want each replica on a dedicated node for isolation.
+- `deployment.worker` — This section specifies the core component of the deployment, which is the machine learning model itself.
+- `deployment.worker.model` — Specifies which model this deployment serves.
+- `deployment.worker.model.id` — The model ID.
+- `deployment.worker.model.model_version.id` — Refers to a specific version of the model.
+- `deployment.worker.model.user_id` — The model owner’s Clarifai user ID.
+- `deployment.worker.model.app_id` — The application (or project) under which the model lives.
+- `deployment.scheduling_choice` — An integer that maps to a pre‑defined scheduling policy. Typical mapping: 1 = Spread (maximise fault‑tolerance), < 2 = Pack, < 3 = Spot‑first, 4 = Hybrid (prefer on‑demand, fall back to spot), etc.
+- `deployment.nodepools` — Lists the nodepools where the deployment’s workers can run.
+- `deployment.nodepools[0].id` — Refers to the specific nodepool where the deployment will be hosted.
+- `deployment.nodepools[0].compute_cluster.id` — Ensures this deployment is tied to the right, parent compute cluster.
+
 ### Create a Cluster 
 
 To create a new compute cluster, pass the `compute_cluster_id` and `config_filepath` as arguments to the `create_compute_cluster` method of the `User` class.
 
 <Tabs groupId="code">
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO2}</CodeBlock>
 </TabItem>
 <TabItem value="bash" label="CLI">
@@ -235,12 +282,22 @@ To create a new compute cluster, pass the `compute_cluster_id` and `config_filep
 </TabItem>
 </Tabs>
 
+<details>
+  <summary>Example Output</summary>
+  ```text
+[INFO] 22:41:42.362861 Compute Cluster with ID 'test-compute-cluster' is created:
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-11.7.5-1a5ceed7df3346dbb2451f2501f37f66"
+```
+</details>
+
 After creating it, initialize the `ComputeCluster` class by providing the `user_id` and `compute_cluster_id` parameters. 
 
-> Initialization is essential because it establishes the specific user and compute cluster context, which allows the subsequent operations to accurately target and manage the intended resources.
+> **Note:** Initialization is essential because it establishes the specific user and compute cluster context, which allows the subsequent operations to accurately target and manage the intended resources.
 
 <Tabs groupId="code">
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO5}</CodeBlock>
 </TabItem>
 </Tabs>
@@ -248,10 +305,10 @@ After creating it, initialize the `ComputeCluster` class by providing the `user_
 
 ### Create a Nodepool 
 
-To create a new nodepool, use the `create_nodepool` method with the `nodepool_id` and `config_filepath` parameters.
+To create a new nodepool within an already existing cluster, use the `create_nodepool` method with the `nodepool_id` and `config_filepath` parameters.
 
 <Tabs groupId="code">
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO7}</CodeBlock>
 </TabItem>
 <TabItem value="bash" label="CLI">
@@ -259,11 +316,20 @@ To create a new nodepool, use the `create_nodepool` method with the `nodepool_id
 </TabItem>
 </Tabs>
 
+<details>
+  <summary>Example Output</summary>
+    ```text
+    [INFO] 23:09:07.978155 Nodepool with ID 'test-nodepool' is created:
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-11.7.5-99ad19030249400cabd9be8ade0df602"
+    ```
+</details>
 
 After creating it, initialize the `Nodepool` class by providing the `user_id` and `nodepool_id` parameters. 
 
 <Tabs groupId="code">
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO10}</CodeBlock>
 </TabItem>
 </Tabs>

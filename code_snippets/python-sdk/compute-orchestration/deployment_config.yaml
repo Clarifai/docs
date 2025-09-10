@@ -3,18 +3,19 @@ deployment:
  description: "some random deployment"
  autoscale_config:
    min_replicas: 0
-   max_replicas: 1
-   traffic_history_seconds: 100
-   scale_down_delay_seconds: 30
-   scale_up_delay_seconds: 30
+   max_replicas: 5
+   traffic_history_seconds: 300
+   scale_down_delay_seconds: 300
+   scale_to_zero_delay_seconds: 1800
+   scale_up_delay_seconds: 300
    disable_packing: false
  worker:
    model:
-     id: "apparel-clusterering"
+     id: "Llama-3_2-3B-Instruct"
      model_version:
-       id: "cc911f6b0ed748efb89e3d1359c146c4"
-     user_id: "clarifai"
-     app_id: "main"
+       id: "fe271b43266a45a5b068766b6437687f"
+     user_id: "meta"
+     app_id: "Llama-3"
  scheduling_choice: 4
  nodepools:
    - id: "test-nodepool"

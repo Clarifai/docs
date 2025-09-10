@@ -29,6 +29,8 @@ import CodeBlock from "@theme/CodeBlock";
 import CO12 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/create_deployment.py";
 import CL4 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/cli_create_deployment.sh";
 import CO15 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/init_deployment.py";
+import CURLRestrictDeployment from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/restrict_deployment.sh";
+import OutputCURLRestrictDeployment from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/output_restrict_deployment.txt";
 
 
 ## **Via the UI**
@@ -96,7 +98,7 @@ You can also configure advanced deployment settings if needed. If you choose not
 - **Scale Down Delay** — This sets the waiting period (in seconds) before reducing resources after a demand decrease. Note that your nodepool will only scale down to the minimum number of replica(s) configured.
 - **Scale To Zero Delay** — This sets the idle time (in seconds) before scaling down to zero replicas after inactivity.
 - **Traffic History Timeframe** — This defines the traffic history period (in seconds) that your deployment will review before making scaling decisions.
-- **Disable Nodepool Packing** — Enabling this option restricts deployments to a single model replica per node. While this can be useful for specific performance needs, it may lead to underutilized nodes and increased costs due to reduced resource efficiency.
+- **Disable Nodepool Packing** — Packing refers to placing multiple replicas on the same node to improve resource utilization and reduce costs. When set to `false` (default), replicas may be packed together for efficiency. When set to `true`, deployments are restricted to a single model replica per node, which can improve isolation or meet specific performance needs, but may result in underutilized nodes and higher costs.
    
 
 ### Step 6: Finalize and Create the Deployment
@@ -113,7 +115,7 @@ You can also find the deployment listed in the **Activity** tab within the model
 
 To deploy a model within a nodepool you've created, provide the `deployment_id` and `config_filepath` parameters to the `create_deployment` method of the `Nodepool` class.
 
-You can learn how to create the `deployment_config.yaml` file, which contains the deployment configuration details, [here](clusters-nodepools.md#set-up-project-directory).
+You can learn how to create the `deployment_config.yaml` file, which contains the deployment configuration details, [here](clusters-nodepools.md#3-deployment_configyaml).
 
 :::note
 
@@ -122,7 +124,7 @@ Each model or workflow can only have one deployment per nodepool.
 :::
 
 <Tabs groupId="code">
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO12}</CodeBlock>
 </TabItem>
 <TabItem value="bash" label="CLI">
@@ -130,11 +132,42 @@ Each model or workflow can only have one deployment per nodepool.
 </TabItem>
 </Tabs>
 
+<details>
+  <summary>Example Output</summary>
+  ```text
+[INFO] 14:45:29.871319 Deployment with ID 'test-deployment' is created:
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-11.7.5-1eb407b9e125478287d552fb76bc37dd"
+```
+</details>
+
 After creating it, initialize the `Deployment` class by providing the `user_id` and `deployment_id` parameters. 
 
 <Tabs groupId="code">
-<TabItem value="python" label="Python">
+<TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO15}</CodeBlock>
 </TabItem>
 </Tabs>
 
+### Restrict Deployments
+
+You can specify the type of compute cluster an existing model you own is deployed to. By setting the `deploy_restriction` value, you can patch a model and define whether it runs on shared or dedicated resources.
+
+These are the values you can set:
+
+- `0` (`USAGE_RESTRICTION_NOT_SET`) — The default where no explicit restriction is set.
+- `1` (`NO_LIMITS`) — The model can be deployed on any kind of compute (shared or dedicated). There are no policy constraints.
+- `2` (`SHARED_COMPUTE_ONLY`) — The model can only run on shared compute resources. This is typically cheaper but may have lower isolation or performance guarantees.
+- `3` (`DEDICATED_COMPUTE_ONLY`) — The model can only run on dedicated compute resources. This is used when you need guaranteed performance, security isolation, or compliance.
+
+<Tabs groupId="code">
+<TabItem value="curl" label="cURL">
+       <CodeBlock className="language-python">{CURLRestrictDeployment}</CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+  <summary>Example Output</summary>
+    <CodeBlock className="language-python">{OutputCURLRestrictDeployment}</CodeBlock>
+</details>
