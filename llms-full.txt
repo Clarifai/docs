@@ -24248,13 +24248,13 @@ Start by [logging in to](https://clarifai.com/login) your Clarifai account, or [
 
 ## Step 2: Get a Model
 
-Clarifai’s [platform](https://clarifai.com/home) offers a wide selection of cutting-edge models ready for integration into your AI projects.
+The Clarifai’s [platform](https://clarifai.com/home) offers a wide selection of cutting-edge models ready for integration into your AI projects.
 
-You can easily find a model to use by visiting the homepage and exploring the **Trending AI Models** section, which highlights popular and ready-to-use models.
+To quickly find a model, open the collapsible left sidebar and select the **Home** option. On the homepage, explore the **Trending AI Models** section, where you’ll find popular and ready-to-use models highlighted for easy access.
 
 After finding a model, click the **DEPLOY THE MODEL** button in the bottom right corner of its information card.
 
-For this example, we'll use the Llama-3_2-3B-Instruct model.
+For this example, we'll use the [Llama-3_2-3B-Instruct](https://clarifai.com/meta/Llama-3/models/Llama-3_2-3B-Instruct) model.
 
 ![](/img/new-docs/deploy-1.png)
 
@@ -24277,7 +24277,7 @@ If you prefer more control and want to deploy the model using an existing [clust
 
 Then, click the **Deploy** button. 
 
-A notification will appear at the top of the page confirming that a cluster and nodepool have been successfully created using the pre-configured settings, and the model has been deployed within this infrastructure.
+A toast notification will appear at the top of the page confirming that a cluster and nodepool have been successfully created using the pre-configured settings, and the model has been deployed within this infrastructure.
 
 You’ll then be automatically redirected to the newly created nodepool page, where you can view your compute settings and the deployed model.
 
@@ -24289,6 +24289,8 @@ To make a prediction using your deployed model, start by navigating to its indiv
 
 Next, on the deployed model’s page, click the **Open in Playground** button in the upper-right corner.
 
+> **Note:** On the model’s individual page, open the **Compute** tab to view details of the compute environment where it’s deployed.
+
 ![](/img/new-docs/deploy-4.png)
 
 You’ll be taken to the [Playground](https://docs.clarifai.com/getting-started/quickstart-playground) interface, where you can enter your prompt in the message box to run inferences using your deployed model. You can also try one of the predefined prompt examples.
@@ -24298,8 +24300,6 @@ You’ll be taken to the [Playground](https://docs.clarifai.com/getting-started/
 Next, submit your request by clicking the arrow icon in the message box or pressing Enter on your keyboard.
 
 The response will be streamed directly on the interface, allowing you to view the output in real time.
-
-> **Note:** If you submit a request and don't receive a response right away, the model may still be loading. Wait a few seconds, then try sending your request again.
 
 ---
 
@@ -24323,13 +24323,13 @@ Start by [logging in to](https://clarifai.com/login) your existing Clarifai acco
 
 Clarifai’s [Community platform](https://clarifai.com/explore) offers a wide range of the latest models that you can test and integrate into your AI projects.
 
-You can easily find a model to use by heading to the Community homepage and exploring the **Trending Models** section, which showcases popular and ready-to-use options.
+You can easily find a model to use by heading to the Community platform and exploring the **Trending Models** section, which showcases popular and ready-to-use options.
 
 After finding a model, click the **TEST IN PLAYGROUND** button in the bottom right corner of its information card. 
 
 For this example, we'll use the [gpt-oss-120b](https://clarifai.com/openai/chat-completion/models/gpt-oss-120b) model.
 
-> _Alternatively, you can select the **Playground** option in the top navigation bar._
+> **Alternatively:** You can select the **Playground** option in the collapsible left sidebar.
 
 ![](/img/new-docs/playground-2.png)
 
@@ -24337,11 +24337,11 @@ For this example, we'll use the [gpt-oss-120b](https://clarifai.com/openai/chat-
 
 You'll be taken to the AI Playground interface. 
 
-> _Alternatively, in the upper-left section of the Playground, you can choose the model you'd like to use for inference._
+> **Alternatively:** In the upper-left section of the Playground, you can choose the model you'd like to use for inference.
 
 In the message box at the bottom of the Playground, enter your desired prompt to generate text with the selected model. You can also use any of the provided predefined prompt examples. 
 
-**Note:** If your chosen model supports image or video inputs as prompts, you can also upload them directly into the interface.
+> **Note:** If your chosen model supports image or video inputs as prompts, you can also upload them directly into the interface.
 
 Then, submit your request by clicking the arrow icon in the message box or pressing Enter on your keyboard.
 
@@ -24349,7 +24349,7 @@ Then, submit your request by clicking the arrow icon in the message box or press
 
 The results will be streamed directly on the interface, allowing you to see the output in real time. 
 
-**Note:** Since we support streaming capabilities, you can interact with language models as they generate responses token by token — just like in a live chat experience.
+> **Note:** Since we support streaming capabilities, you can interact with language models as they generate responses token by token — just like in a live chat experience.
 
 :::tip
 
@@ -24503,7 +24503,7 @@ Start by [logging in to](https://clarifai.com/login) your existing Clarifai acco
 Navigate to the **Set Up Compute** section and choose your preferred compute settings. You can access the section in any of the following ways:
 
 - From the platform's [homepage](https://clarifai.com/home), go to the **Set Up Compute** section.
-- From an individual model's page, go to the **Activity** tab and scroll to the **Set Up Compute** section at the bottom.
+- From an individual model's page, such as for [Llama-3_2-3B-Instruct](https://clarifai.com/meta/Llama-3/models/Llama-3_2-3B-Instruct?tab=compute), go to the **Compute** tab and scroll to the **Set Up Compute** section at the bottom. 
 
 ![](/img/new-docs/deploy-9.png)
 
@@ -24530,7 +24530,9 @@ Once your compute cluster and nodepool are set up, you can [deploy a model](http
 
 To deploy a model, you can use the pop-up window to search for the model you want. Simply enter the model name in the search field and select it. 
 
-Then, click **Deploy Model** to begin the deployment process.
+For this example, we'll select the Llama-3_2-3B-Instruct model.
+
+Then, click **Deploy model** to begin the deployment process.
 
 ![](/img/new-docs/deploy-6.png)
 
