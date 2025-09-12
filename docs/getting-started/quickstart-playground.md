@@ -9,7 +9,7 @@ sidebar_position: 2
 <hr />
 
 <div style={{ "position":"relative","width": "100%","overflow": "hidden","padding-top": "56.25%"}}>
-<iframe width="900" height="500" style={{"position": "absolute","top": "0","left": "0","bottom": "0","right": "0","width": "100%","height": "100%",}} src="https://www.youtube.com/embed/8oWjmB3Bmqk" title="How to Use a Model on the Clarifai Platform (Playground or API)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="900" height="500" style={{"position": "absolute","top": "0","left": "0","bottom": "0","right": "0","width": "100%","height": "100%",}} src="https://www.youtube.com/embed/H3WWyczCxGo" title="Try out GPT-OSS-120B" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
 <br/><br/>
@@ -29,15 +29,13 @@ Start by [logging in to](https://clarifai.com/login) your existing Clarifai acco
 
 Clarifai’s [Community platform](https://clarifai.com/explore) offers a wide range of the latest models that you can test and integrate into your AI projects.
 
-You can easily find a model to use by heading to the Community homepage and exploring the **Trending Models** section, which showcases popular and ready-to-use options.
+You can easily find a model to use by heading to the Community platform and exploring the **Trending Models** section, which showcases popular and ready-to-use options.
 
 After finding a model, click the **TEST IN PLAYGROUND** button in the bottom right corner of its information card. 
 
 For this example, we'll use the [gpt-oss-120b](https://clarifai.com/openai/chat-completion/models/gpt-oss-120b) model.
 
-> _Alternatively, you can select the **Playground** option in the top navigation bar._
-
-<br/>
+> **Alternatively:** You can select the **Playground** option in the collapsible left sidebar.
 
 ![](/img/new-docs/playground-2.png)
 
@@ -45,11 +43,11 @@ For this example, we'll use the [gpt-oss-120b](https://clarifai.com/openai/chat-
 
 You'll be taken to the AI Playground interface. 
 
-> _Alternatively, in the upper-left section of the Playground, you can choose the model you'd like to use for inference._
+> **Alternatively:** In the upper-left section of the Playground, you can choose the model you'd like to use for inference.
 
 In the message box at the bottom of the Playground, enter your desired prompt to generate text with the selected model. You can also use any of the provided predefined prompt examples. 
 
-**Note:** If your chosen model supports image or video inputs as prompts, you can also upload them directly into the interface.
+> **Note:** If your chosen model supports image or video inputs as prompts, you can also upload them directly into the interface.
 
 Then, submit your request by clicking the arrow icon in the message box or pressing Enter on your keyboard.
 
@@ -57,7 +55,7 @@ Then, submit your request by clicking the arrow icon in the message box or press
 
 The results will be streamed directly on the interface, allowing you to see the output in real time. 
 
-**Note:** Since we support streaming capabilities, you can interact with language models as they generate responses token by token — just like in a live chat experience.
+> **Note:** Since we support streaming capabilities, you can interact with language models as they generate responses token by token — just like in a live chat experience.
 
 :::tip
 
