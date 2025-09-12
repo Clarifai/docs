@@ -24,13 +24,13 @@ Start by [logging in to](https://clarifai.com/login) your Clarifai account, or [
 
 ## Step 2: Get a Model
 
-Clarifai’s [platform](https://clarifai.com/home) offers a wide selection of cutting-edge models ready for integration into your AI projects.
+The Clarifai’s [platform](https://clarifai.com/home) offers a wide selection of cutting-edge models ready for integration into your AI projects.
 
-You can easily find a model to use by visiting the homepage and exploring the **Trending AI Models** section, which highlights popular and ready-to-use models.
+To quickly find a model, open the collapsible left sidebar and select the **Home** option. On the homepage, explore the **Trending AI Models** section, where you’ll find popular and ready-to-use models highlighted for easy access.
 
 After finding a model, click the **DEPLOY THE MODEL** button in the bottom right corner of its information card.
 
-For this example, we'll use the Llama-3_2-3B-Instruct model.
+For this example, we'll use the [Llama-3_2-3B-Instruct](https://clarifai.com/meta/Llama-3/models/Llama-3_2-3B-Instruct) model.
 
 ![](/img/new-docs/deploy-1.png)
 
@@ -53,7 +53,7 @@ If you prefer more control and want to deploy the model using an existing [clust
 
 Then, click the **Deploy** button. 
 
-A notification will appear at the top of the page confirming that a cluster and nodepool have been successfully created using the pre-configured settings, and the model has been deployed within this infrastructure.
+A toast notification will appear at the top of the page confirming that a cluster and nodepool have been successfully created using the pre-configured settings, and the model has been deployed within this infrastructure.
 
 You’ll then be automatically redirected to the newly created nodepool page, where you can view your compute settings and the deployed model.
 
@@ -65,6 +65,8 @@ To make a prediction using your deployed model, start by navigating to its indiv
 
 Next, on the deployed model’s page, click the **Open in Playground** button in the upper-right corner.
 
+> **Note:** On the model’s individual page, open the **Compute** tab to view details of the compute environment where it’s deployed.
+
 ![](/img/new-docs/deploy-4.png)
 
 You’ll be taken to the [Playground](https://docs.clarifai.com/getting-started/quickstart-playground) interface, where you can enter your prompt in the message box to run inferences using your deployed model. You can also try one of the predefined prompt examples.
@@ -74,7 +76,5 @@ You’ll be taken to the [Playground](https://docs.clarifai.com/getting-started/
 Next, submit your request by clicking the arrow icon in the message box or pressing Enter on your keyboard.
 
 The response will be streamed directly on the interface, allowing you to view the output in real time.
-
-> **Note:** If you submit a request and don't receive a response right away, the model may still be loading. Wait a few seconds, then try sending your request again.
 
 

@@ -25,7 +25,7 @@ Start by [logging in to](https://clarifai.com/login) your existing Clarifai acco
 Navigate to the **Set Up Compute** section and choose your preferred compute settings. You can access the section in any of the following ways:
 
 - From the platform's [homepage](https://clarifai.com/home), go to the **Set Up Compute** section.
-- From an individual model's page, go to the **Activity** tab and scroll to the **Set Up Compute** section at the bottom.
+- From an individual model's page, such as for [Llama-3_2-3B-Instruct](https://clarifai.com/meta/Llama-3/models/Llama-3_2-3B-Instruct?tab=compute), go to the **Compute** tab and scroll to the **Set Up Compute** section at the bottom. 
 
 ![](/img/new-docs/deploy-9.png)
 
@@ -52,7 +52,9 @@ Once your compute cluster and nodepool are set up, you can [deploy a model](http
 
 To deploy a model, you can use the pop-up window to search for the model you want. Simply enter the model name in the search field and select it. 
 
-Then, click **Deploy Model** to begin the deployment process.
+For this example, we'll select the Llama-3_2-3B-Instruct model.
+
+Then, click **Deploy model** to begin the deployment process.
 
 ![](/img/new-docs/deploy-6.png)
 
