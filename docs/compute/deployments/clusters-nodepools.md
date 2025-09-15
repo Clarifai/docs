@@ -115,7 +115,7 @@ Fill out the form to specify the details for your cluster and nodepool.
 - **Nodepool ID** — Enter a unique identifier for your nodepool. This ID is used when deploying models and should reflect the nodepool’s purpose or workload. It is auto-filled based on your selected instance type, but you can modify it as needed.
 - **Nodepool Description** — Optionally, provide a short description that summarizes the details related to the nodepool. 
 - **Personal Access Token (PAT)** — Use a [PAT](https://docs.clarifai.com/control/authentication/pat) to authenticate your identity when connecting to the cluster. Click the dropdown to choose from existing tokens, or create a new one by selecting **Create a new Personal Access Token** or by visiting the **Security** section in your personal settings.
-    > **Note:** The token must have the required permissions to manage compute resources. If the selected PAT is deleted, any associated compute functionality will stop working.
+    > **Note:** The token must have the required permissions to manage compute resources. Also, if the selected PAT is deleted, any associated compute functionality will stop working.
 
 ### Step 6: Finalize and Create the Cluster
 

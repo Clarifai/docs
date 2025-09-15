@@ -74,7 +74,7 @@ A quick-access tooltip will appear, showing the autoscaling configuration for th
 
 :::note Alternatively
 
-You can view a model’s deployment details by navigating to its individual page, selecting the **Activity** tab, and reviewing the **Active Deployments** section. You can find information about the compute environments where the model is currently running. 
+You can view a model’s deployment details by navigating to its individual page, selecting the **Compute** tab, and reviewing the **Active Deployments** section. You can find information about the compute environments where the model is currently running. 
 
 ![](/img/compute-orchestration/compute-26-1.png)
 
@@ -94,9 +94,9 @@ You'll be redirected to a page where you can modify the [configurations for your
 
 :::note Alternatively
 
-You can perform various nodepool management tasks from the cluster viewer page. In the **Nodepools** table, locate the nodepool you want to manage, then click the three-dot menu at the end of the row.
+You can perform various nodepool management tasks from the nodepools listing page. In the table, locate the nodepool you want to manage, then click the three-dot menu at the end of the row.
 
-The pop-up that appears provides options to edit the nodepool, deploy a model to it, copy its ID, or delete the nodepool.
+The pop-up that appears provides options to copy its ID, deploy a model to it, edit the nodepool, or delete the nodepool.
 
 ![ ](/img/compute-orchestration/compute-17.png)
 
@@ -135,6 +135,15 @@ To complete the deletion, enter the name of the cluster in the provided field, t
 
 ![ ](/img/compute-orchestration/compute-6.png)
 
+:::note Alternatively
+
+You can perform various cluster management tasks from the clusters listing page. In the table, locate the cluster you want to manage, then click the three-dot menu at the end of the row.
+
+The pop-up that appears provides options to add a new nodepool, copy its ID, or delete the cluster.
+
+![ ](/img/compute-orchestration/compute-6-3.png)
+
+:::
 
 ## **Via the API**
 
@@ -158,7 +167,14 @@ import CL8 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestr
 import CL9 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/cli_delete_nodepool.sh";
 import CL10 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/cli_delete_deployment.sh";
 import GetDeploymentOutput from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/get_deployment_output.txt";
-
+import CurlList1 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_list_1.sh";
+import CurlList2 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_list_2.sh";
+import CurlList3 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_list_3.sh";
+import CurlList4 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_list_4.sh";
+import CurlOutput1 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_output_1.txt";
+import CurlOutput2 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_output_2.txt";
+import CurlOutput3 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_output_3.txt";
+import CurlOutput4 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_output_4.txt";
 
 :::note tip
 
@@ -410,4 +426,65 @@ code: SUCCESS
 description: "Ok"
 req_id: "sdk-python-11.7.5-dc2a5ef7b8824ed0999dad18b5594a12"
 ```
+</details>
+
+
+### List Cloud Providers
+
+You can retrieve the available cloud providers to use when creating clusters and nodepools.
+
+<Tabs groupId="code">
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlList1}</CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+  <summary>Example Output</summary>
+    <CodeBlock className="language-text">{CurlOutput1}</CodeBlock>
+</details>
+
+### List Regions
+
+You can retrieve the geographic regions supported by a cloud provider.
+
+<Tabs groupId="code">
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlList2}</CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+  <summary>Example Output</summary>
+    <CodeBlock className="language-text">{CurlOutput2}</CodeBlock>
+</details>
+
+### List Instance Types 
+
+You can retrieve the instance types a cloud provider offers in a given region
+
+<Tabs groupId="code">
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlList3}</CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+  <summary>Example Output</summary>
+    <CodeBlock className="language-text">{CurlOutput3}</CodeBlock>
+</details>
+
+### List All Instance Types
+
+You can retrieve all instance types offered by all cloud providers across their supported regions.
+
+<Tabs groupId="code">
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlList4}</CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+  <summary>Example Output</summary>
+    <CodeBlock className="language-text">{CurlOutput4}</CodeBlock>
 </details>

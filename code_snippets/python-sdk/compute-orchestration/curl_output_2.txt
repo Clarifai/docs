@@ -1,0 +1,8 @@
+{
+    "status": {
+        "code": 10000,
+        "description": "Ok",
+        "req_id": "03c7a7a98a0f4e18a8a5818faf8e0a7c"
+    },
+    "regions": ["us-east-1"]
+}
