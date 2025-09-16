@@ -1,11 +1,11 @@
-import os
 from clarifai.client import Model
 
-# Or, you can set the PAT as an environment variable instead of hardcoding it
-os.environ["CLARIFAI_PAT"] = "YOUR_PAT_HERE"
+# Set PAT as an environment variable
+#   export CLARIFAI_PAT=YOUR_PAT_HERE # Unix-Like Systems
+#   set CLARIFAI_PAT=YOUR_PAT_HERE  # Windows
 
 # Initialize with model URL
-model = Model(url="https://clarifai.com/qwen/qwenLM/models/Qwen3-30B-A3B-GGUF")
+model = Model(url="https://clarifai.com/openai/chat-completion/models/gpt-oss-120b")
 
 response = model.predict(prompt="What is the future of AI?")
 
