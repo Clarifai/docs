@@ -1,0 +1,200 @@
+{
+    "status": {
+        "code": 10000,
+        "description": "Ok",
+        "req_id": "1b7713b74b3643fda13d83802cd4036d"
+    },
+    "instance_types": [{
+        "id": "t3a.medium",
+        "description": "t3a.medium",
+        "compute_info": {
+            "cpu_limit": "1545m",
+            "cpu_memory": "2962Mi"
+        },
+        "price": "2.000000",
+        "cloud_provider": {
+            "id": "aws",
+            "name": "aws"
+        },
+        "region": "us-east-1",
+        "feature_flag_group": "ComputeResourceSmall"
+    }, {
+        "id": "t3a.large",
+        "description": "t3a.large",
+        "compute_info": {
+            "cpu_limit": "1545m",
+            "cpu_memory": "6553Mi"
+        },
+        "price": "3.000000",
+        "cloud_provider": {
+            "id": "aws",
+            "name": "aws"
+        },
+        "region": "us-east-1",
+        "feature_flag_group": "ComputeResourceSmall"
+    }, {
+        "id": "t3a.xlarge",
+        "description": "t3a.xlarge",
+        "compute_info": {
+            "cpu_limit": "3535m",
+            "cpu_memory": "13878Mi"
+        },
+        "price": "5.000000",
+        "cloud_provider": {
+            "id": "aws",
+            "name": "aws"
+        },
+        "region": "us-east-1",
+        "feature_flag_group": "ComputeResourceSmall"
+    }, {
+        "id": "t3a.2xlarge",
+        "description": "t3a.2xlarge",
+        "compute_info": {
+            "cpu_limit": "7525m",
+            "cpu_memory": "29033Mi"
+        },
+        "price": "10.000000",
+        "cloud_provider": {
+            "id": "aws",
+            "name": "aws"
+        },
+        "region": "us-east-1",
+        "feature_flag_group": "ComputeResourceSmall"
+    }, {
+        "id": "g4dn.xlarge",
+        "description": "g4dn.xlarge",
+        "compute_info": {
+            "cpu_limit": "3535m",
+            "cpu_memory": "14197Mi",
+            "num_accelerators": 1,
+            "accelerator_memory": "15360Mi",
+            "accelerator_type": ["NVIDIA-T4"]
+        },
+        "price": "18.000000",
+        "cloud_provider": {
+            "id": "aws",
+            "name": "aws"
+        },
+        "region": "us-east-1",
+        "feature_flag_group": "ComputeResourceSmall"
+    }, {
+        "id": "g5.xlarge",
+        "description": "g5.xlarge",
+        "compute_info": {
+            "cpu_limit": "3535m",
+            "cpu_memory": "13878Mi",
+            "num_accelerators": 1,
+            "accelerator_memory": "23028Mi",
+            "accelerator_type": ["NVIDIA-A10G"]
+        },
+        "price": "35.000000",
+        "cloud_provider": {
+            "id": "aws",
+            "name": "aws"
+        },
+        "region": "us-east-1",
+        "feature_flag_group": "ComputeResourceSmall"
+    }, {
+        "id": "g5.2xlarge",
+        "description": "g5.2xlarge",
+        "compute_info": {
+            "cpu_limit": "7525m",
+            "cpu_memory": "29033Mi",
+            "num_accelerators": 1,
+            "accelerator_memory": "23028Mi",
+            "accelerator_type": ["NVIDIA-A10G"]
+        },
+        "price": "42.000000",
+        "cloud_provider": {
+            "id": "aws",
+            "name": "aws"
+        },
+        "region": "us-east-1",
+        "feature_flag_group": "ComputeResourceSmall"
+    }, {
+        "id": "g6.xlarge",
+        "description": "g6.xlarge",
+        "compute_info": {
+            "cpu_limit": "3535m",
+            "cpu_memory": "13878Mi",
+            "num_accelerators": 1,
+            "accelerator_memory": "23034Mi",
+            "accelerator_type": ["NVIDIA-L4"]
+        },
+        "price": "28.000000",
+        "cloud_provider": {
+            "id": "aws",
+            "name": "aws"
+        },
+        "region": "us-east-1",
+        "feature_flag_group": "ComputeResourceSmall"
+    }, {
+        "id": "g6.2xlarge",
+        "description": "g6.2xlarge",
+        "compute_info": {
+            "cpu_limit": "7525m",
+            "cpu_memory": "29033Mi",
+            "num_accelerators": 1,
+            "accelerator_memory": "23034Mi",
+            "accelerator_type": ["NVIDIA-L4"]
+        },
+        "price": "34.000000",
+        "cloud_provider": {
+            "id": "aws",
+            "name": "aws"
+        },
+        "region": "us-east-1",
+        "feature_flag_group": "ComputeResourceSmall"
+    }, {
+        "id": "g6e.xlarge",
+        "description": "g6e.xlarge",
+        "compute_info": {
+            "cpu_limit": "3535m",
+            "cpu_memory": "29033Mi",
+            "num_accelerators": 1,
+            "accelerator_memory": "46068Mi",
+            "accelerator_type": ["NVIDIA-L40S"]
+        },
+        "price": "65.000000",
+        "cloud_provider": {
+            "id": "aws",
+            "name": "aws"
+        },
+        "region": "us-east-1",
+        "feature_flag_group": "ComputeResourceMedium"
+    }, {
+        "id": "g6e.2xlarge",
+        "description": "g6e.2xlarge",
+        "compute_info": {
+            "cpu_limit": "7525m",
+            "cpu_memory": "59343Mi",
+            "num_accelerators": 1,
+            "accelerator_memory": "46068Mi",
+            "accelerator_type": ["NVIDIA-L40S"]
+        },
+        "price": "78.000000",
+        "cloud_provider": {
+            "id": "aws",
+            "name": "aws"
+        },
+        "region": "us-east-1",
+        "feature_flag_group": "ComputeResourceMedium"
+    }, {
+        "id": "g6e.12xlarge",
+        "description": "g6e.12xlarge",
+        "compute_info": {
+            "cpu_limit": "47425m",
+            "cpu_memory": "359873Mi",
+            "num_accelerators": 4,
+            "accelerator_memory": "46068Mi",
+            "accelerator_type": ["NVIDIA-L40S"]
+        },
+        "price": "364.000000",
+        "cloud_provider": {
+            "id": "aws",
+            "name": "aws"
+        },
+        "region": "us-east-1",
+        "feature_flag_group": "ComputeResourceLarge"
+    }]
+}

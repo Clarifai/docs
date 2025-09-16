@@ -43,16 +43,20 @@ Each model or workflow can only have one deployment per nodepool.
 
 ### Step 1: Start Creating a Deployment
 
-To create a deployment, navigate to the model’s page and click the **Deploy Model** button.
+To create a deployment, go to the model’s page and click the **Deploy Model** button.
 
-You can also open the **Activity** tab to check if the model is already running on any compute environments. This tab displays the compute requirements needed for successfully deploying the model, allowing you to choose a nodepool that meets those requirements.
+> **Note:** You can also open the **Compute** tab to check if the model is already running on any compute environments. This tab displays the compute requirements needed for successfully deploying the model, allowing you to choose a nodepool that meets those requirements.
 
 ![ ](/img/compute-orchestration/compute-12.png)
 
 
-> _Alternatively, to create a deployment, go to the specific cluster or nodepool where you want the deployment to run, then click the **Deploy Model** button on that page._
+:::note Alternatively
+
+To create a deployment, go to the specific cluster or nodepool where you want the deployment to run, then click the **Deploy Model** button on that page.
  
-> _![ ](/img/compute-orchestration/compute-11.png)_
+![ ](/img/compute-orchestration/compute-11.png)
+
+:::
 
 ### Step 2: Select a Model
 
@@ -68,7 +72,7 @@ The model’s compute requirements will also be displayed, helping you select a 
 
 Choose an existing cluster and nodepool — or create new ones — based on your model’s compute requirements and performance goals. 
 
-Once selected, the details of the chosen cluster and nodepool will be displayed for your review.
+Once selected, the details of the chosen cluster and nodepool will be displayed for your review. You'll also be notified if the nodepool is compatible with the selected model. 
 
 ![ ](/img/compute-orchestration/compute-14.png)
 
@@ -105,9 +109,9 @@ You can also configure advanced deployment settings if needed. If you choose not
 
 After completing the setup, click the **Deploy Model** button to create the deployment. You’ll be redirected to the nodepool page, where your deployed model will be listed.
 
-You can also find the deployment listed in the **Activity** tab within the model's page. From there, you can select it to run [inferences](https://docs.clarifai.com/compute/models/model-inference).
-
 ![ ](/img/compute-orchestration/compute-14-1.png)
+
+After creating the deployment, you can use it to run [inferences](https://docs.clarifai.com/compute/inference/clarifai/ui). 
 
 ## **Via the API**
 

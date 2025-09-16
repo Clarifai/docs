@@ -1,0 +1,23 @@
+{
+    "status": {
+        "code": 10000,
+        "description": "Ok",
+        "req_id": "4fc1ee4bd6a74215b363f30d28db4732"
+    },
+    "cloud_providers": [{
+        "id": "aws",
+        "name": "aws"
+    }, {
+        "id": "gcp",
+        "name": "gcp"
+    }, {
+        "id": "azure",
+        "name": "azure"
+    }, {
+        "id": "vultr",
+        "name": "vultr"
+    }, {
+        "id": "oracle",
+        "name": "oracle"
+    }]
+}

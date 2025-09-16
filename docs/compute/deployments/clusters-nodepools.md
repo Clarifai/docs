@@ -27,9 +27,9 @@ You can connect your existing AWS, Google Cloud (GCP), or Oracle infrastructure 
 
 ### Step 1: Start Creating a Cluster
 
-Log in to the Clarifai platform and select the **Compute** option in the top navigation bar.  
+Log in to the Clarifai platform and select the **Compute** option in the collapsible left sidebar.  
 
-You’ll be redirected to the Compute Orchestration page, where you can view and create clusters, nodepools, and deployments. 
+You’ll be redirected to the Compute Overview page, where you can view and create clusters, nodepools, and deployments. 
 
 Click the **Create a Cluster** button to begin setting up a new cluster along with its associated nodepool.
 
@@ -67,6 +67,8 @@ Before making your final choice, here are some key considerations to make:
 - **Regulatory compliance** – Ensure the chosen region and instance type comply with any relevant data residency or industry-specific regulations.
 
 Once you've found the right instance, click the circular radio button to the left of the row to select it.
+
+> **Note:** For this example, let's select the AWS `g4dn.xlarge` instance in the `us-east-1` region. For the remaining details to be filled, we'll use the already provided default options. After selecting an instance, you can click the [**Create Cluster**](#step-6-finalize-and-create-the-cluster) button to complete creating your cluster and nodepool. Otherwise, you can customize the rest of the settings to meet your needs.
 
 <a id="node-range"></a>
 
@@ -112,11 +114,14 @@ Fill out the form to specify the details for your cluster and nodepool.
 - **Cluster Description** — Optionally, provide a short description that summarizes the details related to the cluster. 
 - **Nodepool ID** — Enter a unique identifier for your nodepool. This ID is used when deploying models and should reflect the nodepool’s purpose or workload. It is auto-filled based on your selected instance type, but you can modify it as needed.
 - **Nodepool Description** — Optionally, provide a short description that summarizes the details related to the nodepool. 
-- **Personal Access Token (PAT)** — Select a [PAT](https://docs.clarifai.com/control/authentication/pat) to authenticate your identity when connecting to the cluster. The token must have the necessary permissions to manage compute resources. If the selected PAT is deleted, any associated compute functionality will stop working. Click the dropdown to view available PATs, or generate a new one by selecting "Create new Personal Access Token" or by visiting the [Security section](https://clarifai.com/settings/security) of your Personal Settings.
+- **Personal Access Token (PAT)** — Use a [PAT](https://docs.clarifai.com/control/authentication/pat) to authenticate your identity when connecting to the cluster. Click the dropdown to choose from existing tokens, or create a new one by selecting **Create a new Personal Access Token** or by visiting the **Security** section in your personal settings.
+    > **Note:** The token must have the required permissions to manage compute resources. Also, if the selected PAT is deleted, any associated compute functionality will stop working.
 
 ### Step 6: Finalize and Create the Cluster
 
-Before you enter the required details for creating a cluster, the **Create Cluster** button in the upper-right corner will be disabled (greyed out). After providing the details, the button will become active. Click it to launch your cluster and nodepool.
+Before you enter the required details for creating a cluster, the **Create Cluster** button in the upper-right corner will be disabled (greyed out). After providing the details, the button will become active. 
+
+Click it to launch your cluster and nodepool.
 
 You'll then be redirected to your newly created cluster's page, where its associated nodepool will be listed in a table.
 
