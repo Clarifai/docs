@@ -889,9 +889,9 @@ You can connect your existing AWS, Google Cloud (GCP), or Oracle infrastructure 
 
 ### Step 1: Start Creating a Cluster
 
-Log in to the Clarifai platform and select the **Compute** option in the top navigation bar.  
+Log in to the Clarifai platform and select the **Compute** option in the collapsible left sidebar.  
 
-You’ll be redirected to the Compute Orchestration page, where you can view and create clusters, nodepools, and deployments. 
+You’ll be redirected to the Compute Overview page, where you can view and create clusters, nodepools, and deployments. 
 
 Click the **Create a Cluster** button to begin setting up a new cluster along with its associated nodepool.
 
@@ -929,6 +929,8 @@ Before making your final choice, here are some key considerations to make:
 - **Regulatory compliance** – Ensure the chosen region and instance type comply with any relevant data residency or industry-specific regulations.
 
 Once you've found the right instance, click the circular radio button to the left of the row to select it.
+
+> **Note:** For this example, let's select the AWS `g4dn.xlarge` instance in the `us-east-1` region. For the remaining details to be filled, we'll use the already provided default options. After selecting an instance, you can click the [**Create Cluster**](#step-6-finalize-and-create-the-cluster) button to complete creating your cluster and nodepool. Otherwise, you can customize the rest of the settings to meet your needs.
 
 ### Step 3: Set Node Autoscaling Range
 
@@ -970,11 +972,14 @@ Fill out the form to specify the details for your cluster and nodepool.
 - **Cluster Description** — Optionally, provide a short description that summarizes the details related to the cluster. 
 - **Nodepool ID** — Enter a unique identifier for your nodepool. This ID is used when deploying models and should reflect the nodepool’s purpose or workload. It is auto-filled based on your selected instance type, but you can modify it as needed.
 - **Nodepool Description** — Optionally, provide a short description that summarizes the details related to the nodepool. 
-- **Personal Access Token (PAT)** — Select a [PAT](https://docs.clarifai.com/control/authentication/pat) to authenticate your identity when connecting to the cluster. The token must have the necessary permissions to manage compute resources. If the selected PAT is deleted, any associated compute functionality will stop working. Click the dropdown to view available PATs, or generate a new one by selecting "Create new Personal Access Token" or by visiting the [Security section](https://clarifai.com/settings/security) of your Personal Settings.
+- **Personal Access Token (PAT)** — Use a [PAT](https://docs.clarifai.com/control/authentication/pat) to authenticate your identity when connecting to the cluster. Click the dropdown to choose from existing tokens, or create a new one by selecting **Create a new Personal Access Token** or by visiting the **Security** section in your personal settings.
+    > **Note:** The token must have the required permissions to manage compute resources. Also, if the selected PAT is deleted, any associated compute functionality will stop working.
 
 ### Step 6: Finalize and Create the Cluster
 
-Before you enter the required details for creating a cluster, the **Create Cluster** button in the upper-right corner will be disabled (greyed out). After providing the details, the button will become active. Click it to launch your cluster and nodepool.
+Before you enter the required details for creating a cluster, the **Create Cluster** button in the upper-right corner will be disabled (greyed out). After providing the details, the button will become active. 
+
+Click it to launch your cluster and nodepool.
 
 You'll then be redirected to your newly created cluster's page, where its associated nodepool will be listed in a table.
 
@@ -1182,15 +1187,19 @@ Each model or workflow can only have one deployment per nodepool.
 
 ### Step 1: Start Creating a Deployment
 
-To create a deployment, navigate to the model’s page and click the **Deploy Model** button.
+To create a deployment, go to the model’s page and click the **Deploy Model** button.
 
-You can also open the **Activity** tab to check if the model is already running on any compute environments. This tab displays the compute requirements needed for successfully deploying the model, allowing you to choose a nodepool that meets those requirements.
+> **Note:** You can also open the **Compute** tab to check if the model is already running on any compute environments. This tab displays the compute requirements needed for successfully deploying the model, allowing you to choose a nodepool that meets those requirements.
 
 ![ ](/img/compute-orchestration/compute-12.png)
 
-> _Alternatively, to create a deployment, go to the specific cluster or nodepool where you want the deployment to run, then click the **Deploy Model** button on that page._
+:::note Alternatively
+
+To create a deployment, go to the specific cluster or nodepool where you want the deployment to run, then click the **Deploy Model** button on that page.
  
-> _![ ](/img/compute-orchestration/compute-11.png)_
+![ ](/img/compute-orchestration/compute-11.png)
+
+:::
 
 ### Step 2: Select a Model
 
@@ -1206,7 +1215,7 @@ The model’s compute requirements will also be displayed, helping you select a 
 
 Choose an existing cluster and nodepool — or create new ones — based on your model’s compute requirements and performance goals. 
 
-Once selected, the details of the chosen cluster and nodepool will be displayed for your review.
+Once selected, the details of the chosen cluster and nodepool will be displayed for your review. You'll also be notified if the nodepool is compatible with the selected model. 
 
 ![ ](/img/compute-orchestration/compute-14.png)
 
@@ -1241,9 +1250,9 @@ You can also configure advanced deployment settings if needed. If you choose not
 
 After completing the setup, click the **Deploy Model** button to create the deployment. You’ll be redirected to the nodepool page, where your deployed model will be listed.
 
-You can also find the deployment listed in the **Activity** tab within the model's page. From there, you can select it to run [inferences](https://docs.clarifai.com/compute/models/model-inference).
-
 ![ ](/img/compute-orchestration/compute-14-1.png)
+
+After creating the deployment, you can use it to run [inferences](https://docs.clarifai.com/compute/inference/clarifai/ui). 
 
 ## **Via the API**
 
@@ -1361,7 +1370,7 @@ A quick-access tooltip will appear, showing the autoscaling configuration for th
 
 :::note Alternatively
 
-You can view a model’s deployment details by navigating to its individual page, selecting the **Activity** tab, and reviewing the **Active Deployments** section. You can find information about the compute environments where the model is currently running. 
+You can view a model’s deployment details by navigating to its individual page, selecting the **Compute** tab, and reviewing the **Active Deployments** section. You can find information about the compute environments where the model is currently running. 
 
 ![](/img/compute-orchestration/compute-26-1.png)
 
@@ -1381,9 +1390,9 @@ You'll be redirected to a page where you can modify the [configurations for your
 
 :::note Alternatively
 
-You can perform various nodepool management tasks from the cluster viewer page. In the **Nodepools** table, locate the nodepool you want to manage, then click the three-dot menu at the end of the row.
+You can perform various nodepool management tasks from the nodepools listing page. In the table, locate the nodepool you want to manage, then click the three-dot menu at the end of the row.
 
-The pop-up that appears provides options to edit the nodepool, deploy a model to it, copy its ID, or delete the nodepool.
+The pop-up that appears provides options to copy its ID, deploy a model to it, edit the nodepool, or delete the nodepool.
 
 ![ ](/img/compute-orchestration/compute-17.png)
 
@@ -1421,6 +1430,16 @@ To complete the deletion, enter the name of the cluster in the provided field, t
 
 ![ ](/img/compute-orchestration/compute-6.png)
 
+:::note Alternatively
+
+You can perform various cluster management tasks from the clusters listing page. In the table, locate the cluster you want to manage, then click the three-dot menu at the end of the row.
+
+The pop-up that appears provides options to add a new nodepool, copy its ID, or delete the cluster.
+
+![ ](/img/compute-orchestration/compute-6-3.png)
+
+:::
+
 ## **Via the API**
 
 import Tabs from '@theme/Tabs';
@@ -1443,6 +1462,14 @@ import CL8 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestr
 import CL9 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/cli_delete_nodepool.sh";
 import CL10 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/cli_delete_deployment.sh";
 import GetDeploymentOutput from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/get_deployment_output.txt";
+import CurlList1 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_list_1.sh";
+import CurlList2 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_list_2.sh";
+import CurlList3 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_list_3.sh";
+import CurlList4 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_list_4.sh";
+import CurlOutput1 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_output_1.txt";
+import CurlOutput2 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_output_2.txt";
+import CurlOutput3 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_output_3.txt";
+import CurlOutput4 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_output_4.txt";
 
 :::note tip
 
@@ -1634,6 +1661,42 @@ code: SUCCESS
 description: "Ok"
 req_id: "sdk-python-11.7.5-dc2a5ef7b8824ed0999dad18b5594a12"
 ```
+
+### List Cloud Providers
+
+You can retrieve the available cloud providers to use when creating clusters and nodepools.
+
+    {CurlList1}
+
+  Example Output
+    {CurlOutput1}
+
+### List Regions
+
+You can retrieve the geographic regions supported by a cloud provider.
+
+    {CurlList2}
+
+  Example Output
+    {CurlOutput2}
+
+### List Instance Types 
+
+You can retrieve the instance types a cloud provider offers in a given region
+
+    {CurlList3}
+
+  Example Output
+    {CurlOutput3}
+
+### List All Instance Types
+
+You can retrieve all instance types offered by all cloud providers across their supported regions.
+
+    {CurlList4}
+
+  Example Output
+    {CurlOutput4}
 
 ---
 
@@ -4181,7 +4244,7 @@ Once your runner launches successfully, your model will be running and accessibl
 
 - **Locally connect agents** — Because Local Runners execute on your chosen hardware, they can interact with local file systems, make OS-level calls, or access private data stores. With our [MCP (Model Context Protocol)](https://docs.clarifai.com/compute/agents/mcp) model type, you can give your cloud-hosted agents or any MCP-enabled clients authenticated access to your locally controlled information, regardless of their deployment location.
 
-- **Run models anywhere** — Whether on a local development machine, an on-premises server, or a private cloud cluster, Local Runners seamlessly connect your models to our platform. This enables you to keep sensitive data and custom-built models securely within your own environment.
+- **Run models anywhere** — Whether on a [local development machine](https://www.clarifai.com/blog/how-to-run-ai-models-locally-2025-tools-setup-tips), an on-premises server, or a private cloud cluster, Local Runners seamlessly connect your models to our platform. This enables you to keep sensitive data and custom-built models securely within your own environment.
 
 ## Step 1: Build a Model
 
