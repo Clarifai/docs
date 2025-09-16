@@ -1,6 +1,5 @@
 ---
 description: Use 2FA to add an extra layer of security to your account
-pagination_next: null
 sidebar_position: 5
 ---
 
@@ -31,7 +30,7 @@ For enterprise users, 2FA might fall under security-related controls for complia
 
 ### How 2FA Works on the Clarifai Platform
 
-Clarifai offers two-factor authentication to add an extra layer of security to your account.  When enabled, 2FA prompts you for a unique code in addition to your username and password during login.
+Clarifai offers two-factor authentication to add an extra layer of security to your account. When enabled, 2FA prompts you for a unique code from your authenticator application in addition to your username and password during login.
 
 Here's what to expect:
 
@@ -41,9 +40,9 @@ Here's what to expect:
 
 ## 2FA Set Up
 
-To enable 2FA, sign in to the platform first. Then, click your profile icon element. A drop-down list will appear with items that point to various pages within the platform. 
+To enable 2FA, sign in to the platform first. Then, in the collapsible left sidebar, select **Settings** and choose **Security** from the dropdown list.
 
-Select the **Security** option. You'll be directed to the **Security** settings page.
+You'll be directed to the **Security** settings page.
 
 ![](/img/others-2/2fa-1.png)
 
@@ -59,7 +58,9 @@ Once the button is enabled:
 
 Then, click the **Verify** button. 
 
-After enabling 2FA for your account, you'll receive a recovery code. This code serves as a backup to reset two-factor authentication in case you lose access to your authenticator app. It's important to copy, print, or download your recovery code and store it in a secure location.
+After enabling 2FA for your account, you'll receive a recovery code. This code serves as a backup to reset two-factor authentication in case you lose access to your authenticator app. 
+
+> **Note:** It's important to copy, print, or download your recovery code and store it in a secure location.
  
 ![](/img/others-2/2fa-3.png)
 
@@ -113,7 +114,7 @@ To regain access to the Clarifai platform, follow these steps:
 
 ![](/img/others-2/2fa-7.png)
 
-**7.** 2FA will be disabled for your account, allowing you to set up a new two-factor authentication process. 
+**7.** 2FA will be disabled for your account, allowing you to [set up](#2fa-set-up) a new two-factor authentication process. 
 
 ### Last-Resort
 

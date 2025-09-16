@@ -31,15 +31,17 @@ You cannot use an API Key to access models, model versions, workflows, or other 
 
 ## How to Create API Keys on the Platform
 
-Navigate to your application's individual page and select the **Settings** option on the collapsible left sidebar.
+In the collapsible left sidebar, select **Projects**. Then, choose the application you want to generate an API key for.
 
-You'll be redirected to the **App Settings** page.
+![App settings create key](/img/others/create_api_key_select_app.png)
 
-Within the **API Keys** section, click the **Create API Key** button. 
+You'll be redirected to the application's individual page. Select the **Settings** option.
+
+Next, on the **App Settings** page, within the **API Keys** section, click the **Create API Key** button. 
 
 ![App settings create key](/img/others/create_api_key_community.png)
 
-Then, use the form that pops up to generate a new key for your application — provide a short description, select the scopes, and click the **Confirm** button. 
+Then, use the form that pops up to generate a new key for your application — provide a short description, select the [scopes](https://docs.clarifai.com/control/authentication/scopes), and click the **Create API Key** button. 
 
 ![App key create form](/img/others/create_api_key_community_form.png)
 

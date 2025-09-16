@@ -33,19 +33,19 @@ A default PAT is automatically generated for you when you create an account on t
 
 To create it, [log in](https://clarifai.com/login) to the platform, go to the top-right corner of the navigation bar, and open the drop-down menu.
 
-Then, select the **Security** settings option in the drop-down list.
+Then, in the collapsible left sidebar, select **Settings** and choose **Security** from the dropdown list.
 
 ![Create new PAT on Community](/img/others/create_pat_community.png)
 
+> **Note:** On the **Security** page, you can update the password used to access your Clarifai account by entering your current password and a new one, or by generating a new password automatically.
+
 On the ensuing **Security** page, click the **Create Personal Access Token** button.  
 
-![Account security settings](/img/others/account_security_settings.png)
-
-On the form that pops up, provide a short token description, set the scopes you want to apply, and click the **Create Personal Access Token** button.
+Next, on the form that pops up, provide a short token description, set the [scopes](https://docs.clarifai.com/control/authentication/scopes/) you want to apply, and click the **Create Personal Access Token** button.
 
 ![create pat](/img/others/pat_dialog_box.png)
 
-You can find the new PAT listed in the **Personal Access Token** section, where you can copy, view, edit, or delete it.
+The new PAT will be listed in the **Personal Access Token** section, where you can copy, view, edit, or delete it.
 
 ![listed pat](/img/others/pat_section_1.png)
 
@@ -58,7 +58,7 @@ You can find the new PAT listed in the **Personal Access Token** section, where 
 
 ## Set PAT as an Environment Variable
 
-It's recommended to load your PAT from an environment variable. Keeping your PAT in a secrets manager, and not in the source code, improves its security and management.
+It’s recommended to load your PAT from an environment variable. Storing it this way, instead of hardcoding it in your code, enhances both security and manageability.
 
 Here is how you can set it as an environment variable.
 
@@ -74,8 +74,6 @@ Here is how you can set it as an environment variable.
 ## Example
 
 Here is an example of how to use a PAT to make a prediction request. 
-
-
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
