@@ -5640,15 +5640,17 @@ You cannot use an API Key to access models, model versions, workflows, or other 
 
 ## How to Create API Keys on the Platform
 
-Navigate to your application's individual page and select the **Settings** option on the collapsible left sidebar.
+In the collapsible left sidebar, select **Projects**. Then, choose the application you want to generate an API key for.
 
-You'll be redirected to the **App Settings** page.
+![App settings create key](/img/others/create_api_key_select_app.png)
 
-Within the **API Keys** section, click the **Create API Key** button. 
+You'll be redirected to the application's individual page. Select the **Settings** option.
+
+Next, on the **App Settings** page, within the **API Keys** section, click the **Create API Key** button. 
 
 ![App settings create key](/img/others/create_api_key_community.png)
 
-Then, use the form that pops up to generate a new key for your application — provide a short description, select the scopes, and click the **Confirm** button. 
+Then, use the form that pops up to generate a new key for your application — provide a short description, select the [scopes](https://docs.clarifai.com/control/authentication/scopes), and click the **Create API Key** button. 
 
 ![App key create form](/img/others/create_api_key_community_form.png)
 
@@ -5751,19 +5753,19 @@ A default PAT is automatically generated for you when you create an account on t
 
 To create it, [log in](https://clarifai.com/login) to the platform, go to the top-right corner of the navigation bar, and open the drop-down menu.
 
-Then, select the **Security** settings option in the drop-down list.
+Then, in the collapsible left sidebar, select **Settings** and choose **Security** from the dropdown list.
 
 ![Create new PAT on Community](/img/others/create_pat_community.png)
 
+> **Note:** On the **Security** page, you can update the password used to access your Clarifai account by entering your current password and a new one, or by generating a new password automatically.
+
 On the ensuing **Security** page, click the **Create Personal Access Token** button.  
 
-![Account security settings](/img/others/account_security_settings.png)
-
-On the form that pops up, provide a short token description, set the scopes you want to apply, and click the **Create Personal Access Token** button.
+Next, on the form that pops up, provide a short token description, set the [scopes](https://docs.clarifai.com/control/authentication/scopes/) you want to apply, and click the **Create Personal Access Token** button.
 
 ![create pat](/img/others/pat_dialog_box.png)
 
-You can find the new PAT listed in the **Personal Access Token** section, where you can copy, view, edit, or delete it.
+The new PAT will be listed in the **Personal Access Token** section, where you can copy, view, edit, or delete it.
 
 ![listed pat](/img/others/pat_section_1.png)
 
@@ -5776,7 +5778,7 @@ You can find the new PAT listed in the **Personal Access Token** section, where 
 
 ## Set PAT as an Environment Variable
 
-It's recommended to load your PAT from an environment variable. Keeping your PAT in a secrets manager, and not in the source code, improves its security and management.
+It’s recommended to load your PAT from an environment variable. Storing it this way, instead of hardcoding it in your code, enhances both security and manageability.
 
 Here is how you can set it as an environment variable.
 
@@ -6111,7 +6113,7 @@ For enterprise users, 2FA might fall under security-related controls for complia
 
 ### How 2FA Works on the Clarifai Platform
 
-Clarifai offers two-factor authentication to add an extra layer of security to your account.  When enabled, 2FA prompts you for a unique code in addition to your username and password during login.
+Clarifai offers two-factor authentication to add an extra layer of security to your account. When enabled, 2FA prompts you for a unique code from your authenticator application in addition to your username and password during login.
 
 Here's what to expect:
 
@@ -6121,9 +6123,9 @@ Here's what to expect:
 
 ## 2FA Set Up
 
-To enable 2FA, sign in to the platform first. Then, click your profile icon element. A drop-down list will appear with items that point to various pages within the platform. 
+To enable 2FA, sign in to the platform first. Then, in the collapsible left sidebar, select **Settings** and choose **Security** from the dropdown list.
 
-Select the **Security** option. You'll be directed to the **Security** settings page.
+You'll be directed to the **Security** settings page.
 
 ![](/img/others-2/2fa-1.png)
 
@@ -6139,7 +6141,9 @@ Once the button is enabled:
 
 Then, click the **Verify** button. 
 
-After enabling 2FA for your account, you'll receive a recovery code. This code serves as a backup to reset two-factor authentication in case you lose access to your authenticator app. It's important to copy, print, or download your recovery code and store it in a secure location.
+After enabling 2FA for your account, you'll receive a recovery code. This code serves as a backup to reset two-factor authentication in case you lose access to your authenticator app. 
+
+> **Note:** It's important to copy, print, or download your recovery code and store it in a secure location.
  
 ![](/img/others-2/2fa-3.png)
 
@@ -6193,7 +6197,7 @@ To regain access to the Clarifai platform, follow these steps:
 
 ![](/img/others-2/2fa-7.png)
 
-**7.** 2FA will be disabled for your account, allowing you to set up a new two-factor authentication process. 
+**7.** 2FA will be disabled for your account, allowing you to [set up](#2fa-set-up) a new two-factor authentication process. 
 
 ### Last-Resort
 

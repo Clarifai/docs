@@ -24,8 +24,8 @@
 <script src="https://cdn.amplitude.com/libs/analytics-browser-2.12.0-min.js.gz" defer="defer"></script>
 <script src="https://cdn.amplitude.com/libs/plugin-session-replay-browser-1.4.0-min.js.gz" defer="defer"></script>
 <script src="/scripts/amplitude.js" defer="defer"></script><link rel="stylesheet" href="/assets/css/styles.7876bb28.css">
-<script src="/assets/js/runtime~main.cf5d307d.js" defer="defer"></script>
-<script src="/assets/js/main.ea715437.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.334fc51a.js" defer="defer"></script>
+<script src="/assets/js/main.1df63f82.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5W9P7GR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -45,14 +45,15 @@
 <p>An API Key allows you to have fine-grained control over the data exposed through your app. You can control the scope of your key through a simple checkbox interface displayed when you create a new key or edit a key.</p>
 <div class="theme-admonition theme-admonition-caution admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>API Key Versus PAT</div><div class="admonitionContent_BuS1"><p>You cannot use an API Key to access models, model versions, workflows, or other resources that are not part of the app that the key is associated with. You need a <a href="https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens" target="_blank" rel="noopener noreferrer">PAT</a> to do so. For example, to access any of Clarifai&#x27;s resources, you need to use a PAT while specifying Clarifai&#x27;s <code>user_id</code> and the <code>app_id</code> to which the resource belongs.</p></div></div>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="how-to-create-api-keys-on-the-platform">How to Create API Keys on the Platform<a href="#how-to-create-api-keys-on-the-platform" class="hash-link" aria-label="Direct link to How to Create API Keys on the Platform" title="Direct link to How to Create API Keys on the Platform">​</a></h2>
-<p>Navigate to your application&#x27;s individual page and select the <strong>Settings</strong> option on the collapsible left sidebar.</p>
-<p>You&#x27;ll be redirected to the <strong>App Settings</strong> page.</p>
-<p>Within the <strong>API Keys</strong> section, click the <strong>Create API Key</strong> button.</p>
-<p><img decoding="async" loading="lazy" alt="App settings create key" src="/assets/images/create_api_key_community-9cad7e2384395bfdba4f5926727aa56c.png" width="1867" height="884" class="img_ev3q"></p>
-<p>Then, use the form that pops up to generate a new key for your application — provide a short description, select the scopes, and click the <strong>Confirm</strong> button.</p>
-<p><img decoding="async" loading="lazy" alt="App key create form" src="/assets/images/create_api_key_community_form-ad976a6423f5470bab36622b5b0744d7.png" width="1889" height="869" class="img_ev3q"></p>
+<p>In the collapsible left sidebar, select <strong>Projects</strong>. Then, choose the application you want to generate an API key for.</p>
+<p><img decoding="async" loading="lazy" alt="App settings create key" src="/assets/images/create_api_key_select_app-9a2d0c5c39f20b06944bf98e1836018d.png" width="4200" height="2024" class="img_ev3q"></p>
+<p>You&#x27;ll be redirected to the application&#x27;s individual page. Select the <strong>Settings</strong> option.</p>
+<p>Next, on the <strong>App Settings</strong> page, within the <strong>API Keys</strong> section, click the <strong>Create API Key</strong> button.</p>
+<p><img decoding="async" loading="lazy" alt="App settings create key" src="/assets/images/create_api_key_community-7bc9562cf637db9a4d3bab981fe2bc2b.png" width="4200" height="2050" class="img_ev3q"></p>
+<p>Then, use the form that pops up to generate a new key for your application — provide a short description, select the <a href="https://docs.clarifai.com/control/authentication/scopes" target="_blank" rel="noopener noreferrer">scopes</a>, and click the <strong>Create API Key</strong> button.</p>
+<p><img decoding="async" loading="lazy" alt="App key create form" src="/assets/images/create_api_key_community_form-337ea13e1b03f44b0754d55a69ad5f3d.png" width="4200" height="2028" class="img_ev3q"></p>
 <p>The new key will be listed in the <strong>API Keys</strong> section, where you can copy it to the clipboard, edit it, or delete it.</p>
-<p><img decoding="async" loading="lazy" alt="copy, edit, delete api key" src="/assets/images/create_api_key_community_2-0fcfc340b618e981bd4627155eeec194.png" width="1892" height="881" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="copy, edit, delete api key" src="/assets/images/create_api_key_community_2-ed1caea61826d7dd998a42d263124ed3.png" width="4200" height="2044" class="img_ev3q"></p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="how-to-create-api-keys-programmatically">How to Create API Keys Programmatically<a href="#how-to-create-api-keys-programmatically" class="hash-link" aria-label="Direct link to How to Create API Keys Programmatically" title="Direct link to How to Create API Keys Programmatically">​</a></h2>
 <p>For enterprise users, it is also possible to generate keys programmatically.</p>
 <p>If you are managing the work of multiple users, who&#x27;s data, models, and concepts that need to be segregated, we recommend you create keys this way. This ensures that each individual user only has access to their own private resources.</p>
