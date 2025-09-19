@@ -5366,9 +5366,13 @@ You can then make [inference requests](https://docs.clarifai.com/compute/models/
 
 **Secure, compliant AI**
 
-Clarifai makes it easy to manage user access for an individual or a whole team.
+Authentication ensures secure access to the Clarifai platform. You can log in with your username and password through the web interface or use Google or GitHub single-sign-on (SSO). 
 
-Learn how to use Personal Access Tokens (PATs) and API Keys to manage authentication to your applications.
+> **Note:** The length of a login session depends on how you sign in: SSO sessions remain active for seven days. When using a regular username and password, selecting “remember me” extends the session to 30 days, while logging in without it limits the session to just one day.
+
+For API and SDK interactions, authentication is handled using a Personal Access Token (PAT) or API Key, which provide secure access without sharing your password.
+
+This section walks you through the available authentication methods, how to set them up, and best practices for keeping your credentials safe.
 
 import DocCardList from '@theme/DocCardList';
 import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
@@ -5640,11 +5644,11 @@ You cannot use an API Key to access models, model versions, workflows, or other 
 
 ## How to Create API Keys on the Platform
 
-In the collapsible left sidebar, select **Projects**. Then, choose the application you want to generate an API key for.
+In the collapsible left sidebar, select the **Projects** option. Then, choose the application you want to generate an API key for.
 
 ![App settings create key](/img/others/create_api_key_select_app.png)
 
-You'll be redirected to the application's individual page. Select the **Settings** option.
+You'll be redirected to the application's individual page. Select the **Settings** option in the app's collapsible left sidebar.
 
 Next, on the **App Settings** page, within the **API Keys** section, click the **Create API Key** button. 
 
@@ -5751,9 +5755,7 @@ A PAT allows you to make inferences on resources that are outside the scope of y
 
 A default PAT is automatically generated for you when you create an account on the Clarifai platform. Nonetheless, you can also create a new PAT explicitly on the platform. 
 
-To create it, [log in](https://clarifai.com/login) to the platform, go to the top-right corner of the navigation bar, and open the drop-down menu.
-
-Then, in the collapsible left sidebar, select **Settings** and choose **Security** from the dropdown list.
+To create it, [log in](https://clarifai.com/login) to the Clarifai platform. Then, in the collapsible left sidebar, select **Settings** and choose **Security** from the dropdown list.
 
 ![Create new PAT on Community](/img/others/create_pat_community.png)
 
@@ -6229,55 +6231,6 @@ This centralized control makes it easy to track your usage of the Clarifai platf
 - **Set up siloed access permissions** — As an administrator, you can set up various teams and attach different access permissions to them. You can specify which applications and individual actions the users in each team can access. 
 For example, if you have members within your organization who must access only the resources that meet certain data regulatory requirements, you can aggregate those accounts in their own team. You then define a policy that prevents members of that team from accessing resources that do not comply with those regulatory standards.
 
-## How to Create an Organization
-
-To create an Org account, start by logging in to the [Clarifai platform](https://clarifai.com/explore). 
-
-Next, click the workspace switcher icon at the upper-left section of the navigation bar and select the **Create New Organization** button in the drop-down list.
-
-![Add an organization](/img/clarifai_orgs/add_an_organization.png)
-
-In the dialog box that appears, provide the details of your organization.
-
-![Create an organization](/img/clarifai_orgs/create_organization.png)
-
-- **Organization name:** Enter a unique name for your organization, such as _test-org_.
-- **Organization ID:** Enter a unique identifier for your organization, such as _123455_. This is what will appear in the URL when browsing the Clarifai platform as an organization.  
-- **Billing email:** Enter your billing email, such as test-org@example.com. 
-
-Click the **Create organization** button to finalize creating the organization. 
-
-And your Clarifai Org account will be created!
-
-:::info 
-
-- You can create an Org account when registering for an account on the Clarifai platform. When activating your account, you'll be presented with a form that allows you to create an organization and invite members to join it. 
-
-- All new organization accounts start on the Community [pricing plan](https://www.clarifai.com/pricing) by default, with the option to upgrade at any time. This applies to Community, Essential, and Professional users, but not to Enterprise users.
-
-:::
-
-## How to Use an Org
-
-After creating a Clarifai organization, you can begin interacting with our platform as an organization — just like a normal user would, albeit with some other added capabilities.
-
-To start accessing the platform with your organization account, click the workspace switcher icon at the upper-left section of the navigation bar and select your organization in the drop-down list.
- 
-You’ll notice that your user’s profile will change to your organization’s profile. 
-
-![Select your organization’s profile ](/img/clarifai_orgs/select_organization_profile.png)
-
-When logged in as an organization, click the menu in the upper-right corner of the navigation bar to access a drop-down with settings for managing different aspects of your Clarifai organization.
-
-![Select your organization’s profile ](/img/clarifai_orgs/select_organization_profile_2.png)
-
-- **Account** — Allows you to update your organization’s profile, delete the account information related to your organization, or leave the organization. 
-- **Security** — Allows you to enforce the [security](security#enforce-your-clarifai-organizations-security) of your organization by setting password policies and creating identity providers. 
-- **Billing** — Allows you to access and manage your subscription and billing information, including adding a credit card. 
-- **Members** — Allows you to access and manage the [members](members-teams/#organization-members) associated with your organization.
-- **Teams** — Allows you to access and manage the [teams](members-teams#organization-teams) associated with your organization.
-- **Sign Out** — Allows you to sign out of the Clarifai platform, which includes your user and organization accounts.
-
 ## Org Feature Availability
 
 The Clarifai Organization feature is available to all users of our platform. However, the extent of its functionality depends on your [pricing plan](https://www.clarifai.com/pricing).
@@ -6296,6 +6249,76 @@ Learn more about the scopes and access levels of organization members [here](htt
 | Essential             |  Admin, Org Contributor, and Org User roles allowedOnly one Org can be createdNo teams allowed  |
 | Professional          |  Admin, Org Contributor, and Org User roles allowedOnly one Org can be createdNo teams allowed  | |
 | Enterprise            | Admin, Org Contributor, Org User, and Team Contributor roles allowedUp to twenty Orgs can be createdTeams allowed  |                        |
+
+## How to Create an Organization
+
+To create an Org account, start by logging in to the [Clarifai platform](https://clarifai.com/explore). 
+
+Next, click the plus (**+**) button in the upper-right corner of the Clarifai platform dashboard. A dropdown menu will appear with several options. From the list, select **New Organization**.
+
+![Add an organization](/img/clarifai_orgs/add_an_organization.png)
+
+In the dialog box that appears, provide the details of your organization.
+
+![Create an organization](/img/clarifai_orgs/create_organization.png)
+
+- **Organization name:** Enter a unique name for your organization, such as _test-org_.
+- **Organization ID:** Enter a unique identifier for your organization, such as _123455_. This is what will appear in the URL when browsing the Clarifai platform as an organization.  
+- **Billing email:** Enter your billing email, such as test-org@example.com. 
+
+Click the **Create organization** button to finalize creating the organization. 
+
+And your new Clarifai Org will be created and available under your account!
+
+:::info 
+
+- You can create an Org account when registering for an account on the Clarifai platform. When activating your account, you'll be presented with a form that allows you to create an organization and invite members to join it. 
+
+- All new organization accounts start on the Community [pricing plan](https://www.clarifai.com/pricing) by default, with the option to upgrade at any time. This applies to Community, Essential, and Professional users, but not to Enterprise users.
+
+:::
+
+## How to Use an Org
+
+After creating a Clarifai organization, you can begin interacting with our platform as an organization — just like a normal user would, albeit with some other added capabilities.
+
+To start accessing the platform with your organization account, click the workspace switcher icon in the collapsible left sidebar and select your organization in the dropdown list.
+
+You’ll notice that your user’s profile will change to your organization’s profile.
+
+![Select your organization’s profile](/img/clarifai_orgs/select_organization_profile-2.png)
+
+## How to Manage an Org
+
+To manage your organization, click your user profile icon in the upper-right corner of the Clarifai dashboard and select **Manage Organizations** from the dropdown menu.
+
+![Select your organization’s profile](/img/clarifai_orgs/select_organization_profile.png)
+
+You’ll be redirected to the **Organizations** management page, which provides a centralized location for accessing and managing all your Clarifai organizations.
+
+![Create an organization](/img/clarifai_orgs/how_to_use_org.png)
+
+From this page, you can:
+
+- View the list of organizations you belong to
+- Switch between different organizations
+- Create a new organization
+- Leave an organization you belong to
+- Delete an organization you own
+
+To open an organization, locate it in the **Organization ID** column and click on its corresponding row.  
+
+### Organization Settings
+
+When [logged in](#how-to-use-an-org) as an organization, select the **Settings** option in the collapsible left sidebar to access a dropdown with settings for managing different aspects of your Clarifai organization.
+
+![Select your organization’s profile ](/img/clarifai_orgs/select_organization_profile_2.png)
+
+- **Account** — Allows you to update your organization’s profile, delete the account information related to your organization, or leave the organization. 
+- **Security** — Allows you to enforce the [security](security#enforce-your-clarifai-organizations-security) of your organization by setting password policies and creating identity providers. 
+- **Billing** — Allows you to access and manage your subscription and billing information, including adding a credit card. 
+- **Members** — Allows you to access and manage the [members](members-teams/#organization-members) associated with your organization.
+- **Teams** — Allows you to access and manage the [teams](members-teams#organization-teams) associated with your organization.
 
 import DocCardList from '@theme/DocCardList';
 import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
@@ -6318,11 +6341,15 @@ You can visit the respective sections within this documentation to understand ho
 
 You can transfer an app you own to an organization you belong to, provided you have the necessary [permissions](https://docs.clarifai.com/portal-guide/clarifai-organizations/security#scopes-and-access-levels-of-organization-members) to create apps. This transfer enhances collaboration and boosts productivity within your team.
 
-To do so, on your personal workspace, click the **Projects** option in the navigation bar. This will take you to a page showing all the apps you own. From there, select the app you want to transfer to an organization.
+To begin, go to your personal workspace and, from the collapsible left sidebar, select **Projects**, then choose **All Resources** from the dropdown list. 
+
+This opens a page displaying all the resources you own, with the **Apps / Templates** tab selected by default. From there, select the app you want to transfer to an organization.
 
 ![List apps you own](/img/clarifai_orgs/transfer_app_org_1.png)
 
-You’ll be redirected to the app’s individual page. Select the **Settings** option on the collapsible left sidebar. 
+> **Alternatively:** You can use the **Select Application** dropdown in the collapsible left sidebar to quickly locate and choose the app you wish to transfer.
+
+You’ll then be redirected to the app’s individual page. Select the **Settings** option in the collapsible left sidebar. 
 
 ![App setting](/img/clarifai_orgs/transfer_app_org_2.png)
 
@@ -6358,13 +6385,11 @@ Organization members are individuals who have been invited to join an organizati
 
 ### How to Add Members 
 
-[Log into](README.mdx#how-to-use-an-org) your organization’s account, click the menu in the upper-right corner of the navigation bar, and select **Members** from the drop-down list.
-
-![Account option](/img/clarifai_orgs/account_option.png)
+[Log into](README.mdx#how-to-use-an-org) your organization’s account. Then, in the collapsible left sidebar, select **Settings** and choose **Members** from the dropdown list.
 
 You’ll be redirected to the **Members** page, where you can add new members and carry out various member management tasks. 
 
-![Organization settings page](/img/clarifai_orgs/organization_settings_page.png)
+![Account option](/img/clarifai_orgs/account_option.png)
 
 To add a new team member to your organization, you need to send them an invitation first. Click the **Invite Members** button to do so. 
 
@@ -6419,19 +6444,21 @@ Teams allow you to bring different members of your organization together to acco
 
 ### How to Add Teams
 
-[Log into](README.mdx#how-to-use-an-org) your organization’s account, click the menu in the upper-right corner of the navigation bar, and select **Teams** from the drop-down list.
-
-![ ](/img/clarifai_orgs/organization_teams_1.png)
+[Log into](README.mdx#how-to-use-an-org) your organization’s account. Then, in the collapsible left sidebar, select **Settings** and choose **Teams** from the dropdown list.
 
 You’ll be redirected to the **Teams** page, where you can create new teams and carry out various team management tasks. 
 
-![Organization teams](/img/clarifai_orgs/organization_teams.png)
+![ ](/img/clarifai_orgs/organization_teams_1.png)
 
-Click the **Create Team** button to add a new team to your organization. In the dialog box that appears, enter the team ID, team name, and set the permissions for the team (the permissions are [described below](#permission-types-for-teams)). 
+Click the **Create Team** button to add a new team to your organization. 
 
-![Create team dialog box](/img/clarifai_orgs/create_team_dialog_box.png)
+![Create team dialog box](/img/clarifai_orgs/create_team_dialog_box-2.png)
+
+In the dialog box that appears, enter the team ID, team name, and set the permissions for the team (the permissions are [described below](#permission-types-for-teams)). 
 
 Click the **Confirm** button to finalize creating the team. 
+
+![Create team dialog box](/img/clarifai_orgs/create_team_dialog_box.png)
 
 Your newly created team will appear on the **Teams** listing page. You can view other teams you've added and delete them from that table.
 
@@ -6454,13 +6481,13 @@ Your newly created team will appear on the **Teams** listing page. You can view 
 
 When you click on a team from the **Teams** listing page, you’ll be taken to its individual page, where you can manage and perform various team-related tasks.
 
-For example, click the three-dot menu in the upper-right corner to open a drop-down list, where you can select either **Edit Team Name** to rename the team or **Delete Team** to remove it.
+For example, click the three-dot menu in the upper-right corner to open a dropdown list, where you can select either **Edit Team Name** to rename the team or **Delete Team** to remove it.
 
 ![manage a team](/img/clarifai_orgs/how_to_manage_team.png)
 
 #### Add and Manage Team Members
 
-To add members to a team, first select the **Members** tab. Then, click the **Add Members** button at the upper-right section of the page. 
+To add members to a team, first select the **Members** tab. Then, click the **Add Members** button in the upper-right section of the page. 
 
 ![Individual team page](/img/clarifai_orgs/individual_team_page.png)
 
@@ -6470,13 +6497,15 @@ In the dialog box that appears, search for a member(s) of your organization and 
 
 The newly added member will appear in the **Members** tab, where you can also view all existing members and remove them if needed.
 
+![ ](/img/clarifai_orgs/add_team_members_2.png)
+
 #### Add and Manage Team Apps
 
-To assign an app to a team, first select the **Apps** tab. Then, click the **Add App** button at the upper-right section of the page. 
+To assign an app to a team, first select the **Apps** tab. Then, click the **Add App** button in the upper-right section of the page. 
 
 ![add app  to team](/img/clarifai_orgs/add_app_to_team.png)
 
-> **Note**: You can set the default access level for your team members when adding apps — Full Access, Labeler Worker, Labeler Lead, or Model Trainer, [as explained previously](#permission-types-for-teams). Use the drop-down menu on the right side of the apps listing page to set these permissions, which you can always customize later if needed.
+> **Note**: You can set the default access level for your team members when adding apps — Full Access, Labeler Worker, Labeler Lead, or Model Trainer, [as explained previously](#permission-types-for-teams). Use the dropdown menu on the right side of the apps listing page to set these permissions, which you can always customize later if needed.
 
 In the dialog box that appears, search for the app(s) you want to add to your team. Note that you can only add apps that already belong to your organization — either those you created or those [transferred](apps-models-workflows.md#transfer-an-app) into it. From the same dialog, you can also set the permissions for the added app(s).
 
@@ -6490,7 +6519,7 @@ The newly added app will appear on the apps listing page, where you can also vie
 
 :::note tip
 
-On the **App Settings** page of an organization app, you can view the teams that have access to the app, edit their permissions, or add new teams.
+On the **App Settings** page of an organization app, you can view the teams that have access to the app, edit their permissions, and add or delete teams.
 
 ![newly added app](/img/clarifai_orgs/gs_4.png)
 
@@ -6553,7 +6582,7 @@ Here is a table detailing the scopes and access levels allowed for each user typ
 
 You can take some additional actions to augment the security of your organization at Clarifai.
 
-To access the security settings of your organization, [log into](README.mdx#how-to-use-an-org) your organization’s account, click the menu in the upper-right corner of the navigation bar, and select **Security** from the drop-down list.
+To access the security settings of your organization, [log into](README.mdx#how-to-use-an-org) your organization’s account. Then, in the collapsible left sidebar, select **Settings** and choose **Security** from the dropdown list.
 
 ![Security organization settings](/img/clarifai_orgs/security_option.png)
 
@@ -6561,13 +6590,11 @@ On the **Security** page, you can view the password policies associated with you
 
 For example, if you want to add a security identity provider, such as SAML (Security Assertion Markup Language), click the **Create Identity Provider** button. 
 
-![Security page](/img/clarifai_orgs/security_page.png)
+> **Note:** SAML is a reliable mechanism that can add to the security of your organization’s account by ensuring authentication and authorization data are securely transferred between parties. 
 
 On the next page, provide the required details, toggle the enable button, and click the **Create** button to finalize the process. 
 
 ![Create identity provider](/img/clarifai_orgs/create_identity_provider.png)
-
-SAML is a reliable mechanism that can add to the security of your organization’s account by ensuring authentication and authorization data are securely transferred between parties.
 
 ---
 
@@ -6579,13 +6606,13 @@ SAML is a reliable mechanism that can add to the security of your organization�
 
 Clarifai Control Center is a unified dashboard, a single pane of glass to monitor everything happening within your account in our platform. It serves as the sole source of truth for various information dimensions, enabling you to make informed decisions based on data from different sources. 
 
-The Control Center is organized into multiple tabs and offers a versatile and intuitive way to explore specific details.
-
-The key functionalities include charts of different types, tables, date ranges, as well as filtering and sorting options. In the future, we plan to expand it to include smart widgets, alerts, comparison modules, raw data export, and more.
+The Control Center is organized into multiple tabs and offers a versatile and intuitive way to explore specific details. The key functionalities include charts of different types, tables, date ranges, as well as filtering and sorting options. 
 
 ## Your Central Hub for AI Operations
 
-The Control Center is your go-to dashboard for managing and monitoring everything you do on the Clarifai platform. It is designed to support you in a variety of scenarios:
+The Control Center is your go-to dashboard for managing and monitoring everything you do on the Clarifai platform. 
+
+It is designed to support you in a variety of scenarios:
 
 * **Unified operations view** — Access all your Clarifai operations from one screen, reducing the need to switch between tools or browser tabs.
 * **Utilization tracking** — Visualize resource usage through interactive charts, graphs, and tables to make data-driven decisions and maximize AI adoption across your organization.
@@ -6597,9 +6624,9 @@ The Control Center is your go-to dashboard for managing and monitoring everythin
 
 ## How to Access the Control Center
 
-To access the Control Center, log in to Clarifai’s [platform](https://clarifai.com/explore).  Then, click on the **Control Center** option in the top menu. 
+To access the Control Center, log in to Clarifai’s [platform](https://clarifai.com/explore). Then, in the collapsible left sidebar, select **Control Center** and choose **Overview** from the dropdown list.
 
-You’ll be redirected to the Control Center screen. 
+You’ll be taken to the Control Center's **[Overview](overview)** tab. 
 
 ![](/img/community/control-center/control_center_1.png)
 
@@ -7086,7 +7113,7 @@ It helps you track spending across each instance type.
 
 The Overview tab allows you to quickly access the charts and data you choose from other function-specific tabs within the Control Center. 
 
-It is selected by default when you access the Control Center. You can look at the section to get a quick summary of the activities you undertook. 
+To access it, select **Control Center** in the collapsible left sidebar and choose **Overview** from the dropdown list. You can look at the section to get a quick summary of the activities you undertook. 
 
 ![](/img/community/control-center/control_center_3-1.png)
 
@@ -8810,27 +8837,30 @@ import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 
 **Learn how to create a Clarifai application**
 
-As mentioned previously, [an app](https://docs.clarifai.com/create-manage/applications/) on the Clarifai platform acts as a central repository for models, datasets, inputs, and other resources. 
+[As mentioned previously](README.mdx), an app on the Clarifai platform acts as a central repository for models, datasets, inputs, and other resources. 
 
 ## **Create via the UI**
 
-To create an app, [log in](https://clarifai.com/login) to your account and click the **Create** button at the upper-right section of the navigation bar.
+To create an app, start by [logging in to](https://clarifai.com/login) to your account.
+
+Next, click the plus (**+**) button in the upper-right corner of the Clarifai platform dashboard. A dropdown menu will appear with several options. From the list, select **New Application**.
 
 ![create app portal](/img/others/create-new-app-new-1.png)
 
-And on the window that pops up, select the **Start with a Blank App** option to create a new application from scratch.
+> **Alternatively:** _Open the collapsible left sidebar and select **Projects**. From the dropdown that appears, choose **Select Application** to open a panel displaying a searchable list of your existing applications. Scroll to the bottom of this list and click the **Create new Application** option, marked with a **+** icon._
+> _![create app portal](/img/others/alternate-create-new-app-new.png)_
 
-:::tip
-
-You can also select the **Use an App Template** option to [use a template](https://docs.clarifai.com/clarifai-basics/app-templates) to create a new application. 
-
-:::
+Next, on the window that pops up, select the **Start with a Blank App** option to create a new application from scratch.
 
 ![application creation window](/img/create-new-app-new.png)
+
+> **Tip:** You can also select the **Use an App Template** option to [use a template](https://docs.clarifai.com/clarifai-basics/app-templates) to create a new application. 
 
 Next, on the window that appears, provide the information required to create a new application.
 
 ![](/img/others/create-new-app-new-2.png)
+
+- **Owner** — Choose the owner to associate with the app. By default, this is set to your personal account, but you can also select an organization you belong to, provided you have the necessary [permissions](https://docs.clarifai.com/control/clarifai-organizations/security#scopes-and-access-levels-of-organization-members) to create apps within it.
 
 - **App ID** — This serves as a unique identifier for your application. It’s important to choose a unique and memorable ID as it will be used for URLs and redirections.
 
@@ -8842,26 +8872,27 @@ Next, on the window that appears, provide the information required to create a n
 
 :::note ID Validation
 
-Application names and other names in the Portal must follow a few rules:
-
+Application names and other names in our platform must follow a few rules:
 - Names must be 1 to 32 letters or numbers in length, with hyphens or underscores as separators.
 - Spaces, periods, etc., are not allowed as separators.
 
 :::
 
-Lastly, click the **Create App** button at the upper-right corner of the page.
+Lastly, click the **Create App** button in the upper-right corner to finalize and create your application.
 
 ### Copy (Duplicate) Apps
 
-You can also create an app by cloning an existing application. Cloning an existing application can be a great way to start a new project, or branch an existing one. We’ve made cloning easy with a simple interface in the Portal. 
+You can also create a new app by cloning an existing one. Cloning is a convenient way to start a new project using an established setup or to branch off from an existing application. 
 
-After logging in to your Clarifai account, select the **My Apps** option on the navigation bar. Then, select the **Apps / Templates** option on the menu bar, and a list of your apps will populate that page. 
+To do so, open the collapsible left sidebar, select **Projects**, and then choose **All Resources** from the dropdown list. This will take you to a page that displays all the resources you own, with the **Apps / Templates** tab selected by default. 
 
-Click the series of dots at the bottom-right corner of the app you want to copy its contents. Then, select the **Duplicate** option on the list that drops down. 
+From there, locate the app you want to clone. Click the three dots in the bottom-right corner of the app card, and from the dropdown menu, select **Duplicate** to copy its contents into a new application.
 
 ![](/img/app_duplication.png)
 
-The small window that pops up lets you select the destination user or organization, along with the destination app. You can copy the app as a new one or select an existing app. Additionally, you can specify particular resources you wish to duplicate.
+> **Note:** The dropdown menu also allows you to copy the app ID or delete the app.
+
+Next, a pop-up window will appear where you can choose the destination user or organization, as well as the target application. You can either create a new app as the destination or copy the contents into an existing app. The window also allows you to specify which resources you want to duplicate.
 
 ![](/img/others/app_duplication-1.png)
 
@@ -8927,7 +8958,7 @@ This enables you to seamlessly integrate and customize the fundamental structure
 
 ### App Overview
 
-The App Overview page gives a glimpse of your app and its purpose. To access it, go to your application's individual page and select the **Overview** option on the collapsible left sidebar.
+The App Overview page gives a glimpse of your app and its purpose. To access it, go to your application's individual page and select the **Overview** option from the collapsible left sidebar.
 
 You'll be redirected to a page that gives an overview of the contents of your app. 
 
@@ -8936,10 +8967,10 @@ You'll be redirected to a page that gives an overview of the contents of your ap
 You can accomplish various tasks on that page. 
 
 -   Click the pencil icon next to the app ID to change it. 
--	Click the **Edit Visibility** button at the upper-right corner to edit the visibility of your app to either public or private.
--	Click the star icon at the upper-right corner to highlight your app. This marks it as a favorite and makes it easier to access among other listed apps. 
--	Click the three dots at the upper-right corner to reveal a drop-down list that lets you duplicate the app, copy its ID, or delete it.
--	View the number of each type of resource contained in your app—inputs, datasets, models, workflows, and modules. If the number is large and has been truncated in the display, click on the tooltip (?) to reveal the precise count of the resource.   
+-	Click the **Edit Visibility** button in the upper-right corner to edit the visibility of your app to either public or private.
+-	Click the star icon in the upper-right corner to highlight your app. This marks it as a favorite and makes it easier to access among other listed apps. 
+-	Click the three dots in the upper-right corner to reveal a dropdown list that lets you duplicate the app, copy its ID, or delete it.
+-	View the number of each type of resource contained in your app — inputs, datasets, models, workflows, and modules. If the number is large and has been truncated in the display, click on the tooltip (?) to reveal the precise count of the resource.   
 - Click the plus icon (**+**) within any resource type section to add the resource to your app. If you click the button, you’ll be redirected to a subsequent page that allows you to add the resource you want. 
 - Click the "view" link within any resource type section to view all the respective resources available in your app.
 -	Add notes that describe what your app is about. 
@@ -8952,11 +8983,11 @@ You can accomplish various tasks on that page.
 
 ### App Settings
 
-You can change the settings of an application at any time. To do so, go to the application's individual page and select the **Settings** option on the collapsible left sidebar.
+You can change the settings of an application at any time. To do so, go to the application's individual page and select the **Settings** option in the collapsible left sidebar.
 
-You'll be redirected to the **Settings** page, where you can change the application's settings.
+You'll be redirected to the **App Settings** page, where you can change the application's settings.
 
-![app settings](/img/edit_application.jpg)
+![app settings](/img/edit_application.png)
 
 Let's talk about the changes you can make on the page.
 
@@ -8970,35 +9001,22 @@ This page has intuitive elements that let you search for specific items and sort
 
 ##### Create API Keys
 
-Click the **Create API Key** button to add a new API key to your app. Then, use the form that pops up to generate a new API key — provide a short description, select the scopes, and click the **Confirm** button. 
+Click the **Create API Key** button to add a new [API key](https://docs.clarifai.com/control/authentication/key/) to your app. Then, use the form that pops up to generate a new API key — provide a short description, select the [scopes](https://docs.clarifai.com/control/authentication/scopes), and click the **Create API Key** button. 
 
 ![api keys](/img/application_settings_1.png)
 
-The new [app-specific key](https://docs.clarifai.com/clarifai-basics/authentication/app-specific-api-keys) will be listed in the **API Keys** section, where you can carry out various management tasks on it. 
+The new app-specific key will be listed in the **API Keys** section, where you can carry out various management tasks on it. 
 
-##### Copy an API Key
+##### Manage API Keys
 
-You can copy an API key to the clipboard by clicking the copy button.
+The **Actions** column allows you to complete the following actions:
 
 ![copy an api key](/img/application_settings_2.png)
 
-##### Show an API Key
-
-You can reveal an API key by clicking the show button. You can also hide it by clicking the same button. 
-
-![show api key](/img/application_settings_3.png)
-
-##### Edit an API Key
-
-You can edit an API key by clicking the edit button. A form will pop up that allows you to update the description and scopes of your API key. 
-
-![edit an api key](/img/application_settings_4.png)
-
-##### Delete an API Key
-
-You can delete an API key by clicking the delete button.
-
-![delete an api key](/img/application_settings_5.png)
+- Copy an API key to the clipboard by clicking the copy button.
+- Reveal an API key by clicking the show button. You can also hide it by clicking the same button.
+- Edit an API key by clicking the edit button. A form will pop up that allows you to update the description and scopes of your API key. 
+- Delete an API key by clicking the delete button.
 
 #### Collaborators
 
@@ -9010,23 +9028,21 @@ For example, you can give a trusted collaborator full access privileges. You can
 
 To add a collaborator to your app, click the **Add Collaborators** button in the **Collaborators** section. A form will appear that allows you to invite a collaborator. 
 
+![add a collaborator](/img/application_settings_6.png)
+
 Enter the email address associated with the collaborator’s Clarifai account and specify the scope of resources you want them to access. 
 
 Lastly, click the **Confirm** button. The invited collaborator will receive an email notification informing them that they have been added to the app.
 
 :::note
 
-- The collaborator you want to invite must have a registered account on the Clarifai portal. 
-
+- The collaborator you want to invite must have a registered account on the Clarifai platform. 
 - [Personal Access Tokens (PATs)](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens) are automatically generated for collaborators, providing them access to the Clarifai API.
-
 - Collaborators can also invite other collaborators.
 
 :::
 
-![add a collaborator](/img/application_settings_6.png)
-
-> _Alternatively, you can add a collaborator directly from the **App Overview** page._ 
+> _Alternatively, you can add a collaborator directly from the **[App Overview](#app-overview)** page._ 
 
 > _![](/img/others-2/app-collaboration-1.png)_
 
@@ -9060,39 +9076,31 @@ Workflow: Add, Remove and Delete Workflows of Models
 
 :::
 
-##### Delete a Collaborator
+##### Manage Collaborators
 
-You can remove a collaborator by clicking the delete button.
+You can edit a collaborator’s scopes or remove them entirely by using the corresponding buttons in the **Actions** column.
 
-![delete a collaborator](/img/application_settings_7.png)
+![manage collaborator](/img/application_settings_7.png)
 
 ##### View Collaborations
 
-You can easily access the apps where you've been added as a collaborator by selecting the **Collaborations** option in the top menu. This will take you to a page that lists all the apps you've been invited to collaborate on.
+You can easily access the apps where you've been added as a collaborator. To do so, click your user profile icon in the upper-right corner of the Clarifai dashboard and select **Collaborations** from the dropdown menu.
 
- ![](/img/others-2/view-collaborations.png)
+This will take you to a page that lists all the apps you've been invited to collaborate on.
+
+![](/img/others-2/view-collaborations.png)
 
 #### Base Workflow
 
-A base workflow is the workflow you choose as the default knowledge base when creating an application. It optimizes your custom model performance.
-
-You can change your app's base workflow by selecting another one from the list that drops down when you click the workflows search box. You can choose public workflows or workflows you've created in your app. 
-
-:::note
-
-Updating the base workflow will re-index your app, processing all inputs through the new base workflow. This may take some time, and could incur costs. You could avoid the costs by deleting all your inputs before updating the base workflow.
-
-:::
-
-After selecting your preferred Base Workflow, click the **Change Base Workflow** button. 
+[A base workflow](https://docs.clarifai.com/create/workflows/base-workflows/) is the workflow you choose as the default knowledge base when creating an application. It optimizes your custom model performance.
 
 ![change base workflow](/img/application_settings_8.png) 
 
-:::info
+You can change your app's base workflow by selecting another one from the list that drops down when you click the workflows search box. You can choose public workflows or workflows you've created in your app. 
 
-[Click here](https://docs.clarifai.com/portal-guide/workflows/base-workflows) to learn more about the base workflow functionality. 
+> **Note:** If you select the **Reindex existing inputs** checkbox, updating the base workflow will trigger a reindex of your app, reprocessing all inputs through the new base workflow. This process may take some time and could incur additional costs. To avoid these costs, you can delete all your inputs before updating the base workflow. 
 
-:::
+After selecting your preferred base workflow, click the **Change Base Workflow** button. 
 
 :::warning
 
@@ -9102,7 +9110,9 @@ Performing any of the actions below is dangerous. So, you need to proceed with c
 
 #### Update Visibility
 
-You can easily toggle your app's visibility between private and public modes by clicking the **Update Visibility** button.
+To change your app’s visibility, click the **Edit Visibility** button. In the pop-up window, select either **Public** to make the app accessible to anyone or **Private** to restrict access. Then, click **Confirm** to apply the change.
+
+> **Note:** You can also enable the **Mark App as a template** option to make the app reusable as a starting point. Marking an app as a [template](https://docs.clarifai.com/create/applications/templates) allows its resources — such as inputs, datasets, models, workflows, and modules — to be used as the foundation for creating new applications.
 
 ![update visibility](/img/application_settings_update_visibility.png) 
 
@@ -9124,9 +9134,9 @@ You can delete all models by clicking the **Delete all Models** button. A small 
 
 ![delete all models](/img/application_settings_10.png)
 
-#### Transfer Application
+#### Transfer Ownership
 
-You can transfer your application to an [organization](https://docs.clarifai.com/portal-guide/clarifai-organizations/) you belong to and have permission to create apps. This would greatly enhance collaboration and boost your productivity.
+You can [transfer your application](https://docs.clarifai.com/control/clarifai-organizations/apps-models-workflows#transfer-an-app) to an organization you belong to and have permission to create apps. This would greatly enhance collaboration and boost your productivity.
 
 To do so, click the **Transfer** button. On the small window that pops up, select the app’s destination organization and give it a new name, if you want to.
 
@@ -9253,10 +9263,9 @@ You might choose an app template over building a custom application from scratch
 
 We provide a variety of application templates in various categories to help you hit the ground running. 
 
-:::warning on rapid expansion
+:::note on rapid expansion
 
 - We're constantly expanding our library of templates, with new additions released on a regular basis. You can check [here](https://clarifai.com/explore/apps?activeToggle=Templates&page=1&perPage=24) for them. 
-
 - We'll also introduce the ability to build your own app templates soon. 
 
 :::
@@ -9280,13 +9289,20 @@ There are two ways to create an application using a template.
 
 ### Via the create-an-app modal
 
-[Log in]( https://clarifai.com/login) to your account and click the **Create** button at the upper-right section of the navigation bar. 
+To create an app using a template, start by [logging in to](https://clarifai.com/login) to your account.
 
-![](/img/others/app-template-1.png)
+Next, click the plus (**+**) button in the upper-right corner of the Clarifai platform dashboard. A dropdown menu will appear with several options. From the list, select **New Application**.
 
-On the modal window that pops up, select the **Use an App Template** option. 
+![](/img/others/app-template-9.png)
+
+> **Alternatively:** _Open the collapsible left sidebar and select **Projects**. From the dropdown that appears, choose **Select Application** to open a panel displaying a searchable list of your existing applications. Scroll to the bottom of this list and click the **Create new Application** option, marked with a **+** icon._
+> _![](/img/others/app-template-10.png)_
+
+Next, on the window that pops up, select the **Use an App Template** option to create a new application using a template.
 
 ![](/img/others/app-template-2.png)
+
+> **Tip:** You can also select the **Start with a Blank App** option to start [creating a new application](https://docs.clarifai.com/create/applications/create#create-via-the-ui) from scratch. 
 
 The ensuing page lets you select a template for creating your application. You can opt for a template provided by the community or select one of your own creations.
 
@@ -9304,17 +9320,16 @@ For example, if you click the **View models** link, a modal will appear displayi
 
 ![](/img/others/app-template-3-2.png)
 
-Next, click the **Select Template** button at the upper-right corner of the page. 
+Next, click the **Select Template** button in the upper-right corner of the page. 
 
 ![](/img/others/app-template-4.png)
 
 Next, specify the setup of your new application. 
 
 - Provide an app ID, which serves as a unique identifier for your application. It’s important to choose a unique and memorable ID as it will be used for URLs and redirections. 
-
 - Optionally, provide a brief description that outlines the purpose or features of your app. 
 
-Lastly, click the **Create App** button at the upper-right corner of the page. 
+Lastly, click the **Create App** button in the upper-right corner of the page. 
 
 ![](/img/others/app-template-5.png)
 
@@ -9324,11 +9339,13 @@ Once the app has been created, you can begin using it immediately. For example, 
 
 ### Via an app’s template page
 
-After logging in to your Clarifai account, select the **Community** option on the navigation bar. 
+You can also create an app from the page of an existing template.
 
-Then, select the **Apps / Templates** option on the menu bar as well as **Templates** on the far-right side. A list of community templates available will be populated on that page. 
+To do so, open the collapsible left sidebar, select **Projects**, and choose **All Resources** from the dropdown list.
 
-Select the template you want to use. For this illustration, let’s select the **rag-template** template.
+This will open a page showing all the resources you own, with the **Apps / Templates** tab selected by default. From there, select the **Templates** tab in the right side of the page.
+
+A list of the available templates  will be populated on that page. Select the template you want to use. 
 
 ![](/img/others/app-template-6.png)
 
@@ -9336,7 +9353,7 @@ You’ll be directed to the template’s individual page.
 
 ![](/img/others/app-template-7.png)
 
-Click the **Use Template** button at the upper-right corner of the page. And in the small window that pops up, provide the details for creating your new application – as mentioned earlier. The pop-up window also displays the types of resources included within the template.
+Next, click the **Use Template** button in the upper-right corner of the page. And in the window that pops up, provide the details for creating your new application. The pop-up window also displays the types of resources included within the template.
 
 Lastly, click the **Create App** button to finalize the creation of your app.
 
