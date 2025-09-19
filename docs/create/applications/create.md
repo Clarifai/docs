@@ -8,28 +8,30 @@ sidebar_position: 1
 **Learn how to create a Clarifai application**
 <hr />
 
-As mentioned previously, [an app](https://docs.clarifai.com/create-manage/applications/) on the Clarifai platform acts as a central repository for models, datasets, inputs, and other resources. 
+[As mentioned previously](README.mdx), an app on the Clarifai platform acts as a central repository for models, datasets, inputs, and other resources. 
 
 ## **Create via the UI**
 
-To create an app, [log in](https://clarifai.com/login) to your account and click the **Create** button at the upper-right section of the navigation bar.
+To create an app, start by [logging in to](https://clarifai.com/login) to your account.
+
+Next, click the plus (**+**) button in the upper-right corner of the Clarifai platform dashboard. A dropdown menu will appear with several options. From the list, select **New Application**.
 
 ![create app portal](/img/others/create-new-app-new-1.png)
 
-And on the window that pops up, select the **Start with a Blank App** option to create a new application from scratch.
+> **Alternatively:** _Open the collapsible left sidebar and select **Projects**. From the dropdown that appears, choose **Select Application** to open a panel displaying a searchable list of your existing applications. Scroll to the bottom of this list and click the **Create new Application** option, marked with a **+** icon._
+> _![create app portal](/img/others/alternate-create-new-app-new.png)_
 
-
-:::tip
-
-You can also select the **Use an App Template** option to [use a template](https://docs.clarifai.com/clarifai-basics/app-templates) to create a new application. 
-
-:::
+Next, on the window that pops up, select the **Start with a Blank App** option to create a new application from scratch.
 
 ![application creation window](/img/create-new-app-new.png)
+
+> **Tip:** You can also select the **Use an App Template** option to [use a template](https://docs.clarifai.com/clarifai-basics/app-templates) to create a new application. 
 
 Next, on the window that appears, provide the information required to create a new application.
 
 ![](/img/others/create-new-app-new-2.png)
+
+- **Owner** — Choose the owner to associate with the app. By default, this is set to your personal account, but you can also select an organization you belong to, provided you have the necessary [permissions](https://docs.clarifai.com/control/clarifai-organizations/security#scopes-and-access-levels-of-organization-members) to create apps within it.
 
 - **App ID** — This serves as a unique identifier for your application. It’s important to choose a unique and memorable ID as it will be used for URLs and redirections.
 
@@ -41,37 +43,32 @@ Next, on the window that appears, provide the information required to create a n
 
 :::note ID Validation
 
-Application names and other names in the Portal must follow a few rules:
-
+Application names and other names in our platform must follow a few rules:
 - Names must be 1 to 32 letters or numbers in length, with hyphens or underscores as separators.
 - Spaces, periods, etc., are not allowed as separators.
 
 :::
 
-Lastly, click the **Create App** button at the upper-right corner of the page.
+Lastly, click the **Create App** button in the upper-right corner to finalize and create your application.
 
-<!--
-### Default Language
-You can also set the default language so that you can create, train, and search concepts in your own language. Please keep in mind that pre-trained model concepts currently only work in English.
--->
 
 ### Copy (Duplicate) Apps
 
-You can also create an app by cloning an existing application. Cloning an existing application can be a great way to start a new project, or branch an existing one. We’ve made cloning easy with a simple interface in the Portal. 
+You can also create a new app by cloning an existing one. Cloning is a convenient way to start a new project using an established setup or to branch off from an existing application. 
 
-After logging in to your Clarifai account, select the **My Apps** option on the navigation bar. Then, select the **Apps / Templates** option on the menu bar, and a list of your apps will populate that page. 
+To do so, open the collapsible left sidebar, select **Projects**, and then choose **All Resources** from the dropdown list. This will take you to a page that displays all the resources you own, with the **Apps / Templates** tab selected by default. 
 
-Click the series of dots at the bottom-right corner of the app you want to copy its contents. Then, select the **Duplicate** option on the list that drops down. 
+From there, locate the app you want to clone. Click the three dots in the bottom-right corner of the app card, and from the dropdown menu, select **Duplicate** to copy its contents into a new application.
 
 ![](/img/app_duplication.png)
 
+> **Note:** The dropdown menu also allows you to copy the app ID or delete the app.
 
-The small window that pops up lets you select the destination user or organization, along with the destination app. You can copy the app as a new one or select an existing app. Additionally, you can specify particular resources you wish to duplicate.
+Next, a pop-up window will appear where you can choose the destination user or organization, as well as the target application. You can either create a new app as the destination or copy the contents into an existing app. The window also allows you to specify which resources you want to duplicate.
 
 ![](/img/others/app_duplication-1.png)
 
 Lastly, click the **Confirm** button, and the copied app will be automatically created for you. 
-
 
 ## **Create via the API**
 

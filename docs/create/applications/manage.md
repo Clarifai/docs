@@ -1,7 +1,7 @@
 ---
 description: Learn how to manage your Clarifai applications
 sidebar_position: 2
-toc_max_heading_level: 4
+toc_max_heading_level: 5
 ---
 
 # Apps Management
@@ -13,7 +13,7 @@ toc_max_heading_level: 4
 
 ### App Overview
 
-The App Overview page gives a glimpse of your app and its purpose. To access it, go to your application's individual page and select the **Overview** option on the collapsible left sidebar.
+The App Overview page gives a glimpse of your app and its purpose. To access it, go to your application's individual page and select the **Overview** option from the collapsible left sidebar.
 
 You'll be redirected to a page that gives an overview of the contents of your app. 
 
@@ -22,10 +22,10 @@ You'll be redirected to a page that gives an overview of the contents of your ap
 You can accomplish various tasks on that page. 
 
 -   Click the pencil icon next to the app ID to change it. 
--	Click the **Edit Visibility** button at the upper-right corner to edit the visibility of your app to either public or private.
--	Click the star icon at the upper-right corner to highlight your app. This marks it as a favorite and makes it easier to access among other listed apps. 
--	Click the three dots at the upper-right corner to reveal a drop-down list that lets you duplicate the app, copy its ID, or delete it.
--	View the number of each type of resource contained in your app—inputs, datasets, models, workflows, and modules. If the number is large and has been truncated in the display, click on the tooltip (?) to reveal the precise count of the resource.   
+-	Click the **Edit Visibility** button in the upper-right corner to edit the visibility of your app to either public or private.
+-	Click the star icon in the upper-right corner to highlight your app. This marks it as a favorite and makes it easier to access among other listed apps. 
+-	Click the three dots in the upper-right corner to reveal a dropdown list that lets you duplicate the app, copy its ID, or delete it.
+-	View the number of each type of resource contained in your app — inputs, datasets, models, workflows, and modules. If the number is large and has been truncated in the display, click on the tooltip (?) to reveal the precise count of the resource.   
 - Click the plus icon (**+**) within any resource type section to add the resource to your app. If you click the button, you’ll be redirected to a subsequent page that allows you to add the resource you want. 
 - Click the "view" link within any resource type section to view all the respective resources available in your app.
 -	Add notes that describe what your app is about. 
@@ -38,11 +38,11 @@ You can accomplish various tasks on that page.
 
 ### App Settings
 
-You can change the settings of an application at any time. To do so, go to the application's individual page and select the **Settings** option on the collapsible left sidebar.
+You can change the settings of an application at any time. To do so, go to the application's individual page and select the **Settings** option in the collapsible left sidebar.
 
-You'll be redirected to the **Settings** page, where you can change the application's settings.
+You'll be redirected to the **App Settings** page, where you can change the application's settings.
 
-![app settings](/img/edit_application.jpg)
+![app settings](/img/edit_application.png)
 
 Let's talk about the changes you can make on the page.
 
@@ -56,35 +56,22 @@ This page has intuitive elements that let you search for specific items and sort
 
 ##### Create API Keys
 
-Click the **Create API Key** button to add a new API key to your app. Then, use the form that pops up to generate a new API key — provide a short description, select the scopes, and click the **Confirm** button. 
+Click the **Create API Key** button to add a new [API key](https://docs.clarifai.com/control/authentication/key/) to your app. Then, use the form that pops up to generate a new API key — provide a short description, select the [scopes](https://docs.clarifai.com/control/authentication/scopes), and click the **Create API Key** button. 
 
 ![api keys](/img/application_settings_1.png)
 
-The new [app-specific key](https://docs.clarifai.com/clarifai-basics/authentication/app-specific-api-keys) will be listed in the **API Keys** section, where you can carry out various management tasks on it. 
+The new app-specific key will be listed in the **API Keys** section, where you can carry out various management tasks on it. 
 
-##### Copy an API Key
+##### Manage API Keys
 
-You can copy an API key to the clipboard by clicking the copy button.
+The **Actions** column allows you to complete the following actions:
 
 ![copy an api key](/img/application_settings_2.png)
 
-##### Show an API Key
-
-You can reveal an API key by clicking the show button. You can also hide it by clicking the same button. 
-
-![show api key](/img/application_settings_3.png)
-
-##### Edit an API Key
-
-You can edit an API key by clicking the edit button. A form will pop up that allows you to update the description and scopes of your API key. 
-
-![edit an api key](/img/application_settings_4.png)
-
-##### Delete an API Key
-
-You can delete an API key by clicking the delete button.
-
-![delete an api key](/img/application_settings_5.png)
+- Copy an API key to the clipboard by clicking the copy button.
+- Reveal an API key by clicking the show button. You can also hide it by clicking the same button.
+- Edit an API key by clicking the edit button. A form will pop up that allows you to update the description and scopes of your API key. 
+- Delete an API key by clicking the delete button.
 
 #### Collaborators
 
@@ -96,24 +83,21 @@ For example, you can give a trusted collaborator full access privileges. You can
 
 To add a collaborator to your app, click the **Add Collaborators** button in the **Collaborators** section. A form will appear that allows you to invite a collaborator. 
 
+![add a collaborator](/img/application_settings_6.png)
+
 Enter the email address associated with the collaborator’s Clarifai account and specify the scope of resources you want them to access. 
 
 Lastly, click the **Confirm** button. The invited collaborator will receive an email notification informing them that they have been added to the app.
 
 :::note
 
-- The collaborator you want to invite must have a registered account on the Clarifai portal. 
-
+- The collaborator you want to invite must have a registered account on the Clarifai platform. 
 - [Personal Access Tokens (PATs)](https://docs.clarifai.com/clarifai-basics/authentication/personal-access-tokens) are automatically generated for collaborators, providing them access to the Clarifai API.
-
 - Collaborators can also invite other collaborators.
 
 :::
 
-![add a collaborator](/img/application_settings_6.png)
-
-
-> _Alternatively, you can add a collaborator directly from the **App Overview** page._ 
+> _Alternatively, you can add a collaborator directly from the **[App Overview](#app-overview)** page._ 
 
 > _![](/img/others-2/app-collaboration-1.png)_
 
@@ -148,39 +132,31 @@ Workflow: Add, Remove and Delete Workflows of Models
 
 :::
 
-##### Delete a Collaborator
+##### Manage Collaborators
 
-You can remove a collaborator by clicking the delete button.
+You can edit a collaborator’s scopes or remove them entirely by using the corresponding buttons in the **Actions** column.
 
-![delete a collaborator](/img/application_settings_7.png)
+![manage collaborator](/img/application_settings_7.png)
 
 ##### View Collaborations
 
-You can easily access the apps where you've been added as a collaborator by selecting the **Collaborations** option in the top menu. This will take you to a page that lists all the apps you've been invited to collaborate on.
+You can easily access the apps where you've been added as a collaborator. To do so, click your user profile icon in the upper-right corner of the Clarifai dashboard and select **Collaborations** from the dropdown menu.
 
- ![](/img/others-2/view-collaborations.png)
+This will take you to a page that lists all the apps you've been invited to collaborate on.
+
+![](/img/others-2/view-collaborations.png)
 
 #### Base Workflow
 
-A base workflow is the workflow you choose as the default knowledge base when creating an application. It optimizes your custom model performance.
-
-You can change your app's base workflow by selecting another one from the list that drops down when you click the workflows search box. You can choose public workflows or workflows you've created in your app. 
-
-:::note
-
-Updating the base workflow will re-index your app, processing all inputs through the new base workflow. This may take some time, and could incur costs. You could avoid the costs by deleting all your inputs before updating the base workflow.
-
-:::
-
-After selecting your preferred Base Workflow, click the **Change Base Workflow** button. 
+[A base workflow](https://docs.clarifai.com/create/workflows/base-workflows/) is the workflow you choose as the default knowledge base when creating an application. It optimizes your custom model performance.
 
 ![change base workflow](/img/application_settings_8.png) 
 
-:::info
+You can change your app's base workflow by selecting another one from the list that drops down when you click the workflows search box. You can choose public workflows or workflows you've created in your app. 
 
-[Click here](https://docs.clarifai.com/portal-guide/workflows/base-workflows) to learn more about the base workflow functionality. 
+> **Note:** If you select the **Reindex existing inputs** checkbox, updating the base workflow will trigger a reindex of your app, reprocessing all inputs through the new base workflow. This process may take some time and could incur additional costs. To avoid these costs, you can delete all your inputs before updating the base workflow. 
 
-:::
+After selecting your preferred base workflow, click the **Change Base Workflow** button. 
 
 :::warning
 
@@ -190,7 +166,9 @@ Performing any of the actions below is dangerous. So, you need to proceed with c
 
 #### Update Visibility
 
-You can easily toggle your app's visibility between private and public modes by clicking the **Update Visibility** button.
+To change your app’s visibility, click the **Edit Visibility** button. In the pop-up window, select either **Public** to make the app accessible to anyone or **Private** to restrict access. Then, click **Confirm** to apply the change.
+
+> **Note:** You can also enable the **Mark App as a template** option to make the app reusable as a starting point. Marking an app as a [template](https://docs.clarifai.com/create/applications/templates) allows its resources — such as inputs, datasets, models, workflows, and modules — to be used as the foundation for creating new applications.
 
 ![update visibility](/img/application_settings_update_visibility.png) 
 
@@ -212,9 +190,9 @@ You can delete all models by clicking the **Delete all Models** button. A small 
 
 ![delete all models](/img/application_settings_10.png)
 
-#### Transfer Application
+#### Transfer Ownership
 
-You can transfer your application to an [organization](https://docs.clarifai.com/portal-guide/clarifai-organizations/) you belong to and have permission to create apps. This would greatly enhance collaboration and boost your productivity.
+You can [transfer your application](https://docs.clarifai.com/control/clarifai-organizations/apps-models-workflows#transfer-an-app) to an organization you belong to and have permission to create apps. This would greatly enhance collaboration and boost your productivity.
 
 To do so, click the **Transfer** button. On the small window that pops up, select the app’s destination organization and give it a new name, if you want to.
 

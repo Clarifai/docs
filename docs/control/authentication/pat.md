@@ -31,9 +31,7 @@ A PAT allows you to make inferences on resources that are outside the scope of y
 
 A default PAT is automatically generated for you when you create an account on the Clarifai platform. Nonetheless, you can also create a new PAT explicitly on the platform. 
 
-To create it, [log in](https://clarifai.com/login) to the platform, go to the top-right corner of the navigation bar, and open the drop-down menu.
-
-Then, in the collapsible left sidebar, select **Settings** and choose **Security** from the dropdown list.
+To create it, [log in](https://clarifai.com/login) to the Clarifai platform. Then, in the collapsible left sidebar, select **Settings** and choose **Security** from the dropdown list.
 
 ![Create new PAT on Community](/img/others/create_pat_community.png)
 

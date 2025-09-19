@@ -20,13 +20,11 @@ Organization members are individuals who have been invited to join an organizati
 
 ### How to Add Members 
 
-[Log into](README.mdx#how-to-use-an-org) your organization’s account, click the menu in the upper-right corner of the navigation bar, and select **Members** from the drop-down list.
-
-![Account option](/img/clarifai_orgs/account_option.png)
+[Log into](README.mdx#how-to-use-an-org) your organization’s account. Then, in the collapsible left sidebar, select **Settings** and choose **Members** from the dropdown list.
 
 You’ll be redirected to the **Members** page, where you can add new members and carry out various member management tasks. 
 
-![Organization settings page](/img/clarifai_orgs/organization_settings_page.png)
+![Account option](/img/clarifai_orgs/account_option.png)
 
 To add a new team member to your organization, you need to send them an invitation first. Click the **Invite Members** button to do so. 
 
@@ -82,19 +80,21 @@ Teams allow you to bring different members of your organization together to acco
 
 ### How to Add Teams
 
-[Log into](README.mdx#how-to-use-an-org) your organization’s account, click the menu in the upper-right corner of the navigation bar, and select **Teams** from the drop-down list.
-
-![ ](/img/clarifai_orgs/organization_teams_1.png)
+[Log into](README.mdx#how-to-use-an-org) your organization’s account. Then, in the collapsible left sidebar, select **Settings** and choose **Teams** from the dropdown list.
 
 You’ll be redirected to the **Teams** page, where you can create new teams and carry out various team management tasks. 
 
-![Organization teams](/img/clarifai_orgs/organization_teams.png)
+![ ](/img/clarifai_orgs/organization_teams_1.png)
 
-Click the **Create Team** button to add a new team to your organization. In the dialog box that appears, enter the team ID, team name, and set the permissions for the team (the permissions are [described below](#permission-types-for-teams)). 
+Click the **Create Team** button to add a new team to your organization. 
 
-![Create team dialog box](/img/clarifai_orgs/create_team_dialog_box.png)
+![Create team dialog box](/img/clarifai_orgs/create_team_dialog_box-2.png)
+
+In the dialog box that appears, enter the team ID, team name, and set the permissions for the team (the permissions are [described below](#permission-types-for-teams)). 
 
 Click the **Confirm** button to finalize creating the team. 
+
+![Create team dialog box](/img/clarifai_orgs/create_team_dialog_box.png)
 
 Your newly created team will appear on the **Teams** listing page. You can view other teams you've added and delete them from that table.
 
@@ -118,13 +118,13 @@ Your newly created team will appear on the **Teams** listing page. You can view 
 
 When you click on a team from the **Teams** listing page, you’ll be taken to its individual page, where you can manage and perform various team-related tasks.
 
-For example, click the three-dot menu in the upper-right corner to open a drop-down list, where you can select either **Edit Team Name** to rename the team or **Delete Team** to remove it.
+For example, click the three-dot menu in the upper-right corner to open a dropdown list, where you can select either **Edit Team Name** to rename the team or **Delete Team** to remove it.
 
 ![manage a team](/img/clarifai_orgs/how_to_manage_team.png)
 
 #### Add and Manage Team Members
 
-To add members to a team, first select the **Members** tab. Then, click the **Add Members** button at the upper-right section of the page. 
+To add members to a team, first select the **Members** tab. Then, click the **Add Members** button in the upper-right section of the page. 
 
 ![Individual team page](/img/clarifai_orgs/individual_team_page.png)
 
@@ -134,13 +134,15 @@ In the dialog box that appears, search for a member(s) of your organization and 
 
 The newly added member will appear in the **Members** tab, where you can also view all existing members and remove them if needed.
 
+![ ](/img/clarifai_orgs/add_team_members_2.png)
+
 #### Add and Manage Team Apps
 
-To assign an app to a team, first select the **Apps** tab. Then, click the **Add App** button at the upper-right section of the page. 
+To assign an app to a team, first select the **Apps** tab. Then, click the **Add App** button in the upper-right section of the page. 
 
 ![add app  to team](/img/clarifai_orgs/add_app_to_team.png)
 
-> **Note**: You can set the default access level for your team members when adding apps — Full Access, Labeler Worker, Labeler Lead, or Model Trainer, [as explained previously](#permission-types-for-teams). Use the drop-down menu on the right side of the apps listing page to set these permissions, which you can always customize later if needed.
+> **Note**: You can set the default access level for your team members when adding apps — Full Access, Labeler Worker, Labeler Lead, or Model Trainer, [as explained previously](#permission-types-for-teams). Use the dropdown menu on the right side of the apps listing page to set these permissions, which you can always customize later if needed.
 
 In the dialog box that appears, search for the app(s) you want to add to your team. Note that you can only add apps that already belong to your organization — either those you created or those [transferred](apps-models-workflows.md#transfer-an-app) into it. From the same dialog, you can also set the permissions for the added app(s).
 
@@ -154,7 +156,7 @@ The newly added app will appear on the apps listing page, where you can also vie
 
 :::note tip
 
-On the **App Settings** page of an organization app, you can view the teams that have access to the app, edit their permissions, or add new teams.
+On the **App Settings** page of an organization app, you can view the teams that have access to the app, edit their permissions, and add or delete teams.
 
 ![newly added app](/img/clarifai_orgs/gs_4.png)
 

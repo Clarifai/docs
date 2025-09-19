@@ -34,10 +34,9 @@ You might choose an app template over building a custom application from scratch
 
 We provide a variety of application templates in various categories to help you hit the ground running. 
 
-:::warning on rapid expansion
+:::note on rapid expansion
 
 - We're constantly expanding our library of templates, with new additions released on a regular basis. You can check [here](https://clarifai.com/explore/apps?activeToggle=Templates&page=1&perPage=24) for them. 
-
 - We'll also introduce the ability to build your own app templates soon. 
 
 :::
@@ -61,13 +60,20 @@ There are two ways to create an application using a template.
 
 ### Via the create-an-app modal
 
-[Log in]( https://clarifai.com/login) to your account and click the **Create** button at the upper-right section of the navigation bar. 
+To create an app using a template, start by [logging in to](https://clarifai.com/login) to your account.
 
-![](/img/others/app-template-1.png)
+Next, click the plus (**+**) button in the upper-right corner of the Clarifai platform dashboard. A dropdown menu will appear with several options. From the list, select **New Application**.
 
-On the modal window that pops up, select the **Use an App Template** option. 
+![](/img/others/app-template-9.png)
+
+> **Alternatively:** _Open the collapsible left sidebar and select **Projects**. From the dropdown that appears, choose **Select Application** to open a panel displaying a searchable list of your existing applications. Scroll to the bottom of this list and click the **Create new Application** option, marked with a **+** icon._
+> _![](/img/others/app-template-10.png)_
+
+Next, on the window that pops up, select the **Use an App Template** option to create a new application using a template.
 
 ![](/img/others/app-template-2.png)
+
+> **Tip:** You can also select the **Start with a Blank App** option to start [creating a new application](https://docs.clarifai.com/create/applications/create#create-via-the-ui) from scratch. 
 
 The ensuing page lets you select a template for creating your application. You can opt for a template provided by the community or select one of your own creations.
 
@@ -85,17 +91,16 @@ For example, if you click the **View models** link, a modal will appear displayi
 
 ![](/img/others/app-template-3-2.png)
 
-Next, click the **Select Template** button at the upper-right corner of the page. 
+Next, click the **Select Template** button in the upper-right corner of the page. 
 
 ![](/img/others/app-template-4.png)
 
 Next, specify the setup of your new application. 
 
 - Provide an app ID, which serves as a unique identifier for your application. It’s important to choose a unique and memorable ID as it will be used for URLs and redirections. 
-
 - Optionally, provide a brief description that outlines the purpose or features of your app. 
 
-Lastly, click the **Create App** button at the upper-right corner of the page. 
+Lastly, click the **Create App** button in the upper-right corner of the page. 
 
 ![](/img/others/app-template-5.png)
 
@@ -105,11 +110,13 @@ Once the app has been created, you can begin using it immediately. For example, 
 
 ### Via an app’s template page
 
-After logging in to your Clarifai account, select the **Community** option on the navigation bar. 
+You can also create an app from the page of an existing template.
 
-Then, select the **Apps / Templates** option on the menu bar as well as **Templates** on the far-right side. A list of community templates available will be populated on that page. 
+To do so, open the collapsible left sidebar, select **Projects**, and choose **All Resources** from the dropdown list.
 
-Select the template you want to use. For this illustration, let’s select the **rag-template** template.
+This will open a page showing all the resources you own, with the **Apps / Templates** tab selected by default. From there, select the **Templates** tab in the right side of the page.
+
+A list of the available templates  will be populated on that page. Select the template you want to use. 
 
 ![](/img/others/app-template-6.png)
 
@@ -117,6 +124,6 @@ You’ll be directed to the template’s individual page.
 
 ![](/img/others/app-template-7.png)
 
-Click the **Use Template** button at the upper-right corner of the page. And in the small window that pops up, provide the details for creating your new application – as mentioned earlier. The pop-up window also displays the types of resources included within the template.
+Next, click the **Use Template** button in the upper-right corner of the page. And in the window that pops up, provide the details for creating your new application. The pop-up window also displays the types of resources included within the template.
 
 Lastly, click the **Create App** button to finalize the creation of your app. 
