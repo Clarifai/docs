@@ -31,11 +31,11 @@ You cannot use an API Key to access models, model versions, workflows, or other 
 
 ## How to Create API Keys on the Platform
 
-In the collapsible left sidebar, select **Projects**. Then, choose the application you want to generate an API key for.
+In the collapsible left sidebar, select the **Projects** option. Then, choose the application you want to generate an API key for.
 
 ![App settings create key](/img/others/create_api_key_select_app.png)
 
-You'll be redirected to the application's individual page. Select the **Settings** option.
+You'll be redirected to the application's individual page. Select the **Settings** option in the app's collapsible left sidebar.
 
 Next, on the **App Settings** page, within the **API Keys** section, click the **Create API Key** button. 
 

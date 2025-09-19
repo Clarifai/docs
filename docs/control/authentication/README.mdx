@@ -8,9 +8,13 @@ title: "Authentication"
 **Secure, compliant AI**
 <hr />
 
-Clarifai makes it easy to manage user access for an individual or a whole team.
+Authentication ensures secure access to the Clarifai platform. You can log in with your username and password through the web interface or use Google or GitHub single-sign-on (SSO). 
 
-Learn how to use Personal Access Tokens (PATs) and API Keys to manage authentication to your applications.
+> **Note:** The length of a login session depends on how you sign in: SSO sessions remain active for seven days. When using a regular username and password, selecting “remember me” extends the session to 30 days, while logging in without it limits the session to just one day.
+
+For API and SDK interactions, authentication is handled using a Personal Access Token (PAT) or API Key, which provide secure access without sharing your password.
+
+This section walks you through the available authentication methods, how to set them up, and best practices for keeping your credentials safe.
 
 import DocCardList from '@theme/DocCardList';
 import {useCurrentSidebarCategory} from '@docusaurus/theme-common';

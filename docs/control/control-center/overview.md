@@ -10,7 +10,7 @@ sidebar_position: 1
 
 The Overview tab allows you to quickly access the charts and data you choose from other function-specific tabs within the Control Center. 
 
-It is selected by default when you access the Control Center. You can look at the section to get a quick summary of the activities you undertook. 
+To access it, select **Control Center** in the collapsible left sidebar and choose **Overview** from the dropdown list. You can look at the section to get a quick summary of the activities you undertook. 
 
 ![](/img/community/control-center/control_center_3-1.png)
 

@@ -61,7 +61,7 @@ Here is a table detailing the scopes and access levels allowed for each user typ
 
 You can take some additional actions to augment the security of your organization at Clarifai.
 
-To access the security settings of your organization, [log into](README.mdx#how-to-use-an-org) your organization’s account, click the menu in the upper-right corner of the navigation bar, and select **Security** from the drop-down list.
+To access the security settings of your organization, [log into](README.mdx#how-to-use-an-org) your organization’s account. Then, in the collapsible left sidebar, select **Settings** and choose **Security** from the dropdown list.
 
 ![Security organization settings](/img/clarifai_orgs/security_option.png)
 
@@ -69,11 +69,9 @@ On the **Security** page, you can view the password policies associated with you
 
 For example, if you want to add a security identity provider, such as SAML (Security Assertion Markup Language), click the **Create Identity Provider** button. 
 
-![Security page](/img/clarifai_orgs/security_page.png)
+> **Note:** SAML is a reliable mechanism that can add to the security of your organization’s account by ensuring authentication and authorization data are securely transferred between parties. 
 
 On the next page, provide the required details, toggle the enable button, and click the **Create** button to finalize the process. 
 
 ![Create identity provider](/img/clarifai_orgs/create_identity_provider.png)
-
-SAML is a reliable mechanism that can add to the security of your organization’s account by ensuring authentication and authorization data are securely transferred between parties. 
 

@@ -19,11 +19,15 @@ You can visit the respective sections within this documentation to understand ho
 
 You can transfer an app you own to an organization you belong to, provided you have the necessary [permissions](https://docs.clarifai.com/portal-guide/clarifai-organizations/security#scopes-and-access-levels-of-organization-members) to create apps. This transfer enhances collaboration and boosts productivity within your team.
 
-To do so, on your personal workspace, click the **Projects** option in the navigation bar. This will take you to a page showing all the apps you own. From there, select the app you want to transfer to an organization.
+To begin, go to your personal workspace and, from the collapsible left sidebar, select **Projects**, then choose **All Resources** from the dropdown list. 
+
+This opens a page displaying all the resources you own, with the **Apps / Templates** tab selected by default. From there, select the app you want to transfer to an organization.
 
 ![List apps you own](/img/clarifai_orgs/transfer_app_org_1.png)
 
-You’ll be redirected to the app’s individual page. Select the **Settings** option on the collapsible left sidebar. 
+> **Alternatively:** You can use the **Select Application** dropdown in the collapsible left sidebar to quickly locate and choose the app you wish to transfer.
+
+You’ll then be redirected to the app’s individual page. Select the **Settings** option in the collapsible left sidebar. 
 
 ![App setting](/img/clarifai_orgs/transfer_app_org_2.png)
 
