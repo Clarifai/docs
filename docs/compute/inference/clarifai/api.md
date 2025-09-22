@@ -9,9 +9,6 @@ toc_max_heading_level: 4
 **Generate predictions with models**
 <hr />
 
-
-
-
 :::tip
 
 [Click here](https://github.com/Clarifai/examples/tree/main/models/model_predict) for additional examples on how to perform model predictions using various SDKs — such as the Clarifai SDK, OpenAI client, and LiteLLM. The examples demonstrate various model types and include both streaming and non-streaming modes, as well as tool calling capabilities.

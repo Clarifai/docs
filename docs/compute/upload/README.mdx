@@ -52,6 +52,7 @@ import StreamStreamPredict from "!!raw-loader!../../../code_snippets/python-sdk/
 import PredictOutput1 from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/predict_output_1.txt";
 import PredictOutput2 from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/predict_output_2.txt";
 import PredictOutput3 from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/predict_output_3.txt";
+import DockerFile from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/dockerfile.txt";
 
 ## Step 1: Perform Prerequisites
 
@@ -337,6 +338,27 @@ This command builds the model’s Docker image using the defined compute resourc
 The build logs will be displayed in your terminal, which helps you troubleshoot any upload issues.
 
 > **Note**: If you make any changes to your model and upload it again to the Clarifai platform, a new version of the model will be created automatically.
+
+:::note Skip Dockerfile
+
+By default, when you upload a model, the CLI automatically generates a `Dockerfile` in the root of your model directory. This ensures your model can be built and deployed with the correct environment. 
+
+In some cases, though, you may prefer to provide your own custom [Dockerfile](https://docs.docker.com/reference/dockerfile/), such as when a specific base image is required for model inference.
+
+To do this, use the `--skip_dockerfile` flag. This tells the CLI to skip automatic Dockerfile generation and instead rely on the one you’ve created.
+
+<Tabs groupId="code">
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash">clarifai model upload --skip_dockerfile</CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+  <summary>Automatically Generated Dockerfile Example</summary>
+    <CodeBlock className="language-dockerfile">{DockerFile}</CodeBlock>
+</details>
+
+:::
 
 ## Step 5: Deploy the Model
 
