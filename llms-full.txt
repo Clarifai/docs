@@ -3206,23 +3206,30 @@ import NodeModelClient from "!!raw-loader!../../../../code_snippets/python-sdk/c
 import AsyncPredict from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/async_predict.py";
 import AsyncGenerate from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/async_generate.py";
 
+import SetInferenceParams from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/set_inference_params.py";
+import CLIUnaryUnary from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/cli_unary_unary.sh";
+import CLIUnaryStream from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/cli_unary_stream.sh";
+import CLIInferenceParams from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/cli_inference_params.sh";
+
 ## Prerequisites
 
 ### Install Clarifai Packages
 
-- Install the latest version of the Clarifai [Python](https://github.com/Clarifai/clarifai-python/) SDK package:
+- Install the latest version of the Clarifai [Python](https://github.com/Clarifai/clarifai-python/) SDK package. This also installs the [Command Line Interface (CLI)](https://docs.clarifai.com/resources/api-overview/cli).
 
      pip install --upgrade clarifai 
 
-- Install the latest version of the Clarifai [Node.js](https://github.com/Clarifai/clarifai-nodejs) SDK package:
+- Install the latest version of the Clarifai [Node.js](https://github.com/Clarifai/clarifai-nodejs) SDK package.
 
      npm install clarifai-nodejs 
 
 ### Get a PAT Key
 
-You need a PAT (Personal Access Token) key to authenticate your connection to the Clarifai platform. You can generate the PAT key in your personal settings page by navigating to the **Security** section. 
+You need a PAT (Personal Access Token) key to authenticate your connection to the Clarifai platform. You can generate the PAT key in your personal settings page by navigating to the **Security** section.
 
-You can then set the PAT as an environment variable using `CLARIFAI_PAT`, in which case you don’t need to define it explicitly in your code. 
+You can then set the PAT as an environment variable using `CLARIFAI_PAT`. This also authenticates your session when using the Clarifai’s CLI. 
+
+> **Note:** Storing your PAT in an environment variable is more secure than hardcoding it directly in your code. 
 
      export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE 
 
@@ -3252,26 +3259,25 @@ model = Model(
 )
 ```
 
-#### Specify a Model Version
-
-By default, the latest version of the model is used for inference. However, you can specify a different version in either of the following two ways:
-
-```python
-model = Model(url="https://clarifai.com/model_user_id/model_app_id/models/model_id/model_version/model_version_id")
-```
-Or:
-
-```python
-model = Model(url="https://clarifai.com/model_user_id/model_app_id/models/model_id", model_version = {"id": "model_version_id"})
-```
-
 #### Initialize the Model Client
 
 You can initialize the model client using either explicit IDs or the full model URL.
 
+> **Note:** By default, the latest version of the model is used for inference. However, you can specify a different version when initializing the model. 
+
     {PyModelClient}
 
     {NodeModelClient}
+
+#### Set Up Inference Parameters
+
+You can configure various [inference parameters](https://docs.clarifai.com/compute/inference/advanced/#types-of-inference-parameters) to customize your prediction requests to better suit your use case.
+
+Here is an example using the `max_tokens` parameter:
+
+    {SetInferenceParams}
+
+ {CLIInferenceParams}
 
 ## Unary-Unary Predict Call
 
@@ -3289,6 +3295,8 @@ Here is an example of a model signature configured on the server side for handli
 Here’s how you can make a corresponding unary-unary predict call from the client side:
 
     {CO5Text}
+
+ {CLIUnaryUnary}
 
     {NodePredictInterface}
 
@@ -3360,6 +3368,8 @@ Here’s how you can make a corresponding unary-stream predict call from the cli
 
     {CO6}
 
+ {CLIUnaryStream}
+
     {NodeStreamInterface}
 
 ### Image Inputs
@@ -3396,7 +3406,7 @@ In this setup, multiple inputs can be continuously streamed to the model, while 
 
 ### Text Inputs
 
-Here is an example of a [model signature](https://docs.clarifai.com/compute/models/upload/#step-1-prepare-the-modelpy-file) configured on the server side for handling text inputs:
+Here is an example of a model signature configured on the server side for handling text inputs:
 
     @ModelClass.method
   def stream(self, input_iterator: Iterator[str]) -> Iterator[str]:
@@ -3428,17 +3438,6 @@ The system automatically detects the type of input provided:
 
 This means you can pass either a single input or a list of inputs, and the system will automatically process them appropriately — making your code cleaner and more flexible.
 
-### Image Inputs
-
-Here is an example of a model signature configured on the server side for handling image inputs:
-
-    @ModelClass.method
-def predict_image(self, image: Image) -> Dict[str, float]:
-
-Here’s how you can perform batch predictions with image inputs from the client side:
-
-    {CO8}
-
 ### Text Inputs
 
 Here is an example of a model signature configured on the server side for handling text inputs:
@@ -3453,11 +3452,20 @@ Here’s how you can perform batch predictions with text inputs from the client 
 
     {CO9}
 
+### Image Inputs
+
+Here is an example of a model signature configured on the server side for handling image inputs:
+
+    @ModelClass.method
+def predict_image(self, image: Image) -> Dict[str, float]:
+
+Here’s how you can perform batch predictions with image inputs from the client side:
+
+    {CO8}
+
 ## Multimodal Predictions
 
 You can make predictions using models that support multimodal inputs, such as a combination of images and text. 
-
-Additionally, you can configure various [inference parameters](https://docs.clarifai.com/sdk/Inference-from-AI-Models/Advance-Inference-Options/#prediction-paramaters) to customize your prediction requests to better suit your use case.
 
 Here is an example:
 
@@ -4701,6 +4709,7 @@ import StreamStreamPredict from "!!raw-loader!../../../code_snippets/python-sdk/
 import PredictOutput1 from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/predict_output_1.txt";
 import PredictOutput2 from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/predict_output_2.txt";
 import PredictOutput3 from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/predict_output_3.txt";
+import DockerFile from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/dockerfile.txt";
 
 ## Step 1: Perform Prerequisites
 
@@ -4950,6 +4959,21 @@ This command builds the model’s Docker image using the defined compute resourc
 The build logs will be displayed in your terminal, which helps you troubleshoot any upload issues.
 
 > **Note**: If you make any changes to your model and upload it again to the Clarifai platform, a new version of the model will be created automatically.
+
+:::note Skip Dockerfile
+
+By default, when you upload a model, the CLI automatically generates a `Dockerfile` in the root of your model directory. This ensures your model can be built and deployed with the correct environment. 
+
+In some cases, though, you may prefer to provide your own custom [Dockerfile](https://docs.docker.com/reference/dockerfile/), such as when a specific base image is required for model inference.
+
+To do this, use the `--skip_dockerfile` flag. This tells the CLI to skip automatic Dockerfile generation and instead rely on the one you’ve created.
+
+    clarifai model upload --skip_dockerfile
+
+  Automatically Generated Dockerfile Example
+    {DockerFile}
+
+:::
 
 ## Step 5: Deploy the Model
 
@@ -24495,21 +24519,29 @@ import OutputExample from "!!raw-loader!../../code_snippets/new-docs/assorted/ou
 
 Start by [logging in to](https://clarifai.com/login) your existing Clarifai account, or [sign up](https://clarifai.com/signup) for a new one to unlock access to the platform’s powerful AI capabilities. New users receive free operations to help kickstart their exploration.
 
-## Step 2: Get a PAT Key
+## Step 2: Get a Model
 
-To authenticate your connection to Clarifai, you’ll need a Personal Access Token (PAT). You can obtain one from your personal settings page by navigating to the **Security** section.
+Clarifai’s [Community platform](https://clarifai.com/explore) offers a wide range of latest models to help you make your first API call.
 
-You can then set the PAT as an environment variable using `CLARIFAI_PAT`.
+You can easily find a model to use by heading to the Community homepage and exploring the **Trending Models** section, which showcases popular and ready-to-use options.
+
+> **Note:** Once you’ve found a model you'd like to use, copy its full model URL — you’ll need this when making prediction requests via the API.
+
+## Step 3: Get a PAT Key
+
+To authenticate your connection to Clarifai, you’ll need a [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat). You can obtain one from your personal settings page by navigating to the **Security** section.
+
+Then, set the PAT as an environment variable using `CLARIFAI_PAT`. This will authenticate your session when using the SDKs, including the [Clarifai CLI](https://docs.clarifai.com/resources/api-overview/cli).
 
      export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE 
 
      set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE 
 
-## Step 3: Install Your Preferred SDK
+## Step 4: Install Your Preferred SDK
 
 You can connect to the Clarifai API using the method that best fits your development environment:
 
-- [Python SDK](https://docs.clarifai.com/resources/api-overview/python-sdk) – Seamlessly integrate with Clarifai using our Python client. See the minimum system requirements [here](https://docs.clarifai.com/resources/api-overview/python-sdk#minimum-system-requirements).
+- [Python SDK](https://docs.clarifai.com/resources/api-overview/python-sdk) – Seamlessly integrate with Clarifai using our Python client. See the minimum system requirements [here](https://docs.clarifai.com/resources/api-overview/python-sdk#minimum-system-requirements). Note that installing the Python SDK also installs the Clarifai CLI. 
 
 - [Node.js SDK](https://docs.clarifai.com/resources/api-overview/nodejs-sdk) – Use our SDK for integration in your JavaScript or TypeScript projects. See the minimum system requirements [here](https://docs.clarifai.com/resources/api-overview/nodejs-sdk/#minimum-system-requirements).
 
@@ -24523,25 +24555,17 @@ Here's how to install your preferred package:
 
      pip install openai 
 
-## Step 4: Get a Model
-
-Clarifai’s [Community platform](https://clarifai.com/explore) offers a wide range of latest models to help you make your first API call.
-
-You can easily find a model to use by heading to the Community homepage and exploring the **Trending Models** section, which showcases popular and ready-to-use options.
-
-> **Note:** Once you’ve found a model you'd like to use, copy its full model URL — you’ll need this when making prediction requests via the API.
-
 ## Step 5: Send an API Request
 
 For this example, let's use the [gpt-oss-120b](https://clarifai.com/openai/chat-completion/models/gpt-oss-120b) model to generate text based on a given prompt.
 
     {PythonSDKRequest}
 
+ {CLIRequest}
+
     {NodeSDKRequest}
 
      {OpenAIRequest} 
-
- {CLIRequest}
 
  {CurlRequest}
 
