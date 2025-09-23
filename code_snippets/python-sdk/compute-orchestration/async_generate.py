@@ -1,9 +1,9 @@
-import os
 import asyncio
 from clarifai.client.model import Model
 
-# Set your Personal Access Token (PAT)
-os.environ["CLARIFAI_PAT"] = "YOUR_PAT_HERE"
+# Set PAT as an environment variable
+#   export CLARIFAI_PAT=YOUR_PAT_HERE # Unix-Like Systems
+#   set CLARIFAI_PAT=YOUR_PAT_HERE  # Windows
 
 # Async main function
 async def main():

@@ -1,8 +1,8 @@
 from clarifai.client import Model
-import os
 
-# Set your Personal Access Token (PAT)
-os.environ["CLARIFAI_PAT"] = "YOUR_PAT_HERE"
+# Set PAT as an environment variable
+#   export CLARIFAI_PAT=YOUR_PAT_HERE # Unix-Like Systems
+#   set CLARIFAI_PAT=YOUR_PAT_HERE  # Windows
 
 # Initialize with model URL
 model = Model(url="https://clarifai.com/anthropic/completion/models/claude-sonnet-4")

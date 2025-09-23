@@ -1,0 +1,1 @@
+clarifai model predict --model_url https://clarifai.com/openai/chat-completion/models/o4-mini --inputs '{"prompt": "What is photosynthesis?"}'
