@@ -1,0 +1,1 @@
+clarifai model predict --model_url https://clarifai.com/openai/chat-completion/models/gpt-oss-120b --inputs '{"prompt": "What is photosynthesis?", "max_tokens": 100}'

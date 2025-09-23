@@ -9,9 +9,6 @@ toc_max_heading_level: 4
 **Generate predictions with models**
 <hr />
 
-
-
-
 :::tip
 
 [Click here](https://github.com/Clarifai/examples/tree/main/models/model_predict) for additional examples on how to perform model predictions using various SDKs — such as the Clarifai SDK, OpenAI client, and LiteLLM. The examples demonstrate various model types and include both streaming and non-streaming modes, as well as tool calling capabilities.
@@ -53,11 +50,16 @@ import NodeModelClient from "!!raw-loader!../../../../code_snippets/python-sdk/c
 import AsyncPredict from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/async_predict.py";
 import AsyncGenerate from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/async_generate.py";
 
+import SetInferenceParams from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/set_inference_params.py";
+import CLIUnaryUnary from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/cli_unary_unary.sh";
+import CLIUnaryStream from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/cli_unary_stream.sh";
+import CLIInferenceParams from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/cli_inference_params.sh";
+
 ## Prerequisites
 
 ### Install Clarifai Packages
 
-- Install the latest version of the Clarifai [Python](https://github.com/Clarifai/clarifai-python/) SDK package:
+- Install the latest version of the Clarifai [Python](https://github.com/Clarifai/clarifai-python/) SDK package. This also installs the [Command Line Interface (CLI)](https://docs.clarifai.com/resources/api-overview/cli).
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">
@@ -65,7 +67,7 @@ import AsyncGenerate from "!!raw-loader!../../../../code_snippets/python-sdk/com
 </TabItem>
 </Tabs>
 
-- Install the latest version of the Clarifai [Node.js](https://github.com/Clarifai/clarifai-nodejs) SDK package:
+- Install the latest version of the Clarifai [Node.js](https://github.com/Clarifai/clarifai-nodejs) SDK package.
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">
@@ -75,9 +77,12 @@ import AsyncGenerate from "!!raw-loader!../../../../code_snippets/python-sdk/com
 
 ### Get a PAT Key
 
-You need a PAT (Personal Access Token) key to authenticate your connection to the Clarifai platform. You can generate the PAT key in your personal settings page by navigating to the **Security** section. 
+You need a PAT (Personal Access Token) key to authenticate your connection to the Clarifai platform. You can generate the PAT key in your personal settings page by navigating to the **Security** section.
 
-You can then set the PAT as an environment variable using `CLARIFAI_PAT`, in which case you don’t need to define it explicitly in your code. 
+You can then set the PAT as an environment variable using `CLARIFAI_PAT`. This also authenticates your session when using the Clarifai’s CLI. 
+
+> **Note:** Storing your PAT in an environment variable is more secure than hardcoding it directly in your code. 
+
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Unix-Like Systems">
@@ -112,23 +117,11 @@ model = Model(
 )
 ```
 
-#### Specify a Model Version
-
-By default, the latest version of the model is used for inference. However, you can specify a different version in either of the following two ways:
-
-```python
-model = Model(url="https://clarifai.com/model_user_id/model_app_id/models/model_id/model_version/model_version_id")
-```
-Or:
-
-```python
-model = Model(url="https://clarifai.com/model_user_id/model_app_id/models/model_id", model_version = {"id": "model_version_id"})
-```
-
-
 #### Initialize the Model Client
 
 You can initialize the model client using either explicit IDs or the full model URL.
+
+> **Note:** By default, the latest version of the model is used for inference. However, you can specify a different version when initializing the model. 
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
@@ -136,6 +129,21 @@ You can initialize the model client using either explicit IDs or the full model 
 </TabItem>
 <TabItem value="node.js" label="Node.js SDK">
     <CodeBlock className="language-javascript">{NodeModelClient}</CodeBlock>
+</TabItem>
+</Tabs>
+
+#### Set Up Inference Parameters
+
+You can configure various [inference parameters](https://docs.clarifai.com/compute/inference/advanced/#types-of-inference-parameters) to customize your prediction requests to better suit your use case.
+
+Here is an example using the `max_tokens` parameter:
+
+<Tabs groupId="code">
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{SetInferenceParams}</CodeBlock>
+</TabItem>
+<TabItem value="cli" label="CLI">
+ <CodeBlock className="language-bash">{CLIInferenceParams}</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -162,6 +170,9 @@ Here’s how you can make a corresponding unary-unary predict call from the clie
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO5Text}</CodeBlock>
+</TabItem>
+<TabItem value="cli" label="CLI">
+ <CodeBlock className="language-bash">{CLIUnaryUnary}</CodeBlock>
 </TabItem>
 <TabItem value="node.js" label="Node.js SDK">
     <CodeBlock className="language-javascript">{NodePredictInterface}</CodeBlock>
@@ -272,6 +283,9 @@ Here’s how you can make a corresponding unary-stream predict call from the cli
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO6}</CodeBlock>
 </TabItem>
+<TabItem value="cli" label="CLI">
+ <CodeBlock className="language-bash">{CLIUnaryStream}</CodeBlock>
+</TabItem>
 <TabItem value="node.js" label="Node.js SDK">
     <CodeBlock className="language-javascript">{NodeStreamInterface}</CodeBlock>
 </TabItem>
@@ -330,7 +344,7 @@ In this setup, multiple inputs can be continuously streamed to the model, while 
 
 ### Text Inputs
 
-Here is an example of a [model signature](https://docs.clarifai.com/compute/models/upload/#step-1-prepare-the-modelpy-file) configured on the server side for handling text inputs:
+Here is an example of a model signature configured on the server side for handling text inputs:
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python">
@@ -378,25 +392,6 @@ The system automatically detects the type of input provided:
 
 This means you can pass either a single input or a list of inputs, and the system will automatically process them appropriately — making your code cleaner and more flexible.
 
-### Image Inputs
-
-Here is an example of a model signature configured on the server side for handling image inputs:
-
-<Tabs groupId="code">
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python">@ModelClass.method
-def predict_image(self, image: Image) -> Dict[str, float]:</CodeBlock>
-</TabItem>
-</Tabs>
-
-Here’s how you can perform batch predictions with image inputs from the client side:
-
-<Tabs groupId="code">
-<TabItem value="python" label="Python SDK">
-    <CodeBlock className="language-python">{CO8}</CodeBlock>
-</TabItem>
-</Tabs>
-
 ### Text Inputs
 
 Here is an example of a model signature configured on the server side for handling text inputs:
@@ -419,12 +414,29 @@ Here’s how you can perform batch predictions with text inputs from the client 
 </TabItem>
 </Tabs>
 
+### Image Inputs
+
+Here is an example of a model signature configured on the server side for handling image inputs:
+
+<Tabs groupId="code">
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">@ModelClass.method
+def predict_image(self, image: Image) -> Dict[str, float]:</CodeBlock>
+</TabItem>
+</Tabs>
+
+Here’s how you can perform batch predictions with image inputs from the client side:
+
+<Tabs groupId="code">
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{CO8}</CodeBlock>
+</TabItem>
+</Tabs>
+
 
 ## Multimodal Predictions
 
 You can make predictions using models that support multimodal inputs, such as a combination of images and text. 
-
-Additionally, you can configure various [inference parameters](https://docs.clarifai.com/sdk/Inference-from-AI-Models/Advance-Inference-Options/#prediction-paramaters) to customize your prediction requests to better suit your use case.
 
 Here is an example:
 

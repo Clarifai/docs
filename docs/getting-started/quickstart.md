@@ -32,11 +32,19 @@ import OutputExample from "!!raw-loader!../../code_snippets/new-docs/assorted/ou
 
 Start by [logging in to](https://clarifai.com/login) your existing Clarifai account, or [sign up](https://clarifai.com/signup) for a new one to unlock access to the platform’s powerful AI capabilities. New users receive free operations to help kickstart their exploration.
 
-## Step 2: Get a PAT Key
+## Step 2: Get a Model
 
-To authenticate your connection to Clarifai, you’ll need a Personal Access Token (PAT). You can obtain one from your personal settings page by navigating to the **Security** section.
+Clarifai’s [Community platform](https://clarifai.com/explore) offers a wide range of latest models to help you make your first API call.
 
-You can then set the PAT as an environment variable using `CLARIFAI_PAT`.
+You can easily find a model to use by heading to the Community homepage and exploring the **Trending Models** section, which showcases popular and ready-to-use options.
+
+> **Note:** Once you’ve found a model you'd like to use, copy its full model URL — you’ll need this when making prediction requests via the API.
+
+## Step 3: Get a PAT Key
+
+To authenticate your connection to Clarifai, you’ll need a [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat). You can obtain one from your personal settings page by navigating to the **Security** section.
+
+Then, set the PAT as an environment variable using `CLARIFAI_PAT`. This will authenticate your session when using the SDKs, including the [Clarifai CLI](https://docs.clarifai.com/resources/api-overview/cli).
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Unix-Like Systems">
@@ -47,11 +55,11 @@ You can then set the PAT as an environment variable using `CLARIFAI_PAT`.
 </TabItem>
 </Tabs>
 
-## Step 3: Install Your Preferred SDK
+## Step 4: Install Your Preferred SDK
 
 You can connect to the Clarifai API using the method that best fits your development environment:
 
-- [Python SDK](https://docs.clarifai.com/resources/api-overview/python-sdk) – Seamlessly integrate with Clarifai using our Python client. See the minimum system requirements [here](https://docs.clarifai.com/resources/api-overview/python-sdk#minimum-system-requirements).
+- [Python SDK](https://docs.clarifai.com/resources/api-overview/python-sdk) – Seamlessly integrate with Clarifai using our Python client. See the minimum system requirements [here](https://docs.clarifai.com/resources/api-overview/python-sdk#minimum-system-requirements). Note that installing the Python SDK also installs the Clarifai CLI. 
 
 - [Node.js SDK](https://docs.clarifai.com/resources/api-overview/nodejs-sdk) – Use our SDK for integration in your JavaScript or TypeScript projects. See the minimum system requirements [here](https://docs.clarifai.com/resources/api-overview/nodejs-sdk/#minimum-system-requirements).
 
@@ -74,14 +82,6 @@ Here's how to install your preferred package:
 
 </Tabs>
 
-## Step 4: Get a Model
-
-Clarifai’s [Community platform](https://clarifai.com/explore) offers a wide range of latest models to help you make your first API call.
-
-You can easily find a model to use by heading to the Community homepage and exploring the **Trending Models** section, which showcases popular and ready-to-use options.
-
-> **Note:** Once you’ve found a model you'd like to use, copy its full model URL — you’ll need this when making prediction requests via the API.
-
 ## Step 5: Send an API Request
 
 For this example, let's use the [gpt-oss-120b](https://clarifai.com/openai/chat-completion/models/gpt-oss-120b) model to generate text based on a given prompt.
@@ -90,6 +90,9 @@ For this example, let's use the [gpt-oss-120b](https://clarifai.com/openai/chat-
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{PythonSDKRequest}</CodeBlock>
+</TabItem>
+<TabItem value="cli1" label="CLI">
+ <CodeBlock className="language-bash">{CLIRequest}</CodeBlock>
 </TabItem>
 <TabItem value="node.js" label="Node.js SDK">
     <CodeBlock className="language-javascript">{NodeSDKRequest}</CodeBlock>
@@ -100,9 +103,6 @@ For this example, let's use the [gpt-oss-120b](https://clarifai.com/openai/chat-
 </TabItem>
 
 <!--
-<TabItem value="cli1" label="CLI">
- <CodeBlock className="language-bash">{CLIRequest}</CodeBlock>
-</TabItem>
 
 <TabItem value="js11" label="cURL">
  <CodeBlock className="language-javascript">{CurlRequest}</CodeBlock>

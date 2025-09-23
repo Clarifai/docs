@@ -1,11 +1,11 @@
-import os
 import matplotlib.pyplot as plt
 from PIL import Image as PILImage
 from clarifai.client import Model
 from clarifai.runners.utils.data_types import Image, Region, Concept
 
-# Set your PAT
-os.environ["CLARIFAI_PAT"] = "YOUR_PAT_HERE"
+# Set PAT as an environment variable
+#   export CLARIFAI_PAT=YOUR_PAT_HERE # Unix-Like Systems
+#   set CLARIFAI_PAT=YOUR_PAT_HERE  # Windows
 
 # Initialize the model 
 model = Model(
