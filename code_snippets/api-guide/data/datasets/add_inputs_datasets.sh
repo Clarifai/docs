@@ -5,7 +5,7 @@ curl --location --request POST "https://api.clarifai.com/v2/users/YOUR_USER_ID_H
     "dataset_inputs": [
       {
         "input": {
-          "id": "YOUR_INPUT_ID_HERE"
+          "id": "YOUR_EXISTING_INPUT_ID_HERE"
         }
       }
     ]
