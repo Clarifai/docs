@@ -10365,7 +10365,7 @@ Before using the [Python SDK](https://docs.clarifai.com/additional-resources/api
 
 :::tip
 
-[Click here](https://docs.clarifai.com/additional-resources/api-references/api-reference/#dataset) to learn more about the different methods of uploading data to a dataset. 
+[Click here](https://docs.clarifai.com/additional-resources/api-references/api-reference/#dataset) to learn more about working with the `Dataset` class.
 
 :::
 
@@ -10373,39 +10373,27 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
-import CodeUpImage from "!!raw-loader!../../../code_snippets/python-sdk/managing-datasets/up_image.py";
-import CodeUpImageTS from "!!raw-loader!../../../code_snippets/python-sdk/managing-datasets/uploadImage.ts";
-
-import CodeUpText from "!!raw-loader!../../../code_snippets/python-sdk/managing-datasets/up_text.py";
-import CodeUpTextTS from "!!raw-loader!../../../code_snippets/python-sdk/managing-datasets/uploadText.ts";
-
-import CodeUpAudio from "!!raw-loader!../../../code_snippets/python-sdk/managing-datasets/up_audio.py";
-import CodeUpAudioTS from "!!raw-loader!../../../code_snippets/python-sdk/managing-datasets/uploadAudio.ts";
-
-import CodeUpVideo from "!!raw-loader!../../../code_snippets/python-sdk/managing-datasets/up_video.py";
-import CodeUpVideoTS from "!!raw-loader!../../../code_snippets/python-sdk/managing-datasets/uploadVideo.ts";
-
 import CodeUpImageAN from "!!raw-loader!../../../code_snippets/python-sdk/managing-datasets/up_image_an.py";
 import CodeUpImageANTS from "!!raw-loader!../../../code_snippets/python-sdk/managing-datasets/uploadImageWithAnnotation.ts";
-
 import CodeUpVideoAN from "!!raw-loader!../../../code_snippets/python-sdk/managing-datasets/up_video_an.py";
 import CodeUpVideoANTS from "!!raw-loader!../../../code_snippets/python-sdk/managing-datasets/uploadVideoWithAnnotation.ts";
-
 import CodeUpTextAN from "!!raw-loader!../../../code_snippets/python-sdk/managing-datasets/up_text_an.py";
 import CodeUpTextANTS from "!!raw-loader!../../../code_snippets/python-sdk/managing-datasets/uploadTextWithAnnotation.ts";
-
 import CodeUpBatch from "!!raw-loader!../../../code_snippets/python-sdk/managing-datasets/batch.py";
-
 import CodeUpImageMask from "!!raw-loader!../../../code_snippets/python-sdk/managing-datasets/up_image_annot_mask.py";
 import CodeUpImageMaskTS from "!!raw-loader!../../../code_snippets/python-sdk/managing-datasets/up_image_annot_mask.ts";
-
 import CodeRetry from "!!raw-loader!../../../code_snippets/python-sdk/managing-datasets/retry_log.py";
-
 import curlAddInputsDatasets from "!!raw-loader!../../../code_snippets/api-guide/data/datasets/add_inputs_datasets.sh";
+import UploadFromFolder from "!!raw-loader!../../../code_snippets/python-sdk/managing-datasets/upload_from_folder.py";
+import UploadFromCSV from "!!raw-loader!../../../code_snippets/python-sdk/managing-datasets/upload_from_csv.py";
+import NodeUploadFromFolder from "!!raw-loader!../../../code_snippets/python-sdk/managing-datasets/node_upload_from_folder.js";
+import NodeUploadFromCSV from "!!raw-loader!../../../code_snippets/python-sdk/managing-datasets/node_upload_from_csv.js";
 
-:::note Customize Batch Size
+:::note 
 
-When uploading inputs to the Clarifai platform, there are limits on the size and number of inputs per upload, as detailed [here](https://docs.clarifai.com/create-manage/inputs/upload/#upload-limits). However, by using methods from the `Dataset` class — such as `Dataset.upload_from_folder()`, `Dataset.upload_from_url()`, or `Dataset.upload_dataset()` — you can bypass these restrictions and efficiently upload larger volumes of inputs.
+## Customize Batch Size
+
+When uploading inputs to the Clarifai platform, there are limits on the size and number of inputs per upload, as detailed [here](https://docs.clarifai.com/create-manage/inputs/upload/#upload-limits). However, by using methods from the `Dataset` class — such as `Dataset.upload_from_folder()` or `Dataset.upload_from_csv()` — you can bypass these restrictions and efficiently upload larger volumes of inputs.
 
 For example, when uploading images in bulk, such methods incrementally process and upload them in multiple batches, ensuring that each batch contains a maximum of 128 images and does not exceed 128MB in size – which ensures adherence to the upload restrictions. 
 
@@ -10416,53 +10404,89 @@ The default `batch_size` is set to 32, but you can customize it to any value bet
 Here is an example: 
 
 ```text
-dataset.upload_from_folder(folder_path='./images', input_type='image', labels=True, batch_size=50)
+dataset.upload_from_folder(folder_path='/path/to/your/folder', input_type='image', labels=True, batch_size=50)
 ```
 
 :::
 
 ## Add Inputs to a Dataset
 
-You can add inputs to a dataset by specifying their input IDs.
+After uploading inputs to the Clarifai platform, you can add them to a dataset by specifying their input IDs.
 
     {curlAddInputsDatasets}
 
-## Upload Image Data
+## Upload From Folder
 
-You can upload image data in bulk either from a folder or by using a [CSV file](https://docs.clarifai.com/additional-resources/api-references/api-reference/#datasetupload_from_csv).
+The `upload_from_folder` method lets you bulk-upload images or text files from a local folder directly into a Clarifai dataset.
 
-    {CodeUpImage}
- 
+    {UploadFromFolder}
 
-    {CodeUpImageTS}
+    {NodeUploadFromFolder}
 
-## Upload Text Data
+Note that:
 
-You can upload text data in bulk either from a folder or by using a CSV file.
+- The `upload_from_folder` method only supports `"image"` and `"text"` input types.
+- Ensure your dataset (`dataset_id`) already exists before calling this method.
+- Large datasets should be uploaded with an appropriate [`batch_size`](#customize-batch-size) (default 128).
+- If `labels=True`, the folder name is assigned as the input’s concept label.
+- The filename (without extension) is used as the `input_id` in Clarifai.
+- When uploading text data, the target app should be configured to accept text inputs. Set the primary input type to **Text/Document** when [creating the app](https://docs.clarifai.com/create/applications/create#create-via-the-ui).
 
-    {CodeUpText}
+## Upload From CSV
 
-    {CodeUpTextTS}
+The `upload_from_csv` method lets you bulk-upload data into a Clarifai dataset using a CSV file. This method is useful when your data is already structured in tabular form with URLs, local file paths, or raw text.
 
-## Upload Audio Data
+    {UploadFromCSV}
 
-You can upload audio data in bulk either from a folder or by using a CSV file.
+    {NodeUploadFromCSV}
 
-    {CodeUpAudio}
+  Example CSV Files
+    
+        File-path based (for local files)
+        ```text
+        inputid,input,concepts,metadata
+        img1,"data/metro-north.jpg","train","{'source': 'local'}"
+        img2,"data/puppy.jpeg","dog","{'source': 'local'}"
+        ```
+    
+    
+        Raw text dataset (only valid with input_type="text")
+        ```text
+        inputid,input,concepts,metadata
+        txt1,"The sky is clear and blue","weather","{'lang': 'en'}"
+        txt2,"The puppy is playing in the garden","dog","{'lang': 'en'}"
+        ```
+    
+        
+        With geopoints
+        ```text
+        inputid,input,concepts,metadata,geopoints
+        img1,"data/metro-north.jpg","train","{'source': 'clarifai-samples'}","-73.935242,40.730610"
+        img2,"data/puppy.jpeg","dog","{'source': 'clarifai-samples'}","-118.243683,34.052235"
+        ```
+    
 
-    {CodeUpAudioTS}
+Note that:
 
-## Upload Video Data
-
-You can upload video data in bulk either from a folder or by using a CSV file.
-
-    {CodeUpAudio}
-
-    {CodeUpVideoTS}
+- The `upload_from_csv` method supports `"image"`, `"text"`, `"video"`, and `"audio"` file types. 
+- The `csv_type` parameter defines how the CSV file will be interpreted. It can be:
+    - `"url"` — Inputs are hosted online, and the CSV provides URLs.
+    - `"file_path"` — Inputs are stored locally, and the CSV provides file paths.
+    - `"raw"` — Only valid for text datasets; the CSV provides raw text strings. 
+- If `labels=True` (default), the CSV must include a `concepts` column with labels. If `False`, inputs are uploaded without labels.
+- The [`batch_size`](#customize-batch-size) (default = 128) parameter defines the maximum number of inputs to upload concurrently in one batch.
+- The CSV file must include column headers. These are the supported headers:
+    - `inputid` — Unique identifier for the input.
+    - `input` — URL, file path, or raw text depending on `csv_type`.
+    - `concepts` — Concept labels (if `labels=True`).
+    - `metadata` — JSON metadata, formatted with single quotes inside. Example: `"{'source': 'web'}"`.
+    - `geopoints` — Geolocation in `"longitude,latitude"` format. 
+- All the data in the CSV file should be enclosed in double quotes.
+- When uploading text data, ensure the target app is configured to accept text inputs. Set the primary input type to **Text/Document** when creating the app. 
 
 ## Upload Image Data With Annotations
 
-You can upload image data along with bounding box annotations, allowing you to add depth and contextual information to your visual data.
+You can [upload image data](https://docs.clarifai.com/create/inputs/upload/api#upload-image-data) together with bounding box annotations into a Clarifai dataset, adding richer context and detail to your visual data.
 
     {CodeUpImageAN}
 
@@ -10470,20 +10494,19 @@ You can upload image data along with bounding box annotations, allowing you to a
 
 ## Upload Image Data With Mask Annotations
 
-You can add masks to image data by providing polygon coordinates along with the image, enabling precise region-based annotations.
+You can add masks to image data in a Clarifai dataset by providing polygon coordinates with the image, enabling precise region-based annotations.
 
     {CodeUpImageMask}
  
 
     {CodeUpImageMaskTS}
 
-                                           
+                           
 
-                                                                                                                  
-
+                                                                                                              
 ## Upload Video Data With Annotations
 
-You can upload videos with enriched annotations by including bounding box coordinates that define regions of interest within individual frames, adding valuable context to your video content.
+You can [upload videos](https://docs.clarifai.com/create/inputs/upload/api#upload-video-data) in a Clarifai dataset with enriched annotations by including bounding box coordinates that define regions of interest within individual frames, adding valuable context to your video content.
 
     {CodeUpVideoAN}
   
@@ -10492,16 +10515,14 @@ You can upload videos with enriched annotations by including bounding box coordi
 
 ## Upload Text Data With Annotations
 
-You can enrich your uploaded text data by attaching metadata, categorizing the content, or adding detailed annotations to enhance structure and context.
+You can [upload text data](https://docs.clarifai.com/create/inputs/upload/api#upload-text-data) in a Clarifai dataset and enrich it by attaching metadata, categorizing the content, or adding detailed annotations to enhance structure and context.
 
     {CodeUpTextAN}
 
     {CodeUpTextANTS}
 
-                                          
-
-                                                                                                                   
-
+                                 
+                                                                                                 
 ## Batch Upload Image Data While Tracking Status
 
 You can actively monitor the status of your dataset upload, giving you clear visibility into the progress and making it easy to track and analyze the data transfer process.
@@ -10514,7 +10535,7 @@ You can retry uploads for failed inputs directly from the logs. When using the `
 
 :::info
 
-Set `retry_duplicates` to `True` if you want to retry duplicate with new Input_id in current dataset.
+Set `retry_duplicates` to `True` if you want to retry duplicate with new `input_id` in current dataset.
 
 :::
 
