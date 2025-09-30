@@ -1,110 +1,127 @@
-clarifai login
-context name (default: "default"):
-user id: alfrick
-personal access token value (default: "ENVVAR" to get our of env var rather than config): c02f72c***************
-
-clarifai model local-runner 
-[INFO] 14:00:01.177806 Checking setup for local development runner... |  thread=3524
-[INFO] 14:00:01.179203 Current context: default |  thread=3524
-[INFO] 14:00:01.189128 Current user_id: alfrick |  thread=3524
-[INFO] 14:00:01.189128 Current compute_cluster_id: local-dev-compute-cluster |  thread=3524
-[INFO] 14:00:02.394761 Failed to get compute cluster with ID local-dev-compute-cluster: code: CONN_DOES_NOT_EXIST
+clarifai model local-runner
+[INFO] 13:32:33.062920 > Checking local runner requirements... |  thread=8800297152 
+[INFO] 13:32:33.085516 Checking 1 dependencies... |  thread=8800297152 
+[INFO] 13:32:33.085856 ✅ All 1 dependencies are installed! |  thread=8800297152 
+[INFO] 13:32:33.086091 > Verifying local runner setup... |  thread=8800297152 
+[INFO] 13:32:33.086140 Current context: default |  thread=8800297152 
+[INFO] 13:32:33.086179 Current user_id: alfrick |  thread=8800297152 
+[INFO] 13:32:33.086210 Current PAT: d6570**** |  thread=8800297152 
+[INFO] 13:32:33.088226 Current compute_cluster_id: local-runner-compute-cluster |  thread=8800297152 
+[WARNING] 13:32:34.747258 Failed to get compute cluster with ID 'local-runner-compute-cluster':
+code: CONN_DOES_NOT_EXIST
 description: "Resource does not exist"
-details: "ComputeCluster with ID \'local-dev-compute-cluster\' not found. Check your request fields."
-req_id: "sdk-python-11.4.1-c8a4b5bab7a84ca7a91cd10fbc620c0f"
- |  thread=3524
-Compute cluster not found. Do you want to create a new compute cluster alfrick/local-dev-compute-cluster? (y/n): y
-[INFO] 14:00:20.755481
-Compute Cluster created
+details: "ComputeCluster with ID \'local-runner-compute-cluster\' not found. Check your request fields."
+req_id: "sdk-python-11.8.2-941866be231e4602865a64d15e01fa55"
+ |  thread=8800297152 
+Compute cluster not found. Do you want to create a new compute cluster alfrick/local-runner-compute-cluster? (y/n): y
+[INFO] 13:32:39.352840 Compute Cluster with ID 'local-runner-compute-cluster' is created:
 code: SUCCESS
 description: "Ok"
-req_id: "sdk-python-11.4.1-31b3b07f08f04cbb81a50edfba30454f"
- |  thread=3524
-[INFO] 14:00:20.768179 Current nodepool_id: local-dev-nodepool |  thread=3524
-[INFO] 14:00:21.948659 Failed to get nodepool with ID local-dev-nodepool: code: CONN_DOES_NOT_EXIST
+req_id: "sdk-python-11.8.2-eae3c965f0cd4cd394ad2590b47a68ab"
+ |  thread=8800297152 
+[INFO] 13:32:39.364816 Current nodepool_id: local-runner-nodepool |  thread=8800297152 
+[WARNING] 13:32:42.674651 Failed to get nodepool with ID 'local-runner-nodepool':
+code: CONN_DOES_NOT_EXIST
 description: "Resource does not exist"
 details: "Nodepool not found. Check your request fields."
-req_id: "sdk-python-11.4.1-2e792b00b7d64521942e09f990db7e84"
- |  thread=3524
-Nodepool not found. Do you want to create a new nodepool alfrick/local-dev-compute-cluster/local-dev-nodepool? (y/n): y
-[INFO] 14:00:25.698797
-Nodepool created
+req_id: "sdk-python-11.8.2-436a10af775346878416c84dd6854254"
+ |  thread=8800297152 
+Nodepool not found. Do you want to create a new nodepool alfrick/local-runner-compute-cluster/local-runner-nodepool? (y/n): y
+[INFO] 13:32:45.824647 Nodepool with ID 'local-runner-nodepool' is created:
 code: SUCCESS
 description: "Ok"
-req_id: "sdk-python-11.4.1-65d15f07e7534d44aa79a0d1a8607350"
- |  thread=3524
-[INFO] 14:00:25.720799 Current app_id: local-dev-runner-app |  thread=3524
-[INFO] 14:00:26.010459 Failed to get app with ID local-dev-runner-app: code: CONN_DOES_NOT_EXIST
+req_id: "sdk-python-11.8.2-0e520dbecfcd42d58fd78b2494c48aa8"
+ |  thread=8800297152 
+[INFO] 13:32:45.836876 Current app_id: local-runner-app |  thread=8800297152 
+[INFO] 13:32:46.896228 Current model_id: local-runner-model |  thread=8800297152 
+[WARNING] 13:32:52.596471 Attempting to patch latest version: 9d38bb9398944de4bdef699835f17ec9 |  thread=8800297152 
+[INFO] 13:32:55.120866 Successfully patched version 9d38bb9398944de4bdef699835f17ec9 |  thread=8800297152 
+[INFO] 13:32:55.124102 Current model version 9d38bb9398944de4bdef699835f17ec9 |  thread=8800297152 
+[WARNING] 13:32:56.851018 Failed to get runner with ID 'b3632320627341fb9ea1132d5b77b26f':
+code: CONN_DOES_NOT_EXIST
 description: "Resource does not exist"
-details: "app identified by path /users/alfrick/apps/local-dev-runner-app not found"
-req_id: "sdk-python-11.4.1-b3c6fcd7b4ad4c2e91f742dc31705a5b"
- |  thread=3524
-App not found. Do you want to create a new app alfrick/local-dev-runner-app? (y/n): y
-[INFO] 14:00:31.354436
-App created
+details: "Runner not found. Check your request fields."
+req_id: "sdk-python-11.8.2-0988ef3bd3144e0196cff79062621406"
+ |  thread=8800297152 
+[INFO] 13:32:56.851708 Creating the local runner tying this 'alfrick/local-runner-app/models/local-runner-model' model (version: 9d38bb9398944de4bdef699835f17ec9) to the 'alfrick/local-runner-compute-cluster/local-runner-nodepool' nodepool. |  thread=8800297152 
+[INFO] 13:32:57.321664 Runner with ID 'f3c46913186449ba99dedd38123d47a3' is created:
 code: SUCCESS
 description: "Ok"
-req_id: "sdk-python-11.4.1-425accc65e1b451f9f6909d9dac25ecb"
- |  thread=3524
-[INFO] 14:00:31.363481 Current model_id: local-dev-model |  thread=3524
-[INFO] 14:00:33.396312 Failed to get model with ID local-dev-model: code: MODEL_DOES_NOT_EXIST
-description: "Model does not exist"
-details: "Model \'local-dev-model\' does not exist."
-req_id: "sdk-python-11.4.1-024501ac37044ed4a4ed5a397f860cf8"
- |  thread=3524
-Model not found. Do you want to create a new model alfrick/local-dev-runner-app/models/local-dev-model? (y/n): y
-[INFO] 14:00:43.972640
-Model created
+req_id: "sdk-python-11.8.2-8ec4cb69afdb402cb173e50251420347"
+ |  thread=8800297152 
+[INFO] 13:32:57.331723 Current runner_id: f3c46913186449ba99dedd38123d47a3 |  thread=8800297152 
+[WARNING] 13:32:57.624714 Failed to get deployment with ID local-runner-deployment:
+code: CONN_DOES_NOT_EXIST
+description: "Resource does not exist"
+details: "Deployment with ID \'local-runner-deployment\' not found. Check your request fields."
+req_id: "sdk-python-11.8.2-93d203f6c0c944e5a844967a7f6f3c9b"
+ |  thread=8800297152 
+Deployment not found. Do you want to create a new deployment alfrick/local-runner-compute-cluster/local-runner-nodepool/local-runner-deployment? (y/n): y
+[INFO] 13:33:00.896305 Deployment with ID 'local-runner-deployment' is created:
 code: SUCCESS
 description: "Ok"
-req_id: "sdk-python-11.4.1-052d3566144440bc83d3e5b66826a396"
- |  thread=3524
-[INFO] 14:00:45.317992 No model versions found. Creating a new version for local dev runner. |  thread=3524
-[INFO] 14:00:45.695709
-Model Version created
-code: SUCCESS
-description: "Ok"
-req_id: "sdk-python-11.4.1-cc9130981bea437895364a1a0debb079"
- |  thread=3524
-[INFO] 14:00:45.698444 Created model version 5aaae29b6551422ea9f78c84e5f19205 |  thread=3524
-[INFO] 14:00:45.698444 Current model version 5aaae29b6551422ea9f78c84e5f19205 |  thread=3524
-[INFO] 14:00:45.698444 Create the local dev runner tying this
-  alfrick/local-dev-runner-app/models/local-dev-model model (version: 5aaae29b6551422ea9f78c84e5f19205) to the
-  alfrick/local-dev-compute-cluster/local-dev-nodepool nodepool. |  thread=3524
-[INFO] 14:00:46.922695
-Runner created
-code: SUCCESS
-description: "Ok"
-req_id: "sdk-python-11.4.1-c1176211bd5e4cceadb35040f8d8d2a7"
- with id: 9dffc801b4904095a987b5c2b8508edf |  thread=3524
-[INFO] 14:00:46.936701 Current runner_id: 9dffc801b4904095a987b5c2b8508edf |  thread=3524
-[INFO] 14:00:47.239289 Current deployment_id: local-dev-deployment |  thread=3524
-[INFO] 14:00:47.241289 Current model section of config.yaml: {'id': 'my-uploaded-model', 'user_id': 'alfrick', 'app_id': 'docs-demos', 'model_type_id': 'text-to-text'} |  thread=3524
+req_id: "sdk-python-11.8.2-68917fcd0d3c403db684a06a417d804e"
+ |  thread=8800297152 
+[INFO] 13:33:00.904547 Current deployment_id: local-runner-deployment |  thread=8800297152 
+[INFO] 13:33:00.907140 Current model section of config.yaml: {'id': 'my-uploaded-model', 'user_id': 'alfrick', 'app_id': 'models1', 'model_type_id': 'text-to-text'} |  thread=8800297152 
 Do you want to backup config.yaml to config.yaml.bk then update the config.yaml with the new model information? (y/n): y
-[INFO] 14:00:51.122777
-
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-# About to start up the local dev runner in this terminal...
-# Here is a code snippet to call this model once it start from another terminal:
- |  thread=3524
-[INFO] 14:00:51.123778
+[INFO] 13:33:03.816163 Checking 1 dependencies... |  thread=8800297152 
+[INFO] 13:33:03.816702 ✅ All 1 dependencies are installed! |  thread=8800297152 
+[INFO] 13:33:03.816783 ✅ Starting local runner... |  thread=8800297152 
+[INFO] 13:33:03.816865 No secrets path configured, running without secrets |  thread=8800297152 
+[INFO] 13:33:05.775735 ModelServer initialized successfully |  thread=8800297152 
+Exception in thread Thread-1 (serve_health):
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.12/3.12.11/Frameworks/Python.framework/Versions/3.12/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
+    self.run()
+  File "/opt/homebrew/Cellar/python@3.12/3.12.11/Frameworks/Python.framework/Versions/3.12/lib/python3.12/threading.py", line 1012, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/macbookpro/Desktop/code/venv/lib/python3.12/site-packages/clarifai_protocol/utils/health.py", line 67, in serve_health
+  File "/opt/homebrew/Cellar/python@3.12/3.12.11/Frameworks/Python.framework/Versions/3.12/lib/python3.12/socketserver.py", line 457, in __init__
+    self.server_bind()
+  File "/opt/homebrew/Cellar/python@3.12/3.12.11/Frameworks/Python.framework/Versions/3.12/lib/python3.12/http/server.py", line 136, in server_bind
+    socketserver.TCPServer.server_bind(self)
+  File "/opt/homebrew/Cellar/python@3.12/3.12.11/Frameworks/Python.framework/Versions/3.12/lib/python3.12/socketserver.py", line 478, in server_bind
+    self.socket.bind(self.server_address)
+OSError: [Errno 48] Address already in use
+[INFO] 13:33:05.827501 ✅ Your model is running locally and is ready for requests from the API...
+ |  thread=8800297152 
+[INFO] 13:33:05.827575 > Code Snippet: To call your model via the API, use this code snippet:
 # Clarifai Model Client Script
+# Set the environment variables `CLARIFAI_DEPLOYMENT_ID` and `CLARIFAI_PAT` to run this script.
 # Example usage:
 import os
 
 from clarifai.client import Model
 from clarifai.runners.utils import data_types
 
-model = Model.from_current_context()
+model = Model(
+    "https://clarifai.com/alfrick/local-runner-app/models/local-runner-model",
+    deployment_id='local-runner-deployment',  # Only needed for dedicated deployed models
+    base_url="https://api.clarifai.com",
+)
 
 # Example model prediction from different model methods:
 
-response = model.predict(text1='""')
+response = model.predict(
+    text1="What is the future of AI?",
+)
 print(response)
 
-response = model.generate(text1='""')
+response = model.generate(
+    text1="What is the future of AI?",
+)
 for res in response:
     print(res)
 
- |  thread=3524
-[INFO] 14:00:51.123778 Now starting the local dev runner... |  thread=3524
+response = model.stream(
+    input_iterator=iter(['What is the future of AI?']),
+)
+ |  thread=8800297152 
+[INFO] 13:33:05.827661 > Playground:   To chat with your model, visit: https://clarifai.com/playground?model=local-runner-model__9d38bb9398944de4bdef699835f17ec9&user_id=alfrick&app_id=local-runner-app
+ |  thread=8800297152 
+[INFO] 13:33:05.827704 > API URL:      To call your model via the API, use this model URL: https://clarifai.com/alfrick/local-runner-app/models/local-runner-model
+ |  thread=8800297152 
+[INFO] 13:33:05.827724 Press CTRL+C to stop the runner.
+ |  thread=8800297152 
+[INFO] 13:33:05.827758 Starting 32 threads... |  thread=8800297152 

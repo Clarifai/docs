@@ -1,7 +1,14 @@
-[INFO] 11:29:45.137222 Initializing model from GitHub repository: https://github.com/Clarifai/runners-examples |  thread=8589516992 
-[INFO] 11:29:46.985596 Successfully cloned repository from https://github.com/Clarifai/runners-examples (branch: ollama) |  thread=8589516992 
-[INFO] 11:29:46.991283 Model initialization complete with GitHub repository |  thread=8589516992 
-[INFO] 11:29:46.991330 Next steps: |  thread=8589516992 
-[INFO] 11:29:46.991358 1. Review the model configuration |  thread=8589516992 
-[INFO] 11:29:46.991380 2. Install any required dependencies manually |  thread=8589516992 
-[INFO] 11:29:46.991403 3. Test the model locally using 'clarifai model local-test' |  thread=8589516992 
+clarifai model init --toolkit ollama
+[INFO] 15:58:15.587351 Parsed GitHub repository: owner=Clarifai, repo=runners-examples, branch=ollama, folder_path= |  thread=8800297152 
+[INFO] 15:58:16.827976 Files to be downloaded are:
+1. 1/model.py
+2. config.yaml
+3. requirements.txt |  thread=8800297152 
+Press Enter to continue... 
+[INFO] 15:58:24.007602 Initializing model from GitHub repository: https://github.com/Clarifai/runners-examples |  thread=8800297152 
+[INFO] 15:58:31.263139 Successfully cloned repository from https://github.com/Clarifai/runners-examples (branch: ollama) |  thread=8800297152 
+[INFO] 15:58:31.270469 Model initialization complete with GitHub repository |  thread=8800297152 
+[INFO] 15:58:31.270527 Next steps: |  thread=8800297152 
+[INFO] 15:58:31.270560 1. Review the model configuration |  thread=8800297152 
+[INFO] 15:58:31.270584 2. Install any required dependencies manually |  thread=8800297152 
+[INFO] 15:58:31.270608 3. Test the model locally using 'clarifai model local-test' |  thread=8800297152 

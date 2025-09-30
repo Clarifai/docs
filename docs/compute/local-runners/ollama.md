@@ -18,7 +18,6 @@ import CodeBlock from "@theme/CodeBlock";
 
 import OllamaInit from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/ollama-init.txt";
 import OllamaRun from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/ollama-run.txt";
-import OllamaOutput from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/ollama-output.txt";
 
 ## Step 1: Perform Prerequisites
 
@@ -152,53 +151,49 @@ This setup ensures all required components — such as compute clusters, nodepoo
     <CodeBlock className="language-text">{OllamaRun}</CodeBlock>
 </details>
 
-## Step 5: Run Inference
+## Step 5: Test Your Runner
 
 When the local runner starts, it displays a public URL where your model is hosted and provides a sample client code snippet for quick testing. 
 
 Pulling a model from Ollama may take some time depending on your machine’s resources, but once the download finishes, you can run the snippet in a separate terminal within the same directory to get the model’s response.
 
-Below is an example of running inference using the OpenAI-compatible format:
+Below is an example snippet for running inference using the OpenAI-compatible format:
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python">
 
 ```python
 import os
+
 from openai import OpenAI
 
-# Initialize the OpenAI client with Clarifai's OpenAI-compatible endpoint
 client = OpenAI(
     base_url="https://api.clarifai.com/v2/ext/openai/v1",
     api_key=os.environ['CLARIFAI_PAT'],
 )
 
-# Replace 'user-id' with your actual Clarifai user ID
 response = client.chat.completions.create(
-    model="https://clarifai.com/user-id/local-runner-app/models/local-runner-model",
+    model="https://clarifai.com/alfrick/local-runner-app/models/local-runner-model",
     messages=[
         {"role": "system", "content": "Talk like a pirate."},
-        {"role": "user", "content": "How do I check if a Python object is an instance of a class?"},
+        {
+            "role": "user",
+            "content": "How do I check if a Python object is an instance of a class?",
+        },
     ],
-    temperature=0.7,
-    stream=False,  # Set to True for streaming responses
+    temperature=1.0,
+    stream=False,  # stream=True also works, just iterator over the response
 )
-
-# Print the full response
 print(response)
-
-# Example for handling a streaming response:
-# if stream=True, uncomment below to print chunks as they arrive
-# for chunk in response:
-#     print(chunk.choices[0].message['content'], end='')
 ```
 </TabItem>
 </Tabs>
 
-<details>
-  <summary>Example Output</summary>
-    <CodeBlock className="language-text">{OllamaOutput}</CodeBlock>
-</details>
+The terminal also shows a link to the [AI Playground](https://docs.clarifai.com/getting-started/quickstart-playground), which you can copy to interact with the model directly.
+
+Alternatively, while your runner is active in the terminal, you can open the **[Runners](https://clarifai.com/compute/runners)** dashboard on the Clarifai platform, locate your runner in the table, and select **Open in Playground** from the three-dot menu to start chatting with the model.
+
+![](/img/others/runners-dashboard-ollama.png)
 
 When you're done, just close the terminal running the local runner to shut it down.
 

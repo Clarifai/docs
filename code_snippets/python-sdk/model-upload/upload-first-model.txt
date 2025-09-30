@@ -1,1 +1,1 @@
-clarifai>=11.3.0
+clarifai>=11.8.2

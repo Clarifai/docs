@@ -47,10 +47,10 @@ You need to set the `CLARIFAI_PAT` you've retrieved as an environment variable.
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Unix-Like Systems">
-    <CodeBlock className="language-bash"> export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
+    <CodeBlock className="language-bash">export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE</CodeBlock>
 </TabItem>
 <TabItem value="bash2" label="Windows">
-    <CodeBlock className="language-bash"> set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
+    <CodeBlock className="language-bash">set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -60,7 +60,7 @@ Install the latest version of the `clarifai` Python SDK. This also installs the 
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">
-    <CodeBlock className="language-bash"> pip install --upgrade clarifai </CodeBlock>
+    <CodeBlock className="language-bash">pip install --upgrade clarifai</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -128,7 +128,7 @@ Once your custom model is ready, upload it to the Clarifai platform by navigatin
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash"> clarifai model upload </CodeBlock>
+    <CodeBlock className="language-bash">clarifai model upload</CodeBlock>
 </TabItem>
 </Tabs>
 
