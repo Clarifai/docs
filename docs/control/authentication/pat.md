@@ -31,13 +31,11 @@ A PAT allows you to make inferences on resources that are outside the scope of y
 
 A default PAT is automatically generated for you when you create an account on the Clarifai platform. Nonetheless, you can also create a new PAT explicitly on the platform. 
 
-To create it, [log in](https://clarifai.com/login) to the Clarifai platform. Then, in the collapsible left sidebar, select **Settings** and choose **Security** from the dropdown list.
+To create it, [log in](https://clarifai.com/login) to the Clarifai platform. Then, in the collapsible left sidebar, select **Settings** and choose **Secrets** from the dropdown list.
 
 ![Create new PAT on Community](/img/others/create_pat_community.png)
 
-> **Note:** On the **Security** page, you can update the password used to access your Clarifai account by entering your current password and a new one, or by generating a new password automatically.
-
-On the ensuing **Security** page, click the **Create Personal Access Token** button.  
+On the ensuing **Secrets** page, click the **Create Personal Access Token** button.  
 
 Next, on the form that pops up, provide a short token description, set the [scopes](https://docs.clarifai.com/control/authentication/scopes/) you want to apply, and click the **Create Personal Access Token** button.
 

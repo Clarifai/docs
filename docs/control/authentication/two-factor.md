@@ -40,13 +40,15 @@ Here's what to expect:
 
 ## 2FA Set Up
 
-To enable 2FA, sign in to the platform first. Then, in the collapsible left sidebar, select **Settings** and choose **Security** from the dropdown list.
+To enable 2FA, sign in to the platform first. Then, in the collapsible left sidebar, select **Settings** and choose **Account Security** from the dropdown list.
 
 You'll be directed to the **Security** settings page.
 
 ![](/img/others-2/2fa-1.png)
 
-To set up 2FA, scroll down on that **Security** page and toggle the **Two Factor Authentication** "Enable" button.
+> **Note:** On the **Security** page, you can update the password used to access your Clarifai account by entering your current password and a new one, or by generating a new password automatically.
+
+To set up 2FA, toggle the **Two Factor Authentication** "Enable" button.
 
 ![](/img/others-2/2fa-2.png)
 
