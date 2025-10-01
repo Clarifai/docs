@@ -2241,7 +2241,7 @@ You need a PAT (Personal Access Token) key to authenticate your connection to th
 
 Before making a prediction with a model, it’s important to understand how its prediction methods are structured.
 
-You can learn more about the structure of model prediction methods [here](README.mdx#structure-of-prediction-methods).
+You can learn more about the structure of model prediction methods [here](https://docs.clarifai.com/compute/inference/#structure-of-prediction-methods).
 
 ### Get Available Methods
 
@@ -4353,22 +4353,22 @@ This ensures that all essential components required for Local Runners are proper
 
 > **Note:** If the [`config.yaml`](https://docs.clarifai.com/compute/models/upload/#step-2-prepare-the-configyaml-file) file does not contain model information that matches the `user_id`, `app_id`, and `model_id` defined in your current context, it will be automatically updated to include the new model details. This ensures that the model started by the local development runner is the same one you intend to call via the API. If needed, you can back up the existing `config.yaml` file as `config.yaml.bk`.
 
-:::tip
+## Step 4: Test Your Runner
 
-You can view the active runners associated with your model on its individual page in the Clarifai platform. For a centralized view and easier management of all active runners, use the [Runners dashboard](https://clarifai.com/compute/runners).
+When the local development runner starts in your terminal, it automatically generates an example client code snippet based on the [model's signature](https://docs.clarifai.com/compute/inference/#structure-of-prediction-methods).
 
-:::
-
-## Step 4: Test with Snippet
-
-Once the local development runner starts in your terminal, an example client code snippet is automatically generated based on the [model's signature](https://docs.clarifai.com/compute/models/inference/api#generate-example-code) to help you test it.
+You can run this snippet in a separate terminal (within the same directory) to receive the model’s response output.
 
   Example Code Snippet
     {LocalDevExampleCode}
 
-If you run the generated snippet in a separate terminal, but within the same directory, you’ll receive the model’s response output.
+The terminal also displays a link to the [AI Playground](https://docs.clarifai.com/getting-started/quickstart-playground), which you can copy and use to interact with the model directly. 
 
-After you're done testing, simply close the terminal running the local development runner to shut it down.
+Alternatively, while the runner is active in your terminal, you can open the [**Runners**](https://clarifai.com/compute/runners) dashboard on the Clarifai platform, find your runner in the table, click the three-dot menu, and select **Open in Playground** to chat with the model.
+
+![](/img/others/runners-dashboard.png)
+
+When you’re done testing, simply close the terminal running the local development runner to shut it down.
 
 ## Additional Examples
 
@@ -4393,7 +4393,6 @@ import CodeBlock from "@theme/CodeBlock";
 
 import OllamaInit from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/ollama-init.txt";
 import OllamaRun from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/ollama-run.txt";
-import OllamaOutput from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/ollama-output.txt";
 
 ## Step 1: Perform Prerequisites
 
@@ -4491,46 +4490,44 @@ This setup ensures all required components — such as compute clusters, nodepoo
   Example Output
     {OllamaRun}
 
-## Step 5: Run Inference
+## Step 5: Test Your Runner
 
 When the local runner starts, it displays a public URL where your model is hosted and provides a sample client code snippet for quick testing. 
 
 Pulling a model from Ollama may take some time depending on your machine’s resources, but once the download finishes, you can run the snippet in a separate terminal within the same directory to get the model’s response.
 
-Below is an example of running inference using the OpenAI-compatible format:
+Below is an example snippet for running inference using the OpenAI-compatible format:
 
 ```python
 import os
+
 from openai import OpenAI
 
-# Initialize the OpenAI client with Clarifai's OpenAI-compatible endpoint
 client = OpenAI(
     base_url="https://api.clarifai.com/v2/ext/openai/v1",
     api_key=os.environ['CLARIFAI_PAT'],
 )
 
-# Replace 'user-id' with your actual Clarifai user ID
 response = client.chat.completions.create(
-    model="https://clarifai.com/user-id/local-runner-app/models/local-runner-model",
+    model="https://clarifai.com/alfrick/local-runner-app/models/local-runner-model",
     messages=[
         {"role": "system", "content": "Talk like a pirate."},
-        {"role": "user", "content": "How do I check if a Python object is an instance of a class?"},
+        {
+            "role": "user",
+            "content": "How do I check if a Python object is an instance of a class?",
+        },
     ],
-    temperature=0.7,
-    stream=False,  # Set to True for streaming responses
+    temperature=1.0,
+    stream=False,  # stream=True also works, just iterator over the response
 )
-
-# Print the full response
 print(response)
-
-# Example for handling a streaming response:
-# if stream=True, uncomment below to print chunks as they arrive
-# for chunk in response:
-#     print(chunk.choices[0].message['content'], end='')
 ```
 
-  Example Output
-    {OllamaOutput}
+The terminal also shows a link to the [AI Playground](https://docs.clarifai.com/getting-started/quickstart-playground), which you can copy to interact with the model directly.
+
+Alternatively, while your runner is active in the terminal, you can open the **[Runners](https://clarifai.com/compute/runners)** dashboard on the Clarifai platform, locate your runner in the table, and select **Open in Playground** from the three-dot menu to start chatting with the model.
+
+![](/img/others/runners-dashboard-ollama.png)
 
 When you're done, just close the terminal running the local runner to shut it down.
 
@@ -4681,7 +4678,6 @@ Once imported to our platform, your model can be utilized alongside Clarifai's v
 :::info Objective
 
 Let’s walk through how to build and upload a custom model to the Clarifai platform. This example model appends the phrase `Hello World` to any input text and also supports streaming responses.
-You can test the already uploaded model [here](https://clarifai.com/alfrick/docs-demos/models/my-uploaded-model).
 
 :::
 
@@ -4723,7 +4719,7 @@ Next, retrieve the following credentials:
 - **User ID** – Go to your personal settings page and find your user ID under the **Account** section.
 - **PAT** – From the same personal settings page, go to the **Security** section to generate or copy your [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat). This token is used to authenticate your connection with the Clarifai platform.
 
-You need to set the `CLARIFAI_PAT` you've retrieved as an environment variable. 
+You need to set the `CLARIFAI_PAT` you've retrieved as an environment variable to enhance its security. 
 
      export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE 
 
@@ -4915,7 +4911,7 @@ The `requirements.txt` file lists all the Python dependencies your model needs.
 This is the `requirements.txt` file for the custom model we want to upload:
 
 ```text
-clarifai>=11.3.0
+clarifai>=11.8.2
 ```
 
 If your model requires Torch, we provide optimized pre-built Torch images as the base for machine learning and inference tasks.
@@ -4941,7 +4937,7 @@ We recommend using either `torch==2.5.1` or `torch==2.4.1`. If your model requir
 
 Before uploading your model to the Clarifai platform, it's important to test it locally to catch any typos or misconfigurations in the code. 
 
-Learn how to  run and test your models locally [here](https://docs.clarifai.com/compute/models/upload/run-locally). 
+Learn how to  run and test your models locally [here](https://docs.clarifai.com/compute/local-runners/). 
 
 ## Step 4: Upload the Model to Clarifai
 
@@ -4991,7 +4987,7 @@ You can follow the prompts to:
 
 ## Step 6: Predict With Model
 
-Once the model is successfully deployed, you can start making predictions with it. 
+Once the model is successfully deployed, you can generate predictions either programmatically or through the [UI Playground](https://docs.clarifai.com/getting-started/quickstart-playground). 
 
 ### Unary-Unary Predict Call
 
@@ -5032,10 +5028,12 @@ Here is an example of how to [download](https://docs.clarifai.com/resources/api-
 
 :::
 
-- [An OpenAI-compatible model built with Clarifai’s `OpenAIModelClass`](https://github.com/Clarifai/runners-examples/tree/main/llm/vllm-gemma-3-1b-it)
-- [A Llama-3.2-1B-Instruct model built with Clarifai’s `ModelClass`](https://github.com/Clarifai/runners-examples/tree/main/llm/hf-llama-3_2-1b-instruct)
-- [An NSFW Image Classifier model built with Clarifai’s `VisualClassifierClass`](https://github.com/Clarifai/runners-examples/tree/main/image-classifier/nsfw-image-classifier)
-- [A DETR ResNet Image Detector built with Clarifai’s `VisualDetectorClass`](https://github.com/Clarifai/runners-examples/tree/main/image-detector/detr-resnet-image-detection)
+- [An OpenAI-compatible model](https://github.com/Clarifai/runners-examples/tree/main/llm/vllm-gemma-3-1b-it) built with Clarifai’s `OpenAIModelClass`
+- [A Llama-3.2-1B-Instruct model](https://github.com/Clarifai/runners-examples/tree/main/llm/hf-llama-3_2-1b-instruct) built with Clarifai’s `ModelClass`
+- [An NSFW Image Classifier model](https://github.com/Clarifai/runners-examples/tree/main/image-classifier/nsfw-image-classifier) built with Clarifai’s `VisualClassifierClass`
+- [A DETR ResNet Image Detector model](https://github.com/Clarifai/runners-examples/tree/main/image-detector/detr-resnet-image-detection) built with Clarifai’s `VisualDetectorClass`
+- Sandboxed execution with [Daytona](https://www.daytona.io/) and Clarifai   
+  - [A YouTube video](https://www.youtube.com/watch?v=S9pMcLzqbgo) on how to upload and run a custom model on Clarifai, start a local runner, and execute the model within a Daytona Sandbox. The model’s repository is [here](https://github.com/Clarifai/runners-examples/tree/daytona-code-generator-model/code-generation/daytona-code-generator).
 
 ---
 
@@ -5779,13 +5777,11 @@ A PAT allows you to make inferences on resources that are outside the scope of y
 
 A default PAT is automatically generated for you when you create an account on the Clarifai platform. Nonetheless, you can also create a new PAT explicitly on the platform. 
 
-To create it, [log in](https://clarifai.com/login) to the Clarifai platform. Then, in the collapsible left sidebar, select **Settings** and choose **Security** from the dropdown list.
+To create it, [log in](https://clarifai.com/login) to the Clarifai platform. Then, in the collapsible left sidebar, select **Settings** and choose **Secrets** from the dropdown list.
 
 ![Create new PAT on Community](/img/others/create_pat_community.png)
 
-> **Note:** On the **Security** page, you can update the password used to access your Clarifai account by entering your current password and a new one, or by generating a new password automatically.
-
-On the ensuing **Security** page, click the **Create Personal Access Token** button.  
+On the ensuing **Secrets** page, click the **Create Personal Access Token** button.  
 
 Next, on the form that pops up, provide a short token description, set the [scopes](https://docs.clarifai.com/control/authentication/scopes/) you want to apply, and click the **Create Personal Access Token** button.
 
@@ -6149,13 +6145,15 @@ Here's what to expect:
 
 ## 2FA Set Up
 
-To enable 2FA, sign in to the platform first. Then, in the collapsible left sidebar, select **Settings** and choose **Security** from the dropdown list.
+To enable 2FA, sign in to the platform first. Then, in the collapsible left sidebar, select **Settings** and choose **Account Security** from the dropdown list.
 
 You'll be directed to the **Security** settings page.
 
 ![](/img/others-2/2fa-1.png)
 
-To set up 2FA, scroll down on that **Security** page and toggle the **Two Factor Authentication** "Enable" button.
+> **Note:** On the **Security** page, you can update the password used to access your Clarifai account by entering your current password and a new one, or by generating a new password automatically.
+
+To set up 2FA, toggle the **Two Factor Authentication** "Enable" button.
 
 ![](/img/others-2/2fa-2.png)
 
@@ -24554,9 +24552,9 @@ To authenticate your connection to Clarifai, you’ll need a [Personal Access To
 
 Then, set the PAT as an environment variable using `CLARIFAI_PAT`. This will authenticate your session when using the SDKs, including the [Clarifai CLI](https://docs.clarifai.com/resources/api-overview/cli).
 
-     export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE 
+    export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE
 
-     set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE 
+    set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE
 
 ## Step 4: Install Your Preferred SDK
 
@@ -24572,9 +24570,9 @@ Here's how to install your preferred package:
 
     pip install --upgrade clarifai
 
-   npm install clarifai-nodejs  
+ npm install clarifai-nodejs
 
-     pip install openai 
+    pip install openai
 
 ## Step 5: Send an API Request
 
@@ -24716,15 +24714,15 @@ Next, retrieve the following credentials:
 
 You need to set the `CLARIFAI_PAT` you've retrieved as an environment variable. 
 
-     export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE 
+    export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE
 
-     set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE 
+    set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE
 
 ### Install Clarifai Package
 
 Install the latest version of the `clarifai` Python SDK. This also installs the Clarifai [Command Line Interface (CLI)](https://docs.clarifai.com/additional-resources/api-overview/cli), which we'll use for uploading the model.
 
-     pip install --upgrade clarifai 
+    pip install --upgrade clarifai
 
 ## Step 2: Create Files
 
@@ -24774,7 +24772,7 @@ In the `model` section of the `config.yaml` file, specify a unique model ID (any
 
 Once your custom model is ready, upload it to the Clarifai platform by navigating to the directory containing the model and running the following command:
 
-     clarifai model upload 
+    clarifai model upload
 
 ## Step 4: Deploy the Model
 
