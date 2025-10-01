@@ -92,8 +92,8 @@ const config = {
       announcementBar: {
         id: 'support_us_' + Date.now(),
         content:
-          '<span>New!</span> Local Runners let you run models locally for development, debugging, or compute tasks.  <a target="_blank" rel="noopener noreferrer" href="https://docs.clarifai.com/compute/models/upload/local-runners/">Learn more.</a>',
-        isCloseable: true,
+          '<span>Clarifai Reasoning Engine:</span>Benchmarked by Artificial Analysis on GPT-OSS-120B → 544 tokens/sec, 3.6s TTFA, $0.16/M — Faster, Cheaper, Adaptive. <a target="_blank" rel="noopener noreferrer" href="https://www.clarifai.com/press-release-clarifai-launches-reasoning-engine-optimized-for-agentic-ai-inference">Learn more.</a>',
+        isCloseable: true,      
       },
       navbar: {
         title: '',

@@ -231,24 +231,24 @@ This ensures that all essential components required for Local Runners are proper
 
 > **Note:** If the [`config.yaml`](https://docs.clarifai.com/compute/models/upload/#step-2-prepare-the-configyaml-file) file does not contain model information that matches the `user_id`, `app_id`, and `model_id` defined in your current context, it will be automatically updated to include the new model details. This ensures that the model started by the local development runner is the same one you intend to call via the API. If needed, you can back up the existing `config.yaml` file as `config.yaml.bk`.
 
-:::tip
+## Step 4: Test Your Runner
 
-You can view the active runners associated with your model on its individual page in the Clarifai platform. For a centralized view and easier management of all active runners, use the [Runners dashboard](https://clarifai.com/compute/runners).
+When the local development runner starts in your terminal, it automatically generates an example client code snippet based on the [model's signature](https://docs.clarifai.com/compute/inference/#structure-of-prediction-methods).
 
-:::
-
-## Step 4: Test with Snippet
-
-Once the local development runner starts in your terminal, an example client code snippet is automatically generated based on the [model's signature](https://docs.clarifai.com/compute/models/inference/api#generate-example-code) to help you test it.
+You can run this snippet in a separate terminal (within the same directory) to receive the model’s response output.
 
 <details>
   <summary>Example Code Snippet</summary>
     <CodeBlock className="language-text">{LocalDevExampleCode}</CodeBlock>
 </details>
 
-If you run the generated snippet in a separate terminal, but within the same directory, you’ll receive the model’s response output.
+The terminal also displays a link to the [AI Playground](https://docs.clarifai.com/getting-started/quickstart-playground), which you can copy and use to interact with the model directly. 
 
-After you're done testing, simply close the terminal running the local development runner to shut it down.
+Alternatively, while the runner is active in your terminal, you can open the [**Runners**](https://clarifai.com/compute/runners) dashboard on the Clarifai platform, find your runner in the table, click the three-dot menu, and select **Open in Playground** to chat with the model.
+
+![](/img/others/runners-dashboard.png)
+
+When you’re done testing, simply close the terminal running the local development runner to shut it down.
 
 
 ## Additional Examples

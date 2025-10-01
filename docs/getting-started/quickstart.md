@@ -48,10 +48,10 @@ Then, set the PAT as an environment variable using `CLARIFAI_PAT`. This will aut
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Unix-Like Systems">
-    <CodeBlock className="language-bash"> export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
+    <CodeBlock className="language-bash">export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE</CodeBlock>
 </TabItem>
 <TabItem value="bash2" label="Windows">
-    <CodeBlock className="language-bash"> set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
+    <CodeBlock className="language-bash">set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -73,11 +73,11 @@ Here's how to install your preferred package:
 </TabItem>
 
 <TabItem value="node.js" label="Node.js SDK">
- <CodeBlock className="language-bash">  npm install clarifai-nodejs  </CodeBlock>
+ <CodeBlock className="language-bash">npm install clarifai-nodejs</CodeBlock>
 </TabItem>
 
 <TabItem value="openai" label="Python (OpenAI)">
-    <CodeBlock className="language-bash"> pip install openai </CodeBlock>
+    <CodeBlock className="language-bash">pip install openai</CodeBlock>
 </TabItem>
 
 </Tabs>

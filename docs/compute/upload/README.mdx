@@ -24,7 +24,6 @@ Once imported to our platform, your model can be utilized alongside Clarifai's v
 :::info Objective
 
 Let’s walk through how to build and upload a custom model to the Clarifai platform. This example model appends the phrase `Hello World` to any input text and also supports streaming responses.
-You can test the already uploaded model [here](https://clarifai.com/alfrick/docs-demos/models/my-uploaded-model).
 
 :::
 
@@ -66,7 +65,7 @@ Next, retrieve the following credentials:
 - **User ID** – Go to your personal settings page and find your user ID under the **Account** section.
 - **PAT** – From the same personal settings page, go to the **Security** section to generate or copy your [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat). This token is used to authenticate your connection with the Clarifai platform.
 
-You need to set the `CLARIFAI_PAT` you've retrieved as an environment variable. 
+You need to set the `CLARIFAI_PAT` you've retrieved as an environment variable to enhance its security. 
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Unix-Like Systems">
@@ -286,7 +285,7 @@ The `requirements.txt` file lists all the Python dependencies your model needs.
 This is the `requirements.txt` file for the custom model we want to upload:
 
 ```text
-clarifai>=11.3.0
+clarifai>=11.8.2
 ```
 
 If your model requires Torch, we provide optimized pre-built Torch images as the base for machine learning and inference tasks.
@@ -312,7 +311,7 @@ We recommend using either `torch==2.5.1` or `torch==2.4.1`. If your model requir
 
 Before uploading your model to the Clarifai platform, it's important to test it locally to catch any typos or misconfigurations in the code. 
 
-Learn how to  run and test your models locally [here](https://docs.clarifai.com/compute/models/upload/run-locally). 
+Learn how to  run and test your models locally [here](https://docs.clarifai.com/compute/local-runners/). 
 
 ## Step 4: Upload the Model to Clarifai
 
@@ -378,7 +377,7 @@ You can follow the prompts to:
 
 ## Step 6: Predict With Model
 
-Once the model is successfully deployed, you can start making predictions with it. 
+Once the model is successfully deployed, you can generate predictions either programmatically or through the [UI Playground](https://docs.clarifai.com/getting-started/quickstart-playground). 
 
 ### Unary-Unary Predict Call
 
@@ -437,8 +436,10 @@ Here is an example of how to [download](https://docs.clarifai.com/resources/api-
 
 :::
 
-- [An OpenAI-compatible model built with Clarifai’s `OpenAIModelClass`](https://github.com/Clarifai/runners-examples/tree/main/llm/vllm-gemma-3-1b-it)
-- [A Llama-3.2-1B-Instruct model built with Clarifai’s `ModelClass`](https://github.com/Clarifai/runners-examples/tree/main/llm/hf-llama-3_2-1b-instruct)
-- [An NSFW Image Classifier model built with Clarifai’s `VisualClassifierClass`](https://github.com/Clarifai/runners-examples/tree/main/image-classifier/nsfw-image-classifier)
-- [A DETR ResNet Image Detector built with Clarifai’s `VisualDetectorClass`](https://github.com/Clarifai/runners-examples/tree/main/image-detector/detr-resnet-image-detection)
-
+- [An OpenAI-compatible model](https://github.com/Clarifai/runners-examples/tree/main/llm/vllm-gemma-3-1b-it) built with Clarifai’s `OpenAIModelClass`
+- [A Llama-3.2-1B-Instruct model](https://github.com/Clarifai/runners-examples/tree/main/llm/hf-llama-3_2-1b-instruct) built with Clarifai’s `ModelClass`
+- [An NSFW Image Classifier model](https://github.com/Clarifai/runners-examples/tree/main/image-classifier/nsfw-image-classifier) built with Clarifai’s `VisualClassifierClass`
+- [A DETR ResNet Image Detector model](https://github.com/Clarifai/runners-examples/tree/main/image-detector/detr-resnet-image-detection) built with Clarifai’s `VisualDetectorClass`
+- Sandboxed execution with [Daytona](https://www.daytona.io/) and Clarifai   
+  - [A YouTube video](https://www.youtube.com/watch?v=S9pMcLzqbgo) on how to upload and run a custom model on Clarifai, start a local runner, and execute the model within a Daytona Sandbox. The model’s repository is [here](https://github.com/Clarifai/runners-examples/tree/daytona-code-generator-model/code-generation/daytona-code-generator).
+  

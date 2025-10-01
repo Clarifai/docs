@@ -1,82 +1,88 @@
-clarifai model local-runner --verbose
-[INFO] 11:39:05.038034 > Checking local runner requirements... |  thread=8589516992 
-[INFO] 11:39:05.063469 Checking 2 dependencies... |  thread=8589516992 
-[INFO] 11:39:05.063902 ✅ All 2 dependencies are installed! |  thread=8589516992 
-[INFO] 11:39:05.064096 Verifying Ollama installation... |  thread=8589516992 
-[INFO] 11:39:05.099099 > Verifying local runner setup... |  thread=8589516992 
-[INFO] 11:39:05.099300 Current context: default |  thread=8589516992 
-[INFO] 11:39:05.099342 Current user_id: alfrick |  thread=8589516992 
-[INFO] 11:39:05.099370 Current PAT: d6570**** |  thread=8589516992 
-[INFO] 11:39:05.101001 Current compute_cluster_id: local-runner-compute-cluster |  thread=8589516992 
-[WARNING] 11:39:06.191904 Failed to get compute cluster with ID 'local-runner-compute-cluster':
+clarifai model local-runner
+[INFO] 16:01:28.904230 > Checking local runner requirements... |  thread=8800297152 
+[INFO] 16:01:28.928129 Checking 2 dependencies... |  thread=8800297152 
+[INFO] 16:01:28.928672 ✅ All 2 dependencies are installed! |  thread=8800297152 
+[INFO] 16:01:28.928886 Verifying Ollama installation... |  thread=8800297152 
+[INFO] 16:01:29.004234 > Verifying local runner setup... |  thread=8800297152 
+[INFO] 16:01:29.004427 Current context: default |  thread=8800297152 
+[INFO] 16:01:29.004463 Current user_id: alfrick |  thread=8800297152 
+[INFO] 16:01:29.004490 Current PAT: d6570**** |  thread=8800297152 
+[INFO] 16:01:29.005945 Current compute_cluster_id: local-runner-compute-cluster |  thread=8800297152 
+[WARNING] 16:01:35.936440 Failed to get compute cluster with ID 'local-runner-compute-cluster':
 code: CONN_DOES_NOT_EXIST
 description: "Resource does not exist"
 details: "ComputeCluster with ID \'local-runner-compute-cluster\' not found. Check your request fields."
-req_id: "sdk-python-11.7.2-56dfdebebd3d4f42bdff435838d050e1"
- |  thread=8589516992 
+req_id: "sdk-python-11.8.2-75ca9226003a4b34a770885b119d5814"
+ |  thread=8800297152 
 Compute cluster not found. Do you want to create a new compute cluster alfrick/local-runner-compute-cluster? (y/n): y
-[INFO] 11:39:12.426673 Compute Cluster with ID 'local-runner-compute-cluster' is created:
+[INFO] 16:01:58.382096 Compute Cluster with ID 'local-runner-compute-cluster' is created:
 code: SUCCESS
 description: "Ok"
-req_id: "sdk-python-11.7.2-f972b78a4731420ea7018a5591854fe6"
- |  thread=8589516992 
-[INFO] 11:39:12.431533 Current nodepool_id: local-runner-nodepool |  thread=8589516992 
-[WARNING] 11:39:13.391660 Failed to get nodepool with ID 'local-runner-nodepool':
+req_id: "sdk-python-11.8.2-a0474b8ba93c4e069804500a188694db"
+ |  thread=8800297152 
+[INFO] 16:01:58.391571 Current nodepool_id: local-runner-nodepool |  thread=8800297152 
+[WARNING] 16:02:00.633687 Failed to get nodepool with ID 'local-runner-nodepool':
 code: CONN_DOES_NOT_EXIST
 description: "Resource does not exist"
 details: "Nodepool not found. Check your request fields."
-req_id: "sdk-python-11.7.2-8660a719c7354675bc350e84ab6702c3"
- |  thread=8589516992 
+req_id: "sdk-python-11.8.2-62149d46e7104d35bcb2a36546710329"
+ |  thread=8800297152 
 Nodepool not found. Do you want to create a new nodepool alfrick/local-runner-compute-cluster/local-runner-nodepool? (y/n): y
-[INFO] 11:39:18.440918 Nodepool with ID 'local-runner-nodepool' is created:
+[INFO] 16:02:03.909005 Nodepool with ID 'local-runner-nodepool' is created:
 code: SUCCESS
 description: "Ok"
-req_id: "sdk-python-11.7.2-35eae829232746da8e3c50e743bb90a0"
- |  thread=8589516992 
-[INFO] 11:39:18.457288 Current app_id: local-runner-app |  thread=8589516992 
-[INFO] 11:39:18.790072 Current model_id: local-runner-model |  thread=8589516992 
-[INFO] 11:39:23.772397 Current model version 9d38bb9398944de4bdef699835f17ec9 |  thread=8589516992 
-[INFO] 11:39:23.772643 Creating the local runner tying this 'alfrick/local-runner-app/models/local-runner-model' model (version: 9d38bb9398944de4bdef699835f17ec9) to the 'alfrick/local-runner-compute-cluster/local-runner-nodepool' nodepool. |  thread=8589516992 
-[INFO] 11:39:24.885380 Runner with ID 'db1794a7d250406badcad63cf4ce695c' is created:
+req_id: "sdk-python-11.8.2-05836a431940495b94b9c3691f6c6d4d"
+ |  thread=8800297152 
+[INFO] 16:02:03.921694 Current app_id: local-runner-app |  thread=8800297152 
+[INFO] 16:02:04.203774 Current model_id: local-runner-model |  thread=8800297152 
+[WARNING] 16:02:10.933734 Attempting to patch latest version: 9d38bb9398944de4bdef699835f17ec9 |  thread=8800297152 
+[INFO] 16:02:14.195999 Successfully patched version 9d38bb9398944de4bdef699835f17ec9 |  thread=8800297152 
+[INFO] 16:02:14.197924 Current model version 9d38bb9398944de4bdef699835f17ec9 |  thread=8800297152 
+[WARNING] 16:02:18.679567 Failed to get runner with ID 'f3c46913186449ba99dedd38123d47a3':
+code: CONN_DOES_NOT_EXIST
+description: "Resource does not exist"
+details: "Runner not found. Check your request fields."
+req_id: "sdk-python-11.8.2-0b3b241c76ef429290c8c54a318f2f21"
+ |  thread=8800297152 
+[INFO] 16:02:18.679913 Creating the local runner tying this 'alfrick/local-runner-app/models/local-runner-model' model (version: 9d38bb9398944de4bdef699835f17ec9) to the 'alfrick/local-runner-compute-cluster/local-runner-nodepool' nodepool. |  thread=8800297152 
+[INFO] 16:02:19.757117 Runner with ID '2f84d7194ee8464fad485fd058663fe5' is created:
 code: SUCCESS
 description: "Ok"
-req_id: "sdk-python-11.7.2-8f319a34bd134cf7828c41fc9eb7d27d"
- |  thread=8589516992 
-[INFO] 11:39:24.893927 Current runner_id: db1794a7d250406badcad63cf4ce695c |  thread=8589516992 
-[WARNING] 11:39:25.252771 Failed to get deployment with ID local-runner-deployment:
+req_id: "sdk-python-11.8.2-8ac525dc13ec47629213f0283e89c6a7"
+ |  thread=8800297152 
+[INFO] 16:02:19.765198 Current runner_id: 2f84d7194ee8464fad485fd058663fe5 |  thread=8800297152 
+[WARNING] 16:02:20.331980 Failed to get deployment with ID local-runner-deployment:
 code: CONN_DOES_NOT_EXIST
 description: "Resource does not exist"
 details: "Deployment with ID \'local-runner-deployment\' not found. Check your request fields."
-req_id: "sdk-python-11.7.2-4a9e10638c9f461688312571e0a2ceb8"
- |  thread=8589516992 
+req_id: "sdk-python-11.8.2-864f55e6bc554614894ee031cc30cdb9"
+ |  thread=8800297152 
 Deployment not found. Do you want to create a new deployment alfrick/local-runner-compute-cluster/local-runner-nodepool/local-runner-deployment? (y/n): y
-[INFO] 11:39:28.762471 Deployment with ID 'local-runner-deployment' is created:
+[INFO] 16:02:25.016935 Deployment with ID 'local-runner-deployment' is created:
 code: SUCCESS
 description: "Ok"
-req_id: "sdk-python-11.7.2-afda1f4e53e14055a604c43e85ff6eba"
- |  thread=8589516992 
-[INFO] 11:39:28.769409 Current deployment_id: local-runner-deployment |  thread=8589516992 
-[INFO] 11:39:28.771852 Current model section of config.yaml: {'app_id': 'local-dev-runner-app', 'id': 'local-dev-model', 'model_type_id': 'text-to-text', 'user_id': 'clarifai-user-id'} |  thread=8589516992 
+req_id: "sdk-python-11.8.2-b6bf9aad5aa545f8a041113608fc9365"
+ |  thread=8800297152 
+[INFO] 16:02:25.024579 Current deployment_id: local-runner-deployment |  thread=8800297152 
+[INFO] 16:02:25.027108 Current model section of config.yaml: {'app_id': 'local-dev-runner-app', 'id': 'local-dev-model', 'model_type_id': 'text-to-text', 'user_id': 'clarifai-user-id'} |  thread=8800297152 
 Do you want to backup config.yaml to config.yaml.bk then update the config.yaml with the new model information? (y/n): y
-[INFO] 11:39:33.362901 Checking 2 dependencies... |  thread=8589516992 
-[INFO] 11:39:33.363602 ✅ All 2 dependencies are installed! |  thread=8589516992 
-[INFO] 11:39:33.405524 Customizing Ollama model with provided parameters... |  thread=8589516992 
-[INFO] 11:39:33.406114 ✅ Starting local runner... |  thread=8589516992 
-[INFO] 11:39:34.440960 Detected OpenAI chat completions for Clarifai model streaming - validating stream_options... |  thread=8589516992 
-[INFO] 11:39:34.448319 Starting Ollama server in the host: 127.0.0.1:23333 |  thread=8589516992 
-[INFO] 11:39:34.461759 Model llama3.2 pulled successfully. |  thread=8589516992 
-[INFO] 11:39:34.462122 Ollama server started successfully on 127.0.0.1:23333 |  thread=8589516992 
-time=2025-08-22T11:39:34.473+03:00 level=INFO source=routes.go:1318 msg="server config" env="map[HTTPS_PROXY: HTTP_PROXY: NO_PROXY: OLLAMA_CONTEXT_LENGTH:8192 OLLAMA_DEBUG:INFO OLLAMA_FLASH_ATTENTION:false OLLAMA_GPU_OVERHEAD:0 OLLAMA_HOST:http://127.0.0.1:23333 OLLAMA_KEEP_ALIVE:5m0s OLLAMA_KV_CACHE_TYPE: OLLAMA_LLM_LIBRARY: OLLAMA_LOAD_TIMEOUT:5m0s OLLAMA_MAX_LOADED_MODELS:0 OLLAMA_MAX_QUEUE:512 OLLAMA_MODELS:/Users/macbookpro/.ollama/models OLLAMA_MULTIUSER_CACHE:false OLLAMA_NEW_ENGINE:false OLLAMA_NEW_ESTIMATES:false OLLAMA_NOHISTORY:false OLLAMA_NOPRUNE:false OLLAMA_NUM_PARALLEL:1 OLLAMA_ORIGINS:[http://localhost https://localhost http://localhost:* https://localhost:* http://127.0.0.1 https://127.0.0.1 http://127.0.0.1:* https://127.0.0.1:* http://0.0.0.0 https://0.0.0.0 http://0.0.0.0:* https://0.0.0.0:* app://* file://* tauri://* vscode-webview://* vscode-file://*] OLLAMA_SCHED_SPREAD:false http_proxy: https_proxy: no_proxy:]"
-time=2025-08-22T11:39:34.473+03:00 level=INFO source=images.go:477 msg="total blobs: 0"
-time=2025-08-22T11:39:34.473+03:00 level=INFO source=images.go:484 msg="total unused blobs removed: 0"
-time=2025-08-22T11:39:34.474+03:00 level=INFO source=routes.go:1371 msg="Listening on 127.0.0.1:23333 (version 0.11.6)"
-time=2025-08-22T11:39:34.507+03:00 level=INFO source=types.go:130 msg="inference compute" id=0 library=metal variant="" compute="" driver=0.0 name="" total="10.7 GiB" available="10.7 GiB"
-time=2025-08-22T11:39:34.507+03:00 level=INFO source=routes.go:1412 msg="entering low vram mode" "total vram"="10.7 GiB" threshold="20.0 GiB"
-[GIN] 2025/08/22 - 11:39:34 | 200 |        68.5µs |       127.0.0.1 | HEAD     "/"
-[INFO] 11:39:34.521195 Ollama model loaded successfully: llama3.2 |  thread=8589516992 
-[INFO] 11:39:34.525089 ✅ Your model is running locally and is ready for requests from the API...
- |  thread=8589516992 
-[INFO] 11:39:34.525126 > Code Snippet: To call your model via the API, use this code snippet:
+[INFO] 16:02:27.407724 Checking 2 dependencies... |  thread=8800297152 
+[INFO] 16:02:27.408555 ✅ All 2 dependencies are installed! |  thread=8800297152 
+[INFO] 16:02:27.451117 Customizing Ollama model with provided parameters... |  thread=8800297152 
+[INFO] 16:02:27.451785 ✅ Starting local runner... |  thread=8800297152 
+[INFO] 16:02:27.451852 No secrets path configured, running without secrets |  thread=8800297152 
+[INFO] 16:02:30.020253 Detected OpenAI chat completions for Clarifai model streaming - validating stream_options... |  thread=8800297152 
+[INFO] 16:02:30.027464 Starting Ollama server in the host: 127.0.0.1:23333 |  thread=8800297152 
+[INFO] 16:02:30.040882 Model llama3.2 pulled successfully. |  thread=8800297152 
+[INFO] 16:02:30.041191 Ollama server started successfully on 127.0.0.1:23333 |  thread=8800297152 
+[INFO] 16:02:30.096053 Ollama model loaded successfully: llama3.2 |  thread=8800297152 
+[INFO] 16:02:30.096133 ModelServer initialized successfully |  thread=8800297152 
+Exception in thread Thread-1 (serve_health):
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.12/3.12.11/Frameworks/Python.framework/Versions/3.12/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
+[INFO] 16:02:30.100802 ✅ Your model is running locally and is ready for requests from the API...
+ |  thread=8800297152 
+[INFO] 16:02:30.100873 > Code Snippet: To call your model via the API, use this code snippet:
 
 import os
 
@@ -96,48 +102,17 @@ response = client.chat.completions.create(
             "content": "How do I check if a Python object is an instance of a class?",
         },
     ],
-    temperature=0.7,
+    temperature=1.0,
     stream=False,  # stream=True also works, just iterator over the response
 )
 print(response)
- |  thread=8589516992 
-[INFO] 11:39:34.525153 > Playground:   To chat with your model, visit: https://clarifai.com/playground?model=local-runner-model__9d38bb9398944de4bdef699835f17ec9&user_id=alfrick&app_id=local-runner-app
- |  thread=8589516992 
-[INFO] 11:39:34.525172 > API URL:      To call your model via the API, use this model URL: https://clarifai.com/users/alfrick/apps/local-runner-app/models/local-runner-model
- |  thread=8589516992 
-[INFO] 11:39:34.525185 Press CTRL+C to stop the runner.
- |  thread=8589516992 
-[INFO] 11:39:34.525202 Starting 32 threads... |  thread=8589516992 
-pulling manifest ⠏ time=2025-08-22T11:39:36.435+03:00 level=INFO source=download.go:177 msg="downloading dde5aa3fc5ff in 16 126 MB part(s)"
-pulling manifest 
-pulling dde5aa3fc5ff:   1% ▕█                                                                                                                                   pulling manifest 
-pulling dde5aa3fc5ff:   1% ▕█                                                                                                                                   pulling manifest 
-pulling manifest 
-pulling manifest 
-pulling manifest 
-pulling dde5aa3fc5ff:  31% ▕█████████████████████████████████████████████████████████                                                                           pulling manifest 
-pulling dde5aa3fc5ff:  35% ▕██████            ▏ 712 MB/2.0 GB  2.9 MB/s   7m23stime=2025-08-22T11:45:20.033+03:00 level=INFO source=download.go:295 msg="dde5aa3pulling manifest 
-pulling dde5aa3fc5ff:  93% ▕████████████████  ▏ 1.9 GB/2.0 GB  3.1 MB/s     48stime=2025-08-22T11:53:56.586+03:00 level=INFO source=download.go:295 msg="dde5aa3pulling manifest 
-pulling dde5aa3fc5ff: 100% ▕██████████████████▏ 2.0 GB                         time=2025-08-22T11:54:47.224+03:00 level=INFO source=download.go:177 msg="downloapulling manifest 
-pulling dde5aa3fc5ff: 100% ▕██████████████████▏ 2.0 GB                         
-pulling 966de95ca8a6: 100% ▕██████████████████▏ 1.4 KB                         tpulling manifest 
-pulling dde5aa3fc5ff: 100% ▕██████████████████▏ 2.0 GB                         
-pulling 966de95ca8a6: 100% ▕██████████████████▏ 1.4 KB                         
-pulling manifest 
-pulling dde5aa3fc5ff: 100% ▕██████████████████▏ 2.0 GB                         
-pulling 966de95ca8a6: 100% ▕██████████████████▏ 1.4 KB                         
-pulling manifest 
-pulling dde5aa3fc5ff: 100% ▕██████████████████▏ 2.0 GB                         
-pulling 966de95ca8a6: 100% ▕██████████████████▏ 1.4 KB                         
-pulling manifest 
-pulling dde5aa3fc5ff: 100% ▕██████████████████▏ 2.0 GB                         
-pulling manifest 
-pulling dde5aa3fc5ff: 100% ▕██████████████████▏ 2.0 GB                         
-pulling 966de95ca8a6: 100% ▕██████████████████▏ 1.4 KB                         
-pulling fcc5a6bec9da: 100% ▕██████████████████▏ 7.7 KB                         
-pulling a70ff7e570d9: 100% ▕██████████████████▏ 6.0 KB                         
-pulling 56bb8bd477a5: 100% ▕██████████████████▏   96 B                         
-pulling 34bb5ab01051: 100% ▕██████████████████▏  561 B                         
-verifying sha256 digest 
-writing manifest 
-success 
+ |  thread=8800297152 
+[INFO] 16:02:30.100944 > Playground:   To chat with your model, visit: https://clarifai.com/playground?model=local-runner-model__9d38bb9398944de4bdef699835f17ec9&user_id=alfrick&app_id=local-runner-app
+ |  thread=8800297152 
+    self.run()
+[INFO] 16:02:30.101006 > API URL:      To call your model via the API, use this model URL: https://clarifai.com/alfrick/local-runner-app/models/local-runner-model
+ |  thread=8800297152 
+  File "/opt/homebrew/Cellar/python@3.12/3.12.11/Frameworks/Python.framework/Versions/3.12/lib/python3.12/threading.py", line 1012, in run
+[INFO] 16:02:30.101070 Press CTRL+C to stop the runner.
+ |  thread=8800297152 
+[INFO] 16:02:30.101117 Starting 32 threads... |  thread=8800297152 
