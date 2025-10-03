@@ -35,6 +35,7 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [App-Specific API Keys](https://docs.clarifai.com/docs/control/authentication/key): Authenticate access to resources within the scope defined by the key
 - [Personal Access Tokens](https://docs.clarifai.com/docs/control/authentication/pat): Authenticate access to your own resources and those outside the scope of your apps
 - [Scopes](https://docs.clarifai.com/docs/control/authentication/scopes): Implement fine-grained control over the data that users have access to
+- [Third-Party API Keys](https://docs.clarifai.com/docs/control/authentication/third-party-api-keys): Learn about secrets for the Clarifai platform
 - [Two-Factor Authentication](https://docs.clarifai.com/docs/control/authentication/two-factor): Use 2FA to add an extra layer of security to your account
 - [Clarifai Organizations](https://docs.clarifai.com/docs/control/clarifai-organizations/README): Consolidate multiple accounts and enhance collaboration
 - [Apps, Models, Workflows, & Compute](https://docs.clarifai.com/docs/control/clarifai-organizations/apps-models-workflows): Create and manage apps, models, workflows, and dedicated compute
