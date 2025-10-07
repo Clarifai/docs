@@ -1,5 +1,5 @@
 ---
-description: Run Ollama models locally and make them available via a public API
+description: Download and run Hugging Face models locally and make them available via a public API
 sidebar_position: 2
 ---
 
