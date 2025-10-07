@@ -985,9 +985,7 @@ Here is how to clone a private GitHub repository using a GitHub Personal Access 
 
 You can initialize a new Clarifai model directory structure from a toolkit using the `--toolkit` option. Toolkits allow you to run large language models (LLMs) and other generative AI models locally on your own machine.
 
-Currently, we support initialization using the [Ollama toolkit](https://ollama.com/search).
-
-Here is how to initialize a model using Ollama in the current directory:
+For example, here is how you can initialize a default model using the [Ollama toolkit](https://ollama.com/search) in the current directory:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
@@ -995,23 +993,4 @@ Here is how to initialize a model using Ollama in the current directory:
 </TabItem>
 </Tabs>
 
-Additionally, you can specify different options when initializing a model from the Ollama library:
-
-- `--model-name` – Name of the Ollama model to use (default: `llama3.2`). This lets you specify any model from the Ollama library
-- `--port` – Port where the model is running (default: `23333`)
-- `--context-length` – Define the context window size for the model in tokens (default: `8192`)
-- `--verbose` – Enables detailed Ollama logs during execution. By default, logs are suppressed unless this option is specified.
-
-Here is an example of initializing a `gemma3n` model with a context length of 16,000 tokens, running on port 8008:
-
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">clarifai model init --toolkit ollama --model-name gemma3n --port 8008 --context-length 16000</CodeBlock>
-</TabItem>
-</Tabs>
-
-:::note Learn more
-
-Learn how to run Ollama models using Clarifai Local Runners [here](https://docs.clarifai.com/compute/local-runners/ollama). 
-
-:::
+You can find more details on running Ollama models with Clarifai Local Runners [here](https://docs.clarifai.com/compute/local-runners/ollama). 

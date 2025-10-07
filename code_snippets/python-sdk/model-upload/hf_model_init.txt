@@ -1,0 +1,14 @@
+clarifai model init --toolkit huggingface
+[INFO] 14:15:28.372128 Parsed GitHub repository: owner=Clarifai, repo=runners-examples, branch=huggingface, folder_path= |  thread=8800297152 
+[INFO] 14:15:29.583471 Files to be downloaded are:
+1. 1/model.py
+2. config.yaml
+3. requirements.txt |  thread=8800297152 
+Press Enter to continue...
+[INFO] 14:15:31.611534 Initializing model from GitHub repository: https://github.com/Clarifai/runners-examples |  thread=8800297152 
+[INFO] 14:15:34.840210 Successfully cloned repository from https://github.com/Clarifai/runners-examples (branch: huggingface) |  thread=8800297152 
+[INFO] 14:15:34.845345 Model initialization complete with GitHub repository |  thread=8800297152 
+[INFO] 14:15:34.845394 Next steps: |  thread=8800297152 
+[INFO] 14:15:34.845423 1. Review the model configuration |  thread=8800297152 
+[INFO] 14:15:34.845444 2. Install any required dependencies manually |  thread=8800297152 
+[INFO] 14:15:34.845466 3. Test the model locally using 'clarifai model local-test' |  thread=8800297152 

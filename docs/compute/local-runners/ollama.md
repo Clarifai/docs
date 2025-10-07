@@ -3,9 +3,9 @@ description: Run Ollama models locally and make them available via a public API
 sidebar_position: 1
 ---
 
-# Run Ollama Models Locally
+# Ollama 
 
-**Run Ollama models locally and make them available via a public API**
+**Download and run Ollama models locally and make them available via a public API**
 <hr />
 
 Ollama is an open-source tool that allows you to download, run, and manage large language models (LLMs) directly on your local machine. 
@@ -31,9 +31,9 @@ Go to the [Ollama website](https://ollama.com/download) and choose the appropria
 
 Start by [logging in](https://clarifai.com/login) to your existing Clarifai account or [signing up](https://clarifai.com/signup) for a new one. Once logged in, you'll need the following credentials for setup:
 
-- **User ID** – Navigate to your personal settings and find your user ID under the **Account** section.
+- **User ID** – In the collapsible left sidebar, select **Settings** and choose **Account** from the dropdown list. Then, locate your user ID.
 
-- **Personal Access Token (PAT)** – In the same personal settings page, go to the **Security** section to generate or copy your [PAT](https://docs.clarifai.com/control/authentication/pat). This token is used to securely authenticate your connection to the Clarifai platform.
+- **Personal Access Token (PAT)** – From the same **Settings** option, choose **Secrets** to generate or copy your [PAT](https://docs.clarifai.com/control/authentication/pat). This token is used to authenticate your connection with the Clarifai platform.
 
 You can then set the PAT as an environment variable using `CLARIFAI_PAT`, which is important when running inference with your models. 
 
