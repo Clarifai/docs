@@ -8,7 +8,7 @@ from clarifai.client.user import User
 client = User(user_id="YOUR_USER_ID")
 
 # List all secrets
-all_secrets = list(client.list_secrets())
+all_secrets = list(client.list_secrets(page_no=1))
 
 print("Secrets:")
 for secret in all_secrets:

@@ -55,7 +55,7 @@ draft: true
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
-| ![improvement](/img/improvement.jpg)|  Made some platform improvements  | <ul> <li> Added short [role descriptions](https://docs.clarifai.com/control/clarifai-organizations/members-teams#roles-for-members) in the Invite Member modal to clarify each member’s permissions when inviting them to an organization. </li> <li> In the [Control Center](https://docs.clarifai.com/control/control-center/), charts for computer vision models (displaying predictions) and for LLMs (displaying tokens) are now presented separately, each with its own usage and cost information. </li> </ul>  |
+| ![improvement](/img/improvement.jpg)|  Made some platform improvements  | <ul> <li> Added short [role descriptions](https://docs.clarifai.com/control/clarifai-organizations/members-teams#roles-for-members) in the Invite Member modal to clarify each member’s permissions when inviting them to an organization or modifying their access. </li> <li> In the [Control Center](https://docs.clarifai.com/control/control-center/), charts for computer vision models (displaying predictions) and for LLMs (displaying tokens) are now presented separately, each with its own usage and cost information. </li> </ul>  |
 | ![bug](/img/bug.jpg) | Fixed some bugs| <ul> <li> Fixed an issue that prevented the signup/login modal from appearing on the Compute page ([clarifai.com/compute](https://clarifai.com/compute)).</li> </ul>  |
 
 

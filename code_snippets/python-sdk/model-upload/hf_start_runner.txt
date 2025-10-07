@@ -1,0 +1,106 @@
+clarifai model local-runner
+[INFO] 15:04:30.110675 Checking setup for local runner... |  thread=8800297152 
+[INFO] 15:04:30.110764 Current context: default |  thread=8800297152 
+[INFO] 15:04:30.110803 Current user_id: alfrick |  thread=8800297152 
+[INFO] 15:04:30.133269 Current compute_cluster_id: local-runner-compute-cluster |  thread=8800297152 
+[INFO] 15:04:32.213980 Failed to get compute cluster with ID local-runner-compute-cluster: code: CONN_DOES_NOT_EXIST
+description: "Resource does not exist"
+details: "ComputeCluster with ID \'local-runner-compute-cluster\' not found. Check your request fields."
+req_id: "sdk-python-11.6.4-adac6224603147b4a6422e7ab3d8999f"
+ |  thread=8800297152 
+Compute cluster not found. Do you want to create a new compute cluster alfrick/local-runner-compute-cluster? (y/n): y
+[INFO] 15:04:39.978695 
+Compute Cluster created
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-11.6.4-02d952ca15d4431ebf1d998247b5559f"
+ |  thread=8800297152 
+[INFO] 15:04:39.986611 Current nodepool_id: local-runner-nodepool |  thread=8800297152 
+[INFO] 15:04:41.235547 Failed to get nodepool with ID local-runner-nodepool: code: CONN_DOES_NOT_EXIST
+description: "Resource does not exist"
+details: "Nodepool not found. Check your request fields."
+req_id: "sdk-python-11.6.4-f1af74b390d54ee68b1c0d7025c412a8"
+ |  thread=8800297152 
+Nodepool not found. Do you want to create a new nodepool alfrick/local-runner-compute-cluster/local-runner-nodepool? (y/n): y
+[INFO] 15:04:43.256490 
+Nodepool created
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-11.6.4-3c0ebab572cf495996ce5337da2cc24e"
+ |  thread=8800297152 
+[INFO] 15:04:43.269204 Current app_id: local-runner-app |  thread=8800297152 
+[INFO] 15:04:43.580198 Current model_id: local-runner-model |  thread=8800297152 
+[INFO] 15:04:46.328600 Current model version 9d38bb9398944de4bdef699835f17ec9 |  thread=8800297152 
+[INFO] 15:04:46.329168 Create the local runner tying this
+  alfrick/local-runner-app/models/local-runner-model model (version: 9d38bb9398944de4bdef699835f17ec9) to the
+  alfrick/local-runner-compute-cluster/local-runner-nodepool nodepool. |  thread=8800297152 
+[INFO] 15:04:47.564767 
+Runner created
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-11.6.4-5a17241947ba4ac593f29eacecb4d61d"
+ with id: 7dbd2b733acb4684a4cb8d3b11ee626a |  thread=8800297152 
+[INFO] 15:04:47.573245 Current runner_id: 7dbd2b733acb4684a4cb8d3b11ee626a |  thread=8800297152 
+[INFO] 15:04:47.828638 Failed to get deployment with ID local-runner-deployment: code: CONN_DOES_NOT_EXIST
+description: "Resource does not exist"
+details: "Deployment with ID \'local-runner-deployment\' not found. Check your request fields."
+req_id: "sdk-python-11.6.4-1f51c07b0cc54f14893175401f6fda1d"
+ |  thread=8800297152 
+Deployment not found. Do you want to create a new deployment alfrick/local-runner-compute-cluster/local-runner-nodepool/local-runner-deployment? (y/n): y
+[INFO] 15:04:50.307460 
+Deployment created
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-11.6.4-6afe596327fb42bc818940fb324cc8bc"
+ |  thread=8800297152 
+[INFO] 15:04:50.315366 Current deployment_id: local-runner-deployment |  thread=8800297152 
+[INFO] 15:04:50.315542 Full url for the model: https://clarifai.com/users/alfrick/apps/local-runner-app/models/local-runner-model/versions/9d38bb9398944de4bdef699835f17ec9 |  thread=8800297152 
+[INFO] 15:04:50.318223 Current model section of config.yaml: {'app_id': 'items-app', 'id': 'first-local-runner-model', 'model_type_id': 'text-to-text', 'user_id': 'alfrick'} |  thread=8800297152 
+Do you want to backup config.yaml to config.yaml.bk then update the config.yaml with the new model information? (y/n): y
+[INFO] 15:04:53.150497 Hugging Face repo access validated |  thread=8800297152 
+[INFO] 15:05:00.624489 
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+# About to start up the local runner in this terminal...
+# Here is a code snippet to call this model once it start from another terminal:
+ |  thread=8800297152 
+[INFO] 15:05:00.624556 
+# Clarifai Model Client Script
+# Set the environment variables `CLARIFAI_DEPLOYMENT_ID` and `CLARIFAI_PAT` to run this script.
+# Example usage:
+import os
+
+from clarifai.client import Model
+from clarifai.runners.utils import data_types
+
+model = Model("https://clarifai.com/alfrick/local-runner-app/models/local-runner-model",
+    deployment_id = 'local-runner-deployment', # Only needed for dedicated deployed models
+    base_url='https://api.clarifai.com',
+ )
+
+    
+# Example model prediction from different model methods: 
+
+response = model.predict(prompt="What is the future of AI?", max_tokens=512, temperature=0.7, top_p=0.8)
+print(response)
+
+response = model.generate(prompt="What is the future of AI?", max_tokens=512, temperature=0.7, top_p=0.8)
+for res in response:
+    print(res)
+
+response = model.chat(max_tokens=512, temperature=0.7, top_p=0.8)
+for res in response:
+    print(res)
+
+ |  thread=8800297152 
+[INFO] 15:05:00.624593 Now starting the local runner... |  thread=8800297152 
+[INFO] 15:05:01.132806 Hugging Face repo access validated |  thread=8800297152 
+[INFO] 15:05:01.170311 Running on device: mps |  thread=8800297152 
+[INFO] 15:05:01.790161 Hugging Face repo access validated |  thread=8800297152 
+[INFO] 15:05:01.791351 Loading model from: unsloth/Llama-3.2-1B-Instruct |  thread=8800297152 
+tokenizer_config.json: 54.7kB [00:00, 49.0MB/s]
+tokenizer.json: 100%|█████████████████████████████████████████████████████| 17.2M/17.2M [00:07<00:00, 2.27MB/s]
+special_tokens_map.json: 100%|████████████████████████████████████████████████| 454/454 [00:00<00:00, 1.33MB/s]
+chat_template.jinja: 3.83kB [00:00, 7.36MB/s]
+config.json: 100%|████████████████████████████████████████████████████████████| 894/894 [00:00<00:00, 3.20MB/s]
+`torch_dtype` is deprecated! Use `dtype` instead!
