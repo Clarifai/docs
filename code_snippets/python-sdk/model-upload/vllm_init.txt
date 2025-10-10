@@ -1,0 +1,15 @@
+clarifai model init --toolkit vllm --model-name HuggingFaceH4/zephyr-7b-beta
+[INFO] 12:37:30.485152 Parsed GitHub repository: owner=Clarifai, repo=runners-examples, branch=vllm, folder_path= |  thread=8309383360 
+[INFO] 12:37:38.228774 Files to be downloaded are:
+1. 1/model.py
+2. config.yaml
+3. requirements.txt |  thread=8309383360 
+Press Enter to continue...
+[INFO] 12:37:40.819580 Initializing model from GitHub repository: https://github.com/Clarifai/runners-examples |  thread=8309383360 
+[INFO] 12:40:28.485625 Successfully cloned repository from https://github.com/Clarifai/runners-examples (branch: vllm) |  thread=8309383360 
+[INFO] 12:40:28.494056 Updated Hugging Face model repo_id to: HuggingFaceH4/zephyr-7b-beta |  thread=8309383360 
+[INFO] 12:40:28.494107 Model initialization complete with GitHub repository |  thread=8309383360 
+[INFO] 12:40:28.494133 Next steps: |  thread=8309383360 
+[INFO] 12:40:28.494152 1. Review the model configuration |  thread=8309383360 
+[INFO] 12:40:28.494169 2. Install any required dependencies manually |  thread=8309383360 
+[INFO] 12:40:28.494186 3. Test the model locally using 'clarifai model local-test' |  thread=8309383360 

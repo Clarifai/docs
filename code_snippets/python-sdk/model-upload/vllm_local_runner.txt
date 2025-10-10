@@ -1,0 +1,96 @@
+clarifai model local-runner    
+[INFO] 12:10:30.600393 Hugging Face repo access validated |  thread=8309383360 
+[INFO] 12:10:31.857533 Detected OpenAI chat completions for Clarifai model streaming - validating stream_options... |  thread=8309383360 
+[ERROR] 12:10:31.857843 Missing configuration to track usage for OpenAI chat completion calls. Go to your model scripts and make sure to set both: 1) stream_options={'include_usage': True}2) set_output_context |  thread=8309383360 
+[INFO] 12:10:31.858162 > Checking local runner requirements... |  thread=8309383360 
+[INFO] 12:10:31.881003 Checking 19 dependencies... |  thread=8309383360 
+[INFO] 12:10:31.882531 ✅ All 19 dependencies are installed! |  thread=8309383360 
+[INFO] 12:10:31.883637 > Verifying local runner setup... |  thread=8309383360 
+[INFO] 12:10:31.883679 Current context: default |  thread=8309383360 
+[INFO] 12:10:31.883712 Current user_id: alfrick |  thread=8309383360 
+[INFO] 12:10:31.883740 Current PAT: d6570**** |  thread=8309383360 
+[INFO] 12:10:31.886325 Current compute_cluster_id: local-runner-compute-cluster |  thread=8309383360 
+[WARNING] 12:10:32.878933 Failed to get compute cluster with ID 'local-runner-compute-cluster':
+code: CONN_DOES_NOT_EXIST
+description: "Resource does not exist"
+details: "ComputeCluster with ID \'local-runner-compute-cluster\' not found. Check your request fields."
+req_id: "sdk-python-11.8.2-475bf6a34c264ab2910fff508c10fe93"
+ |  thread=8309383360 
+Compute cluster not found. Do you want to create a new compute cluster alfrick/local-runner-compute-cluster? (y/n): y
+[INFO] 12:11:00.503967 Compute Cluster with ID 'local-runner-compute-cluster' is created:
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-11.8.2-1eb39e52ebb2407d822d96a17f60ba79"
+ |  thread=8309383360 
+[INFO] 12:11:00.514530 Current nodepool_id: local-runner-nodepool |  thread=8309383360 
+[WARNING] 12:11:01.457525 Failed to get nodepool with ID 'local-runner-nodepool':
+code: CONN_DOES_NOT_EXIST
+description: "Resource does not exist"
+details: "Nodepool not found. Check your request fields."
+req_id: "sdk-python-11.8.2-42bb02d8ae984f08af1620c548219830"
+ |  thread=8309383360 
+Nodepool not found. Do you want to create a new nodepool alfrick/local-runner-compute-cluster/local-runner-nodepool? (y/n): y
+[INFO] 12:11:05.019304 Nodepool with ID 'local-runner-nodepool' is created:
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-11.8.2-9eba74dedf464e5d9c55309596745d01"
+ |  thread=8309383360 
+[INFO] 12:11:05.032966 Current app_id: local-runner-app |  thread=8309383360 
+[INFO] 12:11:05.308616 Current model_id: local-runner-model |  thread=8309383360 
+[WARNING] 12:11:07.729547 Attempting to patch latest version: d2ce23ed22144da1b683161fafa2d5d0 |  thread=8309383360 
+[INFO] 12:11:08.986955 Successfully patched version d2ce23ed22144da1b683161fafa2d5d0 |  thread=8309383360 
+[INFO] 12:11:08.992377 Current model version d2ce23ed22144da1b683161fafa2d5d0 |  thread=8309383360 
+[INFO] 12:11:08.992504 Creating the local runner tying this 'alfrick/local-runner-app/models/local-runner-model' model (version: d2ce23ed22144da1b683161fafa2d5d0) to the 'alfrick/local-runner-compute-cluster/local-runner-nodepool' nodepool. |  thread=8309383360 
+[INFO] 12:11:09.973825 Runner with ID '8d5c067f543847e8aa6741623d7c84e4' is created:
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-11.8.2-35702721f9324bbe8d862226c7dc2e9a"
+ |  thread=8309383360 
+[INFO] 12:11:09.985978 Current runner_id: 8d5c067f543847e8aa6741623d7c84e4 |  thread=8309383360 
+[WARNING] 12:11:10.250570 Failed to get deployment with ID local-runner-deployment:
+code: CONN_DOES_NOT_EXIST
+description: "Resource does not exist"
+details: "Deployment with ID \'local-runner-deployment\' not found. Check your request fields."
+req_id: "sdk-python-11.8.2-971bef87a5e948b198acd29d338d0ec8"
+ |  thread=8309383360 
+Deployment not found. Do you want to create a new deployment alfrick/local-runner-compute-cluster/local-runner-nodepool/local-runner-deployment? (y/n): y
+[INFO] 12:11:14.749509 Deployment with ID 'local-runner-deployment' is created:
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-11.8.2-7720d23dc2b947ffb719d3062b92579f"
+ |  thread=8309383360 
+[INFO] 12:11:14.761115 Current deployment_id: local-runner-deployment |  thread=8309383360 
+[INFO] 12:11:14.763204 Current model section of config.yaml: {'id': 'MODEL_ID2332', 'user_id': 'alfrick', 'app_id': 'items-app', 'model_type_id': 'text-to-text'} |  thread=8309383360 
+Do you want to backup config.yaml to config.yaml.bk then update the config.yaml with the new model information? (y/n): y
+[INFO] 12:11:17.610493 Checking 19 dependencies... |  thread=8309383360 
+[INFO] 12:11:17.612804 ✅ All 19 dependencies are installed! |  thread=8309383360 
+[INFO] 12:11:17.612887 ✅ Starting local runner... |  thread=8309383360 
+[INFO] 12:11:17.612959 No secrets path configured, running without secrets |  thread=8309383360 
+[INFO] 12:11:18.154539 Hugging Face repo access validated |  thread=8309383360 
+[INFO] 12:11:19.116921 Detected OpenAI chat completions for Clarifai model streaming - validating stream_options... |  thread=8309383360 
+[ERROR] 12:11:19.117170 Missing configuration to track usage for OpenAI chat completion calls. Go to your model scripts and make sure to set both: 1) stream_options={'include_usage': True}2) set_output_context |  thread=8309383360 
+[INFO] 12:11:19.729580 Hugging Face repo access validated |  thread=8309383360 
+[INFO] 12:11:20.675478 Detected OpenAI chat completions for Clarifai model streaming - validating stream_options... |  thread=8309383360 
+[ERROR] 12:11:20.675945 Missing configuration to track usage for OpenAI chat completion calls. Go to your model scripts and make sure to set both: 1) stream_options={'include_usage': True}2) set_output_context |  thread=8309383360 
+[INFO] 12:11:21.238145 Hugging Face token validated |  thread=8309383360 
+[INFO] 12:11:22.887162 Total download size: 13815.09 MB |  thread=8309383360 
+[INFO] 12:11:22.887555 Downloading model checkpoints... |  thread=8309383360 
+/Users/macbookpro/Desktop/code/venv/lib/python3.12/site-packages/huggingface_hub/file_download.py:982: UserWarning: `local_dir_use_symlinks` parameter is deprecated and will be ignored. The process to download files to a local folder has been updated and do not rely on symlinks anymore. You only need to pass a destination folder as`local_dir`.
+For more details, check out https://huggingface.co/docs/huggingface_hub/main/en/guides/download#download-files-to-local-folder.
+  warnings.warn(
+config.json: 100%|███████████████████████████████████████████████████████████████████████████████████████| 638/638 [00:00<00:00, 4.34MB/s]
+eval_results.json: 100%|█████████████████████████████████████████████████████████████████████████████████| 553/553 [00:00<00:00, 5.22MB/s]
+README.md: 25.6kB [00:00, 31.3MB/s]                                                                             | 0.00/638 [00:00<?, ?B/s]
+added_tokens.json: 100%|████████████████████████████████████████████████████████████████████████████████| 42.0/42.0 [00:00<00:00, 506kB/s]
+generation_config.json: 100%|████████████████████████████████████████████████████████████████████████████| 111/111 [00:00<00:00, 1.07MB/s]
+all_results.json: 100%|██████████████████████████████████████████████████████████████████████████████████| 728/728 [00:00<00:00, 11.9MB/s]
+.gitattributes: 1.52kB [00:00, 13.8MB/s]                                                                        | 0.00/111 [00:00<?, ?B/s]
+Fetching 23 files:   4%|███▌                                                                               | 1/23 [00:01<00:25,  1.17s/it]
+.gitattributes: 0.00B [00:00, ?B/s]
+model-00003-of-00008.safetensors:   0%|                                                                       | 0.00/1.98G [00:00<?, ?B/s]
+model-00004-of-00008.safetensors:   0%|                                                                       | 0.00/1.95G [00:00<?, ?B/s]
+model-00005-of-00008.safetensors:   0%|                                                                       | 0.00/1.98G [00:00<?, ?B/s]
+model-00006-of-00008.safetensors:   0%|                                                                       | 0.00/1.95G [00:00<?, ?B/s]
+model-00008-of-00008.safetensors:   0%|                                                                        | 0.00/816M [00:00<?, ?B/s]
+model-00002-of-00008.safetensors:   0%|                                                                       | 0.00/1.95G [00:00<?, ?B/s]
+model-00007-of-00008.safetensors:   0%|                                                                       | 0.00/1.98G [00:00<?, ?B/s]

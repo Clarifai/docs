@@ -16,7 +16,7 @@ With Local Runners, you can connect your own models to Clarifai's compute plane.
 
 Your model can securely receive and process requests from anywhere, just as it would in a production cloud deployment.
 
-> **Note:** A runner is the actual running instance of your model. It is a unique process that pulls tasks (such as prediction requests) from a queue and executes them using the model’s logic. 
+> **Note:** A runner is the actual running instance of your model. The number of Local Runners you can run on your machine depends on your [pricing plan](https://www.clarifai.com/pricing).
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -126,7 +126,7 @@ You can automatically generate a default model by running the [`clarifai model i
 
 ## Step 2: Create a Context (Optional)
 
-Running the local development runner relies on certain environment variables defined in your current context. The _context_ refers to the active environment settings that determine how your commands interact with the Clarifai platform.
+Running the local development runner relies on certain variables defined in your current context. The _context_ refers to the active environment settings that determine how your commands interact with the Clarifai platform.
 
 > **Note:** You can create this context using the provided default values when you run `clarifai login` and `local-runner` commands. 
 
@@ -140,7 +140,7 @@ Any configurations you create locally — such as the computer cluster and app �
 
 <a id="table"></a>
 
-These are the environment variables required to create a runner:
+These are the variables required to create a runner:
 
 | Variable                      | Description                                                             |
 | ----------------------------- | ----------------------------------------------------------------------- |
@@ -153,6 +153,21 @@ These are the environment variables required to create a runner:
 | CLARIFAI_DEPLOYMENT (`deployment_id`)    | [Deployment](https://docs.clarifai.com/compute/deployments/deploy-model) for a model into the cluster and nodepool                                  |
 | CLARIFAI_RUNNER_ID (`runner_id`)      | Auto-generated unique runner ID, created by the API and stored in the context |
 
+
+:::note important
+
+The Clarifai CLI follows a defined order of precedence when launching Local Runners. If a value is set as an environment variable in your terminal, it takes priority and is used first.
+If no corresponding environment variable is found, the CLI automatically falls back to the value defined in the active context.
+
+For example, you can override the model ID by setting it as an environment variable before starting the Local Runner:
+
+```bash
+export CLARIFAI_MODEL_ID=new-model-id
+```
+
+In this case, the `CLARIFAI_MODEL_ID` from your terminal session will take precedence over the one stored in your active context.
+
+:::
 
 ## Step 3: Run Your Model
 

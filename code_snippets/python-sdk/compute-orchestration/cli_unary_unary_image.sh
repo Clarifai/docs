@@ -1,0 +1,1 @@
+clarifai model predict --model_url https://clarifai.com/openai/chat-completion/models/o4-mini --inputs '{"prompt": "Describe the image", "image": "https://samples.clarifai.com/cat1.jpeg"}'

@@ -1,0 +1,27 @@
+# Core dependencies
+torch==2.5.1
+vllm==0.8.0
+transformers==4.50.1
+accelerate==1.2.0
+optimum==1.23.3
+einops==0.8.0
+tokenizers==0.21.0
+packaging>=24.0
+ninja>=1.11.1
+
+# Qwen and vision-language utilities
+qwen-vl-utils==0.0.8
+timm>=1.0.9
+
+# Audio and video support
+soundfile>=0.13.1
+librosa>=0.10.2
+
+scipy==1.15.2
+
+# Additional utilities
+psutil>=5.9.0
+backoff==2.2.1
+peft>=0.13.2
+openai>=1.14.0
+clarifai>=10.0.0

@@ -1,0 +1,121 @@
+clarifai model local-runner
+[INFO] 09:40:36.097539 Detected OpenAI chat completions for Clarifai model streaming - validating stream_options... |  thread=8309383360 
+[INFO] 09:40:36.098189 > Checking local runner requirements... |  thread=8309383360 
+[INFO] 09:40:36.118322 Checking 2 dependencies... |  thread=8309383360 
+[INFO] 09:40:36.118807 ✅ All 2 dependencies are installed! |  thread=8309383360 
+[INFO] 09:40:36.119033 > Verifying local runner setup... |  thread=8309383360 
+[INFO] 09:40:36.119083 Current context: default |  thread=8309383360 
+[INFO] 09:40:36.119120 Current user_id: alfrick |  thread=8309383360 
+[INFO] 09:40:36.119150 Current PAT: d6570**** |  thread=8309383360 
+[INFO] 09:40:36.121055 Current compute_cluster_id: local-runner-compute-cluster |  thread=8309383360 
+[WARNING] 09:40:37.622490 Failed to get compute cluster with ID 'local-runner-compute-cluster':
+code: CONN_DOES_NOT_EXIST
+description: "Resource does not exist"
+details: "ComputeCluster with ID \'local-runner-compute-cluster\' not found. Check your request fields."
+req_id: "sdk-python-11.8.2-c324cbe5deb248e19d5d0ed1e32e49d0"
+ |  thread=8309383360 
+Compute cluster not found. Do you want to create a new compute cluster alfrick/local-runner-compute-cluster? (y/n): y
+[INFO] 09:40:44.198312 Compute Cluster with ID 'local-runner-compute-cluster' is created:
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-11.8.2-e5b312b4a46f4e2984efc65abb5124c5"
+ |  thread=8309383360 
+[INFO] 09:40:44.203633 Current nodepool_id: local-runner-nodepool |  thread=8309383360 
+[WARNING] 09:40:46.398631 Failed to get nodepool with ID 'local-runner-nodepool':
+code: CONN_DOES_NOT_EXIST
+description: "Resource does not exist"
+details: "Nodepool not found. Check your request fields."
+req_id: "sdk-python-11.8.2-1062d71d21574bce99bd4472a9fdc6ef"
+ |  thread=8309383360 
+Nodepool not found. Do you want to create a new nodepool alfrick/local-runner-compute-cluster/local-runner-nodepool? (y/n): y
+[INFO] 09:40:52.285792 Nodepool with ID 'local-runner-nodepool' is created:
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-11.8.2-66d76251237c4be38764837e639c6800"
+ |  thread=8309383360 
+[INFO] 09:40:52.292983 Current app_id: local-runner-app |  thread=8309383360 
+[WARNING] 09:40:52.574021 Failed to get app with ID 'local-runner-app':
+code: CONN_DOES_NOT_EXIST
+description: "Resource does not exist"
+details: "app identified by path /users/alfrick/apps/local-runner-app not found"
+req_id: "sdk-python-11.8.2-29b94532bf624596abbbaea66be198e2"
+ |  thread=8309383360 
+App not found. Do you want to create a new app alfrick/local-runner-app? (y/n): y
+[INFO] 09:40:56.302447 App with ID 'local-runner-app' is created:
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-11.8.2-b5066f7c64274944ba405ba01da11c1c"
+ |  thread=8309383360 
+[INFO] 09:40:56.306934 Current model_id: local-runner-model |  thread=8309383360 
+[WARNING] 09:40:58.007139 Failed to get model with ID 'local-runner-model':
+code: MODEL_DOES_NOT_EXIST
+description: "Model does not exist"
+details: "Model \'local-runner-model\' does not exist."
+req_id: "sdk-python-11.8.2-8b2717eb04624aca8bf119e03b94b5b4"
+ |  thread=8309383360 
+Model not found. Do you want to create a new model alfrick/local-runner-app/models/local-runner-model? (y/n): y
+[INFO] 09:41:14.336510 Model with ID 'local-runner-model' is created:
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-11.8.2-f36c2684e1bc4d8f99e777d42e5c53f8"
+ |  thread=8309383360 
+[WARNING] 09:41:17.182009 No model versions found. Creating a new version for local runner. |  thread=8309383360 
+[INFO] 09:41:17.510454 Model Version with ID 'fa82276f4cfa44c08745b028471bbfa5' is created:
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-11.8.2-0121fe726015400c86e4bd3959729787"
+ |  thread=8309383360 
+[INFO] 09:41:17.517728 Current model version fa82276f4cfa44c08745b028471bbfa5 |  thread=8309383360 
+[INFO] 09:41:17.517802 Creating the local runner tying this 'alfrick/local-runner-app/models/local-runner-model' model (version: fa82276f4cfa44c08745b028471bbfa5) to the 'alfrick/local-runner-compute-cluster/local-runner-nodepool' nodepool. |  thread=8309383360 
+[INFO] 09:41:18.591818 Runner with ID '649b39c737d84dd8a5e3d5af0b19c207' is created:
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-11.8.2-ced2523458a941519a709e6af082832a"
+ |  thread=8309383360 
+[INFO] 09:41:18.598056 Current runner_id: 649b39c737d84dd8a5e3d5af0b19c207 |  thread=8309383360 
+[WARNING] 09:41:19.150091 Failed to get deployment with ID local-runner-deployment:
+code: DEPLOYMENT_INVALID_REQUEST
+description: "Invalid deployment request"
+details: "Some of the deployment ids provided (local-runner-deployment) do not exist"
+req_id: "sdk-python-11.8.2-9af7aa96a9a843e68f8f3ef898bf61c1"
+ |  thread=8309383360 
+Deployment not found. Do you want to create a new deployment alfrick/local-runner-compute-cluster/local-runner-nodepool/local-runner-deployment? (y/n): y
+[INFO] 09:41:25.833184 Deployment with ID 'local-runner-deployment' is created:
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-11.8.2-38e4b0bd886e4979bc9b7324361e2c56"
+ |  thread=8309383360 
+[INFO] 09:41:25.839987 Current deployment_id: local-runner-deployment |  thread=8309383360 
+[INFO] 09:41:25.841181 Current model section of config.yaml: {'app_id': 'local-runner-app', 'id': 'local-env-model', 'model_type_id': 'text-to-text', 'user_id': 'alfrick'} |  thread=8309383360 
+Do you want to backup config.yaml to config.yaml.bk then update the config.yaml with the new model information? (y/n): y
+[INFO] 09:41:29.312446 Checking 2 dependencies... |  thread=8309383360 
+[INFO] 09:41:29.313228 ✅ All 2 dependencies are installed! |  thread=8309383360 
+[INFO] 09:41:29.313325 ✅ Starting local runner... |  thread=8309383360 
+[INFO] 09:41:29.313404 No secrets path configured, running without secrets |  thread=8309383360 
+[INFO] 09:41:30.647566 Detected OpenAI chat completions for Clarifai model streaming - validating stream_options... |  thread=8309383360 
+[INFO] 09:41:34.359410 Detected OpenAI chat completions for Clarifai model streaming - validating stream_options... |  thread=8309383360 
+[INFO] 09:41:34.359915 Running: lms get https://huggingface.co/LiquidAI/LFM2-1.2B --verbose |  thread=8309383360 
+[INFO] 09:41:34.625973 [lms logs] D Found local API server at ws://127.0.0.1:41343 |  thread=8309383360 
+[INFO] 09:41:34.633082 [lms logs] I Searching for models with the term https://huggingface.co/LiquidAI/LFM2-1.2B |  thread=8309383360 
+[INFO] 09:41:34.633891 [lms logs] D Searching for models with options { |  thread=8309383360 
+[INFO] 09:41:34.633919 [lms logs]   searchTerm: 'https://huggingface.co/LiquidAI/LFM2-1.2B', |  thread=8309383360 
+[INFO] 09:41:34.633937 [lms logs]   compatibilityTypes: undefined, |  thread=8309383360 
+[INFO] 09:41:34.633950 [lms logs]   limit: undefined |  thread=8309383360 
+[INFO] 09:41:34.633963 [lms logs] } |  thread=8309383360 
+[INFO] 09:41:40.602478 [lms logs] D Found 10 result(s) |  thread=8309383360 
+[INFO] 09:41:40.602769 [lms logs] D Prompting user to choose a model |  thread=8309383360 
+[INFO] 09:41:40.602822 [lms logs] I No exact match found. Please choose a model from the list below. |  thread=8309383360 
+[INFO] 09:41:40.602867 [lms logs]  |  thread=8309383360 
+[INFO] 09:41:40.603408 [lms logs] ! Use the arrow keys to navigate, type to filter, and press enter to select. |  thread=8309383360 
+[INFO] 09:41:40.603520 [lms logs]  |  thread=8309383360 
+[INFO] 09:41:40.619671 [lms logs] ? Select a model to download Type to filter... |  thread=8309383360 
+[INFO] 09:41:40.619819 [lms logs] ❯  LiquidAI/LFM2-1.2B-GGUF |  thread=8309383360 
+[INFO] 09:41:40.619874 [lms logs]    LiquidAI/LFM2-1.2B-Tool-GGUF |  thread=8309383360 
+[INFO] 09:41:40.619902 [lms logs]    LiquidAI/LFM2-1.2B-Extract-GGUF |  thread=8309383360 
+[INFO] 09:41:40.619946 [lms logs]    LiquidAI/LFM2-1.2B-RAG-GGUF |  thread=8309383360 
+[INFO] 09:41:40.619969 [lms logs]    DevQuasar/LiquidAI.LFM2-1.2B-GGUF |  thread=8309383360 
+[INFO] 09:41:40.619992 [lms logs]    bartowski/LiquidAI_LFM2-1.2B-Extract-GGUF |  thread=8309383360 
+[INFO] 09:41:40.620018 [lms logs]    bartowski/LiquidAI_LFM2-1.2B-RAG-GGUF |  thread=8309383360 
+[INFO] 09:41:40.620044 [lms logs]    bartowski/LiquidAI_LFM2-1.2B-Tool-GGUF |  thread=8309383360 
+[INFO] 09:41:40.620066 [lms logs]    DevQuasar/LiquidAI.LFM2-1.2B-RAG-GGUF |  thread=8309383360 
+
