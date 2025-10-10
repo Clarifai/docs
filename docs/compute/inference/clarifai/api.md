@@ -55,6 +55,9 @@ import CLIUnaryUnary from "!!raw-loader!../../../../code_snippets/python-sdk/com
 import CLIUnaryStream from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/cli_unary_stream.sh";
 import CLIInferenceParams from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/cli_inference_params.sh";
 
+import CLIUnaryUnaryImage from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/cli_unary_unary_image.sh";
+import CLIUnaryStreamImage from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/cli_unary_stream_image.sh";
+
 ## Prerequisites
 
 ### Install Clarifai Packages
@@ -101,7 +104,7 @@ To use our Compute Orchestration capabilities, ensure your model is [deployed](h
 
 :::info
 
-For deployments owned by an organization, also provide the organization id as the `Model`'s `deployment_user_id`.
+For deployments owned by an organization, alongside the `deployment_id`, also provide the organization id as the `Model`'s `deployment_user_id`.
 
 :::
 
@@ -202,6 +205,9 @@ Here’s how you can make a corresponding unary-unary predict call from the clie
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO5}</CodeBlock>
+</TabItem>
+<TabItem value="cli" label="CLI">
+ <CodeBlock className="language-bash">{CLIUnaryUnaryImage}</CodeBlock>
 </TabItem>
 <TabItem value="node.js" label="Node.js SDK">
     <CodeBlock className="language-javascript">{NodePredictInterfaceImageInputs}</CodeBlock>
@@ -307,6 +313,9 @@ Here’s how you can make a corresponding unary-stream predict call from the cli
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO6Images}</CodeBlock>
+</TabItem>
+<TabItem value="cli" label="CLI">
+ <CodeBlock className="language-bash">{CLIUnaryStreamImage}</CodeBlock>
 </TabItem>
 <TabItem value="node.js" label="Node.js SDK">
     <CodeBlock className="language-javascript">{NodeStreamInterfaceImages}</CodeBlock>

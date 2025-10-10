@@ -1,0 +1,16 @@
+build_info:
+  python_version: '3.12'
+inference_compute_info:
+  cpu_limit: '3'
+  cpu_memory: 14Gi
+  num_accelerators: 0
+model:
+  app_id: local-runner-app
+  id: local-env-model
+  model_type_id: text-to-text
+  user_id: clarifai-user-id
+toolkit:
+  provider: lmstudio
+  model: LiquidAI/LFM2-1.2B
+  port: 11434
+  context_length: 2048
