@@ -54,7 +54,7 @@ Let’s illustrate how you can build agents with the various toolkits we support
 
 :::tip Install Clarifai Package
 
-Install the latest version of the Clarifai Python SDK package by running `pip install --upgrade clarifai`. Also,  go to the [Security](https://clarifai.com/settings/security) section in your personal settings page and generate a Personal Access Token (PAT) to authenticate with the Clarifai platform. 
+Install the latest version of the Clarifai Python SDK package by running `pip install --upgrade clarifai`. Also,  go to the **[Secrets](https://docs.clarifai.com/control/authentication/pat)** section in your personal settings page and generate a Personal Access Token (PAT) to authenticate with the Clarifai platform. 
 
 :::
 
@@ -234,6 +234,12 @@ Here is an example that demonstrates how to build an agent using the Vercel AI S
 To learn more about building AI agents with the Vercel AI SDK, see the following examples:
 
 - [Repository for Clarifai-Powered Vercel AI SDK Agents](https://github.com/Clarifai/examples/tree/main/nodejs/vercel-ai-sdk)
+
+## Additional Examples
+
+To learn more about building AI agents with other toolkits, see the following examples:
+
+- [Blog: Building AI Agents with Agno and GPT-OSS 120B](https://www.clarifai.com/blog/building-ai-agents-with-agno-and-gpt-oss-120b)
 
 ---
 
@@ -4582,7 +4588,7 @@ Here’s an example snippet:
 
 # LM Studio 
 
-**Download and run LM Studio models locally and make them available via a public API**
+**Download and run LM Studio models locally and expose them via a public API**
 
 [LM Studio](https://lmstudio.ai/) is a desktop application that lets you run and chat with open-source large language models (LLMs) locally — no internet connection required.
 
@@ -4746,7 +4752,7 @@ Here’s an example snippet:
 
 # Ollama 
 
-**Download and run Ollama models locally and make them available via a public API**
+**Download and run Ollama models locally and expose them via a public API**
 
 Ollama is an open-source tool that allows you to download, run, and manage large language models (LLMs) directly on your local machine. 
 
@@ -4911,7 +4917,7 @@ When you're done, just close the terminal running the local runner to shut it do
 
 # vLLM
 
-**Run vLLM models locally and make them accessible through a public API**
+**Download and serve vLLM models locally and expose them via a public API**
 
 [vLLM](https://docs.vllm.ai/en/latest/) is an open-source, high-performance inference engine that allows you to serve large language models (LLMs) locally with remarkable speed and efficiency. It supports OpenAI-compatible APIs, making it easy to integrate with the Clarifai platform.
 
@@ -40623,9 +40629,9 @@ To test if its working , select **Applications** collection. From that select **
 
 **Clarifai Python SDK API Reference**
 
-This is the API Reference documentation extracted from the source code.
+This is the API Reference documentation extracted from the [source code](https://github.com/Clarifai/clarifai-python/tree/master/clarifai/client).
 
-## App
+## [App](https://github.com/Clarifai/clarifai-python/blob/master/clarifai/client/app.py)
 
 ```python
 class App(url=None, app_id=None, user_id=None, base_url="https://api.clarifai.com", pat=None, token=None, root_certificates_path=None, **kwargs)
@@ -41297,7 +41303,7 @@ workflow = app.workflow(workflow_id="workflow_id")
 
 **Notes:** For list methods: Defaults to 16 per page if page_no is specified and per_page is not specified. If both page_no and per_page are None, then lists all resources. The App class inherits from Lister and BaseClient, providing pagination and authentication functionality.
 
-## ComputeCluster
+## [ComputeCluster](https://github.com/Clarifai/clarifai-python/blob/master/clarifai/client/compute_cluster.py)
 
 ```python
 class ComputeCluster(compute_cluster_id=None, user_id=None, base_url="https://api.clarifai.com", pat=None, token=None, root_certificates_path=None, **kwargs)
@@ -41405,7 +41411,7 @@ compute_cluster = ComputeCluster(compute_cluster_id="compute_cluster_id", user_i
 compute_cluster.delete_nodepools(nodepool_ids=["nodepool_id1", "nodepool_id2"])
 ```
 
-## Dataset
+## [Dataset](https://github.com/Clarifai/clarifai-python/blob/master/clarifai/client/dataset.py)
 
 ```python
 class Dataset(url=None, dataset_id=None, dataset_version_id=None, base_url="https://api.clarifai.com", pat=None, token=None, root_certificates_path=None, **kwargs)
@@ -41697,7 +41703,7 @@ dataset = Dataset(dataset_id='dataset_id')
 dataset.export(save_path='output.zip')
 ```
 
-## Deployment
+## [Deployment](https://github.com/Clarifai/clarifai-python/blob/master/clarifai/client/deployment.py)
 
 ```python
 class Deployment(deployment_id=None, user_id=None, base_url="https://api.clarifai.com", pat=None, token=None, root_certificates_path=None, **kwargs)
@@ -41735,7 +41741,7 @@ from clarifai.client.deployment import Deployment
 runner_selector = Deployment.get_runner_selector(user_id="user_id", deployment_id="deployment_id")
 ```
 
-## Inputs
+## [Inputs](https://github.com/Clarifai/clarifai-python/blob/master/clarifai/client/input.py)
 
 ```python
 class Inputs(user_id=None, app_id=None, logger_level="INFO", base_url="https://api.clarifai.com", pat=None, token=None, root_certificates_path=None, **kwargs)
@@ -42315,7 +42321,7 @@ If both page_no and per_page are None, then lists all the resources.
 
 Based on the provided file content, here's the API Reference for the Lister class:
 
-## Lister
+## [Lister](https://github.com/Clarifai/clarifai-python/blob/master/clarifai/client/lister.py)
 
 ```python
 class Lister(page_size=16)
@@ -42375,304 +42381,12 @@ for item in lister.list_pages_generator(
     print(item)
 ```
 
-**Notes:** This class is typically used as a mixin with other client classes that need paginated listing functionality. The default page size of 16 is optimized for API performance and rate limiting considerations. The method handles special resource types like "dataset_inputs" that require specific key processing
+**Notes:** This class is typically used as a mixin with other client classes that need paginated listing functionality. The default page size of 16 is optimized for API performance and rate limiting considerations. The method handles special resource types like "dataset_inputs" that require specific key processing.
 
-## User
-
-```python
-class User(user_id=None, base_url="https://api.clarifai.com", pat=None, token=None, root_certificates_path=None, **kwargs)
-```
-
-User is a class that provides access to Clarifai API endpoints related to user information.
-
-**Parameters:**
-- `user_id` (*str*) - The user ID for the user to interact with 
-- `base_url` (*str*) - Base API url. Default "https://api.clarifai.com"
-- `pat` (*str*) - A personal access token for authentication. Can be set as env var CLARIFAI_PAT
-- `token` (*str*) - A session token for authentication. Can be set as env var CLARIFAI_SESSION_TOKEN
-- `root_certificates_path` (*str*) - Path to the SSL root certificates file
-- `**kwargs` - Additional keyword arguments
-
-### User.app
+## [Model](https://github.com/Clarifai/clarifai-python/blob/master/clarifai/client/model.py)
 
 ```python
-User.app(app_id, **kwargs)
-```
-
-Returns an App object for the specified app ID.
-
-**Parameters:**
-- `app_id` (*str*) - The app ID for the app to interact with
-- `**kwargs` - Additional keyword arguments
-
-**Returns:**
-- App: An App object for the specified app ID
-
-**Example:**
-```python
-from clarifai.client.user import User
-app = User("user_id").app("app_id")
-```
-
-### User.create_app
-
-```python
-User.create_app(app_id, base_workflow='Empty', **kwargs)
-```
-
-Creates an app for the user.
-
-**Parameters:**
-- `app_id` (*str*) - The app ID for the app to create
-- `base_workflow` (*str*) - The base workflow to use (e.g. 'Universal', 'Empty', 'General')
-- `**kwargs` - Additional keyword arguments 
-
-**Returns:**
-- App: An App object for the specified app ID
-
-**Example:**
-```python
-from clarifai.client.user import User
-client = User(user_id="user_id")
-app = client.create_app(app_id="app_id", base_workflow="Universal")
-```
-
-### User.create_runner
-
-```python
-User.create_runner(runner_id, labels, description)
-```
-
-Creates a runner.
-
-**Parameters:**
-- `runner_id` (*str*) - The ID of runner to create
-- `labels` (*List[str]*) - Labels to match runner
-- `description` (*str*) - Description of runner
-
-**Returns:**  
-- Dict containing the runner information
-
-**Example:**
-```python
-from clarifai.client.user import User
-client = User(user_id="user_id")
-runner = client.create_runner(
-    runner_id="runner_id",
-    labels=["label to link runner"],
-    description="laptop runner"
-)
-```
-
-### User.delete_app
-
-```python
-User.delete_app(app_id)
-```
-
-Deletes an app by app id.
-
-**Parameters:**
-- `app_id` (*str*) - The ID of the app to delete
-
-**Example:**
-```python
-from clarifai.client.user import User
-User("user_id").delete_app("app_id")
-```
-
-### User.delete_runner
-
-```python
-User.delete_runner(runner_id)
-```
-
-Deletes a runner by runner id.
-
-**Parameters:**
-- `runner_id` (*str*) - The ID of the runner to delete
-
-**Example:**
-```python
-from clarifai.client.user import User
-client = User(user_id="user_id")
-client.delete_runner(runner_id="runner_id")
-```
-
-### User.list_apps
-
-```python
-User.list_apps(filter_by={}, page_no=None, per_page=None)
-```
-
-Lists all apps for the user.
-
-**Parameters:**
-- `filter_by` (*Dict[str, Any]*) - Dictionary of filters
-- `page_no` (*int*) - Page number to list
-- `per_page` (*int*) - Items per page
-
-**Yields:** 
-- App objects
-
-**Example:**
-```python
-from clarifai.client.user import User
-apps = list(User("user_id").list_apps())
-```
-
-### User.list_runners
-
-```python
-User.list_runners(filter_by={}, page_no=None, per_page=None) 
-```
-
-Lists all runners for the user.
-
-**Parameters:**
-- `filter_by` (*Dict[str, Any]*) - Dictionary of filters
-- `page_no` (*int*) - Page number to list
-- `per_page` (*int*) - Items per page
-
-**Yields:**
-- Dict objects containing runner information
-
-**Example:**
-```python
-from clarifai.client.user import User
-client = User(user_id="user_id")
-all_runners = list(client.list_runners())
-```
-
-### User.runner
-
-```python
-User.runner(runner_id) 
-```
-
-Returns a Runner object if it exists.
-
-**Parameters:**
-- `runner_id` (*str*) - The runner ID to interact with
-
-**Returns:**
-- Dict containing information about the existing runner
-
-**Example:**
-```python
-from clarifai.client.user import User
-client = User(user_id="user_id")
-runner_info = client.runner(runner_id="runner_id")
-```
-
-### User.create_compute_cluster
-
-```python
-User.create_compute_cluster(config_filepath, compute_cluster_id=None) 
-```
-
-Creates a compute cluster.
-
-**Parameters:**
-- `config_filepath` (*str*) - Path to the compute cluster config file
-- `compute_cluster_id` (*str*) - Optional ID for the new compute cluster
-
-**Returns:**
-- ComputeCluster object for the created cluster
-
-**Example:**
-```python
-from clarifai.client.user import User
-client = User(user_id="user_id")
-cluster = client.create_compute_cluster(config_filepath="config.yml")
-```
-
-### User.compute_cluster
-
-```python
-User.compute_cluster(compute_cluster_id) 
-```
-
-Returns a Compute Cluster object for the specified compute cluster ID.
-
-**Parameters:**
-- `compute_cluster_id` (*str*) - The compute cluster ID to interact with
-
-**Returns:**
-- ComputeCluster: A Compute Cluster object for the specified ID
-
-**Example:**
-```python
-from clarifai.client.user import User
-compute_cluster = User("user_id").compute_cluster("compute_cluster_id")
-```
-
-### User.list_compute_clusters
-
-```python
-User.list_compute_clusters(page_no=None, per_page=None) 
-```
-
-Lists compute clusters for the user.
-
-**Parameters:**
-- `page_no` (*int*) - Page number to list
-- `per_page` (*int*) - Items per page
-
-**Yields:**
-- Dict objects containing compute cluster information
-
-**Example:**
-```python
-from clarifai.client.user import User
-client = User(user_id="user_id")
-clusters = list(client.list_compute_clusters())
-```
-
-### User.delete_compute_clusters
-
-```python
-User.delete_compute_clusters(compute_cluster_ids) 
-```
-
-Deletes multiple compute clusters by their IDs.
-
-**Parameters:**
-- `compute_cluster_ids` (*List[str]*) - List of compute cluster IDs to delete
-
-**Example:**
-```python
-from clarifai.client.user import User
-User("user_id").delete_compute_clusters(["cluster_id1", "cluster_id2"])
-```
-
-### User.patch_app
-
-```python
-User.patch_app(app_id, action='overwrite', **kwargs) 
-```
-
-Updates an app by app id.
-
-**Parameters:**
-- `app_id` (*str*) - The app ID to patch
-- `action` (*str*) - Action to perform ('overwrite'/'remove') 
-- `**kwargs` - Properties to update
-
-**Returns:**
-- Updated App object
-
-**Example:**
-```python
-from clarifai.client.user import User
-client = User(user_id="user_id")
-app = client.patch_app("app_id", description="New description")
-```
-
-## Model
-
-```python
-class Model(url=None, model_id=None, model_version={'id': ""}, base_url="https://api.clarifai.com", pat=None, token=None, root_certificates_path=None, **kwargs)
+class Model(url=None, model_id=None, model_version={'id': ""}, base_url="https://api.clarifai.com", pat=None, token=None, root_certificates_path=None, compute_cluster_id=None, nodepool_id=None, deployment_id=None, deployment_user_id=None, **kwargs)
 ```
 
 Model is a class that provides access to Clarifai API endpoints related to Model information.
@@ -42685,9 +42399,25 @@ Model is a class that provides access to Clarifai API endpoints related to Model
 - `pat` (*str*) - Personal access token for authentication
 - `token` (*str*) - Session token for authentication
 - `root_certificates_path` (*str*) - Path to SSL root certificates file
+- `compute_cluster_id` (*str*) - Compute cluster ID for runner selector
+- `nodepool_id` (*str*) - Nodepool ID for runner selector
+- `deployment_id` (*str*) - Deployment ID for runner selector
+- `deployment_user_id` (*str*) - User ID for runner selector (organization or user)
 - `**kwargs` - Additional keyword arguments
 
 **Note:** Either url or model_id must be specified, but not both.
+
+### Model.from_current_context
+```python
+Model.from_current_context(**kwargs)
+```
+This Class method creates a Model instance from the current context.
+
+**Parameters:**
+- `**kwargs` - Additional keyword arguments
+
+**Returns:**
+- Model instance
 
 ### Model.list_training_templates
 
@@ -42765,7 +42495,7 @@ Gets information about a specific parameter.
 ```python
 from clarifai.client.model import Model
 model = Model(model_id='model_id', user_id='user_id', app_id='app_id')
-param_info = model.get_param_info('batch_size')
+param_info = model.get_param_info('learning_rate')
 ```
 
 ### Model.train
@@ -42878,19 +42608,34 @@ versions = list(model.list_versions())
 ### Model.predict
 
 ```python
-Model.predict(inputs, runner_selector=None, inference_params={}, output_config={})
+Model.predict(inputs, inference_params={}, output_config={})
 ```
 
 Makes predictions using the model.
 
 **Parameters:**
 - `inputs` (*List[Input]*) - List of inputs to predict on
-- `runner_selector` (*RunnerSelector*) - Runner selection config
 - `inference_params` (*Dict*) - Inference parameters
 - `output_config` (*Dict*) - Output configuration
 
 **Returns:**
 - Prediction response
+
+### Model.async_predict
+
+```python
+Model.async_predict(inputs, inference_params={}, output_config={})
+```
+
+Makes asynchronous predictions using the model.
+
+**Parameters:**
+- `inputs` (*List[Input]*) - List of inputs to predict on
+- `inference_params` (*Dict*) - Inference parameters
+- `output_config` (*Dict*) - Output configuration
+
+**Returns:**
+- Async prediction response
 
 ### Model.load_input_types
 
@@ -42903,7 +42648,7 @@ Loads available input types for the model.
 ### Model.predict_by_filepath
 
 ```python
-Model.predict_by_filepath(filepath, input_type=None, compute_cluster_id=None, nodepool_id=None, deployment_id=None, inference_params={}, output_config={})
+Model.predict_by_filepath(filepath, input_type=None, inference_params={}, output_config={})
 ```
 
 Makes predictions from file input.
@@ -42911,9 +42656,6 @@ Makes predictions from file input.
 **Parameters:**
 - `filepath` (*str*) - Path to input file
 - `input_type` (*str*) - Input type ('image', 'text', 'video', 'audio')
-- `compute_cluster_id` (*str*) - Compute cluster ID
-- `nodepool_id` (*str*) - Nodepool ID
-- `deployment_id` (*str*) - Deployment ID
 - `inference_params` (*Dict*) - Inference parameters
 - `output_config` (*Dict*) - Output configuration
 
@@ -42927,7 +42669,7 @@ response = model.predict_by_filepath('image.jpg', input_type='image')
 ### Model.predict_by_bytes
 
 ```python
-Model.predict_by_bytes(input_bytes, input_type=None, compute_cluster_id=None, nodepool_id=None, deployment_id=None, inference_params={}, output_config={})
+Model.predict_by_bytes(input_bytes, input_type=None, inference_params={}, output_config={})
 ```
 
 Makes predictions from bytes input.
@@ -42935,9 +42677,6 @@ Makes predictions from bytes input.
 **Parameters:**
 - `input_bytes` (*bytes*) - Input bytes
 - `input_type` (*str*) - Input type ('image', 'text', 'video', 'audio')
-- `compute_cluster_id` (*str*) - Compute cluster ID
-- `nodepool_id` (*str*) - Nodepool ID
-- `deployment_id` (*str*) - Deployment ID
 - `inference_params` (*Dict*) - Inference parameters
 - `output_config` (*Dict*) - Output configuration
 
@@ -42951,7 +42690,7 @@ response = model.predict_by_bytes(text, inference_params={'temperature': 0.7})
 ### Model.predict_by_url
 
 ```python
-Model.predict_by_url(url, input_type=None, compute_cluster_id=None, nodepool_id=None, deployment_id=None, inference_params={}, output_config={})
+Model.predict_by_url(url, input_type=None, inference_params={}, output_config={})
 ```
 
 Makes predictions from URL input.
@@ -42959,9 +42698,6 @@ Makes predictions from URL input.
 **Parameters:**
 - `url` (*str*) - Input URL
 - `input_type` (*str*) - Input type ('image', 'text', 'video', 'audio')
-- `compute_cluster_id` (*str*) - Compute cluster ID
-- `nodepool_id` (*str*) - Nodepool ID 
-- `deployment_id` (*str*) - Deployment ID
 - `inference_params` (*Dict*) - Inference parameters
 - `output_config` (*Dict*) - Output configuration
 
@@ -42975,24 +42711,39 @@ response = model.predict_by_url('https://example.com/image.jpg', input_type='ima
 ### Model.generate
 
 ```python
-Model.generate(inputs, runner_selector=None, inference_params={}, output_config={})
+Model.generate(inputs, inference_params={}, output_config={})
 ```
 
 Generates outputs with streaming response.
 
 **Parameters:** 
 - `inputs` (*List[Input]*) - List of inputs
-- `runner_selector` (*RunnerSelector*) - Runner selection config
 - `inference_params` (*Dict*) - Inference parameters
 - `output_config` (*Dict*) - Output configuration
 
 **Returns:**
 - Generator yielding output responses
 
+### Model.async_generate
+
+```python
+Model.async_generate(inputs, inference_params={}, output_config={})
+```
+
+Generates outputs asynchronously with streaming response.
+
+**Parameters:** 
+- `inputs` (*List[Input]*) - List of inputs
+- `inference_params` (*Dict*) - Inference parameters
+- `output_config` (*Dict*) - Output configuration
+
+**Returns:**
+- Async generator yielding output responses
+
 ### Model.generate_by_filepath
 
 ```python
-Model.generate_by_filepath(filepath, input_type=None, compute_cluster_id=None, nodepool_id=None, deployment_id=None, inference_params={}, output_config={})
+Model.generate_by_filepath(filepath, input_type=None, inference_params={}, output_config={})
 ```
 
 Generates outputs from file input with streaming response.
@@ -43000,9 +42751,6 @@ Generates outputs from file input with streaming response.
 **Parameters:**
 - `filepath` (*str*) - Path to input file
 - `input_type` (*str*) - Input type ('image', 'text', 'video', 'audio')
-- `compute_cluster_id` (*str*) - Compute cluster ID
-- `nodepool_id` (*str*) - Nodepool ID
-- `deployment_id` (*str*) - Deployment ID
 - `inference_params` (*Dict*) - Inference parameters
 - `output_config` (*Dict*) - Output configuration
 
@@ -43012,7 +42760,7 @@ Generates outputs from file input with streaming response.
 ### Model.generate_by_bytes
 
 ```python
-Model.generate_by_bytes(input_bytes, input_type=None, compute_cluster_id=None, nodepool_id=None, deployment_id=None, inference_params={}, output_config={})
+Model.generate_by_bytes(input_bytes, input_type=None, inference_params={}, output_config={})
 ```
 
 Generates outputs from bytes input with streaming response.
@@ -43020,9 +42768,6 @@ Generates outputs from bytes input with streaming response.
 **Parameters:**
 - `input_bytes` (*bytes*) - Input bytes
 - `input_type` (*str*) - Input type ('image', 'text', 'video', 'audio')
-- `compute_cluster_id` (*str*) - Compute cluster ID
-- `nodepool_id` (*str*) - Nodepool ID
-- `deployment_id` (*str*) - Deployment ID
 - `inference_params` (*Dict*) - Inference parameters
 - `output_config` (*Dict*) - Output configuration
 
@@ -43032,7 +42777,7 @@ Generates outputs from bytes input with streaming response.
 ### Model.generate_by_url
 
 ```python
-Model.generate_by_url(url, input_type=None, compute_cluster_id=None, nodepool_id=None, deployment_id=None, inference_params={}, output_config={})
+Model.generate_by_url(url, input_type=None, inference_params={}, output_config={})
 ```
 
 Generates outputs from URL input with streaming response.
@@ -43040,9 +42785,6 @@ Generates outputs from URL input with streaming response.
 **Parameters:**
 - `url` (*str*) - Input URL
 - `input_type` (*str*) - Input type ('image', 'text', 'video', 'audio')
-- `compute_cluster_id` (*str*) - Compute cluster ID
-- `nodepool_id` (*str*) - Nodepool ID
-- `deployment_id` (*str*) - Deployment ID
 - `inference_params` (*Dict*) - Inference parameters
 - `output_config` (*Dict*) - Output configuration
 
@@ -43052,24 +42794,39 @@ Generates outputs from URL input with streaming response.
 ### Model.stream
 
 ```python
-Model.stream(inputs, runner_selector=None, inference_params={}, output_config={})
+Model.stream(inputs, inference_params={}, output_config={})
 ```
 
 Streams predictions for input iterator.
 
 **Parameters:**
 - `inputs` (*Iterator[List[Input]]*) - Iterator of input lists
-- `runner_selector` (*RunnerSelector*) - Runner selection config
 - `inference_params` (*Dict*) - Inference parameters
 - `output_config` (*Dict*) - Output configuration
 
 **Returns:**
 - Generator yielding output responses
 
+### Model.async_stream
+
+```python
+Model.async_stream(inputs, inference_params={}, output_config={})
+```
+
+Streams predictions asynchronously for input iterator.
+
+**Parameters:**
+- `inputs` (*Iterator[List[Input]]*) - Iterator of input lists
+- `inference_params` (*Dict*) - Inference parameters
+- `output_config` (*Dict*) - Output configuration
+
+**Returns:**
+- Async generator yielding output responses
+
 ### Model.stream_by_filepath
 
 ```python
-Model.stream_by_filepath(filepath, input_type=None, compute_cluster_id=None, nodepool_id=None, deployment_id=None, inference_params={}, output_config={})
+Model.stream_by_filepath(filepath, input_type=None, inference_params={}, output_config={})
 ```
 
 Streams predictions from file input.
@@ -43077,11 +42834,45 @@ Streams predictions from file input.
 **Parameters:**
 - `filepath` (*str*) - Path to input file
 - `input_type` (*str*) - Input type ('image', 'text', 'video', 'audio')
-- `compute_cluster_id` (*str*) - Compute cluster ID
-- `nodepool_id` (*str*) - Nodepool ID
-- `deployment_id` (*str*) - Deployment ID
 - `inference_params` (*Dict*) - Inference parameters
 - `output_config` (*Dict*) - Output configuration
+
+**Returns:**
+- Generator yielding output responses
+
+### Model.stream_by_bytes
+
+```python
+Model.stream_by_bytes(input_bytes_iterator, input_type=None, inference_params={}, output_config={})
+```
+
+Streams predictions from bytes iterator.
+
+**Parameters:**
+- `input_bytes_iterator` (*Iterator[bytes]*) - Iterator of input bytes
+- `input_type` (*str*) - Input type ('image', 'text', 'video', 'audio')
+- `inference_params` (*Dict*) - Inference parameters
+- `output_config` (*Dict*) - Output configuration
+
+**Returns:**
+- Generator yielding output responses
+
+### Model.stream_by_url
+
+```python
+Model.stream_by_url(url_iterator, input_type=None, inference_params={}, output_config={})
+```
+
+Streams predictions from URL iterator.
+
+**Parameters:**
+- `url_iterator` (*Iterator[str]*) - Iterator of input URLs
+- `input_type` (*str*) - Input type ('image', 'text', 'video', 'audio')
+- `inference_params` (*Dict*) - Inference parameters
+- `output_config` (*Dict*) - Output configuration
+
+**Returns:**
+- Generator yielding output responses
 
 ### Model.evaluate
 
@@ -43200,7 +42991,7 @@ y_true, y_pred, classes, inputs = model.get_raw_eval(
 ### Model.create_version_by_file
 
 ```python
-Model.create_version_by_file(file_path, input_field_maps, output_field_maps, inference_parameter_configs=None, model_version=None, description="")
+Model.create_version_by_file(file_path, input_field_maps, output_field_maps, inference_parameter_configs=None, model_version=None, part_id=1, range_start=0, no_cache=False, no_resume=False, description="")
 ```
 
 Creates new model version from local file.
@@ -43209,8 +43000,12 @@ Creates new model version from local file.
 - `file_path` (*str*) - Path to model file
 - `input_field_maps` (*dict*) - Input field mappings 
 - `output_field_maps` (*dict*) - Output field mappings
-- `inference_parameter_configs` (*dict*) - Inference parameter configurations
+- `inference_parameter_configs` (*List[dict]*) - Inference parameter configurations
 - `model_version` (*str*) - Custom version ID
+- `part_id` (*int*) - Part ID for upload (default: 1)
+- `range_start` (*int*) - Range start for upload (default: 0)
+- `no_cache` (*bool*) - Disable upload cache (default: False)
+- `no_resume` (*bool*) - Disable auto-resume upload (default: False)
 - `description` (*str*) - Version description
 
 **Returns:**
@@ -43233,6 +43028,21 @@ Creates new model version from URL.
 
 **Returns:**
 - New Model instance
+
+### Model.patch_version
+
+```python
+Model.patch_version(version_id, **kwargs)
+```
+
+Patches an existing model version.
+
+**Parameters:**
+- `version_id` (*str*) - Version ID to patch
+- `**kwargs` - Fields to update
+
+**Returns:**
+- Updated Model instance
 
 ### Model.export
 
@@ -43267,7 +43077,1374 @@ model = Model("model_url")
 model.load_info()
 ```
 
-## Workflow
+## [ModelClient](https://github.com/Clarifai/clarifai-python/blob/master/clarifai/client/model_client.py)
+
+```python
+class ModelClient(stub, async_stub=None, request_template=None)
+```
+
+The ModelClient offers a flexible interface that adapts to the specific capabilities of each model while maintaining a consistent programming interface across different model types.
+
+Also, it provides dynamic method generation based on model signatures and handles both synchronous and asynchronous inference calls.
+
+**Parameters:**
+- `stub` - The gRPC stub for the model
+- `async_stub` (*V2Stub*) - The async gRPC stub for the model (optional)
+- `request_template` (*service_pb2.PostModelOutputsRequest*) - Template request with common fields like model_id, model_version, etc.
+
+### Instance Methods
+
+#### ModelClient.fetch
+
+```python
+ModelClient.fetch()
+```
+
+Fetches function signature definitions from the model and defines the functions in the client. This method is called automatically when accessing model methods.
+
+**Example:**
+```python
+from clarifai.client.model_client import ModelClient
+
+# Initialize client (typically done through Model class)
+client = ModelClient(stub, async_stub, request_template)
+client.fetch()  # Explicitly fetch signatures
+```
+
+#### ModelClient.available_methods
+
+```python
+ModelClient.available_methods()
+```
+
+Gets the available methods for this model.
+
+**Returns:**
+- List[str]: The available method names
+
+**Example:**
+```python
+methods = client.available_methods()
+print(methods)  # ['predict', 'generate', 'classify']
+
+# Check all available methods and their signatures
+for method in client.available_methods():
+    print(f"{method}: {client.method_signature(method)}")
+```
+
+#### ModelClient.method_signature
+
+```python
+ModelClient.method_signature(method_name)
+```
+
+Gets the method signature for a specific method.
+
+**Parameters:**
+- `method_name` (*str*) - The name of the method
+
+**Returns:**
+- str: The method signature string
+
+**Example:**
+```python
+signature = client.method_signature('predict')
+print(signature)  # 'predict(input: str) -> str'
+```
+
+#### ModelClient.generate_client_script
+
+```python
+ModelClient.generate_client_script(base_url=None, use_ctx=False, colorize=False)
+```
+
+Generates a client script for this model.
+
+**Parameters:**
+- `base_url` (*str*) - Base URL for the API
+- `use_ctx` (*bool*) - Whether to use context manager in generated script
+- `colorize` (*bool*) - Whether to colorize the output
+
+**Returns:**
+- str: The generated client script
+
+**Example:**
+```python
+script = client.generate_client_script()
+print(script)  # Prints a ready-to-use client script
+```
+
+### Dynamic Methods
+
+The ModelClient dynamically creates methods based on the model's method signatures. These typically include:
+
+#### Predict Methods
+```python
+ModelClient.predict(inputs)
+```
+Makes synchronous predictions using the model.
+
+**Parameters:**
+- `inputs` - Input data matching the model's expected format
+
+**Returns:**
+- Prediction results
+
+**Example:**
+```python
+# Single input prediction
+result = client.predict({"text": "Hello world"})
+print(result)
+
+# Batch input prediction
+batch_results = client.predict([
+    {"text": "First input"},
+    {"text": "Second input"}
+])
+for result in batch_results:
+    print(result)
+```
+
+#### Async Predict Methods
+```python
+ModelClient.async_predict(inputs)
+```
+Makes asynchronous predictions using the model.
+
+**Parameters:**
+- `inputs` - Input data matching the model's expected format
+
+**Returns:**
+- Async prediction results
+
+**Example:**
+```python
+import asyncio
+
+async def main():
+    # Single input prediction
+    result = await client.async_predict({"text": "Hello world"})
+    print(result)
+    
+    # Batch input prediction  
+    batch_results = await client.async_predict([
+        {"text": "First input"},
+        {"text": "Second input"}
+    ])
+    for result in batch_results:
+        print(result)
+
+asyncio.run(main())
+```
+
+#### Generate Methods
+```python
+ModelClient.generate(inputs)
+```
+Generates outputs with streaming response.
+
+**Parameters:**
+- `inputs` - Input data matching the model's expected format
+
+**Returns:**
+- Generator yielding output responses
+
+**Example:**
+```python
+# Streaming text generation
+for chunk in client.generate({"prompt": "Write a story about AI"}):
+    print(chunk, end="", flush=True)
+
+# Batch streaming generation
+for batch_chunks in client.generate([
+    {"prompt": "First prompt"},
+    {"prompt": "Second prompt"}
+]):
+    for chunk in batch_chunks:
+        print(f"Chunk: {chunk}")
+```
+
+#### Async Generate Methods
+```python
+ModelClient.async_generate(inputs)
+```
+Generates outputs asynchronously with streaming response.
+
+**Parameters:**
+- `inputs` - Input data matching the model's expected format
+
+**Returns:**
+- Async generator yielding output responses
+
+**Example:**
+```python
+import asyncio
+
+async def main():
+    # Single input streaming generation
+    async for chunk in client.async_generate({"prompt": "Write a story"}):
+        print(chunk, end="", flush=True)
+    
+    # Batch streaming generation
+    async for batch_chunks in client.async_generate([
+        {"prompt": "First prompt"},
+        {"prompt": "Second prompt"}
+    ]):
+        for chunk in batch_chunks:
+            print(f"Chunk: {chunk}")
+
+asyncio.run(main())
+```
+
+#### Stream Methods
+```python
+ModelClient.stream(inputs)
+```
+Streams predictions for input iterator. This is used for models that accept streaming inputs (like audio processing).
+
+**Parameters:**
+- `inputs` - Input data with streaming components, must include a generator for the stream
+
+**Returns:**
+- Generator yielding output responses
+
+**Example:**
+```python
+def audio_chunk_generator():
+    # Simulate audio chunks
+    yield b"audio_chunk_1"
+    yield b"audio_chunk_2"
+    yield b"audio_chunk_3"
+    
+# Stream audio processing
+for response in client.stream({"audio_stream": audio_chunk_generator()}):
+    print(f"Processed: {response}")
+```
+
+#### Async Stream Methods
+```python
+ModelClient.async_stream(inputs)
+```
+Streams predictions asynchronously for input iterator.
+
+**Parameters:**
+- `inputs` - Input data with streaming components, must include an async generator for the stream
+
+**Returns:**
+- Async generator yielding output responses
+
+**Example:**
+```python
+import asyncio
+
+async def async_audio_chunk_generator():
+    # Simulate async audio chunks
+    yield b"audio_chunk_1"
+    await asyncio.sleep(0.1)
+    yield b"audio_chunk_2"
+    await asyncio.sleep(0.1)
+    yield b"audio_chunk_3"
+    
+async def main():
+    async for response in client.async_stream({"audio_stream": async_audio_chunk_generator()}):
+        print(f"Processed: {response}")
+
+asyncio.run(main())
+```
+
+## [Module](https://github.com/Clarifai/clarifai-python/blob/master/clarifai/client/module.py)
+
+```python
+class Module(url=None, module_id=None, module_version={'id': ""}, base_url="https://api.clarifai.com", pat=None, token=None, root_certificates_path=None, **kwargs)
+```
+
+The Module class provides a comprehensive interface for interacting with Clarifai modules and their versions, making it easy to manage and explore module configurations across different versions.
+
+**Parameters:**
+- `url` (*Optional[str]*) - URL to initialize module object
+- `module_id` (*Optional[str]*) - Module ID to interact with
+- `module_version` (*Dict[str, str]*) - Module version details with ID. Defaults to `{'id': ""}` for latest version
+- `base_url` (*str*) - Base API URL. Default "https://api.clarifai.com"
+- `pat` (*Optional[str]*) - Personal access token for authentication. Can be set as env var CLARIFAI_PAT
+- `token` (*Optional[str]*) - Session token for authentication. Accepts either a session token or a pat. Can be set as env var CLARIFAI_SESSION_TOKEN
+- `root_certificates_path` (*Optional[str]*) - Path to SSL root certificates file, used to establish secure gRPC connections
+- `**kwargs` - Additional keyword arguments to be passed to the Module
+
+**Note:** Either url or module_id must be specified, but not both.
+
+**Example:**
+```python
+from clarifai.client.module import Module
+
+# Initialize from URL
+module = Module(url="https://clarifai.com/user_id/app_id/modules/module_id/versions/version_id")
+
+# Initialize with module ID
+module = Module(
+    module_id='my-module',
+    user_id='user_id', 
+    app_id='app_id',
+    module_version={'id': 'specific-version'}  # or omit for latest version
+)
+```
+
+### Module.list_versions
+
+```python
+Module.list_versions(page_no=None, per_page=None)
+```
+
+Lists all versions of the module.
+
+**Parameters:**
+- `page_no` (*int*) - Page number for pagination
+- `per_page` (*int*) - Items per page
+
+**Yields:**
+- Module objects for each version
+
+**Example:**
+```python
+from clarifai.client.module import Module
+
+module = Module(module_id='my-module', user_id='user_id', app_id='app_id')
+
+# List all versions
+all_module_versions = list(module.list_versions())
+
+# List versions with pagination
+first_page_versions = list(module.list_versions(page_no=1, per_page=10))
+
+# Iterate through versions
+for version in module.list_versions():
+    print(f"Version ID: {version.id}")
+    print(f"Description: {version.description}")
+```
+
+**Note:** Defaults to 16 per page if page_no is specified and per_page is not specified. If both page_no and per_page are None, then lists all the resources.
+
+### Accessing Module Properties
+
+Once initialized, you can access various module properties directly from the Module instance:
+
+**Example:**
+```python
+from clarifai.client.module import Module
+
+module = Module(module_id='my-module', user_id='user_id', app_id='app_id')
+
+# Access module properties
+print(f"Module ID: {module.id}")
+print(f"App ID: {module.app_id}")
+print(f"User ID: {module.user_id}")
+
+# The module also provides a string representation
+print(module)  # Shows formatted module details
+```
+
+## [Nodepool](https://github.com/Clarifai/clarifai-python/blob/master/clarifai/client/nodepool.py)
+
+```python
+class Nodepool(nodepool_id=None, user_id=None, base_url="https://api.clarifai.com", pat=None, token=None, root_certificates_path=None, **kwargs)
+```
+
+The Nodepool class provides comprehensive management capabilities for deployments and runners within a compute cluster, enabling efficient resource allocation and scaling for model serving.
+
+**Parameters:**
+- `nodepool_id` (*str*) - The Nodepool ID for the Nodepool to interact with
+- `user_id` (*str*) - The user ID of the user
+- `base_url` (*str*) - Base API URL. Default "https://api.clarifai.com"
+- `pat` (*str*) - A personal access token for authentication. Can be set as env var CLARIFAI_PAT
+- `token` (*str*) - A session token for authentication. Accepts either a session token or a pat. Can be set as env var CLARIFAI_SESSION_TOKEN
+- `root_certificates_path` (*str*) - Path to the SSL root certificates file, used to establish secure gRPC connections
+- `**kwargs` - Additional keyword arguments to be passed to the nodepool
+
+**Example:**
+```python
+from clarifai.client.nodepool import Nodepool
+
+# Initialize nodepool
+nodepool = Nodepool(nodepool_id="my-nodepool", user_id="user_id")
+```
+
+### Nodepool.list_deployments
+
+```python
+Nodepool.list_deployments(filter_by={}, page_no=None, per_page=None)
+```
+
+Lists all the available deployments of the compute cluster.
+
+**Parameters:**
+- `filter_by` (*Dict[str, Any]*) - The filter to apply to the list of deployments
+- `page_no` (*int*) - The page number to list
+- `per_page` (*int*) - The number of items per page
+
+**Yields:**
+- Deployment: Deployment objects for the nodepools in the compute cluster
+
+**Example:**
+```python
+from clarifai.client.nodepool import Nodepool
+
+nodepool = Nodepool(nodepool_id="nodepool_id", user_id="user_id")
+
+# List all deployments
+all_deployments = list(nodepool.list_deployments())
+
+# List deployments with filtering and pagination
+filtered_deployments = list(nodepool.list_deployments(
+    filter_by={"status": "active"},
+    page_no=1,
+    per_page=10
+))
+```
+
+**Note:** Defaults to 16 per page if page_no is specified and per_page is not specified. If both page_no and per_page are None, then lists all the resources.
+
+### Nodepool.create_deployment
+
+```python
+Nodepool.create_deployment(config_filepath=None, deployment_id=None, deployment_config=None)
+```
+
+Creates a deployment for the nodepool.
+
+**Parameters:**
+- `config_filepath` (*str*) - The path to the deployment config file (YAML format)
+- `deployment_id` (*str*) - New deployment ID for the deployment to create
+- `deployment_config` (*Dict[str, Any]*) - Deployment configuration as a dictionary (alternative to config file)
+
+**Returns:**
+- Deployment: A Deployment object for the specified deployment ID
+
+**Example:**
+```python
+from clarifai.client.nodepool import Nodepool
+
+nodepool = Nodepool(nodepool_id="nodepool_id", user_id="user_id")
+
+# Create deployment from config file
+deployment = nodepool.create_deployment(config_filepath="deployment_config.yml")
+
+# Create deployment with custom ID
+deployment = nodepool.create_deployment(
+    config_filepath="deployment_config.yml",
+    deployment_id="my-custom-deployment"
+)
+
+# Create deployment from dictionary config
+deployment_config = {
+    "deployment": {
+        "worker": {
+            "model": {"id": "my-model", "user_id": "user_id", "app_id": "app_id"}
+        },
+        "scheduling_choice": "priority",
+        "nodepools": [{"id": "nodepool_id", "compute_cluster": {"id": "cluster_id"}}]
+    }
+}
+deployment = nodepool.create_deployment(deployment_config=deployment_config)
+```
+
+### Nodepool.deployment
+
+```python
+Nodepool.deployment(deployment_id)
+```
+
+Returns a Deployment object for the existing deployment ID.
+
+**Parameters:**
+- `deployment_id` (*str*) - The deployment ID for the deployment to interact with
+
+**Returns:**
+- Deployment: A Deployment object for the existing deployment ID
+
+**Example:**
+```python
+from clarifai.client.nodepool import Nodepool
+
+nodepool = Nodepool(nodepool_id="nodepool_id", user_id="user_id")
+deployment = nodepool.deployment(deployment_id="existing_deployment_id")
+```
+
+### Nodepool.delete_deployments
+
+```python
+Nodepool.delete_deployments(deployment_ids)
+```
+
+Deletes list of deployments for the nodepool.
+
+**Parameters:**
+- `deployment_ids` (*List[str]*) - The list of deployment IDs to delete
+
+**Example:**
+```python
+from clarifai.client.nodepool import Nodepool
+
+nodepool = Nodepool(nodepool_id="nodepool_id", user_id="user_id")
+nodepool.delete_deployments(deployment_ids=["deployment_id1", "deployment_id2"])
+```
+
+### Nodepool.runner
+
+```python
+Nodepool.runner(runner_id)
+```
+
+Returns a Runner object for the existing runner ID.
+
+**Parameters:**
+- `runner_id` (*str*) - The runner ID for the runner to interact with
+
+**Returns:**
+- Runner: A Runner object for the existing runner ID
+
+**Example:**
+```python
+from clarifai.client.nodepool import Nodepool
+
+nodepool = Nodepool(nodepool_id="nodepool_id", user_id="user_id")
+runner = nodepool.runner(runner_id="runner_id")
+```
+
+### Nodepool.create_runner
+
+```python
+Nodepool.create_runner(config_filepath=None, runner_config=None)
+```
+
+Creates a runner for the nodepool. Only needed for local runners.
+
+**Parameters:**
+- `config_filepath` (*str*) - The path to the runner config file (YAML format)
+- `runner_config` (*Dict[str, Any]*) - Runner configuration as a dictionary (alternative to config file)
+
+**Returns:**
+- Runner: A Runner object for the specified runner
+
+**Example:**
+```python
+from clarifai.client.nodepool import Nodepool
+
+nodepool = Nodepool(nodepool_id="nodepool_id", user_id="user_id")
+
+# Create runner from config file
+runner = nodepool.create_runner(config_filepath="runner_config.yml")
+
+# Create runner from dictionary config
+runner_config = {
+    "runner": {
+        "worker": {"image_url": "my-image:latest"},
+        "num_replicas": 2
+    }
+}
+runner = nodepool.create_runner(runner_config=runner_config)
+```
+
+### Nodepool.delete_runners
+
+```python
+Nodepool.delete_runners(runner_ids)
+```
+
+Deletes list of runners for the nodepool.
+
+**Parameters:**
+- `runner_ids` (*List[str]*) - The list of runner IDs to delete
+
+**Example:**
+```python
+from clarifai.client.nodepool import Nodepool
+
+nodepool = Nodepool(nodepool_id="nodepool_id", user_id="user_id")
+nodepool.delete_runners(runner_ids=["runner_id1", "runner_id2"])
+```
+
+### Nodepool.get_runner_selector
+
+```python
+Nodepool.get_runner_selector(user_id, compute_cluster_id, nodepool_id)
+```
+
+Returns a RunnerSelector object for the specified compute cluster and nodepool.
+
+**Parameters:**
+- `user_id` (*str*) - The user ID of the user
+- `compute_cluster_id` (*str*) - The compute cluster ID for the compute cluster
+- `nodepool_id` (*str*) - The nodepool ID for the nodepool
+
+**Returns:**
+- resources_pb2.RunnerSelector: A RunnerSelector object for the specified compute cluster and nodepool
+
+**Example:**
+```python
+from clarifai.client.nodepool import Nodepool
+
+runner_selector = Nodepool.get_runner_selector(
+    user_id="user_id",
+    compute_cluster_id="compute_cluster_id", 
+    nodepool_id="nodepool_id"
+)
+```
+
+## [Pipeline](https://github.com/Clarifai/clarifai-python/blob/master/clarifai/client/pipeline.py)
+
+```python
+class Pipeline(url=None, pipeline_id=None, pipeline_version_id=None, pipeline_version_run_id=None, user_id=None, app_id=None, nodepool_id=None, compute_cluster_id=None, log_file=None, base_url="https://api.clarifai.com", pat=None, token=None, root_certificates_path=None, **kwargs)
+```
+
+The Pipeline class provides a complete interface for executing and monitoring pipeline runs, making it easy to integrate complex data processing workflows into your applications with robust monitoring and logging capabilities.
+
+**Parameters:**
+- `url` (*Optional[str]*) - The URL to initialize the pipeline object
+- `pipeline_id` (*Optional[str]*) - The Pipeline ID to interact with
+- `pipeline_version_id` (*Optional[str]*) - The Pipeline Version ID to interact with
+- `pipeline_version_run_id` (*Optional[str]*) - The Pipeline Version Run ID. If not provided, a UUID will be generated
+- `user_id` (*Optional[str]*) - The User ID that owns the pipeline
+- `app_id` (*Optional[str]*) - The App ID that contains the pipeline
+- `nodepool_id` (*Optional[str]*) - The Nodepool ID to run the pipeline on
+- `compute_cluster_id` (*Optional[str]*) - The Compute Cluster ID to run the pipeline on
+- `log_file` (*Optional[str]*) - Path to file where logs should be written. If not provided, logs are displayed on console
+- `base_url` (*str*) - Base API URL. Default "https://api.clarifai.com"
+- `pat` (*Optional[str]*) - A personal access token for authentication. Can be set as env var CLARIFAI_PAT
+- `token` (*Optional[str]*) - A session token for authentication. Accepts either a session token or a pat. Can be set as env var CLARIFAI_SESSION_TOKEN
+- `root_certificates_path` (*Optional[str]*) - Path to the SSL root certificates file, used to establish secure gRPC connections
+- `**kwargs` - Additional keyword arguments to be passed to the Pipeline
+
+**Note:** Either url or pipeline_id must be specified, but not both.
+
+**Example:**
+```python
+from clarifai.client.pipeline import Pipeline
+
+# Initialize from URL
+pipeline = Pipeline(url="https://clarifai.com/user_id/app_id/pipelines/pipeline_id")
+
+# Initialize with explicit parameters
+pipeline = Pipeline(
+    pipeline_id="my-pipeline",
+    pipeline_version_id="v1",
+    user_id="user_id",
+    app_id="app_id",
+    nodepool_id="nodepool-1",
+    compute_cluster_id="cluster-1"
+)
+
+# Initialize with custom run ID and log file
+pipeline = Pipeline(
+    pipeline_id="my-pipeline",
+    pipeline_version_run_id="custom-run-123",
+    log_file="pipeline_logs.txt",
+    user_id="user_id",
+    app_id="app_id"
+)
+```
+
+### Pipeline.run
+
+```python
+Pipeline.run(inputs=None, timeout=3600, monitor_interval=10)
+```
+
+Run the pipeline and monitor its progress.
+
+**Parameters:**
+- `inputs` (*List*) - List of inputs to run the pipeline with. If None, runs without inputs
+- `timeout` (*int*) - Maximum time to wait for completion in seconds. Default 3600 (1 hour)
+- `monitor_interval` (*int*) - Interval between status checks in seconds. Default 10
+
+**Returns:**
+- Dict: The pipeline run result with keys:
+  - `status`: "success", "failed", or "timeout"
+  - `pipeline_version_run`: Detailed run information when successful
+
+**Example:**
+```python
+from clarifai.client.pipeline import Pipeline
+
+# Initialize pipeline
+pipeline = Pipeline(
+    pipeline_id="my-pipeline",
+    user_id="user_id",
+    app_id="app_id",
+    nodepool_id="nodepool-1",
+    compute_cluster_id="cluster-1"
+)
+
+# Run pipeline without inputs
+result = pipeline.run()
+
+# Run pipeline with inputs
+inputs = [{"data": {"text": {"raw": "Hello world"}}}]
+result = pipeline.run(inputs=inputs)
+
+# Run with custom timeout and monitoring interval
+result = pipeline.run(
+    inputs=inputs,
+    timeout=7200,  # 2 hours
+    monitor_interval=5  # Check every 5 seconds
+)
+
+if result["status"] == "success":
+    print("Pipeline completed successfully!")
+    print(f"Run details: {result['pipeline_version_run']}")
+elif result["status"] == "failed":
+    print("Pipeline failed")
+else:
+    print("Pipeline timed out")
+```
+
+### Pipeline.monitor_only
+
+```python
+Pipeline.monitor_only(timeout=3600, monitor_interval=10)
+```
+
+Monitor an existing pipeline run without starting a new one.
+
+**Parameters:**
+- `timeout` (*int*) - Maximum time to wait for completion in seconds. Default 3600 (1 hour)
+- `monitor_interval` (*int*) - Interval between status checks in seconds. Default 10
+
+**Returns:**
+- Dict: The pipeline run result with keys:
+  - `status`: "success", "failed", or "timeout"
+  - `pipeline_version_run`: Detailed run information when successful
+
+**Example:**
+```python
+from clarifai.client.pipeline import Pipeline
+
+# Monitor an existing pipeline run
+pipeline = Pipeline(
+    pipeline_id="my-pipeline",
+    pipeline_version_run_id="existing-run-id-123",
+    user_id="user_id",
+    app_id="app_id"
+)
+
+# Monitor the existing run
+result = pipeline.monitor_only()
+
+# Monitor with custom settings
+result = pipeline.monitor_only(
+    timeout=1800,  # 30 minutes
+    monitor_interval=15  # Check every 15 seconds
+)
+
+if result["status"] == "success":
+    print("Pipeline run completed successfully!")
+```
+
+## [Search](https://github.com/Clarifai/clarifai-python/blob/master/clarifai/client/search.py)
+
+```python
+class Search(user_id, app_id, top_k=None, metric='cosine', algorithm='nearest_neighbor', pagination=False, base_url="https://api.clarifai.com", pat=None, token=None, root_certificates_path=None)
+```
+
+The Search class provides a comprehensive interface for performing various types of searches across your Clarifai app's inputs with powerful filtering and ranking capabilities.
+
+**Parameters:**
+- `user_id` (*str*) - User ID
+- `app_id` (*str*) - App ID
+- `top_k` (*int*) - Top K results to retrieve. Defaults to 10 when pagination is False
+- `metric` (*str*) - Similarity metric (either 'cosine' or 'euclidean'). Defaults to 'cosine'
+- `algorithm` (*str*) - Search algorithm (either 'nearest_neighbor' or 'brute_force'). Defaults to 'nearest_neighbor'
+- `pagination` (*bool*) - Enable pagination. Defaults to False
+- `base_url` (*str*) - Base API URL. Default "https://api.clarifai.com"
+- `pat` (*str*) - A personal access token for authentication. Can be set as env var CLARIFAI_PAT
+- `token` (*str*) - A session token for authentication. Accepts either a session token or a pat. Can be set as env var CLARIFAI_SESSION_TOKEN
+- `root_certificates_path` (*str*) - Path to the SSL root certificates file, used to establish secure gRPC connections
+
+**Note:** 
+- Cosine distance metric is not supported with nearest neighbor algorithm
+- top_k and pagination cannot be used together
+- When pagination is False and top_k is not specified, defaults to 10 results
+
+**Example:**
+```python
+from clarifai.client.search import Search
+
+# Basic search with top_k
+search = Search(user_id='user_id', app_id='app_id', top_k=10, metric='cosine')
+
+# Search with pagination enabled
+search = Search(
+    user_id='user_id', 
+    app_id='app_id', 
+    metric='cosine', 
+    pagination=True
+)
+
+# Search with euclidean metric
+search = Search(
+    user_id='user_id',
+    app_id='app_id',
+    top_k=20,
+    metric='euclidean',
+    algorithm='brute_force'
+)
+```
+
+### Search.query
+
+```python
+Search.query(ranks=[{}], filters=[{}], page_no=None, per_page=None)
+```
+
+Perform a query with rank and filters.
+
+**Parameters:**
+- `ranks` (*List[Dict]*) - List of rank parameters for similarity search. Each dict can contain:
+  - `image_bytes` (*bytes*) - Raw image bytes for vector search
+  - `image_url` (*str*) - URL to an image for vector search
+  - `text_raw` (*str*) - Raw text content for text search
+  - `concepts` (*List[Dict]*) - List of concept dictionaries for concept-based search
+  - `metadata` (*Dict*) - Metadata dictionary for metadata-based search
+  - `geo_point` (*Dict*) - Geographic point with keys:
+    - `longitude` (*float*) - Geographic longitude
+    - `latitude` (*float*) - Geographic latitude  
+    - `geo_limit` (*float*) - Geographical limit in kilometers
+- `filters` (*List[Dict]*) - List of filter parameters to narrow down results. Each dict can contain:
+  - `input_types` (*List[str]*) - List of input types to filter by ('image', 'text', 'audio', 'video')
+  - `input_dataset_ids` (*List[str]*) - List of dataset IDs to filter by
+  - `input_status_code` (*int*) - Status code to filter by (e.g., 30000 for successful inputs)
+  - `concepts` (*List[Dict]*) - List of concept dictionaries for filtering
+  - `metadata` (*Dict*) - Metadata dictionary for filtering
+  - `geo_point` (*Dict*) - Geographic point for location-based filtering
+- `page_no` (*int*) - The page number to list (only when pagination=True)
+- `per_page` (*int*) - The number of items per page (only when pagination=True)
+
+**Returns:**
+- Generator[Dict[str, Any], None, None]: A generator of query results
+
+**Example:**
+```python
+from clarifai.client.search import Search
+
+# Vector search by image URL with top_k
+search = Search(user_id='user_id', app_id='app_id', top_k=10, metric='cosine')
+results = search.query(
+    ranks=[{'image_url': 'https://samples.clarifai.com/dog.tiff'}]
+)
+
+# Text search with filtering
+search = Search(user_id='user_id', app_id='app_id', top_k=15, metric='cosine')
+results = search.query(
+    ranks=[{'text_raw': 'search query'}],
+    filters=[{'input_types': ['text']}]
+)
+
+# Search with pagination
+search = Search(user_id='user_id', app_id='app_id', metric='cosine', pagination=True)
+results = search.query(
+    ranks=[{'image_url': 'https://samples.clarifai.com/dog.tiff'}],
+    page_no=2, 
+    per_page=5
+)
+
+# Filter by input status and type
+search = Search(user_id='user_id', app_id='app_id', top_k=10, metric='cosine')
+results = search.query(
+    filters=[{
+        'input_types': ['image', 'text'], 
+        'input_status_code': 30000  # Successful inputs
+    }]
+)
+
+# Geographic search
+search = Search(user_id='user_id', app_id='app_id', top_k=10, metric='cosine')
+results = search.query(
+    ranks=[{
+        'geo_point': {
+            'longitude': -74.006,
+            'latitude': 40.7128,
+            'geo_limit': 10.0  # Within 10 kilometers
+        }
+    }]
+)
+
+# Concept-based search
+search = Search(user_id='user_id', app_id='app_id', top_k=10, metric='cosine')
+results = search.query(
+    ranks=[{
+        'concepts': [
+            {'id': 'cat', 'value': 1.0},
+            {'id': 'animal', 'value': 1.0}
+        ]
+    }]
+)
+
+# Iterate through results
+for result_batch in results:
+    for hit in result_batch.hits:
+        print(f"Score: {hit.score}, Input ID: {hit.input.id}")
+```
+
+**Note:**
+- For detailed schema of rank and filter parameters, refer to the [search schema](https://github.com/Clarifai/clarifai-python/tree/master/clarifai/schema/search.py)
+- For more search examples, refer to the [examples repository](https://github.com/Clarifai/examples/tree/main/search)
+- When using pagination, you must set `pagination=True` during Search initialization
+- The method performs OR operations when multiple values are provided in filters (e.g., multiple input_types)
+
+## [User](https://github.com/Clarifai/clarifai-python/blob/master/clarifai/client/user.py)
+
+```python
+class User(user_id=None, base_url="https://api.clarifai.com", pat=None, token=None, root_certificates_path=None, **kwargs)
+```
+
+User is a class that provides access to Clarifai API endpoints related to user information.
+
+**Parameters:**
+- `user_id` (*str*) - The user ID for the user to interact with 
+- `base_url` (*str*) - Base API url. Default "https://api.clarifai.com"
+- `pat` (*str*) - A personal access token for authentication. Can be set as env var CLARIFAI_PAT
+- `token` (*str*) - A session token for authentication. Can be set as env var CLARIFAI_SESSION_TOKEN
+- `root_certificates_path` (*str*) - Path to the SSL root certificates file
+- `**kwargs` - Additional keyword arguments
+
+### User.app
+
+```python
+User.app(app_id, **kwargs)
+```
+
+Returns an App object for the specified app ID.
+
+**Parameters:**
+- `app_id` (*str*) - The app ID for the app to interact with
+- `**kwargs` - Additional keyword arguments
+
+**Returns:**
+- App: An App object for the specified app ID
+
+**Example:**
+```python
+from clarifai.client.user import User
+app = User("user_id").app("app_id")
+```
+
+### User.create_app
+
+```python
+User.create_app(app_id, base_workflow='Empty', **kwargs)
+```
+
+Creates an app for the user.
+
+**Parameters:**
+- `app_id` (*str*) - The app ID for the app to create
+- `base_workflow` (*str*) - The base workflow to use (e.g. 'Universal', 'Empty', 'General')
+- `**kwargs` - Additional keyword arguments 
+
+**Returns:**
+- App: An App object for the specified app ID
+
+**Example:**
+```python
+from clarifai.client.user import User
+client = User(user_id="user_id")
+app = client.create_app(app_id="app_id", base_workflow="Universal")
+```
+
+### User.delete_app
+
+```python
+User.delete_app(app_id)
+```
+
+Deletes an app by app id.
+
+**Parameters:**
+- `app_id` (*str*) - The ID of the app to delete
+
+**Example:**
+```python
+from clarifai.client.user import User
+User("user_id").delete_app("app_id")
+```
+
+### User.list_apps
+
+```python
+User.list_apps(filter_by={}, page_no=None, per_page=None)
+```
+
+Lists all apps for the user.
+
+**Parameters:**
+- `filter_by` (*Dict[str, Any]*) - Dictionary of filters
+- `page_no` (*int*) - Page number to list
+- `per_page` (*int*) - Items per page
+
+**Yields:** 
+- App objects
+
+**Example:**
+```python
+from clarifai.client.user import User
+apps = list(User("user_id").list_apps())
+```
+
+### User.patch_app
+
+```python
+User.patch_app(app_id, action='overwrite', **kwargs) 
+```
+
+Updates an app by app id.
+
+**Parameters:**
+- `app_id` (*str*) - The app ID to patch
+- `action` (*str*) - Action to perform ('overwrite'/'remove') 
+- `**kwargs` - Properties to update
+
+**Returns:**
+- Updated App object
+
+**Example:**
+```python
+from clarifai.client.user import User
+client = User(user_id="user_id")
+app = client.patch_app("app_id", description="New description")
+```
+
+### User.runner
+
+```python
+User.runner(runner_id) 
+```
+
+Returns a Runner object if it exists.
+
+**Parameters:**
+- `runner_id` (*str*) - The runner ID to interact with
+
+**Returns:**
+- Dict containing information about the existing runner
+
+**Example:**
+```python
+from clarifai.client.user import User
+client = User(user_id="user_id")
+runner_info = client.runner(runner_id="runner_id")
+```
+
+### User.list_runners
+
+```python
+User.list_runners(filter_by={}, page_no=None, per_page=None) 
+```
+
+Lists all runners for the user.
+
+**Parameters:**
+- `filter_by` (*Dict[str, Any]*) - Dictionary of filters
+- `page_no` (*int*) - Page number to list
+- `per_page` (*int*) - Items per page
+
+**Yields:**
+- Dict objects containing runner information
+
+**Example:**
+```python
+from clarifai.client.user import User
+client = User(user_id="user_id")
+all_runners = list(client.list_runners())
+```
+
+### User.delete_runner
+
+```python
+User.delete_runner(runner_id)
+```
+
+Deletes a runner by runner id.
+
+**Parameters:**
+- `runner_id` (*str*) - The ID of the runner to delete
+
+**Example:**
+```python
+from clarifai.client.user import User
+client = User(user_id="user_id")
+client.delete_runner(runner_id="runner_id")
+```
+
+### User.compute_cluster
+
+```python
+User.compute_cluster(compute_cluster_id) 
+```
+
+Returns a Compute Cluster object for the specified compute cluster ID.
+
+**Parameters:**
+- `compute_cluster_id` (*str*) - The compute cluster ID to interact with
+
+**Returns:**
+- ComputeCluster: A Compute Cluster object for the specified ID
+
+**Example:**
+```python
+from clarifai.client.user import User
+compute_cluster = User("user_id").compute_cluster("compute_cluster_id")
+```
+
+### User.create_compute_cluster
+
+```python
+User.create_compute_cluster(config_filepath=None, compute_cluster_id=None, compute_cluster_config=None) 
+```
+
+Creates a compute cluster for the user.
+
+**Parameters:**
+- `config_filepath` (*str*) - Path to the compute cluster config file
+- `compute_cluster_id` (*str*) - Optional ID for the new compute cluster
+- `compute_cluster_config` (*Dict[str, Any]*) - Optional dictionary containing compute cluster configuration
+
+**Returns:**
+- ComputeCluster object for the created cluster
+
+**Example:**
+```python
+from clarifai.client.user import User
+client = User(user_id="user_id")
+cluster = client.create_compute_cluster(config_filepath="config.yml")
+```
+
+### User.list_compute_clusters
+
+```python
+User.list_compute_clusters(page_no=None, per_page=None) 
+```
+
+Lists compute clusters for the user.
+
+**Parameters:**
+- `page_no` (*int*) - Page number to list
+- `per_page` (*int*) - Items per page
+
+**Yields:**
+- ComputeCluster objects
+
+**Example:**
+```python
+from clarifai.client.user import User
+client = User(user_id="user_id")
+clusters = list(client.list_compute_clusters())
+```
+
+### User.delete_compute_clusters
+
+```python
+User.delete_compute_clusters(compute_cluster_ids) 
+```
+
+Deletes multiple compute clusters by their IDs.
+
+**Parameters:**
+- `compute_cluster_ids` (*List[str]*) - List of compute cluster IDs to delete
+
+**Example:**
+```python
+from clarifai.client.user import User
+User("user_id").delete_compute_clusters(["cluster_id1", "cluster_id2"])
+```
+
+### User.list_pipelines
+
+```python
+User.list_pipelines(page_no=None, per_page=None)
+```
+
+List all pipelines for the user across all apps.
+
+**Parameters:**
+- `page_no` (*int*) - Page number to list
+- `per_page` (*int*) - Items per page
+
+**Yields:**
+- Dict objects containing pipeline information
+
+**Example:**
+```python
+from clarifai.client.user import User
+client = User(user_id="user_id")
+all_pipelines = list(client.list_pipelines())
+```
+
+### User.list_pipeline_steps
+
+```python
+User.list_pipeline_steps(page_no=None, per_page=None)
+```
+
+List all pipeline steps for the user across all apps.
+
+**Parameters:**
+- `page_no` (*int*) - Page number to list
+- `per_page` (*int*) - Items per page
+
+**Yields:**
+- Dict objects containing pipeline step information
+
+**Example:**
+```python
+from clarifai.client.user import User
+client = User(user_id="user_id")
+all_pipeline_steps = list(client.list_pipeline_steps())
+```
+
+### User.get_secret
+
+```python
+User.get_secret(secret_id)
+```
+
+Returns a secret object if exists.
+
+**Parameters:**
+- `secret_id` (*str*) - The secret ID to interact with
+
+**Returns:**
+- Dict containing information about the existing secret
+
+**Example:**
+```python
+from clarifai.client.user import User
+client = User(user_id="user_id")
+secret_info = client.get_secret(secret_id="secret_id")
+```
+
+### User.list_secrets
+
+```python
+User.list_secrets(page_no=None, per_page=None)
+```
+
+List all secrets for the user.
+
+**Parameters:**
+- `page_no` (*int*) - Page number to list
+- `per_page` (*int*) - Items per page
+
+**Yields:**
+- Dict objects containing secret information
+
+**Example:**
+```python
+from clarifai.client.user import User
+client = User(user_id="user_id")
+all_secrets = list(client.list_secrets())
+```
+
+### User.create_secrets
+
+```python
+User.create_secrets(secrets)
+```
+
+Creates secrets for the user.
+
+**Parameters:**
+- `secrets` (*List[Dict[str, Any]]*) - List of secret configurations to create
+
+**Returns:**
+- List[Dict]: List of dictionaries containing information about the created secrets
+
+**Example:**
+```python
+from clarifai.client.user import User
+client = User(user_id="user_id")
+secrets = [{"id": "secret1", "value": "secret_value", "description": "My Secret"}]
+created_secrets = client.create_secrets(secrets)
+```
+
+### User.patch_secrets
+
+```python
+User.patch_secrets(secrets, action='overwrite')
+```
+
+Patches secrets for the user.
+
+**Parameters:**
+- `secrets` (*List[Dict[str, Any]]*) - List of secret configurations to patch
+- `action` (*str*) - Action to perform ('overwrite'/'remove')
+
+**Returns:**
+- List[Dict]: List of dictionaries containing information about the patched secrets
+
+**Example:**
+```python
+from clarifai.client.user import User
+client = User(user_id="user_id")
+secrets = [{"id": "secret1", "description": "Updated Secret Description"}]
+patched_secrets = client.patch_secrets(secrets, action="overwrite")
+```
+
+### User.delete_secrets
+
+```python
+User.delete_secrets(secret_ids)
+```
+
+Deletes a list of secrets for the user.
+
+**Parameters:**
+- `secret_ids` (*List[str]*) - The secret IDs to delete
+
+**Example:**
+```python
+from clarifai.client.user import User
+client = User(user_id="user_id")
+client.delete_secrets(secret_ids=["secret_id1", "secret_id2"])
+```
+
+### User.list_models
+
+```python
+User.list_models(user_id=None, app_id=None, show=True, return_clarifai_model=False, **kwargs)
+```
+
+Lists models for the user or across all users.
+
+**Parameters:**
+- `user_id` (*str*) - User ID to list models from, use "all" for all users
+- `app_id` (*str*) - App ID to filter models
+- `show` (*bool*) - Whether to display results in table format
+- `return_clarifai_model` (*bool*) - Whether to return Model objects instead of dicts
+- `**kwargs` - Additional keyword arguments
+
+**Returns:**
+- List of model dictionaries or Model objects
+
+**Example:**
+```python
+from clarifai.client.user import User
+client = User(user_id="user_id")
+models = client.list_models(user_id="all", show=True)
+```
+
+### User.get_user_info
+
+```python
+User.get_user_info(user_id=None)
+```
+
+Returns the user information for the specified user ID.
+
+**Parameters:**
+- `user_id` (*str*) - The user ID for the user to interact with
+
+**Returns:**
+- User: A User object for the specified user ID
+
+## [Workflow](https://github.com/Clarifai/clarifai-python/blob/master/clarifai/client/workflow.py)
 
 ```python
 class Workflow(url=None, workflow_id=None, workflow_version={'id': ""}, output_config={'min_value': 0}, base_url="https://api.clarifai.com", pat=None, token=None, root_certificates_path=None, **kwargs)
@@ -43278,17 +44455,19 @@ Workflow is a class that provides access to Clarifai API endpoints related to Wo
 **Parameters:**
 - `url` (*str*) - URL to initialize workflow object
 - `workflow_id` (*str*) - Workflow ID to interact with
-- `workflow_version` (*Dict*) - Workflow version details with ID
-- `output_config` (*Dict*) - Output configuration including:
+- `workflow_version` (*Dict[str, str]*) - Workflow Version to interact with. Defaults to `{'id': ""}` for latest version
+- `output_config` (*Dict[str, Any]*) - Output configuration including:
   - `min_value` (*float*) - Minimum prediction confidence threshold
-  - `max_concepts` (*int*) - Maximum concepts to return
+  - `max_concepts` (*int*) - Maximum number of concepts to return
   - `select_concepts` (*List[Concept]*) - Specific concepts to select
   - `sample_ms` (*int*) - Sampling duration in milliseconds
 - `base_url` (*str*) - Base API URL. Default "https://api.clarifai.com"
-- `pat` (*str*) - Personal access token for authentication
-- `token` (*str*) - Session token for authentication
+- `pat` (*str*) - Personal access token for authentication. Can be set as env var CLARIFAI_PAT
+- `token` (*str*) - Session token for authentication. Can be set as env var CLARIFAI_SESSION_TOKEN
 - `root_certificates_path` (*str*) - Path to SSL root certificates file
 - `**kwargs` - Additional keyword arguments
+
+**Note:** You must specify either `url` or `workflow_id`, but not both.
 
 ### Workflow.predict
 
@@ -43322,13 +44501,16 @@ Makes predictions from file input.
 
 **Parameters:**
 - `filepath` (*str*) - Path to input file
-- `input_type` (*str*) - Input type ('image', 'text', 'video', 'audio')
+- `input_type` (*str*) - Input type ('image', 'text', 'video', 'audio'). If not provided, will be inferred from workflow
+
+**Returns:**
+- Workflow prediction response
 
 **Example:**
 ```python
 from clarifai.client.workflow import Workflow
 workflow = Workflow("https://clarifai.com/clarifai/main/workflows/Face-Sentiment")
-prediction = workflow.predict_by_filepath('image.jpg', input_type='image') 
+prediction = workflow.predict_by_filepath('image.jpg', input_type='image')
 ```
 
 ### Workflow.predict_by_bytes
@@ -43341,7 +44523,7 @@ Makes predictions from bytes input.
 
 **Parameters:**
 - `input_bytes` (*bytes*) - Input bytes
-- `input_type` (*str*) - Input type ('image', 'text', 'video', 'audio')
+- `input_type` (*str*) - Input type ('image', 'text', 'video', 'audio'). If not provided, will be inferred from workflow
 
 **Returns:**
 - Workflow prediction response
@@ -43350,7 +44532,7 @@ Makes predictions from bytes input.
 ```python
 with open('image.jpg', 'rb') as f:
     bytes_data = f.read()
-workflow = Workflow(workflow_id='workflow_id')
+workflow = Workflow(user_id='user_id', app_id='app_id', workflow_id='workflow_id')
 prediction = workflow.predict_by_bytes(bytes_data, input_type='image')
 ```
 
@@ -43364,10 +44546,14 @@ Makes predictions from URL input.
 
 **Parameters:**
 - `url` (*str*) - URL to input
-- `input_type` (*str*) - Input type ('image', 'text', 'video', 'audio')
+- `input_type` (*str*) - Input type ('image', 'text', 'video', 'audio'). If not provided, will be inferred from workflow
+
+**Returns:**
+- Workflow prediction response
 
 **Example:**
 ```python
+from clarifai.client.workflow import Workflow
 workflow = Workflow("https://clarifai.com/clarifai/main/workflows/Face-Sentiment")
 prediction = workflow.predict_by_url('https://example.com/image.jpg', input_type='image')
 ```
@@ -43389,8 +44575,9 @@ Lists all versions of the workflow.
 
 **Example:**
 ```python
-workflow = Workflow(workflow_id='workflow_id')
-versions = list(workflow.list_versions())
+from clarifai.client.workflow import Workflow
+workflow = Workflow(user_id='user_id', app_id='app_id', workflow_id='workflow_id')
+workflow_versions = list(workflow.list_versions())
 ```
 
 **Note:** Defaults to 16 items per page if only page_no specified. Lists all if neither specified.
@@ -43408,6 +44595,7 @@ Exports workflow to YAML file.
 
 **Example:**
 ```python
+from clarifai.client.workflow import Workflow
 workflow = Workflow("https://clarifai.com/clarifai/main/workflows/Demographics")
 workflow.export('workflow_config.yml')
 ```
@@ -43427,241 +44615,9 @@ This method:
 
 **Example:**
 ```python
+from clarifai.client.workflow import Workflow
 workflow = Workflow(workflow_id='workflow_id')
 workflow.load_info()
-```
-
-## Module
-
-```python
-class Module(url=None, module_id=None, module_version={'id': ""}, base_url="https://api.clarifai.com", pat=None, token=None, root_certificates_path=None, **kwargs)
-```
-
-Module is a class that provides access to Clarifai API endpoints related to Module information.
-
-**Parameters:**
-- `url` (*str*) - URL to initialize module object
-- `module_id` (*str*) - Module ID to interact with
-- `module_version` (*Dict*) - Module version details with ID
-- `base_url` (*str*) - Base API URL. Default "https://api.clarifai.com"
-- `pat` (*str*) - Personal access token for authentication
-- `token` (*str*) - Session token for authentication 
-- `root_certificates_path` (*str*) - Path to SSL root certificates file
-- `**kwargs` - Additional keyword arguments
-
-### Module.list_versions
-
-```python
-Module.list_versions(page_no=None, per_page=None)
-```
-
-Lists all versions of the module.
-
-**Parameters:**
-- `page_no` (*int*) - Page number for pagination
-- `per_page` (*int*) - Items per page
-
-**Yields:**
-- Module objects for each version
-
-**Example:**
-```python
-from clarifai.client.module import Module
-module = Module(module_id='module_id', user_id='user_id', app_id='app_id')
-all_module_versions = list(module.list_versions())
-```
-
-## Search
-
-```python
-class Search(user_id, app_id, top_k=None, metric=DEFAULT_SEARCH_METRIC, algorithm=DEFAULT_SEARCH_ALGORITHM, pagination=False, base_url="https://api.clarifai.com", pat=None, token=None, root_certificates_path=None)
-```
-
-Search is a class that provides access to Clarifai API endpoints related to searching over inputs.
-
-**Parameters:**
-- `user_id` (*str*) - User ID
-- `app_id` (*str*) - App ID
-- `top_k` (*int*) - Number of top results to return (default 10)
-- `metric` (*str*) - Similarity metric ('cosine' or 'euclidean')
-- `algorithm` (*str*) - Search algorithm ('nearest_neighbor' or 'brute_force')
-- `pagination` (*bool*) - Enable pagination functionality
-- `base_url` (*str*) - Base API URL
-- `pat` (*str*) - Personal access token
-- `token` (*str*) - Session token
-- `root_certificates_path` (*str*) - Path to SSL certificates
-
-### Search.query
-
-```python
-Search.query(ranks=[{}], filters=[{}], page_no=None, per_page=None)
-```
-
-Performs search query with ranking and filtering.
-
-**Parameters:**
-- `ranks` (*List[Dict]*) - Ranking criteria. Each dict can contain:
-  - `image_url` (*str*) - Image URL
-  - `text_raw` (*str*) - Raw text
-  - `metadata` (*dict*) - Metadata
-  - `geo_point` (*dict*) - Geographic coordinates
-  - `concepts` (*List*) - Concept list
-- `filters` (*List[Dict]*) - Filtering criteria. Each dict can contain:
-  - `input_types` (*List[str]*) - Input types to filter
-  - `input_dataset_ids` (*List[str]*) - Dataset IDs to filter
-  - `input_status_code` (*int*) - Status code to filter
-- `page_no` (*int*) - Page number for pagination
-- `per_page` (*int*) - Items per page
-
-**Returns:**
-- Generator yielding search results
-
-**Examples:**
-```python
-from clarifai.client.search import Search
-search = Search(user_id='user_id', app_id='app_id', top_k=10, metric='cosine')
-results = search.query(
-    filters=[{
-        'input_types': ['image', 'text'],
-        'input_status_code': 30000
-    }]
-)
-
-search = Search(
-    user_id='user_id',
-    app_id='app_id',
-    metric='cosine',
-    pagination=True
-)
-results = search.query(
-    ranks=[{'image_url': 'https://samples.clarifai.com/dog.tiff'}],
-    page_no=2,
-    per_page=5
-)
-```
-
-## Nodepool
-
-```python
-class Nodepool(nodepool_id=None, user_id=None, base_url="https://api.clarifai.com", pat=None, token=None, root_certificates_path=None, **kwargs)
-```
-
-Nodepool is a class that provides access to Clarifai API endpoints related to Nodepool information.
-
-**Parameters:**
-- `nodepool_id` (*str*) - Nodepool ID to interact with
-- `user_id` (*str*) - User ID
-- `base_url` (*str*) - Base API URL. Default "https://api.clarifai.com"
-- `pat` (*str*) - Personal access token
-- `token` (*str*) - Session token
-- `root_certificates_path` (*str*) - Path to SSL certificates
-- `**kwargs` - Additional configurations
-
-### Nodepool.list_deployments
-
-```python
-Nodepool.list_deployments(filter_by={}, page_no=None, per_page=None)
-```
-
-Lists all deployments in the nodepool.
-
-**Parameters:**
-- `filter_by` (*Dict[str, Any]*) - Filtering criteria
-- `page_no` (*int*) - Page number
-- `per_page` (*int*) - Items per page
-
-**Yields:**
-- Deployment objects
-
-**Example:**
-```python
-nodepool = Nodepool(nodepool_id="nodepool_id", user_id="user_id")
-deployments = list(nodepool.list_deployments())
-```
-
-### Nodepool.create_deployment
-
-```python
-Nodepool.create_deployment(config_filepath, deployment_id=None)
-```
-
-Creates new deployment in the nodepool.
-
-**Parameters:**
-- `config_filepath` (*str*) - Path to deployment configuration YAML
-- `deployment_id` (*str*) - Optional custom deployment ID
-
-**Returns:**
-- Deployment object
-
-**Example:**
-```python
-nodepool = Nodepool(nodepool_id="nodepool_id", user_id="user_id")
-deployment = nodepool.create_deployment(config_filepath="config.yml")
-```
-
-### Nodepool.deployment
-
-```python
-Nodepool.deployment(deployment_id)
-```
-
-Gets specific deployment by ID.
-
-**Parameters:**
-- `deployment_id` (*str*) - Deployment ID to retrieve
-
-**Returns:**
-- Deployment object
-
-**Example:**
-```python
-nodepool = Nodepool(nodepool_id="nodepool_id", user_id="user_id")
-deployment = nodepool.deployment(deployment_id="deployment_id")
-```
-
-### Nodepool.delete_deployments
-
-```python
-Nodepool.delete_deployments(deployment_ids)
-```
-
-Deletes multiple deployments.
-
-**Parameters:**
-- `deployment_ids` (*List[str]*) - List of deployment IDs to delete
-
-**Example:**
-```python
-nodepool = Nodepool(nodepool_id="nodepool_id", user_id="user_id")
-nodepool.delete_deployments(
-    deployment_ids=["deployment_id1", "deployment_id2"]
-)
-```
-
-### Nodepool.get_runner_selector
-
-```python
-Nodepool.get_runner_selector(user_id, compute_cluster_id, nodepool_id)
-```
-
-Returns RunnerSelector for specified compute cluster and nodepool.
-
-**Parameters:**
-- `user_id` (*str*) - User ID
-- `compute_cluster_id` (*str*) - Compute cluster ID
-- `nodepool_id` (*str*) - Nodepool ID
-
-**Returns:**
-- RunnerSelector protobuf object
-
-**Example:**
-```python
-runner_selector = Nodepool.get_runner_selector(
-    user_id="user_id",
-    compute_cluster_id="cluster_id",
-    nodepool_id="nodepool_id"
-)
 ```
 
 ---
