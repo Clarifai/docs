@@ -1,11 +1,11 @@
 ---
-description: Deploy and serve vLLM models locally and expose them via a public API
+description: Download and serve vLLM models locally and expose them via a public API
 sidebar_position: 4
 ---
 
 # vLLM
 
-**Run vLLM models locally and make them accessible through a public API**
+**Download and serve vLLM models locally and expose them via a public API**
 <hr />
 
 [vLLM](https://docs.vllm.ai/en/latest/) is an open-source, high-performance inference engine that allows you to serve large language models (LLMs) locally with remarkable speed and efficiency. It supports OpenAI-compatible APIs, making it easy to integrate with the Clarifai platform.

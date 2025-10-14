@@ -1,11 +1,11 @@
 ---
-description: Download and run LM Studio models locally and make them available via a public API
+description: Download and run LM Studio models locally and expose them via a public API
 sidebar_position: 3
 ---
 
 # LM Studio 
 
-**Download and run LM Studio models locally and make them available via a public API**
+**Download and run LM Studio models locally and expose them via a public API**
 <hr />
 
 [LM Studio](https://lmstudio.ai/) is a desktop application that lets you run and chat with open-source large language models (LLMs) locally — no internet connection required.

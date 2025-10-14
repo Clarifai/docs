@@ -1,11 +1,11 @@
 ---
-description: Run Ollama models locally and make them available via a public API
+description: Download and run Ollama models locally and expose them via a public API
 sidebar_position: 1
 ---
 
 # Ollama 
 
-**Download and run Ollama models locally and make them available via a public API**
+**Download and run Ollama models locally and expose them via a public API**
 <hr />
 
 Ollama is an open-source tool that allows you to download, run, and manage large language models (LLMs) directly on your local machine. 

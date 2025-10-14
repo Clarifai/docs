@@ -24,7 +24,7 @@ Let’s illustrate how you can build agents with the various toolkits we support
 
 :::tip Install Clarifai Package
 
-Install the latest version of the Clarifai Python SDK package by running `pip install --upgrade clarifai`. Also,  go to the [Security](https://clarifai.com/settings/security) section in your personal settings page and generate a Personal Access Token (PAT) to authenticate with the Clarifai platform. 
+Install the latest version of the Clarifai Python SDK package by running `pip install --upgrade clarifai`. Also,  go to the **[Secrets](https://docs.clarifai.com/control/authentication/pat)** section in your personal settings page and generate a Personal Access Token (PAT) to authenticate with the Clarifai platform. 
 
 :::
 
@@ -244,3 +244,9 @@ Here is an example that demonstrates how to build an agent using the Vercel AI S
 To learn more about building AI agents with the Vercel AI SDK, see the following examples:
 
 - [Repository for Clarifai-Powered Vercel AI SDK Agents](https://github.com/Clarifai/examples/tree/main/nodejs/vercel-ai-sdk)
+
+## Additional Examples
+
+To learn more about building AI agents with other toolkits, see the following examples:
+
+- [Blog: Building AI Agents with Agno and GPT-OSS 120B](https://www.clarifai.com/blog/building-ai-agents-with-agno-and-gpt-oss-120b)
