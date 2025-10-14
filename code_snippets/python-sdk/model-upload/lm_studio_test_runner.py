@@ -9,7 +9,7 @@ client = OpenAI(
 
 # Make a chat completion request to a Clarifai-hosted model
 response = client.chat.completions.create(    
-    model="https://clarifai.com/alfrick/local-runner-app/models/local-runner-model",    
+    model="https://clarifai.com/<user-id>/local-runner-app/models/local-runner-model",    
     messages=[
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": "What is the future of AI?"}

@@ -1,7 +1,6 @@
 ---
 description: Download and run LM Studio models locally and make them available via a public API
 sidebar_position: 3
-unlisted: true
 ---
 
 # LM Studio 
@@ -12,6 +11,8 @@ unlisted: true
 [LM Studio](https://lmstudio.ai/) is a desktop application that lets you run and chat with open-source large language models (LLMs) locally — no internet connection required.
 
 With Clarifai’s [Local Runners](https://docs.clarifai.com/compute/local-runners/), you can take this a step further: run LM Studio models directly on your machine, expose them securely through a public URL, and leverage Clarifai’s powerful AI platform — all while maintaining the speed, privacy, and control of local deployment.
+
+> **Note:** After downloading the model using the LM Studio toolkit, you can [upload](https://docs.clarifai.com/compute/upload/#step-4-upload-the-model-to-clarifai) it to Clarifai to leverage the platform’s capabilities.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -143,7 +144,7 @@ In the `model` section, specify a unique model ID (any name of your choice) and 
   <CodeBlock className="language-text">{LMStudioRequirements}</CodeBlock>
 </details>
 
-The `requirements.txt` file lists the Python dependencies your model needs. You need to install them by running the following command:
+The `requirements.txt` file lists the Python dependencies your model needs. If you haven’t installed them yet, run the following command to install the dependencies:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">

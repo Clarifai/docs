@@ -1,7 +1,6 @@
 ---
 description: Deploy and serve vLLM models locally and expose them via a public API
 sidebar_position: 4
-unlisted: true
 ---
 
 # vLLM
@@ -12,6 +11,8 @@ unlisted: true
 [vLLM](https://docs.vllm.ai/en/latest/) is an open-source, high-performance inference engine that allows you to serve large language models (LLMs) locally with remarkable speed and efficiency. It supports OpenAI-compatible APIs, making it easy to integrate with the Clarifai platform.
 
 With Clarifai’s [Local Runners](https://docs.clarifai.com/compute/local-runners/), you can seamlessly deploy vLLM-powered models on your own machine, expose them through a secure public URL, and take full advantage of Clarifai’s AI capabilities — while retaining control, privacy, and performance.
+
+> **Note:** After downloading the model using the vLLM toolkit, you can [upload](https://docs.clarifai.com/compute/upload/#step-4-upload-the-model-to-clarifai) it to Clarifai to leverage the platform’s capabilities.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -152,7 +153,7 @@ The `config.yaml` file defines the model’s configuration — including compute
   <CodeBlock className="language-text">{VLLMRequirements}</CodeBlock>
 </details>
 
-The `requirements.txt` file lists Python dependencies required by your model. You need to install them by running the following command:
+The `requirements.txt` file lists Python dependencies required by your model. If you haven’t installed them yet, run the following command to install the dependencies:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">

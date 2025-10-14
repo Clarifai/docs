@@ -12,6 +12,8 @@ sidebar_position: 2
 
 With Clarifai’s [Local Runners](README.mdx), you can run these models directly on your machine, expose them securely via a public URL, and tap into Clarifai’s powerful platform — all while preserving the speed, privacy, and control of local deployment.
 
+> **Note:** After downloading the model using the Hugging Face toolkit, you can [upload](https://docs.clarifai.com/compute/upload/#step-4-upload-the-model-to-clarifai) it to Clarifai to leverage the platform’s capabilities.
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
@@ -164,7 +166,7 @@ The `config.yaml` file specifies the model’s configuration, including compute 
     <CodeBlock className="language-text">{RequirementsTXT}</CodeBlock>
 </details>
 
-The `requirements.txt` file lists Python dependencies needed by your model. You need to install them by running the following command:
+The `requirements.txt` file lists Python dependencies needed by your model. If you haven’t installed them yet, run the following command to install the dependencies:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">

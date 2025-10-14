@@ -7,7 +7,7 @@ from clarifai.client import Model
 from clarifai.runners.utils import data_types
 
 model = Model(
-    "https://clarifai.com/alfrick/local-runner-app/models/local-runner-model",
+    "https://clarifai.com/<user-id>/local-runner-app/models/local-runner-model",
     deployment_id='local-runner-deployment',  # Only needed for dedicated deployed models
     base_url="https://api.clarifai.com",
 )
