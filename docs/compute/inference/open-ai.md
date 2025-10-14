@@ -38,6 +38,7 @@ import PyResponsesStreaming from "!!raw-loader!../../../code_snippets/python-sdk
 import PyResponsesToolCalling from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/open_ai_responses_tool_calling.py";
 import ResponsesToolCallingExample from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/responses_tool_calling_1.py";
 import ToolCallingOutput1 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/tool_calling_output_1.txt";
+import CurlOpenAIText from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_openai_text.sh";
 
 ## Prerequisites
 
@@ -197,6 +198,9 @@ The [OpenAI Chat Completions](https://platform.openai.com/docs/api-reference/cha
 </TabItem>
 <TabItem value="typescript" label="TypeScript">
     <CodeBlock className="language-typescript">{NodeOpenAI}</CodeBlock>
+</TabItem>
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlOpenAIText}</CodeBlock>
 </TabItem>
 </Tabs>
 

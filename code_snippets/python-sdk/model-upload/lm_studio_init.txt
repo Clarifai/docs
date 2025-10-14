@@ -1,0 +1,14 @@
+clarifai model init --toolkit lmstudio
+[INFO] 09:07:03.086018 Parsed GitHub repository: owner=Clarifai, repo=runners-examples, branch=lmstudio, folder_path= |  thread=8309383360 
+[INFO] 09:07:05.331174 Files to be downloaded are:
+1. 1/model.py
+2. config.yaml
+3. requirements.txt |  thread=8309383360 
+Press Enter to continue...
+[INFO] 09:07:09.895510 Initializing model from GitHub repository: https://github.com/Clarifai/runners-examples |  thread=8309383360 
+[INFO] 09:07:37.976873 Successfully cloned repository from https://github.com/Clarifai/runners-examples (branch: lmstudio) |  thread=8309383360 
+[INFO] 09:07:37.980528 Model initialization complete with GitHub repository |  thread=8309383360 
+[INFO] 09:07:37.980580 Next steps: |  thread=8309383360 
+[INFO] 09:07:37.980603 1. Review the model configuration |  thread=8309383360 
+[INFO] 09:07:37.980619 2. Install any required dependencies manually |  thread=8309383360 
+[INFO] 09:07:37.980635 3. Test the model locally using 'clarifai model local-test' |  thread=8309383360 

@@ -4,12 +4,12 @@ description: Changelog for Clarifai Release 11.9
 sidebar_position: -72
 pagination_next: null
 pagination_prev: product-updates/changelog/release118
-draft: true
+draft: false
 ---
 
 # Release 11.9
 
-**Release Date:** October 7th, 2025
+**Release Date:** October 13th, 2025
 
 <hr/>
 
@@ -29,14 +29,7 @@ draft: true
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
-| ![new-feature](/img/new_feature.jpg)|  Added support for toolkits  | <ul> <li>Added support for initializing models with the `vLLM`, `LMStudio`, and  `Hugging Face` toolkits for local runners.</li> </ul>  |
-
-
-## Third-Party API Keys
-
-|Status                                |Change                  |Details                    |
-|--------------------------------------|------------------------|---------------------------|
-| ![new-feature](/img/new_feature.jpg)| Introduced third-party API keys | <ul> <li> These keys are used to authenticate and authorize external applications or services, enabling them to securely interact with your data without exposing your primary credentials, such as your Personal Access Token (PAT). </li> <li> Learn more [here](https://docs.clarifai.com/control/authentication/third-party-api-keys).</li> </ul>  |
+| ![new-feature](/img/new_feature.jpg)|  Added support for toolkits  | <ul> <li>Added support for initializing models with the [`vLLM`](https://docs.clarifai.com/compute/local-runners/vllm), [`LMStudio`](https://docs.clarifai.com/compute/local-runners/lmstudio), and  [`Hugging Face`](https://docs.clarifai.com/compute/local-runners/hf) toolkits for local runners.</li> </ul>  |
 
 
 ## Published Models

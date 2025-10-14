@@ -12,6 +12,8 @@ Ollama is an open-source tool that allows you to download, run, and manage large
 
 When combined with Clarifai’s Local Runners, it enables you to run Ollama models on your machine, expose them securely via a public URL, and tap into Clarifai’s powerful platform — all while keeping the speed, privacy, and control of local deployment.
 
+> **Note:** After downloading the model using the Ollama toolkit, you can [upload](https://docs.clarifai.com/compute/upload/#step-4-upload-the-model-to-clarifai) it to Clarifai to leverage the platform’s capabilities.
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
@@ -173,7 +175,7 @@ client = OpenAI(
 )
 
 response = client.chat.completions.create(
-    model="https://clarifai.com/alfrick/local-runner-app/models/local-runner-model",
+    model="https://clarifai.com/<user-id>/local-runner-app/models/local-runner-model",
     messages=[
         {"role": "system", "content": "Talk like a pirate."},
         {

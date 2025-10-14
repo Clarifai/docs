@@ -8,9 +8,11 @@ sidebar_position: 2
 **Download and run Hugging Face models locally and make them available via a public API**
 <hr />
 
-Hugging Face is an open-source platform for sharing, exploring, and collaborating on a wide range of pre-trained models and related assets. 
+[Hugging Face](https://huggingface.co/) is an open-source platform for sharing, exploring, and collaborating on a wide range of pre-trained models and related assets. 
 
 With Clarifai’s [Local Runners](README.mdx), you can run these models directly on your machine, expose them securely via a public URL, and tap into Clarifai’s powerful platform — all while preserving the speed, privacy, and control of local deployment.
+
+> **Note:** After downloading the model using the Hugging Face toolkit, you can [upload](https://docs.clarifai.com/compute/upload/#step-4-upload-the-model-to-clarifai) it to Clarifai to leverage the platform’s capabilities.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -65,6 +67,8 @@ A Hugging Face access token is required to authenticate with Hugging Face servic
 
 You can create one by following [these instructions](https://huggingface.co/docs/hub/en/security-tokens). Once you have it, provide the token either in your model’s `config.yaml` file (as described [below](#configyaml)) or as an environment variable.
 
+> **Note**: If `hf_token` is not specified in the `config.yaml` file, the CLI automatically falls back to the `HF_TOKEN` environment variable to authenticate with Hugging Face.
+
 <Tabs groupId="code">
 <TabItem value="bash" label="Unix-Like Systems">
     <CodeBlock className="language-bash">export HF_TOKEN="YOUR_HF_ACCESS_TOKEN_HERE"</CodeBlock>
@@ -104,9 +108,16 @@ For example, the command below initializes the default model ([`unsloth/Llama-3.
 
 The command above generates a new model directory structure that is compatible with the Clarifai platform. You can customize or optimize the model by editing the generated files as needed.
 
-:::note tip
+:::tip
 
-You can use the `--model-name` parameter to initialize any supported Hugging Face model. Example: `clarifai model init --toolkit huggingface --model-name Qwen/Qwen2-0.5B`.
+You can use the `--model-name` parameter to initialize any supported Hugging Face model. 
+
+
+<Tabs groupId="code">
+<TabItem value="bash" label="Bash">
+<CodeBlock className="language-bash">clarifai model init --toolkit huggingface --model-name Qwen/Qwen2-0.5B</CodeBlock>
+</TabItem>
+</Tabs>
 
 <details>
   <summary>Supported Models</summary>
@@ -127,7 +138,7 @@ The generated structure includes:
 ### `model.py`
 
 <details>
-  <summary>model.py Example</summary>
+  <summary>Example: model.py</summary>
     <CodeBlock className="language-text">{HFModelPy}</CodeBlock>
 </details>
 
@@ -136,7 +147,7 @@ The [`model.py`](https://docs.clarifai.com/compute/upload/#prepare-modelpy) file
 ### `config.yaml`
 
 <details>
-  <summary>config.yaml Example</summary>
+  <summary>Example: config.yaml</summary>
     <CodeBlock className="language-text">{HFConfig}</CodeBlock>
 </details>
 
@@ -151,11 +162,11 @@ The `config.yaml` file specifies the model’s configuration, including compute 
 ### `requirements.txt`
 
 <details>
-  <summary>requirements.txt Example</summary>
+  <summary>Example: requirements.txt</summary>
     <CodeBlock className="language-text">{RequirementsTXT}</CodeBlock>
 </details>
 
-The `requirements.txt` file lists Python dependencies needed by your model. You need to install them by running the following command:
+The `requirements.txt` file lists Python dependencies needed by your model. If you haven’t installed them yet, run the following command to install the dependencies:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">
