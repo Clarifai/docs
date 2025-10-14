@@ -26,7 +26,9 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [Vercel AI SDK](https://docs.clarifai.com/docs/compute/inference/vercel): Run inferences on Clarifai models using Vercel
 - [Local Runners](https://docs.clarifai.com/docs/compute/local-runners/README): Run and test models locally, while exposing them through Clarifai’s enterprise‑grade API
 - [Hugging Face](https://docs.clarifai.com/docs/compute/local-runners/hf): Download and run Hugging Face models locally and make them available via a public API
+- [LM Studio](https://docs.clarifai.com/docs/compute/local-runners/lmstudio): Download and run LM Studio models locally and make them available via a public API
 - [Ollama](https://docs.clarifai.com/docs/compute/local-runners/ollama): Run Ollama models locally and make them available via a public API
+- [vLLM](https://docs.clarifai.com/docs/compute/local-runners/vllm): Deploy and serve vLLM models locally and expose them via a public API
 - [Compute Orchestration](https://docs.clarifai.com/docs/compute/overview): Orchestrate your AI workloads better, avoid vendor lock-in, and use compute spend efficiently
 - [Build and Upload Models](https://docs.clarifai.com/docs/compute/upload/README): Build and import models, including from external sources like Hugging Face
 - [Input and Output Data Types](https://docs.clarifai.com/docs/compute/upload/data-types): Learn about supported input and output data types along with usage examples
@@ -209,6 +211,7 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [Release 11.6](https://docs.clarifai.com/docs/product-updates/changelog/release116): Changelog for Clarifai Release 11.6
 - [Release 11.7](https://docs.clarifai.com/docs/product-updates/changelog/release117): Changelog for Clarifai Release 11.7
 - [Release 11.8](https://docs.clarifai.com/docs/product-updates/changelog/release118): Changelog for Clarifai Release 11.8
+- [Release 11.9](https://docs.clarifai.com/docs/product-updates/changelog/release119): Changelog for Clarifai Release 11.9
 - [Release 5.10](https://docs.clarifai.com/docs/product-updates/changelog/release510): Changelog for Clarifai Release 5.10
 - [Release 5.11](https://docs.clarifai.com/docs/product-updates/changelog/release511): Changelog for Clarifai Release 5.11
 - [Release 6.0](https://docs.clarifai.com/docs/product-updates/changelog/release60): Changelog for Clarifai Release 6.0
