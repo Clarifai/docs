@@ -35,10 +35,10 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [Test Models Locally](https://docs.clarifai.com/docs/compute/upload/test-locally): Learn how to test your locally built models
 - [Authentication](https://docs.clarifai.com/docs/control/authentication/README): Secure, compliant AI.
 - [Authorize](https://docs.clarifai.com/docs/control/authentication/authorize): Set up authentication to make API calls
+- [Environment Secrets](https://docs.clarifai.com/docs/control/authentication/environment-secrets): Learn about secrets for the Clarifai platform
 - [App-Specific API Keys](https://docs.clarifai.com/docs/control/authentication/key): Authenticate access to resources within the scope defined by the key
 - [Personal Access Tokens](https://docs.clarifai.com/docs/control/authentication/pat): Authenticate access to your own resources and those outside the scope of your apps
 - [Scopes](https://docs.clarifai.com/docs/control/authentication/scopes): Implement fine-grained control over the data that users have access to
-- [Third-Party API Keys](https://docs.clarifai.com/docs/control/authentication/third-party-api-keys): Learn about secrets for the Clarifai platform
 - [Two-Factor Authentication](https://docs.clarifai.com/docs/control/authentication/two-factor): Use 2FA to add an extra layer of security to your account
 - [Clarifai Organizations](https://docs.clarifai.com/docs/control/clarifai-organizations/README): Consolidate multiple accounts and enhance collaboration
 - [Apps, Models, Workflows, & Compute](https://docs.clarifai.com/docs/control/clarifai-organizations/apps-models-workflows): Create and manage apps, models, workflows, and dedicated compute
@@ -280,16 +280,7 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [Rate Limits](https://docs.clarifai.com/docs/resources/api-overview/rate-limits): Learn about our API rate limits
 - [Status Codes](https://docs.clarifai.com/docs/resources/api-overview/status-codes): Understand Clarifai error codes
 - [API References](https://docs.clarifai.com/docs/resources/api-references/README): Learn about our API references
-- [Node.js API Reference](https://docs.clarifai.com/docs/resources/api-references/node/README): Clarifai Node.js SDK API Reference
-- [Class: App](https://docs.clarifai.com/docs/resources/api-references/node/classes/App): [clarifai-nodejs](../README.mdx) / [Exports](../modules.md) / App
-- [Class: Dataset](https://docs.clarifai.com/docs/resources/api-references/node/classes/Dataset): [clarifai-nodejs](../README.mdx) / [Exports](../modules.md) / Dataset
-- [Class: Input](https://docs.clarifai.com/docs/resources/api-references/node/classes/Input): [clarifai-nodejs](../README.mdx) / [Exports](../modules.md) / Input
-- [Class: Model](https://docs.clarifai.com/docs/resources/api-references/node/classes/Model): [clarifai-nodejs](../README.mdx) / [Exports](../modules.md) / Model
-- [Class: RAG](https://docs.clarifai.com/docs/resources/api-references/node/classes/RAG): [clarifai-nodejs](../README.mdx) / [Exports](../modules.md) / RAG
-- [Class: Search](https://docs.clarifai.com/docs/resources/api-references/node/classes/Search): [clarifai-nodejs](../README.mdx) / [Exports](../modules.md) / Search
-- [Class: User](https://docs.clarifai.com/docs/resources/api-references/node/classes/User): [clarifai-nodejs](../README.mdx) / [Exports](../modules.md) / User
-- [Class: Workflow](https://docs.clarifai.com/docs/resources/api-references/node/classes/Workflow): [clarifai-nodejs](../README.mdx) / [Exports](../modules.md) / Workflow
-- [clarifai-nodejs](https://docs.clarifai.com/docs/resources/api-references/node/modules): [clarifai-nodejs](README.mdx) / Exports
+- [Node.js API Reference](https://docs.clarifai.com/docs/resources/api-references/node): Clarifai Node.js API Reference
 - [Postman](https://docs.clarifai.com/docs/resources/api-references/postman): Learn how to use Postman with Clarifai APIs
 - [Python API Reference](https://docs.clarifai.com/docs/resources/api-references/python): Clarifai Python SDK API Reference
 - [Complementary Topics](https://docs.clarifai.com/docs/resources/complementary-topics/README): Learn about advanced capabilities in our platform

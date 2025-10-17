@@ -1026,7 +1026,7 @@ pip install --upgrade clarifai
 
 #### Get a PAT
 
-You need a [PAT (Personal Access Token)](https://docs.clarifai.com/control/authentication/pat) key to authenticate with the Clarifai platform. You can generate one from your personal settings page under the **Security** section.
+You need a [PAT (Personal Access Token)](https://docs.clarifai.com/control/authentication/pat) key to authenticate with the Clarifai platform. You can get one by navigating to **Settings** in the collapsible left sidebar, selecting **Secrets**, and creating or copying an existing token from there.
 
 After generating it, set the token as an environment variable.
 
@@ -2241,7 +2241,7 @@ import CO4 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orche
 
 ### Get a PAT Key
 
-You need a PAT (Personal Access Token) key to authenticate your connection to the Clarifai platform. You can generate the PAT key in your personal settings page by navigating to the **Security** section. 
+You need a PAT (Personal Access Token) key to authenticate your connection to the Clarifai platform. Learn how to get it [here](https://docs.clarifai.com/control/authentication/pat/#how-to-create-a-pat-on-the-platform).
 
 ## Structure of Prediction Methods
 
@@ -3234,7 +3234,7 @@ import CLIUnaryStreamImage from "!!raw-loader!../../../../code_snippets/python-s
 
 ### Get a PAT Key
 
-You need a PAT (Personal Access Token) key to authenticate your connection to the Clarifai platform. You can generate the PAT key in your personal settings page by navigating to the **Security** section.
+You need a [PAT](https://docs.clarifai.com/control/authentication/pat/#how-to-create-a-pat-on-the-platform) (Personal Access Token) key to authenticate your connection to the Clarifai platform. You can get one by navigating to **Settings** in the collapsible left sidebar, selecting **Secrets**, and creating or copying an existing token from there.
 
 You can then set the PAT as an environment variable using `CLARIFAI_PAT`. This also authenticates your session when using the Clarifai’s CLI. 
 
@@ -3714,7 +3714,7 @@ Install the `litellm` package.
 
 ### Get a PAT Key
 
-You need a [PAT](https://docs.clarifai.com/control/authentication/pat) key to authenticate your connection to the Clarifai platform. You can generate the PAT key in your personal settings page by navigating to the [Security section](https://clarifai.com/settings/security).
+You need a [PAT](https://docs.clarifai.com/control/authentication/pat) key to authenticate your connection to the Clarifai platform. You can get one by navigating to **Settings** in the collapsible left sidebar, selecting **Secrets**, and creating or copying an existing token from there.
 
 You can then set the PAT as an environment variable using `CLARIFAI_PAT`:
 
@@ -3804,7 +3804,7 @@ Install the `openai` package.
 
 ### Get a PAT Key
 
-You need a [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat) key to authenticate your connection to the Clarifai platform. You can obtain one from your personal settings page by navigating to the **Security** section.
+You need a [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat) key to authenticate your connection to the Clarifai platform. You can get one by navigating to **Settings** in the collapsible left sidebar, selecting **Secrets**, and creating or copying an existing token from there.
 
 You can then set the PAT as an environment variable using `CLARIFAI_PAT`:
 
@@ -4116,7 +4116,7 @@ Install the Vercel AI SDK (`ai`) and the OpenAI Provider package for the SDK (`@
 
 ### Get a PAT Key
 
-You need a [PAT](https://docs.clarifai.com/control/authentication/pat) (Personal Access Token) key to authenticate your connection to the Clarifai platform. You can generate the PAT key in your personal settings page by navigating to the [Security section](https://clarifai.com/settings/security).
+You need a [PAT](https://docs.clarifai.com/control/authentication/pat) (Personal Access Token) key to authenticate your connection to the Clarifai platform. You can get one by navigating to **Settings** in the collapsible left sidebar, selecting **Secrets**, and creating or copying an existing token from there.
 
 You can then set the PAT as an environment variable using `CLARIFAI_PAT`:
 
@@ -5246,8 +5246,8 @@ import DockerFile from "!!raw-loader!../../../code_snippets/python-sdk/model-upl
 Next, retrieve the following credentials:
 
 - **App ID** – Go to your application’s page and select the [**Overview**](https://docs.clarifai.com/create/applications/manage#app-overview) option in the collapsible left sidebar. Get the app ID from there. 
-- **User ID** – Go to your personal settings page and find your user ID under the **Account** section.
-- **PAT** – From the same personal settings page, go to the **Security** section to generate or copy your [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat). This token is used to authenticate your connection with the Clarifai platform.
+- **User ID** – In the collapsible left sidebar, select **Settings** and choose **Account** from the dropdown list. Then, locate your user ID.
+- **Personal Access Token (PAT)** – From the same **Settings** option, choose **Secrets** to generate or copy your [PAT](https://docs.clarifai.com/control/authentication/pat). This token is used to authenticate your connection with the Clarifai platform.
 
 You need to set the `CLARIFAI_PAT` you've retrieved as an environment variable to enhance its security. 
 
@@ -6168,6 +6168,137 @@ If you need additional support or would like to request for your custom domain, 
 
 ---
 
+## Environment Secrets
+
+# Environment Secrets
+
+**Securely connect external services with secrets**
+
+Third-Party API Keys are a type of secret used to authenticate and authorize external applications or services, enabling them to securely interact with your Clarifai data without exposing your primary credentials, such as your [Personal Access Token](pat.md ) (PAT).
+
+## Via the UI
+
+The Clarifai platform offers an intuitive interface for creating, managing, and securing your third-party API keys.
+
+To create a third-party API key, [log in](https://clarifai.com/login) to the Clarifai platform. Then, in the collapsible left sidebar, select **Settings** and choose **Secrets** from the dropdown list.
+
+![](/img/others/third_party_key_1.png)
+
+On the ensuing **Secrets** page, click the **Create Third-Party API Key** button.  
+
+Next, on the form that pops up, enter a required name for your API key, an optional short description, and the required API key from your third-party provider. 
+
+Lastly, click the **Create Third-Party API Key** button.
+
+![](/img/others/third_party_key_2.png)
+
+The new PAT will be listed in the **Third-Party API Keys** section, where you can copy, view, edit, or delete it.
+
+![listed pat](/img/others/third_party_key_3.png)
+
+:::tip note
+
+- Third-Party API keys do not expire. In case your key gets compromised, you should delete it, and create a new one.
+- We recommend that you do **not** share your keys with other users.
+
+:::
+
+## Via the API
+
+### Prerequisites
+
+#### Install Python SDK
+
+Install the latest version of the Clarifai [Python](https://github.com/Clarifai/clarifai-python/) SDK package. 
+
+     pip install --upgrade clarifai 
+
+#### Get Credentials
+
+Go to your Clarifai account and retrieve the following credentials:
+
+- **User ID** – In the collapsible left sidebar, select **Settings** and choose **Account** from the dropdown list. Then, locate your user ID. 
+- **PAT** – From the same **Settings** option, choose **Secrets** to generate or copy your [Personal Access Token](pat.md) (PAT). This token is used to authenticate your connection with the Clarifai platform.
+
+You can then set the PAT as an environment variable using `CLARIFAI_PAT`. 
+
+     export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE 
+
+     set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE 
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+
+import CurlSecretsCreate from "!!raw-loader!../../../code_snippets/api-guide/authentication/secrets_create.sh";
+import OutputCurlSecretsCreate from "!!raw-loader!../../../code_snippets/api-guide/authentication/secrets_create_output.txt";
+import CurlSecretsGet from "!!raw-loader!../../../code_snippets/api-guide/authentication/secrets_get.sh";
+import OutputSecretsGet from "!!raw-loader!../../../code_snippets/api-guide/authentication/secrets_get_output.txt";
+import PySecretsCreate from "!!raw-loader!../../../code_snippets/api-guide/authentication/secrets_create.py";
+import PySecretsUpdate from "!!raw-loader!../../../code_snippets/api-guide/authentication/secrets_update.py";
+import PySecretsGet from "!!raw-loader!../../../code_snippets/api-guide/authentication/secrets_get.py";
+import PySecretsDelete from "!!raw-loader!../../../code_snippets/api-guide/authentication/secrets_delete.py";
+import PySecretsList from "!!raw-loader!../../../code_snippets/api-guide/authentication/secrets_list.py";
+import CurlSecretsList from "!!raw-loader!../../../code_snippets/api-guide/authentication/secrets_list.sh";
+import OutputSecretsList from "!!raw-loader!../../../code_snippets/api-guide/authentication/secrets_list_output.txt";
+import OutputSecretsPatch from "!!raw-loader!../../../code_snippets/api-guide/authentication/secrets_patch_output.txt";
+import OutputSecretsDelete from "!!raw-loader!../../../code_snippets/api-guide/authentication/secrets_delete_output.txt";
+
+### Create 
+
+You can create a new a third-party API key by providing its ID and value. 
+
+    {PySecretsCreate}
+
+ {CurlSecretsCreate}
+
+  Example Output
+    {OutputCurlSecretsCreate}
+
+### Get
+
+You can get an existing third-party API key by providing its ID. 
+
+    {PySecretsGet}
+
+ {CurlSecretsGet}
+
+  Example Output
+    {OutputSecretsGet}
+
+### List
+
+You can list all the third-party API keys you have.  
+
+    {PySecretsList}
+
+ {CurlSecretsList}
+
+> **Note:** If you specify `page_no` but not `per_page`, [pagination](https://docs.clarifai.com/resources/api-overview/pagination/) defaults to 16 items per page. If both `page_no` and `per_page` are left as `None`, all resources are listed without pagination.
+
+  Example Output
+    {OutputSecretsList}
+
+### Update
+
+You can update an existing third-party API key by providing its ID. 
+
+    {PySecretsUpdate}
+
+  Example Output
+    {OutputSecretsPatch}
+
+### Delete 
+
+You can delete an existing third-party API key by providing its ID. 
+
+    {PySecretsDelete}
+
+  Example Output
+    {OutputSecretsDelete}
+
+---
+
 ## App-Specific API Keys
 
 # App-Specific API Keys
@@ -6634,137 +6765,6 @@ You can check an up-to-date list of the scopes available in your plan when creat
 - /clarifai.api.V2/PatchWorkflows
 
 - /clarifai.api.V2/PostWorkflows
-
----
-
-## Third-Party API Keys
-
-# Third-Party API Keys
-
-**Securely connect external services with secrets**
-
-Third-Party API Keys are a type of secret used to authenticate and authorize external applications or services, enabling them to securely interact with your Clarifai data without exposing your primary credentials, such as your [Personal Access Token](pat.md ) (PAT).
-
-## Via the UI
-
-The Clarifai platform offers an intuitive interface for creating, managing, and securing your third-party API keys.
-
-To create a third-party API key, [log in](https://clarifai.com/login) to the Clarifai platform. Then, in the collapsible left sidebar, select **Settings** and choose **Secrets** from the dropdown list.
-
-![](/img/others/third_party_key_1.png)
-
-On the ensuing **Secrets** page, click the **Create Third-Party API Key** button.  
-
-Next, on the form that pops up, enter a required name for your API key, an optional short description, and the required API key from your third-party provider. 
-
-Lastly, click the **Create Third-Party API Key** button.
-
-![](/img/others/third_party_key_2.png)
-
-The new PAT will be listed in the **Third-Party API Keys** section, where you can copy, view, edit, or delete it.
-
-![listed pat](/img/others/third_party_key_3.png)
-
-:::tip note
-
-- Third-Party API keys do not expire. In case your key gets compromised, you should delete it, and create a new one.
-- We recommend that you do **not** share your keys with other users.
-
-:::
-
-## Via the API
-
-### Prerequisites
-
-#### Install Python SDK
-
-Install the latest version of the Clarifai [Python](https://github.com/Clarifai/clarifai-python/) SDK package. 
-
-     pip install --upgrade clarifai 
-
-#### Get Credentials
-
-Go to your Clarifai account and retrieve the following credentials:
-
-- **User ID** – In the collapsible left sidebar, select **Settings** and choose **Account** from the dropdown list. Then, locate your user ID. 
-- **PAT** – From the same **Settings** option, choose **Secrets** to generate or copy your [Personal Access Token](pat.md) (PAT). This token is used to authenticate your connection with the Clarifai platform.
-
-You can then set the PAT as an environment variable using `CLARIFAI_PAT`. 
-
-     export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE 
-
-     set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE 
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import CodeBlock from "@theme/CodeBlock";
-
-import CurlSecretsCreate from "!!raw-loader!../../../code_snippets/api-guide/authentication/secrets_create.sh";
-import OutputCurlSecretsCreate from "!!raw-loader!../../../code_snippets/api-guide/authentication/secrets_create_output.txt";
-import CurlSecretsGet from "!!raw-loader!../../../code_snippets/api-guide/authentication/secrets_get.sh";
-import OutputSecretsGet from "!!raw-loader!../../../code_snippets/api-guide/authentication/secrets_get_output.txt";
-import PySecretsCreate from "!!raw-loader!../../../code_snippets/api-guide/authentication/secrets_create.py";
-import PySecretsUpdate from "!!raw-loader!../../../code_snippets/api-guide/authentication/secrets_update.py";
-import PySecretsGet from "!!raw-loader!../../../code_snippets/api-guide/authentication/secrets_get.py";
-import PySecretsDelete from "!!raw-loader!../../../code_snippets/api-guide/authentication/secrets_delete.py";
-import PySecretsList from "!!raw-loader!../../../code_snippets/api-guide/authentication/secrets_list.py";
-import CurlSecretsList from "!!raw-loader!../../../code_snippets/api-guide/authentication/secrets_list.sh";
-import OutputSecretsList from "!!raw-loader!../../../code_snippets/api-guide/authentication/secrets_list_output.txt";
-import OutputSecretsPatch from "!!raw-loader!../../../code_snippets/api-guide/authentication/secrets_patch_output.txt";
-import OutputSecretsDelete from "!!raw-loader!../../../code_snippets/api-guide/authentication/secrets_delete_output.txt";
-
-### Create 
-
-You can create a new a third-party API key by providing its ID and value. 
-
-    {PySecretsCreate}
-
- {CurlSecretsCreate}
-
-  Example Output
-    {OutputCurlSecretsCreate}
-
-### Get
-
-You can get an existing third-party API key by providing its ID. 
-
-    {PySecretsGet}
-
- {CurlSecretsGet}
-
-  Example Output
-    {OutputSecretsGet}
-
-### List
-
-You can list all the third-party API keys you have.  
-
-    {PySecretsList}
-
- {CurlSecretsList}
-
-> **Note:** If you specify `page_no` but not `per_page`, [pagination](https://docs.clarifai.com/resources/api-overview/pagination/) defaults to 16 items per page. If both `page_no` and `per_page` are left as `None`, all resources are listed without pagination.
-
-  Example Output
-    {OutputSecretsList}
-
-### Update
-
-You can update an existing third-party API key by providing its ID. 
-
-    {PySecretsUpdate}
-
-  Example Output
-    {OutputSecretsPatch}
-
-### Delete 
-
-You can delete an existing third-party API key by providing its ID. 
-
-    {PySecretsDelete}
-
-  Example Output
-    {OutputSecretsDelete}
 
 ---
 
@@ -25209,7 +25209,7 @@ You can easily find a model to use by heading to the Community homepage and expl
 
 ## Step 3: Get a PAT Key
 
-To authenticate your connection to Clarifai, you’ll need a [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat). You can obtain one from your personal settings page by navigating to the **Security** section.
+To authenticate your connection to Clarifai, you’ll need a [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat). You can get one by navigating to **Settings** in the collapsible left sidebar, selecting **Secrets**, and creating or copying an existing token from there.
 
 Then, set the PAT as an environment variable using `CLARIFAI_PAT`. This will authenticate your session when using the SDKs, including the [Clarifai CLI](https://docs.clarifai.com/resources/api-overview/cli).
 
@@ -25370,8 +25370,8 @@ To get started, [log in to](https://clarifai.com/login) your existing Clarifai a
 Next, retrieve the following credentials:
 
 - **App ID** – Navigate to your application’s page and select the [**Overview**](https://docs.clarifai.com/create/applications/manage#app-overview) option in the collapsible left sidebar. Get the app ID from there. 
-- **User ID** – Go to your personal settings page and locate your user ID under the **Account** section.
-- **PAT** – From the same personal settings page, go to the **Security** section to generate or copy your [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat). This token is used to authenticate your connection with the Clarifai platform.
+- **User ID** – Navigate to **Settings** in the collapsible left sidebar and select the **Account** option. Then, copy your user ID from that page. 
+- **PAT** – From the same **Settings** menu, go to the **Secrets** page to generate or copy your [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat). This token is used to authenticate your connection with the Clarifai platform.
 
 You need to set the `CLARIFAI_PAT` you've retrieved as an environment variable. 
 
@@ -35968,81 +35968,28 @@ import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 
 # Node.js API Reference
 
-## For individual Classes provided by the Node.js SDK Refer:
+**Clarifai Node.js API Reference**
 
-### Classes
+This is the API Reference documentation extracted from the [source code](https://github.com/Clarifai/clarifai-nodejs/tree/main/src/client).
 
-- [App](classes/App.md)
-- [Input](classes/Input.md)
-- [Model](classes/Model.md)
-- [Search](classes/Search.md)
-- [User](classes/User.md)
-- [Workflow](classes/Workflow.md)
-
-# For all the types exported by the Node.js SDK Refer: 
-
-- [Type Aliases](modules.md#type-aliases)
-
-import DocCardList from '@theme/DocCardList';
-import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
-
----
-
-## Class: App
-
-[clarifai-nodejs](../README.mdx) / [Exports](../modules.md) / App
-
-# Class: App
+## App
 
 App is a class that provides access to Clarifai API endpoints related to App information.
 
-## Hierarchy
+This is its hierarchy:
 
 - `Lister`
 
   ↳ **`App`**
 
-## Table of contents
+### Constructor
 
-### Constructors
-
-- [constructor](App.md#constructor)
-
-### Properties
-
-- [appInfo](App.md#appinfo)
-- [info](App.md#info)
-
-### Methods
-
-- [createDataset](App.md#createdataset)
-- [createModel](App.md#createmodel)
-- [createModule](App.md#createmodule)
-- [createWorkflow](App.md#createworkflow)
-- [dataset](App.md#dataset)
-- [deleteDataset](App.md#deletedataset)
-- [deleteModel](App.md#deletemodel)
-- [deleteModule](App.md#deletemodule)
-- [deleteWorkflow](App.md#deleteworkflow)
-- [listConcepts](App.md#listconcepts)
-- [listDataSets](App.md#listdatasets)
-- [listInstalledModuleVersions](App.md#listinstalledmoduleversions)
-- [listModels](App.md#listmodels)
-- [listModules](App.md#listmodules)
-- [listTrainableModelTypes](App.md#listtrainablemodeltypes)
-- [listWorkflows](App.md#listworkflows)
-- [model](App.md#model)
-- [workflow](App.md#workflow)
-
-## Constructors
-
-### constructor
-
-• **new App**(`config`): [`App`](App.md)
+• **new App**(`config`): `App`
 
 Initializes an App object.
 
-### Example
+**Example**
+
 ```ts
 import { App } from "clarifai-nodejs";
 
@@ -36055,53 +36002,52 @@ export const app = new App({
 });
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `config` | [`AppConfig`](../modules.md#appconfig) | The configuration object for the App. |
+| `config` | [`AppConfig`](#appconfig) | The configuration object for the App. |
 
-#### Returns
+**Returns**
 
-[`App`](App.md)
+`App`
 
-#### Overrides
+**Overrides**
 
 Lister.constructor
 
-#### Defined in
+**Defined in**
 
 [src/client/app.ts:102](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/app.ts#L102)
 
-## Properties
+### Properties
 
-### appInfo
+#### appInfo
 
 • `Private` **appInfo**: `App`
 
-#### Defined in
+**Defined in**
 
 [src/client/app.ts:86](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/app.ts#L86)
 
-___
-
-### info
+#### info
 
 • **info**: `AsObject`
 
-#### Defined in
+**Defined in**
 
 [src/client/app.ts:87](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/app.ts#L87)
 
-## Methods
+### Methods
 
-### createDataset
+#### createDataset
 
 ▸ **createDataset**(`«destructured»`): `Promise`\
 
 Creates a dataset for the app.
 
-### Example
+**Example**
+
 ```ts
 import { Input, App } from "clarifai-nodejs";
 
@@ -36147,33 +36093,32 @@ const inputJobId = await input.uploadInputs({
 console.log(inputJobId); // job id of the input upload
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
 | `«destructured»` | `Object` |
 | › `datasetId` | `string` |
-| › `params?` | [`CreateDatasetParam`](../modules.md#createdatasetparam) |
+| › `params?` | [`CreateDatasetParam`](#createdatasetparam) |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
 A Dataset object for the specified dataset ID.
 
-#### Defined in
+**Defined in**
 
 [src/client/app.ts:429](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/app.ts#L429)
 
-___
-
-### createModel
+#### createModel
 
 ▸ **createModel**(`«destructured»`): `Promise`\
 
 Creates a model for the app.
 
-### Example
+**Example**
+
 ```ts
 import { Model, App } from "clarifai-nodejs";
 import {
@@ -36224,33 +36169,32 @@ const modelObjectWithVersion = await model.createVersion(modelVersion);
 console.log(modelObjectWithVersion);
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
 | `«destructured»` | `Object` |
 | › `modelId` | `string` |
-| › `params?` | [`CreateModelParam`](../modules.md#createmodelparam) |
+| › `params?` | [`CreateModelParam`](#createmodelparam) |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
 A Model object for the specified model ID.
 
-#### Defined in
+**Defined in**
 
 [src/client/app.ts:473](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/app.ts#L473)
 
-___
-
-### createModule
+#### createModule
 
 ▸ **createModule**(`«destructured»`): `Promise`\
 
 Creates a module for the app.
 
-### Example
+**Example**
+
 ```ts
 import { App } from "clarifai-nodejs";
 
@@ -36270,7 +36214,7 @@ const module = await app.createModule({
 console.log(module);
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
@@ -36278,25 +36222,24 @@ console.log(module);
 | › `description` | `string` |
 | › `moduleId` | `string` |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
 A Module object for the specified module ID.
 
-#### Defined in
+**Defined in**
 
 [src/client/app.ts:514](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/app.ts#L514)
 
-___
-
-### createWorkflow
+#### createWorkflow
 
 ▸ **createWorkflow**(`«destructured»`): `Promise`\
 
 Creates a workflow for the app.
 
-### Example
+**Example**
+
 ```ts
 import { App } from "clarifai-nodejs";
 import path from "path";
@@ -36342,7 +36285,7 @@ workflow:
 */
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
@@ -36351,25 +36294,24 @@ workflow:
 | › `display?` | `boolean` | `true` |
 | › `generateNewId?` | `boolean` | `false` |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
 A Workflow object for the specified workflow config.
 
-#### Defined in
+**Defined in**
 
 [src/client/app.ts:552](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/app.ts#L552)
 
-___
-
-### dataset
+#### dataset
 
 ▸ **dataset**(`dataset_id`): `Promise`\
 
 Returns a Dataset object for the existing dataset ID.
 
-### Example
+**Example**
+
 ```ts
 import { App } from "clarifai-nodejs";
 
@@ -36386,32 +36328,31 @@ const dataset = await app.dataset({
 console.log(dataset);
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `dataset_id` | `Object` | The dataset ID for the dataset to interact with. |
 | `dataset_id.datasetId` | `string` | - |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
 A Dataset object for the existing dataset ID.
 
-#### Defined in
+**Defined in**
 
 [src/client/app.ts:771](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/app.ts#L771)
 
-___
-
-### deleteDataset
+#### deleteDataset
 
 ▸ **deleteDataset**(`datasetId`): `Promise`\
 
 Deletes a dataset for the user.
 
-### Example
+**Example**
+
 ```ts
 import { App } from "clarifai-nodejs";
 
@@ -36426,30 +36367,29 @@ const app = new App({
 await app.deleteDataset({ datasetId: "dataset-id" });
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `datasetId` | `Object` | The dataset ID for the app to delete. |
 | `datasetId.datasetId` | `string` | - |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-#### Defined in
+**Defined in**
 
 [src/client/app.ts:800](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/app.ts#L800)
 
-___
-
-### deleteModel
+#### deleteModel
 
 ▸ **deleteModel**(`modelId`): `Promise`\
 
 Deletes a model for the user.
 
-### Example
+**Example**
+
 ```ts
 import { App } from "clarifai-nodejs";
 
@@ -36464,30 +36404,29 @@ const app = new App({
 await app.deleteModel({ modelId: "modelId" });
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `modelId` | `Object` | The model ID for the model to delete. |
 | `modelId.modelId` | `string` | - |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-#### Defined in
+**Defined in**
 
 [src/client/app.ts:825](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/app.ts#L825)
 
-___
-
-### deleteModule
+#### deleteModule
 
 ▸ **deleteModule**(`moduleId`): `Promise`\
 
 Deletes a module for the user.
 
-### Example
+**Example**
+
 ```ts
 import { App } from "clarifai-nodejs";
 
@@ -36502,30 +36441,29 @@ const app = new App({
 await app.deleteModule({ moduleId: "moduleId" });
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `moduleId` | `Object` | The module ID for the module to delete. |
 | `moduleId.moduleId` | `string` | - |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-#### Defined in
+**Defined in**
 
 [src/client/app.ts:875](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/app.ts#L875)
 
-___
-
-### deleteWorkflow
+#### deleteWorkflow
 
 ▸ **deleteWorkflow**(`workflowId`): `Promise`\
 
 Deletes a workflow for the user.
 
-### Example
+**Example**
+
 ```ts
 import { App } from "clarifai-nodejs";
 
@@ -36540,30 +36478,29 @@ const app = new App({
 await app.deleteWorkflow({ workflowId: "workflowId" });
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `workflowId` | `Object` | The workflow ID for the workflow to delete. |
 | `workflowId.workflowId` | `string` | - |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-#### Defined in
+**Defined in**
 
 [src/client/app.ts:850](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/app.ts#L850)
 
-___
-
-### listConcepts
+#### listConcepts
 
 ▸ **listConcepts**(`«destructured»?`): `AsyncGenerator`\
 
 Lists all the concepts for the app.
 
-### Example
+**Example**
+
 ```ts
 import { App } from "clarifai-nodejs";
 
@@ -36579,7 +36516,7 @@ const concepts = list.value;
 console.log(concepts);
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
@@ -36587,27 +36524,26 @@ console.log(concepts);
 | › `pageNo?` | `number` |
 | › `perPage?` | `number` |
 
-#### Returns
+**Returns**
 
 `AsyncGenerator`\
 
-**`Yields`**
+**Yields**
 
 Concepts in the app.
 
-#### Defined in
+**Defined in**
 
 [src/client/app.ts:391](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/app.ts#L391)
 
-___
-
-### listDataSets
+#### listDataSets
 
 ▸ **listDataSets**(`«destructured»?`): `AsyncGenerator`\
 
 Lists all the datasets for the app.
 
-### Example
+**Example**
+
 ```ts
 import { App } from "clarifai-nodejs";
 
@@ -36623,40 +36559,39 @@ const datasets = list.value;
 console.log(datasets);
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
 | `«destructured»` | `Object` |
 | › `pageNo?` | `number` |
-| › `params?` | [`ListDatasetsParam`](../modules.md#listdatasetsparam) |
+| › `params?` | [`ListDatasetsParam`](#listdatasetsparam) |
 | › `perPage?` | `number` |
 
-#### Returns
+**Returns**
 
 `AsyncGenerator`\
 
-**`Yields`**
+**Yields**
 
 Dataset - Dataset objects for the datasets in the app.
 
-**`Remarks`**
+**Notes**
 
 Defaults to 16 per page
 
-#### Defined in
+**Defined in**
 
 [src/client/app.ts:136](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/app.ts#L136)
 
-___
-
-### listInstalledModuleVersions
+#### listInstalledModuleVersions
 
 ▸ **listInstalledModuleVersions**(`«destructured»?`): `AsyncGenerator`\
 
 Lists all installed module versions in the app.
 
-### Example
+**Example**
+
 ```ts
 import { App } from "clarifai-nodejs";
 
@@ -36672,40 +36607,39 @@ const moduleVersions = list.value;
 console.log(moduleVersions);
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
 | `«destructured»` | `Object` |
 | › `pageNo?` | `number` |
-| › `params?` | [`ListInstalledModuleVersionsParam`](../modules.md#listinstalledmoduleversionsparam) |
+| › `params?` | [`ListInstalledModuleVersionsParam`](#listinstalledmoduleversionsparam) |
 | › `perPage?` | `number` |
 
-#### Returns
+**Returns**
 
 `AsyncGenerator`\
 
-**`Yields`**
+**Yields**
 
 Module - Module objects for the installed module versions in the app.
 
-**`Remarks`**
+**Notes**
 
 Defaults to 16 per page
 
-#### Defined in
+**Defined in**
 
 [src/client/app.ts:342](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/app.ts#L342)
 
-___
-
-### listModels
+#### listModels
 
 ▸ **listModels**(`«destructured»?`): `AsyncGenerator`\
 
 Lists all the available models for the user.
 
-### Example
+**Example**
+
 ```ts
 import { App } from "clarifai-nodejs";
 
@@ -36721,37 +36655,36 @@ const models = list.value;
 console.log(models);
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
 | `«destructured»` | `Object` | `{}` |
 | › `onlyInApp?` | `boolean` | `true` |
 | › `pageNo?` | `number` | `undefined` |
-| › `params?` | [`ListModelsParam`](../modules.md#listmodelsparam) | `{}` |
+| › `params?` | [`ListModelsParam`](#listmodelsparam) | `{}` |
 | › `perPage?` | `number` | `undefined` |
 
-#### Returns
+**Returns**
 
 `AsyncGenerator`\
 
-**`Remarks`**
+**Notes**
 
 Defaults to 16 per page
 
-#### Defined in
+**Defined in**
 
 [src/client/app.ts:180](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/app.ts#L180)
 
-___
-
-### listModules
+#### listModules
 
 ▸ **listModules**(`«destructured»?`): `AsyncGenerator`\
 
 Lists all the available modules for the user.
 
-### Example
+**Example**
+
 ```ts
 import { App } from "clarifai-nodejs";
 
@@ -36767,55 +36700,52 @@ const modules = list.value;
 console.log(modules);
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
 | `«destructured»` | `Object` |
 | › `onlyInApp?` | `boolean` |
 | › `pageNo?` | `number` |
-| › `params?` | [`ListModulesParam`](../modules.md#listmodulesparam) |
+| › `params?` | [`ListModulesParam`](#listmodulesparam) |
 | › `perPage?` | `number` |
 
-#### Returns
+**Returns**
 
 `AsyncGenerator`\
 
-**`Yields`**
+**Yields**
 
 Module - Module objects for the modules in the app.
 
-**`Remarks`**
+**Notes**
 
 Defaults to 16 per page
 
-#### Defined in
+**Defined in**
 
 [src/client/app.ts:291](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/app.ts#L291)
 
-___
-
-### listTrainableModelTypes
+#### listTrainableModelTypes
 
 ▸ **listTrainableModelTypes**(): `string`[]
 
-#### Returns
+**Returns**
 
 `string`[]
 
-#### Defined in
+**Defined in**
 
 [src/client/app.ts:415](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/app.ts#L415)
 
-___
-
-### listWorkflows
+#### listWorkflows
 
 ▸ **listWorkflows**(`«destructured»?`): `AsyncGenerator`\
 
 Lists all the available workflows for the user.
 
-### Example
+**Example**
+
 ```ts
 import { App } from "clarifai-nodejs";
 
@@ -36831,41 +36761,40 @@ const workflows = list.value;
 console.log(workflows);
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
 | `«destructured»` | `Object` | `{}` |
 | › `onlyInApp?` | `boolean` | `true` |
 | › `pageNo?` | `number` | `undefined` |
-| › `params?` | [`ListWorkflowsParam`](../modules.md#listworkflowsparam) | `{}` |
+| › `params?` | [`ListWorkflowsParam`](#listworkflowsparam) | `{}` |
 | › `perPage?` | `number` | `undefined` |
 
-#### Returns
+**Returns**
 
 `AsyncGenerator`\
 
-**`Yields`**
+**Yields**
 
 Workflow - Workflow objects for the workflows in the app.
 
-**`Remarks`**
+**Notes**
 
 Defaults to 16 per page
 
-#### Defined in
+**Defined in**
 
 [src/client/app.ts:238](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/app.ts#L238)
 
-___
-
-### model
+#### model
 
 ▸ **model**(`«destructured»`): `Promise`\
 
 Returns a Model object for the existing model ID.
 
-### Example
+**Example**
+
 ```ts
 import { App } from "clarifai-nodejs";
 
@@ -36883,7 +36812,7 @@ const model = await app.model({
 console.log(model);
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
@@ -36894,25 +36823,24 @@ console.log(model);
 | › `modelUserAppId.userId` | `string` |
 | › `modelVersionId?` | `string` |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
 A model object for the specified model ID.
 
-#### Defined in
+**Defined in**
 
 [src/client/app.ts:693](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/app.ts#L693)
 
-___
-
-### workflow
+#### workflow
 
 ▸ **workflow**(`workflowId`): `Promise`\
 
 Returns a Workflow object for the existing workflow ID.
 
-### Example
+**Example**
+
 ```ts
 import { App } from "clarifai-nodejs";
 
@@ -36928,270 +36856,210 @@ const workflow = await app.workflow({ workflowId: "workflowId" });
 console.log(workflow);
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `workflowId` | `Object` | The workflow ID for a existing workflow. |
 | `workflowId.workflowId` | `string` | - |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
 A workflow object for the specified workflow ID.
 
-#### Defined in
+**Defined in**
 
 [src/client/app.ts:741](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/app.ts#L741)
 
----
+## Dataset
 
-## Class: Dataset
+Dataset is a class that provides access to Clarifai API endpoints related to Dataset information.
 
-[clarifai-nodejs](../README.mdx) / [Exports](../modules.md) / Dataset
-
-# Class: Dataset
-
-## Hierarchy
+This is its hierarchy:
 
 - `Lister`
 
   ↳ **`Dataset`**
 
-## Table of contents
+### Constructor
 
-### Constructors
+• **new Dataset**(`«destructured»`): `Dataset`
 
-- [constructor](Dataset.md#constructor)
-
-### Properties
-
-- [STUB](Dataset.md#stub)
-- [authHelper](Dataset.md#authhelper)
-- [base](Dataset.md#base)
-- [batchSize](Dataset.md#batchsize)
-- [defaultPageSize](Dataset.md#defaultpagesize)
-- [info](Dataset.md#info)
-- [input](Dataset.md#input)
-- [metadata](Dataset.md#metadata)
-- [pat](Dataset.md#pat)
-- [rootCertificatesPath](Dataset.md#rootcertificatespath)
-- [userAppId](Dataset.md#userappid)
-
-### Methods
-
-- [convertStringToTimestamp](Dataset.md#convertstringtotimestamp)
-- [createVersion](Dataset.md#createversion)
-- [deleteVersion](Dataset.md#deleteversion)
-- [grpcRequest](Dataset.md#grpcrequest)
-- [listPagesData](Dataset.md#listpagesdata)
-- [listPagesGenerator](Dataset.md#listpagesgenerator)
-- [listVersions](Dataset.md#listversions)
-- [uploadFromCSV](Dataset.md#uploadfromcsv)
-- [uploadFromFolder](Dataset.md#uploadfromfolder)
-
-## Constructors
-
-### constructor
-
-• **new Dataset**(`«destructured»`): [`Dataset`](Dataset.md)
-
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
 | `«destructured»` | `DatasetConfig` |
 
-#### Returns
+**Returns**
 
-[`Dataset`](Dataset.md)
+`Dataset`
 
-#### Overrides
+**Overrides**
 
 Lister.constructor
 
-#### Defined in
+**Defined in**
 
 [src/client/dataset.ts:39](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/dataset.ts#L39)
 
-## Properties
+### Properties
 
-### STUB
+#### STUB
 
 • `Protected` **STUB**: `V2Stub`
 
-#### Inherited from
+**Inherited from**
 
 Lister.STUB
 
-#### Defined in
+**Defined in**
 
 [src/client/base.ts:27](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/base.ts#L27)
 
-___
-
-### authHelper
+#### authHelper
 
 • `Protected` **authHelper**: `ClarifaiAuthHelper`
 
-#### Inherited from
+**Inherited from**
 
 Lister.authHelper
 
-#### Defined in
+**Defined in**
 
 [src/client/base.ts:26](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/base.ts#L26)
 
-___
-
-### base
+#### base
 
 • `Protected` **base**: `string`
 
-#### Inherited from
+**Inherited from**
 
 Lister.base
 
-#### Defined in
+**Defined in**
 
 [src/client/base.ts:31](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/base.ts#L31)
 
-___
-
-### batchSize
+#### batchSize
 
 • `Private` **batchSize**: `number` = `128`
 
-#### Defined in
+**Defined in**
 
 [src/client/dataset.ts:36](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/dataset.ts#L36)
 
-___
-
-### defaultPageSize
+#### defaultPageSize
 
 • **defaultPageSize**: `number`
 
-#### Inherited from
+**Inherited from**
 
 Lister.defaultPageSize
 
-#### Defined in
+**Defined in**
 
 [src/client/lister.ts:10](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/lister.ts#L10)
 
-___
-
-### info
+#### info
 
 • `Private` **info**: `Dataset`
 
-#### Defined in
+**Defined in**
 
 [src/client/dataset.ts:35](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/dataset.ts#L35)
 
-___
+#### input
 
-### input
+• `Private` **input**: `Input`
 
-• `Private` **input**: [`Input`](Input.md)
-
-#### Defined in
+**Defined in**
 
 [src/client/dataset.ts:37](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/dataset.ts#L37)
 
-___
-
-### metadata
+#### metadata
 
 • `Protected` **metadata**: [`string`, `string`][]
 
-#### Inherited from
+**Inherited from**
 
 Lister.metadata
 
-#### Defined in
+**Defined in**
 
 [src/client/base.ts:28](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/base.ts#L28)
 
-___
-
-### pat
+#### pat
 
 • `Protected` **pat**: `string`
 
-#### Inherited from
+**Inherited from**
 
 Lister.pat
 
-#### Defined in
+**Defined in**
 
 [src/client/base.ts:29](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/base.ts#L29)
 
-___
-
-### rootCertificatesPath
+#### rootCertificatesPath
 
 • `Protected` **rootCertificatesPath**: `string`
 
-#### Inherited from
+**Inherited from**
 
 Lister.rootCertificatesPath
 
-#### Defined in
+**Defined in**
 
 [src/client/base.ts:32](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/base.ts#L32)
 
-___
-
-### userAppId
+#### userAppId
 
 • `Protected` **userAppId**: `UserAppIDSet`
 
-#### Inherited from
+**Inherited from**
 
 Lister.userAppId
 
-#### Defined in
+**Defined in**
 
 [src/client/base.ts:30](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/base.ts#L30)
 
-## Methods
+### Methods
 
-### convertStringToTimestamp
+#### convertStringToTimestamp
 
 ▸ **convertStringToTimestamp**(`dateStr`): `Timestamp`
 
 Converts a string to a Timestamp object.
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `dateStr` | `string` | The string to convert. |
 
-#### Returns
+**Returns**
 
 `Timestamp`
 
 A Timestamp object representing the given date string.
 
-#### Inherited from
+**Inherited from**
 
 Lister.convertStringToTimestamp
 
-#### Defined in
+**Defined in**
 
 [src/client/base.ts:100](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/base.ts#L100)
 
-___
-
-### createVersion
+#### createVersion
 
 ▸ **createVersion**(`«destructured»`): `Promise`\
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
@@ -37200,43 +37068,39 @@ ___
 | › `id` | `string` |
 | › `metadata?` | `Record`\ |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-#### Defined in
+**Defined in**
 
 [src/client/dataset.ts:58](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/dataset.ts#L58)
 
-___
-
-### deleteVersion
+#### deleteVersion
 
 ▸ **deleteVersion**(`versionId`): `Promise`\
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
 | `versionId` | `string` |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-#### Defined in
+**Defined in**
 
 [src/client/dataset.ts:93](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/dataset.ts#L93)
 
-___
-
-### grpcRequest
+#### grpcRequest
 
 ▸ **grpcRequest**\(`endpoint`, `requestData`): `Promise`\
 
 Makes a gRPC request to the API.
 
-#### Type parameters
+**Type parameters**
 
 | Name | Type |
 | :------ | :------ |
@@ -37244,34 +37108,32 @@ Makes a gRPC request to the API.
 | `TResponseObject` | extends `Object` |
 | `TResponse` | extends `Object` |
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
 | `endpoint` | (`request`: `TRequest`, `metadata`: `Metadata`, `options`: `Partial`\) => `Promise`\ |
 | `requestData` | `TRequest` |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
 A Promise resolving to the result of the gRPC method call.
 
-#### Inherited from
+**Inherited from**
 
 Lister.grpcRequest
 
-#### Defined in
+**Defined in**
 
 [src/client/base.ts:77](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/base.ts#L77)
 
-___
-
-### listPagesData
+#### listPagesData
 
 ▸ **listPagesData**\(`endpoint`, `requestData`, `pageNo?`, `perPage?`): `Promise`\
 
-#### Type parameters
+**Type parameters**
 
 | Name | Type |
 | :------ | :------ |
@@ -37279,7 +37141,7 @@ ___
 | `TResponseObject` | extends `Object` |
 | `TResponse` | extends `Object` |
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
@@ -37288,25 +37150,23 @@ ___
 | `pageNo` | `number` | `1` |
 | `perPage` | `number` | `undefined` |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-#### Inherited from
+**Inherited from**
 
 Lister.listPagesData
 
-#### Defined in
+**Defined in**
 
 [src/client/lister.ts:92](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/lister.ts#L92)
 
-___
-
-### listPagesGenerator
+#### listPagesGenerator
 
 ▸ **listPagesGenerator**\(`endpoint`, `requestData`, `pageNo?`, `perPage?`): `AsyncGenerator`\
 
-#### Type parameters
+**Type parameters**
 
 | Name | Type |
 | :------ | :------ |
@@ -37314,7 +37174,7 @@ ___
 | `TResponseObject` | extends `Object` |
 | `TResponse` | extends `Object` |
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
@@ -37323,46 +37183,42 @@ ___
 | `pageNo` | `number` | `1` |
 | `perPage` | `number` | `undefined` |
 
-#### Returns
+**Returns**
 
 `AsyncGenerator`\
 
-#### Inherited from
+**Inherited from**
 
 Lister.listPagesGenerator
 
-#### Defined in
+**Defined in**
 
 [src/client/lister.ts:23](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/lister.ts#L23)
 
-___
-
-### listVersions
+#### listVersions
 
 ▸ **listVersions**(`pageNo?`, `perPage?`): `AsyncGenerator`\
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
 | `pageNo?` | `number` |
 | `perPage?` | `number` |
 
-#### Returns
+**Returns**
 
 `AsyncGenerator`\
 
-#### Defined in
+**Defined in**
 
 [src/client/dataset.ts:113](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/dataset.ts#L113)
 
-___
-
-### uploadFromCSV
+#### uploadFromCSV
 
 ▸ **uploadFromCSV**(`«destructured»`): `Promise`\
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
@@ -37372,23 +37228,21 @@ ___
 | › `csvType` | ``"url"`` \| ``"raw"`` \| ``"file"`` | `undefined` |
 | › `inputType?` | ``"image"`` \| ``"text"`` \| ``"video"`` \| ``"audio"`` | `"text"` |
 | › `labels?` | `boolean` | `true` |
-| › `uploadProgressEmitter?` | [`InputBulkUpload`](../modules.md#inputbulkupload) | `undefined` |
+| › `uploadProgressEmitter?` | [`InputBulkUpload`](#inputbulkupload) | `undefined` |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-#### Defined in
+**Defined in**
 
 [src/client/dataset.ts:176](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/dataset.ts#L176)
 
-___
-
-### uploadFromFolder
+#### uploadFromFolder
 
 ▸ **uploadFromFolder**(`«destructured»`): `Promise`\
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
@@ -37397,77 +37251,34 @@ ___
 | › `folderPath` | `string` | `undefined` |
 | › `inputType` | ``"image"`` \| ``"text"`` | `undefined` |
 | › `labels?` | `boolean` | `false` |
-| › `uploadProgressEmitter?` | [`InputBulkUpload`](../modules.md#inputbulkupload) | `undefined` |
+| › `uploadProgressEmitter?` | [`InputBulkUpload`](#inputbulkupload) | `undefined` |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-#### Defined in
+**Defined in**
 
 [src/client/dataset.ts:138](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/dataset.ts#L138)
 
----
+## Input
 
-## Class: Input
+Input is a class that provides access to Clarifai API endpoints related to Input information.
 
-[clarifai-nodejs](../README.mdx) / [Exports](../modules.md) / Input
-
-# Class: Input
-
-Inputs is a class that provides access to Clarifai API endpoints related to Input information.
-
-## Hierarchy
+This is its hierarchy:
 
 - `Lister`
 
   ↳ **`Input`**
 
-## Table of contents
+### Constructor
 
-### Constructors
-
-- [constructor](Input.md#constructor)
-
-### Properties
-
-- [numOfWorkers](Input.md#numofworkers)
-
-### Methods
-
-- [bulkUpload](Input.md#bulkupload)
-- [deleteFailedInputs](Input.md#deletefailedinputs)
-- [patchInputs](Input.md#patchinputs)
-- [retryUploads](Input.md#retryuploads)
-- [uploadAnnotations](Input.md#uploadannotations)
-- [uploadBatch](Input.md#uploadbatch)
-- [uploadFromBytes](Input.md#uploadfrombytes)
-- [uploadFromFile](Input.md#uploadfromfile)
-- [uploadFromUrl](Input.md#uploadfromurl)
-- [uploadInputs](Input.md#uploadinputs)
-- [uploadText](Input.md#uploadtext)
-- [waitForInputs](Input.md#waitforinputs)
-- [getBboxProto](Input.md#getbboxproto)
-- [getImageInputsFromFolder](Input.md#getimageinputsfromfolder)
-- [getInputFromBytes](Input.md#getinputfrombytes)
-- [getInputFromFile](Input.md#getinputfromfile)
-- [getInputFromUrl](Input.md#getinputfromurl)
-- [getInputsFromCsv](Input.md#getinputsfromcsv)
-- [getMaskProto](Input.md#getmaskproto)
-- [getMultimodalInput](Input.md#getmultimodalinput)
-- [getProto](Input.md#getproto)
-- [getTextInput](Input.md#gettextinput)
-- [getTextInputsFromFolder](Input.md#gettextinputsfromfolder)
-
-## Constructors
-
-### constructor
-
-• **new Input**(`params`): [`Input`](Input.md)
+• **new Input**(`params`): `Input`
 
 Initializes an input object.
 
-### Example
+**Example**
+
 ```ts
 import { Input } from "clarifai-nodejs";
 
@@ -37480,86 +37291,82 @@ export const input = new Input({
 });
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `params` | `Object` | The parameters for the Input object. |
 | `params.authConfig?` | `AuthConfig` | - |
 
-#### Returns
+**Returns**
 
-[`Input`](Input.md)
+`Input`
 
-#### Overrides
+**Overrides**
 
 Lister.constructor
 
-#### Defined in
+**Defined in**
 
 [src/client/input.ts:101](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/input.ts#L101)
 
-## Properties
+### Properties
 
-### numOfWorkers
+#### numOfWorkers
 
 • `Private` **numOfWorkers**: `number`
 
-#### Defined in
+**Defined in**
 
 [src/client/input.ts:87](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/input.ts#L87)
 
-## Methods
+### Methods
 
-### bulkUpload
+#### bulkUpload
 
 ▸ **bulkUpload**(`«destructured»`): `Promise`\
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
 | `«destructured»` | `Object` | `undefined` |
 | › `batchSize?` | `number` | `128` |
 | › `inputs` | `Input`[] | `undefined` |
-| › `uploadProgressEmitter?` | [`InputBulkUpload`](../modules.md#inputbulkupload) | `undefined` |
+| › `uploadProgressEmitter?` | [`InputBulkUpload`](#inputbulkupload) | `undefined` |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-#### Defined in
+**Defined in**
 
 [src/client/input.ts:1038](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/input.ts#L1038)
 
-___
-
-### deleteFailedInputs
+#### deleteFailedInputs
 
 ▸ **deleteFailedInputs**(`«destructured»`): `Promise`\
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
 | `«destructured»` | `Object` |
 | › `inputs` | `Input`[] |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-#### Defined in
+**Defined in**
 
 [src/client/input.ts:1165](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/input.ts#L1165)
 
-___
-
-### patchInputs
+#### patchInputs
 
 ▸ **patchInputs**(`«destructured»`): `Promise`\
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
@@ -37567,42 +37374,38 @@ ___
 | › `action?` | `string` | `"merge"` |
 | › `inputs` | `Input`[] | `undefined` |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-#### Defined in
+**Defined in**
 
 [src/client/input.ts:970](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/input.ts#L970)
 
-___
-
-### retryUploads
+#### retryUploads
 
 ▸ **retryUploads**(`«destructured»`): `Promise`\
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
 | `«destructured»` | `Object` |
 | › `failedInputs` | `Input`[] |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-#### Defined in
+**Defined in**
 
 [src/client/input.ts:1209](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/input.ts#L1209)
 
-___
-
-### uploadAnnotations
+#### uploadAnnotations
 
 ▸ **uploadAnnotations**(`«destructured»`): `Promise`\
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
@@ -37610,42 +37413,38 @@ ___
 | › `batchAnnot` | `Annotation`[] | `undefined` |
 | › `showLog?` | `boolean` | `true` |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-#### Defined in
+**Defined in**
 
 [src/client/input.ts:1006](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/input.ts#L1006)
 
-___
-
-### uploadBatch
+#### uploadBatch
 
 ▸ **uploadBatch**(`«destructured»`): `Promise`\
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
 | `«destructured»` | `Object` |
 | › `inputs` | `Input`[] |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-#### Defined in
+**Defined in**
 
 [src/client/input.ts:1090](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/input.ts#L1090)
 
-___
-
-### uploadFromBytes
+#### uploadFromBytes
 
 ▸ **uploadFromBytes**(`«destructured»`): `Promise`\
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
@@ -37660,21 +37459,19 @@ ___
 | › `textBytes?` | ``null`` \| `Uint8Array` | `null` |
 | › `videoBytes?` | ``null`` \| `Uint8Array` | `null` |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-#### Defined in
+**Defined in**
 
 [src/client/input.ts:918](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/input.ts#L918)
 
-___
-
-### uploadFromFile
+#### uploadFromFile
 
 ▸ **uploadFromFile**(`«destructured»`): `Promise`\
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
@@ -37689,21 +37486,19 @@ ___
 | › `textFile?` | ``null`` \| `string` | `null` |
 | › `videoFile?` | ``null`` \| `string` | `null` |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-#### Defined in
+**Defined in**
 
 [src/client/input.ts:883](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/input.ts#L883)
 
-___
-
-### uploadFromUrl
+#### uploadFromUrl
 
 ▸ **uploadFromUrl**(`«destructured»`): `Promise`\
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
@@ -37718,21 +37513,19 @@ ___
 | › `textUrl?` | ``null`` \| `string` | `null` |
 | › `videoUrl?` | ``null`` \| `string` | `null` |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-#### Defined in
+**Defined in**
 
 [src/client/input.ts:848](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/input.ts#L848)
 
-___
-
-### uploadInputs
+#### uploadInputs
 
 ▸ **uploadInputs**(`«destructured»`): `Promise`\
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
@@ -37740,21 +37533,19 @@ ___
 | › `inputs` | `Input`[] | `undefined` |
 | › `showLog?` | `boolean` | `true` |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-#### Defined in
+**Defined in**
 
 [src/client/input.ts:804](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/input.ts#L804)
 
-___
-
-### uploadText
+#### uploadText
 
 ▸ **uploadText**(`«destructured»`): `Promise`\
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
@@ -37763,42 +37554,38 @@ ___
 | › `inputId` | `string` | `undefined` |
 | › `rawText` | `string` | `undefined` |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-#### Defined in
+**Defined in**
 
 [src/client/input.ts:953](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/input.ts#L953)
 
-___
-
-### waitForInputs
+#### waitForInputs
 
 ▸ **waitForInputs**(`«destructured»`): `Promise`\
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
 | `«destructured»` | `Object` |
 | › `inputJobId` | `string` |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-#### Defined in
+**Defined in**
 
 [src/client/input.ts:1101](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/input.ts#L1101)
 
-___
-
-### getBboxProto
+#### getBboxProto
 
 ▸ **getBboxProto**(`«destructured»`): `Annotation`
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
@@ -37807,23 +37594,22 @@ ___
 | › `inputId` | `string` |
 | › `label` | `string` |
 
-#### Returns
+**Returns**
 
 `Annotation`
 
-#### Defined in
+**Defined in**
 
 [src/client/input.ts:719](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/input.ts#L719)
 
-___
-
-### getImageInputsFromFolder
+#### getImageInputsFromFolder
 
 ▸ **getImageInputsFromFolder**(`«destructured»`): `Input`[]
 
 Upload image inputs from folder.
 
-### Example
+**Example**
+
 ```ts
 import { Input, Model } from "clarifai-nodejs";
 import path from "path";
@@ -37849,7 +37635,7 @@ const prediction = await model.predict({
 console.log(prediction);
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
@@ -37858,23 +37644,22 @@ console.log(prediction);
 | › `folderPath` | `string` | `undefined` |
 | › `labels?` | `boolean` | `false` |
 
-#### Returns
+**Returns**
 
 `Input`[]
 
-#### Defined in
+**Defined in**
 
 [src/client/input.ts:433](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/input.ts#L433)
 
-___
-
-### getInputFromBytes
+#### getInputFromBytes
 
 ▸ **getInputFromBytes**(`«destructured»`): `Input`
 
 Creates an input proto from bytes.
 
-### Example
+**Example**
+
 ```ts
 import { Input, Model } from "clarifai-nodejs";
 import * as fs from "fs";
@@ -37902,7 +37687,7 @@ const prediction = await model.predict({
 console.log(prediction);
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
@@ -37917,25 +37702,24 @@ console.log(prediction);
 | › `textBytes?` | ``null`` \| `Uint8Array` | `null` |
 | › `videoBytes?` | ``null`` \| `Uint8Array` | `null` |
 
-#### Returns
+**Returns**
 
 `Input`
 
 An `Input` object for the specified input ID.
 
-#### Defined in
+**Defined in**
 
 [src/client/input.ts:231](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/input.ts#L231)
 
-___
-
-### getInputFromFile
+#### getInputFromFile
 
 ▸ **getInputFromFile**(`«destructured»`): `Input`
 
 Create input proto from files.
 
-### Example
+**Example**
+
 ```ts
 import { Input, Model } from "clarifai-nodejs";
 import path from "path";
@@ -37961,7 +37745,7 @@ const prediction = await model.predict({
 console.log(prediction);
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
@@ -37976,25 +37760,24 @@ console.log(prediction);
 | › `textFile?` | ``null`` \| `string` | `null` |
 | › `videoFile?` | ``null`` \| `string` | `null` |
 
-#### Returns
+**Returns**
 
 `Input`
 
 - An Input object for the specified input ID.
 
-#### Defined in
+**Defined in**
 
 [src/client/input.ts:295](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/input.ts#L295)
 
-___
-
-### getInputFromUrl
+#### getInputFromUrl
 
 ▸ **getInputFromUrl**(`«destructured»`): `Input`
 
 Upload input from URL.
 
-### Example
+**Example**
+
 ```ts
 import { Input, Model } from "clarifai-nodejs";
 
@@ -38019,7 +37802,7 @@ const prediction = await model.predict({
 console.log(prediction);
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
@@ -38034,26 +37817,24 @@ console.log(prediction);
 | › `textUrl?` | ``null`` \| `string` | `null` |
 | › `videoUrl?` | ``null`` \| `string` | `null` |
 
-#### Returns
+**Returns**
 
 `Input`
 
 - Job ID for the upload request.
 
-#### Defined in
+**Defined in**
 
 [src/client/input.ts:359](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/input.ts#L359)
 
-___
-
-### getInputsFromCsv
+#### getInputsFromCsv
 
 ▸ **getInputsFromCsv**(`«destructured»`): `Promise`\
 
 Create Input proto from CSV File. Supported columns are:
 'inputid', 'input', 'concepts', 'metadata', 'geopoints'
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
@@ -38064,23 +37845,21 @@ Create Input proto from CSV File. Supported columns are:
 | › `inputType` | ``"image"`` \| ``"text"`` \| ``"video"`` \| ``"audio"`` | `"text"` |
 | › `labels` | `boolean` | `true` |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
 - An array of Input objects for the specified input ID.
 
-#### Defined in
+**Defined in**
 
 [src/client/input.ts:573](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/input.ts#L573)
 
-___
-
-### getMaskProto
+#### getMaskProto
 
 ▸ **getMaskProto**(`«destructured»`): `Annotation`
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
@@ -38089,23 +37868,21 @@ ___
 | › `label` | `string` |
 | › `polygons` | `Polygon`[] |
 
-#### Returns
+**Returns**
 
 `Annotation`
 
-#### Defined in
+**Defined in**
 
 [src/client/input.ts:760](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/input.ts#L760)
 
-___
-
-### getMultimodalInput
+#### getMultimodalInput
 
 ▸ **getMultimodalInput**(`«destructured»`): `Input`
 
 Create input proto for text and image from bytes or url
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
@@ -38118,25 +37895,23 @@ Create input proto for text and image from bytes or url
 | › `rawText?` | ``null`` \| `string` | `null` |
 | › `textBytes?` | ``null`` \| `Uint8Array` | `null` |
 
-#### Returns
+**Returns**
 
 `Input`
 
 - An Input object for the specified input ID.
 
-#### Defined in
+**Defined in**
 
 [src/client/input.ts:513](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/input.ts#L513)
 
-___
-
-### getProto
+#### getProto
 
 ▸ **getProto**(`«destructured»`): `Input`
 
 Create input proto for image data type.
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
@@ -38151,25 +37926,24 @@ Create input proto for image data type.
 | › `textPb?` | ``null`` \| \{ `raw`: `string`  } | `null` |
 | › `videoPb?` | ``null`` \| \{ `base64`: `string`  } | `null` |
 
-#### Returns
+**Returns**
 
 `Input`
 
 - An Input object for the specified input ID.
 
-#### Defined in
+**Defined in**
 
 [src/client/input.ts:119](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/input.ts#L119)
 
-___
-
-### getTextInput
+#### getTextInput
 
 ▸ **getTextInput**(`«destructured»`): `Input`
 
 Create input proto for text data type from raw text.
 
-### Example
+**Example**
+
 ```ts
 import { Input, Model } from "clarifai-nodejs";
 
@@ -38194,7 +37968,7 @@ const prediction = await model.predict({
 console.log(prediction);
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
@@ -38206,23 +37980,21 @@ console.log(prediction);
 | › `metadata?` | ``null`` \| `Record`\ | `null` |
 | › `rawText` | `string` | `undefined` |
 
-#### Returns
+**Returns**
 
 `Input`
 
 - An Input object for the specified input ID.
 
-#### Defined in
+**Defined in**
 
 [src/client/input.ts:476](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/input.ts#L476)
 
-___
-
-### getTextInputsFromFolder
+#### getTextInputsFromFolder
 
 ▸ **getTextInputsFromFolder**(`«destructured»`): `Input`[]
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
@@ -38231,81 +38003,32 @@ ___
 | › `folderPath` | `string` | `undefined` |
 | › `labels` | `boolean` | `false` |
 
-#### Returns
+**Returns**
 
 `Input`[]
 
-#### Defined in
+**Defined in**
 
 [src/client/input.ts:688](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/input.ts#L688)
 
----
-
-## Class: Model
-
-[clarifai-nodejs](../README.mdx) / [Exports](../modules.md) / Model
-
-# Class: Model
+## Model
 
 Model is a class that provides access to Clarifai API endpoints related to Model information.
 
-## Hierarchy
+This is its hierarchy:
 
 - `Lister`
 
   ↳ **`Model`**
 
-## Table of contents
+### Constructor
 
-### Constructors
-
-- [constructor](Model.md#constructor)
-
-### Properties
-
-- [appId](Model.md#appid)
-- [id](Model.md#id)
-- [modelInfo](Model.md#modelinfo)
-- [modelUserAppId](Model.md#modeluserappid)
-- [modelVersion](Model.md#modelversion)
-- [runner](Model.md#runner)
-- [trainingParams](Model.md#trainingparams)
-
-### Methods
-
-- [availableMethods](Model.md#availablemethods)
-- [constructRequestWithMethodSignature](Model.md#constructrequestwithmethodsignature)
-- [createVersion](Model.md#createversion)
-- [deleteVersion](Model.md#deleteversion)
-- [generate](Model.md#generate)
-- [generateGrpc](Model.md#generategrpc)
-- [getParamInfo](Model.md#getparaminfo)
-- [getParams](Model.md#getparams)
-- [getRunner](Model.md#getrunner)
-- [listTrainingTemplates](Model.md#listtrainingtemplates)
-- [listVersions](Model.md#listversions)
-- [loadInfo](Model.md#loadinfo)
-- [methodSignatures](Model.md#methodsignatures)
-- [overrideModelVersion](Model.md#overridemodelversion)
-- [predict](Model.md#predict)
-- [predictByBytes](Model.md#predictbybytes)
-- [predictByFilepath](Model.md#predictbyfilepath)
-- [predictByUrl](Model.md#predictbyurl)
-- [setRunner](Model.md#setrunner)
-- [stream](Model.md#stream)
-- [streamWithControl](Model.md#streamwithcontrol)
-- [updateParams](Model.md#updateparams)
-- [getOutputDataFromModelResponse](Model.md#getoutputdatafrommodelresponse)
-
-## Constructors
-
-### constructor
-
-• **new Model**(`config`): [`Model`](Model.md)
+• **new Model**(`config`): `Model`
 
 Initializes a Model object.
 
-### Example
+**Example**
+
 ```ts
 import { Model } from "clarifai-nodejs";
 
@@ -38319,138 +38042,123 @@ export const model = new Model({
 });
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
 | `config` | `ModelConfig` |
 
-#### Returns
+**Returns**
 
-[`Model`](Model.md)
+`Model`
 
-#### Overrides
+**Overrides**
 
 Lister.constructor
 
-#### Defined in
+**Defined in**
 
 [src/client/model.ts:132](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/model.ts#L132)
 
-## Properties
+### Properties
 
-### appId
+#### appId
 
 • `Private` **appId**: `string`
 
-#### Defined in
+**Defined in**
 
 [src/client/model.ts:111](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/model.ts#L111)
 
-___
-
-### id
+#### id
 
 • `Private` **id**: `string`
 
-#### Defined in
+**Defined in**
 
 [src/client/model.ts:112](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/model.ts#L112)
 
-___
-
-### modelInfo
+#### modelInfo
 
 • **modelInfo**: `Model`
 
-#### Defined in
+**Defined in**
 
 [src/client/model.ts:115](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/model.ts#L115)
 
-___
-
-### modelUserAppId
+#### modelUserAppId
 
 • `Private` **modelUserAppId**: `undefined` \| `UserAppIDSet`
 
-#### Defined in
+**Defined in**
 
 [src/client/model.ts:113](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/model.ts#L113)
 
-___
-
-### modelVersion
+#### modelVersion
 
 • `Private` **modelVersion**: `undefined` \| \{ `id`: `string`  }
 
-#### Defined in
+**Defined in**
 
 [src/client/model.ts:114](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/model.ts#L114)
 
-___
-
-### runner
+#### runner
 
 • `Private` **runner**: `undefined` \| `RunnerSelector`
 
-#### Defined in
+**Defined in**
 
 [src/client/model.ts:117](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/model.ts#L117)
 
-___
-
-### trainingParams
+#### trainingParams
 
 • `Private` **trainingParams**: `Record`\
 
-#### Defined in
+**Defined in**
 
 [src/client/model.ts:116](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/model.ts#L116)
 
-## Methods
+### Methods
 
-### availableMethods
+#### availableMethods
 
 ▸ **availableMethods**(): `Promise`\
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-#### Defined in
+**Defined in**
 
 [src/client/model.ts:647](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/model.ts#L647)
 
-___
-
-### constructRequestWithMethodSignature
+#### constructRequestWithMethodSignature
 
 ▸ **constructRequestWithMethodSignature**(`request`, `config`): `Promise`\
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
 | `request` | `PostModelOutputsRequest` |
 | `config` | `TextModelPredictConfig` |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-#### Defined in
+**Defined in**
 
 [src/client/model.ts:663](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/model.ts#L663)
 
-___
-
-### createVersion
+#### createVersion
 
 ▸ **createVersion**(`modelVersion`): `Promise`\
 
 Creates a model version for the Model.
 
-### Example
+**Example**
+
 ```ts
 import { Model } from "clarifai-nodejs";
 import {
@@ -38483,29 +38191,28 @@ const modelObjectWithVersion = await model.createVersion(modelVersion);
 console.log(modelObjectWithVersion);
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
 | `modelVersion` | `ModelVersion` |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-#### Defined in
+**Defined in**
 
 [src/client/model.ts:545](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/model.ts#L545)
 
-___
-
-### deleteVersion
+#### deleteVersion
 
 ▸ **deleteVersion**(`versionId`): `Promise`\
 
 Deletes a model version for the Model.
 
-### Example
+**Example**
+
 ```ts
 import { Model } from "clarifai-nodejs";
 
@@ -38521,69 +38228,64 @@ export const model = new Model({
 model.deleteVersion("version_id");
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `versionId` | `string` | The version ID to delete. |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-#### Defined in
+**Defined in**
 
 [src/client/model.ts:514](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/model.ts#L514)
 
-___
-
-### generate
+#### generate
 
 ▸ **generate**(`«destructured»`): `AsyncGenerator`\
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
 | `«destructured»` | `TextModelPredictConfig` |
 
-#### Returns
+**Returns**
 
 `AsyncGenerator`\
 
-#### Defined in
+**Defined in**
 
 [src/client/model.ts:1120](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/model.ts#L1120)
 
-___
-
-### generateGrpc
+#### generateGrpc
 
 ▸ **generateGrpc**(`«destructured»`): `AsyncGenerator`\
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
 | `«destructured»` | `TextModelPredictConfig` |
 
-#### Returns
+**Returns**
 
 `AsyncGenerator`\
 
-#### Defined in
+**Defined in**
 
 [src/client/model.ts:848](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/model.ts#L848)
 
-___
-
-### getParamInfo
+#### getParamInfo
 
 ▸ **getParamInfo**(`param`): `Promise`\\>
 
 Returns the param info for the model.
 
-### Example
+**Example**
+
 ```ts
 import { Model } from "clarifai-nodejs";
 
@@ -38599,29 +38301,28 @@ export const model = new Model({
 model.getParamInfo("template");
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
 | `param` | `string` |
 
-#### Returns
+**Returns**
 
 `Promise`\\>
 
-#### Defined in
+**Defined in**
 
 [src/client/model.ts:446](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/model.ts#L446)
 
-___
-
-### getParams
+#### getParams
 
 ▸ **getParams**(`template?`, `saveTo?`): `Promise`\\>
 
 Returns the model params for the model type as object & also writes to a yaml file
 
-### Example
+**Example**
+
 ```ts
 import { Model } from "clarifai-nodejs";
 
@@ -38638,50 +38339,47 @@ const modelParams = await model.getParams("face-detection", "params.yml");
 console.log(modelParams);
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value | Description |
 | :------ | :------ | :------ | :------ |
 | `template` | ``null`` \| `string` | `null` | The training template to use for the model type. |
 | `saveTo` | `string` | `"params.yaml"` | The file path to save the yaml file. |
 
-#### Returns
+**Returns**
 
 `Promise`\\>
 
 - A promise that resolves to the model params for the model type.
 
-#### Defined in
+**Defined in**
 
 [src/client/model.ts:336](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/model.ts#L336)
 
-___
-
-### getRunner
+#### getRunner
 
 ▸ **getRunner**(): `undefined` \| `AsObject`
 
 Returns the runner for the model.
 
-#### Returns
+**Returns**
 
 `undefined` \| `AsObject`
 
 - The runner for the model.
 
-#### Defined in
+**Defined in**
 
 [src/client/model.ts:230](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/model.ts#L230)
 
-___
-
-### listTrainingTemplates
+#### listTrainingTemplates
 
 ▸ **listTrainingTemplates**(): `Promise`\
 
 Lists all the training templates for the model type.
 
-### Example
+**Example**
+
 ```ts
 import { Model } from "clarifai-nodejs";
 
@@ -38698,25 +38396,24 @@ const trainingTemplates = await model.listTrainingTemplates();
 console.log(trainingTemplates);
 ```
 
-#### Returns
+**Returns**
 
 `Promise`\
 
 - A promise that resolves to a list of training templates for the model type.
 
-#### Defined in
+**Defined in**
 
 [src/client/model.ts:289](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/model.ts#L289)
 
-___
-
-### listVersions
+#### listVersions
 
 ▸ **listVersions**(`«destructured»?`): `AsyncGenerator`\
 
 Lists all the versions for the model.
 
-### Example
+**Example**
+
 ```ts
 import { Model } from "clarifai-nodejs";
 
@@ -38734,7 +38431,7 @@ const versions = await model.listVersions().next();
 console.log(versions);
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
@@ -38742,58 +38439,52 @@ console.log(versions);
 | › `pageNo?` | `number` |
 | › `perPage?` | `number` |
 
-#### Returns
+**Returns**
 
 `AsyncGenerator`\
 
-**`Remarks`**
+**Notes**
 
 Defaults to 16 per page if pageNo is not specified
 
-#### Defined in
+**Defined in**
 
 [src/client/model.ts:589](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/model.ts#L589)
 
-___
-
-### loadInfo
+#### loadInfo
 
 ▸ **loadInfo**(): `Promise`\
 
 Loads the current model info.
 Usually called internally by other methods, to ensure the model info is loaded with latest data.
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-#### Defined in
+**Defined in**
 
 [src/client/model.ts:238](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/model.ts#L238)
 
-___
-
-### methodSignatures
+#### methodSignatures
 
 ▸ **methodSignatures**(): `Promise`\
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-#### Defined in
+**Defined in**
 
 [src/client/model.ts:625](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/model.ts#L625)
 
-___
-
-### overrideModelVersion
+#### overrideModelVersion
 
 ▸ **overrideModelVersion**(`«destructured»`): `void`
 
 Overrides the model version.
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
@@ -38801,34 +38492,32 @@ Overrides the model version.
 | › `inferenceParams?` | `Record`\ |
 | › `outputConfig?` | `OutputConfig` |
 
-#### Returns
+**Returns**
 
 `void`
 
-#### Defined in
+**Defined in**
 
 [src/client/model.ts:1314](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/model.ts#L1314)
 
-___
-
-### predict
+#### predict
 
 ▸ **predict**(`predictArgs`): `Promise`\
 
 Predicts the model based on the given inputs.
 Useful for chat / text based llms
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
 | `predictArgs` | `TextModelPredictConfig` |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-#### Defined in
+**Defined in**
 
 [src/client/model.ts:740](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/model.ts#L740)
 
@@ -38837,7 +38526,8 @@ Useful for chat / text based llms
 Predicts the model based on the given inputs.
 Use the `Input` module to create the input objects.
 
-### Example
+**Example**
+
 ```ts
 import { Model, Input } from "clarifai-nodejs";
 
@@ -38874,32 +38564,30 @@ const imagePrediction = await model.predict({
 console.log(imagePrediction);
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
 | `«destructured»` | `GeneralModelPredictConfig` |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
 - A promise that resolves to the model prediction.
 
-#### Defined in
+**Defined in**
 
 [src/client/model.ts:758](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/model.ts#L758)
 
-___
-
-### predictByBytes
+#### predictByBytes
 
 ▸ **predictByBytes**(`«destructured»`): `Promise`\
 
 Predicts the model based on the given inputs.
 Inputs can be provided as a Buffer.
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
@@ -38909,26 +38597,24 @@ Inputs can be provided as a Buffer.
 | › `inputType` | ``"image"`` \| ``"text"`` \| ``"video"`` \| ``"audio"`` |
 | › `outputConfig?` | `OutputConfig` |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
 - A promise that resolves to the model prediction.
 
-#### Defined in
+**Defined in**
 
 [src/client/model.ts:1255](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/model.ts#L1255)
 
-___
-
-### predictByFilepath
+#### predictByFilepath
 
 ▸ **predictByFilepath**(`«destructured»`): `Promise`\
 
 Predicts the model based on the given inputs.
 Inputs can be provided as a filepath which can be read.
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
@@ -38938,26 +38624,24 @@ Inputs can be provided as a filepath which can be read.
 | › `inputType` | ``"image"`` \| ``"text"`` \| ``"video"`` \| ``"audio"`` |
 | › `outputConfig?` | `OutputConfig` |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
 - A promise that resolves to the model prediction.
 
-#### Defined in
+**Defined in**
 
 [src/client/model.ts:1221](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/model.ts#L1221)
 
-___
-
-### predictByUrl
+#### predictByUrl
 
 ▸ **predictByUrl**(`«destructured»`): `Promise`\
 
 Predicts the model based on the given inputs.
 Inputs can be provided as a URL.
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
@@ -38967,71 +38651,65 @@ Inputs can be provided as a URL.
 | › `outputConfig?` | `OutputConfig` |
 | › `url` | `string` |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
 - A promise that resolves to the model prediction.
 
-#### Defined in
+**Defined in**
 
 [src/client/model.ts:1179](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/model.ts#L1179)
 
-___
-
-### setRunner
+#### setRunner
 
 ▸ **setRunner**(`runner`): `void`
 
 Sets the runner for the model.
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
 | `runner` | `Subset`\ |
 
-#### Returns
+**Returns**
 
 `void`
 
-#### Defined in
+**Defined in**
 
 [src/client/model.ts:202](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/model.ts#L202)
 
-___
-
-### stream
+#### stream
 
 ▸ **stream**(`config`): `Promise`\ `void` ; `iterator`: `AsyncGenerator`\ ; `send`: (`request`: `PostModelOutputsRequest`) => `void`  }\>
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
 | `config` | `TextModelPredictConfig` |
 
-#### Returns
+**Returns**
 
 `Promise`\ `void` ; `iterator`: `AsyncGenerator`\ ; `send`: (`request`: `PostModelOutputsRequest`) => `void`  }\>
 
-#### Defined in
+**Defined in**
 
 [src/client/model.ts:1034](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/model.ts#L1034)
 
-___
-
-### streamWithControl
+#### streamWithControl
 
 ▸ **streamWithControl**(`«destructured»`): `Object`
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
 | `«destructured»` | `TextModelPredictConfig` |
 
-#### Returns
+**Returns**
 
 `Object`
 
@@ -39041,19 +38719,18 @@ ___
 | `iterator` | `AsyncGenerator`\ |
 | `send` | (`request`: `PostModelOutputsRequest`) => `void` |
 
-#### Defined in
+**Defined in**
 
 [src/client/model.ts:931](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/model.ts#L931)
 
-___
-
-### updateParams
+#### updateParams
 
 ▸ **updateParams**(`modelParams`): `void`
 
 Updates the model params for the model.
 
-### Example
+**Example**
+
 ```ts
 import { Model } from "clarifai-nodejs";
 
@@ -39072,124 +38749,93 @@ model.updateParams({
 });
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `modelParams` | `Record`\ | The model params to update. |
 
-#### Returns
+**Returns**
 
 `void`
 
-#### Defined in
+**Defined in**
 
 [src/client/model.ts:415](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/model.ts#L415)
 
-___
-
-### getOutputDataFromModelResponse
+#### getOutputDataFromModelResponse
 
 ▸ **getOutputDataFromModelResponse**(`outputs`): `undefined` \| `AsObject`
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
 | `outputs` | `AsObject`[] |
 
-#### Returns
+**Returns**
 
 `undefined` \| `AsObject`
 
-#### Defined in
+**Defined in**
 
 [src/client/model.ts:641](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/model.ts#L641)
 
----
+## RAG
 
-## Class: RAG
+RAG is a class that provides access to Clarifai API endpoints related to RAG information.
 
-[clarifai-nodejs](../README.mdx) / [Exports](../modules.md) / RAG
+### Constructor
 
-# Class: RAG
+• **new RAG**(`«destructured»`): `RAG`
 
-## Table of contents
-
-### Constructors
-
-- [constructor](RAG.md#constructor)
-
-### Properties
-
-- [app](RAG.md#app)
-- [authConfig](RAG.md#authconfig)
-- [promptWorkflow](RAG.md#promptworkflow)
-
-### Methods
-
-- [chat](RAG.md#chat)
-- [upload](RAG.md#upload)
-- [validateInputs](RAG.md#validateinputs)
-- [setup](RAG.md#setup)
-
-## Constructors
-
-### constructor
-
-• **new RAG**(`«destructured»`): [`RAG`](RAG.md)
-
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
 | `«destructured»` | `RAGConfig` |
 
-#### Returns
+**Returns**
 
-[`RAG`](RAG.md)
+`RAG`
 
-#### Defined in
+**Defined in**
 
 [src/client/rag.ts:67](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/rag.ts#L67)
 
-## Properties
+### Properties
 
-### app
+#### app
 
-• **app**: [`App`](App.md)
+• **app**: `App`
 
-#### Defined in
+**Defined in**
 
 [src/client/rag.ts:65](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/rag.ts#L65)
 
-___
-
-### authConfig
+#### authConfig
 
 • `Private` **authConfig**: `AuthConfig`
 
-#### Defined in
+**Defined in**
 
 [src/client/rag.ts:61](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/rag.ts#L61)
 
-___
+#### promptWorkflow
 
-### promptWorkflow
+• **promptWorkflow**: `Workflow`
 
-• **promptWorkflow**: [`Workflow`](Workflow.md)
-
-#### Defined in
+**Defined in**
 
 [src/client/rag.ts:63](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/rag.ts#L63)
 
-## Methods
+### Methods
 
-### chat
+#### chat
 
 ▸ **chat**(`«destructured»`): `Promise`\
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
@@ -39197,21 +38843,19 @@ ___
 | › `clientManageState?` | `boolean` | `true` |
 | › `messages` | `Message`[] | `undefined` |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-#### Defined in
+**Defined in**
 
 [src/client/rag.ts:405](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/rag.ts#L405)
 
-___
-
-### upload
+#### upload
 
 ▸ **upload**(`«destructured»`): `Promise`\
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
@@ -39225,108 +38869,76 @@ ___
 | › `metadata?` | `Record`\ | `undefined` |
 | › `url?` | `string` | `undefined` |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-#### Defined in
+**Defined in**
 
 [src/client/rag.ts:283](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/rag.ts#L283)
 
-___
-
-### validateInputs
+#### validateInputs
 
 ▸ **validateInputs**(`workflowUrl?`, `workflow?`, `authConfig?`): `void`
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
 | `workflowUrl?` | `string` |
-| `workflow?` | [`Workflow`](Workflow.md) |
+| `workflow?` | [`Workflow`](#workflow) |
 | `authConfig?` | `AuthConfig` \| `UrlAuthConfig` |
 
-#### Returns
+**Returns**
 
 `void`
 
-#### Defined in
+**Defined in**
 
 [src/client/rag.ts:89](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/rag.ts#L89)
 
-___
-
-### setup
+**setup**
 
 ▸ **setup**(`«destructured»`): `Promise`\
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
 | `«destructured»` | `Object` | `undefined` |
-| › `appUrl?` | \`$\{string}://$\{string}/$\{string}/$\{string}\` | `undefined` |
-| › `authConfig?` | [`AuthAppConfig`](../modules.md#authappconfig) \| `Omit`\ & \{ `appId?`: `undefined`  } | `undefined` |
+| › `appUrl?` | `$\{string}://$\{string}/$\{string}/$\{string}\` | `undefined` |
+| › `authConfig?` | [`AuthAppConfig`](#authappconfig) \| `Omit`\ & \{ `appId?`: `undefined`  } | `undefined` |
 | › `baseWorkflow?` | `string` | `"Text"` |
-| › `llmUrl?` | `ClarifaiUrl` | `"https://clarifai.com/mistralai/completion/models/mistral-7B-Instruct"` |
+| › `llmUrl?` | `ClarifaiUrl` | [`mistral-7B-Instruct`](https://clarifai.com/mistralai/completion/models/mistral-7B-Instruct) |
 | › `maxResults?` | `number` | `5` |
 | › `minScore?` | `number` | `0.95` |
 | › `promptTemplate?` | `string` | `DEFAULT_RAG_PROMPT_TEMPLATE` |
 | › `workflowId?` | `string` | `undefined` |
 | › `workflowYamlFilename?` | `string` | `"prompter_wf.yaml"` |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-#### Defined in
+**Defined in**
 
 [src/client/rag.ts:109](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/rag.ts#L109)
 
----
+## Search
 
-## Class: Search
+Search is a class that provides access to Clarifai API endpoints related to Search information.
 
-[clarifai-nodejs](../README.mdx) / [Exports](../modules.md) / Search
-
-# Class: Search
-
-## Hierarchy
+This is its hierarchy:
 
 - `Lister`
 
   ↳ **`Search`**
 
-## Table of contents
+### Constructor
 
-### Constructors
+• **new Search**(`«destructured»`): `Search`
 
-- [constructor](Search.md#constructor)
-
-### Properties
-
-- [algorithm](Search.md#algorithm)
-- [dataProto](Search.md#dataproto)
-- [inputProto](Search.md#inputproto)
-- [metricDistance](Search.md#metricdistance)
-- [topK](Search.md#topk)
-
-### Methods
-
-- [getAnnotProto](Search.md#getannotproto)
-- [getGeoPointProto](Search.md#getgeopointproto)
-- [getInputProto](Search.md#getinputproto)
-- [listAllPagesGenerator](Search.md#listallpagesgenerator)
-- [query](Search.md#query)
-
-## Constructors
-
-### constructor
-
-• **new Search**(`«destructured»`): [`Search`](Search.md)
-
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
@@ -39336,75 +38948,67 @@ ___
 | › `metric?` | `SupportedMetric` | `DEFAULT_SEARCH_METRIC` |
 | › `topK?` | `number` | `DEFAULT_TOP_K` |
 
-#### Returns
+**Returns**
 
-[`Search`](Search.md)
+`Search`
 
-#### Overrides
+**Overrides**
 
 Lister.constructor
 
-#### Defined in
+**Defined in**
 
 [src/client/search.ts:59](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/search.ts#L59)
 
-## Properties
+### Properties
 
-### algorithm
+#### algorithm
 
 • `Private` **algorithm**: `SupportedAlgorithm`
 
-#### Defined in
+**Defined in**
 
 [src/client/search.ts:57](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/search.ts#L57)
 
-___
-
-### dataProto
+#### dataProto
 
 • `Private` **dataProto**: `Data`
 
-#### Defined in
+**Defined in**
 
 [src/client/search.ts:55](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/search.ts#L55)
 
-___
+#### inputProto
 
-### inputProto
+• `Private` **inputProto**: [`Input`](#input)
 
-• `Private` **inputProto**: `Input`
-
-#### Defined in
+**Defined in**
 
 [src/client/search.ts:56](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/search.ts#L56)
 
-___
-
-### metricDistance
+#### metricDistance
 
 • `Private` **metricDistance**: ``"COSINE_DISTANCE"`` \| ``"EUCLIDEAN_DISTANCE"``
 
-#### Defined in
+**Defined in**
 
 [src/client/search.ts:54](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/search.ts#L54)
 
-___
-
-### topK
+#### topK
 
 • `Private` **topK**: `number`
 
-#### Defined in
+**Defined in**
 
 [src/client/search.ts:53](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/search.ts#L53)
 
-## Methods
+### Methods
 
-### getAnnotProto
+#### getAnnotProto
 
 ▸ **getAnnotProto**(`args`): `Annotation`
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
@@ -39422,21 +39026,19 @@ ___
 | `args.metadata?` | `Record`\ |
 | `args.textRaw?` | `string` |
 
-#### Returns
+**Returns**
 
 `Annotation`
 
-#### Defined in
+**Defined in**
 
 [src/client/search.ts:94](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/search.ts#L94)
 
-___
-
-### getGeoPointProto
+#### getGeoPointProto
 
 ▸ **getGeoPointProto**(`longitude`, `latitude`, `geoLimit`): `Geo`
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
@@ -39444,21 +39046,19 @@ ___
 | `latitude` | `number` |
 | `geoLimit` | `number` |
 
-#### Returns
+**Returns**
 
 `Geo`
 
-#### Defined in
+**Defined in**
 
 [src/client/search.ts:204](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/search.ts#L204)
 
-___
-
-### getInputProto
+#### getInputProto
 
 ▸ **getInputProto**(`args`): `Input`
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
@@ -39476,27 +39076,25 @@ ___
 | `args.metadata?` | `Record`\ |
 | `args.textRaw?` | `string` |
 
-#### Returns
+**Returns**
 
 `Input`
 
-#### Defined in
+**Defined in**
 
 [src/client/search.ts:168](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/search.ts#L168)
 
-___
-
-### listAllPagesGenerator
+#### listAllPagesGenerator
 
 ▸ **listAllPagesGenerator**\(`«destructured»`): `AsyncGenerator`\
 
-#### Type parameters
+**Type parameters**
 
 | Name | Type |
 | :------ | :------ |
 | `T` | extends `PostAnnotationsSearchesRequest` \| `PostInputsSearchesRequest` |
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
@@ -39506,21 +39104,19 @@ ___
 | › `perPage?` | `number` | `undefined` |
 | › `requestData` | `T` | `undefined` |
 
-#### Returns
+**Returns**
 
 `AsyncGenerator`\
 
-#### Defined in
+**Defined in**
 
 [src/client/search.ts:221](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/search.ts#L221)
 
-___
-
-### query
+#### query
 
 ▸ **query**(`«destructured»`): `AsyncGenerator`\
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
@@ -39530,56 +39126,32 @@ ___
 | › `perPage?` | `number` |
 | › `ranks?` | \{ `concepts?`: \{ `id?`: `string` ; `language?`: `string` ; `name?`: `string` ; `value?`: `number`  }[] ; `geoPoint?`: \{ `geoLimit`: `number` ; `latitude`: `number` ; `longitude`: `number`  } ; `imageBytes?`: `unknown` ; `imageUrl?`: `string` ; `inputDatasetIds?`: `string`[] ; `inputStatusCode?`: `number` ; `inputTypes?`: (``"image"`` \| ``"text"`` \| ``"video"`` \| ``"audio"``)[] ; `metadata?`: `Record`\ ; `textRaw?`: `string`  }[] |
 
-#### Returns
+**Returns**
 
 `AsyncGenerator`\
 
-#### Defined in
+**Defined in**
 
 [src/client/search.ts:290](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/search.ts#L290)
 
----
-
-## Class: User
-
-[clarifai-nodejs](../README.mdx) / [Exports](../modules.md) / User
-
-# Class: User
+## User
 
 User is a class that provides access to Clarifai API endpoints related to user information.
 
-## Hierarchy
+This is its hierarchy:
 
 - `Lister`
 
   ↳ **`User`**
 
-## Table of contents
+### Constructor
 
-### Constructors
+• **new User**(`authConfig?`): `User`
 
-- [constructor](User.md#constructor)
+Initializes a User object with the specified authentication configuration.
 
-### Methods
+**Example**
 
-- [app](User.md#app)
-- [createApp](User.md#createapp)
-- [createRunner](User.md#createrunner)
-- [deleteApp](User.md#deleteapp)
-- [deleteRunner](User.md#deleterunner)
-- [listApps](User.md#listapps)
-- [listRunners](User.md#listrunners)
-- [runner](User.md#runner)
-
-## Constructors
-
-### constructor
-
-• **new User**(`authConfig?`): [`User`](User.md)
-
-Initializes an User object with the specified authentication configuration.
-
-### Example
 ```ts
 import { User } from "clarifai-nodejs";
 
@@ -39590,33 +39162,34 @@ export const user = new User({
 });
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `authConfig` | `AuthConfig` | An object containing the authentication configuration. Defaults to an empty object. |
 
-#### Returns
+**Returns**
 
-[`User`](User.md)
+`User`
 
-#### Overrides
+**Overrides**
 
 Lister.constructor
 
-#### Defined in
+**Defined in**
 
 [src/client/user.ts:45](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/user.ts#L45)
 
-## Methods
+### Methods
 
-### app
+#### app
 
 ▸ **app**(`appId`): `Promise`\
 
 Returns an App object for the specified app ID.
 
-### Example
+**Example**
+
 ```ts
 import { User } from "clarifai-nodejs";
 
@@ -39631,32 +39204,31 @@ const app = await user.app({
 console.log(app);
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `appId` | `Object` | The app ID for the app to interact with. |
 | `appId.appId` | `string` | - |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
 An App object for the specified app ID.
 
-#### Defined in
+**Defined in**
 
 [src/client/user.ts:240](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/user.ts#L240)
 
-___
-
-### createApp
+#### createApp
 
 ▸ **createApp**(`«destructured»`): `Promise`\
 
 Creates an app for the user.
 
-### Example
+**Example**
+
 ```ts
 import { User } from "clarifai-nodejs";
 
@@ -39672,7 +39244,7 @@ const app = await user.createApp({
 console.log(app);
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
@@ -39680,25 +39252,24 @@ console.log(app);
 | › `appId` | `string` | `undefined` |
 | › `baseWorkflow?` | `string` | `"Empty"` |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
 An App object for the specified app ID.
 
-#### Defined in
+**Defined in**
 
 [src/client/user.ts:141](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/user.ts#L141)
 
-___
-
-### createRunner
+#### createRunner
 
 ▸ **createRunner**(`«destructured»`): `Promise`\
 
 Creates a runner for the user.
 
-### Example
+**Example**
+
 ```ts
 import { User } from "clarifai-nodejs";
 
@@ -39715,7 +39286,7 @@ const runner = await user.createRunner({
 console.log(runner);
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
@@ -39724,54 +39295,51 @@ console.log(runner);
 | › `labels` | `string`[] |
 | › `runnerId` | `string` |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
 A runner object for the specified Runner ID.
 
-#### Defined in
+**Defined in**
 
 [src/client/user.ts:192](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/user.ts#L192)
 
-___
-
-### deleteApp
+#### deleteApp
 
 ▸ **deleteApp**(`appId`): `Promise`\
 
 Deletes an app for the user.
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `appId` | `Object` | The app ID for the app to delete. |
 | `appId.appId` | `string` | - |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-**`Example`**
+**Example**
 
 ```ts
 examples/user/deleteApp.ts
 ```
 
-#### Defined in
+**Defined in**
 
 [src/client/user.ts:304](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/user.ts#L304)
 
-___
-
-### deleteRunner
+#### deleteRunner
 
 ▸ **deleteRunner**(`runnerId`): `Promise`\
 
 Deletes a runner for the user.
 
-### Example
+**Example**
+
 ```ts
 import { User } from "clarifai-nodejs";
 
@@ -39783,30 +39351,29 @@ export const user = new User({
 await user.deleteRunner({ runnerId: "runner_id" });
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `runnerId` | `Object` | The runner ID to delete. |
 | `runnerId.runnerId` | `string` | - |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-#### Defined in
+**Defined in**
 
 [src/client/user.ts:331](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/user.ts#L331)
 
-___
-
-### listApps
+#### listApps
 
 ▸ **listApps**(`«destructured»?`): `AsyncGenerator`\
 
 Lists all the apps for the user.
 
-### Example
+**Example**
+
 ```ts
 import { User } from "clarifai-nodejs";
 
@@ -39828,41 +39395,40 @@ const apps = list.value;
 console.log(apps);
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
 | `«destructured»` | `Object` |
 | › `pageNo?` | `number` |
-| › `params?` | [`ListAppsRequestParams`](../modules.md#listappsrequestparams) |
+| › `params?` | [`ListAppsRequestParams`](#listappsrequestparams) |
 | › `perPage?` | `number` |
 
-#### Returns
+**Returns**
 
 `AsyncGenerator`\
 
-**`Yields`**
+**Yields**
 
 App objects for the user.
 
-**`Note`**
+**Note**
 
 Defaults to 16 per page if pageNo is specified and perPage is not specified.
 If both pageNo and perPage are None, then lists all the resources.
 
-#### Defined in
+**Defined in**
 
 [src/client/user.ts:62](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/user.ts#L62)
 
-___
-
-### listRunners
+#### listRunners
 
 ▸ **listRunners**(`«destructured»?`): `AsyncGenerator`\
 
 Lists all the runners for the user.
 
-### Example
+**Example**
+
 ```ts
 import { User } from "clarifai-nodejs";
 
@@ -39876,40 +39442,39 @@ const runners = list.value;
 console.log(runners);
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
 | `«destructured»` | `Object` |
 | › `pageNo?` | `number` |
-| › `params?` | [`ListRunnersRequestParams`](../modules.md#listrunnersrequestparams) |
+| › `params?` | [`ListRunnersRequestParams`](#listrunnersrequestparams) |
 | › `perPage?` | `number` |
 
-#### Returns
+**Returns**
 
 `AsyncGenerator`\
 
-**`Yields`**
+**Yields**
 
 Runner objects for the user.
 
-**`Note`**
+**Note**
 
 Defaults to 16 per page if perPage is not specified.
 
-#### Defined in
+**Defined in**
 
 [src/client/user.ts:103](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/user.ts#L103)
 
-___
-
-### runner
+#### runner
 
 ▸ **runner**(`runnerId`): `Promise`\
 
 Returns a Runner object if exists.
 
-### Example
+**Example**
+
 ```ts
 import { User } from "clarifai-nodejs";
 
@@ -39922,141 +39487,108 @@ const runner = await user.runner({ runnerId: "runner_id" });
 console.log(runner);
 ```
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `runnerId` | `Object` | The runner ID to interact with. |
 | `runnerId.runnerId` | `string` | - |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
 A Runner object for the existing runner ID.
 
-#### Defined in
+**Defined in**
 
 [src/client/user.ts:272](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/user.ts#L272)
 
----
+## Workflow
 
-## Class: Workflow
+Workflow is a class that provides access to Clarifai API endpoints related to workflow information.
 
-[clarifai-nodejs](../README.mdx) / [Exports](../modules.md) / Workflow
-
-# Class: Workflow
-
-## Hierarchy
+This is its hierarchy:
 
 - `Lister`
 
   ↳ **`Workflow`**
 
-## Table of contents
+### Constructor
 
-### Constructors
+• **new Workflow**(`«destructured»`): `Workflow`
 
-- [constructor](Workflow.md#constructor)
-
-### Properties
-
-- [appId](Workflow.md#appid)
-- [id](Workflow.md#id)
-- [outputConfig](Workflow.md#outputconfig)
-- [versionId](Workflow.md#versionid)
-
-### Methods
-
-- [exportWorkflow](Workflow.md#exportworkflow)
-- [listVersions](Workflow.md#listversions)
-- [predict](Workflow.md#predict)
-- [predictByBytes](Workflow.md#predictbybytes)
-- [predictByUrl](Workflow.md#predictbyurl)
-
-## Constructors
-
-### constructor
-
-• **new Workflow**(`«destructured»`): [`Workflow`](Workflow.md)
-
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
 | `«destructured»` | `WorkflowConfig` |
 
-#### Returns
+**Returns**
 
-[`Workflow`](Workflow.md)
+`Workflow`
 
-#### Overrides
+**Overrides**
 
 Lister.constructor
 
-#### Defined in
+**Defined in**
 
 [src/client/workflow.ts:55](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/workflow.ts#L55)
 
-## Properties
+### Properties
 
-### appId
+#### appId
 
 • **appId**: `string`
 
-#### Defined in
+**Defined in**
 
 [src/client/workflow.ts:52](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/workflow.ts#L52)
 
-___
-
-### id
+#### id
 
 • **id**: `string`
 
-#### Defined in
+**Defined in**
 
 [src/client/workflow.ts:51](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/workflow.ts#L51)
 
-___
-
-### outputConfig
+#### outputConfig
 
 • `Private` **outputConfig**: `OutputConfig`
 
-#### Defined in
+**Defined in**
 
 [src/client/workflow.ts:53](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/workflow.ts#L53)
 
-___
-
-### versionId
+#### versionId
 
 • `Private` **versionId**: `string`
 
-#### Defined in
+**Defined in**
 
 [src/client/workflow.ts:50](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/workflow.ts#L50)
 
-## Methods
+### Methods
 
-### exportWorkflow
+#### exportWorkflow
 
 ▸ **exportWorkflow**(`outPath`): `Promise`\
 
 Exports the workflow to a yaml file.
 
-#### Parameters
+**Parameters**
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `outPath` | `string` | The path to save the yaml file to. |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-**`Example`**
+**Example**
 
 ```typescript
 import { Workflow } from "./workflow";
@@ -40065,17 +39597,15 @@ const workflow = new Workflow("https://clarifai.com/clarifai/main/workflows/Demo
 await workflow.export("out_path.yml");
 ```
 
-#### Defined in
+**Defined in**
 
 [src/client/workflow.ts:267](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/workflow.ts#L267)
 
-___
-
-### listVersions
+#### listVersions
 
 ▸ **listVersions**(`«destructured»`): `AsyncGenerator`\
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
@@ -40083,21 +39613,19 @@ ___
 | › `pageNo?` | `number` |
 | › `perPage?` | `number` |
 
-#### Returns
+**Returns**
 
 `AsyncGenerator`\
 
-#### Defined in
+**Defined in**
 
 [src/client/workflow.ts:221](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/workflow.ts#L221)
 
-___
-
-### predict
+#### predict
 
 ▸ **predict**(`«destructured»`): `Promise`\
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
@@ -40105,110 +39633,67 @@ ___
 | › `inputs` | `Input`[] |
 | › `workflowStateId?` | `string` |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-#### Defined in
+**Defined in**
 
 [src/client/workflow.ts:84](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/workflow.ts#L84)
 
-___
-
-### predictByBytes
+#### predictByBytes
 
 ▸ **predictByBytes**(`inputBytes`, `inputType`): `Promise`\
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
 | `inputBytes` | `Buffer` |
 | `inputType` | ``"image"`` \| ``"text"`` \| ``"video"`` \| ``"audio"`` |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-#### Defined in
+**Defined in**
 
 [src/client/workflow.ts:160](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/workflow.ts#L160)
 
-___
-
-### predictByUrl
+#### predictByUrl
 
 ▸ **predictByUrl**(`url`, `inputType`): `Promise`\
 
-#### Parameters
+**Parameters**
 
 | Name | Type |
 | :------ | :------ |
 | `url` | `string` |
 | `inputType` | ``"image"`` \| ``"text"`` \| ``"video"`` \| ``"audio"`` |
 
-#### Returns
+**Returns**
 
 `Promise`\
 
-#### Defined in
+**Defined in**
 
 [src/client/workflow.ts:199](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/workflow.ts#L199)
-
----
-
-## clarifai-nodejs
-
-[clarifai-nodejs](README.mdx) / Exports
-
-# clarifai-nodejs
-
-## Table of contents
-
-### Classes
-
-- [App](classes/App.md)
-- [Dataset](classes/Dataset.md)
-- [Input](classes/Input.md)
-- [Model](classes/Model.md)
-- [RAG](classes/RAG.md)
-- [Search](classes/Search.md)
-- [User](classes/User.md)
-- [Workflow](classes/Workflow.md)
-
-### Type Aliases
-
-- [AppConfig](modules.md#appconfig)
-- [AuthAppConfig](modules.md#authappconfig)
-- [CreateDatasetParam](modules.md#createdatasetparam)
-- [CreateModelParam](modules.md#createmodelparam)
-- [InputBulkUpload](modules.md#inputbulkupload)
-- [ListAppsRequestParams](modules.md#listappsrequestparams)
-- [ListDatasetsParam](modules.md#listdatasetsparam)
-- [ListInstalledModuleVersionsParam](modules.md#listinstalledmoduleversionsparam)
-- [ListModelsParam](modules.md#listmodelsparam)
-- [ListModulesParam](modules.md#listmodulesparam)
-- [ListRunnersRequestParams](modules.md#listrunnersrequestparams)
-- [ListWorkflowsParam](modules.md#listworkflowsparam)
-- [UserConfig](modules.md#userconfig)
 
 ## Type Aliases
 
 ### AppConfig
 
-Ƭ **AppConfig**: \{ `authConfig`: [`AuthAppConfig`](modules.md#authappconfig) ; `url`: `ClarifaiAppUrl`  } \| \{ `authConfig`: `AuthConfig` ; `url?`: `undefined`  }
+Ƭ **AppConfig**: \{ `authConfig`: [`AuthAppConfig`](#authappconfig) ; `url`: `ClarifaiAppUrl`  } \| \{ `authConfig`: `AuthConfig` ; `url?`: `undefined`  }
 
-#### Defined in
+**Defined in**
 
 [src/client/app.ts:55](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/app.ts#L55)
-
-___
 
 ### AuthAppConfig
 
 Ƭ **AuthAppConfig**: `Object`
 
-#### Type declaration
+**Type declaration**
 
 | Name | Type |
 | :------ | :------ |
@@ -40220,17 +39705,15 @@ ___
 | `ui` | `undefined` \| `string` |
 | `userId?` | `undefined` |
 
-#### Defined in
+**Defined in**
 
 [src/client/app.ts:50](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/app.ts#L50)
-
-___
 
 ### CreateDatasetParam
 
 Ƭ **CreateDatasetParam**: `Object`
 
-#### Type declaration
+**Type declaration**
 
 | Name | Type |
 | :------ | :------ |
@@ -40250,17 +39733,15 @@ ___
 | `version` | `undefined` \| `AsObject` |
 | `visibility` | `undefined` \| `AsObject` |
 
-#### Defined in
+**Defined in**
 
 [src/client/app.ts:75](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/app.ts#L75)
-
-___
 
 ### CreateModelParam
 
 Ƭ **CreateModelParam**: `Object`
 
-#### Type declaration
+**Type declaration**
 
 | Name | Type |
 | :------ | :------ |
@@ -40299,17 +39780,15 @@ ___
 | `visibility` | `undefined` \| `AsObject` |
 | `workflowRecommended` | `undefined` \| `AsObject` |
 
-#### Defined in
+**Defined in**
 
 [src/client/app.ts:79](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/app.ts#L79)
-
-___
 
 ### InputBulkUpload
 
 Ƭ **InputBulkUpload**: `Object`
 
-#### Type declaration
+**Type declaration**
 
 | Name | Type |
 | :------ | :------ |
@@ -40330,17 +39809,15 @@ ___
 | `removeListener` | \(`eventName`: `string` \| `symbol`, `listener`: (...`args`: `any`[]) => `void`) => `this` |
 | `setMaxListeners` | (`n`: `number`) => `this` |
 
-#### Defined in
+**Defined in**
 
 [src/client/input.ts:80](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/input.ts#L80)
-
-___
 
 ### ListAppsRequestParams
 
 Ƭ **ListAppsRequestParams**: `Object`
 
-#### Type declaration
+**Type declaration**
 
 | Name | Type |
 | :------ | :------ |
@@ -40360,17 +39837,15 @@ ___
 | `starredOnly` | `undefined` \| `boolean` |
 | `templateOnly` | `undefined` \| `boolean` |
 
-#### Defined in
+**Defined in**
 
 [src/client/user.ts:22](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/user.ts#L22)
-
-___
 
 ### ListDatasetsParam
 
 Ƭ **ListDatasetsParam**: `Object`
 
-#### Type declaration
+**Type declaration**
 
 | Name | Type |
 | :------ | :------ |
@@ -40386,33 +39861,29 @@ ___
 | `sortByStarCount` | `undefined` \| `boolean` |
 | `starredOnly` | `undefined` \| `boolean` |
 
-#### Defined in
+**Defined in**
 
 [src/client/app.ts:65](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/app.ts#L65)
-
-___
 
 ### ListInstalledModuleVersionsParam
 
 Ƭ **ListInstalledModuleVersionsParam**: `Object`
 
-#### Type declaration
+**Type declaration**
 
 | Name | Type |
 | :------ | :------ |
 | `page` | `undefined` \| `number` |
 
-#### Defined in
+**Defined in**
 
 [src/client/app.ts:73](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/app.ts#L73)
-
-___
 
 ### ListModelsParam
 
 Ƭ **ListModelsParam**: `Object`
 
-#### Type declaration
+**Type declaration**
 
 | Name | Type |
 | :------ | :------ |
@@ -40447,17 +39918,15 @@ ___
 | `trainedOnly` | `undefined` \| `boolean` |
 | `useCasesList` | `undefined` \| `string`[] |
 
-#### Defined in
+**Defined in**
 
 [src/client/app.ts:67](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/app.ts#L67)
-
-___
 
 ### ListModulesParam
 
 Ƭ **ListModulesParam**: `Object`
 
-#### Type declaration
+**Type declaration**
 
 | Name | Type |
 | :------ | :------ |
@@ -40474,17 +39943,15 @@ ___
 | `sortByStarCount` | `undefined` \| `boolean` |
 | `starredOnly` | `undefined` \| `boolean` |
 
-#### Defined in
+**Defined in**
 
 [src/client/app.ts:71](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/app.ts#L71)
-
-___
 
 ### ListRunnersRequestParams
 
 Ƭ **ListRunnersRequestParams**: `Object`
 
-#### Type declaration
+**Type declaration**
 
 | Name | Type |
 | :------ | :------ |
@@ -40494,17 +39961,15 @@ ___
 | `nodepoolId` | `undefined` \| `string` |
 | `page` | `undefined` \| `number` |
 
-#### Defined in
+**Defined in**
 
 [src/client/user.ts:24](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/user.ts#L24)
-
-___
 
 ### ListWorkflowsParam
 
 Ƭ **ListWorkflowsParam**: `Object`
 
-#### Type declaration
+**Type declaration**
 
 | Name | Type |
 | :------ | :------ |
@@ -40523,17 +39988,15 @@ ___
 | `sortByStarCount` | `undefined` \| `boolean` |
 | `starredOnly` | `undefined` \| `boolean` |
 
-#### Defined in
+**Defined in**
 
 [src/client/app.ts:69](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/app.ts#L69)
-
-___
 
 ### UserConfig
 
 Ƭ **UserConfig**: `Object`
 
-#### Type declaration
+**Type declaration**
 
 | Name | Type |
 | :------ | :------ |
@@ -40545,7 +40008,7 @@ ___
 | `ui` | `undefined` \| `string` |
 | `userId` | `string` |
 
-#### Defined in
+**Defined in**
 
 [src/client/user.ts:21](https://github.com/Clarifai/clarifai-nodejs/blob/435d969/src/client/user.ts#L21)
 
