@@ -5,7 +5,7 @@ unlisted: true
 toc_max_heading_level: 4
 ---
 
-# Third-Party API Keys
+# Environment Secrets
 
 **Securely connect external services with secrets**
 <hr />

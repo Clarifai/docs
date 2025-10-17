@@ -80,7 +80,7 @@ import CLIUnaryStreamImage from "!!raw-loader!../../../../code_snippets/python-s
 
 ### Get a PAT Key
 
-You need a PAT (Personal Access Token) key to authenticate your connection to the Clarifai platform. You can generate the PAT key in your personal settings page by navigating to the **Security** section.
+You need a [PAT](https://docs.clarifai.com/control/authentication/pat/#how-to-create-a-pat-on-the-platform) (Personal Access Token) key to authenticate your connection to the Clarifai platform. You can get one by navigating to **Settings** in the collapsible left sidebar, selecting **Secrets**, and creating or copying an existing token from there.
 
 You can then set the PAT as an environment variable using `CLARIFAI_PAT`. This also authenticates your session when using the Clarifai’s CLI. 
 

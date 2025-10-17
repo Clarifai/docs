@@ -42,7 +42,7 @@ You can easily find a model to use by heading to the Community homepage and expl
 
 ## Step 3: Get a PAT Key
 
-To authenticate your connection to Clarifai, you’ll need a [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat). You can obtain one from your personal settings page by navigating to the **Security** section.
+To authenticate your connection to Clarifai, you’ll need a [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat). You can get one by navigating to **Settings** in the collapsible left sidebar, selecting **Secrets**, and creating or copying an existing token from there.
 
 Then, set the PAT as an environment variable using `CLARIFAI_PAT`. This will authenticate your session when using the SDKs, including the [Clarifai CLI](https://docs.clarifai.com/resources/api-overview/cli).
 

@@ -43,7 +43,7 @@ Install the `litellm` package.
 
 ### Get a PAT Key
 
-You need a [PAT](https://docs.clarifai.com/control/authentication/pat) key to authenticate your connection to the Clarifai platform. You can generate the PAT key in your personal settings page by navigating to the [Security section](https://clarifai.com/settings/security).
+You need a [PAT](https://docs.clarifai.com/control/authentication/pat) key to authenticate your connection to the Clarifai platform. You can get one by navigating to **Settings** in the collapsible left sidebar, selecting **Secrets**, and creating or copying an existing token from there.
 
 You can then set the PAT as an environment variable using `CLARIFAI_PAT`:
 
