@@ -40,8 +40,8 @@ To get started, [log in to](https://clarifai.com/login) your existing Clarifai a
 Next, retrieve the following credentials:
 
 - **App ID** – Navigate to your application’s page and select the [**Overview**](https://docs.clarifai.com/create/applications/manage#app-overview) option in the collapsible left sidebar. Get the app ID from there. 
-- **User ID** – Go to your personal settings page and locate your user ID under the **Account** section.
-- **PAT** – From the same personal settings page, go to the **Security** section to generate or copy your [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat). This token is used to authenticate your connection with the Clarifai platform.
+- **User ID** – Navigate to **Settings** in the collapsible left sidebar and select the **Account** option. Then, copy your user ID from that page. 
+- **PAT** – From the same **Settings** menu, go to the **Secrets** page to generate or copy your [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat). This token is used to authenticate your connection with the Clarifai platform.
 
 You need to set the `CLARIFAI_PAT` you've retrieved as an environment variable. 
 

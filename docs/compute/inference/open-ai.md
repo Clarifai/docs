@@ -57,7 +57,7 @@ Install the `openai` package.
 
 ### Get a PAT Key
 
-You need a [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat) key to authenticate your connection to the Clarifai platform. You can obtain one from your personal settings page by navigating to the **Security** section.
+You need a [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat) key to authenticate your connection to the Clarifai platform. You can get one by navigating to **Settings** in the collapsible left sidebar, selecting **Secrets**, and creating or copying an existing token from there.
 
 You can then set the PAT as an environment variable using `CLARIFAI_PAT`:
 

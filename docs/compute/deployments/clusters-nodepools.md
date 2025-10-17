@@ -165,7 +165,7 @@ pip install --upgrade clarifai
 
 #### Get a PAT
 
-You need a [PAT (Personal Access Token)](https://docs.clarifai.com/control/authentication/pat) key to authenticate with the Clarifai platform. You can generate one from your personal settings page under the **Security** section.
+You need a [PAT (Personal Access Token)](https://docs.clarifai.com/control/authentication/pat) key to authenticate with the Clarifai platform. You can get one by navigating to **Settings** in the collapsible left sidebar, selecting **Secrets**, and creating or copying an existing token from there.
 
 After generating it, set the token as an environment variable.
 
