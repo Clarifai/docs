@@ -183,22 +183,26 @@ const config = {
                 label: 'Clarifai Website',
                 href: 'https://clarifai.com',
               },
+              {
+                label: 'Contact Us',
+                href: 'https://www.clarifai.com/explore/contact-us',
+              },
             ],
           },
           {
             title: 'Community',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/clarifai',
+                label: 'Discord',
+                href: 'https://discord.gg/WgUvPK4pVD',
               },
               {
-                label: 'Slack',
-                href: 'https://join.slack.com/t/clarifaicommunity/shared_invite/zt-1jehqesme-l60djcd3c_4a1eCV~uPUjQ',
+                label: 'YouTube',
+                href: 'https://www.youtube.com/@theworldsai',
               },
               {
-                label: 'Twitter',
-                href: 'https://twitter.com/clarifai',
+                label: 'X',
+                href: 'https://x.com/clarifai',
               },
             ],
           },
@@ -211,11 +215,7 @@ const config = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
-              },
-              {
-                label: 'Facebook',
-                href: 'https://www.facebook.com/Clarifai/',
+                href: 'https://github.com/Clarifai/docs',
               },
             ],
           },
