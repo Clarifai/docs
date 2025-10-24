@@ -15,7 +15,12 @@ const config = {
   url: 'https://docs.clarifai.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+      
+    },
+  },
   favicon: 'img/favicon.svg',
   organizationName: 'clarifai',
   projectName: 'docs',
@@ -86,7 +91,8 @@ const config = {
         indexName: 'clarifai',
         insights: true, // Optional, automatically send insights when user interacts with search results    
         container: 'div',
-        debug: false // Set debug to true if you want to inspect the modal
+        debug: false, // Set debug to true if you want to inspect the modal
+        //askAi: 'XJeh2AHeZQsK',
 
       },
       announcementBar: {

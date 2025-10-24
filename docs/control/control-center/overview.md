@@ -35,13 +35,7 @@ You can still use the Control Center to track your metrics for a specified date 
 
 :::
 
-## Chart Features
-
-Charts in the Overview and across the Control Center share several common features that make data visualization and interaction more intuitive.
-
-Let’s take a closer look at these features.
-
-### Smart Insights
+## Smart Insights
 
 Smart Insights at the top of the page allows you to uncover usage insights through a conversational interface. It enables you to interact with your data naturally — by simply asking questions in plain language — rather than navigating multiple reports or charts.
 
@@ -49,21 +43,13 @@ Smart Insights at the top of the page allows you to uncover usage insights throu
 
 In the search field, you can type a query such as _“How much am I spending each month”_ or any other question related to your usage, costs, or operations.
 
-Once you submit your question, the system processes your query and retrieves relevant insights based on your usage data. These insights are displayed directly in the interface, which records your past interactions for easy reference.
+Once you submit your question, the AI system processes your query and retrieves relevant insights based on your usage data. These insights are displayed directly in the interface, which records your past interactions for easy reference.
 
-### Pin Charts
+## Chart Features
 
-Once you pin a chart from other tabs within the Control Center, it will automatically appear in the Overview. 
+Charts in the Overview and across the Control Center share several common features that make data visualization and interaction more intuitive.
 
-> **Tip:** You can also click the **Pin to overview page** button directly within the Overview to quickly add the suggested chart to the section.
-
-> ![](/img/community/control-center/control_center_4.png)
-
-In the [next section](./usage/#common-chart-features), we’ll explore charts in more detail and walk you through how to add them to the Overview tab.
-
-You can remove a chart from the Overview by simply clicking the delete button (**X**) in the upper-right corner. This action will only remove the chart from the Overview, without deleting it from the respective data section of the Control Center.
-
-![](/img/community/control-center/control_center_5.png)
+Let’s take a closer look at these features.
 
 ### Configure Page
 
@@ -81,7 +67,7 @@ Charts can also be reordered easily using the drag handle (**⋮⋮**) next to e
 
 Once you’ve finished adjusting your layout, click the close (**X**) button in the upper-right corner of the configuration panel to exit.
 
-> **Alternatively:** In addition to the main configuration panel, each chart includes its own configuration options. By clicking the **configure icon** in the upper-right corner of a chart, you can quickly align it to the left, right, or full width, or open the main configuration panel for more advanced layout adjustments.
+> **Alternatively:** In addition to the main configuration panel, each chart includes its own configuration options. By clicking the **configure icon** in the upper-right corner of a chart, you can use the drop-down to quickly align it to the left, right, or full width, or open the main configuration panel for more advanced layout adjustments.
 
 > You can also reorder a chart easily using the drag handle (**⋮⋮**) next to its name.
 
@@ -101,3 +87,17 @@ You can also use the date picker button at the bottom of the drop-down window to
 
 After choosing your preferred date range, click the **Apply** button.
 
+
+### Pin Charts
+
+Once you pin a chart from other tabs within the Control Center, it will automatically appear in the Overview. 
+
+> **Tip:** You can also click the **Pin to overview page** button directly within the Overview to quickly add the suggested chart to the page.
+
+> ![](/img/community/control-center/control_center_4.png)
+
+In the [next section](./usage/#common-chart-features), we’ll explore charts in more detail and walk you through how to add them to the Overview tab.
+
+You can remove a chart from the Overview by simply clicking the delete button (**X**) in the upper-right corner. This action will only remove the chart from the Overview, without deleting it from the respective data section of the Control Center.
+
+![](/img/community/control-center/control_center_5.png)
