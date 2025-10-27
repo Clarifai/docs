@@ -7291,6 +7291,8 @@ Clarifai Control Center is a unified dashboard, a single pane of glass to monito
 
 The Control Center is organized into multiple tabs and offers a versatile and intuitive way to explore specific details. The key functionalities include charts of different types, tables, date ranges, as well as filtering and sorting options. 
 
+> _**Note:** While the video above does not reflect the current Control Center UI, it accurately demonstrates how the dashboard functions._
+
 ## Your Central Hub for AI Operations
 
 The Control Center is your go-to dashboard for managing and monitoring everything you do on the Clarifai platform. 
@@ -7691,19 +7693,9 @@ These actions are part of the broader set of activities tracked by the Audit Log
 
 The Costs & Budget tab offers detailed insights into your financial data, allowing self-service users to easily view and monitor the costs associated with billable operations on our platform. It simplifies expense tracking and management, offering greater control over your spending.
 
-To access it, go to the Control Center and select the Costs & Budget tab in the collapsible left sidebar.
+To access it, go to the [Control Center](README.mdx#how-to-access-the-control-center) and select the Costs & Budget tab in the collapsible left sidebar.
 
-![](/img/community/control-center/costs_budget_1.png)
-
-:::note date range selection
-
-You can use the date range control in the upper-right corner of the page to filter and view data for specific time periods. After selecting a date range, the output of the Costs & Budget page will be based on the selected period. You can learn more about the feature [here](overview.md#date-range-selection).
-
-:::
-
-> **Note:** Pricing for historical data is based on current rates, without accounting for any past price changes.
-
-## Overview
+![](/img/community/control-center/costs_budget_1_1.png)
 
 The overview section of the Costs & Budget page provides a quick analysis of your total expenses on the Clarifai platform for the selected time period.
 
@@ -7716,15 +7708,21 @@ It tells you:
 - The total cost of search operations
 - The total cost of storing inputs
 
+:::note
+
+Pricing for historical data is based on current rates, without accounting for any past price changes.
+
+:::
+
 ##  Common Chart Features
 
 The Costs & Budget page has interactive charts that help you visualize your expenses on the Clarifai platform for the selected period. 
 
 Some of the key functionalities include the ability to drag charts, pin your favorites, switch between different chart types, and use tooltips for detailed insights. 
 
-![](/img/community/control-center/costs_budget_2.png)
+![](/img/community/control-center/costs_budget_2-1.png)
 
-> **Note:** The charts in the Costs & Budget tab are linked to related charts in the Usage & Operations tab, and vice versa. These cross-navigation links allow you to seamlessly explore related insights. For example, the Total Costs chart includes a link in the lower-right corner that directs you to the corresponding Total Number of Operations chart.
+> **Note:** The charts in the Costs & Budget tab are linked to related charts in the [Usage & Operations](usage.md) tab, and vice versa. These cross-navigation links allow you to seamlessly explore related insights. For example, the Cost of Operations chart includes a link in the lower-right corner that directs you to the corresponding Total Number Operations chart.
 
 If you click the **View Report Details** button in the lower-right corner of a chart, you’ll be redirected to a detailed report page. 
 
@@ -7732,7 +7730,11 @@ Here, you'll find a comprehensive breakdown of each cost type for the selected p
 
 ![](/img/community/control-center/costs_budget_3.png)
 
+:::note Learn more
+
 Learn more about using these chart features [here](./usage/#common-chart-features).
+
+:::
 
 ## Total Costs
 
@@ -7742,28 +7744,6 @@ It helps you track spending across each operation.
 
 ![](/img/community/control-center/costs_budget_4.png)
 
-## Training Cost
-
-This section displays the total cost of training your [deep training](https://docs.clarifai.com/portal-guide/model/deep-training/) and [transfer learning](https://docs.clarifai.com/portal-guide/model/model-types/transfer-learning) models, along with the average daily cost, during the selected time period. 
-
-![](/img/community/control-center/costs_budget_5.png)
-
-## Model Predictions Cost by Type and Date
-
-This section displays the total cost of all your model predictions, along with the average daily cost, during the selected time period. 
-
-It helps you track spending across each model type.
-
-![](/img/community/control-center/costs_budget_6.png)
-
-## Model Predictions Cost by ID and Date
-
-This section displays the total cost of all your model predictions, along with the average daily cost, during the selected time period. 
-
-It helps you track spending across each model ID.
-
-![](/img/community/control-center/costs_budget_7.png)
-
 ## Cost of Operations
 
 This section displays the total cost of all your operations, along with the average daily cost, during the selected time period. 
@@ -7771,6 +7751,44 @@ This section displays the total cost of all your operations, along with the aver
 It helps you track spending across your model predictions and search operations.
 
 ![](/img/community/control-center/costs_budget_8.png)
+
+## Models Cost by Type and Date
+
+This section displays the total cost of all your model predictions, along with the average daily cost, during the selected time period. 
+
+It helps you track spending trends by model type across specific dates.
+
+![](/img/community/control-center/costs_budget_6.png)
+
+## Models Cost by ID and Date
+
+This section displays the total cost of all your model predictions, along with the average daily cost, during the selected time period. 
+
+It helps you track spending trends by model ID across specific dates.
+
+![](/img/community/control-center/costs_budget_7.png)
+
+## Models Cost by Type
+
+This section displays the total cost of all your model predictions, along with the average daily cost, during the selected time period. 
+
+It helps you track spending across each model type.
+
+![](/img/community/control-center/costs_budget_7_2.png)
+
+## Models Cost by ID
+
+This section displays the total cost of all your model predictions, along with the average daily cost, during the selected time period. 
+
+It helps you track spending across each model ID.
+
+![](/img/community/control-center/costs_budget_7_3.png)
+
+## Training Cost
+
+This section displays the total cost of training your [deep training](https://docs.clarifai.com/portal-guide/model/deep-training/) and [transfer learning](https://docs.clarifai.com/portal-guide/model/model-types/transfer-learning) models, along with the average daily cost, during the selected time period. 
+
+![](/img/community/control-center/costs_budget_5.png)
 
 ## Stored Inputs Cost
 
@@ -7786,6 +7804,14 @@ It helps you track spending across each instance type.
 
 ![](/img/community/control-center/costs_budget_10.png)
 
+## Token Type Cost By Date
+
+This section displays the total cost of all your LLM tokens, along with the average daily cost, during the selected time period. 
+
+It helps you track spending trends by token type across specific dates.
+
+![](/img/community/control-center/costs_budget_11.png)
+
 ---
 
 ## Overview Tab
@@ -7800,31 +7826,7 @@ To access it, select **Control Center** in the collapsible left sidebar and choo
 
 ![](/img/community/control-center/control_center_3-1.png)
 
-## Date Range Selection
-
-You can use the date range control to filter and view data for specific time periods. The feature allows you to select a range as a criterion to view the output of the Overview section.
-
-:::info upgrade your plan
-
-You can still use the Control Center to track your metrics for a specified date range even if you are a free user. Consider upgrading to the paid plan to unlock extra platform capabilities and keep tracking them here. 
-
-:::
-
-To select a date range, click the button in the upper-right corner of the page. A small window will drop down, which allows you to select your preferred date range.
-
-By default, the display of data is filtered based on your current month-to-month billing cycle. You can customize the output by selecting a predefined date range — from today to the last 6 months.
-
-You can also use the date picker button at the bottom of the drop-down window to select a custom date range. 
-
-![](/img/community/control-center/control_center_3.png)
-
-After choosing your preferred date range, click the **Apply** button. 
-
-## Overview Highlights
-
-The Overview highlights section gives a quick analysis of how you used the platform during the selected period.
-
-![](/img/community/control-center/control_center_4.png)
+In the Overview highlights section, you can get quick analysis of how you used our platform during the selected period.
 
 It tells you:
 
@@ -7839,23 +7841,77 @@ It tells you:
 - The total costs of training your models
 - The total number of model types you’ve used
 
-## Charts
+:::info upgrade your plan
 
-The Overview section includes charts that visually represent data for easy analysis. Once you pin a chart from other tabs within the Control Center, it will automatically appear in the Overview. 
-
-> **Tip:** You can also click the **Pin to overview page** button directly within the Overview to quickly add the suggested chart to the section.
-
-In the [next section](./usage/#common-chart-features), we’ll explore charts in more detail and walk you through how to add them to the Overview.
-
-:::note drag and remove charts
-
-> - You can easily drag charts up and down within the Overview section by clicking and holding the dots in the upper-left corner.
-
-> - You can also remove a chart from the section by simply clicking the delete button (X) in the upper-right corner. This action will only remove the chart from the Overview section, without deleting it from the respective data section of the Control Center.
-
-> ![](/img/community/control-center/control_center_5.png)
+You can still use the Control Center to track your metrics for a specified date range even if you are a free user. Consider upgrading to the paid plan to unlock extra platform capabilities and keep tracking them here. 
 
 :::
+
+## Smart Insights
+
+Smart Insights at the top of the page allows you to uncover usage insights through a conversational interface. It enables you to interact with your data naturally — by simply asking questions in plain language — rather than navigating multiple reports or charts.
+
+![](/img/community/control-center/control_center_4-4.png)
+
+In the search field, you can type a query such as _“How much am I spending each month”_ or any other question related to your usage, costs, or operations.
+
+Once you submit your question, the AI system processes your query and retrieves relevant insights based on your usage data. These insights are displayed directly in the interface, which records your past interactions for easy reference.
+
+## Chart Features
+
+Charts in the Overview and across the Control Center share several common features that make data visualization and interaction more intuitive.
+
+Let’s take a closer look at these features.
+
+### Configure Page
+
+You can customize the display of charts on the page to suit your preferences. To do so, click the **Configure page** button located at the top of the page. This opens the chart configuration panel, where you can resize, reorder, and adjust the layout of the charts. 
+
+![](/img/community/control-center/control_center_4-2.png)
+
+To align a chart to the left side of the page, click the left arrow (**←**) icon next to the chart name. To align it to the right, click the right arrow (**→**) icon. If you want the chart to span the full width of the page, click the double-sided arrow (**↔**) icon. 
+
+The alignment arrows also serve to rearrange charts, allowing you to place them side by side or change their relative order. 
+
+Charts can also be reordered easily using the drag handle (**⋮⋮**) next to each chart name. You can click and hold this handle to move charts up or down within the page. 
+
+> **Note:** This flexibility is especially useful for comparison — when two charts are aligned next to each other, they automatically resize to half their original width, making it easier to view related insights together. For example, you might place the [**Total Number of Operations**](usage.md#total-number-of-operations) chart beside the [**Cost of Operations**](costs.md#cost-of-operations) chart to compare usage and expenditure trends directly.
+
+Once you’ve finished adjusting your layout, click the close (**X**) button in the upper-right corner of the configuration panel to exit.
+
+> **Alternatively:** In addition to the main configuration panel, each chart includes its own configuration options. By clicking the **configure icon** in the upper-right corner of a chart, you can use the drop-down to quickly align it to the left, right, or full width, or open the main configuration panel for more advanced layout adjustments.
+
+> You can also reorder a chart easily using the drag handle (**⋮⋮**) next to its name.
+
+> ![](/img/community/control-center/control_center_4-3.png)
+
+### Date Range Selection
+
+You can use the date range control to filter and view data for specific time periods. The feature allows you to select a range as a criterion to view the output of the Overview section.
+
+To select a date range, click the button in the upper-right corner of the page. A small window will drop down, which allows you to select your preferred date range.
+
+By default, the display of data is filtered based on your current month-to-month billing cycle. You can customize the output by selecting a predefined date range — from today to the last 6 months.
+
+You can also use the date picker button at the bottom of the drop-down window to select a custom date range. 
+
+![](/img/community/control-center/control_center_3.png)
+
+After choosing your preferred date range, click the **Apply** button.
+
+### Pin Charts
+
+Once you pin a chart from other tabs within the Control Center, it will automatically appear in the Overview. 
+
+> **Tip:** You can also click the **Pin to overview page** button directly within the Overview to quickly add the suggested chart to the page.
+
+> ![](/img/community/control-center/control_center_4.png)
+
+In the [next section](./usage/#common-chart-features), we’ll explore charts in more detail and walk you through how to add them to the Overview tab.
+
+You can remove a chart from the Overview by simply clicking the delete button (**X**) in the upper-right corner. This action will only remove the chart from the Overview, without deleting it from the respective data section of the Control Center.
+
+![](/img/community/control-center/control_center_5.png)
 
 ---
 
@@ -7869,8 +7925,6 @@ The Teams & Logs tab allows you to monitor platform operations by capturing deta
 
 It provides the ability to assess user actions and resource changes, identify potential security issues, maintain comprehensive logs to meet regulatory requirements, and monitor request origins to troubleshoot failed operations effectively.  
 
-> **Note:** The tab is hidden for users who do not have audit logging access.
-
 :::tip
 
 [Click here](audit-log.md) to learn how to perform audit tracking via the API. 
@@ -7879,7 +7933,7 @@ It provides the ability to assess user actions and resource changes, identify po
 
 :::info
 
-This audit logging feature is currently only available to users on our Professional and Enterprise subscription [plans](https://www.clarifai.com/pricing). 
+This audit logging feature is currently only available to users on our Professional and Enterprise subscription [plans](https://www.clarifai.com/pricing). So, the tab is hidden for users who do not have audit logging access.
 
 :::
 
@@ -7897,7 +7951,7 @@ You can use the Teams & Logs tab to track the following critical resource operat
 
 ## Audit Log Details
 
-To access the tab, go to the Control Center and select the **Teams & Logs** option in the collapsible left sidebar.
+To access the tab, go to the [Control Center](README.mdx#how-to-access-the-control-center) and select the **Teams & Logs** option in the collapsible left sidebar.
 
 ![](/img/community/control-center/teams_logs_1.png)
 
@@ -7911,13 +7965,15 @@ You can get details of the following activity logs:
 
 ## Filter by Apps 
 
-By default, the page displays activities across all your apps. You can customize the view by selecting specific app(s) using the dropdown menu in the upper-right corner.
+By default, the page displays activities across all your apps. You can customize the view by selecting specific app(s) using the drop-down menu in the upper-right corner.
 
 ![](/img/community/control-center/teams_logs_2.png)
 
 ## Filter by Dates
 
-You can filter and view data for specific time periods using the date range selector in the upper-right corner. If you click the tool, a calendar will drop down, which allows you to specify a date range to narrow down the activity logs. _Note that the current date is not selected by default._ 
+You can filter and view data for specific time periods using the date range selector in the upper-right corner. If you click the tool, a calendar will drop down, which allows you to specify a date range to narrow down the activity logs. 
+
+> **Note:** The current date is not selected by default.
 
 You can learn more about the date range tool [here](overview.md#date-range-selection). 
 
@@ -7945,14 +8001,6 @@ To access it, go to the Control Center and select the **Usage & Operations** tab
 
 ![](/img/community/control-center/control_center_6.png)
 
-:::note date range selection
-
-You can use the date range control in the upper-right corner of the page to filter and view data for specific time periods. After selecting a date range, the output of the page will be based on the selected period. You can learn more about the feature [here](overview.md#date-range-selection).
-
-:::
-
-## Overview
-
 The overview section of the Usage & Operations page gives you a quick analysis of how you used the Clarifai platform during the selected period. 
 
 It tells you:
@@ -7964,8 +8012,6 @@ It tells you:
 - The total training hours of your [transfer learning](https://docs.clarifai.com/portal-guide/model/model-types/transfer-learning) models
 - The total training hours of your [deep training](https://docs.clarifai.com/portal-guide/model/deep-training/) models
 
-Let’s talk about the different elements of the page.
-
 ## Common Chart Features
 
 The Usage & Operations page has several charts that help you visualize your utilization of our platform during a selected period. 
@@ -7974,7 +8020,13 @@ Let’s talk about some functionalities that are common across the charts.
 
 ![](/img/community/control-center/control_center_7_1.png)
 
-- **Drag charts** — You can easily drag a chart up and down within the page by clicking and holding the dots in its upper-left corner. This allows you to customize the layout and manage the charts that appear on the page. 
+:::note 
+
+Learn more about other common chart features, such as page configuration and date range selection, [here](overview.md#chart-features).
+
+:::
+
+- **Drag charts** — You can easily drag a chart up and down within the page by using the drag handle (**⋮⋮**) in its upper-left corner. This allows you to customize the layout and manage the charts that appear on the page. 
 
 - **Pin icon** — The pin icon allows you to "pin" or "save" charts for quick access. If you click it, the chart will be displayed in the [Overview](overview.md) section within the Control Center. This ensures that it remains easily accessible in the Control Center. If the pin icon is highlighted in the Usage & Operations page, it indicates that the respective chart has already been saved to the Overview section.
 
@@ -8005,6 +8057,10 @@ After viewing the detailed report, you can go back to the Usage & Operations pag
 This section shows the total number of operations you've performed, along with the daily average, during the selected time period. It includes both model predictions and search operations.
 
 A stacked bar chart (displayed by default) or a line graph shows the number of each type of operation plotted against specific dates. 
+
+Here is a bar chart:
+
+![](/img/community/control-center/control_center_7-1.png)
 
 Here is a line graph:
 
@@ -8038,62 +8094,6 @@ Here is a line graph:
 
 ![](/img/community/control-center/control_center_14.png)
 
-## Total Model Predictions by Type
-
-This section displays the total number of model predictions, and the daily average, for the selected time period. It shows the predictions by [model type](https://docs.clarifai.com/create/models/#model-types). 
-
-A bar chart (displayed by default) shows the type of models plotted against the number of predictions. In a donut chart, the number of model predictions is visualized and grouped by type.
-
-Here is a bar chart:
-
-![](/img/community/control-center/control_center_16.png)
-
-Here is a donut chart:
-
-![](/img/community/control-center/control_center_17.png)
-
-## Total Model Predictions by ID
-
-This section displays the total number of model predictions, and the daily average, for the selected time period. It shows the predictions by unique model ID.
-
-A bar chart (displayed by default) shows the ID of models plotted against the number of predictions. In a donut chart, the number of model predictions is visualized and grouped by type.
-
-Here is a bar chart:
-
-![](/img/community/control-center/control_center_19.png)
-
-Here is a donut chart:
-
-![](/img/community/control-center/control_center_20.png)
-
-## Model Predictions by Type and Date
-
-This section displays the total number of model predictions, and the daily average, for the selected time period. It shows the predictions by model type and date.
-
-A stacked bar chart (displayed by default) or a line graph shows the number of predictions by model type plotted against specific dates. 
-
-Here is a bar chart:
-
-![](/img/community/control-center/control_center_22.png)
-
-Here is a line chart:
-
-![](/img/community/control-center/control_center_23.png)
-
-## Model Predictions by ID and Date
-
-This section displays the total number of model predictions, and the daily average, for the selected time period. It shows the predictions by model ID and date.
-
-A stacked bar chart (displayed by default) or a line graph shows the number of predictions by model ID plotted against specific dates. 
-
-Here is a bar chart:
-
-![](/img/community/control-center/control_center_25.png)
-
-Here is a line chart:
-
-![](/img/community/control-center/control_center_26.png)
-
 ## Compute Time by Instance and Date
 
 This section shows both the total and average compute time consumed by each [instance type](https://docs.clarifai.com/compute/deployments/cloud-instances) over the selected time period. 
@@ -8107,6 +8107,132 @@ Here is a bar chart:
 Here is a line chart:
 
 ![](/img/community/control-center/control_center_28.png)
+
+## Models Operations by Type
+
+This section displays the total number of model operations, and the daily average, for the selected time period. It shows the operations by [model type](https://docs.clarifai.com/create/models/#model-types). 
+
+A bar chart (displayed by default) shows the type of models plotted against the number of operations. In a donut chart, the number of models operations is visualized and grouped by type.
+
+Here is a bar chart:
+
+![](/img/community/control-center/control_center_16.png)
+
+Here is a donut chart:
+
+![](/img/community/control-center/control_center_17.png)
+
+## Models Operations by ID
+
+This section displays the total number of model operations, and the daily average, for the selected time period. It shows the operations by unique model ID.
+
+A bar chart (displayed by default) shows the ID of models plotted against the number of operations. In a donut chart, the number of models operations is visualized and grouped by type.
+
+Here is a bar chart:
+
+![](/img/community/control-center/control_center_19.png)
+
+Here is a donut chart:
+
+![](/img/community/control-center/control_center_20.png)
+
+## Models Operations by Type and Date
+
+This section displays the total number of model operations, and the daily average, for the selected time period. It shows the operations by model type and date.
+
+A stacked bar chart (displayed by default) or a line graph shows the number of operations by model type plotted against specific dates. 
+
+Here is a bar chart:
+
+![](/img/community/control-center/control_center_22.png)
+
+Here is a line chart:
+
+![](/img/community/control-center/control_center_23.png)
+
+## Models Operations by ID and Date
+
+This section displays the total number of model operations, and the daily average, for the selected time period. It shows the operations by model ID and date.
+
+A stacked bar chart (displayed by default) or a line graph shows the number of operations by model ID plotted against specific dates. 
+
+Here is a bar chart:
+
+![](/img/community/control-center/control_center_25.png)
+
+Here is a line chart:
+
+![](/img/community/control-center/control_center_26.png)
+
+## Token Type By Date
+
+This section displays the total number of tokens used, and the daily average, for the selected time period, broken down by token type.
+
+A stacked bar chart (displayed by default) or a line graph shows the number of tokens plotted against specific dates. Each bar represents the total tokens used per day, segmented by token type, such as `prompt_token` and `completion_token`.
+
+Here is a bar chart:
+
+![](/img/community/control-center/control_center_29.png)
+
+Here is a line chart:
+
+![](/img/community/control-center/control_center_30.png)
+
+## Tokens by Model Type and Date
+
+This section shows the total number of tokens used, and the daily average, for the selected time period, broken down by model type.
+
+A stacked bar chart (displayed by default) or a line graph shows the number of tokens plotted against specific dates. Each bar represents the total tokens used per day, segmented by model type, such as `text-to-text` or `multimodal-to-text`. 
+
+Here is a bar chart:
+
+![](/img/community/control-center/control_center_31.png)
+
+Here is a line chart:
+
+![](/img/community/control-center/control_center_32.png)
+
+## Tokens by Model Type
+
+This section displays the total number of tokens used, and the daily average, for the selected time period. It shows the tokens by model type.
+
+A horizontal bar chart (displayed by default) compares token usage across different model types. In a donut chart, the number of tokens consumed is visualized and grouped by model type.
+
+Here is a bar chart:
+
+![](/img/community/control-center/control_center_33.png)
+
+Here is a donut chart:
+
+![](/img/community/control-center/control_center_34.png)
+
+## Tokens by Model ID and Date
+
+This section displays the total number of tokens used, and the daily average, for the selected time period. It shows the tokens by model ID.
+
+A stacked bar chart (displayed by default) or a line graph shows the number of tokens consumed across specific dates. Each bar represents the total tokens used per day, segmented by model ID. 
+
+Here is a bar chart:
+
+![](/img/community/control-center/control_center_35.png)
+
+Here is a line chart:
+
+![](/img/community/control-center/control_center_36.png)
+
+## Tokens by Model ID
+
+This section displays the total number of tokens used, and the daily average, for the selected time period. It shows the tokens by model ID.
+
+A horizontal bar chart (displayed by default) compares token usage across different model IDs. In a donut chart, the number of tokens consumed is visualized and grouped by model ID.
+
+Here is a bar chart:
+
+![](/img/community/control-center/control_center_37.png)
+
+Here is a donut chart:
+
+![](/img/community/control-center/control_center_38.png)
 
 ---
 
@@ -15381,11 +15507,11 @@ Different model types are optimized for different tasks and produce distinct out
 
 Choosing the appropriate model type enables you to fully leverage the Clarifai platform and power your business with advanced AI capabilities.
 
-:::note
+:::note Notes
 
 - You can use the [`Get`](https://docs.clarifai.com/api-guide/model/create-get-update-and-delete#get) commands to view a complete list of available model types suited to your needs.
-
 - To create a model with a specific type, you need to specify the desired [`model_type_id`](https://docs.clarifai.com/create-manage/models/deep-fine-tuning/visual-classifier#step-3-model-creation) in the request body.
+- The `any-to-any` model type supports various input and output types, including text, image, multimodel, or audio, providing universal purpose coverage. 
 
 :::
 
