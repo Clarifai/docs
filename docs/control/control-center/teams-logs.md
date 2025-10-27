@@ -12,8 +12,6 @@ The Teams & Logs tab allows you to monitor platform operations by capturing deta
 
 It provides the ability to assess user actions and resource changes, identify potential security issues, maintain comprehensive logs to meet regulatory requirements, and monitor request origins to troubleshoot failed operations effectively.  
 
-> **Note:** The tab is hidden for users who do not have audit logging access.
-
 :::tip
 
 [Click here](audit-log.md) to learn how to perform audit tracking via the API. 
@@ -22,7 +20,7 @@ It provides the ability to assess user actions and resource changes, identify po
 
 :::info
 
-This audit logging feature is currently only available to users on our Professional and Enterprise subscription [plans](https://www.clarifai.com/pricing). 
+This audit logging feature is currently only available to users on our Professional and Enterprise subscription [plans](https://www.clarifai.com/pricing). So, the tab is hidden for users who do not have audit logging access.
 
 :::
 
@@ -41,7 +39,7 @@ You can use the Teams & Logs tab to track the following critical resource operat
 
 ## Audit Log Details
 
-To access the tab, go to the Control Center and select the **Teams & Logs** option in the collapsible left sidebar.
+To access the tab, go to the [Control Center](README.mdx#how-to-access-the-control-center) and select the **Teams & Logs** option in the collapsible left sidebar.
 
 ![](/img/community/control-center/teams_logs_1.png)
 
@@ -55,13 +53,15 @@ You can get details of the following activity logs:
 
 ## Filter by Apps 
 
-By default, the page displays activities across all your apps. You can customize the view by selecting specific app(s) using the dropdown menu in the upper-right corner.
+By default, the page displays activities across all your apps. You can customize the view by selecting specific app(s) using the drop-down menu in the upper-right corner.
 
 ![](/img/community/control-center/teams_logs_2.png)
 
 ## Filter by Dates
 
-You can filter and view data for specific time periods using the date range selector in the upper-right corner. If you click the tool, a calendar will drop down, which allows you to specify a date range to narrow down the activity logs. _Note that the current date is not selected by default._ 
+You can filter and view data for specific time periods using the date range selector in the upper-right corner. If you click the tool, a calendar will drop down, which allows you to specify a date range to narrow down the activity logs. 
+
+> **Note:** The current date is not selected by default.
 
 You can learn more about the date range tool [here](overview.md#date-range-selection). 
 

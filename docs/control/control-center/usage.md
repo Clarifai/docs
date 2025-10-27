@@ -14,14 +14,6 @@ To access it, go to the Control Center and select the **Usage & Operations** tab
 
 ![](/img/community/control-center/control_center_6.png)
 
-:::note date range selection
-
-You can use the date range control in the upper-right corner of the page to filter and view data for specific time periods. After selecting a date range, the output of the page will be based on the selected period. You can learn more about the feature [here](overview.md#date-range-selection).
-
-:::
-
-## Overview
-
 The overview section of the Usage & Operations page gives you a quick analysis of how you used the Clarifai platform during the selected period. 
 
 It tells you:
@@ -33,8 +25,6 @@ It tells you:
 - The total training hours of your [transfer learning](https://docs.clarifai.com/portal-guide/model/model-types/transfer-learning) models
 - The total training hours of your [deep training](https://docs.clarifai.com/portal-guide/model/deep-training/) models
 
-Let’s talk about the different elements of the page.
-
 ## Common Chart Features
 
 The Usage & Operations page has several charts that help you visualize your utilization of our platform during a selected period. 
@@ -43,7 +33,13 @@ Let’s talk about some functionalities that are common across the charts.
 
 ![](/img/community/control-center/control_center_7_1.png)
 
-- **Drag charts** — You can easily drag a chart up and down within the page by clicking and holding the dots in its upper-left corner. This allows you to customize the layout and manage the charts that appear on the page. 
+:::note 
+
+Learn more about other common chart features, such as page configuration and date range selection, [here](overview.md#chart-features).
+
+:::
+
+- **Drag charts** — You can easily drag a chart up and down within the page by using the drag handle (**⋮⋮**) in its upper-left corner. This allows you to customize the layout and manage the charts that appear on the page. 
 
 - **Pin icon** — The pin icon allows you to "pin" or "save" charts for quick access. If you click it, the chart will be displayed in the [Overview](overview.md) section within the Control Center. This ensures that it remains easily accessible in the Control Center. If the pin icon is highlighted in the Usage & Operations page, it indicates that the respective chart has already been saved to the Overview section.
 
@@ -74,6 +70,10 @@ After viewing the detailed report, you can go back to the Usage & Operations pag
 This section shows the total number of operations you've performed, along with the daily average, during the selected time period. It includes both model predictions and search operations.
 
 A stacked bar chart (displayed by default) or a line graph shows the number of each type of operation plotted against specific dates. 
+
+Here is a bar chart:
+
+![](/img/community/control-center/control_center_7-1.png)
 
 Here is a line graph:
 
@@ -107,62 +107,6 @@ Here is a line graph:
 
 ![](/img/community/control-center/control_center_14.png)
 
-## Total Model Predictions by Type
-
-This section displays the total number of model predictions, and the daily average, for the selected time period. It shows the predictions by [model type](https://docs.clarifai.com/create/models/#model-types). 
-
-A bar chart (displayed by default) shows the type of models plotted against the number of predictions. In a donut chart, the number of model predictions is visualized and grouped by type.
-
-Here is a bar chart:
-
-![](/img/community/control-center/control_center_16.png)
-
-Here is a donut chart:
-
-![](/img/community/control-center/control_center_17.png)
-
-## Total Model Predictions by ID
-
-This section displays the total number of model predictions, and the daily average, for the selected time period. It shows the predictions by unique model ID.
-
-A bar chart (displayed by default) shows the ID of models plotted against the number of predictions. In a donut chart, the number of model predictions is visualized and grouped by type.
-
-Here is a bar chart:
-
-![](/img/community/control-center/control_center_19.png)
-
-Here is a donut chart:
-
-![](/img/community/control-center/control_center_20.png)
-
-## Model Predictions by Type and Date
-
-This section displays the total number of model predictions, and the daily average, for the selected time period. It shows the predictions by model type and date.
-
-A stacked bar chart (displayed by default) or a line graph shows the number of predictions by model type plotted against specific dates. 
-
-Here is a bar chart:
-
-![](/img/community/control-center/control_center_22.png)
-
-Here is a line chart:
-
-![](/img/community/control-center/control_center_23.png)
-
-## Model Predictions by ID and Date
-
-This section displays the total number of model predictions, and the daily average, for the selected time period. It shows the predictions by model ID and date.
-
-A stacked bar chart (displayed by default) or a line graph shows the number of predictions by model ID plotted against specific dates. 
-
-Here is a bar chart:
-
-![](/img/community/control-center/control_center_25.png)
-
-Here is a line chart:
-
-![](/img/community/control-center/control_center_26.png)
-
 ## Compute Time by Instance and Date
 
 This section shows both the total and average compute time consumed by each [instance type](https://docs.clarifai.com/compute/deployments/cloud-instances) over the selected time period. 
@@ -176,3 +120,130 @@ Here is a bar chart:
 Here is a line chart:
 
 ![](/img/community/control-center/control_center_28.png)
+
+
+## Models Operations by Type
+
+This section displays the total number of model operations, and the daily average, for the selected time period. It shows the operations by [model type](https://docs.clarifai.com/create/models/#model-types). 
+
+A bar chart (displayed by default) shows the type of models plotted against the number of operations. In a donut chart, the number of models operations is visualized and grouped by type.
+
+Here is a bar chart:
+
+![](/img/community/control-center/control_center_16.png)
+
+Here is a donut chart:
+
+![](/img/community/control-center/control_center_17.png)
+
+## Models Operations by ID
+
+This section displays the total number of model operations, and the daily average, for the selected time period. It shows the operations by unique model ID.
+
+A bar chart (displayed by default) shows the ID of models plotted against the number of operations. In a donut chart, the number of models operations is visualized and grouped by type.
+
+Here is a bar chart:
+
+![](/img/community/control-center/control_center_19.png)
+
+Here is a donut chart:
+
+![](/img/community/control-center/control_center_20.png)
+
+## Models Operations by Type and Date
+
+This section displays the total number of model operations, and the daily average, for the selected time period. It shows the operations by model type and date.
+
+A stacked bar chart (displayed by default) or a line graph shows the number of operations by model type plotted against specific dates. 
+
+Here is a bar chart:
+
+![](/img/community/control-center/control_center_22.png)
+
+Here is a line chart:
+
+![](/img/community/control-center/control_center_23.png)
+
+## Models Operations by ID and Date
+
+This section displays the total number of model operations, and the daily average, for the selected time period. It shows the operations by model ID and date.
+
+A stacked bar chart (displayed by default) or a line graph shows the number of operations by model ID plotted against specific dates. 
+
+Here is a bar chart:
+
+![](/img/community/control-center/control_center_25.png)
+
+Here is a line chart:
+
+![](/img/community/control-center/control_center_26.png)
+
+## Token Type By Date
+
+This section displays the total number of tokens used, and the daily average, for the selected time period, broken down by token type.
+
+A stacked bar chart (displayed by default) or a line graph shows the number of tokens plotted against specific dates. Each bar represents the total tokens used per day, segmented by token type, such as `prompt_token` and `completion_token`.
+
+Here is a bar chart:
+
+![](/img/community/control-center/control_center_29.png)
+
+Here is a line chart:
+
+![](/img/community/control-center/control_center_30.png)
+
+## Tokens by Model Type and Date
+
+This section shows the total number of tokens used, and the daily average, for the selected time period, broken down by model type.
+
+A stacked bar chart (displayed by default) or a line graph shows the number of tokens plotted against specific dates. Each bar represents the total tokens used per day, segmented by model type, such as `text-to-text` or `multimodal-to-text`. 
+
+Here is a bar chart:
+
+![](/img/community/control-center/control_center_31.png)
+
+Here is a line chart:
+
+![](/img/community/control-center/control_center_32.png)
+
+## Tokens by Model Type
+
+This section displays the total number of tokens used, and the daily average, for the selected time period. It shows the tokens by model type.
+
+A horizontal bar chart (displayed by default) compares token usage across different model types. In a donut chart, the number of tokens consumed is visualized and grouped by model type.
+
+Here is a bar chart:
+
+![](/img/community/control-center/control_center_33.png)
+
+Here is a donut chart:
+
+![](/img/community/control-center/control_center_34.png)
+
+## Tokens by Model ID and Date
+
+This section displays the total number of tokens used, and the daily average, for the selected time period. It shows the tokens by model ID.
+
+A stacked bar chart (displayed by default) or a line graph shows the number of tokens consumed across specific dates. Each bar represents the total tokens used per day, segmented by model ID. 
+
+Here is a bar chart:
+
+![](/img/community/control-center/control_center_35.png)
+
+Here is a line chart:
+
+![](/img/community/control-center/control_center_36.png)
+
+## Tokens by Model ID
+
+This section displays the total number of tokens used, and the daily average, for the selected time period. It shows the tokens by model ID.
+
+A horizontal bar chart (displayed by default) compares token usage across different model IDs. In a donut chart, the number of tokens consumed is visualized and grouped by model ID.
+
+Here is a bar chart:
+
+![](/img/community/control-center/control_center_37.png)
+
+Here is a donut chart:
+
+![](/img/community/control-center/control_center_38.png)
