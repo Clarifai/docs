@@ -1,6 +1,6 @@
 ---
 description: Download and serve vLLM models locally and expose them via a public API
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 # vLLM
@@ -113,6 +113,8 @@ You can initialize any model [supported](https://docs.vllm.ai/en/v0.9.2/models/s
   <summary>Example Output</summary>
   <CodeBlock className="language-text">{VLLMInit}</CodeBlock>
 </details>
+
+> **Note:** Some models are quite large and require substantial memory or GPU resources. Ensure your machine has sufficient compute capacity to load and run the model locally before initializing it.
 
 You’ll get a folder structure similar to:
 

@@ -31,6 +31,7 @@ import TSExample2 from "!!raw-loader!../../../code_snippets/python-sdk/compute-o
 import Example3 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/openai_3.py";
 import Example4 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/openai_4.txt";
 import PyImageGeneration from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/open_ai_image_generation.py";
+import PyEmbeddings from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/open_ai_embeddings.py";
 import PyResponses from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/open_ai_responses.py";
 import PyMultimodal from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/open_ai_multimodal.py";
 import PyResponsesMultimodal from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/open_ai_responses_multimodal.py";
@@ -286,3 +287,23 @@ Here is an example of how to generate an image using a model that supports Clari
     ``` 
 </details>
 
+
+
+## Embeddings API
+
+The [OpenAI Embeddings](https://platform.openai.com/docs/guides/embeddings) API allows you to convert text into numerical vector representations (embeddings) that capture semantic meaning. These embeddings can then be used to measure the similarity or relatedness between different pieces of text.
+
+Here’s an example of how to generate embeddings using a model that supports Clarifai’s OpenAI-compatible API endpoint.
+
+<Tabs groupId="code">
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PyEmbeddings}</CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+  <summary>Example Output</summary>
+    ```text
+    [0.007715723942965269, -0.005610561463981867, 0.0038386366795748472, -0.023672660812735558, -0.0028357207775115967, 0.0058668977580964565, 0.005136339459568262, -0.029632480815052986, 0.009997117333114147, -0.027863759547472, 0.016123555600643158, 0.010894294828176498, -0.0065814354456961155, -0.03468230739235878, -0.019545646384358406, 0.003260277910158038, 0.032759785652160645, -0.006728828884661198, 0.00939472671598196, -0.020865777507424355, -0.02409561537206173, 0.01959691382944584, 0.0123361861333251, -0.003186581190675497, -0.007440162356942892, 0.016213273629546165, 0.0012400270206853747, -0.017956361174583435, 0.009266559034585953, 0.017943544313311577, 0.0027379924431443214, -0.005963024217635393, -0.03734820336103439, 0.001370598329231143, -0.014213849790394306, -0.017328336834907532, -0.019648181274533272, 0.005863693542778492, 0.003191387513652444, 0.004690954927355051, 0.003135313745588064, -0.014265117235481739, 0.012977027334272861, 0.008625717833638191, -0.04129578545689583, 0.012047807686030865, 0.007613189052790403, 0.0061424593441188335, -0.01573905162513256, -0.019276492297649384, 0.011778654530644417, -0.01596975326538086, -0.011560768820345402, -0.013201321475207806, 0.0214809849858284, 0.017174534499645233, -0.007286360487341881, -0.009708738885819912, 0.02837643213570118, -0.015290462411940098, -0.009221700020134449, 0.02190393954515457, -0.021827038377523422, -0.018379315733909607, -0.019789164885878563, -0.01197731588035822, -0.012836041860282421, 0.00048784009413793683, 0.0025665676221251488, 0.0067160120233893394, 0.0037296938244253397, 0.011150631122291088, 0.012803999707102776, -0.01639270968735218, 0.018968889489769936, -0.012880900874733925, -0.008503957651555538, 0.00356307509355247, -0.004127014894038439, . . .]
+    ``` 
+</details>

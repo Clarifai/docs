@@ -993,4 +993,4 @@ For example, here is how you can initialize a default model using the [Ollama to
 </TabItem>
 </Tabs>
 
-You can find more details on running Ollama models with Clarifai Local Runners [here](https://docs.clarifai.com/compute/local-runners/ollama). 
+You can learn more about using toolkits [here](https://docs.clarifai.com/compute/toolkits). 

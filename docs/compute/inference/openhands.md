@@ -45,7 +45,7 @@ Start OpenHands using the following comprehensive `docker run` command.
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">
+    ```bash
     docker run -it --rm --pull=always \
     -e SANDBOX_RUNTIME_CONTAINER_IMAGE=docker.all-hands.dev/all-hands-ai/runtime:0.51-nikolaik \
     -e LOG_ALL_EVENTS=true \
@@ -55,7 +55,7 @@ Start OpenHands using the following comprehensive `docker run` command.
     --add-host host.docker.internal:host-gateway \
     --name openhands-app \
     docker.all-hands.dev/all-hands-ai/openhands:0.51  
-    </CodeBlock>
+    ```
 </TabItem>
 </Tabs>
 
