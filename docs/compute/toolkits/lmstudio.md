@@ -1,6 +1,6 @@
 ---
 description: Download and run LM Studio models locally and expose them via a public API
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 # LM Studio 
@@ -107,6 +107,8 @@ To initialize a specific LM Studio model that supports the GGUF format, use the 
 </Tabs>
 
 :::
+
+> **Note:** Some models are quite large and require substantial memory or GPU resources. Ensure your machine has sufficient compute capacity to load and run the model locally before initializing it.
 
 The generated structure includes:
 

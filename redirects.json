@@ -1003,6 +1003,22 @@
     {
       "to": "/compute/inference/vercel",
       "from": ["/compute/providers/vercel"]
+    },
+    {
+      "to": "/compute/toolkits/ollama",
+      "from": ["/compute/local-runners/ollama"]
+    },
+    {
+      "to": "/compute/toolkits/hf",
+      "from": ["/compute/local-runners/hf"]
+    },
+    {
+      "to": "/compute/toolkits/lmstudio",
+      "from": ["/compute/local-runners/lmstudio"]
+    },
+    {
+      "to": "/compute/toolkits/vllm",
+      "from": ["/compute/local-runners/vllm"]
     }
   
   
