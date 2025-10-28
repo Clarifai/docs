@@ -3783,6 +3783,7 @@ import TSExample2 from "!!raw-loader!../../../code_snippets/python-sdk/compute-o
 import Example3 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/openai_3.py";
 import Example4 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/openai_4.txt";
 import PyImageGeneration from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/open_ai_image_generation.py";
+import PyEmbeddings from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/open_ai_embeddings.py";
 import PyResponses from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/open_ai_responses.py";
 import PyMultimodal from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/open_ai_multimodal.py";
 import PyResponsesMultimodal from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/open_ai_responses_multimodal.py";
@@ -3957,6 +3958,19 @@ Here is an example of how to generate an image using a model that supports Clari
   Example Output
     ```text
     ImagesResponse(created=None, data=[Image(b64_json=None, revised_prompt='A high-resolution photograph of a cat perched on a branch in a lush, green tree during the daytime. The cat, possibly a tabby, is the central focus of the image, looking slightly to the side with its fur naturally positioned. The background features a soft, slightly blurred forest setting with sunlight filtering through the leaves, creating a serene and natural environment. The composition avoids any distracting elements, ensuring the cat remains the primary subject in a peaceful outdoor scene.', url='https://imgen.x.ai/xai-imgen/xai-tmp-imgen-41202340-c0e1-4669-bed5-e70f7b491176.jpeg')], usage=None)
+    ``` 
+
+## Embeddings API
+
+The [OpenAI Embeddings](https://platform.openai.com/docs/guides/embeddings) API allows you to convert text into numerical vector representations (embeddings) that capture semantic meaning. These embeddings can then be used to measure the similarity or relatedness between different pieces of text.
+
+Here’s an example of how to generate embeddings using a model that supports Clarifai’s OpenAI-compatible API endpoint.
+
+    {PyEmbeddings}
+
+  Example Output
+    ```text
+    [0.007715723942965269, -0.005610561463981867, 0.0038386366795748472, -0.023672660812735558, -0.0028357207775115967, 0.0058668977580964565, 0.005136339459568262, -0.029632480815052986, 0.009997117333114147, -0.027863759547472, 0.016123555600643158, 0.010894294828176498, -0.0065814354456961155, -0.03468230739235878, -0.019545646384358406, 0.003260277910158038, 0.032759785652160645, -0.006728828884661198, 0.00939472671598196, -0.020865777507424355, -0.02409561537206173, 0.01959691382944584, 0.0123361861333251, -0.003186581190675497, -0.007440162356942892, 0.016213273629546165, 0.0012400270206853747, -0.017956361174583435, 0.009266559034585953, 0.017943544313311577, 0.0027379924431443214, -0.005963024217635393, -0.03734820336103439, 0.001370598329231143, -0.014213849790394306, -0.017328336834907532, -0.019648181274533272, 0.005863693542778492, 0.003191387513652444, 0.004690954927355051, 0.003135313745588064, -0.014265117235481739, 0.012977027334272861, 0.008625717833638191, -0.04129578545689583, 0.012047807686030865, 0.007613189052790403, 0.0061424593441188335, -0.01573905162513256, -0.019276492297649384, 0.011778654530644417, -0.01596975326538086, -0.011560768820345402, -0.013201321475207806, 0.0214809849858284, 0.017174534499645233, -0.007286360487341881, -0.009708738885819912, 0.02837643213570118, -0.015290462411940098, -0.009221700020134449, 0.02190393954515457, -0.021827038377523422, -0.018379315733909607, -0.019789164885878563, -0.01197731588035822, -0.012836041860282421, 0.00048784009413793683, 0.0025665676221251488, 0.0067160120233893394, 0.0037296938244253397, 0.011150631122291088, 0.012803999707102776, -0.01639270968735218, 0.018968889489769936, -0.012880900874733925, -0.008503957651555538, 0.00356307509355247, -0.004127014894038439, . . .]
     ```
 
 ---
@@ -3997,7 +4011,7 @@ Start OpenHands using the following comprehensive `docker run` command.
 
 > **Note:** This command works best in Linux or macOS environments, where Docker supports native Linux-style paths. If you're using Windows, you'll need to modify the volume mount paths and run the command within a WSL2 (Linux) shell for proper compatibility.
 
-    
+    ```bash
     docker run -it --rm --pull=always \
     -e SANDBOX_RUNTIME_CONTAINER_IMAGE=docker.all-hands.dev/all-hands-ai/runtime:0.51-nikolaik \
     -e LOG_ALL_EVENTS=true \
@@ -4007,7 +4021,7 @@ Start OpenHands using the following comprehensive `docker run` command.
     --add-host host.docker.internal:host-gateway \
     --name openhands-app \
     docker.all-hands.dev/all-hands-ai/openhands:0.51  
-    
+    ```
 
 The above command:
 
@@ -4409,6 +4423,152 @@ When you’re done testing, simply close the terminal running the local developm
 
 ---
 
+## Compute Orchestration
+
+# Compute Orchestration
+
+**Orchestrate your AI workloads better, avoid vendor lock-in, and use compute spend efficiently**
+
+Clarifai’s Compute Orchestration provides efficient capabilities for you to deploy any model on any compute infrastructure, at any scale. 
+
+These new platform capabilities bring the convenience of serverless autoscaling to any environment, regardless of deployment location or hardware, and dynamically scale resources to meet workload demands. 
+
+With Compute Orchestration, we are providing users with the ability to organize and manage (_orchestrate_) the compute resources necessary for running their models and workflows.
+
+These capabilities enable our enterprise customers to deploy production models with enhanced control, performance, and scalability — while addressing specific problems around compute costs, latency, and control over hosted models. 
+
+Clarifai handles the containerization, model packing, time slicing, and other performance optimizations on your behalf. 
+
+:::tip Quick Start
+
+Learn how to get started quickly with Compute Orchestration [here](https://docs.clarifai.com/getting-started/set-up-compute). 
+
+:::
+
+## Deployment Options
+
+Compute Orchestration allows us to provide multiple deployment options — all of which can be customized with your preferred settings for autoscaling, cold start, and more, ensuring maximum cost efficiency and performance. 
+
+These are the deployment options we provide:
+
+:::note Shared SaaS (Serverless)
+
+If you’re not using Compute Orchestration for inference with models uploaded and owned by Clarifai, your requests will default to the Shared SaaS (Serverless) deployment. This serverless environment eliminates the need to manage infrastructure, allowing you to make predictions effortlessly — without configuring or maintaining any compute resources. Learn more [here](https://docs.clarifai.com/compute/models/inference/). 
+
+:::
+
+- **Dedicated SaaS** — Provides access to Clarifai‑managed, isolated nodes with customizable configurations. For example, you can launch a dedicated deployment in AWS US‑East, with plans to expand to other cloud providers and hardware options in the future.
+
+- **Self-Managed VPC (Virtual Private Cloud)** — Connect your own cloud provider’s VPC to Clarifai, allowing Clarifai to run and orchestrate deployments within your environment. This approach lets you maintain full control of your infrastructure while leveraging existing cloud resources and spend commitments.
+
+- **Self-Managed On-Premises** — Connect your own on‑premises or bare‑metal infrastructure to Clarifai, allowing you to utilize existing compute resources. Clarifai then orchestrates model deployments within your environment, making the most of your infrastructure investments.
+
+- **Multi-Site Deployment** — Enables deployments across multiple self‑managed compute environments, with support for a mix of on‑premises, cloud, or edge locations — and a roadmap for future multi‑cloud or multi‑region SaaS options.
+
+- **Full Platform Deployment** — Designed for organizations with stringent security and compliance needs, this option allows you to run both the Clarifai control and compute planes within your chosen cloud, on‑premises, or air‑gapped infrastructure, ensuring complete isolation and control.
+
+ 
+![ ](/img/compute-orchestration/intro-1.png)
+
+## Compute Clusters and Nodepools
+
+We use [clusters and nodepools](https://docs.clarifai.com/portal-guide/compute-orchestration/set-up-compute) to organize and manage the compute resources required for the Compute Orchestration capabilities.
+
+:::info Cluster
+
+A compute cluster in Clarifai acts as the overarching computational environment where models are executed, whether for training or inference. 
+
+:::
+
+:::info nodepool
+
+A nodepool refers to a set of dedicated nodes (virtual machine instances) within a cluster that share similar configurations and resources, such as CPU or GPU type, memory size, and other performance parameters for running your models.
+
+:::
+
+Cluster configuration lets you specify where and how your models are run, ensuring better performance, lower latency, and adherence to regional regulations. You can specify a cloud provider, such as AWS, that will provide the underlying compute infrastructure for hosting and running your models. You can also specify the geographic location of the data center where the compute resources will be hosted.
+
+Nodepools are an important part of how compute resources are operated within a cluster. They provide flexibility in choosing the type of instances used to run your machine learning models and workflows and help determine how resources are scaled to meet demand.
+
+Nodepools specify the accelerator and instance that will run your models and other workloads. Accelerators are specialized hardware resources, such as GPUs or dedicated ML chips used for computation.
+
+Each nodepool can run containers or workloads, and you can have multiple nodepools within a single cluster to support different types of workloads or performance requirements. These nodes execute tasks like model training, inference, and workflow orchestration within a compute cluster. 
+
+With compute orchestration, you can ensure these nodepools are properly scaled up or down depending on the workload's size, complexities, and costs.
+
+## Benefits of Compute Orchestration
+
+![ ](/img/compute-orchestration/intro-2.png)
+
+### 1. Performance and Deployment Flexibility
+
+- It provides access to a wide range of [accelerator options](https://docs.clarifai.com/portal-guide/compute-orchestration/cloud-instances) tailored to your use case. You can configure multiple compute clusters each tailored to your AI development stage, performance requirements, and budget. You can also run affordable proof of concepts or compute-heavy LLMs or LVMs in production all from a single product.
+
+- It offers flexibility to [make deployments](https://docs.clarifai.com/portal-guide/compute-orchestration/deploy-model) in any cloud service provider, on-premises, air-gapped, or Kubernetes-supported environment. Or, you can make deployments in Clarifai’s compute to avoid having to worry about managing infrastructure.
+This allows users to leverage their hardware of choice without being locked into a single vendor.
+
+- You can customize auto-scaling settings to prevent cold-start issues and handle traffic swings; and scale down to zero for cost efficiency.  The ability to scale from zero to infinity ensures both flexibility and cost management.
+
+- We ensure efficient resource usage and cost savings through [GPU fractioning](https://www.clarifai.com/blog/gpu-fractioning-explained-how-to-run-multiple-ai-workloads-on-a-single-gpu) (running multiple models per GPU), time slicing, and other optimizations.
+
+### 2. Enhanced Security
+
+- Users can run compute planes within their own cloud service provider or on-premise environments and securely connect to Clarifai’s control plane, while only having to open outbound ports for traffic. This reduces networking complexities and security risks compared to opening inbound access or configuring cloud Identity and Access Management (IAM) access roles within your VPC. 
+
+- Nodepool-based compute allows users to keep their resources isolated and provides precise control over scaling models and nodes. This allows users to specify where models are executed, addressing compliance and security needs for regulated industries.
+
+- Clarifai offers fine-grained access control across apps, teams, users, and compute resources.
+
+- Users can group CPU and GPU types into dedicated scaling nodepools, enabling them to handle diverse workloads or team-specific requirements while enhancing security and resource management.
+
+### 3. Use Compute Cost-Efficiently and Abstract Away Complexity
+
+- An intuitive control plane enables users to efficiently govern access to AI resources, monitor performance, and manage costs. Clarifai’s expertly designed platform takes care of dependencies and optimizations, offering features like model packing, streamlined dependency management, and customizable autoscaling options — including scale-to-zero for both model replicas and compute nodes.
+
+- The advanced optimizations deliver exceptional efficiency, with model packing reducing compute usage by up to 3.7x and enabling support for over 1.6 million inputs per second with an impressive 99.9997% reliability. Depending on the chosen configuration, customers can achieve cost savings of at least 60%, and in some cases, up to 90%.
+
+- Organizations with pre-committed cloud spend or compute contracts with major cloud service providers, like AWS, Azure, or GCP, or existing GPU and hardware investments, can efficiently leverage their compute using Clarifai Compute Orchestration. 
+
+### 4. New Inference Capabilities and Developer Experience Improvements
+
+- Resourceful features such as inference streaming improve time-to-first-token for LLM generations.
+
+- Faster cold starts and optimized frameworks improve performance for critical workloads.
+
+- Continuous batching is available to reduce costs by processing multiple inference requests in batches.
+
+- Clarifai containerizes your desired models into Docker images, ensuring model package requirements are encapsulated in a portable environment and dependencies are handled automatically.
+
+- Low-latency deployment minimizes gRPC hops, speeding up communication.
+
+- New model types are easily supported with a unified protobuf format, and local inference runners allow users to [test models](https://docs.clarifai.com/compute/local-runners) before deploying to the cloud.
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+---
+
+## Toolkits
+
+# Toolkits
+
+**Download and run AI models locally with Clarifai toolkits**
+
+Toolkits let you run large language models (LLMs) and other generative AI models locally on your machine. They provide a standardized way to initialize a new Clarifai model directory structure that’s fully compatible with the Clarifai platform.
+
+Using toolkits, you can easily download and set up models from popular repositories such as Hugging Face or Ollama, making it simple to prepare them for deployment or integration with Clarifai.
+
+To download and initialize a model using a toolkit we support, run:
+
+```bash
+clarifai model init --toolkit 
+```
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+---
+
 ## Hugging Face
 
 # Hugging Face 
@@ -4499,6 +4659,8 @@ clarifai model init --toolkit huggingface --model-name Qwen/Qwen2-0.5B
     {HFSupportedModels}
 
 :::
+
+> **Note:** Some models are quite large and require substantial memory or GPU resources. Ensure your machine has sufficient compute capacity to load and run the model locally before initializing it.
 
 The generated structure includes:
 
@@ -4666,6 +4828,8 @@ To initialize a specific LM Studio model that supports the GGUF format, use the 
 clarifai model init --toolkit lmstudio --model-name qwen/qwen3-4b-thinking-2507
 
 :::
+
+> **Note:** Some models are quite large and require substantial memory or GPU resources. Ensure your machine has sufficient compute capacity to load and run the model locally before initializing it.
 
 The generated structure includes:
 
@@ -4996,6 +5160,8 @@ clarifai model init --toolkit vllm --model-name HuggingFaceH4/zephyr-7b-beta
   Example Output
   {VLLMInit}
 
+> **Note:** Some models are quite large and require substantial memory or GPU resources. Ensure your machine has sufficient compute capacity to load and run the model locally before initializing it.
+
 You’ll get a folder structure similar to:
 
 ```
@@ -5067,131 +5233,6 @@ Once your Local Runner is running and the model has finished downloading, you ca
   {VLLMTestRunner}
 
 The script sends a sample prompt to your locally running vLLM model and prints the response. Your model will now be serving [predictions](https://docs.clarifai.com/compute/inference/clarifai/api) through Clarifai’s local inference layer.
-
----
-
-## Compute Orchestration
-
-# Compute Orchestration
-
-**Orchestrate your AI workloads better, avoid vendor lock-in, and use compute spend efficiently**
-
-Clarifai’s Compute Orchestration provides efficient capabilities for you to deploy any model on any compute infrastructure, at any scale. 
-
-These new platform capabilities bring the convenience of serverless autoscaling to any environment, regardless of deployment location or hardware, and dynamically scale resources to meet workload demands. 
-
-With Compute Orchestration, we are providing users with the ability to organize and manage (_orchestrate_) the compute resources necessary for running their models and workflows.
-
-These capabilities enable our enterprise customers to deploy production models with enhanced control, performance, and scalability — while addressing specific problems around compute costs, latency, and control over hosted models. 
-
-Clarifai handles the containerization, model packing, time slicing, and other performance optimizations on your behalf. 
-
-:::tip Quick Start
-
-Learn how to get started quickly with Compute Orchestration [here](https://docs.clarifai.com/getting-started/set-up-compute). 
-
-:::
-
-## Deployment Options
-
-Compute Orchestration allows us to provide multiple deployment options — all of which can be customized with your preferred settings for autoscaling, cold start, and more, ensuring maximum cost efficiency and performance. 
-
-These are the deployment options we provide:
-
-:::note Shared SaaS (Serverless)
-
-If you’re not using Compute Orchestration for inference with models uploaded and owned by Clarifai, your requests will default to the Shared SaaS (Serverless) deployment. This serverless environment eliminates the need to manage infrastructure, allowing you to make predictions effortlessly — without configuring or maintaining any compute resources. Learn more [here](https://docs.clarifai.com/compute/models/inference/). 
-
-:::
-
-- **Dedicated SaaS** — Provides access to Clarifai‑managed, isolated nodes with customizable configurations. For example, you can launch a dedicated deployment in AWS US‑East, with plans to expand to other cloud providers and hardware options in the future.
-
-- **Self-Managed VPC (Virtual Private Cloud)** — Connect your own cloud provider’s VPC to Clarifai, allowing Clarifai to run and orchestrate deployments within your environment. This approach lets you maintain full control of your infrastructure while leveraging existing cloud resources and spend commitments.
-
-- **Self-Managed On-Premises** — Connect your own on‑premises or bare‑metal infrastructure to Clarifai, allowing you to utilize existing compute resources. Clarifai then orchestrates model deployments within your environment, making the most of your infrastructure investments.
-
-- **Multi-Site Deployment** — Enables deployments across multiple self‑managed compute environments, with support for a mix of on‑premises, cloud, or edge locations — and a roadmap for future multi‑cloud or multi‑region SaaS options.
-
-- **Full Platform Deployment** — Designed for organizations with stringent security and compliance needs, this option allows you to run both the Clarifai control and compute planes within your chosen cloud, on‑premises, or air‑gapped infrastructure, ensuring complete isolation and control.
-
- 
-![ ](/img/compute-orchestration/intro-1.png)
-
-## Compute Clusters and Nodepools
-
-We use [clusters and nodepools](https://docs.clarifai.com/portal-guide/compute-orchestration/set-up-compute) to organize and manage the compute resources required for the Compute Orchestration capabilities.
-
-:::info Cluster
-
-A compute cluster in Clarifai acts as the overarching computational environment where models are executed, whether for training or inference. 
-
-:::
-
-:::info nodepool
-
-A nodepool refers to a set of dedicated nodes (virtual machine instances) within a cluster that share similar configurations and resources, such as CPU or GPU type, memory size, and other performance parameters for running your models.
-
-:::
-
-Cluster configuration lets you specify where and how your models are run, ensuring better performance, lower latency, and adherence to regional regulations. You can specify a cloud provider, such as AWS, that will provide the underlying compute infrastructure for hosting and running your models. You can also specify the geographic location of the data center where the compute resources will be hosted.
-
-Nodepools are an important part of how compute resources are operated within a cluster. They provide flexibility in choosing the type of instances used to run your machine learning models and workflows and help determine how resources are scaled to meet demand.
-
-Nodepools specify the accelerator and instance that will run your models and other workloads. Accelerators are specialized hardware resources, such as GPUs or dedicated ML chips used for computation.
-
-Each nodepool can run containers or workloads, and you can have multiple nodepools within a single cluster to support different types of workloads or performance requirements. These nodes execute tasks like model training, inference, and workflow orchestration within a compute cluster. 
-
-With compute orchestration, you can ensure these nodepools are properly scaled up or down depending on the workload's size, complexities, and costs.
-
-## Benefits of Compute Orchestration
-
-![ ](/img/compute-orchestration/intro-2.png)
-
-### 1. Performance and Deployment Flexibility
-
-- It provides access to a wide range of [accelerator options](https://docs.clarifai.com/portal-guide/compute-orchestration/cloud-instances) tailored to your use case. You can configure multiple compute clusters each tailored to your AI development stage, performance requirements, and budget. You can also run affordable proof of concepts or compute-heavy LLMs or LVMs in production all from a single product.
-
-- It offers flexibility to [make deployments](https://docs.clarifai.com/portal-guide/compute-orchestration/deploy-model) in any cloud service provider, on-premises, air-gapped, or Kubernetes-supported environment. Or, you can make deployments in Clarifai’s compute to avoid having to worry about managing infrastructure.
-This allows users to leverage their hardware of choice without being locked into a single vendor.
-
-- You can customize auto-scaling settings to prevent cold-start issues and handle traffic swings; and scale down to zero for cost efficiency.  The ability to scale from zero to infinity ensures both flexibility and cost management.
-
-- We ensure efficient resource usage and cost savings through [GPU fractioning](https://www.clarifai.com/blog/gpu-fractioning-explained-how-to-run-multiple-ai-workloads-on-a-single-gpu) (running multiple models per GPU), time slicing, and other optimizations.
-
-### 2. Enhanced Security
-
-- Users can run compute planes within their own cloud service provider or on-premise environments and securely connect to Clarifai’s control plane, while only having to open outbound ports for traffic. This reduces networking complexities and security risks compared to opening inbound access or configuring cloud Identity and Access Management (IAM) access roles within your VPC. 
-
-- Nodepool-based compute allows users to keep their resources isolated and provides precise control over scaling models and nodes. This allows users to specify where models are executed, addressing compliance and security needs for regulated industries.
-
-- Clarifai offers fine-grained access control across apps, teams, users, and compute resources.
-
-- Users can group CPU and GPU types into dedicated scaling nodepools, enabling them to handle diverse workloads or team-specific requirements while enhancing security and resource management.
-
-### 3. Use Compute Cost-Efficiently and Abstract Away Complexity
-
-- An intuitive control plane enables users to efficiently govern access to AI resources, monitor performance, and manage costs. Clarifai’s expertly designed platform takes care of dependencies and optimizations, offering features like model packing, streamlined dependency management, and customizable autoscaling options — including scale-to-zero for both model replicas and compute nodes.
-
-- The advanced optimizations deliver exceptional efficiency, with model packing reducing compute usage by up to 3.7x and enabling support for over 1.6 million inputs per second with an impressive 99.9997% reliability. Depending on the chosen configuration, customers can achieve cost savings of at least 60%, and in some cases, up to 90%.
-
-- Organizations with pre-committed cloud spend or compute contracts with major cloud service providers, like AWS, Azure, or GCP, or existing GPU and hardware investments, can efficiently leverage their compute using Clarifai Compute Orchestration. 
-
-### 4. New Inference Capabilities and Developer Experience Improvements
-
-- Resourceful features such as inference streaming improve time-to-first-token for LLM generations.
-
-- Faster cold starts and optimized frameworks improve performance for critical workloads.
-
-- Continuous batching is available to reduce costs by processing multiple inference requests in batches.
-
-- Clarifai containerizes your desired models into Docker images, ensuring model package requirements are encapsulated in a portable environment and dependencies are handled automatically.
-
-- Low-latency deployment minimizes gRPC hops, speeding up communication.
-
-- New model types are easily supported with a unified protobuf format, and local inference runners allow users to [test models](https://docs.clarifai.com/compute/local-runners) before deploying to the cloud.
-
-import DocCardList from '@theme/DocCardList';
-import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 
 ---
 
@@ -34763,7 +34804,7 @@ For example, here is how you can initialize a default model using the [Ollama to
 
     clarifai model init --toolkit ollama
 
-You can find more details on running Ollama models with Clarifai Local Runners [here](https://docs.clarifai.com/compute/local-runners/ollama).
+You can learn more about using toolkits [here](https://docs.clarifai.com/compute/toolkits).
 
 ---
 

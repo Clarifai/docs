@@ -25,11 +25,12 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [OpenHands](https://docs.clarifai.com/docs/compute/inference/openhands): Run inference with Clarifai models locally using OpenHands
 - [Vercel AI SDK](https://docs.clarifai.com/docs/compute/inference/vercel): Run inferences on Clarifai models using Vercel
 - [Local Runners](https://docs.clarifai.com/docs/compute/local-runners/README): Run and test models locally, while exposing them through Clarifai’s enterprise‑grade API
-- [Hugging Face](https://docs.clarifai.com/docs/compute/local-runners/hf): Download and run Hugging Face models locally and make them available via a public API
-- [LM Studio](https://docs.clarifai.com/docs/compute/local-runners/lmstudio): Download and run LM Studio models locally and expose them via a public API
-- [Ollama](https://docs.clarifai.com/docs/compute/local-runners/ollama): Download and run Ollama models locally and expose them via a public API
-- [vLLM](https://docs.clarifai.com/docs/compute/local-runners/vllm): Download and serve vLLM models locally and expose them via a public API
 - [Compute Orchestration](https://docs.clarifai.com/docs/compute/overview): Orchestrate your AI workloads better, avoid vendor lock-in, and use compute spend efficiently
+- [Toolkits](https://docs.clarifai.com/docs/compute/toolkits/README): Download and run AI models locally with Clarifai toolkits
+- [Hugging Face](https://docs.clarifai.com/docs/compute/toolkits/hf): Download and run Hugging Face models locally and make them available via a public API
+- [LM Studio](https://docs.clarifai.com/docs/compute/toolkits/lmstudio): Download and run LM Studio models locally and expose them via a public API
+- [Ollama](https://docs.clarifai.com/docs/compute/toolkits/ollama): Download and run Ollama models locally and expose them via a public API
+- [vLLM](https://docs.clarifai.com/docs/compute/toolkits/vllm): Download and serve vLLM models locally and expose them via a public API
 - [Build and Upload Models](https://docs.clarifai.com/docs/compute/upload/README): Build and import models, including from external sources like Hugging Face
 - [Input and Output Data Types](https://docs.clarifai.com/docs/compute/upload/data-types): Learn about supported input and output data types along with usage examples
 - [Test Models Locally](https://docs.clarifai.com/docs/compute/upload/test-locally): Learn how to test your locally built models
