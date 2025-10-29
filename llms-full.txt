@@ -5834,6 +5834,429 @@ for status in model.monitor_sensors(iter(sensor_data)):
 
 ---
 
+## Model Upload Examples
+
+# Model Upload Examples
+
+**Learn how to upload and customize your own models on the Clarifai platform**
+
+This section provides examples that guide you through uploading custom models to Clarifai. You’ll learn how to adapt pre-built examples, configure model settings, and prepare your project for deployment on the platform.
+
+:::tip
+
+All the examples here are available in the Clarifai Runners Examples [GitHub repository](https://github.com/Clarifai/runners-examples). You can use the Clarifai CLI to [download a model template](https://docs.clarifai.com/resources/api-overview/cli#initialize-with-github-template). For example:
+
+```bash
+clarifai model init --github-url https://github.com/Clarifai/runners-examples/tree/main/local-runners/ollama-model-upload
+```
+:::
+
+To use these examples, create a project directory and organize your files as shown below. This structure is required for successfully uploading models to the Clarifai platform:
+
+```
+your_model_directory/
+├── 1/
+│   └── model.py
+├── requirements.txt
+└── config.yaml
+```
+
+* **`your_model_directory/`** – Root directory containing all files related to your custom model.
+  * **`1/`** – A subdirectory (named `1`) that contains the main model file.
+* **`model.py`** – Defines your model logic, including loading the model and handling inference.
+* **`requirements.txt`** – Lists all Python dependencies required to run your model.
+* **`config.yaml`** – Includes metadata and configuration details for building the model, such as compute resources and environment settings.
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+
+import HelloWorldPy from "!!raw-loader!../../../code_snippets/runners-examples/hello_world.py";
+import HelloWorldTxt from "!!raw-loader!../../../code_snippets/runners-examples/hello_world_requirements.txt";
+import HelloWorldConfig from "!!raw-loader!../../../code_snippets/runners-examples/hello_world_config.yaml";
+
+import NSFWImageClassifierPy from "!!raw-loader!../../../code_snippets/runners-examples/nsfw-image-classifier.py";
+import NSFWImageClassifierTxt from "!!raw-loader!../../../code_snippets/runners-examples/nsfw-image-classifier.txt";
+import NSFWImageClassifierConfig from "!!raw-loader!../../../code_snippets/runners-examples/nsfw-image-classifier.yaml";
+
+import DetrresnetimagedetectionPy from "!!raw-loader!../../../code_snippets/runners-examples/detr-resnet-image-detection.py";
+import DetrresnetimagedetectionTxt from "!!raw-loader!../../../code_snippets/runners-examples/detr-resnet-image-detection_requirements.txt";
+import DetrresnetimagedetectionConfig from "!!raw-loader!../../../code_snippets/runners-examples/detr-resnet-image-detection_config.yaml";
+
+import mask2formeradePy from "!!raw-loader!../../../code_snippets/runners-examples/mask2former-ade.py";
+import mask2formeradeTxt from "!!raw-loader!../../../code_snippets/runners-examples/mask2former-ade.txt";
+import mask2formeradeConfig from "!!raw-loader!../../../code_snippets/runners-examples/mask2former-ade.yaml";
+
+import stablediffusion2depthPy from "!!raw-loader!../../../code_snippets/runners-examples/stable-diffusion-2-depth.py";
+import stablediffusion2depthTxt from "!!raw-loader!../../../code_snippets/runners-examples/stable-diffusion-2-depth.txt";
+import stablediffusion2depthConfig from "!!raw-loader!../../../code_snippets/runners-examples/stable-diffusion-2-depth.yaml";
+
+import SglangSmolLM217BInstructPy from "!!raw-loader!../../../code_snippets/runners-examples/Sglang-SmolLM2-1_7B-Instruct.py";
+import SglangOpenaiServer from "!!raw-loader!../../../code_snippets/runners-examples/Sglang-openai_server_starter.py";
+import SglangSmolLM217BInstructTxt from "!!raw-loader!../../../code_snippets/runners-examples/Sglang-SmolLM2-1_7B-Instruct.txt";
+import SglangSmolLM217BInstructConfig from "!!raw-loader!../../../code_snippets/runners-examples/Sglang-SmolLM2-1_7B-Instruct.yaml";
+
+import hfllama321binstructPy from "!!raw-loader!../../../code_snippets/runners-examples/hf-llama-3_2-1b-instruct.py";
+import hfllama321binstructTxt from "!!raw-loader!../../../code_snippets/runners-examples/hf-llama-3_2-1b-instruct_requirements.txt";
+import hfllama321binstructConfig from "!!raw-loader!../../../code_snippets/runners-examples/hf-llama-3_2-1b-instruct_config.yaml";
+
+import lmdeployLlama323BInstructPy from "!!raw-loader!../../../code_snippets/runners-examples/lmdeploy-Llama-3_2-3B-Instruct.py";
+import lmdeployLlama323BInstructTxt from "!!raw-loader!../../../code_snippets/runners-examples/lmdeploy-Llama-3_2-3B-Instruct_requirements.txt";
+import lmdeployLlama323BInstructConfig from "!!raw-loader!../../../code_snippets/runners-examples/lmdeploy-Llama-3_2-3B-Instruct_config.yaml";
+
+import vllmgemma31bitPy from "!!raw-loader!../../../code_snippets/runners-examples/vllm-gemma-3-1b-it.py";
+import vllmgemma31bitTxt from "!!raw-loader!../../../code_snippets/runners-examples/vllm-gemma-3-1b-it_requirements.txt";
+import vllmgemma31bitConfig from "!!raw-loader!../../../code_snippets/runners-examples/vllm-gemma-3-1b-it_config.yaml";
+
+import vllmtoolcallingllama318bPy from "!!raw-loader!../../../code_snippets/runners-examples/vllm-tool-calling-llama-3.1-8b.py";
+import vllmtoolcallingllama318bTxt from "!!raw-loader!../../../code_snippets/runners-examples/vllm-tool-calling-llama-3.1-8b_requirements.txt";
+import vllmtoolcallingllama318bConfig from "!!raw-loader!../../../code_snippets/runners-examples/vllm-tool-calling-llama-3.1-8b_config.yaml";
+
+import ollamamodeluploadPy from "!!raw-loader!../../../code_snippets/runners-examples/ollama-model-upload.py";
+import ollamamodeluploadTxt from "!!raw-loader!../../../code_snippets/runners-examples/ollama-model-upload_requirements.txt";
+import ollamamodeluploadConfig from "!!raw-loader!../../../code_snippets/runners-examples/ollama-model-upload_config.yaml";
+
+import browsertoolsPy from "!!raw-loader!../../../code_snippets/runners-examples/browser-tools.py";
+import browsertoolsClient from "!!raw-loader!../../../code_snippets/runners-examples/browser-tools-client.py";
+import browsertoolsTxt from "!!raw-loader!../../../code_snippets/runners-examples/browser-tools_requirements.txt";
+import browsertoolsConfig from "!!raw-loader!../../../code_snippets/runners-examples/browser-tools_config.yaml";
+
+import codeexecutiondockerversionPy from "!!raw-loader!../../../code_snippets/runners-examples/code-execution-docker-version.py";
+import codeexecutiondockerversionClient from "!!raw-loader!../../../code_snippets/runners-examples/code-execution-docker-version-client.py";
+import codeexecutiondockerversionTxt from "!!raw-loader!../../../code_snippets/runners-examples/code-execution-docker-version_requirements.txt";
+import codeexecutiondockerversionConfig from "!!raw-loader!../../../code_snippets/runners-examples/code-execution-docker-version_config.yaml";
+
+import codeexecutionwithoutdockerversionPy from "!!raw-loader!../../../code_snippets/runners-examples/code-execution-without-docker-version.py";
+import codeexecutionwithoutdockerversionClient from "!!raw-loader!../../../code_snippets/runners-examples/code-execution-without-docker-version-client.py";
+import codeexecutionwithoutdockerversionTxt from "!!raw-loader!../../../code_snippets/runners-examples/code-execution-without-docker-version_requirements.txt";
+import codeexecutionwithoutdockerversionConfig from "!!raw-loader!../../../code_snippets/runners-examples/code-execution-without-docker-version_config.yaml";
+
+import googledrivePy from "!!raw-loader!../../../code_snippets/runners-examples/google-drive.py";
+import googledriveClient from "!!raw-loader!../../../code_snippets/runners-examples/google-drive-client.py";
+import googledriveTxt from "!!raw-loader!../../../code_snippets/runners-examples/google-drive.txt";
+import googledriveConfig from "!!raw-loader!../../../code_snippets/runners-examples/google-drive.yaml";
+
+import mathPy from "!!raw-loader!../../../code_snippets/runners-examples/math.py";
+import mathClient from "!!raw-loader!../../../code_snippets/runners-examples/math-client.py";
+import mathTxt from "!!raw-loader!../../../code_snippets/runners-examples/math_requirements.txt";
+import mathConfig from "!!raw-loader!../../../code_snippets/runners-examples/math_config.yaml";
+
+import postgresPy from "!!raw-loader!../../../code_snippets/runners-examples/postgres.py";
+import postgresClient from "!!raw-loader!../../../code_snippets/runners-examples/postgres-client.py";
+import postgresTxt from "!!raw-loader!../../../code_snippets/runners-examples/postgres_requirements.txt";
+import postgresConfig from "!!raw-loader!../../../code_snippets/runners-examples/postgres_config.yaml";
+
+import websearchPy from "!!raw-loader!../../../code_snippets/runners-examples/web-search.py";
+import websearchClient from "!!raw-loader!../../../code_snippets/runners-examples/web-search-client.py";
+import websearchTxt from "!!raw-loader!../../../code_snippets/runners-examples/web-search_requirements.txt";
+import websearchConfig from "!!raw-loader!../../../code_snippets/runners-examples/web-search_config.yaml";
+
+import Qwen25VL3BInstructpythonicvllmPy from "!!raw-loader!../../../code_snippets/runners-examples/Qwen2_5-VL-3B-Instruct-pythonic-vllm.py";
+import Qwen25VL3BIopenaiserverstarterPy from "!!raw-loader!../../../code_snippets/runners-examples/Qwen-openai_server_starter.py";
+import Qwen25VL3BInstructpythonicvllmTxt from "!!raw-loader!../../../code_snippets/runners-examples/Qwen2_5-VL-3B-Instruct-pythonic-vllm_requirements.txt";
+import Qwen25VL3BInstructpythonicvllmConfig from "!!raw-loader!../../../code_snippets/runners-examples/Qwen2_5-VL-3B-Instruct-pythonic-vllm_config.yaml";
+
+import nanonetsocrsPy from "!!raw-loader!../../../code_snippets/runners-examples/nanonets-ocr-s.py";
+import nanonetsocrsTxt from "!!raw-loader!../../../code_snippets/runners-examples/nanonets-ocr-s_requirements.txt";
+import nanonetsocrsConfig from "!!raw-loader!../../../code_snippets/runners-examples/nanonets-ocr-s_config.yaml";
+
+import jinaembeddingsv3Py from "!!raw-loader!../../../code_snippets/runners-examples/jina-embeddings-v3.py";
+import jinaembeddingsv3xt from "!!raw-loader!../../../code_snippets/runners-examples/jina-embeddings-v3_requirements.txt";
+import jinaembeddingsv3Config from "!!raw-loader!../../../code_snippets/runners-examples/jina-embeddings-v3_config.yaml";
+
+import fluxschnellPy from "!!raw-loader!../../../code_snippets/runners-examples/flux-schnell.py";
+import fluxschnellTxt from "!!raw-loader!../../../code_snippets/runners-examples/flux-schnell_requirements.txt";
+import fluxschnellConfig from "!!raw-loader!../../../code_snippets/runners-examples/flux-schnell_config.yaml";
+
+## Hello World
+
+  `1/model.py`
+    {HelloWorldPy}
+
+  `requirements.txt`
+    {HelloWorldTxt}
+
+  `config.yaml`
+    {HelloWorldConfig}
+
+## NSFW Image Classifier
+
+  `1/model.py`
+    {NSFWImageClassifierPy}
+
+  `requirements.txt`
+    {NSFWImageClassifierTxt}
+
+  `config.yaml`
+    {NSFWImageClassifierConfig}
+
+## DETR ResNet Image Detector 
+
+  `1/model.py`
+    {DetrresnetimagedetectionPy}
+
+  `requirements.txt`
+    {DetrresnetimagedetectionTxt}
+
+  `config.yaml`
+    {DetrresnetimagedetectionConfig}
+
+## Image Segmenter
+
+### Mask2Former ADE
+
+  `1/model.py`
+    {mask2formeradePy}
+
+  `requirements.txt`
+    {mask2formeradeTxt}
+
+  `config.yaml`
+    {mask2formeradeConfig}
+
+## Image-Text-to-Image
+
+### Stable Diffusion 2 Depth
+
+  `1/model.py`
+    {stablediffusion2depthPy}
+
+  `requirements.txt`
+    {stablediffusion2depthTxt}
+
+  `config.yaml`
+    {stablediffusion2depthConfig}
+
+## LLM
+
+### SmolLM2 1.7B Instruct (SGLang)
+
+  `1/model.py`
+    {SglangSmolLM217BInstructPy}
+
+  `1/openai_server_starter.py`
+    {SglangOpenaiServer}
+
+  `requirements.txt`
+    {SglangSmolLM217BInstructTxt}
+
+  `config.yaml`
+    {SglangSmolLM217BInstructConfig}
+
+### LLaMA 3.2 1B Instruct (Hugging Face)
+
+  `1/model.py`
+    {hfllama321binstructPy}
+
+  `requirements.txt`
+    {hfllama321binstructTxt}
+
+  `config.yaml`
+    {hfllama321binstructConfig}
+
+### LLaMA 3.2 3B Instruct (LMDeploy)
+
+  `1/model.py`
+    {lmdeployLlama323BInstructPy}
+
+  `requirements.txt`
+    {lmdeployLlama323BInstructTxt}
+
+  `config.yaml`
+    {lmdeployLlama323BInstructConfig}
+
+### Gemma 3 1B Instruct (vLLM)
+
+  `1/model.py`
+    {vllmgemma31bitPy}
+
+  `requirements.txt`
+    {vllmgemma31bitTxt}
+
+  `config.yaml`
+    {vllmgemma31bitConfig}
+
+### LLaMA 3.1 8B Tool Calling (vLLM)
+
+  `1/model.py`
+    {vllmtoolcallingllama318bPy}
+
+  `requirements.txt`
+    {vllmtoolcallingllama318bTxt}
+
+  `config.yaml`
+    {vllmtoolcallingllama318bConfig}
+
+## Local Runners
+
+### Ollama
+
+  `1/model.py`
+    {ollamamodeluploadPy}
+
+  `requirements.txt`
+    {ollamamodeluploadTxt}
+
+  `config.yaml`
+    {ollamamodeluploadConfig}
+
+## MCP
+
+### Browser Tools
+
+  `1/model.py`
+    {browsertoolsPy}
+
+  `client.py`
+    {browsertoolsClient }
+
+  `requirements.txt`
+    {browsertoolsTxt}
+
+  `config.yaml`
+    {browsertoolsConfig}
+
+### Code Execution
+
+  `1/model.py`
+    {codeexecutiondockerversionPy}
+
+  `client.py`
+    {codeexecutiondockerversionClient}
+
+  `requirements.txt`
+    {codeexecutiondockerversionTxt}
+
+  `config.yaml`
+    {codeexecutiondockerversionConfig}
+
+### Code Execution Without Docker Version
+
+  `1/model.py`
+    {codeexecutionwithoutdockerversionPy}
+
+  `client.py`
+    {codeexecutionwithoutdockerversionClient}
+
+  `requirements.txt`
+    {codeexecutionwithoutdockerversionTxt}
+
+  `config.yaml`
+    {codeexecutionwithoutdockerversionConfig}
+
+### Google Drive
+
+  `1/model.py`
+    {googledrivePy}
+
+  `client.py`
+    {googledriveClient}
+
+  `requirements.txt`
+    {googledriveTxt}
+
+  `config.yaml`
+    {googledriveConfig}
+
+### Math
+
+  `1/model.py`
+    {mathPy}
+
+  `client.py`
+    {mathClient}
+
+  `requirements.txt`
+    {mathTxt}
+
+  `config.yaml`
+    {mathConfig}
+
+### Postgres
+
+  `1/model.py`
+    {postgresPy}
+
+  `client.py`
+    {postgresClient}
+
+  `requirements.txt`
+    {postgresTxt}
+
+  `config.yaml`
+    {postgresConfig}
+
+### Web Search
+
+  `1/model.py`
+    {websearchPy}
+
+  `client.py`
+    {websearchClient}
+
+  `requirements.txt`
+    {websearchTxt}
+
+  `config.yaml`
+    {websearchConfig}
+
+## Multimodal Models
+
+### Qwen2.5 VL 3B Instruct
+
+  `1/model.py`
+    {Qwen25VL3BInstructpythonicvllmPy}
+
+  `1/openai_server_starter.py`
+    {Qwen25VL3BIopenaiserverstarterPy}
+
+  `requirements.txt`
+    {Qwen25VL3BInstructpythonicvllmTxt}
+
+  `config.yaml`
+    {Qwen25VL3BInstructpythonicvllmConfig}
+
+## OCR
+
+### NanoNets OCR Small
+
+  `1/model.py`
+    {nanonetsocrsPy}
+
+  `requirements.txt`
+    {nanonetsocrsTxt}
+
+  `config.yaml`
+    {nanonetsocrsConfig}
+
+## Text Embedder
+
+### Jina Embeddings v3
+
+  `1/model.py`
+    {jinaembeddingsv3Py}
+
+  `requirements.txt`
+    {jinaembeddingsv3xt}
+
+  `config.yaml`
+    {jinaembeddingsv3Config}
+
+## Text-to-Image
+
+### FLUX Schnell
+
+  `1/model.py`
+    {fluxschnellPy}
+
+  `requirements.txt`
+    {fluxschnellTxt}
+
+  `config.yaml`
+    {fluxschnellConfig}
+
+---
+
 ## Test Models Locally
 
 # Test Models Locally
@@ -20327,7 +20750,7 @@ Let's demonstrate how you can create a text classifier model that identifies whe
 
 ### Step 1: Create an App
 
-[Click here](https://docs.clarifai.com/clarifai-basics/applications/create-an-application/#create-an-application-on-the-portal) to learn how to create an application on the Clarifai platform.
+[Click here](https://docs.clarifai.com/create/applications/create/#create-via-the-ui) to learn how to create an application on the Clarifai platform.
 
 :::note
 
@@ -20337,17 +20760,15 @@ When creating the application, choose the Text/Document option as the primary in
 
 ### Step 2: Create a Dataset
 
-[Click here](https://docs.clarifai.com/portal-guide/datasets/create-get-update-delete/#create-a-new-dataset) to learn how to create a dataset that will store the text inputs. 
+[Click here](https://docs.clarifai.com/create/datasets/create) to learn how to create a dataset that will store the text inputs. 
+
+> **Note:** In this example, we'll use 5 examples of spam messages and 5 examples of non-spam messages sourced from [this Kaggle dataset](https://www.kaggle.com/datasets/datatattle/email-classification-nlp). You can download the dataset and follow along with this documentation.
 
 ### Step 3: Add and Annotate Inputs
 
 Next, you'll need to upload data to the app you've created. This input data, labeled with specific concepts, will be used to train your model. 
 
-A concept is something that describes the content of your text input, similar to a "tag" or "keyword." The data in these concepts give the model something to "observe" about the keyword, and learn from.
-
-For transfer learning, you can start with a small dataset. We recommend beginning with just 10 text inputs and gradually adding more as needed. 
-
-In this example, we'll use 5 examples of spam messages and 5 examples of non-spam messages sourced from [this dataset](https://www.kaggle.com/datasets/datatattle/email-classification-nlp). You can download the dataset and follow along with this documentation.
+> **Note:** A concept is something that describes the content of your text input, similar to a "tag" or "keyword." The data in these concepts give the model something to "observe" about the keyword, and learn from. For transfer learning, you can start with a small dataset. We recommend beginning with just 10 text inputs and gradually adding more as needed. 
 
 To upload inputs, select the **Inputs** option in the collapsible left sidebar. Next, click the **Upload inputs** button.
 
@@ -35630,6 +36051,7 @@ If a status comes back that you do not see below, please reach out to support@cl
 | 21351 | MODEL_DEPLOYING | Used when calling the inference coordinator to deploy a spire |
 | 21352 | MODEL_QUEUED_FOR_DEPLOYMENT | Used when training is completed |
 | 21353 | MODEL_NOT_DEPLOYED | Used when model spire deployment is manually taken down or due to inactivity |
+ |21354 | MODEL_BUSY_PLEASE_RETRY | The model is currently saturated with active requests. Incoming requests are queued, and if the model does not become available within a certain time, this status is returned. Retry the request after a short delay.|
 
 ## Model Reference Codes: 214xx
 

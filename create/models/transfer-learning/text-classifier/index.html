@@ -24,8 +24,8 @@
 <script src="https://cdn.amplitude.com/libs/analytics-browser-2.12.0-min.js.gz" defer="defer"></script>
 <script src="https://cdn.amplitude.com/libs/plugin-session-replay-browser-1.4.0-min.js.gz" defer="defer"></script>
 <script src="/scripts/amplitude.js" defer="defer"></script><link rel="stylesheet" href="/assets/css/styles.cd86c358.css">
-<script src="/assets/js/runtime~main.e8c5e1e1.js" defer="defer"></script>
-<script src="/assets/js/main.caf52846.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.9c0df257.js" defer="defer"></script>
+<script src="/assets/js/main.bcccae44.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5W9P7GR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -43,15 +43,18 @@
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="via-the-ui"><strong>Via the UI</strong><a href="#via-the-ui" class="hash-link" aria-label="Direct link to via-the-ui" title="Direct link to via-the-ui" translate="no">​</a></h2>
 <p>Let&#x27;s demonstrate how you can create a text classifier model that identifies whether an email message is a spam or not a spam.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-1-create-an-app">Step 1: Create an App<a href="#step-1-create-an-app" class="hash-link" aria-label="Direct link to Step 1: Create an App" title="Direct link to Step 1: Create an App" translate="no">​</a></h3>
-<p><a href="https://docs.clarifai.com/clarifai-basics/applications/create-an-application/#create-an-application-on-the-portal" target="_blank" rel="noopener noreferrer" class="">Click here</a> to learn how to create an application on the Clarifai platform.</p>
+<p><a href="https://docs.clarifai.com/create/applications/create/#create-via-the-ui" target="_blank" rel="noopener noreferrer" class="">Click here</a> to learn how to create an application on the Clarifai platform.</p>
 <div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>note</div><div class="admonitionContent_BuS1"><p>When creating the application, choose the Text/Document option as the primary input type.</p></div></div>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-2-create-a-dataset">Step 2: Create a Dataset<a href="#step-2-create-a-dataset" class="hash-link" aria-label="Direct link to Step 2: Create a Dataset" title="Direct link to Step 2: Create a Dataset" translate="no">​</a></h3>
-<p><a href="https://docs.clarifai.com/portal-guide/datasets/create-get-update-delete/#create-a-new-dataset" target="_blank" rel="noopener noreferrer" class="">Click here</a> to learn how to create a dataset that will store the text inputs.</p>
+<p><a href="https://docs.clarifai.com/create/datasets/create" target="_blank" rel="noopener noreferrer" class="">Click here</a> to learn how to create a dataset that will store the text inputs.</p>
+<blockquote>
+<p><strong>Note:</strong> In this example, we&#x27;ll use 5 examples of spam messages and 5 examples of non-spam messages sourced from <a href="https://www.kaggle.com/datasets/datatattle/email-classification-nlp" target="_blank" rel="noopener noreferrer" class="">this Kaggle dataset</a>. You can download the dataset and follow along with this documentation.</p>
+</blockquote>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-3-add-and-annotate-inputs">Step 3: Add and Annotate Inputs<a href="#step-3-add-and-annotate-inputs" class="hash-link" aria-label="Direct link to Step 3: Add and Annotate Inputs" title="Direct link to Step 3: Add and Annotate Inputs" translate="no">​</a></h3>
 <p>Next, you&#x27;ll need to upload data to the app you&#x27;ve created. This input data, labeled with specific concepts, will be used to train your model.</p>
-<p>A concept is something that describes the content of your text input, similar to a &quot;tag&quot; or &quot;keyword.&quot; The data in these concepts give the model something to &quot;observe&quot; about the keyword, and learn from.</p>
-<p>For transfer learning, you can start with a small dataset. We recommend beginning with just 10 text inputs and gradually adding more as needed.</p>
-<p>In this example, we&#x27;ll use 5 examples of spam messages and 5 examples of non-spam messages sourced from <a href="https://www.kaggle.com/datasets/datatattle/email-classification-nlp" target="_blank" rel="noopener noreferrer" class="">this dataset</a>. You can download the dataset and follow along with this documentation.</p>
+<blockquote>
+<p><strong>Note:</strong> A concept is something that describes the content of your text input, similar to a &quot;tag&quot; or &quot;keyword.&quot; The data in these concepts give the model something to &quot;observe&quot; about the keyword, and learn from. For transfer learning, you can start with a small dataset. We recommend beginning with just 10 text inputs and gradually adding more as needed.</p>
+</blockquote>
 <p>To upload inputs, select the <strong>Inputs</strong> option in the collapsible left sidebar. Next, click the <strong>Upload inputs</strong> button.</p>
 <p><img decoding="async" loading="lazy" src="/assets/images/nav-to-explorer_1-40d639358a69ef71cb4fe0ce12f2c4e1.png" width="1879" height="828" class="img_ev3q"></p>
 <p>The small window that pops up allows you to upload your inputs.</p>
