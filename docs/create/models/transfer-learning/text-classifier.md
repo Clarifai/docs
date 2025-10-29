@@ -20,7 +20,7 @@ Let's demonstrate how you can create a text classifier model that identifies whe
 
 ### Step 1: Create an App
 
-[Click here](https://docs.clarifai.com/clarifai-basics/applications/create-an-application/#create-an-application-on-the-portal) to learn how to create an application on the Clarifai platform.
+[Click here](https://docs.clarifai.com/create/applications/create/#create-via-the-ui) to learn how to create an application on the Clarifai platform.
 
 :::note
 
@@ -30,17 +30,15 @@ When creating the application, choose the Text/Document option as the primary in
 
 ### Step 2: Create a Dataset
 
-[Click here](https://docs.clarifai.com/portal-guide/datasets/create-get-update-delete/#create-a-new-dataset) to learn how to create a dataset that will store the text inputs. 
+[Click here](https://docs.clarifai.com/create/datasets/create) to learn how to create a dataset that will store the text inputs. 
+
+> **Note:** In this example, we'll use 5 examples of spam messages and 5 examples of non-spam messages sourced from [this Kaggle dataset](https://www.kaggle.com/datasets/datatattle/email-classification-nlp). You can download the dataset and follow along with this documentation.
 
 ### Step 3: Add and Annotate Inputs
 
 Next, you'll need to upload data to the app you've created. This input data, labeled with specific concepts, will be used to train your model. 
 
-A concept is something that describes the content of your text input, similar to a "tag" or "keyword." The data in these concepts give the model something to "observe" about the keyword, and learn from.
-
-For transfer learning, you can start with a small dataset. We recommend beginning with just 10 text inputs and gradually adding more as needed. 
-
-In this example, we'll use 5 examples of spam messages and 5 examples of non-spam messages sourced from [this dataset](https://www.kaggle.com/datasets/datatattle/email-classification-nlp). You can download the dataset and follow along with this documentation.
+> **Note:** A concept is something that describes the content of your text input, similar to a "tag" or "keyword." The data in these concepts give the model something to "observe" about the keyword, and learn from. For transfer learning, you can start with a small dataset. We recommend beginning with just 10 text inputs and gradually adding more as needed. 
 
 To upload inputs, select the **Inputs** option in the collapsible left sidebar. Next, click the **Upload inputs** button.
 

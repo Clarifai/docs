@@ -1,0 +1,17 @@
+tokenizers>=0.21.0
+accelerate>=1.2.0
+optimum>=1.23.3
+einops>=0.8.0
+packaging
+ninja
+
+timm
+openai
+clarifai
+clarifai-protocol
+psutil
+
+torch==2.6.0
+lmdeploy==0.8.0
+transformers>=4.51.2
+partial-json-parser

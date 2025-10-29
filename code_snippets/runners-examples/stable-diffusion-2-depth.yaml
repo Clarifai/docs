@@ -1,0 +1,21 @@
+model:
+  id: "stable-diffusion-2-depth"
+  user_id: "user_id"
+  app_id: "app_id"
+  model_type_id: "multimodal-to-text"
+
+build_info:
+  python_version: '3.11'
+
+inference_compute_info:
+  cpu_limit: '3' 
+  cpu_memory: 15Gi
+  num_accelerators: 1
+  accelerator_type: ["NVIDIA-*"]
+  accelerator_memory: 6Gi
+
+checkpoints:
+  type: huggingface
+  repo_id: "stabilityai/stable-diffusion-2-depth"
+  hf_token: "hf_token"
+  when: runtime

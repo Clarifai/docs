@@ -1,0 +1,11 @@
+build_info:
+  python_version: '3.11'
+inference_compute_info:
+  cpu_limit: 1
+  cpu_memory: 500Mi
+  num_accelerators: 0
+model:
+  app_id: code-execution-app-no-docker
+  id: code-execution-model-no-docker
+  model_type_id: text-to-text
+  user_id: your_user_id

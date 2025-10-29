@@ -1,0 +1,11 @@
+build_info:
+  python_version: '3.11'
+inference_compute_info:
+  cpu_limit: 1
+  cpu_memory: 500Mi
+  num_accelerators: 0
+model:
+  app_id: mcp-math-app
+  id: mcp-math-model
+  model_type_id: text-to-text
+  user_id: mcp-math-user

@@ -1,0 +1,21 @@
+model:
+  id: "llama-3_1-8B-instruct-tool-calling"
+  user_id: "user_id"
+  app_id: "app_id"
+  model_type_id: "text-to-text"
+
+build_info:
+  python_version: '3.12'
+
+inference_compute_info:
+  cpu_limit: '1'
+  cpu_memory: 12Gi
+  num_accelerators: 1
+  accelerator_type: ["NVIDIA-*"]
+  accelerator_memory: 44Gi
+
+checkpoints:
+  type: huggingface
+  repo_id: meta-llama/Llama-3.1-8B-Instruct
+  hf_token: "hf_token"
+  when: runtime
