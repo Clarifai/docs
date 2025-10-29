@@ -1,0 +1,20 @@
+model: 
+  id: "flux_1-schnell"
+  user_id: 
+  app_id: 
+  model_type_id: "text-to-image"
+
+build_info:
+  python_version: "3.11"
+
+inference_compute_info:
+  cpu_limit: "3"
+  cpu_memory: "18Gi"
+  num_accelerators: 1
+  accelerator_type: ["NVIDIA-L40S", "NVIDIA-A100", "NVIDIA-H100"]
+  accelerator_memory: "44Gi"
+
+checkpoints:
+  type: huggingface
+  repo_id: black-forest-labs/FLUX.1-schnell
+  hf_token: 

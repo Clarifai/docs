@@ -1,0 +1,5 @@
+clarifai>=11.5.2,<12.0.0
+pillow==10.4.0
+torch==2.6.0
+torchvision==0.21.0
+transformers>=4.51.1

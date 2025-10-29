@@ -1,0 +1,8 @@
+clarifai==11.7.5
+anyio==4.9.0
+mcp==1.9.0
+fastmcp==2.3.4
+requests>=2.31.0
+beautifulsoup4==4.12.2
+lxml>=4.9.3
+ddgs

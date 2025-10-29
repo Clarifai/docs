@@ -1,0 +1,20 @@
+model:
+  id: Llama-3_2-3B-Instruct
+  user_id: 
+  app_id: 
+  model_type_id: text-to-text
+build_info:
+  python_version: '3.11'
+inference_compute_info:
+  cpu_limit: '1'
+  cpu_memory: 6Gi
+  num_accelerators: 1
+  accelerator_type:
+  - NVIDIA-*
+  accelerator_memory: 20Gi
+num_threads: 64
+checkpoints:
+  type: huggingface
+  repo_id: meta-llama/Llama-3.2-3B-Instruct
+  hf_token: 
+  when: runtime

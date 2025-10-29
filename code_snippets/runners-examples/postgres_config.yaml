@@ -1,0 +1,11 @@
+build_info:
+  python_version: '3.11'
+inference_compute_info:
+  cpu_limit: 1000m
+  cpu_memory: 1Gi
+  num_accelerators: 0
+model:
+  app_id: mcp-examples-app
+  id: postgres-mcp-server
+  model_type_id: text-to-text
+  user_id: mcp-examples-user

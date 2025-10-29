@@ -1,0 +1,17 @@
+model:
+  id: "jinaai-embeddings-v3"
+  user_id: "user_id"
+  app_id: "app_id"
+  model_type_id: "text-embedder"
+
+build_info:
+  python_version: "3.11"
+
+inference_compute_info:
+  cpu_limit: "1"
+  cpu_memory: "5Gi"
+  num_accelerators: 0
+
+checkpoints:
+  type: "huggingface"
+  repo_id: "jinaai/jina-embeddings-v3"

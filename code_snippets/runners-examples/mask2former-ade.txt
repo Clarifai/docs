@@ -1,0 +1,10 @@
+torch==2.6.0
+tokenizers>=0.19.1
+transformers>=4.44.2
+pillow>=10.4.0
+requests>=2.32.3
+timm
+opencv-python-headless==4.10.0.84
+numpy
+aiohttp
+scipy>=1.10.1

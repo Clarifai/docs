@@ -1,0 +1,22 @@
+# Config file for the Sglang runner
+
+model:
+  id: "SmolLM2-1_7B-Instruct"
+  user_id: "USER_ID"
+  app_id: "APP_ID"
+  model_type_id: "text-to-text"
+
+build_info:
+  python_version: "3.11"
+
+inference_compute_info:
+  cpu_limit: "1"
+  cpu_memory: "6Gi"
+  num_accelerators: 1
+  accelerator_type: ["NVIDIA-*"]
+  accelerator_memory: "44Gi"
+
+checkpoints:
+  type: "huggingface"
+  repo_id: "HuggingFaceTB/SmolLM2-1.7B-Instruct"
+  hf_token: "hf_token"
