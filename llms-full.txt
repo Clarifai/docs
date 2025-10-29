@@ -36051,7 +36051,7 @@ If a status comes back that you do not see below, please reach out to support@cl
 | 21351 | MODEL_DEPLOYING | Used when calling the inference coordinator to deploy a spire |
 | 21352 | MODEL_QUEUED_FOR_DEPLOYMENT | Used when training is completed |
 | 21353 | MODEL_NOT_DEPLOYED | Used when model spire deployment is manually taken down or due to inactivity |
- |21354 | MODEL_BUSY_PLEASE_RETRY | The model is currently saturated with active requests. Incoming requests are queued, and if the model does not become available within a certain time, this status is returned. Retry the request after a short delay.|
+ |21354 | MODEL_BUSY_PLEASE_RETRY | The model is currently overloaded with active requests. Retry your request after a short delay|
 
 ## Model Reference Codes: 214xx
 
