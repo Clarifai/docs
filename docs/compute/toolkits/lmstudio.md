@@ -12,7 +12,7 @@ sidebar_position: 4
 
 With Clarifai’s [Local Runners](https://docs.clarifai.com/compute/local-runners/), you can take this a step further: run LM Studio models directly on your machine, expose them securely through a public URL, and leverage Clarifai’s powerful AI platform — all while maintaining the speed, privacy, and control of local deployment.
 
-> **Note:** After downloading the model using the LM Studio toolkit, you can [upload](https://docs.clarifai.com/compute/upload/#step-4-upload-the-model-to-clarifai) it to Clarifai to leverage the platform’s capabilities.
+> **Note:** After initializing a model using the LM Studio toolkit, you can [upload](https://docs.clarifai.com/compute/upload/#step-4-upload-the-model-to-clarifai) it to Clarifai to leverage the platform’s capabilities.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -137,7 +137,7 @@ The [`model.py`](https://docs.clarifai.com/compute/upload/#prepare-modelpy) file
 
 The `config.yaml` file defines key configuration details, such as compute resource requirements and toolkit metadata.
 
-In the `model` section, specify a unique model ID (any name of your choice) and your Clarifai user ID and app ID. These parameters determine where the model will be deployed on the Clarifai platform.
+In the `model` section, specify a unique model ID (any name of your choice) and app ID. Your Clarifai user ID is set by default from your [active context](https://docs.clarifai.com/resources/api-overview/cli#clarifai-config). These parameters determine where the model will be deployed on the Clarifai platform.
 
 ### `requirements.txt`
 

@@ -1,41 +1,42 @@
 ---
-description: Learn about secrets for the Clarifai platform
+description: Create, store, and manage environment variables and secrets
 sidebar_position: 2.1
-unlisted: true
 toc_max_heading_level: 4
 ---
 
 # Environment Secrets
 
-**Securely connect external services with secrets**
+**Create, store, and manage environment variables and secrets**
 <hr />
 
-Third-Party API Keys are a type of secret used to authenticate and authorize external applications or services, enabling them to securely interact with your Clarifai data without exposing your primary credentials, such as your [Personal Access Token](pat.md ) (PAT).
+Environment secrets are securely encrypted values that function as environment variables within your workflows. 
+
+They enable you to store and manage sensitive configuration data, such as third-party API keys, without hardcoding them into your scripts.
 
 ## Via the UI
 
-The Clarifai platform offers an intuitive interface for creating, managing, and securing your third-party API keys.
+The Clarifai platform offers an intuitive interface for creating, managing, and securing your environment secrets.
 
-To create a third-party API key, [log in](https://clarifai.com/login) to the Clarifai platform. Then, in the collapsible left sidebar, select **Settings** and choose **Secrets** from the dropdown list.
+To create a secret, [log in](https://clarifai.com/login) to the Clarifai platform. Then, in the collapsible left sidebar, select **Settings** and choose **Secrets** from the dropdown list.
 
 ![](/img/others/third_party_key_1.png)
 
-On the ensuing **Secrets** page, click the **Create Third-Party API Key** button.  
+On the ensuing **Secrets** page, click the **Create Environment Secrets** button.  
 
-Next, on the form that pops up, enter a required name for your API key, an optional short description, and the required API key from your third-party provider. 
+Next, on the form that pops up, enter a required name for your secret, an optional short description, and the required value. 
 
-Lastly, click the **Create Third-Party API Key** button.
+Lastly, click the **Create Environment Secret** button.
 
 ![](/img/others/third_party_key_2.png)
 
-The new PAT will be listed in the **Third-Party API Keys** section, where you can copy, view, edit, or delete it.
+The new secret will be listed in the **Environment Secrets** section, where you can copy, view, edit, or delete it.
 
 ![listed pat](/img/others/third_party_key_3.png)
 
 :::tip note
 
-- Third-Party API keys do not expire. In case your key gets compromised, you should delete it, and create a new one.
-- We recommend that you do **not** share your keys with other users.
+- Environment secrets do not expire. In case your secret gets compromised, you should delete it, and create a new one.
+- We recommend that you do **not** share your secrets with other users.
 
 :::
 
@@ -92,7 +93,7 @@ import OutputSecretsDelete from "!!raw-loader!../../../code_snippets/api-guide/a
 
 ### Create 
 
-You can create a new a third-party API key by providing its ID and value. 
+You can create a new environment secret by providing its ID and value. 
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
@@ -111,7 +112,7 @@ You can create a new a third-party API key by providing its ID and value.
 
 ### Get
 
-You can get an existing third-party API key by providing its ID. 
+You can get an existing environment secret by providing its ID. 
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
@@ -130,7 +131,7 @@ You can get an existing third-party API key by providing its ID.
 
 ### List
 
-You can list all the third-party API keys you have.  
+You can list all the environment secrets you have.  
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
@@ -152,7 +153,7 @@ You can list all the third-party API keys you have.
 
 ### Update
 
-You can update an existing third-party API key by providing its ID. 
+You can update an existing environment secret by providing its ID. 
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
@@ -169,7 +170,7 @@ You can update an existing third-party API key by providing its ID.
 
 ### Delete 
 
-You can delete an existing third-party API key by providing its ID. 
+You can delete an existing environment secret by providing its ID. 
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">

@@ -1,0 +1,18 @@
+model:
+  id: SmolLM2-135M-Instruct
+  user_id: YOUR_USER_ID
+  app_id: YOUR_APP_ID
+  model_type_id: text-to-text
+build_info:
+  python_version: '3.11'
+inference_compute_info:
+  cpu_limit: '3'
+  cpu_memory: 14Gi
+  num_accelerators: 1
+  accelerator_type:
+  - NVIDIA-L40S
+  accelerator_memory: 42Gi
+checkpoints:
+  repo_id: HuggingFaceTB/SmolLM2-135M-Instruct
+  type: huggingface
+  when: runtime

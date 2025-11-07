@@ -12,7 +12,7 @@ Ollama is an open-source tool that allows you to download, run, and manage large
 
 When combined with Clarifai’s Local Runners, it enables you to run Ollama models on your machine, expose them securely via a public URL, and tap into Clarifai’s powerful platform — all while keeping the speed, privacy, and control of local deployment.
 
-> **Note:** After downloading the model using the Ollama toolkit, you can [upload](https://docs.clarifai.com/compute/upload/#step-4-upload-the-model-to-clarifai) it to Clarifai to leverage the platform’s capabilities.
+> **Note:** After initializing a model using the Ollama toolkit, you can [upload](https://docs.clarifai.com/compute/upload/#step-4-upload-the-model-to-clarifai) it to Clarifai to leverage the platform’s capabilities.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -20,6 +20,9 @@ import CodeBlock from "@theme/CodeBlock";
 
 import OllamaInit from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/ollama-init.txt";
 import OllamaRun from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/ollama-run.txt";
+import OllamaModelPy from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/ollama-modelpy.py";
+import OllamaRequirements from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/ollama-requirements.txt";
+import OllamaConfig from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/ollama-config.txt";
 
 ## Step 1: Perform Prerequisites
 
@@ -29,7 +32,7 @@ Go to the [Ollama website](https://ollama.com/download) and choose the appropria
 
 > **Note:** If you're using Windows, make sure to restart your machine after installing Ollama to ensure that the updated environment variables are properly applied.
 
-### Sign Up or Log In
+### Get User ID and PAT
 
 Start by [logging in](https://clarifai.com/login) to your existing Clarifai account or [signing up](https://clarifai.com/signup) for a new one. Once logged in, you'll need the following credentials for setup:
 
@@ -37,7 +40,7 @@ Start by [logging in](https://clarifai.com/login) to your existing Clarifai acco
 
 - **Personal Access Token (PAT)** – From the same **Settings** option, choose **Secrets** to generate or copy your [PAT](https://docs.clarifai.com/control/authentication/pat). This token is used to authenticate your connection with the Clarifai platform.
 
-You can then set the PAT as an environment variable using `CLARIFAI_PAT`, which is important when running inference with your models. 
+You can then set the PAT as an environment variable using `CLARIFAI_PAT`. 
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Unix-Like Systems">
@@ -60,13 +63,13 @@ Install the latest version of the [Clarifai CLI](https://docs.clarifai.com/sdk/c
 
 > **Note:** You must have **[Python 3.11 or 3.12](https://docs.clarifai.com/resources/api-overview/python-sdk#python-requirements)**  installed to use Local Runners.
 
-### Install OpenAI Package
+### Install OpenAI
 
 Install the `openai` package, which is required when performing inference with models using the [OpenAI-compatible format](https://docs.clarifai.com/compute/inference/#predict-with-openai-compatible-format). 
 
 <Tabs groupId="code">
-<TabItem value="bash" label="Python">
-    <CodeBlock className="language-bash"> pip install openai </CodeBlock>
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash">pip install openai</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -82,30 +85,91 @@ For example, here's how to initialize the [`llama3.2`](https://ollama.com/librar
 </TabItem>
 </Tabs>
 
-> **Note:** The above command will create a new model directory structure that is compatible with the Clarifai platform. You can customize or optimize the generated model by modifying the `1/model.py` file as needed.
-
 <details>
   <summary>Example Output</summary>
     <CodeBlock className="language-text">{OllamaInit}</CodeBlock>
 </details>
+
+:::tip customize initialization
 
 You can customize model initialization from the Ollama library using the Clarifai CLI with the following options:
 
 - `--model-name` – Name of the Ollama model to use (default: `llama3.2`). This lets you specify any model from the Ollama library. Example: `clarifai model init --toolkit ollama --model-name gpt-oss:20b`
 - `--port` – Port to run the model on (default: `23333`)
 - `--context-length` – Context window size for the model in tokens (default: `8192`)
-- `--verbose` – Enables detailed Ollama logs during execution. By default, logs are suppressed unless this flag is provided.
 
+:::
 
 :::note tip
 
 You can use Ollama commands such as `ollama list` to list downloaded models and `ollama rm` to remove a model. Run `ollama --help` to see the full list of available commands.
 
+> **Note:** Some models are very large and may demand significant memory or GPU resources. Before initializing, make sure your machine has enough compute capacity to load and run the model smoothly.
+
 :::
+
+
+The `init` command will create a new model directory structure that is compatible with the Clarifai platform. You can customize or optimize the generated model by modifying the files as needed.
+
+The generated structure includes:
+
+```
+├── 1/
+│   └── model.py
+├── requirements.txt
+└── config.yaml
+```
+
+### `model.py`
+
+<details>
+  <summary>Example: model.py</summary>
+    <CodeBlock className="language-text">{OllamaModelPy}</CodeBlock>
+</details>
+
+This is the [main Python file](https://docs.clarifai.com/compute/upload/#prepare-modelpy) that defines how your Ollama-based model is loaded, served, and used for inference. It extends Clarifai’s `OpenAIModelClass`, which provides a unified interface for OpenAI-compatible models.
+
+It has these key components:
+
+- The environment setup section defines default values, such as the Ollama host (`OLLAMA_HOST`) and context length (`OLLAMA_CONTEXT_LENGTH`). 
+- The `run_ollama_server()` function starts the Ollama server and automatically pulls the specified model (for example, `llama3.2`) if it’s not already available locally.
+- The `OllamaModelClass` itself implements the following methods:
+    -  `load_model()` — Loads and initializes the Ollama model while setting up the local OpenAI-compatible client; 
+    - `predict()` — Generates text completions or tool calls from prompts, optionally handling images or chat history; 
+    - `generate()` — Streams tokens in real time, which is ideal for chat-like or extended responses. 
+- Additionally, helper utilities, such as `has_image_content()`, validate image inputs before constructing OpenAI-compatible messages, and logging utilities track token usage and manage inference context.
+
+### `requirements.txt`
+
+<details>
+  <summary>Example: requirements.txt</summary>
+    <CodeBlock className="language-text">{OllamaRequirements}</CodeBlock>
+</details>
+
+The `requirements.txt` file lists all the Python packages required for your local runner environment. If you haven’t installed them yet, run the following command to install the dependencies:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash">pip install -r requirements.txt</CodeBlock>
+</TabItem>
+</Tabs>
+
+### `config.yaml`
+
+<details>
+  <summary>Example: config.yaml</summary>
+    <CodeBlock className="language-text">{OllamaConfig}</CodeBlock>
+</details>
+
+The `config.yaml` file is what tells Clarifai how to run your model — including where it belongs, which runtime to use, and how much compute it should consume.
+
+- It identifies where your model will run on the Clarifai platform through parameters like `app_id`, `id` (any model name you choose), `model_type_id`, and `user_id` (set by default from your [active context](https://docs.clarifai.com/resources/api-overview/cli#clarifai-config)). 
+- It defines compatibility details under `build_info` — such as the Python version to use — and resource allocation details through `inference_compute_info`, which sets CPU, memory, and accelerator requirements. 
+- The `toolkit` field indicates the type of runtime provider, informing Clarifai which backend framework to use for execution.
 
 ## Step 3: Log In to Clarifai
 
-Use the following command to log in to the Clarifai platform to create a configuration [context](README.mdx#step-2-create-a-context-optional) and establish a connection:
+Use the following command to log in to the Clarifai platform to create a configuration context and establish a connection:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
@@ -157,7 +221,7 @@ This setup ensures all required components — such as compute clusters, nodepoo
 
 When the local runner starts, it displays a public URL where your model is hosted and provides a sample client code snippet for quick testing. 
 
-Pulling a model from Ollama may take some time depending on your machine’s resources, but once the download finishes, you can run the snippet in a separate terminal within the same directory to get the model’s response.
+> **Note:** Pulling a model from Ollama may take some time depending on your machine’s resources, but once the download finishes, you can run the snippet in a separate terminal within the same directory to get the model’s response.
 
 Below is an example snippet for running inference using the OpenAI-compatible format:
 

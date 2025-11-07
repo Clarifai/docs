@@ -40,6 +40,8 @@ import PyResponsesToolCalling from "!!raw-loader!../../../code_snippets/python-s
 import ResponsesToolCallingExample from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/responses_tool_calling_1.py";
 import ToolCallingOutput1 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/tool_calling_output_1.txt";
 import CurlOpenAIText from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_openai_text.sh";
+import PyStandardJSON from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/py_standard_json.py";
+import PyPydanticIntegrated from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/py_pydantic_integrated.py";
 
 ## Prerequisites
 
@@ -267,6 +269,63 @@ Here is an example code that sets up a basic tool-calling interaction. It simula
     <CodeBlock className="language-python">{Example3}</CodeBlock>
     <CodeBlock className="language-text">{Example4}</CodeBlock>
 </details>
+
+### Structured Outputs
+
+The Chat Completions API supports generating structured JSON outputs from any [supported](#get-a-clarifai-model) OpenAI-compatible large language model.
+
+This feature lets you go beyond plain text generation by enforcing that the model’s output follows a strict, predictable data structure. Structured responses make it easier to integrate model outputs into downstream applications with greater safety, consistency, and reliability.
+
+To define, validate, and serialize these structured responses, [Pydantic](https://docs.pydantic.dev/latest/) is used — a powerful data modeling library for Python. 
+
+You can install Pydantic with:
+
+```bash
+pip install pydantic
+```
+
+We support two main ways of generating the structured JSON responses: 
+
+- Standard JSON schema extraction 
+
+- Pydantic-integrated extraction.
+
+#### Standard JSON Schema Extraction
+
+This technique calls the chat completion endpoint and explicitly requests the model to return its response in a [JSON](https://json-schema.org/) format that conforms to a specified Pydantic schema.
+
+
+<Tabs groupId="code">
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PyStandardJSON}</CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+  <summary>Example Output</summary>
+    ```text
+ {"age": 29, "email": "john.miller@example.com", "name": "John Miller"}
+```
+</details>
+
+#### Pydantic-Integrated Extraction
+
+This technique uses a convenience method (`client.chat.completions.parse`) that handles the structured output request and attempts to automatically parse the JSON response into a Pydantic object, simplifying the extraction process.
+
+
+<Tabs groupId="code">
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{PyPydanticIntegrated}</CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+  <summary>Example Output</summary>
+```text
+name='John Miller' age=29 email='john.miller@example.com'
+```
+</details>
+
 
 ## Images Generate API 
 

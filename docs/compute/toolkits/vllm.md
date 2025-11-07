@@ -12,7 +12,7 @@ sidebar_position: 5
 
 With Clarifai’s [Local Runners](https://docs.clarifai.com/compute/local-runners/), you can seamlessly deploy vLLM-powered models on your own machine, expose them through a secure public URL, and take full advantage of Clarifai’s AI capabilities — while retaining control, privacy, and performance.
 
-> **Note:** After downloading the model using the vLLM toolkit, you can [upload](https://docs.clarifai.com/compute/upload/#step-4-upload-the-model-to-clarifai) it to Clarifai to leverage the platform’s capabilities.
+> **Note:** After initializing a model using the vLLM toolkit, you can [upload](https://docs.clarifai.com/compute/upload/#step-4-upload-the-model-to-clarifai) it to Clarifai to leverage the platform’s capabilities.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -143,7 +143,7 @@ The [`model.py`](https://docs.clarifai.com/compute/upload/#prepare-modelpy) file
 
 The `config.yaml` file defines the model’s configuration — including compute requirements, checkpoint sources, and other essential runtime settings.
 
-- In the `model` section, provide a unique model ID (any name you prefer), along with your Clarifai user ID and app ID. These values specify where your model will be deployed within the Clarifai platform.
+- In the `model` section, provide a unique model ID (any name you prefer) along with your app ID. Your Clarifai user ID is set by default from your [active context](https://docs.clarifai.com/resources/api-overview/cli#clarifai-config). These values specify where your model will be deployed within the Clarifai platform.
 
 - The [`checkpoints`](hf.md#configyaml) section defines how to retrieve the model’s weights from Hugging Face. If you’re using a private or restricted repository, be sure to include your Hugging Face access token to enable secure downloading.
 
