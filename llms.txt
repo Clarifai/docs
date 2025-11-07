@@ -30,6 +30,7 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [Hugging Face](https://docs.clarifai.com/docs/compute/toolkits/hf): Download and run Hugging Face models locally and make them available via a public API
 - [LM Studio](https://docs.clarifai.com/docs/compute/toolkits/lmstudio): Download and run LM Studio models locally and expose them via a public API
 - [Ollama](https://docs.clarifai.com/docs/compute/toolkits/ollama): Download and run Ollama models locally and expose them via a public API
+- [SGLang](https://docs.clarifai.com/docs/compute/toolkits/sglang): Run models using the SGLang runtime format and make them available via a public API
 - [vLLM](https://docs.clarifai.com/docs/compute/toolkits/vllm): Download and serve vLLM models locally and expose them via a public API
 - [Build and Upload Models](https://docs.clarifai.com/docs/compute/upload/README): Build and import models, including from external sources like Hugging Face
 - [Input and Output Data Types](https://docs.clarifai.com/docs/compute/upload/data-types): Learn about supported input and output data types along with usage examples
@@ -37,7 +38,7 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [Test Models Locally](https://docs.clarifai.com/docs/compute/upload/test-locally): Learn how to test your locally built models
 - [Authentication](https://docs.clarifai.com/docs/control/authentication/README): Secure, compliant AI.
 - [Authorize](https://docs.clarifai.com/docs/control/authentication/authorize): Set up authentication to make API calls
-- [Environment Secrets](https://docs.clarifai.com/docs/control/authentication/environment-secrets): Learn about secrets for the Clarifai platform
+- [Environment Secrets](https://docs.clarifai.com/docs/control/authentication/environment-secrets): Create, store, and manage environment variables and secrets
 - [App-Specific API Keys](https://docs.clarifai.com/docs/control/authentication/key): Authenticate access to resources within the scope defined by the key
 - [Personal Access Tokens](https://docs.clarifai.com/docs/control/authentication/pat): Authenticate access to your own resources and those outside the scope of your apps
 - [Scopes](https://docs.clarifai.com/docs/control/authentication/scopes): Implement fine-grained control over the data that users have access to
@@ -206,6 +207,7 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [Release 10.9](https://docs.clarifai.com/docs/product-updates/changelog/release109): Changelog for Clarifai Release 10.9
 - [Release 11.0](https://docs.clarifai.com/docs/product-updates/changelog/release110): Changelog for Clarifai Release 11.0
 - [Release 11.1](https://docs.clarifai.com/docs/product-updates/changelog/release111): Changelog for Clarifai Release 11.1
+- [Release 11.10](https://docs.clarifai.com/docs/product-updates/changelog/release1110): Changelog for Clarifai Release 11.10
 - [Release 11.2](https://docs.clarifai.com/docs/product-updates/changelog/release112): Changelog for Clarifai Release 11.2
 - [Release 11.3](https://docs.clarifai.com/docs/product-updates/changelog/release113): Changelog for Clarifai Release 11.3
 - [Release 11.4](https://docs.clarifai.com/docs/product-updates/changelog/release114): Changelog for Clarifai Release 11.4

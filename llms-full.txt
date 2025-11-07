@@ -3792,6 +3792,8 @@ import PyResponsesToolCalling from "!!raw-loader!../../../code_snippets/python-s
 import ResponsesToolCallingExample from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/responses_tool_calling_1.py";
 import ToolCallingOutput1 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/tool_calling_output_1.txt";
 import CurlOpenAIText from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_openai_text.sh";
+import PyStandardJSON from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/py_standard_json.py";
+import PyPydanticIntegrated from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/py_pydantic_integrated.py";
 
 ## Prerequisites
 
@@ -3946,6 +3948,48 @@ Here is an example code that sets up a basic tool-calling interaction. It simula
   Tool Calling Implementation Example
     {Example3}
     {Example4}
+
+### Structured Outputs
+
+The Chat Completions API supports generating structured JSON outputs from any [supported](#get-a-clarifai-model) OpenAI-compatible large language model.
+
+This feature lets you go beyond plain text generation by enforcing that the model’s output follows a strict, predictable data structure. Structured responses make it easier to integrate model outputs into downstream applications with greater safety, consistency, and reliability.
+
+To define, validate, and serialize these structured responses, [Pydantic](https://docs.pydantic.dev/latest/) is used — a powerful data modeling library for Python. 
+
+You can install Pydantic with:
+
+```bash
+pip install pydantic
+```
+
+We support two main ways of generating the structured JSON responses: 
+
+- Standard JSON schema extraction 
+
+- Pydantic-integrated extraction.
+
+#### Standard JSON Schema Extraction
+
+This technique calls the chat completion endpoint and explicitly requests the model to return its response in a [JSON](https://json-schema.org/) format that conforms to a specified Pydantic schema.
+
+    {PyStandardJSON}
+
+  Example Output
+    ```text
+ {"age": 29, "email": "john.miller@example.com", "name": "John Miller"}
+```
+
+#### Pydantic-Integrated Extraction
+
+This technique uses a convenience method (`client.chat.completions.parse`) that handles the structured output request and attempts to automatically parse the JSON response into a Pydantic object, simplifying the extraction process.
+
+    {PyPydanticIntegrated}
+
+  Example Output
+```text
+name='John Miller' age=29 email='john.miller@example.com'
+```
 
 ## Images Generate API 
 
@@ -4579,7 +4623,7 @@ import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 
 With Clarifai’s [Local Runners](README.mdx), you can run these models directly on your machine, expose them securely via a public URL, and tap into Clarifai’s powerful platform — all while preserving the speed, privacy, and control of local deployment.
 
-> **Note:** After downloading the model using the Hugging Face toolkit, you can [upload](https://docs.clarifai.com/compute/upload/#step-4-upload-the-model-to-clarifai) it to Clarifai to leverage the platform’s capabilities.
+> **Note:** After initializing a model using the Hugging Face toolkit, you can [upload](https://docs.clarifai.com/compute/upload/#step-4-upload-the-model-to-clarifai) it to Clarifai to leverage the platform’s capabilities.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -4685,7 +4729,7 @@ The [`model.py`](https://docs.clarifai.com/compute/upload/#prepare-modelpy) file
 
 The `config.yaml` file specifies the model’s configuration, including compute resource requirements, checkpoints, and other essential settings.
 
-- In the `model` section, you need to specify a unique model ID (any name you choose), along with your Clarifai user ID and app ID, which together determine where your model will run on the Clarifai platform. 
+- In the `model` section, you need to specify a unique model ID (any name you choose) along with an app ID. Your Clarifai user ID is set by default from your [active context](https://docs.clarifai.com/resources/api-overview/cli#clarifai-config). These together determine where your model will run on the Clarifai platform.
 
 - In the `checkpoints` section, you can provide your Hugging Face token using the `hf_token` parameter if you need to access private or restricted repositories. This section also includes the `when` parameter, which controls when model checkpoints are downloaded and stored. The available options are `runtime` (the default), which downloads checkpoints when the model is loaded; `build`, which downloads checkpoints during the image build process; and `upload`, which downloads checkpoints before the model is uploaded.
 
@@ -4756,7 +4800,7 @@ Here’s an example snippet:
 
 With Clarifai’s [Local Runners](https://docs.clarifai.com/compute/local-runners/), you can take this a step further: run LM Studio models directly on your machine, expose them securely through a public URL, and leverage Clarifai’s powerful AI platform — all while maintaining the speed, privacy, and control of local deployment.
 
-> **Note:** After downloading the model using the LM Studio toolkit, you can [upload](https://docs.clarifai.com/compute/upload/#step-4-upload-the-model-to-clarifai) it to Clarifai to leverage the platform’s capabilities.
+> **Note:** After initializing a model using the LM Studio toolkit, you can [upload](https://docs.clarifai.com/compute/upload/#step-4-upload-the-model-to-clarifai) it to Clarifai to leverage the platform’s capabilities.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -4854,7 +4898,7 @@ The [`model.py`](https://docs.clarifai.com/compute/upload/#prepare-modelpy) file
 
 The `config.yaml` file defines key configuration details, such as compute resource requirements and toolkit metadata.
 
-In the `model` section, specify a unique model ID (any name of your choice) and your Clarifai user ID and app ID. These parameters determine where the model will be deployed on the Clarifai platform.
+In the `model` section, specify a unique model ID (any name of your choice) and app ID. Your Clarifai user ID is set by default from your [active context](https://docs.clarifai.com/resources/api-overview/cli#clarifai-config). These parameters determine where the model will be deployed on the Clarifai platform.
 
 ### `requirements.txt`
 
@@ -4922,7 +4966,7 @@ Ollama is an open-source tool that allows you to download, run, and manage large
 
 When combined with Clarifai’s Local Runners, it enables you to run Ollama models on your machine, expose them securely via a public URL, and tap into Clarifai’s powerful platform — all while keeping the speed, privacy, and control of local deployment.
 
-> **Note:** After downloading the model using the Ollama toolkit, you can [upload](https://docs.clarifai.com/compute/upload/#step-4-upload-the-model-to-clarifai) it to Clarifai to leverage the platform’s capabilities.
+> **Note:** After initializing a model using the Ollama toolkit, you can [upload](https://docs.clarifai.com/compute/upload/#step-4-upload-the-model-to-clarifai) it to Clarifai to leverage the platform’s capabilities.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -4930,6 +4974,9 @@ import CodeBlock from "@theme/CodeBlock";
 
 import OllamaInit from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/ollama-init.txt";
 import OllamaRun from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/ollama-run.txt";
+import OllamaModelPy from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/ollama-modelpy.py";
+import OllamaRequirements from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/ollama-requirements.txt";
+import OllamaConfig from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/ollama-config.txt";
 
 ## Step 1: Perform Prerequisites
 
@@ -4939,7 +4986,7 @@ Go to the [Ollama website](https://ollama.com/download) and choose the appropria
 
 > **Note:** If you're using Windows, make sure to restart your machine after installing Ollama to ensure that the updated environment variables are properly applied.
 
-### Sign Up or Log In
+### Get User ID and PAT
 
 Start by [logging in](https://clarifai.com/login) to your existing Clarifai account or [signing up](https://clarifai.com/signup) for a new one. Once logged in, you'll need the following credentials for setup:
 
@@ -4947,7 +4994,7 @@ Start by [logging in](https://clarifai.com/login) to your existing Clarifai acco
 
 - **Personal Access Token (PAT)** – From the same **Settings** option, choose **Secrets** to generate or copy your [PAT](https://docs.clarifai.com/control/authentication/pat). This token is used to authenticate your connection with the Clarifai platform.
 
-You can then set the PAT as an environment variable using `CLARIFAI_PAT`, which is important when running inference with your models. 
+You can then set the PAT as an environment variable using `CLARIFAI_PAT`. 
 
     export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE
 
@@ -4961,11 +5008,11 @@ Install the latest version of the [Clarifai CLI](https://docs.clarifai.com/sdk/c
 
 > **Note:** You must have **[Python 3.11 or 3.12](https://docs.clarifai.com/resources/api-overview/python-sdk#python-requirements)**  installed to use Local Runners.
 
-### Install OpenAI Package
+### Install OpenAI
 
 Install the `openai` package, which is required when performing inference with models using the [OpenAI-compatible format](https://docs.clarifai.com/compute/inference/#predict-with-openai-compatible-format). 
 
-     pip install openai 
+    pip install openai
 
 ## Step 2: Initialize a Model From Ollama
 
@@ -4975,27 +5022,78 @@ For example, here's how to initialize the [`llama3.2`](https://ollama.com/librar
 
     clarifai model init --toolkit ollama
 
-> **Note:** The above command will create a new model directory structure that is compatible with the Clarifai platform. You can customize or optimize the generated model by modifying the `1/model.py` file as needed.
-
   Example Output
     {OllamaInit}
+
+:::tip customize initialization
 
 You can customize model initialization from the Ollama library using the Clarifai CLI with the following options:
 
 - `--model-name` – Name of the Ollama model to use (default: `llama3.2`). This lets you specify any model from the Ollama library. Example: `clarifai model init --toolkit ollama --model-name gpt-oss:20b`
 - `--port` – Port to run the model on (default: `23333`)
 - `--context-length` – Context window size for the model in tokens (default: `8192`)
-- `--verbose` – Enables detailed Ollama logs during execution. By default, logs are suppressed unless this flag is provided.
+
+:::
 
 :::note tip
 
 You can use Ollama commands such as `ollama list` to list downloaded models and `ollama rm` to remove a model. Run `ollama --help` to see the full list of available commands.
 
+> **Note:** Some models are very large and may demand significant memory or GPU resources. Before initializing, make sure your machine has enough compute capacity to load and run the model smoothly.
+
 :::
+
+The `init` command will create a new model directory structure that is compatible with the Clarifai platform. You can customize or optimize the generated model by modifying the files as needed.
+
+The generated structure includes:
+
+```
+├── 1/
+│   └── model.py
+├── requirements.txt
+└── config.yaml
+```
+
+### `model.py`
+
+  Example: model.py
+    {OllamaModelPy}
+
+This is the [main Python file](https://docs.clarifai.com/compute/upload/#prepare-modelpy) that defines how your Ollama-based model is loaded, served, and used for inference. It extends Clarifai’s `OpenAIModelClass`, which provides a unified interface for OpenAI-compatible models.
+
+It has these key components:
+
+- The environment setup section defines default values, such as the Ollama host (`OLLAMA_HOST`) and context length (`OLLAMA_CONTEXT_LENGTH`). 
+- The `run_ollama_server()` function starts the Ollama server and automatically pulls the specified model (for example, `llama3.2`) if it’s not already available locally.
+- The `OllamaModelClass` itself implements the following methods:
+    -  `load_model()` — Loads and initializes the Ollama model while setting up the local OpenAI-compatible client; 
+    - `predict()` — Generates text completions or tool calls from prompts, optionally handling images or chat history; 
+    - `generate()` — Streams tokens in real time, which is ideal for chat-like or extended responses. 
+- Additionally, helper utilities, such as `has_image_content()`, validate image inputs before constructing OpenAI-compatible messages, and logging utilities track token usage and manage inference context.
+
+### `requirements.txt`
+
+  Example: requirements.txt
+    {OllamaRequirements}
+
+The `requirements.txt` file lists all the Python packages required for your local runner environment. If you haven’t installed them yet, run the following command to install the dependencies:
+
+    pip install -r requirements.txt
+
+### `config.yaml`
+
+  Example: config.yaml
+    {OllamaConfig}
+
+The `config.yaml` file is what tells Clarifai how to run your model — including where it belongs, which runtime to use, and how much compute it should consume.
+
+- It identifies where your model will run on the Clarifai platform through parameters like `app_id`, `id` (any model name you choose), `model_type_id`, and `user_id` (set by default from your [active context](https://docs.clarifai.com/resources/api-overview/cli#clarifai-config)). 
+- It defines compatibility details under `build_info` — such as the Python version to use — and resource allocation details through `inference_compute_info`, which sets CPU, memory, and accelerator requirements. 
+- The `toolkit` field indicates the type of runtime provider, informing Clarifai which backend framework to use for execution.
 
 ## Step 3: Log In to Clarifai
 
-Use the following command to log in to the Clarifai platform to create a configuration [context](README.mdx#step-2-create-a-context-optional) and establish a connection:
+Use the following command to log in to the Clarifai platform to create a configuration context and establish a connection:
 
     clarifai login
 
@@ -5031,7 +5129,7 @@ This setup ensures all required components — such as compute clusters, nodepoo
 
 When the local runner starts, it displays a public URL where your model is hosted and provides a sample client code snippet for quick testing. 
 
-Pulling a model from Ollama may take some time depending on your machine’s resources, but once the download finishes, you can run the snippet in a separate terminal within the same directory to get the model’s response.
+> **Note:** Pulling a model from Ollama may take some time depending on your machine’s resources, but once the download finishes, you can run the snippet in a separate terminal within the same directory to get the model’s response.
 
 Below is an example snippet for running inference using the OpenAI-compatible format:
 
@@ -5077,6 +5175,225 @@ When you're done, just close the terminal running the local runner to shut it do
 
 ---
 
+## SGLang
+
+# SGLang
+
+**Run models using the SGLang runtime format and make them available via a public API**
+
+[SGLang](https://github.com/sgl-project/sglang) is an open-source runtime and programming framework designed for structured generation and high-performance inference of large language models (LLMs) and vision-language models.  
+
+It provides a flexible way to execute models with advanced capabilities like multi-step prompting, structured outputs, and multimodal reasoning — all while maximizing throughput and minimizing latency.
+
+With Clarifai’s [Local Runners](https://docs.clarifai.com/compute/local-runners/), you can download and run these models on your own machine using the SGLang runtime format, expose them securely via a public URL, and tap into Clarifai’s powerful platform  — all while retaining the privacy, performance, and control of local execution.
+
+> **Note:** The SGLang toolkit specifies a runtime format to run models sourced from external sources like Hugging Face. After initializing a model using the toolkit, you can [upload](https://docs.clarifai.com/compute/upload/#step-4-upload-the-model-to-clarifai) it to Clarifai to leverage the platform’s capabilities.
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+
+import SGLModelPy from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/sgl_model_py.py";
+import SGLConfig from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/sgl_config.yaml";
+import SGLSupportedModels from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/sgl_supported_models.txt";
+import ClarifaiLogin from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/sgl_clarifai_login.txt";
+import RequirementsTXT from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/sgl_requirements_txt.txt";
+import SGLModelInit from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/sgl_model_init.txt";
+import StartRunner from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/sgl_start_runner.txt";
+import TestRunner from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/sgl_test_runner.py";
+import SGLOpenAIServer from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/sgl_open_ai_server.py";
+import SGLDockerfile from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/sgl_dockerfile.py";
+
+## Step 1: Perform Prerequisites
+
+### Sign Up or Log In
+
+Log in to your existing Clarifai account or [sign up](https://clarifai.com/signup) for a new one. Once you’re logged in, gather the following credentials required for setup:
+
+* **App ID** – Go to the application you want to use to run the model. In the collapsible left sidebar, select **[Overview](https://docs.clarifai.com/create/applications/manage/#app-overview)** and copy the app ID displayed there.
+* **User ID** – In the collapsible left sidebar, open **Settings**, then choose **Account** from the dropdown list to locate your user ID.
+* **Personal Access Token (PAT)** – From the same **Settings** menu, select **Secrets** to create or copy your [PAT](https://docs.clarifai.com/control/authentication/pat). This token is used to authenticate your connection with the Clarifai platform.
+
+Then, set your PAT as an environment variable:
+
+export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE
+
+set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE
+
+### Install Clarifai CLI
+
+Install the latest [Clarifai CLI](https://docs.clarifai.com/sdk/cli) which includes built-in support for Local Runners:
+
+pip install --upgrade clarifai
+
+> **Note:** The Local Runners require **[Python 3.11 or 3.12](https://docs.clarifai.com/resources/api-overview/python-sdk#python-requirements)**.
+
+### Install SGLang
+
+Install SGLang to enable its runtime execution environment.
+
+pip install sglang
+
+> **Tip:** GPU acceleration (CUDA) is highly recommended for optimal performance.
+
+### Install OpenAI
+
+Install the `openai` package, which is needed to perform inference with models that use the [OpenAI-compatible format](https://docs.clarifai.com/compute/inference/#predict-with-openai-compatible-format). 
+
+    pip install openai
+
+### Get Hugging Face Token
+
+If you want to initialize a Hugging Face model for use with SGLang, you’ll need a Hugging Face access token to authenticate with Hugging Face services — especially when accessing private or restricted repositories.
+
+You can create one by following [these instructions](https://huggingface.co/docs/hub/en/security-tokens). Once you have the token, include it either in your model’s `config.yaml` file (as described [below](#configyaml)) or set it as an environment variable.
+
+> **Note:** If `hf_token` is not specified in the `config.yaml` file, the CLI will automatically use the `HF_TOKEN` environment variable for authentication with Hugging Face.
+
+    export HF_TOKEN="YOUR_HF_ACCESS_TOKEN_HERE"
+
+    set HF_TOKEN="YOUR_HF_ACCESS_TOKEN_HERE"
+
+## Step 2: Initialize a Model
+
+With the Clarifai CLI, you can initialize a model configured to run using the SGLang runtime format. It sets up a Clarifai-compatible project directory with the appropriate files. 
+
+You can customize or optimize the model by editing the generated files as needed. For example, the command below initializes a default Hugging Face model ([HuggingFaceTB/SmolLM2-135M-Instruct](https://huggingface.co/HuggingFaceTB/SmolLM2-135M-Instruct)) in your current directory.
+
+clarifai model init --toolkit sglang
+
+  Example Output
+  {SGLModelInit}
+
+:::tip
+
+You can use the `--model-name` parameter to initialize any supported Hugging Face model. This sets the model’s `repo_id`, specifying which Hugging Face repository to initialize from.
+
+clarifai model init --toolkit sglang --model-name unsloth/Llama-3.2-1B-Instruct
+
+  Supported Examples
+  {SGLSupportedModels}
+
+-->
+:::
+
+> **Note:** Large models require significant GPU memory. Ensure your machine has enough compute capacity to run them efficiently.
+
+The generated structure includes:
+
+```
+
+├── 1/
+│   └── model.py
+|   └── openai_server_starter.py
+├── Dockerfile
+└── README.md
+├── config.yaml
+└── requirements.txt
+
+````
+
+### `model.py`
+
+  Example: 1/model.py
+  {SGLModelPy}
+
+This is the [main runner](https://docs.clarifai.com/compute/upload/#prepare-modelpy) script that defines how your model loads, runs, and handles inference.
+
+* It subclasses `OpenAIModelClass`, meaning it exposes OpenAI-compatible endpoints for inference.
+* The `load_model()` method spins up a local SGLang backend server (via `OpenAI_APIServer.from_sglang_backend`) and initializes the model checkpoint.
+* The `predict()` and `generate()` methods define how text generation requests are processed — supporting both standard predictions and streaming outputs.
+* The `test()` method lets you verify locally that everything is working before deployment.
+
+### `openai_server_starter.py`
+
+  Example: 1/openai_server_starter.py
+  {SGLOpenAIServer}
+
+This utility handles starting, monitoring, and shutting down the backend SGLang server. It acts as your server controller, ensuring the backend is ready before the runner starts sending requests.
+
+* It wraps around subprocess management for launching `sglang.launch_server`.
+* It ensures the server runs properly, logs startup messages, and handles safe termination.
+* The class `OpenAI_APIServer` can also be extended to support other backends like `vLLM`, `llama.cpp`, or `TGI`, but here it’s used for SGLang.
+
+### `Dockerfile`
+
+  Example: Dockerfile
+  {SGLDockerfile}
+
+The Dockerfile defines the container environment used to run your model runner on Clarifai’s infrastructure.
+
+* It builds on the official SGLang base image (`lmsysorg/sglang:v0.5.3-cu129`), which includes CUDA and SGLang dependencies.
+* It installs any Python packages listed in `requirements.txt`.
+* It copies your model files (`model.py`, `config.yaml`, etc.) into the container.
+* Optionally, it downloads checkpoints during build time if `checkpoints.when = "build"`.
+* It starts the Clarifai runner loop using `python -m clarifai.runners.server`.
+
+### `config.yaml`
+
+  Example: config.yaml
+  {SGLConfig}
+
+This is the configuration file for your SGLang model runner.
+
+* It specifies model identifiers (`model.id`, `user_id`, `app_id`), which together determine where your model will run on the Clarifai platform. Your Clarifai user ID is set by default from your [active context](https://docs.clarifai.com/resources/api-overview/cli#clarifai-config).
+* It defines compute resources (CPU, GPU type, and memory).
+* The [`checkpoints`](https://docs.clarifai.com/compute/upload/#hugging-face-model-checkpoints) section tells the runner where and when to load model weights 
+    > **Tip:** Use `when: runtime` for large models to reduce image size and improve load times.
+
+### `requirements.txt`
+
+  Example: requirements.txt
+  {RequirementsTXT}
+
+This file lists all the Python dependencies required for the runner to work. If you haven’t installed them yet, run the following command to install the dependencies:
+
+pip install -r requirements.txt
+
+## Step 3: Log In to Clarifai
+
+Log in and create a configuration [context](https://docs.clarifai.com/compute/local-runners/#step-2-create-a-context-optional):
+
+```bash
+clarifai login
+```
+
+Enter the requested details:
+
+* **User ID** – Your Clarifai user ID
+* **PAT** – Your personal access token (or type `ENVVAR` to use the environment variable)
+* **Context name** – Optional name for the config context (default: `"default"`)
+
+  Example Output
+  {ClarifaiLogin}
+
+## Step 4: Start Your Local Runner
+
+Next, start your Local Runner, which connects to the SGLang runtime to execute your model locally.
+
+```bash
+clarifai model local-runner
+```
+
+If any configuration contexts or defaults are missing, the CLI will automatically guide you through setting them up.
+
+This process ensures that all required components — such as compute clusters, nodepools, and deployments — are correctly configured in your context, enabling seamless local execution of your SGLang model. For more details, see [Local Runners documentation](https://docs.clarifai.com/compute/local-runners/#step-2-create-a-context-optional).
+
+  Example Output
+  {StartRunner}
+
+## Step 5: Test Your Runner
+
+After the Local Runner starts, you can use it to perform [inference](https://docs.clarifai.com/compute/inference/open-ai) with your SGLang-based model.
+
+You can run a test snippet in a separate terminal, within the same directory, to verify that your model is running and responding correctly.
+
+Here’s an example snippet:
+
+{TestRunner}
+
+---
+
 ## vLLM
 
 # vLLM
@@ -5087,7 +5404,7 @@ When you're done, just close the terminal running the local runner to shut it do
 
 With Clarifai’s [Local Runners](https://docs.clarifai.com/compute/local-runners/), you can seamlessly deploy vLLM-powered models on your own machine, expose them through a secure public URL, and take full advantage of Clarifai’s AI capabilities — while retaining control, privacy, and performance.
 
-> **Note:** After downloading the model using the vLLM toolkit, you can [upload](https://docs.clarifai.com/compute/upload/#step-4-upload-the-model-to-clarifai) it to Clarifai to leverage the platform’s capabilities.
+> **Note:** After initializing a model using the vLLM toolkit, you can [upload](https://docs.clarifai.com/compute/upload/#step-4-upload-the-model-to-clarifai) it to Clarifai to leverage the platform’s capabilities.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -5185,7 +5502,7 @@ The [`model.py`](https://docs.clarifai.com/compute/upload/#prepare-modelpy) file
 
 The `config.yaml` file defines the model’s configuration — including compute requirements, checkpoint sources, and other essential runtime settings.
 
-- In the `model` section, provide a unique model ID (any name you prefer), along with your Clarifai user ID and app ID. These values specify where your model will be deployed within the Clarifai platform.
+- In the `model` section, provide a unique model ID (any name you prefer) along with your app ID. Your Clarifai user ID is set by default from your [active context](https://docs.clarifai.com/resources/api-overview/cli#clarifai-config). These values specify where your model will be deployed within the Clarifai platform.
 
 - The [`checkpoints`](hf.md#configyaml) section defines how to retrieve the model’s weights from Hugging Face. If you’re using a private or restricted repository, be sure to include your Hugging Face access token to enable secure downloading.
 
@@ -5416,7 +5733,9 @@ We currently support Python 3.11 and Python 3.12 (default).
 
 #### Compute Resources  
 
-You must define the minimum compute resources required for running your model, including CPU, memory, and optional GPU specifications.
+To deploy your model on Clarifai’s dedicated compute, you must define the minimum compute resources required for running it, including CPU, memory, and optional GPU specifications.
+
+> **Note:** For [local execution](https://docs.clarifai.com/compute/local-runners/), the `inference_compute_info` section is optional — the model runs entirely on your machine using local CPU/GPU resources. 
 
 These are some parameters you can define:
 
@@ -6636,34 +6955,36 @@ If you need additional support or would like to request for your custom domain, 
 
 # Environment Secrets
 
-**Securely connect external services with secrets**
+**Create, store, and manage environment variables and secrets**
 
-Third-Party API Keys are a type of secret used to authenticate and authorize external applications or services, enabling them to securely interact with your Clarifai data without exposing your primary credentials, such as your [Personal Access Token](pat.md ) (PAT).
+Environment secrets are securely encrypted values that function as environment variables within your workflows. 
+
+They enable you to store and manage sensitive configuration data, such as third-party API keys, without hardcoding them into your scripts.
 
 ## Via the UI
 
-The Clarifai platform offers an intuitive interface for creating, managing, and securing your third-party API keys.
+The Clarifai platform offers an intuitive interface for creating, managing, and securing your environment secrets.
 
-To create a third-party API key, [log in](https://clarifai.com/login) to the Clarifai platform. Then, in the collapsible left sidebar, select **Settings** and choose **Secrets** from the dropdown list.
+To create a secret, [log in](https://clarifai.com/login) to the Clarifai platform. Then, in the collapsible left sidebar, select **Settings** and choose **Secrets** from the dropdown list.
 
 ![](/img/others/third_party_key_1.png)
 
-On the ensuing **Secrets** page, click the **Create Third-Party API Key** button.  
+On the ensuing **Secrets** page, click the **Create Environment Secrets** button.  
 
-Next, on the form that pops up, enter a required name for your API key, an optional short description, and the required API key from your third-party provider. 
+Next, on the form that pops up, enter a required name for your secret, an optional short description, and the required value. 
 
-Lastly, click the **Create Third-Party API Key** button.
+Lastly, click the **Create Environment Secret** button.
 
 ![](/img/others/third_party_key_2.png)
 
-The new PAT will be listed in the **Third-Party API Keys** section, where you can copy, view, edit, or delete it.
+The new secret will be listed in the **Environment Secrets** section, where you can copy, view, edit, or delete it.
 
 ![listed pat](/img/others/third_party_key_3.png)
 
 :::tip note
 
-- Third-Party API keys do not expire. In case your key gets compromised, you should delete it, and create a new one.
-- We recommend that you do **not** share your keys with other users.
+- Environment secrets do not expire. In case your secret gets compromised, you should delete it, and create a new one.
+- We recommend that you do **not** share your secrets with other users.
 
 :::
 
@@ -6710,7 +7031,7 @@ import OutputSecretsDelete from "!!raw-loader!../../../code_snippets/api-guide/a
 
 ### Create 
 
-You can create a new a third-party API key by providing its ID and value. 
+You can create a new environment secret by providing its ID and value. 
 
     {PySecretsCreate}
 
@@ -6721,7 +7042,7 @@ You can create a new a third-party API key by providing its ID and value.
 
 ### Get
 
-You can get an existing third-party API key by providing its ID. 
+You can get an existing environment secret by providing its ID. 
 
     {PySecretsGet}
 
@@ -6732,7 +7053,7 @@ You can get an existing third-party API key by providing its ID.
 
 ### List
 
-You can list all the third-party API keys you have.  
+You can list all the environment secrets you have.  
 
     {PySecretsList}
 
@@ -6745,7 +7066,7 @@ You can list all the third-party API keys you have.
 
 ### Update
 
-You can update an existing third-party API key by providing its ID. 
+You can update an existing environment secret by providing its ID. 
 
     {PySecretsUpdate}
 
@@ -6754,7 +7075,7 @@ You can update an existing third-party API key by providing its ID.
 
 ### Delete 
 
-You can delete an existing third-party API key by providing its ID. 
+You can delete an existing environment secret by providing its ID. 
 
     {PySecretsDelete}
 
@@ -20713,7 +21034,7 @@ The **MMSegmentation_SegFormer** template supports the following hyperparameters
 
 **Output**: [Concepts](https://docs.clarifai.com/create-manage/concepts/)
 
-A transfer-learning model, which we previously called an "embedding-classifier", is a type of machine learning model that uses an embedding layer to represent images, videos, or texts as low-dimensional vectors, and then uses a classifier layer to predict the class of the input.
+A transfer-learning model, which we also call "embedding-classifier", is a type of machine learning model that uses an embedding layer to represent images, videos, or texts as low-dimensional vectors, and then uses a classifier layer to predict the class of the input.
 
 The embedding layer takes the input image, video, or text, and converts it into a vector of numbers, where each number represents the similarity of the input to a particular word or concept. The classifier layer then takes the embedding vector as input and predicts the class of the input.
 
@@ -20746,7 +21067,7 @@ Let's demonstrate how you can create a custom text classifier model using the [t
 
 ## **Via the UI**
 
-Let's demonstrate how you can create a text classifier model that identifies whether an email message is a spam or not a spam. 
+Let's create a text classifier model that identifies whether an email message is a spam or not a spam. 
 
 ### Step 1: Create an App
 
@@ -20770,16 +21091,16 @@ Next, you'll need to upload data to the app you've created. This input data, lab
 
 > **Note:** A concept is something that describes the content of your text input, similar to a "tag" or "keyword." The data in these concepts give the model something to "observe" about the keyword, and learn from. For transfer learning, you can start with a small dataset. We recommend beginning with just 10 text inputs and gradually adding more as needed. 
 
-To upload inputs, select the **Inputs** option in the collapsible left sidebar. Next, click the **Upload inputs** button.
+To upload inputs, open the collapsible left sidebar and select **Projects**. Choose your app from the dropdown menu, then click **Inputs** in the app’s sidebar.
+
+Next, click the **Upload Inputs** button. The window that pops up allows you to upload your inputs.
 
 ![](/img/others/nav-to-explorer_1.png)
-
-The small window that pops up allows you to upload your inputs.
 
 You can use either of the following options to add text inputs to your app:
 
  - Upload from a `.csv` file
- - Add texts directly
+ - Add texts directly (_we'll use this option for this illustration_)
 
 #### Option 1: Upload From a `.csv` File
 
@@ -20790,8 +21111,6 @@ You can upload your text directly from a `.csv` file. This means you can work wi
 #### Option 2: Add Texts Directly
 
 Select the **Text** option in the input uploader window. Then, use the input field to add each of the text inputs directly to your app. 
-
-For this illustration, let's use the second option. 
 
 ![](/img/others/text-upload-inputs-1.png)
 
@@ -20827,11 +21146,13 @@ Next, navigate to your dataset's individual page and create a new version by cli
 
 Once you've uploaded the example text messages containing the concepts you want to train for, you're ready to create your custom model.
 
-Begin by selecting the **Models** option from the collapsible left sidebar. On the following page, click the **Add Model** button in the upper-right corner.
-
-In the pop-up window, select **Build a Custom Model** and click **Continue** to proceed.
+Begin by selecting the **Models** option in the app's collapsible left sidebar. On the ensuing page, click the **Add a Model** button.
 
 ![](/img/others/text-model-mode.png)
+
+In the pop-up window, select the **Build a Custom Model** option.
+
+![](/img/others/text-model-mode-1.png)
 
 You'll then be redirected to a page where you can choose the model type. In the **Text** section, select the **Transfer Learn** model type.
 
@@ -20854,19 +21175,17 @@ Next, provide the details for training your text classification model.
 - **Define concepts** — Specify the concepts you want the model to classify. Here, let's use `spam` and `non-spam` as the two concepts.
 - **Set concepts as mutually exclusive** — Enable this option to indicate that there is no overlap between the defined concepts.
 - **Enrich dataset** — If set to `Automatic`, this feature will enhance the model by including additional data from pre-built datasets with negative embeddings, improving accuracy. If set to `Disabled`, it will exclude these embeddings. Let's use the default `Automatic` setting for this example.
-- **Configure inference settings (optional)** — Adjust inference settings as needed for your model. This step is optional.
+- **Configure inference settings (optional)** — Optionally, adjust inference settings as needed for your model. You can set the maximum number of concepts to display in the results, minimum value of concept's probability score, additional hyperparameters, and training timeout in seconds. 
 
 After configuring the settings, click on **Train Model** to start the training process. Training typically takes a few seconds.
 
 ### Step 8: Use Your Custom Model
 
-You'll be redirected to the created model's page. Once the text classifier model is trained, you can put it to work, such as for making a [prediction](https://docs.clarifai.com/portal-guide/ppredict/).
+After creating your model, you’ll be redirected to its page. Once the text classifier has finished training, you can start using it to make predictions.
 
-To test it:
+![](/img/others/custom-transfer-text-model-4.png) 
 
-- Click the blue **(+)** button labeled "Try your own text."
-- A window will appear where you can input a text sample.
-- The model will display prediction probabilities, showing how it classifies the text input.
+To test the model, click the blue **Open in Playground** button in the upper-right corner. This will take you to the [AI Playground](https://docs.clarifai.com/compute/inference/clarifai/ui/), where you can enter a text sample and view its classification results.
 
 ![](/img/others/custom-transfer-text-model-2.png) 
 
@@ -20886,7 +21205,6 @@ import CodeBlock from "@theme/CodeBlock";
 
 import CodeAC from "!!raw-loader!../../../../code_snippets/python-sdk/model_training/embedding_classifier/ac.py";
 import CodeDU from "!!raw-loader!../../../../code_snippets/python-sdk/model_training/embedding_classifier/du.py";
-import CodeMT from "!!raw-loader!../../../../code_snippets/python-sdk/model_training/embedding_classifier/mt.py";
 import CodeMC from "!!raw-loader!../../../../code_snippets/python-sdk/model_training/embedding_classifier/mc.py";
 import CodeS from "!!raw-loader!../../../../code_snippets/python-sdk/model_training/embedding_classifier/s.py";
 import CodeIMT from "!!raw-loader!../../../../code_snippets/python-sdk/model_training/embedding_classifier/imt.py";
@@ -20902,44 +21220,44 @@ import CodeOutputTrEv from "!!raw-loader!../../../../code_snippets/python-sdk/mo
 import CodeOutputTeEv from "!!raw-loader!../../../../code_snippets/python-sdk/model_eval/embedding_classifier/outputs/test_eval.txt";
 import CodeOutputCMP from "!!raw-loader!../../../../code_snippets/python-sdk/model_eval/embedding_classifier/outputs/cmp.txt";
 
-Let's demonstrate how you can create a text classifier model using our API. 
+Let's demonstrate how to create a custom text classifier using transfer learning with the Clarifai [Python SDK](https://docs.clarifai.com/additional-resources/api-overview/python-sdk).
 
 #### Step 1: App Creation
 
-Let's start by creating an [app](https://docs.clarifai.com/create-manage/applications/create). 
+Let's start by [creating an app](https://docs.clarifai.com/create/applications/create/#create-via-the-api). 
 
     {CodeAC}
 
 #### Step 2: Dataset Upload
 
-Next, let’s upload the [dataset](https://docs.clarifai.com/create-manage/datasets/upload) that will be used to train the model to the app.
+Next, let’s [upload a dataset](https://docs.clarifai.com/create/datasets/upload/#upload-from-csv) to train the model.
 
-You can find the dataset we used [here](https://github.com/Clarifai/examples/tree/main/datasets/upload/data).
+We’ll use [this dataset](https://github.com/Clarifai/examples/blob/main/datasets/upload/data/imdb.csv), which already includes labeled concepts. You can download it and follow along with the steps below.
 
     {CodeDU}
 
+  Output Example
+    ```text
+        [INFO] 11:35:00.925516 
+        Dataset created
+        code: SUCCESS
+        description: "Ok"
+        req_id: "sdk-python-11.8.2-9c4cc96a53d2497a8fe801da54643ecd"
+        |  thread=8661409984 
+        Uploading inputs:   0%|                                                                          | 0/2 [00:00
+
 #### Step 3: Model Creation
 
-Let's list all the available trainable model types in the Clarifai platform. 
-
-    {CodeMT}
-
-  Output
-    {CodeOutputMT}
-
-Next, let's select the `embedding-classifier` model type and use it to create a model.  
+Create a custom model using the `embedding-classifier` model type.
 
     {CodeMC}
 
-:::tip
-
-[Click here](https://docs.clarifai.com/create-manage/models/deep-fine-tuning/clusterer#step-4-patch-model-optional) to learn how to patch your model. 
-
-:::
+  Output Example
+    {CodeOutputMT}
 
 #### Step 4: Set Up Model Parameters
 
-You can customize the model parameters as needed before starting the training process.
+Next, configure the model parameters before starting the training process. Adjusting these settings helps you define the model’s objective and fine-tune its behavior, resulting in more accurate and task-specific performance.
 
     {CodeS}
 
@@ -20952,15 +21270,27 @@ To initiate the model training process, call the `model.train()` method. The Cla
 
 :::note
 
-If the training status code returns `MODEL-TRAINED`, it means the model has successfully completed training and is ready for use.
+If the training status code returns `MODEL_TRAINED`, it means the model has successfully completed training and is ready for use.
 
 :::
 
     {CodeIMT}
 
+  Output
+    ```text
+    [INFO] 16:40:32.597261 
+Model Training Started
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-11.9.0-ba1dbd8c47ef4e4b9f606669dda1b5e4"
+ |  thread=8661409984 
+code: MODEL_TRAINED
+description: "Model is trained and ready for deployment"
+    ```
+
 #### Step 6: Model Prediction
 
-After the model is trained and ready to use, you can run some predictions with it.
+After the model is trained and ready to use, you can run some [predictions](https://docs.clarifai.com/compute/inference/clarifai/api-legacy#text-classifier) with it.
 
     {CodeMP}
 
@@ -20992,7 +21322,7 @@ Finally, to gain deeper insights into the model’s performance, use the `EvalRe
 
 ### Example 2
 
-Let's demonstrate how you can create a custom text classifier using transfer learning. 
+Let's demonstrate how to create a custom text classifier using transfer learning with the Clarifai Python [gRPC client](https://docs.clarifai.com/additional-resources/api-overview/grpc-clients).
 
 #### Step 1: App Creation
 
@@ -29242,6 +29572,66 @@ We have a public roadmap that gives you a view of our upcoming plans and helps u
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
 |  ![improvement](/img/improvement.jpg) | Changed the default [base workflow](https://docs.clarifai.com/api-guide/workflows/base-workflows/) for apps created via the API  |  Previously, when an application was created via the API without specifying a base workflow, the [Universal](https://clarifai.com/clarifai/main/workflows/Universal) workflow was used by default. Now, the default has been updated to the [General](https://clarifai.com/clarifai/main/workflows/General) workflow for better performance.   |
+
+---
+
+## Release 11.10
+
+# Release 11.10
+
+**Release Date:** November 7th, 2025
+
+| New Feature | Improvement | Bug Fix | Enterprise Only |
+| :---: | :---: | :---: | :---: |
+| ![new-feature](/img/new_feature.jpg) |![improvement](/img/improvement.jpg) | ![bug](/img/bug.jpg) | ![enterprise](/img/enterprise.jpg) |
+
+## Single-Click Deployments
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![new-feature](/img/new_feature.jpg)| Introduced one-click deployments |    Previously, users had to manually configure clusters and nodepools before [deploying a model](https://docs.clarifai.com/compute/deployments/deploy-model), with limited setup guidance.   Now, the platform automatically recommends suitable instance types based on model requirements and creates clusters or nodepools if none exist — enabling seamless, one-click model deployment.    |
+
+## Environment Secrets
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![new-feature](/img/new_feature.jpg)| Introduced environmental secrets |    Environment secrets are encrypted values that can be used as environment variables in your workflows.   Learn more about them [here](https://docs.clarifai.com/control/authentication/environment-secrets/).    |
+
+## Structured Outputs
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![new-feature](/img/new_feature.jpg)| Added support for structured JSON outputs |    You can now generate structured JSON outputs directly from Clarifai-hosted OpenAI-compatible models using Pydantic schemas.   This feature ensures that model responses adhere to a defined data structure, making it easier to integrate outputs into downstream applications safely and reliably.  Learn more about them [here](https://docs.clarifai.com/compute/inference/open-ai/#structured-outputs).    |
+
+## Toolkits
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![new-feature](/img/new_feature.jpg)| Added support for [toolkits](https://docs.clarifai.com/compute/toolkits/) |    Added SGLang toolkit support to the CLI `init` command — `clarifai model init --toolkit sglang`.  Added Python toolkit support to the CLI `init` command — `clarifai model init --toolkit python`.   |
+
+## Published Models
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![new-feature](/img/new_feature.jpg)  | Published new models |    Published [DeepSeek-OCR](https://clarifai.com/deepseek-ai/deepseek-ocr/models/DeepSeek-OCR), which achieves SOTA 96%+ OCR precision at 9-10× compression ratio, ~90% accuracy at 10-12× compression ratio, and massive production scalability with 200,000+ pages per day with a single A100-40G GPU.    |
+
+## Python SDK
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![improvement](/img/improvement.jpg) | Improved the Python SDK   Learn more [here](https://github.com/Clarifai/clarifai-python/blob/master/CHANGELOG.md)  |   Fixed missing `user_id` parameter issue in the CLI `local-runner` command. Added Model Deployment Workflow step after Model Upload in the CLI.Added optional protobuf response details in Pythonic models with parameter validation.Added `USER_ID` field to the configuration in CLI Model Init.Added user input prompt for OpenAI local runner initialization.Fixed `async_client` initialization issue.Disabled `async_stub` during `ModelClient` initialization.Fixed `UnboundLocalError` in model init when using `--model-type-id` without a toolkit.Added `config-lock.yaml` support to `clarifai pipeline upload`. |
+
+## Control Center
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![improvement](/img/improvement.jpg)  | Updated the Control Center to provide unified reporting for all models, regardless of billing method |    Previously, usage stats depended on how models were billed — ops, tokens, or compute time.   Now, all models report operations, and LLMs also report tokens, ensuring consistent and transparent usage metrics across the platform.    |
+
+## Platform
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+|  ![improvement](/img/improvement.jpg) | Improved the Community search to deliver more relevant results |    Previously, all search criteria, such as model ID, user ID, and descriptions, were weighted equally.    Now, model IDs (for example, `gpt-oss-120b`) carry greater weight, making searches more accurate and relevant to specific models.    |
 
 ---
 
