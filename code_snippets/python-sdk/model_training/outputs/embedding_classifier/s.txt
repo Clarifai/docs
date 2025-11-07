@@ -1,5 +1,3 @@
-{'dataset_id': 'text_dataset',
- 'dataset_version_id': '',
- 'concepts': ['id-pos', 'id-neg'],
- 'train_params': {'base_embed_model': None, 'enrich_dataset': 'Automatic'},
- 'inference_params': {'min_value': 0.0}}
+Available concepts: ['neg', 'pos']
+Current model parameters: {'dataset_id': '', 'dataset_version_id': '', 'concepts': [], 'train_params': {'enrich_dataset': 'Automatic'}, 'inference_params': {'min_value': 0.0}, 'concepts_mutually_exclusive': False}
+Model parameters updated successfully

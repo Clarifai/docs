@@ -1,0 +1,18 @@
+clarifai model init --toolkit sglang
+[INFO] 20:14:19.494294 Parsed GitHub repository: owner=Clarifai, repo=runners-examples, branch=sglang, folder_path= |  thread=8729403584 
+[INFO] 20:14:20.762093 Files to be downloaded are:
+1. 1/model.py
+2. 1/openai_server_starter.py
+3. Dockerfile
+4. README.md
+5. config.yaml
+6. requirements.txt |  thread=8729403584 
+Press Enter to continue...
+[INFO] 20:14:24.640395 Initializing model from GitHub repository: https://github.com/Clarifai/runners-examples |  thread=8729403584 
+[INFO] 20:14:33.997825 Successfully cloned repository from https://github.com/Clarifai/runners-examples (branch: sglang) |  thread=8729403584 
+[INFO] 20:14:34.006824 Updated Hugging Face model repo_id to: None |  thread=8729403584 
+[INFO] 20:14:34.006878 Model initialization complete with GitHub repository |  thread=8729403584 
+[INFO] 20:14:34.006909 Next steps: |  thread=8729403584 
+[INFO] 20:14:34.006929 1. Review the model configuration |  thread=8729403584 
+[INFO] 20:14:34.006946 2. Install any required dependencies manually |  thread=8729403584 
+[INFO] 20:14:34.006966 3. Test the model locally using 'clarifai model local-test' |  thread=8729403584 

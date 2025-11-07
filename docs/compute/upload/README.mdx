@@ -210,7 +210,9 @@ We currently support Python 3.11 and Python 3.12 (default).
 
 #### Compute Resources  
 
-You must define the minimum compute resources required for running your model, including CPU, memory, and optional GPU specifications.
+To deploy your model on Clarifai’s dedicated compute, you must define the minimum compute resources required for running it, including CPU, memory, and optional GPU specifications.
+
+> **Note:** For [local execution](https://docs.clarifai.com/compute/local-runners/), the `inference_compute_info` section is optional — the model runs entirely on your machine using local CPU/GPU resources. 
 
 These are some parameters you can define:
 

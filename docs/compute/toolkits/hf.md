@@ -12,7 +12,7 @@ sidebar_position: 3
 
 With Clarifai’s [Local Runners](README.mdx), you can run these models directly on your machine, expose them securely via a public URL, and tap into Clarifai’s powerful platform — all while preserving the speed, privacy, and control of local deployment.
 
-> **Note:** After downloading the model using the Hugging Face toolkit, you can [upload](https://docs.clarifai.com/compute/upload/#step-4-upload-the-model-to-clarifai) it to Clarifai to leverage the platform’s capabilities.
+> **Note:** After initializing a model using the Hugging Face toolkit, you can [upload](https://docs.clarifai.com/compute/upload/#step-4-upload-the-model-to-clarifai) it to Clarifai to leverage the platform’s capabilities.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -155,7 +155,7 @@ The [`model.py`](https://docs.clarifai.com/compute/upload/#prepare-modelpy) file
 
 The `config.yaml` file specifies the model’s configuration, including compute resource requirements, checkpoints, and other essential settings.
 
-- In the `model` section, you need to specify a unique model ID (any name you choose), along with your Clarifai user ID and app ID, which together determine where your model will run on the Clarifai platform. 
+- In the `model` section, you need to specify a unique model ID (any name you choose) along with an app ID. Your Clarifai user ID is set by default from your [active context](https://docs.clarifai.com/resources/api-overview/cli#clarifai-config). These together determine where your model will run on the Clarifai platform.
 
 - In the `checkpoints` section, you can provide your Hugging Face token using the `hf_token` parameter if you need to access private or restricted repositories. This section also includes the `when` parameter, which controls when model checkpoints are downloaded and stored. The available options are `runtime` (the default), which downloads checkpoints when the model is loaded; `build`, which downloads checkpoints during the image build process; and `upload`, which downloads checkpoints before the model is uploaded.
 

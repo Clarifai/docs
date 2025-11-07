@@ -16,7 +16,7 @@ Let's demonstrate how you can create a custom text classifier model using the [t
 
 ## **Via the UI**
 
-Let's demonstrate how you can create a text classifier model that identifies whether an email message is a spam or not a spam. 
+Let's create a text classifier model that identifies whether an email message is a spam or not a spam. 
 
 ### Step 1: Create an App
 
@@ -40,16 +40,16 @@ Next, you'll need to upload data to the app you've created. This input data, lab
 
 > **Note:** A concept is something that describes the content of your text input, similar to a "tag" or "keyword." The data in these concepts give the model something to "observe" about the keyword, and learn from. For transfer learning, you can start with a small dataset. We recommend beginning with just 10 text inputs and gradually adding more as needed. 
 
-To upload inputs, select the **Inputs** option in the collapsible left sidebar. Next, click the **Upload inputs** button.
+To upload inputs, open the collapsible left sidebar and select **Projects**. Choose your app from the dropdown menu, then click **Inputs** in the app’s sidebar.
+
+Next, click the **Upload Inputs** button. The window that pops up allows you to upload your inputs.
 
 ![](/img/others/nav-to-explorer_1.png)
-
-The small window that pops up allows you to upload your inputs.
 
 You can use either of the following options to add text inputs to your app:
 
  - Upload from a `.csv` file
- - Add texts directly
+ - Add texts directly (_we'll use this option for this illustration_)
 
 #### Option 1: Upload From a `.csv` File
 
@@ -60,8 +60,6 @@ You can upload your text directly from a `.csv` file. This means you can work wi
 #### Option 2: Add Texts Directly
 
 Select the **Text** option in the input uploader window. Then, use the input field to add each of the text inputs directly to your app. 
-
-For this illustration, let's use the second option. 
 
 ![](/img/others/text-upload-inputs-1.png)
 
@@ -97,11 +95,13 @@ Next, navigate to your dataset's individual page and create a new version by cli
 
 Once you've uploaded the example text messages containing the concepts you want to train for, you're ready to create your custom model.
 
-Begin by selecting the **Models** option from the collapsible left sidebar. On the following page, click the **Add Model** button in the upper-right corner.
-
-In the pop-up window, select **Build a Custom Model** and click **Continue** to proceed.
+Begin by selecting the **Models** option in the app's collapsible left sidebar. On the ensuing page, click the **Add a Model** button.
 
 ![](/img/others/text-model-mode.png)
+
+In the pop-up window, select the **Build a Custom Model** option.
+
+![](/img/others/text-model-mode-1.png)
 
 You'll then be redirected to a page where you can choose the model type. In the **Text** section, select the **Transfer Learn** model type.
 
@@ -124,20 +124,17 @@ Next, provide the details for training your text classification model.
 - **Define concepts** — Specify the concepts you want the model to classify. Here, let's use `spam` and `non-spam` as the two concepts.
 - **Set concepts as mutually exclusive** — Enable this option to indicate that there is no overlap between the defined concepts.
 - **Enrich dataset** — If set to `Automatic`, this feature will enhance the model by including additional data from pre-built datasets with negative embeddings, improving accuracy. If set to `Disabled`, it will exclude these embeddings. Let's use the default `Automatic` setting for this example.
-- **Configure inference settings (optional)** — Adjust inference settings as needed for your model. This step is optional.
+- **Configure inference settings (optional)** — Optionally, adjust inference settings as needed for your model. You can set the maximum number of concepts to display in the results, minimum value of concept's probability score, additional hyperparameters, and training timeout in seconds. 
 
 After configuring the settings, click on **Train Model** to start the training process. Training typically takes a few seconds.
 
 ### Step 8: Use Your Custom Model
 
-You'll be redirected to the created model's page. Once the text classifier model is trained, you can put it to work, such as for making a [prediction](https://docs.clarifai.com/portal-guide/ppredict/).
+After creating your model, you’ll be redirected to its page. Once the text classifier has finished training, you can start using it to make predictions.
 
-To test it:
+![](/img/others/custom-transfer-text-model-4.png) 
 
-- Click the blue **(+)** button labeled "Try your own text."
-- A window will appear where you can input a text sample.
-- The model will display prediction probabilities, showing how it classifies the text input.
-
+To test the model, click the blue **Open in Playground** button in the upper-right corner. This will take you to the [AI Playground](https://docs.clarifai.com/compute/inference/clarifai/ui/), where you can enter a text sample and view its classification results.
 
 ![](/img/others/custom-transfer-text-model-2.png) 
 
@@ -159,7 +156,6 @@ import CodeBlock from "@theme/CodeBlock";
 
 import CodeAC from "!!raw-loader!../../../../code_snippets/python-sdk/model_training/embedding_classifier/ac.py";
 import CodeDU from "!!raw-loader!../../../../code_snippets/python-sdk/model_training/embedding_classifier/du.py";
-import CodeMT from "!!raw-loader!../../../../code_snippets/python-sdk/model_training/embedding_classifier/mt.py";
 import CodeMC from "!!raw-loader!../../../../code_snippets/python-sdk/model_training/embedding_classifier/mc.py";
 import CodeS from "!!raw-loader!../../../../code_snippets/python-sdk/model_training/embedding_classifier/s.py";
 import CodeIMT from "!!raw-loader!../../../../code_snippets/python-sdk/model_training/embedding_classifier/imt.py";
@@ -177,11 +173,11 @@ import CodeOutputTeEv from "!!raw-loader!../../../../code_snippets/python-sdk/mo
 import CodeOutputCMP from "!!raw-loader!../../../../code_snippets/python-sdk/model_eval/embedding_classifier/outputs/cmp.txt";
 
 
-Let's demonstrate how you can create a text classifier model using our API. 
+Let's demonstrate how to create a custom text classifier using transfer learning with the Clarifai [Python SDK](https://docs.clarifai.com/additional-resources/api-overview/python-sdk).
 
 #### Step 1: App Creation
 
-Let's start by creating an [app](https://docs.clarifai.com/create-manage/applications/create). 
+Let's start by [creating an app](https://docs.clarifai.com/create/applications/create/#create-via-the-api). 
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
@@ -191,9 +187,10 @@ Let's start by creating an [app](https://docs.clarifai.com/create-manage/applica
 
 #### Step 2: Dataset Upload
 
-Next, let’s upload the [dataset](https://docs.clarifai.com/create-manage/datasets/upload) that will be used to train the model to the app.
+Next, let’s [upload a dataset](https://docs.clarifai.com/create/datasets/upload/#upload-from-csv) to train the model.
 
-You can find the dataset we used [here](https://github.com/Clarifai/examples/tree/main/datasets/upload/data).
+We’ll use [this dataset](https://github.com/Clarifai/examples/blob/main/datasets/upload/data/imdb.csv), which already includes labeled concepts. You can download it and follow along with the steps below.
+
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
@@ -201,24 +198,26 @@ You can find the dataset we used [here](https://github.com/Clarifai/examples/tre
 </TabItem>
 </Tabs>
 
-
+<details>
+  <summary>Output Example</summary>
+    ```text
+        [INFO] 11:35:00.925516 
+        Dataset created
+        code: SUCCESS
+        description: "Ok"
+        req_id: "sdk-python-11.8.2-9c4cc96a53d2497a8fe801da54643ecd"
+        |  thread=8661409984 
+        Uploading inputs:   0%|                                                                          | 0/2 [00:00<?, ?it/s][WARNING] 11:35:26.619217 Failed to upload 0 inputs..
+        |  thread=8661409984 
+        Uploading inputs:  50%|█████████████████████████████████                                 | 1/2 [00:25<00:25, 25.65s/it][WARNING] 11:35:33.340324 Failed to upload 0 inputs..
+        |  thread=8661409984 
+        Uploading inputs: 100%|██████████████████████████████████████████████████████████████████| 2/2 [00:32<00:00, 16.19s/it]
+    ```
+</details>
 
 #### Step 3: Model Creation
 
-Let's list all the available trainable model types in the Clarifai platform. 
-
-<Tabs groupId="code">
-<TabItem value="python" label="Python SDK">
-    <CodeBlock className="language-python">{CodeMT}</CodeBlock>
-</TabItem>
-</Tabs>
-<details>
-  <summary>Output</summary>
-    <CodeBlock className="language-text">{CodeOutputMT}</CodeBlock>
-</details>
-
-Next, let's select the `embedding-classifier` model type and use it to create a model.  
-
+Create a custom model using the `embedding-classifier` model type.
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python">
@@ -226,16 +225,14 @@ Next, let's select the `embedding-classifier` model type and use it to create a 
 </TabItem>
 </Tabs>
 
-
-:::tip
-
-[Click here](https://docs.clarifai.com/create-manage/models/deep-fine-tuning/clusterer#step-4-patch-model-optional) to learn how to patch your model. 
-
-:::
+<details>
+  <summary>Output Example</summary>
+    <CodeBlock className="language-text">{CodeOutputMT}</CodeBlock>
+</details>
 
 #### Step 4: Set Up Model Parameters
 
-You can customize the model parameters as needed before starting the training process.
+Next, configure the model parameters before starting the training process. Adjusting these settings helps you define the model’s objective and fine-tune its behavior, resulting in more accurate and task-specific performance.
 
 
 <Tabs groupId="code">
@@ -254,7 +251,7 @@ To initiate the model training process, call the `model.train()` method. The Cla
 
 :::note
 
-If the training status code returns `MODEL-TRAINED`, it means the model has successfully completed training and is ready for use.
+If the training status code returns `MODEL_TRAINED`, it means the model has successfully completed training and is ready for use.
 
 :::
 
@@ -264,18 +261,31 @@ If the training status code returns `MODEL-TRAINED`, it means the model has succ
 </TabItem>
 </Tabs>
 
-
+<details>
+  <summary>Output</summary>
+    ```text
+    [INFO] 16:40:32.597261 
+Model Training Started
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-11.9.0-ba1dbd8c47ef4e4b9f606669dda1b5e4"
+ |  thread=8661409984 
+code: MODEL_TRAINED
+description: "Model is trained and ready for deployment"
+    ```
+</details>
 
 
 #### Step 6: Model Prediction
 
-After the model is trained and ready to use, you can run some predictions with it.
+After the model is trained and ready to use, you can run some [predictions](https://docs.clarifai.com/compute/inference/clarifai/api-legacy#text-classifier) with it.
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CodeMP}</CodeBlock>
 </TabItem>
 </Tabs>
+
 <details>
   <summary>Output</summary>
     <CodeBlock className="language-text">{CodeOutputMP}</CodeBlock>
@@ -322,7 +332,7 @@ Finally, to gain deeper insights into the model’s performance, use the `EvalRe
 
 ### Example 2
 
-Let's demonstrate how you can create a custom text classifier using transfer learning. 
+Let's demonstrate how to create a custom text classifier using transfer learning with the Clarifai Python [gRPC client](https://docs.clarifai.com/additional-resources/api-overview/grpc-clients).
 
 #### Step 1: App Creation
 

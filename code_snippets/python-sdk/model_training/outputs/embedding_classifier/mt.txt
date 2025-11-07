@@ -1,8 +1,5 @@
-['visual-classifier',
- 'visual-detector',
- 'visual-segmenter',
- 'visual-embedder',
- 'clusterer',
- 'text-classifier',
- 'embedding-classifier',
- 'text-to-text']
+[INFO] 13:05:54.361334 Model with ID 'model_text_embedder' is created:
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-11.9.0-569377b1ea3a4d5fadf8748d2db7ea18"
+ |  thread=8661409984 
