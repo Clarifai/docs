@@ -240,6 +240,7 @@ To learn more about building AI agents with the Vercel AI SDK, see the following
 To learn more about building AI agents with other toolkits, see the following examples:
 
 - [Blog: Building AI Agents with Agno and GPT-OSS 120B](https://www.clarifai.com/blog/building-ai-agents-with-agno-and-gpt-oss-120b)
+- [Notebook: Conditional Routing Agent for selecting a suitable model for a given task](https://github.com/Clarifai/examples/blob/main/agents/conditional_agent_router.ipynb)
 
 ---
 
@@ -5785,6 +5786,7 @@ The following model types output concepts or labels:
 - `visual-detector`
 - `visual-segmenter`
 - `text-classifier` 
+- `visual-keypointer`
 
     {ModelConcepts}
 
@@ -29613,7 +29615,7 @@ We have a public roadmap that gives you a view of our upcoming plans and helps u
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
-| ![new-feature](/img/new_feature.jpg)  | Published new models |    Published [DeepSeek-OCR](https://clarifai.com/deepseek-ai/deepseek-ocr/models/DeepSeek-OCR), which achieves SOTA 96%+ OCR precision at 9-10× compression ratio, ~90% accuracy at 10-12× compression ratio, and massive production scalability with 200,000+ pages per day with a single A100-40G GPU.    |
+| ![new-feature](/img/new_feature.jpg)  | Published new models |    Published [DeepSeek-OCR](https://clarifai.com/deepseek-ai/deepseek-ocr/models/DeepSeek-OCR), which achieves SOTA 96%+ OCR precision at 9-10× compression ratio, ~90% accuracy at 10-12× compression ratio, and massive production scalability with 200,000+ pages per day with a single A100-40G GPU.   Published [GLM-4.6](https://clarifai.com/zai/completion/models/GLM_4_6), which unifies reasoning, coding, and agentic capabilities into a single model.   |
 
 ## Python SDK
 
