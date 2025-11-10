@@ -250,3 +250,4 @@ To learn more about building AI agents with the Vercel AI SDK, see the following
 To learn more about building AI agents with other toolkits, see the following examples:
 
 - [Blog: Building AI Agents with Agno and GPT-OSS 120B](https://www.clarifai.com/blog/building-ai-agents-with-agno-and-gpt-oss-120b)
+- [Notebook: Conditional Routing Agent for selecting a suitable model for a given task](https://github.com/Clarifai/examples/blob/main/agents/conditional_agent_router.ipynb)
