@@ -49,7 +49,7 @@ draft: false
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
-| ![new-feature](/img/new_feature.jpg)  | Published new models | <ul>  <li> Published [DeepSeek-OCR](https://clarifai.com/deepseek-ai/deepseek-ocr/models/DeepSeek-OCR), which achieves SOTA 96%+ OCR precision at 9-10× compression ratio, ~90% accuracy at 10-12× compression ratio, and massive production scalability with 200,000+ pages per day with a single A100-40G GPU. </li> </ul>  |
+| ![new-feature](/img/new_feature.jpg)  | Published new models | <ul>  <li> Published [DeepSeek-OCR](https://clarifai.com/deepseek-ai/deepseek-ocr/models/DeepSeek-OCR), which achieves SOTA 96%+ OCR precision at 9-10× compression ratio, ~90% accuracy at 10-12× compression ratio, and massive production scalability with 200,000+ pages per day with a single A100-40G GPU. </li> <li> Published [GLM-4.6](https://clarifai.com/zai/completion/models/GLM_4_6), which unifies reasoning, coding, and agentic capabilities into a single model.</li> </ul>  |
 
 
 ## Python SDK
