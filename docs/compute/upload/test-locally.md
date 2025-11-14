@@ -61,11 +61,21 @@ These are the key CLI flags available for local testing and running your models:
   - `-p` or `--port` —  The port to host the gRPC server for running the model locally. Defaults to `8000`.
   - `--keep_env` —  Retain the virtual environment after testing the model locally (applicable for `env` mode). Defaults to `False`.
   - `--keep_image` —  Retain the Docker image built after testing the model locally (applicable for `container` mode). Defaults to `False`.
-  - `--skip_dockerfile` — Flag to skip generating a dockerfile so that you can manually edit an already created dockerfile.
+  - `--skip_dockerfile` — Flag to [skip](README.mdx#skip-dockerfile) generating a dockerfile so that you can manually edit an already created dockerfile.
 
 </details>
 
+### System Requirements
 
+Before running the `clarifai model local-test` or `clarifai model local-grpc` commands, ensure your local environment meets the following requirements:
+
+* **Python Version** — Python 3.8 or higher is required (Python 3.9+ is recommended for optimal compatibility).
+
+* **GPU Support** — For models that require GPU acceleration, your environment must have NVIDIA GPU support installed and properly configured. CPU-only models can still be tested without a GPU.
+
+* **Docker (Optional)** — Docker is recommended for container-based testing, but it is not mandatory. If Docker is not available, a warning will be displayed, and testing will proceed without containerization.
+
+> **Note:** If your environment does not meet the above requirements, the validation process will provide a clear error or warning message indicating what is missing and how to resolve it.
 
 ## Test by Running Locally
 

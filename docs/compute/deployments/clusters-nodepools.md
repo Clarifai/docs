@@ -59,6 +59,8 @@ You can narrow down the displayed options using the filters and tools provided i
 - **Price/hour filter** — Filter instances by their hourly cost, helping you manage your budget.
 - **Sorting controls** — Click the sorting arrows next to each column header to sort values in ascending or descending order, making comparisons easier.
 
+:::note
+
 Before making your final choice, here are some key considerations to make:
 
 - **Workload requirements (CPU and memory)** — For applications demanding significant processing power, opt for instances with a higher number of CPU cores. For example, a `t3a.2xlarge` offers `7.6 cores`, considerably more than a `t3a.medium` with `1.6 cores`. Also, the `Gi` value displayed alongside the core count (such as `2.99Gi`) indicates the amount of RAM in Gigabytes. A higher `Gi` value signifies more available memory.
@@ -66,9 +68,16 @@ Before making your final choice, here are some key considerations to make:
 - **GPU requirements** — If your workload involves intensive tasks like running models for video processing or other GPU-heavy tasks, you'll need to select instances equipped with GPUs.
 - **Regulatory compliance** – Ensure the chosen region and instance type comply with any relevant data residency or industry-specific regulations.
 
+:::
+
 Once you've found the right instance, click the circular radio button to the left of the row to select it.
 
-> **Note:** For this example, let's select the AWS `g4dn.xlarge` instance in the `us-east-1` region. For the remaining details to be filled, we'll use the already provided default options. After selecting an instance, you can click the [**Create Cluster**](#step-6-finalize-and-create-the-cluster) button to complete creating your cluster and nodepool. Otherwise, you can customize the rest of the settings to meet your needs.
+:::tip
+
+> For this example, let's select the AWS `g4dn.xlarge` instance in the `us-east-1` region. For the remaining details to be filled, we'll use the already provided default options. After selecting an instance, you can click the [**Create Cluster**](#step-6-finalize-and-create-the-cluster) button to complete creating your cluster and nodepool. Otherwise, you can customize the rest of the settings to meet your needs.
+
+:::
+
 
 <a id="node-range"></a>
 
