@@ -24,8 +24,8 @@
 <script src="https://cdn.amplitude.com/libs/analytics-browser-2.12.0-min.js.gz" defer="defer"></script>
 <script src="https://cdn.amplitude.com/libs/plugin-session-replay-browser-1.4.0-min.js.gz" defer="defer"></script>
 <script src="/scripts/amplitude.js" defer="defer"></script><link rel="stylesheet" href="/assets/css/styles.cd86c358.css">
-<script src="/assets/js/runtime~main.655d139d.js" defer="defer"></script>
-<script src="/assets/js/main.54b45544.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.7b0ace39.js" defer="defer"></script>
+<script src="/assets/js/main.17f20d24.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5W9P7GR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -64,17 +64,16 @@
 <li class=""><strong>Price/hour filter</strong> — Filter instances by their hourly cost, helping you manage your budget.</li>
 <li class=""><strong>Sorting controls</strong> — Click the sorting arrows next to each column header to sort values in ascending or descending order, making comparisons easier.</li>
 </ul>
-<p>Before making your final choice, here are some key considerations to make:</p>
-<ul>
+<div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>note</div><div class="admonitionContent_BuS1"><p>Before making your final choice, here are some key considerations to make:</p><ul>
 <li class=""><strong>Workload requirements (CPU and memory)</strong> — For applications demanding significant processing power, opt for instances with a higher number of CPU cores. For example, a <code>t3a.2xlarge</code> offers <code>7.6 cores</code>, considerably more than a <code>t3a.medium</code> with <code>1.6 cores</code>. Also, the <code>Gi</code> value displayed alongside the core count (such as <code>2.99Gi</code>) indicates the amount of RAM in Gigabytes. A higher <code>Gi</code> value signifies more available memory.</li>
 <li class=""><strong>Cost sensitivity</strong> — The <code>PRICE/HR</code> column helps you evaluate cost. Choose an instance that balances price and performance according to your budget.</li>
 <li class=""><strong>GPU requirements</strong> — If your workload involves intensive tasks like running models for video processing or other GPU-heavy tasks, you&#x27;ll need to select instances equipped with GPUs.</li>
 <li class=""><strong>Regulatory compliance</strong> – Ensure the chosen region and instance type comply with any relevant data residency or industry-specific regulations.</li>
-</ul>
+</ul></div></div>
 <p>Once you&#x27;ve found the right instance, click the circular radio button to the left of the row to select it.</p>
-<blockquote>
-<p><strong>Note:</strong> For this example, let&#x27;s select the AWS <code>g4dn.xlarge</code> instance in the <code>us-east-1</code> region. For the remaining details to be filled, we&#x27;ll use the already provided default options. After selecting an instance, you can click the <a href="#step-6-finalize-and-create-the-cluster" class=""><strong>Create Cluster</strong></a> button to complete creating your cluster and nodepool. Otherwise, you can customize the rest of the settings to meet your needs.</p>
-</blockquote>
+<div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>tip</div><div class="admonitionContent_BuS1"><blockquote>
+<p>For this example, let&#x27;s select the AWS <code>g4dn.xlarge</code> instance in the <code>us-east-1</code> region. For the remaining details to be filled, we&#x27;ll use the already provided default options. After selecting an instance, you can click the <a href="#step-6-finalize-and-create-the-cluster" class=""><strong>Create Cluster</strong></a> button to complete creating your cluster and nodepool. Otherwise, you can customize the rest of the settings to meet your needs.</p>
+</blockquote></div></div>
 <a id="node-range"></a>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-3-set-node-autoscaling-range">Step 3: Set Node Autoscaling Range<a href="#step-3-set-node-autoscaling-range" class="hash-link" aria-label="Direct link to Step 3: Set Node Autoscaling Range" title="Direct link to Step 3: Set Node Autoscaling Range" translate="no">​</a></h3>
 <p><img decoding="async" loading="lazy" alt=" " src="/assets/images/compute-7-55e16dc00ea5eae7af2f051bd13416e8.png" width="4180" height="962" class="img_ev3q"></p>

@@ -930,6 +930,8 @@ You can narrow down the displayed options using the filters and tools provided i
 - **Price/hour filter** — Filter instances by their hourly cost, helping you manage your budget.
 - **Sorting controls** — Click the sorting arrows next to each column header to sort values in ascending or descending order, making comparisons easier.
 
+:::note
+
 Before making your final choice, here are some key considerations to make:
 
 - **Workload requirements (CPU and memory)** — For applications demanding significant processing power, opt for instances with a higher number of CPU cores. For example, a `t3a.2xlarge` offers `7.6 cores`, considerably more than a `t3a.medium` with `1.6 cores`. Also, the `Gi` value displayed alongside the core count (such as `2.99Gi`) indicates the amount of RAM in Gigabytes. A higher `Gi` value signifies more available memory.
@@ -937,9 +939,15 @@ Before making your final choice, here are some key considerations to make:
 - **GPU requirements** — If your workload involves intensive tasks like running models for video processing or other GPU-heavy tasks, you'll need to select instances equipped with GPUs.
 - **Regulatory compliance** – Ensure the chosen region and instance type comply with any relevant data residency or industry-specific regulations.
 
+:::
+
 Once you've found the right instance, click the circular radio button to the left of the row to select it.
 
-> **Note:** For this example, let's select the AWS `g4dn.xlarge` instance in the `us-east-1` region. For the remaining details to be filled, we'll use the already provided default options. After selecting an instance, you can click the [**Create Cluster**](#step-6-finalize-and-create-the-cluster) button to complete creating your cluster and nodepool. Otherwise, you can customize the rest of the settings to meet your needs.
+:::tip
+
+> For this example, let's select the AWS `g4dn.xlarge` instance in the `us-east-1` region. For the remaining details to be filled, we'll use the already provided default options. After selecting an instance, you can click the [**Create Cluster**](#step-6-finalize-and-create-the-cluster) button to complete creating your cluster and nodepool. Otherwise, you can customize the rest of the settings to meet your needs.
+
+:::
 
 ### Step 3: Set Node Autoscaling Range
 
@@ -4094,61 +4102,81 @@ Here’s an example of how to generate embeddings using a model that supports Cl
 
 [OpenHands](https://docs.all-hands.dev/) is an AI-powered code assistance framework designed to streamline development by harnessing the flexibility of large language models (LLMs).
 
-Let's walk through how to run inference with Clarifai models locally using OpenHands, while leveraging its intelligent assistance to boost your coding productivity.
+Let's walk through how to run inference with Clarifai models locally using OpenHands, while leveraging its intelligent assistance to boost your productivity.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
-## Prerequisites
+import OpenHands1 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/open_hands_1.py";
+import OpenHands2 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/open_hands_2.txt";
 
-- **Get a PAT key** — To use OpenHands with Clarifai models, you’ll need a [Personal Access Token](https://docs.clarifai.com/control/authentication/pat) (PAT). [Log in](https://clarifai.com/login) or [sign up](https://clarifai.com/signup) for a Clarifai account, then navigate to your **Security** settings to generate a new PAT. This token is required for authenticating your requests.
+## Step 1: Perform Prerequisites
+
+- **Get a PAT (Personal Access Token) key** — To use OpenHands with Clarifai models, you need a [PAT](https://docs.clarifai.com/control/authentication/pat) for authentication. [Log in](https://clarifai.com/login) or [sign up](https://clarifai.com/signup) for a Clarifai account, then go to **Settings** in the collapsible left sidebar and select **Secrets**. From there, you can create a new token or copy an existing one to use with your requests.
 
 - **Get a model** — Clarifai's [Community platform](https://clarifai.com/explore) offers a wide selection of cutting-edge language models that you can run using OpenHands. Browse the platform to find a model that best fits your use case. For this example, we'll use the [GPT-OSS-120B](https://clarifai.com/openai/chat-completion/models/gpt-oss-120b) model. 
 
 - **Install Docker Desktop** — OpenHands runs inside a Docker container, so you’ll need Docker installed and running on your system. You can download and install Docker Desktop for your operating system from the [official Docker website](https://www.docker.com/products/docker-desktop). Be sure to follow the installation steps specific to your OS (Windows, macOS, or Linux).
 
-## Step 1: Pull Runtime Image
+- **Get a GitHub token** — If you want to integrate OpenHands with GitHub, you’ll need a personal access token for authentication. You can follow [GitHub’s documentation](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) to generate one.
 
-OpenHands uses a dedicated Docker image to provide a sandboxed execution environment. Pulling this image ahead of time from the All-Hands AI Docker registry can speed up the initial startup process.
+## Step 2: Run OpenHands Locally
 
-> **Note:** Always check the official OpenHands documentation for the latest recommended image tag, as it may change over time.
+### Option A: CLI Launcher (Recommended)
 
-    docker pull docker.all-hands.dev/all-hands-ai/runtime:0.51-nikolaik
+The simplest way to run OpenHands locally is by using the CLI launcher with the [`uv`](https://docs.astral.sh/uv/) package manager.  This approach provides better isolation from your existing project’s virtual environment and is needed for OpenHands’ default MCP servers.
 
-## Step 2: Run OpenHands
+If you don’t already have `uv` installed, follow the official [uv installation guide](https://docs.astral.sh/uv/getting-started/installation/) for the latest instructions for your platform.
 
-Start OpenHands using the following comprehensive `docker run` command.
+Then, use either of the following commands to launch OpenHands.
+
+Launch by starting the GUI server:
+
+```bash
+uvx --python 3.12 openhands serve
+```
+
+Or, start in CLI mode:
+
+```bash
+uvx --python 3.12 openhands
+```
+
+  Example Output
+    {OpenHands2}
+
+### Option B: Docker
+
+You can also run OpenHands using Docker.
+
+Note that OpenHands uses a dedicated Docker image to provide a sandboxed execution environment. Pulling this image ahead of time from the All-Hands AI Docker registry can speed up the initial startup process.
+
+> **Note:** Always check the [official OpenHands documentation](https://github.com/OpenHands/OpenHands?tab=readme-ov-file#option-2-docker) for the latest recommended image tag, as it may change over time.
+
+    docker pull docker.openhands.dev/openhands/runtime:0.62-nikolaik
+
+Next, start OpenHands using the following comprehensive `docker run` command.
 
 > **Note:** This command works best in Linux or macOS environments, where Docker supports native Linux-style paths. If you're using Windows, you'll need to modify the volume mount paths and run the command within a WSL2 (Linux) shell for proper compatibility.
 
-    ```bash
-    docker run -it --rm --pull=always \
-    -e SANDBOX_RUNTIME_CONTAINER_IMAGE=docker.all-hands.dev/all-hands-ai/runtime:0.51-nikolaik \
-    -e LOG_ALL_EVENTS=true \
-    -v /var/run/docker.sock:/var/run/docker.sock \
-    -v ~/.openhands:/.openhands \
-    -p 3000:3000 \
-    --add-host host.docker.internal:host-gateway \
-    --name openhands-app \
-    docker.all-hands.dev/all-hands-ai/openhands:0.51  
-    ```
+    {OpenHands1}
 
 The above command:
 
 * Launches a new Docker container to run OpenHands.
 * Sets environment variables for the runtime image and logging.
 * Grants the container access to the Docker engine for sandboxing.
-* Maps port 3000 on your computer host to port 3000 in the container. This is how you access the OpenHands web interface or API locally.
+* Maps port 3000 on your computer host to port 3000 in the container. _This is how you access the OpenHands web interface or API locally._
 * Mounts the `~/.openhands` folder for persistent user data.
 * Enables the container to communicate with the host machine.
 * Assigns the container the name `openhands-app`.
-* Uses the OpenHands `0.51` image from the official registry.
+* Uses the OpenHands `0.62` image from the official registry.
 * Automatically deletes the container after it exits.
 
-## Step 3: Access the Web Interface
+### Run OpenHands
 
-After running the `docker run` command, monitor the terminal for log output. Once the application finishes its startup process, open your preferred web browser and go to:
+After launching OpenHands, monitor the terminal for log output. Once the application finishes its startup process, open your preferred web browser and go to:
 
 ```
 http://localhost:3000
@@ -4158,57 +4186,79 @@ At this point, OpenHands is successfully installed and running on your local mac
 
 ![](/img/new-docs/openhands_1.png)
 
-## Step 4: Configure OpenHands
+## Step 3: Connect to an LLM
 
-To configure OpenHands, open its interface and click the **Settings** (gear icon) in the bottom-left corner of the sidebar. 
+To configure OpenHands to use a Clarifai model as its cognitive engine, click the settings icon in the bottom-left corner of the sidebar.
 
-The Settings page allows you to connect OpenHands to a language model, which serves as its cognitive engine, and integrate it with GitHub for version control and collaboration.
+In the menu that appears, select **LLM** to open the LLM configuration panel.
 
-### Connect to an LLM
-
-In the Settings page, go to the **LLM** tab and toggle the **Advanced** button.
+Here, you can set up the large language model that OpenHands will use for reasoning and task execution.
 
 ![](/img/new-docs/openhands_2.png)
+
+Fill in the following fields:
+
+* **LLM Provider** — From the list of providers, select `Clarifai`.
+* **LLM Model** — Choose the Clarifai model you want OpenHands to use.
+* **API Key** — Enter your Clarifai PAT as described [earlier](#step-1-perform-prerequisites).
+
+After filling in the fields, click the **Save Changes** button in the bottom-right corner of the interface.
+
+:::info Advanced LLM Settings
+
+To access [advanced](https://docs.openhands.dev/openhands/usage/settings/llm-settings#advanced-llm-settings) configuration options, toggle the **Advanced** switch in the LLM configuration panel.
+
+![](/img/new-docs/openhands_6.png)
+
+This allows you to specify a custom Clarifai model and adjust additional LLM options. This is helpful when the model you want to use is not available in the basic dropdown selection.
 
 Then, fill in the following fields:
 
 * **Custom Model** — Enter the Clarifai model URL you want to use. To ensure OpenAI compatibility, prefix the model path with `openai/`, followed by the full Clarifai model URL. Here is an example: `openai/https://clarifai.com/openai/chat-completion/models/gpt-oss-120b`. 
 * **Base URL** — Enter Clarifai's [OpenAI-compatible](https://docs.clarifai.com/compute/inference/#predict-with-openai-compatible-format) API endpoint: `https://api.clarifai.com/v2/ext/openai/v1`. 
-* **API Key** — Enter your PAT, as explained earlier.
+* **API Key** — Enter your PAT, as explained [earlier](#step-1-perform-prerequisites).
 
-> **Note:** You can leave the remaining settings at their default values, including the selected agent.
+> **Note:** You can leave all other fields at their default values, including the selected agent, unless you require custom behavior.
 
 After filling in the fields, click the **Save Changes** button at the bottom-right corner of the interface.
 
-### Integrate with GitHub
+:::
 
-Within the same Settings page, navigate to the **Integrations** tab.
+## Step 4: Integrate with GitHub
 
-Enter your [GitHub token](https://github.com/settings/tokens) in the provided field, then click **Save Changes** in the bottom-right corner of the interface to apply the integration.
+Integrating OpenHands with GitHub allows you to take advantage of version control, repository access, and collaboration features.
+
+To set this up, open the **Settings** panel and navigate to the **Integrations** tab. Then, enter your GitHub personal access token in the designated field.
+
+> **Optionally:** If you are using a self-hosted or enterprise instance, you may also provide your GitHub host URL.
 
 ![](/img/new-docs/openhands_3.png)
 
+> **Note:** You can also integrate with GitLab or Bitbucket by entering the corresponding token and host details.
+
+Once everything is filled in, click **Save Changes** in the bottom-right corner to apply your integration settings.
+
+## Step 5: Start a Conversation
+
 Next, click the plus (**+**) **Start new conversation** button at the top of the sidebar. From there, connect to a repository by selecting the desired repo and its branch.
 
-Once selected, click the **Launch** button to begin your coding session.
+Once selected, click the **Launch** button to begin your session.
 
 ![](/img/new-docs/openhands_4.png)
 
-## Step 5: Start Building
+> **Tip:** You can also start a new conversation from scratch that is not connected to an existing repository.
 
-In the main interface, use the input field to prompt the agent and begin generating your script. You can continue interacting with the agent to refine, extend, or troubleshoot your code as needed.
+## Step 6: Start Building
 
-Here is a prompt example you can use:
-
-```text
-Write a Bash script named hello.sh that prints "Hello, world!" to the console when executed.
-```
+In the main interface, use the input field to prompt the agent and begin working on your task. You can continue interacting with the agent to refine the results, extend the functionality, or troubleshoot issues as they arise.
 
 ![](/img/new-docs/openhands_5.png)
 
-OpenHands forwards the request to the configured LLM, which responds by generating a snippet to fulfill the task.
+OpenHands sends each request to the large language model you configured — powered by Clarifai — and the model generates the responses. 
 
-Once you're satisfied with your work, you can seamlessly push your code to GitHub directly from the interface.
+Once you're satisfied with the output, you can seamlessly push your changes to GitHub directly from the interface, making it easy to commit, publish, and share your work.
+
+That's it!
 
 ---
 
@@ -5788,6 +5838,8 @@ Let’s break down what each part of the file does.
 
 This section defines your unique model ID (any arbitrary name you choose), along with the Clarifai user ID and app ID you retrieved [earlier](#sign-up-or-log-in). These values will determine where the model is uploaded on the Clarifai platform.
 
+> **Note:** If you reference an app that doesn’t exist, the CLI will prompt you to create it during the [model upload](#step-4-upload-the-model-to-clarifai) process.
+
 #### Build Info  
 
 This section specifies details about the environment used to build or run the model. You can include the `python_version`, which is useful for ensuring compatibility between the model and its runtime environment, as different Python versions may have varying dependencies, library support, and performance characteristics.
@@ -6693,7 +6745,19 @@ These are the key CLI flags available for local testing and running your models:
   - `-p` or `--port` —  The port to host the gRPC server for running the model locally. Defaults to `8000`.
   - `--keep_env` —  Retain the virtual environment after testing the model locally (applicable for `env` mode). Defaults to `False`.
   - `--keep_image` —  Retain the Docker image built after testing the model locally (applicable for `container` mode). Defaults to `False`.
-  - `--skip_dockerfile` — Flag to skip generating a dockerfile so that you can manually edit an already created dockerfile.
+  - `--skip_dockerfile` — Flag to [skip](README.mdx#skip-dockerfile) generating a dockerfile so that you can manually edit an already created dockerfile.
+
+### System Requirements
+
+Before running the `clarifai model local-test` or `clarifai model local-grpc` commands, ensure your local environment meets the following requirements:
+
+* **Python Version** — Python 3.8 or higher is required (Python 3.9+ is recommended for optimal compatibility).
+
+* **GPU Support** — For models that require GPU acceleration, your environment must have NVIDIA GPU support installed and properly configured. CPU-only models can still be tested without a GPU.
+
+* **Docker (Optional)** — Docker is recommended for container-based testing, but it is not mandatory. If Docker is not available, a warning will be displayed, and testing will proceed without containerization.
+
+> **Note:** If your environment does not meet the above requirements, the validation process will provide a clear error or warning message indicating what is missing and how to resolve it.
 
 ## Test by Running Locally
 
