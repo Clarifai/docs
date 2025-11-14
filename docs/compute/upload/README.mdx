@@ -198,6 +198,9 @@ Let’s break down what each part of the file does.
 
 This section defines your unique model ID (any arbitrary name you choose), along with the Clarifai user ID and app ID you retrieved [earlier](#sign-up-or-log-in). These values will determine where the model is uploaded on the Clarifai platform.
 
+> **Note:** If you reference an app that doesn’t exist, the CLI will prompt you to create it during the [model upload](#step-4-upload-the-model-to-clarifai) process.
+
+
 #### Build Info  
 
 This section specifies details about the environment used to build or run the model. You can include the `python_version`, which is useful for ensuring compatibility between the model and its runtime environment, as different Python versions may have varying dependencies, library support, and performance characteristics.
@@ -340,6 +343,11 @@ This command builds the model’s Docker image using the defined compute resourc
 The build logs will be displayed in your terminal, which helps you troubleshoot any upload issues.
 
 > **Note**: If you make any changes to your model and upload it again to the Clarifai platform, a new version of the model will be created automatically.
+
+
+<a id="skip-dockerfile"></a>
+
+
 
 :::note Skip Dockerfile
 

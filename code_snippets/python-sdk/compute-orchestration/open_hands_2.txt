@@ -1,0 +1,58 @@
+uvx --python 3.12 openhands serve
+Installed 164 packages in 450ms
+🚀 Launching OpenHands GUI server...
+
+Pulling required Docker images...
+Running Docker command: docker pull docker.openhands.dev/openhands/runtime:latest-nikolaik
+latest-nikolaik: Pulling from openhands/runtime
+Digest: sha256:95fc4d8e753f41d34cd564e78d3d64217c5d22296ea1cb7bf92614c8198de8f5
+Status: Image is up to date for docker.openhands.dev/openhands/runtime:latest-nikolaik
+docker.openhands.dev/openhands/runtime:latest-nikolaik
+
+✅ Starting OpenHands GUI server...
+The server will be available at: http://localhost:3000
+Press Ctrl+C to stop the server.
+
+Running Docker command: docker run -it --rm --pull=always -e SANDBOX_RUNTIME_CONTAINER_IMAGE=docker.openhands.dev/openhands/runtime:latest-nikolaik -e LOG_ALL_EVENTS=true -v /var/run/docker.sock:/var/run/docker.sock -v /Users/macbookpro/.openhands:/.openhands -p 3000:3000 --add-host host.docker.internal:host-gateway --name openhands-app docker.openhands.dev/openhands/openhands:latest
+latest: Pulling from openhands/openhands
+Digest: sha256:87c868e4f89ee453bf2ac57f89c71af2619c6d85b05748635b9da78254092d13
+Status: Image is up to date for docker.openhands.dev/openhands/openhands:latest
+Starting OpenHands...
+Running OpenHands as root
+18:07:28 - openhands:INFO: utils.py:152 - config.toml not found: [Errno 2] No such file or directory: 'config.toml'. Toml values have not been applied.
+18:07:28 - openhands:INFO: server_config.py:55 - Using config class None
+/app/.venv/lib/python3.13/site-packages/fastmcp/server/server.py:255: DeprecationWarning: Providing `stateless_http` when creating a server is deprecated. Provide it when calling `run` or as a global setting instead.
+  self._handle_deprecated_settings(
+INFO:     Started server process [8]
+INFO:     Waiting for application startup.
+INFO:mcp.server.streamable_http_manager:StreamableHTTP session manager started
+INFO:alembic.runtime.migration:Context impl SQLiteImpl.
+INFO:alembic.runtime.migration:Will assume non-transactional DDL.
+INFO:alembic.runtime.migration:Running upgrade  -> 001, Sync DB with Models
+INFO:alembic.runtime.migration:Running upgrade 001 -> 002, Sync DB with Models
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:3000 (Press CTRL+C to quit)
+INFO:     192.168.65.1:18305 - "GET /getting-started/upload-model HTTP/1.1" 200 OK
+INFO:     192.168.65.1:18305 - "GET /favicon.ico HTTP/1.1" 200 OK
+INFO:     192.168.65.1:47254 - "GET /locales/en/translation.json HTTP/1.1" 200 OK
+INFO:     192.168.65.1:47254 - "GET /api/options/config HTTP/1.1" 200 OK
+INFO:     192.168.65.1:47254 - "GET /getting-started/upload-model HTTP/1.1" 200 OK
+INFO:     192.168.65.1:47254 - "GET /favicon.ico HTTP/1.1" 200 OK
+INFO:     192.168.65.1:18305 - "GET /locales/en/translation.json HTTP/1.1" 200 OK
+INFO:     192.168.65.1:18305 - "GET /api/options/config HTTP/1.1" 200 OK
+INFO:     192.168.65.1:18305 - "GET / HTTP/1.1" 200 OK
+INFO:     192.168.65.1:18305 - "GET /locales/en/translation.json HTTP/1.1" 200 OK
+INFO:     192.168.65.1:18305 - "GET /api/options/config HTTP/1.1" 200 OK
+INFO:     192.168.65.1:18305 - "GET /api/options/config HTTP/1.1" 200 OK
+18:08:27 - openhands:INFO: utils.py:152 - config.toml not found: [Errno 2] No such file or directory: 'config.toml'. Toml values have not been applied.
+INFO:     192.168.65.1:18305 - "GET /api/settings HTTP/1.1" 200 OK
+INFO:     192.168.65.1:47254 - "GET /api/conversations?limit=10 HTTP/1.1" 200 OK
+INFO:     192.168.65.1:21619 - "GET /api/options/config HTTP/1.1" 200 OK
+18:20:37 - openhands:INFO: utils.py:152 - config.toml not found: [Errno 2] No such file or directory: 'config.toml'. Toml values have not been applied.
+INFO:     192.168.65.1:23329 - "GET /api/settings HTTP/1.1" 200 OK
+INFO:     192.168.65.1:25938 - "GET /api/conversations?limit=10 HTTP/1.1" 200 OK
+INFO:     192.168.65.1:32313 - "GET /api/options/config HTTP/1.1" 200 OK
+18:33:48 - openhands:INFO: utils.py:152 - config.toml not found: [Errno 2] No such file or directory: 'config.toml'. Toml values have not been applied.
+INFO:     192.168.65.1:33289 - "GET /api/settings HTTP/1.1" 200 OK
+INFO:     192.168.65.1:25732 - "GET /api/conversations?limit=10 HTTP/1.1" 200 OK
+INFO:     192.168.65.1:46086 - "GET /api/conversations?limit=10 HTTP/1.1" 200 OK
