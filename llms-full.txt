@@ -2285,11 +2285,11 @@ Below is an example of how you would set a model version ID and receive predicti
 
 # Model Inference
 
-**Run inferences using Clarifai SDKs**
+**Use Clarifai’s Reasoning Engine for optimized predictions**
 
-Clarifai's new inference technique provides an efficient, scalable, and streamlined way to perform predictions with models. 
+[Clarifai's Reasoning Engine](https://www.clarifai.com/press-release-clarifai-launches-reasoning-engine-optimized-for-agentic-ai-inference) delivers a fast, scalable, and streamlined way to run model inferences at production quality.
 
-Built with a Python-first, user-centric design, this flexible approach simplifies the process of working with models — enabling users to focus more on building and iterating, and less on navigating API mechanics. 
+Designed with a Python-first, developer-friendly architecture, it provides a powerful and flexible approach that minimizes operational overhead — allowing you to run predictions quickly, accurately, and cost-effectively.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -3266,6 +3266,11 @@ import CO8 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orche
 import CO9 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_9.py";
 import C10 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_10.py";
 
+import RawProtobuf from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/raw_protobuf.py";
+import RawProtobufOutput from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/raw_protobuf_output.txt";
+import StreamProtobuf from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/stream_protobuf.py";
+import StreamProtobufOutput from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/stream_protobuf_output.txt";
+
 import NodePredictInterface from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/predict_interface.js";
 import NodePredictInterfaceImageInputs from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/predict_interface_image_inputs.js";
 import NodeStreamInterface from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/stream_interface.js";
@@ -3486,22 +3491,14 @@ Here’s how to make a corresponding unary-stream predict call from the client s
 
     {Mask3}
 
-## Stream-Stream Predict Call
-
-This call enables bidirectional streaming of both inputs and outputs, making it ideal for real-time applications and processing large datasets.
-
-In this setup, multiple inputs can be continuously streamed to the model, while predictions are returned in real time. It’s especially useful for use cases like live video analysis or streaming sensor data.
-
-### Text Inputs
-
-Here is an example of a model signature configured on the server side for handling text inputs:
-
     @ModelClass.method
   def stream(self, input_iterator: Iterator[str]) -> Iterator[str]:
 
 Here’s how you can make a corresponding stream-stream predict call from the client side:
 
     {CO7Text}
+
+-->
 
 ### Audio Inputs
 
@@ -3514,9 +3511,9 @@ Here’s how you can make a corresponding stream-stream predict call from the cl
 
     {CO7}
 
-## Dynamic Batch Prediction Handling
+## Batch Prediction Handling
 
-Clarifai’s model framework seamlessly supports both single and batch predictions through a unified interface. It dynamically adapts to the input format, so no code changes are needed.
+Clarifai’s model framework seamlessly supports both single and batch predictions through a unified interface. It can adapt to the input format, so no code changes are needed.
 
 The system automatically detects the type of input provided: 
 
@@ -3582,6 +3579,44 @@ You can use this for standard prediction tasks that return a complete result in 
 You can use this for generative models that produce output incrementally — such as large language models that stream tokens one by one. The response is an asynchronous stream, which you iterate over.
 
     {AsyncGenerate}
+
+## Raw Protobuf Response Information
+
+By default, prediction methods in the [`ModelClient`](https://docs.clarifai.com/resources/api-references/python#modelclient) class — such as `predict()`, `generate()`, and others — return only the processed, user-friendly response.
+
+If you need deeper insight, you can pass `with_proto=True`, which makes the method return a tuple containing both the processed result and the underlying raw Protobuf response.
+
+Note that `with_proto=False` is the default behavior, meaning only the processed result is returned without the raw protobuf data.
+
+> **Note:**  This parameter is supported in both [synchronous and asynchronous](#asynchronous-inference) model operations.
+
+### Predict With Protobuf 
+
+    {RawProtobuf}
+
+  Example Output
+    {RawProtobufOutput}
+
+### Stream With Protobuf
+
+    {StreamProtobuf}
+
+  Example Output
+    {StreamProtobufOutput}
+
+:::tip
+
+Retrieving raw Protobuf response information works with any custom method defined in the `ModelClient` class. For example:
+
+```python
+result, proto = model.my_custom_method(
+    input_data="some data",
+    temperature=0.7,
+    with_proto=True
+)
+```
+
+:::
 
 ---
 
@@ -4559,6 +4594,8 @@ This ensures that all essential components required for Local Runners are proper
     {LocalDev}
 
 > **Note:** If the [`config.yaml`](https://docs.clarifai.com/compute/models/upload/#step-2-prepare-the-configyaml-file) file does not contain model information that matches the `user_id`, `app_id`, and `model_id` defined in your current context, it will be automatically updated to include the new model details. This ensures that the model started by the local development runner is the same one you intend to call via the API. If needed, you can back up the existing `config.yaml` file as `config.yaml.bk`.
+
+> **Note:** The `model_type_id` is loaded from the `config.yaml` file, rather than from the context, ensuring consistency between the model configuration and the actual model.
 
 ## Step 4: Test Your Runner
 
@@ -6751,11 +6788,11 @@ These are the key CLI flags available for local testing and running your models:
 
 Before running the `clarifai model local-test` or `clarifai model local-grpc` commands, ensure your local environment meets the following requirements:
 
-* **Python Version** — Python 3.8 or higher is required (Python 3.9+ is recommended for optimal compatibility).
+* **Python version** — Python 3.9 or higher is required for optimal compatibility.
 
-* **GPU Support** — For models that require GPU acceleration, your environment must have NVIDIA GPU support installed and properly configured. CPU-only models can still be tested without a GPU.
+* **GPU support** — For models that require GPU acceleration, your environment must have NVIDIA GPU support installed and properly configured. CPU-only models can still be tested without a GPU.
 
-* **Docker (Optional)** — Docker is recommended for container-based testing, but it is not mandatory. If Docker is not available, a warning will be displayed, and testing will proceed without containerization.
+* **Docker (optional)** — Docker is recommended for container-based testing, but it is not mandatory. If Docker is not available, a warning will be displayed, and testing will proceed without containerization.
 
 > **Note:** If your environment does not meet the above requirements, the validation process will provide a clear error or warning message indicating what is missing and how to resolve it.
 
@@ -16392,6 +16429,10 @@ You can either build custom models tailored to your specific needs or jumpstart 
 
   ![](/img/enlight.svg)
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+
 ## Custom Models
 
 When you train a custom model, you are telling the system to look at all the inputs with concepts you've provided and learn from them. Then, when the model encounters new inputs, it could correctly generate predictions by applying the learned knowledge.
@@ -16426,10 +16467,8 @@ Choosing the appropriate model type enables you to fully leverage the Clarifai p
 
 :::note Notes
 
-- You can use the [`Get`](https://docs.clarifai.com/api-guide/model/create-get-update-and-delete#get) commands to view a complete list of available model types suited to your needs.
+- You can use the [`List Model Types`](https://docs.clarifai.com/api-guide/model/create-get-update-and-delete#get) method to view a complete list of available model types suited to your needs.
 - To create a model with a specific type, you need to specify the desired [`model_type_id`](https://docs.clarifai.com/create-manage/models/deep-fine-tuning/visual-classifier#step-3-model-creation) in the request body.
-- The `any-to-any` model type supports various input and output types, including text, image, multimodel, or audio, providing universal purpose coverage. 
-
 :::
 
 Broadly, you can create and train different model types on our platform using either of the following techniques:
@@ -16437,6 +16476,66 @@ Broadly, you can create and train different model types on our platform using ei
 - [Transfer learning](transfer-learning/)
 
 - [Deep fine-tuning](deep-fine-tuning/)
+
+### List of Model Types
+
+| Model ID | Title | Description |
+| :--- | :--- | :--- |
+| `embedding-classifier` | **Transfer Learning Classifier** | Classify images or texts based on the embedding model that has indexed them in your app. Transfer learning leverages feature representations from a pre-trained model based on massive amounts of data, so you don’t have to train a new model from scratch and can learn new things very quickly with minimal training data. |
+| `audio-embedder` | **Audio Embedder** | Embed audio signal into a vector representing a high level understanding from our AI models. These embeddings enable similarity search and training on top of them. |
+| `visual-detector-embedder` | **Visual Detector + Embedder** | Detect bounding box regions in images or video frames where things occur and then embed them into a high level understanding from our AI models to enable visual search and training on top of them. |
+| `optical-character-recognizer` | **Optical Character Recognizer (OCR)** | Detect bounding box regions in images or video frames where text is present and then output the text read with the score. |
+| `image-to-image` | **Image to Image** | Given an image, apply a transformation on the input and return the post-processed image as output. |
+| `image-to-text` | **Image To Text** | Takes in cropped regions with text in them and returns the text it sees. |
+| `text-to-image` | **Text To Image** | Takes in a prompt and generates an image. |
+| `clusterer` | **Clusterer** | Cluster semantically similar images and video frames together in embedding space. This is the basis for good visual search within your app at scale or for grouping your data together without the need for annotated concepts. |
+| `image-color-recognizer` | **Image Color Recognizer** | Recognize standard color formats and the proportion each color that covers an image. |
+| `concept-thresholder` | **Concept Thresholder** | Threshold input concepts according to both a threshold and an operator (\>, \>=, =, \, \>=, =, \ rand()` where `keep_fraction` is the fraction to allow through on average. |
+| `visual-keypointer` | **Visual Keypoint** | This model detects keypoints in images or video frames. |
+| `email` | **Email Alert** | Email alert model will send an email if there are any data fields input to this model. |
+| `sms` | **SMS Alert** | SMS alert model will send a SMS if there are any data fields input to this model. |
+| `object-counter` | **Object Counter** | Count number of regions that match this model's active concepts frame by frame. |
+| `image-align` | **Image Align** | Aligns images using keypoints. |
+| `input-searcher` | **Cross-App Input Searcher** | Triggers a visual search in another app based on the model configs if concept(s) are found in images and returns the matched search hits as regions. |
+| `input-filter` | **Input Filter** | If the input going through this model does not match those we are filtering for, it will not be passed on in the workflow branch. |
+| `text-to-audio` | **Text to Audio** | Given text input, this model produces an audio file containing the spoken version of the input. |
+| `regex-based-classifier` | **Regex Based Classifier** | Classifies text using regex. If the regex matches, the text is classified as the provided concepts. |
+| `prompter` | **Prompter** | Prompt template where inputted text will be inserted into placeholders marked with `{data.text.raw}`. |
+| `rag-prompter` | **RAG Prompter** | A prompt template where we will perform a semantic search in the app with the incoming text. |
+| `image-prompter` | **Image Prompter** | A prompter model, that helps create a MultiModal input with the inputted image and text. |
+| `concept-to-text-mapper` | **Concept To Text Mapper** | Maps concepts to text. |
+| `mcp` | **MCP** | Process MCP messages with any input and output. |
+| `openai` | **OpenAI** | Process Clarifai models with OPENAI Format messages. |
+| `any-to-any` | **Any To Any** | Process any input and output with any data type. |
+| `image-tiling-operator` | **Image Tiling Operator** | Operator for tiling images into a fixed number of equal sized images. |
+| `isolation-operator` | **Isolation Operator** | Operator that computes distance between detections and assigns isolation label. |
+| `language-id-operator` | **Language Identification Operator** | Operator for language identification using the langdetect library. |
+| `text-aggregation-operator` | **Text Aggregation Operator** | Operator that combines text detections into text body for the whole image. |
+| `tiling-region-aggregator-operator` | **Tiling Region Aggregator Operator** | Operator to be used as a follow up to the image-tiling-operator and visual detector. This operator will transform the detections on each of tiles back to the original image and perform non-maximum suppression. |
+| `barcode-operator` | **Barcode Operator** | Operator that detects and recognizes barcodes from the image. It assigns regions with barcode text for each detected barcode. |
+| `keyword-filter-operator` | **Keyword Filter Operator** | This operator is initialized with a set of words, and then determines which are found in the input text. |
+| `raft-operator` | **RAFT Operator** | Calls an LLM to generate questions and answers based on a text input chunk. The output is the chat-formatted instruction for finetuning. |
+| `tokens-to-entity-operator` | **Tokens to Entity Operator** | Operator that combines text tokens into entities, e.g. `New` + `York` -\> `New York`. |
+| `track-representation-operator` | **Track Representation Operator** | The operator takes embedding of each track frame and aggregate them to form a track embedding. |
+| `byte-tracker` | **BYTE Track** | A multi-object tracker that aims to keep track of all boxes per frame forming them into tracklets. |
+| `centroid-tracker` | **Centroid Tracker** | Relies on the Euclidean distance between centroids of regions in different video frames to assign the same track ID to detections of the same object. |
+| `kalman-filter-tracker` | **Kalman Filter Hungarian Tracker** | Relies on the Kalman Filter algorithm to estimate the next position of an object, matched to detections using the Hungarian algorithm. |
+| `text-classifier` | **Text Classifier** | Classify text into a set of concepts. |
+| `visual-detector` | **Visual Detector** | Detect bounding box regions in images or video frames where things and then classify objects, descriptive words or topics within the boxes. |
+| `multimodal-to-text` | **Multimodal To Text** | Generate text from either text or images or both as input, allowing it to understand and respond to questions about those images. |
+| `text-embedder` | **Text Embedder** | Embed text into a vector representing a high level understanding from our AI models. These embeddings enable similarity search and training on top of them. |
+| `visual-embedder` | **Visual Embedder** | Embed images and videos frames into a vector representing a high level understanding from our AI models. These embeddings enable visual search and training on top of them. |
+| `visual-segmenter` | **Visual Segmenter** | Segment a per-pixel mask in images where things are and then classify objects, descriptive words or topics within the masks. |
+| `zero-shot-text-classifier` | **Zero Shot Text Classifier** | Classify text into a set of concepts provided by user using a pretrained model. |
+| `multimodal-embedder` | **Multimodal Embedder** | Embed text or image into a vector representing a high level understanding from our AI models, e.g. CLIP. These embeddings enable similarity search and training on top of them. |
+| `text-to-text` | **Text Generator** | Generate or convert text based on text input, e.g. prompt completion, translation or summarization. |
+| `visual-anomaly-heatmap` | **Visual Anomaly** | Visual anomaly detection with image-level score and anomaly heatmap. |
+| `zero-shot-image-classifier` | **Zero Shot Image Classifier** | Classify image into a set of concepts provided by user using a pretrained model. |
+| `audio-classifier` | **Audio Classifier** | Classify audio into a set of concepts. |
+| `text-token-classifier` | **Text Token Classifier** | Classify tokens from a set of entity classes. |
+| `visual-classifier` | **Visual Classifier** | Classify images and videos frames into set of concepts. |
+| `zero-shot-image-segmenter` | **Zero Shot Image Segmenter** | Dynamically segment a per-pixel mask in images where things are and then classify objects, descriptive words or topics within the masks. |
+| `audio-to-text` | **Audio To Text** | Classify audio signal into string of text. |
 
 import DocCardList from '@theme/DocCardList';
 import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
@@ -35464,8 +35563,7 @@ export CLARIFAI_PAT="XXXX"
 export CLARIFAI_USER_ID="XXXX"
 ```
 
- **Note:** For Unix-like systems, running `eval "$(clarifai config env)"` configures your current shell session by loading Clarifai-related environment variables directly from your active CLI configuration. This automatically sets up authentication for subsequent Clarifai commands or scripts run within that same session, eliminating the need to manually enter credentials. It's particularly useful for scripting where environment variables are preferred for authentication and for quickly setting up a terminal session with the correct Clarifai credentials. For Windows, you'd typically need to run `clarifai config env` first, copy the output, and then manually run the `set` commands it generates.
--->
+> **Note:** For Unix-like systems, running `eval "$(clarifai config env)"` configures your current shell session by loading Clarifai-related environment variables directly from your active CLI configuration. This automatically sets up authentication for subsequent Clarifai commands or scripts run within that same session, eliminating the need to manually enter credentials. It's particularly useful for scripting where environment variables are preferred for authentication and for quickly setting up a terminal session with the correct Clarifai credentials. For Windows, you'd typically need to run `clarifai config env` first, copy the output, and then manually run the `set` commands it generates.
 
 ### Get All Contexts
 
