@@ -69,11 +69,11 @@ These are the key CLI flags available for local testing and running your models:
 
 Before running the `clarifai model local-test` or `clarifai model local-grpc` commands, ensure your local environment meets the following requirements:
 
-* **Python Version** — Python 3.8 or higher is required (Python 3.9+ is recommended for optimal compatibility).
+* **Python version** — Python 3.9 or higher is required for optimal compatibility.
 
-* **GPU Support** — For models that require GPU acceleration, your environment must have NVIDIA GPU support installed and properly configured. CPU-only models can still be tested without a GPU.
+* **GPU support** — For models that require GPU acceleration, your environment must have NVIDIA GPU support installed and properly configured. CPU-only models can still be tested without a GPU.
 
-* **Docker (Optional)** — Docker is recommended for container-based testing, but it is not mandatory. If Docker is not available, a warning will be displayed, and testing will proceed without containerization.
+* **Docker (optional)** — Docker is recommended for container-based testing, but it is not mandatory. If Docker is not available, a warning will be displayed, and testing will proceed without containerization.
 
 > **Note:** If your environment does not meet the above requirements, the validation process will provide a clear error or warning message indicating what is missing and how to resolve it.
 

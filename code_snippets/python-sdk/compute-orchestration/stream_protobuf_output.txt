@@ -1,0 +1,2053 @@
+Generated chunk: 
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+  }
+  id: "return"
+}
+
+---
+Generated chunk: The user asks: "What is photos
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "The user asks: \"What is photos"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: ynthesis?" Provide a clear explanation. Could include process
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "ynthesis?\" Provide a clear explanation. Could include process"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: , equation, importance, steps (light-dependent,
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: ", equation, importance, steps (light-dependent,"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  Calvin cycle), organisms, etc. Should be concise
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " Calvin cycle), organisms, etc. Should be concise"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  but thorough. Use simple
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " but thorough. Use simple"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  language. Possibly ask follow
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " language. Possibly ask follow"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: -up. Provide answer.
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "-up. Provide answer."
+  }
+  id: "return"
+}
+
+---
+Generated chunk: **Photosynthesis** is the process by which green plants, algae, and some bacteria capture light
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "**Photosynthesis** is the process by which green plants, algae, and some bacteria capture light"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  energy from the sun and
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " energy from the sun and"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  turn it into chemical energy stored in sugars (carbohydrates). In doing so, they also produce oxygen as a by‑product.  
+
+---
+
+## The Basic Chemical Equation
+
+
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " turn it into chemical energy stored in sugars (carbohydrates). In doing so, they also produce oxygen as a by‑product.  \n\n---\n\n## The Basic Chemical Equation\n\n"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: \[
+\text{6 CO₂ 
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "\\[\n\\text{6 CO₂ "
+  }
+  id: "return"
+}
+
+---
+Generated chunk: + 6 H
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "+ 6 H"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: ₂O + light energy} \;\
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "₂O + light energy} \\;\\"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: xrightarrow{\text{chlorophyll}}\; \text{C₆H₁₂O₆ + 
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "xrightarrow{\\text{chlorophyll}}\\; \\text{C₆H₁₂O₆ + "
+  }
+  id: "return"
+}
+
+---
+Generated chunk: 6 O₂}
+
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "6 O₂}\n"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: \]
+
+- **CO
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "\\]\n\n- **CO"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: ₂** – carbon dioxide
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "₂** – carbon dioxide"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  from the air  
+- **H₂O** – water taken up by
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " from the air  \n- **H₂O** – water taken up by"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  roots  
+- **C
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " roots  \n- **C"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: ₆H₁₂O₆** – glucose (a simple
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "₆H₁₂O₆** – glucose (a simple"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  sugar) that fuels the
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " sugar) that fuels the"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  plant’s growth  
+- **O₂** –
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " plant’s growth  \n- **O₂** –"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  oxygen released into the atmosphere
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " oxygen released into the atmosphere"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:   
+
+---
+
+## Where It Happens
+
+- **Chloroplasts** – organelles in plant cells that contain the pigment **
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "  \n\n---\n\n## Where It Happens\n\n- **Chloroplasts** – organelles in plant cells that contain the pigment **"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: chlorophyll**, which absorbs
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "chlorophyll**, which absorbs"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  light (mainly blue
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " light (mainly blue"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  and red wavelengths).  
+
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " and red wavelengths).  \n"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: - **Thylakoid membranes** – stacked discs inside chloroplasts
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "- **Thylakoid membranes** – stacked discs inside chloroplasts"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  where the light‑dependent reactions occur.  
+- **Stroma** – the fluid surrounding the thylakoids where the Calvin (light‑independent) cycle takes place.
+
+---
+
+## Two Main Stages
+
+| Stage
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " where the light‑dependent reactions occur.  \n- **Stroma** – the fluid surrounding the thylakoids where the Calvin (light‑independent) cycle takes place.\n\n---\n\n## Two Main Stages\n\n| Stage"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  | What Happens | Key
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " | What Happens | Key"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  Products |
+|-------|--------------|--------------|
+| **1. Light‑dependent reactions** (in
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " Products |\n|-------|--------------|--------------|\n| **1. Light‑dependent reactions** (in"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  thylakoids)
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " thylakoids)"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  | • Light energy exc
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " | • Light energy exc"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: ites electrons in chlorophyll
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "ites electrons in chlorophyll"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: .<br>• Water
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: ".<br>• Water"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  is split (photol
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " is split (photol"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: ysis) → O₂ + H⁺ + electrons.<br>• Excited electrons travel through
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "ysis) → O₂ + H⁺ + electrons.<br>• Excited electrons travel through"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  an electron transport chain,
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " an electron transport chain,"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  creating a proton gradient that
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " creating a proton gradient that"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  drives **ATP** synthesis
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " drives **ATP** synthesis"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: .<br>• NAD
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: ".<br>• NAD"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: P⁺ is reduced
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "P⁺ is reduced"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  to **NADPH**. | ATP,
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " to **NADPH**. | ATP,"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  NADPH, O₂
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " NADPH, O₂"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  (released) |
+| **2. Calvin Cycle
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " (released) |\n| **2. Calvin Cycle"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  (light‑independent reactions)** (in st
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " (light‑independent reactions)** (in st"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: roma) | • ATP
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "roma) | • ATP"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  and NADPH power the
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " and NADPH power the"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  fixation of CO₂.
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " fixation of CO₂."
+  }
+  id: "return"
+}
+
+---
+Generated chunk: <br>• CO₂ is attached to a five
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "<br>• CO₂ is attached to a five"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: ‑carbon sugar (Ru
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "‑carbon sugar (Ru"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: BP) by the enzyme **Rubisco**, forming a six‑carbon intermediate
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "BP) by the enzyme **Rubisco**, forming a six‑carbon intermediate"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  that splits into two three
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " that splits into two three"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: ‑carbon molecules (3‑PGA).
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "‑carbon molecules (3‑PGA)."
+  }
+  id: "return"
+}
+
+---
+Generated chunk: <br>• Through a
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "<br>• Through a"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  series of steps, 
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " series of steps, "
+  }
+  id: "return"
+}
+
+---
+Generated chunk: 3‑PGA is
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "3‑PGA is"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  converted into **G3
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " converted into **G3"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: P** (glycer
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "P** (glycer"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: aldehyde‑3‑phosphate).<br>• Some G3P leaves the cycle to become glucose and other carbohydrates
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "aldehyde‑3‑phosphate).<br>• Some G3P leaves the cycle to become glucose and other carbohydrates"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: ; the rest regenerates
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "; the rest regenerates"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  RuBP. | Gl
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " RuBP. | Gl"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: ucose (or other carbohydrates), regeneration of RuBP |
+
+---
+
+## Why It Matters
+
+1. **Energy Source for Life**
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "ucose (or other carbohydrates), regeneration of RuBP |\n\n---\n\n## Why It Matters\n\n1. **Energy Source for Life**"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:   
+   - All heter
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "  \n   - All heter"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: otrophic organisms (animals, fungi, most bacteria) ultimately rely on the organic carbon produced by photos
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "otrophic organisms (animals, fungi, most bacteria) ultimately rely on the organic carbon produced by photos"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: ynthesis.
+
+2. **
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "ynthesis.\n\n2. **"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: Oxygen Production**  
+
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "Oxygen Production**  \n"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:    - The O₂ released is essential for aerobic respiration, which powers most
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "   - The O₂ released is essential for aerobic respiration, which powers most"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  complex life.
+
+3. **Carbon Dioxide Regulation
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " complex life.\n\n3. **Carbon Dioxide Regulation"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: **  
+   - Photos
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "**  \n   - Photos"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: ynthesis removes CO₂ from the atmosphere, helping to
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "ynthesis removes CO₂ from the atmosphere, helping to"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  moderate Earth’s climate.
+
+
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " moderate Earth’s climate.\n\n"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: 4. **Economic Importance
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "4. **Economic Importance"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: **  
+   - Cro
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "**  \n   - Cro"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: ps (wheat, rice, corn, etc.) are cultivated for food
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "ps (wheat, rice, corn, etc.) are cultivated for food"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: , fiber, and bio
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: ", fiber, and bio"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: fuels—all products of
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "fuels—all products of"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  photosynthetic biomass.
+
+5
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " photosynthetic biomass.\n\n5"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: . **Ecological Foundations
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: ". **Ecological Foundations"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: **  
+   - Primary
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "**  \n   - Primary"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  producers (photosynthesizers) form the base
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " producers (photosynthesizers) form the base"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  of most food webs,
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " of most food webs,"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  supporting herbivores,
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " supporting herbivores,"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  predators, and decompos
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " predators, and decompos"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: ers.
+
+---
+
+## Quick
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "ers.\n\n---\n\n## Quick"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  Summary (in a nutshell
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " Summary (in a nutshell"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: )
+
+- **Photosynthesis** = **light energy
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: ")\n\n- **Photosynthesis** = **light energy"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  → chemical energy** (
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " → chemical energy** ("
+  }
+  id: "return"
+}
+
+---
+Generated chunk: sugar) + **
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "sugar) + **"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: oxygen**.  
+- Takes place in **chlor
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "oxygen**.  \n- Takes place in **chlor"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: oplasts** using **
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "oplasts** using **"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: chlorophyll**.  
+
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "chlorophyll**.  \n"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: - Consists of **light‑dependent reactions** (make ATP & NADPH, split water)
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "- Consists of **light‑dependent reactions** (make ATP & NADPH, split water)"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  and the **Calvin cycle** (fix CO
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " and the **Calvin cycle** (fix CO"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: ₂ into sugar).  
+
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "₂ into sugar).  \n"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: - It fuels almost all
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "- It fuels almost all"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  life on Earth and keeps
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " life on Earth and keeps"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  our atmosphere breathable.
+
+---
+
+
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " our atmosphere breathable.\n\n---\n\n"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: ### Want to dive deeper
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "### Want to dive deeper"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: ?
+
+- **Variations
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "?\n\n- **Variations"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: **: C₄
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "**: C₄"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  and CAM photosynthesis (
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " and CAM photosynthesis ("
+  }
+  id: "return"
+}
+
+---
+Generated chunk: adaptations for hot/d
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "adaptations for hot/d"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: ry environments).  
+- **Molecular details**
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: "ry environments).  \n- **Molecular details**"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: : Structure of photosystems
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: ": Structure of photosystems"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  I & II, the
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " I & II, the"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  role of the electron carrier
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " role of the electron carrier"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  plastoquinone,
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " plastoquinone,"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  etc.  
+- **Biotechnological angles**
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " etc.  \n- **Biotechnological angles**"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: : Engineering crops for higher
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: ": Engineering crops for higher"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  photosynthetic efficiency, artificial
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " photosynthetic efficiency, artificial"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  photosynthesis for clean energy
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " photosynthesis for clean energy"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: .
+
+Feel free to ask
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: ".\n\nFeel free to ask"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  if any part intrigues
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " if any part intrigues"
+  }
+  id: "return"
+}
+
+---
+Generated chunk:  you!
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+    string_value: " you!"
+  }
+  id: "return"
+}
+
+---
+Generated chunk: 
+Request ID for debugging: sdk-python-11.10.2-da226933309d40f58a35d585b3c188ce
+Success or error status code: 10000
+Human-readable status description: Ok
+Additional status details: 
+Percent progress completed: 0
+Number of Outputs: 1
+Output status code: 10000
+Output status description: 
+Raw output data: parts {
+  data {
+  }
+  id: "return"
+}

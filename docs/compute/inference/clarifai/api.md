@@ -29,6 +29,11 @@ import CO8 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orche
 import CO9 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_9.py";
 import C10 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_10.py";
 
+import RawProtobuf from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/raw_protobuf.py";
+import RawProtobufOutput from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/raw_protobuf_output.txt";
+import StreamProtobuf from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/stream_protobuf.py";
+import StreamProtobufOutput from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/stream_protobuf_output.txt";
+
 import NodePredictInterface from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/predict_interface.js";
 import NodePredictInterfaceImageInputs from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/predict_interface_image_inputs.js";
 import NodeStreamInterface from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/stream_interface.js";
@@ -344,6 +349,7 @@ Here’s how to make a corresponding unary-stream predict call from the client s
 </TabItem>
 </Tabs>
 
+<!--
 ## Stream-Stream Predict Call
 
 This call enables bidirectional streaming of both inputs and outputs, making it ideal for real-time applications and processing large datasets.
@@ -369,6 +375,7 @@ Here’s how you can make a corresponding stream-stream predict call from the cl
     <CodeBlock className="language-python">{CO7Text}</CodeBlock>
 </TabItem>
 </Tabs>
+-->
 
 ### Audio Inputs
 
@@ -389,9 +396,9 @@ Here’s how you can make a corresponding stream-stream predict call from the cl
 </TabItem>
 </Tabs>
 
-## Dynamic Batch Prediction Handling
+## Batch Prediction Handling
 
-Clarifai’s model framework seamlessly supports both single and batch predictions through a unified interface. It dynamically adapts to the input format, so no code changes are needed.
+Clarifai’s model framework seamlessly supports both single and batch predictions through a unified interface. It can adapt to the input format, so no code changes are needed.
 
 The system automatically detects the type of input provided: 
 
@@ -490,3 +497,54 @@ You can use this for generative models that produce output incrementally — suc
     <CodeBlock className="language-python">{AsyncGenerate}</CodeBlock>
 </TabItem>
 </Tabs>
+
+## Raw Protobuf Response Information
+
+By default, prediction methods in the [`ModelClient`](https://docs.clarifai.com/resources/api-references/python#modelclient) class — such as `predict()`, `generate()`, and others — return only the processed, user-friendly response.
+
+If you need deeper insight, you can pass `with_proto=True`, which makes the method return a tuple containing both the processed result and the underlying raw Protobuf response.
+
+Note that `with_proto=False` is the default behavior, meaning only the processed result is returned without the raw protobuf data.
+
+> **Note:**  This parameter is supported in both [synchronous and asynchronous](#asynchronous-inference) model operations.
+
+### Predict With Protobuf 
+
+<Tabs groupId="code">
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{RawProtobuf}</CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+  <summary>Example Output</summary>
+    <CodeBlock className="language-text">{RawProtobufOutput}</CodeBlock>
+</details>
+
+### Stream With Protobuf
+
+<Tabs groupId="code">
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{StreamProtobuf}</CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+  <summary>Example Output</summary>
+    <CodeBlock className="language-text">{StreamProtobufOutput}</CodeBlock>
+</details>
+
+:::tip
+
+Retrieving raw Protobuf response information works with any custom method defined in the `ModelClient` class. For example:
+
+```python
+result, proto = model.my_custom_method(
+    input_data="some data",
+    temperature=0.7,
+    with_proto=True
+)
+```
+
+
+:::

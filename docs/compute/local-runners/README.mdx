@@ -247,6 +247,9 @@ This ensures that all essential components required for Local Runners are proper
 
 > **Note:** If the [`config.yaml`](https://docs.clarifai.com/compute/models/upload/#step-2-prepare-the-configyaml-file) file does not contain model information that matches the `user_id`, `app_id`, and `model_id` defined in your current context, it will be automatically updated to include the new model details. This ensures that the model started by the local development runner is the same one you intend to call via the API. If needed, you can back up the existing `config.yaml` file as `config.yaml.bk`.
 
+> **Note:** The `model_type_id` is loaded from the `config.yaml` file, rather than from the context, ensuring consistency between the model configuration and the actual model.
+
+
 ## Step 4: Test Your Runner
 
 When the local development runner starts in your terminal, it automatically generates an example client code snippet based on the [model's signature](https://docs.clarifai.com/compute/inference/#structure-of-prediction-methods).
