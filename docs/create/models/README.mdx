@@ -18,6 +18,11 @@ You can either build custom models tailored to your specific needs or jumpstart 
   ![](/img/enlight.svg)
 </center>
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+
+
 ## Custom Models
 
 When you train a custom model, you are telling the system to look at all the inputs with concepts you've provided and learn from them. Then, when the model encounters new inputs, it could correctly generate predictions by applying the learned knowledge.
@@ -53,10 +58,8 @@ Choosing the appropriate model type enables you to fully leverage the Clarifai p
 
 :::note Notes
 
-- You can use the [`Get`](https://docs.clarifai.com/api-guide/model/create-get-update-and-delete#get) commands to view a complete list of available model types suited to your needs.
+- You can use the [`List Model Types`](https://docs.clarifai.com/api-guide/model/create-get-update-and-delete#get) method to view a complete list of available model types suited to your needs.
 - To create a model with a specific type, you need to specify the desired [`model_type_id`](https://docs.clarifai.com/create-manage/models/deep-fine-tuning/visual-classifier#step-3-model-creation) in the request body.
-- The `any-to-any` model type supports various input and output types, including text, image, multimodel, or audio, providing universal purpose coverage. 
-
 :::
 
 Broadly, you can create and train different model types on our platform using either of the following techniques:
@@ -64,6 +67,73 @@ Broadly, you can create and train different model types on our platform using ei
 - [Transfer learning](transfer-learning/)
 
 - [Deep fine-tuning](deep-fine-tuning/)
+
+### List of Model Types
+
+| Model ID | Title | Description |
+| :--- | :--- | :--- |
+| `embedding-classifier` | **Transfer Learning Classifier** | Classify images or texts based on the embedding model that has indexed them in your app. Transfer learning leverages feature representations from a pre-trained model based on massive amounts of data, so you don’t have to train a new model from scratch and can learn new things very quickly with minimal training data. |
+| `audio-embedder` | **Audio Embedder** | Embed audio signal into a vector representing a high level understanding from our AI models. These embeddings enable similarity search and training on top of them. |
+| `visual-detector-embedder` | **Visual Detector + Embedder** | Detect bounding box regions in images or video frames where things occur and then embed them into a high level understanding from our AI models to enable visual search and training on top of them. |
+| `optical-character-recognizer` | **Optical Character Recognizer (OCR)** | Detect bounding box regions in images or video frames where text is present and then output the text read with the score. |
+| `image-to-image` | **Image to Image** | Given an image, apply a transformation on the input and return the post-processed image as output. |
+| `image-to-text` | **Image To Text** | Takes in cropped regions with text in them and returns the text it sees. |
+| `text-to-image` | **Text To Image** | Takes in a prompt and generates an image. |
+| `clusterer` | **Clusterer** | Cluster semantically similar images and video frames together in embedding space. This is the basis for good visual search within your app at scale or for grouping your data together without the need for annotated concepts. |
+| `image-color-recognizer` | **Image Color Recognizer** | Recognize standard color formats and the proportion each color that covers an image. |
+| `concept-thresholder` | **Concept Thresholder** | Threshold input concepts according to both a threshold and an operator (\>, \>=, =, \<=, or \<). |
+| `region-thresholder` | **Region Thresholder** | Threshold regions based on the concepts that they contain using a threshold per concept and an overall operator (\>, \>=, =, \<=, or \<). |
+| `concept-synonym-mapper` | **Concept Synonym Mapper** | Map the input concepts to output concepts by following synonym concept relations in the knowledge graph of your app. |
+| `annotation-writer` | **Annotation Writer** | Write the input data to the database in the form of an annotation with a specified status as if a specific user created the annotation. |
+| `image-crop` | **Image Cropper** | Crop the input image according to each input region that is present in the input. |
+| `random-sample` | **Random Sampler** | Randomly sample allowing the input to pass to the output. This is done with the conditional `keep_fraction > rand()` where `keep_fraction` is the fraction to allow through on average. |
+| `visual-keypointer` | **Visual Keypoint** | This model detects keypoints in images or video frames. |
+| `email` | **Email Alert** | Email alert model will send an email if there are any data fields input to this model. |
+| `sms` | **SMS Alert** | SMS alert model will send a SMS if there are any data fields input to this model. |
+| `object-counter` | **Object Counter** | Count number of regions that match this model's active concepts frame by frame. |
+| `image-align` | **Image Align** | Aligns images using keypoints. |
+| `input-searcher` | **Cross-App Input Searcher** | Triggers a visual search in another app based on the model configs if concept(s) are found in images and returns the matched search hits as regions. |
+| `input-filter` | **Input Filter** | If the input going through this model does not match those we are filtering for, it will not be passed on in the workflow branch. |
+| `text-to-audio` | **Text to Audio** | Given text input, this model produces an audio file containing the spoken version of the input. |
+| `regex-based-classifier` | **Regex Based Classifier** | Classifies text using regex. If the regex matches, the text is classified as the provided concepts. |
+| `prompter` | **Prompter** | Prompt template where inputted text will be inserted into placeholders marked with `{data.text.raw}`. |
+| `rag-prompter` | **RAG Prompter** | A prompt template where we will perform a semantic search in the app with the incoming text. |
+| `image-prompter` | **Image Prompter** | A prompter model, that helps create a MultiModal input with the inputted image and text. |
+| `concept-to-text-mapper` | **Concept To Text Mapper** | Maps concepts to text. |
+| `mcp` | **MCP** | Process MCP messages with any input and output. |
+| `openai` | **OpenAI** | Process Clarifai models with OPENAI Format messages. |
+| `any-to-any` | **Any To Any** | Process any input and output with any data type. |
+| `image-tiling-operator` | **Image Tiling Operator** | Operator for tiling images into a fixed number of equal sized images. |
+| `isolation-operator` | **Isolation Operator** | Operator that computes distance between detections and assigns isolation label. |
+| `language-id-operator` | **Language Identification Operator** | Operator for language identification using the langdetect library. |
+| `text-aggregation-operator` | **Text Aggregation Operator** | Operator that combines text detections into text body for the whole image. |
+| `tiling-region-aggregator-operator` | **Tiling Region Aggregator Operator** | Operator to be used as a follow up to the image-tiling-operator and visual detector. This operator will transform the detections on each of tiles back to the original image and perform non-maximum suppression. |
+| `barcode-operator` | **Barcode Operator** | Operator that detects and recognizes barcodes from the image. It assigns regions with barcode text for each detected barcode. |
+| `keyword-filter-operator` | **Keyword Filter Operator** | This operator is initialized with a set of words, and then determines which are found in the input text. |
+| `raft-operator` | **RAFT Operator** | Calls an LLM to generate questions and answers based on a text input chunk. The output is the chat-formatted instruction for finetuning. |
+| `tokens-to-entity-operator` | **Tokens to Entity Operator** | Operator that combines text tokens into entities, e.g. `New` + `York` -\> `New York`. |
+| `track-representation-operator` | **Track Representation Operator** | The operator takes embedding of each track frame and aggregate them to form a track embedding. |
+| `byte-tracker` | **BYTE Track** | A multi-object tracker that aims to keep track of all boxes per frame forming them into tracklets. |
+| `centroid-tracker` | **Centroid Tracker** | Relies on the Euclidean distance between centroids of regions in different video frames to assign the same track ID to detections of the same object. |
+| `kalman-filter-tracker` | **Kalman Filter Hungarian Tracker** | Relies on the Kalman Filter algorithm to estimate the next position of an object, matched to detections using the Hungarian algorithm. |
+| `text-classifier` | **Text Classifier** | Classify text into a set of concepts. |
+| `visual-detector` | **Visual Detector** | Detect bounding box regions in images or video frames where things and then classify objects, descriptive words or topics within the boxes. |
+| `multimodal-to-text` | **Multimodal To Text** | Generate text from either text or images or both as input, allowing it to understand and respond to questions about those images. |
+| `text-embedder` | **Text Embedder** | Embed text into a vector representing a high level understanding from our AI models. These embeddings enable similarity search and training on top of them. |
+| `visual-embedder` | **Visual Embedder** | Embed images and videos frames into a vector representing a high level understanding from our AI models. These embeddings enable visual search and training on top of them. |
+| `visual-segmenter` | **Visual Segmenter** | Segment a per-pixel mask in images where things are and then classify objects, descriptive words or topics within the masks. |
+| `zero-shot-text-classifier` | **Zero Shot Text Classifier** | Classify text into a set of concepts provided by user using a pretrained model. |
+| `multimodal-embedder` | **Multimodal Embedder** | Embed text or image into a vector representing a high level understanding from our AI models, e.g. CLIP. These embeddings enable similarity search and training on top of them. |
+| `text-to-text` | **Text Generator** | Generate or convert text based on text input, e.g. prompt completion, translation or summarization. |
+| `visual-anomaly-heatmap` | **Visual Anomaly** | Visual anomaly detection with image-level score and anomaly heatmap. |
+| `zero-shot-image-classifier` | **Zero Shot Image Classifier** | Classify image into a set of concepts provided by user using a pretrained model. |
+| `audio-classifier` | **Audio Classifier** | Classify audio into a set of concepts. |
+| `text-token-classifier` | **Text Token Classifier** | Classify tokens from a set of entity classes. |
+| `visual-classifier` | **Visual Classifier** | Classify images and videos frames into set of concepts. |
+| `zero-shot-image-segmenter` | **Zero Shot Image Segmenter** | Dynamically segment a per-pixel mask in images where things are and then classify objects, descriptive words or topics within the masks. |
+| `audio-to-text` | **Audio To Text** | Classify audio signal into string of text. |
+
+
 
 
 import DocCardList from '@theme/DocCardList';
