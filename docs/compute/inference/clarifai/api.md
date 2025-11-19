@@ -500,7 +500,7 @@ You can use this for generative models that produce output incrementally — suc
 
 ## Raw Protobuf Response Information
 
-By default, prediction methods in the [`ModelClient`](https://docs.clarifai.com/resources/api-references/python#modelclient) class — such as `predict()`, `generate()`, and others — return only the processed, user-friendly response.
+By default, prediction methods in the [`Model`](https://docs.clarifai.com/resources/api-references/python#model) class — such as `predict()`, `generate()`, and others — return only the processed, user-friendly response.
 
 If you need deeper insight, you can pass `with_proto=True`, which makes the method return a tuple containing both the processed result and the underlying raw Protobuf response.
 
