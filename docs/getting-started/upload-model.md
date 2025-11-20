@@ -64,6 +64,18 @@ Install the latest version of the `clarifai` Python SDK. This also installs the 
 </TabItem>
 </Tabs>
 
+
+### Set Up Cluster and Nodepool
+
+Setting up a [cluster and nodepool](https://docs.clarifai.com/compute/deployments/clusters-nodepools) creates the dedicated compute environment your model needs to run reliably and efficiently.
+
+After uploading your model to the Clarifai platform, you'll need to deploy it to the already created compute environment.
+
+> **Note:** A cluster forms the foundation of your compute environment, while a nodepool is a single compute node or a group of compute nodes within that cluster that provides the resources required to run your model.
+
+You can learn how to set up your compute environment fast [here](https://docs.clarifai.com/getting-started/set-up-compute).
+
+
 ## Step 2: Create Files
 
 :::tip
@@ -134,13 +146,15 @@ Once your custom model is ready, upload it to the Clarifai platform by navigatin
 
 ## Step 4: Deploy the Model
 
-After successfully uploading your model to the Clarifai platform, the terminal will prompt you to proceed with deployment and set up your model for inference.
+Once your model is successfully uploaded to the Clarifai platform, the terminal will guide you through the deployment process to prepare your model for inference.
 
-Follow the prompts to:
+Follow the on-screen prompts to:
 
-* **[Set up a cluster](https://docs.clarifai.com/compute/deployments/clusters-nodepools)** – This serves as the foundation of your compute environment.
-* **Create a nodepool** – A nodepool is a group of compute nodes within your cluster that provides the resources needed to run your model.
-* **[Deploy your model](https://docs.clarifai.com/compute/deployments/deploy-model)** – Once the nodepool is ready, deploy your model to make it available for inference.
+- Choose an existing cluster and nodepool where your model will run.
+
+- Provide the deployment configuration, including the minimum and maximum number of [replicas](https://docs.clarifai.com/compute/deployments/deploy-model#model-replica) to manage your model’s scalability. Take note of the created `deployment_id`.
+
+> **Note:** Once the setup is complete, you can backtrack to modify these configurations or clean up the deployment resources at any time.
 
 <details>
   <summary>Build Logs Example</summary>

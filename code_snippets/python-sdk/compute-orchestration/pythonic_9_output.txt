@@ -1,0 +1,37 @@
+Batch Prediction Results:
+
+Input 1:
+**Review: “Starlight Frontier” – A Thrilling Leap Into the Cosmos**
+
+“Starlight Frontier” bursts onto the screen with the kind of bold imagination that reminds us why sci‑fi is the genre of limitless possibility. Director Maya Chen crafts a sleek, high‑octane adventure that balances jaw‑dropping visual spectacle with a surprisingly heartfelt story.
+
+The film’s world‑building is nothing short of spectacular. From the neon‑lit megacities of the orbital colonies to the hauntingly beautiful alien wastelands of the Andromeda fringe, every frame feels meticulously designed, and the cutting‑edge VFX make the cosmos feel both vast and intimately lived‑in. The use of practical effects—especially the tactile, retro‑futuristic ship interiors—adds a warm, tactile layer that grounds the high‑tech spectacle.
+
+At the heart of the narrative is a diverse crew of misfits led by the charismatic and deeply human Captain Aria (played with fierce conviction by Zoe Patel). Their chemistry is electric, and the script gives each character a genuine arc, turning what could have been a standard “save the galaxy” plot into a resonant tale about trust, sacrifice, and the search for belonging.
+
+The pacing is spot‑on: the opening act hooks you with a pulse‑pounding chase through an asteroid field, the middle delves into a thought‑provoking mystery about an ancient alien signal, and the climax delivers a breathtaking showdown that feels earned rather than gratuitous. The score, a soaring blend of synth‑wave and orchestral motifs by composer Luis Ortega, perfectly amplifies the emotional stakes without ever overwhelming the story.
+
+What truly sets “Starlight Frontier” apart is its optimism. In a time when many sci‑fi films lean heavily into dystopia, this movie dares to imagine a future where curiosity, cooperation, and wonder still drive humanity forward. It’s a refreshing reminder that the stars are not just a backdrop for conflict, but a canvas for hope.
+
+In short, “Starlight Frontier” is a dazzling, emotionally resonant ride that will satisfy both die‑hard genre fans and newcomers alike. It’s a must‑see that proves the future of sci‑fi cinema is bright, bold, and brimming with heart. 🚀✨
+----------------------------------------
+Input 2:
+**Title: “Stellar Drift” – A Missed Opportunity**
+
+I went into *Stellar Drift* with high hopes, but the film quickly proved to be a disappointing slog. The plot feels like a patchwork of overused tropes—galactic wars, a reluctant hero, and a “mysterious artifact” that never lives up to its hype. The world‑building is shallow; the supposedly intricate alien cultures are reduced to generic costume designs and vague exposition, leaving the setting feeling more like a backdrop than a living universe.
+
+The pacing is another major flaw. The first half drags with endless exposition and lackluster dialogue, while the climax rushes through what could have been an epic showdown, leaving key character arcs unresolved. Speaking of characters, the leads are bland and underdeveloped, making it hard to care about their fates. Even the visual effects, which should be the film’s saving grace, are uneven—some scenes sparkle with vivid detail, but many look cheap and CGI‑heavy, pulling you out of the immersion.
+
+In short, *Stellar Drift* promises a grand sci‑fi adventure but delivers a forgettable, formulaic mess. If you’re looking for something fresh and thought‑provoking, you’ll have to look elsewhere.
+----------------------------------------
+Input 3:
+**Review: “Stellar Frontier” (2025)**  
+
+“Stellar Frontier” arrives as a competent addition to the contemporary sci‑fi catalog, delivering a blend of familiar tropes and modest ambition. The film’s premise—a crew of explorers racing against a rogue AI to secure a habitable exoplanet—offers a clear narrative hook, though the plot unfolds in a fairly predictable rhythm. The screenplay leans on standard genre beats, delivering enough twists to keep the story moving without venturing into particularly daring territory.
+
+Visually, the movie shines. Production design and VFX teams craft convincing space vistas and sleek ship interiors that feel grounded yet imaginative. The color palette, dominated by cool blues and stark whites, reinforces the cold expanse of deep space while occasional warm tones hint at the human element.
+
+Performances are solid across the board. The lead, Maya Patel, brings a measured intensity to her role as commander, and the supporting cast provides reliable, if not standout, contributions. Direction by Lena Ortiz maintains a steady pace, balancing action sequences with quieter character moments, though at times the pacing feels uneven, lingering on exposition before accelerating into the climax.
+
+Overall, “Stellar Frontier” is a well‑executed, if unremarkable, sci‑fi entry. It offers enough visual spectacle and competent storytelling to satisfy genre fans, even if it doesn’t push the boundaries of the field.
+----------------------------------------

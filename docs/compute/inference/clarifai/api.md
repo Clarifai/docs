@@ -28,6 +28,8 @@ import CO7Text from "!!raw-loader!../../../../code_snippets/python-sdk/compute-o
 import CO8 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_8.py";
 import CO9 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_9.py";
 import C10 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_10.py";
+import CO9Output from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_9_output.txt";
+import CO8Output from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_8_output.txt";
 
 import RawProtobuf from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/raw_protobuf.py";
 import RawProtobufOutput from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/raw_protobuf_output.txt";
@@ -349,7 +351,7 @@ Here’s how to make a corresponding unary-stream predict call from the client s
 </TabItem>
 </Tabs>
 
-<!--
+
 ## Stream-Stream Predict Call
 
 This call enables bidirectional streaming of both inputs and outputs, making it ideal for real-time applications and processing large datasets.
@@ -375,7 +377,7 @@ Here’s how you can make a corresponding stream-stream predict call from the cl
     <CodeBlock className="language-python">{CO7Text}</CodeBlock>
 </TabItem>
 </Tabs>
--->
+
 
 ### Audio Inputs
 
@@ -396,6 +398,20 @@ Here’s how you can make a corresponding stream-stream predict call from the cl
 </TabItem>
 </Tabs>
 
+
+## Multimodal Predictions
+
+You can make predictions using models that support multimodal inputs, such as a combination of images and text. 
+
+Here is an example:
+
+<Tabs groupId="code">
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{C10}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 ## Batch Prediction Handling
 
 Clarifai’s model framework seamlessly supports both single and batch predictions through a unified interface. It can adapt to the input format, so no code changes are needed.
@@ -410,19 +426,7 @@ This means you can pass either a single input or a list of inputs, and the syste
 
 ### Text Inputs
 
-Here is an example of a model signature configured on the server side for handling text inputs:
-
-<Tabs groupId="code">
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python">class TextClassifier(ModelClass):
-  @ModelClass.method
-  def predict(self, text: Text) -> float:
-    """Single text classification (automatically batched)"""
-    return self.model(text.text)</CodeBlock>
-</TabItem>
-</Tabs>
-
-Here’s how you can perform batch predictions with text inputs from the client side:
+Here’s how you can perform batch predictions with text inputs.
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
@@ -430,18 +434,14 @@ Here’s how you can perform batch predictions with text inputs from the client 
 </TabItem>
 </Tabs>
 
+<details>
+  <summary>Example Output</summary>
+    <CodeBlock className="language-text">{CO9Output}</CodeBlock>
+</details>
+
 ### Image Inputs
 
-Here is an example of a model signature configured on the server side for handling image inputs:
-
-<Tabs groupId="code">
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python">@ModelClass.method
-def predict_image(self, image: Image) -> Dict[str, float]:</CodeBlock>
-</TabItem>
-</Tabs>
-
-Here’s how you can perform batch predictions with image inputs from the client side:
+Here’s how you can perform batch predictions with image inputs.
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
@@ -449,18 +449,10 @@ Here’s how you can perform batch predictions with image inputs from the client
 </TabItem>
 </Tabs>
 
-
-## Multimodal Predictions
-
-You can make predictions using models that support multimodal inputs, such as a combination of images and text. 
-
-Here is an example:
-
-<Tabs groupId="code">
-<TabItem value="python" label="Python SDK">
-    <CodeBlock className="language-python">{C10}</CodeBlock>
-</TabItem>
-</Tabs>
+<details>
+  <summary>Example Output</summary>
+    <CodeBlock className="language-text">{CO8Output}</CodeBlock>
+</details>
 
 ## Tool Calling
 
