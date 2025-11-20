@@ -1,31 +1,47 @@
-clarifai model upload
-[INFO] 16:53:31.153832 No checkpoints specified in the config file |  thread=2540
-[INFO] 16:53:31.169705 Setup: Using Python version 3.11 from the config file to build the Dockerfile |  thread=2540
-[INFO] 16:53:31.179960 Setup: Validating requirements.txt file at C:\Users\Alfrick\Desktop\upload-model\new2\requirements.txt using uv pip compile |  thread=2540
-[INFO] 16:53:32.919408 Setup: Requirements.txt file validated successfully |  thread=2540
-[INFO] 16:53:32.932616 Setup: Linting Python files: ['C:\\Users\\Alfrick\\Desktop\\upload-model\\new2\\1\\model.py'] |  thread=2540
-[INFO] 16:53:33.054929 Setup: Python code linted successfully, no errors found. |  thread=2540
-[INFO] 16:53:33.056731 Setup: Using NVIDIA base image to build the Docker image and upload the model |  thread=2540
-[INFO] 16:53:33.343749 New model will be created at https://clarifai.com/alfrick/upload-models-2/models/new2 with it's first version. |  thread=2540
+clarifai model init
+[INFO] 13:58:37.002093 Initializing model with default templates... |  thread=8349786304 
 Press Enter to continue...
-[INFO] 16:53:36.893686 Uploading file... |  thread=22676
-[INFO] 16:53:36.897061 Upload complete! |  thread=22676
-Status: Upload in progress, Progress: 0% - Starting upload.  request_id: sdk-python-11.5.4-8151d7189a23425da945528977ea9Status: Upload done, Progress: 0% - Completed upload of files, initiating model version image build..  request_id: sdk-pStatus: Model image is currently being built., Progress: 0% - Model version image is being built.  request_id: sdk-pytho[INFO] 16:53:37.541441 Created Model Version ID: cd24a0369c4443e1b494ddddc3b42ef9 |  thread=2540
-[INFO] 16:53:37.541441 Full url to that version is: https://clarifai.com/alfrick/upload-models-2/models/new2 |  thread=2540
-[INFO] 16:53:43.222157 2025-06-27 13:53:36.865379 INFO: Downloading uploaded model from storage... |  thread=2540
-[INFO] 16:53:48.357261 2025-06-27 13:53:42.654003 INFO: Done downloading model
-2025-06-27 13:53:42.657878 INFO: Extracting upload...
-2025-06-27 13:53:42.662686 INFO: Done extracting upload
-2025-06-27 13:53:42.665555 INFO: Parsing requirements file for model version ID ****ddddc3b42ef9
-2025-06-27 13:53:42.691445 INFO: Dockerfile found at /shared/context/Dockerfile
+[INFO] 13:58:39.866019 Created /Users/macbookpro/Desktop/code3/two/1/model.py |  thread=8349786304 
+[INFO] 13:58:39.866409 Created /Users/macbookpro/Desktop/code3/two/requirements.txt |  thread=8349786304 
+[INFO] 13:58:39.866669 Created /Users/macbookpro/Desktop/code3/two/config.yaml |  thread=8349786304 
+[INFO] 13:58:39.866717 Model initialization complete in /Users/macbookpro/Desktop/code3/two |  thread=8349786304 
+[INFO] 13:58:39.866755 Next steps: |  thread=8349786304 
+[INFO] 13:58:39.866789 1. Search for '# TODO: please fill in' comments in the generated files |  thread=8349786304 
+[INFO] 13:58:39.866822 2. Update the model configuration in config.yaml |  thread=8349786304 
+[INFO] 13:58:39.866853 3. Add your model dependencies to requirements.txt |  thread=8349786304 
+[INFO] 13:58:39.866883 4. Implement your model logic in 1/model.py |  thread=8349786304 
+clarifai model upload 
+[INFO] 14:05:28.366437 No checkpoints specified in the config file |  thread=8349786304 
+[INFO] 14:05:28.367158 Setup: Using Python version 3.11 from the config file to build the Dockerfile |  thread=8349786304 
+[INFO] 14:05:28.367434 Setup: Validating requirements.txt file at /Users/macbookpro/Desktop/code3/two/requirements.txt using uv pip compile |  thread=8349786304 
+[INFO] 14:08:20.832060 Setup: Requirements.txt file validated successfully |  thread=8349786304 
+[INFO] 14:08:20.832914 Setup: Linting Python files: ['/Users/macbookpro/Desktop/code3/two/1/model.py'] |  thread=8349786304 
+[INFO] 14:08:20.893378 Setup: Python code linted successfully, no errors found. |  thread=8349786304 
+[INFO] 14:08:20.893821 Setup: Using NVIDIA base image to build the Docker image and upload the model |  thread=8349786304 
+[INFO] 14:08:21.153133 New model will be created at https://clarifai.com/alfrick/my-models/models/friday20th-two with it's first version. |  thread=8349786304 
+Press Enter to continue...
+[INFO] 14:08:30.795209 Uploading file... |  thread=6171717632 
+[INFO] 14:08:30.796342 Upload complete! |  thread=6171717632 
+Status: Upload done, Progress: 0% - Completed upload of files, initiating model version image build..  request_id: sdk-python-11.10.2-6a2Status: Model image is currently being built., Progress: 0% - Model version image is being built.  request_id: sdk-python-11.10.2-6a242da[INFO] 14:08:31.584822 Created Model Version ID: ffb9c659ead240b69a5f829b503e725d |  thread=8349786304 
+[INFO] 14:08:31.585337 Full url to that version is: https://clarifai.com/alfrick/my-models/models/friday20th-two |  thread=8349786304 
+[INFO] 14:08:38.535619 2025-11-20 11:08:33.133911 INFO: Downloading uploaded buildable from storage...
+2025-11-20 11:08:33.966481 INFO: Done downloading buildable from storage
+2025-11-20 11:08:33.969976 INFO: Extracting upload...
+2025-11-20 11:08:33.975026 INFO: Done extracting upload
+2025-11-20 11:08:33.977716 INFO: Parsing requirements file for buildable version ID ****829b503e725d
+2025-11-20 11:08:34.004653 INFO: Dockerfile found at /shared/context/Dockerfile
 cat: /shared/context/downloader/hf_token: No such file or directory
-2025-06-27 13:53:43.397865 INFO: Setting up credentials
+2025-11-20 11:08:34.748208 INFO: Setting up credentials
 amazon-ecr-credential-helper
 Version:    0.8.0
 Git commit: ********
-2025-06-27 13:53:43.402700 INFO: Building image...
+2025-11-20 11:08:34.753465 INFO: Building image...
 #1 \[internal] load build definition from Dockerfile
-#1 transferring dockerfile: 2.72kB done
+#1 DONE 0.0s
+
+#1 \[internal] load build definition from Dockerfile
+#1 transferring dockerfile: 3.40kB done
+#1 WARN: FromAsCasing: 'as' and 'FROM' keywords' casing do not match (line 7)
 #1 DONE 0.0s
 
 #2 resolve image config for docker-image://docker.io/docker/dockerfile:1.13-labs
@@ -35,69 +51,348 @@ Git commit: ********
 #3 resolve docker.io/docker/dockerfile:1.13-labs@sha256:************18b8 done
 #3 CACHED
 
-#4 \[internal] load metadata for public.ecr.aws/clarifai-models/python-base:3.11-********
-#4 DONE 0.1s
+#4 \[linux/arm64 internal] load metadata for public.ecr.aws/clarifai-models/python-base:3.11-********
+#4 DONE 0.2s
 
-#5 \[internal] load .dockerignore
-#5 transferring context: 2B done
-#5 DONE 0.0s
+#5 \[linux/amd64 internal] load metadata for public.ecr.aws/clarifai-models/python-base:3.11-********
+#5 DONE 0.2s
 
-#6 \[final 1/8] FROM public.ecr.aws/clarifai-models/python-base:3.11-********@sha256:************0579
-#6 resolve public.ecr.aws/clarifai-models/python-base:3.11-********@sha256:************0579 done
+#6 \[internal] load .dockerignore
+#6 transferring context: 2B done
 #6 DONE 0.0s
 
 #7 \[internal] load build context
 #7 transferring context: 2.73kB done
 #7 DONE 0.0s
 
-#8 \[final 5/8] COPY --chown=nonroot:nonroot downloader/unused.yaml /home/nonroot/main/1/checkpoints/.cache/unused.yaml
+#8 \[linux/amd64 model-assets 1/8] FROM public.ecr.aws/clarifai-models/python-base:3.11-********@sha256:************48e5
+#8 resolve public.ecr.aws/clarifai-models/python-base:3.11-********@sha256:************48e5 done
 #8 CACHED
 
-#9 \[final 4/8] RUN ["uv", "pip", "show", "--no-cache-dir", "clarifai"]
+#9 \[linux/arm64 final 1/5] FROM public.ecr.aws/clarifai-models/python-base:3.11-********@sha256:************48e5
+#9 resolve public.ecr.aws/clarifai-models/python-base:3.11-********@sha256:************48e5 done
 #9 CACHED
 
-#10 \[final 2/8] COPY --link requirements.txt /home/nonroot/requirements.txt
-#10 CACHED
+#10 \[linux/arm64 final 2/5] COPY --link --chown=65532:65532 requirements.txt /home/nonroot/requirements.txt
+#10 merging done
+#10 DONE 0.0s
 
-#11 \[final 3/8] RUN ["uv", "pip", "install", "--no-cache-dir", "-r", "/home/nonroot/requirements.txt"]
-#11 CACHED
+#11 \[linux/amd64 final 2/5] COPY --link --chown=65532:65532 requirements.txt /home/nonroot/requirements.txt
+#11 merging done
+#11 DONE 0.0s
 
-#12 \[final 6/8] RUN  ["python", "-m", "clarifai.cli", "model", "download-checkpoints", "/home/nonroot/main", "--out_path", "/home/nonroot/main/1/checkpoints", "--stage", "build"]
-#12 CACHED
+#12 \[linux/amd64 final 3/5] RUN ["uv", "pip", "install", "--no-cache-dir", "-r", "/home/nonroot/requirements.txt"]
+#12 0.071 Using Python 3.11.14 environment at: /venv
+#12 0.518 Resolved 35 packages in 445ms
+#12 0.525 Downloading grpcio (6.3MiB)
+#12 0.529 Downloading pygments (1.2MiB)
+#12 0.529 Downloading pydantic-core (1.9MiB)
+#12 0.529 Downloading pillow (6.7MiB)
+#12 0.530 Downloading aiohttp (1.7MiB)
+#12 0.530 Downloading ruff (10.8MiB)
+#12 0.530 Downloading numpy (16.1MiB)
+#12 0.567 Downloading uv (17.0MiB)
+#12 0.701  Downloading pydantic-core
+#12 0.827  Downloading aiohttp
+#12 1.010  Downloading ruff
+#12 1.060  Downloading uv
+#12 1.061  Downloading grpcio
+#12 1.063  Downloading pillow
+#12 1.096  Downloading pygments
+#12 1.275  Downloading numpy
+#12 1.275 Prepared 27 packages in 756ms
+#12 1.276 Uninstalled 1 package in 0.91ms
+#12 1.297 Installed 27 packages in 20ms
+#12 1.297  + aiohappyeyeballs==2.6.1
+#12 1.297  + aiohttp==3.13.2
+#12 1.297  + aiosignal==1.4.0
+#12 1.297  + attrs==25.4.0
+#12 1.297  + charset-normalizer==3.4.4
+#12 1.297  + clarifai==11.10.2
+#12 1.297  + clarifai-grpc==11.10.5
+#12 1.297  + clarifai-protocol==0.0.34
+#12 1.297  + contextlib2==21.6.0
+#12 1.297  + frozenlist==1.8.0
+#12 1.297  + googleapis-common-protos==1.72.0
+#12 1.297  + grpcio==1.76.0
+#12 1.297  + multidict==6.7.0
+#12 1.297  + numpy==2.3.5
+#12 1.297  + pillow==12.0.0
+#12 1.297  + propcache==0.4.1
+#12 1.297  + protobuf==6.33.1
+#12 1.297  + psutil==7.0.0
+#12 1.297  + pydantic-core==2.33.2
+#12 1.297  + pygments==2.19.2
+#12 1.297  + requests==2.32.5
+#12 1.297  + ruff==0.11.4
+#12 1.297  + schema==0.7.5
+#12 1.297  + tabulate==0.9.0
+#12 1.297  + urllib3==2.5.0
+#12 1.297  - uv==0.9.9
+#12 1.297  + uv==0.7.12
+#12 1.297  + yarl==1.22.0
+#12 DONE 1.4s
 
-#13 \[final 7/8] COPY --link=true 1 /home/nonroot/main/1
-#13 DONE 0.0s
+#13 \[linux/amd64 final 4/5] RUN ["uv", "pip", "show", "--no-cache-dir", "clarifai"]
+#13 0.081 Using Python 3.11.14 environment at: /venv
+#13 0.084 Name: clarifai
+#13 0.084 Version: 11.10.2
+#13 0.084 Location: /venv/lib/python3.11/site-packages
+#13 0.084 Requires: aiohttp, clarifai-grpc, clarifai-protocol, click, fsspec, numpy, packaging, pillow, psutil, pydantic-core, pygments, pyyaml, requests, ruff, schema, tabulate, tqdm, uv
+#13 0.084 Required-by: clarifai-protocol
+#13 DONE 0.1s
 
-#14 \[final 8/8] COPY --link=true requirements.txt config.yaml /home/nonroot/main/
-#14 DONE 0.0s
+#14 \[linux/amd64 model-assets 2/8] RUN pip install --no-cache-dir clarifai==11.10.2 huggingface_hub
+#14 0.837 Collecting clarifai==11.10.2
+#14 0.902   Downloading clarifai-11.10.2-py3-none-any.whl.metadata (23 kB)
+#14 0.911 Requirement already satisfied: huggingface_hub in /venv/lib/python3.11/site-packages (1.1.4)
+#14 0.944 Collecting clarifai-grpc>=11.10.3 (from clarifai==11.10.2)
+#14 0.948   Downloading clarifai_grpc-11.10.5-py3-none-any.whl.metadata (4.4 kB)
+#14 0.989 Collecting clarifai-protocol>=0.0.33 (from clarifai==11.10.2)
+#14 0.994   Downloading clarifai_protocol-0.0.34-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (14 kB)
+#14 1.129 Collecting numpy>=1.22.0 (from clarifai==11.10.2)
+#14 1.133   Downloading numpy-2.3.5-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+#14 1.150 Requirement already satisfied: tqdm>=4.65.0 in /venv/lib/python3.11/site-packages (from clarifai==11.10.2) (4.67.1)
+#14 1.150 Requirement already satisfied: PyYAML>=6.0.1 in /venv/lib/python3.11/site-packages (from clarifai==11.10.2) (6.0.3)
+#14 1.158 Collecting schema==0.7.5 (from clarifai==11.10.2)
+#14 1.161   Downloading schema-0.7.5-py2.py3-none-any.whl.metadata (34 kB)
+#14 1.282 Collecting Pillow>=9.5.0 (from clarifai==11.10.2)
+#14 1.285   Downloading pillow-12.0.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (8.8 kB)
+#14 1.315 Collecting tabulate>=0.9.0 (from clarifai==11.10.2)
+#14 1.318   Downloading tabulate-0.9.0-py3-none-any.whl.metadata (34 kB)
+#14 1.322 Requirement already satisfied: fsspec>=2024.6.1 in /venv/lib/python3.11/site-packages (from clarifai==11.10.2) (2025.10.0)
+#14 1.323 Requirement already satisfied: click>=8.1.7 in /venv/lib/python3.11/site-packages (from clarifai==11.10.2) (8.3.0)
+#14 1.338 Collecting requests>=2.32.3 (from clarifai==11.10.2)
+#14 1.341   Downloading requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+#14 1.718 Collecting aiohttp>=3.10.0 (from clarifai==11.10.2)
+#14 1.722   Downloading aiohttp-3.13.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (8.1 kB)
+#14 1.869 Collecting uv==0.7.12 (from clarifai==11.10.2)
+#14 1.875   Downloading uv-0.7.12-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (11 kB)
+#14 2.137 Collecting ruff==0.11.4 (from clarifai==11.10.2) |  thread=8349786304 
+[INFO] 14:08:47.340894 #14 1.722   Downloading aiohttp-3.13.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (8.1 kB)
+#14 1.869 Collecting uv==0.7.12 (from clarifai==11.10.2)
+#14 1.875   Downloading uv-0.7.12-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (11 kB)
+#14 2.137 Collecting ruff==0.11.4 (from clarifai==11.10.2)
+#14 2.142   Downloading ruff-0.11.4-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (25 kB)
+#14 2.188 Collecting psutil==7.0.0 (from clarifai==11.10.2)
+#14 2.192   Downloading psutil-7.0.0-cp36-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (22 kB)
+#14 2.206 Collecting pygments>=2.19.2 (from clarifai==11.10.2)
+#14 2.209   Downloading pygments-2.19.2-py3-none-any.whl.metadata (2.5 kB)
+#14 2.739 Collecting pydantic_core==2.33.2 (from clarifai==11.10.2)
+#14 2.743   Downloading pydantic_core-2.33.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.8 kB)
+#14 2.744 Requirement already satisfied: packaging==25.0 in /venv/lib/python3.11/site-packages (from clarifai==11.10.2) (25.0)
+#14 2.746 Requirement already satisfied: typing-extensions!=4.7.0,>=4.6.0 in /venv/lib/python3.11/site-packages (from pydantic_core==2.33.2->clarifai==11.10.2) (4.15.0)
+#14 2.753 Collecting contextlib2>=0.5.5 (from schema==0.7.5->clarifai==11.10.2)
+#14 2.757   Downloading contextlib2-21.6.0-py2.py3-none-any.whl.metadata (4.1 kB)
+#14 2.759 Requirement already satisfied: filelock in /venv/lib/python3.11/site-packages (from huggingface_hub) (3.20.0)
+#14 2.760 Requirement already satisfied: hf-xet<2.0.0,>=1.2.0 in /venv/lib/python3.11/site-packages (from huggingface_hub) (1.2.0)
+#14 2.760 Requirement already satisfied: httpx<1,>=0.23.0 in /venv/lib/python3.11/site-packages (from huggingface_hub) (0.28.1)
+#14 2.761 Requirement already satisfied: shellingham in /venv/lib/python3.11/site-packages (from huggingface_hub) (1.5.4)
+#14 2.762 Requirement already satisfied: typer-slim in /venv/lib/python3.11/site-packages (from huggingface_hub) (0.20.0)
+#14 2.768 Requirement already satisfied: anyio in /venv/lib/python3.11/site-packages (from httpx<1,>=0.23.0->huggingface_hub) (4.11.0)
+#14 2.768 Requirement already satisfied: certifi in /venv/lib/python3.11/site-packages (from httpx<1,>=0.23.0->huggingface_hub) (2025.11.12)
+#14 2.768 Requirement already satisfied: httpcore==1.* in /venv/lib/python3.11/site-packages (from httpx<1,>=0.23.0->huggingface_hub) (1.0.9)
+#14 2.769 Requirement already satisfied: idna in /venv/lib/python3.11/site-packages (from httpx<1,>=0.23.0->huggingface_hub) (3.11)
+#14 2.770 Requirement already satisfied: h11>=0.16 in /venv/lib/python3.11/site-packages (from httpcore==1.*->httpx<1,>=0.23.0->huggingface_hub) (0.16.0)
+#14 2.781 Collecting aiohappyeyeballs>=2.5.0 (from aiohttp>=3.10.0->clarifai==11.10.2)
+#14 2.784   Downloading aiohappyeyeballs-2.6.1-py3-none-any.whl.metadata (5.9 kB)
+#14 2.791 Collecting aiosignal>=1.4.0 (from aiohttp>=3.10.0->clarifai==11.10.2)
+#14 2.794   Downloading aiosignal-1.4.0-py3-none-any.whl.metadata (3.7 kB)
+#14 2.805 Collecting attrs>=17.3.0 (from aiohttp>=3.10.0->clarifai==11.10.2)
+#14 2.809   Downloading attrs-25.4.0-py3-none-any.whl.metadata (10 kB)
+#14 2.855 Collecting frozenlist>=1.1.1 (from aiohttp>=3.10.0->clarifai==11.10.2)
+#14 2.859   Downloading frozenlist-1.8.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (20 kB)
+#14 3.011 Collecting multidict<7.0,>=4.5 (from aiohttp>=3.10.0->clarifai==11.10.2)
+#14 3.015   Downloading multidict-6.7.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (5.3 kB)
+#14 3.054 Collecting propcache>=0.2.0 (from aiohttp>=3.10.0->clarifai==11.10.2)
+#14 3.058   Downloading propcache-0.4.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (13 kB)
+#14 3.289 Collecting yarl<2.0,>=1.17.0 (from aiohttp>=3.10.0->clarifai==11.10.2)
+#14 3.293   Downloading yarl-1.22.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (75 kB)
+#14 3.643 Collecting grpcio>=1.53.2 (from clarifai-grpc>=11.10.3->clarifai==11.10.2)
+#14 3.647   Downloading grpcio-1.76.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (3.7 kB)
+#14 3.819 Collecting protobuf>=5.29.5 (from clarifai-grpc>=11.10.3->clarifai==11.10.2)
+#14 3.824   Downloading protobuf-6.33.1-cp39-abi3-manylinux2014_x86_64.whl.metadata (593 bytes)
+#14 3.836 Collecting googleapis-common-protos>=1.57.0 (from clarifai-grpc>=11.10.3->clarifai==11.10.2)
+#14 3.840   Downloading googleapis_common_protos-1.72.0-py3-none-any.whl.metadata (9.4 kB)
+#14 3.952 Collecting charset_normalizer<4,>=2 (from requests>=2.32.3->clarifai==11.10.2)
+#14 3.956   Downloading charset_normalizer-3.4.4-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (37 kB)
+#14 3.975 Collecting urllib3<3,>=1.21.1 (from requests>=2.32.3->clarifai==11.10.2)
+#14 3.979   Downloading urllib3-2.5.0-py3-none-any.whl.metadata (6.5 kB)
+#14 3.987 Requirement already satisfied: sniffio>=1.1 in /venv/lib/python3.11/site-packages (from anyio->httpx<1,>=0.23.0->huggingface_hub) (1.3.1)
+#14 3.996 Downloading clarifai-11.10.2-py3-none-any.whl (306 kB)
+#14 4.005 Downloading psutil-7.0.0-cp36-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (277 kB)
+#14 4.014 Downloading pydantic_core-2.33.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.0 MB)
+#14 4.043    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 73.4 MB/s  0:00:00
+#14 4.050 Downloading ruff-0.11.4-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (11.3 MB)
+#14 4.111    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.3/11.3 MB 194.3 MB/s  0:00:00
+#14 4.114 Downloading schema-0.7.5-py2.py3-none-any.whl (17 kB)
+#14 4.121 Downloading uv-0.7.12-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (17.8 MB)
+#14 4.182    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 17.8/17.8 MB 292.6 MB/s  0:00:00
+#14 4.186 Downloading aiohttp-3.13.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (1.7 MB)
+#14 4.195    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.7/1.7 MB 229.5 MB/s  0:00:00
+#14 4.199 Downloading multidict-6.7.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (246 kB)
+#14 4.204 Downloading yarl-1.22.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (365 kB)
+#14 4.210 Downloading aiohappyeyeballs-2.6.1-py3-none-any.whl (15 kB)
+#14 4.214 Downloading aiosignal-1.4.0-py3-none-any.whl (7.5 kB)
+#14 4.218 Downloading attrs-25.4.0-py3-none-any.whl (67 kB)
+#14 4.223 Downloading clarifai_grpc-11.10.5-py3-none-any.whl (305 kB)
+#14 4.229 Downloading clarifai_protocol-0.0.34-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (409 kB)
+#14 4.233 Downloading contextlib2-21.6.0-py2.py3-none-any.whl (13 kB)
+#14 4.237 Downloading frozenlist-1.8.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (231 kB)
+#14 4.241 Downloading googleapis_common_protos-1.72.0-py3-none-any.whl (297 kB)
+#14 4.245 Downloading protobuf-6.33.1-cp39-abi3-manylinux2014_x86_64.whl (323 kB)
+#14 4.249 Downloading grpcio-1.76.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (6.6 MB)
+#14 4.263    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.6/6.6 MB 491.7 MB/s  0:00:00
+#14 4.267 Downloading numpy-2.3.5-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.9 MB)
+#14 4.298    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.9/16.9 MB 559.0 MB/s  0:00:00
+#14 4.302 Downloading pillow-12.0.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (7.0 MB)
+#14 4.331    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.0/7.0 MB 253.1 MB/s  0:00:00
+#14 4.335 Downloading propcache-0.4.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (210 kB)
+#14 4.339 Downloading pygments-2.19.2-py3-none-any.whl (1.2 MB)
+#14 4.342    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 713.1 MB/s  0:00:00
+#14 4.345 Downloading requests-2.32.5-py3-none-any.whl (64 kB)
+#14 4.349 Downloading charset_normalizer-3.4.4-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (151 kB)
+#14 4.352 Downloading urllib3-2.5.0-py3-none-any.whl (129 kB)
+#14 4.356 Downloading tabulate-0.9.0-py3-none-any.whl (35 kB)
+#14 4.489 Installing collected packages: uv, urllib3, tabulate, ruff, pygments, pydantic_core, psutil, protobuf, propcache, Pillow, numpy, multidict, grpcio, frozenlist, contextlib2, charset_normalizer, attrs, aiohappyeyeballs, yarl, schema, requests, googleapis-common-protos, aiosignal, clarifai-grpc, aiohttp, clarifai-protocol, clarifai
+#14 4.489   Attempting uninstall: uv
+#14 4.490     Found existing installation: uv 0.9.9
+#14 4.492     Uninstalling uv-0.9.9:
+#14 4.495       Successfully uninstalled uv-0.9.9 |  thread=8349786304 
+[INFO] 14:08:50.414074 #14 7.989 8s)
+#14 7.991 Successfully installed Pillow-12.0.0 aiohappyeyeballs-2.6.1 aiohttp-3.13.2 aiosignal-1.4.0 attrs-25.4.0 charset_normalizer-3.4.4 clarifai-11.10.2 clarifai-grpc-11.10.5 clarifai-protocol-0.0.34 contextlib2-21.6.0 frozenlist-1.8.0 googleapis-common-protos-1.72.0 grpcio-1.76.0 multidict-6.7.0 numpy-2.3.5 propcache-0.4.1 protobuf-6.33.1 psutil-7.0.0 pydantic_core-2.33.2 pygments-2.19.2 requests-2.32.5 ruff-0.11.4 schema-0.7.5 tabulate-0.9.0 urllib3-2.5.0 uv-0.7.12 yarl-1.22.0
+#14 ...
 
-#15 exporting to image
-#15 exporting layers done
-#15 exporting manifest sha256:************2afa done
-#15 exporting config sha256:************79d5 done
-#15 pushing layers
-#15 ...
+#15 \[linux/arm64 final 3/5] RUN ["uv", "pip", "install", "--no-cache-dir", "-r", "/home/nonroot/requirements.txt"]
+#15 1.183 Using Python 3.11.14 environment at: /venv
+#15 3.871 Resolved 35 packages in 2.59s
+#15 3.954 Downloading aiohttp (1.7MiB)
+#15 3.975 Downloading pygments (1.2MiB)
+#15 3.981 Downloading uv (15.8MiB)
+#15 3.983 Downloading ruff (9.9MiB)
+#15 3.984 Downloading pydantic-core (1.8MiB)
+#15 3.987 Downloading grpcio (6.1MiB)
+#15 3.990 Downloading pillow (6.1MiB)
+#15 3.991 Downloading numpy (13.9MiB)
+#15 5.116  Downloading pydantic-core
+#15 5.649  Downloading aiohttp
+#15 6.918  Downloading ruff
+#15 7.099  Downloading uv
+#15 7.131  Downloading pillow
+#15 7.143  Downloading grpcio
+#15 7.277  Downloading pygments
+#15 8.094  Downloading numpy
+#15 8.096 Prepared 27 packages in 4.21s
+#15 8.108 Uninstalled 1 package in 10ms
+#15 8.232 Installed 27 packages in 124ms
+#15 8.236  + aiohappyeyeballs==2.6.1
+#15 8.236  + aiohttp==3.13.2
+#15 8.236  + aiosignal==1.4.0
+#15 8.236  + attrs==25.4.0
+#15 8.236  + charset-normalizer==3.4.4
+#15 8.236  + clarifai==11.10.2
+#15 8.236  + clarifai-grpc==11.10.5
+#15 8.237  + clarifai-protocol==0.0.34
+#15 8.237  + contextlib2==21.6.0
+#15 8.237  + frozenlist==1.8.0
+#15 8.237  + googleapis-common-protos==1.72.0
+#15 8.237  + grpcio==1.76.0
+#15 8.237  + multidict==6.7.0
+#15 8.237  + numpy==2.3.5
+#15 8.237  + pillow==12.0.0
+#15 8.237  + propcache==0.4.1
+#15 8.238  + protobuf==6.33.1
+#15 8.238  + psutil==7.0.0
+#15 8.238  + pydantic-core==2.33.2
+#15 8.238  + pygments==2.19.2
+#15 8.238  + requests==2.32.5
+#15 8.238  + ruff==0.11.4
+#15 8.238  + schema==0.7.5
+#15 8.238  + tabulate==0.9.0
+#15 8.238  + urllib3==2.5.0
+#15 8.239  - uv==0.9.9
+#15 8.239  + uv==0.7.12
+#15 8.239  + yarl==1.22.0
+#15 DONE 8.4s
 
-#16 \[auth] sharing credentials for 891377382885.dkr.ecr.us-east-1.amazonaws.com
-#16 DONE 0.0s
+#14 \[linux/amd64 model-assets 2/8] RUN pip install --no-cache-dir clarifai==11.10.2 huggingface_hub
+#14 DONE 8.5s
 
-#15 exporting to image
-#15 pushing layers 1.1s done
-#15 pushing manifest for ****/prod/pytorch:****ddddc3b42ef9@sha256:************2afa
-#15 pushing manifest for ****/prod/pytorch:****ddddc3b42ef9@sha256:************2afa 0.4s done
-#15 DONE 1.5s
-2025-06-27 13:53:45.299206 INFO: Done building image!!! |  thread=2540
-[INFO] 16:53:50.090215 Model build complete! |  thread=2540
-[INFO] 16:53:50.096221 Build time elapsed 12.6s) |  thread=2540
-[INFO] 16:53:50.096221 Check out the model at https://clarifai.com/alfrick/upload-models-2/models/new2 version: cd24a0369c4443e1b494ddddc3b42ef9 |  thread=2540
-[INFO] 16:53:50.106292
+#16 \[linux/arm64 final 4/5] RUN ["uv", "pip", "show", "--no-cache-dir", "clarifai"]
+#16 ...
 
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+#17 \[linux/amd64 model-assets 3/8] WORKDIR /home/nonroot/main
+#17 DONE 0.0s
+
+#18 \[linux/amd64 model-assets 4/8] COPY --link downloader/unused.yaml /home/nonroot/main/1/checkpoints/.cache/unused.yaml
+#18 DONE 0.0s
+
+#19 \[linux/amd64 model-assets 5/8] COPY --link config.yaml /home/nonroot/main/
+#19 merging done
+#19 DONE 0.0s
+
+#20 \[linux/amd64 model-assets 6/8] RUN  ["python", "-m", "clarifai.cli", "model", "download-checkpoints", "/home/nonroot/main", "--out_path", "/home/nonroot/main/1/checkpoints", "--stage", "build"]
+#20 0.216 [WARNING] 11:08:43.952582 Could not write configuration to disk. Could be a read only file system. |  thread=140436804668992 
+#20 0.546 [WARNING] 11:08:44.282684 Config file /home/nonroot/.config/clarifai/config not found, using default config. Run 'clarifai config' on the command line to create a config file. |  thread=140436804668992 
+#20 0.546 [WARNING] 11:08:44.282803 Config file /home/nonroot/.config/clarifai/config not found, using default config. Run 'clarifai config' on the command line to create a config file. |  thread=140436804668992 
+#20 0.546 [INFO] 11:08:44.282943 No checkpoints specified in the config file |  thread=140436804668992 
+#20 DONE 0.6s
+
+#21 \[linux/amd64 model-assets 7/8] COPY --link 1 /home/nonroot/main/1
+#21 DONE 0.0s
+
+#22 \[linux/amd64 model-assets 8/8] COPY --link requirements.txt /home/nonroot/main/
+#22 merging 0.0s done
+#22 DONE 0.0s
+
+#16 \[linux/arm64 final 4/5] RUN ["uv", "pip", "show", "--no-cache-dir", "clarifai"]
+#16 ...
+
+#23 \[linux/amd64 final 5/5] COPY --link --chown=65532:65532 --from=model-assets /home/nonroot/main /home/nonroot/main
+#23 DONE 0.0s
+
+#16 \[linux/arm64 final 4/5] RUN ["uv", "pip", "show", "--no-cache-dir", "clarifai"]
+#16 1.031 Using Python 3.11.14 environment at: /venv
+#16 1.079 Name: clarifai
+#16 1.079 Version: 11.10.2
+#16 1.079 Location: /venv/lib/python3.11/site-packages
+#16 1.079 Requires: aiohttp, clarifai-grpc, clarifai-protocol, click, fsspec, numpy, packaging, pillow, psutil, pydantic-core, pygments, pyyaml, requests, ruff, schema, tabulate, tqdm, uv
+#16 1.080 Required-by: clarifai-protocol
+#16 DONE 1.1s
+
+#24 \[linux/arm64 final 5/5] COPY --link --chown=65532:65532 --from=model-assets /home/nonroot/main /home/nonroot/main
+#24 DONE 0.0s
+
+#25 exporting to image
+#25 exporting layers |  thread=8349786304 
+[INFO] 14:08:54.513161 #25 exporting layers 6.6s done
+#25 exporting manifest sha256:************7702 done
+#25 exporting config sha256:************62fc done
+#25 exporting manifest sha256:************1f5e done
+#25 exporting config sha256:************4138 done
+#25 exporting manifest list sha256:************f85a done
+#25 pushing layers
+#25 ...
+
+#26 \[auth] sharing credentials for 891377382885.dkr.ecr.us-east-1.amazonaws.com
+#26 DONE 0.0s
+
+#25 exporting to image |  thread=8349786304 
+[INFO] 14:08:58.587380 #25 pushing layers 2.7s done
+#25 pushing manifest for ****/prod/pytorch:****829b503e725d@sha256:************f85a
+#25 pushing manifest for ****/prod/pytorch:****829b503e725d@sha256:************f85a 1.0s done
+#25 DONE 10.3s
+2025-11-20 11:08:55.012710 INFO: Done building image!!! |  thread=8349786304 
+[INFO] 14:08:58.588026 Model build complete! |  thread=8349786304 
+[INFO] 14:08:58.588121 Build time elapsed 27.0s) |  thread=8349786304 
+[INFO] 14:08:58.588216 Check out the model at https://clarifai.com/alfrick/my-models/models/friday20th-two version: ffb9c659ead240b69a5f829b503e725d |  thread=8349786304 
+[INFO] 14:08:58.640505 
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 # Here is a code snippet to use this model:
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-                 |  thread=2540
-[INFO] 16:53:50.108847
-# Clarifai Model Client Script
+                 |  thread=8349786304 
+[INFO] 14:08:58.640586 # Clarifai Model Client Script
 # Set the environment variables `CLARIFAI_DEPLOYMENT_ID` and `CLARIFAI_PAT` to run this script.
 # Example usage:
 import os
@@ -105,51 +400,63 @@ import os
 from clarifai.client import Model
 from clarifai.runners.utils import data_types
 
-model = Model("https://clarifai.com/alfrick/upload-models-2/models/new2",
-    deployment_id = os.environ['CLARIFAI_DEPLOYMENT_ID'], # Only needed for dedicated deployed models
- )
-
+model = Model(
+    "https://clarifai.com/alfrick/my-models/models/friday20th-two",
+    deployment_id=os.environ.get("CLARIFAI_DEPLOYMENT_ID", None),  # Only needed for dedicated deployed models
+    deployment_user_id=os.environ.get("CLARIFAI_DEPLOYMENT_USER_ID", None),  # Organization or user ID for deployment/nodepool
+)
 
 # Example model prediction from different model methods:
 
-response = model.predict(text1="What is the future of AI?")
+response = model.predict(
+    text1="What is the future of AI?",
+)
 print(response)
 
-response = model.generate(text1="What is the future of AI?")
+response = model.generate(
+    text1="What is the future of AI?",
+)
 for res in response:
     print(res)
 
-response = model.stream(input_iterator=iter([What is the future of AI?]))
+response = model.stream(
+    input_iterator=iter(['What is the future of AI?']),
+)
+ |  thread=8349786304 
+[INFO] 14:08:58.640757 
 
- |  thread=2540
-Do you want to deploy the model? (y/n): y
-[INFO] 16:53:59.722256 Checking for available compute clusters... |  thread=2540
-[INFO] 16:54:01.175314 Available compute clusters: |  thread=2540
-[INFO] 16:54:01.175314 1. new-cluster () |  thread=2540
-[INFO] 16:54:01.175314 2. local-dev-compute-cluster (Default Local Dev Compute Cluster) |  thread=2540
-Choose a compute cluster (1-2) or 'n' to create a new one: n
-[INFO] 16:54:23.170187 Please create a new compute cluster by visiting: https://clarifai.com/settings/compute/new |  thread=2540
-Do you want to open the compute cluster creation page in your browser? (y/n): y
-After creating the compute cluster, press Enter to continue...
-[INFO] 16:56:17.225197 Re-checking for available compute clusters... |  thread=2540
-[INFO] 16:58:37.998573 Available compute clusters: |  thread=2540
-[INFO] 16:58:38.002603 1. new-cluster2 () |  thread=2540
-[INFO] 16:58:38.002603 2. new-cluster () |  thread=2540
-[INFO] 16:58:38.002603 3. local-dev-compute-cluster (Default Local Dev Compute Cluster) |  thread=2540
-Choose a compute cluster (1-3): 1
-[INFO] 16:58:52.048631 Checking for available nodepools in compute cluster 'new-cluster2'... |  thread=2540
-[INFO] 16:58:53.611561 Available nodepools: |  thread=2540
-[INFO] 16:58:53.613665 1. new-nodepool2 () |  thread=2540
-Choose a nodepool (1-1) or 'n' to create a new one: n
-[INFO] 16:58:59.948120 Please create a new nodepool by visiting: https://clarifai.com/settings/compute/new-cluster2/nodepools/new |  thread=2540
-Do you want to open the nodepool creation page in your browser? (y/n): y
-After creating the nodepool, press Enter to continue...
-[INFO] 17:00:27.299095 Re-checking for available nodepools in compute cluster 'new-cluster2'... |  thread=2540
-[INFO] 17:00:28.105393 Available nodepools: |  thread=2540
-[INFO] 17:00:28.110061 1. new-nodepool3 () |  thread=2540
-[INFO] 17:00:28.112077 2. new-nodepool2 () |  thread=2540
-Choose a nodepool (1-2): 1
-[INFO] 17:00:33.084285 Please create a new deployment by visiting: https://clarifai.com/settings/compute/deployments/new?computeClusterId=new-cluster2&nodePoolId=new-nodepool3 |  thread=2540
-Do you want to open the deployment creation page in your browser? (y/n): y
-[INFO] 17:00:38.341840 After creating the deployment, your model will be ready for inference! |  thread=2540
-[INFO] 17:00:38.343856 You can always return to view your deployments at: https://clarifai.com/settings/compute/deployments/new?computeClusterId=new-cluster2&nodePoolId=new-nodepool3 |  thread=2540
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                 |  thread=8349786304 
+
+🔶 Do you want to deploy the model? [Y/n]: y
+
+🚀 Model Deployment
+
+🖥️  Available Compute Clusters:
+1. advanced-cluster-au64  –  No description
+Select compute cluster (number): 1
+
+📦  Available Nodepools:
+1. advanced-nodepool-ncz5  –  No description
+Select nodepool (number): 1
+
+⌨️  Enter Deployment Configuration:
+Enter deployment ID [deploy-friday20th-two-b74f6d]: 
+Enter minimum replicas [1]: 1
+Enter maximum replicas [5]: 5
+
+⏳ Deploying model...
+[INFO] 14:15:25.845466 Deployment with ID 'deploy-friday20th-two-b74f6d' is created:
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-11.10.2-26228389300b4ecb822cd801d35ef19b"
+ |  thread=8349786304 
+✅ Deployment 'deploy-friday20th-two-b74f6d' successfully created for model 'friday20th-two' with version 'ffb9c659ead240b69a5f829b503e725d'.
+Model deployed successfully! You can test it now.
+
+🗑️ Do you want to backtrack and clean up? [Y/n]: y
+
+🔄 Starting backtrack process...
+Do you want to delete the deployment? [Y/n]: n
+Do you want to delete the model version? [y/N]: n
