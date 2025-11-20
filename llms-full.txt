@@ -3265,6 +3265,8 @@ import CO7Text from "!!raw-loader!../../../../code_snippets/python-sdk/compute-o
 import CO8 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_8.py";
 import CO9 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_9.py";
 import C10 from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_10.py";
+import CO9Output from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_9_output.txt";
+import CO8Output from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/pythonic_8_output.txt";
 
 import RawProtobuf from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/raw_protobuf.py";
 import RawProtobufOutput from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/raw_protobuf_output.txt";
@@ -3491,14 +3493,22 @@ Here’s how to make a corresponding unary-stream predict call from the client s
 
     {Mask3}
 
+## Stream-Stream Predict Call
+
+This call enables bidirectional streaming of both inputs and outputs, making it ideal for real-time applications and processing large datasets.
+
+In this setup, multiple inputs can be continuously streamed to the model, while predictions are returned in real time. It’s especially useful for use cases like live video analysis or streaming sensor data.
+
+### Text Inputs
+
+Here is an example of a model signature configured on the server side for handling text inputs:
+
     @ModelClass.method
   def stream(self, input_iterator: Iterator[str]) -> Iterator[str]:
 
 Here’s how you can make a corresponding stream-stream predict call from the client side:
 
     {CO7Text}
-
--->
 
 ### Audio Inputs
 
@@ -3510,6 +3520,14 @@ def transcribe_audio(self, audio: Iterator[Audio]) -> Iterator[Text]:
 Here’s how you can make a corresponding stream-stream predict call from the client side:
 
     {CO7}
+
+## Multimodal Predictions
+
+You can make predictions using models that support multimodal inputs, such as a combination of images and text. 
+
+Here is an example:
+
+    {C10}
 
 ## Batch Prediction Handling
 
@@ -3525,36 +3543,21 @@ This means you can pass either a single input or a list of inputs, and the syste
 
 ### Text Inputs
 
-Here is an example of a model signature configured on the server side for handling text inputs:
-
-    class TextClassifier(ModelClass):
-  @ModelClass.method
-  def predict(self, text: Text) -> float:
-    """Single text classification (automatically batched)"""
-    return self.model(text.text)
-
-Here’s how you can perform batch predictions with text inputs from the client side:
+Here’s how you can perform batch predictions with text inputs.
 
     {CO9}
 
+  Example Output
+    {CO9Output}
+
 ### Image Inputs
 
-Here is an example of a model signature configured on the server side for handling image inputs:
-
-    @ModelClass.method
-def predict_image(self, image: Image) -> Dict[str, float]:
-
-Here’s how you can perform batch predictions with image inputs from the client side:
+Here’s how you can perform batch predictions with image inputs.
 
     {CO8}
 
-## Multimodal Predictions
-
-You can make predictions using models that support multimodal inputs, such as a combination of images and text. 
-
-Here is an example:
-
-    {C10}
+  Example Output
+    {CO8Output}
 
 ## Tool Calling
 
@@ -5773,7 +5776,17 @@ Install the latest version of the `clarifai` Python package. This will also inst
 
      pip install --upgrade clarifai 
 
-### Set up Docker or a Virtual Environment
+### Set Up Cluster and Nodepool
+
+To run reliably and efficiently, your model requires a dedicated compute environment consisting of a [cluster and a nodepool](https://docs.clarifai.com/compute/deployments/clusters-nodepools/).
+
+Once your model is uploaded to the Clarifai platform, you need to deploy it to an existing compute environment.
+
+> **Note:** A cluster is the foundation of your compute environment, while a nodepool is a single compute node or a group of nodes within a cluster that provides the resources your model requires.
+
+You can follow [this guide](https://docs.clarifai.com/getting-started/set-up-compute) to set up your compute environment fast.
+
+### Set Up Docker or a Virtual Environment
 
 To test, run, and upload your model, you need to set up either a Docker container or a Python virtual environment. This ensures proper dependency management and prevents conflicts in your project.  
 
@@ -5984,7 +5997,7 @@ We recommend using either `torch==2.5.1` or `torch==2.4.1`. If your model requir
 
 Before uploading your model to the Clarifai platform, it's important to test it locally to catch any typos or misconfigurations in the code. 
 
-Learn how to  run and test your models locally [here](https://docs.clarifai.com/compute/local-runners/). 
+Learn how to  run and test your models locally [here](https://docs.clarifai.com/compute/upload/test-locally). 
 
 ## Step 4: Upload the Model to Clarifai
 
@@ -6020,13 +6033,15 @@ To do this, use the `--skip_dockerfile` flag. This tells the CLI to skip automat
 
 ## Step 5: Deploy the Model
 
-After you've successfully uploaded your model to the Clarifai platform, the terminal will guide you through the deployment process, getting your model ready for inference. 
+After your model is successfully uploaded to the Clarifai platform, the terminal will walk you through the deployment process to prepare it for inference.
 
-You can follow the prompts to:
+Follow the on-screen prompts to:
 
-* **[Set up a cluster](https://docs.clarifai.com/compute/deployments/clusters-nodepools)** – This serves as the overarching computational environment.
-* **Create a nodepool** – A nodepool is a group of compute nodes within your cluster that provides the resources needed to run your model.
-* **[Deploy your model](https://docs.clarifai.com/compute/deployments/deploy-model)** – Once your nodepool is set up, you can deploy your model, making it available to process prediction requests.
+- Choose an existing cluster and nodepool where your model will run.
+
+- Specify the deployment configuration, including defining the minimum and maximum number of [replicas](https://docs.clarifai.com/compute/deployments/deploy-model#model-replica) to control scalability. Take note of the generated `deployment_id`.
+
+> **Note:** After completing the setup, you can backtrack to adjust these settings or clean up resources later if needed.
 
   Build Logs Example
 
@@ -6056,15 +6071,13 @@ You can make a [unary-stream](https://docs.clarifai.com/compute/models/inference
 
     {PredictOutput2}
 
-### Stream-Stream Predict Call
-
-You can make a [stream-stream](https://docs.clarifai.com/compute/models/inference/api/#stream-stream-predict-call) predict call using the model. 
-
      {StreamStreamPredict} 
 
   Example Output
 
     {PredictOutput3}
+
+-->
 
 ## Additional Examples
 
@@ -26534,6 +26547,16 @@ Install the latest version of the `clarifai` Python SDK. This also installs the 
 
     pip install --upgrade clarifai
 
+### Set Up Cluster and Nodepool
+
+Setting up a [cluster and nodepool](https://docs.clarifai.com/compute/deployments/clusters-nodepools) creates the dedicated compute environment your model needs to run reliably and efficiently.
+
+After uploading your model to the Clarifai platform, you'll need to deploy it to the already created compute environment.
+
+> **Note:** A cluster forms the foundation of your compute environment, while a nodepool is a single compute node or a group of compute nodes within that cluster that provides the resources required to run your model.
+
+You can learn how to set up your compute environment fast [here](https://docs.clarifai.com/getting-started/set-up-compute).
+
 ## Step 2: Create Files
 
 :::tip
@@ -26586,13 +26609,15 @@ Once your custom model is ready, upload it to the Clarifai platform by navigatin
 
 ## Step 4: Deploy the Model
 
-After successfully uploading your model to the Clarifai platform, the terminal will prompt you to proceed with deployment and set up your model for inference.
+Once your model is successfully uploaded to the Clarifai platform, the terminal will guide you through the deployment process to prepare your model for inference.
 
-Follow the prompts to:
+Follow the on-screen prompts to:
 
-* **[Set up a cluster](https://docs.clarifai.com/compute/deployments/clusters-nodepools)** – This serves as the foundation of your compute environment.
-* **Create a nodepool** – A nodepool is a group of compute nodes within your cluster that provides the resources needed to run your model.
-* **[Deploy your model](https://docs.clarifai.com/compute/deployments/deploy-model)** – Once the nodepool is ready, deploy your model to make it available for inference.
+- Choose an existing cluster and nodepool where your model will run.
+
+- Provide the deployment configuration, including the minimum and maximum number of [replicas](https://docs.clarifai.com/compute/deployments/deploy-model#model-replica) to manage your model’s scalability. Take note of the created `deployment_id`.
+
+> **Note:** Once the setup is complete, you can backtrack to modify these configurations or clean up the deployment resources at any time.
 
   Build Logs Example
     {BuildLogsExample}
