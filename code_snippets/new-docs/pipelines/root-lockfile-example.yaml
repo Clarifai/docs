@@ -1,0 +1,34 @@
+pipeline:
+  id: hello-world-pipeline
+  user_id: alfrick
+  app_id: pipelines-1
+  version_id: 48862434906f482e94a2ec638a4233a1
+  orchestration_spec:
+    argo_orchestration_spec: |
+      apiVersion: argoproj.io/v1alpha1
+      kind: Workflow
+      spec:
+        arguments:
+          parameters:
+          - name: input_text
+            value: Input Text Here
+        entrypoint: sequence
+        templates:
+        - name: sequence
+          steps:
+          - - arguments:
+                parameters:
+                - name: input_text
+                  value: '{{workflow.parameters.input_text}}'
+              name: step-0
+              templateRef:
+                name: users/alfrick/apps/pipelines-1/pipeline_steps/stepA/versions/36e752e546334fa28d73bcbdc86d37a7
+                template: users/alfrick/apps/pipelines-1/pipeline_steps/stepA/versions/36e752e546334fa28d73bcbdc86d37a7
+          - - arguments:
+                parameters:
+                - name: input_text
+                  value: '{{workflow.parameters.input_text}}'
+              name: step-1
+              templateRef:
+                name: users/alfrick/apps/pipelines-1/pipeline_steps/stepB/versions/5e93c74ef8ae456ab353aa5e60e46f97
+                template: users/alfrick/apps/pipelines-1/pipeline_steps/stepB/versions/5e93c74ef8ae456ab353aa5e60e46f97

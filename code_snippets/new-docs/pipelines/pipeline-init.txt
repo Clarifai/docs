@@ -1,0 +1,24 @@
+clarifai pipeline init
+Welcome to Clarifai Pipeline Initialization!
+Please provide the following information:
+User ID: alfrick
+App ID: pipelines-1
+Pipeline ID [hello-world-pipeline]: 
+Number of pipeline steps [2]: 
+Name for step 1 [stepA]: 
+Name for step 2 [stepB]: 
+
+Creating pipeline 'hello-world-pipeline' with steps: stepA, stepB
+[INFO] 08:25:06.765535 Created /Users/macbookpro/Desktop/pipelines/one/config.yaml |  thread=8329666752 
+[INFO] 08:25:06.766398 Created /Users/macbookpro/Desktop/pipelines/one/README.md |  thread=8329666752 
+[INFO] 08:25:06.767111 Created /Users/macbookpro/Desktop/pipelines/one/stepA/config.yaml |  thread=8329666752 
+[INFO] 08:25:06.767417 Created /Users/macbookpro/Desktop/pipelines/one/stepA/requirements.txt |  thread=8329666752 
+[INFO] 08:25:06.768022 Created /Users/macbookpro/Desktop/pipelines/one/stepA/1/pipeline_step.py |  thread=8329666752 
+[INFO] 08:25:06.768514 Created /Users/macbookpro/Desktop/pipelines/one/stepB/config.yaml |  thread=8329666752 
+[INFO] 08:25:06.768764 Created /Users/macbookpro/Desktop/pipelines/one/stepB/requirements.txt |  thread=8329666752 
+[INFO] 08:25:06.769000 Created /Users/macbookpro/Desktop/pipelines/one/stepB/1/pipeline_step.py |  thread=8329666752 
+[INFO] 08:25:06.769042 Pipeline initialization complete in /Users/macbookpro/Desktop/pipelines/one |  thread=8329666752 
+[INFO] 08:25:06.769080 Next steps: |  thread=8329666752 
+[INFO] 08:25:06.769116 1. Implement your pipeline step logic in the generated pipeline_step.py files |  thread=8329666752 
+[INFO] 08:25:06.769151 2. Add dependencies to requirements.txt files as needed |  thread=8329666752 
+[INFO] 08:25:06.769187 3. Run 'clarifai pipeline upload config.yaml' to upload your pipeline |  thread=8329666752 

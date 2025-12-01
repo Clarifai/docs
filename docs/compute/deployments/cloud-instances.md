@@ -1,7 +1,6 @@
 ---
 description: Learn about the instance types we support
 sidebar_position: 5
-pagination_next: null
 ---
 
 # Supported Cloud Instances

@@ -1,0 +1,119 @@
+clarifai pipeline run --compute_cluster_id advanced-cluster-b4z7 --nodepool_id advanced-nodepool-y43h
+[INFO] 11:14:29.351647 Found config-lock.yaml, using it as default config source |  thread=8329666752 
+[INFO] 11:14:29.372765 Starting pipeline run for pipeline hello-world-pipeline |  thread=8329666752 
+---
+[INFO] 11:16:32.978439 Pipeline run status: 64001 (JOB_RUNNING) |  thread=8329666752 
+[INFO] 11:16:32.978534 Pipeline run in progress: 64001 (JOB_RUNNING) |  thread=8329666752 
+[INFO] 11:16:45.383997 [LOG] time="2025-11-27T08:16:16.670Z" level=info msg="Starting Workflow Executor" version=v3.6.2
+time="2025-11-27T08:16:16.672Z" level=info msg="Using executor retry strategy" Duration=1s Factor=1.6 Jitter=0.5 Steps=5
+time="2025-11-27T08:16:16.672Z" level=info msg="Executor initialized" deadline="0001-01-01 00:00:00 +0000 UTC" includeScriptOutput=false namespace=prod-alfrick podName=cl-****65fa78cdf145-cl-****faeb11d525aa-4115062186 templateName=cl-****faeb11d525aa version="&Version{Version:v3.6.2,BuildDate:2024-12-02T14:13:35Z,GitCommit:********,GitTag:v3.6.2,GitTreeState:clean,GoVersion:go1.23.3,Compiler:gc,Platform:linux/amd64,}"
+time="2025-11-27T08:16:16.687Z" level=info msg="Starting deadline monitor"
+{"msg": "11.10.2", "@timestamp": "2025-11-27T08:16:28.188937Z", "filename": "pipeline_step.py", "stack_info": null, "lineno": 12, "taskName": null, "level": "info"}
+{"msg": "stepA processed: Input Text Here", "@timestamp": "2025-11-27T08:16:28.189087Z", "filename": "pipeline_step.py", "stack_info": null, "lineno": 15, "taskName": null, "level": "info"}
+time="2025-11-27T08:16:28.803Z" level=info msg="sub-process exited" argo=true error="<nil>"
+time="2025-11-27T08:16:29.698Z" level=info msg="Main container completed" error="<nil>"
+time="2025-11-27T08:16:29.698Z" level=info msg="No Script output reference in workflow. Capturing script output ignored"
+time="2025-11-27T08:16:29.698Z" level=info msg="No output parameters"
+time="2025-11-27T08:16:29.698Z" level=info msg="No output artifacts"
+time="2025-11-27T08:16:29.721Z" level=info msg="Alloc=17269 TotalAlloc=21042 Sys=30805 NumGC=3 Goroutines=8" |  thread=8329666752 
+[INFO] 11:16:45.384670 Pipeline run monitoring... (elapsed 129.5s) |  thread=8329666752 
+[INFO] 11:16:45.384850 Pipeline run status: 64001 (JOB_RUNNING) |  thread=8329666752 
+[INFO] 11:16:45.384979 Pipeline run in progress: 64001 (JOB_RUNNING) |  thread=8329666752 
+[INFO] 11:16:58.557830 [LOG] time="2025-11-27T08:16:40.798Z" level=info msg="Starting Workflow Executor" version=v3.6.2
+time="2025-11-27T08:16:40.801Z" level=info msg="Using executor retry strategy" Duration=1s Factor=1.6 Jitter=0.5 Steps=5
+time="2025-11-27T08:16:40.801Z" level=info msg="Executor initialized" deadline="0001-01-01 00:00:00 +0000 UTC" includeScriptOutput=false namespace=prod-alfrick podName=cl-****65fa78cdf145-cl-****82ec90ebac58-2572335262 templateName=cl-****82ec90ebac58 version="&Version{Version:v3.6.2,BuildDate:2024-12-02T14:13:35Z,GitCommit:********,GitTag:v3.6.2,GitTreeState:clean,GoVersion:go1.23.3,Compiler:gc,Platform:linux/amd64,}"
+time="2025-11-27T08:16:40.814Z" level=info msg="Starting deadline monitor"
+{"msg": "11.10.2", "@timestamp": "2025-11-27T08:16:42.679105Z", "filename": "pipeline_step.py", "stack_info": null, "lineno": 12, "taskName": null, "level": "info"}
+{"msg": "stepB processed: Input Text Here", "@timestamp": "2025-11-27T08:16:42.679306Z", "filename": "pipeline_step.py", "stack_info": null, "lineno": 15, "taskName": null, "level": "info"}
+time="2025-11-27T08:16:43.308Z" level=info msg="sub-process exited" argo=true error="<nil>"
+time="2025-11-27T08:16:43.815Z" level=info msg="Main container completed" error="<nil>"
+time="2025-11-27T08:16:43.815Z" level=info msg="No Script output reference in workflow. Capturing script output ignored"
+time="2025-11-27T08:16:43.815Z" level=info msg="No output parameters"
+time="2025-11-27T08:16:43.815Z" level=info msg="No output artifacts"
+time="2025-11-27T08:16:43.890Z" level=info msg="Alloc=17164 TotalAlloc=20956 Sys=30805 NumGC=3 Goroutines=8"
+time="2025-11-27T08:16:43.897Z" level=info msg="Deadline monitor stopped"
+time="2025-11-27T08:16:43.898Z" level=info msg="stopping progress monitor (context done)" error="context canceled" |  thread=8329666752 
+[INFO] 11:16:58.558881 Pipeline run monitoring... (elapsed 142.7s) |  thread=8329666752 
+[INFO] 11:16:58.559035 Pipeline run status: 64001 (JOB_RUNNING) |  thread=8329666752 
+[INFO] 11:16:58.559159 Pipeline run in progress: 64001 (JOB_RUNNING) |  thread=8329666752 
+[INFO] 11:17:10.044546 Pipeline run monitoring... (elapsed 154.2s) |  thread=8329666752 
+[INFO] 11:17:10.044669 Pipeline run status: 64002 (JOB_COMPLETED) |  thread=8329666752 
+[INFO] 11:17:10.044715 Pipeline run completed successfully! |  thread=8329666752 
+{
+  "status": "success",
+  "pipeline_version_run": {
+    "id": "e8c41c0b6d334daba757a73e99ef0e2d",
+    "pipeline_version": {
+      "id": "48862434906f482e94a2ec638a4233a1",
+      "app_id": "pipelines-1",
+      "user_id": "alfrick",
+      "orchestration_spec": {
+        "argo_orchestration_spec": {
+          "api_version": "argoproj.io/v1alpha1",
+          "spec_json": "{\"apiVersion\": \"argoproj.io/v1alpha1\", \"kind\": \"Workflow\", \"spec\": {\"entrypoint\": \"sequence\", \"arguments\": {\"parameters\": [{\"name\": \"input_text\", \"value\": \"Input Text Here\"}]}, \"templates\": [{\"name\": \"sequence\", \"steps\": [[{\"name\": \"step-0\", \"templateRef\": {\"name\": \"users/alfrick/apps/pipelines-1/pipeline_steps/stepA/versions/36e752e546334fa28d73bcbdc86d37a7\", \"template\": \"users/alfrick/apps/pipelines-1/pipeline_steps/stepA/versions/36e752e546334fa28d73bcbdc86d37a7\"}, \"arguments\": {\"parameters\": [{\"name\": \"input_text\", \"value\": \"{{workflow.parameters.input_text}}\"}]}}], [{\"name\": \"step-1\", \"templateRef\": {\"name\": \"users/alfrick/apps/pipelines-1/pipeline_steps/stepB/versions/5e93c74ef8ae456ab353aa5e60e46f97\", \"template\": \"users/alfrick/apps/pipelines-1/pipeline_steps/stepB/versions/5e93c74ef8ae456ab353aa5e60e46f97\"}, \"arguments\": {\"parameters\": [{\"name\": \"input_text\", \"value\": \"{{workflow.parameters.input_text}}\"}]}}]]}]}}"
+        }
+      },
+      "pipeline_id": "hello-world-pipeline",
+      "created_at": "2025-11-26T14:15:51.680568Z",
+      "modified_at": "2025-11-26T14:15:51.680568Z"
+    },
+    "nodepools": [
+      {
+        "id": "advanced-nodepool-y43h",
+        "created_at": "2025-11-27T06:02:02.006900Z",
+        "modified_at": "2025-11-27T06:02:02.006900Z",
+        "node_capacity_type": {
+          "capacity_types": [
+            "ON_DEMAND_TYPE"
+          ]
+        },
+        "instance_types": [
+          {
+            "id": "g6e.xlarge",
+            "description": "g6e.xlarge",
+            "compute_info": {
+              "cpu_memory": "29033Mi",
+              "num_accelerators": 1,
+              "accelerator_memory": "46068Mi",
+              "accelerator_type": [
+                "NVIDIA-L40S"
+              ],
+              "cpu_limit": "3535m"
+            },
+            "price": "65.000000",
+            "cloud_provider": {
+              "id": "aws",
+              "name": "aws"
+            },
+            "region": "us-east-1",
+            "feature_flag_group": "ComputeResourceMedium"
+          }
+        ],
+        "max_instances": 1,
+        "visibility": {
+          "gettable": "PRIVATE"
+        },
+        "enforced_max_instances": 1
+      }
+    ],
+    "orchestration_status": {
+      "argo_status": {
+        "status": "{\"phase\":\"Succeeded\",\"startedAt\":\"2025-11-27T08:14:41Z\",\"finishedAt\":\"2025-11-27T08:16:48Z\",\"progress\":\"2/2\",\"nodes\":{\"cl-71575952e4355045ad2965fa78cdf145\":{\"id\":\"cl-71575952e4355045ad2965fa78cdf145\",\"name\":\"cl-71575952e4355045ad2965fa78cdf145\",\"displayName\":\"cl-71575952e4355045ad2965fa78cdf145\",\"type\":\"Steps\",\"templateName\":\"sequence\",\"templateScope\":\"local/cl-71575952e4355045ad2965fa78cdf145\",\"phase\":\"Succeeded\",\"startedAt\":\"2025-11-27T08:14:41Z\",\"finishedAt\":\"2025-11-27T08:16:48Z\",\"progress\":\"2/2\",\"resourcesDuration\":{\"cpu\":1,\"memory\":26},\"children\":[\"cl-71575952e4355045ad2965fa78cdf145-3359065953\"],\"outboundNodes\":[\"cl-71575952e4355045ad2965fa78cdf145-2572335262\"]},\"cl-71575952e4355045ad2965fa78cdf145-2572335262\":{\"id\":\"cl-71575952e4355045ad2965fa78cdf145-2572335262\",\"name\":\"cl-71575952e4355045ad2965fa78cdf145[1].step-1\",\"displayName\":\"step-1\",\"type\":\"Pod\",\"templateRef\":{\"name\":\"cl-d0a20398d7e446f0512982ec90ebac58\",\"template\":\"cl-d0a20398d7e446f0512982ec90ebac58\"},\"templateScope\":\"local/cl-71575952e4355045ad2965fa78cdf145\",\"phase\":\"Succeeded\",\"boundaryID\":\"cl-71575952e4355045ad2965fa78cdf145\",\"startedAt\":\"2025-11-27T08:16:38Z\",\"finishedAt\":\"2025-11-27T08:16:43Z\",\"progress\":\"1/1\",\"resourcesDuration\":{\"cpu\":0,\"memory\":8},\"inputs\":{\"parameters\":[{\"name\":\"input_text\",\"default\":\"\",\"value\":\"Input Text Here\",\"description\":\"Text input for processing\"},{\"name\":\"CLARIFAI_API_BASE\",\"value\":\"api.clarifai.com:443\"},{\"name\":\"CLARIFAI_USER_ID\",\"value\":\"alfrick\"},{\"name\":\"CLARIFAI_COMPUTE_CLUSTER_ID\",\"value\":\"advanced-cluster-b4z7\"},{\"name\":\"CLARIFAI_NODEPOOL_ID\",\"value\":\"advanced-nodepool-y43h\"},{\"name\":\"CLARIFAI_PIPELINE_VER_RUN_ID\",\"value\":\"e8c41c0b6d334daba757a73e99ef0e2d\"}]},\"outputs\":{\"exitCode\":\"0\"},\"hostNodeName\":\"ip-10-7-183-105.ec2.internal\"},\"cl-71575952e4355045ad2965fa78cdf145-3292102572\":{\"id\":\"cl-71575952e4355045ad2965fa78cdf145-3292102572\",\"name\":\"cl-71575952e4355045ad2965fa78cdf145[1]\",\"displayName\":\"[1]\",\"type\":\"StepGroup\",\"templateScope\":\"local/cl-71575952e4355045ad2965fa78cdf145\",\"phase\":\"Succeeded\",\"boundaryID\":\"cl-71575952e4355045ad2965fa78cdf145\",\"startedAt\":\"2025-11-27T08:16:38Z\",\"finishedAt\":\"2025-11-27T08:16:48Z\",\"progress\":\"1/1\",\"resourcesDuration\":{\"cpu\":0,\"memory\":8},\"nodeFlag\":{},\"children\":[\"cl-71575952e4355045ad2965fa78cdf145-2572335262\"]},\"cl-71575952e4355045ad2965fa78cdf145-3359065953\":{\"id\":\"cl-71575952e4355045ad2965fa78cdf145-3359065953\",\"name\":\"cl-71575952e4355045ad2965fa78cdf145[0]\",\"displayName\":\"[0]\",\"type\":\"StepGroup\",\"templateScope\":\"local/cl-71575952e4355045ad2965fa78cdf145\",\"phase\":\"Succeeded\",\"boundaryID\":\"cl-71575952e4355045ad2965fa78cdf145\",\"startedAt\":\"2025-11-27T08:14:41Z\",\"finishedAt\":\"2025-11-27T08:16:38Z\",\"progress\":\"2/2\",\"resourcesDuration\":{\"cpu\":1,\"memory\":26},\"nodeFlag\":{},\"children\":[\"cl-71575952e4355045ad2965fa78cdf145-4115062186\"]},\"cl-71575952e4355045ad2965fa78cdf145-4115062186\":{\"id\":\"cl-71575952e4355045ad2965fa78cdf145-4115062186\",\"name\":\"cl-71575952e4355045ad2965fa78cdf145[0].step-0\",\"displayName\":\"step-0\",\"type\":\"Pod\",\"templateRef\":{\"name\":\"cl-4495e1a8eea2dae2dad6faeb11d525aa\",\"template\":\"cl-4495e1a8eea2dae2dad6faeb11d525aa\"},\"templateScope\":\"local/cl-71575952e4355045ad2965fa78cdf145\",\"phase\":\"Succeeded\",\"boundaryID\":\"cl-71575952e4355045ad2965fa78cdf145\",\"startedAt\":\"2025-11-27T08:14:41Z\",\"finishedAt\":\"2025-11-27T08:16:29Z\",\"progress\":\"1/1\",\"resourcesDuration\":{\"cpu\":1,\"memory\":18},\"inputs\":{\"parameters\":[{\"name\":\"input_text\",\"default\":\"\",\"value\":\"Input Text Here\",\"description\":\"Text input for processing\"},{\"name\":\"CLARIFAI_API_BASE\",\"value\":\"api.clarifai.com:443\"},{\"name\":\"CLARIFAI_USER_ID\",\"value\":\"alfrick\"},{\"name\":\"CLARIFAI_COMPUTE_CLUSTER_ID\",\"value\":\"advanced-cluster-b4z7\"},{\"name\":\"CLARIFAI_NODEPOOL_ID\",\"value\":\"advanced-nodepool-y43h\"},{\"name\":\"CLARIFAI_PIPELINE_VER_RUN_ID\",\"value\":\"e8c41c0b6d334daba757a73e99ef0e2d\"}]},\"outputs\":{\"exitCode\":\"0\"},\"children\":[\"cl-71575952e4355045ad2965fa78cdf145-3292102572\"],\"hostNodeName\":\"ip-10-7-183-105.ec2.internal\"}},\"storedTemplates\":{\"namespaced/cl-4495e1a8eea2dae2dad6faeb11d525aa/cl-4495e1a8eea2dae2dad6faeb11d525aa\":{\"name\":\"cl-4495e1a8eea2dae2dad6faeb11d525aa\",\"inputs\":{\"parameters\":[{\"name\":\"input_text\",\"default\":\"\",\"description\":\"Text input for processing\"},{\"name\":\"CLARIFAI_API_BASE\"},{\"name\":\"CLARIFAI_USER_ID\"},{\"name\":\"CLARIFAI_COMPUTE_CLUSTER_ID\"},{\"name\":\"CLARIFAI_NODEPOOL_ID\"},{\"name\":\"CLARIFAI_PIPELINE_VER_RUN_ID\"}]},\"outputs\":{},\"metadata\":{},\"container\":{\"name\":\"\",\"image\":\"data.clarifai.com/users/alfrick/pipeline_step_versions/36e752e546334fa28d73bcbdc86d37a7/image\",\"command\":[\"python\",\"/home/nonroot/main/1/pipeline_step.py\"],\"args\":[\"--input_text\",\"{{inputs.parameters.input_text}}\"],\"env\":[{\"name\":\"CLARIFAI_API_BASE\",\"value\":\"{{inputs.parameters.CLARIFAI_API_BASE}}\"},{\"name\":\"CLARIFAI_USER_ID\",\"value\":\"{{inputs.parameters.CLARIFAI_USER_ID}}\"},{\"name\":\"CLARIFAI_COMPUTE_CLUSTER_ID\",\"value\":\"{{inputs.parameters.CLARIFAI_COMPUTE_CLUSTER_ID}}\"},{\"name\":\"CLARIFAI_NODEPOOL_ID\",\"value\":\"{{inputs.parameters.CLARIFAI_NODEPOOL_ID}}\"},{\"name\":\"CLARIFAI_PIPELINE_VER_RUN_ID\",\"value\":\"{{inputs.parameters.CLARIFAI_PIPELINE_VER_RUN_ID}}\"},{\"name\":\"CLARIFAI_PAT\",\"valueFrom\":{\"secretKeyRef\":{\"name\":\"cl-a021ef5e66fb7933a00b83f07a07a835\",\"key\":\"clarifaiPAT\"}}}],\"resources\":{\"limits\":{\"cpu\":\"500m\",\"memory\":\"500Mi\"},\"requests\":{\"cpu\":\"500m\",\"memory\":\"500Mi\"}}}},\"namespaced/cl-d0a20398d7e446f0512982ec90ebac58/cl-d0a20398d7e446f0512982ec90ebac58\":{\"name\":\"cl-d0a20398d7e446f0512982ec90ebac58\",\"inputs\":{\"parameters\":[{\"name\":\"input_text\",\"default\":\"\",\"description\":\"Text input for processing\"},{\"name\":\"CLARIFAI_API_BASE\"},{\"name\":\"CLARIFAI_USER_ID\"},{\"name\":\"CLARIFAI_COMPUTE_CLUSTER_ID\"},{\"name\":\"CLARIFAI_NODEPOOL_ID\"},{\"name\":\"CLARIFAI_PIPELINE_VER_RUN_ID\"}]},\"outputs\":{},\"metadata\":{},\"container\":{\"name\":\"\",\"image\":\"data.clarifai.com/users/alfrick/pipeline_step_versions/5e93c74ef8ae456ab353aa5e60e46f97/image\",\"command\":[\"python\",\"/home/nonroot/main/1/pipeline_step.py\"],\"args\":[\"--input_text\",\"{{inputs.parameters.input_text}}\"],\"env\":[{\"name\":\"CLARIFAI_API_BASE\",\"value\":\"{{inputs.parameters.CLARIFAI_API_BASE}}\"},{\"name\":\"CLARIFAI_USER_ID\",\"value\":\"{{inputs.parameters.CLARIFAI_USER_ID}}\"},{\"name\":\"CLARIFAI_COMPUTE_CLUSTER_ID\",\"value\":\"{{inputs.parameters.CLARIFAI_COMPUTE_CLUSTER_ID}}\"},{\"name\":\"CLARIFAI_NODEPOOL_ID\",\"value\":\"{{inputs.parameters.CLARIFAI_NODEPOOL_ID}}\"},{\"name\":\"CLARIFAI_PIPELINE_VER_RUN_ID\",\"value\":\"{{inputs.parameters.CLARIFAI_PIPELINE_VER_RUN_ID}}\"},{\"name\":\"CLARIFAI_PAT\",\"valueFrom\":{\"secretKeyRef\":{\"name\":\"cl-a021ef5e66fb7933a00b83f07a07a835\",\"key\":\"clarifaiPAT\"}}}],\"resources\":{\"limits\":{\"cpu\":\"500m\",\"memory\":\"500Mi\"},\"requests\":{\"cpu\":\"500m\",\"memory\":\"500Mi\"}}}}},\"conditions\":[{\"type\":\"PodRunning\",\"status\":\"False\"},{\"type\":\"Completed\",\"status\":\"True\"}],\"resourcesDuration\":{\"cpu\":1,\"memory\":26},\"artifactRepositoryRef\":{\"default\":true,\"artifactRepository\":{}},\"artifactGCStatus\":{\"notSpecified\":true},\"taskResultsCompletionStatus\":{\"cl-71575952e4355045ad2965fa78cdf145-2572335262\":true,\"cl-71575952e4355045ad2965fa78cdf145-4115062186\":true}}"
+      },
+      "status": {
+        "code": "JOB_COMPLETED",
+        "description": "Argo workflow at phase: Succeeded, progress: 2/2, message: "
+      }
+    },
+    "user_id": "user-id",
+    "app_id": "pipelines-1",
+    "created_at": "2025-11-27T08:14:36.197820Z",
+    "modified_at": "2025-11-27T08:17:00.924518Z",
+    "orchestration_spec": {
+      "argo_orchestration_spec": {
+        "api_version": "argoproj.io/v1alpha1",
+        "spec_json": "{\"apiVersion\": \"argoproj.io/v1alpha1\", \"kind\": \"Workflow\", \"spec\": {\"entrypoint\": \"sequence\", \"arguments\": {\"parameters\": [{\"name\": \"input_text\", \"value\": \"Input Text Here\"}]}, \"templates\": [{\"name\": \"sequence\", \"steps\": [[{\"name\": \"step-0\", \"templateRef\": {\"name\": \"users/alfrick/apps/pipelines-1/pipeline_steps/stepA/versions/36e752e546334fa28d73bcbdc86d37a7\", \"template\": \"users/alfrick/apps/pipelines-1/pipeline_steps/stepA/versions/36e752e546334fa28d73bcbdc86d37a7\"}, \"arguments\": {\"parameters\": [{\"name\": \"input_text\", \"value\": \"{{workflow.parameters.input_text}}\"}]}}], [{\"name\": \"step-1\", \"templateRef\": {\"name\": \"users/alfrick/apps/pipelines-1/pipeline_steps/stepB/versions/5e93c74ef8ae456ab353aa5e60e46f97\", \"template\": \"users/alfrick/apps/pipelines-1/pipeline_steps/stepB/versions/5e93c74ef8ae456ab353aa5e60e46f97\"}, \"arguments\": {\"parameters\": [{\"name\": \"input_text\", \"value\": \"{{workflow.parameters.input_text}}\"}]}}]]}]}}"
+      }
+    }
+  }
+}

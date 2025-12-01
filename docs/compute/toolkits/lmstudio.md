@@ -89,6 +89,8 @@ For example, the command below initializes the default model ([LiquidAI/LFM2-1.2
 </TabItem>
 </Tabs>
 
+> **Note:** You can initialize a model in a specific location by passing a [`MODEL_PATH`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init). 
+
 <details>
   <summary>Example Output</summary>
   <CodeBlock className="language-text">{LMStudioInit}</CodeBlock>

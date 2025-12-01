@@ -1,20 +1,20 @@
 import os
 import litellm
 
-# Enable streaming
-response_stream = litellm.completion(
-    model="openai/https://clarifai.com/anthropic/completion/models/claude-sonnet-4",
+for chunk in litellm.completion(
+    model="clarifai/openai.chat-completion.gpt-oss-120b",
     api_key=os.environ["CLARIFAI_PAT"],  # Ensure CLARIFAI_PAT is set as an environment variable
-    api_base="https://api.clarifai.com/v2/ext/openai/v1",
+
+    # Message formatting follows OpenAI's schema: {"role": ..., "content": ...}
     messages=[
         {"role": "system", "content": "You are a friendly assistant."},
-        {"role": "user", "content": "Hey, how's it going? Tell me a short story about a space-faring cat."}
+        {"role": "user", "content": "Tell me a fun fact about space."}
     ],
-    stream=True  # Enable streaming
-)
 
-# Print the streamed output in real time
-for chunk in response_stream:
-    content = chunk.get("choices", [{}])[0].get("delta", {}).get("content")
-    if content:
-        print(content, end="", flush=True)
+    stream=True,       # Enable streaming responses
+    # Optional OpenAI-compatible parameters
+    temperature=0.7,   # Controls randomness
+    max_tokens=100     # Limits response length
+):
+    # Print incremental text as it arrives
+    print(chunk.choices[0].delta.get("content", ""), end="", flush=True)
