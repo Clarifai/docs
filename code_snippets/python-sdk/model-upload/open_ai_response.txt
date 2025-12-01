@@ -1,0 +1,70 @@
+ChatCompletion(
+    id='bf90c9f0a20e44d796780d35360d3951',
+    choices=[
+        Choice(
+            finish_reason='stop',
+            index=0,
+            logprobs=None,
+            message=ChatCompletionMessage(
+                content=(
+                    "Yer lookin' fer a way to check if a Python object be an instance "
+                    "o' a class, eh?\n\n"
+                    "In Python, ye can use the `type()` function or `isinstance()` method "
+                    "to determine if a variable be o' a certain type. Here be some ways "
+                    "to do it:\n\n"
+                    "### Method 1: Using `type()`\n\n"
+                    "```python\n"
+                    "x = \"Hello\"\n"
+                    "y = [1, 2, 3]\n\n"
+                    "if type(x) == str:\n"
+                    "    print(\"x is a string\")\n"
+                    "elif type(y) == list:\n"
+                    "    print(\"y is a list\")\n"
+                    "else:\n"
+                    "    print(\"Unknown type\")\n"
+                    "```\n\n"
+                    "### Method 2: Using `isinstance()`\n\n"
+                    "```python\n"
+                    "class Person:\n"
+                    "    def __init__(self, name):\n"
+                    "        self.name = name\n\n"
+                    "p = Person(\"Pirate\")\n"
+                    "if isinstance(p, Person):\n"
+                    "    print(\"p be an instance o' the Person class\")\n\n"
+                    "x = \"Hello\"\n"
+                    "y = [1, 2, 3]\n"
+                    "```\n\n"
+                    "### Method 3: Constructor Check with Class Definition (Not Recommended)\n\n"
+                    "```python\n"
+                    "class MyShip:\n"
+                    "    def __init__(self, speed):\n"
+                    "        self.speed = speed\n\n"
+                    "if obj is MyShip(some_speed):\n"
+                    "    print(f\"it's a ship made by {some_speed}\")\n"
+                    "else:\n"
+                    "    pass  # object is not of type MyShip.\n"
+                    "```\n\n"
+                    "Note: Python doesn’t use 'object' in the generic sense; everything is an instance of a class."
+                ),
+                refusal=None,
+                role='assistant',
+                annotations=None,
+                audio=None,
+                function_call=None,
+                tool_calls=None
+            )
+        )
+    ],
+    created=1764578049,
+    model='llama3.2:latest',
+    object='chat.completion',
+    service_tier=None,
+    system_fingerprint='fp_ollama',
+    usage=CompletionUsage(
+        completion_tokens=303,
+        prompt_tokens=45,
+        total_tokens=348,
+        completion_tokens_details=None,
+        prompt_tokens_details=None
+    )
+)

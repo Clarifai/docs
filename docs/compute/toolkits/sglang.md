@@ -120,6 +120,8 @@ You can customize or optimize the model by editing the generated files as needed
 </TabItem>
 </Tabs>
 
+> **Note:** You can initialize a model in a specific location by passing a [`MODEL_PATH`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init). 
+
 <details>
   <summary>Example Output</summary>
   <CodeBlock className="language-text">{SGLModelInit}</CodeBlock>

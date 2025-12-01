@@ -85,6 +85,8 @@ For example, here's how to initialize the [`llama3.2`](https://ollama.com/librar
 </TabItem>
 </Tabs>
 
+> **Note:** You can initialize a model in a specific location by passing a [`MODEL_PATH`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init). 
+
 <details>
   <summary>Example Output</summary>
     <CodeBlock className="language-text">{OllamaInit}</CodeBlock>

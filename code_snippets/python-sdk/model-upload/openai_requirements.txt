@@ -1,0 +1,10 @@
+# Clarifai SDK - required
+clarifai>=11.10.2
+openai
+
+# TODO: please fill in - add your model's dependencies here
+# Examples:
+# torch>=2.0.0
+# transformers>=4.30.0
+# numpy>=1.21.0
+# pillow>=9.0.0

@@ -1,19 +1,19 @@
 import os
-import litellm
+from litellm import completion
 
-response = litellm.completion(
-    model="openai/https://clarifai.com/anthropic/completion/models/claude-sonnet-4",
+response = completion(
+    model="clarifai/openai.chat-completion.gpt-oss-120b",
     api_key=os.environ["CLARIFAI_PAT"],  # Ensure CLARIFAI_PAT is set as an environment variable
-    api_base="https://api.clarifai.com/v2/ext/openai/v1",
-    # Message formatting is consistent with OpenAI's schema ({"role": ..., "content": ...}).
+
+    # Message formatting follows OpenAI's schema: {"role": ..., "content": ...}
     messages=[
         {"role": "system", "content": "You are a friendly assistant."},
         {"role": "user", "content": "Hey, how's it going?"}
     ],
-    # You can add OpenAI-compatible parameters here
-    temperature=0.7,         # Optional: controls randomness
-    max_tokens=100           # Optional: limits response length
+
+    # Optional OpenAI-compatible parameters
+    temperature=0.7,  # Controls randomness
+    max_tokens=100    # Limits response length
 )
 
-# Print the assistant's reply
 print(response['choices'][0]['message']['content'])

@@ -1,0 +1,17 @@
+build_info:
+  python_version: '3.12'
+hash:
+  algo: md5
+  value: f66785f39de8b22c68ee9c02929e7969
+id: 36e752e546334fa28d73bcbdc86d37a7
+pipeline_step:
+  app_id: pipelines-1
+  id: stepA
+  user_id: user-id
+pipeline_step_compute_info:
+  cpu_limit: 500m
+  cpu_memory: 500Mi
+  num_accelerators: 0
+pipeline_step_input_params:
+- description: Text input for processing
+  name: input_text

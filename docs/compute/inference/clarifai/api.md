@@ -105,13 +105,13 @@ You can then set the PAT as an environment variable using `CLARIFAI_PAT`. This a
 
 ## Prediction Tips
 
-#### Set up a Deployment
+#### Set Up Dedicated Deployment
 
-To use our Compute Orchestration capabilities, ensure your model is [deployed](https://docs.clarifai.com/compute/deployments/deploy-model). Then, specify the `deployment_id` parameter — alternatively, you can specify both `compute_cluster_id` and `nodepool_id`, as explained [here](https://docs.clarifai.com/compute/inference/#predict-with-compute-orchestration). 
+To use our dedicated Compute Orchestration capabilities, ensure your model is [deployed](https://docs.clarifai.com/compute/deployments/deploy-model). Then, specify the `deployment_id` parameter — alternatively, you can specify both `compute_cluster_id` and `nodepool_id`, as explained [here](https://docs.clarifai.com/compute/inference/#predict-with-compute-orchestration). 
 
 :::info
 
-For deployments owned by an organization, alongside the `deployment_id`, also provide the organization id as the `Model`'s `deployment_user_id`.
+For dedicated deployments owned by an organization, alongside the `deployment_id`, also provide the organization ID as the `Model`'s `deployment_user_id`.
 
 :::
 

@@ -1,0 +1,27 @@
+# Configuration file for your Clarifai model
+
+model:
+  id: "my-model"  # TODO: please fill in - replace with your model ID
+  user_id: "user-id"  # TODO: please fill in - replace with your user ID
+  app_id: "app_id"  # TODO: please fill in - replace with your app ID
+  model_type_id: "any-to-any"  # TODO: please fill in - replace if different model type ID
+
+build_info:
+  python_version: "3.12"
+
+# TODO: please fill in - adjust compute requirements for your model
+inference_compute_info:
+  cpu_limit: "1"  # TODO: please fill in - Amount of CPUs to use as a limit
+  cpu_memory: "1Gi"  # TODO: please fill in - Amount of CPU memory to use as a limit
+  cpu_requests: "0.5"  # TODO: please fill in - Amount of CPUs to use as a minimum
+  cpu_memory_requests: "512Mi"  # TODO: please fill in - Amount of CPU memory to use as a minimum
+  num_accelerators: 1  # TODO: please fill in - Amount of GPU/TPUs to use
+  accelerator_type: ["NVIDIA-*"]  # TODO: please fill in - type of accelerators requested
+  accelerator_memory: "1Gi"  # TODO: please fill in - Amount of accelerator/GPU memory to use as a minimum
+
+# TODO: please fill in (optional) - add checkpoints section if needed
+# checkpoints:
+#   type: "huggingface"  # supported type
+#   repo_id: "your-model-repo"  # for huggingface like openai/gpt-oss-20b
+#   # hf_token: "your-huggingface-token"  # if private repo
+#   when: "runtime"  # or "build", "upload"

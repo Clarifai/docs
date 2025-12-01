@@ -1,0 +1,5 @@
+clarifai==11.10.2
+# Add your pipeline step dependencies here
+# Example:
+# torch>=1.9.0
+# transformers>=4.20.0

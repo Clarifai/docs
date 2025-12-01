@@ -1,0 +1,20 @@
+clarifai login
+Enter your Clarifai user ID: user-id
+> To authenticate, you'll need a Personal Access Token (PAT).
+> You can create one from your account settings: https://clarifai.com/alfrick/settings/security
+
+Enter your Personal Access Token (PAT) value (or type "ENVVAR" to use an environment variable): ENVVAR
+
+> Verifying token...
+[INFO] 13:59:43.543035 Validating the Context Credentials... |  thread=8490328256 
+[INFO] 13:59:44.940556 ✅ Context is valid |  thread=8490328256 
+
+> Let's save these credentials to a new context.
+> You can have multiple contexts to easily switch between accounts or projects.
+
+Enter a name for this context [default]: 
+✅ Success! You are now logged in.
+Credentials saved to the 'default' context.
+
+💡 To switch contexts later, use `clarifai config use-context <name>`.
+[INFO] 13:59:46.641774 Login successful for user 'alfrick' in context 'default' |  thread=8490328256 

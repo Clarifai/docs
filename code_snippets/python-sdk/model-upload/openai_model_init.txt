@@ -1,0 +1,14 @@
+clarifai model init --model-type-id openai
+[INFO] 07:19:23.816900 Initializing model with default templates... |  thread=8490328256 
+Press Enter to continue...
+[INFO] 07:19:27.092345 Configuring OpenAI local runner... |  thread=8490328256 
+Enter port (default: 8000): 
+[INFO] 07:19:31.983567 Created /Users/macbookpro/Desktop/code3/three/1/model.py |  thread=8490328256 
+[INFO] 07:19:31.984366 Created /Users/macbookpro/Desktop/code3/three/requirements.txt |  thread=8490328256 
+[INFO] 07:19:31.984757 Created /Users/macbookpro/Desktop/code3/three/config.yaml |  thread=8490328256 
+[INFO] 07:19:31.984819 Model initialization complete in /Users/macbookpro/Desktop/code3/three |  thread=8490328256 
+[INFO] 07:19:31.984863 Next steps: |  thread=8490328256 
+[INFO] 07:19:31.984904 1. Search for '# TODO: please fill in' comments in the generated files |  thread=8490328256 
+[INFO] 07:19:31.984946 2. Update the model configuration in config.yaml |  thread=8490328256 
+[INFO] 07:19:31.984985 3. Add your model dependencies to requirements.txt |  thread=8490328256 
+[INFO] 07:19:31.985023 4. Implement your model logic in 1/model.py |  thread=8490328256 

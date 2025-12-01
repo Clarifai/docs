@@ -1,0 +1,92 @@
+---
+description: Orchestrate asynchronous, long-running, multi-step AI processes
+unlisted: true
+---
+
+# Pipelines
+**Orchestrate asynchronous, long-running, multi-step AI processes**
+<hr />
+
+Clarifai Pipelines let you design and run asynchronous, long-running, multi-step processes for complex AI and MLOps tasks. They act as the orchestration backbone for building advanced AI agents and managing end-to-end machine learning operations.
+
+Pipelines enable you to define, execute, and monitor container-based jobs directly on the Clarifai platform, giving you fine-grained control over each step.
+
+With Clarifai Pipelines, you get a scalable, end-to-end automation engine that simplifies and unifies your entire MLOps lifecycle.
+
+## Use Cases for Pipelines
+
+Clarifai Pipelines support a wide range of AI and MLOps workflows. Here are some common use cases:
+
+* **Automated MLOps workflows** — Build reliable, repeatable pipelines for data preparation, model training, evaluation, deployment, and monitoring. Pipelines integrate seamlessly with version control and CI/CD systems to support continuous experimentation and delivery.
+
+* **AI agent orchestration** —  Design, test, and deploy advanced AI agents that execute multi-step logic autonomously. Pipelines orchestrate [tool usage](https://docs.clarifai.com/compute/inference/open-ai/#tool-calling), LLM calls, and decision logic while managing state, external APIs, and long-running tasks that can execute for hours or even days.
+
+* **Asynchronous, long-running application tasks** — Add powerful backend capabilities to your applications without operational complexity. Pipelines make it easy to trigger and monitor tasks like large-scale batch processing, model fine-tuning, or complex data transformations.
+
+* **Complex workflow automation** — Orchestrate sophisticated, multi-stage AI workflows across multiple components and services. Pipelines provide built-in support for state management, fault tolerance, and scalable execution across distributed systems.
+
+## Quick Start
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+
+
+You can follow these steps to quickly get started with pipelines via the API. 
+
+### Get Credentials
+
+**1.** Go to the Clarifai platform and get your user ID, [app ID](https://docs.clarifai.com/create/applications/manage#app-overview), and Personal Access Token [(PAT)](https://docs.clarifai.com/control/authentication/pat). 
+
+Then, set your PAT as an environment variable:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="Unix-Like Systems">
+    <CodeBlock className="language-bash">export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE</CodeBlock>
+</TabItem>
+<TabItem value="bash2" label="Windows">
+    <CodeBlock className="language-bash">set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE</CodeBlock>
+</TabItem>
+</Tabs>
+
+**2.** You’ll also need to create a [compute cluster and nodepool](https://docs.clarifai.com/getting-started/set-up-compute) and get their IDs. 
+
+### Initialize a Pipeline Project
+
+Run the following command to create a new pipeline project in your current directory. Follow the prompts to provide the required details.
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai pipeline init</CodeBlock>
+</TabItem>
+</Tabs>
+
+### Upload the Pipeline
+
+Run the following command to upload the pipeline with associated pipeline steps to Clarifai.
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai pipeline upload</CodeBlock>
+</TabItem>
+</Tabs>
+
+### Run the Pipeline
+
+Run the following command to start the pipeline and monitor its progress until completion or timeout.
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    ```text
+    clarifai pipeline run --compute_cluster_id cluster_id_here --nodepool_id nodepool_id_here
+    ```
+</TabItem>
+</Tabs>
+
+
+
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>

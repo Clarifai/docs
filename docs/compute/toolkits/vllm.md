@@ -97,6 +97,8 @@ You can further customize or optimize the model by modifying the generated files
 </TabItem>
 </Tabs>
 
+> **Note:** You can initialize a model in a specific location by passing a [`MODEL_PATH`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init). 
+
 :::tip
 
 You can initialize any model [supported](https://docs.vllm.ai/en/v0.9.2/models/supported_models.html) by vLLM. If you want to initialize a specific vLLM model, use the `--model-name` flag.

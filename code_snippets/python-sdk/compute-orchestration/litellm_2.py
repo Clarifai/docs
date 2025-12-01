@@ -1,38 +1,42 @@
 import os
-import litellm
+from litellm import completion
 
-# Define the tool (function) the model can call
+# Define tools the model can call
 tools = [
     {
         "type": "function",
         "function": {
             "name": "get_weather",
-            "description": "Retrieve the current temperature for a given location.",
+            "description": "Get the current weather in a given location",
             "parameters": {
                 "type": "object",
                 "properties": {
                     "location": {
                         "type": "string",
-                        "description": "City and country, e.g., 'Tokyo, Japan'"
+                        "description": "City and state, e.g., 'San Francisco, CA'"
+                    },
+                    "unit": {
+                        "type": "string",
+                        "enum": ["celsius", "fahrenheit"]
                     }
                 },
-                "required": ["location"],
-                "additionalProperties": False
+                "required": ["location", "unit"]
             }
         }
     }
 ]
 
-# Send the request to a Clarifai-hosted model using LiteLLM
-response = litellm.completion(
-    model="openai/https://clarifai.com/openai/chat-completion/models/o4-mini",
+# Make the completion request via LiteLLM
+response = completion(
+    model="clarifai/openai.chat-completion.gpt-oss-120b",
     api_key=os.environ["CLARIFAI_PAT"],  # Ensure CLARIFAI_PAT is set as an environment variable
-    api_base="https://api.clarifai.com/v2/ext/openai/v1",
-    messages=[
-        {"role": "user", "content": "What is the weather in Paris today?"}
-    ],
+    messages=[{"role": "user", "content": "What's the weather like in San Francisco?"}],
     tools=tools
 )
 
-# Output the tool call suggested by the model (if any)
-print(response.choices[0].message.tool_calls)
+# Print any tool calls suggested by the model
+tool_calls = response.choices[0].message.tool_calls
+if tool_calls:
+    print("Tool call suggested by the model:", tool_calls)
+else:
+    print("No tool call was made by the model.")

@@ -1,0 +1,44 @@
+pipeline:
+  id: "hello-world-pipeline"
+  user_id: "user-id"
+  app_id: "app-id"
+  step_directories:
+    - stepA
+    - stepB
+  orchestration_spec:
+    argo_orchestration_spec: |
+      apiVersion: argoproj.io/v1alpha1
+      kind: Workflow
+      spec:
+        entrypoint: sequence
+        arguments:
+          parameters:
+            - name: input_text
+              value: "Input Text Here"
+        templates:
+        - name: sequence
+          steps:
+          - - name: step-0
+              templateRef:
+                name: users/user-id/apps/app-id/pipeline_steps/stepA
+                template: users/user-id/apps/app-id/pipeline_steps/stepA
+              arguments:
+                parameters:
+                  - name: input_text
+                    value: "{{workflow.parameters.input_text}}"
+          - - name: step-1
+              templateRef:
+                name: users/user-id/apps/app-id/pipeline_steps/stepB
+                template: users/user-id/apps/app-id/pipeline_steps/stepB
+              arguments:
+                parameters:
+                  - name: input_text
+                    value: "{{workflow.parameters.input_text}}"
+  # Optional: Define secrets for pipeline steps
+  # config:
+  #   step_version_secrets:
+  #     step-0:
+  #       API_KEY: users/alfrick/apps//secrets/my-api-key
+  #       DB_PASSWORD: users/alfrick/apps/secrets/db-secret
+  #     step-1:
+  #       EMAIL_TOKEN: users/alfrick/apps/secrets/email-token

@@ -1,0 +1,462 @@
+clarifai pipeline upload
+[INFO] 17:13:59.215943 Starting pipeline upload from config: ./config.yaml |  thread=8329666752 
+[INFO] 17:13:59.216027 Uploading 2 pipeline steps... |  thread=8329666752 
+[INFO] 17:13:59.216063 Uploading pipeline step from directory: stepA |  thread=8329666752 
+[INFO] 17:13:59.221287 No config-lock.yaml found, will upload pipeline step |  thread=8329666752 
+[INFO] 17:13:59.221721 Created Dockerfile at /Users/macbookpro/Desktop/pipelines/one/stepA/Dockerfile |  thread=8329666752 
+[INFO] 17:14:01.613332 Creating new pipeline step stepA |  thread=8329666752 
+[INFO] 17:14:02.248411 Successfully created pipeline step stepA |  thread=8329666752 
+[INFO] 17:14:02.263631 Uploading pipeline step content... |  thread=6135148544 
+[INFO] 17:14:02.263920 Upload complete! |  thread=6135148544 
+Status: Upload done, Upload Progress: 100%, Details: Completed upload of files, initiating pipelineStep version image build. request_id: sdk-python-11Status: Pipeline Step image is currently being built., Upload Progress: 100%, Details: Pipeline Step Version image is being built. request_id: sdk-pyt[INFO] 17:14:03.580160 54c3894e0cc62981ba3a4
+Created Pipeline Step Version ID: 36e752e546334fa28d73bcbdc86d37a7 |  thread=8329666752 
+[INFO] 17:14:08.499014 2025-11-26 14:14:03.535648 INFO: Downloading uploaded buildable from storage...
+2025-11-26 14:14:04.413025 INFO: Done downloading buildable from storage
+2025-11-26 14:14:04.417035 INFO: Extracting upload...
+2025-11-26 14:14:04.422114 INFO: Done extracting upload
+2025-11-26 14:14:04.425067 INFO: Parsing requirements file for buildable version ID ****bcbdc86d37a7
+2025-11-26 14:14:04.452415 INFO: Dockerfile found at /shared/context/Dockerfile
+2025-11-26 14:14:05.160145 INFO: Setting up credentials
+amazon-ecr-credential-helper
+Version:    0.8.0
+Git commit: ********
+2025-11-26 14:14:05.165486 INFO: Building image...
+#1 \[internal] load build definition from Dockerfile
+#1 transferring dockerfile: 776B done
+#1 WARN: FromAsCasing: 'as' and 'FROM' keywords' casing do not match (line 1)
+#1 WARN: ****orm: Setting platform to predefined $TARGETPLATFORM in FROM is redundant as this is the default behavior (line 1)
+#1 DONE 0.0s
+
+#2 \[linux/amd64 internal] load metadata for public.ecr.aws/clarifai-models/python-base:3.12-********
+#2 DONE 0.3s
+
+#3 \[linux/arm64 internal] load metadata for public.ecr.aws/clarifai-models/python-base:3.12-********
+#3 DONE 0.3s
+
+#4 \[internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 \[internal] load build context
+#5 transferring context: 1.28kB done
+#5 DONE 0.0s
+
+#6 \[linux/amd64 1/5] FROM public.ecr.aws/clarifai-models/python-base:3.12-********@sha256:************2a62
+#6 resolve public.ecr.aws/clarifai-models/python-base:3.12-********@sha256:************2a62 done
+#6 CACHED
+
+#7 \[linux/arm64 1/5] FROM public.ecr.aws/clarifai-models/python-base:3.12-********@sha256:************2a62
+#7 resolve public.ecr.aws/clarifai-models/python-base:3.12-********@sha256:************2a62 done
+#7 CACHED
+
+#8 \[linux/amd64 2/5] COPY --link requirements.txt /home/nonroot/requirements.txt
+#8 merging done
+#8 DONE 0.0s
+
+#9 \[linux/arm64 2/5] COPY --link requirements.txt /home/nonroot/requirements.txt
+#9 merging done
+#9 DONE 0.0s
+
+#10 \[linux/arm64 3/5] RUN ["pip", "install", "--no-cache-dir", "-r", "/home/nonroot/requirements.txt"] |  thread=8329666752 
+[INFO] 17:14:14.728456 #10 4.906 Collecting clarifai==11.10.2 (from -r /home/nonroot/requirements.txt (line 1))
+#10 ...
+
+#11 \[linux/amd64 3/5] RUN ["pip", "install", "--no-cache-dir", "-r", "/home/nonroot/requirements.txt"]
+#11 0.495 Collecting clarifai==11.10.2 (from -r /home/nonroot/requirements.txt (line 1))
+#11 0.537   Downloading clarifai-11.10.2-py3-none-any.whl.metadata (23 kB)
+#11 0.578 Collecting clarifai-grpc>=11.10.3 (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#11 0.584   Downloading clarifai_grpc-11.10.9-py3-none-any.whl.metadata (4.4 kB)
+#11 0.622 Collecting clarifai-protocol>=0.0.33 (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#11 0.627   Downloading clarifai_protocol-0.0.34-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (14 kB)
+#11 0.760 Collecting numpy>=1.22.0 (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#11 0.764   Downloading numpy-2.3.5-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+#11 0.780 Requirement already satisfied: tqdm>=4.65.0 in /venv/lib/python3.12/site-packages (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1)) (4.67.1)
+#11 0.780 Requirement already satisfied: PyYAML>=6.0.1 in /venv/lib/python3.12/site-packages (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1)) (6.0.2)
+#11 0.787 Collecting schema==0.7.5 (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#11 0.792   Downloading schema-0.7.5-py2.py3-none-any.whl.metadata (34 kB)
+#11 0.906 Collecting Pillow>=9.5.0 (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#11 0.910   Downloading pillow-12.0.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (8.8 kB)
+#11 0.921 Collecting tabulate>=0.9.0 (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#11 0.925   Downloading tabulate-0.9.0-py3-none-any.whl.metadata (34 kB)
+#11 0.929 Requirement already satisfied: fsspec>=2024.6.1 in /venv/lib/python3.12/site-packages (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1)) (2025.2.0)
+#11 0.940 Collecting click>=8.1.7 (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#11 0.943   Downloading click-8.3.1-py3-none-any.whl.metadata (2.6 kB)
+#11 0.945 Requirement already satisfied: requests>=2.32.3 in /venv/lib/python3.12/site-packages (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1)) (2.32.3)
+#11 1.298 Collecting aiohttp>=3.10.0 (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#11 1.303   Downloading aiohttp-3.13.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (8.1 kB)
+#11 1.474 Collecting uv==0.7.12 (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#11 1.479   Downloading uv-0.7.12-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (11 kB)
+#11 1.719 Collecting ruff==0.11.4 (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#11 1.724   Downloading ruff-0.11.4-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (25 kB)
+#11 1.793 Collecting psutil==7.0.0 (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#11 1.797   Downloading psutil-7.0.0-cp36-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (22 kB)
+#11 1.813 Collecting pygments>=2.19.2 (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#11 1.817   Downloading pygments-2.19.2-py3-none-any.whl.metadata (2.5 kB)
+#11 2.258 Collecting pydantic_core==2.33.2 (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#11 2.262   Downloading pydantic_core-2.33.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.8 kB)
+#11 2.273 Collecting packaging==25.0 (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#11 2.277   Downloading packaging-25.0-py3-none-any.whl.metadata (3.3 kB)
+#11 2.281 Requirement already satisfied: typing-extensions!=4.7.0,>=4.6.0 in /venv/lib/python3.12/site-packages (from pydantic_core==2.33.2->clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1)) (4.12.2)
+#11 2.287 Collecting contextlib2>=0.5.5 (from schema==0.7.5->clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#11 2.291   Downloading contextlib2-21.6.0-py2.py3-none-any.whl.metadata (4.1 kB)
+#11 2.303 Collecting aiohappyeyeballs>=2.5.0 (from aiohttp>=3.10.0->clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#11 2.307   Downloading aiohappyeyeballs-2.6.1-py3-none-any.whl.metadata (5.9 kB)
+#11 2.314 Collecting aiosignal>=1.4.0 (from aiohttp>=3.10.0->clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#11 2.317   Downloading aiosignal-1.4.0-py3-none-any.whl.metadata (3.7 kB)
+#11 2.328 Collecting attrs>=17.3.0 (from aiohttp>=3.10.0->clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#11 2.332   Downloading attrs-25.4.0-py3-none-any.whl.metadata (10 kB)
+#11 2.401 Collecting frozenlist>=1.1.1 (from aiohttp>=3.10.0->clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#11 2.406   Downloading frozenlist-1.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (20 kB)
+#11 2.559 Collecting multidict<7.0,>=4.5 (from aiohttp>=3.10.0->clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#11 2.563   Downloading multidict-6.7.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (5.3 kB)
+#11 2.599 Collecting propcache>=0.2.0 (from aiohttp>=3.10.0->clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#11 2.603   Downloading propcache-0.4.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (13 kB)
+#11 2.771 Collecting yarl<2.0,>=1.17.0 (from aiohttp>=3.10.0->clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#11 2.776   Downloading yarl-1.22.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (75 kB)
+#11 3.138 Collecting grpcio>=1.53.2 (from clarifai-grpc>=11.10.3->clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#11 3.143   Downloading grpcio-1.76.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (3.7 kB)
+#11 3.248 Collecting protobuf>=5.29.5 (from clarifai-grpc>=11.10.3->clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#11 3.252   Downloading protobuf-6.33.1-cp39-abi3-manylinux2014_x86_64.whl.metadata (593 bytes)
+#11 3.264 Collecting googleapis-common-protos>=1.57.0 (from clarifai-grpc>=11.10.3->clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#11 3.268   Downloading googleapis_common_protos-1.72.0-py3-none-any.whl.metadata (9.4 kB)
+#11 3.303 Requirement already satisfied: charset-normalizer<4,>=2 in /venv/lib/python3.12/site-packages (from requests>=2.32.3->clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1)) (3.4.1)
+#11 3.303 Requirement already satisfied: idna<4,>=2.5 in /venv/lib/python3.12/site-packages (from requests>=2.32.3->clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1)) (3.10)
+#11 3.304 Requirement already satisfied: urllib3<3,>=1.21.1 in /venv/lib/python3.12/site-packages (from requests>=2.32.3->clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1)) (2.3.0)
+#11 3.304 Requirement already satisfied: certifi>=2017.4.17 in /venv/lib/python3.12/site-packages (from requests>=2.32.3->clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1)) (2025.1.31)
+#11 3.373 Downloading clarifai-11.10.2-py3-none-any.whl (306 kB)
+#11 3.390 Downloading packaging-25.0-py3-none-any.whl (66 kB)
+#11 3.395 Downloading psutil-7.0.0-cp36-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (277 kB)
+#11 3.406 Downloading pydantic_core-2.33.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.0 MB)
+#11 3.445    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 59.3 MB/s eta 0:00:00
+#11 3.451 Downloading ruff-0.11.4-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (11.3 MB)
+#11 3.523    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.3/11.3 MB 164.1 MB/s eta 0:00:00
+#11 3.527 Downloading schema-0.7.5-py2.py3-none-any.whl (17 kB)
+#11 3.532 Downloading uv-0.7.12-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (17.8 MB)
+#11 3.597    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 17.8/17.8 MB 284.8 MB/s eta 0:00:00
+#11 3.602 Downloading aiohttp-3.13.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (1.8 MB)
+#11 3.607    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 499.4 MB/s eta 0:00:00
+#11 3.612 Downloading clarifai_grpc-11.10.9-py3-none-any.whl (302 kB)
+#11 3.624 Downloading clarifai_protocol-0.0.34-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (449 kB)
+#11 3.629 Downloading click-8.3.1-py3-none-any.whl (108 kB)
+#11 3.632 Downloading numpy-2.3.5-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.6 MB)
+#11 3.672    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.6/16.6 MB 436.6 MB/s eta 0:00:00
+#11 3.675 Downloading pillow-12.0.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (7.0 MB)
+#11 3.694    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.0/7.0 MB 409.3 MB/s eta 0:00:00
+#11 3.698 Downloading pygments-2.19.2-py3-none-any.whl (1.2 MB)
+#11 3.702    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 402.1 MB/s eta 0:00:00
+#11 3.706 Downloading tabulate-0.9.0-py3-none-any.whl (35 kB)
+#11 3.710 Downloading aiohappyeyeballs-2.6.1-py3-none-any.whl (15 kB)
+#11 3.714 Downloading aiosignal-1.4.0-py3-none-any.whl (7.5 kB)
+#11 3.717 Downloading attrs-25.4.0-py3-none-any.whl (67 kB)
+#11 3.721 Downloading contextlib2-21.6.0-py2.py3-none-any.whl (13 kB)
+#11 3.725 Downloading frozenlist-1.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (242 kB)
+#11 3.729 Downloading googleapis_common_protos-1.72.0-py3-none-any.whl (297 kB)
+#11 3.733 Downloading grpcio-1.76.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (6.6 MB)
+#11 3.757    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.6/6.6 MB 321.3 MB/s eta 0:00:00
+#11 3.760 Downloading multidict-6.7.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (256 kB)
+#11 3.764 Downloading propcache-0.4.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (221 kB)
+#11 3.768 Downloading protobuf-6.33.1-cp39-abi3-manylinux2014_x86_64.whl (323 kB)
+#11 3.773 Downloading yarl-1.22.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (377 kB)
+#11 3.943 Installing collected packages: uv, tabulate, ruff, pygments, pydantic_core, psutil, protobuf, propcache, Pillow, packaging, numpy, multidict, grpcio, frozenlist, contextlib2, click, attrs, aiohappyeyeballs, yarl, schema, googleapis-common-protos, aiosignal, clarifai-grpc, aiohttp, clarifai-protocol, clarifai
+#11 ...
+
+#10 \[linux/arm64 3/5] RUN ["pip", "install", "--no-cache-dir", "-r", "/home/nonroot/requirements.txt"]
+#10 5.322   Downloading clarifai-11.10.2-py3-none-any.whl.metadata (23 kB)
+#10 5.792 Collecting clarifai-grpc>=11.10.3 (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#10 5.807   Downloading clarifai_grpc-11.10.9-py3-none-any.whl.metadata (4.4 kB)
+#10 6.197 Collecting clarifai-protocol>=0.0.33 (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#10 6.213   Downloading clarifai_protocol-0.0.34-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (14 kB) |  thread=8329666752 
+[INFO] 17:14:19.500282 #10 7.682 Collecting numpy>=1.22.0 (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#10 7.696   Downloading numpy-2.3.5-cp312-cp312-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl.metadata (62 kB)
+#10 7.888 Requirement already satisfied: tqdm>=4.65.0 in /venv/lib/python3.12/site-packages (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1)) (4.67.1)
+#10 7.892 Requirement already satisfied: PyYAML>=6.0.1 in /venv/lib/python3.12/site-packages (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1)) (6.0.2)
+#10 7.943 Collecting schema==0.7.5 (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#10 7.956   Downloading schema-0.7.5-py2.py3-none-any.whl.metadata (34 kB)
+#10 ...
+
+#11 \[linux/amd64 3/5] RUN ["pip", "install", "--no-cache-dir", "-r", "/home/nonroot/requirements.txt"]
+#11 5.453   Attempting uninstall: packaging
+#11 5.454     Found existing installation: packaging 24.2
+#11 5.458     Uninstalling packaging-24.2:
+#11 5.463       Successfully uninstalled packaging-24.2
+#11 7.939 Successfully installed Pillow-12.0.0 aiohappyeyeballs-2.6.1 aiohttp-3.13.2 aiosignal-1.4.0 attrs-25.4.0 clarifai-11.10.2 clarifai-grpc-11.10.9 clarifai-protocol-0.0.34 click-8.3.1 contextlib2-21.6.0 frozenlist-1.8.0 googleapis-common-protos-1.72.0 grpcio-1.76.0 multidict-6.7.0 numpy-2.3.5 packaging-25.0 propcache-0.4.1 protobuf-6.33.1 psutil-7.0.0 pydantic_core-2.33.2 pygments-2.19.2 ruff-0.11.4 schema-0.7.5 tabulate-0.9.0 uv-0.7.12 yarl-1.22.0
+#11 8.028 
+#11 8.028 \[notice] A new release of pip is available: 25.0.1 -> 25.3
+#11 8.028 \[notice] To update, run: pip install --upgrade pip
+#11 DONE 8.2s
+
+#12 \[linux/amd64 4/5] COPY --link=true 1 /home/nonroot/main/1
+#12 DONE 0.0s
+
+#13 \[linux/amd64 5/5] COPY --link=true requirements.txt config.yaml /home/nonroot/main/
+#13 DONE 0.0s
+
+#10 \[linux/arm64 3/5] RUN ["pip", "install", "--no-cache-dir", "-r", "/home/nonroot/requirements.txt"]
+#10 9.264 Collecting Pillow>=9.5.0 (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#10 9.278   Downloading pillow-12.0.0-cp312-cp312-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl.metadata (8.8 kB)
+#10 9.363 Collecting tabulate>=0.9.0 (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#10 9.377   Downloading tabulate-0.9.0-py3-none-any.whl.metadata (34 kB)
+#10 9.418 Requirement already satisfied: fsspec>=2024.6.1 in /venv/lib/python3.12/site-packages (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1)) (2025.2.0)
+#10 9.519 Collecting click>=8.1.7 (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#10 9.531   Downloading click-8.3.1-py3-none-any.whl.metadata (2.6 kB)
+#10 9.546 Requirement already satisfied: requests>=2.32.3 in /venv/lib/python3.12/site-packages (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1)) (2.32.3) |  thread=8329666752 
+[INFO] 17:14:23.845921 #10 13.42 Collecting aiohttp>=3.10.0 (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#10 13.43   Downloading aiohttp-3.13.2-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (8.1 kB)
+#10 15.26 Collecting uv==0.7.12 (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#10 15.28   Downloading uv-0.7.12-py3-none-manylinux_2_28_aarch64.whl.metadata (11 kB) |  thread=8329666752 
+[INFO] 17:14:29.359543 #10 18.01 Collecting ruff==0.11.4 (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#10 18.03   Downloading ruff-0.11.4-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (25 kB)
+#10 18.64 Collecting psutil==7.0.0 (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#10 18.65   Downloading psutil-7.0.0-cp36-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (22 kB)
+#10 18.81 Collecting pygments>=2.19.2 (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#10 18.82   Downloading pygments-2.19.2-py3-none-any.whl.metadata (2.5 kB) |  thread=8329666752 
+[INFO] 17:14:34.195938 #10 23.91 Collecting pydantic_core==2.33.2 (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#10 23.92   Downloading pydantic_core-2.33.2-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (6.8 kB)
+#10 24.02 Collecting packaging==25.0 (from clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#10 24.03   Downloading packaging-25.0-py3-none-any.whl.metadata (3.3 kB)
+#10 24.07 Requirement already satisfied: typing-extensions!=4.7.0,>=4.6.0 in /venv/lib/python3.12/site-packages (from pydantic_core==2.33.2->clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1)) (4.12.2)
+#10 24.11 Collecting contextlib2>=0.5.5 (from schema==0.7.5->clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#10 24.12   Downloading contextlib2-21.6.0-py2.py3-none-any.whl.metadata (4.1 kB)
+#10 24.23 Collecting aiohappyeyeballs>=2.5.0 (from aiohttp>=3.10.0->clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#10 24.24   Downloading aiohappyeyeballs-2.6.1-py3-none-any.whl.metadata (5.9 kB)
+#10 24.28 Collecting aiosignal>=1.4.0 (from aiohttp>=3.10.0->clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#10 24.29   Downloading aiosignal-1.4.0-py3-none-any.whl.metadata (3.7 kB)
+#10 24.38 Collecting attrs>=17.3.0 (from aiohttp>=3.10.0->clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#10 24.40   Downloading attrs-25.4.0-py3-none-any.whl.metadata (10 kB)
+#10 24.97 Collecting frozenlist>=1.1.1 (from aiohttp>=3.10.0->clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#10 24.98   Downloading frozenlist-1.8.0-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (20 kB)
+#10 26.78 Collecting multidict<7.0,>=4.5 (from aiohttp>=3.10.0->clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#10 26.79   Downloading multidict-6.7.0-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (5.3 kB)
+#10 27.18 Collecting propcache>=0.2.0 (from aiohttp>=3.10.0->clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#10 27.19   Downloading propcache-0.4.1-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (13 kB) |  thread=8329666752 
+[INFO] 17:14:38.907503 #10 26.78 Collecting multidict<7.0,>=4.5 (from aiohttp>=3.10.0->clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#10 26.79   Downloading multidict-6.7.0-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (5.3 kB)
+#10 27.18 Collecting propcache>=0.2.0 (from aiohttp>=3.10.0->clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#10 27.19   Downloading propcache-0.4.1-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (13 kB)
+#10 29.18 Collecting yarl<2.0,>=1.17.0 (from aiohttp>=3.10.0->clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#10 29.19   Downloading yarl-1.22.0-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (75 kB) |  thread=8329666752 
+[INFO] 17:14:44.744245 #10 33.12 Collecting grpcio>=1.53.2 (from clarifai-grpc>=11.10.3->clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#10 33.13   Downloading grpcio-1.76.0-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.whl.metadata (3.7 kB)
+#10 34.34 Collecting protobuf>=5.29.5 (from clarifai-grpc>=11.10.3->clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#10 34.35   Downloading protobuf-6.33.1-cp39-abi3-manylinux2014_aarch64.whl.metadata (593 bytes)
+#10 34.47 Collecting googleapis-common-protos>=1.57.0 (from clarifai-grpc>=11.10.3->clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1))
+#10 34.48   Downloading googleapis_common_protos-1.72.0-py3-none-any.whl.metadata (9.4 kB)
+#10 34.92 Requirement already satisfied: charset-normalizer<4,>=2 in /venv/lib/python3.12/site-packages (from requests>=2.32.3->clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1)) (3.4.1)
+#10 34.93 Requirement already satisfied: idna<4,>=2.5 in /venv/lib/python3.12/site-packages (from requests>=2.32.3->clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1)) (3.10)
+#10 34.93 Requirement already satisfied: urllib3<3,>=1.21.1 in /venv/lib/python3.12/site-packages (from requests>=2.32.3->clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1)) (2.3.0)
+#10 34.93 Requirement already satisfied: certifi>=2017.4.17 in /venv/lib/python3.12/site-packages (from requests>=2.32.3->clarifai==11.10.2->-r /home/nonroot/requirements.txt (line 1)) (2025.1.31)
+#10 35.46 Downloading clarifai-11.10.2-py3-none-any.whl (306 kB)
+#10 35.47 Downloading packaging-25.0-py3-none-any.whl (66 kB)
+#10 35.49 Downloading psutil-7.0.0-cp36-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (279 kB)
+#10 35.51 Downloading pydantic_core-2.33.2-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (1.9 MB)
+#10 35.56    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.9/1.9 MB 71.6 MB/s eta 0:00:00
+#10 35.58 Downloading ruff-0.11.4-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (10.4 MB)
+#10 35.73    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.4/10.4 MB 75.2 MB/s eta 0:00:00
+#10 35.75 Downloading schema-0.7.5-py2.py3-none-any.whl (17 kB)
+#10 35.76 Downloading uv-0.7.12-py3-none-manylinux_2_28_aarch64.whl (16.6 MB)
+#10 36.00    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.6/16.6 MB 74.0 MB/s eta 0:00:00
+#10 36.02 Downloading aiohttp-3.13.2-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (1.7 MB)
+#10 36.06    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.7/1.7 MB 76.8 MB/s eta 0:00:00
+#10 36.07 Downloading clarifai_grpc-11.10.9-py3-none-any.whl (302 kB)
+#10 36.09 Downloading clarifai_protocol-0.0.34-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (407 kB)
+#10 36.11 Downloading click-8.3.1-py3-none-any.whl (108 kB)
+#10 36.12 Downloading numpy-2.3.5-cp312-cp312-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl (14.3 MB)
+#10 36.34    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.3/14.3 MB 73.3 MB/s eta 0:00:00
+#10 36.35 Downloading pillow-12.0.0-cp312-cp312-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl (6.3 MB)
+#10 36.47    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 65.5 MB/s eta 0:00:00
+#10 36.48 Downloading pygments-2.19.2-py3-none-any.whl (1.2 MB)
+#10 36.51    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 71.1 MB/s eta 0:00:00
+#10 36.53 Downloading tabulate-0.9.0-py3-none-any.whl (35 kB)
+#10 36.54 Downloading aiohappyeyeballs-2.6.1-py3-none-any.whl (15 kB)
+#10 36.55 Downloading aiosignal-1.4.0-py3-none-any.whl (7.5 kB)
+#10 36.56 Downloading attrs-25.4.0-py3-none-any.whl (67 kB)
+#10 36.58 Downloading contextlib2-21.6.0-py2.py3-none-any.whl (13 kB)
+#10 36.59 Downloading frozenlist-1.8.0-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (243 kB)
+#10 36.61 Downloading googleapis_common_protos-1.72.0-py3-none-any.whl (297 kB)
+#10 36.62 Downloading grpcio-1.76.0-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.whl (6.4 MB)
+#10 36.73    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.4/6.4 MB 73.0 MB/s eta 0:00:00
+#10 36.74 Downloading multidict-6.7.0-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (258 kB)
+#10 36.76 Downloading propcache-0.4.1-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (225 kB)
+#10 36.77 Downloading protobuf-6.33.1-cp39-abi3-manylinux2014_aarch64.whl (324 kB)
+#10 36.79 Downloading yarl-1.22.0-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (372 kB) |  thread=8329666752 
+[INFO] 17:14:49.968390 #10 36.34    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.3/14.3 MB 73.3 MB/s eta 0:00:00
+#10 36.35 Downloading pillow-12.0.0-cp312-cp312-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl (6.3 MB)
+#10 36.47    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 65.5 MB/s eta 0:00:00
+#10 36.48 Downloading pygments-2.19.2-py3-none-any.whl (1.2 MB)
+#10 36.51    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 71.1 MB/s eta 0:00:00
+#10 36.53 Downloading tabulate-0.9.0-py3-none-any.whl (35 kB)
+#10 36.54 Downloading aiohappyeyeballs-2.6.1-py3-none-any.whl (15 kB)
+#10 36.55 Downloading aiosignal-1.4.0-py3-none-any.whl (7.5 kB)
+#10 36.56 Downloading attrs-25.4.0-py3-none-any.whl (67 kB)
+#10 36.58 Downloading contextlib2-21.6.0-py2.py3-none-any.whl (13 kB)
+#10 36.59 Downloading frozenlist-1.8.0-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (243 kB)
+#10 36.61 Downloading googleapis_common_protos-1.72.0-py3-none-any.whl (297 kB)
+#10 36.62 Downloading grpcio-1.76.0-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.whl (6.4 MB)
+#10 36.73    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.4/6.4 MB 73.0 MB/s eta 0:00:00
+#10 36.74 Downloading multidict-6.7.0-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (258 kB)
+#10 36.76 Downloading propcache-0.4.1-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (225 kB)
+#10 36.77 Downloading protobuf-6.33.1-cp39-abi3-manylinux2014_aarch64.whl (324 kB)
+#10 36.79 Downloading yarl-1.22.0-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (372 kB)
+#10 38.44 Installing collected packages: uv, tabulate, ruff, pygments, pydantic_core, psutil, protobuf, propcache, Pillow, packaging, numpy, multidict, grpcio, frozenlist, contextlib2, click, attrs, aiohappyeyeballs, yarl, schema, googleapis-common-protos, aiosignal, clarifai-grpc, aiohttp, clarifai-protocol, clarifai |  thread=8329666752 
+[INFO] 17:14:59.489056 #10 48.51   Attempting uninstall: packaging
+#10 48.52     Found existing installation: packaging 24.2
+#10 48.55     Uninstalling packaging-24.2:
+#10 48.58       Successfully uninstalled packaging-24.2 |  thread=8329666752 
+[INFO] 17:15:20.793720 #10 68.14 Successfully installed Pillow-12.0.0 aiohappyeyeballs-2.6.1 aiohttp-3.13.2 aiosignal-1.4.0 attrs-25.4.0 clarifai-11.10.2 clarifai-grpc-11.10.9 clarifai-protocol-0.0.34 click-8.3.1 contextlib2-21.6.0 frozenlist-1.8.0 googleapis-common-protos-1.72.0 grpcio-1.76.0 multidict-6.7.0 numpy-2.3.5 packaging-25.0 propcache-0.4.1 protobuf-6.33.1 psutil-7.0.0 pydantic_core-2.33.2 pygments-2.19.2 ruff-0.11.4 schema-0.7.5 tabulate-0.9.0 uv-0.7.12 yarl-1.22.0
+#10 69.27 
+#10 69.27 \[notice] A new release of pip is available: 25.0.1 -> 25.3
+#10 69.27 \[notice] To update, run: pip install --upgrade pip
+#10 DONE 69.8s
+
+#14 \[linux/arm64 4/5] COPY --link=true 1 /home/nonroot/main/1
+#14 DONE 0.0s
+
+#15 \[linux/arm64 5/5] COPY --link=true requirements.txt config.yaml /home/nonroot/main/
+#15 DONE 0.0s
+
+#16 exporting to image
+#16 exporting layers |  thread=8329666752 
+[INFO] 17:15:24.795350 #16 exporting layers 7.3s done
+#16 exporting manifest sha256:************2bb1 done
+#16 exporting config sha256:************fbda done
+#16 exporting manifest sha256:************87fc done
+#16 exporting config sha256:************29d1 done
+#16 exporting manifest list sha256:************2d60 done
+#16 pushing layers
+#16 ...
+
+#17 \[auth] sharing credentials for 891377382885.dkr.ecr.us-east-1.amazonaws.com |  thread=8329666752 
+[INFO] 17:15:29.098369 #16 exporting layers 7.3s done
+#16 exporting manifest sha256:************2bb1 done
+#16 exporting config sha256:************fbda done
+#16 exporting manifest sha256:************87fc done
+#16 exporting config sha256:************29d1 done
+#16 exporting manifest list sha256:************2d60 done
+#16 pushing layers
+#16 ...
+
+#17 \[auth] sharing credentials for 891377382885.dkr.ecr.us-east-1.amazonaws.com
+#17 DONE 0.0s
+
+#16 exporting to image
+#16 pushing layers 3.0s done
+#16 pushing manifest for ****/prod/pytorch:****bcbdc86d37a7@sha256:************2d60
+#16 pushing manifest for ****/prod/pytorch:****bcbdc86d37a7@sha256:************2d60 1.0s done
+#16 DONE 11.3s
+2025-11-26 14:15:26.682504 INFO: Done building image!!! |  thread=8329666752 
+[INFO] 17:15:31.301665 ng... (elapsed 86.5s)
+Pipeline step build complete! |  thread=8329666752 
+[INFO] 17:15:31.302080 Build time elapsed 87.7s |  thread=8329666752 
+[INFO] 17:15:31.305764 Generated config-lock.yaml at /Users/macbookpro/Desktop/pipelines/one/stepA/config-lock.yaml |  thread=8329666752 
+[INFO] 17:15:31.305864 Generated config-lock.yaml for pipeline step with version 36e752e546334fa28d73bcbdc86d37a7 |  thread=8329666752 
+[INFO] 17:15:31.306267 Successfully uploaded pipeline step stepA with version 36e752e546334fa28d73bcbdc86d37a7 |  thread=8329666752 
+[INFO] 17:15:31.306353 Uploading pipeline step from directory: stepB |  thread=8329666752 
+[INFO] 17:15:31.308736 No config-lock.yaml found, will upload pipeline step |  thread=8329666752 
+[INFO] 17:15:31.309571 Created Dockerfile at /Users/macbookpro/Desktop/pipelines/one/stepB/Dockerfile |  thread=8329666752 
+[INFO] 17:15:35.054580 Creating new pipeline step stepB |  thread=8329666752 
+[INFO] 17:15:35.724878 Successfully created pipeline step stepB |  thread=8329666752 
+[INFO] 17:15:35.735020 Uploading pipeline step content... |  thread=6135721984 
+[INFO] 17:15:35.735406 Upload complete! |  thread=6135721984 
+Status: Upload done, Upload Progress: 100%, Details: Completed upload of files, initiating pipelineStep version image build. request_id: sdk-python-11Status: Pipeline Step image is currently being built., Upload Progress: 100%, Details: Pipeline Step Version image is being built. request_id: sdk-pyt[INFO] 17:15:36.353718 a4e848dcda9d7ec46af50
+Created Pipeline Step Version ID: 5e93c74ef8ae456ab353aa5e60e46f97 |  thread=8329666752 
+[INFO] 17:15:42.766275 2025-11-26 14:15:37.007123 INFO: Downloading uploaded buildable from storage...
+2025-11-26 14:15:37.835820 INFO: Done downloading buildable from storage
+2025-11-26 14:15:37.839806 INFO: Extracting upload...
+2025-11-26 14:15:37.844892 INFO: Done extracting upload
+2025-11-26 14:15:37.847844 INFO: Parsing requirements file for buildable version ID ****aa5e60e46f97
+2025-11-26 14:15:37.875202 INFO: Dockerfile found at /shared/context/Dockerfile
+2025-11-26 14:15:38.599716 INFO: Setting up credentials
+amazon-ecr-credential-helper
+Version:    0.8.0
+Git commit: ********
+2025-11-26 14:15:38.604653 INFO: Building image...
+#1 \[internal] load build definition from Dockerfile
+#1 transferring dockerfile: 776B done
+#1 WARN: FromAsCasing: 'as' and 'FROM' keywords' casing do not match (line 1)
+#1 WARN: ****orm: Setting platform to predefined $TARGETPLATFORM in FROM is redundant as this is the default behavior (line 1)
+#1 DONE 0.0s
+
+#2 \[linux/amd64 internal] load metadata for public.ecr.aws/clarifai-models/python-base:3.12-********
+#2 ...
+
+#3 \[linux/arm64 internal] load metadata for public.ecr.aws/clarifai-models/python-base:3.12-********
+#3 DONE 0.2s
+
+#4 \[internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#2 \[linux/amd64 internal] load metadata for public.ecr.aws/clarifai-models/python-base:3.12-********
+#2 DONE 0.2s
+
+#5 \[internal] load build context
+#5 transferring context: 1.28kB done
+#5 DONE 0.0s
+
+#6 \[linux/amd64 1/5] FROM public.ecr.aws/clarifai-models/python-base:3.12-********@sha256:************2a62
+#6 resolve public.ecr.aws/clarifai-models/python-base:3.12-********@sha256:************2a62 done
+#6 DONE 0.0s
+
+#7 \[linux/amd64 2/5] COPY --link requirements.txt /home/nonroot/requirements.txt
+#7 CACHED
+
+#8 \[linux/amd64 3/5] RUN ["pip", "install", "--no-cache-dir", "-r", "/home/nonroot/requirements.txt"]
+#8 CACHED
+
+#9 \[linux/arm64 1/5] FROM public.ecr.aws/clarifai-models/python-base:3.12-********@sha256:************2a62
+#9 resolve public.ecr.aws/clarifai-models/python-base:3.12-********@sha256:************2a62 done
+#9 DONE 0.0s
+
+#10 \[linux/arm64 2/5] COPY --link requirements.txt /home/nonroot/requirements.txt
+#10 CACHED
+
+#11 \[linux/arm64 3/5] RUN ["pip", "install", "--no-cache-dir", "-r", "/home/nonroot/requirements.txt"]
+#11 CACHED
+
+#12 \[linux/arm64 4/5] COPY --link=true 1 /home/nonroot/main/1
+#12 DONE 0.0s
+
+#13 \[linux/amd64 4/5] COPY --link=true 1 /home/nonroot/main/1
+#13 DONE 0.0s
+
+#14 \[linux/arm64 5/5] COPY --link=true requirements.txt config.yaml /home/nonroot/main/
+#14 DONE 0.0s
+
+#15 \[linux/amd64 5/5] COPY --link=true requirements.txt config.yaml /home/nonroot/main/
+#15 DONE 0.0s
+
+#16 exporting to image
+#16 exporting layers done
+#16 exporting manifest sha256:************2819 done
+#16 exporting config sha256:************daac done
+#16 exporting manifest sha256:************df9b done
+#16 exporting config sha256:************2d14 done
+#16 exporting manifest list sha256:************d0a7 done
+#16 pushing layers
+#16 ...
+
+#17 \[auth] sharing credentials for 891377382885.dkr.ecr.us-east-1.amazonaws.com
+#17 DONE 0.0s
+
+#16 exporting to image
+#16 pushing layers 1.0s done
+#16 pushing manifest for ****/prod/pytorch:****aa5e60e46f97@sha256:************d0a7
+#16 pushing manifest for ****/prod/pytorch:****aa5e60e46f97@sha256:************d0a7 0.9s done
+#16 DONE 2.0s
+2025-11-26 14:15:40.875095 INFO: Done building image!!! |  thread=8329666752 
+[INFO] 17:15:48.372727 ng... (elapsed 7.4s)
+Pipeline step build complete! |  thread=8329666752 
+[INFO] 17:15:48.373267 Build time elapsed 12.0s |  thread=8329666752 
+[INFO] 17:15:48.378134 Generated config-lock.yaml at /Users/macbookpro/Desktop/pipelines/one/stepB/config-lock.yaml |  thread=8329666752 
+[INFO] 17:15:48.378296 Generated config-lock.yaml for pipeline step with version 5e93c74ef8ae456ab353aa5e60e46f97 |  thread=8329666752 
+[INFO] 17:15:48.378631 Successfully uploaded pipeline step stepB with version 5e93c74ef8ae456ab353aa5e60e46f97 |  thread=8329666752 
+[INFO] 17:15:48.381909 Updated templateRef from users/alfrick/apps/pipelines-1/pipeline_steps/stepA to users/alfrick/apps/pipelines-1/pipeline_steps/stepA/versions/36e752e546334fa28d73bcbdc86d37a7 |  thread=8329666752 
+[INFO] 17:15:48.381975 Updated templateRef from users/alfrick/apps/pipelines-1/pipeline_steps/stepB to users/alfrick/apps/pipelines-1/pipeline_steps/stepB/versions/5e93c74ef8ae456ab353aa5e60e46f97 |  thread=8329666752 
+[INFO] 17:15:48.383960 Creating pipeline hello-world-pipeline... |  thread=8329666752 
+[INFO] 17:15:48.386609 Updated templateRef from users/alfrick/apps/pipelines-1/pipeline_steps/stepA to users/alfrick/apps/pipelines-1/pipeline_steps/stepA/versions/36e752e546334fa28d73bcbdc86d37a7 |  thread=8329666752 
+[INFO] 17:15:48.386652 Updated templateRef from users/alfrick/apps/pipelines-1/pipeline_steps/stepB to users/alfrick/apps/pipelines-1/pipeline_steps/stepB/versions/5e93c74ef8ae456ab353aa5e60e46f97 |  thread=8329666752 
+[INFO] 17:15:52.139766 Successfully created pipeline hello-world-pipeline |  thread=8329666752 
+[INFO] 17:15:52.140368 Pipeline ID: hello-world-pipeline |  thread=8329666752 
+[INFO] 17:15:52.140444 Pipeline version ID: 48862434906f482e94a2ec638a4233a1 |  thread=8329666752 
+[INFO] 17:15:52.144477 Generated lockfile: /Users/macbookpro/Desktop/pipelines/one/config-lock.yaml |  thread=8329666752 
+[INFO] 17:15:52.144650 Pipeline upload completed successfully with lockfile! |  thread=8329666752 

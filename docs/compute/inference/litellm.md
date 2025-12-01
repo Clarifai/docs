@@ -28,6 +28,8 @@ import Example5 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orc
 import Example6 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/litellm_2.py";
 import Example7 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/litellm_3.py";
 import Example8 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/litellm_4.py";
+import TestOpenai from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/litellm_5.py";
+import TestCurl from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/litellm_6.sh";
 
 ## Prerequisites
 
@@ -37,7 +39,7 @@ Install the `litellm` package.
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Python">
-    <CodeBlock className="language-bash"> pip install litellm </CodeBlock>
+    <CodeBlock className="language-bash">pip install litellm</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -49,24 +51,29 @@ You can then set the PAT as an environment variable using `CLARIFAI_PAT`:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Unix-Like Systems">
-    <CodeBlock className="language-bash"> export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
+    <CodeBlock className="language-bash">export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE</CodeBlock>
 </TabItem>
 <TabItem value="bash2" label="Windows">
-    <CodeBlock className="language-bash"> set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
+    <CodeBlock className="language-bash">set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE</CodeBlock>
 </TabItem>
 </Tabs>
 
 
 ### Get a Clarifai Model
 
-Go to the Clarifai [Community](https://clarifai.com/explore) platform and select the model you want to use for making predictions.
+Go to the Clarifai [Community](https://clarifai.com/explore) platform and select the model you want to use for predictions. LiteLLM supports all models in the Clarifai community.
 
-> **Note:** When specifying a Clarifai model in LiteLLM, use the model path prefixed with `openai/`, followed by the full Clarifai model URL.
-For example: `openai/https://clarifai.com/openai/chat-completion/models/o4-mini`.
+:::note
+
+When using a Clarifai model with LiteLLM, reference it using the `clarifai/`-prefixed model ID in the following format: `clarifai/<user_id>.<app_id>.<model_id>`. For example: `clarifai/openai.chat-completion.gpt-oss-20b`.
+
+:::
+
+
 
 ## Chat Completions
 
-In LiteLLM, the [`completion()`](https://docs.litellm.ai/docs/completion) function is the primary method for interacting with language models that follow the OpenAI Chat API format. It supports both traditional completions and chat-based interactions by accepting a list of messages — similar to OpenAI’s [`chat.completions.create()`](https://docs.clarifai.com/compute/providers/open-ai#chat-completions).
+In LiteLLM, the [`completion()`](https://docs.litellm.ai/docs/completion) function is the primary method for interacting with language models that follow the OpenAI Chat API format. It supports both traditional completions and chat-based interactions by accepting a list of messages — similar to OpenAI’s [`chat.completions.create()`](https://docs.clarifai.com/compute/inference/open-ai/#chat-completions-api).
 
 <Tabs>
 <TabItem value="python" label="Python SDK">
@@ -76,7 +83,7 @@ In LiteLLM, the [`completion()`](https://docs.litellm.ai/docs/completion) functi
 
 <details>
   <summary>Example Output</summary>
-    <CodeBlock className="language-text">Hey there! I'm doing well, thanks for asking! How are you doing today? Is there anything I can help you with or would you like to chat about something?</CodeBlock>
+    <CodeBlock className="language-text">Hey there! I'm doing great—thanks for asking. How about you? Anything fun or interesting on your mind today?</CodeBlock>
 </details>
 
 ## Streaming
@@ -91,7 +98,7 @@ When [streaming](https://docs.litellm.ai/docs/completion/stream) is enabled by s
 
 ## Tool Calling
 
-Clarifai models accessed via LiteLLM fully support [tool calling](https://docs.clarifai.com/compute/models/inference/api#tool-calling), enabling advanced interactions such as function execution during a conversation.
+Clarifai models accessed via LiteLLM fully support [tool calling](https://docs.clarifai.com/compute/inference/open-ai/#tool-calling), enabling advanced interactions such as function execution during a conversation.
 
 <Tabs>
 <TabItem value="python" label="Python SDK">
@@ -103,3 +110,61 @@ Clarifai models accessed via LiteLLM fully support [tool calling](https://docs.c
   <summary> Tool Calling Implementation Example</summary>
     <CodeBlock className="language-python">{Example8} </CodeBlock>
 </details>
+
+
+## Usage with LiteLLM Proxy
+
+Here’s how to call Clarifai models through the LiteLLM Proxy Server.
+
+### Install LiteLLM with Proxy Support
+
+<Tabs groupId="code">
+<TabItem value="bash" label="Python">
+    <CodeBlock className="language-bash">pip install 'litellm[proxy]'</CodeBlock>
+</TabItem>
+</Tabs>
+
+### Set Key
+
+Set your Clarifai PAT as an environment variable, as illustrated [above](#get-a-pat-key).
+
+
+### Start the Proxy
+
+Create a `config.yaml`.
+
+```yaml
+model_list:
+  - model_name: clarifai-model
+    litellm_params:
+      model: clarifai/openai.chat-completion.gpt-oss-20b
+      api_key: ${CLARIFAI_PAT}
+```
+
+Then, start the LiteLLM proxy:
+
+```bash
+litellm --config /path/to/config.yaml
+```
+
+The server will run at:
+
+```
+http://0.0.0.0:4000
+```
+
+### Test the Proxy
+
+<Tabs groupId="code">
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-python">{TestCurl}</CodeBlock>
+</TabItem>
+
+<TabItem value="openai" label="Python (OpenAI)">
+    <CodeBlock className="language-php"> {TestOpenai} </CodeBlock>
+</TabItem>
+
+</Tabs>
+
+
+
