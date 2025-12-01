@@ -3328,13 +3328,13 @@ You can then set the PAT as an environment variable using `CLARIFAI_PAT`. This a
 
 ## Prediction Tips
 
-#### Set up a Deployment
+#### Set Up Dedicated Deployment
 
-To use our Compute Orchestration capabilities, ensure your model is [deployed](https://docs.clarifai.com/compute/deployments/deploy-model). Then, specify the `deployment_id` parameter — alternatively, you can specify both `compute_cluster_id` and `nodepool_id`, as explained [here](https://docs.clarifai.com/compute/inference/#predict-with-compute-orchestration). 
+To use our dedicated Compute Orchestration capabilities, ensure your model is [deployed](https://docs.clarifai.com/compute/deployments/deploy-model). Then, specify the `deployment_id` parameter — alternatively, you can specify both `compute_cluster_id` and `nodepool_id`, as explained [here](https://docs.clarifai.com/compute/inference/#predict-with-compute-orchestration). 
 
 :::info
 
-For deployments owned by an organization, alongside the `deployment_id`, also provide the organization id as the `Model`'s `deployment_user_id`.
+For dedicated deployments owned by an organization, alongside the `deployment_id`, also provide the organization ID as the `Model`'s `deployment_user_id`.
 
 :::
 
@@ -3816,6 +3816,8 @@ import Example5 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orc
 import Example6 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/litellm_2.py";
 import Example7 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/litellm_3.py";
 import Example8 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/litellm_4.py";
+import TestOpenai from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/litellm_5.py";
+import TestCurl from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/litellm_6.sh";
 
 ## Prerequisites
 
@@ -3823,7 +3825,7 @@ import Example8 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orc
 
 Install the `litellm` package.
 
-     pip install litellm 
+    pip install litellm
 
 ### Get a PAT Key
 
@@ -3831,25 +3833,28 @@ You need a [PAT](https://docs.clarifai.com/control/authentication/pat) key to au
 
 You can then set the PAT as an environment variable using `CLARIFAI_PAT`:
 
-     export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE 
+    export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE
 
-     set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE 
+    set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE
 
 ### Get a Clarifai Model
 
-Go to the Clarifai [Community](https://clarifai.com/explore) platform and select the model you want to use for making predictions.
+Go to the Clarifai [Community](https://clarifai.com/explore) platform and select the model you want to use for predictions. LiteLLM supports all models in the Clarifai community.
 
-> **Note:** When specifying a Clarifai model in LiteLLM, use the model path prefixed with `openai/`, followed by the full Clarifai model URL.
-For example: `openai/https://clarifai.com/openai/chat-completion/models/o4-mini`.
+:::note
+
+When using a Clarifai model with LiteLLM, reference it using the `clarifai/`-prefixed model ID in the following format: `clarifai/..`. For example: `clarifai/openai.chat-completion.gpt-oss-20b`.
+
+:::
 
 ## Chat Completions
 
-In LiteLLM, the [`completion()`](https://docs.litellm.ai/docs/completion) function is the primary method for interacting with language models that follow the OpenAI Chat API format. It supports both traditional completions and chat-based interactions by accepting a list of messages — similar to OpenAI’s [`chat.completions.create()`](https://docs.clarifai.com/compute/providers/open-ai#chat-completions).
+In LiteLLM, the [`completion()`](https://docs.litellm.ai/docs/completion) function is the primary method for interacting with language models that follow the OpenAI Chat API format. It supports both traditional completions and chat-based interactions by accepting a list of messages — similar to OpenAI’s [`chat.completions.create()`](https://docs.clarifai.com/compute/inference/open-ai/#chat-completions-api).
 
     {Example5}
 
   Example Output
-    Hey there! I'm doing well, thanks for asking! How are you doing today? Is there anything I can help you with or would you like to chat about something?
+    Hey there! I'm doing great—thanks for asking. How about you? Anything fun or interesting on your mind today?
 
 ## Streaming
 
@@ -3859,12 +3864,54 @@ When [streaming](https://docs.litellm.ai/docs/completion/stream) is enabled by s
 
 ## Tool Calling
 
-Clarifai models accessed via LiteLLM fully support [tool calling](https://docs.clarifai.com/compute/models/inference/api#tool-calling), enabling advanced interactions such as function execution during a conversation.
+Clarifai models accessed via LiteLLM fully support [tool calling](https://docs.clarifai.com/compute/inference/open-ai/#tool-calling), enabling advanced interactions such as function execution during a conversation.
 
     {Example6}
 
    Tool Calling Implementation Example
-    {Example8}
+    {Example8} 
+
+## Usage with LiteLLM Proxy
+
+Here’s how to call Clarifai models through the LiteLLM Proxy Server.
+
+### Install LiteLLM with Proxy Support
+
+    pip install 'litellm[proxy]'
+
+### Set Key
+
+Set your Clarifai PAT as an environment variable, as illustrated [above](#get-a-pat-key).
+
+### Start the Proxy
+
+Create a `config.yaml`.
+
+```yaml
+model_list:
+  - model_name: clarifai-model
+    litellm_params:
+      model: clarifai/openai.chat-completion.gpt-oss-20b
+      api_key: ${CLARIFAI_PAT}
+```
+
+Then, start the LiteLLM proxy:
+
+```bash
+litellm --config /path/to/config.yaml
+```
+
+The server will run at:
+
+```
+http://0.0.0.0:4000
+```
+
+### Test the Proxy
+
+    {TestCurl}
+
+     {TestOpenai}
 
 ---
 
@@ -4749,6 +4796,607 @@ import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 
 ---
 
+## Pipelines
+
+# Pipelines
+**Orchestrate asynchronous, long-running, multi-step AI processes**
+
+Clarifai Pipelines let you design and run asynchronous, long-running, multi-step processes for complex AI and MLOps tasks. They act as the orchestration backbone for building advanced AI agents and managing end-to-end machine learning operations.
+
+Pipelines enable you to define, execute, and monitor container-based jobs directly on the Clarifai platform, giving you fine-grained control over each step.
+
+With Clarifai Pipelines, you get a scalable, end-to-end automation engine that simplifies and unifies your entire MLOps lifecycle.
+
+## Use Cases for Pipelines
+
+Clarifai Pipelines support a wide range of AI and MLOps workflows. Here are some common use cases:
+
+* **Automated MLOps workflows** — Build reliable, repeatable pipelines for data preparation, model training, evaluation, deployment, and monitoring. Pipelines integrate seamlessly with version control and CI/CD systems to support continuous experimentation and delivery.
+
+* **AI agent orchestration** —  Design, test, and deploy advanced AI agents that execute multi-step logic autonomously. Pipelines orchestrate [tool usage](https://docs.clarifai.com/compute/inference/open-ai/#tool-calling), LLM calls, and decision logic while managing state, external APIs, and long-running tasks that can execute for hours or even days.
+
+* **Asynchronous, long-running application tasks** — Add powerful backend capabilities to your applications without operational complexity. Pipelines make it easy to trigger and monitor tasks like large-scale batch processing, model fine-tuning, or complex data transformations.
+
+* **Complex workflow automation** — Orchestrate sophisticated, multi-stage AI workflows across multiple components and services. Pipelines provide built-in support for state management, fault tolerance, and scalable execution across distributed systems.
+
+## Quick Start
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+
+You can follow these steps to quickly get started with pipelines via the API. 
+
+### Get Credentials
+
+**1.** Go to the Clarifai platform and get your user ID, [app ID](https://docs.clarifai.com/create/applications/manage#app-overview), and Personal Access Token [(PAT)](https://docs.clarifai.com/control/authentication/pat). 
+
+Then, set your PAT as an environment variable:
+
+    export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE
+
+    set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE
+
+**2.** You’ll also need to create a [compute cluster and nodepool](https://docs.clarifai.com/getting-started/set-up-compute) and get their IDs. 
+
+### Initialize a Pipeline Project
+
+Run the following command to create a new pipeline project in your current directory. Follow the prompts to provide the required details.
+
+    clarifai pipeline init
+
+### Upload the Pipeline
+
+Run the following command to upload the pipeline with associated pipeline steps to Clarifai.
+
+    clarifai pipeline upload
+
+### Run the Pipeline
+
+Run the following command to start the pipeline and monitor its progress until completion or timeout.
+
+    ```text
+    clarifai pipeline run --compute_cluster_id cluster_id_here --nodepool_id nodepool_id_here
+    ```
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+---
+
+## Create and Run Pipelines [API]
+
+# Create and Run Pipelines [API]
+
+**Create, upload, and run pipelines via our API effortlessly**
+
+Clarifai Pipelines let you design and launch asynchronous, multi-step AI workflows on our platform. You can effortlessly automate complex processes, orchestrate AI agents, and run long-running jobs at scale.
+
+Let’s walk through how you can create, upload, and run pipelines via our API.
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+
+import PipelineInit from "!!raw-loader!../../../code_snippets/new-docs/pipelines/pipeline-init.txt";
+import ConfigYamlRoot from "!!raw-loader!../../../code_snippets/new-docs/pipelines/config-yaml-root.yaml";
+import ConfigYamlStep from "!!raw-loader!../../../code_snippets/new-docs/pipelines/config-yaml-step.yaml";
+import RequirementsTXT from "!!raw-loader!../../../code_snippets/new-docs/pipelines/requirements-txt.txt";
+import PipelineStep from "!!raw-loader!../../../code_snippets/new-docs/pipelines/pipeline-step.py";
+import UploadPipeline from "!!raw-loader!../../../code_snippets/new-docs/pipelines/upload-pipeline.txt";
+import RunPipeline from "!!raw-loader!../../../code_snippets/new-docs/pipelines/run-pipeline.txt";
+import DockerfileExample from "!!raw-loader!../../../code_snippets/new-docs/pipelines/dockerfile-example.py";
+import LockfileExample from "!!raw-loader!../../../code_snippets/new-docs/pipelines/lockfile-example.yaml";
+import RootLockfileExample from "!!raw-loader!../../../code_snippets/new-docs/pipelines/root-lockfile-example.yaml";
+
+## Step 1: Perform Prerequisites
+
+### Sign Up or Log In
+
+To get started, [log in](https://clarifai.com/login) to your Clarifai account or [sign up](https://clarifai.com/signup) for a new one.
+If you’re creating a new account, a default application will be automatically created for you.
+
+Next, gather the following details — they’re needed to create and manage pipelines programmatically:
+
+* **App ID** – Go to your application’s page and choose the [**Overview**](https://docs.clarifai.com/create/applications/manage#app-overview) option in the collapsible left sidebar. Get the app ID from there. 
+* **User ID** – Go to **Settings** in the collapsible left sidebar and choose the **Account** option. Then, copy your user ID from that page. 
+* **PAT (Personal Access Token)** – From the same **Settings** menu, navigate to the **Secrets** page to generate or copy your [PAT](https://docs.clarifai.com/control/authentication/pat). This token authenticates your requests to the Clarifai platform.
+
+Set your PAT as an environment variable before continuing:
+
+    export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE
+
+    set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE
+
+### Install the Clarifai Python SDK
+
+Install the latest version of the `clarifai` Python SDK. It includes the [Clarifai CLI](https://docs.clarifai.com/additional-resources/api-overview/cli), which you can use to interact with pipelines from the command line.
+
+```bash
+pip install --upgrade clarifai
+```
+
+### Create a Cluster and Nodepool
+
+A compute cluster and nodepool define where your pipeline runs within Clarifai’s compute environment. They are required to allocate and manage the resources your pipeline needs for execution.
+
+You need to [create](https://docs.clarifai.com/getting-started/set-up-compute) them and get their IDs. 
+
+## Step 2: Initialize a Pipeline Project
+
+Run the following command to create a new pipeline project in your current directory:
+
+    clarifai pipeline init
+
+> **Note:** 
+> - You can initialize the project in a specific location by passing a [`MODEL_PATH`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init). 
+> - You can shorten `pipeline` to `pl` when running pipeline commands. For example: `clarifai pl init`.
+
+After running the command, you’ll be prompted to provide the following details:
+
+* `User ID` — Your Clarifai user ID.
+* `App ID` — Your Clarifai application ID where the pipeline lives.
+* `Pipeline ID` — The unique ID for your pipeline (or press **Enter** to use the default).
+* `Number of steps` — How many steps your pipeline should have (or press **Enter** to use the default). You need to specify at least one step. 
+* `Step names` — A name for each pipeline step (or press **Enter** to use the defaults).
+
+  Example Output
+    {PipelineInit}
+
+:::note 
+
+### Pipeline Steps
+
+A step is a self-contained unit of execution in a Clarifai Pipeline. It represents one stage of your workflow and performs a specific task, then optionally passes its output to the next step.
+
+For example, a step might preprocess input data, call an AI model, transform results, or interact with an external API.
+
+In your pipeline project structure, each step is represented by its own folder. Steps are executed in sequence, parallel, or according to the definitions in the pipeline configuration.
+
+Each step runs in an isolated, containerized environment with:
+
+* Its own dependencies (`requirements.txt`)
+* Its own configuration (`config.yaml`)
+* Its own implementation logic (`/1/pipeline_step.py`)
+
+This design makes steps modular, reusable, and independently versioned — allowing you to update or improve one step without impacting the rest of the pipeline.
+
+> **Note:** You can also manage individual pipeline steps using the `pipelinestep` (or `ps`) command. This allows you to create, update, and reuse pipeline steps independently of the full pipeline. For example:
+  > * `clarifai pipelinestep init` – Initialize a new pipeline step project structure.
+  > * `clarifai pipelinestep upload` – Upload a pipeline step to the Clarifai platform.
+
+:::
+
+After running `clarifai pipeline init`, the CLI scaffolds a complete boilerplate project for you. Each file and folder represents a specific part of how your pipeline is configured, versioned, and executed.
+
+Here is the structure of the generated project:
+
+```text
+├── config.yaml          # Pipeline configuration
+├── stepA/               # First pipeline step
+│   ├── config.yaml      # Step A configuration
+│   ├── requirements.txt # Step A dependencies
+│   └── 1/
+│       └── pipeline_step.py  # Step A implementation logic
+├── stepB/               # Second pipeline step
+│   ├── config.yaml      # Step B configuration
+│   ├── requirements.txt # Step B dependencies
+│   └── 1/
+│       └── pipeline_step.py  # Step B implementation logic
+└── README.md            # Generated project documentation
+```
+
+## Step 3: Modify the Files
+
+The Clarifai CLI generates a structured, multi-step pipeline project, where each step is independently configurable, versioned, and deployable. 
+
+Next, you can customize the generated files to define your pipeline’s behavior.
+
+Let’s walk through what each file does in the default project setup. 
+
+### `config.yaml` (root)
+
+  Example: config.yaml (root)
+    {ConfigYamlRoot}
+
+The root `config.yaml` file defines your pipeline’s identity, structure, and execution logic. It tells Clarifai what the pipeline is, which steps it contains, and how those steps should be orchestrated at runtime.
+
+:::tip Argo Workflows
+
+Pipeline execution is powered by [Argo Workflows](https://argoproj.github.io/workflows/), an open-source, Kubernetes-native orchestration engine used to schedule and manage containerized jobs. Argo models multi-step workflows as a sequence of tasks and captures the dependencies between them using a directed acyclic graph (DAG). Clarifai leverages this under the hood to coordinate step execution, manage dependencies, and handle long-running workloads.
+
+:::
+
+Let’s break down the `config.yaml` file section by section.
+
+#### Pipeline Metadata
+
+```yaml
+pipeline:
+  id: "hello-world-pipeline"
+  user_id: "user-id"
+  app_id: "app-id"
+```
+
+These fields define your pipeline’s identity and location when uploaded to the Clarifai platform. They are automatically filled based on the values you provide during initialization. 
+
+#### Step Directories
+
+```yaml
+step_directories:
+  - stepA
+  - stepB
+```
+
+This section tells Clarifai which folders in your project represent pipeline steps and how they should be ordered during execution.
+
+Each listed directory corresponds to one pipeline step created during initialization. As mentioned [earlier](#pipeline-steps), each step contains its own `config.yaml`, `requirements.txt`, and executable logic, allowing steps to be configured and maintained independently.
+
+#### Argo Workflow Definition
+
+```yaml
+orchestration_spec:
+  argo_orchestration_spec: |
+    apiVersion: argoproj.io/v1alpha1
+    kind: Workflow
+    spec:
+      entrypoint: sequence
+      arguments:
+        parameters:
+          - name: input_text
+            value: "Input Text Here"
+```
+
+This section is the control center of your pipeline. It defines how Clarifai uses Argo Workflows to orchestrate and execute your multi-step workflow as a DAG.
+
+Here’s what each part does:
+
+* `apiVersion` — Specifies the version of the Argo Workflow API being used.
+* `kind: Workflow` — Tells the system this is a multi-step Argo workflow.
+* `entrypoint` — Defines the starting point of execution. In this case, the workflow begins at a [template](https://argo-workflows.readthedocs.io/en/release-3.5/workflow-concepts/) named `sequence`.
+* Input parameters — These are runtime variables passed into your pipeline when you run it. Here, a parameter called `input_text` is defined. If no value is provided at runtime, it defaults to `"Input Text Here"`. This value can then be consumed by any pipeline step.
+
+#### Step Execution Order
+
+```yaml
+templates:
+- name: sequence
+  steps:
+  - - name: step-0
+      templateRef:
+        name: users/user-id/apps/app-id/pipeline_steps/stepA
+        template: users/user-id/apps/app-id/pipeline_steps/stepA
+      arguments:
+        parameters:
+          - name: input_text
+            value: "{{workflow.parameters.input_text}}"
+
+  - - name: step-1
+      templateRef:
+        name: users/user-id/apps/app-id/pipeline_steps/stepB
+        template: users/user-id/apps/app-id/pipeline_steps/stepB
+      arguments:
+        parameters:
+          - name: input_text
+            value: "{{workflow.parameters.input_text}}"
+```
+
+The section defines how individual pipeline steps are connected and the exact order in which they run.
+
+* `step-0` — Executes first. It references the deployed pipeline step `stepA` and receives the `input_text` parameter.
+* `step-1` — Executes after `step-0` completes. It references `stepB` and also receives the same `input_text` parameter.
+
+> **Note:** This structure defines a sequential workflow. Under the hood, Argo models this sequence as a DAG, ensuring that `stepB` only runs once its dependency (`stepA`) has successfully completed. The `templateRef` fields point to the deployed step implementations in your project directories (`stepA/` and `stepB/`). When deployed, Clarifai transforms these into executable Argo templates that power the pipeline.
+
+> **Note:** You can also structure your pipeline as a [parallel workflow](https://argo-workflows.readthedocs.io/en/release-3.4/walk-through/steps/), where multiple steps run simultaneously instead of sequentially.
+
+#### Optional: Secrets Configuration
+
+```yaml
+config:
+  step_version_secrets:
+    step-0:
+      API_KEY: users/user-id/apps/secrets/my-api-key
+      DB_PASSWORD: users/user-id/apps/secrets/db-secret
+    step-1:
+      EMAIL_TOKEN: users/user-id/apps/secrets/email-token
+```
+
+This section lets you securely inject [environment secrets](https://docs.clarifai.com/control/authentication/environment-secrets) into specific pipeline steps. It’s especially useful for handling sensitive data, like third-party API keys, without hardcoding them into your source code.
+
+Each key (for example, `API_KEY` or `DB_PASSWORD`) becomes an environment variable inside the corresponding step’s runtime environment. The values reference secrets stored in the Clarifai secrets manager, which ensures they are encrypted, access-controlled, and never exposed directly in your project files.
+
+> **Note:** Once the secrets are mounted, you can access them in your [`pipeline_step.py`](#1pipeline_steppy) file using standard environment variable calls, for example:
+
+```python
+import os
+
+api_key = os.environ['API_KEY']
+```
+
+> The secret value is then available to your code at runtime.
+
+### `step/config.yaml` 
+
+  Example: step/config.yaml
+    {ConfigYamlStep}
+
+Each pipeline step includes its own [`config.yaml`](https://docs.clarifai.com/compute/upload/#prepare-configyaml) file, which defines it as a self-contained, containerized unit of execution. These files usually share a common structure and similar resource settings, helping keep your pipeline consistent, predictable, and easy to manage.
+
+Let’s break down the `step/config.yaml` file section by section.
+
+#### Step Metadata
+
+  ```yaml
+  pipeline_step:
+    id: "stepA"
+    user_id: "user-id"
+    app_id: "app-id"
+  ```
+
+This section defines how Clarifai identifies, scopes, and stores this pipeline step. These values are automatically filled with the information you provide when you [initialize](#step-2-initialize-a-pipeline-project) the pipeline project. 
+
+> **Note:** Clarifai Pipelines support cross-application orchestration for reusing logic. To integrate a shared step into your pipeline, simply configure it with the corresponding `user_id`, `app_id`, or step `id` where the resource is hosted.
+
+#### Input Interface
+
+  ```yaml
+  pipeline_step_input_params:
+    - name: input_text
+      description: "Text input for processing"
+  ```
+
+This defines the data this step expects when it runs. The description helps document what this input is used for and how it should be provided by upstream steps or users.
+
+#### Runtime Environment
+
+  ```yaml
+  build_info:
+    python_version: "3.12"
+  ```
+
+This specifies the environment used to run the step, ensuring [compatibility](https://docs.clarifai.com/resources/api-overview/python-sdk#python-requirements) with your code and dependencies.
+
+#### Compute Resources Allocation
+
+  ```yaml
+  pipeline_step_compute_info:
+    cpu_limit: "500m"
+    cpu_memory: "500Mi"
+    num_accelerators: 0
+  ```
+
+This section controls the resources allocated to the step during execution. It is the most critical part for performance and cost.
+
+* `cpu_limit: "500m"` allocates half of one CPU core's processing power (500 millicores = 0.5 CPU cores). This indicates the step is a lightweight task (like text parsing), not a heavy calculation.
+* `cpu_memory: "500Mi"` limits memory usage to 500 Mebibytes of RAM.
+* `num_accelerators: 0` means no GPU or other [accelerators](https://docs.clarifai.com/compute/deployments/cloud-instances) are used. This keeps costs low, as you are running on standard CPU infrastructure.
+
+### `step/requirements.txt` 
+
+  Example: step/requirements.txt
+    {RequirementsTXT}
+
+Each pipeline step has its own [`requirements.txt`](https://docs.clarifai.com/compute/upload/#prepare-requirementstxt) file, which specifies the Python packages required for that specific step to run. 
+
+These dependencies are installed in an isolated, containerized environment, meaning one step can use a different set of libraries or versions without affecting other steps in the pipeline.
+
+### `1/pipeline_step.py` 
+
+  Example: 1/pipeline_step.py
+    {PipelineStep}
+
+Each pipeline step has its own `pipeline_step.py` file, which contains the core implementation for that specific step. This is where you define all the logic the step executes — including data processing, API interactions, model inference, and output transformations.
+
+When the pipeline runs, Clarifai spins up this step’s container and executes this script.
+
+> **Note:** The `pipeline_step.py` file is nested inside the `step/1/` directory. The folder is named as **1** to fit Clarifai’s naming convention. 
+
+Let’s break down the example of a `pipeline_step.py` file section by section.
+
+#### Command-line Input Handling
+
+```python
+parser = argparse.ArgumentParser(description='stepA processing step.')
+parser.add_argument('--input_text', type=str, required=True, help='Text input for processing')
+args = parser.parse_args()
+```
+
+This section receives its inputs as command-line arguments when Clarifai runs it. The `--input_text` corresponds to the `pipeline_step_input_params` you defined in the step’s [`config.yaml`](#stepconfigyaml). 
+
+Clarifai automatically maps pipeline parameters to these arguments when the step is executed.
+
+#### Logging the Clarifai SDK Version
+
+```python
+logger.info(clarifai.__version__)
+```
+
+This section logs the version of the Clarifai Python SDK installed inside the step’s container. It’s useful for debugging and verifying that the correct environment is being used.
+
+#### Step Logic Placeholder
+
+```python
+# TODO: Implement your pipeline step logic here
+logger.info(f"stepA processed: {args.input_text}")
+```
+
+This section is where your step’s core logic lives. In this example, it simply logs the input it receives, but in a real pipeline, this is where you would implement the actual work of the step, such as preprocessing input data or calling LLM models. 
+
+## Step 4: Upload the Pipeline
+
+Run the following command in your current directory to upload the pipeline with associated pipeline steps to Clarifai.
+
+    clarifai pipeline upload
+
+> **Note:** You can specify a path to the pipeline configuration file or directory containing the root `config.yaml` file. If not specified, the current directory is used by default.
+
+  Example Output
+    {UploadPipeline}
+
+When you run the `upload` command, the CLI reads your pipeline configuration, uploads each step, and automatically builds a container image for every step using its code, configs, and dependencies. 
+
+- **Dockerfile** — For each step, it auto-generates a `Dockerfile` behind the scenes, which defines how the container image for the step is built (base image, Python version, dependency installation, and entrypoint setup). You can also create your own customized Dockerfile. 
+
+  Example: Dockerfile
+    {DockerfileExample}
+
+- **Lock file** — If the CLI detects that no lock file is existing, it auto-creates a new `config-lock.yaml` to “freeze” the exact step configuration and build details for that version. 
+This lock file captures the resolved configuration, including the Python runtime (`3.12`), compute resources, input parameters, and a unique version ID. The `step/config.yaml` file also stores an MD5 hash of the step contents, which is used to track changes and ensure reproducible builds.
+
+> **Tip:** Use the `--no-lockfile` flag to disable generation of `config-lock.yaml`. Example: `clarifai pipeline upload --no-lockfile`.
+
+  Example: config-lock.yaml (root)
+    {RootLockfileExample}
+
+  Example: step/config-lock.yaml
+    {LockfileExample}
+
+- **Container image** — Using the generated Dockerfile and the locked configuration, Clarifai then builds a multi-architecture container image on its infrastructure. This image becomes a versioned, immutable artifact that’s tightly coupled with the `config-lock.yaml`, ensuring every future pipeline execution runs with the exact same code, environment, and resource settings.
+
+> **Note:** If you modify your pipeline and upload it again to the Clarifai platform, a new version is automatically created. Only the updated sections are uploaded, ensuring efficient version management.
+
+## Step 5: Run the Pipeline
+
+After successfully uploading your pipeline, you can execute it using the Clarifai CLI. 
+
+Run the following command from your current project directory to start the pipeline and monitor its progress until completion or timeout.
+
+> **Note:** You must specify both a compute [cluster ID and a nodepool ID](#create-a-cluster-and-nodepool). 
+
+    ```text
+    clarifai pipeline run --compute_cluster_id cluster_id_here --nodepool_id nodepool_id_here
+    ```
+
+  Example Output
+    {RunPipeline}
+
+### Run Command Options
+
+The table below summarizes the available options you can use with the `clarifai pipeline run` command.
+
+| Option | Type | Description | Defaults / Notes |
+| :--- | :--- | :--- | :--- |
+| **Targeting & Identity** | | | |
+| `--pipeline_id` | `TEXT` | ID of the pipeline to execute | |
+| `--user_id` | `TEXT` | User ID owning the pipeline | |
+| `--app_id` | `TEXT` | App ID containing the pipeline | |
+| `--pipeline_version_id` | `TEXT` | Specific version of the pipeline to run | |
+| `--pipeline_url` | `TEXT` | Full URL to the pipeline resource | Alternative to providing IDs separately |
+| **Execution Control** | | | |
+| `--config` | `PATH` | Path to a local configuration file for the run | |
+| `--pipeline_version_run_id`| `TEXT` | Custom ID for this specific execution run | A UUID is generated automatically if omitted |
+| `--nodepool_id` | `TEXT` | Specific Nodepool to execute on | |
+| `--compute_cluster_id` | `TEXT` | Specific Compute Cluster to execute on | |
+| **Inputs & Parameters** | | | |
+| `--set` | `TEXT` | Override parameter values inline | Format: `key=value`. Can be used multiple times. Example `--set prompt="hello"`, `--set temperature="0.7"`|
+| `--overrides-file` | `PATH` | Path to JSON/YAML file for bulk parameter overrides| |
+| **Monitoring & Logging** | | | |
+| `--monitor` | `FLAG` | Watch an *existing* run instead of starting a new one| **Requires** `--pipeline_version_run_id` |
+| `--monitor_interval` | `INTEGER`| Frequency of status checks | Default: **10 seconds**. |
+| `--timeout` | `INTEGER`| Max time to wait for completion | Default: **3600 seconds** (1 hour) |
+| `--log_file` | `PATH` | File path to save execution logs | If omitted, logs output to console |
+
+That's it!
+
+---
+
+## Manage Pipelines
+
+# Manage Pipelines
+
+**Manage and scale pipelines across their entire lifecycle**
+
+Managing your Clarifai Pipelines across their lifecycle keeps them organized and production-ready, so you can scale confidently and maintain consistent performance.
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+
+## List Pipelines
+
+The `list` (or `ls`) command displays all pipelines available in your specified application. This is useful for verifying that your pipeline was successfully uploaded to the Clarifai platform and discovering pipelines across different apps.
+
+It has the following options:
+
+- `--app_id` — Only list pipelines from a specific app
+- `--page_no` — (Optional) Page number to display (useful when there are many pipelines)                                 
+- `--per_page` — (Optional) Number of pipelines to return per page                                                        
+
+### List All Pipelines
+
+Run the following command to list all the pipelines for the user.
+
+    ```bash
+    # List pipelines from a specific app
+    clarifai pipeline list --app_id my-app
+
+    # List pipelines with pagination
+    clarifai pipeline list --app_id my-app --page_no 2 --per_page 10
+    ```
+
+  Example Output
+
+    ```text
+clarifai pipeline list --app_id pipelines-1                          
+ID                    USER_ID    APP_ID       VERSION_ID                        DESCRIPTION    CREATED_AT            MODIFIED_AT
+hello-world-pipeline  alfrick    pipelines-1  48862434906f482e94a2ec638a4233a1                 2025-11-26T14:15:51Z  2025-11-26T14:15:51Z
+
+clarifai pipeline list --app_id pipelines-1 --page_no 1 --per_page 10
+ID                    USER_ID    APP_ID       VERSION_ID                        DESCRIPTION    CREATED_AT            MODIFIED_AT
+hello-world-pipeline  alfrick    pipelines-1  48862434906f482e94a2ec638a4233a1                 2025-11-26T14:15:51Z  2025-11-26T14:15:51Z
+```
+
+### List All Pipeline Steps
+
+Run the following command to list only the [pipeline steps](create-api.md#pipeline-steps) for the user.
+
+    ```bash
+    # 
+    clarifai pipelinestep list --app_id my-app
+
+    # Or:
+    clarifai ps ls --app_id my-app
+    ```
+
+  Example Output
+
+```text
+    PIPELINE_STEP_ID    USER_ID    APP_ID       VERSION_ID                        DESCRIPTION            CREATED_AT            MODIFIED_AT
+stepA               alfrick    pipelines-1  e7b2839d02b0463e8a45e7a37afc767b  Pipeline step version  2025-11-28T05:23:46Z  2025-11-28T05:23:53Z
+stepB               alfrick    pipelines-1  5e93c74ef8ae456ab353aa5e60e46f97  Pipeline step version  2025-11-26T14:15:36Z  2025-11-26T14:15:43Z
+stepA               alfrick    pipelines-1  36e752e546334fa28d73bcbdc86d37a7  Pipeline step version  2025-11-26T14:14:02Z  2025-11-26T14:15:29Z
+ ```
+
+## Validate Lock File
+
+The `validate-lock` command verifies that your root [`config-lock.yaml`](create-api.md#step-4-upload-the-pipeline) file matches the expected schema. It checks that all referenced steps, versions, and configurations are valid.
+
+You can use this command before re-uploading or running your pipeline to catch configuration errors early and ensure everything is consistent.
+
+    ```bash
+# Validate lock file in the current directory
+clarifai pipeline validate-lock
+
+# Validate a specific lock file
+clarifai pipeline validate-lock ./my-pipeline/config-lock.yaml
+    ```
+
+> **Note:** If no path is provided, the CLI automatically looks for a `config-lock.yaml` file in your current working directory.
+
+  Example Output
+
+    ```text
+clarifai pipeline validate-lock
+[INFO] 15:45:54.415983 ✅ Lockfile config-lock.yaml is valid |  thread=8329666752 
+[INFO] 15:45:54.416070 Pipeline: hello-world-pipeline |  thread=8329666752 
+[INFO] 15:45:54.416102 User: alfrick |  thread=8329666752 
+[INFO] 15:45:54.416129 App: pipelines-1 |  thread=8329666752 
+[INFO] 15:45:54.416149 Version: 48862434906f482e94a2ec638a4233a1 |  thread=8329666752 
+```
+
+---
+
 ## Toolkits
 
 # Toolkits
@@ -4844,6 +5492,8 @@ With the Clarifai CLI, you can download and set up any supported Hugging Face mo
 For example, the command below initializes the default model ([`unsloth/Llama-3.2-1B-Instruct`](https://huggingface.co/unsloth/Llama-3.2-1B-Instruct)) in your current directory.
 
     clarifai model init --toolkit huggingface
+
+> **Note:** You can initialize a model in a specific location by passing a [`MODEL_PATH`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init). 
 
   Example Output
     {HFModelInit}
@@ -5017,6 +5667,8 @@ For example, the command below initializes the default model ([LiquidAI/LFM2-1.2
 
 clarifai model init --toolkit lmstudio
 
+> **Note:** You can initialize a model in a specific location by passing a [`MODEL_PATH`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init). 
+
   Example Output
   {LMStudioInit}
 
@@ -5179,6 +5831,8 @@ For example, here's how to initialize the [`llama3.2`](https://ollama.com/librar
 
     clarifai model init --toolkit ollama
 
+> **Note:** You can initialize a model in a specific location by passing a [`MODEL_PATH`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init). 
+
   Example Output
     {OllamaInit}
 
@@ -5332,6 +5986,191 @@ When you're done, just close the terminal running the local runner to shut it do
 
 ---
 
+## OpenAI
+
+# OpenAI
+
+**Run OpenAI-compatible models locally and expose them via a public API**
+
+OpenAI's API specification has become the industry standard for interacting with large language models. 
+
+With Clarifai's [Local Runners](https://docs.clarifai.com/compute/local-runners/), you can deploy any OpenAI-compatible model locally, whether it's from OpenAI's official services, open-source alternatives, or your own fine-tuned models, and make them available via secure public endpoints.
+
+This approach gives you the flexibility of OpenAI's familiar API interface while maintaining data privacy, reducing latency, and having full control over your deployment environment.
+
+> **Note:** After setting up your OpenAI-compatible model locally, you can [upload](https://docs.clarifai.com/compute/upload/#step-4-upload-the-model-to-clarifai) it to Clarifai to leverage the platform's capabilities, such as versioning, monitoring, and auto‑scaling.
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+
+import OpenAIModelPy from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/openai_model_py.py";
+import OpenAIConfig from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/openai_config.yaml";
+import OpenAIRequirements from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/openai_requirements.txt";
+import OpenAIModelInit from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/openai_model_init.txt";
+import StartRunner from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/openai_start_runner.txt";
+import TestRunner from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/openai_test_runner.py";
+import OpenAILogin from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/openai_login.txt";
+import OpenAIResponse from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/open_ai_response.txt";
+
+## Step 1: Perform Prerequisites
+
+### Sign Up or Log In
+
+[Log in](https://clarifai.com/login) to your existing Clarifai account or [sign up](https://clarifai.com/signup) for a new one. Once logged in, you'll need the following credentials for setup:
+
+- **App ID** – Navigate to the application you want to use to run the model and select the **[Overview](https://docs.clarifai.com/create/applications/manage/#app-overview)** option in the collapsible left sidebar. Get the app ID from there.
+- **User ID** – In the collapsible left sidebar, select **Settings** and choose **Account** from the dropdown list. Then, locate your user ID.
+- **Personal Access Token (PAT)** – From the same **Settings** option, choose **Secrets** to generate or copy your [PAT](https://docs.clarifai.com/control/authentication/pat). This token is used to authenticate your connection with the Clarifai platform.
+
+You can then set the PAT as an environment variable using `CLARIFAI_PAT`. 
+
+    export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE
+
+    set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE
+
+### Install Clarifai CLI
+
+Install the latest version of the [Clarifai CLI](https://docs.clarifai.com/sdk/cli) tool. It includes built-in support for Local Runners. 
+
+    pip install --upgrade clarifai
+
+> **Note:** You'll need **[Python 3.11 or 3.12](https://docs.clarifai.com/resources/api-overview/python-sdk#python-requirements)** installed to successfully run the Local Runners.
+
+### Install the OpenAI Package
+
+Install the `openai` package — it’s required to perform inference with models that support the [OpenAI-compatible](https://docs.clarifai.com/compute/inference/#predict-with-openai-compatible-format) format.
+
+pip install openai
+
+### Set Up Your OpenAI-Compatible Server
+
+Before initializing the model, ensure you have an OpenAI-compatible server running locally. Popular options include:
+
+- [vLLM](https://docs.clarifai.com/compute/toolkits/vllm#install-vllm) — Usually runs at `http://localhost:8000/v1` (default port: 8000, unless you specify `--port`).
+- [LM Studio](https://docs.clarifai.com/compute/toolkits/lmstudio#install-lm-studio) — Usually at `http://localhost:1234/v1` (default port: 1234, shown in the LM Studio UI)
+- [Ollama](https://docs.clarifai.com/compute/toolkits/ollama#install-ollama) (OpenAI mode) — Usually at `http://localhost:11434/v1` (default port: 11434, unless changed via the config or startup flags)
+
+You’ll use this address in the [`model.py`](#modelpy) file.
+
+## Step 2: Initialize a Model
+
+With the Clarifai CLI, you can set up any OpenAI-compatible model to work with your local server.
+
+The command below scaffolds a default OpenAI-compatible model template in your current directory:
+
+    clarifai model init --model-type-id openai
+
+> **Note:** You can initialize a model in a specific location by passing a [`MODEL_PATH`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init). 
+
+  Example Output
+    {OpenAIModelInit}
+
+This command generates a model directory structure that's compatible with the Clarifai platform and configured to work with OpenAI-compatible APIs.
+
+The generated structure includes:
+
+```
+├── 1/
+│   └── model.py
+├── requirements.txt
+└── config.yaml
+```
+
+### `model.py`
+
+  Example: model.py
+    {OpenAIModelPy}
+
+The [`model.py`](https://docs.clarifai.com/compute/upload/#prepare-modelpy) file, located inside the `1` folder, acts as the bridge between Clarifai’s model execution environment and your local (or remote) OpenAI-compatible server.
+
+It includes an extension of the Clarifai’s `OpenAIModelClass`. This base class is designed specifically for wrapping OpenAI-compatible model servers and exposing them through Clarifai’s inference infrastructure.
+
+This class implements the following:
+
+- The `OpenAI` client, which connects to your model server (e.g. vLLM, LM Studio, Ollama) via its `/v1` API endpoint.
+- The `predict()` method, which handles standard (non-streaming) chat completions.
+- The `generate()` method, which supports streaming token generation.
+- `build_openai_messages()`, which automatically converts Clarifai inputs into OpenAI-compatible message format.
+
+These are the key components you can configure:
+
+- `base_url`: Your local model server endpoint address (default: `http://localhost:8000/v1`). 
+> **Note:** During model initialization, the CLI will prompt you to choose a port, and this value will be automatically updated in the file to match your selection.
+- `api_key`: Required only when calling the model through OpenAI’s hosted API. If you’re using a local OpenAI-compatible server, an API key isn’t needed — you can simply provide any dummy value.
+- `model`: The ID of the model to use. You can leave this as is to let it be automatically detected from your OpenAI-compatible server, or explicitly set it to a specific model ID (for example, `"gpt-4"`).
+
+### `config.yaml`
+
+  Example: config.yaml
+    {OpenAIConfig}
+
+The `config.yaml` file tells Clarifai how to run your OpenAI-compatible custom model — including where it will live on the platform, how it’s served, and what compute resources it needs.
+
+- It specifies where your model will run using values like `id` (your chosen model name), `user_id` (set by default from your [active context](https://docs.clarifai.com/resources/api-overview/cli/#clarifai-config)), `app_id`, and [`model_type_id`](https://docs.clarifai.com/create/models/#list-of-model-types).
+- In the `build_info` section, specify your configure environment settings, such as the Python version required by your OpenAI model implementation. 
+- In the `inference_compute_info` section, specify the compute resources your model should use — including CPU, memory, and optional accelerators (like GPUs) — ensuring your OpenAI-compatible service has the right performance and scalability characteristics.
+
+> **When to use checkpoints:** Most OpenAI models are accessed via the API, so you won’t need a [checkpoints](https://docs.clarifai.com/compute/toolkits/hf#configyaml) block. If you are serving a self‑hosted Hugging Face model, you can uncomment the checkpoints section and set the required values.
+
+### `requirements.txt`
+
+  Example: requirements.txt
+    {OpenAIRequirements}
+
+The `requirements.txt` file specifies all the Python dependencies your model needs to run. If these packages are not already installed in your environment, install them by running the following command:
+
+    pip install -r requirements.txt
+
+## Step 3: Log In to Clarifai
+
+Run the following command to log in to the Clarifai platform, create a configuration [context](https://docs.clarifai.com/compute/local-runners/#step-2-create-a-context-optional), and establish a connection:
+
+```bash
+clarifai login
+```
+
+You'll be prompted to provide:
+
+* **User ID** – Enter your Clarifai user ID.
+* **PAT** – Enter your Clarifai PAT. If you've already set the `CLARIFAI_PAT` environment variable, type `ENVVAR` to use it automatically.
+* **Context name** – Assign a custom name to this configuration context, or press Enter to accept the default name, `"default"`.
+
+  Example Output
+    {OpenAILogin}
+
+## Step 4: Start Your Local Runner
+
+Start a local runner with the following command:
+
+```bash
+clarifai model local-runner
+```
+
+The CLI will guide you through creating any necessary context configurations with default values, ensuring all components (compute clusters, nodepools, deployments) are properly set up.
+
+  Example Output
+    {StartRunner}
+
+> **Tip:** If your underlying model is running on a specific port (like 8000), ensure your `model.py` points to that port, and that the Local Runner does not try to bind to the same port.
+
+## Step 5: Test Your Runner
+
+Once the local runner starts, it provides a sample client code snippet for testing. You can run this in a separate terminal within the same directory.
+
+Here's an example test snippet:
+
+     {TestRunner}
+
+  Example Output
+    {OpenAIResponse}
+
+That’s it!
+
+When you’re done testing, simply stop the terminal running the local development runner and the process hosting your OpenAI-compatible server.
+
+---
+
 ## SGLang
 
 # SGLang
@@ -5418,6 +6257,8 @@ With the Clarifai CLI, you can initialize a model configured to run using the SG
 You can customize or optimize the model by editing the generated files as needed. For example, the command below initializes a default Hugging Face model ([HuggingFaceTB/SmolLM2-135M-Instruct](https://huggingface.co/HuggingFaceTB/SmolLM2-135M-Instruct)) in your current directory.
 
 clarifai model init --toolkit sglang
+
+> **Note:** You can initialize a model in a specific location by passing a [`MODEL_PATH`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init). 
 
   Example Output
   {SGLModelInit}
@@ -5622,6 +6463,8 @@ Use the Clarifai CLI to initialize a vLLM-based model directory. This setup prep
 You can further customize or optimize the model by modifying the generated files as necessary.
 
 clarifai model init --toolkit vllm
+
+> **Note:** You can initialize a model in a specific location by passing a [`MODEL_PATH`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init). 
 
 :::tip
 
