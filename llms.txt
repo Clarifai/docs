@@ -272,6 +272,7 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [Release 9.9](https://docs.clarifai.com/docs/product-updates/changelog/release99): Changelog for Clarifai Release 9.9
 - [Upcoming Platform Changes](https://docs.clarifai.com/docs/product-updates/upcoming-api-changes/README): Learn about scheduled changes to the Clarifai platform
 - [Deprecation of `closed_environment` in favor of `enrich_dataset`](https://docs.clarifai.com/docs/product-updates/upcoming-api-changes/closed-environment): Learn about deprecation of `closed_environment`
+- [Decommissioning Legacy Models](https://docs.clarifai.com/docs/product-updates/upcoming-api-changes/decommission-legacy-models): Learn about the models we'll decommission
 - [Updates to Model and Model Version Endpoints](https://docs.clarifai.com/docs/product-updates/upcoming-api-changes/model-version-endpoints): Learn about updates to model and model version endpoints
 - [Other Previous Completed Changes](https://docs.clarifai.com/docs/product-updates/upcoming-api-changes/other-previous-changes): Learn about other previous completed changes
 - [Changes to Use of PATs and API Keys](https://docs.clarifai.com/docs/product-updates/upcoming-api-changes/pat-api-keys): Learn about breaking changes to the use of PATs and API keys
