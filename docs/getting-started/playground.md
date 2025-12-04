@@ -1,11 +1,11 @@
 ---
-description: Start quickly with Clarifai Playground in a few simple steps
+description: Start running inferences in just a few simple steps
 sidebar_position: 2
 ---
 
 # Quick Start With Playground
 
-**Start quickly with Clarifai Playground in a few simple steps**
+**Start running inferences in just a few simple steps**
 <hr />
 
 <div style={{ "position":"relative","width": "100%","overflow": "hidden","padding-top": "56.25%"}}>
@@ -45,25 +45,47 @@ You'll be taken to the AI Playground interface.
 
 > **Alternatively:** In the upper-left section of the Playground, you can choose the model you'd like to use for inference.
 
-In the message box at the bottom of the Playground, enter your desired prompt to generate text with the selected model. You can also use any of the provided predefined prompt examples. 
+![](/img/new-docs/playground-2-1.png)
+
+Once the interface opens, you’ll see a model card that gives you a quick overview of the model, including input and output pricing, and links to the model page and pricing details. You’ll also find predefined prompt examples you can use right away.
+
+Next, in the message box at the bottom of the Playground, enter your desired prompt to generate a response with the selected model.  
 
 > **Note:** If your chosen model supports image or video inputs as prompts, you can also upload them directly into the interface.
 
 Then, submit your request by clicking the arrow icon in the message box or pressing Enter on your keyboard.
 
-![](/img/new-docs/playground-3.png)
-
-The results will be streamed directly on the interface, allowing you to see the output in real time. 
-
-> **Note:** Since we support streaming capabilities, you can interact with language models as they generate responses token by token — just like in a live chat experience.
-
 :::tip
 
-For this example, we're using the default settings for deployment ([`Clarifai Shared`](https://docs.clarifai.com/compute/deployments/clusters-nodepools)) and [inference parameters](https://docs.clarifai.com/compute/inference/advanced). You can customize these settings as needed for more advanced use cases.
+For this example, we're using the default settings for inferencing — [`Clarifai Serverless deployment`](https://docs.clarifai.com/compute/overview#deployment-options) and default [inference parameters](#playground-settings). You can customize these settings as needed for more advanced use cases.
 
 :::
 
+![](/img/new-docs/playground-3.png)
+
+The results will stream directly in the interface, allowing you to see the generated output token by token, in real time.
+
+Note that the model’s chain-of-thought preview is shown to help you understand how the model interpreted your request.
+
+At the bottom of the response, you’ll also see the following token and performance metrics:
+
+- TTFT (Time to First Token)
+- IN (input token count)
+- OUT (output token count)
+- TOKENS/S (generation speed)
+
 ## Additional Playground Features
+
+### Playground Settings
+
+The Playground’s right sidebar lets you adjust a range of settings to customize how the model behaves.
+
+* **Model Version** — Choose the specific version of the model you want to run.
+* **Max Completion Tokens** — Sets the maximum number of tokens the model can generate for a completion. This includes both the visible output tokens and any reasoning tokens produced.
+* **Reasoning Effort** — Controls how much reasoning the model applies (for reasoning-enabled models). Available options are `minimal`, `low`, `medium` (default), and `high`. Lower effort levels can speed up responses and reduce the number of reasoning tokens generated.
+* **Temperature** — Adjusts the randomness of the output, with values ranging from 0 to 2. Higher temperatures (e.g., 0.8) produce more diverse, creative responses, while lower values (e.g., 0.2) produce more focused, deterministic outputs. We generally recommend adjusting either this or `top_p`, but not both.
+* **Top P** — Controls nucleus sampling, an alternative to temperature-based sampling. The model selects from the smallest set of tokens whose cumulative probability reaches `top_p`. For example, a value of 0.1 limits choices to the top 10% most probable tokens. As with temperature, we recommend modifying either `top_p` or temperature, but not both.
+
 
 ### Compare Models
 
@@ -76,6 +98,8 @@ Click the **Compare Models** button in the upper-right corner of the Playground 
 Next, choose a model for the left panel and another for the right. When you’re done, close the comparison by clicking the **X** button in the upper-right corner of the right panel.
 
 ![](/img/new-docs/playground-6.png)
+
+> **Note:** If you enable the **Sync Prompts** option, the prompt you enter for the first model will automatically be mirrored to the second one, removing the need to manually copy prompts between models.
 
 ### Get Code Snippets
 

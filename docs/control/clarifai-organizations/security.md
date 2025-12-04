@@ -1,6 +1,5 @@
 ---
 description: Learn how to enhance the security of your Clarifai organization
-pagination_next: null
 sidebar_position: 3
 ---
 

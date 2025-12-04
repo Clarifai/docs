@@ -1019,6 +1019,10 @@
     {
       "to": "/compute/toolkits/vllm",
       "from": ["/compute/local-runners/vllm"]
+    },    
+    {
+      "to": "/getting-started/playground",
+      "from": ["/getting-started/quickstart-playground"]
     }
   
   

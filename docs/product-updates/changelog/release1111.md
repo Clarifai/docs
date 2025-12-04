@@ -4,12 +4,12 @@ description: Changelog for Clarifai Release 11.11
 sidebar_position: -74
 pagination_next: null
 pagination_prev: product-updates/changelog/release1110
-draft: true
+draft: false
 ---
 
 # Release 11.11
 
-**Release Date:** December 2nd, 2025
+**Release Date:** December 3rd, 2025
 
 <hr/>
 
@@ -19,11 +19,12 @@ draft: true
 | :---: | :---: | :---: | :---: |
 | ![new-feature](/img/new_feature.jpg) |![improvement](/img/improvement.jpg) | ![bug](/img/bug.jpg) | ![enterprise](/img/enterprise.jpg) |
 
-## Decommissioning Legacy Models
+## Models
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
-| [**Breaking Change**](https://docs.clarifai.com/product-updates/changelog/release-types#release-types) | Decommissioning legacy models  | <ul> <li> We are upgrading our infrastructure, and as part of this transition, we will decommission most of our legacy models on December 31, 2025.</li> <li> Learn more [here](#decommissioning-legacy-models). </li> </ul> |
+| [**Breaking Change**](https://docs.clarifai.com/product-updates/changelog/release-types#release-types) | Decommissioning legacy models  | <ul> <li> We are upgrading our infrastructure, and as part of this transition, we will decommission most of our legacy models on December 31, 2025.</li> <li> Learn more [here](https://docs.clarifai.com/product-updates/upcoming-api-changes/decommission-legacy-models/). </li> </ul> |
+| ![improvement](/img/improvement.jpg)  |  Made improvements| <ul> <li> Only a curated set of featured models can now be run using the Clarifai shared SaaS (serverless) deployment option. To use any other models, users must deploy them to their own cluster and nodepool.</li> </ul>|
 
 ## Published Models
 
