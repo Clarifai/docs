@@ -101,3 +101,9 @@ In the [next section](./usage/#common-chart-features), we’ll explore charts in
 You can remove a chart from the Overview by simply clicking the delete button (**X**) in the upper-right corner. This action will only remove the chart from the Overview, without deleting it from the respective data section of the Control Center.
 
 ![](/img/community/control-center/control_center_5.png)
+
+### Download as CSV
+
+Click the **Download as CSV** icon to export the chart data in CSV format.
+
+![](/img/community/control-center/control_center_5-2.png)

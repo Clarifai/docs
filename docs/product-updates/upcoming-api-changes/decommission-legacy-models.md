@@ -2,7 +2,6 @@
 description: Learn about the models we'll decommission
 # For positioning, we use negative position so that the oldest announcements are displayed at the bottom. Any time you add a new announcement, increase the position by -1.
 sidebar_position: -9
-unlisted: true
 ---
 
 # Decommissioning Legacy Models
@@ -10,7 +9,7 @@ unlisted: true
 **Learn about the models we'll decommission**
 <hr />
 
-- **Type of Change** — Important breaking change regarding decommissioning of legacy models
+- **Type of Change** — Important [breaking change](https://docs.clarifai.com/product-updates/changelog/release-types#release-types) regarding decommissioning of legacy models
 
 - **Implementation Date** — December 31st, 2025
 
