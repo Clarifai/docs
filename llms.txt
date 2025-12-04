@@ -168,7 +168,7 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [Workflow Inferences](https://docs.clarifai.com/docs/create/workflows/inference): Make predictions with your workflows
 - [Manage Workflows](https://docs.clarifai.com/docs/create/workflows/manage): Manage workflows
 - [Deploy Your First Model](https://docs.clarifai.com/docs/getting-started/first-deployment): Set up your computing infrastructure easily and fast for inference
-- [Quick Start With Playground](https://docs.clarifai.com/docs/getting-started/quickstart-playground): Start quickly with Clarifai Playground in a few simple steps
+- [Quick Start With Playground](https://docs.clarifai.com/docs/getting-started/playground): Start running inferences in just a few simple steps
 - [Quick Start With API](https://docs.clarifai.com/docs/getting-started/quickstart): Start quickly with Clarifai API in a few simple steps
 - [Set Up Compute Fast](https://docs.clarifai.com/docs/getting-started/set-up-compute): Set up your computing infrastructure easily and fast for inference
 - [Build and Upload a Model](https://docs.clarifai.com/docs/getting-started/upload-model): Build and upload your first custom model to the Clarifai platform
@@ -212,6 +212,7 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [Release 11.0](https://docs.clarifai.com/docs/product-updates/changelog/release110): Changelog for Clarifai Release 11.0
 - [Release 11.1](https://docs.clarifai.com/docs/product-updates/changelog/release111): Changelog for Clarifai Release 11.1
 - [Release 11.10](https://docs.clarifai.com/docs/product-updates/changelog/release1110): Changelog for Clarifai Release 11.10
+- [Release 11.11](https://docs.clarifai.com/docs/product-updates/changelog/release1111): Changelog for Clarifai Release 11.11
 - [Release 11.2](https://docs.clarifai.com/docs/product-updates/changelog/release112): Changelog for Clarifai Release 11.2
 - [Release 11.3](https://docs.clarifai.com/docs/product-updates/changelog/release113): Changelog for Clarifai Release 11.3
 - [Release 11.4](https://docs.clarifai.com/docs/product-updates/changelog/release114): Changelog for Clarifai Release 11.4
