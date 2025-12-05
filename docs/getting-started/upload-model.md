@@ -14,9 +14,10 @@ Let’s walk through how to build and upload a simple custom model.
 
 <!--You can test the already uploaded model [here](https://clarifai.com/alfrick/docs-demos/models/my-first-model).-->
 
-:::tip
+:::note
 
-To learn more about how to upload different types of models, check out [this comprehensive guide](https://docs.clarifai.com/compute/models/upload/). 
+- To learn more about how to upload different types of models, check out [this comprehensive guide](https://docs.clarifai.com/compute/models/upload/). 
+- Uploading models to the Clarifai platform requires a [paid plan](https://www.clarifai.com/pricing).
 
 :::
 
