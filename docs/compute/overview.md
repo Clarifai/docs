@@ -37,11 +37,7 @@ Compute Orchestration allows us to provide multiple deployment options — all o
 
 These are the deployment options we provide:
 
-:::note Shared SaaS (Serverless)
-
-If you’re not using Compute Orchestration for inference with models uploaded and owned by Clarifai, your requests will default to the Shared SaaS (Serverless) deployment. This serverless environment eliminates the need to manage infrastructure, allowing you to make predictions effortlessly — without configuring or maintaining any compute resources. Learn more [here](https://docs.clarifai.com/compute/models/inference/). 
-
-:::
+- **Shared SaaS (Serverless)** — This deployment option provides a fully managed, serverless environment that eliminates the need to configure or maintain any infrastructure, allowing you to run predictions effortlessly. It is available only for a curated set of featured models that are uploaded and owned by Clarifai. 
 
 - **Dedicated SaaS** — Provides access to Clarifai‑managed, isolated nodes with customizable configurations. For example, you can launch a dedicated deployment in AWS US‑East, with plans to expand to other cloud providers and hardware options in the future.
 

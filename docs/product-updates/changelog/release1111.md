@@ -24,7 +24,7 @@ draft: false
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
 | [**Breaking Change**](https://docs.clarifai.com/product-updates/changelog/release-types#release-types) | Decommissioning legacy models  | <ul> <li> We are upgrading our infrastructure, and as part of this transition, we will decommission most of our legacy models on December 31, 2025.</li> <li> Learn more [here](https://docs.clarifai.com/product-updates/upcoming-api-changes/decommission-legacy-models/). </li> </ul> |
-| ![improvement](/img/improvement.jpg)  |  Made improvements| <ul> <li> Only a curated set of featured models can now be run using the Clarifai shared SaaS (serverless) deployment option. To use any other models, users must deploy them to their own cluster and nodepool.</li> </ul>|
+| ![improvement](/img/improvement.jpg)  |  Made improvements| <ul> <li> Only a curated set of featured models can now be run using the Clarifai Shared SaaS (Serverless) deployment option. To use any other models, users must deploy them to their own cluster and nodepool.</li> </ul>|
 
 ## Published Models
 

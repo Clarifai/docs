@@ -1,7 +1,6 @@
 ---
 description: View and manage your personal account and billing settings
 sidebar_position: 4
-draft: true
 ---
 
 # Account and Billing 
