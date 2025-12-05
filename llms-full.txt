@@ -4699,11 +4699,7 @@ Compute Orchestration allows us to provide multiple deployment options — all o
 
 These are the deployment options we provide:
 
-:::note Shared SaaS (Serverless)
-
-If you’re not using Compute Orchestration for inference with models uploaded and owned by Clarifai, your requests will default to the Shared SaaS (Serverless) deployment. This serverless environment eliminates the need to manage infrastructure, allowing you to make predictions effortlessly — without configuring or maintaining any compute resources. Learn more [here](https://docs.clarifai.com/compute/models/inference/). 
-
-:::
+- **Shared SaaS (Serverless)** — This deployment option provides a fully managed, serverless environment that eliminates the need to configure or maintain any infrastructure, allowing you to run predictions effortlessly. It is available only for a curated set of featured models that are uploaded and owned by Clarifai. 
 
 - **Dedicated SaaS** — Provides access to Clarifai‑managed, isolated nodes with customizable configurations. For example, you can launch a dedicated deployment in AWS US‑East, with plans to expand to other cloud providers and hardware options in the future.
 
@@ -6563,15 +6559,12 @@ The Clarifai Python SDK allows you to upload custom models easily. Whether you'r
 
 Once imported to our platform, your model can be utilized alongside Clarifai's vast suite of AI tools. It will be automatically deployed and ready to be evaluated, combined with other models and agent operators in a workflow, or used to serve inference requests as it is.
 
-:::info Objective
-
 Let’s walk through how to build and upload a custom model to the Clarifai platform. This example model appends the phrase `Hello World` to any input text and also supports streaming responses.
 
-:::
+:::note
 
-:::tip
-
-You can explore [this repository](https://github.com/Clarifai/runners-examples) for examples on uploading different model types. 
+- Explore [this repository](https://github.com/Clarifai/runners-examples) for examples on uploading different model types. 
+- Uploading models to the Clarifai platform requires a [paid plan](https://www.clarifai.com/pricing).
 
 :::
 
@@ -7717,6 +7710,84 @@ Once the model is running locally, you need to configure the `CLARIFAI_API_BASE`
      set CLARIFAI_API_BASE="localhost:add-port-here" 
 
 You can then make [inference requests](https://docs.clarifai.com/compute/models/inference/api) using the model.
+
+---
+
+## Account and Billing
+
+# Account and Billing 
+
+**View and manage your personal account and billing settings**
+
+The **Account** and **Billing** pages serve as your central hub for managing every aspect of your profile and subscription. 
+
+These pages give you full control over your account by allowing you to customize your personal information and handle billing-related activities.
+
+## Account
+
+The **Account** page allows you to view and manage your personal identity and security preferences on the Clarifai platform.
+
+To access it, [log in](https://clarifai.com/login) to the Clarifai platform. Then, in the collapsible left sidebar, select **Settings** and choose **Account** from the dropdown list.
+
+![ ](/img/new-docs/account_1.png)
+
+### Profile Information
+
+This section displays the personal and professional details you provided when creating your account.
+
+You can customize how you appear across the Community platform — such as on shared model or app pages — by uploading a profile avatar. If no image is uploaded, your initials will be shown instead.
+
+To upload or change your avatar, click **Change Avatar**. A pop-up will appear, allowing you to select an image from your device.
+
+> **Note:** The image must be in JPEG or PNG format and no larger than **20MB**.
+
+You can also update any of your profile details in this section. After making changes, click **Update User Info** to save them.
+
+### Profile
+
+![ ](/img/new-docs/account_2.png)
+
+This section displays your unique User ID, which serves as your username handle across the platform — appearing in both API references and platform URLs.
+
+Your User ID is not case-sensitive and may include one or more alphanumeric strings separated by hyphens or underscores.
+
+To update it, click the **Edit** button next to the field. A pop-up will appear, allowing you to enter a new User ID.
+
+> **Caution:** Changing your User ID may lead to unintended side effects, as we do not create redirects for old app URLs and we do not re-route requests that reference your previous User ID. If you make this change, you are responsible for notifying any collaborators who may be affected.
+
+### Email
+
+This section lists and manages all email addresses associated with your account and indicates which one is set as your **Primary** contact. 
+
+To link an additional email address, enter it into the **Add new email** field and click **Add Email**.
+
+### Danger Zone
+
+![ ](/img/new-docs/account_3.png)
+
+This section contains actions that have significant and potentially irreversible effects on your account.
+
+To manage your user profile visibility, click **Update Visibility** and choose whether your profile should be public (visible to everyone) or private.
+
+To permanently remove your account, click **Delete Account**. This action is irreversible and will permanently erase all data associated with your profile. Proceed with extreme caution when using this option.
+
+## Billing
+
+The **Subscription & Billing** page provides a centralized place to view and manage your plan, payment methods, and invoices.
+
+To access it, [log in](https://clarifai.com/login) to the Clarifai platform. Then, in the collapsible left sidebar, select **Settings** and choose **Billing** from the dropdown list.
+
+![ ](/img/new-docs/billing_1.png)
+
+On this page, you will see details of your current subscription plan along with options to upgrade or switch to other plans. Each plan card includes a brief summary of the tier — such as monthly pricing, spending limits, and links to additional information.
+
+> **Note:** The monthly spending limits are $100 for Developer and Essential plans, and $500 for the Professional plan. You can [contact us](https://www.clarifai.com/explore/contact-us) if you require higher limits
+
+In the **Payment Methods** section, you can add a new payment option by clicking **Add a Credit Card**. A pop-up window will appear, allowing you to securely enter your card details.
+
+> **Note:** We have a new credit card pre-authorization process. A temporary charge of $50 for Developer, $100 for Essential, and $500 for Professional plans is applied to verify card validity and available funds. The amount is automatically refunded within seven days
+
+The **Invoices** section provides a complete history of your billing activity, displaying past transactions and downloadable statements for your records.
 
 ---
 
@@ -27378,9 +27449,10 @@ The Clarifai platform allows you to upload custom models for a wide range of use
 
 Let’s walk through how to build and upload a simple custom model.
 
-:::tip
+:::note
 
-To learn more about how to upload different types of models, check out [this comprehensive guide](https://docs.clarifai.com/compute/models/upload/). 
+- To learn more about how to upload different types of models, check out [this comprehensive guide](https://docs.clarifai.com/compute/models/upload/). 
+- Uploading models to the Clarifai platform requires a [paid plan](https://www.clarifai.com/pricing).
 
 :::
 
@@ -30778,7 +30850,7 @@ We have a public roadmap that gives you a view of our upcoming plans and helps u
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
 | [**Breaking Change**](https://docs.clarifai.com/product-updates/changelog/release-types#release-types) | Decommissioning legacy models  |   We are upgrading our infrastructure, and as part of this transition, we will decommission most of our legacy models on December 31, 2025.  Learn more [here](https://docs.clarifai.com/product-updates/upcoming-api-changes/decommission-legacy-models/).   |
-| ![improvement](/img/improvement.jpg)  |  Made improvements|   Only a curated set of featured models can now be run using the Clarifai shared SaaS (serverless) deployment option. To use any other models, users must deploy them to their own cluster and nodepool. |
+| ![improvement](/img/improvement.jpg)  |  Made improvements|   Only a curated set of featured models can now be run using the Clarifai Shared SaaS (Serverless) deployment option. To use any other models, users must deploy them to their own cluster and nodepool. |
 
 ## Published Models
 

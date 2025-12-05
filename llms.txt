@@ -40,6 +40,7 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [Input and Output Data Types](https://docs.clarifai.com/docs/compute/upload/data-types): Learn about supported input and output data types along with usage examples
 - [Model Upload Examples](https://docs.clarifai.com/docs/compute/upload/examples): Learn how to upload and customize your own models on the Clarifai platform
 - [Test Models Locally](https://docs.clarifai.com/docs/compute/upload/test-locally): Learn how to test your locally built models
+- [Account and Billing](https://docs.clarifai.com/docs/control/account-billing): View and manage your personal account and billing settings
 - [Authentication](https://docs.clarifai.com/docs/control/authentication/README): Secure, compliant AI.
 - [Authorize](https://docs.clarifai.com/docs/control/authentication/authorize): Set up authentication to make API calls
 - [Environment Secrets](https://docs.clarifai.com/docs/control/authentication/environment-secrets): Create, store, and manage environment variables and secrets
