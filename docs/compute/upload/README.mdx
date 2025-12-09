@@ -215,9 +215,17 @@ This section defines your unique model ID (any arbitrary name you choose), along
 
 This section specifies details about the environment used to build or run the model. You can include the `python_version`, which is useful for ensuring compatibility between the model and its runtime environment, as different Python versions may have varying dependencies, library support, and performance characteristics.
 
-:::note
+> **Note:** We currently support Python 3.11 and Python 3.12 (default).
 
-We currently support Python 3.11 and Python 3.12 (default).
+:::info multi-architecture support
+
+By default, model images are built for the **linux/amd64** architecture. If needed, you can provide a comma-separated list of additional target platforms to build a multi-architecture image.
+
+Enabling multi-architecture builds allows the system to route requests to model-serving [nodepools](https://docs.clarifai.com/compute/deployments/clusters-nodepools) running on different hardware architectures (such as x86 or Arm). 
+
+During deployment configuration and request routing, the system automatically validates which node instance types are compatible with the model’s supported platforms.
+
+This unified build process enhances cost efficiency and hardware flexibility. For example, you can build a single model version that works across multiple architectures, eliminating the need to maintain and manage separate model versions for each hardware type.
 
 :::
 
