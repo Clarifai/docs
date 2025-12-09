@@ -1024,6 +1024,7 @@ import CO10 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchest
 import CO1 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/compute_cluster_config.yaml";
 import CO6 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/nodepool_config.yaml";
 import CO11 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/deployment_config.yaml";
+import CORouting from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/model-routing.yaml";
 
 ### Prerequisites
 
@@ -1124,7 +1125,16 @@ _We'll use this later to [deploy the model](deploy-model.md#via-the-api)._
 - `deployment.worker.model.model_version.id` — Refers to a specific version of the model.
 - `deployment.worker.model.user_id` — The model owner’s Clarifai user ID.
 - `deployment.worker.model.app_id` — The application (or project) under which the model lives.
-- `deployment.scheduling_choice` — An integer that maps to a pre‑defined scheduling policy. Typical mapping: 1 = Spread (maximise fault‑tolerance), 
+- `deployment.scheduling_choice` — An integer that maps to a pre‑defined scheduling policy. Typical mapping: 1 = Spread (maximise fault‑tolerance),  **Note:** A deployment’s `min_replicas` applies only to the first nodepool in the list. A deployment’s `max_replicas` applies to **each** nodepool individually, not as a sum across them.
+
+  Example
+    {CORouting}
+
+:::
+
+### Create a Cluster 
+
+To create a new compute cluster, pass the `compute_cluster_id` and `config_filepath` as arguments to the `create_compute_cluster` method of the `User` class.
 
     {CO2}
 
@@ -6730,9 +6740,17 @@ This section defines your unique model ID (any arbitrary name you choose), along
 
 This section specifies details about the environment used to build or run the model. You can include the `python_version`, which is useful for ensuring compatibility between the model and its runtime environment, as different Python versions may have varying dependencies, library support, and performance characteristics.
 
-:::note
+> **Note:** We currently support Python 3.11 and Python 3.12 (default).
 
-We currently support Python 3.11 and Python 3.12 (default).
+:::info multi-architecture support
+
+By default, model images are built for the **linux/amd64** architecture. If needed, you can provide a comma-separated list of additional target platforms to build a multi-architecture image.
+
+Enabling multi-architecture builds allows the system to route requests to model-serving [nodepools](https://docs.clarifai.com/compute/deployments/clusters-nodepools) running on different hardware architectures (such as x86 or Arm). 
+
+During deployment configuration and request routing, the system automatically validates which node instance types are compatible with the model’s supported platforms.
+
+This unified build process enhances cost efficiency and hardware flexibility. For example, you can build a single model version that works across multiple architectures, eliminating the need to maintain and manage separate model versions for each hardware type.
 
 :::
 
