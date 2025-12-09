@@ -292,7 +292,7 @@ _We'll use this later to [deploy the model](deploy-model.md#via-the-api)._
 
 We support universal model routing to provide high availability and optimal load distribution across all model services. This allows intelligent routing logic across multiple model-serving nodepools, including spillover handling and routing across different data centers.
 
-To enable it, create a `deployment_config.yaml` file that references multiple nodepools. (Ensure the nodepools already exist and belong to the same cluster.)
+To enable it, create a `deployment_config.yaml` file that references multiple pre-existing nodepools. These nodepools do not have to belong to the same compute cluster — they can span multiple clusters, cloud providers, or on-prem compute planes.
 
 By default, nodepools are treated as an ordered priority list. Requests are routed to the first nodepool unless:
 

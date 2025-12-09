@@ -23,4 +23,4 @@ deployment:
           id: "test-compute-cluster"
     - id: "test-nodepool-2"           # Added new nodepool
       compute_cluster:
-          id: "test-compute-cluster"  # Points to the same cluster
+          id: "test-compute-cluster"  # Can also be a different cluster
