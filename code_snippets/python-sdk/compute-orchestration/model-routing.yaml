@@ -1,0 +1,26 @@
+deployment:
+  id: "test-deployment"
+  description: "some random deployment"
+  autoscale_config:
+    min_replicas: 0
+    max_replicas: 5
+    traffic_history_seconds: 300
+    scale_down_delay_seconds: 300
+    scale_to_zero_delay_seconds: 1800
+    scale_up_delay_seconds: 300
+    disable_packing: false
+  worker:
+    model:
+      id: "Llama-3_2-3B-Instruct"
+      model_version:
+        id: "fe271b43266a45a5b068766b6437687f"
+      user_id: "meta"
+      app_id: "Llama-3"
+  scheduling_choice: 4
+  nodepools:
+    - id: "test-nodepool"
+      compute_cluster:
+          id: "test-compute-cluster"
+    - id: "test-nodepool-2"           # Added new nodepool
+      compute_cluster:
+          id: "test-compute-cluster"  # Points to the same cluster

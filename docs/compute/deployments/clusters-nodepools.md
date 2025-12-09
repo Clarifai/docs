@@ -160,6 +160,7 @@ import CO10 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchest
 import CO1 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/compute_cluster_config.yaml";
 import CO6 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/nodepool_config.yaml";
 import CO11 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/deployment_config.yaml";
+import CORouting from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/model-routing.yaml";
 
 
 ### Prerequisites
@@ -282,6 +283,33 @@ _We'll use this later to [deploy the model](deploy-model.md#via-the-api)._
 - `deployment.nodepools` — Lists the nodepools where the deployment’s workers can run.
 - `deployment.nodepools[0].id` — Refers to the specific nodepool where the deployment will be hosted.
 - `deployment.nodepools[0].compute_cluster.id` — Ensures this deployment is tied to the right, parent compute cluster.
+
+
+
+:::info
+
+##### Model Routing
+
+We support universal model routing to provide high availability and optimal load distribution across all model services. This allows intelligent routing logic across multiple model-serving nodepools, including spillover handling and routing across different data centers.
+
+To enable it, create a `deployment_config.yaml` file that references multiple nodepools. (Ensure the nodepools already exist and belong to the same cluster.)
+
+By default, nodepools are treated as an ordered priority list. Requests are routed to the first nodepool unless:
+
+* There is a backlog of queued requests that exceeds an age and/or quantity threshold, **and**
+* The deployment has reached its `max_replicas`, or the nodepool has reached its maximum instances.
+
+When these conditions are met, that nodepool is considered fully loaded. The next nodepool in the priority list is automatically warmed, and a portion of requests is routed to it.
+
+> **Note:** A deployment’s `min_replicas` applies only to the first nodepool in the list. A deployment’s `max_replicas` applies to **each** nodepool individually, not as a sum across them.
+
+<details>
+  <summary>Example</summary>
+    <CodeBlock className="language-yaml">{CORouting}</CodeBlock>
+</details>
+
+:::
+
 
 ### Create a Cluster 
 
