@@ -162,6 +162,10 @@ import CO6 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestr
 import CO11 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/deployment_config.yaml";
 import CORouting from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/model-routing.yaml";
 
+import Curl1 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_1.sh";
+import Curl2 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_2.sh";
+import Curl3 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_3.sh";
+
 
 ### Prerequisites
 
@@ -288,7 +292,7 @@ _We'll use this later to [deploy the model](deploy-model.md#via-the-api)._
 
 :::info
 
-##### Model Routing
+##### Multi-Nodepool Deployment
 
 We support universal model routing to provide high availability and optimal load distribution across all model services. This allows intelligent routing logic across multiple model-serving nodepools, including spillover handling and routing across different data centers.
 
@@ -304,8 +308,18 @@ When these conditions are met, that nodepool is considered fully loaded. The nex
 > **Note:** A deployment’s `min_replicas` applies only to the first nodepool in the list. A deployment’s `max_replicas` applies to **each** nodepool individually, not as a sum across them.
 
 <details>
-  <summary>Example</summary>
-    <CodeBlock className="language-yaml">{CORouting}</CodeBlock>
+  <summary>Examples</summary>
+
+<Tabs groupId="code">
+<TabItem value="yaml" label="deployment_config.yaml">
+    <CodeBlock className="language-python">{CORouting}</CodeBlock>
+</TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{Curl3}</CodeBlock>
+</TabItem>
+</Tabs>
+
 </details>
 
 :::
@@ -322,6 +336,11 @@ To create a new compute cluster, pass the `compute_cluster_id` and `config_filep
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-yaml">{CL2}</CodeBlock>
 </TabItem>
+
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{Curl1}</CodeBlock>
+</TabItem>
+
 </Tabs>
 
 <details>
@@ -356,6 +375,10 @@ To create a new nodepool within an already existing cluster, use the `create_nod
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-yaml">{CL3}</CodeBlock>
 </TabItem>
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{Curl2}</CodeBlock>
+</TabItem>
+
 </Tabs>
 
 <details>

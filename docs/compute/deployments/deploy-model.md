@@ -32,6 +32,9 @@ import CO15 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchest
 import CURLRestrictDeployment from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/restrict_deployment.sh";
 import OutputCURLRestrictDeployment from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/output_restrict_deployment.txt";
 
+import Curl1 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_deployment.sh";
+
+
 
 ## **Via the UI**
 
@@ -188,11 +191,10 @@ To deploy a model within a nodepool you've created, provide the `deployment_id` 
 
 You can learn how to create the `deployment_config.yaml` file, which contains the deployment configuration details, [here](clusters-nodepools.md#3-deployment_configyaml).
 
-:::note
+> **Note:** 
+> - Each model or workflow can only have one deployment per nodepool.
+> - If you're creating a [multi-nodepool deployment](clusters-nodepools.md#multi-nodepool-deployment) using the Python SDK, initializing the `Nodepool` instance with the first nodepool only is sufficient.
 
-Each model or workflow can only have one deployment per nodepool.
-
-:::
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
@@ -200,6 +202,9 @@ Each model or workflow can only have one deployment per nodepool.
 </TabItem>
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-yaml">{CL4}</CodeBlock>
+</TabItem>
+<TabItem value="curl" label="cURL">
+       <CodeBlock className="language-bash">{Curl1}</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -214,6 +219,7 @@ req_id: "sdk-python-11.7.5-1eb407b9e125478287d552fb76bc37dd"
 </details>
 
 After creating it, initialize the `Deployment` class by providing the `user_id` and `deployment_id` parameters. 
+
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
@@ -234,7 +240,7 @@ These are the values you can set:
 
 <Tabs groupId="code">
 <TabItem value="curl" label="cURL">
-       <CodeBlock className="language-python">{CURLRestrictDeployment}</CodeBlock>
+       <CodeBlock className="language-bash">{CURLRestrictDeployment}</CodeBlock>
 </TabItem>
 </Tabs>
 
