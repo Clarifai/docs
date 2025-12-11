@@ -1026,6 +1026,10 @@ import CO6 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestr
 import CO11 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/deployment_config.yaml";
 import CORouting from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/model-routing.yaml";
 
+import Curl1 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_1.sh";
+import Curl2 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_2.sh";
+import Curl3 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_3.sh";
+
 ### Prerequisites
 
 #### Installation
@@ -1127,8 +1131,11 @@ _We'll use this later to [deploy the model](deploy-model.md#via-the-api)._
 - `deployment.worker.model.app_id` — The application (or project) under which the model lives.
 - `deployment.scheduling_choice` — An integer that maps to a pre‑defined scheduling policy. Typical mapping: 1 = Spread (maximise fault‑tolerance),  **Note:** A deployment’s `min_replicas` applies only to the first nodepool in the list. A deployment’s `max_replicas` applies to **each** nodepool individually, not as a sum across them.
 
-  Example
+  Examples
+
     {CORouting}
+
+    {Curl3}
 
 :::
 
@@ -1139,6 +1146,8 @@ To create a new compute cluster, pass the `compute_cluster_id` and `config_filep
     {CO2}
 
     {CL2}
+
+    {Curl1}
 
   Example Output
   ```text
@@ -1161,6 +1170,8 @@ To create a new nodepool within an already existing cluster, use the `create_nod
     {CO7}
 
     {CL3}
+
+    {Curl2}
 
   Example Output
     ```text
@@ -1203,6 +1214,8 @@ import CL4 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestr
 import CO15 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/init_deployment.py";
 import CURLRestrictDeployment from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/restrict_deployment.sh";
 import OutputCURLRestrictDeployment from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/output_restrict_deployment.txt";
+
+import Curl1 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_deployment.sh";
 
 ## **Via the UI**
 
@@ -1353,15 +1366,15 @@ To deploy a model within a nodepool you've created, provide the `deployment_id` 
 
 You can learn how to create the `deployment_config.yaml` file, which contains the deployment configuration details, [here](clusters-nodepools.md#3-deployment_configyaml).
 
-:::note
-
-Each model or workflow can only have one deployment per nodepool.
-
-:::
+> **Note:** 
+> - Each model or workflow can only have one deployment per nodepool.
+> - If you're creating a [multi-nodepool deployment](clusters-nodepools.md#multi-nodepool-deployment) using the Python SDK, initializing the `Nodepool` instance with the first nodepool only is sufficient.
 
     {CO12}
 
     {CL4}
+
+       {Curl1}
 
   Example Output
   ```text
