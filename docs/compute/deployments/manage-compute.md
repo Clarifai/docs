@@ -176,6 +176,20 @@ import CurlOutput2 from "!!raw-loader!../../../code_snippets/python-sdk/compute-
 import CurlOutput3 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_output_3.txt";
 import CurlOutput4 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_output_4.txt";
 
+import CurlGetCluster from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_get_cluster.sh";
+import CurlListClusters from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_list_clusters.sh";
+import CurlEditCluster from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_edit_cluster.sh";
+import CurlDeleteCluster from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_delete_cluster.sh";
+import CurlDeleteNodepool from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_delete_nodepool.sh";
+import CurlGetNodepool from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_get_nodepool.sh";
+import CurlEditNodepool from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_edit_nodepool.sh";
+import CurlListNodepools from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_list_nodepools.sh";
+import CurlListNodepoolsReplicas from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_list_nodepools_replicas.sh";
+import CurlGetDeployment from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_get_deployment.sh";
+import CurlEditDeployment from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_edit_deployment.sh";
+import CurlDeleteDeployment from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_delete_deployment.sh";
+
+
 :::note tip
 
 A Personal Access Token (PAT) authenticates your connection to the Clarifai platform, including CLI sessions. Set the token as an environment variable [as explained previously](clusters-nodepools.md#get-a-pat).
@@ -191,6 +205,9 @@ To get the details of your compute cluster, pass the `compute_cluster_id` to the
 <Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CO3}</CodeBlock>
+</TabItem>
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlGetCluster}</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -221,6 +238,9 @@ To list all your existing compute clusters, call the `list_compute_clusters` met
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-yaml">{CL5}</CodeBlock>
 </TabItem>
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlListClusters}</CodeBlock>
+</TabItem>
 </Tabs>
 
 <details>
@@ -232,6 +252,49 @@ Available Compute Clusters:
 ```
 </details>
 
+
+#### Edit a Cluster
+
+You can update an existing cluster by setting `"action": "overwrite"` in the request body.
+
+<Tabs groupId="code">
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlEditCluster}</CodeBlock>
+</TabItem>
+</Tabs>
+
+#### Delete Compute Clusters
+
+To delete your compute clusters, provide a list of compute cluster IDs to the `delete_compute_clusters` method of the `User` class.
+
+<Tabs groupId="code">
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CO18}</CodeBlock>
+</TabItem>
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-yaml">{CL8}</CodeBlock>
+</TabItem>
+
+<!--
+Error: "Must supply a list of 'ids' to delete. Check your request fields."
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlDeleteCluster}</CodeBlock>
+</TabItem>
+-->
+
+</Tabs>
+
+<details>
+  <summary>Example Output</summary>
+  ```text
+Compute Cluster Deleted
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-11.7.5-dc2a5ef7b8824ed0999dad18b5594a12"
+```
+</details>
+
+
 ### Nodepools
 
 #### Get a Nodepool
@@ -241,6 +304,9 @@ To get the details of your nodepool, provide the `nodepool_id` to the `nodepool`
 <Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CO8}</CodeBlock>
+</TabItem>
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlGetNodepool}</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -308,6 +374,12 @@ To list all the existing nodepools in your cluster, call the `list_nodepools` me
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-yaml">{CL6}</CodeBlock>
 </TabItem>
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlListNodepools}</CodeBlock>
+</TabItem>
+<TabItem value="curl2" label="cURL (with min replicas)">
+    <CodeBlock className="language-bash">{CurlListNodepoolsReplicas}</CodeBlock>
+</TabItem>
 </Tabs>
 
 <details>
@@ -315,6 +387,48 @@ To list all the existing nodepools in your cluster, call the `list_nodepools` me
   ```text
 Available Nodepools:
 - ID: test-nodepool, Description: First nodepool in AWS in a proper compute cluster, Min Instances: 0, Max Instances: 1
+```
+</details>
+
+
+#### Edit a Nodepool
+
+You can update an existing nodepool by setting `"action": "overwrite"` in the request body.
+
+<Tabs groupId="code">
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlEditNodepool}</CodeBlock>
+</TabItem>
+</Tabs>
+
+#### Delete Nodepools
+
+To delete your nodepools, provide a list of nodepool IDs to the `delete_nodepools` method of the `ComputeCluster` class. 
+
+<Tabs groupId="code">
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{CO17}</CodeBlock>
+</TabItem>
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-yaml">{CL9}</CodeBlock>
+</TabItem>
+
+<!--
+Error: "Must supply a list of 'ids' to delete. Check your request fields.
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlDeleteNodepool}</CodeBlock>
+</TabItem>
+-->
+
+</Tabs>
+
+<details>
+  <summary>Example Output</summary>
+  ```text
+Nodepools Deleted
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-11.7.5-d69f92a0263b41719b51083f44d6ed43"
 ```
 </details>
 
@@ -327,6 +441,9 @@ To get the details of your deployment, provide the `deployment_id` to the `deplo
 <Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{CO13}</CodeBlock>
+</TabItem>
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlGetDeployment}</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -357,7 +474,17 @@ Available Deployments:
 </details>
 
 
-### Delete Resources
+#### Edit a Deployment
+
+You can update an existing deployment by setting `"action": "overwrite"` in the request body.
+
+<Tabs groupId="code">
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlEditDeployment}</CodeBlock>
+</TabItem>
+</Tabs>
+
+
 
 #### Delete Deployments
 
@@ -370,6 +497,14 @@ To delete your deployments, pass a list of deployment IDs to the `delete_deploym
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-yaml">{CL10}</CodeBlock>
 </TabItem>
+
+<!--
+Error: "Must supply a list of 'ids' to delete. Check your request fields.
+<TabItem value="curl" label="cURL">
+    <CodeBlock className="language-bash">{CurlDeleteDeployment}</CodeBlock>
+</TabItem>
+-->
+
 </Tabs>
 
 <details>
@@ -379,52 +514,6 @@ Deployments Deleted
 code: SUCCESS
 description: "Ok"
 req_id: "sdk-python-11.7.5-a08b6c5f21674916ba5791df8eae5dd8"
-```
-</details>
-
-#### Delete Nodepools
-
-To delete your nodepools, provide a list of nodepool IDs to the `delete_nodepools` method of the `ComputeCluster` class. 
-
-<Tabs groupId="code">
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python">{CO17}</CodeBlock>
-</TabItem>
-<TabItem value="bash" label="CLI">
-    <CodeBlock className="language-yaml">{CL9}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
-  <summary>Example Output</summary>
-  ```text
-Nodepools Deleted
-code: SUCCESS
-description: "Ok"
-req_id: "sdk-python-11.7.5-d69f92a0263b41719b51083f44d6ed43"
-```
-</details>
-
-#### Delete Compute Clusters
-
-To delete your compute clusters, provide a list of compute cluster IDs to the `delete_compute_clusters` method of the `User` class.
-
-<Tabs groupId="code">
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python">{CO18}</CodeBlock>
-</TabItem>
-<TabItem value="bash" label="CLI">
-    <CodeBlock className="language-yaml">{CL8}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
-  <summary>Example Output</summary>
-  ```text
-Compute Cluster Deleted
-code: SUCCESS
-description: "Ok"
-req_id: "sdk-python-11.7.5-dc2a5ef7b8824ed0999dad18b5594a12"
 ```
 </details>
 

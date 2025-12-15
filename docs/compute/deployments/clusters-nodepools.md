@@ -230,7 +230,7 @@ Then, add the following code snippets to their corresponding files in the `confi
 - `compute_cluster.region` — Geographic region for the resources. Must be a region supported by the selected provider. Choosing the right region reduces latency to your data and can affect cost.
 - `compute_cluster.managed_by` — Who is responsible for lifecycle management. `clarifai` means the platform will automatically handle patching, scaling, and health‑checks, rather than self-managed.
 - `compute_cluster.cluster_type` — Mode of operation. `dedicated` means the cluster’s compute resources are reserved exclusively for your workloads (not shared).
-- `compute_cluster.visibility.gettable` — A numeric permission level that defines who can see or access the cluster. `10` means it's visible privately. 
+- `compute_cluster.visibility.gettable` — A numeric permission level that defines who can see or access the cluster. `10` means it's visible privately. `50` means it's visible publicly.
   
 ##### 2. `nodepool_config.yaml`
 
