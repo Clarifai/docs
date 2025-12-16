@@ -550,7 +550,7 @@ You can retrieve the geographic regions supported by a cloud provider.
 
 ### List Instance Types 
 
-You can retrieve the instance types a cloud provider offers in a given region
+You can retrieve the instance types a cloud provider offers in a given region.
 
 <Tabs groupId="code">
 <TabItem value="curl" label="cURL">
