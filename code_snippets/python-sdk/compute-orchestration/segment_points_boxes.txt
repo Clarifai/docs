@@ -1,0 +1,29 @@
+## Arguments
+
+* **image (Image):** The input image.
+
+* **regions (List[Region]):** A list of region prompts, where each region can specify either points or a bounding box.
+
+  * To indicate a **positive (object)** point, set:
+    `region.concepts = [Concepts(name="1", value=1)]`
+  * To indicate a **negative (background)** point, set:
+    `region.concepts = [Concepts(name="0", value=0)]`
+  * You may provide either `regions` or `dict_inputs`, but not both.
+
+* **dict_inputs (Dict):** Keyword arguments passed directly to the `SAM2ImagePredictor.predict(...)` method. Refer to the example for details.
+
+  * You may provide either `regions` or `dict_inputs`, but not both.
+
+* **multimask_output (bool):** Whether to return multiple masks for each prompt. Defaults to `False`.
+
+* **return_type (str):** Specifies the type of output to return. Must be one of:
+
+  * `box` — return bounding boxes only
+  * `mask` — return masks only
+  * `all` — return both bounding boxes and masks
+
+## Returns
+
+* **List[Region]:** A list of generated regions. Masks can be accessed via `region.mask` or `region.proto.region_info.mask`.
+
+

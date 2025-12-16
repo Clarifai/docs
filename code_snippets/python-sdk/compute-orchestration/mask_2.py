@@ -1,3 +1,5 @@
+# This example uses Matplotlib, Pillow, and NumPy. You can install them by running: pip install matplotlib Pillow numpy
+
 import matplotlib.pyplot as plt
 from PIL import Image as PILImage
 from clarifai.client import Model
@@ -23,19 +25,19 @@ point_prompt_regions = [
     Region(point=[0.2, 0.3, 0.0], concepts=[Concept(name="0", value=0.0)])
 ]
 
-regions = model.predict(image=input_image, regions=point_prompt_regions)
+regions = model.predict(image=input_image, regions=point_prompt_regions, return_type="all")
 
 # # Optional: use dict format instead
 # point_prompt_dict = dict(points=[[0.1, 0.2], [0.2, 0.3]], labels=[1, 0])
-# regions = model.predict(image=input_image, dict_inputs=point_prompt_dict)
+# regions = model.predict(image=input_image, dict_inputs=point_prompt_dict, return_type="all")
 
 # Box-based input (Region form)
 # box_prompt_regions = [Region(box=[0.1, 0.2, 0.3, 0.4])]
-# regions = model.predict(image=input_image, regions=box_prompt_regions)
+# regions = model.predict(image=input_image, regions=box_prompt_regions, return_type="all")
 
 # # Optional: use dict format instead
 # box_prompt_dict = dict(box=[0.1, 0.2, 0.3, 0.4])
-# regions = model.predict(image=input_image, dict_inputs=box_prompt_dict)
+# regions = model.predict(image=input_image, dict_inputs=box_prompt_dict, return_type="all")
 
 # Visualize each predicted mask
 for idx, region in enumerate(regions):

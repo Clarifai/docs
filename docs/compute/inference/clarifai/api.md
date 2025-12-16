@@ -65,6 +65,8 @@ import CLIInferenceParams from "!!raw-loader!../../../../code_snippets/python-sd
 import CLIUnaryUnaryImage from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/cli_unary_unary_image.sh";
 import CLIUnaryStreamImage from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/cli_unary_stream_image.sh";
 
+import SegmentPointsBoxes from "!!raw-loader!../../../../code_snippets/python-sdk/compute-orchestration/segment_points_boxes.txt";
+
 ## Prerequisites
 
 ### Install Clarifai Packages
@@ -127,6 +129,12 @@ model = Model(
 )
 ```
 
+:::caution note
+
+Only a curated set of featured models can be run using the default Clarifai [Shared SaaS (Serverless)](https://docs.clarifai.com/compute/overview#deployment-options) deployment option. To run inferences with any other models, you must deploy them to your own cluster and nodepool and specify the `deployment_id` parameter.
+
+:::
+
 #### Initialize the Model Client
 
 You can initialize the model client using either explicit IDs or the full model URL.
@@ -157,6 +165,11 @@ Here is an example using the `max_tokens` parameter:
 </TabItem>
 </Tabs>
 
+:::note
+
+Before making a prediction with a model, it’s important to understand how its prediction methods are structured. Learn more [here](https://docs.clarifai.com/compute/inference/clarifai/#structure-of-prediction-methods). 
+
+:::
 
 ## Unary-Unary Predict Call
 
@@ -165,17 +178,6 @@ This is the simplest form of prediction: a single input is sent to the model, an
 > **NOTE**: Streaming means that the response is streamed back token by token, rather than waiting for the entire completion to be generated before returning. This is useful for building interactive applications where you want to display the response as it's being generated.
 
 ### Text Inputs
-
-Here is an example of a model signature configured on the server side for handling text inputs:
-
-<Tabs groupId="code">
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python">@ModelClass.method
-  def predict(self, prompt: str = "") -> str:</CodeBlock>
-</TabItem>
-</Tabs>
-
-Here’s how you can make a corresponding unary-unary predict call from the client side:
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
@@ -198,17 +200,6 @@ Here’s how you can make a corresponding unary-unary predict call from the clie
 
 #### Image-to-Text
 
-Here is an example of a model signature configured on the server side for handling image inputs:
-
-<Tabs groupId="code">
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python">@ModelClass.method
-def predict(self, image: Image) -> str:</CodeBlock>
-</TabItem>
-</Tabs>
-
-Here’s how you can make a corresponding unary-unary predict call from the client side:
-
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO5}</CodeBlock>
@@ -228,20 +219,25 @@ Here’s how you can make a corresponding unary-unary predict call from the clie
 
 #### Visual Segmentation 
 
-> **Note:** The following visual segmentation examples use Matplotlib, Pillow, and NumPy. You can install them by running: `pip install matplotlib Pillow numpy`. 
-
 ##### Example 1
 
-Here is an example of a [model signature](https://clarifai.com/meta/segment-anything/models/sam2_1-hiera-base-plus?tab=overview) configured on the server side for automatic mask generation:
+Here’s an example that uses the [sam2_1-hiera-base-plus](https://clarifai.com/meta/segment-anything/models/sam2_1-hiera-base-plus) model to automatically generate masks for all objects in a given image.
 
-<Tabs groupId="code">
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python">@ModelClass.method
-def segment_anything(image: data_types.Image) -> List[data_types.Region]:</CodeBlock>
-</TabItem>
-</Tabs>
+<details>
+  <summary>Arguments and Returns</summary>
 
-Here’s how to make a corresponding unary-unary predict call from the client side to generate masks for all objects in a given image.
+These are the model’s arguments and return values:
+
+##### Arguments
+
+* **image (Image)**: The input image
+
+##### Returns
+
+* **List[Region]**: List of generated masks, which can be accessed via `region.mask` or `region.proto.region_info.mask`.
+
+</details>
+
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
@@ -251,16 +247,42 @@ Here’s how to make a corresponding unary-unary predict call from the client si
 
 ##### Example 2
 
-Here is an example of a model signature configured on the server side for creating masks in a given image:
+Here’s an example that uses the sam2_1-hiera-base-plus model to generate masks using points or boxes prompt.
 
-<Tabs groupId="code">
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python">@ModelClass.method
-def predict(image: data_types.Image, regions: List[data_types.Region], dict_inputs: data_types.JSON, round_mask: bool = False, multimask_output: bool = False, denormalize_coord: bool = True) -> List[data_types.Region]:</CodeBlock>
-</TabItem>
-</Tabs>
+<details>
+  <summary>Arguments and Returns</summary>
 
-Here’s how to make a corresponding unary-unary predict call from the client side to generate masks using a points or boxes prompt.
+These are the model’s arguments and return values:
+
+##### Arguments
+
+* **image (Image)**: The input image.
+
+* **regions (List[Region])**: A list of region prompts, where each region can specify either points or a bounding box.
+
+  * To indicate a positive (object) point, set:
+    `region.concepts = [Concepts(name="1", value=1)]`
+  * To indicate a negative (background) point, set:
+    `region.concepts = [Concepts(name="0", value=0)]`
+
+* **dict_inputs (Dict)**: Keyword arguments passed directly to the `SAM2ImagePredictor.predict(...)` method. Refer to [this example](https://github.com/facebookresearch/sam2/blob/main/notebooks/image_predictor_example.ipynb) for details.
+
+> **Note:** You may provide either `regions` or `dict_inputs`, but not both.
+
+* **multimask_output (bool)**: Whether to return multiple masks for each prompt. Defaults to `False`.
+
+* **return_type (str)**: Specifies the type of output to return. Must be one of:
+
+  * `box` — return bounding boxes only
+  * `mask` — return masks only
+  * `all` — return both bounding boxes and masks
+
+##### Returns
+
+* **List[Region]**: A list of generated regions. Masks can be accessed via `region.mask` or `region.proto.region_info.mask`.
+
+</details>
+
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
@@ -281,17 +303,6 @@ This call sends a single input to the model but returns a stream of responses. T
 
 ### Text Inputs
 
-Here is an example of a model signature configured on the server side for handling text inputs:
-
-<Tabs groupId="code">
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python">@ModelClass.method
-def generate(self, prompt: str) -> Iterator[str]:</CodeBlock>
-</TabItem>
-</Tabs>
-
-Here’s how you can make a corresponding unary-stream predict call from the client side:
-
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO6}</CodeBlock>
@@ -306,17 +317,6 @@ Here’s how you can make a corresponding unary-stream predict call from the cli
 
 ### Image Inputs
 
-Here is an example of a model signature configured on the server side for handling image inputs:
-
-<Tabs groupId="code">
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python">@ModelClass.method
-def generate(self, image: Image) -> Iterator[str]:</CodeBlock>
-</TabItem>
-</Tabs>
-
-Here’s how you can make a corresponding unary-stream predict call from the client side:
-
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO6Images}</CodeBlock>
@@ -329,21 +329,45 @@ Here’s how you can make a corresponding unary-stream predict call from the cli
 </TabItem>
 </Tabs>
 
-
 ### Video Inputs
 
-> **Note:** The following video tracking example uses Matplotlib and NumPy. You can install them by running: `pip install matplotlib numpy`. 
+Here’s an example that uses the [sam2_1-hiera-base-plus](https://clarifai.com/meta/segment-anything/models/sam2_1-hiera-base-plus) model to automatically track objects in a video.
 
-Here is an example of a [model signature](https://clarifai.com/meta/segment-anything/models/sam2_1-hiera-base-plus?tab=overview) configured on the server side for handling video inputs:
+<details>
+  <summary>Arguments and Returns</summary>
 
-<Tabs groupId="code">
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python">@ModelClass.method
-def generate(video: data_types.Video, frames: List[data_types.Frame], list_dict_inputs: List[data_types.JSON], denormalize_coord: bool = True) -> Iterator[data_types.Frame]:</CodeBlock>
-</TabItem>
-</Tabs>
+These are the model’s arguments and return values:
 
-Here’s how to make a corresponding unary-stream predict call from the client side to track objects in a video:
+##### Arguments
+
+* **video (Video):** The input video.
+
+* **frames (List[Frame]):**
+  A list of frames containing tracking prompts. For each frame:
+
+  * `frame.data.regions` specifies object locations using points or bounding boxes, as described in the `predict` method.
+  * The frame index is identified by `frame.frame_info.index`.
+  * The object identity is specified using `frame.data.regions[...].track_id`.
+
+* **list_dict_inputs (List[Dict]):**
+  A list of dictionaries following the `SAM2VideoPredictor.add_new_points_or_box()` method signature. Each dictionary may include `points`, `box`, `obj_id`, `labels`, and `frame_idx`. Refer to [this example](https://github.com/facebookresearch/sam2/blob/main/notebooks/video_predictor_example.ipynb) for details.
+
+* **return_type (str):** Specifies the type of output to return. Must be one of:
+
+  * `box` — return bounding boxes only
+  * `mask` — return masks only
+  * `all` — return both bounding boxes and masks
+
+> **Note:** You may provide either `frames` or `list_dict_inputs`, but not both at the same time.
+
+##### Returns
+
+* **Iterator[Frame]:** An iterator over frames containing the generated masks and tracked object results for each frame.
+
+
+</details>
+
+
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
@@ -358,19 +382,7 @@ This call enables bidirectional streaming of both inputs and outputs, making it 
 
 In this setup, multiple inputs can be continuously streamed to the model, while predictions are returned in real time. It’s especially useful for use cases like live video analysis or streaming sensor data.
 
-
 ### Text Inputs
-
-Here is an example of a model signature configured on the server side for handling text inputs:
-
-<Tabs groupId="code">
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python">@ModelClass.method
-  def stream(self, input_iterator: Iterator[str]) -> Iterator[str]:</CodeBlock>
-</TabItem>
-</Tabs>
-
-Here’s how you can make a corresponding stream-stream predict call from the client side:
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
@@ -380,17 +392,6 @@ Here’s how you can make a corresponding stream-stream predict call from the cl
 
 
 ### Audio Inputs
-
-Here is an example of a model signature configured on the server side for handling audio inputs:
-
-<Tabs groupId="code">
-<TabItem value="python" label="Python">
-    <CodeBlock className="language-python">@ModelClass.method
-def transcribe_audio(self, audio: Iterator[Audio]) -> Iterator[Text]:</CodeBlock>
-</TabItem>
-</Tabs>
-
-Here’s how you can make a corresponding stream-stream predict call from the client side:
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
@@ -426,8 +427,6 @@ This means you can pass either a single input or a list of inputs, and the syste
 
 ### Text Inputs
 
-Here’s how you can perform batch predictions with text inputs.
-
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{CO9}</CodeBlock>
@@ -440,8 +439,6 @@ Here’s how you can perform batch predictions with text inputs.
 </details>
 
 ### Image Inputs
-
-Here’s how you can perform batch predictions with image inputs.
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">

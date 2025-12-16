@@ -1,3 +1,5 @@
+# This example uses Matplotlib, Pillow, and NumPy. You can install them by running: pip install matplotlib Pillow numpy
+
 import matplotlib.pyplot as plt
 from clarifai.client import Model
 from clarifai.runners.utils.data_types import Video, Region, Concept, Frame
@@ -38,7 +40,7 @@ frame1 = Frame(
 frame1.proto.frame_info.index = 1
 
 # Generate masks using the frame-based approach
-output_frames = model.generate(video=video, frames=[frame0, frame1])
+output_frames = model.generate(video=video, frames=[frame0, frame1], return_type="all")
 
 # Alternatively,  use `list_dict_inputs` instead
 # frame_objs = [
@@ -57,7 +59,7 @@ output_frames = model.generate(video=video, frames=[frame0, frame1])
 #         frame_idx=1
 #     ),
 # ]
-# output_frames = model.generate(video=video, list_dict_inputs=frame_objs)
+# output_frames = model.generate(video=video, list_dict_inputs=frame_objs, return_type="all")
 
 # Visualize the output masks
 for frame_idx, frame in enumerate(output_frames):

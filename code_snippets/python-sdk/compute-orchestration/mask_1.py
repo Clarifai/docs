@@ -1,3 +1,5 @@
+# This example uses Matplotlib, Pillow, and NumPy. You can install them by running: pip install matplotlib Pillow numpy
+
 import matplotlib.pyplot as plt
 from clarifai.runners.utils.data_types import Image
 from clarifai.client import Model
