@@ -212,7 +212,7 @@ If the necessary context configurations aren’t detected, the CLI will guide yo
 
 This setup ensures all required components — such as compute clusters, nodepools, and deployments — are properly included in your configuration context, which are described [here](README.mdx#step-2-create-a-context-optional). Simply review each prompt and confirm to proceed.
 
-> **Note**: Use the `--verbose` option to show detailed logs from the Ollama server, which is helpful for debugging: `clarifai model local-runner --verbose`.
+> **Note**: Use the `--suppress-toolkit-logs` option to show detailed logs from the Ollama server, which is helpful for debugging: `clarifai model local-runner --suppress-toolkit-logs`.
 
 <details>
   <summary>Example Output</summary>

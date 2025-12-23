@@ -10,11 +10,6 @@ sidebar_position: 4
 
 Clarifai makes it easy to provision and manage your own [computing infrastructure](https://docs.clarifai.com/compute/overview). With just a few clicks, you can get up and running, and deploy your models for inference. 
 
-:::note
-
-Setting up a cloud compute infrastructure via Clarifai requires a [paid plan](https://www.clarifai.com/pricing).
-
-:::
 
 ## Step 1: Sign Up or Log In 
 

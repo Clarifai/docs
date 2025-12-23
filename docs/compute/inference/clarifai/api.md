@@ -113,7 +113,7 @@ To use our dedicated Compute Orchestration capabilities, ensure your model is [d
 
 :::info
 
-For dedicated deployments owned by an organization, alongside the `deployment_id`, also provide the organization ID as the `Model`'s `deployment_user_id`.
+For dedicated deployments that belong to a different user or organization, alongside the `deployment_id`, also provide the user ID or the organization ID as the `Model`'s `deployment_user_id`.
 
 :::
 
@@ -121,8 +121,8 @@ For dedicated deployments owned by an organization, alongside the `deployment_id
 model = Model(
     url="MODEL_URL_HERE",  
     deployment_id="DEPLOYMENT_ID_HERE",
-    # if you are targeting a specific deployment owned by an organization:
-    # deployment_user_id="ORGANIZATION_ID_HERE", 
+    # For a deployment owned by a different user or organization:
+    # deployment_user_id="USER_ID or ORGANIZATION_ID_HERE", 
     # Or, set cluster and nodepool 
     # compute_cluster_id = "COMPUTE_CLUSTER_ID_HERE",
     # nodepool_id = "NODEPOOL_ID_HERE"

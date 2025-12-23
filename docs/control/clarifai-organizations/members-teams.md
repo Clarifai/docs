@@ -30,6 +30,8 @@ To add a new team member to your organization, you need to send them an invitati
 
 In the dialog box that appears, enter the invitee’s email address and select a role you wish to assign to them, [as described below](#roles-for-members).
 
+> **Note:** Role-based access control is available only on the Enterprise [plan](https://www.clarifai.com/pricing). Pay-As-You-Go users can invite members with Admin roles only.
+
 ![Invite member dialog box](/img/clarifai_orgs/invite_member_dialog_box.png)
 
 After providing the details, click the **Confirm** button. 
@@ -70,13 +72,15 @@ Once invitees have accepted your invitation, their details will appear in the **
 
 :::warning multi-org membership
 
-We offer a multi-org membership functionality. Users can create, join, and engage with multiple organizations. A user’s membership is not limited to only one organization at any given time. 
+Multi-organization membership is available exclusively on the Enterprise plan, allowing users to create, join, and participate in multiple organizations simultaneously.
 
 :::
 
 ## Organization Teams
 
 Teams allow you to bring different members of your organization together to accomplish specific tasks. For example, you can aggregate users with the same access privileges to certain apps together in a single team.
+
+> **Note:** The teams functionality is available only to users on the Enterprise plan. 
 
 ### How to Add Teams
 

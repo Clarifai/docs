@@ -10,9 +10,11 @@ sidebar_position: 5
 
 We offer a range of instance types designed to handle a variety of machine learning workloads. These cloud instances vary in their CPU, RAM (Random Access Memory), and GPU configurations, which allow you to orchestrate the right balance of performance and cost for your use case.
 
-:::info pricing
+:::info 
 
-To learn more about pricing for each instance type, see the [pricing page](https://www.clarifai.com/pricing).
+- See the [pricing page](https://www.clarifai.com/pricing) to learn more about pricing for each instance type.
+
+- [Contact us](https://www.clarifai.com/explore/contact-us) to access higher-tier GPUs that are not automatically provisioned on demand by the platform. 
 
 :::
 
