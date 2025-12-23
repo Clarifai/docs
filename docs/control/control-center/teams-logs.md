@@ -20,7 +20,7 @@ It provides the ability to assess user actions and resource changes, identify po
 
 :::info
 
-This audit logging feature is currently only available to users on our Professional and Enterprise subscription [plans](https://www.clarifai.com/pricing). So, the tab is hidden for users who do not have audit logging access.
+This audit logging feature is currently only available to users on our Enterprise [subscription plan](https://www.clarifai.com/pricing). 
 
 :::
 

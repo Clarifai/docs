@@ -66,18 +66,89 @@ To permanently remove your account, click **Delete Account**. This action is irr
 
 ## Billing
 
-The **Subscription & Billing** page provides a centralized place to view and manage your plan, payment methods, and invoices.
+The **Subscription & Billing** page provides a centralized place to view and manage your credits, plan, payment methods, and invoices.
 
 To access it, [log in](https://clarifai.com/login) to the Clarifai platform. Then, in the collapsible left sidebar, select **Settings** and choose **Billing** from the dropdown list.
 
 ![ ](/img/new-docs/billing_1.png)
 
-On this page, you will see details of your current subscription plan along with options to upgrade or switch to other plans. Each plan card includes a brief summary of the tier — such as monthly pricing, spending limits, and links to additional information.
+### Transition to New Plan
 
-> **Note:** The monthly spending limits are $100 for Developer and Essential plans, and $500 for the Professional plan. You can [contact us](https://www.clarifai.com/explore/contact-us) if you require higher limits
+We’ve simplified Clarifai’s pricing by introducing a single Pay-As-You-Go plan with no minimum monthly commitments and far fewer feature gates. Just add credits, build, and go.
+
+All new users are automatically onboarded to this plan. Existing users can switch by clicking the **Review the new plan** button in the banner displayed on the page.
+
+In the window that appears, click **Change Plan** to complete the transition.
+
+![ ](/img/new-docs/billing_2.png)
+
+After switching, click the notification bar and select **Claim credits** to verify your phone number and receive a one-time, free $5 credits, which can be used to try anything from serverless model access to dedicated deployments.
+
+> **Note:**  The $5 welcome bonus has a 30-day expiration period.
+
+![ ](/img/new-docs/billing_3.png)
+
+> **Note:** Each user is eligible for up to two welcome bonuses — one for a personal account and another for an organization account that the user can create with their peers.
+
+![ ](/img/new-docs/billing_7.png)
+
+### Recharge Your Account
+
+After transitioning to the new plan, you can view your current plan and the details of your remaining credits at the top of the page.
+
+To recharge your account, click the **Recharge** button. 
+
+If your phone number has not yet been verified, a dialog will prompt you to enter your number and receive a verification code via SMS.
+
+![ ](/img/new-docs/billing_4.png)
+
+> **Note:** The same phone number can be verified for up to three different Clarifai accounts, regardless of whether the accounts are personal or organizational. However, only 1 personal and 1 Org account is eligible for the $5 bonus.
+
+After successful verification, you can proceed to recharge your account credits using your card.
+
+![ ](/img/new-docs/billing_5.png)
+
+:::info Auto recharge
+
+> To enable automatic recharging, turn on the **Auto recharge** button. A dialog will appear where you can set a balance threshold — for example, when credits drop to $5, automatically recharge up to $20.
+
+> ![ ](/img/new-docs/billing_6.png)
+
+:::
+
+### Change Your Plan
+
+As mentioned previously, we offer a Pay-As-You-Go plan that allows you to pay only for what you use. It offers the following features:
+
+- Run models directly or via dedicated compute instance
+- Clarifai Reasoning Engine — Accelerate Agentic AI workloads and large reasoning models
+- Full platform access
+- Promotional free access to [Local Runners](https://docs.clarifai.com/compute/local-runners/)
+- Up to 100 requests per second
+
+> **Note:** The Pay-As-You-Go plan has a maximum monthly spend limit of $100. Contact us to request a higher limit.
+
+For organizations operating at scale or with specialized requirements, we also offer an Enterprise plan. It offers the following features:
+
+- Access to top GPUs
+- Clarifai’s SaaS or private control plane
+- Optional air-gapped deployments and private data planes
+- Multi-organizations, teams management and [audit logging](https://docs.clarifai.com/control/control-center/teams-logs)
+- 24/7 dedicated support
+
+To upgrade to the Enterprise plan, click the **Talk to our AI Experts** button. You’ll be redirected to a page where you can schedule a meeting with our AI team to discuss your specific needs.
+
+![ ](/img/new-docs/billing_8.png)
+
+### Add a Payment Method
 
 In the **Payment Methods** section, you can add a new payment option by clicking **Add a Credit Card**. A pop-up window will appear, allowing you to securely enter your card details.
 
-> **Note:** We have a new credit card pre-authorization process. A temporary charge of $50 for Developer, $100 for Essential, and $500 for Professional plans is applied to verify card validity and available funds. The amount is automatically refunded within seven days
+> **Note:** If you haven’t verified your phone number yet, you’ll be prompted to do so.
+
+![ ](/img/new-docs/billing_9.png)
+
+### Invoices
 
 The **Invoices** section provides a complete history of your billing activity, displaying past transactions and downloadable statements for your records.
+

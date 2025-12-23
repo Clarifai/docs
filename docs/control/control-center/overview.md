@@ -29,12 +29,6 @@ It tells you:
 - The total costs of training your models
 - The total number of model types you’ve used
 
-:::info upgrade your plan
-
-You can still use the Control Center to track your metrics for a specified date range even if you are a free user. Consider upgrading to the paid plan to unlock extra platform capabilities and keep tracking them here. 
-
-:::
-
 ## Smart Insights
 
 Smart Insights at the top of the page allows you to uncover usage insights through a conversational interface. It enables you to interact with your data naturally — by simply asking questions in plain language — rather than navigating multiple reports or charts.

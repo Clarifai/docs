@@ -12,11 +12,6 @@ Clarifai provides an intuitive interface that makes it easy to provision compute
 
 [Deployment](https://docs.clarifai.com/compute/deployments/deploy-model) allows you to configure and activate the infrastructure needed to serve model predictions. With just a few simple steps, you can deploy a trained model and start generating predictions.
 
-:::note
-
-Cloud model deployment via Clarifai requires a [paid plan](https://www.clarifai.com/pricing). You can try local deployment with [Local Runners](https://docs.clarifai.com/compute/local-runners) for free.
-
-:::
 
 ## Step 1: Sign Up or Log In 
 
