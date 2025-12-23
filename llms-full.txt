@@ -525,9 +525,11 @@ import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 
 We offer a range of instance types designed to handle a variety of machine learning workloads. These cloud instances vary in their CPU, RAM (Random Access Memory), and GPU configurations, which allow you to orchestrate the right balance of performance and cost for your use case.
 
-:::info pricing
+:::info 
 
-To learn more about pricing for each instance type, see the [pricing page](https://www.clarifai.com/pricing).
+- See the [pricing page](https://www.clarifai.com/pricing) to learn more about pricing for each instance type.
+
+- [Contact us](https://www.clarifai.com/explore/contact-us) to access higher-tier GPUs that are not automatically provisioned on demand by the platform. 
 
 :::
 
@@ -3412,7 +3414,7 @@ To use our dedicated Compute Orchestration capabilities, ensure your model is [d
 
 :::info
 
-For dedicated deployments owned by an organization, alongside the `deployment_id`, also provide the organization ID as the `Model`'s `deployment_user_id`.
+For dedicated deployments that belong to a different user or organization, alongside the `deployment_id`, also provide the user ID or the organization ID as the `Model`'s `deployment_user_id`.
 
 :::
 
@@ -3420,8 +3422,8 @@ For dedicated deployments owned by an organization, alongside the `deployment_id
 model = Model(
     url="MODEL_URL_HERE",  
     deployment_id="DEPLOYMENT_ID_HERE",
-    # if you are targeting a specific deployment owned by an organization:
-    # deployment_user_id="ORGANIZATION_ID_HERE", 
+    # For a deployment owned by a different user or organization:
+    # deployment_user_id="USER_ID or ORGANIZATION_ID_HERE", 
     # Or, set cluster and nodepool 
     # compute_cluster_id = "COMPUTE_CLUSTER_ID_HERE",
     # nodepool_id = "NODEPOOL_ID_HERE"
@@ -4556,7 +4558,7 @@ With Local Runners, you can connect your own models to Clarifai's compute plane.
 
 Your model can securely receive and process requests from anywhere, just as it would in a production cloud deployment.
 
-> **Note:** A runner is the actual running instance of your model. The number of Local Runners you can run on your machine depends on your [pricing plan](https://www.clarifai.com/pricing).
+> **Note:** A runner is the actual running instance of your model. The Local Runners feature is temporarily available for free. 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -4722,7 +4724,7 @@ Or:
 
 > - `--pool_size` is an integer option that sets the number of threads used to handle inference requests (default is 32). Increasing the pool size enables more requests to be processed in parallel, which can speed up testing and throughput. However, on the Community plan, your compute time allocation is consumed faster when you increase the number of threads, since usage is billed in proportion to the thread count.
 
->  - `--verbose` option enables detailed display of logs for troubleshooting issues, especially when running an [Ollama server](https://docs.clarifai.com/compute/local-runners/ollama/#step-4-start-your-local-runner).
+> - `--suppress-toolkit-logs` option enables detailed display of logs for troubleshooting issues, especially when running an [Ollama server](https://docs.clarifai.com/compute/local-runners/ollama/#step-4-start-your-local-runner). By default, logs are suppressed.
 
 > - `MODEL_PATH` is an optional path to the model directory. If omitted, the current directory is used by default.
 
@@ -6025,7 +6027,7 @@ If the necessary context configurations aren’t detected, the CLI will guide yo
 
 This setup ensures all required components — such as compute clusters, nodepools, and deployments — are properly included in your configuration context, which are described [here](README.mdx#step-2-create-a-context-optional). Simply review each prompt and confirm to proceed.
 
-> **Note**: Use the `--verbose` option to show detailed logs from the Ollama server, which is helpful for debugging: `clarifai model local-runner --verbose`.
+> **Note**: Use the `--suppress-toolkit-logs` option to show detailed logs from the Ollama server, which is helpful for debugging: `clarifai model local-runner --suppress-toolkit-logs`.
 
   Example Output
     {OllamaRun}
@@ -6661,8 +6663,7 @@ Let’s walk through how to build and upload a custom model to the Clarifai plat
 
 :::note
 
-- Explore [this repository](https://github.com/Clarifai/runners-examples) for examples on uploading different model types. 
-- Uploading models to the Clarifai platform requires a [paid plan](https://www.clarifai.com/pricing).
+Explore [this repository](https://github.com/Clarifai/runners-examples) for examples on uploading different model types. 
 
 :::
 
@@ -7889,19 +7890,89 @@ To permanently remove your account, click **Delete Account**. This action is irr
 
 ## Billing
 
-The **Subscription & Billing** page provides a centralized place to view and manage your plan, payment methods, and invoices.
+The **Subscription & Billing** page provides a centralized place to view and manage your credits, plan, payment methods, and invoices.
 
 To access it, [log in](https://clarifai.com/login) to the Clarifai platform. Then, in the collapsible left sidebar, select **Settings** and choose **Billing** from the dropdown list.
 
 ![ ](/img/new-docs/billing_1.png)
 
-On this page, you will see details of your current subscription plan along with options to upgrade or switch to other plans. Each plan card includes a brief summary of the tier — such as monthly pricing, spending limits, and links to additional information.
+### Transition to New Plan
 
-> **Note:** The monthly spending limits are $100 for Developer and Essential plans, and $500 for the Professional plan. You can [contact us](https://www.clarifai.com/explore/contact-us) if you require higher limits
+We’ve simplified Clarifai’s pricing by introducing a single Pay-As-You-Go plan with no minimum monthly commitments and far fewer feature gates. Just add credits, build, and go.
+
+All new users are automatically onboarded to this plan. Existing users can switch by clicking the **Review the new plan** button in the banner displayed on the page.
+
+In the window that appears, click **Change Plan** to complete the transition.
+
+![ ](/img/new-docs/billing_2.png)
+
+After switching, click the notification bar and select **Claim credits** to verify your phone number and receive a one-time, free $5 credits, which can be used to try anything from serverless model access to dedicated deployments.
+
+> **Note:**  The $5 welcome bonus has a 30-day expiration period.
+
+![ ](/img/new-docs/billing_3.png)
+
+> **Note:** Each user is eligible for up to two welcome bonuses — one for a personal account and another for an organization account that the user can create with their peers.
+
+![ ](/img/new-docs/billing_7.png)
+
+### Recharge Your Account
+
+After transitioning to the new plan, you can view your current plan and the details of your remaining credits at the top of the page.
+
+To recharge your account, click the **Recharge** button. 
+
+If your phone number has not yet been verified, a dialog will prompt you to enter your number and receive a verification code via SMS.
+
+![ ](/img/new-docs/billing_4.png)
+
+> **Note:** The same phone number can be verified for up to three different Clarifai accounts, regardless of whether the accounts are personal or organizational. However, only 1 personal and 1 Org account is eligible for the $5 bonus.
+
+After successful verification, you can proceed to recharge your account credits using your card.
+
+![ ](/img/new-docs/billing_5.png)
+
+:::info Auto recharge
+
+> To enable automatic recharging, turn on the **Auto recharge** button. A dialog will appear where you can set a balance threshold — for example, when credits drop to $5, automatically recharge up to $20.
+
+> ![ ](/img/new-docs/billing_6.png)
+
+:::
+
+### Change Your Plan
+
+As mentioned previously, we offer a Pay-As-You-Go plan that allows you to pay only for what you use. It offers the following features:
+
+- Run models directly or via dedicated compute instance
+- Clarifai Reasoning Engine — Accelerate Agentic AI workloads and large reasoning models
+- Full platform access
+- Promotional free access to [Local Runners](https://docs.clarifai.com/compute/local-runners/)
+- Up to 100 requests per second
+
+> **Note:** The Pay-As-You-Go plan has a maximum monthly spend limit of $100. Contact us to request a higher limit.
+
+For organizations operating at scale or with specialized requirements, we also offer an Enterprise plan. It offers the following features:
+
+- Access to top GPUs
+- Clarifai’s SaaS or private control plane
+- Optional air-gapped deployments and private data planes
+- Multi-organizations, teams management and [audit logging](https://docs.clarifai.com/control/control-center/teams-logs)
+- 24/7 dedicated support
+
+To upgrade to the Enterprise plan, click the **Talk to our AI Experts** button. You’ll be redirected to a page where you can schedule a meeting with our AI team to discuss your specific needs.
+
+![ ](/img/new-docs/billing_8.png)
+
+### Add a Payment Method
 
 In the **Payment Methods** section, you can add a new payment option by clicking **Add a Credit Card**. A pop-up window will appear, allowing you to securely enter your card details.
 
-> **Note:** We have a new credit card pre-authorization process. A temporary charge of $50 for Developer, $100 for Essential, and $500 for Professional plans is applied to verify card validity and available funds. The amount is automatically refunded within seven days
+> **Note:** If you haven’t verified your phone number yet, you’ll be prompted to do so.
+
+![ ](/img/new-docs/billing_9.png)
+
+### Invoices
 
 The **Invoices** section provides a complete history of your billing activity, displaying past transactions and downloadable statements for your records.
 
@@ -8925,10 +8996,8 @@ Learn more about the scopes and access levels of organization members [here](htt
 
 | Type of Plan          | Org Functionalities Available|
 |-----------------------|------------------------|
-| Community             |   Only Admin role allowedOnly one Org can be createdNo teams allowed |
-| Essential             |  Admin, Org Contributor, and Org User roles allowedOnly one Org can be createdNo teams allowed  |
-| Professional          |  Admin, Org Contributor, and Org User roles allowedOnly one Org can be createdNo teams allowed  | |
-| Enterprise            | Admin, Org Contributor, Org User, and Team Contributor roles allowedUp to twenty Orgs can be createdTeams allowed  |                        |
+| Pay-As-You-Go            |   Limited to a single organization and does not support teams or custom roles  |
+| Enterprise             |   Supports up to 20 organizations, along with multiple teams and configurable roles   |         
 
 ## How to Create an Organization
 
@@ -8952,9 +9021,7 @@ And your new Clarifai Org will be created and available under your account!
 
 :::info 
 
-- You can create an Org account when registering for an account on the Clarifai platform. When activating your account, you'll be presented with a form that allows you to create an organization and invite members to join it. 
-
-- All new organization accounts start on the Community [pricing plan](https://www.clarifai.com/pricing) by default, with the option to upgrade at any time. This applies to Community, Essential, and Professional users, but not to Enterprise users.
+You can create an Org account when registering for an account on the Clarifai platform. When activating your account, you'll be presented with a form that allows you to create an organization and invite members to join it. 
 
 :::
 
@@ -9075,6 +9142,8 @@ To add a new team member to your organization, you need to send them an invitati
 
 In the dialog box that appears, enter the invitee’s email address and select a role you wish to assign to them, [as described below](#roles-for-members).
 
+> **Note:** Role-based access control is available only on the Enterprise [plan](https://www.clarifai.com/pricing). Pay-As-You-Go users can invite members with Admin roles only.
+
 ![Invite member dialog box](/img/clarifai_orgs/invite_member_dialog_box.png)
 
 After providing the details, click the **Confirm** button. 
@@ -9114,13 +9183,15 @@ Once invitees have accepted your invitation, their details will appear in the **
 
 :::warning multi-org membership
 
-We offer a multi-org membership functionality. Users can create, join, and engage with multiple organizations. A user’s membership is not limited to only one organization at any given time. 
+Multi-organization membership is available exclusively on the Enterprise plan, allowing users to create, join, and participate in multiple organizations simultaneously.
 
 :::
 
 ## Organization Teams
 
 Teams allow you to bring different members of your organization together to accomplish specific tasks. For example, you can aggregate users with the same access privileges to certain apps together in a single team.
+
+> **Note:** The teams functionality is available only to users on the Enterprise plan. 
 
 ### How to Add Teams
 
@@ -9838,12 +9909,6 @@ It tells you:
 - The total costs of training your models
 - The total number of model types you’ve used
 
-:::info upgrade your plan
-
-You can still use the Control Center to track your metrics for a specified date range even if you are a free user. Consider upgrading to the paid plan to unlock extra platform capabilities and keep tracking them here. 
-
-:::
-
 ## Smart Insights
 
 Smart Insights at the top of the page allows you to uncover usage insights through a conversational interface. It enables you to interact with your data naturally — by simply asking questions in plain language — rather than navigating multiple reports or charts.
@@ -9936,7 +10001,7 @@ It provides the ability to assess user actions and resource changes, identify po
 
 :::info
 
-This audit logging feature is currently only available to users on our Professional and Enterprise subscription [plans](https://www.clarifai.com/pricing). So, the tab is hidden for users who do not have audit logging access.
+This audit logging feature is currently only available to users on our Enterprise [subscription plan](https://www.clarifai.com/pricing). 
 
 :::
 
@@ -14171,7 +14236,9 @@ Once uploaded, you can organize your inputs into [datasets](https://docs.clarifa
 
 :::info
 
-As each input is uploaded, it is automatically indexed using the specified [base workflow](https://docs.clarifai.com/portal-guide/workflows/base-workflows) for your app. This indexing enables you to perform searches over the uploaded inputs, leveraging Clarifai’s custom-built [vector database](https://docs.clarifai.com/portal-guide/psearch/#powered-by-a-vector-database) for fast and efficient search capabilities.
+- As each input is uploaded, it is automatically indexed using the specified [base workflow](https://docs.clarifai.com/portal-guide/workflows/base-workflows) for your app. This indexing enables you to perform searches over the uploaded inputs, leveraging Clarifai’s custom-built [vector database](https://docs.clarifai.com/portal-guide/psearch/#powered-by-a-vector-database) for fast and efficient search capabilities.
+
+- Stored inputs are subject to a recurring storage fee, meaning your account balance may decrease over time even without active platform usage.
 
 :::
 
@@ -27222,12 +27289,6 @@ Clarifai provides an intuitive interface that makes it easy to provision compute
 
 [Deployment](https://docs.clarifai.com/compute/deployments/deploy-model) allows you to configure and activate the infrastructure needed to serve model predictions. With just a few simple steps, you can deploy a trained model and start generating predictions.
 
-:::note
-
-Cloud model deployment via Clarifai requires a [paid plan](https://www.clarifai.com/pricing). You can try local deployment with [Local Runners](https://docs.clarifai.com/compute/local-runners) for free.
-
-:::
-
 ## Step 1: Sign Up or Log In 
 
 Start by [logging in to](https://clarifai.com/login) your Clarifai account, or [sign up](https://clarifai.com/signup) for a new one to unlock access to the platform’s powerful AI capabilities. 
@@ -27303,7 +27364,7 @@ You can quickly test performance, experiment with real inputs, and explore Clari
  
 ## Step 1: Sign Up or Log In 
 
-Start by [logging in to](https://clarifai.com/login) your existing Clarifai account, or [sign up](https://clarifai.com/signup) for a new one to unlock access to the platform’s powerful AI capabilities. New users receive free operations to help kickstart their exploration.
+Start by [logging in to](https://clarifai.com/login) your existing Clarifai account, or [sign up](https://clarifai.com/signup) for a new one to unlock access to the platform’s powerful AI capabilities. New users receive a welcome bonus to kickstart their exploration.
 
 ## Step 2: Get a Model
 
@@ -27418,7 +27479,7 @@ import OutputExample from "!!raw-loader!../../code_snippets/new-docs/assorted/ou
 
 ## Step 1: Sign Up or Log In 
 
-Start by [logging in to](https://clarifai.com/login) your existing Clarifai account, or [sign up](https://clarifai.com/signup) for a new one to unlock access to the platform’s powerful AI capabilities. New users receive free operations to help kickstart their exploration.
+Start by [logging in to](https://clarifai.com/login) your existing Clarifai account, or [sign up](https://clarifai.com/signup) for a new one to unlock access to the platform’s powerful AI capabilities. New users receive a welcome bonus to kickstart their exploration.
 
 ## Step 2: Get a Model
 
@@ -27497,12 +27558,6 @@ Congratulations — you've just gotten started with the Clarifai platform!
 
 Clarifai makes it easy to provision and manage your own [computing infrastructure](https://docs.clarifai.com/compute/overview). With just a few clicks, you can get up and running, and deploy your models for inference. 
 
-:::note
-
-Setting up a cloud compute infrastructure via Clarifai requires a [paid plan](https://www.clarifai.com/pricing).
-
-:::
-
 ## Step 1: Sign Up or Log In 
 
 Start by [logging in to](https://clarifai.com/login) your existing Clarifai account, or [sign up](https://clarifai.com/signup) for a new one to unlock access to the platform’s powerful AI capabilities. 
@@ -27565,10 +27620,9 @@ The Clarifai platform allows you to upload custom models for a wide range of use
 
 Let’s walk through how to build and upload a simple custom model.
 
-:::note
+:::note tip
 
-- To learn more about how to upload different types of models, check out [this comprehensive guide](https://docs.clarifai.com/compute/models/upload/). 
-- Uploading models to the Clarifai platform requires a [paid plan](https://www.clarifai.com/pricing).
+To learn more about how to upload different types of models, check out [this comprehensive guide](https://docs.clarifai.com/compute/models/upload/). 
 
 :::
 
