@@ -24,7 +24,7 @@ import VercelExample4 from "!!raw-loader!../../../code_snippets/python-sdk/compu
 
 ## Prerequisites
 
-### Install Packages
+### Install Package
 
 Vercel offers a Clarifai provider, which is available through the `@ai-sdk/openai-compatible` module and is compatible with the OpenAI API. You can install it using:
 
