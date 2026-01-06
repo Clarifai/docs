@@ -8,28 +8,34 @@ const clarifai = createOpenAICompatible({
 });
 
 const model = clarifai(
-  "https://clarifai.com/anthropic/completion/models/claude-sonnet-4",
+  "https://clarifai.com/openai/chat-completion/models/gpt-oss-120b"
 );
 
 const result = await generateText({
   model,
   tools: {
     weather: tool({
-      description: "Get the weather in a location",
+      description: "Get the current weather in a specific location",
       parameters: z.object({
-        location: z.string().describe("The location to get the weather for"),
+        location: z.string().describe("The city and state, e.g. San Francisco, CA"),
       }),
       execute: async ({ location }) => ({
         location,
-        temperature: 72 + Math.floor(Math.random() * 21) - 10,
+        temperature: 72,
       }),
     }),
     cityAttractions: tool({
-      parameters: z.object({ city: z.string() }),
+      description: "Get popular tourist attractions for a specific city",
+      parameters: z.object({ 
+        city: z.string().describe("The name of the city") 
+      }),
+      execute: async ({ city }) => ({
+        city,
+        attractions: ["Golden Gate Bridge", "Alcatraz", "Fisherman's Wharf"],
+      }),
     }),
   },
-  prompt:
-    "What is the weather in San Francisco and what attractions should I visit?",
+  prompt: "What is the weather in San Francisco and what attractions should I visit?",
 });
 
-console.log(result.toolResults);
+console.log(JSON.stringify(result.toolResults, null, 2));

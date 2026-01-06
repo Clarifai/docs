@@ -1,7 +1,6 @@
 ---
 description: Run inferences on Clarifai models using Vercel 
 sidebar_position: 4
-toc_max_heading_level: 4
 ---
 
 # Vercel AI SDK
@@ -11,7 +10,7 @@ toc_max_heading_level: 4
 
 Vercel offers a TypeScript toolkit called the [AI SDK](https://vercel.com/docs/ai-sdk), which streamlines integration with language models in modern web applications.
 
-The SDK supports the [OpenAI Compatible Provider](https://ai-sdk.dev/providers/openai-compatible-providers) package that enables seamless interaction with any OpenAI-compatible API — including Clarifai’s OpenAI-compatible endpoint.
+The SDK supports the [OpenAI Compatible Provider](https://ai-sdk.dev/providers/openai-compatible-providers) package that enables seamless interaction with any OpenAI-compatible API — including [Clarifai’s](https://ai-sdk.dev/providers/openai-compatible-providers/clarifai) OpenAI-compatible endpoint.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -21,16 +20,23 @@ import VercelExample1 from "!!raw-loader!../../../code_snippets/python-sdk/compu
 import Output1 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/vercel_output_1.txt";
 import VercelExample2 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/vercel_2.ts";
 import VercelExample3 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/vercel_3.ts";
+import VercelExample4 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/vercel_4.ts";
 
 ## Prerequisites
 
-### Install Packages
+### Install Package
 
-Install the Vercel AI SDK (`ai`) and the OpenAI Provider package for the SDK (`@ai-sdk/openai-compatible`). 
+Vercel offers a Clarifai provider, which is available through the `@ai-sdk/openai-compatible` module and is compatible with the OpenAI API. You can install it using:
 
 <Tabs groupId="code">
-<TabItem value="bash" label="Bash">
-    <CodeBlock className="language-bash">  npm install ai @ai-sdk/openai-compatible  </CodeBlock>
+<TabItem value="bash" label="pnpm">
+    <CodeBlock className="language-bash">pnpm add @ai-sdk/openai-compatible</CodeBlock>
+</TabItem>
+<TabItem value="bash1" label="npm">
+    <CodeBlock className="language-bash">npm install @ai-sdk/openai-compatible</CodeBlock>
+</TabItem>
+<TabItem value="bash2" label="yarn">
+    <CodeBlock className="language-bash">yarn add @ai-sdk/openai-compatible</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -42,10 +48,10 @@ You can then set the PAT as an environment variable using `CLARIFAI_PAT`:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Unix-Like Systems">
-    <CodeBlock className="language-bash"> export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
+    <CodeBlock className="language-bash">export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE</CodeBlock>
 </TabItem>
 <TabItem value="bash2" label="Windows">
-    <CodeBlock className="language-bash"> set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
+    <CodeBlock className="language-bash">set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -58,6 +64,7 @@ Go to the Clarifai [Community](https://clarifai.com/explore) platform and select
     <summary>Some Clarifai models that support Vercel AI SDK, and their capabilities</summary>
     | Model | Image Input | Tool Usage | Tool Streaming |
     | --- | --- | --- | --- |
+     | [gpt-oss-120b](https://clarifai.com/openai/chat-completion/models/gpt-oss-120b) | ✅ | ✅ | ✅ |
     | [DeepSeek R1 0528 Qwen3 8B](https://clarifai.com/deepseek-ai/deepseek-chat/models/DeepSeek-R1-0528-Qwen3-8B) | ✅ | ✅ | ✅ |
     | [Llama 3.2 3B Instruct](https://clarifai.com/meta/Llama-3/models/Llama-3_2-3B-Instruct) | ✅ | ✅ | ✅ |
     | [claude Sonnet 4](https://clarifai.com/anthropic/completion/models/claude-sonnet-4) | ✅ | ✅ | ✅ |
@@ -87,9 +94,19 @@ Go to the Clarifai [Community](https://clarifai.com/explore) platform and select
     | [Qwen2.5 Coder 7B Instruct](https://clarifai.com/qwen/qwenCoder/models/Qwen2_5-Coder-7B-Instruct) | ✅ | ✅ | ✅ |
 </details>
 
+### Create Provider Instance
+
+To use Clarifai with Vercel for inference, create a custom provider instance using the `createOpenAICompatible` function from `@ai-sdk/openai-compatible`.
+
+<Tabs>
+<TabItem value="typescript" label="TypeScript">
+    <CodeBlock className="language-typescript">{VercelExample4}</CodeBlock>
+</TabItem>
+</Tabs>
+
 ## Generating Text
 
-Here's an example of how you can generate text using the Vercel AI SDK with a Clarifai-hosted model. 
+Here's an example of how you can generate text using the Vercel AI SDK with a Clarifai model. 
 
 <Tabs>
 <TabItem value="typescript" label="TypeScript">
@@ -104,7 +121,7 @@ Here's an example of how you can generate text using the Vercel AI SDK with a Cl
 
 ## Streaming
 
-You can use the Vercel AI SDK to stream responses. 
+You can use the Vercel AI SDK to stream responses with a Clarifai model. 
 
 <Tabs>
 <TabItem value="typescript" label="TypeScript">
