@@ -2,7 +2,6 @@
 description: Create, upload, and run pipelines via our API effortlessly
 sidebar_position: 1
 toc_max_heading_level: 5
-unlisted: true
 ---
 
 # Create and Run Pipelines [API]
@@ -79,7 +78,7 @@ Run the following command to create a new pipeline project in your current direc
 </Tabs>
 
 > **Note:** 
-> - You can initialize the project in a specific location by passing a [`MODEL_PATH`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init). 
+> - You can initialize a project in a specific location by providing a `PIPELINE_PATH`. For example, running `clarifai pipeline init <pipeline-name>` creates a new directory named `<pipeline-name>` and populates it with all the required pipeline project files.
 > - You can shorten `pipeline` to `pl` when running pipeline commands. For example: `clarifai pl init`.
 
 After running the command, you’ll be prompted to provide the following details:
@@ -184,6 +183,7 @@ step_directories:
 ```
 
 This section tells Clarifai which folders in your project represent pipeline steps and how they should be ordered during execution.
+The execution order is stipulated by the Argo Workflow Definition, as explained below.
 
 Each listed directory corresponds to one pipeline step created during initialization. As mentioned [earlier](#pipeline-steps), each step contains its own `config.yaml`, `requirements.txt`, and executable logic, allowing steps to be configured and maintained independently.
 
@@ -447,6 +447,8 @@ Run the following command from your current project directory to start the pipel
     ```
 </TabItem>
 </Tabs>
+
+> **Note:** The `clarifai pipeline run` command requires the user ID, app ID, pipeline version ID, and pipeline version run ID, which it reads directly from `config-lock.yaml`.
 
 <details>
   <summary>Example Output</summary>

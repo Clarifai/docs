@@ -74,7 +74,9 @@ To access it, [log in](https://clarifai.com/login) to the Clarifai platform. The
 
 ### Transition to New Plan
 
-We’ve simplified Clarifai’s pricing by introducing a single Pay-As-You-Go plan with no minimum monthly commitments and far fewer feature gates. Just add credits, build, and go.
+We’ve simplified Clarifai’s pricing by introducing a single Pay-As-You-Go plan with no minimum monthly commitments and far fewer feature gates — most of Clarifai is now accessible out of the box, including Compute Orchestration with auto-provisioned GPUs. 
+
+Just add credits, build across the platform, and go.
 
 All new users are automatically onboarded to this plan. Existing users can switch by clicking the **Review the new plan** button in the banner displayed on the page.
 
