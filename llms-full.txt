@@ -5037,7 +5037,7 @@ Run the following command to create a new pipeline project in your current direc
     clarifai pipeline init
 
 > **Note:** 
-> - You can initialize the project in a specific location by passing a [`MODEL_PATH`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init). 
+> - You can initialize a project in a specific location by providing a `PIPELINE_PATH`. For example, running `clarifai pipeline init ` creates a new directory named `` and populates it with all the required pipeline project files.
 > - You can shorten `pipeline` to `pl` when running pipeline commands. For example: `clarifai pl init`.
 
 After running the command, you’ll be prompted to provide the following details:
@@ -5137,6 +5137,7 @@ step_directories:
 ```
 
 This section tells Clarifai which folders in your project represent pipeline steps and how they should be ordered during execution.
+The execution order is stipulated by the Argo Workflow Definition, as explained below.
 
 Each listed directory corresponds to one pipeline step created during initialization. As mentioned [earlier](#pipeline-steps), each step contains its own `config.yaml`, `requirements.txt`, and executable logic, allowing steps to be configured and maintained independently.
 
@@ -5375,6 +5376,8 @@ Run the following command from your current project directory to start the pipel
     ```text
     clarifai pipeline run --compute_cluster_id cluster_id_here --nodepool_id nodepool_id_here
     ```
+
+> **Note:** The `clarifai pipeline run` command requires the user ID, app ID, pipeline version ID, and pipeline version run ID, which it reads directly from `config-lock.yaml`.
 
   Example Output
     {RunPipeline}
@@ -7910,7 +7913,9 @@ To access it, [log in](https://clarifai.com/login) to the Clarifai platform. The
 
 ### Transition to New Plan
 
-We’ve simplified Clarifai’s pricing by introducing a single Pay-As-You-Go plan with no minimum monthly commitments and far fewer feature gates. Just add credits, build, and go.
+We’ve simplified Clarifai’s pricing by introducing a single Pay-As-You-Go plan with no minimum monthly commitments and far fewer feature gates — most of Clarifai is now accessible out of the box, including Compute Orchestration with auto-provisioned GPUs. 
+
+Just add credits, build across the platform, and go.
 
 All new users are automatically onboarded to this plan. Existing users can switch by clicking the **Review the new plan** button in the banner displayed on the page.
 
@@ -31516,6 +31521,61 @@ We have a public roadmap that gives you a view of our upcoming plans and helps u
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
 | ![improvement](/img/improvement.jpg) | Improved the Python SDK   Learn more [here](https://github.com/Clarifai/clarifai-python/blob/master/CHANGELOG.md)   |   Introduced a new `patch_version` method in the Model class and integrated it into local runner workflows.   Improved logging by highlighting example code scripts printed during local runner workflows.Changed the default local development model type from `text-to-text` to `any-to-any`. Fixed an issue with converting gRPC response enums to integers during runner creation.  Fixed a `TypeError` when parsing checkpoint size from an environment variable.  Enabled health probe support, allowing `ModelClass` implementations to define liveness/readiness checks.  Improved interactive pipeline initialization with user prompts that replace placeholder TODO values.  Implemented Git registry metadata capture during model upload with model-scoped change detection.  Local runner now automatically uses the latest local-dev model version.  Reduced friction by continuing to leverage a single prebuilt AMD base image.  Updated type hints and docstring descriptions across all major files in the `clarifai/client` folder for better code quality, maintainability, and developer experience.  Improved overall Model CLI UX with consolidated flags, clearer help text, and better error surfacing.   Updated the `clarifai model predict` CLI to align with recent Pythonic model changes.   Updated the local runner default API base URL.   Refined logging in model and pipeline step builders for clearer diagnostics.   Added pagination support to pipeline log monitoring, returning all entries beyond the first 50.   |
+
+---
+
+## Release 12.0
+
+# Release 12.0
+
+**Release Date:** January 8th, 2025
+
+| New Feature | Improvement | Bug Fix | Enterprise Only |
+| :---: | :---: | :---: | :---: |
+| ![new-feature](/img/new_feature.jpg) |![improvement](/img/improvement.jpg) | ![bug](/img/bug.jpg) | ![enterprise](/img/enterprise.jpg) |
+
+## Pay-As-You-Go Plan
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![new-feature](/img/new_feature.jpg) | Introduced a simple, flexible Pay-As-You-Go plan |   The new plan has no minimum monthly commitments and far fewer feature gates. Just prepay credits, build, and go.   Additionally, the new plan comes with a one-time $5 welcome credit after verifying your phone number and auto-recharge capability.    Learn more [here](https://docs.clarifai.com/control/account-billing#billing).  |
+
+## Pipelines
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| [**Public Preview**](https://docs.clarifai.com/product-updates/changelog/release-types#release-types) | Introduced the ability to create, run, and manage pipelines via the Clarifai CLI |   Clarifai Pipelines let you design and run asynchronous, long-running, multi-step processes for complex AI and MLOps tasks.     Learn more [here](https://docs.clarifai.com/compute/pipelines/).  |
+
+## Multi-Nodepool Deployment
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![new-feature](/img/new_feature.jpg) | Introduced model routing capabilities |   We support universal model routing to provide high availability and optimal load distribution across all model services.    This allows intelligent routing logic across multiple model-serving nodepools, including spillover handling and routing across different data centers.   Learn more [here](https://docs.clarifai.com/compute/deployments/clusters-nodepools#multi-nodepool-deployment).  |
+
+## Vercel AI SDK Integration
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![new-feature](/img/new_feature.jpg) | Clarifai is now available as an inference provider in the Vercel AI SDK  |   You can use Clarifai-hosted models directly through the OpenAI-compatible interface in `@ai-sdk/openai-compatible`, with no changes to your application logic.  Learn more [here](https://docs.clarifai.com/compute/inference/vercel).  |
+
+## Published Models
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![new-feature](/img/new_feature.jpg) | Published two new reasoning models from the Ministral 3 family|   Published [Ministral-3-3B-Reasoning-2512](https://clarifai.com/mistralai/completion/models/Ministral-3-3B-Reasoning-2512), a compact model in the "Ministral 3" family. It delivers high-performance, open-weight capabilities while remaining efficient and deployable in realistic hardware settings.   Published [Ministral-3-14B-Reasoning-2512](https://clarifai.com/mistralai/completion/models/Ministral-3-14B-Reasoning-2512), the largest model in the “Ministral 3” family. It delivers high-performance, open-weight capabilities close to much larger models while remaining efficient and deployable in realistic hardware settings.  |
+
+## Python SDK
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![improvement](/img/improvement.jpg) | Improved the Python SDK   Learn more [here](https://github.com/Clarifai/clarifai-python/blob/master/CHANGELOG.md)  | Fixed issues with local model runnersFixed checkpoint download failures when `hf_transfer` was not installedResolved compatibility conflicts with the latest vLLMAdded a comprehensive artifact management system for both the SDK and CLIIntroduced interactive `config.yaml` creation during the model upload processAdded Container and Env model support for local runnersAdded comprehensive test coverage for the `MCPConnectionPool` connection lifecycleUpdated status codes and descriptions for model runner failure casesPrevented a `TypeError` during model version creationFixed a runner ID bug affecting local runnersFixed user verification issues in the development environmentUpgraded `urllib3` to version `>= 2.6.2`Added retry logic to OpenAI API calls and fixed related test mocksFixed a `TypeError` when `accelerator_type` is `None` in `config.yaml`Improved local runner handling of duplicate runner ID errorsAdded `CLARIFAI_HF_TOKEN` to the CLI contextAdded tests for the local runner CLI commandRemoved automatic file generation during model operations  |
+
+## Platform
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![new-feature](/img/new_feature.jpg) | Made some improvements  |   Added cleaner filters in the Control Center, making charts more intuitive and easier to navigate.   Improved the Team & Logs tab in the Control Center to ensure that today’s audit logs are included when selecting the last 7 days.   Enabled stopping responses in the right panel when using the Playground’s [Compare mode](https://docs.clarifai.com/getting-started/playground/#compare-models). |
+| ![bug](/img/bug.jpg)| Fixed some bugs |   Fixed various signup and login bugs, resulting in a more reliable and smoother user experience.   Fixed an issue in the mobile view of the Configure Home settings where enabling one option unexpectedly disabled another, causing inconsistent behavior.   Fixed an issue where Predict and Generate methods produced an error in the Playground.  Fixed an issue with the 6-month date range in the Control Center.   |
 
 ---
 

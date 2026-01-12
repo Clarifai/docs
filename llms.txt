@@ -222,6 +222,7 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [Release 11.7](https://docs.clarifai.com/docs/product-updates/changelog/release117): Changelog for Clarifai Release 11.7
 - [Release 11.8](https://docs.clarifai.com/docs/product-updates/changelog/release118): Changelog for Clarifai Release 11.8
 - [Release 11.9](https://docs.clarifai.com/docs/product-updates/changelog/release119): Changelog for Clarifai Release 11.9
+- [Release 12.0](https://docs.clarifai.com/docs/product-updates/changelog/release120): Changelog for Clarifai Release 12.0
 - [Release 5.10](https://docs.clarifai.com/docs/product-updates/changelog/release510): Changelog for Clarifai Release 5.10
 - [Release 5.11](https://docs.clarifai.com/docs/product-updates/changelog/release511): Changelog for Clarifai Release 5.11
 - [Release 6.0](https://docs.clarifai.com/docs/product-updates/changelog/release60): Changelog for Clarifai Release 6.0
