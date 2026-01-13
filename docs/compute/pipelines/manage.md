@@ -1,6 +1,6 @@
 ---
 description: Manage and scale pipelines across their entire lifecycle
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # Manage Pipelines
