@@ -4949,7 +4949,7 @@ Then, set your PAT as an environment variable:
 
 ### Initialize a Pipeline Project
 
-Run the following command to create a new pipeline project in your current directory. Follow the prompts to provide the required details.
+Run the following command to create a new pipeline project in your current directory. Follow the ensuing prompts to provide the required details.
 
     clarifai pipeline init
 
