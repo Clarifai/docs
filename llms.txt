@@ -8,7 +8,8 @@ This file contains links to documentation sections following the llmstxt.org sta
 
 - [Agents](https://docs.clarifai.com/docs/compute/agents/README): Build powerful AI agents with Clarifai
 - [Build Agents](https://docs.clarifai.com/docs/compute/agents/build): Learn how to build agents with Clarifai
-- [MCP](https://docs.clarifai.com/docs/compute/agents/mcp): Build performant MCP Servers with FastMCP for Clarifai
+- [Deploy Open-Source MCP Servers](https://docs.clarifai.com/docs/compute/agents/deploy-mcp): Upload, deploy, and interact with open-source MCP servers on Clarifai
+- [Build Custom MCP Servers](https://docs.clarifai.com/docs/compute/agents/mcp): Build performant MCP Servers with FastMCP for Clarifai
 - [Deployments](https://docs.clarifai.com/docs/compute/deployments/README): Orchestrate your AI workloads better, avoid vendor lock-in, and use compute spend efficiently
 - [Supported Cloud Instances](https://docs.clarifai.com/docs/compute/deployments/cloud-instances): Learn about the instance types we support
 - [Create Clusters and Nodepools](https://docs.clarifai.com/docs/compute/deployments/clusters-nodepools): Set up capabilities that match your computational needs
@@ -21,6 +22,7 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [Inference via API](https://docs.clarifai.com/docs/compute/inference/clarifai/api): Generate predictions with models
 - [Inference via UI](https://docs.clarifai.com/docs/compute/inference/clarifai/ui): Generate model or workflow predictions on the UI
 - [LiteLLM](https://docs.clarifai.com/docs/compute/inference/litellm): Run inferences on Clarifai models using LiteLLM
+- [MCP Servers](https://docs.clarifai.com/docs/compute/inference/mcp-servers): Extend agentic models capabilities with MCP Servers
 - [OpenAI](https://docs.clarifai.com/docs/compute/inference/open-ai): Run inferences on Clarifai models using OpenAI
 - [OpenHands](https://docs.clarifai.com/docs/compute/inference/openhands): Run inference with Clarifai models locally using OpenHands
 - [Vercel AI SDK](https://docs.clarifai.com/docs/compute/inference/vercel): Run inferences on Clarifai models using Vercel
@@ -172,7 +174,7 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [Deploy Your First Model](https://docs.clarifai.com/docs/getting-started/first-deployment): Set up your computing infrastructure easily and fast for inference
 - [Quick Start With Playground](https://docs.clarifai.com/docs/getting-started/playground): Start running inferences in just a few simple steps
 - [Quick Start With API](https://docs.clarifai.com/docs/getting-started/quickstart): Start quickly with Clarifai API in a few simple steps
-- [Set Up Compute Fast](https://docs.clarifai.com/docs/getting-started/set-up-compute): Set up your computing infrastructure easily and fast for inference
+- [Set Up Compute Quickly](https://docs.clarifai.com/docs/getting-started/set-up-compute): Set up your computing infrastructure easily and fast for inference
 - [Build and Upload a Model](https://docs.clarifai.com/docs/getting-started/upload-model): Build and upload your first custom model to the Clarifai platform
 - [DSPy-Clarifai Integration](https://docs.clarifai.com/docs/integrations/DSPy/README): Learn about integrating Clarifai With DSPy
 - [DSPy Modules & Signatures](https://docs.clarifai.com/docs/integrations/DSPy/modules-signatures): Some core modules built in DSPy are as follows,
@@ -224,6 +226,7 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [Release 11.8](https://docs.clarifai.com/docs/product-updates/changelog/release118): Changelog for Clarifai Release 11.8
 - [Release 11.9](https://docs.clarifai.com/docs/product-updates/changelog/release119): Changelog for Clarifai Release 11.9
 - [Release 12.0](https://docs.clarifai.com/docs/product-updates/changelog/release120): Changelog for Clarifai Release 12.0
+- [Release 12.1](https://docs.clarifai.com/docs/product-updates/changelog/release121): Changelog for Clarifai Release 12.1
 - [Release 5.10](https://docs.clarifai.com/docs/product-updates/changelog/release510): Changelog for Clarifai Release 5.10
 - [Release 5.11](https://docs.clarifai.com/docs/product-updates/changelog/release511): Changelog for Clarifai Release 5.11
 - [Release 6.0](https://docs.clarifai.com/docs/product-updates/changelog/release60): Changelog for Clarifai Release 6.0
