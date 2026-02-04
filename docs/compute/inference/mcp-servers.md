@@ -1,6 +1,7 @@
 ---
 description: Extend agentic models capabilities with MCP Servers
 sidebar_position: 6
+unlisted: true
 ---
 
 # MCP Servers

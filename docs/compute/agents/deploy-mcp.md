@@ -1,6 +1,7 @@
 ---
 description: Upload, deploy, and interact with open-source MCP servers on Clarifai
 sidebar_position: 3
+unlisted: true
 ---
 
 # Deploy Open-Source MCP Servers 
