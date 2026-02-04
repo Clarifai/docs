@@ -9,7 +9,7 @@ toc_max_heading_level: 5
 **Create, upload, and run pipelines via our API effortlessly**
 <hr />
 
-Clarifai Pipelines let you design and launch asynchronous, multi-step AI workflows on our platform. You can effortlessly automate complex processes, orchestrate AI agents, and run long-running jobs at scale.
+[Clarifai Pipelines](README.mdx) let you design and launch asynchronous, multi-step AI workflows on our platform. You can effortlessly automate complex processes, orchestrate AI agents, and run long-running jobs at scale.
 
 Let’s walk through how you can create, upload, and run pipelines via our API.
 
@@ -25,6 +25,7 @@ import PipelineStep from "!!raw-loader!../../../code_snippets/new-docs/pipelines
 import UploadPipeline from "!!raw-loader!../../../code_snippets/new-docs/pipelines/upload-pipeline.txt";
 import RunPipeline from "!!raw-loader!../../../code_snippets/new-docs/pipelines/run-pipeline.txt";
 import DockerfileExample from "!!raw-loader!../../../code_snippets/new-docs/pipelines/dockerfile-example.py";
+import DockerfileExample2 from "!!raw-loader!../../../code_snippets/new-docs/pipelines/dockerfile-example_2.py";
 import LockfileExample from "!!raw-loader!../../../code_snippets/new-docs/pipelines/lockfile-example.yaml";
 import RootLockfileExample from "!!raw-loader!../../../code_snippets/new-docs/pipelines/root-lockfile-example.yaml";
 
@@ -406,11 +407,21 @@ Run the following command in your current directory to upload the pipeline with 
 
 When you run the `upload` command, the CLI reads your pipeline configuration, uploads each step, and automatically builds a container image for every step using its code, configs, and dependencies. 
 
-- **Dockerfile** — For each step, it auto-generates a `Dockerfile` behind the scenes, which defines how the container image for the step is built (base image, Python version, dependency installation, and entrypoint setup). You can also create your own customized Dockerfile. 
+<a id="docker1"></a>
+- **Dockerfile** — For each step, it auto-generates a `Dockerfile` behind the scenes, which defines how the container image for the step is built (base image, Python version, dependency installation, and entrypoint setup). 
 
 <details>
-  <summary>Example: Dockerfile</summary>
+  <summary>Example: Dockerfile (auto-generated)</summary>
     <CodeBlock className="language-text">{DockerfileExample}</CodeBlock>
+</details>
+
+You can also define a custom `Dockerfile` to install additional binaries or dependencies during the image build process, giving you full control over the runtime environment. 
+
+<details>
+  <summary>Example: Dockerfile (custom)</summary>
+    <CodeBlock className="language-text">{DockerfileExample2}</CodeBlock>
+    >**Note:** The key requirement here is where the pipeline step files live inside the container image. Specifically, `requirements.txt` and the step directory (`1/` containing `pipeline_step.py`) should be placed under `/home/nonroot/main/`. This directory layout is what Clarifai expects at runtime to correctly discover, validate, and execute the pipeline step. In the above custom Dockerfile, that requirement is satisfied by copying the step implementation to `/home/nonroot/main/1` and the supporting files (`requirements.txt`, `config.yaml`) to `/home/nonroot/main/`, ensuring the pipeline step is executable once the image is built.
+
 </details>
 
 - **Lock file** — If the CLI detects that no lock file is existing, it auto-creates a new `config-lock.yaml` to “freeze” the exact step configuration and build details for that version. 
@@ -431,6 +442,20 @@ This lock file captures the resolved configuration, including the Python runtime
 - **Container image** — Using the generated Dockerfile and the locked configuration, Clarifai then builds a multi-architecture container image on its infrastructure. This image becomes a versioned, immutable artifact that’s tightly coupled with the `config-lock.yaml`, ensuring every future pipeline execution runs with the exact same code, environment, and resource settings.
 
 > **Note:** If you modify your pipeline and upload it again to the Clarifai platform, a new version is automatically created. Only the updated sections are uploaded, ensuring efficient version management.
+
+
+:::note 
+
+### Upload Pipeline Steps
+
+To upload a specific pipeline step, navigate to the step’s directory and run `clarifai pipelinestep upload`. Alternatively, you can provide the path to the pipeline step directory directly in the command.
+
+By default, a `Dockerfile` is automatically generated for the pipeline step during upload. If you need more control, you can provide your own custom Dockerfile, as described [earlier](#docker1).
+
+If you want to skip generating a Dockerfile — so you can use an already existing one — use the `--skip_dockerfile` flag: `clarifai pipelinestep upload --skip_dockerfile`.
+
+:::
+
 
 ## Step 5: Run the Pipeline
 
