@@ -2,14 +2,14 @@
 description: Changelog for Clarifai Release 12.0
 # For versioning, we use a negative position so that the oldest versions are displayed at the bottom. Any time you add a new version, increase the position by -1. 
 sidebar_position: -75
-pagination_next: null
+pagination_next: product-updates/changelog/release121
 pagination_prev: product-updates/changelog/release1111
 draft: false
 ---
 
 # Release 12.0
 
-**Release Date:** January 8th, 2025
+**Release Date:** January 8th, 2026
 
 <hr/>
 

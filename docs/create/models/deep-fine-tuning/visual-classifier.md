@@ -135,7 +135,7 @@ After creating the model, set it up for training.
 
 :::note
 
-Notice that the estimated duration for the training process is displayed for you. This [Training Time Estimator](https://docs.clarifai.com/create-manage/models/deep-fine-tuning/#training-time-estimator) feature offers transparency in expected training costs.
+Notice that the estimated duration for the training process is displayed for you. This [Training Time Estimator](https://docs.clarifai.com/create/models/deep-fine-tuning/#training-time-estimator) feature offers transparency in expected training costs.
 
 :::
 

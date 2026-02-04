@@ -4,7 +4,7 @@ sidebar_position: 2
 toc_max_heading_level: 4
 ---
 
-# MCP 
+# Build Custom MCP Servers
 
 **Build performant MCP servers with FastMCP for Clarifai**
 <hr />
@@ -73,7 +73,7 @@ Or, you can define the packages in a [`requirements.txt`](#step-4-define-depende
 
 #### Set a PAT Key
 
-You also need to have a Personal Access Token (PAT) to authenticate your connection with the Clarifai platform. You can generate it in your personal settings page by navigating to the [Security section](https://clarifai.com/settings/security).
+You need to have a [Personal Access Token](https://docs.clarifai.com/control/authentication/pat) (PAT) to authenticate your connection with the Clarifai platform. You can get one by navigating to **Settings** in the collapsible left sidebar, selecting **Secrets**, and creating or copying an existing token from there.
 
 Then, set the `CLARIFAI_PAT` as an environment variable. 
 
