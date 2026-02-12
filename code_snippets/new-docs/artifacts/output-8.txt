@@ -1,0 +1,3 @@
+clarifai artifact delete users/alfrick/apps/art-app/artifacts/my-artifact/versions/v123
+Are you sure you want to delete artifact version 'v123'? [y/N]: y
+Successfully deleted artifact version v123

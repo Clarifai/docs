@@ -1,0 +1,3 @@
+clarifai artifact delete users/alfrick/apps/art-app/artifacts/my-artifact
+Are you sure you want to delete artifact 'my-artifact'? [y/N]: y
+Successfully deleted artifact my-artifact

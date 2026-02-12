@@ -1,0 +1,57 @@
+---
+description: Programmatically manage binary and file-based assets
+unlisted: true
+---
+
+# Artifacts
+
+**Programmatically manage binary, file-based assets**
+<hr />
+
+Clarifai artifacts are binary, file-based assets associated with your apps. An artifact acts as a logical container for any binary or structured output produced by a user’s workload.
+
+At a high level, artifacts are:
+
+* **User-defined** — Created explicitly by users or automatically by [Pipelines](https://docs.clarifai.com/compute/pipelines/create-api). Pipelines enable long-running workloads such as model training, fine-tuning, and data preprocessing for downstream tasks.
+* **Versioned** — Each artifact contains one or more immutable `ArtifactVersions`, representing distinct snapshots or checkpoints over time.
+* **Taggable and searchable** — Artifacts support metadata and tagging, making them easy to organize, filter, and discover.
+* **Linked** — Artifacts can be associated with Clarifai resources such as `PipelineVersionRuns`, Models, or Datasets, establishing clear data lineage and traceability.
+* **Timestamped** — Artifacts track lifecycle timestamps including `created_at`, `modified_at`, and `deleted_at`.
+* **Resumable** — Runs can resume from stored artifact checkpoints (exact URI and checksum) instead of recomputing from scratch, significantly reducing training time and cost.
+* **Reproducible and auditable** — Pipeline runs can persist the exact files used to produce results (weights, checkpoints, configs, logs), ensuring experiments are reproducible and verifiable. 
+* **Access-controlled and workspace-scoped** — Artifacts inherit app and project permissions, enabling secure sharing and [collaboration](https://docs.clarifai.com/create/applications/manage#collaborators). Shared artifacts can be reused across multiple pipeline version runs without duplication.
+* **Modality-agnostic** — Unlike entities such as inputs, models, or datasets — which are semantically tied to specific modalities or roles — an artifact provides a generic abstraction for storing arbitrary data, regardless of format or purpose.
+
+## Common Artifact Examples
+
+Artifacts can store a wide range of assets, including:
+
+* Model checkpoints and weights (`.ckpt`, `.pt`, `.bin`)
+* Training logs or metrics (`.json`, `.csv`)
+* Preprocessed embeddings (`.npy`, `.pkl`)
+* Packaged datasets (`.tar.gz`, `.parquet`)
+* Serialized configuration or tokenizer files (`.yaml`, `.json`)
+
+## Artifact Resource Paths
+
+Artifacts are addressed using fully qualified Clarifai resource paths:
+
+```
+users/{user-id}/apps/{app-id}/artifacts/{artifact-id}
+```
+
+Artifact versions are addressed as:
+
+```
+users/{user-id}/apps/{app-id}/artifacts/{artifact-id}/versions/{version-id}
+```
+
+These paths are used consistently across the CLI and SDK when managing artifacts and their versions.
+
+
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
+

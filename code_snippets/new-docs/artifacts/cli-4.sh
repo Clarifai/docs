@@ -1,0 +1,1 @@
+clarifai artifact cp ./model.pt users/user-id/apps/app-id/artifacts/my-artifact --expires-at="2026-12-31T23:59:59.999Z"

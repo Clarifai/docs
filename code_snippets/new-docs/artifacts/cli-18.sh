@@ -1,0 +1,1 @@
+clarifai artifact delete users/user-id/apps/app-id/artifacts/my-artifact --force

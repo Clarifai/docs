@@ -1,0 +1,5 @@
+clarifai artifact get users/alfrick/apps/art-app/artifacts/my-artifact
+Artifact ID: my-artifact
+Latest version: fe71b81c8e984e56a2fd012be608f90b
+Created at: 2026-02-03 15:02:31.319386
+Modified at: 2026-02-10 19:48:45.005023
