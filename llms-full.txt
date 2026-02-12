@@ -12767,6 +12767,314 @@ Lastly, click the **Create App** button to finalize the creation of your app.
 
 ---
 
+## Artifacts
+
+# Artifacts
+
+**Programmatically manage binary, file-based assets**
+
+Clarifai artifacts are binary, file-based assets associated with your apps. An artifact acts as a logical container for any binary or structured output produced by a user’s workload.
+
+At a high level, artifacts are:
+
+* **User-defined** — Created explicitly by users or automatically by [Pipelines](https://docs.clarifai.com/compute/pipelines/create-api). Pipelines enable long-running workloads such as model training, fine-tuning, and data preprocessing for downstream tasks.
+* **Versioned** — Each artifact contains one or more immutable `ArtifactVersions`, representing distinct snapshots or checkpoints over time.
+* **Taggable and searchable** — Artifacts support metadata and tagging, making them easy to organize, filter, and discover.
+* **Linked** — Artifacts can be associated with Clarifai resources such as `PipelineVersionRuns`, Models, or Datasets, establishing clear data lineage and traceability.
+* **Timestamped** — Artifacts track lifecycle timestamps including `created_at`, `modified_at`, and `deleted_at`.
+* **Resumable** — Runs can resume from stored artifact checkpoints (exact URI and checksum) instead of recomputing from scratch, significantly reducing training time and cost.
+* **Reproducible and auditable** — Pipeline runs can persist the exact files used to produce results (weights, checkpoints, configs, logs), ensuring experiments are reproducible and verifiable. 
+* **Access-controlled and workspace-scoped** — Artifacts inherit app and project permissions, enabling secure sharing and [collaboration](https://docs.clarifai.com/create/applications/manage#collaborators). Shared artifacts can be reused across multiple pipeline version runs without duplication.
+* **Modality-agnostic** — Unlike entities such as inputs, models, or datasets — which are semantically tied to specific modalities or roles — an artifact provides a generic abstraction for storing arbitrary data, regardless of format or purpose.
+
+## Common Artifact Examples
+
+Artifacts can store a wide range of assets, including:
+
+* Model checkpoints and weights (`.ckpt`, `.pt`, `.bin`)
+* Training logs or metrics (`.json`, `.csv`)
+* Preprocessed embeddings (`.npy`, `.pkl`)
+* Packaged datasets (`.tar.gz`, `.parquet`)
+* Serialized configuration or tokenizer files (`.yaml`, `.json`)
+
+## Artifact Resource Paths
+
+Artifacts are addressed using fully qualified Clarifai resource paths:
+
+```
+users/{user-id}/apps/{app-id}/artifacts/{artifact-id}
+```
+
+Artifact versions are addressed as:
+
+```
+users/{user-id}/apps/{app-id}/artifacts/{artifact-id}/versions/{version-id}
+```
+
+These paths are used consistently across the CLI and SDK when managing artifacts and their versions.
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+---
+
+## Artifacts Management
+
+# Artifacts Management
+
+**Create, upload, download, list, get, and delete**
+
+[Clarifai artifacts](README.mdx) are binary, file-based assets associated with your apps — such as model weights, checkpoints, configuration files, or other supporting resources.
+
+You can create, upload, download, list, inspect, and delete artifacts and their versions directly from the command line or using our Python SDK.
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+
+import PyCreate1 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-1.py";
+import PyUpload1 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-2.py";
+import PyUpload2 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-3.py";
+import PyUpload3 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-4.py";
+import PyUpload4 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-5.py";
+import Py6 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-6.py";
+import Py7 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-7.py";
+import Py8 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-8.py";
+import Py9 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-9.py";
+import Py10 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-10.py";
+import Py11 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-11.py";
+import Py12 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-12.py";
+import Py13 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-13.py";
+import Py14 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-14.py";
+import Py15 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-15.py";
+
+import CLI1Upload1 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/cli-1.sh";
+import CLIUpload2 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/cli-2.sh";
+import CLIUpload3 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/cli-3.sh";
+import CLIUpload4 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/cli-4.sh";
+import CLIUpload5 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/cli-5.sh";
+import Download1 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/cli-6.sh";
+import Download2 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/cli-7.sh";
+import Download3 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/cli-8.sh";
+import Download4 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/cli-9.sh";
+import Download5 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/cli-10.sh";
+import Download6 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/cli-11.sh";
+import List1 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/cli-12.sh";
+import List2 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/cli-13.sh";
+import Get1 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/cli-14.sh";
+import Get2 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/cli-15.sh";
+import Delete1 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/cli-16.sh";
+import Delete2 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/cli-17.sh";
+import Delete3 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/cli-18.sh";
+import ModelPt from "!!raw-loader!../../../code_snippets/new-docs/artifacts/model-pt.py";
+import Output1 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/output-1.txt";
+import Output2 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/output-2.txt";
+import Output3 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/output-3.txt";
+import Output4 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/output-4.txt";
+import Output5 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/output-5.txt";
+import Output6 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/output-6.txt";
+import Output7 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/output-7.txt";
+import Output8 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/output-8.txt";
+
+## Prerequisites
+
+### Install Clarifai Package
+
+Install the latest version of the `clarifai` Python package. This also installs the Clarifai Command Line Interface (CLI), which we'll use for running artifact commands.
+
+    pip install --upgrade clarifai
+
+### Get User ID and PAT
+
+You’ll need the following credentials from the [Clarifai platform](https://clarifai.com/explore) for managing artifacts:
+
+- **User ID** – In the collapsible left sidebar, select **Settings** and choose **Account** from the dropdown list. Then, locate your user ID.
+
+- **Personal Access Token (PAT)** – From the same **Settings** option, choose **Secrets** to generate or copy your [PAT](https://docs.clarifai.com/control/authentication/pat). This token is used to authenticate your connection with the Clarifai platform.
+
+You can then set the PAT as an environment variable using `CLARIFAI_PAT`. 
+
+    export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE
+
+    set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE
+
+### Create an App
+
+In the Clarifai platform, [create an app](https://docs.clarifai.com/create/applications/create) where your artifact will be stored. After creating the app, make note of the app ID, as it is required when referencing [artifact paths](README.mdx#artifact-resource-paths) in the CLI or SDK.
+
+:::note CLI commands
+
+When using the Clarifai CLI, run `clarifai artifact --help` to view the complete list of available commands and their descriptions. 
+
+> **Note:** You can use **`af`** as a shorthand alias for the `artifact` command. Example: `clarifai af --help`.
+
+> These are the available commands:
+    > - `cp` – Upload or download artifact files
+    > - `list` (`ls`) – List artifacts or artifact versions
+    > - `get` – Retrieve artifact or version details
+    > - `delete` (`rm`) – Delete artifacts or artifact versions
+
+:::
+
+## Create an Artifact
+
+With the Python SDK, you can create an artifact object under your user and app by specifying an artifact ID; once created, it enables you to store files as versioned assets and easily upload, track, and manage changes over time.
+
+    {PyCreate1}
+
+## Upload Artifacts
+
+You can upload an artifact file by specifying an artifact ID; this automatically creates a new artifact version.
+
+> **Note:** If the artifact does not already exist, it will be created automatically before the upload.
+
+  Example Artifact: model.pt
+    {ModelPt}
+
+    {PyUpload1}
+
+    {CLI1Upload1}
+
+  Example Output
+    {Output1}
+
+You can upload with a description and visibility. 
+
+> **Note:** These are the visibility options you can set: `private` (default) restricts access to you, `org` allows access within your organization, and `public` makes the artifact accessible to anyone.
+
+    {PyUpload2}
+
+    {CLIUpload2}
+
+You can upload directly to a specific artifact version by providing a version ID.
+
+    {PyUpload3}
+
+    {CLIUpload3}
+
+You can specify an expiration time using [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) format (e.g., `2026-12-31T23:59:59.999Z`)
+
+    {PyUpload4}
+
+    {CLIUpload4}
+
+With the CLI, you can use `--force` or `-f` to overwrite existing files.
+
+    {CLIUpload5}
+
+## Download Artifacts
+
+You can download the latest artifact version by specifying an already existing local destination directory. 
+
+    
+
+    {Download1}
+
+  Example Output
+    {Output2}
+
+You can download the latest artifact version to the current directory.
+
+    
+
+    {Download3}
+
+You can download the artifact directly to the current directory using a specific filename.
+
+    
+
+    {Download2}
+
+You can download a specific artifact version and save it as a named file in the current directory.
+
+    
+
+    {Download4}
+
+You can download a specific artifact version and save it into an existing local directory.
+
+    
+
+    {Download5}
+
+You can use `--force` or `-f` to overwrite existing local files.
+
+    
+
+    {Download6}
+
+## List Artifacts
+
+> **Note:** When using the CLI, you can use `ls` as a shorthand alias for the `list` command.
+
+You can list all artifacts within an app.
+
+    
+
+    {List1}
+
+  Example Output
+    {Output3}
+
+You can list all versions of a specific artifact. 
+
+    
+
+    {List2}
+
+  Example Output
+    {Output4}
+
+## Get Artifact Details
+
+You can get the details of a specific artifact.
+
+    
+
+    {Get1}
+
+  Example Output
+    {Output5}
+
+You can get the details of a specific artifact version. 
+
+    
+
+    {Get2}
+
+  Example Output
+    {Output6}
+
+## Delete Artifacts
+
+> **Note:** When using the CLI, you can use `rm` as a shorthand alias for the `delete` command.
+
+You can delete an artifact (including all versions) by specifying its `artifact_id`. 
+
+    
+
+    {Delete1}
+
+  Example Output
+    {Output7}
+
+You can delete a specific artifact version by including its version ID in the path.
+
+    
+
+    {Delete2}
+
+  Example Output
+    {Output8}
+
+You can use `--force` or `-f` to delete without a confirmation prompt.
+
+    
+
+    {Delete3}
+
+---
+
 ## Create and Manage Concepts
 
 # Create and Manage Concepts
