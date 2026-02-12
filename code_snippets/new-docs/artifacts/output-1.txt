@@ -1,0 +1,10 @@
+clarifai artifact cp ./model.pt users/alfrick/apps/art-app/artifacts/my-artifact
+[INFO] 15:55:48.096696 Uploading file: ./model.pt (421.0 B) |  thread=8674533568 
+[INFO] 15:55:49.182076 Artifact my-artifact exists |  thread=8674533568 
+Uploading:   0%|                                                               | 0.00/421 [00:00<?, ?B/s][INFO] 15:55:49.232315 Uploading artifact content... |  thread=8674533568 
+[INFO] 15:55:49.232857 Upload complete! |  thread=8674533568 
+[INFO] 15:55:50.501460 Created artifact version: d392711b340a4b3793b8e0c76379994d |  thread=8674533568 
+Uploading: 100%|██████████████████████████████████████████████████████████| 421/421 [00:01<00:00, 300B/s]
+[INFO] 15:55:50.632954 Upload completed successfully: d392711b340a4b3793b8e0c76379994d |  thread=8674533568 
+Successfully uploaded ./model.pt to users/alfrick/apps/art-app/artifacts/my-artifact
+Version ID: d392711b340a4b3793b8e0c76379994d

@@ -1,0 +1,1 @@
+clarifai artifact list users/user-id/apps/app-id/artifacts/my-artifact --versions

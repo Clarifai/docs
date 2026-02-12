@@ -1,0 +1,7 @@
+clarifai artifact get users/alfrick/apps/art-app/artifacts/my-artifact/versions/v123
+Artifact Version: v123
+Description: N/A
+Visibility: PRIVATE
+Expires at: Never
+Created at: 2026-02-10 13:27:39.009518
+Modified at: 2026-02-10 13:27:39.224791

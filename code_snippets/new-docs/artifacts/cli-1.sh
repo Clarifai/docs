@@ -1,0 +1,1 @@
+clarifai artifact cp ./model.pt users/user-id/apps/app-id/artifacts/my-artifact

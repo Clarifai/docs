@@ -1,0 +1,6 @@
+clarifai artifact list users/alfrick/apps/art-app/artifacts/my-artifact --versions
+VERSION                           VISIBILITY    EXPIRES_AT                  CREATED_AT
+8bf6bf7ad21a452cb5a7b4f141a46b2a  PRIVATE       Never                       2026-02-10 13:55:00.326134
+1213897c183043f3abd610e747350c37  PRIVATE       2026-12-31 23:59:59.999000  2026-02-10 13:46:05.553821
+v123                              PRIVATE       Never                       2026-02-10 13:27:39.009518
+e262703f909f4b57b4105fb64d2426ad  PUBLIC        Never                       2026-02-10 13:14:39.157667
