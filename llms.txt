@@ -78,6 +78,7 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [App Templates](https://docs.clarifai.com/docs/create/applications/templates): Create applications faster with pre-built blueprints
 - [Artifacts](https://docs.clarifai.com/docs/create/artifacts/README): Programmatically manage binary and file-based assets
 - [Artifacts Management](https://docs.clarifai.com/docs/create/artifacts/manage): Create, upload, download, list, get, and delete
+- [Artifacts Use Cases](https://docs.clarifai.com/docs/create/artifacts/use-cases): Examples of how artifacts are used
 - [Create and Manage Concepts](https://docs.clarifai.com/docs/create/concepts/README): Manage your inputs and training data on the Community Platform
 - [Concepts Relations](https://docs.clarifai.com/docs/create/concepts/concepts-relations): Connect the knowledge gained by different models
 - [Create Concepts](https://docs.clarifai.com/docs/create/concepts/create): Learn how to create concepts within your app

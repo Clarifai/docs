@@ -12777,7 +12777,7 @@ Clarifai artifacts are binary, file-based assets associated with your apps. An a
 
 At a high level, artifacts are:
 
-* **User-defined** — Created explicitly by users or automatically by [Pipelines](https://docs.clarifai.com/compute/pipelines/create-api). Pipelines enable long-running workloads such as model training, fine-tuning, and data preprocessing for downstream tasks.
+* **User-defined** — Created explicitly by users or automatically by [Pipelines](https://docs.clarifai.com/compute/pipelines/create-api). Pipelines support long-running workloads such as model training, fine-tuning, and data preprocessing, which produce artifact [files](#common-artifact-examples) used in downstream tasks.
 * **Versioned** — Each artifact contains one or more immutable `ArtifactVersions`, representing distinct snapshots or checkpoints over time.
 * **Taggable and searchable** — Artifacts support metadata and tagging, making them easy to organize, filter, and discover.
 * **Linked** — Artifacts can be associated with Clarifai resources such as `PipelineVersionRuns`, Models, or Datasets, establishing clear data lineage and traceability.
@@ -12837,16 +12837,16 @@ import PyUpload1 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py
 import PyUpload2 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-3.py";
 import PyUpload3 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-4.py";
 import PyUpload4 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-5.py";
-import Py6 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-6.py";
-import Py7 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-7.py";
-import Py8 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-8.py";
-import Py9 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-9.py";
-import Py10 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-10.py";
-import Py11 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-11.py";
-import Py12 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-12.py";
-import Py13 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-13.py";
-import Py14 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-14.py";
-import Py15 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-15.py";
+import PyDownload1 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-6.py";
+import PyDownload2 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-7.py";
+import PyDownload3 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-8.py";
+import PyDownload4 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-9.py";
+import PyList1 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-10.py";
+import PyList2 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-11.py";
+import PyGet1 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-12.py";
+import PyGet2 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-13.py";
+import PyDelete1 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-14.py";
+import PyDelete2 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-15.py";
 
 import CLI1Upload1 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/cli-1.sh";
 import CLIUpload2 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/cli-2.sh";
@@ -12918,7 +12918,7 @@ When using the Clarifai CLI, run `clarifai artifact --help` to view the complete
 
 ## Create an Artifact
 
-With the Python SDK, you can create an artifact object under your user and app by specifying an artifact ID; once created, it enables you to store files as versioned assets and easily upload, track, and manage changes over time.
+With the Python SDK, you can create an artifact object under your user and app by specifying an artifact ID. Once created, it enables you to store files as versioned assets and easily upload, track, and manage changes over time.
 
     {PyCreate1}
 
@@ -12954,6 +12954,8 @@ You can upload directly to a specific artifact version by providing a version ID
 
 You can specify an expiration time using [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) format (e.g., `2026-12-31T23:59:59.999Z`)
 
+> **Note:** If no `expires-at` value is specified, the artifact version will automatically expire after 7 days by default.
+
     {PyUpload4}
 
     {CLIUpload4}
@@ -12964,52 +12966,46 @@ With the CLI, you can use `--force` or `-f` to overwrite existing files.
 
 ## Download Artifacts
 
-You can download the latest artifact version by specifying an already existing local destination directory. 
+You can download the latest artifact version to the current directory.
 
-    
+> **Note:** If no output path is provided, the file is automatically saved to the current working directory using an appropriate filename. When using the SDK, you should specify the `version_id`.
 
-    {Download1}
+    {PyDownload1}
+
+    {Download3}
 
   Example Output
     {Output2}
 
-You can download the latest artifact version to the current directory.
-
-    
-
-    {Download3}
-
 You can download the artifact directly to the current directory using a specific filename.
 
-    
+    {PyDownload2}
 
     {Download2}
 
-You can download a specific artifact version and save it as a named file in the current directory.
+> **Note:** This is how you can use the CLI to download a specific artifact version and save it as a named file in the current directory. {Download4}
 
-    
+You can use `force` (or `-f` for the CLI) to overwrite existing local files.
 
-    {Download4}
-
-You can download a specific artifact version and save it into an existing local directory.
-
-    
-
-    {Download5}
-
-You can use `--force` or `-f` to overwrite existing local files.
-
-    
+    {PyDownload3}
 
     {Download6}
 
+You can download the latest artifact version by specifying an already existing local destination directory. 
+
+    {PyDownload4}
+
+    {Download1}
+
+> **Note:** This is how you can use the CLI to download a specific artifact version and save it into an existing local directory. {Download5}
+
 ## List Artifacts
+
+You can list all artifacts within your app.
 
 > **Note:** When using the CLI, you can use `ls` as a shorthand alias for the `list` command.
 
-You can list all artifacts within an app.
-
-    
+    {PyList1}
 
     {List1}
 
@@ -13018,7 +13014,7 @@ You can list all artifacts within an app.
 
 You can list all versions of a specific artifact. 
 
-    
+    {PyList2}
 
     {List2}
 
@@ -13029,7 +13025,7 @@ You can list all versions of a specific artifact.
 
 You can get the details of a specific artifact.
 
-    
+    {PyGet1}
 
     {Get1}
 
@@ -13038,7 +13034,7 @@ You can get the details of a specific artifact.
 
 You can get the details of a specific artifact version. 
 
-    
+    {PyGet2}
 
     {Get2}
 
@@ -13047,31 +13043,75 @@ You can get the details of a specific artifact version.
 
 ## Delete Artifacts
 
-> **Note:** When using the CLI, you can use `rm` as a shorthand alias for the `delete` command.
-
 You can delete an artifact (including all versions) by specifying its `artifact_id`. 
 
-    
+> **Note:** When using the CLI, you can use `rm` as a shorthand alias for the `delete` command.
+
+    {PyDelete1}
 
     {Delete1}
 
   Example Output
     {Output7}
 
-You can delete a specific artifact version by including its version ID in the path.
+You can delete a specific artifact version by including its version ID.
 
-    
+    {PyDelete2}
 
     {Delete2}
 
   Example Output
     {Output8}
 
-You can use `--force` or `-f` to delete without a confirmation prompt.
-
-    
+With the CLI, you can use `--force` or `-f` to delete without a confirmation prompt.
 
     {Delete3}
+
+---
+
+## Artifacts Use Cases
+
+# Artifacts Use Cases
+
+**Examples of how artifacts are used**
+
+Artifacts provide a flexible, versioned way to store and manage files produced throughout the ML and data lifecycle. They are especially useful for preserving intermediate outputs, enabling reproducibility, and sharing results across teams and environments.
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+
+import UseCase1 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-use-case-1.py";
+import UseCase2 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-use-case-2.py";
+import UseCase3 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-use-case-3.py";
+
+## Example Use Cases
+
+### Model Training Workflows
+
+You can upload model checkpoints to the Clarifai platform after each training run or epoch. If training is interrupted, you can resume from the most recent checkpoint instead of starting from scratch.
+
+    {UseCase1}
+
+### Model Deployment
+
+You can retrieve the latest approved model artifact and download it locally for deployment in production environments.
+
+    {UseCase2}
+
+### Pipeline Outputs
+
+You can store evaluation metrics, preprocessed embeddings, serialized configurations, or logs produced by pipeline steps. These artifacts can be reused in downstream pipelines, audited later, or shared across teams.
+
+### Experiment Tracking
+
+You can use artifacts as a versioned record of experiment outputs. Track how model performance evolves over time, compare results across hyperparameter configurations, and ensure experiments remain reproducible.
+
+## Error Handling Examples
+
+You can handle common failure cases gracefully when uploading or downloading artifacts.
+
+    {UseCase3}
 
 ---
 
