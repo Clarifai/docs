@@ -1,5 +1,5 @@
-clarifai artifact cp users/alfrick/apps/art-app/artifacts/my-artifact ./downloads/
-[INFO] 17:18:59.831508 Downloading to ./downloads/artifact_8bf6bf7ad21a452cb5a7b4f141a46b2a |  thread=8674533568 
-Downloading: 100%|███████████████████████████████████████████████████████████████| 421/421 [00:00<00:00, 343kB/s]
-[INFO] 17:19:01.092499 Download completed: ./downloads/artifact_8bf6bf7ad21a452cb5a7b4f141a46b2a |  thread=8674533568 
-Successfully downloaded to ./downloads/artifact_8bf6bf7ad21a452cb5a7b4f141a46b2a
+clarifai artifact cp users/alfrick/apps/art-app/artifacts/my-artifact .
+[INFO] 12:03:16.525448 Downloading to ./artifact_v123 |  thread=8416895168 
+Downloading: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████| 421/421 [00:00<00:00, 265kB/s]
+[INFO] 12:03:18.222105 Download completed: ./artifact_v123 |  thread=8416895168 
+Successfully downloaded to ./artifact_v123

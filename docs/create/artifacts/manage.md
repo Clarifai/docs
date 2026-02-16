@@ -1,7 +1,6 @@
 ---
 description: Create, upload, download, list, get, and delete
 sidebar_position: 1
-unlisted: true
 ---
 
 # Artifacts Management
@@ -22,16 +21,16 @@ import PyUpload1 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py
 import PyUpload2 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-3.py";
 import PyUpload3 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-4.py";
 import PyUpload4 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-5.py";
-import Py6 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-6.py";
-import Py7 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-7.py";
-import Py8 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-8.py";
-import Py9 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-9.py";
-import Py10 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-10.py";
-import Py11 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-11.py";
-import Py12 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-12.py";
-import Py13 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-13.py";
-import Py14 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-14.py";
-import Py15 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-15.py";
+import PyDownload1 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-6.py";
+import PyDownload2 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-7.py";
+import PyDownload3 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-8.py";
+import PyDownload4 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-9.py";
+import PyList1 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-10.py";
+import PyList2 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-11.py";
+import PyGet1 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-12.py";
+import PyGet2 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-13.py";
+import PyDelete1 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-14.py";
+import PyDelete2 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-15.py";
 
 import CLI1Upload1 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/cli-1.sh";
 import CLIUpload2 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/cli-2.sh";
@@ -113,7 +112,7 @@ When using the Clarifai CLI, run `clarifai artifact --help` to view the complete
 
 ## Create an Artifact
 
-With the Python SDK, you can create an artifact object under your user and app by specifying an artifact ID; once created, it enables you to store files as versioned assets and easily upload, track, and manage changes over time.
+With the Python SDK, you can create an artifact object under your user and app by specifying an artifact ID. Once created, it enables you to store files as versioned assets and easily upload, track, and manage changes over time.
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
@@ -176,6 +175,8 @@ You can upload directly to a specific artifact version by providing a version ID
 
 You can specify an expiration time using [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) format (e.g., `2026-12-31T23:59:59.999Z`)
 
+> **Note:** If no `expires-at` value is specified, the artifact version will automatically expire after 7 days by default.
+
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
     <CodeBlock className="language-python">{PyUpload4}</CodeBlock>
@@ -198,14 +199,16 @@ With the CLI, you can use `--force` or `-f` to overwrite existing files.
 
 ## Download Artifacts
 
-You can download the latest artifact version by specifying an already existing local destination directory. 
+You can download the latest artifact version to the current directory.
+
+> **Note:** If no output path is provided, the file is automatically saved to the current working directory using an appropriate filename. When using the SDK, you should specify the `version_id`.
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
-    <CodeBlock className="language-python"></CodeBlock>
+    <CodeBlock className="language-python">{PyDownload1}</CodeBlock>
 </TabItem>
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">{Download1}</CodeBlock>
+    <CodeBlock className="language-bash">{Download3}</CodeBlock>
 </TabItem>
 
 </Tabs>
@@ -215,23 +218,11 @@ You can download the latest artifact version by specifying an already existing l
     <CodeBlock className="language-python">{Output2}</CodeBlock>
 </details>
 
-You can download the latest artifact version to the current directory.
-
-<Tabs groupId="code">
-<TabItem value="python" label="Python SDK">
-    <CodeBlock className="language-python"></CodeBlock>
-</TabItem>
-<TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">{Download3}</CodeBlock>
-</TabItem>
-
-</Tabs>
-
 You can download the artifact directly to the current directory using a specific filename.
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
-    <CodeBlock className="language-python"></CodeBlock>
+    <CodeBlock className="language-python">{PyDownload2}</CodeBlock>
 </TabItem>
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">{Download2}</CodeBlock>
@@ -239,35 +230,14 @@ You can download the artifact directly to the current directory using a specific
 
 </Tabs>
 
-You can download a specific artifact version and save it as a named file in the current directory.
+> **Note:** This is how you can use the CLI to download a specific artifact version and save it as a named file in the current directory. <CodeBlock className="language-bash">{Download4}</CodeBlock>
+
+
+You can use `force` (or `-f` for the CLI) to overwrite existing local files.
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
-    <CodeBlock className="language-python"></CodeBlock>
-</TabItem>
-<TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">{Download4}</CodeBlock>
-</TabItem>
-
-</Tabs>
-
-You can download a specific artifact version and save it into an existing local directory.
-
-<Tabs groupId="code">
-<TabItem value="python" label="Python SDK">
-    <CodeBlock className="language-python"></CodeBlock>
-</TabItem>
-<TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">{Download5}</CodeBlock>
-</TabItem>
-
-</Tabs>
-
-You can use `--force` or `-f` to overwrite existing local files.
-
-<Tabs groupId="code">
-<TabItem value="python" label="Python SDK">
-    <CodeBlock className="language-python"></CodeBlock>
+    <CodeBlock className="language-python">{PyDownload3}</CodeBlock>
 </TabItem>
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">{Download6}</CodeBlock>
@@ -275,15 +245,30 @@ You can use `--force` or `-f` to overwrite existing local files.
 
 </Tabs>
 
-## List Artifacts
-
-> **Note:** When using the CLI, you can use `ls` as a shorthand alias for the `list` command.
-
-You can list all artifacts within an app.
+You can download the latest artifact version by specifying an already existing local destination directory. 
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
-    <CodeBlock className="language-python"></CodeBlock>
+    <CodeBlock className="language-python">{PyDownload4}</CodeBlock>
+</TabItem>
+
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">{Download1}</CodeBlock>
+</TabItem>
+
+</Tabs>
+
+> **Note:** This is how you can use the CLI to download a specific artifact version and save it into an existing local directory. <CodeBlock className="language-bash">{Download5}</CodeBlock>
+
+## List Artifacts
+
+You can list all artifacts within your app.
+
+> **Note:** When using the CLI, you can use `ls` as a shorthand alias for the `list` command.
+
+<Tabs groupId="code">
+<TabItem value="python" label="Python SDK">
+    <CodeBlock className="language-python">{PyList1}</CodeBlock>
 </TabItem>
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">{List1}</CodeBlock>
@@ -300,7 +285,7 @@ You can list all versions of a specific artifact.
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
-    <CodeBlock className="language-python"></CodeBlock>
+    <CodeBlock className="language-python">{PyList2}</CodeBlock>
 </TabItem>
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">{List2}</CodeBlock>
@@ -319,7 +304,7 @@ You can get the details of a specific artifact.
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
-    <CodeBlock className="language-python"></CodeBlock>
+    <CodeBlock className="language-python">{PyGet1}</CodeBlock>
 </TabItem>
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">{Get1}</CodeBlock>
@@ -336,7 +321,7 @@ You can get the details of a specific artifact version.
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
-    <CodeBlock className="language-python"></CodeBlock>
+    <CodeBlock className="language-python">{PyGet2}</CodeBlock>
 </TabItem>
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">{Get2}</CodeBlock>
@@ -351,14 +336,13 @@ You can get the details of a specific artifact version.
 
 ## Delete Artifacts
 
-> **Note:** When using the CLI, you can use `rm` as a shorthand alias for the `delete` command.
-
 You can delete an artifact (including all versions) by specifying its `artifact_id`. 
 
+> **Note:** When using the CLI, you can use `rm` as a shorthand alias for the `delete` command.
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
-    <CodeBlock className="language-python"></CodeBlock>
+    <CodeBlock className="language-python">{PyDelete1}</CodeBlock>
 </TabItem>
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">{Delete1}</CodeBlock>
@@ -371,11 +355,11 @@ You can delete an artifact (including all versions) by specifying its `artifact_
     <CodeBlock className="language-python">{Output7}</CodeBlock>
 </details>
 
-You can delete a specific artifact version by including its version ID in the path.
+You can delete a specific artifact version by including its version ID.
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python SDK">
-    <CodeBlock className="language-python"></CodeBlock>
+    <CodeBlock className="language-python">{PyDelete2}</CodeBlock>
 </TabItem>
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">{Delete2}</CodeBlock>
@@ -388,12 +372,10 @@ You can delete a specific artifact version by including its version ID in the pa
     <CodeBlock className="language-python">{Output8}</CodeBlock>
 </details>
 
-You can use `--force` or `-f` to delete without a confirmation prompt.
+With the CLI, you can use `--force` or `-f` to delete without a confirmation prompt.
 
 <Tabs groupId="code">
-<TabItem value="python" label="Python SDK">
-    <CodeBlock className="language-python"></CodeBlock>
-</TabItem>
+
 <TabItem value="bash" label="CLI">
     <CodeBlock className="language-bash">{Delete3}</CodeBlock>
 </TabItem>
