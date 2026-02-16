@@ -1,6 +1,5 @@
 ---
 description: Programmatically manage binary and file-based assets
-unlisted: true
 ---
 
 # Artifacts
@@ -12,7 +11,7 @@ Clarifai artifacts are binary, file-based assets associated with your apps. An a
 
 At a high level, artifacts are:
 
-* **User-defined** — Created explicitly by users or automatically by [Pipelines](https://docs.clarifai.com/compute/pipelines/create-api). Pipelines enable long-running workloads such as model training, fine-tuning, and data preprocessing for downstream tasks.
+* **User-defined** — Created explicitly by users or automatically by [Pipelines](https://docs.clarifai.com/compute/pipelines/create-api). Pipelines support long-running workloads such as model training, fine-tuning, and data preprocessing, which produce artifact [files](#common-artifact-examples) used in downstream tasks.
 * **Versioned** — Each artifact contains one or more immutable `ArtifactVersions`, representing distinct snapshots or checkpoints over time.
 * **Taggable and searchable** — Artifacts support metadata and tagging, making them easy to organize, filter, and discover.
 * **Linked** — Artifacts can be associated with Clarifai resources such as `PipelineVersionRuns`, Models, or Datasets, establishing clear data lineage and traceability.
