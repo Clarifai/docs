@@ -9,7 +9,7 @@ sidebar_position: 2
 <hr />
 
 
-Artifacts provide a flexible, versioned way to store and manage files produced throughout the ML and data lifecycle. They are especially useful for preserving intermediate outputs, enabling reproducibility, and sharing results across teams and environments.
+[Artifacts](README.mdx) provide a flexible, versioned way to store and manage files produced throughout the ML and data lifecycle. They are especially useful for preserving intermediate outputs, enabling reproducibility, and sharing results across teams and environments.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -22,7 +22,7 @@ import UseCase3 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-
 
 ## Example Use Cases
 
-### Model Training Workflows
+### Model Training 
 
 You can upload model checkpoints to the Clarifai platform after each training run or epoch. If training is interrupted, you can resume from the most recent checkpoint instead of starting from scratch.
 

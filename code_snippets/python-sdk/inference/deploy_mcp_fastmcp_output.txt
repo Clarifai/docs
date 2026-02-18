@@ -1,0 +1,27 @@
+Available tools:
+- search
+- fetch_content
+
+Search result:
+Found 5 search results:
+
+1. MCP | Clarifai Docs
+   URL: https://docs.clarifai.com/compute/agents/mcp/
+   Summary: MCPBuild performantMCPservers withFastMCPforClarifaiThe Model Context Protocol (MCP) is an open standard developed by Anthropic that acts as a universal language for AI models, particularly large language models (LLMs), to interact with external data sources (like GitHub, Slack, or databases) and extend their capabilities.
+
+2. Building and Deploying a Custom MCP Server: A Practical Guide
+   URL: https://digitalthoughtdisruption.com/2025/08/14/build-custom-mcp-server-fastmcp-clarifai/
+   Summary: Learn how to build and deploy a customMCPserver withFastMCPandClarifai. This step-by-step guide covers configuration, tool design, testing, and scaling for seamless AI integration.
+
+3. How to Build Your First MCP Server using FastMCP
+   URL: https://www.freecodecamp.org/news/how-to-build-your-first-mcp-server-using-fastmcp/
+   Summary: Deploying YourMCPServer You can deployFastMCPservers anywhere. For testing, thefastmcprun command is enough. For production, you can deploy toFastMCPCloud, which provides instant HTTPS endpoints and built-in authentication. If you prefer to self-host, use the HTTP or SSE transport to serve yourMCPendpoints from your own infrastructure.
+
+4. FastMCP Builder - Claude Code Skill - GitHub
+   URL: https://github.com/husniadil/fastmcp-builder
+   Summary: A comprehensive Claude Code skill for building production-readyMCP(Model Context Protocol) servers using theFastMCPPython framework. This skill provides complete reference implementations, workingexamples, and proven patterns for creating robustMCPservers with tools, resources, prompts, OAuth authentication, and comprehensive testing.
+
+5. Building Your Own MCP Server with FastMCP - Medium
+   URL: https://medium.com/infinitgraph/building-your-own-mcp-server-with-fastmcp-7d9cc73a1062
+   Summary: Building Your OwnMCPServer withFastMCPIn our last article, we unpacked the Model Context Protocol; we highlighted how it acts as a USB-C port for AI applications, and how it provides a …
+

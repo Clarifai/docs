@@ -1,7 +1,6 @@
 ---
 description: Extend agentic models capabilities with MCP Servers
 sidebar_position: 6
-unlisted: true
 ---
 
 # MCP Servers
@@ -21,6 +20,8 @@ import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
 import OpenAIStreaming from "!!raw-loader!../../../code_snippets/python-sdk/inference/open_ai_streaming.py";
+import OpenAINonStreaming from "!!raw-loader!../../../code_snippets/python-sdk/inference/open_ai_non_streaming.py";
+import MCPServerFastMCP from "!!raw-loader!../../../code_snippets/python-sdk/inference/mcp_server_fast_mcp.py";
 import OutputOpenAIStreaming from "!!raw-loader!../../../code_snippets/python-sdk/inference/output_open_ai_streaming.txt";
 
 ## Prerequisites
@@ -40,21 +41,19 @@ You can see an example implementation of `AgenticModelClass` in [this `1/model.p
 
 > **Note:** To upload a model with agentic capabilities, simply use `AgenticModelClass`. All other steps and functionality remain the same as when [uploading a standard model](https://docs.clarifai.com/compute/upload/) on Clarifai. You can follow [this example](https://github.com/Clarifai/runners-examples/tree/main/llm/agentic-gpt-oss-20b) to get started.
 
-<details>
-  <summary>Example models with agentic capabilities enabled</summary>
-    * [https://clarifai.com/clarifai/agentic-model/models/gpt-oss-20b](https://clarifai.com/clarifai/agentic-model/models/gpt-oss-20b)
-* [https://clarifai.com/clarifai/agentic-model/models/gpt-5_1](https://clarifai.com/clarifai/agentic-model/models/gpt-5_1)
-</details>
+These are some example models with agentic capabilities enabled:
+
+    * [Qwen3-30B-A3B-Instruct-2507](https://clarifai.com/qwen/qwenLM/models/Qwen3-30B-A3B-Instruct-2507)
+    * [Qwen3-30B-A3B-Thinking-2507](https://clarifai.com/qwen/qwenLM/models/Qwen3-30B-A3B-Thinking-2507)
+    * [Qwen3-Coder-30B-A3B-Instruct](https://clarifai.com/qwen/qwenCoder/models/Qwen3-Coder-30B-A3B-Instruct)
+
 
 ### Get an MCP Server
 
-The Clarifai platform provides several MCP servers that you can use out of the box. Here are some examples:
+The Clarifai platform provides MCP servers that you can use out of the box. Here are some examples:
 
-- [Weather Server](https://clarifai.com/clarifai/mcp/models/mcp-server-weather) — Provides weather information
+- [Weather Server](https://clarifai.com/clarifai/mcp/models/weather-mcp-server) — Provides weather information
 - [Browser Server](https://clarifai.com/clarifai/mcp/models/browser-mcp-server) — Enables web browsing capabilities
-- [Time Server](https://clarifai.com/clarifai/mcp/models/time-mcp-server) — Provides time and date information
-
-You can get more servers [here](https://clarifai.com/clarifai/mcp/models).
 
 You can also [build your own MCP server](https://docs.clarifai.com/compute/agents/mcp#build-an-mcp-server) or use an [open-source MCP server](https://docs.clarifai.com/compute/agents/deploy-mcp) and deploy it on the Clarifai platform.
 
@@ -66,14 +65,15 @@ You can also [build your own MCP server](https://docs.clarifai.com/compute/agent
 You need to install the following Python packages:
 
 - `clarifai` – Install the latest version of the Clarifai Python SDK package. This also installs the [Command Line Interface (CLI)](https://docs.clarifai.com/additional-resources/api-overview/cli).
-
 -  `openai` — This leverage Clarifai’s [OpenAI-compatible endpoint](https://docs.clarifai.com/compute/inference/#predict-with-openai-compatible-format) endpoint to run inferences using the OpenAI client library
+- `fastmcp` — The core framework for interacting with MCP servers.
+
 
 You can run the following command to install them:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">
-    <CodeBlock className="language-bash">pip install --upgrade clarifai openai</CodeBlock>
+    <CodeBlock className="language-bash">pip install --upgrade clarifai openai fastmcp</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -94,13 +94,17 @@ You can then set the PAT as an environment variable using `CLARIFAI_PAT`. This a
 </Tabs>
 
 
-## Chat Completions (Streaming)
+## Integrate with LLMs
+
+You can pass an MCP server as a tool source to an agentic LLM on Clarifai. The model will automatically discover available tools and call them as needed during completion.
+
+### Chat Completions (Non-Streaming)
 
 The [OpenAI Chat Completions](https://platform.openai.com/docs/api-reference/chat) API endpoint lets you produce a model response by providing a list of messages that constitute a conversation.
 
 <Tabs groupId="code">                                                                     
 <TabItem value="python" label="Python">
-    <CodeBlock className="language-python">{OpenAIStreaming}</CodeBlock>
+    <CodeBlock className="language-python">{OpenAINonStreaming}</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -113,7 +117,27 @@ The above snippet demonstrates how to:
 
 - Initialize the OpenAI client and point it to Clarifai’s OpenAI-compatible endpoint, instead of OpenAI’s servers.
 - Specify which MCP servers the model can use. During inference, the model can discover and call these tools autonomously if it decides they’re useful.
-- Create a streaming chat completion with MCP support:
-    - An agentic model is used to discover tools from MCP servers, execute them, and iterate on tool calls if needed — for example, weather lookup, browsing, or time retrieval.
+- Create a chat completion conversation with MCP support:
+    - An agentic model is used to discover tools from MCP servers, execute them, and iterate on tool calls if needed — for example, weather lookup or browsing.
     - `extra_body={"mcp_servers": mcp_servers}` tells Clarifai which MCP servers to make available to the model for this request.
-    - `stream=True` enables token-by-token streaming, so results arrive incrementally instead of all at once.
+   
+
+### Chat Completions (Streaming)
+
+You can enable token-by-token streaming by setting `stream=True`. This allows the model’s response to arrive incrementally, providing partial results in real time instead of waiting for the full completion.
+
+<Tabs groupId="code">                                                                     
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{OpenAIStreaming}</CodeBlock>
+</TabItem>
+</Tabs>
+
+## Use with FastMCP Client
+
+You can call MCP tools directly using the FastMCP client without involving an LLM, giving you full programmatic control over tool execution.
+
+<Tabs groupId="code">                                                                     
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{MCPServerFastMCP}</CodeBlock>
+</TabItem>
+</Tabs>
