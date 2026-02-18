@@ -1,7 +1,6 @@
 ---
 description: Upload, deploy, and interact with open-source MCP servers on Clarifai
 sidebar_position: 3
-unlisted: true
 ---
 
 # Deploy Open-Source MCP Servers 
@@ -42,7 +41,7 @@ For this example, let's use the [DuckDuckGo MCP server](https://github.com/nickc
 
 ### Get an Agentic Model
 
-Integrating large language models (LLMs) with MCP servers enables agentic capabilities, allowing models to discover and use external tools autonomously to complete tasks. MCP servers expose tools that models can invoke as function-calling tools during conversations.
+Integrating large language models (LLMs) with MCP servers enables agentic capabilities, allowing models to discover and use external tools autonomously to complete tasks. MCP servers expose functionalities that models can invoke as function-calling tools during conversations.
 
 With MCP server integration, an agentic model can iteratively discover tools, execute them, and reason over the results to produce more capable and context-aware responses.
 
@@ -56,14 +55,17 @@ With MCP server integration, an agentic model can iteratively discover tools, ex
 >
 > You can see an example implementation of `AgenticModelClass` in [this `1/model.py`](https://github.com/Clarifai/runners-examples/blob/main/llm/agentic-gpt-oss-20b/1/model.py) file.
 
+:::tip
+
 To upload a model with agentic capabilities, simply use the `AgenticModelClass` — all other functionalities and steps remain the [same as uploading](https://docs.clarifai.com/compute/upload/) a standard model on Clarifai. You can follow [this example](https://github.com/Clarifai/runners-examples/tree/main/llm/agentic-gpt-oss-20b). 
 
+:::
 
-<details>
-  <summary>Example models with agentic capabilities enabled</summary>
-    * [https://clarifai.com/clarifai/agentic-model/models/gpt-oss-20b](https://clarifai.com/clarifai/agentic-model/models/gpt-oss-20b)
-* [https://clarifai.com/clarifai/agentic-model/models/gpt-5_1](https://clarifai.com/clarifai/agentic-model/models/gpt-5_1)
-</details>
+These are some example models with agentic capabilities enabled:
+
+    * [Qwen3-30B-A3B-Instruct-2507](https://clarifai.com/qwen/qwenLM/models/Qwen3-30B-A3B-Instruct-2507)
+    * [Qwen3-30B-A3B-Thinking-2507](https://clarifai.com/qwen/qwenLM/models/Qwen3-30B-A3B-Thinking-2507)
+    * [Qwen3-Coder-30B-A3B-Instruct](https://clarifai.com/qwen/qwenCoder/models/Qwen3-Coder-30B-A3B-Instruct)
 
 ### Install Packages
 
@@ -116,22 +118,17 @@ your_model_directory/
 │   └── model.py
 ├── requirements.txt
 ├── config.yaml
+├── Dockerfile
 └── client.py
 ```
-
-:::note
-
-You can automatically generate this directory structure by running the following CLI command: `clarifai model init --model-type-id mcp`.
-Afterward, you can modify the generated files as needed.
-
-:::
 
 * **your_model_directory/** — The root directory containing all files related to your MCP server.
   * **1/** — A required subdirectory that contains the model implementation (*note that the folder name is **1***).
     * **model.py** — Implements the core logic of the MCP server.
   * **requirements.txt** — Specifies the Python dependencies required to run the server.
   * **config.yaml** — Defines metadata and configuration settings used when uploading the MCP server to Clarifai.
-  * **client.py** — An example client script demonstrating how to interact with the MCP server after it has been uploaded.
+  * **Dockerfile** — Defines the runtime environment used to build and run your MCP server on the Clarifai platform.
+  * **client.py** — An example client script you can use to interact with the MCP server after it has been uploaded.
 
 
 ### Create a Cluster and Nodepool
@@ -211,10 +208,10 @@ mcp_server:
 Let’s break down what each part of the configuration does.
 
 - `model` —  Defines where the MCP server will be uploaded on the Clarifai platform:
-    - `id` — The unique identifier for the model (server)
-    - `app_id` — The Clarifai app where the server will reside
-    - `user_id` — Your Clarifai user ID
-    - `model_type_id` — Specifies the model type; use `mcp` for MCP servers
+    - `id` — Provide a unique identifier for the model (server)
+    - `app_id` — Provide your Clarifai app where the server will reside
+    - `user_id` — Provide your Clarifai user ID
+    - `model_type_id` — Specifies the [model type](https://docs.clarifai.com/create/models/#model-types); use `mcp` for MCP servers
 - `build_info` — Specifies the Python version used to build the runtime environment. Note that Clarifai currently supports Python 3.11 and 3.12 (default).
 - `inference_compute_info` — Defines the compute resources allocated when the MCP server is running:
   * `cpu_limit: 1000m` — Allocates 1 CPU core
@@ -261,30 +258,109 @@ Here is the `requirements.txt` file for the custom model — or, in this case, t
 <TabItem value="text" label="requirements.txt">
 
 ```text
-clarifai==12.1.3
+clarifai==12.1.7
 anyio
-mcp==1.24.0
-fastmcp==2.14.1
+mcp==1.26.0
+fastmcp==2.14.5
 requests>=2.31.0
 ```
 
 </TabItem>
 </Tabs>
 
+## Step 5: Define Dockerfile
 
-## Step 5: Upload to Clarifai
+The `Dockerfile` defines the container environment used to build and run the MCP server on the Clarifai platform.
+
+When you upload an MCP server, Clarifai builds a Docker image from this file and uses it to execute your server in a secure, isolated container — exactly the same way custom models are deployed.
+
+The Dockerfile is responsible for:
+
+- Selecting the base Python image
+- Installing system-level dependencies (if any)
+- Installing Python dependencies from `requirements.txt`
+- Copying your MCP server code into the container
+- Defining the entry point that starts the MCP server
+
+Here is the `Dockerfile` file for the Browser MCP server:
+
+<Tabs groupId="code">
+<TabItem value="dockerfile" label="Dockerfile">
+
+```dockerfile
+# syntax=docker/dockerfile:1.13-labs
+
+FROM --platform=$TARGETPLATFORM python:3.12-slim
+
+COPY --link requirements.txt /home/nonroot/requirements.txt
+
+# Update clarifai package so we always have latest protocol to the API. Everything should land in /venv
+RUN ["pip", "install", "--no-cache-dir", "-r", "/home/nonroot/requirements.txt"]
+RUN ["pip", "show", "--no-cache-dir", "clarifai"]
+
+# Set the NUMBA cache dir to /tmp
+# Set the TORCHINDUCTOR cache dir to /tmp
+# The CLARIFAI* will be set by the templaing system.
+ENV NUMBA_CACHE_DIR=/tmp/numba_cache \
+    TORCHINDUCTOR_CACHE_DIR=/tmp/torchinductor_cache \
+    HOME=/tmp \
+    DEBIAN_FRONTEND=noninteractive
+
+#####
+# Download checkpoints if config.yaml has checkpoints.when = "build"
+COPY --link=true config.yaml /home/nonroot/main/
+# RUN ["python", "-m", "clarifai.cli", "model", "download-checkpoints", "/home/nonroot/main", "--out_path", "/home/nonroot/main/1/checkpoints", "--stage", "build"]
+
+#####
+# Copy in the actual files like config.yaml, requirements.txt, and most importantly 1/model.py
+# for the actual model.
+# If checkpoints aren't downloaded since a checkpoints: block is not provided, then they will
+# be in the build context and copied here as well.
+COPY --link=true 1 /home/nonroot/main/1
+
+# At this point we only need these for validation in the SDK.
+COPY --link=true requirements.txt config.yaml /home/nonroot/main/
+
+# Add the model directory to the python path.
+ENV PYTHONPATH=${PYTHONPATH}:/home/nonroot/main \
+    CLARIFAI_PAT=${CLARIFAI_PAT} \
+    CLARIFAI_USER_ID=${CLARIFAI_USER_ID} \
+    CLARIFAI_RUNNER_ID=${CLARIFAI_RUNNER_ID} \
+    CLARIFAI_NODEPOOL_ID=${CLARIFAI_NODEPOOL_ID} \
+    CLARIFAI_COMPUTE_CLUSTER_ID=${CLARIFAI_COMPUTE_CLUSTER_ID} \
+    CLARIFAI_API_BASE=${CLARIFAI_API_BASE:-https://api.clarifai.com}
+
+WORKDIR /home/nonroot/main
+
+# Finally run the clarifai entrypoint to start the runner loop and local runner server.
+# Note(zeiler): we may want to make this a clarifai CLI call.
+ENTRYPOINT ["python", "-m", "clarifai.runners.server"]
+CMD ["--model_path", "/home/nonroot/main"]
+#############################
+
+```
+</TabItem>
+</Tabs>
+
+## Step 6: Upload to Clarifai
 
 To upload your open-source MCP server to the Clarifai platform, navigate to the server’s root directory and run:
 
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">
-    <CodeBlock className="language-bash">clarifai model upload</CodeBlock>
+    <CodeBlock className="language-bash">clarifai model upload . --skip_dockerfile</CodeBlock>
 </TabItem>
 </Tabs>
 
+The [`--skip_dockerfile`](https://docs.clarifai.com/compute/upload/#skip-dockerfile) flag prevents the CLI from generating a default Dockerfile and instructs it to use the Dockerfile provided in your project directory.
 
-As the upload progresses, build logs will be streamed directly to your terminal. These logs are useful for monitoring the build process and troubleshooting any issues that arise.
+This command will:
+
+- Stream Docker build logs directly to your terminal for real-time monitoring and troubleshooting
+- Build the Docker image defined in your Dockerfile
+- Upload the MCP server to your Clarifai account
+- Make the server available for inference via the Clarifai HTTP API
 
 <details>
   <summary>Build Logs Example</summary>
@@ -299,7 +375,7 @@ The MCP server URL is constructed using the following format: `https://api.clari
 
 :::
 
-## Step 6: Deploy the Model
+## Step 7: Deploy the Model
 
 After uploading the MCP server, you must deploy it to a dedicated compute cluster and nodepool. Deployment provisions the compute resources required to run the server and handle incoming requests.
 
@@ -307,13 +383,17 @@ Learn how to perform deployments [here](https://docs.clarifai.com/compute/deploy
 
 > **Note:** You can also deploy the server by following the interactive prompts shown when uploading it to Clarifai from the terminal.
 
-## Step 7: Interact with the Server
+Once deployed, the server is automatically referenced during inference. You do not need to specify the deployment explicitly in your client code.
+
+## Step 8: Interact with the Server
 
 Once the open-source MCP server is deployed, you can create a client script to communicate with it and invoke the exposed MCP tools. This allows agentic models to discover and use the server’s capabilities programmatically.
 
 ### Use with FastMCP Client
 
-Here is an example of interacting with the MCP server using the FastMCP client. This is typically the first step before invoking tools, executing actions, or wiring the MCP server into an agentic LLM workflow.
+Here is an example of interacting with the MCP server directly using the FastMCP client without going through an LLM. This is typically the first step before invoking tools, executing actions, or wiring the MCP server into an agentic LLM workflow.
+
+> **Note:** Remember to replace the placeholder values with the corresponding identifiers for your MCP server. You may also use any compatible agentic LLM.
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python">
@@ -353,11 +433,11 @@ Here is an example of how to bridge an MCP server with an agentic LLM on Clarifa
 
 The above snippet demonstrates how to:
 
-- Connect to an MCP server hosted on Clarifai and discover its tools
-- Expose those tools to an agentic model in OpenAI function-calling format
-- Send a chat completion request to an agentic LLM via Clarifai’s OpenAI-compatible API
-- Let the model decide whether to call a tool (`tool_choice="auto"`)
-- (Later) Execute tool calls via MCP and feed results back to the model
+- Connect to a Clarifai-hosted MCP server and discover its available tools
+- Convert MCP tools into OpenAI function-calling–compatible definitions
+- Send a chat completion request to an agentic LLM using Clarifai’s OpenAI-compatible API
+- Allow the model to autonomously decide whether to invoke a tool (`tool_choice="auto"`)
+- Execute any requested tool calls via MCP and return the results to the model for final response generation
 
 :::tip
 

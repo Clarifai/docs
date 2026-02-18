@@ -1,223 +1,96 @@
-clarifai model upload
-[WARNING] 08:50:27.815181 Failed to read HF_TOKEN from config.yaml. |  thread=8471847104 
-[INFO] 08:50:31.295118 No checkpoints specified in the config file |  thread=8471847104 
-[INFO] 08:50:31.297477 Setup: Using Python version 3.11 from the config file to build the Dockerfile |  thread=8471847104 
-[INFO] 08:50:31.297744 Setup: Validating requirements.txt file at /Users/macbookpro/Desktop/code/mcp/requirements.txt using uv pip compile |  thread=8471847104 
-[INFO] 08:53:27.458426 Setup: Requirements.txt file validated successfully |  thread=8471847104 
-[INFO] 08:53:27.458880 Setup: Linting Python files: ['/Users/macbookpro/Desktop/code/mcp/1/model.py'] |  thread=8471847104 
-[INFO] 08:53:27.522496 Setup: Python code linted successfully, no errors found. |  thread=8471847104 
-[INFO] 08:53:27.817293 New model will be created at https://clarifai.com/alfrick/mcpapp/models/browser-mcp-server with it's first version. |  thread=8471847104 
+clarifai model upload . --skip_dockerfile
+[INFO] 10:41:18.121633 No checkpoints specified in the config file |  thread=8416895168 
+[INFO] 10:41:18.403308 New model will be created at https://clarifai.com/alfrick/art-app/models/browser-mcp-server with it's first version. |  thread=8416895168 
 Press Enter to continue...
-[INFO] 08:53:45.846473 Uploading file... |  thread=6341865472 
-[INFO] 08:53:45.847170 Upload complete! |  thread=6341865472 
-Status: Upload done, Progress: 0% - Completed upload of files, initiating model version image build..  request_id: sdk-python-12.1.4-aa87f2b9f02041cca19e5aStatus: Model image is currently being built., Progress: 0% - Model version image is being built.  request_id: sdk-python-12.1.4-aa87f2b9f02041cca19e5a7cb2[INFO] 08:53:46.664466 Created Model Version ID: f9785dae88f0415384cd6cf921810503 |  thread=8471847104 
-[INFO] 08:53:46.665140 Full url to that version is: https://clarifai.com/alfrick/mcpapp/models/browser-mcp-server |  thread=8471847104 
-[INFO] 08:53:55.166240 2026-01-21 05:53:47.379526 INFO: Downloading uploaded buildable from storage...
-2026-01-21 05:53:48.129363 INFO: Done downloading buildable from storage
-2026-01-21 05:53:48.132870 INFO: Extracting upload...
-2026-01-21 05:53:48.137431 INFO: Done extracting upload
-2026-01-21 05:53:48.140190 INFO: Parsing requirements file for buildable version ID ****6cf921810503
-2026-01-21 05:53:48.163574 INFO: Dockerfile found at /shared/context/Dockerfile
+[INFO] 10:41:22.772047 Added num_threads=16 to model version |  thread=8416895168 
+[INFO] 10:41:24.068670 Uploading file... |  thread=6146568192 
+[INFO] 10:41:24.069353 Upload complete! |  thread=6146568192 
+[INFO] 10:41:24.666769 Created Model Version ID: 68db0b04a30c46f190270eee2674cd41 |  thread=8416895168 est_id: sdk-python-12.2.0-16336010dcfb4c18aa69a78881dad684d684
+[INFO] 10:41:24.667530 Full url to that version is: https://clarifai.com/alfrick/art-app/models/browser-mcp-server |  thread=8416895168 
+[INFO] 10:41:30.012472 2026-02-18 07:41:25.632421 INFO: Downloading uploaded buildable from storage...
+2026-02-18 07:41:26.417148 INFO: Done downloading buildable from storage
+2026-02-18 07:41:26.421001 INFO: Extracting upload...
+2026-02-18 07:41:26.425735 INFO: Done extracting upload
+2026-02-18 07:41:26.428708 INFO: Parsing requirements file for buildable version ID ****0eee2674cd41
+2026-02-18 07:41:26.454545 INFO: Dockerfile found at /shared/context/Dockerfile
 cat: /shared/context/downloader/hf_token: No such file or directory
-2026-01-21 05:53:48.817126 INFO: Setting up credentials
+2026-02-18 07:41:27.138444 INFO: Setting up credentials
 amazon-ecr-credential-helper
 Version:    0.8.0
 Git commit: ********
-2026-01-21 05:53:48.822061 INFO: Building image...
+2026-02-18 07:41:27.143151 INFO: Building image...
 #1 \[internal] load build definition from Dockerfile
-#1 transferring dockerfile: 3.40kB done
+#1 DONE 0.0s
+
+#1 \[internal] load build definition from Dockerfile
+#1 transferring dockerfile: 2.27kB done
 #1 DONE 0.0s
 
 #2 resolve image config for docker-image://docker.io/docker/dockerfile:1.13-labs
-#2 DONE 0.1s
+#2 DONE 0.2s
 
 #3 docker-image://docker.io/docker/dockerfile:1.13-labs@sha256:************18b8
 #3 resolve docker.io/docker/dockerfile:1.13-labs@sha256:************18b8 done
 #3 CACHED
 
-#4 \[internal] load metadata for public.ecr.aws/clarifai-models/python-base:3.11-********
-#4 DONE 0.3s
+#4 \[internal] load metadata for docker.io/library/python:3.12-slim
+#4 DONE 0.1s
 
 #5 \[internal] load .dockerignore
 #5 transferring context: 2B done
 #5 DONE 0.0s
 
 #6 \[internal] load build context
-#6 transferring context: 1.59kB done
+#6 transferring context: 854B done
 #6 DONE 0.0s
 
-#7 \[model-assets 2/8] RUN pip install --no-cache-dir clarifai==12.1.3 huggingface_hub
-#7 CACHED
+#7 [1/7] FROM docker.io/library/python:3.12-slim@sha256:************9fab
+#7 resolve docker.io/library/python:3.12-slim@sha256:************9fab done
+#7 DONE 0.0s
 
-#8 \[model-assets 3/8] WORKDIR /home/nonroot/main
+#8 [2/7] COPY --link requirements.txt /home/nonroot/requirements.txt
 #8 CACHED
 
-#9 \[model-assets 4/8] COPY --link downloader/unused.yaml /home/nonroot/main/1/checkpoints/.cache/unused.yaml
-#9 DONE 0.0s
+#9 [3/7] RUN ["pip", "install", "--no-cache-dir", "-r", "/home/nonroot/requirements.txt"]
+#9 CACHED
 
-#10 \[model-assets 1/8] FROM public.ecr.aws/clarifai-models/python-base:3.11-********@sha256:************48e5
-#10 resolve public.ecr.aws/clarifai-models/python-base:3.11-********@sha256:************48e5 done
+#10 [4/7] RUN ["pip", "show", "--no-cache-dir", "clarifai"]
 #10 CACHED
 
-#11 \[final 2/5] COPY --link --chown=65532:65532 requirements.txt /home/nonroot/requirements.txt
-#11 merging done
+#11 [5/7] COPY --link=true 1 /home/nonroot/main/1
 #11 DONE 0.0s
 
-#12 \[model-assets 5/8] COPY --link config.yaml /home/nonroot/main/
-#12 merging done
-#12 DONE 0.0s
+#12 [6/7] COPY --link=true requirements.txt config.yaml /home/nonroot/main/
+#12 merging
+#12 merging 1.1s done
+#12 DONE 1.1s
 
-#13 \[final 3/5] RUN ["uv", "pip", "install", "--no-cache-dir", "-r", "/home/nonroot/requirements.txt"]
-#13 0.068 Using Python 3.11.14 environment at: /venv
-#13 ...
+#13 [7/7] WORKDIR /home/nonroot/main
+#13 DONE 0.0s
 
-#14 \[model-assets 6/8] RUN  ["python", "-m", "clarifai.cli", "model", "download-checkpoints", "/home/nonroot/main", "--out_path", "/home/nonroot/main/1/checkpoints", "--stage", "build"]
-#14 0.440 [WARNING] 05:53:49.763541 Could not write configuration to disk. Could be a read only file system. |  thread=139708015836736 
-#14 0.493 [WARNING] 05:53:49.815848 Failed to read HF_TOKEN from config.yaml. |  thread=139708015836736 
-#14 0.493 [INFO] 05:53:49.816529 No checkpoints specified in the config file |  thread=139708015836736 
-#14 DONE 0.6s
+#14 \[auth] sharing credentials for 891377382885.dkr.ecr.us-east-1.amazonaws.com
+#14 DONE 0.0s
 
-#13 \[final 3/5] RUN ["uv", "pip", "install", "--no-cache-dir", "-r", "/home/nonroot/requirements.txt"]
-#13 0.480 Resolved 60 packages in 410ms
-#13 0.493 Downloading pygments (1.2MiB)
-#13 0.493 Downloading aiohttp (1.7MiB)
-#13 0.494 Downloading numpy (15.9MiB)
-#13 0.494 Downloading grpcio (6.3MiB)
-#13 0.495 Downloading pydantic-core (2.0MiB)
-#13 0.498 Downloading pillow (6.7MiB)
-#13 0.498 Downloading uv (17.0MiB)
-#13 0.498 Downloading ruff (10.8MiB)
-#13 ...
-
-#15 \[model-assets 7/8] COPY --link 1 /home/nonroot/main/1
-#15 DONE 0.0s
-
-#16 \[model-assets 8/8] COPY --link requirements.txt /home/nonroot/main/
-#16 merging 0.0s done
-#16 DONE 0.0s
-
-#13 \[final 3/5] RUN ["uv", "pip", "install", "--no-cache-dir", "-r", "/home/nonroot/requirements.txt"]
-#13 0.673  Downloading pydantic-core
-#13 0.799  Downloading aiohttp
-#13 0.935  Downloading ruff
-#13 0.969  Downloading uv
-#13 0.971  Downloading grpcio
-#13 0.972  Downloading pillow
-#13 0.996  Downloading pygments
-#13 1.145  Downloading numpy
-#13 1.146 Prepared 46 packages in 664ms
-#13 1.146 Uninstalled 1 package in 0.61ms
-#13 1.167 Installed 46 packages in 20ms
-#13 1.167  + aiohappyeyeballs==2.6.1
-#13 1.167  + aiohttp==3.13.3
-#13 1.167  + aiosignal==1.4.0
-#13 1.167  + annotated-types==0.7.0
-#13 1.168  + attrs==25.4.0
-#13 1.168  + charset-normalizer==3.4.4
-#13 1.168  + clarifai==12.1.3
-#13 1.168  + clarifai-grpc==12.0.6
-#13 1.168  + clarifai-protocol==0.0.45
-#13 1.168  + contextlib2==21.6.0
-#13 1.168  + exceptiongroup==1.3.1
-#13 1.168  + fastmcp==2.3.4
-#13 1.168  + frozenlist==1.8.0
-#13 1.168  + googleapis-common-protos==1.72.0
-#13 1.168  + grpcio==1.76.0
-#13 1.168  + httpx-sse==0.4.3
-#13 1.168  + markdown-it-py==4.0.0
-#13 1.168  + mcp==1.9.0
-#13 1.168  + mdurl==0.1.2
-#13 1.168  + multidict==6.7.0
-#13 1.168  + numpy==2.4.1
-#13 1.168  + openapi-pydantic==0.5.1
-#13 1.168  + pillow==12.1.0
-#13 1.168  + propcache==0.4.1
-#13 1.168  + protobuf==6.33.4
-#13 1.168  + psutil==7.0.0
-#13 1.168  + pydantic==2.12.5
-#13 1.168  + pydantic-core==2.41.5
-#13 1.168  + pydantic-settings==2.12.0
-#13 1.168  + pygments==2.19.2
-#13 1.168  + python-dotenv==1.2.1
-#13 1.168  + python-multipart==0.0.21
-#13 1.168  + requests==2.32.5
-#13 1.168  + rich==14.2.0
-#13 1.168  + ruff==0.11.4
-#13 1.168  + schema==0.7.5
-#13 1.168  + sse-starlette==3.2.0
-#13 1.168  + starlette==0.52.1
-#13 1.168  + tabulate==0.9.0
-#13 1.168  + typer==0.21.1
-#13 1.168  + typing-inspection==0.4.2
-#13 1.168  + urllib3==2.6.3
-#13 1.168  - uv==0.9.9
-#13 1.168  + uv==0.7.12
-#13 1.168  + uvicorn==0.40.0
-#13 1.168  + websockets==16.0
-#13 1.168  + yarl==1.22.0
-#13 DONE 1.2s
-
-#17 \[final 4/5] RUN ["uv", "pip", "show", "--no-cache-dir", "clarifai"]
-#17 0.079 Using Python 3.11.14 environment at: /venv
-#17 0.082 Name: clarifai
-#17 0.082 Version: 12.1.3
-#17 0.082 Location: /venv/lib/python3.11/site-packages
-#17 0.082 Requires: aiohttp, clarifai-grpc, clarifai-protocol, click, fsspec, numpy, packaging, pillow, psutil, pydantic-core, pygments, pyyaml, requests, ruff, schema, tabulate, tqdm, uv
-#17 0.082 Required-by: clarifai-protocol
-#17 DONE 0.1s
-
-#18 \[final 5/5] COPY --link --chown=65532:65532 --from=model-assets /home/nonroot/main /home/nonroot/main
-#18 DONE 0.0s
-
-#19 exporting to image
-#19 exporting layers |  thread=8471847104 
-[INFO] 08:53:57.167330 #19 exporting layers 5.8s done
-#19 exporting manifest sha256:************3bc8 done
-#19 exporting config sha256:************1b19 done
-#19 pushing layers
-#19 ...
-
-#20 \[auth] sharing credentials for 891377382885.dkr.ecr.us-east-1.amazonaws.com |  thread=8471847104 
-[INFO] 08:54:04.522063 #19 exporting layers 5.8s done
-#19 exporting manifest sha256:************3bc8 done
-#19 exporting config sha256:************1b19 done
-#19 pushing layers
-#19 ...
-
-#20 \[auth] sharing credentials for 891377382885.dkr.ecr.us-east-1.amazonaws.com
-#20 DONE 0.0s
-
-#19 exporting to image
-#19 pushing layers 2.1s done
-#19 pushing manifest for ****/prod/python:****6cf921810503@sha256:************3bc8
-#19 pushing manifest for ****/prod/python:****6cf921810503@sha256:************3bc8 0.4s done
-#19 DONE 8.3s
-2026-01-21 05:53:58.964120 INFO: Done building image!!! |  thread=8471847104 
-[INFO] 08:54:04.522567 #19 exporting layers 5.8s done
-#19 exporting manifest sha256:************3bc8 done
-#19 exporting config sha256:************1b19 done
-#19 pushing layers
-#19 ...
-
-#20 \[auth] sharing credentials for 891377382885.dkr.ecr.us-east-1.amazonaws.com
-#20 DONE 0.0s
-
-#19 exporting to image
-#19 pushing layers 2.1s done
-#19 pushing manifest for ****/prod/python:****6cf921810503@sha256:************3bc8
-#19 pushing manifest for ****/prod/python:****6cf921810503@sha256:************3bc8 0.4s done
-#19 DONE 8.3s
-2026-01-21 05:53:58.964120 INFO: Done building image!!! |  thread=8471847104 
-[INFO] 08:54:07.984360 Model build complete! |  thread=8471847104 
-[INFO] 08:54:07.984821 Build time elapsed 21.3s) |  thread=8471847104 
-[INFO] 08:54:07.984998 Check out the model at https://clarifai.com/alfrick/mcpapp/models/browser-mcp-server version: f9785dae88f0415384cd6cf921810503 |  thread=8471847104 
-[INFO] 08:54:07.996300 
+#15 exporting to image
+#15 exporting layers done
+#15 exporting manifest sha256:************9dc8 done
+#15 exporting config sha256:************8455 done
+#15 pushing layers
+#15 pushing layers 0.7s done
+#15 pushing manifest for ****/prod/python:****0eee2674cd41@sha256:************9dc8
+#15 pushing manifest for ****/prod/python:****0eee2674cd41@sha256:************9dc8 0.3s done
+#15 DONE 1.0s
+2026-02-18 07:41:29.611282 INFO: Done building image!!! |  thread=8416895168 
+[INFO] 10:41:33.409202 Model build complete! |  thread=8416895168 
+[INFO] 10:41:33.409785 Build time elapsed 8.7s) |  thread=8416895168 
+[INFO] 10:41:33.409953 Check out the model at https://clarifai.com/alfrick/art-app/models/browser-mcp-server version: 68db0b04a30c46f190270eee2674cd41 |  thread=8416895168 
+[INFO] 10:41:33.420923 
 
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 # Here is a code snippet to use this model:
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-                 |  thread=8471847104 
-[INFO] 08:54:07.996446 
+                 |  thread=8416895168 
+[INFO] 10:41:33.421076 
 import asyncio
 import os
 
@@ -225,7 +98,7 @@ from fastmcp import Client
 from fastmcp.client.transports import StreamableHttpTransport
 
 transport = StreamableHttpTransport(
-    url="https://api.clarifai.com/v2/ext/mcp/v1/users/alfrick/apps/mcpapp/models/browser-mcp-server",
+    url="https://api.clarifai.com/v2/ext/mcp/v1/users/alfrick/apps/art-app/models/browser-mcp-server",
     headers={"Authorization": "Bearer " + os.environ["CLARIFAI_PAT"]},
 )
 
@@ -239,37 +112,35 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
- |  thread=8471847104 
-[INFO] 08:54:07.996508 
+ |  thread=8416895168 
+[INFO] 10:41:33.421142 
 
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-                 |  thread=8471847104 
+                 |  thread=8416895168 
 
 🔶 Do you want to deploy the model? [Y/n]: y
 
 🚀 Model Deployment
 
 🖥️  Available Compute Clusters:
-1. advanced-cluster-vm1a  –  No description
+1. advanced-cluster-hpst  –  No description
 Select compute cluster (number): 1
 
 📦  Available Nodepools:
-1. advanced-nodepool-hmll  –  No description
+1. advanced-nodepool-n1v2  –  No description
 Select nodepool (number): 1
 
 ⌨️  Enter Deployment Configuration:
-Enter deployment ID [deploy-browser-mcp-server-f04bd5]: deploy-browser-mcp-server-f04bd5                
+Enter deployment ID [deploy-browser-mcp-server-7e6f7a]: deploy1
 Enter minimum replicas [1]: 1
 Enter maximum replicas [5]: 5
 
 ⏳ Deploying model...
-[INFO] 08:55:55.735910 Deployment with ID 'deploy-browser-mcp-server-f04bd5' is created:
+[INFO] 10:42:09.387973 Deployment with ID 'deploy1' is created:
 code: SUCCESS
 description: "Ok"
-req_id: "sdk-python-12.1.4-498d76eb7b124c5c9709f4482d79316e"
- |  thread=8471847104 
-✅ Deployment 'deploy-browser-mcp-server-f04bd5' successfully created for model 'browser-mcp-server' with version 'f9785dae88f0415384cd6cf921810503'.
+req_id: "sdk-python-12.2.0-09e3513b7e7a4ab9a8bf1e25b7adbf7f"
+ |  thread=8416895168 
+✅ Deployment 'deploy1' successfully created for model 'browser-mcp-server' with version '68db0b04a30c46f190270eee2674cd41'.
 Model deployed successfully! You can test it now.
-
-🗑️ Do you want to backtrack and clean up? [Y/n]: n

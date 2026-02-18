@@ -3,9 +3,8 @@ import os
 from fastmcp import Client
 from fastmcp.client.transports import StreamableHttpTransport
 
-transport = StreamableHttpTransport(
-    # Replace placeholders with actual values
-    url="https://api.clarifai.com/v2/ext/mcp/v1/users/{user_id}/apps/{app_id}/models/{model_id}",
+transport = StreamableHttpTransport( 
+    url="https://api.clarifai.com/v2/ext/mcp/v1/users/clarifai/apps/mcp/models/browser-mcp-server",
     headers={
         "Authorization": f"Bearer {os.environ['CLARIFAI_PAT']}",
     },
@@ -21,7 +20,7 @@ async def main():
         result = await client.call_tool(
             "search",
             {
-                "query": "Clarifai MCP FastMCP example",
+                "query": "latest AI breakthroughs",
                 "max_results": 5,
             },
         )

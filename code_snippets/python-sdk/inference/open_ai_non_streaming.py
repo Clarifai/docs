@@ -18,12 +18,7 @@ completion = client.chat.completions.create(
     messages=[{"role": "user", "content": "What was the weather in Los Angeles, California yesterday?"}],
     extra_body={"mcp_servers": mcp_servers},
     max_completion_tokens=500,
-    stream=True
+    stream=False
 )
 
-# Stream the response
-for chunk in completion:
-    if chunk.choices and len(chunk.choices) > 0 and hasattr(chunk.choices[0].delta, 'content') and chunk.choices[0].delta.content:
-        print(chunk.choices[0].delta.content, end="", flush=True)
-    elif chunk.choices and len(chunk.choices) > 0 and hasattr(chunk.choices[0].delta, 'reasoning_content') and chunk.choices[0].delta.reasoning_content:
-        print(chunk.choices[0].delta.reasoning_content, end="", flush=True)
+print(completion.choices[0].message.content)
