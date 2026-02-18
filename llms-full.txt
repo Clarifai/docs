@@ -283,7 +283,7 @@ For this example, let's use the [DuckDuckGo MCP server](https://github.com/nickc
 
 ### Get an Agentic Model
 
-Integrating large language models (LLMs) with MCP servers enables agentic capabilities, allowing models to discover and use external tools autonomously to complete tasks. MCP servers expose tools that models can invoke as function-calling tools during conversations.
+Integrating large language models (LLMs) with MCP servers enables agentic capabilities, allowing models to discover and use external tools autonomously to complete tasks. MCP servers expose functionalities that models can invoke as function-calling tools during conversations.
 
 With MCP server integration, an agentic model can iteratively discover tools, execute them, and reason over the results to produce more capable and context-aware responses.
 
@@ -297,11 +297,17 @@ With MCP server integration, an agentic model can iteratively discover tools, ex
 >
 > You can see an example implementation of `AgenticModelClass` in [this `1/model.py`](https://github.com/Clarifai/runners-examples/blob/main/llm/agentic-gpt-oss-20b/1/model.py) file.
 
+:::tip
+
 To upload a model with agentic capabilities, simply use the `AgenticModelClass` — all other functionalities and steps remain the [same as uploading](https://docs.clarifai.com/compute/upload/) a standard model on Clarifai. You can follow [this example](https://github.com/Clarifai/runners-examples/tree/main/llm/agentic-gpt-oss-20b). 
 
-  Example models with agentic capabilities enabled
-    * [https://clarifai.com/clarifai/agentic-model/models/gpt-oss-20b](https://clarifai.com/clarifai/agentic-model/models/gpt-oss-20b)
-* [https://clarifai.com/clarifai/agentic-model/models/gpt-5_1](https://clarifai.com/clarifai/agentic-model/models/gpt-5_1)
+:::
+
+These are some example models with agentic capabilities enabled:
+
+    * [Qwen3-30B-A3B-Instruct-2507](https://clarifai.com/qwen/qwenLM/models/Qwen3-30B-A3B-Instruct-2507)
+    * [Qwen3-30B-A3B-Thinking-2507](https://clarifai.com/qwen/qwenLM/models/Qwen3-30B-A3B-Thinking-2507)
+    * [Qwen3-Coder-30B-A3B-Instruct](https://clarifai.com/qwen/qwenCoder/models/Qwen3-Coder-30B-A3B-Instruct)
 
 ### Install Packages
 
@@ -344,22 +350,17 @@ your_model_directory/
 │   └── model.py
 ├── requirements.txt
 ├── config.yaml
+├── Dockerfile
 └── client.py
 ```
-
-:::note
-
-You can automatically generate this directory structure by running the following CLI command: `clarifai model init --model-type-id mcp`.
-Afterward, you can modify the generated files as needed.
-
-:::
 
 * **your_model_directory/** — The root directory containing all files related to your MCP server.
   * **1/** — A required subdirectory that contains the model implementation (*note that the folder name is **1***).
     * **model.py** — Implements the core logic of the MCP server.
   * **requirements.txt** — Specifies the Python dependencies required to run the server.
   * **config.yaml** — Defines metadata and configuration settings used when uploading the MCP server to Clarifai.
-  * **client.py** — An example client script demonstrating how to interact with the MCP server after it has been uploaded.
+  * **Dockerfile** — Defines the runtime environment used to build and run your MCP server on the Clarifai platform.
+  * **client.py** — An example client script you can use to interact with the MCP server after it has been uploaded.
 
 ### Create a Cluster and Nodepool
 
@@ -426,10 +427,10 @@ mcp_server:
 Let’s break down what each part of the configuration does.
 
 - `model` —  Defines where the MCP server will be uploaded on the Clarifai platform:
-    - `id` — The unique identifier for the model (server)
-    - `app_id` — The Clarifai app where the server will reside
-    - `user_id` — Your Clarifai user ID
-    - `model_type_id` — Specifies the model type; use `mcp` for MCP servers
+    - `id` — Provide a unique identifier for the model (server)
+    - `app_id` — Provide your Clarifai app where the server will reside
+    - `user_id` — Provide your Clarifai user ID
+    - `model_type_id` — Specifies the [model type](https://docs.clarifai.com/create/models/#model-types); use `mcp` for MCP servers
 - `build_info` — Specifies the Python version used to build the runtime environment. Note that Clarifai currently supports Python 3.11 and 3.12 (default).
 - `inference_compute_info` — Defines the compute resources allocated when the MCP server is running:
   * `cpu_limit: 1000m` — Allocates 1 CPU core
@@ -471,20 +472,96 @@ The `requirements.txt` file specifies all Python packages required by your MCP s
 Here is the `requirements.txt` file for the custom model — or, in this case, the MCP server — we want to upload:
 
 ```text
-clarifai==12.1.3
+clarifai==12.1.7
 anyio
-mcp==1.24.0
-fastmcp==2.14.1
+mcp==1.26.0
+fastmcp==2.14.5
 requests>=2.31.0
 ```
 
-## Step 5: Upload to Clarifai
+## Step 5: Define Dockerfile
+
+The `Dockerfile` defines the container environment used to build and run the MCP server on the Clarifai platform.
+
+When you upload an MCP server, Clarifai builds a Docker image from this file and uses it to execute your server in a secure, isolated container — exactly the same way custom models are deployed.
+
+The Dockerfile is responsible for:
+
+- Selecting the base Python image
+- Installing system-level dependencies (if any)
+- Installing Python dependencies from `requirements.txt`
+- Copying your MCP server code into the container
+- Defining the entry point that starts the MCP server
+
+Here is the `Dockerfile` file for the Browser MCP server:
+
+```dockerfile
+# syntax=docker/dockerfile:1.13-labs
+
+FROM --platform=$TARGETPLATFORM python:3.12-slim
+
+COPY --link requirements.txt /home/nonroot/requirements.txt
+
+# Update clarifai package so we always have latest protocol to the API. Everything should land in /venv
+RUN ["pip", "install", "--no-cache-dir", "-r", "/home/nonroot/requirements.txt"]
+RUN ["pip", "show", "--no-cache-dir", "clarifai"]
+
+# Set the NUMBA cache dir to /tmp
+# Set the TORCHINDUCTOR cache dir to /tmp
+# The CLARIFAI* will be set by the templaing system.
+ENV NUMBA_CACHE_DIR=/tmp/numba_cache \
+    TORCHINDUCTOR_CACHE_DIR=/tmp/torchinductor_cache \
+    HOME=/tmp \
+    DEBIAN_FRONTEND=noninteractive
+
+#####
+# Download checkpoints if config.yaml has checkpoints.when = "build"
+COPY --link=true config.yaml /home/nonroot/main/
+# RUN ["python", "-m", "clarifai.cli", "model", "download-checkpoints", "/home/nonroot/main", "--out_path", "/home/nonroot/main/1/checkpoints", "--stage", "build"]
+
+#####
+# Copy in the actual files like config.yaml, requirements.txt, and most importantly 1/model.py
+# for the actual model.
+# If checkpoints aren't downloaded since a checkpoints: block is not provided, then they will
+# be in the build context and copied here as well.
+COPY --link=true 1 /home/nonroot/main/1
+
+# At this point we only need these for validation in the SDK.
+COPY --link=true requirements.txt config.yaml /home/nonroot/main/
+
+# Add the model directory to the python path.
+ENV PYTHONPATH=${PYTHONPATH}:/home/nonroot/main \
+    CLARIFAI_PAT=${CLARIFAI_PAT} \
+    CLARIFAI_USER_ID=${CLARIFAI_USER_ID} \
+    CLARIFAI_RUNNER_ID=${CLARIFAI_RUNNER_ID} \
+    CLARIFAI_NODEPOOL_ID=${CLARIFAI_NODEPOOL_ID} \
+    CLARIFAI_COMPUTE_CLUSTER_ID=${CLARIFAI_COMPUTE_CLUSTER_ID} \
+    CLARIFAI_API_BASE=${CLARIFAI_API_BASE:-https://api.clarifai.com}
+
+WORKDIR /home/nonroot/main
+
+# Finally run the clarifai entrypoint to start the runner loop and local runner server.
+# Note(zeiler): we may want to make this a clarifai CLI call.
+ENTRYPOINT ["python", "-m", "clarifai.runners.server"]
+CMD ["--model_path", "/home/nonroot/main"]
+#############################
+
+```
+
+## Step 6: Upload to Clarifai
 
 To upload your open-source MCP server to the Clarifai platform, navigate to the server’s root directory and run:
 
-    clarifai model upload
+    clarifai model upload . --skip_dockerfile
 
-As the upload progresses, build logs will be streamed directly to your terminal. These logs are useful for monitoring the build process and troubleshooting any issues that arise.
+The [`--skip_dockerfile`](https://docs.clarifai.com/compute/upload/#skip-dockerfile) flag prevents the CLI from generating a default Dockerfile and instructs it to use the Dockerfile provided in your project directory.
+
+This command will:
+
+- Stream Docker build logs directly to your terminal for real-time monitoring and troubleshooting
+- Build the Docker image defined in your Dockerfile
+- Upload the MCP server to your Clarifai account
+- Make the server available for inference via the Clarifai HTTP API
 
   Build Logs Example
   {BuildLogs}
@@ -497,7 +574,7 @@ The MCP server URL is constructed using the following format: `https://api.clari
 
 :::
 
-## Step 6: Deploy the Model
+## Step 7: Deploy the Model
 
 After uploading the MCP server, you must deploy it to a dedicated compute cluster and nodepool. Deployment provisions the compute resources required to run the server and handle incoming requests.
 
@@ -505,13 +582,17 @@ Learn how to perform deployments [here](https://docs.clarifai.com/compute/deploy
 
 > **Note:** You can also deploy the server by following the interactive prompts shown when uploading it to Clarifai from the terminal.
 
-## Step 7: Interact with the Server
+Once deployed, the server is automatically referenced during inference. You do not need to specify the deployment explicitly in your client code.
+
+## Step 8: Interact with the Server
 
 Once the open-source MCP server is deployed, you can create a client script to communicate with it and invoke the exposed MCP tools. This allows agentic models to discover and use the server’s capabilities programmatically.
 
 ### Use with FastMCP Client
 
-Here is an example of interacting with the MCP server using the FastMCP client. This is typically the first step before invoking tools, executing actions, or wiring the MCP server into an agentic LLM workflow.
+Here is an example of interacting with the MCP server directly using the FastMCP client without going through an LLM. This is typically the first step before invoking tools, executing actions, or wiring the MCP server into an agentic LLM workflow.
+
+> **Note:** Remember to replace the placeholder values with the corresponding identifiers for your MCP server. You may also use any compatible agentic LLM.
 
     {FastMCPClient}
 
@@ -539,11 +620,11 @@ Here is an example of how to bridge an MCP server with an agentic LLM on Clarifa
 
 The above snippet demonstrates how to:
 
-- Connect to an MCP server hosted on Clarifai and discover its tools
-- Expose those tools to an agentic model in OpenAI function-calling format
-- Send a chat completion request to an agentic LLM via Clarifai’s OpenAI-compatible API
-- Let the model decide whether to call a tool (`tool_choice="auto"`)
-- (Later) Execute tool calls via MCP and feed results back to the model
+- Connect to a Clarifai-hosted MCP server and discover its available tools
+- Convert MCP tools into OpenAI function-calling–compatible definitions
+- Send a chat completion request to an agentic LLM using Clarifai’s OpenAI-compatible API
+- Allow the model to autonomously decide whether to invoke a tool (`tool_choice="auto"`)
+- Execute any requested tool calls via MCP and return the results to the model for final response generation
 
 :::tip
 
@@ -4341,6 +4422,8 @@ import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
 import OpenAIStreaming from "!!raw-loader!../../../code_snippets/python-sdk/inference/open_ai_streaming.py";
+import OpenAINonStreaming from "!!raw-loader!../../../code_snippets/python-sdk/inference/open_ai_non_streaming.py";
+import MCPServerFastMCP from "!!raw-loader!../../../code_snippets/python-sdk/inference/mcp_server_fast_mcp.py";
 import OutputOpenAIStreaming from "!!raw-loader!../../../code_snippets/python-sdk/inference/output_open_ai_streaming.txt";
 
 ## Prerequisites
@@ -4360,19 +4443,18 @@ You can see an example implementation of `AgenticModelClass` in [this `1/model.p
 
 > **Note:** To upload a model with agentic capabilities, simply use `AgenticModelClass`. All other steps and functionality remain the same as when [uploading a standard model](https://docs.clarifai.com/compute/upload/) on Clarifai. You can follow [this example](https://github.com/Clarifai/runners-examples/tree/main/llm/agentic-gpt-oss-20b) to get started.
 
-  Example models with agentic capabilities enabled
-    * [https://clarifai.com/clarifai/agentic-model/models/gpt-oss-20b](https://clarifai.com/clarifai/agentic-model/models/gpt-oss-20b)
-* [https://clarifai.com/clarifai/agentic-model/models/gpt-5_1](https://clarifai.com/clarifai/agentic-model/models/gpt-5_1)
+These are some example models with agentic capabilities enabled:
+
+    * [Qwen3-30B-A3B-Instruct-2507](https://clarifai.com/qwen/qwenLM/models/Qwen3-30B-A3B-Instruct-2507)
+    * [Qwen3-30B-A3B-Thinking-2507](https://clarifai.com/qwen/qwenLM/models/Qwen3-30B-A3B-Thinking-2507)
+    * [Qwen3-Coder-30B-A3B-Instruct](https://clarifai.com/qwen/qwenCoder/models/Qwen3-Coder-30B-A3B-Instruct)
 
 ### Get an MCP Server
 
-The Clarifai platform provides several MCP servers that you can use out of the box. Here are some examples:
+The Clarifai platform provides MCP servers that you can use out of the box. Here are some examples:
 
-- [Weather Server](https://clarifai.com/clarifai/mcp/models/mcp-server-weather) — Provides weather information
+- [Weather Server](https://clarifai.com/clarifai/mcp/models/weather-mcp-server) — Provides weather information
 - [Browser Server](https://clarifai.com/clarifai/mcp/models/browser-mcp-server) — Enables web browsing capabilities
-- [Time Server](https://clarifai.com/clarifai/mcp/models/time-mcp-server) — Provides time and date information
-
-You can get more servers [here](https://clarifai.com/clarifai/mcp/models).
 
 You can also [build your own MCP server](https://docs.clarifai.com/compute/agents/mcp#build-an-mcp-server) or use an [open-source MCP server](https://docs.clarifai.com/compute/agents/deploy-mcp) and deploy it on the Clarifai platform.
 
@@ -4383,12 +4465,12 @@ You can also [build your own MCP server](https://docs.clarifai.com/compute/agent
 You need to install the following Python packages:
 
 - `clarifai` – Install the latest version of the Clarifai Python SDK package. This also installs the [Command Line Interface (CLI)](https://docs.clarifai.com/additional-resources/api-overview/cli).
-
 -  `openai` — This leverage Clarifai’s [OpenAI-compatible endpoint](https://docs.clarifai.com/compute/inference/#predict-with-openai-compatible-format) endpoint to run inferences using the OpenAI client library
+- `fastmcp` — The core framework for interacting with MCP servers.
 
 You can run the following command to install them:
 
-    pip install --upgrade clarifai openai
+    pip install --upgrade clarifai openai fastmcp
 
 ### Get a PAT Key
 
@@ -4400,13 +4482,17 @@ You can then set the PAT as an environment variable using `CLARIFAI_PAT`. This a
 
      set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE 
 
-## Chat Completions (Streaming)
+## Integrate with LLMs
+
+You can pass an MCP server as a tool source to an agentic LLM on Clarifai. The model will automatically discover available tools and call them as needed during completion.
+
+### Chat Completions (Non-Streaming)
 
 The [OpenAI Chat Completions](https://platform.openai.com/docs/api-reference/chat) API endpoint lets you produce a model response by providing a list of messages that constitute a conversation.
 
                                                                      
 
-    {OpenAIStreaming}
+    {OpenAINonStreaming}
 
   Example Output
     {OutputOpenAIStreaming}
@@ -4416,10 +4502,26 @@ The above snippet demonstrates how to:
 
 - Initialize the OpenAI client and point it to Clarifai’s OpenAI-compatible endpoint, instead of OpenAI’s servers.
 - Specify which MCP servers the model can use. During inference, the model can discover and call these tools autonomously if it decides they’re useful.
-- Create a streaming chat completion with MCP support:
-    - An agentic model is used to discover tools from MCP servers, execute them, and iterate on tool calls if needed — for example, weather lookup, browsing, or time retrieval.
+- Create a chat completion conversation with MCP support:
+    - An agentic model is used to discover tools from MCP servers, execute them, and iterate on tool calls if needed — for example, weather lookup or browsing.
     - `extra_body={"mcp_servers": mcp_servers}` tells Clarifai which MCP servers to make available to the model for this request.
-    - `stream=True` enables token-by-token streaming, so results arrive incrementally instead of all at once.
+   
+
+### Chat Completions (Streaming)
+
+You can enable token-by-token streaming by setting `stream=True`. This allows the model’s response to arrive incrementally, providing partial results in real time instead of waiting for the full completion.
+
+                                                                     
+
+    {OpenAIStreaming}
+
+## Use with FastMCP Client
+
+You can call MCP tools directly using the FastMCP client without involving an LLM, giving you full programmatic control over tool execution.
+
+                                                                     
+
+    {MCPServerFastMCP}
 
 ---
 
@@ -7498,7 +7600,9 @@ The build logs will be displayed in your terminal, which helps you troubleshoot 
 
 > **Note**: If you make any changes to your model and upload it again to the Clarifai platform, a new version of the model will be created automatically.
 
-:::note Skip Dockerfile
+:::note 
+
+### Skip Dockerfile
 
 By default, when you upload a model, the CLI automatically generates a `Dockerfile` in the root of your model directory. This ensures your model can be built and deployed with the correct environment. 
 
@@ -13075,7 +13179,7 @@ With the CLI, you can use `--force` or `-f` to delete without a confirmation pro
 
 **Examples of how artifacts are used**
 
-Artifacts provide a flexible, versioned way to store and manage files produced throughout the ML and data lifecycle. They are especially useful for preserving intermediate outputs, enabling reproducibility, and sharing results across teams and environments.
+[Artifacts](README.mdx) provide a flexible, versioned way to store and manage files produced throughout the ML and data lifecycle. They are especially useful for preserving intermediate outputs, enabling reproducibility, and sharing results across teams and environments.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -13087,7 +13191,7 @@ import UseCase3 from "!!raw-loader!../../../code_snippets/new-docs/artifacts/py-
 
 ## Example Use Cases
 
-### Model Training Workflows
+### Model Training 
 
 You can upload model checkpoints to the Clarifai platform after each training run or epoch. If training is interrupted, you can resume from the most recent checkpoint instead of starting from scratch.
 
@@ -23948,1144 +24052,6 @@ You can repeat the above steps as often as you like. By adding more images with 
 
   Raw Output Example
     {ExamplePredictModel}
-
----
-
-## Modules
-
-# Modules
-
-**Extend Clarifai’s UIs and perform customized backend processing**
-
-Modules are custom plugins that provide both UI elements and the ability to perform some computation around our API. Modules enable you to extend the Clarifai UIs, augment backend processing capabilities, and build customized solutions quickly and easily. 
-
-They offer flexibility, integration possibilities, scalability, and the opportunity to tailor the Clarifai platform to specific use cases, empowering you to deliver enhanced experiences and value to your machine learning projects. 
-
-With modules, you can build a complete AI solution in your app—alongside the inputs, datasets, concepts, models, workflows, and other AI resources needed to solve a problem. 
-
- ![modules manager page](/img/modules/modules_homepage.png)
-
-## Modules UI Integration
-
-Modules are integrated into our overall UI in a composable way. They are implemented as Python programs that should be treated as API clients to our API.
-
-After integration, modules have sidebar entries that show up on the portal’s collapsible left sidebar, just like the rest of our other navigation entries.
-
-We currently support creating modules using Streamlit, which is an open-source, Python-based framework that lets you create interactive web applications for data science and machine learning projects. The framework is designed to simplify the process of building and sharing custom web applications by providing a straightforward and intuitive interface.
-
-At launch, we have focused on Streamlit. Nonetheless, our modules are flexible enough to integrate with other UI frameworks that render from the server side in the future. Please let us know which other ones you’d love to see. 
-
-## Modules Features
-
-Here are some notable features of Clarifai modules.
-
-1. **UI Extension**
-
-Modules allow you to seamlessly integrate custom functionality into the Clarifai user interface (UI). You can create modules that add new features, widgets, or views to the UI, providing users with an expanded set of tools and options. This extensibility enables you to tailor the Clarifai UI to match your specific requirements or industry needs.
-
-2. **Custom Workflows**
-
-With modules, you can design and implement custom workflows within the Clarifai platform. You have the flexibility to define specific steps, actions, or processes that users can execute within the UI. This capability enables you to create streamlined and efficient workflows that align with your unique business processes or use cases.
-
-3. **Backend Processing**
-
-Modules also empower you to perform backend processing tasks within the Clarifai infrastructure—leveraging the power and ecosystem of Python. You can develop modules that integrate with the Clarifai API, enabling advanced data processing, analysis, or model training. This functionality allows you to create, share, and use your AI resources within the Clarifai’s AI Lake while maintaining control and customization of the experience.
-
-4. **Integration with External Systems**
-
-Modules can facilitate seamless integration with external systems and services. You can create modules that interact with other APIs or data sources, enabling data exchange, synchronization, or integration with third-party tools. This integration capability enhances the interoperability of the Clarifai platform and expands its potential use cases.
-
-5. **Tailored Solutions**
-
-By leveraging modules, you can build tailored solutions on top of the Clarifai platform. You have the freedom to develop modules that address specific business needs, industry requirements, or niche use cases. This customization allows you to deliver unique value propositions to your users or customers, setting you apart from competitors.
-
-6. **Developer Community and Ecosystem**
-
-Modules foster an active developer community and ecosystem around the Clarifai platform. Users can create and share their modules, contributing to a rich library of reusable components and solutions. This collaborative environment encourages innovation, knowledge sharing, and the development of diverse applications that extend the capabilities of the Clarifai platform.
-
-7. **Scalability and Future-Proofing**
-
-With modules, you can design your solutions with scalability and future-proofing in mind. You can architect modules that can adapt and evolve as your business needs change, or as the Clarifai platform evolves. This scalability ensures that your custom functionalities and integrations remain compatible and effective over time.
-
-## Examples
-
-- [LLM Battleground](https://clarifai.com/meta/Llama-2/installed_module_versions/LLM_Battleground/compare)—Evaluate and compare multiple Large Language Models (LLMs) simultaneously. You do not need to log in to start using it. Learn how to use it [here](https://www.clarifai.com/blog/compare-top-llms-with-llm-battleground). 
-- [Chatbot](https://clarifai.com/clarifai/generative-ai/installed_module_versions/module-chatbot)—A conversational chatbot that remembers the conversation as you go.
-- [DocQA](https://clarifai.com/clarifai/geoint-demo-3/installed_module_versions/docQA)—Upload documents such as PDFs and chat with your data. Watch this [video](https://www.youtube.com/watch?v=HbuOu9zq2UE) to see it in action. You can also learn how to use it [here](https://www.clarifai.com/blog/doc-qa-revolutionizing-document-analysis).
-
-import DocCardList from '@theme/DocCardList';
-import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
-
----
-
-## Create and Install Modules
-
-# Create and Install Modules
-
-**Learn how to create and install your modules**
-
-The Clarifai portal allows you to create and install new modules and carry out various management tasks on them. 
-
-## Overview
-
-There are two steps for creating modules: 
-
-**1. Creating a module and its versions**—This is the process of authoring a new module and registering it on our AI lake. At the end of this process, it won’t be interactable with our UI just yet; the next process of installing the module version into the sidebar handles that. Creating a module requires familiarity with GitHub and Python development. You’ll start by coding your module, which is a great experience even locally, and then creating the module in the Clarifai platform, where we will fully host it for you. Each time you update the code of your module, you can simply create a new module version to capture that change.
-
-**2. Installing a module**—Once a module is created (or you find an already created one in our Community platform, or from your team members), you can install the module. This process will register the module in your Clarifai app, and it will appear on the portal’s collapsible left sidebar so that you can interact with it.
-
-## Prerequisite for Creating Modules
-
-- A Streamlit app repository on GitHub. 
-
-For this example, we'll use [this Clarifai app module template](https://github.com/Clarifai/module-template). You can refer to its README.md file to learn how to clone the repository to your development environment.
-
-:::info
-
-- Your Streamlit app should have a file named `app.py` because we support integrating with Streamlit apps only from the `app.py` entry point. It also serves as a central configuration file for your application. The file plays a crucial role in defining the behavior and structure of your Streamlit app integrated into the Clarifai platform. 
-
-- After installing a module, the markdown notes for the module overview page on the Clarifai portal will be created from the README.md file. Also, the left sidebar child items that appear under the **Installed Modules** category will be constructed from your Streamlit’s app pages or folder. If your Streamlit app does not have them, it will be constructed as a single-page app with no sidebar subpages.
-
-:::
-
-## Create Modules
-
-To create a new module, go to the individual page of your application. Then, select the **Modules** option on the collapsible left sidebar. 
-
-You'll be redirected to the **Modules** manager page, where you can create new modules and view already created ones.
-
-Click the **Create Module** button at the upper-right corner of the page.
-
-![modules manager page](/img/modules/module_1.png)
-
-You’ll be redirected to a page where you can create a module and a specific version for it. 
-
-![create a module](/img/modules/module_2.png)
-
-Let's talk about the fields to fill in the form for creating a new module. 
-
-#### Module ID
-
-Start by providing a unique ID of the module you want to create. The ID is scoped to your app; so, it needs to be unique within your app, but not necessarily globally.
-
-#### Module Description
-
-Provide a short description of your module. The description will be displayed on the Clarifai Community platform for others to quickly understand the purpose of your module.
-
-#### Module Metadata
-
-Optionally, you can provide a JSON blob of metadata to attach to the module. It helps with filtering and organizing your modules.
-
-#### Module Visibility
-
-You can choose to make the module public or private. Public modules are visible to everyone in the Community. Private modules are only visible to you and your collaborators.
-
-#### Create Module
-
-Click the **Create Module** button to finish creating your module.
-
-You’ll get a message that the module has been successfully created. 
-
-## Create a Module Version
-
-After creating a module, you can now create a specific version for it. 
-
-![create a module version](/img/modules/module_3.png)
-
-:::tip
-
-Each module represents one Streamlit app. As you make changes to your Streamlit app code, you can create new versions of the module as you go. 
-
-:::
-
-In the input field, you can provide either:
-
-- GitHub branch URL; or,
-- GitHub commit URL.
-
-The URL you provide should be for the specific repository you would like to deploy as your module version. The repository should be public—or, you’ll need to provide Clarifai with the necessary permissions to import data from your private repository. The authorization process will walk you through a simple process where you grant access to your private repository using a GitHub Oauth app provided by Clarifai.
-
-### Get a GitHub URL 
-
-To get a GitHub branch URL, navigate to your repository’s page and switch to the branch you want. 
-
-![get GitHub branch URL](/img/modules/module_4.png)
-
-You can then grab the URL displayed on the branch page. 
-
-![copy GitHub branch URL](/img/modules/module_5.png)
-
-Here is an example: `https://github.com/[github-username]/module-example/tree/[branch-name]`.
-
-Or, to get a commit URL, navigate to your repository’s page and click the **commits** link.
-
-![get a commit URL](/img/modules/module_6.png)
-
-On the ensuing page, click the **View commit details** button. 
-
-![view commit details](/img/modules/module_7.png)
-
-Next, grab the URL of the specific commit you want.
-
-![copy commit URL](/img/modules/module_8.png)
-
-Here is an example: `https://github.com/[github-username]/module-example/commit/b03da4dae7cc617adbfe335ee7608c10ff69d0d4`.
-
-### Fill the form
-
-After getting the GitHub URL, paste it in the input field, and click the enter button on your keyboard. Then, a form will appear for you to provide the details for creating a new module version. 
-
-![create a module](/img/modules/module_9.png)
-
-Let’s talk about the fields to fill in the form. 
-
-#### Notes Preview
-
-There is an expandable section that shows the markdown notes pulled from the module’s GitHub README.md file. These markdown notes are what will show on your module’s landing page and are only driven by what is found in the README.md file. So, you may review them here. If they are not satisfactory, you may make a new commit and then update the GitHub URL before proceeding with the next steps.
-
-#### Module Version ID
-
-Start by providing a unique ID of the module version you want to create. For example, you can provide a version number as `1_0_0` so that you can give `major_minor_patch` semantic versioning to your users.
-
-#### Module ID
-
-Provide the module ID the version belongs to. It should be the ID of a module you created previously.
-
-#### Sidebar Title
-
-Provide the module’s title that will appear on the collapsible left sidebar under the **Installed Modules** category.
-
-#### Module Version Description
-
-Provide a short description of your module version. The description will be displayed to help users explore the different versions of your module and quickly understand the purpose of each version. 
-
-If you have a detailed description, you should provide it using the markdown notes on the module overview page. 
-
-#### Module Version Metadata
-
-Optionally, you can provide a JSON blob of metadata to attach to the module version. It helps with filtering and organizing your module versions.
-
-![create a module](/img/modules/module_10.png)
-
-#### Module Version Visibility
-
-You can choose to make the module version public or private. Public module versions are visible to everyone in the Community. Private module versions are only visible to you and your collaborators.
-
-#### Environment Variables and Secrets
-
-Optionally, you can set environment variables and secrets for your module version. 
-
-[Click here](https://docs.clarifai.com/portal-guide/modules/secrets-management) to learn how to set them. 
-
-#### Sidebar Page Title
-
-The page titles you provide will appear as the left sidebar child items under the **Installed Modules** category. The titles will link to the single page `app.py` file of your module.
-
-If you have a single-page Streamlit app, you do not need to add page titles. On the other hand, if you have a multi-page Streamlit app, each module under pages/ in the repository will be mapped to an option on the navigation bar. 
-
-#### Select deployment type
-
-You can choose any of the following two deployment types:
-
-- Deploy locally — You can deploy the module version manually on your local machine. However, it will only be accessible to you. You need to provide the URL where your module is deployed. For example, you can provide `http://localhost:8502` for local Streamlit development or `https://share.streamlit.io/...` for Streamlit cloud deployment. Your deployment should be running before installing it. 
-
-- Clarifai cloud — You can also deploy the module version on Clarifai's fully hosted cloud platform. This will make it accessible to other users and be fully managed for you. 
-
-#### Create Module Version
-
-Click the **Create Module Version** button to finish creating your module version.
-
-After the deployment has been processed, you’ll get a message that the version has been successfully added to your module. 
-
-![create a module version](/img/modules/module_11.png)
-
-## Install the Created Module Version
-
-After creating a module and adding a version for it, a form will appear on the same page that allows you to install it on your app. This is an optional step for convenience purposes as you may want to use the newly created module version for yourself in the same application. Remember that you cannot actually use the created module version until you install it.
-
-:::note
-
-Your new module, and its versions, will appear in the AI Lake under the **Modules** section, and anyone who has the necessary permissions on your app and the module can install it. To make that easy, we also provide a link you can share for others to install it.
-
-:::
-
-![install created module version](/img/modules/module_12.png)
-
-Let’s talk about the fields to fill in the form. 
-
-#### Destination user_id
-
-Provide the `user_id` of the app you want to install the module to. It defaults to the current user ID, but you can change it to others, such as collaborators or organizations you belong to.
-
-#### Destination app_id
-
-Provide the `app_id` of the app you want to install the module to. It defaults to the current app ID, but you can change to any apps within the destination `user_id’s` account.
-
-#### Get shareable link
-
-You can copy the provided shareable link and send it to anyone to install the module in their environment. They just need to replace `{USER_ID}` with their user ID, and `{APP_ID}` with the app ID they want to install the module to.
-
-#### Install Module
-
-Click the **Install Module** button to install the module directly to the `user_id` and `app_id` you’d stated. 
-
-## Install the Module Into Destination App
-
-You’ll be redirected to another page where you can choose a URL suffix for installing the module into the destination app. It’ll be available at `https://clarifai.com/{user_id}/{app_id}/installed_module_versions/{suffix}`. 
-
-You can also set the module’s visibility on the same page. You can make the installation of the module version public, even if the underlying module and its versions are private, allowing you to open up a new capability. 
-
-![install created module version](/img/modules/module_13.png)
-
-Finally, click the **Install to this App** button. 
-
-You’ll get a message that the module has been successfully installed on your app. 
-
-![installed module to app](/img/modules/module_14.png)
-
-If you refresh the page, you’ll notice that your installed module appears on the left sidebar under the **Installed Modules** category.
-
-![module on sidebar](/img/modules/module_15.png)
-
-That’s it!
-
----
-
-## Modules Examples
-
-# Modules Examples
-
-**Examples of popular modules**
-
-import DocCardList from '@theme/DocCardList';
-import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
-
----
-
-## Collectors
-
-# Collectors
-
-**Capture inputs used for making predictions in your app**
-
-Collector is an ingenious feature that allows you to capture the inputs used for making predictions. After creating a collector, which includes specifying the caller user ID and the source model, a triggering process is established. 
-
-This process ensures that whenever the stated user makes a prediction using the specified model, the inputs used in generating the predictions are automatically ingested and stored in your app.
-
-With collectors, you can automatically pipe in data from production models, gather inputs to feed your models with real-world training data, and unlock many platform training capabilities.
-
-:::caution feature availability
-
-The Collector feature is currently exclusively available to our Professional and Enterprise users. Learn more [here](https://www.clarifai.com/pricing).
-
-:::
-
-## Create via the UI
-
-To create a collector within your application, you need to use the Clarifai’s [Collectors module](https://clarifai.com/clarifai/data/modules/collector). 
-
-Let’s demonstrate how you can use the module to create a collector via the UI. 
-
-### Install the Module
-
-#### Option 1
-
-Go to the Collectors module [page](https://clarifai.com/clarifai/data/modules/collector) and click the **Install Module** button at the upper-right corner. 
-
-Next, on the small window that pops up, select a desired user and destination app for installing the module.
-
-Click the **Confirm** button.
-
-![](/img/modules/collector-1.png)
-
-On the ensuing page, choose a destination URL for installing the module, select the module visibility, and click the **Install to this App!** button. 
-
-After the module has been successfully installed, click the **Click to use installed module version** button to start using it. You can also refresh the page for your installed module to appear on the left sidebar under the **Installed Modules** category.
-
-![](/img/modules/collector-2.png)
-
-If you click the button, you’ll be redirected to a page that requires you to authorize the module to access data on your behalf. You will see the permissions the module requires.  
-
-![](/img/modules/collector-3.png)
-
-Click the **Authorize** button.
-
-#### Option 2
-
-Alternatively, you can use the module’s URL to install it in your app. To do so, click the **Manage Installed Modules** option at the bottom of the collapsible left sidebar. 
-
-Grab the URL of the Collectors module and paste it into the **Module URL** input field.  
-
-![](/img/modules/collector-4.png)
-
-You can then follow the ensuing prompts to complete installing the module in your app. 
-
-### Create Collector
-
-After installing the module and authorizing it to access data on your behalf, you’ll be redirected to a page that allows you to create it. You can fill in the required details. 
- 
-![](/img/modules/collector-5.png)
-
-#### Collector ID​
-
-Give your collector a useful and descriptive name.
-
-#### Description
-​
-Provide additional details about your collector.
-
-#### Pre-queue Workflow​
-
-In many scenarios, you will only want to ingest a sample, or subset of a given data source into your app. Pre-queue workflows allow you to pre-process your inputs so that you can sample and filter your new data before it is ever added to your app. Pre-queue workflows allow you to specify sampling rules for triggering data ingestion.
-
-Common pre-queue workflows are designed to:
-
-- Randomly sample inputs
-- Filter inputs by metadata
-- Filter inputs with a maximum probability below a given threshold
-- Filter inputs with a minimum probability above a given threshold
-- Filter specific concept probabilities above a given threshold
-- Undertake knowledge graph mapping from public General model concepts to a custom model
-
-:::note
-
-At least one (pre-queue or post-queue) workflow ID is required. 
-
-:::
-
-> _For this example, let’s create a **random-sample** workflow, which randomly samples the inputs to be collected in your app. Let’s set the **keep_fraction** parameter to 1, implying that all (100%) the inputs predicted by the specified model will be kept and added to your app._ 
-
-> ![](/img/modules/collector-6.png)
-
-> _After creating the workflow in the [Workflow Builder](https://docs.clarifai.com/portal-guide/workflows/working-with-workflows/), let’s select it in the **Pre-Queue Workflow** field._
-
-#### Post-queue Workflow​
-
-This is the workflow to run after the collector has processed the queued input. This workflow uses the original input to the model as input to the workflow so that you can run additional models as well on that input to decide whether to queue the model or not. 
-
-> _For this example, let’s create an **image-to-text** workflow, which uses the [general-english-image-caption-blip](https://clarifai.com/salesforce/blip/models/general-english-image-caption-blip) model to generate English captions from images. So, the images outputted by the pre-queue workflow will be captioned by the post-queue workflow, and the captioned text stored in your app._
-
-> ![](/img/modules/collector-11.png)
-
-> _After creating the workflow in the Workflow Builder, let’s select it in the **Post-Queue Workflow** field._
-
-If the workflow output has any field that is non-empty, then it will be passed on to POST /inputs to the destination app.
-
-#### Post Inputs Key
-
-Select the PAT key that you would like your module to use to enable inputs to be posted to your app. This key must have the PostInputs scope, since it grants the collector the authority to POST inputs to your app. 
-
-It should also have the permissions to access the source model used for making the predictions. 
-
-#### Activate Collector
-
-Select the checkbox if you want to activate the collector and make it ready to be used. Otherwise, the collector will remain inactive. 
-
-#### Caller
-
-Specify the ID of the caller who will be making the prediction requests. You can even provide your own user ID. 
-
-#### Source
-
-Specify the source model from which you want to collect data. The collector will automatically post the inputs utilized by the caller for making predictions using the specified model into your app. 
-
-You need to specify the model URL and its version ID. 
-
-> _For this example, let’s specify the [general-image-recognition]( https://clarifai.com/clarifai/main/models/general-image-recognition) model with its version ID as aa7f35c01e0642fda5cf400f543e7c40._
-
-#### Create new Collector
-
-Here are the details we provided for creating the new collector:
-
-![](/img/modules/collector-7.png)
-
-Finally, click the **Create new collector** button. 
-
-### Manage Collectors
-
-If you click the **Show All** option located under the **collector** module within the collapsible left sidebar, you will be directed to a subsequent page where your created collector, along with its corresponding details, will be listed for your review.
-
-This page also allows you to effortlessly deactivate, reactivate, or delete collectors as needed.
-
-![](/img/modules/collector-8.png)
-
-If you click the **Update** option, you will be directed to a subsequent page where you can update the details of your collector.
-
-### Example
-
-Let’s say the caller you’d specified uses [this image](https://samples.clarifai.com/featured-models/ocr-woman-holding-sold-sign.jpg) to make a prediction on the general-image-recognition model, which you’d stated as the source model. 
-
-![](/img/modules/collector-9.png)
-
-The image used for making the prediction will be automatically captured, captioned, and the generated text stored in your app — according to the rules you specified when creating the collector.  
-
-![](/img/modules/collector-10.png)
-
-If you update the collector by deselecting the post-queue workflow, only the pre-queue workflow will remain active. As such, you'll notice that the image used for making the prediction will be captured in your app as-is. 
-
-![](/img/modules/collector-12.png)
-
-That’s it! 
-
-## Create via the API
-
-:::info
-
-Before using the [Python SDK](https://docs.clarifai.com/additional-resources/api-overview/python-sdk), [Node.js SDK](https://docs.clarifai.com/additional-resources/api-overview/nodejs-sdk), or any of our [gRPC clients](https://docs.clarifai.com/additional-resources/api-overview/grpc-clients), ensure they are properly installed on your machine. Refer to their respective installation guides for instructions on how to install and initialize them.
-
-:::
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import CodeBlock from "@theme/CodeBlock";
-
-import PythonAddCollector from "!!raw-loader!../../../../code_snippets/api-guide/data/collectors/add_collector.py";
-import PythonUpdateCollector from "!!raw-loader!../../../../code_snippets/api-guide/data/collectors/update_collector.py";
-import PythonListCollectors from "!!raw-loader!../../../../code_snippets/api-guide/data/collectors/list_collectors.py";
-import PythonGetCollector from "!!raw-loader!../../../../code_snippets/api-guide/data/collectors/get_collector.py";
-import PythonDeleteCollector from "!!raw-loader!../../../../code_snippets/api-guide/data/collectors/delete_collector.py";
-
-import JSAddCollector from "!!raw-loader!../../../../code_snippets/api-guide/data/collectors/add_collector.html";
-import JSUpdateCollector from "!!raw-loader!../../../../code_snippets/api-guide/data/collectors/update_collector.html";
-import JSListCollectors from "!!raw-loader!../../../../code_snippets/api-guide/data/collectors/list_collectors.html";
-import JSGetCollector from "!!raw-loader!../../../../code_snippets/api-guide/data/collectors/get_collector.html";
-import JSDeleteCollector from "!!raw-loader!../../../../code_snippets/api-guide/data/collectors/delete_collector.html";
-
-import NodeAddCollector from "!!raw-loader!../../../../code_snippets/api-guide/data/collectors/add_collector.js";
-import NodeUpdateCollector from "!!raw-loader!../../../../code_snippets/api-guide/data/collectors/update_collector.js";
-import NodeListCollectors from "!!raw-loader!../../../../code_snippets/api-guide/data/collectors/list_collectors.js";
-import NodeGetCollector from "!!raw-loader!../../../../code_snippets/api-guide/data/collectors/get_collector.js";
-import NodeDeleteCollector from "!!raw-loader!../../../../code_snippets/api-guide/data/collectors/delete_collector.js";
-
-import JavaAddCollector from "!!raw-loader!../../../../code_snippets/api-guide/data/collectors/add_collector.java";
-import JavaUpdateCollector from "!!raw-loader!../../../../code_snippets/api-guide/data/collectors/update_collector.java";
-import JavaListCollectors from "!!raw-loader!../../../../code_snippets/api-guide/data/collectors/list_collectors.java";
-import JavaGetCollector from "!!raw-loader!../../../../code_snippets/api-guide/data/collectors/get_collector.java";
-import JavaDeleteCollector from "!!raw-loader!../../../../code_snippets/api-guide/data/collectors/delete_collector.java";
-
-import PHPAddCollector from "!!raw-loader!../../../../code_snippets/api-guide/data/collectors/add_collector.php";
-import PHPUpdateCollector from "!!raw-loader!../../../../code_snippets/api-guide/data/collectors/update_collector.php";
-import PHPListCollectors from "!!raw-loader!../../../../code_snippets/api-guide/data/collectors/list_collectors.php";
-import PHPGetCollector from "!!raw-loader!../../../../code_snippets/api-guide/data/collectors/get_collector.php";
-import PHPDeleteCollector from "!!raw-loader!../../../../code_snippets/api-guide/data/collectors/delete_collector.php";
-
-import CurlAddCollector from "!!raw-loader!../../../../code_snippets/api-guide/data/collectors/add_collector.sh";
-import CurlUpdateCollector from "!!raw-loader!../../../../code_snippets/api-guide/data/collectors/update_collector.sh";
-import CurlListCollectors from "!!raw-loader!../../../../code_snippets/api-guide/data/collectors/list_collectors.sh";
-import CurlGetCollector from "!!raw-loader!../../../../code_snippets/api-guide/data/collectors/get_collector.sh";
-import CurlDeleteCollector from "!!raw-loader!../../../../code_snippets/api-guide/data/collectors/delete_collector.sh";
-
-### Collector Parameters
-
-Let's talk about the parameters required to create a collector via the API. 
-
-#### Collector ID
-
-Give your collector a useful and descriptive name.
-
-#### Description
-
-Provide additional details about your collector.
-
-#### Pre-queue Workflow
-
-In many scenarios, you will only want to ingest a sample, or subset of a given data source into your app. Pre-queue workflows allow you to pre-process your inputs so that you can sample and filter your new data before it is ever added to your app. Pre-queue workflows allow you to specify sampling rules for triggering data ingestion.
-
-Common pre-queue workflows are designed to:
-
-- Randomly sample inputs
-- Filter inputs by metadata
-- Filter inputs with a maximum probability below a given threshold
-- Filter inputs with a minimum probability above a given threshold
-- Filter specific concept probabilities above a given threshold
-- Undertake knowledge graph mapping from public General model concepts to a custom model
-
-:::note
-
-At least one (pre-queue or post-queue) workflow ID is required. 
-
-:::
-
-#### Post-queue Workflow​
-
-This is the workflow to run after the collector has processed the queued input. This workflow uses the original input to the model as input to the workflow so that you can run additional models as well on that input to decide whether to queue the model or not. 
-
-#### Source
-
-These are the details of the source model from which you want to collect data. The collector will automatically post the inputs utilized by the caller for making predictions using the specified model into your app. 
-
-#### Post Inputs Key
-
-This is the PAT or the API key to use to enable inputs to be posted to your app. This key must have the PostInputs scope, since it grants the collector the authority to POST inputs to your app. 
-
-It should also have the permissions to access the source model used for making the predictions. 
-
-#### Caller User ID
-
-This is the ID of the caller who will be making the prediction requests. You can even provide your own user ID. 
-
-### Add Collector
-
-Here is how to add a new collector to your application.
-
-    {PythonAddCollector}
-
-   {JSAddCollector}
-
-    {NodeAddCollector}
-
-    {JavaAddCollector}
-
-    {PHPAddCollector}
-
-    {CurlAddCollector}
-
-### Update Collector
-
-You can update an existing collector.
-
-    {PythonUpdateCollector}
-
-   {JSUpdateCollector}
-
-    {NodeUpdateCollector}
-
-    {JavaUpdateCollector}
-
-    {PHPUpdateCollector}
-
-    {CurlUpdateCollector}
-
-### List Collectors
-
-You can list all the collectors in your app. Click [here](https://docs.clarifai.com/api-guide/advanced-topics/pagination/) to learn how to control the page that gets displayed.
-
-    {PythonListCollectors}
-
-   {JSListCollectors}
-
-    {NodeListCollectors}
-
-    {JavaListCollectors}
-
-    {PHPListCollectors}
-
-    {CurlListCollectors}
-
-### Get Collector
-
-You can return the details of a certain collector.
-
-    {PythonGetCollector}
-
-   {JSGetCollector}
-
-    {NodeGetCollector}
-
-    {JavaGetCollector}
-
-    {PHPGetCollector}
-
-    {CurlGetCollector}
-
-### Delete Collector
-
-You can delete a collector.
-
-    {PythonDeleteCollector}
-
-   {JSDeleteCollector}
-
-    {NodeDeleteCollector}
-
-    {JavaDeleteCollector}
-
-    {PHPDeleteCollector}
-
-    {CurlDeleteCollector}
-
----
-
-## Hyperparameter Sweeps
-
-# Hyperparameter Sweeps
-
-**Learn about our hyperparameter sweeps module**
-
-Choosing optimal hyperparameters is crucial for training machine learning models effectively. The Hyperparameter Sweeps module in Clarifai allows users to automate the process of testing different hyperparameter values and their combinations, enhancing the ability to identify the most effective settings for model training.
-
-By systematically testing a range of configurations, you can significantly enhance the performance of your machine-learning models, ensuring that they are as effective and efficient as possible.
-
-### Getting Started
-
-1. To use the hyperparameter sweeps module in your application, navigate to the **Manage Installed Modules** section within your Clarifai app. This option can be found in the left sidebar under the **Modules** tab. In the **Install a Module by URL** section, provide the URL `https://clarifai.com/clarifai/ml/modules/module-hyperparameter_sweeps` of the Hyperparameter Sweeps module to add it to your app and press enter.
-
-![](/img/agent-system-operators/HS_1.png)
-
-2. Select the visibility and click **Install to this App.**
-
-![](/img/agent-system-operators/HS_2.png)
-
-:::info
-
-App has to be made public to make the module public.
-
-:::
-
-Once the module is installed you can input the details of the model you intend to train and configure it.
-
-### Configuring the Module
-
-1. **Model Details**: In the first section of the module, input the details of the model you intend to train. This includes selecting the base model and specifying any initial configurations.
-
-![](/img/agent-system-operators/HS_3.png)
-
-2. **Checkpoint Model Details** (Optional): If you want to use a checkpoint model as a starting point for training, specify this in the second section. This step is optional and depends on whether you wish to continue training from a previously saved state.
-
-![](/img/agent-system-operators/HS_4.png)
-
-3. **Training Parameters**: In the third section, enter training-related parameters. These parameters are designed to provide granular control over the data quality and selection process in the Hyperparameter Sweeps module, enhancing the user's ability to fine-tune model training according to specific requirements and constraints.
-   * **Invalid Data Tolerance Percentage**: Defines the maximum percentage of invalid data allowed in the training set without being considered for training, allowing for flexibility in data cleanliness standards.
-   * **Training Dataset**: Allows selection of the dataset to be used for training, enabling the model to learn from the most relevant and updated data available.
-   * **Training Dataset Version**: Specifies the version of the training dataset to be used, ensuring consistency and control over the data used in different training runs.
-
-![](/img/agent-system-operators/HS_5.png)
-
-4. **Output Parameters**: In the fourth section, define what output you expect from the training. These parameters are designed to provide granular control over the data quality and selection process in the Hyperparameter Sweeps module, enhancing the user's ability to fine-tune model training according to specific requirements and constraints.
-   * **List of concepts**:Allows users to select specific concepts that the model should focus on during the training process.
-   * **Maximum Concepts**: Sets a limit on the number of concepts the model will consider during each training iteration.
-   * **Min Value**: Establishes a minimum threshold value for the prediction confidence of concepts during training.
-
-![](/img/agent-system-operators/HS_6.png)
-
-5. **[Model Template](https://docs.clarifai.com/portal-guide/model/deep-training/#template-types)**: Select a model template that suits your training needs. This template will decide the architectural foundation of your model.
-
-![](/img/agent-system-operators/HS_7.png)
-
-6. **Sweepable Parameters**: Sweepable parameters are adjustable during model training to optimize performance, like learning rate and batch size. They're varied in systematic sweeps to determine the most effective settings that enhance the model's accuracy and efficiency. Based on the template selected, this section will list sweepable parameters for that template.
-
-For any parameter you wish to experiment with; check the **Try a range of values** checkbox, define the minimum and maximum values for the range, and set the step size to determine how incrementally the module will test between the min and max values.
-
-The below list describes all the sweepable parameters associated with all the templates.
-
-   * **logreg**: Determines the activation function used in the model, where selecting `1` uses sigmoid units and `0` uses softmax.
-   * **batch_size**: Specifies the number of samples processed before the model is updated.
-   * **init_epochs**: Sets the initial number of complete passes through the training dataset.
-   * **step_epochs**: Defines the number of epochs for each step in a hyperparameter sweep, allowing gradual adjustment.
-   * **per_item_lrate**: Establishes the learning rate on a per-item basis, adjusting how much the model weights are updated during training.
-   * **lrate (Learning Rate)**: Sets the step size at which the model weights are updated during training.
-   * **average_horizontal_flips**: If enabled, averages the embeddings from the original image and a horizontal flip of the image to produce the final embedding vectors.
-   * **weight_decay**: Reduces the model's weights slightly each training step to prevent overfitting.
-   * **momentum**: Accelerates the model's learning and helps to navigate along the relevant directions during training.
-   * **flip_probability**: Determines the likelihood of the image being flipped horizontally or vertically during data augmentation.
-   * **flip_direction**: Specifies the axis on which the image flips are performed during preprocessing, enhancing model generalization.
-
-![](/img/agent-system-operators/HS_8.png)
-
-7. **Non-Sweepable Parameters**: Non-sweepable parameters remain fixed throughout the training process and are not typically included in optimization sweeps, such as model architecture or data preprocessing methods. Their constancy supports stability and consistency in model training conditions.
-
-   Below list describes all the non - sweepable parameters associated with all the templates.
-
-   * **image_size**: Sets the dimensions to which all input images are resized before processing.
-   * **base_gradient_multiplier**: Adjusts the learning rate multiplier for the base network, influencing the speed and stability of training.
-   * **num_epochs**: Specifies the total number of training cycles through the entire dataset.
-   * **num_items_per_epoch**: Determines how many items are processed in each epoch.
-   * **seed**: Sets the initial random seed for training reproducibility.
-   * **num_gpus**: Specifies the number of GPUs to be used for training.
-   * **pretrained_weights**: Selects pretrained model weights to initialize the network, aiding in faster convergence.
-   * **concepts_mutually_exclusive**: Indicates whether each input should be tagged with only one concept, ensuring that concepts do not overlap.
-   * **per_item_min_lrate**: Sets the minimum learning rate for each training item, ensuring that learning does not stagnate.
-   * **warmup_iters**: Specifies the number of iterations at the beginning of training where the learning rate is gradually increased to prevent early divergences.
-   * **warmup_ratio**: Determines the ratio of the learning rate used during the initial warmup phase compared to the normal learning rate.
-   * **pretrained_weights**: Selects pretrained model weights to initialize the network, aiding in faster convergence.
-   * **concepts_mutually_exclusive**: Indicates whether each input should be tagged with only one concept, ensuring that concepts do not overlap.
-   * **model_cfg**: Specifies the configuration of the model architecture to be used, such as 'resnext'.
-   * **preinit**: Selects a pre-initialized setting or version for the model configuration, like 'general-v1.5'.
-   * **inference_crop_type**: Chooses the type of cropping to apply during model inference, such as 'sorta2'.
-   * **embeddings_layer**: Specifies the network layer from which embeddings are extracted for analysis or further processing.
-
-![](/img/agent-system-operators/HS_9.png)
-
-### Running the Sweeps
-
-1. **Generating Combinations**: Based on the input from previous sections, the module generates all possible combinations of hyperparameter values. These are displayed in the eighth section of the module interface.
-
-![](/img/agent-system-operators/HS_10.png)
-
-2. **Selection and Cost Estimation**: Review the generated combinations and select which ones you want to proceed with. The module will display the estimated cost for training each combination per hour.
-
-3. **Submission**: After selecting the desired combinations and reviewing the associated costs, click on **Submit** to initiate the training process. The module will create model versions for each combination in the "Models" section of your app.
-
-### Monitoring and Evaluation
-
-1. **Training and Testing Details**: You can monitor the progress of model training and testing from the "Models" page in your app.
-
-![](/img/agent-system-operators/HS_last.png)
-
-2. **Performance Review**: To evaluate the performance of each model version, visit the Model Training Page. This interface allows you to compare results across different hyperparameter settings to determine which configuration yields the best results.
-
----
-
-## OCR Evaluation Module
-
-# OCR Evaluation Module
-
-**Learn how to evaluate OCR model performance effectively**
-
-The OCR (Optical Character Recognition) Evaluation Module is a powerful tool designed to assess the performance of OCR workflows in Clarifai. It enables users to measure the accuracy and effectiveness of their OCR workflows by comparing model outputs against known ground truth data. 
-
-Key features of the evaluation module include:
-
-* Ground truth data management
-* Comprehensive OCR performance metrics
-* Multiple evaluation methods
-* Detailed performance reports
-* Support for various OCR workflows
-
-## Getting Started
-
-Before you start using the OCR evaluation module in your app, ensure that you have installed the module. You can learn how to install modules in the app [here](https://docs.clarifai.com/portal-guide/modules/create-install/#install-the-created-module-version).
-
-There are two components of this [module](https://clarifai.com/mogith-p-n/OCR-ground-truth):
-
-* GT Upload
-* OCR Eval
-
-Let's discuss and understand the usage of both of them one by one.
-
-### GT (Ground Truth) Upload
-
-The GT Upload component allows users to upload and manage ground truth data that will be used to evaluate OCR model performance. This interface provides a streamlined process for data ingestion and dataset selection.
-
-![alt_text](/img/modules/ocr_1.png)
-
-**Follow the steps below to access GT upload and upload data:**
-
-1. **Accessing GT Upload:** Navigate to the '**GT Upload**' section within the OCR Evaluation Module on your Clarifai dashboard.
-2. **Uploading Files:** Click on '**Browse Files**' to upload your CSV file containing ground truth data. Ensure the data is formatted as required by the evaluation tool.
-
-**CSV Data Format Requirements:**
-
-Required columns - image_id,ground_truth_text,bounding_box
-
-* `image_id`: Unique identifier for each image
-* `ground_truth_text`: Actual text present in the image
-* `bounding_box`: Coordinates of text location (if applicable)
-
-    **Important**: Ensure your CSV file:
-
-* Is UTF-8 encoded
-* Contains no empty rows
-* Has consistent column naming
-* Is under 200MB in size
-
-You can also refer to this [file](https://github.com/mogith-pn/Assests/blob/main/gt.csv) to see an example of a correctly formatted CSV file.
-
-3. **Selecting Dataset:** From the '**Select dataset**' dropdown, choose the dataset that aligns with your ground truth for precise evaluation.
-4. **Uploading Data:** After selecting your file and dataset, click '**Upload data'** to ingest the ground truth into the platform.
-
-### OCR Eval
-
-The OCR Workflow Evaluation interface within the Clarifai platform allows users to assess the performance of their Optical Character Recognition (OCR) or Visual Language Model (VLM) workflows by comparing predicted outputs against pre-established ground truth data.
-
-![alt_text](/img/modules/ocr_2.png)
-
-After uploading the ground truth data, this component evaluates the OCR model's performance based on the uploaded data.
-
-**Follow the steps below for OCR Eval:**
-
-1. **Access the Module:**
-    * Navigate to the OCR Evaluation Module in your Clarifai application dashboard.
-2. **Model Description Configuration:**
-    * **Eval Dataset:** Select the dataset against which the model will be evaluated from the dropdown menu.
-    * **Workflow URL:** Enter the URL of the OCR or VLM workflow that you wish to evaluate.
-3. **Model Type Selection:**
-    * Choose between OCR and VLM, depending on the nature of the workflow you are testing.
-4. **Evaluate Workflow:**
-    * Once the dataset and workflow URL are configured and the model type is selected, click on the ‘Evaluate Workflow’ button to start the evaluation process.
-5. **Viewing Results:**
-    * After the evaluation is completed, the interface will display key performance metrics such as Semantic Similarity, Word Error Rate (WER), Character Error Rate (CER), Word Information Loss (WIL), Precision, Recall, and F1 Score.
-    * Each metric is clickable for a detailed explanation on what it measures and how to interpret the results.
-
-![alt_text](/img/modules/ocr_3.png)
-
-1. **Download Evaluation Results:**
-    * There is an option to download the complete evaluation report, which includes detailed metric scores and comparative analysis. 
-
-The CSV file downloaded after evaluating the OCR workflow in provides a comprehensive breakdown of the OCR model's performance against the ground truth data. Each row corresponds to a data entry evaluated by the model. Here’s a breakdown of typical columns you might find in this CSV:
-
-* **Input ID**: Unique identifier for each input or image evaluated.
-* **Ground Truth Text**: The correct text as per the ground truth data.
-* **Predicted Text**: The text that the OCR model extracted from the input.
-* **Accuracy**: A percentage indicating the exact match accuracy between the predicted text and the ground truth.
-* **Word Error Rate (WER)**: A metric that shows the percentage of words incorrectly predicted.
-* **Character Error Rate (CER)**: Measures the percentage of characters that were incorrectly predicted.
-* **Confidence Score**: Reflects the confidence of the OCR model in its predictions for each input.
-
-## Understanding Evaluation Metrics
-
-### 1. Semantic Similarity
-
-* **Description**: Measures how closely the OCR output matches the ground truth in terms of meaning
-* **Scale**: 0 to 1 (higher is better)
-* **Implementation Methods**:
-    * TF-IDF vectorization with cosine similarity
-    * LLM-based semantic comparison
-    * Embedding model comparison
-
-### 2. Word Error Rate (WER)
-
-* **Description**: Measures the minimum number of word-level operations needed to transform OCR output into ground truth
-* Calculation: \
-WER = (Number of word transformations) / (Total number of words in ground truth) \
-
-* **Example**:
-    * Ground Truth: "Lion is a wild animal"
-    * OCR Output: "Lion iz wild animol"
-    * Transformations: 3 (is→iz, missing 'a', animol→animal)
-    * WER = 3/6 = 50%
-
-### 3. Character Error Rate (CER)
-
-* **Description**: Measures character-level accuracy using Levenshtein distance
-* Calculation: \
-CER = (Number of character transformations) / (Total characters in ground truth) \
-
-* **Example**:
-    * Ground Truth: "619375128"
-    * OCR Output: "61g375Z8"
-    * Transformations: 3 (g→9, missing 1, Z→2)
-    * CER = 3/9 = 33.33%
-
-### 4. Word Information Loss (WIL)
-
-* **Description**: Indicates the percentage of words incorrectly predicted
-* **Scale**: 0 to 1 (lower is better)
-* **Factors**:
-    * Number of correct words
-    * Total words in reference
-    * Total words in prediction
-
-### 5. Precision and Recall Metrics
-
-* Precision:
-    * Measures accuracy of recognized text
-    * Formula: True Positives / (True Positives + False Positives)
-    * Scale: 0 to 1 (higher is better)
-* Recall:
-    * Measures completeness of text recognition
-    * Formula: True Positives / (True Positives + False Negatives)
-    * Scale: 0 to 1 (higher is better)
-* F1 Score:
-    * Harmonic mean of precision and recall
-    * Formula: 2 * (Precision * Recall) / (Precision + Recall)
-    * Provides a balanced measure of model performance
-
----
-
-## Manage Your Modules
-
-# Manage Your Modules
-
-**Learn how to manage your modules**
-
-After creating and installing your modules, you can now carry out various management tasks on them.
-
-## Access Your modules
-
-To access the modules you’ve created, go to the individual page of your application. Then, select the **Modules** option on the collapsible left sidebar. 
-
-You'll be redirected to the **Modules** manager page, where you can view the already created ones.
-
-You can also click the delete button to remove a module you no longer need.
-
-![listed modules page](/img/modules/module_16.png)
-
-If you click a listed module, you’ll be redirected to the individual page of the module, where you can accomplish various tasks, such as installing the module to your app, creating a version for it, managing its versions, or deleting it. 
-
-![module manager page](/img/modules/module_17.png)
-
-Let's talk about how you can carry out the tasks. 
-
-### a) Install a module
-
-To install a module, click the **Install Module** button. A small window will pop up that allows you to select the app where you want to install the module. After selecting the destination app, click the **Confirm** button. 
-
-![install a module](/img/modules/module_18.png)
-
-You’ll then be redirected to a page that allows you to install the module on your selected app.
-
-You may refer to the previous page on how to install a module to a destination app. 
-
-### b) Create a module version
-
-To create a module version, click the **Create Module Version** button. You’ll then be redirected to a page that allows you to provide the GitHub URL for the specific branch or commit you would like to deploy as the module version.
-
-You may refer to [the previous page](./create-install/#create-a-module-version) on how to create a module version. 
-
-### c) Manage module versions
-
-If you click the vertical ellipsis on the upper rightmost part of the module’s page, a dropdown box will appear. Click the **Manage Module Versions** option. 
-
-![manage module versions](/img/modules/module_19.png)
-
-On the ensuing page, you can see all the versions created for the module listed in a table. All the details about each module version are also provided in that table. 
-
-![manage module versions](/img/modules/module_20.png)
-
-The page allows you to:
-
-- Create a new module version by clicking the **Create New Version** button. 
-
-- Delete a module version by first selecting it in the table and clicking the activated **Delete Module Version** button. 
-
-### d) Delete a module
-
-If you click the vertical ellipsis on the upper rightmost part of the module’s page, a dropdown box will appear. Click the **Delete Module** option. 
-
-![listed module versions](/img/modules/module_21.png)
-
-On the ensuing page, confirm if you still want to delete the module. 
-
-![delete a module](/img/modules/module_22.png)
-
-:::caution
-
-This action deletes the module as well as all its created and installed versions. If another user installed any version of the module, they will no longer be able to use them. So, you need to proceed with caution. 
-
-:::
-
-## Start Using Installed Modules
-
-To start using a module you’ve installed on your app, navigate to the **Installed Modules** category on the collapsible left sidebar, and expand the section of the module you want to use. 
-
-:::note
-
-You can also click the **Uninstall Module** button to delete the installed module. 
-
-:::
-
-![installed modules category](/img/modules/module_23.png)
-
-Click a sub-item listed under the name of an installed module. For this example, the sub-item is called **First Page**. 
-
-A small window will pop up requiring you to authorize the module to access data on your behalf. You will see the permissions the module requires. 
-
-![authorize module permissions](/img/modules/module_24.png)
-
-:::tip
-
-Authorizing will create a new personal access token in your account with all scopes. The level of permissions the module will have to access data in your app will be determined by your relationship with the app (owner, collaborator, teammate, or public user).
-
-You may delete that personal access token in your [security settings](https://clarifai.com/settings/security) at any time to revoke the access the module has to your data. If you do not trust the author of the module, we recommend you review the source code before authorizing access. Uninstalling an installed module will also automatically delete the personal access token for you.
-
-:::
-
-Click the **Authorize** button.
-
-You’ll be redirected to the UI of your installed module, where you can start using it.
-
-![installed module UI](/img/modules/module_25.png)
-
-That’s it—you’ve successfully deployed a Streamlit app on the Clarifai platform!
-
-## Manage Installed Modules
-
-If you click the **Manage Installed Modules** button, you’ll be redirected to a page that lets you carry out various management tasks on your installed modules. 
-
-![manage installed modules](/img/modules/module_26.png)
-
-You can see a list of all the module versions installed on your app. To uninstall any of them, select it in the table and click the **Uninstall** button that appears. 
-
-You can also install a module you’ve found on the [Clarifai Community](https://clarifai.com/explore/modules). Just copy and paste the module URL into the **Module URL** input field.
-
-After pressing the enter button, you can follow the ensuing prompts to complete installing the module on your app.
-
----
-
-## Environment Variables and Secrets
-
-# Environment Variables and Secrets
-
-**Keep your credentials secure and build powerful modules**
-
-When creating a new module version, you have the option of configuring and setting environment variables and secrets for that specific version. For example, you might use them to store API keys, database connection strings, or other configuration details you do not want to expose publicly on GitHub.
-
-This feature opens up a ton of possibilities and allows you to build much more powerful modules.
-
-It can be beneficial for several reasons, including:
-
-- Allows you to manage the configuration and security of your module versions effectively, ensuring that each version has the necessary environment variables and secrets for its proper functioning. 
-
-- You can employ version-specific settings or secrets for each install of a version to operate independently and without affecting other versions of the same module in your application.
-
-- Allows you to securely interact with external data sources, APIs, or services, and supercharge the capabilities of your modules.
-
-![environment variables and secrets](/img/modules/module_27.png)
-
-## How it Works
-
-When creating a new module version, there is a text area where you can enter the environment variables and secrets specific to your module’s requirements. If you don't need to configure any, you can simply leave this area empty.
-
-We support creating secrets using the [TOML](https://toml.io/en/) file format. When building modules with Streamlit, we leverage their `.streamlit/secrets.toml` file to manage both secrets and environment variables. 
-
-:::info
-
-To dive deeper into how Streamlit implements secrets management, you can explore their documentation [here](https://docs.streamlit.io/streamlit-community-cloud/deploy-your-app/secrets-management). 
-
-:::
-
-Once you provide your credentials within the designated text area, they are encrypted and stored for you and can be accessed conveniently via the `st.secrets` dictionary. 
-
-Moreover, Streamlit's implementation seamlessly maps these secrets to environment variables with matching names. For example, if your `.toml` file contains a definition like `CLARIFAI_PAT`, it will also appear as an environment variable with the same name, simplifying access and integration into your module's functionality.
-
-## How to Create Secrets
-
-You can simply provide your secrets and environment variables using the TOML file format. 
-
-Here is an example:
-
-```toml
-KEY = "value"
-SOMETHING = 123
-```
-And you can access them in your code like this:
-
-```python
-secret_value = st.secrets.KEY  # access via attribute notation
-# Or 
-import os
-secret_value = os.environ["KEY"]  # access via key notation
-```
-To maintain clarity, you can even organize your secrets into sections, like this:
-
-```toml
- [db_credentials]
-username = "my_username"
-password = "my_password"
-```
-And you can access them in your code via the `st.secrets` dictionary:
-
-```python
-db_username = st.secrets.db_credentials.username
-# Note: These sectioned secrets won’t appear in os.environ. Only simple data types like strings, integers, and floats are accessible via os.environ.
-```
-## Template-based Secrets Injection
-
-We have also enhanced the module manager with a feature that automatically retrieves the `.streamlit/secrets.toml` file from the GitHub repository being deployed, and pre-populates it in the text area. 
-
-The module manager first loads authentication information from environment variables, which are sourced from the `.streamlit/secrets.toml` file, and then override them with query parameters. This approach offers increased flexibility and customization for our users.
-
-It serves as a valuable tool for displaying a template in the user interface, showcasing the variables expected by the module so that the author remembers to set them when creating a new module version.
-
-For example, our [LLM Battleground](https://clarifai.com/anthropic/completion/installed_module_versions/LLMBattleground/compare) module relies on the `CLARIFAI_PAT` variable. When checking in its `.streamlit/secrets.toml` file, it appears as follows:
-
-```toml
-CLARIFAI_PAT = ""
-```
-This template is utilized when creating a module version, enabling the module's author to input their specific Personal Access Token (PAT). The module manager then performs validation to ensure that this essential value is not left empty. 
-
-Any variables left as `""` will trigger an error, prompting the author to provide the necessary information, thereby promoting accurate and error-free module deployments.
 
 ---
 
