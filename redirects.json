@@ -809,38 +809,6 @@
       "from": ["/portal-guide/agent-system-operators/map"]
     },
     {
-      "to": "/create/modules/",
-      "from": ["/portal-guide/modules/"]
-    },
-    {
-      "to": "/create/modules/create-install",
-      "from": ["/portal-guide/modules/create-install"]
-    },
-    {
-      "to": "/create/modules/manage",
-      "from": ["/portal-guide/modules/manage"]
-    },
-    {
-      "to": "/create/modules/secrets-management",
-      "from": ["/portal-guide/modules/secrets-management"]
-    },
-    {
-      "to": "/create/modules/examples/collectors",
-      "from": ["/portal-guide/modules/collectors"]
-    },
-    {
-      "to": "/create/modules/examples/ocr-evaluation",
-      "from": ["/portal-guide/modules/ocr-evaluation-module"]
-    },
-    {
-      "to": "/create/modules/examples/hyperparameter-sweeps",
-      "from": ["/portal-guide/modules/hyperparameter-sweeps"]
-    },
-    {
-      "to": "/create/modules/examples/collectors",
-      "from": ["/api-guide/data/collectors"]
-    },
-    {
       "to": "/create/models/export",
       "from": ["/sdk/advance-model-operations/model-export", "/sdk/advance-model-operations/"]
     },
