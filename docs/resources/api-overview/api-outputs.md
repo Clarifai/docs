@@ -1,6 +1,7 @@
 ---
 description: Understand Clarifai’s API responses
 sidebar_position: 6
+toc_max_heading_level: 4
 ---
 
 # API Outputs
@@ -35,14 +36,18 @@ The specific content within a response varies based on the API endpoint you've u
     <CodeBlock className="language-json">{Output1}</CodeBlock>
 </details>
 
-Typically, the response consists of several key sections, including:
+
+## Response Sections
+
+Typically, an API response consists of several key sections, including:
 
 - **Id** — The `id` is a unique identifier assigned to an API operation or resource. It serves as a reference that allows tracking, retrieval, and management of the request or resource in future interactions. Example: `id: "a6fbf0c4f4bf4bb09f2158ad3f8dfc4e"`. 
 - **Status** — Indicates the overall success or failure of the request.
 - **Outputs** — Contains details about the data processed by the API (such as images, videos, or text) and the results of the analysis, such as timestamps, resource information, and other relevant details.
 -  **Results** — This section, which is mostly found within the outputs section, contains the core results of the API call, such as predictions or analysis data.
 
-## Status Section
+
+### Status Section
 
 The top-level `status` section provides information about the outcome of the API request. It includes:
 
@@ -90,13 +95,13 @@ Below is an example of a failed response from a REST API request:
 }
 ```
 
- ## Outputs Section
+### Outputs Section
 
 Beyond the `status` output, the content of the response varies depending on the type of operation you performed. 
 
 Below are some of the most common details found in API responses.
 
-### Resource Details
+#### Resource Details
 
 The response can include details about the resource involved in the request, such as an input, model, workflow, or application.
 
@@ -117,7 +122,7 @@ For example, when analyzing an image input, you can find the `id`, `name`, and o
 }
 ```
 
-### Timestamps
+#### Timestamps
 
 Timestamps provide important information about when a resource was created and last modified. These timestamps are crucial for tracking changes, auditing, and understanding the lifecycle of resources in your Clarifai projects.
 
@@ -151,6 +156,15 @@ model {
 
 Below is an example response from a REST API request:
 
+```text
+"model": {
+    "id": "general-image-recognition",
+    "name": "Image Recognition",
+    "created_at": "2016-03-09T17:11:39.608845Z",
+    "modified_at": "2025-02-18T17:49:04.809517Z",
+}
+```
+
 :::info
 
 In REST API responses, [timestamps](https://github.com/protocolbuffers/protobuf/blob/0bfe41b27e3dd8a30ae383210d7af10c28a642ea/src/google/protobuf/timestamp.proto#L108-L144) are converted to the [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) standard. The standard represents date and time as a string in this format: `{year}-{month}-{day}T{hour}:{minute}:{second}[.{fractional_seconds}]Z`.
@@ -164,16 +178,8 @@ These are the key formatting rules:
 
 :::
 
-```text
-"model": {
-    "id": "general-image-recognition",
-    "name": "Image Recognition",
-    "created_at": "2016-03-09T17:11:39.608845Z",
-    "modified_at": "2025-02-18T17:49:04.809517Z",
-}
-```
 
-## Results Section
+### Results Section
 
 When you make a successful API call to Clarifai, the "results" section is where the real action happens. It's the payload containing the information you requested — the insights, predictions, or data derived from your input.
 
@@ -252,3 +258,25 @@ Below are some common elements you might encounter across different Clarifai API
 }
 ```
 
+
+## Response Size Limit
+
+API responses are limited to a maximum size of 128 MB.
+
+For models deployed using our [Compute Orchestration capabilities](https://docs.clarifai.com/compute/overview), response handling depends on the output type:
+
+* **Text outputs** — Text responses are automatically truncated to fit within the 128 MB limit and are returned to the client.
+
+* **Binary outputs** (image, audio, video) — Binary data cannot be safely truncated. If a binary response exceeds the size limit, the output is cleared and the request returns a `FAILURE` status.
+
+Here is an example of a failure response:
+
+```text
+output.status.code = status_code_pb2.FAILURE
+output.status.description = "Binary data cleared due to size limit"
+output.status.details = (
+  "Image/audio/video data was removed because response exceeded size limit"
+)
+```
+
+This behavior ensures API stability and prevents request timeouts caused by oversized responses.
