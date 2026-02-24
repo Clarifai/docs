@@ -21,7 +21,7 @@ import CodeBlock from "@theme/CodeBlock";
 
 ## Installation
 
-To begin, install the latest version of the `clarifai` Python package.
+To begin, install the latest version of the `clarifai` Python SDK package.
 
 ```text
 pip install --upgrade clarifai
@@ -43,38 +43,58 @@ Usage: clarifai [OPTIONS] COMMAND [ARGS]...
   Clarifai CLI
 
 Options:
-  --version      Show the version and exit.
-  --config TEXT
-  --help         Show this message and exit.
+  --version       Show the version and exit.
+  --config TEXT   Path to config file
+  --context TEXT  Context to use for this command
+  --help          Show this message and exit.
 
 Commands:
+  artifact (af)                   Manage Artifacts: create, upload, download,
+                                  list, get, delete
   computecluster (cc)             Manage Compute Clusters: create, delete,
                                   list
   config                              Manage multiple configuration profiles
                                       (contexts).
-
+                                  
                                       Authentication Precedence:
-
+                                  
                                         1. Environment variables (e.g.,
                                         `CLARIFAI_PAT`) are used first if set.
                                         2. The settings from the active
                                         context are used if no environment
                                         variables are provided.
-
+                                  
   deployment (dp)                 Manage Deployments: create, delete, list
   login                           Login command to set PAT and other
                                   configurations.
+  logout                          Log out by clearing saved credentials.
+                                  
+                                      Without flags, an interactive menu is
+                                      shown. Use flags for     programmatic /
+                                      non-interactive usage.
+                                  
+                                          Examples:
+                                            clarifai logout                        # Interactive
+                                            clarifai logout --current              # Clear current context PAT
+                                            clarifai logout --context staging      # Clear 'staging' PAT
+                                            clarifai logout --context staging --delete  # Remove 'staging' entirely
+                                            clarifai logout --all                  # Clear every context PAT
+                                          
   model                           Manage & Develop Models: init, download-
                                   checkpoints, signatures, upload
-
+                                  
                                       Run & Test Models Locally: local-runner,
                                       local-grpc, local-test
-
+                                  
                                       Model Inference: list, predict
   nodepool (np)                   Manage Nodepools: create, delete, list
   pipeline (pl)                   Manage pipelines: upload, init, list, etc
   pipeline-step (pipelinestep, ps)
                                   Manage pipeline steps: upload, test, list,
+                                  etc
+  pipelinerun (pr)                Manage Pipeline Version Runs: pause, cancel,
+                                  resume, monitor
+  pipelinetemplate (pt)           Manage pipeline templates: list, discover,
                                   etc
   run                             Execute a script with the current context's
                                   environment
@@ -117,7 +137,11 @@ Options:
 </TabItem>
 </Tabs>
 
-The `clarifai login` command is used to authenticate and configure your connection to the Clarifai platform. This involves setting up a [Personal Access Token](https://docs.clarifai.com/control/authentication/pat) (PAT) and other necessary configurations for making API requests.
+The `clarifai login` command is used to authenticate and configure your connection to the Clarifai platform. This involves setting up a [Personal Access Token](https://docs.clarifai.com/control/authentication/pat) (PAT) and user ID for making API requests.
+
+> **Note:** To find your Clarifai user ID, open the collapsible left sidebar and click **Settings**, then select **Account** from the dropdown — your user ID is listed there.
+> From the same **Settings** menu, select **Secrets** to generate a new PAT or copy an existing one.
+ 
 
 :::note Authentication Precedence
 
@@ -127,10 +151,10 @@ Here is an example of setting PAT as an environment variable:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Unix-Like Systems">
-    <CodeBlock className="language-bash"> export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
+    <CodeBlock className="language-bash">export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE</CodeBlock>
 </TabItem>
 <TabItem value="bash2" label="Windows">
-    <CodeBlock className="language-bash"> set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
+    <CodeBlock className="language-bash">set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -144,40 +168,38 @@ Here is an example of setting PAT as an environment variable:
 </TabItem>
 </Tabs>
 
-The `clarifai login` command will prompt you to enter your Clarifai PAT and user ID. The PAT input field is hidden for security purposes — simply paste the value and press Enter.
+The `clarifai login` command will prompt you to enter your Clarifai user ID and PAT. The PAT input field is masked for security purposes — simply paste the value and press Enter. 
 
-After providing the credentials, they will be validated automatically, and you'll be notified if any errors occur.
+> **Note:** The masked field supports **Backspace** (delete one character), **Ctrl+U** (clear the entire line), **Ctrl+W** (delete the last word), and **Ctrl+C** (cancel input).
 
-> **Note:** To generate or copy your PAT, go to the **Security** section of your personal settings page. Your user ID is also available under the **Account** section on the same page.
+After you provide your credentials, they’re validated automatically, and you’ll be notified immediately if there are any errors. A default context (`default`) is also created for you automatically.
+
+<details>
+
+ <summary>Example</summary>
+
+```text
+clarifai login
+Enter your Clarifai user ID: alfrick
+
+> To authenticate, you'll need a Personal Access Token (PAT).
+> Create one at: https://clarifai.com/alfrick/settings/secrets
+> Tip: Set CLARIFAI_PAT environment variable to skip this prompt.
+
+Enter your Personal Access Token (PAT): ********************************
+
+> Verifying token...
+✅ Success! You're logged in as alfrick
+💡 Tip: Use `clarifai config` to manage multiple accounts or environments
+[INFO] 10:39:07.660424 Login successful for user 'alfrick' in context 'default' |  thread=8480497856 
+```
+</details>
 
 :::tip What is a Context?
 
 A context refers to the active environment settings that determine how your commands interact with the Clarifai platform. Think of a context as a saved set of credentials (such as a PAT key or a specific user ID) you want to work with.
 
 :::
-
-You’ll also be prompted to enter a context name — this can be a new name, an existing one, or simply `"default"`. The credentials will be saved to the specified context, which becomes the active context used for interacting with the Clarifai platform.
-
-<details>
- <summary>Example</summary>
-    ```text
-    clarifai login
-    To authenticate, you'll need a Personal Access Token (PAT).
-    You can create one from your account settings: https://clarifai.com/settings/security
-    Enter your Personal Access Token:
-    Enter your Clarifai user ID: XXXX
-    Verifying token...
-    [INFO] 17:29:42.188183 Validating the Context Credentials... |  thread=5816
-    [INFO] 17:29:43.832686 ✅ Context is valid |  thread=5816
-    Let's save these credentials to a new context.
-    You can have multiple contexts to easily switch between accounts or projects.
-    Enter a name for this context [default]: my_new_context
-    ✅ Success! You are now logged in.
-    Credentials saved to the 'my_new_context' context.
-    💡 To switch contexts later, use `clarifai config use-context <name>`.
-    [INFO] 17:30:29.907399 Login successful for user 'XXXX' in context 'my_new_context' |  thread=5816
-```
-</details>
 
 ### Log in With a User ID
 
@@ -192,20 +214,18 @@ You can log in using your user ID.
 <details>
  <summary>Example</summary>
     ```text
-    clarifai login --user_id XXXX
-    To authenticate, you'll need a Personal Access Token (PAT).
-    You can create one from your account settings: https://clarifai.com/settings/security
-    Enter your Personal Access Token:
-    Verifying token...
-    [INFO] 18:08:00.158062 Validating the Context Credentials... |  thread=11532
-    [INFO] 18:08:06.153526 ✅ Context is valid |  thread=11532
-    Let's save these credentials to a new context.
-    You can have multiple contexts to easily switch between accounts or projects.
-    Enter a name for this context [default]: my_new_context
-    ✅ Success! You are now logged in.
-    Credentials saved to the 'my_new_context' context.
-    💡 To switch contexts later, use `clarifai config use-context <name>`.
-    [INFO] 18:08:21.163966 Login successful for user 'XXXX' in context 'my_new_context' |  thread=11532
+  clarifai login --user_id alfrick
+
+> To authenticate, you'll need a Personal Access Token (PAT).
+> Create one at: https://clarifai.com/alfrick/settings/secrets
+> Tip: Set CLARIFAI_PAT environment variable to skip this prompt.
+
+Enter your Personal Access Token (PAT): ********************************
+
+> Verifying token...
+✅ Success! You're logged in as alfrick
+💡 Tip: Use `clarifai config` to manage multiple accounts or environments
+[INFO] 11:59:31.377843 Login successful for user 'alfrick' in context 'default' |  thread=8480497856 
     ```
 </details>
 
@@ -219,18 +239,168 @@ You can optionally specify a custom API URL if you are connecting to a Clarifai 
 </TabItem>
 </Tabs>
 
+
 <details>
+
 <summary>Example</summary>
-    ```text
-    clarifai login https://api-dev.clarifai.com/
-    To authenticate, you'll need a Personal Access Token (PAT).
-    You can create one from your account settings: https://clarifai.com/settings/security
-    Enter your Personal Access Token: 
-    Enter your Clarifai user ID: XXXX
-    Verifying token...
-    [INFO] 17:04:30.321616 Validating the Context Credentials... |  thread=23096
+
+```text
+clarifai login https://api-dev.clarifai.com/
+Enter your Clarifai user ID: alfrick
+
+> To authenticate, you'll need a Personal Access Token (PAT).
+> Create one at: https://clarifai.com/alfrick/settings/secrets
+> Tip: Set CLARIFAI_PAT environment variable to skip this prompt.
+
+Enter your Personal Access Token (PAT): ********************************
+
+> Verifying token...
 ```
 </details>
+
+## Clarifai Logout
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai logout [OPTIONS]</CodeBlock>
+</TabItem>
+</Tabs>
+
+The `clarifai logout` command is used to securely remove saved PATs and credentials from your local environment. By default, the command launches an interactive menu. You can also use flags for non-interactive or scripted workflows.
+
+This is useful when rotating credentials, switching accounts, or cleaning up unused contexts.
+
+### Interactive Logout
+
+When run without any flags, the command shows the currently active context and launches an interactive, numbered menu for you to select an action.
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai logout</CodeBlock>
+</TabItem>
+</Tabs>
+
+These are the menu menu options:
+
+**1. Switch to another context** — Lists all other available contexts along with their associated user IDs and allows you to select one. No credentials are cleared.
+If only a single context exists, the CLI informs you that there are no other contexts to switch to.
+
+**2. Log out of current context (clear credentials)** — Clears the PAT from the active context’s configuration. The context itself (including `user_id` and `api_base`) is preserved, allowing you to re-authenticate later using `clarifai login` without re-entering all details.
+
+**3. Log out and delete current context**  — Removes the entire context entry, including credentials and metadata.
+If the current context is the only one available, the CLI clears the PAT but retains the context (at least one context must always exist).
+If other contexts are available, the CLI automatically switches the active context to the next available one.
+
+**4. Log out of all contexts** — Clears the PAT from every configured context in the local config file.
+This option is useful on shared machines or in security-sensitive environments.
+
+**5. Cancel** — Exits the menu without making any changes.
+
+<details>
+
+<summary>Example</summary>
+
+```text
+clarifai logout
+
+Current context is configured for user 'alfrick' (context: 'default', api: https://api.clarifai.com)
+
+  1. Switch to another context
+  2. Log out of current context (clear credentials)
+  3. Log out and delete current context
+  4. Log out of all contexts
+  5. Cancel
+
+Enter choice: 
+```
+</details>
+
+### Clear Current Session
+
+You can log out of the context you are currently using without deleting the context settings.
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai logout --current</CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+
+<summary>Example</summary>
+
+```text
+clarifai logout --current
+Logged out of context 'default'.
+```
+</details>
+
+To also remove the context entry itself, use the `--delete` flag.
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai logout --current --delete</CodeBlock>
+</TabItem>
+</Tabs>
+
+> **Caution:** Use the `--delete` flag with caution. Clearing a PAT only requires you to log in again, but deleting a context removes the named reference entirely, requiring you to recreate it manually if needed later.
+
+### Targeted Context Logout
+
+You can log out of a specific named context without deleting the context settings.
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai logout --context context-name</CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+
+<summary>Example</summary>
+
+```text
+clarifai logout --context default     
+Logged out of context 'default'.
+```
+</details>
+
+To also remove the context entry itself, use the `--delete` flag.
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai logout --context context-name --delete</CodeBlock>
+</TabItem>
+</Tabs>
+
+
+### Total Reset
+
+You can clear all saved credentials across every configured context at once. This is useful for security auditing or starting fresh.
+
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai logout --all</CodeBlock>
+</TabItem>
+</Tabs>
+
+
+
+:::note Environment Variable Warning
+
+After any logout action, if the `CLARIFAI_PAT` environment variable is still set, the CLI displays a warning:
+
+```
+Warning: CLARIFAI_PAT environment variable is still set. Run `unset CLARIFAI_PAT` (Linux/macOS) or `$env:CLARIFAI_PAT = ''` (PowerShell) to fully log out.
+```
+
+This warning is important because environment variables take precedence over values stored in the config file. As a result, clearing credentials from the config alone does not fully log you out if `CLARIFAI_PAT` is still defined.
+
+:::
+
+
+
 
 ##  Clarifai Config
 
