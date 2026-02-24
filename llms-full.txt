@@ -5080,7 +5080,7 @@ With Local Runners, you can connect your own models to Clarifai's compute plane.
 
 Your model can securely receive and process requests from anywhere, just as it would in a production cloud deployment.
 
-> **Note:** A runner is the actual running instance of your model. The Local Runners feature is temporarily available for free. 
+> **Note:** A runner is the actual running instance of your model
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -5103,7 +5103,7 @@ import LocalDevExampleCode from "!!raw-loader!../../../code_snippets/python-sdk/
 
 ### Install Clarifai CLI
 
-Install the latest version of the [Clarifai CLI](https://docs.clarifai.com/sdk/cli) (version `11.6.3` or higher) tool. It includes built-in support for Local Runners. 
+Install the latest version of the [Clarifai CLI](https://docs.clarifai.com/sdk/cli) tool. It includes built-in support for Local Runners. 
 
     pip install --upgrade clarifai
 
@@ -5244,11 +5244,19 @@ Or:
 
     clarifai model local-runner [OPTIONS] [MODEL_PATH]
 
-> - `--pool_size` is an integer option that sets the number of threads used to handle inference requests (default is 32). Increasing the pool size enables more requests to be processed in parallel, which can speed up testing and throughput. However, on the Community plan, your compute time allocation is consumed faster when you increase the number of threads, since usage is billed in proportion to the thread count.
+> **Note:** `MODEL_PATH` is an optional path to the model directory. If omitted, the current directory is used by default.
 
-> - `--suppress-toolkit-logs` option enables detailed display of logs for troubleshooting issues, especially when running an [Ollama server](https://docs.clarifai.com/compute/local-runners/ollama/#step-4-start-your-local-runner). By default, logs are suppressed.
+:::note Options
 
-> - `MODEL_PATH` is an optional path to the model directory. If omitted, the current directory is used by default.
+- `--pool_size` is an integer option that controls the number of threads used to process inference requests (default: 32). Increasing the pool size allows more requests to be handled in parallel, which can improve throughput and speed up local testing, at the cost of higher compute usage.
+
+- `--suppress-toolkit-logs` option enables detailed display of logs for troubleshooting issues, especially when running an [Ollama server](https://docs.clarifai.com/compute/local-runners/ollama/#step-4-start-your-local-runner). By default, logs are suppressed.
+
+- `--mode [env|container|none]` specifies how the model is executed locally. Use `env` to run the model inside a temporarily created virtual environment, `container` to run it in a Docker container, or `none` to run the model directly without creating an isolated environment. The default mode is `none`.
+
+- `--keep_image` retains the automatically created Docker image after the local test run completes. This option applies only when using `container` mode and defaults to `False`.
+
+:::
 
 If the runner doesn't detect the necessary [context configurations](#step-2-create-a-context-optional) in your environment, it will prompt you to create them using default values. 
 
@@ -7626,8 +7634,6 @@ Follow the on-screen prompts to:
 - Choose an existing cluster and nodepool where your model will run.
 
 - Specify the deployment configuration, including defining the minimum and maximum number of [replicas](https://docs.clarifai.com/compute/deployments/deploy-model#model-replica) to control scalability. Take note of the generated `deployment_id`.
-
-> **Note:** After completing the setup, you can backtrack to adjust these settings or clean up resources later if needed.
 
   Build Logs Example
 
@@ -27564,8 +27570,6 @@ Follow the on-screen prompts to:
 - Choose an existing cluster and nodepool where your model will run.
 
 - Provide the deployment configuration, including the minimum and maximum number of [replicas](https://docs.clarifai.com/compute/deployments/deploy-model#model-replica) to manage your model’s scalability. Take note of the created `deployment_id`.
-
-> **Note:** Once the setup is complete, you can backtrack to modify these configurations or clean up the deployment resources at any time.
 
   Build Logs Example
     {BuildLogsExample}
