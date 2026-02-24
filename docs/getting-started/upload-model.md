@@ -154,7 +154,6 @@ Follow the on-screen prompts to:
 
 - Provide the deployment configuration, including the minimum and maximum number of [replicas](https://docs.clarifai.com/compute/deployments/deploy-model#model-replica) to manage your model’s scalability. Take note of the created `deployment_id`.
 
-> **Note:** Once the setup is complete, you can backtrack to modify these configurations or clean up the deployment resources at any time.
 
 <details>
   <summary>Build Logs Example</summary>

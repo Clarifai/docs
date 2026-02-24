@@ -92,7 +92,7 @@ const config = {
         insights: true, // Optional, automatically send insights when user interacts with search results    
         container: 'div',
         debug: false, // Set debug to true if you want to inspect the modal
-        //askAi: 'XJeh2AHeZQsK',
+        askAi: 'XJeh2AHeZQsK',
 
       },
       announcementBar: {
