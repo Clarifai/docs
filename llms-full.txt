@@ -27144,56 +27144,61 @@ Clarifai provides an intuitive interface that makes it easy to provision compute
 
 Start by [logging in to](https://clarifai.com/login) your Clarifai account, or [sign up](https://clarifai.com/signup) for a new one to unlock access to the platform’s powerful AI capabilities. 
 
-## Step 2: Get a Model
+## Step 2: Choose a Model
 
-The Clarifai’s [platform](https://clarifai.com/home) offers a wide selection of cutting-edge models ready for integration into your AI projects.
+The Clarifai [Community platform](https://clarifai.com/explore) offers a wide range of state-of-the-art models that are ready to use in your AI applications.
 
-To quickly find a model, open the collapsible left sidebar and select the **Home** option. On the homepage, explore the **Trending AI Models** section, where you’ll find popular and ready-to-use models highlighted for easy access.
+Browse the platform to quickly discover a model that fits your use case — whether for text generation, vision, or multimodal tasks.
 
-After finding a model, click the **DEPLOY THE MODEL** button in the bottom right corner of its information card.
+For this guide, we’ll use the [Llama-3.2-3B-Instruct](https://clarifai.com/meta/Llama-3/models/Llama-3_2-3B-Instruct) model.
 
-For this example, we'll use the [Llama-3_2-3B-Instruct](https://clarifai.com/meta/Llama-3/models/Llama-3_2-3B-Instruct) model.
+After finding a model, click the **Deploy Model** button in the upper-right corner of the page.
 
 ![](/img/new-docs/deploy-1.png)
 
-## Step 3: Review Your Compute Instances
+## Step 3: Configure Your Deployment
 
-After clicking the button, a pop-up window will appear showing the available pre-configured [compute instance](https://docs.clarifai.com/compute/deployments/cloud-instances) for deployment, along with a pre-filled [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat) for authentication.
+You’ll be redirected to the deployment creation page, where most fields are automatically pre-filled for your convenience — such as the Deployment ID and [PAT](https://docs.clarifai.com/control/authentication/pat) (used for authentication).
 
-Review the options and choose the one that best fits your needs.
-
-- **Basic Compute** — Recommended for development and quick tests, offering reliable, low-cost performance. For this example, we'll go with this option. 
-- **Advanced Compute** — Ideal for large-scale production inference or training of complex models.  
+You can edit these values as needed and optionally add descriptive notes to help identify the deployment later.
 
 ![](/img/new-docs/deploy-2.png)
 
-:::tip
+The only required action is selecting a nodepool, which defines the [cloud instance and hardware](https://docs.clarifai.com/compute/deployments/cloud-instances) that will host your model. To configure it, click the pencil icon on the far right of the nodepool section.
 
-If you prefer more control and want to deploy the model using an existing [cluster and nodepool](https://docs.clarifai.com/compute/deployments/clusters-nodepools), click the provided link in the pop-up window. This will allow you to customize the deployment based on your needs.
+In the nodepool configuration dialog, open the **Recommended** tab to view a list of pre-vetted instances that are known to work well with the selected model and will be provisioned automatically.
 
-:::
+![](/img/new-docs/deploy-3.png)
 
-Then, click the **Deploy** button. 
+Choose the option that best fits your performance and cost requirements, then click **Save Changes**.
 
-A toast notification will appear at the top of the page confirming that a cluster and nodepool have been successfully created using the pre-configured settings, and the model has been deployed within this infrastructure.
+> **Note:** If you already have an existing nodepool, you can select it instead. You may also create a [custom nodepool](https://docs.clarifai.com/compute/deployments/clusters-nodepools) tailored to your specific needs. If you need access to a premium nodepool, please [contact us](https://www.clarifai.com/explore/contact-us).
+
+On the **Create Deployment** page, the remaining deployment settings, including pricing, will be automatically filled in for you.
+
+![](/img/new-docs/deploy-4.png)
+
+Finally, click **Create Deployment** in the bottom-right corner of the page to launch your deployment.
+
+A toast notification will appear at the top of the page confirming that the cluster and nodepool have been successfully created using the pre-configured settings, and the model has been deployed within this infrastructure.
 
 You’ll then be automatically redirected to the newly created nodepool page, where you can view your compute settings and the deployed model.
 
-![](/img/new-docs/deploy-3.png)
+![](/img/new-docs/deploy-8.png)
 
 ## Step 4: Run Inferences  
 
 To make a prediction using your deployed model, start by navigating to its individual page. You can do this by clicking the model listed on the nodepool page.
 
-Next, on the deployed model’s page, click the **Open in Playground** button in the upper-right corner.
+Next, on the deployed model’s page, click the **Try in Playground** button in the upper-right corner.
 
 > **Note:** On the model’s individual page, open the **Compute** tab to view details of the compute environment where it’s deployed.
 
-![](/img/new-docs/deploy-4.png)
+![](/img/new-docs/deploy-9-a.png)
 
 You’ll be taken to the [Playground](https://docs.clarifai.com/getting-started/quickstart-playground) interface, where you can enter your prompt in the message box to run inferences using your deployed model. You can also try one of the predefined prompt examples.
 
-![](/img/new-docs/deploy-8.png)
+![](/img/new-docs/deploy-9-b.png)
 
 Next, submit your request by clicking the arrow icon in the message box or pressing Enter on your keyboard.
 
