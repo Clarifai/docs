@@ -10,6 +10,7 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [Build Agents](https://docs.clarifai.com/docs/compute/agents/build): Learn how to build agents with Clarifai
 - [Deploy Open-Source MCP Servers](https://docs.clarifai.com/docs/compute/agents/deploy-mcp): Upload, deploy, and interact with open-source MCP servers on Clarifai
 - [Build Custom MCP Servers](https://docs.clarifai.com/docs/compute/agents/mcp): Build performant MCP Servers with FastMCP for Clarifai
+- [Supported Cloud Instances](https://docs.clarifai.com/docs/compute/cloud-instances): Learn about the instance types we support
 - [Deployments](https://docs.clarifai.com/docs/compute/deployments/README): Orchestrate your AI workloads better, avoid vendor lock-in, and use compute spend efficiently
 - [Supported Cloud Instances](https://docs.clarifai.com/docs/compute/deployments/cloud-instances): Learn about the instance types we support
 - [Create Clusters and Nodepools](https://docs.clarifai.com/docs/compute/deployments/clusters-nodepools): Set up capabilities that match your computational needs
