@@ -29,7 +29,7 @@ Then, click the **Quick Compute** button located in the bottom-left corner of th
 
 ## Step 3: Review Your Compute Instance
 
-After clicking the button, a pop-up window will appear, displaying your pre-configured [compute instance](https://docs.clarifai.com/compute/deployments/cloud-instances) and its settings.
+After clicking the button, a pop-up window will appear, displaying your pre-configured [compute instance](https://docs.clarifai.com/compute/cloud-instances) and its settings.
 
 A [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat) will be pre-populated for your convenience. If needed, you can select a different token from the dropdown list or create a new one.
 

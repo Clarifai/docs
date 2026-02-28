@@ -37,7 +37,7 @@ You can edit these values as needed and optionally add descriptive notes to help
 
 ![](/img/new-docs/deploy-2.png)
 
-The only required action is selecting a nodepool, which defines the [cloud instance and hardware](https://docs.clarifai.com/compute/deployments/cloud-instances) that will host your model. To configure it, click the pencil icon on the far right of the nodepool section.
+The only required action is selecting a nodepool, which defines the [cloud instance and hardware](https://docs.clarifai.com/compute/cloud-instances) that will host your model. To configure it, click the pencil icon on the far right of the nodepool section.
 
 In the nodepool configuration dialog, open the **Recommended** tab to view a list of pre-vetted instances that are known to work well with the selected model and will be provisioned automatically.
 
