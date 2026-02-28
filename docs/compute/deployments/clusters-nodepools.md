@@ -43,7 +43,7 @@ Select an instance type that aligns with your specific requirements. The table d
 
 :::tip
 
-See [Supported Cloud Instances](https://docs.clarifai.com/compute/deployments/cloud-instances) to learn more about the instance types we provide.
+See [Supported Cloud Instances](https://docs.clarifai.com/compute/cloud-instances) to learn more about the instance types we provide.
 
 :::
 
@@ -245,7 +245,7 @@ Then, add the following code snippets to their corresponding files in the `confi
 - `nodepool.compute_cluster.id` — The ID of the parent compute cluster that this nodepool belongs to. The cluster must already exist.
 - `nodepool.description` — A human-readable description of the nodepool.
 - `nodepool.instance_types` — A list that details the types of instances (virtual machines) that will make up this nodepool.
-- `nodepool.instance_types[0].id` — Specifies the type of instance to use; in this case, ["g5.2xlarge,"](https://docs.clarifai.com/compute/deployments/cloud-instances/#g5-instances) which is a type of GPU-optimized instance from AWS.
+- `nodepool.instance_types[0].id` — Specifies the type of instance to use; in this case, ["g5.2xlarge,"](https://docs.clarifai.com/compute/cloud-instances/#g5-instances) which is a type of GPU-optimized instance from AWS.
 - `nodepool.instance_types[0].compute_info` — A nested object that provides detailed specifications for the instance.
 - `nodepool.instance_types[0].compute_info.cpu_limit` — Number of virtual CPUs the instance provides. It's stored as a string (follows [Kubernetes notation](https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/)), and the value must match the provider’s specification for the chosen type.
 - `nodepool.instance_types[0].compute_info.cpu_memory` — Amount of system memory (RAM) available to the node. The value can be expressed in gigabytes (Gi) or other supported memory units.

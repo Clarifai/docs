@@ -251,7 +251,7 @@ These are some parameters you can define:
 - **`cpu_memory`** – Minimum memory required for the CPU (uses Kubernetes notation, e.g., "1Gi", "1500Mi", "3Gi").
 -	**`cpu_memory_requests`** (default: `500Mi` (500 mebibytes)) – Specifies the minimum amount of memory to request for the CPU. Also follows Kubernetes notation, such as 1Ki (1 kibibyte), 1500Mi (1500 mebibytes), 3Gi(3 gibibytes), and 4Ti (4 tebibytes).
 - **`num_accelerators`** – Number of GPUs or TPUs to use for inference.
-- **`accelerator_type`** – Specifies the type of hardware [accelerators](https://docs.clarifai.com/compute/deployments/cloud-instances/) (e.g., GPU or TPU) supported by the model (e.g., "NVIDIA-A10G"). _Note that instead of specifying an exact accelerator type, you can use a wildcard `(*)` to automatically match all available accelerators that fit your use case. For example, using `["NVIDIA-*"]` will enable the system to choose from all NVIDIA options compatible with your model._
+- **`accelerator_type`** – Specifies the type of hardware [accelerators](https://docs.clarifai.com/compute/cloud-instances/) (e.g., GPU or TPU) supported by the model (e.g., "NVIDIA-A10G"). _Note that instead of specifying an exact accelerator type, you can use a wildcard `(*)` to automatically match all available accelerators that fit your use case. For example, using `["NVIDIA-*"]` will enable the system to choose from all NVIDIA options compatible with your model._
 - **`accelerator_memory`** – Minimum memory required for the GPU or TPU.
 
 #### Hugging Face Model Checkpoints  

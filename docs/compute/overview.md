@@ -75,6 +75,12 @@ Nodepools are an important part of how compute resources are operated within a c
 
 Nodepools specify the accelerator and instance that will run your models and other workloads. Accelerators are specialized hardware resources, such as GPUs or dedicated ML chips used for computation.
 
+:::tip Supported Instance Types
+
+See the [Supported Cloud Instances](https://docs.clarifai.com/compute/cloud-instances) page for a full list of available GPU, TPU, and CPU-only instance types across AWS, GCP, Vultr, and Oracle — including pricing and hardware specs.
+
+:::
+
 Each nodepool can run containers or workloads, and you can have multiple nodepools within a single cluster to support different types of workloads or performance requirements. These nodes execute tasks like model training, inference, and workflow orchestration within a compute cluster. 
 
 With compute orchestration, you can ensure these nodepools are properly scaled up or down depending on the workload's size, complexities, and costs.
@@ -85,7 +91,7 @@ With compute orchestration, you can ensure these nodepools are properly scaled u
 
 ### 1. Performance and Deployment Flexibility
 
-- It provides access to a wide range of [accelerator options](https://docs.clarifai.com/portal-guide/compute-orchestration/cloud-instances) tailored to your use case. You can configure multiple compute clusters each tailored to your AI development stage, performance requirements, and budget. You can also run affordable proof of concepts or compute-heavy LLMs or LVMs in production all from a single product.
+- It provides access to a wide range of [GPU, TPU, and CPU instance types](https://docs.clarifai.com/compute/cloud-instances) across AWS, GCP, Vultr, and Oracle — including NVIDIA, AMD, and Google accelerators — tailored to your use case. You can configure multiple compute clusters each tailored to your AI development stage, performance requirements, and budget. You can also run affordable proof of concepts or compute-heavy LLMs or LVMs in production all from a single product.
 
 - It offers flexibility to [make deployments](https://docs.clarifai.com/portal-guide/compute-orchestration/deploy-model) in any cloud service provider, on-premises, air-gapped, or Kubernetes-supported environment. Or, you can make deployments in Clarifai’s compute to avoid having to worry about managing infrastructure.
 This allows users to leverage their hardware of choice without being locked into a single vendor.

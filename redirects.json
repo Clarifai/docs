@@ -1,5 +1,9 @@
 [
   {
+    "to": "/compute/cloud-instances",
+    "from": ["/compute/deployments/cloud-instances"]
+  },
+  {
     "to": "/getting-started/quickstart",
     "from": [
       "/clarifai-basics/community",

@@ -109,7 +109,7 @@ Here is a line graph:
 
 ## Compute Time by Instance and Date
 
-This section shows both the total and average compute time consumed by each [instance type](https://docs.clarifai.com/compute/deployments/cloud-instances) over the selected time period. 
+This section shows both the total and average compute time consumed by each [instance type](https://docs.clarifai.com/compute/cloud-instances) over the selected time period. 
 
 A stacked bar chart (displayed by default) or a line graph shows the number of compute hours per instance type across specific dates.
 

@@ -328,7 +328,7 @@ This section controls the resources allocated to the step during execution. It i
 
 * `cpu_limit: "500m"` allocates half of one CPU core's processing power (500 millicores = 0.5 CPU cores). This indicates the step is a lightweight task (like text parsing), not a heavy calculation.
 * `cpu_memory: "500Mi"` limits memory usage to 500 Mebibytes of RAM.
-* `num_accelerators: 0` means no GPU or other [accelerators](https://docs.clarifai.com/compute/deployments/cloud-instances) are used. This keeps costs low, as you are running on standard CPU infrastructure.
+* `num_accelerators: 0` means no GPU or other [accelerators](https://docs.clarifai.com/compute/cloud-instances) are used. This keeps costs low, as you are running on standard CPU infrastructure.
 
 
 ### `step/requirements.txt` 

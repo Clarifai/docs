@@ -84,7 +84,7 @@ After selecting your desired model, it will be listed in the **Select a Model** 
 
 ### Step 3: Configure an Instance
 
-Next, choose a cloud instance type and hardware configuration that best fits your model’s compute requirements and performance goals.
+Next, choose a cloud instance type and hardware configuration that best fits your model’s compute requirements and performance goals. See [Supported Cloud Instances](https://docs.clarifai.com/compute/cloud-instances) for a full list of available GPUs, TPUs, and CPU-only options across all cloud providers.
 
 To do this, select **Choose an instance** or click the **Edit** button. 
 
