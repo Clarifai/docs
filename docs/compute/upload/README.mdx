@@ -53,30 +53,23 @@ import DockerFile from "!!raw-loader!../../../code_snippets/python-sdk/model-upl
 
 ## Step 1: Perform Prerequisites
 
-### Sign Up or Log In 
+### Sign Up and Log In
 
-[Log in to](https://clarifai.com/login) your existing Clarifai account, or [sign up](https://clarifai.com/signup) for a new one. If you're creating a new account, a default application will be provided for you.
+[Log in to](https://clarifai.com/login) your existing Clarifai account, or [sign up](https://clarifai.com/signup) for a new one. If you’re creating a new account, a default application will be provided for you.
 
-Next, retrieve the following credentials:
+Then authenticate using the CLI:
 
-- **App ID** – Go to your application’s page and select the [**Overview**](https://docs.clarifai.com/create/applications/manage#app-overview) option in the collapsible left sidebar. Get the app ID from there. 
-- **User ID** – In the collapsible left sidebar, select **Settings** and choose **Account** from the dropdown list. Then, locate your user ID.
-- **Personal Access Token (PAT)** – From the same **Settings** option, choose **Secrets** to generate or copy your [PAT](https://docs.clarifai.com/control/authentication/pat). This token is used to authenticate your connection with the Clarifai platform.
+```bash
+clarifai login
+```
 
-You need to set the `CLARIFAI_PAT` you've retrieved as an environment variable to enhance its security. 
+The CLI will prompt for your **Personal Access Token (PAT)** — find it in **Settings** > **Secrets** in the left sidebar. It will auto-detect your user ID and save everything locally. You can verify with `clarifai whoami`.
 
-<Tabs groupId="code">
-<TabItem value="bash" label="Unix-Like Systems">
-    <CodeBlock className="language-bash"> export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
-</TabItem>
-<TabItem value="bash2" label="Windows">
-    <CodeBlock className="language-bash"> set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE </CodeBlock>
-</TabItem>
-</Tabs>
+> **Note:** Alternatively, you can set `export CLARIFAI_PAT=YOUR_PAT_HERE` as an environment variable, but `clarifai login` is the recommended approach since it also configures your user ID and app context.
 
 ### Install Clarifai Package
 
-Install the latest version of the `clarifai` Python package. This will also install the Clarifai [Command Line Interface](https://docs.clarifai.com/additional-resources/api-overview/cli/) (CLI), which we'll use for testing and uploading the model. 
+Install the latest version of the `clarifai` Python package. This will also install the Clarifai [Command Line Interface](https://docs.clarifai.com/resources/api-overview/cli) (CLI), which we'll use for testing and uploading the model.
 
 
 <Tabs groupId="code">
@@ -85,15 +78,19 @@ Install the latest version of the `clarifai` Python package. This will also inst
 </TabItem>
 </Tabs>
 
-### Set Up Cluster and Nodepool
+### Set Up Compute (For Manual Deploy Only)
 
-To run reliably and efficiently, your model requires a dedicated compute environment consisting of a [cluster and a nodepool](https://docs.clarifai.com/compute/deployments/clusters-nodepools/).
+:::tip One-Command Deploy
 
-Once your model is uploaded to the Clarifai platform, you need to deploy it to an existing compute environment.
+If you plan to use `clarifai model deploy` (recommended), you can **skip this step entirely** — the CLI automatically creates the compute cluster, nodepool, and deployment for you. See the [Getting Started guide](https://docs.clarifai.com/getting-started/upload-model) for the simplified flow.
+
+:::
+
+If you prefer to manage compute infrastructure manually, your model requires a dedicated compute environment consisting of a [cluster and a nodepool](https://docs.clarifai.com/compute/deployments/clusters-nodepools/).
 
 > **Note:** A cluster is the foundation of your compute environment, while a nodepool is a single compute node or a group of nodes within a cluster that provides the resources your model requires.
 
-You can follow [this guide](https://docs.clarifai.com/getting-started/set-up-compute) to set up your compute environment fast.
+You can follow [this guide](https://docs.clarifai.com/getting-started/set-up-compute) to set up your compute environment.
 
 ### Set Up Docker or a Virtual Environment
 

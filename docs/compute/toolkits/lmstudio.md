@@ -10,6 +10,8 @@ sidebar_position: 4
 
 [LM Studio](https://lmstudio.ai/) is a desktop application that lets you run and chat with open-source large language models (LLMs) locally — no internet connection required.
 
+> **Important:** Clarifai’s LM Studio integration currently supports **macOS only** (Apple devices). For other platforms, consider using [Ollama](https://docs.clarifai.com/compute/toolkits/ollama) or [vLLM](https://docs.clarifai.com/compute/toolkits/vllm) instead.
+
 With Clarifai’s [Local Runners](https://docs.clarifai.com/compute/local-runners/), you can take this a step further: run LM Studio models directly on your machine, expose them securely through a public URL, and leverage Clarifai’s powerful AI platform — all while maintaining the speed, privacy, and control of local deployment.
 
 > **Note:** After initializing a model using the LM Studio toolkit, you can [upload](https://docs.clarifai.com/compute/upload/#step-4-upload-the-model-to-clarifai) it to Clarifai to leverage the platform’s capabilities.
@@ -72,8 +74,6 @@ Install the `openai` package — it’s required to perform inference with LM St
 [Download](https://lmstudio.ai/download) and install the LM Studio desktop application to run open-source large language models locally. 
 
 Ensure the LM Studio remains open and running when you start a Clarifai Local Runner, as the runner relies on LM Studio’s internal model runtime for successful execution.
-
-> **Note:** Currently, Clarifai Local Runners support running LLMs through LM Studio only on Apple devices (macOS).
 
 ## Step 2: Initialize a Model
 

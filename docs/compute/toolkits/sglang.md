@@ -14,6 +14,8 @@ It provides a flexible way to execute models with advanced capabilities like mul
 
 With Clarifai’s [Local Runners](https://docs.clarifai.com/compute/local-runners/), you can download and run these models on your own machine using the SGLang runtime format, expose them securely via a public URL, and tap into Clarifai’s powerful platform  — all while retaining the privacy, performance, and control of local execution.
 
+> **Important:** SGLang requires **Linux with an NVIDIA GPU** (Ampere or newer, compute capability >= 8.0). It does not run on macOS or Windows. For local testing on non-Linux machines, consider using [vLLM](https://docs.clarifai.com/compute/toolkits/vllm) or [Ollama](https://docs.clarifai.com/compute/toolkits/ollama) instead.
+
 > **Note:** The SGLang toolkit specifies a runtime format to run models sourced from external sources like Hugging Face. After initializing a model using the toolkit, you can [upload](https://docs.clarifai.com/compute/upload/#step-4-upload-the-model-to-clarifai) it to Clarifai to leverage the platform’s capabilities.
 
 

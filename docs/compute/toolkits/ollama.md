@@ -214,7 +214,7 @@ If the necessary context configurations aren’t detected, the CLI will guide yo
 
 This setup ensures all required components — such as compute clusters, nodepools, and deployments — are properly included in your configuration context, which are described [here](README.mdx#step-2-create-a-context-optional). Simply review each prompt and confirm to proceed.
 
-> **Note**: Use the `--suppress-toolkit-logs` option to show detailed logs from the Ollama server, which is helpful for debugging: `clarifai model serve --suppress-toolkit-logs`.
+> **Note**: Use the `-v` (verbose) flag to show detailed logs from the Ollama server, which is helpful for debugging: `clarifai model serve -v`.
 
 <details>
   <summary>Example Output</summary>
@@ -266,6 +266,56 @@ Alternatively, while your runner is active in the terminal, you can open the **[
 ![](/img/others/runners-dashboard-ollama.png)
 
 When you're done, just close the terminal running the local runner to shut it down.
+
+## Deploy to Cloud
+
+After testing locally, you can deploy your Ollama model to Clarifai's cloud compute with a single command. All infrastructure (compute cluster, nodepool, deployment) is created automatically.
+
+### Step 1: Initialize
+
+If you haven't already, scaffold an Ollama model project:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+<CodeBlock className="language-bash">clarifai model init --toolkit ollama</CodeBlock>
+</TabItem>
+</Tabs>
+
+### Step 2: Deploy
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+<CodeBlock className="language-bash">clarifai model deploy ./llama3.2 --instance g5.xlarge</CodeBlock>
+</TabItem>
+</Tabs>
+
+If your `config.yaml` already has a `compute.instance` value, you can omit the `--instance` flag:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+<CodeBlock className="language-bash">clarifai model deploy ./llama3.2</CodeBlock>
+</TabItem>
+</Tabs>
+
+Browse available GPU instances with `clarifai model deploy --instance-info`.
+
+### Step 3: Monitor and Manage
+
+```bash
+# Check deployment status
+clarifai model status --deployment <deployment-id>
+
+# Stream live logs
+clarifai model logs --deployment <deployment-id>
+
+# Run predictions
+clarifai model predict user/app/models/llama3.2 "Explain AI in one sentence"
+
+# Clean up when done
+clarifai model undeploy --deployment <deployment-id>
+```
+
+For the full deploy options reference, see the [CLI Reference](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-deploy).
 
 ## Additional Examples
 

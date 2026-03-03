@@ -46,7 +46,7 @@ Let's demonstrate how you can build a simple MCP server using the FastMCP framew
 
 You need to install the following Python packages:
 
-- `clarifai` – The latest version of the Clarifai Python SDK required for integrating your MCP server with the Clarifai platform. This also installs the Clarifai [Command Line Interface (CLI)](https://docs.clarifai.com/additional-resources/api-overview/cli), which we'll use for uploading the server.
+- `clarifai` – The latest version of the Clarifai Python SDK required for integrating your MCP server with the Clarifai platform. This also installs the Clarifai [Command Line Interface (CLI)](https://docs.clarifai.com/resources/api-overview/cli), which we'll use for uploading the server.
 
 - `fastmcp` – This is the core framework used to define and manage the MCP server.
 
@@ -235,21 +235,21 @@ After entering these details, click the **Connect** button to establish a connec
     ![](/img/others/mcp-inspector.png)
 </details>
 
-### Step 6: Upload to Clarifai
+### Step 6: Deploy to Clarifai
 
-To upload the MCP server to the Clarifai platform, navigate to its root directory and run the following command:
+You can deploy the MCP server to the Clarifai platform using a single command. Navigate to its root directory and run:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">clarifai model upload</CodeBlock>
+    <CodeBlock className="language-bash">clarifai model deploy</CodeBlock>
 </TabItem>
 </Tabs>
 
-As the upload proceeds, you'll see build logs directly in your terminal. These are helpful for troubleshooting any issues that might pop up during the process. 
+This command handles everything — building, uploading, and deploying your model. The CLI automatically creates the required compute infrastructure (cluster, nodepool, deployment).
 
 :::note
 
-Once the upload is complete, the build logs will display an example code snippet that you can incorporate into your `client.py` script. The snippet will contain the URL of your deployed MCP server, which you'll use to enable your AI agents or clients to communicate with the server. This URL is constructed by combining the MCP API base URL (`https://api.clarifai.com/v2/ext/mcp/v1`) with your specific Clarifai identifiers: your user ID, app ID, and the model ID of your deployed MCP server. For example: `https://api.clarifai.com/v2/ext/mcp/v1/users/user-id/apps/app-id/models/model-id`.
+Once the deployment is complete, the output will display the URL of your deployed MCP server, which you'll use to enable your AI agents or clients to communicate with the server. This URL is constructed by combining the MCP API base URL (`https://api.clarifai.com/v2/ext/mcp/v1`) with your specific Clarifai identifiers: your user ID, app ID, and the model ID of your deployed MCP server. For example: `https://api.clarifai.com/v2/ext/mcp/v1/users/user-id/apps/app-id/models/model-id`.
 
 :::
 
@@ -258,13 +258,13 @@ Once the upload is complete, the build logs will display an example code snippet
     <CodeBlock className="language-text">{BuildLogsExample}</CodeBlock>
 </details>
 
-**Note:** If you make changes to your server code and re-upload it, Clarifai automatically creates a new version of your model.
+**Note:** If you make changes to your server code and re-deploy it, Clarifai automatically creates a new version of your model.
 
-### Step 7: Deploy the Model
+:::tip Alternative: Upload Only
 
-After uploading your model to Clarifai, you'll need to deploy it to a dedicated compute cluster and nodepool. This action provisions the necessary resources to run your server and handle requests efficiently.
+If you prefer to upload the model first and deploy separately (e.g., to a specific nodepool), you can use `clarifai model upload` and then deploy via the UI or `clarifai deployment create`. See the [deployments guide](https://docs.clarifai.com/compute/deployments/deploy-model) for details.
 
-Learn how to perform deployments [here](https://docs.clarifai.com/compute/deployments/clusters-nodepools).
+:::
 
 ### Step 8: Interact With Server
 
