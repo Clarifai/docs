@@ -1,9 +1,9 @@
 ---
-description: Build and deploy your first custom model to the Clarifai platform
-sidebar_position: 5
+description: Deploy your first model to Clarifai cloud compute using the CLI
+sidebar_position: 3
 ---
 
-# Build and Deploy a Model
+# Deploy Your First Model via CLI
 
 **Quickly build and deploy your first custom model to the Clarifai platform**
 <hr />
@@ -123,14 +123,14 @@ When it finishes, you'll see output like this:
 ── Ready ──────────────────────────────────────────────
   Model deployed successfully!
 
-  Model:           https://clarifai.com/your-user/main/models/Qwen3-0.6B
+  Model:           https://clarifai.com/your-user/main/models/qwen3-06b
   Version:         abc12345
   Deployment:      deploy-Qwen3-0.6B-dd8481
-  Instance:        g5.xlarge (NVIDIA A10G, 24 GiB)
+  Instance:        g4dn.xlarge (NVIDIA T4, 15 GiB)
   Cloud:           AWS / us-east-1
 
 ── Next Steps ─────────────────────────────────────────
-  Predict:         clarifai model predict your-user/main/models/Qwen3-0.6B "Hello"
+  Predict:         clarifai model predict your-user/main/models/qwen3-06b "Hello"
   Logs:            clarifai model logs --deployment "deploy-Qwen3-0.6B-dd8481"
   Status:          clarifai model status --deployment "deploy-Qwen3-0.6B-dd8481"
   Undeploy:        clarifai model undeploy --deployment "deploy-Qwen3-0.6B-dd8481"
@@ -144,7 +144,7 @@ Copy the predict command from the deploy output, or construct it using your user
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">clarifai model predict your-user/main/models/Qwen3-0.6B "Explain quantum computing in one sentence"</CodeBlock>
+    <CodeBlock className="language-bash">clarifai model predict your-user/main/models/qwen3-06b "Explain quantum computing in one sentence"</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -240,7 +240,7 @@ For offline development without a Clarifai login:
 </TabItem>
 </Tabs>
 
-This CPU-only model doesn't need `--instance` — the CLI uses the `inference_compute_info` from `config.yaml`. For GPU models, you'd add `--instance g5.xlarge` (run `clarifai model deploy --instance-info` to see all options).
+This CPU-only model doesn't need `--instance` — the CLI uses the `inference_compute_info` from `config.yaml`. For GPU models, you'd add `--instance g4dn.xlarge` (run `clarifai model deploy --instance-info` to see all options).
 
 ### Step 5B: Predict
 

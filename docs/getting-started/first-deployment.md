@@ -1,9 +1,9 @@
 ---
 description: Set up your computing infrastructure easily and fast for inference
-sidebar_position: 3
+sidebar_position: 4
 ---
 
-# Deploy Your First Model
+# Deploy Your First Model via UI
 
 **Quickly set up infrastructure for inference**
 <hr />
