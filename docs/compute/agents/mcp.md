@@ -146,10 +146,10 @@ Each tool is enriched with essential metadata:
 * Tool-level metadata – The `@server.tool()` decorator itself takes a `name` and `description` to explain the tool's overall purpose.
 * Input descriptions – The tool's input arguments are precisely described using `Annotated` in conjunction with `Field`. 
 
-In our example, we define two distinct tools:
+In our example, we define a tool and a resource:
 
-* `calculate_sum` – A tool that takes two numbers, `a` and `b`, and returns their sum.
-* `weather` – A tool that accepts a `city` name and provides a pre-defined weather response.
+* `hello` – A tool that takes a `name` parameter and returns a greeting message.
+* `config://version` – A resource that returns the server version.
 
 :::tip
 
@@ -179,12 +179,12 @@ This is the `config.yaml` file for the custom model (or, in this case, a server)
 
 Let’s break down what each part of the file does.
 
-* `build_info` – This section specifies the Python version that Clarifai should use to build the environment for your model. Note that we currently support Python 3.11 and Python 3.12 (default).
-* `inference_compute_info` – This section defines the computing resources allocated for your MCP model when it performs inference; that is, when it's running and being used by AI agents.
-    - `cpu_limit` – '1' : Allocates 1 CPU core for the model's inference tasks.
-    - `cpu_memory` – 1Gi : Provides 1 Gigabyte of RAM for the model.
-    - `num_accelerators`– 0 : Indicates that no specialized hardware accelerators (like GPUs) are requested for this model. This is typical for basic MCP servers that might not require heavy computational power.
-* `model` – This specifies your Clarifai app ID, model ID, and Clarifai user ID. These will define where your model will be uploaded on the Clarifai platform. The `model_type_id` parameter indicates the type of model being uploaded; in this case, we use `mcp`.  
+* **`model.id`** – A unique identifier for your model. You can choose any name you want.
+* **`model.model_type_id`** – Set to `"mcp"` to indicate this is an MCP server model.
+* **`compute.instance`** – The compute instance type for deployment. Run `clarifai list-instances` to see all available options.
+* **`checkpoints`** – (Optional) Uncomment to auto-download model checkpoints from Hugging Face at runtime.
+
+> `user_id` and `app_id` are auto-filled from your [active context](https://docs.clarifai.com/resources/api-overview/cli#clarifai-config) at deploy time. You don’t need to add them manually.
 
 ### Step 4: Define Dependencies in `requirements.txt`
 

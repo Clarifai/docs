@@ -135,9 +135,13 @@ The [`model.py`](https://docs.clarifai.com/compute/upload/#prepare-modelpy) file
   <CodeBlock className="language-text">{LMStudioConfig}</CodeBlock>
 </details>
 
-The `config.yaml` file defines key configuration details, such as compute resource requirements and toolkit metadata.
+The `config.yaml` file defines your LM Studio model's configuration:
 
-In the `model` section, specify a unique model ID (any name of your choice) and app ID. Your Clarifai user ID is set by default from your [active context](https://docs.clarifai.com/resources/api-overview/cli#clarifai-config). These parameters determine where the model will be deployed on the Clarifai platform.
+- **`model.id`** — A unique identifier for your model.
+- **`build_info.python_version`** — The Python version to use (default: `3.12`).
+- **`toolkit`** — Specifies the runtime provider (`lmstudio`).
+
+> `user_id` and `app_id` are auto-filled from your [active context](https://docs.clarifai.com/resources/api-overview/cli#clarifai-config) at deploy time. You don't need to add them manually.
 
 ### `requirements.txt`
 

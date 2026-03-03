@@ -152,13 +152,16 @@ The [`model.py`](https://docs.clarifai.com/compute/upload/#prepare-modelpy) file
     <CodeBlock className="language-text">{HFConfig}</CodeBlock>
 </details>
 
-The `config.yaml` file specifies the model’s configuration, including compute resource requirements, checkpoints, and other essential settings.
+The `config.yaml` file defines your Hugging Face model’s configuration in a simplified format:
 
-- In the `model` section, you need to specify a unique model ID (any name you choose) along with an app ID. Your Clarifai user ID is set by default from your [active context](https://docs.clarifai.com/resources/api-overview/cli#clarifai-config). These together determine where your model will run on the Clarifai platform.
+- **`model.id`** — A unique identifier for your model. Auto-generated from the Hugging Face model name when you use `--model-name`.
+- **`build_info.python_version`** — The Python version to use (default: `3.11`).
+- **`compute.instance`** — The GPU instance type, auto-selected based on the model’s VRAM requirements. Run `clarifai list-instances` to see all available options.
+- **[`checkpoints`](https://docs.clarifai.com/compute/upload/#hugging-face-model-checkpoints)** — Defines how to retrieve model weights. If you’re using a gated repository, add your Hugging Face access token via `hf_token` or set the `HF_TOKEN` environment variable.
 
-- In the `checkpoints` section, you can provide your Hugging Face token using the `hf_token` parameter if you need to access private or restricted repositories. This section also includes the `when` parameter, which controls when model checkpoints are downloaded and stored. The available options are `runtime` (the default), which downloads checkpoints when the model is loaded; `build`, which downloads checkpoints during the image build process; and `upload`, which downloads checkpoints before the model is uploaded.
-
-    >**Note:** For large models, it is strongly recommended to set `when: runtime`. Doing so helps prevent image sizes from becoming unnecessarily large, which keeps build times shorter, uploads faster, and inference more efficient on the Clarifai platform. By contrast, choosing `build` or `upload` can significantly increase the image size, leading to slower uploads and higher cold start latency.
+> `user_id` and `app_id` are auto-filled from your [active context](https://docs.clarifai.com/resources/api-overview/cli#clarifai-config) at deploy time. You don’t need to add them manually.
+>
+> **Tip:** Use `when: runtime` (the default) for large models to reduce image size and improve load times.
 
 ### `requirements.txt`
 
@@ -262,7 +265,15 @@ If your `config.yaml` already has a `compute.instance` value (set during `init`)
 </TabItem>
 </Tabs>
 
-Browse available GPU instances with `clarifai model deploy --instance-info`.
+To override the instance with a larger GPU, use the `--instance` flag — it always takes priority over the config:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+<CodeBlock className="language-bash">clarifai model deploy ./Qwen2-0.5B --instance g5.xlarge  # override to a larger GPU</CodeBlock>
+</TabItem>
+</Tabs>
+
+Browse available GPU instances with `clarifai list-instances` or `clarifai model deploy --instance-info`.
 
 ### Step 3: Monitor and Manage
 

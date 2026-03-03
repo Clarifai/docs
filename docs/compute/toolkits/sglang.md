@@ -291,7 +291,7 @@ To override the instance with a larger GPU, use the `--instance` flag — it alw
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-<CodeBlock className="language-bash">clarifai model deploy ./Qwen2-7B --instance g6e.2xlarge</CodeBlock>
+<CodeBlock className="language-bash">clarifai model deploy ./Qwen2-7B --instance g6e.2xlarge  # override to a larger GPU</CodeBlock>
 </TabItem>
 </Tabs>
 

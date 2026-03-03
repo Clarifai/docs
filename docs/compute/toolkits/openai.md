@@ -86,11 +86,11 @@ You’ll use this address in the [`model.py`](#modelpy) file.
 
 With the Clarifai CLI, you can set up any OpenAI-compatible model to work with your local server.
 
-The command below scaffolds a default OpenAI-compatible model template in your current directory:
+The command below scaffolds a default OpenAI-compatible model template. You can pass a `MODEL_PATH` to control where the directory is created:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">
-    <CodeBlock className="language-bash">clarifai model init --toolkit openai</CodeBlock>
+    <CodeBlock className="language-bash">clarifai model init --toolkit openai my-wrapper</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -132,8 +132,7 @@ This class implements the following:
 
 These are the key components you can configure:
 
-- `base_url`: Your local model server endpoint address (default: `http://localhost:8000/v1`). 
-> **Note:** During model initialization, the CLI will prompt you to choose a port, and this value will be automatically updated in the file to match your selection.
+- `base_url`: Your local model server endpoint address (default: `http://localhost:8000/v1`). Update this to match your server’s address and port.
 - `api_key`: Required only when calling the model through OpenAI’s hosted API. If you’re using a local OpenAI-compatible server, an API key isn’t needed — you can simply provide any dummy value.
 - `model`: The ID of the model to use. You can leave this as is to let it be automatically detected from your OpenAI-compatible server, or explicitly set it to a specific model ID (for example, `"gpt-4"`).
 
@@ -144,11 +143,14 @@ These are the key components you can configure:
     <CodeBlock className="language-text">{OpenAIConfig}</CodeBlock>
 </details>
 
-The `config.yaml` file tells Clarifai how to run your OpenAI-compatible custom model — including where it will live on the platform, how it’s served, and what compute resources it needs.
+The `config.yaml` file defines your OpenAI-compatible model’s configuration in a simplified format:
 
-- It specifies where your model will run using values like `id` (your chosen model name), `user_id` (set by default from your [active context](https://docs.clarifai.com/resources/api-overview/cli/#clarifai-config)), `app_id`, and [`model_type_id`](https://docs.clarifai.com/create/models/#list-of-model-types).
-- In the `build_info` section, specify your configure environment settings, such as the Python version required by your OpenAI model implementation. 
-- In the `inference_compute_info` section, specify the compute resources your model should use — including CPU, memory, and optional accelerators (like GPUs) — ensuring your OpenAI-compatible service has the right performance and scalability characteristics.
+- **`model.id`** — A unique identifier for your model.
+- **`model.model_type_id`** — Set to `"openai"` for OpenAI-compatible models.
+- **`compute.instance`** — The GPU instance type for deployment. Run `clarifai list-instances` to see all available options.
+- **`checkpoints`** — (Optional) Uncomment to auto-download model checkpoints from Hugging Face at runtime.
+
+> `user_id` and `app_id` are auto-filled from your [active context](https://docs.clarifai.com/resources/api-overview/cli#clarifai-config) at deploy time. You don’t need to add them manually.
 
 > **When to use checkpoints:** Most OpenAI models are accessed via the API, so you won’t need a [checkpoints](https://docs.clarifai.com/compute/toolkits/hf#configyaml) block. If you are serving a self‑hosted Hugging Face model, you can uncomment the checkpoints section and set the required values.
 

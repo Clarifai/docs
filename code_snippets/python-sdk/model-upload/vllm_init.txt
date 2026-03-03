@@ -1,13 +1,15 @@
 clarifai model init --toolkit vllm --model-name Qwen/Qwen3-0.6B
-  Model initialized at: Qwen3-0.6B/
-  Toolkit:  vllm
-  Instance: g4dn.xlarge (Estimated 3.4 GiB VRAM (1.2 GiB weights + 0.2 GiB KV cache for 32768 ctx), fits g4dn.xlarge (15 GiB))
+[INFO] Initializing model with vllm toolkit...
+[INFO] Updated Hugging Face model repo_id to: Qwen/Qwen3-0.6B
+  Instance: g4dn.xlarge (Estimated 7.9 GiB VRAM (1.4 GiB weights + 4.4 GiB KV cache for 40960 ctx), fits g4dn.xlarge (15 GiB))
 
-  Files created:
-    Qwen3-0.6B/config.yaml
-    Qwen3-0.6B/requirements.txt
-    Qwen3-0.6B/1/model.py
+  Model initialized in ./Qwen3-0.6B
 
-  Next steps:
-    clarifai model serve ./Qwen3-0.6B               # test locally
-    clarifai model deploy ./Qwen3-0.6B              # deploy to cloud
+  Test locally:
+    clarifai model serve ./Qwen3-0.6B
+    clarifai model serve ./Qwen3-0.6B --mode env       # auto-create venv and install deps
+    clarifai model serve ./Qwen3-0.6B --mode container # run inside Docker
+
+  Deploy to Clarifai:
+    clarifai model deploy ./Qwen3-0.6B
+    clarifai list-instances                             # list available instances

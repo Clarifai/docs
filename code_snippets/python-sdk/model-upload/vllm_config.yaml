@@ -1,13 +1,10 @@
-model:
-  id: "Qwen3-0.6B"
-
 build_info:
-  image: "vllm/vllm-openai:latest"
-
-compute:
-  instance: g4dn.xlarge
-
+  image: vllm/vllm-openai:latest
 checkpoints:
   repo_id: Qwen/Qwen3-0.6B
   type: huggingface
   when: runtime
+compute:
+  instance: g4dn.xlarge
+model:
+  id: qwen3-06b

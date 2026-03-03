@@ -1231,7 +1231,7 @@ The estimation includes:
 
 ```text
 $ clarifai model init --toolkit vllm --model-name Qwen/Qwen3-4B
-  Instance: g5.xlarge (Estimated 15.1 GiB VRAM (7.5 GiB weights + 5.6 GiB KV cache for 40960 ctx), fits g5.xlarge (24 GiB))
+  Instance: g5.xlarge (Estimated 15.9 GiB VRAM (7.5 GiB weights + 5.6 GiB KV cache for 40960 ctx), fits g5.xlarge (22 GiB))
 ```
 
 For SGLang models, pre-Ampere GPUs (T4, V100) are automatically excluded since SGLang requires compute capability >= 8.0.
@@ -1434,13 +1434,15 @@ clarifai model deploy --instance-info --cloud aws --region us-east-1
 <summary>Example Output</summary>
 
 ```text
-  Instance          Cloud   Region       GPUs  Accelerator  GPU Mem  CPU  CPU Mem
-  ──────────────────────────────────────────────────────────────────────────────
-  g5.xlarge         AWS     us-east-1    1     NVIDIA-A10G  24 GiB   4    16 GiB
-  g6e.2xlarge       AWS     us-east-1    1     NVIDIA-L40S  48 GiB   8    64 GiB
-  t3a.2xlarge       AWS     us-east-1    0     CPU          -        8    32 GiB
-  n1-standard-4-t4  GCP     us-central1  1     NVIDIA-T4    16 GiB   4    15 GiB
-  ...
+Available instance types (use the ID with --instance flag):
+--instance value    Cloud    Region       GPUs  Accelerator    GPU Memory    CPU      CPU Memory
+------------------  -------  ---------  ------  -------------  ------------  -------  ------------
+g4dn.xlarge         aws      us-east-1       1  NVIDIA-T4      15360Mi       3535m    14197Mi
+g5.xlarge           aws      us-east-1       1  NVIDIA-A10G    23028Mi       3535m    13878Mi
+g6e.xlarge          aws      us-east-1       1  NVIDIA-L40S    46068Mi       3535m    29033Mi
+g6e.2xlarge         aws      us-east-1       1  NVIDIA-L40S    46068Mi       7525m    59343Mi
+t3a.2xlarge         aws      us-east-1       0  -              -             7525m    29033Mi
+...
 ```
 
 </details>

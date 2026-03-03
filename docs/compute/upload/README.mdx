@@ -194,19 +194,16 @@ The `config.yaml` file is essential for specifying the model’s metadata, compu
 When using `clarifai model init --toolkit`, the CLI generates a minimal config that works out of the box. Fields like `user_id`, `app_id`, and `model_type_id` are auto-filled from your CLI context at deploy time:
 
 ```yaml
-model:
-  id: "Qwen3-0.6B"
-
 build_info:
-  image: "vllm/vllm-openai:latest"
-
-compute:
-  instance: g4dn.xlarge
-
+  image: vllm/vllm-openai:latest
 checkpoints:
   repo_id: Qwen/Qwen3-0.6B
   type: huggingface
   when: runtime
+compute:
+  instance: g4dn.xlarge
+model:
+  id: qwen3-06b
 ```
 
 - **`build_info.image`** specifies a Docker base image with the toolkit pre-installed (e.g., vLLM, SGLang). This means `requirements.txt` only needs lightweight dependencies.

@@ -77,11 +77,11 @@ Install the `openai` package, which is required when performing inference with m
 
 You can use the Clarifai CLI to download and initialize any model available in the Ollama library directly into your local environment.
 
-For example, here's how to initialize the [`llama3.2`](https://ollama.com/library/llama3.2) model in your current directory:
+For example, here's how to initialize the [`llama3.1`](https://ollama.com/library/llama3.1) model in your current directory:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">clarifai model init --toolkit ollama</CodeBlock>
+    <CodeBlock className="language-bash">clarifai model init --toolkit ollama --model-name llama3.1</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -97,8 +97,18 @@ For example, here's how to initialize the [`llama3.2`](https://ollama.com/librar
 You can customize model initialization from the Ollama library using the Clarifai CLI with the following options:
 
 - `--model-name` – Name of the Ollama model to use (default: `llama3.2`). This lets you specify any model from the Ollama library. Example: `clarifai model init --toolkit ollama --model-name gpt-oss:20b`
-- `--port` – Port to run the model on (default: `23333`)
-- `--context-length` – Context window size for the model in tokens (default: `8192`)
+
+:::
+
+:::tip default model
+
+To initialize with the default model (`llama3.2`), omit `--model-name`:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai model init --toolkit ollama</CodeBlock>
+</TabItem>
+</Tabs>
 
 :::
 
@@ -134,8 +144,8 @@ This is the [main Python file](https://docs.clarifai.com/compute/upload/#prepare
 It has these key components:
 
 - The environment setup section defines default values, such as the Ollama host (`OLLAMA_HOST`) and context length (`OLLAMA_CONTEXT_LENGTH`). 
-- The `run_ollama_server()` function starts the Ollama server and automatically pulls the specified model (for example, `llama3.2`) if it’s not already available locally.
-- The `OllamaModelClass` itself implements the following methods:
+- The `run_ollama_server()` function starts the Ollama server and automatically pulls the specified model (for example, `llama3.1`) if it’s not already available locally.
+- The `OllamaModel` class itself implements the following methods:
     -  `load_model()` — Loads and initializes the Ollama model while setting up the local OpenAI-compatible client; 
     - `predict()` — Generates text completions or tool calls from prompts, optionally handling images or chat history; 
     - `generate()` — Streams tokens in real time, which is ideal for chat-like or extended responses. 
@@ -163,11 +173,14 @@ The `requirements.txt` file lists all the Python packages required for your loca
     <CodeBlock className="language-text">{OllamaConfig}</CodeBlock>
 </details>
 
-The `config.yaml` file is what tells Clarifai how to run your model — including where it belongs, which runtime to use, and how much compute it should consume.
+The `config.yaml` file defines your Ollama model's configuration:
 
-- It identifies where your model will run on the Clarifai platform through parameters like `app_id`, `id` (any model name you choose), `model_type_id`, and `user_id` (set by default from your [active context](https://docs.clarifai.com/resources/api-overview/cli#clarifai-config)). 
-- It defines compatibility details under `build_info` — such as the Python version to use — and resource allocation details through `inference_compute_info`, which sets CPU, memory, and accelerator requirements. 
-- The `toolkit` field indicates the type of runtime provider, informing Clarifai which backend framework to use for execution.
+- **`model.id`** — A unique identifier for your model. Auto-generated from the model name when you use `--model-name`.
+- **`build_info.python_version`** — The Python version to use (default: `3.12`).
+- **`build_info.image`** — The Docker base image. For Ollama models, this is `ollama/ollama:latest`, which includes Ollama pre-installed.
+- **`toolkit`** — Specifies the runtime provider (`ollama`) and the model name to use.
+
+> `user_id` and `app_id` are auto-filled from your [active context](https://docs.clarifai.com/resources/api-overview/cli#clarifai-config) at deploy time. You don't need to add them manually.
 
 ## Step 3: Log In to Clarifai
 
@@ -285,19 +298,19 @@ If you haven't already, scaffold an Ollama model project:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-<CodeBlock className="language-bash">clarifai model deploy ./llama3.2 --instance g5.xlarge</CodeBlock>
+<CodeBlock className="language-bash">clarifai model deploy ./llama31 --instance g5.xlarge</CodeBlock>
 </TabItem>
 </Tabs>
 
-If your `config.yaml` already has a `compute.instance` value, you can omit the `--instance` flag:
+To override the instance with a different GPU, use the `--instance` flag — it always takes priority over the config:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-<CodeBlock className="language-bash">clarifai model deploy ./llama3.2</CodeBlock>
+<CodeBlock className="language-bash">clarifai model deploy ./llama31 --instance gpu-nvidia-a10g  # override to a larger GPU</CodeBlock>
 </TabItem>
 </Tabs>
 
-Browse available GPU instances with `clarifai model deploy --instance-info`.
+Browse available GPU instances with `clarifai list-instances` or `clarifai model deploy --instance-info`.
 
 ### Step 3: Monitor and Manage
 
@@ -309,7 +322,7 @@ clarifai model status --deployment <deployment-id>
 clarifai model logs --deployment <deployment-id>
 
 # Run predictions
-clarifai model predict user/app/models/llama3.2 "Explain AI in one sentence"
+clarifai model predict user/app/models/llama31 "Explain AI in one sentence"
 
 # Clean up when done
 clarifai model undeploy --deployment <deployment-id>

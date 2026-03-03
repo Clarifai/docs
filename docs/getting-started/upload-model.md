@@ -78,29 +78,26 @@ This creates a `Qwen3-0.6B/` directory with everything pre-configured:
 Qwen3-0.6B/
 ├── 1/
 │   └── model.py         # vLLM inference logic (ready to use)
-├── requirements.txt     # Dependencies (clarifai, openai)
-└── config.yaml          # Config with auto-selected GPU instance
+├── config.yaml          # Config with auto-selected GPU instance
+└── requirements.txt     # Dependencies (clarifai, openai — vLLM comes from Docker image)
 ```
 
 The generated `config.yaml` is minimal — no placeholders to fill in:
 
 ```yaml
-model:
-  id: "Qwen3-0.6B"
-
 build_info:
-  image: "vllm/vllm-openai:latest"
-
-compute:
-  instance: g4dn.xlarge       # Auto-selected based on model VRAM needs
-
+  image: vllm/vllm-openai:latest
 checkpoints:
   repo_id: Qwen/Qwen3-0.6B
   type: huggingface
-  when: runtime              # Downloads weights at startup, not during build
+  when: runtime               # Downloads weights at startup, not during build
+compute:
+  instance: g4dn.xlarge       # Auto-selected based on model VRAM needs
+model:
+  id: qwen3-06b              # Sanitized from Qwen/Qwen3-0.6B
 ```
 
-> `user_id` and `app_id` are auto-filled from your login context at deploy time. `compute.instance` is auto-selected based on the model's estimated VRAM requirements — the CLI fetches the model's architecture from HuggingFace and calculates the exact memory needed for weights, KV cache, and framework overhead. `build_info.image` specifies the Docker base image (vLLM comes pre-installed in it, so `requirements.txt` only lists lightweight dependencies).
+> **What gets auto-filled:** `user_id` and `app_id` are resolved from your login context at deploy time. `model.id` is sanitized from the HuggingFace model name (e.g., `Qwen/Qwen3-0.6B` → `qwen3-06b`). `compute.instance` is auto-selected based on the model's estimated VRAM requirements — the CLI fetches the model's architecture from HuggingFace and calculates the exact memory needed for weights, KV cache, and framework overhead. `build_info.image` specifies the Docker base image (vLLM comes pre-installed in it, so `requirements.txt` only lists lightweight dependencies).
 
 ### Step 3A: Deploy
 
@@ -125,15 +122,15 @@ When it finishes, you'll see output like this:
 
   Model:           https://clarifai.com/your-user/main/models/qwen3-06b
   Version:         abc12345
-  Deployment:      deploy-Qwen3-0.6B-dd8481
+  Deployment:      deploy-qwen3-06b-dd8481
   Instance:        g4dn.xlarge
   Cloud:           AWS / us-east-1
 
 ── Next Steps ─────────────────────────────────────────
   Predict:         clarifai model predict your-user/main/models/qwen3-06b "Hello"
-  Logs:            clarifai model logs --deployment "deploy-Qwen3-0.6B-dd8481"
-  Status:          clarifai model status --deployment "deploy-Qwen3-0.6B-dd8481"
-  Undeploy:        clarifai model undeploy --deployment "deploy-Qwen3-0.6B-dd8481"
+  Logs:            clarifai model logs --deployment "deploy-qwen3-06b-dd8481"
+  Status:          clarifai model status --deployment "deploy-qwen3-06b-dd8481"
+  Undeploy:        clarifai model undeploy --deployment "deploy-qwen3-06b-dd8481"
 ```
 
 > **Copy the predict command from the output** — it contains your actual user ID and deployment ID, so you can paste it directly.
@@ -168,7 +165,7 @@ clarifai model logs --deployment <deployment-id> --log-type events
 clarifai model undeploy --deployment <deployment-id>
 ```
 
-> Replace `<deployment-id>` with the ID from the deploy output (e.g., `deploy-Qwen3-0.6B-dd8481`).
+> Replace `<deployment-id>` with the ID from the deploy output (e.g., `deploy-qwen3-06b-dd8481`).
 
 ---
 

@@ -1,13 +1,10 @@
-model:
-  id: "Qwen2-7B"
-
 build_info:
-  image: "lmsysorg/sglang:latest"
-
-compute:
-  instance: g5.xlarge
-
+  image: lmsysorg/sglang:latest
 checkpoints:
   repo_id: Qwen/Qwen2-7B
   type: huggingface
   when: runtime
+compute:
+  instance: g6e.xlarge
+model:
+  id: qwen2-7b
