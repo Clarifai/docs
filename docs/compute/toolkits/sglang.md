@@ -109,10 +109,26 @@ You can create one by following [these instructions](https://huggingface.co/docs
 
 ## Step 2: Initialize a Model
 
-With the Clarifai CLI, you can initialize a model configured to run using the SGLang runtime format. It sets up a Clarifai-compatible project directory with the appropriate files. 
+Use the Clarifai CLI to initialize a model configured to run using the SGLang runtime format. Specify the HuggingFace model you want to serve with `--model-name` — the CLI will auto-select an appropriate Ampere+ GPU instance based on the model’s VRAM requirements.
 
-You can customize or optimize the model by editing the generated files as needed. For example, the command below initializes a default Hugging Face model ([HuggingFaceTB/SmolLM2-135M-Instruct](https://huggingface.co/HuggingFaceTB/SmolLM2-135M-Instruct)) in your current directory.
+<Tabs groupId="code">
+<TabItem value="bash" label="Bash">
+<CodeBlock className="language-bash">clarifai model init --toolkit sglang --model-name Qwen/Qwen2-7B</CodeBlock>
+</TabItem>
+</Tabs>
 
+This creates a directory with all required files pre-configured. You can customize or optimize the model by editing the generated files as needed.
+
+> **Note:** You can initialize any supported HuggingFace model. Just change the `--model-name` value. You can also pass a [`MODEL_PATH`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init) to control where the directory is created.
+
+<details>
+  <summary>Example Output</summary>
+  <CodeBlock className="language-text">{SGLModelInit}</CodeBlock>
+</details>
+
+:::tip
+
+To initialize with a default model, omit `--model-name`:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">
@@ -120,30 +136,6 @@ You can customize or optimize the model by editing the generated files as needed
 </TabItem>
 </Tabs>
 
-> **Note:** You can initialize a model in a specific location by passing a [`MODEL_PATH`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init). 
-
-<details>
-  <summary>Example Output</summary>
-  <CodeBlock className="language-text">{SGLModelInit}</CodeBlock>
-</details>
-
-
-:::tip
-
-You can use the `--model-name` parameter to initialize any supported Hugging Face model. This sets the model’s `repo_id`, specifying which Hugging Face repository to initialize from.
-
-<Tabs groupId="code">
-<TabItem value="bash" label="Bash">
-<CodeBlock className="language-bash">clarifai model init --toolkit sglang --model-name unsloth/Llama-3.2-1B-Instruct</CodeBlock>
-</TabItem>
-</Tabs>
-
-<!--
-<details>
-  <summary>Supported Examples</summary>
-  <CodeBlock className="language-text">{SGLSupportedModels}</CodeBlock>
-</details>
--->
 :::
 
 > **Note:** Large models require significant GPU memory. Ensure your machine has enough compute capacity to run them efficiently.
@@ -258,17 +250,19 @@ Enter the requested details:
 </details>
 
 
-## Step 4: Start Your Local Runner
+## Step 4: Serve the Model Locally
 
-Next, start your Local Runner, which connects to the SGLang runtime to execute your model locally.
+Start the model locally using `clarifai model serve`:
 
 ```bash
-clarifai model local-runner
+clarifai model serve
 ```
+
+> **Note:** The older `clarifai model local-runner` command still works as an alias.
 
 If any configuration contexts or defaults are missing, the CLI will automatically guide you through setting them up.
 
-This process ensures that all required components — such as compute clusters, nodepools, and deployments — are correctly configured in your context, enabling seamless local execution of your SGLang model. For more details, see [Local Runners documentation](https://docs.clarifai.com/compute/local-runners/#step-2-create-a-context-optional).
+This starts the SGLang backend and makes your model accessible via a Clarifai-managed public API endpoint. For more details, see [Local Runners documentation](https://docs.clarifai.com/compute/local-runners/).
 
 <details>
   <summary>Example Output</summary>

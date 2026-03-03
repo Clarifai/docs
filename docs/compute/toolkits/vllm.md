@@ -87,9 +87,21 @@ Install the `openai` client library — it will be used to send requests to your
 
 ## Step 2: Initialize a Model
 
-Use the Clarifai CLI to initialize a vLLM-based model directory. This setup prepares all required files for local execution and Clarifai integration.
+Use the Clarifai CLI to initialize a vLLM-based model directory. Specify the HuggingFace model you want to serve with `--model-name` — the CLI will auto-select the optimal GPU instance based on the model's VRAM requirements.
 
-You can further customize or optimize the model by modifying the generated files as necessary.
+<Tabs groupId="code">
+<TabItem value="bash" label="Bash">
+<CodeBlock className="language-bash">clarifai model init --toolkit vllm --model-name Qwen/Qwen3-0.6B</CodeBlock>
+</TabItem>
+</Tabs>
+
+This creates a `Qwen3-0.6B/` directory with all required files pre-configured. You can further customize or optimize the model by modifying the generated files as necessary.
+
+> **Note:** You can initialize any model [supported](https://docs.vllm.ai/en/v0.9.2/models/supported_models.html) by vLLM. Just change the `--model-name` value to a different HuggingFace repo ID.
+
+:::tip
+
+To initialize without specifying a model (using a default), omit `--model-name`:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">
@@ -97,17 +109,7 @@ You can further customize or optimize the model by modifying the generated files
 </TabItem>
 </Tabs>
 
-> **Note:** You can initialize a model in a specific location by passing a [`MODEL_PATH`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init). 
-
-:::tip
-
-You can initialize any model [supported](https://docs.vllm.ai/en/v0.9.2/models/supported_models.html) by vLLM. If you want to initialize a specific vLLM model, use the `--model-name` flag.
-
-<Tabs groupId="code">
-<TabItem value="bash" label="Bash">
-<CodeBlock className="language-bash">clarifai model init --toolkit vllm --model-name HuggingFaceH4/zephyr-7b-beta</CodeBlock>
-</TabItem>
-</Tabs>
+You can also pass a [`MODEL_PATH`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init) to control where the directory is created.
 
 :::
 
@@ -180,17 +182,19 @@ You’ll be prompted for your user ID, PAT, and an optional [context name](https
   <CodeBlock className="language-text">{VLLMLogin}</CodeBlock>
 </details>
 
-## Step 4: Start the Local Runner
+## Step 4: Serve the Model Locally
 
-Launch the Local Runner to start serving your vLLM model locally.
+Launch the model locally using `clarifai model serve`:
 
 ```bash
-clarifai model local-runner
+clarifai model serve
 ```
+
+> **Note:** The older `clarifai model local-runner` command still works as an alias.
 
 If any configuration is missing, the CLI will prompt you to define or confirm it.
 
-This runner will use vLLM’s backend to serve model predictions and make them accessible via a Clarifai-managed public API endpoint.
+This starts the vLLM backend to serve model predictions and makes them accessible via a Clarifai-managed public API endpoint.
 
 <details>
   <summary>Example Output</summary>
