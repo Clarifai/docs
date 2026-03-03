@@ -198,21 +198,23 @@ Here’s what each field means:
 * **User ID** – Enter your Clarifai user ID.
 * **Personal Access Token (PAT)** – Paste your Clarifai PAT here. If you've already set the `CLARIFAI_PAT` environment variable, you can just press Enter to use it automatically.
 
-## Step 4: Start Your Local Runner
+## Step 4: Serve the Model Locally
 
-Start a local runner using the following command:
+Start the model using `clarifai model serve`:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">clarifai model local-runner</CodeBlock>
+    <CodeBlock className="language-bash">clarifai model serve</CodeBlock>
 </TabItem>
 </Tabs>
+
+> **Note:** The older `clarifai model local-runner` command still works as an alias.
 
 If the necessary context configurations aren’t detected, the CLI will guide you through creating them using default values.
 
 This setup ensures all required components — such as compute clusters, nodepools, and deployments — are properly included in your configuration context, which are described [here](README.mdx#step-2-create-a-context-optional). Simply review each prompt and confirm to proceed.
 
-> **Note**: Use the `--suppress-toolkit-logs` option to show detailed logs from the Ollama server, which is helpful for debugging: `clarifai model local-runner --suppress-toolkit-logs`.
+> **Note**: Use the `--suppress-toolkit-logs` option to show detailed logs from the Ollama server, which is helpful for debugging: `clarifai model serve --suppress-toolkit-logs`.
 
 <details>
   <summary>Example Output</summary>

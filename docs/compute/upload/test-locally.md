@@ -67,7 +67,7 @@ These are the key CLI flags available for local testing and running your models:
 
 ### System Requirements
 
-Before running the `clarifai model local-test` or `clarifai model local-grpc` commands, ensure your local environment meets the following requirements:
+Before running the test commands below, ensure your local environment meets the following requirements:
 
 * **Python version** — Python 3.9 or higher is required for optimal compatibility.
 
@@ -137,7 +137,7 @@ Here is how to test a model in a virtual environment:
 
 ## Test by Starting a gRPC Server
 
-The  `local-grpc` method starts a local gRPC server at `https://localhost:{port}/` for running the model. Once the server is running, you can perform inference on the model via the Clarifai Python SDK.
+The `local-grpc` method starts a local gRPC server at `https://localhost:{port}/` for running the model. Once the server is running, you can perform inference on the model via the Clarifai Python SDK.
 
 Here is how to test a model in a Docker Container:
 
@@ -155,6 +155,20 @@ Here is how to test a model in a virtual environment:
 </TabItem>
 </Tabs>
 
+:::tip Modern Alternative
+
+You can also use `clarifai model serve --grpc` to start a standalone gRPC server. This is the newer command that combines serving and testing:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash">clarifai model serve --grpc --port 8000</CodeBlock>
+</TabItem>
+</Tabs>
+
+The `--grpc` flag runs the model without connecting to the Clarifai platform, making it ideal for offline development and testing. See the [Local Runners](https://docs.clarifai.com/compute/local-runners/) docs for more details.
+
+:::
+
 ### Make Inference Requests
 
 Once the model is running locally, you need to configure the `CLARIFAI_API_BASE` environment variable to point to the localhost and port where the gRPC server is running.
@@ -168,5 +182,5 @@ Once the model is running locally, you need to configure the `CLARIFAI_API_BASE`
 </TabItem>
 </Tabs>
 
-You can then make [inference requests](https://docs.clarifai.com/compute/models/inference/api) using the model. 
+You can then make [inference requests](https://docs.clarifai.com/compute/models/inference/api) using the model.
 

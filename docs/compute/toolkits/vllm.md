@@ -29,15 +29,13 @@ import VLLMRequirements from "!!raw-loader!../../../code_snippets/python-sdk/mod
 
 ## Step 1: Perform Prerequisites
 
-### Sign Up or Log In
+### Get User ID and PAT
 
-First, either [log in](https://clarifai.com/login) to your existing Clarifai account or [sign up](https://clarifai.com/signup) for a new one. Once logged in, you'll need these credentials to set up your project:
+Start by [logging in](https://clarifai.com/login) to your existing Clarifai account or [signing up](https://clarifai.com/signup) for a new one. Once logged in, you'll need your **Personal Access Token (PAT)** for authentication:
 
-* **App ID** – Navigate to the application you'll use for your model. In the collapsible left sidebar, select the [Overview](https://docs.clarifai.com/create/applications/manage/#app-overview) option. Get the app ID from there.
-* **User ID** – In the collapsible left sidebar, go to **Settings** and select the **Account** option. Then, find your user ID.
-* **Personal Access Token (PAT)** – This token is essential to authenticate your connection with the Clarifai platform. To create or copy your [PAT](https://docs.clarifai.com/control/authentication/pat), go to **Settings** and choose the **Secrets** option. 
+- In the collapsible left sidebar, select **Settings** and choose **Secrets** to generate or copy your [PAT](https://docs.clarifai.com/control/authentication/pat).
 
-Then, store it as an environment variable for secure authentication:
+Set the PAT as an environment variable:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Unix-like Systems">

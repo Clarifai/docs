@@ -31,15 +31,13 @@ import OpenAIResponse from "!!raw-loader!../../../code_snippets/python-sdk/model
 
 ## Step 1: Perform Prerequisites
 
-### Sign Up or Log In
+### Get User ID and PAT
 
-[Log in](https://clarifai.com/login) to your existing Clarifai account or [sign up](https://clarifai.com/signup) for a new one. Once logged in, you'll need the following credentials for setup:
+Start by [logging in](https://clarifai.com/login) to your existing Clarifai account or [signing up](https://clarifai.com/signup) for a new one. Once logged in, you'll need your **Personal Access Token (PAT)** for authentication:
 
-- **App ID** – Navigate to the application you want to use to run the model and select the **[Overview](https://docs.clarifai.com/create/applications/manage/#app-overview)** option in the collapsible left sidebar. Get the app ID from there.
-- **User ID** – In the collapsible left sidebar, select **Settings** and choose **Account** from the dropdown list. Then, locate your user ID.
-- **Personal Access Token (PAT)** – From the same **Settings** option, choose **Secrets** to generate or copy your [PAT](https://docs.clarifai.com/control/authentication/pat). This token is used to authenticate your connection with the Clarifai platform.
+- In the collapsible left sidebar, select **Settings** and choose **Secrets** to generate or copy your [PAT](https://docs.clarifai.com/control/authentication/pat).
 
-You can then set the PAT as an environment variable using `CLARIFAI_PAT`. 
+You can then set the PAT as an environment variable using `CLARIFAI_PAT`.
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Unix-Like Systems">
@@ -92,7 +90,7 @@ The command below scaffolds a default OpenAI-compatible model template in your c
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">
-    <CodeBlock className="language-bash">clarifai model init --model-type-id openai</CodeBlock>
+    <CodeBlock className="language-bash">clarifai model init --toolkit openai</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -189,13 +187,15 @@ You'll be prompted to provide:
     <CodeBlock className="language-text">{OpenAILogin}</CodeBlock>
 </details>
 
-## Step 4: Start Your Local Runner
+## Step 4: Serve the Model Locally
 
-Start a local runner with the following command:
+Start the model using `clarifai model serve`:
 
 ```bash
-clarifai model local-runner
+clarifai model serve
 ```
+
+> **Note:** The older `clarifai model local-runner` command still works as an alias.
 
 The CLI will guide you through creating any necessary context configurations with default values, ensuring all components (compute clusters, nodepools, deployments) are properly set up.
 

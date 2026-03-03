@@ -29,15 +29,13 @@ import TestRunner from "!!raw-loader!../../../code_snippets/python-sdk/model-upl
 
 ## Step 1: Perform Prerequisites
 
-### Sign Up or Log In
+### Get User ID and PAT
 
-[Log in](https://clarifai.com/login) to your existing Clarifai account or [sign up](https://clarifai.com/signup) for a new one. Once logged in, you’ll need the following credentials for setup:
+Start by [logging in](https://clarifai.com/login) to your existing Clarifai account or [signing up](https://clarifai.com/signup) for a new one. Once logged in, you’ll need your **Personal Access Token (PAT)** for authentication:
 
-- **App ID** – Navigate to the application you want to use to run the model and select the **[Overview](https://docs.clarifai.com/create/applications/manage/#app-overview)** option in the collapsible left sidebar. Get the app ID from there.
-- **User ID** – In the collapsible left sidebar, select **Settings** and choose **Account** from the dropdown list. Then, locate your user ID.
-- **Personal Access Token (PAT)** – From the same **Settings** option, choose **Secrets** to generate or copy your [PAT](https://docs.clarifai.com/control/authentication/pat). This token is used to authenticate your connection with the Clarifai platform.
+- In the collapsible left sidebar, select **Settings** and choose **Secrets** to generate or copy your [PAT](https://docs.clarifai.com/control/authentication/pat).
 
-You can then set the PAT as an environment variable using `CLARIFAI_PAT`. 
+You can then set the PAT as an environment variable using `CLARIFAI_PAT`.
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Unix-Like Systems">
@@ -89,35 +87,34 @@ The [`huggingface_hub`](https://github.com/huggingface/huggingface_hub) library 
 </Tabs>
 
 
-## Step 2: Initialize a Model 
+## Step 2: Initialize a Model
 
-With the Clarifai CLI, you can download and set up any supported Hugging Face model directly in your local environment.
-
-For example, the command below initializes the default model ([`unsloth/Llama-3.2-1B-Instruct`](https://huggingface.co/unsloth/Llama-3.2-1B-Instruct)) in your current directory.
+With the Clarifai CLI, you can download and set up any supported Hugging Face model directly in your local environment. Use the `--model-name` flag to specify a HuggingFace model:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">
-    <CodeBlock className="language-bash">clarifai model init --toolkit huggingface</CodeBlock>
+<CodeBlock className="language-bash">clarifai model init --toolkit huggingface --model-name Qwen/Qwen2-0.5B</CodeBlock>
 </TabItem>
 </Tabs>
 
-> **Note:** You can initialize a model in a specific location by passing a [`MODEL_PATH`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init). 
+This creates a `Qwen2-0.5B/` directory with all required files pre-configured. The CLI auto-selects an appropriate GPU instance based on the model's VRAM requirements.
+
+> **Note:** You can initialize a model in a specific location by passing a [`MODEL_PATH`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init).
 
 <details>
   <summary>Example Output</summary>
     <CodeBlock className="language-text">{HFModelInit}</CodeBlock>
 </details>
 
-The command above generates a new model directory structure that is compatible with the Clarifai platform. You can customize or optimize the model by editing the generated files as needed.
+You can customize or optimize the model by editing the generated files as needed.
 
 :::tip
 
-You can use the `--model-name` parameter to initialize any supported Hugging Face model. 
-
+To initialize with a default model ([`unsloth/Llama-3.2-1B-Instruct`](https://huggingface.co/unsloth/Llama-3.2-1B-Instruct)), omit `--model-name`:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">
-<CodeBlock className="language-bash">clarifai model init --toolkit huggingface --model-name Qwen/Qwen2-0.5B</CodeBlock>
+    <CodeBlock className="language-bash">clarifai model init --toolkit huggingface</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -199,19 +196,19 @@ You’ll be prompted to provide a few details for authentication:
 </details>
 
 
-## Step 4: Start Your Local Runner
+## Step 4: Serve the Model Locally
 
-Start a local runner with the following command:
+Start the model using `clarifai model serve`:
 
 ```bash
-clarifai model local-runner
+clarifai model serve
 ```
 
-If the required context configurations aren’t found, the CLI will walk you through creating them with default values. 
+> **Note:** The older `clarifai model local-runner` command still works as an alias.
 
-This process ensures that all necessary components — such as compute clusters, nodepools, and deployments — are included in your configuration context, which are described [here](https://docs.clarifai.com/compute/local-runners/#step-2-create-a-context-optional). 
+If the necessary context configurations aren’t detected, the CLI will guide you through creating them using default values.
 
-Simply review each prompt and confirm to continue.
+This setup ensures all required components — such as compute clusters, nodepools, and deployments — are properly included in your configuration context, which are described [here](https://docs.clarifai.com/compute/local-runners/#step-2-create-a-context-optional).
 
 <details>
   <summary>Example Output</summary>
@@ -233,4 +230,54 @@ Here’s an example snippet:
 
 </Tabs>
 
+## Deploy to Cloud
 
+After testing locally, you can deploy your Hugging Face model to Clarifai's cloud compute with a single command. All infrastructure (compute cluster, nodepool, deployment) is created automatically.
+
+### Step 1: Initialize
+
+If you haven't already, scaffold a Hugging Face model project:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+<CodeBlock className="language-bash">clarifai model init --toolkit huggingface --model-name Qwen/Qwen2-0.5B</CodeBlock>
+</TabItem>
+</Tabs>
+
+The CLI auto-selects an appropriate GPU instance based on the model's VRAM requirements.
+
+### Step 2: Deploy
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+<CodeBlock className="language-bash">clarifai model deploy ./Qwen2-0.5B --instance g5.xlarge</CodeBlock>
+</TabItem>
+</Tabs>
+
+If your `config.yaml` already has a `compute.instance` value (set during `init`), you can omit the `--instance` flag:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+<CodeBlock className="language-bash">clarifai model deploy ./Qwen2-0.5B</CodeBlock>
+</TabItem>
+</Tabs>
+
+Browse available GPU instances with `clarifai model deploy --instance-info`.
+
+### Step 3: Monitor and Manage
+
+```bash
+# Check deployment status
+clarifai model status --deployment <deployment-id>
+
+# Stream live logs
+clarifai model logs --deployment <deployment-id>
+
+# Run predictions
+clarifai model predict user/app/models/Qwen2-0.5B "Explain AI in one sentence"
+
+# Clean up when done
+clarifai model undeploy --deployment <deployment-id>
+```
+
+For the full deploy options reference, see the [CLI Reference](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-deploy).

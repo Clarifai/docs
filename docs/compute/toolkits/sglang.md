@@ -34,15 +34,13 @@ import SGLDockerfile from "!!raw-loader!../../../code_snippets/python-sdk/model-
 
 ## Step 1: Perform Prerequisites
 
-### Sign Up or Log In
+### Get User ID and PAT
 
-Log in to your existing Clarifai account or [sign up](https://clarifai.com/signup) for a new one. Once you’re logged in, gather the following credentials required for setup:
+Start by [logging in](https://clarifai.com/login) to your existing Clarifai account or [signing up](https://clarifai.com/signup) for a new one. Once logged in, you’ll need your **Personal Access Token (PAT)** for authentication:
 
-* **App ID** – Go to the application you want to use to run the model. In the collapsible left sidebar, select **[Overview](https://docs.clarifai.com/create/applications/manage/#app-overview)** and copy the app ID displayed there.
-* **User ID** – In the collapsible left sidebar, open **Settings**, then choose **Account** from the dropdown list to locate your user ID.
-* **Personal Access Token (PAT)** – From the same **Settings** menu, select **Secrets** to create or copy your [PAT](https://docs.clarifai.com/control/authentication/pat). This token is used to authenticate your connection with the Clarifai platform.
+- In the collapsible left sidebar, select **Settings** and choose **Secrets** to generate or copy your [PAT](https://docs.clarifai.com/control/authentication/pat).
 
-Then, set your PAT as an environment variable:
+Set the PAT as an environment variable:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Unix-Like Systems">

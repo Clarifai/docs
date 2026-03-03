@@ -102,7 +102,7 @@ your_model_directory/
 
 :::tip
 
-You can automatically generate these files by running this CLI command: [`clarifai model init --model-type-id mcp`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init). You can then edit them as needed.
+You can automatically generate these files by running this CLI command: [`clarifai model init --toolkit mcp`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init). You can then edit them as needed.
 
 :::
 
@@ -204,11 +204,11 @@ Before uploading your server to the Clarifai platform, you can test it locally t
 
 #### a. Local Runners
 
-You can use Clarifai's `local-runner` CLI tool to test and run your model as a local development runner. You can learn how to use the tool [here](https://docs.clarifai.com/compute/local-runners/).
+You can use the Clarifai CLI to test and run your model as a local development runner. You can learn how to use the tool [here](https://docs.clarifai.com/compute/local-runners/).
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">
-    <CodeBlock className="language-bash">clarifai model local-runner</CodeBlock>
+    <CodeBlock className="language-bash">clarifai model serve</CodeBlock>
 </TabItem>
 </Tabs>
 

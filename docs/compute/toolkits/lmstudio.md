@@ -28,15 +28,13 @@ import LMStudioRequirements from "!!raw-loader!../../../code_snippets/python-sdk
 
 ## Step 1: Perform Prerequisites
 
-### Sign Up or Log In
+### Get User ID and PAT
 
-[**Log in**](https://clarifai.com/login) to your existing Clarifai account or [**sign up**](https://clarifai.com/signup) for a new one. After logging in, gather the following credentials for setup:
+Start by [logging in](https://clarifai.com/login) to your existing Clarifai account or [signing up](https://clarifai.com/signup) for a new one. Once logged in, you’ll need your **Personal Access Token (PAT)** for authentication:
 
-* **App ID** – Go to the application you’ll use to run your model and select **[Overview](https://docs.clarifai.com/create/applications/manage/#app-overview)** in the collapsible left sidebar. Get the app ID from there.
-* **User ID** – In the collapsible left sidebar, select **Settings** and select **Account** from the dropdown list. Then, find your user ID.
-* **Personal Access Token (PAT)** – From the same **Settings** option, select **Secrets** to create or copy your [PAT](https://docs.clarifai.com/control/authentication/pat). This token is required to authenticate your connection with the Clarifai platform.
+- In the collapsible left sidebar, select **Settings** and choose **Secrets** to generate or copy your [PAT](https://docs.clarifai.com/control/authentication/pat).
 
-Once you have your PAT, set it as an environment variable for secure authentication:
+Set the PAT as an environment variable:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Unix-like Systems">
@@ -177,13 +175,15 @@ You’ll be prompted to enter the following details:
   <CodeBlock className="language-text">{LMStudioLogin}</CodeBlock>
 </details>
 
-## Step 4: Start the Local Runner
+## Step 4: Serve the Model Locally
 
-Next, start your **Local Runner**, which connects to the LM Studio runtime to execute your model locally.
+Start the model using `clarifai model serve`, which connects to the LM Studio runtime to execute your model locally:
 
 ```bash
-clarifai model local-runner
+clarifai model serve
 ```
+
+> **Note:** The older `clarifai model local-runner` command still works as an alias.
 
 If configuration contexts or defaults are missing, the CLI will guide you through setting them up automatically.
 
