@@ -92,7 +92,7 @@ build_info:
   python_version: "3.11"
 
 compute:
-  instance: g5.xlarge       # Auto-selected based on model VRAM needs
+  instance: g4dn.xlarge       # Auto-selected based on model VRAM needs
 
 checkpoints:
   repo_id: Qwen/Qwen3-0.6B
