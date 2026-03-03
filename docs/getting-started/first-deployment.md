@@ -1,14 +1,14 @@
 ---
 description: Set up your computing infrastructure easily and fast for inference
-sidebar_position: 3
+sidebar_position: 4
 ---
 
-# Deploy Your First Model
+# Deploy Your First Model via UI
 
 **Quickly set up infrastructure for inference**
 <hr />
 
-Clarifai provides an intuitive interface that makes it easy to provision compute infrastructure for running your models. 
+Clarifai provides an intuitive interface that makes it easy to provision compute infrastructure for running your models.
 
 [Deployment](https://docs.clarifai.com/compute/deployments/deploy-model) allows you to configure and activate the infrastructure needed to serve model predictions. With just a few simple steps, you can deploy a trained model and start generating predictions.
 
