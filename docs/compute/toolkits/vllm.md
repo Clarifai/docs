@@ -209,3 +209,55 @@ Once your Local Runner is running and the model has finished downloading, you ca
 
 The script sends a sample prompt to your locally running vLLM model and prints the response. Your model will now be serving [predictions](https://docs.clarifai.com/compute/inference/clarifai/api) through Clarifai’s local inference layer.
 
+## Deploy to Cloud
+
+After testing locally, you can deploy your vLLM model to Clarifai’s cloud compute with a single command. All infrastructure (compute cluster, nodepool, deployment) is created automatically.
+
+### Step 1: Initialize
+
+If you haven’t already, scaffold a vLLM model project:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+<CodeBlock className="language-bash">clarifai model init --toolkit vllm --model-name Qwen/Qwen3-0.6B</CodeBlock>
+</TabItem>
+</Tabs>
+
+The CLI auto-selects the optimal GPU instance based on the model’s VRAM requirements.
+
+### Step 2: Deploy
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+<CodeBlock className="language-bash">clarifai model deploy ./Qwen3-0.6B --instance g5.xlarge</CodeBlock>
+</TabItem>
+</Tabs>
+
+If your `config.yaml` already has a `compute.instance` value (set during `init`), you can omit the `--instance` flag:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+<CodeBlock className="language-bash">clarifai model deploy ./Qwen3-0.6B</CodeBlock>
+</TabItem>
+</Tabs>
+
+Browse available GPU instances with `clarifai model deploy --instance-info`.
+
+### Step 3: Monitor and Manage
+
+```bash
+# Check deployment status
+clarifai model status --deployment <deployment-id>
+
+# Stream live logs
+clarifai model logs --deployment <deployment-id>
+
+# Run predictions
+clarifai model predict user/app/models/Qwen3-0.6B "Explain AI in one sentence"
+
+# Clean up when done
+clarifai model undeploy --deployment <deployment-id>
+```
+
+For the full deploy options reference, see the [CLI Reference](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-deploy).
+

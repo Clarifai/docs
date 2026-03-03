@@ -1,22 +1,18 @@
 ---
-description: Build and upload your first custom model to the Clarifai platform
+description: Build and deploy your first custom model to the Clarifai platform
 sidebar_position: 5
 ---
 
-# Build and Upload a Model
+# Build and Deploy a Model
 
-**Quickly build and upload your first custom model to Clarifai platform**
+**Quickly build and deploy your first custom model to the Clarifai platform**
 <hr />
 
-The Clarifai platform allows you to upload custom models for a wide range of use cases. With just a few simple steps, you can get your models up and running and leverage the platform’s powerful capabilities.
-
-Let’s walk through how to build and upload a simple custom model.
-
-<!--You can test the already uploaded model [here](https://clarifai.com/alfrick/docs-demos/models/my-first-model).-->
+The Clarifai platform lets you deploy custom models to production in just a few commands. This guide walks you through the complete workflow — from scaffolding a model to running predictions against it in the cloud.
 
 :::note tip
 
-To learn more about how to upload different types of models, check out [this comprehensive guide](https://docs.clarifai.com/compute/models/upload/). 
+To learn more about how to upload different types of models, check out [this comprehensive guide](https://docs.clarifai.com/compute/models/upload/).
 
 :::
 
@@ -28,35 +24,16 @@ import ModelPyFile from "!!raw-loader!../../code_snippets/python-sdk/model-uploa
 import ConfigFile from "!!raw-loader!../../code_snippets/python-sdk/model-upload/upload-first-model.yaml";
 import RequirementsFile from "!!raw-loader!../../code_snippets/python-sdk/model-upload/upload-first-model.txt";
 import PythonSDKRequest from "!!raw-loader!../../code_snippets/python-sdk/model-upload/predict-first-model.py";
-import NodeSDKRequest from "!!raw-loader!../../code_snippets/python-sdk/model-upload/predict-first-model.js";
-import BuildLogsExample from "!!raw-loader!../../code_snippets/python-sdk/model-upload/upload-first-build-logs.txt";
 
 ## Step 1: Perform Prerequisites
 
-### Sign Up or Log In 
+### Sign Up or Log In
 
-To get started, [log in to](https://clarifai.com/login) your existing Clarifai account or [sign up](https://clarifai.com/signup) for a new one. If you're creating a new account, a default application will be automatically generated for you.
-
-Next, retrieve the following credentials:
-
-- **App ID** – Navigate to your application’s page and select the [**Overview**](https://docs.clarifai.com/create/applications/manage#app-overview) option in the collapsible left sidebar. Get the app ID from there. 
-- **User ID** – Navigate to **Settings** in the collapsible left sidebar and select the **Account** option. Then, copy your user ID from that page. 
-- **PAT** – From the same **Settings** menu, go to the **Secrets** page to generate or copy your [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat). This token is used to authenticate your connection with the Clarifai platform.
-
-You need to set the `CLARIFAI_PAT` you've retrieved as an environment variable. 
-
-<Tabs groupId="code">
-<TabItem value="bash" label="Unix-Like Systems">
-    <CodeBlock className="language-bash">export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE</CodeBlock>
-</TabItem>
-<TabItem value="bash2" label="Windows">
-    <CodeBlock className="language-bash">set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE</CodeBlock>
-</TabItem>
-</Tabs>
+To get started, [log in to](https://clarifai.com/login) your existing Clarifai account or [sign up](https://clarifai.com/signup) for a new one.
 
 ### Install Clarifai Package
 
-Install the latest version of the `clarifai` Python SDK. This also installs the Clarifai [Command Line Interface (CLI)](https://docs.clarifai.com/additional-resources/api-overview/cli), which we'll use for uploading the model.
+Install the latest version of the `clarifai` Python SDK, which also installs the [Command Line Interface (CLI)](https://docs.clarifai.com/resources/api-overview/cli).
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">
@@ -64,45 +41,53 @@ Install the latest version of the `clarifai` Python SDK. This also installs the 
 </TabItem>
 </Tabs>
 
+### Log In
 
-### Set Up Cluster and Nodepool
+Authenticate with the Clarifai platform. You'll need your [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat), which you can create from **Settings** > **Secrets** in the collapsible left sidebar.
 
-Setting up a [cluster and nodepool](https://docs.clarifai.com/compute/deployments/clusters-nodepools) creates the dedicated compute environment your model needs to run reliably and efficiently.
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai login</CodeBlock>
+</TabItem>
+</Tabs>
 
-After uploading your model to the Clarifai platform, you'll need to deploy it to the already created compute environment.
+The CLI will prompt for your PAT, validate it, detect your user ID, and save credentials to a local context. You can also log in non-interactively:
 
-> **Note:** A cluster forms the foundation of your compute environment, while a nodepool is a single compute node or a group of compute nodes within that cluster that provides the resources required to run your model.
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai login --pat YOUR_PAT_HERE</CodeBlock>
+</TabItem>
+</Tabs>
 
-You can learn how to set up your compute environment fast [here](https://docs.clarifai.com/getting-started/set-up-compute).
+Verify you're logged in:
 
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai whoami</CodeBlock>
+</TabItem>
+</Tabs>
 
-## Step 2: Create Files
+## Step 2: Scaffold Your Model
 
-:::tip
+Use `clarifai model init` to generate a ready-to-deploy model project. For this quick start, we'll create a simple text model:
 
-You can automatically generate the required files by running the [`clarifai model init`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init) command in the terminal from your current directory. After the files are created, you can modify them as needed.
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai model init my-first-model</CodeBlock>
+</TabItem>
+</Tabs>
 
-:::
-
-Create a project directory and organize your files as indicated below to fit the requirements of uploading models to the Clarifai platform. 
+This creates a `my-first-model/` directory with three files:
 
 ```text
-your_model_directory/
+my-first-model/
 ├── 1/
-│   └── model.py
-├── requirements.txt
-└── config.yaml
+│   └── model.py         # Your model logic
+├── requirements.txt     # Python dependencies
+└── config.yaml          # Model configuration
 ```
 
-- **your_model_directory/** – The root directory containing all files related to your custom model.
-  - **1/** – A subdirectory that holds the model file (_Note that the folder is named as **1**_).
-    - **model.py** – Contains the code that defines your model, including running inference.
-  - **requirements.txt** – Lists the Python dependencies required to run your model.
-  - **config.yaml** – Contains metadata and configuration settings, such as compute requirements, needed for uploading the model to Clarifai.
-
-
-
-Add the following snippets to each of the respective files. 
+Edit the generated files with your model logic. Here are example files for a simple streaming "Hello World" model:
 
 ### `model.py`
 
@@ -122,11 +107,7 @@ Add the following snippets to each of the respective files.
 
 ### `config.yaml`
 
-:::info important
-
-In the `model` section of the `config.yaml` file, specify a unique model ID (any arbitrary name you choose), along with the Clarifai user ID and app ID you retrieved [earlier](#sign-up-or-log-in). These values determine the destination where your model will be uploaded on the Clarifai platform.
-
-:::
+The config is minimal — `user_id` and `app_id` are auto-filled from your CLI context:
 
 <Tabs groupId="code">
 <TabItem value="yaml" label="YAML">
@@ -134,45 +115,107 @@ In the `model` section of the `config.yaml` file, specify a unique model ID (any
 </TabItem>
 </Tabs>
 
-## Step 3: Upload the Model
+:::tip Using a Toolkit
 
-Once your custom model is ready, upload it to the Clarifai platform by navigating to the directory containing the model and running the following command:
+For LLM models, use `--toolkit` to get a fully configured project with the right inference engine:
+
+```bash
+clarifai model init --toolkit vllm --model-name Qwen/Qwen3-0.6B
+```
+
+This auto-selects the optimal GPU instance based on model size. See [Toolkits](https://docs.clarifai.com/compute/toolkits) for all options.
+
+:::
+
+
+## Step 3: Test Locally (Optional)
+
+Before deploying, you can run your model locally to verify it works:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">clarifai model upload</CodeBlock>
+    <CodeBlock className="language-bash">clarifai model serve ./my-first-model</CodeBlock>
 </TabItem>
 </Tabs>
 
-## Step 4: Deploy the Model
+This starts the model and makes it available through a Clarifai-managed API endpoint for testing. Press Ctrl+C to stop.
 
-Once your model is successfully uploaded to the Clarifai platform, the terminal will guide you through the deployment process to prepare your model for inference.
+For offline development without a Clarifai login:
 
-Follow the on-screen prompts to:
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai model serve ./my-first-model --grpc</CodeBlock>
+</TabItem>
+</Tabs>
 
-- Choose an existing cluster and nodepool where your model will run.
+Learn more about [local testing options](https://docs.clarifai.com/compute/local-runners/).
 
-- Provide the deployment configuration, including the minimum and maximum number of [replicas](https://docs.clarifai.com/compute/deployments/deploy-model#model-replica) to manage your model’s scalability. Take note of the created `deployment_id`.
+## Step 4: Deploy to Cloud
 
+Deploy your model to Clarifai's cloud compute with a single command. All infrastructure (compute cluster, nodepool, deployment) is created automatically — no manual setup required.
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai model deploy ./my-first-model</CodeBlock>
+</TabItem>
+</Tabs>
+
+For models that need a GPU, specify an instance type:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai model deploy ./my-first-model --instance g5.xlarge</CodeBlock>
+</TabItem>
+</Tabs>
+
+Browse available instances with `clarifai model deploy --instance-info`.
+
+The CLI will progress through validation, upload, deployment, and monitoring phases. Once complete, you'll see the model URL and next-step commands.
 
 <details>
-  <summary>Build Logs Example</summary>
-    <CodeBlock className="language-text">{BuildLogsExample}</CodeBlock>
+<summary>Example Output</summary>
+
+```text
+── Ready ──────────────────────────────────────────────
+  Model deployed successfully!
+
+  Model:           https://clarifai.com/your-user/main/models/my-first-model
+  Version:         abc12345
+  Deployment:      deploy-my-first-model-abc123
+  Instance:        t3a.2xlarge
+  Cloud:           AWS / us-east-1
+
+── Next Steps ─────────────────────────────────────────
+  Predict:         clarifai model predict your-user/main/models/my-first-model "Hello"
+  Logs:            clarifai model logs --deployment "deploy-my-first-model-abc123"
+  Status:          clarifai model status --deployment "deploy-my-first-model-abc123"
+  Undeploy:        clarifai model undeploy --deployment "deploy-my-first-model-abc123"
+```
+
 </details>
+
+:::tip
+
+If you prefer to upload and deploy as separate steps, use `clarifai model upload` first, then [deploy via the UI or API](https://docs.clarifai.com/compute/deployments/deploy-model).
+
+:::
 
 ## Step 5: Predict With Model
 
-Once your model is successfully deployed, you can start making predictions with it. You can also test it directly in the [Playground](https://docs.clarifai.com/getting-started/quickstart-playground).
+Once your model is deployed, run predictions using the CLI:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai model predict your-user/main/models/my-first-model "Yes, I uploaded it! "</CodeBlock>
+</TabItem>
+</Tabs>
+
+Or programmatically using the Python SDK:
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python">
     <CodeBlock className="language-python">{PythonSDKRequest}</CodeBlock>
 </TabItem>
-<!--
-<TabItem value="node.js" label="Node.js SDK">
-    <CodeBlock className="language-javascript">{NodeSDKRequest}</CodeBlock>
-</TabItem>
--->
 </Tabs>
 
 <details>
@@ -184,8 +227,26 @@ Yes, I uploaded it!  Hello World 3
 Yes, I uploaded it!  Hello World 4</CodeBlock>
 </details>
 
+You can also test it directly in the [Playground](https://docs.clarifai.com/getting-started/quickstart-playground).
+
+## Lifecycle Management
+
+After deployment, use these commands to manage your model:
+
+```bash
+# Check deployment status
+clarifai model status --deployment <deployment-id>
+
+# Stream live logs
+clarifai model logs --deployment <deployment-id>
+
+# Remove deployment when done
+clarifai model undeploy --deployment <deployment-id>
+```
+
+Learn more about all available CLI commands in the [CLI Reference](https://docs.clarifai.com/resources/api-overview/cli).
 
 **Congratulations!**
 
-You've successfully uploaded your first model to the Clarifai platform and run inference with it!
+You've successfully deployed your first model to the Clarifai platform and run inference with it!
 

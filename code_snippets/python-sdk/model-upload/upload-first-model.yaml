@@ -1,7 +1,5 @@
 model:
   id: "my-first-model"
-  user_id: "YOUR_USER_ID_HERE"
-  app_id: "YOUR_APP_ID_HERE"
   model_type_id: "text-to-text"
 
 build_info:

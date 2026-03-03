@@ -290,3 +290,61 @@ Here’s an example snippet:
 </TabItem>
 </Tabs>
 
+## Deploy to Cloud
+
+After testing locally, you can deploy your SGLang model to Clarifai's cloud compute with a single command. All infrastructure (compute cluster, nodepool, deployment) is created automatically.
+
+:::note GPU Requirement
+
+SGLang requires **Ampere or newer GPUs** (compute capability >= 8.0). Pre-Ampere instances like T4 and V100 are not supported. The CLI automatically filters these out when selecting instances.
+
+:::
+
+### Step 1: Initialize
+
+If you haven't already, scaffold an SGLang model project:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+<CodeBlock className="language-bash">clarifai model init --toolkit sglang --model-name Qwen/Qwen2-7B</CodeBlock>
+</TabItem>
+</Tabs>
+
+The CLI auto-selects an Ampere+ GPU instance based on the model's VRAM requirements.
+
+### Step 2: Deploy
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+<CodeBlock className="language-bash">clarifai model deploy ./Qwen2-7B --instance g5.xlarge</CodeBlock>
+</TabItem>
+</Tabs>
+
+If your `config.yaml` already has a `compute.instance` value (set during `init`), you can omit the `--instance` flag:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+<CodeBlock className="language-bash">clarifai model deploy ./Qwen2-7B</CodeBlock>
+</TabItem>
+</Tabs>
+
+Browse available GPU instances with `clarifai model deploy --instance-info`.
+
+### Step 3: Monitor and Manage
+
+```bash
+# Check deployment status
+clarifai model status --deployment <deployment-id>
+
+# Stream live logs
+clarifai model logs --deployment <deployment-id>
+
+# Run predictions
+clarifai model predict user/app/models/Qwen2-7B "Explain AI in one sentence"
+
+# Clean up when done
+clarifai model undeploy --deployment <deployment-id>
+```
+
+For the full deploy options reference, see the [CLI Reference](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-deploy).
+

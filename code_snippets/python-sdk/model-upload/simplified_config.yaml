@@ -1,0 +1,13 @@
+model:
+  id: "my-model"
+
+build_info:
+  python_version: "3.11"
+
+compute:
+  instance: g5.xlarge
+
+checkpoints:
+  repo_id: Qwen/Qwen3-0.6B
+  type: huggingface
+  when: runtime

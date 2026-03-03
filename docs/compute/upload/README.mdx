@@ -188,9 +188,35 @@ Each parameter in the class methods must be annotated with a type, and the retur
 
 :::
 
-### Prepare `config.yaml` 
+### Prepare `config.yaml`
 
-The `config.yaml` file is essential for specifying the model’s metadata, compute resource requirements, and model checkpoints. 
+The `config.yaml` file is essential for specifying the model’s metadata, compute resource requirements, and model checkpoints.
+
+:::tip Simplified Config Format
+
+When using `clarifai model init --toolkit`, the CLI generates a minimal config that works out of the box. Fields like `user_id`, `app_id`, and `model_type_id` are auto-filled from your CLI context at deploy time:
+
+```yaml
+model:
+  id: "my-model"
+
+build_info:
+  python_version: "3.11"
+
+compute:
+  instance: g5.xlarge
+
+checkpoints:
+  repo_id: Qwen/Qwen3-0.6B
+  type: huggingface
+  when: runtime
+```
+
+The `compute.instance` shorthand (e.g., `g5.xlarge`) is expanded automatically into the full `inference_compute_info` section when deploying. You can use `clarifai model deploy --instance-info` to browse available instance types.
+
+For a simpler end-to-end flow, use [`clarifai model deploy`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-deploy) which handles both upload and deployment in one step.
+
+:::
 
 This is the `config.yaml` file for the custom model we want to upload:
 
@@ -401,9 +427,21 @@ To do this, use the `--skip_dockerfile` flag. This tells the CLI to skip automat
 
 ## Step 5: Deploy the Model
 
-After your model is successfully uploaded to the Clarifai platform, the terminal will walk you through the deployment process to prepare it for inference.
+After your model is uploaded, you need to deploy it to make it available for inference.
 
-Follow the on-screen prompts to:
+:::tip One-Command Deploy
+
+You can skip the separate upload and deploy steps entirely by using `clarifai model deploy`, which handles everything in one command — including auto-creating the compute infrastructure:
+
+```bash
+clarifai model deploy ./your-model --instance g5.xlarge
+```
+
+See the [CLI deploy reference](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-deploy) for all options.
+
+:::
+
+Alternatively, after uploading with `clarifai model upload`, follow the on-screen prompts to:
 
 - Choose an existing cluster and nodepool where your model will run.
 
