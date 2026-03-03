@@ -78,7 +78,7 @@ This creates a `Qwen3-0.6B/` directory with everything pre-configured:
 Qwen3-0.6B/
 ├── 1/
 │   └── model.py         # vLLM inference logic (ready to use)
-├── requirements.txt     # Dependencies (vllm, clarifai)
+├── requirements.txt     # Dependencies (clarifai, openai)
 └── config.yaml          # Config with auto-selected GPU instance
 ```
 
@@ -89,7 +89,7 @@ model:
   id: "Qwen3-0.6B"
 
 build_info:
-  python_version: "3.11"
+  image: "vllm/vllm-openai:latest"
 
 compute:
   instance: g4dn.xlarge       # Auto-selected based on model VRAM needs
@@ -100,7 +100,7 @@ checkpoints:
   when: runtime              # Downloads weights at startup, not during build
 ```
 
-> `user_id` and `app_id` are auto-filled from your login context. `compute.instance` is auto-selected based on the model's estimated VRAM requirements (the CLI queries HuggingFace for model metadata to determine this).
+> `user_id` and `app_id` are auto-filled from your login context at deploy time. `compute.instance` is auto-selected based on the model's estimated VRAM requirements — the CLI fetches the model's architecture from HuggingFace and calculates the exact memory needed for weights, KV cache, and framework overhead. `build_info.image` specifies the Docker base image (vLLM comes pre-installed in it, so `requirements.txt` only lists lightweight dependencies).
 
 ### Step 3A: Deploy
 
@@ -126,7 +126,7 @@ When it finishes, you'll see output like this:
   Model:           https://clarifai.com/your-user/main/models/qwen3-06b
   Version:         abc12345
   Deployment:      deploy-Qwen3-0.6B-dd8481
-  Instance:        g4dn.xlarge (NVIDIA T4, 15 GiB)
+  Instance:        g4dn.xlarge
   Cloud:           AWS / us-east-1
 
 ── Next Steps ─────────────────────────────────────────
@@ -240,7 +240,7 @@ For offline development without a Clarifai login:
 </TabItem>
 </Tabs>
 
-This CPU-only model doesn't need `--instance` — the CLI uses the `inference_compute_info` from `config.yaml`. For GPU models, you'd add `--instance g4dn.xlarge` (run `clarifai model deploy --instance-info` to see all options).
+This CPU-only model doesn't need `--instance` — the CLI uses the `inference_compute_info` from `config.yaml`. For GPU models, you'd add `--instance g5.xlarge` (run `clarifai list-instances` to see all available GPU instances).
 
 ### Step 5B: Predict
 
@@ -321,7 +321,7 @@ Wait until the status shows the deployment is active. Runtime checkpoint downloa
 
 ## What's Next?
 
-- Browse all [available GPU instances](https://docs.clarifai.com/resources/api-overview/cli#browse-available-instances) for deployment
+- Browse all [available GPU instances](https://docs.clarifai.com/resources/api-overview/cli#clarifai-list-instances) for deployment (`clarifai list-instances`)
 - Learn about [toolkits](https://docs.clarifai.com/compute/toolkits) (vLLM, SGLang, Ollama, and more)
 - Explore the full [CLI reference](https://docs.clarifai.com/resources/api-overview/cli)
 - Set up [autoscaling](https://docs.clarifai.com/compute/deployments/deploy-model#set-autoscaling) for production workloads

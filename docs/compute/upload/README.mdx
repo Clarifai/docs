@@ -195,13 +195,13 @@ When using `clarifai model init --toolkit`, the CLI generates a minimal config t
 
 ```yaml
 model:
-  id: "my-model"
+  id: "Qwen3-0.6B"
 
 build_info:
-  python_version: "3.11"
+  image: "vllm/vllm-openai:latest"
 
 compute:
-  instance: g5.xlarge
+  instance: g4dn.xlarge
 
 checkpoints:
   repo_id: Qwen/Qwen3-0.6B
@@ -209,7 +209,10 @@ checkpoints:
   when: runtime
 ```
 
-The `compute.instance` shorthand (e.g., `g5.xlarge`) is expanded automatically into the full `inference_compute_info` section when deploying. You can use `clarifai model deploy --instance-info` to browse available instance types.
+- **`build_info.image`** specifies a Docker base image with the toolkit pre-installed (e.g., vLLM, SGLang). This means `requirements.txt` only needs lightweight dependencies.
+- **`compute.instance`** is auto-selected based on the model's estimated VRAM needs (weights + KV cache + framework overhead). It's expanded into the full `inference_compute_info` section when deploying.
+
+Use `clarifai list-instances` to browse available instance types, or `clarifai model deploy --instance-info`.
 
 For a simpler end-to-end flow, use [`clarifai model deploy`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-deploy) which handles both upload and deployment in one step.
 

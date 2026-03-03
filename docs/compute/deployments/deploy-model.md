@@ -219,14 +219,39 @@ clarifai model deploy --model-url https://clarifai.com/user/app/models/my-model 
 
 ### Browse Available Instances
 
-View all available hardware configurations:
+View all available hardware configurations using the dedicated `list-instances` command:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
 
 ```bash
+# List all available instances
+clarifai list-instances
+
+# Filter by cloud provider
+clarifai list-instances --cloud aws
+
+# Filter by GPU type
+clarifai list-instances --gpu L40S
+
+# Or use the deploy flag shortcut
 clarifai model deploy --instance-info
 clarifai model deploy --instance-info --cloud aws
+```
+
+</TabItem>
+</Tabs>
+
+### Override Instance Type
+
+If your `config.yaml` already has a `compute.instance` value (auto-selected during `model init`), you can override it at deploy time. The `--instance` flag **always takes priority** over the config:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+
+```bash
+# config.yaml has compute.instance: g5.xlarge, but deploy with a larger GPU
+clarifai model deploy ./my-model --instance g6e.2xlarge
 ```
 
 </TabItem>

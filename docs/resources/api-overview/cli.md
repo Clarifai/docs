@@ -58,6 +58,7 @@ Commands:
                                   (contexts)
   deployment (dp)                 Manage Deployments: create, delete, list,
                                   get, logs
+  list-instances (li)             List available compute instances
   login                           Login command to set PAT and other
                                   configurations
   logout                          Log out by clearing saved credentials
@@ -1218,14 +1219,24 @@ clarifai model init --toolkit openai my-wrapper
 
 #### Smart Instance Selection
 
-When you use `--toolkit` with a GPU toolkit and `--model-name`, the CLI queries the HuggingFace API for model metadata (parameter count, quantization, dtype) and estimates VRAM requirements to auto-select the optimal GPU instance:
+When you use `--toolkit` with a GPU toolkit (vLLM, SGLang, HuggingFace) and `--model-name`, the CLI automatically estimates VRAM requirements and selects the optimal GPU instance.
+
+For **vLLM and SGLang** models, the CLI fetches the model's `config.json` from HuggingFace to calculate the **exact KV cache** based on the model's architecture (layer count, KV heads, head dimension, context length). This prevents out-of-memory errors that occur when a model's context window requires more KV cache than a simple heuristic predicts.
+
+The estimation includes:
+- **Model weights** — dtype-aware and quantization-aware sizing
+- **KV cache** — exact calculation from model architecture for the full context window
+- **Framework overhead** — 2 GiB fixed + 10% of model weights (CUDA context, PyTorch runtime, activations)
+- **GPU utilization headroom** — 90% utilization factor (matching vLLM/SGLang default `gpu_memory_utilization=0.9`)
 
 ```text
 $ clarifai model init --toolkit vllm --model-name Qwen/Qwen3-4B
-  Instance: g5.xlarge (Estimated 12.2 GiB VRAM, fits g5.xlarge (24 GiB))
+  Instance: g5.xlarge (Estimated 15.1 GiB VRAM (7.5 GiB weights + 5.6 GiB KV cache for 40960 ctx), fits g5.xlarge (24 GiB))
 ```
 
 For SGLang models, pre-Ampere GPUs (T4, V100) are automatically excluded since SGLang requires compute capability >= 8.0.
+
+Instance recommendations are restricted to **AWS, GCP, and Vultr** cloud providers.
 
 ### Basic Initialization
 
@@ -1405,7 +1416,7 @@ clarifai model deploy --model-url https://clarifai.com/user/app/models/id --inst
 
 ### Browse Available Instances
 
-Use `--instance-info` to see all available hardware across cloud providers:
+Use `--instance-info` or the standalone [`clarifai list-instances`](#clarifai-list-instances) command to see all available hardware across cloud providers:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
@@ -1513,6 +1524,56 @@ When you run `clarifai model deploy`, it progresses through these phases:
 ```
 
 </details>
+
+---
+
+## Clarifai List Instances
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai list-instances [OPTIONS]</CodeBlock>
+</TabItem>
+</Tabs>
+
+Browse all available compute instances across cloud providers. Alias: `li`.
+
+### Basic Usage
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+
+```bash
+# List all available instances
+clarifai list-instances
+
+# Filter by cloud provider
+clarifai li --cloud aws
+
+# Filter by GPU type
+clarifai li --gpu H100
+
+# Multi-GPU instances only
+clarifai li --min-gpus 2
+
+# Minimum GPU memory
+clarifai li --min-gpu-mem 48Gi
+
+# Combined filters
+clarifai li --cloud aws --gpu L40S
+```
+
+</TabItem>
+</Tabs>
+
+### Options Reference
+
+| Option | Description |
+|--------|-------------|
+| `--cloud` | Filter by cloud provider (`aws`, `gcp`, `vultr`, `azure`) |
+| `--region` | Filter by region (e.g., `us-east-1`, `us-central1`) |
+| `--gpu` | Filter by GPU name (e.g., `A10G`, `H100`, `L40S`) |
+| `--min-gpus` | Minimum GPU count |
+| `--min-gpu-mem` | Minimum GPU memory (e.g., `48Gi`, `80Gi`) |
 
 ---
 

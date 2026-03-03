@@ -31,8 +31,6 @@ import RequirementsTXT from "!!raw-loader!../../../code_snippets/python-sdk/mode
 import SGLModelInit from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/sgl_model_init.txt";
 import StartRunner from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/sgl_start_runner.txt";
 import TestRunner from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/sgl_test_runner.py";
-import SGLOpenAIServer from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/sgl_open_ai_server.py";
-import SGLDockerfile from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/sgl_dockerfile.py";
 
 ## Step 1: Perform Prerequisites
 
@@ -143,16 +141,11 @@ To initialize with a default model, omit `--model-name`:
 The generated structure includes:
 
 ```
-
 ├── 1/
 │   └── model.py
-|   └── openai_server_starter.py
-├── Dockerfile
-└── README.md
 ├── config.yaml
 └── requirements.txt
-
-````
+```
 
 
 ### `model.py`
@@ -169,35 +162,6 @@ This is the [main runner](https://docs.clarifai.com/compute/upload/#prepare-mode
 * The `predict()` and `generate()` methods define how text generation requests are processed — supporting both standard predictions and streaming outputs.
 * The `test()` method lets you verify locally that everything is working before deployment.
 
-### `openai_server_starter.py`
-
-<details>
-  <summary>Example: 1/openai_server_starter.py</summary>
-  <CodeBlock className="language-text">{SGLOpenAIServer}</CodeBlock>
-</details>
-
-This utility handles starting, monitoring, and shutting down the backend SGLang server. It acts as your server controller, ensuring the backend is ready before the runner starts sending requests.
-
-* It wraps around subprocess management for launching `sglang.launch_server`.
-* It ensures the server runs properly, logs startup messages, and handles safe termination.
-* The class `OpenAI_APIServer` can also be extended to support other backends like `vLLM`, `llama.cpp`, or `TGI`, but here it’s used for SGLang.
-
-### `Dockerfile`
-
-<details>
-  <summary>Example: Dockerfile</summary>
-  <CodeBlock className="language-text">{SGLDockerfile}</CodeBlock>
-</details>
-
-The Dockerfile defines the container environment used to run your model runner on Clarifai’s infrastructure.
-
-* It builds on the official SGLang base image (`lmsysorg/sglang:v0.5.3-cu129`), which includes CUDA and SGLang dependencies.
-* It installs any Python packages listed in `requirements.txt`.
-* It copies your model files (`model.py`, `config.yaml`, etc.) into the container.
-* Optionally, it downloads checkpoints during build time if `checkpoints.when = "build"`.
-* It starts the Clarifai runner loop using `python -m clarifai.runners.server`.
-
-
 ### `config.yaml`
 
 <details>
@@ -205,12 +169,19 @@ The Dockerfile defines the container environment used to run your model runner o
   <CodeBlock className="language-text">{SGLConfig}</CodeBlock>
 </details>
 
-This is the configuration file for your SGLang model runner.
+The `config.yaml` file defines your SGLang model's configuration in a simplified format:
 
-* It specifies model identifiers (`model.id`, `user_id`, `app_id`), which together determine where your model will run on the Clarifai platform. Your Clarifai user ID is set by default from your [active context](https://docs.clarifai.com/resources/api-overview/cli#clarifai-config).
-* It defines compute resources (CPU, GPU type, and memory).
-* The [`checkpoints`](https://docs.clarifai.com/compute/upload/#hugging-face-model-checkpoints) section tells the runner where and when to load model weights 
-    > **Tip:** Use `when: runtime` for large models to reduce image size and improve load times.
+- **`model.id`** — A unique identifier for your model. Auto-generated from the HuggingFace model name when you use `--model-name`.
+
+- **`build_info.image`** — The Docker base image. For SGLang models, this is `lmsysorg/sglang:latest`, which includes SGLang, PyTorch, and CUDA pre-installed.
+
+- **`compute.instance`** — The GPU instance type, auto-selected based on the model's VRAM requirements. SGLang requires **Ampere+ GPUs** (compute capability >= 8.0), so pre-Ampere instances (T4, V100) are automatically excluded. Run `clarifai list-instances` to see all available options.
+
+- **[`checkpoints`](https://docs.clarifai.com/compute/upload/#hugging-face-model-checkpoints)** — Defines how to retrieve model weights. If you're using a gated repository, add your HuggingFace access token via `hf_token` or set the `HF_TOKEN` environment variable.
+
+> `user_id` and `app_id` are auto-filled from your [active context](https://docs.clarifai.com/resources/api-overview/cli#clarifai-config) at deploy time. You don't need to add them manually.
+>
+> **Tip:** Use `when: runtime` (the default) for large models to reduce image size and improve load times.
 
 
 ### `requirements.txt`
@@ -304,17 +275,11 @@ If you haven't already, scaffold an SGLang model project:
 </TabItem>
 </Tabs>
 
-The CLI auto-selects an Ampere+ GPU instance based on the model's VRAM requirements.
+The CLI auto-selects an Ampere+ GPU instance based on the model's VRAM requirements (weights + KV cache + framework overhead).
 
 ### Step 2: Deploy
 
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-<CodeBlock className="language-bash">clarifai model deploy ./Qwen2-7B --instance g5.xlarge</CodeBlock>
-</TabItem>
-</Tabs>
-
-If your `config.yaml` already has a `compute.instance` value (set during `init`), you can omit the `--instance` flag:
+Since `config.yaml` already has a `compute.instance` value (auto-selected during `init`), you can deploy directly:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
@@ -322,7 +287,15 @@ If your `config.yaml` already has a `compute.instance` value (set during `init`)
 </TabItem>
 </Tabs>
 
-Browse available GPU instances with `clarifai model deploy --instance-info`.
+To override the instance with a larger GPU, use the `--instance` flag — it always takes priority over the config:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+<CodeBlock className="language-bash">clarifai model deploy ./Qwen2-7B --instance g6e.2xlarge</CodeBlock>
+</TabItem>
+</Tabs>
+
+Browse available GPU instances with `clarifai list-instances` or `clarifai model deploy --instance-info`.
 
 ### Step 3: Monitor and Manage
 

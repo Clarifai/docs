@@ -143,11 +143,17 @@ The [`model.py`](https://docs.clarifai.com/compute/upload/#prepare-modelpy) file
   <CodeBlock className="language-text">{VLLMConfig}</CodeBlock>
 </details>
 
-The `config.yaml` file defines the model’s configuration — including compute requirements, checkpoint sources, and other essential runtime settings.
+The `config.yaml` file defines the model’s configuration in a simplified format — just 4 sections, no placeholders to fill in:
 
-- In the `model` section, provide a unique model ID (any name you prefer) along with your app ID. Your Clarifai user ID is set by default from your [active context](https://docs.clarifai.com/resources/api-overview/cli#clarifai-config). These values specify where your model will be deployed within the Clarifai platform.
+- **`model.id`** — A unique identifier for your model. Auto-generated from the HuggingFace model name when you use `--model-name`.
 
-- The [`checkpoints`](hf.md#configyaml) section defines how to retrieve the model’s weights from Hugging Face. If you’re using a private or restricted repository, be sure to include your Hugging Face access token to enable secure downloading.
+- **`build_info.image`** — The Docker base image. For vLLM models, this is `vllm/vllm-openai:latest`, which includes vLLM, PyTorch, and CUDA pre-installed. This means `requirements.txt` only needs lightweight dependencies (clarifai, openai).
+
+- **`compute.instance`** — The GPU instance type, auto-selected based on the model’s estimated VRAM requirements. The CLI fetches the model’s architecture from HuggingFace and calculates the exact memory needed for weights, KV cache (based on context window length), and framework overhead. Run `clarifai list-instances` to see all available options.
+
+- **[`checkpoints`](hf.md#configyaml)** — Defines how to retrieve the model’s weights from Hugging Face. If you’re using a private or restricted repository, add your HuggingFace access token via `hf_token` or set the `HF_TOKEN` environment variable.
+
+> `user_id` and `app_id` are auto-filled from your [active context](https://docs.clarifai.com/resources/api-overview/cli#clarifai-config) at deploy time. You don’t need to add them manually.
 
 
 ### `requirements.txt`
@@ -157,7 +163,7 @@ The `config.yaml` file defines the model’s configuration — including compute
   <CodeBlock className="language-text">{VLLMRequirements}</CodeBlock>
 </details>
 
-The `requirements.txt` file lists Python dependencies required by your model. If you haven’t installed them yet, run the following command to install the dependencies:
+The `requirements.txt` file lists Python dependencies required by your model. Since vLLM, PyTorch, and other heavy dependencies are pre-installed in the Docker base image (`vllm/vllm-openai:latest`), this file only includes lightweight packages like `clarifai` and `openai`. If you haven’t installed them yet, run the following command:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">
@@ -225,17 +231,11 @@ If you haven’t already, scaffold a vLLM model project:
 </TabItem>
 </Tabs>
 
-The CLI auto-selects the optimal GPU instance based on the model’s VRAM requirements.
+The CLI auto-selects the optimal GPU instance based on the model’s VRAM requirements (weights + KV cache + framework overhead).
 
 ### Step 2: Deploy
 
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-<CodeBlock className="language-bash">clarifai model deploy ./Qwen3-0.6B --instance g5.xlarge</CodeBlock>
-</TabItem>
-</Tabs>
-
-If your `config.yaml` already has a `compute.instance` value (set during `init`), you can omit the `--instance` flag:
+Since `config.yaml` already has a `compute.instance` value (auto-selected during `init`), you can deploy directly:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
@@ -243,7 +243,15 @@ If your `config.yaml` already has a `compute.instance` value (set during `init`)
 </TabItem>
 </Tabs>
 
-Browse available GPU instances with `clarifai model deploy --instance-info`.
+To override the instance with a larger GPU (e.g., for better performance), use the `--instance` flag — it always takes priority over the config:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+<CodeBlock className="language-bash">clarifai model deploy ./Qwen3-0.6B --instance g5.xlarge</CodeBlock>
+</TabItem>
+</Tabs>
+
+Browse available GPU instances with `clarifai list-instances` or `clarifai model deploy --instance-info`.
 
 ### Step 3: Monitor and Manage
 
