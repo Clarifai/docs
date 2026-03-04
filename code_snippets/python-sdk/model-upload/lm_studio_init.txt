@@ -1,6 +1,6 @@
 clarifai model init --toolkit lmstudio
 [INFO] Initializing model with lmstudio toolkit...
-[INFO] Detected LM Studio models: LiquidAI/LFM2-1.2B
+[INFO] Detected LM Studio models: google/gemma-3-4b
 
   Model initialized in ./my-model
 
@@ -9,6 +9,3 @@ clarifai model init --toolkit lmstudio
     clarifai model serve ./my-model --mode env       # auto-create venv and install deps
     clarifai model serve ./my-model --mode container # run inside Docker
 
-  Deploy to Clarifai:
-    clarifai model deploy ./my-model --instance gpu-nvidia-a10g
-    clarifai list-instances                             # list available instances

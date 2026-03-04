@@ -15,5 +15,5 @@ clarifai model init --toolkit openai my-wrapper
     clarifai model serve ./my-wrapper --mode container # run inside Docker
 
   Deploy to Clarifai:
-    clarifai model deploy ./my-wrapper --instance gpu-nvidia-a10g
+    clarifai model deploy ./my-wrapper --instance a10g
     clarifai list-instances                             # list available instances

@@ -3,18 +3,14 @@ description: Download and run LM Studio models locally and expose them via a pub
 sidebar_position: 5
 ---
 
-# LM Studio 
+# LM Studio
 
 **Download and run LM Studio models locally and expose them via a public API**
 <hr />
 
-[LM Studio](https://lmstudio.ai/) is a desktop application that lets you run and chat with open-source large language models (LLMs) locally — no internet connection required.
+[LM Studio](https://lmstudio.ai/) is a desktop application that lets you run open-source LLMs locally on your machine. Combined with Clarifai's Local Runners, you can serve LM Studio models from your machine, expose them via a public API, and access them through the Clarifai platform — all while keeping the speed, privacy, and control of local inference.
 
-> **Important:** Clarifai’s LM Studio integration currently supports **macOS only** (Apple devices). For other platforms, consider using [Ollama](https://docs.clarifai.com/compute/toolkits/ollama) or [vLLM](https://docs.clarifai.com/compute/toolkits/vllm) instead.
-
-With Clarifai’s [Local Runners](https://docs.clarifai.com/compute/local-runners/), you can take this a step further: run LM Studio models directly on your machine, expose them securely through a public URL, and leverage Clarifai’s powerful AI platform — all while maintaining the speed, privacy, and control of local deployment.
-
-> **Note:** After initializing a model using the LM Studio toolkit, you can [upload](https://docs.clarifai.com/compute/upload/#step-4-upload-the-model-to-clarifai) it to Clarifai to leverage the platform’s capabilities.
+> **Important:** Clarifai's LM Studio integration currently supports **macOS only** (Apple devices). For other platforms, consider using [Ollama](https://docs.clarifai.com/compute/toolkits/ollama) or [vLLM](https://docs.clarifai.com/compute/toolkits/vllm) instead.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -28,28 +24,15 @@ import LMStudioModel from "!!raw-loader!../../../code_snippets/python-sdk/model-
 import LMStudioConfig from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/lm_studio_config.yaml";
 import LMStudioRequirements from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/lm_studio_requirements.txt";
 
-## Step 1: Perform Prerequisites
+## Step 1: Install Prerequisites
 
-### Get User ID and PAT
+### Install LM Studio
 
-Start by [logging in](https://clarifai.com/login) to your existing Clarifai account or [signing up](https://clarifai.com/signup) for a new one. Once logged in, you’ll need your **Personal Access Token (PAT)** for authentication:
+Go to the [LM Studio website](https://lmstudio.ai/download) and install the desktop application for macOS.
 
-- In the collapsible left sidebar, select **Settings** and choose **Secrets** to generate or copy your [PAT](https://docs.clarifai.com/control/authentication/pat).
+Keep LM Studio open and running before starting the local runner — it provides the model runtime that Clarifai connects to.
 
-Set the PAT as an environment variable:
-
-<Tabs groupId="code">
-<TabItem value="bash" label="Unix-like Systems">
-<CodeBlock className="language-bash">export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE</CodeBlock>
-</TabItem>
-<TabItem value="bash2" label="Windows">
-<CodeBlock className="language-bash">set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE</CodeBlock>
-</TabItem>
-</Tabs>
-
-### Install the Clarifai CLI
-
-Next, install the latest version of the [**Clarifai CLI**](https://docs.clarifai.com/sdk/cli), which includes built-in support for Local Runners.
+### Install Clarifai
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">
@@ -57,159 +40,114 @@ Next, install the latest version of the [**Clarifai CLI**](https://docs.clarifai
 </TabItem>
 </Tabs>
 
-> **Note:** Ensure you have **[Python 3.11 or 3.12](https://docs.clarifai.com/resources/api-overview/python-sdk#python-requirements)** installed to successfully run Local Runners.
+> **Note:** Python 3.11 or 3.12 is required. The `openai` package is included with `clarifai`.
 
-### Install the OpenAI Package
-
-Install the `openai` package — it’s required to perform inference with LM Studio models that support the [OpenAI-compatible](https://docs.clarifai.com/compute/inference/#predict-with-openai-compatible-format) format.
+## Step 2: Log In
 
 <Tabs groupId="code">
-<TabItem value="bash" label="Bash">
-<CodeBlock className="language-bash">pip install openai</CodeBlock>
+<TabItem value="bash" label="CLI">
+<CodeBlock className="language-bash">clarifai login</CodeBlock>
 </TabItem>
 </Tabs>
 
-### Install LM Studio
-
-[Download](https://lmstudio.ai/download) and install the LM Studio desktop application to run open-source large language models locally. 
-
-Ensure the LM Studio remains open and running when you start a Clarifai Local Runner, as the runner relies on LM Studio’s internal model runtime for successful execution.
-
-## Step 2: Initialize a Model
-
-Using the Clarifai CLI, you can download and set up any model available in the [LM Studio Model Catalog](https://lmstudio.ai/models) that supports the GGUF format.
-
-For example, the command below initializes the default model ([LiquidAI/LFM2-1.2B](https://lmstudio.ai/models/liquid/lfm2-1.2b)) in your current directory:
-
-<Tabs groupId="code">
-<TabItem value="bash" label="Bash">
-<CodeBlock className="language-bash">clarifai model init --toolkit lmstudio</CodeBlock>
-</TabItem>
-</Tabs>
-
-> **Note:** You can initialize a model in a specific location by passing a [`MODEL_PATH`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init). 
-
-<details>
-  <summary>Example Output</summary>
-  <CodeBlock className="language-text">{LMStudioInit}</CodeBlock>
-</details>
-
-Running this command creates a new model directory structure compatible with the Clarifai platform. You can further customize or optimize the model by modifying the generated files as needed.
-
-:::tip
-
-To initialize a specific LM Studio model that supports the GGUF format, use the `--model-name` flag.
-
-<Tabs groupId="code">
-<TabItem value="bash" label="Bash">
-<CodeBlock className="language-bash">clarifai model init --toolkit lmstudio --model-name qwen/qwen3-4b-thinking-2507</CodeBlock>
-</TabItem>
-</Tabs>
-
-:::
-
-> **Note:** Some models are quite large and require substantial memory or GPU resources. Ensure your machine has sufficient compute capacity to load and run the model locally before initializing it.
-
-The generated structure includes:
-
-```
-├── 1/
-│   └── model.py
-├── requirements.txt
-└── config.yaml
-```
-
-### `model.py`
-
-<details>
-  <summary>Example: model.py</summary>
-  <CodeBlock className="language-text">{LMStudioModel}</CodeBlock>
-</details>
-
-The [`model.py`](https://docs.clarifai.com/compute/upload/#prepare-modelpy) file inside the `1/` directory defines the model’s logic — including how predictions are made and how inputs and outputs are handled.
-
-### `config.yaml`
-
-<details>
-  <summary>Example: config.yaml</summary>
-  <CodeBlock className="language-text">{LMStudioConfig}</CodeBlock>
-</details>
-
-The `config.yaml` file defines your LM Studio model's configuration:
-
-- **`model.id`** — A unique identifier for your model.
-- **`build_info.python_version`** — The Python version to use (default: `3.12`).
-- **`toolkit`** — Specifies the runtime provider (`lmstudio`).
-
-> `user_id` and `app_id` are auto-filled from your [active context](https://docs.clarifai.com/resources/api-overview/cli#clarifai-config) at deploy time. You don't need to add them manually.
-
-### `requirements.txt`
-
-<details>
-  <summary>Example: requirements.txt</summary>
-  <CodeBlock className="language-text">{LMStudioRequirements}</CodeBlock>
-</details>
-
-The `requirements.txt` file lists the Python dependencies your model needs. If you haven’t installed them yet, run the following command to install the dependencies:
-
-<Tabs groupId="code">
-<TabItem value="bash" label="Bash">
-<CodeBlock className="language-bash">pip install -r requirements.txt</CodeBlock>
-</TabItem>
-</Tabs>
-
-## Step 3: Log In to Clarifai
-
-Use the Clarifai CLI to log in to your account and create a configuration [**context**](https://docs.clarifai.com/compute/local-runners/#step-2-create-a-context-optional) that securely connects your local environment to the Clarifai platform.
-
-```bash
-clarifai login
-```
-
-You’ll be prompted to enter the following details:
-
-* **User ID** – Your Clarifai User ID.
-* **PAT** – Your Clarifai Personal Access Token.
-  If you’ve already set the `CLARIFAI_PAT` environment variable, type `ENVVAR` to use it automatically.
-* **Context name** – Optionally, specify a custom name for this configuration context, or press **Enter** to use the default `"default"`.
-  Contexts are useful when working with multiple environments or projects.
+You'll be prompted for your user ID and [PAT](https://docs.clarifai.com/control/authentication/pat). This saves your credentials locally so you don't need to set environment variables manually.
 
 <details>
   <summary>Example Output</summary>
   <CodeBlock className="language-text">{LMStudioLogin}</CodeBlock>
 </details>
 
-## Step 4: Serve the Model Locally
+## Step 3: Initialize a Model
 
-Start the model using `clarifai model serve`, which connects to the LM Studio runtime to execute your model locally:
+Scaffold a model project using any model from the [LM Studio Model Catalog](https://lmstudio.ai/models):
 
-```bash
-clarifai model serve
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+<CodeBlock className="language-bash">clarifai model init --toolkit lmstudio</CodeBlock>
+</TabItem>
+</Tabs>
+
+This initializes the default model (`google/gemma-3-4b`). The CLI auto-detects any LM Studio models already downloaded on your machine.
+
+<details>
+  <summary>Example Output</summary>
+  <CodeBlock className="language-text">{LMStudioInit}</CodeBlock>
+</details>
+
+This creates a `./my-model/` directory:
+
+```
+my-model/
+├── 1/
+│   └── model.py       # LM Studio inference logic
+├── requirements.txt   # Python dependencies
+└── config.yaml        # Model config (user_id/app_id auto-filled from login)
 ```
 
-> **Note:** The older `clarifai model local-runner` command still works as an alias.
+:::tip
+To initialize a specific model, use `--model-name`:
+```sh
+clarifai model init --toolkit lmstudio --model-name google/gemma-3-4b
+```
+:::
 
-If configuration contexts or defaults are missing, the CLI will guide you through setting them up automatically.
+> **Note:** Some models are very large and may require significant memory. Check your machine's capacity before initializing.
 
-This setup ensures that all necessary components — such as compute clusters, nodepools, and deployments — are properly defined in your configuration context.
-For more details, see [here](https://docs.clarifai.com/compute/local-runners/#step-2-create-a-context-optional).
+<details>
+  <summary>model.py</summary>
+  <CodeBlock className="language-text">{LMStudioModel}</CodeBlock>
+</details>
+
+<details>
+  <summary>config.yaml</summary>
+  <CodeBlock className="language-text">{LMStudioConfig}</CodeBlock>
+</details>
+
+<details>
+  <summary>requirements.txt</summary>
+  <CodeBlock className="language-text">{LMStudioRequirements}</CodeBlock>
+</details>
+
+## Step 4: Serve Locally
+
+Start the model as a local runner:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+<CodeBlock className="language-bash">clarifai model serve ./my-model</CodeBlock>
+</TabItem>
+</Tabs>
+
+> **Note:** Make sure LM Studio is open and running before starting the runner. Add `-v` for verbose logs.
 
 <details>
   <summary>Example Output</summary>
   <CodeBlock className="language-text">{LMStudioLocalRunner}</CodeBlock>
 </details>
 
-## Step 5: Test Your Runner
+When ready, the CLI prints:
+- A model URL for API calls
+- A Playground link for browser-based testing
+- A sample code snippet
 
-After the Local Runner starts, you can use it to perform [inference](https://docs.clarifai.com/compute/inference/clarifai/api) with your LM Studio–based model.
+Press `Ctrl+C` to stop the runner.
 
-You can run a snippet in a separate terminal, within the same directory, to confirm that your model is running and responding as expected.
+## Step 5: Run Inference
 
-Here’s an example snippet:
+While the local runner is active, test it using the OpenAI-compatible client:
 
 <Tabs groupId="code">
-<TabItem value="python" label="Python (OpenAI)">
-     <CodeBlock className="language-python">{LMStudioTestRunner}</CodeBlock>
+<TabItem value="python" label="Python">
+  <CodeBlock className="language-python">{LMStudioTestRunner}</CodeBlock>
 </TabItem>
-
 </Tabs>
+
+Or use the Clarifai CLI:
+
+```sh
+clarifai model predict https://clarifai.com/<user-id>/local-runner-app/models/local-runner-model "Explain AI in one sentence"
+```
+
+You can also open the **[Runners](https://clarifai.com/compute/runners)** dashboard, find your runner, and select **Open in Playground** from the three-dot menu.
+
+When you're done, close the terminal running the local runner to shut it down.
