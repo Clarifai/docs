@@ -2,10 +2,10 @@ clarifai model init --toolkit lmstudio
 [INFO] Initializing model with lmstudio toolkit...
 [INFO] Detected LM Studio models: google/gemma-3-4b
 
-  Model initialized in ./my-model
+  Model initialized in ./gemma-3-4b
 
   Test locally:
-    clarifai model serve ./my-model
-    clarifai model serve ./my-model --mode env       # auto-create venv and install deps
-    clarifai model serve ./my-model --mode container # run inside Docker
+    clarifai model serve ./gemma-3-4b
+    clarifai model serve ./gemma-3-4b --mode env       # auto-create venv and install deps
+    clarifai model serve ./gemma-3-4b --mode container # run inside Docker
 

@@ -82,10 +82,10 @@ The CLI auto-detects LM Studio models already downloaded on your machine. Change
   <CodeBlock className="language-text">{LMStudioInit}</CodeBlock>
 </details>
 
-This creates a `./my-model/` directory:
+This creates a `./gemma-3-4b/` directory:
 
 ```
-my-model/
+gemma-3-4b/
 ├── 1/
 │   └── model.py       # LM Studio inference logic
 ├── requirements.txt   # Python dependencies
@@ -115,7 +115,7 @@ Start the model as a local runner:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-<CodeBlock className="language-bash">clarifai model serve ./my-model</CodeBlock>
+<CodeBlock className="language-bash">clarifai model serve ./gemma-3-4b</CodeBlock>
 </TabItem>
 </Tabs>
 
