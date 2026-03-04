@@ -245,7 +245,7 @@ Copy the predict command from the deploy output, or construct it:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">clarifai model predict your-user/main/models/my-first-model "Yes, I uploaded it! "</CodeBlock>
+    <CodeBlock className="language-bash">clarifai model predict your-user/main/models/my-first-model "Yes, I uploaded it!"</CodeBlock>
 </TabItem>
 </Tabs>
 
