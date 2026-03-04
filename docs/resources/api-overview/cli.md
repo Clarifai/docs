@@ -1189,7 +1189,7 @@ Fields like `user_id`, `app_id`, and `model_type_id` are resolved automatically 
 | `sglang` | GPU | Fast LLM serving with [SGLang](https://docs.clarifai.com/compute/toolkits/sglang) |
 | `huggingface` | GPU | HuggingFace Transformers (direct inference) |
 | `ollama` | Local | [Ollama](https://docs.clarifai.com/compute/toolkits/ollama) local LLM server |
-| `lmstudio` | Local | [LM Studio](https://docs.clarifai.com/compute/toolkits/lm-studio) local LLM server |
+| `lmstudio` | Local | [LM Studio](https://docs.clarifai.com/compute/toolkits/lmstudio) local LLM server |
 | `python` | Other | Blank Python model (default if `--toolkit` omitted) |
 | `mcp` | Other | [MCP](https://docs.clarifai.com/compute/agents/mcp) tool server (FastMCP) |
 | `openai` | Other | [OpenAI-compatible](https://docs.clarifai.com/compute/inference/open-ai) API wrapper |
