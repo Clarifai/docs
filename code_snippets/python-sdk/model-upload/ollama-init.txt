@@ -1,13 +1,13 @@
-clarifai model init --toolkit ollama --model-name llama3.1
+clarifai model init --toolkit ollama --model-name gpt-oss:20b
 [INFO] Initializing model with ollama toolkit...
 
-  Model initialized in ./llama31
+  Model initialized in "./gpt-oss:20b"
 
   Test locally:
-    clarifai model serve ./llama31
-    clarifai model serve ./llama31 --mode env       # auto-create venv and install deps
-    clarifai model serve ./llama31 --mode container # run inside Docker
+    clarifai model serve "./gpt-oss:20b"
+    clarifai model serve "./gpt-oss:20b" --mode env       # auto-create venv and install deps
+    clarifai model serve "./gpt-oss:20b" --mode container # run inside Docker
 
   Deploy to Clarifai:
-    clarifai model deploy ./llama31 --instance gpu-nvidia-a10g
-    clarifai list-instances                             # list available instances
+    clarifai model deploy "./gpt-oss:20b" --instance a10g
+    clarifai model deploy --instance-info                 # list available instances

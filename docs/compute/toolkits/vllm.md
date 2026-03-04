@@ -118,7 +118,7 @@ To override the instance type:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-<CodeBlock className="language-bash">clarifai model deploy ./Qwen3-0.6B --instance gpu-nvidia-a10g</CodeBlock>
+<CodeBlock className="language-bash">clarifai model deploy ./Qwen3-0.6B --instance a10g</CodeBlock>
 </TabItem>
 </Tabs>
 
