@@ -56,7 +56,7 @@ Scaffold a model project using a HuggingFace model name:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-<CodeBlock className="language-bash">clarifai model init --toolkit sglang --model-name Qwen/Qwen2-7B</CodeBlock>
+<CodeBlock className="language-bash">clarifai model init --toolkit sglang --model-name Qwen/Qwen3-4B</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -67,10 +67,10 @@ The CLI auto-selects an Ampere+ GPU instance based on the model's VRAM requireme
   <CodeBlock className="language-text">{SGLModelInit}</CodeBlock>
 </details>
 
-This creates a `./Qwen2-7B/` directory:
+This creates a `./Qwen3-4B/` directory:
 
 ```
-Qwen2-7B/
+Qwen3-4B/
 ├── 1/
 │   └── model.py       # SGLang inference logic
 ├── requirements.txt   # Lightweight deps (SGLang is pre-installed in the base image)
@@ -111,7 +111,7 @@ Since `config.yaml` already has a `compute.instance` value (auto-selected during
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-<CodeBlock className="language-bash">clarifai model deploy ./Qwen2-7B</CodeBlock>
+<CodeBlock className="language-bash">clarifai model deploy ./Qwen3-4B</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -119,7 +119,7 @@ To override the instance type:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-<CodeBlock className="language-bash">clarifai model deploy ./Qwen2-7B --instance g6e.2xlarge</CodeBlock>
+<CodeBlock className="language-bash">clarifai model deploy ./Qwen3-4B --instance g5.2xlarge</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -131,7 +131,7 @@ To see all available instance types and pricing:
 </TabItem>
 </Tabs>
 
-> **Tip:** If you have a local Linux GPU and want to test before deploying, run `clarifai model serve ./Qwen2-7B --mode env` first.
+> **Tip:** If you have a local Linux GPU and want to test before deploying, run `clarifai model serve ./Qwen3-4B --mode env` first.
 
 ## Step 5: Run Inference
 
@@ -144,7 +144,7 @@ To see all available instance types and pricing:
 Or use the Clarifai CLI:
 
 ```sh
-clarifai model predict https://clarifai.com/<user-id>/main/models/Qwen2-7B "Explain AI in one sentence"
+clarifai model predict https://clarifai.com/<user-id>/main/models/Qwen3-4B "Explain AI in one sentence"
 ```
 
 ### Manage Your Deployment

@@ -1,10 +1,10 @@
 build_info:
   image: lmsysorg/sglang:latest
 checkpoints:
-  repo_id: Qwen/Qwen2-7B
+  repo_id: Qwen/Qwen3-4B
   type: huggingface
   when: runtime
 compute:
-  instance: g6e.xlarge
+  instance: g5.2xlarge
 model:
-  id: qwen2-7b
+  id: qwen3-4b

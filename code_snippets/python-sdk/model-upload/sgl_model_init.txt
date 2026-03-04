@@ -1,15 +1,15 @@
-clarifai model init --toolkit sglang --model-name Qwen/Qwen2-7B
+clarifai model init --toolkit sglang --model-name Qwen/Qwen3-4B
 [INFO] Initializing model with sglang toolkit...
-[INFO] Updated Hugging Face model repo_id to: Qwen/Qwen2-7B
-  Instance: g6e.xlarge (Estimated 24.6 GiB VRAM (14.2 GiB weights + 7.0 GiB KV cache for 131072 ctx), fits g6e.xlarge (45 GiB))
+[INFO] Updated Hugging Face model repo_id to: Qwen/Qwen3-4B
+  Instance: g5.2xlarge (Estimated 15.9 GiB VRAM (7.5 GiB weights + 5.6 GiB KV cache for 40960 ctx), fits g5.2xlarge (22 GiB))
 
-  Model initialized in ./Qwen2-7B
+  Model initialized in ./Qwen3-4B
 
   Test locally:
-    clarifai model serve ./Qwen2-7B
-    clarifai model serve ./Qwen2-7B --mode env       # auto-create venv and install deps
-    clarifai model serve ./Qwen2-7B --mode container # run inside Docker
+    clarifai model serve ./Qwen3-4B
+    clarifai model serve ./Qwen3-4B --mode env       # auto-create venv and install deps
+    clarifai model serve ./Qwen3-4B --mode container # run inside Docker
 
   Deploy to Clarifai:
-    clarifai model deploy ./Qwen2-7B
+    clarifai model deploy ./Qwen3-4B
     clarifai list-instances                             # list available instances
