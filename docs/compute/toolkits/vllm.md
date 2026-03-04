@@ -94,7 +94,7 @@ Qwen3-0.6B/
 The `config.yaml` has 4 sections:
 - **`model.id`** — Auto-generated from the HuggingFace model name
 - **`build_info.image`** — `vllm/vllm-openai:latest` (vLLM, PyTorch, and CUDA pre-installed)
-- **`compute.instance`** — Auto-selected based on estimated VRAM. Run `clarifai model deploy --instance-info` to see all options
+- **`compute.instance`** — Auto-selected based on estimated VRAM. Run `clarifai list-instances` to see all options
 - **`checkpoints`** — HuggingFace model weights config. Add `hf_token` here or set `HF_TOKEN` for gated models
 
 <details>
@@ -126,7 +126,7 @@ To see all available instance types and pricing:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-<CodeBlock className="language-bash">clarifai model deploy --instance-info</CodeBlock>
+<CodeBlock className="language-bash">clarifai list-instances</CodeBlock>
 </TabItem>
 </Tabs>
 

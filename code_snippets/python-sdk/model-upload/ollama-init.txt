@@ -10,4 +10,4 @@ clarifai model init --toolkit ollama --model-name gpt-oss:20b
 
   Deploy to Clarifai:
     clarifai model deploy "./gpt-oss:20b" --instance a10g
-    clarifai model deploy --instance-info                 # list available instances
+    clarifai list-instances                               # list available instances
