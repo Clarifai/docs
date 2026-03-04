@@ -57,7 +57,7 @@ Commands:
   config                          Manage multiple configuration profiles
                                   (contexts)
   deployment (dp)                 Manage Deployments: create, delete, list,
-                                  get, logs
+                                  get (status), logs
   list-instances (li)             List available compute instances
   login                           Login command to set PAT and other
                                   configurations
