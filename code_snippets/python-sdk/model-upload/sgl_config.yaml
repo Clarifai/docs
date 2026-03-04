@@ -5,6 +5,6 @@ checkpoints:
   type: huggingface
   when: runtime
 compute:
-  instance: g5.2xlarge
+  instance: g5.xlarge
 model:
   id: qwen3-4b
