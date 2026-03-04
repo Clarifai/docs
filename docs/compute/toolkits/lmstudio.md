@@ -30,6 +30,14 @@ import LMStudioRequirements from "!!raw-loader!../../../code_snippets/python-sdk
 
 Go to the [LM Studio website](https://lmstudio.ai/download) and install the desktop application for macOS.
 
+After installing, enable the `lms` CLI tool so Clarifai can detect your models:
+
+```sh
+~/.lmstudio/bin/lms bootstrap
+```
+
+Restart your terminal, then verify with `lms --version`.
+
 Keep LM Studio open and running before starting the local runner — it provides the model runtime that Clarifai connects to.
 
 ### Install Clarifai
