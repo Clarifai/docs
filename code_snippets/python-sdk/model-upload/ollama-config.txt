@@ -1,8 +1,8 @@
 model:
-  id: llama31
+  id: llama32
 build_info:
   python_version: '3.12'
   image: ollama/ollama:latest
 toolkit:
   provider: ollama
-  model: llama3.1
+  model: llama3.2
