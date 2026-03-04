@@ -1,6 +1,6 @@
 ---
 description: Run models using the SGLang runtime format and make them available via a public API
-sidebar_position: 6
+sidebar_position: 2
 ---
 
 # SGLang

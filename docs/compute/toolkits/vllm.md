@@ -1,6 +1,6 @@
 ---
 description: Download and serve vLLM models locally and expose them via a public API
-sidebar_position: 5
+sidebar_position: 1
 ---
 
 # vLLM

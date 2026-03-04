@@ -1,6 +1,6 @@
 ---
 description: Run OpenAI-compatible models locally and expose them via a public API
-sidebar_position: 1
+sidebar_position: 3
 ---
 
 # OpenAI

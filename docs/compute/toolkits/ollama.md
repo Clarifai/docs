@@ -1,6 +1,6 @@
 ---
 description: Download and run Ollama models locally and expose them via a public API
-sidebar_position: 2
+sidebar_position: 4
 ---
 
 # Ollama

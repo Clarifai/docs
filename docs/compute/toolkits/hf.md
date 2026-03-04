@@ -1,6 +1,6 @@
 ---
 description: Download and run Hugging Face models locally and make them available via a public API
-sidebar_position: 3
+sidebar_position: 6
 ---
 
 # Hugging Face 

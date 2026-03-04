@@ -1,6 +1,6 @@
 ---
 description: Download and run LM Studio models locally and expose them via a public API
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 # LM Studio 
