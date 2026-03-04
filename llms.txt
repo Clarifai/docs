@@ -167,11 +167,11 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [YAML-based Examples](https://docs.clarifai.com/docs/create/workflows/examples/yaml): Simple examples of workflows defined in YAML
 - [Workflow Inferences](https://docs.clarifai.com/docs/create/workflows/inference): Make predictions with your workflows
 - [Manage Workflows](https://docs.clarifai.com/docs/create/workflows/manage): Manage workflows
-- [Deploy Your First Model](https://docs.clarifai.com/docs/getting-started/first-deployment): Set up your computing infrastructure easily and fast for inference
+- [Deploy Your First Model via UI](https://docs.clarifai.com/docs/getting-started/first-deployment): Set up your computing infrastructure easily and fast for inference
 - [Quick Start With Playground](https://docs.clarifai.com/docs/getting-started/playground): Start running inferences in just a few simple steps
 - [Quick Start With API](https://docs.clarifai.com/docs/getting-started/quickstart): Start quickly with Clarifai API in a few simple steps
 - [Set Up Compute Quickly](https://docs.clarifai.com/docs/getting-started/set-up-compute): Set up your computing infrastructure easily and fast for inference
-- [Build and Upload a Model](https://docs.clarifai.com/docs/getting-started/upload-model): Build and upload your first custom model to the Clarifai platform
+- [Deploy Your First Model via CLI](https://docs.clarifai.com/docs/getting-started/upload-model): Deploy your first model to Clarifai cloud compute using the CLI
 - [DSPy-Clarifai Integration](https://docs.clarifai.com/docs/integrations/DSPy/README): Learn about integrating Clarifai With DSPy
 - [DSPy Modules & Signatures](https://docs.clarifai.com/docs/integrations/DSPy/modules-signatures): Some core modules built in DSPy are as follows,
 - [Multistage RAG Pipeline With DSPy](https://docs.clarifai.com/docs/integrations/DSPy/multistage-dspy): import Tabs from '@theme/Tabs';

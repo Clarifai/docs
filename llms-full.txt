@@ -677,7 +677,7 @@ Let's demonstrate how you can build a simple MCP server using the FastMCP framew
 
 You need to install the following Python packages:
 
-- `clarifai` – The latest version of the Clarifai Python SDK required for integrating your MCP server with the Clarifai platform. This also installs the Clarifai [Command Line Interface (CLI)](https://docs.clarifai.com/additional-resources/api-overview/cli), which we'll use for uploading the server.
+- `clarifai` – The latest version of the Clarifai Python SDK required for integrating your MCP server with the Clarifai platform. This also installs the Clarifai [Command Line Interface (CLI)](https://docs.clarifai.com/resources/api-overview/cli), which we'll use for uploading the server.
 
 - `fastmcp` – This is the core framework used to define and manage the MCP server.
 
@@ -716,7 +716,7 @@ your_model_directory/
 
 :::tip
 
-You can automatically generate these files by running this CLI command: [`clarifai model init --model-type-id mcp`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init). You can then edit them as needed.
+You can automatically generate these files by running this CLI command: [`clarifai model init --toolkit mcp`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init). You can then edit them as needed.
 
 :::
 
@@ -756,10 +756,10 @@ Each tool is enriched with essential metadata:
 * Tool-level metadata – The `@server.tool()` decorator itself takes a `name` and `description` to explain the tool's overall purpose.
 * Input descriptions – The tool's input arguments are precisely described using `Annotated` in conjunction with `Field`. 
 
-In our example, we define two distinct tools:
+In our example, we define a tool and a resource:
 
-* `calculate_sum` – A tool that takes two numbers, `a` and `b`, and returns their sum.
-* `weather` – A tool that accepts a `city` name and provides a pre-defined weather response.
+* `hello` – A tool that takes a `name` parameter and returns a greeting message.
+* `config://version` – A resource that returns the server version.
 
 :::tip
 
@@ -785,12 +785,12 @@ This is the `config.yaml` file for the custom model (or, in this case, a server)
 
 Let’s break down what each part of the file does.
 
-* `build_info` – This section specifies the Python version that Clarifai should use to build the environment for your model. Note that we currently support Python 3.11 and Python 3.12 (default).
-* `inference_compute_info` – This section defines the computing resources allocated for your MCP model when it performs inference; that is, when it's running and being used by AI agents.
-    - `cpu_limit` – '1' : Allocates 1 CPU core for the model's inference tasks.
-    - `cpu_memory` – 1Gi : Provides 1 Gigabyte of RAM for the model.
-    - `num_accelerators`– 0 : Indicates that no specialized hardware accelerators (like GPUs) are requested for this model. This is typical for basic MCP servers that might not require heavy computational power.
-* `model` – This specifies your Clarifai app ID, model ID, and Clarifai user ID. These will define where your model will be uploaded on the Clarifai platform. The `model_type_id` parameter indicates the type of model being uploaded; in this case, we use `mcp`.  
+* **`model.id`** – A unique identifier for your model. You can choose any name you want.
+* **`model.model_type_id`** – Set to `"mcp"` to indicate this is an MCP server model.
+* **`compute.instance`** – The compute instance type for deployment. Run `clarifai list-instances` to see all available options.
+* **`checkpoints`** – (Optional) Uncomment to auto-download model checkpoints from Hugging Face at runtime.
+
+> `user_id` and `app_id` are auto-filled from your [active context](https://docs.clarifai.com/resources/api-overview/cli#clarifai-config) at deploy time. You don’t need to add them manually.
 
 ### Step 4: Define Dependencies in `requirements.txt`
 
@@ -806,9 +806,9 @@ Before uploading your server to the Clarifai platform, you can test it locally t
 
 #### a. Local Runners
 
-You can use Clarifai's `local-runner` CLI tool to test and run your model as a local development runner. You can learn how to use the tool [here](https://docs.clarifai.com/compute/local-runners/).
+You can use the Clarifai CLI to test and run your model as a local development runner. You can learn how to use the tool [here](https://docs.clarifai.com/compute/local-runners/).
 
-    clarifai model local-runner
+    clarifai model serve
 
 #### b. MCP Inspector
 
@@ -826,30 +826,30 @@ After entering these details, click the **Connect** button to establish a connec
 
     ![](/img/others/mcp-inspector.png)
 
-### Step 6: Upload to Clarifai
+### Step 6: Deploy to Clarifai
 
-To upload the MCP server to the Clarifai platform, navigate to its root directory and run the following command:
+You can deploy the MCP server to the Clarifai platform using a single command. Navigate to its root directory and run:
 
-    clarifai model upload
+    clarifai model deploy
 
-As the upload proceeds, you'll see build logs directly in your terminal. These are helpful for troubleshooting any issues that might pop up during the process. 
+This command handles everything — building, uploading, and deploying your model. The CLI automatically creates the required compute infrastructure (cluster, nodepool, deployment).
 
 :::note
 
-Once the upload is complete, the build logs will display an example code snippet that you can incorporate into your `client.py` script. The snippet will contain the URL of your deployed MCP server, which you'll use to enable your AI agents or clients to communicate with the server. This URL is constructed by combining the MCP API base URL (`https://api.clarifai.com/v2/ext/mcp/v1`) with your specific Clarifai identifiers: your user ID, app ID, and the model ID of your deployed MCP server. For example: `https://api.clarifai.com/v2/ext/mcp/v1/users/user-id/apps/app-id/models/model-id`.
+Once the deployment is complete, the output will display the URL of your deployed MCP server, which you'll use to enable your AI agents or clients to communicate with the server. This URL is constructed by combining the MCP API base URL (`https://api.clarifai.com/v2/ext/mcp/v1`) with your specific Clarifai identifiers: your user ID, app ID, and the model ID of your deployed MCP server. For example: `https://api.clarifai.com/v2/ext/mcp/v1/users/user-id/apps/app-id/models/model-id`.
 
 :::
 
   Build Logs Example
     {BuildLogsExample}
 
-**Note:** If you make changes to your server code and re-upload it, Clarifai automatically creates a new version of your model.
+**Note:** If you make changes to your server code and re-deploy it, Clarifai automatically creates a new version of your model.
 
-### Step 7: Deploy the Model
+:::tip Alternative: Upload Only
 
-After uploading your model to Clarifai, you'll need to deploy it to a dedicated compute cluster and nodepool. This action provisions the necessary resources to run your server and handle requests efficiently.
+If you prefer to upload the model first and deploy separately (e.g., to a specific nodepool), you can use `clarifai model upload` and then deploy via the UI or `clarifai deployment create`. See the [deployments guide](https://docs.clarifai.com/compute/deployments/deploy-model) for details.
 
-Learn how to perform deployments [here](https://docs.clarifai.com/compute/deployments/clusters-nodepools).
+:::
 
 ### Step 8: Interact With Server
 
@@ -1406,6 +1406,8 @@ The instances listed on this page are available **on demand** — they can be pr
 - See the [pricing page](https://www.clarifai.com/pricing) to learn more about pricing for each instance type.
 
 - [Contact us](https://www.clarifai.com/explore/contact-us) to access GPU types not listed here, including instances that require dedicated provisioning.
+
+- You can also browse available instances programmatically using the CLI: `clarifai list-instances` (with optional `--cloud`, `--gpu`, `--min-gpu-mem` filters). See the [CLI reference](https://docs.clarifai.com/resources/api-overview/cli#clarifai-list-instances) for details.
 
 :::
 
@@ -2340,6 +2342,81 @@ After completing all configuration steps, click **Create a Deployment** to launc
 Once the deployment is created, you’ll be redirected to the nodepool page, where your deployed model will be listed. You can then start using the deployment to run [inferences](https://docs.clarifai.com/compute/inference/clarifai/ui).
 
 ![ ](/img/compute-orchestration/compute-14-4.png)
+
+## **Via the CLI**
+
+The Clarifai CLI provides a one-command deployment workflow that handles all infrastructure creation automatically. No need to manually create clusters or nodepools first.
+
+### One-Command Deploy
+
+Deploy a local model directory to the cloud in a single step:
+
+```bash
+clarifai model deploy ./my-model --instance g5.xlarge
+```
+
+This uploads your model, creates a compute cluster and nodepool, deploys the model, and monitors until it's ready.
+
+### Deploy an Already-Uploaded Model
+
+If your model is already uploaded to Clarifai, deploy it by URL:
+
+```bash
+clarifai model deploy --model-url https://clarifai.com/user/app/models/my-model --instance g5.xlarge
+```
+
+### Browse Available Instances
+
+View all available hardware configurations using the dedicated `list-instances` command:
+
+```bash
+# List all available instances
+clarifai list-instances
+
+# Filter by cloud provider
+clarifai list-instances --cloud aws
+
+# Filter by GPU type
+clarifai list-instances --gpu L40S
+
+# Or use the deploy flag shortcut
+clarifai model deploy --instance-info
+clarifai model deploy --instance-info --cloud aws
+```
+
+### Override Instance Type
+
+If your `config.yaml` already has a `compute.instance` value (auto-selected during `model init`), you can override it at deploy time. The `--instance` flag **always takes priority** over the config:
+
+```bash
+# config.yaml has compute.instance: g5.xlarge, but deploy with a larger GPU
+clarifai model deploy ./my-model --instance g6e.2xlarge
+```
+
+### Autoscaling
+
+Control how your deployment scales:
+
+```bash
+clarifai model deploy ./my-model --instance g5.xlarge --min-replicas 2 --max-replicas 10
+```
+
+### Lifecycle Management
+
+After deployment, use these commands to manage it:
+
+```bash
+# Check status
+clarifai model status --deployment 
+
+# Stream logs
+clarifai model logs --deployment 
+
+# Remove deployment
+clarifai model undeploy --deployment 
+```
+
+For the full options reference, see the [CLI Reference](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-deploy).
 
 ## **Via the API**
 
@@ -5710,23 +5787,23 @@ Once you've completed the prerequisites above, run the following commands and fo
 
 ### Log in to Clarifai
 
-Connect your environment to the Clarifai platform and [create a context](#step-2-create-a-context-optional) profile.  
+Connect your environment to the Clarifai platform and [create a context](#step-2-create-a-context-optional) profile.
 
     clarifai login
 
-### Set up a Model 
+### Set up a Model
 
 Generate a sample toy [model](#step-1-build-a-model) with the necessary files.
 
     clarifai model init
 
-### Start Your Local Runner
+### Serve Your Model Locally
 
-Next, you'll connect your model to a public URL using Local Runners. The CLI will guide you through a series of confirmations for key objects on the Clarifai platform, such as compute clusters, nodepools, and deployments — which are described [below](#table). 
+Start the model using `clarifai model serve`. The CLI will guide you through creating any required platform resources (compute clusters, nodepools, and deployments) — described [below](#table).
 
-Just review each prompt and confirm to proceed.
+    clarifai model serve
 
-    clarifai model local-runner
+> **Note:** The `local-runner` command is still supported as an alias for `serve`.
 
 Once your runner launches successfully, your model will be running and accessible via a public URL. You can then open a new terminal, copy the sample code provided in the output, and [test your model](#step-4-test-with-snippet)!
 
@@ -5825,29 +5902,52 @@ personal access token value (default: "ENVVAR" to get our env var rather than co
 - **User ID** —  Enter your Clarifai user ID.
 - **PAT** — Enter your Clarifai [PAT](#get-a-pat-key-and-user-id). Note that if you press Enter, and you have set the `CLARIFAI_PAT` environment variable, it will use that token automatically.
 
-### Start Your Local Runner
+### Serve Your Model
 
-Next, start a local development runner.
+Start the model using `clarifai model serve` (or the alias `local-runner`):
 
-    clarifai model local-runner
+    clarifai model serve
 
-Or:
+Or with a specific model path:
 
-    clarifai model local-runner [OPTIONS] [MODEL_PATH]
+    clarifai model serve [OPTIONS] [MODEL_PATH]
 
 > **Note:** `MODEL_PATH` is an optional path to the model directory. If omitted, the current directory is used by default.
 
 :::note Options
 
-- `--pool_size` is an integer option that controls the number of threads used to process inference requests (default: 32). Increasing the pool size allows more requests to be handled in parallel, which can improve throughput and speed up local testing, at the cost of higher compute usage.
-
-- `--suppress-toolkit-logs` option enables detailed display of logs for troubleshooting issues, especially when running an [Ollama server](https://docs.clarifai.com/compute/local-runners/ollama/#step-4-start-your-local-runner). By default, logs are suppressed.
-
-- `--mode [env|container|none]` specifies how the model is executed locally. Use `env` to run the model inside a temporarily created virtual environment, `container` to run it in a Docker container, or `none` to run the model directly without creating an isolated environment. The default mode is `none`.
-
-- `--keep_image` retains the automatically created Docker image after the local test run completes. This option applies only when using `container` mode and defaults to `False`.
+| Option | Default | Description |
+|--------|---------|-------------|
+| `--mode` | `none` | `none` (current env), `env` (auto-creates a virtualenv), `container` (Docker) |
+| `--grpc` | off | Standalone gRPC server — no Clarifai login required |
+| `--port` | 8000 | Server port (with `--grpc`) |
+| `--concurrency` | 32 | Max concurrent requests (equivalent to `--pool_size`) |
+| `--keep-image` | off | Keep Docker image after exit (container mode only) |
+| `-v, --verbose` | off | Show detailed logs (useful for debugging toolkit servers like [Ollama](https://docs.clarifai.com/compute/toolkits/ollama/)) |
 
 :::
+
+#### Standalone gRPC Mode
+
+For offline development without a Clarifai account, use `--grpc` to start a standalone gRPC server:
+
+```bash
+# Start standalone gRPC server (no login required)
+clarifai model serve ./my-model --grpc
+
+# Custom port
+clarifai model serve ./my-model --grpc --port 9000
+```
+
+This is useful for quick local testing and debugging without needing an internet connection or Clarifai credentials.
+
+#### Virtual Environment Mode
+
+Use `--mode env` to automatically create a virtualenv with the model's dependencies:
+
+    clarifai model serve ./my-model --mode env
+
+This isolates the model's packages from your system Python, preventing dependency conflicts.
 
 If the runner doesn't detect the necessary [context configurations](#step-2-create-a-context-optional) in your environment, it will prompt you to create them using default values. 
 
@@ -6777,15 +6877,13 @@ import TestRunner from "!!raw-loader!../../../code_snippets/python-sdk/model-upl
 
 ## Step 1: Perform Prerequisites
 
-### Sign Up or Log In
+### Get User ID and PAT
 
-[Log in](https://clarifai.com/login) to your existing Clarifai account or [sign up](https://clarifai.com/signup) for a new one. Once logged in, you’ll need the following credentials for setup:
+Start by [logging in](https://clarifai.com/login) to your existing Clarifai account or [signing up](https://clarifai.com/signup) for a new one. Once logged in, you’ll need your **Personal Access Token (PAT)** for authentication:
 
-- **App ID** – Navigate to the application you want to use to run the model and select the **[Overview](https://docs.clarifai.com/create/applications/manage/#app-overview)** option in the collapsible left sidebar. Get the app ID from there.
-- **User ID** – In the collapsible left sidebar, select **Settings** and choose **Account** from the dropdown list. Then, locate your user ID.
-- **Personal Access Token (PAT)** – From the same **Settings** option, choose **Secrets** to generate or copy your [PAT](https://docs.clarifai.com/control/authentication/pat). This token is used to authenticate your connection with the Clarifai platform.
+- In the collapsible left sidebar, select **Settings** and choose **Secrets** to generate or copy your [PAT](https://docs.clarifai.com/control/authentication/pat).
 
-You can then set the PAT as an environment variable using `CLARIFAI_PAT`. 
+You can then set the PAT as an environment variable using `CLARIFAI_PAT`.
 
     export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE
 
@@ -6817,26 +6915,26 @@ The [`huggingface_hub`](https://github.com/huggingface/huggingface_hub) library 
 
     pip install huggingface_hub
 
-## Step 2: Initialize a Model 
+## Step 2: Initialize a Model
 
-With the Clarifai CLI, you can download and set up any supported Hugging Face model directly in your local environment.
+With the Clarifai CLI, you can download and set up any supported Hugging Face model directly in your local environment. Use the `--model-name` flag to specify a HuggingFace model:
 
-For example, the command below initializes the default model ([`unsloth/Llama-3.2-1B-Instruct`](https://huggingface.co/unsloth/Llama-3.2-1B-Instruct)) in your current directory.
+clarifai model init --toolkit huggingface --model-name Qwen/Qwen2-0.5B
 
-    clarifai model init --toolkit huggingface
+This creates a `Qwen2-0.5B/` directory with all required files pre-configured. The CLI auto-selects an appropriate GPU instance based on the model's VRAM requirements.
 
-> **Note:** You can initialize a model in a specific location by passing a [`MODEL_PATH`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init). 
+> **Note:** You can initialize a model in a specific location by passing a [`MODEL_PATH`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init).
 
   Example Output
     {HFModelInit}
 
-The command above generates a new model directory structure that is compatible with the Clarifai platform. You can customize or optimize the model by editing the generated files as needed.
+You can customize or optimize the model by editing the generated files as needed.
 
 :::tip
 
-You can use the `--model-name` parameter to initialize any supported Hugging Face model. 
+To initialize with a default model ([`unsloth/Llama-3.2-1B-Instruct`](https://huggingface.co/unsloth/Llama-3.2-1B-Instruct)), omit `--model-name`:
 
-clarifai model init --toolkit huggingface --model-name Qwen/Qwen2-0.5B
+    clarifai model init --toolkit huggingface
 
   Supported Models
     {HFSupportedModels}
@@ -6866,13 +6964,16 @@ The [`model.py`](https://docs.clarifai.com/compute/upload/#prepare-modelpy) file
   Example: config.yaml
     {HFConfig}
 
-The `config.yaml` file specifies the model’s configuration, including compute resource requirements, checkpoints, and other essential settings.
+The `config.yaml` file defines your Hugging Face model’s configuration in a simplified format:
 
-- In the `model` section, you need to specify a unique model ID (any name you choose) along with an app ID. Your Clarifai user ID is set by default from your [active context](https://docs.clarifai.com/resources/api-overview/cli#clarifai-config). These together determine where your model will run on the Clarifai platform.
+- **`model.id`** — A unique identifier for your model. Auto-generated from the Hugging Face model name when you use `--model-name`.
+- **`build_info.python_version`** — The Python version to use (default: `3.11`).
+- **`compute.instance`** — The GPU instance type, auto-selected based on the model’s VRAM requirements. Run `clarifai list-instances` to see all available options.
+- **[`checkpoints`](https://docs.clarifai.com/compute/upload/#hugging-face-model-checkpoints)** — Defines how to retrieve model weights. If you’re using a gated repository, add your Hugging Face access token via `hf_token` or set the `HF_TOKEN` environment variable.
 
-- In the `checkpoints` section, you can provide your Hugging Face token using the `hf_token` parameter if you need to access private or restricted repositories. This section also includes the `when` parameter, which controls when model checkpoints are downloaded and stored. The available options are `runtime` (the default), which downloads checkpoints when the model is loaded; `build`, which downloads checkpoints during the image build process; and `upload`, which downloads checkpoints before the model is uploaded.
-
-    >**Note:** For large models, it is strongly recommended to set `when: runtime`. Doing so helps prevent image sizes from becoming unnecessarily large, which keeps build times shorter, uploads faster, and inference more efficient on the Clarifai platform. By contrast, choosing `build` or `upload` can significantly increase the image size, leading to slower uploads and higher cold start latency.
+> `user_id` and `app_id` are auto-filled from your [active context](https://docs.clarifai.com/resources/api-overview/cli#clarifai-config) at deploy time. You don’t need to add them manually.
+>
+> **Tip:** Use `when: runtime` (the default) for large models to reduce image size and improve load times.
 
 ### `requirements.txt`
 
@@ -6900,19 +7001,19 @@ You’ll be prompted to provide a few details for authentication:
   Example Output
     {ClarifaiLogin}
 
-## Step 4: Start Your Local Runner
+## Step 4: Serve the Model Locally
 
-Start a local runner with the following command:
+Start the model using `clarifai model serve`:
 
 ```bash
-clarifai model local-runner
+clarifai model serve
 ```
 
-If the required context configurations aren’t found, the CLI will walk you through creating them with default values. 
+> **Note:** The older `clarifai model local-runner` command still works as an alias.
 
-This process ensures that all necessary components — such as compute clusters, nodepools, and deployments — are included in your configuration context, which are described [here](https://docs.clarifai.com/compute/local-runners/#step-2-create-a-context-optional). 
+If the necessary context configurations aren’t detected, the CLI will guide you through creating them using default values.
 
-Simply review each prompt and confirm to continue.
+This setup ensures all required components — such as compute clusters, nodepools, and deployments — are properly included in your configuration context, which are described [here](https://docs.clarifai.com/compute/local-runners/#step-2-create-a-context-optional).
 
   Example Output
     {StartRunner}
@@ -6927,19 +7028,61 @@ Here’s an example snippet:
 
      {TestRunner}
 
+## Deploy to Cloud
+
+After testing locally, you can deploy your Hugging Face model to Clarifai's cloud compute with a single command. All infrastructure (compute cluster, nodepool, deployment) is created automatically.
+
+### Step 1: Initialize
+
+If you haven't already, scaffold a Hugging Face model project:
+
+clarifai model init --toolkit huggingface --model-name Qwen/Qwen2-0.5B
+
+The CLI auto-selects an appropriate GPU instance based on the model's VRAM requirements.
+
+### Step 2: Deploy
+
+clarifai model deploy ./Qwen2-0.5B --instance g5.xlarge
+
+If your `config.yaml` already has a `compute.instance` value (set during `init`), you can omit the `--instance` flag:
+
+clarifai model deploy ./Qwen2-0.5B
+
+To override the instance with a larger GPU, use the `--instance` flag — it always takes priority over the config:
+
+clarifai model deploy ./Qwen2-0.5B --instance g5.xlarge  # override to a larger GPU
+
+Browse available GPU instances with `clarifai list-instances` or `clarifai model deploy --instance-info`.
+
+### Step 3: Monitor and Manage
+
+```bash
+# Check deployment status
+clarifai model status --deployment 
+
+# Stream live logs
+clarifai model logs --deployment 
+
+# Run predictions
+clarifai model predict user/app/models/Qwen2-0.5B "Explain AI in one sentence"
+
+# Clean up when done
+clarifai model undeploy --deployment 
+```
+
+For the full deploy options reference, see the [CLI Reference](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-deploy).
+
 ---
 
 ## LM Studio
 
-# LM Studio 
+# LM Studio
 
 **Download and run LM Studio models locally and expose them via a public API**
 
-[LM Studio](https://lmstudio.ai/) is a desktop application that lets you run and chat with open-source large language models (LLMs) locally — no internet connection required.
+[LM Studio](https://lmstudio.ai/) is a desktop application that lets you run open-source LLMs locally on your machine. Combined with Clarifai's Local Runners, you can serve LM Studio models from your machine, expose them via a public API, and access them through the Clarifai platform — all while keeping the speed, privacy, and control of local inference.
 
-With Clarifai’s [Local Runners](https://docs.clarifai.com/compute/local-runners/), you can take this a step further: run LM Studio models directly on your machine, expose them securely through a public URL, and leverage Clarifai’s powerful AI platform — all while maintaining the speed, privacy, and control of local deployment.
-
-> **Note:** After initializing a model using the LM Studio toolkit, you can [upload](https://docs.clarifai.com/compute/upload/#step-4-upload-the-model-to-clarifai) it to Clarifai to leverage the platform’s capabilities.
+> **Important:** Clarifai's LM Studio integration currently supports **macOS only** (Apple devices). For other platforms, consider using [Ollama](https://docs.clarifai.com/compute/toolkits/ollama) or [vLLM](https://docs.clarifai.com/compute/toolkits/vllm) instead.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -6953,161 +7096,112 @@ import LMStudioModel from "!!raw-loader!../../../code_snippets/python-sdk/model-
 import LMStudioConfig from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/lm_studio_config.yaml";
 import LMStudioRequirements from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/lm_studio_requirements.txt";
 
-## Step 1: Perform Prerequisites
-
-### Sign Up or Log In
-
-[**Log in**](https://clarifai.com/login) to your existing Clarifai account or [**sign up**](https://clarifai.com/signup) for a new one. After logging in, gather the following credentials for setup:
-
-* **App ID** – Go to the application you’ll use to run your model and select **[Overview](https://docs.clarifai.com/create/applications/manage/#app-overview)** in the collapsible left sidebar. Get the app ID from there.
-* **User ID** – In the collapsible left sidebar, select **Settings** and select **Account** from the dropdown list. Then, find your user ID.
-* **Personal Access Token (PAT)** – From the same **Settings** option, select **Secrets** to create or copy your [PAT](https://docs.clarifai.com/control/authentication/pat). This token is required to authenticate your connection with the Clarifai platform.
-
-Once you have your PAT, set it as an environment variable for secure authentication:
-
-export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE
-
-set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE
-
-### Install the Clarifai CLI
-
-Next, install the latest version of the [**Clarifai CLI**](https://docs.clarifai.com/sdk/cli), which includes built-in support for Local Runners.
-
-pip install --upgrade clarifai
-
-> **Note:** Ensure you have **[Python 3.11 or 3.12](https://docs.clarifai.com/resources/api-overview/python-sdk#python-requirements)** installed to successfully run Local Runners.
-
-### Install the OpenAI Package
-
-Install the `openai` package — it’s required to perform inference with LM Studio models that support the [OpenAI-compatible](https://docs.clarifai.com/compute/inference/#predict-with-openai-compatible-format) format.
-
-pip install openai
+## Step 1: Install Prerequisites
 
 ### Install LM Studio
 
-[Download](https://lmstudio.ai/download) and install the LM Studio desktop application to run open-source large language models locally. 
+Go to the [LM Studio website](https://lmstudio.ai/download) and install the desktop application for macOS.
 
-Ensure the LM Studio remains open and running when you start a Clarifai Local Runner, as the runner relies on LM Studio’s internal model runtime for successful execution.
+After installing, enable the `lms` CLI tool so Clarifai can detect your models:
 
-> **Note:** Currently, Clarifai Local Runners support running LLMs through LM Studio only on Apple devices (macOS).
-
-## Step 2: Initialize a Model
-
-Using the Clarifai CLI, you can download and set up any model available in the [LM Studio Model Catalog](https://lmstudio.ai/models) that supports the GGUF format.
-
-For example, the command below initializes the default model ([LiquidAI/LFM2-1.2B](https://lmstudio.ai/models/liquid/lfm2-1.2b)) in your current directory:
-
-clarifai model init --toolkit lmstudio
-
-> **Note:** You can initialize a model in a specific location by passing a [`MODEL_PATH`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init). 
-
-  Example Output
-  {LMStudioInit}
-
-Running this command creates a new model directory structure compatible with the Clarifai platform. You can further customize or optimize the model by modifying the generated files as needed.
-
-:::tip
-
-To initialize a specific LM Studio model that supports the GGUF format, use the `--model-name` flag.
-
-clarifai model init --toolkit lmstudio --model-name qwen/qwen3-4b-thinking-2507
-
-:::
-
-> **Note:** Some models are quite large and require substantial memory or GPU resources. Ensure your machine has sufficient compute capacity to load and run the model locally before initializing it.
-
-The generated structure includes:
-
-```
-├── 1/
-│   └── model.py
-├── requirements.txt
-└── config.yaml
+```sh
+~/.lmstudio/bin/lms bootstrap
 ```
 
-### `model.py`
+Restart your terminal, then verify with `lms --version`.
 
-  Example: model.py
-  {LMStudioModel}
+Keep LM Studio open and running before starting the local runner — it provides the model runtime that Clarifai connects to.
 
-The [`model.py`](https://docs.clarifai.com/compute/upload/#prepare-modelpy) file inside the `1/` directory defines the model’s logic — including how predictions are made and how inputs and outputs are handled.
+### Install Clarifai
 
-### `config.yaml`
+pip install --upgrade clarifai
 
-  Example: config.yaml
-  {LMStudioConfig}
+> **Note:** Python 3.11 or 3.12 is required. The `openai` package is included with `clarifai`.
 
-The `config.yaml` file defines key configuration details, such as compute resource requirements and toolkit metadata.
+## Step 2: Log In
 
-In the `model` section, specify a unique model ID (any name of your choice) and app ID. Your Clarifai user ID is set by default from your [active context](https://docs.clarifai.com/resources/api-overview/cli#clarifai-config). These parameters determine where the model will be deployed on the Clarifai platform.
-
-### `requirements.txt`
-
-  Example: requirements.txt
-  {LMStudioRequirements}
-
-The `requirements.txt` file lists the Python dependencies your model needs. If you haven’t installed them yet, run the following command to install the dependencies:
-
-pip install -r requirements.txt
-
-## Step 3: Log In to Clarifai
-
-Use the Clarifai CLI to log in to your account and create a configuration [**context**](https://docs.clarifai.com/compute/local-runners/#step-2-create-a-context-optional) that securely connects your local environment to the Clarifai platform.
-
-```bash
 clarifai login
-```
 
-You’ll be prompted to enter the following details:
-
-* **User ID** – Your Clarifai User ID.
-* **PAT** – Your Clarifai Personal Access Token.
-  If you’ve already set the `CLARIFAI_PAT` environment variable, type `ENVVAR` to use it automatically.
-* **Context name** – Optionally, specify a custom name for this configuration context, or press **Enter** to use the default `"default"`.
-  Contexts are useful when working with multiple environments or projects.
+You'll be prompted for your user ID and [PAT](https://docs.clarifai.com/control/authentication/pat). This saves your credentials locally so you don't need to set environment variables manually.
 
   Example Output
   {LMStudioLogin}
 
-## Step 4: Start the Local Runner
+## Step 3: Initialize a Model
 
-Next, start your **Local Runner**, which connects to the LM Studio runtime to execute your model locally.
+Scaffold a model project using any model from the [LM Studio Model Catalog](https://lmstudio.ai/models):
 
-```bash
-clarifai model local-runner
+clarifai model init --toolkit lmstudio --model-name google/gemma-3-4b
+
+The CLI auto-detects LM Studio models already downloaded on your machine. Change `--model-name` to any other model from the catalog.
+
+  Example Output
+  {LMStudioInit}
+
+This creates a `./gemma-3-4b/` directory:
+
+```
+gemma-3-4b/
+├── 1/
+│   └── model.py       # LM Studio inference logic
+├── requirements.txt   # Python dependencies
+└── config.yaml        # Model config (user_id/app_id auto-filled from login)
 ```
 
-If configuration contexts or defaults are missing, the CLI will guide you through setting them up automatically.
+> **Note:** Some models are very large and may require significant memory. Check your machine's capacity before initializing.
 
-This setup ensures that all necessary components — such as compute clusters, nodepools, and deployments — are properly defined in your configuration context.
-For more details, see [here](https://docs.clarifai.com/compute/local-runners/#step-2-create-a-context-optional).
+  model.py
+  {LMStudioModel}
+
+  config.yaml
+  {LMStudioConfig}
+
+  requirements.txt
+  {LMStudioRequirements}
+
+## Step 4: Serve Locally
+
+Start the model as a local runner:
+
+clarifai model serve ./gemma-3-4b
+
+> **Note:** Make sure LM Studio is open and running before starting the runner. Add `-v` for verbose logs.
 
   Example Output
   {LMStudioLocalRunner}
 
-## Step 5: Test Your Runner
+When ready, the CLI prints:
+- A model URL for API calls
+- A Playground link for browser-based testing
+- A sample code snippet
 
-After the Local Runner starts, you can use it to perform [inference](https://docs.clarifai.com/compute/inference/clarifai/api) with your LM Studio–based model.
+Press `Ctrl+C` to stop the runner.
 
-You can run a snippet in a separate terminal, within the same directory, to confirm that your model is running and responding as expected.
+## Step 5: Run Inference
 
-Here’s an example snippet:
+While the local runner is active, test it using the OpenAI-compatible client:
 
-     {LMStudioTestRunner}
+  {LMStudioTestRunner}
+
+Or use the Clarifai CLI:
+
+```sh
+clarifai model predict https://clarifai.com//local-runner-app/models/local-runner-model "Explain AI in one sentence"
+```
+
+You can also open the **[Runners](https://clarifai.com/compute/runners)** dashboard, find your runner, and select **Open in Playground** from the three-dot menu.
+
+When you're done, close the terminal running the local runner to shut it down.
 
 ---
 
 ## Ollama
 
-# Ollama 
+# Ollama
 
 **Download and run Ollama models locally and expose them via a public API**
 
-Ollama is an open-source tool that allows you to download, run, and manage large language models (LLMs) directly on your local machine. 
-
-When combined with Clarifai’s Local Runners, it enables you to run Ollama models on your machine, expose them securely via a public URL, and tap into Clarifai’s powerful platform — all while keeping the speed, privacy, and control of local deployment.
-
-> **Note:** After initializing a model using the Ollama toolkit, you can [upload](https://docs.clarifai.com/compute/upload/#step-4-upload-the-model-to-clarifai) it to Clarifai to leverage the platform’s capabilities.
+Ollama is an open-source tool that lets you run LLMs directly on your local machine. Combined with Clarifai's Local Runners, you can serve Ollama models from your machine, expose them via a public API, and access them through the Clarifai platform — all while keeping the speed, privacy, and control of local inference.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -7119,166 +7213,88 @@ import OllamaModelPy from "!!raw-loader!../../../code_snippets/python-sdk/model-
 import OllamaRequirements from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/ollama-requirements.txt";
 import OllamaConfig from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/ollama-config.txt";
 
-## Step 1: Perform Prerequisites
+## Step 1: Install Prerequisites
 
 ### Install Ollama
 
-Go to the [Ollama website](https://ollama.com/download) and choose the appropriate installer for your system (macOS, Windows, or Linux).
+Go to the [Ollama website](https://ollama.com/download) and install the appropriate version for your system (macOS, Windows, or Linux).
 
-> **Note:** If you're using Windows, make sure to restart your machine after installing Ollama to ensure that the updated environment variables are properly applied.
+> **Note:** On Windows, restart your machine after installing to ensure environment variables are applied.
 
-### Get User ID and PAT
-
-Start by [logging in](https://clarifai.com/login) to your existing Clarifai account or [signing up](https://clarifai.com/signup) for a new one. Once logged in, you'll need the following credentials for setup:
-
-- **User ID** – In the collapsible left sidebar, select **Settings** and choose **Account** from the dropdown list. Then, locate your user ID.
-
-- **Personal Access Token (PAT)** – From the same **Settings** option, choose **Secrets** to generate or copy your [PAT](https://docs.clarifai.com/control/authentication/pat). This token is used to authenticate your connection with the Clarifai platform.
-
-You can then set the PAT as an environment variable using `CLARIFAI_PAT`. 
-
-    export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE
-
-    set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE
-
-### Install the Clarifai CLI
-
-Install the latest version of the [Clarifai CLI](https://docs.clarifai.com/sdk/cli), which includes built-in support for Local Runners.
+### Install Clarifai
 
     pip install --upgrade clarifai
 
-> **Note:** You must have **[Python 3.11 or 3.12](https://docs.clarifai.com/resources/api-overview/python-sdk#python-requirements)**  installed to use Local Runners.
+> **Note:** Python 3.11 or 3.12 is required. The `openai` package is included with `clarifai`.
 
-### Install OpenAI
+## Step 2: Log In
 
-Install the `openai` package, which is required when performing inference with models using the [OpenAI-compatible format](https://docs.clarifai.com/compute/inference/#predict-with-openai-compatible-format). 
+    clarifai login
 
-    pip install openai
+You'll be prompted for your user ID and [PAT](https://docs.clarifai.com/control/authentication/pat). This saves your credentials locally so you don't need to set environment variables manually.
 
-## Step 2: Initialize a Model From Ollama
+## Step 3: Initialize a Model
 
-You can use the Clarifai CLI to download and initialize any model available in the Ollama library directly into your local environment.
+Scaffold a model project using any model from the [Ollama library](https://ollama.com/library):
 
-For example, here's how to initialize the [`llama3.2`](https://ollama.com/library/llama3.2) model in your current directory:
-
-    clarifai model init --toolkit ollama
-
-> **Note:** You can initialize a model in a specific location by passing a [`MODEL_PATH`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init). 
+    clarifai model init --toolkit ollama --model-name gpt-oss:20b
 
   Example Output
     {OllamaInit}
 
-:::tip customize initialization
-
-You can customize model initialization from the Ollama library using the Clarifai CLI with the following options:
-
-- `--model-name` – Name of the Ollama model to use (default: `llama3.2`). This lets you specify any model from the Ollama library. Example: `clarifai model init --toolkit ollama --model-name gpt-oss:20b`
-- `--port` – Port to run the model on (default: `23333`)
-- `--context-length` – Context window size for the model in tokens (default: `8192`)
-
-:::
-
-:::note tip
-
-You can use Ollama commands such as `ollama list` to list downloaded models and `ollama rm` to remove a model. Run `ollama --help` to see the full list of available commands.
-
-> **Note:** Some models are very large and may demand significant memory or GPU resources. Before initializing, make sure your machine has enough compute capacity to load and run the model smoothly.
-
-:::
-
-The `init` command will create a new model directory structure that is compatible with the Clarifai platform. You can customize or optimize the generated model by modifying the files as needed.
-
-The generated structure includes:
+This creates a `./gpt-oss:20b/` directory with three files:
 
 ```
+gpt-oss:20b/
 ├── 1/
-│   └── model.py
-├── requirements.txt
-└── config.yaml
+│   └── model.py       # Ollama inference logic
+├── requirements.txt   # Python dependencies
+└── config.yaml        # Model config (user_id/app_id auto-filled from login)
 ```
 
-### `model.py`
+:::tip
+Omitting `--model-name` will install the default model (`llama3.2`):
+```sh
+clarifai model init --toolkit ollama
+```
+Use `ollama list` to see downloaded models and `ollama rm` to remove one.
+:::
 
-  Example: model.py
+> **Note:** Some models are very large and may require significant memory or GPU resources. Check your machine's capacity before initializing.
+
+  model.py
     {OllamaModelPy}
 
-This is the [main Python file](https://docs.clarifai.com/compute/upload/#prepare-modelpy) that defines how your Ollama-based model is loaded, served, and used for inference. It extends Clarifai’s `OpenAIModelClass`, which provides a unified interface for OpenAI-compatible models.
-
-It has these key components:
-
-- The environment setup section defines default values, such as the Ollama host (`OLLAMA_HOST`) and context length (`OLLAMA_CONTEXT_LENGTH`). 
-- The `run_ollama_server()` function starts the Ollama server and automatically pulls the specified model (for example, `llama3.2`) if it’s not already available locally.
-- The `OllamaModelClass` itself implements the following methods:
-    -  `load_model()` — Loads and initializes the Ollama model while setting up the local OpenAI-compatible client; 
-    - `predict()` — Generates text completions or tool calls from prompts, optionally handling images or chat history; 
-    - `generate()` — Streams tokens in real time, which is ideal for chat-like or extended responses. 
-- Additionally, helper utilities, such as `has_image_content()`, validate image inputs before constructing OpenAI-compatible messages, and logging utilities track token usage and manage inference context.
-
-### `requirements.txt`
-
-  Example: requirements.txt
+  requirements.txt
     {OllamaRequirements}
 
-The `requirements.txt` file lists all the Python packages required for your local runner environment. If you haven’t installed them yet, run the following command to install the dependencies:
-
-    pip install -r requirements.txt
-
-### `config.yaml`
-
-  Example: config.yaml
+  config.yaml
     {OllamaConfig}
 
-The `config.yaml` file is what tells Clarifai how to run your model — including where it belongs, which runtime to use, and how much compute it should consume.
+## Step 4: Serve Locally
 
-- It identifies where your model will run on the Clarifai platform through parameters like `app_id`, `id` (any model name you choose), `model_type_id`, and `user_id` (set by default from your [active context](https://docs.clarifai.com/resources/api-overview/cli#clarifai-config)). 
-- It defines compatibility details under `build_info` — such as the Python version to use — and resource allocation details through `inference_compute_info`, which sets CPU, memory, and accelerator requirements. 
-- The `toolkit` field indicates the type of runtime provider, informing Clarifai which backend framework to use for execution.
+Start the model as a local runner:
 
-## Step 3: Log In to Clarifai
+    clarifai model serve "./gpt-oss:20b"
 
-Use the following command to log in to the Clarifai platform to create a configuration context and establish a connection:
-
-    clarifai login
-
-After running the command, you'll be prompted to provide a few details for authentication:
-
- 
-context name (default: "default"): 
-user id:
-personal access token value (default: "ENVVAR" to get our env var rather than config):
-
-Here’s what each field means:
-
-* **Context name** – You can assign a custom name to this configuration context, or simply press Enter to use the default name, `"default"`. This is useful if you manage multiple environments or configurations.
-* **User ID** – Enter your Clarifai user ID.
-* **Personal Access Token (PAT)** – Paste your Clarifai PAT here. If you've already set the `CLARIFAI_PAT` environment variable, you can just press Enter to use it automatically.
-
-## Step 4: Start Your Local Runner
-
-Start a local runner using the following command:
-
-    clarifai model local-runner
-
-If the necessary context configurations aren’t detected, the CLI will guide you through creating them using default values.
-
-This setup ensures all required components — such as compute clusters, nodepools, and deployments — are properly included in your configuration context, which are described [here](README.mdx#step-2-create-a-context-optional). Simply review each prompt and confirm to proceed.
-
-> **Note**: Use the `--suppress-toolkit-logs` option to show detailed logs from the Ollama server, which is helpful for debugging: `clarifai model local-runner --suppress-toolkit-logs`.
+> **Note:** The first run pulls the model weights from Ollama, which may take a few minutes. Add `-v` for verbose logs.
 
   Example Output
     {OllamaRun}
 
-## Step 5: Test Your Runner
+When ready, the CLI prints:
+- A model URL for API calls
+- A Playground link for browser-based testing
+- A sample code snippet
 
-When the local runner starts, it displays a public URL where your model is hosted and provides a sample client code snippet for quick testing. 
+Press `Ctrl+C` to stop the runner.
 
-> **Note:** Pulling a model from Ollama may take some time depending on your machine’s resources, but once the download finishes, you can run the snippet in a separate terminal within the same directory to get the model’s response.
+## Step 5: Run Inference
 
-Below is an example snippet for running inference using the OpenAI-compatible format:
+While the local runner is active, test it using the OpenAI-compatible client:
 
 ```python
 import os
-
 from openai import OpenAI
 
 client = OpenAI(
@@ -7290,31 +7306,31 @@ response = client.chat.completions.create(
     model="https://clarifai.com//local-runner-app/models/local-runner-model",
     messages=[
         {"role": "system", "content": "Talk like a pirate."},
-        {
-            "role": "user",
-            "content": "How do I check if a Python object is an instance of a class?",
-        },
+        {"role": "user", "content": "How do I check if a Python object is an instance of a class?"},
     ],
-    temperature=1.0,
-    stream=False,  # stream=True also works, just iterator over the response
+    stream=False,  # stream=True also works
 )
 print(response)
 ```
 
-The terminal also shows a link to the [AI Playground](https://docs.clarifai.com/getting-started/quickstart-playground), which you can copy to interact with the model directly.
+Or use the Clarifai CLI:
 
-Alternatively, while your runner is active in the terminal, you can open the **[Runners](https://clarifai.com/compute/runners)** dashboard on the Clarifai platform, locate your runner in the table, and select **Open in Playground** from the three-dot menu to start chatting with the model.
+```sh
+clarifai model predict https://clarifai.com//local-runner-app/models/local-runner-model "Explain AI in one sentence"
+```
+
+You can also open the **[Runners](https://clarifai.com/compute/runners)** dashboard, find your runner, and select **Open in Playground** from the three-dot menu.
 
 ![](/img/others/runners-dashboard-ollama.png)
 
-When you're done, just close the terminal running the local runner to shut it down.
+When you're done, close the terminal running the local runner to shut it down.
 
-## Additional Examples
+## Additional Resources
 
-*  [More examples of calling Ollama models](https://github.com/ollama/ollama-python/tree/main/examples)
-*  [Clarifai-specific inference examples with Ollama models](https://docs.clarifai.com/compute/inference/clarifai/api)
-* [Example for running Ollama models locally with Clarifai’s Local Runners](https://github.com/Clarifai/runners-examples/tree/main/local-runners/ollama-model-upload)
-* [YouTube video on running OpenAI’s open-source GPT-OSS-20B model locally with Ollama](https://www.youtube.com/watch?v=TfS2p8LZYBE)
+- [More Ollama Python examples](https://github.com/ollama/ollama-python/tree/main/examples)
+- [Clarifai inference examples with Ollama](https://docs.clarifai.com/compute/inference/clarifai/api)
+- [Ollama runner example on GitHub](https://github.com/Clarifai/runners-examples/tree/main/local-runners/ollama-model-upload)
+- [YouTube: Running OpenAI's GPT-OSS-20B with Ollama](https://www.youtube.com/watch?v=TfS2p8LZYBE)
 
 ---
 
@@ -7347,15 +7363,13 @@ import OpenAIResponse from "!!raw-loader!../../../code_snippets/python-sdk/model
 
 ## Step 1: Perform Prerequisites
 
-### Sign Up or Log In
+### Get User ID and PAT
 
-[Log in](https://clarifai.com/login) to your existing Clarifai account or [sign up](https://clarifai.com/signup) for a new one. Once logged in, you'll need the following credentials for setup:
+Start by [logging in](https://clarifai.com/login) to your existing Clarifai account or [signing up](https://clarifai.com/signup) for a new one. Once logged in, you'll need your **Personal Access Token (PAT)** for authentication:
 
-- **App ID** – Navigate to the application you want to use to run the model and select the **[Overview](https://docs.clarifai.com/create/applications/manage/#app-overview)** option in the collapsible left sidebar. Get the app ID from there.
-- **User ID** – In the collapsible left sidebar, select **Settings** and choose **Account** from the dropdown list. Then, locate your user ID.
-- **Personal Access Token (PAT)** – From the same **Settings** option, choose **Secrets** to generate or copy your [PAT](https://docs.clarifai.com/control/authentication/pat). This token is used to authenticate your connection with the Clarifai platform.
+- In the collapsible left sidebar, select **Settings** and choose **Secrets** to generate or copy your [PAT](https://docs.clarifai.com/control/authentication/pat).
 
-You can then set the PAT as an environment variable using `CLARIFAI_PAT`. 
+You can then set the PAT as an environment variable using `CLARIFAI_PAT`.
 
     export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE
 
@@ -7389,9 +7403,9 @@ You’ll use this address in the [`model.py`](#modelpy) file.
 
 With the Clarifai CLI, you can set up any OpenAI-compatible model to work with your local server.
 
-The command below scaffolds a default OpenAI-compatible model template in your current directory:
+The command below scaffolds a default OpenAI-compatible model template. You can pass a `MODEL_PATH` to control where the directory is created:
 
-    clarifai model init --model-type-id openai
+    clarifai model init --toolkit openai my-wrapper
 
 > **Note:** You can initialize a model in a specific location by passing a [`MODEL_PATH`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init). 
 
@@ -7427,8 +7441,7 @@ This class implements the following:
 
 These are the key components you can configure:
 
-- `base_url`: Your local model server endpoint address (default: `http://localhost:8000/v1`). 
-> **Note:** During model initialization, the CLI will prompt you to choose a port, and this value will be automatically updated in the file to match your selection.
+- `base_url`: Your local model server endpoint address (default: `http://localhost:8000/v1`). Update this to match your server’s address and port.
 - `api_key`: Required only when calling the model through OpenAI’s hosted API. If you’re using a local OpenAI-compatible server, an API key isn’t needed — you can simply provide any dummy value.
 - `model`: The ID of the model to use. You can leave this as is to let it be automatically detected from your OpenAI-compatible server, or explicitly set it to a specific model ID (for example, `"gpt-4"`).
 
@@ -7437,11 +7450,14 @@ These are the key components you can configure:
   Example: config.yaml
     {OpenAIConfig}
 
-The `config.yaml` file tells Clarifai how to run your OpenAI-compatible custom model — including where it will live on the platform, how it’s served, and what compute resources it needs.
+The `config.yaml` file defines your OpenAI-compatible model’s configuration in a simplified format:
 
-- It specifies where your model will run using values like `id` (your chosen model name), `user_id` (set by default from your [active context](https://docs.clarifai.com/resources/api-overview/cli/#clarifai-config)), `app_id`, and [`model_type_id`](https://docs.clarifai.com/create/models/#list-of-model-types).
-- In the `build_info` section, specify your configure environment settings, such as the Python version required by your OpenAI model implementation. 
-- In the `inference_compute_info` section, specify the compute resources your model should use — including CPU, memory, and optional accelerators (like GPUs) — ensuring your OpenAI-compatible service has the right performance and scalability characteristics.
+- **`model.id`** — A unique identifier for your model.
+- **`model.model_type_id`** — Set to `"openai"` for OpenAI-compatible models.
+- **`compute.instance`** — The GPU instance type for deployment. Run `clarifai list-instances` to see all available options.
+- **`checkpoints`** — (Optional) Uncomment to auto-download model checkpoints from Hugging Face at runtime.
+
+> `user_id` and `app_id` are auto-filled from your [active context](https://docs.clarifai.com/resources/api-overview/cli#clarifai-config) at deploy time. You don’t need to add them manually.
 
 > **When to use checkpoints:** Most OpenAI models are accessed via the API, so you won’t need a [checkpoints](https://docs.clarifai.com/compute/toolkits/hf#configyaml) block. If you are serving a self‑hosted Hugging Face model, you can uncomment the checkpoints section and set the required values.
 
@@ -7471,13 +7487,15 @@ You'll be prompted to provide:
   Example Output
     {OpenAILogin}
 
-## Step 4: Start Your Local Runner
+## Step 4: Serve the Model Locally
 
-Start a local runner with the following command:
+Start the model using `clarifai model serve`:
 
 ```bash
-clarifai model local-runner
+clarifai model serve
 ```
+
+> **Note:** The older `clarifai model local-runner` command still works as an alias.
 
 The CLI will guide you through creating any necessary context configurations with default values, ensuring all components (compute clusters, nodepools, deployments) are properly set up.
 
@@ -7507,220 +7525,123 @@ When you’re done testing, simply stop the terminal running the local developme
 
 # SGLang
 
-**Run models using the SGLang runtime format and make them available via a public API**
+**Serve any HuggingFace LLM locally or deploy to cloud compute**
 
-[SGLang](https://github.com/sgl-project/sglang) is an open-source runtime and programming framework designed for structured generation and high-performance inference of large language models (LLMs) and vision-language models.  
+[SGLang](https://github.com/sgl-project/sglang) is a high-performance open-source inference engine for LLMs with support for structured generation and multimodal reasoning. With Clarifai, you can deploy SGLang models to cloud GPUs with a single command.
 
-It provides a flexible way to execute models with advanced capabilities like multi-step prompting, structured outputs, and multimodal reasoning — all while maximizing throughput and minimizing latency.
+The workflow is: **init → deploy**
 
-With Clarifai’s [Local Runners](https://docs.clarifai.com/compute/local-runners/), you can download and run these models on your own machine using the SGLang runtime format, expose them securely via a public URL, and tap into Clarifai’s powerful platform  — all while retaining the privacy, performance, and control of local execution.
-
-> **Note:** The SGLang toolkit specifies a runtime format to run models sourced from external sources like Hugging Face. After initializing a model using the toolkit, you can [upload](https://docs.clarifai.com/compute/upload/#step-4-upload-the-model-to-clarifai) it to Clarifai to leverage the platform’s capabilities.
+> **Important:** SGLang requires **Linux with an NVIDIA GPU** (Ampere or newer, compute capability >= 8.0). It does not run on macOS or Windows. For local testing on non-Linux machines, use [vLLM](https://docs.clarifai.com/compute/toolkits/vllm) or [Ollama](https://docs.clarifai.com/compute/toolkits/ollama) instead.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
+import SGLModelInit from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/sgl_model_init.txt";
+import ClarifaiLogin from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/sgl_clarifai_login.txt";
 import SGLModelPy from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/sgl_model_py.py";
 import SGLConfig from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/sgl_config.yaml";
-import SGLSupportedModels from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/sgl_supported_models.txt";
-import ClarifaiLogin from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/sgl_clarifai_login.txt";
 import RequirementsTXT from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/sgl_requirements_txt.txt";
-import SGLModelInit from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/sgl_model_init.txt";
-import StartRunner from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/sgl_start_runner.txt";
 import TestRunner from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/sgl_test_runner.py";
-import SGLOpenAIServer from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/sgl_open_ai_server.py";
-import SGLDockerfile from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/sgl_dockerfile.py";
 
-## Step 1: Perform Prerequisites
-
-### Sign Up or Log In
-
-Log in to your existing Clarifai account or [sign up](https://clarifai.com/signup) for a new one. Once you’re logged in, gather the following credentials required for setup:
-
-* **App ID** – Go to the application you want to use to run the model. In the collapsible left sidebar, select **[Overview](https://docs.clarifai.com/create/applications/manage/#app-overview)** and copy the app ID displayed there.
-* **User ID** – In the collapsible left sidebar, open **Settings**, then choose **Account** from the dropdown list to locate your user ID.
-* **Personal Access Token (PAT)** – From the same **Settings** menu, select **Secrets** to create or copy your [PAT](https://docs.clarifai.com/control/authentication/pat). This token is used to authenticate your connection with the Clarifai platform.
-
-Then, set your PAT as an environment variable:
-
-export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE
-
-set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE
-
-### Install Clarifai CLI
-
-Install the latest [Clarifai CLI](https://docs.clarifai.com/sdk/cli) which includes built-in support for Local Runners:
+## Step 1: Install Clarifai
 
 pip install --upgrade clarifai
 
-> **Note:** The Local Runners require **[Python 3.11 or 3.12](https://docs.clarifai.com/resources/api-overview/python-sdk#python-requirements)**.
+> **Note:** Python 3.11 or 3.12 is required. The `openai` package is included with `clarifai`.
 
-### Install SGLang
+## Step 2: Log In
 
-Install SGLang to enable its runtime execution environment.
-
-pip install sglang
-
-> **Tip:** GPU acceleration (CUDA) is highly recommended for optimal performance.
-
-### Install OpenAI
-
-Install the `openai` package, which is needed to perform inference with models that use the [OpenAI-compatible format](https://docs.clarifai.com/compute/inference/#predict-with-openai-compatible-format). 
-
-    pip install openai
-
-### Get Hugging Face Token
-
-If you want to initialize a Hugging Face model for use with SGLang, you’ll need a Hugging Face access token to authenticate with Hugging Face services — especially when accessing private or restricted repositories.
-
-You can create one by following [these instructions](https://huggingface.co/docs/hub/en/security-tokens). Once you have the token, include it either in your model’s `config.yaml` file (as described [below](#configyaml)) or set it as an environment variable.
-
-> **Note:** If `hf_token` is not specified in the `config.yaml` file, the CLI will automatically use the `HF_TOKEN` environment variable for authentication with Hugging Face.
-
-    export HF_TOKEN="YOUR_HF_ACCESS_TOKEN_HERE"
-
-    set HF_TOKEN="YOUR_HF_ACCESS_TOKEN_HERE"
-
-## Step 2: Initialize a Model
-
-With the Clarifai CLI, you can initialize a model configured to run using the SGLang runtime format. It sets up a Clarifai-compatible project directory with the appropriate files. 
-
-You can customize or optimize the model by editing the generated files as needed. For example, the command below initializes a default Hugging Face model ([HuggingFaceTB/SmolLM2-135M-Instruct](https://huggingface.co/HuggingFaceTB/SmolLM2-135M-Instruct)) in your current directory.
-
-clarifai model init --toolkit sglang
-
-> **Note:** You can initialize a model in a specific location by passing a [`MODEL_PATH`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init). 
-
-  Example Output
-  {SGLModelInit}
-
-:::tip
-
-You can use the `--model-name` parameter to initialize any supported Hugging Face model. This sets the model’s `repo_id`, specifying which Hugging Face repository to initialize from.
-
-clarifai model init --toolkit sglang --model-name unsloth/Llama-3.2-1B-Instruct
-
-  Supported Examples
-  {SGLSupportedModels}
-
--->
-:::
-
-> **Note:** Large models require significant GPU memory. Ensure your machine has enough compute capacity to run them efficiently.
-
-The generated structure includes:
-
-```
-
-├── 1/
-│   └── model.py
-|   └── openai_server_starter.py
-├── Dockerfile
-└── README.md
-├── config.yaml
-└── requirements.txt
-
-````
-
-### `model.py`
-
-  Example: 1/model.py
-  {SGLModelPy}
-
-This is the [main runner](https://docs.clarifai.com/compute/upload/#prepare-modelpy) script that defines how your model loads, runs, and handles inference.
-
-* It subclasses `OpenAIModelClass`, meaning it exposes OpenAI-compatible endpoints for inference.
-* The `load_model()` method spins up a local SGLang backend server (via `OpenAI_APIServer.from_sglang_backend`) and initializes the model checkpoint.
-* The `predict()` and `generate()` methods define how text generation requests are processed — supporting both standard predictions and streaming outputs.
-* The `test()` method lets you verify locally that everything is working before deployment.
-
-### `openai_server_starter.py`
-
-  Example: 1/openai_server_starter.py
-  {SGLOpenAIServer}
-
-This utility handles starting, monitoring, and shutting down the backend SGLang server. It acts as your server controller, ensuring the backend is ready before the runner starts sending requests.
-
-* It wraps around subprocess management for launching `sglang.launch_server`.
-* It ensures the server runs properly, logs startup messages, and handles safe termination.
-* The class `OpenAI_APIServer` can also be extended to support other backends like `vLLM`, `llama.cpp`, or `TGI`, but here it’s used for SGLang.
-
-### `Dockerfile`
-
-  Example: Dockerfile
-  {SGLDockerfile}
-
-The Dockerfile defines the container environment used to run your model runner on Clarifai’s infrastructure.
-
-* It builds on the official SGLang base image (`lmsysorg/sglang:v0.5.3-cu129`), which includes CUDA and SGLang dependencies.
-* It installs any Python packages listed in `requirements.txt`.
-* It copies your model files (`model.py`, `config.yaml`, etc.) into the container.
-* Optionally, it downloads checkpoints during build time if `checkpoints.when = "build"`.
-* It starts the Clarifai runner loop using `python -m clarifai.runners.server`.
-
-### `config.yaml`
-
-  Example: config.yaml
-  {SGLConfig}
-
-This is the configuration file for your SGLang model runner.
-
-* It specifies model identifiers (`model.id`, `user_id`, `app_id`), which together determine where your model will run on the Clarifai platform. Your Clarifai user ID is set by default from your [active context](https://docs.clarifai.com/resources/api-overview/cli#clarifai-config).
-* It defines compute resources (CPU, GPU type, and memory).
-* The [`checkpoints`](https://docs.clarifai.com/compute/upload/#hugging-face-model-checkpoints) section tells the runner where and when to load model weights 
-    > **Tip:** Use `when: runtime` for large models to reduce image size and improve load times.
-
-### `requirements.txt`
-
-  Example: requirements.txt
-  {RequirementsTXT}
-
-This file lists all the Python dependencies required for the runner to work. If you haven’t installed them yet, run the following command to install the dependencies:
-
-pip install -r requirements.txt
-
-## Step 3: Log In to Clarifai
-
-Log in and create a configuration [context](https://docs.clarifai.com/compute/local-runners/#step-2-create-a-context-optional):
-
-```bash
 clarifai login
-```
 
-Enter the requested details:
-
-* **User ID** – Your Clarifai user ID
-* **PAT** – Your personal access token (or type `ENVVAR` to use the environment variable)
-* **Context name** – Optional name for the config context (default: `"default"`)
+You'll be prompted for your user ID and [PAT](https://docs.clarifai.com/control/authentication/pat). This saves your credentials locally so you don't need to set environment variables manually.
 
   Example Output
   {ClarifaiLogin}
 
-## Step 4: Start Your Local Runner
+## Step 3: Initialize a Model
 
-Next, start your Local Runner, which connects to the SGLang runtime to execute your model locally.
+Scaffold a model project using a HuggingFace model name:
 
-```bash
-clarifai model local-runner
-```
+clarifai model init --toolkit sglang --model-name Qwen/Qwen3-4B
 
-If any configuration contexts or defaults are missing, the CLI will automatically guide you through setting them up.
-
-This process ensures that all required components — such as compute clusters, nodepools, and deployments — are correctly configured in your context, enabling seamless local execution of your SGLang model. For more details, see [Local Runners documentation](https://docs.clarifai.com/compute/local-runners/#step-2-create-a-context-optional).
+The CLI auto-selects an Ampere+ GPU instance based on the model's VRAM requirements. You can initialize any model [supported by SGLang](https://docs.sglang.ai/references/supported_models.html) — just change `--model-name` to a different HuggingFace repo ID.
 
   Example Output
-  {StartRunner}
+  {SGLModelInit}
 
-## Step 5: Test Your Runner
+This creates a `./Qwen3-4B/` directory:
 
-After the Local Runner starts, you can use it to perform [inference](https://docs.clarifai.com/compute/inference/open-ai) with your SGLang-based model.
+```
+Qwen3-4B/
+├── 1/
+│   └── model.py       # SGLang inference logic
+├── requirements.txt   # Lightweight deps (SGLang is pre-installed in the base image)
+└── config.yaml        # Model config (user_id/app_id auto-filled from login)
+```
 
-You can run a test snippet in a separate terminal, within the same directory, to verify that your model is running and responding correctly.
+> **Note:** For private or gated models (Llama, Gemma, etc.), set `HF_TOKEN` in your environment before initializing:
+> ```sh
+> export HF_TOKEN=your_token_here
+> ```
 
-Here’s an example snippet:
+  model.py
+  {SGLModelPy}
 
-{TestRunner}
+  config.yaml
+  {SGLConfig}
+
+The `config.yaml` has 4 sections:
+- **`model.id`** — Auto-generated from the HuggingFace model name
+- **`build_info.image`** — `lmsysorg/sglang:latest` (SGLang, PyTorch, and CUDA pre-installed)
+- **`compute.instance`** — Auto-selected based on estimated VRAM (Ampere+ only). Run `clarifai list-instances` to see all options
+- **`checkpoints`** — HuggingFace model weights config. Add `hf_token` here or set `HF_TOKEN` for gated models
+
+  requirements.txt
+  {RequirementsTXT}
+
+## Step 4: Deploy to Cloud
+
+Deploy to dedicated cloud compute. Clarifai automatically provisions all required infrastructure.
+
+Since `config.yaml` already has a `compute.instance` value (auto-selected during `init`), you can deploy directly:
+
+clarifai model deploy ./Qwen3-4B
+
+To override the instance type:
+
+clarifai model deploy ./Qwen3-4B --instance g5.xlarge
+
+To see all available instance types and pricing:
+
+clarifai list-instances
+
+> **Tip:** If you have a local Linux GPU and want to test before deploying, run `clarifai model serve ./Qwen3-4B --mode env` first.
+
+## Step 5: Run Inference
+
+  {TestRunner}
+
+Or use the Clarifai CLI:
+
+```sh
+clarifai model predict https://clarifai.com//main/models/Qwen3-4B "Explain AI in one sentence"
+```
+
+### Manage Your Deployment
+
+```bash
+# Stream live logs
+clarifai model logs --deployment 
+
+# Check status
+clarifai model status --deployment 
+
+# Remove deployment when done (stops billing)
+clarifai model undeploy --deployment 
+```
+
+For the full CLI reference, see [CLI Reference](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-deploy).
 
 ---
 
@@ -7728,13 +7649,11 @@ Here’s an example snippet:
 
 # vLLM
 
-**Download and serve vLLM models locally and expose them via a public API**
+**Serve any HuggingFace LLM locally or deploy to cloud compute**
 
-[vLLM](https://docs.vllm.ai/en/latest/) is an open-source, high-performance inference engine that allows you to serve large language models (LLMs) locally with remarkable speed and efficiency. It supports OpenAI-compatible APIs, making it easy to integrate with the Clarifai platform.
+[vLLM](https://docs.vllm.ai/en/latest/) is a high-performance open-source inference engine for LLMs. With Clarifai, you can deploy vLLM models to cloud GPUs with a single command.
 
-With Clarifai’s [Local Runners](https://docs.clarifai.com/compute/local-runners/), you can seamlessly deploy vLLM-powered models on your own machine, expose them through a secure public URL, and take full advantage of Clarifai’s AI capabilities — while retaining control, privacy, and performance.
-
-> **Note:** After initializing a model using the vLLM toolkit, you can [upload](https://docs.clarifai.com/compute/upload/#step-4-upload-the-model-to-clarifai) it to Clarifai to leverage the platform’s capabilities.
+The workflow is: **init → deploy**
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -7748,140 +7667,104 @@ import VLLMModel from "!!raw-loader!../../../code_snippets/python-sdk/model-uplo
 import VLLMConfig from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/vllm_config.yaml";
 import VLLMRequirements from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/vllm_requirements.txt";
 
-## Step 1: Perform Prerequisites
-
-### Sign Up or Log In
-
-First, either [log in](https://clarifai.com/login) to your existing Clarifai account or [sign up](https://clarifai.com/signup) for a new one. Once logged in, you'll need these credentials to set up your project:
-
-* **App ID** – Navigate to the application you'll use for your model. In the collapsible left sidebar, select the [Overview](https://docs.clarifai.com/create/applications/manage/#app-overview) option. Get the app ID from there.
-* **User ID** – In the collapsible left sidebar, go to **Settings** and select the **Account** option. Then, find your user ID.
-* **Personal Access Token (PAT)** – This token is essential to authenticate your connection with the Clarifai platform. To create or copy your [PAT](https://docs.clarifai.com/control/authentication/pat), go to **Settings** and choose the **Secrets** option. 
-
-Then, store it as an environment variable for secure authentication:
-
-export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE
-
-set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE
-
-### Install the Clarifai CLI
-
-Install the [Clarifai CLI](https://docs.clarifai.com/sdk/cli) to access Local Runners and manage your deployments.
+## Step 1: Install Clarifai
 
 pip install --upgrade clarifai
 
-> **Note:** Ensure you have [Python 3.11 or 3.12](https://docs.clarifai.com/resources/api-overview/python-sdk#python-requirements) installed to run Local Runners successfully.
+> **Note:** Python 3.11 or 3.12 is required. The `openai` package is included with `clarifai`.
 
-### Install vLLM
+## Step 2: Log In
 
-Install the vLLM package.
-
-pip install vllm
-
-vLLM supports models from the Hugging Face Hub (e.g., LLaMA, Mistral, Falcon, etc.) and serves them via a local [OpenAI-compatible API](https://docs.clarifai.com/compute/inference/#predict-with-openai-compatible-format).
-
-> **Note**: You need a Hugging Face access token to download models from private or restricted repositories. You can learn how to get it from [here](https://huggingface.co/docs/hub/en/security-tokens). 
-
-### Install the OpenAI Package
-
-Install the `openai` client library — it will be used to send requests to your vLLM server.
-
-pip install openai
-
-## Step 2: Initialize a Model
-
-Use the Clarifai CLI to initialize a vLLM-based model directory. This setup prepares all required files for local execution and Clarifai integration.
-
-You can further customize or optimize the model by modifying the generated files as necessary.
-
-clarifai model init --toolkit vllm
-
-> **Note:** You can initialize a model in a specific location by passing a [`MODEL_PATH`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init). 
-
-:::tip
-
-You can initialize any model [supported](https://docs.vllm.ai/en/v0.9.2/models/supported_models.html) by vLLM. If you want to initialize a specific vLLM model, use the `--model-name` flag.
-
-clarifai model init --toolkit vllm --model-name HuggingFaceH4/zephyr-7b-beta
-
-:::
-
-  Example Output
-  {VLLMInit}
-
-> **Note:** Some models are quite large and require substantial memory or GPU resources. Ensure your machine has sufficient compute capacity to load and run the model locally before initializing it.
-
-You’ll get a folder structure similar to:
-
-```
-├── 1/
-│   └── model.py
-├── requirements.txt
-└── config.yaml
-```
-
-### `model.py`
-
-  Example: model.py
-  {VLLMModel}
-
-The [`model.py`](https://docs.clarifai.com/compute/upload/#prepare-modelpy) file inside the `1/` directory defines how your model performs inference through the vLLM runtime, using the OpenAI-compatible API endpoint served locally.
-
-### `config.yaml`
-
-  Example: config.yaml
-  {VLLMConfig}
-
-The `config.yaml` file defines the model’s configuration — including compute requirements, checkpoint sources, and other essential runtime settings.
-
-- In the `model` section, provide a unique model ID (any name you prefer) along with your app ID. Your Clarifai user ID is set by default from your [active context](https://docs.clarifai.com/resources/api-overview/cli#clarifai-config). These values specify where your model will be deployed within the Clarifai platform.
-
-- The [`checkpoints`](hf.md#configyaml) section defines how to retrieve the model’s weights from Hugging Face. If you’re using a private or restricted repository, be sure to include your Hugging Face access token to enable secure downloading.
-
-### `requirements.txt`
-
-  Example: requirements.txt
-  {VLLMRequirements}
-
-The `requirements.txt` file lists Python dependencies required by your model. If you haven’t installed them yet, run the following command to install the dependencies:
-
-pip install -r requirements.txt
-
-## Step 3: Log In to Clarifai
-
-Run the following command to authenticate your local environment with Clarifai.
-
-```bash
 clarifai login
-```
 
-You’ll be prompted for your user ID, PAT, and an optional [context name](https://docs.clarifai.com/compute/local-runners/#step-2-create-a-context-optional).
+You'll be prompted for your user ID and [PAT](https://docs.clarifai.com/control/authentication/pat). This saves your credentials locally so you don't need to set environment variables manually.
 
   Example Output
   {VLLMLogin}
 
-## Step 4: Start the Local Runner
+## Step 3: Initialize a Model
 
-Launch the Local Runner to start serving your vLLM model locally.
+Scaffold a model project using a HuggingFace model name:
 
-```bash
-clarifai model local-runner
-```
+clarifai model init --toolkit vllm --model-name Qwen/Qwen3-0.6B
 
-If any configuration is missing, the CLI will prompt you to define or confirm it.
-
-This runner will use vLLM’s backend to serve model predictions and make them accessible via a Clarifai-managed public API endpoint.
+The CLI auto-selects the optimal GPU instance based on the model's VRAM requirements. You can initialize any model [supported by vLLM](https://docs.vllm.ai/en/v0.9.2/models/supported_models.html) — just change `--model-name` to a different HuggingFace repo ID.
 
   Example Output
-  {VLLMLocalRunner}
+  {VLLMInit}
 
-## Step 5: Test Your Runner
+This creates a `./Qwen3-0.6B/` directory:
 
-Once your Local Runner is running and the model has finished downloading, you can test it using the OpenAI-compatible API format.
+```
+Qwen3-0.6B/
+├── 1/
+│   └── model.py       # vLLM inference logic
+├── requirements.txt   # Lightweight deps (vLLM is pre-installed in the base image)
+└── config.yaml        # Model config (user_id/app_id auto-filled from login)
+```
+
+> **Note:** For private or gated models (Llama, Gemma, etc.), set `HF_TOKEN` in your environment before initializing:
+> ```sh
+> export HF_TOKEN=your_token_here
+> ```
+
+  model.py
+  {VLLMModel}
+
+  config.yaml
+  {VLLMConfig}
+
+The `config.yaml` has 4 sections:
+- **`model.id`** — Auto-generated from the HuggingFace model name
+- **`build_info.image`** — `vllm/vllm-openai:latest` (vLLM, PyTorch, and CUDA pre-installed)
+- **`compute.instance`** — Auto-selected based on estimated VRAM. Run `clarifai list-instances` to see all options
+- **`checkpoints`** — HuggingFace model weights config. Add `hf_token` here or set `HF_TOKEN` for gated models
+
+  requirements.txt
+  {VLLMRequirements}
+
+## Step 4: Deploy to Cloud
+
+Deploy to dedicated cloud compute. Clarifai automatically provisions all required infrastructure.
+
+Since `config.yaml` already has a `compute.instance` value (auto-selected during `init`), you can deploy directly:
+
+clarifai model deploy ./Qwen3-0.6B
+
+To override the instance type:
+
+clarifai model deploy ./Qwen3-0.6B --instance a10g
+
+To see all available instance types and pricing:
+
+clarifai list-instances
+
+> **Tip:** If you have a local GPU and want to test before deploying, run `clarifai model serve ./Qwen3-0.6B --mode env` first.
+
+## Step 5: Run Inference
 
   {VLLMTestRunner}
 
-The script sends a sample prompt to your locally running vLLM model and prints the response. Your model will now be serving [predictions](https://docs.clarifai.com/compute/inference/clarifai/api) through Clarifai’s local inference layer.
+Or use the Clarifai CLI:
+
+```sh
+clarifai model predict https://clarifai.com//main/models/Qwen3-0.6B "Explain AI in one sentence"
+```
+
+### Manage Your Deployment
+
+```bash
+# Stream live logs
+clarifai model logs --deployment 
+
+# Check status
+clarifai model status --deployment 
+
+# Remove deployment when done (stops billing)
+clarifai model undeploy --deployment 
+```
+
+For the full CLI reference, see [CLI Reference](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-deploy).
 
 ---
 
@@ -7925,37 +7808,39 @@ import DockerFile from "!!raw-loader!../../../code_snippets/python-sdk/model-upl
 
 ## Step 1: Perform Prerequisites
 
-### Sign Up or Log In 
+### Sign Up and Log In
 
-[Log in to](https://clarifai.com/login) your existing Clarifai account, or [sign up](https://clarifai.com/signup) for a new one. If you're creating a new account, a default application will be provided for you.
+[Log in to](https://clarifai.com/login) your existing Clarifai account, or [sign up](https://clarifai.com/signup) for a new one. If you’re creating a new account, a default application will be provided for you.
 
-Next, retrieve the following credentials:
+Then authenticate using the CLI:
 
-- **App ID** – Go to your application’s page and select the [**Overview**](https://docs.clarifai.com/create/applications/manage#app-overview) option in the collapsible left sidebar. Get the app ID from there. 
-- **User ID** – In the collapsible left sidebar, select **Settings** and choose **Account** from the dropdown list. Then, locate your user ID.
-- **Personal Access Token (PAT)** – From the same **Settings** option, choose **Secrets** to generate or copy your [PAT](https://docs.clarifai.com/control/authentication/pat). This token is used to authenticate your connection with the Clarifai platform.
+```bash
+clarifai login
+```
 
-You need to set the `CLARIFAI_PAT` you've retrieved as an environment variable to enhance its security. 
+The CLI will prompt for your **Personal Access Token (PAT)** — find it in **Settings** > **Secrets** in the left sidebar. It will auto-detect your user ID and save everything locally. You can verify with `clarifai whoami`.
 
-     export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE 
-
-     set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE 
+> **Note:** Alternatively, you can set `export CLARIFAI_PAT=YOUR_PAT_HERE` as an environment variable, but `clarifai login` is the recommended approach since it also configures your user ID and app context.
 
 ### Install Clarifai Package
 
-Install the latest version of the `clarifai` Python package. This will also install the Clarifai [Command Line Interface](https://docs.clarifai.com/additional-resources/api-overview/cli/) (CLI), which we'll use for testing and uploading the model. 
+Install the latest version of the `clarifai` Python package. This will also install the Clarifai [Command Line Interface](https://docs.clarifai.com/resources/api-overview/cli) (CLI), which we'll use for testing and uploading the model.
 
      pip install --upgrade clarifai 
 
-### Set Up Cluster and Nodepool
+### Set Up Compute (For Manual Deploy Only)
 
-To run reliably and efficiently, your model requires a dedicated compute environment consisting of a [cluster and a nodepool](https://docs.clarifai.com/compute/deployments/clusters-nodepools/).
+:::tip One-Command Deploy
 
-Once your model is uploaded to the Clarifai platform, you need to deploy it to an existing compute environment.
+If you plan to use `clarifai model deploy` (recommended), you can **skip this step entirely** — the CLI automatically creates the compute cluster, nodepool, and deployment for you. See the [Getting Started guide](https://docs.clarifai.com/getting-started/upload-model) for the simplified flow.
+
+:::
+
+If you prefer to manage compute infrastructure manually, your model requires a dedicated compute environment consisting of a [cluster and a nodepool](https://docs.clarifai.com/compute/deployments/clusters-nodepools/).
 
 > **Note:** A cluster is the foundation of your compute environment, while a nodepool is a single compute node or a group of nodes within a cluster that provides the resources your model requires.
 
-You can follow [this guide](https://docs.clarifai.com/getting-started/set-up-compute) to set up your compute environment fast.
+You can follow [this guide](https://docs.clarifai.com/getting-started/set-up-compute) to set up your compute environment.
 
 ### Set Up Docker or a Virtual Environment
 
@@ -8045,9 +7930,35 @@ Each parameter in the class methods must be annotated with a type, and the retur
 
 :::
 
-### Prepare `config.yaml` 
+### Prepare `config.yaml`
 
-The `config.yaml` file is essential for specifying the model’s metadata, compute resource requirements, and model checkpoints. 
+The `config.yaml` file is essential for specifying the model’s metadata, compute resource requirements, and model checkpoints.
+
+:::tip Simplified Config Format
+
+When using `clarifai model init --toolkit`, the CLI generates a minimal config that works out of the box. Fields like `user_id`, `app_id`, and `model_type_id` are auto-filled from your CLI context at deploy time:
+
+```yaml
+build_info:
+  image: vllm/vllm-openai:latest
+checkpoints:
+  repo_id: Qwen/Qwen3-0.6B
+  type: huggingface
+  when: runtime
+compute:
+  instance: g4dn.xlarge
+model:
+  id: qwen3-06b
+```
+
+- **`build_info.image`** specifies a Docker base image with the toolkit pre-installed (e.g., vLLM, SGLang). This means `requirements.txt` only needs lightweight dependencies.
+- **`compute.instance`** is auto-selected based on the model's estimated VRAM needs (weights + KV cache + framework overhead). It's expanded into the full `inference_compute_info` section when deploying.
+
+Use `clarifai list-instances` to browse available instance types, or `clarifai model deploy --instance-info`.
+
+For a simpler end-to-end flow, use [`clarifai model deploy`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-deploy) which handles both upload and deployment in one step.
+
+:::
 
 This is the `config.yaml` file for the custom model we want to upload:
 
@@ -8224,9 +8135,21 @@ To do this, use the `--skip_dockerfile` flag. This tells the CLI to skip automat
 
 ## Step 5: Deploy the Model
 
-After your model is successfully uploaded to the Clarifai platform, the terminal will walk you through the deployment process to prepare it for inference.
+After your model is uploaded, you need to deploy it to make it available for inference.
 
-Follow the on-screen prompts to:
+:::tip One-Command Deploy
+
+You can skip the separate upload and deploy steps entirely by using `clarifai model deploy`, which handles everything in one command — including auto-creating the compute infrastructure:
+
+```bash
+clarifai model deploy ./your-model --instance g5.xlarge
+```
+
+See the [CLI deploy reference](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-deploy) for all options.
+
+:::
+
+Alternatively, after uploading with `clarifai model upload`, follow the on-screen prompts to:
 
 - Choose an existing cluster and nodepool where your model will run.
 
@@ -8943,7 +8866,7 @@ import fluxschnellConfig from "!!raw-loader!../../../code_snippets/runners-examp
 
 Before uploading a custom model to the Clarifai platform, always test and debug it locally. It ensures smooth performance, verifies dependency compatibility, and streamlines the deployment process.
 
-This step helps you detect problems like setup file errors, typos, code misconfigurations, or incorrect model implementations. This saves you time and avoids upload failures by validating the model’s behavior on the target hardware you plan to deploy to.
+This step helps you detect problems like setup file errors, typos, code misconfigurations, or incorrect model implementations. This saves you time and avoids upload failures by validating the model's behavior on the target hardware you plan to deploy to.
 
 :::note
 
@@ -8956,113 +8879,81 @@ import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
 import TestMethod from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/test-models-locally.py";
-import TestLocally1 from "!!raw-loader!../../../code_snippets/python-sdk/model-upload/test_locally-1.txt";
 
 ## Prerequisites
 
 ### Build a Model
 
-You can either build a custom model from scratch or leverage pre-trained models from external repositories like Hugging Face. 
+You can either build a custom model from scratch or leverage pre-trained models from external repositories like Hugging Face.
 
-If you're developing your own model, our [step-by-step guide](https://docs.clarifai.com/compute/models/model-upload/) provides detailed instructions to get started. You can also explore [this examples repository](https://github.com/Clarifai/runners-examples) to learn how to build models compatible with the Clarifai platform.
+If you're developing your own model, our [step-by-step guide](https://docs.clarifai.com/compute/upload/) provides detailed instructions to get started. You can also explore [this examples repository](https://github.com/Clarifai/runners-examples) to learn how to build models compatible with the Clarifai platform.
 
 ### Install Clarifai CLI
 
-Install the latest version of the [Clarifai CLI](https://docs.clarifai.com/sdk/cli) (Command Line Interface) tool. We'll use this tool to test models in the local development environment. 
+Install the latest version of the [Clarifai CLI](https://docs.clarifai.com/resources/api-overview/cli) tool. We'll use this tool to test models in the local development environment.
 
      pip install --upgrade clarifai 
 
-### Set up Docker or a Virtual Environment
-
-Set up either a Docker container (recommended) or a Python virtual [local development environment](https://docs.clarifai.com/compute/models/model-upload/#set-up-docker-or-a-virtual-environment) for testing the model locally. This ensures proper dependency management and prevents conflicts in your project.
-
-  CLI Flags
-  
-These are the key CLI flags available for local testing and running your models:
-
-   - `--mode` —  Specify how to run the model: `env` for virtual environment or `container` for Docker container. Defaults to `env`.
-  - `-p` or `--port` —  The port to host the gRPC server for running the model locally. Defaults to `8000`.
-  - `--keep_env` —  Retain the virtual environment after testing the model locally (applicable for `env` mode). Defaults to `False`.
-  - `--keep_image` —  Retain the Docker image built after testing the model locally (applicable for `container` mode). Defaults to `False`.
-  - `--skip_dockerfile` — Flag to [skip](README.mdx#skip-dockerfile) generating a dockerfile so that you can manually edit an already created dockerfile.
-
 ### System Requirements
 
-Before running the `clarifai model local-test` or `clarifai model local-grpc` commands, ensure your local environment meets the following requirements:
+Before running the test commands below, ensure your local environment meets the following requirements:
 
-* **Python version** — Python 3.9 or higher is required for optimal compatibility.
+* **Python version** — Python 3.11 or 3.12 is required.
 
 * **GPU support** — For models that require GPU acceleration, your environment must have NVIDIA GPU support installed and properly configured. CPU-only models can still be tested without a GPU.
 
-* **Docker (optional)** — Docker is recommended for container-based testing, but it is not mandatory. If Docker is not available, a warning will be displayed, and testing will proceed without containerization.
+* **Docker (optional)** — Docker is recommended for container-based testing (`--mode container`), but it is not mandatory. Without Docker, you can use `--mode env` to test in a virtual environment.
 
-> **Note:** If your environment does not meet the above requirements, the validation process will provide a clear error or warning message indicating what is missing and how to resolve it.
+## Test With the `serve` Command
 
-## Test by Running Locally
+The `clarifai model serve` command is the primary way to test your model locally. It has two modes:
 
-The `local-test` method allows you to test your model with a single CLI command. It runs the model locally and sends a sample request to verify that the model responds successfully. 
+- **API-connected mode** (default) — Connects to the Clarifai platform and exposes your model via a public URL, just like a cloud deployment.
+- **Standalone gRPC mode** (`--grpc`) — Runs your model as a local gRPC server with no Clarifai connection needed. Ideal for offline development.
 
-The results of the request are displayed directly in the console.
+### Option A: API-Connected Mode
 
-Note that to test your model locally, you need to implement a `test` method in the [`model.py`](https://docs.clarifai.com/compute/models/upload/#step-1-prepare-the-modelpy-file) file. This method should internally call other model methods to perform validation.
+This mode connects your local model to the Clarifai platform, giving you a public URL you can use to test predictions through the API or the [AI Playground](https://docs.clarifai.com/getting-started/quickstart-playground).
 
-When you run the `local-test` CLI command shown below, it will automatically invoke the `test` method to carry out the testing process.
+    clarifai model serve
+
+> **Note:** You must be logged in (`clarifai login`) to use API-connected mode.
+
+You can specify additional options:
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--mode` | How to run: `none` (current env), `env` (virtual env), or `container` (Docker) | `none` |
+| `--port` | Port for the local server | `8000` |
+| `--concurrency` | Number of concurrent requests to handle | `1` |
+| `--keep-image` | Keep the Docker image after stopping (for `container` mode) | `false` |
+| `-v, --verbose` | Show detailed SDK and server logs | `false` |
+
+You can also specify the path to the model directory. If omitted, the current directory is used:
+
+    clarifai model serve ./path/to/my-model --mode env
+
+### Option B: Standalone gRPC Mode (Offline)
+
+Use the `--grpc` flag to run the model as a standalone gRPC server without any Clarifai connection. This is ideal for offline development — no PAT or login required.
+
+    clarifai model serve --grpc --port 8000
+
+Once the server is running, set the `CLARIFAI_API_BASE` environment variable to point to it:
+
+    export CLARIFAI_API_BASE="localhost:8000"
+
+    set CLARIFAI_API_BASE="localhost:8000"
+
+You can then make [inference requests](https://docs.clarifai.com/compute/inference/clarifai/api) using the Clarifai Python SDK.
+
+## Implement a `test` Method
+
+To enable quick validation, implement a `test` method in your [`model.py`](https://docs.clarifai.com/compute/upload/#prepare-modelpy) file. This method should internally call your model's other methods and verify the output.
 
 Below is a sample `model.py` file with an example implementation of the `test` method:
 
     {TestMethod}
-
-:::note How to specify Local Model Path
-
-You can specify the path to the directory containing the custom model you want to test. For example, if your model's files are stored in `./examples/models/clarifai_llama`, use the following command:  
-
-```sh
-clarifai model local-test ./examples/models/clarifai_llama --mode container
-```
-
-If you don’t specify a path, the current directory is used by default. In that case, simply navigate to the directory and run:  
-
-```sh
-clarifai model local-test --mode container
-```
-
-:::
-
-Here is how to test a model in a Docker Container:
-
-     clarifai model local-test --mode container 
-
-Here is how to test a model in a virtual environment:
-
-     clarifai model local-test --mode env 
-
-  Example
-
-    {TestLocally1}
-
--->
-
-## Test by Starting a gRPC Server
-
-The  `local-grpc` method starts a local gRPC server at `https://localhost:{port}/` for running the model. Once the server is running, you can perform inference on the model via the Clarifai Python SDK.
-
-Here is how to test a model in a Docker Container:
-
-     clarifai model local-grpc --mode container --port 8000 
-
-Here is how to test a model in a virtual environment:
-
-     clarifai model local-grpc --mode env --port 8000  
-
-### Make Inference Requests
-
-Once the model is running locally, you need to configure the `CLARIFAI_API_BASE` environment variable to point to the localhost and port where the gRPC server is running.
-
-     export CLARIFAI_API_BASE="localhost:add-port-here" 
-
-     set CLARIFAI_API_BASE="localhost:add-port-here" 
-
-You can then make [inference requests](https://docs.clarifai.com/compute/models/inference/api) using the model.
 
 ---
 
@@ -27727,9 +27618,9 @@ You can easily export your entire workflow as a YAML file. This local copy enabl
 
 ---
 
-## Deploy Your First Model
+## Deploy Your First Model via UI
 
-# Deploy Your First Model
+# Deploy Your First Model via UI
 
 **Quickly set up infrastructure for inference**
 
@@ -28052,21 +27943,17 @@ You can then use these resources to [deploy](https://docs.clarifai.com/compute/d
 
 ---
 
-## Build and Upload a Model
+## Deploy Your First Model via CLI
 
-# Build and Upload a Model
+# Deploy Your First Model via CLI
 
-**Quickly build and upload your first custom model to Clarifai platform**
+**Quickly build and deploy your first custom model to the Clarifai platform**
 
-The Clarifai platform allows you to upload custom models for a wide range of use cases. With just a few simple steps, you can get your models up and running and leverage the platform’s powerful capabilities.
+The Clarifai platform lets you deploy models to production in just three commands. This guide walks you through the complete workflow — from scaffolding to running predictions in the cloud.
 
-Let’s walk through how to build and upload a simple custom model.
-
-:::note tip
-
-To learn more about how to upload different types of models, check out [this comprehensive guide](https://docs.clarifai.com/compute/models/upload/). 
-
-:::
+We'll show two paths:
+- **Path A** (recommended): Deploy a pre-trained LLM from HuggingFace using a toolkit
+- **Path B**: Deploy a custom Python model you write from scratch
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -28076,115 +27963,178 @@ import ModelPyFile from "!!raw-loader!../../code_snippets/python-sdk/model-uploa
 import ConfigFile from "!!raw-loader!../../code_snippets/python-sdk/model-upload/upload-first-model.yaml";
 import RequirementsFile from "!!raw-loader!../../code_snippets/python-sdk/model-upload/upload-first-model.txt";
 import PythonSDKRequest from "!!raw-loader!../../code_snippets/python-sdk/model-upload/predict-first-model.py";
-import NodeSDKRequest from "!!raw-loader!../../code_snippets/python-sdk/model-upload/predict-first-model.js";
-import BuildLogsExample from "!!raw-loader!../../code_snippets/python-sdk/model-upload/upload-first-build-logs.txt";
 
-## Step 1: Perform Prerequisites
+## Step 1: Install and Log In
 
-### Sign Up or Log In 
-
-To get started, [log in to](https://clarifai.com/login) your existing Clarifai account or [sign up](https://clarifai.com/signup) for a new one. If you're creating a new account, a default application will be automatically generated for you.
-
-Next, retrieve the following credentials:
-
-- **App ID** – Navigate to your application’s page and select the [**Overview**](https://docs.clarifai.com/create/applications/manage#app-overview) option in the collapsible left sidebar. Get the app ID from there. 
-- **User ID** – Navigate to **Settings** in the collapsible left sidebar and select the **Account** option. Then, copy your user ID from that page. 
-- **PAT** – From the same **Settings** menu, go to the **Secrets** page to generate or copy your [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat). This token is used to authenticate your connection with the Clarifai platform.
-
-You need to set the `CLARIFAI_PAT` you've retrieved as an environment variable. 
-
-    export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE
-
-    set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE
-
-### Install Clarifai Package
-
-Install the latest version of the `clarifai` Python SDK. This also installs the Clarifai [Command Line Interface (CLI)](https://docs.clarifai.com/additional-resources/api-overview/cli), which we'll use for uploading the model.
+### Install Clarifai
 
     pip install --upgrade clarifai
 
-### Set Up Cluster and Nodepool
+This installs both the Python SDK and the [CLI](https://docs.clarifai.com/resources/api-overview/cli).
 
-Setting up a [cluster and nodepool](https://docs.clarifai.com/compute/deployments/clusters-nodepools) creates the dedicated compute environment your model needs to run reliably and efficiently.
+### Log In
 
-After uploading your model to the Clarifai platform, you'll need to deploy it to the already created compute environment.
+You need a Clarifai account and a Personal Access Token (PAT). If you don't have one:
+1. [Sign up](https://clarifai.com/signup) or [log in](https://clarifai.com/login)
+2. Go to **Settings** > **Secrets** in the left sidebar
+3. Create a new PAT and copy it
 
-> **Note:** A cluster forms the foundation of your compute environment, while a nodepool is a single compute node or a group of compute nodes within that cluster that provides the resources required to run your model.
+Then authenticate:
 
-You can learn how to set up your compute environment fast [here](https://docs.clarifai.com/getting-started/set-up-compute).
+    clarifai login
 
-## Step 2: Create Files
+The CLI will prompt for your PAT, validate it, auto-detect your user ID, and save everything locally. Verify it worked:
 
-:::tip
+    clarifai whoami
 
-You can automatically generate the required files by running the [`clarifai model init`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-init) command in the terminal from your current directory. After the files are created, you can modify them as needed.
+You should see your user ID and the active context name.
 
-:::
+## Path A: Deploy a Pre-Trained LLM (Recommended) {#path-a}
 
-Create a project directory and organize your files as indicated below to fit the requirements of uploading models to the Clarifai platform. 
+This is the fastest way to get a model running on Clarifai. We'll use [Qwen3-0.6B](https://huggingface.co/Qwen/Qwen3-0.6B) — a small, ungated model that doesn't require a HuggingFace token.
+
+### Step 2A: Scaffold
+
+    clarifai model init --toolkit vllm --model-name Qwen/Qwen3-0.6B
+
+This creates a `Qwen3-0.6B/` directory with everything pre-configured:
 
 ```text
-your_model_directory/
+Qwen3-0.6B/
 ├── 1/
-│   └── model.py
-├── requirements.txt
-└── config.yaml
+│   └── model.py         # vLLM inference logic (ready to use)
+├── config.yaml          # Config with auto-selected GPU instance
+└── requirements.txt     # Dependencies (clarifai, openai — vLLM comes from Docker image)
 ```
 
-- **your_model_directory/** – The root directory containing all files related to your custom model.
-  - **1/** – A subdirectory that holds the model file (_Note that the folder is named as **1**_).
-    - **model.py** – Contains the code that defines your model, including running inference.
-  - **requirements.txt** – Lists the Python dependencies required to run your model.
-  - **config.yaml** – Contains metadata and configuration settings, such as compute requirements, needed for uploading the model to Clarifai.
+The generated `config.yaml` is minimal — no placeholders to fill in:
 
-Add the following snippets to each of the respective files. 
+```yaml
+build_info:
+  image: vllm/vllm-openai:latest
+checkpoints:
+  repo_id: Qwen/Qwen3-0.6B
+  type: huggingface
+  when: runtime               # Downloads weights at startup, not during build
+compute:
+  instance: g4dn.xlarge       # Auto-selected based on model VRAM needs
+model:
+  id: qwen3-06b              # Sanitized from Qwen/Qwen3-0.6B
+```
 
-### `model.py`
+> **What gets auto-filled:** `user_id` and `app_id` are resolved from your login context at deploy time. `model.id` is sanitized from the HuggingFace model name (e.g., `Qwen/Qwen3-0.6B` → `qwen3-06b`). `compute.instance` is auto-selected based on the model's estimated VRAM requirements — the CLI fetches the model's architecture from HuggingFace and calculates the exact memory needed for weights, KV cache, and framework overhead. `build_info.image` specifies the Docker base image (vLLM comes pre-installed in it, so `requirements.txt` only lists lightweight dependencies).
+
+### Step 3A: Deploy
+
+    clarifai model deploy ./Qwen3-0.6B
+
+That's it. The CLI will:
+
+1. **Validate** — check `config.yaml` and verify the HuggingFace repo is accessible
+2. **Upload** — build a Docker image and push it to Clarifai
+3. **Deploy** — auto-create a compute cluster (a group of machines), a nodepool (the specific GPU instance), and a deployment (your model running on that hardware)
+4. **Monitor** — stream pod events until the model is ready
+
+When it finishes, you'll see output like this:
+
+```text
+── Ready ──────────────────────────────────────────────
+  Model deployed successfully!
+
+  Model:           https://clarifai.com/your-user/main/models/qwen3-06b
+  Version:         abc12345
+  Deployment:      deploy-qwen3-06b-dd8481
+  Instance:        g4dn.xlarge
+  Cloud:           AWS / us-east-1
+
+── Next Steps ─────────────────────────────────────────
+  Predict:         clarifai model predict your-user/main/models/qwen3-06b "Hello"
+  Logs:            clarifai model logs --deployment "deploy-qwen3-06b-dd8481"
+  Status:          clarifai model status --deployment "deploy-qwen3-06b-dd8481"
+  Undeploy:        clarifai model undeploy --deployment "deploy-qwen3-06b-dd8481"
+```
+
+> **Copy the predict command from the output** — it contains your actual user ID and deployment ID, so you can paste it directly.
+
+### Step 4A: Predict
+
+Copy the predict command from the deploy output, or construct it using your user ID:
+
+    clarifai model predict your-user/main/models/qwen3-06b "Explain quantum computing in one sentence"
+
+> Replace `your-user` with your actual Clarifai user ID (the one shown by `clarifai whoami`). The `main` is the default app that's auto-created for you.
+
+The response streams in real-time. You can also test in the [Playground](https://docs.clarifai.com/getting-started/quickstart-playground) by clicking the model URL from the deploy output.
+
+### Step 5A: Manage
+
+```bash
+# Check deployment status
+clarifai model status --deployment 
+
+# Stream live logs (useful for debugging startup issues)
+clarifai model logs --deployment 
+
+# View Kubernetes scheduling events (useful if pod won't start)
+clarifai model logs --deployment  --log-type events
+
+# Remove deployment when done (stops billing)
+clarifai model undeploy --deployment 
+```
+
+> Replace `` with the ID from the deploy output (e.g., `deploy-qwen3-06b-dd8481`).
+
+---
+
+## Path B: Deploy a Custom Python Model {#path-b}
+
+Use this path when you're writing your own model logic (not wrapping a pre-trained model).
+
+### Step 2B: Scaffold
+
+    clarifai model init my-first-model
+
+This creates a blank model project. Replace the generated files with your model logic:
+
+#### `1/model.py`
 
     {ModelPyFile}
 
-### `requirements.txt`
+#### `requirements.txt`
 
     {RequirementsFile}
 
-### `config.yaml`
-
-:::info important
-
-In the `model` section of the `config.yaml` file, specify a unique model ID (any arbitrary name you choose), along with the Clarifai user ID and app ID you retrieved [earlier](#sign-up-or-log-in). These values determine the destination where your model will be uploaded on the Clarifai platform.
-
-:::
+#### `config.yaml`
 
     {ConfigFile}
 
-## Step 3: Upload the Model
+> `user_id` and `app_id` are auto-filled from your CLI context at deploy time. You don't need to add them.
 
-Once your custom model is ready, upload it to the Clarifai platform by navigating to the directory containing the model and running the following command:
+### Step 3B: Test Locally (Optional)
 
-    clarifai model upload
+Before deploying, verify your model works locally:
 
-## Step 4: Deploy the Model
+    clarifai model serve ./my-first-model
 
-Once your model is successfully uploaded to the Clarifai platform, the terminal will guide you through the deployment process to prepare your model for inference.
+This starts the model and connects it through a Clarifai-managed API endpoint for testing. Press Ctrl+C to stop.
 
-Follow the on-screen prompts to:
+For offline development without a Clarifai login:
 
-- Choose an existing cluster and nodepool where your model will run.
+    clarifai model serve ./my-first-model --grpc
 
-- Provide the deployment configuration, including the minimum and maximum number of [replicas](https://docs.clarifai.com/compute/deployments/deploy-model#model-replica) to manage your model’s scalability. Take note of the created `deployment_id`.
+### Step 4B: Deploy
 
-  Build Logs Example
-    {BuildLogsExample}
+    clarifai model deploy ./my-first-model
 
-## Step 5: Predict With Model
+This CPU-only model doesn't need `--instance` — the CLI uses the `inference_compute_info` from `config.yaml`. For GPU models, you'd add `--instance g5.xlarge` (run `clarifai list-instances` to see all available GPU instances).
 
-Once your model is successfully deployed, you can start making predictions with it. You can also test it directly in the [Playground](https://docs.clarifai.com/getting-started/quickstart-playground).
+### Step 5B: Predict
 
-    {PythonSDKRequest}
+Copy the predict command from the deploy output, or construct it:
 
-    {NodeSDKRequest}
+    clarifai model predict your-user/main/models/my-first-model "Yes, I uploaded it!"
 
--->
+> Replace `your-user` with your Clarifai user ID (shown by `clarifai whoami`).
 
   Output Example
     Yes, I uploaded it!  Hello World 0
@@ -28193,9 +28143,66 @@ Yes, I uploaded it!  Hello World 2
 Yes, I uploaded it!  Hello World 3
 Yes, I uploaded it!  Hello World 4
 
-**Congratulations!**
+Or use the Python SDK:
 
-You've successfully uploaded your first model to the Clarifai platform and run inference with it!
+    {PythonSDKRequest}
+
+---
+
+## Troubleshooting
+
+### Deploy is stuck on "Monitor" phase
+
+The model pod is starting up. For large LLMs, this can take 5–10 minutes as weights download at runtime. Check progress with:
+
+```bash
+clarifai model logs --deployment 
+```
+
+If the pod is failing to schedule, check Kubernetes events:
+
+```bash
+clarifai model logs --deployment  --log-type events
+```
+
+### HuggingFace token error
+
+Some models (Llama, Gemma, etc.) are **gated** and require a HuggingFace access token. The CLI catches this early during the Validate phase:
+
+```text
+UserError: HuggingFace repo 'meta-llama/Llama-3.1-8B-Instruct' requires authentication.
+  Set HF_TOKEN in your environment:
+    export HF_TOKEN=hf_...
+```
+
+To fix: [create a HuggingFace token](https://huggingface.co/docs/hub/en/security-tokens), request access to the model, then set the token:
+
+```bash
+export HF_TOKEN=hf_your_token_here
+```
+
+The CLI will automatically include it in the build.
+
+### Model predict returns an error
+
+Make sure the deployment is fully ready before predicting:
+
+```bash
+clarifai model status --deployment 
+```
+
+Wait until the status shows the deployment is active. Runtime checkpoint downloads can take several minutes for large models.
+
+---
+
+## What's Next?
+
+- Browse all [available GPU instances](https://docs.clarifai.com/resources/api-overview/cli#clarifai-list-instances) for deployment (`clarifai list-instances`)
+- Learn about [toolkits](https://docs.clarifai.com/compute/toolkits) (vLLM, SGLang, Ollama, and more)
+- Explore the full [CLI reference](https://docs.clarifai.com/resources/api-overview/cli)
+- Set up [autoscaling](https://docs.clarifai.com/compute/deployments/deploy-model#set-autoscaling) for production workloads
+
+**Congratulations!** You've successfully deployed a model to the Clarifai platform and run inference with it.
 
 ---
 
@@ -36961,44 +36968,22 @@ Options:
   --help          Show this message and exit.
 
 Commands:
+  app (a)                         Manage Apps: create, list, delete
   artifact (af)                   Manage Artifacts: create, upload, download,
                                   list, get, delete
   computecluster (cc)             Manage Compute Clusters: create, delete,
                                   list
-  config                              Manage multiple configuration profiles
-                                      (contexts).
-                                  
-                                      Authentication Precedence:
-                                  
-                                        1. Environment variables (e.g.,
-                                        `CLARIFAI_PAT`) are used first if set.
-                                        2. The settings from the active
-                                        context are used if no environment
-                                        variables are provided.
-                                  
-  deployment (dp)                 Manage Deployments: create, delete, list
+  config                          Manage multiple configuration profiles
+                                  (contexts)
+  deployment (dp)                 Manage Deployments: create, delete, list,
+                                  get (status), logs
+  list-instances (li)             List available compute instances
   login                           Login command to set PAT and other
-                                  configurations.
-  logout                          Log out by clearing saved credentials.
-                                  
-                                      Without flags, an interactive menu is
-                                      shown. Use flags for     programmatic /
-                                      non-interactive usage.
-                                  
-                                          Examples:
-                                            clarifai logout                        # Interactive
-                                            clarifai logout --current              # Clear current context PAT
-                                            clarifai logout --context staging      # Clear 'staging' PAT
-                                            clarifai logout --context staging --delete  # Remove 'staging' entirely
-                                            clarifai logout --all                  # Clear every context PAT
-                                          
-  model                           Manage & Develop Models: init, download-
-                                  checkpoints, signatures, upload
-                                  
-                                      Run & Test Models Locally: local-runner,
-                                      local-grpc, local-test
-                                  
-                                      Model Inference: list, predict
+                                  configurations
+  logout                          Log out by clearing saved credentials
+  model                           Manage & Develop Models: init, upload,
+                                  deploy, serve, predict, status, logs,
+                                  undeploy, list
   nodepool (np)                   Manage Nodepools: create, delete, list
   pipeline (pl)                   Manage pipelines: upload, init, list, etc
   pipeline-step (pipelinestep, ps)
@@ -37011,6 +36996,7 @@ Commands:
   run                             Execute a script with the current context's
                                   environment
   shell-completion                Shell completion script
+  whoami                          Display current user and context info
 ```
 
 The `--help` option is particularly useful to quickly understand the available functionalities and how to use them.
@@ -37029,7 +37015,9 @@ Usage: clarifai login [OPTIONS] [API_URL]
   Login command to set PAT and other configurations.
 
 Options:
-  --user_id TEXT  User ID
+  --pat TEXT      Personal Access Token
+  --user-id TEXT  User ID (or org ID)
+  --name TEXT     Name for the context
   --help          Show this message and exit.
 ```
 
@@ -37088,6 +37076,16 @@ Enter your Personal Access Token (PAT): ********************************
 A context refers to the active environment settings that determine how your commands interact with the Clarifai platform. Think of a context as a saved set of credentials (such as a PAT key or a specific user ID) you want to work with.
 
 :::
+
+### Non-Interactive Login
+
+You can log in non-interactively by providing your PAT directly. This is useful for CI/CD pipelines and scripting.
+
+    clarifai login --pat YOUR_PAT_HERE
+
+The CLI will validate your PAT, auto-detect your user ID, and list your organizations for selection. If you want to skip org selection, provide a user ID:
+
+    clarifai login --pat YOUR_PAT_HERE --user-id your_user_id
 
 ### Log in With a User ID
 
@@ -37671,105 +37669,640 @@ clarifai config show --output-format json
 }
 ```
 
+## Context Override (`--context`)
+
+Any command can override the active context for a single invocation using the global `--context` flag. This lets you target different environments or accounts without switching your default context.
+
+    clarifai --context staging model list
+
+    clarifai --context prod-openai model predict openai/chat-completion/models/GPT-4 "Hello"
+
+This is useful when you need to work with multiple accounts or environments in a single terminal session.
+
+---
+
+## Clarifai Whoami
+
+    clarifai whoami [OPTIONS]
+
+The `clarifai whoami` command displays information about the currently authenticated user and active context. It reads from the local config file without making an API call by default.
+
+### Basic Usage
+
+    clarifai whoami
+
+### Include Organizations
+
+    clarifai whoami --orgs
+
+### Full Profile
+
+    clarifai whoami --all
+
+### JSON Output (for Scripting)
+
+    clarifai whoami -o json
+
+---
+
+## Clarifai App
+
+    clarifai app [COMMAND] [OPTIONS]
+
+The `clarifai app` command provides CRUD operations for Clarifai apps. Alias: `a`.
+
+### Create an App
+
+    clarifai app create my-app
+
+You can specify a base workflow:
+
+    clarifai app create my-app --base-workflow Universal
+
+### List Apps
+
+    clarifai app list
+
+### Delete an App
+
+    clarifai app delete my-app
+
+Aliases: `c` (create), `ls` (list), `rm` (delete).
+
+---
+
 ## Clarifai Model Init
 
-The `clarifai model init` command initializes a new Clarifai model directory structure. This command helps you set up the necessary files and folders to begin building a [custom model](https://docs.clarifai.com/compute/models/upload/) suitable for the Clarifai platform.
+The `clarifai model init` command scaffolds a new Clarifai model project. The recommended workflow uses `--toolkit` and `--model-name` to automatically generate all required files with the correct configuration for your model.
 
-     clarifai model init [OPTIONS] [MODEL_PATH] 
+    clarifai model init [OPTIONS] [MODEL_PATH]
 
-The command creates a standardized directory structure in the specified `MODEL_PATH`. If `MODEL_PATH` is not provided, the command will use the current directory by default.
+If `MODEL_PATH` is not provided, the current directory is used. When `--model-name` is provided, a directory is automatically created using the model name.
 
-The generated structure includes:
+### Initialize With Toolkit (Recommended)
+
+The `--toolkit` flag selects a pre-configured inference framework. Combined with `--model-name`, this is the fastest way to get a model ready for local serving or cloud deployment.
+
+    clarifai model init --toolkit vllm --model-name Qwen/Qwen3-0.6B
+
+This creates a `Qwen3-0.6B/` directory with all required files:
 
 ```
+Qwen3-0.6B/
 ├── 1/
-│   └── model.py
-├── requirements.txt
-└── config.yaml
+│   └── model.py         # Model implementation
+├── requirements.txt     # Dependencies
+└── config.yaml          # Simplified config (auto-filled)
 ```
 
-* **`1/`** — A directory that holds the model file (_Note that the folder is named as 1_)
-    * **`model.py`** — This file will contain the Python code for your Clarifai model. You will define your model's logic and how it interacts with the Clarifai platform within this file.
-* **`requirements.txt`** — This file is used to list any Python dependencies your model requires. When your model is deployed, Clarifai will install these dependencies.
-* **`config.yaml`** — This YAML file is used for model configuration, allowing you to define settings and parameters for your model.
+The generated `config.yaml` is minimal — no TODOs or placeholders:
+
+```yaml
+model:
+  id: "Qwen3-0.6B"
+
+build_info:
+  python_version: "3.11"
+
+compute:
+  instance: g5.xlarge
+
+checkpoints:
+  repo_id: Qwen/Qwen3-0.6B
+  type: huggingface
+  when: runtime
+```
+
+Fields like `user_id`, `app_id`, and `model_type_id` are resolved automatically from your CLI context at serve/deploy time.
+
+**Available toolkits:**
+
+| Toolkit | Category | Description |
+|---------|----------|-------------|
+| `vllm` | GPU | High-throughput LLM serving with [vLLM](https://docs.clarifai.com/compute/toolkits/vllm) |
+| `sglang` | GPU | Fast LLM serving with [SGLang](https://docs.clarifai.com/compute/toolkits/sglang) |
+| `huggingface` | GPU | HuggingFace Transformers (direct inference) |
+| `ollama` | Local | [Ollama](https://docs.clarifai.com/compute/toolkits/ollama) local LLM server |
+| `lmstudio` | Local | [LM Studio](https://docs.clarifai.com/compute/toolkits/lmstudio) local LLM server |
+| `python` | Other | Blank Python model (default if `--toolkit` omitted) |
+| `mcp` | Other | [MCP](https://docs.clarifai.com/compute/agents/mcp) tool server (FastMCP) |
+| `openai` | Other | [OpenAI-compatible](https://docs.clarifai.com/compute/inference/open-ai) API wrapper |
+
+More toolkit examples:
+
+```bash
+# GPU toolkits with HuggingFace models
+clarifai model init --toolkit vllm --model-name Qwen/Qwen3-0.6B
+clarifai model init --toolkit sglang --model-name Qwen/Qwen2-7B
+clarifai model init --toolkit huggingface --model-name google/gemma-2b
+
+# Local server toolkits
+clarifai model init --toolkit ollama --model-name llama3.1
+clarifai model init --toolkit lmstudio --model-name qwen/qwen3-4b
+
+# Other toolkits
+clarifai model init --toolkit mcp my-mcp-server
+clarifai model init --toolkit openai my-wrapper
+```
+
+#### Smart Instance Selection
+
+When you use `--toolkit` with a GPU toolkit (vLLM, SGLang, HuggingFace) and `--model-name`, the CLI automatically estimates VRAM requirements and selects the optimal GPU instance.
+
+For **vLLM and SGLang** models, the CLI fetches the model's `config.json` from HuggingFace to calculate the **exact KV cache** based on the model's architecture (layer count, KV heads, head dimension, context length). This prevents out-of-memory errors that occur when a model's context window requires more KV cache than a simple heuristic predicts.
+
+The estimation includes:
+- **Model weights** — dtype-aware and quantization-aware sizing
+- **KV cache** — exact calculation from model architecture for the full context window
+- **Framework overhead** — 2 GiB fixed + 10% of model weights (CUDA context, PyTorch runtime, activations)
+- **GPU utilization headroom** — 90% utilization factor (matching vLLM/SGLang default `gpu_memory_utilization=0.9`)
+
+```text
+$ clarifai model init --toolkit vllm --model-name Qwen/Qwen3-4B
+  Instance: g5.xlarge (Estimated 15.9 GiB VRAM (7.5 GiB weights + 5.6 GiB KV cache for 40960 ctx), fits g5.xlarge (22 GiB))
+```
+
+For SGLang models, pre-Ampere GPUs (T4, V100) are automatically excluded since SGLang requires compute capability >= 8.0.
+
+Instance recommendations are restricted to **AWS, GCP, and Vultr** cloud providers.
 
 ### Basic Initialization
 
-If no option value is provided, the command defaults to initializing the standard `ModelClass`.
-
-Here is how to initialize a model in the current directory with the default model class:
+If no `--toolkit` is provided, the command initializes a blank Python model using `ModelClass`:
 
     clarifai model init
 
-Here is how to initialize a model in a new directory:
+Initialize in a new directory:
 
     clarifai model init my_custom_model
 
-This will create a directory `my_custom_model` with the standard model structure inside it.
-
-:::note
-
-The `--model-type-id` option specifies the type of model class to initialize. This ensures that the generated files are tailored to the chosen model type. 
-
-:::
-
-### Initialize `mcp` Model Type
-
-Providing the `mcp` option initializes the model structure using `MCPModelClass`, which is used for models that will run on Clarifai using the [Model Context Protocol (MCP)](https://docs.clarifai.com/compute/agents/mcp).
-
-Here is how to initialize an MCP model in the current directory:
-
-    clarifai model init --model-type-id mcp
-
-Here is how to initialize an MCP model in a specific path:
-
-    clarifai model init /home/username/Projects/MyMCPModel --model-type-id mcp
-
-### Initialize `openai` Model Type
-
-Providing the `openai` option initializes the model structure using `OpenAIModelClass`, intended for models that integrate with [OpenAI's APIs](https://docs.clarifai.com/compute/inference/open-ai).
-
-Here is how to initialize an OpenAI-compatible model in the current directory:
-
-    clarifai model init --model-type-id openai
-
-Here is how to initialize an OpenAI-compatible model in a specific path:
-
-    clarifai model init /home/username/Projects/MyOpenAIModel --model-type-id openai
-
 ### Initialize With GitHub Template
 
-You can initialize your model using a custom template from a GitHub repository using the `--github-url` option and providing the full repository URL.
+You can initialize your model using a template from a GitHub repository:
 
-Here is how to clone a public GitHub repository in the current directory:
+```bash
+# Clone a public GitHub repository
+clarifai model init --github-url https://github.com/Clarifai/runners-examples/tree/main/local-runners/ollama-model-upload
 
-    ```bash
-    clarifai model init --github-url https://github.com/Clarifai/runners-examples/tree/main/local-runners/ollama-model-upload
-    ```
+# Clone a specific branch
+clarifai model init --github-url https://github.com/Clarifai/runners-examples/tree/vllm-tool-calling
 
-Here is how to clone a specific branch of a GitHub repository by including the branch reference directly in the URL:
+# Clone a private repository with a GitHub PAT
+clarifai model init --github-url https://github.com/your-username/my-private-model --github-pat YOUR_GITHUB_PAT_TOKEN
+```
 
-    ```bash
-    clarifai model init --github-url https://github.com/Clarifai/runners-examples/tree/vllm-tool-calling
-    ```
+Learn more about using toolkits [here](https://docs.clarifai.com/compute/toolkits).
 
-Here is how to clone a private GitHub repository using a GitHub Personal Access Token:
+---
 
-    ```bash
-    clarifai model init --github-url https://github.com/your-username/my-private-model --github-pat YOUR_GITHUB_PAT_TOKEN
-    ```
+## Clarifai Model Serve
 
-> **Note:** Replace `https://github.com/your-username/my-private-model` and `YOUR_GITHUB_PAT_TOKEN` with your actual values.
+    clarifai model serve [OPTIONS] [MODEL_PATH]
 
-### Initialize With Toolkit
+The `clarifai model serve` command runs a model locally for development and testing. It replaces the older `local-runner` command (which still works as an alias).
 
-You can initialize a new Clarifai model directory structure from a toolkit using the `--toolkit` option. Toolkits allow you to run large language models (LLMs) and other generative AI models locally on your own machine.
+### Basic Usage
 
-For example, here is how you can initialize a default model using the [Ollama toolkit](https://ollama.com/search) in the current directory:
+```bash
+# Run in current Python environment (fastest)
+clarifai model serve ./my-model
 
-    clarifai model init --toolkit ollama
+# Auto-create virtualenv and install dependencies
+clarifai model serve ./my-model --mode env
 
-You can learn more about using toolkits [here](https://docs.clarifai.com/compute/toolkits).
+# Build and run inside Docker
+clarifai model serve ./my-model --mode container
+```
+
+### Standalone gRPC Mode
+
+For offline development without a Clarifai login:
+
+```bash
+# Start a standalone gRPC server (no login required)
+clarifai model serve ./my-model --grpc
+
+# Custom port
+clarifai model serve ./my-model --grpc --port 9000
+```
+
+### Options
+
+| Option | Default | Description |
+|--------|---------|-------------|
+| `MODEL_PATH` | `.` | Model directory containing `config.yaml` |
+| `--mode` | `none` | `none` (current env), `env` (auto-venv), `container` (Docker) |
+| `--grpc` | off | Standalone gRPC server — no API connection needed |
+| `--port` | 8000 | Server port (with `--grpc`) |
+| `--concurrency` | 32 | Max concurrent requests |
+| `--keep-image` | off | Keep Docker image after exit (container mode) |
+| `-v, --verbose` | off | Show detailed logs |
+
+### How It Works
+
+**API-connected mode (default):**
+
+1. Validates `config.yaml` and resolves credentials from your CLI context
+2. Auto-creates infrastructure (compute cluster, nodepool, app, model, version, runner, deployment)
+3. Starts the model server
+4. Displays a code snippet, Playground URL, and predict command
+5. Cleans up ephemeral resources (version, runner, deployment) on Ctrl+C
+
+**Standalone gRPC mode (`--grpc`):**
+
+Starts a standalone gRPC server with no Clarifai API connection. No login required. Useful for offline development.
+
+---
+
+## Clarifai Model Upload
+
+    clarifai model upload [OPTIONS] [MODEL_PATH]
+
+Upload a model to Clarifai without deploying it. Useful when you want to separate the upload and deploy steps.
+
+```bash
+clarifai model upload ./my-model
+clarifai model upload ./my-model --platform linux/amd64
+clarifai model upload ./my-model -v    # verbose
+```
+
+After upload, the output includes a clickable model URL, a code snippet for predictions, and suggested next steps (deploy, predict).
+
+---
+
+## Clarifai Model Deploy
+
+    clarifai model deploy [OPTIONS] [MODEL_PATH]
+
+The `clarifai model deploy` command uploads, builds, and deploys a model to Clarifai cloud compute in one step. All infrastructure (compute cluster, nodepool, deployment) is **auto-created** — no manual setup required.
+
+### Basic Examples
+
+```bash
+# Deploy from a local directory (uses instance from config.yaml)
+clarifai model deploy ./my-model
+
+# Explicit instance selection
+clarifai model deploy ./my-model --instance g5.xlarge
+
+# GPU shorthands also work
+clarifai model deploy ./my-model --instance a10g
+
+# Deploy an already-uploaded model by URL
+clarifai model deploy --model-url https://clarifai.com/user/app/models/id --instance g5.xlarge
+```
+
+### Browse Available Instances
+
+Use `--instance-info` or the standalone [`clarifai list-instances`](#clarifai-list-instances) command to see all available hardware across cloud providers:
+
+```bash
+clarifai model deploy --instance-info
+clarifai model deploy --instance-info --cloud gcp
+clarifai model deploy --instance-info --cloud aws --region us-east-1
+```
+
+Example Output
+
+```text
+Available instance types (use the ID with --instance flag):
+--instance value    Cloud    Region       GPUs  Accelerator    GPU Memory    CPU      CPU Memory
+------------------  -------  ---------  ------  -------------  ------------  -------  ------------
+g4dn.xlarge         aws      us-east-1       1  NVIDIA-T4      15360Mi       3535m    14197Mi
+g5.xlarge           aws      us-east-1       1  NVIDIA-A10G    23028Mi       3535m    13878Mi
+g6e.xlarge          aws      us-east-1       1  NVIDIA-L40S    46068Mi       3535m    29033Mi
+g6e.2xlarge         aws      us-east-1       1  NVIDIA-L40S    46068Mi       7525m    59343Mi
+t3a.2xlarge         aws      us-east-1       0  -              -             7525m    29033Mi
+...
+```
+
+### Advanced Options
+
+```bash
+# Specific cloud/region
+clarifai model deploy ./my-model --instance g5.xlarge --cloud aws --region us-west-2
+
+# Autoscaling
+clarifai model deploy ./my-model --instance g5.xlarge --min-replicas 2 --max-replicas 10
+
+# Use existing infrastructure
+clarifai model deploy ./my-model --instance g5.xlarge --compute-cluster-id my-cc --nodepool-id my-np
+```
+
+### Options Reference
+
+| Option | Default | Description |
+|--------|---------|-------------|
+| `MODEL_PATH` | `.` | Local model directory to upload and deploy |
+| `--instance` | auto | Hardware instance type (e.g., `g5.xlarge`, `a10g`) |
+| `--instance-info` | — | Show available instances table, then exit |
+| `--model-url` | — | Deploy an already-uploaded model (skip upload) |
+| `--model-version-id` | latest | Specific version to deploy |
+| `--min-replicas` | 1 | Minimum running replicas |
+| `--max-replicas` | 5 | Maximum replicas for autoscaling |
+| `--cloud` | auto | Cloud provider (`aws`, `gcp`, `vultr`) |
+| `--region` | auto | Cloud region (e.g., `us-east-1`) |
+| `--compute-cluster-id` | auto | Use existing compute cluster |
+| `--nodepool-id` | auto | Use existing nodepool |
+| `-v, --verbose` | off | Show detailed logs |
+
+### Instance Name Resolution
+
+The `--instance` flag accepts multiple naming formats, all resolved against the live API catalog:
+
+| Input Format | Example | Resolved To |
+|-------------|---------|-------------|
+| API instance ID | `g5.xlarge` | `g5.xlarge` |
+| GPU shorthand | `a10g` | `g5.xlarge` (via accelerator match) |
+| Legacy nodepool name | `gpu-nvidia-a10g` | `g5.xlarge` (strips `gpu-nvidia-` prefix) |
+
+### Deploy Phases
+
+When you run `clarifai model deploy`, it progresses through these phases:
+
+```text
+── Validate ──  Config validation, HuggingFace repo access check
+── Upload ────  Build and push model image
+── Deploy ────  Create compute cluster, nodepool, deployment
+── Monitor ───  Stream pod events until ready
+── Ready ─────  Show model URL, predict command, log/status commands
+```
+
+Example Output
+
+```text
+── Ready ──────────────────────────────────────────────
+  Model deployed successfully!
+
+  Model:           https://clarifai.com/user/app/models/my-model
+  Version:         abc12345
+  Deployment:      deploy-my-model-abc123
+  Instance:        g5.xlarge
+  Cloud:           AWS / us-east-1
+
+── Next Steps ─────────────────────────────────────────
+  Predict:         clarifai model predict user/app/models/my-model "Hello"
+  Logs:            clarifai model logs --deployment "deploy-my-model-abc123"
+  Status:          clarifai model status --deployment "deploy-my-model-abc123"
+  Undeploy:        clarifai model undeploy --deployment "deploy-my-model-abc123"
+```
+
+---
+
+## Clarifai List Instances
+
+    clarifai list-instances [OPTIONS]
+
+Browse all available compute instances across cloud providers. Alias: `li`.
+
+### Basic Usage
+
+```bash
+# List all available instances
+clarifai list-instances
+
+# Filter by cloud provider
+clarifai li --cloud aws
+
+# Filter by GPU type
+clarifai li --gpu H100
+
+# Multi-GPU instances only
+clarifai li --min-gpus 2
+
+# Minimum GPU memory
+clarifai li --min-gpu-mem 48Gi
+
+# Combined filters
+clarifai li --cloud aws --gpu L40S
+```
+
+### Options Reference
+
+| Option | Description |
+|--------|-------------|
+| `--cloud` | Filter by cloud provider (`aws`, `gcp`, `vultr`, `azure`) |
+| `--region` | Filter by region (e.g., `us-east-1`, `us-central1`) |
+| `--gpu` | Filter by GPU name (e.g., `A10G`, `H100`, `L40S`) |
+| `--min-gpus` | Minimum GPU count |
+| `--min-gpu-mem` | Minimum GPU memory (e.g., `48Gi`, `80Gi`) |
+
+---
+
+## Clarifai Model Predict
+
+    clarifai model predict [OPTIONS] [MODEL] [INPUT]
+
+Run predictions against any Clarifai model directly from the CLI.
+
+### Input Modes
+
+```bash
+# Text input
+clarifai model predict openai/chat-completion/models/GPT-4 "Hello world"
+
+# Pipe from stdin
+echo "Explain quantum computing" | clarifai model predict openai/chat-completion/models/GPT-4
+
+# Image/video/audio file
+clarifai model predict my/app/models/detector --file photo.jpg
+
+# Media URL
+clarifai model predict my/app/models/detector --url https://example.com/img.jpg
+
+# Named parameters
+clarifai model predict my/app/models/llm -i prompt="Hello" -i max_tokens=200
+
+# OpenAI chat mode
+clarifai model predict openai/chat-completion/models/GPT-4 --chat "What is AI?"
+
+# JSON output
+clarifai model predict openai/chat-completion/models/GPT-4 "Hello" -o json
+
+# Inspect available methods
+clarifai model predict openai/chat-completion/models/GPT-4 --info
+```
+
+### Options
+
+| Option | Description |
+|--------|-------------|
+| `MODEL` | Model as `user/app/models/id` or full URL (positional) |
+| `INPUT` | Text input (positional) |
+| `--file PATH` | Local file (image, audio, video) |
+| `--url URL` | Remote media URL |
+| `-i KEY=VALUE` | Named parameter (repeatable) |
+| `--inputs JSON` | All parameters as JSON string |
+| `--chat TEXT` | OpenAI chat mode |
+| `--method NAME` | Explicit method override |
+| `--info` | Show available methods, then exit |
+| `-o text\|json` | Output format (default: `text`) |
+| `--deployment ID` | Route to specific deployment |
+| `--model-url URL` | Full model URL (alternative to positional) |
+
+### Auto-Detection
+
+- Streaming methods are detected automatically and yield chunks in real-time
+- Method selection: `--chat` uses OpenAI chat, text input prefers streaming/generate, media uses predict
+- `--info` shows all available methods with their parameter signatures
+
+---
+
+## Clarifai Model Status
+
+    clarifai model status [OPTIONS] [MODEL_REF]
+
+Check deployment status for a model or a specific deployment.
+
+```bash
+# By deployment ID
+clarifai model status --deployment deploy-abc123
+
+# By model reference (lists all deployments for the model)
+clarifai model status user/app/models/my-model
+
+# By model URL
+clarifai model status --model-url https://clarifai.com/user/app/models/my-model
+```
+
+Example Output
+
+```text
+── Deployment: deploy-my-model-dd8481 ──────────────────
+  Model:            user/app/models/my-model
+  Version:          720aa2682d9f
+  Min replicas:     1
+  Max replicas:     5
+  Nodepool:         deploy-np-g5-xlarge
+  Compute cluster:  deploy-cc-aws-us-east-1
+  Created:          2026-03-01 11:47:45
+```
+
+| Option | Description |
+|--------|-------------|
+| `MODEL_REF` | Model as `user/app/models/id` (positional) |
+| `--model-url URL` | Full model URL |
+| `--deployment ID` | Show a specific deployment |
+
+---
+
+## Clarifai Model Logs
+
+    clarifai model logs [OPTIONS]
+
+Stream logs from a deployed model's runner.
+
+```bash
+# By deployment ID (recommended)
+clarifai model logs --deployment deploy-abc123
+
+# By model URL
+clarifai model logs --model-url https://clarifai.com/user/app/models/id
+
+# Kubernetes scheduling/scaling events
+clarifai model logs --deployment deploy-abc123 --log-type events
+
+# Print current logs and exit
+clarifai model logs --deployment deploy-abc123 --no-follow
+
+# Stop after 60 seconds
+clarifai model logs --deployment deploy-abc123 --duration 60
+```
+
+| Option | Default | Description |
+|--------|---------|-------------|
+| `--deployment ID` | — | Deployment ID (auto-resolves model/nodepool) |
+| `--model-url URL` | — | Clarifai model URL |
+| `--log-type` | `model` | `model` (stdout/stderr) or `events` (k8s scheduling/scaling) |
+| `--follow/--no-follow` | follow | Continuously tail or print and exit |
+| `--duration N` | unlimited | Stop after N seconds |
+
+---
+
+## Clarifai Model Undeploy
+
+    clarifai model undeploy [OPTIONS] [MODEL_REF]
+
+Permanently remove a deployment.
+
+```bash
+# By deployment ID
+clarifai model undeploy --deployment deploy-abc123
+
+# By model reference (auto-selects if exactly 1 deployment)
+clarifai model undeploy user/app/models/my-model
+
+# By model URL
+clarifai model undeploy --model-url https://clarifai.com/user/app/models/my-model
+```
+
+| Option | Description |
+|--------|-------------|
+| `MODEL_REF` | Model as `user/app/models/id` (positional) |
+| `--model-url URL` | Full model URL |
+| `--deployment ID` | Target a specific deployment |
+
+---
+
+## Clarifai Model List
+
+    clarifai model list [OPTIONS] [USER_ID]
+
+List models for a user or across the platform.
+
+```bash
+clarifai model list                    # List your models
+clarifai model list           # List another user's models
+clarifai model list -a         # Filter by app
+```
+
+---
+
+## Clarifai Deployment
+
+The `clarifai deployment` command provides direct management of deployments by ID. Alias: `dp`.
+
+### Get Deployment Details
+
+Show details for a single deployment:
+
+```bash
+clarifai deployment get deploy-abc123
+clarifai deployment status deploy-abc123   # alias
+```
+
+### List Deployments
+
+```bash
+clarifai deployment ls                    # All deployments
+clarifai deployment ls       # Filter by nodepool
+```
+
+### Stream Deployment Logs
+
+```bash
+clarifai deployment logs deploy-abc123
+clarifai deployment logs deploy-abc123 --log-type events
+clarifai deployment logs deploy-abc123 --no-follow
+clarifai deployment logs deploy-abc123 --duration 60
+```
+
+| Option | Default | Description |
+|--------|---------|-------------|
+| `DEPLOYMENT_ID` | — | Deployment ID (positional, required) |
+| `--log-type` | `model` | `model` (stdout/stderr) or `events` (k8s scheduling/scaling) |
+| `--follow/--no-follow` | follow | Continuously tail or print and exit |
+| `--duration N` | unlimited | Stop after N seconds |
+
+### Delete a Deployment
+
+Delete a deployment by ID (no nodepool argument required):
+
+    clarifai deployment rm deploy-abc123
+
+### Create a Deployment
+
+    clarifai deployment create &lt;nodepool_id&gt; &lt;deployment_id&gt; --config deployment.yaml
 
 ---
 
