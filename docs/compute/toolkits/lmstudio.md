@@ -71,11 +71,11 @@ Scaffold a model project using any model from the [LM Studio Model Catalog](http
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-<CodeBlock className="language-bash">clarifai model init --toolkit lmstudio</CodeBlock>
+<CodeBlock className="language-bash">clarifai model init --toolkit lmstudio --model-name google/gemma-3-4b</CodeBlock>
 </TabItem>
 </Tabs>
 
-This initializes the default model (`google/gemma-3-4b`). The CLI auto-detects any LM Studio models already downloaded on your machine.
+The CLI auto-detects LM Studio models already downloaded on your machine. Change `--model-name` to any other model from the catalog.
 
 <details>
   <summary>Example Output</summary>
@@ -91,13 +91,6 @@ my-model/
 ├── requirements.txt   # Python dependencies
 └── config.yaml        # Model config (user_id/app_id auto-filled from login)
 ```
-
-:::tip
-To initialize a specific model, use `--model-name`:
-```sh
-clarifai model init --toolkit lmstudio --model-name google/gemma-3-4b
-```
-:::
 
 > **Note:** Some models are very large and may require significant memory. Check your machine's capacity before initializing.
 
