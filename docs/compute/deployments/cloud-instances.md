@@ -27,6 +27,8 @@ The instances listed on this page are available **on demand** — they can be pr
 
 - [Contact us](https://www.clarifai.com/explore/contact-us) to access GPU types not listed here, including instances that require dedicated provisioning.
 
+- You can also browse available instances programmatically using the CLI: `clarifai list-instances` (with optional `--cloud`, `--gpu`, `--min-gpu-mem` filters). See the [CLI reference](https://docs.clarifai.com/resources/api-overview/cli#clarifai-list-instances) for details.
+
 :::
 
 ## Amazon Web Services (AWS) Instances

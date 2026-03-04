@@ -183,6 +183,111 @@ Once the deployment is created, you’ll be redirected to the nodepool page, whe
 
 ![ ](/img/compute-orchestration/compute-14-4.png)
 
+## **Via the CLI**
+
+The Clarifai CLI provides a one-command deployment workflow that handles all infrastructure creation automatically. No need to manually create clusters or nodepools first.
+
+### One-Command Deploy
+
+Deploy a local model directory to the cloud in a single step:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+
+```bash
+clarifai model deploy ./my-model --instance g5.xlarge
+```
+
+</TabItem>
+</Tabs>
+
+This uploads your model, creates a compute cluster and nodepool, deploys the model, and monitors until it's ready.
+
+### Deploy an Already-Uploaded Model
+
+If your model is already uploaded to Clarifai, deploy it by URL:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+
+```bash
+clarifai model deploy --model-url https://clarifai.com/user/app/models/my-model --instance g5.xlarge
+```
+
+</TabItem>
+</Tabs>
+
+### Browse Available Instances
+
+View all available hardware configurations using the dedicated `list-instances` command:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+
+```bash
+# List all available instances
+clarifai list-instances
+
+# Filter by cloud provider
+clarifai list-instances --cloud aws
+
+# Filter by GPU type
+clarifai list-instances --gpu L40S
+
+# Or use the deploy flag shortcut
+clarifai model deploy --instance-info
+clarifai model deploy --instance-info --cloud aws
+```
+
+</TabItem>
+</Tabs>
+
+### Override Instance Type
+
+If your `config.yaml` already has a `compute.instance` value (auto-selected during `model init`), you can override it at deploy time. The `--instance` flag **always takes priority** over the config:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+
+```bash
+# config.yaml has compute.instance: g5.xlarge, but deploy with a larger GPU
+clarifai model deploy ./my-model --instance g6e.2xlarge
+```
+
+</TabItem>
+</Tabs>
+
+### Autoscaling
+
+Control how your deployment scales:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+
+```bash
+clarifai model deploy ./my-model --instance g5.xlarge --min-replicas 2 --max-replicas 10
+```
+
+</TabItem>
+</Tabs>
+
+### Lifecycle Management
+
+After deployment, use these commands to manage it:
+
+```bash
+# Check status
+clarifai model status --deployment <deployment-id>
+
+# Stream logs
+clarifai model logs --deployment <deployment-id>
+
+# Remove deployment
+clarifai model undeploy --deployment <deployment-id>
+```
+
+For the full options reference, see the [CLI Reference](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-deploy).
+
 ## **Via the API**
 
 ### Create a Deployment

@@ -61,7 +61,7 @@ Once you've completed the prerequisites above, run the following commands and fo
 
 ### Log in to Clarifai
 
-Connect your environment to the Clarifai platform and [create a context](#step-2-create-a-context-optional) profile.  
+Connect your environment to the Clarifai platform and [create a context](#step-2-create-a-context-optional) profile.
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
@@ -69,7 +69,7 @@ Connect your environment to the Clarifai platform and [create a context](#step-2
 </TabItem>
 </Tabs>
 
-### Set up a Model 
+### Set up a Model
 
 Generate a sample toy [model](#step-1-build-a-model) with the necessary files.
 
@@ -79,17 +79,17 @@ Generate a sample toy [model](#step-1-build-a-model) with the necessary files.
 </TabItem>
 </Tabs>
 
-### Start Your Local Runner
+### Serve Your Model Locally
 
-Next, you'll connect your model to a public URL using Local Runners. The CLI will guide you through a series of confirmations for key objects on the Clarifai platform, such as compute clusters, nodepools, and deployments — which are described [below](#table). 
-
-Just review each prompt and confirm to proceed.
+Start the model using `clarifai model serve`. The CLI will guide you through creating any required platform resources (compute clusters, nodepools, and deployments) — described [below](#table).
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">clarifai model local-runner</CodeBlock>
+    <CodeBlock className="language-bash">clarifai model serve</CodeBlock>
 </TabItem>
 </Tabs>
+
+> **Note:** The `local-runner` command is still supported as an alias for `serve`.
 
 Once your runner launches successfully, your model will be running and accessible via a public URL. You can then open a new terminal, copy the sample code provided in the output, and [test your model](#step-4-test-with-snippet)!
 
@@ -202,21 +202,21 @@ personal access token value (default: "ENVVAR" to get our env var rather than co
 - **User ID** —  Enter your Clarifai user ID.
 - **PAT** — Enter your Clarifai [PAT](#get-a-pat-key-and-user-id). Note that if you press Enter, and you have set the `CLARIFAI_PAT` environment variable, it will use that token automatically.
 
-### Start Your Local Runner
+### Serve Your Model
 
-Next, start a local development runner.
+Start the model using `clarifai model serve` (or the alias `local-runner`):
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">clarifai model local-runner</CodeBlock>
+    <CodeBlock className="language-bash">clarifai model serve</CodeBlock>
 </TabItem>
 </Tabs>
 
-Or:
+Or with a specific model path:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">clarifai model local-runner [OPTIONS] [MODEL_PATH]</CodeBlock>
+    <CodeBlock className="language-bash">clarifai model serve [OPTIONS] [MODEL_PATH]</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -224,15 +224,48 @@ Or:
 
 :::note Options
 
-- `--pool_size` is an integer option that controls the number of threads used to process inference requests (default: 32). Increasing the pool size allows more requests to be handled in parallel, which can improve throughput and speed up local testing, at the cost of higher compute usage.
-
-- `--suppress-toolkit-logs` option enables detailed display of logs for troubleshooting issues, especially when running an [Ollama server](https://docs.clarifai.com/compute/local-runners/ollama/#step-4-start-your-local-runner). By default, logs are suppressed.
-
-- `--mode [env|container|none]` specifies how the model is executed locally. Use `env` to run the model inside a temporarily created virtual environment, `container` to run it in a Docker container, or `none` to run the model directly without creating an isolated environment. The default mode is `none`.
-
-- `--keep_image` retains the automatically created Docker image after the local test run completes. This option applies only when using `container` mode and defaults to `False`.
+| Option | Default | Description |
+|--------|---------|-------------|
+| `--mode` | `none` | `none` (current env), `env` (auto-creates a virtualenv), `container` (Docker) |
+| `--grpc` | off | Standalone gRPC server — no Clarifai login required |
+| `--port` | 8000 | Server port (with `--grpc`) |
+| `--concurrency` | 32 | Max concurrent requests (equivalent to `--pool_size`) |
+| `--keep-image` | off | Keep Docker image after exit (container mode only) |
+| `-v, --verbose` | off | Show detailed logs (useful for debugging toolkit servers like [Ollama](https://docs.clarifai.com/compute/toolkits/ollama/)) |
 
 :::
+
+#### Standalone gRPC Mode
+
+For offline development without a Clarifai account, use `--grpc` to start a standalone gRPC server:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+
+```bash
+# Start standalone gRPC server (no login required)
+clarifai model serve ./my-model --grpc
+
+# Custom port
+clarifai model serve ./my-model --grpc --port 9000
+```
+
+</TabItem>
+</Tabs>
+
+This is useful for quick local testing and debugging without needing an internet connection or Clarifai credentials.
+
+#### Virtual Environment Mode
+
+Use `--mode env` to automatically create a virtualenv with the model's dependencies:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai model serve ./my-model --mode env</CodeBlock>
+</TabItem>
+</Tabs>
+
+This isolates the model's packages from your system Python, preventing dependency conflicts.
 
 
 If the runner doesn't detect the necessary [context configurations](#step-2-create-a-context-optional) in your environment, it will prompt you to create them using default values. 
