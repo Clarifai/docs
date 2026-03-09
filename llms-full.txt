@@ -32053,6 +32053,85 @@ We have a public roadmap that gives you a view of our upcoming plans and helps u
 
 ---
 
+## Release 12.2
+
+# Release 12.2
+
+**Release Date:** March 5th, 2026
+
+| New Feature | Improvement | Bug Fix | Enterprise Only |
+| :---: | :---: | :---: | :---: |
+| ![new-feature](/img/new_feature.jpg) |![improvement](/img/improvement.jpg) | ![bug](/img/bug.jpg) | ![enterprise](/img/enterprise.jpg) |
+
+## Clarifai CLI
+
+|Status                                |Change |Details|
+|--------------------------------------|------------------------|---------------------------|
+| ![improvement](/img/improvement.jpg) | Streamlined model-to-production workflow |  Introduced a streamlined 3-command workflow (`model init` → `model serve` → `model deploy`) to take models from scaffold to production in minutes. Learn how to get started quickly [here](https://docs.clarifai.com/getting-started/upload-model).Unified deployment into a single `model deploy` command with automatic infrastructure provisioning.Added structured deployment phases with progress indicators and next steps.|
+| ![improvement](/img/improvement.jpg) | Deployment lifecycle management | Added `model status`, `model logs`, and `model undeploy` commands.Introduced direct `deployment` commands for managing deployments by ID.Maintained backward compatibility with legacy flags and configs.|
+| ![improvement](/img/improvement.jpg) | Intelligent infrastructure & instance handling | Added GPU auto-selection based on model VRAM and toolkit requirements.Enabled multi-cloud instance discovery with GPU shorthands and legacy normalization.Added custom Docker base image support for faster toolkit builds.|
+| ![improvement](/img/improvement.jpg) | Enhanced local development & runners | Enhanced `model serve` with env, Docker, and standalone gRPC modes.Added concurrency controls and optional Docker image retention.Added health-check configuration for the `clarifai model local-runner` via `--health-check-port`, `--disable-health-check`, and `--auto-find-health-check-port` flags.|
+| ![improvement](/img/improvement.jpg) | Authentication & context Management |  Improved authentication with interactive/non-interactive [`login`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-login) and flexible [`logout`](https://docs.clarifai.com/resources/api-overview/cli#clarifai-logout) options.  Added named CLI contexts with `--context` overrides.Expanded `whoami` with profile inspection, org listing, and JSON output.|
+| ![improvement](/img/improvement.jpg) | Model & app management enhancements | Enhanced `model predict` with streaming auto-detection, method inference, JSON output, and deployment routing.Implemented early HuggingFace gated-model validation with actionable errors.Added full CRUD support for apps with convenient command aliases.|
+| ![improvement](/img/improvement.jpg) | Configuration & performance improvements | Simplified `config.yaml` with automatic normalization and smart defaults.Improved CLI startup performance through lazy module loading.Improved output formatting with clickable URLs, structured sections, and command hints.|
+
+## Pipelines 
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| [Public Preview](https://docs.clarifai.com/product-updates/changelog/release-types#release-types) | Introduced Training on Pipelines to align training workflows with production-grade deployment and scalable infrastructure |    Introduced support for initializing pipelines using templates — including training templates — directly via the CLI.   Launched a new UI experience for training models seamlessly within pipelines.  _**Note:** Training on Pipelines enables training of models fully compatible with the Clarifai Compute Orchestration platform. It also allows training to leverage dedicated provisioned compute resources._|
+|  ![improvement](/img/improvement.jpg) | Made improvements to pipeline steps |   Enhanced the `pipeline step init` command to include a `visibility` field.   Users can now set pipeline steps to be publicly visible during initialization through both the CLI and builder APIs. By default, pipelines and pipeline step templates are created with `PRIVATE` visibility. |
+
+## Artifacts
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![improvement](/img/improvement.jpg)| Made improvements to provide users with full control over artifact lifecycle management|   Artifacts no longer expire automatically by default.   Artifacts are only deleted if an `expires_at` value is explicitly set at upload time.  The CLI now displays the `latest-version-id` alongside artifact visibility for easier version management and referencing. |
+
+## Playground
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+|  ![improvement](/img/improvement.jpg)| Made Playground improvements|    Enhanced the Playground with major upgrades to the Universal Search experience, including multi-panel (compare mode) support, improved workspace handling, and smarter model auto-selection.  Model selections are now panel-aware to prevent cross-panel conflicts, workspace context is more robust and explicit, and the UI can optionally display simplified model names for a cleaner experience. |
+
+## Video Intelligence
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+|  ![new-feature](/img/new_feature.jpg)| Added support for video intelligence via the UI|   You can now connect video streams to your application and apply AI analysis to detect objects, track movement, and generate insights.  |
+
+## Deployments
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![improvement](/img/improvement.jpg) | Made various improvements to deployments  |   Dynamic nodepool routing now allows multiple nodepools to be attached to a single deployment, with configurable scheduling strategies.   Deployment visibility has been improved with the introduction of status chips and enhanced list views across Deployments, Nodepools, and Clusters.  DigitalOcean and Azure have been added as supported cloud instance providers.   Support has been added for explicitly starting and stopping deployments, enabling users to preserve configurations without deleting and recreating deployments.  A redesigned Deployment details page has been introduced, with expanded status visibility across tables and the Playground.   |
+
+## Platform
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![improvement](/img/improvement.jpg) | Made various improvements to the platform |   A new Model Library UI has been launched to provide a more streamlined experience for browsing and exploring models.  Several platform UX enhancements were introduced, including adding Universal Search to the navbar and refreshing user listing pages.  Introduced a new account experience.  Rolled out a new Home 3.0 interface. |
+
+##  Modules 
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| **Deprecation** | Removed modules |   Modules previously extended Clarifai’s UIs and enabled customized backend processing.    Support for Modules has now been fully dropped, and all associated module components have been removed from the platform.    |
+
+## Models
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![improvement](/img/improvement.jpg) | Introduced new features and enhancements to improve model management|   Added OpenAI handler support for fetching featured models directly by model ID.     Introduced stream cancellation support.  Added model admission control hooks.   Enabled graceful rollovers between model versions during deployment.  Fixed an issue where `PatchNodepools` overwrote the maximum instance count.  Fixed an issue where deployments reused outdated compute information.  Updated the API to report live deployment replica counts and nodepool node counts.  Improved error responses for clearer diagnostics.   Delivered general performance improvements. |
+
+## Python SDK
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+|  ![improvement](/img/improvement.jpg)|Improved the Python SDK   Learn more [here](https://github.com/Clarifai/clarifai-python/blob/master/CHANGELOG.md)  |  Prevented environment variable clobbering in tests by using `@patch.dict` and correcting patch paths after the lazy-loading refactor.Fixed the ModelRunner health server starting twice, which could cause “Address already in use” errors; added support to disable the health server and automatically select an available port.Reduced overhead in the ModelRunner admission-control polling loop to improve runner efficiency.  Fixed a serializer regression affecting runner serialization utilities.Added admission-control support for model runners.Added `openai` as a core dependency. Removed the `inference_compute_info` requirement for local model runners. Relaxed the `clarifai-protocol` version constraint from `==0.0.35` to `>=0.0.35, Resolved dependency version-constraint issues.Fixed authentication issues in the model deployment CLI.Added support for passing `num_threads` from `config.yaml` into the model version protobuf.Switched Dockerfile templates to use `tini` as the default entrypoint to improve signal handling and zombie process reaping in runner containers.Refactored the Stdio Model Context Protocol (MCP) server to improve logging clarity and remove unused legacy code.|
+
+---
+
 ## Release 5.10
 
 # Release 5.10
