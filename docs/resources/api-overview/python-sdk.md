@@ -91,5 +91,5 @@ Below are the minimum system requirements for different operating systems.
     - macOS: Apple Silicon only (M1, M2, M3, …)
 - **Memory**: Minimum 2 GB RAM (4 GB or more is recommended)
 - **Disk Space**: At least 200 MB free storage for installation and dependencies
-- **GPU**: Not required. However, for more intensive tasks, you may need access to a GPU. We provide various [GPU options](https://docs.clarifai.com/compute/deployments/cloud-instances) (e.g., NVIDIA A100, L40S) through our cloud compute services. These resources are managed on our platform, not on your local machine. 
+- **GPU**: Not required. However, for more intensive tasks, you may need access to a GPU. We provide various [GPU options](https://docs.clarifai.com/compute/cloud-instances) (e.g., NVIDIA A100, L40S) through our cloud compute services. These resources are managed on our platform, not on your local machine. 
 

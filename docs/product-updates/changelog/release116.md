@@ -30,7 +30,7 @@ draft: false
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
-|![new-feature](/img/new_feature.jpg) |  Added support for AMD and Oracle [instances](https://docs.clarifai.com/compute/deployments/cloud-instances) | <ul> <li> You can now deploy models using AMD-based compute and Oracle Cloud infrastructure, giving you more flexibility in performance and cost options.</li> </ul>  |
+|![new-feature](/img/new_feature.jpg) |  Added support for AMD and Oracle [instances](https://docs.clarifai.com/compute/cloud-instances) | <ul> <li> You can now deploy models using AMD-based compute and Oracle Cloud infrastructure, giving you more flexibility in performance and cost options.</li> </ul>  |
 
 ##  Token-Based Billing
 

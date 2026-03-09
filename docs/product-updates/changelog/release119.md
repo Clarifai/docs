@@ -42,7 +42,7 @@ draft: false
 
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
-| ![new-feature](/img/new_feature.jpg)| Added new Vultr [cloud instances](https://docs.clarifai.com/compute/deployments/cloud-instances)   | <ul> <li> Introduced competitively priced B200 instances operating from Seattle and GH200 instances powered by Vultr. </li> </ul>  |
+| ![new-feature](/img/new_feature.jpg)| Added new Vultr [cloud instances](https://docs.clarifai.com/compute/cloud-instances)   | <ul> <li> Introduced competitively priced B200 instances operating from Seattle and GH200 instances powered by Vultr. </li> </ul>  |
 
 ## Platform
 

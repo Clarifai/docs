@@ -5,22 +5,17 @@ from clarifai.runners.utils.data_utils import Param
 from clarifai.runners.utils.openai_convertor import build_openai_messages
 
 class MyModel(OpenAIModelClass):
-    """A custom model implementation using OpenAIModelClass."""
+    """Wraps an OpenAI-compatible API endpoint."""
 
-    # TODO: please fill in
-    # Configure your OpenAI-compatible client for local model
     client = OpenAI(
-        api_key="local-key",  # TODO: please fill in - use your local API key
-        base_url="http://localhost:8000/v1",  # TODO: please fill in - your local model server endpoint
+        api_key="local-key",
+        base_url="http://localhost:8000/v1",
     )
 
-    # Automatically get the first available model
     model = client.models.list().data[0].id
 
     def load_model(self):
-        """Optional: Add any additional model loading logic here."""
-        # TODO: please fill in (optional)
-        # Add any initialization logic if needed
+        """Optional initialization logic."""
         pass
 
     @OpenAIModelClass.method
@@ -28,13 +23,11 @@ class MyModel(OpenAIModelClass):
         self,
         prompt: str = "",
         chat_history: List[dict] = None,
-        max_tokens: int = Param(default=256, description="The maximum number of tokens to generate. Shorter token lengths will provide faster performance."),
-        temperature: float = Param(default=1.0, description="A decimal number that determines the degree of randomness in the response"),
-        top_p: float = Param(default=1.0, description="An alternative to sampling with temperature, where the model considers the results of the tokens with top_p probability mass."),
+        max_tokens: int = Param(default=256, description="The maximum number of tokens to generate."),
+        temperature: float = Param(default=1.0, description="Sampling temperature (higher = more random)."),
+        top_p: float = Param(default=1.0, description="Nucleus sampling threshold."),
     ) -> str:
-        """Run a single prompt completion using the OpenAI client."""
-        # TODO: please fill in
-        # Implement your prediction logic here
+        """Run a single prompt completion."""
         messages = build_openai_messages(prompt, chat_history)
         response = self.client.chat.completions.create(
             model=self.model,
@@ -50,13 +43,11 @@ class MyModel(OpenAIModelClass):
         self,
         prompt: str = "",
         chat_history: List[dict] = None,
-        max_tokens: int = Param(default=256, description="The maximum number of tokens to generate. Shorter token lengths will provide faster performance."),
-        temperature: float = Param(default=1.0, description="A decimal number that determines the degree of randomness in the response"),
-        top_p: float = Param(default=1.0, description="An alternative to sampling with temperature, where the model considers the results of the tokens with top_p probability mass."),
+        max_tokens: int = Param(default=256, description="The maximum number of tokens to generate."),
+        temperature: float = Param(default=1.0, description="Sampling temperature (higher = more random)."),
+        top_p: float = Param(default=1.0, description="Nucleus sampling threshold."),
     ) -> Iterator[str]:
-        """Stream a completion response using the OpenAI client."""
-        # TODO: please fill in
-        # Implement your streaming logic here
+        """Stream a completion response."""
         messages = build_openai_messages(prompt, chat_history)
         stream = self.client.chat.completions.create(
             model=self.model,

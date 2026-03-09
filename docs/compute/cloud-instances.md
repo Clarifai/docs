@@ -1,6 +1,6 @@
 ---
 description: Learn about the instance types we support
-sidebar_position: 5
+sidebar_position: 2
 ---
 
 # Supported Cloud Instances
@@ -19,15 +19,13 @@ sidebar_position: 5
 
 We offer a range of instance types designed to handle a variety of machine learning workloads. These cloud instances vary in their CPU, RAM (Random Access Memory), and GPU configurations, which allow you to orchestrate the right balance of performance and cost for your use case.
 
-The instances listed on this page are available **on demand** — they can be provisioned immediately when you create a nodepool. Clarifai also offers additional GPU types (including AWS H100s and others) that are not automatically provisioned but are available on request.
+The instances listed on this page are available **on demand** — they can be provisioned immediately when you create a nodepool. Clarifai also offers the latest NVIDIA, AMD, and Google accelerators (including B300, B200, H100, MI355X, and TPU v7) that require reservations and are available on request.
 
 :::info
 
 - See the [pricing page](https://www.clarifai.com/pricing) to learn more about pricing for each instance type.
 
 - [Contact us](https://www.clarifai.com/explore/contact-us) to access GPU types not listed here, including instances that require dedicated provisioning.
-
-- You can also browse available instances programmatically using the CLI: `clarifai list-instances` (with optional `--cloud`, `--gpu`, `--min-gpu-mem` filters). See the [CLI reference](https://docs.clarifai.com/resources/api-overview/cli#clarifai-list-instances) for details.
 
 :::
 
@@ -58,9 +56,9 @@ The AWS G7E series provides the latest generation of high-performance NVIDIA RTX
 - Fine-tuning or running inference on large language models that require more than 48 GiB of GPU memory per card (e.g., 70B+ parameter models on a single GPU).
 - Multi-GPU distributed training of foundation models where high per-GPU memory is critical.
 
-:::tip Looking for AWS H100s?
+:::tip Looking for the latest GPUs or TPUs?
 
-AWS H100 instances (p5 family) and other high-demand GPU types are available on request and are not automatically provisioned. [Contact us](https://www.clarifai.com/explore/contact-us) to discuss availability.
+The newest accelerators — including **NVIDIA B300, B200, H100**, **AMD MI355X, MI300X**, and **Google TPU v7** — are available with reservations and are not automatically provisioned on demand. [Contact us](https://www.clarifai.com/explore/contact-us) to discuss availability and reserve capacity.
 
 :::
 
