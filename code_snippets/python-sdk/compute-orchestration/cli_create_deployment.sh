@@ -1,1 +1,0 @@
-clarifai deployment create NODEPOOL_ID DEPLOYMENT_ID --config DEPLOYMENT-CONFIG-FILEPATH
