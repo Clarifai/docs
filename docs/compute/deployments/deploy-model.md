@@ -34,6 +34,18 @@ import OutputCURLRestrictDeployment from "!!raw-loader!../../../code_snippets/py
 
 import Curl1 from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/curl_deployment.sh";
 
+import CLIDeployModel from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/cli_deploy_model.sh";
+import CLIDeployUrl from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/cli_deploy_url.sh";
+import CLIDeployCloud from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/cli_deploy_cloud.sh";
+import CLIDeployAutoscale from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/cli_deploy_autoscale.sh";
+import CLIDeployAdvanced from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/cli_deploy_advanced.sh";
+import CLIDeployVerbose from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/cli_deploy_verbose.sh";
+import CLIDeployVersion from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/cli_deploy_version.sh";
+import CLIModelStatus from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/cli_model_status.sh";
+import CLIModelLogs from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/cli_model_logs.sh";
+import CLIModelUndeploy from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/cli_model_undeploy.sh";
+import CLIListInstances from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/cli_list_instances.sh";
+
 
 
 ## **Via the UI**
@@ -185,7 +197,16 @@ Once the deployment is created, you’ll be redirected to the nodepool page, whe
 
 ## **Via the CLI**
 
-The Clarifai CLI provides a one-command deployment workflow that handles all infrastructure creation automatically. No need to manually create clusters or nodepools first.
+The Clarifai CLI provides a one-command deployment workflow — `clarifai model deploy` — that handles uploading, infrastructure creation, and deployment automatically. No need to manually create clusters or nodepools first.
+
+:::info Prerequisites
+
+Before deploying, make sure you have:
+- The `clarifai` Python package installed (`pip install --upgrade clarifai`)
+- Logged in via `clarifai login` (or have `CLARIFAI_PAT` set)
+- A model directory with `config.yaml`, `1/model.py`, and `requirements.txt` — or a model already uploaded to Clarifai
+
+:::
 
 ### One-Command Deploy
 
@@ -193,100 +214,204 @@ Deploy a local model directory to the cloud in a single step:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-
-```bash
-clarifai model deploy ./my-model --instance g5.xlarge
-```
-
+    <CodeBlock className="language-bash">{CLIDeployModel}</CodeBlock>
 </TabItem>
 </Tabs>
 
-This uploads your model, creates a compute cluster and nodepool, deploys the model, and monitors until it's ready.
+This single command orchestrates the full deployment pipeline:
+
+1. **Validate** — checks `config.yaml`, verifies checkpoint sources (e.g., HuggingFace repo accessibility), and resolves the instance type
+2. **Upload** — builds a Docker image from your model directory and pushes it to Clarifai
+3. **Deploy** — auto-creates a compute cluster and nodepool (if they don't already exist), then creates a deployment
+4. **Monitor** — streams pod events in real-time until the model is ready for inference
+
+When it finishes, you'll see output like:
+
+```text
+── Ready ──────────────────────────────────────────────
+  Model deployed successfully!
+
+  Model:           https://clarifai.com/your-user/main/models/my-model
+  Version:         abc12345
+  Deployment:      deploy-my-model-dd8481
+  Instance:        g5.xlarge
+  Cloud:           AWS / us-east-1
+
+══════════════════════════════════════════════════════
+# Here is a code snippet to use this model:
+══════════════════════════════════════════════════════
+  ...Python SDK predict code...
+══════════════════════════════════════════════════════
+
+── Next Steps ─────────────────────────────────────────
+  Predict:         clarifai model predict your-user/main/models/my-model "Hello"
+  Playground:      https://clarifai.com/playground?model=my-model__abc12345&...
+  Logs:            clarifai model logs --deployment "deploy-my-model-dd8481"
+  Status:          clarifai model status --deployment "deploy-my-model-dd8481"
+  Undeploy:        clarifai model undeploy --deployment "deploy-my-model-dd8481"
+```
+
+> **Tip:** Copy the predict command directly from the output — it contains your actual user ID and deployment ID.
 
 ### Deploy an Already-Uploaded Model
 
-If your model is already uploaded to Clarifai, deploy it by URL:
+If your model is already uploaded to Clarifai, deploy it by URL (skips the upload phase):
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">{CLIDeployUrl}</CodeBlock>
+</TabItem>
+</Tabs>
 
-```bash
-clarifai model deploy --model-url https://clarifai.com/user/app/models/my-model --instance g5.xlarge
-```
+To deploy a specific version rather than the latest:
 
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">{CLIDeployVersion}</CodeBlock>
 </TabItem>
 </Tabs>
 
 ### Browse Available Instances
 
-View all available hardware configurations using the dedicated `list-instances` command:
+Before deploying, you can view all available hardware configurations using the `list-instances` command:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">{CLIListInstances}</CodeBlock>
+</TabItem>
+</Tabs>
 
-```bash
-# List all available instances
-clarifai list-instances
+> **Alias:** `clarifai li` is a shorthand for `clarifai list-instances`.
 
-# Filter by cloud provider
-clarifai list-instances --cloud aws
+The output shows instance type IDs, GPU names, GPU memory, CPU cores, cloud provider, and region — helping you choose the right hardware for your model.
 
-# Filter by GPU type
-clarifai list-instances --gpu L40S
+### Multi-Cloud Deployment
 
-# Or use the deploy flag shortcut
-clarifai model deploy --instance-info
-clarifai model deploy --instance-info --cloud aws
-```
+Clarifai supports deployment across AWS, GCP, and Vultr. By default, the cloud provider and region are **auto-detected** from the `--instance` type. You can override this explicitly:
 
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">{CLIDeployCloud}</CodeBlock>
 </TabItem>
 </Tabs>
 
 ### Override Instance Type
 
-If your `config.yaml` already has a `compute.instance` value (auto-selected during `model init`), you can override it at deploy time. The `--instance` flag **always takes priority** over the config:
-
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
+If your `config.yaml` already has a `compute.instance` value (auto-selected during `clarifai model init`), you can override it at deploy time. The `--instance` flag **always takes priority** over the config:
 
 ```bash
-# config.yaml has compute.instance: g5.xlarge, but deploy with a larger GPU
-clarifai model deploy ./my-model --instance g6e.2xlarge
+# config.yaml has compute.instance: g4dn.xlarge, but deploy with a larger GPU
+clarifai model deploy ./my-model --instance g5.xlarge
 ```
-
-</TabItem>
-</Tabs>
 
 ### Autoscaling
 
-Control how your deployment scales:
+Control how your deployment scales with minimum and maximum replica counts:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-
-```bash
-clarifai model deploy ./my-model --instance g5.xlarge --min-replicas 2 --max-replicas 10
-```
-
+    <CodeBlock className="language-bash">{CLIDeployAutoscale}</CodeBlock>
 </TabItem>
 </Tabs>
 
+| Flag | Default | Description |
+|------|---------|-------------|
+| `--min-replicas` | `1` | Minimum number of running replicas. Set higher for production workloads to avoid cold starts. |
+| `--max-replicas` | `5` | Maximum replicas for autoscaling. The platform scales up automatically based on traffic. |
+
+> For advanced autoscaling settings (scale-to-zero, delay timers, traffic history), use the [UI deployment flow](#via-the-ui) or the [API](#via-the-api).
+
+### Verbose Mode
+
+For debugging or visibility into the full deployment pipeline, use the `--verbose` flag:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">{CLIDeployVerbose}</CodeBlock>
+</TabItem>
+</Tabs>
+
+This shows detailed Docker build logs, upload progress, and all Kubernetes pod events (including transient scheduling events that are hidden by default).
+
+### Advanced: Use Existing Infrastructure
+
+If you've already created a compute cluster and nodepool (via the UI or API), you can deploy directly into them without auto-creation:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">{CLIDeployAdvanced}</CodeBlock>
+</TabItem>
+</Tabs>
+
+### CLI Reference
+
+Here is the full list of flags for `clarifai model deploy`:
+
+| Flag | Type | Default | Description |
+|------|------|---------|-------------|
+| `MODEL_PATH` | argument | `.` (current dir) | Local model directory to upload and deploy. Not needed when using `--model-url`. |
+| `--instance` | string | from config | Hardware instance type (e.g., `g5.xlarge`). Use `clarifai list-instances` to see options. |
+| `--model-url` | string | — | Clarifai model URL to deploy (skips upload). |
+| `--model-version-id` | string | latest | Specific model version to deploy. |
+| `--min-replicas` | int | `1` | Minimum number of running replicas. |
+| `--max-replicas` | int | `5` | Maximum replicas for autoscaling. |
+| `--cloud` | string | auto | Cloud provider (`aws`, `gcp`, `vultr`). Auto-detected from instance if omitted. |
+| `--region` | string | auto | Cloud region (e.g., `us-east-1`). Auto-detected from instance if omitted. |
+| `--compute-cluster-id` | string | — | [Advanced] Existing compute cluster ID (skips auto-creation). |
+| `--nodepool-id` | string | — | [Advanced] Existing nodepool ID (skips auto-creation). |
+| `--verbose` / `-v` | flag | off | Show detailed build, upload, and deployment logs. |
+
+---
+
 ### Lifecycle Management
 
-After deployment, use these commands to manage it:
+After deployment, the CLI provides commands to monitor, debug, and manage your deployed models.
 
-```bash
-# Check status
-clarifai model status --deployment <deployment-id>
+#### Check Deployment Status
 
-# Stream logs
-clarifai model logs --deployment <deployment-id>
+View the current state of a deployment — including enabled/disabled status, live and desired replica counts, instance type, GPU info, and timing:
 
-# Remove deployment
-clarifai model undeploy --deployment <deployment-id>
-```
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">{CLIModelStatus}</CodeBlock>
+</TabItem>
+</Tabs>
 
-For the full options reference, see the [CLI Reference](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-deploy).
+#### Stream Logs
+
+Stream stdout/stderr from the runner pod — useful for monitoring model loading, inference, and debugging errors:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">{CLIModelLogs}</CodeBlock>
+</TabItem>
+</Tabs>
+
+| Flag | Default | Description |
+|------|---------|-------------|
+| `--log-type` | `model` | Log type: `model` (stdout/stderr) or `events` (Kubernetes scheduling/scaling events). |
+| `--follow` / `--no-follow` | `--follow` | Continuously tail new logs. Use `--no-follow` to print and exit. |
+| `--duration` | unlimited | Stop after N seconds. Press Ctrl+C to stop if not set. |
+
+> **Tip:** Use `--log-type events` when your pod is stuck starting — it shows Kubernetes scheduling, image pulling, and scaling events that explain why a pod hasn't started yet.
+
+#### Remove a Deployment
+
+Permanently stop serving the model and delete the deployment. The model version and compute infrastructure remain intact — you can re-deploy at any time:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">{CLIModelUndeploy}</CodeBlock>
+</TabItem>
+</Tabs>
+
+:::warning
+
+Removing a deployment stops all inference on that model immediately. Any in-flight requests will fail. Make sure to redirect traffic before undeploying production models.
+
+:::
+
+For the full CLI reference, see the [CLI documentation](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-deploy).
 
 ## **Via the API**
 
