@@ -193,6 +193,12 @@ The following example demonstrates a simple tool-calling interaction. It simulat
 
 The [OpenAI Chat Completions](https://platform.openai.com/docs/api-reference/chat) API endpoint enables you to generate a model response by providing a list of messages that constitute a conversation.
 
+:::note Supported Message Roles
+
+Clarifai's LLM endpoint supports the following message roles: `system`, `user`, `assistant`, `developer`, and `tool`. The `developer` role is used for developer-level instructions (similar to `system`), while `tool` is used for passing back the results of tool calls during agentic interactions.
+
+:::
+
 ### Text Inputs
 
 <Tabs groupId="code">

@@ -165,6 +165,13 @@ You must define it by subclassing Clarifai's `MCPModelClass` and implementing th
 
 When Clarifai runs the model, it calls `get_server()` to load your MCP server and expose its defined tools and capabilities to LLMs or other agents.
 
+:::tip Alternative MCP base classes
+
+- **`StdioMCPModelClass`** — Use this when wrapping an existing stdio-based MCP server (e.g., an open-source server launched as a subprocess). See [Deploy Open-Source MCP Servers](deploy-mcp.md) for a full walkthrough.
+- **`AgenticModelClass`** — Use this when building an LLM-based model that should autonomously discover and call MCP tools during inference. See the agentic model section in [Deploy Open-Source MCP Servers](deploy-mcp.md#get-an-agentic-model) for details.
+
+:::
+
 ### Step 3: Prepare `config.yaml` File
 
 The `config.yaml` file is used to configure the build and deployment settings for a custom model on the Clarifai platform. It tells Clarifai how to build your model's environment and where to place it within your account.

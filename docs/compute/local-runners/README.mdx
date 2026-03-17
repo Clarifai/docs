@@ -231,6 +231,9 @@ Or with a specific model path:
 | `--port` | 8000 | Server port (with `--grpc`) |
 | `--concurrency` | 32 | Max concurrent requests (equivalent to `--pool_size`) |
 | `--keep-image` | off | Keep Docker image after exit (container mode only) |
+| `--health-check-port` | auto | Port for the health check HTTP server |
+| `--disable-health-check` | off | Disable the health check server entirely |
+| `--auto-find-health-check-port` | off | Automatically find an available port if the default is in use |
 | `-v, --verbose` | off | Show detailed logs (useful for debugging toolkit servers like [Ollama](https://docs.clarifai.com/compute/toolkits/ollama/)) |
 
 :::
