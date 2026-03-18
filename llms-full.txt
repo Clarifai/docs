@@ -295,6 +295,8 @@ With MCP server integration, an agentic model can iteratively discover tools, ex
 > * Compatibility with the OpenAI-compatible API and Clarifai SDKs
 > * Support for both streaming and non-streaming modes
 >
+> The `AgenticModelClass` manages the full agentic loop: it discovers available MCP tools at model load time, injects them into the LLM context, and iteratively calls tools and feeds results back to the model until a final response is produced.
+>
 > You can see an example implementation of `AgenticModelClass` in [this `1/model.py`](https://github.com/Clarifai/runners-examples/blob/main/llm/agentic-gpt-oss-20b/1/model.py) file.
 
 :::tip
@@ -389,10 +391,12 @@ The `StdioMCPModelClass` abstracts away the complexity of managing stdio-based M
 
 Specifically, `StdioMCPModelClass` automatically:
 
-* Starts the MCP server as a stdio process
-* Discovers all available MCP tools
+* Starts the MCP server as a single long-lived stdio process (e.g., a Node.js or Python subprocess) during `load_model()`
+* Opens a persistent FastMCP client session that is reused for all subsequent requests, reducing per-request overhead
+* Discovers all available MCP tools at startup
 * Exposes the tools through an HTTP API
 * Handles tool execution and response formatting
+* Supports configuration via YAML, including environment variables and injected secrets
 
 This makes it easy to deploy open-source MCP servers on Clarifai with minimal code.
 
@@ -774,6 +778,13 @@ The custom-named model class serves as the integration point between your MCP se
 You must define it by subclassing Clarifai's `MCPModelClass` and implementing the `get_server()` method. This method returns the `FastMCP` server instance (such as `server`) that Clarifai should use when running your model.
 
 When Clarifai runs the model, it calls `get_server()` to load your MCP server and expose its defined tools and capabilities to LLMs or other agents.
+
+:::tip Alternative MCP base classes
+
+- **`StdioMCPModelClass`** — Use this when wrapping an existing stdio-based MCP server (e.g., an open-source server launched as a subprocess). See [Deploy Open-Source MCP Servers](deploy-mcp.md) for a full walkthrough.
+- **`AgenticModelClass`** — Use this when building an LLM-based model that should autonomously discover and call MCP tools during inference. See the agentic model section in [Deploy Open-Source MCP Servers](deploy-mcp.md#get-an-agentic-model) for details.
+
+:::
 
 ### Step 3: Prepare `config.yaml` File
 
@@ -5408,6 +5419,12 @@ The following example demonstrates a simple tool-calling interaction. It simulat
 
 The [OpenAI Chat Completions](https://platform.openai.com/docs/api-reference/chat) API endpoint enables you to generate a model response by providing a list of messages that constitute a conversation.
 
+:::note Supported Message Roles
+
+Clarifai's LLM endpoint supports the following message roles: `system`, `user`, `assistant`, `developer`, and `tool`. The `developer` role is used for developer-level instructions (similar to `system`), while `tool` is used for passing back the results of tool calls during agentic interactions.
+
+:::
+
 ### Text Inputs
 
     {PyOpenAI}
@@ -5991,6 +6008,9 @@ Or with a specific model path:
 | `--port` | 8000 | Server port (with `--grpc`) |
 | `--concurrency` | 32 | Max concurrent requests (equivalent to `--pool_size`) |
 | `--keep-image` | off | Keep Docker image after exit (container mode only) |
+| `--health-check-port` | auto | Port for the health check HTTP server |
+| `--disable-health-check` | off | Disable the health check server entirely |
+| `--auto-find-health-check-port` | off | Automatically find an available port if the default is in use |
 | `-v, --verbose` | off | Show detailed logs (useful for debugging toolkit servers like [Ollama](https://docs.clarifai.com/compute/toolkits/ollama/)) |
 
 :::
@@ -6320,9 +6340,10 @@ Run the following command to create a new pipeline project in your current direc
 
     clarifai pipeline init
 
-> **Note:** 
+> **Note:**
 > - You can initialize a project in a specific location by providing a `PIPELINE_PATH`. For example, running `clarifai pipeline init ` creates a new directory named `` and populates it with all the required pipeline project files.
 > - You can shorten `pipeline` to `pl` when running pipeline commands. For example: `clarifai pl init`.
+> - By default, `clarifai pipeline init` fetches templates from the official Clarifai pipeline templates repository. To point to a custom or private template repository, set the `CLARIFAI_PIPELINE_TEMPLATES_GIT_REPO_URL` environment variable to your repository URL before running the command.
 
 After running the command, you’ll be prompted to provide the following details:
 
@@ -6424,6 +6445,8 @@ This section tells Clarifai which folders in your project represent pipeline ste
 The execution order is stipulated by the Argo Workflow Definition, as explained below.
 
 Each listed directory corresponds to one pipeline step created during initialization. As mentioned [earlier](#pipeline-steps), each step contains its own `config.yaml`, `requirements.txt`, and executable logic, allowing steps to be configured and maintained independently.
+
+> **Note:** `step_directories` is optional when all `templateRef` entries in the Argo Workflow Definition already include a pinned version ID. In that case, Clarifai resolves the step implementations directly from those versioned references and does not need to upload local step directories. This is useful when the pipeline steps are already deployed to the platform and you only need to update or re-upload the pipeline definition itself.
 
 #### Argo Workflow Definition
 
@@ -8083,6 +8106,7 @@ These are some parameters you can define:
 - **`num_accelerators`** – Number of GPUs or TPUs to use for inference.
 - **`accelerator_type`** – Specifies the type of hardware [accelerators](https://docs.clarifai.com/compute/cloud-instances/) (e.g., GPU or TPU) supported by the model (e.g., "NVIDIA-A10G"). _Note that instead of specifying an exact accelerator type, you can use a wildcard `(*)` to automatically match all available accelerators that fit your use case. For example, using `["NVIDIA-*"]` will enable the system to choose from all NVIDIA options compatible with your model._
 - **`accelerator_memory`** – Minimum memory required for the GPU or TPU.
+- **`num_threads`** – Number of threads allocated to the model runner container. Useful for CPU-bound models where controlling thread concurrency improves performance or prevents resource contention.
 
 #### Hugging Face Model Checkpoints  
 
@@ -8114,15 +8138,17 @@ Downloading checkpoints at `build` or `upload` time can significantly increase i
 
 #### Model Concepts or Labels
 
-This section is required if your model outputs concepts or labels and is not being directly loaded from Hugging Face. So, you must define a `concepts` section in the `config.yaml` file. 
+This section is required if your model outputs concepts or labels and is not being directly loaded from Hugging Face. So, you must define a `concepts` section in the `config.yaml` file.
 
 The following model types output concepts or labels:
 
 - `visual-classifier`
 - `visual-detector`
 - `visual-segmenter`
-- `text-classifier` 
+- `text-classifier`
 - `visual-keypointer`
+
+> **Note:** For `visual-classifier` and `visual-detector` models, you can now specify explicit concept IDs in `config.yaml` in addition to concept names. When concept IDs are defined, the platform uses them directly instead of auto-generating IDs from names. This ensures the concept IDs in your model's `output_info` match those returned in prediction outputs, preventing ID mismatches.
 
     {ModelConcepts}
 
@@ -37723,6 +37749,15 @@ Here is how you can open the configuration file of your current context for edit
 
 The `env` (or `get-env`) subcommand prints the environment variables that correspond to your active Clarifai context. It’s useful if you want to export these variables for use in other tools, scripts, or terminals.
 
+The context stores the following variables:
+
+| Variable | Description |
+|----------|-------------|
+| `CLARIFAI_API_BASE` | Base API URL (default: `https://api.clarifai.com`) |
+| `CLARIFAI_PAT` | Personal Access Token for authentication |
+| `CLARIFAI_USER_ID` | Your Clarifai user ID |
+| `CLARIFAI_HF_TOKEN` | Hugging Face access token for downloading gated or private model checkpoints |
+
    
 ```text
 Usage: clarifai config env [OPTIONS]
@@ -37751,6 +37786,7 @@ clarifai config env
 export CLARIFAI_API_BASE="https://api.clarifai.com"
 export CLARIFAI_PAT="XXXX"
 export CLARIFAI_USER_ID="XXXX"
+export CLARIFAI_HF_TOKEN="XXXX"
 ```
 
 > **Note:** For Unix-like systems, running `eval "$(clarifai config env)"` configures your current shell session by loading Clarifai-related environment variables directly from your active CLI configuration. This automatically sets up authentication for subsequent Clarifai commands or scripts run within that same session, eliminating the need to manually enter credentials. It's particularly useful for scripting where environment variables are preferred for authentication and for quickly setting up a terminal session with the correct Clarifai credentials. For Windows, you'd typically need to run `clarifai config env` first, copy the output, and then manually run the `set` commands it generates.
@@ -38007,6 +38043,8 @@ The `clarifai model init` command scaffolds a new Clarifai model project. The re
 
 If `MODEL_PATH` is not provided, the current directory is used. When `--model-name` is provided, a directory is automatically created using the model name.
 
+> **Note:** Running `clarifai model init` inside an existing model directory updates the files in place rather than creating a new subdirectory. This means you can safely re-run the command to refresh generated files without duplicating your project structure.
+
 ### Initialize With Toolkit (Recommended)
 
 The `--toolkit` flag selects a pre-configured inference framework. Combined with `--model-name`, this is the fastest way to get a model ready for local serving or cloud deployment.
@@ -38164,6 +38202,9 @@ clarifai model serve ./my-model --grpc --port 9000
 | `--port` | 8000 | Server port (with `--grpc`) |
 | `--concurrency` | 32 | Max concurrent requests |
 | `--keep-image` | off | Keep Docker image after exit (container mode) |
+| `--health-check-port` | auto | Port for the health check HTTP server |
+| `--disable-health-check` | off | Disable the health check server entirely |
+| `--auto-find-health-check-port` | off | Automatically find an available port if the default is in use |
 | `-v, --verbose` | off | Show detailed logs |
 
 ### How It Works

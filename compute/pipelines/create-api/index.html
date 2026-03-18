@@ -24,8 +24,8 @@
 <script src="https://cdn.amplitude.com/libs/analytics-browser-2.12.0-min.js.gz" defer="defer"></script>
 <script src="https://cdn.amplitude.com/libs/plugin-session-replay-browser-1.4.0-min.js.gz" defer="defer"></script>
 <script src="/scripts/amplitude.js" defer="defer"></script><link rel="stylesheet" href="/assets/css/styles.cd86c358.css">
-<script src="/assets/js/runtime~main.66ca6dab.js" defer="defer"></script>
-<script src="/assets/js/main.2725e8b8.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.d33723f0.js" defer="defer"></script>
+<script src="/assets/js/main.a0953830.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5W9P7GR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -68,6 +68,7 @@ If you’re creating a new account, a default application will be automatically 
 <ul>
 <li class="">You can initialize a project in a specific location by providing a <code>PIPELINE_PATH</code>. For example, running <code>clarifai pipeline init &lt;pipeline-name&gt;</code> creates a new directory named <code>&lt;pipeline-name&gt;</code> and populates it with all the required pipeline project files.</li>
 <li class="">You can shorten <code>pipeline</code> to <code>pl</code> when running pipeline commands. For example: <code>clarifai pl init</code>.</li>
+<li class="">By default, <code>clarifai pipeline init</code> fetches templates from the official Clarifai pipeline templates repository. To point to a custom or private template repository, set the <code>CLARIFAI_PIPELINE_TEMPLATES_GIT_REPO_URL</code> environment variable to your repository URL before running the command.</li>
 </ul>
 </blockquote>
 <p>After running the command, you’ll be prompted to provide the following details:</p>
@@ -110,6 +111,9 @@ If you’re creating a new account, a default application will be automatically 
 <p>This section tells Clarifai which folders in your project represent pipeline steps and how they should be ordered during execution.
 The execution order is stipulated by the Argo Workflow Definition, as explained below.</p>
 <p>Each listed directory corresponds to one pipeline step created during initialization. As mentioned <a href="#pipeline-steps" class="">earlier</a>, each step contains its own <code>config.yaml</code>, <code>requirements.txt</code>, and executable logic, allowing steps to be configured and maintained independently.</p>
+<blockquote>
+<p><strong>Note:</strong> <code>step_directories</code> is optional when all <code>templateRef</code> entries in the Argo Workflow Definition already include a pinned version ID. In that case, Clarifai resolves the step implementations directly from those versioned references and does not need to upload local step directories. This is useful when the pipeline steps are already deployed to the platform and you only need to update or re-upload the pipeline definition itself.</p>
+</blockquote>
 <h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="argo-workflow-definition">Argo Workflow Definition<a href="#argo-workflow-definition" class="hash-link" aria-label="Direct link to Argo Workflow Definition" title="Direct link to Argo Workflow Definition" translate="no">​</a></h4>
 <div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token key atrule">orchestration_spec</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">argo_orchestration_spec</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">|</span><span class="token scalar string" style="color:rgb(255, 121, 198)"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token scalar string" style="color:rgb(255, 121, 198)">    apiVersion: argoproj.io/v1alpha1</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token scalar string" style="color:rgb(255, 121, 198)">    kind: Workflow</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token scalar string" style="color:rgb(255, 121, 198)">    spec:</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token scalar string" style="color:rgb(255, 121, 198)">      entrypoint: sequence</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token scalar string" style="color:rgb(255, 121, 198)">      arguments:</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token scalar string" style="color:rgb(255, 121, 198)">        parameters:</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token scalar string" style="color:rgb(255, 121, 198)">          - name: input_text</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token scalar string" style="color:rgb(255, 121, 198)">            value: &quot;Input Text Here&quot;</span><br></span></code></pre></div></div>
 <p>This section is the control center of your pipeline. It defines how Clarifai uses Argo Workflows to orchestrate and execute your multi-step workflow as a DAG.</p>
