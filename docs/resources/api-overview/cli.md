@@ -720,6 +720,15 @@ Here is how you can open the configuration file of your current context for edit
 
 The `env` (or `get-env`) subcommand prints the environment variables that correspond to your active Clarifai context. It’s useful if you want to export these variables for use in other tools, scripts, or terminals.
 
+The context stores the following variables:
+
+| Variable | Description |
+|----------|-------------|
+| `CLARIFAI_API_BASE` | Base API URL (default: `https://api.clarifai.com`) |
+| `CLARIFAI_PAT` | Personal Access Token for authentication |
+| `CLARIFAI_USER_ID` | Your Clarifai user ID |
+| `CLARIFAI_HF_TOKEN` | Hugging Face access token for downloading gated or private model checkpoints |
+
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
    
@@ -764,6 +773,7 @@ clarifai config env
 export CLARIFAI_API_BASE="https://api.clarifai.com"
 export CLARIFAI_PAT="XXXX"
 export CLARIFAI_USER_ID="XXXX"
+export CLARIFAI_HF_TOKEN="XXXX"
 ```
 </details>
 
@@ -1141,6 +1151,8 @@ The `clarifai model init` command scaffolds a new Clarifai model project. The re
 
 If `MODEL_PATH` is not provided, the current directory is used. When `--model-name` is provided, a directory is automatically created using the model name.
 
+> **Note:** Running `clarifai model init` inside an existing model directory updates the files in place rather than creating a new subdirectory. This means you can safely re-run the command to refresh generated files without duplicating your project structure.
+
 ### Initialize With Toolkit (Recommended)
 
 The `--toolkit` flag selects a pre-configured inference framework. Combined with `--model-name`, this is the fastest way to get a model ready for local serving or cloud deployment.
@@ -1338,6 +1350,9 @@ clarifai model serve ./my-model --grpc --port 9000
 | `--port` | 8000 | Server port (with `--grpc`) |
 | `--concurrency` | 32 | Max concurrent requests |
 | `--keep-image` | off | Keep Docker image after exit (container mode) |
+| `--health-check-port` | auto | Port for the health check HTTP server |
+| `--disable-health-check` | off | Disable the health check server entirely |
+| `--auto-find-health-check-port` | off | Automatically find an available port if the default is in use |
 | `-v, --verbose` | off | Show detailed logs |
 
 ### How It Works

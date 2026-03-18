@@ -78,9 +78,10 @@ Run the following command to create a new pipeline project in your current direc
 </TabItem>
 </Tabs>
 
-> **Note:** 
+> **Note:**
 > - You can initialize a project in a specific location by providing a `PIPELINE_PATH`. For example, running `clarifai pipeline init <pipeline-name>` creates a new directory named `<pipeline-name>` and populates it with all the required pipeline project files.
 > - You can shorten `pipeline` to `pl` when running pipeline commands. For example: `clarifai pl init`.
+> - By default, `clarifai pipeline init` fetches templates from the official Clarifai pipeline templates repository. To point to a custom or private template repository, set the `CLARIFAI_PIPELINE_TEMPLATES_GIT_REPO_URL` environment variable to your repository URL before running the command.
 
 After running the command, you’ll be prompted to provide the following details:
 
@@ -187,6 +188,8 @@ This section tells Clarifai which folders in your project represent pipeline ste
 The execution order is stipulated by the Argo Workflow Definition, as explained below.
 
 Each listed directory corresponds to one pipeline step created during initialization. As mentioned [earlier](#pipeline-steps), each step contains its own `config.yaml`, `requirements.txt`, and executable logic, allowing steps to be configured and maintained independently.
+
+> **Note:** `step_directories` is optional when all `templateRef` entries in the Argo Workflow Definition already include a pinned version ID. In that case, Clarifai resolves the step implementations directly from those versioned references and does not need to upload local step directories. This is useful when the pipeline steps are already deployed to the platform and you only need to update or re-upload the pipeline definition itself.
 
 #### Argo Workflow Definition
 

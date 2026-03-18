@@ -53,6 +53,8 @@ With MCP server integration, an agentic model can iteratively discover tools, ex
 > * Compatibility with the OpenAI-compatible API and Clarifai SDKs
 > * Support for both streaming and non-streaming modes
 >
+> The `AgenticModelClass` manages the full agentic loop: it discovers available MCP tools at model load time, injects them into the LLM context, and iteratively calls tools and feeds results back to the model until a final response is produced.
+>
 > You can see an example implementation of `AgenticModelClass` in [this `1/model.py`](https://github.com/Clarifai/runners-examples/blob/main/llm/agentic-gpt-oss-20b/1/model.py) file.
 
 :::tip
@@ -164,10 +166,12 @@ The `StdioMCPModelClass` abstracts away the complexity of managing stdio-based M
 
 Specifically, `StdioMCPModelClass` automatically:
 
-* Starts the MCP server as a stdio process
-* Discovers all available MCP tools
+* Starts the MCP server as a single long-lived stdio process (e.g., a Node.js or Python subprocess) during `load_model()`
+* Opens a persistent FastMCP client session that is reused for all subsequent requests, reducing per-request overhead
+* Discovers all available MCP tools at startup
 * Exposes the tools through an HTTP API
 * Handles tool execution and response formatting
+* Supports configuration via YAML, including environment variables and injected secrets
 
 This makes it easy to deploy open-source MCP servers on Clarifai with minimal code.
 

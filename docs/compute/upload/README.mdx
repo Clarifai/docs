@@ -276,6 +276,7 @@ These are some parameters you can define:
 - **`num_accelerators`** – Number of GPUs or TPUs to use for inference.
 - **`accelerator_type`** – Specifies the type of hardware [accelerators](https://docs.clarifai.com/compute/cloud-instances/) (e.g., GPU or TPU) supported by the model (e.g., "NVIDIA-A10G"). _Note that instead of specifying an exact accelerator type, you can use a wildcard `(*)` to automatically match all available accelerators that fit your use case. For example, using `["NVIDIA-*"]` will enable the system to choose from all NVIDIA options compatible with your model._
 - **`accelerator_memory`** – Minimum memory required for the GPU or TPU.
+- **`num_threads`** – Number of threads allocated to the model runner container. Useful for CPU-bound models where controlling thread concurrency improves performance or prevents resource contention.
 
 #### Hugging Face Model Checkpoints  
 
@@ -312,15 +313,17 @@ Downloading checkpoints at `build` or `upload` time can significantly increase i
 
 #### Model Concepts or Labels
 
-This section is required if your model outputs concepts or labels and is not being directly loaded from Hugging Face. So, you must define a `concepts` section in the `config.yaml` file. 
+This section is required if your model outputs concepts or labels and is not being directly loaded from Hugging Face. So, you must define a `concepts` section in the `config.yaml` file.
 
 The following model types output concepts or labels:
 
 - `visual-classifier`
 - `visual-detector`
 - `visual-segmenter`
-- `text-classifier` 
+- `text-classifier`
 - `visual-keypointer`
+
+> **Note:** For `visual-classifier` and `visual-detector` models, you can now specify explicit concept IDs in `config.yaml` in addition to concept names. When concept IDs are defined, the platform uses them directly instead of auto-generating IDs from names. This ensures the concept IDs in your model's `output_info` match those returned in prediction outputs, preventing ID mismatches.
 
 <Tabs groupId="code">
 <TabItem value="yaml" label="YAML">
