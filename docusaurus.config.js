@@ -125,7 +125,7 @@ const config = {
               }, 
               {
                 label: "Postman API Reference",
-                href: "https://documenter.getpostman.com/view/30622694/2s9YkuZdro"
+                href: "https://documenter.getpostman.com/view/24309294/2sBXijHWuM"
               },
               {
                 label: "Swagger API Reference",
