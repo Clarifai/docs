@@ -13767,7 +13767,7 @@ You can upload directly to a specific artifact version by providing a version ID
 
 You can specify an expiration time using [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) format (e.g., `2026-12-31T23:59:59.999Z`)
 
-> **Note:** If no `expires-at` value is specified, the artifact version will automatically expire after 7 days by default.
+> **Note:** Artifacts do not expire by default. An artifact version is only deleted if an `expires_at` value is explicitly set at upload time.
 
     {PyUpload4}
 
