@@ -1702,18 +1702,20 @@ header .join__slack:hover {
 }
 
 .fixed-height-card {
-  height: 200px; /* This is used for the cards on the welcome homepage */
+  min-height: 150px; /* This is used for the cards on the welcome homepage */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: rgba(243, 245, 247, 0.85); 
+  background: rgba(243, 245, 247, 0.85);
   box-shadow: 0 2px 8px rgba(0,0,0,0.04);
   border-radius: 8px;
-  transition: background 0.2s;
+  transition: background 0.2s, transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .fixed-height-card:hover {
-  background: rgba(67, 194, 212, 0.61); /* Intensified light gray on hover */
+  background: rgba(67, 194, 212, 0.61);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
 }
 
 html[data-theme='dark'] .fixed-height-card {
@@ -1723,4 +1725,110 @@ html[data-theme='dark'] .fixed-height-card {
 
 html[data-theme='dark'] .fixed-height-card:hover {
   background: rgb(125, 157, 192); /* Intensified dark color on hover */
+}
+
+/* ===== HOMEPAGE CARD GRID ===== */
+.homepage-card-container {
+  cursor: pointer;
+}
+
+.card-icon {
+  font-size: 1.75rem;
+  margin-bottom: 0.25rem;
+}
+
+/* ===== HOMEPAGE SECTION LABELS ===== */
+.homepage-main h2 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ifm-color-primary);
+  border-bottom: none;
+  margin-bottom: 1rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.homepage-main h2:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+/* ===== HERO DIVIDER ===== */
+.hero-divider {
+  height: 3px;
+  background: var(--ifm-color-primary);
+  border: none;
+  width: 60px;
+  margin: 0.5rem 0 1.5rem;
+}
+
+/* ===== HOMEPAGE DIAGRAM IMAGE ===== */
+.homepage-diagram {
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  margin: 1rem 0 1.5rem;
+  width: 100%;
+}
+
+html[data-theme='dark'] .homepage-diagram {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== HOMEPAGE MINI CARDS (Popular Topics) ===== */
+.mini-card {
+  background: rgba(243, 245, 247, 0.85);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  border-radius: 8px;
+  transition: background 0.2s, transform 0.15s ease, box-shadow 0.15s ease;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.mini-card:hover {
+  background: rgba(67, 194, 212, 0.61);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+.mini-card h3 {
+  font-size: 0.95rem;
+  margin-bottom: 0;
+}
+
+.mini-card .card-icon {
+  font-size: 1.25rem;
+  margin-bottom: 0.35rem;
+}
+
+html[data-theme='dark'] .mini-card {
+  background: rgba(44, 59, 75, 0.85);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+html[data-theme='dark'] .mini-card:hover {
+  background: rgb(125, 157, 192);
+}
+
+/* ===== HOMEPAGE POPULAR TOPICS ===== */
+.popular-topics {
+  columns: 2;
+  column-gap: 2rem;
+  list-style: none;
+  padding-left: 0;
+}
+
+.popular-topics li a::before {
+  content: '→ ';
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .popular-topics {
+    columns: 1;
+  }
 }
