@@ -7,7 +7,7 @@ slug: /
 ---
 import Head from '@docusaurus/Head';
 import CardGrid from '@site/src/components/CardGrid';
-import { startHereCards, exploreCards } from '@site/src/data/homepageCards';
+import { startHereCards, exploreCards, popularTopics } from '@site/src/data/homepageCards';
 
 <Head>
   <meta name="google-site-verification" content="KOB12UhhFU3dC5xrifk5b20EeiCVWjmElZfZynpITtg" />
@@ -26,11 +26,11 @@ import { startHereCards, exploreCards } from '@site/src/data/homepageCards';
 <hr className="hero-divider" />
 
 
-Clarifai is a hybrid cloud AI orchestration platform for building, deploying, and managing AI at scale. The platform supports AI models developed with Clarifai's own set of tools or third-party frameworks, integrating community, private, and self-hosted models.
+Clarifai lets you build, deploy, and manage AI across any infrastructure — from shared cloud to your own on-premise or edge environments. It works with models from any source — Clarifai-built, third-party, or self-hosted.
 
-With Clarifai, teams can deploy AI workloads on our Shared Compute, Clarifai-managed dedicated cloud compute, or within their own VPCs, on-premise, hybrid, or edge environments from a unified control plane.
+Teams deploy on Clarifai's shared or dedicated cloud, within their own VPC, on-premise, or at the edge — all managed from a single control plane.
 
-Clarifai is designed for three core journeys:
+Everything in Clarifai flows through three core areas:
 
 <img
   className="homepage-diagram"
@@ -40,7 +40,7 @@ Clarifai is designed for three core journeys:
 
 - **Compute** – Orchestrate AI models with cost-efficient deployment, scaling, and optimization across environments.
 - **Control & Governance** – Manage AI resources, monitor performance, and track costs through a unified control plane.
-- **Create & Manage** – Customize AI workloads with a set of tools to complement your own, enabling you to label data, train and evaluate models, and deploy them.
+- **Create & Manage** – Customize AI workloads with tools for labelling, training, evaluating, and deploying models.
 
 ## See Clarifai in Action
 
@@ -67,5 +67,8 @@ Clarifai is designed for three core journeys:
 
 <CardGrid cards={exploreCards} />
 
+## Popular Topics
+
+<CardGrid cards={popularTopics} variant="mini" />
 
 </main>

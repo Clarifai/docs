@@ -1,3 +1,12 @@
+export const popularTopics = [
+  { icon: '🖥️', title: 'Deploy a Model', href: '/compute/deployments/deploy-model' },
+  { icon: '🔮', title: 'Run Inference', href: '/compute/inference/' },
+  { icon: '📦', title: 'Build and Upload Models', href: '/compute/upload/' },
+  { icon: '💻', title: 'Local Runners', href: '/compute/local-runners/' },
+  { icon: '🔗', title: 'Pipelines', href: '/compute/pipelines/' },
+  { icon: '📊', title: 'Control Center', href: '/control/control-center/' },
+];
+
 export const startHereCards = [
   {
     icon: '🚀',
