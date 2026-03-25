@@ -27,13 +27,11 @@ Start by [logging in to](https://clarifai.com/login) your existing Clarifai acco
 
 ## Step 2: Get a Model
 
-Clarifai’s [Community platform](https://clarifai.com/explore) offers a wide range of the latest models that you can test and integrate into your AI projects.
+Clarifai’s [Model Library](https://clarifai.com/explore/model-library) provides a curated collection of the latest AI models ready for testing and integration.
 
-You can easily find a model to use by heading to the Community platform and exploring the **Trending Models** section, which showcases popular and ready-to-use options.
+To get started, browse the library to discover models by provider, capability, use case, or any other parameter. Once you’ve found a suitable model, click the **Try Model** button on the far right of its row.
 
-After finding a model, click the **TEST IN PLAYGROUND** button in the bottom right corner of its information card. 
-
-For this example, we'll use the [gpt-oss-120b](https://clarifai.com/openai/chat-completion/models/gpt-oss-120b) model.
+For this guide, we’ll use the [Kimi-K2_5](https://clarifai.com/moonshotai/chat-completion/models/Kimi-K2_5) model.
 
 > **Alternatively:** You can select the **Playground** option in the collapsible left sidebar.
 
@@ -43,11 +41,24 @@ For this example, we'll use the [gpt-oss-120b](https://clarifai.com/openai/chat-
 
 You'll be taken to the AI Playground interface. 
 
-> **Alternatively:** In the upper-left section of the Playground, you can choose the model you'd like to use for inference.
+Once the interface opens, you’ll see an information card that gives you a quick overview of the model, including input and output pricing, and links to the model page and pricing details. You’ll also find predefined prompt examples you can use right away.
 
 ![](/img/new-docs/playground-2-1.png)
 
-Once the interface opens, you’ll see a model card that gives you a quick overview of the model, including input and output pricing, and links to the model page and pricing details. You’ll also find predefined prompt examples you can use right away.
+:::note Alternatively
+
+In the upper-left section of the Playground, you can use the search bar to find a model for inference. Clicking the search bar opens a selection modal.
+
+![](/img/new-docs/playground-2-2.png)
+
+In the upper-right corner of the modal, there’s an account selector that lets you switch between different sources — such as featured models, your personal workspace, any organizations you belong to, or the public Clarifai model library. Selecting a different source updates the list to show the available models from that account or library.
+
+> **Note:** You can use the keyboard shortcuts shown at the bottom of the modal to navigate and select models:
+        > - `↑ / ↓ (Navigate)` — Use the up and down arrow keys to move through the model list without using your mouse.
+        > - `↵ (Select)` — Press Enter to select the currently highlighted model.
+        > - `Esc (Close)` — Press Escape to close the dialog without making a selection.
+
+:::
 
 Next, in the message box at the bottom of the Playground, enter your desired prompt to generate a response with the selected model.  
 
@@ -74,24 +85,29 @@ At the bottom of the response, you’ll also see the following token and perform
 - OUT (output token count)
 - TOKENS/S (generation speed)
 
+
 ## Additional Playground Features
 
 ### Playground Settings
 
-The Playground’s right sidebar lets you adjust a range of settings to customize how the model behaves.
+The Playground's right sidebar lets you adjust settings and inference parameters to customize model behavior.
 
-* **Model Version** — Choose the specific version of the model you want to run.
-* **Max Completion Tokens** — Sets the maximum number of tokens the model can generate for a completion. This includes both the visible output tokens and any reasoning tokens produced.
-* **Reasoning Effort** — Controls how much reasoning the model applies (for reasoning-enabled models). Available options are `minimal`, `low`, `medium` (default), and `high`. Lower effort levels can speed up responses and reduce the number of reasoning tokens generated.
-* **Temperature** — Adjusts the randomness of the output, with values ranging from 0 to 2. Higher temperatures (e.g., 0.8) produce more diverse, creative responses, while lower values (e.g., 0.2) produce more focused, deterministic outputs. We generally recommend adjusting either this or `top_p`, but not both.
-* **Top P** — Controls nucleus sampling, an alternative to temperature-based sampling. The model selects from the smallest set of tokens whose cumulative probability reaches `top_p`. For example, a value of 0.1 limits choices to the top 10% most probable tokens. As with temperature, we recommend modifying either `top_p` or temperature, but not both.
+- **Model Version** — Choose the specific version of the model you want to run.
+- **Model Method** — Select which model function to call:
+  - **OpenAI Fetch** — Sends an OpenAI-compatible request to the appropriate OpenAI endpoint. Accepts a JSON string with request parameters (including `openai_endpoint`) and returns a JSON string containing the response or error.
+  - **OpenAI Stream (_default_)** — Sends an OpenAI-compatible request and returns a streaming response with cancellation support.
+  - **Predict** — Runs a single prompt completion using the OpenAI client.
+  - **Generate** — Streams a completion response using the OpenAI client.
+- **Max Completion Tokens** — Sets the maximum number of tokens the model can generate for a completion. This includes both the visible output tokens and any reasoning tokens produced.
+- **Temperature** — Adjusts the randomness of the output, with values ranging from 0 to 2. Higher temperatures (e.g., 0.8) produce more diverse, creative responses, while lower values (e.g., 0.2) produce more focused, deterministic outputs. We generally recommend adjusting either this or `top_p`, but not both.
+- **Top P** — Controls nucleus sampling, an alternative to temperature-based sampling. The model selects from the smallest set of tokens whose cumulative probability reaches `top_p`. For example, a value of 0.1 limits choices to the top 10% most probable tokens. As with temperature, we recommend modifying either `top_p` or temperature, but not both.
 
 
 ### Compare Models
 
 The AI Playground includes a side-by-side comparison view, making it easy to test different models — or even the same model across multiple versions and instances — to identify the best fit for your needs. You can directly compare factors such as speed, accuracy, and overall performance.
 
-Click the **Compare Models** button in the upper-right corner of the Playground to launch the side-by-side comparison.
+Click the **Compare** button in the upper-right corner of the Playground to launch the side-by-side comparison.
 
 ![](/img/new-docs/playground-5.png)
 
