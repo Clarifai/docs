@@ -93,7 +93,7 @@
     ]
   },
   {
-    "to": "/compute/deployments/cloud-instances",
+    "to": "/compute/cloud-instances",
     "from": ["/portal-guide/compute-orchestration/cloud-instances"]
   },
   {
