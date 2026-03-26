@@ -21,6 +21,11 @@ Learn how deployment works when making a prediction using our Compute Orchestrat
 
 :::
 
+:::note
+
+Only one deployment per model version is allowed per nodepool. Attempting to deploy a model version that already has an existing deployment on the selected nodepool will result in an error.
+
+:::
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -365,9 +370,7 @@ To deploy a model within a nodepool you've created, provide the `deployment_id` 
 
 You can learn how to create the `deployment_config.yaml` file, which contains the deployment configuration details, [here](clusters-nodepools.md#3-deployment_configyaml).
 
-> **Note:** 
-> - Each model or workflow can only have one deployment per nodepool.
-> - If you're creating a [multi-nodepool deployment](clusters-nodepools.md#multi-nodepool-deployment) using the Python SDK, initializing the `Nodepool` instance with the first nodepool only is sufficient.
+> **Note:** If you're creating a [multi-nodepool deployment](clusters-nodepools.md#multi-nodepool-deployment) using the Python SDK, initializing the `Nodepool` instance with the first nodepool only is sufficient.
 
 
 <Tabs groupId="code">
