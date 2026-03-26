@@ -12,7 +12,6 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [Build Custom MCP Servers](https://docs.clarifai.com/docs/compute/agents/mcp): Build performant MCP Servers with FastMCP for Clarifai
 - [Supported Cloud Instances](https://docs.clarifai.com/docs/compute/cloud-instances): Learn about the instance types we support
 - [Deployments](https://docs.clarifai.com/docs/compute/deployments/README): Orchestrate your AI workloads better, avoid vendor lock-in, and use compute spend efficiently
-- [Supported Cloud Instances](https://docs.clarifai.com/docs/compute/deployments/cloud-instances): Learn about the instance types we support
 - [Create Clusters and Nodepools](https://docs.clarifai.com/docs/compute/deployments/clusters-nodepools): Set up capabilities that match your computational needs
 - [Deploy a Model](https://docs.clarifai.com/docs/compute/deployments/deploy-model): Deploy a model into your created cluster and nodepool
 - [Manage Your Compute](https://docs.clarifai.com/docs/compute/deployments/manage-compute): Edit and delete deployments, clusters, and nodepools
