@@ -915,6 +915,9 @@ To learn more about building MCP servers using Clarifai, see the following examp
 - [Google Cloud Platform (GCP)](#google-cloud-platform-gcp-instances)
 - [Vultr Cloud Servers](#vultr-cloud-servers-instances)
 - [Oracle Distributed Cloud](#oracle-distributed-cloud-instances)
+- [Microsoft Azure](#microsoft-azure-instances)
+- [DigitalOcean](#digitalocean-instances)
+- [Lambda](#lambda-instances)
 
 ---
 
@@ -1375,6 +1378,196 @@ The Oracle E6 Flex series provides CPU-only instances for workloads that do not 
 
 - Running control-plane services or lightweight applications alongside GPU clusters.
 - Workloads requiring basic compute and memory without acceleration.
+
+## Microsoft Azure Instances
+
+### High-Performance GPU Instances
+
+These Azure instances provide NVIDIA H100, A100, and AMD MI300X GPUs for large-scale deep learning training and inference workloads.
+
+| Instance Type                | Region | GPU                          | GPU Memory  | CPU                          | Price/hr   |
+| ---------------------------- | ------ | ---------------------------- | ----------- | ---------------------------- | ---------- |
+| `Standard_NC40ads_H100_v5`   | eastus | 1x NVIDIA-H100 (79.65Gi)     | 79.65Gi     | 39.7 cores (215.63Gi)        | $2.34      |
+| `Standard_NC24ads_A100_v4`   | eastus | 1x NVIDIA-A100 (80Gi)        | 80Gi        | 23.8 cores (148.13Gi)        | $2.34      |
+| `Standard_ND96isr_MI300X_v5` | eastus | 1x AMD-MI300X (127.82Gi)     | 127.82Gi    | 95.6 cores (1,248.38Gi)      | Contact Us |
+
+**Key Features**
+
+- NVIDIA H100 and A100 GPUs — Industry-leading GPU performance for transformer-based model training, large-scale inference, and fine-tuning of frontier LLMs.
+
+- AMD MI300X GPU — 128 GiB HBM3 memory per card with massive CPU and RAM backing (~1.2 TiB system RAM), suited for very large model inference and distributed training.
+
+- Scalable memory and compute — From 23.8 cores / 148 GiB RAM (A100) up to 95.6 cores / 1,248 GiB RAM (MI300X), supporting memory-intensive training pipelines.
+
+**Example Use Cases**
+
+- Fine-tuning or running inference on large language models (e.g., LLaMA-70B, GPT-3-scale) with A100 or H100 instances.
+- Training frontier LLMs (>100B parameters) or multi-modal models requiring extreme GPU memory with MI300X instances.
+
+### Mid-Range GPU Instances
+
+These instances provide NVIDIA A10G, T4, and AMD V620 GPUs for moderate ML inference and training workloads.
+
+| Instance Type              | Region | GPU                          | GPU Memory  | CPU                          | Price/hr |
+| -------------------------- | ------ | ---------------------------- | ----------- | ---------------------------- | -------- |
+| `Standard_NV36ads_A10_v5`  | eastus | 1x NVIDIA-A10G (22.49Gi)     | 22.49Gi     | 35.7 cores (296.63Gi)        | $2.34    |
+| `Standard_NG32ads_V620_v1` | eastus | 1x AMD-V620 (32Gi)           | 32Gi        | 31.7 cores (42.82Gi)         | $2.34    |
+| `Standard_NC4as_T4_v3`     | eastus | 1x NVIDIA-T4 (15Gi)          | 15Gi        | 3.8 cores (18.52Gi)          | $2.34    |
+
+**Key Features**
+
+- NVIDIA A10G GPU — High compute throughput for inference and moderate training, with a large CPU and RAM allocation (~296 GiB) suited for data-heavy pipelines.
+
+- AMD V620 GPU — 32 GiB GPU memory at a competitive price point, offering a balance between memory capacity and cost for inference tasks.
+
+- NVIDIA T4 GPU — Cost-efficient inference-focused GPU, ideal for deploying production NLP and vision models at smaller scale.
+
+**Example Use Cases**
+
+- Running transformer-based NLP models (e.g., BERT, T5) for classification, summarization, or Q&A with T4 or A10G instances.
+- Moderate fine-tuning of mid-sized models or computer vision tasks requiring more than 16 GiB GPU memory with the AMD V620.
+
+### Standard CPU-Only Instances
+
+These Azure instances provide general-purpose compute for workloads that do not require GPU acceleration.
+
+| Instance Type       | Region | GPU | GPU Memory | CPU                   | Price/hr |
+| ------------------- | ------ | --- | ---------- | --------------------- | -------- |
+| `Standard_A4`       | eastus | –   | –          | 7.8 cores (9.07Gi)    | $2.34    |
+| `Standard_A3`       | eastus | –   | –          | 3.8 cores (4.35Gi)    | $2.34    |
+| `Standard_A4m_v2`   | eastus | –   | –          | 3.8 cores (21.22Gi)   | $2.34    |
+| `Standard_L2aos_v4` | eastus | –   | –          | 1.8 cores (10.42Gi)   | $2.34    |
+
+**Key Features**
+
+- Flexible CPU and memory — From 1.8 cores / 10.42 GiB RAM (`Standard_L2aos_v4`) up to 7.8 cores / 9.07 GiB RAM (`Standard_A4`), covering a range of lightweight workloads.
+
+- Memory-optimized option — `Standard_A4m_v2` provides 21.22 GiB RAM at 3.8 cores, offering higher memory per core for in-memory data processing.
+
+- Cost-effective — Suitable for preprocessing, control-plane services, lightweight inference, and development environments.
+
+**Example Use Cases**
+
+- Running simple classification or regression models that do not require GPU acceleration.
+- Preprocessing pipelines, orchestration services, or lightweight applications alongside GPU-accelerated nodepools.
+
+## DigitalOcean Instances
+
+### NVIDIA H100 GPU Instances
+
+DigitalOcean's H100 instances provide NVIDIA H100 GPUs for high-performance training and inference workloads, available in the `nyc1`, `nyc2`, and `sfo3` regions.
+
+| Instance Type        | Region | GPU                       | GPU Memory | CPU                      | Price/hr   |
+| -------------------- | ------ | ------------------------- | ---------- | ------------------------ | ---------- |
+| `gpu-h100x1-80gb`    | nyc1   | 1x NVIDIA-H100 (80Gi)     | 80Gi       | 19.8 cores (238.24Gi)   | Contact Us |
+| `gpu-h100x2-160gb`   | nyc1   | 2x NVIDIA-H100 (160Gi)    | 320Gi      | 39.7 cores (483.24Gi)   | Contact Us |
+| `gpu-h100x4-320gb`   | nyc1   | 4x NVIDIA-H100 (320Gi)    | 1,280Gi    | 79.6 cores (973.24Gi)   | Contact Us |
+| `gpu-h100x1-80gb`    | nyc2   | 1x NVIDIA-H100 (80Gi)     | 80Gi       | 19.8 cores (238.24Gi)   | Contact Us |
+| `gpu-h100x2-160gb`   | nyc2   | 2x NVIDIA-H100 (160Gi)    | 320Gi      | 39.7 cores (483.24Gi)   | Contact Us |
+| `gpu-h100x4-320gb`   | nyc2   | 4x NVIDIA-H100 (320Gi)    | 1,280Gi    | 79.6 cores (973.24Gi)   | Contact Us |
+| `gpu-h100x1-80gb`    | sfo3   | 1x NVIDIA-H100 (80Gi)     | 80Gi       | 19.8 cores (238.24Gi)   | Contact Us |
+| `gpu-h100x2-160gb`   | sfo3   | 2x NVIDIA-H100 (160Gi)    | 320Gi      | 39.7 cores (483.24Gi)   | Contact Us |
+| `gpu-h100x4-320gb`   | sfo3   | 4x NVIDIA-H100 (320Gi)    | 1,280Gi    | 79.6 cores (973.24Gi)   | Contact Us |
+
+**Key Features**
+
+- NVIDIA H100 GPUs — Leading GPU performance for transformer-based model training, large-scale inference, and fine-tuning of large language models.
+
+- Scalable multi-GPU configurations — From a single H100 (80 GiB) up to 4 GPUs (1,280 GiB combined GPU memory), with CPU and RAM scaling in step.
+
+- High memory backing — Up to 79.6 cores and ~973 GiB RAM in the 4-GPU configuration, ensuring data pipelines keep pace with GPU throughput.
+
+**Example Use Cases**
+
+- Fine-tuning or serving large language models (e.g., LLaMA-70B, Mistral) on a single or dual H100.
+- Multi-GPU distributed training of foundation models where high per-GPU memory is required.
+
+### AMD MI300X & MI350X GPU Instances
+
+DigitalOcean's AMD Instinct instances provide extreme GPU memory capacity for frontier-scale AI training and inference, available in `atl1`, `nyc1`, `nyc2`, and `sfo3` regions.
+
+| Instance Type           | Region | GPU                        | GPU Memory | CPU                          | Price/hr   |
+| ----------------------- | ------ | -------------------------- | ---------- | ---------------------------- | ---------- |
+| `gpu-mi300x1-192gb`     | atl1   | 1x AMD-MI300X (192Gi)      | 192Gi      | 19.8 cores (228.44Gi)        | Contact Us |
+| `gpu-mi300x8-1536gb`    | atl1   | 8x AMD-MI300X (192Gi)      | 1,536Gi    | 159.4 cores (1,874.84Gi)     | Contact Us |
+| `gpu-mi350x1-288gb-contracted`   | atl1   | 1x AMD-MI350X (288Gi)      | 288Gi      | 23.8 cores (244.12Gi)        | Contact Us |
+| `gpu-mi350x8-2304gb-contracted`    | atl1   | 8x AMD-MI350X (288Gi)      | 2,304Gi    | 191.3 cores (2,000.28Gi)     | Contact Us |
+| `gpu-mi300x1-192gb`     | nyc1   | 1x AMD-MI300X (192Gi)      | 192Gi      | 19.8 cores (228.44Gi)        | Contact Us |
+| `gpu-mi300x8-1536gb`    | nyc1   | 8x AMD-MI300X (192Gi)      | 1,536Gi    | 159.4 cores (1,874.84Gi)     | Contact Us |
+| `gpu-mi350x1-288gb-contracted`     | nyc1   | 1x AMD-MI350X (288Gi)      | 288Gi      | 23.8 cores (244.12Gi)        | Contact Us |
+| `gpu-mi350x8-2304gb-contracted`    | nyc1   | 8x AMD-MI350X (288Gi)      | 2,304Gi    | 191.3 cores (2,000.28Gi)     | Contact Us |
+| `gpu-mi300x1-192gb`     | nyc2   | 1x AMD-MI300X (192Gi)      | 192Gi      | 19.8 cores (228.44Gi)        | Contact Us |
+| `gpu-mi300x8-1536gb`    | nyc2   | 8x AMD-MI300X (192Gi)      | 1,536Gi    | 159.4 cores (1,874.84Gi)     | Contact Us |
+| `gpu-mi350x1-288gb-contracted`     | nyc2   | 1x AMD-MI350X (288Gi)      | 288Gi      | 23.8 cores (244.12Gi)        | Contact Us |
+| `gpu-mi350x8-2304gb-contracted`    | nyc2   | 8x AMD-MI350X (288Gi)      | 2,304Gi    | 191.3 cores (2,000.28Gi)     | Contact Us |
+| `gpu-mi300x1-192gb`     | sfo3   | 1x AMD-MI300X (192Gi)      | 192Gi      | 19.8 cores (228.44Gi)        | Contact Us |
+| `gpu-mi300x8-1536gb`    | sfo3   | 8x AMD-MI300X (192Gi)      | 1,536Gi    | 159.4 cores (1,874.84Gi)     | Contact Us |
+| `gpu-mi350x1-288gb-contracted`     | sfo3   | 1x AMD-MI350X (288Gi)      | 288Gi      | 23.8 cores (244.12Gi)        | Contact Us |
+| `gpu-mi350x8-2304gb-contracted`    | sfo3   | 8x AMD-MI350X (288Gi)      | 2,304Gi    | 191.3 cores (2,000.28Gi)     | Contact Us |
+
+**Key Features**
+
+- AMD MI300X GPUs — 192 GiB HBM3 memory per card, delivering industry-leading GPU memory capacity for very large model inference and distributed training without model parallelism.
+
+- AMD MI350X GPUs — Next-generation AMD accelerator with 288 GiB per card, pushing single-GPU memory capacity beyond MI300X for frontier-scale workloads.
+
+- Multi-GPU scaling — From a single GPU up to 8-GPU clusters (up to 2,304 GiB combined GPU memory with MI350X), supported by up to 191 cores and ~2 TiB system RAM.
+
+- Multi-region availability — Both MI300X and MI350X instances are available in `atl1`, `nyc1`, `nyc2`, and `sfo3`, providing geographic redundancy.
+
+**Example Use Cases**
+
+- Running inference on very large language models (70B–400B+ parameters) where maximizing GPU memory per card reduces or eliminates model parallelism overhead.
+- Distributed training of frontier LLMs and multi-modal models requiring over 1 TiB of combined GPU memory.
+
+### Standard CPU-Only Instances
+
+These DigitalOcean instances provide general-purpose compute for workloads that do not require GPU acceleration.
+
+| Instance Type    | Region | GPU | GPU Memory | CPU                  | Price/hr   |
+| ---------------- | ------ | --- | ---------- | -------------------- | ---------- |
+| `s-8vcpu-16gb`   | nyc1   | –   | –          | 7.8 cores (13.24Gi)  | Contact Us |
+| `s-4vcpu-8gb`    | nyc1   | –   | –          | 3.8 cores (6.02Gi)   | Contact Us |
+| `s-2vcpu-2gb`    | nyc1   | –   | –          | 1.8 cores (1.3Gi)    | Contact Us |
+| `s-8vcpu-16gb`   | nyc2   | –   | –          | 7.8 cores (13.24Gi)  | Contact Us |
+| `s-4vcpu-8gb`    | nyc2   | –   | –          | 3.8 cores (6.02Gi)   | Contact Us |
+| `s-2vcpu-2gb`    | nyc2   | –   | –          | 1.8 cores (1.3Gi)    | Contact Us |
+| `s-8vcpu-16gb`   | sfo3   | –   | –          | 7.8 cores (13.24Gi)  | Contact Us |
+| `s-4vcpu-8gb`    | sfo3   | –   | –          | 3.8 cores (6.02Gi)   | Contact Us |
+| `s-2vcpu-2gb`    | sfo3   | –   | –          | 1.8 cores (1.3Gi)    | Contact Us |
+
+**Key Features**
+
+- Scalable CPU and memory — From 1.8 cores / 1.3 GiB RAM (`s-2vcpu-2gb`) up to 7.8 cores / 13.24 GiB RAM (`s-8vcpu-16gb`).
+
+- Cost-effective — Suitable for lightweight workloads, preprocessing pipelines, and supporting services that do not require GPU acceleration.
+
+**Example Use Cases**
+
+- Running simple models, control-plane services, or development and testing environments alongside GPU-accelerated nodepools.
+
+## Lambda Instances
+
+### NVIDIA B200 GPU Instances
+
+Lambda's B200 instances provide NVIDIA B200 GPUs for frontier-scale AI training and inference workloads, available in the `us-south-3` region.
+
+| Instance Type       | Region      | GPU                        | GPU Memory  | CPU                          | Price/hr   |
+| ------------------- | ----------- | -------------------------- | ----------- | ---------------------------- | ---------- |
+| `cl-xl-gpu-8-b200`  | us-south-3  | 8x NVIDIA-B200 (179.06Gi)  | 1,432.49Gi  | 207.3 cores (2,790.05Gi)     | Contact Us |
+
+**Key Features**
+
+- NVIDIA B200 GPUs — Latest-generation Blackwell architecture, delivering significant performance improvements over H100 for large-scale transformer training and inference.
+
+- Massive GPU memory — 1,432 GiB of combined GPU memory across 8 GPUs, supporting frontier-scale models without requiring model parallelism across nodes.
+
+- Extreme CPU & RAM — 207 cores and ~2.8 TiB system RAM, ensuring data pipelines and preprocessing can fully saturate GPU throughput.
+
+**Example Use Cases**
+
+- Training or fine-tuning frontier LLMs (100B+ parameters) where maximum GPU memory and Blackwell compute throughput are required.
+- High-throughput inference for very large models, leveraging the combined 1.4 TiB GPU memory to serve multiple large models simultaneously.
 
 ---
 
