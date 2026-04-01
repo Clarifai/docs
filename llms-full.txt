@@ -939,13 +939,13 @@ The instances listed on this page are available **on demand** — they can be pr
 
 The AWS G7E series provides the latest generation of high-performance NVIDIA RTX PRO 6000 GPUs, scaling from single-GPU setups to large multi-GPU clusters. These instances are designed for the most demanding deep learning training and large-scale inference workloads.
 
-|Instance Type       |GPU           | GPU MEMORY  |   CPU         | Price/hr |
-|--------------------|----------------|----------------|---------------|----------|
-| `g7e.48xlarge`     | 8x NVIDIA-RTX-PRO-6000 (96Gi) | 768Gi | 191.1 cores (1,887.96Gi) | $33.16 |
-| `g7e.24xlarge`     | 4x NVIDIA-RTX-PRO-6000 (96Gi) | 384Gi | 95.3 cores (939.79Gi)    | $16.52 |
-| `g7e.12xlarge`     | 2x NVIDIA-RTX-PRO-6000 (96Gi) | 192Gi | 47.4 cores (466.19Gi)    | $10.37 |
-| `g7e.8xlarge`      | 1x NVIDIA-RTX-PRO-6000 (96Gi) | 96Gi  | 31.5 cores (230.74Gi)    | $5.26  |
-| `g7e.4xlarge`      | 1x NVIDIA-RTX-PRO-6000 (96Gi) | 96Gi  | 15.5 cores (112.34Gi)    | $5.00  |
+| Instance Type      | Region    | GPU                           | GPU Memory | CPU                       | Price/hr |
+|--------------------|-----------|-------------------------------|------------|---------------------------|----------|
+| `g7e.48xlarge`     | us-east-1 | 8x NVIDIA-RTX-PRO-6000 (96Gi) | 768Gi      | 191.1 cores (1,886.99Gi)  | $33.156  |
+| `g7e.24xlarge`     | us-east-1 | 4x NVIDIA-RTX-PRO-6000 (96Gi) | 384Gi      | 95.3 cores (939.79Gi)     | $16.524  |
+| `g7e.12xlarge`     | us-east-1 | 2x NVIDIA-RTX-PRO-6000 (96Gi) | 192Gi      | 47.4 cores (466.19Gi)     | $10.368  |
+| `g7e.8xlarge`      | us-east-1 | 1x NVIDIA-RTX-PRO-6000 (96Gi) | 96Gi       | 31.5 cores (230.74Gi)     | $5.256   |
+| `g7e.4xlarge`      | us-east-1 | 1x NVIDIA-RTX-PRO-6000 (96Gi) | 96Gi       | 15.5 cores (112.34Gi)     | $5.004   |
 
 **Key Features**
 
@@ -970,13 +970,13 @@ The newest accelerators — including **NVIDIA B300, B200, H100**, **AMD MI355X,
 
 The AWS G6 series introduces next-generation NVIDIA GPUs for the most demanding machine learning and simulation workloads. These instances scale from single-GPU mid-tier setups to multi-GPU, high-memory configurations capable of handling large-scale model training.
 
-|Instance Type       |GPU           | GPU MEMORY  |   CPU         | Price/hr |
-|--------------------|----------------|----------------|---------------|----------|
-|   `g6e.12xlarge`   | 4x NVIDIA-L40S (44.99Gi) | 179.95Gi | 47.4 cores (351.44Gi) | $13.10 |
-|   `g6e.2xlarge`    | 1x NVIDIA-L40S (44.99Gi) | 44.99Gi  | 7.5 cores (57.95Gi)   | $2.81  |
-|  `g6e.xlarge`      | 1x NVIDIA-L40S (44.99Gi) | 44.99Gi  | 3.5 cores (28.35Gi)   | Contact Us |
-|  `g6.2xlarge`      | 1x NVIDIA-L4 (22.49Gi)   | 22.49Gi  | 7.5 cores (28.35Gi)   | $1.22  |
-|  `g6.xlarge`       | 1x NVIDIA-L4 (22.49Gi)   | 22.49Gi  | 3.5 cores (13.55Gi)   | $1.01  |
+| Instance Type    | Region    | GPU                      | GPU Memory | CPU                    | Price/hr |
+|------------------|-----------|--------------------------|------------|------------------------|----------|
+| `g6e.12xlarge`   | us-east-1 | 4x NVIDIA-L40S (44.99Gi) | 179.95Gi   | 47.4 cores (351.44Gi)  | $13.104  |
+| `g6e.2xlarge`    | us-east-1 | 1x NVIDIA-L40S (44.99Gi) | 44.99Gi    | 7.5 cores (57.95Gi)    | $2.808   |
+| `g6e.xlarge`     | us-east-1 | 1x NVIDIA-L40S (44.99Gi) | 44.99Gi    | 3.5 cores (28.35Gi)    | $2.34    |
+| `g6.2xlarge`     | us-east-1 | 1x NVIDIA-L4 (22.49Gi)   | 22.49Gi    | 7.5 cores (28.35Gi)    | $1.224   |
+| `g6.xlarge`      | us-east-1 | 1x NVIDIA-L4 (22.49Gi)   | 22.49Gi    | 3.5 cores (13.55Gi)    | $1.008   |
 
 **Key Features**
 
@@ -998,10 +998,10 @@ The AWS G6 series introduces next-generation NVIDIA GPUs for the most demanding 
 
 The AWS G5 series provides high-performance GPU capabilities for workloads that demand more memory and compute power. These instances are optimized for deep learning training, large-scale inference, and advanced computer vision tasks.
 
-|Instance Type       |GPU           | GPU MEMORY  |   CPU         | Price/hr |
-|--------------------|----------------|----------------|---------------|----------|
-|  `g5.2xlarge`      | 1x NVIDIA-A10G (22.49Gi) | 22.49Gi | 7.5 cores (28.35Gi)  | $1.51 |
-|  `g5.xlarge`       | 1x NVIDIA-A10G (22.49Gi) | 22.49Gi | 3.5 cores (13.55Gi)  | $1.26 |
+| Instance Type  | Region    | GPU                      | GPU Memory | CPU                   | Price/hr |
+|----------------|-----------|--------------------------|------------|-----------------------|----------|
+| `g5.2xlarge`   | us-east-1 | 1x NVIDIA-A10G (22.49Gi) | 22.49Gi    | 7.5 cores (28.35Gi)   | $1.512   |
+| `g5.xlarge`    | us-east-1 | 1x NVIDIA-A10G (22.49Gi) | 22.49Gi    | 3.5 cores (13.55Gi)   | $1.26    |
 
 **Key Features**
 
@@ -1030,9 +1030,9 @@ The AWS G5 series provides high-performance GPU capabilities for workloads that 
 
 The AWS G4dn series is built for GPU-accelerated workloads at a moderate scale. These instances combine NVIDIA T4 GPUs with balanced CPU and memory resources, making them well-suited for small-to-medium machine learning and inference tasks.
 
-|Instance Type       |GPU           | GPU MEMORY  |   CPU         | Price/hr |
-|--------------------|----------------|----------------|---------------|----------|
-| `g4dn.xlarge`      | 1x NVIDIA-T4 (15Gi) | 15Gi | 3.5 cores (13.86Gi) | $0.65 |
+| Instance Type   | Region    | GPU                  | GPU Memory | CPU                   | Price/hr |
+|-----------------|-----------|----------------------|------------|-----------------------|----------|
+| `g4dn.xlarge`   | us-east-1 | 1x NVIDIA-T4 (15Gi)  | 15Gi       | 3.5 cores (13.86Gi)   | $0.648   |
 
 **Key Features**
 
@@ -1052,12 +1052,12 @@ The AWS G4dn series is built for GPU-accelerated workloads at a moderate scale. 
 
 The AWS T3A series is intended for cost‑effective, general‑purpose workloads that do not require GPU acceleration. It provides a balanced mix of CPU and memory, making it suitable for lightweight use cases.
 
-|Instance Type       |GPU           | GPU MEMORY  |   CPU         | Price/hr |
-|--------------------|----------------|----------------|---------------|----------|
-| `t3a.2xlarge`      | -              | -              | 7.5 cores (28.35Gi)  | $0.36 |
-| `t3a.xlarge`       | -              | -              | 3.5 cores (13.55Gi)  | $0.18 |
-| `t3a.large`        | -              | -              | 1.5 cores (6.4Gi)    | $0.11 |
-| `t3a.medium`       | -              | -              | 1.5 cores (2.89Gi)   | $0.07 |
+| Instance Type   | Region    | GPU | GPU Memory | CPU                  | Price/hr |
+|-----------------|-----------|-----|------------|----------------------|----------|
+| `t3a.2xlarge`   | us-east-1 | –   | –          | 7.5 cores (28.35Gi)  | $0.36    |
+| `t3a.xlarge`    | us-east-1 | –   | –          | 3.5 cores (13.55Gi)  | $0.18    |
+| `t3a.large`     | us-east-1 | –   | –          | 1.5 cores (6.4Gi)    | $0.108   |
+| `t3a.medium`    | us-east-1 | –   | –          | 1.5 cores (2.89Gi)   | $0.072   |
 
 **Key Features**
 
@@ -1077,11 +1077,11 @@ The AWS T3A series is intended for cost‑effective, general‑purpose workloads
 
 The AWS T4G series provides ARM-based (AWS Graviton2) CPU-only instances for cost-effective general-purpose workloads. These instances offer a strong performance-per-dollar ratio for lightweight inference and preprocessing tasks that do not require GPU acceleration.
 
-|Instance Type       |GPU           | GPU MEMORY  |   CPU         | Price/hr |
-|--------------------|----------------|----------------|---------------|----------|
-| `t4g.xlarge`       | -              | -              | 3.5 cores (13.55Gi) | Contact Us |
-| `t4g.large`        | -              | -              | 1.5 cores (6.4Gi)   | Contact Us |
-| `t4g.medium`       | -              | -              | 1.5 cores (2.89Gi)  | Contact Us |
+| Instance Type  | Region    | GPU | GPU Memory | CPU                  | Price/hr |
+|----------------|-----------|-----|------------|----------------------|----------|
+| `t4g.xlarge`   | us-east-1 | –   | –          | 3.5 cores (13.55Gi)  | $2.34    |
+| `t4g.large`    | us-east-1 | –   | –          | 1.5 cores (6.4Gi)    | $2.34    |
+| `t4g.medium`   | us-east-1 | –   | –          | 1.5 cores (2.89Gi)   | $2.34    |
 
 **Key Features**
 
@@ -1103,12 +1103,12 @@ The AWS T4G series provides ARM-based (AWS Graviton2) CPU-only instances for cos
 
 The GCP G4 series features NVIDIA RTX PRO 6000 GPUs, offering 96 GiB of GPU memory per card — the highest per-GPU memory available in the GCP lineup. These instances scale from a single GPU to 8-GPU configurations and are well-suited for large model inference and training workloads that demand high GPU memory capacity.
 
-|Instance Type       |GPU           | GPU MEMORY  |   CPU         | Price/hr |
-|--------------------|----------------|----------------|---------------|----------|
-| `g4-standard-384`  | 8x NVIDIA-RTX-PRO-6000 (96Gi) | 768Gi | 382.4 cores (1,403.83Gi) | $45.00 |
-| `g4-standard-192`  | 4x NVIDIA-RTX-PRO-6000 (96Gi) | 384Gi | 190.9 cores (698.23Gi)   | $22.50 |
-| `g4-standard-96`   | 2x NVIDIA-RTX-PRO-6000 (96Gi) | 192Gi | 95.1 cores (345.43Gi)    | $11.27 |
-| `g4-standard-48`   | 1x NVIDIA-RTX-PRO-6000 (96Gi) | 96Gi  | 47.2 cores (169.03Gi)    | $5.65  |
+| Instance Type      | Region      | GPU                           | GPU Memory | CPU                       | Price/hr  |
+|--------------------|-------------|-------------------------------|------------|---------------------------|-----------|
+| `g4-standard-48`   | us-central1 | 1x NVIDIA-RTX-PRO-6000 (96Gi) | 96Gi       | 47.2 cores (169.03Gi)     | $5.652    |
+| `g4-standard-96`   | us-central1 | 2x NVIDIA-RTX-PRO-6000 (96Gi) | 192Gi      | 95.1 cores (345.43Gi)     | $11.268   |
+| `g4-standard-192`  | us-central1 | 4x NVIDIA-RTX-PRO-6000 (96Gi) | 384Gi      | 190.9 cores (698.23Gi)    | $22.5     |
+| `g4-standard-384`  | us-central1 | 8x NVIDIA-RTX-PRO-6000 (96Gi) | 768Gi      | 382.4 cores (1,403.83Gi)  | $45       |
 
 **Key Features**
 
@@ -1127,11 +1127,13 @@ The GCP G4 series features NVIDIA RTX PRO 6000 GPUs, offering 96 GiB of GPU memo
 
 The A2 and A3 series are GCP's flagship high-performance GPU instances, designed for large-scale deep learning, high-performance inference, and real-time AI workloads. With NVIDIA A100 and H100 GPUs, they scale from single-GPU setups to multi-GPU powerhouse configurations capable of training foundation models.
 
-|Instance Type       |GPU           | GPU MEMORY  |   CPU         | Price/hr |
-|-------------------|--------------|--------------|---------|----------|
-| `a3-highgpu-8g`    | 8x NVIDIA-H100 (79.65Gi) | 637.18Gi | 206.8 cores (1,827.19Gi) | $110.63 |
-| `a3-highgpu-1g`    | 1x NVIDIA-H100 (79.65Gi) | 79.65Gi  | 25.3 cores (221.95Gi)    | $13.82  |
-| `a2-ultragpu-1g`   | 1x NVIDIA-A100 (80Gi)    | 80Gi     | 11.3 cores (159.23Gi)    | $7.13   |
+| Instance Type     | Region      | GPU                       | GPU Memory | CPU                        | Price/hr   |
+|-------------------|-------------|---------------------------|------------|----------------------------|------------|
+| `a2-ultragpu-1g`  | us-central1 | 1x NVIDIA-A100 (80Gi)     | 80Gi       | 11.3 cores (159.23Gi)      | $2.34      |
+| `a3-highgpu-1g`   | us-central1 | 1x NVIDIA-H100 (79.65Gi)  | 79.65Gi    | 25.3 cores (221.95Gi)      | $2.34      |
+| `a2-ultragpu-1g`  | us-east4    | 1x NVIDIA-A100 (80Gi)     | 80Gi       | 11.3 cores (159.23Gi)      | $7.128     |
+| `a3-highgpu-1g`   | us-east4    | 1x NVIDIA-H100 (79.65Gi)  | 79.65Gi    | 25.3 cores (221.95Gi)      | $13.824    |
+| `a3-highgpu-8g`   | us-east4    | 8x NVIDIA-H100 (79.65Gi)  | 637.18Gi   | 206.8 cores (1,827.19Gi)   | $110.628   |
 
 **Key Features**
 
@@ -1153,13 +1155,18 @@ The A2 and A3 series are GCP's flagship high-performance GPU instances, designed
 
 The GCP G2-Standard series provides GPU acceleration with NVIDIA L4 GPUs, designed for moderate machine learning and inference workloads. These instances scale from small setups to larger configurations, balancing cost with performance for small-to-medium tasks.
 
-|Instance Type       |GPU           | GPU MEMORY  |   CPU         | Price/hr |
-|------------------|-------------|--------------|---------| ---------|
-| `g2-standard-32`  | 1x NVIDIA-L4 (22.49Gi) | 22.49Gi | 31.3 cores (118.07Gi) | $2.16 |
-| `g2-standard-16`  | 1x NVIDIA-L4 (22.49Gi) | 22.49Gi | 15.3 cores (57.75Gi)  | $1.44 |
-| `g2-standard-12`  | 1x NVIDIA-L4 (22.49Gi) | 22.49Gi | 11.3 cores (42.71Gi)  | $1.26 |
-| `g2-standard-8`   | 1x NVIDIA-L4 (22.49Gi) | 22.49Gi | 7.3 cores (27.67Gi)   | $1.08 |
-| `g2-standard-4`   | 1x NVIDIA-L4 (22.49Gi) | 22.49Gi | 3.4 cores (12.63Gi)   | $0.90 |
+| Instance Type     | Region      | GPU                    | GPU Memory | CPU                    | Price/hr |
+|-------------------|-------------|------------------------|------------|------------------------|----------|
+| `g2-standard-4`   | us-central1 | 1x NVIDIA-L4 (22.49Gi) | 22.49Gi    | 3.4 cores (12.63Gi)    | $2.34    |
+| `g2-standard-8`   | us-central1 | 1x NVIDIA-L4 (22.49Gi) | 22.49Gi    | 7.3 cores (27.67Gi)    | $2.34    |
+| `g2-standard-12`  | us-central1 | 1x NVIDIA-L4 (22.49Gi) | 22.49Gi    | 11.3 cores (42.71Gi)   | $2.34    |
+| `g2-standard-16`  | us-central1 | 1x NVIDIA-L4 (22.49Gi) | 22.49Gi    | 15.3 cores (57.75Gi)   | $2.34    |
+| `g2-standard-32`  | us-central1 | 1x NVIDIA-L4 (22.49Gi) | 22.49Gi    | 31.3 cores (118.07Gi)  | $2.34    |
+| `g2-standard-4`   | us-east4    | 1x NVIDIA-L4 (22.49Gi) | 22.49Gi    | 3.4 cores (12.63Gi)    | $0.9     |
+| `g2-standard-8`   | us-east4    | 1x NVIDIA-L4 (22.49Gi) | 22.49Gi    | 7.3 cores (27.67Gi)    | $1.08    |
+| `g2-standard-12`  | us-east4    | 1x NVIDIA-L4 (22.49Gi) | 22.49Gi    | 11.3 cores (42.71Gi)   | $1.26    |
+| `g2-standard-16`  | us-east4    | 1x NVIDIA-L4 (22.49Gi) | 22.49Gi    | 15.3 cores (57.75Gi)   | $1.44    |
+| `g2-standard-32`  | us-east4    | 1x NVIDIA-L4 (22.49Gi) | 22.49Gi    | 31.3 cores (118.07Gi)  | $2.16    |
 
 **Key Features**
 
@@ -1178,12 +1185,12 @@ The GCP G2-Standard series provides GPU acceleration with NVIDIA L4 GPUs, design
 
 Google's TPU v6e and v7 instances represent the latest generations of purpose-built AI accelerators, offering significant performance improvements over v5 for large-scale training and inference.
 
-|Instance Type        |Accelerators       | Accelerator Memory  |   CPU         | Price/hr |
-|---------------------|-------------------|---------------------|---------------|----------|
-| `tpu7x-standard-4t` | 4x GOOGLE-TPU-v7  | -                   | 222.8 cores (933.43Gi) | Contact Us |
-| `ct6e-standard-4t`  | 4x GOOGLE-TPU-v6e | -                   | 178.9 cores (698.23Gi) | Contact Us |
-| `tpu7x-standard-1t` | 1x GOOGLE-TPU-v7  | -                   | 55.2 cores (227.83Gi) | Contact Us |
-| `ct6e-standard-1t`  | 1x GOOGLE-TPU-v6e | -                   | 43.3 cores (165.11Gi) | Contact Us |
+| Instance Type        | Region      | Accelerators       | Accelerator Memory | CPU                     | Price/hr |
+|----------------------|-------------|--------------------|--------------------|-------------------------|----------|
+| `ct6e-standard-1t`   | us-central1 | 1x GOOGLE-TPU-v6e  | –                  | 43.3 cores (165.11Gi)   | $2.34    |
+| `tpu7x-standard-1t`  | us-central1 | 1x GOOGLE-TPU-v7   | –                  | 55.2 cores (227.83Gi)   | $2.34    |
+| `ct6e-standard-4t`   | us-central1 | 4x GOOGLE-TPU-v6e  | –                  | 178.9 cores (698.23Gi)  | $2.34    |
+| `tpu7x-standard-4t`  | us-central1 | 4x GOOGLE-TPU-v7   | –                  | 222.8 cores (933.43Gi)  | $2.34    |
 
 **Key Features**
 
@@ -1204,11 +1211,11 @@ Google's TPU v6e and v7 instances represent the latest generations of purpose-bu
 
 Google's cloud TPU v5e and v5p instances are purpose-built accelerators optimized for deep learning training and inference. Unlike GPUs, TPUs (Tensor Processing Units) are specialized for matrix-heavy tensor operations, making them ideal for transformer-based models and large-scale distributed training.
 
-|Instance Type         |Accelerators        | Accelerator Memory  |   CPU         | Price/hr |
-|----------------------|--------------------|---------------------|---------------|----------|
-| `ct5p-hightpu-4t`    | 4x GOOGLE-TPU-v5p  | -                   | 206.8 cores (431.67Gi) | Contact Us |
-| `ct5lp-hightpu-4t`   | 4x GOOGLE-TPU-v5e  | -                   | 111.1 cores (180.79Gi) | Contact Us |
-| `ct5lp-hightpu-1t`   | 1x GOOGLE-TPU-v5e  | -                   | 23.3 cores (42.71Gi)   | Contact Us |
+| Instance Type        | Region      | Accelerators       | Accelerator Memory | CPU                     | Price/hr |
+|----------------------|-------------|--------------------|--------------------|-------------------------|----------|
+| `ct5lp-hightpu-1t`   | us-central1 | 1x GOOGLE-TPU-v5e  | –                  | 23.3 cores (42.71Gi)    | $2.34    |
+| `ct5lp-hightpu-4t`   | us-central1 | 4x GOOGLE-TPU-v5e  | –                  | 111.1 cores (180.79Gi)  | $2.34    |
+| `ct5p-hightpu-4t`    | us-central1 | 4x GOOGLE-TPU-v5p  | –                  | 206.8 cores (431.67Gi)  | $2.34    |
 
 **Key Features**
 
@@ -1227,12 +1234,16 @@ Google's cloud TPU v5e and v5p instances are purpose-built accelerators optimize
 
 The GCP N2-Standard series offers cost-effective, general-purpose compute for workloads that don't require GPU acceleration. These instances balance CPU and memory, making them well-suited for lightweight applications, preprocessing, and small-scale model deployment.
 
-|Instance Type       |GPU           | GPU MEMORY  |   CPU         | Price/hr |
-|--------------------|------|--------------|---------| ---------|
-| `n2-standard-16`   | -    | -            | 15.3 cores (57.75Gi) | $1.08 |
-| `n2-standard-8`    | -    | -            | 7.3 cores (27.67Gi)  | $0.54 |
-| `n2-standard-4`    | -    | -            | 3.4 cores (12.63Gi)  | $0.29 |
-| `n2-standard-2`    | -    | -            | 1.4 cores (5.42Gi)   | $0.14 |
+| Instance Type     | Region      | GPU | GPU Memory | CPU                   | Price/hr |
+|-------------------|-------------|-----|------------|-----------------------|----------|
+| `n2-standard-2`   | us-central1 | –   | –          | 1.4 cores (5.42Gi)    | $2.34    |
+| `n2-standard-4`   | us-central1 | –   | –          | 3.4 cores (12.63Gi)   | $2.34    |
+| `n2-standard-8`   | us-central1 | –   | –          | 7.3 cores (27.67Gi)   | $2.34    |
+| `n2-standard-16`  | us-central1 | –   | –          | 15.3 cores (57.75Gi)  | $2.34    |
+| `n2-standard-2`   | us-east4    | –   | –          | 1.4 cores (5.42Gi)    | $0.144   |
+| `n2-standard-4`   | us-east4    | –   | –          | 3.4 cores (12.63Gi)   | $0.288   |
+| `n2-standard-8`   | us-east4    | –   | –          | 7.3 cores (27.67Gi)   | $0.54    |
+| `n2-standard-16`  | us-east4    | –   | –          | 15.3 cores (57.75Gi)  | $1.08    |
 
 **Key Features**
 
@@ -1248,14 +1259,15 @@ The GCP N2-Standard series offers cost-effective, general-purpose compute for wo
 
 ## Vultr Cloud Servers Instances
 
-### GH200 & MI300X High-Performance GPU Instances
+### GH200, MI300X & MI355X High-Performance GPU Instances
 
 Vultr offers high-performance GPU instances powered by NVIDIA and AMD accelerators. These instances are built for AI training, inference, and HPC (high-performance computing) workloads that demand extreme compute and memory bandwidth.
 
-|Instance Type       |GPU           | GPU MEMORY  |   CPU         | Price/hr |
-|-------------------|--------------|--------------|---------|----------|
-| `vbm-256c-2048gb-8-mi300x-gpu` | 8x AMD-MI300X (127.82Gi)  | 1,022.53Gi | 255.4 cores (1,945.34Gi) | $39.92 |
-| `vbm-72c-480gb-gh200-gpu`      | 1x NVIDIA-GH200 (95.58Gi) | 95.58Gi    | 71.4 cores (455.74Gi)    | $2.99  |
+| Instance Type                   | Region   | GPU                        | GPU Memory  | CPU                        | Price/hr   |
+|---------------------------------|----------|----------------------------|-------------|----------------------------|------------|
+| `vbm-72c-480gb-gh200-gpu`       | atlanta  | 1x NVIDIA-GH200 (95.58Gi)  | 95.58Gi     | 71.4 cores (455.74Gi)      | Contact Us |
+| `vbm-256c-2048gb-8-mi300x-gpu`  | chicago  | 8x AMD-MI300X (127.82Gi)   | 1,022.53Gi  | 255.4 cores (1,945.34Gi)   | Contact Us |
+| `vbm-256c-3072gb-8-mi355x-gpu`  | chicago  | 8x AMD-MI355X (288Gi)      | 2,304Gi     | 255.4 cores (2,918.14Gi)   | Contact Us |
 
 **Key Features**
 
@@ -1263,7 +1275,9 @@ Vultr offers high-performance GPU instances powered by NVIDIA and AMD accelerato
 
 - AMD MI300X GPUs — Designed for frontier AI workloads, offering huge HBM3 memory (128 GiB per GPU) and scaling efficiency with 8 GPUs per instance. Excellent for distributed training of very large models.
 
-- High CPU & RAM configurations — From 71 cores / 455 GiB RAM (GH200) up to 255 cores / 1.9 TiB RAM (MI300X cluster), ensuring orchestration and preprocessing don't bottleneck GPU performance.
+- AMD MI355X GPUs — Next-generation AMD accelerator with 288 GiB HBM3 per card, pushing single-node GPU memory beyond MI300X for frontier-scale training and inference.
+
+- High CPU & RAM configurations — From 71 cores / 455 GiB RAM (GH200) up to 255 cores / ~2.85 TiB RAM (MI355X cluster), ensuring orchestration and preprocessing don't bottleneck GPU performance.
 
 **Example Use Cases**
 
@@ -1271,16 +1285,19 @@ Vultr offers high-performance GPU instances powered by NVIDIA and AMD accelerato
 
 - AMD MI300X (8-GPU cluster instance) can be used for training frontier LLMs and multi-modal models (GPT-4, Gemini-class, or open LLMs at >100B parameters).
 
+- AMD MI355X (8-GPU cluster instance) can be used for frontier-scale workloads requiring maximum single-node GPU memory beyond what MI300X provides.
+
 ### VCG Instances
 
 The Vultr VCG series provides instances with dedicated NVIDIA GPUs, enabling acceleration for deep learning, inference, and GPU-intensive applications. These instances scale from entry-level GPU setups to multi-GPU clusters, making them versatile for workloads ranging from experimentation to frontier AI model training.
 
-|Instance Type       |GPU           | GPU MEMORY  |   CPU         | Price/hr |
-|------------------|-------------|--------------|---------| ---------|
-| `vcg-b200-248c-2826g-1536vram`  | 8x NVIDIA-B200 (179.06Gi)  | 1,432.49Gi  | 255.4 cores (1,945.34Gi) | $79.92 |
-| `vcg-a100-12c-120g-80vram`      | 1x NVIDIA-A100 (80Gi)      | 80Gi        | 11.4 cores (113.74Gi)    | $2.99  |
-| `vcg-l40s-16c-180g-48vram`      | 1x NVIDIA-L40S (44.99Gi)   | 44.99Gi     | 15.4 cores (170.74Gi)    | $2.09  |
-| `vcg-a16-6c-64g-16vram`         | 1x NVIDIA-A16 (16Gi)       | 16Gi        | 5.4 cores (60.54Gi)      | $0.58  |
+| Instance Type                  | Region   | GPU                        | GPU Memory  | CPU                        | Price/hr   |
+|--------------------------------|----------|----------------------------|-------------|----------------------------|------------|
+| `vcg-a16-6c-64g-16vram`        | new-york | 1x NVIDIA-A16 (16Gi)       | 16Gi        | 5.4 cores (60.54Gi)        | $0.576     |
+| `vcg-l40s-16c-180g-48vram`     | new-york | 1x NVIDIA-L40S (44.99Gi)   | 44.99Gi     | 15.4 cores (170.74Gi)      | $2.088     |
+| `vcg-a100-12c-120g-80vram`     | new-york | 1x NVIDIA-A100 (80Gi)      | 80Gi        | 11.4 cores (113.74Gi)      | $2.988     |
+| `vcg-b200-248c-2826g-1536vram` | atlanta  | 8x NVIDIA-B200 (179.06Gi)  | 1,432.49Gi  | 247.4 cores (2,684.44Gi)   | Contact Us |
+| `vcg-b200-248c-2826g-1536vram` | seattle  | 8x NVIDIA-B200 (179.06Gi)  | 1,432.49Gi  | 247.4 cores (2,684.44Gi)   | Contact Us |
 
 **Key Features**
 
@@ -1299,14 +1316,14 @@ The Vultr VCG series provides instances with dedicated NVIDIA GPUs, enabling acc
 
 The Vultr VC2 series provides general-purpose compute instances optimized for workloads that do not require GPU acceleration. With a balance of CPU and memory, these instances are best suited for lightweight use cases.
 
-|Instance Type       |GPU           | GPU MEMORY  |   CPU         | Price/hr |
-|------------------|-------------|--------------|---------| ---------|
-| `vc2-24c-96gb`     | -            | -            | 23.4 cores (90.94Gi)  | $1.08 |
-| `vc2-16c-64gb`     | -            | -            | 15.4 cores (60.54Gi)  | $0.54 |
-| `vc2-8c-32gb`      | -            | -            | 7.4 cores (30.14Gi)   | $0.29 |
-| `vc2-6c-16gb`      | -            | -            | 5.4 cores (14.94Gi)   | $0.14 |
-| `vc2-4c-8gb`       | -            | -            | 3.4 cores (7.34Gi)    | $0.07 |
-| `vc2-2c-4gb`       | -            | -            | 1.4 cores (3.54Gi)    | $0.04 |
+| Instance Type   | Region   | GPU | GPU Memory | CPU                   | Price/hr |
+|-----------------|----------|-----|------------|-----------------------|----------|
+| `vc2-2c-4gb`    | new-york | –   | –          | 1.4 cores (3.54Gi)    | $0.036   |
+| `vc2-4c-8gb`    | new-york | –   | –          | 3.4 cores (7.34Gi)    | $0.072   |
+| `vc2-6c-16gb`   | new-york | –   | –          | 5.4 cores (14.94Gi)   | $0.144   |
+| `vc2-8c-32gb`   | new-york | –   | –          | 7.4 cores (30.14Gi)   | $0.288   |
+| `vc2-16c-64gb`  | new-york | –   | –          | 15.4 cores (60.54Gi)  | $0.54    |
+| `vc2-24c-96gb`  | new-york | –   | –          | 23.4 cores (90.94Gi)  | $1.08    |
 
 **Key Features**
 
@@ -1326,9 +1343,9 @@ The Vultr VC2 series provides general-purpose compute instances optimized for wo
 
 The Oracle MI300X family provides cutting-edge AMD Instinct MI300X GPUs, purpose-built for large-scale AI training and HPC (high-performance computing) workloads. These instances feature massive GPU memory and CPU scaling, supporting frontier use cases.
 
-| Instance Type     | GPU                         | GPU Memory   | CPU                        | Price/hr |
-| ----------------- | --------------------------- | ------------ | -------------------------- | -------- |
-| `BM.GPU.MI300X.8` | 8 × AMD-MI300X (127.82Gi)   | 1,022.53Gi   | 111.5 cores (1,945.01Gi)  | Contact Us |
+| Instance Type     | Region       | GPU                        | GPU Memory  | CPU                       | Price/hr   |
+| ----------------- | ------------ | -------------------------- | ----------- | ------------------------- | ---------- |
+| `BM.GPU.MI300X.8` | us-chicago-1 | 8 × AMD-MI300X (127.82Gi)  | 1,022.53Gi  | 111.5 cores (1,945.01Gi)  | Contact Us |
 
 **Key Features**
 
@@ -1345,10 +1362,10 @@ The Oracle MI300X family provides cutting-edge AMD Instinct MI300X GPUs, purpose
 
 The Oracle A10G series provides NVIDIA GPUs optimized for inference, visualization, and moderate ML training tasks. These instances combine consistent vCPU allocations with scalable GPU configurations, from single-GPU VMs to multi-GPU bare metal nodes.
 
-| Instance Type  | GPU                         | GPU Memory | CPU                    | Price/hr |
-| -------------- | --------------------------- | ---------- | ---------------------- | -------- |
-| `BM.GPU.A10.4` | 4 × NVIDIA-A10G (22.49Gi)   | 89.95Gi    | 14.8 cores (227.41Gi) | Contact Us |
-| `VM.GPU.A10.1` | 1 × NVIDIA-A10G (22.49Gi)   | 22.49Gi    | 14.8 cores (227.41Gi) | Contact Us |
+| Instance Type  | Region       | GPU                        | GPU Memory | CPU                    | Price/hr   |
+| -------------- | ------------ | -------------------------- | ---------- | ---------------------- | ---------- |
+| `VM.GPU.A10.1` | us-chicago-1 | 1 × NVIDIA-A10G (22.49Gi)  | 22.49Gi    | 14.8 cores (227.41Gi)  | Contact Us |
+| `BM.GPU.A10.4` | us-chicago-1 | 4 × NVIDIA-A10G (22.49Gi)  | 89.95Gi    | 14.8 cores (227.41Gi)  | Contact Us |
 
 **Key Features**
 
@@ -1364,9 +1381,9 @@ The Oracle A10G series provides NVIDIA GPUs optimized for inference, visualizati
 
 The Oracle E6 Flex series provides CPU-only instances for workloads that do not require GPU acceleration.
 
-| Instance Type         | GPU | GPU Memory | CPU                  | Price/hr |
-| --------------------- | --- | ---------- | -------------------- | -------- |
-| `VM.Standard.E6.Flex` | –   | –          | 0.8 cores (14.61Gi) | Contact Us |
+| Instance Type         | Region       | GPU | GPU Memory | CPU                  | Price/hr   |
+| --------------------- | ------------ | --- | ---------- | -------------------- | ---------- |
+| `VM.Standard.E6.Flex` | us-chicago-1 | –   | –          | 0.8 cores (14.61Gi)  | Contact Us |
 
 **Key Features**
 
@@ -1526,15 +1543,15 @@ These DigitalOcean instances provide general-purpose compute for workloads that 
 
 | Instance Type    | Region | GPU | GPU Memory | CPU                  | Price/hr   |
 | ---------------- | ------ | --- | ---------- | -------------------- | ---------- |
-| `s-8vcpu-16gb`   | nyc1   | –   | –          | 7.8 cores (13.24Gi)  | Contact Us |
-| `s-4vcpu-8gb`    | nyc1   | –   | –          | 3.8 cores (6.02Gi)   | Contact Us |
 | `s-2vcpu-2gb`    | nyc1   | –   | –          | 1.8 cores (1.3Gi)    | Contact Us |
-| `s-8vcpu-16gb`   | nyc2   | –   | –          | 7.8 cores (13.24Gi)  | Contact Us |
-| `s-4vcpu-8gb`    | nyc2   | –   | –          | 3.8 cores (6.02Gi)   | Contact Us |
+| `s-4vcpu-8gb`    | nyc1   | –   | –          | 3.8 cores (6.02Gi)   | Contact Us |
+| `s-8vcpu-16gb`   | nyc1   | –   | –          | 7.8 cores (13.24Gi)  | Contact Us |
 | `s-2vcpu-2gb`    | nyc2   | –   | –          | 1.8 cores (1.3Gi)    | Contact Us |
-| `s-8vcpu-16gb`   | sfo3   | –   | –          | 7.8 cores (13.24Gi)  | Contact Us |
-| `s-4vcpu-8gb`    | sfo3   | –   | –          | 3.8 cores (6.02Gi)   | Contact Us |
+| `s-4vcpu-8gb`    | nyc2   | –   | –          | 3.8 cores (6.02Gi)   | Contact Us |
+| `s-8vcpu-16gb`   | nyc2   | –   | –          | 7.8 cores (13.24Gi)  | Contact Us |
 | `s-2vcpu-2gb`    | sfo3   | –   | –          | 1.8 cores (1.3Gi)    | Contact Us |
+| `s-4vcpu-8gb`    | sfo3   | –   | –          | 3.8 cores (6.02Gi)   | Contact Us |
+| `s-8vcpu-16gb`   | sfo3   | –   | –          | 7.8 cores (13.24Gi)  | Contact Us |
 
 **Key Features**
 
