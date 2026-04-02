@@ -25,12 +25,6 @@ These capabilities enable our enterprise customers to deploy production models w
 
 Clarifai handles the containerization, model packing, time slicing, and other performance optimizations on your behalf. 
 
-:::tip Quick Start
-
-Learn how to get started quickly with Compute Orchestration [here](https://docs.clarifai.com/getting-started/set-up-compute). 
-
-:::
-
 ## Deployment Options
 
 Compute Orchestration allows us to provide multiple deployment options — all of which can be customized with your preferred settings for autoscaling, cold start, and more, ensuring maximum cost efficiency and performance. 
@@ -55,7 +49,7 @@ These are the deployment options we provide:
 
 ## Compute Clusters and Nodepools
 
-We use [clusters and nodepools](https://docs.clarifai.com/portal-guide/compute-orchestration/set-up-compute) to organize and manage the compute resources required for the Compute Orchestration capabilities.
+We use [clusters and nodepools](https://docs.clarifai.com/compute/deployments/clusters-nodepools) to organize and manage the compute resources required for the Compute Orchestration capabilities.
 
 :::info Cluster
 

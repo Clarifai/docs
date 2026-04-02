@@ -65,7 +65,7 @@ pip install --upgrade clarifai
 
 A compute cluster and nodepool define where your pipeline runs within Clarifai’s compute environment. They are required to allocate and manage the resources your pipeline needs for execution.
 
-You need to [create](https://docs.clarifai.com/getting-started/set-up-compute) them and get their IDs. 
+You need to [create](https://docs.clarifai.com/compute/deployments/clusters-nodepools) them and get their IDs. 
 
 
 ## Step 2: Initialize a Pipeline Project

@@ -78,7 +78,8 @@
     "to": "/compute/deployments/clusters-nodepools",
     "from": [
       "/portal-guide/compute-orchestration/set-up-compute",
-      "/sdk/compute-orchestration/set-up-compute"
+      "/sdk/compute-orchestration/set-up-compute",
+      "/getting-started/set-up-compute"
     ]
   },
   {

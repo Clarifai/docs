@@ -1,6 +1,7 @@
 ---
 description: Set up your computing infrastructure easily and fast for inference
 sidebar_position: 4
+draft: true
 ---
 
 # Set Up Compute Quickly
