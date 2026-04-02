@@ -49,7 +49,7 @@ To create a deployment, go to the **Compute** option in the collapsible left sid
 
 You'll be redirected to the **Deployments** page, where you can view and manage deployments across your Clarifai compute resources.
 
-To start creating a deployment, click the **Create Deployment** button in the upper-right corner of the page. 
+To start creating a deployment, click the **Create Deployment** button. 
 
 ![ ](/img/compute-orchestration/compute-12.png)
 
