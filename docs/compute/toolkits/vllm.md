@@ -132,6 +132,8 @@ To see all available instance types and pricing:
 
 > **Tip:** If you have a local GPU and want to test before deploying, run `clarifai model serve ./Qwen3-0.6B --mode env` first.
 
+> **Note:** Clarifai automatically optimizes replica routing using KV cache affinity, improving throughput for shared system prompts, RAG pipelines, and multi-turn conversations. See [Request Routing](https://docs.clarifai.com/compute/inference/routing) for details.
+
 ## Step 5: Run Inference
 
 <Tabs groupId="code">
