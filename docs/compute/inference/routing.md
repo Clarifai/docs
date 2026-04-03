@@ -84,6 +84,12 @@ clarifai model deploy ./my-model --min-replicas 1 --max-replicas 10
 
 > For advanced autoscaling settings (scale-to-zero delays, traffic history, packing), use the [UI deployment flow](https://docs.clarifai.com/compute/deployments/deploy-model#step-4-set-autoscaling) or the API.
 
+:::tip Cold Start Reduction
+
+Clarifai pre-warms popular instance types automatically so new replicas are ready faster when traffic increases or spills across nodepools. For specific GPU types not covered by default, set `min_replicas ≥ 1` on your deployment to keep your preferred hardware warm and eliminate cold starts entirely.
+
+:::
+
 More replicas means more capacity and better cache distribution across your deployment.
 
 ## Prediction Caching
