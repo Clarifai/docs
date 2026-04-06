@@ -25,6 +25,7 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [MCP Servers](https://docs.clarifai.com/docs/compute/inference/mcp-servers): Extend agentic models capabilities with MCP Servers
 - [OpenAI](https://docs.clarifai.com/docs/compute/inference/open-ai): Run inferences on Clarifai models using OpenAI
 - [OpenHands](https://docs.clarifai.com/docs/compute/inference/openhands): Run inference with Clarifai models locally using OpenHands
+- [Request Routing](https://docs.clarifai.com/docs/compute/inference/routing): How Clarifai routes prediction requests across nodepools and replicas
 - [Vercel AI SDK](https://docs.clarifai.com/docs/compute/inference/vercel): Run inferences on Clarifai models using Vercel
 - [Local Runners](https://docs.clarifai.com/docs/compute/local-runners/README): Run and test models locally, while exposing them through Clarifai’s enterprise‑grade API
 - [Compute Orchestration](https://docs.clarifai.com/docs/compute/overview): Orchestrate your AI workloads better, avoid vendor lock-in, and use compute spend efficiently
