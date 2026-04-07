@@ -107,18 +107,6 @@ If you use Claude Code, you can install Clarifai skills directly via the plugin 
 </TabItem>
 </Tabs>
 
-#### Option C: Manual (From Source)
-
-You can clone the repo and install from source.
-
-<Tabs groupId="code">
-<TabItem value="bash" label="Bash">
-    ```bash
-    git clone https://github.com/Clarifai/skills.git
-    clarifai skills install --source ./skills
-    ```
-</TabItem>
-</Tabs>
 
 ## Managing Skills
 

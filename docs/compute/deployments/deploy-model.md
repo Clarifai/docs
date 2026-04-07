@@ -17,7 +17,7 @@ With model deployment, you can quickly take a trained model and set it up for in
 
 :::tip 
 
-Learn how deployment works when making a prediction using our Compute Orchestration capabilities [here](https://docs.clarifai.com/compute/inference/#predict-with-compute-orchestration). 
+Learn how Clarifai routes prediction requests for optimal performance [here](https://docs.clarifai.com/compute/inference/routing). 
 
 :::
 
