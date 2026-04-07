@@ -7,6 +7,7 @@ This file contains links to documentation sections following the llmstxt.org sta
 ## Table of Contents
 
 - [Agents](https://docs.clarifai.com/docs/compute/agents/README): Build powerful AI agents with Clarifai
+- [Agent Skills](https://docs.clarifai.com/docs/compute/agents/agent-skills): Use Clarifai agent skills to supercharge AI coding assistants with deep Clarifai knowledge
 - [Build Agents](https://docs.clarifai.com/docs/compute/agents/build): Learn how to build agents with Clarifai
 - [Deploy Open-Source MCP Servers](https://docs.clarifai.com/docs/compute/agents/deploy-mcp): Upload, deploy, and interact with open-source MCP servers on Clarifai
 - [Build Custom MCP Servers](https://docs.clarifai.com/docs/compute/agents/mcp): Build performant MCP Servers with FastMCP for Clarifai
