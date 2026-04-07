@@ -39,6 +39,10 @@ import CodeBlock from "@theme/CodeBlock";
 
 ## Prerequisites
 
+### Set Up an AI Coding Assistant
+
+You need an AI coding assistant — such as [Claude Code](https://claude.ai/code), [Cursor](https://www.cursor.com/), [GitHub Copilot](https://github.com/features/copilot), [OpenAI Codex](https://openai.com/codex), or [Gemini](https://gemini.google.com/) — installed and configured on your machine.
+
 ### Install the Clarifai Python SDK
 
 <Tabs groupId="code">
@@ -49,7 +53,7 @@ import CodeBlock from "@theme/CodeBlock";
 </TabItem>
 </Tabs>
 
-### Log in via the CLI
+#### Log in via the CLI
 
 Log in to Clarifai and authenticate your connection with your [PAT](https://docs.clarifai.com/control/authentication/pat) (Personal Access Token).
 
