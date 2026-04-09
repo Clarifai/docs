@@ -20161,45 +20161,47 @@ In a manufacturing facility that produces electronic circuit boards, the quality
 
 ## Visual Classifier
 
-# Visual Classifier 
+# Visual Classifier
 
-**Learn how to create and train a visual classifier model**
+**Train an image classification model using a pipeline template**
 
 **Input**: Images and videos
 
-**Output**: [Concepts]( https://docs.clarifai.com/portal-guide/concepts)
+**Output**: [Concepts]( https://docs.clarifai.com/portal-guide/concepts) 
 
-Visual classifier is a type of deep fine-tuned model that allows you to classify images and video frames into a set of concepts. It helps you answer the question "What" or "Who" is in your data.
+A visual classifier is a deep fine-tuned model that categorizes images and video frames into a set of concepts. It answers the question *"What is in this image?"* or *"Who is in this image?"*
 
-![](/img/others-2/image_classification_example.webp)
-Image classification example
-
-:::info
-
-The visual classifier model type also comes with various [templates](https://docs.clarifai.com/portal-guide/model/deep-training/visual-classification-templates/) that give you the control to choose the specific architecture used by your neural network, as well as define a set of hyperparameters you can use to fine-tune the way your model learns.
-
-::: 
-
-Visual classifiers are commonly used for various computer vision tasks, such as:
-
-- **Image classification**: Categorizing images into different concepts, such as "cat", "dog", "car", or "person".
-- **Object detection**: Finding and identifying objects in images, such as faces, cars, or traffic signs.
-- **Scene recognition**: Identifying the scene in an image, such as a beach, a forest, or a city.
-- **Video analysis**: Tracking objects and events in videos.
+![Image classification example](/img/others-2/image_classification_example.webp)
+*Image classification example*
 
 You may choose a visual classifier model type in cases where:
 
-- Accuracy and the ability to carefully target solutions take priority over speed and ease of use.
-- You need a classification model to learn new features not recognized by the existing Clarifai models. In that case, you may need to "deep fine-tune" your custom model and integrate it directly within your [workflows](https://docs.clarifai.com/portal-guide/workflows/).
-- You have a custom-tailored dataset, accurate labels, and the expertise and time to fine-tune models.
+- **Accuracy takes priority** — you need a carefully targeted solution rather than a fast, general-purpose one.
+- **Your data is unique** — existing Clarifai models don't recognize the features in your dataset, and you need to deep fine-tune a custom model integrated into your [workflows](https://docs.clarifai.com/portal-guide/workflows/).
+- **You have the right ingredients** — a custom dataset, accurate labels, and the time and expertise to fine-tune.
 
-## Example Use Case
+Visual classifiers are commonly used for various computer vision tasks, such as:
 
-A large retailer is looking to find and remove listings for illegal objects and substances across thousands of listings that include user-generated data. A classification model allows the retailer to quickly find listings that violate their community rules, and remove them from the site.
+- **Image classification** — categorize images into concepts such as "cat", "dog", or "vehicle".
+- **Scene recognition** — identify the setting in an image, such as a beach, forest, or urban street.
+- **Video analysis** — track objects and events across video frames.
+- **Content moderation** — a large retailer, for example, can use a classification model to automatically flag and remove listings for prohibited items across thousands of user-generated posts.
+
+:::tip
+
+Visual classifiers are optimized for classification tasks. If you need to locate *where* objects appear in an image, consider a [Visual Detector](visual-detector.md) instead.
+
+:::
 
 ##  **Via the UI**
 
-Let's demonstrate how to create and train a visual classifier model using the UI. We intend to create a model that can distinguish between images of cats and dogs.
+Let's demonstrate how to create and train a visual classifier model using the UI. 
+
+:::note objective
+
+We intend to create a model that can distinguish between images of cats and dogs.
+
+:::
 
 ### Step 1: Prepare Training Data
 
@@ -20207,8 +20209,7 @@ Preparing data for fine-tuning ensures that the custom model learns effectively 
 
 Ensure that you collect high-quality, well-prepared data that will help achieve optimized performance in your model. 
 
-You can prepare your data using your preferred spreadsheet software. 
-[Click here](https://docs.clarifai.com/portal-guide/advanced-topics/csv-and-tsv) to download a CSV template you can use to prepare your data.
+> **Note:** You can prepare your data using your preferred spreadsheet software. [Click here](https://docs.clarifai.com/portal-guide/advanced-topics/csv-and-tsv) to download a CSV template you can use to prepare your data.
 
 To illustrate how fine-tuning works, we'll prepare the following simple dataset consisting of images of dogs and cats. Note that for your model to perform well, you need to provide it with enough diverse data to learn meaningful patterns. [Click here](https://www.clarifai.com/blog/using-ai-to-create-applications-downloading-images-easily) to learn how you can get images to enrich your dataset. 
 
@@ -32263,12 +32264,6 @@ We have a public roadmap that gives you a view of our upcoming plans and helps u
 |--------------------------------------|------------------------|---------------------------|
 |  ![improvement](/img/improvement.jpg)| Made Playground improvements|    Enhanced the Playground with major upgrades to the Universal Search experience, including multi-panel (compare mode) support, improved workspace handling, and smarter model auto-selection.  Model selections are now panel-aware to prevent cross-panel conflicts, workspace context is more robust and explicit, and the UI can optionally display simplified model names for a cleaner experience. |
 
-## Video Intelligence
-
-|Status                                |Change                  |Details                    |
-|--------------------------------------|------------------------|---------------------------|
-|  ![new-feature](/img/new_feature.jpg)| Added support for video intelligence via the UI|   You can now connect video streams to your application and apply AI analysis to detect objects, track movement, and generate insights.  |
-
 ## Deployments
 
 |Status                                |Change                  |Details                    |
@@ -32298,6 +32293,73 @@ We have a public roadmap that gives you a view of our upcoming plans and helps u
 |Status                                |Change                  |Details                    |
 |--------------------------------------|------------------------|---------------------------|
 |  ![improvement](/img/improvement.jpg)|Improved the Python SDK   Learn more [here](https://github.com/Clarifai/clarifai-python/blob/master/CHANGELOG.md)  |  Prevented environment variable clobbering in tests by using `@patch.dict` and correcting patch paths after the lazy-loading refactor.Fixed the ModelRunner health server starting twice, which could cause “Address already in use” errors; added support to disable the health server and automatically select an available port.Reduced overhead in the ModelRunner admission-control polling loop to improve runner efficiency.  Fixed a serializer regression affecting runner serialization utilities.Added admission-control support for model runners.Added `openai` as a core dependency. Removed the `inference_compute_info` requirement for local model runners. Relaxed the `clarifai-protocol` version constraint from `==0.0.35` to `>=0.0.35, Resolved dependency version-constraint issues.Fixed authentication issues in the model deployment CLI.Added support for passing `num_threads` from `config.yaml` into the model version protobuf.Switched Dockerfile templates to use `tini` as the default entrypoint to improve signal handling and zombie process reaping in runner containers.Refactored the Stdio Model Context Protocol (MCP) server to improve logging clarity and remove unused legacy code.|
+
+---
+
+## Release 12.3
+
+# Release 12.3
+
+**Release Date:** April 8th, 2026
+
+| New Feature | Improvement | Bug Fix | Enterprise Only |
+| :---: | :---: | :---: | :---: |
+| ![new-feature](/img/new_feature.jpg) |![improvement](/img/improvement.jpg) | ![bug](/img/bug.jpg) | ![enterprise](/img/enterprise.jpg) |
+
+## Agent Skills
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![new-feature](/img/new_feature.jpg) | Released Clarifai Skills|    Clarifai Skills are specialized prompt templates that transform AI coding assistants — Claude Code, Cursor, Codex, and more — into Clarifai platform experts.  Learn more about them [here](https://docs.clarifai.com/compute/agents/agent-skills).  |
+
+## Model Training
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![new-feature](/img/new_feature.jpg) | Added model pipeline training from templates | You can now train models using pipeline templates, enabling a streamlined, configuration-driven training workflow. |
+| Deprecation | Deprecated legacy model training (Triton + Kubeflow) | Legacy model training methods using Triton and Kubeflow have been deprecated.Note: Transfer Learn training remains available. |
+
+## Request Routing
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![improvement](/img/improvement.jpg)| Improved how Clarifai routes prediction requests for optimal performance|  Added KV cache affinity to route requests to replicas with relevant cache state.Added session-aware routing to keep user requests on the same replica. Reduced cold starts with automatic pre-warming of popular instances. Added prediction caching for identical input + model + version combinations.  Learn more about them [here](https://docs.clarifai.com/compute/inference/routing/).   |
+
+## UI Updates
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![improvement](/img/improvement.jpg) | Updated Compute List and View pages | Refreshed the List and View pages for deployments, nodepools, and clusters with improved layouts and information display. |
+| ![improvement](/img/improvement.jpg) | Updated the log viewer component | Improved the log viewer UI for better readability and navigation of model and runner logs. |
+| ![improvement](/img/improvement.jpg) | Updated the Home experience | Refreshed the Clarifai platform Home page with an improved experience for navigating resources and getting started. |
+| ![improvement](/img/improvement.jpg) | Updated the model page UI | Redesigned model page with an improved layout and user experience. |
+
+## Python SDK
+
+### Model Serving & Deployment
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![new-feature](/img/new_feature.jpg) | Added `clarifai model deploy` command and simplified `clarifai model init` | New `clarifai model deploy` command with multi-cloud GPU discovery and a zero-prompt deployment flow.Simplified `config.yaml` structure for model initialization.   |
+| ![improvement](/img/improvement.jpg) | Smart resource reuse and private-by-default for `clarifai model serve` | Model serve now reuses existing resources when available instead of creating new ones.Served models are private by default. |
+| ![improvement](/img/improvement.jpg) | Added `--keep` flag to `clarifai model serve` | Use `--keep` to preserve the build directory after serving, useful for debugging and inspecting build artifacts. |
+| ![improvement](/img/improvement.jpg) | Local Runner is now public by default | Models launched via the local runner are now publicly accessible by default, removing the need to manually set visibility. |
+
+### Model Runner
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![new-feature](/img/new_feature.jpg) | Added `VLLMOpenAIModelClass` | New `VLLMOpenAIModelClass` parent class with built-in cancellation support and health probes for vLLM-backed models. |
+| ![improvement](/img/improvement.jpg) | Optimized model runner memory and latency | Reduced memory footprint and improved response latency in the model runner.Streamlined overhead in SSE (Server-Sent Events) streaming. |
+| ![improvement](/img/improvement.jpg) | Auto-detect and clamp `max_tokens` | The runner now automatically detects the backend's `max_seq_len` and clamps `max_tokens` to that value, preventing out-of-range errors. |
+
+### Bug Fixes
+
+|Status                                |Change                  |Details                    |
+|--------------------------------------|------------------------|---------------------------|
+| ![bug](/img/bug.jpg) | Fixed reasoning model token tracking and streaming in agentic class | Fixed token tracking for reasoning models to correctly account for reasoning tokens.Fixed event-loop safety, streaming, and tool call passthrough in the agentic class. |
+| ![bug](/img/bug.jpg) | Fixed user/app context conflicts in CLI | Resolved conflicts between `user_id` and `app_id` when using named contexts in CLI commands. |
+| ![bug](/img/bug.jpg) | Fixed `clarifai model init` directory handling | `clarifai model init` now correctly updates an existing model directory instead of creating a subdirectory. |
 
 ---
 
