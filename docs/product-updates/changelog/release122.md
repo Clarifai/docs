@@ -2,7 +2,7 @@
 description: Changelog for Clarifai Release 12.2
 # For versioning, we use a negative position so that the oldest versions are displayed at the bottom. Any time you add a new version, increase the position by -1. 
 sidebar_position: -77
-pagination_next: null
+pagination_next: product-updates/changelog/release123
 pagination_prev: product-updates/changelog/release121
 draft: false
 ---
@@ -54,11 +54,6 @@ draft: false
 |--------------------------------------|------------------------|---------------------------|
 |  ![improvement](/img/improvement.jpg)| Made Playground improvements| <ul>  <li> Enhanced the Playground with major upgrades to the Universal Search experience, including multi-panel (compare mode) support, improved workspace handling, and smarter model auto-selection.</li> <li> Model selections are now panel-aware to prevent cross-panel conflicts, workspace context is more robust and explicit, and the UI can optionally display simplified model names for a cleaner experience.</li> </ul>|
 
-## Video Intelligence
-
-|Status                                |Change                  |Details                    |
-|--------------------------------------|------------------------|---------------------------|
-|  ![new-feature](/img/new_feature.jpg)| Added support for video intelligence via the UI| <ul> <li> You can now connect video streams to your application and apply AI analysis to detect objects, track movement, and generate insights. </li> </ul>|
 
 ## Deployments
 

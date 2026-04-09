@@ -1,48 +1,52 @@
 ---
-description: Learn how to create and train a visual classifier model 
+description: Train an image classification model using a pipeline template
 sidebar_position: 2
 ---
 
-# Visual Classifier 
+# Visual Classifier
 
-**Learn how to create and train a visual classifier model**
+**Train an image classification model using a pipeline template**
 <hr />
 
 **Input**: Images and videos
 
-**Output**: [Concepts]( https://docs.clarifai.com/portal-guide/concepts)
+**Output**: [Concepts]( https://docs.clarifai.com/portal-guide/concepts) 
 
-Visual classifier is a type of deep fine-tuned model that allows you to classify images and video frames into a set of concepts. It helps you answer the question "What" or "Who" is in your data.
+A visual classifier is a deep fine-tuned model that categorizes images and video frames into a set of concepts. It answers the question *"What is in this image?"* or *"Who is in this image?"*
 
-![](/img/others-2/image_classification_example.webp)
-<center>Image classification example</center>
+![Image classification example](/img/others-2/image_classification_example.webp)
+<center>*Image classification example*</center>
 
-:::info
-
-The visual classifier model type also comes with various [templates](https://docs.clarifai.com/portal-guide/model/deep-training/visual-classification-templates/) that give you the control to choose the specific architecture used by your neural network, as well as define a set of hyperparameters you can use to fine-tune the way your model learns.
-
-::: 
-
-Visual classifiers are commonly used for various computer vision tasks, such as:
-
-- **Image classification**: Categorizing images into different concepts, such as "cat", "dog", "car", or "person".
-- **Object detection**: Finding and identifying objects in images, such as faces, cars, or traffic signs.
-- **Scene recognition**: Identifying the scene in an image, such as a beach, a forest, or a city.
-- **Video analysis**: Tracking objects and events in videos.
 
 You may choose a visual classifier model type in cases where:
 
-- Accuracy and the ability to carefully target solutions take priority over speed and ease of use.
-- You need a classification model to learn new features not recognized by the existing Clarifai models. In that case, you may need to "deep fine-tune" your custom model and integrate it directly within your [workflows](https://docs.clarifai.com/portal-guide/workflows/).
-- You have a custom-tailored dataset, accurate labels, and the expertise and time to fine-tune models.
+- **Accuracy takes priority** — you need a carefully targeted solution rather than a fast, general-purpose one.
+- **Your data is unique** — existing Clarifai models don't recognize the features in your dataset, and you need to deep fine-tune a custom model integrated into your [workflows](https://docs.clarifai.com/portal-guide/workflows/).
+- **You have the right ingredients** — a custom dataset, accurate labels, and the time and expertise to fine-tune.
 
-## Example Use Case
+Visual classifiers are commonly used for various computer vision tasks, such as:
 
-A large retailer is looking to find and remove listings for illegal objects and substances across thousands of listings that include user-generated data. A classification model allows the retailer to quickly find listings that violate their community rules, and remove them from the site.
+- **Image classification** — categorize images into concepts such as "cat", "dog", or "vehicle".
+- **Scene recognition** — identify the setting in an image, such as a beach, forest, or urban street.
+- **Video analysis** — track objects and events across video frames.
+- **Content moderation** — a large retailer, for example, can use a classification model to automatically flag and remove listings for prohibited items across thousands of user-generated posts.
+
+:::tip
+
+Visual classifiers are optimized for classification tasks. If you need to locate *where* objects appear in an image, consider a [Visual Detector](visual-detector.md) instead.
+
+:::
+
 
 ##  **Via the UI**
 
-Let's demonstrate how to create and train a visual classifier model using the UI. We intend to create a model that can distinguish between images of cats and dogs.
+Let's demonstrate how to create and train a visual classifier model using the UI. 
+
+:::note objective
+
+We intend to create a model that can distinguish between images of cats and dogs.
+
+:::
 
 ### Step 1: Prepare Training Data
 
@@ -50,8 +54,7 @@ Preparing data for fine-tuning ensures that the custom model learns effectively 
 
 Ensure that you collect high-quality, well-prepared data that will help achieve optimized performance in your model. 
 
-You can prepare your data using your preferred spreadsheet software. 
-[Click here](https://docs.clarifai.com/portal-guide/advanced-topics/csv-and-tsv) to download a CSV template you can use to prepare your data.
+> **Note:** You can prepare your data using your preferred spreadsheet software. [Click here](https://docs.clarifai.com/portal-guide/advanced-topics/csv-and-tsv) to download a CSV template you can use to prepare your data.
 
 To illustrate how fine-tuning works, we'll prepare the following simple dataset consisting of images of dogs and cats. Note that for your model to perform well, you need to provide it with enough diverse data to learn meaningful patterns. [Click here](https://www.clarifai.com/blog/using-ai-to-create-applications-downloading-images-easily) to learn how you can get images to enrich your dataset. 
 
