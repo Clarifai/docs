@@ -37,11 +37,13 @@ Google ADK agents powered by Clarifai models can:
 Google ADK uses LiteLLM internally for model routing, which supports OpenAI-compatible endpoints. Configure your agents to use Clarifai models with the following setup:
 
 ```python
+import os
 from google.adk.models.lite_llm import LiteLlm
 
 model = LiteLlm(
     model="openai/{user_id}/{app_id}/models/{model_id}",
-    base_url="https://api.clarifai.com/v2/ext/openai/v1"
+    base_url="https://api.clarifai.com/v2/ext/openai/v1",
+    api_key=os.environ["CLARIFAI_PAT"],
 )
 ```
 
