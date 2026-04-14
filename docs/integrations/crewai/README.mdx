@@ -47,12 +47,13 @@ Agents work together, sharing information and coordinating efforts to accomplish
 CrewAI uses LiteLLM for model routing, which supports Clarifai's OpenAI-compatible endpoint. Configure your agents with Clarifai models using the following pattern:
 
 ```python
+import os
 from crewai import LLM
 
 llm = LLM(
     model="openai/{user_id}/{app_id}/models/{model_id}",
     base_url="https://api.clarifai.com/v2/ext/openai/v1",
-    api_key="CLARIFAI_PAT"
+    api_key=os.environ["CLARIFAI_PAT"]
 )
 ```
 
