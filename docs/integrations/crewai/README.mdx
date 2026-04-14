@@ -8,96 +8,117 @@ pagination_prev: null
 **Build collaborative AI agent teams with CrewAI and Clarifai**
 <hr />
 
-[CrewAI](https://github.com/joaomdmoura/crewAI) is a cutting-edge framework for orchestrating role-playing, autonomous AI agents. It enables you to create crews of AI agents that work together collaboratively to accomplish complex tasks. Each agent has specific roles, goals, and tools, and they coordinate their efforts to achieve shared objectives.
+[CrewAI](https://github.com/joaomdmoura/crewAI) is a framework for orchestrating autonomous AI agents that work together as a crew. Each agent has a specific role, goal, and set of tools. By integrating with Clarifai, you can power your agent crews with any model on the Clarifai platform.
 
-By integrating Clarifai with CrewAI, you can power your agent crews with Clarifai's extensive library of LLM models. This integration provides access to state-of-the-art language models through Clarifai's OpenAI-compatible API endpoint, making it seamless to deploy CrewAI agents with production-ready infrastructure.
+## Getting Started
 
-## Why Use CrewAI with Clarifai?
+### Installation
 
-Combining CrewAI's multi-agent orchestration with Clarifai's AI platform offers several key benefits:
+```bash
+pip install crewai litellm
+```
 
-- **Diverse Model Selection**: Choose from hundreds of LLM models available on Clarifai for different agent roles.
-- **OpenAI Compatibility**: Use Clarifai's OpenAI-compatible endpoint for easy integration with CrewAI.
-- **Production Scale**: Deploy agent crews with Clarifai's robust, scalable infrastructure.
-- **Cost Flexibility**: Access various models at different price points to optimize for your use case.
-- **Role Specialization**: Assign different Clarifai models to different agent roles based on their strengths.
+CrewAI uses LiteLLM for model routing, which supports Clarifai's OpenAI-compatible endpoint.
 
-## Key Components
-
-A CrewAI crew powered by Clarifai includes:
-
-### Agents
-Individual AI agents with specific roles, goals, and backstories. Each agent can use different Clarifai models optimized for their tasks:
-- **Lead Market Analyst**: Conducts market research and competitor analysis
-- **Chief Marketing Strategist**: Develops comprehensive marketing strategies
-- **Creative Content Creator**: Generates campaign content and copy
-- **Chief Creative Director**: Reviews and approves creative work
-
-### Tasks
-Specific objectives assigned to agents, defined with clear descriptions and expected outputs.
-
-### Tools
-External capabilities agents can use, such as web search, web scraping, and custom tools integrated via APIs.
-
-### Collaboration
-Agents work together, sharing information and coordinating efforts to accomplish complex multi-step objectives.
-
-## Clarifai LLM Integration
-
-CrewAI uses LiteLLM for model routing, which supports Clarifai's OpenAI-compatible endpoint. Configure your agents with Clarifai models using the following pattern:
+### Configure the LLM
 
 ```python
 import os
 from crewai import LLM
 
 llm = LLM(
-    model="openai/{user_id}/{app_id}/models/{model_id}",
+    model="openai/openai/chat-completion/models/gpt-oss-120b",
     base_url="https://api.clarifai.com/v2/ext/openai/v1",
     api_key=os.environ["CLARIFAI_PAT"]
 )
 ```
 
-Clarifai Community model pages use the URL format `https://clarifai.com/{user_id}/{app_id}/models/{model_id}`.
-For CrewAI/LiteLLM, use the corresponding OpenAI-compatible model identifier:
-`openai/{user_id}/{app_id}/models/{model_id}`
+The model ID follows the LiteLLM convention: `openai/{user_id}/{app_id}/models/{model_id}`. Convert from Clarifai URLs like this:
 
-This `openai/...` value is the LiteLLM/CrewAI model identifier for Clarifai's OpenAI-compatible endpoint, even though other Clarifai docs and examples may refer to the same model by its full Clarifai URL.
+- `https://clarifai.com/openai/chat-completion/models/gpt-4o` → `openai/openai/chat-completion/models/gpt-4o`
+- `https://clarifai.com/qwen/qwenLM/models/Qwen3_5-397B-A17B` → `openai/qwen/qwenLM/models/Qwen3_5-397B-A17B`
 
-### Example Models
+### Create Agents and Run a Crew
 
-You can use any model from the [Clarifai Community](https://clarifai.com/explore). When copying a model into CrewAI, convert the Clarifai URL to the LiteLLM model string shown below:
+```python
+from crewai import Agent, Task, Crew, Process
 
-- **GPT-4o**: `https://clarifai.com/openai/chat-completion/models/gpt-4o` → `openai/openai/chat-completion/models/gpt-4o`
-- **Gemini 2.5 Flash**: `https://clarifai.com/gcp/generate/models/gemini-2_5-flash` → `openai/gcp/generate/models/gemini-2_5-flash`
-- **Gemma 3 4B**: `https://clarifai.com/gcp/generate/models/gemma-3-4b-it` → `openai/gcp/generate/models/gemma-3-4b-it`
-- **Phi-4**: `https://clarifai.com/microsoft/text-generation/models/phi-4` → `openai/microsoft/text-generation/models/phi-4`
-- **DeepSeek R1**: `https://clarifai.com/deepseek-ai/deepseek-chat/models/DeepSeek-R1-Distill-Qwen-7B` → `openai/deepseek-ai/deepseek-chat/models/DeepSeek-R1-Distill-Qwen-7B`
+llm = LLM(
+    model="openai/openai/chat-completion/models/gpt-oss-120b",
+    base_url="https://api.clarifai.com/v2/ext/openai/v1",
+    api_key=os.environ["CLARIFAI_PAT"]
+)
 
-## Example Use Cases
+researcher = Agent(
+    role="Research Analyst",
+    goal="Find and summarize key information on a given topic",
+    backstory="You are an expert research analyst with deep expertise in technology trends.",
+    llm=llm,
+    verbose=True
+)
 
-- **Marketing Campaigns**: Build agent crews that handle market research, strategy development, content creation, and campaign execution
-- **Software Development**: Create teams of agents for code review, testing, documentation, and deployment
-- **Research Projects**: Assemble crews for literature review, data analysis, hypothesis testing, and report generation
-- **Business Analysis**: Deploy agents for competitive analysis, SWOT assessment, and strategic recommendations
-- **Content Production**: Coordinate agents for content planning, writing, editing, and optimization
+writer = Agent(
+    role="Technical Writer",
+    goal="Write a clear, concise summary based on research findings",
+    backstory="You are a skilled technical writer who distills complex topics into readable summaries.",
+    llm=llm,
+    verbose=True
+)
 
-## Getting Started
+research_task = Task(
+    description="Research the latest developments in {topic}. Focus on key trends, major players, and recent breakthroughs.",
+    expected_output="A detailed research summary with key findings",
+    agent=researcher
+)
 
-To integrate Clarifai with CrewAI, you'll need:
+writing_task = Task(
+    description="Based on the research findings, write a concise executive summary suitable for a technical audience.",
+    expected_output="A polished executive summary (300-500 words)",
+    agent=writer
+)
 
-1. A Clarifai account with API access (sign up at [clarifai.com/signup](https://clarifai.com/signup))
-2. CrewAI installed in your Python environment
-3. Your Clarifai Personal Access Token (PAT)
-4. Agent and task configuration files (YAML format recommended)
+crew = Crew(
+    agents=[researcher, writer],
+    tasks=[research_task, writing_task],
+    process=Process.sequential,
+    verbose=True
+)
+
+result = crew.kickoff(inputs={"topic": "speculative decoding in LLM inference"})
+print(result)
+```
+
+### Using Different Models per Agent
+
+You can assign different Clarifai models to different agent roles:
+
+```python
+# Use a larger model for complex reasoning
+reasoning_llm = LLM(
+    model="openai/openai/chat-completion/models/gpt-oss-120b",
+    base_url="https://api.clarifai.com/v2/ext/openai/v1",
+    api_key=os.environ["CLARIFAI_PAT"]
+)
+
+# Use a smaller model for simpler tasks
+fast_llm = LLM(
+    model="openai/qwen/qwenLM/models/Qwen3-30B-A3B-FP8",
+    base_url="https://api.clarifai.com/v2/ext/openai/v1",
+    api_key=os.environ["CLARIFAI_PAT"]
+)
+
+lead_analyst = Agent(role="Lead Analyst", llm=reasoning_llm, ...)
+data_collector = Agent(role="Data Collector", llm=fast_llm, ...)
+```
 
 :::info
 
-For detailed examples and code samples, including complete agent crew implementations, visit the [Clarifai Examples Repository](https://github.com/Clarifai/examples/tree/main/agents/CrewAI).
+For complete examples including tool integration and YAML-based agent configuration, visit the [Clarifai Examples Repository](https://github.com/Clarifai/examples/tree/main/agents/CrewAI).
 
 :::
 
 :::tip
 
-Explore available models on the [Clarifai Community](https://clarifai.com/explore) platform. You can mix and match different models for different agent roles to optimize performance and cost.
+Browse models on the [Clarifai Community](https://clarifai.com/explore) to find the right model for each agent role. Mix larger models for reasoning-heavy agents with smaller models for simpler tasks to optimize cost.
 
 :::

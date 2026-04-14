@@ -8,56 +8,109 @@ pagination_prev: null
 **Build intelligent AI agents with Agno and Clarifai**
 <hr />
 
-[Agno](https://github.com/agno-agi/agno) is a powerful framework for building AI agents with advanced capabilities. It provides a flexible and extensible architecture for creating autonomous agents that can perform complex tasks, make decisions, and interact with various tools and APIs.
-
-By integrating Clarifai with Agno, you can leverage Clarifai's extensive collection of LLM models and AI capabilities within your Agno agent workflows. This integration enables you to build sophisticated AI agents that can reason, plan, and execute tasks using state-of-the-art language models available on the Clarifai platform.
-
-## Why Use Agno with Clarifai?
-
-Combining Agno's agent framework with Clarifai's AI platform provides several advantages:
-
-- **Access to Diverse Models**: Use any of Clarifai's hundreds of LLM models within your Agno agents.
-- **Production-Ready Infrastructure**: Leverage Clarifai's scalable platform for reliable agent deployments.
-- **Flexible Agent Architecture**: Build agents with custom tools, workflows, and decision-making logic.
-- **Multi-Modal Capabilities**: Combine text, image, and other modalities using Clarifai's comprehensive AI models.
-- **Easy Model Switching**: Quickly experiment with different models to find the best fit for your agent's tasks.
-
-## Key Features
-
-Agno agents powered by Clarifai models can:
-
-- **Autonomous Task Execution**: Perform complex multi-step tasks with minimal human intervention
-- **Tool Integration**: Use external tools and APIs to gather information and execute actions
-- **Contextual Understanding**: Maintain conversation history and context across interactions
-- **Custom Workflows**: Define agent behaviors and decision flows tailored to your use case
-- **Model Flexibility**: Switch between different LLM models based on task requirements
-
-## Use Cases
-
-- **Research Assistants**: Build agents that can research topics, synthesize information, and generate reports
-- **Code Assistants**: Create agents that can understand codebases, suggest improvements, and generate code
-- **Customer Service Agents**: Deploy conversational agents that can handle customer inquiries and support requests
-- **Data Analysis Agents**: Develop agents that can analyze data, identify patterns, and provide insights
-- **Content Creation**: Build agents that generate and refine content across various formats
+[Agno](https://github.com/agno-agi/agno) is a framework for building AI agents that can use tools, maintain memory, and work in teams. By integrating with Clarifai, you can power Agno agents with any model on the Clarifai platform via the OpenAI-compatible endpoint.
 
 ## Getting Started
 
-To integrate Clarifai with Agno, you'll need:
+### Installation
 
-1. A Clarifai account with API access (sign up at [clarifai.com/signup](https://clarifai.com/signup))
-2. Agno installed in your Python environment
-3. Your Clarifai Personal Access Token (PAT)
+```bash
+pip install agno openai
+```
 
-The integration allows you to use Clarifai's models as the reasoning engine for your Agno agents, enabling powerful and flexible AI agent capabilities.
+### Create a Simple Agent
+
+```python
+import os
+from agno.agent import Agent
+from agno.models.openai.like import OpenAILike
+
+agent = Agent(
+    model=OpenAILike(
+        id="openai/chat-completion/models/gpt-oss-120b",
+        api_key=os.environ["CLARIFAI_PAT"],
+        base_url="https://api.clarifai.com/v2/ext/openai/v1",
+        max_tokens=4096
+    ),
+    description="AI assistant powered by Clarifai",
+    markdown=True
+)
+
+agent.print_response("What are the key trends in AI for 2026?", stream=True)
+```
+
+### Agent with Tools
+
+```python
+from agno.tools.duckduckgo import DuckDuckGoTools
+
+agent = Agent(
+    model=OpenAILike(
+        id="openai/chat-completion/models/gpt-oss-120b",
+        api_key=os.environ["CLARIFAI_PAT"],
+        base_url="https://api.clarifai.com/v2/ext/openai/v1",
+        max_tokens=4096
+    ),
+    tools=[DuckDuckGoTools()],
+    description="Research assistant with web search",
+    markdown=True
+)
+
+agent.print_response("Search for the latest news on speculative decoding", stream=True)
+```
+
+### Multi-Agent Team
+
+```python
+from agno.team import Team
+from agno.tools.duckduckgo import DuckDuckGoTools
+from agno.tools.yfinance import YFinanceTools
+
+def clarifai_model(model_id="openai/chat-completion/models/gpt-oss-120b"):
+    return OpenAILike(
+        id=model_id,
+        api_key=os.environ["CLARIFAI_PAT"],
+        base_url="https://api.clarifai.com/v2/ext/openai/v1",
+        max_tokens=4096,
+    )
+
+web_agent = Agent(
+    name="Web Research Agent",
+    model=clarifai_model(),
+    tools=[DuckDuckGoTools()],
+)
+
+finance_agent = Agent(
+    name="Financial Analysis Agent",
+    model=clarifai_model(),
+    tools=[YFinanceTools()],
+)
+
+team = Team(
+    members=[web_agent, finance_agent],
+    model=clarifai_model(),
+)
+
+team.print_response("Analyze the current state of the AI chip market", stream=True)
+```
+
+### Using Different Models
+
+You can use any model from the [Clarifai Community](https://clarifai.com/explore). The model ID follows the pattern `{user_id}/{app_id}/models/{model_id}`:
+
+```python
+# GPT-OSS 120B (text-to-text, hosted)
+model = OpenAILike(id="openai/chat-completion/models/gpt-oss-120b", ...)
+
+# GPT-4o (multimodal, wrapped)
+model = OpenAILike(id="openai/chat-completion/models/gpt-4o", ...)
+
+# Qwen3.5 397B (text-to-text, hosted)
+model = OpenAILike(id="qwen/qwenLM/models/Qwen3_5-397B-A17B", ...)
+```
 
 :::info
 
-For detailed examples and code samples, visit the [Clarifai Examples Repository](https://github.com/Clarifai/examples/tree/main/agents/Agno).
-
-:::
-
-:::tip
-
-Explore available Clarifai models on the [Clarifai Community](https://clarifai.com/explore) platform to find the best models for your agent's needs.
+For the complete example notebook with knowledge bases and RAG, visit the [Clarifai Examples Repository](https://github.com/Clarifai/examples/tree/main/agents/Agno).
 
 :::

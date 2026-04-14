@@ -8,56 +8,114 @@ pagination_prev: null
 **Evaluate and test your LLM applications with confidence**
 <hr />
 
-[DeepEval](https://docs.confident-ai.com/) is an open-source evaluation framework for LLM applications. It provides a comprehensive suite of metrics and tools to evaluate the performance, quality, and reliability of your language model applications. DeepEval makes it easy to measure hallucination, answer relevancy, contextual precision, and many other important metrics for production LLM systems.
+[DeepEval](https://docs.confident-ai.com/) is an open-source evaluation framework for LLM applications. It provides metrics to evaluate hallucination, answer relevancy, contextual precision, and other important qualities for production LLM systems.
 
-Clarifai offers an all-encompassing platform that covers the complete AI lifecycle—from data exploration to inferencing. By integrating Clarifai with DeepEval, you can leverage Clarifai's powerful LLM models for evaluation tasks while maintaining rigorous testing standards for your AI applications.
-
-## Why Use DeepEval with Clarifai?
-
-Combining DeepEval's evaluation framework with Clarifai's LLM capabilities provides several advantages:
-
-- **Comprehensive Testing**: Use DeepEval's extensive metric library to thoroughly evaluate LLM responses from Clarifai models.
-- **Production-Ready Models**: Test and validate Clarifai's production-scale LLMs before deployment.
-- **Customizable Evaluation**: Create custom metrics tailored to your specific use case using Clarifai models as judges.
-- **Continuous Monitoring**: Integrate evaluation into your CI/CD pipeline to ensure consistent model performance.
-- **Multi-Model Comparison**: Compare different Clarifai LLM models to find the best fit for your application.
-
-## Key Evaluation Metrics
-
-DeepEval supports various metrics that can be used with Clarifai models:
-
-- **Answer Relevancy**: Measure how relevant generated answers are to the input questions
-- **Faithfulness**: Evaluate if responses are grounded in provided context without hallucination
-- **Contextual Precision**: Assess the quality and relevance of retrieved context
-- **Contextual Recall**: Measure if all relevant information is retrieved
-- **Toxicity**: Detect harmful or inappropriate content in model outputs
-- **Bias**: Identify potential biases in model responses
+By integrating Clarifai with DeepEval, you can use Clarifai's LLM models as both the models being evaluated and as judge models for custom metrics.
 
 ## Getting Started
 
-To integrate Clarifai with DeepEval, you'll need:
+### Installation
 
-1. A Clarifai account with API access (sign up at [clarifai.com/signup](https://clarifai.com/signup))
-2. DeepEval installed in your Python environment
-3. Your Clarifai Personal Access Token (PAT)
+```bash
+pip install deepeval openai
+```
 
-The integration allows you to use Clarifai's LLM models both as the models being evaluated and as judge models for custom metrics.
+### Create a Clarifai LLM Wrapper
 
-## Example Use Cases
+DeepEval requires a custom model class. Here's how to wrap a Clarifai model using the OpenAI-compatible endpoint:
 
-- **RAG System Evaluation**: Test retrieval-augmented generation systems using Clarifai's vector search and LLMs
-- **Chatbot Quality Assessment**: Evaluate conversational AI applications for coherence, relevance, and safety
-- **Content Generation Testing**: Validate the quality of generated content across different Clarifai LLM models
-- **Model Comparison**: Benchmark different Clarifai models against each other for specific tasks
+```python
+import asyncio
+from deepeval.models.base_model import DeepEvalBaseLLM
+from openai import OpenAI
+
+class ClarifaiLLM(DeepEvalBaseLLM):
+    def __init__(self, model_url, pat):
+        self.model_url = model_url
+        self.client = OpenAI(
+            base_url="https://api.clarifai.com/v2/ext/openai/v1",
+            api_key=pat
+        )
+
+    def load_model(self):
+        return self.client
+
+    def generate(self, prompt: str) -> str:
+        response = self.client.chat.completions.create(
+            model=self.model_url,
+            messages=[{"role": "user", "content": prompt}],
+            max_tokens=200
+        )
+        return response.choices[0].message.content
+
+    async def a_generate(self, prompt: str) -> str:
+        loop = asyncio.get_event_loop()
+        return await loop.run_in_executor(None, self.generate, prompt)
+
+    def get_model_name(self):
+        return f"Clarifai: {self.model_url}"
+```
+
+### Run an Evaluation
+
+```python
+from deepeval.test_case import LLMTestCase, LLMTestCaseParams
+from deepeval.metrics import GEval
+
+# Initialize Clarifai as the judge model
+clarifai_llm = ClarifaiLLM(
+    model_url="https://clarifai.com/openai/chat-completion/models/gpt-oss-120b",
+    pat="YOUR_CLARIFAI_PAT"
+)
+
+# Define a correctness metric
+metric = GEval(
+    model=clarifai_llm,
+    name="Correctness",
+    criteria="Determine whether the actual output is factually correct.",
+    evaluation_steps=[
+        "Check whether facts in 'actual output' contradict 'expected output'",
+        "Penalize omission of important details",
+    ],
+    evaluation_params=[
+        LLMTestCaseParams.INPUT,
+        LLMTestCaseParams.ACTUAL_OUTPUT,
+        LLMTestCaseParams.EXPECTED_OUTPUT,
+    ],
+)
+
+# Create a test case
+test_case = LLMTestCase(
+    input="Who ran up the tree?",
+    actual_output="The cat ran up the tree.",
+    expected_output="The cat."
+)
+
+# Run evaluation
+metric.measure(test_case)
+print(f"Score: {metric.score}")
+print(f"Reason: {metric.reason}")
+```
+
+## Supported Metrics
+
+DeepEval metrics that work with Clarifai models include:
+
+- **Answer Relevancy** — how relevant are generated answers to the input
+- **Faithfulness** — are responses grounded in context without hallucination
+- **Contextual Precision / Recall** — quality of retrieved context
+- **Toxicity** — detect harmful content
+- **Bias** — identify biases in model responses
+- **GEval** — customizable evaluation with user-defined criteria
 
 :::info
 
-For detailed examples and code samples, visit the [Clarifai Examples Repository](https://github.com/Clarifai/examples/tree/main/Integrations/DeepEval).
+For the complete example notebook, visit the [Clarifai Examples Repository](https://github.com/Clarifai/examples/tree/main/Integrations/DeepEval).
 
 :::
 
 :::tip
 
-Learn more about DeepEval's evaluation framework in their [official documentation](https://docs.confident-ai.com/).
+You can use any model from the [Clarifai Community](https://clarifai.com/explore) as the judge model by changing the `model_url` parameter.
 
 :::
