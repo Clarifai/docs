@@ -57,9 +57,21 @@ llm = LLM(
 )
 ```
 
-The model naming convention follows Clarifai's URL structure: `openai/user_id/app_id/models/model_id`
+Clarifai Community model pages use the URL format `https://clarifai.com/{user_id}/{app_id}/models/{model_id}`.
+For CrewAI/LiteLLM, use the corresponding OpenAI-compatible model identifier:
+`openai/{user_id}/{app_id}/models/{model_id}`
 
-For example, to use GPT-4o: `openai/openai/chat-completion/models/gpt-4o`
+This `openai/...` value is the LiteLLM/CrewAI model identifier for Clarifai's OpenAI-compatible endpoint, even though other Clarifai docs and examples may refer to the same model by its full Clarifai URL.
+
+### Example Models
+
+You can use any model from the [Clarifai Community](https://clarifai.com/explore). When copying a model into CrewAI, convert the Clarifai URL to the LiteLLM model string shown below:
+
+- **GPT-4o**: `https://clarifai.com/openai/chat-completion/models/gpt-4o` → `openai/openai/chat-completion/models/gpt-4o`
+- **Gemini 2.5 Flash**: `https://clarifai.com/gcp/generate/models/gemini-2_5-flash` → `openai/gcp/generate/models/gemini-2_5-flash`
+- **Gemma 3 4B**: `https://clarifai.com/gcp/generate/models/gemma-3-4b-it` → `openai/gcp/generate/models/gemma-3-4b-it`
+- **Phi-4**: `https://clarifai.com/microsoft/text-generation/models/phi-4` → `openai/microsoft/text-generation/models/phi-4`
+- **DeepSeek R1**: `https://clarifai.com/deepseek-ai/deepseek-chat/models/DeepSeek-R1-Distill-Qwen-7B` → `openai/deepseek-ai/deepseek-chat/models/DeepSeek-R1-Distill-Qwen-7B`
 
 ## Example Use Cases
 
