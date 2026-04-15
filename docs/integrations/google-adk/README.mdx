@@ -1,0 +1,105 @@
+---
+description: Learn about integrating Clarifai with Google ADK
+pagination_prev: null
+---
+
+# Integrating Clarifai With Google ADK
+
+**Build powerful AI agents with Google's Agent Development Kit and Clarifai**
+<hr />
+
+[Google's Agent Development Kit (ADK)](https://google.github.io/adk-docs/) is a comprehensive framework for building AI agents with advanced capabilities. It provides tools and abstractions for creating agents that can reason, plan, and execute complex tasks using large language models.
+
+By integrating Clarifai with Google ADK, you can leverage Clarifai's extensive model library through an OpenAI-compatible API endpoint. This integration enables you to build sophisticated AI agents powered by any of the hundreds of LLM models available on the Clarifai platform.
+
+## Why Use Google ADK with Clarifai?
+
+Combining Google ADK's agent framework with Clarifai's AI platform provides several advantages:
+
+- **Extensive Model Library**: Access hundreds of cutting-edge LLM models through Clarifai's platform.
+- **OpenAI Compatibility**: Seamlessly integrate using Clarifai's OpenAI-compatible endpoint.
+- **Production Infrastructure**: Deploy agents with Clarifai's scalable, reliable platform.
+- **Model Flexibility**: Easily switch between models to find the optimal fit for your agent's tasks.
+- **Multi-Provider Access**: Use models from various providers (OpenAI, Google, Anthropic, etc.) through a single platform.
+
+## Key Features
+
+Google ADK agents powered by Clarifai models can:
+
+- **Advanced Reasoning**: Use state-of-the-art LLMs for complex reasoning and decision-making
+- **Tool Integration**: Connect to external tools and APIs for enhanced capabilities
+- **Stateful Conversations**: Maintain context and memory across interactions
+- **Custom Instructions**: Define agent behavior with detailed prompts and guidelines
+- **Callback Functions**: Execute custom logic before and after model calls
+
+## Configuration
+
+Google ADK uses LiteLLM internally for model routing, which supports OpenAI-compatible endpoints. Configure your agents to use Clarifai models with the following setup:
+
+```python
+import os
+from google.adk.models.lite_llm import LiteLlm
+
+model = LiteLlm(
+    model="openai/{user_id}/{app_id}/models/{model_id}",
+    base_url="https://api.clarifai.com/v2/ext/openai/v1",
+    api_key=os.environ["CLARIFAI_PAT"],
+)
+```
+
+Clarifai Community model pages use the URL format `https://clarifai.com/{user_id}/{app_id}/models/{model_id}`.
+For Google ADK/LiteLLM, use the corresponding OpenAI-compatible model identifier:
+`openai/{user_id}/{app_id}/models/{model_id}`
+
+### Example Models
+
+You can use any model from the [Clarifai Community](https://clarifai.com/explore). When copying a model into Google ADK, convert the Clarifai URL to the LiteLLM model string shown below:
+
+- **GPT-4o**: `https://clarifai.com/openai/chat-completion/models/gpt-4o` → `openai/openai/chat-completion/models/gpt-4o`
+- **Gemini 2.5 Flash**: `https://clarifai.com/gcp/generate/models/gemini-2_5-flash` → `openai/gcp/generate/models/gemini-2_5-flash`
+- **Gemma 3 4B**: `https://clarifai.com/gcp/generate/models/gemma-3-4b-it` → `openai/gcp/generate/models/gemma-3-4b-it`
+- **Phi-4**: `https://clarifai.com/microsoft/text-generation/models/phi-4` → `openai/microsoft/text-generation/models/phi-4`
+- **DeepSeek R1**: `https://clarifai.com/deepseek-ai/deepseek-chat/models/DeepSeek-R1-Distill-Qwen-7B` → `openai/deepseek-ai/deepseek-chat/models/DeepSeek-R1-Distill-Qwen-7B`
+
+## Use Cases
+
+- **Code Review Agents**: Build agents that analyze code, suggest improvements, and identify issues
+- **Research Assistants**: Create agents that gather information, synthesize findings, and generate reports
+- **Content Moderation**: Deploy agents that review and classify content based on guidelines
+- **Customer Support**: Develop conversational agents for handling customer inquiries
+- **Document Processing**: Build agents that extract, analyze, and summarize information from documents
+- **LLM Auditing**: Create agents that evaluate and test other LLM applications for quality and safety
+
+## Getting Started
+
+To integrate Clarifai with Google ADK, you'll need:
+
+1. Python 3.8 or higher
+2. A Clarifai account with API access (sign up at [clarifai.com/signup](https://clarifai.com/signup))
+3. Your Clarifai Personal Access Token (PAT)
+4. Google ADK installed in your environment
+
+### Installation
+
+```bash
+pip install google-adk clarifai openai litellm
+```
+
+### Environment Setup
+
+Set your Clarifai PAT as an environment variable:
+```bash
+export CLARIFAI_PAT=your_personal_access_token_here
+```
+
+:::info
+
+For detailed examples and code samples, including complete agent implementations, visit the [Clarifai Examples Repository](https://github.com/Clarifai/examples/tree/main/agents/Google-ADK).
+
+:::
+
+:::tip
+
+Monitor your API usage through the Clarifai dashboard and implement rate limiting for production deployments. Test with smaller models before scaling up to ensure your implementation works as expected.
+
+:::

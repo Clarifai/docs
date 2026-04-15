@@ -1,0 +1,116 @@
+---
+description: Learn about integrating Clarifai with Agno
+pagination_prev: null
+---
+
+# Integrating Clarifai With Agno
+
+**Build intelligent AI agents with Agno and Clarifai**
+<hr />
+
+[Agno](https://github.com/agno-agi/agno) is a framework for building AI agents that can use tools, maintain memory, and work in teams. By integrating with Clarifai, you can power Agno agents with any model on the Clarifai platform via the OpenAI-compatible endpoint.
+
+## Getting Started
+
+### Installation
+
+```bash
+pip install agno openai
+```
+
+### Create a Simple Agent
+
+```python
+import os
+from agno.agent import Agent
+from agno.models.openai.like import OpenAILike
+
+agent = Agent(
+    model=OpenAILike(
+        id="openai/chat-completion/models/gpt-oss-120b",
+        api_key=os.environ["CLARIFAI_PAT"],
+        base_url="https://api.clarifai.com/v2/ext/openai/v1",
+        max_tokens=4096
+    ),
+    description="AI assistant powered by Clarifai",
+    markdown=True
+)
+
+agent.print_response("What are the key trends in AI for 2026?", stream=True)
+```
+
+### Agent with Tools
+
+```python
+from agno.tools.duckduckgo import DuckDuckGoTools
+
+agent = Agent(
+    model=OpenAILike(
+        id="openai/chat-completion/models/gpt-oss-120b",
+        api_key=os.environ["CLARIFAI_PAT"],
+        base_url="https://api.clarifai.com/v2/ext/openai/v1",
+        max_tokens=4096
+    ),
+    tools=[DuckDuckGoTools()],
+    description="Research assistant with web search",
+    markdown=True
+)
+
+agent.print_response("Search for the latest news on speculative decoding", stream=True)
+```
+
+### Multi-Agent Team
+
+```python
+from agno.team import Team
+from agno.tools.duckduckgo import DuckDuckGoTools
+from agno.tools.yfinance import YFinanceTools
+
+def clarifai_model(model_id="openai/chat-completion/models/gpt-oss-120b"):
+    return OpenAILike(
+        id=model_id,
+        api_key=os.environ["CLARIFAI_PAT"],
+        base_url="https://api.clarifai.com/v2/ext/openai/v1",
+        max_tokens=4096,
+    )
+
+web_agent = Agent(
+    name="Web Research Agent",
+    model=clarifai_model(),
+    tools=[DuckDuckGoTools()],
+)
+
+finance_agent = Agent(
+    name="Financial Analysis Agent",
+    model=clarifai_model(),
+    tools=[YFinanceTools()],
+)
+
+team = Team(
+    members=[web_agent, finance_agent],
+    model=clarifai_model(),
+)
+
+team.print_response("Analyze the current state of the AI chip market", stream=True)
+```
+
+### Using Different Models
+
+You can use any model from the [Clarifai Community](https://clarifai.com/explore). The model ID follows the pattern `{user_id}/{app_id}/models/{model_id}`:
+
+```python
+# GPT-OSS 120B (text-to-text, hosted)
+model = OpenAILike(id="openai/chat-completion/models/gpt-oss-120b", ...)
+
+# GPT-4o (multimodal, wrapped)
+model = OpenAILike(id="openai/chat-completion/models/gpt-4o", ...)
+
+# Qwen3.5 397B (text-to-text, hosted)
+model = OpenAILike(id="qwen/qwenLM/models/Qwen3_5-397B-A17B", ...)
+```
+
+:::info
+
+For the complete example notebook with knowledge bases and RAG, visit the [Clarifai Examples Repository](https://github.com/Clarifai/examples/tree/main/agents/Agno).
+
+:::
