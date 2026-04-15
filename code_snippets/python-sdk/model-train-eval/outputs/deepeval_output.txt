@@ -1,0 +1,2 @@
+Score: 0.8
+Reason: The actual output correctly identifies the cat, so it does not contradict the expected answer. It adds extra information ('ran up the tree') which is not required, but no important details are omitted, resulting in a high but not perfect score.

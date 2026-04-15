@@ -13,7 +13,13 @@ Clarifai provides a streamlined developer experience that allows you to quickly 
 
 We provide an [OpenAI-compatible API endpoint](https://docs.clarifai.com/compute/inference/#predict-with-openai-compatible-format), which allows you to seamlessly integrate with popular agent development toolkits that support the OpenAI's API standard. This empowers you to create powerful, flexible, and tool-using AI agents with minimal configuration.
 
-Let’s illustrate how you can build agents with the various toolkits we support.  
+Let’s illustrate how you can build agents with the various toolkits we support:
+
+- [OpenAI](#openai)
+- [Google ADK](#google-adk)
+- [CrewAI](#crewai)
+- [Vercel](#vercel)
+- [Agno](#agno)
 
 :::warning LiteLLM
 
@@ -40,6 +46,12 @@ import CrewAI from "!!raw-loader!../../../code_snippets/python-sdk/agents/crewai
 import CrewAIOutput from "!!raw-loader!../../../code_snippets/python-sdk/agents/crewai-output.txt";
 import Vercel from "!!raw-loader!../../../code_snippets/python-sdk/agents/vercel.js";
 import VercelOutput from "!!raw-loader!../../../code_snippets/python-sdk/agents/vercel-output.txt";
+import Agno from "!!raw-loader!../../../code_snippets/python-sdk/agents/agno.py";
+import AgnoOutput from "!!raw-loader!../../../code_snippets/python-sdk/agents/agno-output.txt";
+import AgnoTools from "!!raw-loader!../../../code_snippets/python-sdk/agents/agno-tools.py";
+import AgnoToolsOutput from "!!raw-loader!../../../code_snippets/python-sdk/agents/agno-tools-output.txt";
+import AgnoTeam from "!!raw-loader!../../../code_snippets/python-sdk/agents/agno-team.py";
+import AgnoTeamOutput from "!!raw-loader!../../../code_snippets/python-sdk/agents/agno-team-output.txt";
 
 ## OpenAI
 
@@ -245,9 +257,96 @@ To learn more about building AI agents with the Vercel AI SDK, see the following
 
 - [Repository for Clarifai-Powered Vercel AI SDK Agents](https://github.com/Clarifai/examples/tree/main/nodejs/vercel-ai-sdk)
 
+## Agno
+
+You can use [Agno](https://github.com/agno-agi/agno) to build agentic AI apps that make use of Clarifai models. Agno is a framework for building AI agents that can use tools, maintain memory, and work in teams.
+
+### Installation
+
+You can install the following necessary packages:
+
+- `agno` — The Agno framework itself, which provides components such as `Agent`, `Team`, and `OpenAILike`.
+- `openai` — The OpenAI client library used for the OpenAI-compatible connection to Clarifai.
+- `ddgs` — Provides the `DuckDuckGoTools` integration for web search capabilities.
+- `yfinance` — Provides the `YFinanceTools` integration for financial data lookups.
+
+This is the combined command for installing them:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="Bash">
+    <CodeBlock className="language-bash"> pip install agno openai ddgs yfinance </CodeBlock>
+</TabItem>
+</Tabs>
+
+After the installation, you can use the `OpenAILike` model class in Agno to connect to Clarifai's OpenAI-compatible endpoint.
+
+### Build an Agent
+
+When building an agent with Agno, the most common properties you'll configure are:
+
+- `model` — Specifies which LLM to use via the `OpenAILike` class, pointing to a Clarifai-hosted model. Set `api_key` to your `CLARIFAI_PAT` and `base_url` to Clarifai's OpenAI-compatible endpoint.
+- `tools` — Define the actions your agent can take, such as web search or financial data lookups. Agno provides ready-made tool integrations (e.g., `DuckDuckGoTools`, `YFinanceTools`).
+- `description` — A short description that shapes the agent's persona and behavior.
+- `markdown` — When set to `True`, the agent formats its responses in Markdown.
+
+You can also compose multiple agents into a `Team` to tackle complex, multi-step tasks collaboratively.
+
+### Examples
+
+#### Simple Agent
+
+Here is an example of a simple AI assistant powered by a Clarifai-hosted model. When asked a question, the agent generates a direct response without using any external tools.
+
+<Tabs groupId="code">
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{Agno}</CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+  <summary>Example Output</summary>
+    <CodeBlock className="language-text">{AgnoOutput}</CodeBlock>
+</details>
+
+#### Agent with Tools
+
+Here is an example of a research assistant powered by a Clarifai-hosted model and equipped with a web search tool. When given a query, the agent searches the web and returns a summarized response.
+
+<Tabs groupId="code">
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{AgnoTools}</CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+  <summary>Example Output</summary>
+    <CodeBlock className="language-text">{AgnoToolsOutput}</CodeBlock>
+</details>
+
+#### Multi-Agent Team
+
+Here is an example of a multi-agent team where a web research agent and a financial analysis agent collaborate to answer a complex query. A shared Clarifai-hosted model coordinates the team.
+
+<Tabs groupId="code">
+<TabItem value="python" label="Python">
+    <CodeBlock className="language-python">{AgnoTeam}</CodeBlock>
+</TabItem>
+</Tabs>
+
+<details>
+  <summary>Example Output</summary>
+    <CodeBlock className="language-text">{AgnoTeamOutput}</CodeBlock>
+</details>
+
+### Additional Examples
+
+To learn more about building AI agents with Agno, see the following examples:
+
+- [Blog: Building AI Agents with Agno and GPT-OSS 120B](https://www.clarifai.com/blog/building-ai-agents-with-agno-and-gpt-oss-120b)
+- [Repository for Clarifai-Powered Agno Agents](https://github.com/Clarifai/examples/tree/main/agents/Agno)
+
 ## Additional Examples
 
 To learn more about building AI agents with other toolkits, see the following examples:
 
-- [Blog: Building AI Agents with Agno and GPT-OSS 120B](https://www.clarifai.com/blog/building-ai-agents-with-agno-and-gpt-oss-120b)
 - [Notebook: Conditional Routing Agent for selecting a suitable model for a given task](https://github.com/Clarifai/examples/blob/main/agents/conditional_agent_router.ipynb)

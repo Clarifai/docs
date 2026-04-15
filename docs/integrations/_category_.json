@@ -2,5 +2,9 @@
   "label": "Integrations",
   "position": 7,
   "collapsible": false,
-  "collapsed": false
+  "collapsed": false,
+  "link": {
+    "url": "index.mdx",
+    "title": "Integrations"
+  }
 }
