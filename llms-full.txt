@@ -28846,6 +28846,364 @@ In the final step, we are going to perform information retrieval using a Clarifa
 
 ---
 
+## Integrating Clarifai With DeepEval
+
+# Integrating Clarifai With DeepEval
+
+**Evaluate and test your LLM applications with confidence**
+
+[DeepEval](https://docs.confident-ai.com/) is an open-source evaluation framework for LLM applications. It provides metrics to evaluate hallucination, answer relevancy, contextual precision, and other important qualities for production LLM systems.
+
+By integrating Clarifai with DeepEval, you can use Clarifai's LLM models as both the models being evaluated and as judge models for custom metrics.
+
+## Getting Started
+
+### Installation
+
+```bash
+pip install deepeval openai
+```
+
+### Create a Clarifai LLM Wrapper
+
+DeepEval requires a custom model class. Here's how to wrap a Clarifai model using the OpenAI-compatible endpoint:
+
+```python
+import asyncio
+from deepeval.models.base_model import DeepEvalBaseLLM
+from openai import OpenAI
+
+class ClarifaiLLM(DeepEvalBaseLLM):
+    def __init__(self, model_url, pat):
+        self.model_url = model_url
+        self.client = OpenAI(
+            base_url="https://api.clarifai.com/v2/ext/openai/v1",
+            api_key=pat
+        )
+
+    def load_model(self):
+        return self.client
+
+    def generate(self, prompt: str) -> str:
+        response = self.client.chat.completions.create(
+            model=self.model_url,
+            messages=[{"role": "user", "content": prompt}],
+            max_tokens=200
+        )
+        return response.choices[0].message.content
+
+    async def a_generate(self, prompt: str) -> str:
+        loop = asyncio.get_event_loop()
+        return await loop.run_in_executor(None, self.generate, prompt)
+
+    def get_model_name(self):
+        return f"Clarifai: {self.model_url}"
+```
+
+### Run an Evaluation
+
+```python
+from deepeval.test_case import LLMTestCase, LLMTestCaseParams
+from deepeval.metrics import GEval
+
+# Initialize Clarifai as the judge model
+clarifai_llm = ClarifaiLLM(
+    model_url="https://clarifai.com/openai/chat-completion/models/gpt-oss-120b",
+    pat="YOUR_CLARIFAI_PAT"
+)
+
+# Define a correctness metric
+metric = GEval(
+    model=clarifai_llm,
+    name="Correctness",
+    criteria="Determine whether the actual output is factually correct.",
+    evaluation_steps=[
+        "Check whether facts in 'actual output' contradict 'expected output'",
+        "Penalize omission of important details",
+    ],
+    evaluation_params=[
+        LLMTestCaseParams.INPUT,
+        LLMTestCaseParams.ACTUAL_OUTPUT,
+        LLMTestCaseParams.EXPECTED_OUTPUT,
+    ],
+)
+
+# Create a test case
+test_case = LLMTestCase(
+    input="Who ran up the tree?",
+    actual_output="The cat ran up the tree.",
+    expected_output="The cat."
+)
+
+# Run evaluation
+metric.measure(test_case)
+print(f"Score: {metric.score}")
+print(f"Reason: {metric.reason}")
+```
+
+## Supported Metrics
+
+DeepEval metrics that work with Clarifai models include:
+
+- **Answer Relevancy** — how relevant are generated answers to the input
+- **Faithfulness** — are responses grounded in context without hallucination
+- **Contextual Precision / Recall** — quality of retrieved context
+- **Toxicity** — detect harmful content
+- **Bias** — identify biases in model responses
+- **GEval** — customizable evaluation with user-defined criteria
+
+:::info
+
+For the complete example notebook, visit the [Clarifai Examples Repository](https://github.com/Clarifai/examples/tree/main/Integrations/DeepEval).
+
+:::
+
+:::tip
+
+You can use any model from the [Clarifai Community](https://clarifai.com/explore) as the judge model by changing the `model_url` parameter.
+
+:::
+
+---
+
+## Integrating Clarifai With Agno
+
+# Integrating Clarifai With Agno
+
+**Build intelligent AI agents with Agno and Clarifai**
+
+[Agno](https://github.com/agno-agi/agno) is a framework for building AI agents that can use tools, maintain memory, and work in teams. By integrating with Clarifai, you can power Agno agents with any model on the Clarifai platform via the OpenAI-compatible endpoint.
+
+## Getting Started
+
+### Installation
+
+```bash
+pip install agno openai
+```
+
+### Create a Simple Agent
+
+```python
+import os
+from agno.agent import Agent
+from agno.models.openai.like import OpenAILike
+
+agent = Agent(
+    model=OpenAILike(
+        id="openai/chat-completion/models/gpt-oss-120b",
+        api_key=os.environ["CLARIFAI_PAT"],
+        base_url="https://api.clarifai.com/v2/ext/openai/v1",
+        max_tokens=4096
+    ),
+    description="AI assistant powered by Clarifai",
+    markdown=True
+)
+
+agent.print_response("What are the key trends in AI for 2026?", stream=True)
+```
+
+### Agent with Tools
+
+```python
+from agno.tools.duckduckgo import DuckDuckGoTools
+
+agent = Agent(
+    model=OpenAILike(
+        id="openai/chat-completion/models/gpt-oss-120b",
+        api_key=os.environ["CLARIFAI_PAT"],
+        base_url="https://api.clarifai.com/v2/ext/openai/v1",
+        max_tokens=4096
+    ),
+    tools=[DuckDuckGoTools()],
+    description="Research assistant with web search",
+    markdown=True
+)
+
+agent.print_response("Search for the latest news on speculative decoding", stream=True)
+```
+
+### Multi-Agent Team
+
+```python
+from agno.team import Team
+from agno.tools.duckduckgo import DuckDuckGoTools
+from agno.tools.yfinance import YFinanceTools
+
+def clarifai_model(model_id="openai/chat-completion/models/gpt-oss-120b"):
+    return OpenAILike(
+        id=model_id,
+        api_key=os.environ["CLARIFAI_PAT"],
+        base_url="https://api.clarifai.com/v2/ext/openai/v1",
+        max_tokens=4096,
+    )
+
+web_agent = Agent(
+    name="Web Research Agent",
+    model=clarifai_model(),
+    tools=[DuckDuckGoTools()],
+)
+
+finance_agent = Agent(
+    name="Financial Analysis Agent",
+    model=clarifai_model(),
+    tools=[YFinanceTools()],
+)
+
+team = Team(
+    members=[web_agent, finance_agent],
+    model=clarifai_model(),
+)
+
+team.print_response("Analyze the current state of the AI chip market", stream=True)
+```
+
+### Using Different Models
+
+You can use any model from the [Clarifai Community](https://clarifai.com/explore). The model ID follows the pattern `{user_id}/{app_id}/models/{model_id}`:
+
+```python
+# GPT-OSS 120B (text-to-text, hosted)
+model = OpenAILike(id="openai/chat-completion/models/gpt-oss-120b", ...)
+
+# GPT-4o (multimodal, wrapped)
+model = OpenAILike(id="openai/chat-completion/models/gpt-4o", ...)
+
+# Qwen3.5 397B (text-to-text, hosted)
+model = OpenAILike(id="qwen/qwenLM/models/Qwen3_5-397B-A17B", ...)
+```
+
+:::info
+
+For the complete example notebook with knowledge bases and RAG, visit the [Clarifai Examples Repository](https://github.com/Clarifai/examples/tree/main/agents/Agno).
+
+:::
+
+---
+
+## Integrating Clarifai With CrewAI
+
+# Integrating Clarifai With CrewAI
+
+**Build collaborative AI agent teams with CrewAI and Clarifai**
+
+[CrewAI](https://github.com/joaomdmoura/crewAI) is a framework for orchestrating autonomous AI agents that work together as a crew. Each agent has a specific role, goal, and set of tools. By integrating with Clarifai, you can power your agent crews with any model on the Clarifai platform.
+
+## Getting Started
+
+### Installation
+
+```bash
+pip install crewai litellm
+```
+
+CrewAI uses LiteLLM for model routing, which supports Clarifai's OpenAI-compatible endpoint.
+
+### Configure the LLM
+
+```python
+import os
+from crewai import LLM
+
+llm = LLM(
+    model="openai/openai/chat-completion/models/gpt-oss-120b",
+    base_url="https://api.clarifai.com/v2/ext/openai/v1",
+    api_key=os.environ["CLARIFAI_PAT"]
+)
+```
+
+The model ID follows the LiteLLM convention: `openai/{user_id}/{app_id}/models/{model_id}`. Convert from Clarifai URLs like this:
+
+- `https://clarifai.com/openai/chat-completion/models/gpt-4o` → `openai/openai/chat-completion/models/gpt-4o`
+- `https://clarifai.com/qwen/qwenLM/models/Qwen3_5-397B-A17B` → `openai/qwen/qwenLM/models/Qwen3_5-397B-A17B`
+
+### Create Agents and Run a Crew
+
+```python
+from crewai import Agent, Task, Crew, Process
+
+llm = LLM(
+    model="openai/openai/chat-completion/models/gpt-oss-120b",
+    base_url="https://api.clarifai.com/v2/ext/openai/v1",
+    api_key=os.environ["CLARIFAI_PAT"]
+)
+
+researcher = Agent(
+    role="Research Analyst",
+    goal="Find and summarize key information on a given topic",
+    backstory="You are an expert research analyst with deep expertise in technology trends.",
+    llm=llm,
+    verbose=True
+)
+
+writer = Agent(
+    role="Technical Writer",
+    goal="Write a clear, concise summary based on research findings",
+    backstory="You are a skilled technical writer who distills complex topics into readable summaries.",
+    llm=llm,
+    verbose=True
+)
+
+research_task = Task(
+    description="Research the latest developments in {topic}. Focus on key trends, major players, and recent breakthroughs.",
+    expected_output="A detailed research summary with key findings",
+    agent=researcher
+)
+
+writing_task = Task(
+    description="Based on the research findings, write a concise executive summary suitable for a technical audience.",
+    expected_output="A polished executive summary (300-500 words)",
+    agent=writer
+)
+
+crew = Crew(
+    agents=[researcher, writer],
+    tasks=[research_task, writing_task],
+    process=Process.sequential,
+    verbose=True
+)
+
+result = crew.kickoff(inputs={"topic": "speculative decoding in LLM inference"})
+print(result)
+```
+
+### Using Different Models per Agent
+
+You can assign different Clarifai models to different agent roles:
+
+```python
+# Use a larger model for complex reasoning
+reasoning_llm = LLM(
+    model="openai/openai/chat-completion/models/gpt-oss-120b",
+    base_url="https://api.clarifai.com/v2/ext/openai/v1",
+    api_key=os.environ["CLARIFAI_PAT"]
+)
+
+# Use a smaller model for simpler tasks
+fast_llm = LLM(
+    model="openai/qwen/qwenLM/models/Qwen3-30B-A3B-FP8",
+    base_url="https://api.clarifai.com/v2/ext/openai/v1",
+    api_key=os.environ["CLARIFAI_PAT"]
+)
+
+lead_analyst = Agent(role="Lead Analyst", llm=reasoning_llm, ...)
+data_collector = Agent(role="Data Collector", llm=fast_llm, ...)
+```
+
+:::info
+
+For complete examples including tool integration and YAML-based agent configuration, visit the [Clarifai Examples Repository](https://github.com/Clarifai/examples/tree/main/agents/CrewAI).
+
+:::
+
+:::tip
+
+Browse models on the [Clarifai Community](https://clarifai.com/explore) to find the right model for each agent role. Mix larger models for reasoning-heavy agents with smaller models for simpler tasks to optimize cost.
+
+:::
+
+---
+
 ## Integrating Clarifai With Databricks
 
 # Integrating Clarifai With Databricks
@@ -29434,6 +29792,179 @@ Refer to [this](https://docs.embedchain.ai/api-reference/app/query) page to know
 
   Output
    {CodeOutputQuery}
+
+---
+
+## Integrating Clarifai With Google ADK
+
+# Integrating Clarifai With Google ADK
+
+**Build powerful AI agents with Google's Agent Development Kit and Clarifai**
+
+[Google's Agent Development Kit (ADK)](https://google.github.io/adk-docs/) is a comprehensive framework for building AI agents with advanced capabilities. It provides tools and abstractions for creating agents that can reason, plan, and execute complex tasks using large language models.
+
+By integrating Clarifai with Google ADK, you can leverage Clarifai's extensive model library through an OpenAI-compatible API endpoint. This integration enables you to build sophisticated AI agents powered by any of the hundreds of LLM models available on the Clarifai platform.
+
+## Why Use Google ADK with Clarifai?
+
+Combining Google ADK's agent framework with Clarifai's AI platform provides several advantages:
+
+- **Extensive Model Library**: Access hundreds of cutting-edge LLM models through Clarifai's platform.
+- **OpenAI Compatibility**: Seamlessly integrate using Clarifai's OpenAI-compatible endpoint.
+- **Production Infrastructure**: Deploy agents with Clarifai's scalable, reliable platform.
+- **Model Flexibility**: Easily switch between models to find the optimal fit for your agent's tasks.
+- **Multi-Provider Access**: Use models from various providers (OpenAI, Google, Anthropic, etc.) through a single platform.
+
+## Key Features
+
+Google ADK agents powered by Clarifai models can:
+
+- **Advanced Reasoning**: Use state-of-the-art LLMs for complex reasoning and decision-making
+- **Tool Integration**: Connect to external tools and APIs for enhanced capabilities
+- **Stateful Conversations**: Maintain context and memory across interactions
+- **Custom Instructions**: Define agent behavior with detailed prompts and guidelines
+- **Callback Functions**: Execute custom logic before and after model calls
+
+## Configuration
+
+Google ADK uses LiteLLM internally for model routing, which supports OpenAI-compatible endpoints. Configure your agents to use Clarifai models with the following setup:
+
+```python
+import os
+from google.adk.models.lite_llm import LiteLlm
+
+model = LiteLlm(
+    model="openai/{user_id}/{app_id}/models/{model_id}",
+    base_url="https://api.clarifai.com/v2/ext/openai/v1",
+    api_key=os.environ["CLARIFAI_PAT"],
+)
+```
+
+Clarifai Community model pages use the URL format `https://clarifai.com/{user_id}/{app_id}/models/{model_id}`.
+For Google ADK/LiteLLM, use the corresponding OpenAI-compatible model identifier:
+`openai/{user_id}/{app_id}/models/{model_id}`
+
+### Example Models
+
+You can use any model from the [Clarifai Community](https://clarifai.com/explore). When copying a model into Google ADK, convert the Clarifai URL to the LiteLLM model string shown below:
+
+- **GPT-4o**: `https://clarifai.com/openai/chat-completion/models/gpt-4o` → `openai/openai/chat-completion/models/gpt-4o`
+- **Gemini 2.5 Flash**: `https://clarifai.com/gcp/generate/models/gemini-2_5-flash` → `openai/gcp/generate/models/gemini-2_5-flash`
+- **Gemma 3 4B**: `https://clarifai.com/gcp/generate/models/gemma-3-4b-it` → `openai/gcp/generate/models/gemma-3-4b-it`
+- **Phi-4**: `https://clarifai.com/microsoft/text-generation/models/phi-4` → `openai/microsoft/text-generation/models/phi-4`
+- **DeepSeek R1**: `https://clarifai.com/deepseek-ai/deepseek-chat/models/DeepSeek-R1-Distill-Qwen-7B` → `openai/deepseek-ai/deepseek-chat/models/DeepSeek-R1-Distill-Qwen-7B`
+
+## Use Cases
+
+- **Code Review Agents**: Build agents that analyze code, suggest improvements, and identify issues
+- **Research Assistants**: Create agents that gather information, synthesize findings, and generate reports
+- **Content Moderation**: Deploy agents that review and classify content based on guidelines
+- **Customer Support**: Develop conversational agents for handling customer inquiries
+- **Document Processing**: Build agents that extract, analyze, and summarize information from documents
+- **LLM Auditing**: Create agents that evaluate and test other LLM applications for quality and safety
+
+## Getting Started
+
+To integrate Clarifai with Google ADK, you'll need:
+
+1. Python 3.8 or higher
+2. A Clarifai account with API access (sign up at [clarifai.com/signup](https://clarifai.com/signup))
+3. Your Clarifai Personal Access Token (PAT)
+4. Google ADK installed in your environment
+
+### Installation
+
+```bash
+pip install google-adk clarifai openai litellm
+```
+
+### Environment Setup
+
+Set your Clarifai PAT as an environment variable:
+```bash
+export CLARIFAI_PAT=your_personal_access_token_here
+```
+
+:::info
+
+For detailed examples and code samples, including complete agent implementations, visit the [Clarifai Examples Repository](https://github.com/Clarifai/examples/tree/main/agents/Google-ADK).
+
+:::
+
+:::tip
+
+Monitor your API usage through the Clarifai dashboard and implement rate limiting for production deployments. Test with smaller models before scaling up to ensure your implementation works as expected.
+
+:::
+
+---
+
+## Third-Party Integrations
+
+# Third-Party Integrations
+
+**Seamlessly integrate Clarifai with your favorite tools and frameworks**
+
+Clarifai offers integrations with a variety of popular third-party tools and frameworks, enabling you to leverage Clarifai's powerful AI capabilities within your existing workflows and applications. These integrations help you build more sophisticated AI solutions by combining Clarifai's comprehensive platform with specialized tools for data processing, language models, and more.
+
+## Available Integrations
+
+Clarifai integrates with the following platforms and frameworks:
+
+### Language Model Frameworks
+
+- **[LangChain](./langchain/README.mdx)** - Build applications with large language models using Clarifai's LLMs, embeddings, and vector store capabilities.
+
+- **[LlamaIndex](./llamaindex/README.mdx)** - Use Clarifai models for LLM inference and text embeddings within LlamaIndex applications.
+
+- **[DSPy](./DSPy/README.mdx)** - Program with language models using Clarifai's LLM capabilities and vector search within the DSPy framework.
+
+- **[Embedchain](./embedchain/README.mdx)** - Create AI-powered bots with custom knowledge bases using Clarifai's LLMs and embedding models.
+
+### Data Processing & ETL
+
+- **[Unstructured.io](./unstructured/README.mdx)** - Transform and ingest unstructured data into Clarifai's vector database for RAG applications.
+
+- **[Databricks](./databricks/README.mdx)** - Combine Clarifai's AI capabilities with Databricks for large-scale data processing and analytics.
+
+### Agent Frameworks
+
+- **[CrewAI](./crewai/README.mdx)** - Build collaborative AI agent teams that work together to accomplish complex tasks using Clarifai's LLM models.
+
+- **[Google ADK](./google-adk/README.mdx)** - Create sophisticated AI agents with Google's Agent Development Kit powered by Clarifai models.
+
+- **[Agno](./agno/README.mdx)** - Build intelligent autonomous agents with advanced capabilities using Clarifai's diverse model library.
+
+### Evaluation & Testing
+
+- **[DeepEval](./DeepEval/README.mdx)** - Evaluate and test your LLM applications using Clarifai models with the DeepEval framework.
+
+## Why Integrate with Clarifai?
+
+Integrating Clarifai into your workflow provides several key benefits:
+
+- **Production-Ready AI Platform**: Access a comprehensive platform covering the full AI lifecycle from data exploration to inference.
+- **Multiple Capabilities in One Place**: Use LLMs, embeddings, and vector storage within a single, unified platform.
+- **Easy Integration**: Simple SDK-based integration with popular frameworks and tools.
+- **Scalability**: Built to handle production-scale workloads efficiently.
+- **Flexibility**: Choose from a wide variety of models and customize them for your specific use case.
+
+## Getting Started
+
+Each integration guide provides detailed instructions on:
+
+- Setting up the integration
+- Authentication and configuration
+- Common use cases and examples
+- Best practices for production deployment
+
+Select an integration from the list above to get started with your preferred framework or tool.
+
+:::info
+
+For more examples and code samples, visit the [Clarifai Examples Repository](https://github.com/Clarifai/examples/tree/main/Integrations).
+
+:::
 
 ---
 
