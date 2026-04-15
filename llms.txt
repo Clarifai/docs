@@ -128,6 +128,7 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [Evaluating Models](https://docs.clarifai.com/docs/create/models/evaluate/README): Learn about our model evaluation feature
 - [Evaluate via API](https://docs.clarifai.com/docs/create/models/evaluate/api): Learn how to evaluate models via the API
 - [Classification Models](https://docs.clarifai.com/docs/create/models/evaluate/classification): Evaluate visual or text classifiers trained using deep fine-tuning
+- [DeepEval](https://docs.clarifai.com/docs/create/models/evaluate/deepeval): Evaluate your LLM applications using DeepEval and Clarifai
 - [Visual Detection Models](https://docs.clarifai.com/docs/create/models/evaluate/detection): Evaluate visual detection models
 - [Evaluation Leaderboard](https://docs.clarifai.com/docs/create/models/evaluate/leaderboard): Compare models' performance based on their evaluation results
 - [LLM Evaluation](https://docs.clarifai.com/docs/create/models/evaluate/llms): Evaluate your fine-tuned LLMs for text generation tasks
@@ -176,9 +177,6 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [DSPy Modules & Signatures](https://docs.clarifai.com/docs/integrations/DSPy/modules-signatures): Some core modules built in DSPy are as follows,
 - [Multistage RAG Pipeline With DSPy](https://docs.clarifai.com/docs/integrations/DSPy/multistage-dspy): import Tabs from '@theme/Tabs';
 - [Building RAG with DSPy](https://docs.clarifai.com/docs/integrations/DSPy/rag-dspy): import Tabs from '@theme/Tabs';
-- [Integrating Clarifai With DeepEval](https://docs.clarifai.com/docs/integrations/DeepEval/README): Learn about integrating Clarifai with DeepEval
-- [Integrating Clarifai With Agno](https://docs.clarifai.com/docs/integrations/agno/README): Learn about integrating Clarifai with Agno
-- [Integrating Clarifai With CrewAI](https://docs.clarifai.com/docs/integrations/crewai/README): Learn about integrating Clarifai with CrewAI
 - [Integrating Clarifai With Databricks](https://docs.clarifai.com/docs/integrations/databricks/README): Improve your data processing and analytics capabilities
 - [Databricks-Connect Module](https://docs.clarifai.com/docs/integrations/databricks/databricks-connect): Use a no-code interface to move data across Databricks and Clarifai
 - [Fetch Annotations](https://docs.clarifai.com/docs/integrations/databricks/fetch-annotations): Seamlessly retrieve annotations from Clarifai into Databricks
@@ -186,7 +184,6 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [Upload Data](https://docs.clarifai.com/docs/integrations/databricks/upload-data): Seamlessly upload your data from Databricks into Clarifai
 - [Integrating Clarifai With Embedchain](https://docs.clarifai.com/docs/integrations/embedchain/README): Learn how to use Clarifai models in Embedchain
 - [Using Clarifai LLMs And Models In Embedchain](https://docs.clarifai.com/docs/integrations/embedchain/embedchain-tutorial): Using Clarifai models in Embedchain
-- [Integrating Clarifai With Google ADK](https://docs.clarifai.com/docs/integrations/google-adk/README): Learn about integrating Clarifai with Google ADK
 - [Third-Party Integrations](https://docs.clarifai.com/docs/integrations): Integrate Clarifai with popular third-party tools and frameworks
 - [Integrating Clarifai With LangChain](https://docs.clarifai.com/docs/integrations/langchain/README): Learn about integrating Clarifai With LangChain
 - [LLM Models](https://docs.clarifai.com/docs/integrations/langchain/llm-models): Use LangChain to interact with Clarifai LLMs
