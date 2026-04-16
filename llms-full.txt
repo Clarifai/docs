@@ -20262,7 +20262,7 @@ In a manufacturing facility that produces electronic circuit boards, the quality
 
 **Output**: [Concepts]( https://docs.clarifai.com/portal-guide/concepts) 
 
-A visual classifier is a deep fine-tuned model that categorizes images and video frames into a set of concepts. It answers the question *"What is in this image?"* or *"Who is in this image?"*
+A visual classifier is a deep fine-tuned model that categorizes images and video frames into a set of predefined concepts. It answers the question *"What is in this image?"* or *"Who is in this image?"*
 
 ![Image classification example](/img/others-2/image_classification_example.webp)
 *Image classification example*
@@ -20288,86 +20288,103 @@ Visual classifiers are optimized for classification tasks. If you need to locate
 
 ##  **Via the UI**
 
-Let's demonstrate how to create and train a visual classifier model using the UI. 
-
-:::note objective
-
-We intend to create a model that can distinguish between images of cats and dogs.
-
-:::
+Let’s walk through how to create and train a visual classifier model using the UI.
 
 ### Step 1: Prepare Training Data
 
-Preparing data for fine-tuning ensures that the custom model learns effectively from the new task or domain, generalizes well to unseen data, and produces reliable predictions.
+Preparing your data is a critical step in training a model. High-quality, well-structured data helps your model learn effectively, generalize to new inputs, and produce reliable predictions.
 
-Ensure that you collect high-quality, well-prepared data that will help achieve optimized performance in your model. 
+Make sure your dataset is:
 
-> **Note:** You can prepare your data using your preferred spreadsheet software. [Click here](https://docs.clarifai.com/portal-guide/advanced-topics/csv-and-tsv) to download a CSV template you can use to prepare your data.
+* **Clean and accurate** — free from labeling errors
+* **Diverse** — covers different variations of your target classes
+* **Sufficient in size** — enough examples for the model to learn meaningful patterns
 
-To illustrate how fine-tuning works, we'll prepare the following simple dataset consisting of images of dogs and cats. Note that for your model to perform well, you need to provide it with enough diverse data to learn meaningful patterns. [Click here](https://www.clarifai.com/blog/using-ai-to-create-applications-downloading-images-easily) to learn how you can get images to enrich your dataset. 
+> **Note:** You can organize your dataset using any spreadsheet tool. [Download a CSV template](https://docs.clarifai.com/portal-guide/advanced-topics/csv-and-tsv) to get started.
 
-  Sample Dataset
+For this example, we’ll use the [Beans Dataset](https://huggingface.co/datasets/AI-Lab-Makerere/beans) from Hugging Face, which contains images of healthy and diseased bean leaves.
 
-```
-https://samples.clarifai.com/dog1.jpeg
-https://samples.clarifai.com/dog2.jpeg
-https://samples.clarifai.com/dog3.jpeg
-https://samples.clarifai.com/dog2_tiny.jpeg
-https://samples.clarifai.com/dog.tiff
-https://samples.clarifai.com/cat1.jpeg
-https://samples.clarifai.com/cat2.jpeg
-https://samples.clarifai.com/cat3.jpeg
-https://samples.clarifai.com/featured-models/blip-flying-cat.jpg
-https://samples.clarifai.com/featured-models/social-media-cat-laying-down.jpg
-```
+:::info objective
 
-### Step 2: Create an App
-
-[Click here](https://docs.clarifai.com/clarifai-basics/applications/create-an-application/#create-an-application-on-the-portal) to learn how to create an application on the Clarifai portal. 
-
-:::note
-
-When creating the application, go with the default Image/Video option as the primary input type. And in the collapsible **Advanced Settings** field, also go with the default **Universal** as the [base workflow](https://docs.clarifai.com/portal-guide/workflows/base-workflows/). 
+Based on the selected dataset, we will train a model to classify leaf images into three categories: `Angular Leaf Spot`, `Bean Rust`, or `Healthy`.
 
 :::
 
+### Step 2: Create an App
+
+Create an application to store and manage your model and its associated resources. You can follow [this guide](https://docs.clarifai.com/create/applications/create/) to set one up.
+
+> **Note:** When creating the application, select the default **Image/Video** option as the primary input type.
+ 
 ### Step 3: Add and Annotate Inputs
 
-Select the **Inputs** option on your app’s collapsible left sidebar. Next, use the inputs uploader pop-up window to [upload](https://docs.clarifai.com/portal-guide/datasets/create-get-update-delete#add-inputs) the images of dogs you prepared to a [dataset](https://docs.clarifai.com/portal-guide/datasets/create-get-update-delete) within your application.  
+To [add inputs](https://docs.clarifai.com/create/inputs/upload/ui) to your app, open the collapsible left sidebar and select the **Inputs** option.
 
-Also, [label](https://docs.clarifai.com/portal-guide/annotate/create-get-update-delete) the images with the "dog" concept. 
+Click the **Upload Inputs** button in the upper-right corner, then use the uploader pop-up to select and upload your data.
+
+As you upload, assign each input category to a [dataset](https://docs.clarifai.com/create/datasets/create/) and [label](https://docs.clarifai.com/create/labeling/ui/create) them with their appropriate concept. Ensure that all labeled inputs are added to the same dataset.
 
 ![](/img/community_2/my-deep-training-1.png)
 
-Click the **Upload inputs** button to add the annotated images of dogs to your app. 
+Once done, click the **Upload Inputs** button to add the annotated images to your app.
 
-Similarly, use the inputs uploader pop-up window to upload the images of cats you prepared to the same dataset.
+> **Note:** For this tutorial, upload the three image categories to the same dataset, labeling each with its corresponding concept:
+>
+> * `Angular Leaf Spot`
+> * `Bean Rust`
+> * `Healthy`
 
-Also, label the images with the "cat" concept.
+:::caution refresh your dataset
 
-![](/img/community_2/my-deep-training-2.png)
+After uploading all the inputs, [refresh your dataset](https://docs.clarifai.com/create/datasets/create/#create-dataset-version) and create a new version to reflect the changes.
 
-Click the **Upload inputs** button to add the annotated images of cats to your app.
+:::
 
-### Step 4: Choose a Model Type
+### Step 4: Create a Cluster and Nodepool
 
-Select the **Models** option on your app’s collapsible left sidebar. 
+To run and train your model, you’ll need to set up a cluster and nodepool with the appropriate compute resources.
 
-Click the **Add Model** button on the upper-right corner of the page. On the window that pops up, select the **Build a Custom Model** option and click the **Continue** button.
+Start by [creating a cluster](https://docs.clarifai.com/compute/deployments/clusters-nodepools) that supports GPU-enabled workloads, as GPUs are required for efficient training and inference of vision models.
+
+Next, create a nodepool within the cluster and select a GPU-backed instance that matches your performance and budget needs.
+
+> **Note:** GPU support is essential for this tutorial. Ensure that the selected nodepool is configured with a compatible GPU instance to avoid performance issues or failed training runs.
+
+### Step 5: Choose a Training Template
+
+Select the **Models** option in your app’s collapsible left sidebar. On the ensuing page for listing models, click the **Add a Model** button.
 
 ![](/img/community_2/my-deep-training-3.png)
 
-You’ll be redirected to a page where you can choose the type of model you want to create and fine-tune.
+In the window that pops up, select the **Train a Model** option.
 
-Select the **Visual Classifier** option.
+![](/img/community_2/my-deep-training-3-1.png)
+
+You’ll be redirected to a page listing available pipeline training templates. These templates provide pre-configured workflows to help you quickly get started with different types of models.
 
 ![](/img/community_2/my-deep-training-4.png)
 
-### Step 5: Create the Model
+Select the **classifier-pipeline-resnet** template. This is a ResNet-based image classification pipeline designed for training models on labeled image datasets.
 
-The ensuing page allows you to create and fine-tune a visual classifier model that categorizes images into a set of predefined concepts.
+### Step 6: Train the Model
 
-Provide a unique ID and click the **Continue to Configure model** button to create your model. 
+The ensuing page allows you to review the model training configuration and submit to begin the training pipeline.
+
+#### Select Training Template
+
+The training template you selected previously will be displayed for you. Otherwise, you can click the **Change** button to change to another training pipeline.
+
+#### Select Nodepool Instance
+
+Select a nodepool instance to use for training the model. 
+
+If you click the **Choose an instance** button, a small window will pop up that allows you to choose an existing or recommended nodepool that best fits your deployment needs.
+
+You can learn more how to choose a nodepool here
+
+> **Note:** After choosing a nodepool instance, you can use go ahead and click the **Train Model** button at the bottom of the page to initiate training. That would use the rest of the default settings. Or, you can proceed to set the rest of the settings to meet your needs. 
+
+#### Set Training Settings
 
 ![](/img/community_2/my-deep-training-5.png)
 
@@ -20386,7 +20403,7 @@ Notice that the estimated duration for the training process is displayed for you
 
 :::
 
-### Step 6: Train the Model​
+### Step 7: Train the Model​
 
 After configuring the training settings, click the **Train Model** button to initiate training your model. 
 
@@ -20398,18 +20415,9 @@ If you check the [model's versions table](https://docs.clarifai.com/portal-guide
 
 Many hours may be required to deep train models with large numbers of inputs and complex taxonomies. You can cancel a deep fine-tuning job at any time by clicking the **Cancel training** button. 
 
-:::caution
-
-Deep fine-tuning is billed at an hourly rate, and for canceled jobs, you will be charged for the time you've used to train your model. You can learn more about deep fine-tuning pricing [here](https://www.clarifai.com/pricing).
-
-:::
-
-You can check the training progress by clicking the **View Training Log** button. If you click the button, a small sidebar will appear with details of the training exercise. 
-You can also download the training log data by clicking the **download** button. 
-
 ![](/img/community_2/my-deep-training-7-1.png)
 
-### Step 7: Use the Model​
+### Step 8: Use the Model​
 
 After the model has been trained, the status will change to **Model Trained**.
 
