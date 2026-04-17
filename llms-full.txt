@@ -20260,9 +20260,33 @@ In a manufacturing facility that produces electronic circuit boards, the quality
 
 **Input**: Images and videos
 
-**Output**: [Concepts]( https://docs.clarifai.com/portal-guide/concepts) 
+**Output**: [Concepts](https://docs.clarifai.com/create/concepts/) 
 
 A visual classifier is a deep fine-tuned model that categorizes images and video frames into a set of predefined concepts. It answers the question *"What is in this image?"* or *"Who is in this image?"*
+
+For example, it can be used to categorize images into concepts such as "cat", "dog", or "vehicle".
+
+:::note pipeline template
+
+A pipeline template is a pre-configured workflow that defines how a model is trained, evaluated, and deployed.
+
+It is built on top of [Clarifai Pipelines](https://docs.clarifai.com/compute/pipelines/), which are the underlying system that orchestrates a sequence of steps (nodes) such as data processing, training, and evaluation. The template simply provides a ready-made, opinionated setup of these pipelines for a specific use case.
+
+Instead of building everything from scratch, a pipeline template gives you a ready-made structure with:
+
+* **Predefined steps** (e.g., data loading, preprocessing, training, evaluation)
+* **Default configurations** (such as model architecture and training logic)
+* **Tunable parameters** (hyperparameters you can adjust to fit your use case)
+
+In practical terms, it acts as a blueprint for your training process.
+
+For example, when you select the [`classifier-pipeline-resnet`](#select-training-template) template, you're choosing:
+
+* A pipeline designed for image classification
+* A ResNet-based model architecture
+* A sequence of steps already wired together using Clarifai Pipelines to train on labeled image data
+
+:::
 
 ![Image classification example](/img/others-2/image_classification_example.webp)
 *Image classification example*
@@ -20272,13 +20296,6 @@ You may choose a visual classifier model type in cases where:
 - **Accuracy takes priority** — you need a carefully targeted solution rather than a fast, general-purpose one.
 - **Your data is unique** — existing Clarifai models don't recognize the features in your dataset, and you need to deep fine-tune a custom model integrated into your [workflows](https://docs.clarifai.com/portal-guide/workflows/).
 - **You have the right ingredients** — a custom dataset, accurate labels, and the time and expertise to fine-tune.
-
-Visual classifiers are commonly used for various computer vision tasks, such as:
-
-- **Image classification** — categorize images into concepts such as "cat", "dog", or "vehicle".
-- **Scene recognition** — identify the setting in an image, such as a beach, forest, or urban street.
-- **Video analysis** — track objects and events across video frames.
-- **Content moderation** — a large retailer, for example, can use a classification model to automatically flag and remove listings for prohibited items across thousands of user-generated posts.
 
 :::tip
 
@@ -20364,9 +20381,9 @@ You’ll be redirected to a page listing available pipeline training templates. 
 
 ![](/img/community_2/my-deep-training-4.png)
 
-Select the **classifier-pipeline-resnet** template. This is a ResNet-based image classification pipeline designed for training models on labeled image datasets.
+Select the `classifier-pipeline-resnet` template. This is a ResNet-based image classification pipeline designed for training models on labeled image datasets.
 
-### Step 6: Train the Model
+### Step 6: Configure Training Settings
 
 The ensuing page allows you to review the model training configuration and submit to begin the training pipeline.
 
@@ -20374,66 +20391,101 @@ The ensuing page allows you to review the model training configuration and submi
 
 The training template you selected previously will be displayed for you. Otherwise, you can click the **Change** button to change to another training pipeline.
 
-#### Select Nodepool Instance
-
-Select a nodepool instance to use for training the model. 
-
-If you click the **Choose an instance** button, a small window will pop up that allows you to choose an existing or recommended nodepool that best fits your deployment needs.
-
-You can learn more how to choose a nodepool here
-
-> **Note:** After choosing a nodepool instance, you can use go ahead and click the **Train Model** button at the bottom of the page to initiate training. That would use the rest of the default settings. Or, you can proceed to set the rest of the settings to meet your needs. 
-
-#### Set Training Settings
-
 ![](/img/community_2/my-deep-training-5.png)
 
-After creating the model, set it up for training. 
+#### Select Nodepool Instance
+
+Choose the nodepool that will be used to train your model.
+
+Click the **Choose an instance** button to open a selection window, where you can pick from existing or recommended nodepools based on your training requirements.
+
+Select your preferred nodepool, then click **Save Changes** to apply your selection.
 
 ![](/img/community_2/my-deep-training-6.png)
 
-- **Dataset** — Select the dataset you previously created that has the images of the dogs and cats. You can also select [a specific version](https://docs.clarifai.com/portal-guide/datasets/create-get-update-delete#update-a-dataset-version) for it. 
-- **Concepts** — Select the list of concepts you want the model to predict from the existing concepts in your app. For this example, let's select "cat" and "dog."
-- **Invalid Data Tolerance Percent** — Optionally, you can set a tolerance threshold (0 to 100) for the percentage of invalid inputs during training, and if this threshold is exceeded, training is stopped with an error.
-- **Template** — Select a pre-configured model template you want to use to fine-tune your model. When you choose a deep training template, you will see the hyperparameters that are available within that template populated with default values. You can adjust these values as desired. For this example, we’ll go with the recommended template: `MMClassification_ResNet_50_RSB_A1`. [Click here](https://docs.clarifai.com/portal-guide/model/deep-training/visual-classification-templates) to learn more about the visual classification templates. 
-
-:::note
-
-Notice that the estimated duration for the training process is displayed for you. This [Training Time Estimator](https://docs.clarifai.com/create/models/deep-fine-tuning/#training-time-estimator) feature offers transparency in expected training costs.
-
-:::
-
-### Step 7: Train the Model​
-
-After configuring the training settings, click the **Train Model** button to initiate training your model. 
-
-You'll be redirected to the individual page of your model. 
+The selected nodepool will be displayed for you.
 
 ![](/img/community_2/my-deep-training-7.png)
 
-If you check the [model's versions table](https://docs.clarifai.com/portal-guide/model-versions/#model-versions-table), you’ll notice that the model is still being trained. 
+Learn more about selecting a nodepool instance [here](https://docs.clarifai.com/compute/deployments/deploy-model#step-3-select-a-nodepool).
 
-Many hours may be required to deep train models with large numbers of inputs and complex taxonomies. You can cancel a deep fine-tuning job at any time by clicking the **Cancel training** button. 
+#### Set Training Settings
+
+Configure the training settings for your model:
 
 ![](/img/community_2/my-deep-training-7-1.png)
 
-### Step 8: Use the Model​
+- **Model ID** — Set a unique ID for the model that will be created after it is trained. 
+- **Dataset** — Select the dataset from which inputs will be used for this pipeline. For this tutorial, let's select the dataset we previously created containing the bean leaf images.
+- **Dataset Version** — Select which version of the dataset to use for training. You must select a dataset first before this option becomes available.
+- **Training Concepts** — Select the list of concepts you want the model to predict from the existing concepts labeled with your inputs. For this tutorial, let's pick these concepts: `Angular Leaf Spot`, `Bean Rust`, and `Healthy`.
+- **Training Epochs** — Set how many times the model will see the entire dataset. More epochs can lead to better accuracy but take longer. The default value is `25`.
 
-After the model has been trained, the status will change to **Model Trained**.
+#### Configure Template
 
-In the **Actions** column, you can carry out the following:
+Each training template includes a set of configurable hyperparameters that control how the model is trained.
 
-- Copy the model version ID
-- View the model in the [leaderboard](https://docs.clarifai.com/portal-guide/evaluate/leaderboard/)
-- View the [model version details](https://docs.clarifai.com/portal-guide/model-versions/)
-- Download the training log data
-- Delete the model version
+You can adjust these settings based on your dataset and performance goals. However, for this tutorial, we’ll use the default values provided by the `classifier-pipeline-resnet` template.
 
 ![](/img/community_2/my-deep-training-8.png)
 
-Once you've created and trained your new model, you can put it to work. It will be ready to be [evaluated](https://docs.clarifai.com/portal-guide/evaluate/), combined with other models and [agent operators](https://docs.clarifai.com/portal-guide/model/agent-system-operators/) in a workflow, or used to serve [inference](https://docs.clarifai.com/portal-guide/ppredict) requests as it is.
+These are the settings you can configure:
 
-That's it!
+* **Batch Size** — Number of samples processed per training step. Default: `64`.
+* **Image Size** — Size (in pixels) to which input images are resized (square). Default: `224`.
+* **Per Item Lrate** — Learning rate applied per training sample. Default: `0.00001953125`.
+* **Weight Decay** — Regularization factor to prevent overfitting. Default: `0.01`.
+* **Per Item Min Lrate** — Minimum learning rate per sample during training. Default: `1.5625e-8`.
+* **Warmup Iters** — Number of initial iterations used to gradually increase the learning rate. Default: `5`.
+* **Warmup Ratio** — Starting ratio of the learning rate during warmup. Default: `0.0001`.
+* **Flip Probability** — Chance of randomly flipping images during training (data augmentation). Default: `0.5`.
+* **Flip Direction** — Direction used when flipping images. Default: `horizontal`.
+* **Concepts Mutually Exclusive** — Whether each input can belong to only one concept (mutually exclusive) or multiple concepts at the same time. Default: `disabled`.
+* **Pretrained Weights** — Source of initial model weights for transfer learning. Default: `ImageNet-1k`.
+* **Seed** — Random seed used to initialize training (set `-1` for random behavior). Default: `-1`.
+
+### Step 7: Train the Model​
+
+After configuring the training settings, click the **Train Model** button to start training your model using the selected pipeline.
+
+You’ll be redirected to the **Pipeline Version Runs** page, where you can monitor the training job in real time and track how the pipeline executes.
+
+![](/img/community_2/my-deep-training-9-1.png)
+
+On this page, you can:
+
+* **Monitor run status** — Track the current state of the pipeline:
+  * `RUNNING`: The training job is in progress. While the job is running, you can pause or stop it.
+  * `COMPLETED`: The training finished successfully
+  * `FAILED`: The training did not complete successfully (check logs for details)
+* **View run details** — See key information such as the start time and total run duration.
+* **Inspect infrastructure** — View where the job is running, including the cloud provider, region, compute instance type, and allocated resources.
+* **Follow pipeline execution** — The training runs as an [Argo Workflow](https://docs.clarifai.com/compute/pipelines/create-api#argo-workflow-definition), which breaks the process into steps. You can track the step-by-step execution of the pipeline in real time.
+* **Explore logs and nodes** — The logs panel displays detailed, JSON-like output, including a list of nodes (pipeline steps such as data loading, training, and evaluation). Each node includes metadata like its ID, type (e.g., `Steps`, `Pod`), and current status.
+* **Reload logs** — Click the **Reload** button to refresh and view the latest logs.
+* **Run a new job** — Click **Run Pipeline Version** to launch another training run. You’ll be prompted to select a cluster and nodepool before starting.
+ 
+### Step 8: Use the Model​
+
+Once your model has been trained successfully, you can start using it for predictions.
+
+To access it, go to the **Models** section from the left sidebar and select your model from the list. This opens the models listing page.
+
+![](/img/community_2/my-deep-training-10.png)
+
+Click the listed model to open its individual page. 
+
+![](/img/community_2/my-deep-training-11.png)
+
+Next, click the **Deploy Model** button to [create a deployment](https://docs.clarifai.com/compute/deployments/deploy-model). This sets up the compute resources needed to run inference.
+
+After deployment, click the **Try Model** button in the upper-right corner to open the [Playground](https://docs.clarifai.com/getting-started/playground), where you can submit inputs and get predictions.
+
+![](/img/community_2/my-deep-training-12.png)
+
+For this tutorial, uploading an image of a bean leaf will return classifications such as `Angular Leaf Spot`, `Bean Rust`, or `Healthy`, along with their prediction probabilities.
+
+That’s it!
 
 ##  **Via the API**
 
