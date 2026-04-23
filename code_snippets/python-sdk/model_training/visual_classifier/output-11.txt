@@ -1,0 +1,3 @@
+ clarifai model predict https://clarifai.com/alfrick/my-vis-classifier/models/test_model --url https://samples.clarifai.com/featured-models/food-hamburgers-bacon-cheese.jpg --deployment deploy-test_model-4cf21f
+
+[Concept(id='1', name='hamburger', value=0.9650415182113647), Concept(id='2', name='prime_rib', value=0.0309138260781765), Concept(id='3', name='ramen', value=0.002433105604723096), Concept(id='0', name='beignets', value=0.0016115192556753755)]

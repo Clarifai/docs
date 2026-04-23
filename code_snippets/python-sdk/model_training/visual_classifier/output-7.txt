@@ -1,0 +1,14 @@
+cd classifier-pipeline-resnet
+((venv) ) (base) macbookpro@macs-MacBook-Pro classifier-pipeline-resnet %     clarifai pipeline upload
+[INFO] 16:32:35.454197 Starting pipeline upload from config: ./config.yaml |  thread=8485281984 
+[INFO] 16:32:37.865166 Using existing app 'my-vis-classifier' |  thread=8485281984 
+[INFO] 16:32:37.873317 No step_directories specified, but all templateRefs have versions. Skipping pipeline step upload (reusing existing step versions). |  thread=8485281984 
+[INFO] 16:32:37.873399 No pipeline step versions for lockfile |  thread=8485281984 
+[WARNING] 16:32:37.877711 Could not find version for step: classifier-pipeline-resnet-ps |  thread=8485281984 
+[INFO] 16:32:37.880190 Creating pipeline classifier-pipeline-resnet... |  thread=8485281984 
+[WARNING] 16:32:37.884322 Could not find version for step: classifier-pipeline-resnet-ps |  thread=8485281984 
+[INFO] 16:32:41.966172 Successfully created pipeline classifier-pipeline-resnet |  thread=8485281984 
+[INFO] 16:32:41.966564 Pipeline ID: classifier-pipeline-resnet |  thread=8485281984 
+[INFO] 16:32:41.966635 Pipeline version ID: c382c6f2f1a14167971a14ad6cd06aaf |  thread=8485281984 
+[INFO] 16:32:41.987219 Generated lockfile: /Users/macbookpro/Desktop/test2/trainvis/classifier-pipeline-resnet/config-lock.yaml |  thread=8485281984 
+[INFO] 16:32:41.987555 Pipeline upload completed successfully with lockfile! |  thread=8485281984 

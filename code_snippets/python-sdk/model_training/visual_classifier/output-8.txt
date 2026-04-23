@@ -1,0 +1,1490 @@
+clarifai pipeline run \
+      --nodepool_id=visual-nodepool \
+      --compute_cluster_id=visual-compute-cluster
+Found config-lock.yaml, using it as default config source
+[INFO] 16:38:26.555009 Starting pipeline run for pipeline classifier-pipeline-resnet |  thread=8485281984 
+[INFO] 16:38:29.834776 Pipeline version run created with ID: 2c8ec3b1fa7d438bbba96ca3b46c47ba |  thread=8485281984 
+
+[INFO] 16:42:49.830451 Pipeline run status: 64001 (JOB_RUNNING) |  thread=8485281984 
+[INFO] 16:42:49.830541 Pipeline run in progress: 64001 (JOB_RUNNING) |  thread=8485281984 
+[INFO] 16:43:00.628789 Pipeline run monitoring... (elapsed 270.8s) |  thread=8485281984 
+[INFO] 16:43:00.629355 Pipeline run status: 64001 (JOB_RUNNING) |  thread=8485281984 
+[INFO] 16:43:00.629498 Pipeline run in progress: 64001 (JOB_RUNNING) |  thread=8485281984 
+[INFO] 16:43:11.350856 [LOG] time="2026-04-23T13:40:25.268Z" level=info msg="Starting Workflow Executor" version=v3.7.9
+time="2026-04-23T13:40:25.272Z" level=info msg="Using executor retry strategy" Duration=1s Factor=1.6 Jitter=0.5 Steps=5
+time="2026-04-23T13:40:25.272Z" level=info msg="Executor initialized" deadline="0001-01-01 00:00:00 +0000 UTC" includeScriptOutput=false namespace=prod-alfrick podName=cl-****baf1fecd63b7-cl-****7cc9dd354d7d-913573978 templateName=cl-****7cc9dd354d7d version="&Version{Version:v3.7.9,BuildDate:2026-01-28T14:52:11Z,GitCommit:********,GitTag:v3.7.9,GitTreeState:clean,GoVersion:go1.25.5,Compiler:gc,Platform:linux/amd64,}"
+time="2026-04-23T13:40:25.285Z" level=info msg="Starting deadline monitor"
+/opt/conda/lib/python3.11/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import] |  thread=8485281984 
+[INFO] 16:43:11.351441 Pipeline run monitoring... (elapsed 281.5s) |  thread=8485281984 
+[INFO] 16:43:11.351634 Pipeline run status: 64001 (JOB_RUNNING) |  thread=8485281984 
+[INFO] 16:43:11.351907 Pipeline run in progress: 64001 (JOB_RUNNING) |  thread=8485281984 
+[INFO] 16:44:05.154017 [LOG] /opt/conda/lib/python3.11/site-packages/mmengine/optim/optimizer/zero_optimizer.py:11: DeprecationWarning: `TorchScript` support for functional optimizers is deprecated and will be removed in a future PyTorch release. Consider using the `torch.compile` optimizer instead.
+  from torch.distributed.optim import \
+INFO:root:Starting MMClassification ResNet-50 training pipeline
+{"msg": "Downloading to /tmp/pretrain_checkpoints/resnet50_8xb256-rsb-a1-600e_in1k_20211228-20e21305.pth", "@timestamp": "2026-04-23T13:43:02.414665Z", "filename": "artifact_version.py", "stack_info": null, "lineno": 503, "level": "info"}
+INFO:clarifai:Downloading to /tmp/pretrain_checkpoints/resnet50_8xb256-rsb-a1-600e_in1k_20211228-20e21305.pth
+Downloading: 100%|██████████| 103M/103M [00:02<00:00, 42.1MB/s] 
+{"msg": "Download completed: /tmp/pretrain_checkpoints/resnet50_8xb256-rsb-a1-600e_in1k_20211228-20e21305.pth", "@timestamp": "2026-04-23T13:43:05.182058Z", "filename": "artifact_version.py", "stack_info": null, "lineno": 559, "level": "info"}
+INFO:clarifai:Download completed: /tmp/pretrain_checkpoints/resnet50_8xb256-rsb-a1-600e_in1k_20211228-20e21305.pth
+INFO:root:Downloaded checkpoint to /tmp/pretrain_checkpoints/resnet50_8xb256-rsb-a1-600e_in1k_20211228-20e21305.pth
+INFO:root:
+INFO:root:================================================================================
+INFO:root:STEP 1: Downloading Dataset from Clarifai API
+INFO:root:================================================================================
+INFO:model.1.dataset_helpers:================================================================================
+INFO:model.1.dataset_helpers:STEP 1: Downloading Dataset from Clarifai API (Export Method)
+INFO:model.1.dataset_helpers:Downloaded 20/20 images
+INFO:model.1.dataset_helpers:Successfully downloaded 20 images
+INFO:model.1.dataset_helpers:Cached dataset to: /tmp/mmpretrain_work_dir/dataset_image_dataset/downloaded_data.pkl
+INFO:root:Dataset name: dataset_image_dataset
+INFO:root:
+INFO:root:================================================================================
+INFO:root:STEP 2: Converting Dataset to ImageNet Format
+INFO:root:================================================================================
+INFO:model.1.dataset_helpers:================================================================================
+INFO:model.1.dataset_helpers:STEP 2: Converting Dataset to ImageNet Format
+INFO:model.1.dataset_helpers:================================================================================
+INFO:model.1.dataset_helpers:Loaded 20 cached images
+INFO:model.1.dataset_helpers:Concept mapping: {'beignets': 0, 'hamburger': 1, 'prime_rib': 2, 'ramen': 3}
+INFO:model.1.dataset_helpers:Conversion complete! Images saved: 20
+INFO:root:Images directory: /tmp/mmpretrain_work_dir/dataset_image_dataset/train
+INFO:root:Annotations file: /tmp/mmpretrain_work_dir/dataset_image_dataset/train/train_annotations.txt
+INFO:model.1.dataset_helpers:Created classes.txt with 4 classes
+INFO:root:Classes file: /tmp/mmpretrain_work_dir/dataset_image_dataset/train/classes.txt
+INFO:root:Using 4 classes from dataset: ['beignets', 'hamburger', 'prime_rib', 'ramen']
+INFO:root:
+INFO:root:================================================================================
+INFO:root:STEP 3-6: Training Model
+INFO:root:================================================================================
+INFO:root:STEP 3: Generating self-contained config...
+INFO:root:Config generated at /tmp/mmpretrain_work_dir/config.py
+INFO:root:STEP 4: Configuring config for dataset...
+INFO:root:Loaded config from file: /tmp/mmpretrain_work_dir/config.py
+INFO:root:Set ann_file to /tmp/mmpretrain_work_dir/dataset_image_dataset/train/train_annotations.txt
+INFO:root:Set data_prefix to /tmp/mmpretrain_work_dir/dataset_image_dataset/train/train
+INFO:root:Set classes to /tmp/mmpretrain_work_dir/dataset_image_dataset/train/classes.txt
+INFO:root:Set dataset_type to CustomDataset
+INFO:root:Dumped updated config to file: /tmp/mmpretrain_work_dir/configured_config.py
+INFO:root:Config configured at /tmp/mmpretrain_work_dir/configured_config.py
+INFO:root:STEP 5: Training model using mmpretrain/mmengine API...
+INFO:root:Building runner and starting training...
+INFO:root:✓ CUDA enabled: NVIDIA A10G
+04/23 13:43:11 - mmengine - INFO - 
+------------------------------------------------------------
+System environment:
+    sys.platform: linux
+    Python: 3.11.10 | packaged by conda-forge | (main, Oct 16 2024, 01:27:36) [GCC 13.3.0]
+    CUDA available: True
+    MUSA available: False
+    numpy_random_seed: 780123474
+    GPU 0: NVIDIA A10G
+    CUDA_HOME: /usr/local/cuda
+    NVCC: Cuda compilation tools, release 12.4, V12.4.131
+    GCC: gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0
+    PyTorch: 2.5.1+cu124
+    PyTorch compiling details: PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201703
+  - Intel(R) oneAPI Math Kernel Library Version 2024.2-Product Build 20240605 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v3.5.3 (Git Hash ********)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 12.4
+  - NVCC architecture flags: -gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86;-gencode;arch=compute_90,code=sm_90
+  - CuDNN 90.1
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=12.4, CUDNN_VERSION=9.1.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -D_GLIBCXX_USE_CXX11_ABI=0 -fabi-version=11 -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -DNDEBUG -DUSE_KINETO -DLIBKINETO_NOROCTRACER -DLIBKINETO_NOXPUPTI=ON -DUSE_FBGEMM -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -O2 -fPIC -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Werror=bool-operation -Wnarrowing -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wno-unused-parameter -Wno-strict-overflow -Wno-strict-aliasing -Wno-stringop-overflow -Wsuggest-override -Wno-psabi -Wno-error=old-style-cast -Wno-missing-braces -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, TORCH_VERSION=2.5.1, USE_CUDA=ON, USE_CUDNN=ON, USE_CUSPARSELT=1, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_GLOO=ON, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=1, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, USE_ROCM_KERNEL_ASSERT=OFF, 
+
+    TorchVision: 0.20.1+cu124
+    OpenCV: 4.13.0
+    MMEngine: 0.10.7
+
+Runtime environment:
+    cudnn_benchmark: False
+    dist_cfg: {'backend': 'nccl'}
+    mp_cfg: {'mp_start_method': 'fork', 'opencv_num_threads': 0}
+    seed: 780123474
+    Distributed launcher: none
+    Distributed training: False
+    GPU number: 1
+------------------------------------------------------------
+
+04/23 13:43:12 - mmengine - INFO - Config:
+data_preprocessor = dict(
+    mean=[
+        123.675,
+        116.28,
+        103.53,
+    ],
+    num_classes=4,
+    std=[
+        58.395,
+        57.12,
+        57.375,
+    ],
+    to_rgb=True)
+dataset_type = 'CustomDataset'
+default_hooks = dict(
+    checkpoint=dict(interval=1, max_keep_ckpts=1, type='CheckpointHook'),
+    logger=dict(interval=10, type='LoggerHook'),
+    param_scheduler=dict(type='ParamSchedulerHook'),
+    sampler_seed=dict(type='DistSamplerSeedHook'),
+    timer=dict(type='IterTimerHook'))
+default_scope = 'mmpretrain'
+env_cfg = dict(
+    cudnn_benchmark=False,
+    dist_cfg=dict(backend='nccl'),
+    mp_cfg=dict(mp_start_method='fork', opencv_num_threads=0))
+launcher = 'none'
+load_from = '/tmp/pretrain_checkpoints/resnet50_8xb256-rsb-a1-600e_in1k_20211228-20e21305.pth'
+model = dict(
+    backbone=dict(
+        depth=50,
+        num_stages=4,
+        out_indices=(3, ),
+        style='pytorch',
+        type='ResNet'),
+    data_preprocessor=dict(
+        mean=[
+            123.675,
+            116.28,
+            103.53,
+        ],
+        num_classes=4,
+        std=[
+            58.395,
+            57.12,
+            57.375,
+        ],
+        to_rgb=True),
+    head=dict(
+        in_channels=2048,
+        loss=dict(loss_weight=1.0, type='CrossEntropyLoss'),
+        num_classes=4,
+        topk=(
+            1,
+            4,
+        ),
+        type='LinearClsHead'),
+    neck=dict(type='****'),
+    type='ImageClassifier')
+optim_wrapper = dict(
+    optimizer=dict(lr=0.00125, type='Lamb', weight_decay=0.01))
+param_scheduler = [
+    dict(
+        begin=0,
+        by_epoch=True,
+        convert_to_iter_based=True,
+        end=5,
+        start_factor=0.0001,
+        type='LinearLR'),
+    dict(
+        T_max=195,
+        begin=5,
+        by_epoch=True,
+        end=200,
+        eta_min=1e-06,
+        type='CosineAnnealingLR'),
+]
+test_cfg = dict()
+test_dataloader = dict(
+    batch_size=64,
+    dataset=dict(
+        ann_file='',
+        data_prefix='',
+        pipeline=[
+            dict(type='LoadImageFromFile'),
+            dict(
+                backend='pillow',
+                edge='short',
+                interpolation='bicubic',
+                scale=256,
+                type='ResizeEdge'),
+            dict(crop_size=224, type='CenterCrop'),
+            dict(type='PackInputs'),
+        ],
+        type='CustomDataset'),
+    num_workers=4,
+    persistent_workers=True,
+    sampler=dict(shuffle=False, type='DefaultSampler'))
+test_evaluator = dict(topk=(1, ), type='Accuracy')
+train_cfg = dict(by_epoch=True, max_epochs=200, val_interval=1)
+train_dataloader = dict(
+    batch_size=64,
+    dataset=dict(
+        ann_file=
+        '/tmp/mmpretrain_work_dir/dataset_image_dataset/train/train_annotations.txt',
+        classes=
+        '/tmp/mmpretrain_work_dir/dataset_image_dataset/train/classes.txt',
+        data_prefix=
+        '/tmp/mmpretrain_work_dir/dataset_image_dataset/train/train',
+        pipeline=[
+            dict(type='LoadImageFromFile'),
+            dict(scale=224, type='RandomResizedCrop'),
+            dict(direction='horizontal', prob=0.5, type='RandomFlip'),
+            dict(
+                hparams=dict(
+                    interpolation='bicubic', pad_val=[
+                        104,
+                        116,
+                        124,
+                    ]),
+                magnitude_level=7,
+                magnitude_std=0.5,
+                num_policies=2,
+                policies=[
+                    dict(type='AutoContrast'),
+                    dict(type='Equalize'),
+                    dict(type='Invert'),
+                    dict(
+                        magnitude_key='angle',
+                        magnitude_range=(
+                            0,
+                            30,
+                        ),
+                        type='Rotate'),
+                    dict(
+                        magnitude_key='bits',
+                        magnitude_range=(
+                            4,
+                            0,
+                        ),
+                        type='Posterize'),
+                    dict(
+                        magnitude_key='thr',
+                        magnitude_range=(
+                            256,
+                            0,
+                        ),
+                        type='Solarize'),
+                    dict(
+                        magnitude_key='magnitude',
+                        magnitude_range=(
+                            0,
+                            110,
+                        ),
+                        type='SolarizeAdd'),
+                    dict(
+                        magnitude_key='magnitude',
+                        magnitude_range=(
+                            0,
+                            0.9,
+                        ),
+                        type='ColorTransform'),
+                    dict(
+                        magnitude_key='magnitude',
+                        magnitude_range=(
+                            0,
+                            0.9,
+                        ),
+                        type='Contrast'),
+                    dict(
+                        magnitude_key='magnitude',
+                        magnitude_range=(
+                            0,
+                            0.9,
+                        ),
+                        type='Brightness'),
+                    dict(
+                        magnitude_key='magnitude',
+                        magnitude_range=(
+                            0,
+                            0.9,
+                        ),
+                        type='Sharpness'),
+                    dict(
+                        direction='horizontal',
+                        magnitude_key='magnitude',
+                        magnitude_range=(
+                            0,
+                            0.3,
+                        ),
+                        type='Shear'),
+                    dict(
+                        direction='vertical',
+                        magnitude_key='magnitude',
+                        magnitude_range=(
+                            0,
+                            0.3,
+                        ),
+                        type='Shear'),
+                    dict(
+                        direction='horizontal',
+                        magnitude_key='magnitude',
+                        magnitude_range=(
+                            0,
+                            0.45,
+                        ),
+                        type='Translate'),
+                    dict(
+                        direction='vertical',
+                        magnitude_key='magnitude',
+                        magnitude_range=(
+                            0,
+                            0.45,
+                        ),
+                        type='Translate'),
+                ],
+                total_level=10,
+                type='RandAugment'),
+            dict(type='PackInputs'),
+        ],
+        type='CustomDataset'),
+    num_workers=4,
+    persistent_workers=True,
+    sampler=dict(shuffle=True, type='DefaultSampler'))
+train_pipeline = [
+    dict(type='LoadImageFromFile'),
+    dict(scale=224, type='RandomResizedCrop'),
+    dict(direction='horizontal', prob=0.5, type='RandomFlip'),
+    dict(
+        hparams=dict(interpolation='bicubic', pad_val=[
+            104,
+            116,
+            124,
+        ]),
+        magnitude_level=7,
+        magnitude_std=0.5,
+        num_policies=2,
+        policies=[
+            dict(type='AutoContrast'),
+            dict(type='Equalize'),
+            dict(type='Invert'),
+            dict(
+                magnitude_key='angle',
+                magnitude_range=(
+                    0,
+                    30,
+                ),
+                type='Rotate'),
+            dict(
+                magnitude_key='bits',
+                magnitude_range=(
+                    4,
+                    0,
+                ),
+                type='Posterize'),
+            dict(
+                magnitude_key='thr',
+                magnitude_range=(
+                    256,
+                    0,
+                ),
+                type='Solarize'),
+            dict(
+                magnitude_key='magnitude',
+                magnitude_range=(
+                    0,
+                    110,
+                ),
+                type='SolarizeAdd'),
+            dict(
+                magnitude_key='magnitude',
+                magnitude_range=(
+                    0,
+                    0.9,
+                ),
+                type='ColorTransform'),
+            dict(
+                magnitude_key='magnitude',
+                magnitude_range=(
+                    0,
+                    0.9,
+                ),
+                type='Contrast'),
+            dict(
+                magnitude_key='magnitude',
+                magnitude_range=(
+                    0,
+                    0.9,
+                ),
+                type='Brightness'),
+            dict(
+                magnitude_key='magnitude',
+                magnitude_range=(
+                    0,
+                    0.9,
+                ),
+                type='Sharpness'),
+            dict(
+                direction='horizontal',
+                magnitude_key='magnitude',
+                magnitude_range=(
+                    0,
+                    0.3,
+                ),
+                type='Shear'),
+            dict(
+                direction='vertical',
+                magnitude_key='magnitude',
+                magnitude_range=(
+                    0,
+                    0.3,
+                ),
+                type='Shear'),
+            dict(
+                direction='horizontal',
+                magnitude_key='magnitude',
+                magnitude_range=(
+                    0,
+                    0.45,
+                ),
+                type='Translate'),
+            dict(
+                direction='vertical',
+                magnitude_key='magnitude',
+                magnitude_range=(
+                    0,
+                    0.45,
+                ),
+                type='Translate'),
+        ],
+        total_level=10,
+        type='RandAugment'),
+    dict(type='PackInputs'),
+]
+val_cfg = dict()
+val_dataloader = dict(
+    batch_size=64,
+    dataset=dict(
+        ann_file=
+        '/tmp/mmpretrain_work_dir/dataset_image_dataset/train/train_annotations.txt',
+        classes=
+        '/tmp/mmpretrain_work_dir/dataset_image_dataset/train/classes.txt',
+        data_prefix=
+        '/tmp/mmpretrain_work_dir/dataset_image_dataset/train/train',
+        pipeline=[
+            dict(type='LoadImageFromFile'),
+            dict(
+                backend='pillow',
+                edge='short',
+                interpolation='bicubic',
+                scale=256,
+                type='ResizeEdge'),
+            dict(crop_size=224, type='CenterCrop'),
+            dict(type='PackInputs'),
+        ],
+        type='CustomDataset'),
+    num_workers=4,
+    persistent_workers=True,
+    sampler=dict(shuffle=False, type='DefaultSampler'))
+val_evaluator = dict(topk=(1, ), type='Accuracy')
+val_pipeline = [
+    dict(type='LoadImageFromFile'),
+    dict(
+        backend='pillow',
+        edge='short',
+        interpolation='bicubic',
+        scale=256,
+        type='ResizeEdge'),
+    dict(crop_size=224, type='CenterCrop'),
+    dict(type='PackInputs'),
+]
+work_dir = '/tmp/mmpretrain_work_dir' |  thread=8485281984 
+[INFO] 16:44:05.156567 Pipeline run monitoring... (elapsed 335.3s) |  thread=8485281984 
+[INFO] 16:44:05.156705 Pipeline run status: 64001 (JOB_RUNNING) |  thread=8485281984 
+[INFO] 16:44:05.156789 Pipeline run in progress: 64001 (JOB_RUNNING) |  thread=8485281984 
+[INFO] 16:44:20.819888 [LOG] 04/23 13:43:12 - mmengine - INFO - Config:
+data_preprocessor = dict(
+    mean=[
+        123.675,
+        116.28,
+        103.53,
+    ],
+    num_classes=4,
+    std=[
+        58.395,
+        57.12,
+        57.375,
+    ],
+    to_rgb=True)
+dataset_type = 'CustomDataset'
+default_hooks = dict(
+    checkpoint=dict(interval=1, max_keep_ckpts=1, type='CheckpointHook'),
+    logger=dict(interval=10, type='LoggerHook'),
+    param_scheduler=dict(type='ParamSchedulerHook'),
+    sampler_seed=dict(type='DistSamplerSeedHook'),
+    timer=dict(type='IterTimerHook'))
+default_scope = 'mmpretrain'
+env_cfg = dict(
+    cudnn_benchmark=False,
+    dist_cfg=dict(backend='nccl'),
+    mp_cfg=dict(mp_start_method='fork', opencv_num_threads=0))
+launcher = 'none'
+load_from = '/tmp/pretrain_checkpoints/resnet50_8xb256-rsb-a1-600e_in1k_20211228-20e21305.pth'
+model = dict(
+    backbone=dict(
+        depth=50,
+        num_stages=4,
+        out_indices=(3, ),
+        style='pytorch',
+        type='ResNet'),
+    data_preprocessor=dict(
+        mean=[
+            123.675,
+            116.28,
+            103.53,
+        ],
+        num_classes=4,
+        std=[
+            58.395,
+            57.12,
+            57.375,
+        ],
+        to_rgb=True),
+    head=dict(
+        in_channels=2048,
+        loss=dict(loss_weight=1.0, type='CrossEntropyLoss'),
+        num_classes=4,
+        topk=(
+            1,
+            4,
+        ),
+        type='LinearClsHead'),
+    neck=dict(type='****'),
+    type='ImageClassifier')
+optim_wrapper = dict(
+    optimizer=dict(lr=0.00125, type='Lamb', weight_decay=0.01))
+param_scheduler = [
+    dict(
+        begin=0,
+        by_epoch=True,
+        convert_to_iter_based=True,
+        end=5,
+        start_factor=0.0001,
+        type='LinearLR'),
+    dict(
+        T_max=195,
+        begin=5,
+        by_epoch=True,
+        end=200,
+        eta_min=1e-06,
+        type='CosineAnnealingLR'),
+]
+test_cfg = dict()
+test_dataloader = dict(
+    batch_size=64,
+    dataset=dict(
+        ann_file='',
+        data_prefix='',
+        pipeline=[
+            dict(type='LoadImageFromFile'),
+            dict(
+                backend='pillow',
+                edge='short',
+                interpolation='bicubic',
+                scale=256,
+                type='ResizeEdge'),
+            dict(crop_size=224, type='CenterCrop'),
+            dict(type='PackInputs'),
+        ],
+        type='CustomDataset'),
+    num_workers=4,
+    persistent_workers=True,
+    sampler=dict(shuffle=False, type='DefaultSampler'))
+test_evaluator = dict(topk=(1, ), type='Accuracy')
+train_cfg = dict(by_epoch=True, max_epochs=200, val_interval=1)
+train_dataloader = dict(
+    batch_size=64,
+    dataset=dict(
+        ann_file=
+        '/tmp/mmpretrain_work_dir/dataset_image_dataset/train/train_annotations.txt',
+        classes=
+        '/tmp/mmpretrain_work_dir/dataset_image_dataset/train/classes.txt',
+        data_prefix=
+        '/tmp/mmpretrain_work_dir/dataset_image_dataset/train/train',
+        pipeline=[
+            dict(type='LoadImageFromFile'),
+            dict(scale=224, type='RandomResizedCrop'),
+            dict(direction='horizontal', prob=0.5, type='RandomFlip'),
+            dict(
+                hparams=dict(
+                    interpolation='bicubic', pad_val=[
+                        104,
+                        116,
+                        124,
+                    ]),
+                magnitude_level=7,
+                magnitude_std=0.5,
+                num_policies=2,
+                policies=[
+                    dict(type='AutoContrast'),
+                    dict(type='Equalize'),
+                    dict(type='Invert'),
+                    dict(
+                        magnitude_key='angle',
+                        magnitude_range=(
+                            0,
+                            30,
+                        ),
+                        type='Rotate'),
+                    dict(
+                        magnitude_key='bits',
+                        magnitude_range=(
+                            4,
+                            0,
+                        ),
+                        type='Posterize'),
+                    dict(
+                        magnitude_key='thr',
+                        magnitude_range=(
+                            256,
+                            0,
+                        ),
+                        type='Solarize'),
+                    dict(
+                        magnitude_key='magnitude',
+                        magnitude_range=(
+                            0,
+                            110,
+                        ),
+                        type='SolarizeAdd'),
+                    dict(
+                        magnitude_key='magnitude',
+                        magnitude_range=(
+                            0,
+                            0.9,
+                        ),
+                        type='ColorTransform'),
+                    dict(
+                        magnitude_key='magnitude',
+                        magnitude_range=(
+                            0,
+                            0.9,
+                        ),
+                        type='Contrast'),
+                    dict(
+                        magnitude_key='magnitude',
+                        magnitude_range=(
+                            0,
+                            0.9,
+                        ),
+                        type='Brightness'),
+                    dict(
+                        magnitude_key='magnitude',
+                        magnitude_range=(
+                            0,
+                            0.9,
+                        ),
+                        type='Sharpness'),
+                    dict(
+                        direction='horizontal',
+                        magnitude_key='magnitude',
+                        magnitude_range=(
+                            0,
+                            0.3,
+                        ),
+                        type='Shear'),
+                    dict(
+                        direction='vertical',
+                        magnitude_key='magnitude',
+                        magnitude_range=(
+                            0,
+                            0.3,
+                        ),
+                        type='Shear'),
+                    dict(
+                        direction='horizontal',
+                        magnitude_key='magnitude',
+                        magnitude_range=(
+                            0,
+                            0.45,
+                        ),
+                        type='Translate'),
+                    dict(
+                        direction='vertical',
+                        magnitude_key='magnitude',
+                        magnitude_range=(
+                            0,
+                            0.45,
+                        ),
+                        type='Translate'),
+                ],
+                total_level=10,
+                type='RandAugment'),
+            dict(type='PackInputs'),
+        ],
+        type='CustomDataset'),
+    num_workers=4,
+    persistent_workers=True,
+    sampler=dict(shuffle=True, type='DefaultSampler'))
+train_pipeline = [
+    dict(type='LoadImageFromFile'),
+    dict(scale=224, type='RandomResizedCrop'),
+    dict(direction='horizontal', prob=0.5, type='RandomFlip'),
+    dict(
+        hparams=dict(interpolation='bicubic', pad_val=[
+            104,
+            116,
+            124,
+        ]),
+        magnitude_level=7,
+        magnitude_std=0.5,
+        num_policies=2,
+        policies=[
+            dict(type='AutoContrast'),
+            dict(type='Equalize'),
+            dict(type='Invert'),
+            dict(
+                magnitude_key='angle',
+                magnitude_range=(
+                    0,
+                    30,
+                ),
+                type='Rotate'),
+            dict(
+                magnitude_key='bits',
+                magnitude_range=(
+                    4,
+                    0,
+                ),
+                type='Posterize'),
+            dict(
+                magnitude_key='thr',
+                magnitude_range=(
+                    256,
+                    0,
+                ),
+                type='Solarize'),
+            dict(
+                magnitude_key='magnitude',
+                magnitude_range=(
+                    0,
+                    110,
+                ),
+                type='SolarizeAdd'),
+            dict(
+                magnitude_key='magnitude',
+                magnitude_range=(
+                    0,
+                    0.9,
+                ),
+                type='ColorTransform'),
+            dict(
+                magnitude_key='magnitude',
+                magnitude_range=(
+                    0,
+                    0.9,
+                ),
+                type='Contrast'),
+            dict(
+                magnitude_key='magnitude',
+                magnitude_range=(
+                    0,
+                    0.9,
+                ),
+                type='Brightness'),
+            dict(
+                magnitude_key='magnitude',
+                magnitude_range=(
+                    0,
+                    0.9,
+                ),
+                type='Sharpness'),
+            dict(
+                direction='horizontal',
+                magnitude_key='magnitude',
+                magnitude_range=(
+                    0,
+                    0.3,
+                ),
+                type='Shear'),
+            dict(
+                direction='vertical',
+                magnitude_key='magnitude',
+                magnitude_range=(
+                    0,
+                    0.3,
+                ),
+                type='Shear'),
+            dict(
+                direction='horizontal',
+                magnitude_key='magnitude',
+                magnitude_range=(
+                    0,
+                    0.45,
+                ),
+                type='Translate'),
+            dict(
+                direction='vertical',
+                magnitude_key='magnitude',
+                magnitude_range=(
+                    0,
+                    0.45,
+                ),
+                type='Translate'),
+        ],
+        total_level=10,
+        type='RandAugment'),
+    dict(type='PackInputs'),
+]
+val_cfg = dict()
+val_dataloader = dict(
+    batch_size=64,
+    dataset=dict(
+        ann_file=
+        '/tmp/mmpretrain_work_dir/dataset_image_dataset/train/train_annotations.txt',
+        classes=
+        '/tmp/mmpretrain_work_dir/dataset_image_dataset/train/classes.txt',
+        data_prefix=
+        '/tmp/mmpretrain_work_dir/dataset_image_dataset/train/train',
+        pipeline=[
+            dict(type='LoadImageFromFile'),
+            dict(
+                backend='pillow',
+                edge='short',
+                interpolation='bicubic',
+                scale=256,
+                type='ResizeEdge'),
+            dict(crop_size=224, type='CenterCrop'),
+            dict(type='PackInputs'),
+        ],
+        type='CustomDataset'),
+    num_workers=4,
+    persistent_workers=True,
+    sampler=dict(shuffle=False, type='DefaultSampler'))
+val_evaluator = dict(topk=(1, ), type='Accuracy')
+val_pipeline = [
+    dict(type='LoadImageFromFile'),
+    dict(
+        backend='pillow',
+        edge='short',
+        interpolation='bicubic',
+        scale=256,
+        type='ResizeEdge'),
+    dict(crop_size=224, type='CenterCrop'),
+    dict(type='PackInputs'),
+]
+work_dir = '/tmp/mmpretrain_work_dir'
+
+INFO:matplotlib.font_manager:generated new fontManager
+04/23 13:43:13 - mmengine - INFO - Distributed training is not used, all SyncBatchNorm (SyncBN) layers in the model will be automatically reverted to BatchNormXd layers if they are used.
+04/23 13:43:13 - mmengine - INFO - Hooks will be executed in the following order:
+before_run:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(BELOW_NORMAL) LoggerHook                         
+ -------------------- 
+before_train:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+(VERY_LOW    ) CheckpointHook                     
+ -------------------- 
+before_train_epoch:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+(NORMAL      ) DistSamplerSeedHook                
+ -------------------- 
+before_train_iter:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+ -------------------- 
+after_train_iter:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+(BELOW_NORMAL) LoggerHook                         
+(LOW         ) ParamSchedulerHook                 
+(VERY_LOW    ) CheckpointHook                     
+ -------------------- 
+after_train_epoch:
+(NORMAL      ) IterTimerHook                      
+(LOW         ) ParamSchedulerHook                 
+(VERY_LOW    ) CheckpointHook                     
+ -------------------- 
+before_val:
+(VERY_HIGH   ) RuntimeInfoHook                    
+ -------------------- 
+before_val_epoch:
+(NORMAL      ) IterTimerHook                      
+ -------------------- 
+before_val_iter:
+(NORMAL      ) IterTimerHook                      
+ -------------------- 
+after_val_iter:
+(NORMAL      ) IterTimerHook                      
+(BELOW_NORMAL) LoggerHook                         
+ -------------------- 
+after_val_epoch:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+(BELOW_NORMAL) LoggerHook                         
+(LOW         ) ParamSchedulerHook                 
+(VERY_LOW    ) CheckpointHook                     
+ -------------------- 
+after_val:
+(VERY_HIGH   ) RuntimeInfoHook                    
+ -------------------- 
+after_train:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(VERY_LOW    ) CheckpointHook                     
+ -------------------- 
+before_test:
+(VERY_HIGH   ) RuntimeInfoHook                    
+ -------------------- 
+before_test_epoch:
+(NORMAL      ) IterTimerHook                      
+ -------------------- 
+before_test_iter:
+(NORMAL      ) IterTimerHook                      
+ -------------------- 
+after_test_iter:
+(NORMAL      ) IterTimerHook                      
+(BELOW_NORMAL) LoggerHook                         
+ -------------------- 
+after_test_epoch:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+(BELOW_NORMAL) LoggerHook                         
+ -------------------- 
+after_test:
+(VERY_HIGH   ) RuntimeInfoHook                    
+ -------------------- 
+after_run:
+(BELOW_NORMAL) LoggerHook                         
+ -------------------- 
+INFO:root:cuda:0
+/opt/conda/lib/python3.11/site-packages/mmengine/runner/checkpoint.py:347: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(filename, map_location=map_location)
+Loads checkpoint by local backend from path: /tmp/pretrain_checkpoints/resnet50_8xb256-rsb-a1-600e_in1k_20211228-20e21305.pth
+The model and loaded state dict do not match exactly
+
+size mismatch for head.fc.weight: copying a param with shape torch.Size([1000, 2048]) from checkpoint, the shape in current model is torch.Size([4, 2048]).
+size mismatch for head.fc.bias: copying a param with shape torch.Size([1000]) from checkpoint, the shape in current model is torch.Size([4]).
+04/23 13:43:15 - mmengine - INFO - Load checkpoint from /tmp/pretrain_checkpoints/resnet50_8xb256-rsb-a1-600e_in1k_20211228-20e21305.pth
+04/23 13:43:15 - mmengine - WARNING - "FileClient" will be deprecated in future. Please use io functions in https://mmengine.readthedocs.io/en/latest/api/fileio.html#file-io
+04/23 13:43:15 - mmengine - WARNING - "HardDiskBackend" is the alias of "LocalBackend" and the former will be deprecated in future.
+04/23 13:43:15 - mmengine - INFO - Checkpoints will be saved to /tmp/mmpretrain_work_dir.
+04/23 13:43:16 - mmengine - INFO - Exp name: configured_config_20260423_134311
+04/23 13:43:16 - mmengine - INFO - Epoch(train)   [1][1/1]  lr: 1.2500e-07  eta: 0:03:30  time: 1.0578  data_time: 0.2672  memory: 1814  loss: 1.3941
+04/23 13:43:16 - mmengine - INFO - Saving checkpoint at 1 epochs
+04/23 13:43:17 - mmengine - INFO - Epoch(val) [1][1/1]    accuracy/top1: 15.0000  data_time: 0.2537  time: 0.2902
+04/23 13:43:17 - mmengine - INFO - Exp name: configured_config_20260423_134311
+04/23 13:43:17 - mmengine - INFO - Epoch(train)   [2][1/1]  lr: 3.1259e-04  eta: 0:02:03  time: 0.6234  data_time: 0.1699  memory: 1988  loss: 1.3959
+04/23 13:43:17 - mmengine - INFO - Saving checkpoint at 2 epochs
+04/23 13:43:19 - mmengine - INFO - Epoch(val) [2][1/1]    accuracy/top1: 20.0000  data_time: 0.1775  time: 0.2075
+04/23 13:43:19 - mmengine - INFO - Exp name: configured_config_20260423_134311
+04/23 13:43:19 - mmengine - INFO - Epoch(train)   [3][1/1]  lr: 6.2506e-04  eta: 0:01:34  time: 0.4782  data_time: 0.1393  memory: 1988  loss: 1.3905
+04/23 13:43:19 - mmengine - INFO - Saving checkpoint at 3 epochs
+04/23 13:43:20 - mmengine - INFO - Epoch(val) [3][1/1]    accuracy/top1: 15.0000  data_time: 0.1021  time: 0.1256
+04/23 13:43:21 - mmengine - INFO - Exp name: configured_config_20260423_134311
+04/23 13:43:21 - mmengine - INFO - Epoch(train)   [4][1/1]  lr: 9.3753e-04  eta: 0:01:18  time: 0.4024  data_time: 0.1203  memory: 1988  loss: 1.3899
+04/23 13:43:21 - mmengine - INFO - Saving checkpoint at 4 epochs
+04/23 13:43:22 - mmengine - INFO - Epoch(val) [4][1/1]    accuracy/top1: 20.0000  data_time: 0.1013  time: 0.1247
+04/23 13:43:22 - mmengine - INFO - Exp name: configured_config_20260423_134311
+04/23 13:43:22 - mmengine - INFO - Epoch(train)   [5][1/1]  lr: 1.2500e-03  eta: 0:01:09  time: 0.3577  data_time: 0.1101  memory: 1988  loss: 1.3852
+04/23 13:43:22 - mmengine - INFO - Saving checkpoint at 5 epochs
+04/23 13:43:23 - mmengine - INFO - Epoch(val) [5][1/1]    accuracy/top1: 45.0000  data_time: 0.1013  time: 0.1248
+04/23 13:43:23 - mmengine - INFO - Exp name: configured_config_20260423_134311
+04/23 13:43:23 - mmengine - INFO - Epoch(train)   [6][1/1]  lr: 1.2500e-03  eta: 0:01:03  time: 0.3278  data_time: 0.1027  memory: 1988  loss: 1.3782
+04/23 13:43:23 - mmengine - INFO - Saving checkpoint at 6 epochs
+04/23 13:43:24 - mmengine - INFO - Epoch(val) [6][1/1]    accuracy/top1: 60.0000  data_time: 0.1016  time: 0.1252
+04/23 13:43:24 - mmengine - INFO - Exp name: configured_config_20260423_134311
+04/23 13:43:24 - mmengine - INFO - Epoch(train)   [7][1/1]  lr: 1.2499e-03  eta: 0:00:59  time: 0.3074  data_time: 0.0976  memory: 1988  loss: 1.3742
+04/23 13:43:24 - mmengine - INFO - Saving checkpoint at 7 epochs
+04/23 13:43:25 - mmengine - INFO - Epoch(val) [7][1/1]    accuracy/top1: 75.0000  data_time: 0.1019  time: 0.1258
+04/23 13:43:25 - mmengine - INFO - Exp name: configured_config_20260423_134311
+04/23 13:43:25 - mmengine - INFO - Epoch(train)   [8][1/1]  lr: 1.2497e-03  eta: 0:00:55  time: 0.2903  data_time: 0.0929  memory: 1988  loss: 1.3694
+04/23 13:43:25 - mmengine - INFO - Saving checkpoint at 8 epochs
+04/23 13:43:26 - mmengine - INFO - Epoch(val) [8][1/1]    accuracy/top1: 85.0000  data_time: 0.1013  time: 0.1252
+04/23 13:43:27 - mmengine - INFO - Exp name: configured_config_20260423_134311
+04/23 13:43:27 - mmengine - INFO - Epoch(train)   [9][1/1]  lr: 1.2493e-03  eta: 0:00:53  time: 0.2782  data_time: 0.0905  memory: 1988  loss: 1.3624
+04/23 13:43:27 - mmengine - INFO - Saving checkpoint at 9 epochs
+04/23 13:43:28 - mmengine - INFO - Epoch(val) [9][1/1]    accuracy/top1: 85.0000  data_time: 0.0996  time: 0.1232
+04/23 13:43:28 - mmengine - INFO - Exp name: configured_config_20260423_134311
+04/23 13:43:28 - mmengine - INFO - Epoch(train)  [10][1/1]  lr: 1.2487e-03  eta: 0:00:50  time: 0.2683  data_time: 0.0883  memory: 1988  loss: 1.3537
+04/23 13:43:28 - mmengine - INFO - Saving checkpoint at 10 epochs
+04/23 13:43:29 - mmengine - INFO - Epoch(val) [10][1/1]    accuracy/top1: 95.0000  data_time: 0.1002  time: 0.1237
+04/23 13:43:29 - mmengine - INFO - Exp name: configured_config_20260423_134311
+04/23 13:43:29 - mmengine - INFO - Epoch(train)  [11][1/1]  lr: 1.2480e-03  eta: 0:00:49  time: 0.1805  data_time: 0.0684  memory: 1988  loss: 1.3416
+04/23 13:43:29 - mmengine - INFO - Saving checkpoint at 11 epochs
+04/23 13:43:30 - mmengine - INFO - Epoch(val) [11][1/1]    accuracy/top1: 95.0000  data_time: 0.1004  time: 0.1242
+04/23 13:43:30 - mmengine - INFO - Exp name: configured_config_20260423_134311
+04/23 13:43:30 - mmengine - INFO - Epoch(train)  [12][1/1]  lr: 1.2471e-03  eta: 0:00:47  time: 0.1800  data_time: 0.0683  memory: 1988  loss: 1.3262
+04/23 13:43:30 - mmengine - INFO - Saving checkpoint at 12 epochs
+04/23 13:43:31 - mmengine - INFO - Epoch(val) [12][1/1]    accuracy/top1: 100.0000  data_time: 0.1000  time: 0.1238
+04/23 13:43:31 - mmengine - INFO - Exp name: configured_config_20260423_134311
+04/23 13:43:31 - mmengine - INFO - Epoch(train)  [13][1/1]  lr: 1.2460e-03  eta: 0:00:46  time: 0.1789  data_time: 0.0670  memory: 1988  loss: 1.3102
+04/23 13:43:31 - mmengine - INFO - Saving checkpoint at 13 epochs
+04/23 13:43:32 - mmengine - INFO - Epoch(val) [13][1/1]    accuracy/top1: 100.0000  data_time: 0.0997  time: 0.1233
+04/23 13:43:32 - mmengine - INFO - Exp name: configured_config_20260423_134311
+04/23 13:43:32 - mmengine - INFO - Epoch(train)  [14][1/1]  lr: 1.2448e-03  eta: 0:00:45  time: 0.1788  data_time: 0.0672  memory: 1988  loss: 1.2922
+04/23 13:43:32 - mmengine - INFO - Saving checkpoint at 14 epochs
+
+04/23 13:45:11 - mmengine - INFO - Epoch(val) [97][1/1]    accuracy/top1: 100.0000  data_time: 0.0981  time: 0.1215
+04/23 13:45:11 - mmengine - INFO - Exp name: configured_config_20260423_134311
+04/23 13:45:11 - mmengine - INFO - Epoch(train)  [98][1/1]  lr: 6.8076e-04  eta: 0:00:19  time: 0.1783  data_time: 0.0678  memory: 1988  loss: 0.0436
+04/23 13:45:11 - mmengine - INFO - Saving checkpoint at 98 epochs |  thread=8485281984 
+[INFO] 16:45:27.893136 Pipeline run monitoring... (elapsed 418.1s) |  thread=8485281984 
+[INFO] 16:45:27.893270 Pipeline run status: 64001 (JOB_RUNNING) |  thread=8485281984 
+[INFO] 16:45:27.893357 Pipeline run in progress: 64001 (JOB_RUNNING) |  thread=8485281984 
+[INFO] 16:45:39.613107 [LOG] 04/23 13:45:11 - mmengine - INFO - Epoch(val) [97][1/1]    accuracy/top1: 100.0000  data_time: 0.0981  time: 0.1215
+04/23 13:45:11 - mmengine - INFO - Exp name: configured_config_20260423_134311
+04/23 13:45:11 - mmengine - INFO - Epoch(train)  [98][1/1]  lr: 6.8076e-04  eta: 0:00:19  time: 0.1783  data_time: 0.0678  memory: 1988  loss: 0.0436
+
+04/23 13:45:20 - mmengine - INFO - Epoch(train) [105][1/1]  lr: 6.1041e-04  eta: 0:00:17  time: 0.1807  data_time: 0.0698  memory: 1988  loss: 0.0565
+04/23 13:45:20 - mmengine - INFO - Saving checkpoint at 105 epochs
+
+[INFO] 16:45:39.614099 Pipeline run status: 64001 (JOB_RUNNING) |  thread=8485281984 
+[INFO] 16:45:39.614171 Pipeline run in progress: 64001 (JOB_RUNNING) |  thread=8485281984 
+[INFO] 16:45:51.452550 [LOG] 04/23 13:45:26 - mmengine - INFO - Epoch(val) [110][1/1]    accuracy/top1: 100.0000  data_time: 0.0985  time: 0.1219
+04/23 13:45:26 - mmengine - INFO - Exp name: configured_config_20260423_134311
+04/23 13:45:26 - mmengine - INFO - Epoch(train) [111][1/1]  lr: 5.5022e-04  eta: 0:00:16  time: 0.1745  data_time: 0.0643  memory: 1988  loss: 0.0692
+04/23 13:45:26 - mmengine - INFO - Saving checkpoint at 111 epochs
+04/23 13:45:27 - mmengine - INFO - Epoch(val) [111][1/1]    accuracy/top1: 100.0000  data_time: 0.0981  time: 0.1217
+04/23 13:45:28 - mmengine - INFO - Exp name: configured_config_20260423_134311
+04/23 13:45:28 - mmengine - INFO - Epoch(train) [112][1/1]  lr: 5.4025e-04  eta: 0:00:16  time: 0.1747  data_time: 0.0645  memory: 1988  loss: 0.0923
+04/23 13:45:28 - mmengine - INFO - Saving checkpoint at 112 epochs
+
+04/23 13:45:37 - mmengine - INFO - Saving checkpoint at 120 epochs
+04/23 13:45:38 - mmengine - INFO - Epoch(val) [120][1/1]    accuracy/top1: 100.0000  data_time: 0.0973  time: 0.1209
+04/23 13:45:38 - mmengine - INFO - Exp name: configured_config_20260423_134311
+04/23 13:45:38 - mmengine - INFO - Epoch(train) [121][1/1]  lr: 4.5175e-04  eta: 0:00:14  time: 0.1753  data_time: 0.0643  memory: 1988  loss: 0.0491
+04/23 13:45:38 - mmengine - INFO - Saving checkpoint at 121 epochs
+04/23 13:45:39 - mmengine - INFO - Epoch(val) [121][1/1]    accuracy/top1: 100.0000  data_time: 0.0983  time: 0.1218 |  thread=8485281984 
+[INFO] 16:45:51.453265 Pipeline run monitoring... (elapsed 441.6s) |  thread=8485281984 
+[INFO] 16:45:51.453378 Pipeline run status: 64001 (JOB_RUNNING) |  thread=8485281984 
+[INFO] 16:45:51.453460 Pipeline run in progress: 64001 (JOB_RUNNING) |  thread=8485281984 
+[INFO] 16:46:03.172225 [LOG] 04/23 13:45:39 - mmengine - INFO - Epoch(val) [121][1/1]    accuracy/top1: 100.0000  data_time: 0.0983  time: 0.1218
+
+04/23 13:45:49 - mmengine - INFO - Exp name: configured_config_20260423_134311
+04/23 13:45:49 - mmengine - INFO - Epoch(train) [130][1/1]  lr: 3.6691e-04  eta: 0:00:12  time: 0.1765  data_time: 0.0654  memory: 1988  loss: 0.0350
+04/23 13:45:49 - mmengine - INFO - Saving checkpoint at 130 epochs
+04/23 13:45:50 - mmengine - INFO - Epoch(val) [130][1/1]    accuracy/top1: 100.0000  data_time: 0.0978  time: 0.1211
+04/23 13:45:50 - mmengine - INFO - Exp name: configured_config_20260423_134311
+04/23 13:45:50 - mmengine - INFO - Epoch(train) [131][1/1]  lr: 3.5778e-04  eta: 0:00:12  time: 0.1768  data_time: 0.0656  memory: 1988  loss: 0.0352
+04/23 13:45:50 - mmengine - INFO - Saving checkpoint at 131 epochs
+04/23 13:45:51 - mmengine - INFO - Epoch(val) [131][1/1]    accuracy/top1: 100.0000  data_time: 0.0976  time: 0.1211 |  thread=8485281984 
+[INFO] 16:46:03.173041 Pipeline run monitoring... (elapsed 453.3s) |  thread=8485281984 
+[INFO] 16:46:03.173673 Pipeline run status: 64001 (JOB_RUNNING) |  thread=8485281984 
+[INFO] 16:46:03.173812 Pipeline run in progress: 64001 (JOB_RUNNING) |  thread=8485281984 
+[INFO] 16:46:15.001420 [LOG] 04/23 13:45:51 - mmengine - INFO - Epoch(val) [131][1/1]    accuracy/top1: 100.0000  data_time: 0.0976  time: 0.1211
+04/23 13:45:51 - mmengine - INFO - Exp name: configured_config_20260423_134311
+04/23 13:45:51 - mmengine - INFO - Epoch(train) [132][1/1]  lr: 3.4873e-04  eta: 0:00:12  time: 0.1771  data_time: 0.0658  memory: 1988  loss: 0.0267
+
+04/23 13:46:03 - mmengine - INFO - Exp name: configured_config_20260423_134311
+04/23 13:46:03 - mmengine - INFO - Epoch(train) [142][1/1]  lr: 2.6251e-04  eta: 0:00:10  time: 0.1771  data_time: 0.0656  memory: 1988  loss: 0.0305
+04/23 13:46:03 - mmengine - INFO - Saving checkpoint at 142 epochs
+04/23 13:46:04 - mmengine - INFO - Epoch(val) [142][1/1]    accuracy/top1: 100.0000  data_time: 0.0985  time: 0.1219
+
+04/23 13:46:11 - mmengine - INFO - Exp name: configured_config_20260423_134311
+04/23 13:46:11 - mmengine - INFO - Epoch(train) [149][1/1]  lr: 2.0763e-04  eta: 0:00:09  time: 0.1813  data_time: 0.0694  memory: 1988  loss: 0.0328
+04/23 13:46:11 - mmengine - INFO - Saving checkpoint at 149 epochs
+04/23 13:46:12 - mmengine - INFO - Epoch(val) [149][1/1]    accuracy/top1: 100.0000  data_time: 0.0990  time: 0.1226
+04/23 13:46:12 - mmengine - INFO - Exp name: configured_config_20260423_134311
+04/23 13:46:12 - mmengine - INFO - Epoch(train) [150][1/1]  lr: 2.0021e-04  eta: 0:00:09  time: 0.1797  data_time: 0.0687  memory: 1988  loss: 0.0323
+04/23 13:46:12 - mmengine - INFO - Saving checkpoint at 150 epochs |  thread=8485281984 
+[INFO] 16:46:15.002122 Pipeline run monitoring... (elapsed 465.2s) |  thread=8485281984 
+[INFO] 16:46:15.002290 Pipeline run status: 64001 (JOB_RUNNING) |  thread=8485281984 
+[INFO] 16:46:15.002423 Pipeline run in progress: 64001 (JOB_RUNNING) |  thread=8485281984 
+[INFO] 16:46:28.489969 Pipeline run monitoring... (elapsed 478.7s) |  thread=8485281984 
+[INFO] 16:46:28.490477 Pipeline run status: 64001 (JOB_RUNNING) |  thread=8485281984 
+[INFO] 16:46:28.491283 Pipeline run in progress: 64001 (JOB_RUNNING) |  thread=8485281984 
+[INFO] 16:46:41.210377 [LOG] 04/23 13:46:13 - mmengine - INFO - Epoch(val) [150][1/1]    accuracy/top1: 100.0000  data_time: 0.0987  time: 0.1223
+04/23 13:46:13 - mmengine - INFO - Exp name: configured_config_20260423_134311
+
+04/23 13:46:27 - mmengine - INFO - Epoch(val) [162][1/1]    accuracy/top1: 100.0000  data_time: 0.0973  time: 0.1207
+04/23 13:46:27 - mmengine - INFO - Exp name: configured_config_20260423_134311
+04/23 13:46:27 - mmengine - INFO - Epoch(train) [163][1/1]  lr: 1.1442e-04  eta: 0:00:06  time: 0.1773  data_time: 0.0666  memory: 1988  loss: 0.0115
+
+04/23 13:46:38 - mmengine - INFO - Epoch(train) [172][1/1]  lr: 6.7929e-05  eta: 0:00:05  time: 0.1765  data_time: 0.0656  memory: 1988  loss: 0.0102
+04/23 13:46:38 - mmengine - INFO - Saving checkpoint at 172 epochs
+04/23 13:46:39 - mmengine - INFO - Epoch(val) [172][1/1]    accuracy/top1: 100.0000  data_time: 0.0995  time: 0.1233
+04/23 13:46:39 - mmengine - INFO - Exp name: configured_config_20260423_134311
+04/23 13:46:39 - mmengine - INFO - Epoch(train) [173][1/1]  lr: 6.3470e-05  eta: 0:00:04  time: 0.1775  data_time: 0.0665  memory: 1988  loss: 0.0099
+04/23 13:46:39 - mmengine - INFO - Saving checkpoint at 173 epochs
+04/23 13:46:40 - mmengine - INFO - Epoch(val) [173][1/1]    accuracy/top1: 100.0000  data_time: 0.0988  time: 0.1225
+04/23 13:46:40 - mmengine - INFO - Exp name: configured_config_20260423_134311
+04/23 13:46:40 - mmengine - INFO - Epoch(train) [174][1/1]  lr: 5.9157e-05  eta: 0:00:04  time: 0.1789  data_time: 0.0677  memory: 1988  loss: 0.0076
+04/23 13:46:40 - mmengine - INFO - Saving checkpoint at 174 epochs |  thread=8485281984 
+[INFO] 16:46:56.332102 Pipeline run monitoring... (elapsed 506.5s) |  thread=8485281984 
+[INFO] 16:46:56.332230 Pipeline run status: 64001 (JOB_RUNNING) |  thread=8485281984 
+[INFO] 16:46:56.332298 Pipeline run in progress: 64001 (JOB_RUNNING) |  thread=8485281984 
+[INFO] 16:47:09.173639 [LOG] 04/23 13:46:41 - mmengine - INFO - Epoch(val) [174][1/1]    accuracy/top1: 100.0000  data_time: 0.0978  time: 0.1213
+
+04/23 13:46:52 - mmengine - INFO - Epoch(train) [184][1/1]  lr: 2.4276e-05  eta: 0:00:02  time: 0.1779  data_time: 0.0668  memory: 1988  loss: 0.0152
+04/23 13:46:52 - mmengine - INFO - Saving checkpoint at 184 epochs
+04/23 13:46:53 - mmengine - INFO - Epoch(val) [184][1/1]    accuracy/top1: 100.0000  data_time: 0.0985  time: 0.1220
+04/23 13:46:53 - mmengine - INFO - Exp name: configured_config_20260423_134311
+04/23 13:46:53 - mmengine - INFO - Epoch(train) [185][1/1]  lr: 2.1633e-05  eta: 0:00:02  time: 0.1775  data_time: 0.0666  memory: 1988  loss: 0.0152
+04/23 13:46:53 - mmengine - INFO - Saving checkpoint at 185 epochs |  thread=8485281984 
+[INFO] 16:47:09.176604 Pipeline run monitoring... (elapsed 519.3s) |  thread=8485281984 
+[INFO] 16:47:09.176793 Pipeline run status: 64001 (JOB_RUNNING) |  thread=8485281984 
+[INFO] 16:47:09.176855 Pipeline run in progress: 64001 (JOB_RUNNING) |  thread=8485281984 
+[INFO] 16:47:26.625295 [LOG] 04/23 13:46:53 - mmengine - INFO - Epoch(val) [184][1/1]    accuracy/top1: 100.0000  data_time: 0.0985  time: 0.1220
+04/23 13:46:53 - mmengine - INFO - Exp name: configured_config_20260423_134311
+04/23 13:46:53 - mmengine - INFO - Epoch(train) [185][1/1]  lr: 2.1633e-05  eta: 0:00:02  time: 0.1775  data_time: 0.0666  memory: 1988  loss: 0.0152
+04/23 13:46:53 - mmengine - INFO - Saving checkpoint at 185 epochs
+
+04/23 13:47:07 - mmengine - INFO - Exp name: configured_config_20260423_134311
+04/23 13:47:07 - mmengine - INFO - Epoch(train) [197][1/1]  lr: 2.2963e-06  eta: 0:00:00  time: 0.1762  data_time: 0.0662  memory: 1988  loss: 0.0076
+04/23 13:47:07 - mmengine - INFO - Saving checkpoint at 197 epochs |  thread=8485281984 
+[INFO] 16:47:26.625844 Pipeline run monitoring... (elapsed 536.8s) |  thread=8485281984 
+[INFO] 16:47:26.625993 Pipeline run status: 64001 (JOB_RUNNING) |  thread=8485281984 
+[INFO] 16:47:26.626169 Pipeline run in progress: 64001 (JOB_RUNNING) |  thread=8485281984 
+[INFO] 16:47:41.867744 [LOG] 04/23 13:47:08 - mmengine - INFO - Epoch(val) [197][1/1]    accuracy/top1: 100.0000  data_time: 0.0991  time: 0.1226
+04/23 13:47:08 - mmengine - INFO - Exp name: configured_config_20260423_134311
+04/23 13:47:08 - mmengine - INFO - Epoch(train) [198][1/1]  lr: 1.7293e-06  eta: 0:00:00  time: 0.1761  data_time: 0.0661  memory: 1988  loss: 0.0073
+04/23 13:47:08 - mmengine - INFO - Saving checkpoint at 198 epochs
+04/23 13:47:09 - mmengine - INFO - Epoch(val) [198][1/1]    accuracy/top1: 100.0000  data_time: 0.0988  time: 0.1223
+04/23 13:47:09 - mmengine - INFO - Exp name: configured_config_20260423_134311
+04/23 13:47:09 - mmengine - INFO - Epoch(train) [199][1/1]  lr: 1.3242e-06  eta: 0:00:00  time: 0.1756  data_time: 0.0654  memory: 1988  loss: 0.0077
+04/23 13:47:09 - mmengine - INFO - Saving checkpoint at 199 epochs
+04/23 13:47:10 - mmengine - INFO - Epoch(val) [199][1/1]    accuracy/top1: 100.0000  data_time: 0.0992  time: 0.1227
+04/23 13:47:11 - mmengine - INFO - Exp name: configured_config_20260423_134311
+04/23 13:47:11 - mmengine - INFO - Epoch(train) [200][1/1]  lr: 1.0810e-06  eta: 0:00:00  time: 0.1769  data_time: 0.0668  memory: 1988  loss: 0.0077
+04/23 13:47:11 - mmengine - INFO - Saving checkpoint at 200 epochs
+04/23 13:47:12 - mmengine - INFO - Epoch(val) [200][1/1]    accuracy/top1: 100.0000  data_time: 0.0993  time: 0.1227
+INFO:root:Training completed
+INFO:root:GPU memory reserved before cleanup: 2130.00 MB (matches nvidia-smi)
+INFO:root:GPU memory reserved after cleanup: 390.00 MB (matches nvidia-smi)
+INFO:root:GPU memory freed: 1740.00 MB
+INFO:root:Checkpoint found: /tmp/mmpretrain_work_dir/epoch_200.pth
+INFO:root:Training completed. Checkpoint: /tmp/mmpretrain_work_dir/epoch_200.pth
+INFO:root:Config: /tmp/mmpretrain_work_dir/configured_config.py
+INFO:root:
+INFO:root:================================================================================
+INFO:root:STEP 6.5: Benchmarking Model for GPU Requirements
+INFO:root:================================================================================
+INFO:root:Benchmarking with input shape: (3, 224, 224)
+{"msg": "\u2713 CUDA enabled for benchmark: NVIDIA A10G", "@timestamp": "2026-04-23T13:47:12.113225Z", "filename": "benchmark_model_helper.py", "stack_info": null, "lineno": 89, "level": "info"}
+INFO:clarifai:✓ CUDA enabled for benchmark: NVIDIA A10G
+
+INFO:clarifai:With 20% buffer: 835 MB → 1 GB
+{"msg": "\u2705 Updated ****.yaml with GPU requirement: 1Gi", "@timestamp": "2026-04-23T13:47:14.356524Z", "filename": "benchmark_model_helper.py", "stack_info": null, "lineno": 202, "level": "info"}
+INFO:clarifai:✅ Updated ****.yaml with GPU requirement: 1Gi
+INFO:root:✅ Benchmark complete and config.yaml updated
+INFO:root:
+INFO:root:================================================================================
+INFO:root:STEP 7: Exporting and Uploading Model to Clarifai
+INFO:root:================================================================================
+{"msg": "================================================================================", "@timestamp": "2026-04-23T13:47:14.356793Z", "filename": "model_export_helper.py", "stack_info": null, "lineno": 46, "level": "info"}
+INFO:clarifai:================================================================================
+{"msg": "MODEL EXPORT: Starting classifier model export and upload", "@timestamp": "2026-04-23T13:47:14.356859Z", "filename": "model_export_helper.py", "stack_info": null, "lineno": 47, "level": "info"}
+INFO:clarifai:MODEL EXPORT: Starting classifier model export and upload
+{"msg": "================================================================================", "@timestamp": "2026-04-23T13:47:14.356926Z", "filename": "model_export_helper.py", "stack_info": null, "lineno": 48, "level": "info"}
+INFO:clarifai:================================================================================
+{"msg": "\u2705 Found trained weights: /tmp/mmpretrain_work_dir/epoch_200.pth", "@timestamp": "2026-04-23T13:47:14.357045Z", "filename": "model_export_helper.py", "stack_info": null, "lineno": 55, "level": "info"}
+INFO:clarifai:✅ Found trained weights: /tmp/mmpretrain_work_dir/epoch_200.pth
+{"msg": "\ud83d\udccb Number of classes: 4", "@timestamp": "2026-04-23T13:47:14.357106Z", "filename": "model_export_helper.py", "stack_info": null, "lineno": 56, "level": "info"}
+INFO:clarifai:📋 Number of classes: 4
+{"msg": "\ud83d\udccb Classes: ['beignets', 'hamburger', 'prime_rib', 'ramen']", "@timestamp": "2026-04-23T13:47:14.357167Z", "filename": "model_export_helper.py", "stack_info": null, "lineno": 57, "level": "info"}
+INFO:clarifai:📋 Classes: ['beignets', 'hamburger', 'prime_rib', 'ramen']
+{"msg": "\ud83d\udce6 Preparing model package for upload...", "@timestamp": "2026-04-23T13:47:14.357237Z", "filename": "model_export_helper.py", "stack_info": null, "lineno": 60, "level": "info"}
+INFO:clarifai:📦 Preparing model package for upload...
+{"msg": "\ud83d\udcc1 Creating model package in: trained_model_temp/classifier_model", "@timestamp": "2026-04-23T13:47:14.357419Z", "filename": "model_export_helper.py", "stack_info": null, "lineno": 92, "level": "info"}
+INFO:clarifai:📁 Creating model package in: trained_model_temp/classifier_model
+{"msg": "\ud83d\udce6 Copying weights to: trained_model_temp/classifier_model/1/model_files/checkpoint.pth", "@timestamp": "2026-04-23T13:47:14.360269Z", "filename": "model_export_helper.py", "stack_info": null, "lineno": 110, "level": "info"}
+INFO:clarifai:📦 Copying weights to: trained_model_temp/classifier_model/1/model_files/checkpoint.pth
+{"msg": "\u2705 Weights copied successfully", "@timestamp": "2026-04-23T13:47:14.415568Z", "filename": "model_export_helper.py", "stack_info": null, "lineno": 112, "level": "info"}
+INFO:clarifai:✅ Weights copied successfully
+{"msg": "Uploading file: trained_model_temp/classifier_model/1/model_files/checkpoint.pth (269.6 MB)", "@timestamp": "2026-04-23T13:47:14.454563Z", "filename": "artifact_version.py", "stack_info": null, "lineno": 125, "level": "info"}
+INFO:clarifai:Uploading file: trained_model_temp/classifier_model/1/model_files/checkpoint.pth (269.6 MB)
+{"msg": "Artifact test_model_checkpoint exists", "@timestamp": "2026-04-23T13:47:14.469356Z", "filename": "artifact_version.py", "stack_info": null, "lineno": 142, "level": "info"}
+INFO:clarifai:Artifact test_model_checkpoint exists
+Loads checkpoint by local backend from path: /tmp/mmpretrain_work_dir/epoch_200.pth
+Uploading:   0%|          | 0.00/283M [00:00<?, ?B/s]{"msg": "Uploading artifact content...", "@timestamp": "2026-04-23T13:47:14.469975Z", "filename": "artifact_version.py", "stack_info": null, "lineno": 320, "level": "info"}
+INFO:clarifai:Uploading artifact content...
+{"msg": "Upload complete!", "@timestamp": "2026-04-23T13:47:14.636405Z", "filename": "artifact_version.py", "stack_info": null, "lineno": 347, "level": "info"}
+INFO:clarifai:Upload complete!
+{"msg": "Created artifact version: ****0fd8e2fbbd14", "@timestamp": "2026-04-23T13:47:14.699322Z", "filename": "artifact_version.py", "stack_info": null, "lineno": 223, "level": "info"}
+INFO:clarifai:Created artifact version: ****0fd8e2fbbd14 |  thread=8485281984 
+[INFO] 16:47:41.868790 Pipeline run monitoring... (elapsed 552.0s) |  thread=8485281984 
+[INFO] 16:47:41.868951 Pipeline run status: 64001 (JOB_RUNNING) |  thread=8485281984 
+[INFO] 16:47:41.869080 Pipeline run in progress: 64001 (JOB_RUNNING) |  thread=8485281984 
+Uploading: 100%|██████████| 283M/283M [00:13<00:00, 20.3MB/s] /283M [00:00<00:10, 24.5MB/s]
+{"msg": "Upload completed successfully: ****0fd8e2fbbd14", "@timestamp": "2026-04-23T13:47:28.424392Z", "filename": "artifact_version.py", "stack_info": null, "lineno": 265, "level": "info"}
+INFO:clarifai:Upload completed successfully: ****0fd8e2fbbd14
+{"msg": "\ud83d\udce6 Artifact version: ****0fd8e2fbbd14", "@timestamp": "2026-04-23T13:47:28.431640Z", "filename": "model_export_helper.py", "stack_info": null, "lineno": 32, "level": "info"}
+INFO:clarifai:📦 Artifact version: ****0fd8e2fbbd14
+{"msg": "\ud83d\udce6 Copying config.py to: trained_model_temp/classifier_model/1/model_files/config.py", "@timestamp": "2026-04-23T13:47:28.431866Z", "filename": "model_export_helper.py", "stack_info": null, "lineno": 118, "level": "info"}
+INFO:clarifai:📦 Copying config.py to: trained_model_temp/classifier_model/1/model_files/config.py
+{"msg": "\u2705 Config.py copied successfully", "@timestamp": "2026-04-23T13:47:28.432292Z", "filename": "model_export_helper.py", "stack_info": null, "lineno": 120, "level": "info"}
+INFO:clarifai:✅ Config.py copied successfully
+{"msg": "\ud83d\udcdd Updating config.yaml with 4 classes", "@timestamp": "2026-04-23T13:47:28.432374Z", "filename": "model_export_helper.py", "stack_info": null, "lineno": 124, "level": "info"}
+INFO:clarifai:📝 Updating config.yaml with 4 classes
+{"msg": "\ud83d\udcdd Set user_id: alfrick", "@timestamp": "2026-04-23T13:47:28.433620Z", "filename": "model_export_helper.py", "stack_info": null, "lineno": 137, "level": "info"}
+INFO:clarifai:📝 Set user_id: alfrick
+{"msg": "\ud83d\udcdd Set app_id: my-vis-classifier", "@timestamp": "2026-04-23T13:47:28.433689Z", "filename": "model_export_helper.py", "stack_info": null, "lineno": 140, "level": "info"}
+INFO:clarifai:📝 Set app_id: my-vis-classifier
+{"msg": "\ud83d\udcdd Set model_id: test_model", "@timestamp": "2026-04-23T13:47:28.433747Z", "filename": "model_export_helper.py", "stack_info": null, "lineno": 143, "level": "info"}
+INFO:clarifai:📝 Set model_id: test_model
+{"msg": "\u2705 Config updated successfully", "@timestamp": "2026-04-23T13:47:28.434809Z", "filename": "model_export_helper.py", "stack_info": null, "lineno": 148, "level": "info"}
+INFO:clarifai:✅ Config updated successfully
+{"msg": "================================================================================", "@timestamp": "2026-04-23T13:47:28.434919Z", "filename": "model_export_helper.py", "stack_info": null, "lineno": 151, "level": "info"}
+INFO:clarifai:================================================================================
+{"msg": "\ud83d\udce4 Uploading model to Clarifai platform...", "@timestamp": "2026-04-23T13:47:28.435002Z", "filename": "model_export_helper.py", "stack_info": null, "lineno": 152, "level": "info"}
+INFO:clarifai:📤 Uploading model to Clarifai platform...
+{"msg": "================================================================================", "@timestamp": "2026-04-23T13:47:28.435079Z", "filename": "model_export_helper.py", "stack_info": null, "lineno": 153, "level": "info"}
+INFO:clarifai:================================================================================
+{"msg": "\ud83d\udce6 Initializing ModelBuilder...", "@timestamp": "2026-04-23T13:47:28.472907Z", "filename": "model_export_helper.py", "stack_info": null, "lineno": 159, "level": "info"}
+INFO:clarifai:📦 Initializing ModelBuilder...
+{"msg": "New model will be created at https://clarifai.com/alfrick/my-vis-classifier/models/test_model with its first version.", "@timestamp": "2026-04-23T13:47:28.522088Z", "filename": "model_export_helper.py", "stack_info": null, "lineno": 173, "level": "info"}
+INFO:clarifai:New model will be created at https://clarifai.com/alfrick/my-vis-classifier/models/test_model with its first version.
+{"msg": "\ud83d\udce4 Uploading model version...", "@timestamp": "2026-04-23T13:47:28.522192Z", "filename": "model_export_helper.py", "stack_info": null, "lineno": 181, "level": "info"}
+INFO:clarifai:📤 Uploading model version...
+{"msg": "Added num_threads=16 to model version", "@timestamp": "2026-04-23T13:47:28.524410Z", "filename": "model_builder.py", "stack_info": null, "lineno": 1888, "level": "info"}
+INFO:clarifai:Added num_threads=16 to model version
+{"msg": "Found 4 concepts in the config file.", "@timestamp": "2026-04-23T13:47:28.524578Z", "filename": "model_builder.py", "stack_info": null, "lineno": 1894, "level": "info"}
+INFO:clarifai:Found 4 concepts in the config file. |  thread=8485281984 
+[INFO] 16:48:01.487567 Pipeline run monitoring... (elapsed 571.7s) |  thread=8485281984 
+[INFO] 16:48:01.487690 Pipeline run status: 64001 (JOB_RUNNING) |  thread=8485281984 
+[INFO] 16:48:01.487797 Pipeline run in progress: 64001 (JOB_RUNNING) |  thread=8485281984 
+[INFO] 16:48:15.311939 [LOG] {"msg": "Uploading file...", "@timestamp": "2026-04-23T13:47:41.998475Z", "filename": "model_builder.py", "stack_info": null, "lineno": 2087, "level": "info"}
+INFO:clarifai:Uploading file...
+{"msg": "Upload complete!", "@timestamp": "2026-04-23T13:47:45.306827Z", "filename": "model_builder.py", "stack_info": null, "lineno": 2111, "level": "info"}
+INFO:clarifai:Upload complete!
+{"msg": "Created Model Version ID: ****55d11f88ab21", "@timestamp": "2026-04-23T13:47:46.890747Z", "filename": "model_builder.py", "stack_info": null, "lineno": 2043, "level": "info"}
+INFO:clarifai:Created Model Version ID: ****55d11f88ab21
+{"msg": "Full url to that version is: https://clarifai.com/alfrick/my-vis-classifier/models/test_model", "@timestamp": "2026-04-23T13:47:46.890876Z", "filename": "model_builder.py", "stack_info": null, "lineno": 2044, "level": "info"}
+INFO:clarifai:Full url to that version is: https://clarifai.com/alfrick/my-vis-classifier/models/test_model
+{"msg": "2026-04-23 13:47:47.922126 INFO: Downloading uploaded buildable from storage...\n2026-04-23 13:47:49.579937 INFO: Done downloading buildable from storage\n2026-04-23 13:47:49.582842 INFO: Extracting upload...\n2026-04-23 13:47:51.715992 INFO: Done extracting upload\n2026-04-23 13:47:51.716965 INFO: Parsing requirements file for buildable version ID ****55d11f88ab21\n2026-04-23 13:47:51.740119 INFO: Dockerfile found at /shared/context/Dockerfile\ncat: /shared/context/downloader/hf_token: No such file or directory", "@timestamp": "2026-04-23T13:47:52.075115Z", "filename": "model_builder.py", "stack_info": null, "lineno": 2179, "level": "info"}
+INFO:clarifai:2026-04-23 13:47:47.922126 INFO: Downloading uploaded buildable from storage...
+2026-04-23 13:47:49.579937 INFO: Done downloading buildable from storage
+2026-04-23 13:47:49.582842 INFO: Extracting upload...
+2026-04-23 13:47:51.715992 INFO: Done extracting upload
+2026-04-23 13:47:51.716965 INFO: Parsing requirements file for buildable version ID ****55d11f88ab21
+2026-04-23 13:47:51.740119 INFO: Dockerfile found at /shared/context/Dockerfile
+cat: /shared/context/downloader/hf_token: No such file or directory |  thread=8485281984 
+[INFO] 16:48:15.313010 Pipeline run monitoring... (elapsed 585.5s) |  thread=8485281984 
+[INFO] 16:48:15.313132 Pipeline run status: 64001 (JOB_RUNNING) |  thread=8485281984 
+[INFO] 16:48:15.313209 Pipeline run in progress: 64001 (JOB_RUNNING) |  thread=8485281984 
+[INFO] 16:48:28.774964 [LOG] {"msg": "2026-04-23 13:47:51.715992 INFO: Done extracting upload\n2026-04-23 13:47:51.716965 INFO: Parsing requirements file for buildable version ID ****55d11f88ab21\n2026-04-23 13:47:51.740119 INFO: Dockerfile found at /shared/context/Dockerfile\ncat: /shared/context/downloader/hf_token: No such file or directory\n2026-04-23 13:47:52.412433 INFO: Setting up credentials\namazon-ecr-credential-helper\nVersion:    0.8.0\nGit commit: ********\n2026-04-23 13:47:52.416890 INFO: Building image...\n#1 \\[internal] load build definition from Dockerfile\n#1 transferring dockerfile: 1.60kB done\n#1 WARN: ****tDisallowed: FROM --platform flag should not use constant value \"linux/amd64\" (line 1)\n#1 DONE 0.0s\n\n#2 \\[internal] load metadata for docker.io/pytorch/pytorch:2.5.1-cuda12.4-cudnn9-devel\n#2 DONE 0.1s\n\n#3 \\[internal] load .dockerignore\n#3 transferring context: 2B done\n#3 DONE 0.0s\n\n#4 \\[stage-0 1/9] FROM docker.io/pytorch/pytorch:2.5.1-cuda12.4-cudnn9-devel@sha256:************e014\n#4 resolve docker.io/pytorch/pytorch:2.5.1-cuda12.4-cudnn9-devel@sha256:************e014 done\n#4 DONE 0.0s\n\n#5 \\[internal] load build context\n#5 transferring context: 282.79MB 2.1s done\n#5 DONE 2.1s\n\n#6 \\[stage-0 2/9] RUN apt-get update && apt-get install -y     libgl1     libglib2.0-0     libsm6     libxext6     libxrender1     libgomp1     && rm -rf /var/lib/apt/lists/*\n#6 CACHED\n\n#7 \\[stage-0 4/9] RUN pip install --no-cache-dir -r /home/nonroot/requirements.txt\n#7 CACHED\n\n#8 \\[stage-0 6/9] COPY --chown=nonroot:nonroot downloader/unused.yaml /home/nonroot/main/1/checkpoints/.cache/unused.yaml\n#8 CACHED\n\n#9 \\[stage-0 3/9] COPY --link requirements.txt /home/nonroot/requirements.txt\n#9 CACHED\n\n#10 \\[stage-0 5/9] RUN pip show clarifai\n#10 CACHED\n\n#11 \\[stage-0 7/9] RUN  [\"python\", \"-m\", \"clarifai.cli\", \"model\", \"download-checkpoints\", \"/home/nonroot/main\", \"--out_path\", \"/home/nonroot/main/1/checkpoints\", \"--stage\", \"build\"]\n#11 CACHED\n\n#12 \\[stage-0 8/9] COPY --link=true 1 /home/nonroot/main/1\n#12 DONE 0.0s\n\n#13 \\[stage-0 9/9] COPY --link=true requirements.txt config.yaml /home/nonroot/main/\n#13 DONE 0.0s\n\n#14 exporting to image\n#14 exporting layers", "@timestamp": "2026-04-23T13:47:57.555280Z", "filename": "model_builder.py", "stack_info": null, "lineno": 2179, "level": "info"}
+INFO:clarifai:2026-04-23 13:47:51.715992 INFO: Done extracting upload
+2026-04-23 13:47:51.716965 INFO: Parsing requirements file for buildable version ID ****55d11f88ab21
+2026-04-23 13:47:51.740119 INFO: Dockerfile found at /shared/context/Dockerfile
+cat: /shared/context/downloader/hf_token: No such file or directory
+2026-04-23 13:47:52.412433 INFO: Setting up credentials
+amazon-ecr-credential-helper
+Version:    0.8.0
+Git commit: ********
+2026-04-23 13:47:52.416890 INFO: Building image...
+#1 \[internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.60kB done
+#1 WARN: ****tDisallowed: FROM --platform flag should not use constant value "linux/amd64" (line 1)
+#1 DONE 0.0s
+
+#2 \[internal] load metadata for docker.io/pytorch/pytorch:2.5.1-cuda12.4-cudnn9-devel
+#2 DONE 0.1s
+
+#3 \[internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 \[stage-0 1/9] FROM docker.io/pytorch/pytorch:2.5.1-cuda12.4-cudnn9-devel@sha256:************e014
+#4 resolve docker.io/pytorch/pytorch:2.5.1-cuda12.4-cudnn9-devel@sha256:************e014 done
+#4 DONE 0.0s
+
+#5 \[internal] load build context
+#5 transferring context: 282.79MB 2.1s done
+#5 DONE 2.1s
+
+#6 \[stage-0 2/9] RUN apt-get update && apt-get install -y     libgl1     libglib2.0-0     libsm6     libxext6     libxrender1     libgomp1     && rm -rf /var/lib/apt/lists/*
+#6 CACHED
+
+#7 \[stage-0 4/9] RUN pip install --no-cache-dir -r /home/nonroot/requirements.txt
+#7 CACHED
+
+#8 \[stage-0 6/9] COPY --chown=nonroot:nonroot downloader/unused.yaml /home/nonroot/main/1/checkpoints/.cache/unused.yaml
+#8 CACHED
+
+#9 \[stage-0 3/9] COPY --link requirements.txt /home/nonroot/requirements.txt
+#9 CACHED
+
+#10 \[stage-0 5/9] RUN pip show clarifai
+#10 CACHED
+
+#11 \[stage-0 7/9] RUN  ["python", "-m", "clarifai.cli", "model", "download-checkpoints", "/home/nonroot/main", "--out_path", "/home/nonroot/main/1/checkpoints", "--stage", "build"]
+#11 CACHED
+
+#12 \[stage-0 8/9] COPY --link=true 1 /home/nonroot/main/1
+#12 DONE 0.0s
+
+#13 \[stage-0 9/9] COPY --link=true requirements.txt config.yaml /home/nonroot/main/
+#13 DONE 0.0s
+
+#14 exporting to image
+#14 exporting layers
+{"msg": "#14 exporting layers 5.3s done\n#14 exporting manifest sha256:************d1c9 done\n#14 exporting config sha256:************71fb done\n#14 pushing layers\n#14 ...\n\n#15 \\[auth] sharing credentials for 891377382885.dkr.ecr.us-east-1.amazonaws.com\n#15 DONE 0.0s\n\n#14 exporting to image", "@timestamp": "2026-04-23T13:48:03.168995Z", "filename": "model_builder.py", "stack_info": null, "lineno": 2179, "level": "info"}
+INFO:clarifai:#14 exporting layers 5.3s done
+#14 exporting manifest sha256:************d1c9 done
+#14 exporting config sha256:************71fb done
+#14 pushing layers
+#14 ...
+
+#15 \[auth] sharing credentials for 891377382885.dkr.ecr.us-east-1.amazonaws.com
+#15 DONE 0.0s
+
+#14 exporting to image
+{"msg": "#14 pushing layers 5.0s done\n#14 pushing manifest for ****/prod/python:****55d11f88ab21@sha256:************d1c9\n#14 pushing manifest for ****/prod/python:****55d11f88ab21@sha256:************d1c9 0.4s done\n#14 DONE 10.7s\n2026-04-23 13:48:05.476752 INFO: Done building image!!!", "@timestamp": "2026-04-23T13:48:07.746246Z", "filename": "model_builder.py", "stack_info": null, "lineno": 2179, "level": "info"}
+INFO:clarifai:#14 pushing layers 5.0s done
+#14 pushing manifest for ****/prod/python:****55d11f88ab21@sha256:************d1c9
+#14 pushing manifest for ****/prod/python:****55d11f88ab21@sha256:************d1c9 0.4s done
+#14 DONE 10.7s
+2026-04-23 13:48:05.476752 INFO: Done building image!!!
+{"msg": "Model build complete!", "@timestamp": "2026-04-23T13:48:10.125627Z", "filename": "model_builder.py", "stack_info": null, "lineno": 2202, "level": "info"}
+INFO:clarifai:Model build complete!
+{"msg": "Build time elapsed 23.2s)", "@timestamp": "2026-04-23T13:48:10.125767Z", "filename": "model_builder.py", "stack_info": null, "lineno": 2203, "level": "info"}
+INFO:clarifai:Build time elapsed 23.2s)
+{"msg": "Check out the model at https://clarifai.com/alfrick/my-vis-classifier/models/test_model version: ****55d11f88ab21", "@timestamp": "2026-04-23T13:48:10.125836Z", "filename": "model_builder.py", "stack_info": null, "lineno": 2204, "level": "info"}
+INFO:clarifai:Check out the model at https://clarifai.com/alfrick/my-vis-classifier/models/test_model version: ****55d11f88ab21
+{"msg": "Config file /root/.config/clarifai/config not found, using default config. Run 'clarifai config' on the command line to create a config file.", "@timestamp": "2026-04-23T13:48:10.128947Z", "filename": "config.py", "stack_info": null, "lineno": 179, "level": "warning"}
+WARNING:clarifai:Config file /root/.config/clarifai/config not found, using default config. Run 'clarifai config' on the command line to create a config file.
+{"msg": "\n\************XXX\n# Here is a code snippet to use this model:\************XXX\n                ", "@timestamp": "2026-04-23T13:48:10.157332Z", "filename": "model_builder.py", "stack_info": null, "lineno": 2064, "level": "info"}
+INFO:clarifai:
+
+************XX
+# Here is a code snippet to use this model:
+************XX
+                
+{"msg": "\u001b[37m# Clarifai Model Client Script\u001b[39;49;00m\u001b[37m\u001b[39;49;00m\n\u001b[37m# Set the environment variables `CLARIFAI_DEPLOYMENT_ID` and `CLARIFAI_PAT` to run this script.\u001b[39;49;00m\u001b[37m\u001b[39;49;00m\n\u001b[37m# Example usage:\u001b[39;49;00m\u001b[37m\u001b[39;49;00m\n\u001b[34mimport\u001b[39;49;00m\u001b[37m \u001b[39;49;00m\u001b[04m\u001b[36mos\u001b[39;49;00m\u001b[37m\u001b[39;49;00m\n\u001b[37m\u001b[39;49;00m\n\u001b[34mfrom\u001b[39;49;00m\u001b[37m \u001b[39;49;00m\u001b[04m\u001b[36mclarifai\u001b[39;49;00m\u001b[04m\u001b[36m.\u001b[39;49;00m\u001b[04m\u001b[36mclient\u001b[39;49;00m\u001b[37m \u001b[39;49;00m\u001b[34mimport\u001b[39;49;00m Model\u001b[37m\u001b[39;49;00m\n\u001b[34mfrom\u001b[39;49;00m\u001b[37m \u001b[39;49;00m\u001b[04m\u001b[36mclarifai\u001b[39;49;00m\u001b[04m\u001b[36m.\u001b[39;49;00m\u001b[04m\u001b[36mrunners\u001b[39;49;00m\u001b[04m\u001b[36m.\u001b[39;49;00m\u001b[04m\u001b[36mutils\u001b[39;49;00m\u001b[37m \u001b[39;49;00m\u001b[34mimport\u001b[39;49;00m data_types\u001b[37m\u001b[39;49;00m\n\u001b[37m\u001b[39;49;00m\nmodel = Model(\u001b[37m\u001b[39;49;00m\n    \u001b[33m\"\u001b[39;49;00m\u001b[33mhttps://clarifai.com/alfrick/my-vis-classifier/models/test_model\u001b[39;49;00m\u001b[33m\"\u001b[39;49;00m,\u001b[37m\u001b[39;49;00m\n    deployment_id=os.environ.get(\u001b[33m\"\u001b[39;49;00m\u001b[33mCLARIFAI_DEPLOYMENT_ID\u001b[39;49;00m\u001b[33m\"\u001b[39;49;00m, \u001b[34mNone\u001b[39;49;00m),  \u001b[37m# Only needed for dedicated deployed models\u001b[39;49;00m\u001b[37m\u001b[39;49;00m\n    deployment_user_id=os.environ.get(\u001b[33m\"\u001b[39;49;00m\u001b[33mCLARIFAI_DEPLOYMENT_USER_ID\u001b[39;49;00m\u001b[33m\"\u001b[39;49;00m, \u001b[34mNone\u001b[39;49;00m),  \u001b[37m# Organization or user ID for deployment/nodepool\u001b[39;49;00m\u001b[37m\u001b[39;49;00m\n)\u001b[37m\u001b[39;49;00m\n\u001b[37m\u001b[39;49;00m\n\u001b[37m# Example model prediction from different model methods:\u001b[39;49;00m\u001b[37m\u001b[39;49;00m\n\u001b[37m\u001b[39;49;00m\nresponse = model.predict(\u001b[37m\u001b[39;49;00m\n    image=data_types.Image.from_url(\u001b[33m\"\u001b[39;49;00m\u001b[33mhttps://samples.clarifai.com/metro-north.jpg\u001b[39;49;00m\u001b[33m\"\u001b[39;49;00m),\u001b[37m\u001b[39;49;00m\n)\u001b[37m\u001b[39;49;00m\n\u001b[36mprint\u001b[39;49;00m(response)\u001b[37m\u001b[39;49;00m\n", "@timestamp": "2026-04-23T13:48:10.157423Z", "filename": "model_builder.py", "stack_info": null, "lineno": 2069, "level": "info"}
+INFO:clarifai:# Clarifai Model Client Script
+# Set the environment variables `CLARIFAI_DEPLOYMENT_ID` and `CLARIFAI_PAT` to run this script.
+# Example usage:
+import os
+
+from clarifai.client import Model
+from clarifai.runners.utils import data_types
+
+model = Model(
+    "https://clarifai.com/alfrick/my-vis-classifier/models/test_model",
+    deployment_id=os.environ.get("CLARIFAI_DEPLOYMENT_ID", None),  # Only needed for dedicated deployed models
+    deployment_user_id=os.environ.get("CLARIFAI_DEPLOYMENT_USER_ID", None),  # Organization or user ID for deployment/nodepool
+)
+
+# Example model prediction from different model methods:
+
+response = model.predict(
+    image=data_types.Image.from_url("https://samples.clarifai.com/metro-north.jpg"),
+)
+print(response)
+
+{"msg": "\n\************XXX\************XXX\n                ", "@timestamp": "2026-04-23T13:48:10.157496Z", "filename": "model_builder.py", "stack_info": null, "lineno": 2070, "level": "info"}
+INFO:clarifai:
+
+************XX
+************XX
+                
+{"msg": "--------------------------------------------------------------------------------", "@timestamp": "2026-04-23T13:48:10.188324Z", "filename": "model_export_helper.py", "stack_info": null, "lineno": 184, "level": "info"}
+INFO:clarifai:--------------------------------------------------------------------------------
+{"msg": "\u2705 Model upload completed successfully!", "@timestamp": "2026-04-23T13:48:10.188420Z", "filename": "model_export_helper.py", "stack_info": null, "lineno": 185, "level": "info"}
+INFO:clarifai:✅ Model upload completed successfully!
+{"msg": "\ud83d\udccd Model URL: https://clarifai.com/alfrick/my-vis-classifier/models/test_model", "@timestamp": "2026-04-23T13:48:10.188489Z", "filename": "model_export_helper.py", "stack_info": null, "lineno": 186, "level": "info"}
+INFO:clarifai:📍 Model URL: https://clarifai.com/alfrick/my-vis-classifier/models/test_model
+{"msg": "\ud83c\udd94 Model Version ID: ****55d11f88ab21", "@timestamp": "2026-04-23T13:48:10.188561Z", "filename": "model_export_helper.py", "stack_info": null, "lineno": 187, "level": "info"}
+INFO:clarifai:🆔 Model Version ID: ****55d11f88ab21
+{"msg": "================================================================================", "@timestamp": "2026-04-23T13:48:10.188628Z", "filename": "model_export_helper.py", "stack_info": null, "lineno": 188, "level": "info"}
+INFO:clarifai:================================================================================
+INFO:root:
+INFO:root:================================================================================
+INFO:root:PIPELINE COMPLETED SUCCESSFULLY!
+INFO:root:================================================================================
+INFO:root:Final checkpoint: /tmp/mmpretrain_work_dir/epoch_200.pth
+time="2026-04-23T13:48:11.892Z" level=info msg="sub-process exited" argo=true error="<nil>"
+time="2026-04-23T13:48:12.446Z" level=info msg="Main container completed" error="<nil>"
+time="2026-04-23T13:48:12.446Z" level=info msg="No Script output reference in workflow. Capturing script output ignored"
+time="2026-04-23T13:48:12.446Z" level=info msg="No output parameters"
+time="2026-04-23T13:48:12.446Z" level=info msg="No output artifacts"
+time="2026-04-23T13:48:12.454Z" level=info msg="Alloc=6912 TotalAlloc=16629 Sys=23382 NumGC=7 Goroutines=7" |  thread=8485281984 
+[INFO] 16:48:28.776854 Pipeline run monitoring... (elapsed 598.9s) |  thread=8485281984 
+[INFO] 16:48:28.777029 Pipeline run status: 64001 (JOB_RUNNING) |  thread=8485281984 
+[INFO] 16:48:28.777100 Pipeline run in progress: 64001 (JOB_RUNNING) |  thread=8485281984 
+[INFO] 16:48:41.486882 Pipeline run monitoring... (elapsed 611.7s) |  thread=8485281984 
+[INFO] 16:48:41.487330 Pipeline run status: 64002 (JOB_COMPLETED) |  thread=8485281984 
+[INFO] 16:48:41.487426 Pipeline run completed successfully! |  thread=8485281984 
+{
+  "status": "success",
+  "pipeline_version_run": {
+    "id": "2c8ec3b1fa7d438bbba96ca3b46c47ba",
+    "pipeline_version": {
+      "id": "c382c6f2f1a14167971a14ad6cd06aaf",
+      "app_id": "my-vis-classifier",
+      "user_id": "alfrick",
+      "orchestration_spec": {
+        "argo_orchestration_spec": {
+          "api_version": "argoproj.io/v1alpha1",
+          "spec_json": "{\"apiVersion\": \"argoproj.io/v1alpha1\", \"kind\": \"Workflow\", \"metadata\": {\"generateName\": \"classifier-pipeline-resnet-\"}, \"spec\": {\"entrypoint\": \"sequence\", \"arguments\": {\"parameters\": [{\"name\": \"user_id\", \"value\": \"alfrick\"}, {\"name\": \"app_id\", \"value\": \"my-vis-classifier\"}, {\"name\": \"model_id\", \"value\": \"test_model\"}, {\"name\": \"dataset_id\", \"value\": \"image_dataset\"}, {\"name\": \"dataset_version_id\", \"value\": \"a3003c4c946b482fb7a24c4d536367f1\"}, {\"name\": \"concepts\", \"value\": \"[\\\"beignets\\\",\\\"hamburger\\\",\\\"prime_rib\\\",\\\"ramen\\\"]\"}, {\"name\": \"num_epochs\", \"value\": 200}, {\"name\": \"batch_size\", \"value\": 64}, {\"name\": \"image_size\", \"value\": 224}, {\"name\": \"per_item_lrate\", \"value\": 1.953125e-05}, {\"name\": \"weight_decay\", \"value\": 0.01}, {\"name\": \"per_item_min_lrate\", \"value\": 1.5625e-08}, {\"name\": \"warmup_iters\", \"value\": 5}, {\"name\": \"warmup_ratio\", \"value\": 0.0001}, {\"name\": \"flip_probability\", \"value\": 0.5}, {\"name\": \"flip_direction\", \"value\": \"horizontal\"}, {\"name\": \"concepts_mutually_exclusive\", \"value\": false}, {\"name\": \"pretrained_weights\", \"value\": \"ImageNet-1k\"}, {\"name\": \"seed\", \"value\": -1}]}, \"templates\": [{\"name\": \"sequence\", \"steps\": [[{\"name\": \"classifier-pipeline-resnet-ps-name\", \"templateRef\": {\"name\": \"users/clarifai/apps/train_pipelines/pipeline_steps/classifier-pipeline-resnet-ps/versions/8883b22d1d86487d82f4dc54664818f2\", \"template\": \"users/clarifai/apps/train_pipelines/pipeline_steps/classifier-pipeline-resnet-ps/versions/8883b22d1d86487d82f4dc54664818f2\"}, \"arguments\": {\"parameters\": [{\"name\": \"user_id\", \"value\": \"{{workflow.parameters.user_id}}\"}, {\"name\": \"app_id\", \"value\": \"{{workflow.parameters.app_id}}\"}, {\"name\": \"model_id\", \"value\": \"{{workflow.parameters.model_id}}\"}, {\"name\": \"dataset_id\", \"value\": \"{{workflow.parameters.dataset_id}}\"}, {\"name\": \"dataset_version_id\", \"value\": \"{{workflow.parameters.dataset_version_id}}\"}, {\"name\": \"concepts\", \"value\": \"{{workflow.parameters.concepts}}\"}, {\"name\": \"num_epochs\", \"value\": \"{{workflow.parameters.num_epochs}}\"}, {\"name\": \"batch_size\", \"value\": \"{{workflow.parameters.batch_size}}\"}, {\"name\": \"image_size\", \"value\": \"{{workflow.parameters.image_size}}\"}, {\"name\": \"per_item_lrate\", \"value\": \"{{workflow.parameters.per_item_lrate}}\"}, {\"name\": \"weight_decay\", \"value\": \"{{workflow.parameters.weight_decay}}\"}, {\"name\": \"per_item_min_lrate\", \"value\": \"{{workflow.parameters.per_item_min_lrate}}\"}, {\"name\": \"warmup_iters\", \"value\": \"{{workflow.parameters.warmup_iters}}\"}, {\"name\": \"warmup_ratio\", \"value\": \"{{workflow.parameters.warmup_ratio}}\"}, {\"name\": \"flip_probability\", \"value\": \"{{workflow.parameters.flip_probability}}\"}, {\"name\": \"flip_direction\", \"value\": \"{{workflow.parameters.flip_direction}}\"}, {\"name\": \"concepts_mutually_exclusive\", \"value\": \"{{workflow.parameters.concepts_mutually_exclusive}}\"}, {\"name\": \"pretrained_weights\", \"value\": \"{{workflow.parameters.pretrained_weights}}\"}, {\"name\": \"seed\", \"value\": \"{{workflow.parameters.seed}}\"}]}}]]}]}}"
+        }
+      },
+      "pipeline_id": "classifier-pipeline-resnet",
+      "visibility": {
+        "gettable": "PRIVATE"
+      },
+      "created_at": "2026-04-23T13:32:42.548934Z",
+      "modified_at": "2026-04-23T13:32:42.548934Z"
+    },
+    "nodepools": [
+      {
+        "id": "visual-nodepool",
+        "description": "GPU nodepool for training workloads",
+        "created_at": "2026-04-23T13:12:24.309080Z",
+        "modified_at": "2026-04-23T13:40:21.572391Z",
+        "node_capacity_type": {
+          "capacity_types": [
+            "ON_DEMAND_TYPE"
+          ]
+        },
+        "instance_types": [
+          {
+            "id": "g5.2xlarge",
+            "description": "g5.2xlarge",
+            "compute_info": {
+              "cpu_memory": "29033Mi",
+              "num_accelerators": 1,
+              "accelerator_memory": "23028Mi",
+              "accelerator_type": [
+                "NVIDIA-A10G"
+              ],
+              "cpu_limit": "7525m"
+            },
+            "price": "42.000000",
+            "cloud_provider": {
+              "id": "aws",
+              "name": "aws"
+            },
+            "region": "us-east-1",
+            "feature_flag_group": "ComputeResourceSmall",
+            "architecture": "linux/amd64",
+            "available_compute_info": {
+              "cpu_memory": "29033Mi",
+              "num_accelerators": 1,
+              "accelerator_memory": "23028Mi",
+              "accelerator_type": [
+                "NVIDIA-A10G"
+              ],
+              "cpu_limit": "7525m"
+            }
+          }
+        ],
+        "max_instances": 1,
+        "visibility": {
+          "gettable": "PRIVATE"
+        },
+        "enforced_max_instances": 1
+      }
+    ],
+    "orchestration_status": {
+      "argo_status": {
+        "status": "{\"phase\":\"Succeeded\",\"startedAt\":\"2026-04-23T13:38:34Z\",\"finishedAt\":\"2026-04-23T13:48:22Z\",\"progress\":\"1/1\",\"nodes\":{\"cl-17f2b06c8ece0e8fc00abaf1fecd63b7\":{\"id\":\"cl-17f2b06c8ece0e8fc00abaf1fecd63b7\",\"name\":\"cl-17f2b06c8ece0e8fc00abaf1fecd63b7\",\"displayName\":\"cl-17f2b06c8ece0e8fc00abaf1fecd63b7\",\"type\":\"Steps\",\"templateName\":\"sequence\",\"templateScope\":\"local/cl-17f2b06c8ece0e8fc00abaf1fecd63b7\",\"phase\":\"Succeeded\",\"startedAt\":\"2026-04-23T13:38:34Z\",\"finishedAt\":\"2026-04-23T13:48:22Z\",\"progress\":\"1/1\",\"resourcesDuration\":{\"cpu\":202,\"memory\":2032,\"nvidia.com/gpu\":313,\"nvidia.com/gpumem\":5128192},\"children\":[\"cl-17f2b06c8ece0e8fc00abaf1fecd63b7-557582930\"],\"outboundNodes\":[\"cl-17f2b06c8ece0e8fc00abaf1fecd63b7-913573978\"]},\"cl-17f2b06c8ece0e8fc00abaf1fecd63b7-557582930\":{\"id\":\"cl-17f2b06c8ece0e8fc00abaf1fecd63b7-557582930\",\"name\":\"cl-17f2b06c8ece0e8fc00abaf1fecd63b7[0]\",\"displayName\":\"[0]\",\"type\":\"StepGroup\",\"templateScope\":\"local/cl-17f2b06c8ece0e8fc00abaf1fecd63b7\",\"phase\":\"Succeeded\",\"boundaryID\":\"cl-17f2b06c8ece0e8fc00abaf1fecd63b7\",\"startedAt\":\"2026-04-23T13:38:34Z\",\"finishedAt\":\"2026-04-23T13:48:22Z\",\"progress\":\"1/1\",\"resourcesDuration\":{\"cpu\":202,\"memory\":2032,\"nvidia.com/gpu\":313,\"nvidia.com/gpumem\":5128192},\"nodeFlag\":{},\"children\":[\"cl-17f2b06c8ece0e8fc00abaf1fecd63b7-913573978\"]},\"cl-17f2b06c8ece0e8fc00abaf1fecd63b7-913573978\":{\"id\":\"cl-17f2b06c8ece0e8fc00abaf1fecd63b7-913573978\",\"name\":\"cl-17f2b06c8ece0e8fc00abaf1fecd63b7[0].classifier-pipeline-resnet-ps-name\",\"displayName\":\"classifier-pipeline-resnet-ps-name\",\"type\":\"Pod\",\"templateRef\":{\"name\":\"cl-071c22e089d7598826bf7cc9dd354d7d\",\"template\":\"cl-071c22e089d7598826bf7cc9dd354d7d\"},\"templateScope\":\"local/cl-17f2b06c8ece0e8fc00abaf1fecd63b7\",\"phase\":\"Succeeded\",\"boundaryID\":\"cl-17f2b06c8ece0e8fc00abaf1fecd63b7\",\"startedAt\":\"2026-04-23T13:38:34Z\",\"finishedAt\":\"2026-04-23T13:48:12Z\",\"progress\":\"1/1\",\"resourcesDuration\":{\"cpu\":202,\"memory\":2032,\"nvidia.com/gpu\":313,\"nvidia.com/gpumem\":5128192},\"inputs\":{\"parameters\":[{\"name\":\"user_id\",\"default\":\"\",\"value\":\"alfrick\",\"description\":\"User ID\"},{\"name\":\"app_id\",\"default\":\"\",\"value\":\"my-vis-classifier\",\"description\":\"App ID\"},{\"name\":\"model_id\",\"default\":\"\",\"value\":\"test_model\",\"description\":\"Model ID\"},{\"name\":\"dataset_id\",\"default\":\"\",\"value\":\"image_dataset\",\"description\":\"Dataset ID\"},{\"name\":\"dataset_version_id\",\"default\":\"\",\"value\":\"a3003c4c946b482fb7a24c4d536367f1\",\"description\":\"Dataset Version ID\"},{\"name\":\"concepts\",\"default\":\"\",\"value\":\"[\\\"beignets\\\",\\\"hamburger\\\",\\\"prime_rib\\\",\\\"ramen\\\"]\",\"description\":\"List of class names as JSON array\"},{\"name\":\"num_epochs\",\"default\":\"\",\"value\":\"200\",\"description\":\"Total number of training epochs\"},{\"name\":\"batch_size\",\"default\":\"\",\"value\":\"64\",\"description\":\"Batch size for training\"},{\"name\":\"image_size\",\"default\":\"\",\"value\":\"224\",\"description\":\"Input image size (ResNet uses square images)\"},{\"name\":\"per_item_lrate\",\"default\":\"\",\"value\":\"0.00001953125\",\"description\":\"Learning rate per item (overall LR = batch_size * per_item_lrate)\"},{\"name\":\"weight_decay\",\"default\":\"\",\"value\":\"0.01\",\"description\":\"Weight decay value\"},{\"name\":\"per_item_min_lrate\",\"default\":\"\",\"value\":\"0.000000015625\",\"description\":\"Minimum learning rate per item at end of training\"},{\"name\":\"warmup_iters\",\"default\":\"\",\"value\":\"5\",\"description\":\"Number of warmup iterations\"},{\"name\":\"warmup_ratio\",\"default\":\"\",\"value\":\"0.0001\",\"description\":\"Warmup learning rate multiplier\"},{\"name\":\"flip_probability\",\"default\":\"\",\"value\":\"0.5\",\"description\":\"Probability of random flip during training\"},{\"name\":\"flip_direction\",\"default\":\"\",\"value\":\"horizontal\",\"description\":\"Flip direction (horizontal/vertical)\"},{\"name\":\"concepts_mutually_exclusive\",\"default\":\"\",\"value\":\"false\",\"description\":\"Whether concepts are mutually exclusive (single-label vs multi-label)\"},{\"name\":\"pretrained_weights\",\"default\":\"\",\"value\":\"ImageNet-1k\",\"description\":\"Pretrained weights source (e.g., ImageNet-1k)\"},{\"name\":\"seed\",\"default\":\"\",\"value\":\"-1\",\"description\":\"Random seed (-1 for no seed)\"},{\"name\":\"CLARIFAI_API_BASE\",\"value\":\"api-internal.clarifai.com:443\"},{\"name\":\"CLARIFAI_GRPC_BASE\",\"value\":\"api-internal.clarifai.com:443\"},{\"name\":\"CLARIFAI_USER_ID\",\"value\":\"alfrick\"},{\"name\":\"CLARIFAI_COMPUTE_CLUSTER_ID\",\"value\":\"visual-compute-cluster\"},{\"name\":\"CLARIFAI_NODEPOOL_ID\",\"value\":\"visual-nodepool\"},{\"name\":\"CLARIFAI_PIPELINE_VER_RUN_ID\",\"value\":\"2c8ec3b1fa7d438bbba96ca3b46c47ba\"}]},\"outputs\":{\"exitCode\":\"0\"},\"hostNodeName\":\"ip-10-7-170-101.ec2.internal\"}},\"storedTemplates\":{\"namespaced/cl-071c22e089d7598826bf7cc9dd354d7d/cl-071c22e089d7598826bf7cc9dd354d7d\":{\"name\":\"cl-071c22e089d7598826bf7cc9dd354d7d\",\"inputs\":{\"parameters\":[{\"name\":\"user_id\",\"default\":\"\",\"description\":\"User ID\"},{\"name\":\"app_id\",\"default\":\"\",\"description\":\"App ID\"},{\"name\":\"model_id\",\"default\":\"\",\"description\":\"Model ID\"},{\"name\":\"dataset_id\",\"default\":\"\",\"description\":\"Dataset ID\"},{\"name\":\"dataset_version_id\",\"default\":\"\",\"description\":\"Dataset Version ID\"},{\"name\":\"concepts\",\"default\":\"\",\"description\":\"List of class names as JSON array\"},{\"name\":\"num_epochs\",\"default\":\"\",\"description\":\"Total number of training epochs\"},{\"name\":\"batch_size\",\"default\":\"\",\"description\":\"Batch size for training\"},{\"name\":\"image_size\",\"default\":\"\",\"description\":\"Input image size (ResNet uses square images)\"},{\"name\":\"per_item_lrate\",\"default\":\"\",\"description\":\"Learning rate per item (overall LR = batch_size * per_item_lrate)\"},{\"name\":\"weight_decay\",\"default\":\"\",\"description\":\"Weight decay value\"},{\"name\":\"per_item_min_lrate\",\"default\":\"\",\"description\":\"Minimum learning rate per item at end of training\"},{\"name\":\"warmup_iters\",\"default\":\"\",\"description\":\"Number of warmup iterations\"},{\"name\":\"warmup_ratio\",\"default\":\"\",\"description\":\"Warmup learning rate multiplier\"},{\"name\":\"flip_probability\",\"default\":\"\",\"description\":\"Probability of random flip during training\"},{\"name\":\"flip_direction\",\"default\":\"\",\"description\":\"Flip direction (horizontal/vertical)\"},{\"name\":\"concepts_mutually_exclusive\",\"default\":\"\",\"description\":\"Whether concepts are mutually exclusive (single-label vs multi-label)\"},{\"name\":\"pretrained_weights\",\"default\":\"\",\"description\":\"Pretrained weights source (e.g., ImageNet-1k)\"},{\"name\":\"seed\",\"default\":\"\",\"description\":\"Random seed (-1 for no seed)\"},{\"name\":\"CLARIFAI_API_BASE\"},{\"name\":\"CLARIFAI_GRPC_BASE\"},{\"name\":\"CLARIFAI_USER_ID\"},{\"name\":\"CLARIFAI_COMPUTE_CLUSTER_ID\"},{\"name\":\"CLARIFAI_NODEPOOL_ID\"},{\"name\":\"CLARIFAI_PIPELINE_VER_RUN_ID\"}]},\"outputs\":{},\"metadata\":{\"annotations\":{\"cluster-autoscaler.kubernetes.io/safe-to-evict\":\"false\",\"hami.io/gpu-scheduler-policy\":\"binpack\",\"hami.io/node-scheduler-policy\":\"binpack\",\"karpenter.sh/do-not-disrupt\":\"true\",\"karpenter.sh/do-not-evict\":\"true\"}},\"container\":{\"name\":\"\",\"image\":\"data-internal.clarifai.com/users/clarifai/pipeline_step_versions/8883b22d1d86487d82f4dc54664818f2/image\",\"command\":[\"python\",\"/home/nonroot/main/1/pipeline_step.py\"],\"args\":[\"--user_id\",\"{{inputs.parameters.user_id}}\",\"--app_id\",\"{{inputs.parameters.app_id}}\",\"--model_id\",\"{{inputs.parameters.model_id}}\",\"--dataset_id\",\"{{inputs.parameters.dataset_id}}\",\"--dataset_version_id\",\"{{inputs.parameters.dataset_version_id}}\",\"--concepts\",\"{{inputs.parameters.concepts}}\",\"--num_epochs\",\"{{inputs.parameters.num_epochs}}\",\"--batch_size\",\"{{inputs.parameters.batch_size}}\",\"--image_size\",\"{{inputs.parameters.image_size}}\",\"--per_item_lrate\",\"{{inputs.parameters.per_item_lrate}}\",\"--weight_decay\",\"{{inputs.parameters.weight_decay}}\",\"--per_item_min_lrate\",\"{{inputs.parameters.per_item_min_lrate}}\",\"--warmup_iters\",\"{{inputs.parameters.warmup_iters}}\",\"--warmup_ratio\",\"{{inputs.parameters.warmup_ratio}}\",\"--flip_probability\",\"{{inputs.parameters.flip_probability}}\",\"--flip_direction\",\"{{inputs.parameters.flip_direction}}\",\"--concepts_mutually_exclusive\",\"{{inputs.parameters.concepts_mutually_exclusive}}\",\"--pretrained_weights\",\"{{inputs.parameters.pretrained_weights}}\",\"--seed\",\"{{inputs.parameters.seed}}\"],\"env\":[{\"name\":\"CLARIFAI_API_BASE\",\"value\":\"{{inputs.parameters.CLARIFAI_API_BASE}}\"},{\"name\":\"CLARIFAI_GRPC_BASE\",\"value\":\"{{inputs.parameters.CLARIFAI_GRPC_BASE}}\"},{\"name\":\"CLARIFAI_USER_ID\",\"value\":\"{{inputs.parameters.CLARIFAI_USER_ID}}\"},{\"name\":\"CLARIFAI_COMPUTE_CLUSTER_ID\",\"value\":\"{{inputs.parameters.CLARIFAI_COMPUTE_CLUSTER_ID}}\"},{\"name\":\"CLARIFAI_NODEPOOL_ID\",\"value\":\"{{inputs.parameters.CLARIFAI_NODEPOOL_ID}}\"},{\"name\":\"CLARIFAI_PIPELINE_VER_RUN_ID\",\"value\":\"{{inputs.parameters.CLARIFAI_PIPELINE_VER_RUN_ID}}\"},{\"name\":\"CLARIFAI_PAT\",\"valueFrom\":{\"secretKeyRef\":{\"name\":\"cl-12087af0da24be7ab14fa62f5473ff99\",\"key\":\"clarifaiPAT\"}}}],\"resources\":{\"limits\":{\"cpu\":\"4\",\"memory\":\"16Gi\",\"nvidia.com/gpu\":\"1\",\"nvidia.com/gpumem\":\"16384\"},\"requests\":{\"cpu\":\"500m\",\"memory\":\"500Mi\",\"nvidia.com/gpu\":\"1\",\"nvidia.com/gpumem\":\"16384\"}},\"volumeMounts\":[{\"name\":\"shm\",\"mountPath\":\"/dev/shm\"}]},\"volumes\":[{\"name\":\"shm\",\"emptyDir\":{\"medium\":\"Memory\",\"sizeLimit\":\"16Gi\"}}],\"schedulerName\":\"hami-scheduler\"}},\"conditions\":[{\"type\":\"PodRunning\",\"status\":\"False\"},{\"type\":\"Completed\",\"status\":\"True\"}],\"resourcesDuration\":{\"cpu\":202,\"memory\":2032,\"nvidia.com/gpu\":313,\"nvidia.com/gpumem\":5128192},\"artifactRepositoryRef\":{\"default\":true,\"artifactRepository\":{}},\"artifactGCStatus\":{\"notSpecified\":true}}"
+      },
+      "status": {
+        "code": "JOB_COMPLETED",
+        "description": "Argo workflow at phase: Succeeded, progress: 1/1, message: "
+      }
+    },
+    "user_id": "alfrick",
+    "app_id": "my-vis-classifier",
+    "created_at": "2026-04-23T13:38:30.337834Z",
+    "modified_at": "2026-04-23T13:48:27.145287Z",
+    "orchestration_spec": {
+      "argo_orchestration_spec": {
+        "api_version": "argoproj.io/v1alpha1",
+        "spec_json": "{\"apiVersion\": \"argoproj.io/v1alpha1\", \"kind\": \"Workflow\", \"metadata\": {\"generateName\": \"classifier-pipeline-resnet-\"}, \"spec\": {\"entrypoint\": \"sequence\", \"arguments\": {\"parameters\": [{\"name\": \"user_id\", \"value\": \"alfrick\"}, {\"name\": \"app_id\", \"value\": \"my-vis-classifier\"}, {\"name\": \"model_id\", \"value\": \"test_model\"}, {\"name\": \"dataset_id\", \"value\": \"image_dataset\"}, {\"name\": \"dataset_version_id\", \"value\": \"a3003c4c946b482fb7a24c4d536367f1\"}, {\"name\": \"concepts\", \"value\": \"[\\\"beignets\\\",\\\"hamburger\\\",\\\"prime_rib\\\",\\\"ramen\\\"]\"}, {\"name\": \"num_epochs\", \"value\": 200}, {\"name\": \"batch_size\", \"value\": 64}, {\"name\": \"image_size\", \"value\": 224}, {\"name\": \"per_item_lrate\", \"value\": 1.953125e-05}, {\"name\": \"weight_decay\", \"value\": 0.01}, {\"name\": \"per_item_min_lrate\", \"value\": 1.5625e-08}, {\"name\": \"warmup_iters\", \"value\": 5}, {\"name\": \"warmup_ratio\", \"value\": 0.0001}, {\"name\": \"flip_probability\", \"value\": 0.5}, {\"name\": \"flip_direction\", \"value\": \"horizontal\"}, {\"name\": \"concepts_mutually_exclusive\", \"value\": false}, {\"name\": \"pretrained_weights\", \"value\": \"ImageNet-1k\"}, {\"name\": \"seed\", \"value\": -1}]}, \"templates\": [{\"name\": \"sequence\", \"steps\": [[{\"name\": \"classifier-pipeline-resnet-ps-name\", \"templateRef\": {\"name\": \"users/clarifai/apps/train_pipelines/pipeline_steps/classifier-pipeline-resnet-ps/versions/8883b22d1d86487d82f4dc54664818f2\", \"template\": \"users/clarifai/apps/train_pipelines/pipeline_steps/classifier-pipeline-resnet-ps/versions/8883b22d1d86487d82f4dc54664818f2\"}, \"arguments\": {\"parameters\": [{\"name\": \"user_id\", \"value\": \"{{workflow.parameters.user_id}}\"}, {\"name\": \"app_id\", \"value\": \"{{workflow.parameters.app_id}}\"}, {\"name\": \"model_id\", \"value\": \"{{workflow.parameters.model_id}}\"}, {\"name\": \"dataset_id\", \"value\": \"{{workflow.parameters.dataset_id}}\"}, {\"name\": \"dataset_version_id\", \"value\": \"{{workflow.parameters.dataset_version_id}}\"}, {\"name\": \"concepts\", \"value\": \"{{workflow.parameters.concepts}}\"}, {\"name\": \"num_epochs\", \"value\": \"{{workflow.parameters.num_epochs}}\"}, {\"name\": \"batch_size\", \"value\": \"{{workflow.parameters.batch_size}}\"}, {\"name\": \"image_size\", \"value\": \"{{workflow.parameters.image_size}}\"}, {\"name\": \"per_item_lrate\", \"value\": \"{{workflow.parameters.per_item_lrate}}\"}, {\"name\": \"weight_decay\", \"value\": \"{{workflow.parameters.weight_decay}}\"}, {\"name\": \"per_item_min_lrate\", \"value\": \"{{workflow.parameters.per_item_min_lrate}}\"}, {\"name\": \"warmup_iters\", \"value\": \"{{workflow.parameters.warmup_iters}}\"}, {\"name\": \"warmup_ratio\", \"value\": \"{{workflow.parameters.warmup_ratio}}\"}, {\"name\": \"flip_probability\", \"value\": \"{{workflow.parameters.flip_probability}}\"}, {\"name\": \"flip_direction\", \"value\": \"{{workflow.parameters.flip_direction}}\"}, {\"name\": \"concepts_mutually_exclusive\", \"value\": \"{{workflow.parameters.concepts_mutually_exclusive}}\"}, {\"name\": \"pretrained_weights\", \"value\": \"{{workflow.parameters.pretrained_weights}}\"}, {\"name\": \"seed\", \"value\": \"{{workflow.parameters.seed}}\"}]}}]]}]}}"
+      }
+    },
+    "started_at": "2026-04-23T13:38:34.648136Z",
+    "ended_at": "2026-04-23T13:48:27.145284Z",
+    "total_run_duration": "592.497148230s"
+  }
+}
