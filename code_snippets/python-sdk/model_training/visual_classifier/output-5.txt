@@ -1,0 +1,12 @@
+clarifai pipelinetemplate list
+NAME                                      TYPE
+classifier-pipeline-resnet                classifier
+classifier-pipeline-resnet-quick-start    classifier
+detector-pipeline-dfine                   detector
+detector-pipeline-eval-yolof-quick-start  detector
+detector-pipeline-yolof                   detector
+detector-pipeline-yolof-quick-start       detector
+lora-pipeline-unsloth-quick-start         lora
+
+Found 7 template(s) total
+Available types: classifier, detector, lora

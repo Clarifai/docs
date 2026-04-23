@@ -1,0 +1,59 @@
+ clarifai model deploy \
+  --model-url https://clarifai.com/alfrick/my-vis-classifier/models/test_model \
+  --instance g5.2xlarge
+
+── Deploy ────────────────────────────────────────────────
+  Model:            alfrick/my-vis-classifier/models/test_model
+  Version:          cb8d4b6b8d624627b8f955d11f88ab21
+  Instance:         g5.2xlarge
+  Cloud:            aws / us-east-1
+  Creating compute cluster 'deploy-cc-aws-us-east-1'...
+  Creating nodepool 'deploy-np-g5-2xlarge'...
+  Deploying to nodepool 'deploy-np-g5-2xlarge'...
+  Deployment 'deploy-test_model-4cf21f' created
+
+── Monitor ───────────────────────────────────────────────
+  [warning] Scheduling: Waiting for node to become available...           
+  [event  ] Scaling: Waiting for cluster to scale up...                   
+  [warning] FilteringFailed: no available node, 1 nodes do not meet       
+  [event  ] TriggeredScaleUp: pod triggered scale-up: [{eks-cl-7a5f623ab5cd4dc8e44f34abe7ad1d3c-18cedd59-a1...
+  [event  ] FilteringSucceed: find fit node(ip-10-7-91-93.ec2.internal), 0 nodes not fit, 1 nodes fit(ip-10...
+  [event  ] BindingSucceed: Successfully binding node [ip-10-7-91-93.ec2.internal] to prod-alfrick/runner...
+  [event  ] Scheduled: Pod scheduled on node
+  [event  ] Pulling image: Pulling model image...
+  [event  ] Image pulled: Model image pulled                              
+  [event  ] Starting: Container created
+  [event  ] Running: Container started
+  [warning] Health check: Health check failed, waiting...
+  Pod started (274s). Waiting for model to be ready...
+                                                                          
+── Startup Logs ──────────────────────────────────────────
+  INFO:model:Inference took 371.51 ms
+{"msg": "model_predict | 200 OK | 389.71ms | req_id=sdk-python-12.4.0-****2d80ab68b692", "@timestamp": "2026-04-23T14:31:03.846492Z", "stack_info": null, "level": "info", "req_id": "sdk-python-12.4.0-****2d80ab68b692", "orig_req_id": "runner-****234c33e0a34a"}
+INFO:clarifai:model_predict | 200 OK | 389.71ms | req_id=sdk-python-12.4.0-****2d80ab68b692
+  
+  [warning] Model pod is running but not yet ready to serve requests.
+  
+    The model is likely still loading (downloading checkpoints,
+    initializing inference engine, or warming up).
+  
+    Check progress with:
+  Logs:             clarifai model logs --deployment "deploy-test_model-4cf21f"
+  Status:           clarifai model status --deployment "deploy-test_model-4cf21f"
+
+── Deployed (pod pending) ────────────────────────────────
+
+  [warning] Deployment created but model pod is not running yet.
+
+  Model:            https://clarifai.com/alfrick/my-vis-classifier/models/test_model
+  Version:          cb8d4b6b8d624627b8f955d11f88ab21
+  Deployment:       deploy-test_model-4cf21f
+  Instance:         g5.2xlarge
+  Cloud:            AWS / us-east-1
+
+── Next Steps ────────────────────────────────────────────
+  Events:           clarifai model logs --deployment "deploy-test_model-4cf21f" --log-type events
+  Status:           clarifai model status --deployment "deploy-test_model-4cf21f"
+  Predict:          clarifai model predict alfrick/my-vis-classifier/models/test_model --deployment deploy-test_model-4cf21f --url https://s3.amazonaws.com/samples.clarifai.com/featured-models/image-captioning-statue-of-liberty.jpeg
+  Playground:       https://clarifai.com/playground?model=test_model__cb8d4b6b8d624627b8f955d11f88ab21&user_id=alfrick&app_id=my-vis-classifier
+  Undeploy:         clarifai model undeploy --deployment "deploy-test_model-4cf21f"

@@ -1,0 +1,8 @@
+clarifai computecluster create \
+      visual-compute-cluster \
+      --config compute.yaml
+[INFO] 16:04:56.120016 Compute Cluster with ID 'visual-compute-cluster' is created:
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-12.4.0-8233ec6fcf154467857f61d19d175023"
+ |  thread=8485281984 

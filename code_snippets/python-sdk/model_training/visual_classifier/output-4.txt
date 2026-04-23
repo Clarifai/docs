@@ -1,0 +1,9 @@
+clarifai nodepool create \
+      visual-compute-cluster \
+      visual-nodepool \
+      --config nodepool.yaml
+[INFO] 16:12:23.712709 Nodepool with ID 'visual-nodepool' is created:
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-12.4.0-db3e87045f87426395a777c157daf5a2"
+ |  thread=8485281984 
