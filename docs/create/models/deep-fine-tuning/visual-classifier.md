@@ -252,9 +252,9 @@ The [`classifier-pipeline-resnet-quick-start`](https://github.com/Clarifai/pipel
 
 **Step 1: Perform Prerequisites**
 
-Before you begin, ensure you have:
+Before getting started, make sure you’ve completed the following setup:
 
-- Installed the Clarifai package:
+- Install the Clarifai package:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
@@ -262,7 +262,7 @@ Before you begin, ensure you have:
 </TabItem>
 </Tabs>
 
-- Authenticated your connection by setting your [Personal Access Token](https://docs.clarifai.com/control/authentication/pat) (PAT): 
+- Authenticate your connection by setting your [Personal Access Token](https://docs.clarifai.com/control/authentication/pat) (PAT): 
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
@@ -270,7 +270,7 @@ Before you begin, ensure you have:
 </TabItem>
 </Tabs>
 
-- Created a [compute cluster and nodepool](https://docs.clarifai.com/compute/deployments/clusters-nodepools)
+- Selected an [instance type](https://docs.clarifai.com/compute/cloud-instances/) for running your pipeline — such as `g6e.xlarge`.
 
 
 **Step 2: Initialize a Pipeline from a Template**
@@ -303,11 +303,7 @@ Upload the pipeline configuration and execute the training job:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    ```bash
-clarifai pipeline run \
-  --nodepool_id=your_nodepool_id \
-  --compute_cluster_id=your_compute_cluster_id
-```
+    <CodeBlock className="language-bash">clarifai pipeline run --instance=g6e.xlarge</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -446,11 +442,23 @@ You can clone the [repository](https://github.com/Clarifai/examples/tree/main) c
 > **Note:** Once your dataset is successfully uploaded, navigate to the platform UI and record the `dataset_id` and `dataset_version_id`. You’ll need these values when running the training pipeline.
 
 
-### Step 4: Create a Cluster and Nodepool
+### Step 4: Set Up Compute 
 
-To train your model via the CLI, you’ll first need to provision compute resources by creating a cluster and a nodepool.
+You can run your pipeline using either on-demand instance compute or a managed cluster and nodepool.
 
-To create a compute cluster, start by defining a [YAML](https://docs.clarifai.com/compute/deployments/clusters-nodepools#1-compute_cluster_configyaml) configuration file for it. Make sure the setup supports GPU workloads, as GPUs are required for efficient training and inference of vision models.
+#### Option A: Select an Instance Type
+
+You can run your pipeline directly on on-demand compute by specifying an instance with the `--instance` flag (see [example below](#option-a-run-on-on-demand-instance-compute)). This removes the need to create and manage a cluster and nodepool.
+
+With this approach, compute is automatically provisioned—or reused if available — so you can focus on running your pipeline rather than managing infrastructure.
+
+See the [available instance types](https://docs.clarifai.com/compute/cloud-instances) to choose one that best matches your workload and performance requirements.
+
+#### Option B: Create a Cluster and Nodepool
+
+To train your model via the CLI with managed infrastructure, you’ll need to provision compute resources by creating a cluster and a nodepool.
+
+Start by defining a [YAML](https://docs.clarifai.com/compute/deployments/clusters-nodepools#1-compute_cluster_configyaml) configuration file for your compute cluster. Ensure the configuration supports GPU workloads, as GPUs are required for efficient training and inference of vision models.
 
 Here is an example cluster config file:
 
@@ -539,6 +547,7 @@ Then run the following command, pointing to your config file:
     <CodeBlock className="language-python">{Output4}</CodeBlock>
 </details>
 
+
 ### Step 5: Initialize a Pipeline from a Template
 
 The [`classifier-pipeline-resnet`](https://github.com/Clarifai/pipeline-examples/tree/main/classifier-pipeline-resnet) template lets you quickly set up a visual classification pipeline using a preconfigured ResNet-based image classifier — so you can focus on training rather than setup.
@@ -592,9 +601,9 @@ Where:
     <CodeBlock className="language-python">{Output6}</CodeBlock>
 </details>
 
-Once executed, the CLI generates a project directory with all the necessary configuration files, ready for training.
+Once executed, the command creates a new project directory named after the template, preloaded with all necessary configuration files.
 
-Next, navigate into the generated directory to begin working with the pipeline:
+Before running any subsequent `clarifai pipeline ...` commands, navigate into the generated directory — these commands rely on the local `config.yaml` and `config-lock.yaml` files:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
@@ -602,11 +611,32 @@ Next, navigate into the generated directory to begin working with the pipeline:
 </TabItem>
 </Tabs>
 
-> **Note:** You may optionally review the generated pipeline steps and tailor them to your use case. If needed, you can also adjust the default parameters and add any additional dependencies to the `requirements.txt` files to support your pipeline.
+> **Note:** You can optionally review the generated pipeline steps and tailor them to your use case. If needed, you can also adjust the default parameters and add any additional dependencies to the `requirements.txt` files to support your pipeline.
 
-### Step 6: Upload and Run the Pipeline
+:::tip Override Defaults at Initialization
+
+You can optionally customize the pipeline during setup — for example, by specifying a different user/app, assigning a custom pipeline ID, or adjusting model parameters:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+```bash
+  clarifai pipeline init --template=classifier-pipeline-resnet \
+  --user_id your_custom_user_id \
+  --app_id your_custom_app_id \
+  --set id=your_custom_pipeline_id \
+  --set num_epochs=20
+```
+</TabItem>
+</Tabs>
+
+
+:::
+
+### Step 6: Upload Your Pipeline
 
 Once your pipeline is initialized and configured, the next step is to upload it and trigger the training job.
+
+Make sure you’re inside the generated pipeline directory, then run:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
@@ -621,7 +651,42 @@ Once your pipeline is initialized and configured, the next step is to upload it 
 
 The above command will register the pipeline in your app, upload all associated configuration files, and prepare the pipeline for execution.
 
-After the upload is complete, trigger the training job by specifying the compute resources:
+### Step 7: Run the Pipeline
+
+You can run your pipeline using either on-demand instance compute or a preconfigured cluster and nodepool.
+
+#### Option A: Run on On-Demand Instance Compute
+
+Instead of relying on an existing nodepool and compute cluster, you can automatically provision or reuse compute at runtime by specifying an instance type:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai pipeline run --instance=g6e.xlarge</CodeBlock>
+</TabItem>
+</Tabs>
+
+This approach removes the need to manage infrastructure, making it ideal for quick experiments or simplified workflows.
+
+:::note Override Parameters at Runtime
+
+To modify pipeline parameters at run time, pass one or more `--set key=value` flags:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+```bash
+clarifai pipeline run \
+  --instance=g6e.xlarge \
+  --set num_epochs=20 \
+  --set batch_size=32
+```
+</TabItem>
+</Tabs>
+
+:::
+
+#### Option B: Run on Cluster and Nodepool
+
+If you’ve already set up a compute cluster and nodepool, you can run the pipeline by explicitly targeting those resources:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
@@ -638,11 +703,11 @@ After the upload is complete, trigger the training job by specifying the compute
     <CodeBlock className="language-python">{Output8}</CodeBlock>
 </details>
 
-The above command launches the pipeline on your specified compute cluster and nodepool, ensuring it uses the appropriate GPU-backed resources. 
+The above command launches the pipeline on your specified cluster and nodepool, ensuring it uses the configured GPU-backed resources.
 
-The pipeline will then run end-to-end — loading the dataset, training the ResNet-based model, and producing a model ready for evaluation and further use.
+Once triggered, the pipeline runs end-to-end — loading the dataset, training the ResNet-based model, and producing a model ready for evaluation and further use.
 
-### Step 7: Monitor Your Pipeline
+### Step 8: Monitor Your Pipeline
 
 To monitor your pipeline, open your app’s collapsible sidebar and select **Pipelines**. From there, navigate to the **Pipeline Version Runs** page, where you can track execution progress, view logs, and manage runs for a specific pipeline version — as illustrated [above](#step-7-train-the-model).
 
@@ -661,7 +726,7 @@ You can also [monitor](https://docs.clarifai.com/compute/pipelines/manage-run#mo
     <CodeBlock className="language-python">{Output9}</CodeBlock>
 </details>
 
-### Step 8: Use Your Model
+### Step 9: Use Your Model
 
 Once training is complete, your model is ready for use. 
 
