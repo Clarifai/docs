@@ -270,7 +270,7 @@ Before getting started, make sure you’ve completed the following setup:
 </TabItem>
 </Tabs>
 
-- Selected an [instance type](https://docs.clarifai.com/compute/cloud-instances/) for running your pipeline — such as `g6e.xlarge`.
+- Select an [instance type](https://docs.clarifai.com/compute/cloud-instances/) for running your pipeline — such as `g6e.xlarge`.
 
 
 **Step 2: Initialize a Pipeline from a Template**
