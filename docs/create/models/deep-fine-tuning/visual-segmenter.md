@@ -47,7 +47,7 @@ Given an image of a street scene, a visual segmenter model could segment the ima
 
 ##  Create and Train a Visual Segmenter
 
-Let's demonstrate how to create and train a visual segmenter model using our API.
+Let's demonstrate how to create and train a visual segmenter model using API.
 
 :::info
 
