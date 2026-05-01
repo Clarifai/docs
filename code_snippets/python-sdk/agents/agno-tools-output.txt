@@ -1,0 +1,29 @@
+┌─ Message ───────────────────────────────────────────────────────────────────┐
+│ Search for the latest news on speculative decoding                          │
+└─────────────────────────────────────────────────────────────────────────────┘
+┌─ Response (9.5s) ───────────────────────────────────────────────────────────┐
+│                                                                             │
+│ Here are some of the latest developments in speculative decoding:           │
+│                                                                             │
+│  1 Medusa & Eagle Variants – Researchers continue refining multi-head       │
+│    draft models that generate several candidate tokens simultaneously,      │
+│    cutting inference latency by 2–3× on large language models without       │
+│    changing output distribution.                                            │
+│                                                                             │
+│  2 SpecInfer & Staged Speculation – New work combines small draft models    │
+│    with tree-based verification, enabling batched speculative decoding      │
+│    that scales across multi-GPU setups for throughput-critical deployments. │
+│                                                                             │
+│  3 Hardware-Aware Speculation – NVIDIA and AMD have published results       │
+│    showing speculative decoding can be tightly co-designed with attention   │
+│    kernels to minimize memory-bandwidth bottlenecks on H100/MI300X GPUs.   │
+│                                                                             │
+│  4 Self-Speculative Decoding – A growing line of work uses the target       │
+│    model's own early-exit layers as the draft, removing the need for a      │
+│    separate smaller model while retaining most of the speedup.              │
+│                                                                             │
+│  5 Integration into Production Stacks – Frameworks like vLLM and TGI have  │
+│    merged speculative decoding support, making it easier for practitioners  │
+│    to enable it with a single configuration flag.                           │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘

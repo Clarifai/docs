@@ -999,6 +999,22 @@
     {
       "to": "/getting-started/playground",
       "from": ["/getting-started/quickstart-playground"]
+    },    
+    {
+      "to": "/compute/agents/build#crewai",
+      "from": ["/integrations/crewai/"]
+    },    
+    {
+      "to": "https://docs.clarifai.com/compute/agents/build/#google-adk",
+      "from": ["/integrations/google-adk/"]
+    },    
+    {
+      "to": "https://docs.clarifai.com/compute/agents/build/#agno",
+      "from": ["/integrations/agno/"]
+    },    
+    {
+      "to": "/create/models/evaluate/deepeval",
+      "from": ["/integrations/DeepEval/"]
     }
   
   

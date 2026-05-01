@@ -1,0 +1,43 @@
+clarifai pipeline init \
+  --app_id my-vis-classifier \
+  --user_id alfrick \
+  --template classifier-pipeline-resnet \
+  --set dataset_id=image_dataset \
+  --set dataset_version_id=a3003c4c946b482fb7a24c4d536367f1 \
+  --set concepts='["beignets","hamburger","prime_rib","ramen"]'
+Using template: classifier-pipeline-resnet
+
+Template Type: classifier
+Steps: 
+Parameters: 19 required
+
+Creating pipeline 'classifier-pipeline-resnet' from template 'classifier-pipeline-resnet'...
+
+Template Parameters (default values):
+  user_id                     : <YOUR_USER_ID>
+  app_id                      : <YOUR_APP_ID>
+  model_id                    : test_model
+  dataset_id                  : <YOUR_DATASET_ID>
+  dataset_version_id          : 
+  concepts                    : ["beignets","hamburger","prime_rib","ramen"]
+  num_epochs                  : 200
+  batch_size                  : 64
+  image_size                  : 224
+  per_item_lrate              : 1.953125e-05
+  weight_decay                : 0.01
+  per_item_min_lrate          : 1.5625e-08
+  warmup_iters                : 5
+  warmup_ratio                : 0.0001
+  flip_probability            : 0.5
+  flip_direction              : horizontal
+  concepts_mutually_exclusive : False
+  pretrained_weights          : ImageNet-1k
+  seed                        : -1
+
+Pipeline initialization complete in /Users/macbookpro/Desktop/test2/trainvis/classifier-pipeline-resnet
+
+Next steps:
+1. Review and customize the generated pipeline steps
+2. Add any additional dependencies to requirements.txt files
+3. Run 'clarifai pipeline upload /Users/macbookpro/Desktop/test2/trainvis/classifier-pipeline-resnet/config.yaml' to upload your pipeline
+4. Use 'clarifai pipeline run --config /Users/macbookpro/Desktop/test2/trainvis/classifier-pipeline-resnet/config.yaml [--set key=value]' to execute your pipeline

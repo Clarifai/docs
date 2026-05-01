@@ -1,0 +1,6 @@
+[INFO] 14:40:29.196099 App with ID 'my-vis-classifier' is created:
+code: SUCCESS
+description: "Ok"
+req_id: "sdk-python-12.4.0-1b1aa61784ee447e80653686a5da546f"
+ |  thread=8485281984 
+App 'my-vis-classifier' created successfully.

@@ -1,0 +1,26 @@
+┌─ Message ───────────────────────────────────────────────────────────────────┐
+│ What are the key trends in AI for 2026?                                     │
+└─────────────────────────────────────────────────────────────────────────────┘
+┌─ Response (7.2s) ───────────────────────────────────────────────────────────┐
+│                                                                             │
+│ Here are the key AI trends shaping 2026:                                    │
+│                                                                             │
+│  1 Agentic AI – Autonomous agents that plan, use tools, and complete        │
+│    multi-step tasks with minimal human oversight are moving from research   │
+│    into production.                                                         │
+│                                                                             │
+│  2 Multimodal Models – Leading models now process text, images, audio, and  │
+│    video in a single unified architecture, enabling richer applications.    │
+│                                                                             │
+│  3 On-Device Inference – Smaller, quantized models are running directly on  │
+│    consumer hardware, reducing latency and improving data privacy.          │
+│                                                                             │
+│  4 Reasoning Models – Models trained with chain-of-thought and              │
+│    reinforcement learning demonstrate stronger logical reasoning and        │
+│    problem-solving across domains.                                          │
+│                                                                             │
+│  5 AI Infrastructure Consolidation – Cloud providers and specialized        │
+│    platforms are offering tighter integration between model hosting,        │
+│    fine-tuning, and deployment pipelines.                                   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘

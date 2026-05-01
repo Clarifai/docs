@@ -1,0 +1,45 @@
+clarifai pipelinerun monitor 2c8ec3b1fa7d438bbba96ca3b46c47ba
+[INFO] 16:56:38.058412 Loading parameters from config-lock.yaml |  thread=8485281984 
+[INFO] 16:56:38.288422 Monitoring existing pipeline run with ID: 2c8ec3b1fa7d438bbba96ca3b46c47ba |  thread=8485281984 
+[INFO] 16:56:42.025675 [LOG] time="2026-04-23T13:40:25.268Z" level=info msg="Starting Workflow Executor" version=v3.7.9
+time="2026-04-23T13:40:25.272Z" level=info msg="Using executor retry strategy" Duration=1s Factor=1.6 Jitter=0.5 Steps=5
+time="2026-04-23T13:40:25.272Z" level=info msg="Executor initialized" deadline="0001-01-01 00:00:00 +0000 UTC" includeScriptOutput=false namespace=prod-alfrick podName=cl-****baf1fecd63b7-cl-****7cc9dd354d7d-913573978 templateName=cl-****7cc9dd354d7d version="&Version{Version:v3.7.9,BuildDate:2026-01-28T14:52:11Z,GitCommit:********,GitTag:v3.7.9,GitTreeState:clean,GoVersion:go1.25.5,Compiler:gc,Platform:linux/amd64,}"
+time="2026-04-23T13:40:25.285Z" level=info msg="Starting deadline monitor"
+/opt/conda/lib/python3.11/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import] |  thread=8485281984 
+[INFO] 16:56:42.027338 [LOG] /opt/conda/lib/python3.11/site-packages/mmengine/optim/optimizer/zero_optimizer.py:11: DeprecationWarning: `TorchScript` support for functional optimizers is deprecated and will be removed in a future PyTorch release. Consider using the `torch.compile` optimizer instead.
+  from torch.distributed.optim import \
+INFO:root:Starting MMClassification ResNet-50 training pipeline
+{"msg": "Downloading to /tmp/pretrain_checkpoints/resnet50_8xb256-rsb-a1-600e_in1k_20211228-20e21305.pth", "@timestamp": "2026-04-23T13:43:02.414665Z", "filename": "artifact_version.py", "stack_info": null, "lineno": 503, "level": "info"}
+INFO:clarifai:Downloading to /tmp/pretrain_checkpoints/resnet50_8xb256-rsb-a1-600e_in1k_20211228-20e21305.pth
+Downloading: 100%|██████████| 103M/103M [00:02<00:00, 42.1MB/s] 
+{"msg": "Download completed: /tmp/pretrain_checkpoints/resnet50_8xb256-rsb-a1-600e_in1k_20211228-20e21305.pth", "@timestamp": "2026-04-23T13:43:05.182058Z", "filename": "artifact_version.py", "stack_info": null, "lineno": 559, "level": "info"}
+INFO:clarifai:Download completed: /tmp/pretrain_checkpoints/resnet50_8xb256-rsb-a1-600e_in1k_20211228-20e21305.pth
+INFO:root:Downloaded checkpoint to /tmp/pretrain_checkpoints/resnet50_8xb256-rsb-a1-600e_in1k_20211228-20e21305.pth
+
+04/23 13:43:11 - mmengine - INFO - 
+------------------------------------------------------------
+System environment:
+    sys.platform: linux
+    Python: 3.11.10 | packaged by conda-forge | (main, Oct 16 2024, 01:27:36) [GCC 13.3.0]
+    CUDA available: True
+    MUSA available: False
+    numpy_random_seed: 780123474
+    GPU 0: NVIDIA A10G
+    CUDA_HOME: /usr/local/cuda
+    NVCC: Cuda compilation tools, release 12.4, V12.4.131
+    GCC: gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0
+    PyTorch: 2.5.1+cu124
+    PyTorch compiling details: PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201703
+  - Intel(R) oneAPI Math Kernel Library Version 2024.2-Product Build 20240605 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v3.5.3 (Git Hash ********)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 12.4
+  - NVCC architecture flags: -gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86;-gencode;arch=compute_90,code=sm_9
+
+  XXXXX
