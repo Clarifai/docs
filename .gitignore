@@ -9,6 +9,9 @@
 .cache-loader
 .deepeval/
 
+# DeepEval
+.deepeval/
+
 # Misc
 .DS_Store
 .env.local
