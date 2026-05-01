@@ -1,5 +1,36 @@
 [
   {
+    "to": "/create/models/",
+    "from": [
+      "/create/models/deep-fine-tuning/visual-segmenter",
+      "/create/models/deep-fine-tuning/visual-anomaly",
+      "/create/models/deep-fine-tuning/visual-embedder",
+      "/create/models/deep-fine-tuning/clusterer",
+      "/create/models/deep-fine-tuning/text-classifier",
+      "/create/models/deep-fine-tuning/text-to-text",
+      "/create/models/templates/",
+      "/create/models/templates/visual-classification",
+      "/create/models/templates/visual-detection",
+      "/create/models/templates/visual-embedding",
+      "/create/models/templates/visual-segmentation",
+      "/create/models/templates/text",
+      "/create/models/templates/custom",
+      "/create/models/model-versions/",
+      "/create/models/evaluate/",
+      "/create/models/evaluate/transfer-learn",
+      "/create/models/evaluate/classification",
+      "/create/models/evaluate/detection",
+      "/create/models/evaluate/segmentation",
+      "/create/models/evaluate/llms",
+      "/create/models/evaluate/leaderboard",
+      "/create/models/evaluate/api"
+    ]
+  },
+  {
+    "to": "/integrations/deepeval",
+    "from": ["/create/models/evaluate/deepeval"]
+  },
+  {
     "to": "/compute/cloud-instances",
     "from": ["/compute/deployments/cloud-instances"]
   },
@@ -346,51 +377,51 @@
     "from": ["/portal-guide/model/model-types/visual-detector"]
   },
   {
-    "to": "/create/models/deep-fine-tuning/visual-segmenter",
+    "to": "/create/models/",
     "from": ["/portal-guide/model/model-types/visual-segmenter"]
   },
   {
-    "to": "/create/models/deep-fine-tuning/visual-anomaly",
+    "to": "/create/models/",
     "from": ["/portal-guide/model/model-types/visual-anomaly"]
   },
   {
-    "to": "/create/models/deep-fine-tuning/visual-embedder",
+    "to": "/create/models/",
     "from": ["/portal-guide/model/model-types/visual-embedder"]
   },
   {
-    "to": "/create/models/deep-fine-tuning/clusterer",
+    "to": "/create/models/",
     "from": ["/portal-guide/model/model-types/clusterer"]
   },
   {
-    "to": "/create/models/deep-fine-tuning/text-classifier",
+    "to": "/create/models/",
     "from": ["/portal-guide/model/model-types/text-classifier"]
   },
   {
-    "to": "/create/models/deep-fine-tuning/text-to-text",
+    "to": "/create/models/",
     "from": ["/portal-guide/model/model-types/text-to-text"]
   },  
   {
-    "to": "/create/models/templates/visual-classification",
+    "to": "/create/models/",
     "from": ["/portal-guide/model/deep-training/visual-classification-templates"]
   },
   {
-    "to": "/create/models/templates/visual-detection",
+    "to": "/create/models/",
     "from": ["/portal-guide/model/deep-training/visual-detection-templates"]
   },
   {
-    "to": "/create/models/templates/visual-embedding",
+    "to": "/create/models/",
     "from": ["/portal-guide/model/deep-training/visual-embedding-templates"]
   },  
   {
-    "to": "/create/models/templates/visual-segmentation",
+    "to": "/create/models/",
     "from": ["/portal-guide/model/deep-training/visual-segmenter-templates"]
   },
   {
-    "to": "/create/models/templates/text",
+    "to": "/create/models/",
     "from": ["/portal-guide/model/deep-training/text-templates"]
   },
   {
-    "to": "/create/models/templates/custom",
+    "to": "/create/models/",
     "from": ["/portal-guide/model/deep-training/custom-templates"]
   },
   {
@@ -398,7 +429,7 @@
     "from": ["/portal-guide/model/local-model-upload", "/portal-guide/model/hf-model-importer"]
   },
   {
-    "to": "/create/models/model-versions/",
+    "to": "/create/models/",
     "from": ["/portal-guide/model-versions/"]
   },
   {
@@ -418,7 +449,7 @@
     "from": ["/sdk/Model-Training-Tutorial/", "/tutorials/image-classification-detection-segmentation"]
   },
   {
-    "to": "/create/models/deep-fine-tuning/clusterer",
+    "to": "/create/models/",
     "from": ["/sdk/Model-Training-Tutorial/clusterer"]
   },
   {
@@ -426,11 +457,11 @@
     "from": ["/sdk/Model-Training-Tutorial/embedding_classifier"]
   },
   {
-    "to": "/create/models/deep-fine-tuning/text-classifier",
+    "to": "/create/models/",
     "from": ["/sdk/Model-Training-Tutorial/text_classifier"]
   },
   {
-    "to": "/create/models/deep-fine-tuning/text-to-text",
+    "to": "/create/models/",
     "from": ["/sdk/Model-Training-Tutorial/text_to_text"]
   },
   {
@@ -442,11 +473,11 @@
     "from": ["/sdk/Model-Training-Tutorial/visual_detector"]
   },
   {
-    "to": "/create/models/deep-fine-tuning/visual-embedder",
+    "to": "/create/models/",
     "from": ["/sdk/Model-Training-Tutorial/visual_embedder"]
   },
   {
-    "to": "/create/models/deep-fine-tuning/visual-segmenter",
+    "to": "/create/models/",
     "from": ["/sdk/Model-Training-Tutorial/visual_segmenter"]
   },     
   {
@@ -694,36 +725,8 @@
       "from": ["/portal-guide/portal-overview/"]
     },
     {
-      "to": "/create/models/evaluate/",
-      "from": ["/portal-guide/evaluate/", "/create/models/evaluate/improving-your-model", "/create/models/evaluate/evaluation-faqs", "/api-guide/evaluate/improving-your-model"]
-    },
-    {
-      "to": "/create/models/evaluate/transfer-learn",
-      "from": ["/portal-guide/evaluate/transfer-learn"]
-    },
-    {
-      "to": "/create/models/evaluate/classification",
-      "from": ["/portal-guide/evaluate/interpreting-evaluations", "/tutorials/how-to-evaluate-an-image-classification-model"]
-    },
-    {
-      "to": "/create/models/evaluate/detection",
-      "from": ["/portal-guide/evaluate/detection"]
-    },
-    {
-      "to": "/create/models/evaluate/segmentation",
-      "from": ["/portal-guide/evaluate/segmentation"]
-    },
-    {
-      "to": "/create/models/evaluate/llms",
-      "from": ["/portal-guide/evaluate/llms"]
-    },
-    {
-      "to": "/create/models/evaluate/leaderboard",
-      "from": ["/portal-guide/evaluate/leaderboard"]
-    },
-    {
-      "to": "/create/models/evaluate/api",
-      "from": ["/sdk/model-train-and-eval", "/api-guide/evaluate/", "/api-guide/evaluate/interpreting-evaluations"]
+      "to": "/create/models/",
+      "from": ["/portal-guide/evaluate/", "/create/models/evaluate/improving-your-model", "/create/models/evaluate/evaluation-faqs", "/api-guide/evaluate/improving-your-model", "/portal-guide/evaluate/transfer-learn", "/portal-guide/evaluate/interpreting-evaluations", "/tutorials/how-to-evaluate-an-image-classification-model", "/portal-guide/evaluate/detection", "/portal-guide/evaluate/segmentation", "/portal-guide/evaluate/llms", "/portal-guide/evaluate/leaderboard", "/sdk/model-train-and-eval", "/api-guide/evaluate/", "/api-guide/evaluate/interpreting-evaluations"]
     },
     {
       "to": "/create/workflows/",
