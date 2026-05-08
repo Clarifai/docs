@@ -1,0 +1,14 @@
+cd detector-pipeline-yolof
+((venv) ) (base) macbookpro@macs-MacBook-Pro detector-pipeline-yolof %     clarifai pipeline upload
+[INFO] 16:32:35.454197 Starting pipeline upload from config: ./config.yaml |  thread=8485281984
+[INFO] 16:32:37.865166 Using existing app 'my-vis-detector' |  thread=8485281984
+[INFO] 16:32:37.873317 No step_directories specified, but all templateRefs have versions. Skipping pipeline step upload (reusing existing step versions). |  thread=8485281984
+[INFO] 16:32:37.873399 No pipeline step versions for lockfile |  thread=8485281984
+[WARNING] 16:32:37.877711 Could not find version for step: detector-pipeline-yolof-ps |  thread=8485281984
+[INFO] 16:32:37.880190 Creating pipeline detector-pipeline-yolof... |  thread=8485281984
+[WARNING] 16:32:37.884322 Could not find version for step: detector-pipeline-yolof-ps |  thread=8485281984
+[INFO] 16:32:41.966172 Successfully created pipeline detector-pipeline-yolof |  thread=8485281984
+[INFO] 16:32:41.966564 Pipeline ID: detector-pipeline-yolof |  thread=8485281984
+[INFO] 16:32:41.966635 Pipeline version ID: a91d3f7c2b4e41e8b6c053a8d17f29be |  thread=8485281984
+[INFO] 16:32:41.987219 Generated lockfile: /Users/macbookpro/Desktop/detector/detector-pipeline-yolof/config-lock.yaml |  thread=8485281984
+[INFO] 16:32:41.987555 Pipeline upload completed successfully with lockfile! |  thread=8485281984

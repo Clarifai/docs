@@ -48,10 +48,10 @@ Install the latest version of the `clarifai` Python SDK package. Also, install t
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">
-    <CodeBlock className="language-text">
+    ```bash
     pip install --upgrade clarifai
     pip install clarifai-datautils
-</CodeBlock>
+    ```
 </TabItem>
 </Tabs>
 
@@ -64,9 +64,7 @@ To install them, run:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">
-    <CodeBlock className="language-text">
-    pip install clarifai-datautils[annotations]
-</CodeBlock>
+    <CodeBlock className="language-text">pip install 'clarifai-datautils[annotations]'</CodeBlock>
 </TabItem>
 </Tabs>
 
@@ -80,10 +78,10 @@ Then, set it as an environment variable in your script.
 
 <Tabs groupId="code">
 <TabItem value="python" label="Python">
-    <CodeBlock className="language-python">
+    ```bash
     import os
     os.environ["CLARIFAI_PAT"] = "YOUR_PAT_HERE" # replace with your own PAT key 
-</CodeBlock>
+    ```
 </TabItem>
 </Tabs>
 
@@ -200,9 +198,7 @@ You can download a dataset from [Kaggle](https://www.kaggle.com/datasets) and up
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Bash">
-    <CodeBlock className="language-text">
-    pip install -q opendatasets
-</CodeBlock>
+    <CodeBlock className="language-text">pip install -q opendatasets</CodeBlock>
 </TabItem>
 </Tabs>
 

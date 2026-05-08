@@ -369,12 +369,18 @@
     "from": ["/portal-guide/model/text-classifiers-transfer-learn"]
   },
   {
-    "to": "/create/models/deep-fine-tuning/visual-classifier",
-    "from": ["/portal-guide/model/model-types/visual-classifier"]
+    "to": "/create/models/visual-classifier",
+    "from": [
+      "/portal-guide/model/model-types/visual-classifier",
+      "/create/models/deep-fine-tuning/visual-classifier"
+    ]
   },
   {
-    "to": "/create/models/deep-fine-tuning/visual-detector",
-    "from": ["/portal-guide/model/model-types/visual-detector"]
+    "to": "/create/models/visual-detector",
+    "from": [
+      "/portal-guide/model/model-types/visual-detector",
+      "/create/models/deep-fine-tuning/visual-detector"
+    ]
   },
   {
     "to": "/create/models/",
@@ -441,11 +447,15 @@
     "from": ["/portal-guide/model/model-types/transfer-learning"]
   },
   {
-    "to": "/create/models/deep-fine-tuning/",
-    "from": ["/portal-guide/model/deep-training/", "/api-guide/model/deep-training"]
+    "to": "/create/models/",
+    "from": [
+      "/create/models/deep-fine-tuning/",
+      "/portal-guide/model/deep-training/",
+      "/api-guide/model/deep-training"
+    ]
   },
   {
-    "to": "/create/models/deep-fine-tuning/",
+    "to": "/create/models/",
     "from": ["/sdk/Model-Training-Tutorial/", "/tutorials/image-classification-detection-segmentation"]
   },
   {
@@ -465,11 +475,11 @@
     "from": ["/sdk/Model-Training-Tutorial/text_to_text"]
   },
   {
-    "to": "/create/models/deep-fine-tuning/visual-classifier",
+    "to": "/create/models/visual-classifier",
     "from": ["/sdk/Model-Training-Tutorial/visual_classifier"]
   },
   {
-    "to": "/create/models/deep-fine-tuning/visual-detector",
+    "to": "/create/models/visual-detector",
     "from": ["/sdk/Model-Training-Tutorial/visual_detector"]
   },
   {
@@ -1011,10 +1021,6 @@
     {
       "to": "https://docs.clarifai.com/compute/agents/build/#agno",
       "from": ["/integrations/agno/"]
-    },    
-    {
-      "to": "/create/models/evaluate/deepeval",
-      "from": ["/integrations/DeepEval/"]
     }
   
   

@@ -140,7 +140,7 @@ When enabled, Clarifai caches the full response for identical input+model+versio
 
 ## Inference Cost and Cache Hits
 
-If a request is routed to a replica with cached state, the cached portion of the prompt is billed at a **90% discount** on prompt cache token pricing. 
+If a request is routed to a replica with cached state, the cached portion of the prompt is billed at a **90% discount** (10% of the price) on prompt cache token pricing. 
 
 This depends on the model reporting `cached_tokens` in the response usage metadata — most vLLM and SGLang-backed models support this, but coverage may vary. 
 

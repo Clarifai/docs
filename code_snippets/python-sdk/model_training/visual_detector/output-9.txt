@@ -1,0 +1,26 @@
+clarifai pipelinerun monitor 7f4d1a9cb23e4058aad87e1b5c63f921
+[INFO] 16:56:38.058412 Loading parameters from config-lock.yaml |  thread=8485281984
+[INFO] 16:56:38.288422 Monitoring existing pipeline run with ID: 7f4d1a9cb23e4058aad87e1b5c63f921 |  thread=8485281984
+[INFO] 16:56:42.025675 [LOG] time="2026-04-23T13:40:25.268Z" level=info msg="Starting Workflow Executor" version=v3.7.9
+/opt/conda/lib/python3.11/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import] |  thread=8485281984
+INFO:root:Starting MMDetection YOLOF training pipeline
+
+04/23 13:47:11 - mmengine - INFO -
+------------------------------------------------------------
+System environment:
+    sys.platform: linux
+    Python: 3.11.10 | packaged by conda-forge
+    CUDA available: True
+    GPU 0: NVIDIA A10G
+    PyTorch: 2.5.1+cu124
+------------------------------------------------------------
+
+04/23 14:12:44 - mmengine - INFO - Epoch(train) [50][ 200/200]  lr: 1.9531e-05  eta: 1:03:21  loss: 1.9843  loss_cls: 0.6124  loss_bbox: 1.3719
+04/23 14:38:01 - mmengine - INFO - Epoch(train) [100][ 200/200]  lr: 9.7656e-07  eta: 0:31:14  loss: 1.2107  loss_cls: 0.3891  loss_bbox: 0.8216
+04/23 15:03:18 - mmengine - INFO - Epoch(train) [150][ 200/200]  lr: 1.5625e-08  eta: 0:04:11  loss: 0.9432  loss_cls: 0.2973  loss_bbox: 0.6459
+04/23 15:08:29 - mmengine - INFO - Epoch(train) [200][ 200/200]  lr: 1.5625e-08  eta: 0:00:00  loss: 0.8761  loss_cls: 0.2714  loss_bbox: 0.6047
+INFO:root:Training complete. Uploading model to Clarifai...
+{"msg": "Model uploaded successfully", "@timestamp": "2026-04-23T15:09:14.221Z", "level": "info"}
+[INFO] 17:09:18.442217 Pipeline run status: 64002 (JOB_COMPLETED) |  thread=8485281984
+[INFO] 17:09:18.442338 Pipeline run completed successfully |  thread=8485281984

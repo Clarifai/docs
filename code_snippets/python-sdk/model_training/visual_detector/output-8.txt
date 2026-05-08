@@ -1,0 +1,39 @@
+clarifai pipeline run \
+      --nodepool_id=visual-nodepool \
+      --compute_cluster_id=visual-compute-cluster
+Found config-lock.yaml, using it as default config source
+[INFO] 16:38:26.555009 Starting pipeline run for pipeline detector-pipeline-yolof |  thread=8485281984
+[INFO] 16:38:29.834776 Pipeline version run created with ID: 7f4d1a9cb23e4058aad87e1b5c63f921 |  thread=8485281984
+
+[INFO] 16:42:49.830451 Pipeline run status: 64001 (JOB_RUNNING) |  thread=8485281984
+[INFO] 16:42:49.830541 Pipeline run in progress: 64001 (JOB_RUNNING) |  thread=8485281984
+[INFO] 16:43:00.628789 Pipeline run monitoring... (elapsed 270.8s) |  thread=8485281984
+[INFO] 16:43:00.629355 Pipeline run status: 64001 (JOB_RUNNING) |  thread=8485281984
+[INFO] 16:43:11.350856 [LOG] time="2026-04-23T13:40:25.268Z" level=info msg="Starting Workflow Executor" version=v3.7.9
+/opt/conda/lib/python3.11/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import] |  thread=8485281984
+[INFO] 16:44:05.154017 [LOG] /opt/conda/lib/python3.11/site-packages/mmengine/optim/optimizer/zero_optimizer.py:11: DeprecationWarning: `TorchScript` support for functional optimizers is deprecated and will be removed in a future PyTorch release. Consider using the `torch.compile` optimizer instead.
+  from torch.distributed.optim import \
+INFO:root:Starting MMDetection YOLOF training pipeline
+{"msg": "Downloading to /tmp/pretrain_checkpoints/yolof_r50_c5_8x8_1x_coco_20210425_024427-8e864411.pth", "@timestamp": "2026-04-23T13:43:02.414665Z", "filename": "artifact_version.py", "stack_info": null, "lineno": 503, "level": "info"}
+INFO:clarifai:Downloading to /tmp/pretrain_checkpoints/yolof_r50_c5_8x8_1x_coco_20210425_024427-8e864411.pth
+Downloading: 100%|██████████| 145M/145M [00:03<00:00, 46.2MB/s]
+INFO:root:Downloaded checkpoint to /tmp/pretrain_checkpoints/yolof_r50_c5_8x8_1x_coco_20210425_024427-8e864411.pth
+INFO:root:
+INFO:root:================================================================================
+INFO:root:STEP 1: Downloading Dataset from Clarifai API
+INFO:root:================================================================================
+INFO:model.1.dataset_helpers:Downloaded 200/200 images
+INFO:model.1.dataset_helpers:Successfully downloaded 200 images with 847 bounding box annotations
+INFO:root:
+INFO:root:================================================================================
+INFO:root:STEP 2: Converting Dataset to COCO Detection Format
+INFO:root:================================================================================
+INFO:model.1.dataset_helpers:Concept mapping: {'dog': 0, 'cat': 1, 'person': 2, 'car': 3}
+INFO:model.1.dataset_helpers:Conversion complete! Images saved: 200, annotations: 847
+INFO:root:
+INFO:root:================================================================================
+INFO:root:STEP 3: Training YOLOF Detector
+INFO:root:================================================================================
+04/23 13:47:11 - mmengine - INFO - Epoch(train)  [1][  10/200]  lr: 1.9531e-05  eta: 2:14:07  time: 0.7823  data_time: 0.0412  memory: 8341  loss: 3.8821  loss_cls: 1.2341  loss_bbox: 2.6480
+04/23 13:47:19 - mmengine - INFO - Epoch(train)  [1][  20/200]  lr: 1.9531e-05  eta: 2:08:32  time: 0.7651  data_time: 0.0387  memory: 8341  loss: 3.5124  loss_cls: 1.1032  loss_bbox: 2.4092

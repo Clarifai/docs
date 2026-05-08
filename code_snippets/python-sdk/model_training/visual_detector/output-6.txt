@@ -1,0 +1,42 @@
+clarifai pipeline init \
+  --app_id my-vis-detector \
+  --user_id alfrick \
+  --template detector-pipeline-yolof \
+  --set dataset_id=image_dataset \
+  --set dataset_version_id=b7c12e3f901a4d85a3bb67e2f10cd94a \
+  --set concepts='["dog","cat","person","car"]'
+Using template: detector-pipeline-yolof
+
+Template Type: detector
+Steps:
+Parameters: 18 required
+
+Creating pipeline 'detector-pipeline-yolof' from template 'detector-pipeline-yolof'...
+
+Template Parameters (default values):
+  user_id                     : <YOUR_USER_ID>
+  app_id                      : <YOUR_APP_ID>
+  model_id                    : test_model
+  dataset_id                  : <YOUR_DATASET_ID>
+  dataset_version_id          :
+  concepts                    : ["dog","cat","person","car"]
+  num_epochs                  : 200
+  batch_size                  : 32
+  image_size                  : 512
+  per_item_lrate              : 1.953125e-05
+  weight_decay                : 0.01
+  per_item_min_lrate          : 1.5625e-08
+  warmup_iters                : 5
+  warmup_ratio                : 0.0001
+  flip_probability            : 0.5
+  flip_direction              : horizontal
+  pretrained_weights          : ImageNet-1k
+  seed                        : -1
+
+Pipeline initialization complete in /Users/macbookpro/Desktop/detector/detector-pipeline-yolof
+
+Next steps:
+1. Review and customize the generated pipeline steps
+2. Add any additional dependencies to requirements.txt files
+3. Run 'clarifai pipeline upload /Users/macbookpro/Desktop/detector/detector-pipeline-yolof/config.yaml' to upload your pipeline
+4. Use 'clarifai pipeline run --config /Users/macbookpro/Desktop/detector/detector-pipeline-yolof/config.yaml [--set key=value]' to execute your pipeline
