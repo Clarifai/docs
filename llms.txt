@@ -116,15 +116,13 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [Review Annotations](https://docs.clarifai.com/docs/create/labeling/ui/tasks/review): Review the work performed by your labelers
 - [Labeling Tasks Tools](https://docs.clarifai.com/docs/create/labeling/ui/tasks/tools): Learn about the labeling tools available in Scribe
 - [Create and Train Models](https://docs.clarifai.com/docs/create/models/README): Learn how to easily create and train new models
-- [Deep Fine-Tuning](https://docs.clarifai.com/docs/create/models/deep-fine-tuning/README): Learn how to fine-tune pre-trained models
-- [Visual Classifier](https://docs.clarifai.com/docs/create/models/deep-fine-tuning/visual-classifier): Train an image classification model using a pipeline template
-- [Visual Detector](https://docs.clarifai.com/docs/create/models/deep-fine-tuning/visual-detector): Learn about our visual detector model type
-- [DeepEval](https://docs.clarifai.com/docs/create/models/evaluate/deepeval): Evaluate your LLM applications using DeepEval and Clarifai
 - [Model Export](https://docs.clarifai.com/docs/create/models/export): Learn how to perform model export using Clarifai SDKs
 - [Manage Models](https://docs.clarifai.com/docs/create/models/manage): Learn how to get, update, search, and delete models
 - [Transfer Learning](https://docs.clarifai.com/docs/create/models/transfer-learning/README): Build upon pre-existing knowledge, streamline the learning process for novel tasks
 - [Text Classifier](https://docs.clarifai.com/docs/create/models/transfer-learning/text-classifier): Learn how to use transfer learning to create custom text classifier models
 - [Visual Classifier](https://docs.clarifai.com/docs/create/models/transfer-learning/visual-classifier): Learn how to use transfer learning to create custom visual classifier model
+- [Visual Classifier](https://docs.clarifai.com/docs/create/models/visual-classifier): Train an image classification model using a pipeline template
+- [Visual Detector](https://docs.clarifai.com/docs/create/models/visual-detector): Train an object detection model using a pipeline template
 - [Vector Search](https://docs.clarifai.com/docs/create/search/README): Leverage vector search capabilities to find similar items in a dataset
 - [Search via the API](https://docs.clarifai.com/docs/create/search/api/README): Use vector search to find, sort, and filter what you need in your unstructured data
 - [Combine or Negate](https://docs.clarifai.com/docs/create/search/api/combine-negate): Group or separate items in your search
@@ -206,6 +204,7 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [Release 12.1](https://docs.clarifai.com/docs/product-updates/changelog/release121): Changelog for Clarifai Release 12.1
 - [Release 12.2](https://docs.clarifai.com/docs/product-updates/changelog/release122): Changelog for Clarifai Release 12.2
 - [Release 12.3](https://docs.clarifai.com/docs/product-updates/changelog/release123): Changelog for Clarifai Release 12.3
+- [Release 12.4](https://docs.clarifai.com/docs/product-updates/changelog/release124): Changelog for Clarifai Release 12.4
 - [Release 5.10](https://docs.clarifai.com/docs/product-updates/changelog/release510): Changelog for Clarifai Release 5.10
 - [Release 5.11](https://docs.clarifai.com/docs/product-updates/changelog/release511): Changelog for Clarifai Release 5.11
 - [Release 6.0](https://docs.clarifai.com/docs/product-updates/changelog/release60): Changelog for Clarifai Release 6.0
