@@ -224,7 +224,7 @@ On this page, you can:
 
 Once your model has been trained successfully, you can start using it for predictions.
 
-To access it, go to the **Models** section from the left sidebar and select your model from the list. This opens the models listing page.
+To access it, select the **Models** option from the collapsible left sidebar. This opens the models listing page.
 
 ![](/img/community_2/my-deep-training-10.png)
 
