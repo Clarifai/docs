@@ -18,6 +18,9 @@
       "/create/models/model-versions/",
       "/create/models/evaluate/",
       "/create/models/evaluate/transfer-learn",
+      "/create/models/transfer-learning/",
+      "/create/models/transfer-learning/text-classifier",
+      "/create/models/transfer-learning/visual-classifier",
       "/create/models/evaluate/classification",
       "/create/models/evaluate/detection",
       "/create/models/evaluate/segmentation",
@@ -361,11 +364,11 @@
     "from": ["/api-guide/annotate/tasks", "/api-guide/annotate/task-annotations"]
   },
   {
-    "to": "/create/models/transfer-learning/visual-classifier",
+    "to": "/create/models/",
     "from": ["/portal-guide/model/pcustom-model-walkthrough"]
   },
   {
-    "to": "/create/models/transfer-learning/text-classifier",
+    "to": "/create/models/",
     "from": ["/portal-guide/model/text-classifiers-transfer-learn"]
   },
   {
@@ -443,7 +446,7 @@
     "from": ["/portal-guide/evaluate/improving-your-model", "/api-guide/model/model-types", "/api-guide/model/clarifai-models", "/api-guide/model/", "/portal-guide/model/model-types/", "/portal-guide/model/training-faqs", "/portal-guide/model/", "/portal-guide/model/clarifai-models", "/portal-guide/model/training-data", "/portal-guide/model/training-basics"]
   },  
   {
-    "to": "/create/models/transfer-learning/",
+    "to": "/create/models/",
     "from": ["/portal-guide/model/model-types/transfer-learning"]
   },
   {
@@ -463,7 +466,7 @@
     "from": ["/sdk/Model-Training-Tutorial/clusterer"]
   },
   {
-    "to": "/create/models/transfer-learning/text-classifier",
+    "to": "/create/models/",
     "from": ["/sdk/Model-Training-Tutorial/embedding_classifier"]
   },
   {
@@ -491,11 +494,11 @@
     "from": ["/sdk/Model-Training-Tutorial/visual_segmenter"]
   },     
   {
-    "to": "/create/models/transfer-learning/visual-classifier",
+    "to": "/create/models/",
     "from": ["/api-guide/model/custom-model-walkthrough"]
   },
   {
-    "to": "/create/models/transfer-learning/text-classifier",
+    "to": "/create/models/",
     "from": ["/api-guide/model/custom-text-model-walkthrough"]
   },
   {

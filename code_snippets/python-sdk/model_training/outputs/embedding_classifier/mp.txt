@@ -1,3 +1,0 @@
-Input:  b'This is a great place to work'
-neg : 0.78
-pos : 0.22
