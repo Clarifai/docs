@@ -87,6 +87,9 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [Manage Concepts](https://docs.clarifai.com/docs/create/concepts/manage): Learn how to get, update, and delete concepts
 - [Datasets](https://docs.clarifai.com/docs/create/datasets/README): Manage the datasets for training, testing, and evaluating your models
 - [Datasets Creation](https://docs.clarifai.com/docs/create/datasets/create): Learn how to create datasets and their versions
+- [Data Utils](https://docs.clarifai.com/docs/create/datasets/data-utils/README): Learn how to use the Clarifai Data Utils library
+- [Image Annotation Loader](https://docs.clarifai.com/docs/create/datasets/data-utils/image-annotation-loader): Load existing annotated image datasets and convert between supported formats
+- [Data Ingestion Pipelines](https://docs.clarifai.com/docs/create/datasets/data-utils/ingestion-pipelines): Pre-process and ingest diverse data formats, including images and text-based documents
 - [Dataset Annotation Filters](https://docs.clarifai.com/docs/create/datasets/filters): Use filter and search functionality over your datasets
 - [Datasets Management](https://docs.clarifai.com/docs/create/datasets/manage): Use vector search to sort, rank, and retrieve images
 - [Upload Data to Dataset via API](https://docs.clarifai.com/docs/create/datasets/upload): Learn how to upload data to a dataset
@@ -280,9 +283,6 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [Intelligent Document Processing](https://docs.clarifai.com/docs/resources/complementary-topics/intelligent-document-processing): Capture information from an organization's form that are stored as PDF documents
 - [Patching](https://docs.clarifai.com/docs/resources/complementary-topics/patching): Patch data in your applications.
 - [Build RAG Apps](https://docs.clarifai.com/docs/resources/complementary-topics/rag): Learn how to use the Clarifai SDKs
-- [Data Utils](https://docs.clarifai.com/docs/resources/data-utils/README): Learn how to use the Clarifai Data Utils library
-- [Image Annotation Loader](https://docs.clarifai.com/docs/resources/data-utils/image-annotation-loader): Load existing annotated image datasets and convert between supported formats
-- [Data Ingestion Pipelines](https://docs.clarifai.com/docs/resources/data-utils/ingestion-pipelines): Pre-process and ingest diverse data formats, including images and text-based documents
 - [General AI Glossary](https://docs.clarifai.com/docs/resources/glossary/README): A Glossary of General AI Terms for Using the Clarifai Platform Effectively
 - [Generative AI Glossary](https://docs.clarifai.com/docs/resources/glossary/generative-ai): A Glossary of Generative AI Terms for Using the Clarifai Platform Effectively
 - [Clarifai Platform Overview](https://docs.clarifai.com/docs/resources/platform/README): Your platform for the entire AI lifecycle
