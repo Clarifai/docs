@@ -834,16 +834,16 @@
       "from": ["/sdk/advance-model-operations/model-export", "/sdk/advance-model-operations/"]
     },
     {
-      "to": "/resources/data-utils/",
-      "from": ["/sdk/data-utils/"]
+      "to": "/create/datasets/data-utils/",
+      "from": ["/sdk/data-utils/", "/resources/data-utils/"]
     },
     {
-      "to": "/resources/data-utils/image-annotation-loader",
-      "from": ["/sdk/data-utils/image-annotation-loader"]
+      "to": "/create/datasets/data-utils/image-annotation-loader",
+      "from": ["/sdk/data-utils/image-annotation-loader", "/resources/data-utils/image-annotation-loader"]
     },
     {
-      "to": "/resources/data-utils/ingestion-pipelines",
-      "from": ["/sdk/data-utils/ingestion-pipelines"]
+      "to": "/create/datasets/data-utils/ingestion-pipelines",
+      "from": ["/sdk/data-utils/ingestion-pipelines", "/resources/data-utils/ingestion-pipelines"]
     },
     {
       "to": "/resources/sdk-examples",

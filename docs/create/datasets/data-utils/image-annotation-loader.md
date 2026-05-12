@@ -19,20 +19,20 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
-import CreateDataset from "!!raw-loader!../../../code_snippets/python-sdk/datautils/create_dataset.py";
-import GetDatasetInfo from "!!raw-loader!../../../code_snippets/python-sdk/datautils/get_dataset_info.py";
-import UploadToClarifai from "!!raw-loader!../../../code_snippets/python-sdk/datautils/upload_to_clarifai.py";
-import DownloadFromKaggle from "!!raw-loader!../../../code_snippets/python-sdk/datautils/download_from_kaggle.py";
-import UploadFromKaggle from "!!raw-loader!../../../code_snippets/python-sdk/datautils/upload_from_kaggle.py";
-import ConvertDataset from "!!raw-loader!../../../code_snippets/python-sdk/datautils/convert_dataset.py";
-import ExportClarifai1 from "!!raw-loader!../../../code_snippets/python-sdk/datautils/export_clarifai_1.py";
-import ExportClarifai2 from "!!raw-loader!../../../code_snippets/python-sdk/datautils/export_clarifai_2.py";
-import SupportedFormats from "!!raw-loader!../../../code_snippets/python-sdk/datautils/supported_formats.py";
-import FormatDetection from "!!raw-loader!../../../code_snippets/python-sdk/datautils/format_detection.py";
+import CreateDataset from "!!raw-loader!../../../../code_snippets/python-sdk/datautils/create_dataset.py";
+import GetDatasetInfo from "!!raw-loader!../../../../code_snippets/python-sdk/datautils/get_dataset_info.py";
+import UploadToClarifai from "!!raw-loader!../../../../code_snippets/python-sdk/datautils/upload_to_clarifai.py";
+import DownloadFromKaggle from "!!raw-loader!../../../../code_snippets/python-sdk/datautils/download_from_kaggle.py";
+import UploadFromKaggle from "!!raw-loader!../../../../code_snippets/python-sdk/datautils/upload_from_kaggle.py";
+import ConvertDataset from "!!raw-loader!../../../../code_snippets/python-sdk/datautils/convert_dataset.py";
+import ExportClarifai1 from "!!raw-loader!../../../../code_snippets/python-sdk/datautils/export_clarifai_1.py";
+import ExportClarifai2 from "!!raw-loader!../../../../code_snippets/python-sdk/datautils/export_clarifai_2.py";
+import SupportedFormats from "!!raw-loader!../../../../code_snippets/python-sdk/datautils/supported_formats.py";
+import FormatDetection from "!!raw-loader!../../../../code_snippets/python-sdk/datautils/format_detection.py";
 
-import Example1 from "!!raw-loader!../../../code_snippets/python-sdk/datautils/example_1.txt";
-import Example2 from "!!raw-loader!../../../code_snippets/python-sdk/datautils/example_2.txt";
-import Example3 from "!!raw-loader!../../../code_snippets/python-sdk/datautils/example_3.txt";
+import Example1 from "!!raw-loader!../../../../code_snippets/python-sdk/datautils/example_1.txt";
+import Example2 from "!!raw-loader!../../../../code_snippets/python-sdk/datautils/example_2.txt";
+import Example3 from "!!raw-loader!../../../../code_snippets/python-sdk/datautils/example_3.txt";
 
 :::tip
 
