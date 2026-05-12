@@ -3,40 +3,47 @@ clarifai pipeline init \
   --user_id alfrick \
   --template detector-pipeline-yolof \
   --set dataset_id=image_dataset \
-  --set dataset_version_id=b7c12e3f901a4d85a3bb67e2f10cd94a \
-  --set concepts='["dog","cat","person","car"]'
+  --set dataset_version_id=a361f5277f7d45a5a29f910800b3a6db \
+  --set concepts='["bird","bottle","cat","cow","dog","horse","person","sofa"]'
 Using template: detector-pipeline-yolof
 
 Template Type: detector
-Steps:
-Parameters: 18 required
+Steps: 
+Parameters: 17 required
 
 Creating pipeline 'detector-pipeline-yolof' from template 'detector-pipeline-yolof'...
 
-Template Parameters (default values):
-  user_id                     : <YOUR_USER_ID>
-  app_id                      : <YOUR_APP_ID>
-  model_id                    : test_model
-  dataset_id                  : <YOUR_DATASET_ID>
-  dataset_version_id          :
-  concepts                    : ["dog","cat","person","car"]
-  num_epochs                  : 200
-  batch_size                  : 32
-  image_size                  : 512
-  per_item_lrate              : 1.953125e-05
-  weight_decay                : 0.01
-  per_item_min_lrate          : 1.5625e-08
-  warmup_iters                : 5
-  warmup_ratio                : 0.0001
-  flip_probability            : 0.5
-  flip_direction              : horizontal
-  pretrained_weights          : ImageNet-1k
-  seed                        : -1
+Template Parameters:
+  user_id                  : alfrick
+  app_id                   : my-vis-detector
+  model_id                 : test_detector
+  dataset_id               : image_dataset
+  dataset_version_id       : a361f5277f7d45a5a29f910800b3a6db
+  concepts                 : ["bird","bottle","cat","cow","dog","horse","person","sofa"]
+  seed                     : -1
+  image_size               : [512]
+  max_aspect_ratio         : 1.5
+  keep_aspect_ratio        : True
+  batch_size               : 16
+  num_epochs               : 100
+  min_samples_per_epoch    : 300
+  per_item_lrate           : 0.001875
+  pretrained_weights       : coco
+  frozen_stages            : 1
+  inference_max_batch_size : 2
 
-Pipeline initialization complete in /Users/macbookpro/Desktop/detector/detector-pipeline-yolof
+Pipeline initialization complete in /Users/macbookpro/Desktop/pipelines/detect4/detector-pipeline-yolof
 
-Next steps:
-1. Review and customize the generated pipeline steps
-2. Add any additional dependencies to requirements.txt files
-3. Run 'clarifai pipeline upload /Users/macbookpro/Desktop/detector/detector-pipeline-yolof/config.yaml' to upload your pipeline
-4. Use 'clarifai pipeline run --config /Users/macbookpro/Desktop/detector/detector-pipeline-yolof/config.yaml [--set key=value]' to execute your pipeline
+Next steps (run all subsequent `clarifai pipeline ...` commands from INSIDE the generated folder):
+1. Change into the generated pipeline folder and review the generated steps
+   (add any extra dependencies to each step's requirements.txt as needed):
+          cd /Users/macbookpro/Desktop/pipelines/detect4/detector-pipeline-yolof
+2. Upload your pipeline:
+          clarifai pipeline upload
+3. Run the pipeline. Pick ONE of:
+     a) Auto-create / reuse compute from an instance type (simplest):
+          clarifai pipeline run --instance=g6e.xlarge
+     b) Use your existing nodepool + compute cluster (both required):
+          clarifai pipeline run --nodepool_id=<your_nodepool_id> --compute_cluster_id=<your_compute_cluster_id>
+   To override pipeline parameters at run time, repeat --set key=value, e.g.:
+          clarifai pipeline run --instance=g6e.xlarge --set num_epochs=20 --set batch_size=32

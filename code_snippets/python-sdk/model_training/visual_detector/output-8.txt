@@ -23,17 +23,17 @@ INFO:root:
 INFO:root:================================================================================
 INFO:root:STEP 1: Downloading Dataset from Clarifai API
 INFO:root:================================================================================
-INFO:model.1.dataset_helpers:Downloaded 200/200 images
-INFO:model.1.dataset_helpers:Successfully downloaded 200 images with 847 bounding box annotations
+INFO:model.1.dataset_helpers:Downloaded 10/10 images
+INFO:model.1.dataset_helpers:Successfully downloaded 10 images with 18 bounding box annotations
 INFO:root:
 INFO:root:================================================================================
 INFO:root:STEP 2: Converting Dataset to COCO Detection Format
 INFO:root:================================================================================
-INFO:model.1.dataset_helpers:Concept mapping: {'dog': 0, 'cat': 1, 'person': 2, 'car': 3}
-INFO:model.1.dataset_helpers:Conversion complete! Images saved: 200, annotations: 847
+INFO:model.1.dataset_helpers:Concept mapping: {'bird': 0, 'bottle': 1, 'cat': 2, 'cow': 3, 'dog': 4, 'horse': 5, 'person': 6, 'sofa': 7}
+INFO:model.1.dataset_helpers:Conversion complete! Images saved: 10, annotations: 18
 INFO:root:
 INFO:root:================================================================================
 INFO:root:STEP 3: Training YOLOF Detector
 INFO:root:================================================================================
-04/23 13:47:11 - mmengine - INFO - Epoch(train)  [1][  10/200]  lr: 1.9531e-05  eta: 2:14:07  time: 0.7823  data_time: 0.0412  memory: 8341  loss: 3.8821  loss_cls: 1.2341  loss_bbox: 2.6480
-04/23 13:47:19 - mmengine - INFO - Epoch(train)  [1][  20/200]  lr: 1.9531e-05  eta: 2:08:32  time: 0.7651  data_time: 0.0387  memory: 8341  loss: 3.5124  loss_cls: 1.1032  loss_bbox: 2.4092
+04/23 13:47:11 - mmengine - INFO - Epoch(train)  [1][  1/1]  lr: 1.9531e-05  eta: 2:14:07  time: 0.7823  data_time: 0.0412  memory: 8341  loss: 3.8821  loss_cls: 1.2341  loss_bbox: 2.6480
+04/23 13:47:19 - mmengine - INFO - Epoch(train)  [2][  1/1]  lr: 1.9531e-05  eta: 2:08:32  time: 0.7651  data_time: 0.0387  memory: 8341  loss: 3.5124  loss_cls: 1.1032  loss_bbox: 2.4092
