@@ -118,9 +118,6 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [Create and Train Models](https://docs.clarifai.com/docs/create/models/README): Learn how to easily create and train new models
 - [Model Export](https://docs.clarifai.com/docs/create/models/export): Learn how to perform model export using Clarifai SDKs
 - [Manage Models](https://docs.clarifai.com/docs/create/models/manage): Learn how to get, update, search, and delete models
-- [Transfer Learning](https://docs.clarifai.com/docs/create/models/transfer-learning/README): Build upon pre-existing knowledge, streamline the learning process for novel tasks
-- [Text Classifier](https://docs.clarifai.com/docs/create/models/transfer-learning/text-classifier): Learn how to use transfer learning to create custom text classifier models
-- [Visual Classifier](https://docs.clarifai.com/docs/create/models/transfer-learning/visual-classifier): Learn how to use transfer learning to create custom visual classifier model
 - [Visual Classifier](https://docs.clarifai.com/docs/create/models/visual-classifier): Train an image classification model using a pipeline template
 - [Visual Detector](https://docs.clarifai.com/docs/create/models/visual-detector): Train an object detection model using a pipeline template
 - [Vector Search](https://docs.clarifai.com/docs/create/search/README): Leverage vector search capabilities to find similar items in a dataset
