@@ -20938,7 +20938,7 @@ On this page, you can:
 
 Once your model has been trained successfully, you can start using it for predictions.
 
-To access it, go to the **Models** section from the left sidebar and select your model from the list. This opens the models listing page.
+To access it, select the **Models** option from the collapsible left sidebar. This opens the models listing page.
 
 ![](/img/community_2/my-deep-training-10.png)
 
@@ -21522,13 +21522,15 @@ Based on the selected dataset, we will train a model to detect five categories o
 
 To [add inputs](https://docs.clarifai.com/create/inputs/upload/ui) to your app, open the collapsible left sidebar and select the **Inputs** option.
 
-Click the **Upload Inputs** button in the upper-right corner, then use the uploader pop-up to select and upload your images. As you upload, assign them to a [dataset](https://docs.clarifai.com/create/datasets/create/).
+Click the **Upload Inputs** button in the upper-right corner of the Inputs-Manager page. Then, use the uploader pop-up to select and upload your images. As you upload, assign them to a [dataset](https://docs.clarifai.com/create/datasets/create/).
 
 ![](/img/community_2/visual-detector-1.png)
 
-Once uploaded, you'll need to annotate each image with bounding boxes. Open the collapsible left sidebar and select the **Labeler** option to launch the annotation tool.
+> **Note:** For this tutorial, we’ll upload 5 images from each category in the PPE dataset. 
 
-For each image, draw a bounding box around every object of interest and assign the appropriate concept label:
+Once the images are uploaded, you’ll need to annotate them with bounding boxes. To do this, click an image on the Inputs-Manager page to open it in the single Input-Viewer page, where annotations can be added.
+
+Next, select the **Bounding Box** tool from the navigation bar. For each image, draw a bounding box around every object of interest and assign the correct concept label:
 
 * `Coverall`
 * `Face_Shield`
@@ -21537,6 +21539,8 @@ For each image, draw a bounding box around every object of interest and assign t
 * `Mask`
 
 ![](/img/community_2/visual-detector-2.png)
+
+To learn more about adding detection labels in the Input-Viewer, go [here](https://docs.clarifai.com/create/labeling/ui/create#detection-for-still-images).
 
 :::caution refresh your dataset
 
@@ -21618,17 +21622,16 @@ You can adjust these settings based on your dataset and performance goals. Howev
 
 These are the settings you can configure:
 
-* **Batch Size** — Number of samples processed per training step. Default: `32`.
-* **Image Size** — Size (in pixels) to which input images are resized (square). Default: `512`.
-* **Per Item Lrate** — Learning rate applied per training sample. Default: `0.00001953125`.
-* **Weight Decay** — Regularization factor to prevent overfitting. Default: `0.01`.
-* **Per Item Min Lrate** — Minimum learning rate per sample during training. Default: `1.5625e-8`.
-* **Warmup Iters** — Number of initial iterations used to gradually increase the learning rate. Default: `5`.
-* **Warmup Ratio** — Starting ratio of the learning rate during warmup. Default: `0.0001`.
-* **Flip Probability** — Chance of randomly flipping images during training (data augmentation). Default: `0.5`.
-* **Flip Direction** — Direction used when flipping images. Default: `horizontal`.
-* **Pretrained Weights** — Source of initial model weights for transfer learning. Default: `ImageNet-1k`.
-* **Seed** — Random seed used to initialize training (set `-1` for random behavior). Default: `-1`.
+* **Seed** — Random seed used to initialize training. Set to `-1` for non-deterministic behavior, or provide a fixed integer to make results reproducible across runs. Default: `-1`.
+* **Image Size** — The size (in pixels) to which input images are resized before being fed into the model. A larger size may improve detection of small objects but increases memory usage and training time. Default: `[512]`.
+* **Max Aspect Ratio** — The maximum allowed aspect ratio of an image when aspect ratio preservation is enabled. Images with a higher aspect ratio will be clamped to this value to prevent extreme distortions. Default: `1.5`.
+* **Keep Aspect Ratio** — Whether to preserve the original aspect ratio of input images during resizing. When enabled, images are resized without distortion; padding is added as needed to fill the target dimensions. Default: enabled.
+* **Batch Size** — The number of training samples processed in each iteration. Larger batch sizes can stabilize training but require more GPU memory. Default: `16`.
+* **Min Samples Per Epoch** — The minimum number of samples that must be seen per epoch during training. This ensures a consistent training duration even when the dataset is small. Default: `300`.
+* **Per Item Lrate** — The learning rate applied per individual training sample. It controls how much the model's weights are adjusted after processing each item. Default: `0.001875`.
+* **Pretrained Weights** — The source of the initial model weights used for transfer learning. Starting from pretrained weights (such as those trained on COCO) helps the model converge faster and perform better with less data. Default: `coco`.
+* **Frozen Stages** — The number of backbone stages whose weights are frozen (not updated) during training. Freezing early stages preserves low-level feature representations learned during pretraining and can speed up training. Default: `1`.
+* **Inference Max Batch Size** — The maximum number of images processed in a single batch during inference. Adjust this based on available GPU memory and throughput requirements. Default: `2`.
 
 ### Step 7: Train the Model​
 
@@ -21655,7 +21658,7 @@ On this page, you can:
 
 Once your model has been trained successfully, you can start using it for predictions.
 
-To access it, go to the **Models** section from the left sidebar and select your model from the list. This opens the models listing page.
+To access it, select the **Models** option from the collapsible left sidebar. This opens the models listing page.
 
 ![](/img/community_2/visual-detector-10.png)
 
@@ -21770,15 +21773,35 @@ As mentioned [previously](#step-2-prepare-training-data), high-quality, well-str
 
 For object detection, your dataset must include images with bounding box annotations. Each annotation marks the location of an object in the image and assigns it a concept label.
 
-For this example, we'll use a public dataset of annotated images available [here](https://github.com/Clarifai/examples/tree/main/datasets/upload/image_detection).
+For this example, we'll use the detection dataset from the [Clarifai examples repository](https://github.com/Clarifai/examples/tree/main/datasets/upload/image_detection). Specifically, we'll use the VOC format variant (`voc/`), which includes:
+
+- 10 images sourced from the Pascal VOC dataset
+- XML annotation files (one per image) containing bounding box coordinates and concept labels in PASCAL VOC format
+- A `dataset.py` file with a `VOCDetectionDataLoader` class that handles parsing and uploading
+
+The dataset directory structure looks like this:
+
+```
+image_detection/
+└── voc/
+    ├── dataset.py          # DataLoader implementation
+    ├── images/             # 10 .jpg images
+    └── annotations/        # 10 .xml bounding box annotation files
+```
 
 :::info Objective
 
-Using this dataset, we'll train a model to detect and localize the following object categories: `dog`, `cat`, `person`, and `car`.
+Using this dataset, we'll train a model to detect and localize the following object categories: `bird`, `bottle`, `cat`, `cow`, `dog`, `horse`, `person`, and `sofa`.
 
 :::
 
-You can clone the [repository](https://github.com/Clarifai/examples/tree/main) containing the dataset, then use the Clarifai Python SDK to [upload the dataset](https://docs.clarifai.com/create-manage/datasets/upload) to your app.
+Start by cloning the [Clarifai examples repository](https://github.com/Clarifai/examples):
+
+    ```bash
+    git clone https://github.com/Clarifai/examples.git
+    ```
+
+Then use the Clarifai Python SDK to [upload the dataset](https://docs.clarifai.com/create-manage/datasets/upload) to your app.
 
     {CodeDU}
 
@@ -21895,7 +21918,7 @@ Run the following command to [initialize a pipeline](https://docs.clarifai.com/c
       --template detector-pipeline-yolof \
       --set dataset_id=image_dataset \
       --set dataset_version_id=dataset_version_id \
-      --set concepts='["dog","cat","person","car"]'
+      --set concepts='["bird","bottle","cat","cow","dog","horse","person","sofa"]'
     ```
 
 Where:
@@ -22022,7 +22045,7 @@ Then, use the generated deployment ID to run [predictions](https://docs.clarifai
 ```bash
 clarifai model predict \
   clarifai_model_url \
-  --url https://samples.clarifai.com/featured-models/image-general-horses.jpg \
+  --url https://samples.clarifai.com/featured-models/person-vehicle-man-crossing-street-mask-japan.jpg \
   --deployment deployment_id
 ```
 
