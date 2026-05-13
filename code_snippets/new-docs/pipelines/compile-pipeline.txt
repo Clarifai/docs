@@ -1,0 +1,1 @@
+[INFO] 17:51:30.956521 Generated pipeline assets at ./my-pipeline/config.yaml |  thread=8788172992 
