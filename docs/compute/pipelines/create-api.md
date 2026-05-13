@@ -18,6 +18,8 @@ import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
 import PipelineInit from "!!raw-loader!../../../code_snippets/new-docs/pipelines/pipeline-init.txt";
+import CompilePipeline from "!!raw-loader!../../../code_snippets/new-docs/pipelines/compile-pipeline.txt";
+import PipelineDefinition from "!!raw-loader!../../../code_snippets/new-docs/pipelines/pipeline-definition.py";
 import ConfigYamlRoot from "!!raw-loader!../../../code_snippets/new-docs/pipelines/config-yaml-root.yaml";
 import ConfigYamlStep from "!!raw-loader!../../../code_snippets/new-docs/pipelines/config-yaml-step.yaml";
 import RequirementsTXT from "!!raw-loader!../../../code_snippets/new-docs/pipelines/requirements-txt.txt";
@@ -63,12 +65,17 @@ pip install --upgrade clarifai
 
 ### Create a Cluster and Nodepool
 
-A compute cluster and nodepool define where your pipeline runs within Clarifai’s compute environment. They are required to allocate and manage the resources your pipeline needs for execution.
+A compute cluster and nodepool define where your pipeline runs within Clarifai’s compute environment. They are only required if you plan to run your pipeline on managed infrastructure (see [Option B](#option-b-run-on-cluster-and-nodepool) in Step 5). 
 
-You need to [create](https://docs.clarifai.com/compute/deployments/clusters-nodepools) them and get their IDs. 
+If you need a cluster and nodepool, [create](https://docs.clarifai.com/compute/deployments/clusters-nodepools) them and get their IDs.
 
+If you prefer on-demand instance compute (see [Option A](#option-a-run-on-on-demand-instance-compute)), you can skip this step.
 
 ## Step 2: Initialize a Pipeline Project
+
+You can set up your pipeline project in two ways: scaffold a boilerplate with `init`, or compile one from a Python definition using `compile`. Both approaches produce the same project structure.
+
+### Option A: Use `pipeline init`
 
 Run the following command to create a new pipeline project in your current directory:
 
@@ -96,6 +103,40 @@ After running the command, you’ll be prompted to provide the following details
     <CodeBlock className="language-text">{PipelineInit}</CodeBlock>
 </details>
 
+Once scaffolded, proceed to [Step 3](#step-3-modify-the-files) to customize the generated files.
+
+### Option B: Use `pipeline compile`
+
+If you prefer to define your pipeline in Python, you can use the `compile` command to generate the YAML/config-based pipeline assets from a Python pipeline definition — so you can skip manual YAML editing in Step 3.
+
+Start by creating a `pipeline_definition.py` file that declares your pipeline and its steps using the Clarifai SDK:
+
+<details>
+  <summary>Example: pipeline_definition.py</summary>
+    <CodeBlock className="language-python">{PipelineDefinition}</CodeBlock>
+</details>
+
+> **Note:** You can find another example pipeline definition file in the [Clarifai examples repository](https://github.com/Clarifai/clarifai-python/blob/master/examples/pipeline_dsl_text_pipeline.py).
+
+Then run the `compile` command, pointing to your definition file and specifying an output directory:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    ```bash
+    clarifai pipeline compile pipeline_definition.py --output-dir ./my-pipeline
+    ```
+</TabItem>
+</Tabs>
+
+The `--output-dir` flag (required) specifies the directory where the compiled `config.yaml` and step folders will be written. 
+
+This gives you the same project structure as `pipeline init`, but derived directly from your Python definition.
+
+<details>
+  <summary>Example Output</summary>
+    <CodeBlock className="language-text">{CompilePipeline}</CodeBlock>
+</details>
+
 
 :::note 
 
@@ -117,13 +158,12 @@ This design makes steps modular, reusable, and independently versioned — allow
 
 > **Note:** You can also manage individual pipeline steps using the `pipelinestep` (or `ps`) command. This allows you to create, update, and reuse pipeline steps independently of the full pipeline. For example:
   > * `clarifai pipelinestep init` – Initialize a new pipeline step project structure.
+  > * `clarifai pipelinestep local-run` – Run a pipeline step locally in a Docker container.
   > * `clarifai pipelinestep upload` – Upload a pipeline step to the Clarifai platform.
 
 :::
 
-After running `clarifai pipeline init`, the CLI scaffolds a complete boilerplate project for you. Each file and folder represents a specific part of how your pipeline is configured, versioned, and executed.
-
-Here is the structure of the generated project:
+Regardless of which option you chose above, the resulting project structure looks like this:
 
 ```text
 ├── config.yaml          # Pipeline configuration
@@ -459,14 +499,50 @@ If you want to skip generating a Dockerfile — so you can use an already existi
 
 :::
 
+:::note
+
+### Test a Pipeline Step Locally
+
+Before uploading, you can run an individual pipeline step locally in a Docker container using `clarifai pipelinestep local-run`. This lets you validate your step’s logic and dependencies without deploying to Clarifai, making it faster to iterate during development.
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai pipelinestep local-run</CodeBlock>
+</TabItem>
+</Tabs>
+
+Run this command from inside the step’s directory (for example, `stepA/`). The CLI builds a Docker image for the step using its `Dockerfile`, `requirements.txt`, and `pipeline_step.py`, then executes it locally.
+
+:::
+
 
 ## Step 5: Run the Pipeline
 
-After successfully uploading your pipeline, you can execute it using the Clarifai CLI. 
+After successfully uploading your pipeline, you can execute it using the Clarifai CLI.
+
+You can run your pipeline using either on-demand instance compute or a preconfigured cluster and nodepool.
+
+### Option A: Run on On-Demand Instance Compute
+
+Instead of relying on an existing nodepool and compute cluster, you can automatically provision or reuse compute at runtime by specifying an instance type:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai pipeline run --instance=g6e.xlarge</CodeBlock>
+</TabItem>
+</Tabs>
+
+This approach removes the need to manage infrastructure, making it ideal for quick experiments or simplified workflows. 
+
+See the [available instance types](https://docs.clarifai.com/compute/cloud-instances) to choose one that best matches your workload and performance requirements.
+
+### Option B: Run on Cluster and Nodepool
+
+If you've already set up a compute cluster and nodepool, you can run the pipeline by explicitly targeting those resources.
 
 Run the following command from your current project directory to start the pipeline and monitor its progress until completion or timeout.
 
-> **Note:** You must specify both a compute [cluster ID and a nodepool ID](#create-a-cluster-and-nodepool). 
+> **Note:** You must specify both a compute [cluster ID and a nodepool ID](#create-a-cluster-and-nodepool).
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">

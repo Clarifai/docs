@@ -1103,6 +1103,8 @@ The `clarifai whoami` command displays information about the currently authentic
 
 The `clarifai app` command provides CRUD operations for Clarifai apps. Alias: `a`.
 
+> **Note:** See the [applications documentation](/create/applications/create) for a full guide on creating and managing apps.
+
 ### Create an App
 
 <Tabs groupId="code">
@@ -1137,11 +1139,12 @@ You can specify a base workflow:
 
 Aliases: `c` (create), `ls` (list), `rm` (delete).
 
----
 
 ## Clarifai Model Init
 
 The `clarifai model init` command scaffolds a new Clarifai model project. The recommended workflow uses `--toolkit` and `--model-name` to automatically generate all required files with the correct configuration for your model.
+
+> **Note:** See the [model upload documentation](/compute/upload) for a full guide on building and uploading models.
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
@@ -1199,7 +1202,7 @@ Fields like `user_id`, `app_id`, and `model_type_id` are resolved automatically 
 |---------|----------|-------------|
 | `vllm` | GPU | High-throughput LLM serving with [vLLM](https://docs.clarifai.com/compute/toolkits/vllm) |
 | `sglang` | GPU | Fast LLM serving with [SGLang](https://docs.clarifai.com/compute/toolkits/sglang) |
-| `huggingface` | GPU | HuggingFace Transformers (direct inference) |
+| `huggingface` | GPU | [HuggingFace](https://docs.clarifai.com/compute/toolkits/hf) Transformers (direct inference) |
 | `ollama` | Local | [Ollama](https://docs.clarifai.com/compute/toolkits/ollama) local LLM server |
 | `lmstudio` | Local | [LM Studio](https://docs.clarifai.com/compute/toolkits/lmstudio) local LLM server |
 | `python` | Other | Blank Python model (default if `--toolkit` omitted) |
@@ -1250,6 +1253,8 @@ For SGLang models, pre-Ampere GPUs (T4, V100) are automatically excluded since S
 
 Instance recommendations are restricted to **AWS, GCP, and Vultr** cloud providers.
 
+> **Note:** See [available cloud instances](/compute/cloud-instances) for the full list.
+
 ### Basic Initialization
 
 If no `--toolkit` is provided, the command initializes a blank Python model using `ModelClass`:
@@ -1291,7 +1296,6 @@ clarifai model init --github-url https://github.com/your-username/my-private-mod
 
 Learn more about using toolkits [here](https://docs.clarifai.com/compute/toolkits).
 
----
 
 ## Clarifai Model Serve
 
@@ -1302,6 +1306,8 @@ Learn more about using toolkits [here](https://docs.clarifai.com/compute/toolkit
 </Tabs>
 
 The `clarifai model serve` command runs a model locally for development and testing. It replaces the older `local-runner` command (which still works as an alias).
+
+> **Note:** See the [local runners documentation](/compute/local-runners) for a full guide.
 
 ### Basic Usage
 
@@ -1360,7 +1366,7 @@ clarifai model serve ./my-model --grpc --port 9000
 **API-connected mode (default):**
 
 1. Validates `config.yaml` and resolves credentials from your CLI context
-2. Auto-creates infrastructure (compute cluster, nodepool, app, model, version, runner, deployment)
+2. Auto-creates infrastructure ([compute cluster, nodepool](/compute/deployments/clusters-nodepools), app, model, version, runner, deployment)
 3. Starts the model server
 4. Displays a code snippet, Playground URL, and predict command
 5. Cleans up ephemeral resources (version, runner, deployment) on Ctrl+C
@@ -1369,7 +1375,6 @@ clarifai model serve ./my-model --grpc --port 9000
 
 Starts a standalone gRPC server with no Clarifai API connection. No login required. Useful for offline development.
 
----
 
 ## Clarifai Model Upload
 
@@ -1380,6 +1385,8 @@ Starts a standalone gRPC server with no Clarifai API connection. No login requir
 </Tabs>
 
 Upload a model to Clarifai without deploying it. Useful when you want to separate the upload and deploy steps.
+
+> **Note:** See the [model upload documentation](/compute/upload) for a full guide.
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
@@ -1405,7 +1412,7 @@ After upload, the output includes a clickable model URL, a code snippet for pred
 </TabItem>
 </Tabs>
 
-The `clarifai model deploy` command uploads, builds, and deploys a model to Clarifai cloud compute in one step. All infrastructure (compute cluster, nodepool, deployment) is **auto-created** — no manual setup required.
+The `clarifai model deploy` command uploads, builds, and deploys a model to Clarifai cloud compute in one step. All infrastructure ([compute cluster, nodepool](/compute/deployments/clusters-nodepools), [deployment](/compute/deployments/deploy-model)) is **auto-created** — no manual setup required.
 
 ### Basic Examples
 
@@ -1554,6 +1561,8 @@ When you run `clarifai model deploy`, it progresses through these phases:
 
 Browse all available compute instances across cloud providers. Alias: `li`.
 
+> **Note:** See the [cloud instances reference](/compute/cloud-instances) for the full list of available hardware.
+
 ### Basic Usage
 
 <Tabs groupId="code">
@@ -1603,6 +1612,8 @@ clarifai li --cloud aws --gpu L40S
 </Tabs>
 
 Run predictions against any Clarifai model directly from the CLI.
+
+> **Note:** See the [inference documentation](/compute/inference/clarifai/api) for a full guide, or the [OpenAI-compatible API](/compute/inference/open-ai) for chat-style usage.
 
 ### Input Modes
 
@@ -1661,7 +1672,6 @@ clarifai model predict openai/chat-completion/models/GPT-4 --info
 - Method selection: `--chat` uses OpenAI chat, text input prefers streaming/generate, media uses predict
 - `--info` shows all available methods with their parameter signatures
 
----
 
 ## Clarifai Model Status
 
@@ -1672,6 +1682,8 @@ clarifai model predict openai/chat-completion/models/GPT-4 --info
 </Tabs>
 
 Check deployment status for a model or a specific deployment.
+
+> **Note:** See [managing deployments](/compute/deployments/manage-compute) for a full guide.
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
@@ -1724,6 +1736,8 @@ clarifai model status --model-url https://clarifai.com/user/app/models/my-model
 
 Stream logs from a deployed model's runner.
 
+> **Note:** See [managing deployments](/compute/deployments/manage-compute) for more on monitoring and observability.
+
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
 
@@ -1766,6 +1780,8 @@ clarifai model logs --deployment deploy-abc123 --duration 60
 </Tabs>
 
 Permanently remove a deployment.
+
+> **Note:** See [managing deployments](/compute/deployments/manage-compute) for a full guide.
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
@@ -1819,6 +1835,8 @@ clarifai model list -a <app_id>        # Filter by app
 ## Clarifai Deployment
 
 The `clarifai deployment` command provides direct management of deployments by ID. Alias: `dp`.
+
+> **Note:** See [managing deployments](/compute/deployments/manage-compute) and [clusters and nodepools](/compute/deployments/clusters-nodepools) for full guides.
 
 ### Get Deployment Details
 
@@ -1887,3 +1905,310 @@ Delete a deployment by ID (no nodepool argument required):
     <CodeBlock className="language-bash">clarifai deployment create &lt;nodepool_id&gt; &lt;deployment_id&gt; --config deployment.yaml</CodeBlock>
 </TabItem>
 </Tabs>
+
+---
+
+## Clarifai Pipeline
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai pipeline [COMMAND] [OPTIONS]</CodeBlock>
+</TabItem>
+</Tabs>
+
+The `clarifai pipeline` command lets you create and manage [pipelines](/compute/pipelines) on the Clarifai platform. Alias: `pl`.
+
+> **Note:** See the [Create and Run Pipelines](/compute/pipelines/create-api) guide for a full end-to-end walkthrough.
+
+### Compile
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai pipeline compile [OPTIONS] PATH</CodeBlock>
+</TabItem>
+</Tabs>
+
+Compile YAML/config-based pipeline assets from a Python pipeline definition. The `PATH` argument is the path to the Python file containing your pipeline definition.
+
+| Option | Description |
+|--------|-------------|
+| `PATH` | Path to the Python pipeline definition file (positional, required) |
+| `--output-dir PATH` | Directory to write the compiled `config.yaml` and step folders (required) |
+
+```bash
+clarifai pipeline compile pipeline_definition.py --output-dir ./my-pipeline
+```
+
+### Init
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai pipeline init [OPTIONS] [PIPELINE_PATH]</CodeBlock>
+</TabItem>
+</Tabs>
+
+Initialize a new pipeline project structure, either from a predefined template or interactively. When `PIPELINE_PATH` is not specified, the current directory is used.
+
+| Option | Description |
+|--------|-------------|
+| `PIPELINE_PATH` | Path where the pipeline project structure will be created (positional, optional) |
+| `--template TEXT` | Initialize from a named template. Run `clarifai pipelinetemplate ls` to list available templates (e.g., `classifier-pipeline-resnet-quick-start`) |
+| `--set TEXT` | Override template parameters inline. Format: `--set key=value`, repeatable. Use `--set id=<pipeline_id>` to rename the pipeline or `--set num_epochs=20` to override a model parameter default |
+| `--user_id TEXT` | User ID for generated configs. Overrides the user ID from your login context |
+| `--app_id TEXT` | App ID for generated configs. Overrides the app ID from your login context |
+
+```bash
+# Interactive initialization in the current directory
+clarifai pipeline init
+
+# Initialize in a named directory
+clarifai pipeline init my-pipeline
+
+# Initialize from a template
+clarifai pipeline init --template classifier-pipeline-resnet-quick-start
+
+# Initialize from a template with parameter overrides
+clarifai pipeline init --template classifier-pipeline-resnet-quick-start --set id=my-pipeline --set num_epochs=20
+```
+
+### List
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai pipeline list [OPTIONS]</CodeBlock>
+</TabItem>
+</Tabs>
+
+List all pipelines for the user. Alias: `ls`.
+
+| Option | Description |
+|--------|-------------|
+| `--app_id TEXT` | App ID to list pipelines from (required) |
+| `--user_id TEXT` | User ID to list pipelines from. Defaults to the current user if not provided |
+| `--page_no INTEGER` | Page number to list |
+| `--per_page INTEGER` | Number of items per page |
+
+```bash
+clarifai pipeline list --app_id my-app
+clarifai pipeline ls --app_id my-app --user_id my-user-id
+```
+
+### Run
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai pipeline run [OPTIONS] [PATH]</CodeBlock>
+</TabItem>
+</Tabs>
+
+Run a pipeline and monitor its progress. `PATH` is an optional path to a pipeline directory or config file (defaults to `.`). When provided, config precedence is `config-lock.yaml` > `config.yaml`.
+
+| Option | Type | Description |
+|--------|------|-------------|
+| `PATH` | `PATH` | Path to a pipeline directory or config file. Defaults to current directory |
+| `--pipeline_id` | `TEXT` | Pipeline ID to run |
+| `--pipeline_version_id` | `TEXT` | Pipeline version ID to run |
+| `--pipeline_version_run_id` | `TEXT` | Pipeline version run ID. A UUID is generated if not provided |
+| `--user_id` | `TEXT` | User ID of the pipeline |
+| `--app_id` | `TEXT` | App ID that contains the pipeline |
+| `--pipeline_url` | `TEXT` | Full pipeline URL to run |
+| `--instance` | `TEXT` | Hardware instance type (e.g., `g5.xlarge`, `A10G`). Auto-creates compute cluster and nodepool |
+| `--cloud` | `TEXT` | Cloud provider (e.g., `aws`, `gcp`). Auto-detected from `--instance` if omitted |
+| `--region` | `TEXT` | Cloud region (e.g., `us-east-1`). Auto-detected from `--instance` if omitted |
+| `--nodepool_id` | `TEXT` | **[Advanced]** Existing nodepool ID (skips auto-creation) |
+| `--compute_cluster_id` | `TEXT` | **[Advanced]** Existing compute cluster ID (skips auto-creation) |
+| `--timeout` | `INTEGER` | Maximum time to wait for completion in seconds. Default: `3600` (1 hour) |
+| `--monitor_interval` | `INTEGER` | Interval between status checks in seconds. Default: `10` |
+| `--log_file` | `PATH` | File path to write logs to. Logs are displayed on the console if omitted |
+| `--monitor` | `FLAG` | Monitor an existing pipeline run instead of starting a new one. Requires `--pipeline_version_run_id` |
+| `--set` | `TEXT` | Override parameter values inline. Format: `--set key=value`. Repeatable |
+| `--overrides-file` | `PATH` | Path to a JSON/YAML file containing parameter overrides |
+| `--dev` | `FLAG` | Upload local code to an ephemeral dev pipeline before running. Only changed steps are re-uploaded |
+
+```bash
+# Run on on-demand instance compute
+clarifai pipeline run --instance g5.xlarge
+
+# Run on an existing cluster and nodepool
+clarifai pipeline run --compute_cluster_id my-cluster --nodepool_id my-nodepool
+
+# Override parameters at runtime
+clarifai pipeline run --instance g5.xlarge --set num_epochs=20 --set batch_size=32
+
+# Monitor an existing run
+clarifai pipeline run --monitor --pipeline_version_run_id <run-id>
+
+# Run with dev mode (re-upload only changed steps)
+clarifai pipeline run --instance g5.xlarge --dev
+```
+
+### Upload
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai pipeline upload [OPTIONS] [PATH]</CodeBlock>
+</TabItem>
+</Tabs>
+
+Upload a pipeline and its associated pipeline steps to Clarifai. `PATH` is the path to the pipeline configuration file or directory containing `config.yaml`. Defaults to the current directory if not specified.
+
+| Option | Description |
+|--------|-------------|
+| `PATH` | Path to the pipeline config file or directory (positional, optional) |
+| `--no-lockfile` | Skip generating a `config-lock.yaml` file |
+
+```bash
+# Upload from current directory
+clarifai pipeline upload
+
+# Upload from a specific path
+clarifai pipeline upload ./my-pipeline
+
+# Upload without generating a lock file
+clarifai pipeline upload --no-lockfile
+```
+
+### Validate Lock
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai pipeline validate-lock [OPTIONS] [LOCKFILE_PATH]</CodeBlock>
+</TabItem>
+</Tabs>
+
+Validate a `config-lock.yaml` file for schema correctness and reference consistency. If `LOCKFILE_PATH` is not provided, the command looks for `config-lock.yaml` in the current directory.
+
+```bash
+# Validate in current directory
+clarifai pipeline validate-lock
+
+# Validate a specific lock file
+clarifai pipeline validate-lock ./my-pipeline/config-lock.yaml
+```
+
+---
+
+## Clarifai Pipeline Step
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai pipelinestep [COMMAND] [OPTIONS]</CodeBlock>
+</TabItem>
+</Tabs>
+
+The `clarifai pipelinestep` command lets you manage individual pipeline steps independently of a full pipeline. Aliases: `pipeline-step`, `ps`.
+
+> **Note:** See [pipeline steps](/compute/pipelines/create-api#pipeline-steps) for a full guide.
+
+### Init
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai pipelinestep init [OPTIONS] [PIPELINE_STEP_PATH]</CodeBlock>
+</TabItem>
+</Tabs>
+
+Initialize a new pipeline step directory structure. If `PIPELINE_STEP_PATH` is not specified, the current directory is used.
+
+The command creates the following structure:
+
+```text
+├── 1/
+│   └── pipeline_step.py   # Step implementation logic
+├── requirements.txt        # Step dependencies
+└── config.yaml             # Step configuration
+```
+
+```bash
+# Initialize in the current directory
+clarifai pipelinestep init
+
+# Initialize in a named directory
+clarifai pipelinestep init my-step
+```
+
+### List
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai pipelinestep list [OPTIONS]</CodeBlock>
+</TabItem>
+</Tabs>
+
+List all pipeline steps for the user. Alias: `ls`.
+
+| Option | Description |
+|--------|-------------|
+| `--app_id TEXT` | App ID to list pipeline steps from (required) |
+| `--user_id TEXT` | User ID to list pipeline steps from. Defaults to the current user if not provided |
+| `--pipeline_id TEXT` | Filter pipeline steps by pipeline ID |
+| `--page_no INTEGER` | Page number to list |
+| `--per_page INTEGER` | Number of items per page |
+
+```bash
+clarifai pipelinestep list --app_id my-app
+clarifai pipelinestep ls --app_id my-app --pipeline_id my-pipeline
+```
+
+### Local Run
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai pipelinestep local-run [OPTIONS] [PIPELINE_STEP_PATH]</CodeBlock>
+</TabItem>
+</Tabs>
+
+Run a pipeline step locally in a Docker container, without uploading it to Clarifai. This is useful for validating your step's logic and dependencies during development before deploying.
+
+`PIPELINE_STEP_PATH` is the path to the pipeline step directory (containing `config.yaml`, `requirements.txt`, and `1/pipeline_step.py`). Defaults to the current directory.
+
+The command reuses the same Docker build infrastructure as `clarifai model serve --mode container`, but executes `pipeline_step.py` once and exits.
+
+| Option | Description |
+|--------|-------------|
+| `PIPELINE_STEP_PATH` | Path to the pipeline step directory (positional, optional) |
+| `--mode [container]` | Execution mode. Currently only `container` is supported |
+| `--step-args TEXT` | Arguments to pass to `pipeline_step.py` (e.g., `"--param_a hello --param_b world"`) |
+| `--keep-image` | Keep the Docker image after the step finishes |
+
+```bash
+# Run in the current directory
+clarifai pipelinestep local-run
+
+# Run a step in a specific directory
+clarifai pipelinestep local-run ./my-step
+
+# Pass arguments to the step script
+clarifai pipelinestep local-run ./my-step --step-args "--input_text hello"
+
+# Keep the Docker image after execution
+clarifai pipelinestep local-run ./my-step --keep-image
+```
+
+### Upload
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai pipelinestep upload [OPTIONS] [PIPELINE_STEP_PATH]</CodeBlock>
+</TabItem>
+</Tabs>
+
+Upload a pipeline step to Clarifai. `PIPELINE_STEP_PATH` is the path to the pipeline step directory. Defaults to the current directory if not specified.
+
+By default, a `Dockerfile` is automatically generated during upload. Use `--skip_dockerfile` if you want to use an existing one you've already edited.
+
+| Option | Description |
+|--------|-------------|
+| `PIPELINE_STEP_PATH` | Path to the pipeline step directory (positional, optional) |
+| `--skip_dockerfile` | Skip auto-generating a Dockerfile, so an existing one is used instead |
+
+```bash
+# Upload from current directory
+clarifai pipelinestep upload
+
+# Upload from a specific path
+clarifai pipelinestep upload ./my-step
+
+# Upload using an existing Dockerfile
+clarifai pipelinestep upload ./my-step --skip_dockerfile
+```
