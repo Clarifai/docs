@@ -1,0 +1,11 @@
+clarifai pipeline run --dev --compute_cluster_id advanced-cluster-b4z7 --nodepool_id advanced-nodepool-y43h
+[INFO] 11:14:29 Starting dev pipeline upload (hello-world-pipeline-dev) from config: ./config.yaml
+[INFO] 11:14:35 stepA unchanged, skipping upload
+[INFO] 11:14:36 Uploading step: stepB
+[INFO] 11:15:02 stepB uploaded successfully
+[INFO] 11:15:03 Dev pipeline upload complete: hello-world-pipeline-dev v48862434906f482e94a2ec638a4233a1
+[INFO] 11:15:03 Pipeline run started: hello-world-pipeline-dev (run: a1b2c3d4e5f6789012345678abcdef01)
+[INFO] 11:17:12 Status: RUNNING (129.0s)
+[INFO] 11:17:25 11.10.2
+[INFO] 11:17:25 stepB processed: Input Text Here
+[INFO] 11:17:38 Status: COMPLETED (155.0s)
