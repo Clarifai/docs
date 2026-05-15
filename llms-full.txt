@@ -6459,6 +6459,7 @@ import RequirementsTXT from "!!raw-loader!../../../code_snippets/new-docs/pipeli
 import PipelineStep from "!!raw-loader!../../../code_snippets/new-docs/pipelines/pipeline-step.py";
 import UploadPipeline from "!!raw-loader!../../../code_snippets/new-docs/pipelines/upload-pipeline.txt";
 import RunPipeline from "!!raw-loader!../../../code_snippets/new-docs/pipelines/run-pipeline.txt";
+import RunPipelineDev from "!!raw-loader!../../../code_snippets/new-docs/pipelines/run-pipeline-dev.txt";
 import DockerfileExample from "!!raw-loader!../../../code_snippets/new-docs/pipelines/dockerfile-example.py";
 import DockerfileExample2 from "!!raw-loader!../../../code_snippets/new-docs/pipelines/dockerfile-example_2.py";
 import LockfileExample from "!!raw-loader!../../../code_snippets/new-docs/pipelines/lockfile-example.yaml";
@@ -6929,6 +6930,28 @@ Run the following command from your current project directory to start the pipel
   Example Output
     {RunPipeline}
 
+### Option C: Iterate with `--dev`
+
+During development, you can use the `--dev` flag to run your pipeline against a throwaway dev copy without touching your production pipeline. 
+
+This lets you iterate quickly on step code without creating new versions of your main pipeline.
+
+When `--dev` is set, the CLI:
+
+1. Creates (or updates) an ephemeral pipeline named `{pipeline_id}-dev`.
+2. Re-uploads only the steps whose local files have changed, using hash-based detection to skip unchanged steps.
+3. Writes a separate `config-lock-dev.yaml` — the production `config-lock.yaml` is never modified.
+4. Runs the dev pipeline on the compute you specify.
+
+Run from your pipeline directory, or pass a path to the directory (or `config.yaml`) as the optional `PATH` argument:
+
+    ```text
+    clarifai pipeline run --dev --compute_cluster_id cluster_id_here --nodepool_id nodepool_id_here
+    ```
+
+  Example Output
+    {RunPipelineDev}
+
 ### Run Command Options
 
 The table below summarizes the available options you can use with the `clarifai pipeline run` command.
@@ -6936,13 +6959,15 @@ The table below summarizes the available options you can use with the `clarifai 
 | Option | Type | Description | Defaults / Notes |
 | :--- | :--- | :--- | :--- |
 | **Targeting & Identity** | | | |
+| `PATH` | positional `PATH` | Optional path to a pipeline directory or `config.yaml`. Config resolution order: `config-lock.yaml` > `config.yaml`. | Default: current directory |
 | `--pipeline_id` | `TEXT` | ID of the pipeline to execute | |
 | `--user_id` | `TEXT` | User ID owning the pipeline | |
 | `--app_id` | `TEXT` | App ID containing the pipeline | |
 | `--pipeline_version_id` | `TEXT` | Specific version of the pipeline to run | |
 | `--pipeline_url` | `TEXT` | Full URL to the pipeline resource | Alternative to providing IDs separately |
 | **Execution Control** | | | |
-| `--config` | `PATH` | Path to a local configuration file for the run | |
+| `--dev` | `FLAG` | Upload local code to an ephemeral `{pipeline_id}-dev` pipeline before running. Only re-uploads changed steps (hash-based). Writes `config-lock-dev.yaml` — production lockfile is unaffected. | |
+| `--config` | `PATH` | Path to a local configuration file for the run | Deprecated — use the positional `PATH` argument instead |
 | `--pipeline_version_run_id`| `TEXT` | Custom ID for this specific execution run | A UUID is generated automatically if omitted |
 | `--nodepool_id` | `TEXT` | Specific Nodepool to execute on | |
 | `--compute_cluster_id` | `TEXT` | Specific Compute Cluster to execute on | |
