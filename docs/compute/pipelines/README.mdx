@@ -36,60 +36,86 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
+The fastest way to define a pipeline is in Python, using the Clarifai pipeline DSL. Write steps as decorated Python functions, compose them into a DAG, and upload directly from the `.py` file — no YAML to maintain, no separate scaffold directory required.
 
-You can follow these steps to quickly get started with pipelines via the API. 
+### Install and Authenticate
 
-### Get Credentials
-
-**1.** Go to the Clarifai platform and get your user ID, [app ID](https://docs.clarifai.com/create/applications/manage#app-overview), and Personal Access Token [(PAT)](https://docs.clarifai.com/control/authentication/pat). 
-
-Then, set your PAT as an environment variable:
+Install the latest `clarifai` SDK (which also installs the CLI) and set your [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat):
 
 <Tabs groupId="code">
 <TabItem value="bash" label="Unix-Like Systems">
-    <CodeBlock className="language-bash">export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE</CodeBlock>
+    <CodeBlock className="language-bash">{`pip install --upgrade clarifai
+export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE`}</CodeBlock>
 </TabItem>
 <TabItem value="bash2" label="Windows">
-    <CodeBlock className="language-bash">set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE</CodeBlock>
+    <CodeBlock className="language-bash">{`pip install --upgrade clarifai
+set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE`}</CodeBlock>
 </TabItem>
 </Tabs>
 
-**2.** You’ll also need to create a [compute cluster and nodepool](https://docs.clarifai.com/compute/deployments/clusters-nodepools) and get their IDs. 
+### Define a Pipeline in Python
 
-### Initialize a Pipeline Project
+Create a file — for example, `my_pipeline.py` — and define your steps as decorated functions, then compose them in a `Pipeline` block:
 
-Run the following command to create a new pipeline project in your current directory. Follow the ensuing prompts to provide the required details.
+```python
+from clarifai.runners.pipelines import ComputeInfo, Pipeline, step
+
+@step(
+    id="prepare",
+    requirements=["transformers>=4.0"],
+    compute=ComputeInfo(cpu_limit="500m", cpu_memory="500Mi"),
+)
+def prepare(input_text: str) -> str:
+    """Normalize text before downstream processing."""
+    return input_text.strip().lower()
+
+@step(id="summarize")
+def summarize(input_text: str) -> str:
+    """Produce a short summary."""
+    return input_text[:80]
+
+with Pipeline(id="my-first-pipeline", user_id="YOUR_USER_ID", app_id="YOUR_APP_ID") as pipeline:
+    raw = pipeline.input("input_text", default="Hello, Clarifai pipelines!")
+
+    prepared = prepare(input_text=raw)
+    summary = summarize(input_text=prepared.output())
+
+    prepared >> summary
+```
+
+Step parameters and defaults come from the function signature — no separate YAML to keep in sync.
+
+### Upload and Run
+
+Upload the pipeline directly from the `.py` file:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">clarifai pipeline init</CodeBlock>
+    <CodeBlock className="language-bash">clarifai pipeline upload my_pipeline.py</CodeBlock>
 </TabItem>
 </Tabs>
 
-### Upload the Pipeline
-
-Run the following command to upload the pipeline with associated pipeline steps to Clarifai.
+The upload command introspects the `Pipeline` instance in your file, generates the underlying step bundles, and uploads everything in one shot. Then run it:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">clarifai pipeline upload</CodeBlock>
+    <CodeBlock className="language-bash">clarifai pipeline run --pipeline_id my-first-pipeline</CodeBlock>
 </TabItem>
 </Tabs>
 
-### Run the Pipeline
+That's it — you have a running pipeline.
 
-Run the following command to start the pipeline and monitor its progress until completion or timeout.
+### Where to go next
 
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-    ```text
-    clarifai pipeline run --compute_cluster_id cluster_id_here --nodepool_id nodepool_id_here
-    ```
-</TabItem>
-</Tabs>
+* **[Pipeline DSL reference](dsl-reference.md)** — full details on `@step`, `step_ref`, `>>` composition, `ComputeInfo`, secrets, and codegen.
+* **[Templates](templates.md)** — start from a working `.py` example for common workflows (image classifier, object detector, LoRA fine-tune, and more).
+* **[Manage Pipelines](manage.md)** — list, validate, and inspect pipelines on the platform.
+* **[Manage Pipeline Runs](manage-run.md)** — monitor, pause, resume, and cancel runs.
+* **[Advanced: YAML / config-based pipelines](create-api.md)** — the original scaffold-directory authoring flow, useful for existing pipelines or workflows that need explicit YAML control.
 
+### Pipeline outputs → Artifacts
 
-
+Pipeline runs produce [Artifacts](https://docs.clarifai.com/create/artifacts) — versioned, addressable binary outputs such as model checkpoints, training logs, embeddings, or datasets. Once a pipeline run completes, its outputs can be managed, downloaded, and reused via the artifacts CLI and SDK without re-running the pipeline. See the [Artifacts documentation](https://docs.clarifai.com/create/artifacts) for managing pipeline-produced outputs.
 
 import DocCardList from '@theme/DocCardList';
 import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
