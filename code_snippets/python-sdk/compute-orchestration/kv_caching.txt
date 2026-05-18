@@ -1,0 +1,53 @@
+{
+    "status": {
+        "code": 10000,
+        "description": "Success",
+        "req_id": "b5894b9daa7742d0ad73eeecbbce1aed"
+    },
+    "outputs": [{
+        "status": {
+            "code": 10000
+        },
+        "input": {
+            "id": "9208857317bb4abe98acf2e13416e4a5",
+            "data": {
+                "text": {
+                    "url": "https://samples.clarifai.com/placeholder.gif"
+                }
+            }
+        },
+        "data": {
+            "text": {
+                "raw": "**Photosynthesis** is the biological process by which plants, algae, and some bacteria convert **light energy** (usually from the sun) into **chemical energy** stored in sugar molecules.\n\n### The Basics\nIt takes place primarily in the **chloroplasts** of plant cells, using a green pigment called **chlorophyll** to capture sunlight.\n\nThe overall chemical equation is:\n\n**6CO₂ + 6H₂O + light energy → C₆H₁₂O₆ + 6O₂**\n\n*(Carbon dioxide + Water + Sunlight → Glucose + Oxygen)*\n\n### The Two Main Stages\n1.  **Light-Dependent Reactions:** Chlorophyll absorbs sunlight, which splits water molecules (H₂O). This releases **oxygen** as a byproduct and creates energy-carrying molecules (ATP and NADPH).\n2.  **Light-Independent Reactions (Calvin Cycle):** The plant uses that stored energy to convert carbon dioxide (CO₂) from the air into **glucose**, a simple sugar it uses for energy and growth.\n\n### Why It Matters\nPhotosynthesis is the foundation of most life on Earth. It produces the **oxygen** we breathe and is the primary source of energy for nearly all food chains."
+            },
+            "string_value": "**Photosynthesis** is the biological process by which plants, algae, and some bacteria convert **light energy** (usually from the sun) into **chemical energy** stored in sugar molecules.\n\n### The Basics\nIt takes place primarily in the **chloroplasts** of plant cells, using a green pigment called **chlorophyll** to capture sunlight.\n\nThe overall chemical equation is:\n\n**6CO₂ + 6H₂O + light energy → C₆H₁₂O₆ + 6O₂**\n\n*(Carbon dioxide + Water + Sunlight → Glucose + Oxygen)*\n\n### The Two Main Stages\n1.  **Light-Dependent Reactions:** Chlorophyll absorbs sunlight, which splits water molecules (H₂O). This releases **oxygen** as a byproduct and creates energy-carrying molecules (ATP and NADPH).\n2.  **Light-Independent Reactions (Calvin Cycle):** The plant uses that stored energy to convert carbon dioxide (CO₂) from the air into **glucose**, a simple sugar it uses for energy and growth.\n\n### Why It Matters\nPhotosynthesis is the foundation of most life on Earth. It produces the **oxygen** we breathe and is the primary source of energy for nearly all food chains."
+        },
+        "prompt_tokens": 13,
+        "completion_tokens": 680,
+        "cached_tokens": 11
+    }],
+    "runner_selector": {
+        "runner": {
+            "worker": {
+                "model": {
+                    "id": "Kimi-K2_6",
+                    "app_id": "",
+                    "model_version": {
+                        "id": "2280341feaf14301a1d7b3a52f0e3f29"
+                    }
+                }
+            }
+        },
+        "deployment": {
+            "id": "local-Kimi-K2_6",
+            "user_id": "moonshotai",
+            "nodepools": [{
+                "id": "local-runner-nodepool",
+                "compute_cluster": {
+                    "id": "local-runner-compute-cluster",
+                    "user_id": "moonshotai"
+                }
+            }]
+        }
+    }
+}

@@ -1,0 +1,53 @@
+{
+    "status": {
+        "code": 10000,
+        "description": "Success",
+        "req_id": "412fdd20b78b41a1a4180e90bb2a2781"
+    },
+    "outputs": [{
+        "status": {
+            "code": 10000
+        },
+        "input": {
+            "id": "5f288bb26ac3404680d5ce0c6e0faf82",
+            "data": {
+                "text": {
+                    "url": "https://samples.clarifai.com/placeholder.gif"
+                }
+            }
+        },
+        "data": {
+            "text": {
+                "raw": "Use the built-in **`isinstance()`** function.\n\n### Basic syntax\n\n```python\nisinstance(object, classinfo)\n```\n\n- `object`: The variable/instance you want to check.\n- `classinfo`: A class, type, or tuple of classes/types.\n- Returns: `True` or `False`.\n\n### Examples\n\n```python\nclass Animal:\n    pass\n\nclass Dog(Animal):\n    pass\n\ndog = Dog()\n\n# Check against the exact class\nprint(isinstance(dog, Dog))      # True\n\n# Check against a parent class (works with inheritance)\nprint(isinstance(dog, Animal))   # True\n\n# Check against a built-in type\nprint(isinstance(dog, str))      # False\nprint(isinstance(\"hello\", str))  # True\n```\n\n### Checking against multiple classes\n\nPass a **tuple** of classes as the second argument:\n\n```python\nprint(isinstance(dog, (Dog, str, list)))  # True\n```\n\n### `isinstance()` vs. `type()`\n\nPrefer `isinstance()` over `type()` for type-checking because it respects **inheritance**:\n\n```python\nprint(type(dog) is Dog)      # True\nprint(type(dog) is Animal)   # False  ← type() doesn't consider subclasses\n\nprint(isinstance(dog, Animal))  # True  ← isinstance() does\n```\n\n### Summary\n\n| Task | Method |\n|------|--------|\n| Check if an object is an instance of a class (or subclass) | `isinstance(obj, MyClass)` |\n| Check against multiple types | `isinstance(obj, (A, B, C))` |\n| Check exact type only (ignores inheritance) | `type(obj) is MyClass` |\n\n**Tip:** In Python, explicit type-checking is sometimes discouraged in favor of \"duck typing\" (trying to use the object and catching exceptions), but `isinstance()` is the correct tool when you truly need it."
+            },
+            "string_value": "Use the built-in **`isinstance()`** function.\n\n### Basic syntax\n\n```python\nisinstance(object, classinfo)\n```\n\n- `object`: The variable/instance you want to check.\n- `classinfo`: A class, type, or tuple of classes/types.\n- Returns: `True` or `False`.\n\n### Examples\n\n```python\nclass Animal:\n    pass\n\nclass Dog(Animal):\n    pass\n\ndog = Dog()\n\n# Check against the exact class\nprint(isinstance(dog, Dog))      # True\n\n# Check against a parent class (works with inheritance)\nprint(isinstance(dog, Animal))   # True\n\n# Check against a built-in type\nprint(isinstance(dog, str))      # False\nprint(isinstance(\"hello\", str))  # True\n```\n\n### Checking against multiple classes\n\nPass a **tuple** of classes as the second argument:\n\n```python\nprint(isinstance(dog, (Dog, str, list)))  # True\n```\n\n### `isinstance()` vs. `type()`\n\nPrefer `isinstance()` over `type()` for type-checking because it respects **inheritance**:\n\n```python\nprint(type(dog) is Dog)      # True\nprint(type(dog) is Animal)   # False  ← type() doesn't consider subclasses\n\nprint(isinstance(dog, Animal))  # True  ← isinstance() does\n```\n\n### Summary\n\n| Task | Method |\n|------|--------|\n| Check if an object is an instance of a class (or subclass) | `isinstance(obj, MyClass)` |\n| Check against multiple types | `isinstance(obj, (A, B, C))` |\n| Check exact type only (ignores inheritance) | `type(obj) is MyClass` |\n\n**Tip:** In Python, explicit type-checking is sometimes discouraged in favor of \"duck typing\" (trying to use the object and catching exceptions), but `isinstance()` is the correct tool when you truly need it."
+        },
+        "prompt_tokens": 23,
+        "completion_tokens": 768,
+        "cached_tokens": 21
+    }],
+    "runner_selector": {
+        "runner": {
+            "worker": {
+                "model": {
+                    "id": "Kimi-K2_6",
+                    "app_id": "",
+                    "model_version": {
+                        "id": "2280341feaf14301a1d7b3a52f0e3f29"
+                    }
+                }
+            }
+        },
+        "deployment": {
+            "id": "local-Kimi-K2_6",
+            "user_id": "moonshotai",
+            "nodepools": [{
+                "id": "local-runner-nodepool",
+                "compute_cluster": {
+                    "id": "local-runner-compute-cluster",
+                    "user_id": "moonshotai"
+                }
+            }]
+        }
+    }
+}
