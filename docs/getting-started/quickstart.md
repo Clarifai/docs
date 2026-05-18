@@ -131,3 +131,38 @@ Congratulations — you've just gotten started with the Clarifai platform!
 [Click here](https://docs.clarifai.com/compute/models/inference/api/) to learn more about how to make inference requests using our API. You'll discover how to list all the available inference methods defined in a model's configuration, generate example code, leverage our Compute Orchestration capabilities for various types of inference requests, and more.
 
 :::
+
+## Step 6: Orchestrate Multi-Step Workflows with Pipelines
+
+For asynchronous, long-running, multi-step workflows — model training, fine-tuning, data preparation, batch processing, agent orchestration — use [Clarifai Pipelines](https://docs.clarifai.com/compute/pipelines/). You can define an entire pipeline in Python, no YAML required:
+
+```python
+from clarifai.runners.pipelines import ComputeInfo, Pipeline, step
+
+@step(id="prepare", compute=ComputeInfo(cpu_limit="500m", cpu_memory="500Mi"))
+def prepare(input_text: str) -> str:
+    return input_text.strip().lower()
+
+@step(id="summarize")
+def summarize(input_text: str) -> str:
+    return input_text[:80]
+
+with Pipeline(id="my-first-pipeline", user_id="YOUR_USER_ID", app_id="YOUR_APP_ID") as pipeline:
+    raw = pipeline.input("input_text", default="Hello, Clarifai pipelines!")
+
+    prepared = prepare(input_text=raw)
+    summary = summarize(input_text=prepared.output())
+
+    prepared >> summary
+```
+
+Then upload and run, directly from the `.py` file:
+
+<Tabs groupId="code">
+<TabItem value="bash3" label="CLI">
+    <CodeBlock className="language-bash">{`clarifai pipeline upload my_pipeline.py
+clarifai pipeline run --pipeline_id my-first-pipeline`}</CodeBlock>
+</TabItem>
+</Tabs>
+
+For the full walkthrough — including step composition with the `>>` operator, referencing existing remote steps, pipeline templates, and the YAML / config-based authoring path — see the [Pipelines documentation](https://docs.clarifai.com/compute/pipelines/).

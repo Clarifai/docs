@@ -550,26 +550,9 @@ Then run the following command, pointing to your config file:
 
 ### Step 5: Initialize a Pipeline from a Template
 
-The [`classifier-pipeline-resnet`](https://github.com/Clarifai/pipeline-examples/tree/main/classifier-pipeline-resnet) template lets you quickly set up a visual classification pipeline using a preconfigured ResNet-based image classifier — so you can focus on training rather than setup.
+The [`classifier-pipeline-resnet`](https://github.com/Clarifai/pipeline-examples/tree/main/classifier-pipeline-resnet) template lets you quickly set up a visual classification pipeline using a preconfigured ResNet-based image classifier — so you can focus on training rather than setup. It's one of several pipeline templates for common ML workflows; see the [Pipeline Templates](https://docs.clarifai.com/compute/pipelines/templates) page for the full list and how to discover what's available.
 
-:::tip
-
-To view all the available predefined templates, run:
-
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">clarifai pipelinetemplate list</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
-  <summary>Example Output</summary>
-    <CodeBlock className="language-python">{Output5}</CodeBlock>
-</details>
-
-:::
- 
-Run the following command to [initialize a pipeline](https://docs.clarifai.com/compute/pipelines/create-api#step-2-initialize-a-pipeline-project) from the template:
+Run the following command to scaffold a project from the template, pointing it at the dataset and concepts you set up in the previous steps:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
@@ -585,25 +568,22 @@ Run the following command to [initialize a pipeline](https://docs.clarifai.com/c
 </TabItem>
 </Tabs>
 
-Where:
+The classifier-specific parameters above are:
 
 | Parameter | Description |
 |---|---|
-| `--app_id` | The ID of the app where the pipeline will be created |
-| `--user_id` | Your Clarifai user ID |
-| `--template` | The pipeline template to use. Here, we use `classifier-pipeline-resnet` |
 | `--set dataset_id` | The ID of the dataset to use for training |
-| `--set dataset_version_id` | The specific dataset version to use for training|
+| `--set dataset_version_id` | The specific dataset version to use for training |
 | `--set concepts` | A JSON array of the concept labels the model will be trained to classify |
+
+For the full reference on `clarifai pipeline init` — including `--template`, `--set`, `--user_id`/`--app_id`, and overriding any other template default at init time — see the [Pipeline Templates](https://docs.clarifai.com/compute/pipelines/templates) page.
 
 <details>
   <summary>Example Output</summary>
     <CodeBlock className="language-python">{Output6}</CodeBlock>
 </details>
 
-Once executed, the command creates a new project directory named after the template, preloaded with all necessary configuration files.
-
-Before running any subsequent `clarifai pipeline ...` commands, navigate into the generated directory — these commands rely on the local `config.yaml` and `config-lock.yaml` files:
+Once executed, the command creates a project directory named after the template, preloaded with the necessary configuration files. Before running any subsequent `clarifai pipeline ...` commands, navigate into the generated directory:
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
@@ -611,26 +591,7 @@ Before running any subsequent `clarifai pipeline ...` commands, navigate into th
 </TabItem>
 </Tabs>
 
-> **Note:** You can optionally review the generated pipeline steps and tailor them to your use case. If needed, you can also adjust the default parameters and add any additional dependencies to the `requirements.txt` files to support your pipeline.
-
-:::tip Override Defaults at Initialization
-
-You can optionally customize the pipeline during setup — for example, by specifying a different user/app, assigning a custom pipeline ID, or adjusting model parameters:
-
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-```bash
-  clarifai pipeline init --template=classifier-pipeline-resnet \
-  --user_id your_custom_user_id \
-  --app_id your_custom_app_id \
-  --set id=your_custom_pipeline_id \
-  --set num_epochs=20
-```
-</TabItem>
-</Tabs>
-
-
-:::
+> **Note:** You can review the generated pipeline steps and tailor them to your use case — adjust default parameters, add dependencies to the `requirements.txt` files, or modify step logic. For an alternative, Python-first authoring path that lets you skip the scaffold-and-edit flow entirely, see the [Pipeline DSL reference](https://docs.clarifai.com/compute/pipelines/dsl-reference).
 
 ### Step 6: Upload Your Pipeline
 
