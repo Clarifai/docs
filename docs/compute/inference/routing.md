@@ -17,6 +17,13 @@ Routing happens at two levels:
 
 This page covers both levels, what Clarifai optimizes automatically, and what you can configure.
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+
+import PredictionCaching from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/prediction_caching.txt";
+import KVCaching from "!!raw-loader!../../../code_snippets/python-sdk/compute-orchestration/kv_caching.txt";
+
 ## Nodepool Selection
 
 When a request arrives, Clarifai picks a nodepool in this order:
@@ -31,25 +38,32 @@ A single deployment can span multiple nodepools with priority ordering. When you
 
 Requests are routed to the highest-priority nodepool that has available capacity, with overflow spilling to the next.
 
+> **Note:** You can configure multi-nodepool deployments in the [UI](https://docs.clarifai.com/compute/deployments/deploy-model#step-4-set-dynamic-routing-optional) by dragging nodepools into your preferred priority order, or via the [API](https://docs.clarifai.com/compute/deployments/clusters-nodepools#multi-nodepool-deployment) using `deployment_nodepools` with `sequence` values.
+
 This enables several powerful patterns:
 
 - **Cross-cloud failover** — Place nodepools in different cloud providers (AWS, GCP) so traffic fails over automatically if one region has issues.
 - **Cross-hardware routing** — Since Clarifai's Compute Orchestration supports any hardware, you can route between NVIDIA and AMD GPUs, or even between GPU and CPU nodepools, within a single deployment. This means you can mix x86 and ARM architectures, or combine spot and on-demand instances for cost optimization.
 - **Tiered performance** — Use a high-performance GPU nodepool as primary and a cheaper instance as overflow.
 
-Configure multi-nodepool deployments in the UI by dragging nodepools into your preferred priority order, or via the API using `deployment_nodepools` with `sequence` values.
 
 ### Explicit Request-Level Routing
 
-You can override the default routing on a per-request basis using the `runner_selector` field on `PostModelOutputsRequest`:
+You can override the default routing behavior for individual requests by specifying a particular [deployment ID or nodepool](https://docs.clarifai.com/compute/inference/clarifai/api#set-up-dedicated-deployment).
 
-```python
-# Route to a specific deployment
-response = model.predict(inputs, deployment_id="my-deployment")
+<Tabs groupId="code">
+<TabItem value="python" label="Python SDK">
+    ```python
+    # Route to a specific deployment
+    response = model.predict(inputs, deployment_id="my-deployment")
 
-# Route to a specific nodepool
-response = model.predict(inputs, compute_cluster_id="my-cluster", nodepool_id="my-nodepool")
-```
+    # Route to a specific nodepool
+    response = model.predict(inputs, compute_cluster_id="my-cluster", nodepool_id="my-nodepool")
+    ```
+</TabItem>
+</Tabs>
+
+
 
 ## Automatic Replica Optimization
 
@@ -72,6 +86,11 @@ This is especially effective for:
 - **Multi-turn conversations** — Follow-up messages share the prior conversation as a prefix, so subsequent turns reuse cached state from earlier turns.
 
 When a matching prefix is found, the request routes to the best-matched replica. When no prefix match exists, the system falls back gracefully — there is no performance penalty compared to routing without this feature.
+
+<details>
+    <summary>Example Output</summary>
+        <CodeBlock className="language-text">{KVCaching}</CodeBlock>
+</details>
 
 ### Session Awareness
 
@@ -99,13 +118,17 @@ Autoscaling controls how many replicas are running within a nodepool. You config
 | **Traffic History** | `300s` | How far back to look at traffic data for scaling decisions |
 | **Disable Packing** | `false` | When `true`, restricts to one replica per node for isolation |
 
-Configure autoscaling in the UI during deployment, or via the CLI:
+> **Note:** You can configure autoscaling in the [UI](https://docs.clarifai.com/compute/deployments/clusters-nodepools/#step-3-set-node-autoscaling-range) during deployment, via the [Python SDK](https://docs.clarifai.com/compute/deployments/clusters-nodepools/#3-deployment_configyaml), or via the [CLI](https://docs.clarifai.com/compute/deployments/deploy-model#autoscaling). For advanced autoscaling settings (scale-to-zero delays, traffic history, packing), use the UI deployment flow or the API.
 
-```bash
-clarifai model deploy ./my-model --min-replicas 1 --max-replicas 10
-```
 
-> For advanced autoscaling settings (scale-to-zero delays, traffic history, packing), use the [UI deployment flow](https://docs.clarifai.com/compute/deployments/deploy-model#step-4-set-autoscaling) or the API.
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    ```bash
+        clarifai model deploy ./my-model --min-replicas 1 --max-replicas 10
+    ```
+</TabItem>
+</Tabs>
+
 
 :::tip Cold Start Reduction
 
@@ -117,31 +140,58 @@ More replicas means more capacity and better cache distribution across your depl
 
 :::info Cache and Scaling
 
-When new replicas scale up, they start with an empty KV cache — prefix cache routing effectiveness improves as replicas warm up over time. When replicas scale down, cached state on those replicas is lost. For latency-sensitive workloads, setting `min_replicas ≥ 1` ensures you always have warm replicas with populated caches.
+When new replicas scale up, they start with an empty [KV cache](#kv-cache-routing-prefix-cache-routing) — prefix cache routing effectiveness improves as replicas warm up over time. When replicas scale down, cached state on those replicas is lost. For latency-sensitive workloads, setting `min_replicas ≥ 1` ensures you always have warm replicas with populated caches.
 
 :::
 
 ## Prediction Caching
 
-Prediction caching is a technique that stores and reuses previously computed model outputs for identical requests, eliminating redundant computation and reducing latency and cost. 
+Prediction caching stores and reuses previously computed model outputs for identical requests, eliminating redundant inference and significantly reducing latency and compute costs.
 
-For identical requests, you can skip inference entirely by enabling the prediction cache:
+For repeated requests with the same input, model, and model version, you can bypass inference entirely by enabling prediction caching.
 
-```python
-from clarifai.client.model import Model
+<Tabs groupId="code">
+<TabItem value="bash" label="cURL">
 
-model = Model("https://clarifai.com/moonshotai/chat-completion/models/Kimi-K2_5")
-response = model.predict(inputs, use_predict_cache=True)
+```curl
+curl -X POST "https://api.clarifai.com/v2/users/moonshotai/apps/chat-completion/models/Kimi-K2_6/outputs" \
+  -H "Authorization: Key YOUR_PAT_HERE" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "inputs": [
+      {
+        "data": {
+          "text": {
+            "raw": "How do I check if a Python object is an instance of a class?"
+          }
+        }
+      }
+    ],
+    "use_predict_cache": true
+  }'
 ```
+</TabItem>
+</Tabs>
 
-When enabled, Clarifai caches the full response for identical input+model+version combinations. Subsequent identical requests return the cached result instantly without hitting compute.
+<details>
+    <summary>Example Output</summary>
+        <CodeBlock className="language-text">{PredictionCaching}</CodeBlock>
+</details>
 
-> **Note:** This is separate from KV cache routing (prefix cache routing) — prediction caching avoids compute entirely, while prefix cache routing optimizes the compute that does happen.
+When enabled, Clarifai caches the full prediction response for identical `input + model + version` combinations. Subsequent matching requests are served directly from cache without invoking model compute.
 
-## Inference Cost and Cache Hits
+> **Note:** Prediction caching is different from KV cache routing (prefix cache routing).
+>
+> * Prediction caching skips inference entirely by returning a previously computed response.
+> * Prefix cache routing still performs inference, but accelerates it by reusing cached prompt state.
 
-If a request is routed to a replica with cached state, the cached portion of the prompt is billed at a **90% discount** (10% of the price) on prompt cache token pricing. 
+## Inference Cost Savings and Cache Hits
 
-This depends on the model reporting `cached_tokens` in the response usage metadata — most vLLM and SGLang-backed models support this, but coverage may vary. 
+For requests using KV cache routing, if a request is routed to a replica that already contains cached prompt state, the cached portion of the prompt is billed at a **90% discount** (10% of standard prompt token pricing).
 
-If you're unsure whether a specific model reports cached tokens, [contact us](https://www.clarifai.com/company/contact).
+The Clarifai Python SDK automatically extracts `cached_tokens` from the model response metadata and forwards it to the output proto.
+
+If `cached_tokens` is absent or zero, the field is omitted from the output. You can therefore treat the presence of `cached_tokens` as a reliable indicator that a cache hit occurred.
+
+If you're unsure whether a specific model reports cached tokens, [contact us](https://www.clarifai.com/company/contact) for confirmation.
+
