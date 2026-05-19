@@ -148,7 +148,7 @@ When new replicas scale up, they start with an empty [KV cache](#kv-cache-routin
 
 Prediction caching stores and reuses previously computed model outputs for identical requests, eliminating redundant inference and significantly reducing latency and compute costs.
 
-For repeated requests with the same input, model, and model version, you can bypass inference entirely by enabling prediction caching.
+For repeated requests with the same input, model, and model version, you can bypass inference entirely by enabling prediction caching with the `use_predict_cache` parameter.
 
 <Tabs groupId="code">
 <TabItem value="bash" label="cURL">

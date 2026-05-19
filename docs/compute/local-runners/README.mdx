@@ -1,11 +1,11 @@
 ---
-description: Run and test models locally, while exposing them through Clarifai’s enterprise‑grade API
+description: Run and test models locally, while exposing them publicly through Clarifai’s enterprise‑grade API
 ---
 
 
 # Local Runners
 
-**Run and test models locally, while exposing them through Clarifai’s enterprise‑grade API**
+**Run and test models locally, while exposing them publicly through Clarifai’s API**
 <hr />
 
 [Local Runners](https://www.clarifai.com/products/local-runners) are a powerful feature that let you securely expose your locally running models or servers via a public URL, allowing you to quickly develop, test, and share any models running on your own hardware.
@@ -282,6 +282,8 @@ This ensures that all essential components required for Local Runners are proper
 - An app with a model and model version representing the local runner.
 
 - A deployment that places the model version into the designated nodepool.
+
+> **Note:** All resources created by `clarifai model serve` — the app, model, model version, and deployment — are set to **public visibility** by default. This means anyone with the model URL can send predictions to it. You can adjust visibility after creation in the Clarifai platform if needed.
 
 <details>
   <summary>Example Output</summary>
