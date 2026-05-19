@@ -8137,27 +8137,6 @@ clarifai model undeploy --deployment
 
 For the full CLI reference, see [CLI Reference](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-deploy).
 
-## Advanced: VLLMOpenAIModelClass
-
-For custom vLLM model implementations, Clarifai provides `VLLMOpenAIModelClass` as a parent class. Instead of writing a full `model.py` from scratch, subclass it and implement only `load_model()`.
-
-```python
-from clarifai.runners.models.vllm_openai_class import VLLMOpenAIModelClass, VLLMCancellationHandler
-
-class MyVLLMModel(VLLMOpenAIModelClass):
-    def load_model(self):
-        self.server = ...              # your vLLM server process
-        self.client = ...              # OpenAI-compatible client pointed at vLLM
-        self.model = "your-model-id"  # model name passed to the API
-        self.cancellation_handler = VLLMCancellationHandler()
-```
-
-The base class provides:
-
-- **Streaming transport** — `openai_stream_transport` handles both `/chat/completions` and `/responses` endpoints automatically.
-- **Cancellation support** — `VLLMCancellationHandler` registers a per-request abort callback. When the Clarifai runtime signals an abort, it closes the underlying HTTP response so vLLM detects the disconnect, aborts the generation, and frees KV cache. The race condition where an abort arrives before the stream starts is also handled.
-- **Health probes** — `handle_liveness_probe` and `handle_readiness_probe` hit vLLM's `/health` endpoint directly when a server is running, falling back to the base class behaviour otherwise.
-
 ---
 
 ## Build and Upload Models
