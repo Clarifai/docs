@@ -5856,7 +5856,7 @@ When new replicas scale up, they start with an empty [KV cache](#kv-cache-routin
 
 Prediction caching stores and reuses previously computed model outputs for identical requests, eliminating redundant inference and significantly reducing latency and compute costs.
 
-For repeated requests with the same input, model, and model version, you can bypass inference entirely by enabling prediction caching.
+For repeated requests with the same input, model, and model version, you can bypass inference entirely by enabling prediction caching with the `use_predict_cache` parameter.
 
 ```curl
 curl -X POST "https://api.clarifai.com/v2/users/moonshotai/apps/chat-completion/models/Kimi-K2_6/outputs" \
@@ -6011,7 +6011,7 @@ The Vercel AI SDK supports [tool calling](https://docs.clarifai.com/compute/mode
 
 # Local Runners
 
-**Run and test models locally, while exposing them through Clarifai’s enterprise‑grade API**
+**Run and test models locally, while exposing them publicly through Clarifai’s API**
 
 [Local Runners](https://www.clarifai.com/products/local-runners) are a powerful feature that let you securely expose your locally running models or servers via a public URL, allowing you to quickly develop, test, and share any models running on your own hardware.
 
@@ -6236,6 +6236,8 @@ This ensures that all essential components required for Local Runners are proper
 - An app with a model and model version representing the local runner.
 
 - A deployment that places the model version into the designated nodepool.
+
+> **Note:** All resources created by `clarifai model serve` — the app, model, model version, and deployment — are set to **public visibility** by default. This means anyone with the model URL can send predictions to it. You can adjust visibility after creation in the Clarifai platform if needed.
 
   Example Output
     {LocalDev}
@@ -8134,6 +8136,27 @@ clarifai model undeploy --deployment
 ```
 
 For the full CLI reference, see [CLI Reference](https://docs.clarifai.com/resources/api-overview/cli#clarifai-model-deploy).
+
+## Advanced: VLLMOpenAIModelClass
+
+For custom vLLM model implementations, Clarifai provides `VLLMOpenAIModelClass` as a parent class. Instead of writing a full `model.py` from scratch, subclass it and implement only `load_model()`.
+
+```python
+from clarifai.runners.models.vllm_openai_class import VLLMOpenAIModelClass, VLLMCancellationHandler
+
+class MyVLLMModel(VLLMOpenAIModelClass):
+    def load_model(self):
+        self.server = ...              # your vLLM server process
+        self.client = ...              # OpenAI-compatible client pointed at vLLM
+        self.model = "your-model-id"  # model name passed to the API
+        self.cancellation_handler = VLLMCancellationHandler()
+```
+
+The base class provides:
+
+- **Streaming transport** — `openai_stream_transport` handles both `/chat/completions` and `/responses` endpoints automatically.
+- **Cancellation support** — `VLLMCancellationHandler` registers a per-request abort callback. When the Clarifai runtime signals an abort, it closes the underlying HTTP response so vLLM detects the disconnect, aborts the generation, and frees KV cache. The race condition where an abort arrives before the stream starts is also handled.
+- **Health probes** — `handle_liveness_probe` and `handle_readiness_probe` hit vLLM's `/health` endpoint directly when a server is running, falling back to the base class behaviour otherwise.
 
 ---
 
@@ -35446,8 +35469,6 @@ Any command can override the active context for a single invocation using the gl
 
 This is useful when you need to work with multiple accounts or environments in a single terminal session.
 
----
-
 ## Clarifai Whoami
 
     clarifai whoami [OPTIONS]
@@ -35469,8 +35490,6 @@ The `clarifai whoami` command displays information about the currently authentic
 ### JSON Output (for Scripting)
 
     clarifai whoami -o json
-
----
 
 ## Clarifai App
 
@@ -35624,7 +35643,13 @@ clarifai model init --github-url https://github.com/Clarifai/runners-examples/tr
 clarifai model init --github-url https://github.com/your-username/my-private-model --github-pat YOUR_GITHUB_PAT_TOKEN
 ```
 
-Learn more about using toolkits [here](https://docs.clarifai.com/compute/toolkits).
+### Initialize for Streaming Video
+
+Use the `--streaming-video` flag to scaffold a model project pre-configured for video livestreaming workflows, including polygon filtering support:
+
+    clarifai model init --streaming-video
+
+This flag enables a streaming video consumer and adds `ffmpeg`/`av` to the generated Dockerfile.
 
 ## Clarifai Model Serve
 
@@ -35703,8 +35728,6 @@ clarifai model upload ./my-model -v    # verbose
 ```
 
 After upload, the output includes a clickable model URL, a code snippet for predictions, and suggested next steps (deploy, predict).
-
----
 
 ## Clarifai Model Deploy
 
@@ -35823,8 +35846,6 @@ Example Output
   Undeploy:        clarifai model undeploy --deployment "deploy-my-model-abc123"
 ```
 
----
-
 ## Clarifai List Instances
 
     clarifai list-instances [OPTIONS]
@@ -35864,8 +35885,6 @@ clarifai li --cloud aws --gpu L40S
 | `--gpu` | Filter by GPU name (e.g., `A10G`, `H100`, `L40S`) |
 | `--min-gpus` | Minimum GPU count |
 | `--min-gpu-mem` | Minimum GPU memory (e.g., `48Gi`, `80Gi`) |
-
----
 
 ## Clarifai Model Predict
 
@@ -35964,8 +35983,6 @@ Example Output
 | `--model-url URL` | Full model URL |
 | `--deployment ID` | Show a specific deployment |
 
----
-
 ## Clarifai Model Logs
 
     clarifai model logs [OPTIONS]
@@ -36040,8 +36057,6 @@ clarifai model list           # List another user's models
 clarifai model list -a         # Filter by app
 ```
 
----
-
 ## Clarifai Deployment
 
 The `clarifai deployment` command provides direct management of deployments by ID. Alias: `dp`.
@@ -36089,8 +36104,6 @@ Delete a deployment by ID (no nodepool argument required):
 ### Create a Deployment
 
     clarifai deployment create &lt;nodepool_id&gt; &lt;deployment_id&gt; --config deployment.yaml
-
----
 
 ## Clarifai Pipeline
 
@@ -36241,8 +36254,6 @@ clarifai pipeline validate-lock
 # Validate a specific lock file
 clarifai pipeline validate-lock ./my-pipeline/config-lock.yaml
 ```
-
----
 
 ## Clarifai Pipeline Step
 
