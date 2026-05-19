@@ -1047,7 +1047,6 @@ Any command can override the active context for a single invocation using the gl
 
 This is useful when you need to work with multiple accounts or environments in a single terminal session.
 
----
 
 ## Clarifai Whoami
 
@@ -1091,7 +1090,7 @@ The `clarifai whoami` command displays information about the currently authentic
 </TabItem>
 </Tabs>
 
----
+
 
 ## Clarifai App
 
@@ -1294,8 +1293,17 @@ clarifai model init --github-url https://github.com/your-username/my-private-mod
 </TabItem>
 </Tabs>
 
-Learn more about using toolkits [here](https://docs.clarifai.com/compute/toolkits).
+### Initialize for Streaming Video
 
+Use the `--streaming-video` flag to scaffold a model project pre-configured for video livestreaming workflows, including polygon filtering support:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">clarifai model init --streaming-video</CodeBlock>
+</TabItem>
+</Tabs>
+
+This flag enables a streaming video consumer and adds `ffmpeg`/`av` to the generated Dockerfile.
 
 ## Clarifai Model Serve
 
@@ -1402,7 +1410,6 @@ clarifai model upload ./my-model -v    # verbose
 
 After upload, the output includes a clickable model URL, a code snippet for predictions, and suggested next steps (deploy, predict).
 
----
 
 ## Clarifai Model Deploy
 
@@ -1549,7 +1556,6 @@ When you run `clarifai model deploy`, it progresses through these phases:
 
 </details>
 
----
 
 ## Clarifai List Instances
 
@@ -1601,7 +1607,6 @@ clarifai li --cloud aws --gpu L40S
 | `--min-gpus` | Minimum GPU count |
 | `--min-gpu-mem` | Minimum GPU memory (e.g., `48Gi`, `80Gi`) |
 
----
 
 ## Clarifai Model Predict
 
@@ -1724,7 +1729,6 @@ clarifai model status --model-url https://clarifai.com/user/app/models/my-model
 | `--model-url URL` | Full model URL |
 | `--deployment ID` | Show a specific deployment |
 
----
 
 ## Clarifai Model Logs
 
@@ -1830,7 +1834,6 @@ clarifai model list -a <app_id>        # Filter by app
 </TabItem>
 </Tabs>
 
----
 
 ## Clarifai Deployment
 
@@ -1906,7 +1909,6 @@ Delete a deployment by ID (no nodepool argument required):
 </TabItem>
 </Tabs>
 
----
 
 ## Clarifai Pipeline
 
@@ -2086,7 +2088,6 @@ clarifai pipeline validate-lock
 clarifai pipeline validate-lock ./my-pipeline/config-lock.yaml
 ```
 
----
 
 ## Clarifai Pipeline Step
 
