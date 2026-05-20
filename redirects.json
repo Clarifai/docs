@@ -830,7 +830,7 @@
       "from": ["/portal-guide/agent-system-operators/map"]
     },
     {
-      "to": "/create/models/export",
+      "to": "/create/models/",
       "from": ["/sdk/advance-model-operations/model-export", "/sdk/advance-model-operations/"]
     },
     {
