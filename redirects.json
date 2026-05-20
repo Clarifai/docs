@@ -1024,9 +1024,13 @@
     {
       "to": "https://docs.clarifai.com/compute/agents/build/#agno",
       "from": ["/integrations/agno/"]
+    },
+    {
+      "to": "/create/models/",
+      "from": ["/create/models/export"]
     }
-  
-  
+
+
 
 
 ]
