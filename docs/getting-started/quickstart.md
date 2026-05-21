@@ -132,37 +132,11 @@ Congratulations — you've just gotten started with the Clarifai platform!
 
 :::
 
-## Step 6: Orchestrate Multi-Step Workflows with Pipelines
+## What to Explore Next
 
-For asynchronous, long-running, multi-step workflows — model training, fine-tuning, data preparation, batch processing, agent orchestration — use [Clarifai Pipelines](https://docs.clarifai.com/compute/pipelines/). You can define an entire pipeline in Python, no YAML required:
+You've made your first inference call. Here are some directions to explore from here:
 
-```python
-from clarifai.runners.pipelines import ComputeInfo, Pipeline, step
-
-@step(id="prepare", compute=ComputeInfo(cpu_limit="500m", cpu_memory="500Mi"))
-def prepare(input_text: str) -> str:
-    return input_text.strip().lower()
-
-@step(id="summarize")
-def summarize(input_text: str) -> str:
-    return input_text[:80]
-
-with Pipeline(id="my-first-pipeline", user_id="YOUR_USER_ID", app_id="YOUR_APP_ID") as pipeline:
-    raw = pipeline.input("input_text", default="Hello, Clarifai pipelines!")
-
-    prepared = prepare(input_text=raw)
-    summary = summarize(input_text=prepared.output())
-
-    prepared >> summary
-```
-
-Then upload and run, directly from the `.py` file:
-
-<Tabs groupId="code">
-<TabItem value="bash3" label="CLI">
-    <CodeBlock className="language-bash">{`clarifai pipeline upload my_pipeline.py
-clarifai pipeline run --pipeline_id my-first-pipeline`}</CodeBlock>
-</TabItem>
-</Tabs>
-
-For the full walkthrough — including step composition with the `>>` operator, referencing existing remote steps, pipeline templates, and the YAML / config-based authoring path — see the [Pipelines documentation](https://docs.clarifai.com/compute/pipelines/).
+- **[Deploy your own model](https://docs.clarifai.com/compute/deployments/)** — Run inference on dedicated GPUs with your own model.
+- **[Train a model](https://docs.clarifai.com/create/models/)** — Fine-tune a classifier, detector, or LLM on your data using a pipeline template.
+- **[Build orchestration pipelines](https://docs.clarifai.com/compute/pipelines/)** — Define multi-step, long-running workflows in Python — training, evaluation, agent orchestration, batch processing.
+- **[Use the OpenAI-compatible API](https://docs.clarifai.com/compute/inference/open-ai/)** — Same endpoint, OpenAI client library.
