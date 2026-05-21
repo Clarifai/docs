@@ -131,3 +131,12 @@ Congratulations — you've just gotten started with the Clarifai platform!
 [Click here](https://docs.clarifai.com/compute/models/inference/api/) to learn more about how to make inference requests using our API. You'll discover how to list all the available inference methods defined in a model's configuration, generate example code, leverage our Compute Orchestration capabilities for various types of inference requests, and more.
 
 :::
+
+## What to Explore Next
+
+You've made your first inference call. Here are some directions to explore from here:
+
+- **[Deploy your own model](https://docs.clarifai.com/compute/deployments/)** — Run inference on dedicated GPUs with your own model.
+- **[Train a model](https://docs.clarifai.com/create/models/)** — Fine-tune a classifier, detector, or LLM on your data using a pipeline template.
+- **[Build orchestration pipelines](https://docs.clarifai.com/compute/pipelines/)** — Define multi-step, long-running workflows in Python — training, evaluation, agent orchestration, batch processing.
+- **[Use the OpenAI-compatible API](https://docs.clarifai.com/compute/inference/open-ai/)** — Same endpoint, OpenAI client library.

@@ -17,35 +17,10 @@ A visual classifier is a deep fine-tuned model that categorizes images and video
 
 For example, it can be used to categorize images into concepts such as "cat", "dog", or "vehicle".
 
-:::note pipeline template
-
-A pipeline template is a pre-configured workflow that defines how a model is trained, evaluated, and deployed.
-
-It is built on top of [Clarifai Pipelines](https://docs.clarifai.com/compute/pipelines/), which are the underlying system that orchestrates a sequence of steps (nodes) such as data processing, training, and evaluation. The template simply provides a ready-made, opinionated setup of these pipelines for a specific use case.
-
-Instead of building everything from scratch, a pipeline template gives you a ready-made structure with:
-
-* **Predefined steps** (e.g., data loading, preprocessing, training, evaluation)
-* **Default configurations** (such as model architecture and training logic)
-* **Tunable parameters** (hyperparameters you can adjust to fit your use case)
-
-In practical terms, it acts as a blueprint for your training process. For example, when you select the [`classifier-pipeline-resnet`](#select-training-template) template, you're choosing:
-
-* A pipeline designed for image classification
-* A ResNet-based model architecture
-* A sequence of steps already wired together using Clarifai Pipelines to train on labeled image data
-
-:::
-
 ![Image classification example](/img/others-2/image_classification_example.webp)
 <center>*Image classification example*</center>
 
-
-You may choose a visual classifier model type in cases where:
-
-- **Accuracy takes priority** — you need a carefully targeted solution rather than a fast, general-purpose one.
-- **Your data is unique** — existing Clarifai models don't recognize the features in your dataset, and you need to deep fine-tune a custom model integrated into your workflows.
-- **You have the right ingredients** — a custom dataset, accurate labels, and the time and expertise to fine-tune.
+Use a visual classifier when you have a labeled dataset and want a custom model fine-tuned on your own classes.
 
 :::tip
 
@@ -53,6 +28,78 @@ Visual classifiers are optimized for classification tasks. If you need to locate
 
 :::
 
+You can train a visual classifier two ways:
+
+- **[Via the CLI](#via-the-cli)** — Scriptable and reproducible. Recommended for engineering workflows. Train an end-to-end model in three commands.
+- **[Via the UI](#via-the-ui)** — Click-through training from the Clarifai web app. Recommended for quick experiments without writing code.
+
+##  **Via the CLI**
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+
+### Prerequisites
+
+Install the Clarifai CLI and authenticate:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">{`pip install --upgrade clarifai
+clarifai login`}</CodeBlock>
+</TabItem>
+</Tabs>
+
+`clarifai login` auto-detects your user ID and saves your [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat/) locally.
+
+### Train a Classifier (Quick Demo)
+
+The fastest way to see a working classifier end-to-end is the [`classifier-pipeline-resnet-quick-start`](https://github.com/Clarifai/pipeline-examples/tree/main/classifier-pipeline-resnet-quick-start) template. It uses a Clarifai-hosted Food-101 subset as the training dataset, with sensible defaults for every hyperparameter — so no dataset setup or `--set` flags are required.
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">{`clarifai pipeline init --template classifier-pipeline-resnet-quick-start
+cd classifier-pipeline-resnet-quick-start
+clarifai pipeline upload
+clarifai pipeline run --instance=g6e.xlarge`}</CodeBlock>
+</TabItem>
+</Tabs>
+
+That's it. `--instance=g6e.xlarge` auto-provisions a compute cluster and nodepool — no separate setup required. The pipeline trains a ResNet-50 image classifier on the public dataset and registers the trained model in your Clarifai model registry.
+
+### Train on Your Own Data
+
+When you want to train a classifier on your own concepts, use the [`classifier-pipeline-resnet`](https://github.com/Clarifai/pipeline-examples/tree/main/classifier-pipeline-resnet) template with `--set` flags pointing at your uploaded dataset:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+```bash
+clarifai pipeline init --template classifier-pipeline-resnet \
+  --set dataset_id=your_dataset_id \
+  --set dataset_version_id=your_dataset_version_id \
+  --set concepts='["class1","class2","..."]'
+cd classifier-pipeline-resnet
+clarifai pipeline upload
+clarifai pipeline run --instance=g6e.xlarge
+```
+</TabItem>
+</Tabs>
+
+Where:
+
+| Parameter | Description |
+|---|---|
+| `--set dataset_id` | The ID of the dataset to train on |
+| `--set dataset_version_id` | The specific version of the dataset |
+| `--set concepts` | A JSON array of the concept labels |
+
+To upload a dataset first, see the [Datasets documentation](https://docs.clarifai.com/create/datasets/). For all other init-time overrides (hyperparameters, base model, etc.), see the [Pipeline Templates reference](https://docs.clarifai.com/compute/pipelines/templates).
+
+### Monitor and Use the Trained Model
+
+* **Monitor the run** — see [Manage Pipeline Runs](https://docs.clarifai.com/compute/pipelines/manage-run).
+* **Deploy and run inference on the trained model** — see [Inference](https://docs.clarifai.com/compute/inference/).
+* **Author a custom pipeline from scratch in Python** — see the [Pipeline DSL reference](https://docs.clarifai.com/compute/pipelines/dsl-reference).
 
 ##  **Via the UI**
 
@@ -242,528 +289,6 @@ For this tutorial, uploading an image of a bean leaf will return classifications
 
 That’s it!
 
-##  **Via the CLI**
-
-:::note
-
-### Quick Start
-
-The [`classifier-pipeline-resnet-quick-start`](https://github.com/Clarifai/pipeline-examples/tree/main/classifier-pipeline-resnet-quick-start) template lets you train a test visual classification model with minimal setup. It uses a ResNet-based image classifier pre-configured with a public dataset, so you can run an end-to-end training pipeline immediately — no data preparation required.
-
-**Step 1: Perform Prerequisites**
-
-Before getting started, make sure you’ve completed the following setup:
-
-- Install the Clarifai package:
-
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">pip install --upgrade clarifai</CodeBlock>
-</TabItem>
-</Tabs>
-
-- Authenticate your connection by setting your [Personal Access Token](https://docs.clarifai.com/control/authentication/pat) (PAT): 
-
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">clarifai login</CodeBlock>
-</TabItem>
-</Tabs>
-
-- Select an [instance type](https://docs.clarifai.com/compute/cloud-instances/) for running your pipeline — such as `g6e.xlarge`.
-
-
-**Step 2: Initialize a Pipeline from a Template**
-
-Initialize a new pipeline using the quick-start template, then navigate into the generated directory:
-
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">clarifai pipeline init --template=classifier-pipeline-resnet-quick-start</CodeBlock>
-</TabItem>
-</Tabs>
-
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">cd classifier-pipeline-resnet-quick-start</CodeBlock>
-</TabItem>
-</Tabs>
-
-**Step 3: Upload and Run the Pipeline**
-
-Upload the pipeline configuration and execute the training job:
-
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">clarifai pipeline upload</CodeBlock>
-</TabItem>
-</Tabs>
-
-> **Note:** This will automatically create an app called `pipeline-app` and upload the pipeline to it.
-
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">clarifai pipeline run --instance=g6e.xlarge</CodeBlock>
-</TabItem>
-</Tabs>
-
-**Step 4: Monitor Your Pipeline**
-
-Once the pipeline runs, it automatically loads the dataset, trains a ResNet-based image classifier, and produces a test model ready for use.
-
-To access your pipeline, open your app's sidebar and select **Pipelines**; to view your trained model, select **Models**.
-
-:::
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import CodeBlock from "@theme/CodeBlock";
-
-
-import CodeDU from "!!raw-loader!../../../code_snippets/python-sdk/model_training/visual_classifier/dataset_upload.py";
-
-import Output1 from "!!raw-loader!../../../code_snippets/python-sdk/model_training/visual_classifier/output-1.txt";
-import Output2 from "!!raw-loader!../../../code_snippets/python-sdk/model_training/visual_classifier/output-2.txt";
-import Output3 from "!!raw-loader!../../../code_snippets/python-sdk/model_training/visual_classifier/output-3.txt";
-import Output4 from "!!raw-loader!../../../code_snippets/python-sdk/model_training/visual_classifier/output-4.txt";
-import Output5 from "!!raw-loader!../../../code_snippets/python-sdk/model_training/visual_classifier/output-5.txt";
-import Output6 from "!!raw-loader!../../../code_snippets/python-sdk/model_training/visual_classifier/output-6.txt";
-import Output7 from "!!raw-loader!../../../code_snippets/python-sdk/model_training/visual_classifier/output-7.txt";
-import Output8 from "!!raw-loader!../../../code_snippets/python-sdk/model_training/visual_classifier/output-8.txt";
-import Output9 from "!!raw-loader!../../../code_snippets/python-sdk/model_training/visual_classifier/output-9.txt";
-import Output10 from "!!raw-loader!../../../code_snippets/python-sdk/model_training/visual_classifier/output-10.txt";
-import Output11 from "!!raw-loader!../../../code_snippets/python-sdk/model_training/visual_classifier/output-11.txt";
-
-import CodeMT from "!!raw-loader!../../../code_snippets/python-sdk/model_training/visual_classifier/model_type.py";
-import CodeMC from "!!raw-loader!../../../code_snippets/python-sdk/model_training/visual_classifier/model_creation.py";
-import CodeTS from "!!raw-loader!../../../code_snippets/python-sdk/model_training/visual_classifier/template_selection.py";
-import CodeS from "!!raw-loader!../../../code_snippets/python-sdk/model_training/visual_classifier/setup.py";
-import CodeS2 from "!!raw-loader!../../../code_snippets/python-sdk/model_training/visual_classifier/setup2.py";
-import CodeIMT from "!!raw-loader!../../../code_snippets/python-sdk/model_training/visual_classifier/imt.py";
-import CodeMP from "!!raw-loader!../../../code_snippets/python-sdk/model_training/visual_classifier/mp.py";
-import CodeTrEv from "!!raw-loader!../../../code_snippets/python-sdk/model_eval/visual_classifier/train_eval.py";
-import CodeTeEv from "!!raw-loader!../../../code_snippets/python-sdk/model_eval/visual_classifier/test_eval.py";
-import CodeCMP from "!!raw-loader!../../../code_snippets/python-sdk/model_eval/visual_classifier/cmp.py";
-
-import CodeOutputMT from "!!raw-loader!../../../code_snippets/python-sdk/model_training/outputs/visual_classifier/model_type.txt";
-import CodeOutputTS from "!!raw-loader!../../../code_snippets/python-sdk/model_training/outputs/visual_classifier/template_selection.txt";
-import CodeOutputS from "!!raw-loader!../../../code_snippets/python-sdk/model_training/outputs/visual_classifier/setup.txt";
-import CodeOutputS2 from "!!raw-loader!../../../code_snippets/python-sdk/model_training/outputs/visual_classifier/setup2.txt";
-import CodeOutputIMT from "!!raw-loader!../../../code_snippets/python-sdk/model_training/outputs/visual_classifier/imt.txt";
-import CodeOutputMP from "!!raw-loader!../../../code_snippets/python-sdk/model_training/outputs/visual_classifier/mp.txt";
-import CodeOutputTrEv from "!!raw-loader!../../../code_snippets/python-sdk/model_eval/visual_classifier/outputs/train_eval.txt";
-import CodeOutputTeEv from "!!raw-loader!../../../code_snippets/python-sdk/model_eval/visual_classifier/outputs/test_eval.txt";
-import CodeOutputCMP from "!!raw-loader!../../../code_snippets/python-sdk/model_eval/visual_classifier/outputs/cmp.txt";
-
-import PythonCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_model.py";
-import JSCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_model.html";
-import NodeCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_model.js";
-import JavaCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_model.java";
-import PHPCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_model.php";
-import CurlCreateModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/create_model.sh";
-
-import PythonTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/train_model.py";
-import JSTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/train_model.html";
-import NodeTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/train_model.js";
-import JavaTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/train_model.java";
-import PHPTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/train_model.php";
-import CurlTrainModel from "!!raw-loader!../../../code_snippets/api-guide/model/deep_training/train_model.sh";
-
-<br/>
-
-Let’s walk through how to use the [Clarifai CLI](https://docs.clarifai.com/resources/api-overview/cli) to build and train a visual classification model using your own custom dataset
-
-### Step 1: Install Clarifai and Authenticate
-
-Start by installing the latest version of the `clarifai` Python package. This also includes the Clarifai CLI, which we’ll use to run and manage the training pipeline.
-
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">pip install --upgrade clarifai</CodeBlock>
-</TabItem>
-</Tabs>
-
-Then, authenticate your connection to Clarifai:
-
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">clarifai login</CodeBlock>
-</TabItem>
-</Tabs>
-
-
-The CLI will prompt you for your [Personal Access Token](https://docs.clarifai.com/control/authentication/pat/) (PAT). It will auto-detect your user ID and save everything locally.
-
-> **Note:** You can obtain a PAT by opening **Settings** in the platform’s collapsible left sidebar, selecting **Secrets**, and then creating a new token or copying an existing one.
-
-
-### Step 2: Create an App
-
-Create an [app](https://docs.clarifai.com/create/applications/create/) to store and manage your model and its associated resources (such as datasets, pipelines, and deployments).
-
-
-<Tabs groupId="code">
-<TabItem value="python" label="CLI">
-    <CodeBlock className="language-python">clarifai app create your-app-id</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
-  <summary>Example Output</summary>
-    <CodeBlock className="language-python">{Output1}</CodeBlock>
-</details>
-
-### Step 3: Prepare Training Data
-
-As mentioned [previously](#step-2-prepare-training-data), high-quality, well-structured data is critical for training an accurate and reliable model.
-
-For this example, we’ll use a public dataset of food images available [here](https://github.com/Clarifai/examples/tree/main/datasets/upload/image_classification/food-101/images). This dataset contains labeled images across multiple food categories, making it ideal for a classification task.
-
-:::info Objective
-
-Using this dataset, we’ll train a model to classify images into the following categories: `beignets`, `hamburger`, `prime_rib`, and `ramen`.
-
-:::
-
-You can clone the [repository](https://github.com/Clarifai/examples/tree/main) containing the dataset, then use the Clarifai Python SDK to [upload the dataset](https://docs.clarifai.com/create-manage/datasets/upload) to your app.
-
-
-<Tabs groupId="code">
-<TabItem value="python" label="Python SDK">
-    <CodeBlock className="language-python">{CodeDU}</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
-  <summary>Example Output</summary>
-    <CodeBlock className="language-python">{Output2}</CodeBlock>
-</details>
-
-> **Note:** Once your dataset is successfully uploaded, navigate to the platform UI and record the `dataset_id` and `dataset_version_id`. You’ll need these values when running the training pipeline.
-
-
-### Step 4: Set Up Compute 
-
-You can run your pipeline using either on-demand instance compute or a managed cluster and nodepool.
-
-#### Option A: Select an Instance Type
-
-You can run your pipeline directly on on-demand compute by specifying an instance with the `--instance` flag (see [example below](#option-a-run-on-on-demand-instance-compute)). This removes the need to create and manage a cluster and nodepool.
-
-With this approach, compute is automatically provisioned—or reused if available — so you can focus on running your pipeline rather than managing infrastructure.
-
-See the [available instance types](https://docs.clarifai.com/compute/cloud-instances) to choose one that best matches your workload and performance requirements.
-
-#### Option B: Create a Cluster and Nodepool
-
-To train your model via the CLI with managed infrastructure, you’ll need to provision compute resources by creating a cluster and a nodepool.
-
-Start by defining a [YAML](https://docs.clarifai.com/compute/deployments/clusters-nodepools#1-compute_cluster_configyaml) configuration file for your compute cluster. Ensure the configuration supports GPU workloads, as GPUs are required for efficient training and inference of vision models.
-
-Here is an example cluster config file:
-
-<Tabs groupId="code">
-<TabItem value="yaml" label="YAML">
-```yaml
-compute_cluster:
-  id: "visual-compute-cluster"
-  description: "My AWS compute cluster"
-  cloud_provider:
-    id: "aws"
-  region: "us-east-1"
-  managed_by: "clarifai"
-  cluster_type: "dedicated"
-  visibility:
-    gettable: 10
-```
-</TabItem>
-</Tabs>
-
-Then run the following command, pointing to your config file:
-
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-```bash
-    clarifai computecluster create \
-      your_compute_cluster_id \
-      --config your_compute_cluster_config_filepath
-```
-</TabItem>
-</Tabs>
-
-<details>
-  <summary>Example Output</summary>
-    <CodeBlock className="language-python">{Output3}</CodeBlock>
-</details>
-
-
-Next, define a nodepool within your cluster. This is where you specify the actual [compute instances](https://docs.clarifai.com/compute/cloud-instances) used for training. Be sure to choose a GPU-enabled instance that aligns with your performance and cost requirements.
-
-> **Note:** GPU support is essential for this tutorial. Without a compatible GPU instance, training may be significantly slower or fail altogether.
-
-Here is an example nodepool config file:
-
-<Tabs groupId="code">
-<TabItem value="yaml" label="YAML">
-```yaml
-nodepool:
-  id: "visual-nodepool"
-  compute_cluster:
-    id: "visual-compute-cluster"
-  description: "GPU nodepool for training workloads"
-  instance_types:
-    - id: "g5.2xlarge"
-      compute_info:
-        cpu_limit: "8"
-        cpu_memory: "28Gi"
-        accelerator_type:
-          - "a10"
-        num_accelerators: 1
-        accelerator_memory: "40Gi"
-  node_capacity_type:
-    capacity_types:
-      - 1
-  min_instances: 0
-  max_instances: 1
-```
-</TabItem>
-</Tabs>
-
-Then run the following command, pointing to your config file:
-
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-```bash
-    clarifai nodepool create \
-      your_compute_cluster_id \
-      your_nodepool_id \
-      --config your_nodepool_config_filepath
-```
-</TabItem>
-</Tabs>
-
-<details>
-  <summary>Example Output</summary>
-    <CodeBlock className="language-python">{Output4}</CodeBlock>
-</details>
-
-
-### Step 5: Initialize a Pipeline from a Template
-
-The [`classifier-pipeline-resnet`](https://github.com/Clarifai/pipeline-examples/tree/main/classifier-pipeline-resnet) template lets you quickly set up a visual classification pipeline using a preconfigured ResNet-based image classifier — so you can focus on training rather than setup.
-
-:::tip
-
-To view all the available predefined templates, run:
-
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">clarifai pipelinetemplate list</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
-  <summary>Example Output</summary>
-    <CodeBlock className="language-python">{Output5}</CodeBlock>
-</details>
-
-:::
- 
-Run the following command to [initialize a pipeline](https://docs.clarifai.com/compute/pipelines/create-api#step-2-initialize-a-pipeline-project) from the template:
-
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-    ```bash
-    clarifai pipeline init \
-      --app_id your_app_id \
-      --user_id your_user_id \
-      --template classifier-pipeline-resnet \
-      --set dataset_id=image_dataset \
-      --set dataset_version_id=dataset_version_id \
-      --set concepts='["beignets","hamburger","prime_rib","ramen"]'
-    ```
-</TabItem>
-</Tabs>
-
-Where:
-
-| Parameter | Description |
-|---|---|
-| `--app_id` | The ID of the app where the pipeline will be created |
-| `--user_id` | Your Clarifai user ID |
-| `--template` | The pipeline template to use. Here, we use `classifier-pipeline-resnet` |
-| `--set dataset_id` | The ID of the dataset to use for training |
-| `--set dataset_version_id` | The specific dataset version to use for training|
-| `--set concepts` | A JSON array of the concept labels the model will be trained to classify |
-
-<details>
-  <summary>Example Output</summary>
-    <CodeBlock className="language-python">{Output6}</CodeBlock>
-</details>
-
-Once executed, the command creates a new project directory named after the template, preloaded with all necessary configuration files.
-
-Before running any subsequent `clarifai pipeline ...` commands, navigate into the generated directory — these commands rely on the local `config.yaml` and `config-lock.yaml` files:
-
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">cd classifier-pipeline-resnet</CodeBlock>
-</TabItem>
-</Tabs>
-
-> **Note:** You can optionally review the generated pipeline steps and tailor them to your use case. If needed, you can also adjust the default parameters and add any additional dependencies to the `requirements.txt` files to support your pipeline.
-
-:::tip Override Defaults at Initialization
-
-You can optionally customize the pipeline during setup — for example, by specifying a different user/app, assigning a custom pipeline ID, or adjusting model parameters:
-
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-```bash
-  clarifai pipeline init --template=classifier-pipeline-resnet \
-  --user_id your_custom_user_id \
-  --app_id your_custom_app_id \
-  --set id=your_custom_pipeline_id \
-  --set num_epochs=20
-```
-</TabItem>
-</Tabs>
-
-
-:::
-
-### Step 6: Upload Your Pipeline
-
-Once your pipeline is initialized and configured, the next step is to upload it and trigger the training job.
-
-Make sure you’re inside the generated pipeline directory, then run:
-
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">clarifai pipeline upload</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
-  <summary>Example Output</summary>
-    <CodeBlock className="language-python">{Output7}</CodeBlock>
-</details>
-
-The above command will register the pipeline in your app, upload all associated configuration files, and prepare the pipeline for execution.
-
-### Step 7: Run the Pipeline
-
-You can run your pipeline using either on-demand instance compute or a preconfigured cluster and nodepool.
-
-#### Option A: Run on On-Demand Instance Compute
-
-Instead of relying on an existing nodepool and compute cluster, you can automatically provision or reuse compute at runtime by specifying an instance type:
-
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">clarifai pipeline run --instance=g6e.xlarge</CodeBlock>
-</TabItem>
-</Tabs>
-
-This approach removes the need to manage infrastructure, making it ideal for quick experiments or simplified workflows.
-
-:::note Override Parameters at Runtime
-
-To modify pipeline parameters at run time, pass one or more `--set key=value` flags:
-
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-```bash
-clarifai pipeline run \
-  --instance=g6e.xlarge \
-  --set num_epochs=20 \
-  --set batch_size=32
-```
-</TabItem>
-</Tabs>
-
-:::
-
-#### Option B: Run on Cluster and Nodepool
-
-If you’ve already set up a compute cluster and nodepool, you can run the pipeline by explicitly targeting those resources:
-
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-```bash
-    clarifai pipeline run \
-      --nodepool_id=your_nodepool_id \
-      --compute_cluster_id=your_compute_cluster_id
-```
-</TabItem>
-</Tabs>
-
-<details>
-  <summary>Example Output</summary>
-    <CodeBlock className="language-python">{Output8}</CodeBlock>
-</details>
-
-The above command launches the pipeline on your specified cluster and nodepool, ensuring it uses the configured GPU-backed resources.
-
-Once triggered, the pipeline runs end-to-end — loading the dataset, training the ResNet-based model, and producing a model ready for evaluation and further use.
-
-### Step 8: Monitor Your Pipeline
-
-To monitor your pipeline, open your app’s collapsible sidebar and select **Pipelines**. From there, navigate to the **Pipeline Version Runs** page, where you can track execution progress, view logs, and manage runs for a specific pipeline version — as illustrated [above](#step-7-train-the-model).
-
-To access the trained model, go to **Models** in the sidebar.
-
-You can also [monitor](https://docs.clarifai.com/compute/pipelines/manage-run#monitor-a-pipeline-run) the pipeline directly from the CLI:
-
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-    <CodeBlock className="language-bash">clarifai pipelinerun monitor pipeline_version_run_id</CodeBlock>
-</TabItem>
-</Tabs>
-
-<details>
-  <summary>Example Output</summary>
-    <CodeBlock className="language-python">{Output9}</CodeBlock>
-</details>
-
-### Step 9: Use Your Model
-
-Once training is complete, your model is ready for use. 
-
-Start by [creating a deployment](https://docs.clarifai.com/resources/api-overview/cli/#clarifai-model-deploy) to make it available for inference. 
-
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-```bash
-clarifai model deploy \
-  --model-url clarifai_model_url \
-  --instance g5.2xlarge
-```
-</TabItem>
-</Tabs>
-
-<details>
-  <summary>Example Output</summary>
-    <CodeBlock className="language-python">{Output10}</CodeBlock>
-</details>
-
-Then, use the generated deployment ID to run [predictions](https://docs.clarifai.com/resources/api-overview/cli/#clarifai-model-predict) on new data.
-
-<Tabs groupId="code">
-<TabItem value="bash" label="CLI">
-```bash
-clarifai model predict \
-  clarifai_model_url \
-  --url https://samples.clarifai.com/featured-models/food-hamburgers-bacon-cheese.jpg \
-  --deployment deployment_id
-```
-</TabItem>
-</Tabs>
-
-<details>
-  <summary>Example Output</summary>
-    <CodeBlock className="language-python">{Output11}</CodeBlock>
-</details>
 
 <!--
 
