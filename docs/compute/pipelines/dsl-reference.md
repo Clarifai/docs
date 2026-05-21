@@ -56,6 +56,8 @@ def prepare_text(input_text: str) -> str:
 | `assets` | `list[str]` | Files or directories to bundle alongside the step's code. Paths are resolved relative to the source file containing the step. |
 | `compute` | `ComputeInfo` | Compute resources for the step (CPU, memory, accelerators). See [Compute Requirements](#compute-requirements). |
 | `python_version` | `str` | Python version to use inside the step's container. Defaults to `"3.12"`. |
+| `base_image` | `Optional[str]` | Custom base Docker image for the step's container — e.g., a CUDA-enabled image for GPU steps. Defaults to Clarifai's standard base image. |
+| `platform` | `Optional[str]` | Build platform for the step's container image (e.g., `"linux/amd64"`). Defaults to multi-architecture build. |
 | `secrets` | `dict[str, str]` | Environment variable name → secret resource path. Secrets are mounted as environment variables at step runtime. |
 
 ### Step Input Parameters
