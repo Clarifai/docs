@@ -111,7 +111,7 @@ A `Pipeline` instance is the container for your DAG. Use it as a context manager
 ```python
 from clarifai.runners.pipelines import Pipeline
 
-with Pipeline(id="my-pipeline", user_id="my-user", app_id="my-app") as pipeline:
+with Pipeline(id="my-pipeline") as pipeline:
     raw = pipeline.input("input_text", default="hello world")
 
     prepared = prepare_text(input_text=raw)
@@ -120,14 +120,23 @@ with Pipeline(id="my-pipeline", user_id="my-user", app_id="my-app") as pipeline:
     prepared >> summary
 ```
 
+After running `clarifai login`, `user_id` and `app_id` are read automatically from your CLI context — you don't need to pass them explicitly. To target a different user or app, pass them as kwargs:
+
+```python
+with Pipeline(id="my-pipeline", user_id="other-user", app_id="other-app") as pipeline:
+    ...
+```
+
 ### `Pipeline` Constructor
 
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
-| `id` | `str` | The pipeline's identifier. |
-| `user_id` | `str` | User ID owning the pipeline. |
-| `app_id` | `str` | App ID containing the pipeline. |
+| `id` | `str` | The pipeline's identifier. Required. |
+| `user_id` | `Optional[str]` | User ID owning the pipeline. Defaults to the user from your `clarifai login` context. |
+| `app_id` | `Optional[str]` | App ID containing the pipeline. Defaults to the app from your `clarifai login` context. |
 | `visibility` | `str` | Visibility setting; defaults to `"PRIVATE"`. |
+
+If neither explicit args nor `clarifai login` context provide `user_id` and `app_id`, the constructor raises a `ValueError` pointing you to run `clarifai login` first.
 
 When the `with` block exits, the pipeline is validated automatically — missing dependencies and DAG cycles raise a `ValueError` before upload.
 
@@ -136,7 +145,7 @@ When the `with` block exits, the pipeline is validated automatically — missing
 `pipeline.input(name, default=None)` declares a workflow-level input parameter — a value provided at runtime when you `clarifai pipeline run`. The return value is a reference you can pass into step calls:
 
 ```python
-with Pipeline(id="my-pipeline", user_id="...", app_id="...") as pipeline:
+with Pipeline(id="my-pipeline") as pipeline:
     raw = pipeline.input("input_text", default="hello")
     cleaned = prepare_text(input_text=raw)
 ```
@@ -246,13 +255,23 @@ The pipeline's source file must contain exactly one `Pipeline` instance. If you 
 
 ## Generating the YAML Bundle (Codegen)
 
-To produce the underlying scaffold-directory bundle without uploading — useful for inspection, version control, or handing off to the YAML/CLI flow — use `pipeline.generate(output_dir)`:
+To produce the underlying scaffold-directory bundle without uploading — useful for inspection, version control, or handing off to the YAML/CLI flow — there are two options.
+
+**From the CLI:**
+
+```bash
+clarifai pipeline compile my_pipeline.py --output-dir ./generated-bundle
+```
+
+`clarifai pipeline compile` takes any `.py` file containing a `Pipeline` instance and writes the corresponding scaffold-directory bundle to the directory you specify.
+
+**From Python:**
 
 ```python
 pipeline.generate("./generated-bundle")
 ```
 
-A common pattern is to expose this from your pipeline file so it can be run with `--generate`:
+The `pipeline.generate(output_dir)` method is what `clarifai pipeline compile` calls under the hood — use it directly if you want to expose codegen from your own script:
 
 ```python
 # my_pipeline.py
@@ -263,24 +282,18 @@ from clarifai.runners.pipelines import Pipeline, step
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--generate", default="./generated-pipeline")
+    parser.add_argument("--out", default="./generated-pipeline")
     args = parser.parse_args()
-    pipeline.generate(args.generate)
+    pipeline.generate(args.out)
 
 if __name__ == "__main__":
     main()
 ```
 
-Then:
-
-```bash
-python my_pipeline.py --generate ./generated-pipeline
-```
-
 The generated directory has the same shape as a scaffold-directory pipeline: a root `config.yaml`, per-step subdirectories with their own `config.yaml`, `requirements.txt`, and a `1/pipeline_step.py` containing an `argparse`-wrapped version of your `@step` function. You can upload it the same way as a scaffold-directory pipeline:
 
 ```bash
-clarifai pipeline upload ./generated-pipeline
+clarifai pipeline upload ./generated-bundle
 ```
 
 ## Programmatic Run
