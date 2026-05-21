@@ -6408,17 +6408,27 @@ Explore a collection of ready-to-use ML pipeline templates for training, evaluat
 
 :::
 
+## Why Clarifai Pipelines
+
+* **Schedule training on your inference clusters.** Training, evaluation, and inference workloads share the same Compute Orchestration clusters — no separate cluster to provision and pay for. Run a training job overnight on the same nodepool that serves your daytime inference traffic.
+* **Outputs land in the model registry.** Trained and quantized models from pipeline runs are registered directly into Clarifai's model registry, ready to serve or evaluate further without an export step.
+* **Python-first authoring.** Define pipelines as decorated Python functions with the [DSL](dsl-reference.md) — no parallel YAML to keep in sync.
+
 ## Use Cases for Pipelines
 
 Clarifai Pipelines support a wide range of AI and MLOps workflows. Here are some common use cases:
 
-* **Automated MLOps workflows** — Build reliable, repeatable pipelines for data preparation, model training, evaluation, deployment, and monitoring. Pipelines integrate seamlessly with version control and CI/CD systems to support continuous experimentation and delivery.
+* **Model training and fine-tuning** — Fine-tune LLMs and train custom image classifiers, object detectors, and other models on your own data, with the full training loop running on GPU compute and the resulting model registered in the Clarifai model registry.
 
-* **AI agent orchestration** —  Design, test, and deploy advanced AI agents that execute multi-step logic autonomously. Pipelines orchestrate [tool usage](https://docs.clarifai.com/compute/inference/open-ai/#tool-calling), LLM calls, and decision logic while managing state, external APIs, and long-running tasks that can execute for hours or even days.
+* **Model evaluation and benchmarking** — Measure model performance with standardized benchmarks like IFBench, SWE-bench, or MMLU, or with task-specific evaluations that score trained models against ground-truth labels, with per-task metrics stored alongside the model version under test.
 
-* **Asynchronous, long-running application tasks** — Add powerful backend capabilities to your applications without operational complexity. Pipelines make it easy to trigger and monitor tasks like large-scale batch processing, model fine-tuning, or complex data transformations.
+* **Model quantization** — Shrink a model's memory and compute footprint with post-training quantization, orchestrating calibration, conversion, and accuracy evaluation end-to-end and registering the quantized model alongside the original.
 
-* **Complex workflow automation** — Orchestrate sophisticated, multi-stage AI workflows across multiple components and services. Pipelines provide built-in support for state management, fault tolerance, and scalable execution across distributed systems.
+* **Draft model training for speculative decoding** — Train smaller "draft" models that accelerate inference on larger target models via speculative decoding, including dataset preparation, draft training, and alignment evaluation against the target.
+
+* **AI agent orchestration** — Design, test, and deploy AI agents that execute multi-step logic autonomously — orchestrating [tool usage](https://docs.clarifai.com/compute/inference/open-ai/#tool-calling), LLM calls, and decision logic across long-running tasks that can take hours or days.
+
+* **Complex workflow automation** — Orchestrate sophisticated, multi-stage AI workflows across components and services — large-scale batch processing, data transformations, and other distributed jobs — with built-in state management, fault tolerance, and scalable execution.
 
 ## Quick Start
 
@@ -6426,54 +6436,84 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from "@theme/CodeBlock";
 
-You can follow these steps to quickly get started with pipelines via the API. 
+The fastest way to get a working pipeline is to scaffold one from a template, upload it, and run it. The [`lora-pipeline-unsloth-quick-start`](https://github.com/Clarifai/pipeline-examples/tree/main/lora-pipeline-unsloth-quick-start) template fine-tunes an LLM with LoRA — all parameters are pre-set to sensible defaults so the first run works without edits.
 
-### Get Credentials
+### Install and Authenticate
 
-**1.** Go to the Clarifai platform and get your user ID, [app ID](https://docs.clarifai.com/create/applications/manage#app-overview), and Personal Access Token [(PAT)](https://docs.clarifai.com/control/authentication/pat). 
+Install the latest `clarifai` SDK (which also installs the CLI) and set your [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat):
 
-Then, set your PAT as an environment variable:
+    {`pip install --upgrade clarifai
+export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE`}
 
-    export CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE
+    {`pip install --upgrade clarifai
+set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE`}
 
-    set CLARIFAI_PAT=YOUR_PERSONAL_ACCESS_TOKEN_HERE
+### Scaffold a Pipeline From a Template
 
-**2.** You’ll also need to create a [compute cluster and nodepool](https://docs.clarifai.com/compute/deployments/clusters-nodepools) and get their IDs. 
+    {`clarifai pipeline init --template lora-pipeline-unsloth-quick-start
+cd lora-pipeline-unsloth-quick-start`}
 
-### Initialize a Pipeline Project
+This creates a working LoRA fine-tuning project that trains [`unsloth/Qwen3-0.6B`](https://huggingface.co/unsloth/Qwen3-0.6B) on the [`mlabonne/FineTome-100k`](https://huggingface.co/datasets/mlabonne/FineTome-100k) dataset using [Unsloth](https://github.com/unslothai/unsloth) — with `num_epochs`, `learning_rate`, LoRA rank, sequence length, and other hyperparameters all pre-configured. No edits required to run the first time.
 
-Run the following command to create a new pipeline project in your current directory. Follow the ensuing prompts to provide the required details.
+> **Tip:** Browse all available starter templates with `clarifai pipelinetemplate list`. See the [Templates](templates.md) page for the full catalog.
 
-    clarifai pipeline init
+### Upload and Run
 
-### Upload the Pipeline
+    {`clarifai pipeline upload
+clarifai pipeline run --instance=g5.xlarge`}
 
-Run the following command to upload the pipeline with associated pipeline steps to Clarifai.
+The pipeline fine-tunes the model on a single-GPU instance (the template's compute step requests `num_accelerators: 1` with a `NVIDIA-*` GPU). `--instance=g5.xlarge` auto-provisions a compute cluster and nodepool — no separate cluster setup required, and the same nodepool can later serve inference for the fine-tuned model.
 
-    clarifai pipeline upload
+That's it — you have a fine-tuned model registered in your Clarifai model registry, ready to serve, evaluate, or refine further.
 
-### Run the Pipeline
+### Customize Before Running
 
-Run the following command to start the pipeline and monitor its progress until completion or timeout.
+To override defaults at init time, pass `--set key=value` flags. For example, to fine-tune a different base model and change the number of epochs:
 
-    ```text
-    clarifai pipeline run --compute_cluster_id cluster_id_here --nodepool_id nodepool_id_here
-    ```
+    {`clarifai pipeline init --template lora-pipeline-unsloth-quick-start \\
+  --set base_model_name="unsloth/Llama-3.2-1B-Instruct" \\
+  --set num_epochs=3`}
+
+Or `cd` into the scaffolded directory and edit `config.yaml` directly. See [Templates](templates.md) for the full reference on `--template`, `--set`, and template discovery.
+
+### Author a Pipeline From Scratch in Python
+
+For custom workflows that don't fit a template, use the [Pipeline DSL](dsl-reference.md) — write `@step`-decorated Python functions, compose them into a DAG, and upload directly from a `.py` file. See the [DSL reference](dsl-reference.md) for the full API.
+
+### Where to Go Next
+
+* **[Templates](templates.md)** — full catalog of starter pipelines for training, fine-tuning, evaluation, and benchmarking.
+* **[Pipeline DSL reference](dsl-reference.md)** — `@step`, `step_ref`, `>>` composition, `ComputeInfo`, secrets, codegen.
+* **[Manage Pipelines](manage.md)** — list, validate, and inspect pipelines on the platform.
+* **[Manage Pipeline Runs](manage-run.md)** — monitor, pause, resume, and cancel runs.
+* **[Advanced: YAML / config-based pipelines](create-api.md)** — the scaffold-directory authoring flow underneath the templates, useful for existing pipelines or workflows that need explicit YAML control.
+
+### Pipeline outputs → Artifacts
+
+Pipeline runs produce [Artifacts](https://docs.clarifai.com/create/artifacts) — versioned, addressable binary outputs such as model checkpoints, training logs, embeddings, or datasets. Once a pipeline run completes, its outputs can be managed, downloaded, and reused via the artifacts CLI and SDK without re-running the pipeline. See the [Artifacts documentation](https://docs.clarifai.com/create/artifacts) for managing pipeline-produced outputs.
 
 import DocCardList from '@theme/DocCardList';
 import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 
 ---
 
-## Create and Run Pipelines [API]
+## Advanced: YAML / Config-Based Pipelines
 
-# Create and Run Pipelines [API]
+# Advanced: YAML / Config-Based Pipelines
 
-**Create, upload, and run pipelines via our API effortlessly**
+**YAML / config-based authoring flow for pipelines, with the full file structure reference**
+
+:::tip Looking for the Python-first path?
+
+For new pipelines, we recommend the [Pipeline DSL](dsl-reference.md) — define steps as decorated Python functions, compose them with `>>`, and upload directly from a `.py` file with `clarifai pipeline upload my_pipeline.py`. No YAML to maintain.
+
+This page documents the **YAML / config-based** authoring flow: scaffold a directory of `config.yaml` + `pipeline_step.py` files with `clarifai pipeline init`, edit them, and upload the directory. Useful for existing pipelines, workflows that need explicit YAML control, or as a reference for the file structure that the DSL compiles down to.
+
+:::
 
 [Clarifai Pipelines](README.mdx) let you design and launch asynchronous, multi-step AI workflows on our platform. You can effortlessly automate complex processes, orchestrate AI agents, and run long-running jobs at scale.
 
-Let’s walk through how you can create, upload, and run pipelines via our API.
+This page walks through the YAML / config-based authoring flow.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -7013,6 +7053,333 @@ That's it!
 
 ---
 
+## Pipeline DSL Reference
+
+# Pipeline DSL Reference
+
+**Define pipelines in Python — steps, composition, compute, and upload — with no separate YAML to maintain**
+
+The Clarifai pipeline DSL lets you define entire pipelines in Python. Steps are decorated functions; pipelines are composed inside a `Pipeline` context; parameters come from function signatures. The DSL compiles to the same underlying pipeline bundle used by the YAML / scaffold-directory flow, but you never have to write or maintain the YAML yourself.
+
+This page is the complete reference for the DSL. For a runnable end-to-end walkthrough, see the [Quick Start](README.mdx#quick-start). For a more elaborate example with mixed local and remote steps, see [`examples/pipeline_dsl_text_pipeline.py`](https://github.com/Clarifai/clarifai-python/blob/master/examples/pipeline_dsl_text_pipeline.py) in the `clarifai-python` repo.
+
+## Public API
+
+The DSL is exported from `clarifai.runners.pipelines`:
+
+```python
+from clarifai.runners.pipelines import (
+    ComputeInfo,
+    Pipeline,
+    step,
+    step_ref,
+    load_pipeline_from_file,  # advanced: load a Pipeline instance from a .py path
+)
+```
+
+## Defining Steps with `@step`
+
+Use the `@step` decorator to turn a Python function into a pipeline step. The function signature becomes the step's input parameters; the return value becomes the step's output.
+
+```python
+from clarifai.runners.pipelines import ComputeInfo, step
+
+@step(
+    id="prepare-text",                                # optional; defaults to function name with _→-
+    requirements=["transformers>=4.0"],               # optional; pip requirements for the step
+    assets=["./text_utils.py"],                       # optional; files copied alongside step code
+    compute=ComputeInfo(cpu_limit="500m", cpu_memory="500Mi"),  # optional; compute requirements
+    python_version="3.12",                            # optional; defaults to "3.12"
+    secrets={"OPENAI_API_KEY": "users/me/secrets/openai-key"},  # optional; step-level secrets
+)
+def prepare_text(input_text: str) -> str:
+    """Normalize text before downstream processing."""
+    return input_text.strip().lower()
+```
+
+### `@step` Parameters
+
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `id` | `str` | The step's identifier. Defaults to the function name with underscores converted to hyphens (e.g. `prepare_text` → `prepare-text`). Must be a valid Clarifai resource ID. |
+| `requirements` | `list[str]` or `str` | Pip requirements for the step. Accepts a list of requirement strings, a single requirement string, or a path to a `requirements.txt` file. |
+| `assets` | `list[str]` | Files or directories to bundle alongside the step's code. Paths are resolved relative to the source file containing the step. |
+| `compute` | `ComputeInfo` | Compute resources for the step (CPU, memory, accelerators). See [Compute Requirements](#compute-requirements). |
+| `python_version` | `str` | Python version to use inside the step's container. Defaults to `"3.12"`. |
+| `secrets` | `dict[str, str]` | Environment variable name → secret resource path. Secrets are mounted as environment variables at step runtime. |
+
+### Step Input Parameters
+
+A step's input parameters are inferred from its function signature. Type annotations become parameter type hints; default values become parameter defaults.
+
+```python
+@step
+def train(
+    dataset_path: str,                              # required parameter
+    base_model: str = "google/vit-base-patch16-224", # optional with default
+    epochs: int = 10,
+    learning_rate: float = 0.001,
+) -> str:
+    ...
+```
+
+No separate `pipeline_step_input_params` YAML block to maintain — the function signature is the source of truth.
+
+### Calling a Step Function Directly
+
+Step functions can be called directly outside of a `Pipeline` context. This is useful for local testing:
+
+```python
+result = prepare_text("Some Input")           # runs the underlying function locally
+# or, equivalently:
+result = prepare_text.test(input_text="Some Input")
+```
+
+Inside a `Pipeline` context, the same call adds a node to the DAG instead of executing the function.
+
+## Compute Requirements
+
+`ComputeInfo` declares the compute resources for a step:
+
+```python
+from clarifai.runners.pipelines import ComputeInfo
+
+ComputeInfo(
+    cpu_limit="500m",         # 500 millicores = 0.5 CPU cores
+    cpu_memory="500Mi",       # 500 MiB of memory
+    num_accelerators=0,       # number of GPUs/accelerators
+    accelerator_type=["NVIDIA-A10G"],  # optional accelerator type constraints
+)
+```
+
+`ComputeInfo` is the same proto type used in `config.yaml`'s `pipeline_step_compute_info` block — see the [Compute Resources](create-api.md#compute-resources-allocation) section of the advanced YAML reference for the full set of fields.
+
+## Composing Pipelines with `Pipeline(...)`
+
+A `Pipeline` instance is the container for your DAG. Use it as a context manager (`with Pipeline(...) as pipeline:`) so step calls register nodes against it:
+
+```python
+from clarifai.runners.pipelines import Pipeline
+
+with Pipeline(id="my-pipeline") as pipeline:
+    raw = pipeline.input("input_text", default="hello world")
+
+    prepared = prepare_text(input_text=raw)
+    summary  = summarize(input_text=prepared.output())
+
+    prepared >> summary
+```
+
+After running `clarifai login`, `user_id` and `app_id` are read automatically from your CLI context — you don't need to pass them explicitly. To target a different user or app, pass them as kwargs:
+
+```python
+with Pipeline(id="my-pipeline", user_id="other-user", app_id="other-app") as pipeline:
+    ...
+```
+
+### `Pipeline` Constructor
+
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `id` | `str` | The pipeline's identifier. Required. |
+| `user_id` | `Optional[str]` | User ID owning the pipeline. Defaults to the user from your `clarifai login` context. |
+| `app_id` | `Optional[str]` | App ID containing the pipeline. Defaults to the app from your `clarifai login` context. |
+| `visibility` | `str` | Visibility setting; defaults to `"PRIVATE"`. |
+
+If neither explicit args nor `clarifai login` context provide `user_id` and `app_id`, the constructor raises a `ValueError` pointing you to run `clarifai login` first.
+
+When the `with` block exits, the pipeline is validated automatically — missing dependencies and DAG cycles raise a `ValueError` before upload.
+
+### Workflow Inputs
+
+`pipeline.input(name, default=None)` declares a workflow-level input parameter — a value provided at runtime when you `clarifai pipeline run`. The return value is a reference you can pass into step calls:
+
+```python
+with Pipeline(id="my-pipeline") as pipeline:
+    raw = pipeline.input("input_text", default="hello")
+    cleaned = prepare_text(input_text=raw)
+```
+
+### Connecting Steps
+
+There are two ways to express dependencies between steps:
+
+**1. Pass one step's output to another step's input.** This creates an implicit dependency:
+
+```python
+prepared = prepare_text(input_text=raw)
+summary  = summarize(input_text=prepared.output())   # summary depends on prepared
+```
+
+`step_node.output(param_name="result")` returns a reference to a named output of an upstream step. The default name is `"result"`.
+
+**2. Use the `>>` operator for explicit ordering.** This is useful when you need a dependency that isn't expressed by data flow, or for fan-in / fan-out:
+
+```python
+# Linear: a → b → c
+a >> b >> c
+
+# Fan-out: prepared feeds two parallel branches
+prepared >> [summary, sentiment]
+
+# Fan-in (diamond DAG): both branches feed the final report step
+prepared >> [summary, sentiment] >> report
+```
+
+The `>>` operator returns its right-hand operand so chained expressions read naturally.
+
+## Referencing Existing Remote Steps with `step_ref`
+
+To compose pipelines that include already-uploaded pipeline steps (your own or shared from another app), use `step_ref`. The referenced step is pinned to a specific version and is not re-uploaded with the pipeline:
+
+```python
+from clarifai.runners.pipelines import step_ref
+
+# By IDs:
+classify_sentiment = step_ref(
+    id="classify-sentiment",
+    user_id="demo-user",
+    app_id="shared-app",
+    version_id="sentiment-v3",
+)
+
+# By URL:
+summarize = step_ref.from_url(
+    "https://api.clarifai.com/v2/users/demo-user/apps/shared-app/pipeline_steps/summarize/versions/summary-v1",
+    secrets={"OPENAI_API_KEY": "users/demo-user/secrets/openai-key"},
+)
+```
+
+You can mix locally-defined steps and `step_ref` steps freely in the same pipeline.
+
+### `step_ref` Parameters
+
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `id` | `str` | The remote step's ID. |
+| `version_id` | `str` | A specific version of the step. Required — referencing the "latest" version is intentionally not supported, to preserve reproducibility. |
+| `user_id` | `str` | The step's owning user. Defaults to the pipeline's `user_id`. |
+| `app_id` | `str` | The step's owning app. Defaults to the pipeline's `app_id`. |
+| `secrets` | `dict[str, str]` | Step-level secrets, same shape as `@step`. |
+
+### `step_ref.from_url(url, *, secrets=None)`
+
+Convenience constructor that parses a versioned pipeline step URL or resource path of the form:
+
+```
+users/{user_id}/apps/{app_id}/pipeline_steps/{step_id}/versions/{version_id}
+```
+
+## Step-Level Secrets
+
+Both `@step` and `step_ref` accept a `secrets` dictionary mapping environment variable names to [Clarifai secret](https://docs.clarifai.com/control/authentication/environment-secrets) resource paths:
+
+```python
+@step(
+    id="call-openai",
+    secrets={"OPENAI_API_KEY": "users/me/secrets/openai-key"},
+)
+def call_openai(prompt: str) -> str:
+    import os
+    api_key = os.environ["OPENAI_API_KEY"]
+    ...
+```
+
+Secrets are injected as environment variables at step runtime. They are not visible in your pipeline source or in the generated bundle.
+
+## Upload
+
+Upload a pipeline directly from its `.py` file:
+
+```bash
+clarifai pipeline upload my_pipeline.py
+```
+
+The CLI loads the `Pipeline` instance from the file, generates the underlying step bundles into a temporary `generated-/` directory next to the file, and uploads. You can also upload programmatically:
+
+```python
+pipeline_version_id = pipeline.upload(no_lockfile=False)
+```
+
+The pipeline's source file must contain exactly one `Pipeline` instance. If you want multiple pipelines in the same project, put them in separate files.
+
+## Generating the YAML Bundle (Codegen)
+
+To produce the underlying scaffold-directory bundle without uploading — useful for inspection, version control, or handing off to the YAML/CLI flow — there are two options.
+
+**From the CLI:**
+
+```bash
+clarifai pipeline compile my_pipeline.py --output-dir ./generated-bundle
+```
+
+`clarifai pipeline compile` takes any `.py` file containing a `Pipeline` instance and writes the corresponding scaffold-directory bundle to the directory you specify.
+
+**From Python:**
+
+```python
+pipeline.generate("./generated-bundle")
+```
+
+The `pipeline.generate(output_dir)` method is what `clarifai pipeline compile` calls under the hood — use it directly if you want to expose codegen from your own script:
+
+```python
+# my_pipeline.py
+import argparse
+from clarifai.runners.pipelines import Pipeline, step
+
+# ... step and pipeline definitions ...
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--out", default="./generated-pipeline")
+    args = parser.parse_args()
+    pipeline.generate(args.out)
+
+if __name__ == "__main__":
+    main()
+```
+
+The generated directory has the same shape as a scaffold-directory pipeline: a root `config.yaml`, per-step subdirectories with their own `config.yaml`, `requirements.txt`, and a `1/pipeline_step.py` containing an `argparse`-wrapped version of your `@step` function. You can upload it the same way as a scaffold-directory pipeline:
+
+```bash
+clarifai pipeline upload ./generated-bundle
+```
+
+## Programmatic Run
+
+You can run a pipeline from Python without going through the CLI:
+
+```python
+result = pipeline.run(
+    inputs={"input_text": "hello world"},
+    timeout=3600,
+    monitor_interval=10,
+    nodepool_id="...",
+    compute_cluster_id="...",
+)
+```
+
+If the pipeline hasn't been uploaded yet, `run()` uploads first. See the [Manage Pipeline Runs](manage-run.md) page for monitoring, pausing, and cancelling runs after they're started.
+
+## Validation
+
+Pipelines are validated automatically when the `with Pipeline(...) as pipeline:` block exits. Validation checks for:
+
+- **Missing dependencies** — any `>>` reference to a step not defined in the pipeline raises a `ValueError`.
+- **DAG cycles** — circular dependencies between steps raise a `ValueError` with the offending node.
+
+For explicit validation outside a `with` block, call `pipeline.validate()` directly.
+
+## See Also
+
+* **[Quick Start](README.mdx#quick-start)** — minimal end-to-end DSL example.
+* **[Templates](templates.md)** — starter `.py` files for common workflows.
+* **[Advanced: YAML / config-based pipelines](create-api.md)** — the scaffold-directory authoring flow the DSL compiles down to.
+* **[Working example](https://github.com/Clarifai/clarifai-python/blob/master/examples/pipeline_dsl_text_pipeline.py)** — a complete DSL pipeline with helpers, remote `step_ref` steps, and a diamond DAG.
+
+---
+
 ## Manage Pipeline Runs
 
 #  Manage Pipeline Runs
@@ -7193,6 +7560,112 @@ clarifai pipeline validate-lock
 [INFO] 15:45:54.416129 App: pipelines-1 |  thread=8329666752 
 [INFO] 15:45:54.416149 Version: 48862434906f482e94a2ec638a4233a1 |  thread=8329666752 
 ```
+
+---
+
+## Pipeline Templates
+
+# Pipeline Templates
+
+**Start from a working pipeline template for common workflows**
+
+Pipeline templates are starter projects for common AI/ML workflows — LoRA fine-tuning, image classification, object detection, model quantization, evaluation. They give you a working pipeline with sensible defaults that you can edit and run, instead of starting from a blank file.
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from "@theme/CodeBlock";
+
+## Available CLI-First Templates
+
+These five templates are designed to be initialized and run from the Clarifai CLI. All have working defaults so the first run requires no edits.
+
+| Template | What it does |
+| :--- | :--- |
+| [`lora-pipeline-unsloth-quick-start`](https://github.com/Clarifai/pipeline-examples/tree/main/lora-pipeline-unsloth-quick-start) | Fine-tune an LLM with LoRA using [Unsloth](https://github.com/unslothai/unsloth). Defaults to `unsloth/Qwen3-0.6B` on `mlabonne/FineTome-100k`. |
+| [`llmcompressor-pipeline-quick-start`](https://github.com/Clarifai/pipeline-examples/tree/main/llmcompressor-pipeline-quick-start) | Quantize a model with [`llm-compressor`](https://github.com/vllm-project/llm-compressor) for reduced memory and compute footprint. |
+| [`classifier-pipeline-resnet-quick-start`](https://github.com/Clarifai/pipeline-examples/tree/main/classifier-pipeline-resnet-quick-start) | Train an image classifier (ResNet) on your dataset. |
+| [`detector-pipeline-yolof-quick-start`](https://github.com/Clarifai/pipeline-examples/tree/main/detector-pipeline-yolof-quick-start) | Train an object detector (YOLOF) on your dataset. |
+| [`detector-pipeline-eval-yolof-quick-start`](https://github.com/Clarifai/pipeline-examples/tree/main/detector-pipeline-eval-yolof-quick-start) | Evaluate a YOLOF object detector against ground-truth labels. |
+
+## Discover Templates From the CLI
+
+Use `clarifai pipelinetemplate list` to see all registered templates:
+
+    clarifai pipelinetemplate list
+
+  Example Output
+
+```text
+NAME                                       TYPE
+classifier-pipeline-resnet                 classifier
+classifier-pipeline-resnet-quick-start     classifier
+detector-pipeline-dfine                    detector
+detector-pipeline-eval-yolof-quick-start   detector
+detector-pipeline-yolof                    detector
+detector-pipeline-yolof-quick-start        detector
+llmcompressor-pipeline-quick-start         llmcompressor
+lora-pipeline-unsloth-quick-start          lora
+Found 8 template(s) total
+Available types: classifier, detector, llmcompressor, lora
+```
+
+> **Note:** The `ls` alias works the same as `list` — `clarifai pipelinetemplate ls` is equivalent to `clarifai pipelinetemplate list`.
+
+You'll notice the CLI returns three additional templates that aren't in the table above (`classifier-pipeline-resnet`, `detector-pipeline-dfine`, `detector-pipeline-yolof`). Those are **UI-triggerable templates** — they're the back-end implementations of the model-training workflows in the Clarifai web app, not standalone CLI experiences. See [Model-type guides](#model-type-guides) below for those.
+
+Templates are pulled from the [official Clarifai pipeline-examples repository](https://github.com/Clarifai/pipeline-examples). To point at a custom or private template repository, set `CLARIFAI_PIPELINE_TEMPLATES_GIT_REPO_URL` before running the command.
+
+## Initialize a Project From a Template
+
+Use `clarifai pipeline init --template ` to scaffold a working starter project:
+
+    clarifai pipeline init --template lora-pipeline-unsloth-quick-start
+
+The command creates a project in the current directory with all configuration and step files in place. You can then edit the generated files to point at your data and customize behavior, and upload with `clarifai pipeline upload`.
+
+### Override Defaults at Initialization
+
+Use `--set key=value` to override template parameters at init time. Each `--set` flag sets one parameter; you can pass it multiple times:
+
+```bash
+clarifai pipeline init --template lora-pipeline-unsloth-quick-start \
+  --set base_model_name="unsloth/Llama-3.2-1B-Instruct" \
+  --set num_epochs=3
+```
+
+This is the scriptable / agent-friendly entry point for scaffolding — no interactive prompts required.
+
+### Specify User and App Context
+
+By default, the scaffold uses your authenticated user (from `clarifai login`). You can override with `--user_id` and `--app_id` to scaffold for a different user or app:
+
+```bash
+clarifai pipeline init --template lora-pipeline-unsloth-quick-start \
+  --user_id your_user_id \
+  --app_id your_app_id
+```
+
+## What Gets Scaffolded
+
+Templates today scaffold a YAML / config-based pipeline project — a directory containing a root `config.yaml`, per-step subdirectories, and a `pipeline_step.py` for each step. The full file structure is documented under [Advanced: YAML / config-based pipelines](create-api.md#step-3-modify-the-files).
+
+> **Forward-looking note:** Clarifai is moving toward Python-first pipeline authoring via the [Pipeline DSL](dsl-reference.md). Templates are being migrated to scaffold DSL-based `.py` starters in addition to YAML scaffold directories. The CLI commands documented on this page will remain stable; what changes is the shape of the generated files.
+
+## Use Templates Without `init`
+
+You don't have to use the `init` command to use a template. Each template is just a project layout in the [pipeline-examples repository](https://github.com/Clarifai/pipeline-examples) — you can also clone or download templates directly, edit them in place, and `clarifai pipeline upload` them like any other pipeline.
+
+For workflows where you'd rather author from scratch in Python without a starter, see the [Pipeline DSL reference](dsl-reference.md).
+
+## Model-Type Guides
+
+The CLI-first templates above have UI-triggerable counterparts (`classifier-pipeline-resnet`, `detector-pipeline-dfine`, `detector-pipeline-yolof`) that power the model-training workflows in the Clarifai web app. For an end-to-end walkthrough that uses those, see:
+
+* [Train a Visual Classifier](https://docs.clarifai.com/create/models/visual-classifier)
+* [Train a Visual Detector](https://docs.clarifai.com/create/models/visual-detector)
+* [Training Models overview](https://docs.clarifai.com/create/models/) — index of model-type guides
+
+The model-type guides take a "I want to train a specific kind of model from the UI" angle; this page is the canonical reference for the CLI-first template surface.
 
 ---
 
