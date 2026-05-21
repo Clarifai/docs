@@ -1,6 +1,6 @@
 ---
 description: Control pipeline runs in real time — monitor, pause, resume, and cancel
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 #  Manage Pipeline Runs

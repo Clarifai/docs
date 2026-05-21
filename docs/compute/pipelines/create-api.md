@@ -1,17 +1,25 @@
 ---
-description: Create, upload, and run pipelines via our API effortlessly
-sidebar_position: 1
+description: YAML / config-based authoring flow for pipelines, with the full file structure reference
+sidebar_position: 5
 toc_max_heading_level: 5
 ---
 
-# Create and Run Pipelines [API]
+# Advanced: YAML / Config-Based Pipelines
 
-**Create, upload, and run pipelines via our API effortlessly**
+**YAML / config-based authoring flow for pipelines, with the full file structure reference**
 <hr />
+
+:::tip Looking for the Python-first path?
+
+For new pipelines, we recommend the [Pipeline DSL](dsl-reference.md) — define steps as decorated Python functions, compose them with `>>`, and upload directly from a `.py` file with `clarifai pipeline upload my_pipeline.py`. No YAML to maintain.
+
+This page documents the **YAML / config-based** authoring flow: scaffold a directory of `config.yaml` + `pipeline_step.py` files with `clarifai pipeline init`, edit them, and upload the directory. Useful for existing pipelines, workflows that need explicit YAML control, or as a reference for the file structure that the DSL compiles down to.
+
+:::
 
 [Clarifai Pipelines](README.mdx) let you design and launch asynchronous, multi-step AI workflows on our platform. You can effortlessly automate complex processes, orchestrate AI agents, and run long-running jobs at scale.
 
-Let’s walk through how you can create, upload, and run pipelines via our API.
+This page walks through the YAML / config-based authoring flow.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
