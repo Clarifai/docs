@@ -50,11 +50,9 @@ To override defaults at init time — a different base model, more epochs, custo
 
 <Tabs groupId="code">
 <TabItem value="bash" label="CLI">
-```bash
-clarifai pipeline init --template lora-pipeline-unsloth-quick-start \
+    <CodeBlock className="language-bash">{`clarifai pipeline init --template lora-pipeline-unsloth-quick-start \
   --set base_model_name="unsloth/Llama-3.2-1B-Instruct" \
-  --set num_epochs=3
-```
+  --set num_epochs=3`}</CodeBlock>
 </TabItem>
 </Tabs>
 
