@@ -25,7 +25,7 @@ clarifai login`}</CodeBlock>
 </TabItem>
 </Tabs>
 
-`clarifai login` auto-detects your user ID and saves your [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat/) locally.
+`clarifai login` auto-detects your user ID and saves your [Personal Access Token (PAT)](https://docs.clarifai.com/control/authentication/pat) locally.
 
 ## Fine-Tune the Model
 
