@@ -146,6 +146,7 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [YAML-based Examples](https://docs.clarifai.com/docs/create/workflows/examples/yaml): Simple examples of workflows defined in YAML
 - [Workflow Inferences](https://docs.clarifai.com/docs/create/workflows/inference): Make predictions with your workflows
 - [Manage Workflows](https://docs.clarifai.com/docs/create/workflows/manage): Manage workflows
+- [Fine-Tune Your First LLM](https://docs.clarifai.com/docs/getting-started/fine-tune-your-first-llm): Fine-tune an LLM with LoRA in three commands using a pipeline template
 - [Deploy Your First Model via UI](https://docs.clarifai.com/docs/getting-started/first-deployment): Set up your computing infrastructure easily and fast for inference
 - [Quick Start With Playground](https://docs.clarifai.com/docs/getting-started/playground): Start running inferences in just a few simple steps
 - [Quick Start With API](https://docs.clarifai.com/docs/getting-started/quickstart): Start quickly with Clarifai API in a few simple steps
