@@ -22,7 +22,7 @@ Explore a collection of ready-to-use ML pipeline templates for training, evaluat
 
 * **Schedule training on your inference clusters.** Training, evaluation, and inference workloads share the same Compute Orchestration clusters — no separate cluster to provision and pay for. Run a training job overnight on the same nodepool that serves your daytime inference traffic.
 * **Outputs land in the model registry.** Trained and quantized models from pipeline runs are registered directly into Clarifai's model registry, ready to serve or evaluate further without an export step.
-* **Python-first authoring.** Define pipelines as decorated Python functions with the [DSL](dsl-reference.md) — no parallel YAML to keep in sync.
+* **Python or YAML — both first-class.** Author pipelines as decorated Python functions with the [DSL](dsl-reference.md), or as YAML config with [scaffold templates](create-api.md). Same engine, same templates, same upload path — pick whichever fits your team.
 
 ## Use Cases for Pipelines
 
@@ -89,15 +89,15 @@ The pipeline fine-tunes the model on a single-GPU instance (the template's compu
 
 That's it — you have a fine-tuned model registered in your Clarifai model registry, ready to serve, evaluate, or refine further.
 
-:::tip Python-first alternative
+:::tip Two upload paths
 
-The LoRA template ships with both a YAML scaffold (`config.yaml`) and a Python DSL form (`dsl.py`). To upload directly from the DSL Python file instead of the scaffold:
+The LoRA template ships with both a YAML scaffold (`config.yaml`) and a Python DSL form (`dsl.py`). The default `clarifai pipeline upload` uses the YAML scaffold. To upload from the DSL Python file instead:
 
 ```bash
 clarifai pipeline upload dsl.py
 ```
 
-Both paths produce the same pipeline. The DSL form is the recommended starting point if you plan to author your own custom pipelines — see the [Pipeline DSL reference](dsl-reference.md) for the full API (`@step`, `step_ref`, `>>` composition, `base_image`, etc.).
+Both paths produce the same pipeline. The [YAML config](create-api.md) is convenient for explicit, version-controlled configuration. The [Pipeline DSL](dsl-reference.md) is convenient for code-first authoring with type hints, `@step` decorators, and `>>` DAG composition. Use whichever fits your team.
 
 :::
 
@@ -125,7 +125,7 @@ For custom workflows that don't fit a template, use the [Pipeline DSL](dsl-refer
 * **[Pipeline DSL reference](dsl-reference.md)** — `@step`, `step_ref`, `>>` composition, `ComputeInfo`, secrets, codegen.
 * **[Manage Pipelines](manage.md)** — list, validate, and inspect pipelines on the platform.
 * **[Manage Pipeline Runs](manage-run.md)** — monitor, pause, resume, and cancel runs.
-* **[Advanced: YAML / config-based pipelines](create-api.md)** — the scaffold-directory authoring flow underneath the templates, useful for existing pipelines or workflows that need explicit YAML control.
+* **[YAML / config-based pipelines](create-api.md)** — the YAML config authoring path, useful for explicit version-controlled configuration, YAML-first workflows, or as a reference for the scaffold-directory file structure.
 
 ### Pipeline outputs → Artifacts
 

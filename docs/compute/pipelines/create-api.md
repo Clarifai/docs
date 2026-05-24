@@ -4,16 +4,16 @@ sidebar_position: 5
 toc_max_heading_level: 5
 ---
 
-# Advanced: YAML / Config-Based Pipelines
+# YAML / Config-Based Pipelines
 
 **YAML / config-based authoring flow for pipelines, with the full file structure reference**
 <hr />
 
-:::tip Looking for the Python-first path?
+:::tip Prefer Python?
 
-For new pipelines, we recommend the [Pipeline DSL](dsl-reference.md) — define steps as decorated Python functions, compose them with `>>`, and upload directly from a `.py` file with `clarifai pipeline upload my_pipeline.py`. No YAML to maintain.
+Clarifai Pipelines support two authoring paths: this YAML / config-based flow, and the [Pipeline DSL](dsl-reference.md) for code-first authoring with `@step` decorators and `>>` DAG composition. Both paths reach the same engine and produce the same pipeline — pick whichever fits your team.
 
-This page documents the **YAML / config-based** authoring flow: scaffold a directory of `config.yaml` + `pipeline_step.py` files with `clarifai pipeline init`, edit them, and upload the directory. Useful for existing pipelines, workflows that need explicit YAML control, or as a reference for the file structure that the DSL compiles down to.
+This page documents the YAML path: scaffold a directory of `config.yaml` + `pipeline_step.py` files with `clarifai pipeline init`, edit them, and upload the directory.
 
 :::
 
