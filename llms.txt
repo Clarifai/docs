@@ -31,7 +31,7 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [Local Runners](https://docs.clarifai.com/docs/compute/local-runners/README): Run and test models locally, while exposing them publicly through Clarifai’s enterprise‑grade API
 - [Compute Orchestration](https://docs.clarifai.com/docs/compute/overview): Orchestrate your AI workloads better, avoid vendor lock-in, and use compute spend efficiently
 - [Pipelines](https://docs.clarifai.com/docs/compute/pipelines/README): Orchestrate asynchronous, long-running, multi-step AI processes
-- [Advanced: YAML / Config-Based Pipelines](https://docs.clarifai.com/docs/compute/pipelines/create-api): YAML / config-based authoring flow for pipelines, with the full file structure reference
+- [YAML / Config-Based Pipelines](https://docs.clarifai.com/docs/compute/pipelines/create-api): YAML / config-based authoring flow for pipelines, with the full file structure reference
 - [Pipeline DSL Reference](https://docs.clarifai.com/docs/compute/pipelines/dsl-reference): Pythonic-first DSL for defining and uploading Clarifai pipelines
 - [Manage Pipeline Runs](https://docs.clarifai.com/docs/compute/pipelines/manage-run): Control pipeline runs in real time — monitor, pause, resume, and cancel
 - [Manage Pipelines](https://docs.clarifai.com/docs/compute/pipelines/manage): Manage and scale pipelines across their entire lifecycle
