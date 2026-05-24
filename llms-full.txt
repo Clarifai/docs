@@ -6066,9 +6066,25 @@ Connect your environment to the Clarifai platform and [create a context](#step-2
 
 ### Set up a Model
 
-Generate a sample toy [model](#step-1-build-a-model) with the necessary files.
+Scaffold a sample [model](#step-1-build-a-model) with the necessary files. You can start from a blank Python template, or pick a built-in toolkit pre-configured for your inference engine:
 
-    clarifai model init
+    {`# Local LLM servers (most common for local runners):
+clarifai model init --toolkit ollama --model-name llama3.1
+clarifai model init --toolkit lmstudio --model-name 
+
+# GPU LLM serving (if running on a local GPU):
+clarifai model init --toolkit vllm --model-name Qwen/Qwen3-0.6B
+clarifai model init --toolkit sglang --model-name meta-llama/Llama-3-8B
+clarifai model init --toolkit huggingface --model-name bert-base-uncased
+
+# Other:
+clarifai model init --toolkit mcp my-mcp-server         # MCP tool server (FastMCP)
+clarifai model init --toolkit openai my-openai-wrapper  # OpenAI-compatible wrapper
+
+# Blank Python template:
+clarifai model init`}
+
+Each toolkit pre-fills `model.py` with a working `ModelClass` implementation, `config.yaml` with reasonable defaults, and `requirements.txt`. After scaffolding, the next step is to serve the model locally.
 
 ### Serve Your Model Locally
 
