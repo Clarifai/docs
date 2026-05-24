@@ -126,7 +126,37 @@ your_model_directory/
 
 ## Step 2: Build a Model
 
-Let's talk about the general steps you'd follow to upload any type of model to the Clarifai platform. 
+Let's talk about the general steps you'd follow to upload any type of model to the Clarifai platform.
+
+### Scaffold the Project With `clarifai model init` (Recommended)
+
+The fastest way to start is to scaffold a complete model project — `model.py`, `config.yaml`, and `requirements.txt` — with one command. Pick a built-in toolkit for a common inference engine, or scaffold a blank Python template you can fill in:
+
+<Tabs groupId="code">
+<TabItem value="bash" label="CLI">
+    <CodeBlock className="language-bash">{`# GPU LLM serving:
+clarifai model init --toolkit vllm --model-name Qwen/Qwen3-0.6B
+clarifai model init --toolkit sglang --model-name Qwen/Qwen3-0.6B
+clarifai model init --toolkit huggingface --model-name bert-base-uncased
+
+# Local LLM servers:
+clarifai model init --toolkit ollama --model-name llama3.1
+clarifai model init --toolkit lmstudio --model-name llama-3.2-3b-instruct
+
+# Other use cases:
+clarifai model init --toolkit mcp my-mcp-server         # MCP tool server
+clarifai model init --toolkit openai my-openai-wrapper  # OpenAI-compatible wrapper
+
+# Blank Python template:
+clarifai model init my-model`}</CodeBlock>
+</TabItem>
+</Tabs>
+
+Each toolkit pre-fills `model.py` with a working `ModelClass` implementation, `config.yaml` with reasonable compute defaults, and `requirements.txt` with the right dependencies. After scaffolding, you can run the model locally (Step 3), upload it (Step 4), and deploy it (Step 5) — often with no further code changes.
+
+You can also clone an existing example from a GitHub URL with `clarifai model init --github-url <url>` — useful for starting from a known-good reference (see the [`runners-examples`](https://github.com/Clarifai/runners-examples) repo).
+
+The rest of this step walks through `model.py`, `config.yaml`, and `requirements.txt` in detail — either as reference for what gets generated, or as a guide if you'd rather build everything from scratch.
 
 ### Prepare `model.py` 
 
