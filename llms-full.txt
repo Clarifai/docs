@@ -24908,7 +24908,9 @@ After finding a model, click the **Deploy Model** button in the upper-right corn
 
 ## Step 3: Configure Your Deployment
 
-You’ll be redirected to the deployment creation page, where most fields are pre-filled for you — such as the Deployment ID, [PAT](https://docs.clarifai.com/control/authentication/pat) (for authentication), and Nodepool. You can adjust these settings as needed.
+You’ll be redirected to the deployment creation page, where the fields are pre-filled for you — such as the Deployment ID, [PAT](https://docs.clarifai.com/control/authentication/pat) (for authentication), and Nodepool. 
+
+You can adjust these settings as needed.
 
 ![](/img/new-docs/deploy-2.png)
 
@@ -24925,8 +24927,6 @@ You’ll then be automatically redirected to the newly created deployment page, 
 ## Step 4: Run Inferences
 
 To run a prediction with your deployed model, click the **Try Model** button — either on the deployment page or in the upper-right corner of the model's individual page. 
-
-> **Note:** On the model's individual page, open the **Compute** tab to view the compute environment details for the deployment.
 
 ![](/img/new-docs/deploy-9-a.png)
 
