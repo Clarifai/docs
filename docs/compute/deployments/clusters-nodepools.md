@@ -29,7 +29,7 @@ You can connect your existing AWS, Google Cloud (GCP), or Oracle infrastructure 
 
 Log in to the Clarifai platform and select the **Compute** option in the collapsible left sidebar.  
 
-You’ll be redirected to the Compute Overview page, where you can view and create clusters, nodepools, and deployments. 
+Then, select the **Clusters** option from the dropdown list. You’ll be redirected to the clusters page, where you can view and manage all compute clusters across your environments.
 
 Click the **Create a Cluster** button to begin setting up a new cluster along with its associated nodepool.
 
@@ -118,13 +118,12 @@ Fill out the form to specify the details for your cluster and nodepool.
 
 ![ ](/img/compute-orchestration/compute-8.png)
 
-
+- **Personal Access Token (PAT)** — Use a [PAT](https://docs.clarifai.com/control/authentication/pat) to authenticate your identity when connecting to the cluster. Click the dropdown to choose from existing tokens, or create a new one by selecting **Create a new Personal Access Token** or by visiting the **Security** section in your personal settings.
+    > **Note:** The token must have the required permissions to manage compute resources. Also, if the selected PAT is deleted, any associated compute functionality will stop working.
 - **Cluster ID** — Enter a unique identifier for your cluster. This ID is used when deploying models and should reflect the cluster’s purpose or workload. It is auto-filled based on your selected instance type, but you can modify it as needed.
 - **Cluster Description** — Optionally, provide a short description that summarizes the details related to the cluster. 
 - **Nodepool ID** — Enter a unique identifier for your nodepool. This ID is used when deploying models and should reflect the nodepool’s purpose or workload. It is auto-filled based on your selected instance type, but you can modify it as needed.
 - **Nodepool Description** — Optionally, provide a short description that summarizes the details related to the nodepool. 
-- **Personal Access Token (PAT)** — Use a [PAT](https://docs.clarifai.com/control/authentication/pat) to authenticate your identity when connecting to the cluster. Click the dropdown to choose from existing tokens, or create a new one by selecting **Create a new Personal Access Token** or by visiting the **Security** section in your personal settings.
-    > **Note:** The token must have the required permissions to manage compute resources. Also, if the selected PAT is deleted, any associated compute functionality will stop working.
 
 ### Step 6: Finalize and Create the Cluster
 
@@ -132,13 +131,13 @@ Before you enter the required details for creating a cluster, the **Create Clust
 
 Click it to launch your cluster and nodepool.
 
-You'll then be redirected to your newly created cluster's page, where its associated nodepool will be listed in a table.
+You'll then be redirected to your newly created cluster's page, where the details of its associated nodepool will also be displayed.
 
 ![ ](/img/compute-orchestration/compute-9.png)
 
-> **Note:** _Alternatively, you can create a new nodepool from an existing cluster by clicking the **Create Nodepool** button in the upper-right corner of the cluster's page.You’ll be redirected to a page where you can specify the configurations for your new nodepool._ 
+> **Note:** _You can also create a new nodepool from an existing cluster by clicking the **Create Nodepool** button in the upper-right corner of the cluster's page. You’ll be redirected to a page where you can specify the configurations for your new nodepool._ 
 
-If you click on a nodepool listed in the table, you'll be taken to its individual page, where you can view its detailed information, such as the cluster type, instance type, and any resource deployments associated with it. 
+If you click on a nodepool displayed on the page, you'll be taken to its individual page, where you can view its detailed information, such as its activity status, extent of utilization, and any resource deployments associated with it. 
 
 ![ ](/img/compute-orchestration/compute-10.png)
 
