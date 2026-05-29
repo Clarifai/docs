@@ -57,9 +57,9 @@ To start creating a deployment, click the **Create Deployment** button.
 
 You can create a deployment directly from other areas within the platform. For example, to deploy from a specific model, go to the individual page of the model you want to deploy and click the **Deploy Model** button. You can also create a deployment from a particular cluster or nodepool by navigating to its page and clicking **Deploy Model** there.
 
-> **Note:** On an individual model page, you can also open the **Compute** tab to check if it is already running on any compute environments. This tab displays the compute requirements needed for successfully deploying the model, allowing you to choose a configuration that meets those requirements.
+> **Note:** On an individual model page, you can go to the **Deployments** section to check if it is already running on any compute environments. 
 
-![ ](/img/compute-orchestration/compute-11.png)
+> ![ ](/img/compute-orchestration/compute-11.png)
 
 :::
 
@@ -91,14 +91,23 @@ You can also configure the following settings:
 * **Description** — Optionally add a description to provide additional context about the deployment.
 * **Deployment PAT** — A [Personal Access Token](https://docs.clarifai.com/control/authentication/pat) (PAT) authorizes access to the resources required for your deployment to run. You can use the automatically selected token or choose a different one. If you don’t already have a suitable PAT, you can generate one using the provided button.
     > **Caution:** Be cautious when changing the PAT after the deployment has been created, as this may cause the associated compute resources to stop functioning properly.
+  
+:::note
+
+After selecting a model, a compatible nodepool will be automatically assigned. 
+- If no compatible nodepool exists in your account, a new nodepool is automatically created and marked with a `Pending` status while the required infrastructure is being provisioned. 
+- If a compatible nodepool already exists, it is selected automatically and assigned a `Provisioned` status, indicating that the infrastructure is already configured and ready to host the deployment.
+
+:::
+
 
 ### Step 3: Select a Nodepool
 
-Next, choose a cloud instance type and hardware configuration that best fits your model’s compute requirements and performance goals. See [Supported Cloud Instances](https://docs.clarifai.com/compute/cloud-instances) for a full list of available GPUs, TPUs, and CPU-only options across supported cloud providers.
+Next, choose a cloud instance type and hardware configuration that best fits your model’s compute requirements and performance goals. 
 
-> **Note:** After selecting a model, a compatible nodepool will be automatically suggested. If the nodepool uses a premium instance type, additional provisioning from our team may be required. In such cases, please contact us with your deployment request and our team will guide you through the next steps.
+> **Note:** See [Supported Cloud Instances](https://docs.clarifai.com/compute/cloud-instances) for a full list of available GPUs, TPUs, and CPU-only options across supported cloud providers.
 
-To select or modify a nodepool, click the pencil icon in the upper-right corner. An **Edit Nodepool Configuration** modal will appear, allowing you to choose an existing nodepool or select a recommended one that best fits your deployment requirements.
+To select or modify a nodepool, click the pencil icon in the upper-right corner. An **Edit Nodepool Configuration** modal will appear, allowing you to choose an already existing nodepool or select a recommended one that best fits your deployment requirements.
 
 The details of the nodepools will be displayed, such as GPU type, available memory, CPU cores, and cost per hour. 
 
@@ -110,7 +119,7 @@ The modal allows you to accomplish various tasks, including:
 - **Filter the results** — Use the three dropdown filters to narrow down your options by Cloud Provider, GPU Hardware, and Relevance (sort order).
 - **Switch between tabs** — Choose between **Existing Nodepools** (nodepools already set up in your environment) and **Recommended** (pre-configured nodepools automatically suggested based on your model’s compatibility and resource needs).
 - **Select a nodepool** — Browse the listed nodepools and click one to select it. Each entry shows key details including the cloud provider, cluster, region, GPU specs, memory, cores, pricing per hour, and min/max scaling limits.
-- **Review incompatible instances** — Expand the "See instances incompatible with this model" section at the bottom to understand which options are incompatible with your model .
+- **Review incompatible instances** — Select the **Existing Nodepools** tab and expand the "See instances incompatible with this model" section at the bottom to understand which options are incompatible with your model.
 - **Create a custom nodepool** — If none of the listed options meet your needs, click **+ Create Custom** to configure a [new cluster and nodepool](clusters-nodepools.md) from scratch.
 - **Save or cancel** — Click **Save Changes** to apply your selected nodepool configuration, or **Cancel** to close the pop-up without making any changes.
 
@@ -120,15 +129,24 @@ The selected nodepool will be displayed in the **Nodepool** section.
 
 #### Edit Nodepool
 
-To update the settings for the nodepool instance, click the gear icon.
+To update the settings for a nodepool instance, click the **gear icon** next to the nodepool entry.
 
 ![ ](/img/compute-orchestration/compute-13-6.png)
 
-A configuration modal will appear, allowing you to edit the nodepool description and adjust autoscaling settings based on your performance requirements and expected workload. 
+A configuration modal will appear, allowing you to configure both the cluster and nodepool settings for the deployment. The modal includes the following configurable fields and options:
 
-You can specify the minimum number of instances to maintain — setting this value to zero allows the nodepool to scale down completely when idle. You can also define the maximum number of instances to control the upper limit for autoscaling.
+- **Use Existing Cluster** — attach the nodepool to an existing cluster instead of creating a new one.
+- **Cluster ID** — specify or update the cluster identifier.
+- **Cluster Description** — add deployment notes or a description for the cluster.
+- **Nodepool ID** — define or update the nodepool identifier.
+- **Nodepool Description** — add notes or a description for the nodepool.
+- **Instance Autoscaling** — configure how the nodepool scales based on workload demands:
+  - **Minimum Instances** — the minimum number of instances to keep running. Setting this value to `0` allows the nodepool to scale down completely when idle.
+  - **Maximum Instances** — the maximum number of instances the nodepool can scale up to during periods of high demand.
 
-Click **Save Changes** to apply and finalize your updates.
+The modal also displays the selected nodepool type, machine configuration, cluster name, and deployment region.
+
+After updating the desired settings, click **Save Changes** to apply and finalize the configuration updates.
 
 :::
 
@@ -138,7 +156,7 @@ Dynamic routing allows you to attach additional nodepools to a deployment so tha
 
 If you want to configure additional nodepools for spillover and load balancing, click the **Add Nodepools** button. 
 
-A modal will appear that allows you to select another nodepool to include in the deployment.
+A modal will appear that allows you to [select another nodepool](#step-3-select-a-nodepool) to include in the deployment.
 
 ![ ](/img/compute-orchestration/compute-13-7.png)
 
@@ -172,11 +190,6 @@ To define the number of replicas, use the **Min** and **Max** fields. Each field
 > **Note:** This specifies the minimum and maximum range of model replicas to deploy, adjusting based on your performance needs and anticipated workload. Adding replicas enables horizontal scaling, where the workload is distributed across several instances of the model rather than relying on a single one. However, increasing them consumes more resources and may lead to higher costs.
 
 ![ ](/img/compute-orchestration/compute-14.png)
-
-You can use the following configuration strategies:
-
-* **Fractional** — Allows multiple model replicas to share a single node, helping optimize resource utilization and reduce costs.
-* **Persistent** — Ensures at least one replica is always running. This eliminates cold starts but may incur additional compute costs. To enable this mode, set the minimum replica count to at least **1**.
 
 To make additional changes to the deployment configuration, click the pencil icon in the upper-right corner. A modal will appear with more advanced options for configuring the deployment.
 
@@ -244,9 +257,8 @@ This page provides a comprehensive overview of your deployment, including the fo
   * Download logs for offline review or debugging.
 * **Deployment management** — In the upper-right section of the page, you can manage the deployment using the available controls:
   * Edit the deployment configuration
-  * [Test in Playground](https://docs.clarifai.com/getting-started/playground) to run inference requests
+  * [Try Model](https://docs.clarifai.com/getting-started/playground) to run inference requests
   * Open the three-dot menu to delete the deployment
-* **Cost overview** — Displays the estimated hourly cost range for running the deployment based on the selected infrastructure.
 * **Configuration settings** — Shows the deployment configuration, including scaling behavior, scheduling strategy, visibility, and other operational settings that determine how workloads are handled.
 
 

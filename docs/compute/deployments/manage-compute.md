@@ -19,127 +19,118 @@ You can easily edit configurations, adjust resource allocations, or remove unuse
 
 ### Deployments
 
-You can manage various aspects of your deployments by visiting the nodepool viewer page. The **Deployments** table displays all your current deployments within that nodepool, along with their associated models and deployed model versions.
+The **Deployments** page provides a centralized workspace for viewing, monitoring, and managing all deployments across your compute infrastructure.
 
-The table also supports sorting, allowing you to organize entries alphabetically (A–Z or Z–A) as needed.
+To access the page, expand the **Compute** section in the collapsible left navigation sidebar and select **Deployments**. 
 
-To manage a specific deployment, locate it in the table and click the three-dot menu at the end of its row. This reveals a list of available actions, such as editing, viewing logs, opening the model in the Playground, or deleting the deployment.
+This opens a comprehensive dashboard where you can track deployment activity, monitor resource usage, and perform deployment-related actions from a single interface.
 
 ![](/img/compute-orchestration/compute-26-2.png)
 
-#### Copy Deployment ID
+From the **Deployments** page, you can:
 
-To copy a deployment ID, navigate to the **Deployments** table and locate the **ID** column. Find the ID you need, then click to copy it to your clipboard.
+- **Create a deployment** — Click the **Create Deployment** button in the upper-right corner to deploy a new model.
+- **Filter deployments** — Quickly narrow down deployments using the filter controls at the top of the page. You can filter by **Cluster**, **Nodepool**, **GPU Hardware**, **Model**, or deployment **Status**.
+- **View deployment details** — Each deployment row displays key information, including the deployment name, associated model, nodepool, region, current status, replica configuration, usage metrics, estimated cost, and last modified date.
+- **Monitor deployment status** — Easily identify the current state of a deployment, such as `Idle` when no replicas are running, along with configured minimum and maximum replica limits.
+- **Manage deployments** — Use the action controls on each deployment row to:
+  - Pause traffic; that is, scale the deployment to zero replicas (stopping all traffic until restarted)
+  - Open the deployed model in the [Playground](https://docs.clarifai.com/getting-started/quickstart-playground) for testing
+  - View deployment logs and runtime details
+- **Access additional actions** — Click the three-dot menu at the end of a deployment row to open additional management options, including:
+  - Copy the deployment ID
+  - View the deployment
+  - Edit the deployment
+  - Delete the deployment
+- **Track activity trends** — The activity graph provides a quick visual overview of recent deployment activities and usage patterns over the past several days. 
 
-#### Open in Playground
-
-To open a model in the [Playground](https://docs.clarifai.com/getting-started/quickstart-playground) and test its performance, go to the **Deployments** table and click the three-dot menu at the end of the corresponding row. From the pop-up that appears, select **Open in Playground**.
-
-#### View Deployment Logs
-
-You can access deployment logs to monitor performance and troubleshoot issues.
-
-To view the logs, locate the desired deployment in the **Deployments** table, click the three-dot menu at the end of its row, and select the **View Logs** option from the  pop-up that appears.
-
-A preview window will open, displaying a summary of the log file. To view a full version of the deployment logs, click the **Download** button.
-
-![ ](/img/compute-orchestration/compute-23.png)
-
-#### Edit a Deployment
-
-To edit a deployment, navigate to the **Deployments** table and click the three-dot menu at the end of the corresponding row, as described previously. 
-
-Then, select the **Deployment Setup** option from the pop-up that appears.
-
-You’ll be redirected to the [deployment configuration page](https://docs.clarifai.com/portal-guide/compute-orchestration/deploy-model#make-a-deployment), where you can review and modify the model deployment settings as needed.
-
-#### Delete a Deployment
-
-To delete a deployment, navigate to the **Deployments** table and click the three-dot menu at the end of the corresponding row, as described previously.
-
-Then, select the **Delete Deployment** option from the pop-up that appears.
-
-A confirmation dialog will appear, warning you that this is a destructive action and cannot be undone. To complete the deletion, enter the name of the deployment in the provided field, then click **Yes, Delete**.
-
-![ ](/img/compute-orchestration/compute-26.png)
-
-#### View Deployment Details
-
-You can view deployment details directly from the **Deployments** table. Once you've located the desired deployment, hover over the **CONFIG** column (represented by the clipboard icon) in the same row.
-
-A quick-access tooltip will appear, showing the autoscaling configuration for that deployment.
-
-![](/img/compute-orchestration/compute-30.png)
-
+> **Note:** The page also includes sorting and layout options, allowing you to switch between **List** and **Grid** views for easier deployment management.
 
 :::note Alternatively
 
-You can view a model’s deployment details by navigating to its individual page, selecting the **Compute** tab, and reviewing the **Active Deployments** section. You can find information about the compute environments where the model is currently running. 
+If you click a deployment listed on the page, you'll be redirected to its dedicated details page, where you can view deployment information, monitor runtime activity, manage scaling and traffic settings, access logs, and perform additional deployment management tasks.
 
-![](/img/compute-orchestration/compute-26-1.png)
-
-Also, clicking the three-dot menu at the end of the row in the table reveals different options that allow you to edit the deployment, copy the deployment ID, open the model in the Playground, view deployment logs, or delete the deployment.
+![ ](/img/compute-orchestration/compute-5.png)
 
 :::
 
+
 ### Nodepools
 
-#### Edit a Nodepool
+The **Nodepools** page provides a centralized view for managing the compute resources available across your clusters. It allows you to monitor nodepool capacity, hardware configuration, deployment usage, and operational status from a single interface.
 
-To edit a nodepool, go to its individual page and click the **Edit Nodepool** button located in the upper-right corner of the screen.
+To access the page, expand the **Compute** section in the collapsible left navigation sidebar and select **Nodepools**. 
+
+This opens the **Nodepools** dashboard, where you can view, filter, and manage all nodepools across your infrastructure.
 
 ![ ](/img/compute-orchestration/compute-18.png)
 
-You'll be redirected to a page where you can modify the [configurations for your nodepool](https://docs.clarifai.com/compute/deployments/clusters-nodepools/) based on your requirements. 
+From the **Nodepools** page, you can:
+
+- **Create a nodepool** — Click the **Create Nodepool** button in the upper-right corner to provision a new nodepool with your preferred infrastructure and hardware configuration.
+- **Filter nodepools** — Use the filters at the top of the page to quickly locate nodepools by **Cluster**, **Region**, **Cloud Provider**, or **GPU Hardware**.
+- **View nodepool details** — Each nodepool row displays important information, including:
+  - Associated cluster and region
+  - Hardware specifications such as CPU, memory, and GPU type
+  - Minimum and maximum instance limits
+  - Hourly cost estimates
+  - Number of active deployments
+- **Monitor compute capacity** — Easily track configured scaling limits and available hardware resources for each nodepool.
+- **View deployment usage** — The **Deploys** column shows how many deployments are currently using a nodepool, with quick access to view associated deployments.
+- **Manage nodepools** — Use the action controls on each row to:
+  - Deploy a model to the nodepool
+  - Edit the nodepool configuration
+- **Access additional actions** — Clicking the three-dot menu opens a pop-up menu with additional management options, including:
+  - Copy the nodepool ID
+  - Deploy a Model 
+  - Edit the nodepool
+  - Delete the nodepool
+- **Track activity trends** — The activity graph provides a quick visual overview of recent nodepool activities and usage patterns over the past several days. 
+
+> **Note:** The page also supports **List** and **Grid** layouts, allowing you to choose the view that best fits your workflow and monitoring preferences.
 
 :::note Alternatively
 
-You can perform various nodepool management tasks from the nodepools listing page. In the table, locate the nodepool you want to manage, then click the three-dot menu at the end of the row.
-
-The pop-up that appears provides options to copy its ID, deploy a model to it, edit the nodepool, or delete the nodepool.
+If you click a nodepool listed on the page, you'll be redirected to its dedicated details page, where you can view additional information, monitor activity, and perform further management and configuration tasks for that nodepool.
 
 ![ ](/img/compute-orchestration/compute-17.png)
 
 :::
 
-#### Delete a Nodepool
-
-To delete a nodepool, go to its individual page and click the three-dot menu in the upper-right corner of the screen.
-
-Then, click the **Delete Nodepool** button that appears. 
-
-![ ](/img/compute-orchestration/compute-20.png)
-
-A confirmation pop-up will appear, warning you that deleting the nodepool will cause the associated deployments to stop functioning. So, you may reassign the deployments to a different nodepool if you want to continue using them.
-
-Note that since this action cannot be undone, you need to proceed with caution. To complete the deletion, enter the name of the nodepool in the provided field, then click **Yes, Delete**.
-
-![ ](/img/compute-orchestration/compute-19-1.png)
-
 
 ### Clusters
 
-#### Delete a Cluster
+The **Clusters** page provides a centralized view for managing all compute clusters across your environments. It allows you to monitor cluster configuration, deployment usage, nodepool allocation, and overall infrastructure status from a single interface.
 
-To delete a cluster, go to its individual page and click the three-dot menu in the upper-right corner of the screen.
-
-Then, click the **Delete Cluster** button that appears.
-
-![ ](/img/compute-orchestration/compute-5.png)
-
-A confirmation pop-up will appear, warning you that deleting the cluster will cause the associated nodepools to stop functioning. So, you may reassign the nodepools to a different cluster if you want to continue using them.
-
-Note that since this action cannot be undone, you need to proceed with caution.
-
-To complete the deletion, enter the name of the cluster in the provided field, then click **Yes, Delete**.
+To access the page, expand the **Compute** section in the collapsible left navigation sidebar and select **Clusters**. This opens the **Clusters** dashboard, where you can view, filter, and manage all available clusters.
 
 ![ ](/img/compute-orchestration/compute-6.png)
 
+From the **Clusters** page, you can:
+
+- **Create a cluster** — Click the **Create Cluster** button in the upper-right corner to provision a new cluster.
+- **Filter clusters** — Use the filter controls at the top of the page to quickly find clusters by **Cloud Provider** or **Region**.
+- **View cluster details** — Each cluster row displays important information, including:
+  - Cloud provider and region
+  - Visibility settings
+  - Cluster type
+  - Estimated cost
+- **Monitor infrastructure usage** — Quickly view how many nodepools and deployments are associated with each cluster, helping you track infrastructure utilization and workload distribution.
+- **Manage clusters** — Use the action controls on each row to:
+  - Add a nodepool to the cluster
+  - Edit cluster settings
+- **Access additional actions** — Clicking the three-dot menu opens a pop-up menu with additional management options, including:
+  - Copy cluster ID
+  - Deploy a model
+  - Add a new nodepool
+  - Edit the cluster
+  - Delete the cluster
+  
+> **Note:** The page supports both **List** and **Grid** layouts, allowing you to switch between viewing styles based on your workflow and monitoring preferences.
+
 :::note Alternatively
 
-You can perform various cluster management tasks from the clusters listing page. In the table, locate the cluster you want to manage, then click the three-dot menu at the end of the row.
-
-The pop-up that appears provides options to add a new nodepool, copy its ID, or delete the cluster.
+If you click a cluster listed on the page, you'll be redirected to its dedicated details page, where you can view additional information, monitor cluster activity, manage associated nodepools and deployments, and perform further configuration and administrative tasks.
 
 ![ ](/img/compute-orchestration/compute-6-3.png)
 
