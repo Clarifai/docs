@@ -1869,7 +1869,7 @@ Deployments bring your models to life by running them on dedicated compute, read
 
 A deployment defines how a model runs on a selected nodepool, acting as the bridge between your model and the underlying infrastructure.
 
-For advanced use cases, a single model can be deployed across multiple nodepools to optimize for different workloads, availability, or performance requirements.
+For advanced use cases, a single model can be deployed across [multiple nodepools](https://docs.clarifai.com/compute/deployments/deploy-model#step-4-set-dynamic-routing-optional) to optimize for different workloads, availability, or performance requirements.
 
 With deployments you can:
 
@@ -1909,7 +1909,7 @@ You can connect your existing AWS, Google Cloud (GCP), or Oracle infrastructure 
 
 Log in to the Clarifai platform and select the **Compute** option in the collapsible left sidebar.  
 
-You’ll be redirected to the Compute Overview page, where you can view and create clusters, nodepools, and deployments. 
+Then, select the **Clusters** option from the dropdown list. You’ll be redirected to the clusters page, where you can view and manage all compute clusters across your environments.
 
 Click the **Create a Cluster** button to begin setting up a new cluster along with its associated nodepool.
 
@@ -1994,12 +1994,12 @@ Fill out the form to specify the details for your cluster and nodepool.
 
 ![ ](/img/compute-orchestration/compute-8.png)
 
+- **Personal Access Token (PAT)** — Use a [PAT](https://docs.clarifai.com/control/authentication/pat) to authenticate your identity when connecting to the cluster. Click the dropdown to choose from existing tokens, or create a new one by selecting **Create a new Personal Access Token** or by visiting the **Security** section in your personal settings.
+    > **Note:** The token must have the required permissions to manage compute resources. Also, if the selected PAT is deleted, any associated compute functionality will stop working.
 - **Cluster ID** — Enter a unique identifier for your cluster. This ID is used when deploying models and should reflect the cluster’s purpose or workload. It is auto-filled based on your selected instance type, but you can modify it as needed.
 - **Cluster Description** — Optionally, provide a short description that summarizes the details related to the cluster. 
 - **Nodepool ID** — Enter a unique identifier for your nodepool. This ID is used when deploying models and should reflect the nodepool’s purpose or workload. It is auto-filled based on your selected instance type, but you can modify it as needed.
 - **Nodepool Description** — Optionally, provide a short description that summarizes the details related to the nodepool. 
-- **Personal Access Token (PAT)** — Use a [PAT](https://docs.clarifai.com/control/authentication/pat) to authenticate your identity when connecting to the cluster. Click the dropdown to choose from existing tokens, or create a new one by selecting **Create a new Personal Access Token** or by visiting the **Security** section in your personal settings.
-    > **Note:** The token must have the required permissions to manage compute resources. Also, if the selected PAT is deleted, any associated compute functionality will stop working.
 
 ### Step 6: Finalize and Create the Cluster
 
@@ -2007,13 +2007,13 @@ Before you enter the required details for creating a cluster, the **Create Clust
 
 Click it to launch your cluster and nodepool.
 
-You'll then be redirected to your newly created cluster's page, where its associated nodepool will be listed in a table.
+You'll then be redirected to your newly created cluster's page, where the details of its associated nodepool will also be displayed.
 
 ![ ](/img/compute-orchestration/compute-9.png)
 
-> **Note:** _Alternatively, you can create a new nodepool from an existing cluster by clicking the **Create Nodepool** button in the upper-right corner of the cluster's page.You’ll be redirected to a page where you can specify the configurations for your new nodepool._ 
+> **Note:** _You can also create a new nodepool from an existing cluster by clicking the **Create Nodepool** button in the upper-right corner of the cluster's page. You’ll be redirected to a page where you can specify the configurations for your new nodepool._ 
 
-If you click on a nodepool listed in the table, you'll be taken to its individual page, where you can view its detailed information, such as the cluster type, instance type, and any resource deployments associated with it. 
+If you click on a nodepool displayed on the page, you'll be taken to its individual page, where you can view its detailed information, such as its activity status, extent of utilization, and any resource deployments associated with it. 
 
 ![ ](/img/compute-orchestration/compute-10.png)
 
@@ -2247,9 +2247,9 @@ To start creating a deployment, click the **Create Deployment** button.
 
 You can create a deployment directly from other areas within the platform. For example, to deploy from a specific model, go to the individual page of the model you want to deploy and click the **Deploy Model** button. You can also create a deployment from a particular cluster or nodepool by navigating to its page and clicking **Deploy Model** there.
 
-> **Note:** On an individual model page, you can also open the **Compute** tab to check if it is already running on any compute environments. This tab displays the compute requirements needed for successfully deploying the model, allowing you to choose a configuration that meets those requirements.
+> **Note:** On an individual model page, you can go to the **Deployments** section to check if it is already running on any compute environments. 
 
-![ ](/img/compute-orchestration/compute-11.png)
+> ![ ](/img/compute-orchestration/compute-11.png)
 
 :::
 
@@ -2281,14 +2281,22 @@ You can also configure the following settings:
 * **Description** — Optionally add a description to provide additional context about the deployment.
 * **Deployment PAT** — A [Personal Access Token](https://docs.clarifai.com/control/authentication/pat) (PAT) authorizes access to the resources required for your deployment to run. You can use the automatically selected token or choose a different one. If you don’t already have a suitable PAT, you can generate one using the provided button.
     > **Caution:** Be cautious when changing the PAT after the deployment has been created, as this may cause the associated compute resources to stop functioning properly.
+  
+:::note
+
+After selecting a model, a compatible nodepool will be automatically assigned. 
+- If no compatible nodepool exists in your account, a new nodepool is automatically created and marked with a `Pending` status while the required infrastructure is being provisioned. 
+- If a compatible nodepool already exists, it is selected automatically and assigned a `Provisioned` status, indicating that the infrastructure is already configured and ready to host the deployment.
+
+:::
 
 ### Step 3: Select a Nodepool
 
-Next, choose a cloud instance type and hardware configuration that best fits your model’s compute requirements and performance goals. See [Supported Cloud Instances](https://docs.clarifai.com/compute/cloud-instances) for a full list of available GPUs, TPUs, and CPU-only options across supported cloud providers.
+Next, choose a cloud instance type and hardware configuration that best fits your model’s compute requirements and performance goals. 
 
-> **Note:** After selecting a model, a compatible nodepool will be automatically suggested. If the nodepool uses a premium instance type, additional provisioning from our team may be required. In such cases, please contact us with your deployment request and our team will guide you through the next steps.
+> **Note:** See [Supported Cloud Instances](https://docs.clarifai.com/compute/cloud-instances) for a full list of available GPUs, TPUs, and CPU-only options across supported cloud providers.
 
-To select or modify a nodepool, click the pencil icon in the upper-right corner. An **Edit Nodepool Configuration** modal will appear, allowing you to choose an existing nodepool or select a recommended one that best fits your deployment requirements.
+To select or modify a nodepool, click the pencil icon in the upper-right corner. An **Edit Nodepool Configuration** modal will appear, allowing you to choose an already existing nodepool or select a recommended one that best fits your deployment requirements.
 
 The details of the nodepools will be displayed, such as GPU type, available memory, CPU cores, and cost per hour. 
 
@@ -2300,7 +2308,7 @@ The modal allows you to accomplish various tasks, including:
 - **Filter the results** — Use the three dropdown filters to narrow down your options by Cloud Provider, GPU Hardware, and Relevance (sort order).
 - **Switch between tabs** — Choose between **Existing Nodepools** (nodepools already set up in your environment) and **Recommended** (pre-configured nodepools automatically suggested based on your model’s compatibility and resource needs).
 - **Select a nodepool** — Browse the listed nodepools and click one to select it. Each entry shows key details including the cloud provider, cluster, region, GPU specs, memory, cores, pricing per hour, and min/max scaling limits.
-- **Review incompatible instances** — Expand the "See instances incompatible with this model" section at the bottom to understand which options are incompatible with your model .
+- **Review incompatible instances** — Select the **Existing Nodepools** tab and expand the "See instances incompatible with this model" section at the bottom to understand which options are incompatible with your model.
 - **Create a custom nodepool** — If none of the listed options meet your needs, click **+ Create Custom** to configure a [new cluster and nodepool](clusters-nodepools.md) from scratch.
 - **Save or cancel** — Click **Save Changes** to apply your selected nodepool configuration, or **Cancel** to close the pop-up without making any changes.
 
@@ -2310,15 +2318,24 @@ The selected nodepool will be displayed in the **Nodepool** section.
 
 #### Edit Nodepool
 
-To update the settings for the nodepool instance, click the gear icon.
+To update the settings for a nodepool instance, click the **gear icon** next to the nodepool entry.
 
 ![ ](/img/compute-orchestration/compute-13-6.png)
 
-A configuration modal will appear, allowing you to edit the nodepool description and adjust autoscaling settings based on your performance requirements and expected workload. 
+A configuration modal will appear, allowing you to configure both the cluster and nodepool settings for the deployment. The modal includes the following configurable fields and options:
 
-You can specify the minimum number of instances to maintain — setting this value to zero allows the nodepool to scale down completely when idle. You can also define the maximum number of instances to control the upper limit for autoscaling.
+- **Use Existing Cluster** — attach the nodepool to an existing cluster instead of creating a new one.
+- **Cluster ID** — specify or update the cluster identifier.
+- **Cluster Description** — add deployment notes or a description for the cluster.
+- **Nodepool ID** — define or update the nodepool identifier.
+- **Nodepool Description** — add notes or a description for the nodepool.
+- **Instance Autoscaling** — configure how the nodepool scales based on workload demands:
+  - **Minimum Instances** — the minimum number of instances to keep running. Setting this value to `0` allows the nodepool to scale down completely when idle.
+  - **Maximum Instances** — the maximum number of instances the nodepool can scale up to during periods of high demand.
 
-Click **Save Changes** to apply and finalize your updates.
+The modal also displays the selected nodepool type, machine configuration, cluster name, and deployment region.
+
+After updating the desired settings, click **Save Changes** to apply and finalize the configuration updates.
 
 :::
 
@@ -2328,7 +2345,7 @@ Dynamic routing allows you to attach additional nodepools to a deployment so tha
 
 If you want to configure additional nodepools for spillover and load balancing, click the **Add Nodepools** button. 
 
-A modal will appear that allows you to select another nodepool to include in the deployment.
+A modal will appear that allows you to [select another nodepool](#step-3-select-a-nodepool) to include in the deployment.
 
 ![ ](/img/compute-orchestration/compute-13-7.png)
 
@@ -2362,11 +2379,6 @@ To define the number of replicas, use the **Min** and **Max** fields. Each field
 > **Note:** This specifies the minimum and maximum range of model replicas to deploy, adjusting based on your performance needs and anticipated workload. Adding replicas enables horizontal scaling, where the workload is distributed across several instances of the model rather than relying on a single one. However, increasing them consumes more resources and may lead to higher costs.
 
 ![ ](/img/compute-orchestration/compute-14.png)
-
-You can use the following configuration strategies:
-
-* **Fractional** — Allows multiple model replicas to share a single node, helping optimize resource utilization and reduce costs.
-* **Persistent** — Ensures at least one replica is always running. This eliminates cold starts but may incur additional compute costs. To enable this mode, set the minimum replica count to at least **1**.
 
 To make additional changes to the deployment configuration, click the pencil icon in the upper-right corner. A modal will appear with more advanced options for configuring the deployment.
 
@@ -2432,9 +2444,8 @@ This page provides a comprehensive overview of your deployment, including the fo
   * Download logs for offline review or debugging.
 * **Deployment management** — In the upper-right section of the page, you can manage the deployment using the available controls:
   * Edit the deployment configuration
-  * [Test in Playground](https://docs.clarifai.com/getting-started/playground) to run inference requests
+  * [Try Model](https://docs.clarifai.com/getting-started/playground) to run inference requests
   * Open the three-dot menu to delete the deployment
-* **Cost overview** — Displays the estimated hourly cost range for running the deployment based on the selected infrastructure.
 * **Configuration settings** — Shows the deployment configuration, including scaling behavior, scheduling strategy, visibility, and other operational settings that determine how workloads are handled.
 
 :::note legacy experience
@@ -2576,125 +2587,116 @@ You can easily edit configurations, adjust resource allocations, or remove unuse
 
 ### Deployments
 
-You can manage various aspects of your deployments by visiting the nodepool viewer page. The **Deployments** table displays all your current deployments within that nodepool, along with their associated models and deployed model versions.
+The **Deployments** page provides a centralized workspace for viewing, monitoring, and managing all deployments across your compute infrastructure.
 
-The table also supports sorting, allowing you to organize entries alphabetically (A–Z or Z–A) as needed.
+To access the page, expand the **Compute** section in the collapsible left navigation sidebar and select **Deployments**. 
 
-To manage a specific deployment, locate it in the table and click the three-dot menu at the end of its row. This reveals a list of available actions, such as editing, viewing logs, opening the model in the Playground, or deleting the deployment.
+This opens a comprehensive dashboard where you can track deployment activity, monitor resource usage, and perform deployment-related actions from a single interface.
 
 ![](/img/compute-orchestration/compute-26-2.png)
 
-#### Copy Deployment ID
+From the **Deployments** page, you can:
 
-To copy a deployment ID, navigate to the **Deployments** table and locate the **ID** column. Find the ID you need, then click to copy it to your clipboard.
+- **Create a deployment** — Click the **Create Deployment** button in the upper-right corner to deploy a new model.
+- **Filter deployments** — Quickly narrow down deployments using the filter controls at the top of the page. You can filter by **Cluster**, **Nodepool**, **GPU Hardware**, **Model**, or deployment **Status**.
+- **View deployment details** — Each deployment row displays key information, including the deployment name, associated model, nodepool, region, current status, replica configuration, usage metrics, estimated cost, and last modified date.
+- **Monitor deployment status** — Easily identify the current state of a deployment, such as `Idle` when no replicas are running, along with configured minimum and maximum replica limits.
+- **Manage deployments** — Use the action controls on each deployment row to:
+  - Pause traffic; that is, scale the deployment to zero replicas (stopping all traffic until restarted)
+  - Open the deployed model in the [Playground](https://docs.clarifai.com/getting-started/quickstart-playground) for testing
+  - View deployment logs and runtime details
+- **Access additional actions** — Click the three-dot menu at the end of a deployment row to open additional management options, including:
+  - Copy the deployment ID
+  - View the deployment
+  - Edit the deployment
+  - Delete the deployment
+- **Track activity trends** — The activity graph provides a quick visual overview of recent deployment activities and usage patterns over the past several days. 
 
-#### Open in Playground
-
-To open a model in the [Playground](https://docs.clarifai.com/getting-started/quickstart-playground) and test its performance, go to the **Deployments** table and click the three-dot menu at the end of the corresponding row. From the pop-up that appears, select **Open in Playground**.
-
-#### View Deployment Logs
-
-You can access deployment logs to monitor performance and troubleshoot issues.
-
-To view the logs, locate the desired deployment in the **Deployments** table, click the three-dot menu at the end of its row, and select the **View Logs** option from the  pop-up that appears.
-
-A preview window will open, displaying a summary of the log file. To view a full version of the deployment logs, click the **Download** button.
-
-![ ](/img/compute-orchestration/compute-23.png)
-
-#### Edit a Deployment
-
-To edit a deployment, navigate to the **Deployments** table and click the three-dot menu at the end of the corresponding row, as described previously. 
-
-Then, select the **Deployment Setup** option from the pop-up that appears.
-
-You’ll be redirected to the [deployment configuration page](https://docs.clarifai.com/portal-guide/compute-orchestration/deploy-model#make-a-deployment), where you can review and modify the model deployment settings as needed.
-
-#### Delete a Deployment
-
-To delete a deployment, navigate to the **Deployments** table and click the three-dot menu at the end of the corresponding row, as described previously.
-
-Then, select the **Delete Deployment** option from the pop-up that appears.
-
-A confirmation dialog will appear, warning you that this is a destructive action and cannot be undone. To complete the deletion, enter the name of the deployment in the provided field, then click **Yes, Delete**.
-
-![ ](/img/compute-orchestration/compute-26.png)
-
-#### View Deployment Details
-
-You can view deployment details directly from the **Deployments** table. Once you've located the desired deployment, hover over the **CONFIG** column (represented by the clipboard icon) in the same row.
-
-A quick-access tooltip will appear, showing the autoscaling configuration for that deployment.
-
-![](/img/compute-orchestration/compute-30.png)
+> **Note:** The page also includes sorting and layout options, allowing you to switch between **List** and **Grid** views for easier deployment management.
 
 :::note Alternatively
 
-You can view a model’s deployment details by navigating to its individual page, selecting the **Compute** tab, and reviewing the **Active Deployments** section. You can find information about the compute environments where the model is currently running. 
+If you click a deployment listed on the page, you'll be redirected to its dedicated details page, where you can view deployment information, monitor runtime activity, manage scaling and traffic settings, access logs, and perform additional deployment management tasks.
 
-![](/img/compute-orchestration/compute-26-1.png)
-
-Also, clicking the three-dot menu at the end of the row in the table reveals different options that allow you to edit the deployment, copy the deployment ID, open the model in the Playground, view deployment logs, or delete the deployment.
+![ ](/img/compute-orchestration/compute-5.png)
 
 :::
 
 ### Nodepools
 
-#### Edit a Nodepool
+The **Nodepools** page provides a centralized view for managing the compute resources available across your clusters. It allows you to monitor nodepool capacity, hardware configuration, deployment usage, and operational status from a single interface.
 
-To edit a nodepool, go to its individual page and click the **Edit Nodepool** button located in the upper-right corner of the screen.
+To access the page, expand the **Compute** section in the collapsible left navigation sidebar and select **Nodepools**. 
+
+This opens the **Nodepools** dashboard, where you can view, filter, and manage all nodepools across your infrastructure.
 
 ![ ](/img/compute-orchestration/compute-18.png)
 
-You'll be redirected to a page where you can modify the [configurations for your nodepool](https://docs.clarifai.com/compute/deployments/clusters-nodepools/) based on your requirements. 
+From the **Nodepools** page, you can:
+
+- **Create a nodepool** — Click the **Create Nodepool** button in the upper-right corner to provision a new nodepool with your preferred infrastructure and hardware configuration.
+- **Filter nodepools** — Use the filters at the top of the page to quickly locate nodepools by **Cluster**, **Region**, **Cloud Provider**, or **GPU Hardware**.
+- **View nodepool details** — Each nodepool row displays important information, including:
+  - Associated cluster and region
+  - Hardware specifications such as CPU, memory, and GPU type
+  - Minimum and maximum instance limits
+  - Hourly cost estimates
+  - Number of active deployments
+- **Monitor compute capacity** — Easily track configured scaling limits and available hardware resources for each nodepool.
+- **View deployment usage** — The **Deploys** column shows how many deployments are currently using a nodepool, with quick access to view associated deployments.
+- **Manage nodepools** — Use the action controls on each row to:
+  - Deploy a model to the nodepool
+  - Edit the nodepool configuration
+- **Access additional actions** — Clicking the three-dot menu opens a pop-up menu with additional management options, including:
+  - Copy the nodepool ID
+  - Deploy a Model 
+  - Edit the nodepool
+  - Delete the nodepool
+- **Track activity trends** — The activity graph provides a quick visual overview of recent nodepool activities and usage patterns over the past several days. 
+
+> **Note:** The page also supports **List** and **Grid** layouts, allowing you to choose the view that best fits your workflow and monitoring preferences.
 
 :::note Alternatively
 
-You can perform various nodepool management tasks from the nodepools listing page. In the table, locate the nodepool you want to manage, then click the three-dot menu at the end of the row.
-
-The pop-up that appears provides options to copy its ID, deploy a model to it, edit the nodepool, or delete the nodepool.
+If you click a nodepool listed on the page, you'll be redirected to its dedicated details page, where you can view additional information, monitor activity, and perform further management and configuration tasks for that nodepool.
 
 ![ ](/img/compute-orchestration/compute-17.png)
 
 :::
 
-#### Delete a Nodepool
-
-To delete a nodepool, go to its individual page and click the three-dot menu in the upper-right corner of the screen.
-
-Then, click the **Delete Nodepool** button that appears. 
-
-![ ](/img/compute-orchestration/compute-20.png)
-
-A confirmation pop-up will appear, warning you that deleting the nodepool will cause the associated deployments to stop functioning. So, you may reassign the deployments to a different nodepool if you want to continue using them.
-
-Note that since this action cannot be undone, you need to proceed with caution. To complete the deletion, enter the name of the nodepool in the provided field, then click **Yes, Delete**.
-
-![ ](/img/compute-orchestration/compute-19-1.png)
-
 ### Clusters
 
-#### Delete a Cluster
+The **Clusters** page provides a centralized view for managing all compute clusters across your environments. It allows you to monitor cluster configuration, deployment usage, nodepool allocation, and overall infrastructure status from a single interface.
 
-To delete a cluster, go to its individual page and click the three-dot menu in the upper-right corner of the screen.
-
-Then, click the **Delete Cluster** button that appears.
-
-![ ](/img/compute-orchestration/compute-5.png)
-
-A confirmation pop-up will appear, warning you that deleting the cluster will cause the associated nodepools to stop functioning. So, you may reassign the nodepools to a different cluster if you want to continue using them.
-
-Note that since this action cannot be undone, you need to proceed with caution.
-
-To complete the deletion, enter the name of the cluster in the provided field, then click **Yes, Delete**.
+To access the page, expand the **Compute** section in the collapsible left navigation sidebar and select **Clusters**. This opens the **Clusters** dashboard, where you can view, filter, and manage all available clusters.
 
 ![ ](/img/compute-orchestration/compute-6.png)
 
+From the **Clusters** page, you can:
+
+- **Create a cluster** — Click the **Create Cluster** button in the upper-right corner to provision a new cluster.
+- **Filter clusters** — Use the filter controls at the top of the page to quickly find clusters by **Cloud Provider** or **Region**.
+- **View cluster details** — Each cluster row displays important information, including:
+  - Cloud provider and region
+  - Visibility settings
+  - Cluster type
+  - Estimated cost
+- **Monitor infrastructure usage** — Quickly view how many nodepools and deployments are associated with each cluster, helping you track infrastructure utilization and workload distribution.
+- **Manage clusters** — Use the action controls on each row to:
+  - Add a nodepool to the cluster
+  - Edit cluster settings
+- **Access additional actions** — Clicking the three-dot menu opens a pop-up menu with additional management options, including:
+  - Copy cluster ID
+  - Deploy a model
+  - Add a new nodepool
+  - Edit the cluster
+  - Delete the cluster
+  
+> **Note:** The page supports both **List** and **Grid** layouts, allowing you to switch between viewing styles based on your workflow and monitoring preferences.
+
 :::note Alternatively
 
-You can perform various cluster management tasks from the clusters listing page. In the table, locate the cluster you want to manage, then click the three-dot menu at the end of the row.
-
-The pop-up that appears provides options to add a new nodepool, copy its ID, or delete the cluster.
+If you click a cluster listed on the page, you'll be redirected to its dedicated details page, where you can view additional information, monitor cluster activity, manage associated nodepools and deployments, and perform further configuration and administrative tasks.
 
 ![ ](/img/compute-orchestration/compute-6-3.png)
 
