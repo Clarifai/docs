@@ -13,7 +13,7 @@ clarifai
 psutil
 
 torch==2.6.0
-vllm==0.8.0
+vllm==0.8.5
 transformers==4.50.1
 backoff==2.2.1
 peft>=0.13.2
